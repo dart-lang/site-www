@@ -118,6 +118,6 @@ Dart constructs.
   **Have feedback on the guides?** <br>
   Please [file an issue][issue] or add to an [existing one][].
 
-  [issue]: https://github.com/dart-lang/www.dartlang.org/issues/new
-  [existing one]: https://github.com/dart-lang/www.dartlang.org/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
+  [issue]: https://github.com/dart-lang/site-www/issues/new
+  [existing one]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
