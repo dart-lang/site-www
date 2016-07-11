@@ -329,7 +329,7 @@ with words separated by underscores (`_`).
 
 ## What next?
 
-* Get the code for all of the Dart tutorials samples.
+* Get the Dart tutorials sample code.
   <a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
   Download the ZIP file</a>, unzip it,
   and open `dart-tutorials-samples-master` in WebStorm.

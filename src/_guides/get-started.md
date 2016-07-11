@@ -38,7 +38,7 @@ Where do you start? It depends on what kind of app you are writing.
 
 | | **Web** | **Mobile** | **IoT** | **Server** |
 | **Use case** | Create an app that runs in any modern browser | Create an app from a single codebase that runs on both iOS and Android | Create an app for an embedded device | Create a command-line app or server |
-| **Dive in!** | [Get Started]({{site.webdev}}/guides/get-started) with webdev | [Getting Started with Flutter]({{site.flutter}}/getting-started/) | [Getting started]({{site.dartino}}/getting-started) with Dartino | [Get Started](/tutorials/dart-vm/get-started) with the Dart VM |
+| **Dive in!** | [Get Started]({{site.webdev}}/guides/get-started) with Dart webdev | [Getting Started with Flutter]({{site.flutter}}/getting-started/) | [Getting started]({{site.dartino}}/getting-started) with Dartino | [Get Started](/tutorials/dart-vm/get-started) with the Dart VM |
 {:.table .table-striped}
 
 {% comment %}

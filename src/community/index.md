@@ -9,7 +9,7 @@ Track the Dart project and join the conversation in a variety of ways.
 
 Also see:
 
-* [Community and Support]({{site.webdev}}/community) on webdev
+* [Community and Support]({{site.webdev}}/community) on Dart webdev
 * [Dart Academy](https://dart.academy/) contains a collection of tutorials
   and articles written by the Dart community.
 
