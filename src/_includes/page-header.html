@@ -1,0 +1,8 @@
+<header id="page-header">
+  {% include navigation-main.html %}
+  {% if page.obsolete == true %}
+  <div class="alert alert-danger">
+    <h4 class="text-center">Content on this page is obsolete.</h4>
+  </div>
+  {% endif %}
+</header>

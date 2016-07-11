@@ -1,0 +1,9 @@
+name: site_scripts
+description: Utility scripts
+dependencies:
+  http: any
+  path: any
+
+#dependencies:
+#  js: any
+#  unittest: any

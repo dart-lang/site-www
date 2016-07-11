@@ -1,0 +1,19 @@
+- title: Get Started
+  label: 
+  permalink: /guides/get-started
+- title: Effective Dart
+  label: 
+  permalink: /guides/effective-dart/index
+  children:
+    - title: Style
+      label:
+      permalink: /guides/effective-dart/style
+    - title: Documentation
+      label:
+      permalink: /guides/effective-dart/documentation
+    - title: Usage
+      label:
+      permalink: /guides/effective-dart/usage
+    - title: Design
+      label:
+      permalink: /guides/effective-dart/design

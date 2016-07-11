@@ -1,0 +1,150 @@
+# Site settings
+title: Dart
+description: ""
+url: https://www.dartlang.org
+baseurl: "" # the subpath of your site, e.g. /blog/
+# permalink: /:path/:basename
+
+# Global variables
+# use case:
+#   {{site.webdev}}/downloads
+
+dartlang: ""
+# webdev: "https://webdev.dartlang.org"
+# webdev: "http://localhost:4001"
+webdev: "https://webdev-dartlang-org.firebaseapp.com" 
+dart_vm:  "/dart-vm"
+flutter:  "https://flutter.io"
+dartino:  "https://dartino.org"
+dart_api: "https://api.dartlang.org/stable"
+flutter_api: "http://docs.flutter.io"
+dartino_api: "https://dartino.github.io/api"
+
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path
+  tutorials:
+    output: true
+    permalink: /tutorials/:path
+  samples:
+    output: true
+    permalink: /samples/:path
+  guides:
+    output: true
+    permalink: /guides/:path
+  codelabs:
+    output: true
+    permalink: /codelabs/:path
+
+defaults:
+- scope:
+    path: ""
+    type: pages
+  values:
+    layout: default
+    toc: true
+- scope:
+    path: ""
+    type: articles
+  values:
+    layout: article
+    toc: true
+- scope:
+    path: ""
+    type: tutorials
+  values:
+    layout: tutorial
+    toc: true
+- scope:
+    path: ""
+    type: samples
+  values:
+    layout: sample
+    toc: true
+- scope:
+    path: ""
+    type: guides
+  values:
+    layout: guide
+    toc: true
+- scope:
+    path: ""
+    type: codelabs
+  values:
+    layout: codelab
+    toc: true
+
+custom:
+  dartpad:
+    embed-dart-prefix: "https://dartpad.dartlang.org/embed-dart.html"
+    embed-html-prefix: "https://dartpad.dartlang.org/embed-html.html"
+    embed-inline-prefix: "https://dartpad.dartlang.org/embed-inline.html"
+    direct-link: "https://dartpad.dartlang.org"
+  downloads:
+    dartarchive-be-url-prefix: "https://storage.googleapis.com/dart-archive/channels/be/raw"
+    dartarchive-dev-url-prefix: "https://storage.googleapis.com/dart-archive/channels/dev/release"
+    dartarchive-stable-url-prefix: "https://storage.googleapis.com/dart-archive/channels/stable/release"
+    binaries:
+      - os: windows
+        name: Windows
+        ext: zip
+        editor-ext: zip
+      - os: macos
+        name: Mac
+        ext: zip
+        editor-ext: zip
+      - os: linux
+        name: Linux
+        ext: zip
+        editor-ext: zip
+
+
+
+# Build settings
+safe: false
+source: src
+destination: publish
+incremental: true
+bundler_args: --without production
+markdown: kramdown
+excerpt_separator: "~~~"
+
+include: ["_pages"]
+exclude: ["diagrams", "appengine", "tests", "site"]
+
+gems:
+- jekyll-assets
+- jekyll-toc
+- jekyll-sitemap
+
+
+assets:
+  compress:
+    css: true # default - development: false, production: true
+    js: true # default - development: false, production: true
+  cache: .asset-cache # default: .asset-cache
+  # cdn: https://cdn.example.com
+  # skip_baseurl_with_cdn: false
+  # skip_prefix_with_cdn: false
+  prefix: "/assets"
+  assets:
+    - "*.png"
+    - "*.jpg"
+    - "*.eot"
+    - "*.ttf"
+    - "*.woff"
+    - "*.woff2"
+    - "*.svg"
+  digest: true
+  sources:
+    - _assets/icons
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/page_assets
+  features:
+    liquid: true # default: false
+    automatic_img_size: true # default: true
+    automatic_img_alt : true # default: true
+

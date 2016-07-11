@@ -1,0 +1,53 @@
+language: ruby
+sudo: false
+cache:
+  bundler: true
+  directories:
+  # - $HOME/[path]
+rvm:
+- 2.2.3
+
+# before_install:
+
+install:
+  - bundle install
+  - npm install -g firebase-tools
+
+before_script:
+  # - chmod +x ./deploy/runtests.sh
+  - chmod +x ./deploy/cibuild
+  - chmod +x ./deploy/deploy-firebase.sh
+  - chmod +x ./deploy/html_proof.rb
+  - chmod +x ./deploy/check_sitemap.rb
+
+script:
+  - ./deploy/cibuild
+  - ./deploy/check_sitemap.rb
+
+# branch whitelist
+# branches:
+#   only:
+#   - master        # test the master branch
+#   - /stage-(.*)/  # test every branch which starts with "stage-"
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+
+
+# after_success:
+# We could add the deployment to firebase here if there are no additional customizations etc...
+
+deploy:
+  - provider: script
+    script: ./deploy/deploy-firebase.sh
+    skip_cleanup: true
+    on:
+      branch: master
+
+after_deploy:
+  # Just FYI test. Won't fail the build if it has errors.
+  - ./deploy/html_proof.rb
+  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
+  # # (By default, Travis doesn't fail builds after deployment.)
+  # - "./deploy/html_proof.rb || travis_terminate 1"

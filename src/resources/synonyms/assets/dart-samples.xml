@@ -1,0 +1,1082 @@
+<?xml version="1.0"?>
+<synonyms>
+<theme id="theme-getting-started">
+  <title>Getting started</title>
+  <synonym id="syn-code-embedding">
+    <title>Code embedding</title>
+    <code language="dart"><![CDATA[
+// Use both script tags to reach all browsers
+
+// For browsers with the Dart VM
+<script type='application/dart' src='program.dart'></script>
+
+// The following will kickstart the Dart engine and 
+// try to automatically load the javascript version
+// of your app for non-Dartium browsers.
+<script src="packages/browser/dart.js">
+</script>
+]]></code>
+  </synonym>
+  <synonym id="syn-entry-point">
+    <title>Entry point</title>
+    <code language="dart"><![CDATA[
+// REQUIRED.
+main() {
+  // this is the entry point to the program
+}
+
+// Or
+main(List<String> args) {
+  // ...
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-detect-language-unavailability">
+    <title>Detect language unavailability</title>
+    <code language="dart"><![CDATA[
+<script type='text/javascript'>
+  if (navigator.userAgent.indexOf('(Dart)') === -1) {
+    // Browser doesn't support Dart
+  }
+</script>
+]]></code>
+  </synonym>
+  <synonym id="syn-printing-to-the-console">
+    <title>Printing to the console</title>
+    <code language="dart"><![CDATA[
+print('Level completed.');
+]]></code>
+  </synonym>
+  <synonym id="syn-modal-alerts">
+    <title>Modal alerts</title>
+    <code language="dart"><![CDATA[
+import 'dart:html';
+
+window.alert('Clicked on the button.');
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-code-modularity">
+  <title>Code modularity</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#libraries</learn-more>
+  <synonym id="syn-define-a-library">
+    <title>Define a library</title>
+    <code language="dart"><![CDATA[
+// declares the following is in the animals library
+library animals;
+
+class Dog {
+  noise() => 'BARK!';
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-use-a-library">
+    <title>Use a library</title>
+    <code language="dart"><![CDATA[
+import 'animals.dart';
+var fido = new Dog();
+
+// prefixes are supported to avoid namespace collisions
+import 'animals.dart' as pets;
+var fido = new pets.Dog();
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-variables">
+  <title>Variables</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#variables</learn-more>
+  <synonym id="syn-create--assign-value">
+    <title>Create + assign value</title>
+    <code language="dart"><![CDATA[
+// Dart variables can be typed...
+String myName = 'Aaron';
+
+// but they don't need to be
+var myOtherName = 'Aaron';
+]]></code>
+  </synonym>
+  <synonym id="syn-default-value">
+    <title>Default value</title>
+    <code language="dart"><![CDATA[
+var myName;
+// == null
+
+int x;
+// == null
+]]></code>
+  </synonym>
+  <synonym id="syn-hoisting">
+    <title>Hoisting</title>
+    <code language="dart"><![CDATA[
+// Dart does not hoist variables.  The following
+// method will issue a compilation error of "cannot resolve name"
+printName() {
+  print('Hello, $name'); // compilation error here
+  var name = 'Bob';
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-final-variables">
+    <title>Final variables</title>
+    <code language="dart"><![CDATA[
+const name = 'Bob';
+
+// you can combine types and const
+const String name = 'Bob';
+
+// Trying to reassign a const variable raises an error
+name = 'Alice';
+// ERROR: cannot assign value to const variable
+
+// You can use final with attributes
+class Person {
+  final String name;
+  Person(this.name);
+}
+
+var bob = new Person('Bob');
+
+// Trying to reassign a final attribute raises an error
+bob.name = 'Alice';
+// ERROR: cannot assign value to final variable
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-collections">
+  <title>Collections</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-collections</learn-more>
+  <synonym id="syn-arrays--lists">
+    <title>Arrays / Lists</title>
+    <code language="dart"><![CDATA[
+var a = new List();
+var a = [];
+var a = ['apple', 'banana', 'cherry'];
+
+a.add('orange');
+
+a.length == 4;
+
+// In Dart you can use generics.
+var a = new List<String>();
+]]></code>
+  </synonym>
+  <synonym id="syn-custom-sort">
+    <title>Custom sort</title>
+    <code language="dart"><![CDATA[
+var numbers = [42, 2.1, 5, 0.1, 391];
+numbers.sort((a, b) => a - b);
+// == [0.1, 2.1, 5, 42, 391];
+]]></code>
+  </synonym>
+  <synonym id="syn-key-value-pairs">
+    <title>Key-value pairs</title>
+    <code language="dart"><![CDATA[
+// Dart has a Map interface for key-value pairs
+var periodic = {};
+var periodic = new Map();
+]]></code>
+  </synonym>
+  <synonym id="syn-appropriate-keys">
+    <title>Appropriate keys</title>
+    <code language="dart"><![CDATA[
+// Map literals can use any object as a key.
+// For example, strings:
+var periodic = {
+  'gold' : 'AU',
+  'silver' : 'AG'
+};
+]]></code>
+  </synonym>
+  <synonym id="syn-accessing-values">
+    <title>Accessing values</title>
+    <code language="dart"><![CDATA[
+// Values can only be 'get' or 'set' by using the square
+// bracket notation.  Dot notation does not work
+periodic['gold'] // == 'AU'
+
+periodic['gold'] = 'Glitter';
+
+// You can set a key if it does not exist first.
+// Runs a function to generate the value.
+periodic.putIfAbsent('Xenon', () => 'XE');
+]]></code>
+  </synonym>
+  <synonym id="syn-sets-collections-of-unique-items">
+    <title>Sets (collections of unique items)</title>
+    <code language="dart"><![CDATA[
+var fruits = new Set();
+fruits.add('oranges');
+fruits.add('apples');
+fruits.length // == 2
+
+fruits.add('oranges'); // duplicate of existing item
+fruits.length // == 2
+]]></code>
+  </synonym>
+  <synonym id="syn-queues-fifo">
+    <title>Queues (FIFO)</title>
+    <code language="dart"><![CDATA[
+// Queues are optimized for removing items from the head
+var queue = new Queue();
+queue.add('event:32342');
+queue.add('event:49309');
+
+print(queue.length);  // 2
+
+var eventId = queue.removeFirst();
+
+print(eventId == 'event:32342'); // true
+print(queue.length); // 1
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-strings">
+  <title>Strings</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-strings-and-regular-expressions</learn-more>
+  <synonym id="syn-raw-strings">
+    <title>Raw strings</title>
+    <code language="dart"><![CDATA[
+var rawString = r'The following is not expanded to a tab \t';
+
+var escapedString = 'The following is not expanded to a tab \\t';
+
+rawString == escapedString // == true
+]]></code>
+  </synonym>
+  <synonym id="syn-interpolation">
+    <title>Interpolation</title>
+    <code language="dart"><![CDATA[
+var name = 'Aaron';
+var greeting = 'My name is $name.';
+
+var greetingPolish = 'My Polish name would be ${name}ski.';
+
+// calculations can be performed in string interpolation
+element.style.top = '${top + 20}px';
+]]></code>
+  </synonym>
+  <synonym id="syn-concatenation">
+    <title>Concatenation</title>
+    <code language="dart"><![CDATA[
+// Adjacent string literals concatenate.
+var longMessage = 'This is a very long line. '
+                  'It is concatenated into one string.';
+
+// Using + also works.
+
+var anotherMessage = 'This is also a very long line. ' +
+                     'It is concatenated with a +.';
+                  
+// Or use string interpolation.
+var name = 'Aaron';
+var greeting = 'My name is $name.';  
+]]></code>
+  </synonym>
+  <synonym id="syn-substring">
+    <title>Substring</title>
+    <code language="dart"><![CDATA[
+'doghouses'.substring(3, 8); // == 'house'
+]]></code>
+  </synonym>
+  <synonym id="syn-replace-all-occurences">
+    <title>Replace all occurences</title>
+    <code language="dart"><![CDATA[
+'doghouses'.replaceAll('s','z'); // == 'doghouzez'
+]]></code>
+  </synonym>
+  <synonym id="syn-replace-one-occurence">
+    <title>Replace one occurence</title>
+    <code language="dart"><![CDATA[
+'racecar'.replaceFirst('r', 'sp'); // == 'spacecar'
+]]></code>
+  </synonym>
+  <synonym id="syn-multi-line-strings">
+    <title>Multi-line strings</title>
+    <code language="dart"><![CDATA[
+// Dart ignores the first new-line (if it is directly after 
+// the quotes), but not the last.
+var string = '''
+This is a string that spans
+many lines.
+''';
+]]></code>
+  </synonym>
+  <synonym id="syn-split-into-an-array">
+    <title>Split into an array</title>
+    <code language="dart"><![CDATA[
+var animals = 'dogs, cats, gophers, zebras';
+var individualAnimals = animals.split(', ');
+// == ['dogs', 'cats', 'gophers', 'zebras'];
+]]></code>
+  </synonym>
+  <synonym id="syn-test-whether-a-string-starts-with-a-substring">
+    <title>Test whether a string starts with a substring</title>
+    <code language="dart"><![CDATA[
+// Dart string objects have a built-in startsWith method
+'racecar'.startsWith('race'); // == true
+'racecar'.startsWith('pace'); // == false
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-booleans">
+  <title>Booleans</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#booleans</learn-more>
+  <synonym id="syn-if-statements">
+    <title>If statements</title>
+    <code language="dart"><![CDATA[
+var bugNumbers = [3234,4542,944,124];
+if (bugNumbers.length > 0) {
+  print('Not ready for release');
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-ternary-statements">
+    <title>Ternary statements</title>
+    <code language="dart"><![CDATA[
+var bugNumbers = [3234,4542,944,124];
+var status = bugNumbers.length > 0 ? 'RED' : 'GREEN';
+
+print('The build is $status');
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-empty-string">
+    <title>Checking for empty string</title>
+    <code language="dart"><![CDATA[
+var emptyString = '';
+
+if (emptyString.isEmpty) {
+  print('use isEmpty');
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-zero">
+    <title>Checking for zero</title>
+    <code language="dart"><![CDATA[
+var zero = 0;
+
+if (zero == 0) {
+  print('use == 0 to check zero');
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-null">
+    <title>Checking for null</title>
+    <code language="dart"><![CDATA[
+var myNull = null;
+
+if (myNull == null) {
+  print('use == null to check null');
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-nan">
+    <title>Checking for NaN</title>
+    <code language="dart"><![CDATA[
+var myNaN = 0/0;
+
+if (myNaN.isNaN) {
+  print('use isNaN to check if a number is NaN');
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-undefined">
+    <title>Checking for undefined</title>
+    <code language="dart"><![CDATA[
+// Dart does not have a concept of undefined
+]]></code>
+  </synonym>
+  <synonym id="syn-value-and-identity-equality">
+    <title>Value and identity equality</title>
+    <code language="dart"><![CDATA[
+
+// In Dart, == will check the following, in order:
+// 1) if either x or y is null, then return identical(x, y)
+// 2) otherwise, return x.==(y)
+
+// This means:
+// a) use identical(a, b) instead of === (there is no ===)
+// b) when implementing ==() you don't have to worry about
+//    manually checking for null arg
+// c) you can't define your own type that considers itself
+//    equal to null
+// d) null == null
+
+// therefore, the following code will work:
+
+var letterA = 'A';
+var charA = new String.fromCharCodes([65]);
+
+// String defines equality as 'same character codes in same order'
+letterA == charA // == true
+
+// However, the following is different than JavaScript
+
+var number5 = 5;
+var char5 = '5';
+
+number5 != char5 // == true, because of different types
+
+// You can implement == in your own class
+class Person {
+  String name;
+  String ssn;
+  Person(this.name, this.ssn);
+
+  bool operator ==(Object other) {
+    return other is Person && ssn == other.ssn;
+  }
+}
+
+new Person('Bob', '111') == new Person('Robert', '111');
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-functions">
+  <title>Functions</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#functions</learn-more>
+  <synonym id="syn-function-definition">
+    <title>Function definition</title>
+    <code language="dart"><![CDATA[
+// Specifying the return type of the function
+// in Dart is optional.
+fn() {
+  …
+  return true;
+}
+
+// can also be written as
+bool fn() {
+  …
+  return true;
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-return-value">
+    <title>Return value</title>
+    <code language="dart"><![CDATA[
+// Like JavaScript, use the 'return' keyword in a function
+// definition to return a value.
+fn() {
+  return 'Hello';
+}
+fn(); // == 'Hello'
+
+// A function with no return value returns null.
+doNothing() {
+  // nothing
+}
+
+doNothing(); // == returns null
+
+// if the body of the function is returning a single expression,
+// this is the short form
+fn() => true;
+]]></code>
+  </synonym>
+  <synonym id="syn-assign-a-function-to-a-variable">
+    <title>Assign a function to a variable</title>
+    <code language="dart"><![CDATA[
+var loudify = (msg) => msg.toUpperCase();
+
+loudify('not gonna take it anymore'); // NOT GONNA TAKE IT ANYMORE
+]]></code>
+  </synonym>
+  <synonym id="syn-optional-parameters">
+    <title>Optional parameters</title>
+    <code language="dart"><![CDATA[
+fn(a, b, c) => c;
+
+fn(1); // ERROR: NoSuchMethodException
+fn(1, 2, 3); // == 3
+
+// Dart specifies optional parameters with square braces
+fn(a, [b, c]) => c;
+fn('a'); // == null
+]]></code>
+  </synonym>
+  <synonym id="syn-default-parameters">
+    <title>Parameters with default values</title>
+    <code language="dart"><![CDATA[
+String send(msg, [rate='First Class']) {
+  return '${msg} was sent via ${rate}';
+}
+
+send('hello'); // == 'hello was sent via First Class'
+send("I'm cheap", '4th class'); // == "I'm cheap was sent via 4th class"
+]]></code>
+  </synonym>
+  <synonym id="syn-named-parameters">
+    <title>Named parameters</title>
+    <code language="dart"><![CDATA[
+String send(msg, {rate: 'First Class'}) {
+  return '${msg} was sent via ${rate}';
+}
+
+// you can use named parameters if the argument is optional
+send("I'm cheap", rate:'4th class'); // == "I'm cheap was sent via 4th class"
+]]></code>
+  </synonym>
+  <synonym id="syn-variable-number-of-arguments">
+    <title>Variable number of arguments</title>
+    <code language="dart"><![CDATA[
+// Dart does not support variable numbers of arguments
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-iterators">
+  <title>Iterators</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#control-flow-statements</learn-more>
+  <synonym id="syn-for-loops-for-lists">
+    <title>For loops for lists</title>
+    <code language="dart"><![CDATA[
+var colors = ['red', 'orange', 'green'];
+
+for (var i = 0; i < colors.length; i++) {
+  print(colors[i]);
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-for-in-loops">
+    <title>For-in loops</title>
+    <code language="dart"><![CDATA[
+var fruits = ['orange', 'apple', 'banana'];
+
+// 'in' notation in Dart returns the element
+// of the list, not the index
+
+for (var fruit in fruits) {
+  print(fruit);
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-for-loops-for-objectsmaps">
+    <title>For loops for objects/maps</title>
+    <code language="dart"><![CDATA[
+var data = { … };
+
+for (var key in data.keys) {
+  print('$key, ${data[key]}');
+}
+
+// Alternatively, the forEach loop is a method on a Map in Dart.
+
+data.forEach((key, value) {
+  print('${key}, ${value}');
+});
+]]></code>
+  </synonym>
+  <synonym id="syn-closures-and-counters-in-loops">
+    <title>Closures and counters in loops</title>
+    <code language="dart"><![CDATA[
+// Dart doesn't reuse and close over the same
+// loop variable in each iteration
+var callbacks = [];
+for (var i = 0; i < 2; i++) {
+  callbacks.add(() => print(i));
+}
+
+callbacks[0]() // == 0
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-classes">
+  <title>Classes</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#classes</learn-more>
+  <synonym id="syn-define">
+    <title>Define</title>
+    <code language="dart"><![CDATA[
+class Person {
+  String name;
+
+  String greet() => 'Hello, $name';
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-constructor-with-parameter">
+    <title>Constructor with parameter</title>
+    <code language="dart"><![CDATA[
+class Person {
+  String name;
+
+  Person(String name) {
+    this.name = name;
+  }
+}
+
+// Shorter alternative
+class Person {
+  String name;
+
+  // parameters prefixed by 'this.' will assign to
+  // instance variables automatically
+  Person(this.name);
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-instantiate">
+    <title>Instantiate</title>
+    <code language="dart"><![CDATA[
+var person = new Person();
+]]></code>
+  </synonym>
+  <synonym id="syn-reflection">
+    <title>Reflection</title>
+    <code language="dart"><![CDATA[
+var name = "Bob";
+name.runtimeType  // == String
+]]></code>
+  </synonym>
+  <synonym id="syn-check-the-type">
+    <title>Check the type</title>
+    <code language="dart"><![CDATA[
+var name = 'Bob';
+
+name is String // == true
+
+name is! int // == true
+]]></code>
+  </synonym>
+  <synonym id="syn-subclass">
+    <title>Subclass</title>
+    <code language="dart"><![CDATA[
+class Person {
+  String name;
+
+  Person(this.name);
+
+  String greet() => 'Hello, $name';
+}
+
+class Employee extends Person {
+  num salary;
+
+  Employee(String name, this.salary) : super(name);
+  
+  void grantRaise(num percent) {
+    percent /= 100;
+    salary += (salary * percent).toInt();
+  }
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-operator-overloading">
+    <title>Operator &quot;overloading&quot;</title>
+    <code language="dart"><![CDATA[
+class Hug {
+  num strength;
+  Hug(this.strength);
+  
+  Hug operator +(Hug other) => new Hug(strength + other.strength);
+}
+
+main() {
+  var hug1 = new Hug(10);
+  var hug2 = new Hug(100);
+  var bigHug = hug1 + hug2;
+}
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-finding-elements-in-dom">
+  <title>Finding elements in DOM</title>
+  <synonym id="syn-find-one-element-by-id">
+    <title>Find one element by id</title>
+    <code language="dart"><![CDATA[
+querySelector('#main');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-class">
+    <title>Find one element by class</title>
+    <code language="dart"><![CDATA[
+querySelector('.visible');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-class">
+    <title>Find many elements by class</title>
+    <code language="dart"><![CDATA[
+querySelectorAll('.visible');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-tag">
+    <title>Find one element by tag</title>
+    <code language="dart"><![CDATA[
+querySelector('div');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-tag">
+    <title>Find many elements by tag</title>
+    <code language="dart"><![CDATA[
+querySelectorAll('div');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-name">
+    <title>Find one element by name</title>
+    <code language="dart"><![CDATA[
+querySelector('[name="form"]');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-name">
+    <title>Find many elements by name</title>
+    <code language="dart"><![CDATA[
+querySelectorAll('[name="form"]');
+]]></code>
+  </synonym>
+  <synonym id="syn-find-elements-by-combination-of-above">
+    <title>Find elements by combination of above</title>
+    <code language="dart"><![CDATA[
+querySelector('#main').querySelector('div').querySelectorAll('.visible');
+
+querySelectorAll('#main div:first-of-type .visible');
+]]></code>
+  </synonym>
+  <synonym id="syn-iterate-over-a-list-of-elements">
+    <title>Iterate over a list of elements</title>
+    <code language="dart"><![CDATA[
+for (var el in els) {
+  doSomethingWithEl(el);
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-access-the-first-child">
+    <title>Access the first child</title>
+    <code language="dart"><![CDATA[
+elem.children.first;
+
+elem.children[0];
+]]></code>
+  </synonym>
+  <synonym id="syn-find-out-whether-an-element-has-children-elements">
+    <title>Find out whether an element has children elements</title>
+    <code language="dart"><![CDATA[
+!elem.nodes.isEmpty;
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-manipulating-dom">
+  <title>Manipulating DOM</title>
+  <synonym id="syn-create-an-element">
+    <title>Create an element</title>
+    <code language="dart"><![CDATA[
+import 'dart:html';
+
+var element = new Element.tag('div');
+
+// Many elements have their own constructors.
+var element = new DivElement();
+]]></code>
+  </synonym>
+  <synonym id="syn-create-an-element-and-set-its-contents">
+    <title>Create an element and set its contents</title>
+    <code language="dart"><![CDATA[
+var element = new Element.html('<p>A quick brown <em>fox</em>.</p>');
+]]></code>
+  </synonym>
+  <synonym id="syn-add-an-element-to-a-parent">
+    <title>Add an element to a parent</title>
+    <code language="dart"><![CDATA[
+element.children.add(newElement);
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-an-element-from-its-parent">
+    <title>Remove an element from its parent</title>
+    <code language="dart"><![CDATA[
+element.remove();
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-regular-expressions">
+  <title>Regular expressions</title>
+  <synonym>
+    <code language="dart"><![CDATA[
+var email = 'test@example.com';
+(new RegExp(r'@')).firstMatch(email);
+// == Match Object
+]]></code>
+  </synonym>
+  <synonym>
+    <code language="dart"><![CDATA[
+var invalidEmail = 'f@il@example.com';
+(new RegExp(r'@')).allMatches(invalidEmail)
+// == Iterable Match Object
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-exceptions">
+  <title>Exceptions</title>
+  <synonym id="syn-throw-an-exception">
+    <title>Throw an exception</title>
+    <code language="dart"><![CDATA[
+throw new Exception("Intruder Alert!!");
+
+// You can also throw strings
+
+throw "Unexpected user input";
+]]></code>
+  </synonym>
+  <synonym id="syn-catch-an-exception">
+    <title>Catch an exception</title>
+    <code language="dart"><![CDATA[
+main() {    
+  try {
+    int.parse("three");
+  } on FormatException catch(fe) {
+    print("Ouch! Detected: $fe");
+  } catch(e) {
+    print("If some other type of exception");
+  } finally {
+    print("This runs even if an exception is thrown");
+  }
+}
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-event-handling">
+  <title>DOM Event handling</title>
+  <synonym id="syn-attach-an-event-handler">
+    <title>Attach an event handler</title>
+    <code language="dart"><![CDATA[
+element.onClick.listen(handleOnClick);
+
+handleOnClick(Event e) {
+  // ...
+}
+
+// Or, if the handler does not take an event:
+element.onClick.listen((e) => subscribeToService());
+
+// Or, if you need to attach to a dynamically-named event:
+element.on['dynamicName'].listen((e) => print('dynamic'));
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-an-event-handler">
+    <title>Remove an event handler</title>
+    <code language="dart"><![CDATA[
+var subscription = element.onClick.listen(handleOnClick);
+subscription.cancel();
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-timing">
+  <title>Timing</title>
+  <synonym id="syn-schedule-a-future-event">
+    <title>Schedule a future event</title>
+    <code language="dart"><![CDATA[
+import 'dart:async';
+var timer = new Timer(new Duration(milliseconds:500), () { … });
+]]></code>
+  </synonym>
+  <synonym id="syn-measure-the-execution-time-of-a-function">
+    <title>Measure the execution time of a function</title>
+    <code language="dart"><![CDATA[
+int measure(fn) {
+  var watch = new Stopwatch();
+  watch.start();
+  fn();
+  return watch.elapsedMicroseconds;
+}
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-html-attributes">
+  <title>HTML attributes</title>
+  <synonym id="syn-get-html-attribute">
+    <title>Get HTML attribute</title>
+    <code language="dart"><![CDATA[
+element.attributes['href'];
+]]></code>
+  </synonym>
+  <synonym id="syn-set-html-attribute">
+    <title>Set HTML attribute</title>
+    <code language="dart"><![CDATA[
+element.attributes['playable'] = true;
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-html-attribute">
+    <title>Remove HTML attribute</title>
+    <code language="dart"><![CDATA[
+element.attributes.remove('playable');
+]]></code>
+  </synonym>
+  <synonym id="syn-check-if-html-attribute-exists">
+    <title>Check if HTML attribute exists</title>
+    <code language="dart"><![CDATA[
+element.attributes.containsKey('href');
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-css-classes">
+  <title>CSS classes</title>
+  <synonym id="syn-add-css-class">
+    <title>Add CSS class</title>
+    <code language="dart"><![CDATA[
+element.classes.add('new-class');
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-css-class">
+    <title>Remove CSS class</title>
+    <code language="dart"><![CDATA[
+element.classes.remove('new-class');
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-ajax">
+  <title>Ajax</title>
+  <synonym id="syn-request-data-via-xmlhttprequest">
+    <title>Request data via XMLHttpRequest</title>
+    <code language="dart"><![CDATA[
+HttpRequest.request("/data.json").then((req) {
+  print("The contents of your data: ${req.responseText}");
+});
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-jquery">
+  <title>jQuery</title>
+  <synonym id="syn-react-to-document-finishing-loading">
+    <title>React to document finishing loading</title>
+    <code language="dart"><![CDATA[
+window.onContentLoaded.listen((e) => print('Content is loaded'));
+
+// However, main() will normally run after DOMContentLoaded
+]]></code>
+  </synonym>
+  <synonym id="syn-node-lookup">
+    <title>Node lookup</title>
+    <code language="dart"><![CDATA[
+var els = querySelectorAll('div');
+]]></code>
+  </synonym>
+  <synonym id="syn-node-creation">
+    <title>Node creation</title>
+    <code language="dart"><![CDATA[
+var pic = new Element.tag('img');
+
+pic.classes.add('avatar');
+pic.classes.toggle('main');
+
+pic.attributes['src'] = 'myPic.jpg';
+
+// Or:
+
+var pic = new ImageElement('myPic.jpg');
+pic.classes
+    ..add('avatar')
+    ..toggle('main');
+    
+// Cascades (..) allow you to chain
+// multiple method calls on an object.
+
+document.body.children.add(pic);
+]]></code>
+  </synonym>
+  <synonym id="syn-event-handling">
+    <title>Event handling</title>
+    <code language="dart"><![CDATA[
+querySelectorAll('a.person').forEach((el) {
+  el.onClick.listen((e) => print('Person clicked'));
+});
+]]></code>
+  </synonym>
+  <synonym id="syn-relative-nodes">
+    <title>Relative nodes</title>
+    <code language="dart"><![CDATA[
+var myNode = querySelector('div');
+
+var parent = myNode.parent;
+
+var next = myNode.nextNode;
+]]></code>
+  </synonym>
+  <synonym id="syn-children">
+    <title>Children</title>
+    <code language="dart"><![CDATA[
+var myNode = querySelector('div');
+
+if (!myNode.children.isEmpty) {
+  myNode.children.clear();
+}
+]]></code>
+  </synonym>
+  <synonym id="syn-clone">
+    <title>Clone</title>
+    <code language="dart"><![CDATA[
+var clonedElement = querySelector('#about').clone(true);
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-math">
+  <title>Math</title>
+  <synonym id="syn-absolute-value">
+    <title>Absolute value</title>
+    <code language="dart"><![CDATA[
+-4.abs() // == 4
+]]></code>
+  </synonym>
+  <synonym id="syn-ceiling">
+    <title>Ceiling</title>
+    <code language="dart"><![CDATA[
+4.89.ceil() // == 5
+]]></code>
+  </synonym>
+  <synonym id="syn-floor">
+    <title>Floor</title>
+    <code language="dart"><![CDATA[
+4.89.floor() // == 4
+]]></code>
+  </synonym>
+  <synonym id="syn-random">
+    <title>Random</title>
+    <code language="dart"><![CDATA[
+import 'dart:math';
+
+var rand = new Random();
+
+// Returns a random double greater than or equal to 0.0
+// and less than 1.0
+rand.nextDouble();
+
+// Returns a random boolean value.
+rand.nextBool();
+
+// Returns a positive random integer greater or equal
+// to 0 and less than 10
+rand.nextInt(10);
+]]></code>
+  </synonym>
+  <synonym id="syn-sine-and-cosine">
+    <title>Sine and Cosine</title>
+    <code language="dart"><![CDATA[
+import 'dart:math' as Math;
+Math.sin(Math.PI/2) // == 1.0
+Math.cos(Math.PI) // == -1.0
+]]></code>
+  </synonym>
+  <synonym id="syn-convert-a-string-to-a-number">
+    <title>Convert a String to a number</title>
+    <code language="dart"><![CDATA[
+int.parse('3') // == 3
+
+double.parse('3.14') // == 3.14
+
+int.parse('3px') // ERROR: throws FormatException
+int.parse('three') // ERROR: throws FormatException 
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-run-time-program-manipulation">
+  <title>Run-time program manipulation</title>
+  <synonym id="syn-eval">
+    <title>Eval</title>
+    <code language="dart"><![CDATA[
+// Dart doesn't support eval(). This is not a bug.
+]]></code>
+  </synonym>
+  <synonym id="syn-adding-a-method-to-a-class">
+    <title>Adding a method to a class</title>
+    <code language="dart"><![CDATA[
+// Dart doesn't support changing a class after
+// the program has been compiled
+]]></code>
+  </synonym>
+</theme>
+</synonyms>

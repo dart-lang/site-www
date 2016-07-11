@@ -1,0 +1,1042 @@
+<?xml version="1.0"?>
+<synonyms>
+<theme id="theme-getting-started">
+  <title>Getting started</title>
+  <synonym id="syn-code-embedding">
+    <title>Code embedding</title>
+    <code language="python"><![CDATA[
+# not supported in Python
+]]></code>
+  </synonym>
+  <synonym id="syn-entry-point">
+    <title>Entry point</title>
+    <code language="python"><![CDATA[
+# Python executes any top level code even if the file is imported.
+# If you want your code to only run from the command line, this is a common pattern:
+
+if __name__ == '__main__':
+    # This code is the entry point to the program
+]]></code>
+  </synonym>
+  <synonym id="syn-detect-language-unavailability">
+    <title>Detect language unavailability</title>
+    <code language="python"><![CDATA[
+# not supported in Python
+]]></code>
+  </synonym>
+  <synonym id="syn-printing-to-the-console">
+    <title>Printing to the console</title>
+    <code language="python"><![CDATA[
+# Python 2
+>>> print 'Level completed.'
+Level completed.
+
+# Python 2 and 3
+>>> print('Level completed.')
+Level completed.
+]]></code>
+  </synonym>
+  <synonym id="syn-modal-alerts">
+    <title>Modal alerts</title>
+    <code language="python"><![CDATA[
+# not supported in Python
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-code-modularity">
+  <title>Code modularity</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#libraries</learn-more>
+  <synonym id="syn-define-a-library">
+    <title>Define a library</title>
+    <code language="python"><![CDATA[
+# Modules in python are single files
+# Packages are folders that contain other folders,
+#   modules and a special module `__init__.py`
+# Libraries are collections of modules and packages,
+#   eg. the Python Standard Library
+]]></code>
+  </synonym>
+  <synonym id="syn-use-a-library">
+    <title>Use a library</title>
+    <code language="python"><![CDATA[
+# given a file `animals.py` with contents
+class Dog:
+    pass
+
+# import the library
+import animals
+fido = animals.Dog()
+
+# import the class only
+from animals import Dog
+fido = Dog()
+
+# import the library under a different name
+import animals as pets
+fido = pets.Dog()
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-variables">
+  <title>Variables</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#variables</learn-more>
+  <synonym id="syn-create--assign-value">
+    <title>Create + assign value</title>
+    <code language="python"><![CDATA[
+# Python variables are untyped...
+>>> myname = 'Aaron'
+]]></code>
+  </synonym>
+  <synonym id="syn-default-value">
+    <title>Default value</title>
+    <code language="python"><![CDATA[
+# no default values
+>>> myname
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'myname' is not defined
+]]></code>
+  </synonym>
+  <synonym id="syn-hoisting">
+    <title>Hoisting</title>
+    <code language="python"><![CDATA[
+# Python does not hoist variables.
+>>> def printname():
+...     print('Hello, %s' % name)
+...     name = 'Bob'
+>>> printname()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in printname
+UnboundLocalError: local variable 'name' referenced before assignment
+]]></code>
+  </synonym>
+  <synonym id="syn-final-variables">
+    <title>Final variables</title>
+    <code language="python"><![CDATA[
+# Python has no equivalent of "final"
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-collections">
+  <title>Collections</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-collections</learn-more>
+  <synonym id="syn-arrays--lists">
+    <title>Arrays / Lists</title>
+    <code language="python"><![CDATA[
+>>> a = list()
+>>> a = []
+>>> a = ['apple', 'banana', 'cherry']
+
+>>> a.append('orange')
+
+>>> len(a) == 4
+True
+# Generics are not supported in Python
+]]></code>
+  </synonym>
+  <synonym id="syn-custom-sort">
+    <title>Custom sort</title>
+    <code language="python"><![CDATA[
+>>> numbers = [42, 2.1, 5, 0.1, 391]
+>>> def compare(a, b):
+...     return cmp(a, b)
+>>> numbers.sort(compare)
+>>> numbers
+[0.10000000000000001, 2.1000000000000001, 5, 42, 391]
+]]></code>
+  </synonym>
+  <synonym id="syn-key-value-pairs">
+    <title>Key-value pairs</title>
+    <code language="python"><![CDATA[
+# Python has a mapping type for key-value pairs
+>>> periodic = {}
+>>> periodic = dict()
+]]></code>
+  </synonym>
+  <synonym id="syn-appropriate-keys">
+    <title>Appropriate keys</title>
+    <code language="python"><![CDATA[
+# A mapping object maps hashable values to arbitrary objects
+>>> periodic = {
+...   'gold' : 'AU',
+...   'silver': 'AG',
+... }
+
+# Map constructors can use keyword args, mappings or iterators
+>>> a = dict(one=1, two=2, three=3)
+>>> b = {'one': 1, 'two': 2, 'three': 3}
+>>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
+>>> d = dict([('two', 2), ('one', 1), ('three', 3)])
+>>> e = dict({'three': 3, 'one': 1, 'two': 2})
+>>> a == b == c == d == e
+True
+]]></code>
+  </synonym>
+  <synonym id="syn-accessing-values">
+    <title>Accessing values</title>
+    <code language="python"><![CDATA[
+>>> periodic['gold']
+AU
+>>> periodic.get('gold')
+AU
+>>> periodic.get('XENON', 'XE')
+XE
+# You can assign to a key whether it exists or not
+>>> periodic['gold'] = 'Glitter'
+>>> periodic['Xenon'] = 'XE'
+]]></code>
+  </synonym>
+  <synonym id="syn-sets-collections-of-unique-items">
+    <title>Sets (collections of unique items)</title>
+    <code language="python"><![CDATA[
+>>> fruits = set()
+>>> fruits.add('oranges')
+>>> fruits.add('apples')
+>>> len(fruits)
+2
+>>> fruits.add('oranges') # duplicates existing item
+>>> len(fruits)
+2
+]]></code>
+  </synonym>
+  <synonym id="syn-queues-fifo">
+    <title>Queues (FIFO)</title>
+    <code language="python"><![CDATA[
+>>> from Queue import Queue
+>>> queue = Queue()
+>>> queue.put('event:32342')
+>>> queue.put('event:49309')
+
+>>> print(queue.qsize())
+2
+>>> eventid = queue.get()
+
+>>> print(eventid == 'event:32342')
+True
+>>> print(queue.qsize())
+1
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-strings">
+  <title>Strings</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-strings-and-regular-expressions</learn-more>
+  <synonym id="syn-raw-strings">
+    <title>Raw strings</title>
+    <code language="python"><![CDATA[
+>>> rawstring = r'The following is not expanded to a tab \t'
+
+>>> escapedstring = 'The following is not expanded to a tab \\t'
+
+>>> rawstring == escapedstring
+True
+]]></code>
+  </synonym>
+  <synonym id="syn-interpolation">
+    <title>Interpolation</title>
+    <code language="python"><![CDATA[
+>>> name = 'Aaron'
+>>> greeting = 'My name is %s.' % name
+
+>>> greetingpolish = 'My Polish name would be %(name)sski.' % locals()
+
+# calculations can be performed in string interpolation
+>>> element.style.top = '%spx' % (top + 20)
+
+# Python 3 string formatting
+>>> element.style.top = '{newtop}px'.format(newtop=top + 20)
+>>> element.style.top = '{0}px'.format(top + 20)
+]]></code>
+  </synonym>
+  <synonym id="syn-concatenation">
+    <title>Concatenation</title>
+    <code language="python"><![CDATA[
+# Adjacent string literals concatenate.
+longmessage = 'This is a very long line. '
+              'It is concatenated into one string.'
+
+# Or use string concatenation.
+>>> name = 'Aaron'
+>>> greeting = 'My name is ' + name
+]]></code>
+  </synonym>
+  <synonym id="syn-substring">
+    <title>Substring</title>
+    <code language="python"><![CDATA[
+>>> 'doghouses'[3:8]
+'house'
+]]></code>
+  </synonym>
+  <synonym id="syn-replace-all-occurences">
+    <title>Replace all occurences</title>
+    <code language="python"><![CDATA[
+>>> 'doghouses'.replace('s', 'z')
+'doghouzez'
+]]></code>
+  </synonym>
+  <synonym id="syn-replace-one-occurence">
+    <title>Replace one occurence</title>
+    <code language="python"><![CDATA[
+>>> 'racecar'.replace('r', 'sp', 1)
+'spacecar'
+]]></code>
+  </synonym>
+  <synonym id="syn-multi-line-strings">
+    <title>Multi-line strings</title>
+    <code language="python"><![CDATA[
+# Python preserves all linefeeds inside
+#   tripple single or double quotes
+>>> string = '''
+... This is a string that spans
+... many lines.
+... '''
+>>> string
+'\nThis is a string that spans\nmany lines.\n'
+]]></code>
+  </synonym>
+  <synonym id="syn-split-into-an-array">
+    <title>Split into an array</title>
+    <code language="python"><![CDATA[
+>>> animals = 'dogs, cats, gophers, zebras'
+>>> animals.split(', ')
+['dogs', 'cats', 'gophers', 'zebras']
+]]></code>
+  </synonym>
+  <synonym id="syn-test-whether-a-string-starts-with-a-substring">
+    <title>Test whether a string starts with a substring</title>
+    <code language="python"><![CDATA[
+# Python string objects have a built-in startswith method
+>>> 'racecar'.startswith('race')
+True
+>>> 'racecar'.startswith('pace')
+False
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-booleans">
+  <title>Booleans</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#booleans</learn-more>
+  <synonym id="syn-if-statements">
+    <title>If statements</title>
+    <code language="python"><![CDATA[
+>>> bugnumbers = [3234,4542,944,124]
+>>> if len(bugnumbers) > 0:
+...     print('Not ready for release')
+Not ready for release
+]]></code>
+  </synonym>
+  <synonym id="syn-ternary-statements">
+    <title>Ternary statements</title>
+    <code language="python"><![CDATA[
+>>> bugnumbers = [3234,4542,944,124]
+# Python < 2.5
+>>> status = len(bugnumbers) > 0 and 'RED' or 'GREEN'
+# Python >= 2.5
+>>> status = 'RED' if len(bugnumbers) > 0 else 'GREEN'
+>>> print('The build is ' + status)
+The build is RED
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-empty-string">
+    <title>Checking for empty string</title>
+    <code language="python"><![CDATA[
+>>> emptystring = ''
+
+>>> if not(emptystring):
+...     print('Empty strings are set to False')
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-zero">
+    <title>Checking for zero</title>
+    <code language="python"><![CDATA[
+>>> zero = 0
+
+>>> if zero == 0:
+...     print('use == 0 to check zero')
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-null">
+    <title>Checking for null</title>
+    <code language="python"><![CDATA[
+>>> mynull = None
+
+# in Python 'is' is used for identity testing
+>>> if mynull is None:
+...     print('mynull is None')
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-nan">
+    <title>Checking for NaN</title>
+    <code language="python"><![CDATA[
+# Python >= 2.6
+>>> myNan = float('nan')
+>>> import math
+>>> if math.isnan(myNaN):
+...     print('use math.isnan to check if a float is NaN')
+]]></code>
+  </synonym>
+  <synonym id="syn-checking-for-undefined">
+    <title>Checking for undefined</title>
+    <code language="python"><![CDATA[
+# Python does not have a concept of undefined
+]]></code>
+  </synonym>
+  <synonym id="syn-value-and-identity-equality">
+    <title>Value and identity equality</title>
+    <code language="python"><![CDATA[
+>>> letterA = 'A'
+>>> charA = ''.join(map(unichr, [65]))
+>>> letterA == charA
+True
+
+>>> number5 = 5
+>>> char5 = '5'
+>>> number5 != char5
+True
+
+>>> class Person:
+...     def __init__(self, name, ssn):
+...         self.name = name
+...         self.ssn = ssn
+...     def __eq__(self, other):
+...         return self.ssn == other.ssn
+...
+>>> Person('Bob', '111') == Person('Robert', '111')
+True
+
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-functions">
+  <title>Functions</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#functions</learn-more>
+  <synonym id="syn-function-definition">
+    <title>Function definition</title>
+    <code language="python"><![CDATA[
+# Python does not specify the return type of a function
+def fn():
+    ...
+    return True
+]]></code>
+  </synonym>
+  <synonym id="syn-return-value">
+    <title>Return value</title>
+    <code language="python"><![CDATA[
+# Use the 'return' keyword in a function
+#   definition to return a value.
+def fn():
+    return 'Hello'
+
+>>> fn()
+'Hello'
+
+# A function with no return value returns None.
+def doNothing():
+    pass
+
+>>> x = doNothing()
+>>> type(x)
+<type 'NoneType'>
+
+# Pythons lambda ;)
+>>> fn = lambda: True
+>>> fn()
+True
+]]></code>
+  </synonym>
+  <synonym id="syn-assign-a-function-to-a-variable">
+    <title>Assign a function to a variable</title>
+    <code language="python"><![CDATA[
+>>> loudify = lambda msg: msg.upper()
+
+>>> loudify('not gonna take it anymore')
+'NOT GONNA TAKE IT ANYMORE'
+]]></code>
+  </synonym>
+  <synonym id="syn-optional-parameters">
+    <title>Optional parameters</title>
+    <code language="python"><![CDATA[
+>>> def fn(a, b, c):
+...     return c
+>>> fn(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: fn() takes exactly 3 arguments (1 given)
+>>> fn(1, 2, 3)
+3
+
+# Python functions accept optional and named parameters
+>>> def fn(a, *args, **kwargs):
+...     if len(args) > 1:
+...         return args[1]
+>>> print(fn('a'))
+None
+]]></code>
+  </synonym>
+  <synonym id="syn-default-parameters">
+    <title>Parameters with default values</title>
+    <code language="python"><![CDATA[
+>>> def send(msg, rate='First Class'):
+...     return msg + ' was sent via ' + rate
+
+
+>>> send('hello')
+'hello was sent via First Class'
+>>> send("I'm cheap", '4th class')
+"I'm cheap was sent via 4th class"
+]]></code>
+  </synonym>
+  <synonym id="syn-named-parameters">
+    <title>Named parameters</title>
+    <code language="python"><![CDATA[
+>>> def send(msg, rate='First Class'):
+...     return msg + ' was sent via ' + rate
+
+
+# you can use named parameters if the argument is optional
+>>> send("I'm cheap", rate='4th class')
+"I'm cheap was sent via 4th class"
+]]></code>
+  </synonym>
+  <synonym id="syn-variable-number-of-arguments">
+    <title>Variable number of arguments</title>
+    <code language="python"><![CDATA[
+# Python functions accept optional and named parameters
+def fn(a, *args, **kwargs):
+    pass
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-iterators">
+  <title>Iterators</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#control-flow-statements</learn-more>
+  <synonym id="syn-for-loops-for-lists">
+    <title>For loops for lists</title>
+    <code language="python"><![CDATA[
+>>> colors = ['red', 'orange', 'green']
+
+>>> for i in range(len(colors)):
+...     print(colors[i])
+red
+orange
+green
+]]></code>
+  </synonym>
+  <synonym id="syn-for-in-loops">
+    <title>For-in loops</title>
+    <code language="python"><![CDATA[
+>>> fruits = ['orange', 'apple', 'banana']
+
+# 'in' notation in Python returns the element
+#   of the list, not the index
+
+>>> for fruit in fruits:
+...     print(fruit)
+orange
+apple
+banana
+]]></code>
+  </synonym>
+  <synonym id="syn-for-loops-for-objectsmaps">
+    <title>For loops for objects/maps</title>
+    <code language="python"><![CDATA[
+>>> data = { … }
+
+>>> for key, value in data.items():
+...    print('%s, %s' % (key, value))
+
+# Python 3
+>>> for key, value in data.items():
+...    print('{key}, {value}'.format(key=key, value=value))
+]]></code>
+  </synonym>
+  <synonym id="syn-closures-and-counters-in-loops">
+    <title>Closures and counters in loops</title>
+    <code language="python"><![CDATA[
+>>> callbacks = []
+>>> for i in range(3):
+...     def fn(i=i):
+...         print i
+...     callbacks.append(fn)
+...
+>>> callbacks[0]()
+0
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-classes">
+  <title>Classes</title>
+  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#classes</learn-more>
+  <synonym id="syn-define">
+    <title>Define</title>
+    <code language="python"><![CDATA[
+class Person:
+    def __init__(self):
+        self.name = None
+    def greet(self):
+        return 'Hello, ' + self.name
+]]></code>
+  </synonym>
+  <synonym id="syn-constructor-with-parameter">
+    <title>Constructor with parameter</title>
+    <code language="python"><![CDATA[
+class Person:
+    def __init__(self, name):
+        self.name = name
+]]></code>
+  </synonym>
+  <synonym id="syn-instantiate">
+    <title>Instantiate</title>
+    <code language="python"><![CDATA[
+person = Person()
+]]></code>
+  </synonym>
+  <synonym id="syn-reflection">
+    <title>Reflection</title>
+    <code language="python"><![CDATA[
+>>> name = "Bob"
+>>> type(name)
+<type 'str'>
+]]></code>
+  </synonym>
+  <synonym id="syn-check-the-type">
+    <title>Check the type</title>
+    <code language="python"><![CDATA[
+>>> name = 'Bob'
+
+>>> isinstance(name, str)
+True
+
+>>> not(isinstance(name, int))
+True
+]]></code>
+  </synonym>
+  <synonym id="syn-subclass">
+    <title>Subclass</title>
+    <code language="python"><![CDATA[
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return 'Hello, ' + self.name
+
+
+class Employee(Person):
+    def __init__(self, name, salary):
+        Person.__init__(self, name)
+        self.salary = salary
+
+    def grantRaise(self, percent):
+        percent = percent / 100.0
+        self.salary = int(self.salary * percent)
+]]></code>
+  </synonym>
+  <synonym id="syn-operator-overloading">
+    <title>Operator &quot;overloading&quot;</title>
+    <code language="python"><![CDATA[
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, p):
+        return Point(self.x + p.x, self.y + p.y)
+
+    def __str__(self):
+        return 'x:%s, y:%s' % (self.x, self.y)
+
+if __name__ == '__main__':
+    p1 = Point(1, 1)
+    p2 = Point(2, 2)
+    p3 = p1 + p2
+    print(p3)
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-finding-elements-in-dom">
+  <title>Finding elements in DOM</title>
+  <synonym id="syn-find-one-element-by-id">
+    <title>Find one element by id</title>
+    <code language="html"><![CDATA[
+HTML DOM manipulaton can be done in Python using different
+libraries and packages, to name the most widely used ...
+
+- xml.dom.minidom
+- BeautifulSoup
+- lxml
+- html5lib
+
+Which one to choose is dependent on the mindset and
+requirements of the Python programmer.
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-class">
+    <title>Find one element by class</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-class">
+    <title>Find many elements by class</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-tag">
+    <title>Find one element by tag</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-tag">
+    <title>Find many elements by tag</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-one-element-by-name">
+    <title>Find one element by name</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-many-elements-by-name">
+    <title>Find many elements by name</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-elements-by-combination-of-above">
+    <title>Find elements by combination of above</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-iterate-over-a-list-of-elements">
+    <title>Iterate over a list of elements</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-access-the-first-child">
+    <title>Access the first child</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-find-out-whether-an-element-has-children-elements">
+    <title>Find out whether an element has children elements</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-manipulating-dom">
+  <title>Manipulating DOM</title>
+  <synonym id="syn-create-an-element">
+    <title>Create an element</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-create-an-element-and-set-its-contents">
+    <title>Create an element and set its contents</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-add-an-element-to-a-parent">
+    <title>Add an element to a parent</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-an-element-from-its-parent">
+    <title>Remove an element from its parent</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-regular-expressions">
+  <title>Regular expressions</title>
+  <synonym>
+    <code language="python"><![CDATA[
+>>> import re
+>>> email = 'test@example.com'
+>>> p = re.compile('@')
+>>> p.search(email).group()
+'@'
+]]></code>
+  </synonym>
+  <synonym>
+    <code language="python"><![CDATA[
+>>> invalidEmail = 'f@ail@example.com'
+>>> [m.group() for m in p.finditer(invalidEmail)]
+['@', '@']
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-exceptions">
+  <title>Exceptions</title>
+  <synonym id="syn-throw-an-exception">
+    <title>Throw an exception</title>
+    <code language="python"><![CDATA[
+>>> raise Exception("Intruder Alert!!")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+Exception: Intruder Alert!!
+]]></code>
+  </synonym>
+  <synonym id="syn-catch-an-exception">
+    <title>Catch an exception</title>
+    <code language="python"><![CDATA[
+>>> try:
+...     result = int('three')
+... except ValueError as e:
+...     print('Outch! Detected: %s' % e)
+... except:
+...     print('An error occured')
+... else:
+...     print('result is', result)
+... finally:
+...     print('This is run even if an exception is thrown.')
+...
+Outch! Detected: invalid literal for int() with base 10: 'three'
+This is run even if an exception is thrown.
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-event-handling">
+  <title>DOM Event handling</title>
+  <synonym id="syn-attach-an-event-handler">
+    <title>Attach an event handler</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-an-event-handler">
+    <title>Remove an event handler</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-timing">
+  <title>Timing</title>
+  <synonym id="syn-schedule-a-future-event">
+    <title>Schedule a future event</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-measure-the-execution-time-of-a-function">
+    <title>Measure the execution time of a function</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-html-attributes">
+  <title>HTML attributes</title>
+  <synonym id="syn-get-html-attribute">
+    <title>Get HTML attribute</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-set-html-attribute">
+    <title>Set HTML attribute</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-html-attribute">
+    <title>Remove HTML attribute</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-check-if-html-attribute-exists">
+    <title>Check if HTML attribute exists</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-css-classes">
+  <title>CSS classes</title>
+  <synonym id="syn-add-css-class">
+    <title>Add CSS class</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-remove-css-class">
+    <title>Remove CSS class</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-ajax">
+  <title>Ajax</title>
+  <synonym id="syn-request-data-via-xmlhttprequest">
+    <title>Request data via XMLHttpRequest</title>
+    <code language="python"><![CDATA[
+import urllib
+remote_url = 'http://example.com'
+data = urllib.urlopen(remote_url + "/data.json").read()
+print("The contents of your data: ', data)
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-jquery">
+  <title>jQuery</title>
+  <synonym id="syn-react-to-document-finishing-loading">
+    <title>React to document finishing loading</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-node-lookup">
+    <title>Node lookup</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-node-creation">
+    <title>Node creation</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-event-handling">
+    <title>Event handling</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-relative-nodes">
+    <title>Relative nodes</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-children">
+    <title>Children</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+  <synonym id="syn-clone">
+    <title>Clone</title>
+    <code language="python"><![CDATA[
+#
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-math">
+  <title>Math</title>
+  <synonym id="syn-absolute-value">
+    <title>Absolute value</title>
+    <code language="python"><![CDATA[
+# abs is a built-in method
+>>> abs(-4)
+4
+]]></code>
+  </synonym>
+  <synonym id="syn-ceiling">
+    <title>Ceiling</title>
+    <code language="python"><![CDATA[
+>>> import math
+>>> math.ceil(4.89)
+5.0
+]]></code>
+  </synonym>
+  <synonym id="syn-floor">
+    <title>Floor</title>
+    <code language="python"><![CDATA[
+>>> math.floor(4.89)
+4.0
+]]></code>
+  </synonym>
+  <synonym id="syn-random">
+    <title>Random</title>
+    <code language="python"><![CDATA[
+>>> import random
+
+>>> rand = random.Random()
+
+# Returns a random double greater than or equal to 0.0
+#   and less than 1.0
+>>> rand.random()
+0.55465114939258131
+# Returns a random boolean value.
+>>> rand.choice([False, True])
+True
+# Returns a positive random integer greater or equal
+#   to 0 and less than 10
+>>> rand.randint(0, 10)
+1
+]]></code>
+  </synonym>
+  <synonym id="syn-sine-and-cosine">
+    <title>Sine and Cosine</title>
+    <code language="python"><![CDATA[
+>>> math.sin(math.pi/2)
+1.0
+>>> math.cos(math.pi)
+-1.0
+]]></code>
+  </synonym>
+  <synonym id="syn-convert-a-string-to-a-number">
+    <title>Convert a String to a number</title>
+    <code language="python"><![CDATA[
+>>> int('3')
+3
+>>> float('3.14')
+3.1400000000000001
+>>> int('three')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'three'
+]]></code>
+  </synonym>
+</theme>
+<theme id="theme-run-time-program-manipulation">
+  <title>Run time program manipulation</title>
+  <synonym id="syn-eval">
+    <title>Eval</title>
+    <code language="python"><![CDATA[
+# Python lets you eval() expressions
+>>> x = 0
+>>> eval('x + 1')
+1
+>>> def fn(x):
+...     print x + x
+...
+>>> eval('fn(2)')
+4
+>>> eval('fn("x")')
+xx
+]]></code>
+  </synonym>
+  <synonym id="syn-adding-a-method-to-a-class">
+    <title>Adding a method to a class</title>
+    <code language="python"><![CDATA[
+# Python allows for dynamic manipulation of classes and instances
+>>> class Dog:
+...     pass
+>>> def talk(self):
+...     print 'bark!'
+>>> puppy = Dog()
+>>> Dog.talk = talk
+>>> puppy.talk()
+bark!
+]]></code>
+  </synonym>
+</theme>
+</synonyms>

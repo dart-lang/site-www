@@ -1,0 +1,26 @@
+---
+layout: default
+title: "Search Dart Sites"
+description: "The search page for dartlang.org."
+toc: false
+---
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="content">
+            <script>
+              (function() {
+                var cx = '011220921317074318178:i4mscbaxtru';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </div>
+</div>

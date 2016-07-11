@@ -1,0 +1,221 @@
+// Make all css changes here. These change will get added into the current SCSS structure where applicable.
+
+/* Add space between definitions. */
+dd {
+	margin-bottom: 15px;
+}
+
+/* Make code font more noticeable (without being obnoxious). */
+code {
+	color: #008f83
+}
+
+/* Make code-font links look like links. Should also change the hover color. */
+a code {
+    color: $default-link
+}
+
+/* Make links in page footer white, not blue. */
+#page-footer h4 a {
+	color: #fff;
+}
+
+// FRONT-PAGE RELATED
+
+$screen-lg-min: 1200px;
+$screen-md-min: 992px;
+$screen-sm-min: 768px;
+
+/* Code sample */
+
+.frontpage-highlight {
+	background: none;
+	border-bottom: 2px dotted $gray;
+	padding: 0;
+	cursor: pointer;
+
+	&:hover {
+		border-color: $default-link;
+	}
+	&.selected {
+		font-weight: bold;
+	}
+}
+
+@mixin front-page-first-section-height {
+	height: 230px;
+	@media (min-width: $screen-sm-min) {
+		height: 300px;
+	}
+	@media (min-width: $screen-lg-min) {
+		height: 250px;
+	}
+}
+
+@mixin front-page-first-section-min-height {
+	min-height: 230px;
+	@media (min-width: $screen-sm-min) {
+		min-height: 300px;
+	}
+	@media (min-width: $screen-lg-min) {
+		min-height: 250px;
+	}
+}
+
+body.homepage {
+	#code-sample {
+		pre {
+			font-size: $font-size-base * 0.8;
+			@media (min-width: $screen-sm-min) {
+				font-size: $font-size-base * 0.7;
+			}
+			@media (min-width: $screen-md-min) {
+				font-size: $font-size-base * 0.8;
+			}
+
+			@include front-page-first-section-height;
+
+			overflow: auto;
+
+			.frontpage-highlight {
+				border-bottom: 1px dotted $gray-dark;
+			}
+		}
+
+	}
+}
+
+/* Slogan */
+.frontpage-slogan-with-footnotes {
+	@include front-page-first-section-min-height;
+	position: relative;
+}
+
+.frontpage-slogan {
+	h3 {
+		text-align: left;
+		background: none;
+		font-size: $font-size-h4;
+
+		@media (min-width: $screen-sm-min) {
+			font-size: $font-size-h4 * 0.9;
+		}
+
+		@media (min-width: $screen-lg-min) {
+			font-size: $font-size-h3;
+		}
+
+		font-weight: 300;
+		line-height: 150%;
+		margin-bottom: 1em;
+	}
+
+	.frontpage-highlight {
+		padding: 0 2px;
+	}
+}
+
+$footnotes-padding: 5px;
+
+/* Footnotes */
+#code-display {
+	padding: 0;
+	margin-top: 50px;
+
+	@media (min-width: $screen-sm-min) {
+		position: absolute;
+		bottom: -$footnotes-padding;
+		left: -$footnotes-padding;
+		right: -$footnotes-padding;
+		padding: $footnotes-padding;
+	}
+
+	height: auto;
+	border: none;
+	//font-style: italic;
+	min-height: 0;
+
+	p {
+		margin: 0;
+		font-weight: 700;
+	}
+}
+
+/* Blink highlight for footnotes */
+
+.blink {
+	-webkit-animation: highlight 1s;
+	-moz-animation: highlight 1s;
+	-ms-animation: highlight 1s;
+	-o-animation: highlight 1s;
+	animation: highlight 1s;
+}
+
+@keyframes highlight {
+	0% {
+		background: $blue-light;
+	}
+	100% {
+		background: initial;
+	}
+}
+
+
+/* Create craigslist-like small cards for the front page */
+body.homepage .chip-grid-section {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.chip-grid-section__header {
+	width: 50px;
+	float: left;
+	h3 {
+		transform: rotate(-90deg);
+		transform-origin: center bottom;
+		width: 100px;
+		float: left;
+		font-size: $font-size-base;
+	}
+
+}
+
+.chip-grid {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 0;
+}
+.chip {
+	display: block;
+	position: relative;
+	width: 150px;
+	height: auto;
+	padding: 10px;
+	overflow: hidden;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	background-color: $gray-light;
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 0;
+		margin-bottom: $font-size-base / 2;
+		font-size: $font-size-base;
+	}
+	p {
+		font-size: $font-size-base * 0.8;
+		margin-bottom: 0;
+	}
+}
+
+/* Get started section in the bottom */
+body.homepage .get-started-section {
+	padding-top: 0;
+	padding-bottom: 90px;
+
+	.btn-primary {
+		color: white;
+	}
+}
