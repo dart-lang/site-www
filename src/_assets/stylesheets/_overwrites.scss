@@ -45,20 +45,20 @@ $screen-sm-min: 768px;
 @mixin front-page-first-section-height {
 	height: 230px;
 	@media (min-width: $screen-sm-min) {
-		height: 300px;
+		height: 350px;
 	}
 	@media (min-width: $screen-lg-min) {
-		height: 250px;
+		height: 300px;
 	}
 }
 
 @mixin front-page-first-section-min-height {
 	min-height: 230px;
 	@media (min-width: $screen-sm-min) {
-		min-height: 300px;
+		min-height: 350px;
 	}
 	@media (min-width: $screen-lg-min) {
-		min-height: 250px;
+		min-height: 300px;
 	}
 }
 
@@ -201,21 +201,27 @@ body.homepage .chip-grid-section {
 	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
 	h1, h2, h3, h4, h5, h6 {
 		margin-top: 0;
+		color: $default-link;
 		margin-bottom: $font-size-base / 2;
 		font-size: $font-size-base;
 	}
 	p {
+		color: $gray-base;
 		font-size: $font-size-base * 0.8;
 		margin-bottom: 0;
 	}
+}
+
+.chip:hover {
+	background-color: lighten($gray-light, 2%);
+}
+
+.btn-primary, .btn-primary:visited {
+	color: white;
 }
 
 /* Get started section in the bottom */
 body.homepage .get-started-section {
 	padding-top: 0;
 	padding-bottom: 90px;
-
-	.btn-primary {
-		color: white;
-	}
 }

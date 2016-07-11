@@ -903,20 +903,12 @@ ul.nav-list {
 // Homepage
 
 body.homepage {
-  #mainnav .mainnav__get-started {
-
-    a span {
-      background: $brand-primary;
-      padding: 5px;
-
-      color: white;
-    }
-  }
   #sidenav {
     display: none;
   }
   #page-content {
     padding: 0;
+    padding-bottom: 60px;
   }
   #code-sample {
     padding-top: 30px;
@@ -929,6 +921,7 @@ body.homepage {
    margin-top: 0;
    height: 200px;
    overflow: auto;
+   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
   }
   .card-grid {
     justify-content: center;
