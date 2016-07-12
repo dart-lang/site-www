@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /resources/dart-tips/dart-tips-ep-5
-title: "Collections In Dart - Dart Tips, Ep 5"
+title: "Collections In Dart - Dart Tips, Episode 5"
 description: "Dart comes with lists, queues, maps, and sets out of the box. Watch this episode to learn how to pick the right collection class for the job. Fun tip: did you know that the Dart language spec doesn't use the word 'array'?"
 toc: false
 ---
