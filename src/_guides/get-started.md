@@ -41,7 +41,7 @@ you'll need to install an SDK.
 | | | **Use case** | **Get started** |
 | <i class="fa fa-code" aria-hidden="true"></i> | **Web** | Create an app that runs in any modern browser | <a href="{{site.webdev}}/guides/get-started" class="btn btn-primary no-automatic-external">Dart webdev</a> |
 | <i class="fa fa-android" aria-hidden="true"></i> <i class="fa fa-apple" aria-hidden="true"></i> | **Mobile** | Create an app from a single codebase that runs on both iOS and Android | <a href="https://flutter.io/getting-started/" class="btn btn-primary no-automatic-external">Flutter</a> |
-| <i class="fa fa-qrcode" aria-hidden="true"></i> | **IoT** | Create an app for an embedded device | <a href="https://dartino.org/getting-started/" class="btn btn-primary no-automatic-external">Dartino</a> |
+| <i class="fa fa-qrcode" aria-hidden="true"></i> | **IoT** | Create an app that runs on an embedded device | <a href="https://dartino.org/getting-started/" class="btn btn-primary no-automatic-external">Dartino</a> |
 | <i class="fa fa-terminal" aria-hidden="true"></i> | **Server** | Create a command-line app or server | <a href="/tutorials/dart-vm/get-started" class="btn btn-primary">Dart VM</a> |
 {:.get-started-table}
 
