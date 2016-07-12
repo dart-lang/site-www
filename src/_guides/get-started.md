@@ -2,6 +2,7 @@
 layout: guide
 title: Get Started
 description: "A guide for getting started with Dart."
+toc: false
 ---
 
 Jump right in. Use the embedded DartPad below to play with Dart and to experience the language and core APIs.
@@ -21,25 +22,28 @@ If you want functionality from other libraries, such as dart:io,
 you'll need to install an SDK.
 
 
-## Ready for something more?
 
-<div class="image-aside get-started-flowchart">
-  <a href="images/get-started-flowchart.svg">
-    {% img 'get-started-flowchart.png' %}
-  </a><br/>
-  <em>Something for the flowchart fans out there. <a href="images/get-started-flowchart.svg">Click</a> to enlarge.</em>
+<div class="get-started-table__text" markdown="1">
+  <h2>Ready for something more?</h2>
+
+  <p>
+    This website (<a href="{{site.dartlang}}">dartlang.org</a>) contains
+    information about the fundamental Dart technologies:
+    <ul>
+      <li>the <a href="/guides/language/">language</a>, and</li>
+      <li><a href="/guides/libraries/">core libraries</a>.</li>
+    </ul>
+  </p>
+  <p>
+    But where do you go when you have a use case in mind?
+  </p>
 </div>
-
-This website ([dartlang.org]({{site.dartlang}})) contains information about the
-fundamental Dart technologies: the language and core libraries.
-
-But where do you go when you have a use case in mind?
 
 | | | **Use case** | **Get started** |
 | <i class="fa fa-code" aria-hidden="true"></i> | **Web** | Create an app that runs in any modern browser | <a href="{{site.webdev}}/guides/get-started" class="btn btn-primary no-automatic-external">Dart webdev</a> |
 | <i class="fa fa-android" aria-hidden="true"></i> <i class="fa fa-apple" aria-hidden="true"></i> | **Mobile** | Create an app from a single codebase that runs on both iOS and Android | <a href="https://flutter.io/getting-started/" class="btn btn-primary no-automatic-external">Flutter</a> |
 | <i class="fa fa-qrcode" aria-hidden="true"></i> | **IoT** | Create an app for an embedded device | <a href="https://dartino.org/getting-started/" class="btn btn-primary no-automatic-external">Dartino</a> |
-| <i class="fa fa-terminal" aria-hidden="true"></i> | **Server** | Create a command-line app or server | <a href="/tutorials/dart-vm/get-started/" class="btn btn-primary">Dart VM</a> |
+| <i class="fa fa-terminal" aria-hidden="true"></i> | **Server** | Create a command-line app or server | <a href="/tutorials/dart-vm/get-started" class="btn btn-primary">Dart VM</a> |
 {:.get-started-table}
 
 {% comment %}
@@ -50,11 +54,13 @@ For general IDE advice, see [Tools](/tools).
 
 <div style='clear:right'></div>
 
-## Books
+## Helpful flowchart
 
-<div class="image-aside">
-  <a href="/resources/books">{% img 'books-grid.jpg' %}</a>
-</div>
+<object class="get-started-flowchart" type="image/svg+xml" data="images/get-started-flowchart.svg">
+  {% img 'get-started-flowchart.png' %}
+</object>
+
+## Books
 
 If you're looking for a more guided approach to learning Dart, we recommend you
 pick up one of the many [books about Dart](/resources/books).

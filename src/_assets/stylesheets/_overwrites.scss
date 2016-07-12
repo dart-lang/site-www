@@ -231,21 +231,13 @@ body.homepage .get-started-section {
 .image-aside {
 	float: right;
 	max-width: 50%;
-	margin-left: 3%;
-}
-
-.get-started-flowchart {
-	border: 1px solid $gray-light;
-	padding: 2%;
-	margin-left: 3%;
-	max-width: 35%;
-	img {
-		margin-bottom: 20px;
-	}
+	margin-left: 5%;
 }
 
 .get-started-table {
 	margin-top: 20px;
+	float: right;
+	max-width: 55%;
 
 	td {
 		padding: 10px;
@@ -273,4 +265,9 @@ body.homepage .get-started-section {
 			width: 100%;
 		}
 	}
+}
+
+.get-started-table__text {
+	float: left;
+	width: 35%;
 }
