@@ -7,7 +7,7 @@ toc: false
 ---
 
 Here's a collection of books about Dart.
-[Let us know](https://github.com/dart-lang/www.dartlang.org/issues)
+[Let us know](https://github.com/dart-lang/site-www/issues)
 if you find another book that we should add.
 
 {% for book in site.data.books %}
