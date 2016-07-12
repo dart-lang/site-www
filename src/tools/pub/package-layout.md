@@ -92,13 +92,13 @@ enchilada/
   pubspec.lock
 {% endprettify %}
 
-Every package has a [_pubspec_](pubspec.html), a file named
+Every package has a [_pubspec_](pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
 package.
 
-Once you've run [`pub get`](cmd/pub-get.html),
-[`pub upgrade`](cmd/pub-upgrade.html), or
-[`pub downgrade`](cmd/pub-downgrade.html) on the package, you will also have a
+Once you've run [`pub get`](cmd/pub-get),
+[`pub upgrade`](cmd/pub-upgrade), or
+[`pub downgrade`](cmd/pub-downgrade) on the package, you will also have a
 **lockfile**, named `pubspec.lock`. If your package is an [application
 package](glossary#application-package), this will be checked into source
 control. Otherwise, it won't be.
@@ -117,7 +117,7 @@ The open source community has a few other files that commonly appear at the top
 level of a project: `LICENSE`, `AUTHORS`, etc. If you use any of those, they can
 go in the top level of the package too.
 
-For more information, see [Pubspec Format](pubspec.html).
+For more information, see [Pubspec Format](pubspec).
 
 ## README
 
@@ -219,8 +219,8 @@ For more information on library packages, see
 
 Dart scripts placed inside of the `bin` directory are public. Any package
 that depends on your package can run scripts from your package's `bin`
-directory using [`pub run`](cmd/pub-run.html). <em>Any</em> package can run scripts
-from your package's bin directory using [`pub global`](cmd/pub-global.html).
+directory using [`pub run`](cmd/pub-run). <em>Any</em> package can run scripts
+from your package's bin directory using [`pub global`](cmd/pub-global).
 
 If you intend for your package to be depended on,
 and you want your scripts to be private to your package, place them
@@ -299,7 +299,7 @@ it to something deployable using [`pub build`]({{site.webdev}}/tools/pub/pub-bui
 copies over any referenced assets that your package depends on.
 
 For more information about using assets, see
-[Pub Assets and Transformers](assets-and-transformers.html).
+[Pub Assets and Transformers](assets-and-transformers).
 
 ## Implementation files
 
@@ -332,7 +332,7 @@ import 'package:enchilada/src/beans.dart';
 {% endprettify %}
 
 The name you use here (in this case `enchilada`) is the name you specify for
-your package in its [pubspec](pubspec.html).
+your package in its [pubspec](pubspec).
 
 ## Web files
 
@@ -373,7 +373,7 @@ invokes `pub.dart`.
 
 If your package defines code like this, put it in a directory named `bin`.
 You can run that script from anywhere on the command line, if you set it up
-using [pub global](cmd/pub-global.html#running-a-script-from-your-path).
+using [pub global](cmd/pub-global#running-a-script-from-your-path).
 
 ## Tests and benchmarks
 

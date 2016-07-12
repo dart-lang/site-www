@@ -10,7 +10,7 @@ This document explains a bit about the history of versioning and pub's
 approach to it.
 Consider this to be advanced information. If you want a better picture of _why_
 pub was designed the way it was, read on. If you just want to _use_ pub,
-the [other docs](index.html) will serve you better.
+the [other docs](/tools/pub/) will serve you better.
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the
@@ -162,7 +162,7 @@ dependencies:
 This example uses _caret syntax_ to express a range of versions.
 The string `^2.3.5` means "the range of all versions from 2.3.5
 to 3.0.0, not including 3.0.0." For more information, see
-[Caret syntax](dependencies.html#caret-syntax).
+[Caret syntax](dependencies#caret-syntax).
 </aside>
 
 To make this work, then, we need to come up with that set of promises.

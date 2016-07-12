@@ -96,7 +96,7 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=15d5ef986238c97dbc14&horizonta
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Click run ( {% img 'run.png' %} )
+Click run ( {% img 'red-run.png' %} )
 to see the result in the **Console output**.
 </aside>
 
@@ -167,7 +167,7 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=38feef09be9b1e7b5136&horizonta
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Click run ( {% img 'run.png' %} )
+Click run ( {% img 'red-run.png' %} )
 to see the result in the **Console output**.
 </aside>
 
@@ -210,7 +210,7 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=da80b1e7eed75db53ef3&horizonta
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Click run ( {% img 'run.png' %} )
+Click run ( {% img 'red-run.png' %} )
 to see the result in the **Console output**.
 </aside>
 

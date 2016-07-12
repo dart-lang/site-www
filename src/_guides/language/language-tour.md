@@ -767,7 +767,7 @@ units. Use the `runes` property to get the runes of a string.
 
 The following example illustrates the relationship between runes,
 16-bit code units, and 32-bit code points.
-Click the run button ( {% img 'run.png' %} )
+Click the run button ( {% img 'red-run.png' %} )
 to see runes in action.
 
 <!-- ch02/runes.dart -->
@@ -984,7 +984,7 @@ The following example defines a function, `doStuff()`,
 that specifies a default list for the `list`
 parameter and a default map for the `gifts` parameter.
 The function is called three times with different values.
-Click the run button ( {% img 'run.png' %} )
+Click the run button ( {% img 'red-run.png' %} )
 to see list and map default values in action.
 
 <!-- ch02/list_map_default_function_parameters.dart -->
@@ -2327,7 +2327,7 @@ before the constructor body (if any).
 
 In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
-Click the run button ( {% img 'run.png' %} ) to execute the code.
+Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
 <!-- ch02/op_as.dart -->
 {% comment %}
@@ -2416,7 +2416,7 @@ The right-hand side of an initializer does not have access to `this`.
 
 Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
-Click the run button ( {% img 'run.png' %} ) to execute the code.
+Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
 <!-- ch02/initializer_list_final.dart -->
 {% comment %}
@@ -3589,7 +3589,7 @@ implement the `call()` method.
 In the following example, the `WannabeFunction` class defines
 a call() function that takes three strings and concatenates them,
 separating each with a space, and appending an exclamation.
-Click the run button ( {% img 'run.png' %} ) to execute the code.
+Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
 <!-- ch02/callable_function.dart -->
 {% comment %}

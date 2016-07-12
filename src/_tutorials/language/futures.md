@@ -94,7 +94,7 @@ code and doesn't use the Future API.
 
 The following app simulates reading the news by using async and await
 to read the contents of a file on www.dartlang.org.
-Click run ( {% img 'run.png' %} ) to start the app.
+Click run ( {% img 'red-run.png' %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/Sfshaza/c0e8f5c38489ddeccb5a
@@ -235,7 +235,7 @@ This callback fires when the Future completes.
 
 The following app simulates reading the news by using the Future API
 to read the contents of a file on www.dartlang.org.
-Click run ( {% img 'run.png' %} ) to start the app.
+Click run ( {% img 'red-run.png' %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/Sfshaza/ba1b258f810e34231a62

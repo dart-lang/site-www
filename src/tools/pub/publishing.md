@@ -14,14 +14,14 @@ command.
 **Note:**
 To publish to a location other than `pub.dartlang.org`,
 or to prevent publication anywhere, use the `publish_to` field,
-as defined in the [pubspec](pubspec.html).
+as defined in the [pubspec](pubspec).
 </aside>
 
 ## Preparing to publish
 
 When publishing a package, it's important to follow the [pubspec
-format](/tools/pub/pubspec.html) and
-[package layout conventions](/tools/pub/package-layout.html).
+format](/tools/pub/pubspec) and
+[package layout conventions](/tools/pub/package-layout).
 Some of these are required in order for others to be able to use your package.
 Others are suggestions to help make it easier for users to understand and work
 with your package. In both cases, pub tries to help you by pointing out what
@@ -72,8 +72,8 @@ $ pub publish --dry-run
 {% endprettify %}
 
 Pub will check to make sure that your package follows the
-[pubspec format](pubspec.html) and
-[package layout conventions](package-layout.html), and then upload your package
+[pubspec format](pubspec) and
+[package layout conventions](package-layout), and then upload your package
 to [pub.dartlang.org](https://pub.dartlang.org). Pub will also show you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
@@ -141,5 +141,5 @@ upgrade yet.
 
 For more information, see the reference pages for:
 
-* [`pub publish`](cmd/pub-lish.html)
-* [`pub uploader`](cmd/pub-uploader.html)
+* [`pub publish`](cmd/pub-lish)
+* [`pub uploader`](cmd/pub-uploader)
