@@ -45,7 +45,7 @@ Level completed.
 </theme>
 <theme id="theme-code-modularity">
   <title>Code modularity</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#libraries</learn-more>
+  <learn-more>/guides/language/language-tour#libraries-and-visibility</learn-more>
   <synonym id="syn-define-a-library">
     <title>Define a library</title>
     <code language="python"><![CDATA[
@@ -79,7 +79,7 @@ fido = pets.Dog()
 </theme>
 <theme id="theme-variables">
   <title>Variables</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#variables</learn-more>
+  <learn-more>/guides/language/language-tour#variables</learn-more>
   <synonym id="syn-create--assign-value">
     <title>Create + assign value</title>
     <code language="python"><![CDATA[
@@ -120,7 +120,7 @@ UnboundLocalError: local variable 'name' referenced before assignment
 </theme>
 <theme id="theme-collections">
   <title>Collections</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-collections</learn-more>
+  <learn-more>/guides/libraries/library-tour#collections</learn-more>
   <synonym id="syn-arrays--lists">
     <title>Arrays / Lists</title>
     <code language="python"><![CDATA[
@@ -221,7 +221,7 @@ True
 </theme>
 <theme id="theme-strings">
   <title>Strings</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch03.html#ch03-strings-and-regular-expressions</learn-more>
+  <learn-more>/guides/libraries/library-tour#strings-and-regular-expressions</learn-more>
   <synonym id="syn-raw-strings">
     <title>Raw strings</title>
     <code language="python"><![CDATA[
@@ -316,7 +316,7 @@ False
 </theme>
 <theme id="theme-booleans">
   <title>Booleans</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#booleans</learn-more>
+  <learn-more>/guides/language/language-tour#booleans</learn-more>
   <synonym id="syn-if-statements">
     <title>If statements</title>
     <code language="python"><![CDATA[
@@ -410,7 +410,7 @@ True
 </theme>
 <theme id="theme-functions">
   <title>Functions</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#functions</learn-more>
+  <learn-more>/guides/language/language-tour#functions</learn-more>
   <synonym id="syn-function-definition">
     <title>Function definition</title>
     <code language="python"><![CDATA[
@@ -510,7 +510,7 @@ def fn(a, *args, **kwargs):
 </theme>
 <theme id="theme-iterators">
   <title>Iterators</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#control-flow-statements</learn-more>
+  <learn-more>/guides/language/language-tour#control-flow-statements</learn-more>
   <synonym id="syn-for-loops-for-lists">
     <title>For loops for lists</title>
     <code language="python"><![CDATA[
@@ -567,7 +567,7 @@ banana
 </theme>
 <theme id="theme-classes">
   <title>Classes</title>
-  <learn-more>https://www.dartlang.org/docs/dart-up-and-running/ch02.html#classes</learn-more>
+  <learn-more>/guides/language/language-tour#classes</learn-more>
   <synonym id="syn-define">
     <title>Define</title>
     <code language="python"><![CDATA[

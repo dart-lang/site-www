@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /resources/dart-tips/dart-tips-ep-6
-title: "Functions Are Fun, Pt 1 - Dart Tips, Ep 6"
+title: "Functions Are Fun, Part 1 - Dart Tips, Episode 6"
 description: "Functions are the basic building blocks for any app. Dart supports top-level functions, optional parameters, default parameter values, and more. Watch this episode to learn about the basics of functions in Dart."
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /resources/dart-tips/dart-tips-ep-9
-title: "Exceptions - Dart Tips, Ep 9"
+title: "Exceptions - Dart Tips, Episode 9"
 description: "Learn how to gracefully handle exceptions and errors in Dart. Don't get caught off guard the next time you run into an error, learn more about try, catch, finally, and throw."
 toc: false
 ---

@@ -29,7 +29,7 @@ Dart language and library topics.
   </div>
   <div class="col-sm-10">
     <div class="content">
-      <h3><a href="{{ link }}">Ep. {{ episode.num }}: {{ episode.subtitle }}</a></h3>
+      <h3><a href="{{ link }}">Episode {{ episode.num }}: {{ episode.subtitle }}</a></h3>
       <p>{{ episode.description }}</p>
       <p>{{ episode.pubdate }}</p>
     </div>
