@@ -119,10 +119,10 @@ Pub assumes that the files and directories in a Dart application are
 laid out in a particular way. The following diagram shows some of the
 conventions used by pub. Not all of these directories are required.
 
-<img class="scale-img-max" src="images/pub-directory-structure.png"
+<img class="scale-img-max" src="/tutorials/dart-vm/images/pub-directory-structure.png"
 alt="Pub's directory structure including bin, lib, build directories, and pubspec">
 
-![ArgsParser parses command-line arguments](images/commandlineargs.png)
+![ArgsParser parses command-line arguments](/tutorials/dart-vm/images/commandlineargs.png)
 
 
 `bin`
@@ -149,7 +149,7 @@ but they can also be scripts.
 
 The Dart VM runs Dart code directly without intermediate compilation.
 
-<img class="scale-img-max" src="images/dartvm-cmd-line.png"
+<img class="scale-img-max" src="/tutorials/dart-vm/images/dartvm-cmd-line.png"
      alt="Run a command-line application without compilation">
 
 ## Create a command-line app {#create-cmd-line}
@@ -279,14 +279,14 @@ a top-level function defined in dart:core.
 A function declaration
 has two parts: a _signature_ and a _body_.
 
-<img class="scale-img-max" src="images/function-parts.png"
+<img class="scale-img-max" src="/tutorials/dart-vm/images/function-parts.png"
      alt="Two parts of a function, the signature and the body"/>
 
 The signature sets the function name,
 the data type of its return value,
 and the number and type of its input arguments.
 
-<img class="scale-img-max" src="images/signature-parts.png"
+<img class="scale-img-max" src="/tutorials/dart-vm/images/signature-parts.png"
      alt="The parts of a function signature"/>
 
 The body is the code that defines the function's behavior.

@@ -19,7 +19,8 @@ and find more information when you need it.
 **Note:**
 WebStorm comes with the Dart plugin pre-installed.
 For details on using WebStorm,
-read the [WebStorm page]({{site.webdev}}/tools/webstorm).
+read the [WebStorm page]({{site.webdev}}/tools/webstorm)
+on [Dart webdev]({{site.webdev}}).
 </aside>
 
 ## Getting started
@@ -85,7 +86,6 @@ Here's one way to configure Dart support:
     <li> From the Welcome screen, click <b>Create New Project</b>. </li>
     <li> In the next dialog, click <b>Dart</b>.</li>
   </ol>
-  </li>
 </li>
 <br>
 

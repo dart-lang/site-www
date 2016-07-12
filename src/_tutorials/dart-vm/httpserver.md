@@ -139,7 +139,7 @@ listening on localhost, port 4040
 Then, in any browser, enter localhost:4040.
 The browser displays `Hello, world!`
 
-![The response from the hello world server.](images/hello_world_response.png)
+![The response from the hello world server.](/tutorials/dart-vm/images/hello_world_response.png)
   </li>
 </ul>
 
@@ -299,7 +299,7 @@ I'm thinking of a number: 6
 
   Choose a number and press the **Guess** button.
 
-![The user makes a guess using a pull-down menu.](images/guessing.png)
+![The user makes a guess using a pull-down menu.](/tutorials/dart-vm/images/guessing.png)
 
   </li>
 </ol>
@@ -714,7 +714,7 @@ If the request from the client contains a large amount of
 data, the data might arrive in multiple chunks. You can use the
 join() method in Stream to concatenate the string values of those chunks.
 
-![The flow of control in a server processing requests.](images/flowchart.png)
+![The flow of control in a server processing requests.](/tutorials/dart-vm/images/flowchart.png)
 
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
@@ -845,7 +845,7 @@ $ dart mini_file_server.dart
   <li markdown="1">
 Type localhost:4044 into the browser. The server displays an HTML file:
 
-![The index.html file served by mini_file_server.dart.](images/index_file.png)
+![The index.html file served by mini_file_server.dart.](/tutorials/dart-vm/images/index_file.png)
 
   </li>
 </ol>
@@ -913,7 +913,7 @@ $ dart basic_file_server.dart
 Type localhost:4046 into the browser.
 The server displays the same index.html file as the previous:
 
-![The index.html file served by basic_file_server.dart.](images/index_file_4046.png)
+![The index.html file served by basic_file_server.dart.](/tutorials/dart-vm/images/index_file_4046.png)
 
   </li>
 </ol>

@@ -75,7 +75,7 @@ The following reference pages cover each command in detail:
 * [`pub uploader`](cmd/pub-uploader)
 
 In addition to these commands, there are two pub commands specific
-to web development. See [webdev]({{site.webdev}}/tools) for more
+to web development. See [Dart webdev]({{site.webdev}}/tools) for more
 information.
 
 ## Writing transformers
