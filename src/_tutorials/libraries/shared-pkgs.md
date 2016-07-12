@@ -38,7 +38,7 @@ in a well-built package.
 This tutorial uses the vector_math package. You can get this package,
 and many others, from [pub.dartlang.org](https://pub.dartlang.org/).
 
-## About the pubspec.yaml file {#about-pubspec}
+## About the pubspec.yaml file
 
 To use an external package,
 your application must itself be a package.
@@ -99,7 +99,7 @@ Because all web apps depend on the browser package,
 `browser` is listed under **dependencies**.
 
 
-## Name the package dependencies {#name-dependencies}
+## Name the package dependencies
 
 To use an external library package,
 you need to add the package to your
@@ -160,7 +160,7 @@ To use one of the packages from that site,
 you can specify it by its simple name,
 as we have done here.
 
-## Install the package dependencies {#install-dependencies}
+## Install the package dependencies
 
 If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
@@ -198,7 +198,7 @@ This helps to provide a stable development environment.
 Later you can modify the version constraints and use `pub upgrade`
 to update to new versions as needed.
 
-## What did you get (and not get)? {#about-packages}
+## What did you get (and not get)?
 
 Besides the Dart libraries,
 the vector_math package has other resources that might be useful to you
@@ -219,7 +219,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-md-3">
-    <img class="scale-img-max" src="../images/libraries-folder.png"
+    <img class="scale-img-max" src="/tutorials/images/libraries-folder.png"
          alt="Dart libraries directory"/>
     </div>
     <div class="col-md-7">
@@ -231,7 +231,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-md-3">
-    <img class="scale-img-max" src="../images/housekeeping-files.png"
+    <img class="scale-img-max" src="/tutorials/images/housekeeping-files.png"
          alt="Housekeeping files"/>
     </div>
     <div class="col-md-7">
@@ -248,7 +248,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
   <div class="row">
     <div class="col-md-3">
-    <img class="scale-img-max" src="../images/other-folders.png"
+    <img class="scale-img-max" src="/tutorials/images/other-folders.png"
          alt="Document, scripts, tests, and other resources"/>
     </div>
     <div class="col-md-7">
@@ -264,7 +264,7 @@ only one, `lib`, was installed when you ran pub get.
   <hr>
 </div>
 
-## Import libraries from a package {#use-package}
+## Import libraries from a package
 
 Now that you've installed the package,
 you can import its libraries and use them in your Dart file.
