@@ -23,16 +23,16 @@ you'll need to install an SDK.
 
 
 
-<div class="get-started-table__text" markdown="1">
+<div class="get-started-table__text">
   <h2>Ready for something more?</h2>
   <p>
     This website (<a href="/">www.dartlang.org</a>) contains
     information about the fundamental Dart technologies:
-    <ul>
-      <li>the <a href="/guides/language/">language</a>, and</li>
-      <li><a href="/guides/libraries/">core libraries</a>.</li>
-    </ul>
   </p>
+  <ul>
+    <li>the <a href="/guides/language/">language</a>, and</li>
+    <li><a href="/guides/libraries/">core libraries</a>.</li>
+  </ul>
   <p>
     But where do you go when you have a use case in mind?
   </p>
