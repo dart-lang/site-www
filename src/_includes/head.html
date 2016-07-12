@@ -34,8 +34,10 @@
       JavaScript and jQuery are doing just fine. Dart is here for application
       programming, not page scripting.
    -->
+
   {% javascript main %}
   {% for js in page.js %}
   <script {% if js.defer %}defer{% endif %} src="{{ js.url }}"></script>
   {% endfor %}
+  {% include analytics.html %}
 </head>
