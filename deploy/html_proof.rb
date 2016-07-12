@@ -21,6 +21,8 @@ begin
   errors = 0
   $LOCALHOST_NEW_URLS.each do |url|
     uri = URI(url)
+    # Show the jekyll port (instead of the firebase one) for easier
+    # click-throughs.
     puts "- #{url.sub(":#{$PORT}", ":4000")}"
     source = Net::HTTP.get(uri)
     file = Tempfile.new([uri.path.gsub(/\//, '___') + '_____', '.html'])
@@ -32,7 +34,14 @@ begin
 
     begin
       HTMLProofer.check_file(file.path, {
-        :url_swap => { /^\/(.*)/ => "#{$LOCALHOST}\\1" },
+        :url_swap => {
+            # HTMLProofer expects files in the same directory.
+            # Swap all "/..." (absolute) links to "http://localhost.../..."
+            /^\/(.*)/ => "#{$LOCALHOST}\\1",
+            # Swap all relative "path/to/subdir" (relative) links to
+            # "{{current_uri}}/path/to/subdir"
+            /^(?!(#|https?:\/\/))(.+)/ => "#{uri}/\\1"
+        },
         :check_external_hash => true,
         # :check_favicon => true,
         :check_html => true,

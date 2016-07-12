@@ -19,7 +19,7 @@ begin
   HTMLProofer.check_links($LOCALHOST_URLS, {
     :log_level => :warn
   }).run
-  puts "Done"
+  puts "SUCCESS!"
 ensure
   puts "Killing firebase server on localhost"
   Process.kill(:SIGINT, pid)
