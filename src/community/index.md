@@ -10,12 +10,12 @@ Track the Dart project and join the conversation in a variety of ways.
 Also see:
 
 * [Community and Support]({{site.webdev}}/community) on Dart webdev
-* [Dart Academy](https://dart.academy/) contains a collection of tutorials
-  and articles written by the Dart community.
+* [Dart Academy](https://dart.academy/), which contains a collection of tutorials
+  and articles written by the Dart community
 
 ## Join the conversation
 
-Dart is an open source project, and we look forward to hearing from you.
+Dart is an open-source project, and we look forward to hearing from you.
 
 #### General how-to questions
 
@@ -90,4 +90,4 @@ Our wonderful community has provided these
 (unofficial, unsupported) resources.
 
 * [Resources for Chinese developers](http://www.dartlang.cc/support/for-chinese.html)
-* [dartdocs.org documentation for Pub packages](http://www.dartdocs.org)
+* [dartdocs.org: documentation for pub packages](http://www.dartdocs.org)

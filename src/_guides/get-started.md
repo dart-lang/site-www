@@ -6,8 +6,9 @@ toc: false
 ---
 
 Jump right in. Use the embedded DartPad below to play with Dart and to experience the language and core APIs.
-It's a quick and easy way to become familiar with the language features.
-You can also [open DartPad in a new window](/tools/dartpad).
+[DartPad](/tools/dartpad) is a quick and easy way to
+become familiar with Dart language features.
+You can also open <a href="http://dartpad.dartlang.org" target="_blank">DartPad in a new window</a>.
 
 <iframe
 src="{{site.custom.dartpad.embed-dart-prefix}}?horizontalRatio=70&verticalRatio=65"
@@ -16,11 +17,10 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?horizontalRatio=70&verticalRatio=
     style="border: 1px solid #ccc;">
 </iframe>
 
-Note that DartPad does not allow you to import libraries
-except for a few core ones.
-If you want functionality from other libraries, such as dart:io,
+Note that DartPad supports only a few core libraries.
+If you want to use other libraries,
+such as dart:io or libraries from packages,
 you'll need to install an SDK.
-
 
 
 <div class="get-started-table__text">
@@ -30,8 +30,8 @@ you'll need to install an SDK.
     information about the fundamental Dart technologies:
   </p>
   <ul>
-    <li>the <a href="/guides/language/">language</a>, and</li>
-    <li><a href="/guides/libraries/">core libraries</a>.</li>
+    <li>the <a href="/guides/language/">language</a></li>
+    <li><a href="/guides/libraries/">core libraries</a></li>
   </ul>
   <p>
     But where do you go when you have a use case in mind?
@@ -77,7 +77,7 @@ Check out the Dart [samples](/samples/).
 ## Get help
 
 There are a number of communities and platforms where you can ask,
-or answer, Dart related questions. For a list, see
+or answer, Dart-related questions. For a list, see
 [Community and Support](/community/).
 
 <div style='clear:right'></div>
