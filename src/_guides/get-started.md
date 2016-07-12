@@ -25,9 +25,8 @@ you'll need to install an SDK.
 
 <div class="get-started-table__text" markdown="1">
   <h2>Ready for something more?</h2>
-
   <p>
-    This website (<a href="{{site.dartlang}}">dartlang.org</a>) contains
+    This website (<a href="/">www.dartlang.org</a>) contains
     information about the fundamental Dart technologies:
     <ul>
       <li>the <a href="/guides/language/">language</a>, and</li>
