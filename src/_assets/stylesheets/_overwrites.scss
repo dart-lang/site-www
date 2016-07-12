@@ -225,3 +225,52 @@ body.homepage .get-started-section {
 	padding-top: 0;
 	padding-bottom: 90px;
 }
+
+/* Get started page */
+
+.image-aside {
+	float: right;
+	max-width: 50%;
+	margin-left: 3%;
+}
+
+.get-started-flowchart {
+	border: 1px solid $gray-light;
+	padding: 2%;
+	margin-left: 3%;
+	max-width: 35%;
+	img {
+		margin-bottom: 20px;
+	}
+}
+
+.get-started-table {
+	margin-top: 20px;
+
+	td {
+		padding: 10px;
+		padding-left: 0;
+
+		border-bottom: 1px solid $gray-light;
+	}
+
+	tr:last-child td {
+		border-bottom: none;
+	}
+
+	td:first-child {
+		width: 3em;
+	}
+
+	td:nth-child(2) {
+		width: 20%;
+	}
+
+	td:last-child {
+		text-align: right;
+		padding-left: 10px;
+		a {
+			width: 100%;
+		}
+	}
+}
