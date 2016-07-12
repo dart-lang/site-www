@@ -55,6 +55,12 @@ For general IDE advice, see [Tools](/tools).
 
 ## Helpful flowchart
 
+{% comment %}
+The original Lucid Chart is here:
+https://www.lucidchart.com/documents/edit/0f170001-d5f4-4b17-8cdc-72d5575f2e78?shared=true&#
+Created by filiph, the Lucid app is available to Googlers in mystuff.
+{% endcomment %}
+
 <object class="get-started-flowchart" type="image/svg+xml" data="images/get-started-flowchart.svg">
   {% img 'get-started-flowchart.png' %}
 </object>
