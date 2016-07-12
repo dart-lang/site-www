@@ -30,7 +30,7 @@ you'll need to install an SDK.
   <em>Something for the flowchart fans out there. <a href="images/get-started-flowchart.svg">Click</a> to enlarge.</em>
 </div>
 
-This website ([dartlang.org]({{site.dartlang}})) contains information about the
+This website ([www.dartlang.org](/)) contains information about the
 fundamental Dart technologies: the language and core libraries.
 
 But where do you go when you have a use case in mind?
