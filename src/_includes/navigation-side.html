@@ -3,6 +3,13 @@
     <a href="/" class="brand" title="{{ site.title }}">
       <img src="{% asset_path 'logo.svg' %}" alt="{{ site.title }}">
     </a>
+
+    <div class="sidenav__search">
+      <p>
+        <a href="/search">Search <i class="icon icon-search"></i></a>
+      </p>
+    </div>
+
     {% assign linklist = site.data.side-nav %}
     {% include linklist.html %}
   </div>
