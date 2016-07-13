@@ -289,18 +289,8 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/dart2js-transformer.html",
-        "destination": "/tools/pub/dart2js-transformer",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/dependencies.html",
         "destination": "/tools/pub/dependencies",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/faq.html",
-        "destination": "/tools/pub/faq",
         "type": 301
       },
       {
@@ -350,7 +340,7 @@
       },
       {
         "source": "/tools/pub/cmd/pub-build.html",
-        "destination": "/tools/pub/cmd/pub-build",
+        "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
         "type": 301
       },
       {
@@ -390,7 +380,7 @@
       },
       {
         "source": "/tools/pub/cmd/pub-serve.html",
-        "destination": "/tools/pub/cmd/pub-serve",
+        "destination": "https://webdev.dartlang.org/tools/pub/pub-serve",
         "type": 301
       },
       {

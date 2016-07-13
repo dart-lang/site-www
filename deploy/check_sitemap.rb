@@ -1,13 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'html-proofer'
-
 require_relative 'urls/get_all'
 
 puts "===== Checking inbound links and redirects through HTMLProofer ====="
-
-# TODO(filiph) remove when not needed
-$LOCALHOST_URLS.delete("#{$LOCALHOST}events/2016/summit/index.html")
 
 puts "Spawning firebase server on localhost"
 pid = spawn("firebase serve --port #{$PORT}", :out => "/dev/null")
@@ -16,10 +11,19 @@ sleep 5
 
 begin
   puts "Checking links"
-  HTMLProofer.check_links($LOCALHOST_URLS, {
-    :log_level => :warn
-  }).run
-  puts "SUCCESS!"
+  unreachable_urls = []
+  $LOCALHOST_URLS.each do |url|
+    reachable = system("./deploy/check_url.sh #{url}")
+    unreachable_urls.push(url) unless reachable == true
+  end
+  puts "Done"
+
+  if unreachable_urls.any?
+    puts "SOME URLS FAILED"
+    puts unreachable_urls
+  else
+    puts "SUCCESS"
+  end
 ensure
   puts "Killing firebase server on localhost"
   Process.kill(:SIGINT, pid)

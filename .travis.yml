@@ -17,12 +17,12 @@ before_script:
   # - chmod +x ./deploy/runtests.sh
   - chmod +x ./deploy/cibuild
   - chmod +x ./deploy/deploy-firebase.sh
+  - chmod +x ./deploy/check_url.sh
   - chmod +x ./deploy/html_proof.rb
   - chmod +x ./deploy/check_sitemap.rb
 
 script:
   - ./deploy/cibuild
-  # - ./deploy/check_sitemap.rb
 
 # branch whitelist
 # branches:
@@ -47,6 +47,7 @@ deploy:
 
 after_deploy:
   # Just FYI test. Won't fail the build if it has errors.
+  - ./deploy/check_sitemap.rb
   - ./deploy/html_proof.rb
   # # Checks for bad HTML, broken links, and forces build to fail if it fails.
   # # (By default, Travis doesn't fail builds after deployment.)
