@@ -226,6 +226,15 @@ body.homepage .get-started-section {
 	padding-bottom: 90px;
 }
 
+// Core goals
+
+.core-goals__first {
+	margin-top: 0;
+	@media (min-width: $screen-sm-min) {
+		margin-top: 40px + 25px;  // Core values headline height + bottom margin
+	}
+}
+
 /* Get started page */
 
 .image-aside {
@@ -287,5 +296,5 @@ body.homepage .get-started-section {
 		column-count: 3;
 	}
 
-	
+
 }
