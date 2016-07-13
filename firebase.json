@@ -349,68 +349,83 @@
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-build.html",
+        "source": "/tools/pub/cmd/pub-build.html",
         "destination": "/tools/pub/cmd/pub-build",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-cache.html",
+        "source": "/tools/pub/cmd/pub-cache.html",
         "destination": "/tools/pub/cmd/pub-cache",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-deps.html",
+        "source": "/tools/pub/cmd/pub-deps.html",
         "destination": "/tools/pub/cmd/pub-deps",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-downgrade.html",
+        "source": "/tools/pub/cmd/pub-downgrade.html",
         "destination": "/tools/pub/cmd/pub-downgrade",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-get.html",
+        "source": "/tools/pub/cmd/pub-get.html",
         "destination": "/tools/pub/cmd/pub-get",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-global.html",
+        "source": "/tools/pub/cmd/pub-global.html",
         "destination": "/tools/pub/cmd/pub-global",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-lish.html",
+        "source": "/tools/pub/cmd/pub-lish.html",
         "destination": "/tools/pub/cmd/pub-lish",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-run.html",
+        "source": "/tools/pub/cmd/pub-run.html",
         "destination": "/tools/pub/cmd/pub-run",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-serve.html",
+        "source": "/tools/pub/cmd/pub-serve.html",
         "destination": "/tools/pub/cmd/pub-serve",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-upgrade.html",
+        "source": "/tools/pub/cmd/pub-upgrade.html",
         "destination": "/tools/pub/cmd/pub-upgrade",
         "type": 301
       },
       {
-        "source": "tools/pub/cmd/pub-uploader.html",
+        "source": "/tools/pub/cmd/pub-uploader.html",
         "destination": "/tools/pub/cmd/pub-uploader",
         "type": 301
       },
       {
-        "source": "tools/pub/transformers/aggregate.html",
+        "source": "/tools/pub/cmd/**",
+        "destination": "/tools/pub/cmd",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers/aggregate.html",
         "destination": "/tools/pub/transformers/aggregate",
         "type": 301
       },
       {
-        "source": "tools/pub/transformers/lazy-transformer.html",
+        "source": "/tools/pub/transformers/lazy-transformer.html",
         "destination": "/tools/pub/transformers/lazy-transformer",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers/**",
+        "destination": "/tools/pub/transformers",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/**",
+        "destination": "/tools/pub",
         "type": 301
       },
       {
@@ -494,7 +509,7 @@
         "type": 301
       },
       {
-        "source": "docs/spec/examples/lazyloader/index.html",
+        "source": "/docs/spec/examples/lazyloader/index.html",
         "destination": "/guides/language/spec",
         "type": 301
       },
@@ -635,7 +650,7 @@
       },
       {
         "source": "/events/2016/**",
-        "destination": "https://events-dartlang-org.firebaseapp.com/2016",
+        "destination": "/2016",
         "type": 301
       },
       {
