@@ -13,6 +13,8 @@ to be included in this list, please open a
 [pull request](https://github.com/dart-lang/site-www/blob/master/src/community/who-uses-dart.md).
 Thanks!
 
+<div class="who-uses-list" markdown="1">
+
 [Google AdWords](http://adwords.blogspot.com/2016/03/redesigning-adwords-for-the-mobile-first-marketer.html)
 : The next generation of AdWords runs on Dart. For more information,
   see [an interview with the lead developer](http://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
@@ -206,3 +208,5 @@ Google internal tool for marketing
 [Top Tactic](https://top-tactic.com)
 : A game in which you train neural networks to play soccer against other
 players' teams. Build with polymer.dart and StageXL.
+
+</div>

@@ -271,3 +271,21 @@ body.homepage .get-started-section {
 	float: left;
 	width: 35%;
 }
+
+/* Who Uses Dart page */
+
+.who-uses-list {
+	margin-top: 50px;
+	column-count: 1;
+	column-rule: 1px solid $gray-light;
+	column-gap: 40px;
+
+	@media (min-width: $screen-md-min) {
+		column-count: 2;
+	}
+	@media (min-width: $screen-lg-min) {
+		column-count: 3;
+	}
+
+	
+}
