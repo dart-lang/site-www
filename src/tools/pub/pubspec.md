@@ -5,7 +5,7 @@ title: "Pubspec Format"
 ---
 
 Every [pub](/tools/pub/) package needs some metadata so it can specify its
-[dependencies](glossary#dependency). Pub packages that are shared with
+[dependencies](/tools/pub/glossary#dependency). Pub packages that are shared with
 others also need to provide some other information so users can discover them.
 Pub stores this in a file named `pubspec.yaml`, which is written in
 the [YAML](http://www.yaml.org/) language.
@@ -54,7 +54,7 @@ At the top level are a series of fields. The currently supported ones are:
 `transformers`
 : Optional. Used to configure dart2js or other transformers.
 For more information, see
-[Pub Assets and Transformers](assets-and-transformers) and
+[Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
 [Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
 
 All other fields are ignored. A simple but complete pubspec looks something
@@ -148,7 +148,7 @@ public.
 ## Homepage
 
 This should be a URL pointing to the website for your package.
-For [hosted packages](dependencies#hosted-packages),
+For [hosted packages](/tools/pub/dependencies#hosted-packages),
 this URL is linked from the package's page.
 While this is technically optional *please do* provide one. It
 helps users understand where your package is coming from. If nothing else, you
@@ -167,7 +167,7 @@ documentation is created automatically for you, and is linked to from
 
 ## Dependencies
 
-[Dependencies](glossary#dependency) are the pubspec's *raison d'être*.
+[Dependencies](/tools/pub/glossary#dependency) are the pubspec's *raison d'être*.
 In this section you list each package that your package needs in order to work.
 
 Dependencies fall into one of two types. _Regular dependencies_ are listed
@@ -178,7 +178,7 @@ the package itself are listed under `dev_dependencies`.
 During the development process, you might need to temporarily override
 a dependency.  You can do so using `dependency_overrides`.
 
-For more information, see [Pub Dependencies](dependencies).
+For more information, see [Pub Dependencies](/tools/pub/dependencies).
 
 ## Executables
 
@@ -205,9 +205,9 @@ Typing `useful-script` executes `bin/useful-script.dart`.
 If you don't specify the value, it is inferred from the key.
 
 For more information, see
-[pub global](cmd/pub-global#running-a-script-from-your-path).
+[pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
-## SDK constraints {#sdk-constraints}
+## SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but there
 is also another implicit dependency all packages have: the Dart SDK itself.
@@ -216,7 +216,7 @@ versions of it.
 
 A package can specify that using an *SDK constraint*. This goes inside a
 separate top-level `environment` field in the pubspec and uses the same
-[version constraint](dependencies#version-constraints) syntax as
+[version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies. For example, the following constraint says that this package
 works with any Dart SDK from 0.3.4 or later:
 

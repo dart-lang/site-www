@@ -7,7 +7,7 @@ description: "How pub transforms and generates assets and files during developme
 
 The [`pub serve`]({{site.webdev}}/tools/pub/pub-serve),
 [`pub build`]({{site.webdev}}/tools/pub/pub-build),
-and [`pub run`](cmd/pub-run) commands use [transformers][]
+and [`pub run`](/tools/pub/cmd/pub-run) commands use [transformers][]
 to prepare a package's [assets][] before serving the app,
 building the app for deployment, or executing the command-line app,
 as the case may be.
@@ -52,7 +52,7 @@ For details, see
 [Where to put assets](#where-to-put-assets) and
 [How to refer to assets](#how-to-refer-to-assets).
 
-## How transformers work {#how-transformers-work}
+## How transformers work
 
 Here are some examples of transformers:
 
@@ -81,7 +81,7 @@ files because browsers in the wild don't support Dart natively. The `pub
 serve` command, on the other hand, does generate `.dart` assets, because
 you can use Dartium while you're developing your app.
 
-## Specifying transformers  {#specifying-transformers}
+## Specifying transformers
 
 To tell pub to apply a transformer to your package's assets, specify the
 transformer, as well as the package that contains the transformer, in your
@@ -102,7 +102,7 @@ The following example configures the
 [dart2js]({{site.webdev}}/tools/dart2js) transformer,
 which is used by [`pub serve`]({{site.webdev}}/tools/pub/pub-serve),
 [`pub build`]({{site.webdev}}/tools/pub/pub-build),
-and [`pub run`](cmd/pub-run), to analyze the code:
+and [`pub run`](/tools/pub/cmd/pub-run), to analyze the code:
 
 {% prettify yaml %}
 transformers:
@@ -136,7 +136,7 @@ outputs of `t1` and `t2`.
 Pub build implicitly appends a transformer that converts your Dart code to
 JavaScript, so your code can run in any modern browser.
 
-## Where to put assets  {#where-to-put-assets}
+## Where to put assets
 
 An asset can be in any root-level directory of your package. However,
 assets located under the `lib` directory have additional visibilty:
@@ -267,7 +267,7 @@ to process _only_ one or more assets. You
 can use glob syntax to make it easier to include, or exclude,
 a group of assets, including entire directories.
 
-### Excluding assets {#excluding-assets}
+### Excluding assets
 
 If you have an asset that you do not want a transformer to process,
 you can exclude it, by name, in the pubspec. For example, a transformer
@@ -294,7 +294,7 @@ Indent the next line by 4 spaces and use the form:
         <parameter>: <value>
 </aside>
 
-### Processing specific assets {#specified-assets}
+### Processing specific assets
 
 If you want a transformer to run _only_ on a particular file, you can
 use `$include`. The following example tells pub to run the transformer
@@ -310,7 +310,7 @@ transformers:
 You can't use the include tag to force a transformer to operate on a
 file type that it would not otherwise process.
 
-### Using glob syntax {#glob-syntax}
+### Using glob syntax
 
 You can specify a list of files for the include or exclude tags:
 
@@ -351,7 +351,7 @@ environment:
     sdk: ">=1.8.0 <2.0.0"
 {% endprettify %}
 
-## How to configure assets {#configure-assets}
+## How to configure assets
 
 You can use include and exclude to make a transformer,
 such as dart2js, treat certain assets in a special way.
@@ -387,7 +387,7 @@ Indent the next line by 4 spaces and use the form:
         <parameter>: <value>
 </aside>
 
-## Writing a transformer {#writing-transformer}
+## Writing a transformer
 
 To write a transformer, see
-[Writing a Pub Transformer](transformers/).
+[Writing a Pub Transformer](/tools/pub/transformers/).

@@ -5,24 +5,24 @@ title: "Pub Dependencies"
 description: "Add other packages to your app. Specify package locations, version constraints, and more."
 ---
 
-Dependencies are one of [pub](/tools/pub)'s core concepts.
+Dependencies are one of [pub](/tools/pub/)'s core concepts.
 A dependency is another package that your package needs in order to work.
-Dependencies are specified in your [pubspec](pubspec.html).
+Dependencies are specified in your [pubspec](/tools/pub/pubspec.html).
 You only list
-[immediate dependencies](glossary#immediate-dependency)&mdash;the
+[immediate dependencies](/tools/pub/glossary#immediate-dependency)&mdash;the
 software that your package uses directly. Pub handles
-[transitive dependencies](glossary#transitive-dependency) for you.
+[transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
 <aside class="alert alert-info">
 To see all the dependencies used by a package, use
-[`pub deps`](cmd/pub-deps.html).
+[`pub deps`](/tools/pub/cmd/pub-deps.html).
 </aside>
 
 For each dependency, you specify the *name* of the package you depend on.
-For [library packages](glossary#library-package),
+For [library packages](/tools/pub/glossary#library-package),
 you specify the *range of versions* of that package that you allow.
 You may also specify the
-[*source*](glossary#source) which tells pub how the package can be located,
+[*source*](/tools/pub/glossary#source) which tells pub how the package can be located,
 and any additional *description* that the source needs to find the package.
 
 Based on what data you want to provide, you can specify dependencies in two
@@ -78,12 +78,12 @@ complex description you need to specify.
 But in most cases, you'll just use the simple
 <code><em>packagename</em>: version</code> form.
 
-## Dependency sources {#dependency-sources}
+## Dependency sources
 
 Here are the different sources pub can use to locate packages, and the
 descriptions they allow:
 
-### Hosted packages {#hosted-packages}
+### Hosted packages
 
 A *hosted* package is one that can be downloaded from pub.dartlang.org
 (or another HTTP server that speaks the same API). Most of your dependencies
@@ -110,7 +110,7 @@ dependencies:
     version: ^1.4.0
 {% endprettify %}
 
-### Git packages {#git-packages}
+### Git packages
 
 Sometimes you live on the bleeding edge and you need to use packages that
 haven't been formally released yet. Maybe your package itself is still in
@@ -145,7 +145,7 @@ The ref can be anything that Git allows to [identify a commit][commit].
 
 [commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-### Path packages {#path-packages}
+### Path packages
 
 Sometimes you find yourself working on multiple related packages at the same
 time. Maybe you are creating a framework while building an app that uses it.
@@ -183,17 +183,17 @@ Instead, the typical workflow is:
 4. Change your pubspec to point to the now hosted version of its dependent.
 5. Publish your main package too, if you want.
 
-## Version constraints {#version-constraints}
+## Version constraints
 
 If your package is an application, you don't usually need to specify [version
-constraints](glossary#version-constraint) for your dependencies. You
+constraints](/tools/pub/glossary#version-constraint) for your dependencies. You
 typically want to use the latest versions of the dependencies when you first
 create your app. Then you'll create and check in a
-[lockfile](glossary#lockfile) that pins your dependencies to those specific
+[lockfile](/tools/pub/glossary#lockfile) that pins your dependencies to those specific
 versions. Specifying version constraints in your pubspec then is usually
 redundant (though you can do it if you want).
 
-For a [library package](glossary#library-package) that you want users to
+For a [library package](/tools/pub/glossary#library-package) that you want users to
 reuse, though, it is important to specify version constraints. That lets people
 using your package know which versions of its dependencies they can rely on to
 be compatible with your library. Your goal is to allow a range of versions as
@@ -274,7 +274,7 @@ environment:
   sdk: '>=1.8.3 <2.0.0'
 {% endprettify %}
 
-## Dev dependencies {#dev-dependencies}
+## Dev dependencies
 
 Pub supports two flavors of dependencies: regular dependencies and *dev
 dependencies.* Dev dependencies differ from regular dependencies in that *dev
@@ -305,7 +305,7 @@ Using dev dependencies makes dependency graphs smaller. That makes `pub` run
 faster, and makes it easier to find a set of package versions that satisfies all
 constraints.
 
-## Dependency overrides {#dependency-overrides}
+## Dependency overrides
 
 You can use `dependency_overrides` to temporarily override all references
 to a dependency.

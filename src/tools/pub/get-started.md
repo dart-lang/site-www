@@ -63,7 +63,7 @@ dependencies:
   intl: ^0.12.4
 {% endprettify %}
 
-For details, see the [pubspec documentation](pubspec.html)
+For details, see the [pubspec documentation](/tools/pub/pubspec.html)
 and the documentation for the packages you are interested in using.
 
 ## Installing packages
@@ -78,7 +78,7 @@ pub get
 This process is called _getting the dependencies_.
 
 The `pub get` command determines which packages your app depends on,
-and puts them in a central [system cache](glossary#system-cache).
+and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 For git dependencies, pub clones the git repository.
 For hosted dependencies, pub downloads the package from
 pub.dartlang.org. Transitive dependencies are included, too.
@@ -186,8 +186,8 @@ the same.
 
 ## More information
 
-* [Pub Dependencies](dependencies.html)
-* [Pubspec Format](pubspec.html)
-* [Pub Package Layout Conventions](package-layout.html)
-* [Pub Commands](cmd/)
+* [Pub Dependencies](/tools/pub/dependencies)
+* [Pubspec Format](/tools/pub/pubspec)
+* [Pub Package Layout Conventions](/tools/pub/package-layout)
+* [Pub Commands](/tools/pub/cmd/)
 
