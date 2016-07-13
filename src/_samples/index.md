@@ -24,7 +24,7 @@ also want to check out the following pages.
   <div class="card">
     <h3><a href="/dart-vm/dart-by-example">Cookbook</a></h3>
     <p>
-      A set of concrete 'recipes' to get you started with common programming
+      A set of concrete recipes to get you started with common programming
       tasks.
     </p>
   </div>
@@ -45,13 +45,13 @@ void main() {
 We're not explicitly typing the variables here. We could, but type inference works for us.
 
 {% prettify dart %}
-var name = "Voyager I";
+var name = 'Voyager I';
 var year = 1977;
 var antennaDiameter = 3.7;
-var flybyObjects = ["Jupiter", "Saturn", "Uranus", "Neptune"];
+var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 var image = {
-  "tags": ["saturn"],
-  "url": "//path/to/saturn.jpg"
+  'tags': ['saturn'],
+  'url': '//path/to/saturn.jpg'
 };
 {% endprettify %}
 
@@ -63,9 +63,9 @@ No surprises here.
 
 {% prettify dart %}
 if (year >= 2001) {
-  print("21st century");
+  print('21st century');
 } else if (year >= 1901) {
-  print("20th century");
+  print('20th century');
 }
 
 for (var object in flybyObjects) {
@@ -97,11 +97,12 @@ int fibonacci(int n) {
 var result = fibonacci(20);
 {% endprettify %}
 
-There is a shorthand ('fat arrow') syntax for functions that contain a single statement.
-It's most useful when functions are passed as arguments (but it also means 'Hello World' can be made even [shorter](https://gist.github.com/filiph/8a5e3e845acdafe2ea928fd257a46859) than it already is).
+A shorthand (_fat arrow_) syntax is handy for functions that contain a single statement.
+It's especially useful when functions are passed as arguments,
+but it also means that Hello World can be made even [shorter](https://gist.github.com/filiph/8a5e3e845acdafe2ea928fd257a46859).
 
 {% prettify dart %}
-flybyObjects.where((name) => name.contains("anus")).forEach(print);
+flybyObjects.where((name) => name.contains('anus')).forEach(print);
 {% endprettify %}
 
 Also note that in the example above, the top-level function `print` is provided as an argument.
@@ -126,14 +127,14 @@ including how the documentation tooling works.
 ## Imports
 
 {% prettify dart %}
-// Core libraries.
+// Importing core libraries
 import 'dart:async';
 import 'dart:math';
 
-// Packages.
+// Importing libraries from external packages
 import 'package:angular2/angular2.dart';
 
-// Files.
+// Importing files
 import 'path/to/my_other_file.dart';
 {% endprettify %}
 
@@ -160,12 +161,12 @@ class Spacecraft {
 
   // Method.
   void describe() {
-    print("Spacecraft: $name");
+    print('Spacecraft: $name');
     if (launchDate != null) {
       int years = new DateTime.now().difference(launchDate).inDays ~/ 365;
-      print("Launched: $launchYear ($years years ago)");
+      print('Launched: $launchYear ($years years ago)');
     } else {
-      print("Unlaunched");
+      print('Unlaunched');
     }
   }
 }
@@ -174,10 +175,10 @@ class Spacecraft {
 You would use the class defined above like so:
 
 {% prettify dart %}
-var voyager = new Spacecraft("Voyager I", new DateTime(1977, 9, 5));
+var voyager = new Spacecraft('Voyager I', new DateTime(1977, 9, 5));
 voyager.describe();
 
-var voyager3 = new Spacecraft.unlaunched("Voyager III");
+var voyager3 = new Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 {% endprettify %}
 
@@ -186,7 +187,7 @@ including initializer lists, redirecting constructors, constant constructors, `f
 
 ## Inheritance
 
-Dart has single-inheritance.
+Dart has single inheritance.
 
 {% prettify dart %}
 class Orbiter extends Spacecraft {
@@ -206,12 +207,12 @@ Mixins are a way of reusing code in multiple class hierarchies. The following cl
 class Manned {
   int astronauts;
   void describeCrew() {
-    print("Number of astronauts: $astronauts");
+    print('Number of astronauts: $astronauts');
   }
 }
 {% endprettify %}
 
-Just extend a class with this mixin to give it its capabilities.
+Just extend a class with a mixin to add the mixin's capabilities to the class.
 
 {% prettify dart %}
 class Orbiter extends Spacecraft with Manned {
@@ -225,7 +226,7 @@ class Orbiter extends Spacecraft with Manned {
 
 ## Interfaces
 
-There is no `interface` keyword in Dart. All classes implicitly define an interface. Therefore, you can `implement` any class.
+Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can `implement` any class.
 
 {% prettify dart %}
 class MockSpaceship implements Spacecraft {
@@ -237,21 +238,21 @@ class MockSpaceship implements Spacecraft {
 
 ## Abstract classes
 
-You can create an abstract class which is supposed to be extended (or implemented) by a concrete one. Abstract classes can contain abstract methods (with empty body).
+You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
 {% prettify dart %}
 abstract class Describable {
   void describe();
 
   void describeWithEmphasis() {
-    print("=========");
+    print('=========');
     describe();
-    print("=========");
+    print('=========');
   }
 }
 {% endprettify %}
 
-Any class extending `Describable` will now have the `describeWithEmphasis()` method. It will call the implementation of `describe()` of that class.
+Any class extending `Describable` has the `describeWithEmphasis()` method, which calls the extender's implementation of `describe()`.
 
 [Read more](/guides/language/language-tour#abstract-classes) about abstract classes and methods.
 
@@ -276,22 +277,24 @@ Future<Null> printWithDelay(String message) {
 }
 {% endprettify %}
 
-From the example above, `async` may not seem all that useful. Until you realize you can do things like the following.
+From the example above, `async` and `await` may not seem all that useful.
+The next example shows that `async` and `await` help make asynchronous code
+easy to read.
 
 {% prettify dart %}
 Future<Null> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
-      var file = new File("$object.txt");
+      var file = new File('$object.txt');
       if (await file.exists()) {
         var modified = await file.lastModified();
-        print("File for $object already exists. It was modified on $modified");
+        print('File for $object already exists. It was modified on $modified.');
         continue;
       }
       await file.create();
-      await file.writeAsString("Start describing $object in this file.");
+      await file.writeAsString('Start describing $object in this file.');
     } on IOException catch (e) {
-      print("Cannot create description for $object: $e");
+      print('Cannot create description for $object: $e');
     }
   }
 }
@@ -303,7 +306,7 @@ You can also use `async*`, which gives you a nice, readable way to build steams.
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await new Future.delayed(const Duration(seconds: 1));
-    yield "${craft.name} flies by $object";
+    yield '${craft.name} flies by $object';
   }
 }
 {% endprettify %}
@@ -314,16 +317,16 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 
 {% prettify dart %}
 if (astronauts == 0) {
-  throw new StateError("No astronauts.");
+  throw new StateError('No astronauts.');
 }
 {% endprettify %}
 
-Exceptions can be caught. And this works even with asynchronous code.
+Exceptions can be caught, even in asynchronous code.
 
 {% prettify dart %}
 try {
   for (var object in flybyObjects) {
-    var description = await new File("$object.txt").readAsString();
+    var description = await new File('$object.txt').readAsString();
     print(description);
   }
 } on IOException catch (e) {
@@ -354,5 +357,5 @@ Users of the class access the property like they normally would (`spacecraft.lau
 
 ## Other topics
 
-There are many more code samples in the [Language Tour](/guides/language/language-tour) and the [Library Tour](/guides/libraries/library-tour).
+Many more code samples are in the [Language Tour](/guides/language/language-tour) and the [Library Tour](/guides/libraries/library-tour).
 Libraries provide examples of use in their [API documentation.](https://api.dartlang.org/)
