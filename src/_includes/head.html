@@ -4,7 +4,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
   
   <!-- Favicon / Touch Icons -->
   <link href="/favicon.ico" rel="shortcut icon">
@@ -17,7 +17,14 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@dart_lang" />
   <meta name="twitter:title" content="{{ page.title }}" />
-  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+  <meta name="twitter:description" content="{% if page.description | strip_html | strip_newlines | truncate: 160 %}{{ page.description }}{% else if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{% if page.description | strip_html | strip_newlines | truncate: 160 %}{{ page.description }}{% else if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 }}{% endif %}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.url }}{% asset_path 'dart-logo-wordmark.png' %}{% endif %}" />
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
@@ -34,7 +41,6 @@
       JavaScript and jQuery are doing just fine. Dart is here for application
       programming, not page scripting.
    -->
-
   {% javascript main %}
   {% for js in page.js %}
   <script {% if js.defer %}defer{% endif %} src="{{ js.url }}"></script>
