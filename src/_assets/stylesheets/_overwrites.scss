@@ -3,6 +3,7 @@
 $screen-lg-min: 1200px;
 $screen-md-min: 992px;
 $screen-sm-min: 768px;
+$screen-xs-min: 480px;
 
 /* Add space between definitions. */
 dd {
@@ -28,10 +29,10 @@ a code {
 
 .sidenav__search {
 	margin-bottom: 20px;
-	display: none;
+	display: block;
 
-	@media(max-width: 479px) {
-		display: block;
+	@media (min-width: $screen-xs-min) {
+		display: none;
 	}
 }
 
@@ -256,8 +257,11 @@ body.homepage .get-started-section {
 
 .get-started-table {
 	margin-top: 20px;
-	float: right;
-	max-width: 55%;
+
+	@media (min-width: $screen-sm-min) {
+		float: right;
+		max-width: 55%;
+	}
 
 	td {
 		padding: 10px;
@@ -272,6 +276,11 @@ body.homepage .get-started-section {
 
 	td:first-child {
 		width: 3em;
+		display: none;
+
+		@media (min-width: $screen-xs-min) {
+			display: table-cell;
+		}
 	}
 
 	td:nth-child(2) {
@@ -288,8 +297,14 @@ body.homepage .get-started-section {
 }
 
 .get-started-table__text {
-	float: left;
-	width: 35%;
+	@media (min-width: $screen-sm-min) {
+		float: left;
+		width: 35%;
+	}
+}
+
+.get-started-flowchart {
+	max-width: 100%;
 }
 
 /* Who Uses Dart page */
@@ -306,6 +321,4 @@ body.homepage .get-started-section {
 	@media (min-width: $screen-lg-min) {
 		column-count: 3;
 	}
-
-
 }
