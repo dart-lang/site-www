@@ -10,7 +10,7 @@ snippet_img: images/who-uses-dart.png
 In no particular order, here are some companies and businesses that use Dart.
 If you build production software with Dart, and want
 to be included in this list, please open a
-[pull request](https://github.com/dart-lang/www.dartlang.org/blob/master/src/site/community/who-uses-dart.markdown).
+[pull request](https://github.com/dart-lang/site-www/blob/master/src/community/who-uses-dart.md).
 Thanks!
 
 [Google AdWords](http://adwords.blogspot.com/2016/03/redesigning-adwords-for-the-mobile-first-marketer.html)
