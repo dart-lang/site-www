@@ -635,7 +635,7 @@
       },
       {
         "source": "/events/2016/**",
-        "destination": "/2016",
+        "destination": "https://events.dartlang.org/2016/summit/",
         "type": 301
       },
       {
