@@ -15,7 +15,7 @@ one of the tools that you get is `pub`.
 **Hey!**
 Want to make your Dart script available from the command line?
 You can do this using `pub global activate`. For more information, see
-[Running a script from your PATH](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+[Running a script from your PATH](/tools/pub/cmd/pub-global).
 </aside>
 
 You can access the `pub` commands either through an IDE,
