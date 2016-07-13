@@ -21,93 +21,37 @@ import &#x27;<span class="frontpage-highlight" data-text='The whole standard lib
 }
 
 <span class="frontpage-highlight" data-text="Add doc comments like this to flesh out the API reference docs that the SDK’s dartdoc tool generates.">///</span> Generates a stream of increasingly accurate estimates of &#x3C0;.
-Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi({int batch: 1000000}) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
+Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi(<span class="frontpage-highlight" data-text="Named parameters make call sites more readable.">{int batch: 1000000}</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
   <span class="frontpage-highlight" data-text="The type is inferred in this variable declaration. Note: no JavaScript-style hoisting.">var</span> total = 0;
   var count = 0;
   <span class="frontpage-highlight" data-text="Because generators are lazy, we can safely do this.">while (true)</span> {
-    // TODO(filiph): add highlights below
-    var points = generateRandom().take(batch);
-    var inside = points.where((p) =&#x3E; p.isInsideUnitCircle);
+    var points = generateRandom().<span class="frontpage-highlight" data-text="Synchronous generators produce (lazy) Iterables, and Iterables have a well-crafted API.">take</span>(batch);
+    var inside = points.where((p) <span class="frontpage-highlight" data-text="The optional arrow syntax makes simple functions more readable.">=&#x3E;</span> p.isInsideUnitCircle);
     total += batch;
-    count += inside.length;
+    count += inside.<span class="frontpage-highlight" data-text="Since the Iterable is lazy, the program doesn't actually iterate over it until it's needed by the length getter.">length</span>;
     var ratio = count / total;
     // Area of a circle is A = &#x3C0;&#x22C5;r&#xB2;, therefore &#x3C0; = A/r&#xB2;.
     // So, when given random points with x &#x2208; &#x3C;0,1&#x3E;,
     // y &#x2208; &#x3C;0,1&#x3E;, the ratio of those inside a unit circle
     // should approach &#x3C0; / 4. Therefore, the value of &#x3C0;
     // should be:
-    yield ratio * 4;
+    <span class="frontpage-highlight" data-text="In an async generator, yield takes care of sending the values through the stream (including the logic of suspending execution when needed).">yield</span> ratio * 4;
   }
 }
 
-Iterable&#x3C;Point&#x3E; generateRandom([int seed]) sync* {
-  final random = new Random(seed);
+<span class="frontpage-highlight" data-text="Iterable is a core type extended by all iterable collections which makes for some elegant Dart code.">Iterable</span>&#x3C;Point&#x3E; generateRandom(<span class="frontpage-highlight" data-text="Optional parameters make call sites cleaner.">[int seed]</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for synchronous generators, too.">sync*</span> {
+  <span class="frontpage-highlight" data-text="Variables and fields can be final. Any attempt to change them later in the code will produce a static error.">final</span> random = new Random(seed);
   while (true) {
-    yield new Point(random.nextDouble(), random.nextDouble());
+    <span class="frontpage-highlight" data-text="Producing lazy Iterables through yield is readable and corresponds nicely with the same concept in asynchronous generators.">yield</span> new Point(random.nextDouble(), random.nextDouble());
   }
 }
 
-class Point {
-  final double x, y;
-  Point(this.x, this.y);
-  bool get isInsideUnitCircle =&#x3E; x * x + y * y &#x3C;= 1;
+<span class="frontpage-highlight" data-text="Dart is purely object-oriented and class-based, with mixin-based inheritance.">class</span> Point {
+  final <span class="frontpage-highlight" data-text="Although Dart can compile to JavaScript, it doesn't lack the distinction between double and int.">double</span> x, y;
+  <span class="frontpage-highlight" data-text="Constructors can be constant.">const</span> Point(<span class="frontpage-highlight" data-text="Initializing fields through this shorthand syntax is both easier and more readable.">this.x</span>, this.y);
+  bool <span class="frontpage-highlight" data-text="Language-level support for getters means you can freely switch between properties and methods without changing the API.">get</span> isInsideUnitCircle =&#x3E; x * x + y * y &#x3C;= 1;
 }
 </pre>
-
-        <!--<span class="frontpage-highlight" data-text="main function as the single point of entry-->
-        <!--">main</span>() async {-->
-        <!--print('Compute <span class="frontpage-highlight" data-text="unicode baked in-->
-        <!--">π</span> using the Monte Carlo method.');-->
-        <!--<span class="frontpage-highlight" data-text="language-level asynchrony support-->
-        <!--">await</span> for (var estimate in computePi()) {-->
-        <!--print('π ≅ <span class="frontpage-highlight" data-text="easy string interpolation-->
-        <!--">$estimate</span>');-->
-        <!--}-->
-        <!--}-->
-
-        <!--Stream<double> computePi(<span class="frontpage-highlight" data-text="readable default parameters-->
-        <!--">{int batch: 1000000}</span>) async* {-->
-        <!--<span class="frontpage-highlight" data-text="type inference-->
-        <!--">var</span> total = 0;-->
-        <!--var inside = 0;-->
-        <!--while (true) {-->
-        <!--var points = generateRandomPoints().<span class="frontpage-highlight" data-text="lazy iterables - this only takes `batch` samples from an infinite list of random points (and obviously we’re not generating them all)-->
-        <!--">take</span>(batch);-->
-        <!--var pointsInside = points.<span class="frontpage-highlight" data-text="well-defined functional methods in std lib-->
-        <!--">where</span>((p) <span class='highlight' data-text="lambda functions-->
-        <!--">=></span> p.isInsideUnitCircle);-->
-        <!--total += batch;-->
-        <!--inside += pointsInside.<span class="frontpage-highlight" data-text="lazy iterable means we’re not actually creating a huge array of points or anything like that-->
-        <!--">length</span>;-->
-        <!--var ratio = inside / total;-->
-        <!--// Area of a circle is A = π⋅r², therefore π = A/r².-->
-        <!--// So, when given random points with x ∈ <0,1>, y ∈ <0,1>, -->
-        <!--// the ratio of those inside a unit circle should approach-->
-        <!--// π / 4. Therefore:-->
-        <!--<span class="frontpage-highlight" data-text="yield">yield</span> ratio * 4;-->
-        <!--}-->
-        <!--}-->
-
-        <!--Iterable<Point> generateRandomPoints(<span class="frontpage-highlight" data-text="optional arguments-->
-        <!--">[int seed]</span>) sync* {-->
-        <!--final random = new <span class="frontpage-highlight" data-text="there’s also Random.secure() for cryptographic purposes. We told you the standard lib is pretty amazing.-->
-        <!--">Random</span>(seed);-->
-        <!--while (<span class="frontpage-highlight" data-text="yes, we can do this because generator-->
-        <!--">true</span>) {-->
-        <!--<span class="frontpage-highlight" data-text="generator support-->
-        <!--">yield</span> new Point(random.nextDouble(), random.nextDouble());-->
-        <!--}-->
-        <!--}-->
-
-        <!--class <span class="frontpage-highlight" data-text="class (multiple per file ok)-->
-        <!--">Point</span> {-->
-        <!--final <span class="frontpage-highlight" data-text="Dart Style Guide encourages explicit types on APIs (inside functions they're not required)-->
-        <!--">double</span> x, y;-->
-        <!--Point(<span class="frontpage-highlight" data-text="initializers: simple syntactic sugar like this makes your life easier-->
-        <!--">this</span>.x, this.y);-->
-        <!--bool <span class="frontpage-highlight" data-text="getters, setters-->
-        <!--">get</span> isInsideUnitCircle => x * x + y * y <= 1;-->
-        <!--}-->
       </div>
     </div>
     <div class="col-sm-5 col-lg-6">
