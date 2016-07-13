@@ -2,6 +2,7 @@
 layout: guide
 title: Get Started
 description: "A guide for getting started with Dart."
+image: https://www.dartlang.org/guides/images/get-started-flowchart.png
 toc: false
 ---
 
@@ -62,7 +63,7 @@ Created by filiph, the Lucid app is available to Googlers in mystuff.
 {% endcomment %}
 
 <object class="get-started-flowchart" type="image/svg+xml" data="images/get-started-flowchart.svg">
-  {% img 'get-started-flowchart.png' %}
+  <img src="images/get-started-flowchart.png">
 </object>
 
 ## Books
