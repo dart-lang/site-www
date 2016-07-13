@@ -22,7 +22,7 @@ before_script:
 
 script:
   - ./deploy/cibuild
-  - ./deploy/check_sitemap.rb
+  # - ./deploy/check_sitemap.rb
 
 # branch whitelist
 # branches:
