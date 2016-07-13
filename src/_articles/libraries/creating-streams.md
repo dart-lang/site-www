@@ -38,7 +38,7 @@ This article was updated in October 2013
 to remove sections that used the obsolete EventTransformStream
 and StreamEventTransformer classes.
 For details on how stream transformers have changed, see the
-[breaking change notice](https://groups.google.com/a/dartlang.org/forum/#!msg/misc/7sAIhWXfIKQ/PzYJy1QqtWUJ).
+[breaking change notice](https://groups.google.com/a/dartlang.org/d/msg/misc/7sAIhWXfIKQ/PzYJy1QqtWUJ).
 </aside>
 
 For help on using streams, see

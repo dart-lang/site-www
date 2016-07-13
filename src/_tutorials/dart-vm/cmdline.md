@@ -61,7 +61,7 @@ and how you installed the SDK.
 You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
 By putting this directory in your PATH
 you can refer to the `dart` command and other commands, such as
-[dartanalyzer](https://github.com/dart-lang/analyzer_cli#dartanalyzer),
+[dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer),
 by name.
 
 Let's run a small program.

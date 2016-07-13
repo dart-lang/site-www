@@ -40,7 +40,7 @@ begin
             /^\/(.*)/ => "#{$LOCALHOST}\\1",
             # Swap all relative "path/to/subdir" (relative) links to
             # "{{current_uri}}/path/to/subdir"
-            /^(?!(#|https?:\/\/))(.+)/ => "#{uri}/\\1"
+            /^(?!(\/|#|https?:\/\/))(.+)/ => "#{uri}/\\1"
         },
         :check_external_hash => true,
         # :check_favicon => true,

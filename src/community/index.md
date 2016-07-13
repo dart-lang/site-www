@@ -23,27 +23,27 @@ Dart is an open-source project, and we look forward to hearing from you.
 
 #### Server-side Dart
 
-* [Discussion](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/cloud)
+* [Discussion](https://groups.google.com/a/dartlang.org/d/forum/cloud)
 
 #### Dart plugin for JetBrains (WebStorm, IntelliJ)
 
-* [Questions](https://groups.google.com/a/dartlang.org/forum/#!forum/jetbrains-dart-plugin-discuss)
+* [Questions](https://groups.google.com/a/dartlang.org/d/forum/jetbrains-dart-plugin-discuss)
 
 #### Dart plugin for Atom
 
-* [Gitter chat](https://gitter.im/dart-atom/dartlang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+* [Gitter chat](https://gitter.im/dart-atom/dartlang)
 
 #### Dart VM
 
-* [Development](https://groups.google.com/a/dartlang.org/forum/#!forum/vm-dev)
+* [Development](https://groups.google.com/a/dartlang.org/d/forum/vm-dev)
 
 #### Dart Analyzer
 
-* [Discussion](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)
+* [Discussion](https://groups.google.com/a/dartlang.org/d/forum/analyzer-discuss)
 
 #### General
 
-* [Discussion](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/misc)
+* [Discussion](https://groups.google.com/a/dartlang.org/d/forum/misc)
 * [Google+ page](https://plus.google.com/+dartlang)
 * [Twitter](https://twitter.com/dart_lang)
 * [IRC](http://webchat.freenode.net/?channels=dart)
@@ -53,7 +53,7 @@ Dart is an open-source project, and we look forward to hearing from you.
 
 * [Reddit](https://www.reddit.com/r/dartlang)
 * [Slack](https://dartlang.slack.com/) ([register](https://dartlang-slack.herokuapp.com/))
-* [Hacker News](https://hn.algolia.com/?q=Dart#!/story/forever/0/Dart)
+* [Hacker News](https://hn.algolia.com/?query=Dart&type=story&dateRange=all&prefix&page=0&sort=byPopularity)
 * [Dartisans on Google+](http://g.co/dartisans)
 * [Dartosphere blog aggregator](http://dartosphere.org)
 
@@ -61,21 +61,21 @@ Dart is an open-source project, and we look forward to hearing from you.
 
 These lists are read only.
 
-* [announce@dartlang.org](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/announce)<br>
+* [announce@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/announce)<br>
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
-* [bugs@dartlang.org](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/bugs)<br>
+* [bugs@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/bugs)<br>
   High-traffic list of all updates and changes from across the main Dart
   issue tracker.
 
-* [commits@dartlang.org](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/commits)<br>
+* [commits@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/commits)<br>
   High-traffic list of all commits to the main Dart repository.
 
 * [news.dartlang.org](http://news.dartlang.org)<br>
   Official news feed for the Dart project.
 
-* [reviews@dartlang.org](https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/reviews)<br>
+* [reviews@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/reviews)<br>
   High-traffic list of all comments and code reviews from the main
   Dart repo.
 

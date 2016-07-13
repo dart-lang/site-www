@@ -8,7 +8,7 @@ permalink: /map
 
 <ul>
 {% for document in site.pages %}
-  {% if document.url %}
+  {% if document.url and document.url != '/404' %}
   <li>
     <a href="{{ document.url }}">{{ document.title | xml_escape }}</a><br>
     <small>{{ document.url }}</small>
