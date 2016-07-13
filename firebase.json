@@ -404,11 +404,6 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/cmd/**",
-        "destination": "/tools/pub/cmd",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/transformers/aggregate.html",
         "destination": "/tools/pub/transformers/aggregate",
         "type": 301
@@ -416,16 +411,6 @@
       {
         "source": "/tools/pub/transformers/lazy-transformer.html",
         "destination": "/tools/pub/transformers/lazy-transformer",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/**",
-        "destination": "/tools/pub/transformers",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/**",
-        "destination": "/tools/pub",
         "type": 301
       },
       {
