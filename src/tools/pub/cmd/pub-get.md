@@ -80,7 +80,7 @@ locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
 constraints]({{site.dartlang}}/tools/pub/glossary#version-constraint).
 This is the primary difference between `pub get` and
-[`pub upgrade`](pub-upgrade), which always tries to
+[`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
 <aside class="alert alert-info" markdown="1">
@@ -145,7 +145,7 @@ available.
 Keep in mind that pub generates a lockfile after it does this. If the
 only version of some dependency in your cache happens to be old, this locks
 your app to that version. The next time you are online, you will likely want to
-run [`pub upgrade`](pub-upgrade) to upgrade to a later version.
+run [`pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
 ## Options {#options}
 
@@ -154,5 +154,5 @@ For options that apply to all pub commands, see
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

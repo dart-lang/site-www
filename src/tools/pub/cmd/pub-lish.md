@@ -54,6 +54,6 @@ The main pub server is itself open source and available [here][pub repo].
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 

@@ -19,7 +19,7 @@ If your app uses transformers, pub loads and runs the appropriate
 transformers, then runs the app, passing in any specified parameters.
 
 To run an executable when you are not currently inside a package,
-see the [pub global](pub-global.html) command.
+see the [pub global](/tools/pub/cmd/pub-global) command.
 
 ## Running a script in your package's bin directory
 
@@ -97,5 +97,5 @@ For options that apply to all pub commands, see
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

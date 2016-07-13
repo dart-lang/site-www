@@ -10,7 +10,7 @@ This page discusses tools that are useful with multiple Dart technologies.
 
 ## DartPad
 
-[DartPad](dartpad) is
+[DartPad](/tools/dartpad) is
 a great way to learn Dart syntax and to experiment with Dart language features
 and core libraries (_except_ for dart:io and libraries that depend on dart:io).
 

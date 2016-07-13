@@ -49,7 +49,7 @@ markdown_converter 0.0.0
 '-- markdown 0.7.2
 {% endprettify %}
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd/#global-options).
@@ -60,5 +60,5 @@ For options that apply to all pub commands, see
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

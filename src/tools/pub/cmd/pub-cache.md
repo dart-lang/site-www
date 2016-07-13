@@ -53,5 +53,5 @@ reinstall of all hosted and git packages in the system cache.</dd>
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

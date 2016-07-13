@@ -14,7 +14,7 @@ $ pub uploader [options] {add/remove} <email>
 {% endprettify %}
 
 This command allows
-[uploaders]({{site.dartlang}}/tools/pub/glossary#uploader) of a
+[uploaders](/tools/pub/glossary#uploader) of a
 package on [pub.dartlang.org](https://pub.dartlang.org) to add or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
@@ -44,12 +44,12 @@ $ pub uploader --package=transmogrify add bob@example.com
 Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd/#global-options).
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

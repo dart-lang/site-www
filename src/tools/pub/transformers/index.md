@@ -25,20 +25,20 @@ a single input asset. If you need to process multiple inputs with no single
 primary input&ndash;you want to combine several images into one image,
 for example&ndash;you can write an _aggregate_ transformer.
 For more information, see
-[Writing an Aggregate Tranformer](aggregate).
+[Writing an Aggregate Tranformer](/tools/pub/transformer/aggregate).
 
 This page uses two examples, SimpleTransformer and
 MarkdownConverter, which you can find through
-[Examples of Transformer Code](examples).
+[Examples of Transformer Code](/tools/pub/transformer/examples).
 
-## Implementing a transformer {#implementing-transformer}
+## Implementing a transformer
 
 A transformer is a Dart class that extends the Transformer class
 from the [barback](https://pub.dartlang.org/packages/barback) package.
 Barback, developed by the Dart team and available at pub.dartlang.org,
 provides a system for building assets.
 
-### Choose a file name and location {#choose}
+### Choose a file name and location
 
 A transformer's code goes into one of the following locations:
 
@@ -65,7 +65,7 @@ The transformer's file name and location affect how you set
 up the pubspec.  See [Add the transformer](#add-transformer)
 for more details.
 
-### Get barback {#get-barback}
+### Get barback
 
 In your transformer's main Dart file, import the barback package:
 
@@ -81,7 +81,7 @@ dependencies:
   barback: ^0.15.2
 {% endprettify %}
 
-### Extend `Transformer` {#extend-transformer}
+### Extend `Transformer`
 
 In the file with your transformer subclass,
 extend the `Transformer` class from the barback package:
@@ -90,7 +90,7 @@ extend the `Transformer` class from the barback package:
 class MyTransformer extends Transformer { ... }
 {% endprettify %}
 
-### Define `asPlugin` {#define-asPlugin}
+### Define `asPlugin`
 
 The `asPlugin` constructor can be empty, but it must be present,
 and it must be named `asPlugin`.
@@ -133,14 +133,14 @@ For more information on the mode option, see
 [pub serve]({{site.webdev}}/tools/pub/pub-serve#options) and
 [pub build]({{site.webdev}}/tools/pub/pub-build#options).
 
-### Claim input assets {#claim-input-assets}
+### Claim input assets
 
 A transformer can limit which assets that it processes. It can
 do this in one of two ways:
 
 * Implement `allowedExtensions` to return a
   space-separated list of file extensions. The following
-  code, from [markdown_converter](examples),
+  code, from [markdown_converter](/tools/pub/transformer/examples),
   limits input assets to those
   files with one of three Markdown file extensions:
 
@@ -166,7 +166,7 @@ If you need to perform any other checks, you must explicitly define
 If you don't override either `allowedExtensions` or `isPrimary()`,
 then the transformer gets the opportunity to process all assets.
 
-### Process input assets {#process-input-assets}
+### Process input assets
 
 To process assets, implement the `apply()` method.
 In this method, you read each asset from the passed-in transform,
@@ -209,7 +209,7 @@ Future apply(Transform transform) async {
 }
 {% endprettify %}
 
-### Produce output assets {#produce-output-assets}
+### Produce output assets
 
 To write data to an output asset, use Transformer's
 `addOutput()` method.
@@ -252,12 +252,12 @@ String newContent = ...;
 transform.addOutput(new Asset.fromString(id, newContent));
 {% endprettify %}
 
-## Configuring pubspec {#configuring-pubspec}
+## Configuring pubspec
 
 Add the transformer and the barback dependency
 to the `pubspec.yaml` file.
 
-### Add the transformer {#add-transformer}
+### Add the transformer
 
 To apply a transformer to the assets in your package,
 list it in your pubspec.
@@ -288,12 +288,12 @@ transformers:
 - simple_transformer/stuff/insert_copyright
 {% endprettify %}
 
-### Depend on barback {#depend-on-barback}
+### Depend on barback
 
 You also need to add barback as a dependency in your package's
 pubspec, as described in [get barback](#get-barback).
 
-## Running the transformer {#running-transformer}
+## Running the transformer
 
 Assets can be in any directory in the package. However, if you want an
 asset to be publicly available to another package,
@@ -309,14 +309,14 @@ The `pub build`, `pub serve`, and `pub run` commands automatically run
 transformers. For more information, see
 [How transformers work](/tools/pub/assets-and-transformers#how-transformers-work).
 
-## More information {#more-info}
+## More information
 
-* [Writing an Aggregate Transformer](aggregate)
+* [Writing an Aggregate Transformer](/tools/pub/transformer/aggregate)
 : How to write a transformer that combines multiple input assets
   into a single output.
-* [Writing a Lazy Transformer](lazy-transformer)
+* [Writing a Lazy Transformer](/tools/pub/transformer/lazy-transformer)
 : How to write a transformer that processes lazily, in the background.
-* [Examples of Transformer Code](examples)
+* [Examples of Transformer Code](/tools/pub/transformer/examples)
 : Examples to get you started.
 * [barback library](https://pub.dartlang.org/packages/barback)
 : API docs for the barback package.

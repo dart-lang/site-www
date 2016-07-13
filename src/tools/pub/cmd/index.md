@@ -17,20 +17,20 @@ use <code class="literal">pub build</code> to generate the final files.
 Quick links to the `pub` commands:
 
 * [`pub build`]({{site.webdev}}/tools/pub/pub-build)
-* [`pub cache`](pub-cache)
-* [`pub deps`](pub-deps)
-* [`pub downgrade`](pub-downgrade)
-* [`pub get`](pub-get)
-* [`pub global`](pub-global)
-* [`pub publish`](pub-lish)
-* [`pub run`](pub-run)
+* [`pub cache`](/tools/pub/cmd/pub-cache)
+* [`pub deps`](/tools/pub/cmd/pub-deps)
+* [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
+* [`pub get`](/tools/pub/cmd/pub-get)
+* [`pub global`](/tools/pub/cmd/pub-global)
+* [`pub publish`](/tools/pub/cmd/pub-lish)
+* [`pub run`](/tools/pub/cmd/pub-run)
 * [`pub serve`]({{site.webdev}}/tools/pub/pub-serve)
-* [`pub upgrade`](pub-upgrade)
-* [`pub uploader`](pub-uploader)
+* [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
+* [`pub uploader`](/tools/pub/cmd/pub-uploader)
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 
 Pub's commands fall into the following categories:
@@ -40,22 +40,22 @@ Pub's commands fall into the following categories:
 Pub provides a number of commands that support
 the creation and maintenance of a Dart application.
 
-* The [`pub cache`](pub-cache) command works with your system cache.
+* The [`pub cache`](/tools/pub/cmd/pub-cache) command works with your system cache.
   You can add new packages to your cache,
   or perform a clean reinstall of all packages in your cache.
 
-* The [`pub deps`](pub-deps) command lists all of the dependencies
+* The [`pub deps`](/tools/pub/cmd/pub-deps) command lists all of the dependencies
   used by a package.
 
-* The [`pub downgrade`](pub-downgrade) command retrieves the lowest
+* The [`pub downgrade`](/tools/pub/cmd/pub-downgrade) command retrieves the lowest
   versions of all the packages that are listed as dependencies
   used by the application. This is useful for testing the lower range
   of your package's dependencies.
 
-* The [`pub get`](pub-get) command retrieves the packages that are
+* The [`pub get`](/tools/pub/cmd/pub-get) command retrieves the packages that are
   listed as the dependencies for the application.
 
-* The [`pub upgrade`](pub-upgrade) command retrieves the latest
+* The [`pub upgrade`](/tools/pub/cmd/pub-upgrade) command retrieves the latest
   versions of all the packages that are listed as dependencies
   used by the application.
 
@@ -80,10 +80,10 @@ There are two commands that you can use to run Dart scripts
 from the command line. Each command first runs any needed
 transformers before invoking the specified script.
 
-* The [`pub run`](pub-run) command invokes a Dart script in your
+* The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
   package, or in one of its dependencies.
 
-* The [`pub global`](pub-global) command lets you work with globally
+* The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with globally
   available packages that can be run when you are not currently inside
   a package.
 
@@ -97,9 +97,9 @@ the assets into the build directory.
 ## Publication
 
 If you want to share your Dart packages with the world, you can
-use the [`pub publish`](pub-lish) command to upload your package to
+use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload your package to
 [pub.dartlang.org](https://pub.dartlang.org). The
-[`pub uploader`](pub-uploader) command enables specific users
+[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific users
 to modify and upload new versions of your package.
 
 ---

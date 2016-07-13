@@ -22,9 +22,9 @@ You first [activate a package](#activating-a-package), then you can
 your list of globally available packages.
 
 To run a Dart script from within a package, or from a
-package that your package depends on, see [pub run](pub-run.html).
+package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 
-## Activating a package {#activating-a-package}
+## Activating a package
 
 {% prettify sh %}
 $ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
@@ -88,7 +88,7 @@ pub global activate --source path ~/dart/stopwatch
 Once a package has been activated, you can upgrade it by activating the
 package again.
 
-## Running a script {#running-a-script}
+## Running a script
 
 You can run a script from an activated package explicitly using
 `pub global run`, or you can add it to your PATH so that you can run it
@@ -110,7 +110,7 @@ and passes in two arguments.
 $ pub global run foo:bar arg1 arg2
 {% endprettify %}
 
-### Running a script from your PATH {#running-a-script-from-your-path}
+### Running a script from your PATH
 
 A package may choose to expose some of its scripts as executables
 that can be run directly from the command line.  The script must
@@ -148,7 +148,7 @@ You can now run `helloworld` at the command line.
 
 For more information on the these flags, see [Options](#options).
 
-## Deactivating a package {#deactivating-a-package}
+## Deactivating a package
 
 {% prettify sh %}
 $ pub global deactivate <package>
@@ -164,7 +164,7 @@ $ pub global deactivate markdown
 You can no longer invoke the package's scripts using `pub global run`,
 or at the command line.
 
-## Listing active packages {#listing-active-packages}
+## Listing active packages
 
 {% prettify sh %}
 $ pub global list
@@ -172,7 +172,7 @@ $ pub global list
 
 Use `list` to list all currently active packages.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd/#global-options).
@@ -224,5 +224,5 @@ $ pub global activate foo -x bar -x baz
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
-See [Troubleshooting Pub](../troubleshoot.html).
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
