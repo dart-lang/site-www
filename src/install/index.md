@@ -6,7 +6,7 @@ permalink: /install/
 toc: false
 
 js:
-- url: archive/assets/install.js
+- url: /install/archive/assets/install.js
   defer: true
 ---
 
@@ -25,19 +25,19 @@ or see the [zip file archive](/install/archive/).
 
 A package manager can help you easily install and update the Dart SDK.
 
-* [Installing Dart on Windows](windows) with Chocolatey or a
+* [Installing Dart on Windows](/install/windows) with Chocolatey or a
   Windows installer
-* [Installing Dart on Mac](mac) with homebrew
-* [Installing Dart on Linux](linux) with our Debian package
+* [Installing Dart on Mac](/install/mac) with homebrew
+* [Installing Dart on Linux](/install/linux) with our Debian package
 
 ## Manual install
 
 Not using a package manager for your OS? No problem!
 
-[Download](archive/)
+[Download](/install/archive/)
 zip files of the Dart SDK, Dartium, and docs.
 
 ## Looking for an older version?
 
-Check out our [zip file archive](archive/) for
+Check out our [zip file archive](/install/archive/) for
 previous versions of the Dart SDK.

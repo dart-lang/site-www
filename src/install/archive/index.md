@@ -5,9 +5,9 @@ description: "Download specific stable and dev channel versions of the Dart SDK,
 permalink: /install/archive/
 
 js:
-- url: out/web/download_archive.dart.js
+- url: /install/archive/out/web/download_archive.dart.js
   defer: true
-- url: assets/install.js
+- url: /install/archive/assets/install.js
   defer: true
 ---
 

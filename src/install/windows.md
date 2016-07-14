@@ -5,7 +5,7 @@ description: "Installing and updating the Dart SDK on Windows with Chocolatey or
 permalink: /install/windows
 
 js:
-- url: archive/assets/install.js
+- url: /install/archive/assets/install.js
   defer: true
 ---
 

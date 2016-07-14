@@ -5,7 +5,7 @@ description: "Installing and updating the Dart SDK on Linux with apt-get, a Debi
 permalink: /install/linux
 
 js:
-- url: archive/assets/install.js
+- url: /install/archive/assets/install.js
   defer: true
 ---
 
