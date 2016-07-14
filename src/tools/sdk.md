@@ -8,7 +8,7 @@ permalink: /tools/sdk
 The Dart SDK has the libraries and command-line tools
 that you need to develop Dart applications.
 To learn about other tools you can use for Dart development,
-see [Dart Tools](/tools/).
+see [Dart Tools](/tools).
 
 ## Getting the SDK
 
@@ -18,7 +18,7 @@ is a great way to learn how to write a simple app in the Dart
 language, once you are ready to start doing real-world development,
 you need the Dart SDK.
 
-[Install the Dart SDK](/install/).
+[Install the Dart SDK](/install).
 
 ## What's in the SDK
 
@@ -28,7 +28,7 @@ and a `bin` directory that has these command-line tools:
 
 <div class="row"> <div class="col-md-6" markdown="1">
 
-[dart](/dart-vm/)
+[dart](/dart-vm)
 : The standalone VM
 
 [dart2js]({{site.webdev}}/tools/dart2js)
@@ -42,7 +42,7 @@ and a `bin` directory that has these command-line tools:
 [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc)
 : The API documentation generator
 
-[pub](/tools/pub/)
+[pub](/tools/pub)
 : The Dart package manager
 
 [dartfmt](https://github.com/dart-lang/dart_style#readme)

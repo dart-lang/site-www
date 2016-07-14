@@ -5,7 +5,7 @@ description: "Learn more about Dart's tool for managing packages and assets, the
 permalink: /tools/pub/get-started
 ---
 
-You can use [pub](/tools/pub/) to manage Dart packages.
+You can use [pub](/tools/pub) to manage Dart packages.
 
 At the very minimum,
 a Dart package is simply a directory containing a _pubspec_ file.
@@ -63,7 +63,7 @@ dependencies:
   intl: ^0.12.4
 {% endprettify %}
 
-For details, see the [pubspec documentation](/tools/pub/pubspec.html)
+For details, see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages you are interested in using.
 
 ## Installing packages

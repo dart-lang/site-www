@@ -4,7 +4,7 @@ permalink: /tools/pub/pubspec
 title: "Pubspec Format"
 ---
 
-Every [pub](/tools/pub/) package needs some metadata so it can specify its
+Every [pub](/tools/pub) package needs some metadata so it can specify its
 [dependencies](/tools/pub/glossary#dependency). Pub packages that are shared with
 others also need to provide some other information so users can discover them.
 Pub stores this in a file named `pubspec.yaml`, which is written in

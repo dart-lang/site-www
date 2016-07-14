@@ -22,11 +22,11 @@ for the standalone Dart VM.
   </aside>
 
 [Dart SDK](/tools/sdk)
-: [Download the Dart SDK](/install/) to get the core Dart
+: [Download the Dart SDK](/install) to get the core Dart
   libraries and [Dart VM Tools](/dart-vm/tools).
 
 More tools
-: The Dart [Tools](/tools/) page links to generally useful tools,
+: The Dart [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
 
 ## Tutorials

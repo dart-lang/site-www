@@ -390,4 +390,4 @@ Indent the next line by 4 spaces and use the form:
 ## Writing a transformer
 
 To write a transformer, see
-[Writing a Pub Transformer](/tools/pub/transformers/).
+[Writing a Pub Transformer](/tools/pub/transformers).

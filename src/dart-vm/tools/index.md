@@ -13,7 +13,7 @@ need to write Dart scripts and servers.
 The following tools have special support for
 running scripts and servers.
 
-[Standalone Dart VM: `dart`](dart-vm)
+[Standalone Dart VM: `dart`](/dart-vm)
 : Executes Dart code.
   IDEs that support Dart,
   and some of the `pub` commands, use this
@@ -21,7 +21,7 @@ running scripts and servers.
   Note that you must configure your IDE with the location of
   the `dart` binary.
 
-[Pub package manager: `pub`]({{site.dartlang}}/tools/pub)
+[Pub package manager: `pub`](/tools/pub)
 : Simplifies downloading and running scripts,
   with commands such as `pub get`, `pub global activate`, `pub global run`,
   and `pub run`.
@@ -36,4 +36,4 @@ Other SDK tools that are handy for script and server development include:
   Generates API reference documentation.
 
 For more information, including tools outside the Dart SDK, see
-[Dart Tools]({{site.dartlang}}/tools).
+[Dart Tools](/tools).

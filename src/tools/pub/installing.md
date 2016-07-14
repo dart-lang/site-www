@@ -5,7 +5,7 @@ description: "How to install and configure your environment for Dart's package m
 permalink: /tools/pub/installing
 ---
 
-[Pub](/tools/pub/) is one of the tools in the
+[Pub](/tools/pub) is one of the tools in the
 [Dart SDK](/tools/sdk).
 
 You can use pub through an IDE, such as WebStorm, or through the
@@ -26,7 +26,7 @@ in your home directory (on Mac and Linux),
 or in `AppData\Roaming\Pub\Cache` (on Windows).
 You can use the `PUB_CACHE` environmant
 variable to specify another location. For more information, see
-[The system package cache](/tools/pub/cmd/pub-get.html).
+[The system package cache](/tools/pub/cmd/pub-get).
 
 `PUB_HOSTED_URL`:
 Pub downloads dependencies from `pub.dartlang.org`. To specify the
@@ -41,7 +41,7 @@ PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
 **Note:**
 If you are attempting to use `pub get` behind a corporate firewall
 and it fails, please see
-[`pub get` fails from behind a corporate firewall](/tools/pub/troubleshoot.html#pub-get-fails-from-behind-a-corporate-firewall)
+[`pub get` fails from behind a corporate firewall](/tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall)
 for information on how to set up the proxy environment variables for
 your platform.
 </aside>

@@ -10,7 +10,7 @@ With [Homebrew](http://brew.sh/),
 installing and updating Dart is easy.
 
 Don't want to use homebrew?
-Another option is [downloading Dart manually](/install/archive/).
+Another option is [downloading Dart manually](/install/archive).
 
 ## Installing {#homebrew-install-dart}
 

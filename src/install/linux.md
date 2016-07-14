@@ -18,7 +18,7 @@ when new versions are released.
 
 Other options are:
 
-* [Downloading Dart manually](/install/archive/)
+* [Downloading Dart manually](/install/archive)
 * [Compiling Dart from source](#compiling-from-source)
 
 If you are doing web development, you will also need to

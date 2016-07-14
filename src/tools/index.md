@@ -28,7 +28,7 @@ try WebStorm, which comes with Dart support.
 <ul class="col2">
 <li>
 <img src="{% asset_path 'tools/IntellIJ-IDEA.png' %}" alt="IntelliJ logo">
-<a href="jetbrains-plugin"><b>IntelliJ IDEA<br>
+<a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrain IDEs)</b></a>
 </li>
 <li>

@@ -5,7 +5,7 @@ title: "Pub Dependencies"
 description: "Add other packages to your app. Specify package locations, version constraints, and more."
 ---
 
-Dependencies are one of [pub](/tools/pub/)'s core concepts.
+Dependencies are one of [pub](/tools/pub)'s core concepts.
 A dependency is another package that your package needs in order to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec.html).
 You only list
@@ -15,7 +15,7 @@ software that your package uses directly. Pub handles
 
 <aside class="alert alert-info">
 To see all the dependencies used by a package, use
-[`pub deps`](/tools/pub/cmd/pub-deps.html).
+[`pub deps`](/tools/pub/cmd/pub-deps).
 </aside>
 
 For each dependency, you specify the *name* of the package you depend on.
@@ -252,7 +252,7 @@ _Caret syntax_ provides a more compact way of expressing the most common
 sort of version constraint.
 `^version` means "the range of all versions guaranteed to be backwards
 compatible with the specified version", and follows pub's convention for
-[semantic versioning](/tools/pub/versioning.html#semantic-versions).
+[semantic versioning](/tools/pub/versioning#semantic-versions).
 For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
 `^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
 The following is an example of caret syntax:

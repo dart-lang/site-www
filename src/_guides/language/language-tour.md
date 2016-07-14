@@ -3867,7 +3867,7 @@ This page summarized the commonly used features in the Dart language.
 More features are being implemented, but we expect that they won’t break
 existing code. For more information, see the [Dart Language
 Specification](/guides/language/spec) and
-[Effective Dart](/guides/language/effective-dart/).
+[Effective Dart](/guides/language/effective-dart).
 
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).

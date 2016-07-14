@@ -10,7 +10,7 @@ same thing the same way, it makes it easier for us to learn our way around
 each other's work. It also makes it easier to write tools that can
 automatically do things for us.
 
-When you build a [pub](/tools/pub/) package,
+When you build a [pub](/tools/pub) package,
 we have a set of conventions we encourage you to follow.
 They describe how you organize the files and directories within your
 package, and how to name things. You don't have to have every single thing

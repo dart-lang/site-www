@@ -57,7 +57,7 @@ you need to install it.
 If you're using Dart to develop web apps,
 we recommend install Dartium, as well.
 
-* [Download the Dart SDK](/install/)
+* [Download the Dart SDK](/install)
 * [Download Dartium]({{site.webdev}}/tools/dartium) (optional)
 
 

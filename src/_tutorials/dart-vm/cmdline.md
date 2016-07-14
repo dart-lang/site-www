@@ -53,7 +53,7 @@ from GitHub.
 ## Running an app with the standalone Dart VM {#run-the-first-app}
 
 To run a command-line app, you need the Dart VM (`dart`),
-which comes when you [install the Dart SDK](/install/).
+which comes when you [install the Dart SDK](/install).
 
 The location of the SDK installation directory
 (we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform

@@ -6,7 +6,7 @@ permalink: /tutorials/dart-vm
 toc: false
 
 nextpage:
-  url: get-started
+  url: /tutorials/dart-vm/get-started
   title: Get Started
 
 header:
