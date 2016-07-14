@@ -76,15 +76,6 @@ From the top-level directory, run:
 deploy/check_sitemap.rb
 ```
 
+## Editing the site
 
-## Misc notes
-
-We plan to beef these notes up and move them to a separate page.
-
-* If you want italics, use &lt;em&gt;. The i-tag is used for icon fonts, such as
-  font-awesome.
-* We plan to feature links without trailing slashes. Consequences:
-  * If you're editing an index.md/index.html page, use absolute links.
-    [PENDING: example here]
-  * The permalink must not have a trailing slash. (Otherwise, the link checker won't find issues.)
-  * (Are there analytics consequences?)
+See https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org.
