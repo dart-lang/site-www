@@ -106,4 +106,4 @@ I think we used this to make sure we redirect the files we cared about.
 
 ## Editing the site
 
-See https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org.
+See [Writing for *.dartlang.org](https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org).
