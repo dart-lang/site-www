@@ -189,5 +189,5 @@ the same.
 * [Pub Dependencies](/tools/pub/dependencies)
 * [Pubspec Format](/tools/pub/pubspec)
 * [Pub Package Layout Conventions](/tools/pub/package-layout)
-* [Pub Commands](/tools/pub/cmd/)
+* [Pub Commands](/tools/pub/cmd)
 

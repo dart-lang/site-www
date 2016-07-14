@@ -2,7 +2,7 @@
 layout: default
 title: "Cookbook: Dart by Example"
 short-title: "Cookbook"
-permalink: /dart-vm/dart-by-example/
+permalink: /dart-vm/dart-by-example
 description: "A cookbook, or set of examples, showing idiomatic Dart code."
 
 header:

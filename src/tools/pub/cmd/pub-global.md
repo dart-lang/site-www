@@ -10,7 +10,7 @@ header:
 ---
 
 _Global_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 **Contents**
 
@@ -175,7 +175,7 @@ Use `list` to list all currently active packages.
 ## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 `constraint`
 : Optional for `pub global activate`. The constraint allows you to pull

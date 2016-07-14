@@ -2,7 +2,7 @@
 layout: default
 title: "Articles: Libraries"
 description: "Read these articles about Dart's core libraries and its APIs."
-permalink: /articles/libraries/
+permalink: /articles/libraries
 toc: false
 ---
 
@@ -19,7 +19,7 @@ Read these articles for insight into the Dart libraries and APIs.
 
 Also see:
 
-* [Language articles](/articles/language/)
-* [Design decision articles](/articles/design-decisions/)
-* [Dart VM articles](/articles/dart-vm/)
-* [webdev articles]({{site.webdev}}/articles/)
+* [Language articles](/articles/language)
+* [Design decision articles](/articles/design-decisions)
+* [Dart VM articles](/articles/dart-vm)
+* [webdev articles]({{site.webdev}}/articles)

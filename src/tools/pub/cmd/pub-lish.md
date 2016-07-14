@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Publish_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub publish [--dry-run] [--force] [--server <url>]
@@ -17,12 +17,12 @@ This command publishes your package on
 [pub.dartlang.org](https://pub.dartlang.org) for anyone to download and depend
 on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
-see [Publishing a Package](../publishing.html).
+see [Publishing a Package](/tools/pub/publishing).
 
 ## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 ### `--dry-run` or `-n`
 

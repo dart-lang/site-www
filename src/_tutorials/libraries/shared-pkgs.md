@@ -328,6 +328,6 @@ when you import a library.
   [pub.dartlang.org](https://pub.dartlang.org/).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
-* See the [pub documentation](/tools/pub/)
+* See the [pub documentation](/tools/pub)
   for more information on using and sharing packages.
 

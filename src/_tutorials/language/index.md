@@ -2,7 +2,7 @@
 layout: default
 title: "Dart Tutorials: Language"
 description: "Tutorials pertaining to the Dart language, such as asynchronous programming."
-permalink: /tutorials/language/
+permalink: /tutorials/language
 toc: false
 
 header:

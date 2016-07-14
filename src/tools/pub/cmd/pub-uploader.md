@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Uploader_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub uploader [options] {add/remove} <email>
@@ -47,7 +47,7 @@ Google Apps email address for any new uploaders.
 ## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

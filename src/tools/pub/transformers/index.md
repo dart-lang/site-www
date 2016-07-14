@@ -2,7 +2,7 @@
 layout: default
 title: "Writing a Pub Transformer"
 description: "How to write a Pub transformer that processes a single input asset."
-permalink: /tools/pub/transformers/
+permalink: /tools/pub/transformers
 ---
 
 Every time you prepare a Dart app for testing or deployment,
@@ -25,11 +25,11 @@ a single input asset. If you need to process multiple inputs with no single
 primary input&ndash;you want to combine several images into one image,
 for example&ndash;you can write an _aggregate_ transformer.
 For more information, see
-[Writing an Aggregate Tranformer](/tools/pub/transformer/aggregate).
+[Writing an Aggregate Tranformer](/tools/pub/transformers/aggregate).
 
 This page uses two examples, SimpleTransformer and
 MarkdownConverter, which you can find through
-[Examples of Transformer Code](/tools/pub/transformer/examples).
+[Examples of Transformer Code](/tools/pub/transformers/examples).
 
 ## Implementing a transformer
 
@@ -62,7 +62,7 @@ A transformer's code goes into one of the following locations:
   such as `lib/stuff/myfile.dart`.
 
 The transformer's file name and location affect how you set
-up the pubspec.  See [Add the transformer](#add-transformer)
+up the pubspec.  See [Add the transformer](#add-the-transformer)
 for more details.
 
 ### Get barback
@@ -140,7 +140,7 @@ do this in one of two ways:
 
 * Implement `allowedExtensions` to return a
   space-separated list of file extensions. The following
-  code, from [markdown_converter](/tools/pub/transformer/examples),
+  code, from [markdown_converter](/tools/pub/transformers/examples),
   limits input assets to those
   files with one of three Markdown file extensions:
 
@@ -311,12 +311,12 @@ transformers. For more information, see
 
 ## More information
 
-* [Writing an Aggregate Transformer](/tools/pub/transformer/aggregate)
+* [Writing an Aggregate Transformer](/tools/pub/transformers/aggregate)
 : How to write a transformer that combines multiple input assets
   into a single output.
-* [Writing a Lazy Transformer](/tools/pub/transformer/lazy-transformer)
+* [Writing a Lazy Transformer](/tools/pub/transformers/lazy-transformer)
 : How to write a transformer that processes lazily, in the background.
-* [Examples of Transformer Code](/tools/pub/transformer/examples)
+* [Examples of Transformer Code](/tools/pub/transformers/examples)
 : Examples to get you started.
 * [barback library](https://pub.dartlang.org/packages/barback)
 : API docs for the barback package.

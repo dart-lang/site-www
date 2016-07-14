@@ -7,16 +7,16 @@ toc: false
 ---
 
 _Downgrade_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub downgrade [dependencies...]
 {% endprettify %}
 
 Without any additional arguments, `pub downgrade` gets the lowest versions of
-all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec.html)
+all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec)
 file in the current working directory, as well as their [transitive
-dependencies]({{site.dartlang}}/tools/pub/glossary#transitive-dependency), to the `packages`
+dependencies](/tools/pub/glossary#transitive-dependency), to the `packages`
 directory located next to the pubspec. For example:
 
 {% prettify sh %}
@@ -96,7 +96,7 @@ available.
 ## Options {#options}
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

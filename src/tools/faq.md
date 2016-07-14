@@ -25,7 +25,7 @@ has some advice on what not to put into your source repo.
 
 ## Pub
 
-Here are some frequently asked questions about [pub](/tools/pub/).
+Here are some frequently asked questions about [pub](/tools/pub).
 
 #### Q. What are pub's system requirements?
 

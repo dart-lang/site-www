@@ -11,7 +11,7 @@ js:
 
 Don't want to use Chocolatey or a Windows installer?
 Another option is
-[installing Dart manually](/install/archive/).
+[installing Dart manually](/install/archive).
 
 * [Installing using Chocolatey](#chocolatey)
 * [Using a third-party installer](#installer)
@@ -25,7 +25,7 @@ The **dart** package contains the [Dart SDK](/tools/sdk),
 which includes the Dart VM, libraries, and command-line Dart tools such as
 [dart]({{site.dart_vm}}/tools/dart-vm),
 [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli),
-[pub](/tools/pub/),
+[pub](/tools/pub),
 and [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
 If you are doing web development, you should also add one more tool:
 

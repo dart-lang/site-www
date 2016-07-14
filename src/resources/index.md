@@ -2,7 +2,7 @@
 layout: default
 title: "Resources"
 description: "Landing page for dartlang's resources."
-permalink: /resources/
+permalink: /resources
 toc: false
 ---
 
@@ -25,7 +25,7 @@ Check out the following Dart language resources:
   </div>
 
   <div class="card">
-    <h3><a href="/resources/authors/">Authors</a></h3>
+    <h3><a href="/resources/authors">Authors</a></h3>
     <p>Bios for some of the authors who have contributed to this site.</p>
   </div>
 </div>

@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Run_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub run [--mode=<mode>] [--checked] <executable> [args...]
@@ -59,10 +59,10 @@ $ pub run foo:bar arg
 You can only run scripts out of another package's `bin` directory.
 All other directories are private.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <dl>
   <dt><code>--mode=&lt;mode&gt;</code></dt>

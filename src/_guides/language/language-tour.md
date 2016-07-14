@@ -3266,7 +3266,7 @@ are visible only inside the library. *Every Dart app is a library*, even
 if it doesn’t use a `library` directive.
 
 Libraries can be distributed using packages. See
-[Pub Package and Asset Manager](/tools/pub/)
+[Pub Package and Asset Manager](/tools/pub)
 for information about
 pub, a package manager included in the SDK.
 

@@ -1,7 +1,7 @@
 ---
 title: "Sample Code"
 description: "Examples of idiomatic Dart with links to larger examples."
-permalink: /samples/
+permalink: /samples
 ---
 
 This collection is not exhaustive&mdash;it's just a brief

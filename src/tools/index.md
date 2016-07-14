@@ -2,7 +2,7 @@
 layout: default
 title: "Dart Tools"
 description: "The tools that support the Dart language."
-permalink: /tools/
+permalink: /tools
 toc: false
 ---
 
@@ -66,8 +66,8 @@ Which SDK you need depends on what type of app you're developing.
 |------------------------+----------+-------------------------------------|
 | App type | SDK | Download instructions | More information |
 |--------------------------|------------------------------------------------|
-| Web app | Dart | [Install Dart and Dartium](/install/) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools/) |
-| Script or server | Dart | [Install Dart](/install/) | [Dart SDK](/tools/sdk), [Dart VM Tools](/dart-vm/tools/) |
+| Web app | Dart | [Install Dart and Dartium](/install) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools) |
+| Script or server | Dart | [Install Dart](/install) | [Dart SDK](/tools/sdk), [Dart VM Tools](/dart-vm/tools) |
 | Embedded app | Dartino | [Getting started]({{site.dartino}}/getting-started/) | [dartino.org]({{site.dartino}}) |
 | Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io]({{site.flutter}}) |
 {:.table .table-striped}
@@ -78,7 +78,7 @@ Which SDK you need depends on what type of app you're developing.
 
 Most Dart-related SDKs include the following tools.
 
-[Pub package manager](/tools/pub/)
+[Pub package manager](/tools/pub)
 : Manages Dart packages,
   making it easy for you to install, use, and share Dart libraries,
   command-line tools, and other assets.
@@ -102,7 +102,7 @@ For details about these and many other tools,
 see the tools documentation for the SDK you're using:
 
 * [Dart SDK](/tools/sdk) and specialized tools:
-  * [Dart Tools for the Web]({{site.webdev}}/tools/)
-  * [Dart VM Tools]({{site.dart_vm}}/tools/)
+  * [Dart Tools for the Web]({{site.webdev}}/tools)
+  * [Dart VM Tools]({{site.dart_vm}}/tools)
 * [Dartino]({{site.dartino}}/getting-started/)
 * [Flutter]({{site.flutter}}/setup/)

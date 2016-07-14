@@ -2,7 +2,7 @@
 layout: default
 title: "Dart Code Labs"
 description: "Links to Dart codelabs."
-permalink: /codelabs/
+permalink: /codelabs
 toc: false
 ---
 
@@ -12,7 +12,7 @@ You may find the following code labs useful:
   <p>Learn how to use the Angular framework with Dart while you build a pirate
   badge generator that runs in any modern browser.</p>
 
-* [Build Cross-Platform Firebase Apps with Flutter](https://codelabs.developers.google.com/codelabs/flutter/index.html?index=..%2F..%2Fio2016#0)
+* [Build Cross-Platform Firebase Apps with Flutter](https://codelabs.developers.google.com/codelabs/flutter/index.html?index=..%2F..%2Fio2016)
   <p>Write a material design-style chat app that runs on Android or iOS from a
   single codebase. Connect your app to a realtime Firebase database for data syncing.</p>
 

@@ -2,7 +2,7 @@
 layout: default
 title: "Dart Tutorials"
 description: "Tutorials for writing Dart apps."
-permalink: /tutorials/
+permalink: /tutorials
 ---
 
 **The Dart Tutorials** teach you how to build applications
@@ -50,7 +50,7 @@ Organize and share code at
 
 ## More tutorials
 
-* [Dart VM Tutorials](/tutorials/dart-vm/)
-* [Web Tutorials]({{site.webdev}}/tutorials/)
+* [Dart VM Tutorials](/tutorials/dart-vm)
+* [Web Tutorials]({{site.webdev}}/tutorials)
 * [Dart Academy](https://dart.academy)
 

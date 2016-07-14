@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Upgrade_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub upgrade [dependencies...]
@@ -91,10 +91,10 @@ only version of some dependency in your cache happens to be old, this locks
 your app to that version. The next time you are online, you will likely want to
 run `pub upgrade` again to upgrade to a later version.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

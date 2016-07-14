@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Get_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub get [--offline]
@@ -21,7 +21,7 @@ $ pub get [--offline] [--no-package-symlinks]
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their
-[transitive dependencies]({{site.dartlang}}/tools/pub/glossary#transitive-dependency).
+[transitive dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
 {% prettify sh %}
@@ -29,7 +29,7 @@ $ pub get
 Got dependencies!
 {% endprettify %}
 
-If the [system cache]({{site.dartlang}}/tools/pub/glossary#system-cache)
+If the [system cache](/tools/pub/glossary#system-cache)
 doesn't already contain the dependencies, `pub get`
 updates the cache,
 downloading dependencies if necessary.
@@ -67,7 +67,7 @@ import 'package:test/test.dart';
 {% endprettify %}
 
 When `pub get` gets new dependencies, it writes a
-[lockfile]({{site.dartlang}}/tools/pub/glossary#lockfile) to ensure that future
+[lockfile](/tools/pub/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
 Application packages should check in the lockfile to source control;
 this ensures the application will use the exact same versions
@@ -78,7 +78,7 @@ expected to work with a range of dependency versions.
 If a lockfile already exists, `pub get` uses the versions of dependencies
 locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
-constraints]({{site.dartlang}}/tools/pub/glossary#version-constraint).
+constraints](/tools/pub/glossary#version-constraint).
 This is the primary difference between `pub get` and
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
@@ -114,7 +114,7 @@ already-acquired dependencies.
 
 Dependencies downloaded over the internet, such as those from Git and
 [pub.dartlang.org](https://pub.dartlang.org), are stored in a
-[system-wide cache]({{site.dartlang}}/tools/pub/glossary#system-cache).
+[system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
 downloaded and stored locally once. It also means that it's safe to delete
@@ -147,10 +147,10 @@ only version of some dependency in your cache happens to be old, this locks
 your app to that version. The next time you are online, you will likely want to
 run [`pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

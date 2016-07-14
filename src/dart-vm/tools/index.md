@@ -2,11 +2,11 @@
 layout: default
 title: "Dart VM Tools"
 description: "The tools that you get when you download the Dart SDK."
-permalink: /dart-vm/tools/
+permalink: /dart-vm/tools
 toc: false
 ---
 
-When you [install](/install/) the
+When you [install](/install) the
 [Dart SDK](/tools/sdk), you get all the command-line tools that you
 need to write Dart scripts and servers.
 
@@ -21,7 +21,7 @@ running scripts and servers.
   Note that you must configure your IDE with the location of
   the `dart` binary.
 
-[Pub package manager: `pub`]({{site.dartlang}}/tools/pub/)
+[Pub package manager: `pub`]({{site.dartlang}}/tools/pub)
 : Simplifies downloading and running scripts,
   with commands such as `pub get`, `pub global activate`, `pub global run`,
   and `pub run`.
@@ -36,4 +36,4 @@ Other SDK tools that are handy for script and server development include:
   Generates API reference documentation.
 
 For more information, including tools outside the Dart SDK, see
-[Dart Tools]({{site.dartlang}}/tools/).
+[Dart Tools]({{site.dartlang}}/tools).

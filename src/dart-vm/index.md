@@ -3,7 +3,7 @@ layout: default
 title: "Dart VM"
 description: "The landing page for all things relating to the Dart virtual machine (Dart VM)"
 toc: false
-permalink: /dart-vm/
+permalink: /dart-vm
 ---
 
 This page points to tools and documentation
@@ -23,7 +23,7 @@ for the standalone Dart VM.
 
 [Dart SDK](/tools/sdk)
 : [Download the Dart SDK](/install/) to get the core Dart
-  libraries and [Dart VM Tools](/dart-vm/tools/).
+  libraries and [Dart VM Tools](/dart-vm/tools).
 
 More tools
 : The Dart [Tools](/tools/) page links to generally useful tools,
@@ -44,11 +44,11 @@ You might find the following tutorials helpful.
 
 ## More resources
 
-[Articles: Dart VM](/articles/dart-vm/)
+[Articles: Dart VM](/articles/dart-vm)
 : A collection of articles covering topics such as benchmarking,
   numeric computation, SIMD, and snapshots.
 
-[Cookbook: Dart by Example](/dart-vm/dart-by-example/)
+[Cookbook: Dart by Example](/dart-vm/dart-by-example)
 : Code snippets that perform common I/O tasks, featuring APIs from
   dart:io, dart:convert, the path package, and more.
 

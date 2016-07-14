@@ -63,7 +63,7 @@ Created by filiph, the Lucid app is available to Googlers in mystuff.
 {% endcomment %}
 
 <object class="get-started-flowchart" type="image/svg+xml" data="images/get-started-flowchart.svg">
-  <img src="images/get-started-flowchart.png">
+  <img src="images/get-started-flowchart.png" alt="flowchart showing how to learn Dart">
 </object>
 
 ## Books

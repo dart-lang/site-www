@@ -2,7 +2,7 @@
 layout: default
 title: "Dart VM Tutorials"
 description: "The Dart VM Tutorials&mdash;Your guide to building great apps."
-permalink: /tutorials/dart-vm/
+permalink: /tutorials/dart-vm
 toc: false
 
 nextpage:
@@ -17,7 +17,7 @@ The following tutorials show how to develop scripts and server apps for
 the standalone Dart VM.
 
 For tutorials relating to the Dart language and its libraries,
-see [Dart Tutorials]({{site.dartlang}}/tutorials/).
+see [Dart Tutorials]({{site.dartlang}}/tutorials).
 
 <div class="row">
   <div class="col-md-6">

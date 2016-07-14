@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Cache_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub cache add <package> [--version <constraint>] [--all]
@@ -20,10 +20,10 @@ To add new packages to your cache, use `pub cache add`.
 To perform a clean reinstall of the packages in your system cache,
 use `pub cache repair`.
 
-## Options {#options}
+## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 <dl>
 <dt><code>add &lt;package&gt;</code></dt>

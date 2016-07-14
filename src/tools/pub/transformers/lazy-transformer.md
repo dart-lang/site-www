@@ -24,7 +24,7 @@ If you aren't familiar with how to write a normal Pub tranformer, see
 [Writing a Pub Transformer](/tools/pub/transformers).
 
 This page uses the lazy_transformer example which you can find
-through [Examples of Transformer Code](/tools/pub/transformer/examples).
+through [Examples of Transformer Code](/tools/pub/transformers/examples).
 
 Note that this transformer example does not run slowly, but is used
 for purposes of illustration. If the transformer were passed an
@@ -36,7 +36,7 @@ for example&mdash;laziness would greatly improve the app's startup time.
 A lazy transformer implements [LazyTransformer][]
 from the [barback][] package.
 
-[LazyTransformer]: http://www.dartdocs.org/documentation/barback/0.15.0+1/index.html#barback/barback.LazyTransformer
+[LazyTransformer]: https://www.dartdocs.org/documentation/barback/latest/barback/LazyTransformer-class.html
 [barback]: https://pub.dartlang.org/packages/barback
 
 ### Implement `LazyTransformer`
@@ -68,7 +68,7 @@ void declareOutputs(DeclaringTransform transform) {
 }
 {% endprettify %}
 
-[declareOutputs]: http://www.dartdocs.org/documentation/barback/0.15.0+1/index.html#barback/barback.LazyTransformer@id_declareOutputs
+[declareOutputs]: https://www.dartdocs.org/documentation/barback/latest/barback/DeclaringTransformer/declareOutputs.html
 
 That's all that you need to do!
 
@@ -76,7 +76,7 @@ That's all that you need to do!
 
 * [Writing a Pub Transformer](/tools/pub/transformers/)
 : How to write a Pub transformer that accepts a single primary input.
-* [Examples of Transformer Code](/tools/pub/transformer/examples)
+* [Examples of Transformer Code](/tools/pub/transformers/examples)
 : Examples to get you started.
 * [barback library](https://pub.dartlang.org/packages/barback)
 : API docs for the barback package.

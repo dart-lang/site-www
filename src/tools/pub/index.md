@@ -3,7 +3,7 @@ layout: default
 title: "Pub Package and Asset Manager"
 description: "Use the pub tool to manage Dart's packages and assets."
 short-title: "Pub"
-permalink: /tools/pub/
+permalink: /tools/pub
 ---
 
 You can use the `pub` tool to manage Dart packages and assets.
@@ -60,7 +60,7 @@ One command installs packages, another starts up an HTTP server for testing,
 another prepares your app for deployment, and another
 publishes your package to [pub.dartlang.org](https://pub.dartlang.org).
 
-For an overview of these commands, see [Pub Commands](/tools/pub/cmd/).
+For an overview of these commands, see [Pub Commands](/tools/pub/cmd).
 
 The following reference pages cover each command in detail:
 
@@ -90,7 +90,7 @@ image, that is intended to be part of a deployed package.
 
 The following pages cover how to write a custom transformer:
 
-* [Writing a Pub Transformer](/tools/pub/transformers/)
+* [Writing a Pub Transformer](/tools/pub/transformers)
 * [Writing an Aggregate Transformer](/tools/pub/transformers/aggregate)
 * [Writing a Lazy Transformer](/tools/pub/transformers/lazy-transformer)
 * [Examples of Transformer Code](/tools/pub/transformers/examples)

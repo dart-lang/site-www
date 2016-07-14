@@ -5,12 +5,12 @@ description: "How Dart's package management tool, pub, handles versioning of pac
 permalink: /tools/pub/versioning
 ---
 
-One of [pub](/tools/pub/)'s main jobs is helping you work with versioning.
+One of [pub](/tools/pub)'s main jobs is helping you work with versioning.
 This document explains a bit about the history of versioning and pub's
 approach to it.
 Consider this to be advanced information. If you want a better picture of _why_
 pub was designed the way it was, read on. If you just want to _use_ pub,
-the [other docs](/tools/pub/) will serve you better.
+the [other docs](/tools/pub) will serve you better.
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the

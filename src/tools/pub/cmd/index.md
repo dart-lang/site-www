@@ -1,11 +1,11 @@
 ---
 layout: default
-permalink: /tools/pub/cmd/
+permalink: /tools/pub/cmd
 title: "Pub Commands"
 description: "Pub, a package and asset management tool for Dart, supports a variety of commands."
 ---
 
-Aside from managing packages, [pub](/tools/pub/) also has support for
+Aside from managing packages, [pub](/tools/pub) also has support for
 building web and command line apps.
 
 If your web app's directory structure follows pub's [package layout
@@ -104,7 +104,7 @@ to modify and upload new versions of your package.
 
 ---
 
-## Global options {#global-options}
+## Global options
 
 Several command-line options work with all of the pub commands.
 These include:

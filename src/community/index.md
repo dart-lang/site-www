@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /community/
+permalink: /community
 title: "Community and Support"
 description: "Communities, mailing lists, and bug databases for the Dart project."
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: "Install Dart"
 description: "The bundles that support the Dart language."
-permalink: /install/
+permalink: /install
 toc: false
 
 js:
@@ -19,7 +19,7 @@ formatter, debugger, and more.
 
 If you are doing web development, you will also need **Dartium**.
 Instructions for installing Dartium are also provided in the following pages,
-or see the [zip file archive](/install/archive/).
+or see the [zip file archive](/install/archive).
 
 ## Automated installation and updates
 
@@ -34,10 +34,10 @@ A package manager can help you easily install and update the Dart SDK.
 
 Not using a package manager for your OS? No problem!
 
-[Download](archive/)
+[Download](/install/archive)
 zip files of the Dart SDK, Dartium, and docs.
 
 ## Looking for an older version?
 
-Check out our [zip file archive](archive/) for
+Check out our [zip file archive](/install/archive) for
 previous versions of the Dart SDK.

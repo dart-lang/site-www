@@ -7,7 +7,7 @@ toc: false
 ---
 
 When _pub_ serves, builds, or runs an app, it can run one or more
-transformers. ([Learn more about pub](/tools/pub/).)
+transformers. ([Learn more about pub](/tools/pub).)
 
 Transformers operate on _assets_, where an asset is a resource,
 such as a Dart file, a CSS file, or an image, that is intended to
@@ -34,11 +34,11 @@ about that particular example.
 : Converts a markdown file (with either a ".mdown", ".md", or
   a ".markdown" extension) to HTML. The output asset has
   an ".html" extension.  See
-  [Writing a Pub Transformer](/tools/pub/transformers/) for more information.
+  [Writing a Pub Transformer](/tools/pub/transformers) for more information.
 
 [simple_transformer](https://github.com/dart-lang/barback/tree/master/example/simple_transformer)
 : Inserts a copyright string at the beginning of a ".txt" file. See
-  [Writing a Pub Transformer](/tools/pub/transformers/) for more information.
+  [Writing a Pub Transformer](/tools/pub/transformers) for more information.
 
 All of these examples are part of the
 [barback](https://github.com/dart-lang/barback) repo on GitHub.

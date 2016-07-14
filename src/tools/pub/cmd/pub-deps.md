@@ -7,7 +7,7 @@ toc: false
 ---
 
 _Deps_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub/).
+[Learn more about pub](/tools/pub).
 
 {% prettify sh %}
 $ pub deps [--style=<style>]
@@ -52,7 +52,7 @@ markdown_converter 0.0.0
 ## Options
 
 For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd/#global-options).
+[Global options](/tools/pub/cmd#global-options).
 
 `--style=<style>` or `-s <style>`
 : Optional. How the output should be displayed. The options are:

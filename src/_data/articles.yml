@@ -1,6 +1,6 @@
 - title: Language Details
   label:
-  permalink: /articles/language/
+  permalink: /articles/language
   children:
     - title: Mixins in Dart
       label:
@@ -19,7 +19,7 @@
       permalink: /articles/language/optional-types
 - title: Libraries and APIs
   label:
-  permalink: /articles/libraries/
+  permalink: /articles/libraries
   children:
     - title: Converters and Codecs
       label:

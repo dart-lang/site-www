@@ -116,7 +116,7 @@ If you wish to request a specific secondary input, you can use the
 
 ## More information
 
-* [Writing a Pub Transformer](/tools/pub/transformers/)
+* [Writing a Pub Transformer](/tools/pub/transformers)
 : How to write a Pub transformer that accepts a single primary input.
 * [Examples of Transformer Code](/tools/pub/transformers/examples)
 : Examples to get you started.

@@ -320,7 +320,7 @@ Many more have been released or are in development.
 See [Who Uses Dart] for more.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
-[pnacl]: https://developers.google.com/native-client/overview#distributing-an-application
+[pnacl]: https://developer.chrome.com/native-client/overview
 [whynotbytecode]: /articles/dart-vm/why-not-bytecode
 [issues]: https://github.com/dart-lang/sdk/issues/
 [pub]: https://pub.dartlang.org

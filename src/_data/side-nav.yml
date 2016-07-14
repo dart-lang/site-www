@@ -3,16 +3,16 @@
     - title: Get Started
       permalink: /guides/get-started
     - title: Sample Code
-      permalink: /samples/
+      permalink: /samples
 
 - title: Language
   children:
     - title: "Overview"
-      permalink: /guides/language/
+      permalink: /guides/language
     - title: "Tour"
       permalink: /guides/language/language-tour
     - title: "Effective Dart"
-      permalink: /guides/language/effective-dart/
+      permalink: /guides/language/effective-dart
       children:
         - title: Style
           permalink: /guides/language/effective-dart/style
@@ -26,19 +26,19 @@
 - title: Libraries
   children:
     - title: Overview
-      permalink: /guides/libraries/
+      permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
 
 - title: "Tools"
   children:
   - title: "Dart Tools"
-    permalink: /tools/
+    permalink: /tools
 
 - title: "Community"
   children:
   - title: "Community and Support"
-    permalink: /community/
+    permalink: /community
 
 - title: "Platforms"
   children:
@@ -58,9 +58,9 @@
       - title: "API Reference"
         permalink: https://dartino.github.io/api/
     - title: "Dart VM"
-      permalink: /dart-vm/
+      permalink: /dart-vm
       children:
       - title: "Install Dart"
-        permalink: /install/
+        permalink: /install
       - title: "API Reference"
         permalink: https://api.dartlang.org

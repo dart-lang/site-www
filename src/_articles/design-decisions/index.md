@@ -2,7 +2,7 @@
 layout: default
 title: "Articles: Design Decisions"
 description: "Articles related to the reasoning behind some of Dart's design decisions."
-permalink: /articles/design-decisions/
+permalink: /articles/design-decisions
 toc: false
 ---
 
@@ -19,7 +19,7 @@ Read these articles for insight into why Dart was designed to work the way it wo
 
 Also see:
 
-* [Language articles](/articles/language/)
-* [Libraries articles](/articles/libraries/)
-* [Dart VM articles](/articles/dart-vm/)
-* [webdev articles]({{site.webdev}}/articles/)
+* [Language articles](/articles/language)
+* [Libraries articles](/articles/libraries)
+* [Dart VM articles](/articles/dart-vm)
+* [webdev articles]({{site.webdev}}/articles)
