@@ -5,10 +5,12 @@ import 'package:html/parser.dart' show parse;
 import 'package:source_span/source_span.dart';
 import 'package:html/dom.dart';
 import 'package:args/args.dart';
+import 'dart:async';
 
 const helpFlag = "help";
 const verboseFlag = "verbose";
 const hostsFlag = "hosts";
+const externalFlag = "external";
 
 main(List<String> arguments) async {
   final parser = new ArgParser()
@@ -18,7 +20,9 @@ main(List<String> arguments) async {
     ..addOption(hostsFlag,
         allowMultiple: true,
         splitCommas: true,
-        help: "Additional hosts (domains) to check.");
+        help: "Additional hosts (domains) to check.")
+    ..addFlag(externalFlag,
+        abbr: 'e', negatable: false, help: "Check external links, too.");
   final argResults = parser.parse(arguments);
 
   if (argResults[helpFlag]) {
@@ -27,6 +31,7 @@ main(List<String> arguments) async {
   }
 
   bool verbose = argResults[verboseFlag];
+  bool shouldCheckExternal = argResults[externalFlag];
 
   final List<String> urls = argResults.rest.toList();
   if (urls.isEmpty) {
@@ -104,15 +109,14 @@ main(List<String> arguments) async {
 
   stdout.write("\nChecking resources");
   for (var resource in resources) {
-    if (verbose) {
-      print(resource);
-    } else {
-      stdout.write(".");
+    await checkLink(resource, client, verbose);
+  }
+
+  if (shouldCheckExternal) {
+    stdout.write("\nChecking external links");
+    for (var link in externals) {
+      await checkLink(link as Resource, client, verbose);
     }
-    var request = await client.getUrl(resource.uri);
-    var response = await request.close();
-    resource.statusCode = response.statusCode;
-    await response.drain();
   }
 
   client.close();
@@ -121,7 +125,8 @@ main(List<String> arguments) async {
   print("Found:");
   print("- ${closed.length} internal links (html)");
   print("- ${resources.length} resources (images, css, js, ...)");
-  print("- ${externals.length} external links (NOT CHECKED)\n");
+  print("- ${externals.length} external links"
+      "${shouldCheckExternal ? '' : '(NOT CHECKED)'}\n");
 
   Set<Page> failingPages =
       closed.where((page) => page.statusCode != 200).toSet();
@@ -129,6 +134,12 @@ main(List<String> arguments) async {
       resources.where((resource) => resource.statusCode != 200).toSet();
   Set<Resource> failing = new Set<Resource>.from(failingPages)
     ..addAll(failingResources);
+
+  if (shouldCheckExternal) {
+    Set<Resource> failingExternals =
+        externals.where((page) => page.statusCode != 200).toSet();
+    failing.addAll(failingExternals);
+  }
 
   Set<Referrer> allReferrers = failing.expand((page) => page.referrers).toSet();
 
@@ -158,6 +169,22 @@ main(List<String> arguments) async {
         }
       }
     }
+  }
+}
+
+Future checkLink(Resource resource, HttpClient client, bool verbose) async {
+  if (verbose) {
+    print(resource);
+  } else {
+    stdout.write(".");
+  }
+  try {
+    var request = await client.getUrl(resource.uri);
+    var response = await request.close();
+    resource.statusCode = response.statusCode;
+    await response.drain();
+  } on HttpException {
+    resource.statusCode = -1;
   }
 }
 
