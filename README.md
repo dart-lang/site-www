@@ -70,6 +70,8 @@ run this from the top of the repo:
 dart deploy/check_links/bin/check_links.dart
 ```
 
+If it crashes, add the `-v` option to figure out what triggered the crash.
+
 To check for valid HTML, good images, and broken links (though not as well as check_links.dart),
 run this from the top of the repo:
 
