@@ -28,10 +28,16 @@ Also see:
    ```
 npm install -g firebase-tools     # might require sudo
 ```   
-1. Install bundles
+1. Install bundles:
 
    ```
 bundle install
+```
+1. Get the dependencies for the check_links tool:
+
+   ```
+cd deploy/check_links
+pub get
 ```
 
 ### While you're editing the site
@@ -57,16 +63,23 @@ jekyll build && firebase serve --port 4000
 
 ## Checking the site's HTML
 
-To check for valid HTML, good images, and broken links,
+To check for broken links,
+run this from the top of the repo:
+
+```
+dart deploy/check_links/bin/check_links.dart
+```
+
+To check for valid HTML, good images, and broken links (though not as well as check_links.dart),
 run this from the top of the repo:
 
 ```
 ./deploy/html_proof.rb
 ```
 
-## More processes...
+## Checking against the sitemap
 
-Check the sitemap links using the
+Check the site against the old sitemap (?) using the
 following Ruby script.
 This command requires npm and Firebase:
 
@@ -75,6 +88,9 @@ From the top-level directory, run:
 ```
 deploy/check_sitemap.rb
 ```
+
+I think we used this to make sure we redirect the files we cared about.
+
 
 ## Editing the site
 
