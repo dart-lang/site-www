@@ -321,7 +321,7 @@ with words separated by underscores (`_`).
     provides more information about this tool.
   </li>
   <li>
-    The <a href="{{site.dartlang}}/tools/pub">pub</a>
+    The <a href="/tools/pub">pub</a>
     pages contain more information
     about Dart's package and asset manager.
   </li>

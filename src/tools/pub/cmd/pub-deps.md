@@ -15,9 +15,9 @@ $ pub deps [--style=<style>]
 
 This command prints the dependency graph for a package.
 The graph includes both the
-[immediate dependencies]({{site.dartlang}}/tools/pub/glossary#immediate-dependency)
+[immediate dependencies](/tools/pub/glossary#immediate-dependency)
 that the package uses (as specified in the pubspec), as well as the
-[transitive dependencies]({{site.dartlang}}/tools/pub/glossary#transitive-dependency)
+[transitive dependencies](/tools/pub/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
 The dependency information is printed as a tree, a list, or a compact

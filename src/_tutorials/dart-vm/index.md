@@ -17,7 +17,7 @@ The following tutorials show how to develop scripts and server apps for
 the standalone Dart VM.
 
 For tutorials relating to the Dart language and its libraries,
-see [Dart Tutorials]({{site.dartlang}}/tutorials).
+see [Dart Tutorials](/tutorials).
 
 <div class="row">
   <div class="col-md-6">

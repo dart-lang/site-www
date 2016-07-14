@@ -12,7 +12,7 @@ for the standalone Dart VM.
 
 ## Tools
 
-[DartPad]({{site.dartlang}}/tools/dartpad)
+[DartPad](/tools/dartpad)
 : Handy for both beginners and experts,
   DartPad lets you try out language features and dart:* APIs.
 
