@@ -31,8 +31,8 @@ you'll need to install an SDK.
     information about the fundamental Dart technologies:
   </p>
   <ul>
-    <li>the <a href="/guides/language/">language</a></li>
-    <li><a href="/guides/libraries/">core libraries</a></li>
+    <li>the <a href="/guides/language">language</a></li>
+    <li><a href="/guides/libraries">core libraries</a></li>
   </ul>
   <p>
     But where do you go when you have a use case in mind?
@@ -73,13 +73,13 @@ pick up one of the many [books about Dart](/resources/books).
 
 ## Samples
 
-Check out the Dart [samples](/samples/).
+Check out the Dart [samples](/samples).
 
 ## Get help
 
 There are a number of communities and platforms where you can ask,
 or answer, Dart-related questions. For a list, see
-[Community and Support](/community/).
+[Community and Support](/community).
 
 <div style='clear:right'></div>
 
