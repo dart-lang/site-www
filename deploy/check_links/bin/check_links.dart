@@ -7,12 +7,14 @@ import 'package:html/dom.dart';
 import 'package:args/args.dart';
 
 const helpFlag = "help";
+const verboseFlag = "verbose";
 const hostsFlag = "hosts";
 
 main(List<String> arguments) async {
   final parser = new ArgParser()
     ..addFlag(helpFlag,
         abbr: 'h', negatable: false, help: "Prints usage and exits.")
+    ..addFlag(verboseFlag, abbr: 'v', negatable: false, help: "Verbose mode.")
     ..addOption(hostsFlag,
         allowMultiple: true,
         splitCommas: true,
@@ -23,6 +25,8 @@ main(List<String> arguments) async {
     print(parser.usage);
     return;
   }
+
+  bool verbose = argResults[verboseFlag];
 
   final List<String> urls = argResults.rest.toList();
   if (urls.isEmpty) {
@@ -53,7 +57,11 @@ main(List<String> arguments) async {
     var page = open.first;
     open.remove(page);
     closed.add(page);
-    stdout.write(".");
+    if (verbose) {
+      print(page);
+    } else {
+      stdout.write(".");
+    }
 
     // Fetch the document
     HttpClientRequest request;
@@ -96,7 +104,11 @@ main(List<String> arguments) async {
 
   stdout.write("\nChecking resources");
   for (var resource in resources) {
-    stdout.write(".");
+    if (verbose) {
+      print(resource);
+    } else {
+      stdout.write(".");
+    }
     var request = await client.getUrl(resource.uri);
     var response = await request.close();
     resource.statusCode = response.statusCode;
@@ -115,10 +127,10 @@ main(List<String> arguments) async {
       closed.where((page) => page.statusCode != 200).toSet();
   Set<Resource> failingResources =
       resources.where((resource) => resource.statusCode != 200).toSet();
+  Set<Resource> failing = new Set<Resource>.from(failingPages)
+    ..addAll(failingResources);
 
-  Set<Referrer> allReferrers =
-      failingPages.expand((page) => page.referrers).toSet();
-  allReferrers.addAll(failingResources.expand((page) => page.referrers));
+  Set<Referrer> allReferrers = failing.expand((page) => page.referrers).toSet();
 
   if (allReferrers.isEmpty) {
     print("NO ISSUES FOUND");
@@ -133,11 +145,12 @@ main(List<String> arguments) async {
     print(uri);
     var currentReferrers =
         allReferrers.where((referrer) => referrer.uri == uri);
-    for (var page in failingPages) {
-      var referrers = page.referrers
-          .where((referrer) => currentReferrers.contains(referrer)).toList();
+    for (var resource in failing) {
+      var referrers = resource.referrers
+          .where((referrer) => currentReferrers.contains(referrer))
+          .toList();
       if (referrers.isNotEmpty) {
-        print("-> $page");
+        print("-> $resource (HTTP ${resource.statusCode})");
         for (var referrer in referrers) {
           print("    (line ${referrer.sourceSpan.start.line}"
               ":${referrer.sourceSpan.start.column}) "
