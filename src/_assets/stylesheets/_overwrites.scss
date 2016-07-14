@@ -127,6 +127,16 @@ body.homepage {
 	}
 }
 
+.frontpage-slogan__get-started {
+	border: none;
+	background-color: $gray-light;
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+
+	&:hover {
+		background-color: lighten($gray-light, 2%);
+	}
+}
+
 $footnotes-padding: 5px;
 
 /* Footnotes */
