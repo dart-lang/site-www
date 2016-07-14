@@ -9,13 +9,24 @@ Download the _Dart Programming Language Specification_ from
 the Ecma website:
 
 * <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
-   target="_blank">Dart Programming Language Specification, 3<sup>rd</sup> Edition</a>
+   target="_blank">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
 
 For a gentler introduction to the Dart language, see the
 [Dart language tour](/guides/language/language-tour).
 
 You can find previous editions of the specification at
 [Standard ECMA-408](http://www.ecma-international.org/publications/standards/Ecma-408-arch.htm).
+
+## Changes in the 4<sup>th</sup> edition
+
+The 4<sup>th</sup> edition of the specification has fewer restrictions on mixins.
+The restrictions on mixins up until this edition were:
+
+* Mixins must inherit directly from Object.
+* Mixins cannot contain super calls.
+* Mixins cannot define constructors.
+
+Only the last one, mixins cannot define constructors, remains.
 
 ## Changes in the 3<sup>rd</sup> edition
 
