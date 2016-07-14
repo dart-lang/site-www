@@ -63,14 +63,24 @@ jekyll build && firebase serve --port 4000
 
 ## Checking the site's HTML
 
-To check for broken links,
+First, make sure you're using the **firebase** server, not the jekyll server:
+
+```
+jekyll build && firebase serve --port 4000
+```
+
+Next, to check for broken links,
 run this from the top of the repo:
 
 ```
 dart deploy/check_links/bin/check_links.dart
 ```
 
-If it crashes, add the `-v` option to figure out what triggered the crash.
+If it crashes:
+* Make sure you're using the firebase server.
+* Rerun the command with the `-v` option to figure out what triggered the crash.
+  (Hint: If the last file read is get-started-flowchart.png,
+  then you're probably running the jekyll server, not the firebase one.)
 
 To check for valid HTML, good images, and broken links (though not as well as check_links.dart),
 run this from the top of the repo:
