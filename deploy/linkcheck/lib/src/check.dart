@@ -37,7 +37,9 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
   var client = new HttpClient();
 
   int count = 0;
-  cursor.write("Crawling pages: $count");
+  if (!verbose) {
+    cursor.write("Crawling pages: $count");
+  }
 
   do {
     // Get an unprocessed parseable file.
@@ -45,6 +47,9 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     var uri = current.uriWithoutFragment;
     if (verbose) {
       print(uri);
+      var sources =
+          links.where((link) => link.destination.uriWithoutFragment == uri);
+      print("- visiting because it was liked from $sources");
     } else {
       cursor.moveLeft(count.toString().length);
       count += 1;
@@ -53,16 +58,48 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
 
     // Fetch the document
     HttpClientResponse response = await _fetchParseable(client, uri, current);
-    if (response == null) continue;
+    if (response == null) {
+      // Request failed completely.
+      // TODO: abort when we encounter X of these in a row
+      //      print("\n\nERROR: Couldn't connect to $uri. Are you sure you've "
+      //          "started the localhost server?");
+      //      print("Try, for example:\n  \$ jekyll build && firebase serve");
+      exitCode = 1;
+      current.didNotConnect = true;
+      current.wasProcessed = true;
+      continue;
+    }
     current.updateFromResponse(response);
-    if (current.statusCode != 200 || !hosts.contains(current.finalUri.host)) {
+    if (verbose) {
+      print("- ${current.statusCode}, ${current.contentType}");
+    }
+    if (current.statusCode != 200 ||
+        !hosts.contains(current.finalUri.host) ||
+        !current.isHtmlMimeType) {
       await response.drain();
       current.wasProcessed = true;
       updateOthers(destinations, current);
       // TODO: update all others with same destination URL
       continue;
     }
-    String html = await response.transform(UTF8.decoder).join();
+
+    String html;
+    try {
+      Converter<List<int>, String> decoder;
+      if (current.contentType.charset == LATIN1.name) {
+        decoder = LATIN1.decoder;
+      } else {
+        decoder = UTF8.decoder;
+      }
+      html = await response.transform(decoder).join();
+    } on FormatException {
+        throw new UnsupportedError("We don't support any encoding other than "
+            "utf-8 and iso-8859-1 (latin-1). Crawled site has explicit charset "
+            "'${current.contentType}' and couldn't be parsed by UTF8.");
+    }
+
+    // TODO: detect WEBrick/1.3.1 (Ruby/2.3.1/2016-04-26) (and potentially
+    // other ugly index files).
 
     // Parse it
     var doc = parse(html, generateSpans: true, sourceUrl: uri.toString());
@@ -120,16 +157,12 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
   return links.toList(growable: false);
 }
 
-/// Update all parseable destinations that share the same uriWithoutFragment
+/// Update all destinations that share the same uriWithoutFragment.
 void updateOthers(Set<Destination> destinations, Destination current) {
-  Iterable<Destination> equivalent = destinations.where(
-      (destination) =>
-          destination.uriWithoutFragment == current.uriWithoutFragment);
+  Iterable<Destination> equivalent = destinations.where((destination) =>
+      destination.uriWithoutFragment == current.uriWithoutFragment);
   equivalent.forEach((Destination destination) {
-    destination.statusCode = current.statusCode; // TODO: updateFrom(other)
-    if (destination is ParseableDestination && current is ParseableDestination) {
-      destination.wasProcessed = current.wasProcessed;
-    }
+    destination.updateFrom(current);
   });
 }
 
@@ -173,6 +206,8 @@ Future<Null> checkDestinations(Iterable<Destination> destinations,
       await response.drain();
     } on HttpException {
       resource.didNotConnect = true;
+    } on SocketException {
+      resource.didNotConnect = true;
     } on HandshakeException {
       resource.didNotConnect = true;
     }
@@ -214,14 +249,11 @@ Future<HttpClientResponse> _fetchParseable(
   HttpClientRequest request;
   try {
     request = await client.getUrl(uri);
+  } on HttpException {
+    return null;
   } on SocketException {
-    // TODO: abort when we encounter X of these in a row
-    //      print("\n\nERROR: Couldn't connect to $uri. Are you sure you've "
-    //          "started the localhost server?");
-    //      print("Try, for example:\n  \$ jekyll build && firebase serve");
-    exitCode = 1;
-    current.didNotConnect = true;
-    current.wasProcessed = true;
+    return null;
+  } on HandshakeException {
     return null;
   }
   var response = await request.close();

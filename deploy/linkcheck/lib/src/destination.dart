@@ -1,6 +1,6 @@
 library linkcheck.destination;
 
-import 'dart:io' show HttpClientResponse, RedirectInfo;
+import 'dart:io' show ContentType, HttpClientResponse, RedirectInfo;
 
 class Destination {
   /// The uri as specified by source file.
@@ -10,6 +10,9 @@ class Destination {
   /// The HTTP status code returned.
   int statusCode;
 
+  /// MimeType of the response.
+  ContentType contentType;
+
   List<RedirectInfo> redirects;
 
   /// Uri after all redirects.
@@ -17,8 +20,6 @@ class Destination {
 
   bool isInvalid = false;
   bool didNotConnect = false;
-  bool isPermanentlyRedirected = false;
-  // TODO: redirect path, then make ^^^ into a getter
 
   Destination(Uri uri)
       : uri = uri,
@@ -29,6 +30,13 @@ class Destination {
   /// Link that wasn't valid, didn't connect, or the [statusCode] was not
   /// HTTP 200 OK.
   bool get isBroken => statusCode != 200;
+
+  bool get isHtmlMimeType => contentType.mimeType == ContentType.HTML.mimeType;
+
+  bool get isPermanentlyRedirected =>
+      redirects != null &&
+      redirects.isNotEmpty &&
+      redirects.first.statusCode == 301;
 
   bool get isRedirected => redirects != null && redirects.isNotEmpty;
 
@@ -49,12 +57,21 @@ class Destination {
   bool operator ==(other) => other is Destination && other.uri == uri;
   String toString() => uri.toString();
 
+  void updateFrom(Destination other) {
+    statusCode = other.statusCode;
+    redirects = other.redirects;
+    finalUri = other.finalUri.removeFragment().replace(fragment: uri.fragment);
+    contentType = other.contentType;
+    if (this is ParseableDestination && other is ParseableDestination) {
+      (this as ParseableDestination).wasProcessed = other.wasProcessed;
+    }
+  }
+
   void updateFromResponse(HttpClientResponse response) {
     statusCode = response.statusCode;
     redirects = response.redirects;
     finalUri = redirects.isNotEmpty ? redirects.last.location : uri;
-    isPermanentlyRedirected =
-        redirects.isNotEmpty && redirects.first.statusCode == 301;
+    contentType = response.headers.contentType;
   }
 }
 
