@@ -767,6 +767,11 @@
         "source": "/tools/sdk/",
         "destination": "/tools/sdk",
         "type": 301
+      },
+      {
+        "source": "/codelabs/darrrt/files/piratenames.json",
+        "destination": "https://webdev.dartlang.org/codelabs/darrrt/files/piratenames.json",
+        "type": 301
       }
     ]
   }
