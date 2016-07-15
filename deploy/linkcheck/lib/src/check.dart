@@ -55,9 +55,11 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     HttpClientResponse response = await _fetchParseable(client, uri, current);
     if (response == null) continue;
     current.updateFromResponse(response);
-    if (response.statusCode != 200) {
+    if (current.statusCode != 200 || !hosts.contains(current.finalUri.host)) {
       await response.drain();
       current.wasProcessed = true;
+      updateOthers(destinations, current);
+      // TODO: update all others with same destination URL
       continue;
     }
     String html = await response.transform(UTF8.decoder).join();
@@ -67,7 +69,7 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
 
     // Find parseable destinations
     var linkElements =
-        doc.querySelectorAll("a[href], iframe[src]"); // TODO: add?
+        doc.querySelectorAll("a[href], area[href], iframe[src]"); // TODO: add?
     List<Link> currentLinks = linkElements
         .map((element) =>
             extractLink(uri, element, ["href", "src"], destinations, true))
@@ -84,28 +86,26 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
 
     // Find resources
     var resourceElements =
-        doc.querySelectorAll("link[href], img[src], script[src]"); // TODO: add?
+        doc.querySelectorAll("link[href], [src], object[data]"); // TODO: add?
     List<Link> currentResourceLinks = resourceElements
-        .map((element) =>
-            extractLink(uri, element, ["src", "href"], destinations, false))
+        .map((element) => extractLink(
+            uri, element, ["src", "href", "data"], destinations, false))
         .toList(growable: false);
+
+    // TODO: add srcset extractor (will create multiple links per element)
 
     if (verbose) print("- found ${currentResourceLinks.length} resources");
 
     destinations.addAll(currentResourceLinks.map((link) => link.destination));
     links.addAll(currentResourceLinks);
 
-    // Update all parseable destinations that share the same uriWithoutFragment
-    Iterable<ParseableDestination> unprocessed =
-        destinations.where(_isUnprocessed);
-    Iterable<ParseableDestination> equivalent = unprocessed
-        .where((destination) => destination.uriWithoutFragment == uri);
-    equivalent.forEach((ParseableDestination destination) {
-      destination.statusCode = current.statusCode;
-      destination.wasProcessed = true;
-      // TODO: take note of anchors on page
-    });
+    // TODO: take note of anchors on page, add it to current
+
+    current.wasProcessed = true;
+    updateOthers(destinations, current);
   } while (destinations.where(_isUnprocessed).isNotEmpty);
+
+  // TODO: (optionally) check anchors
 
   // Get unparseable.
   Set<Destination> resources = destinations
@@ -118,6 +118,19 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
   client.close();
 
   return links.toList(growable: false);
+}
+
+/// Update all parseable destinations that share the same uriWithoutFragment
+void updateOthers(Set<Destination> destinations, Destination current) {
+  Iterable<Destination> equivalent = destinations.where(
+      (destination) =>
+          destination.uriWithoutFragment == current.uriWithoutFragment);
+  equivalent.forEach((Destination destination) {
+    destination.statusCode = current.statusCode; // TODO: updateFrom(other)
+    if (destination is ParseableDestination && current is ParseableDestination) {
+      destination.wasProcessed = current.wasProcessed;
+    }
+  });
 }
 
 Future<Null> checkDestinations(Iterable<Destination> destinations,
@@ -168,8 +181,8 @@ Future<Null> checkDestinations(Iterable<Destination> destinations,
 
 Link extractLink(Uri uri, Element element, final List<String> attributes,
     final Set<Destination> existingDestinations, bool parseable) {
-  var source =
-      new Source(uri, element.sourceSpan); // TODO: add element.outerHtml
+  var source = new Source(uri, element.sourceSpan, element.localName,
+      element.text, element.outerHtml);
   String reference;
   for (var attributeName in attributes) {
     reference = element.attributes[attributeName];
@@ -179,6 +192,7 @@ Link extractLink(Uri uri, Element element, final List<String> attributes,
     throw new StateError("Element $element does not have any of the attributes "
         "$attributes");
   }
+  // TODO: work with http://www.w3schools.com/tags/tag_base.asp
   var destinationUri = uri.resolve(reference);
   for (var existing in existingDestinations) {
     if (destinationUri == existing.uri) {
