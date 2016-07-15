@@ -1,4 +1,0 @@
-name: check_links
-dependencies:
-  args: any
-  html: any

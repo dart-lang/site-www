@@ -33,10 +33,10 @@ npm install -g firebase-tools     # might require sudo
    ```
 bundle install
 ```
-1. Get the dependencies for the check_links tool:
+1. Get the dependencies for the linkcheck tool:
 
    ```
-cd deploy/check_links
+cd deploy/linkcheck
 pub get
 ```
 
@@ -73,7 +73,7 @@ Next, to check for broken links,
 run this from the top of the repo:
 
 ```
-dart deploy/check_links/bin/check_links.dart
+dart deploy/linkcheck/bin/linkcheck.dart
 ```
 
 If it crashes:
