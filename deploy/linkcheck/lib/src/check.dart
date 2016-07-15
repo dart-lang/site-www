@@ -54,8 +54,7 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     // Fetch the document
     HttpClientResponse response = await _fetchParseable(client, uri, current);
     if (response == null) continue;
-    current.statusCode = response.statusCode;
-    // TODO add finalUri and permanently redirected
+    current.updateFromResponse(response);
     if (response.statusCode != 200) {
       await response.drain();
       current.wasProcessed = true;
@@ -118,17 +117,7 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
 
   client.close();
 
-  print("\n\nStats:");
-  print("${links.length.toString().padLeft(8)} links checked");
-
-  var broken = links
-      .where((link) =>
-          link.destination.isBroken &&
-          (isInternal(link.destination.uri) || shouldCheckExternal))
-      .toList(growable: false);
-  print("${broken.length.toString().padLeft(8)} possibly broken links found");
-  print("");
-  return broken;
+  return links.toList(growable: false);
 }
 
 Future<Null> checkDestinations(Iterable<Destination> destinations,
@@ -166,11 +155,12 @@ Future<Null> checkDestinations(Iterable<Destination> destinations,
       // Copy status code
       destinations
           .where((destination) => destination.uriWithoutFragment == uri)
-          .forEach(
-              (destination) => destination.statusCode = response.statusCode);
+          .forEach((destination) => destination.updateFromResponse(response));
       if (verbose) print(response.statusCode);
       await response.drain();
     } on HttpException {
+      resource.didNotConnect = true;
+    } on HandshakeException {
       resource.didNotConnect = true;
     }
   }

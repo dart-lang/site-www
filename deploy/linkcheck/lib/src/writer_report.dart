@@ -15,6 +15,15 @@ void reportForWriters(List<Link> broken) {
           ":${link.source.span.start.column}) "
           "=> ${link.destination.uri} "
           "(${link.destination.statusDescription})");
+      if (link.destination.isRedirected) {
+        print("  - redirect path:");
+        Uri current = link.destination.uri;
+        for (var redirect in link.destination.redirects) {
+          print("    - $current (${redirect.statusCode})");
+          current = redirect.location;
+        }
+        print("    - $current (${link.destination.statusCode})");
+      }
     }
     print("");
   }
