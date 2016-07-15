@@ -88,23 +88,29 @@ If it crashes:
   (Hint: If the last file read is get-started-flowchart.png,
   then you're probably running the jekyll server, not the firebase one.)
 
-To check for valid HTML, good images, and broken links (though not as well as check_links.dart),
+To also check external URLs (which is much slower), run the linkcheck command
+with the `--external` (or `-e`, for short) option.
+
+With this tool you can check any URL by simply specifying it as a parameter:
+
+```
+dart deploy/linkcheck/bin/linkcheck.dart https://webdev.dartlang.org/
+```
+
+To check for valid HTML, good images, and broken links (though not as well as linkcheck.dart),
 run this from the top of the repo:
 
 ```
 ./deploy/html_proof.rb
 ```
 
-## Checking against the sitemap
+## Checking against the old sitemap
 
-Check the site against the old sitemap (?) using the
-following Ruby script.
-This command requires npm and Firebase:
+To make sure we are not breaking any links (or bookmarks) from yesteryear, you
+can take the old sitemap as input for the link checker.
 
-From the top-level directory, run:
+Again, make sure you are runnig the localhost server (`firebase serve`), then:
 
 ```
-deploy/check_sitemap.rb
+dart deploy/linkcheck/bin/linkcheck.dart -i deploy/urls/old_site_urls.txt
 ```
-
-I think we used this to make sure we redirect the files we cared about.
