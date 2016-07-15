@@ -1,3 +1,7 @@
+library linkcheck.writer_report;
+
+import 'dart:math' show min;
+
 import 'link.dart';
 
 /// Writes the reports from the perspective of a website writer - which pages
@@ -12,8 +16,7 @@ void reportForWriters(List<Link> broken) {
 
     var links = broken.where((link) => link.source.uri == uri);
     for (var link in links) {
-      String tag =
-          link.source.tagName == 'a' ? '' : "<${link.source.tagName}> ";
+      String tag = _buildTagSummary(link);
       print("- (${link.source.span.start.line}"
           ":${link.source.span.start.column}) "
           "$tag"
@@ -31,4 +34,23 @@ void reportForWriters(List<Link> broken) {
     }
     print("");
   }
+}
+
+String _buildTagSummary(Link link) {
+  String tag = "";
+  if (link.source.tagName == 'a') {
+    const maxLength = 10;
+    var text = link.source.text;
+    int length = text.length;
+    if (length > 0) {
+      if (length <= maxLength) {
+        tag = "'$text' ";
+      } else {
+        tag = "'${text.substring(0, min(length, maxLength -2 ))}..' ";
+      }
+    }
+  } else {
+    tag = "<${link.source.tagName}> ";
+  }
+  return tag;
 }
