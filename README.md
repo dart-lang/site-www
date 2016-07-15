@@ -16,6 +16,12 @@ Also see:
   [webdev.dartlang.org](http://webdev.dartlang.org) &
   [events.dartlang.org](http://events.dartlang.org); the repo includes more setup info than we have here)
 
+
+## Editing the site
+
+See [Writing for *.dartlang.org](https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org).
+
+
 ## Building the site
 
 ### One-time setup
@@ -102,8 +108,3 @@ deploy/check_sitemap.rb
 ```
 
 I think we used this to make sure we redirect the files we cared about.
-
-
-## Editing the site
-
-See [Writing for *.dartlang.org](https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org).
