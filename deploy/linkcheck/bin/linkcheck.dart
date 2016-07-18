@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'dart:io' hide Link;
 
 import 'package:args/args.dart';
 import 'package:linkcheck/linkcheck.dart';
-import 'dart:io' hide Link;
 
 Future<Null> main(List<String> arguments) async {
   final parser = new ArgParser()
@@ -22,7 +22,7 @@ Future<Null> main(List<String> arguments) async {
     ..addFlag(externalFlag,
         abbr: 'e',
         negatable: false,
-        help: "Check external links, too. By "
+        help: "Check external (remote) links, too. By "
             "default, the tool only checks internal links.");
   final argResults = parser.parse(arguments);
 
@@ -76,10 +76,10 @@ Future<Null> main(List<String> arguments) async {
   reportForWriters(broken);
 }
 
+const defaultUrl = "http://localhost:4000/";
+
 const externalFlag = "external";
 const helpFlag = "help";
 const hostsFlag = "hosts";
 const inputFlag = "input-file";
 const verboseFlag = "verbose";
-
-const defaultUrl = "http://localhost:4000/";

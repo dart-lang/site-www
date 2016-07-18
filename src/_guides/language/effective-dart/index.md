@@ -3,7 +3,7 @@ layout: guide
 title: "Effective Dart"
 description: "Best practices for building consistent, maintainable, efficient Dart libraries."
 permalink: /guides/language/effective-dart
-toc: false
+toc: true
 
 nextpage:
   url: /guides/language/effective-dart/style
@@ -121,3 +121,7 @@ Dart constructs.
   [issue]: https://github.com/dart-lang/site-www/issues/new
   [existing one]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
+
+## Summary of all rules
+
+{% include_relative toc.md %}

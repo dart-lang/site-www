@@ -41,6 +41,18 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     cursor.write("Crawling pages: $count");
   }
 
+  // TODO: crawl all destinations regardless if they're "parseable" or not
+  // - just one huge `open` queue and one big list of 'broken links' (even just 301s and other warnings)
+  // - a checkDestination takes destination and returns it updated with optional links on top
+  // - paralellism: List<StreamChannel> isolates
+  //   - listen to replies: either IDLE or results of a checkDestination
+  //     - if IDLE and should quit => don't do anything
+  //     - if IDLE and should quit and all others IDLE => all Done
+  //     - if IDLE and open queue isNotEmpty => send new Destination to all IDLE isolates
+  //     - if IDLE and all others IDLE and open queue empty => all done
+  //     - results? add new links to open
+  //   - send out first destinations
+  //   - await allDone.future;
   do {
     // Get an unprocessed parseable file.
     ParseableDestination current = destinations.where(_isUnprocessed).first;
@@ -105,8 +117,13 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     var doc = parse(html, generateSpans: true, sourceUrl: uri.toString());
 
     // Find parseable destinations
+    // TODO: add following: media, meta refreshes, forms, metadata
+    //   `<meta http-equiv="refresh" content="5; url=redirect.html">`
+    // TODO: work with http://www.w3schools.com/tags/tag_base.asp (can be anywhere)
+    // TODO: get <meta> robot directives - https://github.com/stevenvachon/broken-link-checker/blob/master/lib/internal/scrapeHtml.js#L164
+
     var linkElements =
-        doc.querySelectorAll("a[href], area[href], iframe[src]"); // TODO: add?
+        doc.querySelectorAll("a[href], area[href], iframe[src]");
     List<Link> currentLinks = linkElements
         .map((element) =>
             extractLink(uri, element, ["href", "src"], destinations, true))
@@ -115,7 +132,9 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
     if (verbose)
       print("- found ${currentLinks.length} links leading to "
           "${currentLinks.map((link) => link.destination.uriWithoutFragment)
-          .toSet().length} different URLs: ${currentLinks.map((link) => link.destination.uriWithoutFragment)
+          .toSet().length} "
+          "different URLs: "
+          "${currentLinks.map((link) => link.destination.uriWithoutFragment)
           .toSet()}");
 
     destinations.addAll(currentLinks.map((link) => link.destination));
@@ -123,7 +142,7 @@ Future<List<Link>> check(List<Uri> uris, Set<String> hosts,
 
     // Find resources
     var resourceElements =
-        doc.querySelectorAll("link[href], [src], object[data]"); // TODO: add?
+        doc.querySelectorAll("link[href], [src], object[data]");
     List<Link> currentResourceLinks = resourceElements
         .map((element) => extractLink(
             uri, element, ["src", "href", "data"], destinations, false))
@@ -174,8 +193,11 @@ Future<Null> checkDestinations(Iterable<Destination> destinations,
   // List of hosts that do not support HTTP HEAD requests.
   Set<String> headIncompatible = new Set<String>();
 
+  // TODO: add hashmap with robots (don't redownload). Special case for localhost
+
   var queue = new Queue<Destination>.from(destinations);
   while (queue.isNotEmpty) {
+    // TODO: throttle?
     var resource = queue.removeFirst();
     Uri uri = resource.uriWithoutFragment;
     if (verbose) {
@@ -227,7 +249,8 @@ Link extractLink(Uri uri, Element element, final List<String> attributes,
     throw new StateError("Element $element does not have any of the attributes "
         "$attributes");
   }
-  // TODO: work with http://www.w3schools.com/tags/tag_base.asp
+  // Valid URLs can be surrounded by spaces.
+  reference = reference.trim();
   var destinationUri = uri.resolve(reference);
   for (var existing in existingDestinations) {
     if (destinationUri == existing.uri) {

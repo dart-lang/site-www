@@ -332,3 +332,13 @@ body.homepage .get-started-section {
 		column-count: 3;
 	}
 }
+
+/* Effective Dart TOC */
+
+.effective_dart--summary_column {
+	@media (min-width: $screen-sm-min) {
+		width: 50%;
+		float: left;
+		padding-right: 5%;
+	}
+}

@@ -90,23 +90,27 @@ $(document).on('ready', function(){
     // do something…
   });
 
-  $('a[href*="#"]').on('click', function(e) {
-    var h = $(this).attr('href'),
-        p = window.location.pathname;
-    if(h.includes(p)) {
-      e.preventDefault();
-      var target = $(this.hash);
-      var hash = this.hash;
-      if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
-      if (target.length == 0) target = $('html');
-      $('html, body').animate({ scrollTop: target.offset().top-70 }, 500, function (){
-          location.hash = hash;
-      });
-      // Mark as active
-      // $('a[href^="#"]').parent('li').removeClass('active');
-      $(this).parent('li').addClass('active');
-    }
-  });
+  // This code interferes with valid deeplinks (for example, clicking on a link
+  // from /somepath to /somepath/subpage#hash will just scroll the page.
+  // TODO(filiph): either fix or delete completely
+  //
+  // $('a[href*="#"]').on('click', function(e) {
+  //   var h = $(this).attr('href'),
+  //       p = window.location.pathname;
+  //   if(h.includes(p)) {
+  //     e.preventDefault();
+  //     var target = $(this.hash);
+  //     var hash = this.hash;
+  //     if (target.length == 0) target = $('a[name="' + this.hash.substr(1) + '"]');
+  //     if (target.length == 0) target = $('html');
+  //     $('html, body').animate({ scrollTop: target.offset().top-70 }, 500, function (){
+  //         location.hash = hash;
+  //     });
+  //     // Mark as active
+  //     // $('a[href^="#"]').parent('li').removeClass('active');
+  //     $(this).parent('li').addClass('active');
+  //   }
+  // });
 
   
   // Popovers
