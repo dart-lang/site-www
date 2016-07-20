@@ -16,7 +16,7 @@ You may find the following code labs useful:
   <p>Write a material design-style chat app that runs on Android or iOS from a
   single codebase. Connect your app to a realtime Firebase database for data syncing.</p>
 
-* [Dartino Codelab](https://github.com/dartino/www.dartino.org/blob/master/codelab/index.md#dartino-codelab)
+* [Dartino Codelab](https://dartino.org/codelab/)
   <p markdown="1">Become familiar with Dartino by writing sample code that runs on the
   [STM32F746G Discovery](http://www.st.com/stm32f7-discovery) development board.</p>
 
