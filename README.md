@@ -48,28 +48,32 @@ pub get
 
 ### While you're editing the site
 
-While you're working on the site, the easiest way to see your changes is to use jekyll:
+While you're working on the site, the best way to see your changes is
+to use jekyll and firebase, in two separate terminal windows.
+
+In the first terminal:
 
 ```
-jekyll serve --watch
+jekyll build --watch
+```
+
+In the second terminal:
+
+```
+firebase serve --port 4000
 ```
 
 Navigate to localhost:4000. (webdev is 4001)
 
-
-### To see the Firebase version of the site
-
-Unless your changes are dirt simple (no links, no images),
-check them using the Firebase server:
-
-```
-jekyll build && firebase serve --port 4000
-```
+Since we host on Firebase, using the Firebase server
+makes sure everything works as closely to production as possible.
+Firebase hosting behaves very differently from Jekyll's WEBrick server,
+and our redirects in `firebase.json` obviously only work with Firebase.
 
 
 ## Checking the site's HTML
 
-First, make sure you're using the **firebase** server, not the jekyll server:
+First, make sure you're using the Firebase server:
 
 ```
 jekyll build && firebase serve --port 4000
@@ -82,7 +86,7 @@ run this from the top of the repo:
 dart deploy/linkcheck/bin/linkcheck.dart
 ```
 
-If it crashes:
+If the link checker crashes:
 * Make sure you're using the firebase server.
 * Rerun the command with the `-v` option to figure out what triggered the crash.
   (Hint: If the last file read is get-started-flowchart.png,
