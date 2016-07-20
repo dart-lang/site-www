@@ -64,10 +64,10 @@ For links to all the guidelines, see the
 
 <aside class="alert alert-info" markdown="1">
   **Have feedback on the guides?** <br>
-  Please [file an issue][issue] or add to an [existing one][].
+  Please create a [new issue][] or comment on one of our [existing issues][].
 
-  [issue]: https://github.com/dart-lang/site-www/issues/new
-  [existing one]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
+  [new issue]: https://github.com/dart-lang/site-www/issues/new
+  [existing issues]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
 
 [dartfmt]: https://github.com/dart-lang/dart_style#readme
