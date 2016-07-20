@@ -59,6 +59,17 @@ We split the guidelines into a few separate pages for easy digestion:
     consistent, usable APIs for libraries. If it's in a type signature or
     declaration, this goes over it.
 
+For links to all the guidelines, see the
+[summary](#summary-of-all-rules).
+
+<aside class="alert alert-info" markdown="1">
+  **Have feedback on the guides?** <br>
+  Please [file an issue][issue] or add to an [existing one][].
+
+  [issue]: https://github.com/dart-lang/site-www/issues/new
+  [existing one]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
+</aside>
+
 [dartfmt]: https://github.com/dart-lang/dart_style#readme
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
@@ -113,14 +124,6 @@ Dart constructs.
 * A **property** is a "field-like" named construct. This includes actual fields
   inside classes, as well as getters and setters. This also includes top level
   variables, getters, and setters.
-
-<aside class="alert alert-info" markdown="1">
-  **Have feedback on the guides?** <br>
-  Please [file an issue][issue] or add to an [existing one][].
-
-  [issue]: https://github.com/dart-lang/site-www/issues/new
-  [existing one]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
-</aside>
 
 ## Summary of all rules
 
