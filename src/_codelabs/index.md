@@ -8,7 +8,7 @@ toc: false
 
 You may find the following code labs useful:
 
-* [Avast, Ye Pirates: Build an Angular App]({{site.webdev}}/codelabs/ng2/)
+* [Avast, Ye Pirates: Build an Angular App]({{site.webdev}}/codelabs/ng2)
   <p>Learn how to use the Angular framework with Dart while you build a pirate
   badge generator that runs in any modern browser.</p>
 
