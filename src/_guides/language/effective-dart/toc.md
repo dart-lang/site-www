@@ -130,7 +130,7 @@
 
 * <a href='/guides/language/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily'>DON'T wrap a field in a getter and setter unnecessarily.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-using-a-final-field-to-make-a-read-only-property'>PREFER using a <code>final</code> field to make a read-only property.</a>
-* <a href='/guides/language/effective-dart/usage#consider-using-gt-for-short-members-whose-body-is-a-single-return-statement'>CONSIDER using <code>=&gt;</code> for short members whose body is a single return statement.</a>
+* <a href='/guides/language/effective-dart/usage#consider-using--for-short-members-whose-body-is-a-single-return-statement'>CONSIDER using <code>=&gt;</code> for short members whose body is a single return statement.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> when not needed to avoid shadowing.</a>
 * <a href='/guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible'>DO initialize fields at their declaration when possible.</a>
 

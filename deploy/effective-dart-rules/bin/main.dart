@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:html_unescape/html_unescape_small.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart' as path;
 
@@ -127,5 +128,9 @@ String generateAnchorHash(md.Element element) => _concatenatedText(element)
 
 /// Concatenates the text found in all the children of [element].
 String _concatenatedText(md.Element element) => element.children
-    .map((child) => (child is md.Text) ? child.text : _concatenatedText(child))
+    .map((child) =>
+        (child is md.Text) ? unescape(child.text) : _concatenatedText(child))
     .join('');
+
+final _unescape = new HtmlUnescape();
+String unescape(String input) => _unescape.convert(input);
