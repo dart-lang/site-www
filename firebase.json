@@ -828,6 +828,11 @@
         "source": "/docs/cookbook/",
         "destination": "/dart-vm/dart-by-example",
         "type": 301
+      },
+      {
+        "source": "/language-tour/",
+        "destination": "/guides/language/language-tour",
+        "type": 301
       }
     ]
   }
