@@ -818,6 +818,11 @@
         "source": "/tools/pub/transformers/",
         "destination": "/tools/pub/transformers",
         "type": 301
+      },
+      {
+        "source": "/resources/dart-tips/",
+        "destination": "/resources/dart-tips",
+        "type": 301
       }
     ]
   }

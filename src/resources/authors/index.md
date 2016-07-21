@@ -8,6 +8,6 @@ toc: false
 
 Many authors have contributed to this site. Here are a few:
 
-* [Bob Nystrom](bob-nystrom)
-* [Florian Loitsch](florian-loitsch)
-* [Gilad Bracha](gilad-bracha)
+* [Bob Nystrom](/resources/authors/bob-nystrom)
+* [Florian Loitsch](/resources/authors/florian-loitsch)
+* [Gilad Bracha](/resources/authors/gilad-bracha)

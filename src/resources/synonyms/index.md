@@ -29,8 +29,8 @@ toc: false
   </div>
 </div>
 
-<script type="application/dart" src="assets/synonyms.dart"></script>
-<script type="text/javascript" src="assets/dart.js"></script>
+<script type="application/dart" src="/resources/synonyms/assets/synonyms.dart"></script>
+<script type="text/javascript" src="/resources/synonyms/assets/dart.js"></script>
 
 <script type="text/javascript">
   window.addEventListener('message', function(e) {

@@ -17,7 +17,7 @@ Sometimes, you only have 5 minutes. Watch super short introductions to
 Dart language and library topics.
 
 {% for episode in site.data.episodes %}
-{% capture link %}dart-tips-ep-{{episode.num}}.html{% endcapture %}
+{% capture link %}/dart-tips/dart-tips-ep-{{episode.num}}.html{% endcapture %}
 <div class="row">
   <div class="col-sm-2">
     <div class="content">

@@ -19,17 +19,17 @@ import 'dart:html';
 typedef void OnSuccess(Document xmlContents);
 
 final Map<String, String> synonymsUrls = const {
-  'dart': 'assets/dart-samples.xml',
-  'js': 'assets/js-samples.xml',
-  'csharp': 'assets/csharp-samples.xml',
-  'java': 'assets/java-samples.xml',
-  'python': 'assets/python-samples.xml'
+  'dart': '/resources/synonyms/assets/dart-samples.xml',
+  'js': '/resources/synonyms/assets/js-samples.xml',
+  'csharp': '/resources/synonyms/assets/csharp-samples.xml',
+  'java': '/resources/synonyms/assets/java-samples.xml',
+  'python': '/resources/synonyms/assets/python-samples.xml'
 };
 
 final Map<String, Document> synonymXmls = new Map<String, Document>();
 final Map<String, DocumentFragment> synonymHtmls = new Map<String, DocumentFragment>();
 
-const String transformUrl = "assets/transform.xslt";
+const String transformUrl = "/resources/synonyms/assets/transform.xslt";
 Document xsltContents;
 
 getUrl(String url, OnSuccess onSuccess) {
