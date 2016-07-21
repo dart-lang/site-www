@@ -783,6 +783,41 @@
         "source": "/codelabs/darrrt/files/piratenames.json",
         "destination": "https://webdev.dartlang.org/codelabs/darrrt/files/piratenames.json",
         "type": 301
+      },
+      {
+        "source": "/articles/",
+        "destination": "/articles",
+        "type": 301
+      },
+      {
+        "source": "/codelabs/",
+        "destination": "/codelabs",
+        "type": 301
+      },
+      {
+        "source": "/samples/",
+        "destination": "/samples",
+        "type": 301
+      },
+      {
+        "source": "/tools/",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/",
+        "destination": "/tools/pub",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/cmd/",
+        "destination": "/tools/pub/cmd",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers/",
+        "destination": "/tools/pub/transformers",
+        "type": 301
       }
     ]
   }
