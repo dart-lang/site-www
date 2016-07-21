@@ -823,6 +823,11 @@
         "source": "/resources/dart-tips/",
         "destination": "/resources/dart-tips",
         "type": 301
+      },
+      {
+        "source": "/docs/cookbook/",
+        "destination": "/dart-vm/dart-by-example",
+        "type": 301
       }
     ]
   }
