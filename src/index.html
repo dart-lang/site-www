@@ -29,7 +29,7 @@ Stream<span class="frontpage-highlight" data-text="Generics are optional but ext
     var points = generateRandom().<span class="frontpage-highlight" data-text="Synchronous generators produce (lazy) Iterables, and Iterables have a well-crafted API.">take</span>(batch);
     var inside = points.where((p) <span class="frontpage-highlight" data-text="The optional arrow syntax makes simple functions more readable.">=&#x3E;</span> p.isInsideUnitCircle);
     total += batch;
-    count += inside.<span class="frontpage-highlight" data-text="Since the Iterable is lazy, the program doesn’t actually iterate over it until it’s needed by the length getter.">length</span>;
+    count += inside.<span class="frontpage-highlight" data-text="Since the Iterable is lazy, the program doesn’t actually iterate over it until it’s needed by the length getter. No new array will be constructed.">length</span>;
     var ratio = count / total;
     // Area of a circle is A = &#x3C0;&#x22C5;r&#xB2;, therefore &#x3C0; = A/r&#xB2;.
     // So, when given random points with x &#x2208; &#x3C;0,1&#x3E;,
