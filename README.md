@@ -21,6 +21,8 @@ Also see:
 
 See [Writing for *.dartlang.org](https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org).
 
+Contributions welcome!
+(Just sign our [CLA](https://developers.google.com/open-source/cla/individual).)
 
 ## Building the site
 
