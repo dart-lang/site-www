@@ -833,6 +833,31 @@
         "source": "/language-tour/",
         "destination": "/guides/language/language-tour",
         "type": 301
+      },
+      {
+        "source": "/codelabs/server**",
+        "destination": "https://dart-lang.github.io/server/codelab/",
+        "type": 301
+      },
+      {
+        "source": "/tools/analyzer/",
+        "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer",
+        "type": 301
+      },
+      {
+        "source": "/tools/dartfmt/",
+        "destination": "https://github.com/dart-lang/dart_style#readme",
+        "type": 301
+      },
+      {
+        "source": "/tools/dartdoc/",
+        "destination": "https://github.com/dart-lang/dartdoc",
+        "type": 301
+      },
+      {
+        "source": "/tools/observatory/",
+        "destination": "https://dart-lang.github.io/observatory/",
+        "type": 301
       }
     ]
   }
