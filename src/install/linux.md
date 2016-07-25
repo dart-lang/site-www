@@ -9,14 +9,14 @@ js:
   defer: true
 ---
 
-If you're using Debian/Ubuntu, you can choose two options,
+If you're using Debian/Ubuntu on amd64 (64-bit Intel), you can choose two options,
 both of which can update the SDK automatically
 when new versions are released.
 
 * [Installing using apt-get](#using-apt-get)
 * [Downloading the Debian package](#installing-a-debian-package)
 
-Other options are:
+Other options, which also support other architectures, are:
 
 * [Downloading Dart manually](/install/archive)
 * [Compiling Dart from source](#compiling-from-source)
