@@ -2,6 +2,7 @@
   "hosting": {
     "public": "publish",
     "cleanUrls": true,
+    "trailingSlash": false,
     "headers": [
       {
         "source": "**/*.@(txt|json)",
@@ -857,6 +858,11 @@
       {
         "source": "/tools/observatory/",
         "destination": "https://dart-lang.github.io/observatory/",
+        "type": 301
+      },
+      {
+        "source": "/tos.htm",
+        "destination": "http://www.google.com/intl/en/policies/privacy/",
         "type": 301
       }
     ]

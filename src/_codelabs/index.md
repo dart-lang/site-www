@@ -20,7 +20,7 @@ You may find the following code labs useful:
   <p markdown="1">Become familiar with Dartino by writing sample code that runs on the
   [STM32F746G Discovery](http://www.st.com/stm32f7-discovery) development board.</p>
 
-* [Low-Level HTML Pirate Code Lab]({{site.webdev}}/codelabs/darrrt/)
+* [Low-Level HTML Pirate Code Lab]({{site.webdev}}/codelabs/darrrt)
   <p>Learn Dart language and library features while you build a pirate badge generator
   using Dart's HTML support.</p>
 
