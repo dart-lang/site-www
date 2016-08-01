@@ -131,6 +131,7 @@ body.homepage {
 	border: none;
 	background-color: $gray-light;
 	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+	margin-right: 1em;
 
 	&:hover {
 		background-color: lighten($gray-light, 2%);
