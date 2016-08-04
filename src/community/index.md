@@ -28,17 +28,19 @@ Dart is an open-source project, and we look forward to hearing from you.
 
 * [StackOverflow](http://stackoverflow.com/tags/dart)
 * [Reddit](https://www.reddit.com/r/dartlang)
-* [Slack](https://dartlang.slack.com/) ([register](https://dartlang-slack.herokuapp.com/))
 * [Dartisans on Google+](http://g.co/dartisans)
 * [Dartosphere blog aggregator](http://dartosphere.org)
+* [Slack](https://dartlang.slack.com/) ([register](https://dartlang-slack.herokuapp.com/))
 
-#### Targetted discussion groups
+#### Targeted discussion groups
 
-* [Dart plugin for JetBrains (WebStorm, IntelliJ) Questions](https://groups.google.com/a/dartlang.org/d/forum/jetbrains-dart-plugin-discuss)
-* [Dart VM](https://groups.google.com/a/dartlang.org/d/forum/vm-dev)
-* [Dart Analyzer](https://groups.google.com/a/dartlang.org/d/forum/analyzer-discuss)
+* [Dart plugin for JetBrains editors](https://groups.google.com/a/dartlang.org/d/forum/jetbrains-dart-plugin-discuss) (WebStorm, IntelliJ)
+* [Dart VM developers](https://groups.google.com/a/dartlang.org/d/forum/vm-dev)
+* [Dart analyzer](https://groups.google.com/a/dartlang.org/d/forum/analyzer-discuss)
 * [Server-side Dart](https://groups.google.com/a/dartlang.org/d/forum/cloud)
-* [Dart plugin for Atom Gitter chat](https://gitter.im/dart-atom/dartlang)
+* [Dart plugin for Atom](https://gitter.im/dart-atom/dartlang) (Gitter chat)
+
+Also see channels in the Slack community.
 
 ## Track the project
 
