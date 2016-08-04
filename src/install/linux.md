@@ -9,7 +9,7 @@ js:
   defer: true
 ---
 
-If you're using Debian/Ubuntu on amd64 (64-bit Intel), you can choose two options,
+If you're using Debian/Ubuntu on AMD64 (64-bit Intel), you can choose two options,
 both of which can update the SDK automatically
 when new versions are released.
 
