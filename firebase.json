@@ -864,6 +864,51 @@
         "source": "/tos.htm",
         "destination": "http://www.google.com/intl/en/policies/privacy/",
         "type": 301
+      },
+      {
+        "source": "/polymer-dart/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/articles/style-guide/**",
+        "destination": "/guides/language/effective-dart/style",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/polymer-intro/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/articles/idiomatic-dart/**",
+        "destination": "/guides/language/effective-dart",
+        "type": 301
+      },
+      {
+        "source": "/articles/dart-unit-tests/**",
+        "destination": "https://github.com/dart-lang/test#writing-tests",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/forms/**",
+        "destination": "https://web.archive.org/web/20160501030157/https://www.dartlang.org/docs/tutorials/forms/",
+        "type": 301
+      },
+      {
+        "source": "/articles/web-ui/**",
+        "destination": "https://webdev.dartlang.org/",
+        "type": 301
+      },
+      {
+        "source": "/tools/docgen/**",
+        "destination": "https://pub.dartlang.org/packages/dartdoc",
+        "type": 301
+      },
+      {
+        "source": "/dart2js-reflection",
+        "destination": "https://github.com/dart-lang/sdk/issues/21654",
+        "type": 301
       }
     ]
   }
