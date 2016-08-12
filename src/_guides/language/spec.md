@@ -59,20 +59,6 @@ the following new language features:
   [Lazily loading a library](/guides/language/language-tour#deferred-loading).
 {% endcomment %}
 
-{% comment %}
-In the following documents,
-<span style="background:yellow">yellow highlights</span>
-mark proposed changes to the Dart language specification.
-Non-normative text is in
-<span style="color:blue; font-style:italic">blue italics</span> (for rationale)
-or <span style="color:green">green</span> (for commentary).
-
-* <a href="Asyncdraft-TC52.pdf"
-     target="_blank">Async Await</a>
-* <a href="EnumsTC52draft.pdf"
-     target="_blank">Enums</a>
-{% endcomment %}
-
 ## Proposed enhancements to the Dart language
 
 Interested in learning about new features that may be added to Dart?

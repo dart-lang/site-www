@@ -4,9 +4,6 @@ title: "Dart Tutorials: Language"
 description: "Tutorials pertaining to the Dart language, such as asynchronous programming."
 permalink: /tutorials/language
 toc: false
-
-header:
-  css: ["/docs/tutorials/tute_main_page.css"]
 ---
 
 The Future and Stream classes provide API for performing tasks,

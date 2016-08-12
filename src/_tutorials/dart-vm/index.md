@@ -8,9 +8,6 @@ toc: false
 nextpage:
   url: /tutorials/dart-vm/get-started
   title: Get Started
-
-header:
-  css: ["/docs/tutorials/tute_main_page.css"]
 ---
 
 The following tutorials show how to develop scripts and server apps for
