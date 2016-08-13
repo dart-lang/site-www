@@ -892,12 +892,12 @@
       },
       {
         "source": "/docs/tutorials/forms/**",
-        "destination": "https://web.archive.org/web/20160501030157/https://www.dartlang.org/docs/tutorials/forms/",
+        "destination": "https://angular.io/docs/dart/latest/guide/forms.html",
         "type": 301
       },
       {
         "source": "/articles/web-ui/**",
-        "destination": "https://webdev.dartlang.org/",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
       },
       {
@@ -908,6 +908,111 @@
       {
         "source": "/dart2js-reflection",
         "destination": "https://github.com/dart-lang/sdk/issues/21654",
+        "type": 301
+      },
+      {
+        "source": "/articles/doc-comment-guidelines/**",
+        "destination": "/guides/language/effective-dart/documentation",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/using-polymer/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/articles/api-naming-guide/**",
+        "destination": "/guides/language/effective-dart/design",
+        "type": 301
+      },
+      {
+        "source": "/articles/feet-wet-streams/**",
+        "destination": "/tutorials/language/streams",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/",
+        "destination": "/tutorials",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/latest/dart-language-specification.pdf",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/articles/m1-language-changes/**",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/indexeddb/**",
+        "destination": "https://api.dartlang.org/stable/dart-indexed_db/dart-indexed_db-library.html",
+        "type": 301
+      },
+      {
+        "source": "/tools/dartdocgen/**",
+        "destination": "https://github.com/dart-lang/dartdoc#dartdoc",
+        "type": 301
+      },
+      {
+        "source": "/tools/download-archive/**",
+        "destination": "/install/archive",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/EnumsTC52draft.pdf",
+        "destination": "/guides/language/language-tour#enums",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/web-ui/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials/templates/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/editor/**",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/docs/pub-package-manager/pubspec/**",
+        "destination": "/tools/pub/pubspec",
+        "type": 301
+      },
+      {
+        "source": "/tools/download/**",
+        "destination": "/install",
+        "type": 301
+      },
+      {
+        "source": "/docs/technical-overview/**",
+        "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
+        "source": "/articles/dart-web-components/tools/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/resources/dart-tips-ep-2/**",
+        "destination": "/resources/dart-tips/dart-tips-ep-2",
+        "type": 301
+      },
+      {
+        "source": "/articles/puzzlers/**",
+        "destination": "/articles/language",
+        "type": 301
+      },
+      {
+        "source": "/pub/tools/editor",
+        "destination": "/tools",
         "type": 301
       }
     ]

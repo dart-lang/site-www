@@ -23,7 +23,7 @@ installing Dart is easy.
 
 The **dart** package contains the [Dart SDK](/tools/sdk),
 which includes the Dart VM, libraries, and command-line Dart tools such as
-[dart]({{site.dart_vm}}/dart-vm/tools),
+[dart]({{site.dart_vm}}/tools),
 [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli),
 [pub](/tools/pub),
 and [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
