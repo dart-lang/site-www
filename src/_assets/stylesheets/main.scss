@@ -236,6 +236,30 @@ img {
   }
 }
 
+// Banner
+.banner {
+  background-color: $blue-light;
+  text-align: center;
+  padding: 5px 0;
+  margin-bottom: 40px;
+}
+
+.banner__text {
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.banner__frontpage-row {
+  .content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .banner {
+    margin-bottom: 0;
+  }
+}
+
 // Navigation
 #menu-toggle {
   display: none;
@@ -656,29 +680,6 @@ input.gsc-search-button {
 .break-90 {
   width: 90% !important;
 }
-
-.banner {
- width:100%;
- text-align: center;
- padding: 30px 0;
- h1, h2, h3, h4, h5, h6 {
-   margin-top: 0;
-   sup {
-     font-size: 24px;
-   }
- }
- p {
-   font-size: 20px;
-   font-weight: 300;
-   sup {
-     font-size: 14px;
-   }
- }
- sup {
-   color: $blue;
- }
-}
-
 
 .card-grid {
   display: flex;
