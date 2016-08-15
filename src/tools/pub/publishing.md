@@ -128,6 +128,13 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
+## Multiple Authors
+
+Whoever first uploads or publishes a package 
+becomes the only person who can publish new versions of that package.
+Use [`pub uploader`](cmd/pub-uploader) to manage the list
+of authorized publishers.
+
 ## Publishing is forever
 
 Keep in mind that publishing is forever. As soon as you publish your package,
