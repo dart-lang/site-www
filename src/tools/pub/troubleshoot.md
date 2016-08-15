@@ -24,6 +24,18 @@ You can reset pub's authentication process by removing the credentials file:
 rm ~/.pub-cache/credentials.json
 {% endprettify %}
 
+## Getting an "UnauthorizedAccess" error when publishing a package {#pub-publish-unauthorized}
+
+You receive the following error when running `pub publish`:
+
+{% prettify none %}
+UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'..
+{% endprettify %}
+
+You will see this message if you are not on the list of people
+authorized to publish new versions of a package.
+See [Multiple authors vs multiple publishers](publishing#multiple-authors-vs-multiple-publishers).
+
 ## Pub build fails with HttpException error {#pub-get-fails}
 
 You receive an HttpException error similar to the following when
