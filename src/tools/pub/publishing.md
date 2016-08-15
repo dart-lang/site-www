@@ -128,8 +128,10 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Multiple Authors
+## Multiple authors vs multiple publishers
 
+The authors of a package as listed in the `pubspec.yaml` file
+is different from the list of people authorized to publish that package.
 Whoever first uploads or publishes a package 
 becomes the only person who can publish new versions of that package.
 Use [`pub uploader`](cmd/pub-uploader) to manage the list
