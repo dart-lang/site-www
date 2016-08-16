@@ -34,7 +34,7 @@ UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versi
 
 You will see this message if you are not on the list of people
 authorized to publish new versions of a package.
-See [Multiple authors vs multiple publishers](publishing#multiple-authors-vs-multiple-publishers).
+See [Authors versus uploaders](publishing#authors-versus-uploaders).
 
 ## Pub build fails with HttpException error {#pub-get-fails}
 
