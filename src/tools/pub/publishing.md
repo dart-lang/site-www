@@ -128,14 +128,14 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Multiple authors vs multiple publishers
+## Authors versus uploaders
 
-The authors of a package as listed in the `pubspec.yaml` file
-is different from the list of people authorized to publish that package.
-Whoever first uploads or publishes a package 
-becomes the only person who can publish new versions of that package.
-Use [`pub uploader`](cmd/pub-uploader) to manage the list
-of authorized publishers.
+The package authors as listed in the `pubspec.yaml` file
+are different from the list of people authorized to publish that package.
+Whoever publishes the first version of some package automatically becomes
+the first and only person authorized to upload additional versions of the package.
+To allow or disallow other people to upload versions,
+use the [`pub uploader`](cmd/pub-uploader) command.
 
 ## Publishing is forever
 
