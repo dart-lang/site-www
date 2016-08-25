@@ -3,19 +3,25 @@ layout: article
 title: "Mixins in Dart"
 description: "Mixins let you implement functionality once and use it in multiple classes."
 written: 2012-12-18
-updated: 2015-10-12
+updated: 2016-08-25
 category: language
 ---
 
 _Written by Gilad Bracha <br>
-December 2012 (updated October 2015)_
+December 2012 (updated August 2016)_
 
-This document describes mixins in Dart. We recently relaxed
+This document describes mixins in Dart. We have relaxed
 some of the restrictions of early implementations; this document
 describes the current state of play.
 
 Dart 1.13 and greater supports mixins that can extend from classes
-other than Object, and can call super().
+other than Object, and can call super(). This support is only 
+available by default in the Dart VM and in Analyzer behind a flag. 
+More specifically, it is behind the --supermixin flag in the 
+command-line analyzer. It is also available in the analysis server, 
+behind a client-configurable option. E.g., in Atom use the 
+analysis.updateOptions request to set the enableSuperMixins option 
+to true. Dart2js and DDC do not support this yet.
 
 Dart 1.12 or lower supports mixins that must extend Object,
 and must not call super().
