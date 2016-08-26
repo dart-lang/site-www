@@ -71,7 +71,7 @@ To create a simple command-line app, use **New Pad**.
   Change the code. For example, change the `main()` function
   to contain this code:
 
-<!-- ch03/string-tests.dart -->
+<!-- library-tour/string-tests/bin/main.dart -->
 {% prettify dart %}
 for (var char in 'hello'.split('')) {
   print(char);
