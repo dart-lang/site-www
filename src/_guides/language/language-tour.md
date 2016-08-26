@@ -1603,7 +1603,7 @@ The previous example is equivalent to:
 var button = querySelector('#button');
 button.text = 'Confirm';
 button.classes.add('important');
-button.onClick.listen((3) => window.alert('Confirmed!'));
+button.onClick.listen((e) => window.alert('Confirmed!'));
 {% endprettify %}
 
 You can also nest your cascades. For example:
