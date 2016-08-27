@@ -205,7 +205,6 @@ var name = 'Bob';
 Variables are references. The variable called `name` contains a
 reference to a String object with a value of “Bob”.
 
-
 ### Default value {#default-value}
 
 Uninitialized variables have an initial value of `null`. Even variables
@@ -558,6 +557,11 @@ mode*, the preceding code doesn’t print at all because `name` is converted to
 In Dart running in *checked mode*, the preceding code
 throws an exception because the `name` variable is not a bool.
 
+{% comment %}
+xxx: This code also produces an error:
+     "Conditions must have a static type of "bool".
+{% endcomment %}
+
 Here’s another example of code that behaves differently in JavaScript
 and Dart:
 
@@ -578,6 +582,10 @@ The previous two samples work only in production mode, not checked
 mode. In checked mode, an exception is thrown if a non-boolean is used
 when a boolean value is expected.
 </div>
+
+{% comment %}
+xxx: The previous example also produces the same error as above.
+{% endcomment %}
 
 Dart’s treatment of booleans is designed to avoid the strange behaviors
 that can arise when many values can be treated as true. What this means
@@ -2089,8 +2097,8 @@ try {
 }
 {% endprettify %}
 
-Learn more by reading the [Exceptions](/guides/libraries/library-tour#exceptions) section.
-
+Learn more by reading the
+[Exceptions](/guides/libraries/library-tour#exceptions) section.
 
 ## Classes {#classes}
 
@@ -3574,7 +3582,8 @@ For more information about asynchronous programming, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
 Also see the articles
-[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async) and
+[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
+and
 [Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
 and the [Dart language specification](/guides/language/spec).
 
