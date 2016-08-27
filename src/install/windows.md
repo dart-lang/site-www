@@ -67,6 +67,6 @@ For more information on Chocolatey support for Dart, see:
 
 A
 [Dart SDK installer for Windows](http://www.gekorm.com/dart-windows/)
-is available (though unsupported).
+is available and supported by the community.
 You can use the wizard to install stable or dev versions of
 the Dart SDK and Dartium.
