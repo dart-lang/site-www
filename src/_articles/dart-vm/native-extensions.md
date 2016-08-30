@@ -30,8 +30,8 @@ that some of these functions are implemented in native code, using the
 that contains the implementations of those functions.
 
 The Dart library specifies the native library using an `import` statement
-and the **dart-ext**: URI scheme. The URI must either be an absolute path
-like `dart-ext:/path/to/extension`, or only the name of the extension,
+and the **dart-ext**: URI scheme. As of 1.20, the URI must either be an absolute
+path like `dart-ext:/path/to/extension`, or only the name of the extension,
 like `dart-ext:extension`. The VM modifies the URI to add platform
 specific prefixes and suffixes to the extension name. For example,
 `extension` becomes `libextension.so` on Linux. If the URI is an
