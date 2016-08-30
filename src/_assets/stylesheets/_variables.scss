@@ -13,11 +13,11 @@ $teal:                      #1FBAAC;
 $blue:                      #1b87c9;
 $blue-light:                #e2f4fd;
 
-$brand-primary:             #0000EE;
+$brand-primary:             #1155cc;
 
-// From: https://www.w3.org/TR/html5/rendering.html#phrasing-content-0
-$default-link:              #0000EE;
-$default-link-visited:      #0000EE; /*#551A8B;*/
+// Blue color taken from gmail's stylesheet.
+$default-link:              #1155cc;
+$default-link-visited:      #1155cc;
 
 // Typeography
 $font-family-base:          'Source Sans Pro', sans-serif;
@@ -101,3 +101,4 @@ $kbd-bg:                      #333;
 // $pre-color:                   $gray-dark !default;
 // $pre-border-color:            #ccc !default;
 // $pre-scrollable-max-height:   340px !default;
+
