@@ -23,7 +23,7 @@ These two resources are popular with both beginning Dartisans and experts.
 
 ## Other resources
 
-[Customize the Static Analysis Server](/guides/language/analysis-options)
+[Customize Static Analysis](/guides/language/analysis-options)
 : A guide on customizing the analyzer using an analysis_options file.
 
 [Asynchronous Programming: Futures](/tutorials/language/futures)
