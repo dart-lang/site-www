@@ -65,6 +65,9 @@ linter:
 YAML is sensitive to whitespace&mdash;don't use tabs in a YAML file,
 and use 2 spaces to denote each level of indentation.
 
+Note: You might come across a `language:` tag in an analysis options file.
+This tag is used for testing experimental features. You can ignore it.
+
 ## Specifying strong mode
 
 The Dart language spec supports dynamic typing, allowing you to
@@ -157,10 +160,9 @@ for more information.
 
 ## Excluding files
 
-Perhaps you have some code that generates errors but is not
-part of your production code.
-Or perhaps you rely on code generated from a package that
-you don't own&mdash;it runs, but generates errors during static analysis.
+Perhaps you rely on code generated from a package that
+you don't own&mdash;the generated code works,
+but produces errors during static analysis.
 You can exclude files from static analysis using the `exclude:` field.
 
 {% prettify yaml %}
@@ -243,9 +245,11 @@ missing returns as errors, and only provide information about dead code.
 
 ## Resources
 
+{% comment %}
 Join the discussion list for linter enthusiasts:
 
-* [linter-discuss (TBD)](xxx) mailing list
+* [linter-discuss (TBD)](xxx)  Doesn't exist yet...
+{% endcomment %}
 
 Use the following resources to learn more about static analysis in Dart:
 
@@ -260,8 +264,3 @@ Use the following resources to learn more about static analysis in Dart:
 * [DDC](https://github.com/dart-lang/dev_compiler#dev_compiler)
 
 * [analyzer package](https://pub.dartlang.org/packages/analyzer)
-
-{% comment %}
-- The "language:" field is used for testing new language features.
-  Once they are adopted into the language, they are removed.
-{% endcomment %}
