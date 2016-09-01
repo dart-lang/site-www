@@ -12,7 +12,6 @@ Also see:
 
 * [webdev guides]({{site.webdev}}/guides)
 * [Flutter's developer guides]({{site.flutter}})
-* [Dartino's Getting Started guide]({{site.dartino}}/getting-started/)
 * [Dart VM's Get Started tutorial](/tutorials/dart-vm/get-started)
 
 The getting started guide helps you get up and running with Dart as quickly as possible.
