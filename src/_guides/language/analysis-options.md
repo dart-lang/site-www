@@ -1,34 +1,37 @@
 ---
 layout: guide
-title: "Customize the Static Analysis Server"
-description: "Customize the static analysis server using the analysis_options file."
+title: "Customize Static Analysis"
+description: "Customize static analysis using the analysis_options file."
 ---
 
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
-guidelines. In the Dart ecosystem, the
-Dart Analysis Server performs static analysis.
+guidelines. In the Dart ecosystem,
+the Dart Analysis Server and other tools use the
+[analyzer package](https://pub.dartlang.org/packages/analyzer)
+to perform static analysis.
 
-You can customize the server to look for a variety of potential
+You can customize static analysis to look for a variety of potential
 problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
-You can also configure the linter, one of the analysis server's plugins,
+You can also configure the linter, one of the analyzer's plugins,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines
 in [Effective Dart](/guides/language/effective-dart).
-Dart tools, such as the
+Dart tools such as the
 [Dart Dev Compiler (DDC)](https://github.com/dart-lang/dev_compiler),
 [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer),
 [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer),
-and the [IntelliJ IDEs](https://www.dartlang.org/tools/jetbrains-plugin),
-all use the analysis server to evaluate your code.
+and the [IntelliJ IDEs](https://www.dartlang.org/tools/jetbrains-plugin)
+use the analyzer package to evaluate your code.
 
-This document explains how to customize the behavior of the
-analysis server using an `.analysis_options` file. If you want to use
-the analysis server API to add static analysis to your tool, see the
-[Analysis Server API Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
+This document explains how to customize the behavior of the analyzer
+using an `.analysis_options` file. If you want to
+add static analysis to your tool, see the
+[analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
+[Analysis Server API Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html).
 
 
 ## The analysis options file
@@ -36,16 +39,13 @@ the analysis server API to add static analysis to your tool, see the
 The `.analysis_options` (or `.analysis_options.yaml`) file,
 written in the YAML language, is typically placed in the same
 directory as the pubspec file at the top of the package.
-If no file is present, the server walks up the directory
+If no file is present, the analyzer walks up the directory
 tree, looking for one.
 
 Here's a sample YAML analysis_options file:
 
 {% prettify yaml %}
 analyzer:
-  language:
-    enableStrictCallChecks: true
-    enableSuperMixins: true
   strong-mode:
     - no-implicit-downcasts: true
     - no-implicit-dynamic: true
@@ -69,10 +69,9 @@ and use 2 spaces to denote each level of indentation.
 
 The Dart language spec supports dynamic typing, allowing you to
 write code that has no type annotations at all.
-Strong mode is a way to apply more restrictive rules to
-the type system, resulting in finding more errors during
-static analysis and runtime. Another benefit of strong mode
-is faster compilation.
+Strong mode applies more restrictive rules to the type system and,
+as a result, finds more errors during static analysis and at runtime.
+Another benefit of strong mode is faster compilation.
 Some tools, such as DDC, require strong mode compliance.
 
 The simplest way to enable strong mode is to specify
@@ -117,17 +116,17 @@ analyzer:
 
 ## Enabling linter rules
 
-One of the plugins to the analysis server is a code linter.
+The analyzer package also provides a code linter.
 A [wide variety](http://dart-lang.github.io/linter/lints/)
 of linter rules are available. Linters tend to be
 non-denominational&mdash;rules don't have to agree with each other.
 For example, some rules are more appropriate for library packages
-and other rules are designed for Flutter apps.
+and others are designed for Flutter apps.
 Note that some of the linter rules don't play well with strong mode.
 Linter rules can have a false positive, unlike a static analyzer.
 
 To enable a linter rule, add `linter:` to the analysis options file,
-followed by `rule:`.
+followed by `rules:`.
 On subsequent lines, specify the rules that you want to apply,
 prefixed with a dash. For example:
 
@@ -149,9 +148,12 @@ linter:
     - unnecessary_brace_in_string_interp
 {% endprettify %}
 
+{% comment %}
+Brian expressed concern about including this:
 In future, related lint rules may be coalesced into meta rules. See
 [Issue 99: Meta linter rules](https://github.com/dart-lang/linter/issues/288)
 for more information.
+{% endcomment %}
 
 ## Excluding files
 
@@ -239,10 +241,6 @@ This analysis options file instructs the analysis tools to
 ignore unused local variables, treat invalid assignments as warnings and
 missing returns as errors, and only provide information about dead code.
 
-## TBD: Something about the language options...
-
-xxx: Are the `language:` options used to make 1.0 work more like 2.0?
-
 ## Resources
 
 Join the discussion list for linter enthusiasts:
@@ -261,11 +259,9 @@ Use the following resources to learn more about static analysis in Dart:
 
 * [DDC](https://github.com/dart-lang/dev_compiler#dev_compiler)
 
+* [analyzer package](https://pub.dartlang.org/packages/analyzer)
 
 {% comment %}
-Questions:
-
-- I see these phrases:  type inference engine, linter, dart analysis
-  server. Are these used interchangeably?
-- What are the "language" options for? I need a section on this.
+- The "language:" field is used for testing new language features.
+  Once they are adopted into the language, they are removed.
 {% endcomment %}
