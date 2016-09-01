@@ -65,8 +65,10 @@ linter:
 YAML is sensitive to whitespace&mdash;don't use tabs in a YAML file,
 and use 2 spaces to denote each level of indentation.
 
+<div class="alert alert-info" markdown="1">
 Note: You might come across a `language:` tag in an analysis options file.
 This tag is used for testing experimental features. You can ignore it.
+</div>
 
 ## Specifying strong mode
 
