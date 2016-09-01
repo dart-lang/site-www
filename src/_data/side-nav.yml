@@ -52,11 +52,6 @@
       children:
       - title: "API Reference"
         permalink: http://docs.flutter.io/flutter/
-    - title: "IoT (Dartino)"
-      permalink: https://dartino.org/
-      children:
-      - title: "API Reference"
-        permalink: https://dartino.github.io/api/
     - title: "Dart VM"
       permalink: /dart-vm
       children:

@@ -11,7 +11,7 @@ and hosted on Firebase.
 Also see:
 * [github.com/dart-lang/site-webdev](http://github.com/dart-lang/site-webdev)
 * [github.com/dart-lang/site-events](http://github.com/dart-lang/site-events)
-* [github.com/dart-lang/www.dartlang.org](https://github.com/dart-lang/www.dartlang.org)
+* [github.com/dart-lang/www.dartlang.org](https://github.com/dart-lang/www.dartlang.org)  
   (the original www.dartlang.org site, which included information now in
   [webdev.dartlang.org](http://webdev.dartlang.org) &
   [events.dartlang.org](http://events.dartlang.org); the repo includes more setup info than we have here)

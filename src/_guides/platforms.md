@@ -22,11 +22,6 @@ there's a Dart solution for that.
   </div>
 
   <div class="card">
-    <h3><a href="{{site.dartino}}">Dartino</a></h3>
-    <p>Create an app for an embedded device from the Internet of Things (IoT)</p>
-  </div>
-
-  <div class="card">
     <h3><a href="{{site.dart_vm}}">Dart VM</a></h3>
     <p>Write a command-line app or server</p>
   </div>

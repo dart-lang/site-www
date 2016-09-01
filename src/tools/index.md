@@ -68,7 +68,6 @@ Which SDK you need depends on what type of app you're developing.
 |--------------------------|------------------------------------------------|
 | Web app | Dart | [Install Dart and Dartium](/install) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools) |
 | Script or server | Dart | [Install Dart](/install) | [Dart SDK](/tools/sdk), [Dart VM Tools](/dart-vm/tools) |
-| Embedded app | Dartino | [Getting started]({{site.dartino}}/getting-started/) | [dartino.org]({{site.dartino}}) |
 | Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io]({{site.flutter}}) |
 {:.table .table-striped}
 
@@ -104,5 +103,4 @@ see the tools documentation for the SDK you're using:
 * [Dart SDK](/tools/sdk) and specialized tools:
   * [Dart Tools for the Web]({{site.webdev}}/tools)
   * [Dart VM Tools]({{site.dart_vm}}/tools)
-* [Dartino]({{site.dartino}}/getting-started/)
 * [Flutter]({{site.flutter}}/setup/)

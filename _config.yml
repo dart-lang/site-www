@@ -15,10 +15,8 @@ webdev: "https://webdev.dartlang.org"
 # webdev: "https://webdev-dartlang-org.firebaseapp.com"
 dart_vm:  "/dart-vm"
 flutter:  "https://flutter.io"
-dartino:  "https://dartino.org"
 dart_api: "https://api.dartlang.org/stable"
 flutter_api: "http://docs.flutter.io"
-dartino_api: "https://dartino.github.io/api"
 
 collections:
   articles:
@@ -147,4 +145,3 @@ assets:
     liquid: true # default: false
     automatic_img_size: true # default: true
     automatic_img_alt : true # default: true
-
