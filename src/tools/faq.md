@@ -122,7 +122,7 @@ want your package deleted, [file an issue][delete-request] and the Pub authors
 will take down your package. You'll need to use a different version when you
 re-upload it.
 
-[delete-request]: https://github.com/dart-lang/sdk/labels/Pub-DeleteRequest
+[delete-request]: https://github.com/dart-lang/pub-dartlang-dart/issues
 
 #### Q. I get a timeout when I run pub. What do I do?
 
