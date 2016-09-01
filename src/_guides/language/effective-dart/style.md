@@ -239,8 +239,8 @@ directives should appear in. Each "section" should be separated by a blank line.
 import 'dart:async';
 import 'dart:html';
 
-import 'package:bar/bar.dart'
-import 'package:foo/foo.dart'
+import 'package:bar/bar.dart';
+import 'package:foo/foo.dart';
 {% endprettify %}
 </div>
 
@@ -249,8 +249,8 @@ import 'package:foo/foo.dart'
 
 <div class="good">
 {% prettify dart %}
-import 'package:bar/bar.dart'
-import 'package:foo/foo.dart'
+import 'package:bar/bar.dart';
+import 'package:foo/foo.dart';
 
 import 'a.dart';
 {% endprettify %}
@@ -264,8 +264,8 @@ third-party packages, place yours in a separate section after the external ones.
 
 <div class="good">
 {% prettify dart %}
-import 'package:bar/bar.dart'
-import 'package:foo/foo.dart'
+import 'package:bar/bar.dart';
+import 'package:foo/foo.dart';
 
 import 'package:myapp/io.dart';
 import 'package:myapp/util.dart';
@@ -299,8 +299,8 @@ Most tools for editing Dart code can do this automatically for you.
 
 <div class="good">
 {% prettify dart %}
-import 'package:bar/bar.dart'
-import 'package:foo/bar.dart'
+import 'package:bar/bar.dart';
+import 'package:foo/bar.dart';
 
 import 'a.dart';
 import 'a/b.dart';
@@ -309,8 +309,8 @@ import 'a/b.dart';
 
 <div class="bad">
 {% prettify dart %}
-import 'package:foo/bar.dart'
-import 'package:bar/bar.dart'
+import 'package:foo/bar.dart';
+import 'package:bar/bar.dart';
 
 import 'a/b.dart';
 import 'a.dart';
