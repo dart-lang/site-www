@@ -33,39 +33,38 @@ Contributions welcome!
 1. Install `npm` by installing [Node.js](https://nodejs.org/en/).
 1. Install Firebase:
 
-   ```
-npm install -g firebase-tools     # might require sudo
-```   
+    ```
+    npm install -g firebase-tools     # might require sudo
+    ```   
+
 1. Install bundles:
 
-   ```
-bundle install
-```
-1. Get the dependencies for the linkcheck tool:
+    ```
+    bundle install
+    ```
 
-   ```
-cd deploy/linkcheck
-pub get
-```
+1. Install the `linkcheck` tool
+
+    ```
+    pub global activate linkcheck
+    ```
+    
+    Follow the instructions provided by `pub global` to put the `linkcheck`
+    command on your path.
 
 ### While you're editing the site
 
 While you're working on the site, the best way to see your changes is
-to use jekyll and firebase, in two separate terminal windows.
+to run the provided script, which runs `jekyll build --watch` and
+`firebase serve --port 4000` in parallel.
 
-In the first terminal:
-
-```
-jekyll build --watch
-```
-
-In the second terminal:
+In terminal, run:
 
 ```
-firebase serve --port 4000
+./serve_local.sh
 ```
 
-Navigate to localhost:4000. (webdev is 4001)
+Navigate to http://localhost:4000. (webdev is 4001)
 
 Since we host on Firebase, using the Firebase server
 makes sure everything works as closely to production as possible.
@@ -85,12 +84,12 @@ Next, to check for broken links,
 run this from the top of the repo:
 
 ```
-dart deploy/linkcheck/bin/linkcheck.dart
+linkcheck :4000
 ```
 
 If the link checker crashes:
 * Make sure you're using the firebase server.
-* Rerun the command with the `-v` option to figure out what triggered the crash.
+* Rerun the command with the `-d` option to figure out what triggered the crash.
   (Hint: If the last file read is get-started-flowchart.png,
   then you're probably running the jekyll server, not the firebase one.)
 
@@ -100,11 +99,11 @@ with the `--external` (or `-e`, for short) option.
 With this tool you can check any URL by simply specifying it as a parameter:
 
 ```
-dart deploy/linkcheck/bin/linkcheck.dart https://webdev.dartlang.org/
+linkcheck https://webdev.dartlang.org/
 ```
 
-To check for valid HTML, good images, and broken links (though not as well as linkcheck.dart),
-run this from the top of the repo:
+To check for valid HTML, good images, and broken links (though not as well 
+as linkcheck.dart), run this from the top of the repo:
 
 ```
 ./deploy/html_proof.rb
@@ -118,5 +117,5 @@ can take the old sitemap as input for the link checker.
 Again, make sure you are runnig the localhost server (`firebase serve`), then:
 
 ```
-dart deploy/linkcheck/bin/linkcheck.dart -i deploy/urls/old_site_urls.txt
+linkcheck -i deploy/urls/old_site_urls.txt
 ```
