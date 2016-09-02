@@ -13,7 +13,7 @@ You only list
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
-<aside class="alert alert-info">
+<aside class="alert alert-info" markdown="1">
 To see all the dependencies used by a package, use
 [`pub deps`](/tools/pub/cmd/pub-deps).
 </aside>
@@ -82,6 +82,35 @@ But in most cases, you'll just use the simple
 
 Here are the different sources pub can use to locate packages, and the
 descriptions they allow:
+
+### SDK
+
+The SDK source is used for any SDKs that are shipped along with packages,
+which may themselves be dependencies.
+Currently, Flutter is the only SDK that is supported.
+
+The syntax looks like this:
+
+{% prettify yaml %}
+dependencies:
+  flutter_driver:
+    sdk: flutter
+    version: ^0.0.1
+{% endprettify %}
+
+The identifier after `sdk:` indicates which SDK the package comes from.
+If it's `flutter`, the dependency is satisfiable as long as:
+
+* Pub is running in the context of the `flutter` executable
+* The Flutter SDK contains a package with the given name
+* That package's version matches the version constraint
+
+If it's an unknown identifier, the dependency is always considered unsatisfied.
+
+In order to publish a package with an `sdk` dependency,
+it must have a Dart SDK constraint whose minimum version is at least
+1.19.0 which ensures that older versions of pub won't accidentally
+install packages that need SDK dependencies.
 
 ### Hosted packages
 
