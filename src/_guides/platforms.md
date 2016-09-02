@@ -6,9 +6,9 @@ description: "You can use Dart when writing web apps, standalone apps, servers, 
 toc: false
 ---
 
-Dart is a scalable language that you can use to write simple scripts or full featured apps.
-Whether you are creating mobile apps, embedded software, or developing for the browser,
-there's a Dart solution for that.
+Dart is a scalable language that you can use to write simple scripts or full 
+featured apps. Whether you are creating mobile apps, a command-line script, 
+a server, or a web app, there's a Dart solution for that.
 
 <div class="card-grid">
   <div class="card">
