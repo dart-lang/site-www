@@ -15,9 +15,9 @@ some of the restrictions of early implementations; this document
 describes the current state of play.
 
 Dart 1.13 and greater supports mixins that can extend from classes
-other than Object, and can call super(). This support is only 
+other than ```Object```, and can call ```super.method()```. This support is only 
 available by default in the Dart VM and in Analyzer behind a flag. 
-More specifically, it is behind the --supermixin flag in the 
+More specifically, it is behind the ```--supermixin``` flag in the 
 command-line analyzer. It is also available in the analysis server, 
 behind a client-configurable option. E.g., in Atom use the 
 analysis.updateOptions request to set the enableSuperMixins option 
