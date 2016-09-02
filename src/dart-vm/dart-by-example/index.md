@@ -515,9 +515,9 @@ main() async {
   var url = 'http://www.google.com/';
   var client = new http.Client();
   try {
-    var response = await client.get('${url}/search');
+    var response = await client.get('$url/search');
     printResponseBody(response);
-    response = await client.get('${url}/doodles');
+    response = await client.get('$url/doodles');
     printResponseBody(response);
   } finally {
     client.close();
@@ -534,7 +534,7 @@ An HTTP request may return a response, or it may generate an error.
 import 'package:http/http.dart' as http;
 
 handleSuccess(http.Response response) {
-  print('something went wrong');
+  print('something went right!');
   print(response.body);
 }
 
@@ -721,8 +721,8 @@ import 'dart:convert';
 main() async {
   var serverSocket = await ServerSocket.bind('127.0.0.1', 4041);
   print('connected');
-  await for (var socket
-      in serverSocket) socket.transform(UTF8.decoder).listen(print);
+  await for (var socket in serverSocket)
+    socket.transform(UTF8.decoder).listen(print);
 }
 {% endprettify %}
 
@@ -826,6 +826,8 @@ main() {
     stdout.writeln('a Mac');
   } else if (Platform.isAndroid) {
     stdout.writeln('an Android device');
+  } else if (Platform.isIOS) {
+    stdout.writeln('an iOS device');
   } else if (Platform.isLinux) {
     stdout.writeln('Linux');
   } else if (Platform.isWindows) {
