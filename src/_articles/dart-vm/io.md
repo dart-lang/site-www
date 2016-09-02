@@ -289,7 +289,7 @@ main() async {
 {% endprettify %}<!--- END(io_http_server) -->
 
 Running this application
-and pointing your browser to 'http://127.0.0.1:8080'
+and pointing your browser to 'http://127.0.0.1:8082'
 gives you 'Hello, world' as expected.
 
 Let's add a bit more and actually serve files.
