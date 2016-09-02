@@ -24,11 +24,11 @@ Dart tools such as the
 [Dart Dev Compiler (DDC)](https://github.com/dart-lang/dev_compiler),
 [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer),
 [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer),
-and the [IntelliJ IDEs](https://www.dartlang.org/tools/jetbrains-plugin)
+and [JetBrains IDEs](https://www.dartlang.org/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
-using an `.analysis_options` file. If you want to
+using an analysis options file. If you want to
 add static analysis to your tool, see the
 [analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
 [Analysis Server API Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html).
@@ -36,13 +36,12 @@ add static analysis to your tool, see the
 
 ## The analysis options file
 
-The `.analysis_options` (or `.analysis_options.yaml`) file,
-written in the YAML language, is typically placed in the same
-directory as the pubspec file at the top of the package.
-If no file is present, the analyzer walks up the directory
-tree, looking for one.
+Place the analysis options file at the root of the package,
+in the same directory as the pubspec file.
+By convention, the file is called `.analysis_options`, but it
+can also be named `analysis_options.yaml` (without the leading dot).
 
-Here's a sample YAML analysis_options file:
+Here's a sample analysis options file:
 
 {% prettify yaml %}
 analyzer:
@@ -65,10 +64,22 @@ linter:
 YAML is sensitive to whitespace&mdash;don't use tabs in a YAML file,
 and use 2 spaces to denote each level of indentation.
 
-<div class="alert alert-info" markdown="1">
-Note: You might come across a `language:` tag in an analysis options file.
+<aside class="alert alert-info" markdown="1">
+**Note**: You might come across a `language:` tag in an analysis options file.
 This tag is used for testing experimental features. You can ignore it.
-</div>
+</aside>
+
+If the analyzer can't find an analysis options file at the package root,
+it walks up the directory tree, looking for one.
+If no file is available, the analyzer defaults to standard checks.
+
+Consider the following directory structure for a large project:
+
+{% img 'guides/analysis-options-directory-structure.png' %}
+
+The analyzer will use file #1 to analyze the code in `my_other_package`
+and `my_other_other_package`, and file #2 to analyze the code in
+`my_package`.
 
 ## Specifying strong mode
 
@@ -87,7 +98,7 @@ analyzer:
   strong-mode: true
 {% endprettify %}
 
-This flag defaults to false. Instead of specifying `true`
+Strong mode is disabled by default. Instead of specifying `true`
 you can use the following flags to look for specific types
 of implicit casting, on top of the standard strong mode checks.
 The presence of either flag, regardless of value, enables strong mode.
@@ -121,19 +132,19 @@ analyzer:
 
 ## Enabling linter rules
 
-The analyzer package also provides a code linter.
-A [wide variety](http://dart-lang.github.io/linter/lints/)
-of linter rules are available. Linters tend to be
-non-denominational&mdash;rules don't have to agree with each other.
+The analyzer package also provides a code linter. A wide variety of
+[linter rules](http://dart-lang.github.io/linter/lints/)
+are available. Linters tend to be
+non denominational&mdash;rules don't have to agree with each other.
 For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
-Note that some of the linter rules don't play well with strong mode.
-Linter rules can have a false positive, unlike a static analyzer.
+Note that some of the linter rules don't play well with strong mode,
+and linter rules can have false positives, unlike static analysis.
 
 To enable a linter rule, add `linter:` to the analysis options file,
 followed by `rules:`.
 On subsequent lines, specify the rules that you want to apply,
-prefixed with a dash. For example:
+prefixed with dashes. For example:
 
 {% prettify yaml %}
 analyzer:
@@ -255,14 +266,9 @@ Join the discussion list for linter enthusiasts:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Strong Mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md#strong-mode)
-
-* [Dart Linter](https://github.com/dart-lang/linter#linter-for-dart)
-
-* [Linter Rules](http://dart-lang.github.io/linter/lints/)
-
+* [Strong mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md#strong-mode)
+* [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
+* [Dart linter Rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-
 * [DDC](https://github.com/dart-lang/dev_compiler#dev_compiler)
-
 * [analyzer package](https://pub.dartlang.org/packages/analyzer)
