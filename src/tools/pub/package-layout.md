@@ -62,15 +62,17 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* As of 1.12, the `.packages` file exists after you've run `pub get`.
+\* The `.packages` file exists after you've run `pub get`.
    Don't check it into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
-\*** The `packages` directories exist locally after you've run `pub get`.
-     Don't check these into source control.
+\*** The `packages` directories are
+     created when you run `pub get`,
+     unless you specify the flag `--no-packages-dir`.
+     Don't check `packages` directories into source control.
 
 \**** The `doc/api` directory exists locally after you've run
       [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
@@ -100,18 +102,19 @@ Once you've run [`pub get`](/tools/pub/cmd/pub-get),
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), or
 [`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package, you will also have a
 **lockfile**, named `pubspec.lock`. If your package is an [application
-package](/tools/pub/glossary#application-package), this will be checked into source
-control. Otherwise, it won't be.
+package](/tools/pub/glossary#application-package), check the lockfile into source
+control. Otherwise, don't.
 
 {% prettify none %}
 enchilada/
+  .packages
   packages/
     ...
 {% endprettify %}
 
-Running pub also generates a `packages` directory. You will *not* check
-this into source control, and you won't need to worry too much about its
-contents. Consider it pub magic, but not scary magic.
+Running pub also generates a `.packages` file and—unless you specify
+the `--no-packages-dir` flag—at least one directory named `packages`.
+Don't check these into source control.
 
 The open source community has a few other files that commonly appear at the top
 level of a project: `LICENSE`, `AUTHORS`, etc. If you use any of those, they can
@@ -147,9 +150,9 @@ enchilada/
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
 release. When you upload your package to
-[pub.dartlang.org](https://pub.dartlang.org)
-it detects that your package contains a changelog file and shows
-it in the changelog tab.
+[pub.dartlang.org](https://pub.dartlang.org),
+your package's changelog file (if any)
+appears in the changelog tab.
 
 If your CHANGELOG ends in `.md`, `.markdown`, or `.mdown`, it is parsed as
 [Markdown][].
@@ -228,38 +231,6 @@ in the top-level `tool` directory.
 If you do not intend for your package to be depended on, you can leave your
 scripts in `bin`.
 
-## Referencing packages
-
-You can, of course, reference a package from within your app.
-For example, say your source tree looks like this:
-
-{% prettify none %}
-myapp/
-  example/
-    one/
-      sub/
-        index.html
-{% endprettify %}
-
-The resulting build directory has the following structure:
-
-{% prettify none %}
-build/
-  example/
-    one/
-      packages/
-        myapp/
-          style.css
-      sub/
-        index.html
-{% endprettify %}
-
-In this scenario, index.html references the stylesheet using
-the relative path `../packages/myapp/style.css`. (Note the leading `..`.)
-
-You can also use a path relative to the root URL, such as
-`/packages/myapp/style.css`, but you must be careful on how you
-deploy your app.
 
 ## Public assets
 
@@ -277,29 +248,25 @@ consumers of the package to use.
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
-Users can reference another package's assets using URLs that contain
-`/packages/<package>/<path>` where `<package>` is the name of the package
-containing the asset and `<path>` is the relative path to the asset within that
-package's `lib` directory.
-
 <aside class="alert alert-info" markdown="1">
+**Compatibility note:**
 In earlier releases, assets were also placed in the top-level
 `asset` directory. Pub no longer recognizes the `asset` directory.
 </aside>
 
-For example, let's say your package wanted to use enchilada's `guacamole.css`
-styles. In an HTML file in your package, you can add:
+You can reference another package's assets using the
+[resource package](https://github.com/dart-lang/resource).
 
-{% prettify html %}
-<link href="packages/enchilada/guacamole.css" rel="stylesheet">
-{% endprettify %}
-
-When you run your application using [`pub serve`]({{site.webdev}}/tools/pub/pub-serve), or build
-it to something deployable using [`pub build`]({{site.webdev}}/tools/pub/pub-build), pub
-copies over any referenced assets that your package depends on.
+<aside class="alert alert-warning" markdown="1">
+**Warning:**
+Old code might refer to assets using `/packages/<package>/<path>` URLs;
+that code will break when `packages` directories go away.
+A temporary workaround is to use the `--packages-dir` flag.
+</aside>
 
 For more information about using assets, see
 [Pub Assets and Transformers](/tools/pub/assets-and-transformers).
+
 
 ## Implementation files
 
@@ -352,8 +319,7 @@ happy.
 
 Also, and this is important, any Dart web entrypoints (in other words, Dart
 scripts that are referred to in a `<script>` tag) go under `web` and not `lib`.
-That ensures that a `packages` directory is created nearby so that `package:`
-imports can be resolved correctly.
+That ensures that `package:` imports can be resolved correctly.
 
 (You may be asking whether you should put your web-based example programs
 in `example` or `web`? Put those in `example`.)

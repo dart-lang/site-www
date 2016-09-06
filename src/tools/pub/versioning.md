@@ -263,7 +263,7 @@ on the context. In `my_app`, `widgets` will use `collection 1.9.9`. But
 in `other_app`, `widgets` will get saddled with `collection 1.4.9` because of
 the _other_ constraint that `otherapp` places on it.
 
-This is why each app gets its own `packages` directory: The concrete version
+This is why each app gets its own `.packages` file: The concrete version
 selected for each package depends on the entire dependency graph of the
 containing app.
 
@@ -339,8 +339,8 @@ directly or indirectly and the best version of that package that will work with
 your app's constraints.
 
 Pub takes that and writes it out to a **lockfile** in your app's directory
-called `pubspec.lock`. When pub builds the `packages` directory your app, it
-uses the lockfile to know what versions of each package to pull in. (And if
+called `pubspec.lock`. When pub builds the `.packages` file for your app, it
+uses the lockfile to know what versions of each package to refer to. (And if
 you're curious to see what versions it selected, you can read the lockfile to
 find out.)
 

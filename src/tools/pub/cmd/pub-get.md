@@ -10,13 +10,8 @@ _Get_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
 {% prettify sh %}
-$ pub get [--offline]
+$ pub get [--offline] [--no-package-dirs | --package-dirs]
 {% endprettify %}
-
-{% comment %}
-Not ready to advertise --no-package-symlinks
-$ pub get [--offline] [--no-package-symlinks]
-{% endcomment %}
 
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
@@ -34,15 +29,18 @@ doesn't already contain the dependencies, `pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
-this command creates one or more `packages` directories and,
-as of Dart 1.12, a `.packages` file.
+this command creates a `.packages` file and—unless you specify
+the `--no-packages-dir` flag—one or more
+`packages` directories.
 
 {% comment %}
+PENDING: here just to make it easy to find discussions of `packages`...
 {% include coming-release.html %}
 {% endcomment %}
 
-<aside class="alert alert-info" markdown="1">
-  **Compatibility note:**
+<aside class="alert alert-warning" markdown="1">
+  **The `.packages` file is replacing `packages` directories.**
+
   As of Dart 1.12,
   `packages` directories are being phased out and
   replaced by the `.packages` file.
@@ -50,14 +48,13 @@ as of Dart 1.12, a `.packages` file.
   tools that support it.
   For more information, see
   [Resolving package: URIs](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#resolving-package-uris).
-</aside>
 
-{% comment %}
-Not ready for this...
-As of Dart 1.12, the `.packages` file supercedes the `packages`
-directories. You can suppress creation of the packages directories
-by specifying `--no-packages-symlinks`.
-{% endcomment %}
+  As of Dart 1.19, you can suppress creation of the `packages` directories
+  by specifying `--no-package-dirs`.
+  To request generation of `packages` directories
+  (in addition to the `.packages` file),
+  use the `--package-dirs` flag.
+</aside>
 
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
@@ -84,8 +81,9 @@ This is the primary difference between `pub get` and
 get the latest versions of all dependencies.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** Do not check the generated `packages` directories,
-`.package` file, or `.pub` directory (when present) into your repo;
+**Note:** Do not check the generated `.package` file,
+`packages` directories, or `.pub` directory (when present)
+into your repo;
 add them to your repo's `.gitignore` file.
 [What Not to Commit](/guides/libraries/private-files) has a complete list
 of files that should not be checked into the repo.
@@ -95,16 +93,16 @@ of files that should not be checked into the repo.
 
 If a dependency is added to the pubspec and then `pub get` is run,
 it gets the new dependency and any of its transitive dependencies and
-updates the links in the `packages` directory, and the
-mapping in the `.packages` file.
-However, it won't change the versions of any already-acquired
+updates the mapping in the `.packages` file and
+the links in the `packages` directory.
+However, pub won't change the versions of any already-acquired
 dependencies unless that's necessary to get the new dependency.
 
 ## Removing a dependency
 
 If a dependency is removed from the pubspec and then `pub get` is run,
-it removes the dependency from the `packages` directory, and the
-`.packages` file, thus making it unavailable for importing.
+it removes the dependency from the `.packages` file and
+`packages` directory, thus making it unavailable for importing.
 Any transitive dependencies of the removed dependency are also removed,
 as long as no remaining immediate dependencies also depend on them.
 Removing a dependency never changes the versions of any
@@ -118,7 +116,7 @@ Dependencies downloaded over the internet, such as those from Git and
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
 downloaded and stored locally once. It also means that it's safe to delete
-the `packages` directories, or the `.packages` file, without
+the `.packages` file and `packages` directories, without
 worrying about re-downloading packages.
 
 By default, the system package cache is located in the `.pub-cache`
