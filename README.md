@@ -120,8 +120,12 @@ git commit src
 
 Create a pull request by pushing your branch to GitHub.
 
+```
+git push origin <branchname>
+```
+
 Navigate to the Firebase console,
-[firebase.corp.google.com](https://firebase.corp.google.com).
+[console.firebase.google.com](https://console.firebase.google.com/).
 
 If you don't already have a project to stage to,
 create it:
@@ -138,32 +142,14 @@ we reuse them. Our naming convention is
 `sz-www-1` and `kw-www-1`. For webdev.org, replace `www`
 with `webdev`.
 
-Return to the [Firebase console](https://firebase.corp.google.com/).
+Return to the [Firebase console](https://console.firebase.google.com/).
 You should now see your project in the list.
 Copy the name of your project (e.g. `sz-www-2`) to your clipboard.
 
 On the command line, from the top of GitHub repo, edit the
-`.firebaserc` file. The file looks like this:
+`.firebaserc` file. 
 
-```
-{
-  "projects": {
-    "default": "www-dartlang-org"
-  }
-}
-```
-
-Change the `www-dartlang-org` string to use the name of your project:
-
-```
-{
-  "projects": {
-    "default": "<your-instance>"
-  }
-}
-```
-
-For example:
+Change `www-dartlang-org` to the name of your project. For example:
 
 ```
 {
