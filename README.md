@@ -11,7 +11,7 @@ and hosted on Firebase.
 Also see:
 * [github.com/dart-lang/site-webdev](http://github.com/dart-lang/site-webdev)
 * [github.com/dart-lang/site-events](http://github.com/dart-lang/site-events)
-* [github.com/dart-lang/www.dartlang.org](https://github.com/dart-lang/www.dartlang.org)  
+* [github.com/dart-lang/www.dartlang.org](https://github.com/dart-lang/www.dartlang.org)
   (the original www.dartlang.org site, which included information now in
   [webdev.dartlang.org](http://webdev.dartlang.org) &
   [events.dartlang.org](http://events.dartlang.org); the repo includes more setup info than we have here)
@@ -35,7 +35,7 @@ Contributions welcome!
 
     ```
     npm install -g firebase-tools     # might require sudo
-    ```   
+    ```
 
 1. Install bundles:
 
@@ -48,7 +48,7 @@ Contributions welcome!
     ```
     pub global activate linkcheck
     ```
-    
+
     Follow the instructions provided by `pub global` to put the `linkcheck`
     command on your path.
 
@@ -102,12 +102,107 @@ With this tool you can check any URL by simply specifying it as a parameter:
 linkcheck https://webdev.dartlang.org/
 ```
 
-To check for valid HTML, good images, and broken links (though not as well 
+To check for valid HTML, good images, and broken links (though not as well
 as linkcheck.dart), run this from the top of the repo:
 
 ```
 ./deploy/html_proof.rb
 ```
+
+## Staging the site
+
+Navigate to the Firebase console,
+[firebase.corp.google.com/](https://firebase.corp.google.com/).
+
+If you've been added to the dartlang project, you will see several
+instances, such as `www-dartlang-org`, `webdev-dartlang-org`,
+and `events-dartlang-org`. These are the deployed instances for
+www.dartlang.org, webdev.dartlang.org, and events.dartlang.org,
+respectively.
+
+You will also see the staged instances used by your colleagues.
+In order to keep the number of instances under control,
+we re-use them. Our naming convention is
+`<first initial><last initial>-www-<number>`, for example,
+`sz-www-1` and `kw-www-1`. For webdev.org, replace `www`
+with `webdev`.
+
+To create your instance use the following steps:
+
+* Select **Create New Project**.
+* Enter a project name in the dialog, such as
+  `<first initial><last initial>-www-1`.
+* Click **Create Project**. This takes you to the
+  page for your new instance.
+
+Return to the [Firebase console](https://firebase.corp.google.com/).
+You should now see your instance in the list.
+Copy the name of your instance (ie: `sz-www-2`) to your clipboard.
+
+On the command line, from the top of GitHub repo, edit the
+`.firebaserc` file. The file looks like this:
+
+```
+{
+  "projects": {
+    "default": "www-dartlang-org"
+  }
+}
+```
+
+Change the `www-dartlang-org` string with the name of your project,
+like so:
+
+```
+{
+  "projects": {
+    "default": "<your-instance>"
+  }
+}
+```
+
+For example:
+
+```
+{
+  "projects": {
+    "default": "sz-www-2"
+  }
+}
+```
+
+From the same directory at the top of the repo,
+make sure that you've built the latest version reflecting your changes:
+
+```
+jekyll build
+```
+
+And then deploy it to Firebase:
+
+```
+firebase deploy
+```
+
+You can now navigate to the staged version at
+`https://<your-instance>.firebaseapp.com`/, for example,
+`https://sz-www-2.firebaseapp.com/`.
+
+Don't commit the `.firebaserc` file containing the name of your staged version.
+First commit your content changes, for example, if you've changed files
+under the `src` directory:
+
+```
+git commit src
+```
+
+This commits all files under src, but not `.firebaserc`.
+You can stash this file using `git stash`.
+
+Create a pull request by pushing the branch. Navigate to the PR
+on GitHub and update the it with the names of your reviewers.
+You can later retrieve the stashed file, if you need to stage it again,
+using `git stash pop`.
 
 ## Checking against the old sitemap
 
