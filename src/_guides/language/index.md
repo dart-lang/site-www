@@ -23,6 +23,9 @@ These two resources are popular with both beginning Dartisans and experts.
 
 ## Other resources
 
+[Customize Static Analysis](/guides/language/analysis-options)
+: A guide on customizing the analyzer using an analysis_options file.
+
 [Asynchronous Programming: Futures](/tutorials/language/futures)
 : A beginner's guide to handling asynchronous programming in Dart.
 
