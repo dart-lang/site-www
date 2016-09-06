@@ -132,7 +132,7 @@ create it:
 
 1. Select **Create New Project**.
 1. Enter a project name in the dialog, such as
-  `<first initial><last initial>-www-dartlang-1`.
+  `zz-www-dartlang-1`.
 1. Click **Create Project**. This takes you to the
   page for your new project.
 
