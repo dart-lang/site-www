@@ -46,8 +46,8 @@ Here's a sample analysis options file:
 {% prettify yaml %}
 analyzer:
   strong-mode:
-    - implicit-downcasts: true
-    - implicit-dynamic: true
+    - implicit-downcasts: false
+    - implicit-dynamic: false
   errors:
     todo: ignore
   exclude:
@@ -121,20 +121,14 @@ String s2 = s.substring(1);
   the `dynamic` type when it can't determine a static type.
   This flag defaults to `true`.
 
-To enable both flags in the analysis options file:
+To disallow both implicit downcasts and implicit dynamic types in the
+analysis options file:
 
 {% prettify yaml %}
 analyzer:
   strong-mode:
     - implicit-downcasts: false
     - implicit-dynamic: false
-{% endprettify %}
-
-Or pass `no-implicit-casts` or `no-implicit-dynamic` to the analyzer.
-For example:
-
-{% prettify none %}
-dartanalyzer --strong --no-implicit-dynamic --no-implicit-casts foo.dart
 {% endprettify %}
 
 ## Enabling linter rules
