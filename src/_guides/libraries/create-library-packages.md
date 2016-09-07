@@ -203,6 +203,11 @@ packages, don't commit `.packages`, the `pubspec.lock` file,
 or any `packages` directories. For more information, see
 [What Not to Commit](private-files).
 
+{% comment %}
+PENDING: here just to make it easy to find discussions of `packages`...
+{% include coming-release.html %}
+{% endcomment %}
+
 You can share your open source libraries with other developers on
 [pub.dartlang.org](https://pub.dartlang.org/) using
 [pub publish](/tools/pub/cmd/pub-lish).

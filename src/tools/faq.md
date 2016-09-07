@@ -45,56 +45,16 @@ hoping to address the root cause but it will take a while to get there.
 
 #### Q. What are all the "packages" directories for?
 
-After you run pub, you'll notice that your package has little `packages`
-directories sprinkled all over it. These are needed to make `package:` imports
-work.
+After you run pub, you might notice that your package has little `packages`
+directories sprinkled all over it. Before 1.19, these directories were
+needed to make `package:` imports work.
 
 {% include coming-release.html %}
 
 When your code has an import with the `package` scheme, a Dart
-implementation like the VM or dart2js translates that to a path or URL using a
-simple rewriting rule:
-
- 1. Take the URI of your application's [entrypoint](/tools/pub/glossary#entrypoint).
- 2. Strip off the trailing file name.
- 3. Append `/packages/` followed by the rest of the import URL.
-
-For example, if you app's entrypoint is `/dev/myapp/web/main.dart` then:
-
-{% prettify dart %}
-import 'package:test/test.dart';
-{% endprettify %}
-
-Magically turns into:
-
-{% prettify dart %}
-import '/dev/myapp/web/packages/test/test.dart';
-{% endprettify %}
-
-Then Dart loads that as normal. This behavior is a [specified][spec] part of
-the Dart language. The example only works if you have a directory named
-`packages` inside your `web` directory and that directory in turn contains the
-packages that your app uses.
-
-[spec]: http://www.dartlang.org/docs/spec/
-
-Pub creates these directories for you. The main one it creates is in the root
-of your package. Inside that, it creates symlinks pointing to the `lib`
-directories of each package your app [depends][] on. (The dependencies
-themselves will usually live in your [system cache][].)
-
-[depends]: /tools/pub/glossary#dependency
-[system cache]: /tools/pub/glossary#system-cache
-
-After creating the main `packages` directory in your package's root, pub then
-creates secondary ones in every [directory in your package where a Dart
-entrypoint may appear](/tools/pub/glossary#entrypoint-directory).
-Currently that's `benchmark`, `bin`, `example`, `test`, `tool`, and `web`.
-
-Pub also creates `packages` symlinks in *subdirectories* of any of those that
-point back to the main one. Since you may have entrypoints under, for example,
-`web/admin/controllers/`, pub makes sure a `packages` directory
-is always nearby. Otherwise the imports won't work.
+implementation like the VM or dart2js translates that to a path or URL.
+This path used to be relative to the `packages` directory, but now is derived
+from information in the `.packages` file.
 
 #### Q. How can I make my client-server app work with **pub serve**?
 

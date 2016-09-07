@@ -89,7 +89,7 @@ Next, pub creates one or more `packages` directories containing
 symlinks to the packages in the system cache.
 
 Finally, pub creates a
-<code class="literal">.packages</code> file (under your app’s top directory)
+`.packages` file (under your app’s top directory)
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
@@ -104,13 +104,13 @@ import 'package:js/js.dart' as js;
 import 'package:intl/intl.dart';
 {% endprettify %}
 
-The Dart runtime takes everything after <code class="literal">package:</code>
-and looks it up within the <code class="literal">packages</code> directory for
+The Dart runtime takes everything after `package:`
+and looks it up within the `.packages` file or `packages` directory for
 your app.
 
 You can also use this style to import libraries from within your own package.
 
-Consider the following pubspec file which declares a dependency on
+Consider the following pubspec file, which declares a dependency on
 the (fictional) `transmogrify` package:
 
 {% prettify yaml %}

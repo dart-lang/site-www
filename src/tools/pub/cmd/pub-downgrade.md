@@ -10,14 +10,15 @@ _Downgrade_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
 {% prettify sh %}
-$ pub downgrade [dependencies...]
+$ pub downgrade [args] [dependencies]
 {% endprettify %}
 
 Without any additional arguments, `pub downgrade` gets the lowest versions of
-all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec)
-file in the current working directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency), to the `packages`
-directory located next to the pubspec. For example:
+all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
+in the current working directory, as well as their [transitive
+dependencies](/tools/pub/glossary#transitive-dependency), to the `.packages`
+file and the `packages` directory located next to the pubspec.
+For example:
 
 {% prettify sh %}
 $ pub downgrade
@@ -32,8 +33,13 @@ Changed 6 dependencies!
 {% endprettify %}
 
 The `pub downgrade` command creates a lockfile. If one already exists,
-it ignores it and generates a new one from scratch using the lowest
+pub ignores that file and generates a new one from scratch, using the lowest
 versions of all dependencies.
+
+The `pub downgrade` command supports the same command-line arguments
+as the [`pub get` command](/tools/pub/cmd/pub-get).
+
+{% include coming-release.html %}
 
 ## Downgrading specific dependencies
 
@@ -67,17 +73,19 @@ as a result.
 
 ## Getting a new dependency
 
-If a dependency is added to the pubspec before `pub downgrade` is run, it gets
-the new dependency and any of its transitive dependencies and places them in
-the `packages` directory. This is the same behavior as `pub get`.
+If a dependency is added to the pubspec before `pub downgrade` is run,
+it gets the new dependency and any of its transitive dependencies and
+places them in the `.packages` file and `packages` directory. This
+is the same behavior as `pub get`.
 
 ## Removing a dependency
 
-If a dependency is removed from the pubspec before `pub downgrade` is run, it
-removes the dependency from the `packages` directory, thus making it
-unavailable for importing. Any transitive dependencies of the removed dependency
-are also removed, as long as no remaining immediate dependencies also depend
-on them. This is the same behavior as `pub get`.
+If a dependency is removed from the pubspec before `pub downgrade` is
+run, it removes the dependency from the `.packages` file and
+`packages` directory, thus making the dependency unavailable for
+importing. Any transitive dependencies of the removed dependency are
+also removed, as long as no remaining immediate dependencies also
+depend on them. This is the same behavior as `pub get`.
 
 ## Downgrading while offline
 

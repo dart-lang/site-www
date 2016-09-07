@@ -182,18 +182,18 @@ $
 
 The `pub get` command installs the
 packages in your app's dependencies list.
+Each package can contain libraries and other assets.
 Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
 
-Pub puts the package files under directories called `packages`.
-Each package can contain libraries and other assets.
+Pub caches the files for each package your app depends on,
+pointing to them from a file named `.packages` and
+directories named `packages`.
 
-If you open your app's top-level `packages` directory,
-you'll find the `vector_math` link,
-which points to the Dart libraries from the vector_math package.
+{% include coming-release.html %}
 
-Pub creates a file called `pubspec.lock`,
-which identifies the specific versions of the packages that were installed.
+Pub creates a file called `pubspec.lock`
+that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
 Later you can modify the version constraints and use `pub upgrade`
 to update to new versions as needed.
