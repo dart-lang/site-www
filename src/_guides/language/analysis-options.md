@@ -7,7 +7,18 @@ description: "Customize static analysis using the analysis_options file."
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
-guidelines. In the Dart ecosystem,
+guidelines. With the help of the analyzer, you can find
+simple typos. For example, perhaps an accidental semicolon
+made its way into an `if` statement:
+
+{% img 'guides/avoid-empty-statements.png' %}
+
+The analyzer can also help you find more subtle problems.
+For example, perhaps you've forgotten to close a sink method:
+
+{% img 'guides/close-sinks.png' %}
+
+In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
 [analyzer package](https://pub.dartlang.org/packages/analyzer)
 to perform static analysis.
