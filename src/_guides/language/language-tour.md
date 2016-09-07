@@ -345,11 +345,12 @@ Dart numbers come in two flavors:
     the IEEE 754 standard
 
 Both `int` and `double` are subtypes of
-[`num`.]({{site.dart_api}}/dart-core/num-class.html) The num type
-includes basic operators such as +, -, /, and \*, as well as bitwise
-operators such as \>\>. The num type is also where you’ll find
-`abs()`,` ceil()`, and `floor()`, among other methods. If num and its
-subtypes don’t have what you’re looking for, the
+[`num`.]({{site.dart_api}}/dart-core/num-class.html)
+The num type includes basic operators such as +, -, /, and \*,
+and is also where you’ll find `abs()`,` ceil()`,
+and `floor()`, among other methods.
+(Bitwise operators, such as \>\>, are defined in the `int` class.)
+If num and its subtypes don’t have what you’re looking for, the
 [dart:math]({{site.dart_api}}/dart-math/dart-math-library.html) library might.
 
 <div class="alert alert-warning" markdown="1">
