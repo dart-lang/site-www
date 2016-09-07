@@ -10,7 +10,7 @@ _Get_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
 {% prettify sh %}
-$ pub get [--offline] [--no-packages-dirs | --packages-dirs]
+$ pub get [--offline] [--no-packages-dir | --packages-dir]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
@@ -50,10 +50,10 @@ PENDING: here just to make it easy to find discussions of `packages`...
   [Resolving package: URIs](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#resolving-package-uris).
 
   As of Dart 1.19, you can suppress creation of the `packages` directories
-  by specifying `--no-packages-dirs`.
+  by specifying `--no-packages-dir`.
   To request generation of `packages` directories
   (in addition to the `.packages` file),
-  use the `--packages-dirs` flag.
+  use the `--packages-dir` flag.
 </aside>
 
 Once the dependencies are acquired, they may be referenced in Dart code.
