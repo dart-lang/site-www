@@ -115,43 +115,6 @@ passing `myscript.dart -oout.js` as command-line arguments to dart2js:
 dart dart2js.snapshot myscript.dart -oout.js
 {% endprettify %}
 
-## How to generate full snapshots
-
-Read this section if you’re working on
-one of the rare projects that embed the Dart VM (for example, Dartium).
-The gen_snapshot tool writes a full snapshot
-(corelibs, dart:uri, dart:io, dart:utf, dart:json, dart:isolate, ...)
-to _out-file_:
-
-{% prettify sh %}
-gen_snapshot [<options>] --snapshot=<out_file>
-{% endprettify %}
-
-You can use the following _options_:
-
-<table class="table">
-  <tr style="text-align:left">
-    <th>Option</th> <th>Description</th>
-  </tr>
-  <tr>
-    <td class="nowrap">
-      --package_root=<em>path</em>
-    </td>
-    <td>
-      Specifies the location of packages used in imports
-      (<code>import 'package:...'</code>).</td>
-  </tr>
-  <tr>
-    <td class="nowrap">
-      --url_mapping=<em>mapping</em>
-    </td>
-    <td>
-      Provides a URL mapping on the command line for URI resolution
-      during library imports.</td>
-  </tr>
-</table>
-
-
 ## Summary
 
 You can find more information about snapshots
