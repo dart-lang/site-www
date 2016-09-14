@@ -1014,6 +1014,26 @@
         "source": "/pub/tools/editor",
         "destination": "/tools",
         "type": 301
+      },
+      {
+        "source": "/posters/**",
+        "destination": "https://github.com/dart-lang/www.dartlang.org/tree/f5f235e56e51d38d9f4d01f949d0a485f3828056/src/site/posters",
+        "type": 301
+      },
+      {
+        "source": "/tools/eclipse-plugin/",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/deferred-loading.html",
+        "destination": "/guides/language/language-tour#deferred-loading",
+        "type": 301
+      },
+      {
+        "source": "/tools/dartium",
+        "destination": "https://webdev.dartlang.org/tools/dartium",
+        "type": 301
       }
     ]
   }
