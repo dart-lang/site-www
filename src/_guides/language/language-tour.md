@@ -1104,21 +1104,30 @@ More about those in the next section.
 
 Most functions are named, such as `main()` or `printElement()`.
 You can also create a nameless function,
-called an _anonymous function_.
-An anonymous function is typically invoked once, or only a few times.
+called an _anonymous function_, or sometimes a lambda or closure.
 You might assign an anonymous function to a variable so that,
 for example, you can add or remove it from a collection.
 
-An anonymous function looks similar to a named function&mdash;an optional parameter
-in parentheses, followed by a code block:
+An anonymous function looks similar to a named function&mdash;
+zero or more parameters, separated by commas,
+and optionally typed, are placed in parenthesis.
+The code block that follows contains the function's body:
+
+([[_Type_] _parameter-name_][,...]) { <br>
+&nbsp;&nbsp;_code-block_; <br>
+}; <br>
+
+The following example defines an anonymous function with an untyped parameter, `i`.
+The function, invoked for each item in the list using `forEach`,
+prints a string that includes the value at the specified index:
 
 {% prettify dart %}
-(parameter-name) {
-  code-block;
-};
+var list = ['apples', 'oranges', 'grapes', 'bananas', 'plums'];
+list.forEach((i) {
+  print(list.indexOf(i).toString() + ': ' + i);
+});
 {% endprettify %}
 
-The following anonymous function prints the contents of a list.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
 {% comment %}
