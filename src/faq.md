@@ -297,7 +297,7 @@ For more information, see [Dart Tools].
 ### Q. Can I build an Android app with Dart?
 
 Yes! You can build an Android app that also works on iOS from a single codebase
-using [Flutter]({{site.flutter}}.
+using [Flutter]({{site.flutter}}).
 
 ### Q. Can I use Dart on App Engine?
 
