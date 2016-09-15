@@ -599,7 +599,7 @@ should define a getter instead of a method when all of these are true:
 
 <div class="good">
 {% prettify dart %}
-rect.width
+rectangle.width
 collection.isEmpty
 button.canShow
 {% endprettify %}
@@ -635,7 +635,7 @@ a setter. More specifically, use a setter instead of a method when it:
 
 <div class="good">
 {% prettify dart %}
-rect.width = 3;
+rectangle.width = 3;
 button.visible = false;
 {% endprettify %}
 </div>
