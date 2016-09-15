@@ -30,7 +30,6 @@ prevpage:
 
 <aside class="alert alert-info" markdown="1">
 <strong>Prerequisite:</strong>
-
 This tutorial uses the `async` and `await` language features, which rely on the
 <a href="{{site.dart_api}}/dart-async/Future-class.html" target="_blank">Future</a>
 and
@@ -108,7 +107,7 @@ For a brief look now, hover over the highlighted code below for explanations.
 <pre class="prettyprint lang-dart">
 import 'dart:io';
 import 'dart:convert';
-<a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous library" data-html="true" data-trigger="hover focus" data-content="The dart:async library defines Future and Stream classes">import 'dart:async';</a>
+<a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous library" data-html="true" data-trigger="hover focus" data-content="The dart:async library defines Future and Stream classes.">import 'dart:async';</a>
 
 import 'package:args/args.dart';
 
@@ -127,25 +126,25 @@ void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-
   dcat(paths, argResults[lineNumber]);
 }
 
-<a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous function" data-html="true" data-trigger="hover focus" data-content="An asynchronous function is marked with 'async' and returns a Future.">Future</a> dcat(List&lt;String&gt; paths, bool showLineNumbers) <a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous function" data-html="true" data-trigger="hover focus" data-content="An asynchronous function is marked with 'async' and returns a Future.">async</a> {
+Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous function" data-html="true" data-trigger="hover focus" data-content='An asynchronous function is marked with "async" and returns a Future.'>async</a> {
   if (paths.isEmpty) {
     // No files provided as arguments. Read from stdin and print each line.
     <a href="#" class="dart-popover" data-toggle="popover" title="Standard I/O streams" data-html="true" data-trigger="hover focus" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
   } else {
     for (var path in paths) {
       int lineNumber = 1;
-      <a href="#" class="dart-popover" data-toggle="popover" title="Open the stream" data-html="true" data-trigger="hover focus" data-content="Use the File class to represent a file on the native file system.">Stream lines = new File(path)</a>
+      <a href="#" class="dart-popover" data-toggle="popover" title="Create a File object" data-html="true" data-trigger="hover focus" data-content="Use the File class to represent the file on the native file system.">Stream lines = new File(path)</a>
           <a href="#" class="dart-popover" data-toggle="popover" title="Open a file for reading" data-html="true" data-trigger="hover focus" data-content="Read the content from the file asynchronously.">.openRead()</a>
           <a href="#" class="dart-popover" data-toggle="popover" title="Data converters" data-html="true" data-trigger="hover focus" data-content="Convert data as it becomes available on the stream.">.transform(UTF8.decoder)</a>
           .transform(const LineSplitter());
-      <a href="#" class="dart-popover" data-toggle="popover" title="Try-catch block" data-html="true" data-trigger="hover focus" data-content="Catch errors by placing the asynchronous code inside a try-catch block.">try</a> {
-        <a href="#" class="dart-popover" data-toggle="popover" title="Get data from the stream" data-html="true" data-trigger="hover focus" data-content="Use 'await for' to loop over the values as they become available on the stream.">await for (var line in lines)</a> {
+      <a href="#" class="dart-popover" data-toggle="popover" title="Exception handling" data-html="true" data-trigger="hover focus" data-content='Function calls that might generate an exception are placed in a "try" block.'>try</a> {
+        <a href="#" class="dart-popover" data-toggle="popover" title="Get data from the stream" data-html="true" data-trigger="hover focus" data-content='Use "await for" to loop over the values as they become available on the stream. The program pauses while waiting for the next line.'>await for (var line in lines)</a> {
           if (showLineNumbers) {
             stdout.write('${lineNumber++} ');
           }
           stdout.writeln(line);
         }
-      } <a href="#" class="dart-popover" data-toggle="popover" title="Try-catch block" data-html="true" data-trigger="hover focus" data-content="Catch errors by placing the asynchronous code inside a try-catch block.">catch</a> (_) {
+      } <a href="#" class="dart-popover" data-toggle="popover" title="Exception handling" data-html="true" data-trigger="hover focus" data-content='Any errors encountered in the stream are handled in the "catch" block.'>catch</a> (_) {
         _handleError(path);
       }
     }
@@ -153,7 +152,7 @@ void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-
 }
 
 Future _handleError(String path) async {
-  if (await <a href="#" class="dart-popover" data-toggle="popover" title="Test the path" data-html="true" data-trigger="hover focus" data-content="You can get information about the file system on which your program is running.">FileSystemEntity.isDirectory(path)</a>) {
+  if (<a href="#" class="dart-popover" data-toggle="popover" title="Test the path" data-html="true" data-trigger="hover focus" data-content='You can get information about the file system on which your program is running. The "await" keyword causes error handling to pause until the path is available.'>await FileSystemEntity.isDirectory(path)</a>) {
       stderr.writeln('error: $path is a directory');
     } else {
       <a href="#" class="dart-popover" data-toggle="popover" title="Exit code" data-html="true" data-trigger="hover focus" data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful.">exitCode = 2;</a>
@@ -266,7 +265,7 @@ import 'dart:async';
 
 Only command-line applications, not web applications, can use the dart:io library.
 The `async`, `await`, and `await for` keywords are built into the Dart language,
-but you must import dart:async to use Futures or Streams.
+but you must import dart:async to refer to the Future or Stream class.
 
 ### stdout
 
@@ -376,7 +375,7 @@ it performs the check asynchronously.
 The following code from the `dcat` example uses `FileSystemEntity`
 to determine if the path provided on the command line is a directory.
 The Future returns a boolean that indicates if the path is a directory or not.
-Because the check is performed asynchronously, the code calls `isDirectory()`
+Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
 {% prettify dart %}
