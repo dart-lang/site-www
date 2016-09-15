@@ -29,11 +29,7 @@ prevpage:
 <aside class="alert alert-info" markdown="1">
 <strong>Prerequisite:</strong>
 
-<<<<<<< Updated upstream
 * This tutorial uses the
-=======
-This tutorial uses the `async` and `await` language features, which rely on the
->>>>>>> Stashed changes
 <a href="{{site.dart_api}}/dart-async/Future-class.html" target="_blank">Future</a>
 and
 <a href="{{site.dart_api}}/dart-async/Stream-class.html"
