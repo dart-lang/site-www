@@ -1,12 +1,12 @@
 ---
 layout: default
 permalink: /resources/books
-title: Books and Videos about Dart
-description: Read all about it! Here's a collection of books about Dart.
+title: Publications about Dart
+description: Read all about it! Here's a collection of publications about Dart.
 toc: false
 ---
 
-Here's a collection of books and videos about Dart.
+Here's a collection of publications about Dart.
 If you find another resource that we should add,
 [let us know](https://github.com/dart-lang/site-www/issues).
 
