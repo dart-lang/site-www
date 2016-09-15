@@ -7,8 +7,8 @@ toc: false
 ---
 
 Here's a collection of books and videos about Dart.
-[Let us know](https://github.com/dart-lang/site-www/issues)
-if you find another resource that we should add.
+if you find another resource that we should add,
+[let us know](https://github.com/dart-lang/site-www/issues).
 
 {% for book in site.data.books %}
 <div class="book">
