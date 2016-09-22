@@ -4,11 +4,26 @@ title: "Useful Dart Libraries You Should Know About"
 description: "What are some of the most useful and popular Dart libraries and where can you learn more."
 ---
 
+You can leverage a wide array of available Dart libraries and packages when
+writing your code. This document shares some of the most widely
+used libraries and library packages and tells you where you can learn more.
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+Dart libraries are distributed, outside of the SDK, as library packages.
+Dart applications are distributed as application packages. So, a library
+can be part of a package but a package is not a library.
+For more information on what constitutes a library package, see
+[Create library packages](/guides/libraries/create-library-packages).
+</aside>
+
+## Dart libraries and their corresponding packages
+
 The Dart SDK contains a number of core libraries, such as dart:collection,
 dart:async, and dart:convert. These libraries contain classes most
 commonly used by developers.  Classes that are still useful,
 but not as universally used, are placed in packages outside of the SDK.
-Separating out the less commonly used classes ensures that the SDK
+Separating out the less commonly used classes ensures that your app
 isn't bloated by features that you don't need.
 
 For example, the
@@ -23,18 +38,22 @@ Packages outside of the SDK are published to [pub.dartlang.org](https://pub.dart
 and documented at [dartdocs.org](https://www.dartdocs.org/).
 If you don't find the functionality you need on api.dartlang.org, check dartdocs.org.
 
-Some of the libraries in the SDK have corresponding packages.
-The following table includes some that you should know about:
+Some of the libraries in the SDK have corresponding packages with additional
+functionality. The following table includes some that you should know about:
 
 | **SDK Library** | **Package** |
 | [dart:async](https://api.dartlang.org/stable/dart-async/dart-async-library.html)<br>Support for asynchronous programming with classes such as Future and Stream. | [async](https://www.dartdocs.org/documentation/async/latest/)<br>Utility classes to work with asynchronous computations. For more information, see [Unboxing Packages: async part 1](http://news.dartlang.org/2016/03/unboxing-packages-async-part-1.html), [part 2](http://news.dartlang.org/2016/03/unboxing-packages-async-part-2.html), and [part 3](http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html). |
 | [dart:collection](https://api.dartlang.org/stable/dart-collection/dart-collection-library.html)<br>Classes and utilities that supplement the collection support in dart:core. | [collection](https://www.dartdocs.org/documentation/collection/latest)<br>Utility functions and classes to make working with collections easier. For more information, see [Unboxing Packages: collection](http://news.dartlang.org/2016/01/unboxing-packages-collection.html). |
 | [dart:convert](https://api.dartlang.org/stable/dart-convert/dart-convert-library.html)<br>Encoders and decoders for converting between different data representations, including JSON and UTF-8.| [convert](https://www.dartdocs.org/documentation/convert/latest/)<br>This package contains encoders and decoders for converting between different data representations.|
 | [dart:core](https://api.dartlang.org/stable/dart-core/dart-core-library.html)<br>Built-in types, collections, and other core functionality for every Dart program. | N/A |
-| dart:js<br>Deprecated. | [js](https://www.dartdocs.org/documentation/js/latest)<br>Methods and annotations to specify interoperability with JavaScript APIs. |
+| dart:js<br>Deprecated. | [js](https://www.dartdocs.org/documentation/js/latest)<br>Methods and annotations to specify interoperability with JavaScript APIs. Use this package instead of dart:js. |
 {:.table .table-striped .nowrap}
 
-Other popular and useful packages that we recommend, in alphabetical order:
+## Other useful packages
+
+Developers have written some excellent packages for use by the
+Dart community.  Other popular and useful packages that we recommend,
+in alphabetical order:
 
 [firebase3](https://pub.dartlang.org/packages/firebase3)
 : A Dart wrapper library for the Firebase.
@@ -66,8 +85,13 @@ Other popular and useful packages that we recommend, in alphabetical order:
 [test](https://pub.dartlang.org/packages/test)
 : A standard way of writing and running tests in Dart.
 
-Natalie Weizenbaum, one of the Dart engineers, has written a series of posts called
-"Unboxing Packages" with in-depth detail on how to use some of the Dart packages:
+Search for other available packages on [pub.dartlang.org](https://pub.dartlang.org/).
+
+## "Unboxing Packages" series
+
+Natalie Weizenbaum has written a series of posts on
+[news.dartlang.org](http://news.dartlang.org/) called "Unboxing Packages."
+Each post contains in-depth detail on how to use some of the Dart packages:
 
 * [Unboxing Packages: async, part 1](http://news.dartlang.org/2016/03/unboxing-packages-async-part-1.html)
 * [Unboxing Packages: async, part 2](http://news.dartlang.org/2016/03/unboxing-packages-async-part-2.html)
@@ -80,3 +104,10 @@ Natalie Weizenbaum, one of the Dart engineers, has written a series of posts cal
 * [Unboxing Packages: string_scanner](http://news.dartlang.org/2016/02/unboxing-packages-stringscanner.html)
 * [Unboxing Packages: vm_service_client](http://news.dartlang.org/2016/05/unboxing-packages-vmserviceclient.html)
 
+## Importing libraries and packages
+
+If you need help with importing libraries and packages into your code, see
+[Using libraries](/guides/language/language-tour#libraries-and-visibility),
+a section in the [language tour](/guides/language/language-tour), and
+[Importing library files](/guides/libraries/create-library-packages#importing-library-files),
+a section in [Create Library Packages](/guides/libraries/create-library-packages).
