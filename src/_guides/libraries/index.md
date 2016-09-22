@@ -32,6 +32,9 @@ at the following links.
 
 ## Other resources
 
+[Useful Dart Libraries You Should Know About](/guides/libraries/useful-libraries)
+: Which libraries and packages you should know about and where to find more information.
+
 [Install Shared Packages](/tutorials/libraries/shared-pkgs)
 : A beginner's guide to installing packages and using their libraries in your code.
 
