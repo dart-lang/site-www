@@ -70,7 +70,7 @@ in alphabetical order:
 | [intl](https://pub.dartlang.org/packages/intl) | Provides internationalization and localization facilities, and support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [logging](https://pub.dartlang.org/packages/logging) | Provides a configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
 | [mockito](https://pub.dartlang.org/packages/mockito) | Mockito is a popular framework for developing unit tests.  The Dart version of the Mockito library is especially useful if you are writing tests for dependency injection. | Answering, Expectation, Verification |
-| [path](https://pub.dartlang.org/packages/path) | Provides common operations for manipulating paths on different OS platforms. See [Unboxing Packages: path](http://news.dartlang.org/2016/06/unboxing-packages-path.html) for more information. | absolute, basename, extension, normalize, split |
+| [path](https://pub.dartlang.org/packages/path) | Provides common operations for manipulating paths on different OS platforms. See [Unboxing Packages: path](http://news.dartlang.org/2016/06/unboxing-packages-path.html) for more information. | absolute, basename, extension, normalize, split, join |
 | [quiver](https://pub.dartlang.org/packages/quiver) | A set of utility libraries that makes it easier and more convenient to use many Dart libraries. Some of the libraries where Quiver provides additional support include async, cache, collection, core, iterables, patterns, and testing. | CountdownTimer, FutureGroup, FutureStream (quiver.async), MapCache (quiver.cache), MultiMap, TreeSet (quiver.collection), EnumerateIterable (quiver.iterables), center, compareIgnoreCase, isWhiteSpace (quiver.strings)  |
 | [shelf](https://pub.dartlang.org/packages/shelf) | Web server middleware for Dart. Shelf makes it easy to create and compose web servers, and parts of web servers. | Cascade, Pipeline, Request, Response, Server |
 | [stagehand](https://pub.dartlang.org/packages/stagehand) | A Dart project generator. WebStorm and IntelliJ use these templates when you create a new application, but you can also use the templates from the command line via [pub global activate](https://www.dartlang.org/tools/pub/cmd/pub-global). | Templates include console-full, console-simple, server-shelf, web-angular, and web-simple. |
@@ -94,7 +94,7 @@ Other available resources are the
 for interoperability with JavaScript APIs, and the
 [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html)
 library for low-level HTML programming.
-For more information about Dart on the Web, see [webdev.dartlang]({{site.webdev}}).
+For more information about Dart on the Web, see [webdev.dartlang.org]({{site.webdev}}).
 
 ### Flutter libraries
 
