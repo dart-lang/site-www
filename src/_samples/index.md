@@ -300,7 +300,7 @@ Future<Null> createDescriptions(Iterable<String> objects) async {
 }
 {% endprettify %}
 
-You can also use `async*`, which gives you a nice, readable way to build steams.
+You can also use `async*`, which gives you a nice, readable way to build streams.
 
 {% prettify dart %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
