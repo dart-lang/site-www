@@ -51,9 +51,9 @@ Each of these libraries builds upon an SDK library, adding
 additional functionality and filling in missing features:
 
 | **Package** | **Description** | **Example classes and members** |
-| [async](https://www.dartdocs.org/documentation/async/latest/) | Utility classes to work with asynchronous computations. For more information, see [Unboxing Packages: async part 1](http://news.dartlang.org/2016/03/unboxing-packages-async-part-1.html), [part 2](http://news.dartlang.org/2016/03/unboxing-packages-async-part-2.html), and [part 3.](http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html) | AsyncMemoizer, CancelableOperation, FutureGroup, LazyStream, Result, StreamCompleter, StreamGroup, StreamSplitter, !isCompleted  |
+| [async](https://www.dartdocs.org/documentation/async/latest/) | Utility classes to work with asynchronous computations. For more information, see [Unboxing Packages: async part 1](http://news.dartlang.org/2016/03/unboxing-packages-async-part-1.html), [part 2](http://news.dartlang.org/2016/03/unboxing-packages-async-part-2.html), and [part 3.](http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html) | AsyncMemoizer, CancelableOperation, FutureGroup, LazyStream, Result, StreamCompleter, StreamGroup, StreamSplitter |
 | [collection](https://www.dartdocs.org/documentation/collection/latest) | Utility functions and classes to make working with collections easier. For more information, see [Unboxing Packages: collection.](http://news.dartlang.org/2016/01/unboxing-packages-collection.html) | Equality, CanonicalizedMap, MapKeySet, MapValueSet, PriorityQueue, QueueList |
-|[convert](https://www.dartdocs.org/documentation/convert/latest/) | Contains encoders and decoders for converting between different data representations. | HexDecoder, PercentDecoder |
+|[convert](https://www.dartdocs.org/documentation/convert/latest/) | Contains encoders and decoders for converting between different data representations. Note that one of the data representations is commonly known as URL-encoded (named `percent` here). | HexDecoder, PercentDecoder |
 {:.table .table-striped .nowrap}
 
 Looking for web, server, or Flutter libraries?
