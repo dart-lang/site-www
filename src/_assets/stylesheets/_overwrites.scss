@@ -343,3 +343,10 @@ body.homepage .get-started-section {
 		padding-right: 5%;
 	}
 }
+
+/* Don't display navigation aids when printing */
+@media print {
+	#page-header, #sidenav, #subnav, #page-footer, .banner {
+		display:none !important;
+	}
+}
