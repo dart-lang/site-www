@@ -88,8 +88,8 @@ symbolic imports.
 {% prettify dart %}
 library peg_parser.source_scanner;
 
-import 'slider_menu.dart';
 import 'file_system.dart';
+import 'slider_menu.dart';
 {% endprettify %}
 </div>
 
@@ -97,8 +97,8 @@ import 'file_system.dart';
 {% prettify dart %}
 library pegparser.SourceScanner;
 
-import 'SliderMenu.dart';
 import 'file-system.dart';
+import 'SliderMenu.dart';
 {% endprettify %}
 </div>
 
@@ -110,19 +110,19 @@ name it*. It is fine to omit the library directive in a file if you want.
 
 <div class="good">
 {% prettify dart %}
-import 'dart:math' as math;
 import 'dart:json' as json;
-import 'package:js/js.dart' as js;
+import 'dart:math' as math;
 import 'package:javascript_utils/javascript_utils.dart' as js_utils;
+import 'package:js/js.dart' as js;
 {% endprettify %}
 </div>
 
 <div class="bad">
 {% prettify dart %}
-import 'dart:math' as Math;
 import 'dart:json' as JSON;
-import 'package:js/js.dart' as JS;
+import 'dart:math' as Math;
 import 'package:javascript_utils/javascript_utils.dart' as jsUtils;
+import 'package:js/js.dart' as JS;
 {% endprettify %}
 </div>
 
