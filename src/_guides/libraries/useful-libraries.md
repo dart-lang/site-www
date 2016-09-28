@@ -126,8 +126,9 @@ Use the following resources to learn more about libraries and library packages.
 ### Using specific libraries and packages
 
 * [A Tour of the Dart Libraries](/guides/libraries/library-tour)
-* Posts tagged with the ["Unboxing Packages"] label on
-  on [news.dartlang.org.](http://news.dartlang.org/) and
+* Posts tagged with the
+  [Unboxing Packages](http://news.dartlang.org/search/label/Unboxing%20Packages)
+  label on on [news.dartlang.org.](http://news.dartlang.org/),
   written by Natalie Weizenbaum.
   This page links to some of Natalie's posts, but she covers other packages
   not mentioned here, such as stream_channel, vm_service_client, and json_rpc_2.
