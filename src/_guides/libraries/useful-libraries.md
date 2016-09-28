@@ -4,15 +4,14 @@ title: "Commonly Used Dart Libraries"
 description: "What are some of the most useful and popular Dart libraries and where can you learn more?"
 ---
 
-You can leverage a wide array of available Dart libraries when writing your code.
+You can use a wide array of available Dart libraries when writing your code.
 Dart libraries are distributed in one of three ways:
 
-* The core libraries, such as dart:core, dart:async, and dart:collections,
+* The core libraries, such as dart:core, dart:async, and dart:collection,
   are distributed with the SDK and documented at [api.dartlang.org]({{site.dart_api}}).
 * Libraries shared with the Dart community are distributed as library packages,
-  published at [pub.dartlang.org](https://pub.dartlang.org/), and documented at
-  [dartdocs.org](https://www.dartdocs.org/). The [pub](/tools/pub/) tool
-  allows you to create, publish, and manage library packages.
+  published at [pub.dartlang.org](https://pub.dartlang.org/).
+  The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
 * Libraries that are not shared with the community are simply placed in the
   `/lib` directory of your [application's directory
   structure](https://www.dartlang.org/tools/pub/package-layout#public-directories).
@@ -39,6 +38,7 @@ The following table includes the most commonly used libraries in the Dart SDK:
 | [dart:async](https://api.dartlang.org/stable/dart-async/dart-async-library.html) | Support for asynchronous programming. | Future, Stream |
 | [dart:collection](https://api.dartlang.org/stable/dart-collection/dart-collection-library.html) | Classes and utilities that supplement the collection support in dart:core. | Queue, HashMap, HashSet |
 | [dart:convert](https://api.dartlang.org/stable/dart-convert/dart-convert-library.html) | Encoders and decoders for converting between different data representations, including JSON and UTF-8.| Converter, Base64Decoder, LineSplitter, UTF8Decoder |
+| [dart:math](https://api.dartlang.org/stable/dart-math/dart-math-library.html) | Mathematical constants and functions, plus a random number generator. | Random, max(), min() |
 {:.table .table-striped .nowrap}
 
 Looking for web, server, or Flutter libraries?
@@ -67,14 +67,16 @@ in alphabetical order:
 
 | **Package** | **Description** | **Example classes and members** |
 | [firebase3](https://pub.dartlang.org/packages/firebase3) | [Firebase](https://firebase.google.com) is a popular cloud services provider.  This Dart wrapper for Firebase allows you to easily publish your app to the cloud. | Auth, Database, Query, Storage |
+| [http](https://pub.dartlang.org/packages/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
 | [intl](https://pub.dartlang.org/packages/intl) | Provides internationalization and localization facilities, and support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [logging](https://pub.dartlang.org/packages/logging) | Provides a configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
-| [mockito](https://pub.dartlang.org/packages/mockito) | Mockito is a popular framework for developing unit tests.  The Dart version of the Mockito library is especially useful if you are writing tests for dependency injection. | Answering, Expectation, Verification |
-| [path](https://pub.dartlang.org/packages/path) | Provides common operations for manipulating paths on different OS platforms. See [Unboxing Packages: path](http://news.dartlang.org/2016/06/unboxing-packages-path.html) for more information. | absolute, basename, extension, normalize, split, join |
-| [quiver](https://pub.dartlang.org/packages/quiver) | A set of utility libraries that makes it easier and more convenient to use many Dart libraries. Some of the libraries where Quiver provides additional support include async, cache, collection, core, iterables, patterns, and testing. | CountdownTimer, FutureGroup, FutureStream (quiver.async), MapCache (quiver.cache), MultiMap, TreeSet (quiver.collection), EnumerateIterable (quiver.iterables), center, compareIgnoreCase, isWhiteSpace (quiver.strings)  |
+| [mockito](https://pub.dartlang.org/packages/mockito) | Mockito is a popular framework for mocking objects in tests.  The Dart version of the Mockito library is especially useful if you are writing tests for dependency injection. Used in conjunction with the [test](https://pub.dartlang.org/packages/test) package. | Answering, Expectation, Verification |
+| [path](https://pub.dartlang.org/packages/path) | Provides common operations for manipulating different types of paths. See [Unboxing Packages: path](http://news.dartlang.org/2016/06/unboxing-packages-path.html) for more information. | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
+| [quiver](https://pub.dartlang.org/packages/quiver) | A set of utility libraries that makes it easier and more convenient to use many Dart libraries. Some of the libraries where Quiver provides additional support include async, cache, collection, core, iterables, patterns, and testing. | CountdownTimer, (quiver.async), MapCache (quiver.cache), MultiMap, TreeSet (quiver.collection), EnumerateIterable (quiver.iterables), center(), compareIgnoreCase(), isWhiteSpace() (quiver.strings)  |
 | [shelf](https://pub.dartlang.org/packages/shelf) | Web server middleware for Dart. Shelf makes it easy to create and compose web servers, and parts of web servers. | Cascade, Pipeline, Request, Response, Server |
+| [stack_trace]() | Provides the ability to parse, inspect, and manipulate stack traces produced by the underlying Dart implementation. Also provides functions to produce string representations of stack traces in a more readable format than the native StackTrace implementation. See [Unboxing Packages: stack_trace](http://news.dartlang.org/2016/01/unboxing-packages-stacktrace.html) | Trace.current(), Trace.format(), Trace.from() |
 | [stagehand](https://pub.dartlang.org/packages/stagehand) | A Dart project generator. WebStorm and IntelliJ use these templates when you create a new application, but you can also use the templates from the command line via [pub global activate](https://www.dartlang.org/tools/pub/cmd/pub-global). | Templates include console-full, console-simple, server-shelf, web-angular, and web-simple. |
-| [test](https://pub.dartlang.org/packages/test) | A standard way of writing and running tests in Dart. This package replaces the deprecated unittest package. | expect, group, test |
+| [test](https://pub.dartlang.org/packages/test) | A standard way of writing and running tests in Dart. | expect(), group(), test() |
 {:.table .table-striped .nowrap}
 
 Search for other available packages on [pub.dartlang.org](https://pub.dartlang.org/).
@@ -113,9 +115,7 @@ see [flutter.io]({{site.flutter}}).
 
 If you write servers or command-line applications, you'll
 want to use [dart:io](https://api.dartlang.org/stable/dart-io/dart-io-library.html)
-and related libraries, such as
-[http_server.](https://pub.dartlang.org/packages/http_server)
-For more information, see [Dart VM](/dart-vm/).
+and related libraries. For more information, see [Dart VM](/dart-vm/).
 
 ## Resources
 
@@ -129,7 +129,7 @@ Use the following resources to learn more about libraries and library packages:
   a section in [Create Library Packages](/guides/libraries/create-library-packages).
 * Natalie Weizenbaum has written a series of posts called "Unboxing Packages."
   Each post contains in-depth detail on how to use some of the Dart packages.
-  This page links to some of her posts, but she covers other libraries
+  This page links to some of her posts, but she covers other packages
   not mentioned here, such as stream_channel, vm_service_client, and json_rpc_2.
   For more information,
   see the [related posts](http://news.dartlang.org/search/label/Unboxing%20Packages)
