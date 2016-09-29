@@ -14,9 +14,10 @@ Dart libraries come from a variety of sources:
   The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
 * Libraries from GitHub, a URL, or a local path can be included in your application.
   For more information, see
-  [Dependency sources](/tools/pub/dependencies#dependency-sources).
+  [Dependency sources](/tools/pub/dependencies#dependency-sources),
+  a section in [Pub Dependencies](/tools/pub/dependencies).
 * Local libraries are placed under the `/lib` directory of your [application's directory
-  structure](https://www.dartlang.org/tools/pub/package-layout#public-directories).
+  structure](/tools/pub/package-layout#public-directories).
 
 This document discusses the first two kinds of libraries,
 and tells you where to learn more about some of the most widely used Dart libraries.
@@ -48,7 +49,7 @@ in alphabetical order:
 | **Package** | **Description** | **Commonly used APIs** |
 | [firebase3](https://pub.dartlang.org/packages/firebase3) | A wrapper for [Firebase](https://firebase.google.com) that allows you to easily publish your app to the cloud. | Auth, Database, Query, Storage |
 | [http](https://pub.dartlang.org/packages/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
-| [intl](https://pub.dartlang.org/packages/intl) | Internationalization and localization facilities, and support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
+| [intl](https://pub.dartlang.org/packages/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [logging](https://pub.dartlang.org/packages/logging) | A configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
 | [mockito](https://pub.dartlang.org/packages/mockito) | A popular framework for mocking objects in tests. Especially useful if you are writing tests for dependency injection. Used with the [test](https://pub.dartlang.org/packages/test) package. | Answering, Expectation, Verification |
 | [path](https://pub.dartlang.org/packages/path) | Common operations for manipulating different types of paths. For more information, see [Unboxing Packages: path.](http://news.dartlang.org/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
@@ -116,7 +117,7 @@ Use the following resources to learn more about libraries and library packages.
   a section in [Create Library Packages](/guides/libraries/create-library-packages)
 * [Pub docs](/tools/pub), particularly
   [Pub Package Layout Conventions](/tools/pub/package-layout) and
-  [Dependency sources](/tools/pub/dependencies#dependency-sources).
+  [Dependency sources](/tools/pub/dependencies#dependency-sources)
 
 ### Creating library packages
 
@@ -142,4 +143,5 @@ Use the following resources to learn more about libraries and library packages.
 * [dartdocs.org](https://www.dartdocs.org/) contains the generated docs for
   packages published on pub.dartlang.org.
 * [docs.flutter.io](http://docs.flutter.io/) contains the generated docs for Flutter
+  libraries.
 
