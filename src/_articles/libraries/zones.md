@@ -55,7 +55,7 @@ Zones make the following tasks possible:
   <em>zone-local values</em>—with individual zones.
 
 * Overriding a limited set of methods,
-  such as `print()` and `scheduleTask()`,
+  such as `print()` and `scheduleMicrotask()`,
   within part or all of the code.
 
 * Performing an operation—such as
