@@ -16,6 +16,9 @@ guidelines here every day in the bodies of your Dart code. *Users* of your
 library may not be able to tell that you've internalized the ideas here, but
 *maintainers* of it sure will.
 
+* TOC
+{:toc}
+
 ## Strings
 
 Here are some best practices to keep in mind when composing strings in Dart.

@@ -22,6 +22,9 @@ But the reality is that most of us don't write as many comments as we should.
 It's like exercise: you technically *can* do too much, but it's a lot more
 likely that you're doing too little. Try to step it up.
 
+* TOC
+{:toc}
+
 ## Comments
 
 The following tips apply to comments that you don't want included in the
