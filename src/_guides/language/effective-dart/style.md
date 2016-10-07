@@ -18,6 +18,9 @@ ocular systems.  If we use a consistent style across the entire Dart ecosystem,
 it makes it easier for all of us to learn from and contribute to each others'
 code.
 
+* TOC
+{:toc}
+
 ## Identifiers
 
 Identifiers come in three flavors in Dart.
