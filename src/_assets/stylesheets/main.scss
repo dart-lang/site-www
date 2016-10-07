@@ -590,18 +590,36 @@ input.gsc-search-button {
 /* -----------------------------------------
  Anchor links
  ----------------------------------------- */
-.content .anchor {
-  float: left;
-  margin-left: -28px;
-  max-width: 28px;
-  overflow: hidden;
-  padding-right: 4px;
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    .anchor {
+      float: left;
+      margin-left: -28px;
+      max-width: 28px;
+      overflow: hidden;
+      padding-right: 4px;
 
-  .octicon-link {
-    background-image: url('{% asset_path "ic_link_black_24px.svg" %}');
-    display: block;
-    height: 24px;
-    width: 24px;
+      .octicon-link {
+        @include transition(.1s);
+
+        background-image: url('{% asset_path "ic_link_black_24px.svg" %}');
+        display: block;
+        height: 24px;
+        opacity: 0;
+        width: 24px;
+      }
+    }
+
+    &:hover {
+      .anchor .octicon-link {
+        opacity: 1
+      }
+    }
   }
 }
 
