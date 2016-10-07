@@ -127,7 +127,7 @@ input, select {
   color: $gray-dark;
   &:focus, &:active {
     outline-color: #fff;
-  } 
+  }
 }
 
 pre {
@@ -588,6 +588,24 @@ input.gsc-search-button {
 }
 
 /* -----------------------------------------
+ Anchor links
+ ----------------------------------------- */
+.content .anchor {
+  float: left;
+  margin-left: -28px;
+  max-width: 28px;
+  overflow: hidden;
+  padding-right: 4px;
+
+  .octicon-link {
+    background-image: url('{% asset_path "ic_link_black_24px.svg" %}');
+    display: block;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+/* -----------------------------------------
   Utility Classes
  ----------------------------------------- */
 
@@ -889,7 +907,7 @@ ul.nav-list {
   list-style: none;
   padding: 0;
   li {
-    border-bottom: 1px solid $gray-light; 
+    border-bottom: 1px solid $gray-light;
     h2 {
       font-weight: 400;
       font-size: 20px;
@@ -940,7 +958,7 @@ body.error {
 
 // Page States
 body.hide_toc {
-  #page-content { 
+  #page-content {
     > article {
       width: calc(100vw - 300px);
     }
@@ -1016,7 +1034,7 @@ body.obsolete {
   }
 
   body.hide_toc {
-    #page-content { 
+    #page-content {
       > article {
         width: 100%;
       }
