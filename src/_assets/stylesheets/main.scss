@@ -634,7 +634,7 @@ $anchor-padding: 4px;
     }
 
     // Invisible pre-element to avoid modifying styles on headings.
-    &::before {
+    &[id]::before {
       @include header-clearance;
 
       content: "";
