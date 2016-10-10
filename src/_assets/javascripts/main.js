@@ -20,18 +20,6 @@ function fixNav() {
   $("#toc").css({maxHeight: mh - tocToSidenavDiff});
 }
 
-// Add scroll on page load for hash
-$(window).on('load', function (e){
-  // window.scrollTo(0, 0);
-  if (window.location.hash) {
-    $('html, body').animate({ scrollTop: $(window.location.hash).offset().top-70 }, 500, function (){
-      // Mark as active
-        $('a[href^="#"]').parent('li').removeClass('active');
-        $('a[href="'+window.location.hash+'"]').parent('li').addClass('active');
-    });
-  }
-});
-
 // When a user scrolls to 50px add class  condensed-header to body
 $(window).scroll(function(){
   fixNav();
@@ -112,7 +100,7 @@ $(document).on('ready', function(){
   //   }
   // });
 
-  
+
   // Popovers
   $('[data-toggle="popover"], .dart-popover').popover();
 
