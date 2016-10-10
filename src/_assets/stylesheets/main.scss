@@ -620,6 +620,15 @@ input.gsc-search-button {
         opacity: 1
       }
     }
+
+    // Invisible element to push # link targets clear of page header.
+    &::before,
+    .anchor::before {
+      content: "";
+      display: block;
+      height: 50px;
+      margin-top: -50px;
+    }
   }
 }
 
