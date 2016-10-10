@@ -607,6 +607,8 @@ $anchor-padding: 4px;
   h5,
   h6 {
     .anchor {
+      @include header-clearance;
+
       box-sizing: border-box;
       float: left;
       margin-left: -($icon-size + $anchor-padding);
