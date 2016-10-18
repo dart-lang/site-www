@@ -50,7 +50,9 @@ void filterTable(String channel, Event event) {
   String selectedOs =
       osSelectors[channel].selectedOptions[0].attributes['value'];
   if (selectedVersion == 'all' && selectedOs == 'all') {
-    tables[channel].querySelectorAll('tr[data-version]').classes
+    tables[channel]
+        .querySelectorAll('tr[data-version]')
+        .classes
         .remove('hidden');
   } else {
     tables[channel].querySelectorAll('tr[data-version]').classes.add('hidden');
@@ -58,7 +60,9 @@ void filterTable(String channel, Event event) {
     if (selectedVersion != 'all') {
       selector += '[data-version="$selectedVersion"]';
     }
-    tables[channel].querySelectorAll(selector + '[data-os="api"]').classes
+    tables[channel]
+        .querySelectorAll(selector + '[data-os="api"]')
+        .classes
         .remove('hidden');
     if (selectedOs != 'all') {
       selector += '[data-os="$selectedOs"]';
@@ -100,10 +104,11 @@ Future getListing(String channel, String respString) async {
     }
   });
 
-  List<String> versionStrings = (await Future.wait(versionRequests))
-      .where((version) => version != null)
-      .map((e) => JSON.decode(e))
-      .toList();
+  List<Map<String, String>> versionStrings =
+      (await Future.wait(versionRequests))
+          .where((version) => version != null)
+          .map((e) => JSON.decode(e))
+          .toList();
 
   versionStrings.sort(
       (a, b) => parseDateTime(b['date']).compareTo(parseDateTime(a['date'])));
@@ -139,7 +144,7 @@ const Map<String, String> suffixMap = const {
 const Map<String, Object> platforms = const {
   'Mac': const {
     '32-bit': const ['Dart SDK', 'Dartium'],
-    '64-bit': const ['Dart SDK']
+    '64-bit': const ['Dart SDK', 'Dartium']
   },
   'Linux': const {
     'ARMv7': const ['Dart SDK'],
@@ -181,14 +186,14 @@ void addVersion(String channel, Map<String, String> version) {
   // Json is like: { 'revision': '...', 'version': '...', 'date': '...' }.
   platforms.forEach((String name, Map<String, List> widthListings) {
     widthListings.forEach((String width, List<String> archives) {
-      // ARMv7 builds only available later in 2015 
+      // ARMv7 builds only available later in 2015
       if (archiveMap[name] == 'linux' &&
           width == 'ARMv7' &&
           parseDateTime(version['date']).isBefore(DateTime
               .parse((channel == "dev") ? '2015-10-21' : '2015-08-31'))) {
         return;
-      } 
- 
+      }
+
       TableRowElement row = tables[channel].addRow()
         ..attributes['data-version'] = version['version']
         ..attributes['data-os'] = archiveMap[name];
@@ -207,13 +212,25 @@ void addVersion(String channel, Map<String, String> version) {
       TableCellElement c = row.addCell()..classes.add('archives');
       possibleArchives.forEach((String pa) {
         if (archives.contains(pa)) {
-
           // We had no editor downloads after the move to GitHub.
           // This skips the editor link in those cases
           if (parsedRevision == null && pa == 'Dart Editor') {
             return;
           }
 
+          // This is to handle dropping Dartium 32-bit in 1.20
+          if (pa == 'Dartium' && name == 'Mac') {
+            var is120 = is120OrGreater(versionString);
+            // no 32-bit build with >= 1.20
+            if (is120 && width == '32-bit') {
+              return;
+            }
+
+            // no 64-bit build with < 1.20
+            if (!is120 && width == '64-bit') {
+              return;
+            }
+          }
           String uri = '$storageBase/channels/$channel/release/$versionString'
               '/${directoryMap[pa]}/${archiveMap[pa]}-${archiveMap[name]}-'
               '${archiveMap[width]}${suffixMap[pa]}';
@@ -222,6 +239,7 @@ void addVersion(String channel, Map<String, String> version) {
             ..attributes['href'] = uri);
           if (pa != 'Dart Editor' &&
               (parsedRevision == null || parsedRevision > 38976)) {
+            c.appendText(' ');
             c.append(new AnchorElement()
               ..text = "(SHA-256)"
               ..attributes['href'] = '$uri.sha256sum'
@@ -257,4 +275,22 @@ void addVersion(String channel, Map<String, String> version) {
       row.remove();
     });
   }
+}
+
+final RegExp regexp120 = new RegExp(r'^(\d+)\.(\d+)\.');
+
+// TODO: use pkg/pub_semver
+bool is120OrGreater(String versionString) {
+  var thing = regexp120.firstMatch(versionString);
+  if (thing != null) {
+    var major = int.parse(thing.group(1));
+    var minor = int.parse(thing.group(2));
+
+    if (major == 1 && minor >= 20) {
+      return true;
+    } else if (major > 1) {
+      return true;
+    }
+  }
+  return false;
 }
