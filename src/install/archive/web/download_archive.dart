@@ -281,10 +281,10 @@ final RegExp regexp120 = new RegExp(r'^(\d+)\.(\d+)\.');
 
 // TODO: use pkg/pub_semver
 bool is120OrGreater(String versionString) {
-  var thing = regexp120.firstMatch(versionString);
-  if (thing != null) {
-    var major = int.parse(thing.group(1));
-    var minor = int.parse(thing.group(2));
+  var match = regexp120.firstMatch(versionString);
+  if (match != null) {
+    var major = int.parse(match.group(1));
+    var minor = int.parse(match.group(2));
 
     if (major == 1 && minor >= 20) {
       return true;
