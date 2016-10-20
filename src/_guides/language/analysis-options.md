@@ -57,8 +57,8 @@ Here's a sample analysis options file:
 {% prettify yaml %}
 analyzer:
   strong-mode:
-    - implicit-downcasts: false
-    - implicit-dynamic: false
+    implicit-casts: false
+    implicit-dynamic: false
   errors:
     todo: ignore
   exclude:
