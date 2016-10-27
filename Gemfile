@@ -1,13 +1,13 @@
 source "http://rubygems.org"
-gem "jekyll"
-gem "kramdown"
+gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
-gem "html-proofer"
+gem 'html-proofer'
+gem 'jekyll'
 gem 'jekyll-assets', '2.1.2'
+gem 'jekyll-sitemap'
 gem 'jekyll-toc'
+gem 'kramdown'
+gem 'nokogiri'
 gem 'sass'
 gem 'uglifier'
-gem 'autoprefixer-rails'
-gem "jekyll-sitemap"
-gem 'nokogiri'

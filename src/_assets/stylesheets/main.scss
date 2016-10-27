@@ -127,7 +127,7 @@ input, select {
   color: $gray-dark;
   &:focus, &:active {
     outline-color: #fff;
-  } 
+  }
 }
 
 pre {
@@ -588,6 +588,62 @@ input.gsc-search-button {
 }
 
 /* -----------------------------------------
+ Anchor links
+ ----------------------------------------- */
+$icon-size: 24px;
+$anchor-padding: 4px;
+
+// Push # link targets clear of page header.
+@mixin header-clearance {
+  margin-top: -60px;
+  padding-top: 60px;
+}
+
+main .content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    .anchor {
+      @include header-clearance;
+
+      box-sizing: border-box;
+      float: left;
+      margin-left: -($icon-size + $anchor-padding);
+      max-width: $icon-size;
+      overflow: hidden;
+      padding-right: $anchor-padding;
+
+      .octicon-link {
+        @include transition(.1s);
+
+        background-image: url('{% asset_path "ic_link_black_24px.svg" %}');
+        display: block;
+        height: $icon-size;
+        opacity: 0;
+        width: $icon-size;
+      }
+    }
+
+    &:hover {
+      .anchor .octicon-link {
+        opacity: 1
+      }
+    }
+
+    // Invisible pre-element to avoid modifying styles on headings.
+    &[id]::before {
+      @include header-clearance;
+
+      content: "";
+      display: block;
+    }
+  }
+}
+
+/* -----------------------------------------
   Utility Classes
  ----------------------------------------- */
 
@@ -889,7 +945,7 @@ ul.nav-list {
   list-style: none;
   padding: 0;
   li {
-    border-bottom: 1px solid $gray-light; 
+    border-bottom: 1px solid $gray-light;
     h2 {
       font-weight: 400;
       font-size: 20px;
@@ -940,7 +996,7 @@ body.error {
 
 // Page States
 body.hide_toc {
-  #page-content { 
+  #page-content {
     > article {
       width: calc(100vw - 300px);
     }
@@ -1016,7 +1072,7 @@ body.obsolete {
   }
 
   body.hide_toc {
-    #page-content { 
+    #page-content {
       > article {
         width: 100%;
       }

@@ -57,8 +57,8 @@ Here's a sample analysis options file:
 {% prettify yaml %}
 analyzer:
   strong-mode:
-    - implicit-downcasts: false
-    - implicit-dynamic: false
+    implicit-casts: false
+    implicit-dynamic: false
   errors:
     todo: ignore
   exclude:
@@ -114,7 +114,7 @@ you can use the following flags to look for specific types
 of implicit casting, on top of the standard strong mode checks.
 The presence of either flag, regardless of value, enables strong mode.
 
-`implicit-downcasts: <bool>`
+`implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
   implicitly casts to a more specific type. The following valid Dart code
   includes an implicit downcast that would be caught by this flag:
@@ -138,8 +138,8 @@ analysis options file:
 {% prettify yaml %}
 analyzer:
   strong-mode:
-    - implicit-downcasts: false
-    - implicit-dynamic: false
+    implicit-casts: false
+    implicit-dynamic: false
 {% endprettify %}
 
 ## Enabling linter rules
