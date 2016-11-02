@@ -959,7 +959,7 @@ Future, Stream, and more are in the
 You don't always need to use the Future or Stream APIs directly.
 The Dart language supports asynchronous coding
 using keywords such as `async` and `await`.
-See [Asynchrony support](/guides/language/language-tour#asynchrony)
+See [Asynchrony support](/guides/language/language-tour#asynchrony-support)
 in the language tour for details.
 </div>
 
@@ -1036,7 +1036,7 @@ For example, you might call an async function from your function.
 </div>
 
 For more information on using `await` and related Dart language features,
-see [Asynchrony support](/guides/language/language-tour#asynchrony).
+see [Asynchrony support](/guides/language/language-tour#asynchrony-support).
 
 
 #### Basic usage
@@ -1201,7 +1201,7 @@ then the second kind of event is never handled.
 
 For more information on using `await` and related
 Dart language features, see
-[Asynchrony support](/guides/language/language-tour#asynchrony).
+[Asynchrony support](/guides/language/language-tour#asynchrony-support).
 
 
 #### Listening for stream data
@@ -2129,7 +2129,7 @@ main() async {
 
 Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](#stream) or `await for`,
-part of Dart's [asynchrony support](/guides/language/language-tour#asynchrony).
+part of Dart's [asynchrony support](/guides/language/language-tour#asynchrony-support).
 
 <!-- library-tour/read-file/bin/read_file.dart -->
 {% prettify dart %}
