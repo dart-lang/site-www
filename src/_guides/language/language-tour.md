@@ -187,7 +187,7 @@ that's being added after Dart's 1.0 release.
 You can't use `async`, `await`, or `yield` as
 an identifier in any function body marked with `async`, `async*`, or `sync*`.
 For more information, see
-[Asynchrony support](#asynchrony).
+[Asynchrony support](#asynchrony-support).
 
 All other words in the keyword table are <em>reserved words</em>.
 You can't use reserved words as identifiers.
@@ -1050,7 +1050,7 @@ void main() {
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-The `..` syntax in the preceding code is called a [cascade](#cascade).
+The `..` syntax in the preceding code is called a [cascade](#cascade-notation-).
 With cascades,
 you can perform multiple operations on the members of a single object.
 </div>
@@ -1879,7 +1879,7 @@ Switch statements in Dart compare integer, string, or compile-time
 constants using `==`. The compared objects must all be instances of the
 same class (and not of any of its subtypes), and the class must not
 override `==`.
-[Enumerated types](#enums) work well in `switch` statements.
+[Enumerated types](#enumerated-types) work well in `switch` statements.
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -3440,7 +3440,7 @@ greet() async {
 In the preceding code,
 the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
-see [asynchrony support](#asynchrony).
+see [asynchrony support](#asynchrony-support).
 
 You can invoke `loadLibrary()` multiple times on a library without problems.
 The library is loaded only once.
