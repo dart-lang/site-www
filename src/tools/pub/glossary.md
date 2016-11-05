@@ -156,16 +156,14 @@ You can specify a different location using the
 [PUB_CACHE](/tools/pub/installing.html) environment variable.
 
 Once packages are in the system cache,
-pub creates symbolic links to the real packages in the system cache.
-As of 1.12, pub also creates a `.packages` file that maps each package
+pub creates a `.packages` file that maps each package
 used by your application to the corresponding package in the cache.
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 You only have to download a given version of a package once
 and can then reuse it in as many packages as you would like.
-You can delete and regenerate your `packages` directories
-or `.packages` file without having to access the network.
+You can delete and regenerate your `.packages` file without having to access the network.
 
 ## Transformer
 

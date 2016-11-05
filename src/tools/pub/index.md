@@ -74,9 +74,10 @@ The following reference pages cover each command in detail:
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 * [`pub uploader`](/tools/pub/cmd/pub-uploader)
 
-In addition to these commands, there are two pub commands specific
-to web development. See [Dart webdev]({{site.webdev}}/tools) for more
-information.
+Two additional commands (`pub build` and `pub serve`)
+are specific to web development. For more information, see
+[Dart Tools for the Web]({{site.webdev}}/tools).
+
 
 ## Writing transformers
 

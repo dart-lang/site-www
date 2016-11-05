@@ -69,16 +69,15 @@ enchilada/
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
-\*** The `packages` directories are
-     created when you run `pub get`,
-     unless you specify the flag `--no-packages-dir`.
+\*** The `packages` directories are created
+     only if you specify the flag `--packages-dir`.
      Don't check `packages` directories into source control.
 
 \**** The `doc/api` directory exists locally after you've run
       [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
       Don't check the `api` directory into source control.
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 {% comment %}
 Not ready for this...
@@ -112,8 +111,8 @@ enchilada/
     ...
 {% endprettify %}
 
-Running pub also generates a `.packages` file and—unless you specify
-the `--no-packages-dir` flag—at least one directory named `packages`.
+Running pub also generates a `.packages` file and—if you specify
+the `--packages-dir` flag—directories named `packages`.
 Don't check these into source control.
 
 The open source community has a few other files that commonly appear at the top
@@ -260,8 +259,8 @@ You can reference another package's assets using the
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
 Old code might refer to assets using `/packages/<package>/<path>` URLs;
-that code will break when `packages` directories go away.
-A temporary workaround is to use the `--packages-dir` flag.
+that code breaks if the `packages` directories aren't present.
+A workaround is to use the `--packages-dir` flag.
 </aside>
 
 For more information about using assets, see

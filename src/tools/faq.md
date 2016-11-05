@@ -45,11 +45,9 @@ hoping to address the root cause but it will take a while to get there.
 
 #### Q. What are all the "packages" directories for?
 
-After you run pub, you might notice that your package has little `packages`
-directories sprinkled all over it. Before 1.19, these directories were
-needed to make `package:` imports work.
+Before 1.20, the `pub` tool used to produce lots of little `packages` directories.
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 When your code has an import with the `package` scheme, a Dart
 implementation like the VM or dart2js translates that to a path or URL.

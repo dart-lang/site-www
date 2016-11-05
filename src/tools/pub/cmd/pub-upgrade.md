@@ -18,7 +18,7 @@ versions of all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec.html) file in the current working
 directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency), to the
-`.packages` file and the `packages` directory located next to the pubspec.
+`.packages` file.
 For example:
 
 {% prettify sh %}
@@ -43,7 +43,7 @@ get the dependency versions specified in the existing lockfile.
 The `pub upgrade` command supports the same command-line arguments
 as the [`pub get` command](/tools/pub/cmd/pub-get).
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:** In earlier releases of Dart, _pub upgrade_ was called _pub update_.
@@ -68,14 +68,14 @@ unlocked until a compatible set of versions is found.
 
 If a dependency is added to the pubspec before `pub upgrade` is run,
 it gets the new dependency and any of its transitive dependencies,
-placing them in the `.packages` file and the `packages` directory. This
+placing them in the `.packages` file. This
 is the same behavior as `pub get`.
 
 ## Removing a dependency
 
 If a dependency is removed from the pubspec before `pub upgrade` is
-run, it removes the dependency from the `.packages` file and
-`packages` directory, thus making the dependency unavailable for
+run, it removes the dependency from the `.packages` file,
+thus making the dependency unavailable for
 importing. Any transitive dependencies of the removed dependency are
 also removed, as long as no remaining immediate dependencies also
 depend on them. This is the same behavior as `pub get`.

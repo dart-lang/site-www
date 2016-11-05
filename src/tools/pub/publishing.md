@@ -123,6 +123,10 @@ the following exceptions:
   files whose names begin with `.`).
 * If you're using Git, any files ignored by your `.gitignore` file.
 
+{% comment %}
+PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
+{% endcomment %}
+
 Be sure to delete any files you don't want to include (or add them to
 `.gitignore`). `pub publish` lists all files that it's going to publish
 before uploading your package,
