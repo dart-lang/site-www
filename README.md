@@ -29,15 +29,15 @@ Contributions welcome!
 ### One-time setup
 
 1. If you're on a Mac, install Xcode.
-1. Make sure you have Ruby. Consider using `rvm` to manage Ruby versions.
-1. Install `npm` by installing [Node.js](https://nodejs.org/en/).
+1. Make sure you have Ruby. Consider using [rvm](http://rvm.io/rvm/install) to manage Ruby versions.
+1. Install `npm` by installing [Node.js](https://nodejs.org/en/); only needed to install firebase tools.
 1. Install Firebase:
 
     ```
     npm install -g firebase-tools     # might require sudo
     ```
 
-1. Install bundles:
+1. Install bundles (you might need to run `gem install bundler` first):
 
     ```
     bundle install
@@ -64,7 +64,7 @@ In terminal, run:
 ./serve_local.sh
 ```
 
-Navigate to http://localhost:4000. (webdev is 4001)
+Navigate to [localhost:4000](http://localhost:4000); webdev is served from [localhost:4001](http://localhost:4001).
 
 Since we host on Firebase, using the Firebase server
 makes sure everything works as closely to production as possible.
