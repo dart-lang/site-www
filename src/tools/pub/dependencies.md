@@ -39,7 +39,7 @@ dependency to a range of versions, you can provide a *version constraint*:
 
 {% prettify yaml %}
 dependencies:
-  transmogrify: ^=1.0.0
+  transmogrify: ^1.0.0
 {% endprettify %}
 
 This creates a dependency on `transmogrify` using the default source and
@@ -70,7 +70,7 @@ dependencies:
     hosted:
       name: transmogrify
       url: http://some-package-server.com
-    version: ^=1.0.0
+    version: ^1.0.0
 {% endprettify %}
 
 This long form is used when you don't use the default source or when you have a
