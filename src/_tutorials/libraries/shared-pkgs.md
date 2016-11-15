@@ -185,12 +185,12 @@ packages in your app's dependencies list.
 Each package can contain libraries and other assets.
 Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
-
 Pub caches the files for each package your app depends on,
-pointing to them from a file named `.packages` and
-directories named `packages`.
+pointing to them from a file named `.packages`.
 
-{% include coming-release.html %}
+{% comment %}
+PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
+{% endcomment %}
 
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.

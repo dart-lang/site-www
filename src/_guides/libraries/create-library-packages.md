@@ -56,7 +56,7 @@ from a file that's directly under lib.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-As of 1.13, when the `library` directive isn't specified, a unique
+When the `library` directive isn't specified, a unique
 tag is generated for each library based on its path and filename.
 Therefore, we suggest that you omit the `library` directive from
 your code unless you plan to
@@ -205,7 +205,7 @@ or any `packages` directories. For more information, see
 
 {% comment %}
 PENDING: here just to make it easy to find discussions of `packages`...
-{% include coming-release.html %}
+{% include packages-dir.html %}
 {% endcomment %}
 
 You can share your open source libraries with other developers on

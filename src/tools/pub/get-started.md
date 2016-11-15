@@ -85,15 +85,12 @@ pub.dartlang.org. Transitive dependencies are included, too.
 For example, if the js package depends on the test package, `pub`
 grabs both the js package and the test package.
 
-Next, pub creates one or more `packages` directories containing
-symlinks to the packages in the system cache.
-
-Finally, pub creates a
+Pub creates a
 `.packages` file (under your app’s top directory)
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 ## Importing libraries from packages
 To import libraries found in packages, use the
@@ -105,7 +102,7 @@ import 'package:intl/intl.dart';
 {% endprettify %}
 
 The Dart runtime takes everything after `package:`
-and looks it up within the `.packages` file or `packages` directory for
+and looks it up within the `.packages` file for
 your app.
 
 You can also use this style to import libraries from within your own package.

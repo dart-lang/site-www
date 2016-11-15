@@ -86,7 +86,7 @@ Directories named `packages/` contain symlinks specific to your machine.
 Users of your code should generate their own packages information
 using [pub get](/tools/pub/get-started#installing-packages).
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 ### pubspec.lock
 

@@ -16,8 +16,7 @@ $ pub downgrade [args] [dependencies]
 Without any additional arguments, `pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
 in the current working directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency), to the `.packages`
-file and the `packages` directory located next to the pubspec.
+dependencies](/tools/pub/glossary#transitive-dependency), to the `.packages` file.
 For example:
 
 {% prettify sh %}
@@ -39,7 +38,7 @@ versions of all dependencies.
 The `pub downgrade` command supports the same command-line arguments
 as the [`pub get` command](/tools/pub/cmd/pub-get).
 
-{% include coming-release.html %}
+{% include packages-dir.html %}
 
 ## Downgrading specific dependencies
 
@@ -75,14 +74,14 @@ as a result.
 
 If a dependency is added to the pubspec before `pub downgrade` is run,
 it gets the new dependency and any of its transitive dependencies and
-places them in the `.packages` file and `packages` directory. This
+places them in the `.packages` file. This
 is the same behavior as `pub get`.
 
 ## Removing a dependency
 
 If a dependency is removed from the pubspec before `pub downgrade` is
-run, it removes the dependency from the `.packages` file and
-`packages` directory, thus making the dependency unavailable for
+run, it removes the dependency from the `.packages` file,
+thus making the dependency unavailable for
 importing. Any transitive dependencies of the removed dependency are
 also removed, as long as no remaining immediate dependencies also
 depend on them. This is the same behavior as `pub get`.

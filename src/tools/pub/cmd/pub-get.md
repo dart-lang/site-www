@@ -29,31 +29,28 @@ doesn't already contain the dependencies, `pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
-this command creates a `.packages` file and—unless you specify
-the `--no-packages-dir` flag—one or more
+this command creates a `.packages` file and—if you specify
+the `--packages-dir` flag—one or more
 `packages` directories.
 
 {% comment %}
 PENDING: here just to make it easy to find discussions of `packages`...
-{% include coming-release.html %}
+{% include packages-dir.html %}
 {% endcomment %}
 
 <aside class="alert alert-warning" markdown="1">
-  **The `.packages` file is replacing `packages` directories.**
+  **As of Dart 1.20, the `.packages` file has replaced `packages` directories.**
 
-  As of Dart 1.12,
-  `packages` directories are being phased out and
-  replaced by the `.packages` file.
-  If both are present, the `.packages` file is preferred by
-  tools that support it.
+  If both are present, tools use the `.packages` file.
   For more information, see
   [Resolving package: URIs](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#resolving-package-uris).
 
-  As of Dart 1.19, you can suppress creation of the `packages` directories
-  by specifying `--no-packages-dir`.
-  To request generation of `packages` directories
-  (in addition to the `.packages` file),
-  use the `--packages-dir` flag.
+  For backward compatibility, the `pub serve` command still
+  produces a virtual `packages` directory,
+  and the `pub build` command produces an actual `packages` directory
+  in its output directory.
+  To make other `pub` commands create `packages` directories,
+  specify `--packages-dir`.
 </aside>
 
 Once the dependencies are acquired, they may be referenced in Dart code.
