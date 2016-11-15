@@ -32,16 +32,13 @@ enchilada/
   LICENSE
   benchmark/
     make_lunch.dart
-    packages/ ***
   bin/
     enchilada
-    packages/ ***
   doc/
-    api/ ****
+    api/ ***
     getting_started.md
   example/
     lunch.dart
-    packages/ ***
   lib/
     enchilada.dart
     tortilla.dart
@@ -49,11 +46,9 @@ enchilada/
     src/
       beans.dart
       queso.dart
-  packages/ ***
   test/
     enchilada_test.dart
     tortilla_test.dart
-    packages/ ***
   tool/
     generate_docs.dart
   web/
@@ -69,11 +64,7 @@ enchilada/
     Leave it out of source control unless your package is an
     [application package](/tools/pub/glossary#application-package).
 
-\*** The `packages` directories are created
-     only if you specify the flag `--packages-dir`.
-     Don't check `packages` directories into source control.
-
-\**** The `doc/api` directory exists locally after you've run
+\*** The `doc/api` directory exists locally after you've run
       [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
       Don't check the `api` directory into source control.
 
@@ -107,13 +98,10 @@ control. Otherwise, don't.
 {% prettify none %}
 enchilada/
   .packages
-  packages/
-    ...
 {% endprettify %}
 
-Running pub also generates a `.packages` file and—if you specify
-the `--packages-dir` flag—directories named `packages`.
-Don't check these into source control.
+Running pub also generates a `.packages` file.
+Don't check this into source control.
 
 The open source community has a few other files that commonly appear at the top
 level of a project: `LICENSE`, `AUTHORS`, etc. If you use any of those, they can
@@ -258,9 +246,9 @@ You can reference another package's assets using the
 
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
-Old code might refer to assets using `/packages/<package>/<path>` URLs;
-that code breaks if the `packages` directories aren't present.
-A workaround is to use the `--packages-dir` flag.
+Old code might refer to assets using `/packages/<package>/<path>` URLs.
+If that code breaks, you can work around the problem by using
+the `--packages-dir` flag.
 </aside>
 
 For more information about using assets, see

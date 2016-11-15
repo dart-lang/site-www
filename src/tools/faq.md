@@ -43,17 +43,6 @@ Pub relies on junction points for core functionality, and those aren't
 available on the above. We realize these limitations are painful and we're
 hoping to address the root cause but it will take a while to get there.
 
-#### Q. What are all the "packages" directories for?
-
-Before 1.20, the `pub` tool used to produce lots of little `packages` directories.
-
-{% include packages-dir.html %}
-
-When your code has an import with the `package` scheme, a Dart
-implementation like the VM or dart2js translates that to a path or URL.
-This path used to be relative to the `packages` directory, but now is derived
-from information in the `.packages` file.
-
 #### Q. How can I make my client-server app work with **pub serve**?
 
 When you have an app with your own Dart server, you can use the
