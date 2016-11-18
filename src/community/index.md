@@ -27,7 +27,7 @@ Get answers and connect with Dart developers.
 
 * [StackOverflow](http://stackoverflow.com/tags/dart) -
   The best place for how-to questions.
-* [Gitter](https://gitter.im/dart-lang) -
+* [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
 * [Dart on Reddit](https://www.reddit.com/r/dartlang)
 * [Dartisans on Google+](http://g.co/dartisans)
