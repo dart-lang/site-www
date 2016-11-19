@@ -1034,6 +1034,61 @@
         "source": "/tools/dartium",
         "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
+      },
+      {
+        "source": "/googleapis/",
+        "destination": "https://github.com/dart-lang/googleapis",
+        "type": 301
+      },
+      {
+        "source": "/tools/editor",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/googleapis",
+        "destination": "https://github.com/dart-lang/googleapis",
+        "type": 301
+      },
+      {
+        "source": "/downloads",
+        "destination": "/install",
+        "type": 301
+      },
+      {
+        "source": "/tools/download",
+        "destination": "/install",
+        "type": 301
+      },
+      {
+        "source": "/docs/getting-started/editor",
+        "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
+        "source": "/polymer/using-elements",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/dartium",
+        "destination": "https://webdev.dartlang.org/tools/dartium",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/latest/dart-language-specification",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials",
+        "destination": "/tutorials",
+        "type": 301
+      },
+      {
+        "source": "/articles/dart-web-components",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
       }
     ]
   }
