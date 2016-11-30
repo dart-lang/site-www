@@ -1021,6 +1021,16 @@
         "type": 301
       },
       {
+        "source": "/eclipse",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/eclipse/**",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
         "source": "/tools/eclipse-plugin/",
         "destination": "/tools",
         "type": 301
@@ -1042,6 +1052,11 @@
       },
       {
         "source": "/tools/editor",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/tools/editor/*",
         "destination": "/tools",
         "type": 301
       },
