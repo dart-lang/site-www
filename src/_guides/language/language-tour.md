@@ -949,6 +949,7 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
 {% endprettify %}
 
+<a id="default-parameters"></a>
 #### Default parameter values
 
 Your function can define default values for both named and positional
@@ -1646,6 +1647,7 @@ String toString() {
 }
 {% endprettify %}
 
+<a id="cascade"></a>
 ### Cascade notation (..)
 
 Cascades (`..`) allow you to make a sequence of operations
@@ -2944,6 +2946,7 @@ For more information on annotations, see
 [Metadata](#metadata).
 
 
+<a id="enums"></a>
 ### Enumerated types
 
 Enumerated types, often called _enumerations_ or _enums_,
@@ -3406,6 +3409,7 @@ import 'package:lib1/lib1.dart' show foo;
 import 'package:lib2/lib2.dart' hide foo;
 {% endprettify %}
 
+<a id="deferred-loading"></a>
 #### Lazily loading a library
 
 _Deferred loading_ (also called _lazy loading_)
@@ -3462,6 +3466,7 @@ See
 [Create Library Packages](/guides/libraries/create-library-packages)
 for advice on how to implement a library package.
 
+<a id="asynchrony"></a>
 ## Asynchrony support
 
 Dart has several language features
@@ -3526,6 +3531,7 @@ try {
 {% endprettify %}
 
 
+<a id="async"></a>
 ### Declaring async functions
 
 An _async function_ is a function whose body is marked with
@@ -3565,6 +3571,7 @@ Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
 
 
+<a id="await"></a>
 ### Using await expressions with Futures
 
 An await expression has the following form:
@@ -3603,6 +3610,8 @@ main() async {
 }
 {% endprettify %}
 
+
+<a id="await-for"></a>
 ### Using asynchronous for loops with Streams
 
 An asynchronous for loop has the following form:
