@@ -91,6 +91,11 @@
         "type": 301
       },
       {
+        "source": "/articles/dart-web-components/tools",
+        "destination": "https://webdev.dartlang.org/tools",
+        "type": 301
+      },
+      {
         "source": "/articles/dart-web-components/tools/**",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
@@ -396,6 +401,16 @@
         "type": 301
       },
       {
+        "source": "/docs/editor ",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/docs/editor/getting-started",
+        "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
         "source": "/docs/getting-started/editor",
         "destination": "/guides/get-started",
         "type": 301
@@ -407,6 +422,11 @@
       },
       {
         "source": "/docs/spec/",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/dartLangSpec.pdf",
         "destination": "/guides/language/spec",
         "type": 301
       },
@@ -447,11 +467,6 @@
       },
       {
         "source": "/docs/tutorials",
-        "destination": "/tutorials",
-        "type": 301
-      },
-      {
-        "source": "/docs/tutorials/",
         "destination": "/tutorials",
         "type": 301
       },
@@ -576,6 +591,11 @@
         "type": 301
       },
       {
+        "source": "/eclipse/*",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
         "source": "/eclipse/**",
         "destination": "/tools",
         "type": 301
@@ -677,6 +697,16 @@
       },
       {
         "source": "/polymer/",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/polymer/reference/error-messages",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/polymer/spa",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
       },
@@ -986,11 +1016,6 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/cmd/pub-serve.html",
-        "destination": "https://webdev.dartlang.org/tools/pub/pub-serve",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/cmd/pub-upgrade.html",
         "destination": "/tools/pub/cmd/pub-upgrade",
         "type": 301
@@ -1096,58 +1121,8 @@
         "type": 301
       },
       {
-        "source": "/tos.htm",
-        "destination": "http://www.google.com/intl/en/policies/privacy/",
-        "type": 301
-      },
-      {
         "source": "/tos.html",
         "destination": "/terms",
-        "type": 301
-      },
-      {
-        "source": "/docs/editor/getting-started",
-        "destination": "/guides/get-started",
-        "type": 301
-      },
-      {
-        "source": "/docs/spec/dartLangSpec.pdf",
-        "destination": "/guides/language/spec",
-        "type": 301
-      },
-      {
-        "source": "/docs/editor ",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
-        "source": "/polymer/reference/error-messages",
-        "destination": "https://webdev.dartlang.org/guides/polymer",
-        "type": 301
-      },
-      {
-        "source": "/eclipse",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
-        "source": "/tools/editor/troubleshoot",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
-        "source": "/articles/dart-web-components/tools",
-        "destination": "https://webdev.dartlang.org/tools",
-        "type": 301
-      },
-      {
-        "source": "/eclipse/*",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
-        "source": "/polymer/spa",
-        "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
       }
     ]
