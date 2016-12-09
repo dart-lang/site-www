@@ -889,35 +889,7 @@ A function can have two types of parameters: required and optional. The
 required parameters are listed first, followed by any optional
 parameters.
 
-
-### Optional parameters
-
-Optional parameters can be either positional or named, but not both.
-
-#### Optional named parameters
-
-When calling a function, you can specify named parameters using
-<code><em>paramName</em>: <em>value</em></code>. For example:
-
-<!-- language-tour/use-named-parameters/bin/main.dart -->
-{% prettify dart %}
-enableFlags(bold: true, hidden: false);
-{% endprettify %}
-
-When defining a function, use
-<code>{<em>param1</em>, <em>param2</em>, …}</code>
-to specify named parameters:
-
-<!-- language-tour/specify-named-parameters/bin/main.dart -->
-{% prettify dart %}
-/// Sets the [bold] and [hidden] flags to the values
-/// you specify.
-enableFlags({bool bold, bool hidden}) {
-  // ...
-}
-{% endprettify %}
-
-#### Optional positional parameters
+### Optional positional parameters
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
@@ -952,23 +924,9 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
 <a id="default-parameters"></a>
 #### Default parameter values
 
-Your function can define default values for both named and positional
+Your function can define default values for positional
 parameters. The default values must be compile-time constants.
 If no default value is provided, the value is `null`.
-
-Use a colon (`:`) to specify default values for named parameters:
-
-<!-- language-tour/specify-default-values/bin/main.dart -->
-{% prettify dart %}
-/// Sets the [bold] and [hidden] flags to the values you
-/// specify, defaulting to false.
-enableFlags({bool bold: false, bool hidden: false}) {
-  // ...
-}
-
-// bold will be true; hidden will be false.
-enableFlags(bold: true);
-{% endprettify %}
 
 Use `=` to specify default values for positional parameters:
 
@@ -1003,11 +961,10 @@ to see list and map default values in action.
 https://gist.github.com/d988cfce0a54c6853799
 https://dartpad.dartlang.org/d988cfce0a54c6853799
 
-doStuff({List<int> list: const[1, 2, 3],
-         Map<String, String> gifts: const{'first':  'paper',
+doStuff([List<int> list = const[1, 2, 3],
+         Map<String, String> gifts = const{'first':  'paper',
                                           'second': 'cotton',
-                                          'third':  'leather'}})
-{
+                                          'third':  'leather'}]) {
   print('list:  $list');
   print('gifts: $gifts');
 }
@@ -1017,11 +974,12 @@ main() {
   doStuff();
 
   // Use the default values for the "gifts" parameter.
-  doStuff(list:[4,5,6]);
+  doStuff([4,5,6]);
 
   // Don't use the default values for either parameter.
-  doStuff(list: null, gifts: null);
+  doStuff(null, null);
 }
+
 {% endcomment %}
 
 <iframe
