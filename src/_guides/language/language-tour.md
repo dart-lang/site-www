@@ -952,17 +952,17 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
 <a id="default-parameters"></a>
 #### Default parameter values
 
-Your function can define default values for both named and positional
+Your function can use `=` to define default values for both named and positional
 parameters. The default values must be compile-time constants.
-If no default value is provided, the value is `null`.
+If no default value is provided, the default value is `null`.
 
-Use a colon (`:`) to specify default values for named parameters:
+Here's an example of setting default values for named parameters:
 
 <!-- language-tour/specify-default-values/bin/main.dart -->
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags to the values you
 /// specify, defaulting to false.
-enableFlags({bool bold: false, bool hidden: false}) {
+void enableFlags({bool bold = false, bool hidden = false}) {
   // ...
 }
 
@@ -970,7 +970,18 @@ enableFlags({bool bold: false, bool hidden: false}) {
 enableFlags(bold: true);
 {% endprettify %}
 
-Use `=` to specify default values for positional parameters:
+<div class="alert alert-info" markdown="1">
+**Version note:**
+Old code might use a colon (`:`) instead of `=`
+to set default values of named parameters.
+The reason is that before SDK 1.21, only `:` was supported for named parameters.
+That support is likely to be deprecated,
+so we recommend that you
+**use `=` to specify default values,
+and specify an SDK version of 1.21 or higher.**
+</div>
+
+The next example shows how to set default values for positional parameters:
 
 <!-- language-tour/optional-positional-parameter-default/bin/main.dart -->
 {% prettify dart %}
@@ -994,42 +1005,37 @@ You can also pass lists or maps as default values.
 The following example defines a function, `doStuff()`,
 that specifies a default list for the `list`
 parameter and a default map for the `gifts` parameter.
+{% comment %}
 The function is called three times with different values.
 Click the run button ( {% img 'red-run.png' %} )
 to see list and map default values in action.
+{% endcomment %}
 
 <!-- language-tour/list-map-default-function-parameters/bin/main.dart -->
-{% comment %}
-https://gist.github.com/d988cfce0a54c6853799
-https://dartpad.dartlang.org/d988cfce0a54c6853799
-
-doStuff({List<int> list: const[1, 2, 3],
-         Map<String, String> gifts: const{'first':  'paper',
-                                          'second': 'cotton',
-                                          'third':  'leather'}})
-{
+{% prettify dart %}
+void doStuff(
+    {List<int> list = const [1, 2, 3],
+    Map<String, String> gifts = const {
+      'first': 'paper',
+      'second': 'cotton',
+      'third': 'leather'
+    }}) {
   print('list:  $list');
   print('gifts: $gifts');
 }
+{% endprettify %}
 
-main() {
-  // Use the default values for both parameters.
-  doStuff();
-
-  // Use the default values for the "gifts" parameter.
-  doStuff(list:[4,5,6]);
-
-  // Don't use the default values for either parameter.
-  doStuff(list: null, gifts: null);
-}
-{% endcomment %}
-
+{% comment %}
+https://gist.github.com/d988cfce0a54c6853799
+https://dartpad.dartlang.org/d988cfce0a54c6853799
+(The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
 src="{{site.custom.dartpad.embed-dart-prefix}}?id=d988cfce0a54c6853799&horizontalRatio=99&verticalRatio=70"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
 </iframe>
+{% endcomment %}
 
 
 ### The main() function
