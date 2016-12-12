@@ -946,11 +946,6 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/**",
-        "destination": "/tools/pub",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/assets-and-transformers.html",
         "destination": "/tools/pub/assets-and-transformers",
         "type": 301
