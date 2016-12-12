@@ -1111,6 +1111,11 @@
         "type": 301
       },
       {
+        "source": "/tos.htm",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
         "source": "/tos.html",
         "destination": "/terms",
         "type": 301
