@@ -978,7 +978,7 @@ The reason is that before SDK 1.21, only `:` was supported for named parameters.
 That support is likely to be deprecated,
 so we recommend that you
 **use `=` to specify default values,
-and specify an SDK version of 1.21 or higher.**
+and [specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constraints)**
 </div>
 
 The next example shows how to set default values for positional parameters:
