@@ -211,6 +211,11 @@
         "type": 301
       },
       {
+        "source": "/articles/using-future-based-apis/**",
+        "destination": "/tutorials/language/futures",
+        "type": 301
+      },
+      {
         "source": "/articles/web-ui/**",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
@@ -267,6 +272,11 @@
       },
       {
         "source": "/codelabs/",
+        "destination": "/codelabs",
+        "type": 301
+      },
+      {
+        "source": "/codelabs/deploy",
         "destination": "/codelabs",
         "type": 301
       },
@@ -366,7 +376,12 @@
         "type": 301
       },
       {
-        "source": "/dartium",
+        "source": "/dartisans/podcast-feed",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/dartium/",
         "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
       },
@@ -401,17 +416,17 @@
         "type": 301
       },
       {
-        "source": "/docs/editor ",
+        "source": "/docs/editor/",
         "destination": "/tools",
         "type": 301
       },
       {
-        "source": "/docs/editor/getting-started",
+        "source": "/docs/editor/getting-started.html",
         "destination": "/guides/get-started",
         "type": 301
       },
       {
-        "source": "/docs/getting-started/editor",
+        "source": "/docs/getting-started/**",
         "destination": "/guides/get-started",
         "type": 301
       },
@@ -446,7 +461,7 @@
         "type": 301
       },
       {
-        "source": "/docs/spec/latest/dart-language-specification",
+        "source": "/docs/spec/latest/dart-language-specification/",
         "destination": "/guides/language/spec",
         "type": 301
       },
@@ -463,11 +478,6 @@
       {
         "source": "/docs/technical-overview/**",
         "destination": "/guides/get-started",
-        "type": 301
-      },
-      {
-        "source": "/docs/tutorials",
-        "destination": "/tutorials",
         "type": 301
       },
       {
@@ -556,11 +566,6 @@
         "type": 301
       },
       {
-        "source": "/downloads",
-        "destination": "/install",
-        "type": 301
-      },
-      {
         "source": "/downloads/",
         "destination": "/install",
         "type": 301
@@ -583,11 +588,6 @@
       {
         "source": "/downloads/windows.html",
         "destination": "/install/windows",
-        "type": 301
-      },
-      {
-        "source": "/eclipse",
-        "destination": "/tools",
         "type": 301
       },
       {
@@ -686,6 +686,11 @@
         "type": 301
       },
       {
+        "source": "/performance/io/",
+        "destination": "/performance",
+        "type": 301
+      },
+      {
         "source": "/polymer-dart/**",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
@@ -721,7 +726,7 @@
         "type": 301
       },
       {
-        "source": "/pub/tools/editor",
+        "source": "/pub/tools/editor/",
         "destination": "/tools",
         "type": 301
       },
@@ -886,11 +891,6 @@
         "type": 301
       },
       {
-        "source": "/tools/dartium",
-        "destination": "https://webdev.dartlang.org/tools/dartium",
-        "type": 301
-      },
-      {
         "source": "/tools/dartium/",
         "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
@@ -901,7 +901,7 @@
         "type": 301
       },
       {
-        "source": "/tools/download",
+        "source": "/tools/download/**",
         "destination": "/install",
         "type": 301
       },
@@ -921,11 +921,6 @@
         "type": 301
       },
       {
-        "source": "/tools/editor",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
         "source": "/tools/editor/**",
         "destination": "/tools",
         "type": 301
@@ -941,7 +936,7 @@
         "type": 301
       },
       {
-        "source": "/tools/observatory/",
+        "source": "/tools/observatory/**",
         "destination": "https://dart-lang.github.io/observatory/",
         "type": 301
       },
@@ -951,8 +946,8 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/",
-        "destination": "/tools/pub",
+        "source": "/tools/pub/**",
+        "destination": "/tools/pub/*",
         "type": 301
       },
       {
@@ -1028,11 +1023,6 @@
       {
         "source": "/tools/pub/create-library-packages.html",
         "destination": "/guides/libraries/create-library-packages",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/create-library-packages.html",
-        "destination": "/tools/pub/create-library-packages",
         "type": 301
       },
       {
