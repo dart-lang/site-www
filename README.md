@@ -194,8 +194,8 @@ using `git stash pop`.
 To make sure we are not breaking any links (or bookmarks) from yesteryear, you
 can take the old sitemap as input for the link checker.
 
-Again, make sure you are runnig the localhost server (`firebase serve`), then:
+Again, make sure you are running the localhost server (`./serve_local.sh`), then:
 
 ```
-linkcheck -i deploy/urls/old_site_urls.txt
+linkcheck :4000 -i deploy/urls/old_site_urls.txt
 ```
