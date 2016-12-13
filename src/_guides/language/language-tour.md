@@ -3338,7 +3338,8 @@ void main() {
 Initially, Dart's generic support was limited to classes.
 A newer syntax, called _generic methods_, allows type arguments on methods and functions:
 
-<!-- language-tour/generics-PENDING/bin/main.dart -->
+<!-- https://dartpad.dartlang.org/a02c53b001977efa4d803109900f21bb -->
+<!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 {% prettify dart %}
 [[highlight]]T[[/highlight]] first[[highlight]]<T>[[/highlight]](List<[[highlight]]T[[/highlight]]> ts) {
   // ...Do some initial work or error checking, then...
