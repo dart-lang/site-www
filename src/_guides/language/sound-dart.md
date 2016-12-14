@@ -4,9 +4,9 @@ title: "Sound Dart Guide"
 description: "."
 ---
 
-This guide tells you what sound Dart means, how to write sound Dart code,
-how strong mode enables soundness, how to enable strong mode,
-the rules for substituting types, and where you can learn more.
+This guide tells you why and how to write sound (type safe) Dart code.
+You'll learn how to use strong mode to enable soundness, as well as
+how to substitute types safely.
 
 {% comment %}
 Not ready yet...
@@ -17,18 +17,20 @@ If you are already using strong mode Dart, you might also check out
 <aside class="alert alert-info" markdown="1">
 **Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
 are sometimes used interchangeably. _Strong mode_ is Dart's implementation
-of a sound type system, also called type safe. With strong mode enabled,
-Dart is a type safe language. Similarly, "classic Dart" refers to Dart
+of a sound type system. With strong mode enabled,
+Dart is a type safe language. "Classic Dart" refers to Dart
 before soundness was added to the language.
 
 Eventually, soundness won't be optional in the Dart language, and strong mode
 will no longer be a mode. It will just be part of the language.
 </aside>
 
-You can reap the benefits of sound Dart code today, such as finding bugs
+By writing sound Dart code today, you'll reap some benefits now,
+with more in the near future. Current benefits include finding bugs
 at compile time (rather than at runtime) using Dart's static analyzer.
-Soon you will be able to take advantage of new tooling that compiles
-faster and gives you an improved development experience.
+And soon you'll be able to use new tools that quickly and incrementally
+compile your sound Dart code, giving you a better overall
+developer experience.
 
 Sound Dart adds only a few additional rules beyond that for classic
 Dart&mdash;mostly you clarify code where the types are ambiguous or
@@ -142,7 +144,7 @@ A sound type system has several benefits:
   revealed at compile time.
 
 * More readable code.<br>
-  Code is easier to read because you can rely on a value actually haing
+  Code is easier to read because you can rely on a value actually having
   the specified type. In sound Dart, types can't lie.
 
 * More maintainable code.<br>
