@@ -127,7 +127,7 @@ is a problem and the runtime error is avoided.
 
 New tools in development for the Dart language rely on ahead-of-time (AOT)
 compilation. AOT compiling benefits significantly from strong type
-checking that can be performs at compile time. For this reason,
+checking that can be performed at compile time. For this reason,
 the Dart language now offers strong mode.
 
 Strong mode enables Dart to have a sound type system. Strong mode Dart
@@ -339,7 +339,7 @@ Does strong mode Dart mean that you _always_ have to specify a type?
 
 Actually, no. Strong mode Dart supports type inference. In some cases,
 the analyzer can infer types for fields, methods, local variables,
-and generic types arguments.
+and generic type arguments.
 
 ### Field and method inference
 
@@ -374,6 +374,29 @@ x = 4.0;
 {% prettify dart %}
 num y = 3; // y is defined as num which can be double or int
 y = 4.0;
+{% endprettify %}
+</div>
+
+### Type argument inference
+
+Type arguments to constructor calls and generic method invocations are
+inferred based on a combination of downward information from the context
+of occurrence, and upwards information from the arguments to the constructor
+or generic method. If inference is not doing what you want or expect,
+you can always explicitly pass the type arguments.
+
+<div class="passes-sa" markdown="1">
+{% prettify dart %}
+// Inferred as if you wrote <int>[].
+List<int> listOfInt = [];
+
+// Inferred as if you wrote <double>[3.0].
+var listOfDouble = [3.0];
+
+// x is inferred as int, double using downward information.
+// Return type of the closure is inferred as int using upwards information.
+// Type argument to map() is inferred as <int> using upwards information.
+var listOfInt2 = listOfDouble.map((x) => x.toInt());
 {% endprettify %}
 </div>
 
