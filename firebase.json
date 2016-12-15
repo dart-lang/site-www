@@ -401,18 +401,48 @@
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/**",
-        "destination": "http://shop.oreilly.com/product/0636920025719.do",
+        "source": "/docs/dart-up-and-running",
+        "destination": "/resources/books",
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/ch02.html",
+        "source": "/docs/dart-up-and-running/foreword",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/preface",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/ch00",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/ch01",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/ch02",
         "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/ch03.html",
+        "source": "/docs/dart-up-and-running/ch03",
         "destination": "/guides/libraries/library-tour",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/ch04",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/ch05",
+        "destination": "/resources/books",
         "type": 301
       },
       {
