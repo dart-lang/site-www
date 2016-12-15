@@ -3332,8 +3332,41 @@ void main() {
 }
 {% endprettify %}
 
+
+### Using generic methods
+
+Initially, Dart's generic support was limited to classes.
+A newer syntax, called _generic methods_, allows type arguments on methods and functions:
+
+<!-- https://dartpad.dartlang.org/a02c53b001977efa4d803109900f21bb -->
+<!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
+{% prettify dart %}
+[[highlight]]T[[/highlight]] first[[highlight]]<T>[[/highlight]](List<[[highlight]]T[[/highlight]]> ts) {
+  // ...Do some initial work or error checking, then...
+  [[highlight]]T[[/highlight]] tmp ?= ts[0];
+  // ...Do some additional checking or processing...
+  return tmp;
+}
+{% endprettify %}
+
+Here the generic type parameter on `first` (`<T>`)
+allows you to use the type argument `T` in several places:
+
+* In the function's return type (`T`).
+* In the type of an argument (`List<T>`).
+* In the type of a local variable (`T tmp`).
+
+<div class="alert alert-info" markdown="1">
+**Version note:**
+The new syntax for generic methods was [introduced in
+SDK 1.21.](http://news.dartlang.org/2016/12/dart-121-generic-method-syntax.html)
+If you use generic methods,
+[specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constraints)
+</div>
+
 For more information about generics, see [Optional Types in
-Dart.](/articles/language/optional-types)
+Dart](/articles/language/optional-types) and
+[Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
 
 ## Libraries and visibility
