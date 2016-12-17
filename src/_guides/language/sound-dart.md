@@ -6,7 +6,7 @@ description: "."
 
 This guide tells you why and how to write sound (type safe) Dart code.
 You'll learn how to use strong mode to enable soundness, as well as
-how to substitute types safely.
+how to substitute types safely when overriding methods.
 
 {% comment %}
 Not ready yet...
@@ -20,9 +20,6 @@ are sometimes used interchangeably. _Strong mode_ is Dart's implementation
 of a sound type system. With strong mode enabled,
 Dart is a type safe language. "Classic Dart" refers to Dart
 before soundness was added to the language.
-
-Eventually, soundness won't be optional in the Dart language, and strong mode
-will no longer be a mode. It will just be part of the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -48,7 +45,7 @@ void fn(List<int> a) {
 main() {
   var list = [];
   list.add(1);
-  list.add(2);
+  list.add("2");
   fn([[highlight]]list[[/highlight]]);
 }
 {% endprettify %}
@@ -58,9 +55,11 @@ In classic Dart, this code passes analysis with no errors. Once you enable
 strong mode, an error appears on `list` (shown in bold) in the call to
 `fn(list)`. The error states **Unsound implicit cast from List&lt;dynamic&gt;
 to List&lt;int&gt;**. The `var list = []` line creates a list of type
-`dynamic` becaues it doesn't have enough information to infer a type.
+`dynamic` because it doesn't have enough information to infer a type.
 The `fn` function expects a list of type `int`, causing a mismatch of types.
-You can fix this error by specifying a type annotation on creation of
+When specifying a type annotation on creation of the list, as shown in bold,
+the static analyzer points out that a string can't be assigned to
+the parameter type int.
 the list, as shown in bold:
 
 <div class="passes-sa" markdown="1">
@@ -72,7 +71,7 @@ void fn(List<int> a) {
 void main() {
   var list = [[highlight]]<int>[[/highlight]][];
   list.add(1);
-  list.add(2);
+  list.add([[highlight]]"2"[[/highlight]]);
   fn(list);
 }
 {% endprettify %}
@@ -81,8 +80,8 @@ void main() {
 {% comment %}
 Note: Can't use embedded DP because it does not provide a Strong mode
 checkbox.
-Gist:  https://gist.github.com/Sfshaza/a992c189acd379b6d6fcda41269208e9
-DartPad url: https://dartpad.dartlang.org/a992c189acd379b6d6fcda41269208e9
+Gist:  https://gist.github.com/72c3a6ab69d8754dd0c8f3a7f0d5bb0e
+DartPad url: https://dartpad.dartlang.org/72c3a6ab69d8754dd0c8f3a7f0d5bb0e
 {% endcomment %}
 
 [Try it in DartPad](https://dartpad.dartlang.org/a992c189acd379b6d6fcda41269208e9).
@@ -202,7 +201,7 @@ but an Alligator is not a likely parent for a HoneyBadger.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
-class Animal {
+class HoneyBadger {
   void chase(Animal a) {}
   [[highlight]]HoneyBadger[[/highlight]] get parent => ...
 }
@@ -211,7 +210,7 @@ class Animal {
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
-class Animal {
+class HoneyBadger {
   void chase(Animal a) {}
   [[highlight]]Alligator[[/highlight]] get parent => ...
 }
@@ -393,7 +392,7 @@ List<int> listOfInt = [];
 // Inferred as if you wrote <double>[3.0].
 var listOfDouble = [3.0];
 
-// x is inferred as int, double using downward information.
+// x is inferred as double using downward information.
 // Return type of the closure is inferred as int using upwards information.
 // Type argument to map() is inferred as <int> using upwards information.
 var listOfInt2 = listOfDouble.map((x) => x.toInt());
@@ -445,7 +444,13 @@ you must use DDC or IntelliJ for now.
 
 ## Substituting types
 
-When can you replace a type with a subtype or a supertype?
+When you override a method, you are replacing something of one type
+(the old method) with something of a new type (the new method).
+Similarly, when you pass an argument to a function,
+you are replacing something which has one type (a parameter
+with a declared type) with something that has another type
+(the actual argument). When can you replace something which
+has one type with something that has a subtype or a supertype?
 
 When substituting types, it helps to think in terms of _producers_
 and _consumers_. A consumer absorbs a type and a producer generates a type.
@@ -621,10 +626,10 @@ Usually the superclass method is the best place to put it.
 
 ## Strong mode vs. checked mode
 
-You may be famililar with the Dart compiler's checked mode feature.
+You may be familiar with the Dart compiler's checked mode feature.
 In checked mode, the compiler inserts dynamic type assertions and
 generates a warning if the types don't match up. For example,
-the following line of code generates a compile-time warning in checked mode:
+the following line of code generates a runtime warning in checked mode:
 
 {% prettify dart %}
 String result = 1 + 2;
