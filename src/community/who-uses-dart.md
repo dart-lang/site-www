@@ -209,4 +209,8 @@ Google internal tool for marketing
 : A game in which you train neural networks to play soccer against other
 players' teams. Build with polymer.dart and StageXL.
 
+[QuemEuTirei](http://www.quemeutirei.com.br)
+: A Secret Santa application. You can create Events, setup your Profile and
+Gifts and invite friends. Build with Angular 2 Dart (client) and Shelf (server).
+
 </div>
