@@ -153,11 +153,10 @@ Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a href="#" class="d
 
 Future _handleError(String path) async {
   if (<a href="#" class="dart-popover" data-toggle="popover" title="Test the path" data-html="true" data-trigger="hover focus" data-content='You can get information about the file system on which your program is running. The "await" keyword causes error handling to pause until the path is available.'>await FileSystemEntity.isDirectory(path)</a>) {
-      stderr.writeln('error: $path is a directory');
-    } else {
-      <a href="#" class="dart-popover" data-toggle="popover" title="Exit code" data-html="true" data-trigger="hover focus" data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful.">exitCode = 2;</a>
-    }
-  });
+    stderr.writeln('error: $path is a directory');
+  } else {
+    <a href="#" class="dart-popover" data-toggle="popover" title="Exit code" data-html="true" data-trigger="hover focus" data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful.">exitCode = 2;</a>
+  }
 }
 
 </pre>
