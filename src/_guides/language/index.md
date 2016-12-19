@@ -27,6 +27,9 @@ These two resources are popular with both beginning Dartisans and experts.
 : How and why to write sound Dart code, and how to use strong mode to
   enable soundness.
 
+[Sound Dart FAQ](/guides/language/sound-faq)
+: A list of common questions for those who are writing sound Dart code.
+
 [Customize Static Analysis](/guides/language/analysis-options)
 : A guide on customizing the analyzer using an analysis_options file.
 
