@@ -1,12 +1,14 @@
 ---
 layout: guide
 title: "Sound Dart FAQ"
-description: "Questions and answers on how to why to write sound Dart code."
+description: "Questions and answers on how and why to write sound Dart code."
+toc: false
 ---
 
 This page collects some questions and answers about why and how to
-write sound Dart code. Be sure to also check out
-[Sound Dart Guide](/guides/language/sound-dart).
+write sound Dart code. Be sure to also check out the
+[Sound Dart Guide](/guides/language/sound-dart) to learn more about
+writing sound Dart code.
 
 ### What is "strong mode" ? Is it the same as “sound Dart”?
 
@@ -50,7 +52,9 @@ strong mode to simplify things in the future.
 
 The strong mode spec has not yet been published. However, the
 [Sound Dart Guide](/guides/language/sound-dart) has more information
-with links to docs written by the Dart language team.
+with links under
+[Other references](/guides/language/sound-dart#other-resources)
+to docs written by the Dart language team.
 
 ### Is strong mode "done" or are there still changes to come?
 
@@ -141,7 +145,7 @@ Strong mode performs stronger type checking. For more information, see
 Developers at Google have migrated tens of thousands of lines of
 Dart to strong mode. Many of the changes involved adding annotations
 to Maps and Lists. Often, making code strong mode clean is a matter
-of making good use of generic methods. Also, code that uses dynamic
+of making good use of generic methods. Finally, code that uses dynamic
 types to hold other types must be cleaned up.
 
 ### Can some of my code in my app/library be strong mode, and other code be not-strong-mode?
