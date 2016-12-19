@@ -7,8 +7,7 @@ toc: false
 
 This page collects some questions and answers about why and how to
 write sound Dart code. Be sure to also check out the
-[Sound Dart Guide](/guides/language/sound-dart) to learn more about
-writing sound Dart code.
+[Sound Dart Guide](/guides/language/sound-dart) to learn more.
 
 ### What is "strong mode" ? Is it the same as “sound Dart”?
 
