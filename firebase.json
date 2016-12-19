@@ -266,6 +266,11 @@
         "type": 301
       },
       {
+        "source": "/cloud",
+        "destination": "https://dart-lang.github.io/server/",
+        "type": 301
+      },
+      {
         "source": "/cloud/",
         "destination": "https://dart-lang.github.io/server/",
         "type": 301
@@ -446,12 +451,27 @@
         "type": 301
       },
       {
+        "source": "/docs/editor",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
         "source": "/docs/editor/",
         "destination": "/tools",
         "type": 301
       },
       {
+        "source": "/docs/editor/getting-started",
+        "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
         "source": "/docs/editor/getting-started.html",
+        "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
+        "source": "/docs/getting-started",
         "destination": "/guides/get-started",
         "type": 301
       },
@@ -466,12 +486,27 @@
         "type": 301
       },
       {
+        "source": "/docs/spec",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
         "source": "/docs/spec/",
         "destination": "/guides/language/spec",
         "type": 301
       },
       {
         "source": "/docs/spec/dartLangSpec.pdf",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/latest/dart-language-specification",
+        "destination": "/guides/language/spec",
+        "type": 301
+      },
+      {
+        "source": "/docs/spec/latest/dart-language-specification.pdf",
         "destination": "/guides/language/spec",
         "type": 301
       },
@@ -491,16 +526,6 @@
         "type": 301
       },
       {
-        "source": "/docs/spec/latest/dart-language-specification/",
-        "destination": "/guides/language/spec",
-        "type": 301
-      },
-      {
-        "source": "/docs/spec/latest/dart-language-specification.pdf",
-        "destination": "/guides/language/spec",
-        "type": 301
-      },
-      {
         "source": "/docs/synonyms/",
         "destination": "/resources/synonyms",
         "type": 301
@@ -508,6 +533,11 @@
       {
         "source": "/docs/technical-overview/**",
         "destination": "/guides/get-started",
+        "type": 301
+      },
+      {
+        "source": "/docs/tutorials",
+        "destination": "/tutorials",
         "type": 301
       },
       {
@@ -593,6 +623,11 @@
       {
         "source": "/docs/tutorials/web-ui/**",
         "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/downloads",
+        "destination": "/install",
         "type": 301
       },
       {
@@ -928,6 +963,11 @@
       {
         "source": "/tools/docgen/**",
         "destination": "https://pub.dartlang.org/packages/dartdoc",
+        "type": 301
+      },
+      {
+        "source": "/tools/download",
+        "destination": "/install",
         "type": 301
       },
       {
