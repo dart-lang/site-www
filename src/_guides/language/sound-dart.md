@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: "Sound Dart Guide"
-description: "."
+description: "Why and how to write sound Dart code."
 ---
 
 This guide tells you why and how to write sound (type safe) Dart code.
