@@ -623,6 +623,7 @@ class Cat extends Animal {
 The annotation applies to a single parameter and can be placed on the
 superclass or subclass method.
 Usually the superclass method is the best place to put it.
+The `@checked` annotation is also supported on setters and fields.
 
 ## Strong mode vs. checked mode
 
