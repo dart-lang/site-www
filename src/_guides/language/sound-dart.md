@@ -52,8 +52,8 @@ main() {
 </div>
 
 In classic Dart, this code passes analysis with no errors. Once you enable
-strong mode, an error appears on `list` (shown in bold) in the call to
-`fn(list)`. The error states **Unsound implicit cast from List&lt;dynamic&gt;
+strong mode, a warning appears on `list` (shown in bold) in the call to
+`fn(list)`. The warning states **Unsound implicit cast from List&lt;dynamic&gt;
 to List&lt;int&gt;**. The `var list = []` line creates a list of type
 `dynamic` because it doesn't have enough information to infer a type.
 The `fn` function expects a list of type `int`, causing a mismatch of types.
@@ -71,7 +71,7 @@ void fn(List<int> a) {
 void main() {
   var list = [[highlight]]<int>[[/highlight]][];
   list.add(1);
-  list.add([[highlight]]"2"[[/highlight]]);
+  list.add([[highlight]]2[[/highlight]]);
   fn(list);
 }
 {% endprettify %}
@@ -80,11 +80,11 @@ void main() {
 {% comment %}
 Note: Can't use embedded DP because it does not provide a Strong mode
 checkbox.
-Gist:  https://gist.github.com/72c3a6ab69d8754dd0c8f3a7f0d5bb0e
-DartPad url: https://dartpad.dartlang.org/72c3a6ab69d8754dd0c8f3a7f0d5bb0e
+Gist:  https://gist.github.com/3c7c95683f0c06be8326a2fd3975cd19
+DartPad url: https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19
 {% endcomment %}
 
-[Try it in DartPad](https://dartpad.dartlang.org/a992c189acd379b6d6fcda41269208e9).
+[Try it in DartPad](https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19).
 
 ## What is soundness?
 
@@ -121,7 +121,7 @@ main () {
 {% endprettify %}
 </div>
 
-Once strong mode is enabled, the analyer warns you that this assignment
+Once strong mode is enabled, the analyzer warns you that this assignment
 is a problem and the runtime error is avoided.
 
 New tools in development for the Dart language rely on ahead-of-time (AOT)
