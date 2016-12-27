@@ -850,7 +850,7 @@ main .content {
   margin-bottom: 11px;
   @extend .alert-danger;
   &:after {
-    content: 'fails static analysis';
+    content: 'fails static analysis with errors or warnings';
     display: inline-block;
     position: absolute;
     top: 10px;
