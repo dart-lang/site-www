@@ -451,17 +451,17 @@
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/contents/ch02
+        "source": "/docs/dart-up-and-running/contents/ch02",
         "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/contents/ch03
+        "source": "/docs/dart-up-and-running/contents/ch03",
         "destination": "/guides/language/library-tour",
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/contents/ch04/ch04-tools-dart2js
+        "source": "/docs/dart-up-and-running/contents/ch04/ch04-tools-dart2js",
         "destination": "https://webdev.dartlang.org/tools/dart2js",
         "type": 301
       },
