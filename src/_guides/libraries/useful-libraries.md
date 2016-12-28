@@ -47,7 +47,7 @@ Dart community.  Here are some popular and useful packages,
 in alphabetical order:
 
 | **Package** | **Description** | **Commonly used APIs** |
-| [firebase3](https://pub.dartlang.org/packages/firebase3) | A wrapper for [Firebase](https://firebase.google.com) that allows you to easily publish your app to the cloud. | Auth, Database, Query, Storage |
+| [firebase](https://pub.dartlang.org/packages/firebase) | A wrapper for [Firebase](https://firebase.google.com) that allows you to easily publish your app to the cloud. | Auth, Database, Query, Storage |
 | [http](https://pub.dartlang.org/packages/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
 | [intl](https://pub.dartlang.org/packages/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [logging](https://pub.dartlang.org/packages/logging) | A configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
