@@ -23,7 +23,7 @@ These two resources are popular with both beginning Dartisans and experts.
 
 ## Other resources
 
-[Sound Dart Guide](/guides/language/sound-dart)
+[Sound Dart](/guides/language/sound-dart)
 : How and why to write sound Dart code, and how to use strong mode to
   enable soundness.
 

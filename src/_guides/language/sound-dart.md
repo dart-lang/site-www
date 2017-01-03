@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: "Sound Dart Guide"
+title: "Sound Dart"
 description: "."
 ---
 
