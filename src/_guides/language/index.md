@@ -31,6 +31,9 @@ These two resources are popular with both beginning Dartisans and experts.
 : A list of common questions for those who are interested in stronger
   static typing.
 
+[Sound Dart: Common Problems](/guides/language/common-prob)
+: A list of xxx.
+
 [Customize Static Analysis](/guides/language/analysis-options)
 : A guide on customizing the analyzer using an analysis_options file.
 
