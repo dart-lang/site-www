@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: "Sound Dart"
-description: "."
+description: "Why and how to write sound Dart code."
 ---
 
 This guide tells you why and how to write sound (type safe) Dart code.
@@ -685,6 +685,8 @@ numerous errors when analyzed under strong mode.
 The following resources have further information on sound Dart and
 strong mode:
 
+* [Sound Dart FAQ](/guides/language/sound-faq) - Questions and answers about
+  writing sound Dart code.
 * [Sound Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit
 * [Customize Static Analysis](/guides/language/analysis-options) - how
