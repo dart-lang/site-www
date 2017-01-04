@@ -1,8 +1,11 @@
 ---
 layout: guide
 title: "Sound Dart: Common Problems"
-description: "."
+description: "Common problems you may have when converting to strong mode and how to fix them."
 ---
+
+If you are having problems converting your code to strong mode,
+this page can help. Be sure to also check out ...
 
 ## Troubleshooting
 
@@ -219,7 +222,7 @@ to specify a type. For more information, see
 </aside>
 
 For example, the following code generates the warning
-**Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;</code>**.
+"<code>Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;</code>".
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -249,8 +252,7 @@ List<String> strings = stuff;
 {% endprettify %}
 </div>
 
-As a last resort, you can also cast the type using <code>as
-<em>Class</em></code>.
+As a last resort, you can cast the type using <code>as <em>Class</em></code>.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
@@ -274,14 +276,14 @@ in the [language tour](/guides/language/language-tour).
 
 ### Missing type arguments
 
-Leaving off a type argument can cause one of two kinds of problems during
-static analysis:
+Omitting a type argument when defining a generic subclass can cause one
+of two kinds of problems during static analysis:
 
 **Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
 
 OR
 
-**Warning:** <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type</em>&gt;</em>.</code>
+**Warning:** <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type</em>&gt;.</code>
 
 **Fix:** Specify type arguments for the generic subclass.
 
@@ -327,17 +329,16 @@ class Subclass extends Superclass[[highlight]]<int>[[/highlight]] {
 **Warning:** <code>A value of type '&lt;<em>type</em>&gt;' cannot be
 assigned to a variable of type '<em>type</em>'.</code>
 
-This sometimes happens when you create a simple dynamic Map and the analyzer
-Dart infers the type in a way you didn't expect.
-When you later add values of a different type,
-you get a warning.
+This sometimes happens when you create a simple dynamic collection
+and the analyzer Dart infers the type in a way you didn't expect.
+When you later add values of a different type, it triggers a static warning.
 
-**Fix:** Explicitly specify the types.
+**Fix:** Specify the type explicitly.
 
-For example, the following code shows a map pre-loaded with several
-Sting,integer pairs. The analyzer infers that map contains
-`(String,int)` pairs. When you later add a (String,float) pair,
-the analyzer complains.
+For example, the following code initializes a map with several
+(Sting,integer) pairs. The analyzer infers that map to be of type
+<String,int> but the code assumes <String,dynamic>.
+When the code then adds a (String,float) pair, the analyzer complains.
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -350,8 +351,28 @@ void main() {
 
   [[highlight]]map['d'] = 1.5;[[/highlight]]  // but 1.5 is not int!
 }
+{% endprettify %}
 </div>
 
+This can be fixed by explicitly defining the map's type to be
+`<String,dynamic>`.
+
+<div class="passes-sa" markdown="1">
+{% prettify dart %}
+void main() {
+  var map = <String,dynamic>{
+    'a': 7,
+    'b': 11,
+    'c': 13
+  };
+
+  map['d'] = 1.5;
+}
+{% endprettify %}
+</div>
+
+Alternatively, if you only want this map to accept integers and floats,
+you can specify the type as `<String,num>`.
 
 <hr>
 
@@ -400,8 +421,12 @@ Strong mode currently disallows overriding a field with another field or with a 
 We will eventually support field overrides in strong mode, but DDC does not support them yet.  For the time being, you can use the @virtual annotation from package:meta to make a field virtual (allowing it to be overridden), but the resulting code will not yet work in DDC.
 {% endcomment %}
 
+{% comment %}
 ## Known issues
+Do we have any known issues or bugs to list here?
+{% endcomment %}
 
-## Help
+## Other resources
 
-## Appendices
+The following resources have further information on sound Dart and
+strong mode:
