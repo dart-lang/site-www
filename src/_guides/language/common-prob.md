@@ -2,19 +2,45 @@
 layout: guide
 title: "Sound Dart: Common Problems"
 description: "Common problems you may have when converting to strong mode and how to fix them."
+toc: false
 ---
 
 If you are having problems converting your code to strong mode,
-this page can help. Be sure to also check out ...
+this page can help. Be sure to also check out
+[Sound Dart](/guides/language/sound-dart) for an overview of what "sound
+Dart" means, and how strong mode contributes to making Dart a sound
+language.
+
+## Table of Contents
+
+<ul>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<ul>
+<li><a href="#am-i-in-strong-mode">Am I really in strong mode?</a></li>
+<li><a href="#not-in-strong-mode">I'm not in strong mode and I think I should be</a></li>
+</ul>
+<li><a href="#common-errors">Common errors and warnings</a></li>
+<ul>
+<li><a href="#undefined-member">Undefined member</a></li>
+<li><a href="#invalid-method-override">Invalid method override</a></li>
+<li><a href="#unsound-implicit-downcast">Unsound implicit downcast</a></li>
+<li><a href="#missing-type-arguments">Missing type arguments</a></li>
+<li><a href="#assigning-mismatched-types">Assigning mismatched types</a></li>
+<li><a href="#constructor-initialization-list">Constructor initialization list super() call</a></li>
+</ul>
+<li><a href="#other-resources">Other resources</a></li>
+</ul>
 
 ## Troubleshooting
 
+<a name="am-i-in-strong-mode"></a>
 ### Am I really in strong mode?
 
 If you're not seeing strong mode errors or warnings,
 make sure that you are in strong mode.
 A good test is to add the following code to a file:
 
+<div class="fails-sa" markdown="1">
 {% prettify dart %}
 void test() {
   var fruits = ["apple"];
@@ -22,6 +48,7 @@ void test() {
   int apple = fruit;
 }
 {% endprettify %}
+</div>
 
 If you are in strong mode, you'll see the following warning from the analyzer:
 
@@ -29,10 +56,13 @@ If you are in strong mode, you'll see the following warning from the analyzer:
 [warning] A value of type 'String' can't be assigned to a variable of type 'int'.
 {% endprettify %}
 
+<hr>
+
+<a name="not-in-strong-mode"></a>
 ### I'm not in strong mode and I think I should be
 
 Strong mode is enforced by Dart Analyzer.
-The answer slightly varies depending on whether you are running `dartanalyzer`
+This answer varies slightly depending on whether you are running `dartanalyzer`
 from the command line, or via one of the JetBrains IDEs.
 
 #### Command line analyzer
@@ -73,13 +103,13 @@ For more information on where to put your analysis options file, see
 [the analysis options file](g/guides/language/analysis-options#the-analysis-options-file),
 part of [Customize Static Analysis](/guides/language/analysis-options).
 
-[Pending: Add this info directly to "Create Static Analysis."]
-
+<a name="common-errors"></a>
 ## Common errors and warnings
 
-How to fix some of the errors and warnings you may see when you
-enable strong mode.
+How to fix some of the errors and warnings you may see from the analyzer
+when enabling strong mode.
 
+<a name="undefined-member"></a>
 ### Undefined member
 
 **Error:**
@@ -128,12 +158,13 @@ canvas.context2D;
 
 <hr>
 
+<a name="invalid-method-override"></a>
 ### Invalid method override
 
 **Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
 
 These errors typically occur when a subclass tightens up a method's
-parameter types by specifying a subclass.
+parameter types by specifying a subclass of the original class.
 
 <aside class="alert alert-info" markdown="1">
 **Note:** This warning can also occur when a generic subclass neglects
@@ -157,7 +188,7 @@ abstract class NumberAdder {
 }
 
 class IntAdder extends NumberAdder {
-  int add(int a, int b) => a + b;
+  int add([[highlight]]int[[/highlight]] a, [[highlight]]int[[/highlight]] b) => a + b;
 }
 {% endprettify %}
 </div>
@@ -167,20 +198,24 @@ point values are passed to an IntAdder:
 
 {% prettify dart %}
 NumberAdder adder = new IntAdder(); // Upcast
-adder.add(1.2, 3.4);                // Kaboom!
+adder.add([[highlight]]1.2[[/highlight]], [[highlight]]3.4[[/highlight]]);                // Kaboom!
 {% endprettify %}
+
+If the override were allowed, this code would crash at runtime.
 
 Fix this error by widening the types in the subclass:
 
+<div class="passes-sa" markdown="1">
 {% prettify dart %}
 abstract class NumberAdder {
   num add(num a, num b);
 }
 
 class IntAdder extends NumberAdder {
-  num add(num a, num b) => a + b;
+  num add([[highlight]]num[[/highlight]] a, [[highlight]]num[[/highlight]] b) => a + b;
 }
 {% endprettify %}
+</div>
 
 For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-input-parameter-types-when-overriding-methods-).
 
@@ -199,20 +234,21 @@ abstract class NumberAdder {
 {% endprettify %}
 
 Learn more about the
-[@checked annotation](/guides/language/sound-dart##checked-annotation).
+[@checked annotation](/guides/language/sound-dart#checked-annotation).
 </aside>
 
 <hr>
 
+<a name="unsound-implicit-downcast"></a>
 ### Unsound implicit downcast
 
 **Warning:**
 <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type&gt;</em>.</code>
 
 Implicit downcasts involving `dynamic` will most likely fail at runtime
-in DDC, so the analyzer warns you.
+in DDC, so the analyzer provides a warning.
 
-**Fix:** Provide an explicit type or give the analyzer enough information
+**Fix:** Provide an explicit type, or give the analyzer enough information
 to properly infer the type.
 
 <aside class="alert alert-info" markdown="1">
@@ -227,7 +263,7 @@ For example, the following code generates the warning
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
 var stuff = []; // Runtime type is List<dynamic>.
-stuff.add("Hi");
+stuff.add([[highlight]]"Hi"[[/highlight]]);
 List<String> strings = stuff;
 {% endprettify %}
 </div>
@@ -253,6 +289,8 @@ List<String> strings = stuff;
 </div>
 
 As a last resort, you can cast the type using <code>as <em>Class</em></code>.
+This solution is risker because the cast silences the static error by
+inserting a runtime cast that may fail at runtime.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
@@ -262,18 +300,18 @@ List<String> strings = stuff [[highlight]]as List<String>[[/highlight]];
 {% endprettify %}
 </div>
 
-This cast silences the static error by inserting a runtime cast
-that may fail at runtime. (Currently, only DDC makes strong mode
-runtime checks, but it's coming to other tools.)
+Note: Currently, only DDC makes strong mode
+runtime checks, but it's coming to other tools.
 
 In more complex situations where this warning appears, you may want
-to use a generic method. You can either use existing methods, such
+to use a generic method. You can either use an existing method, such
 as `Iterable.map()`, or you can define your own.
 For more information, see [Using generic methods](/guides/language/language-tour#using-generic-methods)
 in the [language tour](/guides/language/language-tour).
 
 <hr>
 
+<a name="missing-type-arguments"></a>
 ### Missing type arguments
 
 Omitting a type argument when defining a generic subclass can cause one
@@ -292,7 +330,8 @@ the analyzer infers the `dynamic` type. This is likely to cause
 errors like invalid overrides or unsound downcasts.
 
 In the following example, Subclass extends Superclass<T> but doesn't
-specify a type argument.
+specify a type argument. The analyzer infers Subclass&lt;dynamic&gt;
+which results in an invalid override error on `method(int)`.
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -306,9 +345,7 @@ class Subclass extends Superclass {
 {% endprettify %}
 </div>
 
-The analyzer infers Subclass&lt;dynamic&gt; which results in an
-invalid override error on `method(int)`. You can fix this by
-specifying the type on the subclass:
+You can fix this by specifying the type on the subclass:
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
@@ -324,6 +361,7 @@ class Subclass extends Superclass[[highlight]]<int>[[/highlight]] {
 
 <hr>
 
+<a name="assigning-mismatched-types"></a>
 ### Assigning mismatched types
 
 **Warning:** <code>A value of type '&lt;<em>type</em>&gt;' cannot be
@@ -331,7 +369,8 @@ assigned to a variable of type '<em>type</em>'.</code>
 
 This sometimes happens when you create a simple dynamic collection
 and the analyzer Dart infers the type in a way you didn't expect.
-When you later add values of a different type, it triggers a static warning.
+When you later add values of a different type,
+the analyzer produces a warning.
 
 **Fix:** Specify the type explicitly.
 
@@ -349,7 +388,7 @@ void main() {
     'c': 13
   }; // <= inferred to be Map<String, int>
 
-  [[highlight]]map['d'] = 1.5;[[/highlight]]  // but 1.5 is not int!
+  [[highlight]]map['d'] = 1.5;[[/highlight]]  // 1.5 is not int!
 }
 {% endprettify %}
 </div>
@@ -360,7 +399,7 @@ This can be fixed by explicitly defining the map's type to be
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
 void main() {
-  var map = <String,dynamic>{
+  var map = [[highlight]]<String,dynamic>[[/highlight]]{
     'a': 7,
     'b': 11,
     'c': 13
@@ -376,6 +415,7 @@ you can specify the type as `<String,num>`.
 
 <hr>
 
+<a name="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
 **Error:**  <code>super call must be last in an initializer list
@@ -426,7 +466,8 @@ We will eventually support field overrides in strong mode, but DDC does not supp
 Do we have any known issues or bugs to list here?
 {% endcomment %}
 
+<a name="other-resources"></a>
 ## Other resources
 
-The following resources have further information on sound Dart and
-strong mode:
+See [Other resources](/guides/language/sound-dart#other-resources)
+in [Sound Dart](/guides/language/sound-dart) for a complete list.
