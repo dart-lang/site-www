@@ -122,7 +122,7 @@ in the [language tour](/guides/language/language-tour).
 
 Only a few rules have been added to make Dart a sound language.
 Rules for substituting a type with its subtype or supertype are slightly
-different. Rules for using the proper return type and input parameter
+different. Rules for using the proper return type and parameter
 types when overriding methods have been added. See
 [Sound type system](sound-dart#sound-type-system)
 for an explanation of these changes.

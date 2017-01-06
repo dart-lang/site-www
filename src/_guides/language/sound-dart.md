@@ -52,15 +52,16 @@ main() {
 </div>
 
 In classic Dart, this code passes analysis with no errors. Once you enable
-strong mode, a warning appears on `list` (shown in bold) in the call to
+strong mode, a warning appears on `list` (highlighted above) in the call to
 `fn(list)`. The warning states **Unsound implicit cast from List&lt;dynamic&gt;
-to List&lt;int&gt;**. The `var list = []` line creates a list of type
-`dynamic` because it doesn't have enough information to infer a type.
+to List&lt;int&gt;**. The `var list = []` code creates a list of type
+`dynamic` because the static analyzer doesn't have enough information to
+infer a type.
 The `fn` function expects a list of type `int`, causing a mismatch of types.
-When specifying a type annotation on creation of the list, as shown in bold,
-the static analyzer points out that a string can't be assigned to
-the parameter type int.
-the list, as shown in bold:
+When adding a type annotation (`<int>`) on creation of the list
+(highlighted below) the analyzer complains that a string can't be assigned to
+the parameter type `int`. Removing the quotes in `list.add("2")` results
+in code that passes static analysis with no errors or warnings.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
@@ -106,7 +107,7 @@ In classic Dart, the problem occurs at runtime&mdash;fetching a
 exception and the app crashes. For example, the following code
 assigns a list of type `dynamic` (which contains strings) to a list
 of type `int`. Iterating through the list and substracting 10 from
-each item causes a runtime exception since the minus operator isn't
+each item causes a runtime exception because the minus operator isn't
 defined for strings.
 
 <div class="fails-sa" markdown="1">
@@ -122,12 +123,7 @@ main () {
 </div>
 
 Once strong mode is enabled, the analyzer warns you that this assignment
-is a problem and the runtime error is avoided.
-
-New tools in development for the Dart language rely on ahead-of-time (AOT)
-compilation. AOT compiling benefits significantly from strong type
-checking that can be performed at compile time. For this reason,
-the Dart language now offers strong mode.
+is a problem, avoiding the runtime error.
 
 Strong mode enables Dart to have a sound type system. Strong mode Dart
 won't let a `List<dynamic>` pretend to be a `List<int>` and then let
@@ -148,14 +144,14 @@ A sound type system has several benefits:
 
 * More maintainable code.<br>
   With a sound type system, when you change one piece of code, the
-  type system can do a better job of warning you about the other pieces
+  type system can warn you about the other pieces
   of code that just broke.
 
-* Better ahead of time (AOT) compilation.
+* Better ahead of time (AOT) compilation.<br>
   While AOT compilation is possible without strong types, the generated
   code is much less efficient.
 
-* Cleaner JavaScript.
+* Cleaner JavaScript.<br>
   For web apps, strong mode's more restictive typing allows the Dart
   Dev Compiler (DDC) to generate more compact, cleaner JavaScript.
 
@@ -170,21 +166,23 @@ of three pieces:
 
 ### Sound type system
 
-Creating a sound type system requires only a few changes to the code.
+Bringing soundness to Dart required adding only a few rules to the
+Dart language.
 With strong mode enabled, Dart Analyzer enforces three additional rules:
 
 * Use proper return types when overriding methods.
-* Use proper input parameter types when overriding methods.
-* Don't abuse dynamic lists (or other generics).
+* Use proper parameter types when overriding methods.
+* Don't use a dynamic list as a typed list.
 
-The following examples use this type hierarchy:
+Let's see the rules in detail, with examples that use the following
+type hierarchy:
 
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 #### Use proper return types when overriding methods <a name="use-proper-return-types"></a>
 
 <br>
-Define the return type of the method in the superclass to be a proper
+The return type of a method in a subclass must be a proper
 subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
 
@@ -217,15 +215,16 @@ class HoneyBadger {
 {% endprettify %}
 </div>
 
-#### Use proper input parameter types when overriding methods <a name="use-proper-param-types"></a>
+#### Use proper parameter types when overriding methods <a name="use-proper-param-types"></a>
 
 <br>
-Define the input parameter to be the same type, or a supertype of the
-corresponding parameter in the superclass. Don't "tighten" the parameter
-type by replacing the type with a subtype of the original parameter.
+The parameter of an overridden method must have either the same type
+or a supertype of the corresponding parameter in the superclass.
+Don't "tighten" the parameter type by replacing the type with a
+subtype of the original parameter.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** If you have a valid reason to do this, learn about the
+**Note:** If you have a valid reason to use a subtype, use the
 [@checked annotation](#checked-annotation).
 </aside>
 
@@ -250,7 +249,7 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 </div>
 
-The following code tightens the input parameter on the `chase` method
+The following code tightens the parameter on the `chase` method
 from Animal to Mouse, a subclass of Animal.
 
 <div class="fails-sa" markdown="1">
@@ -277,11 +276,16 @@ a.chase(new [[highlight]]Alligator[[/highlight]]());   // NOT TYPE SAFE (or feli
 {% endprettify %}
 </div>
 
-#### Don't abuse dynamic lists (or other generics)
+#### Don't use a dynamic list as a typed list
 
 <br>
-Don't use a dynamic list to hold other types. The same goes for creating
-a dynamic instance of a class and using it to stash other types.
+Strong mode won't allow you to use a dynamic list as a typed list.
+You can use a dynamic list when you want to have a list with
+different kinds of things in it, but strong mode won't let you use
+that list as a typed list.
+
+This rule also applies to instances of generic types.
+
 The following code creates a dynamic list of Dog, and assigns it to
 a list of type Cat.
 
@@ -294,19 +298,17 @@ class Dog extends Animal {}
 class Cat extends Animal {}
 
 void main() {
-  List<Cat> foo = [[highlight]]<dynamic>[[/highlight]][new Dog()];
+  List<Cat> foo = [[highlight]]<dynamic>[[/highlight]][new Dog()]; // Error
+  List<dynamic> bar = <dynamic>[new Dog(), new Cat()]; // OK
 }
 {% endprettify %}
 </div>
 
-Using the dynamic type to "hide" other types is prohibited in strong
-mode Dart and results in analyzer errors.
-
 ## Runtime checks
 
 The changes to Dart's type system as described in this document handle
-most of what's needed to make the Dart language sound. However, the
-Dart Dev Compiler (DDC) has runtime checks to deal with the remaining
+most of what's needed to make the Dart language sound. The Dart Dev
+Compiler (DDC) has runtime checks to deal with the remaining
 dynamism in the language.
 
 For example, the following code passes strong mode checks in the analyzer:
@@ -340,27 +342,30 @@ Actually, no. Strong mode Dart supports type inference. In some cases,
 the analyzer can infer types for fields, methods, local variables,
 and generic type arguments.
 
+When the analyzer can't infer the type, the `dynamic` type is assigned.
+
 ### Field and method inference
 
-Fields and methods which have types left off of them, and which override
-a field or method from the superclass, inherit the type of the
-subclass method or field.
+A field or method that has no specified type and that overrides
+a field or method from the superclass, inherits the type of the
+superclass method or field.
 
-Fields that do not get a type via inheritance will get a type inferred
-for them from their initializer.
+A field that does not have a declared or inherited type but that is declared
+with an initial value, gets an inferred type based on the initial value.
 
 ### Static field inference
 
 Static fields and variables get their types inferred from their
 initializer. Note that inference fails if it encounters a cycle
-(inferring a type for variable `a` directly or indirectly relies
-on having a type for `a`).
+(that is, inferring a type for the variable depends on knowing the
+type of that variable).
 
 ### Local variable inference
 
-Local variables are inferred from their initializer. Subsequent
-assignments are not taken into account. This may mean that too precise
-a type may be inferred. If so, you can add a type annotation.
+Local variable types are inferred from their initializer, if any.
+Subsequent assignments are not taken into account.
+This may mean that too precise a type may be inferred.
+If so, you can add a type annotation.
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -371,7 +376,7 @@ x = 4.0;
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
-num y = 3; // y is defined as num which can be double or int
+num y = 3; // y is defined as num, which can be double or int
 y = 4.0;
 {% endprettify %}
 </div>
@@ -382,7 +387,7 @@ Type arguments to constructor calls and generic method invocations are
 inferred based on a combination of downward information from the context
 of occurrence, and upwards information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
-you can always explicitly pass the type arguments.
+you can always explicitly specify the type arguments.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
@@ -410,9 +415,10 @@ strong mode using one of the following approaches:
 
 ### Use an analysis options file
 
-Create an analysis options file at the package root of your project.
-Besides turning on strong mode, you can also enable any of the
-available linter rules. For more information, see
+By creating
+an analysis options file at the package root of your project,
+you can enable strong mode and any of the available linter rules.
+For more information, see
 [Customize Static Analysis](/guides/language/analysis-options).
 
 ### Call dartanalyzer with strong mode enabled
@@ -420,9 +426,9 @@ available linter rules. For more information, see
 The [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 tool supports several flags related to strong mode:
 
-| --[no-]strong | Enable strong static checks |
-| --no-implicit-casts | Disable implicit casts in strong mode |
-| --no-implicit-dynamic | Disable implicit dynamic |
+| `--[no-]strong` | Enable or disable strong static checks. |
+| `--no-implicit-casts` | Disable implicit casts in strong mode. |
+| `--no-implicit-dynamic` | Disable use of implicit dynamic types. |
 {:.table .table-striped .nowrap}
 
 For more information on these flags, see
@@ -430,33 +436,33 @@ For more information on these flags, see
 
 <aside class="alert alert-info" markdown="1">
 **Note:** An analysis options file in the same directory where you call
-dartanalyzer overrides the command line flag. So, if the analysis options
+`dartanalyzer` overrides the command line flag. So, if the analysis options
 file disables strong mode, you can't enable it using `--strong`.
 </aside>
 
 ### Enable strong mode in DartPad
 
 If you use [DartPad](/tools/dartpad) to write and test code, you can
-enable strong mode by checking the **Strong mode** box in the lower
+enable strong mode by selecting the **Strong mode** box in the lower
 right corner. Note that DartPad doesn't support the implicit casts flag,
 implicit dynamic flag, or enabling linter rules. For this functionality
-you must use DDC or IntelliJ for now.
+you can use DDC or IntelliJ.
 
 ## Substituting types
 
-When you override a method, you are replacing something of one type
-(the old method) with something of a new type (the new method).
+When you override a method, you are replacing something of one type (in the
+old method) with something that might have a new type (in the new method).
 Similarly, when you pass an argument to a function,
-you are replacing something which has one type (a parameter
+you are replacing something that has one type (a parameter
 with a declared type) with something that has another type
-(the actual argument). When can you replace something which
+(the actual argument). When can you replace something that
 has one type with something that has a subtype or a supertype?
 
-When substituting types, it helps to think in terms of _producers_
-and _consumers_. A consumer absorbs a type and a producer generates a type.
+When substituting types, it helps to think in terms of _consumers_
+and _producers_. A consumer absorbs a type and a producer generates a type.
 
-**You can replace a consumer's type with a supertype. You can replace
-a producer's type with a subtype.**
+**You can replace a consumer's type with a supertype and a producer's
+type with a subtype.**
 
 Let's look at examples of simple type assignment and assignment with
 generic types.
@@ -582,18 +588,19 @@ For example:
 <img src="images/consumer-producer-methods.png" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
 
 For a consumer (such as the `chase(Animal)` method), you can replace
-the input parameter type with a supertype. For a producer (such as
+the parameter type with a supertype. For a producer (such as
 the `parent` getter method), you can replace the return type with
 a subtype.
 
 For more information, see
 [Use proper return types when overriding methods](#use-proper-return-types)
-and [Use proper input parameter types when overriding methods](#use-proper-param-types).
+and [Use proper parameter types when overriding methods](#use-proper-param-types).
 
-## The @checked annotation <a name="checked-annotation"></a>
+<a name="checked-annotation"></a>
+## The @checked annotation
 
 Some (rarely used) coding patterns rely on tightening a type by overriding
-an input parameter's type with a subtype, which is illegal in strong
+a parameter's type with a subtype, which is illegal in strong
 mode Dart. In this case, you can use the `@checked` annotation to
 tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
@@ -601,7 +608,10 @@ parameter type at runtime.
 
 <aside class="alert alert-info" markdown="1">
 **Note:** Don't use `@checked` in DartPad. DartPad doesn't support
-importing packages and `@checked` comes from package:meta.
+importing packages, and `@checked` comes from package:meta.
+If you try to use it, DartPad raises the following error:
+**Annotation can be only constant
+variable or constant constructor invocation.**
 </aside>
 
 The following shows how you might use `@checked`:
@@ -616,12 +626,13 @@ class Animal {
 class Mouse extends Animal {}
 
 class Cat extends Animal {
-  void chase(@checked Mouse x) {}
+  void chase([[highlight]]@checked[[/highlight]] Mouse x) {}
 }
 {% endprettify %}
 
-The annotation applies to a single parameter and can be placed on the
-superclass or subclass method.
+Although this example shows using `@checked` in the subtype,
+the `@checked` annotation applies to a single parameter and can be
+placed in either the superclass or the subclass method.
 Usually the superclass method is the best place to put it.
 The `@checked` annotation is also supported on setters and fields.
 
