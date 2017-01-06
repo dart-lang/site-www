@@ -173,7 +173,8 @@ type hierarchy:
 
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
-#### Use proper return types when overriding methods <a name="use-proper-return-types"></a>
+<a name="use-proper-return-types"></a>
+#### Use proper return types when overriding methods
 
 <br>
 The return type of a method in a subclass must be a proper
@@ -209,7 +210,8 @@ class HoneyBadger {
 {% endprettify %}
 </div>
 
-#### Use proper parameter types when overriding methods <a name="use-proper-param-types"></a>
+<a name="use-proper-param-types"></a>
+#### Use proper parameter types when overriding methods
 
 <br>
 The parameter of an overridden method must have either the same type

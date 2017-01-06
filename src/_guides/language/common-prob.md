@@ -225,7 +225,7 @@ class IntAdder extends NumberAdder {
 {% endprettify %}
 </div>
 
-For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-input-parameter-types-when-overriding-methods-).
+For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-param-types).
 
 <aside class="alert alert-info" markdown="1">
 **Note:** If you have a valid reason to use a subtype, you can use the

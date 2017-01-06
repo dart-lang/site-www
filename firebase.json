@@ -131,6 +131,11 @@
         "type": 301
       },
       {
+        "source": "/articles/idiomatic-dart",
+        "destination": "/guides/language/effective-dart",
+        "type": 301
+      },
+      {
         "source": "/articles/idiomatic-dart/**",
         "destination": "/guides/language/effective-dart",
         "type": 301
@@ -203,6 +208,11 @@
       {
         "source": "/articles/snapshots/",
         "destination": "/articles/dart-vm/snapshots",
+        "type": 301
+      },
+      {
+        "source": "/articles/style-guide",
+        "destination": "/guides/language/effective-dart/style",
         "type": 301
       },
       {
@@ -461,8 +471,13 @@
         "type": 301
       },
       {
-        "source": "/docs/dart-up-and-running/contents/ch04/ch04-tools-dart2js",
+        "source": "/docs/dart-up-and-running/contents/ch04-tools-dart2js",
         "destination": "https://webdev.dartlang.org/tools/dart2js",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/contents/ch04-tools-dart_analyzer",
+        "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer",
         "type": 301
       },
       {
@@ -496,8 +511,18 @@
         "type": 301
       },
       {
+        "source": "/docs/language-tour",
+        "destination": "/guides/language/language-tour",
+        "type": 301
+      },
+      {
         "source": "/docs/pub-package-manager/pubspec/**",
         "destination": "/tools/pub/pubspec",
+        "type": 301
+      },
+      {
+        "source": "/docs/serverguide",
+        "destination": "https://dart-lang.github.io/server/",
         "type": 301
       },
       {
@@ -741,6 +766,11 @@
         "type": 301
       },
       {
+        "source": "/guides/language/library-tour",
+        "destination": "/guides/libraries/library-tour",
+        "type": 301
+      },
+      {
         "source": "/hackathons/**",
         "destination": "/",
         "type": 301
@@ -906,6 +936,11 @@
         "type": 301
       },
       {
+        "source": "/samples/video",
+        "destination": "/samples",
+        "type": 301
+      },
+      {
         "source": "/server/**",
         "destination": "https://dart-lang.github.io/server/",
         "type": 301
@@ -1012,6 +1047,11 @@
       },
       {
         "source": "/tools/eclipse-plugin/",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/tools/editor",
         "destination": "/tools",
         "type": 301
       },
