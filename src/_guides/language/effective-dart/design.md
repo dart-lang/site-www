@@ -447,11 +447,11 @@ library instead.
 <div class="good">
 {% prettify dart %}
 class Color {
-  const red = '#f00';
-  const green = '#0f0';
-  const blue = '#00f';
-  const black = '#000';
-  const white = '#fff';
+  static const red = '#f00';
+  static const green = '#0f0';
+  static const blue = '#00f';
+  static const black = '#000';
+  static const white = '#fff';
 }
 {% endprettify %}
 </div>
