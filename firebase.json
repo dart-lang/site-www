@@ -467,7 +467,7 @@
       },
       {
         "source": "/docs/dart-up-and-running/contents/ch03",
-        "destination": "/guides/language/library-tour",
+        "destination": "/guides/libraries/library-tour",
         "type": 301
       },
       {
