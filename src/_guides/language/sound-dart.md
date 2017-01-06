@@ -8,12 +8,6 @@ This guide tells you why and how to write sound (type safe) Dart code.
 You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
 
-{% comment %}
-Not ready yet...
-If you are already using strong mode Dart, you might also check out
-[Sound Dart: Common Problems](/guides/language/sound-dart-common-problems).
-{% endcomment %}
-
 <aside class="alert alert-info" markdown="1">
 **Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
 are sometimes used interchangeably. _Strong mode_ is Dart's implementation
@@ -224,8 +218,8 @@ Don't "tighten" the parameter type by replacing the type with a
 subtype of the original parameter.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** If you have a valid reason to use a subtype, use the
-[@checked annotation](#checked-annotation).
+**Note:** If you have a valid reason to use a subtype, you can use the
+[@checked annotation](/guides/language/common-prob#checked-annotation).
 </aside>
 
 Consider the `chase(Animal)` method for the Animal class:
@@ -287,7 +281,7 @@ that list as a typed list.
 This rule also applies to instances of generic types.
 
 The following code creates a dynamic list of Dog, and assigns it to
-a list of type Cat.
+a list of type Cat, which generates an error during static analysis.
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -596,46 +590,6 @@ For more information, see
 [Use proper return types when overriding methods](#use-proper-return-types)
 and [Use proper parameter types when overriding methods](#use-proper-param-types).
 
-<a name="checked-annotation"></a>
-## The @checked annotation
-
-Some (rarely used) coding patterns rely on tightening a type by overriding
-a parameter's type with a subtype, which is illegal in strong
-mode Dart. In this case, you can use the `@checked` annotation to
-tell the analyzer that you are doing this intentionally.
-This removes the static error and instead checks for an invalid
-parameter type at runtime.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** Don't use `@checked` in DartPad. DartPad doesn't support
-importing packages, and `@checked` comes from package:meta.
-If you try to use it, DartPad raises the following error:
-**Annotation can be only constant
-variable or constant constructor invocation.**
-</aside>
-
-The following shows how you might use `@checked`:
-
-{% prettify dart %}
-import 'package:meta/meta.dart';
-
-class Animal {
-  void chase(Animal x) {}
-}
-
-class Mouse extends Animal {}
-
-class Cat extends Animal {
-  void chase([[highlight]]@checked[[/highlight]] Mouse x) {}
-}
-{% endprettify %}
-
-Although this example shows using `@checked` in the subtype,
-the `@checked` annotation applies to a single parameter and can be
-placed in either the superclass or the subclass method.
-Usually the superclass method is the best place to put it.
-The `@checked` annotation is also supported on setters and fields.
-
 ## Strong mode vs. checked mode
 
 You may be familiar with the Dart compiler's checked mode feature.
@@ -698,6 +652,7 @@ The following resources have further information on sound Dart and
 strong mode:
 
 * [Sound Dart FAQ](/guides/language/sound-faq) - Questions and answers about
+* [Sound Dart: Common Problems](/guides/language/common-prob) - Errors you may encounter when writing sound Dart code, and how to fix them.
   writing sound Dart code.
 * [Sound Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit

@@ -5,21 +5,23 @@ description: "Common problems you may have when converting to strong mode and ho
 toc: false
 ---
 
-If you are having problems converting your code to strong mode,
+If you're having problems converting your code to strong mode,
 this page can help. Be sure to also check out
 [Sound Dart](/guides/language/sound-dart) for an overview of what "sound
 Dart" means, and how strong mode contributes to making Dart a sound
 language.
 
-## Table of Contents
+## Contents
+
+<p>Troubleshooting:</p>
 
 <ul>
-<li><a href="#troubleshooting">Troubleshooting</a></li>
-<ul>
-<li><a href="#am-i-in-strong-mode">Am I really in strong mode?</a></li>
-<li><a href="#not-in-strong-mode">I'm not in strong mode and I think I should be</a></li>
+<li><a href="#am-i-using-strong-mode">Am I really using strong mode?</a></li>
+<li><a href="#not-using-strong-mode">I'm not using strong mode and I think I should be</a></li>
 </ul>
-<li><a href="#common-errors">Common errors and warnings</a></li>
+
+<p>Common errors and warnings:</p>
+
 <ul>
 <li><a href="#undefined-member">Undefined member</a></li>
 <li><a href="#invalid-method-override">Invalid method override</a></li>
@@ -28,42 +30,48 @@ language.
 <li><a href="#assigning-mismatched-types">Assigning mismatched types</a></li>
 <li><a href="#constructor-initialization-list">Constructor initialization list super() call</a></li>
 </ul>
-<li><a href="#other-resources">Other resources</a></li>
+
+<p>Appendix:</p>
+
+<ul>
+<li><a href="#checked-annotation">The @checked annotation</a></li>
 </ul>
+
+For a complete list of sources about strong mode and sound Dart,
+see [other resources](/guides/language/sound-dart#other-resources)
+in [Sound Dart](/guides/language/sound-dart).
 
 ## Troubleshooting
 
-<a name="am-i-in-strong-mode"></a>
-### Am I really in strong mode?
+<a name="am-i-using-strong-mode"></a>
+### Am I really using strong mode?
 
 If you're not seeing strong mode errors or warnings,
-make sure that you are in strong mode.
+make sure that you're using strong mode.
 A good test is to add the following code to a file:
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
 void test() {
-  var fruits = ["apple"];
-  var fruit = fruits[0];
-  int apple = fruit;
+  bool b = [0][0];
 }
 {% endprettify %}
 </div>
 
-If you are in strong mode, you'll see the following warning from the analyzer:
+If you're using strong mode, you'll see the following warning from the analyzer:
 
 {% prettify none %}
-[warning] A value of type 'String' can't be assigned to a variable of type 'int'.
+[warning] A value of type 'int' can't be assigned to a variable of type 'bool'.
 {% endprettify %}
 
 <hr>
 
-<a name="not-in-strong-mode"></a>
-### I'm not in strong mode and I think I should be
+<a name="not-using-strong-mode"></a>
+### I'm not using strong mode and I think I should be
 
 Strong mode is enforced by Dart Analyzer.
-This answer varies slightly depending on whether you are running `dartanalyzer`
-from the command line, or via one of the JetBrains IDEs.
+How you troubleshoot strong mode depends on whether you are running
+`dartanalyzer` from the command line, or via one of the JetBrains IDEs.
 
 #### Command line analyzer
 
@@ -100,7 +108,7 @@ IntelliJ
   above the content roots, shown in bold.
 
 For more information on where to put your analysis options file, see
-[the analysis options file](g/guides/language/analysis-options#the-analysis-options-file),
+[the analysis options file](/guides/language/analysis-options#the-analysis-options-file),
 part of [Customize Static Analysis](/guides/language/analysis-options).
 
 <a name="common-errors"></a>
@@ -220,21 +228,8 @@ class IntAdder extends NumberAdder {
 For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-input-parameter-types-when-overriding-methods-).
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-Some coding patterns require this functionality.
-If you have a valid reason to do this,
-use the `@checked` annotation. For example:
-
-{% prettify dart %}
-[[highlight]]import 'package:meta/meta.dart';[[/highlight]]
-
-abstract class NumberAdder {
-  num add([[highlight]]@checked[[/highlight]] num a, [[highlight]]@checked[[/highlight]] num b);
-}
-{% endprettify %}
-
-Learn more about the
-[@checked annotation](/guides/language/sound-dart#checked-annotation).
+**Note:** If you have a valid reason to use a subtype, you can use the
+[@checked annotation](/guides/language/common-prob#checked-annotation).
 </aside>
 
 <hr>
@@ -258,7 +253,7 @@ to specify a type. For more information, see
 </aside>
 
 For example, the following code generates the warning
-"<code>Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;</code>".
+"Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;".
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -300,8 +295,10 @@ List<String> strings = stuff [[highlight]]as List<String>[[/highlight]];
 {% endprettify %}
 </div>
 
-Note: Currently, only DDC makes strong mode
-runtime checks, but it's coming to other tools.
+<aside class="alert alert-info" markdown="1">
+**Note:** Currently, only DDC makes strong mode
+runtime checks, but they're coming to other tools.
+</aside>
 
 In more complex situations where this warning appears, you may want
 to use a generic method. You can either use an existing method, such
@@ -319,7 +316,7 @@ of two kinds of problems during static analysis:
 
 **Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
 
-OR
+or
 
 **Warning:** <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type</em>&gt;.</code>
 
@@ -329,8 +326,8 @@ When a generic subclass neglects to specify a type argument,
 the analyzer infers the `dynamic` type. This is likely to cause
 errors like invalid overrides or unsound downcasts.
 
-In the following example, Subclass extends Superclass<T> but doesn't
-specify a type argument. The analyzer infers Subclass&lt;dynamic&gt;
+In the following example, `Subclass` extends `Superclass<T>` but doesn't
+specify a type argument. The analyzer infers `Subclass<dynamic>`,
 which results in an invalid override error on `method(int)`.
 
 <div class="fails-sa" markdown="1">
@@ -375,9 +372,9 @@ the analyzer produces a warning.
 **Fix:** Specify the type explicitly.
 
 For example, the following code initializes a map with several
-(Sting,integer) pairs. The analyzer infers that map to be of type
-<String,int> but the code assumes <String,dynamic>.
-When the code then adds a (String,float) pair, the analyzer complains.
+(String, integer) pairs. The analyzer infers that map to be of type
+`<String, int>` but the code assumes `<String, dynamic>`.
+When the code then adds a (String, float) pair, the analyzer complains.
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
@@ -394,12 +391,12 @@ void main() {
 </div>
 
 This can be fixed by explicitly defining the map's type to be
-`<String,dynamic>`.
+`<String, dynamic>`.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
 void main() {
-  var map = [[highlight]]<String,dynamic>[[/highlight]]{
+  var map = [[highlight]]<String, dynamic>[[/highlight]]{
     'a': 7,
     'b': 11,
     'c': 13
@@ -411,7 +408,7 @@ void main() {
 </div>
 
 Alternatively, if you only want this map to accept integers and floats,
-you can specify the type as `<String,num>`.
+you can specify the type as `<String, num>`.
 
 <hr>
 
@@ -432,8 +429,8 @@ The following example generates an error in strong mode Dart:
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
-  : _name = name,
-    [[highlight]]super[[/highlight]](food) { ... }
+  : [[highlight]]super[[/highlight]](food),
+    _name = name { ... }
 {% endprettify %}
 </div>
 
@@ -442,8 +439,8 @@ Fix the error by moving the `super()` call:
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
-  : [[highlight]]super[[/highlight]](food),
-    _name = name { ... }
+  : _name = name,
+    [[highlight]]super[[/highlight]](food) { ... }
 {% endprettify %}
 </div>
 
@@ -466,8 +463,52 @@ We will eventually support field overrides in strong mode, but DDC does not supp
 Do we have any known issues or bugs to list here?
 {% endcomment %}
 
-<a name="other-resources"></a>
-## Other resources
+<a name="appendix"></a>
+## Appendix
 
-See [Other resources](/guides/language/sound-dart#other-resources)
-in [Sound Dart](/guides/language/sound-dart) for a complete list.
+<a name="checked-annotation"></a>
+### The @checked annotaton
+
+Some (rarely used) coding patterns rely on tightening a type
+by overriding a parameter's type with a subtype, which is illegal in strong
+mode Dart. In this case, you can use the `@checked` annotation to
+tell the analyzer that you are doing this intentionally.
+This removes the static error and instead checks for an invalid
+parameter type at runtime.
+
+<aside class="alert alert-info" markdown="1">
+**Note:** Don't use `@checked` in DartPad. DartPad doesn't support
+importing packages, and `@checked` comes from package:meta.
+If you try to use it, DartPad raises the following error:
+**Annotation can be only constant
+variable or constant constructor invocation.**
+</aside>
+
+The following shows how you might use `@checked`:
+
+{% prettify dart %}
+[[highlight]]import 'package:meta/meta.dart';[[/highlight]]
+
+class Animal {
+  void chase(Animal x) {}
+}
+
+class Mouse extends Animal {}
+
+class Cat extends Animal {
+  void chase([[highlight]]@checked[[/highlight]] Mouse x) {}
+}
+{% endprettify %}
+
+Although this example shows using `@checked` in the subtype,
+the `@checked` annotation can be placed in either the superclass
+or the subclass method.
+Usually the superclass method is the best place to put it.
+The `@checked` annotation applies to a single parameter and is
+also supported on setters and fields.
+
+<aside class="alert alert-info" markdown="1">
+**Note:** The `@checked` annotation may be renamed `covariant` (without
+the `@`) in a future release. For more information, see
+[Issue 27486](https://github.com/dart-lang/sdk/issues/27486).
+</aside>
