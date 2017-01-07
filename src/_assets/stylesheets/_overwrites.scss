@@ -346,7 +346,13 @@ body.homepage .get-started-section {
 
 /* Don't display navigation aids when printing */
 @media print {
-	#page-header, #sidenav, #subnav, #page-footer, .banner {
+	#page-header, #sidenav, #subnav, #page-footer, .banner, #toc {
 		display:none !important;
 	}
+  #page-content {
+    > article {
+      width: auto;
+      margin: 0;
+    }
+  }
 }
