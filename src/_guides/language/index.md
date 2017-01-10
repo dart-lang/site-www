@@ -36,7 +36,8 @@ These two resources are popular with both beginning Dartisans and experts.
     static typing.
 </li>
 
-<li markdown="1"> [Sound Dart: Common Problems](/guides/language/sound-problems)<br>
+<li markdown="1"> [Sound Dart: Fixing Common
+   Problems](/guides/language/sound-problems)<br>
    How to fix errors and warnings you may encounter when writing sound
    Dart code.
 </li>

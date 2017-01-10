@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: "Sound Dart: Common Problems"
+title: "Sound Dart: Fixing Common Problems"
 description: "Common problems you may have when converting to strong mode and how to fix them."
 toc: false
 ---

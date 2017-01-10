@@ -197,9 +197,9 @@ It depends. A lot of well written code is already strong mode clean
 without changes. When changes are needed, they often involve adding
 annotations to Maps and Lists.
 Often, sound code is a matter of making good use of generic methods.
-{% comment %}
-xxx: When Common Problems are done, link to that.
-{% endcomment %}
+To see a list of common errors and warnings you might see when
+migrating your code to sound Dart, see
+[Sound Dart: Fixing Common Problems](/guides/language/sound-problems)
 
 <a name="can-i-mix-code"></a>
 ### Can some of my code in my app/library be strong mode, and other code be not-strong-mode?
