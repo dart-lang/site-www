@@ -23,29 +23,47 @@ These two resources are popular with both beginning Dartisans and experts.
 
 ## Other resources
 
-[Sound Dart](/guides/language/sound-dart)
-: How and why to write sound Dart code, and how to use strong mode to
-  enable soundness.
+<ul markdown="1">
+<li markdown="1"> [Sound Dart](/guides/language/sound-dart)<br>
+    How and why to write sound Dart code, and how to use strong mode to
+    enable soundness.
+</li>
 
-[Sound Dart FAQ](/guides/language/sound-faq)
-: A list of common questions for those who are interested in stronger
-  static typing.
+<ul markdown="1">
 
-[Sound Dart: Common Problems](/guides/language/common-prob)
-: A list of errors and warnings you may encounter when writing sound
-  Dart code, and how to fix them.
+<li markdown="1"> [Sound Dart: FAQ](/guides/language/sound-faq)<br>
+    A list of common questions for those who are interested in stronger
+    static typing.
+</li>
 
-[Customize Static Analysis](/guides/language/analysis-options)
-: A guide on customizing the analyzer using an analysis_options file.
+<li markdown="1"> [Sound Dart: Common Problems](/guides/language/sound-problems)<br>
+   How to fix errors and warnings you may encounter when writing sound
+   Dart code.
+</li>
+</ul>
 
-[Asynchronous Programming: Futures](/tutorials/language/futures)
-: A beginner's guide to handling asynchronous programming in Dart.
+<li markdown="1"> [Customize Static Analysis](/guides/language/analysis-options)<br>
+    A guide on customizing the analyzer using an analysis_options file.
+</li>
 
-[Asynchronous Programming: Streams](/tutorials/language/streams)
-: A beginner's guide to handling sequences of asynchronous events.
+<li markdown="1">Asynchronous programming
 
-[Language articles](/articles/language)
-: Articles about language features such as mixins and asynchrony support.
+<ul markdown="1">
+<li markdown="1">[Futures](/tutorials/language/futures)<br>
+    A beginner's guide to handling asynchronous programming in Dart.
+</li>
 
-[Specification](/guides/language/spec)
-: A definitive, highly technical description of the Dart language.
+<li markdown="1">[Streams](/tutorials/language/streams)<br>
+    A beginner's guide to handling sequences of asynchronous events.
+</li>
+</ul>
+</li>
+
+<li markdown="1">[Language articles](/articles/language)<br>
+    Articles about language features such as mixins and asynchrony support.
+</li>
+
+<li markdown="1">[Specification](/guides/language/spec)<br>
+    A definitive, highly technical description of the Dart language.
+</li>
+</ul>

@@ -221,7 +221,7 @@ subtype of the original parameter.
 
 <aside class="alert alert-info" markdown="1">
 **Note:** If you have a valid reason to use a subtype, you can use the
-[@checked annotation](/guides/language/common-prob#checked-annotation).
+[@checked annotation](/guides/language/sound-problems#checked-annotation).
 </aside>
 
 Consider the `chase(Animal)` method for the Animal class:
@@ -654,7 +654,7 @@ The following resources have further information on sound Dart and
 strong mode:
 
 * [Sound Dart FAQ](/guides/language/sound-faq) - Questions and answers about
-* [Sound Dart: Common Problems](/guides/language/common-prob) - Errors you may encounter when writing sound Dart code, and how to fix them.
+* [Sound Dart: Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
   writing sound Dart code.
 * [Sound Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit

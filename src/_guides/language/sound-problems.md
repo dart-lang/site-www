@@ -229,7 +229,7 @@ For more information, see [Use proper input parameter types when overriding meth
 
 <aside class="alert alert-info" markdown="1">
 **Note:** If you have a valid reason to use a subtype, you can use the
-[@checked annotation](/guides/language/common-prob#checked-annotation).
+[@checked annotation](/guides/language/sound-problems#checked-annotation).
 </aside>
 
 <hr>

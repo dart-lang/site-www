@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: "Sound Dart FAQ"
+title: "Sound Dart: FAQ"
 description: "Questions and answers on how and why to write sound Dart code."
 toc: false
 ---
