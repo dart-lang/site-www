@@ -766,6 +766,11 @@
         "type": 301
       },
       {
+        "source": "/guides/language/common-prob",
+        "destination": "/guides/language/sound-problems",
+        "type": 301
+      },
+      {
         "source": "/guides/language/library-tour",
         "destination": "/guides/libraries/library-tour",
         "type": 301
