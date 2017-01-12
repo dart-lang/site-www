@@ -83,15 +83,19 @@ DartPad url: https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19
 
 ## What is soundness?
 
-Soundness is the ability for a compiler to catch every error that may
-happen at runtime. In a sound language, the possible types of all
-values are known statically and guaranteed to be the same types at
-runtime.
+*Soundness* is about ensuring your program can't get into certain
+invalid states. A sound *type system* means you can never get into
+a state where an expression evaluates to a value that doesn't match
+the expression's static type. For example, if an expression's static
+type is `String`, at runtime you are guaranteed to only get a string
+when you evaluate it.
 
-In Dart, if the static type of an expression is `int`, once you evaluate
-the expression to a value, you are guaranteed to either get an `int` or
-`null`. Dart will ensure that your code works with both an `int` or
-`null`.
+Strong mode, like the type systems in Java and C# is sound. It
+enforces that soundness using a combination of static checking
+(compile errors) and runtime checks. For example, assigning a `String`
+to `int` is a compile error. Casting an `Object` to a string using
+`as String` will fail with a runtime error if the object isn't a
+string.
 
 Dart was created as an optionally typed language and is not sound.
 For example, it is valid to create a list in Dart that contains
