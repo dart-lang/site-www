@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/dart-lang/site-www.svg?branch=master)](https://travis-ci.org/dart-lang/site-www)
 &nbsp;&nbsp;
-[![Join the chat at https://gitter.im/dart-lang/site-www](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dart-lang/site-www?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The www.dartlang.org site. Built with
 [Jekyll](https://github.com/mojombo/jekyll)
