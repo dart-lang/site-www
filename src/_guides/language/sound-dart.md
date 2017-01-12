@@ -87,7 +87,7 @@ Soundness is about the relationship between the code that you write and
 the values that show up in the code at runtime. In a sound language,
 if the static type of an expression is `int`, once you evaluate the
 experssion to a value, you are guaranteed to get an `int` and nothing
-else (except possibly null).
+else.
 
 Dart was created as an optionally typed language and is not sound.
 For example, it is valid to create a list in Dart that contains
