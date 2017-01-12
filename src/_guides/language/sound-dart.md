@@ -90,7 +90,7 @@ the expression's static type. For example, if an expression's static
 type is `String`, at runtime you are guaranteed to only get a string
 when you evaluate it.
 
-Strong mode, like the type systems in Java and C# is sound. It
+Strong mode, like the type systems in Java and C#, is sound. It
 enforces that soundness using a combination of static checking
 (compile errors) and runtime checks. For example, assigning a `String`
 to `int` is a compile error. Casting an `Object` to a string using
