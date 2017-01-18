@@ -661,20 +661,24 @@ numerous errors when analyzed under strong mode.
 The following resources have further information on sound Dart and
 strong mode:
 
-* [Sound Dart FAQ](/guides/language/sound-faq) - Questions and answers about
-* [Sound Dart: Fixing Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
+* [Sound Dart: FAQ](/guides/language/sound-faq) - Questions and answers about
   writing sound Dart code.
+* [Sound Dart: Fixing Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
 * [Sound Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
-  Peterson's talk from 2016 Dart Summit
-* [Customize Static Analysis](/guides/language/analysis-options) - how
+  Peterson's talk from 2016 Dart Summit.
+* [Customize Static Analysis](/guides/language/analysis-options) - How
   to set up and customize the analyzer and linter using an analysis
-  options file
+  options file.
 
-The next four documents are part of the Dart Dev Compiler (DDC) documentation,
+The next few documents are part of the Dart Dev Compiler (DDC) documentation,
 but most of the information applies to anyone using strong mode Dart:
 
-* [Strong Mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md) - motivation for strong mode Dart
-* [Strong Mode Static Checking](https://github.com/dart-lang/dev_compiler/blob/master/doc/STATIC_SAFETY.md) - type inference in strong mode Dart
-* [Strong Mode in the Dart Dev Compiler](https://chromium.googlesource.com/external/github.com/dart-lang/dev_compiler/+/refs/heads/master/doc/RUNTIME_SAFETY.md) - runtime checks in DDC
-* [Prototype Syntax for Generic Methods](https://github.com/dart-lang/dev_compiler/blob/master/doc/GENERIC_METHODS.md) - generic methods were recently introduced to Dart and make it easier to write sound code
+* [Strong Mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md) -
+  Motivation for strong mode Dart.
+* [Strong Mode Static Checking](https://github.com/dart-lang/dev_compiler/blob/master/doc/STATIC_SAFETY.md) -
+  Type inference in strong mode Dart.
+* [Strong Mode in the Dart Dev Compiler](https://chromium.googlesource.com/external/github.com/dart-lang/dev_compiler/+/refs/heads/master/doc/RUNTIME_SAFETY.md) -
+  Runtime checks in DDC.
+* [Prototype Syntax for Generic Methods](https://github.com/dart-lang/dev_compiler/blob/master/doc/GENERIC_METHODS.md) -
+  Proposed syntax for generic methods, which make it easier to write sound code.
 
