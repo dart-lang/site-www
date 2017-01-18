@@ -4,10 +4,20 @@ title: "Why Dart Types Are Optional and Unsound"
 description: "A review of why Dart has optional static type annotations."
 written: 2011-12-01
 category: design-decisions
+obsolete: true
 ---
 
 _Written by Eli Brandt<br>
 December 2011_
+
+<aside class="alert alert-warning" markdown="1">
+**Note:**
+This article describes classic Dart and
+doesn't reflect new work on a sound type system for Dart.
+For more recent information,
+see [Sound Dart](/guides/language/sound-dart)
+and [Sound Dart: FAQ](/guides/language/sound-faq).
+</aside>
 
 Dart uses types in a way that might seem strange.  Most popular languages
 that offer a type system use it very differently.  If you're familiar with
