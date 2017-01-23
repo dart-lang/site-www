@@ -744,9 +744,9 @@ Future<bool> install(PackageId id, String destination) {
 With types, all of this is clarified.
 
 
-### DON'T specify that a setter returns `void`.
+### DON'T specify a return type for a setter.
 
-Although the `void` type is technically correct, it's pointless noise.
+The type system infers `void` for all setters automatically.
 
 <div class="bad">
 {% prettify dart %}
