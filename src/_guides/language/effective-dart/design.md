@@ -743,6 +743,24 @@ Future<bool> install(PackageId id, String destination) {
 
 With types, all of this is clarified.
 
+
+### DON'T specify that a setter returns `void`.
+
+Although the `void` type is technically correct, it's pointless noise.
+
+<div class="bad">
+{% prettify dart %}
+void set foo(Foo value) {...}
+{% endprettify %}
+</div>
+
+<div class="good">
+{% prettify dart %}
+set foo(Foo value) {...}
+{% endprettify %}
+</div>
+
+
 ### PREFER type annotating private declarations.
 
 Type annotations on your public API help *users* of your code. Nearly as
