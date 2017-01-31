@@ -147,7 +147,7 @@ method invocation, as the following table shows.
 <tr>
   <th>&nbsp;</th><th>x.y</th><th>x.y = e</th><th>x.y(...)</th>
 </tr>
-</tr>
+<tr>
   <th align="left">isMethod</th>
   <td class="false"> false </td> <!-- x.y -->
   <td class="false"> false </td> <!-- x.y = e -->
