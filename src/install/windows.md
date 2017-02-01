@@ -13,8 +13,16 @@ Don't want to use Chocolatey or a Windows installer?
 Another option is
 [installing Dart manually](/install/archive).
 
-* [Installing using Chocolatey](#chocolatey)
 * [Using a third-party installer](#installer)
+* [Installing using Chocolatey](#chocolatey)
+
+## Using a third-party installer {#installer}
+
+A 
+[Dart SDK installer for Windows](http://www.gekorm.com/dart-windows/)
+is available and supported by the community.
+You can use the wizard to install stable or dev versions of
+the Dart SDK and Dartium.
 
 ## Installing using Chocolatey {#chocolatey}
 
@@ -62,11 +70,3 @@ For more information on Chocolatey support for Dart, see:
   on [chocolatey.org](https://chocolatey.org/)
 * [Blog post](http://divingintodart.blogspot.co.uk/2015/05/chocolatey-dart-packages-for-windows-110.html)
   on [Diving Into Dart](http://divingintodart.blogspot.co.uk/)
-
-## Using a third-party installer {#installer}
-
-A
-[Dart SDK installer for Windows](http://www.gekorm.com/dart-windows/)
-is available and supported by the community.
-You can use the wizard to install stable or dev versions of
-the Dart SDK and Dartium.
