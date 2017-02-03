@@ -213,4 +213,6 @@ players' teams. Build with polymer.dart and StageXL.
 : A Secret Santa application. You can create Events, setup your Profile and
 Gifts and invite friends. Build with Angular 2 Dart (client) and Shelf (server).
 
+[ListShine](https://www.listshine.com)
+: Email Marketing Software powered by Dart (client).
 </div>
