@@ -350,7 +350,7 @@ map.containsValue(value)
 
 ## Libraries
 
-The underscore character ( `_` ) to indicates that a member is private to its library.
+The underscore character ( `_` ) indicates that a member is private to its library.
 This distinction is enforced by the Dart tools.
 
 ### PREFER making declarations private.
