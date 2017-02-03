@@ -939,9 +939,15 @@ pass later one. You're better off using named arguments for that.
 
 <div class="good">
 {% prettify dart %}
-new String.fromCharCodes(Iterable source, [int start = 0, int end])
-new DateTime(year, month, day, [hours, minutes, seconds, milliseconds])
-new Duration({days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 0})
+String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end])
+DateTime(int year,
+         [int month = 1,
+          int day = 1,
+          int hour = 0,
+          int minute = 0,
+          int second = 0,
+          int millisecond = 0,
+          int microsecond = 0])
 {% endprettify %}
 </div>
 
