@@ -102,7 +102,7 @@ It's especially useful when functions are passed as arguments,
 but it also means that Hello World can be made even [shorter](https://gist.github.com/filiph/8a5e3e845acdafe2ea928fd257a46859).
 
 {% prettify dart %}
-flybyObjects.where((name) => name.contains('anus')).forEach(print);
+flybyObjects.where((name) => name.contains('turn')).forEach(print);
 {% endprettify %}
 
 Also note that in the example above, the top-level function `print` is provided as an argument.
