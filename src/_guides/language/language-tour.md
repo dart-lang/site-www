@@ -162,8 +162,7 @@ mind:
 The following table lists the words that the Dart language treats specially.
 
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
-{% assign lrw = '&nbsp;<sup title="limited reserved word for asynchrony support" alt="limited reserved word for asynchrony support">2</sup>' %}
-{% assign lrw2 = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+{% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
 
 | abstract{{bii}}   | deferred{{bii}}   | if                | super             |
 | as{{bii}}         | do                | implements{{bii}} | switch            |
@@ -177,17 +176,15 @@ The following table lists the words that the Dart language treats specially.
 | class             | false             | part{{bii}}       | void              |
 | const             | final             | rethrow           | while             |
 | continue          | finally           | return            | with              |
-| covariant{{lrw2}}          | for               | set{{bii}}        | yield{{lrw}}      |
+| covariant{{bii}}  | for               | set{{bii}}        | yield{{lrw}}      |
 | default           | get{{bii}}        | static{{bii}}     | yield*{{lrw}}     |
 {:.table .table-striped .nowrap}
 
 <sup>1</sup> Words with the superscript **1**
 are **built-in identifiers**. Avoid using
-built-in identifiers as identifiers, and never use
-them for class or type names. Built-in identifiers exist to ease
-porting from JavaScript to Dart. For example,
-if some JavaScript code has a variable named `factory`, you don't have
-to rename it when you port the code to Dart.
+built-in identifiers as identifiers.
+A compile-time error happens if you try to
+use a built-in identifier for a class or type name.
 
 <sup>2</sup> Words with the superscript **2**
 are newer, limited reserved words related to **asynchrony** support
@@ -196,12 +193,6 @@ You can't use `async`, `await`, or `yield` as
 an identifier in any function body marked with `async`, `async*`, or `sync*`.
 For more information, see
 [Asynchrony support](#asynchrony-support).
-
-<sup>3</sup> Words with the superscript **3**
-are newer, limited reserved words related to **type safety**
-added in 1.22 or later releases.
-Use `covariant` to modify method or field types, as described in
-[Overriding members](#overriding-members).
 
 All other words in the keyword table are **reserved words**.
 You can't use reserved words as identifiers.
@@ -2939,56 +2930,9 @@ class SmartTelevision extends Television {
 }
 {% endprettify %}
 
-To narrow the type of a method parameter while maintaining type safety,
-use the `covariant` keyword.
-
-Here's an example of declaring that an argument must be a Widget,
-but that subclasses can narrow the argument's type to a Widget subtype.
-
-<!-- language-tour/overrides/bin/covariant_superclass.dart -->
-{% prettify dart %}
-class Widget {
-  void addChild([[highlight]]covariant Widget[[/highlight]] widget) {...}
-}
-{% endprettify %}
-
-A subclass can then narrow the type that the method takes:
-
-<!-- language-tour/overrides/bin/covariant_superclass.dart -->
-{% prettify dart %}
-class RadioButton extends Widget {
-  // ...
-}
-
-class RadioGroup extends Widget {
-  void addChild([[highlight]]RadioButton[[/highlight]] button) { ... }
-}
-{% endprettify %}
-
-Even if the superclass doesn't define the parameter as covariant,
-you can narrow the type by using `covariant` in the subclass:
-
-<!-- language-tour/overrides/bin/covariant_subclass.dart -->
-{% prettify dart %}
-class Widget {
-  void addChild(Widget widget) {...}
-}
-
-// ...
-
-class RadioGroup extends Widget {
-  void addChild([[highlight]]covariant RadioButton[[/highlight]] button) { ... }
-}
-{% endprettify %}
-
-You can also narrow the type of an instance variable:
-
-{% prettify dart %}
-class Widget {
-  [[highlight]]covariant[[/highlight]] Widget child;
-  // ...
-}
-{% endprettify %}
+To narrow the type of a method parameter or instance variable in code that is
+[type safe](/guides/language/sound-dart),
+you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
 
 #### noSuchMethod()
