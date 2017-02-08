@@ -59,6 +59,7 @@ To update Dart once you've installed it using Homebrew, run:
 {% prettify shell %}
 $ brew update
 $ brew upgrade dart
+$ brew cleanup dart
 {% endprettify %}
 
 {% comment %}
