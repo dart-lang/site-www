@@ -197,12 +197,12 @@ class Animal {
 {% endprettify %}
 
 The `parent` getter method returns an Animal. In the HoneyBadger subclass,
-you can replace the getter's return type with HoneyBadger (a subtype),
-but an Alligator is not a likely parent for a HoneyBadger.
+you can replace the getter's return type with HoneyBadger (or any other subtype
+of Animal), but an unrelated type is not allowed.
 
 <div class="passes-sa" markdown="1">
 {% prettify dart %}
-class HoneyBadger {
+class HoneyBadger extends Animal {
   void chase(Animal a) {}
   [[highlight]]HoneyBadger[[/highlight]] get parent => ...
 }
@@ -211,9 +211,9 @@ class HoneyBadger {
 
 <div class="fails-sa" markdown="1">
 {% prettify dart %}
-class HoneyBadger {
+class HoneyBadger extends Animal {
   void chase(Animal a) {}
-  [[highlight]]Alligator[[/highlight]] get parent => ...
+  [[highlight]]Roots[[/highlight]] get parent => ...
 }
 {% endprettify %}
 </div>
