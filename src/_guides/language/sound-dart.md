@@ -229,7 +229,7 @@ subtype of the original parameter.
 
 <aside class="alert alert-info" markdown="1">
 **Note:** If you have a valid reason to use a subtype, you can use the
-[@checked annotation](/guides/language/sound-problems#checked-annotation).
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 </aside>
 
 Consider the `chase(Animal)` method for the Animal class:

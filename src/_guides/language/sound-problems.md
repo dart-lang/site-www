@@ -34,7 +34,7 @@ language.
 <p>Appendix:</p>
 
 <ul>
-<li><a href="#checked-annotation">The @checked annotation</a></li>
+<li><a href="#the-covariant-keyword">The covariant keyword</a></li>
 </ul>
 
 For a complete list of sources about strong mode and sound Dart,
@@ -229,7 +229,7 @@ For more information, see [Use proper input parameter types when overriding meth
 
 <aside class="alert alert-info" markdown="1">
 **Note:** If you have a valid reason to use a subtype, you can use the
-[@checked annotation](/guides/language/sound-problems#checked-annotation).
+[covariant keyword](/guides/language/sound-problems#covariant).
 </aside>
 
 <hr>
@@ -467,24 +467,22 @@ Do we have any known issues or bugs to list here?
 ## Appendix
 
 <a name="checked-annotation"></a>
-### The @checked annotaton
+### The covariant keyword
 
 Some (rarely used) coding patterns rely on tightening a type
 by overriding a parameter's type with a subtype, which is illegal in strong
-mode Dart. In this case, you can use the `@checked` annotation to
+mode Dart. In this case, you can use the `covariant` keyword to
 tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
 parameter type at runtime.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** Don't use `@checked` in DartPad. DartPad doesn't support
-importing packages, and `@checked` comes from package:meta.
-If you try to use it, DartPad raises the following error:
-**Annotation can be only constant
-variable or constant constructor invocation.**
+**Version note:**
+The `covariant` keyword was introduced in 1.22.
+It replaces the `@checked` annotation.
 </aside>
 
-The following shows how you might use `@checked`:
+The following shows how you might use `covariant`:
 
 {% prettify dart %}
 [[highlight]]import 'package:meta/meta.dart';[[/highlight]]
@@ -496,19 +494,13 @@ class Animal {
 class Mouse extends Animal {}
 
 class Cat extends Animal {
-  void chase([[highlight]]@checked[[/highlight]] Mouse x) {}
+  void chase([[highlight]]covariant[[/highlight]] Mouse x) {}
 }
 {% endprettify %}
 
-Although this example shows using `@checked` in the subtype,
-the `@checked` annotation can be placed in either the superclass
+Although this example shows using `covariant` in the subtype,
+the `covariant` keyword can be placed in either the superclass
 or the subclass method.
 Usually the superclass method is the best place to put it.
-The `@checked` annotation applies to a single parameter and is
+The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** The `@checked` annotation may be renamed `covariant` (without
-the `@`) in a future release. For more information, see
-[Issue 27486](https://github.com/dart-lang/sdk/issues/27486).
-</aside>

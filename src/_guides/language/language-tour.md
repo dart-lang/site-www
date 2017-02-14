@@ -86,7 +86,7 @@ apps:
 <div class="alert alert-info" markdown="1">
 **Note:**
 Our code follows the conventions in the
-[Dart Style Guide.](/guides/language/effective-dart/style).
+[Dart style guide](/guides/language/effective-dart/style).
 For example, we use two-space indentation.
 </div>
 
@@ -105,6 +105,10 @@ mind:
     clarifies your intent and enables static checking by tools, but it’s
     optional. (You might notice when you’re debugging your code that
     variables with no specified type get a special type: `dynamic`.)
+    Recent changes to the Dart language and tools
+    make writing type safe code possible,
+    with many expected benefits;
+    see [Sound Dart](/guides/language/sound-dart) for details.
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -160,36 +164,37 @@ The following table lists the words that the Dart language treats specially.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
 
-| abstract{{bii}}   | continue          | false             | new               | this              |
-| as{{bii}}         | default           | final             | null              | throw             |
-| assert            | deferred{{bii}}   | finally           | operator{{bii}}   | true              |
-| async{{lrw}}      | do                | for               | part{{bii}}       | try               |
-| async*{{lrw}}     | dynamic{{bii}}    | get{{bii}}        | rethrow           | typedef{{bii}}    |
-| await{{lrw}}      | else              | if                | return            | var               |
-| break             | enum              | implements{{bii}} | set{{bii}}        | void              |
-| case              | export{{bii}}     | import{{bii}}     | static{{bii}}     | while             |
-| catch             | external{{bii}}   | in                | super             | with              |
-| class             | extends           | is                | switch            | yield{{lrw}}      |
-| const             | factory{{bii}}    | library{{bii}}    | sync*{{lrw}}      | yield*{{lrw}}     |
+| abstract{{bii}}   | deferred{{bii}}   | if                | super             |
+| as{{bii}}         | do                | implements{{bii}} | switch            |
+| assert            | dynamic{{bii}}    | import{{bii}}     | sync*{{lrw}}      |
+| async{{lrw}}      | else              | in                | this              |
+| async*{{lrw}}     | enum              | is                | throw             |
+| await{{lrw}}      | export{{bii}}     | library{{bii}}    | true              |
+| break             | external{{bii}}   | new               | try               |
+| case              | extends           | null              | typedef{{bii}}    |
+| catch             | factory{{bii}}    | operator{{bii}}   | var               |
+| class             | false             | part{{bii}}       | void              |
+| const             | final             | rethrow           | while             |
+| continue          | finally           | return            | with              |
+| covariant{{bii}}  | for               | set{{bii}}        | yield{{lrw}}      |
+| default           | get{{bii}}        | static{{bii}}     | yield*{{lrw}}     |
 {:.table .table-striped .nowrap}
 
 <sup>1</sup> Words with the superscript **1**
-are *built-in identifiers*. Avoid using
-built-in identifiers as identifiers, and never use
-them for class or type names. Built-in identifiers exist to ease
-porting from JavaScript to Dart. For example,
-if some JavaScript code has a variable named `factory`, you don't have
-to rename it when you port the code to Dart.
+are **built-in identifiers**. Avoid using
+built-in identifiers as identifiers.
+A compile-time error happens if you try to
+use a built-in identifier for a class or type name.
 
 <sup>2</sup> Words with the superscript **2**
-are newer, limited reserved words related to asynchrony support
-that's being added after Dart's 1.0 release.
+are newer, limited reserved words related to **asynchrony** support
+added after Dart's 1.0 release.
 You can't use `async`, `await`, or `yield` as
 an identifier in any function body marked with `async`, `async*`, or `sync*`.
 For more information, see
 [Asynchrony support](#asynchrony-support).
 
-All other words in the keyword table are <em>reserved words</em>.
+All other words in the keyword table are **reserved words**.
 You can't use reserved words as identifiers.
 
 
@@ -2005,7 +2010,23 @@ Assert statements work only in checked mode. They have no effect in
 production mode.
 </div>
 
-Inside the parentheses after `assert`, you can put any expression that
+To attach a message to an assert,
+add a string as the second argument.
+
+<!-- language-tour/flow/assert/web/main.dart -->
+{% prettify dart %}
+assert(urlString.startsWith('https'),
+    'URL ($urlString) should start with "https".');
+{% endprettify %}
+
+<div class="alert alert-info" markdown="1">
+**Version note:**
+The second argument was introduced in SDK 1.22.
+<!-- [TODO: make "introduced in SDK 1.22" a link to
+a post on http://news.dartlang.org.] -->
+</div>
+
+The first argument to `assert` can be any expression that
 resolves to a boolean value or to a function. If the expression’s value
 or function’s return value is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
@@ -2870,7 +2891,7 @@ class Point implements Comparable, Location {
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
-<!-- smart_tv.dart -->
+<!-- language-tour/reference/smart_tv.dart -->
 {% prettify dart %}
 class Television {
   void turnOn() {
@@ -2891,10 +2912,33 @@ class SmartTelevision extends Television {
 }
 {% endprettify %}
 
-Subclasses can override instance methods, getters, and setters. Here’s
-an example of overriding the Object class’s `noSuchMethod()` method,
-which is called whenever code attempts to use a non-existent method or
-instance variable:
+
+#### Overriding members
+
+Subclasses can override instance methods, getters, and setters.
+You can use the `@override` annotation to indicate that you are
+intentionally overriding a member:
+
+<!-- language-tour/overrides/bin/override.dart -->
+{% prettify dart %}
+class SmartTelevision extends Television {
+  @override
+  void turnOn() {
+    // ...
+  }
+  // ...
+}
+{% endprettify %}
+
+To narrow the type of a method parameter or instance variable in code that is
+[type safe](/guides/language/sound-dart),
+you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+
+
+#### noSuchMethod()
+
+To detect or react whenever code attempts to use a non-existent method or
+instance variable, you can override `noSuchMethod()`:
 
 <!-- language-tour/no-such-method/bin/main.dart -->
 {% prettify dart %}
@@ -2908,24 +2952,11 @@ class A {
 }
 {% endprettify %}
 
-You can use the `@override` annotation to indicate that you are
-intentionally overriding a member:
-
-<!-- language-tour/overrides/bin/override.dart -->
-{% prettify dart %}
-class A {
-  @override
-  void noSuchMethod(Invocation mirror) {
-    // ...
-  }
-}
-{% endprettify %}
-
 If you use `noSuchMethod()` to implement every possible getter, setter,
 and method for one or more types,
 then you can use the `@proxy` annotation to avoid warnings:
 
-<!-- languager-tour/overrides/bin/proxy.dart -->
+<!-- language-tour/overrides/bin/proxy.dart -->
 {% prettify dart %}
 @proxy
 class A {
@@ -2946,7 +2977,6 @@ class A implements SomeClass, SomeOtherClass {
   }
 }
 {% endprettify %}
-
 
 For more information on annotations, see
 [Metadata](#metadata).
