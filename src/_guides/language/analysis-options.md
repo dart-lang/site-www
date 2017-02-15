@@ -47,10 +47,8 @@ add static analysis to your tool, see the
 
 ## The analysis options file
 
-Place the analysis options file at the root of the package,
-in the same directory as the pubspec file.
-By convention, the file is called `.analysis_options`, but it
-can also be named `analysis_options.yaml` (without the leading dot).
+Place the analysis options file, `analysis_options.yaml`,
+at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
