@@ -185,7 +185,7 @@ type hierarchy:
 #### Use proper return types when overriding methods
 
 <br>
-The return type of a method in a subclass must be a proper
+The return type of a method in a subclass must the same type or a
 subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
 
