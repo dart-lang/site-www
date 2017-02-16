@@ -50,6 +50,12 @@ add static analysis to your tool, see the
 Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
+<aside class="alert alert-info" markdown="1">
+**Note:** The `.analysis_options` file (note the leading dot) is no longer
+preferred and, at some point, will not be supported. Please change
+the file name to avoid problems in the future.
+</aside>
+
 Here's a sample analysis options file:
 
 {% prettify yaml %}
