@@ -51,11 +51,11 @@ Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
 <aside class="alert alert-warning" markdown="1">
-Breaking change: The conventional name for the analysis options file
+**Breaking change:** The conventional name for the analysis options file
 used to be `.analysis_options` (note the leading dot and missing `.yaml` suffix).
 We expect support for the `.analysis_options` name to go away in a future
-release, so we recommend that you rename your `.analysis_options` files to
-`analysis_options.yaml`.
+release, so we recommend that you **rename your `.analysis_options` files to
+`analysis_options.yaml`.**
 </aside>
 
 Here's a sample analysis options file:
