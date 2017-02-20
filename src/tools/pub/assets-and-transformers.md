@@ -139,7 +139,7 @@ JavaScript, so your code can run in any modern browser.
 ## Where to put assets
 
 An asset can be in any root-level directory of your package. However,
-assets located under the `lib` directory have additional visibilty:
+assets located under the `lib` directory have additional visibility:
 
 * Assets that other packages depend on need to be in `lib`.
 
