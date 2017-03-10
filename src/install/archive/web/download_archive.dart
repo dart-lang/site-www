@@ -127,6 +127,7 @@ const Map<String, String> archiveMap = const {
   '32-bit': 'ia32',
   '64-bit': 'x64',
   'ARMv7': 'arm',
+  'ARMv8 (ARM64)': 'arm64',
   'Dart SDK': 'dartsdk',
   'Dartium': 'dartium'
 };
@@ -148,6 +149,7 @@ const Map<String, Object> platforms = const {
   },
   'Linux': const {
     'ARMv7': const ['Dart SDK'],
+    'ARMv8 (ARM64)': const ['Dart SDK'],
     '32-bit': const ['Dart SDK', 'Dartium'],
     '64-bit': const ['Dart SDK', 'Dartium']
   },
@@ -186,12 +188,17 @@ void addVersion(String channel, Map<String, String> version) {
   // Json is like: { 'revision': '...', 'version': '...', 'date': '...' }.
   platforms.forEach((String name, Map<String, List> widthListings) {
     widthListings.forEach((String width, List<String> archives) {
-      // ARMv7 builds only available later in 2015
-      if (archiveMap[name] == 'linux' &&
-          width == 'ARMv7' &&
-          parseDateTime(version['date']).isBefore(DateTime
-              .parse((channel == "dev") ? '2015-10-21' : '2015-08-31'))) {
-        return;
+      // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
+      if (archiveMap[name] == 'linux') {
+        if (width == 'ARMv7' &&
+            parseDateTime(version['date']).isBefore(DateTime
+                .parse((channel == "dev") ? '2015-10-21' : '2015-08-31'))) {
+          return;
+        } else if (width == 'ARMv8 (ARM64)' &&
+            parseDateTime(version['date'])
+                .isBefore(DateTime.parse('2017-03-09'))) {
+          return;
+        }
       }
 
       TableRowElement row = tables[channel].addRow()
