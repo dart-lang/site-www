@@ -6,8 +6,22 @@ written: 2015-02-09
 category: libraries
 ---
 
+<aside class="alert alert-info" markdown="1">
+**Note:** While this article still embodies the correct approach for
+adding serialization to your app,
+further work has occurred since it was written.
+Until we update the article, please be aware of:
+
+* [built_value](https://pub.dartlang.org/packages/built_value)
+: A package that provides SDK-like collections with immutability,
+  and support for serialization.
+
+* [Dart for Serialization (Proposal)](https://github.com/matanlurey/dart_serialize_proposal)
+: Open discussion around better Dart serialization experiences.
+</aside>
+
 _Written by Nicolas Garnier<br>
-February 2015_
+February 2015 (note about updates March 2017)_
 
 Being able to serialize and deserialize objects is a common task in web apps.
 Here are a few typical cases of using serialization:
