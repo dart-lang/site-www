@@ -3373,7 +3373,8 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 {% prettify dart %}
 [[highlight]]T[[/highlight]] first[[highlight]]<T>[[/highlight]](List<[[highlight]]T[[/highlight]]> ts) {
   // ...Do some initial work or error checking, then...
-  [[highlight]]T[[/highlight]] tmp ?= ts[0];
+  [[highlight]]T[[/highlight]] tmp;
+  tmp ??= ts[0];
   // ...Do some additional checking or processing...
   return tmp;
 }
