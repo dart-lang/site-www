@@ -441,6 +441,11 @@
         "type": 301
       },
       {
+        "source": "/docs/dart-up-and-running/contents/ch01",
+        "destination": "/resources/books",
+        "type": 301
+      },
+      {
         "source": "/docs/dart-up-and-running/ch02",
         "destination": "/guides/language/language-tour",
         "type": 301
@@ -448,6 +453,11 @@
       {
         "source": "/docs/dart-up-and-running/ch03",
         "destination": "/guides/libraries/library-tour",
+        "type": 301
+      },
+      {
+        "source": "/docs/dart-up-and-running/contents/ch04-tools-dartium",
+        "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
       },
       {
@@ -612,7 +622,7 @@
       },
       {
         "source": "/docs/tutorials/forms/**",
-        "destination": "https://angular.io/docs/dart/latest/guide/forms.html",
+        "destination": "https://webdev.dartlang.org/angular/guide/forms",
         "type": 301
       },
       {
@@ -772,6 +782,11 @@
       },
       {
         "source": "/guides/language/library-tour",
+        "destination": "/guides/libraries/library-tour",
+        "type": 301
+      },
+      {
+        "source": "/docs/library-tour",
         "destination": "/guides/libraries/library-tour",
         "type": 301
       },
@@ -1246,6 +1261,11 @@
         "type": 301
       },
       {
+        "source": "/docs/sdk",
+        "destination": "/tools/sdk",
+        "type": 301
+      },
+      {
         "source": "/tools/webstorm/",
         "destination": "https://webdev.dartlang.org/tools/webstorm",
         "type": 301
@@ -1258,6 +1278,16 @@
       {
         "source": "/tos.html",
         "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/samples-files/portmanteaux.json",
+        "destination": "/f/portmanteaux.json",
+        "type": 301
+      },
+      {
+        "source": "/angular/cheatsheet",
+        "destination": "https://webdev.dartlang.org/angular/cheatsheet",
         "type": 301
       }
     ]
