@@ -367,7 +367,7 @@ Be clear and precise, but also terse.
 
 ### AVOID abbreviations and acronyms unless they are obvious.
 
-Many people don't know what "i.e.", "e.g." and "et. al." mean. That acronym
+Many people don't know what "i.e.", "e.g." and "et al." mean. That acronym
 that you're sure everyone in your field knows may not be as widely known as you
 think.
 
