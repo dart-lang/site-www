@@ -116,6 +116,11 @@
         "type": 301
       },
       {
+        "source": "/articles/mocking-with-dart/",
+        "destination": "https://pub.dartlang.org/packages/mockito",
+        "type": 301
+      },
+      {
         "source": "/articles/event-loop/",
         "destination": "https://webdev.dartlang.org/articles/performance/event-loop",
         "type": 301
@@ -446,6 +451,11 @@
         "type": 301
       },
       {
+        "source": "/docs/dart-up-and-running/contents/ch02",
+        "destination": "/guides/language/language-tour",
+        "type": 301
+      },
+      {
         "source": "/docs/dart-up-and-running/ch02",
         "destination": "/guides/language/language-tour",
         "type": 301
@@ -717,6 +727,11 @@
       },
       {
         "source": "/eclipse/**",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/editor",
         "destination": "/tools",
         "type": 301
       },
