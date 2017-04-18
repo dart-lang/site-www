@@ -452,7 +452,7 @@
       },
       {
         "source": "/docs/dart-up-and-running/contents/ch02",
-        "destination": "/resources/books",
+        "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
