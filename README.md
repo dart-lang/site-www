@@ -1,5 +1,7 @@
 # The Dart language site (www.dartlang.org)
 
+[![Join the chat at https://gitter.im/dart-lang/site-www](https://badges.gitter.im/dart-lang/site-www.svg)](https://gitter.im/dart-lang/site-www?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/dart-lang/site-www.svg?branch=master)](https://travis-ci.org/dart-lang/site-www)
 &nbsp;&nbsp;
 
