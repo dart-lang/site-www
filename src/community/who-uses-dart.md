@@ -215,4 +215,7 @@ Gifts and invite friends. Build with Angular 2 Dart (client) and Shelf (server).
 
 [ListShine](https://www.listshine.com)
 : Email Marketing Software powered by Dart (client).
+
+[Grupo Aluman](http://www.grupoaluman.com)
+ : Industrial panel computers to control our entire production chain. Client apps built with AngularDart.
 </div>
