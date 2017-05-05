@@ -257,7 +257,7 @@ analyzer:
 This analysis options file instructs the analysis tools to ignore
 the TODO rule.
 
-## Changing the severity analysis rules
+## Changing the severity of analysis rules
 
 Using the same mechanism, you can also globally change the severity
 of a particular rule using one of the following values: `warning`,
