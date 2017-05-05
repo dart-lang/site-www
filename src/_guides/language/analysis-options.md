@@ -240,7 +240,7 @@ For example:
 const x = y;
 {% endprettify %}
 
-## Ingoring specific analysis rules
+## Ignoring specific analysis rules
 
 Sometimes your code doesn't fit perfectly within the standard
 analysis guidelines, or violates a rule here or there, for
