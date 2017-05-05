@@ -35,6 +35,11 @@
   - title: "Dart Tools"
     permalink: /tools
 
+- title: "Testing"
+  children:
+  - title: "Dart Testing"
+    permalink: /guides/testing
+
 - title: "Community"
   children:
   - title: "Community and Support"
