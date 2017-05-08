@@ -24,7 +24,7 @@ perform static analysis:
 * [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)&mdash;static analysis for mobile (Flutter) apps
 
 You can customize the behavior of the analyzer or the linter
-by adding an analysis options file (`analsys_options.yaml`) to
+by adding an analysis options file (`analysis_options.yaml`) to
 the package root of your project. For further information, see
 [Customize Static Analysis](/guides/language-analysis-options).
 
