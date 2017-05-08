@@ -329,11 +329,11 @@ way the compiler does.
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
-sophisticated automated code formatter called [dartfmt][] that does do it for
+sophisticated automated code formatter called [dart_style][] that does do it for
 you. The official whitespace-handling rules for Dart are *whatever
-[dartfmt][] produces*.
+[dart_style][] produces*.
 
-[dartfmt]: https://github.com/dart-lang/dart_style
+[dart_style]: https://github.com/dart-lang/dart_style
 
 ### AVOID lines longer than 80 characters.
 
@@ -347,8 +347,8 @@ compact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask
 yourself, "Does each word in that type name tell me something critical or
 prevent a name collision?" If not, consider omitting it.
 
-Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
-split long string literals to fit in 80 columns, so you have to do that
+Note that dart_style does 99% of this for you, but the last 1% is you. It does
+not split long string literals to fit in 80 columns, so you have to do that
 manually.
 
 We make an exception for strings containing URIs&mdash;mainly imports and
@@ -392,9 +392,9 @@ if (parameter == null) parameter = defaultValue;
 </div>
 
 
-### DO format your code using `dartfmt`.
+### DO format your code using `dart_style`.
 
-[dartfmt][] applies all of the following rules along with a number of other
+[dart_style][] applies all of the following rules along with a number of other
 subtle heuristics. It is faster than you and never makes mistakes. **If you
 follow this rule, you can skip reading the rest of this guide.**
 
