@@ -90,7 +90,7 @@ Most Dart-related SDKs include the following tools.
   IDEs that support Dart generally have special support for pub,
   but you can also use it from the command line (`pub`).
 
-[Static analyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
+[Static analyzer](/tools/analyzer)
 : Evaluates and reports any errors or warnings in your code.
   The Dart plugin for your IDE should make use of Dart's analysis engine,
   but you can also run the analyzer from the command line (`dartanalyzer`).
