@@ -1072,7 +1072,7 @@ for further details about the classes and libraries discussed in this tutorial.
 
 ## What next? {#what-next}
 
-* If you haven't yet tried the server-side code lab,
+* If you haven't yet tried the server-side codelab,
   try [writing a server app](https://dart-lang.github.io/server/codelab/).
 
 * [Servers with Dart](https://dart-lang.github.io/server/)
