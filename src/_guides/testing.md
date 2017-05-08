@@ -105,8 +105,8 @@ applications:
   package to test AngularDart components and Angular subsystems.
   <!-- More pages are coming! -->
 * [package:webdriver](https://pub.dartlang.org/packages/webdriver)<br>
-  Provides bindings that use the WebDriver JSON interface and require
-  the WebDriver remote server. [PENDING: a better way to describe this?]
+  A Dart package for interfacing with
+  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
 
 ## Other tools and resources
 
