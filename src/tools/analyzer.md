@@ -26,7 +26,7 @@ Other tools perform static analysis when invoked, but do not continually
 evaluate code. These tools use the low-level
 [package:analyzer](https://pub.dartlang.org/packages/analyzer) library
 to perform static analysis. (In fact, the analysis server itself
-also uses the analyzer library.) The following tools use
+also uses the package:analyzer.) The following tools use
 package:analyzer.
 
 * [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
@@ -35,9 +35,9 @@ package:analyzer.
   static analyzer for mobile (Flutter) apps
 * [`dartdoc`](https://github.com/dart-lang/dartdoc)&mdash;command-line tool
   for generating Dart API docs
-* [package:dart_style](https://github.com/dart-lang/dart_style)&mdash;an opinionated
-  formatter and linter used for Dart code. The command-line tool, `dartfmt`,
-  uses the dart_style library.
+* [package:dart_style](https://github.com/dart-lang/dart_style)&mdash;an
+  opinionated formatter and linter for Dart code. The command-line tool,
+  `dartfmt`, uses the dart_style library.
 
 ## Customizing static analysis
 
