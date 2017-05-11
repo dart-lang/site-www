@@ -20,7 +20,7 @@ This doc uses **component** (except when explicitly discussing Flutter),
 but both terms refer to the same concept.
 </aside>
 
-## Testing types
+## Kinds of testing
 
 The Dart testing docs focus on three kinds of testing, out of the
 [many kinds of testing](https://en.wikipedia.org/wiki/Software_testing)
