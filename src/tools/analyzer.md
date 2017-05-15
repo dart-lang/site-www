@@ -22,7 +22,7 @@ applies only if you are writing a Dart tool that needs to analyze code.
 
 You can customize the behavior of the analyzer or the linter
 by adding an analysis options file (`analysis_options.yaml`) to
-the package root of your project. The analysis options file allows
+the root of your package. The analysis options file allows
 you to enable the lint rules appropriate to your project.
 For example, adding the `close_sinks` rule ensures that all
 sink methods include a `close()` call. For further information, see
@@ -63,9 +63,8 @@ package:analyzer.
   static analyzer for mobile (Flutter) apps
 * [`dartdoc`](https://github.com/dart-lang/dartdoc)&mdash;command-line tool
   for generating Dart API docs
-* [package:dart_style](https://github.com/dart-lang/dart_style)&mdash;an
-  opinionated formatter and linter for Dart code. The command-line tool,
-  `dartfmt`, uses the dart_style library.
+* [`dartfmt`](https://github.com/dart-lang/dart_style)&mdash;an
+  opinionated formatter and linter for Dart code.
 * [Dart Dev Compiler (DDC)](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)&mdash;experimental development tool and transpiler for web apps
 
 If your tool requires continuous analysis and can handle sending text
