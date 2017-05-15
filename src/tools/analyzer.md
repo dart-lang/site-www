@@ -9,7 +9,36 @@ The static analyzer evaluates your Dart code,
 checking for errors and warnings that are specified in the
 [Dart Language Specification](https://www.dartlang.org/docs/spec/).
 
-Many tools in the Dart ecosystem use the [analysis
+Many tools in the Dart ecosystem (including IDEs, DartPad, and dartanalyzer)
+perform static analysis on code. Most of these tools (with the exception
+of DartPad) allow you to customize static analysis. The next section
+points you to where you can learn how to customize static analysis.
+
+The following section,
+[Adding static analysis to your tool](#adding-static-analysis),
+applies only if you are writing a Dart tool that needs to analyze code.
+
+## Customizing static analysis
+
+You can customize the behavior of the analyzer or the linter
+by adding an analysis options file (`analysis_options.yaml`) to
+the package root of your project. The analysis options file allows
+you to enable the lint rules appropriate to your project.
+For example, adding the `close_sinks` rule ensures that all
+sink methods include a `close()` call. For further information, see
+[Customize Static Analysis](/guides/language/analysis-options).
+
+<a name="adding-static-analysis"></a>
+## Adding static analysis to your tool
+
+If you aren't writing a Dart tool, you can ignore this section.
+
+You have two options for adding static analysis to your Dart tool:
+the analysis server or package:analyzer.
+This section has more information and points you to where you can
+learn more about each approach.
+
+Some tools in the Dart ecosystem use the [analysis
 server](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server)
 to perform static analysis. The analysis server provides on-going
 analysis to other tools. The following tools use the analysis server.
@@ -20,7 +49,6 @@ analysis to other tools. The following tools use the analysis server.
   [Atom](https://atom.io/packages/dartlang))
 * [DartPad](https://www.dartlang.org/tools/dartpad)&mdash;browser-based
   Dart playground
-* [Dart Dev Compiler (DDC)](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)&mdash;experimental development tool and transpiler for web apps
 
 Other tools perform static analysis when invoked, but do not continually
 evaluate code. These tools use the low-level
@@ -38,21 +66,7 @@ package:analyzer.
 * [package:dart_style](https://github.com/dart-lang/dart_style)&mdash;an
   opinionated formatter and linter for Dart code. The command-line tool,
   `dartfmt`, uses the dart_style library.
-
-## Customizing static analysis
-
-You can customize the behavior of the analyzer or the linter
-by adding an analysis options file (`analysis_options.yaml`) to
-the package root of your project. The linter, an analyzer plugin,
-allows you to define (or exclude) rules specific to your project.
-For example, you can add the `close_sinks` rule to ensure that all
-sink methods include a `close()` call. For further information, see
-[Customize Static Analysis](/guides/language/analysis-options).
-
-## Building tools that use static analysis
-
-You have two options for adding static analysis to your Dart tool:
-the analysis server or package:analyzer.
+* [Dart Dev Compiler (DDC)](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)&mdash;experimental development tool and transpiler for web apps
 
 If your tool requires continuous analysis and can handle sending text
 messages back and forth to a server, use the [analysis
