@@ -35,48 +35,30 @@ If you aren't writing a Dart tool, you can ignore this section.
 
 You have two options for adding static analysis to your Dart tool:
 the analysis server or package:analyzer.
-This section has more information and points you to where you can
-learn more about each approach.
 
-Some tools in the Dart ecosystem use the [analysis
-server](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server)
-to perform static analysis. The analysis server provides on-going
-analysis to other tools. The following tools use the analysis server.
+If your tool requires continuous analysis and can handle exchanging
+text messages with a local server, use the [analysis
+server](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server).
+(See the [Analysis Server API
+Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
+for protocol details.) The following tools use the analysis server:
 
 * Dart and Flutter plugins for IDEs (such as
   [WebStorm](https://webdev.dartlang.org/tools/webstorm),
   [IntelliJ](https://www.dartlang.org/tools/jetbrains-plugin), and
   [Atom](https://atom.io/packages/dartlang))
-* [DartPad](https://www.dartlang.org/tools/dartpad)&mdash;browser-based
-  Dart playground
+* [DartPad](https://www.dartlang.org/tools/dartpad)
 
-Other tools perform static analysis when invoked, but do not continually
-evaluate code. These tools use the low-level
-[package:analyzer](https://pub.dartlang.org/packages/analyzer) library
-to perform static analysis. (In fact, the analysis server itself
-also uses the package:analyzer.) The following tools use
-package:analyzer.
+If your tool requires access to the abstract syntax tree (AST), use the
+[package:analyzer](https://pub.dartlang.org/packages/analyzer) library.
+The following tools use package:analyzer:
 
 * [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
-)&mdash;command-line static analyzer for web or VM apps
-* [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)&mdash;command-line
-  static analyzer for mobile (Flutter) apps
-* [`dartdoc`](https://github.com/dart-lang/dartdoc)&mdash;command-line tool
-  for generating Dart API docs
-* [`dartfmt`](https://github.com/dart-lang/dart_style)&mdash;an
-  opinionated formatter and linter for Dart code
-* [Dart Dev Compiler (DDC)](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)&mdash;experimental development tool and transpiler for web apps
-
-If your tool requires continuous analysis and can handle sending text
-messages back and forth to a server, use the [analysis
-server.](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server)
-Note that the analysis server, part of the Dart SDK, runs locally.
-Also see the [Analysis Server API
-Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html).
-
-If your tool needs access to the abstract syntax tree (AST), and doesn't
-require continuous analysis,
-use [package:analyzer](https://pub.dartlang.org/packages/analyzer).
+)
+* [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)
+* [`dartdoc`](https://github.com/dart-lang/dartdoc)
+* [`dartfmt`](https://github.com/dart-lang/dart_style)
+* [Dart Dev Compiler](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler) (aka DDC)
 
 You might also be interested in the [Dart Analyzer discussion
 group.](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)
