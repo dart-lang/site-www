@@ -64,7 +64,7 @@ package:analyzer.
 * [`dartdoc`](https://github.com/dart-lang/dartdoc)&mdash;command-line tool
   for generating Dart API docs
 * [`dartfmt`](https://github.com/dart-lang/dart_style)&mdash;an
-  opinionated formatter and linter for Dart code.
+  opinionated formatter and linter for Dart code
 * [Dart Dev Compiler (DDC)](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)&mdash;experimental development tool and transpiler for web apps
 
 If your tool requires continuous analysis and can handle sending text
