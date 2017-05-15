@@ -36,7 +36,7 @@ If you aren't writing a Dart tool, you can ignore this section.
 You have two options for adding static analysis to your Dart tool:
 the analysis server or package:analyzer.
 
-If your tool requires continuous analysis and can handle exchanging
+If your tool requires continuous analysis or can handle exchanging
 text messages with a local server, use the [analysis
 server](https://github.com/dart-lang/sdk/tree/master/pkg/analysis_server).
 (See the [Analysis Server API
