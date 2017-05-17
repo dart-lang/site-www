@@ -14,6 +14,7 @@ perform static analysis on code. Most of these tools (with the exception
 of DartPad) allow you to customize static analysis. The next section
 points you to where you can learn how to customize static analysis.
 
+<a name="customizing-static-analysis"></a>
 ## Customizing static analysis
 
 You can customize the behavior of the analyzer or the linter
