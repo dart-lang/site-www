@@ -11,7 +11,7 @@ rvm:
 
 install:
   - bundle install
-  - npm install -g firebase-tools
+  - npm install -g firebase-tools@3.5.0
 
 before_script:
   # - chmod +x ./deploy/runtests.sh
