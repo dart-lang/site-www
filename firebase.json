@@ -1016,16 +1016,6 @@
         "type": 301
       },
       {
-        "source": "/tools/analyzer",
-        "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer",
-        "type": 301
-      },
-      {
-        "source": "/tools/analyzer/",
-        "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer",
-        "type": 301
-      },
-      {
         "source": "/tools/dart-vm/",
         "destination": "/dart-vm/tools/dart-vm",
         "type": 301
