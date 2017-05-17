@@ -240,7 +240,7 @@ For example:
 const x = y;
 {% endprettify %}
 
-## Configuring specific rules for analysis
+## Ignoring specific analysis rules
 
 Sometimes your code doesn't fit perfectly within the standard
 analysis guidelines, or violates a rule here or there, for
@@ -257,14 +257,16 @@ analyzer:
 This analysis options file instructs the analysis tools to ignore
 the TODO rule.
 
-You can also globally change the severity of a particular rule
-using one of the following values: `warning`, `error`, or `info`.
-For example:
+## Changing the severity of analysis rules
+
+Using the same mechanism, you can also globally change the severity
+of a particular rule using one of the following values: `warning`,
+`error`, or `info`. This works for regular analysis issues as well as
+for lints. For example:
 
 {% prettify yaml %}
 analyzer:
   errors:
-    unused_local_variable: ignore
     invalid_assignment: warning
     missing_return: error
     dead_code: info
