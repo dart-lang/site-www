@@ -15,7 +15,7 @@ These two resources are popular with both beginning Dartisans and experts.
   </div>
   <div class="card">
     <h3><a href="/guides/language/effective-dart">Effective Dart</a></h3>
-    <p>A set of guides that show you how how to write the best Dart code
+    <p>A set of guides that show you how to write the best Dart code
     possible. There are guides on Dart style, documentation, usage,
     and design.</p>
   </div>
