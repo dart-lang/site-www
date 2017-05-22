@@ -10,10 +10,16 @@ how to substitute types safely when overriding methods.
 
 <aside class="alert alert-info" markdown="1">
 **Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
-are sometimes used interchangeably. _Strong mode_ is Dart's implementation
-of a sound type system. With strong mode enabled,
-Dart is a type safe language. "Classic Dart" refers to Dart
-before soundness was added to the language.
+are sometimes used interchangeably. _Strong mode_ is a sound static
+type system that uses a combination of static and runtime checks to
+ensure your code is type safe&mdash;that you can never see a value
+whose runtime type does not match its static type.
+With strong mode enabled (in an implementation that has both the
+static and runtime checks), Dart is a sound language.
+Currently, Dart Dev Compiler (DDC) is the only full implementation
+of strong mode. VM and dart2js support are on their way.
+
+"Classic Dart" refers to Dart before soundness was added to the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -347,6 +353,56 @@ the analyzer can infer types for fields, methods, local variables,
 and generic type arguments.
 
 When the analyzer can't infer the type, the `dynamic` type is assigned.
+
+How does type inference work with collections and generics?
+For example, what happens when you use `var` under strong mode in
+the following snippets?
+
+Given the following example:
+
+{% prettify dart %}
+Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
+{% endprettify %}
+
+Changing Map<String, dynamic> to `var` becomes:
+
+{% prettify dart %}
+var arguments = {'argA': 'hello', 'argB': 42};
+{% endprettify %}
+
+The map literal infers its type from the elements.
+The keys are both strings. Since the values have different
+types (string and int), you get the least upper bound of those,
+which is Object.
+So the resulting map has type Map<String, Object>, and `arguments`
+gets the same type by inferring it from its initializer.
+
+<hr>
+
+What happens if you replace Map<String, dynamic> with `var`
+in the following example?
+
+{% prettify dart %}
+Map<String, dynamic> message = {
+  'method': 'someMethod',
+  'args': <Map<String, dynamic>>[arguments],
+};
+{% endprettify %}
+
+This is the same case as above. If you define `message`
+using `var`, the resulting map has type Map<String, Object>,
+and `message` will have the same type.
+
+<hr>
+
+What happens if you replace List<dynamic> with `var` in the
+following example?
+
+{% prettify dart %}
+List<dynamic> arguments = methodCall['args'];
+{% endprettify %}
+
+This depends on the type of `methodCall` and its subscript operator.
 
 ### Field and method inference
 

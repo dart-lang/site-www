@@ -44,8 +44,14 @@ write sound Dart code. Be sure to also check out the
 ### What is "strong mode"? Is it the same as “sound Dart”?
 
 “Sound Dart”, “strong mode Dart”, and “type safe Dart” are sometimes
-used interchangeably. Strong mode is Dart’s implementation of a
-sound type system. With strong mode enabled, Dart is a type safe language
+used interchangeably. Strong mode is a sound static
+type system that uses a combination of static and runtime checks to
+ensure your code is type safe&mdash;that you can never see a value
+whose runtime type does not match its static type.
+
+Strong mode is Dart’s implementation of a sound type system.
+With strong mode enabled (in an implementation that has both
+the static and runtime checks), Dart is a type safe language
 ensuring that static type annotations are actually
 correct at runtime. Strong mode is an optional mode that you enable in
 Dart Analyzer to enforce stronger static typing.
