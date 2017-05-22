@@ -25,5 +25,4 @@ when he does, link to that.
 * [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app)
 
 For a full list of Dart web codelabs, see
-[Codelabs](https://webdev.dartlang.org/codelabs) on
-[Dart for the web](https://webdev.dartlang.org).
+[webdev.dartlang.org/codelabs](https://webdev.dartlang.org/codelabs).
