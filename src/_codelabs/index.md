@@ -8,19 +8,21 @@ toc: false
 
 See the latest Dart codelabs on the Google Developers site:
 
+**General**
 * [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart)
-* [Write a Material Design AngularDart Web App](https://codelabs.developers.google.com/codelabs/your-first-angulardart-web-app)
-* [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app)
 
-## Other codelabs
-
-The following links point you to codelabs for Dart technologies:
-
-* [Dart for the Web codelabs](https://webdev.dartlang.org/codelabs)
-* Search for "Flutter" on the
-  [Google Developer codelabs site](https://codelabs.developers.google.com/)
+**Flutter**
+* [Building Beautiful UIs with Flutter](https://codelabs.developers.google.com/codelabs/flutter)
+* [Firebase for Flutter](https://codelabs.developers.google.com/codelabs/flutter-firebase)
 
 {% comment %}
 Seth hasn't yet added links to these codelabs on flutter.io. If and
 when he does, link to that.
 {% endcomment %}
+
+**AngularDart**
+* [Write a Material Design AngularDart Web App](https://codelabs.developers.google.com/codelabs/your-first-angulardart-web-app)
+* [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app)
+
+For a full list of Dart web codelabs, see
+[webdev.dartlang.org/codelabs](https://webdev.dartlang.org/codelabs).
