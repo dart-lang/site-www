@@ -4,6 +4,8 @@
       permalink: /guides/get-started
     - title: Sample Code
       permalink: /samples
+    - title: Codelabs
+      permalink: /codelabs
 
 - title: Language
   children:
