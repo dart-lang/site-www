@@ -41,12 +41,12 @@ encounter when using Dart technologies:
 
 * _Integration_ and _end-to-end_ tests verify the behavior of
   an entire app, or a large chunk of an app. An integration test
-  generally runs on a real device or OS simulator (for mobile),
-  or on a browser (for the web), and consists of two pieces:
+  generally runs on a real device or OS simulator (for mobile)
+  or on a browser (for the web) and consists of two pieces:
   the app itself, and the test app that puts
-  it through its paces. An integration test often measures performance,
+  the app through its paces. An integration test often measures performance,
   so the test app generally runs on a different device or OS
-  than the app being tested..
+  than the app being tested.
 
 ## Generally useful libraries
 
