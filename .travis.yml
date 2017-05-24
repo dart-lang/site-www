@@ -11,15 +11,7 @@ rvm:
 
 install:
   - bundle install
-  - npm install -g firebase-tools@3.5.0
-
-before_script:
-  # - chmod +x ./deploy/runtests.sh
-  - chmod +x ./deploy/cibuild
-  - chmod +x ./deploy/deploy-firebase.sh
-  - chmod +x ./deploy/check_url.sh
-  - chmod +x ./deploy/html_proof.rb
-  - chmod +x ./deploy/check_sitemap.rb
+  - npm install -g firebase-tools --no-optional
 
 script:
   - ./deploy/cibuild
