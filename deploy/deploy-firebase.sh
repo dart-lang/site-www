@@ -1,5 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-echo "================ Deploy to Firebase ========================"
-firebase deploy --token "${FIREBASE_TOKEN}" --non-interactive --project default
+: ${FIREBASE_PROJECT:=default}
 
+echo "================ Deploy to Firebase ($FIREBASE_PROJECT) ========================"
+firebase deploy --token "$FIREBASE_TOKEN" --project $FIREBASE_PROJECT
