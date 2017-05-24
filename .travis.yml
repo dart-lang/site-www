@@ -4,8 +4,11 @@ cache:
   bundler: true
   directories:
   # - $HOME/[path]
-rvm:
-- 2.2.3
+rvm: [2.3.0]
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 
 # before_install:
 
@@ -16,19 +19,19 @@ install:
 script:
   - ./deploy/cibuild
 
+after_script:
+  # Just FYI test. Won't fail the build if it has errors.
+  - ./deploy/check_sitemap.rb
+  - ./deploy/html_proof.rb
+  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
+  # # (By default, Travis doesn't fail builds after deployment.)
+  # - "./deploy/html_proof.rb || travis_terminate 1"
+
 # branch whitelist
 # branches:
 #   only:
 #   - master        # test the master branch
 #   - /stage-(.*)/  # test every branch which starts with "stage-"
-
-env:
-  global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-
-
-# after_success:
-# We could add the deployment to firebase here if there are no additional customizations etc...
 
 deploy:
   - provider: script
@@ -36,11 +39,3 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
-
-after_deploy:
-  # Just FYI test. Won't fail the build if it has errors.
-  - ./deploy/check_sitemap.rb
-  - ./deploy/html_proof.rb
-  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
-  # # (By default, Travis doesn't fail builds after deployment.)
-  # - "./deploy/html_proof.rb || travis_terminate 1"
