@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Dart Code Labs"
+title: "Dart Codelabs"
 description: "Links to Dart codelabs."
 permalink: /codelabs
 toc: false
