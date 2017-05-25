@@ -257,8 +257,8 @@ analyzer:
 This analysis options file instructs the analysis tools to ignore
 the TODO rule.
 
-Alternatively, to ignore a specific rule for a specific file, you can
-use a comment:
+Alternatively, as of Dart 1.24 you can ignore a specific rule for a 
+specific file using an `ignore_for_file` comment:
 
 {% prettify dart %}
 // ignore_for_file: unused_import
