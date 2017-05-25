@@ -257,6 +257,21 @@ analyzer:
 This analysis options file instructs the analysis tools to ignore
 the TODO rule.
 
+Alternatively, to ignore a specific rule for a specific file, you can
+use a comment:
+
+{% prettify dart %}
+// ignore_for_file: unused_import
+{% endprettify %}
+
+This acts for the whole file, before or after the comment, and is
+particularly useful for generated code. A comma-separated list may be
+used to suppress more than one rule:
+
+{% prettify dart %}
+// ignore_for_file: unused_import, invalid_assignment
+{% endprettify %}
+
 ## Changing the severity of analysis rules
 
 Using the same mechanism, you can also globally change the severity
