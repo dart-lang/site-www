@@ -355,17 +355,17 @@ and generic type arguments.
 When the analyzer can't infer the type, the `dynamic` type is assigned.
 
 How does type inference work with collections and generics?
-For example, what happens when you use `var` under strong mode in
-the following snippets?
+For example, what happens when you use `var` with maps or lists
+under strong mode?
 
-Given the following example:
+### Example #1: From Map&lt;String, dynamic> to `var`
 
+Original definition:
 {% prettify dart %}
 Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
-Changing Map<String, dynamic> to `var` becomes:
-
+New definition:
 {% prettify dart %}
 var arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
@@ -377,11 +377,9 @@ which is Object.
 So the resulting map has type Map<String, Object>, and `arguments`
 gets the same type by inferring it from its initializer.
 
-<hr>
+### Example #2: From Map&lt;String, dynamic> to `var`
 
-What happens if you replace Map<String, dynamic> with `var`
-in the following example?
-
+Original definition:
 {% prettify dart %}
 Map<String, dynamic> message = {
   'method': 'someMethod',
@@ -389,20 +387,32 @@ Map<String, dynamic> message = {
 };
 {% endprettify %}
 
+New definition:
+{% prettify dart %}
+var message = {
+  'method': 'someMethod',
+  'args': <Map<String, dynamic>>[arguments],
+};
+{% endprettify %}
+
 This is the same case as above. If you define `message`
-using `var`, the resulting map has type Map<String, Object>,
-and `message` will have the same type.
+using `var`, the resulting map has type Map<String, Object>.
 
-<hr>
+### Example 3: From List&lt;dynamic> to `var`
 
-What happens if you replace List<dynamic> with `var` in the
-following example?
 
+Original definition:
 {% prettify dart %}
 List<dynamic> arguments = methodCall['args'];
 {% endprettify %}
 
-This depends on the type of `methodCall` and its subscript operator.
+New definition:
+{% prettify dart %}
+var arguments = methodCall['args'];
+{% endprettify %}
+
+The resulting definition depends on the type of `methodCall` and
+its subscript operator.
 
 ### Field and method inference
 
