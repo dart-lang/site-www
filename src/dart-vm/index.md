@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Dart VM"
+title: "Command line"
 description: "The landing page for all things relating to the Dart virtual machine (Dart VM)"
 toc: false
 permalink: /dart-vm

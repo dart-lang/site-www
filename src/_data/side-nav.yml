@@ -59,7 +59,7 @@
       children:
       - title: "API Reference"
         permalink: http://docs.flutter.io/flutter/
-    - title: "Dart VM"
+    - title: "Command line"
       permalink: /dart-vm
       children:
       - title: "Install Dart"
