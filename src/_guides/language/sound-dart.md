@@ -454,7 +454,8 @@ y = 4.0;
 
 ### Type argument inference
 
-Type arguments to constructor calls and generic method invocations are
+Type arguments to constructor calls and
+[generic method](/guides/language/language-tour#using-generic-methods) invocations are
 inferred based on a combination of downward information from the context
 of occurrence, and upwards information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
@@ -741,12 +742,13 @@ The next few documents are part of the original
 [dartdevc]({{site.webdev}}/tools/dartdevc) documentation,
 but most of the information applies to anyone using strong mode Dart:
 
-* [Strong Mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md) -
+* [Strong Mode](https://github.com/dart-archive/dev_compiler/blob/master/STRONG_MODE.md) -
   Motivation for strong mode Dart.
-* [Strong Mode Static Checking](https://github.com/dart-lang/dev_compiler/blob/master/doc/STATIC_SAFETY.md) -
+* [Strong Mode Static Checking](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/STATIC_SAFETY.md) -
   Type inference in strong mode Dart.
-* [Strong Mode in the Dart Dev Compiler](https://chromium.googlesource.com/external/github.com/dart-lang/dev_compiler/+/refs/heads/master/doc/RUNTIME_SAFETY.md) -
+* [Strong Mode in the Dart Dev Compiler](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/RUNTIME_SAFETY.md) -
   Runtime checks in dartdevc.
-* [Prototype Syntax for Generic Methods](https://github.com/dart-lang/dev_compiler/blob/master/doc/GENERIC_METHODS.md) -
-  Proposed syntax for generic methods, which make it easier to write sound code.
+* [Using Generic Methods](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md) -
+  Details beyond what the [generic methods](/guides/language/language-tour#using-generic-methods) section
+  of the language tour provides.
 

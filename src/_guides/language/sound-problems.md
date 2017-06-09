@@ -246,12 +246,6 @@ in [dartdevc,]({{site.webdev}}/tools/dartdevc) so the analyzer provides a warnin
 **Fix:** Provide an explicit type, or give the analyzer enough information
 to properly infer the type.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** This warning can also occur when a generic subclass neglects
-to specify a type. For more information, see
-[Missing type arguments](#missing-type-arguments).
-</aside>
-
 For example, the following code generates the warning
 "Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;".
 
@@ -311,20 +305,13 @@ in the [language tour](/guides/language/language-tour).
 <a name="missing-type-arguments"></a>
 ### Missing type arguments
 
-Omitting a type argument when defining a generic subclass can cause one
-of two kinds of problems during static analysis:
-
 **Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
-
-or
-
-**Warning:** <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type</em>&gt;.</code>
 
 **Fix:** Specify type arguments for the generic subclass.
 
 When a generic subclass neglects to specify a type argument,
 the analyzer infers the `dynamic` type. This is likely to cause
-errors like invalid overrides or unsound downcasts.
+errors.
 
 In the following example, `Subclass` extends `Superclass<T>` but doesn't
 specify a type argument. The analyzer infers `Subclass<dynamic>`,
@@ -450,14 +437,6 @@ constructor initialization list](/guides/language/effective-dart/usage#do-place-
 in [Effective Dart](/guides/language/effective-dart/).
 
 <hr>
-
-{% comment %}
-### Invalid field override
-
-Strong mode currently disallows overriding a field with another field or with a getter/setter. Generally speaking making the superclass field into a getter/setter pair is a simple solution.  Note that we do allow an interface which declares a field to be implemented with a field, or with a getter/setter. Overriding a field with another field or with a getter/setter pair generally leaves the old field around using up memory in the object. It’s technically still possible to access the field, but most code simply leaves it around unused.
-
-We will eventually support field overrides in strong mode, but dartdevc does not support them yet.  For the time being, you can use the @virtual annotation from package:meta to make a field virtual (allowing it to be overridden), but the resulting code will not yet work in dartdevc.
-{% endcomment %}
 
 {% comment %}
 ## Known issues
