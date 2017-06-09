@@ -240,8 +240,8 @@ For more information, see [Use proper input parameter types when overriding meth
 **Warning:**
 <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type&gt;</em>.</code>
 
-Implicit downcasts involving `dynamic` will most likely fail at runtime
-in DDC, so the analyzer provides a warning.
+Implicit downcasts involving `dynamic` are likely to fail at runtime
+in [dartdevc,]({{site.webdev}}/tools/dartdevc) so the analyzer provides a warning.
 
 **Fix:** Provide an explicit type, or give the analyzer enough information
 to properly infer the type.
@@ -296,7 +296,7 @@ List<String> strings = stuff [[highlight]]as List<String>[[/highlight]];
 </div>
 
 <aside class="alert alert-info" markdown="1">
-**Note:** Currently, only DDC makes strong mode
+**Note:** Currently, only dartdevc makes strong mode
 runtime checks, but they're coming to other tools.
 </aside>
 
@@ -423,7 +423,8 @@ initialization list.
 
 **Fix:** Put the `super()` call last.
 
-DDC generates simpler code if it relies on the `super()` call appearing last.
+The Dart dev compiler generates simpler code if
+it relies on the `super()` call appearing last.
 The following example generates an error in strong mode Dart:
 
 <div class="fails-sa" markdown="1">
@@ -455,7 +456,7 @@ in [Effective Dart](/guides/language/effective-dart/).
 
 Strong mode currently disallows overriding a field with another field or with a getter/setter. Generally speaking making the superclass field into a getter/setter pair is a simple solution.  Note that we do allow an interface which declares a field to be implemented with a field, or with a getter/setter. Overriding a field with another field or with a getter/setter pair generally leaves the old field around using up memory in the object. It’s technically still possible to access the field, but most code simply leaves it around unused.
 
-We will eventually support field overrides in strong mode, but DDC does not support them yet.  For the time being, you can use the @virtual annotation from package:meta to make a field virtual (allowing it to be overridden), but the resulting code will not yet work in DDC.
+We will eventually support field overrides in strong mode, but dartdevc does not support them yet.  For the time being, you can use the @virtual annotation from package:meta to make a field virtual (allowing it to be overridden), but the resulting code will not yet work in dartdevc.
 {% endcomment %}
 
 {% comment %}

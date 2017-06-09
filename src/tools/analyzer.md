@@ -52,10 +52,10 @@ The following tools use package:analyzer:
 
 * [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
 )
-* [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)
+* [`dartdevc`]({{site.webdev}}/tools/dartdevc)
 * [`dartdoc`](https://github.com/dart-lang/dartdoc)
 * [`dartfmt`](https://github.com/dart-lang/dart_style)
-* [Dart Dev Compiler](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler) (aka DDC)
+* [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)
 
 You might also be interested in the [Dart Analyzer discussion
 group.](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)
