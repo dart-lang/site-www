@@ -25,7 +25,6 @@ language.
 <ul>
 <li><a href="#undefined-member">Undefined member</a></li>
 <li><a href="#invalid-method-override">Invalid method override</a></li>
-<li><a href="#unsound-implicit-downcast">Unsound implicit downcast</a></li>
 <li><a href="#missing-type-arguments">Missing type arguments</a></li>
 <li><a href="#assigning-mismatched-types">Assigning mismatched types</a></li>
 <li><a href="#constructor-initialization-list">Constructor initialization list super() call</a></li>
@@ -232,73 +231,6 @@ For more information, see [Use proper input parameter types when overriding meth
 [covariant keyword](#the-covariant-keyword).
 </aside>
 
-<hr>
-
-<a name="unsound-implicit-downcast"></a>
-### Unsound implicit downcast
-
-**Warning:**
-<code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type&gt;</em>.</code>
-
-Implicit downcasts involving `dynamic` are likely to fail at runtime
-in [dartdevc,]({{site.webdev}}/tools/dartdevc) so the analyzer provides a warning.
-
-**Fix:** Provide an explicit type, or give the analyzer enough information
-to properly infer the type.
-
-For example, the following code generates the warning
-"Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;".
-
-<div class="fails-sa" markdown="1">
-{% prettify dart %}
-var stuff = []; // Runtime type is List<dynamic>.
-stuff.add([[highlight]]"Hi"[[/highlight]]);
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-The best way to fix this it to give the analyzer enough information to
-correctly infer the list's type:
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = [[highlight]]['Hi'][[/highlight]]; // Runtime type is List<String>.
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-You could also explicitly specify the list's type:
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = [[highlight]]<String>[[/highlight]][]; // Runtime type is List<String>.
-stuff.add("Hi");
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-As a last resort, you can cast the type using <code>as <em>Class</em></code>.
-This solution is risker because the cast silences the static error by
-inserting a runtime cast that may fail at runtime.
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = []; // Runtime type is List<dynamic>.
-stuff.add("Hi");
-List<String> strings = stuff [[highlight]]as List<String>[[/highlight]];
-{% endprettify %}
-</div>
-
-<aside class="alert alert-info" markdown="1">
-**Note:** Currently, only dartdevc makes strong mode
-runtime checks, but they're coming to other tools.
-</aside>
-
-In more complex situations where this warning appears, you may want
-to use a generic method. You can either use an existing method, such
-as `Iterable.map()`, or you can define your own.
-For more information, see [Using generic methods](/guides/language/language-tour#using-generic-methods)
-in the [language tour](/guides/language/language-tour).
 
 <hr>
 
