@@ -718,9 +718,8 @@ before evaluating the rest of the subclass's initializers.
 What it *doesn't* mean is that the superclass's *constructor body* is executed
 then. That always happens after all initializers are run regardless of where
 `super()` appears. Placing the `super()` elsewhere is confusing and almost never
-useful. In fact, [DDC][] *requires* that it appear last.
-
-[ddc]: https://github.com/dart-lang/dev_compiler
+useful. In fact, [dartdevc]({{site.webdev}}/tools/dartdevc)
+*requires* that it appear last.
 
 <div class="good">
 {% prettify dart %}

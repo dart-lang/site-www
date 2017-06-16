@@ -28,7 +28,7 @@ write sound Dart code. Be sure to also check out the
 <li><a href="#does-analyzer-know-strong-mode">Does the analyzer know anything about strong mode?</a></li>
 <li><a href="#does-dart2js-use-it">Does dart2js know anything about strong mode?</a></li>
 <li><a href="#does-dart-vm-use-it">Does the Dart VM know anything about strong mode?</a></li>
-<li><a href="#does-ddc-use-it">Does DDC know anything about strong mode?</a></li>
+<li><a href="#does-ddc-use-it">Does dartdevc know anything about strong mode?</a></li>
 <li><a href="#is-typing-optional">Is Dart still optionally typed?</a></li>
 <li><a href="#how-much-work">How much work is it to switch to strong mode?</a></li>
 <li><a href="#can-i-mix-code">Can some of my code in my app/library be strong mode, and other code be not-strong-mode?</a></li>
@@ -72,8 +72,9 @@ Our developers have told us that they prefer more feedback from
 their type system, to help them manage larger code bases and better
 understand their code.
 Also, new tools in development for the Dart language, such as the
-[Dart Dev Compiler](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler)
-(DDC), rely on ahead-of-time (AOT) compilation.
+Dart dev compiler
+([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_),
+rely on ahead-of-time (AOT) compilation.
 AOT compiling benefits significantly from strong type
 checking that can be performed at compile time. Strong mode enables
 tools that provide a better development experience.
@@ -144,7 +145,8 @@ For more information, see
 ### Does strong mode affect the runtime behavior of my code?
 
 Strong mode hasn’t affected the runtime behavior for the Dart VM or dart2js.
-Strong mode may affect the runtime behavior in DDC
+Strong mode may affect the runtime behavior in
+[dartdevc]({{site.webdev}}/tools/dartdevc)
 if it inserts runtime type checks to deal with the remaining dynamism in the
 language. For more information, see
 [Runtime checks](/guides/language/sound-dart#runtime-checks) and
@@ -173,8 +175,8 @@ Yes. Dart Analyzer performs type inference and enforces strong mode.
 <a name="does-dart2js-use-it"></a>
 ### Does dart2js know anything about strong mode?
 
-Not yet. Currently, [Dart Dev Compiler](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler)
-(DDC) is the only compiler that uses strong mode,
+Not yet. Currently, [dartdevc]({{site.webdev}}/tools/dartdevc)
+is the only compiler that uses strong mode,
 but it will be coming to other tools.
 
 <a name="does-dart-vm-use-it"></a>
@@ -183,10 +185,11 @@ but it will be coming to other tools.
 Not yet. See the answer to the previous question.
 
 <a name="does-ddc-use-it"></a>
-### Does DDC know anything about strong mode?
+### Does dartdevc know anything about strong mode?
 
-Yes, DDC requires strong mode compliance to perform ahead-of-time compiling.
-DDC is part of the improved tooling experience,
+Yes, dartdevc requires strong mode compliance to
+perform ahead-of-time compiling.
+The Dart dev compiler is part of the improved tooling experience,
 including incremental compiles, that is under development.
 
 <a name="is-typing-optional"></a>
@@ -211,7 +214,7 @@ migrating your code to sound Dart, see
 ### Can some of my code in my app/library be strong mode, and other code be not-strong-mode?
 
 It depends. You can exclude files from static analysis, but
-if you're using DDC, the code must be entirely strong mode clean.
+if you're using dartdevc, the code must be entirely strong mode clean.
 For more information, see
 [Excluding files](/guides/language/analysis-options#excluding-files).
 
@@ -234,7 +237,8 @@ Other packages are excluded from static analysis by default. You have
 to specify `--show-package-warnings` to see errors in other packages.
 As for executing code, the dart2js and Dart VM tools don’t currently
 support strong mode so, yes, you can mix and match.
-DDC requires strong mode compliance and won’t compile code that is unsound.
+The dartdevc tool requires strong mode compliance and
+won’t compile code that is unsound.
 
 <a name="is-it-darts-new-type-system"></a>
 ### Is strong mode Dart's new type system?

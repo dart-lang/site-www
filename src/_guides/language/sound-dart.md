@@ -16,8 +16,10 @@ ensure your code is type safe&mdash;that you can never see a value
 whose runtime type does not match its static type.
 With strong mode enabled (in an implementation that has both the
 static and runtime checks), Dart is a sound language.
-Currently, Dart Dev Compiler (DDC) is the only full implementation
-of strong mode. VM and dart2js support are on their way.
+Currently, the Dart dev compiler
+([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_)
+is the only full implementation of strong mode.
+VM and dart2js support are on their way.
 
 "Classic Dart" refers to Dart before soundness was added to the language.
 </aside>
@@ -160,8 +162,8 @@ A sound type system has several benefits:
   code is much less efficient.
 
 * Cleaner JavaScript.<br>
-  For web apps, strong mode's more restictive typing allows the Dart
-  Dev Compiler (DDC) to generate more compact, cleaner JavaScript.
+  For web apps, strong mode's more restrictive typing allows
+  dartdevc to generate cleaner, more compact JavaScript.
 
 ## What constitutes strong mode?
 
@@ -317,9 +319,8 @@ void main() {
 ## Runtime checks
 
 The changes to Dart's type system as described in this document handle
-most of what's needed to make the Dart language sound. The Dart Dev
-Compiler (DDC) has runtime checks to deal with the remaining
-dynamism in the language.
+most of what's needed to make the Dart language sound. Dartdevc has
+runtime checks to deal with the remaining dynamism in the language.
 
 For example, the following code passes strong mode checks in the analyzer:
 
@@ -340,7 +341,7 @@ However, the app throws an exception at runtime because it is an error
 to assign a list of Dogs to a list of Cats.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** As of release 1.21, only DDC implements these runtime checks,
+**Note:** As of release 1.21, only dartdevc implements these runtime checks,
 but support in other tools is coming.
 </aside>
 
@@ -453,7 +454,8 @@ y = 4.0;
 
 ### Type argument inference
 
-Type arguments to constructor calls and generic method invocations are
+Type arguments to constructor calls and
+[generic method](/guides/language/language-tour#using-generic-methods) invocations are
 inferred based on a combination of downward information from the context
 of occurrence, and upwards information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
@@ -516,7 +518,7 @@ If you use [DartPad](/tools/dartpad) to write and test code, you can
 enable strong mode by selecting the **Strong mode** box in the lower
 right corner. Note that DartPad doesn't support the implicit casts flag,
 implicit dynamic flag, or enabling linter rules. For this functionality
-you can use DDC or IntelliJ.
+you can use dartdevc or IntelliJ.
 
 ## Substituting types
 
@@ -736,15 +738,17 @@ strong mode:
   to set up and customize the analyzer and linter using an analysis
   options file.
 
-The next few documents are part of the Dart Dev Compiler (DDC) documentation,
+The next few documents are part of the original
+[dartdevc]({{site.webdev}}/tools/dartdevc) documentation,
 but most of the information applies to anyone using strong mode Dart:
 
-* [Strong Mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md) -
+* [Strong Mode](https://github.com/dart-archive/dev_compiler/blob/master/STRONG_MODE.md) -
   Motivation for strong mode Dart.
-* [Strong Mode Static Checking](https://github.com/dart-lang/dev_compiler/blob/master/doc/STATIC_SAFETY.md) -
+* [Strong Mode Static Checking](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/STATIC_SAFETY.md) -
   Type inference in strong mode Dart.
-* [Strong Mode in the Dart Dev Compiler](https://chromium.googlesource.com/external/github.com/dart-lang/dev_compiler/+/refs/heads/master/doc/RUNTIME_SAFETY.md) -
-  Runtime checks in DDC.
-* [Prototype Syntax for Generic Methods](https://github.com/dart-lang/dev_compiler/blob/master/doc/GENERIC_METHODS.md) -
-  Proposed syntax for generic methods, which make it easier to write sound code.
+* [Strong Mode in the Dart Dev Compiler](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/RUNTIME_SAFETY.md) -
+  Runtime checks in dartdevc.
+* [Using Generic Methods](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md) -
+  Details beyond what the [generic methods](/guides/language/language-tour#using-generic-methods) section
+  of the language tour provides.
 

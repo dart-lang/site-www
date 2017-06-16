@@ -32,17 +32,17 @@ to ensure that your code complies with the
 and other suggested guidelines
 in [Effective Dart](/guides/language/effective-dart).
 Dart tools such as the
-[Dart Dev Compiler (DDC)](https://github.com/dart-lang/dev_compiler),
-[`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer),
-[`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer),
-and [JetBrains IDEs](https://www.dartlang.org/tools/jetbrains-plugin)
+[Dart dev compiler (dartdevc),]({{site.webdev}}/tools/dartdevc)
+[`dartanalyzer`,](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
+[`flutter analyze`,](https://flutter.io/debugging/#the-dart-analyzer)
+and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
 using an analysis options file. If you want to
 add static analysis to your tool, see the
 [analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
-[Analysis Server API Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html).
+[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
 
 ## The analysis options file
@@ -105,7 +105,7 @@ write code that has no type annotations at all.
 Strong mode applies more restrictive rules to the type system and,
 as a result, finds more errors during static analysis and at runtime.
 Another benefit of strong mode is faster compilation.
-Some tools, such as DDC, require strong mode compliance.
+Some tools, such as dartdevc, require strong mode compliance.
 
 The simplest way to enable strong mode is to specify
 `strong-mode: true` in the analysis-options file:
@@ -303,7 +303,7 @@ Use the following resources to learn more about static analysis in Dart:
 
 * [Strong mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md#strong-mode)
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
-* [Dart linter Rules](http://dart-lang.github.io/linter/lints/)
+* [Dart linter rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-* [DDC](https://github.com/dart-lang/dev_compiler#dev_compiler)
+* [dartdevc]({{site.webdev}}/tools/dartdevc)
 * [analyzer package](https://pub.dartlang.org/packages/analyzer)

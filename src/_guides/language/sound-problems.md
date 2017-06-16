@@ -25,7 +25,6 @@ language.
 <ul>
 <li><a href="#undefined-member">Undefined member</a></li>
 <li><a href="#invalid-method-override">Invalid method override</a></li>
-<li><a href="#unsound-implicit-downcast">Unsound implicit downcast</a></li>
 <li><a href="#missing-type-arguments">Missing type arguments</a></li>
 <li><a href="#assigning-mismatched-types">Assigning mismatched types</a></li>
 <li><a href="#constructor-initialization-list">Constructor initialization list super() call</a></li>
@@ -232,99 +231,19 @@ For more information, see [Use proper input parameter types when overriding meth
 [covariant keyword](#the-covariant-keyword).
 </aside>
 
-<hr>
-
-<a name="unsound-implicit-downcast"></a>
-### Unsound implicit downcast
-
-**Warning:**
-<code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type&gt;</em>.</code>
-
-Implicit downcasts involving `dynamic` will most likely fail at runtime
-in DDC, so the analyzer provides a warning.
-
-**Fix:** Provide an explicit type, or give the analyzer enough information
-to properly infer the type.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** This warning can also occur when a generic subclass neglects
-to specify a type. For more information, see
-[Missing type arguments](#missing-type-arguments).
-</aside>
-
-For example, the following code generates the warning
-"Unsound implicit cast from List&lt;dynamic&gt; to List&lt;String&gt;".
-
-<div class="fails-sa" markdown="1">
-{% prettify dart %}
-var stuff = []; // Runtime type is List<dynamic>.
-stuff.add([[highlight]]"Hi"[[/highlight]]);
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-The best way to fix this it to give the analyzer enough information to
-correctly infer the list's type:
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = [[highlight]]['Hi'][[/highlight]]; // Runtime type is List<String>.
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-You could also explicitly specify the list's type:
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = [[highlight]]<String>[[/highlight]][]; // Runtime type is List<String>.
-stuff.add("Hi");
-List<String> strings = stuff;
-{% endprettify %}
-</div>
-
-As a last resort, you can cast the type using <code>as <em>Class</em></code>.
-This solution is risker because the cast silences the static error by
-inserting a runtime cast that may fail at runtime.
-
-<div class="passes-sa" markdown="1">
-{% prettify dart %}
-var stuff = []; // Runtime type is List<dynamic>.
-stuff.add("Hi");
-List<String> strings = stuff [[highlight]]as List<String>[[/highlight]];
-{% endprettify %}
-</div>
-
-<aside class="alert alert-info" markdown="1">
-**Note:** Currently, only DDC makes strong mode
-runtime checks, but they're coming to other tools.
-</aside>
-
-In more complex situations where this warning appears, you may want
-to use a generic method. You can either use an existing method, such
-as `Iterable.map()`, or you can define your own.
-For more information, see [Using generic methods](/guides/language/language-tour#using-generic-methods)
-in the [language tour](/guides/language/language-tour).
 
 <hr>
 
 <a name="missing-type-arguments"></a>
 ### Missing type arguments
 
-Omitting a type argument when defining a generic subclass can cause one
-of two kinds of problems during static analysis:
-
 **Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
-
-or
-
-**Warning:** <code>Unsound implicit cast from <em>Class&lt;dynamic&gt;</em> to <em>Class&lt;type</em>&gt;.</code>
 
 **Fix:** Specify type arguments for the generic subclass.
 
 When a generic subclass neglects to specify a type argument,
 the analyzer infers the `dynamic` type. This is likely to cause
-errors like invalid overrides or unsound downcasts.
+errors.
 
 In the following example, `Subclass` extends `Superclass<T>` but doesn't
 specify a type argument. The analyzer infers `Subclass<dynamic>`,
@@ -423,7 +342,8 @@ initialization list.
 
 **Fix:** Put the `super()` call last.
 
-DDC generates simpler code if it relies on the `super()` call appearing last.
+The Dart dev compiler generates simpler code if
+it relies on the `super()` call appearing last.
 The following example generates an error in strong mode Dart:
 
 <div class="fails-sa" markdown="1">
@@ -449,14 +369,6 @@ constructor initialization list](/guides/language/effective-dart/usage#do-place-
 in [Effective Dart](/guides/language/effective-dart/).
 
 <hr>
-
-{% comment %}
-### Invalid field override
-
-Strong mode currently disallows overriding a field with another field or with a getter/setter. Generally speaking making the superclass field into a getter/setter pair is a simple solution.  Note that we do allow an interface which declares a field to be implemented with a field, or with a getter/setter. Overriding a field with another field or with a getter/setter pair generally leaves the old field around using up memory in the object. It’s technically still possible to access the field, but most code simply leaves it around unused.
-
-We will eventually support field overrides in strong mode, but DDC does not support them yet.  For the time being, you can use the @virtual annotation from package:meta to make a field virtual (allowing it to be overridden), but the resulting code will not yet work in DDC.
-{% endcomment %}
 
 {% comment %}
 ## Known issues
