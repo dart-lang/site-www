@@ -197,7 +197,7 @@ this:
 
 
 {% prettify dart %}
-import "dart:html"
+import "dart:html";
 
 main() {
   var context = querySelector("canvas").context2D;
