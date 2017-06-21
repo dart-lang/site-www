@@ -1042,6 +1042,26 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=d988cfce0a54c6853799&horizonta
 </iframe>
 {% endcomment %}
 
+### Functional types
+
+Dart allows you to specify function types in places like variables and
+fields.  To do this, replace a function's name with `Function`
+in its declaration. For example, the type of `void foo() {}`
+would be `void Function() {}`.
+This syntax was originally added to [refer to types in the typedef of a
+generic method](#generics-and-generic-functions), but can be used
+wherever a type can be written. For example:
+
+{% prettify dart %}
+int Function(int) f;	// Field `f` contains an int->int function.
+{% endprettify %}
+
+<div class="alert alert-info" markdown="1">
+**Version note:**
+The new function-type syntax was [introduced in SDK 1.24.](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#1240)
+If you use this syntax,
+[specify an SDK version of 1.24 or higher.](/tools/pub/pubspec#sdk-constraints)
+</div>
 
 ### The main() function
 
@@ -3854,6 +3874,32 @@ main() {
 }
 {% endprettify %}
 
+### Typedefs and generic functions
+
+To further support first-class generic functions, Dart has added
+syntax, called _function-type syntax_, allowing you to refer
+to a function's types in a typedef statement.
+This syntax uses an assignment operator in conjunction with
+`Function()` in the declaration.
+
+Compare the following typedef statements:
+
+|--------------------------+------------------------------------------------|
+| Typedef example          | Description                                    |
+|--------------------------|------------------------------------------------|
+| <code>typedef Foo<T>(T param); | A function that takes `dynamic`. |
+| <nobr><code>typedef Foo = Function<T>(T param); | A generic function that types some type parameter T, and a parameter of that type. |
+{:.table}
+
+You can use the `Function` syntax
+[wherever you specify a type](#functional-types).
+
+<div class="alert alert-info" markdown="1">
+**Version note:**
+The new function-type syntax was [introduced in SDK 1.24.](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#1240)
+If you use this syntax,
+[specify an SDK version of 1.24 or higher.](/tools/pub/pubspec#sdk-constraints)
+</div>
 
 ## Metadata
 
