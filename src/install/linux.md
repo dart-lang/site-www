@@ -45,6 +45,11 @@ $ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/de
 $ sudo apt-get update
 {% endprettify %}
 
+The following one-time command sets the correct PATH variable for the dart tools like pub.
+The most common way is to put this line in your .bashrc file.
+{% prettify shell %}
+$ export PATH=/usr/lib/dart/bin:$PATH
+{% endprettify %}
 
 ### Setting up for the dev channel
 
