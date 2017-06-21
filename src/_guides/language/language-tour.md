@@ -1049,7 +1049,7 @@ fields.  To do this, replace a function's name with `Function`
 in its declaration. For example, the type of `void foo() {}`
 would be `void Function() {}`.
 This syntax was originally added to [refer to types in the typedef of a
-generic method](#generics-and-generic-functions), but can be used
+generic method](#typedefs-and-generic-functions), but can be used
 wherever a type can be written. For example:
 
 {% prettify dart %}
