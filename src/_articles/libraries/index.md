@@ -20,6 +20,5 @@ Read these articles for insight into the Dart libraries and APIs.
 Also see:
 
 * [Language articles](/articles/language)
-* [Design decision articles](/articles/design-decisions)
 * [Dart VM articles](/articles/dart-vm)
 * [webdev articles]({{site.webdev}}/articles)

@@ -1,13 +1,13 @@
 ---
 layout: guide
-title: "Sound Dart: Fixing Common Problems"
+title: "Strong Mode Dart: Fixing Common Problems"
 description: "Common problems you may have when converting to strong mode and how to fix them."
 toc: false
 ---
 
 If you're having problems converting your code to strong mode,
 this page can help. Be sure to also check out
-[Sound Dart](/guides/language/sound-dart) for an overview of what "sound
+[Strong Mode Dart](/guides/language/sound-dart) for an overview of what "sound
 Dart" means, and how strong mode contributes to making Dart a sound
 language.
 
@@ -38,7 +38,7 @@ language.
 
 For a complete list of sources about strong mode and sound Dart,
 see [other resources](/guides/language/sound-dart#other-resources)
-in [Sound Dart](/guides/language/sound-dart).
+in [Strong Mode Dart](/guides/language/sound-dart).
 
 ## Troubleshooting
 

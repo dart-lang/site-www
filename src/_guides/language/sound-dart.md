@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: "Sound Dart"
+title: "Strong Mode Dart"
 description: "Why and how to write sound Dart code."
 ---
 
@@ -31,7 +31,7 @@ And soon you'll be able to use new tools that quickly and incrementally
 compile your sound Dart code, giving you a better overall
 developer experience.
 
-Sound Dart adds only a few additional rules beyond that for classic
+Strong mode Dart adds only a few additional rules beyond that for classic
 Dart&mdash;mostly you clarify code where the types are ambiguous or
 incorrect. In fact, most strong mode errors can be fixed by adding type
 annotations to your Lists and Maps. The following code shows valid
@@ -729,10 +729,10 @@ numerous errors when analyzed under strong mode.
 The following resources have further information on sound Dart and
 strong mode:
 
-* [Sound Dart: FAQ](/guides/language/sound-faq) - Questions and answers about
+* [Strong Mode Dart: FAQ](/guides/language/sound-faq) - Questions and answers about
   writing sound Dart code.
-* [Sound Dart: Fixing Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
-* [Sound Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
+* [Strong Mode Dart: Fixing Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
+* [Strong Mode Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit.
 * [Customize Static Analysis](/guides/language/analysis-options) - How
   to set up and customize the analyzer and linter using an analysis

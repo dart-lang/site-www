@@ -1,13 +1,13 @@
 ---
 layout: guide
-title: "Sound Dart: FAQ"
+title: "Strong Mode Dart: FAQ"
 description: "Questions and answers on how and why to write sound Dart code."
 toc: false
 ---
 
 This page collects some questions and answers about why and how to
 write sound Dart code. Be sure to also check out the
-[Sound Dart](/guides/language/sound-dart) to learn more.
+[Strong Mode Dart](/guides/language/sound-dart) to learn more.
 
 ## Questions
 
@@ -57,7 +57,7 @@ correct at runtime. Strong mode is an optional mode that you enable in
 Dart Analyzer to enforce stronger static typing.
 We encourage you to start using strong mode for your
 libraries and apps now. For more information,
-see [Sound Dart](/guides/language/sound-dart).
+see [Strong Mode Dart](/guides/language/sound-dart).
 
 The following image shows strong mode in action:
 
@@ -110,7 +110,7 @@ strong mode to simplify things in the future.
 ### Is strong mode specified? If so, where is the spec?
 
 The strong mode spec has not yet been published. However,
-[Sound Dart](/guides/language/sound-dart) has an overview
+[Strong Mode Dart](/guides/language/sound-dart) has an overview
 with links to where you can find more information.
 
 <a name="is-strong-mode-done"></a>
@@ -208,7 +208,7 @@ annotations to Maps and Lists.
 Often, sound code is a matter of making good use of generic methods.
 To see a list of common errors and warnings you might see when
 migrating your code to sound Dart, see
-[Sound Dart: Fixing Common Problems](/guides/language/sound-problems)
+[Strong Mode Dart: Fixing Common Problems](/guides/language/sound-problems)
 
 <a name="can-i-mix-code"></a>
 ### Can some of my code in my app/library be strong mode, and other code be not-strong-mode?

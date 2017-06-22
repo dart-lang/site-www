@@ -24,19 +24,19 @@ These two resources are popular with both beginning Dartisans and experts.
 ## Other resources
 
 <ul markdown="1">
-<li markdown="1"> [Sound Dart](/guides/language/sound-dart)<br>
+<li markdown="1"> [Strong Mode Dart](/guides/language/sound-dart)<br>
     How and why to write sound Dart code, and how to use strong mode to
     enable soundness.
 </li>
 
 <ul markdown="1">
 
-<li markdown="1"> [Sound Dart: FAQ](/guides/language/sound-faq)<br>
+<li markdown="1"> [Strong Mode Dart: FAQ](/guides/language/sound-faq)<br>
     A list of common questions for those who are interested in stronger
     static typing.
 </li>
 
-<li markdown="1"> [Sound Dart: Fixing Common
+<li markdown="1"> [Strong Mode Dart: Fixing Common
    Problems](/guides/language/sound-problems)<br>
    How to fix errors and warnings you may encounter when writing sound
    Dart code.

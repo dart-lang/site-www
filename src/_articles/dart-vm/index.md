@@ -23,5 +23,4 @@ Also see:
 
 * [Language articles](/articles/language)
 * [Libraries articles](/articles/libraries)
-* [Design decision articles](/articles/design-decisions)
 * [webdev articles]({{site.webdev}}/articles)

@@ -108,7 +108,7 @@ mind:
     Recent changes to the Dart language and tools
     make writing type safe code possible,
     with many expected benefits;
-    see [Sound Dart](/guides/language/sound-dart) for details.
+    see [Strong Mode Dart](/guides/language/sound-dart) for details.
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -3394,8 +3394,7 @@ If you use generic methods,
 [specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constraints)
 </div>
 
-For more information about generics, see [Optional Types in
-Dart](/articles/language/optional-types) and
+For more information about generics, see
 [Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
 
