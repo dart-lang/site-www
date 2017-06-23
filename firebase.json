@@ -187,7 +187,12 @@
       },
       {
         "source": "/articles/optional-types/",
-        "destination": "/articles/language/optional-types",
+        "destination": "/faq#types",
+        "type": 301
+      },
+      {
+        "source": "/articles/language/optional-types",
+        "destination": "/faq#types",
         "type": 301
       },
       {
@@ -237,7 +242,12 @@
       },
       {
         "source": "/articles/why-dart-types/",
-        "destination": "/articles/design-decisions/why-dart-types",
+        "destination": "/faq#types",
+        "type": 301
+      },
+      {
+        "source": "/articles/design-decisions/why-dart-types",
+        "destination": "/faq#types",
         "type": 301
       },
       {
