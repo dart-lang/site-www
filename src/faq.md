@@ -123,7 +123,7 @@ the <a href="/articles/libraries/reflection-with-mirrors">mirrors API</a>.
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
-The language is now at 1.0, but we anticipate further language evolution
+The language is now at 1.x, but we anticipate further language evolution
 to occur in a standards group.  It might be able to include your feature,
 although it can't include everything.  Some features don't fit the basic nature
 of the language, and some don't play well with other features.  Simplicity is
