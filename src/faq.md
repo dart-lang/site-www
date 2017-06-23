@@ -108,7 +108,7 @@ For languages that are "more dynamic" than Dart: Dart deliberately trades off
 some of this arbitrary runtime modification for the goal of better performance
 and tools.
 
-Q. Why isn't Dart syntax more exciting?
+### Q. Why isn't Dart syntax more exciting?
 
 We did throw in some nice syntactic features such as `this.` constructor args
 and `=>` for one-line functions, but we'd agree that Dart chooses
@@ -223,8 +223,8 @@ using [Flutter].
 
 ### Q. What are some real-world production deployments of Dart?
 
-Google AdWords, AdSense, and AdMob all use Dart.  In fact,
-more than 75% of Google's revenue flows through these apps.
+Google AdWords, AdSense, and AdMob all use Dart.
+More than 75% of Google's revenue flows through these apps.
 See [Who Uses Dart] for a more complete list.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
