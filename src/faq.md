@@ -75,6 +75,19 @@ about the VM question in more detail.
 
 ## Language
 
+{% comment %}
+### Q. Isn't Dart a lot like Java?
+
+TODO: provide an up-to-date answer
+{% endcomment %}
+
+### Q. How does Dart relate to Go?
+
+Dart and Go are both language projects started at Google, but they
+are independent and have different goals. As a result,
+they make different choices, and the languages have very different
+natures, even while we all try to learn from each others' work.
+
 ### Q. Why isn't Dart more like Haskell / Smalltalk / Python / Scala / other language?
 
 Various reasons, depending on the language being asked about.
@@ -82,7 +95,7 @@ Various reasons, depending on the language being asked about.
 For languages that are quite different from JavaScript: it's important for Dart
 to compile to efficient JavaScript.  Our experience in GWT is that if the source
 language is too different from JavaScript, it creates some cases where complex
-output code is needed to emulate the source language's behavior.  This can cause
+output code is needed to emulate the source language's behavior. This can cause
 performance to vary in ways that are not transparent to the programmer.
 
 For languages that are less mainstream: we expect that modeling Dart on these
@@ -94,6 +107,14 @@ think we've got our hands full introducing a new language at all.
 For languages that are "more dynamic" than Dart: Dart deliberately trades off
 some of this arbitrary runtime modification for the goal of better performance
 and tools.
+
+Q. Why isn't Dart syntax more exciting?
+
+We did throw in some nice syntactic features such as `this.` constructor args
+and `=>` for one-line functions, but we'd agree that Dart chooses
+familiarity over excitement. One team member's personal testimonial:
+"I wish it had a little more razzle dazzle but I can't deny that
+literally on my first day of writing Dart code, I was productive in it."
 
 ### Q. Does Dart have reflection capabilities?
 
@@ -129,6 +150,11 @@ Dart is a type-safe language if you opt in to [strong mode].
 Strong mode enables a sound static type system and is used by
 [Flutter] (a cross-platform mobile development system),
 and the Dart Development Compiler ([DDC]).
+
+Even in strong mode, though, you can annotate any variable with
+`dynamic` if you need the flexibility of a dynamic language.
+`dynamic` can contain any type. Of course, that removes many of
+the benefits of a type-safe language for that variable.
 
 Without strong mode enabled, Dart is not a type-safe language.
 
@@ -194,6 +220,12 @@ For more information, see [Dart Tools].
 
 Yes! You can build an Android app that also works on iOS from a single codebase
 using [Flutter].
+
+### Q. What are some real-world production deployments of Dart?
+
+Google AdWords, AdSense, and AdMob all use Dart.  In fact,
+more than 75% of Google's revenue flows through these apps.
+See [Who Uses Dart] for a more complete list.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
