@@ -165,7 +165,7 @@ Without strong mode enabled, Dart is not statically typed.
 
 Strong mode is Dart’s implementation of a sound type system.
 With strong mode enabled (in an implementation that has both the
-static and runtime checks), Dart is a type safe language ensuring
+static and runtime checks), Dart is a statically typed language ensuring
 that static type annotations are actually correct at runtime.
 
 For more information, see [Strong Mode Dart].
