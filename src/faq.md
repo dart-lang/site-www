@@ -159,8 +159,6 @@ Even in strong mode, though, you can annotate any variable with
 `dynamic` can contain any type. Of course, that removes many of
 the benefits of a type-safe language for that variable.
 
-Without strong mode enabled, Dart is not statically typed.
-
 ### Q. What is strong mode?
 
 Strong mode is Dart’s implementation of a sound type system.
