@@ -144,25 +144,26 @@ appreciation through careful design choices and fair communication about them.
 
 ## Types
 
-### Q. Is Dart a type-safe language?
+### Q. Is Dart a statically typed language?
 
-Dart is a type-safe language if you opt in to [strong mode].
-Strong mode enables a sound static type system and is used by
-[Flutter] (a cross-platform mobile development system),
-and the Dart Development Compiler ([DDC]).
+Dart is statically typed if you opt in to [strong mode]
+and use a compiler (such as the Dart Development Compiler ([DDC])),
+that has both static and runtime checks. In this environment, Dart
+has a sound type system, which guarantees that an expression of one
+type cannot produce a value of another type. (So, no surprises!)
+[Flutter]&mdash;a cross-platform mobile development system&mdash;uses
+strong mode.
 
 Even in strong mode, though, you can annotate any variable with
 `dynamic` if you need the flexibility of a dynamic language.
 `dynamic` can contain any type. Of course, that removes many of
 the benefits of a type-safe language for that variable.
 
-Without strong mode enabled, Dart is not a type-safe language.
-
 ### Q. What is strong mode?
 
 Strong mode is Dart’s implementation of a sound type system.
 With strong mode enabled (in an implementation that has both the
-static and runtime checks), Dart is a type safe language ensuring
+static and runtime checks), Dart is a statically typed language ensuring
 that static type annotations are actually correct at runtime.
 
 For more information, see [Strong Mode Dart].
