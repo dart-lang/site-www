@@ -111,7 +111,7 @@ excerpt_separator: "~~~"
 include: ["_pages"]
 exclude: ["diagrams", "appengine", "tests", "site"]
 
-gems:
+plugins:
 - jekyll-assets
 - jekyll-toc
 - jekyll-sitemap
