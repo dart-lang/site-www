@@ -2,7 +2,6 @@
 layout: guide
 title: Get Started
 description: "A guide for getting started with Dart."
-image: https://www.dartlang.org/guides/images/get-started-flowchart.png
 toc: false
 ---
 
