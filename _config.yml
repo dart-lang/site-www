@@ -2,8 +2,6 @@
 title: Dart
 description: "Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript."
 url: https://www.dartlang.org
-baseurl: "" # the subpath of your site, e.g. /blog/
-# permalink: /:path/:basename
 
 # Global variables
 # use case:
