@@ -89,8 +89,9 @@ package again.
 
 You can run a script from an activated package explicitly using
 `pub global run`. If the script has been added to the
-`executables` tag in its pubspec file, you can also add it to your
-PATH to run it directly at the command line.
+`executables` tag in its pubspec file, and the bin directory in
+the cache has been added to your path, you can run the script
+directly from the command line.
 
 ### Running a script using `pub global run`
 
@@ -130,7 +131,8 @@ If you haven't already done so, add the bin directory for the
 (maintained by the [`pub cache`](/tools/pub/cmd/pub-cache) command),
 to your path. On Mac and Linux, add `~/.pub-cache/bin` to your path.
 On Windows, add `C:\Users\<user name>\AppData\Roaming\Pub\Cache\bin`
-to your path.
+to your path. (This path is valid for Windows 10, but may vary depending
+on the Windows version.)
 
 You can now directly invoke the command. For example:
 

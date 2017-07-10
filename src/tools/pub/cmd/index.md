@@ -6,8 +6,7 @@ description: "Pub, a package and asset management tool for Dart, supports a vari
 ---
 
 The [pub tool](/tools/pub) has commands for managing packages,
-managing the system cache, running (or serving) apps,
-and building and deploying web apps.
+running (or serving) apps, and building and deploying web apps.
 
 Quick links to the `pub` commands:
 
