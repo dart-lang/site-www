@@ -6,6 +6,8 @@ permalink: /codelabs
 toc: false
 ---
 
+<style> main article .content h2 { margin-bottom: 1em; }</style>
+
 The latest Dart codelabs are on the Google Developers site.
 
 ## General
