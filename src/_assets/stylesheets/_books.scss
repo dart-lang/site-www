@@ -1,12 +1,10 @@
-.book {
+.item-with-pic {
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
-  .cover {
-    margin: 0;
-    img {
-      max-width: none;
-    }
+  img {
+    margin:0;
+    max-width: none;
   }
   .details {
     margin-left: 20px;
