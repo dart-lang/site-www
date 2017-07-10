@@ -129,8 +129,8 @@ If you haven't already done so, add the bin directory for the
 [system cache](/tools/pub/glossary#system-cache)
 (maintained by the [`pub cache`](/tools/pub/cmd/pub-cache) command),
 to your path. On Mac and Linux, add `~/.pub-cache/bin` to your path.
-On Windows, add `AppData\Roaming\Pub\Cache\bin` to your path.
-[PENDING: Confirm that this is the correct `bin` directory for Windows.]
+On Windows, add `C:\Users\<user name>\AppData\Roaming\Pub\Cache\bin`
+to your path.
 
 You can now directly invoke the command. For example:
 
