@@ -3,7 +3,6 @@ layout: default
 permalink: /tools/pub/cmd/pub-get
 title: "pub get"
 description: "Use pub get to retrieve the dependencies used by your Dart application."
-toc: false
 ---
 
 _Get_ is one of the commands of the _pub_ tool.

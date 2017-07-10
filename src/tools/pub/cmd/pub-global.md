@@ -3,7 +3,6 @@ layout: default
 permalink: /tools/pub/cmd/pub-global
 title: "pub global"
 description: "Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line."
-toc: false
 
 header:
   css: ["../transformers/transformers.css"]
@@ -12,12 +11,10 @@ header:
 _Global_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-**Contents**
-
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
 You first [activate a package](#activating-a-package), then you can
-[run scripts](#running-a-script) from that package's bin directory.
+[run scripts](#running-a-script) from that package's `bin` directory.
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
 
@@ -30,15 +27,15 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 $ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 {% endprettify %}
 
-Use `activate` to enable you to run a package's executables
-from anywhere on your machine.
-You can activate a package on [pub.dartlang.org](https://pub.dartlang.org/),
-in a Git repository, or on your local machine.
+Use `activate` to enable running a package's executables from any
+directory on your machine.
+You can activate a package from [pub.dartlang.org](https://pub.dartlang.org/),
+a Git repository, or your local machine.
 Once you have activated a package, see [Running a script](#running-a-script)
 to run scripts from the package's `bin` directory.
 
-When you activate a package you can specify an optional constraint. See the
-[constraint](#options) flag for usage examples.
+When you activate a package you can specify an optional version constraint.
+See the [constraint](#options) flag for usage examples.
 
 ### Activating a package on pub.dartlang.org
 
@@ -91,8 +88,9 @@ package again.
 ## Running a script
 
 You can run a script from an activated package explicitly using
-`pub global run`, or you can add it to your PATH so that you can run it
-directly at the command line.
+`pub global run`. If the script has been added to the
+`executables` tag in its pubspec file, you can also add it to your
+PATH to run it directly at the command line.
 
 ### Running a script using `pub global run`
 
@@ -110,7 +108,41 @@ and passes in two arguments.
 $ pub global run foo:bar arg1 arg2
 {% endprettify %}
 
+
 ### Running a script from your PATH
+
+In order to run a script directly from your path, it must be specified
+under the `executables` tag in its pubspec file.
+
+For example, activate Stagehand, the Dart project generator:
+
+{% prettify sh %}
+$ pub global activate stagehand
+{% endprettify %}
+
+This command installs the package to the system cache on your machine.
+Because the `stagehand` executable is listed under the `executables` tag
+in the pubspec file, pub creates a corresponding shell script in the `bin`
+directory of the system cache.
+
+If you haven't already done so, add the bin directory for the
+[system cache](/tools/pub/glossary#system-cache)
+(maintained by the [`pub cache`](/tools/pub/cmd/pub-cache) command),
+to your path. On Mac and Linux, add `~/.pub-cache/bin` to your path.
+On Windows, add `AppData\Roaming\Pub\Cache\bin` to your path.
+[PENDING: Confirm that this is the correct `bin` directory for Windows.]
+
+You can now directly invoke the command. For example:
+
+{% prettify sh %}
+$ mkdir angular-project
+$ cd angular-project
+$ [[highlight]]stagehand web-angular[[/highlight]]
+{% endprettify %}
+
+### Configuring a package
+
+If you are not a package developer, you can skip these instructions.
 
 A package may choose to expose some of its scripts as executables
 that can be run directly from the command line.  The script must
@@ -125,28 +157,9 @@ executables:
   helloworld:
 {% endprettify %}
 
-When you globally activate a package using any of the `pub global activate`
-options, pub creates a shell script for each
-entry listed in the `executables` section of the pubspec,
-and adds it to the `bin` directory in your
-[pub cache](/tools/pub/glossary#system-cache).
-For Linux and Mac, this file is located in `~/.pub-cache/bin`.
-If you want to activate a subset of the list of executables,
-use `--executable=<name>` (or `-x<name>`, for short).
-
-**You must manually add the pub cache `bin` directory to your PATH.**
-
-If the executable's name conflicts with a previously activated executable,
-it generates a warning. To force pub to install the new executable,
-use `--overwrite`. For example:
-
-{% prettify sh %}
-$ pub global activate <package> --executable=<name> [[highlight]]--overwrite[[/highlight]]
-{% endprettify %}
-
-You can now run `helloworld` at the command line.
-
-For more information on the these flags, see [Options](#options).
+Failing to list a script under the `executables` tag limits how it can
+be used&mdash;it can be executed using `pub global run`, but not
+directly from the command line.
 
 ## Deactivating a package
 

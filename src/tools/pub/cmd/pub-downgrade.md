@@ -3,7 +3,6 @@ layout: default
 permalink: /tools/pub/cmd/pub-downgrade
 title: "pub downgrade"
 description: "Use pub downgrade to get the lowest versions of all dependencies used by your Dart application."
-toc: false
 ---
 
 _Downgrade_ is one of the commands of the _pub_ tool.

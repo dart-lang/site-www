@@ -5,14 +5,9 @@ title: "Pub Commands"
 description: "Pub, a package and asset management tool for Dart, supports a variety of commands."
 ---
 
-Aside from managing packages, [pub](/tools/pub) also has support for
-building web and command line apps.
-
-If your web app's directory structure follows pub's [package layout
-conventions](/tools/pub/package-layout), you can use the pub
-development server (<code class="literal">pub serve</code>) to continuously
-build and serve the app's assets. Once you're ready to deploy the web app,
-use <code class="literal">pub build</code> to generate the final files.
+The [pub tool](/tools/pub) has commands for managing packages,
+managing the system cache, running (or serving) apps,
+and building and deploying web apps.
 
 Quick links to the `pub` commands:
 
@@ -40,20 +35,20 @@ Pub's commands fall into the following categories:
 Pub provides a number of commands that support
 the creation and maintenance of a Dart application.
 
-* The [`pub cache`](/tools/pub/cmd/pub-cache) command works with your system cache.
-  You can add new packages to your cache,
+* The [`pub cache`](/tools/pub/cmd/pub-cache) command works with your
+  system cache.  You can add new packages to your cache,
   or perform a clean reinstall of all packages in your cache.
 
-* The [`pub deps`](/tools/pub/cmd/pub-deps) command lists all of the dependencies
-  used by a package.
+* The [`pub deps`](/tools/pub/cmd/pub-deps) command lists all of the
+  dependencies used by a package.
 
-* The [`pub downgrade`](/tools/pub/cmd/pub-downgrade) command retrieves the lowest
-  versions of all the packages that are listed as dependencies
+* The [`pub downgrade`](/tools/pub/cmd/pub-downgrade) command retrieves the
+  lowest versions of all the packages that are listed as dependencies
   used by the application. This is useful for testing the lower range
   of your package's dependencies.
 
-* The [`pub get`](/tools/pub/cmd/pub-get) command retrieves the packages that are
-  listed as the dependencies for the application.
+* The [`pub get`](/tools/pub/cmd/pub-get) command retrieves the packages
+  that are listed as the dependencies for the application.
 
 * The [`pub upgrade`](/tools/pub/cmd/pub-upgrade) command retrieves the latest
   versions of all the packages that are listed as dependencies
@@ -65,14 +60,15 @@ Pub supports development for web-based apps and command-line apps.
 
 ### Web-based apps
 
-During the development cycle of an application, the
-[`pub serve`]({{site.webdev}}/tools/pub/pub-serve)
-command is used to start up a development server.
+If your web app's directory structure follows pub's [package layout
+conventions](/tools/pub/package-layout), you can use the pub development
+server ([`pub serve`](({{site.webdev}}/tools/pub/pub-serve))) to continuously
+build and serve the app's assets.
 This server can be accessed via the browser on localhost and
 allows you to view your web-based app.
 
 IDEs such as WebStorm also use `pub serve` to serve all of the
-Dart scripts and assets (HTML, images, CSS) to Dartium.
+Dart scripts and assets (HTML, images, CSS) to the browser.
 
 ### Command-line apps
 
@@ -83,24 +79,36 @@ transformers before invoking the specified script.
 * The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
   package, or in one of its dependencies.
 
-* The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with globally
-  available packages that can be run when you are not currently inside
+* The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
+  globally available packages that can be run when you are not currently inside
   a package.
 
 ## Deployment
 
-When you are ready to deploy your app, the
-[`pub build`]({{site.webdev}}/tools/pub/pub-build) command
-creates the `build` directory, compiles the Dart code, and places
-the assets into the build directory.
+Pub supports deployment for web and command-line apps.
 
-## Publication
+### Web-based apps
+
+Once you're ready to deploy a web app,
+use [`pub build`]({{site.webdev}}/tools/pub/pub-build)
+to generate the final files. This command creates the `build` directory,
+compiles the Dart code, and places all necessary files into the build
+directory.
+
+### Command line apps
 
 If you want to share your Dart packages with the world, you can
-use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload your package to
-[pub.dartlang.org](https://pub.dartlang.org). The
+use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
+package to [pub.dartlang.org](https://pub.dartlang.org). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific users
 to modify and upload new versions of your package.
+
+If you publish your scripts to pub.dartlang.org, or share them on GitHub,
+consider adding the
+[`executables`](/tools/pub/cmd/pub-global#configuring-a-package)
+tag to the pubspec file, so that users can use
+[`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
+to make the script directly available from the command line.
 
 ---
 
