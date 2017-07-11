@@ -4,7 +4,6 @@ title: 'Who Uses Dart'
 permalink: /community/who-uses-dart
 description: 'Companies and business that use Dart.'
 toc: false
-snippet_img: images/who-uses-dart.png
 ---
 
 In no particular order, here are some companies and businesses that use Dart.
