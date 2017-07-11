@@ -8,6 +8,12 @@ description: "Pub, a package and asset management tool for Dart, supports a vari
 The [pub tool](/tools/pub) has commands for managing packages,
 running (or serving) apps, and building and deploying web apps.
 
+Flutter has its own commands for managing and updating packages.
+For more information, see
+[Using Packages]({{site.flutter}}/using-packages/) and
+[Upgrading Flutter]({{site.flutter}}/upgrading/)
+on the [Flutter website]({{site.flutter}}).
+
 Quick links to the `pub` commands:
 
 * [`pub build`]({{site.webdev}}/tools/pub/pub-build)
@@ -29,29 +35,43 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Pub's commands fall into the following categories:
 
+* [App creation and maintenance](#app-creation-and-maintenance)
+* [Development](#development)
+* [Deployment](#deployment)
+
 ## App creation and maintenance
 
 Pub provides a number of commands that support
 the creation and maintenance of a Dart application.
 
-* The [`pub cache`](/tools/pub/cmd/pub-cache) command works with your
-  system cache.  You can add new packages to your cache,
-  or perform a clean reinstall of all packages in your cache.
+The most commonly used pub commands, `pub get` and `pub upgrade`,
+retrieve or upgrade dependencies used by a project.
+Every time you modify a pubspec file, run `pub get`
+to make sure the dependencies are up to date. Some IDEs
+perform this step automatically on the creation of a package,
+or any modification of the pubspec.
 
-* The [`pub deps`](/tools/pub/cmd/pub-deps) command lists all of the
-  dependencies used by a package.
+[`pub cache`](/tools/pub/cmd/pub-cache)
+: Manages pub's package cache. Use this command to add packages
+  to your cache, or perform a clean reinstall of all packages in
+  your cache.
 
-* The [`pub downgrade`](/tools/pub/cmd/pub-downgrade) command retrieves the
-  lowest versions of all the packages that are listed as dependencies
-  used by the application. This is useful for testing the lower range
-  of your package's dependencies.
+[`pub deps`](/tools/pub/cmd/pub-deps)
+: Lists all dependencies used by a package.
 
-* The [`pub get`](/tools/pub/cmd/pub-get) command retrieves the packages
-  that are listed as the dependencies for the application.
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade)
+: Retrieves the lowest versions of all the packages that are
+  listed as dependencies used by the application. Used for testing
+  the lower range of your package's dependencies.
 
-* The [`pub upgrade`](/tools/pub/cmd/pub-upgrade) command retrieves the latest
-  versions of all the packages that are listed as dependencies
-  used by the application.
+[`pub get`](/tools/pub/cmd/pub-get)
+: Retrieves the packages that are listed as the dependencies for
+  the application. One of the most commonly used pub commands.
+
+[`pub upgrade`](/tools/pub/cmd/pub-upgrade)
+: Retrieves the latest versions of all the packages that are listed
+  as dependencies used by the application. One of the most commonly
+  used pub commands.
 
 ## Development
 
