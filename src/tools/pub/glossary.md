@@ -149,10 +149,10 @@ different [supported sources](/tools/pub/dependencies#dependency-sources) are av
 ## System cache
 
 When pub gets a remote package,
-it downloads it into a single _system cache_ directory maintained by pub.
-On Mac and Linux, this directory defaults to `~/.pub-cache`.
-On Windows 10, it goes in `C:\Users\<user name>\AppData\Roaming\Pub\Cache`,
-but the location may vary depending on the Windows version.
+it downloads it into a single _system cache_ directory maintained by
+pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
+On Windows, the file lives in `APPDATA%\Pub\Cache\bin`,
+though its exact location may vary depending on the Windows version.
 You can specify a different location using the
 [PUB_CACHE](/tools/pub/installing.html) environment variable.
 

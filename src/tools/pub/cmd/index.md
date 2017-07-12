@@ -52,7 +52,7 @@ perform this step automatically on the creation of a package,
 or any modification of the pubspec.
 
 [`pub cache`](/tools/pub/cmd/pub-cache)
-: Manages pub's package cache. Use this command to add packages
+: Manages pub's local package cache. Use this command to add packages
   to your cache, or perform a clean reinstall of all packages in
   your cache.
 
@@ -66,18 +66,24 @@ or any modification of the pubspec.
 
 [`pub get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
-  the application. One of the most commonly used pub commands.
+  the application. If a `pubspec.lock` file already exists, fetches
+  the same version of each dependency (if missing) as listed in the
+  lock file. Creates or updates the lock file, as needed.
+  One of the most commonly used pub commands.
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
-: Retrieves the latest versions of all the packages that are listed
-  as dependencies used by the application. One of the most commonly
-  used pub commands.
+: Retrieves the latest version of each package listed
+  as dependencies used by the application. If a `pubspec.lock`
+  file exists, ignores the versions listed in the lock file and fetches
+  the newest versions that honor the constraints in the pubspec.
+  Creates or updates the lock file, as needed.
+  One of the most commonly used pub commands.
 
 ## Development
 
 Pub supports development for web-based apps and command-line apps.
 
-### Web-based apps
+### Web apps
 
 If your web app's directory structure follows pub's [package layout
 conventions](/tools/pub/package-layout), you can use the pub development
@@ -106,7 +112,7 @@ transformers before invoking the specified script.
 
 Pub supports deployment for web and command-line apps.
 
-### Web-based apps
+### Web apps
 
 Once you're ready to deploy a web app,
 use [`pub build`]({{site.webdev}}/tools/pub/pub-build)
@@ -114,20 +120,21 @@ to generate the final files. This command creates the `build` directory,
 compiles the Dart code, and places all necessary files into the build
 directory.
 
-### Command line apps
+### Command-line apps
 
 If you want to share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
 package to [pub.dartlang.org](https://pub.dartlang.org). The
-[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific users
-to modify and upload new versions of your package.
+[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
+users to modify and upload new versions of your package.
 
-If you publish your scripts to pub.dartlang.org, or share them on GitHub,
-consider adding the
+If you publish your scripts to pub.dartlang.org, or share them on
+GitHub, consider adding the
 [`executables`](/tools/pub/cmd/pub-global#configuring-a-package)
-tag to the pubspec file, so that users can use
+tag to the pubspec file. When a script is listed under
+`executables` in the pubspec, users can run
 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
-to make the script directly available from the command line.
+to make it directly available from the command line.
 
 ---
 
