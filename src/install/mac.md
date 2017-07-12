@@ -5,7 +5,7 @@ description: "Installing and updating the Dart SDK on your Mac with homebrew."
 permalink: /install/mac
 ---
 
-Homebrew is a package manager for Mac OS.
+Homebrew is a package manager for macOS.
 With [Homebrew](http://brew.sh/),
 installing and updating Dart is easy.
 

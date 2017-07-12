@@ -13,7 +13,7 @@ _Global_ is one of the commands of the _pub_ tool.
 
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
-You first [activate a package](#activating-a-package), then you can
+After [activating a package](#activating-a-package), you can
 [run scripts](#running-a-script) from that package's `bin` directory.
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
@@ -25,11 +25,10 @@ the Dart project generator, from the command line.
 {% prettify sh %}
 $ pub global activate stagehand
 $ stagehand
-$ stagehand web-angular
 {% endprettify %}
 
 If this doesn't work, you may need to
-[set up your path]().
+[set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
 package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
@@ -119,7 +118,7 @@ $ stagehand
 {% endprettify %}
 
 Verify that the `bin` directory for the system cache is in your path.
-The following path, on Mac OSX, includes the system cache.
+The following path, on macOS, includes the system cache.
 
 {% prettify sh %}
 $ echo $PATH
@@ -132,7 +131,7 @@ locate the file for your platform and add it.
 |-------------------+---------------------------|
 |      Platform     |      Cache location       |
 |-------------------|---------------------------|
-| Mac OS X or Linux | `~/.pub-cache/bin`        |
+| macOS or Linux | `~/.pub-cache/bin`        |
 | Windows<sup><strong>*</strong></sup> | `%APPDATA%\Pub\Cache\bin` |
 {:.table .table-striped}
 
@@ -148,8 +147,8 @@ $ [[highlight]]stagehand web-angular[[/highlight]]
 {% endprettify %}
 
 If the script still fails to run from the command line, the
-package may not be [enabled](#configuring-a-package) for this feature.
-You can still run the script using `pub global run`.
+package may not be [configured](#configuring-package-executables) for
+this feature. You can still run the script using `pub global run`.
 
 ### Running a script using `pub global run`
 
@@ -166,11 +165,11 @@ The following command runs the `bin/bar.dart` script from the
 $ pub global run foo:bar arg1 arg2
 {% endprettify %}
 
-### Configuring a package
+### Configuring package executables
 
 If you are not a package developer, you can skip this section.
 
-A package may choose to expose some of its scripts as executables
+A package can expose some of its scripts as executables
 that can be run directly from the command line. The script or scripts
 must be listed in the
 [`executables`](/tools/pub/pubspec.html#executables)
@@ -185,8 +184,8 @@ executables:
   helloworld:
 {% endprettify %}
 
-Failing to list a script under the `executables` tag limits how it can
-be used&mdash;it can be executed using `pub global run`, but not
+Failing to list a script under the `executables` tag reduces the script's
+usability: unlisted scripts can be executed using `pub global run`, but not
 directly from the command line.
 
 ## Deactivating a package

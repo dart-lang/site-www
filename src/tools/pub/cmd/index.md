@@ -6,7 +6,7 @@ description: "Pub, a package and asset management tool for Dart, supports a vari
 ---
 
 The [pub tool](/tools/pub) has commands for managing packages,
-running (or serving) apps, and building and deploying web apps.
+running and serving apps, and building and deploying web apps.
 
 Flutter has its own commands for managing and updating packages.
 For more information, see
@@ -35,17 +35,18 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Pub's commands fall into the following categories:
 
-* [App creation and maintenance](#app-creation-and-maintenance)
-* [Development](#development)
-* [Deployment](#deployment)
+* [Managing apps](#managing-apps)
+* [Running and serving apps](#running-and-serving-apps)
+* [Building
+  and deploying apps and packages](#building-and-deploying-apps-and-packages)
 
-## App creation and maintenance
+## Managing apps
 
 Pub provides a number of commands that support
 the creation and maintenance of a Dart application.
 
-The most commonly used pub commands, `pub get` and `pub upgrade`,
-retrieve or upgrade dependencies used by a project.
+In this group, the most commonly used commands are `pub get` and
+`pub upgrade`, which retrieve or upgrade dependencies used by a project.
 Every time you modify a pubspec file, run `pub get`
 to make sure the dependencies are up to date. Some IDEs
 perform this step automatically on the creation of a package,
@@ -53,7 +54,7 @@ or any modification of the pubspec.
 
 [`pub cache`](/tools/pub/cmd/pub-cache)
 : Manages pub's local package cache. Use this command to add packages
-  to your cache, or perform a clean reinstall of all packages in
+  to your cache, or to perform a clean reinstall of all packages in
   your cache.
 
 [`pub deps`](/tools/pub/cmd/pub-deps)
@@ -70,7 +71,6 @@ or any modification of the pubspec.
   If a `pubspec.lock` file already exists, fetches the version
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
-  One of the most commonly used pub commands.
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
@@ -78,9 +78,8 @@ or any modification of the pubspec.
   file exists, ignores the versions listed in the lock file and fetches
   the newest versions that honor the constraints in the pubspec.
   Creates or updates the lock file, as needed.
-  One of the most commonly used pub commands.
 
-## Development
+## Running and serving apps
 
 Pub supports development for web-based apps and command-line apps.
 
@@ -109,9 +108,18 @@ transformers before invoking the specified script.
   globally available packages that can be run when you are not currently inside
   a package.
 
-## Deployment
+## Building and deploying apps and packages
 
-Pub supports deployment for web and command-line apps.
+Pub supports building and deploying apps and packages. Some information
+is specific to web apps or command-line apps.
+
+### Sharing apps and packages
+
+To share your Dart packages with the world, you can
+use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
+package to [pub.dartlang.org](https://pub.dartlang.org). The
+[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
+users to modify and upload new versions of your package.
 
 ### Web apps
 
@@ -122,12 +130,6 @@ compiles the Dart code, and places all necessary files into the build
 directory.
 
 ### Command-line apps
-
-If you want to share your Dart packages with the world, you can
-use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
-package to [pub.dartlang.org](https://pub.dartlang.org). The
-[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
-users to modify and upload new versions of your package.
 
 If you publish your scripts to pub.dartlang.org, or share them on
 GitHub, consider adding the

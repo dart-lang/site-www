@@ -9,7 +9,8 @@ permalink: /tools/pub/installing
 [Dart SDK](/tools/sdk).
 
 You can use pub through an IDE, such as WebStorm, or through the
-`pub` command-line app, which lives inside the `bin` directory of the Dart SDK.
+`pub` command-line app, which lives inside the `bin` directory of the Dart
+SDK.
 
 ## Get pub
 
@@ -23,10 +24,11 @@ Environment variables allow you to customize pub to suit your needs.
 Some of pub's dependencies are downloaded to the pub cache.
 By default, this directory is located under `.pub_cache`
 in your home directory (on Mac and Linux),
-or in `AppData\Roaming\Pub\Cache` (on Windows).
-You can use the `PUB_CACHE` environmant
+or in `%APPDATA%\Pub\Cache` (on Windows). (The precise location of the
+cache may vary depending on the Windows version.)
+You can use the `PUB_CACHE` environment
 variable to specify another location. For more information, see
-[The system package cache](/tools/pub/cmd/pub-get).
+[The system package cache](/tools/pub/cmd/pub-get#the-system-package-cache).
 
 `PUB_HOSTED_URL`:
 Pub downloads dependencies from `pub.dartlang.org`. To specify the
