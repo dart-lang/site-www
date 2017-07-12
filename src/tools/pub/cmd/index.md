@@ -66,9 +66,10 @@ or any modification of the pubspec.
 
 [`pub get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
-  the application. If a `pubspec.lock` file already exists, fetches
-  the same version of each dependency (if missing) as listed in the
-  lock file. Creates or updates the lock file, as needed.
+  the application.
+  If a `pubspec.lock` file already exists, fetches the version
+  of each dependency (if possible) as listed in the lock file.
+  Creates or updates the lock file, as needed.
   One of the most commonly used pub commands.
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
