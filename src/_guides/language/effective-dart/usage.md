@@ -204,7 +204,7 @@ people.forEach((person) {
 </div>
 
 The exception is if all you want to do is invoke some already existing function
-on each element. In that case, `forEach()` is handy.
+with each element as the argument. In that case, `forEach()` is handy.
 
 <div class="good">
 {% prettify dart %}
