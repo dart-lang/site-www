@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
-if [ $1 == "frontpage" ]; then
-  jekyll build --watch --config _config.yml,scripts/frontpage_only_config.yml &
-else
-  jekyll build --watch &
+set -e -o pipefail
+
+# cd `dirname $0`/..
+
+if [[ "$1" == "--dev" && -e _config_dev.yml ]]; then
+  CONFIG="--config _config.yml,_config_dev.yml"
 fi
+
+if [[ "$1" == "frontpage" ]]; then
+  CONFIG="--config _config.yml,scripts/frontpage_only_config.yml"
+fi
+
+jekyll build $CONFIG --incremental --watch &
+
 j_pid=$!
 firebase serve --port 4000 &
 f_pid=$!
