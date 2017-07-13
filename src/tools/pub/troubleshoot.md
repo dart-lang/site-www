@@ -60,7 +60,7 @@ From the command line, pub honors the `http_proxy` and `https_proxy`
 environment variables.
 You can set the proxy server environment variable as follows.
 
-On Linux/Mac OS X:
+On Linux/macOS:
 
 {% prettify sh %}
 $ export https_proxy=hostname:port
@@ -74,7 +74,7 @@ On Windows:
 
 If the proxy requires credentials, you can set them as follows.
 
-On Linux/Mac OS X:
+On Linux/macOS:
 
 {% prettify sh %}
 $ export https_proxy=username:password@hostname:port

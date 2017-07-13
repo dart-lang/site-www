@@ -11,8 +11,8 @@ May 2012_
 
 Dart programs running on the standalone Dart VM (_command-line apps_) can call C
 or C++ functions in a shared library, by means of native extensions. This
-article shows how to write and build such native extensions on Windows, Mac OS
-X, and Linux.
+article shows how to write and build such native extensions on Windows,
+macOS, and Linux.
 
 You can provide two types of native extensions: asynchronous or synchronous. An
 _asynchronous extension_ runs a native function on a separate thread, scheduled

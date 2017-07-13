@@ -3,7 +3,6 @@ layout: default
 permalink: /tools/pub/cmd/pub-get
 title: "pub get"
 description: "Use pub get to retrieve the dependencies used by your Dart application."
-toc: false
 ---
 
 _Get_ is one of the commands of the _pub_ tool.
@@ -118,8 +117,9 @@ worrying about re-downloading packages.
 
 By default, the system package cache is located in the `.pub-cache`
 subdirectory of your home directory (on Mac and Linux),
-or in `AppData\Roaming\Pub\Cache` (on Windows).
-However, it may be configured by setting the
+or in `%APPDATA%\Pub\Cache` (on Windows). (The precise location of the
+cache may vary depending on the Windows version.)
+You can configure the location of the cache by setting
 [`PUB_CACHE`](/tools/pub/installing)
 environment variable before running pub.
 

@@ -3,7 +3,6 @@ layout: default
 permalink: /tools/pub/cmd/pub-global
 title: "pub global"
 description: "Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line."
-toc: false
 
 header:
   css: ["../transformers/transformers.css"]
@@ -12,14 +11,24 @@ header:
 _Global_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-**Contents**
-
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
-You first [activate a package](#activating-a-package), then you can
-[run scripts](#running-a-script) from that package's bin directory.
+After [activating a package](#activating-a-package), you can
+[run scripts](#running-a-script) from that package's `bin` directory.
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
+
+For example, say you want to run
+[Stagehand](https://pub.dartlang.org/packages/stagehand)
+the Dart project generator, from the command line.
+
+{% prettify sh %}
+$ pub global activate stagehand
+$ stagehand
+{% endprettify %}
+
+If this doesn't work, you may need to
+[set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
 package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
@@ -30,15 +39,15 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 $ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 {% endprettify %}
 
-Use `activate` to enable you to run a package's executables
-from anywhere on your machine.
-You can activate a package on [pub.dartlang.org](https://pub.dartlang.org/),
-in a Git repository, or on your local machine.
-Once you have activated a package, see [Running a script](#running-a-script)
-to run scripts from the package's `bin` directory.
+You can activate packages that live on
+[pub.dartlang.org](https://pub.dartlang.org/), a Git repository,
+or your local machine.
+Once you have activated a package, see [Running a
+script](#running-a-script) to run scripts from the package's
+`bin` directory.
 
-When you activate a package you can specify an optional constraint. See the
-[constraint](#options) flag for usage examples.
+When you activate a package you can specify an optional version
+constraint.  See the [constraint](#options) flag for usage examples.
 
 ### Activating a package on pub.dartlang.org
 
@@ -90,9 +99,56 @@ package again.
 
 ## Running a script
 
-You can run a script from an activated package explicitly using
-`pub global run`, or you can add it to your PATH so that you can run it
-directly at the command line.
+You can directly run a script from an activated package from the
+command line. If you are unable to run the script directly,
+you can also use `pub global run`.
+
+### Running a script from your PATH
+
+To run a script directly from the command line, add the `bin` file
+for the [system cache](/tools/pub/glossary#system-cache) to your path.
+
+For example, say you've activated the Stagehand script,
+but you still can't run the command:
+
+{% prettify sh %}
+$ pub global activate stagehand
+$ stagehand
+-bash: stagehand: command not found
+{% endprettify %}
+
+Verify that the `bin` directory for the system cache is in your path.
+The following path, on macOS, includes the system cache.
+
+{% prettify sh %}
+$ echo $PATH
+[[highlight]]/Users/<user>/.pub-cache/bin[[/highlight]]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+{% endprettify %}
+
+If this directory is missing from your path,
+locate the file for your platform and add it.
+
+|-------------------+---------------------------|
+|      Platform     |      Cache location       |
+|-------------------|---------------------------|
+| macOS or Linux | `~/.pub-cache/bin`        |
+| Windows<sup><strong>*</strong></sup> | `%APPDATA%\Pub\Cache\bin` |
+{:.table .table-striped}
+
+<sup><strong>*</strong></sup> The exact location of the system cache
+may vary for different versions of Windows.
+
+You can now directly invoke the command:
+
+{% prettify sh %}
+$ mkdir angular_project
+$ cd angular_project
+$ [[highlight]]stagehand web-angular[[/highlight]]
+{% endprettify %}
+
+If the script still fails to run from the command line, the
+package may not be [configured](#configuring-package-executables) for
+this feature. You can still run the script using `pub global run`.
 
 ### Running a script using `pub global run`
 
@@ -100,23 +156,26 @@ directly at the command line.
 $ pub global run <package>:<executable> [args...]
 {% endprettify %}
 
-Once you have [activated a package](#activating-a-package), use
-`run` to run a script from the package's `bin` directory.
-You can also specify arguments. The following command
-runs the `bin/bar.dart` script from the `foo` package,
-and passes in two arguments.
+Even if a script is not configured to be run from the command line,
+you can still use `pub global run`.
+The following command runs the `bin/bar.dart` script from the
+`foo` package, passing in two arguments.
 
 {% prettify sh %}
 $ pub global run foo:bar arg1 arg2
 {% endprettify %}
 
-### Running a script from your PATH
+### Configuring package executables
 
-A package may choose to expose some of its scripts as executables
-that can be run directly from the command line.  The script must
-be listed in the [`executables`](/tools/pub/pubspec.html#executables)
+If you are not a package developer, you can skip this section.
+
+A package can expose some of its scripts as executables
+that can be run directly from the command line. The script or scripts
+must be listed in the
+[`executables`](/tools/pub/pubspec.html#executables)
 entry of the pubspec file.  For example, the following pubspec file
-identifies `bin/helloworld.dart` as an executable for the helloworld package:
+identifies `bin/helloworld.dart` as an executable for the helloworld
+package:
 
 {% prettify yaml %}
 name: helloworld
@@ -125,28 +184,9 @@ executables:
   helloworld:
 {% endprettify %}
 
-When you globally activate a package using any of the `pub global activate`
-options, pub creates a shell script for each
-entry listed in the `executables` section of the pubspec,
-and adds it to the `bin` directory in your
-[pub cache](/tools/pub/glossary#system-cache).
-For Linux and Mac, this file is located in `~/.pub-cache/bin`.
-If you want to activate a subset of the list of executables,
-use `--executable=<name>` (or `-x<name>`, for short).
-
-**You must manually add the pub cache `bin` directory to your PATH.**
-
-If the executable's name conflicts with a previously activated executable,
-it generates a warning. To force pub to install the new executable,
-use `--overwrite`. For example:
-
-{% prettify sh %}
-$ pub global activate <package> --executable=<name> [[highlight]]--overwrite[[/highlight]]
-{% endprettify %}
-
-You can now run `helloworld` at the command line.
-
-For more information on the these flags, see [Options](#options).
+Failing to list a script under the `executables` tag reduces the script's
+usability: unlisted scripts can be executed using `pub global run`, but not
+directly from the command line.
 
 ## Deactivating a package
 
@@ -177,10 +217,11 @@ Use `list` to list all currently active packages.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`constraint`
+`<constraint>`
 : Optional for `pub global activate`. The constraint allows you to pull
   in a specific version of the package. For example,
-  the following command pulls the 0.6.0 version of the `markdown` package:
+  the following command pulls the 0.6.0 version of the `markdown`
+  package:
 
 <div class="step-details" markdown="1">
 {% prettify sh %}
@@ -188,8 +229,8 @@ $ pub global activate markdown 0.6.0
 {% endprettify %}
 </div>
 
-  If you specify a range, pub picks the best version that meets that constraint.
-  For example:
+  If you specify a range, pub picks the best version that meets that
+  constraint. For example:
 
 <div class="step-details" markdown="1">
 {% prettify sh %}
@@ -218,8 +259,8 @@ $ pub global activate foo -x bar -x baz
 
 `--overwrite`
 : Optional for `pub global activate`.
-  Normally, if executables from two global packages have a name collision,
-  the preexisting executable wins. If you specify this flag,
+  Normally, if executables from two global packages have a name
+  collision, the preexisting executable wins. If you specify this flag,
   the new executable overwrites the previously activated executable.
 
 <aside class="alert alert-info" markdown="1">
