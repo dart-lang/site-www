@@ -20,7 +20,7 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?horizontalRatio=70&verticalRatio=
 Note that DartPad supports only a few core libraries.
 If you want to use other libraries,
 such as dart:io or libraries from packages,
-you'll need to install an SDK.
+you'll need to [install](/install) an SDK.
 
 
 <div class="get-started-table__text">
