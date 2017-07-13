@@ -141,8 +141,8 @@ may vary for different versions of Windows.
 You can now directly invoke the command:
 
 {% prettify sh %}
-$ mkdir angular-project
-$ cd angular-project
+$ mkdir angular_project
+$ cd angular_project
 $ [[highlight]]stagehand web-angular[[/highlight]]
 {% endprettify %}
 
@@ -217,7 +217,7 @@ Use `list` to list all currently active packages.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`constraint`
+`<constraint>`
 : Optional for `pub global activate`. The constraint allows you to pull
   in a specific version of the package. For example,
   the following command pulls the 0.6.0 version of the `markdown`

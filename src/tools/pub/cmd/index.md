@@ -81,7 +81,7 @@ or any modification of the pubspec.
 
 ## Running and serving apps
 
-Pub supports development for web-based apps and command-line apps.
+Pub supports development for running web apps and command-line apps.
 
 ### Web apps
 
@@ -110,10 +110,10 @@ transformers before invoking the specified script.
 
 ## Building and deploying apps and packages
 
-Pub supports building and deploying apps and packages. Some information
-is specific to web apps or command-line apps.
+With pub you can publish packages, build deployable web apps, and
+deploy command-line apps.
 
-### Sharing apps and packages
+### Sharing packages
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
@@ -131,11 +131,9 @@ directory.
 
 ### Command-line apps
 
-If you publish your scripts to pub.dartlang.org, or share them on
-GitHub, consider adding the
-[`executables`](/tools/pub/cmd/pub-global#configuring-a-package)
-tag to the pubspec file. When a script is listed under
-`executables` in the pubspec, users can run
+For any package that contains scripts (anything under the `bin/`
+directory), consider adding the `executables` tag to the pubspec file.
+When a script is listed under `executables`, users can run
 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
 to make it directly available from the command line.
 
