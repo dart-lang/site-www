@@ -1,11 +1,7 @@
-- title: Quick Start
+- title:
   children:
-    - title: Get Started
-      permalink: /guides/get-started
-    - title: Sample Code
-      permalink: /samples
-    - title: Codelabs
-      permalink: /codelabs
+  - title: Get Started
+    permalink: /guides/get-started
 
 - title: Language
   children:
@@ -32,28 +28,12 @@
     - title: Tour
       permalink: /guides/libraries/library-tour
 
-- title: "Tools"
-  children:
-  - title: "Dart Tools"
-    permalink: /tools
-
-- title: "Testing"
-  children:
-  - title: "Dart Testing"
-    permalink: /guides/testing
-
-- title: "Community"
-  children:
-  - title: "Community and Support"
-    permalink: /community
-
 - title: "Platforms"
   children:
     - title: "Overview"
       permalink: /guides/platforms
     - title: "Web"
       permalink: https://webdev.dartlang.org/
-#     permalink: http://localhost:4001/
     - title: "Mobile (Flutter)"
       permalink: https://flutter.io/
       children:
@@ -66,3 +46,23 @@
         permalink: /install
       - title: "API Reference"
         permalink: https://api.dartlang.org
+
+- title: "Testing"
+  children:
+  - title: "Dart Testing"
+    permalink: /guides/testing
+
+- title: "Resources"
+  children:
+  - title: "Codelabs"
+    permalink: /codelabs
+  - title: "Tutorials"
+    permalink: /tutorials
+  - title: "Articles"
+    permalink: /articles
+  - title: Sample Code
+    permalink: /samples
+  - title: "Dart Tools"
+    permalink: /tools
+  - title: "Community and Support"
+    permalink: /community
