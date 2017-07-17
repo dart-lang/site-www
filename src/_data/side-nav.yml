@@ -15,6 +15,8 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+    - title: Sample Code
+      permalink: /samples
 
 - title: Libraries
   children:
@@ -55,8 +57,6 @@
     permalink: /tutorials
   - title: "Articles"
     permalink: /articles
-  - title: Sample Code
-    permalink: /samples
   - title: "Dart Tools"
     permalink: /tools
   - title: "Community and Support"
