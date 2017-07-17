@@ -640,8 +640,8 @@ var list = [1, 2, 3];
   [strong mode compliant](/guides/language/sound-dart), it is. Thanks to
   [type inference](/guides/language/sound-dart#type-inference),
   the analyzer infers a list of type `int`.
-  If you tried to add another type to this list, the analyzer would raise
-  an error.
+  If you tried to add another type to this list under strong mode,
+  the analyzer would raise an error.
 </aside>
 
 Lists use zero-based indexing, where 0 is the index of the first element
@@ -707,7 +707,8 @@ var nobleGases = {
   [type inference](/guides/language/sound-dart#type-inference),
   the analyzer infers that the first map, for example,
   contains keys and values of type `String`. If you tried to add
-  other types to this map, the analyzer would raise an error.
+  other types to this map under strong mode,
+  the analyzer would raise an error.
 </aside>
 
 You can create the same objects using a Map constructor:
