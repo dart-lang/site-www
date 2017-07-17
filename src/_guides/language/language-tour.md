@@ -634,6 +634,16 @@ Dart list:
 var list = [1, 2, 3];
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  If you are wondering whether this list literal is
+  [strong mode compliant](/guides/language/sound-dart), it is. Thanks to
+  [type inference](/guides/language/sound-dart#type-inference),
+  the analyzer infers a list of type `int`.
+  If you tried to add another type to this list, the analyzer would raise
+  an error.
+</aside>
+
 Lists use zero-based indexing, where 0 is the index of the first element
 and `list.length - 1` is the index of the last element. You can get a
 list’s length and refer to list elements just as you would in
@@ -689,6 +699,16 @@ var nobleGases = {
   18:   'argon',
 };
 {% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  If you are wondering whether these map literals are [strong
+  mode compliant](/guides/language/sound-dart), they are. Thanks to
+  [type inference](/guides/language/sound-dart#type-inference),
+  the analyzer infers that the first map, for example,
+  contains keys and values of type `String`. If you tried to add
+  other types to this map, the analyzer would raise an error.
+</aside>
 
 You can create the same objects using a Map constructor:
 
