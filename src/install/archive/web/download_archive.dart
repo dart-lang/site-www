@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:pub_semver/pub_semver.dart';
+
 const String storageApiBase =
     "https://www.googleapis.com/storage/v1/b/dart-archive/o";
 const String storageBase = "https://storage.googleapis.com/dart-archive";
@@ -95,9 +97,9 @@ Future getListing(String channel, String respString) async {
   // Format is lines of "channels/stable/release/\d+/".
   Iterable<Future> versionRequests = versions.map((String path) async {
     try {
+      // XXX: We get 403/404s for dev/release/1.XY.0 where XY > 16.
       return await HttpRequest.getString("$storageBase/${path}VERSION");
     } catch (error) {
-      // TODO(rnystrom): Figure out why this is happening.
       // Some directories seem to not be valid. If that happens, just ignore
       // them. (We'll filter out the null entries below).
       return null;
@@ -142,22 +144,32 @@ const Map<String, String> suffixMap = const {
   'Dartium': '-release.zip'
 };
 
-const Map<String, Object> platforms = const {
-  'Mac': const {
-    '32-bit': const ['Dart SDK', 'Dartium'],
-    '64-bit': const ['Dart SDK', 'Dartium']
-  },
-  'Linux': const {
-    'ARMv7': const ['Dart SDK'],
-    'ARMv8 (ARM64)': const ['Dart SDK'],
-    '32-bit': const ['Dart SDK', 'Dartium'],
-    '64-bit': const ['Dart SDK', 'Dartium']
-  },
-  'Windows': const {
-    '32-bit': const ['Dart SDK', 'Dartium'],
-    '64-bit': const ['Dart SDK']
-  },
+const Map<String, List<PlatformVariant>> platforms = const {
+  'Mac':
+    const [
+      const PlatformVariant('32-bit', const ['Dart SDK', 'Dartium']),
+      const PlatformVariant('64-bit', const ['Dart SDK', 'Dartium']),
+    ],
+  'Linux':
+    const [
+      const PlatformVariant('ARMv7', const ['Dart SDK']),
+      const PlatformVariant('ARMv8 (ARM64)', const ['Dart SDK']),
+      const PlatformVariant('32-bit', const ['Dart SDK', 'Dartium']),
+      const PlatformVariant('64-bit', const ['Dart SDK', 'Dartium']),
+  ],
+  'Windows':
+    const [
+      const PlatformVariant('32-bit', const ['Dart SDK', 'Dartium']),
+      const PlatformVariant('64-bit', const ['Dart SDK']),
+  ],
 };
+
+class PlatformVariant {
+  const PlatformVariant(this.architecture, this.archives);
+
+  final String architecture;
+  final List<String> archives;
+}
 
 void addVersion(String channel, Map<String, String> version) {
   OptionElement o = new OptionElement()
@@ -186,15 +198,15 @@ void addVersion(String channel, Map<String, String> version) {
   }
 
   // Json is like: { 'revision': '...', 'version': '...', 'date': '...' }.
-  platforms.forEach((String name, Map<String, List> widthListings) {
-    widthListings.forEach((String width, List<String> archives) {
+  platforms.forEach((String name, List<PlatformVariant> platformVariants) {
+    platformVariants.forEach((PlatformVariant platformVariant) {
       // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
       if (archiveMap[name] == 'linux') {
-        if (width == 'ARMv7' &&
+        if (platformVariant.architecture == 'ARMv7' &&
             parseDateTime(version['date']).isBefore(DateTime
                 .parse((channel == "dev") ? '2015-10-21' : '2015-08-31'))) {
           return;
-        } else if (width == 'ARMv8 (ARM64)' &&
+        } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
             parseDateTime(version['date'])
                 .isBefore(DateTime.parse('2017-03-09'))) {
           return;
@@ -214,33 +226,42 @@ void addVersion(String channel, Map<String, String> version) {
       row.addCell()..text = name;
       row.addCell()
         ..classes.add('nowrap')
-        ..text = width;
+        ..text = platformVariant.architecture;
       List<String> possibleArchives = ['Dart SDK', 'Dartium'];
       TableCellElement c = row.addCell()..classes.add('archives');
       possibleArchives.forEach((String pa) {
-        if (archives.contains(pa)) {
+        if (platformVariant.archives.contains(pa)) {
           // We had no editor downloads after the move to GitHub.
           // This skips the editor link in those cases
           if (parsedRevision == null && pa == 'Dart Editor') {
             return;
           }
 
-          // This is to handle dropping Dartium 32-bit in 1.20
-          if (pa == 'Dartium' && name == 'Mac') {
-            var is120 = is120OrGreater(versionString);
-            // no 32-bit build with >= 1.20
-            if (is120 && width == '32-bit') {
+          if (pa == 'Dartium') {
+            // Dropped all Dartium after 1.24.
+            var is125 = is125OrGreater(versionString);
+            // no Dartium build with > 1.24
+            if (is125) {
               return;
             }
 
-            // no 64-bit build with < 1.20
-            if (!is120 && width == '64-bit') {
-              return;
+            // Dropped Dartium Mac 32-bit in 1.20.
+            if (name == 'Mac') {
+              var is120 = is120OrGreater(versionString);
+              // no 32-bit build with >= 1.20
+              if (is120 && platformVariant.architecture == '32-bit') {
+                return;
+              }
+
+              // no 64-bit build with < 1.20
+              if (!is120 && platformVariant.architecture == '64-bit') {
+                return;
+              }
             }
           }
           String uri = '$storageBase/channels/$channel/release/$versionString'
               '/${directoryMap[pa]}/${archiveMap[pa]}-${archiveMap[name]}-'
-              '${archiveMap[width]}${suffixMap[pa]}';
+              '${archiveMap[platformVariant.architecture]}${suffixMap[pa]}';
           c.append(new AnchorElement()
             ..text = pa
             ..attributes['href'] = uri);
@@ -284,11 +305,26 @@ void addVersion(String channel, Map<String, String> version) {
   }
 }
 
-final RegExp regexp120 = new RegExp(r'^(\d+)\.(\d+)\.');
+final RegExp regexpVersion = new RegExp(r'^(\d+)\.(\d+)\.');
+
+bool is125OrGreater(String versionString) {
+  if (regexpVersion.firstMatch(versionString) != null) {
+    // If the version string is formatted correctly, see if it's >= 1.25.
+    var version = new Version.parse(versionString);
+    if (version.major > 1) {
+      return true;
+    } else if (version.major == 1 && version.minor > 24) {
+      return true;
+    }
+  }
+
+  // The version is <= 1.24.
+  return false;
+}
 
 // TODO: use pkg/pub_semver
 bool is120OrGreater(String versionString) {
-  var match = regexp120.firstMatch(versionString);
+  var match = regexpVersion.firstMatch(versionString);
   if (match != null) {
     var major = int.parse(match.group(1));
     var minor = int.parse(match.group(2));
