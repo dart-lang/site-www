@@ -639,7 +639,7 @@ var list = [1, 2, 3];
   If you're wondering whether this list literal is
   [strong mode compliant](/guides/language/sound-dart), it is. Thanks to
   [type inference](/guides/language/sound-dart#type-inference),
-  the analyzer infers a list of type `int`.
+  the analyzer infers that `list` has type `List<int>`.
   If you try to add non-integer objects to this list under strong mode,
   the analyzer raises an error.
 </aside>
@@ -705,10 +705,9 @@ var nobleGases = {
   If you're wondering whether these map literals are [strong
   mode compliant](/guides/language/sound-dart), they are. Thanks to
   [type inference](/guides/language/sound-dart#type-inference),
-  the analyzer infers that the first map, for example,
-  contains keys and values of type `String`. If you try to add
-  non-string objects to this map under strong mode,
-  the analyzer raises an error.
+  the analyzer infers that `gifts`, for example, has the type
+  `Map<String, String>`. If you try to add non-string objects
+   to this map under strong mode, the analyzer raises an error.
 </aside>
 
 You can create the same objects using a Map constructor:
