@@ -239,22 +239,20 @@ void addVersion(String channel, Map<String, String> version) {
 
           if (pa == 'Dartium') {
             // Dropped all Dartium after 1.24.
-            var is125 = is125OrGreater(versionString);
-            // no Dartium build with > 1.24
-            if (is125) {
+            if (isGreaterThanOneDot(24, versionString)) {
               return;
             }
 
             // Dropped Dartium Mac 32-bit in 1.20.
             if (name == 'Mac') {
-              var is120 = is120OrGreater(versionString);
+              var is120OrHigher = isGreaterThanOneDot(19, versionString);
               // no 32-bit build with >= 1.20
-              if (is120 && platformVariant.architecture == '32-bit') {
+              if (is120OrHigher && platformVariant.architecture == '32-bit') {
                 return;
               }
 
               // no 64-bit build with < 1.20
-              if (!is120 && platformVariant.architecture == '64-bit') {
+              if (!is120OrHigher && platformVariant.architecture == '64-bit') {
                 return;
               }
             }
@@ -307,33 +305,17 @@ void addVersion(String channel, Map<String, String> version) {
 
 final RegExp regexpVersion = new RegExp(r'^(\d+)\.(\d+)\.');
 
-bool is125OrGreater(String versionString) {
+bool isGreaterThanOneDot(int minor, String versionString) {
   if (regexpVersion.firstMatch(versionString) != null) {
-    // If the version string is formatted correctly, see if it's >= 1.25.
+    // If the version string is formatted correctly, see if it's >= 1.minor.
     var version = new Version.parse(versionString);
     if (version.major > 1) {
       return true;
-    } else if (version.major == 1 && version.minor > 24) {
+    } else if (version.major == 1 && version.minor > minor) {
       return true;
     }
   }
 
-  // The version is <= 1.24.
-  return false;
-}
-
-// TODO: use pkg/pub_semver
-bool is120OrGreater(String versionString) {
-  var match = regexpVersion.firstMatch(versionString);
-  if (match != null) {
-    var major = int.parse(match.group(1));
-    var minor = int.parse(match.group(2));
-
-    if (major == 1 && minor >= 20) {
-      return true;
-    } else if (major > 1) {
-      return true;
-    }
-  }
+  // The version is <= 1.minor.
   return false;
 }
