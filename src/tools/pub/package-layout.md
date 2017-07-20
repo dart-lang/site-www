@@ -202,6 +202,14 @@ inside `lib`, you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
+<aside class="alert alert-info" markdown="1">
+**Tip for web apps:**
+For the best performance when developing with [dartdev](/tools/dartdevc),
+put [implementaton files](#implementation-files) under `/lib/src`,
+instead of elsewhere under `/lib`.
+Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+</aside>
+
 For more information on library packages, see
 [Create Library Packages](/guides/libraries/create-library-packages).
 
@@ -234,12 +242,6 @@ consumers of the package to use.
 
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
-
-<aside class="alert alert-info" markdown="1">
-**Compatibility note:**
-In earlier releases, assets were also placed in the top-level
-`asset` directory. Pub no longer recognizes the `asset` directory.
-</aside>
 
 You can reference another package's assets using the
 [resource package](https://github.com/dart-lang/resource).
@@ -278,8 +280,7 @@ Those files are not part of the package's public API, and they might change in
 ways that could break your code.
 
 When you use libraries from within your own package, even code in `src`, you
-can (and should) still use `package:` to import them. This is perfectly
-legit:
+can (and should) still use `package:` to import them. For example:
 
 {% prettify dart %}
 import 'package:enchilada/src/beans.dart';
@@ -298,18 +299,18 @@ enchilada/
     style.css
 {% endprettify %}
 
-Dart is a web language, so many pub packages will be doing web stuff. That
-means HTML, CSS, images, and, heck, probably even some JavaScript. All of that
-goes into your package's `web` directory. You're free to organize the contents
-of that to your heart's content. Go crazy with subdirectories if that makes you
-happy.
+For web packages, place HTML, CSS, JavaScript, and Dart code under
+the `web` directory. Any Dart web entrypoints (in other words,
+Dart scripts that are referred to in a `<script>` tag) go under `web` and
+not `lib`. This ensures that `package:` imports can be resolved correctly.
+You can organize the `web` directory into subdirectories if you like.
 
-Also, and this is important, any Dart web entrypoints (in other words, Dart
-scripts that are referred to in a `<script>` tag) go under `web` and not `lib`.
-That ensures that `package:` imports can be resolved correctly.
+You can place assets (such as images) in any directory in the root package,
+but if you want to make an asset available to other packages,
+it should go into `lib`. For more information,
+see [Public assets](#public-assets).
 
-(You may be asking whether you should put your web-based example programs
-in `example` or `web`? Put those in `example`.)
+Note that web-based examples should be placed in `example`.
 
 ## Command-line apps
 
