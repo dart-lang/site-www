@@ -118,6 +118,15 @@ export 'src/server_handler.dart';
 The shelf package also contains a mini library: shelf_io.
 This adapter handles HttpRequest objects from dart:io.
 
+<aside class="alert alert-info" markdown="1">
+**Tip for web apps:**
+For the best performance when developing with [dartdevc](/tools/dartdevc),
+put [implementation
+files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
+instead of elsewhere under `/lib`.
+Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+</aside>
+
 ## Importing library files
 
 When importing a library file, you can use the
