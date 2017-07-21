@@ -207,7 +207,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
 For the best performance when developing with [dartdevc](/tools/dartdevc),
-put [implementaton files](#implementation-files) under `/lib/src`,
+put [implementation files](#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 </aside>
@@ -303,15 +303,14 @@ enchilada/
 {% endprettify %}
 
 For web packages, place entrypoint code&mdash;Dart scripts that include
-`main()` and supporting files, such as CSS or HTML&mdash;under
-`web`.  This ensures that `package:` imports can be resolved correctly.
+`main()` and supporting files, such as CSS or HTML&mdash;under `web`.
 You can organize the `web` directory into subdirectories if you like.
 
-[Library code](#public-libraries) should be placed under `lib`.
-If the library won't be imported directly by code under `web`, or by
-another package, it should be placed under `lib/src`.
-[Web-based examples](#examples) should be placed in `example`. See
-[Public assets](#public-assets) for tips on where to place assets,
+Put [library code](#public-libraries) under `lib`.
+If the library isn't imported directly by code under `web`, or by
+another package, put it under `lib/src`.
+Put [web-based examples](#examples) under `example`. See
+[Public assets](#public-assets) for tips on where to put assets,
 such as images.
 
 ## Command-line apps
