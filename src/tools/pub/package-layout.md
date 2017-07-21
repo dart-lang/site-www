@@ -103,9 +103,9 @@ enchilada/
 Running pub also generates a `.packages` file.
 Don't check this into source control.
 
-The open source community has a few other files that commonly appear at the top
-level of a project: `LICENSE`, `AUTHORS`, etc. If you use any of those, they can
-go in the top level of the package too.
+The open source community has a few other files that commonly appear at
+the top level of a project: `LICENSE`, `AUTHORS`, etc. If you use any
+of those, they can go in the top level of the package too.
 
 For more information, see [Pubspec Format](/tools/pub/pubspec).
 
@@ -303,7 +303,7 @@ enchilada/
 {% endprettify %}
 
 For web packages, place entrypoint code&mdash;Dart scripts that include
-`main()` and files that support them, such as CSS or HTML&mdash;under
+`main()` and supporting files, such as CSS or HTML&mdash;under
 `web`.  This ensures that `package:` imports can be resolved correctly.
 You can organize the `web` directory into subdirectories if you like.
 
