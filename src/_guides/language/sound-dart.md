@@ -742,7 +742,7 @@ The next few documents are part of the original
 [dartdevc]({{site.webdev}}/tools/dartdevc) documentation,
 but most of the information applies to anyone using strong mode Dart:
 
-* [Strong Mode](https://github.com/dart-archive/dev_compiler/blob/master/STRONG_MODE.md) -
+* [Strong Mode](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/STRONG_MODE.md) -
   Motivation for strong mode Dart.
 * [Strong Mode Static Checking](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/STATIC_SAFETY.md) -
   Type inference in strong mode Dart.
