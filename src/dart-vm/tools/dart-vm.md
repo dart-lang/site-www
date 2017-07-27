@@ -103,8 +103,8 @@ You can also generate snapshots:
 
 `--snapshot=<filename>`
 : Generates a snapshot in the specified file. For information
-  on generating and running snapshots, see the article
-  [Snapshots in Dart](/articles/dart-vm/snapshots).
+  on generating and running snapshots, see
+  [Snapshots](https://github.com/dart-lang/sdk/wiki/Snapshots) on GitHub.
 
 ## Enabling checked mode
 

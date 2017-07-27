@@ -69,9 +69,7 @@ for example, multithreading with a shared heap.
 
 * No bytecode VM is truly general-purpose; they all make assumptions that
 privilege some class of languages.  A language VM leaves more room to improve
-the VM and make deep changes to optimization of the language. Some Dart
-engineers wrote [an article][whynotbytecode] talking
-about the VM question in more detail.
+the VM and make deep changes to optimization of the language.
 
 ## Language
 
@@ -230,7 +228,6 @@ See [Who Uses Dart] for a more complete list.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
-[whynotbytecode]: /articles/dart-vm/why-not-bytecode
 [issues]: https://github.com/dart-lang/sdk/issues/
 [pub]: https://pub.dartlang.org
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
