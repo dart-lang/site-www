@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dart-lang/site-www.svg?branch=master)](https://travis-ci.org/dart-lang/site-www)
 &nbsp;&nbsp;
+[![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
 The www.dartlang.org site. Built with
 [Jekyll](https://github.com/mojombo/jekyll)
