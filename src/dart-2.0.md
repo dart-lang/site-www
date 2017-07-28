@@ -34,11 +34,11 @@ and types are checked at runtime.
 **A quick summary of the gnarly details:**
 Dart 2.0 continues to support [type
 inference](/guides/language/sound-dart#type-inference) and,
-where possible, infers a type. For example,
+in many cases, infers a type. For example,
 the following continues to be valid code in Dart 2.0:
 
 <pre>
-var i = 1;
+var i = 1;   // i is inferred to be int
 
 dynamic x = 1;
 x = "Hello";
@@ -53,7 +53,7 @@ infers the `dynamic` type, but in Dart 2.0, both the analyzer and
 the runtime try to infer something more specific than `dynamic`.
 
 While Dart 2.0 is statically typed, type inference and types like
-`dynamic` and `num`, take much of the burden of specifying types away
+`dynamic` and `num` take much of the burden of specifying types away
 from the developer. Dart 2.0 offers the advantages of a strongly typed
 language, while only requiring slightly more work compared to Dart 1.x.
 
