@@ -264,7 +264,11 @@ The following image shows examples of type inference in strong mode clean code:
 <a name="is-it-optional"></a>
 ### I liked Dart before. Can I still write Dart code the way I always did?
 
-Yes, because strong mode is optional, you can write Dart code as before.
+Strong mode is optional in Dart 1.x, so you can write code as before.
+Strong mode is not optional in Dart 2.0, so you might want to consider
+migrating your code now, so you can be ready for Dart 2.0. For more
+information, see [A stronger Dart for
+everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html).
+
 Even with strong mode enabled, Dart remains the same concise and familiar
 language that you've always loved.
-
