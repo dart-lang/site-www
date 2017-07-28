@@ -22,36 +22,72 @@ do now, and what needs to wait for Dart 2.0.
 
 ## Changes in Dart 2.0
 
-Dart 1.x is an optionally typed language, but Dart 2.0 requires static types.
-Thanks to [strong mode](/guides/language/sound-dart),
-the Dart analyzer can find bugs earlier in the development cycle.
-The analyzer is smart about types and can sometimes
-[infer](/guides/language/sound-dart#type-inference) a type,
-so you don't have to manually type every variable.
+Dart 1.x is an optionally typed language, but types aren't optional in
+Dart 2.0. With both static and runtime type checks,
+Dart 2.0 has a sound type system.
 
-Migrate your code to strong mode now, and you may find some bugs in the
-process! You'll also find it much easier to transition to Dart 2.0.
+Thanks to [strong mode](/guides/language/sound-dart),
+the Dart analyzer can find bugs earlier in the development cycle,
+and types are checked at runtime.
+
+<aside class="alert alert-info" markdown="1">
+**A quick summary of the gnarly details:**
+Dart 2.0 continues to support [type
+inference](/guides/language/sound-dart#type-inference) and,
+where possible, infers a type. For example,
+the following continues to be valid code in Dart 2.0:
+
+<pre>
+var i = 1;
+
+dynamic x = 1;
+x = "Hello";
+</pre>
+
+As shown in the example, you can also continue to use the `dynamic` type.
+While `dynamic` is itself a static type, it can contain any type at runtime.
+Also, in Dart 2.0, a `num` can either be an
+`int` or a `double` at runtime.
+The main difference is that, in optionally-typed Dart, the analyzer
+infers the `dynamic` type, but in Dart 2.0, both the analyzer and
+the runtime try to infer something more specific than `dynamic`.
+
+While Dart 2.0 is statically typed, type inference and types like
+`dynamic` and `num`, take much of the burden of specifying types away
+from the developer. Dart 2.0 offers the advantages of a strongly typed
+language, while only requiring slightly more work compared to Dart 1.x.
+
+To experiment with strong mode,
+open [DartPad](https://dartpad.dartlang.org/)
+and check the **Enable strong mode** box in the lower right.
+</aside>
+
+Migrate your code to strong mode now, and you may identify some
+lurking bugs that are now more easily identifiable and addressable.
+You'll also find it much easier to transition to Dart 2.0.
 For more information, see [A stronger Dart for
 everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
 and [Strong Mode Dart.](/guides/language/sound-dart)
 
-Flutter is already strong mode compliant, which contributes to Flutter's
-fast development cycle. If you develop on Flutter, you are good to go.
+Flutter is already strong mode compliant, which has helped the Flutter
+team build their widgets and entire framework with Dart at scale.
+If you develop on Flutter, you are good to go.
 
 ### Web
 
 Adding strong mode support to the Dart analyzer (introduced in Dart 1.15),
 made it possible to create a new development compiler,
-[dartdevc]({{site.webdev}}/tools/dartdevc). To use strong mode in Dart 1.x,
-[you must enable it.](/guides/language/sound-dart#how-to-enable-strong-mode)
-It won't be optional in Dart 2.0.
-
-You can use dartdevc (also known as _DDC_) on strong mode-compliant
+[dartdevc]({{site.webdev}}/tools/dartdevc) (also known as _DDC_).
+You can use dartdevc on strong mode-compliant
 code to run and debug your Dart web apps in Chrome or other browsers.
 Dartdevc is available as of Dart 1.24, but doesn't
 yet work with AngularDart apps. With the introduction of dartdevc,
 [Dartium](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
 will eventually be phased out.
+
+To use strong mode in Dart 1.x, [you must enable
+it.](/guides/language/sound-dart#how-to-enable-strong-mode)
+Note that runtime checks are not yet available unless you use dartdevc.
 
 Other than strong mode, another coming change affects web developers:
 
@@ -65,7 +101,8 @@ Other than strong mode, another coming change affects web developers:
 
 ### Mobile (Flutter)
 
-The Flutter SDK is already strong mode compliant.
+The Flutter SDK is already strong mode compliant and developers using
+Flutter should already be opted-into strong mode.
 We have no other updates at this time.
 
 ### Servers and command line
@@ -73,6 +110,7 @@ We have no other updates at this time.
 Strong mode Dart is available as of Dart 1.15.
 To use strong mode in Dart 1.x,
 [you must enable it.](/guides/language/sound-dart#how-to-enable-strong-mode)
+Note that runtime checks are not yet available in the Dart VM compiler.
 
 We have no other updates at this time.
 
