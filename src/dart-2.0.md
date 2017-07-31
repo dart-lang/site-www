@@ -6,29 +6,37 @@ description: How Dart 2.0 is different than 1.x, and how you can prepare.
 ---
 
 This page has information about changes that are coming in Dart 2.0.
-Some changes may not apply to your target platform.
 
-* [Web](#web)
-* [Mobile (Flutter)](#mobile-flutter)
-* [Servers and command line](#servers-and-command-line)
-* [Removed from Dart 2.0](#removed-from-dart-2.0)
+<aside class="alert alert-info" markdown="1">
+**Flutter:** You don't need to do anything to prepare Flutter code for Dart 2.0.
+If changes become necessary, watch this page for updates.
+</aside>
+
+Migration tips for:
+
+* [Web](#migration-tips-web)
+* [Servers and command-line scripts](#migration-tips-servers-and-command-line-scripts)
+
+What's different in Dart 2.0:
+
+* [Obsolete features](#obsolete features)
 * [Strong mode and static typing](#strong-mode-and-static-typing)
 
-## Web
+## Migration tips: web
 
-You can start migrating to Dart 2.0 now:
+If you develop for the web, you can start migrating to Dart 2.0 now:
 
-1. Convert your code to be strong mode compliant. For more information on why,
-   see [Strong mode and static typing](#strong-mode-and-static-typing).
-2. Optimize the [structure of your
-   libraries](https://www.dartlang.org/guides/libraries/create-library-packages).
-   Place library code that won't be _directly_ imported by your `web` code,
-   or by other packages, under `lib/src`. The
-   [Stagehand](https://github.com/google/stagehand/tree/master/templates)
-   templates have already been updated to this directory structure.
-   When you switch over to the [dartdevc]({{site.webdev}}/tools/dartdevc)
-   development compiler, this package structure ensures faster compilation speeds.
-   Dartdevc is available as of Dart 1.24, but doesn't yet work with AngularDart apps.
+Convert your code to be strong mode compliant
+: For more information,
+  see [Strong mode and static typing](#strong-mode-and-static-typing) below.
+
+Optimize the structure of your libraries
+: Place library code that won't be _directly_ imported by your `web` code,
+  or by other packages, under `lib/src`. For more information,
+  see the documentation for [creating library
+  packages.](/guides/libraries/create-library-packages)
+  You can find examples of this directory structure in the [Stagehand
+  templates.](https://github.com/google/stagehand/tree/master/templates)
 
 {% comment %}
 Save this section for when dartdevc is ready to use...
@@ -42,20 +50,15 @@ With the introduction of dartdevc,
 will eventually be phased out.
 {% endcomment %}
 
-## Mobile (Flutter)
+## Migration tips: servers and command-line scripts
 
-Flutter is already strong mode compliant, which has helped the Flutter
-team build their widgets and entire framework with Dart at scale.
-If you develop on Flutter, you are good to go.
+If you develop servers or command-line scripts,
+you can start migrating to Dart 2.0 now:
 
-## Servers and command line
+* Convert your code to be strong mode compliant. For more information,
+  see [Strong mode and static typing](#strong-mode-and-static-typing) below.
 
-You can start migrating to Dart 2.0 now:
-
-1. Convert your code to be strong mode compliant. For more information on why,
-   see [Strong mode and static typing](#strong-mode-and-static-typing).
-
-## Removed from Dart 2.0
+## Obsolete features
 
 The following features are redundant and will not be supported by Dart 2.0:
 
@@ -74,8 +77,12 @@ Dartium
 
 ## Strong mode and static typing
 
-Flutter is already strong mode compliant. If you are developing on Flutter,
-you can skip this section.
+<aside class="alert alert-info" markdown="1">
+**Note about Flutter:**
+If you are developing for Flutter, you can skip this section.
+Flutter is already strong mode compliant, which has helped the Flutter
+team build their widgets and entire framework with Dart at scale.
+</aside>
 
 Dart 1.x is an optionally typed language, but types aren't optional in
 Dart 2.0. With both static and runtime type checks, Dart 2.0 has a sound type system.
