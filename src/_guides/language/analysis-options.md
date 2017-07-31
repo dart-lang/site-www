@@ -301,7 +301,7 @@ Join the discussion list for linter enthusiasts:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Strong Mode Dart](/guides/language/sound-dart)
+* [Strong mode](/guides/language/sound-dart)
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
