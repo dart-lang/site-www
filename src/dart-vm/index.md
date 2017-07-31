@@ -46,7 +46,7 @@ You might find the following tutorials helpful.
 
 [Articles: Dart VM](/articles/dart-vm)
 : A collection of articles covering topics such as benchmarking,
-  numeric computation, SIMD, and snapshots.
+  numeric computation, and SIMD.
 
 [Cookbook: Dart by Example](/dart-vm/dart-by-example)
 : Code snippets that perform common I/O tasks, featuring APIs from

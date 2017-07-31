@@ -257,7 +257,7 @@ analyzer:
 This analysis options file instructs the analysis tools to ignore
 the TODO rule.
 
-Alternatively, as of Dart 1.24 you can ignore a specific rule for a 
+Alternatively, as of Dart 1.24 you can ignore a specific rule for a
 specific file using an `ignore_for_file` comment:
 
 {% prettify dart %}
@@ -301,7 +301,7 @@ Join the discussion list for linter enthusiasts:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Strong mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md#strong-mode)
+* [Strong mode](/guides/language/sound-dart)
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
