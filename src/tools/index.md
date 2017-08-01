@@ -63,6 +63,11 @@ and available as open source:
 </li>
 </ul>
 
+<aside class="alert alert-info" markdown="1">
+**Note:** Two previous options, Dart Editor and the Eclipse Plugin for Dart,
+are no longer maintained.
+</aside>
+
 ## SDKs
 
 Which SDK you need depends on what type of app you're developing.
