@@ -4,6 +4,10 @@ title: "Strong Mode Dart"
 description: "Why and how to write sound Dart code."
 ---
 
+{% comment %}
+update-for-dart-2.0
+{% endcomment %}
+
 This guide tells you why and how to write sound (type safe) Dart code.
 You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
@@ -731,7 +735,11 @@ strong mode:
 
 * [Strong Mode Dart: FAQ](/guides/language/sound-faq) - Questions and answers about
   writing sound Dart code.
-* [Strong Mode Dart: Fixing Common Problems](/guides/language/sound-problems) - Errors you may encounter when writing sound Dart code, and how to fix them.
+* [Strong Mode Dart: Fixing Common
+  Problems](/guides/language/sound-problems) - Errors you may encounter when
+  writing sound Dart code, and how to fix them.
+* [Dart 2.0 Updates](/dart-2.0) - How you can start updating your projects
+  to Dart 2.0 now.
 * [Strong Mode Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit.
 * [Customize Static Analysis](/guides/language/analysis-options) - How

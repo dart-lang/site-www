@@ -40,7 +40,7 @@ Optimize the structure of your libraries.
 
 {% comment %}
 Save this section for when dartdevc is ready to use...
-Adding strong mode support to the Dart analyzer (introduced in Dart 1.15),
+Adding strong mode support to the Dart analyzer,
 made it possible to create a new development compiler,
 [dartdevc]({{site.webdev}}/tools/dartdevc) (also known as _DDC_).
 You can use dartdevc on strong mode-compliant
@@ -79,7 +79,8 @@ Dartium
 ## Strong mode and static typing
 
 Dart 1.x is an optionally typed language, but types aren't optional in
-Dart 2.0. With both static and runtime type checks, Dart 2.0 has a sound type system.
+Dart 2.0. With both static and runtime type checks, Dart 2.0 has a sound
+type system.
 
 Thanks to [strong mode](/guides/language/sound-dart),
 the Dart analyzer can find bugs earlier in the development cycle,
@@ -87,9 +88,8 @@ and types are checked at runtime.
 
 <aside class="alert alert-info" markdown="1">
 **A quick summary of the gnarly details:**
-Dart 2.0 continues to support [type
-inference](/guides/language/sound-dart#type-inference) and,
-in many cases, infers a type. For example,
+Dart 2.0 supports [type inference](/guides/language/sound-dart#type-inference)
+and, in many cases, infers a type. For example,
 the following continues to be valid code in Dart 2.0:
 
 <pre>

@@ -5,6 +5,11 @@ description: "Common problems you may have when converting to strong mode and ho
 toc: false
 ---
 
+{% comment %}
+The first few questions/answers are for strong mode under Dart 1.x.
+update-for-dart-2.0
+{% endcomment %}
+
 If you're having problems converting your code to strong mode,
 this page can help. Be sure to also check out
 [Strong Mode Dart](/guides/language/sound-dart) for an overview of what "sound

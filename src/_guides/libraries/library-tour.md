@@ -2253,7 +2253,7 @@ main() async {
   dartHandler(HttpRequest request) {
     request.response.headers.contentType =
         new ContentType('text', 'plain');
-    request.response.write('Dart is optionally typed');
+    request.response.write('Sending a response');
     request.response.close();
   }
 
