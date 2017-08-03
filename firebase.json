@@ -202,12 +202,12 @@
       },
       {
         "source": "/articles/reflection-with-mirrors/",
-        "destination": "/articles/dart-fm/reflection-with-mirrors",
+        "destination": "/articles/dart-vm/reflection-with-mirrors",
         "type": 301
       },
       {
         "source": "/articles/libraries/reflection-with-mirrors/",
-        "destination": "/articles/dart-fm/reflection-with-mirrors",
+        "destination": "/articles/dart-vm/reflection-with-mirrors",
         "type": 301
       },
       {

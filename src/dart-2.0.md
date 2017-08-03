@@ -107,9 +107,9 @@ The main difference is that, in optionally-typed Dart, the analyzer
 infers the `dynamic` type, but in Dart 2.0, both the analyzer and
 the runtime try to infer something more specific than `dynamic`.
 
-While Dart 2.0 is statically typed, type inference and types like
-`dynamic` and `num` take much of the burden of specifying types away
-from the developer. Dart 2.0 offers the advantages of a strongly typed
+While Dart 2.0 is statically typed, type inference removes much of the burden
+of specifying types away from the developer.
+Dart 2.0 offers the advantages of a strongly typed
 language, while requiring only a bit more work compared to Dart 1.x.
 
 To experiment with strong mode,
