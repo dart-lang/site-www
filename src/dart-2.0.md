@@ -2,24 +2,24 @@
 layout: default
 permalink: /dart-2.0
 title: Dart 2.0 Updates
-description: How Dart 2.0 is different than 1.x, and how you can prepare.
+description: How Dart 2.0 is different than Dart 1.x, and how you can prepare.
 ---
 
-This page has information about changes that are coming in Dart 2.0.
+This page has information about changes that are coming in Dart 2.0,
+and how you can migrate your code from Dart 1.x:
 
-Migration tips for:
-
-* [Web](#migration-tips-web)
-* [Servers and command-line scripts](#migration-tips-servers-and-command-line-scripts)
+* [Migration tips: web](#migration-tips-web)
+* [Migration tips: servers and command-line scripts](#migration-tips-servers-and-command-line-scripts)
 
 <aside class="alert alert-info" markdown="1">
-**Flutter developer:** You don't need to do anything to prepare Flutter code
-for Dart 2.0.  If changes become necessary, we'll add Flutter details to this page.
+**Flutter note:** You don't need to do anything to prepare Flutter code
+for Dart 2.0. If changes become necessary,
+we'll add Flutter details to this page.
 </aside>
 
-What's different in Dart 2.0:
+Here's what's different in Dart 2.0:
 
-* [Obsolete features](#obsolete features)
+* [Obsolete features](#obsolete-features)
 * [Strong mode and static typing](#strong-mode-and-static-typing)
 
 ## Migration tips: web
@@ -28,7 +28,7 @@ If you develop for the web, you can start migrating to Dart 2.0 now:
 
 Convert your code to be strong mode compliant.
 : For more information,
-  see [Strong mode and static typing](#strong-mode-and-static-typing) below.
+  see [Strong mode and static typing](#strong-mode-and-static-typing), below.
 
 Optimize the structure of your libraries.
 : Place library code that won't be _directly_ imported by your `web` code,
@@ -57,14 +57,14 @@ you can start migrating to Dart 2.0 now:
 
 Convert your code to be strong mode compliant.
 : For more information, see [Strong mode and static
-  typing](#strong-mode-and-static-typing) below.
+  typing](#strong-mode-and-static-typing), below.
 
 ## Obsolete features
 
 The following features are redundant and won't be in Dart 2.0:
 
 Checked mode
-: Strong mode replaces checked mode. To learn how they are different, see
+: Strong mode replaces checked mode. To learn how they differ, see
   [What is the difference between strong mode and checked
   mode?](/guides/language/sound-faq#how-is-it-different-than-checked-mode)
 
@@ -89,32 +89,33 @@ and types are checked at runtime.
 **A quick summary of the gnarly details:**
 Dart 2.0 continues to support [type
 inference](/guides/language/sound-dart#type-inference) and,
-in many cases, infers a type. For example,
-the following continues to be valid code in Dart 2.0:
+in many cases, doesn't require type annotations. For example,
+the following is valid code in both Dart 1.x and Dart 2.0:
 
 <pre>
-var i = 1;   // i is inferred to be int
+var i = 1;   // In 2.0, inferred to be int;
+             // previously, inferred to be dynamic.
 
 dynamic x = 1;
 x = "Hello";
 </pre>
 
-As shown in the example, you can also continue to use the `dynamic` type.
-While `dynamic` is itself a static type, it can contain any type at runtime.
-Also, in Dart 2.0, a `num` can either be an
-`int` or a `double` at runtime.
-The main difference is that, in optionally-typed Dart, the analyzer
-infers the `dynamic` type, but in Dart 2.0, both the analyzer and
+As the example shows, you can use the static `dynamic` type
+to indicate that the runtime type is unknown.
+One big difference between optionally typed Dart and Dart 2.0
+is that, in the former, the analyzer infers the `dynamic` type.
+In Dart 2.0, both the analyzer and
 the runtime try to infer something more specific than `dynamic`.
 
 While Dart 2.0 is statically typed, type inference and types like
-`dynamic` and `num` take much of the burden of specifying types away
-from the developer. Dart 2.0 offers the advantages of a strongly typed
-language, while requiring only a bit more work compared to Dart 1.x.
+`dynamic` and `num` (which can be `int` or `double`)
+take away much of the burden of specifying types.
+Dart 2.0 has the advantages of a strongly typed language,
+but requires only a bit more work than Dart 1.x.
 
 To experiment with strong mode,
 open [DartPad](https://dartpad.dartlang.org/)
-and check the **Enable strong mode** box in the lower right.
+and check the **Strong mode** box at the lower right.
 </aside>
 
 Migrate your code to strong mode now, and you may identify some
