@@ -128,6 +128,6 @@ and [Strong Mode Dart.](/guides/language/sound-dart)
 To use strong mode in Dart 1.x, [you must enable
 it.](/guides/language/sound-dart#how-to-enable-strong-mode)
 Note that runtime checks are not yet available unless you are developing
-for the web and using [dartdevc]({{site.webdev}}/tools/dartdevc).
+for the web and using [dartdevc.]({{site.webdev}}/tools/dartdevc)
 
 

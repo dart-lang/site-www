@@ -206,7 +206,8 @@ resolve. Instead, your entrypoints should go in the appropriate
 
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
-For the best performance when developing with [dartdevc](/tools/dartdevc),
+For the best performance when developing with
+[dartdevc,]({{site.webdev}}/tools/dartdevc)
 put [implementation files](#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
