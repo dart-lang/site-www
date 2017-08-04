@@ -10,7 +10,9 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 
-# before_install:
+before_install:
+  - nvm install 6
+  - nvm use 6
 
 install:
   - bundle install
