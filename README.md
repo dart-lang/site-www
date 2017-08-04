@@ -31,6 +31,8 @@ Contributions welcome!
 1. If you're on a Mac, install Xcode.
 1. Make sure you have Ruby. Consider using [rvm](http://rvm.io/rvm/install) to manage Ruby versions.
 1. Install `npm` by installing [Node.js](https://nodejs.org/en/); only needed to install firebase tools.
+   Consider using [nvm](http://nvm.sh) to manage node versions;
+   your **node version** must be **v6 or higher.**
 1. Install Firebase:
 
     ```
