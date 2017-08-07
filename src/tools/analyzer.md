@@ -57,5 +57,5 @@ The following tools use package:analyzer:
 * [`dartfmt`](https://github.com/dart-lang/dart_style)
 * [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)
 
-You might also be interested in the [Dart Analyzer discussion
+You might also be interested in the [Dart analyzer discussion
 group.](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)

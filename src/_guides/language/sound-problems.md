@@ -73,7 +73,7 @@ If you're using strong mode, you'll see the following warning from the analyzer:
 <a name="not-using-strong-mode"></a>
 ### I'm not using strong mode and I think I should be
 
-Strong mode is enforced by Dart Analyzer.
+Strong mode is enforced by the Dart analyzer.
 How you troubleshoot strong mode depends on whether you are running
 `dartanalyzer` from the command line, or via one of the JetBrains IDEs.
 

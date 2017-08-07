@@ -118,7 +118,7 @@ open [DartPad](https://dartpad.dartlang.org/)
 and check the **Strong mode** box at the lower right.
 </aside>
 
-Migrate your code to strong mode now, and you may identify some
+Migrate your code to strong mode, and you may identify some
 lurking bugs that are now more easily identifiable and addressable.
 You'll also find it much easier to transition to Dart 2.0.
 For more information, see [A stronger Dart for

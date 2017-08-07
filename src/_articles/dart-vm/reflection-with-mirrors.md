@@ -11,8 +11,8 @@ _Written by Gilad Bracha <br />
 November 2012 (updated November 2013)_
 
 <aside class="alert alert-info" markdown="1">
-**Note:** This article applies only to the standalone Dart VM.
-We don't recommend using mirrors in web applications,
+**Note:** This article applies only to the standalone VM under the
+1.x Dart SDK. We don't recommend using mirrors in web applications,
 and the Flutter SDK does not support the dart:mirrors library.
 </aside>
 

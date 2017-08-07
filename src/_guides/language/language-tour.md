@@ -106,22 +106,14 @@ mind:
     (You might notice when you’re debugging your code that
     variables with no specified type get a special type: `dynamic`.)
     Specifying static types is optional in Dart 1.x, however Dart is moving
-    towards being a fully type safe language. See the next bullet
-    for information on strong mode, which is part of that effort.
+    towards being a fully type safe language.
 
 -   _Strong mode_ contributes to making Dart a type safe language&mdash;you'll
     never see a value whose runtime type does not match its static type.
     This has many benefits, such as catching bugs in development,
     rather than at runtime. Strong mode is optional in Dart 1.x,
-    but won't be optional in Dart 2.0.
-{% comment %}
-Concerned that this text makes the bullet seem "too much" or "too defensive".
-    Even in strong mode,
-    you don't have to specify all types&mdash;some are inferred. Also, the
-    `dynamic` type allows you to specify that a type won't be known until runtime.
-{% endcomment %}
-    For details, see [Strong Mode Dart](/guides/language/sound-dart)
-    and [Dart 2.0 Updates](/dart-2.0).
+    but won't be optional in Dart 2.0. For details, see [Strong Mode
+    Dart](/guides/language/sound-dart) and [Dart 2.0 Updates](/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch

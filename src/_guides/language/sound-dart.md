@@ -182,7 +182,7 @@ of three pieces:
 
 Bringing soundness to Dart required adding only a few rules to the
 Dart language.
-With strong mode enabled, Dart Analyzer enforces three additional rules:
+With strong mode enabled, the Dart analyzer enforces three additional rules:
 
 * Use proper return types when overriding methods.
 * Use proper parameter types when overriding methods.
