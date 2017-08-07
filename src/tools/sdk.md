@@ -32,32 +32,26 @@ and a `bin` directory that has these command-line tools:
 : The standalone VM
 
 [dart2js]({{site.webdev}}/tools/dart2js)
-: The Dart-to-JavaScript compiler<br>(used only for web development)
+: The Dart-to-JavaScript compiler
+(used only for web development)
 
 [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 : The static analyzer
+
+[dartdevc]({{site.webdev}}/tools/dartdevc)
+: The Dart development compiler
+(used only for web development)
 
 </div> <div class="col-md-6" markdown="1">
 
 [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc)
 : The API documentation generator
 
-[pub](/tools/pub)
-: The Dart package manager
-
 [dartfmt](https://github.com/dart-lang/dart_style#readme)
 : The Dart code formatter
 
-
-{% comment %}
-We aren't yet ready to add info on dartdevc...
-
-</div> <div class="col-md-6" markdown="1">
-
-[dartdevc]()
-: xxx
-
-{% endcomment %}
+[pub](/tools/pub)
+: The Dart package manager
 
 </div> </div>
 

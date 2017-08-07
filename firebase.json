@@ -1101,7 +1101,7 @@
         "type": 301
       },
       {
-        "source": "/tools/eclipse-plugin/",
+        "source": "/tools/eclipse-plugin",
         "destination": "/tools",
         "type": 301
       },
