@@ -22,17 +22,19 @@ We also recommend using an IDE.
 ## IDEs
 
 Dart plugins exist for many commonly used IDEs.
-If you don't already have a favorite IDE,
+If you're writing web apps and don't already have a favorite IDE,
 try WebStorm, which comes with Dart support.
 
 <ul class="col2">
 <li>
-<img src="{% asset_path 'tools/IntellIJ-IDEA.png' %}" alt="IntelliJ logo">
+<img src="{% asset_path 'tools/intellij-idea.svg' %}"
+     width="48" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/webstorm.png' %}" alt="WebStorm logo">
+<img src="{% asset_path 'tools/webstorm.svg' %}"
+     width="48" alt="WebStorm logo">
 <a href="{{site.webdev}}/tools/webstorm"><b>WebStorm</b></a>
 </li>
 </ul>
