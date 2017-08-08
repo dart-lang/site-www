@@ -5,6 +5,11 @@ description: "Common problems you may have when converting to strong mode and ho
 toc: false
 ---
 
+{% comment %}
+The first few questions/answers are for strong mode under Dart 1.x.
+update-for-dart-2.0
+{% endcomment %}
+
 If you're having problems converting your code to strong mode,
 this page can help. Be sure to also check out
 [Strong Mode Dart](/guides/language/sound-dart) for an overview of what "sound
@@ -68,7 +73,7 @@ If you're using strong mode, you'll see the following warning from the analyzer:
 <a name="not-using-strong-mode"></a>
 ### I'm not using strong mode and I think I should be
 
-Strong mode is enforced by Dart Analyzer.
+Strong mode is enforced by the Dart analyzer.
 How you troubleshoot strong mode depends on whether you are running
 `dartanalyzer` from the command line, or via one of the JetBrains IDEs.
 

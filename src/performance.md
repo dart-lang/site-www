@@ -35,13 +35,6 @@ It contains benchmarks that help
 measure real-world properties of object-oriented languages,
 runtimes, and compilers.
 
-## Do type annotations affect runtime performance?
-
-Dart is an optionally typed language, and the type annotations are
-ignored at runtime (modulo _checked mode_, a developer mode).
-It turns out that looking at the actual types of live objects as they
-flow through a running app is more useful than static types in the code.
-
 ## Are there public benchmarks for server-side Dart?
 
 Yes. Check out

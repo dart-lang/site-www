@@ -707,7 +707,13 @@ var buffer = new StringBuffer()
 
 ## Type annotations
 
-In Dart, adding static types to your variables is optional.
+In Dart 1.x, adding static types to your variables is optional.
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2.0
+{% endcomment %}
 
 ### DO type annotate public APIs.
 
