@@ -76,7 +76,7 @@ the VM and make deep changes to optimization of the language.
 ### Q. Isn't Dart a lot like Java?
 
 Dart has some similarities with Java. See the [Intro to Dart for Java
-Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html?index=..%2F..%2Findex#0)
+Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 codelab for examples of some of the differences between Dart and Java.
 
 ### Q. How does Dart relate to Go?
@@ -131,7 +131,7 @@ Some features don't fit the basic nature of the language,
 and some don't play well with other features. Simplicity is
 the single most important gift we all can give to future programmers.
 
-Please look at the [list of Dart issues][issues] to see if your request is
+Please look at the [list of language issues][issues] to see if your request is
 already there, and add a new issue if not.  Make a thoughtful argument for your
 feature.  Sample code with and without your feature is good evidence; a sizeable
 codebase that shows the need is even better evidence.
@@ -149,9 +149,9 @@ appreciation through careful design choices and fair communication about them.
 ### Q. Is Dart a statically typed language?
 
 Dart 1.x is statically typed if you opt in to [strong mode]
-and use a compiler (such as the Dart Development Compiler, aka
+and use a compiler (such as the Dart development compiler,
 [dartdevc]({{site.webdev}}/tools/dartdevc)),
-that has both static and runtime checks. With both static and runtime checks,
+that has static and runtime checks. With both types of checks,
 Dart has a sound type system, which guarantees that an expression of one
 type cannot produce a value of another type. (So, no surprises!)
 Types won't be optional in Dart 2.0.

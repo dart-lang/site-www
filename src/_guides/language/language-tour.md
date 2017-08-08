@@ -108,12 +108,10 @@ mind:
     Specifying static types is optional in Dart 1.x, however Dart is moving
     towards being a fully type safe language.
 
--   _Strong mode_ contributes to making Dart a type safe language&mdash;you'll
-    never see a value whose runtime type does not match its static type.
-    This has many benefits, such as catching bugs in development,
-    rather than at runtime. Strong mode is optional in Dart 1.x,
-    but won't be optional in Dart 2.0. For details, see [Strong Mode
-    Dart](/guides/language/sound-dart) and [Dart 2.0 Updates](/dart-2.0).
+-   In [strong mode](/guides/language/sound-dart), static and runtime
+    checks ensure that your code is type safe, helping you catch bugs
+    in development, rather than at runtime. Strong mode is optional in
+    Dart 1.x, but not optional in [Dart 2.0[(/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
