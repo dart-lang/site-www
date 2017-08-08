@@ -104,14 +104,20 @@ an expression evaluates to a specific type at runtime.
 Strong mode performs stronger type checking. For more information, see
 [Strong mode vs. checked mode](/guides/language/sound-dart#strong-mode-vs-checked-mode).
 
-Checked mode will be obsolete in Dart 2.0 and will be removed. For more
-information, see [Dart 2.0 Updates.](/dart-2.0)
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 <a name="why-another-mode"></a>
 ### Why do we need another mode for Dart?
 
-Checked mode will be obsolete in Dart 2.0 and will be removed. For more
-information, see [Dart 2.0 Updates.](/dart-2.0)
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 <a name="where-is-the-spec"></a>
 ### Is strong mode specified? If so, where is the spec?

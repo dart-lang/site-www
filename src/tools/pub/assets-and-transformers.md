@@ -81,6 +81,12 @@ files because browsers in the wild don't support Dart natively. The `pub
 serve` command, on the other hand, does generate `.dart` assets, because
 you can use Dartium while you're developing your app.
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Specifying transformers
 
 To tell pub to apply a transformer to your package's assets, specify the

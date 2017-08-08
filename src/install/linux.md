@@ -26,6 +26,12 @@ If you are doing web development, you will also need to
     class="download-link"
     href="{{ site.custom.downloads.dartarchive-stable-url-prefix }}/latest/dartium/dartium-linux-x64-release.zip">install Dartium for Linux</a>.
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Using apt-get
 
 To install the Dart SDK with apt-get, you first need to do some setup.

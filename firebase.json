@@ -1066,11 +1066,6 @@
         "type": 301
       },
       {
-        "source": "/tools/jetbrains-plugin",
-        "destination": "/tools/jetbrains-plugin",
-        "type": 301
-      },
-      {
         "source": "/tools/observatory/**",
         "destination": "https://dart-lang.github.io/observatory",
         "type": 301

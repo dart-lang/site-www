@@ -144,21 +144,21 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
-<ul>
-  <li id="runtime-modes" class="no_toc" markdown="1">
-  Dart has two <em id="runtime-modes">runtime modes</em>:
-  production and checked. We recommend that
-  you develop and debug in checked mode, and deploy to production mode.
+-   Dart has two <em>runtime modes</em>:
+    production and checked. We recommend that
+    you develop and debug in checked mode, and deploy to production mode.
+    *Production mode* is the default runtime mode of a Dart program,
+    optimized for speed. Production mode ignores [assert
+    statements](#assert) and static types.
+    *Checked mode* is a developer-friendly mode that helps you catch some
+    type errors during runtime. For example, if you assign a non-number to a
+    variable declared as a `num`, then checked mode throws an exception.
 
-  *Production mode* is the default runtime mode of a Dart program,
-  optimized for speed. Production mode ignores [assert
-  statements](#assert) and static types.
+{% include checked-mode-2.0.html %}
 
-  *Checked mode* is a developer-friendly mode that helps you catch some
-  type errors during runtime. For example, if you assign a non-number to a
-  variable declared as a `num`, then checked mode throws an exception.
-  </li>
-</ul>
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ## Keywords
 
@@ -233,6 +233,11 @@ throws an exception unless *condition* is true. For details,
 see the [Assert](#assert) section.
 </div>
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ### Optional types
 
@@ -573,6 +578,12 @@ mode*, the preceding code doesn’t print at all because `name` is converted to
 `false` (because `name != true`).
 In Dart running in *checked mode*, the preceding code
 throws an exception because the `name` variable is not a bool.
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 {% comment %}
 xxx: This code also produces an error:
@@ -2047,6 +2058,12 @@ assert(urlString.startsWith('https'));
 Assert statements work only in checked mode. They have no effect in
 production mode.
 </div>
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 To attach a message to an assert,
 add a string as the second argument.

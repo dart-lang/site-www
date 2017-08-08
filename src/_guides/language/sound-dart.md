@@ -728,6 +728,12 @@ void main() {
 This code raises no issues when run in checked mode, but generates
 numerous errors when analyzed under strong mode.
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Other resources
 
 The following resources have further information on sound Dart and

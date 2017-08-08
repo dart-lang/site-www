@@ -80,7 +80,7 @@ elsewhere.
 
 ### Web libraries
 
-If you write web apps, check out Angular 2, a web application framework.
+If you write web apps, check out AngularDart, a web application framework.
 Other available resources are the js package for interoperability with
 JavaScript APIs, and the dart:html library for low-level HTML programming.
 

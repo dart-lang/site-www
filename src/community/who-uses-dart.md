@@ -22,7 +22,7 @@ Thanks!
 [Wrike](https://www.wrike.com/)
 : Outcollaborate. Wrike combines real-time collaboration with easy-to-use
   project management so your team can accomplish more.
-  Built with Dart, <nobr>Angular 2</nobr>.
+  Built with AngularDart.
 
 [Workiva](https://www.workiva.com/)
 : Next generation client applications for our Wdesk productivity suite are
@@ -54,7 +54,7 @@ Thanks!
 : RTAC HMI browser-based SCADA system.
 
 Google internal sales tool
-: Built with Angular 2 for Dart.
+: Built with AngularDart.
 
 [drone.io](http://drone.io)
 : Continuous integration with support for testing Dart apps.
@@ -109,8 +109,8 @@ Google internal sales tool
 [WorkTrail](https://worktrail.net)
 : Time tracking app.
 
-[Angular](https://github.com/angular/angular.dart)
-: Angular 2 for Dart is a port of the popular framework to Dart.
+[AngularDart](https://github.com/angular/angular.dart)
+: AngularDart is a port of the popular framework to Dart.
 
 [Google Elections](http://news.dartlang.org/2013/09/googles-german-election-map-powered-by.html)
 : Elections results maps built with Dart.
@@ -148,10 +148,10 @@ AdWords for video
 : The application that advertisers use to promote video ads on YouTube
   and other sites. Advertisers create accounts, setup campaigns, create ads,
   target them to users, and see how users are finding their ads useful, etc.
-  Built with Angular 2 for Dart.
+  Built with AngularDart.
 
 Google internal tool for marketing
-: Built with Angular 2 for Dart.
+: Built with AngularDart.
 
 [Prime APPcatalog](http://www.primeapp.it/en)
 : An interactive product catalog for tablets and smartphones. Built with Dart,
@@ -210,7 +210,7 @@ players' teams. Build with polymer.dart and StageXL.
 
 [QuemEuTirei](http://www.quemeutirei.com.br)
 : A Secret Santa application. You can create Events, setup your Profile and
-Gifts and invite friends. Build with Angular 2 Dart (client) and Shelf (server).
+Gifts and invite friends. Build with AngularDart (client) and Shelf (server).
 
 [ListShine](https://www.listshine.com)
 : Email Marketing Software powered by Dart (client).
