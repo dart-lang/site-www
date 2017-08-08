@@ -41,11 +41,6 @@
         "type": 301
       },
       {
-        "source": "/articles",
-        "destination": "/articles",
-        "type": 301
-      },
-      {
         "source": "/articles/api-naming-guide/**",
         "destination": "/guides/language/effective-dart/design",
         "type": 301
@@ -878,11 +873,6 @@
       {
         "source": "/resources/dart-tips-ep-2/**",
         "destination": "/resources/dart-tips/dart-tips-ep-2",
-        "type": 301
-      },
-      {
-        "source": "/resources/dart-tips",
-        "destination": "/resources/dart-tips",
         "type": 301
       },
       {
