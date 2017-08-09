@@ -144,7 +144,7 @@ by removing a directory.
 See the JetBrains website for more information.
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  * [Dart support](https://www.jetbrains.com/help/idea/dart-support.html)
+  * [Dart PhpStorm Help](https://www.jetbrains.com/help/phpstorm/dart.html)
   * [Features](https://www.jetbrains.com/idea/features/)
   * [Quick start](https://www.jetbrains.com/help/idea/meet-intellij-idea.html)
 * [Dart Plugin by JetBrains](https://plugins.jetbrains.com/plugin/6351)

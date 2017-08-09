@@ -167,9 +167,12 @@ Google internal tool for marketing
 : A high-performance, HTML5 web app authoring and distribution platform built
   on and made for the modern web.
 
+{% comment %}
+Broken link and can't find lumo on the sonardesign.com site.
 [Lumo](http://lumo.sonardesign.com)
 : An online presentation service that allows you to create, present,
   and share presentations on any device.
+{% endcomment %}
 
 [Children of Ur](http://www.childrenofur.com/)
 : A community reboot of the closed massively multiplayer game called

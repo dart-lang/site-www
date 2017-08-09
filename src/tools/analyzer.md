@@ -7,7 +7,7 @@ description: "The tool that analyzes and validates your Dart code."
 
 The static analyzer evaluates your Dart code,
 checking for errors and warnings that are specified in the
-[Dart Language Specification](https://www.dartlang.org/docs/spec/).
+[Dart Language Specification](/guides/language/spec).
 
 Many tools in the Dart ecosystem (including IDEs, DartPad, and dartanalyzer)
 perform static analysis on code. Most of these tools (with the exception
@@ -41,10 +41,10 @@ Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/b
 for protocol details.) The following tools use the analysis server:
 
 * Dart and Flutter plugins for IDEs (such as
-  [WebStorm](https://webdev.dartlang.org/tools/webstorm),
-  [IntelliJ](https://www.dartlang.org/tools/jetbrains-plugin), and
+  [WebStorm]({{site.webdev}}/tools/webstorm),
+  [IntelliJ](/tools/jetbrains-plugin), and
   [Atom](https://atom.io/packages/dartlang))
-* [DartPad](https://www.dartlang.org/tools/dartpad)
+* [DartPad](/tools/dartpad)
 
 If your tool requires access to the abstract syntax tree (AST), use the
 [package:analyzer](https://pub.dartlang.org/packages/analyzer) library.
@@ -55,7 +55,7 @@ The following tools use package:analyzer:
 * [`dartdevc`]({{site.webdev}}/tools/dartdevc)
 * [`dartdoc`](https://github.com/dart-lang/dartdoc)
 * [`dartfmt`](https://github.com/dart-lang/dart_style)
-* [`flutter analyze`](https://flutter.io/debugging/#the-dart-analyzer)
+* [`flutter analyze`]({{site.flutter}}/debugging/#the-dart-analyzer)
 
 You might also be interested in the [Dart analyzer discussion
 group.](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)
