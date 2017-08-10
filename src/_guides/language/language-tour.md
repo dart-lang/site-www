@@ -111,7 +111,7 @@ mind:
 -   In [strong mode](/guides/language/sound-dart), static and runtime
     checks ensure that your code is type safe, helping you catch bugs
     in development, rather than at runtime. Strong mode is optional in
-    Dart 1.x, but not optional in [Dart 2.0[(/dart-2.0).
+    Dart 1.x, but not optional in [Dart 2.0](/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -144,7 +144,7 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
--   Dart has two <em>runtime modes</em>:
+-   Dart 1.x has two <em>runtime modes</em>:
     production and checked. We recommend that
     you develop and debug in checked mode, and deploy to production mode.
     *Production mode* is the default runtime mode of a Dart program,
@@ -244,7 +244,7 @@ update-for-dart-2
 {% include optional-types-2.0.html %}
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 You have the option of adding static types to your variable
@@ -1169,7 +1169,7 @@ and optionally typed, between parentheses.
 {% include optional-types-2.0.html %}
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 The code block that follows contains the function's body:
@@ -3267,7 +3267,7 @@ annotate your code, making your intent clearer.
 {% include optional-types-2.0.html %}
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 For example, if you intend for a list to contain only strings, you can
