@@ -5,7 +5,7 @@ description: "Why and how to write sound Dart code."
 ---
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 This guide tells you why and how to write sound (type safe) Dart code.
