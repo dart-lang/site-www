@@ -84,21 +84,25 @@ expected strong mode errors, make sure of the following:
 
 <ul markdown="1">
 <li markdown="1">
-  If you're using an [analysis
-  options](/guides/language/analysis-options#the-analysis-options-file) file,
+  If your project contains an [analysis
+  options file,](/guides/language/analysis-options#the-analysis-options-file)
   make sure you've specified `strong mode: true` correctly.
   For more information, see [Specifying strong
-  mode.](/guides/language/analysis-options#specifying-strong-mode)</li>
+  mode.](/guides/language/analysis-options#specifying-strong-mode)
+
+</li>
 
 <li markdown="1">
-  If you aren't using an [analysis
-  options](/guides/language/analysis-options#the-analysis-options-file) file,
-  run the analyzer using the `--strong` tag. For example:
+  Run the analyzer with the `--strong` tag. This tag takes precedence over
+  the strong mode setting in the analysis options file (if the file exists),
+  and shows strong mode errors and warnings:
 
 {% prettify sh %}
 dartanalyzer --strong <file-or-directory>
 {% endprettify %}
+
 </li>
+
 </ul>
 
 For information on how to set up an analysis options file,
