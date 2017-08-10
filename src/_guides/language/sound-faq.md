@@ -6,7 +6,7 @@ toc: false
 ---
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 This page collects some questions and answers about why and how to
@@ -21,7 +21,6 @@ write sound Dart code. Be sure to also check out the
 <li><a href="#how-does-it-benefit-me">How does strong mode benefit me, the developer?</a></li>
 <li><a href="#how-does-it-benefit-users">How does strong mode benefit my users?</a></li>
 <li><a href="#how-is-it-different-than-checked-mode">What is the difference between strong mode and checked mode?</a></li>
-<li><a href="#why-another-mode">Why do we need another mode for Dart?</a></li>
 <li><a href="#where-is-the-spec">Is strong mode specified? If so, where is the spec?</a></li>
 <li><a href="#is-strong-mode-done">Is strong mode "done" or are there still changes to come?</a></li>
 <li><a href="#how-did-dart-change">How did strong mode change the Dart language?</a></li>
@@ -104,14 +103,11 @@ an expression evaluates to a specific type at runtime.
 Strong mode performs stronger type checking. For more information, see
 [Strong mode vs. checked mode](/guides/language/sound-dart#strong-mode-vs-checked-mode).
 
-Checked mode will be obsolete in Dart 2.0 and will be removed. For more
-information, see [Dart 2.0 Updates.](/dart-2.0)
+{% include checked-mode-2.0.html %}
 
-<a name="why-another-mode"></a>
-### Why do we need another mode for Dart?
-
-Checked mode will be obsolete in Dart 2.0 and will be removed. For more
-information, see [Dart 2.0 Updates.](/dart-2.0)
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 <a name="where-is-the-spec"></a>
 ### Is strong mode specified? If so, where is the spec?

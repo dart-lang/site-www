@@ -5,7 +5,7 @@ description: "Why and how to write sound Dart code."
 ---
 
 {% comment %}
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 This guide tells you why and how to write sound (type safe) Dart code.
@@ -727,6 +727,12 @@ void main() {
 
 This code raises no issues when run in checked mode, but generates
 numerous errors when analyzed under strong mode.
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ## Other resources
 

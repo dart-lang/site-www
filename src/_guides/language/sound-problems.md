@@ -7,7 +7,7 @@ toc: false
 
 {% comment %}
 The first few questions/answers are for strong mode under Dart 1.x.
-update-for-dart-2.0
+update-for-dart-2
 {% endcomment %}
 
 If you're having problems converting your code to strong mode,

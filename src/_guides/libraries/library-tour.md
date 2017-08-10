@@ -363,6 +363,12 @@ assert(fruit is String);
 fruits.add(5);  // BAD: Throws exception in checked mode.
 {% endprettify %}
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 Refer to the [List API
 docs]({{site.dart_api}}/dart-core/List-class.html) for a full list of
 methods.
@@ -1441,8 +1447,8 @@ dart:html, not command-line apps.
 <div class="alert alert-info" markdown="1">
 **Note:**
 For higher level approaches to web app UIs, see
-[Polymer Dart](https://github.com/dart-lang/polymer-dart/wiki) and
-[Angular 2 for Dart]({{site.webdev}}/angular).
+[AngularDart]({{site.webdev}}/angular) and
+[Polymer Dart](https://github.com/dart-lang/polymer-dart/wiki).
 </div>
 
 To use the HTML library in your web app, import dart:html:
@@ -2031,8 +2037,8 @@ audio,]({{site.dart_api}}/dart-web_audio/dart-web_audio-library.html)
 
 The [dart:io library]({{site.dart_api}}/dart-io/dart-io-library.html) provides APIs to
 deal with files, directories, processes, sockets, WebSockets, and HTTP
-clients and servers. Only command-line apps can use dart:io—not web
-apps.
+clients and servers. Only command-line scripts and servers can use
+dart:io—not web apps.
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it
@@ -2045,7 +2051,7 @@ with a Sync suffix on the method name. We don’t cover them here.
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-Only command-line apps can import and use `dart:io`.
+Only command-line scripts and servers can import and use `dart:io`.
 </div>
 
 

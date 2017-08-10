@@ -29,6 +29,11 @@ Once your IDE has the Dart plugin,
 you need to tell it where to find the Dart SDK and
 (optionally) Dartium.
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ### Downloading the IDE
 
@@ -106,7 +111,7 @@ Here's one way to configure Dart support:
   <b>Note:</b>
   The <b>Dart SDK</b> path specifies the directory that
   contains the SDK's `bin` and `lib` directories;
-  the `bin` directory contains tools such as `dart` and `dart2js`.
+  the `bin` directory contains tools such as `dart` and `dartfmt`.
   The <b>Dartium</b> path specifies the full path to the
   `Chromium` executable that contains the Dart VM.
   The IDE ensures that the paths are valid.
@@ -139,7 +144,7 @@ by removing a directory.
 See the JetBrains website for more information.
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  * [Dart support](https://www.jetbrains.com/help/idea/dart-support.html)
+  * [Dart PhpStorm Help](https://www.jetbrains.com/help/phpstorm/dart.html)
   * [Features](https://www.jetbrains.com/idea/features/)
   * [Quick start](https://www.jetbrains.com/help/idea/meet-intellij-idea.html)
 * [Dart Plugin by JetBrains](https://plugins.jetbrains.com/plugin/6351)

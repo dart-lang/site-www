@@ -21,6 +21,12 @@ If you are doing web development, you will also need **Dartium**.
 Instructions for installing Dartium are also provided in the following pages,
 or see the [zip file archive](/install/archive).
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Automated installation and updates
 
 A package manager can help you easily install and update the Dart SDK.

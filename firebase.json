@@ -41,11 +41,6 @@
         "type": 301
       },
       {
-        "source": "/articles",
-        "destination": "/articles",
-        "type": 301
-      },
-      {
         "source": "/articles/api-naming-guide/**",
         "destination": "/guides/language/effective-dart/design",
         "type": 301
@@ -333,11 +328,6 @@
       {
         "source": "/codelabs/server**",
         "destination": "https://dart-lang.github.io/server/codelab",
-        "type": 301
-      },
-      {
-        "source": "/community/who-uses-dart.html",
-        "destination": "/community/who-uses-dart",
         "type": 301
       },
       {
@@ -881,11 +871,6 @@
         "type": 301
       },
       {
-        "source": "/resources/dart-tips",
-        "destination": "/resources/dart-tips",
-        "type": 301
-      },
-      {
         "source": "/samples/appcache/**",
         "destination": "https://github.com/dart-lang/dart-samples/tree/master/html5/web/appcache/beginner",
         "type": 301
@@ -1061,16 +1046,6 @@
         "type": 301
       },
       {
-        "source": "/tools/faq.html",
-        "destination": "/tools/faq",
-        "type": 301
-      },
-      {
-        "source": "/tools/jetbrains-plugin",
-        "destination": "/tools/jetbrains-plugin",
-        "type": 301
-      },
-      {
         "source": "/tools/observatory/**",
         "destination": "https://dart-lang.github.io/observatory",
         "type": 301
@@ -1081,63 +1056,13 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/assets-and-transformers.html",
-        "destination": "/tools/pub/assets-and-transformers",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/cmd/pub-build.html",
         "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
         "type": 301
       },
       {
-        "source": "/tools/pub/cmd/pub-cache.html",
-        "destination": "/tools/pub/cmd/pub-cache",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-deps.html",
-        "destination": "/tools/pub/cmd/pub-deps",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-downgrade.html",
-        "destination": "/tools/pub/cmd/pub-downgrade",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-get.html",
-        "destination": "/tools/pub/cmd/pub-get",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-global.html",
-        "destination": "/tools/pub/cmd/pub-global",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-lish.html",
-        "destination": "/tools/pub/cmd/pub-lish",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-run.html",
-        "destination": "/tools/pub/cmd/pub-run",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/cmd/pub-serve.html",
         "destination": "https://webdev.dartlang.org/tools/pub/pub-serve",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-upgrade.html",
-        "destination": "/tools/pub/cmd/pub-upgrade",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-uploader.html",
-        "destination": "/tools/pub/cmd/pub-uploader",
         "type": 301
       },
       {
@@ -1151,63 +1076,8 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/dependencies.html",
-        "destination": "/tools/pub/dependencies",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/faq.html",
         "destination": "/tools/faq#pub",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/get-started.html",
-        "destination": "/tools/pub/get-started",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/glossary.html",
-        "destination": "/tools/pub/glossary",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/installing.html",
-        "destination": "/tools/pub/installing",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/package-layout.html",
-        "destination": "/tools/pub/package-layout",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/publishing.html",
-        "destination": "/tools/pub/publishing",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/pubspec.html",
-        "destination": "/tools/pub/pubspec",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/aggregate.html",
-        "destination": "/tools/pub/transformers/aggregate",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/lazy-transformer.html",
-        "destination": "/tools/pub/transformers/lazy-transformer",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/troubleshoot.html",
-        "destination": "/tools/pub/troubleshoot",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/versioning.html",
-        "destination": "/tools/pub/versioning",
         "type": 301
       },
       {

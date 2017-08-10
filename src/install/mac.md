@@ -31,6 +31,12 @@ $ brew tap dart-lang/dart
 $ brew install dart --with-content-shell --with-dartium
 {% endprettify %}
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ### Installing dev channel releases
 
 To choose the dev channel version of whatever Dart software you install,

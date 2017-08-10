@@ -43,8 +43,6 @@ At this time, only part of the planned API has been realized.
 The part that exists deals with _introspection_,
 the ability of a program to discover and use its own structure.
 The introspection API has been largely implemented on the Dart VM.
-In dart2js, a similar implementation is under development, but is
-still incomplete.
 
 The introspection API is declared in the library named `dart:mirrors`.
 If you wish to use introspection, import it:

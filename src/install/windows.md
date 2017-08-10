@@ -18,7 +18,7 @@ Another option is
 
 ## Using a third-party installer {#installer}
 
-A 
+A
 [Dart SDK installer for Windows](http://www.gekorm.com/dart-windows/)
 is available and supported by the community.
 You can use the wizard to install stable or dev versions of
@@ -41,6 +41,12 @@ If you are doing web development, you should also add one more tool:
   A special build of Chromium that includes a Dart VM.
   Use it to interactively test and debug Dart web apps
   without first compiling them to JavaScript.
+
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 If you're working on server-side Dart, all you need is the `dart-sdk`:
 
