@@ -79,8 +79,30 @@ How you troubleshoot strong mode depends on whether you are running
 
 #### Command line analyzer
 
-For information on how to set up an analysis options file, see
-[Customize Static Analysis](/guides/language/analysis-options).
+If you are running dartanalyzer from the command line and you don't see
+expected strong mode errors, make sure of the following:
+
+<ul markdown="1">
+<li markdown="1">
+  If you're using an [analysis
+  options](/guides/language/analysis-options#the-analysis-options-file) file,
+  make sure you've specified `strong mode: true` correctly.
+  For more information, see [Specifying strong
+  mode.](/guides/language/analysis-options#specifying-strong-mode)</li>
+
+<li markdown="1">
+  If you aren't using an [analysis
+  options](/guides/language/analysis-options#the-analysis-options-file) file,
+  run the analyzer using the `--strong` tag. For example:
+
+{% prettify sh %}
+dartanalyzer --strong <file-or-directory>
+{% endprettify %}
+</li>
+</ul>
+
+For information on how to set up an analysis options file,
+see [Customize Static Analysis](/guides/language/analysis-options).
 
 #### JetBrains IDEs
 
