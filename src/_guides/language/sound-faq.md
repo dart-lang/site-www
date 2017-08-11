@@ -5,6 +5,10 @@ description: "Questions and answers on how and why to write sound Dart code."
 toc: false
 ---
 
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 This page collects some questions and answers about why and how to
 write sound Dart code. Be sure to also check out the
 [Strong Mode Dart](/guides/language/sound-dart) to learn more.
@@ -17,7 +21,6 @@ write sound Dart code. Be sure to also check out the
 <li><a href="#how-does-it-benefit-me">How does strong mode benefit me, the developer?</a></li>
 <li><a href="#how-does-it-benefit-users">How does strong mode benefit my users?</a></li>
 <li><a href="#how-is-it-different-than-checked-mode">What is the difference between strong mode and checked mode?</a></li>
-<li><a href="#why-another-mode">Why do we need another mode for Dart?</a></li>
 <li><a href="#where-is-the-spec">Is strong mode specified? If so, where is the spec?</a></li>
 <li><a href="#is-strong-mode-done">Is strong mode "done" or are there still changes to come?</a></li>
 <li><a href="#how-did-dart-change">How did strong mode change the Dart language?</a></li>
@@ -54,7 +57,7 @@ With strong mode enabled (in an implementation that has both
 the static and runtime checks), Dart is a type safe language
 ensuring that static type annotations are actually
 correct at runtime. Strong mode is an optional mode that you enable in
-Dart Analyzer to enforce stronger static typing.
+the Dart analyzer to enforce stronger static typing.
 We encourage you to start using strong mode for your
 libraries and apps now. For more information,
 see [Strong Mode Dart](/guides/language/sound-dart).
@@ -100,11 +103,11 @@ an expression evaluates to a specific type at runtime.
 Strong mode performs stronger type checking. For more information, see
 [Strong mode vs. checked mode](/guides/language/sound-dart#strong-mode-vs-checked-mode).
 
-<a name="why-another-mode"></a>
-### Why do we need another mode for Dart?
+{% include checked-mode-2.0.html %}
 
-The Dart team is exploring ways of unifying checked mode and
-strong mode to simplify things in the future.
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 <a name="where-is-the-spec"></a>
 ### Is strong mode specified? If so, where is the spec?
@@ -137,8 +140,10 @@ for an explanation of these changes.
 <a name="can-i-use-it-today"></a>
 ### Can I use strong mode today?
 
-Yes! Strong mode is enforced by Dart Analyzer which you can be enable today.
-For more information, see
+Yes!  We encourage you to start migrating your code now to take advantage of
+the new type system that finds errors at compile time (rather than letting
+your users discover them). You may even find bugs that have been lurking in
+your code. For more information, see
 [How to enable strong mode](sound-dart#how-to-enable-strong-mode).
 
 <a name="does-it-affect-runtime-behavior"></a>
@@ -161,23 +166,25 @@ see [Type inference](sound-dart#type-inference).
 <a name="is-it-a-sound-type-system"></a>
 ### Is strong mode a "sound type system"?
 
-Not exactly. Strong mode is _part_ of Dart’s implementation of a
-sound type system. A sound type system guarantees that the types
-specified in the source code are the types that show up at runtime.
+Not exactly. Strong mode contributes to making Dart a sound language.
+A sound type system guarantees that the types specified in the
+source code are the types that show up at runtime. In Dart 1.x,
+the only compiler that includes runtime checks for type safety is
+[dartdevc]({{site.webdev}}/tools/dartdevc), but more tooling support is coming.
 For more information, see
 [What constitutes strong mode](/guides/language/sound-dart#what-constitutes-strong-mode).
 
 <a name="does-analyzer-know-strong-mode"></a>
 ### Does the analyzer know anything about strong mode?
 
-Yes. Dart Analyzer performs type inference and enforces strong mode.
+Yes. The Dart analyzer performs type inference and enforces strong mode.
 
 <a name="does-dart2js-use-it"></a>
 ### Does dart2js know anything about strong mode?
 
 Not yet. Currently, [dartdevc]({{site.webdev}}/tools/dartdevc)
 is the only compiler that uses strong mode,
-but it will be coming to other tools.
+but support will be coming to other tools.
 
 <a name="does-dart-vm-use-it"></a>
 ### Does the Dart VM know anything about strong mode?
@@ -187,17 +194,21 @@ Not yet. See the answer to the previous question.
 <a name="does-ddc-use-it"></a>
 ### Does dartdevc know anything about strong mode?
 
-Yes, dartdevc requires strong mode compliance to
-perform ahead-of-time compiling.
-The Dart dev compiler is part of the improved tooling experience,
+Yes, the Dart development compiler ([_dartdevc_]({{site.webdev}}/tools/dartdevc))
+requires strong mode compliance to perform ahead-of-time compiling.
+The dartdevc compiler is part of the improved tooling experience,
 including incremental compiles, that is under development.
 
 <a name="is-typing-optional"></a>
 ### Is Dart still optionally typed?
-Strong mode is optional, so you can continue to write Dart code as before.
-However, there are many benefits to sound code, such as finding bugs
-at compile time rather than runtime. For more information, see
-[The benefits of soundness](/guides/language/sound-dart#the-benefits-of-soundness).
+Typing is optional in Dart 1.x,
+so you can continue to write Dart code as before.
+However, Dart 2.0 won't be optionally typed. We encourage you
+to start migrating your code now to take advantage of the new type system that
+finds errors at compile time. It will also make the transition to Dart 2.0 go
+much more smoothly. For more information, see [The benefits of
+soundness](/guides/language/sound-dart#the-benefits-of-soundness)
+and [Dart 2.0 Updates.](/dart-2.0)
 
 <a name="how-much-work"></a>
 ### How much work is it to switch to strong mode?
@@ -205,7 +216,7 @@ at compile time rather than runtime. For more information, see
 It depends. A lot of well written code is already strong mode clean
 without changes. When changes are needed, they often involve adding
 annotations to Maps and Lists.
-Often, sound code is a matter of making good use of generic methods.
+Sometimes, sound code is a matter of making good use of generic methods.
 To see a list of common errors and warnings you might see when
 migrating your code to sound Dart, see
 [Strong Mode Dart: Fixing Common Problems](/guides/language/sound-problems)
@@ -213,15 +224,15 @@ migrating your code to sound Dart, see
 <a name="can-i-mix-code"></a>
 ### Can some of my code in my app/library be strong mode, and other code be not-strong-mode?
 
-It depends. You can exclude files from static analysis, but
+It depends. In Dart 1.x, you can [exclude files from static
+analysis](/guides/language/analysis-options#excluding-files), but
 if you're using dartdevc, the code must be entirely strong mode clean.
-For more information, see
-[Excluding files](/guides/language/analysis-options#excluding-files).
+In Dart 2.0, all of your code must be strong mode clean.
 
 <a name="are-core-libraries-compliant"></a>
 ### Are the Dart core libraries compliant with strong mode?
 
-Yes, since 1.19 (September 2016).
+Yes, since Dart 1.19 (September 2016).
 
 <a name="are-dart-packages-compliant"></a>
 ### Are the packages produced by the Dart team compliant with strong mode?
@@ -233,19 +244,20 @@ that aren't yet strong mode compliant.
 <a name="what-if-packages-not-compliant"></a>
 ### What happens if I write strong mode code, but I use packages that are not compliant with strong mode?
 
-Other packages are excluded from static analysis by default. You have
-to specify `--show-package-warnings` to see errors in other packages.
+In Dart 1.x, other packages are excluded from static analysis by default.
+You have to specify `--show-package-warnings` to see errors in other packages.
 As for executing code, the dart2js and Dart VM tools don’t currently
 support strong mode so, yes, you can mix and match.
 The dartdevc tool requires strong mode compliance and
 won’t compile code that is unsound.
+In Dart 2.0, all code must be strong mode clean.
 
 <a name="is-it-darts-new-type-system"></a>
 ### Is strong mode Dart's new type system?
 
-Strong mode is part of the implementation of Dart’s new type system,
-which is currently under development. For more information, see
-[What constitutes strong mode](/guides/language/sound-dart#what-constitutes-strong-mode).
+Strong mode is part of the implementation of Dart’s new type system, which is
+currently under development. For more information, see [What constitutes strong
+mode](/guides/language/sound-dart#what-constitutes-strong-mode).
 
 <a name="will-dart-become-cumbersome"></a>
 ### Is Dart going to turn into a verbose, cumbersome language where I have to put types everywhere?
@@ -264,7 +276,8 @@ The following image shows examples of type inference in strong mode clean code:
 <a name="is-it-optional"></a>
 ### I liked Dart before. Can I still write Dart code the way I always did?
 
-Yes, but we recommend migrating your code now. For help on getting
+Only for awhile. Types are no longer optional in Dart 2.0, so we
+recommend migrating your code now. For help on getting
 ready for Dart 2.0, see [Dart 2.0 Updates](/dart-2.0).
 For more information, see [A stronger Dart for
 everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html).

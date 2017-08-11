@@ -102,13 +102,16 @@ mind:
     [Object]({{site.dart_api}}/dart-core/Object-class.html) class.
 
 -   Specifying static types (such as `num` in the preceding example)
-    clarifies your intent and enables static checking by tools, but it’s
-    optional. (You might notice when you’re debugging your code that
+    clarifies your intent and enables static checking by tools.
+    (You might notice when you’re debugging your code that
     variables with no specified type get a special type: `dynamic`.)
-    Recent changes to the Dart language and tools
-    make writing type safe code possible,
-    with many expected benefits;
-    see [Strong Mode Dart](/guides/language/sound-dart) for details.
+    Specifying static types is optional in Dart 1.x, however Dart is moving
+    towards being a fully type safe language.
+
+-   In [strong mode](/guides/language/sound-dart), static and runtime
+    checks ensure that your code is type safe, helping you catch bugs
+    in development, rather than at runtime. Strong mode is optional in
+    Dart 1.x, but not optional in [Dart 2.0](/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -141,21 +144,21 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
-<ul>
-  <li id="runtime-modes" class="no_toc" markdown="1">
-  Dart has two <em id="runtime-modes">runtime modes</em>:
-  production and checked. We recommend that
-  you develop and debug in checked mode, and deploy to production mode.
+-   Dart 1.x has two <em>runtime modes</em>:
+    production and checked. We recommend that
+    you develop and debug in checked mode, and deploy to production mode.
+    *Production mode* is the default runtime mode of a Dart program,
+    optimized for speed. Production mode ignores [assert
+    statements](#assert) and static types.
+    *Checked mode* is a developer-friendly mode that helps you catch some
+    type errors during runtime. For example, if you assign a non-number to a
+    variable declared as a `num`, then checked mode throws an exception.
 
-  *Production mode* is the default runtime mode of a Dart program,
-  optimized for speed. Production mode ignores [assert
-  statements](#assert) and static types.
+{% include checked-mode-2.0.html %}
 
-  *Checked mode* is a developer-friendly mode that helps you catch some
-  type errors during runtime. For example, if you assign a non-number to a
-  variable declared as a `num`, then checked mode throws an exception.
-  </li>
-</ul>
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ## Keywords
 
@@ -230,8 +233,19 @@ throws an exception unless *condition* is true. For details,
 see the [Assert](#assert) section.
 </div>
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 ### Optional types
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 You have the option of adding static types to your variable
 declarations:
@@ -250,6 +264,8 @@ completion and early warnings for bugs and code completion.
 This page follows the
 [style guide recommendation](/guides/language/effective-dart/design#type-annotations)
 of using `var`, rather than type annotations, for local variables.
+Even under [strong mode](/dart-2.0), you can specify `var`&mdash;the
+analyzer infers the type where possible.
 </div>
 
 
@@ -562,6 +578,12 @@ mode*, the preceding code doesn’t print at all because `name` is converted to
 `false` (because `name != true`).
 In Dart running in *checked mode*, the preceding code
 throws an exception because the `name` variable is not a bool.
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 {% comment %}
 xxx: This code also produces an error:
@@ -1143,6 +1165,13 @@ for example, you can add or remove it from a collection.
 An anonymous function looks similar to a named function&mdash;
 zero or more parameters, separated by commas
 and optionally typed, between parentheses.
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 The code block that follows contains the function's body:
 
 <code>
@@ -2029,6 +2058,12 @@ assert(urlString.startsWith('https'));
 Assert statements work only in checked mode. They have no effect in
 production mode.
 </div>
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 To attach a message to an assert,
 add a string as the second argument.
@@ -3224,10 +3259,16 @@ as E, T, S, K, and V.
 
 ### Why use generics?
 
-Because types are optional in Dart, you never *have* to use generics.
+Because types are optional in Dart 1.x, you never *have* to use generics.
 You might *want* to, though, for the same reason you might want to use
 other types in your code: types (generic or not) let you document and
 annotate your code, making your intent clearer.
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 For example, if you intend for a list to contain only strings, you can
 declare it as `List<String>` (read that as “list of string”). That way

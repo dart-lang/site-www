@@ -41,42 +41,37 @@
         "type": 301
       },
       {
-        "source": "/articles/",
-        "destination": "/articles",
-        "type": 301
-      },
-      {
         "source": "/articles/api-naming-guide/**",
         "destination": "/guides/language/effective-dart/design",
         "type": 301
       },
       {
-        "source": "/articles/await-async/",
+        "source": "/articles/await-async",
         "destination": "/articles/language/await-async",
         "type": 301
       },
       {
-        "source": "/articles/benchmarking/",
+        "source": "/articles/benchmarking",
         "destination": "/articles/dart-vm/benchmarking",
         "type": 301
       },
       {
-        "source": "/articles/beyond-async/",
+        "source": "/articles/beyond-async",
         "destination": "/articles/language/beyond-async",
         "type": 301
       },
       {
-        "source": "/articles/broadcast-streams/",
+        "source": "/articles/broadcast-streams",
         "destination": "/articles/libraries/broadcast-streams",
         "type": 301
       },
       {
-        "source": "/articles/converters-and-codecs/",
+        "source": "/articles/converters-and-codecs",
         "destination": "/articles/libraries/converters-and-codecs",
         "type": 301
       },
       {
-        "source": "/articles/creating-streams/",
+        "source": "/articles/creating-streams",
         "destination": "/articles/libraries/creating-streams",
         "type": 301
       },
@@ -106,22 +101,22 @@
         "type": 301
       },
       {
-        "source": "/articles/embedding-in-html/",
+        "source": "/articles/embedding-in-html",
         "destination": "https://webdev.dartlang.org/articles/low-level-html/embedding-in-html",
         "type": 301
       },
       {
-        "source": "/articles/emulating-functions/",
+        "source": "/articles/emulating-functions",
         "destination": "/articles/language/emulating-functions",
         "type": 301
       },
       {
-        "source": "/articles/mocking-with-dart/",
+        "source": "/articles/mocking-with-dart",
         "destination": "https://pub.dartlang.org/packages/mockito",
         "type": 301
       },
       {
-        "source": "/articles/event-loop/",
+        "source": "/articles/event-loop",
         "destination": "https://webdev.dartlang.org/articles/performance/event-loop",
         "type": 301
       },
@@ -131,7 +126,7 @@
         "type": 301
       },
       {
-        "source": "/articles/futures-and-error-handling/",
+        "source": "/articles/futures-and-error-handling",
         "destination": "/articles/libraries/futures-and-error-handling",
         "type": 301
       },
@@ -146,22 +141,22 @@
         "type": 301
       },
       {
-        "source": "/articles/improving-the-dom/",
+        "source": "/articles/improving-the-dom",
         "destination": "https://webdev.dartlang.org/guides/web-programming",
         "type": 301
       },
       {
-        "source": "/articles/io/",
+        "source": "/articles/io",
         "destination": "/articles/dart-vm/io",
         "type": 301
       },
       {
-        "source": "/articles/js-dart-interop/",
+        "source": "/articles/js-dart-interop",
         "destination": "https://webdev.dartlang.org/guides/web-programming#js-interop",
         "type": 301
       },
       {
-        "source": "/articles/json-web-service/",
+        "source": "/articles/json-web-service",
         "destination": "https://webdev.dartlang.org/articles/get-data/json-web-service",
         "type": 301
       },
@@ -171,22 +166,22 @@
         "type": 301
       },
       {
-        "source": "/articles/mixins/",
+        "source": "/articles/mixins",
         "destination": "/articles/language/mixins",
         "type": 301
       },
       {
-        "source": "/articles/native-extensions-for-standalone-dart-vm/",
+        "source": "/articles/native-extensions-for-standalone-dart-vm",
         "destination": "/articles/dart-vm/native-extensions",
         "type": 301
       },
       {
-        "source": "/articles/numeric-computation/",
+        "source": "/articles/numeric-computation",
         "destination": "/articles/dart-vm/numeric-computation",
         "type": 301
       },
       {
-        "source": "/articles/optional-types/",
+        "source": "/articles/optional-types",
         "destination": "/faq#types",
         "type": 301
       },
@@ -201,22 +196,27 @@
         "type": 301
       },
       {
-        "source": "/articles/reflection-with-mirrors/",
-        "destination": "/articles/libraries/reflection-with-mirrors",
+        "source": "/articles/reflection-with-mirrors",
+        "destination": "/articles/dart-vm/reflection-with-mirrors",
         "type": 301
       },
       {
-        "source": "/articles/serialization/",
+        "source": "/articles/libraries/reflection-with-mirrors",
+        "destination": "/articles/dart-vm/reflection-with-mirrors",
+        "type": 301
+      },
+      {
+        "source": "/articles/serialization",
         "destination": "/articles/libraries/serialization",
         "type": 301
       },
       {
-        "source": "/articles/simd/",
+        "source": "/articles/simd",
         "destination": "/articles/dart-vm/simd",
         "type": 301
       },
       {
-        "source": "/articles/snapshots/",
+        "source": "/articles/snapshots",
         "destination": "https://github.com/dart-lang/sdk/wiki/Snapshots",
         "type": 301
       },
@@ -246,7 +246,7 @@
         "type": 301
       },
       {
-        "source": "/articles/why-dart-types/",
+        "source": "/articles/why-dart-types",
         "destination": "/faq#types",
         "type": 301
       },
@@ -256,7 +256,7 @@
         "type": 301
       },
       {
-        "source": "/articles/why-not-bytecode/",
+        "source": "/articles/why-not-bytecode",
         "destination": "/faq#q-why-didnt-google-build-a-bytecode-vm-targetable-by-multiple-languages-including-dart",
         "type": 301
       },
@@ -266,7 +266,7 @@
         "type": 301
       },
       {
-        "source": "/articles/zones/",
+        "source": "/articles/zones",
         "destination": "/articles/libraries/zones",
         "type": 301
       },
@@ -296,23 +296,13 @@
         "type": 301
       },
       {
-        "source": "/books/",
+        "source": "/books",
         "destination": "/resources/books",
         "type": 301
       },
       {
         "source": "/cloud",
-        "destination": "https://dart-lang.github.io/server/",
-        "type": 301
-      },
-      {
-        "source": "/cloud/",
-        "destination": "https://dart-lang.github.io/server/",
-        "type": 301
-      },
-      {
-        "source": "/codelabs/",
-        "destination": "/codelabs",
+        "destination": "https://dart-lang.github.io/server",
         "type": 301
       },
       {
@@ -321,13 +311,13 @@
         "type": 301
       },
       {
-        "source": "/codelabs/darrrt/",
+        "source": "/codelabs/darrrt",
         "destination": "https://webdev.dartlang.org/codelabs/darrrt",
         "type": 301
       },
       {
-        "source": "/codelabs/darrrt/examples/index.html",
-        "destination": "https://webdev.dartlang.org/codelabs/darrrt/examples/index.html",
+        "source": "/codelabs/darrrt/examples",
+        "destination": "https://webdev.dartlang.org/codelabs/darrrt/examples",
         "type": 301
       },
       {
@@ -337,21 +327,16 @@
       },
       {
         "source": "/codelabs/server**",
-        "destination": "https://dart-lang.github.io/server/codelab/",
+        "destination": "https://dart-lang.github.io/server/codelab",
         "type": 301
       },
       {
-        "source": "/community/who-uses-dart.html",
-        "destination": "/community/who-uses-dart",
-        "type": 301
-      },
-      {
-        "source": "/dart-by-example/",
+        "source": "/dart-by-example",
         "destination": "/dart-vm/dart-by-example",
         "type": 301
       },
       {
-        "source": "/dart-tips/",
+        "source": "/dart-tips",
         "destination": "/resources/dart-tips",
         "type": 301
       },
@@ -421,22 +406,22 @@
         "type": 301
       },
       {
-        "source": "/dartium/",
+        "source": "/dartium",
         "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
       },
       {
-        "source": "/devices/",
+        "source": "/devices",
         "destination": "/guides/platforms",
         "type": 301
       },
       {
-        "source": "/docs/",
+        "source": "/docs",
         "destination": "/guides",
         "type": 301
       },
       {
-        "source": "/docs/cookbook/",
+        "source": "/docs/cookbook",
         "destination": "/dart-vm/dart-by-example",
         "type": 301
       },
@@ -526,7 +511,7 @@
         "type": 301
       },
       {
-        "source": "/docs/editor/",
+        "source": "/docs/editor",
         "destination": "/tools",
         "type": 301
       },
@@ -562,16 +547,11 @@
       },
       {
         "source": "/docs/serverguide",
-        "destination": "https://dart-lang.github.io/server/",
+        "destination": "https://dart-lang.github.io/server",
         "type": 301
       },
       {
         "source": "/docs/spec",
-        "destination": "/guides/language/spec",
-        "type": 301
-      },
-      {
-        "source": "/docs/spec/",
         "destination": "/guides/language/spec",
         "type": 301
       },
@@ -601,12 +581,12 @@
         "type": 301
       },
       {
-        "source": "/docs/spec/examples/lazyloader/index.html",
+        "source": "/docs/spec/examples/lazyloader",
         "destination": "/guides/language/spec",
         "type": 301
       },
       {
-        "source": "/docs/synonyms/",
+        "source": "/docs/synonyms",
         "destination": "/resources/synonyms",
         "type": 301
       },
@@ -626,27 +606,22 @@
         "type": 301
       },
       {
-        "source": "/docs/tutorials/",
-        "destination": "/tutorials",
-        "type": 301
-      },
-      {
-        "source": "/docs/tutorials/add-elements/",
+        "source": "/docs/tutorials/add-elements",
         "destination": "https://webdev.dartlang.org/tutorials/low-level-html/add-elements",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/cmdline/",
+        "source": "/docs/tutorials/cmdline",
         "destination": "/tutorials/dart-vm/cmdline",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/connect-dart-html/",
+        "source": "/docs/tutorials/connect-dart-html",
         "destination": "https://webdev.dartlang.org/tutorials/low-level-html/connect-dart-html",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/fetchdata/",
+        "source": "/docs/tutorials/fetchdata",
         "destination": "https://webdev.dartlang.org/tutorials/get-data/fetch-data",
         "type": 301
       },
@@ -656,17 +631,17 @@
         "type": 301
       },
       {
-        "source": "/docs/tutorials/futures/",
+        "source": "/docs/tutorials/futures",
         "destination": "/tutorials/language/futures",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/get-started/",
+        "source": "/docs/tutorials/get-started",
         "destination": "/tutorials/dart-vm/get-started",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/httpserver/",
+        "source": "/docs/tutorials/httpserver",
         "destination": "/tutorials/dart-vm/httpserver",
         "type": 301
       },
@@ -681,17 +656,17 @@
         "type": 301
       },
       {
-        "source": "/docs/tutorials/remove-elements/",
+        "source": "/docs/tutorials/remove-elements",
         "destination": "https://webdev.dartlang.org/tutorials/low-level-html/remove-elements",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/shared-pkgs/",
+        "source": "/docs/tutorials/shared-pkgs",
         "destination": "/tutorials/libraries/shared-pkgs",
         "type": 301
       },
       {
-        "source": "/docs/tutorials/streams/",
+        "source": "/docs/tutorials/streams",
         "destination": "/tutorials/language/streams",
         "type": 301
       },
@@ -716,12 +691,7 @@
         "type": 301
       },
       {
-        "source": "/downloads/",
-        "destination": "/install",
-        "type": 301
-      },
-      {
-        "source": "/downloads/archive/",
+        "source": "/downloads/archive",
         "destination": "/install/archive",
         "type": 301
       },
@@ -761,27 +731,27 @@
         "type": 301
       },
       {
-        "source": "/effective-dart/",
+        "source": "/effective-dart",
         "destination": "/guides/language/effective-dart",
         "type": 301
       },
       {
-        "source": "/effective-dart/design/",
+        "source": "/effective-dart/design",
         "destination": "/guides/language/effective-dart/design",
         "type": 301
       },
       {
-        "source": "/effective-dart/documentation/",
+        "source": "/effective-dart/documentation",
         "destination": "/guides/language/effective-dart/documentation",
         "type": 301
       },
       {
-        "source": "/effective-dart/style/",
+        "source": "/effective-dart/style",
         "destination": "/guides/language/effective-dart/style",
         "type": 301
       },
       {
-        "source": "/effective-dart/usage/",
+        "source": "/effective-dart/usage",
         "destination": "/guides/language/effective-dart/usage",
         "type": 301
       },
@@ -797,16 +767,11 @@
       },
       {
         "source": "/events/2016/**",
-        "destination": "https://events.dartlang.org/2016/summit/",
+        "destination": "https://events.dartlang.org/2016/summit",
         "type": 301
       },
       {
         "source": "/googleapis",
-        "destination": "https://github.com/dart-lang/googleapis",
-        "type": 301
-      },
-      {
-        "source": "/googleapis/",
         "destination": "https://github.com/dart-lang/googleapis",
         "type": 301
       },
@@ -831,12 +796,7 @@
         "type": 301
       },
       {
-        "source": "/language-tour/",
-        "destination": "/guides/language/language-tour",
-        "type": 301
-      },
-      {
-        "source": "/logos/",
+        "source": "/logos",
         "destination": "https://github.com/dart-lang/logos",
         "type": 301
       },
@@ -846,17 +806,12 @@
         "type": 301
       },
       {
-        "source": "/mobile/",
+        "source": "/mobile",
         "destination": "/guides/platforms",
         "type": 301
       },
       {
-        "source": "/performance/",
-        "destination": "/performance",
-        "type": 301
-      },
-      {
-        "source": "/performance/io/",
+        "source": "/performance/io",
         "destination": "/performance",
         "type": 301
       },
@@ -871,7 +826,7 @@
         "type": 301
       },
       {
-        "source": "/polymer/",
+        "source": "/polymer",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
       },
@@ -896,7 +851,7 @@
         "type": 301
       },
       {
-        "source": "/pub/tools/editor/",
+        "source": "/pub/tools/editor",
         "destination": "/tools",
         "type": 301
       },
@@ -913,16 +868,6 @@
       {
         "source": "/resources/dart-tips-ep-2/**",
         "destination": "/resources/dart-tips/dart-tips-ep-2",
-        "type": 301
-      },
-      {
-        "source": "/resources/dart-tips/",
-        "destination": "/resources/dart-tips",
-        "type": 301
-      },
-      {
-        "source": "/samples/",
-        "destination": "/samples",
         "type": 301
       },
       {
@@ -997,17 +942,17 @@
       },
       {
         "source": "/server/**",
-        "destination": "https://dart-lang.github.io/server/",
+        "destination": "https://dart-lang.github.io/server",
         "type": 301
       },
       {
         "source": "/server/app-engine**",
-        "destination": "https://dart-lang.github.io/server/google-cloud-platform/app-engine/",
+        "destination": "https://dart-lang.github.io/server/google-cloud-platform",
         "type": 301
       },
       {
         "source": "/server/google-cloud-platform**",
-        "destination": "https://dart-lang.github.io/server/google-cloud-platform/",
+        "destination": "https://dart-lang.github.io/server/google-cloud-platform",
         "type": 301
       },
       {
@@ -1021,7 +966,7 @@
         "type": 301
       },
       {
-        "source": "/support/",
+        "source": "/support",
         "destination": "/community",
         "type": 301
       },
@@ -1031,22 +976,17 @@
         "type": 301
       },
       {
-        "source": "/tools/",
-        "destination": "/tools",
-        "type": 301
-      },
-      {
-        "source": "/tools/dart-vm/",
+        "source": "/tools/dart-vm",
         "destination": "/dart-vm/tools/dart-vm",
         "type": 301
       },
       {
-        "source": "/tools/dart2js/",
+        "source": "/tools/dart2js",
         "destination": "https://webdev.dartlang.org/tools/dart2js",
         "type": 301
       },
       {
-        "source": "/tools/dartdoc/",
+        "source": "/tools/dartdoc",
         "destination": "https://github.com/dart-lang/dartdoc",
         "type": 301
       },
@@ -1056,7 +996,7 @@
         "type": 301
       },
       {
-        "source": "/tools/dartfmt/",
+        "source": "/tools/dartfmt",
         "destination": "https://github.com/dart-lang/dart_style#readme",
         "type": 301
       },
@@ -1066,7 +1006,7 @@
         "type": 301
       },
       {
-        "source": "/tools/dartium/",
+        "source": "/tools/dartium",
         "destination": "https://webdev.dartlang.org/tools/dartium",
         "type": 301
       },
@@ -1091,11 +1031,6 @@
         "type": 301
       },
       {
-        "source": "/tools/download/**",
-        "destination": "/install",
-        "type": 301
-      },
-      {
         "source": "/tools/eclipse-plugin",
         "destination": "/tools",
         "type": 301
@@ -1111,18 +1046,8 @@
         "type": 301
       },
       {
-        "source": "/tools/faq.html",
-        "destination": "/tools/faq",
-        "type": 301
-      },
-      {
-        "source": "/tools/jetbrains-plugin/",
-        "destination": "/tools/jetbrains-plugin",
-        "type": 301
-      },
-      {
         "source": "/tools/observatory/**",
-        "destination": "https://dart-lang.github.io/observatory/",
+        "destination": "https://dart-lang.github.io/observatory",
         "type": 301
       },
       {
@@ -1131,73 +1056,13 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/assets-and-transformers.html",
-        "destination": "/tools/pub/assets-and-transformers",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/",
-        "destination": "/tools/pub/cmd",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/cmd/pub-build.html",
         "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-build.html",
-        "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-cache.html",
-        "destination": "/tools/pub/cmd/pub-cache",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-deps.html",
-        "destination": "/tools/pub/cmd/pub-deps",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-downgrade.html",
-        "destination": "/tools/pub/cmd/pub-downgrade",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-get.html",
-        "destination": "/tools/pub/cmd/pub-get",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-global.html",
-        "destination": "/tools/pub/cmd/pub-global",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-lish.html",
-        "destination": "/tools/pub/cmd/pub-lish",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-run.html",
-        "destination": "/tools/pub/cmd/pub-run",
         "type": 301
       },
       {
         "source": "/tools/pub/cmd/pub-serve.html",
         "destination": "https://webdev.dartlang.org/tools/pub/pub-serve",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-upgrade.html",
-        "destination": "/tools/pub/cmd/pub-upgrade",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/cmd/pub-uploader.html",
-        "destination": "/tools/pub/cmd/pub-uploader",
         "type": 301
       },
       {
@@ -1211,87 +1076,12 @@
         "type": 301
       },
       {
-        "source": "/tools/pub/dependencies.html",
-        "destination": "/tools/pub/dependencies",
-        "type": 301
-      },
-      {
         "source": "/tools/pub/faq.html",
         "destination": "/tools/faq#pub",
         "type": 301
       },
       {
-        "source": "/tools/pub/get-started.html",
-        "destination": "/tools/pub/get-started",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/glossary.html",
-        "destination": "/tools/pub/glossary",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/installing.html",
-        "destination": "/tools/pub/installing",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/package-layout.html",
-        "destination": "/tools/pub/package-layout",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/publishing.html",
-        "destination": "/tools/pub/publishing",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/pubspec.html",
-        "destination": "/tools/pub/pubspec",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/",
-        "destination": "/tools/pub/transformers",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/aggregate.html",
-        "destination": "/tools/pub/transformers/aggregate",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/examples/",
-        "destination": "/tools/pub/transformers/examples",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/transformers/lazy-transformer.html",
-        "destination": "/tools/pub/transformers/lazy-transformer",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/troubleshoot.html",
-        "destination": "/tools/pub/troubleshoot",
-        "type": 301
-      },
-      {
-        "source": "/tools/pub/versioning.html",
-        "destination": "/tools/pub/versioning",
-        "type": 301
-      },
-      {
-        "source": "/tools/sdk/",
-        "destination": "/tools/sdk",
-        "type": 301
-      },
-      {
-        "source": "/docs/sdk",
-        "destination": "/tools/sdk",
-        "type": 301
-      },
-      {
-        "source": "/tools/webstorm/",
+        "source": "/tools/webstorm",
         "destination": "https://webdev.dartlang.org/tools/webstorm",
         "type": 301
       },

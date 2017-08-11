@@ -10,6 +10,17 @@ category: dart-vm
 _Written by John McCutchan <br>
 October 2012 (updated November 2012)_
 
+{% comment %}
+update-for-dart-2.0
+{% endcomment %}
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+This article was initially targeted for the standalone VM under the
+1.x Dart SDK.  It does not reflect the Flutter VM,
+nor does it reflect the changes that are coming in [Dart 2.0](/dart-2.0).
+</aside>
+
 Programmers often create benchmarks that exercise an important algorithm in a
 larger application. The point of the benchmark is to have an easy to run,
 reproducible stress test of the performance-sensitive algorithm.

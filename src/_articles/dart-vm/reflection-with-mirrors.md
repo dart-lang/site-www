@@ -10,6 +10,11 @@ category: libraries
 _Written by Gilad Bracha <br />
 November 2012 (updated November 2013)_
 
+<aside class="alert alert-info" markdown="1">
+**Note:** This article applies only to the standalone VM under the
+1.x Dart SDK. We don't recommend using mirrors in web applications,
+and the Flutter SDK does not support the dart:mirrors library.
+</aside>
 
 Reflection in Dart is based on the concept of _mirrors_,
 which are simply objects that reflect other objects.
@@ -38,8 +43,6 @@ At this time, only part of the planned API has been realized.
 The part that exists deals with _introspection_,
 the ability of a program to discover and use its own structure.
 The introspection API has been largely implemented on the Dart VM.
-In dart2js, a similar implementation is under development, but is
-still incomplete.
 
 The introspection API is declared in the library named `dart:mirrors`.
 If you wish to use introspection, import it:

@@ -21,6 +21,12 @@ and the [Dart API documentation]({{site.dart_api}}).
 Want to install Dart with your OS's package manager?
 Go to the [main Dart installation page](/install).
 
+{% include dartium-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Stable channel
 
 Stable channel builds are tested and approved for production use.

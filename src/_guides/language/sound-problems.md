@@ -5,6 +5,11 @@ description: "Common problems you may have when converting to strong mode and ho
 toc: false
 ---
 
+{% comment %}
+The first few questions/answers are for strong mode under Dart 1.x.
+update-for-dart-2
+{% endcomment %}
+
 If you're having problems converting your code to strong mode,
 this page can help. Be sure to also check out
 [Strong Mode Dart](/guides/language/sound-dart) for an overview of what "sound
@@ -68,19 +73,38 @@ If you're using strong mode, you'll see the following warning from the analyzer:
 <a name="not-using-strong-mode"></a>
 ### I'm not using strong mode and I think I should be
 
-Strong mode is enforced by Dart Analyzer.
+Strong mode is enforced by the Dart analyzer.
 How you troubleshoot strong mode depends on whether you are running
 `dartanalyzer` from the command line, or via one of the JetBrains IDEs.
 
 #### Command line analyzer
 
-If you are running `dartanalyzer --strong` and you don't see expected
-strong mode errors, be sure that you didn't disable strong mode in an
-analysis options file in the same directory where you run the analyzer.
-If you do, the analysis options file overrides your command line flag.
+If you are running dartanalyzer from the command line and you don't see
+expected strong mode errors, try the following:
 
-For more information on how to set up an analysis options file, see
-[Customize Static Analysis](/guides/language/analysis-options).
+<ul markdown="1">
+<li markdown="1">
+  If your project contains an [analysis
+  options file,](/guides/language/analysis-options#the-analysis-options-file)
+  make sure you've specified `strong mode: true` correctly.
+  For more information, see [Specifying strong
+  mode.](/guides/language/analysis-options#specifying-strong-mode)
+
+</li>
+
+<li markdown="1">
+  Run the analyzer with the `--strong` tag:
+
+{% prettify sh %}
+dartanalyzer --strong <file-or-directory>
+{% endprettify %}
+
+</li>
+
+</ul>
+
+For information on how to set up an analysis options file,
+see [Customize Static Analysis](/guides/language/analysis-options).
 
 #### JetBrains IDEs
 

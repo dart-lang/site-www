@@ -130,9 +130,9 @@ File.openRead().transform(UTF8.decoder).
 ## Chunked conversion
 
 The concept of chunked conversions can be confusing, but at its core, it is
-relatively simple. When a chunked conversion (including a stream transformation)
-is started, the converter’s
-[startChunkedConversion]({{site.dart_api}}/dart-convert/ChunkedConverter/startChunkedConversion.html)
+relatively simple. When a chunked conversion (including a stream
+transformation) is started, the converter’s
+[startChunkedConversion]({{site.dart_api}}/dart-convert/Converter/startChunkedConversion.html)
 method is invoked with an output-
 sink as argument. The method then returns an input sink into which the caller
 puts data.

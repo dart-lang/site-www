@@ -32,8 +32,7 @@ and a `bin` directory that has these command-line tools:
 : The standalone VM
 
 [dart2js]({{site.webdev}}/tools/dart2js)
-: The Dart-to-JavaScript compiler
-(used only for web development)
+: The Dart-to-JavaScript compiler (used only for web development)
 
 [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 : The static analyzer

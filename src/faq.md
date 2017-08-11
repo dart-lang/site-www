@@ -5,7 +5,7 @@ title: Frequently Asked Questions (FAQ)
 description: You have questions about Dart, we have answers.
 ---
 
-_Updated June 2017_
+_Updated August 2017_
 
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced. For other questions and answers, see:
@@ -73,11 +73,11 @@ the VM and make deep changes to optimization of the language.
 
 ## Language
 
-{% comment %}
 ### Q. Isn't Dart a lot like Java?
 
-TODO: provide an up-to-date answer
-{% endcomment %}
+Dart has some similarities with Java. See the [Intro to Dart for Java
+Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
+codelab for examples of some of the differences between Dart and Java.
 
 ### Q. How does Dart relate to Go?
 
@@ -116,24 +116,28 @@ literally on my first day of writing Dart code, I was productive in it."
 
 ### Q. Does Dart have reflection capabilities?
 
-We have reflection support from
+For servers and command-line scripts, we have reflection support from
 the <a href="/articles/libraries/reflection-with-mirrors">mirrors API</a>.
+We don't recommend using mirrors for web apps. The Flutter SDK [does not
+support mirrors.](https://flutter.io/faq/#does-flutter-come-with-a-reflectionmirrors-system)
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
-The language is now at 1.x, but we anticipate further language evolution
-to occur in a standards group.  It might be able to include your feature,
-although it can't include everything.  Some features don't fit the basic nature
-of the language, and some don't play well with other features.  Simplicity is
+The Dart language is now at 1.x, and [Dart 2.0](/dart-2.0) is in development.
+
+Future releases might be able to include your feature,
+although we can't include everything.
+Some features don't fit the basic nature of the language,
+and some don't play well with other features. Simplicity is
 the single most important gift we all can give to future programmers.
 
-Please look at the [list of Dart issues][issues] to see if your request is
+Please look at the [list of language issues][issues] to see if your request is
 already there, and add a new issue if not.  Make a thoughtful argument for your
 feature.  Sample code with and without your feature is good evidence; a sizeable
 codebase that shows the need is even better evidence.
 
-Please don't be surprised if the Dart designers say "no" by default, especially
-for now.  It's far more painful to remove a language feature than to add it, so
+Don't be surprised if the Dart designers say "no" by default.
+It's far more painful to remove a language feature than to add it, so
 Dart is likely to add the most obvious features first, and then revisit the next
 tier later.  And there simply are more possible language features in the world
 that can fit into any single language without making a total hash of it.   But
@@ -144,27 +148,40 @@ appreciation through careful design choices and fair communication about them.
 
 ### Q. Is Dart a statically typed language?
 
-Dart is statically typed if you opt in to [strong mode]
-and use a compiler (such as the Dart Development Compiler ([DDC])),
-that has both static and runtime checks. In this environment, Dart
-has a sound type system, which guarantees that an expression of one
+Dart 1.x is statically typed if you opt in to [strong mode]
+and use a compiler (such as the Dart development compiler,
+[dartdevc]({{site.webdev}}/tools/dartdevc)),
+that has static and runtime checks. With both types of checks,
+Dart has a sound type system, which guarantees that an expression of one
 type cannot produce a value of another type. (So, no surprises!)
-[Flutter]&mdash;a cross-platform mobile development system&mdash;uses
+Types won't be optional in Dart 2.0.
+[Flutter]&mdash;a cross-platform mobile development system&mdash;already uses
 strong mode.
 
 Even in strong mode, though, you can annotate any variable with
 `dynamic` if you need the flexibility of a dynamic language.
-`dynamic` can contain any type. Of course, that removes many of
-the benefits of a type-safe language for that variable.
+The `dynamic` type itself is static, but can contain any type at runtime.
+Of course, that removes many of the benefits of a type-safe language
+for that variable.
 
 ### Q. What is strong mode?
 
-Strong mode is Dart’s implementation of a sound type system.
+Strong mode contributes to Dart’s implementation of a sound type system.
 With strong mode enabled (in an implementation that has both the
 static and runtime checks), Dart is a statically typed language ensuring
 that static type annotations are actually correct at runtime.
 
-For more information, see [Strong Mode Dart].
+In Dart 1.x, you can [opt in to strong
+mode.](/guides/language/sound-dart#how-to-enable-strong-mode)
+We recommend that you migrate to strong mode now to take advantage of
+the new sound type system. For more information, see [Strong Mode Dart].
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2.0
+{% endcomment %}
+
 
 ### Q. Why are generics covariant?
 
@@ -211,8 +228,6 @@ and then use your favorite editor or IDE for real development.
 Some full-featured IDEs such as IntelliJ IDEA
 and WebStorm have Dart plugins.
 Dart plugins also exist for Sublime, VIM, Emacs, and other editors.
-We used to provide a Dart-specific editor called Dart Editor,
-but as of 1.11 Dart Editor is no longer available.
 For more information, see [Dart Tools].
 
 ### Q. Can I build an Android app with Dart?
@@ -228,7 +243,7 @@ See [Who Uses Dart] for a more complete list.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
-[issues]: https://github.com/dart-lang/sdk/issues/
+[issues]: https://github.com/dart-lang/sdk/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-language
 [pub]: https://pub.dartlang.org
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour

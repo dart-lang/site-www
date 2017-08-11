@@ -31,6 +31,12 @@ Common command-line options for dart include:
 `-c` or `--checked`
 : Enables _both_ assertions and type checks (checked mode).
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 `--packages=<path>`
 : Specifies the path to the package resolution configuration file.
   For more information, see
@@ -107,6 +113,12 @@ You can also generate snapshots:
   [Snapshots](https://github.com/dart-lang/sdk/wiki/Snapshots) on GitHub.
 
 ## Enabling checked mode
+
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 Dart programs run in one of two modes: checked or production. By default, the
 Dart VM runs in production mode. We recommend that you enable checked mode for

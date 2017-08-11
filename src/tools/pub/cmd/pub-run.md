@@ -94,6 +94,12 @@ For options that apply to all pub commands, see
 
 </dl>
 
+{% include checked-mode-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 <aside class="alert alert-info" markdown="1">
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
