@@ -80,7 +80,7 @@ How you troubleshoot strong mode depends on whether you are running
 #### Command line analyzer
 
 If you are running dartanalyzer from the command line and you don't see
-expected strong mode errors, make sure of the following:
+expected strong mode errors, try the following:
 
 <ul markdown="1">
 <li markdown="1">
@@ -93,9 +93,7 @@ expected strong mode errors, make sure of the following:
 </li>
 
 <li markdown="1">
-  Run the analyzer with the `--strong` tag. This tag takes precedence over
-  the strong mode setting in the analysis options file (if the file exists),
-  and shows strong mode errors and warnings:
+  Run the analyzer with the `--strong` tag:
 
 {% prettify sh %}
 dartanalyzer --strong <file-or-directory>
