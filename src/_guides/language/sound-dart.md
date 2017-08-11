@@ -510,12 +510,6 @@ tool supports several flags related to strong mode:
 For more information on these flags, see
 [Specifying strong mode](/guides/language/analysis-options#specifying-strong-mode).
 
-<aside class="alert alert-info" markdown="1">
-**Note:** An analysis options file in the same directory where you call
-`dartanalyzer` overrides the command line flag. So, if the analysis options
-file disables strong mode, you can't enable it using `--strong`.
-</aside>
-
 ### Enable strong mode in DartPad
 
 If you use [DartPad](/tools/dartpad) to write and test code, you can

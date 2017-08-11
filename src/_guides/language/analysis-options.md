@@ -29,9 +29,8 @@ problems, including errors and warnings specified in the
 You can also configure the linter, one of the analyzer's plugins,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
-and other suggested guidelines
-in [Effective Dart](/guides/language/effective-dart).
-Dart tools such as the
+and other suggested guidelines in
+[Effective Dart](/guides/language/effective-dart). Dart tools such as the
 [Dart dev compiler (dartdevc),]({{site.webdev}}/tools/dartdevc)
 [`dartanalyzer`,](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 [`flutter analyze`,](https://flutter.io/debugging/#the-dart-analyzer)
@@ -44,6 +43,16 @@ add static analysis to your tool, see the
 [analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
+<aside class="alert alert-info" markdown="1">
+**Note:**
+The analyzer error codes are listed in the [Dart SDK
+repo,](https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart)
+but they are likely to change for Dart 2.0.
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+</aside>
 
 ## The analysis options file
 
@@ -100,12 +109,18 @@ and `my_other_other_package`, and file #2 to analyze the code in
 
 ## Specifying strong mode
 
-The Dart language spec supports dynamic typing, allowing you to
+The Dart 1.x language spec supports dynamic typing, allowing you to
 write code that has no type annotations at all.
 Strong mode applies more restrictive rules to the type system and,
 as a result, finds more errors during static analysis and at runtime.
 Another benefit of strong mode is faster compilation.
 Some tools, such as dartdevc, require strong mode compliance.
+
+{% include optional-types-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 
 The simplest way to enable strong mode is to specify
 `strong-mode: true` in the analysis-options file:
