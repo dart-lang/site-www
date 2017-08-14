@@ -7,7 +7,7 @@ description: "Everything you wanted to know about handling errors and exceptions
 In many cases, when you want to write asynchronous code in Dart,
 you can use these built-in [`async` functions and `await`
 expressions](/guides/language/language-tour#asynchrony-support)
-where you catch errors using `try-catch` and `throw`.
+where you handle errors using `try-catch` and `throw`.
 However, sometimes you need more control than what you can
 accomplish with the built-in features. [PENDING: example?]
 
