@@ -6,9 +6,10 @@ description: "Everything you wanted to know about handling errors and exceptions
 
 In many cases, when you want to write asynchronous code in Dart,
 you can use these built-in [`async` functions and `await`
-expressions.](/guides/language/language-tour#asynchrony-support)
+expressions](/guides/language/language-tour#asynchrony-support)
+where you catch errors using `try-catch` and `throw`.
 However, sometimes you need more control than what you can
-accomplish with the built-in features.
+accomplish with the built-in features. [PENDING: example?]
 
 In this situation, you can use the
 [Future API,](/guides/libraries/library-tour#future) part of the
@@ -17,7 +18,7 @@ core library. A `Future` object represents a potential value, or error,
 that will be available at some point in the future.
 This guide describes how to handle errors with dealing with Futures.
 If you are unfamiliar with the general concepts behind Futures, first read
-[Asynchronous Programming: Futures](/tutorials/language/futures).
+[Asynchronous Programming: Futures.](/tutorials/language/futures)
 
 ## Introduction
 

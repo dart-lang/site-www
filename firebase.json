@@ -127,7 +127,12 @@
       },
       {
         "source": "/articles/futures-and-error-handling",
-        "destination": "/articles/libraries/futures-and-error-handling",
+        "destination": "/guides/libraries/futures-error-handling",
+        "type": 301
+      },
+      {
+        "source": "/articles/libraries/futures-and-error-handling",
+        "destination": "/guides/libraries/futures-error-handling",
         "type": 301
       },
       {

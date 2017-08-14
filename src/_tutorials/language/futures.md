@@ -92,6 +92,12 @@ The `async` and `await` keywords are part of the Dart language's
 They allow you to write asynchronous code that looks like synchronous
 code and doesn't use the Future API.
 
+{% include async-await-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 The following app simulates reading the news by using async and await
 to read the contents of a file on www.dartlang.org.
 Click run ( {% img 'red-run.png' %} ) to start the app.

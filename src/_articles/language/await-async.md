@@ -20,6 +20,12 @@ This article assumes that you are already familiar with asynchronous
 programming in Dart.
 </aside>
 
+{% include async-await-2.0.html %}
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
 ## Async functions
 
 An **async** function is a function whose body is marked with an **async**
