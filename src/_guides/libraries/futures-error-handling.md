@@ -5,7 +5,7 @@ description: "Everything you wanted to know about handling errors and exceptions
 ---
 
 This guide describes how to handle errors when writing asynchronous code.
-You can write asynchronous in code two ways:
+You can write asynchronous code in two ways:
 
 * Using `async` functions and `await` expressions, which use Futures behind
   the scenes.
@@ -32,12 +32,14 @@ you can register a callback and continue.
 {% comment %}
 update-for-dart-2
 
-?? The async/await behavior is changing slightly for Dart2.0.
+? The async/await behavior is changing slightly for Dart2.0.
 It might affect this section.
 {% endcomment %}
 
-Use `try`, `catch`, and `finally` to handle errors in code that uses
-async functions and await expressions. For example:
+Use  [exception
+handling](/guides/language/language-tour#exceptions)&mdash;`try`, `catch`,
+and `finally`&mdash;to handle errors in code that uses async functions
+and await expressions. For example:
 
 {% prettify dart %}
 Future main() async {
@@ -60,7 +62,7 @@ Future main() async {
 
 The rest of this guide addresses handling errors when using the Future API.
 
-## Future API
+## The Future API and callbacks
 
 Functions that use the Future API register callbacks that handle
 the value (or the error) that completes a Future. For example:
