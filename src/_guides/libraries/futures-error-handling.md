@@ -1,24 +1,71 @@
 ---
-layout: article
+layout: default
 title: "Futures and Error Handling"
-description: "Everything you wanted to know about handling errors and exceptions when working with Futures (but were afraid to ask)."
-written: 2013-03-07
-updated: 2013-05-30
-category: libraries
+description: "Everything you wanted to know about handling errors and exceptions when writing asynchronous code."
 ---
 
-_Written by Shailen Tuli <br>
-March 2013 (updated May 2013)_
+This guide describes how to handle errors when writing asynchronous code.
+You can write asynchronous code in two ways:
 
-This article covers the subject of error handling when dealing with Futures.
-If you are unfamiliar with the general concepts behind Futures, we
-recommend you first read
-[Asynchronous Programming: Futures](/tutorials/language/futures).
+* Using `async` functions and `await` expressions, which use Futures behind
+  the scenes.
+* Using the [Future API]({{site.dart_api}}/dart-async/dart-async-library.html)
+  directly.
 
-## Introduction
+<aside class="alert alert-info" markdown="1">
+**Note:**
+If you are unfamiliar with the general concepts behind Futures, first read
+[Asynchronous Programming: Futures.](/tutorials/language/futures)
+</aside>
 
-A Future represents a deferred computation. Receivers of a Future can register
-callbacks that handle the value or the error that completes a Future:
+Why would you use the Future API instead of `async` and `await`? When you
+need more control than you can get from `async` and `await`. For example,
+say you want something to happen when a Future completes, but you also want
+to immediately continue what you're doing. If you use `await`, activity
+suspends until the Future completes. With the Future API,
+you can register a callback and continue.
+
+---
+
+## Async, await, and exceptions
+
+{% comment %}
+update-for-dart-2
+
+? The async/await behavior is changing slightly for Dart2.0.
+It might affect this section.
+{% endcomment %}
+
+Use  [exception
+handling](/guides/language/language-tour#exceptions)&mdash;`try`, `catch`,
+and `finally`&mdash;to handle errors in code that uses async functions
+and await expressions. For example:
+
+{% prettify dart %}
+Future main() async {
+  var dir = new Directory('/tmp');
+
+  [[highlight]]try[[/highlight]] {
+    var dirList = dir.list();
+    await for (FileSystemEntity f in dirList) {
+      if (f is File) {
+        print('Found file ${f.path}');
+      } else if (f is Directory) {
+        print('Found dir ${f.path}');
+      }
+    }
+  } [[highlight]]catch[[/highlight]] (e) {
+    print(e.toString());
+  }
+}
+{% endprettify %}
+
+The rest of this guide addresses handling errors when using the Future API.
+
+## The Future API and callbacks
+
+Functions that use the Future API register callbacks that handle
+the value (or the error) that completes a Future. For example:
 
 {% prettify dart %}
 myFunc().then(processValue)
@@ -36,8 +83,6 @@ In the example above, if `myFunc()`'s Future completes with a value,
 `catchError()`'s callback does not fire. On the other hand, if `myFunc()`
 completes with an error, `then()`'s callback does not fire, and
 `catchError()`'s callback does.
-
-![then() and catchError() callbacks](images/then_and_catcherror.png)
 
 ## Examples of using then() with catchError()
 
@@ -379,7 +424,7 @@ also prevents errors from *accidentally* leaking out of your function.
 
 ## More information
 
-Read the following documentation for more details on using Futures:
+The following docs have more information on Futures:
 
 * [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop),
   an article that describes how to schedule tasks using Futures
