@@ -29,6 +29,13 @@ you can register a callback and continue.
 
 ## Async, await, and exceptions
 
+{% comment %}
+update-for-dart-2
+
+?? The async/await behavior is changing slightly for Dart2.0.
+It might affect this section.
+{% endcomment %}
+
 Use `try`, `catch`, and `finally` to handle errors in code that uses
 async functions and await expressions. For example:
 
