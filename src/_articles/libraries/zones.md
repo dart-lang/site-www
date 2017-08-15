@@ -17,7 +17,7 @@ This article discusses zone-related APIs in the dart:async library,
 with a focus on the top-level `runZoned()` function.
 Before reading this article,
 you should be familiar with the techniques covered in
-[Futures and Error Handling](futures-and-error-handling).
+[Futures and Error Handling](/guides/libraries/futures-error-handling).
 
 Currently, the most common use of zones is
 to handle errors raised in asynchronously executed code.

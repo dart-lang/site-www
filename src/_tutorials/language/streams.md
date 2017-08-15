@@ -451,7 +451,7 @@ and asynchronous programming in Dart.
   an article about the two different types of streams
 * [Creating Streams in Dart](/articles/libraries/creating-streams),
   an article about creating your own streams
-* [Futures and Error Handling](/articles/libraries/futures-and-error-handling),
+* [Futures and Error Handling](/guides/libraries/futures-error-handling),
   an article that explains how to handle errors using the Future API
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
   a section in the [language tour](/guides/language/language-tour)
