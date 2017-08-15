@@ -12,6 +12,15 @@
             "value": "*"
           }
         ]
+      },
+      {
+        "source": "/dart-2.0",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/html; charset=utf-8"
+          }
+        ]
       }
     ],
     "redirects": [
