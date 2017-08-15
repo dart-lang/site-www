@@ -1325,7 +1325,7 @@ Also see these articles and tutorials:
 
 -   [Asynchronous Programming: Futures](/tutorials/language/futures)
 
--   [Futures and Error Handling](/articles/libraries/futures-and-error-handling)
+-   [Futures and Error Handling](/guides/libraries/futures-error-handling)
 
 -   [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
 
