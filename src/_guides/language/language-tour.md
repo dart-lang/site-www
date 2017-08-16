@@ -3844,7 +3844,7 @@ objects. A *typedef*, or *function-type alias*, gives a function type a
 name that you can use when declaring fields and return types. A typedef
 retains type information when a function type is assigned to a variable.
 
-Consider the following code, which does not use a typedef:
+Consider the following code, which doesn't use a typedef:
 
 <!-- language-tour/sorted-collection/bin/sorted_collection_broken.dart -->
 {% prettify dart %}
@@ -3894,11 +3894,11 @@ main() {
 }
 {% endprettify %}
 
-<div class="alert alert-info" markdown="1">
+<aside class="alert alert-info" markdown="1">
 **Note:**
 Currently, typedefs are restricted to function types. We expect this
 to change.
-</div>
+</aside>
 
 Because typedefs are simply aliases, they offer a way to check the type
 of any function. For example:
@@ -3914,6 +3914,16 @@ main() {
 }
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+**Version note:**
+A new form of function types was introduced in Dart 1.24. Unless you define
+fields that are function types, or you're doing complex things with
+generic methods, like passing them around, or defining an argument
+that's a function type that's also generic, you may not care about the
+new function-type syntax. For more information, see
+[Generic Function Type
+Alias](https://gist.github.com/eernstg/ffc7bd281974e9018f10f0cb6cfee4aa).
+</aside>
 
 ## Metadata
 
