@@ -3915,14 +3915,17 @@ main() {
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
-**Version note:**
-A new form of function types was introduced in Dart 1.24. Unless you define
-fields that are function types, or you're doing complex things with
-generic methods, like passing them around, or defining an argument
-that's a function type that's also generic, you may not care about the
-new function-type syntax. For more information, see
-[Generic Function Type
-Alias](https://gist.github.com/eernstg/ffc7bd281974e9018f10f0cb6cfee4aa).
+**New function type syntax:**
+Dart 1.24 introduced a new form of function types, the [generic function type
+alias.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/generic-function-type-alias.md)
+You might use this feature if you pass around generic methods,
+define fields that are function types,
+or define arguments with generic function types.
+Here's an example of using the new syntax:
+
+{% prettify dart %}
+typedef F = List<T> Function <T>(T);
+{% endprettify %}
 </aside>
 
 ## Metadata
