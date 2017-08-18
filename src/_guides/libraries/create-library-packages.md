@@ -145,7 +145,7 @@ inside, or outside, of lib.
 When in doubt, use the `package:` directive; it works in all cases.
 
 The following graphic shows how
-to import `lib/src/foo/a.dart` from both lib and web.
+to import `lib/foo/a.dart` from both lib and web.
 
 {% img 'libraries/import-lib-rules.png' %}
 
