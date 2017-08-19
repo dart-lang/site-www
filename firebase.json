@@ -1118,6 +1118,11 @@
         "source": "/angular/cheatsheet",
         "destination": "https://webdev.dartlang.org/angular/cheatsheet",
         "type": 301
+      },
+      {
+        "source": "/)",
+        "destination": "/",
+        "type": 301
       }
     ]
   }
