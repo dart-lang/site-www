@@ -6,6 +6,8 @@ description: "Dart is a pure class-based object oriented language. In this first
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/2woBWdBQ4Ro"
 frameborder="0" allowfullscreen></iframe>
 

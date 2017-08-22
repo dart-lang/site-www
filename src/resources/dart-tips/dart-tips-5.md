@@ -6,6 +6,8 @@ description: "Dart comes with lists, queues, maps, and sets out of the box. Watc
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/fh1Cztaw9tI"
 frameborder="0" allowfullscreen></iframe>
 
