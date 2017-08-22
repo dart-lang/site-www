@@ -6,6 +6,8 @@ description: "Functions are true objects in Dart. Watch this video to learn more
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/RJujzs2ts4s"
 frameborder="0" allowfullscreen></iframe>
 

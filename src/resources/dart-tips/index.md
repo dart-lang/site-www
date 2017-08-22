@@ -6,12 +6,7 @@ description: "Super short video intros to Dart language and library features."
 toc: false
 ---
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-These videos, produced in 2012, contain useful information but do
-not reflect subsequent additions to the language, such as async/await
-and null-aware operators.
-</aside>
+{% include dart-tips-caveat.html %}
 
 Sometimes, you only have 5 minutes. Watch super short introductions to
 Dart language and library topics.
