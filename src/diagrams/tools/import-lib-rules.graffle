@@ -28,7 +28,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2017-08-22 16:39:03 +0000</string>
+	<string>2017-08-22 19:59:33 +0000</string>
 	<key>Modifier</key>
 	<string>Kathy Walrath</string>
 	<key>MovementHandleVisible</key>
@@ -142,8 +142,8 @@
 					<integer>0</integer>
 					<key>Points</key>
 					<array>
-						<string>{738, 376.53333339214311}</string>
-						<string>{768, 375.86666680949037}</string>
+						<string>{738, 376.53333334702052}</string>
+						<string>{768, 375.866666699907}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9093,7 +9093,7 @@ web}</string>
 			<key>BackgroundGraphic</key>
 			<dict>
 				<key>Bounds</key>
-				<string>{{0, 0}, {826.33998315036297, 1174.0999753773212}}</string>
+				<string>{{0, 0}, {906.61998276412487, 1174.0999753773212}}</string>
 				<key>Class</key>
 				<string>GraffleShapes.CanvasBackgroundGraphic</string>
 				<key>ID</key>
@@ -9119,7 +9119,7 @@ web}</string>
 			<key>CanvasOrigin</key>
 			<string>{0, 0}</string>
 			<key>CanvasSize</key>
-			<string>{826.33998315036297, 1174.0999753773212}</string>
+			<string>{906.61998276412487, 1174.0999753773212}</string>
 			<key>CanvasSizingMode</key>
 			<integer>1</integer>
 			<key>ColumnAlign</key>
@@ -9144,8 +9144,6 @@ web}</string>
 					<dict>
 						<key>ID</key>
 						<integer>5</integer>
-						<key>Position</key>
-						<real>0.35386388871292512</real>
 					</dict>
 					<key>ID</key>
 					<integer>3</integer>
@@ -9154,13 +9152,13 @@ web}</string>
 					<key>OrthogonalBarAutomatic</key>
 					<false/>
 					<key>OrthogonalBarPoint</key>
-					<string>{324.65234375, 636.7421875}</string>
+					<string>{305.208984375, 644.373046875}</string>
 					<key>OrthogonalBarPosition</key>
-					<real>10.109992027282715</real>
+					<real>-1</real>
 					<key>Points</key>
 					<array>
 						<string>{340.29083780268155, 676.21998429298401}</string>
-						<string>{304, 616.21557083148571}</string>
+						<string>{304, 622}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9206,8 +9204,6 @@ web}</string>
 					<dict>
 						<key>ID</key>
 						<integer>5</integer>
-						<key>Info</key>
-						<integer>1</integer>
 					</dict>
 					<key>ID</key>
 					<integer>4</integer>
@@ -9216,13 +9212,13 @@ web}</string>
 					<key>OrthogonalBarAutomatic</key>
 					<false/>
 					<key>OrthogonalBarPoint</key>
-					<string>{289.3125, 636.5859375}</string>
+					<string>{304.1015625, 644.296875}</string>
 					<key>OrthogonalBarPosition</key>
-					<real>9.3899917602539062</real>
+					<real>-1</real>
 					<key>Points</key>
 					<array>
 						<string>{265.05084028908931, 674.77998432517052}</string>
-						<string>{304, 623}</string>
+						<string>{304, 622}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9269,7 +9265,7 @@ web}</string>
 						<key>ID</key>
 						<integer>3</integer>
 						<key>Position</key>
-						<real>0.92183410396807519</real>
+						<real>0.92183411121368408</real>
 					</dict>
 					<key>ID</key>
 					<integer>5</integer>
@@ -9278,13 +9274,13 @@ web}</string>
 					<key>OrthogonalBarAutomatic</key>
 					<true/>
 					<key>OrthogonalBarPoint</key>
-					<string>{304, 614.25}</string>
+					<string>{304, 621.66614060177312}</string>
 					<key>OrthogonalBarPosition</key>
 					<real>-1</real>
 					<key>Points</key>
 					<array>
-						<string>{304, 612.5}</string>
-						<string>{304, 623}</string>
+						<string>{304, 622}</string>
+						<string>{304, 628.33228120354624}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9327,10 +9323,10 @@ web}</string>
 					<integer>0</integer>
 					<key>Points</key>
 					<array>
-						<string>{432.71999032795429, 694.07998448610306}</string>
-						<string>{561.90234375, 670.30078125}</string>
-						<string>{698.43359375, 692.37109375}</string>
-						<string>{698.78125, 691.6796875}</string>
+						<string>{504.71999032795429, 694.07998448610306}</string>
+						<string>{633.90234375, 670.30078125}</string>
+						<string>{770.43359375, 692.37109375}</string>
+						<string>{770.78125, 691.6796875}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9376,9 +9372,9 @@ web}</string>
 					<integer>0</integer>
 					<key>Points</key>
 					<array>
-						<string>{437, 559}</string>
-						<string>{563, 559}</string>
-						<string>{563.63104476476042, 602.05998675525188}</string>
+						<string>{482, 560}</string>
+						<string>{635, 559}</string>
+						<string>{635.63104476476042, 602.05998675525188}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9431,8 +9427,8 @@ web}</string>
 					<integer>0</integer>
 					<key>Points</key>
 					<array>
-						<string>{436.89647041923286, 524.29998849332333}</string>
-						<string>{437, 559}</string>
+						<string>{481.89647041923286, 524.29998849332333}</string>
+						<string>{482, 560}</string>
 						<string>{304, 559}</string>
 						<string>{304.67083904588543, 602.05998675525188}</string>
 					</array>
@@ -9762,9 +9758,14 @@ web}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{404.55551939305815, 699.55998434126377}, {324.40446422400919, 43.199999034404755}}</string>
+					<string>{{449.55551939305815, 699.55998434126377}, {384.56446337106672, 43.199999034404755}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
+					<key>FontInfo</key>
+					<dict>
+						<key>Font</key>
+						<string>CourierNewPSMT</string>
+					</dict>
 					<key>ID</key>
 					<integer>15</integer>
 					<key>Layer</key>
@@ -9793,22 +9794,24 @@ web}</string>
 						<integer>0</integer>
 						<key>Text</key>
 						<string>{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
-{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fmodern\fcharset0 CourierNewPSMT;}
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\fs32 \cf0 import 
-\f1 '
-\f0 package:my_package/foo/a.dart
-\f1 \'92;}</string>
+\f0\fs32 \cf0 import 'package:my_package/foo/a.dart';}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{248.43999393284321, 761.58484260737896}, {183.55999600887299, 43.199999034404755}}</string>
+					<string>{{221.43999393284321, 761.58484260737896}, {231.07999534904957, 43.199999034404755}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
+					<key>FontInfo</key>
+					<dict>
+						<key>Font</key>
+						<string>CourierNewPSMT</string>
+					</dict>
 					<key>ID</key>
 					<integer>16</integer>
 					<key>Layer</key>
@@ -9837,16 +9840,12 @@ web}</string>
 						<integer>0</integer>
 						<key>Text</key>
 						<string>{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
-{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fmodern\fcharset0 CourierNewPSMT;}
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\fs32 \cf0 import 
-\f1 '
-\f0 ../../foo/a.dart
-\f1 '
-\f0 ;}</string>
+\f0\fs32 \cf0 import '../foo/a.dart';}</string>
 					</dict>
 				</dict>
 				<dict>
@@ -9870,8 +9869,8 @@ web}</string>
 					<integer>0</integer>
 					<key>Points</key>
 					<array>
-						<string>{563.63104476476042, 602.05998675525188}</string>
-						<string>{564.07551591691538, 656.05998554825783}</string>
+						<string>{635.63104476476042, 602.05998675525188}</string>
+						<string>{636.07551591691538, 656.05998554825783}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -9952,7 +9951,7 @@ web}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{524.59104548091022, 646.55998554825783}, {78.968940872010307, 19}}</string>
+					<string>{{596.59104548091022, 646.55998554825783}, {78.968940872010307, 19}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -10001,7 +10000,7 @@ web}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{548.63998773694038, 592.55998675525188}, {29.982114055639954, 19}}</string>
+					<string>{{620.63998773694038, 592.55998675525188}, {29.982114055639954, 19}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -10101,7 +10100,7 @@ web}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{382.89647162622691, 514.79998849332333}, {107.99999758601189, 19}}</string>
+					<string>{{427.89647162622691, 514.79998849332333}, {107.99999758601189, 19}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -16212,7 +16211,7 @@ main.dart\
 		<key>Sidebar_Tab</key>
 		<integer>0</integer>
 		<key>VisibleRegion</key>
-		<string>{{12, 406}, {893, 538}}</string>
+		<string>{{81, 330}, {893, 538}}</string>
 		<key>ZoomValues</key>
 		<array>
 			<array>
