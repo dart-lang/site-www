@@ -100,4 +100,4 @@
   publisher: O'Reilly
   cover: dart-up-and-running.gif
   link: "http://shop.oreilly.com/product/0636920025719.do"
-  desc: "With Dart, Google has developed a web development language that not only matches the dynamic nature of JavaScript, but addresses its problems as well. This practical book gets you up to speed on the Dart language, libraries, and tools for developing structured, fast, and maintainable web apps that run in any modern browser. The Dart platform has been designed to scale from simple scripts to complex apps, running on both the client and the server. With this book, you’ll learn how Dart can help you architect and develop HTML5 apps for the modern Web."
+  desc: "An early book about the Dart language, libraries, and tools. Parts of this book are available (in updated form) in this site's language and library tours."
