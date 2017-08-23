@@ -149,6 +149,15 @@ to import `lib/foo/a.dart` from both lib and web.
 
 {% img 'libraries/import-lib-rules.png' %}
 
+<aside class="alert alert-info" markdown="1">
+**Note:**
+Although the lib graphic shows `lib/bar/b.dart` using a relative import
+(`import '../foo/a.dart'`),
+it could instead use the `package:` directive
+(`import 'package:my_package/foo/a.dart'`).
+</aside>
+
+
 ## Providing additional files
 
 A well designed library package is easy to test.
