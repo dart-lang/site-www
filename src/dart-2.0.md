@@ -2,7 +2,7 @@
 layout: default
 permalink: /dart-2.0
 title: Dart 2.0 Updates
-description: How Dart 2.0 is different than Dart 1.x, and how you can prepare.
+description: How Dart 2.0 is different from Dart 1.x, and how you can prepare.
 ---
 
 This page has information about changes that are coming in Dart 2.0,
@@ -78,13 +78,20 @@ Dartium
 
 ## Strong mode and static typing
 
-Dart 1.x is an optionally typed language, but types aren't optional in
-Dart 2.0. With both static and runtime type checks, Dart 2.0 has a sound
-type system.
+In Dart 1.x, types are optional. You can remove all type annotations
+from a Dart 1.x program without affecting its behavior.
 
-Thanks to [strong mode](/guides/language/sound-dart),
-the Dart analyzer can find bugs earlier in the development cycle,
-and types are checked at runtime.
+In Dart 2.0, _types_ are mandatory,
+but type _annotations_ are still optional.
+Wherever the type annotation is absent, tools infer the type.
+With both static and runtime type checks,
+Dart 2.0 has a sound type system.
+This type system enables better tooling, as well as
+clearer, earlier feedback when you write code.
+
+You can prepare for Dart 2.0 by using Dart 1.x with
+[strong mode](/guides/language/sound-dart).
+
 
 <aside class="alert alert-info" markdown="1">
 **A quick summary of the gnarly details:**
@@ -104,12 +111,13 @@ As the example shows, you can use the static `dynamic` type
 to indicate that the runtime type is unknown.
 One big difference between optionally typed Dart and Dart 2.0
 is that, in the former, the analyzer infers the `dynamic` type.
-In Dart 2.0, both the analyzer and
-the runtime try to infer something more specific than `dynamic`.
+In Dart 2.0, tools like the analyzer can infer
+more specific types than `dynamic`,
+following rules in the language specification.
 
-While Dart 2.0 is statically typed, type inference and types like
-`dynamic` and `num` (which can be `int` or `double`)
-take away much of the burden of specifying types.
+While Dart 2.0 is statically typed, type inference and
+less precise types such as `dynamic` and `num`
+take away much of the burden of specifying exact types.
 Dart 2.0 has the advantages of a strongly typed language,
 but requires only a bit more work than Dart 1.x.
 
