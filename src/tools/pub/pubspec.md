@@ -217,16 +217,26 @@ versions of it.
 A package can specify that using an *SDK constraint*. This goes inside a
 separate top-level `environment` field in the pubspec and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
-dependencies. For example, the following constraint says that this package
-works with any Dart SDK from 1.13.0 or later:
+dependencies.
+
+For example, the following constraint says that this package
+works with any 1.x Dart SDK that's version 1.23.0 or higher:
 
 {% prettify yaml %}
 environment:
-  sdk: ">=1.13.0"
+  sdk: ">=1.23.0 <2.0.0"
 {% endprettify %}
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
+
+<aside class="alert alert-warning" markdown="1">
+**Don't use caret syntax** (`^`) for the SDK constraint,
+and **do include an upper bound** (`<2.0.0`, usually).
+Packages that break these rules might stop working in the future
+and, for that reason, might not be allowed on pub.dartlang.org.
+</aside>
+
 
 ### Flutter SDK constraints
 
@@ -244,9 +254,9 @@ context of the `flutter` executable, and the Flutter SDK's
 `version` file matches the given version constraint. Otherwise,
 the package will not be selected.
 
-In order to publish a package with a Flutter SDK constraint,
-it must also have a Dart SDK constraint whose minimum version is
-at least 1.19.0 to ensure that older versions of pub won't
+To publish a package with a Flutter SDK constraint,
+you must specify a Dart SDK constraint with a minimum version of
+at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: https://pub.dartlang.org
