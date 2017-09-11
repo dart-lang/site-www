@@ -24,7 +24,7 @@ import &#x27;<span class="frontpage-highlight" data-text='The whole standard lib
 
 <span class="frontpage-highlight" data-text="The main() function is the single point of entry.">main()</span> async {
   print(&#x27;Compute <span class="frontpage-highlight" data-text="Unicode support is baked in.">&#x3C0;</span> using the Monte Carlo method.&#x27;);
-  <span class="frontpage-highlight" data-text="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</span> for (var estimate in computePi()) {
+  <span class="frontpage-highlight" data-text="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</span> for (var estimate in computePi().take(500)) {
     print(&#x27;&#x3C0; &#x2245; <span class="frontpage-highlight" data-text="String interpolation is easy. Just put ${expression} or $variable in your string literal.">$estimate</span>&#x27;);
   }
 }
