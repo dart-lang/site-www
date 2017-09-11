@@ -83,7 +83,7 @@ from a Dart 1.x program without affecting its behavior.
 
 In Dart 2.0, _types_ are mandatory,
 but type _annotations_ are still optional.
-Wherever the type annotation is absent, tools infer the type.
+When a type annotation is absent, tools infer the type.
 With both static and runtime type checks,
 Dart 2.0 has a sound type system.
 This type system enables better tooling, as well as
@@ -111,8 +111,8 @@ As the example shows, you can use the static `dynamic` type
 to indicate that the runtime type is unknown.
 One big difference between optionally typed Dart and Dart 2.0
 is that, in the former, the analyzer infers the `dynamic` type.
-In Dart 2.0, tools like the analyzer can infer
-more specific types than `dynamic`,
+In Dart 2.0, tools like the analyzer can often infer
+types that are more specific than `dynamic`,
 following rules in the language specification.
 
 While Dart 2.0 is statically typed, type inference and
