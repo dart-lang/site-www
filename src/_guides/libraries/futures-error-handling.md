@@ -41,13 +41,17 @@ handling](/guides/language/language-tour#exceptions)&mdash;`try`, `catch`,
 and `finally`&mdash;to handle errors in code that uses async functions
 and await expressions. For example:
 
+{% comment %}
+src/tests/site/guides-libraries/futures-and-error-handling/try_catch.dart
+{% endcomment %}
+
 {% prettify dart %}
-Future main() async {
+Future main() [[highlight]]async[[/highlight]] {
   var dir = new Directory('/tmp');
 
   [[highlight]]try[[/highlight]] {
     var dirList = dir.list();
-    await for (FileSystemEntity f in dirList) {
+    [[highlight]]await[[/highlight]] for (FileSystemEntity f in dirList) {
       if (f is File) {
         print('Found file ${f.path}');
       } else if (f is Directory) {
