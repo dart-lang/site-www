@@ -1,7 +1,6 @@
-import 'dart:async';
 import 'dart:io';
 
-Future main() async {
+main() async {
   var dir = new Directory('/tmp');
 
   try {

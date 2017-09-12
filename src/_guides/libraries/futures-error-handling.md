@@ -43,10 +43,12 @@ and await expressions. For example:
 
 {% comment %}
 src/tests/site/guides-libraries/futures-and-error-handling/try_catch.dart
+[TODO: Should probably use an example that can run in DartPad
+(and that doesn't rely on dart:io or dart:html).]
 {% endcomment %}
 
 {% prettify dart %}
-Future main() [[highlight]]async[[/highlight]] {
+main() [[highlight]]async[[/highlight]] {
   var dir = new Directory('/tmp');
 
   [[highlight]]try[[/highlight]] {
