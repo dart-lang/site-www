@@ -60,24 +60,31 @@ The rest of this guide addresses handling errors when using the Future API.
 ## The Future API and callbacks
 
 Functions that use the Future API register callbacks that handle
-the value (or the error) that completes a Future. For example:
+the value (or the error) that completes a Future. For example,
+here's the previous example converted to use Future methods
+instead of `async` and `await`:
 
-{% prettify dart %}
-myFunc().then(processValue)
-        .catchError(handleError);
+{% comment %}
+Example code is here:
+https://gist.github.com/533bce331d06d5867eb72975d2001a1c
 
-{% endprettify %}
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
 
-The registered callbacks fire based on the following rules: `then()`'s
-callback fires if it is invoked on a Future that completes with a value;
-`catchError()`'s callback fires if it is invoked on a Future that completes
-with an error.
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=533bce331d06d5867eb72975d2001a1c&horizontalRatio=75&verticalRatio=80&strong=true"
+    width="100%"
+    height="550px"
+    style="border: 1px solid #ccc;">
+</iframe>
 
-In the example above, if `myFunc()`'s Future completes with a value,
-`then()`'s callback fires. If no new error is produced within `then()`,
-`catchError()`'s callback does not fire. On the other hand, if `myFunc()`
-completes with an error, `then()`'s callback does not fire, and
-`catchError()`'s callback does.
+The registered callbacks fire based on the following rules:
+
+* `then()`'s callback fires if it is invoked on a Future that
+  completes with a value
+* `catchError()`'s callback fires if it is invoked on a Future that
+  completes with an error.
+
 
 ## Examples of using then() with catchError()
 
