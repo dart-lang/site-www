@@ -81,9 +81,27 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=533bce331d06d5867eb72975d2001a
 The registered callbacks fire based on the following rules:
 
 * `then()`'s callback fires if it is invoked on a Future that
-  completes with a value
+  completes with a **value**.
 * `catchError()`'s callback fires if it is invoked on a Future that
-  completes with an error.
+  completes with an **error**.
+
+Here's a simpler example that's the basis of the rest of the
+examples in this page:
+
+{% comment %}
+Example code is here:
+https://gist.github.com/d73a118d4785c0495fcf84ee847a5f0a
+
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=d73a118d4785c0495fcf84ee847a5f0a&horizontalRatio=75&verticalRatio=70&strong=true"
+    width="100%"
+    height="250px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
 
 
 ## Examples of using then() with catchError()
@@ -99,22 +117,28 @@ The next few sections give examples of this pattern.
 The following example deals with throwing an exception from within `then()`'s
 callback and demonstrates `catchError()`'s versatility as an error handler:
 
-{% prettify dart %}
-myFunc()
-  .then((value) {
-    doSomethingWith(value);
-    ...
-    throw("some arbitrary error");
-  })
-  .catchError(handleError);
-{% endprettify %}
+{% comment %}
+Example code is here:
+https://gist.github.com/bda87935b207de75a5aba4c174527328
 
-If `myFunc()`'s Future completes with a value, `then()`'s callback fires. If
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=bda87935b207de75a5aba4c174527328&horizontalRatio=75&verticalRatio=70&strong=true"
+    width="100%"
+    height="335px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
+If `myFunc()`'s Future completes with a **value**,
+`then()`'s callback fires. If
 code within `then()`'s callback throws (as it does in the example above),
 `then()`'s Future completes with an error. That error is handled by
 `catchError()`.
 
-If `myFunc()`'s Future completes with an error, `then()`'s Future completes
+If `myFunc()`'s Future completes with an **error**,
+`then()`'s Future completes
 with that error. The error is also handled by `catchError()`.
 
 Regardless of whether the error originated within `myFunc()` or within
