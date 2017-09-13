@@ -42,29 +42,18 @@ and `finally`&mdash;to handle errors in code that uses async functions
 and await expressions. For example:
 
 {% comment %}
-src/tests/site/guides-libraries/futures-and-error-handling/try_catch.dart
-[TODO: Should probably use an example that can run in DartPad
-(and that doesn't rely on dart:io or dart:html).]
+Example code is here:
+https://gist.github.com/cb5e9c9b2d8a58a06df7b41b69335a2b
+
+TODO: Figure out the best way to store & test this code.
 {% endcomment %}
 
-{% prettify dart %}
-main() [[highlight]]async[[/highlight]] {
-  var dir = new Directory('/tmp');
-
-  [[highlight]]try[[/highlight]] {
-    var dirList = dir.list();
-    [[highlight]]await[[/highlight]] for (FileSystemEntity f in dirList) {
-      if (f is File) {
-        print('Found file ${f.path}');
-      } else if (f is Directory) {
-        print('Found dir ${f.path}');
-      }
-    }
-  } [[highlight]]catch[[/highlight]] (e) {
-    print(e.toString());
-  }
-}
-{% endprettify %}
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=cb5e9c9b2d8a58a06df7b41b69335a2b&horizontalRatio=75&verticalRatio=80&strong=true"
+    width="100%"
+    height="550px"
+    style="border: 1px solid #ccc;">
+</iframe>
 
 The rest of this guide addresses handling errors when using the Future API.
 
