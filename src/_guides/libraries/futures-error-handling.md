@@ -96,9 +96,9 @@ TODO: Figure out the best way to store & test this code.
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=d73a118d4785c0495fcf84ee847a5f0a&horizontalRatio=75&verticalRatio=70&strong=true"
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=d73a118d4785c0495fcf84ee847a5f0a&horizontalRatio=75&verticalRatio=87&strong=true"
     width="100%"
-    height="250px"
+    height="460px"
     style="border: 1px solid #ccc;">
 </iframe>
 
@@ -119,15 +119,15 @@ callback and demonstrates `catchError()`'s versatility as an error handler:
 
 {% comment %}
 Example code is here:
-https://gist.github.com/bda87935b207de75a5aba4c174527328
+https://gist.github.com/a98c00ce02cc89808a28822c35af1b49
 
 TODO: Figure out the best way to store & test this code.
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=bda87935b207de75a5aba4c174527328&horizontalRatio=75&verticalRatio=70&strong=true"
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=a98c00ce02cc89808a28822c35af1b49&horizontalRatio=75&verticalRatio=80&strong=true"
     width="100%"
-    height="335px"
+    height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
 
