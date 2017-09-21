@@ -158,6 +158,10 @@ Register the optional onError callback only if you want to differentiate
 between an error forwarded _to_ `then()`, and an error generated _within_
 `then()`:
 
+{% comment %}
+TODO: convert this one. For some reason, I can't get it to work.
+{% endcomment %}
+
 {% prettify dart %}
 funcThatThrows()
   .then(successCallback, onError: (e) {
@@ -179,6 +183,10 @@ to catch the error within `then()`.
 
 It is common to have a succession of `then()` calls, and catch errors
 generated from any part of the chain using `catchError()`:
+
+{% comment %}
+TODO: convert this one. I can't get it to work.
+{% endcomment %}
 
 {% prettify dart %}
 Future<String> one()   => new Future.value("from one");
