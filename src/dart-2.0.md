@@ -97,9 +97,7 @@ If a backward-compatible change isn't possible,
   Incorrect lower constraints can cause problems for users of the stable SDK.
 </aside>
 
-[Test your changes][] to make sure that your package works as expected.
-
-[Test your changes]: /guides/testing
+[Test your changes](/guides/testing) to make sure that your package works as expected.
 
 
 ### Upper constraints on the SDK version
