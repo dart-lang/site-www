@@ -13,10 +13,11 @@ js:
 
 {% include breadcrumbs.html %}
 
-Use this index to install specific versions of the
+Use this index to install
+[specific versions](/install#about-sdk-release-channels-and-version-strings) of the
 [Dart SDK](/tools/sdk),
-[Dartium]({{site.webdev}}/tools/dartium),
-and the [Dart API documentation]({{site.dart_api}}).
+[Dartium,]({{site.webdev}}/tools/dartium)
+and the [Dart API documentation.]({{site.dart_api}})
 
 Want to install Dart with your OS's package manager?
 Go to the [main Dart installation page](/install).
