@@ -555,6 +555,11 @@
         "type": 301
       },
       {
+        "source": "/language-tour",
+        "destination": "/guides/language/language-tour",
+        "type": 301
+      },
+      {
         "source": "/docs/pub-package-manager/pubspec/**",
         "destination": "/tools/pub/pubspec",
         "type": 301
@@ -767,6 +772,11 @@
       {
         "source": "/effective-dart/usage",
         "destination": "/guides/language/effective-dart/usage",
+        "type": 301
+      },
+      {
+        "source": "/events/2013/**",
+        "destination": "/",
         "type": 301
       },
       {
@@ -1122,6 +1132,36 @@
       {
         "source": "/)",
         "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/api",
+        "destination": "https://api.dartlang.org",
+        "type": 301
+      },
+      {
+        "source": "/dartium/home",
+        "destination": "https://webdev.dartlang.org/tools/dartium",
+        "type": 301
+      },
+      {
+        "source": "/tools/download-editor",
+        "destination": "/tools",
+        "type": 301
+      },
+      {
+        "source": "/codelabs/polymer",
+        "destination": "/codelabs",
+        "type": 301
+      },
+      {
+        "source": "/tools/debian",
+        "destination": "/install/linux",
+        "type": 301
+      },
+      {
+        "source": "/2.0",
+        "destination": "/dart-2.0",
         "type": 301
       }
     ]
