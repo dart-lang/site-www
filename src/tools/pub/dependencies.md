@@ -107,16 +107,16 @@ If it's `flutter`, the dependency is satisfiable as long as:
 
 If it's an unknown identifier, the dependency is always considered unsatisfied.
 
-In order to publish a package with an `sdk` dependency,
-it must have a Dart SDK constraint whose minimum version is at least
-1.19.0 which ensures that older versions of pub won't accidentally
-install packages that need SDK dependencies.
+A package with an `sdk` dependency
+must have a Dart SDK constraint with a minimum version of at least 1.19.0.
+This constraint ensures that older versions of pub won't
+install packages that have `sdk` dependencies.
 
 ### Hosted packages
 
 A *hosted* package is one that can be downloaded from pub.dartlang.org
-(or another HTTP server that speaks the same API). Most of your dependencies
-will be of this form, as shown in the following example:
+or another HTTP server that speaks the same API. Most dependencies
+are hosted and are declared like this:
 
 {% prettify yaml %}
 dependencies:
@@ -265,14 +265,16 @@ A version constraint is a series of:
   (because it's the first version to introduce some breaking change).
 
 You can specify version parts as you want, and their ranges are intersected
-together. For example, `>=1.2.3 <2.0.0` allows any version from `1.2.3` to
+together. For example, `'>=1.2.3 <2.0.0'` allows any version from `1.2.3` to
 `2.0.0` excluding `2.0.0` itself. An easier way to express this range is
 by using [caret syntax](#caret-syntax), or `^1.2.3`.
 
-<aside class="alert alert-info">
-Note that `>` is also valid YAML syntax so you will want to quote
-the version string (like `'<=1.2.3 >2.0.0'`) if the version
-constraint starts with that.
+<aside class="alert alert-warning" markdown="1">
+If the **`>`** character is in the version constraint,
+be sure to **quote the constraint string**,
+so the character isn't interpreted as YAML syntax.
+For example, never use `>=1.2.3 <2.0.0`;
+instead, use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
 </aside>
 
 ### Caret syntax

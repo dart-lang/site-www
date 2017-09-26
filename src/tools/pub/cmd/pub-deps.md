@@ -34,7 +34,11 @@ dependencies:
 
 Here's an example of the `pub deps` output for markdown_converter:
 
-{% prettify none %}
+{% comment %}
+The <pre style...> is a workaround for prettify treating the
+quotes like they start strings.
+{% endcomment %}
+<pre style="color:#222">
 $ pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6
@@ -47,7 +51,8 @@ markdown_converter 0.0.0
 |   '-- stack_trace 1.4.2
 |       '-- path...
 '-- markdown 0.7.2
-{% endprettify %}
+</pre>
+
 
 ## Options
 

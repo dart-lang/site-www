@@ -12,7 +12,7 @@ Flutter has its own commands for managing and updating packages.
 For more information, see
 [Using Packages]({{site.flutter}}/using-packages/) and
 [Upgrading Flutter]({{site.flutter}}/upgrading/)
-on the [Flutter website]({{site.flutter}}).
+on the [Flutter website.]({{site.flutter}})
 
 Quick links to the `pub` commands:
 
@@ -35,21 +35,23 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Pub's commands fall into the following categories:
 
-* [Managing apps](#managing-apps)
+* [Managing package dependencies](#managing-apps)
 * [Running and serving apps](#running-and-serving-apps)
 * [Building
   and deploying apps and packages](#building-and-deploying-apps-and-packages)
 
-## Managing apps
+## Managing package dependencies {#managing-apps}
 
 Pub provides a number of commands that support
-the creation and maintenance of a Dart application.
+the creation and maintenance of a Dart package.
+(Remember, every app that uses library packages must
+itself be a package.)
 
 In this group, the most commonly used commands are `pub get` and
-`pub upgrade`, which retrieve or upgrade dependencies used by a project.
+`pub upgrade`, which retrieve or upgrade dependencies used by a package.
 Every time you modify a pubspec file, run `pub get`
 to make sure the dependencies are up to date. Some IDEs
-perform this step automatically on the creation of a package,
+perform this step automatically on the creation of a project,
 or any modification of the pubspec.
 
 [`pub cache`](/tools/pub/cmd/pub-cache)
@@ -58,23 +60,23 @@ or any modification of the pubspec.
   your cache.
 
 [`pub deps`](/tools/pub/cmd/pub-deps)
-: Lists all dependencies used by a package.
+: Lists all dependencies used by the current package.
 
 [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
 : Retrieves the lowest versions of all the packages that are
-  listed as dependencies used by the application. Used for testing
+  listed as dependencies used by the current package. Used for testing
   the lower range of your package's dependencies.
 
 [`pub get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
-  the application.
+  the current package.
   If a `pubspec.lock` file already exists, fetches the version
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
-  as dependencies used by the application. If a `pubspec.lock`
+  as dependencies used by the current package. If a `pubspec.lock`
   file exists, ignores the versions listed in the lock file and fetches
   the newest versions that honor the constraints in the pubspec.
   Creates or updates the lock file, as needed.

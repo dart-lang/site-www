@@ -90,7 +90,10 @@ Pub creates a
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
-{% include packages-dir.html %}
+{% comment %}
+PENDING: Here only to make it easy to find the packages discussion:
+packages-dir.html
+{% endcomment %}
 
 ## Importing libraries from packages
 To import libraries found in packages, use the

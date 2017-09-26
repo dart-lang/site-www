@@ -70,11 +70,6 @@ enchilada/
 
 {% include packages-dir.html %}
 
-{% comment %}
-Not ready for this...
-These symlinks are not generated if you specify `--no-package-symlinks` in
-Dart 1.2 or later.
-{% endcomment %}
 
 ## The basics
 
