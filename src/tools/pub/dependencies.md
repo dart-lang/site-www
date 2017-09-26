@@ -115,8 +115,8 @@ install packages that have `sdk` dependencies.
 ### Hosted packages
 
 A *hosted* package is one that can be downloaded from pub.dartlang.org
-or another HTTP server that speaks the same API. Most dependencies
-are hosted and are declared like this:
+(or another HTTP server that speaks the same API). Here's an example
+of declaring a dependency on a hosted package:
 
 {% prettify yaml %}
 dependencies:

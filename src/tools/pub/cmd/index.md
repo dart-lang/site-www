@@ -42,10 +42,8 @@ Pub's commands fall into the following categories:
 
 ## Managing package dependencies {#managing-apps}
 
-Pub provides a number of commands that support
-the creation and maintenance of a Dart package.
-(Remember, every app that uses library packages must
-itself be a package.)
+Pub provides a number of commands for managing the
+[packages your code depends on](/tools/pub/dependencies).
 
 In this group, the most commonly used commands are `pub get` and
 `pub upgrade`, which retrieve or upgrade dependencies used by a package.
@@ -80,6 +78,7 @@ or any modification of the pubspec.
   file exists, ignores the versions listed in the lock file and fetches
   the newest versions that honor the constraints in the pubspec.
   Creates or updates the lock file, as needed.
+
 
 ## Running and serving apps
 
