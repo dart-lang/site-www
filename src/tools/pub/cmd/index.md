@@ -40,7 +40,8 @@ Pub's commands fall into the following categories:
 * [Building
   and deploying apps and packages](#building-and-deploying-apps-and-packages)
 
-## Managing package dependencies {#managing-apps}
+<a id="managing-apps"></a>
+## Managing package dependencies
 
 Pub provides a number of commands for managing the
 [packages your code depends on](/tools/pub/dependencies).
