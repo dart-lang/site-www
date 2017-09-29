@@ -15,7 +15,7 @@ $ pub downgrade [args] [dependencies]
 Without any additional arguments, `pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
 in the current working directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency), to the `.packages` file.
+dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
 {% prettify sh %}
@@ -34,10 +34,9 @@ The `pub downgrade` command creates a lockfile. If one already exists,
 pub ignores that file and generates a new one from scratch, using the lowest
 versions of all dependencies.
 
-The `pub downgrade` command supports the same command-line arguments
-as the [`pub get` command](/tools/pub/cmd/pub-get).
+See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
+on package resolution and the system package cache.
 
-{% include packages-dir.html %}
 
 ## Downgrading specific dependencies
 
@@ -69,12 +68,14 @@ highest versions of any transitive dependencies that fit the new dependency
 constraints. Any transitive dependencies are usually also downgraded
 as a result.
 
+
 ## Getting a new dependency
 
 If a dependency is added to the pubspec before `pub downgrade` is run,
-it gets the new dependency and any of its transitive dependencies and
-places them in the `.packages` file. This
+it gets the new dependency and any of its transitive dependencies,
+placing them in the `.packages` file. This
 is the same behavior as `pub get`.
+
 
 ## Removing a dependency
 
@@ -85,21 +86,26 @@ importing. Any transitive dependencies of the removed dependency are
 also removed, as long as no remaining immediate dependencies also
 depend on them. This is the same behavior as `pub get`.
 
+
 ## Downgrading while offline
 
-If you don't have network access, you can still run `pub downgrade`. Since pub
-downloads packages to a central cache shared by all packages on your system, it
-can often find previously-downloaded packages there without needing to hit the
-network.
+If you don't have network access, you can still run `pub downgrade`.
+Because pub downloads packages to a central cache shared by all packages
+on your system, it can often find previously downloaded packages
+without needing to use the network.
 
-However, by default, pub always tries to go online when you downgrade if you
-have any hosted dependencies so that it can see if newer versions of them are
-available. If you don't want it to do that, pass the `--offline` flag when
-running pub. In this mode, it only looks in your local package cache and
-tries to find a set of versions that work with your package from what's already
+However, by default, `pub downgrade` tries to go online if you
+have any hosted dependencies.
+If you don't want pub to do that, pass it the `--offline` flag.
+In offline mode, pub looks only in your local package cache,
+trying to find a set of versions that work with your package from what's already
 available.
 
+
 ## Options {#options}
+
+The `pub downgrade` command supports the
+[`pub get` options](/tools/pub/cmd/pub-get#options).
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
