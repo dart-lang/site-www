@@ -56,17 +56,10 @@ a, button {
    text-decoration: none;
  }
  &.external {
-  position: relative;
-  display: inline-block;
-  padding-right: 13px;
   &:after {
     content: $icon-external;
-    position: absolute;
-    display: block;
-    // width: 15px;
-    // height: 15px;
-    top: 0;
-    right: 0;
+    vertical-align: top;
+    margin-left: 2px;
     font-family: 'dart' !important;
     font-size: 11px;
     color: inherit;
