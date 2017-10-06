@@ -4,10 +4,9 @@ title: "What Not to Commit"
 description: "Your development tools generate a bunch of files. Not all of them should be committed."
 ---
 
-When you put Dart source code in a repository,
-whether using the [pub](/tools/pub) tool, [GitHub](https://github.com/)
-or another source code management system,
-you shouldn't include most of the files
+When you put Dart source code in a repository—using the
+[pub](/tools/pub) tool, [GitHub,](https://github.com/)
+or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
 <aside class="alert alert-info" markdown="1">
@@ -27,9 +26,7 @@ created by pub and dart2js:
 build/
 packages/
 pubspec.lock  // Except for application packages
-.buildlog
 .packages
-.project
 .pub/
 {% endprettify %}
 
@@ -40,8 +37,10 @@ doc/api/
 {% endprettify %}
 
 **Don't commit** files and directories
-dropped by other development environments.
-For example:
+created by other development environments.
+For example, if your development environment creates
+any of the following files,
+consider putting them in a global ignore file:
 
 {% prettify none %}
 *.iml         // IntelliJ
@@ -67,17 +66,30 @@ For more details, read on.
 
 ## Details
 
-As a rule, you should commit only the files that people need
+As a rule, commit only the files that people need
 to use your package or source code repository.
 Including additional files is unnecessary,
 could be counterproductive,
-and might even have security implications
+and might have security implications
 if you expose details about your machine's setup.
 In many source code repositories,
 the common practice is not to commit generated files, at all.
 
-See [Ignoring files](https://help.github.com/articles/ignoring-files)
-in the GitHub help for more information.
+To avoid committing files that are
+specific to your personal workflow or setup,
+consider using a global ignore file
+(for example, `.gitignore_global`).
+
+When you use pub from within a Git repo,
+pub ignores the same files that Git does.
+For example, if you run `pub publish` from a Git repo
+that has a `.gitignore` file containing `*.js`,
+then your published package won't contain `*.js` files.
+
+For more information on `.gitignore` files,
+see the GitHub help page
+[Ignoring files.](https://help.github.com/articles/ignoring-files)
+
 
 ### .packages and packages/
 
