@@ -20,11 +20,10 @@ are useful or essential when you deploy an app.
 ## The rules
 
 **Don't commit** the following files and directories
-created by pub and dart2js:
+created by pub:
 
 {% prettify none %}
 build/
-packages/
 pubspec.lock  // Except for application packages
 .packages
 .pub/
@@ -91,10 +90,9 @@ see the GitHub help page
 [Ignoring files.](https://help.github.com/articles/ignoring-files)
 
 
-### .packages and packages/
+### .packages
 
 The `.packages` file contains a list of dependencies used by your application.
-Directories named `packages/` contain symlinks specific to your machine.
 Users of your code should generate their own packages information
 using [pub get](/tools/pub/get-started#installing-packages).
 
