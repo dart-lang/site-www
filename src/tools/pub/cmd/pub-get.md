@@ -81,8 +81,8 @@ specify `--packages-dir`.
 `packages` directories, or `.pub` directory (when present)
 into your repo;
 add them to your repo's `.gitignore` file.
-[What Not to Commit](/guides/libraries/private-files) has a complete list
-of files that should not be checked into the repo.
+For more information, see
+[What Not to Commit](/guides/libraries/private-files).
 </aside>
 
 For more information, see the
