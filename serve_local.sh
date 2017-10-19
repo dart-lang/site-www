@@ -12,8 +12,7 @@ if [[ "$1" == "frontpage" ]]; then
   CONFIG="--config _config.yml,scripts/frontpage_only_config.yml"
 fi
 
-jekyll build $CONFIG --incremental --watch &
-
+bundle exec jekyll build $CONFIG --incremental --watch &
 j_pid=$!
 firebase serve --port 4000 &
 f_pid=$!

@@ -26,7 +26,7 @@ src/site/events/2015/summit/node_modules
 
 # Cache files
 .sass-cache
-src/.asset-cache
+.asset-cache
 .jekyll-metadata
 
 # Deployment Files

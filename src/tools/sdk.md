@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Dart SDK"
-description: "Dart libraries and command-line tools."
+title: Dart SDK
+description: Dart libraries and command-line tools.
 permalink: /tools/sdk
 ---
 

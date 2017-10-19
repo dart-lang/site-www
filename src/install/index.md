@@ -1,12 +1,11 @@
 ---
-layout: default
-title: "Install Dart"
-description: "The bundles that support the Dart language."
+title: Install Dart
+description: The bundles that support the Dart language.
 permalink: /install
-
 js:
 - url: /install/archive/assets/install.js
   defer: true
+show_breadcrumbs: false
 ---
 
 <p><em>Current stable version of Dart:
