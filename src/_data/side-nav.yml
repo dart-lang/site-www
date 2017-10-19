@@ -49,15 +49,17 @@
   - title: "Dart Testing"
     permalink: /guides/testing
 
-- title: "Resources"
+- title: Resources
   children:
-  - title: "Codelabs"
+  - title: Install
+    permalink: /install
+  - title: Codelabs
     permalink: /codelabs
-  - title: "Tutorials"
+  - title: Tutorials
     permalink: /tutorials
-  - title: "Articles"
+  - title: Articles
     permalink: /articles
-  - title: "Dart Tools"
+  - title: Tools
     permalink: /tools
   - title: "Community and Support"
     permalink: /community

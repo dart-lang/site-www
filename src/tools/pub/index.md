@@ -1,8 +1,7 @@
 ---
-layout: default
-title: "Pub Package and Asset Manager"
-description: "Use the pub tool to manage Dart's packages and assets."
-short-title: "Pub"
+title: Pub Package and Asset Manager
+description: Use the pub tool to manage Dart's packages and assets.
+short-title: Pub
 permalink: /tools/pub
 ---
 

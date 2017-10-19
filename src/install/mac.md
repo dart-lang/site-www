@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Installing Dart on Mac"
-description: "Installing and updating the Dart SDK on your Mac with homebrew."
+title: Installing Dart on Mac
+description: Installing and updating the Dart SDK on your Mac with homebrew.
 permalink: /install/mac
 ---
 
