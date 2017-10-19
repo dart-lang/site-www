@@ -1,5 +1,6 @@
 ---
 title: Installing Dart on Windows
+short-title: Windows Install
 description: Installing and updating the Dart SDK on Windows with Chocolatey or an installer.
 permalink: /install/windows
 js:

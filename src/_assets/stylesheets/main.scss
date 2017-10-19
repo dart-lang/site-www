@@ -961,7 +961,7 @@ main .content {
   padding: 0;
   font-size: small;
   > .active {
-    color: $gray;
+    color: inherit;
   }
   > li {
     + li {

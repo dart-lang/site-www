@@ -1,6 +1,5 @@
 ---
-title: Dart Tools
-short-title: Tools
+title: Tools
 description: The tools that support the Dart language.
 permalink: /tools
 show_breadcrumbs: false
