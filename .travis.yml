@@ -4,10 +4,11 @@ cache:
   bundler: true
   directories:
   # - $HOME/[path]
-rvm: [2.3.0]
+rvm: 2.4.2
 
 env:
   global:
+    - JEKYLL_ENV=production
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 
 before_install:

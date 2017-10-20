@@ -127,7 +127,7 @@ exact configuration of packages used by an application.
 
 The lockfile is generated automatically for you by pub when you run
 [`pub get`](/tools/pub/cmd/pub-get.html), [`pub upgrade`](/tools/pub/cmd/pub-upgrade.html),
-or [`pub downgrade`](/tools/pub/cmd/pub-downgrade.html)..
+or [`pub downgrade`](/tools/pub/cmd/pub-downgrade.html).
 If your package is an application package, you will typically check this into
 source control. For library packages, you usually won't.
 

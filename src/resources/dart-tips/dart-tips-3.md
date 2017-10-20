@@ -6,6 +6,8 @@ description: "Dart is optionally typed, so variables can have type annotations. 
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/_td6qXi_GmA"
 frameborder="0" allowfullscreen></iframe>
 

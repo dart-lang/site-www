@@ -1,22 +1,18 @@
 ---
-layout: default
 title: "Index of Downloads"
 description: "Download specific stable and dev channel versions of the Dart SDK, Dartium, and the Dart API documentation."
 permalink: /install/archive
-
 js:
 - url: /install/archive/out/web/download_archive.dart.js
   defer: true
 - url: /install/archive/assets/install.js
   defer: true
 ---
-
-{% include breadcrumbs.html %}
-
-Use this index to install specific versions of the
+Use this index to install
+[specific versions](/install#about-sdk-release-channels-and-version-strings) of the
 [Dart SDK](/tools/sdk),
-[Dartium]({{site.webdev}}/tools/dartium),
-and the [Dart API documentation]({{site.dart_api}}).
+[Dartium,]({{site.webdev}}/tools/dartium)
+and the [Dart API documentation.]({{site.dart_api}})
 
 Want to install Dart with your OS's package manager?
 Go to the [main Dart installation page](/install).
@@ -47,7 +43,7 @@ You can find the zip files at predictable URLs using the
 following pattern:
 
 {% prettify none %}
-https://storage.googleapis.com/dart-archive/channels/<[[highlight]]stable/dev[[/highlight]]>/release/<[[highlight]]release[[/highlight]]>/sdk/dartsdk-<[[highlight]]platform[[/highlight]]>-<[[highlight]]architecture[[/highlight]]>-release.zip
+https://storage.googleapis.com/dart-archive/channels/<[[highlight]]stable|dev[[/highlight]]>/release/<[[highlight]]release[[/highlight]]>/sdk/dartsdk-<[[highlight]]platform[[/highlight]]>-<[[highlight]]architecture[[/highlight]]>-release.zip
 {% endprettify %}
 
 Examples:

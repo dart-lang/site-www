@@ -6,6 +6,8 @@ description: "Take back control and learn more about Dart's control flow stateme
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/XdqZdsdzD2A"
 frameborder="0" allowfullscreen></iframe>
 

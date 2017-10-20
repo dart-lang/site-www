@@ -1,8 +1,8 @@
 ---
-layout: default
-title: "Dart Tools"
-description: "The tools that support the Dart language."
+title: Tools
+description: The tools that support the Dart language.
 permalink: /tools
+show_breadcrumbs: false
 toc: false
 ---
 

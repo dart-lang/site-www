@@ -1,8 +1,7 @@
 ---
-layout: default
+title: Static Analyzer
+description: The tool that analyzes and validates your Dart code.
 permalink: /tools/analyzer
-title: "Static Analyzer"
-description: "The tool that analyzes and validates your Dart code."
 ---
 
 The static analyzer evaluates your Dart code,

@@ -35,41 +35,44 @@ collections:
 
 defaults:
 - scope:
-    path: ""
-    type: pages
+    path: ''
+    # type: pages
   values:
     layout: default
     toc: true
 - scope:
-    path: ""
+    path: ''
     type: articles
   values:
     layout: article
-    toc: true
 - scope:
-    path: ""
+    path: ''
     type: tutorials
   values:
     layout: tutorial
-    toc: true
 - scope:
-    path: ""
+    path: ''
     type: samples
   values:
     layout: sample
-    toc: true
 - scope:
-    path: ""
+    path: ''
     type: guides
   values:
     layout: guide
-    toc: true
 - scope:
-    path: ""
+    path: ''
     type: codelabs
   values:
     layout: codelab
-    toc: true
+- scope:
+    path: install
+  values:
+    show_breadcrumbs: true
+- scope:
+    path: tools
+  values:
+    show_breadcrumbs: true
 
 custom:
   dartpad:
@@ -98,15 +101,10 @@ custom:
 
 
 # Build settings
-safe: false
 source: src
 destination: publish
-incremental: true
 bundler_args: --without production
-markdown: kramdown
-excerpt_separator: "~~~"
 
-include: ["_pages"]
 exclude: ["diagrams", "appengine", "tests", "site"]
 
 plugins:
@@ -114,12 +112,11 @@ plugins:
 - jekyll-toc
 - jekyll-sitemap
 
-
 assets:
-  compress:
-    css: true # default - development: false, production: true
-    js: true # default - development: false, production: true
-  cache: .asset-cache # default: .asset-cache
+  # compress:
+  #  css: true # default - development: false, production: true
+  #  js: true # default - development: false, production: true
+  # cache: .asset-cache # default: .asset-cache
   # cdn: https://cdn.example.com
   # skip_baseurl_with_cdn: false
   # skip_prefix_with_cdn: false

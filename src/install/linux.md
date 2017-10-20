@@ -1,9 +1,8 @@
 ---
-layout: default
-title: "Installing Dart on Linux"
-description: "Installing and updating the Dart SDK on Linux with apt-get, a Debian package, and compiling from source."
+title: Installing Dart on Linux
+short-title: Linux Install
+description: Installing and updating the Dart SDK on Linux with apt-get, a Debian package, and compiling from source.
 permalink: /install/linux
-
 js:
 - url: /install/archive/assets/install.js
   defer: true

@@ -6,6 +6,8 @@ description: "Welcome to Dart Tips, the video series that teaches you all about 
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 <iframe class="dart-tips-video" src="//www.youtube.com/embed/g09UVKyYfIs"
 frameborder="0" allowfullscreen></iframe>
 

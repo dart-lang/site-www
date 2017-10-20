@@ -6,6 +6,8 @@ description: "Functions are the basic building blocks for any app. Dart supports
 toc: false
 ---
 
+{% include dart-tips-caveat.html %}
+
 *Note:* This video mentions the `?` operator, which is deprecated. Ignore
 the parts about `?` , and enjoy the rest of the video.
 

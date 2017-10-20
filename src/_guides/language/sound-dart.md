@@ -345,7 +345,7 @@ However, the app throws an exception at runtime because it is an error
 to assign a list of Dogs to a list of Cats.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** As of release 1.21, only dartdevc implements these runtime checks,
+**Note:** As of release 1.24, only dartdevc implements these runtime checks,
 but support in other tools is coming.
 </aside>
 
@@ -353,11 +353,13 @@ but support in other tools is coming.
 
 Does strong mode Dart mean that you _always_ have to specify a type?
 
-Actually, no. Strong mode Dart supports type inference. In some cases,
-the analyzer can infer types for fields, methods, local variables,
+No. Although _types_ are mandatory in strong mode,
+type _annotations_ are optional.
+The analyzer can infer types for fields, methods, local variables,
 and generic type arguments.
 
-When the analyzer can't infer the type, the `dynamic` type is assigned.
+When the analyzer doesn't have enough information to infer
+a specific type, it uses the `dynamic` type.
 
 How does type inference work with collections and generics?
 For example, what happens when you use `var` with maps or lists
