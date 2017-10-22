@@ -17,7 +17,7 @@ before_install:
 
 install:
   - bundle install
-  - npm install -g firebase-tools --no-optional
+  - npm install -g firebase-tools superstatic --no-optional
 
 script:
   - ./deploy/cibuild

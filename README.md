@@ -33,10 +33,10 @@ Contributions welcome!
 1. Install `npm` by installing [Node.js](https://nodejs.org/en/); only needed to install firebase tools.
    Consider using [nvm](http://nvm.sh) to manage node versions;
    your **node version** must be **v6 or higher.**
-1. Install Firebase:
+1. Install Firebase & superstatic:
 
     ```
-    npm install -g firebase-tools     # might require sudo
+    npm install -g firebase-tools superstatic     # might require sudo
     ```
 
 1. Install bundles (you might need to run `gem install bundler` first):
