@@ -45,7 +45,7 @@ Contributions welcome!
     bundle install
     ```
 
-1. Install the `linkcheck` tool
+1. Optional: Install the `linkcheck` tool
 
     ```
     pub global activate linkcheck
