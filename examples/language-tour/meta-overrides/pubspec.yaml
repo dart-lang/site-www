@@ -1,0 +1,4 @@
+name: meta_overrides
+description: A sample command-line application
+dependencies:
+  meta: any
