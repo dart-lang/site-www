@@ -826,12 +826,13 @@ The following example illustrates the relationship between runes,
 Click the run button ( {% img 'red-run.png' %} )
 to see runes in action.
 
-<?code-excerpt "language-tour/runes/bin/main.dart"?>
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
 https://dartpad.dartlang.org/589bc5c95318696cefe5
 Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
 
+<?code-excerpt "language-tour/runes/bin/main.dart"?>
+{% prettify dart %}
 main() {
   var clapping = '\u{1f44f}';
   print(clapping);
@@ -842,6 +843,7 @@ main() {
       '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
   print(new String.fromCharCodes(input));
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -1543,7 +1545,7 @@ if (emp is Person) { // Type check
 
 You can make the code shorter using the `as` operator:
 
-<?code-excerpt "language-tour/op-as/bin/main.dart.dart"?>
+<?code-excerpt "language-tour/op-as/bin/main.dart"?>
 {% prettify dart %}
 (emp as Person).firstName = 'Bob';
 {% endprettify %}
@@ -1616,7 +1618,7 @@ operators.
 
 Here’s an example of using the logical operators:
 
-<?code-excerpt "language-tour/op-logicalbin/main.dart"?>
+<?code-excerpt "language-tour/op-logical/bin/main.dart"?>
 {% prettify dart %}
 if (!done && (col == 0 || col == 3)) {
   // ...Do something...
@@ -2041,7 +2043,7 @@ Use an `assert` statement to disrupt normal execution if a boolean
 condition is false. You can find examples of assert statements
 throughout this tour. Here are some more:
 
-<?code-excerpt "language-tour/flow/assert/web/main.dart"?>
+<?code-excerpt "language-tour/flow/assert_example/web/main.dart"?>
 {% prettify dart %}
 // Make sure the variable has a non-null value.
 assert(text != null);
@@ -2068,7 +2070,7 @@ update-for-dart-2
 To attach a message to an assert,
 add a string as the second argument.
 
-<?code-excerpt "language-tour/flow/assert/web/main.dart"?>
+<?code-excerpt "language-tour/flow/assert_example/web/main.dart"?>
 {% prettify dart %}
 assert(urlString.startsWith('https'),
     'URL ($urlString) should start with "https".');
@@ -2440,7 +2442,7 @@ name) constructor.
 Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
-<?code-excerpt "language-tour/bin/named-constructor.dart"?>
+<?code-excerpt "language-tour/reference/named_constructor.dart"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2483,11 +2485,12 @@ In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<?code-excerpt "language-tour/op-as/bin/main.dart"?>
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
 https://dartpad.dartlang.org/e57aa06401e6618d4eb8
 
+<?code-excerpt "language-tour/op-as/bin/main.dart"?>
+{% prettify dart %}
 class Person {
   Person.fromJson(Map data) {
     print('in Person');
@@ -2505,6 +2508,7 @@ class Employee extends Person {
 main() {
   var emp = new Employee.fromJson({});
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -2572,11 +2576,12 @@ Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<?code-excerpt "language-tour/reference/initializer_list_final.dart"?>
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
 https://dartpad.dartlang.org/7a9764702c0608711e08
 
+<?code-excerpt "language-tour/reference/initializer_list_final.dart"?>
+{% prettify dart %}
 import 'dart:math';
 
 class Point {
@@ -2594,6 +2599,7 @@ main() {
   var p = new Point(2, 3);
   print(p.distanceFromOrigin);
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -3212,7 +3218,7 @@ of preferring `lowerCamelCase` for constant names.
 Static methods (class methods) do not operate on an instance, and thus
 do not have access to `this`. For example:
 
-<?code-excerpt "language-tour/point/main/bin.dart"?>
+<?code-excerpt "language-tour/point/bin/main.dart"?>
 {% prettify dart %}
 import 'dart:math';
 
@@ -3799,11 +3805,12 @@ a call() function that takes three strings and concatenates them,
 separating each with a space, and appending an exclamation.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<?code-excerpt "language-tour/callable-function/bin/main.dart"?>
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
 https://dartpad.dartlang.org/405379bacf30335f3aed
 
+<?code-excerpt "language-tour/callable-function/bin/main.dart"?>
+{% prettify dart %}
 class WannabeFunction {
   call(String a, String b, String c) => a + ' ' + b + ' ' + c + '!';
 }
@@ -3813,6 +3820,7 @@ main() {
   var out = wf("Hi","there,","gang");
   print('$out');
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -3903,7 +3911,7 @@ to change.
 Because typedefs are simply aliases, they offer a way to check the type
 of any function. For example:
 
-<?code-excerpt "language-tour/sorted_collection/bin/main.dart"?>
+<?code-excerpt "language-tour/sorted-collection/bin/main.dart"?>
 {% prettify dart %}
 typedef int Compare(int a, int b);
 
@@ -3960,7 +3968,7 @@ class Television {
 You can define your own metadata annotations. Here’s an example of
 defining a @todo annotation that takes two arguments:
 
-<?code-excerpt "language-tour/meta-overrides/todo.dart"?>
+<?code-excerpt "language-tour/meta-overrides/bin/todo.dart"?>
 {% prettify dart %}
 library todo;
 
@@ -3974,7 +3982,7 @@ class todo {
 
 And here’s an example of using that @todo annotation:
 
-<?code-excerpt "language-tour/meta-overrides/main.dart"?>
+<?code-excerpt "language-tour/meta-overrides/bin/main.dart"?>
 {% prettify dart %}
 import 'todo.dart';
 
@@ -4047,7 +4055,7 @@ the documented program element.
 Here is an example of documentation comments with references to other
 classes and arguments:
 
-<?code-excerpt "language-tour/reference/doc-comments.dart"?>
+<?code-excerpt "language-tour/reference/doc_comments.dart"?>
 {% prettify dart %}
 /// A domesticated South American camelid (Lama glama).
 ///
