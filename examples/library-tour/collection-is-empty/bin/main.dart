@@ -1,6 +1,6 @@
 void main() {
-  // BEGIN(collection-isEmpty)
+  // #docregion
   var teas = ['green', 'black', 'chamomile', 'earl grey'];
   assert(teas.isNotEmpty);
-  // END(collection-isEmpty)
+  // #enddocregion
 }

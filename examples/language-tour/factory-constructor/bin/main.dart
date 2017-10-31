@@ -1,4 +1,4 @@
-// BEGIN(factory_constructor)
+// #docregion
 class Logger {
   final String name;
   bool mute = false;
@@ -25,7 +25,7 @@ class Logger {
     }
   }
 }
-// END(factory_constructor)
+// #enddocregion
 
 void main() {
   //BEGIN

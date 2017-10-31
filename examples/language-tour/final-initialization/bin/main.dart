@@ -1,7 +1,7 @@
-// BEGIN(final_initialization)
+// #docregion
 final String name = 'Bob'; // Or: final String name = 'Bob';
 // name = 'Alice';  // Uncommenting this causes an error
-// END(final_initialization)
+// #enddocregion
 
 final String name2 = 'Roberta';
 

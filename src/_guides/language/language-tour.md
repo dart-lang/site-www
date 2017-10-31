@@ -684,7 +684,7 @@ assert(list[1] == 1);
 To create a list that's a compile-time constant,
 add `const` before the list literal:
 
-<?code-excerpt "language-tour/list-literal/bin/main.dart"?>
+<?code-excerpt "language-tour/list-literal/bin/main.dart (const)"?>
 {% prettify dart %}
 var constantList = const [1, 2, 3];
 // constantList[1] = 1; // Uncommenting this causes an error.
@@ -784,7 +784,7 @@ assert(gifts.length == 2);
 To create a map that's a compile-time constant,
 add `const` before the map literal:
 
-<?code-excerpt "language-tour/reference/map_literal.dart"?>
+<?code-excerpt "language-tour/reference/map_literal.dart (const)"?>
 {% prettify dart %}
 final constantMap = const {
   2: 'helium',
@@ -2070,7 +2070,7 @@ update-for-dart-2
 To attach a message to an assert,
 add a string as the second argument.
 
-<?code-excerpt "language-tour/flow/assert_example/web/main.dart"?>
+<?code-excerpt "language-tour/flow/assert_example/web/main.dart (assert with message)"?>
 {% prettify dart %}
 assert(urlString.startsWith('https'),
     'URL ($urlString) should start with "https".');

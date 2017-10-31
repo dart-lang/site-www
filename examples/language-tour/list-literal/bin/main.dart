@@ -1,12 +1,12 @@
-// BEGIN(list_literal)
+// #docregion
 List<int> list = [1, 2, 3];
-// END(list_literal)
+// #endocregion
 
 void main() {
-  // BEGIN(list_const_literal)
+  // #docregion const
   var constantList = const [1, 2, 3];
   // constantList[1] = 1; // Uncommenting this causes an error.
-  // END(list_const_literal)
+  // #enddocregion const
 
   list[1] = 1; // You can do this.
   try {

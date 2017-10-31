@@ -1,5 +1,5 @@
-// BEGIN(creating_a_variable)
+// #docregion
 String name = 'Bob';
-// END(creating_a_variable)
+// #enddocregion
 
 void main() {}

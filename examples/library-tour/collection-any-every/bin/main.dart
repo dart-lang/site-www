@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(collection-any-every)
+  // #docregion
   var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
   // Chamomile is not caffeinated.
@@ -17,7 +17,7 @@ void main() {
   // Use every() to check whether all the items in a
   // collection satisfy a condition.
   assert(!teas.every(isDecaffeinated));
-  // END(collection-any-every)
+  // #enddocregion
 
   teas.forEach(print);
   decaffeinatedTeas.forEach(print);

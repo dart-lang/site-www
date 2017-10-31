@@ -1,8 +1,8 @@
 void main() {
-  // BEGIN(number_literals)
+  // #docregion
   const msPerSecond = 1000;
   const secondsUntilRetry = 5;
   const msUntilRetry = secondsUntilRetry * msPerSecond;
-  // END(number_literals)
+  // #enddocregion
   print('Wait $msUntilRetry milliseconds.');
 }

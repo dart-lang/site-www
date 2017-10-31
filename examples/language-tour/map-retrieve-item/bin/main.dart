@@ -1,6 +1,6 @@
 void main() {
-  // BEGIN(map_retrieve_item)
+  // #docregion
   var gifts = {'first': 'partridge'};
   assert(gifts['first'] == 'partridge');
-  // END(map_retrieve_item)
+  // #enddocregion
 }

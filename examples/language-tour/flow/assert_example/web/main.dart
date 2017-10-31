@@ -2,8 +2,8 @@ void main() {
   var text = 'Hi';
   var number = 99;
   String urlString = 'https://github.com/';
-  bool showMessage = true;
 
+  // #docregion
   // Make sure the variable has a non-null value.
   assert(text != null);
 
@@ -11,12 +11,13 @@ void main() {
   assert(number < 100);
 
   // Make sure this is an https URL.
-  if (!showMessage) {
-    assert(urlString.startsWith('https'));
-  } else {
-    assert(urlString.startsWith('https'),
-        'URL ($urlString) should start with "https".');
-  }
+  assert(urlString.startsWith('https'));
+  // #enddocregion
+
+  // #docregion assert-with-message
+  assert(urlString.startsWith('https'),
+      'URL ($urlString) should start with "https".');
+  // #enddocregion assert-with-message
 
   print('About to call assert(false).');
   assert(false);

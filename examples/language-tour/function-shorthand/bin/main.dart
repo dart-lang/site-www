@@ -8,9 +8,9 @@ var _nobleGases = {
   86: 'radon',
 };
 
-// BEGIN(function_shorthand)
+// #docregion
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
-// END(function_shorthand)
+// #enddocregion
 
 void main() {
   print('Noble gases');

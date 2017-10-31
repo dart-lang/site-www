@@ -1,5 +1,5 @@
-// BEGIN(raw_strings)
+// #docregion
 String s = r"In a raw string, even \n isn't special.";
-// END(raw_strings)
+// #enddocregion
 
 void main() {}
