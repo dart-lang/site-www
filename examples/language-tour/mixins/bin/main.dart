@@ -1,3 +1,4 @@
+// #docregion Musical
 abstract class Musical {
   bool canPlayPiano = false;
   bool canCompose = false;
@@ -13,6 +14,7 @@ abstract class Musical {
     }
   }
 }
+// #enddocregion Musical
 
 abstract class Aggressive {
   bool passive = false;
@@ -33,16 +35,21 @@ abstract class Performer {
   String name;
 }
 
+// #docregion Musician-and-Maestro
 class Musician extends Performer with Musical {
+  // #enddocregion Musician-and-Maestro
   Musician(String name) : super(name);
+  // #docregion Musician-and-Maestro
 }
 
-class Maestro extends Person with Musical, Aggressive, Demented {
+class Maestro extends Person
+    with Musical, Aggressive, Demented {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;
   }
 }
+// #enddocregion Musician-and-Maestro
 
 void main() {
   var director = new Maestro('Allen');

@@ -1,4 +1,5 @@
 void main() {
+  // #docregion
   final value = 0x22;
   final bitmask = 0x0f;
 
@@ -8,4 +9,5 @@ void main() {
   assert((value ^ bitmask) == 0x2d); // XOR
   assert((value << 4) == 0x220); // Shift left
   assert((value >> 4) == 0x02); // Shift right
+  // #enddocregion
 }

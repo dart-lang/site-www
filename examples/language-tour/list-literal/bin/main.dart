@@ -1,6 +1,6 @@
 // #docregion
 List<int> list = [1, 2, 3];
-// #endocregion
+// #enddocregion
 
 void main() {
   // #docregion const

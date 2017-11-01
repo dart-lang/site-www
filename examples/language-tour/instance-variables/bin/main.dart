@@ -1,8 +1,13 @@
+// #docplaster
+// #docregion class, class-main
 class Point {
   num x; // Declare instance variable x, initially null.
   num y; // Declare y, initially null.
+  // #enddocregion class-main
   num z = 0; // Declare z, initially 0.
+  // #docregion class-main
 }
+// #enddocregion class
 
 void main() {
   var point = new Point();

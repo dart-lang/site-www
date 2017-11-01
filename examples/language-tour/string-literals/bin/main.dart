@@ -13,6 +13,6 @@ void main() {
 
   const validConstString = '$aConstNum $aConstBool $aConstString';
   // const invalidConstString = '$aNum $aBool $aString $aConstList';
-  print(validConstString);
   // #enddocregion
+  print(validConstString);
 }

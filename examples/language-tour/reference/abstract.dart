@@ -1,3 +1,4 @@
+// #docregion
 // This class is declared abstract and thus
 // can't be instantiated.
 abstract class AbstractContainer {
@@ -5,13 +6,17 @@ abstract class AbstractContainer {
 
   void updateChildren(); // Abstract method.
 }
+// #enddocregion
 
+// #docregion extends
 class SpecializedContainer extends AbstractContainer {
   // ...Define more constructors, fields, methods...
 
   void updateChildren() {
     // ...Implement updateChildren()...
   }
-// Abstract method causes a warning but doesn't prevent instantiatation.
-  /*void doSomething(); */
+
+  // Abstract method causes a warning but
+  // doesn't prevent instantiation.
+  void doSomething();
 }

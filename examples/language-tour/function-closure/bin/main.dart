@@ -1,3 +1,5 @@
+// #docplaster
+// #docregion
 /// Returns a function that adds [addBy] to the
 /// function's argument.
 Function makeAdder(num addBy) {
@@ -13,7 +15,9 @@ void main() {
 
   assert(add2(3) == 5);
   assert(add4(3) == 7);
+  // #enddocregion
 
   print(add2(3)); // 5
   print(add4(3)); // 7
+  // #docregion
 }

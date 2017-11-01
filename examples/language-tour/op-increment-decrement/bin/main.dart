@@ -1,4 +1,5 @@
 void main() {
+  // #docregion
   var a, b;
 
   a = 0;
@@ -16,6 +17,7 @@ void main() {
   a = 0;
   b = a--; // Decrement a AFTER b gets its value.
   assert(a != b); // -1 != 0
+  // #enddocregion
 
   print('a = $a; b = $b');
 }

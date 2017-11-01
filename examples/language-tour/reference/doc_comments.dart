@@ -1,4 +1,4 @@
-//BEGIN
+// #docregion
 /// A domesticated South American camelid (Lama glama).
 ///
 /// Andean cultures have used llamas as meat and pack
@@ -19,7 +19,7 @@ class Llama {
     // ...
   }
 }
-//END
+// #enddocregion
 
 class Food {}
 

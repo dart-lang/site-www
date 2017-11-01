@@ -37,9 +37,11 @@ runBroken() {
 runUsingAsyncAwait() async {
   var args = ['runUsingAsyncAwait'];
 
+  // #docregion repeated-await
   var entrypoint = await findEntrypoint();
   var exitCode = await runExecutable(entrypoint, args);
   await flushThenExit(exitCode);
+  // #enddocregion repeated-await
 }
 
 //void runUsingFuture() {

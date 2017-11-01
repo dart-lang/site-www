@@ -3,9 +3,10 @@ class Logger {
   final String name;
   bool mute = false;
 
-  // _cache is library-private, thanks to the _ in front
-  // of its name.
-  static final Map<String, Logger> _cache = <String, Logger>{};
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
+  static final Map<String, Logger> _cache =
+      <String, Logger>{};
 
   factory Logger(String name) {
     if (_cache.containsKey(name)) {
@@ -28,10 +29,10 @@ class Logger {
 // #enddocregion
 
 void main() {
-  //BEGIN
+  // #docregion logger
   var logger = new Logger('UI');
   logger.log('Button clicked');
-  //END
+  // #enddocregion logger
 
   var l1 = new Logger('log1');
   var l2 = new Logger('log1');

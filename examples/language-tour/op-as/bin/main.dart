@@ -1,3 +1,4 @@
+// #docregion
 class Person {
   String firstName;
 
@@ -20,9 +21,13 @@ void main() {
   // Prints:
   // in Person
   // in Employee
+  // #docregion emp-is-Person
   if (emp is Person) {
     // Type check
     emp.firstName = 'Bob';
   }
-  emp.firstName = 'Bob';
+  // #enddocregion emp-is-Person
+  // #docregion emp-as-Person
+  (emp as Person).firstName = 'Bob';
+  // #enddocregion emp-as-Person
 }
