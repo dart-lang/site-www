@@ -286,8 +286,9 @@ Here's an example of creating and setting a final variable:
 
 <?code-excerpt "language-tour/final-initialization/bin/main.dart"?>
 {% prettify dart %}
-final String name = 'Bob'; // Or: final String name = 'Bob';
+final name = 'Bob'; // Without a type annotation
 // name = 'Alice';  // Uncommenting this causes an error
+final String nickname = 'Bobby';
 {% endprettify %}
 
 Use `const` for variables that you want to be compile-time constants. If
@@ -298,7 +299,7 @@ variable, or the result of an arithmetic operation on constant numbers:
 
 <?code-excerpt "language-tour/const/bin/main.dart"?>
 {% prettify dart %}
-const int bar = 1000000; // Unit of pressure (dynes/cm2)
+const bar = 1000000; // Unit of pressure (dynes/cm2)
 const double atm = 1.01325 * bar; // Standard atmosphere
 {% endprettify %}
 
@@ -3716,9 +3717,9 @@ any of its body executes.
 
 <?code-excerpt "language-tour/async-await/bin/main.dart (checkVersion-lookUpVersion)"?>
 {% prettify dart %}
-Future checkVersion() async { /* ... */ }
+Future checkVersion() async {/* ... */}
 
-Future lookUpVersion() async { /* ... */ }
+Future lookUpVersion() async {/* ... */}
 {% endprettify %}
 
 Adding the `async` keyword to a function makes it return a Future.

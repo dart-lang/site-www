@@ -3,10 +3,10 @@
 
 analyzer:
   strong-mode: true
-  exclude:
-    - language-tour/reference/*.dart
-    - library-tour/reference/*.dart
-    - library-tour/async-await/bin/main.dart
+  # exclude:
+  #   - language-tour/reference/*.dart
+  #   - library-tour/reference/*.dart
+  #   - library-tour/async-await/bin/main.dart
 
 linter:
   rules:
