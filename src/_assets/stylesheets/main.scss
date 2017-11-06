@@ -467,9 +467,19 @@ img {
     padding: 0;
     padding-top: 30px;
   }
+  $border-width: 3px;
   .section-nav {
     opacity: 0;
-    list-style: none;
+    /* Add a bit of extra space between top-level entries */
+    & > li { padding-top: 3px; }
+  }
+  /* Nested toc entries: */
+  .toc-entry ul li {
+    font-size: 0.9em;
+    $padding: $font-size-base * .75;
+    padding-left: $padding;
+    /* Prevent the active entry from shifting right because of double border */
+    &.active { padding-left: $padding - $border-width; }
   }
   h4 {
     // TODO: use mixin and share code with #sidenav .content h4
@@ -483,19 +493,21 @@ img {
   }
   .nav {
     li {
-      border-left: 3px solid $gray-lighter;
+      border-left: $border-width solid $gray-lighter;
       a {
         padding: 3px 15px;
         color: $brand-primary;
       }
       &.active {
-        border-left: 3px solid $gray-dark;
+        border-left: $border-width solid $gray-dark;
         a {
           color: $gray-dark;
         }
       }
     }
   }
+  /* Don't show a double border for nested inactive entries */
+  li li { border-left: none; }
   &::-webkit-scrollbar {
     height: 4px;
     width: 4px;
@@ -570,9 +582,9 @@ input.gsc-search-button {
 /* -----------------------------------------
  Table of Contents
  ----------------------------------------- */
-.toc-entry.toc-h2 {}
+ .toc-entry.toc-h2,
+ .toc-entry.toc-h3 {}
 .toc-entry.toc-h1,
-.toc-entry.toc-h3,
 .toc-entry.toc-h4,
 .toc-entry.toc-h5,
 .toc-entry.toc-h6,

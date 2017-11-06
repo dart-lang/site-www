@@ -8,6 +8,7 @@
 .packages
 .pub
 .sass-cache/
+.vscode
 _asset_bundler_cache
 _bookhtml
 _cache/

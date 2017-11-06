@@ -66,8 +66,15 @@ $(document).on('ready', function(){
   });
 
   // TOC: Table of Contents
-  $('.toc-entry').not('.toc-h2').remove();
-  $('.section-nav').addClass('nav').css({opacity: 1});
+  // TODO: consider doing most of the HTML TOC manipulation statically.
+  $('.toc-entry').not('.toc-h2,.toc-h3').remove();
+  var sectionNav = $('.section-nav');
+  $(sectionNav).addClass('nav').css({opacity: 1});
+  // Bootstrap 3 Nav styles are defined for single level lists using
+  // selectors like ".nav > li". (Bootstrap 4 doesn't have this limitation.)
+  // Rather than try to rewrite styles over ".nav > li" as ".nav li",
+  // we've chose to simply apply the .nav class to nested toc ul elements.
+  $(sectionNav).find('ul').addClass('nav');
 
   $('body').scrollspy({
      offset: 100,
