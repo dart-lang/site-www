@@ -8,6 +8,7 @@
 .packages
 .pub
 .sass-cache/
+.vscode
 _asset_bundler_cache
 _bookhtml
 _cache/
@@ -18,6 +19,8 @@ pubspec.lock
 scripts/packages
 
 src/site/events/2015/summit/node_modules
+
+/src/_data/ci.yaml
 
 # ============= OCUPOP =============
 # RVM users
