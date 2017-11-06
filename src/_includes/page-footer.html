@@ -7,10 +7,27 @@
             <img src="{% asset_path 'logo-white.svg' %}" alt="Dart logo" class="brand"/>
           </div>
           <h4><a href="/terms">Terms</a> | <a href="http://www.google.com/intl/en/policies/privacy/">Privacy</a></h4>
-          <p><small>Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</small></p>
-          <h4>Problems with this site?</h4>
-          <ul>
-            <li><a href="https://github.com/dart-lang/site-www/issues">File a bug</a></li>
+          <style>.menu .material-icons { font-size: 14px; }</style>
+          {%- assign dateFormat = '%Y/%m/%d %R %Z' -%}
+          <ul class="menu">
+            <li>Site&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;3.0</a></li>
+            <li>
+              <a href="{{site.repo}}"
+                 title="This site's source is on GitHub."
+                 class="no-automatic-external"><i class="fa fa-github"></i></a>
+              &nbsp;
+              <a href="{{site.repo}}/issues"
+                 title="File an issue about this site."
+                 class="no-automatic-external"><i class="fa fa-bug"></i></a>
+              &nbsp;
+              <a {% if site.data.ci.job-id %}
+                 href="{{site.repo | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
+                 title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
+                 {% else %}
+                 title="Site built on {{site.time | date: dateFormat}}"
+                 {% endif %}
+                 class="no-automatic-external"><i class="material-icons">build</i></a>
+            </li>
           </ul>
         </div>
       </div>

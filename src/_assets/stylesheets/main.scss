@@ -206,7 +206,7 @@ img {
   h4 {
     color: #fff;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: inherit;
     a {
       color: $white-base;
       &:hover, &:focus, &:active {
