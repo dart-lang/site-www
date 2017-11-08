@@ -1,5 +1,6 @@
-// #docregion
-String name = 'Bob';
-// #enddocregion
-
-void main() {}
+void main() {
+  // #docregion
+  var name = 'Bob';
+  // #enddocregion
+  print(name);
+}

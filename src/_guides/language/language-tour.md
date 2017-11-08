@@ -30,12 +30,12 @@ The following code uses many of Dart’s most basic features:
 <?code-excerpt "language-tour/basic-dart-program/bin/main.dart"?>
 {% prettify dart %}
 // Define a function.
-void printNumber(num aNumber) {
+printNumber(num aNumber) {
   print('The number is $aNumber.'); // Print to console.
 }
 
 // This is where the app starts executing.
-void main() {
+main() {
   var number = 42; // Declare and initialize a variable.
   printNumber(number); // Call a function.
 }
@@ -207,7 +207,7 @@ Here’s an example of creating a variable and assigning a value to it:
 
 <?code-excerpt "language-tour/creating-a-variable/bin/main.dart"?>
 {% prettify dart %}
-String name = 'Bob';
+var name = 'Bob';
 {% endprettify %}
 
 Variables are references. The variable called `name` contains a
@@ -455,10 +455,10 @@ single or double quotes to create a string:
 
 <?code-excerpt "language-tour/quoting/bin/main.dart"?>
 {% prettify dart %}
-String s1 = 'Single quotes work well for string literals.';
-String s2 = "Double quotes work just as well.";
-String s3 = 'It\'s easy to escape the string delimiter.';
-String s4 = "It's even easier to use the other delimiter.";
+var s1 = 'Single quotes work well for string literals.';
+var s2 = "Double quotes work just as well.";
+var s3 = 'It\'s easy to escape the string delimiter.';
+var s4 = "It's even easier to use the other delimiter.";
 {% endprettify %}
 
 You can put the value of an expression inside a string by using
@@ -506,12 +506,12 @@ either single or double quotation marks:
 
 <?code-excerpt "language-tour/triple-quotes/bin/main.dart"?>
 {% prettify dart %}
-String s1 = '''
+var s1 = '''
 You can create
 multi-line strings like this one.
 ''';
 
-String s2 = """This is also a
+var s2 = """This is also a
 multi-line string.""";
 {% endprettify %}
 
@@ -519,7 +519,7 @@ You can create a “raw” string by prefixing it with `r`:
 
 <?code-excerpt "language-tour/raw-strings/bin/main.dart"?>
 {% prettify dart %}
-String s = r"In a raw string, even \n isn't special.";
+var s = r"In a raw string, even \n isn't special.";
 {% endprettify %}
 
 See [Runes](#runes) for details on how to express Unicode
@@ -654,7 +654,7 @@ Dart list:
 
 <?code-excerpt "language-tour/list-literal/bin/main.dart"?>
 {% prettify dart %}
-List<int> list = [1, 2, 3];
+var list = [1, 2, 3];
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
@@ -2148,6 +2148,12 @@ You can also throw arbitrary objects:
 throw 'Out of llamas!';
 {% endprettify %}
 
+<div class="alert alert-info" markdown="1">
+  **Note:** In production code, you'll usually throw types that implement
+  [Error]({{site.dart_api}}/dart-core/Error-class.html) or
+  [Exception]({{site.dart_api}}/dart-core/Exception-class.html).
+</div>
+
 Because throwing an exception is an expression, you can throw exceptions
 in =\> statements, as well as anywhere else that allows expressions:
 
@@ -3232,7 +3238,7 @@ constants:
 <?code-excerpt "language-tour/color/bin/main.dart"?>
 {% prettify dart %}
 class Color {
-  static const Color red =
+  static const red =
       const Color('red'); // A constant static variable.
   final String name; // An instance variable.
   const Color(this.name); // A constant constructor.

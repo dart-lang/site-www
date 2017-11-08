@@ -1,8 +1,8 @@
-// #docregion
-List<int> list = [1, 2, 3];
-// #enddocregion
-
 void main() {
+  // #docregion
+  var list = [1, 2, 3];
+  // #enddocregion
+
   // #docregion const
   var constantList = const [1, 2, 3];
   // constantList[1] = 1; // Uncommenting this causes an error.

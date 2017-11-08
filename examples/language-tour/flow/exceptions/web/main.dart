@@ -1,3 +1,4 @@
+// ignore_for_file: only_throw_errors, unused_element
 class OutOfLlamasException extends Error {}
 
 void breedMoreLlamas() {}
