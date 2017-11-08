@@ -2149,7 +2149,7 @@ throw 'Out of llamas!';
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
-  **Note:** In production code, you'll usually throw types that implement
+  **Note:** Production-quality code usually throws types that implement
   [Error]({{site.dart_api}}/dart-core/Error-class.html) or
   [Exception]({{site.dart_api}}/dart-core/Exception-class.html).
 </div>
