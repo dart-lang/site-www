@@ -19,6 +19,7 @@ void main() {
   var you = new Person();
   var car = new Vehicle();
 
+  // #docregion
   if (isRaining()) {
     you.bringRainCoat();
   } else if (isSnowing()) {
@@ -26,4 +27,5 @@ void main() {
   } else {
     car.putTopDown();
   }
+  // #enddocregion
 }

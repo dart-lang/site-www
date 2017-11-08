@@ -1,4 +1,4 @@
-// BEGIN(map_literal)
+// #docregion
 var gifts = {
 // Keys      Values
   'first': 'partridge',
@@ -12,14 +12,18 @@ var nobleGases = {
   10: 'neon',
   18: 'argon',
 };
-// END(map_literal)
+// #enddocregion
 
-main() {
-  // BEGIN(map_const_literal)
-  final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon',};
+void main() {
+  // #docregion const
+  final constantMap = const {
+    2: 'helium',
+    10: 'neon',
+    18: 'argon',
+  };
 
   // constantMap[2] = 'Helium'; // Uncommenting this causes an error.
-  // END(map_const_literal)
+  // #enddocregion const
 
   nobleGases[2] = 'Helium'; // You can do this.
   try {

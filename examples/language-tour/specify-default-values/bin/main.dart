@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(specify_default_values)
+  // #docregion
   /// Sets the [bold] and [hidden] flags to the values you
   /// specify, defaulting to false.
   void enableFlags({bool bold = false, bool hidden = false}) {
@@ -8,5 +8,5 @@ void main() {
 
   // bold will be true; hidden will be false.
   enableFlags(bold: true);
-  // END(specify_default_values)
+  // #enddocregion
 }

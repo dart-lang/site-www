@@ -1,6 +1,6 @@
-// BEGIN(double_literals)
+// #docregion
 double y = 1.1;
 double exponents = 1.42e5;
-// END(double_literals)
+// #enddocregion
 
 void main() {}

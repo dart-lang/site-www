@@ -9,7 +9,7 @@ module Prettify
   # Wraps code with tags for Prettify.
   #
   # Example usage:
-  # 
+  #
   # {% prettify dart %}
   # // dart code here
   # {% endprettify %}
@@ -42,6 +42,9 @@ module Prettify
 
       contents.gsub!('[[highlight]]', '<code class="nocode highlight">')
       contents.gsub!('[[/highlight]]', '</code>')
+
+      contents.gsub!('[!', '<span class="highlight">')
+      contents.gsub!('!]', '</span>')
 
       contents.gsub!('[[note]]', '<code class="nocode note">')
       contents.gsub!('[[/note]]', '</code>')

@@ -1,3 +1,10 @@
+void main() {
+  var tv = new Television();
+  //tv.activate();
+  tv.turnOn();
+}
+
+// #docregion
 class Television {
   /// _Deprecated: Use [turnOn] instead._
   @deprecated
@@ -9,10 +16,4 @@ class Television {
   void turnOn() {
     print('on!');
   }
-}
-
-void main() {
-  var tv = new Television();
-  //tv.activate();
-  tv.turnOn();
 }

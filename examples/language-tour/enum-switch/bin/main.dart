@@ -1,17 +1,22 @@
+// #docregion enum
 enum Color { red, green, blue }
+// #enddocregion enum
 
 void main() {
+  // #docregion index
   assert(Color.red.index == 0);
   assert(Color.green.index == 1);
   assert(Color.blue.index == 2);
+  // #enddocregion index
   assert(Color.blue.toString() == 'Color.blue');
 
+  // #docregion values
   List<Color> colors = Color.values;
   assert(colors[2] == Color.blue);
+  // #enddocregion values
 
-  // NOTE: aColor must be explicitly typed for the analyzer
-  // to check for complete coverage in the switch statement.
-  Color aColor = Color.blue;
+  // #docregion switch
+  var aColor = Color.blue;
 
   switch (aColor) {
     case Color.red:
@@ -23,4 +28,5 @@ void main() {
     default: // Without this, you see a WARNING.
       print(aColor); // 'Color.blue'
   }
+  // #enddocregion switch
 }

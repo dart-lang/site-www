@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(empty_string)
+  // #docregion
   // Check for an empty string.
   var fullName = '';
   assert(fullName.isEmpty);
@@ -15,5 +15,5 @@ void main() {
   // Check for NaN.
   var iMeantToDoThis = 0 / 0;
   assert(iMeantToDoThis.isNaN);
-  // END(empty_string)
+  // #enddocregion
 }

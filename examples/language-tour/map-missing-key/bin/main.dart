@@ -1,6 +1,6 @@
 void main() {
-  // BEGIN(map_missing_key)
+  // #docregion
   var gifts = {'first': 'partridge'};
   assert(gifts['fifth'] == null);
-  // END(map_missing_key)
+  // #enddocregion
 }

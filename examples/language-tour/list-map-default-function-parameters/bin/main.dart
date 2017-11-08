@@ -1,3 +1,4 @@
+// #docregion
 void doStuff(
     {List<int> list = const [1, 2, 3],
     Map<String, String> gifts = const {
@@ -8,6 +9,7 @@ void doStuff(
   print('list:  $list');
   print('gifts: $gifts');
 }
+// #enddocregion
 
 void main() {
   // Use the default values for both parameters.

@@ -1,4 +1,5 @@
 void main() {
+  // #docregion
   assert(2 + 3 == 5);
   assert(2 - 3 == -1);
   assert(2 * 3 == 6);
@@ -7,4 +8,5 @@ void main() {
   assert(5 % 2 == 1); // Remainder
 
   print('5/2 = ${5~/2} r ${5%2}'); // 5/2 = 2 r 1
+  // #enddocregion
 }

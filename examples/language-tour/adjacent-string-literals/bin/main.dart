@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(adjacent_string_literals)
+  // #docregion
   var s1 = 'String '
       'concatenation'
       " works even over line breaks.";
@@ -9,7 +9,7 @@ void main() {
 
   var s2 = 'The + operator ' + 'works, as well.';
   assert(s2 == 'The + operator works, as well.');
-  // END(adjacent_string_literals)
+  // #enddocregion
 
   print(s1); // String concatenation works even over line breaks.
   print(s2); // The + operator works, as well.

@@ -27,7 +27,7 @@ more details about a language feature.
 
 The following code uses many of Dart’s most basic features:
 
-<!-- language-tour/basic-dart-program/bin/main.dart -->
+<?code-excerpt "language-tour/basic-dart-program/bin/main.dart"?>
 {% prettify dart %}
 // Define a function.
 printNumber(num aNumber) {
@@ -205,7 +205,7 @@ You can't use reserved words as identifiers.
 
 Here’s an example of creating a variable and assigning a value to it:
 
-<!-- language-tour/creating-a-variable/bin/main.dart -->
+<?code-excerpt "language-tour/creating-a-variable/bin/main.dart"?>
 {% prettify dart %}
 var name = 'Bob';
 {% endprettify %}
@@ -218,7 +218,7 @@ reference to a String object with a value of “Bob”.
 Uninitialized variables have an initial value of `null`. Even variables
 with numeric types are initially null, because numbers are objects.
 
-<!-- language-tour/numbers-are-objects/bin/main.dart -->
+<?code-excerpt "language-tour/numbers-are-objects/bin/main.dart"?>
 {% prettify dart %}
 int lineCount;
 assert(lineCount == null);
@@ -250,7 +250,7 @@ update-for-dart-2
 You have the option of adding static types to your variable
 declarations:
 
-<!-- language-tour/static-types/bin/main.dart -->
+<?code-excerpt "language-tour/static-types/bin/main.dart"?>
 {% prettify dart %}
 String name = 'Bob';
 {% endprettify %}
@@ -284,10 +284,11 @@ Instance variables can be `final` but not `const`.
 
 Here's an example of creating and setting a final variable:
 
-<!-- language-tour/final-initialization/bin/main.dart -->
+<?code-excerpt "language-tour/final-initialization/bin/main.dart"?>
 {% prettify dart %}
-final name = 'Bob'; // Or: final String name = 'Bob';
+final name = 'Bob'; // Without a type annotation
 // name = 'Alice';  // Uncommenting this causes an error
+final String nickname = 'Bobby';
 {% endprettify %}
 
 Use `const` for variables that you want to be compile-time constants. If
@@ -296,10 +297,10 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-<!-- language-tour/const/bin/main.dart -->
+<?code-excerpt "language-tour/const/bin/main.dart"?>
 {% prettify dart %}
-const bar = 1000000;       // Unit of pressure (dynes/cm2)
-const atm = 1.01325 * bar; // Standard atmosphere
+const bar = 1000000; // Unit of pressure (dynes/cm2)
+const double atm = 1.01325 * bar; // Standard atmosphere
 {% endprettify %}
 
 The `const` keyword isn't just for declaring constant variables.
@@ -307,11 +308,11 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-<!-- language-tour/const-vs-const/bin/main.dart -->
+<?code-excerpt "language-tour/const-vs-const/bin/main.dart"?>
 {% prettify dart %}
 // Note: [] creates an empty list.
 // const [] creates an empty, immutable list (EIA).
-var foo = const [];   // foo is currently an EIA.
+var foo = const []; // foo is currently an EIA.
 final bar = const []; // bar will always be an EIA.
 const baz = const []; // baz is a compile-time constant EIA.
 
@@ -387,25 +388,25 @@ See [issue 1533](https://github.com/dart-lang/sdk/issues/1533) for details.
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
 
-<!-- language-tour/integer-literals/bin/main.dart -->
+<?code-excerpt "language-tour/integer-literals/bin/main.dart"?>
 {% prettify dart %}
-var x = 1;
-var hex = 0xDEADBEEF;
-var bigInt = 34653465834652437659238476592374958739845729;
+int x = 1;
+int hex = 0xDEADBEEF;
+int bigInt = 34653465834652437659238476592374958739845729;
 {% endprettify %}
 
 If a number includes a decimal, it is a double. Here are some examples
 of defining double literals:
 
-<!-- language-tour/double-literals/bin/main.dart -->
+<?code-excerpt "language-tour/double-literals/bin/main.dart"?>
 {% prettify dart %}
-var y = 1.1;
-var exponents = 1.42e5;
+double y = 1.1;
+double exponents = 1.42e5;
 {% endprettify %}
 
 Here’s how you turn a string into a number, or vice versa:
 
-<!-- language-tour/number-conversion/bin/main.dart -->
+<?code-excerpt "language-tour/number-conversion/bin/main.dart"?>
 {% prettify dart %}
 // String -> int
 var one = int.parse('1');
@@ -427,11 +428,11 @@ assert(piAsString == '3.14');
 The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
 (&), and OR (|) operators. For example:
 
-<!-- language-tour/bit-shifting/bin/main.dart -->
+<?code-excerpt "language-tour/bit-shifting/bin/main.dart"?>
 {% prettify dart %}
-assert((3 << 1) == 6);  // 0011 << 1 == 0110
-assert((3 >> 1) == 1);  // 0011 >> 1 == 0001
-assert((3 | 4)  == 7);  // 0011 | 0100 == 0111
+assert((3 << 1) == 6); // 0011 << 1 == 0110
+assert((3 >> 1) == 1); // 0011 >> 1 == 0001
+assert((3 | 4) == 7); // 0011 | 0100 == 0111
 {% endprettify %}
 
 Literal numbers are compile-time constants.
@@ -439,7 +440,7 @@ Many arithmetic expressions are also compile-time constants,
 as long as their operands are
 compile-time constants that evaluate to numbers.
 
-<!-- language-tour/number-literals/bin/main.dart -->
+<?code-excerpt "language-tour/number-literals/bin/main.dart"?>
 {% prettify dart %}
 const msPerSecond = 1000;
 const secondsUntilRetry = 5;
@@ -452,7 +453,7 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 A Dart string is a sequence of UTF-16 code units. You can use either
 single or double quotes to create a string:
 
-<!-- language-tour/quoting/bin/main.dart -->
+<?code-excerpt "language-tour/quoting/bin/main.dart"?>
 {% prettify dart %}
 var s1 = 'Single quotes work well for string literals.';
 var s2 = "Double quotes work just as well.";
@@ -465,17 +466,17 @@ You can put the value of an expression inside a string by using
 the {}. To get the string corresponding to an object, Dart calls the
 object’s `toString()` method.
 
-<!-- language-tour/string-interpolation/bin/main.dart -->
+<?code-excerpt "language-tour/string-interpolation/bin/main.dart"?>
 {% prettify dart %}
 var s = 'string interpolation';
 
 assert('Dart has $s, which is very handy.' ==
-       'Dart has string interpolation, ' +
-       'which is very handy.');
+    'Dart has string interpolation, ' +
+        'which is very handy.');
 assert('That deserves all caps. ' +
-       '${s.toUpperCase()} is very handy!' ==
-       'That deserves all caps. ' +
-       'STRING INTERPOLATION is very handy!');
+        '${s.toUpperCase()} is very handy!' ==
+    'That deserves all caps. ' +
+        'STRING INTERPOLATION is very handy!');
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -503,7 +504,7 @@ assert(s2 == 'The + operator works, as well.');
 Another way to create a multi-line string: use a triple quote with
 either single or double quotation marks:
 
-<!-- language-tour/triple-quotes/bin/main.dart -->
+<?code-excerpt "language-tour/triple-quotes/bin/main.dart"?>
 {% prettify dart %}
 var s1 = '''
 You can create
@@ -516,7 +517,7 @@ multi-line string.""";
 
 You can create a “raw” string by prefixing it with `r`:
 
-<!-- language-tour/raw-strings/bin/main.dart -->
+<?code-excerpt "language-tour/raw-strings/bin/main.dart"?>
 {% prettify dart %}
 var s = r"In a raw string, even \n isn't special.";
 {% endprettify %}
@@ -528,7 +529,7 @@ Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
-<!-- language-tour/string-literals/bin/main.dart -->
+<?code-excerpt "language-tour/string-literals/bin/main.dart"?>
 {% prettify dart %}
 // These work in a const string.
 const aConstNum = 0;
@@ -563,7 +564,7 @@ false.
 For example, consider the following code, which is valid both as
 JavaScript and as Dart code:
 
-<!-- language-tour/reference/strictly_booleans.dart -->
+<?code-excerpt "language-tour/reference/strictly_booleans.dart"?>
 {% prettify dart %}
 var name = 'Bob';
 if (name) {
@@ -593,7 +594,7 @@ xxx: This code also produces an error:
 Here’s another example of code that behaves differently in JavaScript
 and Dart:
 
-<!-- language-tour/if-one/bin/main.dart -->
+<?code-excerpt "language-tour/if-one/bin/main.dart"?>
 {% prettify dart %}
 if (1) {
   print('JS prints this line.');
@@ -621,7 +622,7 @@ for you is that, instead of using code like
 <code>if (<em>nonbooleanValue</em>)</code>, you should instead
 explicitly check for values. For example:
 
-<!-- language-tour/empty-string/bin/main.dart -->
+<?code-excerpt "language-tour/empty-string/bin/main.dart"?>
 {% prettify dart %}
 // Check for an empty string.
 var fullName = '';
@@ -651,7 +652,7 @@ usually just call them *lists*.
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
 
-<!-- language-tour/list-literal/bin/main.dart -->
+<?code-excerpt "language-tour/list-literal/bin/main.dart"?>
 {% prettify dart %}
 var list = [1, 2, 3];
 {% endprettify %}
@@ -671,7 +672,7 @@ and `list.length - 1` is the index of the last element. You can get a
 list’s length and refer to list elements just as you would in
 JavaScript:
 
-<!-- language-tour/list-indexing/bin/main.dart -->
+<?code-excerpt "language-tour/list-indexing/bin/main.dart"?>
 {% prettify dart %}
 var list = [1, 2, 3];
 assert(list.length == 3);
@@ -684,7 +685,7 @@ assert(list[1] == 1);
 To create a list that's a compile-time constant,
 add `const` before the list literal:
 
-<!-- language-tour/list-literal/bin/main.dart -->
+<?code-excerpt "language-tour/list-literal/bin/main.dart (const)"?>
 {% prettify dart %}
 var constantList = const [1, 2, 3];
 // constantList[1] = 1; // Uncommenting this causes an error.
@@ -705,20 +706,20 @@ is provided by map literals and the
 
 Here are a couple of simple Dart maps, created using map literals:
 
-<!-- language-tour/reference/map_literal.dart -->
+<?code-excerpt "language-tour/reference/map_literal.dart"?>
 {% prettify dart %}
 var gifts = {
 // Keys      Values
-  'first' : 'partridge',
+  'first': 'partridge',
   'second': 'turtledoves',
-  'fifth' : 'golden rings'
+  'fifth': 'golden rings'
 };
 
 var nobleGases = {
 // Keys  Values
-  2 :   'helium',
-  10:   'neon',
-  18:   'argon',
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
 };
 {% endprettify %}
 
@@ -734,7 +735,7 @@ var nobleGases = {
 
 You can create the same objects using a Map constructor:
 
-<!-- language-tour/map-constructor/bin/main.dart -->
+<?code-excerpt "language-tour/map-constructor/bin/main.dart"?>
 {% prettify dart %}
 var gifts = new Map();
 gifts['first'] = 'partridge';
@@ -750,7 +751,7 @@ nobleGases[18] = 'argon';
 Add a new key-value pair to an existing map just as you would in
 JavaScript:
 
-<!-- language-tour/map-add-item/bin/main.dart -->
+<?code-excerpt "language-tour/map-add-item/bin/main.dart"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
@@ -758,7 +759,7 @@ gifts['fourth'] = 'calling birds'; // Add a key-value pair
 
 Retrieve a value from a map the same way you would in JavaScript:
 
-<!-- language-tour/map-retrieve-item/bin/main.dart -->
+<?code-excerpt "language-tour/map-retrieve-item/bin/main.dart"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
@@ -766,7 +767,7 @@ assert(gifts['first'] == 'partridge');
 
 If you look for a key that isn’t in a map, you get a null in return:
 
-<!-- language-tour/map-missing-key/bin/main.dart -->
+<?code-excerpt "language-tour/map-missing-key/bin/main.dart"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
 assert(gifts['fifth'] == null);
@@ -774,7 +775,7 @@ assert(gifts['fifth'] == null);
 
 Use `.length` to get the number of key-value pairs in the map:
 
-<!-- language-tour/map-length/bin/main.dart -->
+<?code-excerpt "language-tour/map-length/bin/main.dart"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds';
@@ -784,7 +785,7 @@ assert(gifts.length == 2);
 To create a map that's a compile-time constant,
 add `const` before the map literal:
 
-<!-- language-tour/reference/map_literal.dart -->
+<?code-excerpt "language-tour/reference/map_literal.dart (const)"?>
 {% prettify dart %}
 final constantMap = const {
   2: 'helium',
@@ -826,13 +827,14 @@ The following example illustrates the relationship between runes,
 Click the run button ( {% img 'red-run.png' %} )
 to see runes in action.
 
-<!-- language-tour/runes/bin/main.dart -->
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
 https://dartpad.dartlang.org/589bc5c95318696cefe5
 Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
 
-main() {
+<?code-excerpt "language-tour/runes/bin/main.dart"?>
+{% prettify dart %}
+void main() {
   var clapping = '\u{1f44f}';
   print(clapping);
   print(clapping.codeUnits);
@@ -842,6 +844,7 @@ main() {
       '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
   print(new String.fromCharCodes(input));
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -871,11 +874,31 @@ names but not identifier symbols.
 To get the symbol for an identifier, use a symbol literal, which is just
 `#` followed by the identifier:
 
-<!-- language-tour/symbols/bin/main.dart -->
-{% prettify dart %}
+```nocode
 #radix
 #bar
+```
+
+{% comment %}
+The code from the following excerpt isn't actually what is being shown in the page
+
+<?code-excerpt "language-tour/symbols/bin/main.dart"?>
+{% prettify dart %}
+// MOVE TO library tour?
+
+void main() {
+  print(Function.apply(int.parse, ['11']));
+  print(Function.apply(int.parse, ['11'], {#radix: 16}));
+  print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
+  print(
+      Function.apply(int.parse, ['11a'], {#radix: 16, #onError: handleError}));
+}
+
+int handleError(String source) {
+  return 0;
+}
 {% endprettify %}
+{% endcomment %}
 
 Symbol literals are compile-time constants.
 
@@ -894,7 +917,7 @@ it were a function. For details, see [Callable classes](#callable-classes).
 
 Here’s an example of implementing a function:
 
-<!-- language-tour/function-example/bin/main.dart -->
+<?code-excerpt "language-tour/function-example/bin/main.dart"?>
 {% prettify dart %}
 bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
@@ -905,9 +928,9 @@ Although Effective Dart recommends
 [type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-apis),
 the function still works if you omit the types:
 
-<!-- language-tour/function-omitting-types/bin/main.dart -->
+<?code-excerpt "language-tour/function-omitting-types/bin/main.dart"?>
 {% prettify dart %}
-isNoble(atomicNumber) {
+bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
 {% endprettify %}
@@ -915,7 +938,7 @@ isNoble(atomicNumber) {
 For functions that contain just one expression, you can use a shorthand
 syntax:
 
-<!-- language-tour/function-shorthand/bin/main.dart -->
+<?code-excerpt "language-tour/function-shorthand/bin/main.dart"?>
 {% prettify dart %}
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 {% endprettify %}
@@ -946,7 +969,7 @@ Optional parameters can be either positional or named, but not both.
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
 
-<!-- language-tour/use-named-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/use-named-parameters/bin/main.dart"?>
 {% prettify dart %}
 enableFlags(bold: true, hidden: false);
 {% endprettify %}
@@ -955,11 +978,11 @@ When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
 to specify named parameters:
 
-<!-- language-tour/specify-named-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/specify-named-parameters/bin/main.dart"?>
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags to the values
 /// you specify.
-enableFlags({bool bold, bool hidden}) {
+void enableFlags({bool bold, bool hidden}) {
   // ...
 }
 {% endprettify %}
@@ -969,7 +992,7 @@ enableFlags({bool bold, bool hidden}) {
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
 
-<!-- language-tour/optional-positional-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/optional-positional-parameters/bin/main.dart"?>
 {% prettify dart %}
 String say(String from, String msg, [String device]) {
   var result = '$from says $msg';
@@ -983,14 +1006,14 @@ String say(String from, String msg, [String device]) {
 Here’s an example of calling this function without the optional
 parameter:
 
-<!-- language-tour/optional-positional-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/optional-positional-parameters/bin/main.dart (call without optional param)"?>
 {% prettify dart %}
 assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 {% endprettify %}
 
 And here’s an example of calling this function with the third parameter:
 
-<!-- language-tour/optional-positional-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/optional-positional-parameters/bin/main.dart (call with optional param)"?>
 {% prettify dart %}
 assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
@@ -1005,7 +1028,7 @@ If no default value is provided, the default value is `null`.
 
 Here's an example of setting default values for named parameters:
 
-<!-- language-tour/specify-default-values/bin/main.dart -->
+<?code-excerpt "language-tour/specify-default-values/bin/main.dart"?>
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags to the values you
 /// specify, defaulting to false.
@@ -1030,7 +1053,7 @@ and [specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constrain
 
 The next example shows how to set default values for positional parameters:
 
-<!-- language-tour/optional-positional-parameter-default/bin/main.dart -->
+<?code-excerpt "language-tour/optional-positional-parameter-default/bin/main.dart"?>
 {% prettify dart %}
 String say(String from, String msg,
     [String device = 'carrier pigeon', String mood]) {
@@ -1058,7 +1081,7 @@ Click the run button ( {% img 'red-run.png' %} )
 to see list and map default values in action.
 {% endcomment %}
 
-<!-- language-tour/list-map-default-function-parameters/bin/main.dart -->
+<?code-excerpt "language-tour/list-map-default-function-parameters/bin/main.dart"?>
 {% prettify dart %}
 void doStuff(
     {List<int> list = const [1, 2, 3],
@@ -1112,7 +1135,7 @@ you can perform multiple operations on the members of a single object.
 Here's an example of the `main()` function for a command-line app that
 takes arguments:
 
-<!-- language-tour/args/bin/main.dart -->
+<?code-excerpt "language-tour/args/bin/main.dart"?>
 {% prettify dart %}
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1131,9 +1154,9 @@ define and parse command-line arguments.
 
 You can pass a function as a parameter to another function. For example:
 
-<!-- from language-tour/function-as-parameter/bin/main.dart -->
+<?code-excerpt "language-tour/function-as-parameter/bin/main.dart"?>
 {% prettify dart %}
-printElement(element) {
+void printElement(int element) {
   print(element);
 }
 
@@ -1145,7 +1168,7 @@ list.forEach(printElement);
 
 You can also assign a function to a variable, such as:
 
-<!-- from language-tour/function-as-variable/bin/main.dart -->
+<?code-excerpt "language-tour/function-as-variable/bin/main.dart"?>
 {% prettify dart %}
 var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
 assert(loudify('hello') == '!!! HELLO !!!');
@@ -1231,17 +1254,17 @@ scope.
 Here is an example of nested functions with variables at each scope
 level:
 
-<!-- language-tour/nested-functions/bin/main.dart -->
+<?code-excerpt "language-tour/nested-functions/bin/main.dart"?>
 {% prettify dart %}
-var topLevel = true;
+bool topLevel = true;
 
-main() {
+void main() {
   var insideMain = true;
 
-  myFunction() {
+  void myFunction() {
     var insideFunction = true;
 
-    nestedFunction() {
+    void nestedFunction() {
       var insideNestedFunction = true;
 
       assert(topLevel);
@@ -1267,7 +1290,7 @@ Functions can close over variables defined in surrounding scopes. In the
 following example, `makeAdder()` captures the variable `addBy`. Wherever the
 returned function goes, it remembers `addBy`.
 
-<!-- language-tour/function-closure/bin/main.dart -->
+<?code-excerpt "language-tour/function-closure/bin/main.dart"?>
 {% prettify dart %}
 /// Returns a function that adds [addBy] to the
 /// function's argument.
@@ -1275,7 +1298,7 @@ Function makeAdder(num addBy) {
   return (num i) => addBy + i;
 }
 
-main() {
+void main() {
   // Create a function that adds 2.
   var add2 = makeAdder(2);
 
@@ -1293,16 +1316,16 @@ main() {
 Here's an example of testing top-level functions, static methods, and
 instance methods for equality:
 
-<!-- language-tour/function-equality-2/bin/main.dart -->
+<?code-excerpt "language-tour/function-equality-2/bin/main.dart"?>
 {% prettify dart %}
-foo() {}               // A top-level function
+void foo() {} // A top-level function
 
 class A {
   static void bar() {} // A static method
-  void baz() {}        // An instance method
+  void baz() {} // An instance method
 }
 
-main() {
+void main() {
   var x;
 
   // Comparing top-level functions.
@@ -1384,7 +1407,7 @@ which has higher precedence than the logical AND operator `&&`. That
 precedence means that the following two lines of code execute the same
 way:
 
-<!-- language-tour/precedence/bin/main.dart -->
+<?code-excerpt "language-tour/precedence/bin/main.dart"?>
 {% prettify dart %}
 // 1: Parens improve readability.
 if ((n % i == 0) && (d % i == 0))
@@ -1420,14 +1443,14 @@ Dart supports the usual arithmetic operators, as shown in the following table.
 
 Example:
 
-<!-- language-tour/arithmetic-operators/bin/main.dart -->
+<?code-excerpt "language-tour/arithmetic-operators/bin/main.dart"?>
 {% prettify dart %}
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5);   // Result is a double
-assert(5 ~/ 2 == 2);    // Result is an integer
-assert(5 % 2 == 1);     // Remainder
+assert(5 / 2 == 2.5); // Result is a double
+assert(5 ~/ 2 == 2); // Result is an integer
+assert(5 % 2 == 1); // Remainder
 
 print('5/2 = ${5~/2} r ${5%2}'); // 5/2 = 2 r 1
 {% endprettify %}
@@ -1446,24 +1469,24 @@ operators.
 
 Example:
 
-<!-- language-tour/op-increment-decrement/bin/main.dart -->
+<?code-excerpt "language-tour/op-increment-decrement/bin/main.dart"?>
 {% prettify dart %}
 var a, b;
 
 a = 0;
-b = ++a;        // Increment a before b gets its value.
+b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++;        // Increment a AFTER b gets its value.
+b = a++; // Increment a AFTER b gets its value.
 assert(a != b); // 1 != 0
 
 a = 0;
-b = --a;        // Decrement a before b gets its value.
+b = --a; // Decrement a before b gets its value.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--;        // Decrement a AFTER b gets its value.
+b = a--; // Decrement a AFTER b gets its value.
 assert(a != b); // -1 != 0
 {% endprettify %}
 
@@ -1502,7 +1525,7 @@ function instead.) Here’s how the `==` operator works:
 Here’s an example of using each of the equality and relational
 operators:
 
-<!-- language-tour/op-equality/bin/main.dart -->
+<?code-excerpt "language-tour/op-equality/bin/main.dart"?>
 {% prettify dart %}
 assert(2 == 2);
 assert(2 != 3);
@@ -1534,16 +1557,17 @@ general, you should use it as a shorthand for an `is` test on an object
 following by an expression using that object. For example, consider the
 following code:
 
-<!-- language-tour/op-as/bin/main.dart -->
+<?code-excerpt "language-tour/op-as/bin/main.dart (emp is Person)"?>
 {% prettify dart %}
-if (emp is Person) { // Type check
+if (emp is Person) {
+  // Type check
   emp.firstName = 'Bob';
 }
 {% endprettify %}
 
 You can make the code shorter using the `as` operator:
 
-<!-- language-tour/op-as/bin/main.dart.dart -->
+<?code-excerpt "language-tour/op-as/bin/main.dart (emp as Person)"?>
 {% prettify dart %}
 (emp as Person).firstName = 'Bob';
 {% endprettify %}
@@ -1593,10 +1617,10 @@ Here’s how compound assignment operators work:
 The following example uses assignment and compound assignment
 operators:
 
-<!-- language-tour/op-assign/bin/main.dart -->
+<?code-excerpt "language-tour/op-assign/bin/main.dart"?>
 {% prettify dart %}
-var a = 2;           // Assign using =
-a *= 3;              // Assign and multiply: a = a * 3
+var a = 2; // Assign using =
+a *= 3; // Assign and multiply: a = a * 3
 assert(a == 6);
 {% endprettify %}
 
@@ -1616,7 +1640,7 @@ operators.
 
 Here’s an example of using the logical operators:
 
-<!-- language-tour/op-logicalbin/main.dart -->
+<?code-excerpt "language-tour/op-logical/bin/main.dart"?>
 {% prettify dart %}
 if (!done && (col == 0 || col == 3)) {
   // ...Do something...
@@ -1642,17 +1666,17 @@ you’d use these bitwise and shift operators with integers.
 
 Here’s an example of using bitwise and shift operators:
 
-<!-- language-tour/op-bitwise/bin/main.dart -->
+<?code-excerpt "language-tour/op-bitwise/bin/main.dart"?>
 {% prettify dart %}
 final value = 0x22;
 final bitmask = 0x0f;
 
-assert((value & bitmask)  == 0x02);  // AND
-assert((value & ~bitmask) == 0x20);  // AND NOT
-assert((value | bitmask)  == 0x2f);  // OR
-assert((value ^ bitmask)  == 0x2d);  // XOR
-assert((value << 4)       == 0x220); // Shift left
-assert((value >> 4)       == 0x02);  // Shift right
+assert((value & bitmask) == 0x02); // AND
+assert((value & ~bitmask) == 0x20); // AND NOT
+assert((value | bitmask) == 0x2f); // OR
+assert((value ^ bitmask) == 0x2d); // XOR
+assert((value << 4) == 0x220); // Shift left
+assert((value >> 4) == 0x02); // Shift right
 {% endprettify %}
 
 
@@ -1718,10 +1742,10 @@ allows you to write more fluid code.
 
 Consider the following code:
 
-<!-- language-tour/cascade-operator/web/main.dart -->
+<?code-excerpt "language-tour/cascade-operator/web/main.dart"?>
 {% prettify dart %}
 querySelector('#button') // Get an object.
-  ..text = 'Confirm'   // Use its members.
+  ..text = 'Confirm' // Use its members.
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 {% endprettify %}
@@ -1814,7 +1838,7 @@ explained in [Exceptions](#exceptions).
 Dart supports `if` statements with optional `else` statements, as the
 next sample shows. Also see [conditional expressions](#conditional-expressions).
 
-<!-- language-tour/flow-if-else/bin/main.dart -->
+<?code-excerpt "language-tour/flow-if-else/bin/main.dart"?>
 {% prettify dart %}
 if (isRaining()) {
   you.bringRainCoat();
@@ -1833,7 +1857,7 @@ Remember, unlike JavaScript, Dart treats all values other than `true` as
 
 You can iterate with the standard `for` loop. For example:
 
-<!-- language-tour/flow/for-loops/web/main.dart -->
+<?code-excerpt "language-tour/flow/for-loops/web/main.dart (for)"?>
 {% prettify dart %}
 var message = new StringBuffer("Dart is fun");
 for (var i = 0; i < 5; i++) {
@@ -1844,7 +1868,7 @@ for (var i = 0; i < 5; i++) {
 Closures inside of Dart’s `for` loops capture the value of the index,
 avoiding a common pitfall found in JavaScript. For example, consider:
 
-<!-- language-tour/flow/for-loops/web/main.dart -->
+<?code-excerpt "language-tour/flow/for-loops/web/main.dart (closures)"?>
 {% prettify dart %}
 var callbacks = [];
 for (var i = 0; i < 2; i++) {
@@ -1861,7 +1885,7 @@ If the object that you are iterating over is an Iterable, you can use the
 method. Using `forEach()` is a good option if you don’t need to
 know the current iteration counter:
 
-<!-- language-tour/flow/for-loops/web/main.dart -->
+<?code-excerpt "language-tour/flow/for-loops/web/main.dart (forEach)"?>
 {% prettify dart %}
 candidates.forEach((candidate) => candidate.interview());
 {% endprettify %}
@@ -1869,11 +1893,11 @@ candidates.forEach((candidate) => candidate.interview());
 Iterable classes such as List and Set also support the `for-in` form of
 [iteration](/guides/libraries/library-tour#iteration):
 
-<!-- language-tour/flow/for-loops/web/main.dart -->
+<?code-excerpt "language-tour/flow/for-loops/web/main.dart (collection)"?>
 {% prettify dart %}
 var collection = [0, 1, 2];
 for (var x in collection) {
-  print(x);
+  print(x); // 0 1 2
 }
 {% endprettify %}
 
@@ -1882,7 +1906,7 @@ for (var x in collection) {
 
 A `while` loop evaluates the condition before the loop:
 
-<!-- language-tour/flow-while/bin/main.dart -->
+<?code-excerpt "language-tour/flow-while/bin/main.dart"?>
 {% prettify dart %}
 while (!isDone()) {
   doSomething();
@@ -1891,7 +1915,7 @@ while (!isDone()) {
 
 A `do`-`while` loop evaluates the condition *after* the loop:
 
-<!-- language-tour/flow-while/bin/main.dart -->
+<?code-excerpt "language-tour/flow-while/bin/main.dart (do-while)"?>
 {% prettify dart %}
 do {
   printLine();
@@ -1903,7 +1927,7 @@ do {
 
 Use `break` to stop looping:
 
-<!-- language-tour/flow/break-continue/web/main.dart -->
+<?code-excerpt "language-tour/flow/break-continue/web/main.dart"?>
 {% prettify dart %}
 while (true) {
   if (shutDownRequested()) break;
@@ -1913,7 +1937,7 @@ while (true) {
 
 Use `continue` to skip to the next loop iteration:
 
-<!-- language-tour/flow/break-continue/web/main.dart -->
+<?code-excerpt "language-tour/flow/break-continue/web/main.dart (for)"?>
 {% prettify dart %}
 for (int i = 0; i < candidates.length; i++) {
   var candidate = candidates[i];
@@ -1928,10 +1952,11 @@ You might write that example differently if you’re using an
 [Iterable]({{site.dart_api}}/dart-core/Iterable-class.html)
 such as a list or set:
 
-<!-- language-tour/flow/break-continue/web/main.dart -->
+<?code-excerpt "language-tour/flow/break-continue/web/main.dart (where)"?>
 {% prettify dart %}
-candidates.where((c) => c.yearsExperience >= 5)
-          .forEach((c) => c.interview());
+candidates
+    .where((c) => c.yearsExperience >= 5)
+    .forEach((c) => c.interview());
 {% endprettify %}
 
 
@@ -1955,7 +1980,7 @@ Other valid ways to end a non-empty `case` clause are a `continue`,
 
 Use a `default` clause to execute code when no `case` clause matches:
 
-<!-- language-tour/flow-switch-case/bin/main.dart -->
+<?code-excerpt "language-tour/flow-switch-case/bin/main.dart"?>
 {% prettify dart %}
 var command = 'OPEN';
 switch (command) {
@@ -1982,7 +2007,7 @@ switch (command) {
 The following example omits the `break` statement in a `case` clause,
 thus generating an error:
 
-<!-- language-tour/flow-switch-case/bin/main.dart -->
+<?code-excerpt "language-tour/flow-switch-case/bin/main.dart (break omitted)"?>
 {% prettify dart %}
 var command = 'OPEN';
 switch (command) {
@@ -1999,7 +2024,7 @@ switch (command) {
 However, Dart does support empty `case` clauses, allowing a form of
 fall-through:
 
-<!-- language-tour/flow-switch-case/bin/main.dart -->
+<?code-excerpt "language-tour/flow-switch-case/bin/main.dart (empty case)"?>
 {% prettify dart %}
 var command = 'CLOSED';
 switch (command) {
@@ -2014,16 +2039,16 @@ switch (command) {
 If you really want fall-through, you can use a `continue` statement and
 a label:
 
-<!-- language-tour/flow-switch-case/bin/main.dart -->
+<?code-excerpt "language-tour/flow-switch-case/bin/main.dart (continue)"?>
 {% prettify dart %}
 var command = 'CLOSED';
 switch (command) {
   case 'CLOSED':
     executeClosed();
     continue nowClosed;
-    // Continues executing at the nowClosed label.
+  // Continues executing at the nowClosed label.
 
-nowClosed:
+  nowClosed:
   case 'NOW_CLOSED':
     // Runs for both CLOSED and NOW_CLOSED.
     executeNowClosed();
@@ -2041,7 +2066,7 @@ Use an `assert` statement to disrupt normal execution if a boolean
 condition is false. You can find examples of assert statements
 throughout this tour. Here are some more:
 
-<!-- language-tour/flow/assert/web/main.dart -->
+<?code-excerpt "language-tour/flow/assert_example/web/main.dart"?>
 {% prettify dart %}
 // Make sure the variable has a non-null value.
 assert(text != null);
@@ -2068,7 +2093,7 @@ update-for-dart-2
 To attach a message to an assert,
 add a string as the second argument.
 
-<!-- language-tour/flow/assert/web/main.dart -->
+<?code-excerpt "language-tour/flow/assert_example/web/main.dart (assert with message)"?>
 {% prettify dart %}
 assert(urlString.startsWith('https'),
     'URL ($urlString) should start with "https".');
@@ -2111,24 +2136,30 @@ non-null object—not just Exception and Error objects—as an exception.
 
 Here’s an example of throwing, or *raising*, an exception:
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart"?>
 {% prettify dart %}
 throw new FormatException('Expected at least 1 section');
 {% endprettify %}
 
 You can also throw arbitrary objects:
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (out-of-llamas)"?>
 {% prettify dart %}
 throw 'Out of llamas!';
 {% endprettify %}
 
+<div class="alert alert-info" markdown="1">
+  **Note:** Production-quality code usually throws types that implement
+  [Error]({{site.dart_api}}/dart-core/Error-class.html) or
+  [Exception]({{site.dart_api}}/dart-core/Exception-class.html).
+</div>
+
 Because throwing an exception is an expression, you can throw exceptions
 in =\> statements, as well as anywhere else that allows expressions:
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (throw-is-an-expression)"?>
 {% prettify dart %}
-distanceTo(Point other) =>
+void distanceTo(Point other) =>
     throw new UnimplementedError();
 {% endprettify %}
 
@@ -2139,7 +2170,7 @@ Catching, or capturing, an exception stops the exception from
 propagating (unless you rethrow the exception).
 Catching an exception gives you a chance to handle it:
 
-<!-- lanaguage-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (try)"?>
 {% prettify dart %}
 try {
   breedMoreLlamas();
@@ -2153,7 +2184,7 @@ specify multiple catch clauses. The first catch clause that matches the
 thrown object’s type handles the exception. If the catch clause does not
 specify a type, that clause can handle any type of thrown object:
 
-<!-- language_tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (try-catch)"?>
 {% prettify dart %}
 try {
   breedMoreLlamas();
@@ -2178,12 +2209,13 @@ The first is the exception that was thrown,
 and the second is the stack trace
 (a [StackTrace]({{site.dart_api}}/dart-core/StackTrace-class.html) object).
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 {% prettify dart %}
-  ...
-} on Exception catch [[highlight]](e)[[/highlight]] {
+try {
+  // ···
+} on Exception catch [!(e)!] {
   print('Exception details:\n $e');
-} catch [[highlight]](e, s)[[/highlight]] {
+} catch [!(e, s)!] {
   print('Exception details:\n $e');
   print('Stack trace:\n $s');
 }
@@ -2193,7 +2225,7 @@ To partially handle an exception,
 while allowing it to propagate,
 use the `rethrow` keyword.
 
-<!-- language-tour/reference/rethrow.dart -->
+<?code-excerpt "language-tour/reference/rethrow.dart" replace="/rethrow;/[!$&!]/g"?>
 {% prettify dart %}
 final foo = '';
 
@@ -2202,7 +2234,7 @@ void misbehave() {
     foo = "You can't change a final variable's value.";
   } catch (e) {
     print('misbehave() partially handled ${e.runtimeType}.');
-    [[highlight]]rethrow;[[/highlight]] // Allow callers to see the exception.
+    [!rethrow;!] // Allow callers to see the exception.
   }
 }
 
@@ -2222,7 +2254,7 @@ To ensure that some code runs whether or not an exception is thrown, use
 a `finally` clause. If no `catch` clause matches the exception, the
 exception is propagated after the `finally` clause runs:
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (finally)"?>
 {% prettify dart %}
 try {
   breedMoreLlamas();
@@ -2234,14 +2266,14 @@ try {
 
 The `finally` clause runs after any matching `catch` clauses:
 
-<!-- language-tour/flow/exceptions/web/main.dart -->
+<?code-excerpt "language-tour/flow/exceptions/web/main.dart (try-catch-finally)"?>
 {% prettify dart %}
 try {
   breedMoreLlamas();
-} catch(e) {
-  print('Error: $e');  // Handle the exception first.
+} catch (e) {
+  print('Error: $e'); // Handle the exception first.
 } finally {
-  cleanLlamaStalls();  // Then clean up.
+  cleanLlamaStalls(); // Then clean up.
 }
 {% endprettify %}
 
@@ -2261,7 +2293,7 @@ To create an object, you can use the `new` keyword with a *constructor*
 for a class. Constructor names can be either <code><em>ClassName</em></code> or
 <code><em>ClassName</em>.<em>identifier</em></code>. For example:
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (object creation)"?>
 {% prettify dart %}
 var jsonData = JSON.decode('{"x":1, "y":2}');
 
@@ -2279,7 +2311,7 @@ data.
 
 Use a dot (`.`) to refer to an instance variable or method:
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (object members)"?>
 {% prettify dart %}
 var p = new Point(2, 2);
 
@@ -2301,6 +2333,7 @@ https://dartpad.dartlang.org/0cb25997742ed5382e4a
 https://gist.github.com/0cb25997742ed5382e4a
 {% endcomment %}
 
+<?code-excerpt "language-tour/object-classes/bin/main.dart (safe member access)"?>
 {% prettify dart %}
 // If p is non-null, set its y value to 4.
 p?.y = 4;
@@ -2309,7 +2342,7 @@ p?.y = 4;
 Some classes provide constant constructors. To create a compile-time
 constant using a constant constructor, use `const` instead of `new`:
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (const)"?>
 {% prettify dart %}
 var p = const ImmutablePoint(2, 2);
 {% endprettify %}
@@ -2317,7 +2350,7 @@ var p = const ImmutablePoint(2, 2);
 Constructing two identical compile-time constants results in a single,
 canonical instance:
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (identical)"?>
 {% prettify dart %}
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
@@ -2330,7 +2363,7 @@ you can use Object's `runtimeType` property,
 which returns a
 [Type]({{site.dart_api}}/dart-core/Type-class.html) object.
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (runtimeType)"?>
 {% prettify dart %}
 print('The type of a is ${a.runtimeType}');
 {% endprettify %}
@@ -2342,7 +2375,7 @@ The following sections discuss how to implement classes.
 
 Here’s how you declare instance variables:
 
-<!-- language-tour/instance-variables/bin/main.dart -->
+<?code-excerpt "language-tour/instance-variables/bin/main.dart (class)"?>
 {% prettify dart %}
 class Point {
   num x; // Declare instance variable x, initially null.
@@ -2357,16 +2390,16 @@ All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-<!-- language-tour/instance-variables/bin/main.dart -->
+<?code-excerpt "language-tour/instance-variables/bin/main.dart (class+main)" replace="/(num .*?;).*/$1/g"?>
 {% prettify dart %}
 class Point {
   num x;
   num y;
 }
 
-main() {
+void main() {
   var point = new Point();
-  point.x = 4;          // Use the setter method for x.
+  point.x = 4; // Use the setter method for x.
   assert(point.x == 4); // Use the getter method for x.
   assert(point.y == null); // Values default to null.
 }
@@ -2386,7 +2419,7 @@ class (plus, optionally, an additional identifier as described in
 The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
-<!-- language-tour/reference/constructor_long_way.dart -->
+<?code-excerpt "language-tour/reference/constructor_long_way.dart"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2411,7 +2444,7 @@ omits the `this`.
 The pattern of assigning a constructor argument to an instance variable
 is so common, Dart has syntactic sugar to make it easy:
 
-<!-- language-tour/object-classes/bin/main.dart -->
+<?code-excerpt "language-tour/object-classes/bin/main.dart (constructor-initializer)"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2440,7 +2473,7 @@ name) constructor.
 Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
-<!-- language-tour/bin/named-constructor.dart -->
+<?code-excerpt "language-tour/reference/named_constructor.dart"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2483,12 +2516,15 @@ In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<!-- language-tour/op-as/bin/main.dart -->
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
 https://dartpad.dartlang.org/e57aa06401e6618d4eb8
 
+<?code-excerpt "language-tour/op-as/bin/main.dart"?>
+{% prettify dart %}
 class Person {
+  String firstName;
+
   Person.fromJson(Map data) {
     print('in Person');
   }
@@ -2502,9 +2538,19 @@ class Employee extends Person {
   }
 }
 
-main() {
+void main() {
   var emp = new Employee.fromJson({});
+
+  // Prints:
+  // in Person
+  // in Employee
+  if (emp is Person) {
+    // Type check
+    emp.firstName = 'Bob';
+  }
+  (emp as Person).firstName = 'Bob';
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -2518,11 +2564,11 @@ Because the arguments to the superclass constructor are evaluated before
 invoking the constructor, an argument can be an expression such as a
 function call:
 
-<!-- language-tour/method-then-constructor/bin/main.dart -->
+<?code-excerpt "language-tour/method-then-constructor/bin/main.dart"?>
 {% prettify dart %}
 class Employee extends Person {
-  // ...
   Employee() : super.fromJson(findDefaultData());
+  // ···
 }
 {% endprettify %}
 
@@ -2545,7 +2591,7 @@ Besides invoking a superclass constructor, you can also initialize
 instance variables before the constructor body runs. Separate
 initializers with commas.
 
-<!-- language-tour/reference/initializer_list.dart -->
+<?code-excerpt "language-tour/reference/initializer_list.dart"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2555,9 +2601,9 @@ class Point {
 
   // Initializer list sets instance variables before
   // the constructor body runs.
-  Point.fromJson(Map jsonMap)
-      : x = jsonMap['x'],
-        y = jsonMap['y'] {
+  Point.fromJson(Map json)
+      : x = json['x'],
+        y = json['y'] {
     print('In Point.fromJson(): ($x, $y)');
   }
 }
@@ -2572,11 +2618,12 @@ Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<!-- language-tour/reference/initializer_list_final.dart -->
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
 https://dartpad.dartlang.org/7a9764702c0608711e08
 
+<?code-excerpt "language-tour/reference/initializer_list_final.dart"?>
+{% prettify dart %}
 import 'dart:math';
 
 class Point {
@@ -2590,10 +2637,11 @@ class Point {
         distanceFromOrigin = sqrt(x * x + y * y);
 }
 
-main() {
+void main() {
   var p = new Point(2, 3);
   print(p.distanceFromOrigin);
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -2609,7 +2657,7 @@ Sometimes a constructor’s only purpose is to redirect to another
 constructor in the same class. A redirecting constructor’s body is
 empty, with the constructor call appearing after a colon (:).
 
-<!-- language-tour/reference/along_x_axis.dart -->
+<?code-excerpt "language-tour/reference/along_x_axis.dart"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2629,7 +2677,7 @@ If your class produces objects that never change, you can make these
 objects compile-time constants. To do this, define a `const` constructor
 and make sure that all instance variables are `final`.
 
-<!-- language-tour/reference/immutable_point.dart -->
+<?code-excerpt "language-tour/reference/immutable_point.dart"?>
 {% prettify dart %}
 class ImmutablePoint {
   final num x;
@@ -2650,14 +2698,14 @@ instance of a subtype.
 The following example demonstrates a factory constructor returning
 objects from a cache:
 
-<!-- language-tour/factory-constructor/bin/main.dart -->
+<?code-excerpt "language-tour/factory-constructor/bin/main.dart"?>
 {% prettify dart %}
 class Logger {
   final String name;
   bool mute = false;
 
-  // _cache is library-private, thanks to the _ in front
-  // of its name.
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
   static final Map<String, Logger> _cache =
       <String, Logger>{};
 
@@ -2688,7 +2736,7 @@ Factory constructors have no access to `this`.
 
 To invoke a factory constructor, you use the `new` keyword:
 
-<!-- language-tour/factory-constructor/bin/main.dart -->
+<?code-excerpt "language-tour/factory-constructor/bin/main.dart (logger)"?>
 {% prettify dart %}
 var logger = new Logger('UI');
 logger.log('Button clicked');
@@ -2705,7 +2753,7 @@ Instance methods on objects can access instance variables and `this`.
 The `distanceTo()` method in the following sample is an example of an
 instance method:
 
-<!-- language-tour/reference/distance_to.dart -->
+<?code-excerpt "language-tour/reference/distance_to.dart"?>
 {% prettify dart %}
 import 'dart:math';
 
@@ -2730,7 +2778,7 @@ an implicit getter, plus a setter if appropriate. You can create
 additional properties by implementing getters and setters, using the
 `get` and `set` keywords:
 
-<!-- language-tour/rectangle/bin/main.dart -->
+<?code-excerpt "language-tour/rectangle/bin/main.dart"?>
 {% prettify dart %}
 class Rectangle {
   num left;
@@ -2741,13 +2789,13 @@ class Rectangle {
   Rectangle(this.left, this.top, this.width, this.height);
 
   // Define two calculated properties: right and bottom.
-  num get right             => left + width;
-      set right(num value)  => left = value - width;
-  num get bottom            => top + height;
-      set bottom(num value) => top = value - height;
+  num get right => left + width;
+  set right(num value) => left = value - width;
+  num get bottom => top + height;
+  set bottom(num value) => top = value - height;
 }
 
-main() {
+void main() {
   var rect = new Rectangle(3, 4, 20, 15);
   assert(rect.left == 3);
   rect.right = 12;
@@ -2772,7 +2820,7 @@ Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes. To make a
 method abstract, use a semicolon (;) instead of a method body:
 
-<!-- language-tour/reference/doer.dart -->
+<?code-excerpt "language-tour/reference/doer.dart"?>
 {% prettify dart %}
 abstract class Doer {
   // ...Define instance variables and methods...
@@ -2806,7 +2854,7 @@ Vector class, you might define a `+` method to add two vectors.
 
 Here’s an example of a class that overrides the `+` and `-` operators:
 
-<!-- language-tour/vector/bin/main.dart -->
+<?code-excerpt "language-tour/vector/bin/main.dart"?>
 {% prettify dart %}
 class Vector {
   final int x;
@@ -2824,7 +2872,7 @@ class Vector {
   }
 }
 
-main() {
+void main() {
   final v = new Vector(2, 3);
   final w = new Vector(2, 2);
 
@@ -2859,7 +2907,7 @@ Abstract classes often have [abstract methods](#abstract-methods).
 Here’s an example of declaring an abstract class that has an abstract
 method:
 
-<!-- language-tour/reference/abstract.dart -->
+<?code-excerpt "language-tour/reference/abstract.dart"?>
 {% prettify dart %}
 // This class is declared abstract and thus
 // can't be instantiated.
@@ -2873,7 +2921,7 @@ abstract class AbstractContainer {
 The following class isn’t abstract, and thus can be instantiated even
 though it defines an abstract method:
 
-<!-- language-tour/reference/abstract.dart -->
+<?code-excerpt "language-tour/reference/abstract.dart (extends)"?>
 {% prettify dart %}
 class SpecializedContainer extends AbstractContainer {
   // ...Define more constructors, fields, methods...
@@ -2888,6 +2936,16 @@ class SpecializedContainer extends AbstractContainer {
 }
 {% endprettify %}
 
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2.0](/dart-2.0) difference**:
+  Only abstract classes can have abstract methods.
+  An error is reported otherwise.
+</aside>
+
 
 ### Implicit interfaces
 
@@ -2900,7 +2958,7 @@ A class implements one or more interfaces by declaring them in an
 `implements` clause and then providing the APIs required by the
 interfaces. For example:
 
-<!-- language-tour/imposter/bin/main.dart -->
+<?code-excerpt "language-tour/imposter/bin/main.dart"?>
 {% prettify dart %}
 // A person. The implicit interface contains greet().
 class Person {
@@ -2911,7 +2969,7 @@ class Person {
   Person(this._name);
 
   // In the interface.
-  String greet(who) => 'Hello, $who. I am $_name.';
+  String greet(String who) => 'Hello, $who. I am $_name.';
 }
 
 // An implementation of the Person interface.
@@ -2919,12 +2977,12 @@ class Imposter implements Person {
   // We have to define this, but we don't use it.
   final _name = "";
 
-  String greet(who) => 'Hi $who. Do you know who I am?';
+  String greet(String who) => 'Hi $who. Do you know who I am?';
 }
 
-greetBob(Person person) => person.greet('bob');
+String greetBob(Person person) => person.greet('bob');
 
-main() {
+void main() {
   print(greetBob(new Person('kathy')));
   print(greetBob(new Imposter()));
 }
@@ -2933,7 +2991,7 @@ main() {
 Here’s an example of specifying that a class implements multiple
 interfaces:
 
-<!-- language-tour/reference/point_interfaces.dart -->
+<?code-excerpt "language-tour/reference/point_interfaces.dart"?>
 {% prettify dart %}
 class Point implements Comparable, Location {
   // ...
@@ -2946,14 +3004,14 @@ class Point implements Comparable, Location {
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
-<!-- language-tour/reference/smart_tv.dart -->
+<?code-excerpt "language-tour/reference/smart_tv.dart"?>
 {% prettify dart %}
 class Television {
   void turnOn() {
     _illuminateDisplay();
     _activateIrSensor();
   }
-  // ...
+  // ···
 }
 
 class SmartTelevision extends Television {
@@ -2963,7 +3021,7 @@ class SmartTelevision extends Television {
     _initializeMemory();
     _upgradeApps();
   }
-  // ...
+  // ···
 }
 {% endprettify %}
 
@@ -2974,14 +3032,14 @@ Subclasses can override instance methods, getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
-<!-- language-tour/overrides/bin/override.dart -->
+<?code-excerpt "language-tour/metadata/bin/override.dart"?>
 {% prettify dart %}
 class SmartTelevision extends Television {
   @override
   void turnOn() {
-    // ...
+    // ···
   }
-  // ...
+  // ···
 }
 {% endprettify %}
 
@@ -2995,14 +3053,15 @@ you can use the [`covariant` keyword](/guides/language/sound-problems#the-covari
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
-<!-- language-tour/no-such-method/bin/main.dart -->
+<?code-excerpt "language-tour/no-such-method/bin/main.dart"?>
 {% prettify dart %}
 class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
+  @override
   void noSuchMethod(Invocation mirror) {
     print('You tried to use a non-existent member:' +
-          '${mirror.memberName}');
+        '${mirror.memberName}');
   }
 }
 {% endprettify %}
@@ -3011,12 +3070,13 @@ If you use `noSuchMethod()` to implement every possible getter, setter,
 and method for one or more types,
 then you can use the `@proxy` annotation to avoid warnings:
 
-<!-- language-tour/overrides/bin/proxy.dart -->
+<?code-excerpt "language-tour/no-such-method/bin/proxy.dart"?>
 {% prettify dart %}
 @proxy
 class A {
+  @override
   void noSuchMethod(Invocation mirror) {
-    // ...
+    // ···
   }
 }
 {% endprettify %}
@@ -3024,11 +3084,12 @@ class A {
 An alternative to `@proxy`, if you know the types at compile time,
 is to just declare that the class implements those types.
 
-<!-- language-tour/overrides/bin/proxy.dart -->
+<?code-excerpt "language-tour/no-such-method/bin/alt-to-proxy.dart"?>
 {% prettify dart %}
 class A implements SomeClass, SomeOtherClass {
+  @override
   void noSuchMethod(Invocation mirror) {
-    // ...
+    // ···
   }
 }
 {% endprettify %}
@@ -3049,13 +3110,9 @@ a fixed number of constant values.
 
 Declare an enumerated type using the `enum` keyword:
 
-<!-- language-tour/enum-switch/bin/main.dart -->
+<?code-excerpt "language-tour/enum-switch/bin/main.dart (enum)"?>
 {% prettify dart %}
-enum Color {
-  red,
-  green,
-  blue
-}
+enum Color { red, green, blue }
 {% endprettify %}
 
 Each value in an enum has an `index` getter,
@@ -3063,7 +3120,7 @@ which returns the zero-based position of the value in the enum declaration.
 For example, the first value has index 0,
 and the second value has index 1.
 
-<!-- language-tour/enum-switch/bin/main.dart -->
+<?code-excerpt "language-tour/enum-switch/bin/main.dart (index)"?>
 {% prettify dart %}
 assert(Color.red.index == 0);
 assert(Color.green.index == 1);
@@ -3073,25 +3130,19 @@ assert(Color.blue.index == 2);
 To get a list of all of the values in the enum,
 use the enum's `values` constant.
 
-<!-- language-tour/enum-switch/bin/main.dart -->
+<?code-excerpt "language-tour/enum-switch/bin/main.dart (values)"?>
 {% prettify dart %}
 List<Color> colors = Color.values;
 assert(colors[2] == Color.blue);
 {% endprettify %}
 
-You can use enums in [switch statements](#switch-and-case).
-If the _e_ in <code>switch (<em>e</em>)</code> is explicitly typed as an enum,
-then you're warned if you don't handle all of the enum's values:
+You can use enums in [switch statements](#switch-and-case), and
+you'll get a warning if you don't handle all of the enum's values:
 
-<!-- language-tour/enum-switch/bin/main.dart -->
+<?code-excerpt "language-tour/enum-switch/bin/main.dart (switch)"?>
 {% prettify dart %}
-enum Color {
-  red,
-  green,
-  blue
-}
-// ...
-Color aColor = Color.blue;
+var aColor = Color.blue;
+
 switch (aColor) {
   case Color.red:
     print('Red as roses!');
@@ -3100,7 +3151,7 @@ switch (aColor) {
     print('Green as grass!');
     break;
   default: // Without this, you see a WARNING.
-    print(aColor);  // 'Color.blue'
+    print(aColor); // 'Color.blue'
 }
 {% endprettify %}
 
@@ -3121,10 +3172,10 @@ hierarchies.
 To use a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
-<!-- language-tour/mixins/bin/main.dart -->
+<?code-excerpt "language-tour/mixins/bin/main.dart (Musician and Maestro)"?>
 {% prettify dart %}
 class Musician extends Performer with Musical {
-  // ...
+  // ···
 }
 
 class Maestro extends Person
@@ -3139,7 +3190,7 @@ class Maestro extends Person
 To implement a mixin, create a class that extends Object,
 declares no constructors, and has no calls to `super`. For example:
 
-<!-- language-tour/mixins/bin/main.dart -->
+<?code-excerpt "language-tour/mixins/bin/main.dart (Musical)"?>
 {% prettify dart %}
 abstract class Musical {
   bool canPlayPiano = false;
@@ -3184,16 +3235,16 @@ Use the `static` keyword to implement class-wide variables and methods.
 Static variables (class variables) are useful for class-wide state and
 constants:
 
-<!-- language-tour/color/bin/main.dart -->
+<?code-excerpt "language-tour/color/bin/main.dart"?>
 {% prettify dart %}
 class Color {
   static const red =
       const Color('red'); // A constant static variable.
-  final String name;      // An instance variable.
+  final String name; // An instance variable.
   const Color(this.name); // A constant constructor.
 }
 
-main() {
+void main() {
   assert(Color.red.name == 'red');
 }
 {% endprettify %}
@@ -3212,7 +3263,7 @@ of preferring `lowerCamelCase` for constant names.
 Static methods (class methods) do not operate on an instance, and thus
 do not have access to `this`. For example:
 
-<!-- language-tour/point/main/bin.dart -->
+<?code-excerpt "language-tour/point/bin/main.dart"?>
 {% prettify dart %}
 import 'dart:math';
 
@@ -3228,7 +3279,7 @@ class Point {
   }
 }
 
-main() {
+void main() {
   var a = new Point(2, 2);
   var b = new Point(4, 4);
   var distance = Point.distanceBetween(a, b);
@@ -3276,11 +3327,11 @@ you, your fellow programmers, and your tools (such as your IDE and
 the Dart VM in checked mode) can detect that assigning a non-string to
 the list is probably a mistake. Here’s an example:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (why)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-// ...
+// ···
 names.add(42); // Fails in checked mode (succeeds in production mode).
 {% endprettify %}
 
@@ -3290,22 +3341,22 @@ many types, while still taking advantage of checked mode and static
 analysis early warnings. For example, say you create an interface for
 caching an object:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (ObjectCache)"?>
 {% prettify dart %}
 abstract class ObjectCache {
   Object getByKey(String key);
-  setByKey(String key, Object value);
+  void setByKey(String key, Object value);
 }
 {% endprettify %}
 
 You discover that you want a string-specific version of this interface,
 so you create another interface:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (StringCache)"?>
 {% prettify dart %}
 abstract class StringCache {
   String getByKey(String key);
-  setByKey(String key, String value);
+  void setByKey(String key, String value);
 }
 {% endprettify %}
 
@@ -3315,11 +3366,11 @@ interface... You get the idea.
 Generic types can save you the trouble of creating all these interfaces.
 Instead, you can create a single interface that takes a type parameter:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (Cache)"?>
 {% prettify dart %}
 abstract class Cache<T> {
   T getByKey(String key);
-  setByKey(String key, T value);
+  void setByKey(String key, T value);
 }
 {% endprettify %}
 
@@ -3337,7 +3388,7 @@ before the opening bracket. You might use
 parameterized literals when you want type warnings in checked mode. Here
 is example of using typed literals:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (collection-literals)"?>
 {% prettify dart %}
 var names = <String>['Seth', 'Kathy', 'Lars'];
 var pages = <String, String>{
@@ -3353,7 +3404,7 @@ var pages = <String, String>{
 To specify one or more types when using a constructor, put the types in
 angle brackets (`<...>`) just after the class name. For example:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (constructor-1)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3363,7 +3414,7 @@ var nameSet = new Set<String>.from(names);
 The following code creates a map that has integer keys and values of
 type View:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (constructor-2)"?>
 {% prettify dart %}
 var views = new Map<int, View>();
 {% endprettify %}
@@ -3375,7 +3426,7 @@ Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
 collection, even in production mode:
 
-<!-- language-tour/generics/bin/main.dart -->
+<?code-excerpt "language-tour/generics/bin/main.dart (generic-collections)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3402,12 +3453,16 @@ When implementing a generic type,
 you might want to limit the types of its parameters.
 You can do this using `extends`.
 
-<!-- language-tour/generics-base-class/bin/main.dart -->
+<?code-excerpt "language-tour/generics-base-class/bin/main.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart %}
 // T must be SomeBaseClass or one of its descendants.
-class Foo<T [[highlight]]extends SomeBaseClass[[/highlight]]> {...}
+class Foo<T [!extends SomeBaseClass!]> {
+  // ···
+}
 
-class Extender extends SomeBaseClass {...}
+class Extender extends SomeBaseClass {
+  // ···
+}
 
 void main() {
   // It's OK to use SomeBaseClass or any of its subclasses inside <>.
@@ -3420,7 +3475,6 @@ void main() {
   // Specifying any non-SomeBaseClass type results in a warning and, in
   // checked mode, a runtime error.
   // var objectFoo = new Foo<Object>();
-}
 {% endprettify %}
 
 
@@ -3431,10 +3485,11 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 
 <!-- https://dartpad.dartlang.org/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
+<?code-excerpt "language-tour/generics/bin/main.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 {% prettify dart %}
-[[highlight]]T[[/highlight]] first[[highlight]]<T>[[/highlight]](List<[[highlight]]T[[/highlight]]> ts) {
+[!T!] first[!<T>!](List<[!T!]> ts) {
   // ...Do some initial work or error checking, then...
-  [[highlight]]T[[/highlight]] tmp = ts[0];
+  [!T!] tmp = ts[0];
   // ...Do some additional checking or processing...
   return tmp;
 }
@@ -3482,7 +3537,7 @@ For example, Dart web apps generally use the
 [dart:html]({{site.dart_api}}/dart-html/dart-html-library.html)
 library, which they can import like this:
 
-<!-- language-tour/libraries/using_libraries.dart -->
+<?code-excerpt "language-tour/libraries/using_libraries.dart"?>
 {% prettify dart %}
 import 'dart:html';
 {% endprettify %}
@@ -3494,7 +3549,7 @@ For other libraries, you can use a file system path or the `package:`
 scheme. The `package:` scheme specifies libraries provided by a package
 manager such as the pub tool. For example:
 
-<!-- language-tour/libraries/using_schemes.dart, mylib, utils -->
+<?code-excerpt "language-tour/libraries/using_schemes.dart"?>
 {% prettify dart %}
 import 'dart:io';
 import 'package:mylib/mylib.dart';
@@ -3515,12 +3570,12 @@ can specify a prefix for one or both libraries. For example, if library1
 and library2 both have an Element class, then you might have code like
 this:
 
-<!-- language-tour/libraries/library_prefix.dart -->
+<?code-excerpt "language-tour/libraries/library_prefix.dart"?>
 {% prettify dart %}
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
-// ...
-Element element1 = new Element();           // Uses Element from lib1.
+
+Element element1 = new Element(); // Uses Element from lib1.
 lib2.Element element2 = new lib2.Element(); // Uses Element from lib2.
 {% endprettify %}
 
@@ -3529,7 +3584,7 @@ lib2.Element element2 = new lib2.Element(); // Uses Element from lib2.
 If you want to use only part of a library, you can selectively import
 the library. For example:
 
-<!-- language-tour/libraries/library_partial.dart, lib1, lib2 -->
+<?code-excerpt "language-tour/libraries/library_partial.dart"?>
 {% prettify dart %}
 // Import only foo.
 import 'package:lib1/lib1.dart' show foo;
@@ -3554,7 +3609,7 @@ Here are some cases when you might use deferred loading:
 To lazily load a library, you must first
 import it using `deferred as`.
 
-<!-- language-tour/deferred/bin/main.dart -->
+<?code-excerpt "language-tour/deferred/bin/main.dart (import)"?>
 {% prettify dart %}
 import 'package:deferred/hello.dart' deferred as hello;
 {% endprettify %}
@@ -3562,9 +3617,9 @@ import 'package:deferred/hello.dart' deferred as hello;
 When you need the library, invoke
 `loadLibrary()` using the library's identifier.
 
-<!-- language-tour/deferred/bin/main.dart -->
+<?code-excerpt "language-tour/deferred/bin/main.dart (await)"?>
 {% prettify dart %}
-greet() async {
+Future greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
@@ -3628,34 +3683,31 @@ but it looks a lot like synchronous code.
 For example, here's some code that uses `await`
 to wait for the result of an asynchronous function:
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart"?>
 {% prettify dart %}
 await lookUpVersion()
 {% endprettify %}
 
 To use `await`, code must be in a function marked as `async`:
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
-checkVersion() async {
-  var version = await lookUpVersion();
-  if (version == expectedVersion) {
-    // Do something.
-  } else {
-    // Do something else.
-  }
+Future checkVersion() [!async!] {
+  var version = [!await!] lookUpVersion();
+  // Do something with version
+  // ···
 }
 {% endprettify %}
 
 You can use `try`, `catch`, and `finally`
 to handle errors and cleanup in code that uses `await`:
 
-<!-- dart-tutorials-samples/httpserver/bin/mini_file_server.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (try-catch)"?>
 {% prettify dart %}
 try {
-  server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
+  version = await lookUpVersion();
 } catch (e) {
-  // React to inability to bind to the port...
+  // React to inability to look up the version
 }
 {% endprettify %}
 
@@ -3669,29 +3721,27 @@ Although an async function might perform time-consuming operations,
 it returns immediately—before
 any of its body executes.
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (checkVersion-lookUpVersion)"?>
 {% prettify dart %}
-checkVersion() async {
-  // ...
-}
+Future checkVersion() async {/* ... */}
 
-lookUpVersion() async => /* ... */;
+Future lookUpVersion() async {/* ... */}
 {% endprettify %}
 
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
 which returns a String:
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (sync-lookUpVersion)"?>
 {% prettify dart %}
-String lookUpVersionSync() => '1.0.0';
+String lookUpVersion() => '1.0.0';
 {% endprettify %}
 
 If you change it to be an async function—for example,
 because a future implementation will be time consuming—the
 returned value is a Future:
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (async-lookUpVersion)"?>
 {% prettify dart %}
 Future<String> lookUpVersion() async => '1.0.0';
 {% endprettify %}
@@ -3713,7 +3763,7 @@ You can use `await` multiple times in an async function.
 For example, the following code waits three times
 for the results of functions:
 
-<!-- library-tour/async-await/bin/main.dart -->
+<?code-excerpt "library-tour/async-await/bin/main.dart (repeated-await)"?>
 {% prettify dart %}
 var entrypoint = await findEntrypoint();
 var exitCode = await runExecutable(entrypoint, args);
@@ -3731,9 +3781,9 @@ The await expression makes execution pause until that object is available.
 For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-<!-- language-tour/async-await/bin/main.dart -->
+<?code-excerpt "language-tour/async-await/bin/main.dart (main)"?>
 {% prettify dart %}
-main() async {
+Future main() async {
   checkVersion();
   print('In main: version is ${await lookUpVersion()}');
 }
@@ -3771,7 +3821,7 @@ the body of `main()` must be marked as `async`:
 
 <!-- dart-tutorials-samples/httpserver/number_thinker.dart -->
 {% prettify dart %}
-main() async {
+Future main() async {
   ...
   await for (var request in requestServer) {
     handleRequest(request);
@@ -3799,20 +3849,22 @@ a call() function that takes three strings and concatenates them,
 separating each with a space, and appending an exclamation.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 
-<!-- language-tour/callable-function/bin/main.dart -->
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
 https://dartpad.dartlang.org/405379bacf30335f3aed
 
+<?code-excerpt "language-tour/callable-function/bin/main.dart"?>
+{% prettify dart %}
 class WannabeFunction {
-  call(String a, String b, String c) => a + ' ' + b + ' ' + c + '!';
+  void call(String a, String b, String c) => a + ' ' + b + ' ' + c + '!';
 }
 
-main() {
+void main() {
   var wf = new WannabeFunction();
-  var out = wf("Hi","there,","gang");
+  var out = wf("Hi", "there,", "gang");
   print('$out');
 }
+{% endprettify %}
 {% endcomment %}
 
 <iframe
@@ -3846,7 +3898,7 @@ retains type information when a function type is assigned to a variable.
 
 Consider the following code, which doesn't use a typedef:
 
-<!-- language-tour/sorted-collection/bin/sorted_collection_broken.dart -->
+<?code-excerpt "language-tour/sorted-collection/bin/sorted_collection_broken.dart"?>
 {% prettify dart %}
 class SortedCollection {
   Function compare;
@@ -3856,10 +3908,10 @@ class SortedCollection {
   }
 }
 
- // Initial, broken implementation.
- int sort(Object a, Object b) => 0;
+// Initial, broken implementation.
+int sort(Object a, Object b) => 0;
 
-main() {
+void main() {
   SortedCollection coll = new SortedCollection(sort);
 
   // All we know is that compare is a function,
@@ -3874,7 +3926,7 @@ type of `compare` is Function. If we change the code to use explicit
 names and retain type information, both developers and tools can use
 that information.
 
-<!-- language-tour/sorted-collection/bin/sorted_collection_broken_2.dart -->
+<?code-excerpt "language-tour/sorted-collection/bin/sorted_collection_broken_2.dart"?>
 {% prettify dart %}
 typedef int Compare(Object a, Object b);
 
@@ -3884,10 +3936,10 @@ class SortedCollection {
   SortedCollection(this.compare);
 }
 
- // Initial, broken implementation.
- int sort(Object a, Object b) => 0;
+// Initial, broken implementation.
+int sort(Object a, Object b) => 0;
 
-main() {
+void main() {
   SortedCollection coll = new SortedCollection(sort);
   assert(coll.compare is Function);
   assert(coll.compare is Compare);
@@ -3903,14 +3955,14 @@ to change.
 Because typedefs are simply aliases, they offer a way to check the type
 of any function. For example:
 
-<!-- language-tour/sorted_collection/bin/main.dart -->
+<?code-excerpt "language-tour/sorted-collection/bin/main.dart"?>
 {% prettify dart %}
-typedef int Compare(int a, int b);
+typedef int Compare<T>(T a, T b);
 
 int sort(int a, int b) => a - b;
 
-main() {
-  assert(sort is Compare); // True!
+void main() {
+  assert(sort is Compare<int>); // True!
 }
 {% endprettify %}
 
@@ -3941,7 +3993,7 @@ Three annotations are available to all Dart code: `@deprecated`,
 Here’s an example of using the `@deprecated`
 annotation:
 
-<!-- language-tour/overrides/bin/main.dart -->
+<?code-excerpt "language-tour/metadata/bin/deprecated.dart"?>
 {% prettify dart %}
 class Television {
   /// _Deprecated: Use [turnOn] instead._
@@ -3960,25 +4012,25 @@ class Television {
 You can define your own metadata annotations. Here’s an example of
 defining a @todo annotation that takes two arguments:
 
-<!-- language-tour/meta-overrides/todo.dart -->
+<?code-excerpt "language-tour/metadata/bin/todo.dart"?>
 {% prettify dart %}
 library todo;
 
-class todo {
+class Todo {
   final String who;
   final String what;
 
-  const todo(this.who, this.what);
+  const Todo(this.who, this.what);
 }
 {% endprettify %}
 
 And here’s an example of using that @todo annotation:
 
-<!-- language-tour/meta-overrides/main.dart -->
+<?code-excerpt "language-tour/metadata/bin/main.dart"?>
 {% prettify dart %}
 import 'todo.dart';
 
-@todo('seth', 'make this do something')
+@Todo('seth', 'make this do something')
 void doSomething() {
   print('do something');
 }
@@ -4001,9 +4053,9 @@ documentation comments.
 A single-line comment begins with `//`. Everything between `//` and the
 end of line is ignored by the Dart compiler.
 
-<!-- language-tour/single-line-comments/bin/main.dart -->
+<?code-excerpt "language-tour/single-line-comments/bin/main.dart"?>
 {% prettify dart %}
-main() {
+void main() {
   // TODO: refactor into an AbstractLlamaGreetingFactory?
   print('Welcome to my Llama farm!');
 }
@@ -4017,9 +4069,9 @@ between `/*` and `*/` is ignored by the Dart compiler (unless the
 comment is a documentation comment; see the next section). Multi-line
 comments can nest.
 
-<!-- language-tour/multi-line-comments/bin/main.dart -->
+<?code-excerpt "language-tour/multi-line-comments/bin/main.dart"?>
 {% prettify dart %}
-main() {
+void main() {
   /*
    * This is a lot of work. Consider raising chickens.
 
@@ -4047,7 +4099,7 @@ the documented program element.
 Here is an example of documentation comments with references to other
 classes and arguments:
 
-<!-- language-tour/reference/doc-comments.dart -->
+<?code-excerpt "language-tour/reference/doc_comments.dart"?>
 {% prettify dart %}
 /// A domesticated South American camelid (Lama glama).
 ///

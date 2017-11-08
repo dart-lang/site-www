@@ -1,5 +1,5 @@
-// BEGIN(static_types)
+// #docregion
 String name = 'Bob';
-// END(static_types)
+// #enddocregion
 
 void main() {}

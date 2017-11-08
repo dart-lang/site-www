@@ -1,12 +1,12 @@
 //import 'dart:mirrors';
-// BEGIN
+// #docregion
 import 'todo.dart';
 
 @Todo('seth', 'make this do something')
 void doSomething() {
   print('do something');
 }
-// END
+// #enddocregion
 
 void main() {
   // PENDING: Once reflection on annotations is implemented, show that here.

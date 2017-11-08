@@ -1,14 +1,19 @@
 class SomeBaseClass {}
 
+// #docregion
 // T must be SomeBaseClass or one of its descendants.
 class Foo<T extends SomeBaseClass> {
+  // #enddocregion
   // Implementation goes here.
   @override
   String toString() => 'Foo<$T>';
+  // #docregion
 }
 
 class Extender extends SomeBaseClass {
+  // #enddocregion
   // Implementation goes here.
+  // #docregion
 }
 
 void main() {
@@ -22,6 +27,7 @@ void main() {
   // Specifying any non-SomeBaseClass type results in a warning and, in
   // checked mode, a runtime error.
   // var objectFoo = new Foo<Object>();
+  // #enddocregion
 
   // Normal mode: Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>, Foo<Object>
   // print('$someBaseClassFoo, $extenderFoo, $foo, $objectFoo');

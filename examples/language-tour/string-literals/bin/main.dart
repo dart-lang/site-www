@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(string_const_literals)
+  // #docregion
   // These work in a const string.
   const aConstNum = 0;
   const aConstBool = true;
@@ -13,6 +13,6 @@ void main() {
 
   const validConstString = '$aConstNum $aConstBool $aConstString';
   // const invalidConstString = '$aNum $aBool $aString $aConstList';
+  // #enddocregion
   print(validConstString);
-  // END(string_interpolation)
 }

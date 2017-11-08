@@ -1,5 +1,5 @@
 void main() {
-  // BEGIN(number_conversion)
+  // #docregion
   // String -> int
   var one = int.parse('1');
   assert(one == 1);
@@ -15,5 +15,5 @@ void main() {
   // double -> String
   String piAsString = 3.14159.toStringAsFixed(2);
   assert(piAsString == '3.14');
-  // END(number_conversion)
+  // #enddocregion
 }

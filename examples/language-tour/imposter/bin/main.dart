@@ -13,10 +13,8 @@ class Person {
 // An implementation of the Person interface.
 class Imposter implements Person {
   // We have to define this, but we don't use it.
-  @override
   final _name = "";
 
-  @override
   String greet(String who) => 'Hi $who. Do you know who I am?';
 }
 
