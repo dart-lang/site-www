@@ -10,6 +10,9 @@ env:
   global:
     - JEKYLL_ENV=production
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  matrix:
+    - TASK=./scripts/dartfmt.sh
+    - TASK=./deploy/cibuild
 
 before_install:
   - nvm install 6
@@ -21,13 +24,12 @@ install:
   - ./scripts/write-ci-info.sh -v
 
 script:
-  - dart --version
-  - ./deploy/cibuild
+  - $TASK
 
 after_script:
   # Just FYI test. Won't fail the build if it has errors.
-  - ./deploy/check_sitemap.rb
-  - ./deploy/html_proof.rb
+  - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
+  - if [[ $TASK == *build* ]]; ./deploy/html_proof.rb; fi
   # # Checks for bad HTML, broken links, and forces build to fail if it fails.
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"
@@ -45,3 +47,4 @@ deploy:
     on:
       repo: dart-lang/site-www
       branch: master
+      condition: $TASK == *build*
