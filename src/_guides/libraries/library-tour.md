@@ -8,7 +8,7 @@ short-title: Library Tour
 This page shows you how to use the major features in Dart’s
 libraries. It’s just an overview, and by no means comprehensive.
 Whenever you need more details about a class, consult the [Dart API
-reference.]({{site.dart_api}})
+reference.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 
 To learn more about the Dart language, see
 [A Tour of the Dart Language](/guides/language/language-tour).
@@ -53,7 +53,7 @@ assert(int.parse('42', radix: 16) == 66);
 {% endprettify %}
 
 Use the `toString()` method (defined by
-[Object]({{site.dart_api}}/dart-core/Object-class.html)) to convert an
+[Object]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html)) to convert an
 int or double to a string. To specify the number of digits to the right
 of the decimal, use `toStringAsFixed()` (defined by num). To specify the
 number of significant digits in the string, use
@@ -76,9 +76,9 @@ assert(double.parse('1.2e+2') == 120.0);
 {% endprettify %}
 
 For more information, see the API documentation for
-[int,]({{site.dart_api}}/dart-core/int-class.html)
-[double,]({{site.dart_api}}/dart-core/double-class.html) and
-[num.]({{site.dart_api}}/dart-core/num-class.html) Also see
+[int,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html)
+[double,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html) and
+[num.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html) Also see
 the [dart:math section](#dartmath---math-and-random).
 
 
@@ -194,7 +194,7 @@ assert(!'  '.isEmpty);
 
 Strings are immutable objects, which means you can create them but you
 can’t change them. If you look closely at the [String API
-docs,]({{site.dart_api}}/dart-core/String-class.html) you’ll notice that
+docs,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html) you’ll notice that
 none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
 original String:
@@ -272,12 +272,12 @@ for (var match in numbers.allMatches(someDigits)) {
 #### More information
 
 Refer to the [String API
-docs]({{site.dart_api}}/dart-core/String-class.html) for a full list of
+docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html) for a full list of
 methods. Also see the API docs for
-[StringBuffer,]({{site.dart_api}}/dart-core/StringBuffer-class.html)
-[Pattern,]({{site.dart_api}}/dart-core/Pattern-class.html)
-[RegExp,]({{site.dart_api}}/dart-core/RegExp-class.html) and
-[Match.]({{site.dart_api}}/dart-core/Match-class.html)
+[StringBuffer,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringBuffer-class.html)
+[Pattern,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html)
+[RegExp,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html) and
+[Match.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html)
 
 ### Collections
 
@@ -335,7 +335,7 @@ Sort a list using the `sort()` method. You can provide a sorting
 function that compares two objects. This sorting function must return \<
 0 for *smaller*, 0 for the *same*, and \> 0 for *bigger*. The following
 example uses `compareTo()`, which is defined by
-[Comparable]({{site.dart_api}}/dart-core/Comparable-class.html) and
+[Comparable]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html) and
 implemented by String.
 
 <!-- library-tour/list-tests/bin/main.dart -->
@@ -370,7 +370,7 @@ update-for-dart-2
 {% endcomment %}
 
 Refer to the [List API
-docs]({{site.dart_api}}/dart-core/List-class.html) for a full list of
+docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html) for a full list of
 methods.
 
 #### Sets
@@ -422,7 +422,7 @@ assert(intersection.length == 1);
 assert(intersection.contains('xenon'));
 {% endprettify %}
 
-Refer to the [Set API docs]({{site.dart_api}}/dart-core/Set-class.html)
+Refer to the [Set API docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html)
 for a full list of methods.
 
 #### Maps
@@ -521,7 +521,7 @@ teamAssignments.putIfAbsent(
 assert(teamAssignments['Catcher'] != null);
 {% endprettify %}
 
-Refer to the [Map API docs]({{site.dart_api}}/dart-core/Map-class.html)
+Refer to the [Map API docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html)
 for a full list of methods.
 
 #### Common collection methods
@@ -627,13 +627,13 @@ assert(!teas.every(isDecaffeinated));
 {% endprettify %}
 
 For a full list of methods, refer to the [Iterable API
-docs,]({{site.dart_api}}/dart-core/Iterable-class.html) as well as those
+docs,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html) as well as those
 for List, Set, and Map.
 
 
 ### URIs
 
-The [Uri class]({{site.dart_api}}/dart-core/Uri-class.html) provides
+The [Uri class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html) provides
 functions to encode and decode strings for use in URIs (which you might
 know as *URLs*). These functions handle characters that are special for
 URIs, such as `&` and `=`. The Uri class also parses and exposes the
@@ -702,7 +702,7 @@ assert(uri.fragment == 'frag');
 assert(uri.origin   == 'http://example.org:8080');
 {% endprettify %}
 
-See the [Uri API docs]({{site.dart_api}}/dart-core-Uri-class.html) for
+See the [Uri API docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core-Uri-class.html) for
 more URI components that you can get.
 
 #### Building URIs
@@ -793,8 +793,8 @@ if you must shift days.
 </div>
 
 Refer to the API docs for
-[DateTime]({{site.dart_api}}/dart-core/DateTime-class.html) and
-[Duration]({{site.dart_api}}/dart-core/Duration-class.html) for a full
+[DateTime]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html) and
+[Duration]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html) for a full
 list of methods.
 
 
@@ -806,7 +806,7 @@ mapping values, and iterating.
 #### Comparing objects
 
 Implement the
-[Comparable]({{site.dart_api}}/dart-core/Comparable-class.html)
+[Comparable]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html)
 interface to indicate that an object can be compared to another object,
 usually for sorting. The `compareTo()` method returns \< 0 for
 *smaller*, 0 for the *same*, and \> 0 for *bigger*.
@@ -880,8 +880,8 @@ main() {
 
 #### Iteration
 
-The [Iterable]({{site.dart_api}}/dart-core/Iterable-class.html) and
-[Iterator]({{site.dart_api}}/dart-core/Iterator-class.html) classes
+The [Iterable]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html) and
+[Iterator]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html) classes
 support for-in loops. Extend (if possible) or implement Iterable
 whenever you create a class that can provide Iterators for use in for-in
 loops. Implement Iterator to define the actual iteration ability.
@@ -923,12 +923,12 @@ catch. Errors are conditions that you don’t expect or plan for.
 
 A couple of the most common errors are:
 
-[NoSuchMethodError]({{site.dart_api}}/dart-core/NoSuchMethodError-class.html)
+[NoSuchMethodError]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html)
 
 :   Thrown when a receiving object (which might be null) does not
     implement a method.
 
-[ArgumentError]({{site.dart_api}}/dart-core/ArgumentError-class.html)
+[ArgumentError]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html)
 
 :   Can be thrown by a method that encounters an unexpected argument.
 
@@ -946,19 +946,19 @@ class FooException implements Exception {
 {% endprettify %}
 
 For more information, see [Exceptions](#exceptions) and the [Exception API
-docs.]({{site.dart_api}}/dart-core/Exception-class.html)
+docs.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html)
 
 
 ## dart:async - asynchronous programming
 
 Asynchronous programming often uses callback functions, but Dart
 provides alternatives:
-[Future]({{site.dart_api}}/dart-async/Future-class.html) and
-[Stream]({{site.dart_api}}/dart-async/Stream-class.html) objects. A
+[Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html) and
+[Stream]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html) objects. A
 Future is like a promise for a result to be provided sometime in the
 future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
-[dart:async]({{site.dart_api}}/dart-async/dart-async-library.html) library.
+[dart:async]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html) library.
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -1116,7 +1116,7 @@ In the preceding example, the methods run in the following order:
 
 Sometimes your algorithm needs to invoke many asynchronous functions and
 wait for them all to complete before continuing. Use the
-[`Future.wait()`]({{site.dart_api}}/dart-async/Future/wait.html)
+[`Future.wait()`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/wait.html)
 static method to manage multiple Futures and wait for them to complete:
 
 <!-- library-tour/futures/bin/main.dart -->
@@ -1401,7 +1401,7 @@ print(math.SQRT2); // 1.4142135623730951
 ### Random numbers
 
 Generate random numbers with the
-[Random]({{site.dart_api}}/dart-math/Random-class.html) class. You can
+[Random]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html) class. You can
 optionally provide a seed to the Random constructor.
 
 <!-- library-tour/math-tests/bin/main.dart -->
@@ -1423,16 +1423,16 @@ random.nextBool();  // true or false
 ### More information
 
 Refer to the [Math API
-docs]({{site.dart_api}}/dart-math/dart-math-library.html) for a full list of
+docs]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html) for a full list of
 methods. Also see the API docs for
-[num,]({{site.dart_api}}/dart-core/num-class.html)
-[int,]({{site.dart_api}}/dart-core/int-class.html) and
-[double.]({{site.dart_api}}/dart-core/double-class.html)
+[num,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html)
+[int,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html) and
+[double.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html)
 
 
 ## dart:html - browser-based apps
 
-Use the [dart:html library]({{site.dart_api}}/dart-html/dart-html-library.html) to
+Use the [dart:html library]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html) to
 program the browser, manipulate objects and elements in the DOM, and
 access HTML5 APIs. DOM stands for *Document Object Model*, which
 describes the hierarchy of an HTML page.
@@ -1463,21 +1463,21 @@ import 'dart:html';
 To use the DOM, you need to know about *windows*, *documents*,
 *elements*, and *nodes*.
 
-A [Window]({{site.dart_api}}/dart-html/Window-class.html) object represents
+A [Window]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Window-class.html) object represents
 the actual window of the web browser. Each Window has a Document object,
 which points to the document that's currently loaded. The Window object
 also has accessors to various APIs such as IndexedDB (for storing data),
 requestAnimationFrame (for animations), and more. In tabbed browsers,
 each tab has its own Window object.
 
-With the [Document]({{site.dart_api}}/dart-html/Document-class.html) object,
+With the [Document]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html) object,
 you can create and manipulate
-[Elements]({{site.dart_api}}/dart-html/Element-class.html) within the
+[Elements]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html) within the
 document. Note that the document itself is an element and can be
 manipulated.
 
 The DOM models a tree of
-[Nodes.]({{site.dart_api}}/dart-html/Node-class.html) These nodes are often
+[Nodes.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html) These nodes are often
 elements, but they can also be attributes, text, comments, and other DOM
 types. Except for the root node, which has no parent, each node in the
 DOM has one parent and might have many children.
@@ -1527,7 +1527,7 @@ subtype Element define the properties that all elements have. For
 example, all elements have `classes`, `hidden`, `id`, `style`, and
 `title` properties that you can use to set state. Subclasses of Element
 define additional properties, such as the `href` property of
-[AnchorElement.]({{site.dart_api}}/dart-html/AnchorElement-class.html)
+[AnchorElement.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html)
 
 Consider this example of specifying an anchor element in HTML:
 
@@ -1743,7 +1743,7 @@ document.body.onClick.listen((e) {
 
 To see all the events for which you can register an event listener, look
 for "onEventType" properties in the API docs for
-[Element]({{site.dart_api}}/dart-html/Element-class.html) and its
+[Element]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html) and its
 subclasses. Some common events include:
 
 -   change
@@ -1762,7 +1762,7 @@ subclasses. Some common events include:
 ### Using HTTP resources with HttpRequest
 
 Formerly known as XMLHttpRequest, the
-[HttpRequest]({{site.dart_api}}/HttpRequest-class.html) class
+[HttpRequest]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/HttpRequest-class.html) class
 gives you access to HTTP resources from within your browser-based app.
 Traditionally, AJAX-style apps make heavy use of HttpRequest. Use
 HttpRequest to dynamically load JSON data or any other resource from a
@@ -1942,7 +1942,7 @@ ws://127.0.0.1:1337/ws. The data transmitted over a WebSocket can be a
 string or a blob.  Often, the data is a JSON-formatted string.
 
 To use a WebSocket in your web app, first create a
-[WebSocket]({{site.dart_api}}/dart-html/WebSocket-class.html) object, passing
+[WebSocket]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html) object, passing
 the WebSocket URL as an argument:
 
 <!-- github.com/dart-lang/dart-samples/html5/web/websockets/basics/websocket_sample.dart -->
@@ -1972,7 +1972,7 @@ ws.onMessage.listen((MessageEvent e) {
 {% endprettify %}
 
 The message event handler receives a
-[MessageEvent]({{site.dart_api}}/dart-html/MessageEvent-class.html) object.
+[MessageEvent]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html) object.
 This object’s `data` field has the data from the server.
 
 #### Handling WebSocket events
@@ -2026,16 +2026,16 @@ void initWebSocket([int retrySeconds = 2]) {
 
 This section barely scratched the surface of using the dart:html
 library. For more information, see the documentation for
-[dart:html]({{site.dart_api}}/dart-html/dart-html-library.html).
+[dart:html]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html).
 Dart has additional libraries for more specialized web APIs, such as [web
-audio,]({{site.dart_api}}/dart-web_audio/dart-web_audio-library.html)
-[IndexedDB]({{site.dart_api}}/dart-indexed_db/dart-indexed_db-library.html), and
-[WebGL]({{site.dart_api}}/dart-web_gl/dart-web_gl-library.html).
+audio,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html)
+[IndexedDB]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html), and
+[WebGL]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html).
 
 
 ## dart:io - I/O for command-line apps
 
-The [dart:io library]({{site.dart_api}}/dart-io/dart-io-library.html) provides APIs to
+The [dart:io library]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) provides APIs to
 deal with files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers. Only command-line scripts and servers can use
 dart:io—not web apps.
@@ -2163,7 +2163,7 @@ main() async {
 
 #### Writing file contents
 
-You can use an [IOSink]({{site.dart_api}}/dart-io/IOSink-class.html) to
+You can use an [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html) to
 write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.WRITE`, completely
 overwrites existing data in the file.
@@ -2229,8 +2229,8 @@ but not limited to:
 
 -   Getting random access to a file: `open()` in File
 
-Refer to the API docs for [File]({{site.dart_api}}/dart-io/File-class.html)
-and [Directory]({{site.dart_api}}/dart-io/Directory-class.html) for a full
+Refer to the API docs for [File]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html)
+and [Directory]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html) for a full
 list of methods.
 
 
@@ -2241,7 +2241,7 @@ accessing HTTP resources, as well as running HTTP servers.
 
 #### HTTP server
 
-The [HttpServer]({{site.dart_api}}/dart-io/HttpServer-class.html) class
+The [HttpServer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html) class
 provides the low-level functionality for building web servers. You can
 match request handlers, set headers, stream data, and more.
 
@@ -2278,7 +2278,7 @@ main() async {
 
 #### HTTP client
 
-The [HttpClient]({{site.dart_api}}/dart-io/HttpClient-class.html) class
+The [HttpClient]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html) class
 helps you connect to HTTP resources from your Dart command-line or
 server-side application. You can set headers, use HTTP methods, and read
 and write data. The HttpClient class does not work in browser-based
@@ -2310,13 +2310,13 @@ main() async {
 ### More information
 
 Besides the APIs discussed in this section, the dart:io library also
-provides APIs for [processes,]({{site.dart_api}}/dart-io/Process-class.html)
-[sockets,]({{site.dart_api}}/dart-io/Socket-class.html) and [web
-sockets.]({{site.dart_api}}/dart-io/Socket-class.html)
+provides APIs for [processes,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html)
+[sockets,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html) and [web
+sockets.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Socket-class.html)
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
 
-The [dart:convert library]({{site.dart_api}}/dart-convert/dart-convert-library.html)
+The [dart:convert library]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html)
 has converters for JSON and UTF-8, as well as support for creating
 additional converters. JSON is a simple text format for representing
 structured objects and collections. UTF-8 is a common variable-width
@@ -2454,7 +2454,7 @@ main() {
 
 The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API docs for the dart:convert
-library.]({{site.dart_api}}/dart-convert/dart-convert-library.html)
+library.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html)
 
 
 ## dart:mirrors - reflection
@@ -2473,7 +2473,7 @@ files.
 
 The current workaround is to add a `@MirrorsUsed` annotation before
 the import of dart:mirrors. For details, see the
-[MirrorsUsed]({{site.dart_api}}/dart-mirrors/MirrorsUsed-class.html)
+[MirrorsUsed]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/MirrorsUsed-class.html)
 API documentation. This workaround is very likely to change, as the
 dart:mirrors library is still under development.
 </div>
@@ -2483,7 +2483,7 @@ dart:mirrors library is still under development.
 
 The mirror system represents the names of Dart declarations (classes,
 fields, and so on) by instances of the class
-[Symbol]({{site.dart_api}}/dart-core/Symbol-class.html). Symbols work
+[Symbol]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html). Symbols work
 even in code where names have changed due to minification.
 
 When you know the name of the symbol ahead of time, use a symbol
@@ -2603,7 +2603,7 @@ showFields(ClassMirror mirror) {
 }{% endprettify %}
 
 For a full list of methods, consult the [API docs for
-ClassMirror]({{site.dart_api}}/dart-mirrors/ClassMirror-class.html).
+ClassMirror]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/ClassMirror-class.html).
 
 #### Instance mirrors
 
@@ -2629,7 +2629,7 @@ assert(identical(p, person));
 
 Once you have an InstanceMirror, you can invoke methods and call getters
 and setters. For a full list of methods, consult the [API docs for
-InstanceMirror]({{site.dart_api}}/dart-mirrors/InstanceMirror-class.html).
+InstanceMirror]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/InstanceMirror-class.html).
 
 #### Invoke methods
 
@@ -2671,11 +2671,11 @@ assert(p.firstName == 'Mary');
 The article [Reflection in Dart with
 Mirrors](/articles/libraries/reflection-with-mirrors) has
 more information and examples. Also see the API docs for
-[dart:mirror,]({{site.dart_api}}/dart-mirrors/dart-mirrors-library.html) especially
-[MirrorsUsed]({{site.dart_api}}/dart-mirrors/MirrorsUsed-class.html),
-[ClassMirror,]({{site.dart_api}}/dart-mirrors/ClassMirror-class.html)
+[dart:mirror,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html) especially
+[MirrorsUsed]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/MirrorsUsed-class.html),
+[ClassMirror,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/ClassMirror-class.html)
 and
-[InstanceMirror.]({{site.dart_api}}/dart-mirrors/InstanceMirror-class.html)
+[InstanceMirror.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/InstanceMirror-class.html)
 
 
 ## Summary
@@ -2683,9 +2683,9 @@ and
 This page introduced you to the most commonly used functionality in
 many of Dart’s built-in libraries. It didn’t cover all the built-in
 libraries, however. Others that you might want to look into include
-[dart:collection,]({{site.dart_api}}/dart-collection/dart-collection-library.html)
-[dart:isolate,]({{site.dart_api}}/dart-isolate/dart-isolate-library.html) and
-[dart:typed\_data.]({{site.dart_api}}/dart-typed_data/dart-typed_data-library.html) You
+[dart:collection,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html)
+[dart:isolate,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html) and
+[dart:typed\_data.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html) You
 can get yet more libraries by using the pub tool, discussed in the next
 page. The [args,](https://pub.dartlang.org/packages/args)
 [logging,](https://pub.dartlang.org/packages/logging)

@@ -31,9 +31,9 @@ prevpage:
 <aside class="alert alert-info" markdown="1">
 <strong>Prerequisite:</strong>
 This tutorial uses the `async` and `await` language features, which rely on the
-<a href="{{site.dart_api}}/dart-async/Future-class.html" target="_blank">Future</a>
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html" target="_blank">Future</a>
 and
-<a href="{{site.dart_api}}/dart-async/Stream-class.html"
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
    target="_blank">Stream</a> classes for asynchronous support.
 Refer to [Asynchronous Programming: Futures](/tutorials/language/futures)
 and [Asynchronous Programming: Streams](/tutorials/language/streams)
@@ -250,9 +250,9 @@ The standard I/O streams are defined at the top level of the dart:io library,
 
 | Stream | Description |
 |---|---|
-| <a href="{{site.dart_api}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
-| <a href="{{site.dart_api}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
-| <a href="{{site.dart_api}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
 {: .table }
 
 Import the dart:io and dart:async libraries as follows:
@@ -361,7 +361,7 @@ The quick brown fox jumped over the lazy dog.
 ## Getting info about a file
 
 The
-<a href="{{site.dart_api}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a>
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a>
 class in the dart:io library provides properties and static methods
 that help you inspect and manipulate the file system.
 
@@ -455,7 +455,7 @@ import 'dart:convert';
 ## Writing a file
 
 The easiest way to write text to a file is to create a
-<a href="{{site.dart_api}}/dart-io/File-class.html" target="_blank">File</a>
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html" target="_blank">File</a>
 object and use the `writeAsString()` method:
 
 {% prettify dart %}
@@ -496,7 +496,7 @@ print('Done!');
 ## Getting environment information
 
 Use the
-<a href="{{site.dart_api}}/dart-io/Platform-class.html" target="_blank">Platform</a>
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html" target="_blank">Platform</a>
 class
 to get information about the machine and OS that the program is running on.
 Note: Use the Platform class from the dart:io library,
@@ -578,16 +578,16 @@ This tutorial described some basic API found in these classes from the dart:io l
 
 | API | Description |
 |---|---|
-| <a href="{{site.dart_api}}/dart-io/IOSink-class.html" target="_blank">IOSink</a> | Helper class for objects that consume data from streams. |
-| <a href="{{site.dart_api}}/dart-io/File-class.html" target="_blank">File</a> | Represents a file on the native file system |
-| <a href="{{site.dart_api}}/dart-io/Directory-class.html" target="_blank">Directory</a> | Represents a directory on the native file system |
-| <a href="{{site.dart_api}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a> | Superclass for File and Directory |
-| <a href="{{site.dart_api}}/dart-io/Platform-class.html" target="_blank">Platform</a> | Provides information about the machine and operating system |
-| <a href="{{site.dart_api}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
-| <a href="{{site.dart_api}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
-| <a href="{{site.dart_api}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
-| <a href="{{site.dart_api}}/dart-io/exitCode.html" target="_blank">exitCode</a> | Sets the exit code |
-| <a href="{{site.dart_api}}/dart-io/exit.html" target="_blank">exit()</a> | Sets the exit code and quits |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html" target="_blank">IOSink</a> | Helper class for objects that consume data from streams. |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html" target="_blank">File</a> | Represents a file on the native file system |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html" target="_blank">Directory</a> | Represents a directory on the native file system |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a> | Superclass for File and Directory |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html" target="_blank">Platform</a> | Provides information about the machine and operating system |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/exitCode.html" target="_blank">exitCode</a> | Sets the exit code |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/exit.html" target="_blank">exit()</a> | Sets the exit code and quits |
 {: .table }
 
 In addition, this tutorial covers two classes that help with command-line arguments:
@@ -604,9 +604,9 @@ Check out the [Servers with Dart](https://dart-lang.github.io/server/)
 to find more resources related to writing command-line apps.
 
 Refer to the API docs for
-<a href="{{site.dart_api}}/dart-io/dart-io-library.html" target="_blank">dart:io</a>,
-<a href="{{site.dart_api}}/dart-async/dart-async-library.html" target="_blank">dart:async</a>,
-<a href="{{site.dart_api}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert</a>,
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html" target="_blank">dart:io</a>,
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html" target="_blank">dart:async</a>,
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert</a>,
 and the
 <a href="https://www.dartdocs.org/documentation/args/latest/index.html" target="_blank">args</a>
 package for more classes, functions, and properties.

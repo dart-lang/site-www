@@ -10,7 +10,7 @@ category: dart-vm
 _Written by Mads Ager <br>
 March 2012 (updated October 2012, February 2013, January 2014, and March 2015)_
 
-The [dart:io]({{site.dart_api}}/dart-io/dart-io-library.html) library
+The [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) library
 is aimed at server-side code
 that runs on the standalone Dart VM.
 In this article we will give you a feel for
@@ -41,7 +41,7 @@ and no more pending operations are in the queue.
 One simple way to add an event to the event queue is to
 schedule a function to be called in the future.
 You can do this by creating a
-[Timer]({{site.dart_api}}/dart-async/Timer-class.html) object.
+[Timer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Timer-class.html) object.
 The following example registers a timer with the event queue
 and then drops off the end of main().
 Because a pending operation is in the event queue,
@@ -76,13 +76,13 @@ and would continue to print out 'timer' every second.
 ## File system access
 
 The dart:io library provides access to files and directories through the
-[File]({{site.dart_api}}/dart-io/File-class.html) and
-[Directory]({{site.dart_api}}/dart-io/Directory-class.html) classes.
+[File]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html) and
+[Directory]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html) classes.
 
 The following example prints its own source code.
 To determine the location of the source code being executed,
 we use the
-[Platform]({{site.dart_api}}/dart-io/Platform-class.html)
+[Platform]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html)
 class.
 
 <!--- BEGIN(io_file_system) -->{% prettify dart %}
@@ -97,7 +97,7 @@ main() async {
 {% endprettify %}<!--- END(io_file_system) -->
 
 Notice that the readAsString() method is asynchronous;
-it returns a [Future]({{site.dart_api}}/dart-async/Future-class.html)
+it returns a [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
 that returns the contents of the file
 once the file has been read from the underlying system.
 This asynchronicity allows the Dart thread to perform other work
@@ -109,7 +109,7 @@ only up to the first semicolon and then to print that.
 You could do this in two ways:
 either open the file for random access,
 or open a
-[Stream]({{site.dart_api}}/dart-async/Stream-class.html)
+[Stream]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
 for the file and stream in the data.
 
 Here is a version that opens the file for random access operations.
@@ -181,14 +181,14 @@ Exiting from the function that contains `await for` cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.
-Similarly, [IOSink]({{site.dart_api}}/dart-io/IOSink-class.html)s
+Similarly, [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html)s
 are used to stream data to
 stdout, files, sockets, HTTP connections, and so on.
 
 ## Interacting with processes
 
 For the simple case, use
-[Process.run()]({{site.dart_api}}/dart-io/Process/run.html)
+[Process.run()]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process/run.html)
 to run a process
 and collect its output. Use `run()` when you don't
 need interactive control over the process.
@@ -205,7 +205,7 @@ main() async {
 {% endprettify %}<!--- END(io_process) -->
 
 You can also start a process by creating a
-[Process]({{site.dart_api}}/dart-io/Process-class.html) object
+[Process]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html) object
 using the Process.start() constructor.
 Once you have a Process object you can interact with the process
 by writing data to its stdin sink,
@@ -218,9 +218,9 @@ The following example runs 'ls -l' in a separate process
 and prints the output and the exit code for the process to stdout.
 Since we are interested in getting lines,
 we use a
-[Utf8Decoder]({{site.dart_api}}/dart-convert/Utf8Decoder-class.html),
+[Utf8Decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html),
 which decodes chunks of bytes into strings followed by a
-[LineSplitter]({{site.dart_api}}/dart-convert/LineSplitter-class.html),
+[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html),
 which splits the strings at line boundaries.
 
 <!--- BEGIN(io_process_transform) -->{% prettify dart %}
@@ -270,7 +270,7 @@ main() async {
 dart:io makes it easy to write HTTP servers and clients.
 To write a simple web server,
 all you have to do is create an
-[HttpServer]({{site.dart_api}}/dart-io/HttpServer-class.html)
+[HttpServer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html)
 and hook up a listener (using `await for`) to its stream of `HttpRequest`s.
 
 Here is a simple web server
@@ -338,7 +338,7 @@ main() {
 {% endprettify %}<!--- END(io_http_server_file) -->
 
 Writing HTTP clients is very similar to using the
-[HttpClient]({{site.dart_api}}/dart-io/HttpClient-class.html)
+[HttpClient]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html)
 class.
 
 

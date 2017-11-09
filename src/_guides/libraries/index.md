@@ -58,7 +58,7 @@ at the following links.
 : API topics ranging from zones to streams to converters.
 
 API reference documentation
-: * [api.dartlang.org]({{site.dart_api}}):
+: * [api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}):
     Generated docs for dart:* libraries
   * [docs.flutter.io](http://docs.flutter.io/):
     Generated docs for Flutter libraries

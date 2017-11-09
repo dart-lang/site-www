@@ -59,8 +59,8 @@ more fully.
 Await expressions let you write asynchronous code almost as if it were
 synchronous. Suppose you have a variable `myFile` that refers to a
 file. (For details on files, see the
-[File]({{site.dart_api}}/dart-io/File-class.html) class in
-[`dart:io`]({{site.dart_api}}/dart-io/dart-io-library.html).)
+[File]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html) class in
+[`dart:io`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html).)
 You decide to copy it to a new location `newPath`, declared as
 
 {% prettify dart %}
@@ -74,7 +74,7 @@ myFile.copy(newPath).path == newPath;
 {% endprettify %}
 
 Unfortunately, that won't work. Since Dart's I/O API is asynchronous,
-the copy operation returns a [Future]({{site.dart_api}}/dart-async/Future-class.html),
+the copy operation returns a [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html),
 and you can't call `path` on that. You must schedule a callback on the
 Future returned from `copy()`, and that callback performs the
 comparison with its incoming parameter `f`:

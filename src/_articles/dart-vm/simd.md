@@ -150,7 +150,7 @@ but it can reap performance wins.
 
 ## Types
 
-The [dart:typed_data library]({{site.dart_api}}/dart-typed_data/dart-typed_data-library.html)
+The [dart:typed_data library]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html)
 has four types to support SIMD:
 Float32x4, Int32x4, Float32x4List and Int32x4List.
 
@@ -159,7 +159,7 @@ Float32x4, Int32x4, Float32x4List and Int32x4List.
 Each lane in a Float32x4 holds a single-precision (32-bit) floating-point value.
 Most of the examples in this article use Float32x4.
 For a complete list of methods and constructors,
-see the [Float32x4 API reference]({{site.dart_api}}/dart-typed_data/Float32x4-class.html).
+see the [Float32x4 API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Float32x4-class.html).
 
 
 ### Int32x4
@@ -184,19 +184,19 @@ This constructor creates a new Int32x4 instance
 with 0xFFFFFFFF in lanes where the boolean parameter is true
 and 0x0 in lanes where the boolean parameter is false.
 
-The [Int32x4 API reference]({{site.dart_api}}/dart-typed_data/Int32x4-class.html)
+The [Int32x4 API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Int32x4-class.html)
 has a complete list of methods and constructors.
 
 
 ### Float32x4List
 
 When you need a list of Float32x4 objects, use
-[Float32x4List]({{site.dart_api}}/dart-typed_data/Float32x4List-class.html)
+[Float32x4List]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Float32x4List-class.html)
 instead of List\<Float32x4> whenever possible.
 See the [Examples](#examples) section
 for code that uses Float32x4List.
 For a complete list of methods and constructors, see the
-[Float32x4List API reference]({{site.dart_api}}/dart-typed_data/Float32x4List-class.html).
+[Float32x4List API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Float32x4List-class.html).
 
 
 ## Common techniques
@@ -461,9 +461,9 @@ double findLargestNumber(Float32x4List list) {
 For more details, check out these resources:
 
 * API reference documentation for
-  [Float32x4]({{site.dart_api}}/dart-typed_data/Float32x4-class.html),
-  [Int32x4]({{site.dart_api}}/dart-typed_data/Int32x4-class.html), and
-  [Float32x4List]({{site.dart_api}}/dart-typed_data/Float32x4List-class.html)
+  [Float32x4]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Float32x4-class.html),
+  [Int32x4]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Int32x4-class.html), and
+  [Float32x4List]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/Float32x4List-class.html)
 * Code that uses SIMD:
   * [vector_math](https://github.com/johnmccutchan/vector_math),
     a library for 2D and 3D applications

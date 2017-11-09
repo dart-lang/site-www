@@ -99,7 +99,7 @@ mind:
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects. All objects inherit from the
-    [Object]({{site.dart_api}}/dart-core/Object-class.html) class.
+    [Object]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html) class.
 
 -   Specifying static types (such as `num` in the preceding example)
     clarifies your intent and enables static checking by tools.
@@ -356,24 +356,24 @@ use the `Map()` constructor to create a map, using code such as
 
 Dart numbers come in two flavors:
 
-[`int`]({{site.dart_api}}/dart-core/int-class.html)
+[`int`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html)
 
 :   Integer values, which generally should be in the range
     -2<sup>53</sup> to 2<sup>53</sup>
 
-[`double`]({{site.dart_api}}/dart-core/double-class.html)
+[`double`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html)
 
 :   64-bit (double-precision) floating-point numbers, as specified by
     the IEEE 754 standard
 
 Both `int` and `double` are subtypes of
-[`num`.]({{site.dart_api}}/dart-core/num-class.html)
+[`num`.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html)
 The num type includes basic operators such as +, -, /, and \*,
 and is also where you’ll find `abs()`,` ceil()`,
 and `floor()`, among other methods.
 (Bitwise operators, such as \>\>, are defined in the `int` class.)
 If num and its subtypes don’t have what you’re looking for, the
-[dart:math]({{site.dart_api}}/dart-math/dart-math-library.html) library might.
+[dart:math]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html) library might.
 
 <div class="alert alert-warning" markdown="1">
 **Warning:**
@@ -646,7 +646,7 @@ assert(iMeantToDoThis.isNaN);
 
 Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
-[List]({{site.dart_api}}/dart-core/List-class.html) objects, so we
+[List]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html) objects, so we
 usually just call them *lists*.
 
 Dart list literals look like JavaScript array literals. Here’s a simple
@@ -702,7 +702,7 @@ In general, a map is an object that associates keys and values. Both
 keys and values can be any type of object. Each *key* occurs only once,
 but you can use the same *value* multiple times. Dart support for maps
 is provided by map literals and the
-[Map]({{site.dart_api}}/dart-core/Map-class.html) type.
+[Map]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html) type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
@@ -817,7 +817,7 @@ To specify more or less than 4 hex digits,
 place the value in curly brackets.
 For example, the laughing emoji (😆) is `\u{1f600}`.
 
-The [String]({{site.dart_api}}/dart-core/String-class.html)
+The [String]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html)
 class has several properties you can use to extract rune information.
 The `codeUnitAt` and `codeUnit` properties return 16-bit code
 units. Use the `runes` property to get the runes of a string.
@@ -865,7 +865,7 @@ For more information, see
 
 ### Symbols
 
-A [Symbol]({{site.dart_api}}/dart-core/Symbol-class.html) object
+A [Symbol]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html) object
 represents an operator or identifier declared in a Dart program. You
 might never need to use symbols, but they're invaluable for APIs that
 refer to identifiers by name, because minification changes identifier
@@ -910,7 +910,7 @@ For more information on symbols, see
 
 Dart is a true object-oriented language, so even functions are objects
 and have a type,
-[`Function`]({{site.dart_api}}/dart-core/Function-class.html).
+[`Function`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html).
 This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
@@ -1509,7 +1509,7 @@ The following table lists the meanings of equality and relational operators.
 To test whether two objects x and y represent the same thing, use the
 `==` operator. (In the rare case where you need to know whether two
 objects are the exact same object, use the
-[`identical()`]({{site.dart_api}}/dart-core/identical.html)
+[`identical()`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html)
 function instead.) Here’s how the `==` operator works:
 
 1.  If *x* or *y* is null, return true if both are null, and false if only
@@ -1881,7 +1881,7 @@ The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
 If the object that you are iterating over is an Iterable, you can use the
-[`forEach()`]({{site.dart_api}}/dart-core/Iterable/forEach.html)
+[`forEach()`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html)
 method. Using `forEach()` is a good option if you don’t need to
 know the current iteration counter:
 
@@ -1949,7 +1949,7 @@ for (int i = 0; i < candidates.length; i++) {
 {% endprettify %}
 
 You might write that example differently if you’re using an
-[Iterable]({{site.dart_api}}/dart-core/Iterable-class.html)
+[Iterable]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html)
 such as a list or set:
 
 <?code-excerpt "language-tour/flow/break-continue/web/main.dart (where)"?>
@@ -2110,7 +2110,7 @@ The first argument to `assert` can be any expression that
 resolves to a boolean value or to a function. If the expression’s value
 or function’s return value is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
-[AssertionError]({{site.dart_api}}/dart-core/AssertionError-class.html))
+[AssertionError]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html))
 is thrown.
 
 
@@ -2126,8 +2126,8 @@ Methods do not declare which exceptions they might throw, and you are
 not required to catch any exceptions.
 
 Dart provides
-[Exception]({{site.dart_api}}/dart-core/Exception-class.html) and
-[Error]({{site.dart_api}}/dart-core/Error-class.html)
+[Exception]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html) and
+[Error]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html)
 types, as well as numerous predefined subtypes. You can, of course,
 define your own exceptions. However, Dart programs can throw any
 non-null object—not just Exception and Error objects—as an exception.
@@ -2150,8 +2150,8 @@ throw 'Out of llamas!';
 
 <div class="alert alert-info" markdown="1">
   **Note:** Production-quality code usually throws types that implement
-  [Error]({{site.dart_api}}/dart-core/Error-class.html) or
-  [Exception]({{site.dart_api}}/dart-core/Exception-class.html).
+  [Error]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html) or
+  [Exception]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html).
 </div>
 
 Because throwing an exception is an expression, you can throw exceptions
@@ -2207,7 +2207,7 @@ your exception handler needs the exception object.
 You can specify one or two parameters to `catch()`.
 The first is the exception that was thrown,
 and the second is the stack trace
-(a [StackTrace]({{site.dart_api}}/dart-core/StackTrace-class.html) object).
+(a [StackTrace]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html) object).
 
 <?code-excerpt "language-tour/flow/exceptions/web/main.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 {% prettify dart %}
@@ -2284,7 +2284,7 @@ Learn more by reading the
 
 Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
-descend from [Object.]({{site.dart_api}}/dart-core/Object-class.html)
+descend from [Object.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html)
 *Mixin-based inheritance* means that although every class (except for
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
@@ -2361,7 +2361,7 @@ assert(identical(a, b)); // They are the same instance!
 To get an object's type at runtime,
 you can use Object's `runtimeType` property,
 which returns a
-[Type]({{site.dart_api}}/dart-core/Type-class.html) object.
+[Type]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html) object.
 
 <?code-excerpt "language-tour/object-classes/bin/main.dart (runtimeType)"?>
 {% prettify dart %}
@@ -3300,7 +3300,7 @@ can pass a static method as a parameter to a constant constructor.
 ## Generics
 
 If you look at the API documentation for the basic array type,
-[List,]({{site.dart_api}}/dart-core/List-class.html)
+[List,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html)
 you’ll see that the
 type is actually `List<E>`. The \<...\> notation marks List as a
 *generic* (or *parameterized*) type—a type that has formal type
@@ -3534,7 +3534,7 @@ Use `import` to specify how a namespace from one library is used in the
 scope of another library.
 
 For example, Dart web apps generally use the
-[dart:html]({{site.dart_api}}/dart-html/dart-html-library.html)
+[dart:html]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html)
 library, which they can import like this:
 
 <?code-excerpt "language-tour/libraries/using_libraries.dart"?>
@@ -4129,7 +4129,7 @@ for the Food class.
 To parse Dart code and generate HTML documentation, you can use the SDK’s
 [documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
 For an example of generated documentation, see the [Dart API
-documentation.]({{site.dart_api}}) For advice on how to structure
+documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice on how to structure
 your comments, see
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 

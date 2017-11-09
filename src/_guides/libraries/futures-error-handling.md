@@ -9,7 +9,7 @@ You can write asynchronous code in two ways:
 
 * Using `async` functions and `await` expressions, which use Futures behind
   the scenes.
-* Using the [Future API]({{site.dart_api}}/dart-async/dart-async-library.html)
+* Using the [Future API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
   directly.
 
 <aside class="alert alert-info" markdown="1">
@@ -428,7 +428,7 @@ The following docs have more information on Futures:
 
 * [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop),
   an article that describes how to schedule tasks using Futures
-* [Future API reference]({{site.dart_api}}/dart-async/Future-class.html)
+* [Future API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
 
 {% comment %}
 The tests for this article are at /src/tests/site/articles/futures-and-error-handling.
