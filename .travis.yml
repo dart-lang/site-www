@@ -24,7 +24,6 @@ install:
   - ./scripts/write-ci-info.sh -v
 
 script:
-  - dart --version
   - $TASK
 
 after_script:

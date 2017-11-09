@@ -25,4 +25,7 @@ $DARTFMT -l 62 examples/language-tour/flow/exceptions/web/main.dart
 $DARTFMT -l 75 examples/language-tour/flow/break-continue/web/main.dart
 
 # If any files were changed, then exit 1:
-[[ -z $(git status --short) ]];
+REFORMATTED_FILES=$(git status --short)
+echo
+echo $REFORMATTED_FILES
+[[ -z $REFORMATTED_FILES ]];
