@@ -73,7 +73,7 @@ Doc comments are especially handy because [dartdoc][] parses them and generates
 before a declaration and uses the special `///` syntax that dartdoc looks for.
 
 [dartdoc]: https://github.com/dart-lang/dartdoc
-[docs]: {{site.dart_api}}
+[docs]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
 
 ### DO use `///` doc comments to document members and types.
 

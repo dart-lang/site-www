@@ -143,7 +143,7 @@ This means that each entry in a List is as wide as the CPU’s pointer type.
 
 Dart offers typed lists that store only numbers.
 These lists are available in the
-[dart:typed_data library]({{site.dart_api}}/dart-typed_data/dart-typed_data-library.html).
+[dart:typed_data library]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html).
 Typed lists can store only numbers
 and cannot hold regular objects or have a null entry.
 The dart:typed_data library has a distinct list for each common integer size,

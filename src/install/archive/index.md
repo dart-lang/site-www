@@ -12,7 +12,7 @@ Use this index to install
 [specific versions](/install#about-sdk-release-channels-and-version-strings) of the
 [Dart SDK](/tools/sdk),
 [Dartium,]({{site.webdev}}/tools/dartium)
-and the [Dart API documentation.]({{site.dart_api}})
+and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 
 Want to install Dart with your OS's package manager?
 Go to the [main Dart installation page](/install).

@@ -262,7 +262,7 @@ subscription.
 ## Methods that process a stream {#process-stream-methods}
 
 The following methods on
-[Stream&lt;T&gt;]({{site.dart_api}}/dart-async/Stream-class.html)
+[Stream&lt;T&gt;]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
 process the stream and return a result:
 
 {% prettify dart %}
@@ -455,5 +455,5 @@ and asynchronous programming in Dart.
   an article that explains how to handle errors using the Future API
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
   a section in the [language tour](/guides/language/language-tour)
-* [Stream API reference]({{site.dart_api}}/dart-async/Stream-class.html)
+* [Stream API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
 

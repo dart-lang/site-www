@@ -522,7 +522,7 @@ Still, some methods that technically create a new object don't feel
 even though it creates a new URI from the given arguments. Likewise, classes
 implementing the [Builder pattern][] may read better using static methods.
 
-[uri.parse]: {{site.dart_api}}/dart-core/Uri/parse.html
+[uri.parse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/parse.html
 [builder pattern]: http://en.wikipedia.org/wiki/Builder_pattern
 
 But, in most cases, you should use a constructor even though it's more verbose.

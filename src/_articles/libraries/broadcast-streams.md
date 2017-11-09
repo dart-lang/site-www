@@ -469,9 +469,9 @@ listener swapping and StreamIterators.
 
 For more information, see the API documentation:
 
-* [Stream]({{site.dart_api}}/dart-async/Stream-class.html)
-* [StreamSubscription]({{site.dart_api}}/dart-async/StreamSubscription-class.html)
-* [StreamIterator]({{site.dart_api}}/dart-async/StreamIterator-class.html)
+* [Stream]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
+* [StreamSubscription]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamSubscription-class.html)
+* [StreamIterator]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamIterator-class.html)
 
 _Thanks to Lasse Reichstein Holst Nielsen, Anders Johnsen,
 and Kathy Walrath for their suggestions and help to improve this article._

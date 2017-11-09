@@ -68,7 +68,7 @@ will be like, and who won today's game. Not good.
 To help keep the application responsive, Dart library authors use an
 asynchronous model when defining functions that do potentially expensive work.
 Such functions return their value using a
-<a href="{{site.dart_api}}/dart-async/Future-class.html" target="_blank">Future</a>.
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html" target="_blank">Future</a>.
 
 ## What is a Future? {#what-is-a-future}
 
@@ -431,7 +431,7 @@ and asynchronous programming in Dart:
   an article that describes how to schedule tasks using Futures
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
   a section in the [language tour](/guides/language/language-tour)
-* [Future API reference]({{site.dart_api}}/dart-async/Future-class.html)
+* [Future API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
 
 ## What next? {#what-next}
 

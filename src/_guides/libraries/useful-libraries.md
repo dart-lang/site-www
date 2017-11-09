@@ -8,7 +8,7 @@ You can use many Dart libraries when writing your code.
 Dart libraries come from a variety of sources:
 
 * Core libraries&mdash;such as dart:core, dart:async, and dart:collection&mdash;are
-  distributed with the SDK and documented at [api.dartlang.org]({{site.dart_api}}).
+  distributed with the SDK and documented at [api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}).
 * Libraries shared with the Dart community are distributed as library packages,
   published at [pub.dartlang.org](https://pub.dartlang.org/).
   The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
@@ -24,7 +24,7 @@ and tells you where to learn more about some of the most widely used Dart librar
 
 <aside class="alert alert-info" markdown="1">
 **Tip:**
-If you don't find the functionality you need on [api.dartlang.org]({{site.dart_api}}),
+If you don't find the functionality you need on [api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}),
 check [pub.dartlang.org](https://pub.dartlang.org/).
 </aside>
 
@@ -139,7 +139,7 @@ Use the following resources to learn more about libraries and library packages.
 
 ### API reference documentation
 
-* [api.dartlang.org]({{site.dart_api}}) contains the generated docs for dart:* libraries.
+* [api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) contains the generated docs for dart:* libraries.
 * [dartdocs.org](https://www.dartdocs.org/) contains the generated docs for
   packages published on pub.dartlang.org.
 * [docs.flutter.io](http://docs.flutter.io/) contains the generated docs for Flutter

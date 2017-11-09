@@ -248,7 +248,7 @@ See [Who Uses Dart] for a more complete list.
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
 [libs]: /guides/libraries/library-tour
-[JSON]: {{site.dart_api}}/dart-convert/JsonCodec-class.html
+[JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: http://news.dartlang.org/2013/12/ecma-forms-tc52-for-dart-standardization.html
 [Dart on the Server]: https://dart-lang.github.io/server/
 [Dart Tools]: /tools/
