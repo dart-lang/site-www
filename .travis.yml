@@ -13,14 +13,15 @@ env:
 
 before_install:
   - nvm install 6
-  - nvm use 6
+  - source ./scripts/env-set.sh
+  - ./scripts/before-install.sh
 
 install:
-  - bundle install
-  - npm install -g firebase-tools superstatic --no-optional
+  - ./scripts/install.sh
   - ./scripts/write-ci-info.sh -v
 
 script:
+  - dart --version
   - ./deploy/cibuild
 
 after_script:
@@ -42,4 +43,5 @@ deploy:
     script: ./deploy/deploy-firebase.sh
     skip_cleanup: true
     on:
+      repo: dart-lang/site-www
       branch: master
