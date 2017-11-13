@@ -3,8 +3,9 @@
 
 analyzer:
   strong-mode: true
-#   exclude:
-#     - path/to/excluded/files/**
+  exclude:
+    - language_tour/**
+    - library_tour/**
 
 linter:
   rules:
