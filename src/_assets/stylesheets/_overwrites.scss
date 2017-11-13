@@ -344,15 +344,36 @@ body.homepage .get-started-section {
 	}
 }
 
-/* Don't display navigation aids when printing */
 @media print {
+	/* Don't display navigation aids when printing */
 	#page-header, #sidenav, #subnav, #page-footer, .banner, #toc {
 		display:none !important;
 	}
-  #page-content {
-    > article {
-      width: auto;
-      margin: 0;
-    }
-  }
+
+	#page-content {
+		> article {
+			width: auto;
+			margin: 0;
+		}
+	}
+
+	/* Display underlines under links */
+	a {
+		text-decoration: underline;
+	}
+
+	/* Remove external link icon and link path */
+	a:after {
+		content: none !important;
+	}
+
+	/* Show borders around notes and code blocks */
+	.alert, pre {
+		border: 1px solid black;
+	}
+
+	/* Hide "Open Dartpad" link */
+	.run-in-dartpad {
+		display: none;
+	}
 }
