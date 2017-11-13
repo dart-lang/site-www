@@ -359,7 +359,7 @@ body.homepage .get-started-section {
 
 	/* Display underlines under links */
 	a {
-		text-decoration: dotted underline;
+		text-decoration: underline;
 	}
 
 	/* Remove external link icon and link path */
@@ -367,14 +367,13 @@ body.homepage .get-started-section {
 		content: none !important;
 	}
 
-	/* Show borders around notes  */
-	.alert {
+	/* Show borders around notes and code blocks */
+	.alert, pre {
 		border: 1px solid black;
 	}
 
-	/* Show top and bottom borders for code blocks */
-	pre {
-		border-top: 1px dashed black;
-		border-bottom: 1px dashed black;
+	/* Hide "Open Dartpad" link */
+	.run-in-dartpad {
+		display: none;
 	}
 }
