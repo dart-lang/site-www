@@ -55,7 +55,7 @@ void miscDeclAnalyzedButNotTested(bool c) {
 ```
 
 That is, code regions are placed with a (headless) code block. This ensures
-that code region declarations (which somethings re-declare the same entity)
+that code region declarations (which sometimes re-declare the same entity)
 don't clash.
 
 ### Where to find a code excerpt
@@ -69,3 +69,26 @@ are in `lib`. Larger examples are in `lib`, and their tests (if any) under `test
 Not all code excerpts are tested because some are just fragments of anything
 useful, and others illustrate features that would required significant test
 scaffolding to be written and the effort isn't worth the small gain.
+
+### _$print_
+
+All code excerpts use `$print()` instead of `print()`. The global `$print`
+variable (defined in `lib/util/print.dart`) is overwritten when running
+tests so that we can capture print output. By default `$print == print`.
+
+Of course, when displaying code excerpts in the Language Tour page,
+we show `print()` instead. It is `scripts/refresh-code-excerpts.sh` that does
+a global replace of `$print()` by `print()`.
+
+### Code highlights
+
+Code segments enclosed in the special syntax [!...!] will be highlighted.
+For example, the code
+
+    ```
+      int [!foo!] = bar;
+    ```
+
+will display as
+
+  <code>int <mark>foo</mark> = bar;</code>

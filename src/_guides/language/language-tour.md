@@ -1583,9 +1583,11 @@ use the `??=` operator.
 
 <?code-excerpt "test/language_tour/operators_test.dart (assignment)"?>
 {% prettify dart %}
-a = value; // Assign value to a
-b ??= value; // Assign value to b if b is null;
+// Assign value to a
+a = value;
+// Assign value to b if b is null;
 // otherwise, b stays the same
+b ??= value;
 {% endprettify %}
 
 {% comment %}
@@ -1597,9 +1599,11 @@ https://dartpad.dartlang.org/9de887c4daf76d39e524
 {% prettify dart %}
 void assignValues(int a, int b, int value) {
   print('Initially: a == $a, b == $b');
-  a = value; // Assign value to a
-  b ??= value; // Assign value to b if b is null;
+  // Assign value to a
+  a = value;
+  // Assign value to b if b is null;
   // otherwise, b stays the same
+  b ??= value;
   print('After: a == $a, b == $b');
 }
 
@@ -3698,6 +3702,11 @@ try {
 <a id="async"></a>
 ### Declaring async functions
 
+{% comment %}
+update-for-dart-2
+https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+{% endcomment %}
+
 An _async function_ is a function whose body is marked with
 the `async` modifier.
 Although an async function might perform time-consuming operations,
@@ -3836,7 +3845,7 @@ class WannabeFunction {
 }
 
 var wf = new WannabeFunction();
-var out = wf("Hi", "there,", "gang");
+var out = wf('Hi', 'there,', 'gang');
 
 main() => print(out);
 {% endprettify %}

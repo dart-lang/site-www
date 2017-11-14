@@ -94,9 +94,11 @@ void main() {
     void assignValues(int a, int b, int value) {
       $print('Initially: a == $a, b == $b');
       // #docregion assignment
-      a = value; // Assign value to a
-      b ??= value; // Assign value to b if b is null;
+      // Assign value to a
+      a = value;
+      // Assign value to b if b is null;
       // otherwise, b stays the same
+      b ??= value;
       // #enddocregion assignment
       $print('After: a == $a, b == $b');
     }
