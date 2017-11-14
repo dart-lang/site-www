@@ -10,7 +10,7 @@ elif [[ -z "$NGIO_ENV_DEFS" || "$1" == "--reset" ]]; then
     export ANSI_RESET="\033[0m"
     echo -e "${ANSI_YELLOW}Setting environment variables from scripts/env-set.sh${ANSI_RESET}"
 
-    nvm use 6
+    nvm use 8
 
     # Configure RVM so it doesn't complain if it isn't first in your PATH:
     RVMRC=~/.rvmrc
