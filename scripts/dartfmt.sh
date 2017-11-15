@@ -4,6 +4,8 @@
 
 set -e -o pipefail
 
+cd `dirname $0`/..
+
 DARTFMT="dartfmt -w"
 EXAMPLES=examples
 
@@ -23,6 +25,18 @@ $DARTFMT -l 60 \
 $DARTFMT -l 62 examples/language_tour/flow/exceptions/web/main.dart
 
 $DARTFMT -l 75 examples/language_tour/flow/break-continue/web/main.dart
+
+# New code
+
+$DARTFMT -l 60 \
+  examples/lib/language_tour/classes/immutable_point.dart \
+  examples/lib/language_tour/classes/logger_with_main.dart \
+  examples/lib/language_tour/classes/no_such_method.dart \
+  examples/lib/language_tour/classes/orchestra.dart \
+  examples/test/language_tour/built_in_types_test.dart \
+  examples/test/language_tour/functions_test.dart
+
+$DARTFMT -l 65 examples/lib/language_tour/exceptions.dart
 
 # If any files were changed, then exit 1:
 REFORMATTED_FILES=$(git status --short)

@@ -3,8 +3,10 @@
 
 analyzer:
   strong-mode: true
-#   exclude:
-#     - path/to/excluded/files/**
+  exclude:
+    # Exclude the "old" sources. Only the new sources need be analyzed.
+    - language_tour/**
+    - library_tour/**
 
 linter:
   rules:
