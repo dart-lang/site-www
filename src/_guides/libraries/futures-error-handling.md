@@ -41,48 +41,68 @@ handling](/guides/language/language-tour#exceptions)&mdash;`try`, `catch`,
 and `finally`&mdash;to handle errors in code that uses async functions
 and await expressions. For example:
 
-{% prettify dart %}
-Future main() async {
-  var dir = new Directory('/tmp');
+{% comment %}
+Example code is here:
+https://gist.github.com/cb5e9c9b2d8a58a06df7b41b69335a2b
 
-  [[highlight]]try[[/highlight]] {
-    var dirList = dir.list();
-    await for (FileSystemEntity f in dirList) {
-      if (f is File) {
-        print('Found file ${f.path}');
-      } else if (f is Directory) {
-        print('Found dir ${f.path}');
-      }
-    }
-  } [[highlight]]catch[[/highlight]] (e) {
-    print(e.toString());
-  }
-}
-{% endprettify %}
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=cb5e9c9b2d8a58a06df7b41b69335a2b&horizontalRatio=75&verticalRatio=80&strong=true"
+    width="100%"
+    height="550px"
+    style="border: 1px solid #ccc;">
+</iframe>
 
 The rest of this guide addresses handling errors when using the Future API.
 
 ## The Future API and callbacks
 
 Functions that use the Future API register callbacks that handle
-the value (or the error) that completes a Future. For example:
+the value (or the error) that completes a Future. For example,
+here's the previous example converted to use Future methods
+instead of `async` and `await`:
 
-{% prettify dart %}
-myFunc().then(processValue)
-        .catchError(handleError);
+{% comment %}
+Example code is here:
+https://gist.github.com/533bce331d06d5867eb72975d2001a1c
 
-{% endprettify %}
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
 
-The registered callbacks fire based on the following rules: `then()`'s
-callback fires if it is invoked on a Future that completes with a value;
-`catchError()`'s callback fires if it is invoked on a Future that completes
-with an error.
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=533bce331d06d5867eb72975d2001a1c&horizontalRatio=75&verticalRatio=80&strong=true"
+    width="100%"
+    height="550px"
+    style="border: 1px solid #ccc;">
+</iframe>
 
-In the example above, if `myFunc()`'s Future completes with a value,
-`then()`'s callback fires. If no new error is produced within `then()`,
-`catchError()`'s callback does not fire. On the other hand, if `myFunc()`
-completes with an error, `then()`'s callback does not fire, and
-`catchError()`'s callback does.
+The registered callbacks fire based on the following rules:
+
+* `then()`'s callback fires if it is invoked on a Future that
+  completes with a **value**.
+* `catchError()`'s callback fires if it is invoked on a Future that
+  completes with an **error**.
+
+Here's a simpler example that's the basis of the rest of the
+examples in this page:
+
+{% comment %}
+Example code is here:
+https://gist.github.com/d73a118d4785c0495fcf84ee847a5f0a
+
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=d73a118d4785c0495fcf84ee847a5f0a&horizontalRatio=75&verticalRatio=87&strong=true"
+    width="100%"
+    height="460px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
+
 
 ## Examples of using then() with catchError()
 
@@ -97,22 +117,28 @@ The next few sections give examples of this pattern.
 The following example deals with throwing an exception from within `then()`'s
 callback and demonstrates `catchError()`'s versatility as an error handler:
 
-{% prettify dart %}
-myFunc()
-  .then((value) {
-    doSomethingWith(value);
-    ...
-    throw("some arbitrary error");
-  })
-  .catchError(handleError);
-{% endprettify %}
+{% comment %}
+Example code is here:
+https://gist.github.com/a98c00ce02cc89808a28822c35af1b49
 
-If `myFunc()`'s Future completes with a value, `then()`'s callback fires. If
+TODO: Figure out the best way to store & test this code.
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=a98c00ce02cc89808a28822c35af1b49&horizontalRatio=75&verticalRatio=80&strong=true"
+    width="100%"
+    height="500px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
+If `myFunc()`'s Future completes with a **value**,
+`then()`'s callback fires. If
 code within `then()`'s callback throws (as it does in the example above),
 `then()`'s Future completes with an error. That error is handled by
 `catchError()`.
 
-If `myFunc()`'s Future completes with an error, `then()`'s Future completes
+If `myFunc()`'s Future completes with an **error**,
+`then()`'s Future completes
 with that error. The error is also handled by `catchError()`.
 
 Regardless of whether the error originated within `myFunc()` or within
@@ -131,6 +157,10 @@ abstract Future then(onValue(T value), {onError(AsyncError asyncError)})
 Register the optional onError callback only if you want to differentiate
 between an error forwarded _to_ `then()`, and an error generated _within_
 `then()`:
+
+{% comment %}
+TODO: convert this one. For some reason, I can't get it to work.
+{% endcomment %}
 
 {% prettify dart %}
 funcThatThrows()
@@ -153,6 +183,10 @@ to catch the error within `then()`.
 
 It is common to have a succession of `then()` calls, and catch errors
 generated from any part of the chain using `catchError()`:
+
+{% comment %}
+TODO: convert this one. I can't get it to work.
+{% endcomment %}
 
 {% prettify dart %}
 Future<String> one()   => new Future.value("from one");
