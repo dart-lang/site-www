@@ -55,7 +55,8 @@ class PhoneNumber {
   String number, label;
 }
 
-class PhoneNumberBuilder extends PhoneNumber with Builder<PhoneNumber> {
+class PhoneNumberBuilder extends PhoneNumber
+    with Builder<PhoneNumber> {
   @override
   PhoneNumber build() => null;
 }
@@ -65,7 +66,8 @@ class AddressBook {
   PhoneNumber phone;
 }
 
-class AddressBookBuilder extends AddressBook with Builder<AddressBook> {
+class AddressBookBuilder extends AddressBook
+    with Builder<AddressBook> {
   @override
   AddressBook build() => null;
 }

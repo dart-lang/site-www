@@ -6,7 +6,8 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     int x = 1;
     int hex = 0xDEADBEEF;
-    int bigInt = 34653465834652437659238476592374958739845729;
+    int bigInt =
+        34653465834652437659238476592374958739845729;
     // #enddocregion integer-literals
   }
 
@@ -53,7 +54,8 @@ void miscDeclAnalyzedButNotTested() {
     var aString = 'a string';
     const aConstList = const [1, 2, 3];
 
-    const validConstString = '$aConstNum $aConstBool $aConstString';
+    const validConstString =
+        '$aConstNum $aConstBool $aConstString';
     // const invalidConstString = '$aNum $aBool $aString $aConstList';
     // #enddocregion string-literals
   }
@@ -140,7 +142,8 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion map-add-item
     var gifts = {'first': 'partridge'};
-    gifts['fourth'] = 'calling birds'; // Add a key-value pair
+    gifts['fourth'] =
+        'calling birds'; // Add a key-value pair
     // #enddocregion map-add-item
   }
 
@@ -189,9 +192,10 @@ class SymbolExampleNotUsedYet {
   void main() {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
-    print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-    print(Function
-        .apply(int.parse, ['11a'], {#radix: 16, #onError: handleError}));
+    print(Function.apply(
+        int.parse, ['11a'], {#onError: handleError}));
+    print(Function.apply(int.parse, ['11a'],
+        {#radix: 16, #onError: handleError}));
   }
 
   int handleError(String source) {

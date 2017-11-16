@@ -1,6 +1,7 @@
 import 'package:test/test.dart';
 
-import 'package:examples/language_tour/typedefs/misc.dart' as misc;
+import 'package:examples/language_tour/typedefs/misc.dart'
+    as misc;
 import 'package:examples/language_tour/typedefs/sorted_collection_1.dart'
     as sorted_collection_1;
 import 'package:examples/language_tour/typedefs/sorted_collection_2.dart'

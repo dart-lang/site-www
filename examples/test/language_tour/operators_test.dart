@@ -1,6 +1,7 @@
 // #docplaster
 import 'package:test/test.dart';
-import 'package:examples/language_tour/classes/employee.dart' as employee;
+import 'package:examples/language_tour/classes/employee.dart'
+    as employee;
 import 'package:examples/language_tour/util/logging_printer.dart';
 import 'package:examples/language_tour/util/print.dart';
 
@@ -164,7 +165,8 @@ void main() {
 
     // #docregion if-null-alt
     // Slightly longer version uses ?: operator.
-    String playerName2(String name) => name != null ? name : 'Guest';
+    String playerName2(String name) =>
+        name != null ? name : 'Guest';
 
     // Very long version uses if-else statement.
     String playerName3(String name) {
@@ -177,7 +179,9 @@ void main() {
 
     // #enddocregion if-null-alt
     final funcs = [playerName1, playerName2, playerName3];
-    expect(funcs.map((f) => f(null)), new List.filled(3, 'Guest'));
-    expect(funcs.map((f) => f('Alice')), new List.filled(3, 'Alice'));
+    expect(funcs.map((f) => f(null)),
+        new List.filled(3, 'Guest'));
+    expect(funcs.map((f) => f('Alice')),
+        new List.filled(3, 'Alice'));
   });
 }

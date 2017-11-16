@@ -3,16 +3,21 @@
 import 'dart:convert';
 
 import 'package:test/test.dart';
-import 'package:examples/language_tour/classes/employee.dart' as employee;
-import 'package:examples/language_tour/classes/enum.dart' as enum_with_main;
+import 'package:examples/language_tour/classes/employee.dart'
+    as employee;
+import 'package:examples/language_tour/classes/enum.dart'
+    as enum_with_main;
 import 'package:examples/language_tour/classes/immutable_point.dart';
-import 'package:examples/language_tour/classes/impostor.dart' as impostor;
+import 'package:examples/language_tour/classes/impostor.dart'
+    as impostor;
 import 'package:examples/language_tour/classes/logger_with_main.dart'
     as logger_with_main;
-import 'package:examples/language_tour/classes/misc.dart' as misc;
+import 'package:examples/language_tour/classes/misc.dart'
+    as misc;
 import 'package:examples/language_tour/classes/no_such_method.dart'
     as no_such_method;
-import 'package:examples/language_tour/classes/orchestra.dart' as orchestra;
+import 'package:examples/language_tour/classes/orchestra.dart'
+    as orchestra;
 import 'package:examples/language_tour/classes/point.dart';
 import 'package:examples/language_tour/classes/point_redirecting.dart'
     as point_redirecting;
@@ -22,11 +27,14 @@ import 'package:examples/language_tour/classes/point_with_distance_method.dart'
     as point_with_distance_method;
 import 'package:examples/language_tour/classes/point_with_main.dart'
     as point_with_main;
-import 'package:examples/language_tour/classes/proxy.dart' as proxy;
-import 'package:examples/language_tour/classes/proxy_alt.dart' as proxy_alt;
+import 'package:examples/language_tour/classes/proxy.dart'
+    as proxy;
+import 'package:examples/language_tour/classes/proxy_alt.dart'
+    as proxy_alt;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
-import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
+import 'package:examples/language_tour/classes/vector.dart'
+    as vector_with_main;
 import 'package:examples/language_tour/util/logging_printer.dart';
 import 'package:examples/language_tour/util/print.dart';
 
@@ -85,7 +93,8 @@ void main() {
     // #docregion runtimeType
     $print('The type of a is ${a.runtimeType}');
     // #enddocregion runtimeType
-    expect(printLog.toString(), 'The type of a is ImmutablePoint');
+    expect(printLog.toString(),
+        'The type of a is ImmutablePoint');
   });
 
   test('point_with_main', () {
@@ -127,8 +136,10 @@ void main() {
 
   test('imposter', () {
     impostor.main();
-    expect(printLog.toString(),
-        'Hello, Bob. I am Kathy.\n' + 'Hi Bob. Do you know who I am?');
+    expect(
+        printLog.toString(),
+        'Hello, Bob. I am Kathy.\n' +
+            'Hi Bob. Do you know who I am?');
   });
 
   test('no_such_method', () {
@@ -139,7 +150,8 @@ void main() {
 
   test('proxy', () {
     proxy.main();
-    expect(printLog.toString(), 'handling invocation: Symbol("doSomething")');
+    expect(printLog.toString(),
+        'handling invocation: Symbol("doSomething")');
   });
 
   test('proxy_alt', () {
@@ -157,7 +169,8 @@ void main() {
 
   test('orchestra', () {
     orchestra.main();
-    expect(printLog.toString(), 'Waving hands\nPlaying piano');
+    expect(
+        printLog.toString(), 'Waving hands\nPlaying piano');
   });
 
   test('static-field', () {
@@ -165,7 +178,8 @@ void main() {
   });
 
   test('point_with_distance_method', () {
-    point_with_distance_method.main(); // contains assertions
+    point_with_distance_method
+        .main(); // contains assertions
     expect(printLog.toString().startsWith('2.82'), isTrue);
   });
 }

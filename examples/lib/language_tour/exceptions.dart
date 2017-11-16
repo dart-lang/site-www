@@ -11,7 +11,8 @@ void cleanLlamaStalls() {}
 void miscDeclAnalyzedButNotTested(bool c) {
   if (c) {
     // #docregion throw-FormatException
-    throw new FormatException('Expected at least 1 section');
+    throw new FormatException(
+        'Expected at least 1 section');
     // #enddocregion throw-FormatException
   }
 

@@ -22,7 +22,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion function-shorthand
-    bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
+    bool isNoble(int atomicNumber) =>
+        _nobleGases[atomicNumber] != null;
     // #enddocregion function-shorthand
   }
 
@@ -42,7 +43,8 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion named-parameter-default-values
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool bold = false, bool hidden = false}) {
+    void enableFlags(
+        {bool bold = false, bool hidden = false}) {
       // ...
     }
 

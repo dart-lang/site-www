@@ -13,7 +13,8 @@ void main() {
     // #docregion
     // Define a function.
     printNumber(num aNumber) {
-      $print('The number is $aNumber.'); // Print to console.
+      $print(
+          'The number is $aNumber.'); // Print to console.
     }
 
     // This is where the app starts executing.

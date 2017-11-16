@@ -22,7 +22,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion forEach
-    candidates.forEach((candidate) => candidate.interview());
+    candidates
+        .forEach((candidate) => candidate.interview());
     // #enddocregion forEach
   }
 

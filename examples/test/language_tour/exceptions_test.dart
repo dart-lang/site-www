@@ -17,7 +17,8 @@ void main() {
       try {
         foo = "You can't change a final variable's value.";
       } catch (e) {
-        $print('misbehave() partially handled ${e.runtimeType}.');
+        $print(
+            'misbehave() partially handled ${e.runtimeType}.');
         rethrow; // Allow callers to see the exception.
       }
     }
@@ -26,14 +27,22 @@ void main() {
       try {
         misbehave();
       } catch (e) {
-        $print('main() finished handling ${e.runtimeType}.');
+        $print(
+            'main() finished handling ${e.runtimeType}.');
       }
     }
     // #enddocregion rethrow
 
     main();
     expect(
-        printLog.toString().contains('misbehave() partially handled'), isTrue);
-    expect(printLog.toString().contains('main() finished handling'), isTrue);
+        printLog
+            .toString()
+            .contains('misbehave() partially handled'),
+        isTrue);
+    expect(
+        printLog
+            .toString()
+            .contains('main() finished handling'),
+        isTrue);
   });
 }

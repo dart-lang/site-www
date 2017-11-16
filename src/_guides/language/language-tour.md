@@ -31,7 +31,8 @@ The following code uses many of Dart’s most basic features:
 {% prettify dart %}
 // Define a function.
 printNumber(num aNumber) {
-  print('The number is $aNumber.'); // Print to console.
+  print(
+      'The number is $aNumber.'); // Print to console.
 }
 
 // This is where the app starts executing.
@@ -313,7 +314,8 @@ Any variable can have a constant value.
 // const [] creates an empty, immutable list (EIL).
 var foo = const []; // foo is currently an EIL.
 final bar = const []; // bar will always be an EIL.
-const baz = const []; // baz is a compile-time constant EIL.
+const baz =
+    const []; // baz is a compile-time constant EIL.
 
 // You can change the value of a non-final, non-const variable,
 // even if it used to have a const value.
@@ -390,7 +392,8 @@ defining integer literals:
 {% prettify dart %}
 int x = 1;
 int hex = 0xDEADBEEF;
-int bigInt = 34653465834652437659238476592374958739845729;
+int bigInt =
+    34653465834652437659238476592374958739845729;
 {% endprettify %}
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -541,7 +544,8 @@ var aBool = true;
 var aString = 'a string';
 const aConstList = const [1, 2, 3];
 
-const validConstString = '$aConstNum $aConstBool $aConstString';
+const validConstString =
+    '$aConstNum $aConstBool $aConstString';
 // const invalidConstString = '$aNum $aBool $aString $aConstList';
 {% endprettify %}
 
@@ -750,7 +754,8 @@ JavaScript:
 <?code-excerpt "lib/language_tour/built_in_types.dart (map-add-item)"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds'; // Add a key-value pair
+gifts['fourth'] =
+    'calling birds'; // Add a key-value pair
 {% endprettify %}
 
 Retrieve a value from a map the same way you would in JavaScript:
@@ -885,9 +890,10 @@ The code from the following excerpt isn't actually what is being shown in the pa
 void main() {
   print(Function.apply(int.parse, ['11']));
   print(Function.apply(int.parse, ['11'], {#radix: 16}));
-  print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-  print(Function
-      .apply(int.parse, ['11a'], {#radix: 16, #onError: handleError}));
+  print(Function.apply(
+      int.parse, ['11a'], {#onError: handleError}));
+  print(Function.apply(int.parse, ['11a'],
+      {#radix: 16, #onError: handleError}));
 }
 
 int handleError(String source) {
@@ -935,7 +941,8 @@ syntax:
 
 <?code-excerpt "lib/language_tour/functions.dart (function-shorthand)"?>
 {% prettify dart %}
-bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
+bool isNoble(int atomicNumber) =>
+    _nobleGases[atomicNumber] != null;
 {% endprettify %}
 
 The <code>=> <em>expr</em></code> syntax is a shorthand for
@@ -1025,7 +1032,8 @@ Here's an example of setting default values for named parameters:
 <?code-excerpt "lib/language_tour/functions.dart (named-parameter-default-values)"?>
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {
+void enableFlags(
+    {bool bold = false, bool hidden = false}) {
   // ...
 }
 
@@ -1732,7 +1740,8 @@ but not as succinctly:
 <?code-excerpt "test/language_tour/operators_test.dart (if-null-alt)" replace="/\d//g"?>
 {% prettify dart %}
 // Slightly longer version uses ?: operator.
-String playerName(String name) => name != null ? name : 'Guest';
+String playerName(String name) =>
+    name != null ? name : 'Guest';
 
 // Very long version uses if-else statement.
 String playerName(String name) {
@@ -1775,7 +1784,8 @@ The previous example is equivalent to:
 var button = querySelector('button');
 button.text = 'Confirm';
 button.classes.add('important');
-button.onClick.listen((e) => window.alert('Confirmed!'));
+button.onClick
+    .listen((e) => window.alert('Confirmed!'));
 {% endprettify %}
 
 You can also nest your cascades. For example:
@@ -1902,7 +1912,8 @@ know the current iteration counter:
 
 <?code-excerpt "lib/language_tour/control_flow.dart (forEach)"?>
 {% prettify dart %}
-candidates.forEach((candidate) => candidate.interview());
+candidates
+    .forEach((candidate) => candidate.interview());
 {% endprettify %}
 
 Iterable classes such as List and Set also support the `for-in` form of
@@ -2149,7 +2160,8 @@ Here’s an example of throwing, or *raising*, an exception:
 
 <?code-excerpt "lib/language_tour/exceptions.dart (throw-FormatException)"?>
 {% prettify dart %}
-throw new FormatException('Expected at least 1 section');
+throw new FormatException(
+    'Expected at least 1 section');
 {% endprettify %}
 
 You can also throw arbitrary objects:
@@ -2242,7 +2254,8 @@ void misbehave() {
   try {
     foo = "You can't change a final variable's value.";
   } catch (e) {
-    print('misbehave() partially handled ${e.runtimeType}.');
+    print(
+        'misbehave() partially handled ${e.runtimeType}.');
     [!rethrow;!] // Allow callers to see the exception.
   }
 }
@@ -2251,7 +2264,8 @@ void main() {
   try {
     misbehave();
   } catch (e) {
-    print('main() finished handling ${e.runtimeType}.');
+    print(
+        'main() finished handling ${e.runtimeType}.');
   }
 }
 {% endprettify %}
@@ -2969,7 +2983,8 @@ class Person {
 class Impostor implements Person {
   get _name => '';
 
-  String greet(String who) => 'Hi $who. Do you know who I am?';
+  String greet(String who) =>
+      'Hi $who. Do you know who I am?';
 }
 
 String greetBob(Person person) => person.greet('Bob');
@@ -3320,7 +3335,8 @@ the list is probably a mistake. Here’s an example:
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-names.add(42); // Fails in checked mode (succeeds in production mode).
+names.add(
+    42); // Fails in checked mode (succeeds in production mode).
 {% endprettify %}
 
 Another reason for using generics is to reduce code duplication.

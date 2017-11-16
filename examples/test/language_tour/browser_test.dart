@@ -22,7 +22,8 @@ void main() {
     // #enddocregion simple-web-main-function
 
     main();
-    expect(document.querySelector('#sample_text_id').text, 'Click me!');
+    expect(document.querySelector('#sample_text_id').text,
+        'Click me!');
   });
 
   test('cascade-operator', () {
@@ -36,7 +37,8 @@ void main() {
       ..onClick.listen((e) => window.alert('Confirmed!'));
     // #enddocregion cascade-operator
 
-    expect(document.querySelector('button').text, 'Confirm');
+    expect(
+        document.querySelector('button').text, 'Confirm');
   });
 
   test('cascade-operator-example-expanded', () {
@@ -47,9 +49,11 @@ void main() {
     var button = querySelector('button');
     button.text = 'Confirm';
     button.classes.add('important');
-    button.onClick.listen((e) => window.alert('Confirmed!'));
+    button.onClick
+        .listen((e) => window.alert('Confirmed!'));
     // #enddocregion cascade-operator-example-expanded
 
-    expect(document.querySelector('button').text, 'Confirm');
+    expect(
+        document.querySelector('button').text, 'Confirm');
   });
 }
