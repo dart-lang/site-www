@@ -999,6 +999,24 @@ ul.nav-list {
   }
 }
 
+ul.page-github-links-menu {
+  $margin: $font-size-base / 2;
+  padding: 0;
+  float: right;
+  margin-top: $margin;
+  margin-bottom: $margin;
+  li {
+    display: inline;
+    padding-left: $margin;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  a {
+    font-size: $font-size-base * 1.2;
+  }
+}
+
 /* -----------------------------------------
   Templates
  ----------------------------------------- */
