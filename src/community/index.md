@@ -14,6 +14,8 @@ Track the Dart project, get help, and talk with other Dart developers.
 * [announce@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/announce) -
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
+* [Dart Language & Library Newsletters](https://github.com/dart-lang/sdk/blob/master/docs/newsletter/README.md#dart-language-and-library-newsletters) -
+  Information about existing features and planned changes.
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
 * [+dartlang](https://plus.google.com/+dartlang) -
