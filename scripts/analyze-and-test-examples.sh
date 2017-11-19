@@ -34,7 +34,9 @@ echo
 travis_fold start analyzeAndTest.tests.vm
 echo Running VM tests ...
 
-pub run test --reporter expanded --exclude-tags=browser | tee $LOG_FILE
+TEST="pub run test" # --reporter expanded
+
+$TEST --exclude-tags=browser | tee $LOG_FILE
 LOG=$(grep 'All tests passed!' $LOG_FILE)
 if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
 travis_fold end analyzeAndTest.tests.vm
@@ -44,7 +46,7 @@ travis_fold start analyzeAndTest.tests.browser
 echo Running browser tests ...
 
 # Name the sole browser test file, otherwise all other files get compiled too:
-pub run test --reporter expanded --tags browser --platform chrome test/language_tour/browser_test.dart | tee $LOG_FILE
+$TEST --tags browser --platform chrome test/language_tour/browser_test.dart | tee $LOG_FILE
 LOG=$(grep 'All tests passed!' $LOG_FILE)
 if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
 travis_fold end analyzeAndTest.tests.browser
