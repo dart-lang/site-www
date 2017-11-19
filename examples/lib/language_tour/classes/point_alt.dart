@@ -4,7 +4,7 @@
 /// - A named constructor with initializers, and a print statement in the body.
 ///
 // #docplaster
-import '../util/print.dart';
+import '../../util/print.dart';
 
 // #docregion constructor-long-way
 class Point {

@@ -26,30 +26,30 @@ void main() {
   });
 
   test('cascade-operator', () {
-    final div = '<button></button>';
+    final div = '<button id="confirm"></button>';
     document.body.appendHtml(div);
 
     // #docregion cascade-operator
-    querySelector('button') // Get an object.
+    querySelector('#confirm') // Get an object.
       ..text = 'Confirm' // Use its members.
       ..classes.add('important')
       ..onClick.listen((e) => window.alert('Confirmed!'));
     // #enddocregion cascade-operator
 
-    expect(document.querySelector('button').text, 'Confirm');
+    expect(document.querySelector('#confirm').text, 'Confirm');
   });
 
   test('cascade-operator-example-expanded', () {
-    final div = '<button></button>';
+    final div = '<button id="confirm"></button>';
     document.body.appendHtml(div);
 
     // #docregion cascade-operator-example-expanded
-    var button = querySelector('button');
+    var button = querySelector('#confirm');
     button.text = 'Confirm';
     button.classes.add('important');
     button.onClick.listen((e) => window.alert('Confirmed!'));
     // #enddocregion cascade-operator-example-expanded
 
-    expect(document.querySelector('button').text, 'Confirm');
+    expect(document.querySelector('#confirm').text, 'Confirm');
   });
 }

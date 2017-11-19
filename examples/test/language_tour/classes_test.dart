@@ -27,8 +27,8 @@ import 'package:examples/language_tour/classes/proxy_alt.dart' as proxy_alt;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
-import 'package:examples/language_tour/util/logging_printer.dart';
-import 'package:examples/language_tour/util/print.dart';
+import 'package:examples/util/logging_printer.dart';
+import 'package:examples/util/print.dart';
 
 void main() {
   final printLog = PrintLog.it;

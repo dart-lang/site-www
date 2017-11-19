@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
 // #docplaster
 import 'package:test/test.dart';
-import 'package:examples/language_tour/util/logging_printer.dart';
+import 'package:examples/util/logging_printer.dart';
 
 void main() {
   final printLog = PrintLog.it;

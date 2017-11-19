@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_cast
 // #docplaster
-import '../util/print.dart';
+import '../../util/print.dart';
 
 Map getDefaultData() => {}; // stub
 

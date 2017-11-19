@@ -72,11 +72,15 @@ scaffolding to be written and the effort isn't worth the small gain.
 
 ### _$print_
 
-All code excerpts use `$print()` instead of `print()`. The global `$print`
-variable (defined in `lib/util/print.dart`) is overwritten when running
-tests so that we can capture print output. By default `$print == print`.
+Example code, whose print output needs to be tested, should call `$print()`
+instead of `print()`. For example, [lib/language_tour/classes/employee.dart][],
+which uses `$print()`, is tested in [test/language_tour/classes_test.dart#L95][].
 
-Of course, when displaying code excerpts in the Language Tour page,
+The global `$print` variable (defined in [lib/util/print.dart][]) is overwritten
+when running tests so that we can capture print output.
+By default `$print == print`.
+
+When displaying code excerpts in the Language Tour page,
 we show `print()` instead. It is `scripts/refresh-code-excerpts.sh` that does
 a global replace of `$print()` by `print()`.
 
@@ -92,3 +96,7 @@ For example, the code
 will display as
 
   <code>int <mark>foo</mark> = bar;</code>
+
+[lib/language_tour/classes/employee.dart]: https://github.com/dart-lang/site-www/blob/master/examples/lib/language_tour/classes/employee.dart
+[lib/util/print.dart]: https://github.com/dart-lang/site-www/blob/master/examples/lib/util/print.dart
+[test/language_tour/classes_test.dart#L95]: https://github.com/dart-lang/site-www/blob/master/examples/test/language_tour/classes_test.dart#L95
