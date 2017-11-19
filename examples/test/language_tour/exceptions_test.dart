@@ -1,7 +1,7 @@
 // ignore_for_file: assignment_to_final, unused_local_variable
 import 'package:test/test.dart';
-import 'package:examples/language_tour/util/logging_printer.dart';
-import 'package:examples/language_tour/util/print.dart';
+import 'package:examples/util/logging_printer.dart';
+import 'package:examples/util/print.dart';
 
 void main() {
   final printLog = PrintLog.it;

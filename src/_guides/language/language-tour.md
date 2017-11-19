@@ -1757,7 +1757,7 @@ Consider the following code:
 
 <?code-excerpt "test/language_tour/browser_test.dart (cascade-operator)"?>
 {% prettify dart %}
-querySelector('button') // Get an object.
+querySelector('#confirm') // Get an object.
   ..text = 'Confirm' // Use its members.
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
@@ -1772,7 +1772,7 @@ The previous example is equivalent to:
 
 <?code-excerpt "test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 {% prettify dart %}
-var button = querySelector('button');
+var button = querySelector('#confirm');
 button.text = 'Confirm';
 button.classes.add('important');
 button.onClick.listen((e) => window.alert('Confirmed!'));

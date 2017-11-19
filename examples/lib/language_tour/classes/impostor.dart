@@ -1,6 +1,6 @@
 // ignore_for_file: annotate_overrides
 // #docplaster
-import '../util/print.dart';
+import '../../util/print.dart';
 
 // #docregion
 // A person. The implicit interface contains greet().

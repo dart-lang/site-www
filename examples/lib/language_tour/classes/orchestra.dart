@@ -1,4 +1,4 @@
-import '../util/print.dart';
+import '../../util/print.dart';
 
 // #docregion Musical
 abstract class Musical {

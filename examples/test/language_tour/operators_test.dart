@@ -1,8 +1,8 @@
 // #docplaster
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
-import 'package:examples/language_tour/util/logging_printer.dart';
-import 'package:examples/language_tour/util/print.dart';
+import 'package:examples/util/logging_printer.dart';
+import 'package:examples/util/print.dart';
 
 class T {}
 
