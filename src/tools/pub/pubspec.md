@@ -57,8 +57,14 @@ For more information, see
 [Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
 [Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
 
-All other fields are ignored. A simple but complete pubspec looks something
-like the following:
+All other fields are ignored. 
+
+**Note:** The pubspec for [Flutter apps](https://flutter.io) supports
+[a few additional fields](https://flutter.io/assets-and-images/) for managing assets. 
+
+## Sample pubspec
+
+A simple but complete pubspec looks something like the following:
 
 {% prettify yaml %}
 name: newtify
