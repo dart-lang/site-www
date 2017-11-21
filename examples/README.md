@@ -70,20 +70,6 @@ Not all code excerpts are tested because some are just fragments of anything
 useful, and others illustrate features that would required significant test
 scaffolding to be written and the effort isn't worth the small gain.
 
-### _$print_
-
-Example code, whose print output needs to be tested, should call `$print()`
-instead of `print()`. For example, [lib/language_tour/classes/employee.dart][],
-which uses `$print()`, is tested in [test/language_tour/classes_test.dart#L95][].
-
-The global `$print` variable (defined in [lib/util/print.dart][]) is overwritten
-when running tests so that we can capture print output.
-By default `$print == print`.
-
-When displaying code excerpts in the Language Tour page,
-we show `print()` instead. It is `scripts/refresh-code-excerpts.sh` that does
-a global replace of `$print()` by `print()`.
-
 ### Code highlights
 
 Code segments enclosed in the special syntax [!...!] will be highlighted.

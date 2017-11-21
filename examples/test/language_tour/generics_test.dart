@@ -1,18 +1,12 @@
 // ignore_for_file: argument_type_not_assignable
 // #docplaster
-import 'package:test/test.dart';
 import 'package:examples/language_tour/generics/base_class.dart' as base_class;
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import 'package:test/test.dart';
+import '../util/print_matcher.dart' as m;
 
 final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('why-generics', () {
     expect(() => assignIntToStringList(), throwsATypeError);
   });
@@ -34,12 +28,15 @@ void main() {
   });
 
   test('generic-collections', () {
-    // #docregion generic-collections
-    var names = new List<String>();
-    names.addAll(['Seth', 'Kathy', 'Lars']);
-    $print(names is List<String>); // true
-    // #enddocregion generic-collections
-    expect(printLog.toString(), 'true');
+    _test() {
+      // #docregion generic-collections
+      var names = new List<String>();
+      names.addAll(['Seth', 'Kathy', 'Lars']);
+      print(names is List<String>); // true
+      // #enddocregion generic-collections
+    }
+
+    expect(_test, m.prints('true'));
   });
 
   test('method', () {
@@ -52,16 +49,14 @@ void main() {
     }
     // #enddocregion method
 
-    void main() => $print('first: ${first<int>([1,2,3])}');
+    void main() => print('first: ${first<int>([1,2,3])}');
     // #enddocregion method-with-main
-    main();
-    expect(printLog.toString(), 'first: 1');
+    expect(main, m.prints('first: 1'));
   });
 
   test('base_class', () {
-    base_class.main();
-    expect(
-        printLog.toString(), 'Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>');
+    expect(base_class.main,
+        m.prints('Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>'));
   });
 }
 

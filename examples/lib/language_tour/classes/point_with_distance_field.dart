@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-// #docregion
 import 'dart:math';
 
 class Point {
@@ -15,5 +13,5 @@ class Point {
 
 void main() {
   var p = new Point(2, 3);
-  $print(p.distanceFromOrigin);
+  print(p.distanceFromOrigin);
 }

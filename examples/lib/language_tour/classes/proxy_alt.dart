@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-
 void main() {
   dynamic a = new A();
   a.doSomething();
@@ -19,7 +17,7 @@ class A implements SomeClass, SomeOtherClass {
   @override
   void noSuchMethod(Invocation mirror) {
     // #enddocregion
-    $print('handling invocation: ${mirror.memberName}');
+    print('handling invocation: ${mirror.memberName}');
     // #docregion
   }
 }

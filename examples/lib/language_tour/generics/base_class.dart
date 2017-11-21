@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-
 class SomeBaseClass {}
 
 // #docregion
@@ -35,5 +33,5 @@ void main() {
   // print('$someBaseClassFoo, $extenderFoo, $foo, $objectFoo');
 
   // Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>
-  $print('$someBaseClassFoo, $extenderFoo, $foo');
+  print('$someBaseClassFoo, $extenderFoo, $foo');
 }

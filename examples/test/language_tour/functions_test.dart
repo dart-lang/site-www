@@ -1,17 +1,10 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
-import 'package:test/test.dart';
-
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import 'package:test/test.dart';
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('optional-positional-parameters', () {
     // #docregion optional-positional-parameters
     String say(String from, String msg, [String device]) {
@@ -55,7 +48,7 @@ void main() {
     // #docregion main-args
     // Run the app like this: dart args.dart 1 test
     void main(List<String> arguments) {
-      $print(arguments);
+      print(arguments);
 
       assert(arguments.length == 2);
       assert(int.parse(arguments[0]) == 1);
@@ -64,8 +57,7 @@ void main() {
 
     // #enddocregion main-args
     final args = ['1', 'test'];
-    main(args);
-    expect(printLog.toString(), args.toString());
+    expect(() => main(args), m.prints('[1, test]'));
   });
 
   test('function-as-var', () {
@@ -77,25 +69,32 @@ void main() {
 
   final indexedFruit = '''0: apples
 1: bananas
-2: oranges''';
+2: oranges
+''';
 
   test('anonymous-function', () {
-    // #docregion anonymous-function
-    var list = ['apples', 'bananas', 'oranges'];
-    list.forEach((item) {
-      $print('${list.indexOf(item)}: $item');
-    });
-    // #enddocregion anonymous-function
-    expect(printLog.toString(), indexedFruit);
+    _test() {
+      // #docregion anonymous-function
+      var list = ['apples', 'bananas', 'oranges'];
+      list.forEach((item) {
+        print('${list.indexOf(item)}: $item');
+      });
+      // #enddocregion anonymous-function
+    }
+
+    expect(_test, prints(indexedFruit));
   });
 
   test('anon-func', () {
-    var list = ['apples', 'bananas', 'oranges'];
-    // #docregion anon-func
-    list.forEach(
-        (item) => $print('${list.indexOf(item)}: $item'));
-    // #enddocregion anon-func
-    expect(printLog.toString(), indexedFruit);
+    _test() {
+      var list = ['apples', 'bananas', 'oranges'];
+      // #docregion anon-func
+      list.forEach(
+          (item) => print('${list.indexOf(item)}: $item'));
+      // #enddocregion anon-func
+    }
+
+    expect(_test, prints(indexedFruit));
   });
 
   test('nested-functions', () {

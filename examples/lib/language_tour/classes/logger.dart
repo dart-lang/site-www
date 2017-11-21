@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-
 // #docregion
 class Logger {
   final String name;
@@ -23,7 +21,7 @@ class Logger {
   Logger._internal(this.name);
 
   void log(String msg) {
-    if (!mute) $print(msg);
+    if (!mute) print(msg);
   }
 }
 // #enddocregion

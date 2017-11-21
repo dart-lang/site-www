@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-// #docregion
 import 'dart:math';
 
 class Point {
@@ -18,5 +16,5 @@ void main() {
   var b = new Point(4, 4);
   var distance = Point.distanceBetween(a, b);
   assert(2.8 < distance && distance < 2.9);
-  $print(distance);
+  print(distance);
 }

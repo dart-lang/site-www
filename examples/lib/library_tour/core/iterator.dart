@@ -1,6 +1,5 @@
 // #docplaster
 import 'dart:collection';
-import '../../util/print.dart';
 
 final Iterator<Process> _it =
     [new Process(), new Process(), new Process()].iterator;
@@ -39,7 +38,7 @@ void main() {
   for (var process in new Processes()) {
     // Do something with the process.
     // #enddocregion
-    $print(process.id);
+    print(process.id);
     // #docregion
   }
 }

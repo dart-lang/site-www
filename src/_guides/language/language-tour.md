@@ -2696,7 +2696,7 @@ instance of a subtype.
 The following example demonstrates a factory constructor returning
 objects from a cache:
 
-<?code-excerpt "lib/language_tour/classes/logger_with_main.dart"?>
+<?code-excerpt "lib/language_tour/classes/logger.dart"?>
 {% prettify dart %}
 class Logger {
   final String name;
@@ -2732,7 +2732,7 @@ Factory constructors have no access to `this`.
 
 To invoke a factory constructor, you use the `new` keyword:
 
-<?code-excerpt "lib/language_tour/classes/logger_with_main.dart (logger)"?>
+<?code-excerpt "lib/language_tour/classes/logger.dart (logger)"?>
 {% prettify dart %}
 var logger = new Logger('UI');
 logger.log('Button clicked');

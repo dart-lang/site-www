@@ -1,7 +1,5 @@
 // ignore_for_file: annotate_overrides
 // #docplaster
-import '../../util/print.dart';
-
 // #docregion
 // A person. The implicit interface contains greet().
 class Person {
@@ -25,6 +23,6 @@ class Impostor implements Person {
 String greetBob(Person person) => person.greet('Bob');
 
 void main() {
-  $print(greetBob(new Person('Kathy')));
-  $print(greetBob(new Impostor()));
+  print(greetBob(new Person('Kathy')));
+  print(greetBob(new Impostor()));
 }

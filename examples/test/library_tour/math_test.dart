@@ -2,15 +2,9 @@
 import 'dart:math' as math;
 // #enddocregion import
 import 'package:test/test.dart';
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('trigonometric functions', () {
     // #docregion trig
     // Cosine
@@ -34,15 +28,14 @@ void main() {
   });
 
   test('constants', () {
-    // #docregion constants
-    // See the Math library for additional constants.
-    $print(math.E); // 2.718281828459045
-    $print(math.PI); // 3.141592653589793
-    $print(math.SQRT2); // 1.4142135623730951
-    // #enddocregion constants
-    assert(printLog.log[0].startsWith('2.71'));
-    assert(printLog.log[1].startsWith('3.14'));
-    assert(printLog.log[2].startsWith('1.41'));
+    expect(() {
+      // #docregion constants
+      // See the Math library for additional constants.
+      print(math.E); // 2.718281828459045
+      print(math.PI); // 3.141592653589793
+      print(math.SQRT2); // 1.4142135623730951
+      // #enddocregion constants
+    }, m.prints([math.E, math.PI, math.SQRT2]));
   });
 
   test('Random', () {

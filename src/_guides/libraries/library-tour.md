@@ -143,7 +143,8 @@ for (var char in 'hello'.split('')) {
 }
 
 // Get all the UTF-16 code units in the string.
-var codeUnitList = 'Never odd or even'.codeUnits.toList();
+var codeUnitList =
+    'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 {% endprettify %}
 
