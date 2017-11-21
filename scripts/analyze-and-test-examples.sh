@@ -34,7 +34,7 @@ echo
 travis_fold start analyzeAndTest.tests.vm
 echo Running VM tests ...
 
-TEST="pub run test" # --reporter expanded
+TEST="pub run test"
 
 $TEST --exclude-tags=browser | tee $LOG_FILE
 LOG=$(grep 'All tests passed!' $LOG_FILE)

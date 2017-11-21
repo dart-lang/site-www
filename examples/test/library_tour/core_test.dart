@@ -587,38 +587,4 @@ void main() {
       expect(printLog.log, ['0', '1', '2']);
     });
   });
-
-  group('xxxxx', () {});
-
-  group('xxxxx', () {
-    test('xxxx', () {
-      // #docregion xxxx
-      1111;
-      // #enddocregion xxxx
-    });
-
-    test('xxxx', () {
-      // #docregion xxxx
-      1111;
-      // #enddocregion xxxx
-    });
-
-    test('xxxx', () {
-      // #docregion xxxx
-      1111;
-      // #enddocregion xxxx
-    });
-
-    test('xxxx', () {
-      // #docregion xxxx
-      1111;
-      // #enddocregion xxxx
-    });
-
-    test('xxxx', () {
-      // #docregion xxxx
-      1111;
-      // #enddocregion xxxx
-    });
-  });
 }

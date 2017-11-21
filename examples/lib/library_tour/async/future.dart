@@ -94,7 +94,7 @@ void miscDeclAnalyzedButNotTested() {
       await Future.wait([
         deleteLotsOfFiles(),
         copyLotsOfFiles(),
-        checksumLotsOfOtherFiles()
+        checksumLotsOfOtherFiles(),
       ]);
       print('Done with all the long steps!');
       // #enddocregion wait

@@ -975,48 +975,6 @@ returned by an asynchronous method. When a future *completes*, its value
 is ready to use.
 
 
-#### Basic usage
-
-{% comment %}
-[PENDING: Delete much of the following content in favor of the tutorial coverage?]
-{% endcomment %}
-
-You can use `then()` to schedule code that runs when the future completes. For
-example, `HttpRequest.getString()` returns a Future, since HTTP requests
-can take a while. Using `then()` lets you run some code when that Future
-has completed and the promised string value is available:
-
-<?code-excerpt "lib/library_tour/async/basic.dart (then)"?>
-{% prettify dart %}
-HttpRequest.getString(url).then((String result) {
-  print(result);
-});
-{% endprettify %}
-
-Use `catchError()` to handle any errors or exceptions that a Future
-object might throw.
-
-<?code-excerpt "lib/library_tour/async/basic.dart (catchError)"?>
-{% prettify dart %}
-HttpRequest.getString(url).then((String result) {
-  print(result);
-}).catchError((e) {
-  // Handle or ignore the error.
-});
-{% endprettify %}
-
-The `then().catchError()` pattern is the asynchronous version of
-`try`-`catch`.
-
-<div class="alert alert-warning" markdown="1">
-**Important:**
-Be sure to invoke `catchError()` on the result of `then()`—not on the
-result of the original Future. Otherwise, the `catchError()` can
-handle errors only from the original Future's computation, but not
-from the handler registered by `then()`.
-</div>
-
-
 #### Using await
 
 Before you directly use the Future API, consider using `await` instead.
@@ -1076,6 +1034,48 @@ For more information on using `await` and related Dart language features,
 see [Asynchrony support](/guides/language/language-tour#asynchrony-support).
 
 
+#### Basic usage
+
+{% comment %}
+[PENDING: Delete much of the following content in favor of the tutorial coverage?]
+{% endcomment %}
+
+You can use `then()` to schedule code that runs when the future completes. For
+example, `HttpRequest.getString()` returns a Future, since HTTP requests
+can take a while. Using `then()` lets you run some code when that Future
+has completed and the promised string value is available:
+
+<?code-excerpt "lib/library_tour/async/basic.dart (then)"?>
+{% prettify dart %}
+HttpRequest.getString(url).then((String result) {
+  print(result);
+});
+{% endprettify %}
+
+Use `catchError()` to handle any errors or exceptions that a Future
+object might throw.
+
+<?code-excerpt "lib/library_tour/async/basic.dart (catchError)"?>
+{% prettify dart %}
+HttpRequest.getString(url).then((String result) {
+  print(result);
+}).catchError((e) {
+  // Handle or ignore the error.
+});
+{% endprettify %}
+
+The `then().catchError()` pattern is the asynchronous version of
+`try`-`catch`.
+
+<div class="alert alert-warning" markdown="1">
+**Important:**
+Be sure to invoke `catchError()` on the result of `then()`—not on the
+result of the original Future. Otherwise, the `catchError()` can
+handle errors only from the original Future's computation, but not
+from the handler registered by `then()`.
+</div>
+
+
 #### Chaining multiple asynchronous methods
 
 The `then()` method returns a Future, providing a useful way to run
@@ -1132,7 +1132,7 @@ Future checksumLotsOfOtherFiles() async => /* ... */
 await Future.wait([
   deleteLotsOfFiles(),
   copyLotsOfFiles(),
-  checksumLotsOfOtherFiles()
+  checksumLotsOfOtherFiles(),
 ]);
 print('Done with all the long steps!');
 {% endprettify %}
