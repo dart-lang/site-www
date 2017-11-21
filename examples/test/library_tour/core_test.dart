@@ -1,8 +1,6 @@
 // ignore_for_file: type_annotate_public_apis
 // #docplaster
 import 'package:test/test.dart';
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
 
 import 'package:examples/library_tour/core/comparable.dart'
     as comparable;
@@ -10,13 +8,9 @@ import 'package:examples/library_tour/core/hash_code.dart'
     as hash_code;
 import 'package:examples/library_tour/core/iterator.dart'
     as iterator;
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   group('numbers:', () {
     test('int|double.parse()', () {
       // #docregion int-double-parse
@@ -76,30 +70,34 @@ void main() {
     });
 
     test('substring-etc', () {
-      // #docregion substring-etc
-      // Grab a substring.
-      assert('Never odd or even'.substring(6, 9) == 'odd');
+      _test() {
+        // #docregion substring-etc
+        // Grab a substring.
+        assert('Never odd or even'.substring(6, 9) == 'odd');
 
-      // Split a string using a string pattern.
-      var parts = 'structured web apps'.split(' ');
-      assert(parts.length == 3);
-      assert(parts[0] == 'structured');
+        // Split a string using a string pattern.
+        var parts = 'structured web apps'.split(' ');
+        assert(parts.length == 3);
+        assert(parts[0] == 'structured');
 
-      // Get a UTF-16 code unit (as a string) by index.
-      assert('Never odd or even'[0] == 'N');
+        // Get a UTF-16 code unit (as a string) by index.
+        assert('Never odd or even'[0] == 'N');
 
-      // Use split() with an empty string parameter to get
-      // a list of all characters (as Strings); good for
-      // iterating.
-      for (var char in 'hello'.split('')) {
-        $print(char);
+        // Use split() with an empty string parameter to get
+        // a list of all characters (as Strings); good for
+        // iterating.
+        for (var char in 'hello'.split('')) {
+          print(char);
+        }
+
+        // Get all the UTF-16 code units in the string.
+        var codeUnitList =
+            'Never odd or even'.codeUnits.toList();
+        assert(codeUnitList[0] == 78);
+        // #enddocregion substring-etc
       }
 
-      // Get all the UTF-16 code units in the string.
-      var codeUnitList = 'Never odd or even'.codeUnits.toList();
-      assert(codeUnitList[0] == 78);
-      // #enddocregion substring-etc
-      expect(printLog.log, 'hello'.split(''));
+      expect(_test, m.prints(['h', 'e', 'l', 'l', 'o']));
     });
 
     test('change case', () {
@@ -172,19 +170,22 @@ void main() {
     });
 
     test('match', () {
-      // #docregion match
-      var numbers = new RegExp(r'\d+');
-      var someDigits = 'llamas live 15 to 20 years';
+      _test() {
+        // #docregion match
+        var numbers = new RegExp(r'\d+');
+        var someDigits = 'llamas live 15 to 20 years';
 
-      // Check whether the reg exp has a match in a string.
-      assert(numbers.hasMatch(someDigits));
+        // Check whether the reg exp has a match in a string.
+        assert(numbers.hasMatch(someDigits));
 
-      // Loop through all matches.
-      for (var match in numbers.allMatches(someDigits)) {
-        $print(match.group(0)); // 15, then 20
+        // Loop through all matches.
+        for (var match in numbers.allMatches(someDigits)) {
+          print(match.group(0)); // 15, then 20
+        }
+        // #enddocregion match
       }
-      // #enddocregion match
-      expect(printLog.log, ['15', '20']);
+
+      expect(_test, m.prints([15, 20]));
     });
   });
 
@@ -389,6 +390,12 @@ void main() {
   });
 
   group('Collections: Common methods:', () {
+    // Because of code excerpt formatting issues, it is a bit messy
+    // to avoid repeating the `var teas` declaration in each code excerpt.
+    // Instead, we provide a group-global declaration `_teas`
+    // and check that the code-excerpt-local `teas` matches `_teas`.
+    final _teas = ['green', 'black', 'chamomile', 'earl grey'];
+
     test('isEmpty', () {
       // #docregion isEmpty
       var coffees = [];
@@ -396,38 +403,54 @@ void main() {
       assert(coffees.isEmpty);
       assert(teas.isNotEmpty);
       // #enddocregion isEmpty
+      expect(teas, _teas);
     });
 
     test('List.forEach()', () {
-      // #docregion List-forEach
-      var teas = ['green', 'black', 'chamomile', 'earl grey'];
+      _test() {
+        // #docregion List-forEach
+        var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
-      teas.forEach((tea) => $print('I drink $tea'));
-      // #enddocregion List-forEach
-      expect(printLog.log, teas.map((tea) => 'I drink $tea'));
+        teas.forEach((tea) => print('I drink $tea'));
+        // #enddocregion List-forEach
+        expect(teas, _teas);
+      }
+
+      expect(
+          _test, m.prints(_teas.map((tea) => 'I drink $tea')));
     });
 
     test('Map.forEach()', () {
-      final hawaiianBeaches = {'Honolulu': 'Hanauma Bay'};
-      // #docregion Map-forEach
-      hawaiianBeaches.forEach((k, v) {
-        $print('I want to visit $k and swim at $v');
-        // I want to visit Oahu and swim at
-        // [Waikiki, Kailua, Waimanalo], etc.
-      });
-      // #enddocregion Map-forEach
-      expect(printLog.toString(),
-          'I want to visit Honolulu and swim at Hanauma Bay');
+      _test() {
+        final hawaiianBeaches = {'Honolulu': 'Hanauma Bay'};
+        // #docregion Map-forEach
+        hawaiianBeaches.forEach((k, v) {
+          print('I want to visit $k and swim at $v');
+          // I want to visit Oahu and swim at
+          // [Waikiki, Kailua, Waimanalo], etc.
+        });
+        // #enddocregion Map-forEach
+      }
+
+      expect(
+          _test,
+          m.prints(
+              'I want to visit Honolulu and swim at Hanauma Bay'));
     });
 
     test('List.map()', () {
-      // #docregion List-map
-      var teas = ['green', 'black', 'chamomile', 'earl grey'];
+      _test() {
+        // #docregion List-map
+        var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
-      var loudTeas = teas.map((tea) => tea.toUpperCase());
-      loudTeas.forEach($print);
-      // #enddocregion List-map
-      expect(printLog.log, teas.map((tea) => tea.toUpperCase()));
+        var loudTeas = teas.map((tea) => tea.toUpperCase());
+        loudTeas.forEach(print);
+        // #enddocregion List-map
+        expect(teas, _teas);
+      }
+
+      expect(_test,
+          m.prints(_teas.map((tea) => tea.toUpperCase())));
     });
 
     test('toList()', () {
@@ -583,8 +606,7 @@ void main() {
     test('hashCode and ==', () => hash_code.main());
 
     test('Iterator', () {
-      iterator.main();
-      expect(printLog.log, ['0', '1', '2']);
+      expect(iterator.main, m.prints([0, 1, 2]));
     });
   });
 }

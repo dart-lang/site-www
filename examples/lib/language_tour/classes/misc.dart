@@ -1,6 +1,5 @@
 // ignore_for_file: annotate_overrides, one_member_abstracts
 // #docplaster
-
 // #docregion abstract
 // This class is declared abstract and thus
 // can't be instantiated.

@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-
 // #docregion Musical
 abstract class Musical {
   bool canPlayPiano = false;
@@ -8,11 +6,11 @@ abstract class Musical {
 
   void entertainMe() {
     if (canPlayPiano) {
-      $print('Playing piano');
+      print('Playing piano');
     } else if (canConduct) {
-      $print('Waving hands');
+      print('Waving hands');
     } else {
-      $print('Humming to self');
+      print('Humming to self');
     }
   }
 }

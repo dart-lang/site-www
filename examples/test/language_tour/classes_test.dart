@@ -7,8 +7,7 @@ import 'package:examples/language_tour/classes/employee.dart' as employee;
 import 'package:examples/language_tour/classes/enum.dart' as enum_with_main;
 import 'package:examples/language_tour/classes/immutable_point.dart';
 import 'package:examples/language_tour/classes/impostor.dart' as impostor;
-import 'package:examples/language_tour/classes/logger_with_main.dart'
-    as logger_with_main;
+import 'package:examples/language_tour/classes/logger.dart' as logger_with_main;
 import 'package:examples/language_tour/classes/misc.dart' as misc;
 import 'package:examples/language_tour/classes/no_such_method.dart'
     as no_such_method;
@@ -27,15 +26,9 @@ import 'package:examples/language_tour/classes/proxy_alt.dart' as proxy_alt;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('object-creation', () {
     // #docregion object-creation
     var jsonData = JSON.decode('{"x":1, "y":2}');
@@ -71,21 +64,24 @@ void main() {
   });
 
   test('const, identical, runtimeType', () {
-    // #docregion const
-    var p = const ImmutablePoint(2, 2);
-    // #enddocregion const
+    _test() {
+      // #docregion const
+      var p = const ImmutablePoint(2, 2);
+      // #enddocregion const
 
-    // #docregion identical
-    var a = const ImmutablePoint(1, 1);
-    var b = const ImmutablePoint(1, 1);
+      // #docregion identical
+      var a = const ImmutablePoint(1, 1);
+      var b = const ImmutablePoint(1, 1);
 
-    assert(identical(a, b)); // They are the same instance!
-    // #enddocregion identical
+      assert(identical(a, b)); // They are the same instance!
+      // #enddocregion identical
 
-    // #docregion runtimeType
-    $print('The type of a is ${a.runtimeType}');
-    // #enddocregion runtimeType
-    expect(printLog.toString(), 'The type of a is ImmutablePoint');
+      // #docregion runtimeType
+      print('The type of a is ${a.runtimeType}');
+      // #enddocregion runtimeType
+    }
+
+    expect(_test, m.prints('The type of a is ImmutablePoint'));
   });
 
   test('point_with_main', () {
@@ -93,13 +89,11 @@ void main() {
   });
 
   test('employee', () {
-    employee.main();
-    expect(printLog.toString(), 'in Person\nin Employee');
+    expect(employee.main, m.prints(['in Person', 'in Employee']));
   });
 
   test('point_with_distance', () {
-    point_with_distance_field.main();
-    expect(printLog.toString().startsWith('3.6'), isTrue);
+    expect(point_with_distance_field.main, prints(startsWith('3.6')));
   });
 
   test('point_redirecting', () {
@@ -107,14 +101,15 @@ void main() {
     expect(p.y, 0);
   });
 
-  test('logger_with_main', () {
-    logger_with_main.main(); // contains assertions
-    expect(printLog.log, [
-      'Button clicked',
-      'log1: This is l1.',
-      'log1: This is l1_2.',
-      'log2: This is l2.',
-    ]);
+  test('logger', () {
+    expect(
+        logger_with_main.main,
+        m.prints([
+          'Button clicked',
+          'log1: This is l1.',
+          'log1: This is l1_2.',
+          'log2: This is l2.',
+        ]));
   });
 
   test('rectangle_with_main', () {
@@ -126,38 +121,38 @@ void main() {
   });
 
   test('imposter', () {
-    impostor.main();
-    expect(printLog.toString(),
-        'Hello, Bob. I am Kathy.\n' + 'Hi Bob. Do you know who I am?');
+    expect(
+        impostor.main,
+        m.prints([
+          'Hello, Bob. I am Kathy.',
+          'Hi Bob. Do you know who I am?',
+        ]));
   });
 
   test('no_such_method', () {
-    no_such_method.main();
-    expect(printLog.toString(),
-        'You tried to use a non-existent member: Symbol("foo")');
+    expect(no_such_method.main,
+        m.prints('You tried to use a non-existent member: Symbol("foo")'));
   });
 
   test('proxy', () {
-    proxy.main();
-    expect(printLog.toString(), 'handling invocation: Symbol("doSomething")');
+    expect(proxy.main, m.prints('handling invocation: Symbol("doSomething")'));
   });
 
   test('proxy_alt', () {
-    proxy_alt.main();
     expect(
-        printLog.toString(),
-        'handling invocation: Symbol("doSomething")\n' +
-            'handling invocation: Symbol("doSomeOtherThing")');
+        proxy_alt.main,
+        m.prints([
+          'handling invocation: Symbol("doSomething")',
+          'handling invocation: Symbol("doSomeOtherThing")',
+        ]));
   });
 
   test('enum_with_main', () {
-    enum_with_main.main(); // contains assertions
-    expect(printLog.toString(), 'Color.blue');
+    expect(enum_with_main.main, m.prints('Color.blue'));
   });
 
   test('orchestra', () {
-    orchestra.main();
-    expect(printLog.toString(), 'Waving hands\nPlaying piano');
+    expect(orchestra.main, m.prints(['Waving hands', 'Playing piano']));
   });
 
   test('static-field', () {
@@ -165,7 +160,6 @@ void main() {
   });
 
   test('point_with_distance_method', () {
-    point_with_distance_method.main(); // contains assertions
-    expect(printLog.toString().startsWith('2.82'), isTrue);
+    expect(point_with_distance_method.main, prints(startsWith('2.82')));
   });
 }

@@ -1,19 +1,13 @@
 // ignore_for_file: type_annotate_public_apis
 import 'package:test/test.dart';
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('basic', () {
     // #docregion
     // Define a function.
     printNumber(num aNumber) {
-      $print('The number is $aNumber.'); // Print to console.
+      print('The number is $aNumber.'); // Print to console.
     }
 
     // This is where the app starts executing.
@@ -21,9 +15,8 @@ void main() {
       var number = 42; // Declare and initialize a variable.
       printNumber(number); // Call a function.
     }
-    // #enddocregion
 
-    main();
-    expect(printLog.toString(), 'The number is 42.');
+    // #enddocregion
+    expect(main, m.prints('The number is 42.'));
   });
 }

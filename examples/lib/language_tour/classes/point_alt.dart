@@ -1,11 +1,9 @@
+// #docplaster
 /// Example of:
 ///
 /// - A constructor initializing fields in the body "the long way"
 /// - A named constructor with initializers, and a print statement in the body.
 ///
-// #docplaster
-import '../../util/print.dart';
-
 // #docregion constructor-long-way
 class Point {
   num x, y;
@@ -23,7 +21,7 @@ class Point {
   Point.fromJson(Map json)
       : x = json['x'],
         y = json['y'] {
-    $print('In Point.fromJson(): ($x, $y)');
+    print('In Point.fromJson(): ($x, $y)');
   }
   // #enddocregion initializer-list
 

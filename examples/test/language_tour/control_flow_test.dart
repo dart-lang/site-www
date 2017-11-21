@@ -1,13 +1,7 @@
 import 'package:test/test.dart';
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import '../util/print_matcher.dart' as m;
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('for', () {
     // #docregion for
     var message = new StringBuffer('Dart is fun');
@@ -19,24 +13,30 @@ void main() {
   });
 
   test('for-and-closures', () {
-    // #docregion for-and-closures
-    var callbacks = [];
-    for (var i = 0; i < 2; i++) {
-      callbacks.add(() => $print(i));
+    _test() {
+      // #docregion for-and-closures
+      var callbacks = [];
+      for (var i = 0; i < 2; i++) {
+        callbacks.add(() => print(i));
+      }
+      callbacks.forEach((c) => c());
+      // #enddocregion for-and-closures
     }
-    callbacks.forEach((c) => c());
-    // #enddocregion for-and-closures
-    expect(printLog.log, ['0', '1']);
+
+    expect(_test, m.prints(['0', '1']));
   });
 
   test('collection', () {
-    // #docregion collection
-    var collection = [0, 1, 2];
-    for (var x in collection) {
-      $print(x); // 0 1 2
+    _test() {
+      // #docregion collection
+      var collection = [0, 1, 2];
+      for (var x in collection) {
+        print(x); // 0 1 2
+      }
+      // #enddocregion collection
     }
-    // #enddocregion collection
-    expect(printLog.toString(), collection.join('\n'));
+
+    expect(_test, m.prints([0, 1, 2]));
   });
 
   test('assert', () {

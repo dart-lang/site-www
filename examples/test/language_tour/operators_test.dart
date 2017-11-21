@@ -1,17 +1,11 @@
 // #docplaster
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
-import 'package:examples/util/logging_printer.dart';
-import 'package:examples/util/print.dart';
+import '../util/print_matcher.dart' as m;
 
 class T {}
 
 void main() {
-  final printLog = PrintLog.it;
-
-  setUpAll(() => PrintLog.set$print());
-  setUp(() => printLog.clear());
-
   test('expressions', () {
     var a = 1, b = 2, c = true;
     final expressions = [
@@ -85,14 +79,13 @@ void main() {
   });
 
   test('is-vs-as', () {
-    employee.main();
-    expect(printLog.toString(), 'in Person\nin Employee');
+    expect(employee.main, m.prints(['in Person', 'in Employee']));
   });
 
   group('`=` vs `??=`:', () {
     // #docregion assignment-gist-main-body
     void assignValues(int a, int b, int value) {
-      $print('Initially: a == $a, b == $b');
+      print('Initially: a == $a, b == $b');
       // #docregion assignment
       // Assign value to a
       a = value;
@@ -100,7 +93,7 @@ void main() {
       // otherwise, b stays the same
       b ??= value;
       // #enddocregion assignment
-      $print('After: a == $a, b == $b');
+      print('After: a == $a, b == $b');
     }
 
     // #enddocregion assignment-gist-main-body
@@ -109,25 +102,37 @@ void main() {
     main() {
     // #enddocregion assignment-gist-main-body
     */
-    test('var initially non-null', () {
+
+    _test001() {
       // #docregion assignment-gist-main-body
       assignValues(0, 0, 1);
       // #enddocregion assignment-gist-main-body
-      expect(
-          printLog.toString(),
-          'Initially: a == 0, b == 0\n'
-          'After: a == 1, b == 0');
-    });
+    }
 
-    test('var initially null', () {
+    _testNull() {
       // #docregion assignment-gist-main-body
       assignValues(null, null, 1);
       // #enddocregion assignment-gist-main-body
+    }
+
+    test('var initially non-null', () {
       expect(
-          printLog.toString(),
-          'Initially: a == null, b == null\n'
-          'After: a == 1, b == 1');
+          _test001,
+          m.prints([
+            'Initially: a == 0, b == 0',
+            'After: a == 1, b == 0',
+          ]));
     });
+
+    test('var initially non-null', () {
+      expect(
+          _testNull,
+          m.prints([
+            'Initially: a == null, b == null',
+            'After: a == 1, b == 1',
+          ]));
+    });
+
     /*
     // #docregion assignment-gist-main-body
     }

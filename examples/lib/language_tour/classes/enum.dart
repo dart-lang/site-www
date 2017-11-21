@@ -1,5 +1,3 @@
-import '../../util/print.dart';
-
 // #docregion enum
 enum Color { red, green, blue }
 // #enddocregion enum
@@ -22,13 +20,13 @@ void main() {
 
   switch (aColor) {
     case Color.red:
-      $print('Red as roses!');
+      print('Red as roses!');
       break;
     case Color.green:
-      $print('Green as grass!');
+      print('Green as grass!');
       break;
     default: // Without this, you see a WARNING.
-      $print(aColor); // 'Color.blue'
+      print(aColor); // 'Color.blue'
   }
   // #enddocregion switch
 }
