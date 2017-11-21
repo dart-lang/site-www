@@ -28,7 +28,7 @@ echo "Fragments:  $FRAG"
 echo "Other args: $ARGS"
 echo
 echo "Globally replacing \$print() by print() in fragments."
-find $FRAG -name "*.dart.txt" -exec perl -i -pe 's/\$(print\()/\1/g' {} \;
+find $FRAG -name "*.dart.txt" -exec perl -i -pe 's/\$(print\b)/\1/g' {} \;
 echo
 LOG_FILE=$TMP/refresh-code-excerpts-log.txt
 pub global run code_excerpt_updater \
