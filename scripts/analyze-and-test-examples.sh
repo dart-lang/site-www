@@ -14,6 +14,16 @@ EXAMPLES="$ROOT/examples"
 
 ANALYZE="dartanalyzer --options $EXAMPLES/analysis_options.yaml"
 
+FILTER1="cat -"
+FILTER2="cat"
+FILTER_ARG="-"
+if [[ "$1" == "-q" ]]; then
+  FILTER1="tr '\r' '\n'"
+  FILTER2="grep -E"
+  FILTER_ARG="(Some|All) tests"
+  shift;
+fi
+
 if [[ ! -e $TMP ]]; then mkdir $TMP; fi
 LOG_FILE=$TMP/analyzer-output.txt
 
@@ -36,17 +46,19 @@ echo Running VM tests ...
 
 TEST="pub run test"
 
-$TEST --exclude-tags=browser | tee $LOG_FILE
+$TEST --exclude-tags=browser | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 LOG=$(grep 'All tests passed!' $LOG_FILE)
 if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
 travis_fold end analyzeAndTest.tests.vm
 
-echo
 travis_fold start analyzeAndTest.tests.browser
 echo Running browser tests ...
 
 # Name the sole browser test file, otherwise all other files get compiled too:
-$TEST --tags browser --platform chrome test/language_tour/browser_test.dart | tee $LOG_FILE
+$TEST --tags browser --platform chrome \
+  test/language_tour/browser_test.dart \
+  test/library_tour/html_test.dart \
+    | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 LOG=$(grep 'All tests passed!' $LOG_FILE)
 if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
 travis_fold end analyzeAndTest.tests.browser
