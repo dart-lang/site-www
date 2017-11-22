@@ -35,7 +35,8 @@ $DARTFMT -l 60 \
   examples/lib/language_tour/classes/orchestra.dart \
   examples/test/language_tour/built_in_types_test.dart \
   examples/test/language_tour/functions_test.dart \
-  examples/lib/library_tour/core
+  examples/lib/library_tour/core \
+  examples/test/library_tour/html_test.dart
 
 $DARTFMT -l 65 \
   examples/lib/language_tour/exceptions.dart \

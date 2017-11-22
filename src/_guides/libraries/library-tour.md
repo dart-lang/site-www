@@ -1452,7 +1452,7 @@ For higher level approaches to web app UIs, see
 
 To use the HTML library in your web app, import dart:html:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (import)"?>
 {% prettify dart %}
 import 'dart:html';
 {% endprettify %}
@@ -1485,8 +1485,7 @@ To manipulate an element, you first need an object that represents it.
 You can get this object using a query.
 
 Find one or more elements using the top-level functions
-`querySelector()` and`
-        querySelectorAll()`. You can query by ID, class, tag, name, or
+`querySelector()` and `querySelectorAll()`. You can query by ID, class, tag, name, or
 any combination of these. The [CSS Selector Specification
 guide](http://www.w3.org/TR/css3-selectors/) defines the formats of the
 selectors such as using a \# prefix to specify IDs and a period (.) for
@@ -1496,7 +1495,7 @@ The `querySelector()` function returns the first element that matches
 the selector, while `querySelectorAll()`returns a collection of elements
 that match the selector.
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (querySelector)"?>
 {% prettify dart %}
 // Find an element by id (an-id).
 Element elem1 = querySelector('#an-id');
@@ -1508,8 +1507,9 @@ Element elem2 = querySelector('.a-class');
 List<Element> elems1 = querySelectorAll('div');
 
 // Find all text inputs.
-  List<Element> elems2 =
-      querySelectorAll('input[type="text"]');
+List<Element> elems2 = querySelectorAll(
+  'input[type="text"]',
+);
 
 // Find all elements with the CSS class 'class'
 // inside of a <p> that is inside an element with
@@ -1528,7 +1528,7 @@ define additional properties, such as the `href` property of
 
 Consider this example of specifying an anchor element in HTML:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
 {% prettify html %}
 <a id="example" href="http://example.com">link text</a>
 {% endprettify %}
@@ -1538,9 +1538,10 @@ node (accessible via a `text` property) that contains the string
 “linktext”. To change the URL that the link goes to, you can use
 AnchorElement’s `href` property:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (href)"?>
 {% prettify dart %}
-querySelector('#example').href = 'http://dartlang.org';
+var anchor = querySelector('#example') as AnchorElement;
+anchor.href = 'http://dartlang.org';
 {% endprettify %}
 
 Often you need to set properties on multiple elements. For example, the
@@ -1548,7 +1549,7 @@ following code sets the `hidden` property of all elements that have a
 class of “mac”, “win”, or “linux”. Setting the `hidden` property to true
 has the same effect as adding `display:none` to the CSS.
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
 {% prettify dart %}
 <!-- In HTML: -->
 <p>
@@ -1556,15 +1557,18 @@ has the same effect as adding `display:none` to the CSS.
   <span class="macos">Words for Mac</span>
   <span class="windows">Words for Windows</span>
 </p>
+{% endprettify %}
 
+<?code-excerpt "test/library_tour/html_test.dart (os)"?>
+{% prettify dart %}
 // In Dart:
 final osList = ['macos', 'windows', 'linux'];
+final userOs = determineUserOs();
 
-// In real code you'd programmatically determine userOs.
-var userOs = 'linux';
-
-for (var os in osList) { // For each possible OS...
-  bool shouldShow = (os == userOs); // Matches user OS?
+// For each possible OS...
+for (var os in osList) {
+  // Matches user OS?
+  bool shouldShow = (os == userOs);
 
   // Find all elements with class=os. For example, if
   // os == 'windows', call querySelectorAll('.windows')
@@ -1583,7 +1587,7 @@ attribute names and their meanings, see the [MDN Attributes
 page.](https://developer.mozilla.org/en/HTML/Attributes) Here’s an
 example of setting an attribute’s value:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (attributes)"?>
 {% prettify dart %}
 elem.attributes['someAttribute'] = 'someValue';
 {% endprettify %}
@@ -1594,7 +1598,7 @@ You can add to existing HTML pages by creating new elements and
 attaching them to the DOM. Here’s an example of creating a paragraph
 (\<p\>) element:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (creating-elements)"?>
 {% prettify dart %}
 var elem = new ParagraphElement();
 elem.text = 'Creating is easy!';
@@ -1603,13 +1607,14 @@ elem.text = 'Creating is easy!';
 You can also create an element by parsing HTML text. Any child elements
 are also parsed and created.
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (creating-from-html)"?>
 {% prettify dart %}
-var elem2 =
-    new Element.html('<p>Creating <em>is</em> easy!</p>');
+var elem2 = new Element.html(
+  '<p>Creating <em>is</em> easy!</p>',
+);
 {% endprettify %}
 
-Note that elem2 is a ParagraphElement in the preceding example.
+Note that `elem2` is a `ParagraphElement` in the preceding example.
 
 Attach the newly created element to the document by assigning a parent
 to the element. You can add an element to any existing element’s
@@ -1617,7 +1622,7 @@ children. In the following example, `body` is an element, and its child
 elements are accessible (as a List\<Element\>) from the `children`
 property.
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (body-children-add)"?>
 {% prettify dart %}
 document.body.children.add(elem2);
 {% endprettify %}
@@ -1633,23 +1638,21 @@ operators to manipulate the children of the node.
 To add a node as the last child of its parent, use the List `add()`
 method:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (nodes-add)"?>
 {% prettify dart %}
-// Find the parent by ID, and add elem as its last child.
 querySelector('#inputs').nodes.add(elem);
 {% endprettify %}
 
 To replace a node, use the Node `replaceWith()` method:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (replaceWith)"?>
 {% prettify dart %}
-// Find a node by ID, and replace it in the DOM.
 querySelector('#status').replaceWith(elem);
 {% endprettify %}
 
 To remove a node, use the Node `remove()` method:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (remove)"?>
 {% prettify dart %}
 // Find a node by ID, and remove it from the DOM.
 querySelector('#expendable').remove();
@@ -1665,16 +1668,16 @@ Each element has a `classes` field, which is a list. Add and remove CSS
 classes simply by adding and removing strings from this collection. For
 example, the following sample adds the `warning` class to an element:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (classes-add)"?>
 {% prettify dart %}
-var element = querySelector('#message');
-element.classes.add('warning');
+var elem = querySelector('#message');
+elem.classes.add('warning');
 {% endprettify %}
 
 It’s often very efficient to find an element by ID. You can dynamically
 set an element ID with the `id` property:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (set-id)"?>
 {% prettify dart %}
 var message = new DivElement();
 message.id = 'message2';
@@ -1684,22 +1687,22 @@ message.text = 'Please subscribe to the Dart mailing list.';
 You can reduce the redundant text in this example by using method
 cascades:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (elem-set-cascade)"?>
 {% prettify dart %}
 var message = new DivElement()
-    ..id = 'message2'
-    ..text = 'Please subscribe to the Dart mailing list.';
+  ..id = 'message2'
+  ..text = 'Please subscribe to the Dart mailing list.';
 {% endprettify %}
 
 While using IDs and classes to associate an element with a set of styles
 is best practice, sometimes you want to attach a specific style directly
 to the element:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (set-style)"?>
 {% prettify dart %}
 message.style
-    ..fontWeight = 'bold'
-    ..fontSize = '3em';
+  ..fontWeight = 'bold'
+  ..fontSize = '3em';
 {% endprettify %}
 
 #### Handling events
@@ -1718,7 +1721,7 @@ name and <code><em>function</em></code> is the event handler.
 
 For example, here’s how you can handle clicks on a button:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (onClick)"?>
 {% prettify dart %}
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo').onClick.listen((e) {
@@ -1730,11 +1733,11 @@ querySelector('#submitInfo').onClick.listen((e) {
 Events can propagate up and down through the DOM tree. To discover which
 element originally fired the event, use `e.target`:
 
-<!-- library-tour/future-then/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (target)"?>
 {% prettify dart %}
 document.body.onClick.listen((e) {
-  var clickedElem = e.target;
-  print('You clicked the ${clickedElem.id} element.');
+  final clickedElem = e.target;
+  // ...
 });
 {% endprettify %}
 
@@ -1758,13 +1761,6 @@ Traditionally, AJAX-style apps make heavy use of HttpRequest. Use
 HttpRequest to dynamically load JSON data or any other resource from a
 web server. You can also dynamically send data to a web server.
 
-The following examples assume all resources are served from the same web
-server that hosts the script itself. Due to security restrictions in the
-browser, the HttpRequest class can’t easily use resources that are
-hosted on an origin that is different from the origin of the app. If you
-need to access resources that live on a different web server, you need
-to either use a technique called JSONP or enable CORS headers on the
-remote resources.
 
 #### Getting data from the server
 
@@ -1772,46 +1768,23 @@ The HttpRequest static method `getString()` is an easy way to get data
 from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
-<!-- library-tour/get-data-from-server/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (getString)" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:html';
-import 'dart:async';
-
-// A JSON-formatted file next to this page.
-var uri = 'data.json';
-
-main() async {
-  // Read a JSON file.
-  var data = await HttpRequest.getString(uri);
-  processString(data);
-}
-
-processString(String jsonText) {
-  parseText(jsonText);
+Future main() async {
+  String pageHtml = [!await HttpRequest.getString(url);!]
+  // Do something with pageHtml...
 }
 {% endprettify %}
 
-Information about the JSON API is in the
-[dart:convert section](#dartconvert---decoding-and-encoding-json-utf-8-and-more).
-
-{% comment %}
-{PENDING: convert to async exception catcher?}
-{% endcomment %}
-
 Use try-catch to specify an error handler:
 
-<!-- library-tour/get-data-from-server/web/main.dart -->
+<?code-excerpt "lib/library_tour/html.dart (try-getString)"?>
 {% prettify dart %}
 try {
-  data = await HttpRequest.getString(jsonUri);
-  processString(data);
+  var data = await HttpRequest.getString(jsonUri);
+  // Process data...
 } catch (e) {
-  handleError(e);
-}
-// ...
-handleError(error) {
-  print('Uh oh, there was an error.');
-  print(error.toString());
+  // Handle exception...
 }
 {% endprettify %}
 
@@ -1819,32 +1792,17 @@ If you need access to the HttpRequest, not just the text data it
 retrieves, you can use the `request()` static method instead of
 `getString()`. Here’s an example of reading XML data:
 
-<!-- library-tour/get-data-from-server/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:html';
-import 'dart:async';
-
-// An XML-formatted file next to this page.
-var xmlUri = 'data.xml';
-
-main() async {
-  // Read an XML file.
-  try {
-    var data = await HttpRequest.request(xmlUri);
-    processRequest(data);
-  } catch (e) {
-    handleError(e);
+Future main() async {
+  HttpRequest req = await HttpRequest.request(
+    url,
+    method: 'HEAD',
+  );
+  if (req.status == 200) {
+    // Successful URL access...
   }
-}
-
-processRequest(HttpRequest request) {
-  var xmlDoc = request.responseXml;
-  try {
-    var license = xmlDoc.querySelector('license').text;
-    print('License: $license');
-  } catch (e) {
-    print("$xmlUri doesn't have correct XML formatting.");
-  }
+  // ...
 }
 {% endprettify %}
 
@@ -1860,14 +1818,17 @@ The general flow for using the full API of HttpRequest is as follows:
 
 For example:
 
-<!-- dart-tutorials-samples/web/portmanteaux/portmanteaux.dart -->
+{% comment %}
+TODO: use original source from dart-tutorials-samples/web/portmanteaux/portmanteaux.dart
+{% endcomment %}
+
+<?code-excerpt "lib/library_tour/html.dart (new-HttpRequest)"?>
 {% prettify dart %}
-import 'dart:html';
-// ...
-var request = new HttpRequest()
-    ..open('POST', dataUrl)
-    ..onLoadEnd.listen((_) => requestComplete(request))
-    ..send(encodedData);
+var request = new HttpRequest();
+request
+  ..open('POST', url)
+  ..onLoadEnd.listen((e) => requestComplete(request))
+  ..send(encodedData);
 {% endprettify %}
 
 #### Sending data to the server
@@ -1883,38 +1844,31 @@ You must also set the `Content-type` header to
 `application/x-www-form-urlencode` if you wish to send data to a form
 handler.
 
-<!-- library-tour/post-data-to-server/web/main.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (POST)"?>
 {% prettify dart %}
-import 'dart:html';
+String encodeMap(Map data) => data.keys
+    .map((k) =>
+        '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
+    .join('&');
 
-String encodeMap(Map data) {
-  return data.keys.map((k) {
-    return '${Uri.encodeComponent(k)}=' +
-           '${Uri.encodeComponent(data[k])}';
-  }).join('&');
-}
+Future main() async {
+  var data = {'dart': 'fun', 'angular': 'productive'};
 
-loadEnd(HttpRequest request) {
-  if (request.status != 200) {
-    print('Uh oh, error: ${request.status}');
-  } else {
-    print('Data has been posted');
-  }
-}
-
-main() async {
-  var dataUrl = '/registrations/create';
-  var data = {'dart': 'fun', 'editor': 'productive'};
-  var encodedData = encodeMap(data);
-
-  var httpRequest = new HttpRequest();
-  httpRequest.open('POST', dataUrl);
-  httpRequest.setRequestHeader(
+  var request = new HttpRequest();
+  request
+    ..open('POST', url)
+    ..setRequestHeader(
       'Content-type',
-      'application/x-www-form-urlencoded');
-  httpRequest.send(encodedData);
-  await httpRequest.onLoadEnd.first;
-  loadEnd(httpRequest);
+      'application/x-www-form-urlencoded',
+    )
+    ..send(encodeMap(data));
+
+  await request.onLoadEnd.first;
+
+  if (request.status == 200) {
+    // Successful URL access...
+  }
+  // ...
 }
 {% endprettify %}
 
@@ -1934,7 +1888,15 @@ string or a blob.  Often, the data is a JSON-formatted string.
 To use a WebSocket in your web app, first create a [WebSocket][] object, passing
 the WebSocket URL as an argument:
 
-<!-- github.com/dart-lang/dart-samples/html5/web/websockets/basics/websocket_sample.dart -->
+{% comment %}
+Code inspired by:
+https://github.com/dart-lang/dart-samples/blob/master/html5/web/websockets/basics/websocket_sample.dart
+
+Once tests are written for the samples, consider getting code excerpts from
+the websocket sample app.
+{% endcomment %}
+
+<?code-excerpt "test/library_tour/html_test.dart (WebSocket)"?>
 {% prettify dart %}
 var ws = new WebSocket('ws://echo.websocket.org');
 {% endprettify %}
@@ -1943,7 +1905,7 @@ var ws = new WebSocket('ws://echo.websocket.org');
 
 To send string data on the WebSocket, use the `send()` method:
 
-<!-- github.com/dart-lang/dart-samples/html5/web/websockets/basics/websocket_sample.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (send)"?>
 {% prettify dart %}
 ws.send('Hello from Dart!');
 {% endprettify %}
@@ -1953,7 +1915,7 @@ ws.send('Hello from Dart!');
 To receive data on the WebSocket, register a listener for message
 events:
 
-<!-- github.com/dart-lang/dart-samples/html5/web/websockets/basics/websocket_sample.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (onMessage)"?>
 {% prettify dart %}
 ws.onMessage.listen((MessageEvent e) {
   print('Received message: ${e.data}');
@@ -1970,18 +1932,16 @@ and (as shown earlier) message. Here’s an example of a method that
 creates a WebSocket object and registers handlers for open, close,
 error, and message events:
 
-<!-- https://github.com/dart-lang/dart-samples/blob/master/html5/web/websockets/basics/websocket_sample.dart -->
+<?code-excerpt "test/library_tour/html_test.dart (initWebSocket)"?>
 {% prettify dart %}
-void initWebSocket([int retrySeconds = 2]) {
+void initWebSocket([int retrySeconds = 1]) {
   var reconnectScheduled = false;
 
   print("Connecting to websocket");
-  ws = new WebSocket('ws://echo.websocket.org');
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
-      new Timer(
-          new Duration(milliseconds: 1000 * retrySeconds),
+      new Timer(new Duration(seconds: retrySeconds),
           () => initWebSocket(retrySeconds * 2));
     }
     reconnectScheduled = true;
@@ -1994,7 +1954,7 @@ void initWebSocket([int retrySeconds = 2]) {
 
   ws.onClose.listen((e) {
     print('Websocket closed, retrying in ' +
-          '$retrySeconds seconds');
+        '$retrySeconds seconds');
     scheduleReconnect();
   });
 
