@@ -1982,8 +1982,13 @@ Dart has additional libraries for more specialized web APIs, such as
 
 The [dart:io library][dart:io] provides APIs to
 deal with files, directories, processes, sockets, WebSockets, and HTTP
-clients and servers. Only command-line scripts and servers can use
-dart:io—not web apps.
+clients and servers.
+
+<div class="alert alert-warning" markdown="1">
+  **Important:**
+  Only command-line scripts and servers can import and use `dart:io`,
+  not web apps.
+</div>
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it
@@ -1992,13 +1997,13 @@ or Stream objects, a pattern common with modern server platforms such as
 Node.js.
 
 The few synchronous methods in the dart:io library are clearly marked
-with a Sync suffix on the method name. We don’t cover them here.
+with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Only command-line scripts and servers can import and use `dart:io`.
-</div>
-
+To use the dart:io library you must import it:
+<?code-excerpt "test/library_tour/io_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:io';
+{% endprettify %}
 
 ### Files and directories
 
@@ -2018,21 +2023,19 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<!-- library-tour/read-file/bin/text_read.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
   var contents;
 
   // Put the whole file in a single string.
   contents = await config.readAsString();
-  print('The entire file is ${contents.length} characters long.');
+  print('The file is ${contents.length} characters long.');
 
   // Put each line of the file into its own string.
   contents = await config.readAsLines();
-  print('The entire file is ${contents.length} lines long.');
+  print('The file is ${contents.length} lines long.');
 }
 {% endprettify %}
 
@@ -2043,15 +2046,13 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
-<!-- library-tour/read-file/bin/binary_read.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
 
   var contents = await config.readAsBytes();
-  print('The entire file is ${contents.length} bytes long');
+  print('The file is ${contents.length} bytes long.');
 }
 {% endprettify %}
 
@@ -2061,11 +2062,9 @@ To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
 or (in an async function) use try-catch:
 
-<!-- library-tour/read-file/bin/file_errors.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
   try {
     var contents = await config.readAsString();
@@ -2082,13 +2081,13 @@ Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](#stream) or `await for`,
 part of Dart's [asynchrony support](/guides/language/language-tour#asynchrony-support).
 
-<!-- library-tour/read-file/bin/read_file.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-import 'dart:async';
 
-main() async {
+Future main() async {
   var config = new File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
@@ -2113,18 +2112,19 @@ write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.WRITE`, completely
 overwrites existing data in the file.
 
-<!-- library-tour/write-file/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 var logFile = new File('log.txt');
 var sink = logFile.openWrite();
 sink.write('FILE ACCESSED ${new DateTime.now()}\n');
-sink.close();
+await sink.flush();
+await sink.close();
 {% endprettify %}
 
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.APPEND`:
 
-<!-- library-tour/write_file/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
 var sink = logFile.openWrite(mode: FileMode.APPEND);
 {% endprettify %}
@@ -2138,12 +2138,10 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<!-- library-tour/list-files/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
-  var dir = new Directory('/tmp');
+Future main() async {
+  var dir = new Directory('tmp');
 
   try {
     var dirList = dir.list();
@@ -2167,11 +2165,8 @@ The File and Directory classes contain other functionality, including
 but not limited to:
 
 -   Creating a file or directory: `create()` in File and Directory
-
 -   Deleting a file or directory: `delete()` in File and Directory
-
 -   Getting the length of a file: `length()` in File
-
 -   Getting random access to a file: `open()` in File
 
 Refer to the API docs for [File][] and [Directory][] for a full
@@ -2189,34 +2184,34 @@ The [HttpServer][] class
 provides the low-level functionality for building web servers. You can
 match request handlers, set headers, stream data, and more.
 
-The following sample web server can return only simple text information.
+The following sample web server returns simple text information.
 This server listens on port 8888 and address 127.0.0.1 (localhost),
-responding to requests for the path `/languages/dart`. All other
-requests are handled by the default request handler, which returns a
-response code of 404 (not found).
+responding to requests for the path `/dart`. For any other path,
+the response is status code 404 (page not found).
 
-<!-- library-tour/client-server/bin/http_server.dart -->
+<?code-excerpt "lib/library_tour/io/http_server.dart"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
-  dartHandler(HttpRequest request) {
-    request.response.headers.contentType =
-        new ContentType('text', 'plain');
-    request.response.write('Sending a response');
-    request.response.close();
-  }
-
-  var requests = await HttpServer.bind('127.0.0.1', 8888);
+Future main() async {
+  var requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
-    print('Got request for ${request.uri.path}');
-    if (request.uri.path == '/languages/dart') {
-      dartHandler(request);
-    } else {
-      request.response.write('Not found');
-      request.response.close();
-    }
+    processRequest(request);
   }
+}
+
+void processRequest(HttpRequest request) {
+  print('Got request for ${request.uri.path}');
+  final response = request.response;
+  if (request.uri.path == '/dart') {
+    response
+      ..headers.contentType = new ContentType(
+        'text',
+        'plain',
+      )
+      ..write('Hello from the server');
+  } else {
+    response.statusCode = HttpStatus.NOT_FOUND;
+  }
+  response.close();
 }
 {% endprettify %}
 
@@ -2230,22 +2225,15 @@ apps. When programming in the browser, use the [HttpRequest
 class](#using-http-resources-with-httprequest).
 Here’s an example of using HttpClient:
 
-<!-- library-tour/client-server/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (client)"?>
 {% prettify dart %}
-import 'dart:io';
-import 'dart:convert';
-
-main() async {
-  var url = Uri.parse(
-      'http://127.0.0.1:8888/languages/dart');
+Future main() async {
+  var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = new HttpClient();
   var request = await httpClient.getUrl(url);
-  print('have request');
   var response = await request.close();
-  print('have response');
   var data = await response.transform(UTF8.decoder).toList();
-  var body = data.join('');
-  print(body);
+  print('Response ${response.statusCode}: $data');
   httpClient.close();
 }
 {% endprettify %}
@@ -2254,7 +2242,8 @@ main() async {
 ### More information
 
 Besides the APIs discussed in this section, the dart:io library also
-provides APIs for [processes][Process] and [sockets.][Socket].
+provides APIs for [processes,][Process] [sockets,][Socket] and
+[web sockets.][WebSocket]
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
 

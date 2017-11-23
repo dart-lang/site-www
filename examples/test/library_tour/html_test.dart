@@ -184,7 +184,7 @@ void main() {
     // #enddocregion initWebSocket
 
     final t = wsStream.stream.timeout(
-      new Duration(seconds: 1),
+      new Duration(seconds: 5),
       onTimeout: (s) => s.add('Timeout!'),
     );
 
@@ -194,19 +194,5 @@ void main() {
     } finally {
       await wsStream.close();
     }
-  });
-
-  group('xxxx', () {
-    test('xxxxx', () {
-      // #docregion xxxx
-      11111;
-      // #enddocregion xxxx
-    });
-
-    test('xxxxx', () {
-      // #docregion xxxx
-      11111;
-      // #enddocregion xxxx
-    });
   });
 }

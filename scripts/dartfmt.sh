@@ -42,7 +42,9 @@ $DARTFMT -l 65 \
   examples/lib/language_tour/exceptions.dart \
   examples/test/library_tour/core_test.dart \
   examples/lib/library_tour/async/future.dart \
-  examples/lib/library_tour/async/stream.dart
+  examples/lib/library_tour/async/stream.dart \
+  examples/test/library_tour/io_test.dart
+
 
 # If any files were changed, then exit 1:
 REFORMATTED_FILES=$(git status --short)
