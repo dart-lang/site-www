@@ -1872,10 +1872,6 @@ Future main() async {
 }
 {% endprettify %}
 
-{% comment %}
-[PENDING: Test the above code!!! ]
-{% endcomment %}
-
 
 ### Sending and receiving real-time data with WebSockets
 
@@ -1982,8 +1978,13 @@ Dart has additional libraries for more specialized web APIs, such as
 
 The [dart:io library][dart:io] provides APIs to
 deal with files, directories, processes, sockets, WebSockets, and HTTP
-clients and servers. Only command-line scripts and servers can use
-dart:io—not web apps.
+clients and servers.
+
+<div class="alert alert-warning" markdown="1">
+  **Important:**
+  Only [Flutter mobile apps]({{site.flutter}}), command-line scripts, and servers
+  can import and use `dart:io`, not web apps.
+</div>
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it
@@ -1992,13 +1993,13 @@ or Stream objects, a pattern common with modern server platforms such as
 Node.js.
 
 The few synchronous methods in the dart:io library are clearly marked
-with a Sync suffix on the method name. We don’t cover them here.
+with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Only command-line scripts and servers can import and use `dart:io`.
-</div>
-
+To use the dart:io library you must import it:
+<?code-excerpt "test/library_tour/io_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:io';
+{% endprettify %}
 
 ### Files and directories
 
@@ -2018,21 +2019,19 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<!-- library-tour/read-file/bin/text_read.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
   var contents;
 
   // Put the whole file in a single string.
   contents = await config.readAsString();
-  print('The entire file is ${contents.length} characters long.');
+  print('The file is ${contents.length} characters long.');
 
   // Put each line of the file into its own string.
   contents = await config.readAsLines();
-  print('The entire file is ${contents.length} lines long.');
+  print('The file is ${contents.length} lines long.');
 }
 {% endprettify %}
 
@@ -2043,15 +2042,13 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
-<!-- library-tour/read-file/bin/binary_read.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
 
   var contents = await config.readAsBytes();
-  print('The entire file is ${contents.length} bytes long');
+  print('The file is ${contents.length} bytes long.');
 }
 {% endprettify %}
 
@@ -2061,11 +2058,9 @@ To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
 or (in an async function) use try-catch:
 
-<!-- library-tour/read-file/bin/file_errors.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
+Future main() async {
   var config = new File('config.txt');
   try {
     var contents = await config.readAsString();
@@ -2082,13 +2077,13 @@ Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](#stream) or `await for`,
 part of Dart's [asynchrony support](/guides/language/language-tour#asynchrony-support).
 
-<!-- library-tour/read-file/bin/read_file.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-import 'dart:async';
 
-main() async {
+Future main() async {
   var config = new File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
@@ -2113,18 +2108,19 @@ write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.WRITE`, completely
 overwrites existing data in the file.
 
-<!-- library-tour/write-file/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 var logFile = new File('log.txt');
 var sink = logFile.openWrite();
 sink.write('FILE ACCESSED ${new DateTime.now()}\n');
-sink.close();
+await sink.flush();
+await sink.close();
 {% endprettify %}
 
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.APPEND`:
 
-<!-- library-tour/write_file/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
 var sink = logFile.openWrite(mode: FileMode.APPEND);
 {% endprettify %}
@@ -2138,12 +2134,10 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<!-- library-tour/list-files/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
-  var dir = new Directory('/tmp');
+Future main() async {
+  var dir = new Directory('tmp');
 
   try {
     var dirList = dir.list();
@@ -2167,11 +2161,8 @@ The File and Directory classes contain other functionality, including
 but not limited to:
 
 -   Creating a file or directory: `create()` in File and Directory
-
 -   Deleting a file or directory: `delete()` in File and Directory
-
 -   Getting the length of a file: `length()` in File
-
 -   Getting random access to a file: `open()` in File
 
 Refer to the API docs for [File][] and [Directory][] for a full
@@ -2189,34 +2180,34 @@ The [HttpServer][] class
 provides the low-level functionality for building web servers. You can
 match request handlers, set headers, stream data, and more.
 
-The following sample web server can return only simple text information.
+The following sample web server returns simple text information.
 This server listens on port 8888 and address 127.0.0.1 (localhost),
-responding to requests for the path `/languages/dart`. All other
-requests are handled by the default request handler, which returns a
-response code of 404 (not found).
+responding to requests for the path `/dart`. For any other path,
+the response is status code 404 (page not found).
 
-<!-- library-tour/client-server/bin/http_server.dart -->
+<?code-excerpt "lib/library_tour/io/http_server.dart"?>
 {% prettify dart %}
-import 'dart:io';
-
-main() async {
-  dartHandler(HttpRequest request) {
-    request.response.headers.contentType =
-        new ContentType('text', 'plain');
-    request.response.write('Sending a response');
-    request.response.close();
-  }
-
-  var requests = await HttpServer.bind('127.0.0.1', 8888);
+Future main() async {
+  var requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
-    print('Got request for ${request.uri.path}');
-    if (request.uri.path == '/languages/dart') {
-      dartHandler(request);
-    } else {
-      request.response.write('Not found');
-      request.response.close();
-    }
+    processRequest(request);
   }
+}
+
+void processRequest(HttpRequest request) {
+  print('Got request for ${request.uri.path}');
+  final response = request.response;
+  if (request.uri.path == '/dart') {
+    response
+      ..headers.contentType = new ContentType(
+        'text',
+        'plain',
+      )
+      ..write('Hello from the server');
+  } else {
+    response.statusCode = HttpStatus.NOT_FOUND;
+  }
+  response.close();
 }
 {% endprettify %}
 
@@ -2230,22 +2221,15 @@ apps. When programming in the browser, use the [HttpRequest
 class](#using-http-resources-with-httprequest).
 Here’s an example of using HttpClient:
 
-<!-- library-tour/client-server/bin/main.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (client)"?>
 {% prettify dart %}
-import 'dart:io';
-import 'dart:convert';
-
-main() async {
-  var url = Uri.parse(
-      'http://127.0.0.1:8888/languages/dart');
+Future main() async {
+  var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = new HttpClient();
   var request = await httpClient.getUrl(url);
-  print('have request');
   var response = await request.close();
-  print('have response');
   var data = await response.transform(UTF8.decoder).toList();
-  var body = data.join('');
-  print(body);
+  print('Response ${response.statusCode}: $data');
   httpClient.close();
 }
 {% endprettify %}
@@ -2254,68 +2238,67 @@ main() async {
 ### More information
 
 Besides the APIs discussed in this section, the dart:io library also
-provides APIs for [processes][Process] and [sockets.][Socket].
+provides APIs for [processes,][Process] [sockets,][Socket] and
+[web sockets.][WebSocket]
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
 
 The [dart:convert library][dart:convert]
 has converters for JSON and UTF-8, as well as support for creating
-additional converters. JSON is a simple text format for representing
-structured objects and collections. UTF-8 is a common variable-width
+additional converters. [JSON][] is a simple text format for representing
+structured objects and collections. [UTF-8][] is a common variable-width
 encoding that can represent every character in the Unicode character
 set.
 
 The dart:convert library works in both web apps and command-line apps.
 To use it, import dart:convert.
 
+<?code-excerpt "test/library_tour/convert_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:convert';
+{% endprettify %}
+
 
 ### Decoding and encoding JSON
 
 Decode a JSON-encoded string into a Dart object with `JSON.decode()`:
 
-<!-- library-tour/json-parse/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (JSON-decode)"?>
 {% prettify dart %}
-import 'dart:convert' show JSON;
-
-main() {
-  // NOTE: Be sure to use double quotes ("),
-  // not single quotes ('), inside the JSON string.
-  // This string is JSON, not Dart.
-  var jsonString = '''
+// NOTE: Be sure to use double quotes ("),
+// not single quotes ('), inside the JSON string.
+// This string is JSON, not Dart.
+var jsonString = '''
   [
     {"score": 40},
     {"score": 80}
   ]
-  ''';
+''';
 
-  var scores = JSON.decode(jsonString);
-  assert(scores is List);
+var scores = JSON.decode(jsonString);
+assert(scores is List);
 
-  var firstScore = scores[0];
-  assert(firstScore is Map);
-  assert(firstScore['score'] == 40);
-}
+var firstScore = scores[0];
+assert(firstScore is Map);
+assert(firstScore['score'] == 40);
 {% endprettify %}
 
 Encode a supported Dart object into a JSON-formatted string with
 `JSON.encode()`:
 
-<!-- library-tour/json_stringify/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (JSON-encode)"?>
 {% prettify dart %}
-import 'dart:convert' show JSON;
+var scores = [
+  {'score': 40},
+  {'score': 80},
+  {'score': 100, 'overtime': true, 'special_guest': null}
+];
 
-main() {
-  var scores = [
-    {'score': 40},
-    {'score': 80},
-    {'score': 100, 'overtime': true, 'special_guest': null}
-  ];
-
-  var jsonText = JSON.encode(scores);
-  assert(jsonText == '[{"score":40},{"score":80},'
-                     '{"score":100,"overtime":true,'
-                     '"special_guest":null}]');
-}
+var jsonText = JSON.encode(scores);
+assert(jsonText ==
+    '[{"score":40},{"score":80},'
+    '{"score":100,"overtime":true,'
+    '"special_guest":null}]');
 {% endprettify %}
 
 Only objects of type int, double, String, bool, null, List, or Map (with
@@ -2333,61 +2316,49 @@ the object's `toJson()` method.
 
 Use `UTF8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<!-- library-tour/decode_utf-8/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (UTF8-decode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
-import 'dart:convert' show UTF8;
+List<int> utf8Bytes = [
+  0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
+  0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
+  0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
+  0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
+  0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
+];
 
-main() {
-  var string = UTF8.decode([
-    0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
-    0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
-    0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
-    0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
-    0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
-  ]);
-  print(string); // 'Îñţérñåţîöñåļîžåţîờñ'
-}
+var funnyWord = UTF8.decode(utf8Bytes);
+
+assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 {% endprettify %}
 
 To convert a stream of UTF-8 characters into a Dart string, specify
 `UTF8.decoder` to the Stream `transform()` method:
 
-<!-- library-tour/read-file/read_file.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (UTF8-decoder)" replace="/UTF8.decoder/[!$&!]/g"?>
 {% prettify dart %}
 var lines = inputStream
-    .transform(UTF8.decoder)
+    .transform([!UTF8.decoder!])
     .transform(new LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
   }
+  print('file is now closed');
+} catch (e) {
+  print(e);
+}
 {% endprettify %}
 
 Use `UTF8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
-<!-- library-tour/encode_utf-8/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (UTF8-encode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
-import 'dart:convert' show UTF8;
+List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
-main() {
-  List<int> expected = [
-    0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
-    0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
-    0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
-    0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
-    0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
-  ];
-
-  List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
-
-  assert(() {
-    if (encoded.length != expected.length) return false;
-    for (int i = 0; i < encoded.length; i++) {
-      if (encoded[i] != expected[i]) return false;
-    }
-    return true;
-  });
+assert(encoded.length == utf8Bytes.length);
+for (int i = 0; i < encoded.length; i++) {
+  assert(encoded[i] == utf8Bytes[i]);
 }
 {% endprettify %}
 
@@ -2406,6 +2377,11 @@ invoke functions or methods at runtime.
 
 The dart:mirrors library works in both web apps and command-line apps.
 To use it, import dart:mirrors.
+
+<?code-excerpt "test/library_tour/mirrors_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:mirrors';
+{% endprettify %}
 
 <div class="alert alert-warning" markdown="1">
 **Warning:**
@@ -2430,10 +2406,8 @@ literal. This way, repeated uses of the same symbol can use the same
 canonicalized instance. If the name of the symbol is determined
 dynamically at runtime, use the Symbol constructor.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (Symbol)"?>
 {% prettify dart %}
-import 'dart:mirrors';
-
 // If the symbol name is known at compile time.
 const className = #MyClass;
 
@@ -2447,10 +2421,8 @@ different (often smaller) name. To convert from a symbol back to a
 string, use `MirrorSystem.getName()`. This function returns the correct
 name, even if the code was minified.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (getName)"?>
 {% prettify dart %}
-import 'dart:mirrors';
-
 const className = #MyClass;
 assert('MyClass' == MirrorSystem.getName(className));
 {% endprettify %}
@@ -2463,7 +2435,7 @@ inspect classes, libraries, instances, and more.
 
 The examples in this section use the following Person class:
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (Person)"?>
 {% prettify dart %}
 class Person {
   String firstName;
@@ -2487,68 +2459,68 @@ To begin, you need to *reflect* on a class or object to get its
 
 Reflect on a Type to get its ClassMirror.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (ClassMirror)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 ClassMirror mirror = reflectClass(Person);
 
-assert('Person' ==
-    MirrorSystem.getName(mirror.simpleName));
+assert('Person' == MirrorSystem.getName(mirror.simpleName));
 {% endprettify %}
 
 You can also call `runtimeType` to get a Type from an instance.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (runtimeType)"?>
 {% prettify dart %}
 var person = new Person('Bob', 'Smith', 33);
 ClassMirror mirror = reflectClass(person.runtimeType);
-assert('Person' ==
-    MirrorSystem.getName(mirror.simpleName));
+assert('Person' == MirrorSystem.getName(mirror.simpleName));
 {% endprettify %}
 
 Once you have a ClassMirror, you can get a class's constructors, fields,
 and more. Here is an example of listing the constructors of a class.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (showConstructors)"?>
 {% prettify dart %}
-showConstructors(ClassMirror mirror) {
+void showConstructors(ClassMirror mirror) {
   var constructors = mirror.declarations.values
       .where((m) => m is MethodMirror && m.isConstructor);
 
   constructors.forEach((m) {
-    print('The constructor ${m.simpleName} has '
-          '${m.parameters.length} parameters.');
+    MethodMirror mm = m as MethodMirror;
+    print('The constructor ${mm.simpleName} has '
+        '${mm.parameters.length} parameters.');
   });
 }
 {% endprettify %}
 
 Here is an example of listing all of the fields declared by a class.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (showFields)"?>
 {% prettify dart %}
-showFields(ClassMirror mirror) {
+void showFields(ClassMirror mirror) {
   var fields = mirror.declarations.values
       .where((m) => m is VariableMirror);
 
-  fields.forEach((VariableMirror m) {
-    var finalStatus = m.isFinal ? 'final' : 'not final';
-    var privateStatus = m.isPrivate ?
-        'private' : 'not private';
-    var typeAnnotation = m.type.simpleName;
+  fields.forEach((m) {
+    final v = m as VariableMirror;
+    var finalStatus = v.isFinal ? 'final' : 'not final';
+    var privateStatus =
+        v.isPrivate ? 'private' : 'not private';
+    var typeAnnotation = v.type.simpleName;
 
-    print('The field ${m.simpleName} is $privateStatus ' +
-          'and $finalStatus and is annotated as ' +
-          '$typeAnnotation.');
+    print('The field ${v.simpleName} is $privateStatus ' +
+        'and $finalStatus and is annotated as ' +
+        '$typeAnnotation.');
   });
-}{% endprettify %}
+}
+{% endprettify %}
 
-For a full list of methods, consult the [API docs for
-ClassMirror][ClassMirror].
+For a full list of methods, consult the [API docs for ClassMirror][ClassMirror].
 
 #### Instance mirrors
 
 Reflect on an object to get an InstanceMirror.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (InstanceMirror)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2557,7 +2529,7 @@ InstanceMirror mirror = reflect(p);
 If you have an InstanceMirror and you want to get the object that it
 reflects, use `reflectee`.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (reflectee)"?>
 {% prettify dart %}
 var person = mirror.reflectee;
 assert(identical(p, person));
@@ -2576,12 +2548,12 @@ The first parameter specifies the method to be invoked, and the second
 is a list of positional arguments to the method. An optional third
 parameter lets you specify named arguments.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (invoke)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
 
-mirror.invoke(#greet, ['Shailen']);
+mirror.invoke(#greet, ['Sundar']);
 {% endprettify %}
 
 #### Invoke getters and setters
@@ -2589,7 +2561,7 @@ mirror.invoke(#greet, ['Shailen']);
 Use InstanceMirror's `getField()` and `setField()` methods to get and
 set properties of an object.
 
-<!-- library-tours/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (getField-setField)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2601,6 +2573,7 @@ assert(fullName == 'Bob Smith');
 // Set the value of a property.
 mirror.setField(#firstName, 'Mary');
 assert(p.firstName == 'Mary');
+assert(p.fullName == 'Mary Smith');
 {% endprettify %}
 
 
@@ -2609,7 +2582,7 @@ assert(p.firstName == 'Mary');
 The article [Reflection in Dart with
 Mirrors](/articles/libraries/reflection-with-mirrors) has
 more information and examples. Also see the API docs for
-[dart:mirror,][dart:mirror] especially [MirrorsUsed,][MirrorsUsed],
+[dart:mirror,][dart:mirror] especially [MirrorsUsed,][MirrorsUsed]
 [ClassMirror,][ClassMirror] and [InstanceMirror.][InstanceMirror]
 
 
@@ -2663,6 +2636,7 @@ To learn more about the Dart language, see
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [Iterator]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[JSON]: https://www.json.org/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [Match]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
@@ -2684,6 +2658,7 @@ To learn more about the Dart language, see
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [toStringAsFixed()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
+[UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
 [WebGL]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
