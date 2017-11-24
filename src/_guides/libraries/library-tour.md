@@ -1982,8 +1982,8 @@ clients and servers.
 
 <div class="alert alert-warning" markdown="1">
   **Important:**
-  Only command-line scripts and servers can import and use `dart:io`,
-  not web apps.
+  Only [Flutter mobile apps]({{site.flutter}}), command-line scripts, and servers
+  can import and use `dart:io`, not web apps.
 </div>
 
 In general, the dart:io library implements and promotes an asynchronous
