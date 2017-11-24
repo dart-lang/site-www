@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
 // #docplaster
-import 'package:test/test.dart';
+// import 'package:test/test.dart';
 
 void main() {
+  /*
   test('xxxxx', () {
     // #docregion xxxx
     11111;
@@ -22,6 +23,7 @@ void main() {
       // #enddocregion xxxx
     });
   });
+  */
 }
 
 /// No tests below this point. Excerpts only illustrate declarations.

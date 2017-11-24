@@ -2378,6 +2378,11 @@ invoke functions or methods at runtime.
 The dart:mirrors library works in both web apps and command-line apps.
 To use it, import dart:mirrors.
 
+<?code-excerpt "test/library_tour/mirrors_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:mirrors';
+{% endprettify %}
+
 <div class="alert alert-warning" markdown="1">
 **Warning:**
 Using dart:mirrors can cause dart2js to generate very large JavaScript
@@ -2401,10 +2406,8 @@ literal. This way, repeated uses of the same symbol can use the same
 canonicalized instance. If the name of the symbol is determined
 dynamically at runtime, use the Symbol constructor.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (Symbol)"?>
 {% prettify dart %}
-import 'dart:mirrors';
-
 // If the symbol name is known at compile time.
 const className = #MyClass;
 
@@ -2418,10 +2421,8 @@ different (often smaller) name. To convert from a symbol back to a
 string, use `MirrorSystem.getName()`. This function returns the correct
 name, even if the code was minified.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (getName)"?>
 {% prettify dart %}
-import 'dart:mirrors';
-
 const className = #MyClass;
 assert('MyClass' == MirrorSystem.getName(className));
 {% endprettify %}
@@ -2434,7 +2435,7 @@ inspect classes, libraries, instances, and more.
 
 The examples in this section use the following Person class:
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (Person)"?>
 {% prettify dart %}
 class Person {
   String firstName;
@@ -2458,68 +2459,68 @@ To begin, you need to *reflect* on a class or object to get its
 
 Reflect on a Type to get its ClassMirror.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (ClassMirror)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 ClassMirror mirror = reflectClass(Person);
 
-assert('Person' ==
-    MirrorSystem.getName(mirror.simpleName));
+assert('Person' == MirrorSystem.getName(mirror.simpleName));
 {% endprettify %}
 
 You can also call `runtimeType` to get a Type from an instance.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (runtimeType)"?>
 {% prettify dart %}
 var person = new Person('Bob', 'Smith', 33);
 ClassMirror mirror = reflectClass(person.runtimeType);
-assert('Person' ==
-    MirrorSystem.getName(mirror.simpleName));
+assert('Person' == MirrorSystem.getName(mirror.simpleName));
 {% endprettify %}
 
 Once you have a ClassMirror, you can get a class's constructors, fields,
 and more. Here is an example of listing the constructors of a class.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (showConstructors)"?>
 {% prettify dart %}
-showConstructors(ClassMirror mirror) {
+void showConstructors(ClassMirror mirror) {
   var constructors = mirror.declarations.values
       .where((m) => m is MethodMirror && m.isConstructor);
 
   constructors.forEach((m) {
-    print('The constructor ${m.simpleName} has '
-          '${m.parameters.length} parameters.');
+    MethodMirror mm = m as MethodMirror;
+    print('The constructor ${mm.simpleName} has '
+        '${mm.parameters.length} parameters.');
   });
 }
 {% endprettify %}
 
 Here is an example of listing all of the fields declared by a class.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (showFields)"?>
 {% prettify dart %}
-showFields(ClassMirror mirror) {
+void showFields(ClassMirror mirror) {
   var fields = mirror.declarations.values
       .where((m) => m is VariableMirror);
 
-  fields.forEach((VariableMirror m) {
-    var finalStatus = m.isFinal ? 'final' : 'not final';
-    var privateStatus = m.isPrivate ?
-        'private' : 'not private';
-    var typeAnnotation = m.type.simpleName;
+  fields.forEach((m) {
+    final v = m as VariableMirror;
+    var finalStatus = v.isFinal ? 'final' : 'not final';
+    var privateStatus =
+        v.isPrivate ? 'private' : 'not private';
+    var typeAnnotation = v.type.simpleName;
 
-    print('The field ${m.simpleName} is $privateStatus ' +
-          'and $finalStatus and is annotated as ' +
-          '$typeAnnotation.');
+    print('The field ${v.simpleName} is $privateStatus ' +
+        'and $finalStatus and is annotated as ' +
+        '$typeAnnotation.');
   });
-}{% endprettify %}
+}
+{% endprettify %}
 
-For a full list of methods, consult the [API docs for
-ClassMirror][ClassMirror].
+For a full list of methods, consult the [API docs for ClassMirror][ClassMirror].
 
 #### Instance mirrors
 
 Reflect on an object to get an InstanceMirror.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (InstanceMirror)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2528,7 +2529,7 @@ InstanceMirror mirror = reflect(p);
 If you have an InstanceMirror and you want to get the object that it
 reflects, use `reflectee`.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (reflectee)"?>
 {% prettify dart %}
 var person = mirror.reflectee;
 assert(identical(p, person));
@@ -2547,12 +2548,12 @@ The first parameter specifies the method to be invoked, and the second
 is a list of positional arguments to the method. An optional third
 parameter lets you specify named arguments.
 
-<!-- library-tour/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (invoke)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
 
-mirror.invoke(#greet, ['Shailen']);
+mirror.invoke(#greet, ['Sundar']);
 {% endprettify %}
 
 #### Invoke getters and setters
@@ -2560,7 +2561,7 @@ mirror.invoke(#greet, ['Shailen']);
 Use InstanceMirror's `getField()` and `setField()` methods to get and
 set properties of an object.
 
-<!-- library-tours/mirrors/bin/main.dart -->
+<?code-excerpt "test/library_tour/mirrors_test.dart (getField-setField)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2572,6 +2573,7 @@ assert(fullName == 'Bob Smith');
 // Set the value of a property.
 mirror.setField(#firstName, 'Mary');
 assert(p.firstName == 'Mary');
+assert(p.fullName == 'Mary Smith');
 {% endprettify %}
 
 
@@ -2580,7 +2582,7 @@ assert(p.firstName == 'Mary');
 The article [Reflection in Dart with
 Mirrors](/articles/libraries/reflection-with-mirrors) has
 more information and examples. Also see the API docs for
-[dart:mirror,][dart:mirror] especially [MirrorsUsed,][MirrorsUsed],
+[dart:mirror,][dart:mirror] especially [MirrorsUsed,][MirrorsUsed]
 [ClassMirror,][ClassMirror] and [InstanceMirror.][InstanceMirror]
 
 

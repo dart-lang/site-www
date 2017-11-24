@@ -43,7 +43,8 @@ $DARTFMT -l 65 \
   examples/test/library_tour/core_test.dart \
   examples/lib/library_tour/async/future.dart \
   examples/lib/library_tour/async/stream.dart \
-  examples/test/library_tour/io_test.dart
+  examples/test/library_tour/io_test.dart \
+  examples/test/library_tour/mirrors_test.dart
 
 
 # If any files were changed, then exit 1:
