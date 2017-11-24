@@ -153,6 +153,7 @@ Future main_test_read_from_stream() async {
   var config = new File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
+  // #docregion UTF8-decoder
   var lines = inputStream
       .transform(UTF8.decoder)
       .transform(new LineSplitter());
@@ -164,6 +165,7 @@ Future main_test_read_from_stream() async {
   } catch (e) {
     print(e);
   }
+  // #enddocregion UTF8-decoder
 }
 // #enddocregion read-from-stream
 

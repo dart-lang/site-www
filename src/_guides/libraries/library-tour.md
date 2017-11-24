@@ -1872,10 +1872,6 @@ Future main() async {
 }
 {% endprettify %}
 
-{% comment %}
-[PENDING: Test the above code!!! ]
-{% endcomment %}
-
 
 ### Sending and receiving real-time data with WebSockets
 
@@ -2249,62 +2245,60 @@ provides APIs for [processes,][Process] [sockets,][Socket] and
 
 The [dart:convert library][dart:convert]
 has converters for JSON and UTF-8, as well as support for creating
-additional converters. JSON is a simple text format for representing
-structured objects and collections. UTF-8 is a common variable-width
+additional converters. [JSON][] is a simple text format for representing
+structured objects and collections. [UTF-8][] is a common variable-width
 encoding that can represent every character in the Unicode character
 set.
 
 The dart:convert library works in both web apps and command-line apps.
 To use it, import dart:convert.
 
+<?code-excerpt "test/library_tour/convert_test.dart (import)"?>
+{% prettify dart %}
+import 'dart:convert';
+{% endprettify %}
+
 
 ### Decoding and encoding JSON
 
 Decode a JSON-encoded string into a Dart object with `JSON.decode()`:
 
-<!-- library-tour/json-parse/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (JSON-decode)"?>
 {% prettify dart %}
-import 'dart:convert' show JSON;
-
-main() {
-  // NOTE: Be sure to use double quotes ("),
-  // not single quotes ('), inside the JSON string.
-  // This string is JSON, not Dart.
-  var jsonString = '''
+// NOTE: Be sure to use double quotes ("),
+// not single quotes ('), inside the JSON string.
+// This string is JSON, not Dart.
+var jsonString = '''
   [
     {"score": 40},
     {"score": 80}
   ]
-  ''';
+''';
 
-  var scores = JSON.decode(jsonString);
-  assert(scores is List);
+var scores = JSON.decode(jsonString);
+assert(scores is List);
 
-  var firstScore = scores[0];
-  assert(firstScore is Map);
-  assert(firstScore['score'] == 40);
-}
+var firstScore = scores[0];
+assert(firstScore is Map);
+assert(firstScore['score'] == 40);
 {% endprettify %}
 
 Encode a supported Dart object into a JSON-formatted string with
 `JSON.encode()`:
 
-<!-- library-tour/json_stringify/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (JSON-encode)"?>
 {% prettify dart %}
-import 'dart:convert' show JSON;
+var scores = [
+  {'score': 40},
+  {'score': 80},
+  {'score': 100, 'overtime': true, 'special_guest': null}
+];
 
-main() {
-  var scores = [
-    {'score': 40},
-    {'score': 80},
-    {'score': 100, 'overtime': true, 'special_guest': null}
-  ];
-
-  var jsonText = JSON.encode(scores);
-  assert(jsonText == '[{"score":40},{"score":80},'
-                     '{"score":100,"overtime":true,'
-                     '"special_guest":null}]');
-}
+var jsonText = JSON.encode(scores);
+assert(jsonText ==
+    '[{"score":40},{"score":80},'
+    '{"score":100,"overtime":true,'
+    '"special_guest":null}]');
 {% endprettify %}
 
 Only objects of type int, double, String, bool, null, List, or Map (with
@@ -2322,61 +2316,49 @@ the object's `toJson()` method.
 
 Use `UTF8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<!-- library-tour/decode_utf-8/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (UTF8-decode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
-import 'dart:convert' show UTF8;
+List<int> utf8Bytes = [
+  0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
+  0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
+  0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
+  0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
+  0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
+];
 
-main() {
-  var string = UTF8.decode([
-    0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
-    0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
-    0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
-    0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
-    0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
-  ]);
-  print(string); // 'Îñţérñåţîöñåļîžåţîờñ'
-}
+var funnyWord = UTF8.decode(utf8Bytes);
+
+assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 {% endprettify %}
 
 To convert a stream of UTF-8 characters into a Dart string, specify
 `UTF8.decoder` to the Stream `transform()` method:
 
-<!-- library-tour/read-file/read_file.dart -->
+<?code-excerpt "test/library_tour/io_test.dart (UTF8-decoder)" replace="/UTF8.decoder/[!$&!]/g"?>
 {% prettify dart %}
 var lines = inputStream
-    .transform(UTF8.decoder)
+    .transform([!UTF8.decoder!])
     .transform(new LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
   }
+  print('file is now closed');
+} catch (e) {
+  print(e);
+}
 {% endprettify %}
 
 Use `UTF8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
-<!-- library-tour/encode_utf-8/bin/main.dart -->
+<?code-excerpt "test/library_tour/convert_test.dart (UTF8-encode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
-import 'dart:convert' show UTF8;
+List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
-main() {
-  List<int> expected = [
-    0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
-    0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
-    0xae, 0xc3, 0xb6, 0xc3, 0xb1, 0xc3, 0xa5, 0xc4,
-    0xbc, 0xc3, 0xae, 0xc5, 0xbe, 0xc3, 0xa5, 0xc5,
-    0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
-  ];
-
-  List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
-
-  assert(() {
-    if (encoded.length != expected.length) return false;
-    for (int i = 0; i < encoded.length; i++) {
-      if (encoded[i] != expected[i]) return false;
-    }
-    return true;
-  });
+assert(encoded.length == utf8Bytes.length);
+for (int i = 0; i < encoded.length; i++) {
+  assert(encoded[i] == utf8Bytes[i]);
 }
 {% endprettify %}
 
@@ -2652,6 +2634,7 @@ To learn more about the Dart language, see
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [Iterator]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[JSON]: https://www.json.org/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [Match]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
@@ -2673,6 +2656,7 @@ To learn more about the Dart language, see
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [toStringAsFixed()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
+[UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
 [WebGL]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
