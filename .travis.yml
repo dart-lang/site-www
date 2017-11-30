@@ -1,5 +1,5 @@
 language: ruby
-sudo: false
+sudo: required # fall back to false once https://github.com/travis-ci/travis-ci/issues/8836 is fixed
 cache:
   bundler: true
   directories:
