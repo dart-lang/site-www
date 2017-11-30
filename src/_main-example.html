@@ -1,6 +1,6 @@
 <pre class="prettyprint">
 <span class="frontpage-highlight" data-text="Dart has one canonical way to import libraries, and one canonical (and easy) way to install library packages.">import</span> &#x27;dart:async&#x27;;
-import &#x27;<span class="frontpage-highlight" data-text='The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.'>dart:math</span>&#x27; show Random;
+import &#x27;<span class="frontpage-highlight" data-text="The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.">dart:math</span>&#x27; show Random;
 
 <span class="frontpage-highlight" data-text="The main() function is the single point of entry.">main()</span> async {
   print(&#x27;Compute <span class="frontpage-highlight" data-text="Unicode support is baked in.">&#x3C0;</span> using the Monte Carlo method.&#x27;);
@@ -10,7 +10,7 @@ import &#x27;<span class="frontpage-highlight" data-text='The whole standard lib
 }
 
 <span class="frontpage-highlight" data-text="Add doc comments like this to flesh out the API reference docs that the SDK’s dartdoc tool generates.">///</span> Generates a stream of increasingly accurate estimates of &#x3C0;.
-Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi(<span class="frontpage-highlight" data-text="Named parameters make call sites more readable.">{int batch: 1000000}</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
+Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi(<span class="frontpage-highlight" data-text="Named parameters make call sites more readable.">{int batch: 100000}</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
   <span class="frontpage-highlight" data-text="The type is inferred in this variable declaration. Note: no JavaScript-style hoisting.">var</span> total = 0;
   var count = 0;
   <span class="frontpage-highlight" data-text="Because generators are lazy, we can safely do this.">while (true)</span> {
