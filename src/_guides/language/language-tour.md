@@ -1585,8 +1585,7 @@ use the `??=` operator.
 {% prettify dart %}
 // Assign value to a
 a = value;
-// Assign value to b if b is null;
-// otherwise, b stays the same
+// Assign value to b if b is null; otherwise, b stays the same
 b ??= value;
 {% endprettify %}
 
@@ -1601,8 +1600,7 @@ void assignValues(int a, int b, int value) {
   print('Initially: a == $a, b == $b');
   // Assign value to a
   a = value;
-  // Assign value to b if b is null;
-  // otherwise, b stays the same
+  // Assign value to b if b is null; otherwise, b stays the same
   b ??= value;
   print('After: a == $a, b == $b');
 }

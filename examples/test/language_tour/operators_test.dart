@@ -89,8 +89,7 @@ void main() {
       // #docregion assignment
       // Assign value to a
       a = value;
-      // Assign value to b if b is null;
-      // otherwise, b stays the same
+      // Assign value to b if b is null; otherwise, b stays the same
       b ??= value;
       // #enddocregion assignment
       print('After: a == $a, b == $b');
