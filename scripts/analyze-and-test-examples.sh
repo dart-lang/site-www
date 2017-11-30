@@ -58,6 +58,7 @@ echo Running browser tests ...
 $TEST --tags browser --platform chrome \
   test/language_tour/browser_test.dart \
   test/library_tour/html_test.dart \
+  test/pi_test.dart \
     | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 LOG=$(grep 'All tests passed!' $LOG_FILE)
 if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
