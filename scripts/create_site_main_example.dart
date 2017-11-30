@@ -31,7 +31,7 @@ class Main {
   final HtmlEscape _htmlEscape =
       new HtmlEscape(new HtmlEscapeMode(escapeLtGt: true));
   final HtmlUnescape _htmlUnescape = new HtmlUnescape();
-  final tipRE = new RegExp(r'^(.*?) //!tip\("([^"]+)"\)$');
+  final tipRegExp = new RegExp(r'^(.*?) //!tip\("([^"]+)"\)$');
   final tooltips = _getTooltips();
 
   int indexOfNextTooltip = 0;
@@ -45,21 +45,22 @@ class Main {
     line = htmlEscape(line);
 
     while (line.contains('//!tip(')) {
-      var match = tipRE.firstMatch(line);
+      var match = tipRegExp.firstMatch(line);
       if (match == null) throw 'Tip instruction match failed for line: $line';
       final lineWithoutTipInstruction = match[1],
           anchor = _htmlUnescape.convert(match[2]),
-          tooltip = tooltips[indexOfNextTooltip++],
-          ttAnchor = tooltip[0],
-          ttText = tooltip[1]
+          tooltip = tooltips[indexOfNextTooltip],
+          tooltipAnchor = tooltip[0],
+          tooltipText = tooltip[1]
               // TODO: remove these temporary conversions used to minimize diffs with existing HTML
               .replaceAll(new RegExp(r'</?code>'), '');
-      if (ttAnchor != anchor)
+      indexOfNextTooltip += 1;
+      if (tooltipAnchor != anchor)
         throw 'Expected tip for $anchor, but instead found tip for ${tooltip[0]}. Aborting.';
       final escapedAnchor = htmlEscape(anchor);
       _log.fine('  ** Replacing "$escapedAnchor" with span');
       line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
-          '<span class="frontpage-highlight" data-text="$ttText">$escapedAnchor</span>');
+          '<span class="frontpage-highlight" data-text="$tooltipText">$escapedAnchor</span>');
     }
     // TODO: remove these temporary conversions used to minimize diffs with existing HTML
     line = line
