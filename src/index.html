@@ -18,49 +18,7 @@ description: "Dart is an application programming language that’s easy to learn
     <div class="col-sm-7 col-lg-6">
       <div class="content">
         <a href="https://dartpad.dartlang.org/fb763a4a770b5cdd896982e10ccf4118" class='codesample__open-in-dartpad no-automatic-external' target='_blank'>Open in DartPad</a>
-<pre class="prettyprint">
-<span class="frontpage-highlight" data-text="Dart has one canonical way to import libraries, and one canonical (and easy) way to install library packages.">import</span> &#x27;dart:async&#x27;;
-import &#x27;<span class="frontpage-highlight" data-text='The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.'>dart:math</span>&#x27; show Random;
-
-<span class="frontpage-highlight" data-text="The main() function is the single point of entry.">main()</span> async {
-  print(&#x27;Compute <span class="frontpage-highlight" data-text="Unicode support is baked in.">&#x3C0;</span> using the Monte Carlo method.&#x27;);
-  <span class="frontpage-highlight" data-text="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</span> for (var estimate in computePi().take(500)) {
-    print(&#x27;&#x3C0; &#x2245; <span class="frontpage-highlight" data-text="String interpolation is easy. Just put ${expression} or $variable in your string literal.">$estimate</span>&#x27;);
-  }
-}
-
-<span class="frontpage-highlight" data-text="Add doc comments like this to flesh out the API reference docs that the SDK’s dartdoc tool generates.">///</span> Generates a stream of increasingly accurate estimates of &#x3C0;.
-Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi(<span class="frontpage-highlight" data-text="Named parameters make call sites more readable.">{int batch: 1000000}</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
-  <span class="frontpage-highlight" data-text="The type is inferred in this variable declaration. Note: no JavaScript-style hoisting.">var</span> total = 0;
-  var count = 0;
-  <span class="frontpage-highlight" data-text="Because generators are lazy, we can safely do this.">while (true)</span> {
-    var points = generateRandom().<span class="frontpage-highlight" data-text="Synchronous generators produce (lazy) Iterables, and Iterables have a well-crafted API.">take</span>(batch);
-    var inside = points.where((p) <span class="frontpage-highlight" data-text="The optional arrow syntax makes simple functions more readable.">=&#x3E;</span> p.isInsideUnitCircle);
-    total += batch;
-    count += inside.<span class="frontpage-highlight" data-text="Since the Iterable is lazy, the program doesn’t actually iterate over it until it’s needed by the length getter. No new array will be constructed.">length</span>;
-    var ratio = count / total;
-    // Area of a circle is A = &#x3C0;&#x22C5;r&#xB2;, therefore &#x3C0; = A/r&#xB2;.
-    // So, when given random points with x &#x2208; &#x3C;0,1&#x3E;,
-    // y &#x2208; &#x3C;0,1&#x3E;, the ratio of those inside a unit circle
-    // should approach &#x3C0; / 4. Therefore, the value of &#x3C0;
-    // should be:
-    <span class="frontpage-highlight" data-text="In an async generator, yield takes care of sending the values through the stream (including the logic of suspending execution when needed).">yield</span> ratio * 4;
-  }
-}
-
-<span class="frontpage-highlight" data-text="Iterable is a core type extended by all iterable collections, which makes for some elegant Dart code.">Iterable</span>&#x3C;Point&#x3E; generateRandom(<span class="frontpage-highlight" data-text="Optional parameters make call sites cleaner.">[int seed]</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for synchronous generators, too.">sync*</span> {
-  <span class="frontpage-highlight" data-text="Variables and fields can be final. Any attempt to change them later in the code will produce a static error.">final</span> random = new Random(seed);
-  while (true) {
-    <span class="frontpage-highlight" data-text="Producing lazy Iterables through yield is readable and corresponds nicely with the same concept in asynchronous generators.">yield</span> new Point(random.nextDouble(), random.nextDouble());
-  }
-}
-
-<span class="frontpage-highlight" data-text="Dart is purely object-oriented and class-based, with mixin-based inheritance.">class</span> Point {
-  final <span class="frontpage-highlight" data-text="Although Dart can compile to JavaScript, it doesn’t lack the distinction between double and int.">double</span> x, y;
-  <span class="frontpage-highlight" data-text="Constructors can be constant.">const</span> Point(<span class="frontpage-highlight" data-text="Initializing fields through this shorthand syntax is both easier and more readable.">this.x</span>, this.y);
-  bool <span class="frontpage-highlight" data-text="Language-level support for getters means you can freely switch between properties and methods without changing the API.">get</span> isInsideUnitCircle =&#x3E; x * x + y * y &#x3C;= 1;
-}
-</pre>
+        {% include_relative _main-example.html %}
       </div>
     </div>
     <div class="col-sm-5 col-lg-6">
