@@ -9,24 +9,9 @@ cd `dirname $0`/..
 DARTFMT="dartfmt -w"
 EXAMPLES=examples
 
-# Format all example source files using default settings:
-$DARTFMT -w $EXAMPLES
-
-# Re-run dartfmt with custom settings for the few files that need it:
-$DARTFMT -l 60 \
-  examples/language_tour/color/bin/main.dart \
-  examples/language_tour/factory-constructor/bin/main.dart \
-  examples/language_tour/mixins/bin/main.dart \
-  examples/language_tour/no-such-method/bin/main.dart \
-  examples/language_tour/optional-positional-parameter-default/bin/main.dart \
-  examples/language_tour/reference/immutable_point.dart \
-  examples/language_tour/string-interpolation/bin/main.dart
-
-$DARTFMT -l 62 examples/language_tour/flow/exceptions/web/main.dart
-
-$DARTFMT -l 75 examples/language_tour/flow/break-continue/web/main.dart
-
-# New code
+# Format all example source files under lib and tests
+# except for the lib/pi_*.* files
+$DARTFMT -w $EXAMPLES/lib/[^p] $EXAMPLES/test
 
 $DARTFMT -l 60 \
   examples/lib/language_tour/classes/immutable_point.dart \
@@ -45,7 +30,6 @@ $DARTFMT -l 65 \
   examples/lib/library_tour/async/stream.dart \
   examples/test/library_tour/io_test.dart \
   examples/test/library_tour/mirrors_test.dart
-
 
 # If any files were changed, then exit 1:
 REFORMATTED_FILES=$(git status --short)
