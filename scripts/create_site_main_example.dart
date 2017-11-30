@@ -51,9 +51,7 @@ class Main {
           anchor = _htmlUnescape.convert(match[2]),
           tooltip = tooltips[indexOfNextTooltip],
           tooltipAnchor = tooltip[0],
-          tooltipText = tooltip[1]
-              // TODO: remove these temporary conversions used to minimize diffs with existing HTML
-              .replaceAll(new RegExp(r'</?code>'), '');
+          tooltipText = tooltip[1];
       indexOfNextTooltip += 1;
       if (tooltipAnchor != anchor)
         throw 'Expected tip for $anchor, but instead found tip for ${tooltip[0]}. Aborting.';
@@ -62,22 +60,10 @@ class Main {
       line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
           '<span class="frontpage-highlight" data-text="$tooltipText">$escapedAnchor</span>');
     }
-    // TODO: remove these temporary conversions used to minimize diffs with existing HTML
-    line = line
-        .replaceAll('π', '&#x3C0;')
-        .replaceAll('≅', '&#x2245;')
-        .replaceAll('⋅', '&#x22C5;')
-        .replaceAll('²', '&#xB2;')
-        .replaceAll('∈', '&#x2208;');
     return line;
   }
 
-  String htmlEscape(String s) => _htmlEscape
-      .convert(s)
-      // TODO: remove these temporary conversions used to minimize diffs with existing HTML
-      .replaceAll("'", '&#x27;')
-      .replaceAll('&gt;', '&#x3E;')
-      .replaceAll('&lt;', '&#x3C;');
+  String htmlEscape(String s) => _htmlEscape.convert(s);
 }
 
 Iterable<String> getMainExampleSrcLines() {
