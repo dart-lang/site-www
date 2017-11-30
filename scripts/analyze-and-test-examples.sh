@@ -55,7 +55,7 @@ travis_fold start analyzeAndTest.tests.browser
 echo Running browser tests ...
 
 # Name the sole browser test file, otherwise all other files get compiled too:
-$TEST --tags browser --platform chrome \
+$TEST --tags browser --platform chromeheadless \
   test/language_tour/browser_test.dart \
   test/library_tour/html_test.dart \
   test/pi_test.dart \
