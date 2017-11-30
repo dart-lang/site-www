@@ -1,16 +1,17 @@
-language: ruby
 sudo: required # fall back to false once https://github.com/travis-ci/travis-ci/issues/8836 is fixed
+language: ruby
+rvm: 2.4.2
+
 cache:
   bundler: true
   directories:
   # - $HOME/[path]
-rvm: 2.4.2
+
 addons:
   chrome: stable
 
 env:
   global:
-    - DISPLAY=:99.0
     - JEKYLL_ENV=production
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
   matrix:
@@ -26,9 +27,6 @@ before_install:
 install:
   - ./scripts/install.sh
   - ./scripts/write-ci-info.sh -v
-
-before_script:
-  - ./scripts/browser.sh
 
 script:
   - $TASK

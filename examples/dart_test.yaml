@@ -1,0 +1,12 @@
+# Config docs: https://github.com/dart-lang/test/blob/master/doc/configuration.md
+
+# Headless chrome info, see
+# - https://developers.google.com/web/updates/2017/04/headless-chrome
+# - https://developers.google.com/web/updates/2017/06/headless-karma-mocha-chai
+
+define_platforms:
+  chromeheadless:
+    name: ChromeHeadless
+    extends: chrome
+    settings:
+      arguments: --headless --disable-gpu --remote-debugging-port=9222

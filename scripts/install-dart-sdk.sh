@@ -54,17 +54,6 @@ if  [[ -z "$(type -t dart)" ]]; then
     }
 
     if getAndInstall sdk dartsdk; then
-        # if [[ "$_OS_NAME" == "macos" ]]; then
-        #     getAndInstall dartium dartium ia32
-        # else
-        #     getAndInstall dartium
-        # fi
-
-        getAndInstall dartium content_shell
-        # Note that the unzipped package name starts with drt, not content_shell.
-        ln -s $PKG/{drt-*,content_shell}
-        ls -Ll $PKG/content_shell
-
         echo
         dart --version
     fi
