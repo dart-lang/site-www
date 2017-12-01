@@ -59,10 +59,10 @@ For more information, see
 
 All other fields are ignored. 
 
-**Note:** The pubspec for [Flutter apps](https://flutter.io) supports
+**Note:** [Flutter app]({{site.flutter}}) pubspecs support
 [a few additional fields](https://flutter.io/assets-and-images/) for managing assets. 
 
-## Sample pubspec
+## Sample
 
 A simple but complete pubspec looks something like the following:
 
