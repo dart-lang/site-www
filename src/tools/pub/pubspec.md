@@ -57,10 +57,10 @@ For more information, see
 [Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
 [Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
 
-All other fields are ignored. 
+All other fields are ignored.
 
 **Note:** [Flutter app]({{site.flutter}}) pubspecs support
-[a few additional fields](https://flutter.io/assets-and-images/) for managing assets. 
+[a few additional fields]({{site.flutter}}/assets-and-images) for managing assets.
 
 ## Sample
 
