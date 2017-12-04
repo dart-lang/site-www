@@ -1,12 +1,9 @@
 ---
-layout: article
-title: "Converters and Codecs"
-description: "Learn how to write efficient conversions."
+title: Converters and Codecs
+description: Learn how to write efficient conversions.
 written: 2014-02-06
 updated: 2015-03-17
 category: libraries
-header:
-  css: ["/articles/styles.css"]
 ---
 
 ### **_How to write efficient conversions_**

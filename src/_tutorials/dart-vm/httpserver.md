@@ -2,13 +2,10 @@
 layout: tutorial
 title: "Write HTTP Clients & Servers"
 description: "Communicate over the internet"
-
 prevpage:
   url: /tutorials/dart-vm/cmdline
   title: "Dart-VM: Write Command-Line Apps"
-
-header:
-  css: ["httpserver.css"]
+css: ["httpserver.css"]
 ---
 
 ### Communicate over the internet
