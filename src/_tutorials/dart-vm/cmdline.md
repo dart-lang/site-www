@@ -14,18 +14,16 @@ prevpage:
 ### An introduction to standalone apps
 
 <div class="panel" markdown="1">
+  <h4>What's the point?</h4>
 
-#### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
-
-* Command-line applications need to do input and output.
-* The dart:io library provides I/O functionality.
-* The args package helps define and parse command-line arguments.
-* The dart:async library supports asynchronous programming with Future and
-  Stream classes.
-* A Future represents a value that will be available at some time in the future.
-* Streams provide a series of asynchronous data events.
-* Most input and output requires the use of Streams.
-
+  * Command-line applications need to do input and output.
+  * The dart:io library provides I/O functionality.
+  * The args package helps define and parse command-line arguments.
+  * The dart:async library supports asynchronous programming with Future and
+    Stream classes.
+  * A Future represents a value that will be available at some time in the future.
+  * Streams provide a series of asynchronous data events.
+  * Most input and output requires the use of Streams.
 </div>
 
 <aside class="alert alert-info" markdown="1">
