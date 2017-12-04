@@ -1,11 +1,7 @@
 ---
-layout: default
 permalink: /tools/pub/cmd/pub-global
-title: "pub global"
-description: "Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line."
-
-header:
-  css: ["../transformers/transformers.css"]
+title: pub global
+description: Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line.
 ---
 
 _Global_ is one of the commands of the _pub_ tool.
@@ -223,20 +219,16 @@ For options that apply to all pub commands, see
   the following command pulls the 0.6.0 version of the `markdown`
   package:
 
-<div class="step-details" markdown="1">
-{% prettify sh %}
-$ pub global activate markdown 0.6.0
-{% endprettify %}
-</div>
+  {% prettify sh %}
+  $ pub global activate markdown 0.6.0
+  {% endprettify %}
 
   If you specify a range, pub picks the best version that meets that
   constraint. For example:
 
-<div class="step-details" markdown="1">
-{% prettify sh %}
-$ pub global activate foo <3.0.0
-{% endprettify %}
-</div>
+  {% prettify sh %}
+  $ pub global activate foo <3.0.0
+  {% endprettify %}
 
 `--executable=<name>` or `-x<name>`
 : Optional for `pub global activate`.
@@ -245,11 +237,9 @@ $ pub global activate foo <3.0.0
   For example, the following command adds `bar` and `baz` (but not
   any other executables that `foo` might define) to your PATH.
 
-<div class="step-details" markdown="1">
-{% prettify sh %}
-$ pub global activate foo -x bar -x baz
-{% endprettify %}
-</div>
+  {% prettify sh %}
+  $ pub global activate foo -x bar -x baz
+  {% endprettify %}
 
 `--no-executables`
 : Optional for `pub global activate`.
@@ -264,6 +254,5 @@ $ pub global activate foo -x bar -x baz
   the new executable overwrites the previously activated executable.
 
 <aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

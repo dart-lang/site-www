@@ -1,11 +1,9 @@
 ---
-layout: article
-title: "Zones"
+title: Zones
 description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
 written: 2014-03-03
 category: libraries
-header:
-  css: ["/articles/styles.css"]
+css: ["/articles/styles.css"]
 ---
 
 ### Asynchronous dynamic extents

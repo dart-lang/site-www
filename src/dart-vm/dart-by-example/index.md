@@ -1,16 +1,9 @@
 ---
-layout: default
 title: "Cookbook: Dart by Example"
-short-title: "Cookbook"
+short-title: Cookbook
 permalink: /dart-vm/dart-by-example
-description: "A cookbook, or set of examples, showing idiomatic Dart code."
-
-header:
-  css: ["index.css"]
+description: A cookbook, or set of examples, showing idiomatic Dart code.
 ---
-
-
-
 
 The following examples are all stand-alone apps, such as servers, that run
 from the command line. Most of the examples use the `dart:io` library, which is
