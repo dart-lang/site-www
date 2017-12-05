@@ -38,7 +38,7 @@ enchilada/
     api/ ***
     getting_started.md
   example/
-    lunch.dart
+    main.dart
   lib/
     enchilada.dart
     tortilla.dart
