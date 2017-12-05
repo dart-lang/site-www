@@ -8,7 +8,7 @@ import 'package:examples/library_tour/core/hash_code.dart'
     as hash_code;
 import 'package:examples/library_tour/core/iterator.dart'
     as iterator;
-import '../util/print_matcher.dart' as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
   group('numbers:', () {

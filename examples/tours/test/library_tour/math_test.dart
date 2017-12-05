@@ -2,7 +2,7 @@
 import 'dart:math' as math;
 // #enddocregion import
 import 'package:test/test.dart';
-import '../util/print_matcher.dart' as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
   test('trigonometric functions', () {

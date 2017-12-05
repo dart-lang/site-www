@@ -2,7 +2,7 @@
 // #docplaster
 import 'package:examples/language_tour/generics/base_class.dart' as base_class;
 import 'package:test/test.dart';
-import '../util/print_matcher.dart' as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
 
