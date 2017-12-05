@@ -7,20 +7,19 @@ This package contains all of the sources that appear in the Language Tour and th
 Sources originally taken from the Up-and-Running repo (but reworked to contain doc regions)
 are in these folders:
 
-- `language_tour` (now obsolete, see below)
-- `library_tour`
+- `/examples_archive/language_tour` (now obsolete, see below)
+- `/examples_archive/library_tour`
 
 These original sources don't have tests, and practically each code excerpt is an independent
 package (with its own pubspec).
 
 ## New sources
 
-Consolidated and reworked versions of the original sources are being developed.
-So far, the Language Tour sources have been completely rewritten, and are found
-in these folders:
+Consolidated and reworked versions of the original sources have been developed,
+and are found under these folders:
 
-- `lib/language_tour`
-- `test/language_tour`
+- `lib/language_tour`, `lib/library_tour`
+- `test/language_tour`, `test/library_tour`
 
 As can be expected, Travis jobs run the
 

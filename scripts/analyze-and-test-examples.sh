@@ -27,7 +27,7 @@ fi
 if [[ ! -e $TMP ]]; then mkdir $TMP; fi
 LOG_FILE=$TMP/analyzer-output.txt
 
-pushd $EXAMPLES
+pushd $EXAMPLES/tours
 travis_fold start analyzeAndTest.get
 pub get
 travis_fold end analyzeAndTest.get
