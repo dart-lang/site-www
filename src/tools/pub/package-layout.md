@@ -38,7 +38,7 @@ enchilada/
     api/ ***
     getting_started.md
   example/
-    lunch.dart
+    main.dart
   lib/
     enchilada.dart
     tortilla.dart
@@ -379,7 +379,7 @@ that you author.  Use whatever markup format that you prefer.
 {% prettify none %}
 enchilada/
   example/
-    lunch.dart
+    main.dart
 {% endprettify %}
 
 Code, tests, docs, what else
