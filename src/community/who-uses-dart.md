@@ -220,4 +220,10 @@ Gifts and invite friends. Build with AngularDart (client) and Shelf (server).
 
 [Grupo Aluman](http://www.grupoaluman.com)
  : Industrial panel computers to control our entire production chain. Client apps built with AngularDart.
+ 
+[SpecPad NMR Visualization](http://specpad.bplaced.net)
+ : SpecPad is an easy-to-use NMR 1D/2D visualization and basic processing software which is browser-based and is particularly running on touch devices such as iPads and Android tablets (but also on Windows / Linux / Mac OS X PCs) taking its NMR data from local, Cloud or Web server storage including spectrometers.
+ 
 </div>
+
+
