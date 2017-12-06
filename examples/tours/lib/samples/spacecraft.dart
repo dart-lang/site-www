@@ -87,12 +87,6 @@ abstract class Describable {
 }
 // #enddocregion abstract
 
-// #docregion abstract-use
-class Probe extends Spacecraft with Describable {
-  Probe(String name) : super(name, new DateTime.now());
-}
-// #enddocregion abstract-use
-
 // #docregion get
 class SpacecraftShowingGetter {
   // ...

@@ -142,11 +142,6 @@ void main() {
     expect(o.describe(), 'Enterprise');
   });
 
-  test('abstract', () {
-    final o = new Probe('Apollo');
-    expect(() => o.describeWithEmphasis(), prints(contains('=====')));
-  });
-
   {
     // Show declaration on first use.
     // #docregion async
