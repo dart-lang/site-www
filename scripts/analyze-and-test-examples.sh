@@ -6,6 +6,46 @@ set -e -o pipefail
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
+function analyze_and_text() {
+  pushd "$1" > /dev/null
+  travis_fold start analyzeAndTest.get
+  pub get
+  travis_fold end analyzeAndTest.get
+
+  echo
+  travis_fold start analyzeAndTest.analyze
+  $ANALYZE lib test | tee $LOG_FILE
+  if grep -qvE '^Analyzing|^No issues found' $LOG_FILE ; then
+    EXIT_STATUS=1
+  fi
+  travis_fold end analyzeAndTest.analyze
+
+  echo
+  travis_fold start analyzeAndTest.tests.vm
+  echo Running VM tests ...
+
+  TEST="pub run test"
+
+  $TEST --exclude-tags=browser | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
+  LOG=$(grep 'All tests passed!' $LOG_FILE)
+  if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
+  travis_fold end analyzeAndTest.tests.vm
+
+  travis_fold start analyzeAndTest.tests.browser
+  echo Running browser tests ...
+
+  # Name the sole browser test file, otherwise all other files get compiled too:
+  $TEST --tags browser --platform chromeheadless \
+    test/language_tour/browser_test.dart \
+    test/library_tour/html_test.dart \
+    test/pi_test.dart \
+      | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
+  LOG=$(grep 'All tests passed!' $LOG_FILE)
+  if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
+  travis_fold end analyzeAndTest.tests.browser
+  popd > /dev/null
+}
+
 EXIT_STATUS=0
 
 cd `dirname $0`/..
@@ -27,41 +67,13 @@ fi
 if [[ ! -e $TMP ]]; then mkdir $TMP; fi
 LOG_FILE=$TMP/analyzer-output.txt
 
-pushd $EXAMPLES/tours
-travis_fold start analyzeAndTest.get
-pub get
-travis_fold end analyzeAndTest.get
+pushd $EXAMPLES
 
-echo
-travis_fold start analyzeAndTest.analyze
-$ANALYZE lib test | tee $LOG_FILE
-if grep -qvE '^Analyzing|^No issues found' $LOG_FILE ; then
-  EXIT_STATUS=1
-fi
-travis_fold end analyzeAndTest.analyze
-
-echo
-travis_fold start analyzeAndTest.tests.vm
-echo Running VM tests ...
-
-TEST="pub run test"
-
-$TEST --exclude-tags=browser | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
-LOG=$(grep 'All tests passed!' $LOG_FILE)
-if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
-travis_fold end analyzeAndTest.tests.vm
-
-travis_fold start analyzeAndTest.tests.browser
-echo Running browser tests ...
-
-# Name the sole browser test file, otherwise all other files get compiled too:
-$TEST --tags browser --platform chromeheadless \
-  test/language_tour/browser_test.dart \
-  test/library_tour/html_test.dart \
-  test/pi_test.dart \
-    | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
-LOG=$(grep 'All tests passed!' $LOG_FILE)
-if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
-travis_fold end analyzeAndTest.tests.browser
+for d in $EXAMPLES/??*; do
+  if [[ ! -d $d || $d == *util ]]; then continue; fi
+  echo "Processing $d"
+  echo
+  analyze_and_text $d;
+done
 
 exit $EXIT_STATUS

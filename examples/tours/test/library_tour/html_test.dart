@@ -4,7 +4,7 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:test/test.dart';
-import 'package:examples/util/logger.dart';
+import 'package:dartlang_examples_util/logger.dart';
 
 void main() {
   test('querySelector', () {

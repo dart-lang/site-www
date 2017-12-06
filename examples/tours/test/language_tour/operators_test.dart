@@ -1,7 +1,7 @@
 // #docplaster
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
-import '../util/print_matcher.dart' as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 class T {}
 

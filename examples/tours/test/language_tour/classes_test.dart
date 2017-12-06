@@ -26,7 +26,7 @@ import 'package:examples/language_tour/classes/proxy_alt.dart' as proxy_alt;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
-import '../util/print_matcher.dart' as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
   test('object-creation', () {
