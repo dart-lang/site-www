@@ -21,7 +21,8 @@ $DARTFMT -l 60 \
   $EXAMPLES/tours/test/language_tour/built_in_types_test.dart \
   $EXAMPLES/tours/test/language_tour/functions_test.dart \
   $EXAMPLES/tours/lib/library_tour/core \
-  $EXAMPLES/tours/test/library_tour/html_test.dart
+  $EXAMPLES/tours/test/library_tour/html_test.dart \
+  $EXAMPLES/tours/lib/samples/spacecraft.dart
 
 $DARTFMT -l 65 \
   $EXAMPLES/tours/lib/language_tour/exceptions.dart \
