@@ -5,7 +5,6 @@ description: Communicate over the internet
 prevpage:
   url: /tutorials/dart-vm/cmdline
   title: "Dart-VM: Write Command-Line Apps"
-css: ["httpserver.css"]
 ---
 {% capture gh-path -%}
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
@@ -136,7 +135,7 @@ Future main() async {
     InternetAddress.LOOPBACK_IP_V4,
     4040,
   );
-  print('listening on localhost:${server.port}');
+  print('Listening on localhost:${server.port}');
 
   await for (HttpRequest request in server) {
     request.response
@@ -588,6 +587,7 @@ Future main() async {
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
 
+{:.code-notes}
 1. The `post()` method requires the host, port, and the path to the requested
    resource. In addition to `post()`, the [HttpClient][] class provides
    functions for making other kinds of requests, including `postUrl()`,
@@ -651,66 +651,67 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/(contentType\.|contentType !|var json|req.uri|JSON.decode).*/[!$&!]/g"?>
 {% prettify dart %}
-  import 'dart:io';
-  import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
+import 'dart:convert';
 
-  main() async {
-    var server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
-    await for (var req in server) {
-      ContentType contentType = req.headers.contentType;
+Future main() async {
+  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
+  await for (var req in server) {
+    ContentType contentType = req.headers.contentType;
+    HttpResponse response = req.response;
 
-      if (req.method == 'POST' &&
-[[note]]1[[/note]]       [[highlight]]contentType != null &&[[/highlight]]
-          [[highlight]]contentType.mimeType == 'application/json'[[/highlight]]) {
-        try {
-[[note]]2[[/note]]       [[highlight]]var jsonString = await req.transform(UTF8.decoder).join();[[/highlight]]
+    if (req.method == 'POST' &&
+        [!contentType != null && /*1*/!]
+        [!contentType.mimeType == 'application/json') {!]
+      try {
+        [!var jsonString = await req.transform(UTF8.decoder).join(); /*2*/!]
 
-          // Write to a file, get the file name from the URI.
-[[note]]3[[/note]]       var filename = [[highlight]]req.uri.pathSegments.last;[[/highlight]]
-          await new File(filename).writeAsString(jsonString,
-              mode: FileMode.WRITE);
-[[note]]4[[/note]]       Map jsonData = [[highlight]]JSON.decode(jsonString);[[/highlight]]
-          req.response..statusCode = HttpStatus.OK
-                      ..write('Wrote data for ${jsonData['name']}.')
-                      ..close();
-        } catch (e) {
-          req.response..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
-                      ..write("Exception during file I/O: $e.")
-                      ..close();
-        }
-      } else {
-        req.response..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-                    ..write("Unsupported request: ${req.method}.")
-                    ..close();
+        // Write to a file, get the file name from the URI.
+        var filename = [!req.uri.pathSegments.last; /*3*/!]
+        await new File(filename)
+            .writeAsString(jsonString, mode: FileMode.WRITE);
+        Map jsonData = [!JSON.decode(jsonString); /*4*/!]
+        response
+          ..statusCode = HttpStatus.OK
+          ..write('Wrote data for ${jsonData['name']}.')
+          ..close();
+      } catch (e) {
+        response
+          ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+          ..write("Exception during file I/O: $e.")
+          ..close();
       }
+    } else {
+      response
+        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..write("Unsupported request: ${req.method}.")
+        ..close();
     }
   }
+}
 {% endprettify %}
 <div class="prettify-filename">basic_writer_server.dart</div>
 
-<span class="code-note">1</span>
-The request object has an HttpHeaders object.
-Recall that the client set the `contentType` header to JSON (application/json).
-This server rejects requests that are not JSON-encoded.
+{:.code-notes}
+1. The request has an HttpHeaders object. Recall that the client set the
+   `contentType` header to JSON (application/json). This server rejects
+   requests that are not JSON-encoded.
 
-<span class="code-note">2</span>
-A POST request has no limit on the amount of data it can send
-and the data might be sent in multiple chunks.
-Furthermore, JSON is UTF-8, and UTF-8 characters can be encoded over
-multiple bytes.
-The join() method puts the chunks together.
+2. A POST request has no limit on the amount of data it can send and the data
+   might be sent in multiple chunks. Furthermore, JSON is UTF-8, and UTF-8
+   characters can be encoded over multiple bytes. The join() method puts the
+   chunks together.
 
-<span class="code-note">3</span>
-The URL for the request is [localhost:4049/file.txt](localhost:4049/file.txt).
-The code `req.uri.pathSegments.last` extracts the file name
-from the URI: `file.txt`.
+3. The URL for the request is
+   [localhost:4049/file.txt](localhost:4049/file.txt). The code
+   `req.uri.pathSegments.last` extracts the file name from the URI:
+   `file.txt`.
 
-<span class="code-note">4</span>
-The data sent by the client is JSON formatted.
-The server decodes it using the JSON codec available in the
-[dart:convert][] library.
+4. The data sent by the client is JSON formatted. The server decodes it using
+   the JSON codec available in the [dart:convert][] library.
 
 #### A note about CORS headers
 
@@ -722,11 +723,11 @@ allows POST and OPTIONS requests from any origin.
 Use CORS headers with caution,
 because they can open your network up to security risks.
 
+<?code-excerpt "httpserver/bin/note_server.dart (addCorsHeaders)"?>
 {% prettify dart %}
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
-  response.headers.add(
-      'Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS');
   response.headers.add('Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept');
 }
@@ -775,35 +776,38 @@ It responds to all requests by returning the contents of the
 
 Here's the code for mini file server:
 
+<?code-excerpt "httpserver/bin/mini_file_server.dart"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 
-main() async {
+File targetFile = new File('index.html');
+
+Future main() async {
   var server;
 
   try {
-    server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
+    server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
   } catch (e) {
     print("Couldn't bind to port 4044: $e");
     exit(-1);
   }
 
   await for (HttpRequest req in server) {
-    var file = new File('index.html');
-    if (await file.exists()) {
-      print("Serving index.html.");
+    if (await targetFile.exists()) {
+      print("Serving ${targetFile.path}.");
       req.response.headers.contentType = ContentType.HTML;
       try {
-        await file.openRead().pipe(req.response);
+        await targetFile.openRead().pipe(req.response);
       } catch (e) {
         print("Couldn't read file: $e");
         exit(-1);
       }
     } else {
-      print("Can't open index.html.");
-      req.response..statusCode = HttpStatus.NOT_FOUND
-                  ..close();
+      print("Can't open ${targetFile.path}.");
+      req.response
+        ..statusCode = HttpStatus.NOT_FOUND
+        ..close();
     }
   }
 }
@@ -835,17 +839,21 @@ uses the [http_server][] package.
 In this server, the code for handling the request is much shorter,
 because the [VirtualDirectory][] class handles the details of serving the file.
 
+<?code-excerpt "httpserver/bin/basic_file_server.dart" replace="/staticFiles\..*/[!$&!]/g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-main() async {
+File targetFile = new File('index.html');
+
+Future main() async {
   VirtualDirectory staticFiles = new VirtualDirectory('.');
 
   var serverRequests =
       await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
   await for (var request in serverRequests) {
-    [[highlight]]staticFiles.serveFile(new File('index.html'), request);[[/highlight]]
+    [!staticFiles.serveFile(targetFile, request);!]
   }
 }
 {% endprettify %}
@@ -867,44 +875,43 @@ Change `file.txt` to other filenames within the directory.
 
 Here is the code for `static_file_server.dart`.
 
+<?code-excerpt "httpserver/bin/static_file_server.dart" replace="/\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-  import 'dart:io';
-  import 'package:http_server/http_server.dart';
-  import 'package:path/path.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:http_server/http_server.dart';
+import 'package:path/path.dart';
 
-  main() async {
-    var pathToBuild = join(dirname(Platform.script.toFilePath()));
+Future main() async {
+  var pathToBuild = join(dirname(Platform.script.toFilePath()));
 
-    var staticFiles = new VirtualDirectory(pathToBuild);
-[[note]]1[[/note]] staticFiles.allowDirectoryListing = true;
-[[note]]2[[/note]] staticFiles.directoryHandler = (dir, request) {
-      var indexUri = new Uri.file(dir.path).resolve('index.html');
-[[note]]3[[/note]]   staticFiles.serveFile(new File(indexUri.toFilePath()), request);
-    };
+  var staticFiles = new VirtualDirectory(pathToBuild);
+  staticFiles.allowDirectoryListing = true; [!/*1*/!]
+  staticFiles.directoryHandler = (dir, request) {
+    [!/*2*/!]
+    var indexUri = new Uri.file(dir.path).resolve('index.html');
+    staticFiles.serveFile(new File(indexUri.toFilePath()), request); [!/*3*/!]
+  };
 
-    var server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048);
-    print('Listening on port 4048');
-[[note]]4[[/note]] await server.forEach(staticFiles.serveRequest);
-  }
+  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048);
+  print('Listening on port 4048');
+  await server.forEach(staticFiles.serveRequest); [!/*4*/!]
+}
 {% endprettify dart %}
 <div class="prettify-filename">static_file_server.dart</div>
 
-<span class="code-note">1</span>
-Allows clients to request files within the server's directory.
+{:.code-notes}
+1. Allows clients to request files within the server's directory.
 
-<span class="code-note">2</span>
-An anonymous function that handles requests for the directory itself,
-that is, the URL contains no filename.
-The function redirects these requests to `index.html`.
+2. An anonymous function that handles requests for the directory itself, that
+   is, the URL contains no filename. The function redirects these requests to
+   `index.html`.
 
-<span class="code-note">3</span>
-The `serveFile` method serves a file.
-In this example, it serves `index.html` for directory requests.
+3. The `serveFile` method serves a file. In this example, it serves
+   `index.html` for directory requests.
 
-<span class="code-note">4</span>
-The `serveRequest` method provided by the VirtualDirectory
-class handles requests that specify a file.
+4. The `serveRequest` method provided by the VirtualDirectory class handles
+   requests that specify a file.
 
 ## Using https with bindSecure() {#using-https}
 
@@ -925,40 +932,48 @@ calls `bindSecure()` using
 a certificate created by the Dart team for testing.
 You **must** provide your own certificates for your servers.
 
+<?code-excerpt "httpserver/bin/hello_world_server_secure.dart" replace="/\S.*\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-   import 'dart:io';
+import 'dart:async';
+import 'dart:io';
 
-   main() async {
-     var certificateChain =
-         Platform.script.resolve('server_chain.pem').toFilePath();
-     var serverKey =
-         Platform.script.resolve('server_key.pem').toFilePath();
-[[note]]1[[/note]]  [[highlight]]var serverContext = new SecurityContext();[[/highlight]]
-[[note]]2[[/note]]  [[highlight]]serverContext.useCertificateChain(certificateChain);[[/highlight]]
-[[note]]3[[/note]]  [[highlight]]serverContext.usePrivateKey(serverKey, password: 'dartdart');[[/highlight]]
+Future main() async {
+  var certificateChain =
+      Platform.script.resolve('server_chain.pem').toFilePath();
+  var serverKey = Platform.script.resolve('server_key.pem').toFilePath();
+  [!var serverContext = new SecurityContext(); /*1*/!]
+  [!serverContext.useCertificateChain(certificateChain); /*2*/!]
+  [!serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/!]
 
-[[note]]4[[/note]]  var requests = await HttpServer.bindSecure('localhost', 4047, [[highlight]]serverContext[[/highlight]]);
-     print('listening');
-     await for (HttpRequest request in requests) {
-       request.response..write('Hello, world!')
-                       ..close();
-     }
-   }
+  var server = await HttpServer.bindSecure(
+    'localhost',
+    4047,
+    [!serverContext, /*4*/!]
+  );
+  print('Listening on localhost:${server.port}');
+  await for (HttpRequest request in server) {
+    request.response
+      ..write('Hello, world!')
+      ..close();
+  }
+}
 {% endprettify %}
 <div class="prettify-filename">hello_world_server_secure.dart</div>
 
-<span class="code-note">1</span>
-Optional settings for a secure network connection are specified in a SecurityContext object.  There is a default object, SecurityContext.defaultContext, that includes trusted root certificates for well-known certificate authorities.
+{:.code-notes}
+1. Optional settings for a secure network connection are specified in a
+   SecurityContext object. There is a default object,
+   SecurityContext.defaultContext, that includes trusted root certificates for
+   well-known certificate authorities.
 
-<span class="code-note">2</span>
-A file containing the chain of certificates from the server certificate up to the root of the signing authority, in [PEM format.][]
+2. A file containing the chain of certificates from the server certificate up
+   to the root of the signing authority, in [PEM format.][]
 
-<span class="code-note">3</span>
-A file containing the (encrypted) server certificate private key, in [PEM format.][]
+3. A file containing the (encrypted) server certificate private key, in
+   [PEM format.][]
 
-<span class="code-note">4</span>
-The context argument is required on servers, optional for clients. If it is omitted, then the default context
-with built-in trusted roots is used.
+4. The context argument is required on servers, optional for clients. If it is
+   omitted, then the default context with built-in trusted roots is used.
 
 [PEM format.]: http://how2ssl.com/articles/working_with_pem_files
 

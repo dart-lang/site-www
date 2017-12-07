@@ -2,16 +2,20 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:test/test.dart';
-import '../bin/hello_world_server.dart' as hello_world_server;
-import '../bin/number_thinker.dart' as number_thinker;
-import '../bin/number_guesser.dart' as number_guesser;
+import '../bin/basic_file_server.dart' as basic_file_server;
 import '../bin/basic_writer_client.dart' as basic_writer_client;
 import '../bin/basic_writer_server.dart' as basic_writer_server;
+import '../bin/hello_world_server.dart' as hello_world_server;
+import '../bin/mini_file_server.dart' as mini_file_server;
+import '../bin/number_guesser.dart' as number_guesser;
+import '../bin/number_thinker.dart' as number_thinker;
 
 void main() {
   test('hello_world_server', () {
+    const port = 4040;
+
     _test() async {
-      expect(await getUrl('localhost', 4040), 'Hello, world!');
+      expect(await getUrl('localhost', port), 'Hello, world!');
     }
 
     expect(
@@ -19,7 +23,7 @@ void main() {
               hello_world_server.main(),
               _test(),
             ]),
-        prints(startsWith('listening on localhost:4040')));
+        prints(startsWith('Listening on localhost:$port')));
   });
 
   group('number_thinker and number_guesser:', () {
@@ -123,6 +127,59 @@ void main() {
       );
     });
   });
+
+  test('mini_file_server', () {
+    final file = new File('bin/index.html');
+
+    _server() {
+      mini_file_server.targetFile = file;
+      return mini_file_server.main();
+    }
+
+    _test() async {
+      expect(await getUrl('localhost', 4044), file.readAsStringSync());
+    }
+
+    expect(
+        () => Future.any([
+              _server(),
+              _test(),
+            ]),
+        prints('Serving ${file.path}.\n'));
+  });
+
+  test('basic_file_server', () async {
+    final file = new File('bin/index.html');
+
+    _server() {
+      basic_file_server.targetFile = file;
+      return basic_file_server.main();
+    }
+
+    _test() async {
+      expect(await getUrl('localhost', 4046), file.readAsStringSync());
+    }
+
+    await Future.any([
+      _server(),
+      _test(),
+    ]);
+  });
+
+//  test('hello_world_server_secure', () {
+//    const port = 4047;
+//
+//    _test() async {
+//      expect(await getUrl('localhost', port), 'Hello, world!');
+//    }
+//
+//    expect(
+//        () => Future.any([
+//              hello_world_server.main(),
+//              _test(),
+//            ]),
+//        prints(startsWith('Listening on localhost:$port')));
+//  });
 }
 
 Future<String> getUrl([
@@ -130,7 +187,8 @@ Future<String> getUrl([
   int port = 8080,
   String path = '',
 ]) async {
-  final request = await new HttpClient().get(host, port, path);
+  final client = new HttpClient();
+  final request = await client.get(host, port, path);
   final response = await request.close();
   final data = await response.transform(UTF8.decoder).toList();
   return data.join('');

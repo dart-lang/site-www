@@ -15,7 +15,7 @@ Future main() async {
     4040,
   );
   // #enddocregion bind
-  print('listening on localhost:${server.port}');
+  print('Listening on localhost:${server.port}');
 
   // #docregion listen
   await for (HttpRequest request in server) {

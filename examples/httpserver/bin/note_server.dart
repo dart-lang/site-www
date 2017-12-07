@@ -5,8 +5,8 @@
 // Client program is note_client.dart.
 // Use note_taker.html to run the client.
 
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 import 'dart:convert' show UTF8, JSON;
 
 int count = 0;
@@ -115,6 +115,7 @@ void handleOptions(HttpRequest request) {
     ..close();
 }
 
+// #docregion addCorsHeaders
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
   response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS');

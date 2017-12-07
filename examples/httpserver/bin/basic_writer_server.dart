@@ -6,38 +6,40 @@
 // Receives JSON encoded data in a POST request and writes it to
 // the file specified in the URI.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
 import 'dart:convert';
 
 Future main() async {
   var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
   await for (var req in server) {
     ContentType contentType = req.headers.contentType;
+    HttpResponse response = req.response;
 
     if (req.method == 'POST' &&
-        contentType != null &&
+        contentType != null && /*1*/
         contentType.mimeType == 'application/json') {
       try {
-        var jsonString = await req.transform(UTF8.decoder).join();
+        var jsonString = await req.transform(UTF8.decoder).join(); /*2*/
 
         // Write to a file, get the file name from the URI.
-        var filename = req.uri.pathSegments.last;
+        var filename = req.uri.pathSegments.last; /*3*/
         await new File(filename)
             .writeAsString(jsonString, mode: FileMode.WRITE);
-        Map jsonData = JSON.decode(jsonString);
-        req.response
+        Map jsonData = JSON.decode(jsonString); /*4*/
+        response
           ..statusCode = HttpStatus.OK
           ..write('Wrote data for ${jsonData['name']}.')
           ..close();
       } catch (e) {
-        req.response
+        response
           ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
           ..write("Exception during file I/O: $e.")
           ..close();
       }
     } else {
-      req.response
+      response
         ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
         ..write("Unsupported request: ${req.method}.")
         ..close();
