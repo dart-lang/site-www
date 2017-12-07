@@ -335,8 +335,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-Random numberGenerator = new Random();
-int myNumber = numberGenerator.nextInt(10);
+Random intGenerator = new Random();
+int myNumber = intGenerator.nextInt(10);
 
 Future main() async {
   print("I'm thinking of a number: $myNumber");
@@ -577,7 +577,7 @@ Future main() async {
   };
 
   var request = await new HttpClient()
-      [!/*1*/!] .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');
+      [!/*1*/!] .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt');
   [!/*2*/!] request.headers.contentType = ContentType.JSON;
   [!/*3*/!] request.write(JSON.encode(jsonData));
   [!/*4*/!] HttpClientResponse response = await request.close();
