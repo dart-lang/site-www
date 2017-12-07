@@ -1,0 +1,6 @@
+name: httpserver
+description: A sample application
+dependencies:
+  http_server: ^0.9.2
+
+homepage: https://www.dartlang.org/docs/tutorials/httpserver/
