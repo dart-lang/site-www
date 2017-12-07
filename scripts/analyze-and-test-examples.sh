@@ -86,7 +86,7 @@ pushd $EXAMPLES > /dev/null
 export PUB_ALLOW_PRERELEASE_SDK=quiet
 
 for d in $EXAMPLES/??*; do
-  if [[ ! -d $d || $d == *util || $d == *httpserver ]]; then continue; fi
+  if [[ ! -d $d || $d == *util ]]; then continue; fi
   echo
   echo "PROCESSING $d"
   echo
