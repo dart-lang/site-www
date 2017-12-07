@@ -4,16 +4,18 @@
 
 // Automatic client to number_thinker.dart.
 
-import 'dart:io';
-import 'dart:convert';
-import 'dart:math';
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
 Duration oneSecond = const Duration(seconds: 1);
+Random myRandomGenerator = new Random();
+HttpClient client = new HttpClient();
 
 Future main() async {
-  final guesser = new NumberGuesser(new Random());
-  final guesses = new Stream.periodic(oneSecond, (_) => guesser.guess());
+  // Delay successive guesses by oneSecond.
+  final guesses = new Stream.periodic(oneSecond, (_) => guess());
 
   // Guess until we get it right
   await for (final guess in guesses) {
@@ -21,36 +23,26 @@ Future main() async {
   }
 }
 
-class NumberGuesser {
-  static const int maxInt = 10;
+Future<bool> guess() {
+  final guess = myRandomGenerator.nextInt(10);
+  return checkGuess(guess);
+}
 
-  Random _intGenerator;
-  final HttpClient _client = new HttpClient();
-
-  NumberGuesser(this._intGenerator);
-
-  Future<bool> guess() => tryGuess(_intGenerator.nextInt(maxInt));
-
-  Future<bool> tryGuess(int guess) async {
-    bool goodGuess = false;
-    HttpClientRequest request = await _client.get(
-      InternetAddress.LOOPBACK_IP_V4.host,
-      4041,
-      '/?q=$guess',
-    );
-    print('Guess is $guess.');
-    HttpClientResponse response = await request.close();
-    if (response.statusCode == HttpStatus.OK) {
-      var contents = await response.transform(UTF8.decoder).join();
-      // print('Response from number server: $contents');
-      if (contents.startsWith('true')) {
-        print('Guessed right, yay!');
-        goodGuess = true;
-        _client.close();
-      } else {
-        print('Bad guess, trying again.');
-      }
+Future checkGuess(int guess) async {
+  bool isGoodGuess = false;
+  HttpClientRequest request =
+      await client.get(InternetAddress.LOOPBACK_IP_V4.host, 4041, '/?q=$guess');
+  print('Guess is $guess.');
+  HttpClientResponse response = await request.close();
+  if (response.statusCode == HttpStatus.OK) {
+    var contents = await response.transform(UTF8.decoder).join();
+    if (contents.startsWith('true')) {
+      isGoodGuess = true;
+      client.close();
+      print('Good guess, yay!');
+    } else {
+      print('Bad guess, trying again.');
     }
-    return goodGuess;
   }
+  return isGoodGuess;
 }

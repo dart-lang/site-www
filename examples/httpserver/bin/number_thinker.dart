@@ -3,84 +3,55 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Use the client program, number_guesser.dart to automatically make guesses.
-// Or, you can manually guess the number using the URL localhost:4041/?q=#,
-// where # is your guess. Or, you can use the make_a_guess.html UI.
+// Or, you can manually guess the number using the URL localhost:4045/?q=#,
+// where # is your guess.
+// Or, you can use the make_a_guess.html UI.
 
-// #docregion main
-import 'dart:async';
 import 'dart:io';
+import 'dart:async';
 import 'dart:math' show Random;
 
-Future main() => new NumberThinker(new Random()).run();
-// #enddocregion main
+int myNumber = new Random().nextInt(10);
 
-class NumberThinker {
-  Random numberGenerator;
-  int myNumber;
+Future main() async {
+  print("I'm thinking of a number: $myNumber");
 
-  NumberThinker(this.numberGenerator);
-
-  Future run() async {
-    myNumber = numberGenerator.nextInt(10);
-    print("I'm thinking of a number: $myNumber");
-
-    HttpServer server = await HttpServer.bind(
-      InternetAddress.LOOPBACK_IP_V4,
-      4041,
-    );
-    await for (var request in server) {
-      handleRequest(request);
-    }
+  HttpServer requestServer =
+  await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4041);
+  await for (var request in requestServer) {
+    handleRequest(request);
   }
+}
 
-  // #docregion handleRequest
-  void handleRequest(HttpRequest request) {
-    try {
-      // #docregion request-method
-      if (request.method == 'GET') {
-        handleGet(request);
-      } else {
-        // #enddocregion handleRequest
-        request.response
-          ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-          ..write('Unsupported request: ${request.method}.')
-          ..close();
-        // #docregion handleRequest
-      }
-      // #enddocregion request-method
-    } catch (e) {
-      print('Exception in handleRequest: $e');
-    }
-    print('Request handled.');
-  }
-// #enddocregion handleRequest
-
-// #docregion handleGet, statusCode, uri, write
-  void handleGet(HttpRequest request) {
-    // #enddocregion write
-    final guess = request.uri.queryParameters['q'];
-    // #enddocregion uri
-    final response = request.response;
-    response.statusCode = HttpStatus.OK;
-    // #enddocregion statusCode
-    // #docregion write
-    if (guess == myNumber.toString()) {
-      print('Good guess! $guess was the number!');
-      response
-        ..writeln('true')
-        ..writeln("I'm thinking of another number.")
-        ..close();
-      // #enddocregion write
-      myNumber = numberGenerator.nextInt(10);
-      print("I'm thinking of another number: $myNumber");
+void handleRequest(HttpRequest request) {
+  try {
+    if (request.method == 'GET') {
+      handleGet(request);
     } else {
-      print('The guess $guess is wrong.');
-      response
-        ..writeln('false')
+      request.response
+        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..write('Unsupported request: ${request.method}.')
         ..close();
-      // #docregion write
     }
-    // #docregion statusCode, uri
+  } catch (e) {
+    print('Exception in handleRequest: $e');
   }
+  print('Request handled.');
+}
 
+void handleGet(HttpRequest request) {
+  var guess = request.uri.queryParameters['q'];
+  request.response.statusCode = HttpStatus.OK;
+  if (guess == myNumber.toString()) {
+    request.response
+      ..writeln('true')
+      ..writeln("I'm thinking of another number.")
+      ..close();
+    myNumber = new Random().nextInt(10);
+    print("I'm thinking of another number: $myNumber");
+  } else {
+    request.response
+      ..writeln('false')
+      ..close();
+  }
 }

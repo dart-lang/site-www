@@ -1,32 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 import 'package:test/test.dart';
 import '../bin/hello_world_server.dart' as hello_world_server;
-import '../bin/number_thinker.dart' show NumberThinker;
-import '../bin/number_guesser.dart' show NumberGuesser;
+import '../bin/number_thinker.dart' as number_thinker;
+import '../bin/number_guesser.dart' as number_guesser;
 import '../bin/basic_writer_client.dart' as basic_writer_client;
 import '../bin/basic_writer_server.dart' as basic_writer_server;
-
-//class MockRandom implements Random {
-//  Random _rand;
-//  int _prevInt, _nextInt;
-//
-//  MockRandom(int max) {
-//    _rand = new Random(0);
-//    _prevInt = _rand.nextInt(max);
-//  }
-//  noSuchMethod(_) => null;
-//
-//  @override
-//  int nextInt(int max) {
-//    if (_cache.isEmpty) throw "We've run out of numbers!";
-//    final result = _cache.first;
-//    _cache.removeAt(0);
-//    return result;
-//  }
-//}
 
 void main() {
   test('hello_world_server', () {
@@ -43,19 +23,12 @@ void main() {
   });
 
   group('number_thinker and number_guesser:', () {
-    NumberGuesser guesser;
-
     // Only resolve the server once for all tests in this group to avoid
     // "binding multiple times on the same (address, port) combination".
     Future _server;
-    Future getServer() => _server ??= new NumberThinker(new Random(0)).run();
+    Future getServer() => _server ??= number_thinker.main();
 
-    setUpAll(() {
-      guesser = new NumberGuesser(new Random(1));
-    });
-
-
-    test('GET', () {
+    test('number_thinker response', () {
       _test() async {
         expect(await getUrl('localhost', 4041), anyOf('true\n', 'false\n'));
       }
@@ -75,7 +48,7 @@ void main() {
       expect(
           () => Future.any([
                 getServer(),
-                guesser.tryGuess(99),
+                number_guesser.checkGuess(99),
               ]),
           prints(allOf(
             contains('Guess is 99.'),
@@ -88,7 +61,7 @@ void main() {
         // For now, guess each number in turn
         // (rather than having to mock the int generator).
         for (var i = 0; i < 10; i++) {
-          if (await guesser.tryGuess(i)) return;
+          if (await number_guesser.checkGuess(i)) return;
         }
       }
 
@@ -97,9 +70,8 @@ void main() {
                 getServer(),
                 _test(),
               ]),
-          prints(contains('yay')));
+          prints(contains('Good guess')));
     });
-
   });
 
   group('basic_writer_client and server:', () {
@@ -151,22 +123,6 @@ void main() {
       );
     });
   });
-
-//  test('number_guesser', () async {
-//    _test() async {
-//      expect(await getUrl('localhost', 4041), anyOf('true\n', 'false\n'));
-//    }
-//    _serverAndTest() => Future.any([
-//      number_server.main(),
-//      _test(),
-//    ]);
-//    expect(
-//        _serverAndTest,
-//        prints(allOf(
-//          startsWith("I'm thinking of a number:"),
-//          contains('Request handled.'),
-//        )));
-//  });
 }
 
 Future<String> getUrl([
