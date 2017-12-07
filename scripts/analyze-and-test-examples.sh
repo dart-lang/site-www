@@ -2,7 +2,8 @@
 #
 # Run dartfmt over the examples.
 
-set -e -o pipefail
+# Don't exit on pipefail because we use `find`.
+# set -e -o pipefail
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
@@ -13,11 +14,14 @@ function analyze_and_text() {
   travis_fold end analyzeAndTest.get
 
   DIR=()
-  for d in 'lib test'; do
+  for d in bin lib test; do
     if [[ -d $d ]]; then DIR[${#DIR}]=$d; fi
   done
 
-  if [[ ${#DIR} -gt 0 ]]; then
+  if [[ ${#DIR} -le 0 ]]; then
+    echo
+    echo "NOTHING TO ANALYZE in this project."
+  else
     echo
     travis_fold start analyzeAndTest.analyze
     $ANALYZE ${DIR[*]} | tee $LOG_FILE
@@ -41,7 +45,7 @@ function analyze_and_text() {
   #TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
   TEST_FILES=`find . -name "*_test.dart" -exec grep -l "@TestOn('browser')" {} +`
   if [[ -z $TEST_FILES ]]; then
-    echo "No browser only tests."
+    echo "No browser-only tests."
   else
     travis_fold start analyzeAndTest.tests.browser
     echo Running browser tests ...
@@ -82,7 +86,7 @@ pushd $EXAMPLES > /dev/null
 export PUB_ALLOW_PRERELEASE_SDK=quiet
 
 for d in $EXAMPLES/??*; do
-  if [[ ! -d $d || $d == *util ]]; then continue; fi
+  if [[ ! -d $d || $d == *util || $d == *httpserver ]]; then continue; fi
   echo
   echo "PROCESSING $d"
   echo
