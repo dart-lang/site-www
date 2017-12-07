@@ -9,29 +9,48 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:async';
 
-Random myRandomGenerator = new Random();
-HttpClient client;
+Duration oneSecond = const Duration(seconds: 1);
 
-void main() {
-  client = new HttpClient();
-  new Timer.periodic(new Duration(seconds: 2), makeGuess);
+Future main() async {
+  final guesser = new NumberGuesser(new Random());
+  final guesses = new Stream.periodic(oneSecond, (_) => guesser.guess());
+
+  // Guess until we get it right
+  await for (final guess in guesses) {
+    if (await guess) break;
+  }
 }
 
-Future makeGuess(_) async {
-  var aRandomNumber = myRandomGenerator.nextInt(10);
+class NumberGuesser {
+  static const int maxInt = 10;
 
-  HttpClientRequest request = await client.get(
-      InternetAddress.LOOPBACK_IP_V4.host, 4041, '/?q=$aRandomNumber');
-  print('Guess is $aRandomNumber.');
-  HttpClientResponse response = await request.close();
-  if (response.statusCode == HttpStatus.OK) {
-    var contents = await response.transform(UTF8.decoder).join();
-    if (contents.startsWith('true')) {
-      client.close();
-      print('yay');
-      exit(0);
-    } else {
-      print('boo');
+  Random _intGenerator;
+  final HttpClient _client = new HttpClient();
+
+  NumberGuesser(this._intGenerator);
+
+  Future<bool> guess() => tryGuess(_intGenerator.nextInt(maxInt));
+
+  Future<bool> tryGuess(int guess) async {
+    bool goodGuess = false;
+    HttpClientRequest request = await _client.get(
+      InternetAddress.LOOPBACK_IP_V4.host,
+      4041,
+      '/?q=$guess',
+    );
+    print('Guess is $guess.');
+    HttpClientResponse response = await request.close();
+    if (response.statusCode == HttpStatus.OK) {
+      var contents = await response.transform(UTF8.decoder).join();
+      // print('Response from number server: $contents');
+      if (contents.startsWith('true')) {
+        print('Guessed right, yay!');
+        goodGuess = true;
+        _client.close();
+      } else {
+        print('Bad guess, trying again.');
+      }
     }
+    return goodGuess;
   }
 }

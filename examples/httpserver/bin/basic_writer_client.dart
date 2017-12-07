@@ -6,8 +6,9 @@
 // Makes a POST request containing JSON-encoded data
 // to the server and prints the response.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
 import 'dart:convert' show UTF8, JSON;
 
 Future main() async {
@@ -20,11 +21,11 @@ Future main() async {
   };
 
   var request = await new HttpClient()
-      .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');
-  request.headers.contentType = ContentType.JSON;
-  request.write(JSON.encode(jsonData));
-  HttpClientResponse response = await request.close();
-  await for (var contents in response.transform(UTF8.decoder)) {
+      /*1*/ .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt');
+  /*2*/ request.headers.contentType = ContentType.JSON;
+  /*3*/ request.write(JSON.encode(jsonData));
+  /*4*/ HttpClientResponse response = await request.close();
+  /*5*/ await for (var contents in response.transform(UTF8.decoder)) {
     print(contents);
   }
 }

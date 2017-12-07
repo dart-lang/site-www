@@ -968,6 +968,11 @@ main .content {
   }
 }
 
+/* Used for inlined icon markers, usually at the start of a paragraph */
+.content > p > i.material-icons {
+  vertical-align: bottom;
+}
+
 .breadcrumb {
   background-color: transparent;
   padding: 0;

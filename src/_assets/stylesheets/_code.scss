@@ -18,12 +18,14 @@
     background: rgba(0,0,0,0.26);
   }
 }
+
 .prettify-filename {
   position: relative;
-  float: right;
-  margin-right: 15px;
-  top: -40px;
-  color: $gray;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
 }
 
 /* SPAN elements with the classes below are added by prettyprint. */

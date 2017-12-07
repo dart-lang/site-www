@@ -96,26 +96,20 @@ _Example file for this section:_
 Let's begin with a small server that responds to all requests
 with the string `Hello, world!`
 
-<ul>
-
-  <li markdown="1">
 At the command line, run the `hello_world_server.dart` script.
 You will see the following:
 
-{% prettify bash %}
+{% prettify shell %}
 $ cd httpserver/bin
 $ dart hello_world_server.dart
 listening on localhost, port 4040
 {% endprettify %}
-  </li>
 
-  <li markdown="1">
-Then, in any browser, enter [localhost:4040](localhost:4040).
+<i class="material-icons">open_in_browser</i>
+**In any browser, visit** [localhost:4040](localhost:4040).
 The browser displays `Hello, world!`
 
 ![The response from the hello world server.](/tutorials/dart-vm/images/hello_world_response.png)
-  </li>
-</ul>
 
 In this case, the server is a Dart program
 and the client is the browser you used.
@@ -128,21 +122,26 @@ In the code for the hello world server,
 an HTTP server binds to a host and port,
 listens for HTTP requests, and writes a response.
 Note that the program imports
-the `dart:io` library, which contains the HTTP-related
+the [dart:io][] library, which contains the HTTP-related
 classes both for server-side programs and for
 client-side programs (but not for web apps).
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart"?>
 {% prettify dart %}
-[[highlight]]import 'dart:io';[[/highlight]]
+import 'dart:io';
+import 'dart:async';
 
-main() async {
-  var requestServer =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4040);
-  print('listening on localhost, port ${requestServer.port}');
+Future main() async {
+  var server = await HttpServer.bind(
+    InternetAddress.LOOPBACK_IP_V4,
+    4040,
+  );
+  print('listening on localhost:${server.port}');
 
-  await for (HttpRequest request in requestServer) {
-    request.response..write('Hello, world!')
-                    ..close();
+  await for (HttpRequest request in server) {
+    request.response
+      ..write('Hello, world!')
+      ..close();
   }
 }
 {% endprettify %}
@@ -154,21 +153,22 @@ listening, and responding.
 
 ## Binding a server to a host and port {#binding}
 
-_Example for this section: hello_world_server.dart._
+_Example for this section:_
+[hello_world_server.dart.]({{gh-path}}/bin/hello_world_server.dart)
 
 The first line of code in `main()` uses `HttpServer.bind()` to create an
 [HttpServer][] object and bind it to a host and port.
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart (bind)"?>
 {% prettify dart %}
-var [[highlight]]requestServer[[/highlight]] =
-    await HttpServer.bind([[highlight]]InternetAddress.LOOPBACK_IP_V4, 4040[[/highlight]]);
-...
+var server = await HttpServer.bind(
+  InternetAddress.LOOPBACK_IP_V4,
+  4040,
+);
 {% endprettify %}
 <div class="prettify-filename">hello_world_server.dart</div>
 
 The code uses `await` to call the `bind` method asynchronously.
-When the bind is successful, the new HttpServer object is assigned
-to `requestServer`.
 
 ### Hostname
 The first parameter of `bind()` specifies the hostname.
@@ -204,17 +204,17 @@ The server begins listening for HTTP requests using `await for`.
 For each request received, the highlighted code is executed for that
 [HttpRequest][] object.
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart (listen)"?>
 {% prettify dart %}
-...
-await for (HttpRequest request in requestServer) {
-  [[highlight]]request.response..write('Hello, world!')[[/highlight]]
-                  [[highlight]]..close();[[/highlight]]
+await for (HttpRequest request in server) {
+  request.response
+    ..write('Hello, world!')
+    ..close();
 }
-...
 {% endprettify %}
 <div class="prettify-filename">hello_world_server.dart</div>
 
-You'll learn more about what the HttpRequest object contains
+You'll learn more about what the [HttpRequest][] object contains
 and how to write the response in the section
 [Listening for and handling requests](#httprequest-object).
 But first, let's look at one way a client generates a request.
@@ -271,38 +271,32 @@ The form also specifies the URL, which includes the port number,
 and the kind of request (the _request method_).
 It might also include elements that build a query string.
 
-Here's the HTML code for the form in make_a_guess.html:
+Here's the form HTML from `make_a_guess.html`:
 
+<?code-excerpt "httpserver/web/make_a_guess.html (form)" replace="/(action|method|name|type)=(.).*?\2/[!$&!]/g"?>
 {% prettify html %}
-[[note]]1[[/note]] <form [[highlight]]action="http://localhost:4041"[[/highlight]]
-[[note]]2[[/note]]       [[highlight]]method="GET"[[/highlight]]>
-
-[[note]]3[[/note]]   <select [[highlight]]name="q"[[/highlight]]>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ...
-        <option value="9">9</option>
-      </select>
-[[note]]4[[/note]]   <input [[highlight]]type="submit"[[/highlight]] value="Guess">
-    </form>
+<form [!action="http://localhost:4041"!] [!method="GET"!]>
+  <select [!name="q"!]>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <!-- ··· -->
+    <option value="9">9</option>
+  </select>
+  <input [!type="submit"!] value="Guess">
+</form>
 {% endprettify %}
 <div class="prettify-filename">make_a_guess.html</div>
 
-<span class="code-note">1</span>
-URL to send the request to.
-
-<span class="code-note">2</span>
-The kind of request, here a `GET` request. Other common
-kinds of requests include POST, PUT, and DELETE.
-
-<span class="code-note">3</span>
-Any element within the form that has a name becomes
-a parameter in the query string.
-
-<span class="code-note">4</span>
-When pressed, the submit button formulates
-the request based on the content of the form and sends it.
+- The form's `action` attribute is assigned the
+  URL to send the request to.
+- The form's `method` attribute defines
+  the kind of request, here a `GET`. Other common
+  kinds of request include POST, PUT, and DELETE.
+- Any element within the form, like `<select>`, that has a `name` becomes
+  a parameter in the query string.
+- When pressed, the submit button (`<input type="submit"...>`) formulates
+  the request based on the content of the form and sends it.
 
 ### A RESTful GET request
 
@@ -335,35 +329,40 @@ Here, the top-level `handleRequest()` method is called for each
 request received. Because HttpServer implements [Stream,][Stream]
 you can use `await for` to process the requests.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (main)" replace="/handleRequest/[!$&!]/g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-int myNumber = new Random().nextInt(10);
+Random numberGenerator = new Random();
+int myNumber = numberGenerator.nextInt(10);
 
-main() async {
+Future main() async {
   print("I'm thinking of a number: $myNumber");
 
-  HttpServer requestServer =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4041);
-  await for (var request in requestServer) {
-    [[highlight]]handleRequest[[/highlight]](request);
+  HttpServer server = await HttpServer.bind(
+    InternetAddress.LOOPBACK_IP_V4,
+    4041,
+  );
+  await for (var request in server) {
+    [!handleRequest!](request);
   }
 }
-...
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
 When a `GET` request arrives, the `handleRequest()` method calls
 `handleGet()` to process the request.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (handleRequest)" replace="/handleGet/[!$&!]/g"?>
 {% prettify dart %}
 void handleRequest(HttpRequest request) {
   try {
     if (request.method == 'GET') {
-      [[highlight]]handleGet[[/highlight]](request);
+      [!handleGet!](request);
     } else {
-      ...
+      // ···
     }
   } catch (e) {
     print('Exception in handleRequest: $e');
@@ -373,13 +372,13 @@ void handleRequest(HttpRequest request) {
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
-An HttpRequest object has many properties that provide
+An [HttpRequest][] object has many properties that provide
 information about the request.
 The following table lists some useful properties:
 
 | Property | Information |
 |---|---|
-| `method` | A String: 'GET', 'POST', 'PUT', and so on. |
+| `method` | One of `'GET'`, `'POST'`, `'PUT'`, and so on. |
 | `uri` | A  [Uri][] object: scheme, host, port, query string, and other information about the requested resource. |
 | `response` | An [HttpResponse][] object: where the server writes its response. |
 | `headers` | An [HttpHeaders][] object: the headers for the request, including [ContentType,][ContentType] content length, date, and so on. |
@@ -391,13 +390,15 @@ The code below from the number thinker example uses the HttpRequest `method`
 property to determine what kind of request has been received.
 This server handles only GET requests.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (request-method)" replace="/handleGet/[!$&!]/g"?>
 {% prettify dart %}
 if (request.method == 'GET') {
-  [[highlight]]handleGet[[/highlight]](request);
+  [!handleGet!](request);
 } else {
-  request.response..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-                  ..write('Unsupported request: ${request.method}.')
-                  ..close();
+  request.response
+    ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+    ..write('Unsupported request: ${request.method}.')
+    ..close();
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -409,10 +410,11 @@ which simply requests data from the specified resource.
 It can send a minimal amount of data along with the request
 through a query string attached to the URI.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (uri)" replace="/request.uri/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  var guess = [[highlight]]request.uri[[/highlight]].queryParameters['q'];
-  ...
+  final guess = [!request.uri!].queryParameters['q'];
+  // ···
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -433,11 +435,13 @@ Later in the code,
 to indicate that the request was successful and the response is complete,
 the number thinker server sets the HttpResponse status code to `HttpStatus.OK`.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (statusCode)" replace="/response.statusCode.*?;/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  var guess = request.uri.queryParameters['q'];
-  [[highlight]]request.response.statusCode = HttpStatus.OK[[/highlight]];
-  ...
+  final guess = request.uri.queryParameters['q'];
+  final response = request.response;
+  [!response.statusCode = HttpStatus.OK;!]
+  // ···
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -452,8 +456,8 @@ the HttpResponse object has other useful properties:
 
 | Property | Information |
 |---|---|
-| `contentLength` | The length of the response. -1 means the length is not known in advance. |
-| `cookies` | A List of [Cookie][]s to set in the client. |
+| `contentLength` | The length of the response; -1 means the length is not known in advance. |
+| `cookies` | A List of [Cookies][Cookie] to set in the client. |
 | `encoding` | The [Encoding][] used when writing strings, like JSON and UTF-8. |
 | `headers` | The response headers, an [HttpHeaders][] object. |
 {: .table}
@@ -472,14 +476,16 @@ Close the object when the response is complete.
 Closing the HttpResponse object
 sends the data back to the client.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (write)" replace="/\.\..*/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  ...
+  // ···
   if (guess == myNumber.toString()) {
-    [[highlight]]request.response..writeln('true')[[/highlight]]
-                    [[highlight]]..writeln("I'm thinking of another number.")[[/highlight]]
-                    [[highlight]]..close();[[/highlight]]
-    ...
+    response
+      [!..writeln('true')!]
+      [!..writeln("I'm thinking of another number.")!]
+      [!..close();!]
+    // ···
   }
 }
 {% endprettify %}
@@ -555,66 +561,54 @@ The `close()` method sends the request to the server
 and returns the second Future, which completes with
 an HttpClientResponse object.
 
+<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|UTF8.\w+/[!$&!]/g"?>
 {% prettify dart %}
-   import 'dart:io';
-   import 'dart:convert' show UTF8, JSON;
+import 'dart:async';
+import 'dart:io';
+import 'dart:convert' show UTF8, JSON;
 
-   main() async {
-     Map jsonData = {
-       'name':     'Han Solo',
-       'job':      'reluctant hero',
-       'BFF':      'Chewbacca',
-       'ship':     'Millennium Falcon',
-       'weakness': 'smuggling debts'
-     };
+Future main() async {
+  Map jsonData = {
+    'name': 'Han Solo',
+    'job': 'reluctant hero',
+    'BFF': 'Chewbacca',
+    'ship': 'Millennium Falcon',
+    'weakness': 'smuggling debts'
+  };
 
-[[note]]1[[/note]]  [[highlight]]var request = await[[/highlight]] new HttpClient().post(
-[[note]]2[[/note]]      [[highlight]]InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');[[/highlight]]
-[[note]]3[[/note]]  [[highlight]]request.headers.contentType = ContentType.JSON;[[/highlight]]
-[[note]]4[[/note]]  [[highlight]]request.write(JSON.encode(jsonData));[[/highlight]]
-[[note]]5[[/note]]  [[highlight]]HttpClientResponse response = await request.close()[[/highlight]];
-[[note]]6[[/note]]  await for (var contents in response.transform([[highlight]]UTF8.decoder[[/highlight]])) {
-       print(contents);
-    }
+  var request = await new HttpClient()
+      [!/*1*/!] .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');
+  [!/*2*/!] request.headers.contentType = ContentType.JSON;
+  [!/*3*/!] request.write(JSON.encode(jsonData));
+  [!/*4*/!] HttpClientResponse response = await request.close();
+  [!/*5*/!] await for (var contents in response.transform([!UTF8.decoder!])) {
+    print(contents);
   }
+}
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
 
-<span class="code-note">1</span>
-When the `post()` connection succeeds (and execution resumes after
-the await expression), the returned [HttpClientRequest][]
-object is assigned to the `request` variable.
+1. The `post()` method requires the host, port, and the path to the requested
+   resource. In addition to `post()`, the [HttpClient][] class provides
+   functions for making other kinds of requests, including `postUrl()`,
+   `get()`, and `open()`.
 
-<span class="code-note">2</span>
-The `post()` method requires the host, port, and the path to the requested
-resource.
-In addition to `post()`, the HttpClient class provides functions
-for making other kinds of
-requests, including `postUrl()`, `get()`, and `open()`.
+2. An [HttpClientRequest][] object has an [HttpHeaders][] object, which
+   contains the request headers. For some headers, like `contentType`,
+   HttpHeaders has a property specific to that header. For other headers, use
+   the `set()` method to put the header in the HttpHeaders object.
 
-<span class="code-note">3</span>
-An HttpClientRequest object has an HttpHeaders object,
-which contains the request headers.
-For some headers,
-like `contentType`,
-HttpHeaders has a property specific to that header.
-For other headers, use the `set()` method to
-put the header in the HttpHeaders object.
+3. The client writes data to the request object using `write()`. The encoding,
+   JSON in this example, matches the type specified in the [ContentType][]
+   header.
 
-<span class="code-note">4</span>
-The client writes data to the request object using `write()`.
-The encoding, JSON in this example,
-matches the type specified in the ContentType header.
+4. The `close()` method sends the request to the server and, when complete,
+   returns an [HttpClientResponse][] object that's assigned to the `reponse`
+   variable.
 
-<span class="code-note">5</span>
-The `close()` method sends the request to the server and, when complete,
-returns an [HttpClientResponse][] object
-that's assigned to the `reponse` variable.
-
-<span class="code-note">6</span>
-The response from the server is encoded in UTF-8.
-Use a transformer defined in the `dart:convert` library
-to convert the data into regular Dart string format.
+5. The UTF-8 response from the server is decoded. Use a transformer defined in
+   the [dart:convert][] library to convert the data into regular Dart string
+   format.
 
 ### A RESTful POST request
 
@@ -629,13 +623,14 @@ for example, the URI has no query string
 * has no state and does not change the state of the server
 * has no length limits
 
-<strong>Bonus code:</strong>
-If you would like to see some client code that
-makes GET requests,
-check out the code for
-[number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
-It's a standalone client for the number thinker server
-that makes periodic guesses until it guesses correctly.
+<aside class="alert alert-info" markdown="1">
+  If you would like to see some client code that
+  makes GET requests,
+  check out the code for
+  [number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
+  It's a standalone client for the number thinker server
+  that makes periodic guesses until it guesses correctly.
+</aside>
 
 ## Handling a POST request in a server {#handling-post}
 
