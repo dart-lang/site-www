@@ -7,44 +7,58 @@ title: "Pubspec Format"
 Every [pub](/tools/pub) package needs some metadata so it can specify its
 [dependencies](/tools/pub/glossary#dependency). Pub packages that are shared with
 others also need to provide some other information so users can discover them.
-Pub stores this in a file named `pubspec.yaml`, which is written in
-the [YAML](http://www.yaml.org/) language.
+All of this metadata goes in the package's _pubspec:_
+a file named `pubspec.yaml` that's written in the
+[YAML](http://www.yaml.org/) language.
 
-At the top level are a series of fields. The currently supported ones are:
+
+## Supported fields
+
+A pubspec can have the following fields:
 
 `name`
 : Required for every package.
+  [_Learn more._](#name)
 
 `version`
 : Required for packages that are hosted on pub.dartlang.org.
+  [_Learn more._](#version)
 
 `description`
 : Required for packages that are hosted on pub.dartlang.org.
+  [_Learn more._](#description)
 
 `author` or `authors`
 : Optional.
+  [_Learn more._](#authorauthors)
 
 `homepage`
 : Optional.
+  [_Learn more._](#homepage)
 
 `documentation`
 : Optional. Can be used to automatically create documentation.
+  [_Learn more._](#documentation)
 
 `dependencies`
 : Can be omitted if your package has no dependencies.
+  [_Learn more._](#dependencies)
 
 `dev_dependencies`
 : Can be omitted if your package has no dev dependencies.
+  [_Learn more._](#dependencies)
 
 `dependency_overrides`
 : Can be omitted if you do not need to override any dependencies.
+  [_Learn more._](#dependencies)
 
 `environment`
 : Optional. Can be used to require a specific version of the Dart SDK.
-  See [SDK constraints](#sdk-constraints).
+  [_Learn more._](#sdk-constraints)
 
 `executables`
 : Optional. Used to put a package's executables on your PATH.
+  [_Learn more._](#executables)
 
 `publish_to`
 : Optional. Specify where to publish a package. The default is
@@ -53,16 +67,20 @@ At the top level are a series of fields. The currently supported ones are:
 
 `transformers`
 : Optional. Used to configure dart2js or other transformers.
-For more information, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
-[Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
+  For more information, see
+  [Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
+  [Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
 
-All other fields are ignored.
+Pub ignores all other fields.
 
-**Note:** [Flutter app]({{site.flutter}}) pubspecs support
-[a few additional fields]({{site.flutter}}/assets-and-images) for managing assets.
+<aside class="alert alert-info" markdown="1">
+**Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
+[a few additional fields]({{site.flutter}}/assets-and-images)
+for managing assets.
+</aside>
 
-## Sample
+
+## Example
 
 A simple but complete pubspec looks something like the following:
 
@@ -87,7 +105,18 @@ dependency_overrides:
     path: ../transmogrify_patch/
 {% endprettify %}
 
-## Name
+
+## Details
+
+This section has more information about most of the pubspec fields.
+
+{% comment %}
+TODO: Consider adding subsections for the remaining fields
+(publish_to, transformers) so we don't have to say "most of".
+{% endcomment %}
+
+
+### Name
 
 Every package needs a name.  It's how other packages refer to yours,
 and how it appears to the world, should you publish it.
@@ -103,7 +132,7 @@ A quick search of packages on
 [pub.dartlang.org](https://pub.dartlang.org/packages)
 to make sure that nothing else is using your name is recommended.
 
-## Version
+### Version
 
 Every package has a version. A version number is required to host your package
 on pub.dartlang.org, but can be omitted for local-only packages. If you omit
@@ -121,7 +150,7 @@ When you select a version, follow [semantic versioning][].
 
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
 
-## Description
+### Description
 
 This is optional for your own personal packages, but if you intend to
 publish your package you must provide a description. This should
@@ -133,7 +162,7 @@ when they [browse for packages](https://pub.dartlang.org/packages).
 It should be simple plain text: no markdown or HTML.
 That's what your README is for.
 
-## Author/Authors
+### Author/Authors
 
 You're encouraged to use these fields to describe the author(s) of your package
 and provide contact information. `author` should be used if your package has a
@@ -151,7 +180,7 @@ authors:
 If anyone uploads your package to pub.dartlang.org, your email address is
 public.
 
-## Homepage
+### Homepage
 
 This should be a URL pointing to the website for your package.
 For [hosted packages](/tools/pub/dependencies#hosted-packages),
@@ -161,7 +190,7 @@ helps users understand where your package is coming from. If nothing else, you
 can always use the URL where you host the source code, such as
 [GitHub](https://github.com).
 
-## Documentation
+### Documentation
 
 Some packages may have a site that hosts documentation separate from the main
 homepage. If your package has that, you can also add a `documentation:` field
@@ -171,7 +200,7 @@ If you specify the `documentation:` field with a blank value,
 documentation is created automatically for you, and is linked to from
 [pub.dartlang.com](https://pub.dartlang.org/).
 
-## Dependencies
+### Dependencies
 
 [Dependencies](/tools/pub/glossary#dependency) are the pubspec's *raison d'être*.
 In this section you list each package that your package needs in order to work.
@@ -186,7 +215,7 @@ a dependency.  You can do so using `dependency_overrides`.
 
 For more information, see [Pub Dependencies](/tools/pub/dependencies).
 
-## Executables
+### Executables
 
 A package may expose one or more of its scripts as executables that
 can be run directly from the command line. To make a script publicly
@@ -213,7 +242,7 @@ If you don't specify the value, it is inferred from the key.
 For more information, see
 [pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
-## SDK constraints
+### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but there
 is another implicit dependency all packages have: the Dart SDK itself.
@@ -245,7 +274,7 @@ For more information, see [Dart 2.0 Updates.](/dart-2.0)
 </aside>
 
 
-### Flutter SDK constraints
+#### Flutter SDK constraints
 
 As of Dart 1.19.0,
 pub supports Flutter SDK constraints under the `environment:` field, like so:
