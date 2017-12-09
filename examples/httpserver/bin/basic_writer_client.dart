@@ -21,11 +21,11 @@ Future main() async {
   };
 
   var request = await new HttpClient()
-      /*1*/ .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt');
-  /*2*/ request.headers.contentType = ContentType.JSON;
-  /*3*/ request.write(JSON.encode(jsonData));
-  /*4*/ HttpClientResponse response = await request.close();
-  /*5*/ await for (var contents in response.transform(UTF8.decoder)) {
+      .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt'); /*1*/
+  request.headers.contentType = ContentType.JSON; /*2*/
+  request.write(JSON.encode(jsonData)); /*3*/
+  HttpClientResponse response = await request.close(); /*4*/
+  await for (var contents in response.transform(UTF8.decoder /*5*/)) {
     print(contents);
   }
 }

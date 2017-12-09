@@ -155,7 +155,7 @@ listening, and responding.
 _Example for this section:_
 [hello_world_server.dart.]({{gh-path}}/bin/hello_world_server.dart)
 
-The first line of code in `main()` uses `HttpServer.bind()` to create an
+The first statement in `main()` uses `HttpServer.bind()` to create an
 [HttpServer][] object and bind it to a host and port.
 
 <?code-excerpt "httpserver/bin/hello_world_server.dart (bind)"?>
@@ -200,8 +200,7 @@ the connection for your server will be refused.
 ### Listening for requests
 
 The server begins listening for HTTP requests using `await for`.
-For each request received, the highlighted code is executed for that
-[HttpRequest][] object.
+For each request received, the code sends a "Hello, world!" response.
 
 <?code-excerpt "httpserver/bin/hello_world_server.dart (listen)"?>
 {% prettify dart %}
@@ -287,13 +286,15 @@ Here's the form HTML from `make_a_guess.html`:
 {% endprettify %}
 <div class="prettify-filename">make_a_guess.html</div>
 
+Here's how the form works:
+
 - The form's `action` attribute is assigned the
   URL to send the request to.
 - The form's `method` attribute defines
   the kind of request, here a `GET`. Other common
   kinds of request include POST, PUT, and DELETE.
-- Any element within the form, like `<select>`, that has a `name` becomes
-  a parameter in the query string.
+- Any element within the form that has a `name`, like the `<select>` element,
+  becomes a parameter in the query string.
 - When pressed, the submit button (`<input type="submit"...>`) formulates
   the request based on the content of the form and sends it.
 
@@ -560,7 +561,7 @@ The `close()` method sends the request to the server
 and returns the second Future, which completes with
 an HttpClientResponse object.
 
-<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|UTF8.\w+/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|UTF8.\w+/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
@@ -576,11 +577,11 @@ Future main() async {
   };
 
   var request = await new HttpClient()
-      [!/*1*/!] .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt');
-  [!/*2*/!] request.headers.contentType = ContentType.JSON;
-  [!/*3*/!] request.write(JSON.encode(jsonData));
-  [!/*4*/!] HttpClientResponse response = await request.close();
-  [!/*5*/!] await for (var contents in response.transform([!UTF8.decoder!])) {
+      .[!post!](InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt'); [!/*1*/!]
+  request.[!headers!].contentType = ContentType.JSON; [!/*2*/!]
+  request.[!write!](JSON.encode(jsonData)); [!/*3*/!]
+  HttpClientResponse response = await request.[!close!](); [!/*4*/!]
+  await for (var contents in response.transform([!UTF8.decoder!] [!/*5*/!])) {
     print(contents);
   }
 }
@@ -603,8 +604,7 @@ Future main() async {
    header.
 
 4. The `close()` method sends the request to the server and, when complete,
-   returns an [HttpClientResponse][] object that's assigned to the `reponse`
-   variable.
+   returns an [HttpClientResponse][] object.
 
 5. The UTF-8 response from the server is decoded. Use a transformer defined in
    the [dart:convert][] library to convert the data into regular Dart string
@@ -623,14 +623,12 @@ for example, the URI has no query string
 * has no state and does not change the state of the server
 * has no length limits
 
-<aside class="alert alert-info" markdown="1">
-  If you would like to see some client code that
-  makes GET requests,
-  check out the code for
-  [number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
-  It's a standalone client for the number thinker server
-  that makes periodic guesses until it guesses correctly.
-</aside>
+The client in this example makes REST-compliant POST requests.
+
+To see client code that makes REST-compliant GET requests,
+look at [number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
+It's a standalone client for the number thinker server
+that makes periodic guesses until it guesses correctly.
 
 ## Handling a POST request in a server {#handling-post}
 
@@ -651,7 +649,7 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
-<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/(contentType\.|contentType !|var json|req.uri|JSON.decode).*/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(jsonData|jsonString|filename) = .*?;/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
@@ -664,16 +662,15 @@ Future main() async {
     HttpResponse response = req.response;
 
     if (req.method == 'POST' &&
-        [!contentType != null && /*1*/!]
-        [!contentType.mimeType == 'application/json') {!]
+        [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
       try {
-        [!var jsonString = await req.transform(UTF8.decoder).join(); /*2*/!]
+        var [!jsonString = await req.transform(UTF8.decoder).join();!] [!/*2*/!]
 
         // Write to a file, get the file name from the URI.
-        var filename = [!req.uri.pathSegments.last; /*3*/!]
+        var [!filename = req.uri.pathSegments.last;!] [!/*3*/!]
         await new File(filename)
             .writeAsString(jsonString, mode: FileMode.WRITE);
-        Map jsonData = [!JSON.decode(jsonString); /*4*/!]
+        Map [!jsonData = JSON.decode(jsonString);!] [!/*4*/!]
         response
           ..statusCode = HttpStatus.OK
           ..write('Wrote data for ${jsonData['name']}.')

@@ -18,8 +18,7 @@ Future main() async {
     HttpResponse response = req.response;
 
     if (req.method == 'POST' &&
-        contentType != null && /*1*/
-        contentType.mimeType == 'application/json') {
+        contentType?.mimeType == 'application/json' /*1*/) {
       try {
         var jsonString = await req.transform(UTF8.decoder).join(); /*2*/
 
