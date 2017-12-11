@@ -934,10 +934,10 @@ You **must** provide your own certificates for your servers.
 import 'dart:async';
 import 'dart:io';
 
+String certificateChain = 'server_chain.pem';
+String serverKey = 'server_key.pem';
+
 Future main() async {
-  var certificateChain =
-      Platform.script.resolve('server_chain.pem').toFilePath();
-  var serverKey = Platform.script.resolve('server_key.pem').toFilePath();
   [!var serverContext = new SecurityContext(); /*1*/!]
   [!serverContext.useCertificateChain(certificateChain); /*2*/!]
   [!serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/!]

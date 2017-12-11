@@ -6,6 +6,7 @@ import '../bin/basic_file_server.dart' as basic_file_server;
 import '../bin/basic_writer_client.dart' as basic_writer_client;
 import '../bin/basic_writer_server.dart' as basic_writer_server;
 import '../bin/hello_world_server.dart' as hello_world_server;
+import '../bin/hello_world_server_secure.dart' as hello_world_server_secure;
 import '../bin/mini_file_server.dart' as mini_file_server;
 import '../bin/number_guesser.dart' as number_guesser;
 import '../bin/number_thinker.dart' as number_thinker;
@@ -166,20 +167,32 @@ void main() {
     ]);
   });
 
-//  test('hello_world_server_secure', () {
-//    const port = 4047;
-//
-//    _test() async {
-//      expect(await getUrl('localhost', port), 'Hello, world!');
-//    }
-//
-//    expect(
-//        () => Future.any([
-//              hello_world_server.main(),
-//              _test(),
-//            ]),
-//        prints(startsWith('Listening on localhost:$port')));
-//  });
+  test('hello_world_server_secure', () {
+    const port = 4047;
+
+    _server() {
+      hello_world_server_secure.certificateChain =
+          'bin/' + hello_world_server_secure.certificateChain;
+      hello_world_server_secure.serverKey =
+          'bin/' + hello_world_server_secure.serverKey;
+      return hello_world_server_secure.main();
+    }
+
+    _test() async {
+      final client = new HttpClient();
+      final url = new Uri.https('localhost:$port', '');
+      final response = await client.getUrl(url);
+      // expect(..., 'Hello, world!');
+      await response.close();
+    }
+
+    expect(
+        () => Future.any([
+              _server(),
+              _test(),
+            ]),
+        prints(startsWith('Listening on localhost:$port')));
+  }, skip: 'https://github.com/dart-lang/site-www/issues/468');
 }
 
 Future<String> getUrl([
