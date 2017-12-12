@@ -377,3 +377,8 @@ body.homepage .get-started-section {
 		display: none;
 	}
 }
+
+/* Overwrite bootstrap: don't wrap code */
+pre code {
+  white-space: pre;
+}

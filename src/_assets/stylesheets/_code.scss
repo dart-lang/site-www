@@ -76,3 +76,35 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 { background-color: #fefefe; }
+
+//
+// Rouge / pygments classes (https://github.com/jneen/rouge)
+//
+
+@mixin console-base {
+  background: $grey-900;
+  color: $light-green-A700;
+}
+.language-console .highlight {
+  @include console-base;
+}
+
+// `terminal` is like `console` with prompts and output colored differently
+.language-terminal .highlight {
+  @include console-base;
+  .gp { color: $grey-500; } /* Generic.Prompt */
+  .nb { color: $light-green-600; } /* Name.Builtin */
+  .go { color: white; } /* Generic.Output */
+}
+
+// Match prettifier classes defined above.
+// TODO: complete this to get proper highlighting for Dart under Rouge.
+.highlight {
+  .s, .s1, .s2 { @extend .str; } /* Literal.String.* */
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { @extend .kwd; } /* Keyword.* */
+  .p { @extend .pun; } /* Punctuation */
+  .c, .c1, .cm { @extend .com; } /* Comment */
+  .l { @extend .lit; } /* Literal */
+  .o { @extend .opn; } /* Operator */
+  .n { @extend .typ; } /* Name */
+}
