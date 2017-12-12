@@ -16,8 +16,7 @@ Future main() async {
 
   var staticFiles = new VirtualDirectory(pathToBuild);
   staticFiles.allowDirectoryListing = true; /*1*/
-  staticFiles.directoryHandler = (dir, request) {
-    /*2*/
+  staticFiles.directoryHandler = (dir, request) /*2*/ {
     var indexUri = new Uri.file(dir.path).resolve('index.html');
     staticFiles.serveFile(new File(indexUri.toFilePath()), request); /*3*/
   };
