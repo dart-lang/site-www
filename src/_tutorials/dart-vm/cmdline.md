@@ -78,14 +78,12 @@ void main() {
 
 <li markdown="1">
 In the directory that contains the file you just created,
-run the program with the command as shown by the highlighted text.
+run the program with the command as shown next.
 
-{% prettify bash %}
-% [[highlight]]dart helloworld.dart[[/highlight]]
+```terminal
+$ dart helloworld.dart
 Hello, World!
-%
-{% endprettify %}
-
+```
 </li>
 </ol>
 
@@ -349,12 +347,11 @@ In this case,
 the user types in lines of text and the program copies them to stdout.
 The user signals the end of input by typing &lt;ctl-d&gt;.
 
-{% prettify bash %}
-$ [[highlight]]dart dcat.dart[[/highlight]]
-[[highlight]]The quick brown fox jumped over the lazy dog.[[/highlight]]
+```terminal
+$ dart dcat.dart
 The quick brown fox jumped over the lazy dog.
-...
-{% endprettify %}
+The quick brown fox jumped over the lazy dog.
+```
 
 ## Getting info about a file
 

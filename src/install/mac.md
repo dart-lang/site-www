@@ -19,17 +19,17 @@ documentation generator, package manager, and the core libraries.
 
 [Install homebrew](http://brew.sh/), and then run:
 
-{% prettify shell %}
+```terminal
 $ brew tap dart-lang/dart
 $ brew install dart
-{% endprettify %}
+```
 
 If you use Dart for web development work, you should also install Dartium and Content Shell:
 
-{% prettify shell %}
+```terminal
 $ brew tap dart-lang/dart
 $ brew install dart --with-content-shell --with-dartium
-{% endprettify %}
+```
 
 {% include dartium-2.0.html %}
 
@@ -42,9 +42,9 @@ update-for-dart-2
 To choose the dev channel version of whatever Dart software you install,
 use `--devel`:
 
-{% prettify shell %}
+```terminal
 $ brew install dart --devel
-{% endprettify %}
+```
 
 You can use any combination of the
 `--devel`,
@@ -62,11 +62,11 @@ dev channel releases are not as heavily tested as the stable release.
 
 To update Dart once you've installed it using Homebrew, run:
 
-{% prettify shell %}
+```terminal
 $ brew update
 $ brew upgrade dart
 $ brew cleanup dart
-{% endprettify %}
+```
 
 {% comment %}
 PENDING: clarify what arguments you should supply,
@@ -100,15 +100,15 @@ as your home directory.
    For example, if you want Homebrew and Dart to live under
    `~/homebrew`, go to `~`.
 
-   {% prettify shell %}
+   ```terminal
    $ cd ~    # The directory that will contain Homebrew and Dart
-   {% endprettify %}
+   ```
 
 2. Clone Homebrew. This creates a `homebrew` directory.
 
-   {% prettify shell %}
+   ```terminal
    $ git clone https://github.com/Homebrew/homebrew.git
-   {% endprettify %}
+   ```
 
 3. Add the `homebrew/bin` directory to your PATH.
 

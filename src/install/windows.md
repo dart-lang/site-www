@@ -49,10 +49,10 @@ update-for-dart-2
 
 If you're working on server-side Dart, all you need is the `dart-sdk`:
 
-{% prettify shell %}
-choco install dart-sdk -version <version>
-choco install dartium  -version <version>
-{% endprettify %}
+```terminal
+> choco install dart-sdk -version <version>
+> choco install dartium  -version <version>
+```
 
 The current stable version is
 <span class="editor-build-rev-stable">[calculating]</span>.
@@ -61,10 +61,10 @@ The current stable version is
 To choose the dev channel version,
 use `-dev<dev-version>`. For example:
 
-{% prettify shell %}
-choco install -y dart-sdk -version 1.12.0-dev.2.2
-choco install -y dartium  -version 1.12.0-dev.2.2
-{% endprettify %}
+```terminal
+> choco install -y dart-sdk -version 1.12.0-dev.2.2
+> choco install -y dartium  -version 1.12.0-dev.2.2
+```
 {% endcomment %}
 
 For more information on Chocolatey support for Dart, see:

@@ -98,11 +98,11 @@ with the string `Hello, world!`
 At the command line, run the `hello_world_server.dart` script.
 You will see the following:
 
-{% prettify shell %}
+```terminal
 $ cd httpserver/bin
 $ dart hello_world_server.dart
 listening on localhost, port 4040
-{% endprettify %}
+```
 
 <i class="material-icons">open_in_browser</i>
 **In any browser, visit** [localhost:4040](localhost:4040).
@@ -236,11 +236,11 @@ that you can use to guess the number.
    At the command line, run the `number_thinker.dart` server.
    You should see something similar to the following:
 
-   {% prettify dart %}
+   ```terminal
    $ cd httpserver/bin
    $ dart number_thinker.dart
    I'm thinking of a number: 6
-   {% endprettify %}
+   ```
 
 2. **Launch the web server**
 
@@ -527,24 +527,24 @@ Run the server and client on the command line.
 
 1. First the server:
 
-   {% prettify bash %}
+   ```terminal
    $ cd httpserver/bin
    $ dart basic_writer_server.dart
-   {% endprettify %}
+   ```
 
 2. Then, run the client in a new window:
 
-   {% prettify bash %}
+   ```terminal
    $ cd httpserver/bin
    $ dart basic_writer_client.dart
    Wrote data for Han Solo.
-   {% endprettify %}
+   ```
 
 3. The server writes the data to `file.txt`:
 
-   {% prettify bash %}
+   ```json
    {"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
-   {% endprettify %}
+   ```
 
 <hr>
 
@@ -762,10 +762,10 @@ It responds to all requests by returning the contents of the
 
 1. Run the server on the command line:
 
-   {% prettify shell %}
+   ```terminal
    $ cd httpserver/bin
    $ dart mini_file_server.dart
-   {% endprettify %}
+   ```
 
 2. Type [localhost:4044](localhost:4044) into the browser.
    The server displays an HTML file:
@@ -824,10 +824,10 @@ uses the [http_server][] package.
 
 1. Run the server on the command line:
 
-   {% prettify bash %}
+   ```terminal
    $ cd httpserver/bin
    $ dart basic_file_server.dart
-   {% endprettify %}
+   ```
 
 2. Type [localhost:4046](localhost:4046) into the browser.
    The server displays the same index.html file as the previous:
