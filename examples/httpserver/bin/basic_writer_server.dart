@@ -6,41 +6,41 @@
 // Receives JSON encoded data in a POST request and writes it to
 // the file specified in the URI.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
 import 'dart:convert';
 
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+
 Future main() async {
-  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
+  var server = await HttpServer.bind(_host, 4049);
   await for (var req in server) {
     ContentType contentType = req.headers.contentType;
+    HttpResponse response = req.response;
 
     if (req.method == 'POST' &&
-        contentType != null &&
-        contentType.mimeType == 'application/json') {
+        contentType?.mimeType == 'application/json' /*1*/) {
       try {
-        var jsonString = await req.transform(UTF8.decoder).join();
-
-        // Write to a file, get the file name from the URI.
-        var filename = req.uri.pathSegments.last;
-        await new File(filename)
-            .writeAsString(jsonString, mode: FileMode.WRITE);
-        Map jsonData = JSON.decode(jsonString);
+        String content =
+            await req.transform(UTF8.decoder).join(); /*2*/
+        Map json = JSON.decode(content); /*3*/
+        var fileName = req.uri.pathSegments.last; /*4*/
+        await new File(fileName)
+            .writeAsString(content, mode: FileMode.WRITE);
         req.response
           ..statusCode = HttpStatus.OK
-          ..write('Wrote data for ${jsonData['name']}.')
-          ..close();
+          ..write('Wrote data for ${json['name']}.');
       } catch (e) {
-        req.response
+        response
           ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
-          ..write("Exception during file I/O: $e.")
-          ..close();
+          ..write("Exception during file I/O: $e.");
       }
     } else {
-      req.response
+      response
         ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-        ..write("Unsupported request: ${req.method}.")
-        ..close();
+        ..write("Unsupported request: ${req.method}.");
     }
+    response.close();
   }
 }

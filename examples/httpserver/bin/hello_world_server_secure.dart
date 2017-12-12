@@ -10,20 +10,25 @@
 // server_authority.pem certificate to your test browser as a trusted
 // authority to avoid this message, but that may make that browser less secure.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
+
+String certificateChain = 'server_chain.pem';
+String serverKey = 'server_key.pem';
 
 Future main() async {
-  var certificateChain =
-      Platform.script.resolve('server_chain.pem').toFilePath();
-  var serverKey = Platform.script.resolve('server_key.pem').toFilePath();
-  var serverContext = new SecurityContext();
-  serverContext.useCertificateChain(certificateChain);
-  serverContext.usePrivateKey(serverKey, password: 'dartdart');
+  var serverContext = new SecurityContext(); /*1*/
+  serverContext.useCertificateChain(certificateChain); /*2*/
+  serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/
 
-  var requests = await HttpServer.bindSecure('localhost', 4047, serverContext);
-  print('listening');
-  await for (HttpRequest request in requests) {
+  var server = await HttpServer.bindSecure(
+    'localhost',
+    4047,
+    serverContext, /*4*/
+  );
+  print('Listening on localhost:${server.port}');
+  await for (HttpRequest request in server) {
     request.response
       ..write('Hello, world!')
       ..close();

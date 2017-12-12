@@ -7,8 +7,11 @@
 // For a similar server that uses http_server package
 // see basic_file_server.dart.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
+
+File targetFile = new File('index.html');
 
 Future main() async {
   var server;
@@ -21,18 +24,17 @@ Future main() async {
   }
 
   await for (HttpRequest req in server) {
-    var file = new File('index.html');
-    if (await file.exists()) {
-      print("Serving index.html.");
+    if (await targetFile.exists()) {
+      print("Serving ${targetFile.path}.");
       req.response.headers.contentType = ContentType.HTML;
       try {
-        await file.openRead().pipe(req.response);
+        await targetFile.openRead().pipe(req.response);
       } catch (e) {
         print("Couldn't read file: $e");
         exit(-1);
       }
     } else {
-      print("Can't open index.html.");
+      print("Can't open ${targetFile.path}.");
       req.response
         ..statusCode = HttpStatus.NOT_FOUND
         ..close();

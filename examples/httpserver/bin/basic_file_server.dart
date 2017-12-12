@@ -8,9 +8,12 @@
 // as this script.
 // Also see static_file_server.dart.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
 import 'package:http_server/http_server.dart';
+
+File targetFile = new File('index.html');
 
 Future main() async {
   VirtualDirectory staticFiles = new VirtualDirectory('.');
@@ -18,6 +21,6 @@ Future main() async {
   var serverRequests =
       await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
   await for (var request in serverRequests) {
-    staticFiles.serveFile(new File('index.html'), request);
+    staticFiles.serveFile(targetFile, request);
   }
 }

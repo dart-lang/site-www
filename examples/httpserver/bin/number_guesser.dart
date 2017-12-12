@@ -4,34 +4,45 @@
 
 // Automatic client to number_thinker.dart.
 
-import 'dart:io';
-import 'dart:convert';
-import 'dart:math';
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
+Duration oneSecond = const Duration(seconds: 1);
 Random myRandomGenerator = new Random();
-HttpClient client;
+HttpClient client = new HttpClient();
 
-void main() {
-  client = new HttpClient();
-  new Timer.periodic(new Duration(seconds: 2), makeGuess);
+Future main() async {
+  // Delay successive guesses by oneSecond.
+  final guesses = new Stream.periodic(oneSecond, (_) => guess());
+
+  // Guess until we get it right
+  await for (final guess in guesses) {
+    if (await guess) break;
+  }
 }
 
-Future makeGuess(_) async {
-  var aRandomNumber = myRandomGenerator.nextInt(10);
+Future<bool> guess() {
+  final guess = myRandomGenerator.nextInt(10);
+  return checkGuess(guess);
+}
 
-  HttpClientRequest request = await client.get(
-      InternetAddress.LOOPBACK_IP_V4.host, 4041, '/?q=$aRandomNumber');
-  print('Guess is $aRandomNumber.');
+Future checkGuess(int guess) async {
+  bool isGoodGuess = false;
+  HttpClientRequest request =
+      await client.get(InternetAddress.LOOPBACK_IP_V4.host, 4041, '/?q=$guess');
+  print('Guess is $guess.');
   HttpClientResponse response = await request.close();
   if (response.statusCode == HttpStatus.OK) {
     var contents = await response.transform(UTF8.decoder).join();
     if (contents.startsWith('true')) {
+      isGoodGuess = true;
       client.close();
-      print('yay');
-      exit(0);
+      print('Good guess, yay!');
     } else {
-      print('boo');
+      print('Bad guess, trying again.');
     }
   }
+  return isGoodGuess;
 }

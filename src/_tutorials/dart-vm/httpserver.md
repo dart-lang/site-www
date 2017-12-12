@@ -5,7 +5,6 @@ description: Communicate over the internet
 prevpage:
   url: /tutorials/dart-vm/cmdline
   title: "Dart-VM: Write Command-Line Apps"
-css: ["httpserver.css"]
 ---
 {% capture gh-path -%}
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
@@ -96,26 +95,20 @@ _Example file for this section:_
 Let's begin with a small server that responds to all requests
 with the string `Hello, world!`
 
-<ul>
-
-  <li markdown="1">
 At the command line, run the `hello_world_server.dart` script.
 You will see the following:
 
-{% prettify bash %}
+{% prettify shell %}
 $ cd httpserver/bin
 $ dart hello_world_server.dart
 listening on localhost, port 4040
 {% endprettify %}
-  </li>
 
-  <li markdown="1">
-Then, in any browser, enter [localhost:4040](localhost:4040).
+<i class="material-icons">open_in_browser</i>
+**In any browser, visit** [localhost:4040](localhost:4040).
 The browser displays `Hello, world!`
 
 ![The response from the hello world server.](/tutorials/dart-vm/images/hello_world_response.png)
-  </li>
-</ul>
 
 In this case, the server is a Dart program
 and the client is the browser you used.
@@ -128,21 +121,26 @@ In the code for the hello world server,
 an HTTP server binds to a host and port,
 listens for HTTP requests, and writes a response.
 Note that the program imports
-the `dart:io` library, which contains the HTTP-related
+the [dart:io][] library, which contains the HTTP-related
 classes both for server-side programs and for
 client-side programs (but not for web apps).
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart" replace="/.*?dart:io.*/[!$&!]/g"?>
 {% prettify dart %}
-[[highlight]]import 'dart:io';[[/highlight]]
+[!import 'dart:io';!]
+import 'dart:async';
 
-main() async {
-  var requestServer =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4040);
-  print('listening on localhost, port ${requestServer.port}');
+Future main() async {
+  var server = await HttpServer.bind(
+    InternetAddress.LOOPBACK_IP_V4,
+    4040,
+  );
+  print('Listening on localhost:${server.port}');
 
-  await for (HttpRequest request in requestServer) {
-    request.response..write('Hello, world!')
-                    ..close();
+  await for (HttpRequest request in server) {
+    request.response
+      ..write('Hello, world!')
+      ..close();
   }
 }
 {% endprettify %}
@@ -154,21 +152,22 @@ listening, and responding.
 
 ## Binding a server to a host and port {#binding}
 
-_Example for this section: hello_world_server.dart._
+_Example for this section:_
+[hello_world_server.dart.]({{gh-path}}/bin/hello_world_server.dart)
 
-The first line of code in `main()` uses `HttpServer.bind()` to create an
+The first statement in `main()` uses `HttpServer.bind()` to create an
 [HttpServer][] object and bind it to a host and port.
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart (bind)"?>
 {% prettify dart %}
-var [[highlight]]requestServer[[/highlight]] =
-    await HttpServer.bind([[highlight]]InternetAddress.LOOPBACK_IP_V4, 4040[[/highlight]]);
-...
+var server = await HttpServer.bind(
+  InternetAddress.LOOPBACK_IP_V4,
+  4040,
+);
 {% endprettify %}
 <div class="prettify-filename">hello_world_server.dart</div>
 
 The code uses `await` to call the `bind` method asynchronously.
-When the bind is successful, the new HttpServer object is assigned
-to `requestServer`.
 
 ### Hostname
 The first parameter of `bind()` specifies the hostname.
@@ -201,20 +200,19 @@ the connection for your server will be refused.
 ### Listening for requests
 
 The server begins listening for HTTP requests using `await for`.
-For each request received, the highlighted code is executed for that
-[HttpRequest][] object.
+For each request received, the code sends a "Hello, world!" response.
 
+<?code-excerpt "httpserver/bin/hello_world_server.dart (listen)"?>
 {% prettify dart %}
-...
-await for (HttpRequest request in requestServer) {
-  [[highlight]]request.response..write('Hello, world!')[[/highlight]]
-                  [[highlight]]..close();[[/highlight]]
+await for (HttpRequest request in server) {
+  request.response
+    ..write('Hello, world!')
+    ..close();
 }
-...
 {% endprettify %}
 <div class="prettify-filename">hello_world_server.dart</div>
 
-You'll learn more about what the HttpRequest object contains
+You'll learn more about what the [HttpRequest][] object contains
 and how to write the response in the section
 [Listening for and handling requests](#httprequest-object).
 But first, let's look at one way a client generates a request.
@@ -271,38 +269,34 @@ The form also specifies the URL, which includes the port number,
 and the kind of request (the _request method_).
 It might also include elements that build a query string.
 
-Here's the HTML code for the form in make_a_guess.html:
+Here's the form HTML from `make_a_guess.html`:
 
+<?code-excerpt "httpserver/web/make_a_guess.html (form)" replace="/(action|method|name|type)=(.).*?\2/[!$&!]/g"?>
 {% prettify html %}
-[[note]]1[[/note]] <form [[highlight]]action="http://localhost:4041"[[/highlight]]
-[[note]]2[[/note]]       [[highlight]]method="GET"[[/highlight]]>
-
-[[note]]3[[/note]]   <select [[highlight]]name="q"[[/highlight]]>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ...
-        <option value="9">9</option>
-      </select>
-[[note]]4[[/note]]   <input [[highlight]]type="submit"[[/highlight]] value="Guess">
-    </form>
+<form [!action="http://localhost:4041"!] [!method="GET"!]>
+  <select [!name="q"!]>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <!-- ··· -->
+    <option value="9">9</option>
+  </select>
+  <input [!type="submit"!] value="Guess">
+</form>
 {% endprettify %}
 <div class="prettify-filename">make_a_guess.html</div>
 
-<span class="code-note">1</span>
-URL to send the request to.
+Here's how the form works:
 
-<span class="code-note">2</span>
-The kind of request, here a `GET` request. Other common
-kinds of requests include POST, PUT, and DELETE.
-
-<span class="code-note">3</span>
-Any element within the form that has a name becomes
-a parameter in the query string.
-
-<span class="code-note">4</span>
-When pressed, the submit button formulates
-the request based on the content of the form and sends it.
+- The form's `action` attribute is assigned the
+  URL to send the request to.
+- The form's `method` attribute defines
+  the kind of request, here a `GET`. Other common
+  kinds of request include POST, PUT, and DELETE.
+- Any element within the form that has a `name`, like the `<select>` element,
+  becomes a parameter in the query string.
+- When pressed, the submit button (`<input type="submit"...>`) formulates
+  the request based on the content of the form and sends it.
 
 ### A RESTful GET request
 
@@ -335,35 +329,40 @@ Here, the top-level `handleRequest()` method is called for each
 request received. Because HttpServer implements [Stream,][Stream]
 you can use `await for` to process the requests.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (main)" replace="/handleRequest/[!$&!]/g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-int myNumber = new Random().nextInt(10);
+Random intGenerator = new Random();
+int myNumber = intGenerator.nextInt(10);
 
-main() async {
+Future main() async {
   print("I'm thinking of a number: $myNumber");
 
-  HttpServer requestServer =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4041);
-  await for (var request in requestServer) {
-    [[highlight]]handleRequest[[/highlight]](request);
+  HttpServer server = await HttpServer.bind(
+    InternetAddress.LOOPBACK_IP_V4,
+    4041,
+  );
+  await for (var request in server) {
+    [!handleRequest!](request);
   }
 }
-...
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
 When a `GET` request arrives, the `handleRequest()` method calls
 `handleGet()` to process the request.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (handleRequest)" replace="/handleGet/[!$&!]/g"?>
 {% prettify dart %}
 void handleRequest(HttpRequest request) {
   try {
     if (request.method == 'GET') {
-      [[highlight]]handleGet[[/highlight]](request);
+      [!handleGet!](request);
     } else {
-      ...
+      // ···
     }
   } catch (e) {
     print('Exception in handleRequest: $e');
@@ -373,13 +372,13 @@ void handleRequest(HttpRequest request) {
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
-An HttpRequest object has many properties that provide
+An [HttpRequest][] object has many properties that provide
 information about the request.
 The following table lists some useful properties:
 
 | Property | Information |
 |---|---|
-| `method` | A String: 'GET', 'POST', 'PUT', and so on. |
+| `method` | One of `'GET'`, `'POST'`, `'PUT'`, and so on. |
 | `uri` | A  [Uri][] object: scheme, host, port, query string, and other information about the requested resource. |
 | `response` | An [HttpResponse][] object: where the server writes its response. |
 | `headers` | An [HttpHeaders][] object: the headers for the request, including [ContentType,][ContentType] content length, date, and so on. |
@@ -391,13 +390,15 @@ The code below from the number thinker example uses the HttpRequest `method`
 property to determine what kind of request has been received.
 This server handles only GET requests.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (request-method)" replace="/handleGet/[!$&!]/g"?>
 {% prettify dart %}
 if (request.method == 'GET') {
-  [[highlight]]handleGet[[/highlight]](request);
+  [!handleGet!](request);
 } else {
-  request.response..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-                  ..write('Unsupported request: ${request.method}.')
-                  ..close();
+  request.response
+    ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+    ..write('Unsupported request: ${request.method}.')
+    ..close();
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -409,10 +410,11 @@ which simply requests data from the specified resource.
 It can send a minimal amount of data along with the request
 through a query string attached to the URI.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (uri)" replace="/request.uri/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  var guess = [[highlight]]request.uri[[/highlight]].queryParameters['q'];
-  ...
+  final guess = [!request.uri!].queryParameters['q'];
+  // ···
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -433,11 +435,13 @@ Later in the code,
 to indicate that the request was successful and the response is complete,
 the number thinker server sets the HttpResponse status code to `HttpStatus.OK`.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (statusCode)" replace="/response.statusCode.*?;/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  var guess = request.uri.queryParameters['q'];
-  [[highlight]]request.response.statusCode = HttpStatus.OK[[/highlight]];
-  ...
+  final guess = request.uri.queryParameters['q'];
+  final response = request.response;
+  [!response.statusCode = HttpStatus.OK;!]
+  // ···
 }
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
@@ -452,8 +456,8 @@ the HttpResponse object has other useful properties:
 
 | Property | Information |
 |---|---|
-| `contentLength` | The length of the response. -1 means the length is not known in advance. |
-| `cookies` | A List of [Cookie][]s to set in the client. |
+| `contentLength` | The length of the response; -1 means the length is not known in advance. |
+| `cookies` | A List of [Cookies][Cookie] to set in the client. |
 | `encoding` | The [Encoding][] used when writing strings, like JSON and UTF-8. |
 | `headers` | The response headers, an [HttpHeaders][] object. |
 {: .table}
@@ -472,14 +476,16 @@ Close the object when the response is complete.
 Closing the HttpResponse object
 sends the data back to the client.
 
+<?code-excerpt "httpserver/bin/number_thinker.dart (write)" replace="/\.\..*/[!$&!]/g"?>
 {% prettify dart %}
 void handleGet(HttpRequest request) {
-  ...
+  // ···
   if (guess == myNumber.toString()) {
-    [[highlight]]request.response..writeln('true')[[/highlight]]
-                    [[highlight]]..writeln("I'm thinking of another number.")[[/highlight]]
-                    [[highlight]]..close();[[/highlight]]
-    ...
+    response
+      [!..writeln('true')!]
+      [!..writeln("I'm thinking of another number.")!]
+      [!..close();!]
+    // ···
   }
 }
 {% endprettify %}
@@ -555,66 +561,55 @@ The `close()` method sends the request to the server
 and returns the second Future, which completes with
 an HttpClientResponse object.
 
+<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|UTF8.\w+/[!$&!]/g"?>
 {% prettify dart %}
-   import 'dart:io';
-   import 'dart:convert' show UTF8, JSON;
+import 'dart:async';
+import 'dart:io';
+import 'dart:convert' show UTF8, JSON;
 
-   main() async {
-     Map jsonData = {
-       'name':     'Han Solo',
-       'job':      'reluctant hero',
-       'BFF':      'Chewbacca',
-       'ship':     'Millennium Falcon',
-       'weakness': 'smuggling debts'
-     };
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String path = 'file.txt';
 
-[[note]]1[[/note]]  [[highlight]]var request = await[[/highlight]] new HttpClient().post(
-[[note]]2[[/note]]      [[highlight]]InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');[[/highlight]]
-[[note]]3[[/note]]  [[highlight]]request.headers.contentType = ContentType.JSON;[[/highlight]]
-[[note]]4[[/note]]  [[highlight]]request.write(JSON.encode(jsonData));[[/highlight]]
-[[note]]5[[/note]]  [[highlight]]HttpClientResponse response = await request.close()[[/highlight]];
-[[note]]6[[/note]]  await for (var contents in response.transform([[highlight]]UTF8.decoder[[/highlight]])) {
-       print(contents);
-    }
-  }
+Map jsonData = {
+  'name': 'Han Solo',
+  'job': 'reluctant hero',
+  'BFF': 'Chewbacca',
+  'ship': 'Millennium Falcon',
+  'weakness': 'smuggling debts'
+};
+
+Future main() async {
+  HttpClientRequest request =
+      await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
+        ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
+        ..[!write!](JSON.encode(jsonData)); [!/*3*/!]
+  HttpClientResponse response = await request.[!close!](); [!/*4*/!]
+  await response.transform([!UTF8.decoder!] [!/*5*/!]).forEach(print);
+}
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
 
-<span class="code-note">1</span>
-When the `post()` connection succeeds (and execution resumes after
-the await expression), the returned [HttpClientRequest][]
-object is assigned to the `request` variable.
+{:.code-notes}
+1. The `post()` method requires the host, port, and the path to the requested
+   resource. In addition to `post()`, the [HttpClient][] class provides
+   functions for making other kinds of requests, including `postUrl()`,
+   `get()`, and `open()`.
 
-<span class="code-note">2</span>
-The `post()` method requires the host, port, and the path to the requested
-resource.
-In addition to `post()`, the HttpClient class provides functions
-for making other kinds of
-requests, including `postUrl()`, `get()`, and `open()`.
+2. An [HttpClientRequest][] object has an [HttpHeaders][] object, which
+   contains the request headers. For some headers, like `contentType`,
+   HttpHeaders has a property specific to that header. For other headers, use
+   the `set()` method to put the header in the HttpHeaders object.
 
-<span class="code-note">3</span>
-An HttpClientRequest object has an HttpHeaders object,
-which contains the request headers.
-For some headers,
-like `contentType`,
-HttpHeaders has a property specific to that header.
-For other headers, use the `set()` method to
-put the header in the HttpHeaders object.
+3. The client writes data to the request object using `write()`. The encoding,
+   JSON in this example, matches the type specified in the [ContentType][]
+   header.
 
-<span class="code-note">4</span>
-The client writes data to the request object using `write()`.
-The encoding, JSON in this example,
-matches the type specified in the ContentType header.
+4. The `close()` method sends the request to the server and, when complete,
+   returns an [HttpClientResponse][] object.
 
-<span class="code-note">5</span>
-The `close()` method sends the request to the server and, when complete,
-returns an [HttpClientResponse][] object
-that's assigned to the `reponse` variable.
-
-<span class="code-note">6</span>
-The response from the server is encoded in UTF-8.
-Use a transformer defined in the `dart:convert` library
-to convert the data into regular Dart string format.
+5. The UTF-8 response from the server is decoded. Use a transformer defined in
+   the [dart:convert][] library to convert the data into regular Dart string
+   format.
 
 ### A RESTful POST request
 
@@ -629,11 +624,10 @@ for example, the URI has no query string
 * has no state and does not change the state of the server
 * has no length limits
 
-<strong>Bonus code:</strong>
-If you would like to see some client code that
-makes GET requests,
-check out the code for
-[number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
+The client in this example makes REST-compliant POST requests.
+
+To see client code that makes REST-compliant GET requests,
+look at [number_guesser.dart.]({{gh-path}}/bin/number_guesser.dart)
 It's a standalone client for the number thinker server
 that makes periodic guesses until it guesses correctly.
 
@@ -656,66 +650,65 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|json) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
 {% prettify dart %}
-  import 'dart:io';
-  import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
+import 'dart:convert';
 
-  main() async {
-    var server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
-    await for (var req in server) {
-      ContentType contentType = req.headers.contentType;
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
 
-      if (req.method == 'POST' &&
-[[note]]1[[/note]]       [[highlight]]contentType != null &&[[/highlight]]
-          [[highlight]]contentType.mimeType == 'application/json'[[/highlight]]) {
-        try {
-[[note]]2[[/note]]       [[highlight]]var jsonString = await req.transform(UTF8.decoder).join();[[/highlight]]
+Future main() async {
+  var server = await HttpServer.bind(_host, 4049);
+  await for (var req in server) {
+    ContentType contentType = req.headers.contentType;
+    HttpResponse response = req.response;
 
-          // Write to a file, get the file name from the URI.
-[[note]]3[[/note]]       var filename = [[highlight]]req.uri.pathSegments.last;[[/highlight]]
-          await new File(filename).writeAsString(jsonString,
-              mode: FileMode.WRITE);
-[[note]]4[[/note]]       Map jsonData = [[highlight]]JSON.decode(jsonString);[[/highlight]]
-          req.response..statusCode = HttpStatus.OK
-                      ..write('Wrote data for ${jsonData['name']}.')
-                      ..close();
-        } catch (e) {
-          req.response..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
-                      ..write("Exception during file I/O: $e.")
-                      ..close();
-        }
-      } else {
-        req.response..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-                    ..write("Unsupported request: ${req.method}.")
-                    ..close();
+    if (req.method == 'POST' &&
+        [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
+      try {
+        String content =
+            await req.transform(UTF8.decoder).join(); [!/*2*/!]
+        Map [!json = JSON.decode(content)!]; [!/*3*/!]
+        var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
+        await new File(fileName)
+            .writeAsString(content, mode: FileMode.WRITE);
+        req.response
+          ..statusCode = HttpStatus.OK
+          ..write('Wrote data for ${json['name']}.');
+      } catch (e) {
+        response
+          ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+          ..write("Exception during file I/O: $e.");
       }
+    } else {
+      response
+        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..write("Unsupported request: ${req.method}.");
     }
+    response.close();
   }
+}
 {% endprettify %}
 <div class="prettify-filename">basic_writer_server.dart</div>
 
-<span class="code-note">1</span>
-The request object has an HttpHeaders object.
-Recall that the client set the `contentType` header to JSON (application/json).
-This server rejects requests that are not JSON-encoded.
+{:.code-notes}
+1. The request has an HttpHeaders object. Recall that the client set the
+   `contentType` header to JSON (application/json). This server rejects
+   requests that are not JSON-encoded.
 
-<span class="code-note">2</span>
-A POST request has no limit on the amount of data it can send
-and the data might be sent in multiple chunks.
-Furthermore, JSON is UTF-8, and UTF-8 characters can be encoded over
-multiple bytes.
-The join() method puts the chunks together.
+2. A POST request has no limit on the amount of data it can send and the data
+   might be sent in multiple chunks. Furthermore, JSON is UTF-8, and UTF-8
+   characters can be encoded over multiple bytes. The join() method puts the
+   chunks together.
 
-<span class="code-note">3</span>
-The URL for the request is [localhost:4049/file.txt](localhost:4049/file.txt).
-The code `req.uri.pathSegments.last` extracts the file name
-from the URI: `file.txt`.
+3. The data sent by the client is JSON formatted. The server decodes it using
+   the JSON codec available in the [dart:convert][] library.
 
-<span class="code-note">4</span>
-The data sent by the client is JSON formatted.
-The server decodes it using the JSON codec available in the
-[dart:convert][] library.
+4. The URL for the request is
+   [localhost:4049/file.txt](localhost:4049/file.txt). The code
+   `req.uri.pathSegments.last` extracts the file name from the URI:
+   `file.txt`.
 
 #### A note about CORS headers
 
@@ -727,11 +720,12 @@ allows POST and OPTIONS requests from any origin.
 Use CORS headers with caution,
 because they can open your network up to security risks.
 
+<?code-excerpt "httpserver/bin/note_server.dart (addCorsHeaders)"?>
 {% prettify dart %}
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
-  response.headers.add(
-      'Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.headers
+      .add('Access-Control-Allow-Methods', 'POST, OPTIONS');
   response.headers.add('Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept');
 }
@@ -780,35 +774,38 @@ It responds to all requests by returning the contents of the
 
 Here's the code for mini file server:
 
+<?code-excerpt "httpserver/bin/mini_file_server.dart"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 
-main() async {
+File targetFile = new File('index.html');
+
+Future main() async {
   var server;
 
   try {
-    server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
+    server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
   } catch (e) {
     print("Couldn't bind to port 4044: $e");
     exit(-1);
   }
 
   await for (HttpRequest req in server) {
-    var file = new File('index.html');
-    if (await file.exists()) {
-      print("Serving index.html.");
+    if (await targetFile.exists()) {
+      print("Serving ${targetFile.path}.");
       req.response.headers.contentType = ContentType.HTML;
       try {
-        await file.openRead().pipe(req.response);
+        await targetFile.openRead().pipe(req.response);
       } catch (e) {
         print("Couldn't read file: $e");
         exit(-1);
       }
     } else {
-      print("Can't open index.html.");
-      req.response..statusCode = HttpStatus.NOT_FOUND
-                  ..close();
+      print("Can't open ${targetFile.path}.");
+      req.response
+        ..statusCode = HttpStatus.NOT_FOUND
+        ..close();
     }
   }
 }
@@ -840,17 +837,21 @@ uses the [http_server][] package.
 In this server, the code for handling the request is much shorter,
 because the [VirtualDirectory][] class handles the details of serving the file.
 
+<?code-excerpt "httpserver/bin/basic_file_server.dart" replace="/staticFiles\..*/[!$&!]/g"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-main() async {
+File targetFile = new File('index.html');
+
+Future main() async {
   VirtualDirectory staticFiles = new VirtualDirectory('.');
 
   var serverRequests =
       await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
   await for (var request in serverRequests) {
-    [[highlight]]staticFiles.serveFile(new File('index.html'), request);[[/highlight]]
+    [!staticFiles.serveFile(targetFile, request);!]
   }
 }
 {% endprettify %}
@@ -872,44 +873,43 @@ Change `file.txt` to other filenames within the directory.
 
 Here is the code for `static_file_server.dart`.
 
+<?code-excerpt "httpserver/bin/static_file_server.dart" replace="/\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-  import 'dart:io';
-  import 'package:http_server/http_server.dart';
-  import 'package:path/path.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:http_server/http_server.dart';
+import 'package:path/path.dart';
 
-  main() async {
-    var pathToBuild = join(dirname(Platform.script.toFilePath()));
+Future main() async {
+  var pathToBuild = join(dirname(Platform.script.toFilePath()));
 
-    var staticFiles = new VirtualDirectory(pathToBuild);
-[[note]]1[[/note]] staticFiles.allowDirectoryListing = true;
-[[note]]2[[/note]] staticFiles.directoryHandler = (dir, request) {
-      var indexUri = new Uri.file(dir.path).resolve('index.html');
-[[note]]3[[/note]]   staticFiles.serveFile(new File(indexUri.toFilePath()), request);
-    };
+  var staticFiles = new VirtualDirectory(pathToBuild);
+  staticFiles.allowDirectoryListing = true; [!/*1*/!]
+  staticFiles.directoryHandler = (dir, request) {
+    [!/*2*/!]
+    var indexUri = new Uri.file(dir.path).resolve('index.html');
+    staticFiles.serveFile(new File(indexUri.toFilePath()), request); [!/*3*/!]
+  };
 
-    var server =
-        await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048);
-    print('Listening on port 4048');
-[[note]]4[[/note]] await server.forEach(staticFiles.serveRequest);
-  }
+  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048);
+  print('Listening on port 4048');
+  await server.forEach(staticFiles.serveRequest); [!/*4*/!]
+}
 {% endprettify dart %}
 <div class="prettify-filename">static_file_server.dart</div>
 
-<span class="code-note">1</span>
-Allows clients to request files within the server's directory.
+{:.code-notes}
+1. Allows clients to request files within the server's directory.
 
-<span class="code-note">2</span>
-An anonymous function that handles requests for the directory itself,
-that is, the URL contains no filename.
-The function redirects these requests to `index.html`.
+2. An anonymous function that handles requests for the directory itself, that
+   is, the URL contains no filename. The function redirects these requests to
+   `index.html`.
 
-<span class="code-note">3</span>
-The `serveFile` method serves a file.
-In this example, it serves `index.html` for directory requests.
+3. The `serveFile` method serves a file. In this example, it serves
+   `index.html` for directory requests.
 
-<span class="code-note">4</span>
-The `serveRequest` method provided by the VirtualDirectory
-class handles requests that specify a file.
+4. The `serveRequest` method provided by the VirtualDirectory class handles
+   requests that specify a file.
 
 ## Using https with bindSecure() {#using-https}
 
@@ -930,40 +930,48 @@ calls `bindSecure()` using
 a certificate created by the Dart team for testing.
 You **must** provide your own certificates for your servers.
 
+<?code-excerpt "httpserver/bin/hello_world_server_secure.dart" replace="/\S.*\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-   import 'dart:io';
+import 'dart:async';
+import 'dart:io';
 
-   main() async {
-     var certificateChain =
-         Platform.script.resolve('server_chain.pem').toFilePath();
-     var serverKey =
-         Platform.script.resolve('server_key.pem').toFilePath();
-[[note]]1[[/note]]  [[highlight]]var serverContext = new SecurityContext();[[/highlight]]
-[[note]]2[[/note]]  [[highlight]]serverContext.useCertificateChain(certificateChain);[[/highlight]]
-[[note]]3[[/note]]  [[highlight]]serverContext.usePrivateKey(serverKey, password: 'dartdart');[[/highlight]]
+String certificateChain = 'server_chain.pem';
+String serverKey = 'server_key.pem';
 
-[[note]]4[[/note]]  var requests = await HttpServer.bindSecure('localhost', 4047, [[highlight]]serverContext[[/highlight]]);
-     print('listening');
-     await for (HttpRequest request in requests) {
-       request.response..write('Hello, world!')
-                       ..close();
-     }
-   }
+Future main() async {
+  [!var serverContext = new SecurityContext(); /*1*/!]
+  [!serverContext.useCertificateChain(certificateChain); /*2*/!]
+  [!serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/!]
+
+  var server = await HttpServer.bindSecure(
+    'localhost',
+    4047,
+    [!serverContext, /*4*/!]
+  );
+  print('Listening on localhost:${server.port}');
+  await for (HttpRequest request in server) {
+    request.response
+      ..write('Hello, world!')
+      ..close();
+  }
+}
 {% endprettify %}
 <div class="prettify-filename">hello_world_server_secure.dart</div>
 
-<span class="code-note">1</span>
-Optional settings for a secure network connection are specified in a SecurityContext object.  There is a default object, SecurityContext.defaultContext, that includes trusted root certificates for well-known certificate authorities.
+{:.code-notes}
+1. Optional settings for a secure network connection are specified in a
+   SecurityContext object. There is a default object,
+   SecurityContext.defaultContext, that includes trusted root certificates for
+   well-known certificate authorities.
 
-<span class="code-note">2</span>
-A file containing the chain of certificates from the server certificate up to the root of the signing authority, in [PEM format.][]
+2. A file containing the chain of certificates from the server certificate up
+   to the root of the signing authority, in [PEM format.][]
 
-<span class="code-note">3</span>
-A file containing the (encrypted) server certificate private key, in [PEM format.][]
+3. A file containing the (encrypted) server certificate private key, in
+   [PEM format.][]
 
-<span class="code-note">4</span>
-The context argument is required on servers, optional for clients. If it is omitted, then the default context
-with built-in trusted roots is used.
+4. The context argument is required on servers, optional for clients. If it is
+   omitted, then the default context with built-in trusted roots is used.
 
 [PEM format.]: http://how2ssl.com/articles/working_with_pem_files
 

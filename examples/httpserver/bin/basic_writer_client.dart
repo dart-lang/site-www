@@ -6,25 +6,27 @@
 // Makes a POST request containing JSON-encoded data
 // to the server and prints the response.
 
-import 'dart:io';
+// #docregion
 import 'dart:async';
+import 'dart:io';
 import 'dart:convert' show UTF8, JSON;
 
-Future main() async {
-  Map jsonData = {
-    'name': 'Han Solo',
-    'job': 'reluctant hero',
-    'BFF': 'Chewbacca',
-    'ship': 'Millennium Falcon',
-    'weakness': 'smuggling debts'
-  };
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String path = 'file.txt';
 
-  var request = await new HttpClient()
-      .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, '/file.txt');
-  request.headers.contentType = ContentType.JSON;
-  request.write(JSON.encode(jsonData));
-  HttpClientResponse response = await request.close();
-  await for (var contents in response.transform(UTF8.decoder)) {
-    print(contents);
-  }
+Map jsonData = {
+  'name': 'Han Solo',
+  'job': 'reluctant hero',
+  'BFF': 'Chewbacca',
+  'ship': 'Millennium Falcon',
+  'weakness': 'smuggling debts'
+};
+
+Future main() async {
+  HttpClientRequest request =
+      await new HttpClient().post(_host, 4049, path) /*1*/
+        ..headers.contentType = ContentType.JSON /*2*/
+        ..write(JSON.encode(jsonData)); /*3*/
+  HttpClientResponse response = await request.close(); /*4*/
+  await response.transform(UTF8.decoder /*5*/).forEach(print);
 }
