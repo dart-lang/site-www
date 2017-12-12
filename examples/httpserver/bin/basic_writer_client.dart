@@ -11,21 +11,22 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert' show UTF8, JSON;
 
-Future main() async {
-  Map jsonData = {
-    'name': 'Han Solo',
-    'job': 'reluctant hero',
-    'BFF': 'Chewbacca',
-    'ship': 'Millennium Falcon',
-    'weakness': 'smuggling debts'
-  };
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String path = 'file.txt';
 
-  var request = await new HttpClient()
-      .post(InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt'); /*1*/
-  request.headers.contentType = ContentType.JSON; /*2*/
-  request.write(JSON.encode(jsonData)); /*3*/
+Map jsonData = {
+  'name': 'Han Solo',
+  'job': 'reluctant hero',
+  'BFF': 'Chewbacca',
+  'ship': 'Millennium Falcon',
+  'weakness': 'smuggling debts'
+};
+
+Future main() async {
+  HttpClientRequest request =
+      await new HttpClient().post(_host, 4049, path) /*1*/
+        ..headers.contentType = ContentType.JSON /*2*/
+        ..write(JSON.encode(jsonData)); /*3*/
   HttpClientResponse response = await request.close(); /*4*/
-  await for (var contents in response.transform(UTF8.decoder /*5*/)) {
-    print(contents);
-  }
+  await response.transform(UTF8.decoder /*5*/).forEach(print);
 }

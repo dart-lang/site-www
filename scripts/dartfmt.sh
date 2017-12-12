@@ -30,7 +30,9 @@ $DARTFMT -l 65 \
   $EXAMPLES/tours/lib/library_tour/async/future.dart \
   $EXAMPLES/tours/lib/library_tour/async/stream.dart \
   $EXAMPLES/tours/test/library_tour/io_test.dart \
-  $EXAMPLES/tours/test/library_tour/mirrors_test.dart
+  $EXAMPLES/tours/test/library_tour/mirrors_test.dart \
+  $EXAMPLES/httpserver/bin/basic_writer_server.dart \
+  $EXAMPLES/httpserver/bin/note_server.dart
 
 # If any files were changed, then exit 1:
 REFORMATTED_FILES=$(git status --short)

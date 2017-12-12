@@ -125,9 +125,9 @@ the [dart:io][] library, which contains the HTTP-related
 classes both for server-side programs and for
 client-side programs (but not for web apps).
 
-<?code-excerpt "httpserver/bin/hello_world_server.dart"?>
+<?code-excerpt "httpserver/bin/hello_world_server.dart" replace="/.*?dart:io.*/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:io';
+[!import 'dart:io';!]
 import 'dart:async';
 
 Future main() async {
@@ -567,23 +567,24 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert' show UTF8, JSON;
 
-Future main() async {
-  Map jsonData = {
-    'name': 'Han Solo',
-    'job': 'reluctant hero',
-    'BFF': 'Chewbacca',
-    'ship': 'Millennium Falcon',
-    'weakness': 'smuggling debts'
-  };
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String path = 'file.txt';
 
-  var request = await new HttpClient()
-      .[!post!](InternetAddress.LOOPBACK_IP_V4.host, 4049, 'file.txt'); [!/*1*/!]
-  request.[!headers!].contentType = ContentType.JSON; [!/*2*/!]
-  request.[!write!](JSON.encode(jsonData)); [!/*3*/!]
+Map jsonData = {
+  'name': 'Han Solo',
+  'job': 'reluctant hero',
+  'BFF': 'Chewbacca',
+  'ship': 'Millennium Falcon',
+  'weakness': 'smuggling debts'
+};
+
+Future main() async {
+  HttpClientRequest request =
+      await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
+        ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
+        ..[!write!](JSON.encode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
-  await for (var contents in response.transform([!UTF8.decoder!] [!/*5*/!])) {
-    print(contents);
-  }
+  await response.transform([!UTF8.decoder!] [!/*5*/!]).forEach(print);
 }
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
@@ -649,14 +650,16 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
-<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(jsonData|jsonString|filename) = .*?;/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|json) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
+String _host = InternetAddress.LOOPBACK_IP_V4.host;
+
 Future main() async {
-  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049);
+  var server = await HttpServer.bind(_host, 4049);
   await for (var req in server) {
     ContentType contentType = req.headers.contentType;
     HttpResponse response = req.response;
@@ -664,29 +667,26 @@ Future main() async {
     if (req.method == 'POST' &&
         [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
       try {
-        var [!jsonString = await req.transform(UTF8.decoder).join();!] [!/*2*/!]
-
-        // Write to a file, get the file name from the URI.
-        var [!filename = req.uri.pathSegments.last;!] [!/*3*/!]
-        await new File(filename)
-            .writeAsString(jsonString, mode: FileMode.WRITE);
-        Map [!jsonData = JSON.decode(jsonString);!] [!/*4*/!]
-        response
+        String content =
+            await req.transform(UTF8.decoder).join(); [!/*2*/!]
+        Map [!json = JSON.decode(content)!]; [!/*3*/!]
+        var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
+        await new File(fileName)
+            .writeAsString(content, mode: FileMode.WRITE);
+        req.response
           ..statusCode = HttpStatus.OK
-          ..write('Wrote data for ${jsonData['name']}.')
-          ..close();
+          ..write('Wrote data for ${json['name']}.');
       } catch (e) {
         response
           ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
-          ..write("Exception during file I/O: $e.")
-          ..close();
+          ..write("Exception during file I/O: $e.");
       }
     } else {
       response
         ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-        ..write("Unsupported request: ${req.method}.")
-        ..close();
+        ..write("Unsupported request: ${req.method}.");
     }
+    response.close();
   }
 }
 {% endprettify %}
@@ -702,13 +702,13 @@ Future main() async {
    characters can be encoded over multiple bytes. The join() method puts the
    chunks together.
 
-3. The URL for the request is
+3. The data sent by the client is JSON formatted. The server decodes it using
+   the JSON codec available in the [dart:convert][] library.
+
+4. The URL for the request is
    [localhost:4049/file.txt](localhost:4049/file.txt). The code
    `req.uri.pathSegments.last` extracts the file name from the URI:
    `file.txt`.
-
-4. The data sent by the client is JSON formatted. The server decodes it using
-   the JSON codec available in the [dart:convert][] library.
 
 #### A note about CORS headers
 
@@ -724,7 +724,8 @@ because they can open your network up to security risks.
 {% prettify dart %}
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
-  response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.headers
+      .add('Access-Control-Allow-Methods', 'POST, OPTIONS');
   response.headers.add('Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept');
 }
