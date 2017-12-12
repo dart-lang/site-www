@@ -1,5 +1,5 @@
 name: httpserver
-description: A sample application
+description: Sample HTTP clients and servers
 
 homepage: https://www.dartlang.org/docs/tutorials/httpserver/
 
@@ -8,5 +8,3 @@ dependencies:
 
 dev_dependencies:
   test: ^0.12.0
-  dartlang_examples_util:
-    path: ../util
