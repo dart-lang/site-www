@@ -77,8 +77,7 @@ void main() {
 </li>
 
 <li markdown="1">
-In the directory that contains the file you just created,
-run the program with the command as shown next.
+In the directory that contains the file you just created, run the program:
 
 ```terminal
 $ dart helloworld.dart

@@ -95,8 +95,7 @@ _Example file for this section:_
 Let's begin with a small server that responds to all requests
 with the string `Hello, world!`
 
-At the command line, run the `hello_world_server.dart` script.
-You will see the following:
+At the command line, run the `hello_world_server.dart` script:
 
 ```terminal
 $ cd httpserver/bin
@@ -525,14 +524,14 @@ you need to write a client program, of which there are two kinds:
 
 Run the server and client on the command line.
 
-1. First the server:
+1. First, run the server:
 
    ```terminal
    $ cd httpserver/bin
    $ dart basic_writer_server.dart
    ```
 
-2. Then, run the client in a new window:
+2. In a new terminal, run the client:
 
    ```terminal
    $ cd httpserver/bin
@@ -540,7 +539,7 @@ Run the server and client on the command line.
    Wrote data for Han Solo.
    ```
 
-3. The server writes the data to `file.txt`:
+Look at the JSON data that the server wrote to `file.txt`:
 
    ```json
    {"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
