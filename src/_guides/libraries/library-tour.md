@@ -28,7 +28,7 @@ have some basic utilities for working with numbers.
 You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
 {% prettify dart %}
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -38,7 +38,7 @@ assert(double.parse('0.50') == 0.5);
 Or use the parse() method of num, which creates an integer if possible
 and otherwise a double:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (num-parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
 {% prettify dart %}
 assert(num.parse('42') is int);
 assert(num.parse('0x42') is int);
@@ -47,7 +47,7 @@ assert(num.parse('0.50') is double);
 
 To specify the base of an integer, add a `radix` parameter:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (radix)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
 {% prettify dart %}
 assert(int.parse('42', radix: 16) == 66);
 {% endprettify %}
@@ -58,7 +58,7 @@ of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
 number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
 {% prettify dart %}
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -97,7 +97,7 @@ You can find particular locations within a string, as well as check
 whether a string begins with or ends with a particular pattern. For
 example:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (contains-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
 {% prettify dart %}
 // Check whether a string contains another string.
 assert('Never odd or even'.contains('odd'));
@@ -122,7 +122,7 @@ units; high-numbered characters such as the treble clef symbol
 You can also extract a substring or split a string into a list of
 substrings:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (substring-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
 {% prettify dart %}
 // Grab a substring.
 assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -153,7 +153,7 @@ assert(codeUnitList[0] == 78);
 You can easily convert strings to their uppercase and lowercase
 variants:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
 {% prettify dart %}
 // Convert to uppercase.
 assert('structured web apps'.toUpperCase() ==
@@ -176,7 +176,7 @@ alphabet's dotless *I* is converted incorrectly.
 Remove all leading and trailing white space with `trim()`. To check
 whether a string is empty (length is zero), use `isEmpty`.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (trim-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
 {% prettify dart %}
 // Trim a string.
 assert('  hello  '.trim() == 'hello');
@@ -197,7 +197,7 @@ none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
 original String:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (replace)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
 {% prettify dart %}
 var greetingTemplate = 'Hello, NAME!';
 var greeting =
@@ -214,7 +214,7 @@ StringBuffer doesn’t generate a new String object until `toString()` is
 called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (StringBuffer)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
 {% prettify dart %}
 var sb = new StringBuffer();
 sb
@@ -234,7 +234,7 @@ The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (RegExp)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
 {% prettify dart %}
 // Here's a regular expression for one or more digits.
 var numbers = new RegExp(r'\d+');
@@ -254,7 +254,7 @@ assert(exedOut == 'llamas live XX to XX years');
 You can work directly with the RegExp class, too. The Match class
 provides access to a regular expression match.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (match)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 {% prettify dart %}
 var numbers = new RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
@@ -286,7 +286,7 @@ initialize [lists](#lists). Alternatively, use one of the List
 constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (List)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
 {% prettify dart %}
 // Use a List constructor.
 var vegetables = new List();
@@ -315,7 +315,7 @@ assert(fruits.length == 0);
 
 Use `indexOf()` to find the index of an object in a list:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (indexOf)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
 {% prettify dart %}
 var fruits = ['apples', 'oranges'];
 
@@ -332,7 +332,7 @@ function that compares two objects. This sorting function must return \<
 example uses `compareTo()`, which is defined by
 [Comparable][] and implemented by String.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (compareTo)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
 {% prettify dart %}
 var fruits = ['bananas', 'apples', 'oranges'];
 
@@ -344,7 +344,7 @@ assert(fruits[0] == 'apples');
 Lists are parameterized types, so you can specify the type that a list
 should contain:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (List<T>)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (List<T>)"?>
 {% prettify dart %}
 // This list should contain only strings.
 var fruits = new List<String>();
@@ -370,7 +370,7 @@ Refer to the [List API docs][List] for a full list of methods.
 A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can’t get a set’s items by index (position).
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Set)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
 {% prettify dart %}
 var ingredients = new Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
@@ -388,7 +388,7 @@ assert(ingredients.length == 2);
 Use `contains()` and `containsAll()` to check whether one or more
 objects are in a set:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (contains)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
 {% prettify dart %}
 var ingredients = new Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
@@ -402,7 +402,7 @@ assert(ingredients.containsAll(['titanium', 'xenon']));
 
 An intersection is a set whose items are in two other sets.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (intersection)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
 {% prettify dart %}
 var ingredients = new Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
@@ -425,7 +425,7 @@ easy retrieval. Unlike in JavaScript, Dart objects are not maps.
 You can declare a map using a terse literal syntax, or you can use a
 traditional constructor:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
 {% prettify dart %}
 // Maps often use strings as keys.
 var hawaiianBeaches = {
@@ -445,7 +445,7 @@ var nobleGases = new Map<int, String>();
 You add, get, and set map items using the bracket syntax. Use `remove()`
 to remove a key and its value from a map.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (remove)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
 {% prettify dart %}
 var nobleGases = {54: 'xenon'};
 
@@ -462,7 +462,7 @@ assert(!nobleGases.containsKey(54));
 
 You can retrieve all the values or all the keys from a map:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (keys)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (keys)"?>
 {% prettify dart %}
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -488,7 +488,7 @@ To check whether a map contains a key, use `containsKey()`. Because map
 values can be null, you cannot rely on simply getting the value for the
 key and checking for null to determine the existence of a key.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (containsKey)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
 {% prettify dart %}
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -504,7 +504,7 @@ Use the `putIfAbsent()` method when you want to assign a value to a key
 if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (putIfAbsent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
 {% prettify dart %}
 var teamAssignments = {};
 teamAssignments.putIfAbsent(
@@ -528,7 +528,7 @@ using the Map `keys` and `values` properties.
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (isEmpty)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
 {% prettify dart %}
 var coffees = [];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
@@ -539,7 +539,7 @@ assert(teas.isNotEmpty);
 To apply a function to each item in a list, set, or map, you can use
 `forEach()`:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (List.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
 {% prettify dart %}
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -549,7 +549,7 @@ teas.forEach((tea) => print('I drink $tea'));
 When you invoke `forEach()` on a map, your function must take two
 arguments (the key and value):
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Map.forEach)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
 {% prettify dart %}
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
@@ -561,7 +561,7 @@ hawaiianBeaches.forEach((k, v) {
 Iterables provide the `map()` method, which gives you all the results in
 a single object:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (List.map)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
 {% prettify dart %}
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -579,7 +579,7 @@ the returned object.
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (toList)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
 {% prettify dart %}
 var loudTeas =
     teas.map((tea) => tea.toUpperCase()).toList();
@@ -594,7 +594,7 @@ cities instead of isDecaffeinated.
 {% endcomment %}
 
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (where-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (where-etc)"?>
 {% prettify dart %}
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -640,7 +640,7 @@ URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
 `decodeFull()` methods. These methods are good for encoding or decoding
 a fully qualified URI, leaving intact special URI characters.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (encodeFull)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
 {% prettify dart %}
 var uri = 'http://example.org/api?foo=some message';
 
@@ -660,7 +660,7 @@ To encode and decode all of a string’s characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (encodeComponent)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
 {% prettify dart %}
 var uri = 'http://example.org/api?foo=some message';
 
@@ -681,7 +681,7 @@ If you have a Uri object or a URI string, you can get its parts using
 Uri fields such as `path`. To create a Uri from a string, use the
 `parse()` static method:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Uri.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
 {% prettify dart %}
 var uri =
     Uri.parse('http://example.org:8080/foo/bar#frag');
@@ -700,7 +700,7 @@ See the [Uri API docs][Uri] for more URI components that you can get.
 You can build up a URI from individual parts using the `Uri()`
 constructor:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Uri)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
 {% prettify dart %}
 var uri = new Uri(
     scheme: 'http',
@@ -719,7 +719,7 @@ local time zone.
 
 You can create DateTime objects using several constructors:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (DateTime)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
 {% prettify dart %}
 // Get the current date and time.
 var now = new DateTime.now();
@@ -744,7 +744,7 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
 {% prettify dart %}
 // 1/1/2000, UTC
 var y2k = new DateTime.utc(2000);
@@ -758,7 +758,7 @@ assert(unixEpoch.millisecondsSinceEpoch == 0);
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
-<?code-excerpt "tours/test/library_tour/core_test.dart (Duration)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
 {% prettify dart %}
 var y2k = new DateTime.utc(2000);
 
@@ -800,7 +800,7 @@ interface to indicate that an object can be compared to another object,
 usually for sorting. The `compareTo()` method returns \< 0 for
 *smaller*, 0 for the *same*, and \> 0 for *bigger*.
 
-<?code-excerpt "tours/lib/library_tour/core/comparable.dart"?>
+<?code-excerpt "misc/lib/library_tour/core/comparable.dart"?>
 {% prettify dart %}
 class Line implements Comparable<Line> {
   final int length;
@@ -833,7 +833,7 @@ compare many fields. They don’t do identical() automatically because, by
 convention, NaN != NaN.
 {% endcomment %}
 
-<?code-excerpt "tours/lib/library_tour/core/hash_code.dart"?>
+<?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
 {% prettify dart %}
 class Person {
   final String firstName, lastName;
@@ -878,7 +878,7 @@ support for-in loops. Extend (if possible) or implement Iterable
 whenever you create a class that can provide Iterators for use in for-in
 loops. Implement Iterator to define the actual iteration ability.
 
-<?code-excerpt "tours/lib/library_tour/core/iterator.dart"?>
+<?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
 {% prettify dart %}
 class Process {
   // Represents a process...
@@ -928,7 +928,7 @@ Throwing an application-specific exception is a common way to indicate
 that an error has occurred. You can define a custom exception by
 implementing the Exception interface:
 
-<?code-excerpt "tours/lib/library_tour/core/exception.dart"?>
+<?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
 {% prettify dart %}
 class FooException implements Exception {
   final String msg;
@@ -963,7 +963,7 @@ in the language tour for details.
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (import)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
 {% prettify dart %}
 import 'dart:async';
 {% endprettify %}
@@ -986,7 +986,7 @@ Consider the following function.  It uses Future's `then()` method
 to execute three asynchronous functions in a row,
 waiting for each one to complete before executing the next one.
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (runUsingFuture)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
 {% prettify dart %}
 runUsingFuture() {
   // ...
@@ -999,7 +999,7 @@ runUsingFuture() {
 The equivalent code with await expressions
 looks more like synchronous code:
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
 {% prettify dart %}
 runUsingAsyncAwait() async {
   // ...
@@ -1012,7 +1012,7 @@ runUsingAsyncAwait() async {
 An async function can catch exceptions from Futures.
 For example:
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (catch)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (catch)"?>
 {% prettify dart %}
 var entryPoint = await findEntryPoint();
 try {
@@ -1046,7 +1046,7 @@ example, `HttpRequest.getString()` returns a Future, since HTTP requests
 can take a while. Using `then()` lets you run some code when that Future
 has completed and the promised string value is available:
 
-<?code-excerpt "tours/lib/library_tour/async/basic.dart (then)"?>
+<?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
 {% prettify dart %}
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1056,7 +1056,7 @@ HttpRequest.getString(url).then((String result) {
 Use `catchError()` to handle any errors or exceptions that a Future
 object might throw.
 
-<?code-excerpt "tours/lib/library_tour/async/basic.dart (catchError)"?>
+<?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
 {% prettify dart %}
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1085,7 +1085,7 @@ registered with `then()` returns a Future, `then()` returns an
 equivalent Future. If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (then-chain)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
 {% prettify dart %}
 Future result = costlyQuery(url);
 result
@@ -1105,7 +1105,7 @@ In the preceding example, the methods run in the following order:
 
 Here is the same code written using await:
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (then-chain-as-await)"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
 {% prettify dart %}
 try {
   final value = await costlyQuery(url);
@@ -1124,7 +1124,7 @@ Sometimes your algorithm needs to invoke many asynchronous functions and
 wait for them all to complete before continuing. Use the [Future.wait()][]
 static method to manage multiple Futures and wait for them to complete:
 
-<?code-excerpt "tours/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
+<?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 {% prettify dart %}
 Future deleteLotsOfFiles() async => /* ... */
 Future copyLotsOfFiles() async => /* ... */
@@ -1157,7 +1157,7 @@ to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
 <!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
-<?code-excerpt "tours/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart %}
 void main(List<String> arguments) {
   // ...
@@ -1184,7 +1184,7 @@ The equivalent code with await expressions,
 including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
-<?code-excerpt "tours/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
 {% prettify dart %}
 Future main(List<String> arguments) async {
   // ...
@@ -1223,7 +1223,7 @@ Dart language features, see
 To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
-<?code-excerpt "tours/lib/library_tour/async/stream_web.dart (listen)" replace="/await for/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/await for/[!$&!]/g"?>
 {% prettify dart %}
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo').onClick.listen((e) {
@@ -1255,7 +1255,7 @@ Often, you need to change the format of a stream's data before you can
 use it. Use the `transform()` method to produce a stream with a
 different type of data:
 
-<?code-excerpt "tours/lib/library_tour/async/stream.dart (transform)"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 {% prettify dart %}
 var lines = inputStream
     .transform(UTF8.decoder)
@@ -1283,7 +1283,7 @@ then use try-catch to handle errors.
 Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
-<?code-excerpt "tours/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
 {% prettify dart %}
 Future readFileAwaitFor() async {
   var config = new File('config.txt');
@@ -1308,7 +1308,7 @@ then handle errors by registering an `onError` listener.
 Run code after the stream is closed by registering
 an `onDone` listener.
 
-<?code-excerpt "tours/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
 {% prettify dart %}
 var config = new File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
@@ -1349,7 +1349,7 @@ To use the Math library in your app, import dart:math. The following
 examples use the prefix `math` to make clear which top-level functions
 and constants are from the Math library:
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (import)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
 {% prettify dart %}
 import 'dart:math' as math;
 {% endprettify %}
@@ -1359,7 +1359,7 @@ import 'dart:math' as math;
 
 The Math library provides basic trigonometric functions:
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (trig)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 {% prettify dart %}
 // Cosine
 assert(math.cos(math.PI) == -1.0);
@@ -1383,7 +1383,7 @@ These functions use radians, not degrees!
 
 The Math library provides `max()` and `min()` methods:
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (min-max)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
 {% prettify dart %}
 assert(math.max(1, 1000) == 1000);
 assert(math.min(1, -1000) == -1000);
@@ -1394,7 +1394,7 @@ assert(math.min(1, -1000) == -1000);
 
 Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (constants)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
 {% prettify dart %}
 // See the Math library for additional constants.
 print(math.E); // 2.718281828459045
@@ -1408,7 +1408,7 @@ print(math.SQRT2); // 1.4142135623730951
 Generate random numbers with the [Random][] class. You can
 optionally provide a seed to the Random constructor.
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (Random)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
 {% prettify dart %}
 var random = new math.Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
@@ -1417,7 +1417,7 @@ random.nextInt(10); // Between 0 and 9.
 
 You can even generate random booleans:
 
-<?code-excerpt "tours/test/library_tour/math_test.dart (Random-bool)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
 {% prettify dart %}
 var random = new math.Random();
 random.nextBool(); // true or false
@@ -1452,7 +1452,7 @@ For higher level approaches to web app UIs, see
 
 To use the HTML library in your web app, import dart:html:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (import)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (import)"?>
 {% prettify dart %}
 import 'dart:html';
 {% endprettify %}
@@ -1495,7 +1495,7 @@ The `querySelector()` function returns the first element that matches
 the selector, while `querySelectorAll()`returns a collection of elements
 that match the selector.
 
-<?code-excerpt "tours/lib/library_tour/html.dart (querySelector)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (querySelector)"?>
 {% prettify dart %}
 // Find an element by id (an-id).
 Element elem1 = querySelector('#an-id');
@@ -1528,7 +1528,7 @@ define additional properties, such as the `href` property of
 
 Consider this example of specifying an anchor element in HTML:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
 {% prettify html %}
 <a id="example" href="http://example.com">link text</a>
 {% endprettify %}
@@ -1538,7 +1538,7 @@ node (accessible via a `text` property) that contains the string
 “linktext”. To change the URL that the link goes to, you can use
 AnchorElement’s `href` property:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (href)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (href)"?>
 {% prettify dart %}
 var anchor = querySelector('#example') as AnchorElement;
 anchor.href = 'http://dartlang.org';
@@ -1549,7 +1549,7 @@ following code sets the `hidden` property of all elements that have a
 class of “mac”, “win”, or “linux”. Setting the `hidden` property to true
 has the same effect as adding `display:none` to the CSS.
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
 {% prettify dart %}
 <!-- In HTML: -->
 <p>
@@ -1559,7 +1559,7 @@ has the same effect as adding `display:none` to the CSS.
 </p>
 {% endprettify %}
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (os)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (os)"?>
 {% prettify dart %}
 // In Dart:
 final osList = ['macos', 'windows', 'linux'];
@@ -1587,7 +1587,7 @@ attribute names and their meanings, see the [MDN Attributes
 page.](https://developer.mozilla.org/en/HTML/Attributes) Here’s an
 example of setting an attribute’s value:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (attributes)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (attributes)"?>
 {% prettify dart %}
 elem.attributes['someAttribute'] = 'someValue';
 {% endprettify %}
@@ -1598,7 +1598,7 @@ You can add to existing HTML pages by creating new elements and
 attaching them to the DOM. Here’s an example of creating a paragraph
 (\<p\>) element:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (creating-elements)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (creating-elements)"?>
 {% prettify dart %}
 var elem = new ParagraphElement();
 elem.text = 'Creating is easy!';
@@ -1607,7 +1607,7 @@ elem.text = 'Creating is easy!';
 You can also create an element by parsing HTML text. Any child elements
 are also parsed and created.
 
-<?code-excerpt "tours/lib/library_tour/html.dart (creating-from-html)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (creating-from-html)"?>
 {% prettify dart %}
 var elem2 = new Element.html(
   '<p>Creating <em>is</em> easy!</p>',
@@ -1622,7 +1622,7 @@ children. In the following example, `body` is an element, and its child
 elements are accessible (as a List\<Element\>) from the `children`
 property.
 
-<?code-excerpt "tours/lib/library_tour/html.dart (body-children-add)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (body-children-add)"?>
 {% prettify dart %}
 document.body.children.add(elem2);
 {% endprettify %}
@@ -1638,21 +1638,21 @@ operators to manipulate the children of the node.
 To add a node as the last child of its parent, use the List `add()`
 method:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (nodes-add)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (nodes-add)"?>
 {% prettify dart %}
 querySelector('#inputs').nodes.add(elem);
 {% endprettify %}
 
 To replace a node, use the Node `replaceWith()` method:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (replaceWith)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (replaceWith)"?>
 {% prettify dart %}
 querySelector('#status').replaceWith(elem);
 {% endprettify %}
 
 To remove a node, use the Node `remove()` method:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (remove)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (remove)"?>
 {% prettify dart %}
 // Find a node by ID, and remove it from the DOM.
 querySelector('#expendable').remove();
@@ -1668,7 +1668,7 @@ Each element has a `classes` field, which is a list. Add and remove CSS
 classes simply by adding and removing strings from this collection. For
 example, the following sample adds the `warning` class to an element:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (classes-add)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (classes-add)"?>
 {% prettify dart %}
 var elem = querySelector('#message');
 elem.classes.add('warning');
@@ -1677,7 +1677,7 @@ elem.classes.add('warning');
 It’s often very efficient to find an element by ID. You can dynamically
 set an element ID with the `id` property:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (set-id)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (set-id)"?>
 {% prettify dart %}
 var message = new DivElement();
 message.id = 'message2';
@@ -1687,7 +1687,7 @@ message.text = 'Please subscribe to the Dart mailing list.';
 You can reduce the redundant text in this example by using method
 cascades:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (elem-set-cascade)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (elem-set-cascade)"?>
 {% prettify dart %}
 var message = new DivElement()
   ..id = 'message2'
@@ -1698,7 +1698,7 @@ While using IDs and classes to associate an element with a set of styles
 is best practice, sometimes you want to attach a specific style directly
 to the element:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (set-style)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (set-style)"?>
 {% prettify dart %}
 message.style
   ..fontWeight = 'bold'
@@ -1721,7 +1721,7 @@ name and <code><em>function</em></code> is the event handler.
 
 For example, here’s how you can handle clicks on a button:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (onClick)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (onClick)"?>
 {% prettify dart %}
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo').onClick.listen((e) {
@@ -1733,7 +1733,7 @@ querySelector('#submitInfo').onClick.listen((e) {
 Events can propagate up and down through the DOM tree. To discover which
 element originally fired the event, use `e.target`:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (target)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (target)"?>
 {% prettify dart %}
 document.body.onClick.listen((e) {
   final clickedElem = e.target;
@@ -1768,7 +1768,7 @@ The HttpRequest static method `getString()` is an easy way to get data
 from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (getString)" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (getString)" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart %}
 Future main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
@@ -1778,7 +1778,7 @@ Future main() async {
 
 Use try-catch to specify an error handler:
 
-<?code-excerpt "tours/lib/library_tour/html.dart (try-getString)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (try-getString)"?>
 {% prettify dart %}
 try {
   var data = await HttpRequest.getString(jsonUri);
@@ -1792,7 +1792,7 @@ If you need access to the HttpRequest, not just the text data it
 retrieves, you can use the `request()` static method instead of
 `getString()`. Here’s an example of reading XML data:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart %}
 Future main() async {
   HttpRequest req = await HttpRequest.request(
@@ -1822,7 +1822,7 @@ For example:
 TODO: use original source from dart-tutorials-samples/web/portmanteaux/portmanteaux.dart
 {% endcomment %}
 
-<?code-excerpt "tours/lib/library_tour/html.dart (new-HttpRequest)"?>
+<?code-excerpt "misc/lib/library_tour/html.dart (new-HttpRequest)"?>
 {% prettify dart %}
 var request = new HttpRequest();
 request
@@ -1844,7 +1844,7 @@ You must also set the `Content-type` header to
 `application/x-www-form-urlencode` if you wish to send data to a form
 handler.
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (POST)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (POST)"?>
 {% prettify dart %}
 String encodeMap(Map data) => data.keys
     .map((k) =>
@@ -1892,7 +1892,7 @@ Once tests are written for the samples, consider getting code excerpts from
 the websocket sample app.
 {% endcomment %}
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (WebSocket)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (WebSocket)"?>
 {% prettify dart %}
 var ws = new WebSocket('ws://echo.websocket.org');
 {% endprettify %}
@@ -1901,7 +1901,7 @@ var ws = new WebSocket('ws://echo.websocket.org');
 
 To send string data on the WebSocket, use the `send()` method:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (send)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (send)"?>
 {% prettify dart %}
 ws.send('Hello from Dart!');
 {% endprettify %}
@@ -1911,7 +1911,7 @@ ws.send('Hello from Dart!');
 To receive data on the WebSocket, register a listener for message
 events:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (onMessage)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (onMessage)"?>
 {% prettify dart %}
 ws.onMessage.listen((MessageEvent e) {
   print('Received message: ${e.data}');
@@ -1928,7 +1928,7 @@ and (as shown earlier) message. Here’s an example of a method that
 creates a WebSocket object and registers handlers for open, close,
 error, and message events:
 
-<?code-excerpt "tours/test/library_tour/html_test.dart (initWebSocket)"?>
+<?code-excerpt "misc/test/library_tour/html_test.dart (initWebSocket)"?>
 {% prettify dart %}
 void initWebSocket([int retrySeconds = 1]) {
   var reconnectScheduled = false;
@@ -1996,7 +1996,7 @@ The few synchronous methods in the dart:io library are clearly marked
 with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
 To use the dart:io library you must import it:
-<?code-excerpt "tours/test/library_tour/io_test.dart (import)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (import)"?>
 {% prettify dart %}
 import 'dart:io';
 {% endprettify %}
@@ -2019,7 +2019,7 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 Future main() async {
   var config = new File('config.txt');
@@ -2042,7 +2042,7 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 Future main() async {
   var config = new File('config.txt');
@@ -2058,7 +2058,7 @@ To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
 or (in an async function) use try-catch:
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 {% prettify dart %}
 Future main() async {
   var config = new File('config.txt');
@@ -2077,7 +2077,7 @@ Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](#stream) or `await for`,
 part of Dart's [asynchrony support](/guides/language/language-tour#asynchrony-support).
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
@@ -2108,7 +2108,7 @@ write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.WRITE`, completely
 overwrites existing data in the file.
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 var logFile = new File('log.txt');
 var sink = logFile.openWrite();
@@ -2120,7 +2120,7 @@ await sink.close();
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.APPEND`:
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
 var sink = logFile.openWrite(mode: FileMode.APPEND);
 {% endprettify %}
@@ -2134,7 +2134,7 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 {% prettify dart %}
 Future main() async {
   var dir = new Directory('tmp');
@@ -2185,7 +2185,7 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "tours/lib/library_tour/io/http_server.dart"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart"?>
 {% prettify dart %}
 Future main() async {
   var requests = await HttpServer.bind('localhost', 8888);
@@ -2221,7 +2221,7 @@ apps. When programming in the browser, use the [HttpRequest
 class](#using-http-resources-with-httprequest).
 Here’s an example of using HttpClient:
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
 {% prettify dart %}
 Future main() async {
   var url = Uri.parse('http://localhost:8888/dart');
@@ -2253,7 +2253,7 @@ set.
 The dart:convert library works in both web apps and command-line apps.
 To use it, import dart:convert.
 
-<?code-excerpt "tours/test/library_tour/convert_test.dart (import)"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
 {% prettify dart %}
 import 'dart:convert';
 {% endprettify %}
@@ -2263,7 +2263,7 @@ import 'dart:convert';
 
 Decode a JSON-encoded string into a Dart object with `JSON.decode()`:
 
-<?code-excerpt "tours/test/library_tour/convert_test.dart (JSON-decode)"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (JSON-decode)"?>
 {% prettify dart %}
 // NOTE: Be sure to use double quotes ("),
 // not single quotes ('), inside the JSON string.
@@ -2286,7 +2286,7 @@ assert(firstScore['score'] == 40);
 Encode a supported Dart object into a JSON-formatted string with
 `JSON.encode()`:
 
-<?code-excerpt "tours/test/library_tour/convert_test.dart (JSON-encode)"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (JSON-encode)"?>
 {% prettify dart %}
 var scores = [
   {'score': 40},
@@ -2316,7 +2316,7 @@ the object's `toJson()` method.
 
 Use `UTF8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<?code-excerpt "tours/test/library_tour/convert_test.dart (UTF8-decode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (UTF8-decode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
@@ -2334,7 +2334,7 @@ assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 To convert a stream of UTF-8 characters into a Dart string, specify
 `UTF8.decoder` to the Stream `transform()` method:
 
-<?code-excerpt "tours/test/library_tour/io_test.dart (UTF8-decoder)" replace="/UTF8.decoder/[!$&!]/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (UTF8-decoder)" replace="/UTF8.decoder/[!$&!]/g"?>
 {% prettify dart %}
 var lines = inputStream
     .transform([!UTF8.decoder!])
@@ -2352,7 +2352,7 @@ try {
 Use `UTF8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
-<?code-excerpt "tours/test/library_tour/convert_test.dart (UTF8-encode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (UTF8-encode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
@@ -2378,7 +2378,7 @@ invoke functions or methods at runtime.
 The dart:mirrors library works in both web apps and command-line apps.
 To use it, import dart:mirrors.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (import)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (import)"?>
 {% prettify dart %}
 import 'dart:mirrors';
 {% endprettify %}
@@ -2406,7 +2406,7 @@ literal. This way, repeated uses of the same symbol can use the same
 canonicalized instance. If the name of the symbol is determined
 dynamically at runtime, use the Symbol constructor.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (Symbol)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (Symbol)"?>
 {% prettify dart %}
 // If the symbol name is known at compile time.
 const className = #MyClass;
@@ -2421,7 +2421,7 @@ different (often smaller) name. To convert from a symbol back to a
 string, use `MirrorSystem.getName()`. This function returns the correct
 name, even if the code was minified.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (getName)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (getName)"?>
 {% prettify dart %}
 const className = #MyClass;
 assert('MyClass' == MirrorSystem.getName(className));
@@ -2435,7 +2435,7 @@ inspect classes, libraries, instances, and more.
 
 The examples in this section use the following Person class:
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (Person)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (Person)"?>
 {% prettify dart %}
 class Person {
   String firstName;
@@ -2459,7 +2459,7 @@ To begin, you need to *reflect* on a class or object to get its
 
 Reflect on a Type to get its ClassMirror.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (ClassMirror)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (ClassMirror)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 ClassMirror mirror = reflectClass(Person);
 
@@ -2468,7 +2468,7 @@ assert('Person' == MirrorSystem.getName(mirror.simpleName));
 
 You can also call `runtimeType` to get a Type from an instance.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (runtimeType)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (runtimeType)"?>
 {% prettify dart %}
 var person = new Person('Bob', 'Smith', 33);
 ClassMirror mirror = reflectClass(person.runtimeType);
@@ -2478,7 +2478,7 @@ assert('Person' == MirrorSystem.getName(mirror.simpleName));
 Once you have a ClassMirror, you can get a class's constructors, fields,
 and more. Here is an example of listing the constructors of a class.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (showConstructors)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (showConstructors)"?>
 {% prettify dart %}
 void showConstructors(ClassMirror mirror) {
   var constructors = mirror.declarations.values
@@ -2494,7 +2494,7 @@ void showConstructors(ClassMirror mirror) {
 
 Here is an example of listing all of the fields declared by a class.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (showFields)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (showFields)"?>
 {% prettify dart %}
 void showFields(ClassMirror mirror) {
   var fields = mirror.declarations.values
@@ -2520,7 +2520,7 @@ For a full list of methods, consult the [API docs for ClassMirror][ClassMirror].
 
 Reflect on an object to get an InstanceMirror.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (InstanceMirror)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (InstanceMirror)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2529,7 +2529,7 @@ InstanceMirror mirror = reflect(p);
 If you have an InstanceMirror and you want to get the object that it
 reflects, use `reflectee`.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (reflectee)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (reflectee)"?>
 {% prettify dart %}
 var person = mirror.reflectee;
 assert(identical(p, person));
@@ -2548,7 +2548,7 @@ The first parameter specifies the method to be invoked, and the second
 is a list of positional arguments to the method. An optional third
 parameter lets you specify named arguments.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (invoke)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (invoke)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
@@ -2561,7 +2561,7 @@ mirror.invoke(#greet, ['Sundar']);
 Use InstanceMirror's `getField()` and `setField()` methods to get and
 set properties of an object.
 
-<?code-excerpt "tours/test/library_tour/mirrors_test.dart (getField-setField)"?>
+<?code-excerpt "misc/test/library_tour/mirrors_test.dart (getField-setField)"?>
 {% prettify dart %}
 var p = new Person('Bob', 'Smith', 42);
 InstanceMirror mirror = reflect(p);
