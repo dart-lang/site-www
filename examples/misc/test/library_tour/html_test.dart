@@ -100,7 +100,8 @@ void main() {
     final url = 'http://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map data) => data.keys
-        .map((k) => '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
+        .map((k) =>
+            '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
         .join('&');
 
     Future main() async {
@@ -161,7 +162,8 @@ void main() {
       });
 
       ws.onClose.listen((e) {
-        print('Websocket closed, retrying in ' + '$retrySeconds seconds');
+        print('Websocket closed, retrying in ' +
+            '$retrySeconds seconds');
         scheduleReconnect();
       });
 

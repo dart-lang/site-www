@@ -9,7 +9,8 @@ import 'dart:convert';
 
 // #enddocregion read-from-stream
 import 'package:test/test.dart';
-import '../../lib/library_tour/io/http_server.dart' as http_server;
+import '../../lib/library_tour/io/http_server.dart'
+    as http_server;
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
@@ -31,8 +32,10 @@ void main() {
 
     expect(
         main,
-        m.prints(
-            ['The file is 58 characters long.', 'The file is 4 lines long.']));
+        m.prints([
+          'The file is 58 characters long.',
+          'The file is 4 lines long.'
+        ]));
   });
 
   test('readAsBytes', () {
@@ -68,7 +71,8 @@ void main() {
     expect(
         main_test_read_from_stream,
         prints(allOf([
-          contains(new RegExp(r'Got \d+ characters from stream')),
+          contains(
+              new RegExp(r'Got \d+ characters from stream')),
           contains('file is now closed'),
         ])));
   });
@@ -83,7 +87,8 @@ void main() {
     // #enddocregion write-file
     try {
       expect(logFile.existsSync(), isTrue);
-      expect(logFile.readAsStringSync(), startsWith('FILE ACCESSED'));
+      expect(logFile.readAsStringSync(),
+          startsWith('FILE ACCESSED'));
     } finally {
       logFile?.delete();
     }
@@ -149,7 +154,9 @@ Future main_test_read_from_stream() async {
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion UTF8-decoder
-  var lines = inputStream.transform(UTF8.decoder).transform(new LineSplitter());
+  var lines = inputStream
+      .transform(UTF8.decoder)
+      .transform(new LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');

@@ -9,6 +9,7 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void noSuchMethod(Invocation mirror) {
-    print('You tried to use a non-existent member: ' + '${mirror.memberName}');
+    print('You tried to use a non-existent member: ' +
+        '${mirror.memberName}');
   }
 }
