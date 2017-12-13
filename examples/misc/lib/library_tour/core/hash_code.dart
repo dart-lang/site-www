@@ -21,8 +21,7 @@ class Person {
   bool operator ==(dynamic other) {
     if (other is! Person) return false;
     Person person = other;
-    return (person.firstName == firstName &&
-        person.lastName == lastName);
+    return (person.firstName == firstName && person.lastName == lastName);
   }
 }
 

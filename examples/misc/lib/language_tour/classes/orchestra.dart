@@ -42,8 +42,7 @@ class Musician extends Performer with Musical {
   // #docregion Musician-and-Maestro
 }
 
-class Maestro extends Person
-    with Musical, Aggressive, Demented {
+class Maestro extends Person with Musical, Aggressive, Demented {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;

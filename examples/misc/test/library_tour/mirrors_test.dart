@@ -58,10 +58,8 @@ void main() {
     // #enddocregion showConstructors
 
     ClassMirror mirror = reflectClass(Person);
-    expect(
-        () => showConstructors(mirror),
-        m.prints(
-            'The constructor Symbol("Person") has 3 parameters.'));
+    expect(() => showConstructors(mirror),
+        m.prints('The constructor Symbol("Person") has 3 parameters.'));
   });
 
   const fieldInfo =
@@ -73,14 +71,12 @@ The field Symbol("age") is not private and not final and is annotated as Symbol(
   test('showFields', () {
     // #docregion showFields
     void showFields(ClassMirror mirror) {
-      var fields = mirror.declarations.values
-          .where((m) => m is VariableMirror);
+      var fields = mirror.declarations.values.where((m) => m is VariableMirror);
 
       fields.forEach((m) {
         final v = m as VariableMirror;
         var finalStatus = v.isFinal ? 'final' : 'not final';
-        var privateStatus =
-            v.isPrivate ? 'private' : 'not private';
+        var privateStatus = v.isPrivate ? 'private' : 'not private';
         var typeAnnotation = v.type.simpleName;
 
         print('The field ${v.simpleName} is $privateStatus ' +

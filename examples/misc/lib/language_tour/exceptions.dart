@@ -23,8 +23,7 @@ void miscDeclAnalyzedButNotTested(bool c) {
 
   {
     // #docregion throw-is-an-expression
-    void distanceTo(Point other) =>
-        throw new UnimplementedError();
+    void distanceTo(Point other) => throw new UnimplementedError();
     // #enddocregion throw-is-an-expression
   }
 
