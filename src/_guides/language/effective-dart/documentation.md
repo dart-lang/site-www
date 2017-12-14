@@ -9,6 +9,7 @@ prevpage:
   url: /guides/language/effective-dart/style
   title: Style
 ---
+<?code-excerpt replace="/=. blockEllipsis;/{ ... }/g;/ellipsis;/.../g;/\/\*(\s*\.\.\.\s*)\*\//$1/g"?>
 
 It's easy to think your code is obvious today without realizing how much you
 rely on context already in your head. People new to your code, and
@@ -32,6 +33,7 @@ generated documentation.
 ### DO format comments like sentences.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (comments-like-sentences)"?>
 {% prettify dart %}
 // Not if there is nothing before it.
 if (_chunks.isEmpty) return false;
@@ -44,6 +46,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 ### DON'T use block comments for documentation.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (block-comments)"?>
 {% prettify dart %}
 greet(name) {
   // Assume we have a valid name.
@@ -52,6 +55,7 @@ greet(name) {
 {% endprettify %}
 
 {:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (block-comments)"?>
 {% prettify dart %}
 greet(name) {
   /* Assume we have a valid name. */
@@ -77,12 +81,14 @@ Using a doc comment instead of a regular comment enables [dartdoc][] to find it
 and generate documentation for it.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)"?>
 {% prettify dart %}
 /// The number of characters in this chunk when unsplit.
 int get length => ...
 {% endprettify %}
 
 {:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)" replace="/^\///g"?>
 {% prettify dart %}
 // The number of characters in this chunk when unsplit.
 int get length => ...
@@ -114,6 +120,7 @@ The first paragraph of any doc comment is a brief, user-oriented description
 ending with a period. As you can see below, it is often not a complete sentence.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
 /// Defines a flag.
 ///
@@ -123,6 +130,7 @@ Flag addFlag(String name, String abbr) { ... }
 {% endprettify %}
 
 {:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
 /// Starts a new block as a child of the current chunk. Nested blocks are
 /// handled using their own independent [LineWriter].
@@ -138,6 +146,7 @@ name&mdash;tell the reader something they don't already know.
 The doc comment should focus on what the code *does*.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (third-person)"?>
 {% prettify dart %}
 /// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) { ... }
@@ -153,6 +162,7 @@ getters which may do calculation or other work. What the caller cares about is
 the *result* of that work, not the work itself.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-var-etc)"?>
 {% prettify dart %}
 /// The current day of the week, where `0` is Sunday.
 int weekday;
@@ -172,6 +182,7 @@ and provide context to the other doc comments for the class's members. A little
 extra effort here can make all of the other members simpler to document.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-type-or-lib)"?>
 {% prettify dart %}
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
@@ -182,6 +193,7 @@ class Chunk { ... }
 ### CONSIDER including code samples in doc comments.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (code-sample)"?>
 {% prettify dart %}
 /// Returns the lesser of two numbers.
 ///
@@ -198,17 +210,18 @@ If you surround things like variable, method, or type names in square brackets,
 then dartdoc will look up the name and link to its docs.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
 {% prettify none %}
-Throws a [StateError] if ...
-
-similar to [anotherMethod], but ...
+/// Throws a [StateError] if ...
+/// similar to [anotherMethod], but ...
 {% endprettify %}
 
 You can also link to constructors using `new` followed by the constructor:
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (new)"?>
 {% prettify none %}
-To create a point, call [new Point] or use [new Point.polar] to ...
+/// To create a point, call [new Point] or use [new Point.polar] to ...
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
@@ -217,6 +230,7 @@ Other languages use verbose tags and sections to describe what the parameters
 and returns of a method are.
 
 {:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (no-annotations)"?>
 {% prettify dart %}
 /// Defines a flag with the given name and abbreviation.
 ///
@@ -232,6 +246,7 @@ The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (no-annotations)"?>
 {% prettify dart %}
 /// Defines a flag.
 ///
@@ -251,17 +266,19 @@ Tell the reader something they *don't* already know.
 ### DO put doc comments before metadata annotations.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (doc-before-meta)"?>
 {% prettify dart %}
 /// _Deprecated: Use [newMethod] instead._
 @deprecated
-oldMethod();
+oldMethod() { ... }
 {% endprettify %}
 
 {:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (doc-before-meta)"?>
 {% prettify dart %}
 @deprecated
 /// _Deprecated: Use [newMethod] instead._
-oldMethod();
+oldMethod() { ... }
 {% endprettify %}
 
 
@@ -277,6 +294,7 @@ There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (markdown)"?>
 {% prettify dart %}
 /// This is a paragraph of regular text.
 ///
@@ -359,6 +377,7 @@ When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (this)"?>
 {% prettify dart %}
 class Box {
   /// The value this wraps.
