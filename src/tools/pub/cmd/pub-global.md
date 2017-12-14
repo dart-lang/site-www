@@ -127,7 +127,7 @@ locate the file for your platform and add it.
 |-------------------+---------------------------|
 |      Platform     |      Cache location       |
 |-------------------|---------------------------|
-| macOS or Linux | `~/.pub-cache/bin`        |
+| macOS or Linux | `${HOME}/.pub-cache/bin`        |
 | Windows<sup><strong>*</strong></sup> | `%APPDATA%\Pub\Cache\bin` |
 {:.table .table-striped}
 
