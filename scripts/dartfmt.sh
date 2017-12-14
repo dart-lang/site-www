@@ -35,7 +35,8 @@ $DARTFMT -l 65 \
   $EXAMPLES/misc/test/library_tour/mirrors_test.dart \
   $EXAMPLES/httpserver/bin/basic_writer_server.dart \
   $EXAMPLES/httpserver/bin/note_server.dart \
-  $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart
+  $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
+  $EXAMPLES/misc/lib/effective_dart/usage_*.dart
 
 # If any files were changed, then exit 1:
 REFORMATTED_FILES=$(git status --short)
