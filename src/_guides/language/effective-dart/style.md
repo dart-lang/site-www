@@ -8,6 +8,7 @@ prevpage:
   url: /guides/language/effective-dart
   title: Overview
 ---
+<?code-excerpt  replace="/ellipsis;/.../g;/\/\/!//g;/\/\*(\s*\.\.\.\s*)\*\//$1/g"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
@@ -39,7 +40,7 @@ Classes, enums, typedefs, and type parameters should capitalize the first letter
 (including the first word), and use no separators.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
 {% prettify dart %}
 class SliderMenu { ... }
 
@@ -51,7 +52,7 @@ typedef bool Predicate<T>(T value);
 This even includes classes intended to be used in metadata annotations.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
 {% prettify dart %}
 class Foo {
   const Foo([arg]);
@@ -68,7 +69,7 @@ If the annotation class's constructor takes no parameters, you might want to
 create a separate `lowerCamelCase` constant for it.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
 {% prettify dart %}
 const foo = const Foo();
 
@@ -405,7 +406,7 @@ the easy editing of tabs and the consistency of spaces.
 ### DO place a newline after each statement or declaration.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (newline-after-decl)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (newline-after-decl)"?>
 {% prettify dart %}
 main() {
   first(statement);
@@ -419,10 +420,10 @@ anotherDeclaration() { ... }
 ### DON'T place a space between the declared name of a method, operator, or setter and its parameter list.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (args-etc-no-spaces)" replace="/\/\*( \.\.\. )\*\//$1/g;/ellipsis/.../g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (args-etc-no-spaces)"?>
 {% prettify dart %}
 log(arg) { ... }
-bool operator ==(other) => ...;
+bool operator ==(other) => ...
 set contents(value) { ... }
 {% endprettify %}
 
@@ -430,9 +431,9 @@ set contents(value) { ... }
 ### DO place a space after the `operator` keyword.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (space-after-operator)" replace="/\/\*( \.\.\. )\*\//$1/g;/ellipsis/.../g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (space-after-operator)"?>
 {% prettify dart %}
-bool operator ==(other) => ...;
+bool operator ==(other) => ...
 {% endprettify %}
 
 
@@ -476,7 +477,7 @@ index++
 ### DO place spaces around `in`, and after each `;` in a loop.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (for-in-etc)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (for-in-etc)"?>
 {% prettify dart %}
 for (var i = 0; i < 100; i++) { ... }
 
@@ -490,7 +491,7 @@ This is unlike function and method calls, which do *not* have a space between
 the name and the opening parenthesis.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (flow-keyword)" replace="/\/\*( \.\.\. )\*\//$1/g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (flow-keyword)"?>
 {% prettify dart %}
 while (foo) { ... }
 
@@ -550,7 +551,7 @@ There are valid arguments for both styles but most of our code seems to go this
 way, and consistency matters most.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-bin-op)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-bin-op)"?>
 {% prettify dart %}
 var bobLikesIt = isDeepFried ||
     (hasPieCrust && !vegan) ||
@@ -566,7 +567,7 @@ bobLikes() =>
 Also, if you break the line before one of the operators, break around both.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (ternary-op)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (ternary-op)"?>
 {% prettify dart %}
 return someCondition
     ? whenTrue
@@ -577,7 +578,7 @@ return someCondition
 ### DO place the `.` on the next line in a multi-line expression.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-dot)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-dot)"?>
 {% prettify dart %}
 someVeryLongVariableName.withAVeryLongPropertyName
     .aReallyLongMethodName(args);
@@ -608,7 +609,7 @@ This means after the opening bracket, before the closing one, and after the `,`
 for each element.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (collection-literal)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (collection-literal)"?>
 {% prettify dart %}
 mapInsideList([
   {
@@ -660,7 +661,7 @@ switch (fruit) {
 ### DO indent multi-line method cascades at least two spaces.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (cascade)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (cascade)"?>
 {% prettify dart %}
 buffer
   ..write('Hello, ')
@@ -681,7 +682,7 @@ someVeryLongVariableName.aReallyLongMethodName(
 This includes `=>` as well:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (four-spaces-for-arrow)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (four-spaces-for-arrow)"?>
 {% prettify dart %}
 bobLikes() =>
     isDeepFried || (hasPieCrust && !vegan) || containsBacon;
@@ -691,7 +692,7 @@ There are exceptions to this when the expression contains multi-line function or
 collection literals.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (exceptions-to-four-spaces)" replace="/\/\/!//g"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (exceptions-to-four-spaces)"?>
 {% prettify dart %}
 new Future.delayed(const Duration(seconds: 1), () {
   print('I am a callback');

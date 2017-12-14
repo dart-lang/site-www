@@ -2,7 +2,10 @@
 import 'dart:async';
 import 'dart:math';
 
-void miscDeclAnalyzedButNotTested() {
+import 'package:dartlang_examples_util/ellipsis.dart';
+
+void miscDeclAnalyzedButNotTested<DB, HttpConnection, HttpRequest, IOStream,
+    Id>() {
   {
     // #docregion misc-names
     var item;
@@ -13,25 +16,20 @@ void miscDeclAnalyzedButNotTested() {
       // ...
     }
     // #enddocregion misc-names
-    align(item == httpRequest); // Avoid unused variable warnings
   }
 
-  {
-    var uiHandler;
-    print([
-      // #docregion acronyms-and-abbreviations
-      HttpConnection,
-      uiHandler,
-      IOStream,
-      HttpRequest,
-      Id,
-      DB,
-      // #enddocregion acronyms-and-abbreviations
-    ]);
-  }
+  (uiHandler) => [
+        // #docregion acronyms-and-abbreviations
+        HttpConnection,
+        uiHandler,
+        IOStream,
+        HttpRequest,
+        Id,
+        DB,
+        // #enddocregion acronyms-and-abbreviations
+      ];
 
-  {
-    var isWeekDay;
+  (isWeekDay) {
     // #docregion curly-braces
     if (isWeekDay) {
       print('Bike to work!');
@@ -39,24 +37,21 @@ void miscDeclAnalyzedButNotTested() {
       print('Go dancing or read a book!');
     }
     // #enddocregion curly-braces
-  }
+  };
 
-  {
-    var arg, defaultValue;
+  (arg, defaultValue) {
     // #docregion one-line-if
     if (arg == null) return defaultValue;
     // #enddocregion one-line-if
-  }
+  };
 
-  {
-    var parameter, limit, defaultValue;
+  (parameter, limit, defaultValue) {
     // #docregion one-line-if-expr
     if (parameter > limit) parameter = defaultValue;
     // #enddocregion one-line-if-expr
-  }
+  };
 
-  {
-    var first, second, statement;
+  (first, second, statement) {
     // #docregion newline-after-decl
     main() {
       first(statement);
@@ -65,50 +60,40 @@ void miscDeclAnalyzedButNotTested() {
 
     anotherDeclaration() {/* ... */}
     // #enddocregion newline-after-decl
-  }
+  };
 
-  {
-    var a, b, average, largest, obj;
+  (a, b, average, largest, obj) {
     // #docregion bin-op
     average = (a + b) / 2;
     largest = a > b ? a : b;
     if (obj is! SomeType) print('not SomeType');
     // #enddocregion bin-op
-  }
+  };
 
-  {
-    var function, a, b, c, some, list, map, literal;
-    var x = [
-      // #docregion space-after-comma-etc
-      function(a, b, named: c),
-      [some, list, literal],
-      {map: literal},
-      // #enddocregion space-after-comma-etc
-    ];
-  }
+  (function, a, b, c, some, list, map, literal) => [
+        // #docregion space-after-comma-etc
+        function(a, b, named: c),
+        [some, list, literal],
+        {map: literal},
+        // #enddocregion space-after-comma-etc
+      ];
 
-  {
-    var condition,
-        index,
-        x = [
-      // #docregion unary-op
-      !condition,
-      index++
-      // #enddocregion unary-op
-    ];
-  }
+  (condition, index) => [
+        // #docregion unary-op
+        !condition,
+        index++
+        // #enddocregion unary-op
+      ];
 
-  {
-    var collection;
+  (Iterable collection) {
     // #docregion for-in-etc
     for (var i = 0; i < 100; i++) {/* ... */}
 
     for (final item in collection) {/* ... */}
     // #enddocregion for-in-etc
-  }
+  };
 
-  {
-    var foo;
+  (foo) {
     // #docregion flow-keyword
     while (foo) {/* ... */}
 
@@ -118,25 +103,19 @@ void miscDeclAnalyzedButNotTested() {
       // ...
     }
     // #enddocregion flow-keyword
-  }
+  };
 
-  {
-    // #docregion parentheses-etc
-    var numbers = <int>[1, 2, (3 + 4)];
-    // #enddocregion parentheses-etc
-  }
+  // #docregion parentheses-etc
+  var numbers = <int>[1, 2, (3 + 4)];
+  // #enddocregion parentheses-etc
 
-  {
-    // #docregion open-curly-brace-space-after
-    getEmptyFn(a) {
-      return () {};
-    }
-    // #enddocregion open-curly-brace-space-after
+  // #docregion open-curly-brace-space-after
+  getEmptyFn(a) {
+    return () {};
   }
+  // #enddocregion open-curly-brace-space-after
 
-  {
-    var hasWhippedCreamAndStrawberries;
-    var isDeepFried, hasPieCrust, vegan, containsBacon;
+  (isDeepFried, hasPieCrust, vegan, containsBacon) {
     // #docregion multi-bin-op
     var bobLikesIt = isDeepFried || //!
         (hasPieCrust && !vegan) || //!
@@ -146,27 +125,24 @@ void miscDeclAnalyzedButNotTested() {
     bobLikes() => //!
         isDeepFried || (hasPieCrust && !vegan) || containsBacon;
     // #enddocregion four-spaces-for-arrow, multi-bin-op
-  }
+  };
 
-  ternaryOp() {
-    var someCondition, whenTrue, whenFalse;
+  (someCondition, whenTrue, whenFalse) {
     // #docregion ternary-op
     return someCondition //!
         ? whenTrue //!
         : whenFalse;
     // #enddocregion ternary-op
-  }
+  };
 
-  {
-    var someVeryLongVariableName, args;
+  (someVeryLongVariableName, args) {
     // #docregion multi-dot
     someVeryLongVariableName.withAVeryLongPropertyName
         .aReallyLongMethodName(args);
     // #enddocregion multi-dot
-  }
+  };
 
-  {
-    var mapInsideList;
+  (mapInsideList) {
     // #docregion collection-literal
     mapInsideList([
       {
@@ -179,10 +155,9 @@ void miscDeclAnalyzedButNotTested() {
       },
     ]);
     // #enddocregion collection-literal
-  }
+  };
 
-  {
-    var condition, buckminsterfullerene, dodecahedrane, olympiadane;
+  (condition, buckminsterfullerene, dodecahedrane, olympiadane) {
     // #docregion block-and-collections
     if (condition) {
       print('hi');
@@ -194,10 +169,9 @@ void miscDeclAnalyzedButNotTested() {
       olympiadane
     ];
     // #enddocregion block-and-collections
-  }
+  };
 
-  {
-    var fruit;
+  (fruit) {
     // #docregion switch
     switch (fruit) {
       case 'apple':
@@ -209,28 +183,25 @@ void miscDeclAnalyzedButNotTested() {
         break;
     }
     // #enddocregion switch
-  }
+  };
 
-  {
-    var buffer, name;
+  (buffer, name) {
     // #docregion cascade
     buffer
       ..write('Hello, ') //!
       ..write(name)
       ..write('!');
     // #enddocregion cascade
-  }
+  };
 
-  {
-    var someVeryLongVariableName, arg, anotherArg, wrappedToNextLine;
+  (someVeryLongVariableName, arg, anotherArg, wrappedToNextLine) {
     // #docregion four-spaces
     someVeryLongVariableName.aReallyLongMethodName(
         arg, anotherArg, wrappedToNextLine);
     // #enddocregion four-spaces
-  }
+  };
 
-  {
-    var args;
+  (args) {
     // #docregion exceptions-to-four-spaces
     new Future.delayed(const Duration(seconds: 1), () {
       print('I am a callback');
@@ -243,18 +214,10 @@ void miscDeclAnalyzedButNotTested() {
     ]);
 
     // #enddocregion exceptions-to-four-spaces
-  }
+  };
 }
 
 //----------------------------------------------------------------------------
-
-class DB {}
-
-class HttpConnection {}
-
-class Id {}
-
-class IOStream {}
 
 class SomeType {}
 
@@ -270,7 +233,7 @@ typedef bool Predicate<T>(T value);
 
 //----------------------------------------------------------------------------
 
-const Null anArg = null;
+const anArg = null;
 
 // #docregion annotation-type-names
 class Foo {
@@ -308,7 +271,6 @@ class Dice {
 //----------------------------------------------------------------------------
 
 class Args {
-  dynamic ellipsis;
   // #docregion args-etc-no-spaces
   log(arg) {/* ... */}
   // #docregion space-after-operator
