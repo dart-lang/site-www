@@ -284,7 +284,7 @@ class View extends ViewBase {
   get children => _children;
   // #docregion super-first
   View(Style style, List children)
-      : super(style), // Error in Dart 2.0
+      : super(style),
         _children = children;
   // #enddocregion super-first
 }

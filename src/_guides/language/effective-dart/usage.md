@@ -717,13 +717,7 @@ before evaluating the rest of the subclass's initializers.
 What it *doesn't* mean is that the superclass's *constructor body* is executed
 then. That always happens after all initializers are run regardless of where
 `super()` appears. Placing the `super()` elsewhere is confusing and almost never
-useful. In fact, [dartdevc]({{site.webdev}}/tools/dartdevc)
-*requires* that it appear last.
-
-{% comment %}
-Question for Kathy: I've added a "Dart 2.0 note" below.
-Do we need to keep the last sentence above?
-{% endcomment %}
+useful.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (super-first)"?>
@@ -737,13 +731,13 @@ View(Style style, List children)
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (super-first)"?>
 {% prettify dart %}
 View(Style style, List children)
-    : super(style), // Error in Dart 2.0
+    : super(style),
       _children = children;
 {% endprettify %}
 
 {% comment %}update-for-dart-2{% endcomment %}
 <div class="alert alert-danger" markdown="1">
-**Dart 2.0 note:** The call to `super()` must be _last_ in Dart 2.0, otherwise
+**Dart 2.0 note:** The call to `super()` _must be last_ in Dart 2.0, otherwise
 an error is reported.
 </div>
 
@@ -814,12 +808,12 @@ instead of throwing the same exception object using `throw`.
 other hand resets the stack trace to the last thrown position.
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)" replace="/throw e/[!$&!]/g"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)"?>
 {% prettify dart %}
 try {
   somethingRisky();
 } catch (e) {
-  if (!canHandle(e)) [!throw e!];
+  if (!canHandle(e)) throw e;
   handle(e);
 }
 {% endprettify %}
@@ -850,11 +844,11 @@ all of the built-in control flow structures of the language within your
 asynchronous code.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
-Future<bool> doAsyncComputation() async {
+Future<bool> doAsyncComputation() [!async!] {
   try {
-    var result = await longRunningCalculation();
+    var result = [!await!] longRunningCalculation();
     return verifyResult(result.summary);
   } catch (e) {
     log.error(e);
