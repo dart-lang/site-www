@@ -793,6 +793,23 @@ main .content {
  }
 }
 
+@mixin dart-style-for($kind, $bg-color) {
+  .#{$kind}-style {
+    background-color: $bg-color;
+    &:after {
+      content: '#{$kind}';
+      position: absolute;
+      top: $font-size-base / 4;
+      right: $font-size-base / 2;
+      color: darken($bg-color, 25%);
+    }
+  }
+}
+
+@include dart-style-for(good, $alert-success-bg);
+@include dart-style-for(bad, $alert-danger-bg);
+
+// Deprecated, use good-style
 .good {
   position: relative;
   padding:10px;
@@ -831,6 +848,7 @@ main .content {
   }
 }
 
+// Deprecated, use bad-style
 .bad {
   position: relative;
   padding:10px;

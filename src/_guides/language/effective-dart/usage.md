@@ -10,6 +10,7 @@ prevpage:
   url: /guides/language/effective-dart/documentation
   title: "Documentation"
 ---
+<?code-excerpt replace="/\/\*(\s*\.\.\.\s*)\*\//$1/g;/([A-Z]\w*)\d/$1/g"?>
 
 This is the most "blue-collar" guide in Effective Dart. You'll apply the
 guidelines here every day in the bodies of your Dart code. *Users* of your
@@ -30,21 +31,20 @@ form&mdash;you do not need to use `+` to concatenate them. Just like in C and
 C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
 raiseAlarm(
     'ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
-raiseAlarm(
-    'ERROR: Parts of the spaceship are on fire. Other ' +
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
-</div>
 
 ### PREFER using interpolation to compose strings and values.
 
@@ -52,37 +52,37 @@ If you're coming from other languages, you're used to using long chains of `+`
 to build a string out of literals and other values. That does work in Dart, but
 it's almost always cleaner and shorter to use interpolation:
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation)"?>
 {% prettify dart %}
 'Hello, $name! You are ${year - birth} years old.';
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation)"?>
 {% prettify dart %}
-'Hello, ' + name + '! You are ' + (year - birth) + ' years old.';
+'Hello, ' + name + '! You are ' + (year - birth) + ' y...';
 {% endprettify %}
-</div>
 
 ### AVOID using curly braces in interpolation when not needed.
 
 If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, $name!'
 "Wear your wildest $decade's outfit."
 'Wear your wildest ${decade}s outfit.'
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, ${name}!'
 "Wear your wildest ${decade}'s outfit."
 {% endprettify %}
-</div>
 
 ## Collections
 
@@ -100,35 +100,35 @@ then, by all means, use a constructor. Otherwise, use the nice literal syntax.
 The core library exposes those constructors to ease adoption, but idiomatic Dart
 code does not use them.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
 {% prettify dart %}
 var points = [];
 var addresses = {};
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart %}
 var points = new List();
 var addresses = new Map();
 {% endprettify %}
-</div>
 
 You can even provide a type argument for them if that matters.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (generic-collection-literals)"?>
 {% prettify dart %}
 var points = <Point>[];
 var addresses = <String, Address>{};
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
 {% prettify dart %}
 var points = new List<Point>();
 var addresses = new Map<String, Address>();
 {% endprettify %}
-</div>
 
 Note that this doesn't apply to the *named* constructors for those classes.
 `List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
@@ -146,19 +146,19 @@ collection contains *anything* can be painfully slow.
 Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-use-length)"?>
 {% prettify dart %}
 if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-use-length)"?>
 {% prettify dart %}
 if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
 {% endprettify %}
-</div>
 
 ### CONSIDER using higher-order methods to transform a sequence.
 
@@ -169,13 +169,13 @@ other handy methods on `Iterable`.
 Using those instead of an imperative `for` loop makes it clear that your intent
 is to produce a new sequence and not to produce side effects.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-higher-order-func)"?>
 {% prettify dart %}
 var aquaticNames = animals
     .where((animal) => animal.isAquatic)
     .map((animal) => animal.name);
 {% endprettify %}
-</div>
 
 At the same time, this can be taken too far. If you are chaining or nesting
 many higher-order methods, it may be clearer to write a chunk of imperative
@@ -187,30 +187,30 @@ code.
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
 over a sequence, the idiomatic way to do that is using a loop.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-forEach)"?>
 {% prettify dart %}
 for (var person in people) {
   ...
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-forEach)"?>
 {% prettify dart %}
 people.forEach((person) {
   ...
 });
 {% endprettify %}
-</div>
 
 The exception is if all you want to do is invoke some already existing function
 with each element as the argument. In that case, `forEach()` is handy.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (forEach-over-func)"?>
 {% prettify dart %}
 people.forEach(print);
 {% endprettify %}
-</div>
 
 ## Functions
 
@@ -227,7 +227,8 @@ function expression is great for that.
 But, if you do need to give it a name, use a function declaration statement
 instead of binding a lambda to a variable.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (func-decl)"?>
 {% prettify dart %}
 void main() {
   localFunction() {
@@ -235,9 +236,9 @@ void main() {
   }
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (func-decl)"?>
 {% prettify dart %}
 void main() {
   var localFunction = () {
@@ -245,7 +246,6 @@ void main() {
   };
 }
 {% endprettify %}
-</div>
 
 ### DON'T create a lambda when a tear-off will do.
 
@@ -256,19 +256,19 @@ invokes it when you call it.
 If you have a function that invokes a method with the same arguments as are
 passed to it, you don't need to manually wrap the call in a lambda.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-tear-off)"?>
 {% prettify dart %}
 names.forEach(print);
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (use-tear-off)"?>
 {% prettify dart %}
 names.forEach((name) {
   print(name);
 });
 {% endprettify %}
-</div>
 
 ## Variables
 
@@ -281,7 +281,8 @@ gets initialized to `null`. This is reliably specified by the language. There's
 no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
 unneeded.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-null-init)"?>
 {% prettify dart %}
 int _nextId;
 
@@ -296,9 +297,9 @@ class LazyId {
   }
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-null-init)"?>
 {% prettify dart %}
 int _nextId = null;
 
@@ -313,7 +314,6 @@ class LazyId {
   }
 }
 {% endprettify %}
-</div>
 
 
 ### AVOID storing what you can calculate.
@@ -322,7 +322,8 @@ When designing a class, you often want to expose multiple views into the same
 underlying state. Often you see code that calculates all of those views in the
 constructor and then stores them:
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
 {% prettify dart %}
 class Circle {
   num radius;
@@ -335,7 +336,6 @@ class Circle {
         circumference = math.PI * 2.0 * radius;
 }
 {% endprettify %}
-</div>
 
 This code has two things wrong with it. First, it's likely wasting memory. The
 area and circumference, strictly speaking, are *caches*. They are stored
@@ -350,7 +350,8 @@ the `area` and `circumference` will retain their previous, now incorrect values.
 
 To correctly handle cache invalidation, we need to do this:
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
 {% prettify dart %}
 class Circle {
   num _radius;
@@ -371,28 +372,27 @@ class Circle {
   }
 
   void _recalculate() {
-    _area = math.PI * _radius * _radius,
+    _area = math.PI * _radius * _radius;
     _circumference = math.PI * 2.0 * _radius;
   }
 }
 {% endprettify %}
-</div>
 
 That's an awful lot of code to write, maintain, debug, and read. Instead, your
 first implementation should be:
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
 {% prettify dart %}
 class Circle {
   num radius;
 
+  Circle(this.radius);
+
   num get area => math.PI * radius * radius;
   num get circumference => math.PI * 2.0 * radius;
-
-  Circle(this.radius);
 }
 {% endprettify %}
-</div>
 
 This code is shorter, uses less memory, and is less error-prone. It stores the
 minimal amount of data needed to represent the circle. There are no fields to
@@ -412,7 +412,8 @@ explicit type annotations are usually just visual noise.
 Dart comes with powerful static analysis tools that will infer the type of local
 variables and still provide the auto-complete and tooling support you expect.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 Map<int, List<Person>> groupByZip(Iterable<Person> people) {
   var peopleByZip = <int, List<Person>>{};
@@ -423,9 +424,9 @@ Map<int, List<Person>> groupByZip(Iterable<Person> people) {
   return peopleByZip;
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 Map<int, List<Person>> groupByZip(Iterable<Person> people) {
   Map<int, List<Person>> peopleByZip = <int, List<Person>>{};
@@ -436,7 +437,6 @@ Map<int, List<Person>> groupByZip(Iterable<Person> people) {
   return peopleByZip;
 }
 {% endprettify %}
-</div>
 
 
 ## Members
@@ -457,15 +457,16 @@ Dart doesn't have this limitation. Fields and getters/setters are completely
 indistinguishable. You can expose a field in a class and later wrap it in a
 getter and setter without having to touch any code that uses that field.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-wrap-field)"?>
 {% prettify dart %}
 class Box {
   var contents;
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-wrap-field)"?>
 {% prettify dart %}
 class Box {
   var _contents;
@@ -475,7 +476,6 @@ class Box {
   }
 }
 {% endprettify %}
-</div>
 
 
 ### PREFER using a `final` field to make a read-only property.
@@ -483,22 +483,22 @@ class Box {
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (final)"?>
 {% prettify dart %}
 class Box {
   final contents = [];
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (final)"?>
 {% prettify dart %}
 class Box {
   var _contents;
   get contents => _contents;
 }
 {% endprettify %}
-</div>
 
 Of course, if you need to internally assign to the field outside of the
 constructor, you may need to do the "private field, public getter" pattern, but
@@ -511,13 +511,13 @@ In addition to using `=>` for function expressions, Dart also lets you define
 members with them. They are a good fit for simple members that just calculate
 and return a value.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart %}
 get width => right - left;
 bool ready(num time) => minTime == null || minTime <= time;
 containsValue(String value) => getValues().contains(value);
 {% endprettify %}
-</div>
 
 Members that don't fit on one line can still use `=>`, but if you find yourself
 cramming a single expression into several continued lines, it is probably
@@ -537,7 +537,8 @@ C#&mdash;doesn't have that limitation.
 The only time you need to use `this.` is when a local variable with the same
 name shadows the member you want to access.
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
 {% prettify dart %}
 class Box {
   var value;
@@ -551,9 +552,9 @@ class Box {
   }
 }
 {% endprettify %}
-</div>
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
 {% prettify dart %}
 class Box {
   var value;
@@ -567,23 +568,21 @@ class Box {
   }
 }
 {% endprettify %}
-</div>
 
 Note that constructor parameters never shadow fields in constructor
 initialization lists:
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 {% prettify dart %}
 class Box extends BaseBox {
   var value;
 
   Box(value)
       : value = value,
-        super(value)
-      {}
+        super(value);
 }
 {% endprettify %}
-</div>
 
 This looks surprising, but works like you want. Fortunately, code like this is
 relatively rare thanks to initializing formals.
@@ -595,7 +594,8 @@ If a field doesn't depend on any constructor parameters, it can and should be
 initialized at its declaration. It takes less code and makes sure you won't
 forget to initialize it if the class has multiple constructors.
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)"?>
 {% prettify dart %}
 class Folder {
   final String name;
@@ -605,9 +605,9 @@ class Folder {
   Folder.temp() : name = 'temporary'; // Oops! Forgot contents.
 }
 {% endprettify %}
-</div>
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
 {% prettify dart %}
 class Folder {
   final String name;
@@ -617,7 +617,6 @@ class Folder {
   Folder.temp() : name = 'temporary';
 }
 {% endprettify %}
-</div>
 
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
@@ -631,7 +630,8 @@ The following best practices apply to declaring constructors for a class.
 
 Many fields are initialized directly from a constructor parameter, like:
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
 {% prettify dart %}
 class Point {
   num x, y;
@@ -641,18 +641,17 @@ class Point {
   }
 }
 {% endprettify %}
-</div>
 
 We've got to type `x` _four_ times here define a field. Lame. We can do better:
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
 {% prettify dart %}
 class Point {
   num x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
-</div>
 
 This `this.` syntax before a constructor parameter is called an "initializing
 formal". You can't always take advantage of it. In particular, using it means
@@ -665,23 +664,23 @@ should.
 If a constructor parameter is using `this.` to initialize a field, then the type
 of the parameter is understood to be the same type as the field.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart %}
 class Point {
   int x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-type-init-formals)"?>
 {% prettify dart %}
 class Point {
   int x, y;
   Point(int this.x, int this.y);
 }
 {% endprettify %}
-</div>
 
 
 ### DO use `;` instead of `{}` for empty constructor bodies.
@@ -689,23 +688,23 @@ class Point {
 In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart %}
 class Point {
   int x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (semicolon-for-empty-body)"?>
 {% prettify dart %}
 class Point {
   int x, y;
   Point(this.x, this.y) {}
 }
 {% endprettify %}
-</div>
 
 
 ### DO place the `super()` call last in a constructor initialization list.
@@ -718,25 +717,29 @@ before evaluating the rest of the subclass's initializers.
 What it *doesn't* mean is that the superclass's *constructor body* is executed
 then. That always happens after all initializers are run regardless of where
 `super()` appears. Placing the `super()` elsewhere is confusing and almost never
-useful. In fact, [dartdevc]({{site.webdev}}/tools/dartdevc)
-*requires* that it appear last.
+useful.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (super-first)"?>
 {% prettify dart %}
 View(Style style, List children)
     : _children = children,
-      super(style) {
+      super(style);
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (super-first)"?>
 {% prettify dart %}
 View(Style style, List children)
     : super(style),
-      _children = children {
+      _children = children;
 {% endprettify %}
-</div>
 
+{% comment %}update-for-dart-2{% endcomment %}
+<div class="alert alert-danger" markdown="1">
+**Dart 2.0 note:** The call to `super()` _must be last_ in Dart 2.0, otherwise
+an error is reported.
+</div>
 
 ## Error handling
 
@@ -763,13 +766,6 @@ framework or low-level code that tries to insulate arbitrary application code
 from causing problems. Even here, it is usually better to catch [Exception][]
 than to catch all types. Exception is the base class for all *runtime* errors
 and excludes errors that indicate *programmatic* bugs in the code.
-
-[pokemon]: https://blog.codinghorror.com/new-programming-jargon/
-[StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
-[OutOfMemoryError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/OutOfMemoryError-class.html
-[ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
-[Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 
 
 ### DON'T discard errors from catches without `on` clauses.
@@ -811,27 +807,27 @@ instead of throwing the same exception object using `throw`.
 `rethrow` preserves the original stack trace of the exception. `throw` on the
 other hand resets the stack trace to the last thrown position.
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)"?>
 {% prettify dart %}
 try {
   somethingRisky();
-} catch(e) {
+} catch (e) {
   if (!canHandle(e)) throw e;
   handle(e);
 }
 {% endprettify %}
-</div>
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
 {% prettify dart %}
 try {
   somethingRisky();
-} catch(e) {
-  if (!canHandle(e)) rethrow;
+} catch (e) {
+  if (!canHandle(e)) [!rethrow!];
   handle(e);
 }
 {% endprettify %}
-</div>
 
 
 ## Asynchrony
@@ -847,21 +843,22 @@ the language. They make a huge improvement in readability code and let you use
 all of the built-in control flow structures of the language within your
 asynchronous code.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
-Future<bool> doAsyncComputation() async {
+Future<bool> doAsyncComputation() [!async!] {
   try {
-    var result = await longRunningCalculation();
+    var result = [!await!] longRunningCalculation();
     return verifyResult(result.summary);
-  } catch(e) {
+  } catch (e) {
     log.error(e);
     return false;
   }
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (async-await)"?>
 {% prettify dart %}
 Future<bool> doAsyncComputation() {
   return longRunningCalculation().then((result) {
@@ -872,7 +869,6 @@ Future<bool> doAsyncComputation() {
   });
 }
 {% endprettify %}
-</div>
 
 ### DON'T use `async` when it has no useful effect.
 
@@ -880,21 +876,21 @@ It's easy to get in the habit of using `async` on any function that does
 anything related to asynchrony. But in some cases, it's extraneous. If you can
 omit the `async` without changing the behavior of the function, do so.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
 {% prettify dart %}
-Future afterTwoThings(Future first, second) {
+Future afterTwoThings(Future first, Future second) {
   return Future.wait([first, second]);
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (unnecessary-async)"?>
 {% prettify dart %}
-Future afterTwoThings(Future first, second) async {
+Future afterTwoThings(Future first, Future second) async {
   return Future.wait([first, second]);
 }
 {% endprettify %}
-</div>
 
 Cases where `async` *is* useful include:
 
@@ -909,7 +905,8 @@ Cases where `async` *is* useful include:
 * You don't want any of the code to execute until after the event loop has taken
   a turn.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
 {% prettify dart %}
 Future usesAwait(Future later) async {
   print(await later);
@@ -919,11 +916,8 @@ Future asyncError() async {
   throw 'Error!';
 }
 
-Future asyncValue() async {
-  return 'value';
-}
+Future asyncValue() async => 'value';
 {% endprettify %}
-</div>
 
 ### CONSIDER using higher-order methods to transform a stream.
 
@@ -937,7 +931,8 @@ Many people new to asynchronous programming want to write code that produces a
 future. The constructors in Future don't seem to fit their need so they
 eventually find the Completer class and use that.
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
   var completer = new Completer<bool>();
@@ -949,7 +944,6 @@ Future<bool> fileContainsBear(String path) {
   return completer.future;
 }
 {% endprettify %}
-</div>
 
 Completer is needed for two kinds of low-level code: new asynchronous
 primitives, and interfacing with asynchronous code that doesn't use futures.
@@ -958,7 +952,8 @@ they're clearer and make error handling easier.
 
 [then]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/then.html
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
   return new File(path).readAsString().then((contents) {
@@ -966,14 +961,19 @@ Future<bool> fileContainsBear(String path) {
   });
 }
 {% endprettify %}
-</div>
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) async {
   var contents = await new File(path).readAsString();
   return contents.contains('bear');
 }
 {% endprettify %}
-</div>
 
+[pokemon]: https://blog.codinghorror.com/new-programming-jargon/
+[StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
+[OutOfMemoryError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/OutOfMemoryError-class.html
+[ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
+[AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
+[Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html

@@ -1,15 +1,14 @@
 ---
-layout: guide
 title: "Effective Dart: Style"
-description: "Formatting and naming rules for consistent, readable code."
-
+description: Formatting and naming rules for consistent, readable code.
 nextpage:
   url: /guides/language/effective-dart/documentation
-  title: "Documentation"
+  title: Documentation
 prevpage:
   url: /guides/language/effective-dart
-  title: "Overview"
+  title: Overview
 ---
+<?code-excerpt  replace="/ellipsis;/.../g;/\/\/!//g;/\/\*(\s*\.\.\.\s*)\*\//$1/g"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
@@ -40,7 +39,8 @@ Identifiers come in three flavors in Dart.
 Classes, enums, typedefs, and type parameters should capitalize the first letter of each word
 (including the first word), and use no separators.
 
-<div class="good" markdown="1">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
 {% prettify dart %}
 class SliderMenu { ... }
 
@@ -48,11 +48,11 @@ class HttpRequest { ... }
 
 typedef bool Predicate<T>(T value);
 {% endprettify %}
-</div>
 
 This even includes classes intended to be used in metadata annotations.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
 {% prettify dart %}
 class Foo {
   const Foo([arg]);
@@ -64,19 +64,18 @@ class A { ... }
 @Foo()
 class B { ... }
 {% endprettify %}
-</div>
 
 If the annotation class's constructor takes no parameters, you might want to
 create a separate `lowerCamelCase` constant for it.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
 {% prettify dart %}
 const foo = const Foo();
 
 @foo
 class C { ... }
 {% endprettify %}
-</div>
 
 
 ### DO name libraries and source files using `lowercase_with_underscores`.
@@ -87,47 +86,49 @@ in that form. Using underscores as the separator ensures that the name is still
 a valid Dart identifier, which may be helpful if the language later supports
 symbolic imports.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g"?>
 {% prettify dart %}
 library peg_parser.source_scanner;
 
 import 'file_system.dart';
 import 'slider_menu.dart';
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
 {% prettify dart %}
 library pegparser.SourceScanner;
 
 import 'file-system.dart';
 import 'SliderMenu.dart';
 {% endprettify %}
-</div>
 
-Note that this guideline specifies *how* to name a library *if you choose to
-name it*. It is fine to omit the library directive in a file if you want.
+<aside class="alert alert-info" markdown="1">
+  **Note:** This guideline specifies *how* to name a library *if you choose to
+  name it*. It is fine to _omit_ the library directive in a file if you want.
+</aside>
 
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
 {% prettify dart %}
-import 'dart:json' as json;
 import 'dart:math' as math;
-import 'package:javascript_utils/javascript_utils.dart' as js_utils;
+import 'package:angular_components/angular_components'
+    as angular_components;
 import 'package:js/js.dart' as js;
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
 {% prettify dart %}
-import 'dart:json' as JSON;
 import 'dart:math' as Math;
-import 'package:javascript_utils/javascript_utils.dart' as jsUtils;
+import 'package:angular_components/angular_components'
+    as angularComponents;
 import 'package:js/js.dart' as JS;
 {% endprettify %}
-</div>
 
 
 ### DO name other identifiers using `lowerCamelCase`.
@@ -136,17 +137,17 @@ Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
 word, and use no separators.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (misc-names)"?>
 {% prettify dart %}
 var item;
 
 HttpRequest httpRequest;
 
-align(clearItems) {
+void align(bool clearItems) {
   // ...
 }
 {% endprettify %}
-</div>
 
 
 ### PREFER using `lowerCamelCase` for constant names.
@@ -155,7 +156,8 @@ In new code, use `lowerCamelCase` for constant variables, including enum values.
 In existing code that uses `SCREAMING_CAPS`, you may continue to use all caps to
 stay consistent.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
 {% prettify dart %}
 const pi = 3.14;
 const defaultTimeout = 1000;
@@ -165,9 +167,9 @@ class Dice {
   static final numberGenerator = new Random();
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
 {% prettify dart %}
 const PI = 3.14;
 const kDefaultTimeout = 1000;
@@ -177,22 +179,17 @@ class Dice {
   static final NUMBER_GENERATOR = new Random();
 }
 {% endprettify %}
-</div>
 
 <aside class="alert alert-info" markdown="1">
+  **Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
+  changed because:
 
-**Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
-changed because:
-
-*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-    things like CSS colors.
-
-*   Constants are often changed to final non-const variables, which would
-    necessitate a name change.
-
-*   The `values` property automatically defined on an enum type is const and
-    lowercase.
-
+  *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
+      things like CSS colors.
+  *   Constants are often changed to final non-const variables, which would
+      necessitate a name change.
+  *   The `values` property automatically defined on an enum type is const and
+      lowercase.
 </aside>
 
 
@@ -206,7 +203,8 @@ To avoid this, acronyms and abbreviations are capitalized like regular words,
 except for two-letter acronyms. (Two-letter *abbreviations* like
 ID and Mr. are still capitalized like words.)
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart %}
 HttpConnection
 uiHandler
@@ -215,9 +213,9 @@ HttpRequest
 Id
 DB
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_bad.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart %}
 HTTPConnection
 UiHandler
@@ -226,7 +224,6 @@ HTTPRequest
 ID
 Db
 {% endprettify %}
-</div>
 
 
 ## Ordering
@@ -237,7 +234,8 @@ directives should appear in. Each "section" should be separated by a blank line.
 
 ### DO place "dart:" imports before other imports.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:html';
@@ -245,19 +243,18 @@ import 'dart:html';
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 {% endprettify %}
-</div>
 
 
 ### DO place "package:" imports before relative imports.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
-import 'a.dart';
+import 'util.dart';
 {% endprettify %}
-</div>
 
 
 ### PREFER placing "third-party" "package:" imports before other imports.
@@ -265,60 +262,57 @@ import 'a.dart';
 If you have a number of "package:" imports for your own package along with other
 third-party packages, place yours in a separate section after the external ones.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
-import 'package:myapp/io.dart';
-import 'package:myapp/util.dart';
+import 'package:my_package/util.dart';
 {% endprettify %}
-</div>
 
 
 ### DO specify exports in a separate section after all imports.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
 {% prettify dart %}
 import 'src/error.dart';
-import 'src/string_source.dart';
+import 'src/foo_bar.dart';
 
 export 'src/error.dart';
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (export)"?>
 {% prettify dart %}
 import 'src/error.dart';
 export 'src/error.dart';
-import 'src/string_source.dart';
+import 'src/foo_bar.dart';
 {% endprettify %}
-</div>
 
 
 ### DO sort sections alphabetically.
 
-Most tools for editing Dart code can do this automatically for you.
-
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
-import 'package:foo/bar.dart';
+import 'package:foo/foo.dart';
 
-import 'a.dart';
-import 'a/b.dart';
+import 'foo.dart';
+import 'foo/foo.dart';
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
-import 'package:foo/bar.dart';
+import 'package:foo/foo.dart';
 import 'package:bar/bar.dart';
 
-import 'a/b.dart';
-import 'a.dart';
+import 'foo/foo.dart';
+import 'foo.dart';
 {% endprettify %}
-</div>
 
 
 ## Formatting
@@ -362,34 +356,34 @@ Doing so avoids the [dangling else][] problem.
 
 [dangling else]: http://en.wikipedia.org/wiki/Dangling_else
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>
 {% prettify dart %}
-if (true) {
-  print('sanity');
+if (isWeekDay) {
+  print('Bike to work!');
 } else {
-  print('opposite day!');
+  print('Go dancing or read a book!');
 }
 {% endprettify %}
-</div>
 
 There is one exception to this: `if` statements with no `else` clause that fit
 on one line may omit the braces.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
 {% prettify dart %}
 if (arg == null) return defaultValue;
 {% endprettify %}
-</div>
 
 These are typically used for "guard" code that returns or breaks if the
 condition is met. But they're also fine for expressions, as long as the entire
 `if` statement and the expression fit on one line.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-expr)"?>
 {% prettify dart %}
-if (parameter == null) parameter = defaultValue;
+if (parameter > limit) parameter = defaultValue;
 {% endprettify %}
-</div>
 
 
 ### DO format your code using `dartfmt`.
@@ -411,7 +405,8 @@ the easy editing of tabs and the consistency of spaces.
 
 ### DO place a newline after each statement or declaration.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (newline-after-decl)"?>
 {% prettify dart %}
 main() {
   first(statement);
@@ -420,27 +415,26 @@ main() {
 
 anotherDeclaration() { ... }
 {% endprettify %}
-</div>
 
 
 ### DON'T place a space between the declared name of a method, operator, or setter and its parameter list.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (args-etc-no-spaces)"?>
 {% prettify dart %}
-bool convertToBool(arg) { ... }
-bool operator ==(other) { ... }
+log(arg) { ... }
+bool operator ==(other) => ...
 set contents(value) { ... }
 {% endprettify %}
-</div>
 
 
 ### DO place a space after the `operator` keyword.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (space-after-operator)"?>
 {% prettify dart %}
-bool operator ==(other) => ...;
+bool operator ==(other) => ...
 {% endprettify %}
-</div>
 
 
 ### DO place spaces around binary and ternary operators.
@@ -450,46 +444,45 @@ but not for specifying generic types. Both `is` and `is!` are considered single
 binary operators. However, the `.` used to access members is not and should
 *not* have spaces around it.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (bin-op)"?>
 {% prettify dart %}
 average = (a + b) / 2;
 largest = a > b ? a : b;
 if (obj is! SomeType) print('not SomeType');
-optional([parameter = defaultValue]) { ... }
 {% endprettify %}
-</div>
 
 
 ### DO place spaces after `,` and `:` when used in a map or named parameter.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (space-after-comma-etc)" replace="/([\]\}\)]),/$1/g"?>
 {% prettify dart %}
-function(a, b, named: c);
-[some, list, literal];
+function(a, b, named: c)
+[some, list, literal]
 {map: literal}
 {% endprettify %}
-</div>
 
 
 ### DON'T place spaces around unary operators.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (unary-op)" replace="/,//g"?>
 {% prettify dart %}
 !condition
 index++
 {% endprettify %}
-</div>
 
 
 ### DO place spaces around `in`, and after each `;` in a loop.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (for-in-etc)"?>
 {% prettify dart %}
-for (var i = 0; i < 100; i++) ...
+for (var i = 0; i < 100; i++) { ... }
 
-for (final item in collection) ...
+for (final item in collection) { ... }
 {% endprettify %}
-</div>
 
 
 ### DO use a space after flow-control keywords.
@@ -497,9 +490,10 @@ for (final item in collection) ...
 This is unlike function and method calls, which do *not* have a space between
 the name and the opening parenthesis.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (flow-keyword)"?>
 {% prettify dart %}
-while (foo) ...
+while (foo) { ... }
 
 try {
   // ...
@@ -507,18 +501,17 @@ try {
   // ...
 }
 {% endprettify %}
-</div>
 
 
 ### DON'T use a space after `(`, `[`, and `{`, or before `)`, `]`, and `}`.
 
 Also, do not use a space when using `<` and `>` for generic types.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (parentheses-etc)"?>
 {% prettify dart %}
 var numbers = <int>[1, 2, (3 + 4)];
 {% endprettify %}
-</div>
 
 
 ### DO use a space before `{` in function and method bodies.
@@ -526,22 +519,23 @@ var numbers = <int>[1, 2, (3 + 4)];
 When a `{` is used after a parameter list in a function or method, there should
 be a space between it and the `)` ending the parameters.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (open-curly-brace-space-after)"?>
 {% prettify dart %}
 getEmptyFn(a) {
   return () {};
 }
 {% endprettify %}
-</div>
 
 
 ### DO place the opening curly brace (`{`) on the same line as what it follows.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (open-curly-brace-same-line)" replace="/(Foo)2/$1/g"?>
 {% prettify dart %}
 class Foo {
   method() {
-    if (true) {
+    if (someCondition) {
       // ...
     } else {
       // ...
@@ -549,7 +543,6 @@ class Foo {
   }
 }
 {% endprettify %}
-</div>
 
 
 ### DO place binary operators on the preceding line in a multi-line expression.
@@ -557,7 +550,8 @@ class Foo {
 There are valid arguments for both styles but most of our code seems to go this
 way, and consistency matters most.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-bin-op)"?>
 {% prettify dart %}
 var bobLikesIt = isDeepFried ||
     (hasPieCrust && !vegan) ||
@@ -566,35 +560,35 @@ var bobLikesIt = isDeepFried ||
 bobLikes() =>
     isDeepFried || (hasPieCrust && !vegan) || containsBacon;
 {% endprettify %}
-</div>
 
 
 ### DO place ternary operators on the next line in a multi-line expression.
 
 Also, if you break the line before one of the operators, break around both.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (ternary-op)"?>
 {% prettify dart %}
 return someCondition
     ? whenTrue
     : whenFalse;
 {% endprettify %}
-</div>
 
 
 ### DO place the `.` on the next line in a multi-line expression.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (multi-dot)"?>
 {% prettify dart %}
-someVeryLongVariable.withAVeryLongProperty
-    .aMethodOnThatObject();
+someVeryLongVariableName.withAVeryLongPropertyName
+    .aReallyLongMethodName(args);
 {% endprettify %}
-</div>
 
 
 ### DO format constructor initialization lists with each field on its own line.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (ctr-field-init)"?>
 {% prettify dart %}
 MyClass()
     : firstField = 'some value',
@@ -603,7 +597,6 @@ MyClass()
   // ...
 }
 {% endprettify %}
-</div>
 
 Note that the `:` should be wrapped to the next line and indented four spaces.
 Fields should all line up (so all but the first field end up indented six
@@ -615,7 +608,8 @@ spaces).
 This means after the opening bracket, before the closing one, and after the `,`
 for each element.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (collection-literal)"?>
 {% prettify dart %}
 mapInsideList([
   {
@@ -628,29 +622,29 @@ mapInsideList([
   },
 ]);
 {% endprettify %}
-</div>
 
 
 ### DO indent block and collection bodies two spaces.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (block-and-collections)"?>
 {% prettify dart %}
 if (condition) {
   print('hi');
-
-  [
-    long,
-    list,
-    literal
-  ];
 }
+
+var compoundsWithLongNames = [
+  buckminsterfullerene,
+  dodecahedrane,
+  olympiadane
+];
 {% endprettify %}
-</div>
 
 
 ### DO indent switch cases two spaces and case bodies four spaces.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (switch)"?>
 {% prettify dart %}
 switch (fruit) {
   case 'apple':
@@ -662,43 +656,43 @@ switch (fruit) {
     break;
 }
 {% endprettify %}
-</div>
 
 
 ### DO indent multi-line method cascades at least two spaces.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (cascade)"?>
 {% prettify dart %}
 buffer
   ..write('Hello, ')
   ..write(name)
   ..write('!');
 {% endprettify %}
-</div>
 
 
 ### PREFER indenting continued lines with at least four spaces.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (four-spaces)"?>
 {% prettify dart %}
-someLongObject.aReallyLongMethodName(longArg, anotherLongArg,
-    wrappedToNextLine);
+someVeryLongVariableName.aReallyLongMethodName(
+    arg, anotherArg, wrappedToNextLine);
 {% endprettify %}
-</div>
 
 This includes `=>` as well:
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (four-spaces-for-arrow)"?>
 {% prettify dart %}
 bobLikes() =>
     isDeepFried || (hasPieCrust && !vegan) || containsBacon;
 {% endprettify %}
-</div>
 
 There are exceptions to this when the expression contains multi-line function or
 collection literals.
 
-<div class="good">
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (exceptions-to-four-spaces)"?>
 {% prettify dart %}
 new Future.delayed(const Duration(seconds: 1), () {
   print('I am a callback');
@@ -710,8 +704,6 @@ args.addAll([
   '--checked'
 ]);
 {% endprettify %}
-</div>
 
 Your goal is to balance using indentation to show expression structure while
 not wanting to indent large swathes of code unecessarily.
-
