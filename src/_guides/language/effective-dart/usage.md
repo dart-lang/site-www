@@ -1,14 +1,13 @@
 ---
 layout: guide
 title: "Effective Dart: Usage"
-description: "Guidelines for using language features to write maintainable code."
-
+description: Guidelines for using language features to write maintainable code.
 nextpage:
   url: /guides/language/effective-dart/design
-  title: "Design"
+  title: Design
 prevpage:
   url: /guides/language/effective-dart/documentation
-  title: "Documentation"
+  title: Documentation
 ---
 <?code-excerpt replace="/\/\*(\s*\.\.\.\s*)\*\//$1/g;/([A-Z]\w*)\d/$1/g"?>
 
