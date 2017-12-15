@@ -247,10 +247,10 @@ In the code below, `then()`'s Future completes with an error, so
 {% prettify dart %}
 void main() {
   funcThatThrows()
-    .then((_) => print("Won't reach here..."))   // Future completes with an error.
-    .whenComplete(() => print("... or here...")) // Future completes with the same error.
-    .then((_) => print("... nor here."))         // Future completes with the same error.
-    .catchError(handleError)                     // Error is handled here.
+    .then((_) => print("won't reach here"))    // Future completes with an error.
+    .whenComplete(() => print('reaches here')) // Future completes with the same error.
+    .then((_) => print("won't reach here"))    // Future completes with the same error.
+    .catchError(handleError);                  // Error is handled here.
 }
 {% endprettify %}
 
