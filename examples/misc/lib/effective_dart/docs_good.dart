@@ -2,7 +2,7 @@
 
 import 'package:dartlang_examples_util/ellipsis.dart';
 
-void miscDeclAnalyzedButNotTested<Flag, StateError, T>() {
+void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
     // #docregion comments-like-sentences
     // Not if there is nothing before it.
@@ -17,21 +17,25 @@ void miscDeclAnalyzedButNotTested<Flag, StateError, T>() {
   }
   // #enddocregion block-comments
 
-  // #docregion first-sentence-a-paragraph, no-annotations
-  /// Defines a flag.
-  ///
-  /// Throws an [ArgumentError] if there is already an option named [name] or
-  /// there is already an option using abbreviation [abbr]. Returns the new flag.
-  Flag addFlag(String name, String abbr) => blockEllipsis;
-  // #enddocregion first-sentence-a-paragraph, no-annotations
+  <Flag>() {
+    // #docregion first-sentence-a-paragraph, no-annotations
+    /// Defines a flag.
+    ///
+    /// Throws an [ArgumentError] if there is already an option named [name] or
+    /// there is already an option using abbreviation [abbr]. Returns the new flag.
+    Flag addFlag(String name, String abbr) => blockEllipsis;
+    // #enddocregion first-sentence-a-paragraph, no-annotations
+  };
 
-  // #docregion third-person
-  /// Returns `true` if every element satisfies the [predicate].
-  bool all(bool predicate(T element)) => blockEllipsis;
+  <T>() {
+    // #docregion third-person
+    /// Returns `true` if every element satisfies the [predicate].
+    bool all(bool predicate(T element)) => blockEllipsis;
 
-  /// Starts the stopwatch if not already running.
-  void start() => blockEllipsis;
-  // #enddocregion third-person
+    /// Starts the stopwatch if not already running.
+    void start() => blockEllipsis;
+    // #enddocregion third-person
+  };
 
   // #docregion code-sample
   /// Returns the lesser of two numbers.
@@ -40,16 +44,19 @@ void miscDeclAnalyzedButNotTested<Flag, StateError, T>() {
   num min(num a, num b) => blockEllipsis;
   // #enddocregion code-sample
 
-  void anotherMethod() {}
+  () {
+    void anotherMethod() {}
 
-  // #docregion identifiers
-  /// Throws a [StateError] if ...
-  /// similar to [anotherMethod], but ...
-  // #enddocregion identifiers
-  // #docregion new
-  /// To create a point, call [new Point] or use [new Point.polar] to ...
-  // #enddocregion new
-  void someMethod() {}
+    // #docregion identifiers
+    /// Throws a [StateError] if ...
+    /// similar to [anotherMethod], but ...
+    // #enddocregion identifiers
+
+    // #docregion new
+    /// To create a point, call [new Point] or use [new Point.polar] to ...
+    // #enddocregion new
+    void someMethod() {}
+  };
 
   // #docregion markdown
   /// This is a paragraph of regular text.

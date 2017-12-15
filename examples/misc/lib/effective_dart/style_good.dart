@@ -1,11 +1,11 @@
 // ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:dartlang_examples_util/ellipsis.dart';
 
-void miscDeclAnalyzedButNotTested<DB, HttpConnection, HttpRequest, IOStream,
-    Id>() {
+void miscDeclAnalyzedButNotTested() {
   {
     // #docregion misc-names
     var item;
@@ -18,9 +18,9 @@ void miscDeclAnalyzedButNotTested<DB, HttpConnection, HttpRequest, IOStream,
     // #enddocregion misc-names
   }
 
-  (uiHandler) => [
+  <DB, IOStream, Id>(uiHandler) => [
         // #docregion acronyms-and-abbreviations
-        HttpConnection,
+        HttpConnectionInfo,
         uiHandler,
         IOStream,
         HttpRequest,
