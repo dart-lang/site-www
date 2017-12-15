@@ -105,7 +105,7 @@ source: src
 destination: publish
 bundler_args: --without production
 
-exclude: ["diagrams", "appengine", "tests", "site"]
+exclude: ["diagrams"]
 
 plugins:
 - jekyll-assets
