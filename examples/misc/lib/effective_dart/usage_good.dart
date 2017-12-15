@@ -3,8 +3,6 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 
-typedef VoidFunc0 = void Function();
-typedef VoidFunc1 = void Function(dynamic _);
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
