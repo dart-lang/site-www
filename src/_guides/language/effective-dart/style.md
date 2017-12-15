@@ -195,9 +195,10 @@ class Dice {
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words.
 
-Capitalized acronyms can be harder to read, and are ambiguous when you have
-multiple adjacent acronyms. Given the name `HTTPSFTPConnection`, there's no way
-to tell if that's an HTTPS FTP connection or an HTTP SFTP one.
+Capitalized acronyms can be hard to read, and
+multiple adjacent acronyms can lead to ambiguous names.
+For example, given a name that starts with `HTTPSFTP`, there's no way
+to tell if it's referring to HTTPS FTP or HTTP SFTP.
 
 To avoid this, acronyms and abbreviations are capitalized like regular words,
 except for two-letter acronyms. (Two-letter *abbreviations* like
