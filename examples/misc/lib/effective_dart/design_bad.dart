@@ -1,6 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 
-import 'dart:math' as math;
+import 'dart:math';
 import 'package:dartlang_examples_util/ellipsis.dart';
 import 'design_good.dart';
 
@@ -115,11 +115,8 @@ class Color {
 class Point {
   num x, y;
   Point(this.x, this.y);
-  static Point polar(num theta, num radius) {
-    return new Point(
-        radius * math.cos(theta), //!
-        radius * math.sin(theta));
-  }
+  static Point polar(num theta, num radius) =>
+      new Point(radius * cos(theta), radius * sin(theta));
 }
 // #enddocregion named-ctr
 
@@ -133,17 +130,15 @@ class C<Foo> {
 }
 
 //----------------------------------------------------------------------------
+// ignore_for_file: annotate_overrides
 
 // #docregion eq-dont-check-for-null
 class Person1 {
   final String name;
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
-
-  @override
   int get hashCode => ellipsis;
   // #docregion eq-dont-check-for-null
-  @override
-  operator ==(other) => other != null && other is Person && ellipsis;
+  operator ==(other) => other != null && ellipsis;
 }
 // #enddocregion eq-dont-check-for-null

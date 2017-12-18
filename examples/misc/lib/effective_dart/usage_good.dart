@@ -1,7 +1,7 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 import 'dart:async';
 import 'dart:io';
-import 'dart:math' as math;
+import 'dart:math';
 
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
@@ -205,8 +205,8 @@ class Circle {
 
   Circle(this.radius);
 
-  num get area => math.PI * radius * radius;
-  num get circumference => math.PI * 2.0 * radius;
+  num get area => PI * radius * radius;
+  num get circumference => PI * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store
 

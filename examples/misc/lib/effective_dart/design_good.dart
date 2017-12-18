@@ -2,8 +2,9 @@
 // #docplaster
 
 import 'dart:async';
+import 'dart:collection';
 import 'dart:isolate';
-import 'dart:math' as math;
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:dartlang_examples_util/ellipsis.dart';
@@ -38,10 +39,10 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion omit-verb-for-bool-param
   };
 
-  (List queue, window, connection) {
+  (DoubleLinkedQueue queue, window, connection) {
     // #docregion verb-for-func-with-side-effect
     list.add(ellipsis);
-    queue.removeLast();
+    queue.removeFirst();
     window.refresh();
     connection.downloadData();
     // #enddocregion verb-for-func-with-side-effect
@@ -193,8 +194,8 @@ class Point {
   num x, y;
   Point(this.x, this.y);
   Point.polar(num theta, num radius)
-      : x = radius * math.cos(theta),
-        y = radius * math.sin(theta);
+      : x = radius * cos(theta),
+        y = radius * sin(theta);
 }
 // #enddocregion named-ctr
 
@@ -264,6 +265,7 @@ class Duration0 {
 }
 
 //----------------------------------------------------------------------------
+// ignore_for_file: annotate_overrides
 
 // #docregion eq-dont-check-for-null
 class Person {
@@ -272,10 +274,8 @@ class Person {
   // #enddocregion eq-dont-check-for-null
   Person(this.name);
   // #docregion eq-dont-check-for-null
-  @override
   operator ==(other) => other is Person && name == other.name;
 
-  @override
-  int get hashCode => ellipsis;
+  int get hashCode => name.hashCode;
 }
 // #enddocregion eq-dont-check-for-null

@@ -238,7 +238,7 @@ clarifies the work the member performs.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)" replace="/;//g"?>
 {% prettify dart %}
 list.add(...)
-queue.removeLast()
+queue.removeFirst()
 window.refresh()
 connection.downloadData()
 {% endprettify %}
@@ -522,8 +522,8 @@ class Point {
   num x, y;
   Point(this.x, this.y);
   Point.polar(num theta, num radius)
-      : x = radius * math.cos(theta),
-        y = radius * math.sin(theta);
+      : x = radius * cos(theta),
+        y = radius * sin(theta);
 }
 {% endprettify %}
 
@@ -533,11 +533,8 @@ class Point {
 class Point {
   num x, y;
   Point(this.x, this.y);
-  static Point polar(num theta, num radius) {
-    return new Point(
-        radius * math.cos(theta),
-        radius * math.sin(theta));
-  }
+  static Point polar(num theta, num radius) =>
+      new Point(radius * cos(theta), radius * sin(theta));
 }
 {% endprettify %}
 
@@ -790,6 +787,11 @@ var names = people.map((Person person) {
 
 ### AVOID annotating with `dynamic` when not required.
 
+{% comment %}
+update-for-dart-2.0
+https://github.com/dart-lang/site-www/pull/480#discussion_r157355593
+{% endcomment %}
+
 In most places in Dart, a type annotation can be omitted, in which case the type
 will automatically be `dynamic`. Thus, omitting the type annotation entirely is
 semantically equivalent but more terse.
@@ -975,10 +977,10 @@ than the index of the last item.
 This is consistent with core libraries that do the same thing.
 
 {:.good-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\//  \/\//g; /\);//g"?>
+<?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
 {% prettify dart %}
-[0, 1, 2, 3].sublist(1, 3)  // [1, 2]
-'abcd'.substring(1, 3)  // 'bc'
+[0, 1, 2, 3].sublist(1, 3) // [1, 2]
+'abcd'.substring(1, 3) // 'bc'
 {% endprettify %}
 
 It's particularly important to be consistent here because these parameters are
@@ -1035,16 +1037,14 @@ The language specifies that this check is done automatically and your `==`
 method is called only if the right-hand side is not `null`.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==|hashCode/[!$&!]/g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g"?>
 {% prettify dart %}
 class Person {
   final String name;
   // ...
-  @override
   [!operator ==!](other) => other is Person && name == other.name;
 
-  @override
-  int get [!hashCode!] => ...
+  int get hashCode => name.hashCode;
 }
 {% endprettify %}
 
@@ -1054,8 +1054,7 @@ class Person {
 class Person {
   final String name;
   // ···
-  @override
-  operator ==(other) => [!other != null!] && other is Person && ...
+  operator ==(other) => [!other != null!] && ...
 }
 {% endprettify %}
 
