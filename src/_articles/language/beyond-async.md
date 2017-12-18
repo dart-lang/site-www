@@ -61,9 +61,9 @@ Suppose we want to produce the first <em>n</em> natural numbers.
 It is quite easy to do this with a synchronous generator.
 
 {% prettify dart %}
-Iterable naturalsTo(n) [[highlight]]sync*[[/highlight]] {
+Iterable naturalsTo(n) [!sync*!] {
   int k = 0;
-  [[highlight]]while[[/highlight]] (k < n) [[highlight]]yield[[/highlight]] k++;
+  [!while!] (k < n) [!yield!] k++;
 }
 {% endprettify %}
 
@@ -115,9 +115,9 @@ Let’s try generating natural numbers again, asynchronously this time.
 
 
 {% prettify dart %}
-Stream asynchronousNaturalsTo(n) [[highlight]]async*[[/highlight]] {
+Stream asynchronousNaturalsTo(n) [!async*!] {
   int k = 0;
-  [[highlight]]while[[/highlight]] (k < n) [[highlight]]yield[[/highlight]] k++;
+  [!while!] (k < n) [!yield!] k++;
 }
 {% endprettify %}
 
@@ -140,8 +140,8 @@ the stream pushes the value to the listener function at its pleasure.
 As a variant, consider
 
 {% prettify dart %}
-Stream [[highlight]]get[[/highlight]] naturals [[highlight]]async*[[/highlight]] {
-  int k = 0; [[highlight]]while[[/highlight]] ([[highlight]]true[[/highlight]]) { [[highlight]]yield await[[/highlight]] k++; }
+Stream [!get!] naturals [!async*!] {
+  int k = 0; [!while!] ([!true!]) { [!yield await!] k++; }
 }
 {% endprettify %}
 
@@ -171,7 +171,7 @@ loop is designed to play well with streams.
 Given a stream, one can loop over its values:
 
 {% prettify dart %}
-[[highlight]]await for[[/highlight]] (int i [[highlight]]in[[/highlight]] naturals) { print(‘event loop $i’); }
+[!await for!] (int i [!in!] naturals) { print(‘event loop $i’); }
 {% endprettify %}
 
 Every time an element is added to the stream, the loop body is run. After each
@@ -187,10 +187,10 @@ Consider the following function,
 designed to count backwards from <em>n</em> to 1.
 
 {% prettify dart %}
-Iterable naturalsDownFrom(n) [[highlight]]sync*[[/highlight]] {
-  [[highlight]]if[[/highlight]] (n > 0) {
-     [[highlight]]yield[[/highlight]] n;
-     [[highlight]]for[[/highlight]] (int i in naturalsDownFrom(n-1)) { [[highlight]]yield[[/highlight]] i; }
+Iterable naturalsDownFrom(n) [!sync*!] {
+  [!if!] (n > 0) {
+     [!yield!] n;
+     [!for!] (int i in naturalsDownFrom(n-1)) { [!yield!] i; }
   }
 }
 {% endprettify %}
@@ -215,10 +215,10 @@ We can rewrite our code using yield-each as follows:
 
 
 {% prettify dart %}
-Iterable naturalsDownFrom(n) [[highlight]]sync*[[/highlight]] {
-  [[highlight]]if[[/highlight]] ( n > 0) {
-    [[highlight]]yield[[/highlight]] n;
-    [[highlight]]yield*[[/highlight]] naturalsDownFrom(n-1);
+Iterable naturalsDownFrom(n) [!sync*!] {
+  [!if!] ( n > 0) {
+    [!yield!] n;
+    [!yield*!] naturalsDownFrom(n-1);
  }
 }
 {% endprettify %}

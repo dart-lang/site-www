@@ -19,12 +19,12 @@ and, if necessary, to configure the transformers. (See
 {% prettify yaml %}
 name: myapp
 dependencies:
-  [[highlight]]polymer: ^0.16.3
+  [!polymer: ^0.16.3
 transformers:
-- polymer:[[/highlight]]
-    [[highlight]]entry_points:[[/highlight]]
-    [[highlight]]- web/index.html[[/highlight]]
-    [[highlight]]- web/index2.html[[/highlight]]
+- polymer:!]
+    [!entry_points:!]
+    [!- web/index.html!]
+    [!- web/index2.html!]
 {% endprettify %}
 
 A package's assets can be in any directory in the root package.
@@ -98,10 +98,10 @@ polymer package (along with the rest of polymer.dart):
 {% prettify yaml %}
 name: myapp
 dependencies:
-  [[highlight]]polymer: ^0.16.3[[/highlight]]
-[[highlight]]transformers:
-- polymer:[[/highlight]]
-    [[highlight]]entry_points: web/index.html[[/highlight]]
+  [!polymer: ^0.16.3!]
+[!transformers:
+- polymer:!]
+    [!entry_points: web/index.html!]
 {% endprettify %}
 
 The following example configures the

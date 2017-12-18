@@ -37,7 +37,7 @@ also want to check out the following pages.
 Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
-<?code-excerpt "tours/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 {% prettify dart %}
 void main() {
   print('Hello, World!');
@@ -50,7 +50,7 @@ void main() {
 Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
-<?code-excerpt "tours/test/samples_test.dart (var)"?>
+<?code-excerpt "misc/test/samples_test.dart (var)"?>
 {% prettify dart %}
 var name = 'Voyager I';
 var year = 1977;
@@ -69,7 +69,7 @@ var image = {
 
 Dart supports the usual control flow statements:
 
-<?code-excerpt "tours/test/samples_test.dart (control-flow)"?>
+<?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 {% prettify dart %}
 if (year >= 2001) {
   print('21st century');
@@ -99,7 +99,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 [We recommend](/guides/language/effective-dart/design#type-annotations)
 specifying the types of each function's arguments and return value:
 
-<?code-excerpt "tours/test/samples_test.dart (functions)"?>
+<?code-excerpt "misc/test/samples_test.dart (functions)"?>
 {% prettify dart %}
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
@@ -113,7 +113,7 @@ A shorthand `=>` (_fat arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-<?code-excerpt "tours/test/samples_test.dart (fat arrow)"?>
+<?code-excerpt "misc/test/samples_test.dart (fat arrow)"?>
 {% prettify dart %}
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 {% endprettify %}
@@ -148,7 +148,7 @@ including how the documentation tooling works.
 
 To get access to APIs defined in other libraries, use `import`.
 
-<?code-excerpt "tours/test/samples_test.dart (import)" replace="/'.*?' as \w+/'path\/to\/my_other_file.dart'/g"?>
+<?code-excerpt "misc/test/samples_test.dart (import)" replace="/'.*?' as \w+/'path\/to\/my_other_file.dart'/g"?>
 {% prettify dart %}
 // Importing core libraries
 import 'dart:async';
@@ -168,6 +168,7 @@ including library prefixes, `show` and `hide`, and lazy loading through the `def
 
 ## Classes
 
+<<<<<<< HEAD
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
@@ -177,7 +178,7 @@ The linter rule sort_constructors_first made us put the getter below
 the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 {% prettify dart %}
 class Spacecraft {
   String name;
@@ -211,7 +212,7 @@ class Spacecraft {
 
 You might use the `Spacecraft` class like this:
 
-<?code-excerpt "tours/test/samples_test.dart (use class)"?>
+<?code-excerpt "misc/test/samples_test.dart (use class)"?>
 {% prettify dart %}
 var voyager = new Spacecraft('Voyager I', new DateTime(1977, 9, 5));
 voyager.describe();
@@ -229,7 +230,7 @@ including initializer lists, redirecting constructors, constant constructors,
 
 Dart has single inheritance.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 {% prettify dart %}
 class Orbiter extends Spacecraft {
   num altitude;
@@ -245,7 +246,7 @@ class Orbiter extends Spacecraft {
 
 Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart %}
 class Piloted {
   int astronauts = 1;
@@ -257,7 +258,7 @@ class Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -273,7 +274,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 {% prettify dart %}
 class MockSpaceship implements Spacecraft {
   // ···
@@ -284,7 +285,7 @@ class MockSpaceship implements Spacecraft {
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart %}
 [!abstract!] class Describable {
   void describe();
@@ -307,7 +308,7 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
-<?code-excerpt "tours/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
+<?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart %}
 const oneSecond = const Duration(seconds: 1);
 // ···
@@ -319,7 +320,7 @@ Future<Null> printWithDelay(String message) [!async!] {
 
 The method above is equivalent to:
 
-<?code-excerpt "tours/test/samples_test.dart (Future.then)"?>
+<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 {% prettify dart %}
 Future<Null> printWithDelay(String message) {
   return new Future.delayed(oneSecond).then((_) {
@@ -331,7 +332,7 @@ Future<Null> printWithDelay(String message) {
 As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
 
-<?code-excerpt "tours/test/samples_test.dart (await)"?>
+<?code-excerpt "misc/test/samples_test.dart (await)"?>
 {% prettify dart %}
 Future<Null> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
@@ -354,7 +355,7 @@ Future<Null> createDescriptions(Iterable<String> objects) async {
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
-<?code-excerpt "tours/test/samples_test.dart (async*)"?>
+<?code-excerpt "misc/test/samples_test.dart (async*)"?>
 {% prettify dart %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
@@ -373,7 +374,7 @@ and the asynchronous loop (`await for`).
 
 To raise an exception, use `throw`:
 
-<?code-excerpt "tours/test/samples_test.dart (throw)"?>
+<?code-excerpt "misc/test/samples_test.dart (throw)"?>
 {% prettify dart %}
 if (astronauts == 0) {
   throw new StateError('No astronauts.');
@@ -382,7 +383,7 @@ if (astronauts == 0) {
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-<?code-excerpt "tours/test/samples_test.dart (try)"?>
+<?code-excerpt "misc/test/samples_test.dart (try)"?>
 {% prettify dart %}
 try {
   for (var object in flybyObjects) {
@@ -396,8 +397,25 @@ try {
 }
 {% endprettify %}
 
+<<<<<<< HEAD
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an async function.
+=======
+[Read more](/guides/language/language-tour#exceptions) about exceptions, including information about the distinction between Error and Exception, stack traces, `rethrow`, and more.
+
+### Getters and setters
+
+Getters and setters are special methods that appear like properties. We could rewrite the `launchYear` property of the `Spacecraft` class like so:
+
+<?code-excerpt "misc/lib/samples/spacecraft.dart (get)" replace="/ShowingGetter//g"?>
+{% prettify dart %}
+class Spacecraft {
+  // ...
+  DateTime launchDate;
+  int get launchYear => launchDate?.year;
+  // ...
+}
+{% endprettify %}
 
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
 Error and Exception.

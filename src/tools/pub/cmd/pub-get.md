@@ -1,14 +1,13 @@
 ---
-layout: default
+title: pub get
+description: Use pub get to retrieve the dependencies used by your Dart application.
 permalink: /tools/pub/cmd/pub-get
-title: "pub get"
-description: "Use pub get to retrieve the dependencies used by your Dart application."
 ---
 
 _Get_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% prettify sh %}
+{% prettify nocode %}
 $ pub get [--offline] [--packages-dir]
 {% endprettify %}
 
@@ -18,10 +17,10 @@ directory, as well as their
 [transitive dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-{% prettify sh %}
+```terminal
 $ pub get
 Got dependencies!
-{% endprettify %}
+```
 
 If the [system cache](/tools/pub/glossary#system-cache)
 doesn't already contain the dependencies, `pub get`

@@ -1,15 +1,14 @@
 ---
-layout: default
+title: pub deps
+description: Use pub deps to print a dependency graph for a package.
 permalink: /tools/pub/cmd/pub-deps
-title: "pub deps"
-description: "Use pub deps to print a dependency graph for a package."
 toc: false
 ---
 
 _Deps_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% prettify sh %}
+{% prettify none %}
 $ pub deps [--style=<style>]
 {% endprettify %}
 
@@ -26,7 +25,7 @@ list.
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
 
-{% prettify none %}
+{% prettify yaml %}
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2
@@ -34,11 +33,7 @@ dependencies:
 
 Here's an example of the `pub deps` output for markdown_converter:
 
-{% comment %}
-The <pre style...> is a workaround for prettify treating the
-quotes like they start strings.
-{% endcomment %}
-<pre style="color:#222">
+```terminal
 $ pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6
@@ -51,8 +46,7 @@ markdown_converter 0.0.0
 |   '-- stack_trace 1.4.2
 |       '-- path...
 '-- markdown 0.7.2
-</pre>
-
+```
 
 ## Options
 

@@ -32,7 +32,7 @@ An **async** function is a function whose body is marked with an **async**
 modifier.
 
 {% prettify dart %}
-foo() [[highlight]]async[[/highlight]] => 42;
+foo() [!async!] => 42;
 {% endprettify %}
 
 When you call an **async** function, it immediately returns a Future;
@@ -89,7 +89,7 @@ operations completes, get the result, and resume execution.
 An `await` expression lets you do exactly that:
 
 {% prettify dart %}
-([[highlight]]await[[/highlight]] myFile.copy(newPath)).path == newPath;
+([!await!] myFile.copy(newPath)).path == newPath;
 {% endprettify %}
 
 When the **await** expression runs, `myFile.copy()` is invoked, yielding
@@ -151,7 +151,7 @@ First, notice that the modifier goes between the function signature and
 its body. We could also have written `foo()` as
 
 {% prettify dart %}
-foo() [[highlight]]async[[/highlight]] { return 42; }
+foo() [!async!] { return 42; }
 {% endprettify %}
 
 In short, the modifier comes before the => or the curly brace that opens

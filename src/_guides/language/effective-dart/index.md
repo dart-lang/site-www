@@ -66,8 +66,8 @@ For links to all the guidelines, see the
   **Have feedback on the guides?** <br>
   Please create a [new issue][] or comment on one of our [existing issues][].
 
-  [new issue]: https://github.com/dart-lang/site-www/issues/new
-  [existing issues]: https://github.com/dart-lang/site-www/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
+  [new issue]: {{site.repo}}/issues/new
+  [existing issues]: {{site.repo}}/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
 
 [dartfmt]: https://github.com/dart-lang/dart_style#readme

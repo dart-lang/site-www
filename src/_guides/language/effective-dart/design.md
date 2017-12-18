@@ -1,14 +1,10 @@
 ---
 layout: guide
 title: "Effective Dart: Design"
-description: "Design consistent, usable libraries."
-
-nextpage:
-  url:
-  title:
+description: Design consistent, usable libraries.
 prevpage:
   url: /guides/language/effective-dart/usage
-  title: "Usage"
+  title: Usage
 ---
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
@@ -27,7 +23,7 @@ Use the same name for the same thing, throughout your code. If a precedent
 already exists outside your API that your API's users are likely to know, follow
 that precedent.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
@@ -35,16 +31,14 @@ toSomething()     // Consistent with Iterable's toList().
 asSomething()     // Consistent with List's asMap().
 Point             // A familiar concept.
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
 wrappedAsSomething() // Inconsistent with asX() precedent.
 Cartesian            // Unfamiliar to most users.
 {% endprettify %}
-</div>
 
 The goal is to take advantage of what the user already knows. This includes
 their knowledge of the problem domain itself, the conventions of the core
@@ -60,23 +54,21 @@ abbreviate. If you do abbreviate, [capitalize them correctly][caps].
 
 [caps]: /guides/language/effective-dart/style#identifiers
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 pageCount
 buildRectangles
 IOStream
 HttpRequest
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 numPages    // "num" is an abbreviation of number(of)
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
 {% endprettify %}
-</div>
 
 
 ### PREFER putting the most descriptive noun last.
@@ -84,22 +76,20 @@ HypertextTransferProtocolRequest
 The last word should be the most descriptive of what the thing is. You can
 prefix it with other words, such as adjectives, to further describe the thing.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
 ChunkedConversionSink // A ConversionSink that's chunked.
 CssFontFaceRule       // A rule for font faces in CSS.
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
 RuleFontFaceCss           // Not a CSS.
 {% endprettify %}
-</div>
 
 
 ### CONSIDER making the code read like a sentence.
@@ -107,7 +97,7 @@ RuleFontFaceCss           // Not a CSS.
 When in doubt about naming, write some code that uses your API, and try to read
 it like a sentence.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 // "If errors is empty..."
 if (errors.isEmpty) ...
@@ -118,9 +108,8 @@ _subscription.cancel();
 // "Get the monsters where the monster has claws."
 monsters.where((monster) => monster.hasClaws);
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
@@ -131,19 +120,17 @@ _subscription.toggle();
 // Filter the monsters with claws *out* or include *only* those?
 monsters.filter((monster) => monster.hasClaws);
 {% endprettify %}
-</div>
 
 It's helpful to try out your API and see how it "reads" when used in code, but
 you can go too far. It's not helpful to add articles and other parts of speech
 to force your names to *literally* read like a grammatically correct sentence.
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 {% endprettify %}
-</div>
 
 
 ### PREFER a noun phrase for a non-boolean property or variable.
@@ -152,19 +139,17 @@ The reader's focus is on *what* the property is. If the user cares more about
 *how* a property is determined, then it should probably be a method with a
 verb phrase name.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 list.deleteItems
 {% endprettify %}
-</div>
 
 
 ### PREFER a non-imperative verb phrase for a boolean property or variable.
@@ -200,7 +185,7 @@ object to do something, because accessing a property doesn't change the object.
 (If the property *does* modify the object in a meaningful way, it should be a
 method.)
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 isEmpty
 hasElements
@@ -209,9 +194,8 @@ closesWindow
 canShowPopup
 hasShownPopup
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
@@ -220,7 +204,6 @@ closeable     // Sounds like an interface.
 closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
-</div>
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
@@ -228,13 +211,12 @@ showPopup     // Sounds like it shows the popup.
 This refines the previous rule. For named parameters that are boolean, the name
 is often just as clear without the verb and it reads better at the callsite.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 Isolate.spawn(entryPoint, message, paused: false)
 new List.from(elements, growable: true)
 new RegExp(pattern, caseSensitive: false)
 {% endprettify %}
-</div>
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -247,14 +229,13 @@ produce some output, or talk to the outside world.
 Those kinds of members should be named using an imperative verb phrase that
 clarifies the work the member performs.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.add()
 queue.removeFirst()
 window.refresh()
 connection.downloadData()
 {% endprettify %}
-</div>
 
 This way, an invocation reads like a command to do that work.
 
@@ -270,12 +251,11 @@ This means the member is *syntactically* a method, but *conceptually* it is a
 property, and should be named as such using a phrase that describes *what* the
 member returns.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.elementAt(3)
 string.codeUnitAt(4)
 {% endprettify %}
-</div>
 
 This guideline is deliberately softer than the previous one. Sometimes a method
 has no side effects but is still simpler to name with a verb phrase like
@@ -291,13 +271,12 @@ named starting with `to` followed by the kind of result.
 
 If you define a conversion method, it's helpful to follow that convention.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.toSet()
 stackTrace.toString()
 dateTime.toLocal()
 {% endprettify %}
-</div>
 
 
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object.
@@ -309,13 +288,12 @@ original. Later changes to the original object are reflected in the view.
 
 The core library convention for you to follow is `as___()`.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.asMap()
 bytes.asFloat32List()
 subscription.asFuture()
 {% endprettify %}
-</div>
 
 
 ### AVOID describing the parameters in the function's or method's name.
@@ -323,29 +301,26 @@ subscription.asFuture()
 The user will see the argument at the callsite, so it usually doesn't help
 readability to also refer to it in the name itself.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 list.add(element)
 map.remove(key)
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 list.addElement(element)
 map.removeKey(key)
 {% endprettify %}
-</div>
 
 However, it can be useful to mention a parameter to disambiguate it from other
 similarly-named methods that take different types:
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 map.containsKey(key)
 map.containsValue(value)
 {% endprettify %}
-</div>
 
 
 ## Libraries
@@ -381,19 +356,17 @@ function. If you're defining a class and it only has a single abstract member
 with a meaningless name like `call` or `invoke`, there is a good chance you
 just want a function.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 typedef bool Predicate(item);
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 abstract class Predicate {
   bool test(item);
 }
 {% endprettify %}
-</div>
 
 
 ### AVOID defining a class that contains only static members.
@@ -413,7 +386,7 @@ If a function or variable isn't logically tied to a class, put it at the top
 level. If you're worried about name collisions, give it a more precise name or
 move it to a separate library that can be imported with a prefix.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 DateTime mostRecent(List<DateTime> dates) {
   return dates.reduce((a, b) => a.isAfter(b) ? a : b);
@@ -421,9 +394,8 @@ DateTime mostRecent(List<DateTime> dates) {
 
 const _favoriteMammal = 'weasel';
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 class DateUtils {
   static DateTime mostRecent(List<DateTime> dates) {
@@ -435,7 +407,6 @@ class _Favorites {
   static const mammal = 'weasel';
 }
 {% endprettify %}
-</div>
 
 In idiomatic Dart, classes define *kinds of objects*. A type that is never
 instantiated is a code smell.
@@ -444,7 +415,7 @@ However, this isn't a hard rule. With constants and enum-like types, it may be
 natural to group them in a class. Even then, it's also reasonable to use a
 library instead.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 class Color {
   static const red = '#f00';
@@ -454,7 +425,6 @@ class Color {
   static const white = '#fff';
 }
 {% endprettify %}
-</div>
 
 
 ### AVOID extending a class that isn't intended to be subclassed.
@@ -529,7 +499,7 @@ But, in most cases, you should use a constructor even though it's more verbose.
 When users want a new instance of your class, they expect a constructor to be
 the normal way to create one.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 class Point {
   num x, y;
@@ -539,9 +509,8 @@ class Point {
         y = radius * math.sin(theta);
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 class Point {
   num x, y;
@@ -552,7 +521,6 @@ class Point {
   }
 }
 {% endprettify %}
-</div>
 
 
 ### CONSIDER making your constructor `const` if the class supports it.
@@ -600,20 +568,18 @@ should define a getter instead of a method when all of these are true:
   OK). Invoking the same getter repeatedly should return the same value
   unless the object is explicitly changed between calls.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 rectangle.width
 collection.isEmpty
 button.canShow
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 DateTime.now;   // Returns different value each call.
 window.refresh; // Doesn't return a value.
 {% endprettify %}
-</div>
 
 Unlike other languages, in Dart we don't require getters to be particularly fast
 or have certain complexity guarantees. Calling `length` on an Iterable may be
@@ -636,12 +602,11 @@ a setter. More specifically, use a setter instead of a method when it:
 *   **Is idempotent.** Calling the same setter twice with the same value should
     do nothing the second time.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 rectangle.width = 3;
 button.visible = false;
 {% endprettify %}
-</div>
 
 
 ### DON'T define a setter without a corresponding getter.
@@ -686,23 +651,21 @@ clearly, including the conditions under which `null` will be returned.
 
 Method cascades are a better solution for chaining method calls.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 var buffer = new StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 var buffer = new StringBuffer()
   .write('one')
   .write('two')
   .write('three');
 {% endprettify %}
-</div>
 
 
 ## Type annotations
@@ -728,24 +691,22 @@ implicit `dynamic` *is* the correct type for the API.
 For code internal to a library (either private, or things like nested functions)
 annotate where you feel it helps, but don't feel that you *must* provide them.
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 install(id, destination) {
   // ...
 }
 {% endprettify %}
-</div>
 
 Here, it's unclear what `id` is. A string? And what is `destination`? A string
 or a `File` object? Is this method synchronous or asynchronous?
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 Future<bool> install(PackageId id, String destination) {
   // ...
 }
 {% endprettify %}
-</div>
 
 With types, all of this is clarified.
 
@@ -754,17 +715,15 @@ With types, all of this is clarified.
 
 The type system infers `void` for all setters automatically.
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 void set foo(Foo value) {...}
 {% endprettify %}
-</div>
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 set foo(Foo value) {...}
 {% endprettify %}
-</div>
 
 
 ### PREFER type annotating private declarations.
@@ -774,7 +733,7 @@ important is guiding *maintainers* of your code. Adding type annotations to
 internal member and variable declarations can future readers of your code
 understand it, and help corral bugs.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 class CallChainVisitor {
   final SourceVisitor _visitor;
@@ -785,7 +744,6 @@ class CallChainVisitor {
   ...
 }
 {% endprettify %}
-</div>
 
 
 ### AVOID annotating types on function expressions.
@@ -795,19 +753,17 @@ enough that types are needed to understand it, it should probably be a function
 statement or a method. Conversely, if it is short enough to be an expression, it
 likely doesn't need types.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 var names = people.map((person) => person.name);
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 var names = people.map((Person person) {
   return person.name;
 });
 {% endprettify %}
-</div>
 
 
 ### AVOID annotating with `dynamic` when not required.
@@ -816,7 +772,7 @@ In most places in Dart, a type annotation can be omitted, in which case the type
 will automatically be `dynamic`. Thus, omitting the type annotation entirely is
 semantically equivalent but more terse.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 lookUpOrDefault(String name, Map map, defaultValue) {
   var value = map[name];
@@ -824,9 +780,8 @@ lookUpOrDefault(String name, Map map, defaultValue) {
   return defaultValue;
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
   var value = map[name];
@@ -834,7 +789,6 @@ dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
   return defaultValue;
 }
 {% endprettify %}
-</div>
 
 
 ### AVOID annotating with `Function`.
@@ -846,17 +800,15 @@ describes the signature and return type of the function.
 If you are annotating a field, this does mean you have to create a typedef, but
 that's usually worth doing.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 bool isValidString(String value, bool predicate(String string)) { ... }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 bool isValidString(String value, Function predicate) { ... }
 {% endprettify %}
-</div>
 
 One exception is if the variable can be one of several different function types.
 For example, it may allow a function that takes one mandatory parameter or a
@@ -878,7 +830,7 @@ A `dynamic` type annotation means that no type annotation can express what
 objects you actually allow. (Or maybe one could, but you don't care to write
 it.)
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 // Accepts any object.
 void log(Object object) {
@@ -892,7 +844,6 @@ bool convertToBool(arg) {
   throw new ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
-</div>
 
 ## Parameters
 
@@ -905,36 +856,33 @@ numbers are usually wrapped in named constants, but we usually just pass around
 `true` and `false` directly. That can make callsites unreadable if it isn't
 clear what the boolean represents:
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 new Task(true);
 new Task(false);
 new ListBox(false, true, true);
 new Button(false);
 {% endprettify %}
-</div>
 
 Instead, consider using named arguments, named constructors, or named constants
 to clarify what the call is doing.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 new Task.oneShot();
 new Task.repeating();
 new ListBox(scroll: true, showScrollbars: true);
 new Button(ButtonState.enabled);
 {% endprettify %}
-</div>
 
 Note that this doesn't apply to setters, where the name makes it clear what the
 value represents:
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 listBox.canScroll = true;
 button.isEnabled = false;
 {% endprettify %}
-</div>
 
 ### AVOID optional positional parameters if the user may want to omit earlier parameters.
 
@@ -943,7 +891,7 @@ earlier parameters are passed more often than later ones. Users should almost
 never need to explicitly pass a "hole" to omit an earlier positional argument to
 pass later one. You're better off using named arguments for that.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end])
 
@@ -964,7 +912,6 @@ Duration(
     int milliseconds: 0,
     int microseconds: 0})
 {% endprettify %}
-</div>
 
 ### AVOID mandatory parameters that permit nonce values.
 
@@ -976,17 +923,15 @@ Omitting the parameter is more terse and helps prevent bugs where a sentinel
 value like `null` is accidentally passed when the user thought they were
 providing a real value.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 string.substring(start)
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 string.substring(start, null)
 {% endprettify %}
-</div>
 
 
 ### DO use inclusive start and exclusive end parameters to accept a range.
@@ -998,12 +943,11 @@ than the index of the last item.
 
 This is consistent with core libraries that do the same thing.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 [0, 1, 2, 3].sublist(1, 3) // [1, 2].
 'abcd'.substring(1, 3)     // "bc".
 {% endprettify %}
-</div>
 
 It's particularly important to be consistent here because these parameters are
 usually unnamed. If your API takes a length instead of an end point, the
@@ -1058,7 +1002,7 @@ true.
 The language specifies that this check is done automatically and your `==`
 method is called only if the right-hand side is not `null`.
 
-<div class="good">
+{:.good-style}
 {% prettify dart %}
 class Person {
   final String name;
@@ -1067,9 +1011,8 @@ class Person {
       other is Person && name == other.name;
 }
 {% endprettify %}
-</div>
 
-<div class="bad">
+{:.bad-style}
 {% prettify dart %}
 class Person {
   final String name;
@@ -1080,5 +1023,4 @@ class Person {
       name == other.name;
 }
 {% endprettify %}
-</div>
 

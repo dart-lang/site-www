@@ -1,15 +1,14 @@
 ---
-layout: default
+title: pub publish
+description: Use pub publish to publish your Dart package to pub.dartlang.org.
 permalink: /tools/pub/cmd/pub-lish
-title: "pub publish"
-description: "Use pub publish to publish your Dart package to pub.dartlang.org."
 toc: false
 ---
 
 _Publish_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% prettify sh %}
+{% prettify nocode %}
 $ pub publish [--dry-run] [--force] [--server <url>]
 {% endprettify %}
 
@@ -53,7 +52,6 @@ The main pub server is itself open source and available [here][pub repo].
 [pub repo]: https://github.com/dart-lang/pub-dartlang
 
 <aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 
