@@ -1,7 +1,6 @@
 ---
-layout: guide
 title: "Strong Mode Dart: Fixing Common Problems"
-description: "Common problems you may have when converting to strong mode and how to fix them."
+description: Common problems you may have when converting to strong mode and how to fix them.
 toc: false
 ---
 
@@ -16,30 +15,8 @@ this page can help. Be sure to also check out
 Dart" means, and how strong mode contributes to making Dart a sound
 language.
 
-## Contents
-
-<p>Troubleshooting:</p>
-
-<ul>
-<li><a href="#am-i-using-strong-mode">Am I really using strong mode?</a></li>
-<li><a href="#not-using-strong-mode">I'm not using strong mode and I think I should be</a></li>
-</ul>
-
-<p>Common errors and warnings:</p>
-
-<ul>
-<li><a href="#undefined-member">Undefined member</a></li>
-<li><a href="#invalid-method-override">Invalid method override</a></li>
-<li><a href="#missing-type-arguments">Missing type arguments</a></li>
-<li><a href="#assigning-mismatched-types">Assigning mismatched types</a></li>
-<li><a href="#constructor-initialization-list">Constructor initialization list super() call</a></li>
-</ul>
-
-<p>Appendix:</p>
-
-<ul>
-<li><a href="#the-covariant-keyword">The covariant keyword</a></li>
-</ul>
+* TOC
+{:toc}
 
 For a complete list of sources about strong mode and sound Dart,
 see [other resources](/guides/language/sound-dart#other-resources)
@@ -54,19 +31,18 @@ If you're not seeing strong mode errors or warnings,
 make sure that you're using strong mode.
 A good test is to add the following code to a file:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 void test() {
   bool b = [0][0];
 }
 {% endprettify %}
-</div>
 
 If you're using strong mode, you'll see the following warning from the analyzer:
 
-{% prettify none %}
+```nocode
 [warning] A value of type 'int' can't be assigned to a variable of type 'bool'.
-{% endprettify %}
+```
 
 <hr>
 
@@ -82,26 +58,15 @@ How you troubleshoot strong mode depends on whether you are running
 If you are running dartanalyzer from the command line and you don't see
 expected strong mode errors, try the following:
 
-<ul markdown="1">
-<li markdown="1">
-  If your project contains an [analysis
+- If your project contains an [analysis
   options file,](/guides/language/analysis-options#the-analysis-options-file)
   make sure you've specified `strong mode: true` correctly.
   For more information, see [Specifying strong
   mode.](/guides/language/analysis-options#specifying-strong-mode)
-
-</li>
-
-<li markdown="1">
-  Run the analyzer with the `--strong` tag:
-
-{% prettify sh %}
-dartanalyzer --strong <file-or-directory>
-{% endprettify %}
-
-</li>
-
-</ul>
+- Run the analyzer with the `--strong` tag:
+  ```nocode
+  dartanalyzer --strong <file-or-directory>
+  ```
 
 For information on how to set up an analysis options file,
 see [Customize Static Analysis](/guides/language/analysis-options).
@@ -143,8 +108,7 @@ when enabling strong mode.
 <a name="undefined-member"></a>
 ### Undefined member
 
-**Error:**
-<code>&lt;<em>member</em>&gt; isn't defined for the class &lt;<em>class</em>&gt;</code>
+**Error:** <code>&lt;<em>member</em>&gt; isn't defined for the class &lt;<em>class</em>&gt;</code>
 
 These errors usually appear in code where a variable is statically known
 to be some supertype but the code assumes a subtype.
@@ -155,12 +119,11 @@ declaration or a downcast.
 For example, the analyzer complains that `context2D` in the following
 code is undefined:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 var canvas = querySelector("canvas");
-canvas.[[highlight]]context2D[[/highlight]]; // <-- Error.
+canvas.[!context2D!]; // <-- Error.
 {% endprettify %}
-</div>
 
 The `querySelector()` method statically returns an Element,
 but the code assumes it returns the subtype CanvasElement
@@ -171,21 +134,19 @@ Strong mode Dart infers `canvas` to be an Element.
 
 Fix this error with an explicit type declaration:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
-[[highlight]]CanvasElement[[/highlight]] canvas = querySelector("canvas");
+[!CanvasElement!] canvas = querySelector("canvas");
 canvas.context2D;
 {% endprettify %}
-</div>
 
 If you actually want a dynamic type, specify `dynamic`:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
-[[highlight]]dynamic[[/highlight]] canvas = querySelector("canvas");
+[!dynamic!] canvas = querySelector("canvas");
 canvas.context2D;
 {% endprettify %}
-</div>
 
 <hr>
 
@@ -212,47 +173,45 @@ are changed from `num` to `int`, a subtype of `num`.
 This code passes static analysis in classic Dart,
 but is unsafe and fails analysis in strong mode Dart.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 abstract class NumberAdder {
   num add(num a, num b);
 }
 
 class IntAdder extends NumberAdder {
-  int add([[highlight]]int[[/highlight]] a, [[highlight]]int[[/highlight]] b) => a + b;
+  int add([!int!] a, [!int!] b) => a + b;
 }
 {% endprettify %}
-</div>
 
 Consider the following scenario where floating
 point values are passed to an IntAdder:
 
 {% prettify dart %}
 NumberAdder adder = new IntAdder(); // Upcast
-adder.add([[highlight]]1.2[[/highlight]], [[highlight]]3.4[[/highlight]]);                // Kaboom!
+adder.add([!1.2!], [!3.4!]); // Kaboom!
 {% endprettify %}
 
 If the override were allowed, this code would crash at runtime.
 
 Fix this error by widening the types in the subclass:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 abstract class NumberAdder {
   num add(num a, num b);
 }
 
 class IntAdder extends NumberAdder {
-  num add([[highlight]]num[[/highlight]] a, [[highlight]]num[[/highlight]] b) => a + b;
+  num add([!num!] a, [!num!] b) => a + b;
 }
 {% endprettify %}
-</div>
 
 For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-param-types).
 
 <aside class="alert alert-info" markdown="1">
-**Note:** If you have a valid reason to use a subtype, you can use the
-[covariant keyword](#the-covariant-keyword).
+  **Note:** If you have a valid reason to use a subtype, you can use the
+  [covariant keyword](#the-covariant-keyword).
 </aside>
 
 
@@ -273,31 +232,29 @@ In the following example, `Subclass` extends `Superclass<T>` but doesn't
 specify a type argument. The analyzer infers `Subclass<dynamic>`,
 which results in an invalid override error on `method(int)`.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 class Superclass<T> {
   void method(T t) {}
 }
 
 class Subclass extends Superclass {
-  [[highlight]]void method(int i) {}[[/highlight]] // <-- Error.
+  [!void method(int i) {}!] // <-- Error.
 }
 {% endprettify %}
-</div>
 
 You can fix this by specifying the type on the subclass:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 class Superclass<T> {
   void method(T t) {}
 }
 
-class Subclass extends Superclass[[highlight]]<int>[[/highlight]] {
+class Subclass extends Superclass[!<int>!] {
   void method(int i) {}
 }
 {% endprettify %}
-</div>
 
 <hr>
 
@@ -319,7 +276,7 @@ For example, the following code initializes a map with several
 `<String, int>` but the code assumes `<String, dynamic>`.
 When the code then adds a (String, float) pair, the analyzer complains.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 void main() {
   var map = {
@@ -328,18 +285,17 @@ void main() {
     'c': 13
   }; // <= inferred to be Map<String, int>
 
-  [[highlight]]map['d'] = 1.5;[[/highlight]]  // 1.5 is not int!
+  [!map['d'] = 1.5;!]  // 1.5 is not int!
 }
 {% endprettify %}
-</div>
 
 This can be fixed by explicitly defining the map's type to be
 `<String, dynamic>`.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 void main() {
-  var map = [[highlight]]<String, dynamic>[[/highlight]]{
+  var map = [!<String, dynamic>!]{
     'a': 7,
     'b': 11,
     'c': 13
@@ -348,7 +304,6 @@ void main() {
   map['d'] = 1.5;
 }
 {% endprettify %}
-</div>
 
 Alternatively, if you only want this map to accept integers and floats,
 you can specify the type as `<String, num>`.
@@ -370,23 +325,21 @@ The Dart dev compiler generates simpler code if
 it relies on the `super()` call appearing last.
 The following example generates an error in strong mode Dart:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
-  : [[highlight]]super[[/highlight]](food),
+  : [!super!](food),
     _name = name { ... }
 {% endprettify %}
-</div>
 
 Fix the error by moving the `super()` call:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
   : _name = name,
-    [[highlight]]super[[/highlight]](food) { ... }
+    [!super!](food) { ... }
 {% endprettify %}
-</div>
 
 For more information, see [DO place the super() call last in a
 constructor initialization list](/guides/language/effective-dart/usage#do-place-the-super-call-last-in-a-constructor-initialization-list)
@@ -413,15 +366,15 @@ This removes the static error and instead checks for an invalid
 parameter type at runtime.
 
 <aside class="alert alert-info" markdown="1">
-**Version note:**
-The `covariant` keyword was introduced in 1.22.
-It replaces the `@checked` annotation.
+  **Version note:**
+  The `covariant` keyword was introduced in 1.22.
+  It replaces the `@checked` annotation.
 </aside>
 
 The following shows how you might use `covariant`:
 
 {% prettify dart %}
-[[highlight]]import 'package:meta/meta.dart';[[/highlight]]
+[!import 'package:meta/meta.dart';!]
 
 class Animal {
   void chase(Animal x) {}
@@ -430,7 +383,7 @@ class Animal {
 class Mouse extends Animal {}
 
 class Cat extends Animal {
-  void chase([[highlight]]covariant[[/highlight]] Mouse x) {}
+  void chase([!covariant!] Mouse x) {}
 }
 {% endprettify %}
 
