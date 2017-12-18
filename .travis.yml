@@ -21,6 +21,7 @@ env:
 
 before_install:
   - nvm install 8
+  - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev
   - source ./scripts/env-set.sh
   - ./scripts/before-install.sh
 
