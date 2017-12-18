@@ -1,14 +1,13 @@
 ---
 layout: tutorial
-title: "Write Command-Line Apps"
-description: "Basics for command-line apps"
-
+title: Write Command-Line Apps
+description: Basics for command-line apps
 nextpage:
   url: /tutorials/dart-vm/httpserver
   title: "Dart-VM: Write HTTP Clients & Servers"
 prevpage:
   url: /tutorials/dart-vm/get-started
-  title: "Get Started"
+  title: Get Started
 ---
 
 ### An introduction to standalone apps
@@ -268,10 +267,10 @@ the `stdout` (if the -n flag is set) followed by the line from the file.
 
 {% prettify dart %}
 if (showLineNumbers) {
-  [[highlight]]stdout.write('${lineNumber++} ');[[/highlight]]
+  [!stdout.write('${lineNumber++} ');!]
 }
 
-[[highlight]]stdout.writeln(line);[[/highlight]]
+[!stdout.writeln(line);!]
 {% endprettify %}
 
 The `write()` and `writeln()` methods take an object of any type,
@@ -303,7 +302,7 @@ tries to list a directory.
 
 {% prettify dart %}
 if (await FileSystemEntity.isDirectory(path)) {
-  [[highlight]]stderr.writeln('error: $path is a directory');[[/highlight]]
+  [!stderr.writeln('error: $path is a directory');!]
 } else {
   exitCode = 2;
 }
@@ -339,7 +338,7 @@ the program instead reads synchronously from stdin
 using the `pipe()` method.
 
 {% prettify dart %}
-[[highlight]]stdin[[/highlight]].pipe(stdout);
+[!stdin!].pipe(stdout);
 {% endprettify %}
 
 In this case,
@@ -372,7 +371,7 @@ Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
 {% prettify dart %}
-if (await [[highlight]]FileSystemEntity.isDirectory(path)[[/highlight]]) {
+if (await [!FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
 } else {
   exitCode = 2;
@@ -401,11 +400,11 @@ for (var path in paths) {
       .transform(UTF8.decoder)
       .transform(const LineSplitter());
   try {
-    [[highlight]]await for (var line in lines) {[[/highlight]]
-      [[highlight]]if (showLineNumbers) {[[/highlight]]
-        [[highlight]]stdout.write('${lineNumber++} ');[[/highlight]]
-      [[highlight]]}[[/highlight]]
-      [[highlight]]stdout.writeln(line);[[/highlight]]
+    [!await for (var line in lines) {!]
+      [!if (showLineNumbers) {!]
+        [!stdout.write('${lineNumber++} ');!]
+      [!}!]
+      [!stdout.writeln(line);!]
     }
   } catch (_) {
     _handleError(path);
@@ -423,8 +422,8 @@ for (var path in paths) {
   int lineNumber = 1;
   Stream lines = new File(path)
       .openRead()
-      [[highlight]].transform(UTF8.decoder)[[/highlight]]
-      [[highlight]].transform(const LineSplitter());[[/highlight]]
+      [!.transform(UTF8.decoder)!]
+      [!.transform(const LineSplitter());!]
   try {
     await for (var line in lines) {
       if (showLineNumbers) {
@@ -536,7 +535,7 @@ Future _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
     stderr.writeln('error: $path is a directory');
   } else {
-    [[highlight]]exitCode = 2;[[/highlight]]
+    [!exitCode = 2;!]
   }
 }
 {% endprettify %}

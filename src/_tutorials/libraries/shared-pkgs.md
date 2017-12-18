@@ -52,16 +52,16 @@ such as WebStorm.
 
 Install Stagehand using [pub global activate](/tools/pub/cmd/pub-global):
 
-{% prettify huge %}
+```terminal
 $ pub global activate stagehand
-{% endprettify %}
+```
 
 Now run the `stagehand` command to see what kinds of template files
 it can generate:
 
-{% prettify huge %}
+```terminal
 $ stagehand
-{% endprettify %}
+```
 
 You'll see a list of generators, including various web and server apps.
 One of the web app generators is named **web-simple**.
@@ -69,23 +69,18 @@ One of the web app generators is named **web-simple**.
 In a new directory named `vector_victor`,
 use Stagehand to generate a bare-bones web app:
 
-{% prettify huge %}
+```terminal
 $ mkdir vector_victor
 $ cd vector_victor
 $ stagehand web-simple
-{% endprettify %}
+```
 
 The pubspec.yaml file contains the package specification written in YAML.
 (Visit <a href="/tools/pub/pubspec">Pubspec Format</a>
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-{% comment %}
-NOTE: I used lang-html because you seem to need either that or lang-dart
-to get the colors right for the highlighted text. Also, lang-yaml doesn't
-treat the URL too well.
-{% endcomment %}
-<pre class="prettyprint lang-html allow-scroll">
+<pre class="prettyprint lang-yaml allow-scroll">
 <a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Package name (required)">name: 'vector_victor'</a>
 version: 0.0.1
 description: An absolute bare-bones web app.
@@ -115,24 +110,16 @@ which is available at pub.dartlang.org.
 
 1. Get the current installation details for the package:
 
-   <ul type="a">
-   <li> Go to
-   <a href="https://pub.dartlang.org/packages/vector_math"
-   target="_blank">vector_math's pub.dartlang.org entry</a>.
-   </li>
+   {: type="a"}
+   1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
+   2. Click the **Installing** tab.
+   3. Copy the **vector_math** line from the sample **dependencies** entry.
+      The entry should look something like this:
 
-   <li> Click the <b>Installing</b> tab.
-   </li>
-
-   <li> Copy the <b>vector_math</b> line from
-   the sample <b>dependencies</b> entry.
-   The entry should look something like this:
-
-   {% prettify html %}
-dependencies:
-  [[highlight]]vector_math: "^1.4.3"[[/highlight]]
-   {% endprettify %}
-   </li>
+      {% prettify yaml %}
+      dependencies:
+        [!vector_math: ^1.4.3!]
+      {% endprettify %}
 
 2. Edit `pubspec.yaml`.
 
@@ -142,10 +129,10 @@ dependencies:
    YAML is picky!
    For example:
 
-   {% prettify html %}
-dependencies:
-  browser: '>=0.10.0 <0.11.0'
-  [[highlight]]vector_math: "^1.4.3"[[/highlight]]
+   {% prettify yaml %}
+   dependencies:
+     browser: '>=0.10.0 <0.11.0'
+     [!vector_math: ^1.4.3!]
    {% endprettify %}
 
 See [Pub Versioning Philosophy](/tools/pub/versioning)
@@ -168,8 +155,8 @@ it might automatically install the packages your app depends on.
 If not, do it yourself by running
 [pub get](/tools/pub/cmd/pub-get):
 
-{% prettify none %}
-$ [[highlight]]pub get[[/highlight]]
+```terminal
+$ pub get
 Resolving dependencies... (1.4s)
 + browser 0.10.0+2
 + vector_math 1.4.3
@@ -177,8 +164,7 @@ Downloading vector_math 1.4.3...
 Changed 2 dependencies!
 Precompiling executables...
 Loading source assets...
-$
-{% endprettify %}
+```
 
 The `pub get` command installs the
 packages in your app's dependencies list.
@@ -276,49 +262,31 @@ are identified with the special `dart:` prefix.
 For external libraries installed by pub,
 use the `package:` prefix.
 
-<ol>
-  <li>
-  Get the import details for the package's main library:
+1. Get the import details for the package's main library:
 
-  <ol type="a">
-  <li> Go to
-  <a href="https://pub.dartlang.org/packages/vector_math"
-  target="_blank">vector_math's pub.dartlang.org entry</a>.
-  </li>
+   {: type="a"}
+   1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
+   2. Click the **Installing** tab.
+   3. Copy the **import** line. It should look something like this:
 
-   <li> Click the <b>Installing</b> tab.
-   </li>
+      {% prettify dart %}
+      import 'package:vector_math/vector_math.dart';
+      {% endprettify %}
 
-   <li> Copy the <b>import</b> line.
-   It should look something like this:
+2. Edit your main Dart file (web/main.dart).
 
-{% prettify dart %}
-import 'package:vector_math/vector_math.dart';
-{% endprettify %}
-   </li>
-  </ol>
-  </li>
+3. Import the library from the package.
+   By convention, package imports appear after dart:* imports:
 
-  <li>
-  Edit your main Dart file (web/main.dart).
-  </li>
+   {% prettify dart %}
+   import 'dart:html';
 
-  <li>
-  Import the library from the package.
-  By convention, package imports appear after dart:* imports:
-
-{% prettify dart %}
-import 'dart:html';
-
-[[highlight]]import 'package:vector_math/vector_math.dart';[[/highlight]]
-{% endprettify %}
-  </li>
-</ol>
+   [!import 'package:vector_math/vector_math.dart';!]
+   {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-You specify the filename, not the library name,
-when you import a library.
+  **Note:** You specify the filename, not the library name,
+  when you import a library.
 </aside>
 
 

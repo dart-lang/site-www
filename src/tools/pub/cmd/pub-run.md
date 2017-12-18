@@ -1,14 +1,13 @@
 ---
-layout: default
+title: pub run
+description: Use pub run to run a Dart script in your package.
 permalink: /tools/pub/cmd/pub-run
-title: "pub run"
-description: "Use pub run to run a Dart script in your package."
 ---
 
 _Run_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% prettify sh %}
+{% prettify nocode %}
 $ pub run [--mode=<mode>] [--checked] <executable> [args...]
 {% endprettify %}
 
@@ -27,9 +26,9 @@ This is the simplest use case.
 From the root of a package that contains `foo.dart`
 in the `bin` directory, run the app using the following command:
 
-{% prettify sh %}
+```terminal
 $ pub run foo arg1 arg2
-{% endprettify %}
+```
 
 This command looks in your package's `bin` directory for the
 specified script and invokes it, passing in any arguments.
@@ -41,9 +40,9 @@ bin directory (but within the package), prepend the path
 to the name of the script.
 For example, to run `foo.dart` in the `example/sub` directory:
 
-{% prettify sh %}
+```terminal
 $ pub run example/sub/foo arg1 arg2
-{% endprettify %}
+```
 
 ## Running a script in a dependency
 
@@ -51,9 +50,9 @@ To run a script from the `bin` directory of a package that you depend on
 in the pubspec, specify the package name.
 For example, to run `bar.dart` in the foo package:
 
-{% prettify sh %}
+```terminal
 $ pub run foo:bar arg
-{% endprettify %}
+```
 
 You can only run scripts out of another package's `bin` directory.
 All other directories are private.
@@ -101,6 +100,5 @@ update-for-dart-2
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

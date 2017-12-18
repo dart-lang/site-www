@@ -1,14 +1,13 @@
 ---
-layout: default
+title: pub upgrade
+description: Use pub upgrade to get the latest versions of all dependencies used by your Dart application.
 permalink: /tools/pub/cmd/pub-upgrade
-title: "pub upgrade"
-description: "Use pub upgrade to get the latest versions of all dependencies used by your Dart application."
 ---
 
 _Upgrade_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% prettify sh %}
+{% prettify nocode %}
 $ pub upgrade [args] [dependencies]
 {% endprettify %}
 
@@ -25,10 +24,10 @@ directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-{% prettify sh %}
+```terminal
 $ pub upgrade
 Dependencies upgraded!
-{% endprettify %}
+```
 
 When `pub upgrade` upgrades dependency versions, it writes a lockfile to ensure that
 [`pub get`](/tools/pub/cmd/pub-get) will use the same versions of those
@@ -57,8 +56,10 @@ You can tell `pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-    $ pub upgrade test args
-    Dependencies upgraded!
+```terminal
+  $ pub upgrade test args
+  Dependencies upgraded!
+```
 
 Upgrading a dependency upgrades its transitive dependencies to their latest
 versions as well. Usually, no other dependencies are updated; they stay at the
