@@ -729,8 +729,6 @@ With types, all of this is clarified.
 
 ### DON'T specify a return type for a setter.
 
-The type system infers `void` for all setters automatically.
-
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
 {% prettify dart %}
