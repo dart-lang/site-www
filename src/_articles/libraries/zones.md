@@ -24,12 +24,12 @@ a simple HTTP server
 might use the following code:
 
 {% prettify dart %}
-[[highlight]]runZoned(() {[[/highlight]]
+[!runZoned(() {!]
   HttpServer.bind('0.0.0.0', port).then((server) {
     server.listen(staticFiles.serveRequest);
   });
-[[highlight]]},
-onError: (e, stackTrace) => print('Oh noes! $e $stackTrace'));[[/highlight]]
+[!},
+onError: (e, stackTrace) => print('Oh noes! $e $stackTrace'));!]
 {% endprettify %}
 
 Running the HTTP server in a zone
@@ -232,7 +232,7 @@ you see this output:
 {% prettify xml %}
 Outside runZoned
 Inside non-error zone
-[[highlight]]Inside error zone (not called)[[/highlight]]
+[!Inside error zone (not called)!]
 Uncaught Error: 499
 Unhandled exception:
 499
@@ -415,14 +415,14 @@ Future splitLinesStream(stream) {
   return stream
       .transform(ASCII.decoder)
       .transform(const LineSplitter())
-[[highlight]]      .map((line) => '${Zone.current[#filename]}: $line')[[/highlight]]
+[!      .map((line) => '${Zone.current[#filename]}: $line')!]
       .toList();
 }
 
 Future splitLines(filename) {
-[[highlight]]  return runZoned(() {[[/highlight]]
+[!  return runZoned(() {!]
     return splitLinesStream(new File(filename).openRead());
-[[highlight]]  }, zoneValues: { #filename: filename });[[/highlight]]
+[!  }, zoneValues: { #filename: filename });!]
 }
 
 main() {

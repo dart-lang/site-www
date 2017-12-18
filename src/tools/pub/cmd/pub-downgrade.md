@@ -1,8 +1,7 @@
 ---
-layout: default
+title: pub downgrade
+description: Use pub downgrade to get the lowest versions of all dependencies used by your Dart application.
 permalink: /tools/pub/cmd/pub-downgrade
-title: "pub downgrade"
-description: "Use pub downgrade to get the lowest versions of all dependencies used by your Dart application."
 ---
 
 _Downgrade_ is one of the commands of the _pub_ tool.
@@ -18,7 +17,7 @@ in the current working directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-{% prettify sh %}
+```terminal
 $ pub downgrade
 Resolving dependencies... (1.2s)
 + barback 0.13.0
@@ -28,7 +27,7 @@ Resolving dependencies... (1.2s)
 + source_span 1.0.0
 + stack_trace 0.9.1
 Changed 6 dependencies!
-{% endprettify %}
+```
 
 The `pub downgrade` command creates a lockfile. If one already exists,
 pub ignores that file and generates a new one from scratch, using the lowest
@@ -44,7 +43,7 @@ It's possible to tell `pub downgrade` to downgrade specific dependencies to the
 lowest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-{% prettify sh %}
+```terminal
 $ pub downgrade test
 Resolving dependencies...
   barback 0.15.2+2
@@ -61,7 +60,7 @@ Resolving dependencies...
 These packages are no longer being depended on:
 - matcher 0.11.3
 Changed 3 dependencies!
-{% endprettify %}
+```
 
 If you are downgrading a specific dependency, pub tries to find the
 highest versions of any transitive dependencies that fit the new dependency
@@ -111,6 +110,5 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>

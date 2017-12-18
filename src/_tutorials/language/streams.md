@@ -41,9 +41,9 @@ iterates over the events of a stream like the **for loop** iterates
 over an Iterable. For example:
 
 {% prettify dart %}
-Future<int> sumStream(Stream<int> stream) [[highlight]]async[[/highlight]] {
+Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
-  [[highlight]]await for[[/highlight]] (var value in stream) {
+  [!await for!] (var value in stream) {
     sum += value;
   }
   return sum;

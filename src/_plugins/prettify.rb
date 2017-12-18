@@ -15,22 +15,22 @@ module Prettify
   # {% endprettify %}
   #
   # The language name can be ommitted if it is not known.
+  # Use 'nocode' or 'none' as the language to turn of prettifying.
+
   class Tag < Liquid::Block
 
     Syntax = /\s*(\w+)\s*/o
 
     def initialize(tag_name, markup, tokens)
       super
-      if markup =~ Syntax
-        @lang = $1
-      end
+      @lang = $1 if markup =~ Syntax
     end
 
     def render(context)
-      # out = '<pre class="prettyprint linenums'
-      out = '<pre class="prettyprint'
-      unless @lang.nil?
-        out += ' lang-' + @lang
+      out = '<pre class="'
+      unless @lang == 'nocode' || @lang == 'none'
+        out += 'prettyprint'
+        out += ' lang-' + @lang if @lang
       end
       out += '">'
 

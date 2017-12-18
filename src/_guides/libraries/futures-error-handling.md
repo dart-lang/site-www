@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Futures and Error Handling"
-description: "Everything you wanted to know about handling errors and exceptions when writing asynchronous code."
+title: Futures and Error Handling
+description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code.
 ---
 
 This guide describes how to handle errors when writing asynchronous code.
@@ -45,7 +44,7 @@ and await expressions. For example:
 Future main() async {
   var dir = new Directory('/tmp');
 
-  [[highlight]]try[[/highlight]] {
+  [!try!] {
     var dirList = dir.list();
     await for (FileSystemEntity f in dirList) {
       if (f is File) {
@@ -54,7 +53,7 @@ Future main() async {
         print('Found dir ${f.path}');
       }
     }
-  } [[highlight]]catch[[/highlight]] (e) {
+  } [!catch!] (e) {
     print(e.toString());
   }
 }
