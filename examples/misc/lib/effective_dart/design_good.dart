@@ -21,7 +21,7 @@ void miscDeclAnalyzedButNotTested() {
   (Iterable errors, Iterable monsters) {
     // #docregion code-like-prose
     // "If errors is empty..."
-    if (errors.isEmpty) {/* ... */}
+    if (errors.isEmpty) {/*-...-*/}
 
     // "Hey, subscription, cancel!"
     subscription.cancel();

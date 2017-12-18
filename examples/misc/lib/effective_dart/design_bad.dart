@@ -8,7 +8,7 @@ void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
     // #docregion code-like-prose
     // Telling errors to empty itself, or asking if it is?
-    if (errors.empty) {/* ... */}
+    if (errors.empty) {/*-...-*/}
 
     // Toggle what? To what?
     subscription.toggle();
@@ -19,7 +19,7 @@ void miscDeclAnalyzedButNotTested() {
 
     Iterable theCollectionOfErrors;
     // #docregion code-like-prose-overdone
-    if (theCollectionOfErrors.isEmpty) {/* ... */}
+    if (theCollectionOfErrors.isEmpty) {/*-...-*/}
 
     monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
     // #enddocregion code-like-prose-overdone

@@ -6,7 +6,7 @@ prevpage:
   url: /guides/language/effective-dart/usage
   title: Usage
 ---
-<?code-excerpt replace="/\/\/!//g;/ellipsis;?/.../g;/\/\*(\s*\.\.\.\s*)\*\//$1/g;/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/\/\/!//g;/ellipsis;?/.../g;/\/\*(\s*\.\.\.\s*)\*\//$1/g;/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;/([A-Z]\w*)\d\b/$1/g"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
 
@@ -102,7 +102,7 @@ it like a sentence.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (code-like-prose)"?>
 {% prettify dart %}
 // "If errors is empty..."
-if (errors.isEmpty) { ... }
+if (errors.isEmpty) ...
 
 // "Hey, subscription, cancel!"
 subscription.cancel();
@@ -115,7 +115,7 @@ monsters.where((monster) => monster.hasClaws);
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)"?>
 {% prettify dart %}
 // Telling errors to empty itself, or asking if it is?
-if (errors.empty) { ... }
+if (errors.empty) ...
 
 // Toggle what? To what?
 subscription.toggle();
@@ -131,7 +131,7 @@ to force your names to *literally* read like a grammatically correct sentence.
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose-overdone)"?>
 {% prettify dart %}
-if (theCollectionOfErrors.isEmpty) { ... }
+if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
 {% endprettify %}
@@ -162,8 +162,8 @@ Boolean names are often used as conditions in control flow, so you want a name
 that reads well there. Compare:
 
 {% prettify dart %}
-if (window.closeable) { ... }   // Adjective.
-if (window.canClose) { ... }    // Verb.
+if (window.closeable) ...  // Adjective.
+if (window.canClose) ...   // Verb.
 {% endprettify %}
 
 Good names tend to start with one of a few kinds of verbs:
