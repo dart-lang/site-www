@@ -1,7 +1,6 @@
 ---
-layout: guide
-title: "Strong Mode Dart"
-description: "Why and how to write sound Dart code."
+title: Strong Mode Dart
+description: Why and how to write sound Dart code.
 ---
 
 {% comment %}
@@ -13,19 +12,19 @@ You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
-are sometimes used interchangeably. _Strong mode_ is a sound static
-type system that uses a combination of static and runtime checks to
-ensure your code is type safe&mdash;that you can never see a value
-whose runtime type does not match its static type.
-With strong mode enabled (in an implementation that has both the
-static and runtime checks), Dart is a sound language.
-Currently, the Dart dev compiler
-([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_)
-is the only full implementation of strong mode.
-VM and dart2js support are on their way.
+  **Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
+  are sometimes used interchangeably. _Strong mode_ is a sound static
+  type system that uses a combination of static and runtime checks to
+  ensure your code is type safe&mdash;that you can never see a value
+  whose runtime type does not match its static type.
+  With strong mode enabled (in an implementation that has both the
+  static and runtime checks), Dart is a sound language.
+  Currently, the Dart dev compiler
+  ([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_)
+  is the only full implementation of strong mode.
+  VM and dart2js support are on their way.
 
-"Classic Dart" refers to Dart before soundness was added to the language.
+  "Classic Dart" refers to Dart before soundness was added to the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -42,7 +41,7 @@ annotations to your Lists and Maps. The following code shows valid
 but unsound Dart code. The `fn()` function prints an integer list.
 The `main()` function creates a list of integers and passes it to `fn()`:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 void fn(List<int> a) {
   print(a);
@@ -52,10 +51,9 @@ main() {
   var list = [];
   list.add(1);
   list.add("2");
-  fn([[highlight]]list[[/highlight]]);
+  fn([!list!]);
 }
 {% endprettify %}
-</div>
 
 In classic Dart, this code passes analysis with no errors. Once you enable
 strong mode, a warning appears on `list` (highlighted above) in the call to
@@ -69,20 +67,19 @@ When adding a type annotation (`<int>`) on creation of the list
 the parameter type `int`. Removing the quotes in `list.add("2")` results
 in code that passes static analysis with no errors or warnings.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 void fn(List<int> a) {
   print(a);
 }
 
 void main() {
-  var list = [[highlight]]<int>[[/highlight]][];
+  var list = [!<int>!][];
   list.add(1);
-  list.add([[highlight]]2[[/highlight]]);
+  list.add([!2!]);
   fn(list);
 }
 {% endprettify %}
-</div>
 
 {% comment %}
 Note: Can't use embedded DP because it does not provide a Strong mode
@@ -124,17 +121,16 @@ of type `int`. Iterating through the list and substracting 10 from
 each item causes a runtime exception because the minus operator isn't
 defined for strings.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 main () {
   List<dynamic> strings = ["not", "ints"];
-  [[highlight]]List<int> numbers = strings;[[/highlight]]
+  [!List<int> numbers = strings;!]
   for (var number in numbers) {
-    [[highlight]]print(number - 10); // <— Boom![[/highlight]]
+    [!print(number - 10); // <— Boom!!]
   }
 }
 {% endprettify %}
-</div>
 
 Once strong mode is enabled, the analyzer warns you that this assignment
 is a problem, avoiding the runtime error.
@@ -196,7 +192,6 @@ type hierarchy:
 <a name="use-proper-return-types"></a>
 #### Use proper return types when overriding methods
 
-<br>
 The return type of a method in a subclass must the same type or a
 subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
@@ -204,7 +199,7 @@ the getter method in the Animal class:
 {% prettify dart %}
 class Animal {
   void chase(Animal a) {}
-  [[highlight]]Animal get parent => ...[[/highlight]]
+  [!Animal get parent => ...!]
 }
 {% endprettify %}
 
@@ -212,43 +207,40 @@ The `parent` getter method returns an Animal. In the HoneyBadger subclass,
 you can replace the getter's return type with HoneyBadger (or any other subtype
 of Animal), but an unrelated type is not allowed.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 class HoneyBadger extends Animal {
   void chase(Animal a) {}
-  [[highlight]]HoneyBadger[[/highlight]] get parent => ...
+  [!HoneyBadger!] get parent => ...
 }
 {% endprettify %}
-</div>
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 class HoneyBadger extends Animal {
   void chase(Animal a) {}
-  [[highlight]]Roots[[/highlight]] get parent => ...
+  [!Roots!] get parent => ...
 }
 {% endprettify %}
-</div>
 
 <a name="use-proper-param-types"></a>
 #### Use proper parameter types when overriding methods
 
-<br>
 The parameter of an overridden method must have either the same type
 or a supertype of the corresponding parameter in the superclass.
 Don't "tighten" the parameter type by replacing the type with a
 subtype of the original parameter.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** If you have a valid reason to use a subtype, you can use the
-[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+  **Note:** If you have a valid reason to use a subtype, you can use the
+  [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 </aside>
 
 Consider the `chase(Animal)` method for the Animal class:
 
 {% prettify dart %}
 class Animal {
-  [[highlight]]void chase(Animal a) {}[[/highlight]]
+  [!void chase(Animal a) {}!]
   Animal get parent => ...
 }
 {% endprettify %}
@@ -256,19 +248,18 @@ class Animal {
 The `chase()` method takes an Animal. A HoneyBadger chases anything.
 It's OK to override the `chase` method to take anything (Object).
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 class HoneyBadger extends Animal {
-  void chase([[highlight]]Object[[/highlight]] a) {}
+  void chase([!Object!] a) {}
   Animal get parent => ...
 }
 {% endprettify %}
-</div>
 
 The following code tightens the parameter on the `chase` method
 from Animal to Mouse, a subclass of Animal.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 class Animal {
   void chase(Animal x) {}
@@ -277,24 +268,21 @@ class Animal {
 class Mouse extends Animal {}
 
 class Cat extends Animal {
-  void chase([[highlight]]Mouse[[/highlight]] x) {}
+  void chase([!Mouse!] x) {}
 }
 {% endprettify %}
-</div>
 
 This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 Animal a = new Cat();
-a.chase(new [[highlight]]Alligator[[/highlight]]());   // NOT TYPE SAFE (or feline safe)
+a.chase(new [!Alligator!]());   // NOT TYPE SAFE (or feline safe)
 {% endprettify %}
-</div>
 
 #### Don't use a dynamic list as a typed list
 
-<br>
 Strong mode won't allow you to use a dynamic list as a typed list.
 You can use a dynamic list when you want to have a list with
 different kinds of things in it, but strong mode won't let you use
@@ -305,7 +293,7 @@ This rule also applies to instances of generic types.
 The following code creates a dynamic list of Dog, and assigns it to
 a list of type Cat, which generates an error during static analysis.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 class Animal {}
 
@@ -314,11 +302,10 @@ class Dog extends Animal {}
 class Cat extends Animal {}
 
 void main() {
-  List<Cat> foo = [[highlight]]<dynamic>[[/highlight]][new Dog()]; // Error
+  List<Cat> foo = [!<dynamic>!][new Dog()]; // Error
   List<dynamic> bar = <dynamic>[new Dog(), new Cat()]; // OK
 }
 {% endprettify %}
-</div>
 
 ## Runtime checks
 
@@ -336,8 +323,8 @@ class Dog extends Animal {}
 class Cat extends Animal {}
 
 void main() {
-  [[highlight]]List<Animal> animals = [new Dog()];[[/highlight]]
-  [[highlight]]List<Cat> cats = animals;[[/highlight]]
+  [!List<Animal> animals = [new Dog()];!]
+  [!List<Cat> cats = animals;!]
 }
 {% endprettify %}
 
@@ -345,8 +332,8 @@ However, the app throws an exception at runtime because it is an error
 to assign a list of Dogs to a list of Cats.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** As of release 1.24, only dartdevc implements these runtime checks,
-but support in other tools is coming.
+  **Note:** As of release 1.24, only dartdevc implements these runtime checks,
+  but support in other tools is coming.
 </aside>
 
 ## Type inference
@@ -407,7 +394,6 @@ using `var`, the resulting map has type Map<String, Object>.
 
 ### Example 3: From List&lt;dynamic> to `var`
 
-
 Original definition:
 {% prettify dart %}
 List<dynamic> arguments = methodCall['args'];
@@ -444,19 +430,17 @@ Subsequent assignments are not taken into account.
 This may mean that too precise a type may be inferred.
 If so, you can add a type annotation.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 var x = 3;    // x is inferred as an int
 x = 4.0;
 {% endprettify %}
-</div>
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 num y = 3; // y is defined as num, which can be double or int
 y = 4.0;
 {% endprettify %}
-</div>
 
 ### Type argument inference
 
@@ -467,7 +451,7 @@ of occurrence, and upwards information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
 you can always explicitly specify the type arguments.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
@@ -480,7 +464,6 @@ var listOfDouble = [3.0];
 // Type argument to map() is inferred as <int> using upwards information.
 var listOfInt2 = listOfDouble.map((x) => x.toInt());
 {% endprettify %}
-</div>
 
 ## How to enable strong mode
 
@@ -559,31 +542,28 @@ specific type (Cat) with something that consumes anything (Animal),
 so replacing `Cat c` with `Animal c` is allowed, because Animal is
 a supertype of Cat.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 Animal c = new Cat();
 {% endprettify %}
-</div>
 
 But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
 superclass may provide a type of Cat with different behaviors, such
 as Lion:
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 MaineCoon c = new Cat();
 {% endprettify %}
-</div>
 
 In a producing position, it's safe to replace something that produces a
 type (Cat) with a more specific type (MaineCoon). So, the following
 is allowed:
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 Cat c = new MaineCoon();
 {% endprettify %}
-</div>
 
 ### Generic type assignment
 
@@ -597,7 +577,7 @@ In the following example, you can substitute
 `new List<Cat>()` with `new List<MaineCoon>()` because
 `List<MaineCoon>` is a subtype of `List<Cat>`.
 
-<div class="passes-sa" markdown="1">
+{:.passes-sa}
 {% prettify dart %}
 class Animal {
   void feed() {}
@@ -615,7 +595,7 @@ void feedAnimals(Iterable<Animal> animals) {
 
 main(List<String> args) {
   // Was: List<Cat> myCats = new List<Cat>();
-  List<Cat> myCats = new List<[[highlight]]MaineCoon[[/highlight]]>();
+  List<Cat> myCats = new List<[!MaineCoon!]>();
   Cat muffin = new Cat();
   Cat winky = new Cat();
   Cat bongo = new Cat();
@@ -624,7 +604,6 @@ main(List<String> args) {
   feedAnimals(myCats);
 }
 {% endprettify %}
-</div>
 
 {% comment %}
 Gist:  https://gist.github.com/4a2a9bc2242042ba5338533d091213c0
@@ -700,7 +679,7 @@ static tooling and checked mode would enforce this.
 However, in the following context, the info method prints
 "helloworld" in checked mode, without any static errors or warnings.
 
-<div class="fails-sa" markdown="1">
+{:.fails-sa}
 {% prettify dart %}
 import 'dart:collection';
 import 'util.dart';
@@ -719,7 +698,6 @@ void main() {
    info(list);
 }
 {% endprettify %}
-</div>
 
 This code raises no issues when run in checked mode, but generates
 numerous errors when analyzed under strong mode.
@@ -761,4 +739,3 @@ but most of the information applies to anyone using strong mode Dart:
 * [Using Generic Methods](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md) -
   Details beyond what the [generic methods](/guides/language/language-tour#using-generic-methods) section
   of the language tour provides.
-
