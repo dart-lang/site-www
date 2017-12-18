@@ -811,8 +811,8 @@ main .content {
 @include dart-style-for(good-style, $alert-success-bg, 'good');
 @include dart-style-for(bad-style, $alert-danger-bg, 'bad');
 
-@include dart-style-for(passes-sa, $alert-success-bg, '\2714  passes static analysis');
-@include dart-style-for(fails-sa, $alert-danger-bg, '\2717  static analysis errors or warnings');
+@include dart-style-for(passes-sa, $alert-success-bg, '\2714  static analysis: success');
+@include dart-style-for(fails-sa, $alert-danger-bg, '\2717  static analysis: error/warning');
 
 // Deprecated, use good-style
 .good {
