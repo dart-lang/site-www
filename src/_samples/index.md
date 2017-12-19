@@ -146,7 +146,7 @@ including how the documentation tooling works.
 
 ## Imports
 
-To get access to APIs defined in other libraries, use `import`.
+To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" replace="/'.*?' as \w+/'path\/to\/my_other_file.dart'/g"?>
 {% prettify dart %}
