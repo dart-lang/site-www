@@ -8,7 +8,6 @@ prevpage:
   url: /guides/language/effective-dart
   title: Overview
 ---
-<?code-excerpt  replace="/ellipsis;/.../g;/\/\/!//g;/\/\*(\s*\.\.\.\s*)\*\//$1/g"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes

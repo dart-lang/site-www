@@ -117,20 +117,20 @@ void miscDeclAnalyzedButNotTested() {
 
   (isDeepFried, hasPieCrust, vegan, containsBacon) {
     // #docregion multi-bin-op
-    var bobLikesIt = isDeepFried || //!
-        (hasPieCrust && !vegan) || //!
+    var bobLikesIt = isDeepFried || //!<br>
+        (hasPieCrust && !vegan) || //!<br>
         containsBacon;
 
     // #docregion four-spaces-for-arrow
-    bobLikes() => //!
+    bobLikes() => //!<br>
         isDeepFried || (hasPieCrust && !vegan) || containsBacon;
     // #enddocregion four-spaces-for-arrow, multi-bin-op
   };
 
   (someCondition, whenTrue, whenFalse) {
     // #docregion ternary-op
-    return someCondition //!
-        ? whenTrue //!
+    return someCondition //!<br>
+        ? whenTrue //!<br>
         : whenFalse;
     // #enddocregion ternary-op
   };
@@ -146,12 +146,12 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion collection-literal
     mapInsideList([
       {
-        'a': 'b', //!
-        'c': 'd' //!
+        'a': 'b', //!<br>
+        'c': 'd' //!<br>
       },
       {
-        'a': 'b', //!
-        'c': 'd' //!
+        'a': 'b', //!<br>
+        'c': 'd' //!<br>
       },
     ]);
     // #enddocregion collection-literal
@@ -188,7 +188,7 @@ void miscDeclAnalyzedButNotTested() {
   (buffer, name) {
     // #docregion cascade
     buffer
-      ..write('Hello, ') //!
+      ..write('Hello, ') //!<br>
       ..write(name)
       ..write('!');
     // #enddocregion cascade
@@ -208,8 +208,8 @@ void miscDeclAnalyzedButNotTested() {
     });
 
     args.addAll([
-      '--mode', //!
-      'release', //!
+      '--mode', //!<br>
+      'release', //!<br>
       '--checked'
     ]);
 

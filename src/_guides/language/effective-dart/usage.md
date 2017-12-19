@@ -9,7 +9,7 @@ prevpage:
   url: /guides/language/effective-dart/documentation
   title: Documentation
 ---
-<?code-excerpt replace="/\/\*(\s*\.\.\.\s*)\*\//$1/g;/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
 This is the most "blue-collar" guide in Effective Dart. You'll apply the
 guidelines here every day in the bodies of your Dart code. *Users* of your

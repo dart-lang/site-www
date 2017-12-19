@@ -9,7 +9,6 @@ prevpage:
   url: /guides/language/effective-dart/style
   title: Style
 ---
-<?code-excerpt replace="/=. blockEllipsis;/{ ... }/g;/ellipsis;/.../g;/\/\*(\s*\.\.\.\s*)\*\//$1/g"?>
 
 It's easy to think your code is obvious today without realizing how much you
 rely on context already in your head. People new to your code, and
@@ -126,7 +125,7 @@ ending with a period. As you can see below, it is often not a complete sentence.
 ///
 /// Throws an [ArgumentError] if there is already an option named [name] or
 /// there is already an option using abbreviation [abbr]. Returns the new flag.
-Flag addFlag(String name, String abbr) { ... }
+Flag addFlag(String name, String abbr) => ...
 {% endprettify %}
 
 {:.bad-style}
@@ -134,7 +133,7 @@ Flag addFlag(String name, String abbr) { ... }
 {% prettify dart %}
 /// Starts a new block as a child of the current chunk. Nested blocks are
 /// handled using their own independent [LineWriter].
-ChunkBuilder startBlock() { ... }
+ChunkBuilder startBlock() => ...
 {% endprettify %}
 
 The description should help the reader understand whether this API might
@@ -149,10 +148,10 @@ The doc comment should focus on what the code *does*.
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (third-person)"?>
 {% prettify dart %}
 /// Returns `true` if every element satisfies the [predicate].
-bool all(bool predicate(T element)) { ... }
+bool all(bool predicate(T element)) => ...
 
 /// Starts the stopwatch if not already running.
-void start() { ... }
+void start() => ...
 {% endprettify %}
 
 ### PREFER starting variable, getter, or setter comments with noun phrases.
@@ -168,7 +167,7 @@ the *result* of that work, not the work itself.
 int weekday;
 
 /// The number of checked buttons on the page.
-int get checkedCount { ... }
+int get checkedCount => ...
 {% endprettify %}
 
 If there's both a setter and a getter, comment only the getter. That way,
@@ -198,7 +197,7 @@ class Chunk { ... }
 /// Returns the lesser of two numbers.
 ///
 ///     min(5, 3); // 3.
-num min(num a, num b) { ... }
+num min(num a, num b) => ...
 {% endprettify %}
 
 Humans are great at generalizing from examples, so even a single code sample
@@ -239,7 +238,7 @@ and returns of a method are.
 /// @returns The new flag.
 /// @throws ArgumentError If there is already an option with
 ///     the given name or abbreviation.
-Flag addFlag(String name, String abbr) { ... }
+Flag addFlag(String name, String abbr) => ...
 {% endprettify %}
 
 The convention in Dart is to integrate that into the description of the method
@@ -252,7 +251,7 @@ and highlight parameters using square brackets.
 ///
 /// Throws an [ArgumentError] if there is already an option named [name] or
 /// there is already an option using abbreviation [abbr]. Returns the new flag.
-Flag addFlag(String name, String abbr) { ... }
+Flag addFlag(String name, String abbr) => ...
 {% endprettify %}
 
 ### AVOID redundantly mentioning types in doc comments.

@@ -3,7 +3,7 @@ title: A Tour of the Dart Language
 description: A tour of all of the major Dart language features.
 short-title: Language Tour
 ---
-<?code-excerpt replace="/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption

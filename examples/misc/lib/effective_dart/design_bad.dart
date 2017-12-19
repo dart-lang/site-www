@@ -27,7 +27,7 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion cascades
-    var buffer = new StringBuffer0() //!
+    var buffer = new StringBuffer0() //!<br>
         .write('one')
         .write('two')
         .write('three');
