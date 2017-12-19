@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty, sort_constructors_first, type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps, unnecessary_getters_setters, unused_element, unused_local_variable
 import 'dart:async';
 import 'dart:io';
-import 'dart:math' as math;
+import 'dart:math';
 
 import 'usage_good.dart';
 
@@ -164,8 +164,8 @@ class Circle1 {
 
   Circle1(num radius)
       : radius = radius,
-        area = math.PI * radius * radius,
-        circumference = math.PI * 2.0 * radius;
+        area = PI * radius * radius,
+        circumference = PI * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store1
 
@@ -191,8 +191,8 @@ class Circle2 {
   }
 
   void _recalculate() {
-    _area = math.PI * _radius * _radius;
-    _circumference = math.PI * 2.0 * _radius;
+    _area = PI * _radius * _radius;
+    _circumference = PI * 2.0 * _radius;
   }
 }
 // #enddocregion cacl-vs-store2
