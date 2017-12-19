@@ -6,7 +6,7 @@ prevpage:
   url: /guides/language/effective-dart/usage
   title: Usage
 ---
-<?code-excerpt replace="/\/\/!//g;/ellipsis;?/.../g;/\/\*(\s*\.\.\.\s*)\*\//$1/g;/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
 

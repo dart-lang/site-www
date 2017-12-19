@@ -886,9 +886,9 @@ class Process {
 
 class ProcessIterator implements Iterator<Process> {
   @override
-  Process get current => /*...*/
+  Process get current => ...
   @override
-  bool moveNext() => /*...*/
+  bool moveNext() => ...
 }
 
 // A mythical class that lets you iterate through all
@@ -1126,9 +1126,9 @@ static method to manage multiple Futures and wait for them to complete:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 {% prettify dart %}
-Future deleteLotsOfFiles() async => /* ... */
-Future copyLotsOfFiles() async => /* ... */
-Future checksumLotsOfOtherFiles() async => /* ... */
+Future deleteLotsOfFiles() async =>  ...
+Future copyLotsOfFiles() async =>  ...
+Future checksumLotsOfOtherFiles() async =>  ...
 
 await Future.wait([
   deleteLotsOfFiles(),

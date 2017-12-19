@@ -1,11 +1,14 @@
 # Examples
 
-This package contains all of the sources that appear in the Language Tour and the Library Tour, including the smallest of code excerpts.
+This folder (`examples`), contains the following packages:
+
+- `misc` contains code for effective dart, the language tour, the library tour, samples and possibly more.
+- `httpserver` is one of the larger samples.
+- `util` is a package of shared utilities used by `misc`, etc.
 
 ## Original sources
 
-Sources originally taken from the Up-and-Running repo (but reworked to contain doc regions)
-are in these folders:
+The original tour sources, taken from the Up-and-Running repo (but reworked to contain doc regions), are in these folders:
 
 - `/examples_archive/language_tour` (now obsolete, see below)
 - `/examples_archive/library_tour`
@@ -13,20 +16,23 @@ are in these folders:
 These original sources don't have tests, and practically each code excerpt is an independent
 package (with its own pubspec).
 
+The original sources for the (large) samples were copied from the
+[dart-tutorials-samples](https://github.com/dart-lang/dart-tutorials-samples) repo.
+
 ## New sources
 
 Consolidated and reworked versions of the original sources have been developed,
 and are found under these folders:
 
-- `lib/language_tour`, `lib/library_tour`
-- `test/language_tour`, `test/library_tour`
+- `examples/*/lib`
+- `examples/*/test`
 
 As can be expected, Travis jobs run the
 
 - Analyzer over both `lib` and `test`
 - Tests under `test`
 
-### Source organisation
+### File organisation for the Tours
 
 The new Language Tour sources are under `lib/language_tour` and `test/language_tour`.
 Below each of these folders, you'll find either a file or a folder with a name
@@ -82,6 +88,20 @@ will display as
 
   <code>int <mark>foo</mark> = bar;</code>
 
-[lib/language_tour/classes/employee.dart]: https://github.com/dart-lang/site-www/blob/master/examples/lib/language_tour/classes/employee.dart
-[lib/util/print.dart]: https://github.com/dart-lang/site-www/blob/master/examples/lib/util/print.dart
-[test/language_tour/classes_test.dart#L95]: https://github.com/dart-lang/site-www/blob/master/examples/test/language_tour/classes_test.dart#L95
+## Code excerpt transformation
+
+The code excerpt extractor can apply regular-expression-based replace transformations.
+There are global transformations applied to all code excerpts. See
+`./scripts/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
+along with the `--replace` command line argumet of the `code_excerpt_updater` command.
+
+File-scope global replace expressions are included at the top of some of site page markdown files.
+For example, `src/_guides/language/effective-dart/design.md` currently use the file-global replace argument:
+
+```html
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+```
+
+This particular transformation strips the trailing version number off of class names. For
+example `String0` becomes `String`, and `Point1`, `Point2`, etc. all become `Point`. This
+allows the originating source file to contain multiple versions of the same class.

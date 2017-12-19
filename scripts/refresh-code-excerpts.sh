@@ -30,7 +30,12 @@ if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
 runWebdevGulp;
 
-ARGS='--no-escape-ng-interpolation'
+ARGS='--no-escape-ng-interpolation '
+ARGS+='--replace='
+ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dartfmt)
+ARGS+='/ellipsis;?/.../g;' # ellipses; --> ...
+ARGS+='/\/\*(\s*\.\.\.\s*)\*\//$1/g;' # /*...*/ --> ...
+ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brackets too)
 
 SRC="$1"
 : ${SRC:="$rootDir/src"}
