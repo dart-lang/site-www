@@ -14,6 +14,9 @@ if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
 
+# Until site-www has its own shredder, use the one from site-webdev
+(cd $rootDir/../site-webdev; gulp create-www-fragments)
+
 ARGS='--no-escape-ng-interpolation'
 
 SRC="$1"
