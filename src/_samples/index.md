@@ -177,7 +177,7 @@ The linter rule sort_constructors_first made us put the getter below
 the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 {% prettify dart %}
 class Spacecraft {
   String name;
@@ -229,7 +229,7 @@ including initializer lists, redirecting constructors, constant constructors,
 
 Dart has single inheritance.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 {% prettify dart %}
 class Orbiter extends Spacecraft {
   num altitude;
@@ -245,7 +245,7 @@ class Orbiter extends Spacecraft {
 
 Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart %}
 class Piloted {
   int astronauts = 1;
@@ -257,7 +257,7 @@ class Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -273,7 +273,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 {% prettify dart %}
 class MockSpaceship implements Spacecraft {
   // ···
@@ -284,7 +284,7 @@ class MockSpaceship implements Spacecraft {
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
-<?code-excerpt "tours/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart %}
 [!abstract!] class Describable {
   void describe();
