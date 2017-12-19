@@ -1405,7 +1405,7 @@ way:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 {% prettify dart %}
-// Parens improve readability.
+// Parentheses improve readability.
 if ((n % i == 0) && (d % i == 0)) ...
 
 // Harder to read, but equivalent.

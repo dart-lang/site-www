@@ -261,6 +261,7 @@ member returns.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)" replace="/;//g"?>
 {% prettify dart %}
 list.elementAt(3)
+list.firstWhere(test)
 string.codeUnitAt(4)
 {% endprettify %}
 

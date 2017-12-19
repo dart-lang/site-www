@@ -39,7 +39,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion omit-verb-for-bool-param
   };
 
-  (DoubleLinkedQueue queue, window, connection) {
+  (Queue queue, window, connection) {
     // #docregion verb-for-func-with-side-effect
     list.add(ellipsis);
     queue.removeFirst();
@@ -48,9 +48,10 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion verb-for-func-with-side-effect
   };
 
-  () {
+  (test) {
     // #docregion noun-for-func-returning-value
     list.elementAt(3);
+    list.firstWhere(test);
     string.codeUnitAt(4);
     // #enddocregion noun-for-func-returning-value
   };

@@ -24,7 +24,7 @@ void main() {
   test('precedence', () {
     int d = 1, i = 1, n = 1;
     // #docregion precedence
-    // Parens improve readability.
+    // Parentheses improve readability.
     if ((n % i == 0) && (d % i == 0)) {/*-...-*/}
 
     // Harder to read, but equivalent.
