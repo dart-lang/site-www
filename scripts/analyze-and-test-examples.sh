@@ -7,7 +7,7 @@
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
-function analyze_and_text() {
+function analyze_and_test() {
   pushd "$1" > /dev/null
   travis_fold start analyzeAndTest.get
   pub get
@@ -90,7 +90,7 @@ for d in $EXAMPLES/??*; do
   echo
   echo "PROCESSING $d"
   echo
-  analyze_and_text $d;
+  analyze_and_test $d;
 done
 
 popd > /dev/null

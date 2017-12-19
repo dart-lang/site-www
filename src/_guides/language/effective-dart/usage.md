@@ -9,7 +9,7 @@ prevpage:
   url: /guides/language/effective-dart/documentation
   title: Documentation
 ---
-<?code-excerpt replace="/\/\*(\s*\.\.\.\s*)\*\//$1/g;/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
 This is the most "blue-collar" guide in Effective Dart. You'll apply the
 guidelines here every day in the bodies of your Dart code. *Users* of your
@@ -331,8 +331,8 @@ class Circle {
 
   Circle(num radius)
       : radius = radius,
-        area = math.PI * radius * radius,
-        circumference = math.PI * 2.0 * radius;
+        area = PI * radius * radius,
+        circumference = PI * 2.0 * radius;
 }
 {% endprettify %}
 
@@ -371,8 +371,8 @@ class Circle {
   }
 
   void _recalculate() {
-    _area = math.PI * _radius * _radius;
-    _circumference = math.PI * 2.0 * _radius;
+    _area = PI * _radius * _radius;
+    _circumference = PI * 2.0 * _radius;
   }
 }
 {% endprettify %}
@@ -388,8 +388,8 @@ class Circle {
 
   Circle(this.radius);
 
-  num get area => math.PI * radius * radius;
-  num get circumference => math.PI * 2.0 * radius;
+  num get area => PI * radius * radius;
+  num get circumference => PI * 2.0 * radius;
 }
 {% endprettify %}
 

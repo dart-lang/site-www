@@ -1,9 +1,9 @@
 ---
-layout: guide
-title: "A Tour of the Dart Language"
-description: "A tour of all of the major Dart language features."
+title: A Tour of the Dart Language
+description: A tour of all of the major Dart language features.
 short-title: Language Tour
 ---
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
@@ -1405,11 +1405,11 @@ way:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 {% prettify dart %}
-// Parens improve readability.
-if ((n % i == 0) && (d % i == 0)) {/* ... */}
+// Parentheses improve readability.
+if ((n % i == 0) && (d % i == 0)) ...
 
 // Harder to read, but equivalent.
-if (n % i == 0 && d % i == 0) {/* ... */}
+if (n % i == 0 && d % i == 0) ...
 {% endprettify %}
 
 <div class="alert alert-warning" markdown="1">
@@ -1719,7 +1719,7 @@ var visibility = isPublic ? 'public' : 'private';
 If the boolean expression tests for null,
 consider using `??`.
 
-<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)" replace="/\d//g"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)"?>
 {% prettify dart %}
 String playerName(String name) => name ?? 'Guest';
 {% endprettify %}
@@ -1727,7 +1727,7 @@ String playerName(String name) => name ?? 'Guest';
 The previous example could have been written at least two other ways,
 but not as succinctly:
 
-<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)" replace="/\d//g"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 {% prettify dart %}
 // Slightly longer version uses ?: operator.
 String playerName(String name) => name != null ? name : 'Guest';

@@ -886,9 +886,9 @@ class Process {
 
 class ProcessIterator implements Iterator<Process> {
   @override
-  Process get current => /*...*/
+  Process get current => ...
   @override
-  bool moveNext() => /*...*/
+  bool moveNext() => ...
 }
 
 // A mythical class that lets you iterate through all
@@ -1126,9 +1126,9 @@ static method to manage multiple Futures and wait for them to complete:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 {% prettify dart %}
-Future deleteLotsOfFiles() async => /* ... */
-Future copyLotsOfFiles() async => /* ... */
-Future checksumLotsOfOtherFiles() async => /* ... */
+Future deleteLotsOfFiles() async =>  ...
+Future copyLotsOfFiles() async =>  ...
+Future checksumLotsOfOtherFiles() async =>  ...
 
 await Future.wait([
   deleteLotsOfFiles(),
@@ -1351,7 +1351,7 @@ and constants are from the Math library:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
 {% prettify dart %}
-import 'dart:math' as math;
+import 'dart:math';
 {% endprettify %}
 
 
@@ -1362,13 +1362,13 @@ The Math library provides basic trigonometric functions:
 <?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 {% prettify dart %}
 // Cosine
-assert(math.cos(math.PI) == -1.0);
+assert(cos(PI) == -1.0);
 
 // Sine
 var degrees = 30;
-var radians = degrees * (math.PI / 180);
+var radians = degrees * (PI / 180);
 // radians is now 0.52359.
-var sinOf30degrees = math.sin(radians);
+var sinOf30degrees = sin(radians);
 // sin 30° = 0.5
 assert((sinOf30degrees - 0.5).abs() < 0.01);
 {% endprettify %}
@@ -1385,8 +1385,8 @@ The Math library provides `max()` and `min()` methods:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
 {% prettify dart %}
-assert(math.max(1, 1000) == 1000);
-assert(math.min(1, -1000) == -1000);
+assert(max(1, 1000) == 1000);
+assert(min(1, -1000) == -1000);
 {% endprettify %}
 
 
@@ -1397,9 +1397,9 @@ Find your favorite constants—*pi*, *e*, and more—in the Math library:
 <?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
 {% prettify dart %}
 // See the Math library for additional constants.
-print(math.E); // 2.718281828459045
-print(math.PI); // 3.141592653589793
-print(math.SQRT2); // 1.4142135623730951
+print(E); // 2.718281828459045
+print(PI); // 3.141592653589793
+print(SQRT2); // 1.4142135623730951
 {% endprettify %}
 
 
@@ -1410,7 +1410,7 @@ optionally provide a seed to the Random constructor.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
 {% prettify dart %}
-var random = new math.Random();
+var random = new Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
 random.nextInt(10); // Between 0 and 9.
 {% endprettify %}
@@ -1419,7 +1419,7 @@ You can even generate random booleans:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
 {% prettify dart %}
-var random = new math.Random();
+var random = new Random();
 random.nextBool(); // true or false
 {% endprettify %}
 
