@@ -1,6 +1,4 @@
 # This bash file is meant to be source'd, not executed.
-#
-# Until site-www has it's own setup, use the one from site-webdev
 
 export WEBDEV_REPO=../site-webdev
 
@@ -12,7 +10,7 @@ else
 
   # This is a copy of the site-webdev script. It is embedded here so that
   # we don't force all users to clone site-webdev. This isn't DRY, but it is temporary.
-  
+
   if [[ -z "$(type -t rvm)" ]]; then
       echo "ERROR: rvm not installed. See site-webdev README. Skipping setup."
   elif [[ -z "$(type -t nvm)" ]]; then
