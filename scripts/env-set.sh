@@ -3,7 +3,7 @@
 export WEBDEV_REPO=../site-webdev
 
 if [[ -d $WEBDEV_REPO ]]; then
-  source $WEBDEV_REPO/scripts/env-set.sh
+  source $WEBDEV_REPO/scripts/env-set.sh --reset
 else
   echo "WARNING: expected to find webdev repo at $WEBDEV_REPO, but none found."
   echo "WARNING: running local copy of setup script."
