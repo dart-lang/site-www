@@ -168,7 +168,6 @@ including library prefixes, `show` and `hide`, and lazy loading through the `def
 
 ## Classes
 
-<<<<<<< HEAD
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
@@ -178,7 +177,7 @@ The linter rule sort_constructors_first made us put the getter below
 the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (class)"?>
 {% prettify dart %}
 class Spacecraft {
   String name;
@@ -230,7 +229,7 @@ including initializer lists, redirecting constructors, constant constructors,
 
 Dart has single inheritance.
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (extends)"?>
 {% prettify dart %}
 class Orbiter extends Spacecraft {
   num altitude;
@@ -246,7 +245,7 @@ class Orbiter extends Spacecraft {
 
 Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart %}
 class Piloted {
   int astronauts = 1;
@@ -258,7 +257,7 @@ class Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -274,7 +273,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (implements)"?>
 {% prettify dart %}
 class MockSpaceship implements Spacecraft {
   // ···
@@ -285,7 +284,7 @@ class MockSpaceship implements Spacecraft {
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "tours/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart %}
 [!abstract!] class Describable {
   void describe();
@@ -397,25 +396,8 @@ try {
 }
 {% endprettify %}
 
-<<<<<<< HEAD
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an async function.
-=======
-[Read more](/guides/language/language-tour#exceptions) about exceptions, including information about the distinction between Error and Exception, stack traces, `rethrow`, and more.
-
-### Getters and setters
-
-Getters and setters are special methods that appear like properties. We could rewrite the `launchYear` property of the `Spacecraft` class like so:
-
-<?code-excerpt "misc/lib/samples/spacecraft.dart (get)" replace="/ShowingGetter//g"?>
-{% prettify dart %}
-class Spacecraft {
-  // ...
-  DateTime launchDate;
-  int get launchYear => launchDate?.year;
-  // ...
-}
-{% endprettify %}
 
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
 Error and Exception.
