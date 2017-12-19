@@ -117,7 +117,10 @@ When you update an existing package or publish a new one,
 specify an upper constraint of `<2.0.0` for the SDK version. Examples:
 
 ```
-sdk: '>=1.20.1 <2.0.0'
+# Works in 1.20.1+; might work in 2.0.0-dev:
+sdk: '>=1.20.1 <2.0.0'       
+
+# Backward incompatible change requires at least 2.0.0-dev.1.2:
 sdk: '>=2.0.0-dev.1.2 <2.0.0'
 ```
 
