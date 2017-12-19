@@ -4,6 +4,20 @@ set -e -o pipefail
 
 readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
+function runWebdevGulp() {
+  pushd $rootDir > /dev/null
+  # Until site-www has its own shredder, use the one from site-webdev
+  if [[ -d $WEBDEV_REPO ]]; then
+    cd $WEBDEV_REPO;
+    gulp create-www-fragments;
+  else
+    echo "ERROR: you cannot run this script without $WEBDEV_REPO.";
+    echo "See the README for setup instructions.";
+    exit 1;
+  fi
+  popd > /dev/null
+}
+
 function usage() {
   echo $1; echo
   echo "Usage: $(basename $0) [path-to-src-file-or-folder]"; echo
@@ -14,8 +28,7 @@ if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
 
-# Until site-www has its own shredder, use the one from site-webdev
-(cd $rootDir/../site-webdev; gulp create-www-fragments)
+runWebdevGulp;
 
 ARGS='--no-escape-ng-interpolation'
 

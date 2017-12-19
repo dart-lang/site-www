@@ -1,80 +1,94 @@
 # The Dart language site (www.dartlang.org)
 
-[![Build Status](https://travis-ci.org/dart-lang/site-www.svg?branch=master)](https://travis-ci.org/dart-lang/site-www)
-&nbsp;&nbsp;
-[![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
+[![Build Status SVG][]][Repo on Travis]
+[![first-timers-only SVG][]][first-timers-only]
 
-The www.dartlang.org site. Built with
-[Jekyll](https://github.com/mojombo/jekyll)
-and hosted on Firebase.
+The www.dartlang.org site, built with [Jekyll][] and hosted on [Firebase][].
 
-Also see:
-* [github.com/dart-lang/site-webdev](http://github.com/dart-lang/site-webdev)
-* [github.com/dart-lang/site-events](http://github.com/dart-lang/site-events)
-* [github.com/dart-lang/www.dartlang.org](https://github.com/dart-lang/www.dartlang.org)
-  (the original www.dartlang.org site, which included information now in
-  [webdev.dartlang.org](http://webdev.dartlang.org) &
-  [events.dartlang.org](http://events.dartlang.org); the repo includes more setup info than we have here)
+[We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly](http://www.firsttimersonly.com)!
 
+For simple changes (such as to CSS and text), you probably don't need to build this site.
+But if you want/need to build, here's how.
 
-## Editing the site
+## Before you build this site
 
-See [Writing for *.dartlang.org](https://github.com/dart-lang/site-www/wiki/Writing-for-*.dartlang.org).
+### 1. Get the prerequisites
 
-Contributions welcome!
-(Just sign our [CLA](https://developers.google.com/open-source/cla/individual).)
+Install the following tools if you don't have them already.
 
-## Building the site
+- **[nvm][]**, the Node Version Manager. Then install the required version of node
+  (6 or later LTS release):
+  - `nvm install 8`
+- **[rvm][]**, the Ruby Version Manager. Then install the required version of ruby:
+  - `rvm install 2.4.2`
+- **[Dart][]**
 
-### One-time setup
+> IMPORTANT: Follow the installation instructions for each of the tools
+carefully. In particular, configure your shell/environment so
+that the tools are available in every terminal/command window you create.
 
-1. If you're on a Mac, install Xcode.
-1. Make sure you have Ruby. Consider using [rvm](http://rvm.io/rvm/install) to manage Ruby versions.
-1. Install `npm` by installing [Node.js](https://nodejs.org/en/); only needed to install firebase tools.
-   Consider using [nvm](http://nvm.sh) to manage node versions;
-   your **node version** must be **v6 or higher.**
-1. Install Firebase & superstatic:
+### 2. Clone this repo
 
-    ```
-    npm install -g firebase-tools superstatic     # might require sudo
-    ```
+1. **Create or choose a directory** to hold this site's Git repository, and the
+   other repositories needed to build this site (which will be fetched later);
+   for example, `~/git`.
+1. **Clone this repo** ([site-www][]) into the chosen directory by following
+   the instructions given in the GitHub help on [Cloning a repository][].
 
-1. Install bundles (you might need to run `gem install bundler` first):
+### 2.5 (Optional) Clone and setup site-webdev
 
-    ```
-    bundle install
-    ```
+If you'll be updating code under `examples`, and you'd like auto refresh
+code excerpts in this site's pages, then you'll need to clone and setup
+the [site-webdev][] repo under `~/git`.
 
-1. Optional: Install the `linkcheck` tool
+### 3. Run installation scripts
 
-    ```
-    pub global activate linkcheck
-    ```
+> NOTE: It is safe to (re-)run all of the commands and scripts given below even
+if you already have the required packages installed.
 
-    Follow the instructions provided by `pub global` to put the `linkcheck`
-    command on your path.
+**Open a terminal/command window** and execute the following commands:
 
-### While you're editing the site
+1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
+   **root of this repo**
+1. `source ./scripts/env-set.sh` &nbsp;&nbsp;#
+   initialize environment variables, set node & ruby version
+1. `./scripts/before-install.sh` &nbsp;&nbsp;#
+   install required tools
+1. `./scripts/install.sh`
 
-While you're working on the site, the best way to see your changes is
-to run the provided script, which runs `jekyll build --watch` and
-`firebase serve --port 4000` in parallel.
+> IMPORTANT: Any time you create a **new terminal/command window** to work on
+this repo, **repeat steps 1 and 2** above.
 
-In terminal, run:
+## Building this site
 
-```
-./serve_local.sh
-```
+Once everything is installed, you need to do a full site build at least once:
 
-Navigate to [localhost:4000](http://localhost:4000); webdev is served from [localhost:4001](http://localhost:4001).
+- `jekyll build` &nbsp;&nbsp;# full site build
 
-Since we host on Firebase, using the Firebase server
-makes sure everything works as closely to production as possible.
-Firebase hosting behaves very differently from Jekyll's WEBrick server,
-and our redirects in `firebase.json` obviously only work with Firebase.
+The generated site is placed in the `publish` folder. To serve this folder use:
 
+- `superstatic --port 4000`
 
-## Checking the site's HTML
+To view the generated site open [localhost:4000](http://localhost:4000) in a browser.
+
+You can build, serve, and have a watcher for changes by running the following command:
+
+- `./scripts/serve_local.sh`
+
+## Site checks
+
+### Checking example code
+
+If you've made changes to the example code run the following commands:
+
+- `./scripts/dartfmt.sh`
+- `./scripts/refresh-code-excerpts.sh`
+- `./scripts/analyze-and-test-examples.sh -q`
+
+If the last command reports failed tests and you'd like to know which
+test failed, then rerun the command without the `-q` flag.
+
+### Checking the site's HTML
 
 First, make sure you're using the Firebase server:
 
@@ -149,7 +163,7 @@ You should now see your project in the list.
 Copy the name of your project (e.g. `sz-www-dartlang-2`) to your clipboard.
 
 On the command line, from the top of GitHub repo, edit the
-`.firebaserc` file. 
+`.firebaserc` file.
 
 Change `www-dartlang-org` to the name of your project. For example:
 
@@ -190,8 +204,7 @@ Before making any more changes, stash `.firebaserc`:
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
 
-
-## Checking against the old sitemap
+### Checking against the old sitemap
 
 To make sure we are not breaking any links (or bookmarks) from yesteryear, you
 can take the old sitemap as input for the link checker.
@@ -201,3 +214,17 @@ Again, make sure you are running the localhost server (`./serve_local.sh`), then
 ```
 linkcheck :4000 -i deploy/urls/old_site_urls.txt
 ```
+
+[Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
+[Cloning a repository]: https://help.github.com/articles/cloning-a-repository
+[Dart]: https://www.dartlang.org/install
+[Dart install]: https://www.dartlang.org/install
+[Firebase]: https://firebase.google.com/
+[first-timers-only SVG]: http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
+[first-timers-only]: http://www.firsttimersonly.com/
+[Jekyll]: https://jekyllrb.com/
+[nvm]: https://github.com/creationix/nvm#installation
+[Repo on Travis]: https://travis-ci.org/dart-lang/site-www
+[rvm]: https://rvm.io/rvm/install#installation
+[site-webdev]: https://github.com/dart-lang/site-webdev
+[site-www]: https://github.com/dart-lang/site-www
