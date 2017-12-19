@@ -116,7 +116,7 @@ but you can fix that later.)
 When you update an existing package or publish a new one,
 specify an upper constraint of `<2.0.0` for the SDK version. Examples:
 
-```
+```yaml
 # Works in 1.20.1+; might work in 2.0.0-dev:
 sdk: '>=1.20.1 <2.0.0'       
 
