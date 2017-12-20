@@ -1,4 +1,11 @@
-# DartConf Unconference
+---
+layout: default
+title: "DartConf Unconference"
+description: "How to create an unconference session at DartConf"
+permalink: /guides/events/unconference
+short-title: "Unconference"
+toc: true
+---
 
 Most traditional conference sessions are videotaped and uploaded to sites
 like YouTube, so the main benefit of traveling to and attending a conference
@@ -17,6 +24,7 @@ participate, both by suggesting unconference sessions, and attending these
 sessions.
 
 ## Creating a session
+
 First, you do not need to be an expert in a topic in order to create a
 session for it. In fact, some of the best unconference sessions are created
 by people who merely want to learn more about some new thing. If you know
@@ -66,7 +74,7 @@ having a topic like "Let’s talk about Dart on the web" try something like
 "Experiences with Dart on the web: success stories, failures, and near
 misses".
 
-## References:
+## Reference
 
 The following article has much more information about unconferences:
 [How to run a great unconference session](http://scottberkun.com/2006/how-to-run-a-great-unconference-session/)
