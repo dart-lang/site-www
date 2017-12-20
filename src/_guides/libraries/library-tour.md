@@ -5,24 +5,31 @@ description: "Learn about the major features in Dart's libraries."
 short-title: Library Tour
 ---
 
-This page shows how to use the major features in libraries that
-are supported by most Dart implementations.
-For more details about API discussed in this page,
-consult the [Dart API reference.][Dart API]
+**[PENDING: Make this more interesting. Add DartPad(s). Point to sample code?]**
 
-This tour covers the following libraries:
+This tour shows how to use the major features of the following libraries,
+which are included in most Dart platforms:
 
 * [dart:core](#dartcore---numbers-collections-strings-and-more)
 * [dart:async](#dartasync---asynchronous-programming)
 * [dart:math](#dartmath---math-and-random)
 * [dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
 
-To learn more about the Dart language, see
-[A Tour of the Dart Language](/guides/language/language-tour).
-For information about the libraries supported on individual platforms,
-see the documentation for that platform, such as the
-[web library guide](https://webdev.dartlang.org/guides/web-programming) or
-[Flutter API documentation.](https://docs.flutter.io)
+For more details about Dart APIs, consult the relevant documentation:
+
+[Dart API reference][Dart API]
+: Generated documentation for the dart:* libraries,
+  including the APIs discussed in this page.
+
+[Flutter API reference](https://docs.flutter.io)
+: Generated documentation for the libraries that are
+  included in the Flutter mobile app SDK.
+
+[Web library guide](https://webdev.dartlang.org/guides/web-programming)
+: An overview of Dart libraries for web developers.
+
+[pub.dartlang.org](https://pub.dartlang.org)
+: Additional libraries and tools provided by the Dart community.
 
 
 ## dart:core - numbers, collections, strings, and more
@@ -1340,15 +1347,18 @@ inputStream
 
 ### More information
 
-For some examples of using Future and Stream in command-line apps, see the
+For some examples of using Future and Stream in command-line apps
+<!--, see the
 [dart:io section](#dartio---io-for-command-line-apps).
-Also see these articles and tutorials:
+Also -->
+see these articles and tutorials:
 
 -   [Asynchronous Programming: Futures](/tutorials/language/futures)
 -   [Futures and Error Handling](/guides/libraries/futures-error-handling)
 -   [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
 -   [Asynchronous Programming: Streams](/tutorials/language/streams)
 -   [Creating Streams in Dart](/articles/libraries/creating-streams)
+-   **[PENDING: add link to wherever the dart:io section goes.]**
 
 
 ## dart:math - math and random
@@ -1572,25 +1582,22 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 ## Summary
 
-**[PENDING: rewrite this]**
-
 This page introduced you to the most commonly used functionality in
-many of Dart’s built-in libraries. It didn’t cover all the built-in
+Dart’s built-in libraries. It didn’t cover all the built-in
 libraries, however. Others that you might want to look into include
-[dart:collection,][dart:collection] [dart:isolate,][dart:isolate] and
-[dart:typed\_data.][dart:typed\_data] You
-can get yet more libraries by using the pub tool, discussed in the next
-page. The [args,](https://pub.dartlang.org/packages/args)
-[logging,](https://pub.dartlang.org/packages/logging)
-[polymer,](https://pub.dartlang.org/packages/polymer) and
+[dart:collection][dart:collection] and [dart:typed\_data.][dart:typed\_data]
+You can get yet more libraries by using the [pub tool](/tools/pub). The
+[collection,](https://pub.dartlang.org/packages/collection)
+[crypto,](https://pub.dartlang.org/packages/crypto)
+[http,](https://pub.dartlang.org/packages/http)
+[intl,](https://pub.dartlang.org/packages/intl) and
 [test](https://pub.dartlang.org/packages/test) libraries are just a
 sampling of what you can install using pub.
 
-To learn more about the Dart language, see
-[A Tour of the Dart Language](/guides/language/language-tour).
+To learn more about the Dart language, see the
+[language tour](/guides/language/language-tour).
 
 [docs.flutter.io]: https://docs.flutter.io/
-[AnchorElement]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/AnchorElement-class.html
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [ClassMirror]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/ClassMirror-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
@@ -1598,7 +1605,6 @@ To learn more about the Dart language, see
 [dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
 [dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
@@ -1607,10 +1613,8 @@ To learn more about the Dart language, see
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
 [Directory]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html
-[Document]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Duration]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html
-[Element]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [File]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
@@ -1628,9 +1632,7 @@ To learn more about the Dart language, see
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [Match]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
-[MessageEvent]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/MessageEvent-class.html
 [MirrorsUsed]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/MirrorsUsed-class.html
-[Nodes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html
 [NoSuchMethodError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
@@ -1650,5 +1652,3 @@ To learn more about the Dart language, see
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
 [WebGL]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
-[WebSocket]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/WebSocket-class.html
-[Window]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Window-class.html
