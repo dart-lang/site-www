@@ -2,17 +2,17 @@
 class Spacecraft {
   String name;
   DateTime launchDate;
-  int launchYear;
 
-  // Constructor, including syntactic sugar for assignment to members.
+  // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
-    // Pretend the following is something you'd actually want to run in
-    // a constructor.
-    launchYear = launchDate?.year;
+    // Initialization code goes here.
   }
 
   // Named constructor that forwards to the default one.
   Spacecraft.unlaunched(String name) : this(name, null);
+
+  int get launchYear =>
+      launchDate?.year; // read-only non-final property
 
   // Method.
   void describe() {
@@ -84,13 +84,4 @@ abstract class Describable {
     describe();
     print('=========');
   }
-}
-// #enddocregion abstract
-
-// #docregion get
-class SpacecraftShowingGetter {
-  // ...
-  DateTime launchDate;
-  int get launchYear => launchDate?.year;
-  // ...
 }
