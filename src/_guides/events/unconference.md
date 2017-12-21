@@ -19,7 +19,7 @@ are more like discussions than presentations. The idea is to provide a more
 interactive experience compared to just attending talks with slides.
 For many people, the unconference sessions are the highlight of a conference.
 
-We are having a short unconference at the end of DartConf ’18. We hope you
+We are having a short unconference at the end of DartConf '18. We hope you
 participate, both by suggesting unconference sessions, and attending these
 sessions.
 
@@ -72,7 +72,7 @@ answered.
 Good topics include an implicit call to action. For example, instead of
 having a topic like "Let’s talk about Dart on the web" try something like
 "Experiences with Dart on the web: success stories, failures, and near
-misses".
+misses."
 
 ## Reference
 
