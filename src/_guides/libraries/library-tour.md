@@ -5,31 +5,79 @@ description: "Learn about the major features in Dart's libraries."
 short-title: Library Tour
 ---
 
-**[PENDING: Make this more interesting. Add DartPad(s). Point to sample code?]**
+**[PENDING: Make this more interesting. Point to sample code?]**
 
 This tour shows how to use the major features of the following libraries,
-which are included in most Dart platforms:
+which are included in all **[PENDING: is "all" true?]** Dart platforms:
 
-* [dart:core](#dartcore---numbers-collections-strings-and-more)
-* [dart:async](#dartasync---asynchronous-programming)
-* [dart:math](#dartmath---math-and-random)
-* [dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
+[dart:core](#dartcore---numbers-collections-strings-and-more)
+: Built-in types, collections, and other core functionality.
+  This library is automatically imported into every Dart program.
 
-For more details about Dart APIs, consult the relevant documentation:
+[dart:async](#dartasync---asynchronous-programming)
+: Support for asynchronous programming, with classes such as Future and Stream.
 
-[Dart API reference][Dart API]
-: Generated documentation for the dart:* libraries,
-  including the APIs discussed in this page.
+{% comment %}
+update-for-dart-2
+Q: When will Future move to dart:core?
+{% endcomment %}
 
-[Flutter API reference](https://docs.flutter.io)
-: Generated documentation for the libraries that are
-  included in the Flutter mobile app SDK.
+[dart:math](#dartmath---math-and-random)
+: Mathematical constants and functions, plus a random number generator.
 
-[Web library guide](https://webdev.dartlang.org/guides/web-programming)
-: An overview of Dart libraries for web developers.
+[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
+: Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
-[pub.dartlang.org](https://pub.dartlang.org)
-: Additional libraries and tools provided by the Dart community.
+This page is just an overview;
+it doesn't even include all the dart:* libraries.
+For more information about dart:* libraries,
+see the [Dart API reference][Dart API] or, if you're using Flutter,
+the [Flutter API reference.](https://docs.flutter.io)
+
+For details about other Dart APIs, see the relevant documentation.
+Libraries in the Flutter mobile app SDK are covered by the
+[Flutter API reference.](https://docs.flutter.io)
+The [web library guide](https://webdev.dartlang.org/guides/web-programming)
+gives an overview of Dart libraries for web development.
+The [dartdocs.org] site has automatically generated API documentation
+for packages published on
+[pub.dartlang.org.][pub.dartlang.org]
+
+
+## Running the examples in DartPad
+
+You can use DartPad to run and modify the examples in this page.
+Because DartPad uses production mode, not checked mode,
+`assert` statements do nothing. A workaround is to
+**change `assert` to `print`**, as in the following DartPad:
+
+{% comment %}
+[PENDING: How should we test this?]
+
+https://gist.github.com/2edc7174867be377021813ba4119ab8c
+https://dartpad.dartlang.org/2edc7174867be377021813ba4119ab8c
+
+<?code-excerpt "misc/lib/language_tour/core_test.dart (assertVsPrint)"?>
+{% prettify dart %}
+void main() {
+  assert(int.parse('42') == 42); // in checked mode: continues
+  print(int.parse('42') == 42); // true
+
+  assert(int.parse('43') == 42); // in checked mode: exception
+  print(int.parse('43') == 42); // false
+}
+{% endprettify %}
+{% endcomment %}
+
+<iframe
+src="{{site.custom.dartpad.embed-dart-prefix}}?id=2edc7174867be377021813ba4119ab8c&horizontalRatio=99&verticalRatio=70"
+    width="100%"
+    height="255px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
+For more information on assert statements, see the 
+[Assert][] section of the [language tour][].
 
 
 ## dart:core - numbers, collections, strings, and more
@@ -1595,9 +1643,13 @@ You can get yet more libraries by using the [pub tool](/tools/pub). The
 sampling of what you can install using pub.
 
 To learn more about the Dart language, see the
-[language tour](/guides/language/language-tour).
+[language tour][].
 
+[language tour]: /guides/language/language-tour
 [docs.flutter.io]: https://docs.flutter.io/
+[dartdocs.org]: https://www.dartdocs.org/
+[pub.dartlang.org]: https://pub.dartlang.org
+[Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [ClassMirror]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/ClassMirror-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
