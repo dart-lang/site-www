@@ -62,7 +62,7 @@ A pubspec can have the following fields:
 
 `publish_to`
 : Optional. Specify where to publish a package. The default is
-  `pub.dartlang.org`. Specify `none` to prevent a package from
+  `https://pub.dartlang.org`. Specify `none` to prevent a package from
   being published.
 
 `transformers`
