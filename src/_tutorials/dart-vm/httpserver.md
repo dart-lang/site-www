@@ -69,7 +69,7 @@ clients and servers.
   work _only_ with standalone, command-line programs.
   They do not work in the browser.
   To make HTTP requests from a browser-based client
-  refer to the [dart:html HttpRequest][HttpRequest] class.
+  refer to the [dart:html HttpRequest][] class.
 </aside>
 
 This tutorial provides several examples that show how easy
@@ -1014,8 +1014,9 @@ for further details about the classes and libraries discussed in this tutorial.
 [HttpClientRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientRequest-class.html
 [HttpClientResponse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientResponse-class.html
 [HttpHeaders]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpHeaders-class.html
-[HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
-[HttpResponse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpResponse-class.html
+[dart:html HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/HttpRequest-class.html
+[HttpRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpRequest-class.html
+[HttpResponse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpResponse-class.html
 [HttpServer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpServer-class.html
 [HttpStatus]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpStatus-class.html
 [InternetAddress]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/InternetAddress-class.html

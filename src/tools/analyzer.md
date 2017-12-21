@@ -40,9 +40,9 @@ Specification](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/b
 for protocol details.) The following tools use the analysis server:
 
 * Dart and Flutter plugins for IDEs (such as
-  [WebStorm]({{site.webdev}}/tools/webstorm),
+  [WebStorm,]({{site.webdev}}/tools/webstorm)
   [IntelliJ](/tools/jetbrains-plugin), and
-  [Atom](https://atom.io/packages/dartlang))
+  [Atom](https://atom.io/packages/dart))
 * [DartPad](/tools/dartpad)
 
 If your tool requires access to the abstract syntax tree (AST), use the
