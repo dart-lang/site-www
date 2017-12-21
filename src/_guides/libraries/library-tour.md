@@ -6,7 +6,11 @@ short-title: Library Tour
 ---
 
 This tour shows how to use the major features of the following libraries,
-which are included in all **[PENDING: is "all" true?]** Dart platforms:
+which are included in all Dart platforms:
+
+{% comment %}
+[CHECK: is "all" guaranteed to stay true?]
+{% endcomment %}
 
 [dart:core](#dartcore---numbers-collections-strings-and-more)
 : Built-in types, collections, and other core functionality.
@@ -27,22 +31,14 @@ Q: When will Future move to dart:core?
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
 This page is just an overview;
-it doesn't even include all of the dart:* libraries.
-For more information about these libraries,
+it doesn't include many dart:* libraries
+or any third-party libraries.
+For more information about the dart:* libraries,
 see the [Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.](https://docs.flutter.io)
-For information about the Dart language, 
-see the [language tour.][language tour]
-
-For details about other Dart APIs, see the relevant documentation.
-Libraries in the Flutter mobile app SDK are covered by the
-[Flutter API reference.](https://docs.flutter.io)
-The [web library guide](https://webdev.dartlang.org/guides/web-programming)
-gives an overview of Dart libraries for web development.
-The [dartdocs.org] site has automatically generated API documentation
-for packages published on
-[pub.dartlang.org.][pub.dartlang.org]
-
+the [Flutter API reference.][docs.flutter.io]
+Other places to find library information are the
+[Dart web developer library guide](https://webdev.dartlang.org/guides/web-programming)
+and [pub.dartlang.org.][pub.dartlang.org]
 
 <aside class="alert alert-info" markdown="1">
 **DartPad tip:**
@@ -61,7 +57,6 @@ update-for-dart-2
 https://gist.github.com/2edc7174867be377021813ba4119ab8c
 https://dartpad.dartlang.org/2edc7174867be377021813ba4119ab8c
 
-<?code-excerpt "misc/lib/language_tour/core_test.dart (assertVsPrint)"?>
 {% prettify dart %}
 void main() {
   assert(int.parse('42') == 42); // in checked mode: continues
@@ -88,11 +83,25 @@ https://github.com/dart-lang/dart-pad/issues/310
 
 ## dart:core - numbers, collections, strings, and more
 
-The Dart core library provides a small but critical set of built-in
-functionality. This library is automatically imported into every Dart
-program.
+The dart:core library ([API reference][dart:core])
+provides a small but critical set of built-in functionality.
+This library is automatically imported into every Dart program.
 
-**[PENDING: add print()]**
+
+### Printing to the console
+
+The top-level `print()` method takes a single argument (any Object)
+and displays that object's string value (as returned by `toString()`)
+in the console.
+
+<?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
+{% prettify dart %}
+print(anObject);
+print('I drink $tea.');
+{% endprettify %}
+
+For more information on strings and `toString()`, see
+[Strings](/guides/language/language-tour#strings) in the language tour.
 
 
 ### Numbers
@@ -1024,7 +1033,8 @@ Asynchronous programming often uses callback functions, but Dart
 provides alternatives: [Future][] and [Stream][] objects. A
 Future is like a promise for a result to be provided sometime in the
 future. A Stream is a way to get a sequence of values, such as events.
-Future, Stream, and more are in the [dart:async][] library.
+Future, Stream, and more are in the
+dart:async library ([API reference][dart:async]).
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -1419,11 +1429,12 @@ see these articles and tutorials:
 
 ## dart:math - math and random
 
-The Math library provides common functionality such as sine and cosine,
+The dart:math library ([API reference][dart:math])
+provides common functionality such as sine and cosine,
 maximum and minimum, and constants such as *pi* and *e*. Most of the
 functionality in the Math library is implemented as top-level functions.
 
-To use the Math library in your app, import dart:math. The following
+To use this library in your app, import dart:math. The following
 examples use the prefix `math` to make clear which top-level functions
 and constants are from the Math library:
 
@@ -1510,7 +1521,7 @@ Also see the API docs for [num,][num] [int,][int] and [double.][double]
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
 
-The [dart:convert library][dart:convert]
+The dart:convert library ([API reference][dart:convert])
 has converters for JSON and UTF-8, as well as support for creating
 additional converters. [JSON][] is a simple text format for representing
 structured objects and collections. [UTF-8][] is a common variable-width
@@ -1641,7 +1652,11 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 This page introduced you to the most commonly used functionality in
 Dart’s built-in libraries. It didn’t cover all the built-in
 libraries, however. Others that you might want to look into include
-[dart:collection][dart:collection] and [dart:typed\_data.][dart:typed\_data]
+[dart:collection][] and [dart:typed\_data,][dart:typed\_data]
+as well as platform-specific libaries like the
+[Dart web development libraries](https://webdev.dartlang.org/guides/web-programming)
+and the [Flutter libraries.][docs.flutter.io]
+
 You can get yet more libraries by using the [pub tool](/tools/pub). The
 [collection,](https://pub.dartlang.org/packages/collection)
 [crypto,](https://pub.dartlang.org/packages/crypto)

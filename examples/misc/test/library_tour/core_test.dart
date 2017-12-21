@@ -11,6 +11,27 @@ import 'package:examples/library_tour/core/iterator.dart'
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
+  group('print:', () {
+    test('print(nonString)', () {
+      final anObject = [1, 2, 3];
+      expect(() {
+        // #docregion print
+        print(anObject);
+        // #enddocregion print
+      }, m.prints(anObject));
+    });
+
+    test('print(String)', () {
+      expect(() {
+        final tea = 'chamomile tea';
+
+        // #docregion print
+        print('I drink $tea.');
+        // #enddocregion print
+      }, m.prints('I drink chamomile tea.'));
+    });
+  });
+
   group('numbers:', () {
     test('int|double.parse()', () {
       // #docregion int-double-parse
