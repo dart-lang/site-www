@@ -5,8 +5,6 @@ description: "Learn about the major features in Dart's libraries."
 short-title: Library Tour
 ---
 
-**[PENDING: Make this more interesting. Point to sample code?]**
-
 This tour shows how to use the major features of the following libraries,
 which are included in all **[PENDING: is "all" true?]** Dart platforms:
 
@@ -29,10 +27,12 @@ Q: When will Future move to dart:core?
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
 This page is just an overview;
-it doesn't even include all the dart:* libraries.
-For more information about dart:* libraries,
+it doesn't even include all of the dart:* libraries.
+For more information about these libraries,
 see the [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.](https://docs.flutter.io)
+For information about the Dart language, 
+see the [language tour.][language tour]
 
 For details about other Dart APIs, see the relevant documentation.
 Libraries in the Flutter mobile app SDK are covered by the
@@ -44,15 +44,19 @@ for packages published on
 [pub.dartlang.org.][pub.dartlang.org]
 
 
-## Running the examples in DartPad
-
-You can use DartPad to run and modify the examples in this page.
-Because DartPad uses production mode, not checked mode,
-`assert` statements do nothing. A workaround is to
-**change `assert` to `print`**, as in the following DartPad:
+<aside class="alert alert-info" markdown="1">
+**DartPad tip:**
+You can play with the code in this page
+by copying it into a [DartPad.][DartPad]
+Note, however, that [assert][] statements are no-ops in DartPad
+because DartPad executes in production mode, not checked mode.
+An easy workaround: **change `assert` to `print`.**
+<br>
+<br>
 
 {% comment %}
-[PENDING: How should we test this?]
+update-for-dart-2
+[TODO: fix styling instead of using the <br><br> hack.]
 
 https://gist.github.com/2edc7174867be377021813ba4119ab8c
 https://dartpad.dartlang.org/2edc7174867be377021813ba4119ab8c
@@ -76,8 +80,10 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=2edc7174867be377021813ba4119ab
     style="border: 1px solid #ccc;">
 </iframe>
 
-For more information on assert statements, see the 
-[Assert][] section of the [language tour][].
+{% comment %}
+https://github.com/dart-lang/dart-pad/issues/310
+{% endcomment %}
+</aside>
 
 
 ## dart:core - numbers, collections, strings, and more
@@ -85,6 +91,8 @@ For more information on assert statements, see the
 The Dart core library provides a small but critical set of built-in
 functionality. This library is automatically imported into every Dart
 program.
+
+**[PENDING: add print()]**
 
 
 ### Numbers
@@ -1649,6 +1657,7 @@ To learn more about the Dart language, see the
 [docs.flutter.io]: https://docs.flutter.io/
 [dartdocs.org]: https://www.dartdocs.org/
 [pub.dartlang.org]: https://pub.dartlang.org
+[DartPad]: https://dartpad.dartlang.org
 [Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [ClassMirror]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/ClassMirror-class.html
