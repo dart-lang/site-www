@@ -33,11 +33,13 @@ Q: When will Future move to dart:core?
 This page is just an overview;
 it doesn't include many dart:* libraries
 or any third-party libraries.
-For more information about the dart:* libraries,
-see the [Dart API reference][Dart API] or, if you're using Flutter,
+The platform-specific dart:io and dart:html libraries
+are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
+API documentation for dart:* libraries is in the
+[Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter.io]
 Other places to find library information are the
-[Dart web developer library guide](https://webdev.dartlang.org/guides/web-programming)
+[Dart web developer library guide][webdev libraries]
 and [pub.dartlang.org.][pub.dartlang.org]
 
 <aside class="alert alert-info" markdown="1">
@@ -100,7 +102,7 @@ print(anObject);
 print('I drink $tea.');
 {% endprettify %}
 
-For more information on strings and `toString()`, see
+For more information on basic strings and `toString()`, see
 [Strings](/guides/language/language-tour#strings) in the language tour.
 
 
@@ -1413,18 +1415,15 @@ inputStream
 
 ### More information
 
-For some examples of using Future and Stream in command-line apps
-<!--, see the
-[dart:io section](#dartio---io-for-command-line-apps).
-Also -->
-see these articles and tutorials:
+For some examples of using Future and Stream in command-line apps,
+see the [dart:io tour.][dart:io tour]
+Also see these articles and tutorials:
 
 -   [Asynchronous Programming: Futures](/tutorials/language/futures)
 -   [Futures and Error Handling](/guides/libraries/futures-error-handling)
 -   [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
 -   [Asynchronous Programming: Streams](/tutorials/language/streams)
 -   [Creating Streams in Dart](/articles/libraries/creating-streams)
--   **[PENDING: add link to wherever the dart:io section goes.]**
 
 
 ## dart:math - math and random
@@ -1654,7 +1653,7 @@ Dart’s built-in libraries. It didn’t cover all the built-in
 libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
 as well as platform-specific libaries like the
-[Dart web development libraries](https://webdev.dartlang.org/guides/web-programming)
+[Dart web development libraries][webdev libraries]
 and the [Flutter libraries.][docs.flutter.io]
 
 You can get yet more libraries by using the [pub tool](/tools/pub). The
@@ -1680,6 +1679,8 @@ To learn more about the Dart language, see the
 [dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
 [dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart:html tour]: {{site.webdev}}/guides/html-library-tour
+[dart:io tour]: /dart-vm/io-library-tour
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
@@ -1713,4 +1714,4 @@ To learn more about the Dart language, see the
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[WebGL]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
+[webdev libraries]: {{site.webdev}}/guides/web-programming
