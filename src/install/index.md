@@ -66,7 +66,7 @@ The Dart SDK has two release channels:
 Most **alpha** releases of Flutter contain a **dev** channel release of Dart.
 
 **Stable** channel releases of the Dart SDK have version strings like `1.24.2` and `2.0.0`.
-They consistent of dot-separated integers, with no hyphens or letters.
+They consist of dot-separated integers, with no hyphens or letters.
 
 **Dev** channel releases of the Dart SDK (pre-releases)
 have additional characters, starting with a hyphen (`-`).
