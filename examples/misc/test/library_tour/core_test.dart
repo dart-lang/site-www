@@ -18,7 +18,7 @@ void main() {
         // #docregion print
         print(anObject);
         // #enddocregion print
-      }, m.prints(anObject));
+      }, m.prints(anObject.toString()));
     });
 
     test('print(String)', () {
