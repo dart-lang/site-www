@@ -44,11 +44,17 @@ You might find the following tutorials helpful.
 
 ## More resources
 
-[Articles: Dart VM](/articles/dart-vm)
-: A collection of articles covering topics such as benchmarking,
-  numeric computation, and SIMD.
+[A Tour of the dart:io Library](/dart-vm/io-library-tour)
+: Shows how to use the major features of the dart:io library.
+  You can use the dart:io library in command-line scripts, servers, and
+  [Flutter mobile apps.]({{site.flutter}})
 
 [Cookbook: Dart by Example](/dart-vm/dart-by-example)
 : Code snippets that perform common I/O tasks, featuring APIs from
   dart:io, dart:convert, the path package, and more.
+
+[Articles: Dart VM](/articles/dart-vm)
+: A collection of articles covering topics such as benchmarking,
+  numeric computation, and SIMD.
+
 

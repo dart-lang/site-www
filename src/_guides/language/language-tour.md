@@ -898,9 +898,6 @@ int handleError(String source) {
 
 Symbol literals are compile-time constants.
 
-For more information on symbols, see
-[dart:mirrors - reflection](/guides/libraries/library-tour#dartmirrors---reflection).
-
 
 ## Functions
 
@@ -2122,7 +2119,7 @@ The first argument to `assert` can be any expression that
 resolves to a boolean value or to a function. If the expression’s value
 or function’s return value is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
-[AssertionError][] is thrown.
+[AssertionError][]) is thrown.
 
 
 ## Exceptions
@@ -4128,7 +4125,7 @@ Specification](/guides/language/spec) and
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
-[AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html)
+[AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html

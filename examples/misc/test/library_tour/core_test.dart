@@ -11,6 +11,27 @@ import 'package:examples/library_tour/core/iterator.dart'
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
+  group('print:', () {
+    test('print(nonString)', () {
+      final anObject = [1, 2, 3];
+      expect(() {
+        // #docregion print
+        print(anObject);
+        // #enddocregion print
+      }, m.prints(anObject.toString()));
+    });
+
+    test('print(String)', () {
+      expect(() {
+        final tea = 'chamomile tea';
+
+        // #docregion print
+        print('I drink $tea.');
+        // #enddocregion print
+      }, m.prints('I drink chamomile tea.'));
+    });
+  });
+
   group('numbers:', () {
     test('int|double.parse()', () {
       // #docregion int-double-parse
@@ -241,8 +262,8 @@ void main() {
       // #enddocregion compareTo
     });
 
-    test('List<T>', () {
-      // #docregion List-T-
+    test('ListOfString', () {
+      // #docregion ListOfString
       // This list should contain only strings.
       var fruits = new List<String>();
 
@@ -251,11 +272,11 @@ void main() {
       assert(fruit is String);
 
       // Generates static analysis warning, num is not a string.
-      // #enddocregion List-T-
+      // #enddocregion ListOfString
       /*
-      // #docregion List-T-
+      // #docregion ListOfString
       fruits.add(5); // BAD: Throws exception in checked mode.
-      // #enddocregion List-T-
+      // #enddocregion ListOfString
       */
     });
   });

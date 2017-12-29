@@ -52,7 +52,7 @@ This can happen as a result of some antivirus software, such as the
 AVG 2013 Internet security suite. Check the manual for your security
 suite to see how to temporarily
 disable this feature. For example, see
-[Disabling AVG temporarily](http://www.avg.com/ww-en/faq.num-3857).
+[How to Disable AVG Components](https://support.avg.com/SupportArticleView?urlName=How-to-disable-AVG).
 
 ## Pub get fails from behind a corporate firewall
 
