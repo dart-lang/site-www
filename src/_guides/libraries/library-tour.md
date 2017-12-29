@@ -5,7 +5,7 @@ description: "Learn about the major features in Dart's libraries."
 short-title: Library Tour
 ---
 
-This tour shows how to use the major features of the following libraries,
+This tour shows how to use the main features of the following libraries,
 which are included in all Dart platforms:
 
 {% comment %}
@@ -31,16 +31,17 @@ Q: When will Future move to dart:core?
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
 This page is just an overview;
-it doesn't include many dart:* libraries
-or any third-party libraries.
+it covers only a few dart:* libraries
+and no third-party libraries.
 The platform-specific dart:io and dart:html libraries
 are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
-API documentation for dart:* libraries is in the
+
+Other places to find library information are
+[pub.dartlang.org][pub.dartlang.org] and the
+[Dart web developer library guide.][webdev libraries]
+You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter.io]
-Other places to find library information are the
-[Dart web developer library guide][webdev libraries]
-and [pub.dartlang.org.][pub.dartlang.org]
 
 <aside class="alert alert-info" markdown="1">
 **DartPad tip:**

@@ -47,7 +47,7 @@ You might find the following tutorials helpful.
 [A Tour of the dart:io Library](/dart-vm/io-library-tour)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
-  [Flutter mobile apps.](https://flutter.io)
+  [Flutter mobile apps.]({{site.flutter}})
 
 [Cookbook: Dart by Example](/dart-vm/dart-by-example)
 : Code snippets that perform common I/O tasks, featuring APIs from
