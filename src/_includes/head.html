@@ -25,7 +25,7 @@
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:description" content="{{desc}}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />{%
-    assign og_image_asset = page.image_asset | default: layout.image_asset | default: 'dart-logo-for-shares.png' | asset_path %}{%
+    assign og_image_asset = page.image_asset | default: layout.image_asset | default: '/assets/dart-logo-for-shares.png' %}{%
     assign og_image_path = page.image | default: layout.image | default: og_image_asset %}{%
     assign og_type = page.og_type | default: layout.og_type
   %}{% comment %}
@@ -33,7 +33,7 @@
   {% endcomment %}{%
   assign og_image_start = og_image_path | slice: 0
   %}{% unless og_image_start == '/' %}{% capture og_image_path %}{{page.url}}/{{og_image_path}}{% endcapture %}{% endunless %}
-  <meta property="og:image" content="{{og_image_path | absolute_url}}" />{%
+  <meta property="og:image" content="{{og_image_path | absolute_url}}{{site.og_image_vers}}" />{%
   if og_type %}
   <meta property="og:type" content="{{og_type}}" />{%
   endif %}
