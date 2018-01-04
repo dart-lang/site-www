@@ -285,6 +285,11 @@
         "type": 301
       },
       {
+        "source": "/assets/dart-logo-for-shares-*.png",
+        "destination": "/assets/dart-logo-for-shares.png?1",
+        "type": 301
+      },
+      {
         "source": "/atom.xml",
         "destination": "http://news.dartlang.org/feeds/posts/default",
         "type": 301
