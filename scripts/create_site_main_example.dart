@@ -67,7 +67,7 @@ class Main {
 }
 
 Iterable<String> getMainExampleSrcLines() {
-  final _mainExampleFile = '../examples/lib/pi_monte_carlo.dart';
+  final _mainExampleFile = '../examples/misc/lib/pi_monte_carlo.dart';
   return new File(_mainExampleFile)
       .readAsLinesSync()
       .skipWhile((line) => !line.startsWith('import')) // initial comment block
@@ -76,7 +76,7 @@ Iterable<String> getMainExampleSrcLines() {
 }
 
 List<List<String>> _getTooltips() {
-  final _tooltipFile = '../examples/lib/pi_monte_carlo_tooltips.html';
+  final _tooltipFile = '../examples/misc/lib/pi_monte_carlo_tooltips.html';
   final _tooltipLineRE = new RegExp(r'^\s*<li name="(.*?)">(.*)</li>');
 
   // Read tooltips.
