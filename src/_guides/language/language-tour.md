@@ -3649,23 +3649,9 @@ a possibly time-consuming operation
 (such as I/O),
 without waiting for that operation to complete.
 
-Several language features support asynchronous programming,
-as the following table shows.
-These features let you write asynchronous code that
+The `async` and `await` keywords support asynchronous programming,
+letting you write asynchronous code that
 looks similar to synchronous code.
-A related language feature lets you synchronously generate objects.
-
-|--------------+------------------------------------------------------------|
-|              |`async`|`await`|`await for`|`sync*`|`async*`|`yield`|`yield*`|
-|--------------|------------------------------------------------------------|
-| Handle values from **Futures**.|X|X| | | | | |
-| Handle values from **Streams**.|X| |X| | | | |
-| Implement a function that returns an **Iterable**<br>(a synchronous generator). | | | |X| |X| |
-| Implement a function that returns a **Stream**<br>(an asynchronous generator). | | | | |X|X| |
-| Implement a recursive generator.                               | | | | | | |X|
-{:.table .table-striped}
-
-The most commonly used asynchrony feature is handling Futures.
 
 
 <a id="await"></a>
@@ -3755,6 +3741,23 @@ Although an async function might perform time-consuming operations,
 it returns immediately—before
 any of its body executes.
 
+
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2.0](/dart-2.0) difference**:
+    Async functions won't return immediately.
+    Instead, an async function will continue executing until
+    it either suspends or completes.
+    For more information, see the
+    [synchronous async start discussion](https://github.com/dart-lang/sdk/tree/master/docs/newsletter/20170915.md#synchronous-async-start)
+    in the
+    [Dart Language and Library Newsletter.](https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters)
+{% comment %}
+More info:
+https://github.com/dart-lang/sdk/issues/29906
+https://github.com/dart-lang/sdk/issues/22909
+{% endcomment %}
+</aside>
+
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
 which returns a String:
@@ -3778,7 +3781,7 @@ Dart creates the Future object if necessary.
 
 
 <a id="await-for"></a>
-### Handling values from Streams
+### Handling Streams
 
 When you need to get values from a **Stream**,
 you have two options:
@@ -3789,8 +3792,8 @@ you have two options:
 <aside class="alert alert-warning" markdown="1">
 **Note:**
 Asynchronous for loops aren't always appropriate.
-Use them only if it's OK for your program to be **unresponsive**
-until it receives the next value from the stream.
+Use them only if it's OK for your program to do nothing
+while it waits for values from a single stream.
 </aside>
 
 An asynchronous for loop has the following form:
@@ -3830,11 +3833,22 @@ Future main() async {
 }
 {% endprettify %}
 
+For more information about asynchronous programming, in general, see the
+[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
+section of the library tour.
+Also see the articles
+[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
+and
+[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
+and the [Dart language specification](/guides/language/spec).
+
 
 <a id="generator"></a>
-### Implementing a generator
+## Generator support
 
-Dart language support helps you implement two kinds of generators:
+When you need to produce a series of objects,
+consider using Dart's built-in generator support.
+You can implement two kinds of generators:
 
 * A **synchronous** generator, which returns an **[Iterable]** object.
 * An **asynchronous** generator, which returns a **[Stream]** object.
@@ -3873,15 +3887,6 @@ Iterable naturalsDownFrom(n) sync* {
 
 For more information about generators, see the article
 [Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async).
-
-For more information about asynchronous programming, in general, see the
-[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
-section of the library tour.
-Also see the articles
-[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
-and
-[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
-and the [Dart language specification](/guides/language/spec).
 
 
 ## Callable classes
