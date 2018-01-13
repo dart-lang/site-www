@@ -110,7 +110,7 @@ mind:
 -   In [strong mode](/guides/language/sound-dart), static and runtime
     checks ensure that your code is type safe, helping you catch bugs
     in development, rather than at runtime. Strong mode is optional in
-    Dart 1.x, but not optional in [Dart 2.0](/dart-2.0).
+    Dart 1.x, but not optional in [Dart 2](/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -2929,7 +2929,7 @@ update-for-dart-2
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
-  **[Dart 2.0](/dart-2.0) difference**:
+  **[Dart 2](/dart-2.0) difference**:
   Only abstract classes can have abstract methods.
   An error is reported otherwise.
 </aside>
@@ -3053,9 +3053,25 @@ class A {
 }
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2](/dart-2.0) difference**:
+  In Dart 2, you **can't invoke** an unimplemented method **unless**
+  the receiver is of type `dynamic` and
+  any of its **supertypes define that method** (even if abstractly).
+  For more information, see the
+  [informal feature specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+</aside>
+
 If you use `noSuchMethod()` to implement every possible getter, setter,
 and method for one or more types,
 then you can use the `@proxy` annotation to avoid warnings:
+
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2](/dart-2.0) difference**:
+  The `@proxy` annotation will be removed.
+  For more information, see
+  [site issue #442.](https://github.com/dart-lang/site-www/issues/442)
+</aside>
 
 <?code-excerpt "misc/lib/language_tour/classes/proxy.dart" replace="/@proxy/[!$&!]/g"?>
 {% prettify dart %}
@@ -3972,9 +3988,9 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Three annotations are available to all Dart code: `@deprecated`,
-`@override`, and `@proxy`. For examples of using `@override` and
-`@proxy`, see [Extending a class](#extending-a-class).
+Two annotations are available to all Dart code: `@deprecated` and
+`@override`. For examples of using `@override`,
+see [Extending a class](#extending-a-class).
 Here’s an example of using the `@deprecated`
 annotation:
 
