@@ -2,7 +2,6 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
   test('syncGenerator', () {
@@ -12,15 +11,10 @@ void main() {
       while (k < n) yield k++;
     }
     // #enddocregion sync-generator
-
-    main() {
-      print(naturalsTo(3));
-    }
-
-    expect(main, m.prints('(0, 1, 2)'));
+    expect(naturalsTo(3), [0, 1, 2]);
   });
 
-  test('asyncGenerator', () {
+  test('asyncGenerator', () async {
     // #docregion async-generator
     Stream asynchronousNaturalsTo(n) async* {
       int k = 0;
@@ -28,11 +22,7 @@ void main() {
     }
     // #enddocregion async-generator
 
-    main() async {
-      print(await asynchronousNaturalsTo(3).last);
-    }
-
-    expect(main, m.prints('2'));
+    expect(await asynchronousNaturalsTo(3).toList(), [0, 1, 2]);
   });
 
   test('recursiveGenerator', () {
@@ -45,10 +35,6 @@ void main() {
     }
     // #enddocregion recursive-generator
 
-    main() {
-      print(naturalsDownFrom(3));
-    }
-
-    expect(main, m.prints('(3, 2, 1)'));
+    expect(naturalsDownFrom(3), [3, 2, 1]);
   });
 }
