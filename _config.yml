@@ -110,8 +110,9 @@ plugins:
 - jekyll-toc
 - jekyll-sitemap
 
-# Increment this image URL version number query parameter when you update the og:image file.
-# (Also increment the corresponding number in the `firebase.json` redirect rule.)
+# Increment this global og:image URL version number (used as a query parameter)
+# when you update any og:image file. (Also increment the corresponding number
+# in the `firebase.json` redirect rule.)
 og_image_vers: "?1"
 
 assets:
