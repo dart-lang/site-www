@@ -10,6 +10,7 @@ void main() {
       int k = 0;
       while (k < n) yield k++;
     }
+
     // #enddocregion sync-generator
     expect(naturalsTo(3), [0, 1, 2]);
   });
