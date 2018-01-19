@@ -10,32 +10,10 @@ void miscDeclAnalyzedButNotTested() {
           String entryPoint, List<String> args) async =>
       0;
   Future<int> flushThenExit(int exitCode) async => 0;
-
+  
   {
-    // #docregion runUsingFuture
-    runUsingFuture() {
-      // ...
-      findEntryPoint().then((entryPoint) {
-        return runExecutable(entryPoint, args);
-      }).then(flushThenExit);
-    }
-    // #enddocregion runUsingFuture
-  }
-
-  {
-    // #docregion runUsingAsyncAwait
-    runUsingAsyncAwait() async {
-      // ...
-      var entryPoint = await findEntryPoint();
-      var exitCode = await runExecutable(entryPoint, args);
-      await flushThenExit(exitCode);
-    }
-    // #enddocregion runUsingAsyncAwait
-  }
-
-  {
+    // #docregion catch
     Future catchExample() async {
-      // #docregion catch
       var entryPoint = await findEntryPoint();
       try {
         var exitCode = await runExecutable(entryPoint, args);
@@ -43,8 +21,8 @@ void miscDeclAnalyzedButNotTested() {
       } catch (e) {
         // Handle the error...
       }
-      // #enddocregion catch
     }
+    // #enddocregion catch
   }
 
   final url = 'humans.txt';
