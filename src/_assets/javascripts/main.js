@@ -109,7 +109,12 @@ $(document).on('ready', function(){
 
 
   // Popovers
-  $('[data-toggle="popover"], .dart-popover').popover();
+  $('[data-toggle="popover"]').popover({
+    container: 'body',
+    html: true,
+    placement: 'top',
+    trigger: 'focus hover',
+  });
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function(e) {
