@@ -3724,11 +3724,11 @@ make sure `await` is in an async function.**
 For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (main)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
-Future main() async {
+Future main() [!async!] {
   checkVersion();
-  print('In main: version is ${await lookUpVersion()}');
+  print('In main: version is ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
 
@@ -3830,11 +3830,11 @@ make sure the `await for` is in an async function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart %}
-Future main() async {
+Future main() [!async!] {
   // ...
-  await for (var request in requestServer) {
+  [!await for!] (var request in requestServer) {
     handleRequest(request);
   }
   // ...
