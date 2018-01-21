@@ -81,7 +81,7 @@ Now that breaking changes are expected,
 we’ve switched to version strings beginning with `2.0.0-dev`.
 
 For more information, see
-[Dart 2.0 Updates](/dart-2.0)
+[Dart 2 Updates](/dart-2.0)
 and the [installation instructions](#) for your platform.
 {% comment %}
 [PENDING: add link to the news post?]

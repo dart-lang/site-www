@@ -123,7 +123,7 @@ support mirrors.](https://flutter.io/faq/#does-flutter-come-with-a-reflectionmir
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
-The Dart language is now at 1.x, and [Dart 2.0](/dart-2.0) is in development.
+The Dart language is now at 1.x, and [Dart 2](/dart-2.0) is in development.
 
 Future releases might be able to include your feature,
 although we can't include everything.
@@ -154,7 +154,7 @@ and use a compiler (such as the Dart development compiler,
 that has static and runtime checks. With both types of checks,
 Dart has a sound type system, which guarantees that an expression of one
 type cannot produce a value of another type. (So, no surprises!)
-Types won't be optional in Dart 2.0.
+Types won't be optional in Dart 2.
 [Flutter]&mdash;a cross-platform mobile development system&mdash;already uses
 strong mode.
 

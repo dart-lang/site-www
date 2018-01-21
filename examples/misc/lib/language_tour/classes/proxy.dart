@@ -1,5 +1,5 @@
 // update-for-dart-2
-// Dart 2.0: hint • 'proxy' is deprecated and shouldn't be used
+// Dart 2 note: 'proxy' is deprecated and shouldn't be used
 // ignore_for_file: deprecated_member_use
 
 void main() {
