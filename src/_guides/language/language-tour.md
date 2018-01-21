@@ -110,7 +110,7 @@ mind:
 -   In [strong mode](/guides/language/sound-dart), static and runtime
     checks ensure that your code is type safe, helping you catch bugs
     in development, rather than at runtime. Strong mode is optional in
-    Dart 1.x, but not optional in [Dart 2.0](/dart-2.0).
+    Dart 1.x, but not optional in [Dart 2](/dart-2.0).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -343,6 +343,11 @@ The Dart language has special support for the following types:
 You can initialize an object of any of these special types using a
 literal. For example, `'this is a string'` is a string literal,
 and `true` is a boolean literal.
+
+{% comment %}
+PENDING: add info about support for Iterable, Future, Stream?
+Those can't be initialized using literals, but they do have special support.
+{% endcomment %}
 
 Because every variable in Dart refers to an object—an instance of a
 *class*—you can usually use *constructors* to initialize variables. Some
@@ -2929,7 +2934,7 @@ update-for-dart-2
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
-  **[Dart 2.0](/dart-2.0) difference**:
+  **[Dart 2](/dart-2.0) difference**:
   Only abstract classes can have abstract methods.
   An error is reported otherwise.
 </aside>
@@ -3641,30 +3646,28 @@ for advice on how to implement a library package, including:
 <a id="asynchrony"></a>
 ## Asynchrony support
 
-Dart has several language features
-to support asynchronous programming.
-The most commonly used of these features are
-`async` functions and `await` expressions.
-
 Dart libraries are full of functions that
-return Future or Stream objects.
+return [Future][] or [Stream][] objects.
 These functions are _asynchronous_:
 they return after setting up
 a possibly time-consuming operation
 (such as I/O),
 without waiting for that operation to complete.
 
-When you need to use a value represented by a Future,
+The `async` and `await` keywords support asynchronous programming,
+letting you write asynchronous code that
+looks similar to synchronous code.
+
+
+<a id="await"></a>
+### Handling Futures
+
+When you need the result of a completed Future,
 you have two options:
 
-* Use `async` and `await`
-* Use the [Future API](/guides/libraries/library-tour#future)
-
-Similarly, when you need to get values from a Stream,
-you have two options:
-
-* Use `async` and an _asynchronous for loop_ (`await for`)
-* Use the [Stream API](/guides/libraries/library-tour#stream)
+* Use `async` and `await`.
+* Use the Future API, as described
+  [in the library tour](/guides/libraries/library-tour#future).
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
@@ -3686,7 +3689,7 @@ Future checkVersion() [!async!] {
 }
 {% endprettify %}
 
-You can use `try`, `catch`, and `finally`
+Use `try`, `catch`, and `finally`
 to handle errors and cleanup in code that uses `await`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (try-catch)"?>
@@ -3695,6 +3698,37 @@ try {
   version = await lookUpVersion();
 } catch (e) {
   // React to inability to look up the version
+}
+{% endprettify %}
+
+You can use `await` multiple times in an async function.
+For example, the following code waits three times
+for the results of functions:
+
+<?code-excerpt "misc/lib/language_tour/async.dart (repeated-await)"?>
+{% prettify dart %}
+var entrypoint = await findEntrypoint();
+var exitCode = await runExecutable(entrypoint, args);
+await flushThenExit(exitCode);
+{% endprettify %}
+
+In <code>await <em>expression</em></code>,
+the value of <code><em>expression</em></code> is usually a Future;
+if it isn't, then the value is automatically wrapped in a Future.
+This Future object indicates a promise to return an object.
+The value of <code>await <em>expression</em></code> is that returned object.
+The await expression makes execution pause until that object is available.
+
+**If you get a compile-time error when using `await`,
+make sure `await` is in an async function.**
+For example, to use `await` in your app's `main()` function,
+the body of `main()` must be marked as `async`:
+
+<?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
+{% prettify dart %}
+Future main() [!async!] {
+  checkVersion();
+  print('In main: version is ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
 
@@ -3712,6 +3746,23 @@ the `async` modifier.
 Although an async function might perform time-consuming operations,
 it returns immediately—before
 any of its body executes.
+
+
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2](/dart-2.0) difference**:
+    Async functions won't return immediately.
+    Instead, an async function will continue executing until
+    it either suspends or completes.
+    For more information, see the
+    [synchronous async start discussion](https://github.com/dart-lang/sdk/tree/master/docs/newsletter/20170915.md#synchronous-async-start)
+    in the
+    [Dart Language and Library Newsletter.](https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters)
+{% comment %}
+More info:
+https://github.com/dart-lang/sdk/issues/29906
+https://github.com/dart-lang/sdk/issues/22909
+{% endcomment %}
+</aside>
 
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
@@ -3735,56 +3786,32 @@ Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
 
 
-<a id="await"></a>
-### Using await expressions with Futures
-
-An await expression has the following form:
-
-<pre>
-<b>await</b> <em>expression</em>
-</pre>
-
-You can use `await` multiple times in an async function.
-For example, the following code waits three times
-for the results of functions:
-
-<?code-excerpt "misc/lib/language_tour/async.dart (repeated-await)"?>
-{% prettify dart %}
-var entrypoint = await findEntrypoint();
-var exitCode = await runExecutable(entrypoint, args);
-await flushThenExit(exitCode);
-{% endprettify %}
-
-In <code>await <em>expression</em></code>,
-the value of <code><em>expression</em></code> is usually a Future;
-if it isn't, then the value is automatically wrapped in a Future.
-This Future object indicates a promise to return an object.
-The value of <code>await <em>expression</em></code> is that returned object.
-The await expression makes execution pause until that object is available.
-
-**If `await` doesn't work, make sure it's in an async function.**
-For example, to use `await` in your app's `main()` function,
-the body of `main()` must be marked as `async`:
-
-<?code-excerpt "misc/lib/language_tour/async.dart (main)"?>
-{% prettify dart %}
-Future main() async {
-  checkVersion();
-  print('In main: version is ${await lookUpVersion()}');
-}
-{% endprettify %}
-
-
 <a id="await-for"></a>
-### Using asynchronous for loops with Streams
+### Handling Streams
+
+When you need to get values from a Stream,
+you have two options:
+
+* Use `async` and an _asynchronous for loop_ (`await for`).
+* Use the Stream API, as described
+  [in the library tour](/guides/libraries/library-tour#stream).
+
+<aside class="alert alert-warning" markdown="1">
+**Note:**
+Before using `await for`, be sure that it makes the code clearer
+and that you really do want to wait for all of the stream's results.
+For example, you usually should **not** use `await for` for UI event listeners,
+because UI frameworks send endless streams of events.
+</aside>
 
 An asynchronous for loop has the following form:
 
-<pre>
-<b>await for</b> (<em>variable declaration</em> in <em>expression</em>) {
+<?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
+{% prettify dart %}
+await for (varOrType identifier in expression) {
   // Executes each time the stream emits a value.
 }
-</pre>
+{% endprettify %}
 
 The value of <code><em>expression</em></code> must have type Stream.
 Execution proceeds as follows:
@@ -3799,23 +3826,23 @@ you can use a `break` or `return` statement,
 which breaks out of the for loop
 and unsubscribes from the stream.
 
-**If an asynchronous for loop doesn't work,
-make sure it's in an async function.**
+**If you get a compile-time error when implementing an asynchronous for loop,
+make sure the `await for` is in an async function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-<?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)"?>
+<?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart %}
-Future main() async {
+Future main() [!async!] {
   // ...
-  await for (var request in requestServer) {
+  [!await for!] (var request in requestServer) {
     handleRequest(request);
   }
   // ...
 }
 {% endprettify %}
 
-For more information about asynchronous programming, see the
+For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
 Also see the articles
@@ -3823,6 +3850,58 @@ Also see the articles
 and
 [Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
 and the [Dart language specification](/guides/language/spec).
+
+
+<a id="generator"></a>
+## Generators
+
+When you need to lazily produce a sequence of values,
+consider using a _generator function_.
+Dart has built-in support for two kinds of generator functions:
+
+* **Synchronous** generator: Returns an **[Iterable]** object.
+* **Asynchronous** generator: Returns a **[Stream]** object.
+
+To implement a **synchronous** generator function,
+mark the function body as `sync*`,
+and use `yield` statements to deliver values:
+
+<?code-excerpt "misc/test/language_tour/async_test.dart (sync-generator)"?>
+{% prettify dart %}
+Iterable naturalsTo(n) sync* {
+  int k = 0;
+  while (k < n) yield k++;
+}
+{% endprettify %}
+
+To implement an **asynchronous** generator function,
+mark the function body as `async*`,
+and use `yield` statements to deliver values:
+
+<?code-excerpt "misc/test/language_tour/async_test.dart (async-generator)"?>
+{% prettify dart %}
+Stream asynchronousNaturalsTo(n) async* {
+  int k = 0;
+  while (k < n) yield k++;
+}
+{% endprettify %}
+
+If your generator is recursive,
+you can improve its performance by using `yield*`:
+
+<?code-excerpt "misc/test/language_tour/async_test.dart (recursive-generator)"?>
+{% prettify dart %}
+Iterable naturalsDownFrom(n) sync* {
+  if (n > 0) {
+    yield n;
+    yield* naturalsDownFrom(n - 1);
+  }
+}
+{% endprettify %}
+
+For more information about generators, see the article
+[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async).
+
 
 ## Callable classes
 
@@ -4141,6 +4220,8 @@ To learn more about Dart's core libraries, see
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
