@@ -3806,8 +3806,9 @@ because UI frameworks send endless streams of events.
 
 An asynchronous for loop has the following form:
 
+<?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 {% prettify dart %}
-await for (variableDeclaration in expression) {
+await for (varOrType identifier in expression) {
   // Executes each time the stream emits a value.
 }
 {% endprettify %}
