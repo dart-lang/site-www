@@ -78,4 +78,12 @@ Future miscDeclAnalyzedButNotTested() async {
     }
     // #enddocregion number_thinker
   }
+
+  <varOrType>(Stream expression) async {
+    // #docregion await-for
+    await for (varOrType identifier in expression) {
+      // Executes each time the stream emits a value.
+    }
+    // #enddocregion await-for
+  };
 }
