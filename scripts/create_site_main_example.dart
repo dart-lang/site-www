@@ -13,7 +13,7 @@ from sources in the example folder.
 ''';
 
 void main() {
-  // Logger.root.level = Level.ALL;
+  Logger.root.level = Level.OFF;
   Logger.root.onRecord.listen((LogRecord rec) => print('>> ${rec.message}'));
 
   final mainExampleSrcAsHtmlWithTips = new Main().getSrcHtmlWithTips();
@@ -57,10 +57,8 @@ class Main {
         throw 'Expected tip for $anchor, but instead found tip for ${tooltip[0]}. Aborting.';
       final escapedAnchor = htmlEscape(anchor);
       _log.fine('  ** Replacing "$escapedAnchor" with span');
-      line = lineWithoutTipInstruction.replaceFirst(
-          escapedAnchor,
-          '<span class="frontpage-highlight" data-toggle="popover"'
-          ' data-content="$tooltipText">$escapedAnchor</span>');
+      line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
+          '<span data-toggle="popover" data-content="$tooltipText">$escapedAnchor</span>');
     }
     return line;
   }
