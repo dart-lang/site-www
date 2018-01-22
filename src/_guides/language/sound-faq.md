@@ -208,7 +208,7 @@ to start migrating your code now to take advantage of the new type system that
 finds errors at compile time. It will also make the transition to Dart 2 go
 much more smoothly. For more information, see [The benefits of
 soundness](/guides/language/sound-dart#the-benefits-of-soundness)
-and [Dart 2 Updates.](/dart-2.0)
+and [Dart 2 Updates.](/dart-2)
 
 <a name="how-much-work"></a>
 ### How much work is it to switch to strong mode?
@@ -278,7 +278,7 @@ The following image shows examples of type inference in strong mode clean code:
 
 Only for awhile. Types are no longer optional in Dart 2, so we
 recommend migrating your code now. For help on getting
-ready for Dart 2, see [Dart 2 Updates](/dart-2.0).
+ready for Dart 2, see [Dart 2 Updates](/dart-2).
 For more information, see [A stronger Dart for
 everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html).
 

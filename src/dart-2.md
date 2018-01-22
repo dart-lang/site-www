@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /dart-2.0
+permalink: /dart-2
 title: Dart 2 Updates
 description: How Dart 2 is different from Dart 1.x, and how you can prepare.
 ---
@@ -9,7 +9,7 @@ This page has information about changes that are coming in Dart 2,
 and how you can migrate your code from Dart 1.x.
 
 <aside class="alert alert-warning" markdown="1">
-**Don't rely on 2.0 until it's stable.**
+**Don't rely on Dart 2 until it's stable.**
 Dart 2 pre-releases will have a series of incompatible changes.
 Although we appreciate your willingness to prepare for and test Dart 2,
 please don't bet your livelihood on a pre-release.
@@ -87,7 +87,7 @@ As a package owner, you need to do the following:
 ### Changes and backward compatibility
 
 If you have to change your package's code,
-**try to make it work in 1.x**, as well as 2.0.
+**try to make it work in 1.x**, as well as Dart 2.
 For example, you might be able to add type annotations
 or (if an API has been removed) to use an alternative 1.x API.
 
@@ -152,9 +152,9 @@ To test your code with Dart 2, you can use a
 of the Dart 2 SDK.
 
 When running `pub get`, `pub upgrade`, or other pub commands
-from a 2.0 pre-release, you might get packages that
-haven’t been verified to work with 2.0.
-If you find a package that has 2.0 issues,
+from a Dart 2 pre-release, you might get packages that
+haven’t been verified to work with Dart 2.
+If you find a package that has Dart 2 issues,
 please report those issues immediately to the package maintainer,
 and let the Dart community know about any workarounds you find.
 
@@ -200,7 +200,7 @@ and, in many cases, doesn't require type annotations. For example,
 the following is valid code in both Dart 1.x and Dart 2:
 
 <pre>
-var i = 1;   // In 2.0, inferred to be int;
+var i = 1;   // In Dart 2, inferred to be int;
              // previously, inferred to be dynamic.
 
 dynamic x = 1;

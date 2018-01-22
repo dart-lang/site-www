@@ -718,7 +718,7 @@ strong mode:
 * [Strong Mode Dart: Fixing Common
   Problems](/guides/language/sound-problems) - Errors you may encounter when
   writing sound Dart code, and how to fix them.
-* [Dart 2 Updates](/dart-2.0) - How you can start updating your projects
+* [Dart 2 Updates](/dart-2) - How you can start updating your projects
   to Dart 2 now.
 * [Strong Mode Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
   Peterson's talk from 2016 Dart Summit.

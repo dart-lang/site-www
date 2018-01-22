@@ -24,7 +24,7 @@ some of which are not backward-compatible.
 For information about what is changing and the implementation status,
 see the following resources:
 
-* [Dart 2 Updates](/dart-2.0)
+* [Dart 2 Updates](/dart-2)
 * [Dart Language and Library Newsletters](https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters)
 * [Language specification source file (TeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
 * [Informal specifications](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)

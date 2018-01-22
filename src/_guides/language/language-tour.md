@@ -110,7 +110,7 @@ mind:
 -   In [strong mode](/guides/language/sound-dart), static and runtime
     checks ensure that your code is type safe, helping you catch bugs
     in development, rather than at runtime. Strong mode is optional in
-    Dart 1.x, but not optional in [Dart 2](/dart-2.0).
+    Dart 1.x, but not optional in [Dart 2](/dart-2).
 
 -   Dart parses all your code before running it. You can provide tips to
     Dart—for example, by using types or compile-time constants—to catch
@@ -263,7 +263,7 @@ completion and early warnings for bugs and code completion.
 This page follows the
 [style guide recommendation](/guides/language/effective-dart/design#type-annotations)
 of using `var`, rather than type annotations, for local variables.
-Even under [strong mode](/dart-2.0), you can specify `var`&mdash;the
+Even under [strong mode](/dart-2), you can specify `var`&mdash;the
 analyzer infers the type where possible.
 </div>
 
@@ -2934,7 +2934,7 @@ update-for-dart-2
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2.0) difference**:
+  **[Dart 2](/dart-2) difference**:
   Only abstract classes can have abstract methods.
   An error is reported otherwise.
 </aside>
@@ -3749,7 +3749,7 @@ any of its body executes.
 
 
 <aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2.0) difference**:
+  **[Dart 2](/dart-2) difference**:
     Async functions won't return immediately.
     Instead, an async function will continue executing until
     it either suspends or completes.
