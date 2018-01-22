@@ -382,3 +382,9 @@ body.homepage .get-started-section {
 pre code {
   white-space: pre;
 }
+
+[data-toggle="popover"] {
+  :not(:hover) {
+    text-decoration: underline;
+  }
+}
