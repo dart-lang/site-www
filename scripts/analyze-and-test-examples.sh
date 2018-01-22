@@ -7,10 +7,13 @@
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
+PUB_ARGS="upgrade" # --no-precomiple
+if [[ $1 == '--get' ]]; then shift; PUB_ARGS="get"; fi
+
 function analyze_and_test() {
   pushd "$1" > /dev/null
   travis_fold start analyzeAndTest.get
-  pub get
+  pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
   DIR=()
@@ -51,7 +54,7 @@ function analyze_and_test() {
     echo Running browser tests ...
 
     # Name the sole browser test file, otherwise all other files get compiled too:
-    $TEST --tags browser --platform chromeheadless $TEST_FILES \
+    $TEST --tags browser --platform chrome $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
     if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
