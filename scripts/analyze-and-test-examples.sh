@@ -51,7 +51,7 @@ function analyze_and_test() {
     echo Running browser tests ...
 
     # Name the sole browser test file, otherwise all other files get compiled too:
-    $TEST --tags browser --platform chromeheadless $TEST_FILES \
+    $TEST --tags browser --platform chrome $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
     if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
