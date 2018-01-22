@@ -12,15 +12,6 @@
             "value": "*"
           }
         ]
-      },
-      {
-        "source": "/dart-2.0",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "text/html; charset=utf-8"
-          }
-        ]
       }
     ],
     "redirects": [
@@ -105,7 +96,7 @@
         "type": 301
       },
       {
-        "source": "/articles/doc-comment-guidelines/**",
+        "source": "/articles/doc-comment-guidelines",
         "destination": "/guides/language/effective-dart/documentation",
         "type": 301
       },
@@ -780,16 +771,6 @@
         "type": 301
       },
       {
-        "source": "/events/2013/**",
-        "destination": "/",
-        "type": 301
-      },
-      {
-        "source": "/events/2014/**",
-        "destination": "/",
-        "type": 301
-      },
-      {
         "source": "/events/2015/**",
         "destination": "https://www.youtube.com/watch?list=PLOU2XLYxmsIIQorIS8gagUiMau9S84vZV&v=FiXiI2Atexc",
         "type": 301
@@ -799,6 +780,8 @@
         "destination": "https://events.dartlang.org/2016/summit",
         "type": 301
       },
+      { "source": "/events", "destination": "https://events.dartlang.org", "type": 301 },
+      { "source": "/events/**", "destination": "https://events.dartlang.org", "type": 301 },
       {
         "source": "/googleapis",
         "destination": "https://github.com/dart-lang/googleapis",
@@ -1166,7 +1149,12 @@
       },
       {
         "source": "/2.0",
-        "destination": "/dart-2.0",
+        "destination": "/dart-2",
+        "type": 301
+      },
+      {
+        "source": "/dart-2.0",
+        "destination": "/dart-2",
         "type": 301
       }
     ]

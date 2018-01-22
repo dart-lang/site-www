@@ -203,12 +203,12 @@ including incremental compiles, that is under development.
 ### Is Dart still optionally typed?
 Typing is optional in Dart 1.x,
 so you can continue to write Dart code as before.
-However, Dart 2.0 won't be optionally typed. We encourage you
+However, Dart 2 won't be optionally typed. We encourage you
 to start migrating your code now to take advantage of the new type system that
-finds errors at compile time. It will also make the transition to Dart 2.0 go
+finds errors at compile time. It will also make the transition to Dart 2 go
 much more smoothly. For more information, see [The benefits of
 soundness](/guides/language/sound-dart#the-benefits-of-soundness)
-and [Dart 2.0 Updates.](/dart-2.0)
+and [Dart 2 Updates.](/dart-2)
 
 <a name="how-much-work"></a>
 ### How much work is it to switch to strong mode?
@@ -227,7 +227,7 @@ migrating your code to sound Dart, see
 It depends. In Dart 1.x, you can [exclude files from static
 analysis](/guides/language/analysis-options#excluding-files), but
 if you're using dartdevc, the code must be entirely strong mode clean.
-In Dart 2.0, all of your code must be strong mode clean.
+In Dart 2, all of your code must be strong mode clean.
 
 <a name="are-core-libraries-compliant"></a>
 ### Are the Dart core libraries compliant with strong mode?
@@ -250,7 +250,7 @@ As for executing code, the dart2js and Dart VM tools don’t currently
 support strong mode so, yes, you can mix and match.
 The dartdevc tool requires strong mode compliance and
 won’t compile code that is unsound.
-In Dart 2.0, all code must be strong mode clean.
+In Dart 2, all code must be strong mode clean.
 
 <a name="is-it-darts-new-type-system"></a>
 ### Is strong mode Dart's new type system?
@@ -276,9 +276,9 @@ The following image shows examples of type inference in strong mode clean code:
 <a name="is-it-optional"></a>
 ### I liked Dart before. Can I still write Dart code the way I always did?
 
-Only for awhile. Types are no longer optional in Dart 2.0, so we
+Only for awhile. Types are no longer optional in Dart 2, so we
 recommend migrating your code now. For help on getting
-ready for Dart 2.0, see [Dart 2.0 Updates](/dart-2.0).
+ready for Dart 2, see [Dart 2 Updates](/dart-2).
 For more information, see [A stronger Dart for
 everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html).
 

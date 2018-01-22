@@ -61,7 +61,7 @@ and available as open source:
 </li>
 <li>
 <img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
-<a href="https://marketplace.visualstudio.com/items?itemName=DanTup.dart-code"><b>Visual Studio Code</b></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
 

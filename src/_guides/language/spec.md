@@ -2,7 +2,6 @@
 layout: default
 title: "Dart Language Specification"
 description: "The Dart language specification and proposed changes."
-toc: false
 ---
 
 Download the _Dart Programming Language Specification_ from
@@ -16,6 +15,20 @@ For a gentler introduction to the Dart language, see the
 
 You can find previous editions of the specification at
 [Standard ECMA-408](http://www.ecma-international.org/publications/standards/Ecma-408-arch.htm).
+
+
+## Dart 2 changes
+
+Dart 2 is changing the Dart language in many ways,
+some of which are not backward-compatible.
+For information about what is changing and the implementation status,
+see the following resources:
+
+* [Dart 2 Updates](/dart-2)
+* [Dart Language and Library Newsletters](https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters)
+* [Language specification source file (TeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+* [Informal specifications](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
+
 
 ## Changes in the 4<sup>th</sup> edition
 
@@ -58,11 +71,3 @@ the following new language features:
   Implemented in 1.6. For details, see the language tour:
   [Lazily loading a library](/guides/language/language-tour#deferred-loading).
 {% endcomment %}
-
-## Proposed enhancements to the Dart language
-
-Interested in learning about new features that may be added to Dart?
-
-You can track all Dart Enhancement Proposals (DEPs) in the
-[dart_enhancement_proposals](https://github.com/dart-lang/dart_enhancement_proposals)
-repo on GitHub.

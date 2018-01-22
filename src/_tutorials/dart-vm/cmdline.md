@@ -101,7 +101,9 @@ For a brief look now, hover over the highlighted code below for explanations.
 <pre class="prettyprint lang-dart">
 import 'dart:io';
 import 'dart:convert';
-<a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous library" data-html="true" data-trigger="hover focus" data-content="The dart:async library defines Future and Stream classes.">import 'dart:async';</a>
+<span class="highlight" data-toggle="popover" title="Asynchronous library"
+  data-content="The dart:async library defines Future and Stream classes."
+>import 'dart:async';</span>
 
 import 'package:args/args.dart';
 
@@ -109,36 +111,38 @@ const lineNumber = 'line-number';
 
 ArgResults argResults;
 
-void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-line arguments" data-html="true" data-trigger="hover focus" data-content="Command-line arguments are passed in by the system when the program starts.">List&lt;String&gt; arguments</a>) {
+void main(<span class="highlight" data-toggle="popover" title="Command-line arguments" data-content="Command-line arguments are passed in by the system when the program starts.">List&lt;String&gt; arguments</span>) {
   exitCode = 0; //presume success
   final parser = new ArgParser()
       ..addFlag(lineNumber, negatable: false, abbr: 'n');
 
-  <a href="#" class="dart-popover" data-toggle="popover" title="Arguments parser" data-html="true" data-trigger="hover focus" data-content="The ArgParser class provides help with parsing command-line arguments.">argResults = parser.parse(arguments);</a>
+  <span class="highlight" data-toggle="popover" title="Arguments parser" data-content="The ArgParser class provides help with parsing command-line arguments.">argResults = parser.parse(arguments);</span>
   List&lt;String&gt; paths = argResults.rest;
 
   dcat(paths, argResults[lineNumber]);
 }
 
-Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a href="#" class="dart-popover" data-toggle="popover" title="Asynchronous function" data-html="true" data-trigger="hover focus" data-content='An asynchronous function is marked with "async" and returns a Future.'>async</a> {
+Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <span class="highlight" data-toggle="popover" title="Asynchronous function" data-content='An asynchronous function is marked with "async" and returns a Future.'>async</span> {
   if (paths.isEmpty) {
     // No files provided as arguments. Read from stdin and print each line.
-    <a href="#" class="dart-popover" data-toggle="popover" title="Standard I/O streams" data-html="true" data-trigger="hover focus" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
+    <span class="highlight" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</span>
   } else {
     for (var path in paths) {
       int lineNumber = 1;
-      <a href="#" class="dart-popover" data-toggle="popover" title="Create a File object" data-html="true" data-trigger="hover focus" data-content="Use the File class to represent the file on the native file system.">Stream lines = new File(path)</a>
-          <a href="#" class="dart-popover" data-toggle="popover" title="Open a file for reading" data-html="true" data-trigger="hover focus" data-content="Read the content from the file asynchronously.">.openRead()</a>
-          <a href="#" class="dart-popover" data-toggle="popover" title="Data converters" data-html="true" data-trigger="hover focus" data-content="Convert data as it becomes available on the stream.">.transform(UTF8.decoder)</a>
+      <span class="highlight" data-toggle="popover" title="Create a File object" data-content="Use the File class to represent the file on the native file system.">Stream lines = new File(path)</span>
+          <span class="highlight" data-toggle="popover" title="Open a file for reading" data-content="Read the content from the file asynchronously.">.openRead()</span>
+          <span class="highlight" data-toggle="popover" title="Data converters" data-content="Convert data as it becomes available on the stream.">.transform(UTF8.decoder)</span>
           .transform(const LineSplitter());
-      <a href="#" class="dart-popover" data-toggle="popover" title="Exception handling" data-html="true" data-trigger="hover focus" data-content='Function calls that might generate an exception are placed in a "try" block.'>try</a> {
-        <a href="#" class="dart-popover" data-toggle="popover" title="Get data from the stream" data-html="true" data-trigger="hover focus" data-content='Use "await for" to loop over the values as they become available on the stream. The program pauses while waiting for the next line.'>await for (var line in lines)</a> {
+      <span class="highlight" data-toggle="popover" title="Exception handling" data-content='Function calls that might generate an exception are placed in a "try" block.'>try</span> {
+        <span class="highlight" data-toggle="popover" title="Get data from the stream"
+          data-content='Use "await for" to loop over the values as they become available on the stream. The program pauses while waiting for the next line.'
+        >await for (var line in lines)</span> {
           if (showLineNumbers) {
             stdout.write('${lineNumber++} ');
           }
           stdout.writeln(line);
         }
-      } <a href="#" class="dart-popover" data-toggle="popover" title="Exception handling" data-html="true" data-trigger="hover focus" data-content='Any errors encountered in the stream are handled in the "catch" block.'>catch</a> (_) {
+      } <span class="highlight" data-toggle="popover" title="Exception handling" data-content='Any errors encountered in the stream are handled in the "catch" block.'>catch</span> (_) {
         _handleError(path);
       }
     }
@@ -146,10 +150,14 @@ Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a href="#" class="d
 }
 
 Future _handleError(String path) async {
-  if (<a href="#" class="dart-popover" data-toggle="popover" title="Test the path" data-html="true" data-trigger="hover focus" data-content='You can get information about the file system on which your program is running. The "await" keyword causes error handling to pause until the path is available.'>await FileSystemEntity.isDirectory(path)</a>) {
+  if (<span class="highlight" data-toggle="popover" title="Test the path"
+    data-content='You can get information about the file system on which your program is running. The "await" keyword causes error handling to pause until the path is available.'
+  >await FileSystemEntity.isDirectory(path)</span>) {
     stderr.writeln('error: $path is a directory');
   } else {
-    <a href="#" class="dart-popover" data-toggle="popover" title="Exit code" data-html="true" data-trigger="hover focus" data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful.">exitCode = 2;</a>
+    <span class="highlight" data-toggle="popover" title="Exit code"
+      data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful."
+    >exitCode = 2;</span>
   }
 }
 
@@ -215,17 +223,17 @@ Here's the code from `dcat` that deals with command-line arguments:
 
 <pre class="prettyprint lang-dart">
 ...
-<a href="#" class="dart-popover" data-toggle="popover" title="Parsed arguments" data-html="true" data-trigger="hover focus" data-content="This object contains parsed options and flags.">ArgResults argResults;</a>
+<span class="highlight" data-toggle="popover" title="Parsed arguments" data-content="This object contains parsed options and flags.">ArgResults argResults;</span>
 
-void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-line arguments" data-html="true" data-trigger="hover focus" data-content="The system passes command-line arguments into the program in a list of strings.">List&lt;String&gt; arguments</a>) {
+void main(<span class="highlight" data-toggle="popover" title="Command-line arguments" data-content="The system passes command-line arguments into the program in a list of strings.">List&lt;String&gt; arguments</span>) {
   exitCode = 0; //presume success
   final parser = new ArgParser()
-    <a href="#" class="dart-popover" data-toggle="popover" title="Define a valid flag" data-html="true" data-trigger="hover focus" data-content="Add a flag definition to the command-line argument parser. This code defines the flag -n, which when used displays line numbers.">..addFlag(lineNumber, negatable: false, abbr: 'n')</a>;
+    <span class="highlight" data-toggle="popover" title="Define a valid flag" data-content="Add a flag definition to the command-line argument parser. This code defines the flag -n, which when used displays line numbers.">..addFlag(lineNumber, negatable: false, abbr: 'n')</span>;
 
-  argResults = parser.<a href="#" class="dart-popover" data-toggle="popover" title="Parse the arguments" data-html="true" data-trigger="hover focus" data-content="Parse the arguments that were passed into the main() function. The parser stops parsing if it finds an undefined option or flag.">parse(arguments)</a>;
-  List&lt;String&gt; paths = <a href="#" class="dart-popover" data-toggle="popover" title="Remaining arguments" data-html="true" data-trigger="hover focus" data-content="To get the arguments that remain after parsing all of the valid options and flags, use the rest property.">argResults.rest</a>;
+  argResults = parser.<span class="highlight" data-toggle="popover" title="Parse the arguments" data-content="Parse the arguments that were passed into the main() function. The parser stops parsing if it finds an undefined option or flag.">parse(arguments)</span>;
+  List&lt;String&gt; paths = <span class="highlight" data-toggle="popover" title="Remaining arguments" data-content="To get the arguments that remain after parsing all of the valid options and flags, use the rest property.">argResults.rest</span>;
 
-  dcat(paths, <a href="#" class="dart-popover" data-toggle="popover" title="Refer to options and flags by name" data-html="true" data-trigger="hover focus" data-content="You can refer to an option or flag by name treating the ArgResults object like a Map.">argResults[lineNumber])</a>;
+  dcat(paths, <span class="highlight" data-toggle="popover" title="Refer to options and flags by name" data-content="You can refer to an option or flag by name treating the ArgResults object like a Map.">argResults[lineNumber])</span>;
 }
 ...
 </pre>

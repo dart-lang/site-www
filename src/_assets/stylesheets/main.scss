@@ -518,14 +518,6 @@ img {
   }
 }
 
-#code-display {
-  padding: $content-padding;
-  border: 1px solid $gray;
-  height: 100%;
-  min-height: 130px;
-  margin-top: 15px;
-}
-
 #site-search-results {
   display: none;
   position: relative;
@@ -1041,7 +1033,7 @@ body.homepage {
     padding: 0;
     padding-bottom: 60px;
   }
-  #code-sample {
+  #code-sample-section {
     padding-top: 30px;
     h3 { margin-top: 0; }
   }

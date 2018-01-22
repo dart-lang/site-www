@@ -16,7 +16,7 @@ env:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
   matrix:
     - TASK=./scripts/check-code.sh
-    - TASK=./scripts/analyze-and-test-examples.sh
+    - TASK=./scripts/analyze-and-test-examples.sh --get
     - TASK=./deploy/cibuild
 
 before_install:

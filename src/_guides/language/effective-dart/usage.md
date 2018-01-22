@@ -736,7 +736,7 @@ View(Style style, List children)
 
 {% comment %}update-for-dart-2{% endcomment %}
 <div class="alert alert-danger" markdown="1">
-**Dart 2.0 note:** The call to `super()` _must be last_ in Dart 2.0, otherwise
+**Dart 2 note:** The call to `super()` _must be last_ in Dart 2, otherwise
 an error is reported.
 </div>
 
