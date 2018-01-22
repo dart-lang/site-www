@@ -13,8 +13,9 @@ and how you can migrate your code from Dart 1.x.
 Dart 2 pre-releases will have a series of incompatible changes.
 Although we appreciate your willingness to prepare for and test Dart 2,
 please don't bet your livelihood on a pre-release.
-For information on potential changes, see
-[Dart Language & Library Newsletters.](https://github.com/dart-lang/sdk/blob/master/docs/newsletter/README.md#dart-language-and-library-newsletters)
+For information on potential changes, see the
+[Dart 2 changes](/guides/language/spec#dart-2-changes) section of the
+[Dart Language Specification](/guides/language/spec) page.
 </aside>
 
 * Migration tips
