@@ -1,9 +1,9 @@
 ---
 layout: homepage
-title: "Dart programming language"
-description: "Dart is an application programming language that’s easy to learn, easy to scale, and deployable everywhere."
+title: Dart programming language
+description: Dart is an application programming language that’s easy to learn, easy to scale, and deployable everywhere.
 ---
-<section id="code-sample">
+<section id="code-sample-section">
 <div class="container">
   {% comment %}
   <div class="row banner__frontpage-row">
@@ -16,7 +16,7 @@ description: "Dart is an application programming language that’s easy to learn
   {% endcomment %}
   <div class="row">
     <div class="col-sm-7 col-lg-6">
-      <div class="content">
+      <div id="code-sample" class="content">
         <a href="https://dartpad.dartlang.org/fb763a4a770b5cdd896982e10ccf4118" class='codesample__open-in-dartpad no-automatic-external' target='_blank'>Open in DartPad</a>
         {% include_relative _main-example.html %}
       </div>
@@ -27,26 +27,22 @@ description: "Dart is an application programming language that’s easy to learn
           <div class="frontpage-slogan">
             <h3>
               Dart is an
-              <span class="frontpage-highlight" data-text="Dart is focused on client-side programming, be it in the browser or on mobile.">application</span> programming
-              <span class="frontpage-highlight" data-text="But it’s not just a language. Dart comes with well-crafted core libraries, a package manager, static analysis tools, and more.">language</span> that’s
-              <span class="frontpage-highlight" data-text="The syntax feels familiar, and the semantics are clean and consistent. No nasty surprises.">easy to learn</span>,
-              <span class="frontpage-highlight" data-text="Google alone has over 2 million lines of production Dart code. Apps can reach hundreds of thousands of lines of code.">easy to scale</span>, and deployable
-              <span class="frontpage-highlight" data-text="Dart runs fast in every modern browser, on the command line, on servers, and on mobile.">everywhere</span>.
+              <span data-toggle="popover" data-content="Dart is focused on client-side programming, be it in the browser or on mobile.">application</span> programming
+              <span data-toggle="popover" data-content="But it’s not just a language. Dart comes with well-crafted core libraries, a package manager, static analysis tools, and more.">language</span> that’s
+              <span data-toggle="popover" data-content="The syntax feels familiar, and the semantics are clean and consistent. No nasty surprises.">easy to learn</span>,
+              <span data-toggle="popover" data-content="Google alone has over 2 million lines of production Dart code. Apps can reach hundreds of thousands of lines of code.">easy to scale</span>, and deployable
+              <span data-toggle="popover" data-content="Dart runs fast in every modern browser, on the command line, on servers, and on mobile.">everywhere</span>.
             </h3>
             <h3>
               Google depends on Dart to make
-              <span class="frontpage-highlight" data-text="For example, the next generation of AdWords (Google’s foremost money-making app) runs on Dart.">very large apps</span>.
+              <span data-toggle="popover" data-content="For example, the next generation of AdWords (Google’s foremost money-making app) runs on Dart.">very large apps</span>.
             </h3>
             <p><a href="/guides/get-started" class="frontpage-slogan__get-started btn btn-default btn-lg">Get Started</a> <a href="/install" class="btn btn-lg">Install Dart</a></p>
-          <div id="code-display">
-            <p>[&nbsp;Click underlined text or code to learn more.&nbsp;]</p>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  </div>
 </section>
 
 <section class="chip-grid-section">

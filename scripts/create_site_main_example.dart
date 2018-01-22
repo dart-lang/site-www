@@ -13,7 +13,7 @@ from sources in the example folder.
 ''';
 
 void main() {
-  // Logger.root.level = Level.ALL;
+  Logger.root.level = Level.OFF;
   Logger.root.onRecord.listen((LogRecord rec) => print('>> ${rec.message}'));
 
   final mainExampleSrcAsHtmlWithTips = new Main().getSrcHtmlWithTips();
@@ -32,7 +32,7 @@ class Main {
       new HtmlEscape(new HtmlEscapeMode(escapeLtGt: true));
   final HtmlUnescape _htmlUnescape = new HtmlUnescape();
   final tipRegExp = new RegExp(r'^(.*?) //!tip\("([^"]+)"\)$');
-  final tooltips = _getTooltips();
+  final tooltips = _getTooltips().toList();
 
   int indexOfNextTooltip = 0;
 
@@ -58,7 +58,7 @@ class Main {
       final escapedAnchor = htmlEscape(anchor);
       _log.fine('  ** Replacing "$escapedAnchor" with span');
       line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
-          '<span class="frontpage-highlight" data-text="$tooltipText">$escapedAnchor</span>');
+          '<span data-toggle="popover" data-content="$tooltipText">$escapedAnchor</span>');
     }
     return line;
   }
@@ -75,20 +75,38 @@ Iterable<String> getMainExampleSrcLines() {
       .map((line) => line.replaceFirst('numIterations', '500'));
 }
 
-List<List<String>> _getTooltips() {
+Iterable<List<String>> _getTooltips() sync* {
   final _tooltipFile = '../examples/misc/lib/pi_monte_carlo_tooltips.html';
-  final _tooltipLineRE = new RegExp(r'^\s*<li name="(.*?)">(.*)</li>');
+  final _tooltipLineRE = new RegExp(r'^\s*<li name="(.*?)">(.*?)(</li>)?$');
+  final _tooltipLineEndRE = new RegExp(r'^\s*(.*?)(</li>)?$');
+  final lines = new File(_tooltipFile).readAsLinesSync().iterator;
+  _log.info('Processing $_tooltipFile:');
 
-  // Read tooltips.
-  return new File(_tooltipFile)
-      .readAsLinesSync()
-      .where((line) => line.contains('<li'))
-      .map((line) {
+  while (lines.moveNext()) {
+    final line = lines.current;
     final match = _tooltipLineRE.firstMatch(line);
+    _log.info('  ${match == null ? "Skipping" : "Processing"}: $line.');
+    if (match == null) continue;
 
-    return [
-      match[1], // anchor text, e.g. "import"
-      match[2], // tooltip HTML
-    ];
-  }).toList();
+    String name = match[1], tooltip = match[2], liClosingTag = match[3];
+    _log.fine('  >> $name | $tooltip | $liClosingTag');
+
+    while (liClosingTag == null && lines.moveNext()) {
+      final line = lines.current;
+      final match = _tooltipLineEndRE.firstMatch(line);
+      _log.info('  ${match == null ? "Skipping" : "Processing"}: $line.');
+      tooltip = _join(tooltip, match[1]);
+      liClosingTag = match[2];
+    }
+
+    if (liClosingTag == null)
+      throw 'Could not find closing <li> tag for line starting at "$tooltip"';
+
+    yield [name, tooltip];
+  }
 }
+
+/// Returns the concatentation of s1 and s2, separated by a space if both
+/// are not empty.
+String _join(String s1, String s2) =>
+    [s1, s2].where((String s) => s.isNotEmpty).join(' ');

@@ -38,22 +38,6 @@ a code {
 
 // FRONT-PAGE RELATED
 
-/* Code sample */
-
-.frontpage-highlight {
-	background: none;
-	border-bottom: 2px dotted $gray;
-	padding: 0;
-	cursor: pointer;
-
-	&:hover {
-		border-color: $default-link;
-	}
-	&.selected {
-		font-weight: bold;
-	}
-}
-
 @mixin front-page-first-section-height {
 	height: 230px;
 	@media (min-width: $screen-sm-min) {
@@ -74,8 +58,23 @@ a code {
 	}
 }
 
+[data-toggle="popover"] {
+	background: none;
+	border-bottom: 2px dotted $gray;
+	padding: 0;
+	cursor: pointer;
+
+	&:hover { border-color: $default-link; }
+	// &.selected { font-weight: bold; }
+}
+
+body.homepage #code-sample [data-toggle="popover"] {
+  border-color: darken($gray, 10%);
+  &:hover { border-color: $default-link; }
+}
+
 body.homepage {
-	#code-sample {
+	#code-sample-section {
 		pre {
 			font-size: $font-size-base * 0.8;
 			@media (min-width: $screen-sm-min) {
@@ -84,16 +83,9 @@ body.homepage {
 			@media (min-width: $screen-md-min) {
 				font-size: $font-size-base * 0.8;
 			}
-
 			@include front-page-first-section-height;
-
 			overflow: auto;
-
-			.frontpage-highlight {
-				border-bottom: 1px dotted $gray-dark;
-			}
 		}
-
 	}
 }
 
@@ -122,7 +114,7 @@ body.homepage {
 		margin-bottom: 1em;
 	}
 
-	.frontpage-highlight {
+	[data-toggle="popover"] {
 		padding: 0 2px;
 	}
 }
@@ -137,52 +129,6 @@ body.homepage {
 		background-color: lighten($gray-light, 2%);
 	}
 }
-
-$footnotes-padding: 5px;
-
-/* Footnotes */
-#code-display {
-	padding: 0;
-	margin-top: 50px;
-
-	@media (min-width: $screen-sm-min) {
-		position: absolute;
-		bottom: -$footnotes-padding;
-		left: -$footnotes-padding;
-		right: -$footnotes-padding;
-		padding: $footnotes-padding;
-	}
-
-	height: auto;
-	border: none;
-	//font-style: italic;
-	min-height: 0;
-
-	p {
-		margin: 0;
-		font-weight: 700;
-	}
-}
-
-/* Blink highlight for footnotes */
-
-.blink {
-	-webkit-animation: highlight 1s;
-	-moz-animation: highlight 1s;
-	-ms-animation: highlight 1s;
-	-o-animation: highlight 1s;
-	animation: highlight 1s;
-}
-
-@keyframes highlight {
-	0% {
-		background: $blue-light;
-	}
-	100% {
-		background: initial;
-	}
-}
-
 
 /* Create craigslist-like small cards for the front page */
 body.homepage .chip-grid-section {
@@ -381,10 +327,4 @@ body.homepage .get-started-section {
 /* Overwrite bootstrap: don't wrap code */
 pre code {
   white-space: pre;
-}
-
-[data-toggle="popover"] {
-  :not(:hover) {
-    text-decoration: underline;
-  }
 }
