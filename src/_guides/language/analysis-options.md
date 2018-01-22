@@ -47,7 +47,7 @@ add static analysis to your tool, see the
 **Note:**
 The analyzer error codes are listed in the [Dart SDK
 repo,](https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart)
-but they are likely to change for Dart 2.0.
+but they are likely to change for Dart 2.
 
 {% comment %}
 update-for-dart-2

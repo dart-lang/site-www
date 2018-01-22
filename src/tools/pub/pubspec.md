@@ -270,7 +270,7 @@ with the version of the Dart SDK that you have installed.
 and **do include an upper bound** (`<2.0.0`, usually).
 Packages that break these rules might stop working in the future
 and, for that reason, might not be allowed on pub.dartlang.org.
-For more information, see [Dart 2.0 Updates.](/dart-2.0)
+For more information, see [Dart 2 Updates.](/dart-2)
 </aside>
 
 

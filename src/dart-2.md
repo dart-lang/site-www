@@ -1,41 +1,42 @@
 ---
 layout: default
-permalink: /dart-2.0
-title: Dart 2.0 Updates
-description: How Dart 2.0 is different from Dart 1.x, and how you can prepare.
+permalink: /dart-2
+title: Dart 2 Updates
+description: How Dart 2 is different from Dart 1.x, and how you can prepare.
 ---
 
-This page has information about changes that are coming in Dart 2.0,
+This page has information about changes that are coming in Dart 2,
 and how you can migrate your code from Dart 1.x.
 
 <aside class="alert alert-warning" markdown="1">
-**Don't rely on 2.0 until it's stable.**
-Dart 2.0 pre-releases will have a series of incompatible changes.
-Although we appreciate your willingness to prepare for and test Dart 2.0,
+**Don't rely on Dart 2 until it's stable.**
+Dart 2 pre-releases will have a series of incompatible changes.
+Although we appreciate your willingness to prepare for and test Dart 2,
 please don't bet your livelihood on a pre-release.
-For information on potential changes, see
-[Dart Language & Library Newsletters.](https://github.com/dart-lang/sdk/blob/master/docs/newsletter/README.md#dart-language-and-library-newsletters)
+For information on potential changes, see the
+[Dart 2 changes](/guides/language/spec#dart-2-changes) section of the
+[Dart Language Specification](/guides/language/spec) page.
 </aside>
 
 * Migration tips
   * [Web](#migration-tips-web)
   * [Servers and command-line scripts](#migration-tips-servers-and-command-line-scripts)
   * [Packages](#migration-tips-packages)
-* [Testing with Dart 2.0 pre-releases](#testing)
-* Dart 2.0 differences
+* [Testing with Dart 2 pre-releases](#testing)
+* Dart 2 differences
   * [Obsolete features](#obsolete-features)
   * [Strong mode and static typing](#strong-mode-and-static-typing)
 
 <aside class="alert alert-info" markdown="1">
 **Flutter note:** You don't need to do anything to prepare Flutter code
-for Dart 2.0. If changes become necessary,
+for Dart 2. If changes become necessary,
 we'll add Flutter details to this page.
 </aside>
 
 
 ## Migration tips: web
 
-If you develop for the web, you can start migrating to Dart 2.0 now:
+If you develop for the web, you can start migrating to Dart 2 now:
 
 Convert your code to be strong mode compliant.
 : For more information,
@@ -66,7 +67,7 @@ will eventually be phased out.
 ## Migration tips: servers and command-line scripts
 
 If you develop servers or command-line scripts,
-you can start migrating to Dart 2.0 now:
+you can start migrating to Dart 2 now:
 
 Convert your code to be strong mode compliant.
 : For more information, see [Strong mode and static
@@ -87,7 +88,7 @@ As a package owner, you need to do the following:
 ### Changes and backward compatibility
 
 If you have to change your package's code,
-**try to make it work in 1.x**, as well as 2.0.
+**try to make it work in 1.x**, as well as Dart 2.
 For example, you might be able to add type annotations
 or (if an API has been removed) to use an alternative 1.x API.
 
@@ -105,12 +106,12 @@ If a backward-compatible change isn't possible,
 ### Upper constraints on the SDK version
 
 Don't update an already-published package
-solely to indicate that it can be used with Dart 2.0 pre-releases.
+solely to indicate that it can be used with Dart 2 pre-releases.
 As long as a package has either no [SDK constraints][]
 or an upper constraint of `<2.0.0`,
-`pub get` and similar pub commands in any Dart 2.0 pre-release
+`pub get` and similar pub commands in any Dart 2 pre-release
 can download the package.
-(The package won't be usable with Dart 2.0 stable releases,
+(The package won't be usable with Dart 2 stable releases,
 but you can fix that later.)
 
 When you update an existing package or publish a new one,
@@ -125,13 +126,13 @@ sdk: '>=2.0.0-dev.1.2 <2.0.0'
 ```
 
 Eventually, you'll need to publish new versions of your packages to
-declare Dart 2.0 compatibility, most likely using a `<3.0.0` SDK constraint.
-Because incompatible changes might occur in any Dart 2.0 pre-release,
-don't declare Dart 2.0 compatibility until we announce that it's safe to do so.
+declare Dart 2 compatibility, most likely using a `<3.0.0` SDK constraint.
+Because incompatible changes might occur in any Dart 2 pre-release,
+don't declare Dart 2 compatibility until we announce that it's safe to do so.
 
 ### Summary
 
-If you publish packages, get ready for Dart 2.0:
+If you publish packages, get ready for Dart 2:
 
 * Make it easy for users to report issues.
 * Respond quickly to issues.
@@ -145,23 +146,23 @@ If you publish packages, get ready for Dart 2.0:
 [pubspec format]: /tools/pub/pubspec
 
 
-## Testing with Dart 2.0 pre-releases {#testing}
+## Testing with Dart 2 pre-releases {#testing}
 
-To test your code with Dart 2.0, you can use a
+To test your code with Dart 2, you can use a
 [pre-release](/install#about-sdk-release-channels-and-version-strings)
-of the Dart 2.0 SDK.
+of the Dart 2 SDK.
 
 When running `pub get`, `pub upgrade`, or other pub commands
-from a 2.0 pre-release, you might get packages that
-haven’t been verified to work with 2.0.
-If you find a package that has 2.0 issues,
+from a Dart 2 pre-release, you might get packages that
+haven’t been verified to work with Dart 2.
+If you find a package that has Dart 2 issues,
 please report those issues immediately to the package maintainer,
 and let the Dart community know about any workarounds you find.
 
 
 ## Obsolete features
 
-The following features are redundant and won't be in Dart 2.0:
+The following features are redundant and won't be in Dart 2:
 
 Checked mode
 : Strong mode replaces checked mode. To learn how they differ, see
@@ -181,26 +182,26 @@ Dartium
 In Dart 1.x, types are optional. You can remove all type annotations
 from a Dart 1.x program without affecting its behavior.
 
-In Dart 2.0, _types_ are mandatory,
+In Dart 2, _types_ are mandatory,
 but type _annotations_ are still optional.
 When a type annotation is absent, tools infer the type.
 With both static and runtime type checks,
-Dart 2.0 has a sound type system.
+Dart 2 has a sound type system.
 This type system enables better tooling, as well as
 clearer, earlier feedback when you write code.
 
-You can prepare for Dart 2.0 by using Dart 1.x with
+You can prepare for Dart 2 by using Dart 1.x with
 [strong mode](/guides/language/sound-dart).
 
 
 <aside class="alert alert-info" markdown="1">
 **A quick summary of the gnarly details:**
-Dart 2.0 supports [type inference](/guides/language/sound-dart#type-inference)
+Dart 2 supports [type inference](/guides/language/sound-dart#type-inference)
 and, in many cases, doesn't require type annotations. For example,
-the following is valid code in both Dart 1.x and Dart 2.0:
+the following is valid code in both Dart 1.x and Dart 2:
 
 <pre>
-var i = 1;   // In 2.0, inferred to be int;
+var i = 1;   // In Dart 2, inferred to be int;
              // previously, inferred to be dynamic.
 
 dynamic x = 1;
@@ -209,16 +210,16 @@ x = "Hello";
 
 As the example shows, you can use the static `dynamic` type
 to indicate that the runtime type is unknown.
-One big difference between optionally typed Dart and Dart 2.0
+One big difference between optionally typed Dart and Dart 2
 is that, in the former, the analyzer infers the `dynamic` type.
-In Dart 2.0, tools like the analyzer can often infer
+In Dart 2, tools like the analyzer can often infer
 types that are more specific than `dynamic`,
 following rules in the language specification.
 
-While Dart 2.0 is statically typed, type inference and
+While Dart 2 is statically typed, type inference and
 less precise types such as `dynamic` and `num`
 take away much of the burden of specifying exact types.
-Dart 2.0 has the advantages of a strongly typed language,
+Dart 2 has the advantages of a strongly typed language,
 but requires only a bit more work than Dart 1.x.
 
 To experiment with strong mode,
@@ -228,7 +229,7 @@ and check the **Strong mode** box at the lower right.
 
 Migrate your code to strong mode, and you may identify some
 lurking bugs that are now more easily identifiable and addressable.
-You'll also find it much easier to transition to Dart 2.0.
+You'll also find it much easier to transition to Dart 2.
 For more information, see [A stronger Dart for
 everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
 and [Strong Mode Dart.](/guides/language/sound-dart)

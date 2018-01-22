@@ -18,7 +18,7 @@ update-for-dart-2.0
 **Note:**
 This article was initially targeted for the standalone VM under the
 1.x Dart SDK.  It does not reflect the Flutter VM,
-nor does it reflect the changes that are coming in [Dart 2.0](/dart-2.0).
+nor does it reflect the changes that are coming in [Dart 2](/dart-2).
 </aside>
 
 Programmers often create benchmarks that exercise an important algorithm in a
