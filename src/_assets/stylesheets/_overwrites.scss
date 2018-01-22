@@ -38,22 +38,6 @@ a code {
 
 // FRONT-PAGE RELATED
 
-/* Code sample */
-
-.frontpage-highlight {
-	background: none;
-	border-bottom: 2px dotted $gray;
-	padding: 0;
-	cursor: pointer;
-
-	&:hover {
-		border-color: $default-link;
-	}
-	&.selected {
-		font-weight: bold;
-	}
-}
-
 @mixin front-page-first-section-height {
 	height: 230px;
 	@media (min-width: $screen-sm-min) {
@@ -74,8 +58,23 @@ a code {
 	}
 }
 
+[data-toggle="popover"] {
+	background: none;
+	border-bottom: 2px dotted $gray;
+	padding: 0;
+	cursor: pointer;
+
+	&:hover { border-color: $default-link; }
+	// &.selected { font-weight: bold; }
+}
+
+body.homepage #code-sample [data-toggle="popover"] {
+  border-color: darken($gray, 10%);
+  &:hover { border-color: $default-link; }
+}
+
 body.homepage {
-	#code-sample {
+	#code-sample-section {
 		pre {
 			font-size: $font-size-base * 0.8;
 			@media (min-width: $screen-sm-min) {
@@ -84,16 +83,9 @@ body.homepage {
 			@media (min-width: $screen-md-min) {
 				font-size: $font-size-base * 0.8;
 			}
-
 			@include front-page-first-section-height;
-
 			overflow: auto;
-
-			.frontpage-highlight {
-				border-bottom: 1px dotted $gray-dark;
-			}
 		}
-
 	}
 }
 
@@ -122,7 +114,7 @@ body.homepage {
 		margin-bottom: 1em;
 	}
 
-	.frontpage-highlight {
+	[data-toggle="popover"] {
 		padding: 0 2px;
 	}
 }
@@ -335,10 +327,4 @@ body.homepage .get-started-section {
 /* Overwrite bootstrap: don't wrap code */
 pre code {
   white-space: pre;
-}
-
-[data-toggle="popover"] {
-  :not(:hover) {
-    text-decoration: underline;
-  }
 }
