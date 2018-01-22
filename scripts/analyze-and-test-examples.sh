@@ -7,10 +7,13 @@
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
+PUB_ARGS="upgrade" # --no-precomiple
+if [[ $1 == '--get' ]]; then shift; PUB_ARGS="get"; fi
+
 function analyze_and_test() {
   pushd "$1" > /dev/null
   travis_fold start analyzeAndTest.get
-  pub get
+  pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
   DIR=()
