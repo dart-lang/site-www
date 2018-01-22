@@ -81,17 +81,27 @@ for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
 <pre class="prettyprint lang-yaml allow-scroll">
-<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Package name (required)">name: 'vector_victor'</a>
-version: 0.0.1
+<span class="highlight"
+  data-toggle="popover" data-content="Package name (required)"
+>name: vector_victor</span>
 description: An absolute bare-bones web app.
-...
-<a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="List of required packages">dependencies:
-  browser: '>=0.10.0 &lt;0.11.0'</a>
+version: 0.0.1
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+dev_dependencies:
+  <span class="highlight"
+    data-toggle="popover"
+    data-content="The <code>browser</code> package is required by all web apps"
+  >browser: ^0.10.0</span>
+  dart_to_js_script_rewriter: ^1.0.1
+
+transformers:
+- dart_to_js_script_rewriter
 </pre>
 
 The package **name** is required.
-Because all web apps depend on the browser package,
-`browser` is listed under **dependencies**.
 
 
 ## Name the package dependencies
@@ -118,7 +128,7 @@ which is available at pub.dartlang.org.
 
       {% prettify yaml %}
       dependencies:
-        [!vector_math: ^1.4.3!]
+        vector_math: ^2.0.5
       {% endprettify %}
 
 2. Edit `pubspec.yaml`.
@@ -130,9 +140,15 @@ which is available at pub.dartlang.org.
    For example:
 
    {% prettify yaml %}
-   dependencies:
-     browser: '>=0.10.0 <0.11.0'
-     [!vector_math: ^1.4.3!]
+    environment:
+      sdk: '>=1.20.1 <2.0.0'
+
+    [!dependencies:!]
+     [!vector_math: ^2.0.5!]
+
+    dev_dependencies:
+      browser: ^0.10.0
+      ...
    {% endprettify %}
 
 See [Pub Versioning Philosophy](/tools/pub/versioning)
@@ -159,8 +175,8 @@ If not, do it yourself by running
 $ pub get
 Resolving dependencies... (1.4s)
 + browser 0.10.0+2
-+ vector_math 1.4.3
-Downloading vector_math 1.4.3...
++ vector_math 2.0.5
+Downloading vector_math 2.0.5...
 Changed 2 dependencies!
 Precompiling executables...
 Loading source assets...
