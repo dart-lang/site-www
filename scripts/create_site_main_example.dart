@@ -57,8 +57,10 @@ class Main {
         throw 'Expected tip for $anchor, but instead found tip for ${tooltip[0]}. Aborting.';
       final escapedAnchor = htmlEscape(anchor);
       _log.fine('  ** Replacing "$escapedAnchor" with span');
-      line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
-          '<span class="frontpage-highlight" data-text="$tooltipText">$escapedAnchor</span>');
+      line = lineWithoutTipInstruction.replaceFirst(
+          escapedAnchor,
+          '<span class="frontpage-highlight" data-toggle="popover"'
+          ' data-content="$tooltipText">$escapedAnchor</span>');
     }
     return line;
   }

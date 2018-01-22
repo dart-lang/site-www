@@ -38,27 +38,6 @@ $(document).on('ready', function(){
   // Initiate Syntax Highlighting
   prettyPrint();
 
-  // Frontpage footnotes
-  function highlightFootnote() {
-    var footnote = $('#code-display');
-    footnote.removeClass('blink');
-    footnote.addClass('blink');
-    window.setTimeout(function() {
-      footnote.removeClass('blink');
-    }, 1000);
-  }
-
-  var footnotesParagraph = $('#code-display p');
-  var allFrontpageHighlights = $('.frontpage-highlight');
-
-  allFrontpageHighlights.click(function(){
-    var text = $(this).data('text');
-    footnotesParagraph.text(text);
-    allFrontpageHighlights.removeClass('selected')
-    $(this).addClass('selected');
-    highlightFootnote();
-  });
-
   // Sidenav
   $('#sidenav i').on('click', function(e) {
     e.stopPropagation();

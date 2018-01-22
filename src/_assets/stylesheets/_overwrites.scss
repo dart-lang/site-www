@@ -138,52 +138,6 @@ body.homepage {
 	}
 }
 
-$footnotes-padding: 5px;
-
-/* Footnotes */
-#code-display {
-	padding: 0;
-	margin-top: 50px;
-
-	@media (min-width: $screen-sm-min) {
-		position: absolute;
-		bottom: -$footnotes-padding;
-		left: -$footnotes-padding;
-		right: -$footnotes-padding;
-		padding: $footnotes-padding;
-	}
-
-	height: auto;
-	border: none;
-	//font-style: italic;
-	min-height: 0;
-
-	p {
-		margin: 0;
-		font-weight: 700;
-	}
-}
-
-/* Blink highlight for footnotes */
-
-.blink {
-	-webkit-animation: highlight 1s;
-	-moz-animation: highlight 1s;
-	-ms-animation: highlight 1s;
-	-o-animation: highlight 1s;
-	animation: highlight 1s;
-}
-
-@keyframes highlight {
-	0% {
-		background: $blue-light;
-	}
-	100% {
-		background: initial;
-	}
-}
-
-
 /* Create craigslist-like small cards for the front page */
 body.homepage .chip-grid-section {
 	padding-top: 0;
