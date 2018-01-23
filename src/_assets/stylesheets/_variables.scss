@@ -63,11 +63,11 @@ $border-radius-small:       0px;
 //##
 
 //** Popover body background color
-$popover-bg:                          #fff;
+$popover-bg:                          #fff !default;
 //** Popover maximum width
 $popover-max-width:                   276px !default;
 //** Popover border color
-$popover-border-color:                rgba(0,0,0,0);
+$popover-border-color:                lighten($brand-primary, 40%);
 //** Popover fallback border color
 $popover-fallback-border-color:       transparent;
 

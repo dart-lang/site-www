@@ -58,19 +58,34 @@ a code {
 	}
 }
 
+@mixin popover-open {
+  &.popover-open {
+    font-weight: 500;
+    border-color: $default-link;
+  }
+}
+
 [data-toggle="popover"] {
 	background: none;
 	border-bottom: 2px dotted $gray;
 	padding: 0;
-	cursor: pointer;
-
-	&:hover { border-color: $default-link; }
-	// &.selected { font-weight: bold; }
+  cursor: pointer;
+  @include popover-open;
 }
 
-body.homepage #code-sample [data-toggle="popover"] {
-  border-color: darken($gray, 10%);
-  &:hover { border-color: $default-link; }
+@media (hover: hover) {
+  [data-toggle="popover"]:hover { border-color: $default-link !important; }
+}
+
+body.homepage #code-sample {
+  [data-toggle="popover"] {
+    border-color: darken($gray, 10%);
+    @include popover-open;
+  }
+  .popover-content {
+    color: $gray-base;
+    code { color: $blue; }
+  }
 }
 
 body.homepage {

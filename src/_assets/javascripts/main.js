@@ -88,12 +88,44 @@ $(document).on('ready', function(){
 
 
   // Popovers
-  $('[data-toggle="popover"]').popover({
-    container: 'body',
-    html: true,
-    placement: 'top',
-    trigger: 'focus hover',
-  });
+
+  const openPopClass = 'popover-open';
+  const popSelector = '[data-toggle="popover"]';
+  const openPopSelector = popSelector + '.' + openPopClass;
+  function setPopovers(root, viewport) {
+    const popovers = root.find(popSelector);
+    // console.log('>> setPopovers: ' + popovers.length + ', ' + viewport);
+    popovers.popover({
+      container: viewport === 'body' ? 'body' : undefined,
+      html: true,
+      placement:
+        // When in a subview, open popovers towards the bottom so that they
+        // can be viewed by scrolling the subview. Scrolling to view the
+        // popover is possible when the popover opens below the trigger element,
+        // not when it appears above.
+        viewport === 'body' ? 'top' : 'bottom',
+      trigger: 'click', // focus doesn't toggle for non-anchor elements
+      viewport: viewport,
+    }).on('shown.bs.popover', function () {
+      // _After_ this popover has been shown, add 'popover-open' class.
+      $(this).addClass(openPopClass);
+    });
+  }
+
+  // Frontpage popovers insdie the #code-sample, should scroll with the enclosing <pre>.
+  setPopovers($('body.homepage #code-sample'), 'pre');
+  // All other popovers should scoll with the page.
+  setPopovers($('body'), 'body');
+
+  $('body')
+    // Hide any open popover before opening a new one. Note event name starts with 'show' not 'shown'.
+    .on('show.bs.popover', function () {
+      $(openPopSelector).removeClass(openPopClass).popover('hide');
+    })
+    // When clicking outside any popovers, close them all.
+    .click(function(e) {
+      $(openPopSelector).removeClass(openPopClass).popover('hide');
+    });
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function(e) {
@@ -113,4 +145,3 @@ $(document).on('ready', function(){
   $('a[href^="http"], a[target="_blank"]').not('.no-automatic-external').addClass('external');
 
 });
-
