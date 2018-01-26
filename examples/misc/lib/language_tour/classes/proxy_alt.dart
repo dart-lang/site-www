@@ -15,9 +15,9 @@ class SomeOtherClass {
 // #docregion
 class A implements SomeClass, SomeOtherClass {
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // #enddocregion
-    print('handling invocation: ${mirror.memberName}');
+    print('handling invocation: ${invocation.memberName}');
     // #docregion
   }
 }

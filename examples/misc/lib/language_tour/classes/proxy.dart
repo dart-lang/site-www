@@ -11,9 +11,9 @@ void main() {
 @proxy
 class A {
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // #enddocregion
-    print('handling invocation: ${mirror.memberName}');
+    print('handling invocation: ${invocation.memberName}');
     // #docregion
   }
 }

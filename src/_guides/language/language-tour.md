@@ -3051,23 +3051,46 @@ class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
   @override
-  void [!noSuchMethod!](Invocation mirror) {
+  void [!noSuchMethod!](Invocation invocation) {
     print('You tried to use a non-existent member: ' +
-        '${mirror.memberName}');
+        '${invocation.memberName}');
   }
 }
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2](/dart-2.0) difference**:
+  In Dart 2, you **can't invoke** an unimplemented method unless
+  **one** of the following is true: 
+
+  * The receiver has the static type `dynamic`.
+
+  * The receiver has a static type that
+  defines the unimplemented method (abstract is OK),
+  and the dynamic type of the receiver has an implemention of `noSuchMethod()`
+  that's different from the one in class `Object`.
+
+  For more information, see the informal
+  [nosuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+</aside>
+
 If you use `noSuchMethod()` to implement every possible getter, setter,
 and method for one or more types,
 then you can use the `@proxy` annotation to avoid warnings:
+
+<aside class="alert alert-info" markdown="1">
+  **[Dart 2](/dart-2.0) difference**:
+  The `@proxy` annotation will be removed.
+  For more information, see
+  [site issue #442.](https://github.com/dart-lang/site-www/issues/442)
+</aside>
 
 <?code-excerpt "misc/lib/language_tour/classes/proxy.dart" replace="/@proxy/[!$&!]/g"?>
 {% prettify dart %}
 [!@proxy!]
 class A {
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // ···
   }
 }
@@ -3080,7 +3103,7 @@ is to just declare that the class implements those types.
 {% prettify dart %}
 class A [!implements SomeClass, SomeOtherClass !]{
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // ···
   }
 }
@@ -4051,9 +4074,9 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Three annotations are available to all Dart code: `@deprecated`,
-`@override`, and `@proxy`. For examples of using `@override` and
-`@proxy`, see [Extending a class](#extending-a-class).
+Two annotations are available to all Dart code: `@deprecated` and
+`@override`. For examples of using `@override`,
+see [Extending a class](#extending-a-class).
 Here’s an example of using the `@deprecated`
 annotation:
 
