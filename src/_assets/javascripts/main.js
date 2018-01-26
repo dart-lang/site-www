@@ -112,9 +112,9 @@ $(document).on('ready', function(){
     });
   }
 
-  // Frontpage popovers insdie the #code-sample, should scroll with the enclosing <pre>.
+  // Frontpage popovers inside the #code-sample should scroll with the enclosing <pre>.
   setPopovers($('body.homepage #code-sample'), 'pre');
-  // All other popovers should scoll with the page.
+  // All other popovers should scroll with the page.
   setPopovers($('body'), 'body');
 
   $('body')
