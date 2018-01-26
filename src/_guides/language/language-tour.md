@@ -3051,20 +3051,27 @@ class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
   @override
-  void [!noSuchMethod!](Invocation mirror) {
+  void [!noSuchMethod!](Invocation invocation) {
     print('You tried to use a non-existent member: ' +
-        '${mirror.memberName}');
+        '${invocation.memberName}');
   }
 }
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
   **[Dart 2](/dart-2.0) difference**:
-  In Dart 2, you **can't invoke** an unimplemented method **unless**
-  the receiver is of type `dynamic` and
-  any of its **supertypes define that method** (even if abstractly).
-  For more information, see the
-  [informal feature specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+  In Dart 2, you **can't invoke** an unimplemented method unless
+  **one** of the following is true: 
+
+  * The receiver has the static type `dynamic`.
+
+  * The receiver has a static type that
+  defines the unimplemented method (abstract is OK),
+  and the dynamic type of the receiver has an implemention of `noSuchMethod()`
+  that's different from the one in class `Object`.
+
+  For more information, see the informal
+  [nosuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 </aside>
 
 If you use `noSuchMethod()` to implement every possible getter, setter,
@@ -3083,7 +3090,7 @@ then you can use the `@proxy` annotation to avoid warnings:
 [!@proxy!]
 class A {
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // ···
   }
 }
@@ -3096,7 +3103,7 @@ is to just declare that the class implements those types.
 {% prettify dart %}
 class A [!implements SomeClass, SomeOtherClass !]{
   @override
-  void noSuchMethod(Invocation mirror) {
+  void noSuchMethod(Invocation invocation) {
     // ···
   }
 }
