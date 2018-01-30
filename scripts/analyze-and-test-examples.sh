@@ -98,4 +98,11 @@ done
 
 popd > /dev/null
 
+if [[ $EXIT_STATUS == 0 ]]; then
+  echo "All tests passed for all suites!"
+else
+  echo "WARNING: some packages have test failures or analysis errors."
+  echo "WARNING: Look at the full output from this script for details."
+fi
+
 exit $EXIT_STATUS
