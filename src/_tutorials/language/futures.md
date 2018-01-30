@@ -137,7 +137,7 @@ printBaseballScore() {
 const news = '<gathered news goes here>';
 Duration oneSecond = const Duration(seconds: 1);
 
-final newsStream = new Stream.periodic(oneSecond, (_) => news);
+final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
 Future gatherNewsReports() => newsStream.first;
@@ -295,7 +295,7 @@ printBaseballScore() {
 const news = '<gathered news goes here>';
 Duration oneSecond = const Duration(seconds: 1);
 
-final newsStream = new Stream.periodic(oneSecond, (_) => news);
+final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
 Future gatherNewsReports() => newsStream.first;
