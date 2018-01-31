@@ -4,21 +4,29 @@ description: The tool that lets you interactively play with Dart in a browser.
 permalink: /tools/dartpad
 ---
 
-DartPad, an open-source tool,
-allows you to play with the Dart language features in any modern browser.
+<a href="{{site.custom.dartpad.direct-link}}"
+target="_blank">DartPad (dartpad.dartlang.org)</a>
+is an open-source tool that
+lets you play with the Dart language in any modern browser.
+Here's what DartPad looks like:
 
-As you can see in the following screenshot, DartPad launches with a simple counting
-function it's been pre-loaded with a different example:
+<img src="images/DartPadWindow.png" alt="DartPad screenshot" />
 
-<img src="images/DartPadWindow.png" alt="a screenshot showing what DartPad looks like" />
 
-It's easy to get started!
+## Getting started
 
-## Open DartPad, and run some samples {#step-1-open-and-run}
+To get familiar with DartPad, try these steps:
+
+* [Run some samples.](#step-1-open-and-run)
+* [Create a simple command-line app.](#step-2-server)
+* [Create a simple web app.](#step-3-web)
+
+
+### Open DartPad, and run some samples {#step-1-open-and-run}
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.custom.dartpad.direct-link}}" target="_blank">dartpad.dartlang.org</a>.
+  Go to <a href="{{site.custom.dartpad.direct-link}}" target="_blank">dartpad.dartlang.org.</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
@@ -28,6 +36,9 @@ It's easy to get started!
   **What about mobile?**
   DartPad has a slightly different user interface on mobile devices.
   To run an app, click the red button, which takes you to the output.
+  {% comment %}
+  TODO: Update if/when mobile UI changes.
+  {% endcomment %}
   </aside>
   </li>
 
@@ -54,7 +65,8 @@ It's easy to get started!
   </li>
 </ol>
 
-## Create a command-line app {#step-2-server}
+
+### Create a command-line app {#step-2-server}
 
 To create a simple command-line app, use **New Pad**.
 
@@ -82,6 +94,12 @@ for (var char in 'hello'.split('')) {
   </li>
 
   <li markdown="1">
+  Click the **Format** button.
+  DartPad uses the [Dart formatter](https://github.com/dart-lang/dart_style#readme)
+  to ensure that your code has proper indentation, white space, and line wrapping.
+  </li>
+
+  <li markdown="1">
   Run your app.
   </li>
 
@@ -102,7 +120,8 @@ for (var char in 'hello'.split('')) {
 </li>
 </ol>
 
-## Create a web app {#step-3-web}
+
+### Create a web app {#step-3-web}
 
 To create a simple web app, start with the Hello World HTML sample.
 
@@ -148,8 +167,12 @@ To create a simple web app, start with the Hello World HTML sample.
   </li>
 </ol>
 
----
 
-Note that DartPad doesn't support importing packages.
-When you are ready to leverage libraries,
-download a Dart SDK.
+## Library support
+
+DartPad supports [dart:* libraries]({{site.dart_api}}) that work with web apps;
+it doesn't support [dart:io]({{site.dart_api}}/stable/dart-io) or
+libraries from [packages.]({{site.pub}})
+If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
+If you want to use a package, get the SDK for a
+[platform](/guides/platforms) that the package supports.

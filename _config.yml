@@ -13,8 +13,9 @@ dartlang: ""
 webdev: "https://webdev.dartlang.org"
 dart_vm:  "/dart-vm"
 flutter:  "https://flutter.io"
-dart_api: "https://api.dartlang.org/"
+dart_api: "https://api.dartlang.org"
 flutter_api: "https://docs.flutter.io"
+pub: "https://pub.dartlang.org"
 
 collections:
   articles:
