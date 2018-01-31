@@ -12,17 +12,17 @@ a server, or a web app, there's a Dart solution for that.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="{{site.webdev}}">Web</a></h3>
-    <p>Write a Dart app that runs in any modern web browser</p>
+    <h3><a href="{{site.flutter}}">Flutter</a></h3>
+    <p>Write a mobile app that runs on both iOS and Android.</p>
   </div>
 
   <div class="card">
-    <h3><a href="{{site.flutter}}">Flutter</a></h3>
-    <p>Write an app that runs on both iOS and Android from a single codebase</p>
+    <h3><a href="{{site.webdev}}">Web</a></h3>
+    <p>Write an app that runs in any modern web browser.</p>
   </div>
 
   <div class="card">
     <h3><a href="{{site.dart_vm}}">Dart VM</a></h3>
-    <p>Write a command-line app or server</p>
+    <p>Write a command-line app or server.</p>
   </div>
 </div>
