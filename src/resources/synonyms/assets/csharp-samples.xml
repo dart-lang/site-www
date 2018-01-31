@@ -269,14 +269,12 @@ rawString == escapedString // == true
   <synonym id="syn-interpolation">
     <title>Interpolation</title>
     <code language="csharp"><![CDATA[
-// C# uses methods such as String.Format() to interpolate expressions with strings.
-
 var name = "Aaron";
-var greeting = String.Format("My name is {0}.", name);
+var greeting = $"My name is {name}.";
 
-var greetingPolish = String.Format("My Polish name would be {0}ski.", name);
+var greetingPolish = $"My Polish name would be {name}ski.";
 
-var someProperty = String.Format("{0}px", top + 20);
+var someProperty = $"{top + 20}px";
 ]]></code>
   </synonym>
   <synonym id="syn-concatenation">
