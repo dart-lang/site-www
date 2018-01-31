@@ -99,11 +99,13 @@ $(document).on('ready', function(){
       container: viewport === 'body' ? 'body' : undefined,
       html: true,
       placement: 'auto top',
-      trigger: 'click', // focus doesn't toggle for non-anchor elements
+      trigger: 'focus',
       viewport: viewport,
     }).on('shown.bs.popover', function () {
       // _After_ this popover has been shown, add 'popover-open' class.
       $(this).addClass(openPopClass);
+    }).on('hide.bs.popover', function () {
+      $(this).removeClass(openPopClass);
     });
   }
 
@@ -112,15 +114,6 @@ $(document).on('ready', function(){
   // All other popovers should scroll with the page.
   setPopovers($('body'), 'body');
 
-  $('body')
-    // Hide any open popover before opening a new one. Note event name starts with 'show' not 'shown'.
-    .on('show.bs.popover', function () {
-      $(openPopSelector).removeClass(openPopClass).popover('hide');
-    })
-    // When clicking outside any popovers, close them all.
-    .click(function(e) {
-      $(openPopSelector).removeClass(openPopClass).popover('hide');
-    });
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function(e) {
