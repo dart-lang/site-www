@@ -67,7 +67,7 @@ $popover-bg:                          #fff !default;
 //** Popover maximum width
 $popover-max-width:                   276px !default;
 //** Popover border color
-$popover-border-color:                lighten($brand-primary, 40%);
+$popover-border-color:                rgba(0,0,0,0);
 //** Popover fallback border color
 $popover-fallback-border-color:       transparent;
 

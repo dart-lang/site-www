@@ -58,7 +58,7 @@ class Main {
       final escapedAnchor = htmlEscape(anchor);
       _log.fine('  ** Replacing "$escapedAnchor" with span');
       line = lineWithoutTipInstruction.replaceFirst(escapedAnchor,
-          '<span data-toggle="popover" data-content="$tooltipText">$escapedAnchor</span>');
+          '<a tabindex="0" role="button" data-toggle="popover" data-content="$tooltipText">$escapedAnchor</a>');
     }
     return line;
   }
