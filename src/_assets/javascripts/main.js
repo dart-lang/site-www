@@ -98,12 +98,7 @@ $(document).on('ready', function(){
     popovers.popover({
       container: viewport === 'body' ? 'body' : undefined,
       html: true,
-      placement:
-        // When in a subview, open popovers towards the bottom so that they
-        // can be viewed by scrolling the subview. Scrolling to view the
-        // popover is possible when the popover opens below the trigger element,
-        // not when it appears above.
-        viewport === 'body' ? 'top' : 'bottom',
+      placement: 'auto top',
       trigger: 'click', // focus doesn't toggle for non-anchor elements
       viewport: viewport,
     }).on('shown.bs.popover', function () {
