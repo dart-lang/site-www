@@ -13,9 +13,11 @@ To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
 <div class="alert alert-info" markdown="1">
-**Note:**
-You can play with most of these features using
-[DartPad](/tools/dartpad).
+**Tip:**
+You can play with most of these features using DartPad
+([learn more](/tools/dartpad)).
+
+**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
 </div>
 
 Consult the
@@ -40,7 +42,6 @@ main() {
   printNumber(number); // Call a function.
 }
 {% endprettify %}
-<a href="{{ site.custom.dartpad.direct-link }}" class='run-in-dartpad' target="_blank">Open Dartpad</a>
 
 Here’s what this program uses that applies to all (or almost all) Dart
 apps:
