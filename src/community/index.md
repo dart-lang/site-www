@@ -7,6 +7,10 @@ description: "Communities, mailing lists, and bug databases for the Dart project
 
 Track the Dart project, get help, and talk with other Dart developers.
 
+We pledge to maintain an open and welcoming environment.
+For details, see our [code of conduct](/code-of-conduct).
+
+
 ## Stay informed
 
 * [news.dartlang.org](http://news.dartlang.org) -
@@ -20,6 +24,7 @@ Track the Dart project, get help, and talk with other Dart developers.
   The official Twitter account.
 * [+dartlang](https://plus.google.com/+dartlang) -
   The official Google+ account.
+
 
 ## Join the conversation
 
