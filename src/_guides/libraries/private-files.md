@@ -23,10 +23,11 @@ are useful or essential when you deploy an app.
 created by pub:
 
 {% prettify none %}
-build/
-pubspec.lock  // Except for application packages
+.dart_tool/
 .packages
 .pub/
+build/
+pubspec.lock  // Except for application packages
 {% endprettify %}
 
 **Don't commit** the API documentation directory created by dartdoc:
