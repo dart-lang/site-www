@@ -286,7 +286,7 @@ longmessage = 'This is a very long line. '
     <title>Multi-line strings</title>
     <code language="python"><![CDATA[
 # Python preserves all linefeeds inside
-#   tripple single or double quotes
+#   triple single or double quotes
 >>> string = '''
 ... This is a string that spans
 ... many lines.
