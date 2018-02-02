@@ -743,6 +743,7 @@ main .content {
   margin-left: -15px;
   margin-right: -15px;
 }
+
 .card {
   display: block;
   position: relative;
@@ -761,6 +762,12 @@ main .content {
   }
 }
 
+// Support for .card-grid formatted as a markdown unordered list
+ul.card-grid { padding-left: 0; }
+
+// Platform logos
+li.card .logo { display: block; padding-bottom: $font-size-base; }
+li.card .logo img {background-color: white; }
 
 // Color Palette
 .slogan {
