@@ -13,6 +13,16 @@ Here's what DartPad looks like:
 <img src="images/DartPadWindow.png" alt="DartPad screenshot" />
 
 
+## Library support
+
+DartPad supports [dart:* libraries]({{site.dart_api}}) that work with web apps;
+it doesn't support [dart:io]({{site.dart_api}}/stable/dart-io) or
+libraries from [packages.]({{site.pub}})
+If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
+If you want to use a package, get the SDK for a
+[platform](/guides/platforms) that the package supports.
+
+
 ## Getting started
 
 To get familiar with DartPad, try these steps:
@@ -31,15 +41,6 @@ To get familiar with DartPad, try these steps:
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
   you can click **New Pad** to get back to the original sample.
-
-  <aside class="alert alert-info" markdown="1">
-  **What about mobile?**
-  DartPad has a slightly different user interface on mobile devices.
-  To run an app, click the red button, which takes you to the output.
-  {% comment %}
-  TODO: Update if/when mobile UI changes.
-  {% endcomment %}
-  </aside>
   </li>
 
   <li markdown="1">
@@ -166,13 +167,3 @@ To create a simple web app, start with the Hello World HTML sample.
     </ol>
   </li>
 </ol>
-
-
-## Library support
-
-DartPad supports [dart:* libraries]({{site.dart_api}}) that work with web apps;
-it doesn't support [dart:io]({{site.dart_api}}/stable/dart-io) or
-libraries from [packages.]({{site.pub}})
-If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
-If you want to use a package, get the SDK for a
-[platform](/guides/platforms) that the package supports.
