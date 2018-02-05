@@ -11,21 +11,21 @@ featured apps. Whether you are creating mobile apps, a command-line script,
 a server, or a web app, there's a Dart solution for that.
 
 {:.card-grid}
-- {:.card}[![Flutter logo][]{: width="240px"}][Flutter]{:.no-automatic-external}
+- {:.card}[![Flutter logo][]{: width="100px"}][Flutter]{:.no-automatic-external}
   {:.logo}
 
   ### [Flutter][]
 
   Write a mobile app that runs on both iOS and Android.
 
-- {:.card}[![Web logo][]{: width="240px"}][Web]{:.no-automatic-external}
+- {:.card}[![Web logo][]{: width="100px"}][Web]{:.no-automatic-external}
   {:.logo}
 
   ### [Web][]
 
   Write an app that runs in any modern web browser.
 
-- {:.card}[![Dart logo][]{: width="240px"}][Dart VM]{:.no-automatic-external}
+- {:.card}[![Dart logo][]{: width="100px"}][Dart VM]{:.no-automatic-external}
   {:.logo}
 
   ### [Dart VM][]

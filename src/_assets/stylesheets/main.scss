@@ -766,8 +766,14 @@ main .content {
 ul.card-grid { padding-left: 0; }
 
 // Platform logos
-li.card .logo { display: block; padding-bottom: $font-size-base; }
-li.card .logo img {background-color: white; }
+li.card {
+  background-color: transparent;
+  box-shadow: none;
+  .logo {
+    display: block;
+    padding-bottom: $font-size-base;
+  }
+}
 
 // Color Palette
 .slogan {
