@@ -41,11 +41,9 @@ after_script:
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"
 
-# branch whitelist
-# branches:
-#   only:
-#   - master        # test the master branch
-#   - /stage-(.*)/  # test every branch which starts with "stage-"
+# Only run Travis jobs for named branches (to avoid double builds for each PR)
+branches:
+  only: [master, /travis-build/]
 
 deploy:
   - provider: script
