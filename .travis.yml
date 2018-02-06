@@ -6,12 +6,16 @@ cache:
   directories:
     - $HOME/.nvm
     - $HOME/.pub-cache
-    - /home/site-webdev
+    - $HOME/site-webdev
 
 addons:
   chrome: stable
 
-before_install:
+env:
+  global:
+    - WEBDEV_REPO=./site-webdev
+
+install:
   - nvm install 8
 
 jobs:
