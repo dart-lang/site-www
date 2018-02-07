@@ -11,20 +11,27 @@ This guide tells you why and how to write sound (type safe) Dart code.
 You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
 
+_**Strong mode**_ is a sound static
+type system that uses a combination of static and runtime checks to
+ensure your code is type safe&mdash;that you can never see a value
+whose runtime type does not match its static type.
+With strong mode enabled (in an implementation that has both the
+static and runtime checks), Dart is a sound language.
+
 <aside class="alert alert-info" markdown="1">
-  The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
-  are sometimes used interchangeably. _Strong mode_ is a sound static
-  type system that uses a combination of static and runtime checks to
-  ensure your code is type safe&mdash;that you can never see a value
-  whose runtime type does not match its static type.
-  With strong mode enabled (in an implementation that has both the
-  static and runtime checks), Dart is a sound language.
+#### Terminology
+
+  - The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
+    are sometimes used interchangeably.
+  - **Classic** Dart refers to Dart before soundness was added to the language.
+</aside>
+
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
   Currently, the Dart dev compiler
   ([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_)
   is the only full implementation of strong mode.
   VM and dart2js support are on their way.
-
-  **Classic** Dart refers to Dart before soundness was added to the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -95,6 +102,7 @@ Gist:  https://gist.github.com/3c7c95683f0c06be8326a2fd3975cd19
 DartPad url: https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19
 
 Note: Can't use DP because the runtime doesn't implement strong mode yet:
+https://github.com/dart-lang/dart-services/issues/334
 [Try it in DartPad](https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19).
 {% endcomment %}
 
@@ -507,7 +515,15 @@ For more information on these flags, see
 
 If you use [DartPad](/tools/dartpad) to write and test code, you can
 enable strong mode by selecting the **Strong mode** box in the lower
-right corner. Note that DartPad doesn't support the implicit casts flag,
+right corner.
+
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
+  While DartPad implements strong mode _static checks_,
+  DartPad does **not** currently implement strong mode _runtime checks_.
+</aside>
+
+Note that DartPad doesn't support the implicit casts flag,
 implicit dynamic flag, or enabling linter rules. For this functionality
 you can use dartdevc or IntelliJ.
 
