@@ -12,7 +12,7 @@ You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
 
 <aside class="alert alert-info" markdown="1">
-  **Note:** The terms "sound Dart", "strong mode Dart", and "type safe Dart"
+  The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
   are sometimes used interchangeably. _Strong mode_ is a sound static
   type system that uses a combination of static and runtime checks to
   ensure your code is type safe&mdash;that you can never see a value
@@ -24,7 +24,7 @@ how to substitute types safely when overriding methods.
   is the only full implementation of strong mode.
   VM and dart2js support are on their way.
 
-  "Classic Dart" refers to Dart before soundness was added to the language.
+  **Classic** Dart refers to Dart before soundness was added to the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -37,17 +37,17 @@ developer experience.
 Strong mode Dart adds only a few additional rules beyond that for classic
 Dart&mdash;mostly you clarify code where the types are ambiguous or
 incorrect. In fact, most strong mode errors can be fixed by adding type
-annotations to your Lists and Maps. The following code shows valid
-but unsound Dart code. The `fn()` function prints an integer list.
-The `main()` function creates a list of integers and passes it to `fn()`:
+annotations to your Lists and Maps.
+
+For example, in the following code the `fn()` function prints an integer list,
+and `main()` creates a list and passes it to `fn()`.
+In classic Dart, the analyzer reports no issues and the code runs without errors.
 
 {:.fails-sa}
 {% prettify dart %}
-void fn(List<int> a) {
-  print(a);
-}
+void fn(List<int> a) => print(a);
 
-main() {
+void main() {
   var list = [];
   list.add(1);
   list.add("2");
@@ -55,23 +55,30 @@ main() {
 }
 {% endprettify %}
 
-In classic Dart, this code passes analysis with no errors. Once you enable
-strong mode, a warning appears on `list` (highlighted above) in the call to
-`fn(list)`. The warning states **Unsound implicit cast from List&lt;dynamic&gt;
-to List&lt;int&gt;**. The `var list = []` code creates a list of type
-`dynamic` because the static analyzer doesn't have enough information to
-infer a type.
-The `fn` function expects a list of type `int`, causing a mismatch of types.
+If you enable strong mode, a type error is reported on `list` (highlighted
+above) at the call of `fn(list)`:
+
+```nocode
+The argument type 'List' can't be assigned to the parameter type 'List<int>'
+```
+
+The error, reported at runtime and by the analyzer (when
+[implicit casts are disabled](#call-dartanalyzer-with-strong-mode-enabled)),
+highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
+The `list` variable has static type `List<dynamic>`. This is because the
+initializing declaration `var list = []` doesn't provide the analyzer with
+enough information for it to infer a type argument more specific than `dynamic`.
+The `fn()` function expects a parameter of type `List<int>`,
+causing a mismatch of types.
+
 When adding a type annotation (`<int>`) on creation of the list
-(highlighted below) the analyzer complains that a string can't be assigned to
-the parameter type `int`. Removing the quotes in `list.add("2")` results
-in code that passes static analysis with no errors or warnings.
+(highlighted below) the analyzer complains that a string argument can't be assigned to
+an `int` parameter. Removing the quotes in `list.add("2")` results
+in code that passes static analysis and runs with no errors or warnings.
 
 {:.passes-sa}
 {% prettify dart %}
-void fn(List<int> a) {
-  print(a);
-}
+void fn(List<int> a) => print(a);
 
 void main() {
   var list = [!<int>!][];
@@ -86,9 +93,10 @@ Note: Can't use embedded DP because it does not provide a Strong mode
 checkbox.
 Gist:  https://gist.github.com/3c7c95683f0c06be8326a2fd3975cd19
 DartPad url: https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19
-{% endcomment %}
 
+Note: Can't use DP because the runtime doesn't implement strong mode yet:
 [Try it in DartPad](https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19).
+{% endcomment %}
 
 ## What is soundness?
 
