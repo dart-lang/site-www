@@ -66,8 +66,9 @@ The error, reported at runtime and by the analyzer (when
 highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
 The `list` variable has static type `List<dynamic>`. This is because the
 initializing declaration `var list = []` doesn't provide the analyzer with
-enough information for it to infer a type more specific than `dynamic`.
-The `fn()` function expects a list of type `int`, causing a mismatch of types.
+enough information for it to infer a type argument more specific than `dynamic`.
+The `fn()` function expects a parameter of type `List<int>`,
+causing a mismatch of types.
 
 When adding a type annotation (`<int>`) on creation of the list
 (highlighted below) the analyzer complains that a string argument can't be assigned to
