@@ -12,7 +12,7 @@ You'll learn how to use strong mode to enable soundness, as well as
 how to substitute types safely when overriding methods.
 
 <aside class="alert alert-info" markdown="1">
-  The terms "**sound** Dart", "**strong mode** Dart", and "**type safe** Dart"
+  The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
   are sometimes used interchangeably. _Strong mode_ is a sound static
   type system that uses a combination of static and runtime checks to
   ensure your code is type safe&mdash;that you can never see a value
@@ -24,7 +24,7 @@ how to substitute types safely when overriding methods.
   is the only full implementation of strong mode.
   VM and dart2js support are on their way.
 
-  "**Classic Dart**" refers to Dart before soundness was added to the language.
+  **Classic** Dart refers to Dart before soundness was added to the language.
 </aside>
 
 By writing sound Dart code today, you'll reap some benefits now,
@@ -38,6 +38,7 @@ Strong mode Dart adds only a few additional rules beyond that for classic
 Dart&mdash;mostly you clarify code where the types are ambiguous or
 incorrect. In fact, most strong mode errors can be fixed by adding type
 annotations to your Lists and Maps.
+
 For example, in the following code the `fn()` function prints an integer list,
 and `main()` creates a list and passes it to `fn()`.
 In classic Dart, the analyzer reports no issues and the code runs without errors.
