@@ -100,10 +100,13 @@ For more information on where to put your analysis options file, see
 part of [Customize Static Analysis](/guides/language/analysis-options).
 
 <a name="common-errors"></a>
-## Common errors and warnings
+## Common static errors and warnings
 
-How to fix some of the errors and warnings you may see from the analyzer
-when enabling strong mode.
+How to fix some of the errors and warnings you may see from the analyzer or an
+IDE when enabling strong mode. These are distinct from
+[runtime errors or warnings](#common-runtime-errors) that you may only
+encounter when using a strong mode runtime for Dart 2, such as `dartdevc` or
+Flutter or the command-line Dart VM with `--strong` (where supported).
 
 <a name="undefined-member"></a>
 ### Undefined member
@@ -346,6 +349,62 @@ constructor initialization list](/guides/language/effective-dart/usage#do-place-
 in [Effective Dart](/guides/language/effective-dart/).
 
 <hr>
+
+<a name="common-runtime-errors"></a>
+## Common runtime errors and warnings
+
+### Invalid casts (`X is not Y`)
+
+In Dart 1 `dynamic` was both a [top type][top_type_wiki] (also known as a
+_universal supertype_, or the _supertype of all other types_) and
+[bottom type][bottom_type_wiki] (also known as the _zero_ or _empty_ type)
+depending on the context, and as such, it was legal to assign, for example,
+a `List<dynamic>` to a `List<String>`:
+
+[top_type_wiki]: https://en.wikipedia.org/wiki/Top_type
+[bottom_type_wiki]: https://en.wikipedia.org/wiki/Bottom_type
+
+{:.passes-sa}
+{% prettify dart %}
+main() {
+  Map json = {'names': []};
+  List<String> names = json['names'];
+}
+{% endprettify %}
+
+In Dart 2 with a strong-mode runtime, this still passes static analysis (it is
+not possible to guarantee it will pass or fail), but cases like the above will
+fail at runtime.
+
+**Error:** <code>Invalid cast. The type of &lt;<em>List&lt;dynamic&gt;</em>&gt; is not a subtype of &lt;<em>List&lt;String&gt;</em>&gt;.</code>
+
+**Fix:** Either tighten the return type (if possible) _or_ create a new list:
+
+{% prettiyfy dart %}
+main() {
+  Map json = {'names': <String>[]};
+  List<String> names = json['names'];
+}
+{% endprettify %}
+
+{% prettify dart %}
+main() {
+  Map json = {'names': []};
+  List<String> names = json['names'].cast<String>();
+}
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:**
+  The `cast` method was introduced in 2.0.0-dev.22.0.
+  Until you upgrade to at least that version you can use other workarounds:
+  {% prettiyfy dart %}
+  main() {
+    Map json = {'names': []};
+    List<String> names = json['names'].map((name) => name as String).toList();
+  }
+  {% endprettify %}
+</aside>
 
 {% comment %}
 ## Known issues
