@@ -26,10 +26,8 @@ you'll need to download platform-specific tools.
 
 ## What next?
 
-To learn about the Dart [language](/guides/language) and
-[core libraries](/guides/libraries),
-stay on this site.
-
+Learn about the Dart [language](/guides/language) and
+[core libraries](/guides/libraries) on this site.
 Once you have a use case in mind, go to the "get started" instructions
 for the appropriate Dart platform:
 
