@@ -230,38 +230,33 @@ body.homepage .get-started-section {
 
 .get-started-table {
 	margin-top: 20px;
-
-	@media (min-width: $screen-sm-min) {
-		float: right;
-		max-width: 55%;
-	}
+	margin-bottom: 20px;
 
 	td {
 		padding: 10px;
 		padding-left: 0;
-
+		padding-right: 2em;
 		border-bottom: 1px solid $gray-light;
 	}
 
-	tr:last-child td {
-		border-bottom: none;
+	td:first-child {
+		@media (min-width: $screen-xs-min) {
+		  padding-right: 0;
+		}
 	}
 
-	td:first-child {
-		width: 3em;
+  /* icon column */
+	td:nth-child(2) {
+		width: 4em;
 		display: none;
+		text-align: center;
 
 		@media (min-width: $screen-xs-min) {
 			display: table-cell;
 		}
 	}
 
-	td:nth-child(2) {
-		width: 20%;
-	}
-
 	td:last-child {
-		text-align: right;
 		padding-left: 10px;
 		a {
 			width: 100%;
