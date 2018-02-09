@@ -451,7 +451,7 @@ You can also more precisely type the local variable, and let inference help:
 
 In cases where you are working with a collection that you don't create, such
 as from JSON or an external data source, you can use the
-[`cast` method](https://api.dartlang.org/dev/dart-core/List/cast.html)
+[`cast` method](...) --> [cast()]({{site.dart_api}}/dev/dart-core/List/cast.html) method
 provided by `List` (and other collection classes).
 
 Here's an example of the preferred solution: tightening the object's type.
