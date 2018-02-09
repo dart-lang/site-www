@@ -819,6 +819,9 @@ li.card {
 @include dart-style-for(passes-sa, $alert-success-bg, '\2714  static analysis: success');
 @include dart-style-for(fails-sa, $alert-danger-bg, '\2717  static analysis: error/warning');
 
+@include dart-style-for(runtime-success, $alert-success-bg, '\2714  runtime: success');
+@include dart-style-for(runtime-fail, $alert-danger-bg, '\2717  runtime: error');
+
 // Deprecated, use good-style
 .good {
   position: relative;
