@@ -387,7 +387,7 @@ main() {
  
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
-static analysis errors in [Assigning Mismatched Types](##assigning-mismatched-types).
+static analysis errors in [Assigning Mismatched Types](#assigning-mismatched-types).
 
 In other cases, however, Dart needs to insert a _runtime_ check. Consider:
 
