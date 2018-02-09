@@ -369,56 +369,99 @@ the command-line Dart VM with `--strong` (where supported).
 
 ### Invalid casts
 
-In Dart 1.x `dynamic` was both a [top type][top_type_wiki] (also known as a
-_universal supertype_, or the _supertype of all other types_) and a
-[bottom type][bottom_type_wiki] (also known as the _zero_ or _empty_ type)
-depending on the context. This meant it was legal to assign, for example,
-an object of type `List<dynamic>` to a `List<String>`:
+Unlike Dart 1.x, Dart 2 enforces a sound type system. This means (roughly)
+you can't get into a situation where the value stored in some variable is
+different than the variable's static type. Like most modern statically
+typed langauges, Dart accomplishes this with a mixture of static
+(compile-time) and dynamic (runtime) checking.
 
-[top_type_wiki]: https://en.wikipedia.org/wiki/Top_type
-[bottom_type_wiki]: https://en.wikipedia.org/wiki/Bottom_type
+For example, this type error is detected at compile-time:
+
+{:.fails-sa}
+{% prettify dart %}
+main() {
+  List<int> numbers = [1, 2, 3];
+  List<String> [!string = numbers!]; // <-- Static analysis error
+}
+{% endprettify %}
+ 
+Since neither `List<int>` nor `List<String>` is a subtype of the other,
+Dart rules this out statically. You can see other examples of these
+static analysis errors in [Assigning Mismatched Types](##assigning-mismatched-types).
+
+In other cases, however, Dart needs to insert a _runtime_ check. Consider:
+
+{:.passes-sa}
+{% prettify dart %}
+assumeStrings(List<Object> objects) {
+  List<String> [!strings = objects!]; // <!-- Implicit downcast
+  String string = strings[0];         // Expect to get a type 'String' out.
+}
+{% endprettify %}
+
+The second line above is _downcasting_ the `List<Object>` to `List<String>`
+implicitly (as if you wrote `as List<String>`), so if the value you pass to
+`objects` at runtime actually is a `List<String>`, the cast succeeds.
+
+But if not, the cast will fail at runtime:
 
 ```dart
-main() {
-  Map json = {'names': []};
-  List<String> names = json['names'];
-}
+// Will fail at runtime.
+assumeStrings(<int>[1, 2, 3]);
 ```
 
-In Dart 2 with a strong-mode runtime, this code still passes static analysis
-because it's not possible to guarantee that it will pass or fail.
-However, cases like the above will fail at runtime with the following message:
+**Error:** <code>Invalid cast. The type of &lt;<em>List&lt;int&gt;</em>&gt; is not a subtype of &lt;<em>List&lt;String&gt;</em>&gt;.</code>
 
-**Error:** <code>Invalid cast. The type of &lt;<em>List&lt;dynamic&gt;</em>&gt; is not a subtype of &lt;<em>List&lt;String&gt;</em>&gt;.</code>
-
-**Fix:** Tighten the type of the object, if possible.
+**Fix:** Tighten or correct the type of the object, if possible.
 Otherwise, create a new object of the correct type.
+
+<aside class="alert alert-warning" markdown="1">
+  **Note for `dartdevc` users:**
+  The `dartdevc` compiler in `2.0.0-dev` releases currently ignores _some_
+  common type errors to make migrations easier. We expect to enforce all
+  errors by the final release.
+</aside>
 
 {% comment %}
 update-for-dart-2
 TODO: Update that link once 2.0 is stable. Maybe create/use a macro for dev API docs.
 {% endcomment %}
 
+Sometimes, lack of a type, especially with empty collections, means that a `<dynamic>`
+collection is created, instead of the typed one you intended. Adding an explicit
+type argument can help:
+
+{:.runtime-success}
+{% prettify dart %}
+  var list  = [!<String>[]!]; // <-- Give it an explicit type.
+  list.add('a string');
+  list.add('another');
+  assumeStrings(list);
+{% endprettify %}
+
+You can also more precisely type the local variable, and let inference help:
+
+{:.runtime-success}
+{% prettify dart %}
+  List[!<String>!] list  = []; // <-- Give it an explicit left-hand type.
+  list.add('a string');
+  list.add('another');
+  assumeStrings(list);
+{% endprettify %}
+
+In cases where you are working with a collection that you don't create, such
+as from JSON or an external data source, you can use the
+[`cast` method](https://api.dartlang.org/dev/dart-core/List/cast.html)
+provided by `List` (and other collection classes).
+
 Here's an example of the preferred solution: tightening the object's type.
 
 {:.runtime-success}
 {% prettify dart %}
 main() {
-  Map json = {'names': [!<String>!][]};
-  List<String> names = json['names'];
-}
-{% endprettify %}
-
-Here's an example of creating a new object if the type is wrong,
-using the
-[`cast` method](https://api.dartlang.org/dev/dart-core/List/cast.html)
-provided by `List` (and by other collection classes).
-
-{:.runtime-success}
-{% prettify dart %}
-main() {
-  Map json = {'names': []};
-  List<String> names = json['names'].[!cast!]<String>();
+  Map<String, dynamic> json = getFromExternalSource();
+  var names = json['names'] as List;
+  assumeStrings(names.[!cast!]<String>());
 }
 {% endprettify %}
 
@@ -432,9 +475,10 @@ in a different way. For example:
 
 {% prettify dart %}
 main() {
-  Map json = {'names': []};
-  // Use `as` until 2.0.0-dev.22.0, when `cast` is available:
-  List<String> names = json['names'].map((name) => name [!as!] String).toList();
+  Map<String, dynamic> json = getFromExternalSource();
+  var names = json['names'] as List;
+  // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
+  assumeStrings(names.map((name) => name [!as!] String).toList());
 }
 {% endprettify %}
 
