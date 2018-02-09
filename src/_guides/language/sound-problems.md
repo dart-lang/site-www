@@ -380,7 +380,7 @@ fail at runtime.
 
 **Fix:** Either tighten the return type (if possible) _or_ create a new list:
 
-{% prettiyfy dart %}
+{% prettify dart %}
 main() {
   Map json = {'names': <String>[]};
   List<String> names = json['names'];
@@ -398,7 +398,7 @@ main() {
   **Version note:**
   The `cast` method was introduced in 2.0.0-dev.22.0.
   Until you upgrade to at least that version you can use other workarounds:
-  {% prettiyfy dart %}
+  {% prettify dart %}
   main() {
     Map json = {'names': []};
     List<String> names = json['names'].map((name) => name as String).toList();
