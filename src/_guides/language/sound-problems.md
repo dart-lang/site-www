@@ -1,7 +1,6 @@
 ---
 title: "Strong Mode Dart: Fixing Common Problems"
 description: Common problems you may have when converting to strong mode and how to fix them.
-toc: false
 ---
 
 {% comment %}
@@ -15,12 +14,19 @@ this page can help. Be sure to also check out
 Dart" means, and how strong mode contributes to making Dart a sound
 language.
 
-* TOC
-{:toc}
-
 For a complete list of sources about strong mode and sound Dart,
 see [other resources](/guides/language/sound-dart#other-resources)
 in [Strong Mode Dart](/guides/language/sound-dart).
+
+<aside class="alert alert-info" markdown="1">
+**Help us improve this page!**
+If you encounter a warning or error that isn't listed here,
+please file an issue by clicking the **bug icon** at the top right.
+Include the **warning or error message** and,
+if possible, the code for both a small reproducible case
+and its correct equivalent.
+</aside>
+
 
 ## Troubleshooting
 
@@ -100,13 +106,15 @@ For more information on where to put your analysis options file, see
 part of [Customize Static Analysis](/guides/language/analysis-options).
 
 <a name="common-errors"></a>
-## Common static errors and warnings
+## Static errors and warnings
 
-How to fix some of the errors and warnings you may see from the analyzer or an
-IDE when enabling strong mode. These are distinct from
-[runtime errors or warnings](#common-runtime-errors) that you may only
-encounter when using a strong mode runtime for Dart 2, such as `dartdevc` or
-Flutter or the command-line Dart VM with `--strong` (where supported).
+This section shows how to fix some of the errors and warnings
+you might see from the analyzer or an IDE with strong mode enabled.
+
+Static analysis can't catch all errors.
+For help fixing strong-mode errors that appear only at runtime,
+see [Runtime errors](#common-runtime-errors). 
+
 
 <a name="undefined-member"></a>
 ### Undefined member
@@ -351,60 +359,84 @@ in [Effective Dart](/guides/language/effective-dart/).
 <hr>
 
 <a name="common-runtime-errors"></a>
-## Common runtime errors and warnings
+## Runtime errors
 
-### Invalid casts (`X is not Y`)
+The strong-mode errors in this section can occur only when
+you're using a strong mode runtime for Dart 2,
+such as `dartdevc`, Flutter, or
+the command-line Dart VM with `--strong` (where supported).
 
-In Dart 1 `dynamic` was both a [top type][top_type_wiki] (also known as a
-_universal supertype_, or the _supertype of all other types_) and
+
+### Invalid casts
+
+In Dart 1.x `dynamic` was both a [top type][top_type_wiki] (also known as a
+_universal supertype_, or the _supertype of all other types_) and a
 [bottom type][bottom_type_wiki] (also known as the _zero_ or _empty_ type)
-depending on the context, and as such, it was legal to assign, for example,
-a `List<dynamic>` to a `List<String>`:
+depending on the context. This meant it was legal to assign, for example,
+an object of type `List<dynamic>` to a `List<String>`:
 
 [top_type_wiki]: https://en.wikipedia.org/wiki/Top_type
 [bottom_type_wiki]: https://en.wikipedia.org/wiki/Bottom_type
 
-{:.passes-sa}
-{% prettify dart %}
+```dart
 main() {
   Map json = {'names': []};
   List<String> names = json['names'];
 }
-{% endprettify %}
+```
 
-In Dart 2 with a strong-mode runtime, this still passes static analysis (it is
-not possible to guarantee it will pass or fail), but cases like the above will
-fail at runtime.
+In Dart 2 with a strong-mode runtime, this code still passes static analysis
+because it's not possible to guarantee that it will pass or fail.
+However, cases like the above will fail at runtime with the following message:
 
 **Error:** <code>Invalid cast. The type of &lt;<em>List&lt;dynamic&gt;</em>&gt; is not a subtype of &lt;<em>List&lt;String&gt;</em>&gt;.</code>
 
-**Fix:** Either tighten the return type (if possible) _or_ create a new list:
+**Fix:** Tighten the type of the object, if possible.
+Otherwise, create a new object of the correct type.
 
+{% comment %}
+update-for-dart-2
+TODO: Update that link once 2.0 is stable. Maybe create/use a macro for dev API docs.
+{% endcomment %}
+
+Here's an example of the preferred solution: tightening the object's type.
+
+{:.runtime-success}
 {% prettify dart %}
 main() {
-  Map json = {'names': <String>[]};
+  Map json = {'names': [!<String>!][]};
   List<String> names = json['names'];
 }
 {% endprettify %}
 
+Here's an example of creating a new object if the type is wrong,
+using the
+[`cast` method](https://api.dartlang.org/dev/dart-core/List/cast.html)
+provided by `List` (and by other collection classes).
+
+{:.runtime-success}
 {% prettify dart %}
 main() {
   Map json = {'names': []};
-  List<String> names = json['names'].cast<String>();
+  List<String> names = json['names'].[!cast!]<String>();
 }
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
   **Version note:**
   The `cast` method was introduced in 2.0.0-dev.22.0.
-  Until you upgrade to at least that version you can use other workarounds:
-  {% prettify dart %}
-  main() {
-    Map json = {'names': []};
-    List<String> names = json['names'].map((name) => name as String).toList();
-  }
-  {% endprettify %}
 </aside>
+
+If you can't tighten the type or use `cast`, you can copy the object
+in a different way. For example:
+
+{% prettify dart %}
+main() {
+  Map json = {'names': []};
+  // Use `as` until 2.0.0-dev.22.0, when `cast` is available:
+  List<String> names = json['names'].map((name) => name [!as!] String).toList();
+}
+{% endprettify %}
 
 {% comment %}
 ## Known issues
