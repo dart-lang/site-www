@@ -113,7 +113,7 @@ you might see from the analyzer or an IDE with strong mode enabled.
 
 Static analysis can't catch all errors.
 For help fixing strong-mode errors that appear only at runtime,
-see [Runtime errors](#common-errors-and-warnings). 
+see [Runtime errors](#common-errors-and-warnings).
 
 
 <a name="undefined-member"></a>
@@ -384,7 +384,7 @@ main() {
   List<String> [!string = numbers!]; // <-- Static analysis error
 }
 {% endprettify %}
- 
+
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
 static analysis errors in [Assigning Mismatched Types](#assigning-mismatched-types).
@@ -451,7 +451,7 @@ You can also more precisely type the local variable, and let inference help:
 
 In cases where you are working with a collection that you don't create, such
 as from JSON or an external data source, you can use the
-[`cast` method](...) --> [cast()]({{site.dart_api}}/dev/dart-core/List/cast.html)
+[cast()]({{site.dart_api}}/dev/dart-core/List/cast.html) method
 provided by `List` (and other collection classes).
 
 Here's an example of the preferred solution: tightening the object's type.
