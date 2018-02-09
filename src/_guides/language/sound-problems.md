@@ -113,7 +113,7 @@ you might see from the analyzer or an IDE with strong mode enabled.
 
 Static analysis can't catch all errors.
 For help fixing strong-mode errors that appear only at runtime,
-see [Runtime errors](#common-runtime-errors). 
+see [Runtime errors](#common-errors-and-warnings). 
 
 
 <a name="undefined-member"></a>
@@ -358,7 +358,7 @@ in [Effective Dart](/guides/language/effective-dart/).
 
 <hr>
 
-<a name="common-runtime-errors"></a>
+<a name="common-errors-and-warnings"></a>
 ## Runtime errors
 
 The strong-mode errors in this section can occur only when
