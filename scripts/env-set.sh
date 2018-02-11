@@ -1,6 +1,8 @@
 # This bash file is meant to be source'd, not executed.
 
-export WEBDEV_REPO=../site-webdev
+if [[ -z "$(type -t nvm)" ]] && [[ -e "$NVM_DIR/nvm.sh" ]]; then
+  source $NVM_DIR/nvm.sh
+fi
 
 if [[ -d $WEBDEV_REPO ]]; then
   source $WEBDEV_REPO/scripts/env-set.sh --reset

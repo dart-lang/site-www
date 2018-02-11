@@ -1,55 +1,56 @@
-sudo: required # fall back to false once https://github.com/travis-ci/travis-ci/issues/8836 is fixed
 language: ruby
 rvm: 2.4.2
 
 cache:
   bundler: true
   directories:
-  # - $HOME/[path]
+    - $HOME/.nvm
+    - $HOME/.pub-cache
+    - $HOME/site-webdev
 
 addons:
   chrome: stable
 
 env:
   global:
-    - JEKYLL_ENV=production
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-  matrix:
-    - TASK=./scripts/check-code.sh
-    - TASK=./scripts/analyze-and-test-examples.sh --get
-    - TASK=./deploy/cibuild
-
-before_install:
-  - nvm install 8
-  - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev
-  - source ./scripts/env-set.sh
-  - ./scripts/install-webdev.sh
-  - ./scripts/before-install.sh
+    - WEBDEV_REPO=./site-webdev
 
 install:
-  - ./scripts/install.sh
-  - ./scripts/write-ci-info.sh -v
+  - nvm install 8
 
-script:
-  - $TASK
+jobs:
+  include:
+    - stage: Prep
+      env: NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+      script: ./scripts/travis-prep.sh
+
+    - stage: Pre-check
+      script: ./scripts/check-code.sh
+    - stage: Pre-check
+      script: ./scripts/analyze-and-test-examples.sh --get
+
+    - stage: Build
+      env: JEKYLL_ENV=production
+      script: ./scripts/travis-build.sh
+
+    - stage: Deploy
+      script: true
+      deploy:
+      - provider: script
+        script: ./deploy/deploy-firebase.sh
+        skip_cleanup: true
+        on:
+          repo: dart-lang/site-www
+          branch: master
+
+    # - stage: Post-check
+    #   script: deploy/check_sitemap.rb
 
 after_script:
-  # Just FYI test. Won't fail the build if it has errors.
-  - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
-  - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
-  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
-  # # (By default, Travis doesn't fail builds after deployment.)
-  # - "./deploy/html_proof.rb || travis_terminate 1"
+  # 2018-02-06: we aren't currently using the output html_proof,
+  # so disable it for now.
+  # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
   only: [master, /travis-build/]
-
-deploy:
-  - provider: script
-    script: ./deploy/deploy-firebase.sh
-    skip_cleanup: true
-    on:
-      repo: dart-lang/site-www
-      branch: master
-      condition: $TASK == *build*
