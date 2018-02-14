@@ -1,28 +1,26 @@
-sudo: required # fall back to false once https://github.com/travis-ci/travis-ci/issues/8836 is fixed
-language: ruby
-rvm: 2.4.2
+language: dart
+dart: stable
 
 cache:
+  timeout: 300
   bundler: true
   directories:
-  # - $HOME/[path]
-
-addons:
-  chrome: stable
+  - $HOME/.pub-cache
+  - $HOME/.nvm
+  - $HOME/.rvm
+  - src/.asset-cache
 
 env:
   global:
     - JEKYLL_ENV=production
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
   matrix:
-    - TASK=./scripts/check-code.sh
-    - TASK=./scripts/analyze-and-test-examples.sh --get
-    - TASK=./deploy/cibuild
+    - TASK="./scripts/check-code.sh"
+    - TASK="./scripts/analyze-and-test-examples.sh --get"
+    - TASK="bundle exec jekyll build"
 
 before_install:
-  - nvm install 8
   - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev
-  - source ./scripts/env-set.sh
+  - source ./scripts/env-set.sh --reset --install
   - ./scripts/install-webdev.sh
   - ./scripts/before-install.sh
 
@@ -41,10 +39,6 @@ after_script:
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"
 
-# Only run Travis jobs for named branches (to avoid double builds for each PR)
-branches:
-  only: [master, /travis-build/]
-
 deploy:
   - provider: script
     script: ./deploy/deploy-firebase.sh
@@ -53,3 +47,6 @@ deploy:
       repo: dart-lang/site-www
       branch: master
       condition: $TASK == *build*
+# Only run Travis jobs for named branches (to avoid double builds for each PR)
+branches:
+  only: [master, /^\d-dev$/, /travis-build/]
