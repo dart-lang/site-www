@@ -1,5 +1,12 @@
-# This custom configuration is no longer needed as of test 0.12.30, but
-# let's keep it around as we experiment with the new test package functionality.
+# Chrome option required because we aren't running under sudo
+# https://docs.travis-ci.com/user/chrome#Sandboxing
+override_platforms:
+  chrome:
+    settings:
+      arguments: --no-sandbox
+
+# The following configuration for headless chrome is no longer needed as of test 0.12.30,
+# but let's keep it around as we experiment with the new test package functionality.
 
 # Config docs: https://github.com/dart-lang/test/blob/master/doc/configuration.md
 
