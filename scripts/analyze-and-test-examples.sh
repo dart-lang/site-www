@@ -52,9 +52,10 @@ function analyze_and_test() {
   else
     travis_fold start analyzeAndTest.tests.browser
     echo Running browser tests ...
-
+    PLATFORM=chrome
+    if [[ -n $TRAVIS ]]; then PLATFORM=travischrome; fi
     # Name the sole browser test file, otherwise all other files get compiled too:
-    $TEST --tags browser --platform chrome $TEST_FILES \
+    $TEST --tags browser --platform $PLATFORM $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
     if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
