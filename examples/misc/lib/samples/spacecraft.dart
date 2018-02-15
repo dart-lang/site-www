@@ -70,7 +70,7 @@ class MockSpaceship implements Spacecraft {
   String name;
 
   @override
-  void describe() => name;
+  void describe() => print(name);
   // #docregion implements
 }
 // #enddocregion implements
