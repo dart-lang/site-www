@@ -373,7 +373,7 @@ function type with a parameter of `dynamic`.
 
 However, in Dart 2 passing something other than `dynamic` (or another _top_
 type, such as `Object`, or a specific bottom type, such as `Null`) fails at
-compile-time:
+compile-time (called `uses_dynamic_as_bottom`):
 
 {:.fails-sa}
 {% prettify dart %}
@@ -384,7 +384,7 @@ main() {
 }
 {% endprettify %}
 
-**Error:** <code>Error: A function of type '(String) → void' can't be assigned to a variable of type '(dynamic) → void'</code>
+**Error:** <code>A function of type '(String) → void' can't be assigned to a variable of type '(dynamic) → void'</code>
 
 **Fix:** Add generic type parameters _or_ cast from dynamic explicitly instead.
 
