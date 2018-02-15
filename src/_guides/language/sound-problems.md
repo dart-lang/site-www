@@ -358,6 +358,60 @@ in [Effective Dart](/guides/language/effective-dart/).
 
 <hr>
 
+<a name="uses-dynamic-as-bottom"></a>
+### A function of type ... can't be assigned
+
+In Dart 1.x `dynamic` was both a [top type][top_type_wiki] (also known as a
+_universal supertype_, or the _supertype of all other types_) and a
+[bottom type][bottom_type_wiki] (also known as the _zero_ or _empty_ type)
+depending on the context. This meant it was legal to assign, for example,
+a function with a parameter of type `String` to a place that expected a
+function type with a parameter of `dynamic`.
+
+[top_type_wiki]: https://en.wikipedia.org/wiki/Top_type
+[bottom_type_wiki]: https://en.wikipedia.org/wiki/Bottom_type
+
+However, in Dart 2 passing something other than `dynamic` (or another _top_
+type, such as `Object`, or a specific bottom type, such as `Null`) fails at
+compile-time:
+
+{:.fails-sa}
+{% prettify dart %}
+typedef bool Filter(dynamic any);
+
+main() {
+  Filter filter = (String x) => x.contains('Hello'); // <- Error
+}
+{% endprettify %}
+
+**Error:** <code>Error: A function of type '(String) → void' can't be assigned to a variable of type '(dynamic) → void'</code>
+
+**Fix:** Add generic type parameters _or_ cast from dynamic explicitly instead.
+
+One fix could be, if possible, typing `Filter` as `Filter<T>`:
+
+{:.passes-sa}
+{% prettify dart %}
+typedef bool Filter<T>(T any);
+
+main() {
+  Filter<String> filter = (String x) => x.contains('Hello');
+}
+{% endprettify %}
+                                                                   
+If not possible, another alternative is casting:
+
+{:.passes-sa}
+{% prettify dart %}
+typedef bool Filter(dynamic any);
+
+main() {
+  Filter filter = (x) => (x as String).contains('Hello');
+}
+{% endprettify %}
+
+<hr>
+
 <a name="common-errors-and-warnings"></a>
 ## Runtime errors
 
@@ -365,7 +419,6 @@ The strong-mode errors in this section can occur only when
 you're using a strong mode runtime for Dart 2,
 such as `dartdevc`, Flutter, or
 the command-line Dart VM with `--strong` (where supported).
-
 
 ### Invalid casts
 
