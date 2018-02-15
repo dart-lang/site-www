@@ -139,7 +139,7 @@ void main() {
 
   test('implements', () {
     final o = new MockSpaceship('Enterprise');
-    expect(o.describe(), 'Enterprise');
+    expect(o.describe, m.prints('Enterprise'));
   });
 
   {
