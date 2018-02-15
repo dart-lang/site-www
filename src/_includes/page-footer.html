@@ -14,11 +14,11 @@
             <li>
               <a href="{{site.repo}}"
                  title="This site's source is on GitHub."
-                 class="no-automatic-external"><i class="fa fa-github"></i></a>
+                 class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
               &nbsp;
               <a href="{{site.repo}}/issues"
                  title="File an issue about this site."
-                 class="no-automatic-external"><i class="fa fa-bug"></i></a>
+                 class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
               &nbsp;
               <a {% if site.data.ci.job-id %}
                  href="{{site.repo | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
