@@ -448,7 +448,8 @@ In other cases, however, Dart needs to insert a _runtime_ check. Consider:
 {% prettify dart %}
 assumeStrings(List<Object> objects) {
   List<String> [!strings = objects!]; // <- Implicit downcast
-  String string = strings[0];         // Expect to get a type 'String' out.
+  // Expect to get a type 'String' out.
+  String string = strings[0];
 }
 {% endprettify %}
 
