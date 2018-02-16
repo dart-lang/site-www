@@ -41,7 +41,7 @@ function analyze_and_test() {
     travis_fold start analyzeAndTest.analyze
     $ANALYZE ${DIR[*]} | tee $LOG_FILE
     if [[ -e $EXPECTED_FILE ]]; then
-      if diff $LOG_FILE $EXPECTED_FILE; then
+      if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE; then
         echo "Expected analyzer output ($EXPECTED_FILE) matched."
       else
         echo "Unexpected analyzer output ($EXPECTED_FILE):"
