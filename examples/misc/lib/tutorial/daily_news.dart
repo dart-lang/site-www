@@ -24,7 +24,7 @@ _printDailyNewsDigestSync() {
 // #enddocregion sync
 
 // #docregion main-async
-_printDailyNewsDigestAsync() async {
+Future _printDailyNewsDigestAsync() async {
   String news = await _gatherNewsReportsAsync();
   print(news);
 }
@@ -87,7 +87,7 @@ String _gatherNewsReportsSync() => news;
 final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
-Future _gatherNewsReportsAsync() => newsStream.first;
+Future<String> _gatherNewsReportsAsync() => newsStream.first;
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:

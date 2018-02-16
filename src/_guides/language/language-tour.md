@@ -2303,7 +2303,7 @@ To create an object, you can use the `new` keyword with a *constructor*
 for a class. Constructor names can be either <code><em>ClassName</em></code> or
 <code><em>ClassName</em>.<em>identifier</em></code>. For example:
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)"?>
+<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
 var jsonData = JSON.decode('{"x":1, "y":2}');
 

@@ -29,7 +29,7 @@ void miscDeclAnalyzedButNotTested() {
         // #enddocregion acronyms-and-abbreviations
       ];
 
-  (isWeekDay) {
+  (bool isWeekDay) {
     // #docregion curly-braces
     if (isWeekDay) {
       print('Bike to work!');
@@ -45,7 +45,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion one-line-if
   };
 
-  (parameter, limit, defaultValue) {
+  (num parameter, num limit, num defaultValue) {
     // #docregion one-line-if-expr
     if (parameter > limit) parameter = defaultValue;
     // #enddocregion one-line-if-expr
@@ -62,7 +62,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion newline-after-decl
   };
 
-  (a, b, average, largest, obj) {
+  (num a, num b, average, largest, obj) {
     // #docregion bin-op
     average = (a + b) / 2;
     largest = a > b ? a : b;
@@ -78,7 +78,7 @@ void miscDeclAnalyzedButNotTested() {
         // #enddocregion space-after-comma-etc
       ];
 
-  (condition, index) => [
+  (bool condition, index) => [
         // #docregion unary-op
         !condition,
         index++
@@ -93,7 +93,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion for-in-etc
   };
 
-  (foo) {
+  (bool foo) {
     // #docregion flow-keyword
     while (foo) {/* ... */}
 
@@ -115,7 +115,7 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion open-curly-brace-space-after
 
-  (isDeepFried, hasPieCrust, vegan, containsBacon) {
+  (bool isDeepFried, bool hasPieCrust, bool vegan, bool containsBacon) {
     // #docregion multi-bin-op
     var bobLikesIt = isDeepFried || //!<br>
         (hasPieCrust && !vegan) || //!<br>
@@ -127,7 +127,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion four-spaces-for-arrow, multi-bin-op
   };
 
-  (someCondition, whenTrue, whenFalse) {
+  (bool someCondition, whenTrue, whenFalse) {
     // #docregion ternary-op
     return someCondition //!<br>
         ? whenTrue //!<br>
@@ -157,7 +157,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion collection-literal
   };
 
-  (condition, buckminsterfullerene, dodecahedrane, olympiadane) {
+  (bool condition, buckminsterfullerene, dodecahedrane, olympiadane) {
     // #docregion block-and-collections
     if (condition) {
       print('hi');
@@ -171,7 +171,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion block-and-collections
   };
 
-  (fruit) {
+  (String fruit) {
     // #docregion switch
     switch (fruit) {
       case 'apple':
@@ -274,7 +274,7 @@ class Args {
   // #docregion args-etc-no-spaces
   log(arg) {/* ... */}
   // #docregion space-after-operator
-  bool operator ==(other) => ellipsis;
+  bool operator ==(other) => ellipsis();
   // #enddocregion space-after-operator
   set contents(value) {/* ... */}
   // #enddocregion args-etc-no-spaces

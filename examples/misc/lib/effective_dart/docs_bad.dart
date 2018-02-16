@@ -15,7 +15,7 @@ class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion first-sentence-a-paragraph
   /// Starts a new block as a child of the current chunk. Nested blocks are
   /// handled using their own independent [LineWriter].
-  ChunkBuilder startBlock() => ellipsis;
+  ChunkBuilder startBlock() => ellipsis();
   // #enddocregion first-sentence-a-paragraph
 
   // #docregion no-annotations
@@ -26,7 +26,7 @@ class C<ChunkBuilder, Flag, LineWriter> {
   /// @returns The new flag.
   /// @throws ArgumentError If there is already an option with
   ///     the given name or abbreviation.
-  Flag addFlag(String name, String abbr) => ellipsis;
+  Flag addFlag(String name, String abbr) => ellipsis();
   // #enddocregion no-annotations
 
   void newMethod() {}

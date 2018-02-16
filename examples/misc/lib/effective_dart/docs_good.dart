@@ -23,17 +23,17 @@ void miscDeclAnalyzedButNotTested() {
     ///
     /// Throws an [ArgumentError] if there is already an option named [name] or
     /// there is already an option using abbreviation [abbr]. Returns the new flag.
-    Flag addFlag(String name, String abbr) => ellipsis;
+    Flag addFlag(String name, String abbr) => ellipsis();
     // #enddocregion first-sentence-a-paragraph, no-annotations
   };
 
   <T>() {
     // #docregion third-person
     /// Returns `true` if every element satisfies the [predicate].
-    bool all(bool predicate(T element)) => ellipsis;
+    bool all(bool predicate(T element)) => ellipsis();
 
     /// Starts the stopwatch if not already running.
-    void start() => ellipsis;
+    void start() => ellipsis();
     // #enddocregion third-person
   };
 
@@ -41,7 +41,7 @@ void miscDeclAnalyzedButNotTested() {
   /// Returns the lesser of two numbers.
   ///
   ///     min(5, 3); // 3.
-  num min(num a, num b) => ellipsis;
+  num min(num a, num b) => ellipsis();
   // #enddocregion code-sample
 
   () {
@@ -115,7 +115,7 @@ class Point {
 class C0 {
   // #docregion use-doc-comments
   /// The number of characters in this chunk when unsplit.
-  int get length => ellipsis;
+  int get length => ellipsis();
 // #enddocregion use-doc-comments
 }
 
@@ -127,7 +127,7 @@ class C1 {
   int weekday;
 
   /// The number of checked buttons on the page.
-  int get checkedCount => ellipsis;
+  int get checkedCount => ellipsis();
 // #enddocregion noun-phrases-for-var-etc
 }
 

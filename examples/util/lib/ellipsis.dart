@@ -1,2 +1,2 @@
 dynamic blockEllipsis; // Use as replace="/=. blockEllipsis;/{ ... }/g"
-dynamic ellipsis; // Use as replace="/ellipsis;?/.../g"
+T ellipsis<T>() => null; // Use as replace="/ellipsis;?/.../g"

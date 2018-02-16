@@ -50,7 +50,8 @@ class Piloted {
 // #docregion mixin-use
 class PilotedCraft extends Spacecraft with Piloted {
   // #enddocregion mixin-use
-  PilotedCraft(name, launchDate) : super(name, launchDate);
+  PilotedCraft(String name, DateTime launchDate)
+      : super(name, launchDate);
   // #docregion mixin-use
 }
 // #enddocregion mixin-use

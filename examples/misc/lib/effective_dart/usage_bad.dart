@@ -13,10 +13,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (name, year, birth) {
+  (String name, num year, num birth) {
     // #docregion string-interpolation
-    'Hello, ' + name + '! You are ' + (year - birth) + ' y...';
-
+    'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
     // #enddocregion string-interpolation
   };
 

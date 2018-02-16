@@ -5,11 +5,11 @@ import 'dart:io';
 int stopAfter = 10;
 // #docregion
 Future main() async {
-  var requests = await HttpServer.bind('localhost', 8888);
+  final requests = await HttpServer.bind('localhost', 8888);
   // #enddocregion
-  requests = requests.take(stopAfter);
+  final _requests = requests.take(stopAfter);
   // #docregion
-  await for (var request in requests) {
+  await for (var request in _requests) {
     processRequest(request);
   }
 }

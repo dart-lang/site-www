@@ -110,7 +110,7 @@ https://gist.github.com/chalin/a345206b09cc09eee1753fab11ec006b
 
 import 'dart:async';
 
-printDailyNewsDigest() async {
+Future printDailyNewsDigest() async {
   String news = await gatherNewsReports();
   print(news);
 }
@@ -140,7 +140,7 @@ Duration oneSecond = const Duration(seconds: 1);
 final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
-Future gatherNewsReports() => newsStream.first;
+Future<String> gatherNewsReports() => newsStream.first;
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
@@ -298,7 +298,7 @@ Duration oneSecond = const Duration(seconds: 1);
 final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
-Future gatherNewsReports() => newsStream.first;
+Future<String> gatherNewsReports() => newsStream.first;
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
