@@ -32,10 +32,14 @@ gulpCreateFrag;
 
 ARGS='--no-escape-ng-interpolation '
 ARGS+='--replace='
+# The replace expressions that follow must not contain (unencode/unescaped) spaces:
 ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dartfmt)
 ARGS+='/ellipsis(<\w+>)?(\(\))?;?/.../g;' # ellipses; --> ...
 ARGS+='/\/\*(\s*\.\.\.\s*)\*\//$1/g;' # /*...*/ --> ...
 ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brackets too)
+# Replace "//!analysis-issue" by, say, "Analysis issue" (although once we can use embedded DPs this won't be needed0)?
+ARGS+='/\/\/!(analysis-issue|runtime-error)[^\n]*//g;' # Removed warning/error marker
+ARGS+='/\x20*\/\/\s+ignore_for_file:[^\n]+\n//g;' # Remove warning/error marker
 
 SRC="$1"
 : ${SRC:="$rootDir/src"}

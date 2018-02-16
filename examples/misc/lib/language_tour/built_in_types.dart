@@ -6,6 +6,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     int x = 1;
     int hex = 0xDEADBEEF;
+    // ignore_for_file: 2, integer_literal_out_of_range
     int bigInt = 34653465834652437659238476592374958739845729;
     // #enddocregion integer-literals
   }

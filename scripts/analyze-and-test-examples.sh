@@ -7,18 +7,35 @@
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
+cd `dirname $0`/..
+ROOT=$(pwd)
+
+# https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
+ANALYZE="dartanalyzer --strong --no-implicit-casts "
 DART_MAJOR_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\d)\./')
+EXAMPLES="$ROOT/examples"
 
 PUB_ARGS="upgrade" # --no-precomiple
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --get)        PUB_ARGS="get"; shift;;
+    --quick)      QUICK=1; shift;;
     --save-logs)  SAVE_LOGS=1; shift;;
     -h|--help)    echo "Usage: $(basename $0) [--get] [--save-logs] [--help]"; exit 0;;
-    *)            echo "WARNING: Unrecognized option: $1"; shift;;
+    *)            echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
   esac
 done
+
+function reEnableInFileAnalyzerFlags() {
+  find $* -name "*.dart" ! -path "**/.*" \
+    -exec perl -i -pe "s|//!(ignore_for_file: \d, )|// \$1|g" {} \;
+}
+
+function disableInFileAnalyzerFlags() {
+  find $* -name "*.dart" ! -path "**/.*" \
+    -exec perl -i -pe "s|// (ignore_for_file: \d, )|//!\$1|g" {} \;
+}
 
 function analyze_and_test() {
   PROJECT_ROOT="$1"
@@ -39,12 +56,26 @@ function analyze_and_test() {
     echo
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
     travis_fold start analyzeAndTest.analyze
-    $ANALYZE ${DIR[*]} | tee $LOG_FILE
+    if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
+      # Run the analyzer a first time to ensure that there are no errors.
+      $ANALYZE ${DIR[*]} > $LOG_FILE
+      if grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
+        cat $LOG_FILE
+        echo "No analysis errors or warnings should be present in original source files."
+        echo "Ensure that these issues are disabled using appropriate markers like: "
+        echo "  // ignore_for_file: $DART_MAJOR_VERS, some_analyzer_error_or_warning_id"
+        EXIT_STATUS=1
+        return 1;
+      fi
+    fi
+    disableInFileAnalyzerFlags ${DIR[*]}
+    $ANALYZE ${DIR[*]} > $LOG_FILE
     if [[ -e $EXPECTED_FILE ]]; then
-      if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE; then
-        echo "Expected analyzer output ($EXPECTED_FILE) matched."
+      if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
+        echo "Analyzer output is as expected ($EXPECTED_FILE)."
       else
-        echo "Unexpected analyzer output ($EXPECTED_FILE):"
+        cat $LOG_FILE
+        echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
         diff $LOG_FILE $EXPECTED_FILE
         EXIT_STATUS=1
         if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
@@ -52,7 +83,10 @@ function analyze_and_test() {
     elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
       EXIT_STATUS=1
       if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+    else
+      cat $LOG_FILE
     fi
+    reEnableInFileAnalyzerFlags ${DIR[*]}
     travis_fold end analyzeAndTest.analyze
   fi
 
@@ -60,9 +94,23 @@ function analyze_and_test() {
   travis_fold start analyzeAndTest.tests.vm
   echo Running VM tests ...
 
-  TEST="pub run test"
+  # We cannot yet test httpserver under Dart 2:
+  # file:///Users/chalin/.pub-cache/hosted/pub.dartlang.org/http_server-0.9.7/lib/src/http_multipart_form_data_impl.dart:90:22: Error: The method 'HttpMultipartFormDataImpl::listen' doesn't have the named parameter 'onDone' of overriden method 'Stream::listen'.
+  # StreamSubscription listen(void onData(data),
+  #                    ^
+  # We also can't run misc tests under Dart 2 unless we write our own test runner,
+  # so for now, we'll only run the strong mode tests under Dart 2:
 
-  $TEST --exclude-tags=browser | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
+  if [[ "$DART_MAJOR_VERS" == "2" && "$PROJECT_ROOT" == *strong ]]; then
+    TEST="dart"
+    TEST_ARGS="--preview_dart_2 --strong --reify-generic-functions test/*"
+  else
+    TEST="pub run test"
+    TEST_ARGS="--exclude-tags=browser"
+  fi
+
+  echo $TEST $TEST_ARGS
+  $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
   LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
   if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
   travis_fold end analyzeAndTest.tests.vm
@@ -77,6 +125,7 @@ function analyze_and_test() {
     PLATFORM=chrome
     if [[ -n $TRAVIS ]]; then PLATFORM=travischrome; fi
     # Name the sole browser test file, otherwise all other files get compiled too:
+    TEST="pub run test"
     $TEST --tags browser --platform $PLATFORM $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
@@ -87,12 +136,6 @@ function analyze_and_test() {
 }
 
 EXIT_STATUS=0
-
-cd `dirname $0`/..
-ROOT=$(pwd)
-EXAMPLES="$ROOT/examples"
-
-ANALYZE="dartanalyzer --options $EXAMPLES/analysis_options.yaml"
 
 FILTER1="cat -"
 FILTER2="cat"

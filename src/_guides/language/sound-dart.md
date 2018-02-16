@@ -2,6 +2,7 @@
 title: Strong Mode Dart
 description: Why and how to write sound Dart code.
 ---
+<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
 {% comment %}
 update-for-dart-2
@@ -50,6 +51,7 @@ and `main()` creates a list and passes it to `fn()`.
 In classic Dart, the analyzer reports no issues and the code runs without errors.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
 {% prettify dart %}
 void fn(List<int> a) => print(a);
 
@@ -83,6 +85,7 @@ an `int` parameter. Removing the quotes in `list.add("2")` results
 in code that passes static analysis and runs with no errors or warnings.
 
 {:.passes-sa}
+<?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
 {% prettify dart %}
 void fn(List<int> a) => print(a);
 
@@ -95,13 +98,13 @@ void main() {
 {% endprettify %}
 
 {% comment %}
-Note: Can't use embedded DP because it does not provide a Strong mode
-checkbox.
-Gist:  https://gist.github.com/3c7c95683f0c06be8326a2fd3975cd19
-DartPad url: https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19
+Note: Can't use embedded DP because DP
 
-Note: Can't use DP because the runtime doesn't implement strong mode yet:
+- Does not support no-implicit-casts
+- Runtime doesn't implement strong mode checks
+
 https://github.com/dart-lang/dart-services/issues/334
+
 [Try it in DartPad](https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19).
 {% endcomment %}
 
@@ -137,12 +140,13 @@ each item causes a runtime exception because the minus operator isn't
 defined for strings.
 
 {:.fails-sa}
+<?code-excerpt "strong/test/strong_test.dart (what-is-soundness)" replace="/List.int.*?;|print.*?;/[!$&!]/g"?>
 {% prettify dart %}
-main () {
+void main() {
   List<dynamic> strings = ["not", "ints"];
   [!List<int> numbers = strings;!]
   for (var number in numbers) {
-    [!print(number - 10); // <— Boom!!]
+    [!print(number - 10);!] // Classic Dart runtime exception
   }
 }
 {% endprettify %}
@@ -185,9 +189,9 @@ A sound type system has several benefits:
 Dart's strong mode implementation, which enables soundness, consists
 of three pieces:
 
-* Sound type system
-* Runtime checks
-* Type inference
+1. Sound type system
+2. Runtime checks
+3. Type inference
 
 ### Sound type system
 
@@ -211,6 +215,7 @@ The return type of a method in a subclass must be the same type or a
 subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
 
+<?code-excerpt "strong/lib/animal.dart (Animal-wo-eat)" replace="/Animal get.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
   void chase(Animal a) {}
@@ -223,6 +228,7 @@ you can replace the getter's return type with HoneyBadger (or any other subtype
 of Animal), but an unrelated type is not allowed.
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
   void chase(Animal a) {}
@@ -231,10 +237,11 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/animal_bad.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
   void chase(Animal a) {}
-  [!Roots!] get parent => ...
+  [!Root!] get parent => ...
 }
 {% endprettify %}
 
@@ -253,6 +260,7 @@ subtype of the original parameter.
 
 Consider the `chase(Animal)` method for the Animal class:
 
+<?code-excerpt "strong/lib/animal.dart (Animal-wo-eat)" replace="/void chase.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
   [!void chase(Animal a) {}!]
@@ -261,9 +269,10 @@ class Animal {
 {% endprettify %}
 
 The `chase()` method takes an Animal. A HoneyBadger chases anything.
-It's OK to override the `chase` method to take anything (Object).
+It's OK to override the `chase()` method to take anything (Object).
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
   void chase([!Object!] a) {}
@@ -271,16 +280,13 @@ class HoneyBadger extends Animal {
 }
 {% endprettify %}
 
-The following code tightens the parameter on the `chase` method
+The following code tightens the parameter on the `chase()` method
 from Animal to Mouse, a subclass of Animal.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/animal_bad.dart (chase-Mouse)" replace="/(\w+)(?= x)/[!$&!]/g"?>
 {% prettify dart %}
-class Animal {
-  void chase(Animal x) {}
-}
-
-class Mouse extends Animal {}
+class Mouse extends Animal {...}
 
 class Cat extends Animal {
   void chase([!Mouse!] x) {}
@@ -290,10 +296,10 @@ class Cat extends Animal {
 This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
-{:.fails-sa}
+<?code-excerpt "strong/lib/animal_bad.dart (chase-Alligator)" replace="/Alligator/[!$&!]/g"?>
 {% prettify dart %}
 Animal a = new Cat();
-a.chase(new [!Alligator!]());   // NOT TYPE SAFE (or feline safe)
+a.chase(new [!Alligator!]()); // Not type safe or feline safe
 {% endprettify %}
 
 #### Don't use a dynamic list as a typed list
@@ -309,12 +315,11 @@ The following code creates a dynamic list of Dog, and assigns it to
 a list of type Cat, which generates an error during static analysis.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/animal_bad.dart (dynamic-list)" replace="/.dynamic.(?!.*OK)/[!$&!]/g"?>
 {% prettify dart %}
-class Animal {}
+class Cat extends Animal {...}
 
-class Dog extends Animal {}
-
-class Cat extends Animal {}
+class Dog extends Animal {...}
 
 void main() {
   List<Cat> foo = [!<dynamic>!][new Dog()]; // Error
@@ -328,28 +333,22 @@ The changes to Dart's type system as described in this document handle
 most of what's needed to make the Dart language sound. Dartdevc has
 runtime checks to deal with the remaining dynamism in the language.
 
-For example, the following code passes strong mode checks in the analyzer:
+<aside class="alert alert-warning" markdown="1">
+  **Important:** As of release 1.24, only [dartdevc][] implements these runtime checks,
+  but support in other tools is coming.
+</aside>
 
+For example, the following code throws an exception at runtime because it is an error
+to assign a list of Dogs to a list of Cats:
+
+{:.runtime-fail}
+<?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/List.*/[!$&!]/g"?>
 {% prettify dart %}
-class Animal {}
-
-class Dog extends Animal {}
-
-class Cat extends Animal {}
-
 void main() {
   [!List<Animal> animals = [new Dog()];!]
   [!List<Cat> cats = animals;!]
 }
 {% endprettify %}
-
-However, the app throws an exception at runtime because it is an error
-to assign a list of Dogs to a list of Cats.
-
-<aside class="alert alert-info" markdown="1">
-  **Note:** As of release 1.24, only dartdevc implements these runtime checks,
-  but support in other tools is coming.
-</aside>
 
 ## Type inference
 
@@ -367,28 +366,34 @@ How does type inference work with collections and generics?
 For example, what happens when you use `var` with maps or lists
 under strong mode?
 
-### Example #1: From Map&lt;String, dynamic> to `var`
+### Example 1: From Map\<String, dynamic> to `var`
 
 Original definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)"?>
 {% prettify dart %}
 Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
 New definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)"?>
 {% prettify dart %}
 var arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
 The map literal infers its type from the elements.
 The keys are both strings. Since the values have different
-types (string and int), you get the least upper bound of those,
+types (String and int), you get the least upper bound of those,
 which is Object.
 So the resulting map has type Map<String, Object>, and `arguments`
 gets the same type by inferring it from its initializer.
 
-### Example #2: From Map&lt;String, dynamic> to `var`
+### Example 2: From Map\<String, dynamic> to `var`
 
 Original definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2-orig)"?>
 {% prettify dart %}
 Map<String, dynamic> message = {
   'method': 'someMethod',
@@ -397,6 +402,8 @@ Map<String, dynamic> message = {
 {% endprettify %}
 
 New definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2)"?>
 {% prettify dart %}
 var message = {
   'method': 'someMethod',
@@ -407,19 +414,23 @@ var message = {
 This is the same case as above. If you define `message`
 using `var`, the resulting map has type Map<String, Object>.
 
-### Example 3: From List&lt;dynamic> to `var`
+### Example 3: From List\<dynamic> to `var`
 
 Original definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3-orig)"?>
 {% prettify dart %}
-List<dynamic> arguments = methodCall['args'];
+List<dynamic> arguments = foo['args'];
 {% endprettify %}
 
 New definition:
+
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3)"?>
 {% prettify dart %}
-var arguments = methodCall['args'];
+var arguments = foo['args'];
 {% endprettify %}
 
-The resulting definition depends on the type of `methodCall` and
+The resulting definition depends on the type of `foo` and
 its subscript operator.
 
 ### Field and method inference
@@ -446,14 +457,16 @@ This may mean that too precise a type may be inferred.
 If so, you can add a type annotation.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-error)"?>
 {% prettify dart %}
-var x = 3;    // x is inferred as an int
+var x = 3; // x is inferred as an int
 x = 4.0;
 {% endprettify %}
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-ok)"?>
 {% prettify dart %}
-num y = 3; // y is defined as num, which can be double or int
+num y = 3; // a num can be double or int
 y = 4.0;
 {% endprettify %}
 
@@ -467,6 +480,7 @@ or generic method. If inference is not doing what you want or expect,
 you can always explicitly specify the type arguments.
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (type-arg-inference)"?>
 {% prettify dart %}
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
@@ -474,11 +488,13 @@ List<int> listOfInt = [];
 // Inferred as if you wrote <double>[3.0].
 var listOfDouble = [3.0];
 
-// x is inferred as double using downward information.
-// Return type of the closure is inferred as int using upwards information.
-// Type argument to map() is inferred as <int> using upwards information.
-var listOfInt2 = listOfDouble.map((x) => x.toInt());
+// Inferred as Iterable<int>
+var ints = listOfDouble.map((x) => x.toInt());
 {% endprettify %}
+
+In the last example, `x` is inferred as double using downward information.
+The return type of the closure is inferred as int using upwards information.
+The type argument to `map()` is inferred as `<int>` using upwards information.
 
 ## How to enable strong mode
 
@@ -566,6 +582,7 @@ so replacing `Cat c` with `Animal c` is allowed, because Animal is
 a supertype of Cat.
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (Animal-Cat-ok)"?>
 {% prettify dart %}
 Animal c = new Cat();
 {% endprettify %}
@@ -575,6 +592,7 @@ superclass may provide a type of Cat with different behaviors, such
 as Lion:
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
 {% prettify dart %}
 MaineCoon c = new Cat();
 {% endprettify %}
@@ -584,6 +602,7 @@ type (Cat) with a more specific type (MaineCoon). So, the following
 is allowed:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
 {% prettify dart %}
 Cat c = new MaineCoon();
 {% endprettify %}
@@ -601,31 +620,9 @@ In the following example, you can substitute
 `List<MaineCoon>` is a subtype of `List<Cat>`.
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
 {% prettify dart %}
-class Animal {
-  void feed() {}
-}
-
-class Cat extends Animal {}
-
-class MaineCoon extends Cat {}
-
-void feedAnimals(Iterable<Animal> animals) {
-  for (var animal in animals) {
-    animal.feed();
-  }
-}
-
-main(List<String> args) {
-  // Was: List<Cat> myCats = new List<Cat>();
-  List<Cat> myCats = new List<[!MaineCoon!]>();
-  Cat muffin = new Cat();
-  Cat winky = new Cat();
-  Cat bongo = new Cat();
-  myCats.addAll([muffin, winky, bongo]);
-
-  feedAnimals(myCats);
-}
+List<Cat> myCats = new List<[!MaineCoon!]>();
 {% endprettify %}
 
 {% comment %}
@@ -638,21 +635,23 @@ DartPad: https://dartpad.dartlang.org/4a2a9bc2242042ba5338533d091213c0
 What about going in the other direction? Can you replace
 `new List<Cat>` with `new List<Animal>`?
 
+{:.passes-sa}
+<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart %}
-// Was: List<Cat> myCats = new List<Cat>();
-List<Cat> myCats = new List<Animal>();
+List<Cat> myCats = new List<[!Animal!]>();
 {% endprettify %}
 
 This assignment passes static analysis under strong mode,
 but it creates an implied cast. It is equivalent to:
 
+<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart %}
-List<Cat> myCats = new List<Animal>() as List<Cat>;
+List<Cat> myCats = new List<Animal>() [!as List<Cat>!];
 {% endprettify %}
 
 The code may fail at runtime. You can disallow similar implied casts
 using the `-no-implicit-casts` flag. For more information, see
-[Runtime checks](#runtime-checks).
+[How to enable strong mode](#how-to-enable-strong-mode).
 
 ### Methods
 
@@ -677,6 +676,7 @@ In checked mode, the compiler inserts dynamic type assertions and
 generates a warning if the types don't match up. For example,
 the following line of code generates a runtime warning in checked mode:
 
+<?code-excerpt "strong/lib/strong_analysis.dart (dart-1-checked-mode-permissiveness)"?>
 {% prettify dart %}
 String result = 1 + 2;
 {% endprettify %}
@@ -686,16 +686,15 @@ will evaluate to a specific type at runtime. Checked mode provides some
 type checking but does not result in fully sound code. Consider the
 following example:
 
+<?code-excerpt "strong/lib/dart_1_my_list_hello_world.dart (info)"?>
 {% prettify dart %}
-// util.dart
-
 void info(List<int> list) {
   var length = list.length;
   if (length != 0) print(length + list[0]);
 }
 {% endprettify %}
 
-It is reasonable to expect the `info` function to print either nothing
+It is reasonable to expect the `info()` function to print either nothing
 (empty list) or a single integer (non-empty list), and that Dart's
 static tooling and checked mode would enforce this.
 
@@ -703,22 +702,22 @@ However, in the following context, the info method prints
 "helloworld" in checked mode, without any static errors or warnings.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/dart_1_my_list_hello_world.dart (MyList-and-main)"?>
 {% prettify dart %}
 import 'dart:collection';
-import 'util.dart';
 
 class MyList extends ListBase<int> implements List {
-   Object length;
+  Object length;
 
-   MyList(this.length);
+  MyList(this.length);
 
-   operator[](index) => 'world';
-   operator[]=(index, value) {}
+  operator [](index) => 'world';
+  operator []=(index, value) {}
 }
 
 void main() {
-   List<int> list = new MyList('hello');
-   info(list);
+  List<int> list = new MyList('hello');
+  info(list);
 }
 {% endprettify %}
 
@@ -750,7 +749,7 @@ strong mode:
   options file.
 
 The next few documents are part of the original
-[dartdevc]({{site.webdev}}/tools/dartdevc) documentation,
+[dartdevc][] documentation,
 but most of the information applies to anyone using strong mode Dart:
 
 * [Strong Mode](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/STRONG_MODE.md) -
@@ -762,3 +761,5 @@ but most of the information applies to anyone using strong mode Dart:
 * [Using Generic Methods](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md) -
   Details beyond what the [generic methods](/guides/language/language-tour#using-generic-methods) section
   of the language tour provides.
+
+[dartdevc]: {{site.webdev}}/tools/dartdevc
