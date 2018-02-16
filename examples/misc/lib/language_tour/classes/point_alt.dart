@@ -18,7 +18,7 @@ class Point {
   // #docregion initializer-list
   // Initializer list sets instance variables before
   // the constructor body runs.
-  Point.fromJson(Map json)
+  Point.fromJson(Map<String, num> json)
       : x = json['x'],
         y = json['y'] {
     print('In Point.fromJson(): ($x, $y)');

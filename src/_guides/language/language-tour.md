@@ -2601,7 +2601,7 @@ initializers with commas.
 {% prettify dart %}
 // Initializer list sets instance variables before
 // the constructor body runs.
-Point.fromJson(Map json)
+Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
   print('In Point.fromJson(): ($x, $y)');
@@ -2630,7 +2630,7 @@ class Point {
   final num y;
   final num distanceFromOrigin;
 
-  Point(x, y)
+  Point(num x, num y)
       : x = x,
         y = y,
         distanceFromOrigin = sqrt(x * x + y * y);
@@ -3062,7 +3062,7 @@ class A {
 <aside class="alert alert-info" markdown="1">
   **[Dart 2](/dart-2.0) difference**:
   In Dart 2, you **can't invoke** an unimplemented method unless
-  **one** of the following is true: 
+  **one** of the following is true:
 
   * The receiver has the static type `dynamic`.
 
@@ -3892,7 +3892,7 @@ and use `yield` statements to deliver values:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (sync-generator)"?>
 {% prettify dart %}
-Iterable naturalsTo(n) sync* {
+Iterable<int> naturalsTo(int n) sync* {
   int k = 0;
   while (k < n) yield k++;
 }
@@ -3904,7 +3904,7 @@ and use `yield` statements to deliver values:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (async-generator)"?>
 {% prettify dart %}
-Stream asynchronousNaturalsTo(n) async* {
+Stream<int> asynchronousNaturalsTo(int n) async* {
   int k = 0;
   while (k < n) yield k++;
 }
@@ -3915,7 +3915,7 @@ you can improve its performance by using `yield*`:
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (recursive-generator)"?>
 {% prettify dart %}
-Iterable naturalsDownFrom(n) sync* {
+Iterable<int> naturalsDownFrom(int n) sync* {
   if (n > 0) {
     yield n;
     yield* naturalsDownFrom(n - 1);
