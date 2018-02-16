@@ -1,5 +1,5 @@
 language: dart
-dart: stable
+dart: [stable, dev]
 
 cache:
   timeout: 300
@@ -8,7 +8,6 @@ cache:
   - $HOME/.pub-cache
   - $HOME/.nvm
   - $HOME/.rvm
-  - src/.asset-cache
 
 env:
   global:
@@ -18,6 +17,11 @@ env:
     - TASK="./scripts/check-code.sh"
     - TASK="./scripts/analyze-and-test-examples.sh --get"
     - TASK="bundle exec jekyll build"
+
+matrix:
+  exclude:
+    - env: TASK="bundle exec jekyll build"
+      dart: dev
 
 before_install:
   - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev

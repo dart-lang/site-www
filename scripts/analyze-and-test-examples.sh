@@ -7,11 +7,22 @@
 
 [[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
+DART_MAJOR_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\d)\./')
+
 PUB_ARGS="upgrade" # --no-precomiple
-if [[ $1 == '--get' ]]; then shift; PUB_ARGS="get"; fi
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --get)        PUB_ARGS="get"; shift;;
+    --save-logs)  SAVE_LOGS=1; shift;;
+    -h|--help)    echo "Usage: $(basename $0) [--get] [--save-logs] [--help]"; exit 0;;
+    *)            echo "WARNING: Unrecognized option: $1"; shift;;
+  esac
+done
 
 function analyze_and_test() {
-  pushd "$1" > /dev/null
+  PROJECT_ROOT="$1"
+  pushd "$PROJECT_ROOT" > /dev/null
   travis_fold start analyzeAndTest.get
   pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
@@ -26,10 +37,21 @@ function analyze_and_test() {
     echo "NOTHING TO ANALYZE in this project."
   else
     echo
+    EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
     travis_fold start analyzeAndTest.analyze
     $ANALYZE ${DIR[*]} | tee $LOG_FILE
-    if grep -qvE '^Analyzing|^No issues found' $LOG_FILE ; then
+    if [[ -e $EXPECTED_FILE ]]; then
+      if diff $LOG_FILE $EXPECTED_FILE; then
+        echo "Expected analyzer output ($EXPECTED_FILE) matched."
+      else
+        echo "Unexpected analyzer output ($EXPECTED_FILE):"
+        diff $LOG_FILE $EXPECTED_FILE
+        EXIT_STATUS=1
+        if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+      fi
+    elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
       EXIT_STATUS=1
+      if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
     fi
     travis_fold end analyzeAndTest.analyze
   fi
