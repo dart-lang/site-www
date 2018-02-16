@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   test('syncGenerator', () {
     // #docregion sync-generator
-    Iterable naturalsTo(n) sync* {
+    Iterable<int> naturalsTo(int n) sync* {
       int k = 0;
       while (k < n) yield k++;
     }
@@ -17,7 +17,7 @@ void main() {
 
   test('asyncGenerator', () async {
     // #docregion async-generator
-    Stream asynchronousNaturalsTo(n) async* {
+    Stream<int> asynchronousNaturalsTo(int n) async* {
       int k = 0;
       while (k < n) yield k++;
     }
@@ -28,7 +28,7 @@ void main() {
 
   test('recursiveGenerator', () {
     // #docregion recursive-generator
-    Iterable naturalsDownFrom(n) sync* {
+    Iterable<int> naturalsDownFrom(int n) sync* {
       if (n > 0) {
         yield n;
         yield* naturalsDownFrom(n - 1);

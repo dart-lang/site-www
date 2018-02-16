@@ -5,7 +5,7 @@ class Point {
   final num y;
   final num distanceFromOrigin;
 
-  Point(x, y)
+  Point(num x, num y)
       : x = x,
         y = y,
         distanceFromOrigin = sqrt(x * x + y * y);
