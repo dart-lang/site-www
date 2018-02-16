@@ -17,10 +17,10 @@ HttpRequest request;
 String url = 'http://localhost:4042';
 
 void main() {
-  noteTextInput = querySelector('#note_entry');
-  howManyNotes = querySelector('#display_how_many_notes');
-  chooseNote = querySelector('#choose_note');
-  displayNote = querySelector('#display_note');
+  noteTextInput = querySelector('#note_entry') as TextInputElement;
+  howManyNotes = querySelector('#display_how_many_notes') as ParagraphElement;
+  chooseNote = querySelector('#choose_note') as TextInputElement;
+  displayNote = querySelector('#display_note') as ParagraphElement;
 
   querySelector('#save_note').onClick.listen(saveNote);
   querySelector('#get_note').onClick.listen(requestNote);

@@ -79,7 +79,7 @@ Future miscDeclAnalyzedButNotTested() async {
     // #enddocregion number_thinker
   }
 
-  <varOrType>(Stream expression) async {
+  <varOrType>(Stream<varOrType> expression) async {
     // #docregion await-for
     await for (varOrType identifier in expression) {
       // Executes each time the stream emits a value.

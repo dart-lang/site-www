@@ -9,6 +9,8 @@ import 'dart:typed_data';
 
 import 'package:dartlang_examples_util/ellipsis.dart';
 
+typedef Func1<S, T> = S Function(T _);
+
 dynamic element, key, value;
 ByteBuffer bytes;
 DateTime dateTime;
@@ -18,7 +20,7 @@ String string;
 StreamSubscription subscription;
 
 void miscDeclAnalyzedButNotTested() {
-  (Iterable errors, Iterable monsters) {
+  (Iterable errors, Iterable<Monster> monsters) {
     // #docregion code-like-prose
     // "If errors is empty..."
     if (errors.isEmpty) {/*-...-*/}
@@ -31,7 +33,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion code-like-prose
   };
 
-  (entryPoint, message, elements, pattern) {
+  (Func1 entryPoint, message, Iterable elements, String pattern) {
     // #docregion omit-verb-for-bool-param
     Isolate.spawn(entryPoint, message, paused: false);
     new List.from(elements, growable: true);
@@ -48,7 +50,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion verb-for-func-with-side-effect
   };
 
-  (test) {
+  (bool Function(dynamic) test) {
     // #docregion noun-for-func-returning-value
     list.elementAt(3);
     list.firstWhere(test);
@@ -107,7 +109,7 @@ void miscDeclAnalyzedButNotTested() {
 
   <PackageId>() {
     // #docregion type_annotate_public_apis
-    Future<bool> install(PackageId id, String destination) => ellipsis;
+    Future<bool> install(PackageId id, String destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
   };
 
@@ -128,7 +130,7 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   // #docregion avoid-Function
-  bool isValidString(String value, bool predicate(String string)) => ellipsis;
+  bool isValidString(String value, bool predicate(String string)) => ellipsis();
   // #enddocregion avoid-Function
 
   () {
@@ -164,6 +166,10 @@ void miscDeclAnalyzedButNotTested() {
 
 //----------------------------------------------------------------------------
 // Supporting declarations
+
+class Monster {
+  bool hasClaws;
+}
 
 List<Person> people;
 

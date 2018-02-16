@@ -45,14 +45,14 @@ Future listenForRequests(HttpServer requests) async {
 }
 
 Future handlePost(HttpRequest request) async {
-  var decoded;
+  Map decoded;
 
   addCorsHeaders(request.response);
 
   try {
     decoded = await request
         .transform(UTF8.decoder.fuse(JSON.decoder))
-        .first;
+        .first as Map;
   } catch (e) {
     print('Request listen error: $e');
     return;
@@ -61,7 +61,7 @@ Future handlePost(HttpRequest request) async {
   if (decoded.containsKey('myNote')) {
     saveNote(request, "${decoded['myNote']}\n");
   } else {
-    getNote(request, decoded['getNote']);
+    getNote(request, decoded['getNote'] as String);
   }
 }
 

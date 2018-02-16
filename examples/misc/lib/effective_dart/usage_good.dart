@@ -6,7 +6,8 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0 longRunningCalculation, somethingRisky;
+Func0<Future> longRunningCalculation;
+Func0 somethingRisky;
 Func1 raiseAlarm, handle;
 Func1<bool, dynamic> canHandle, verifyResult;
 
@@ -19,7 +20,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (name, year, birth) {
+  (String name, num year, num birth) {
     // #docregion string-interpolation
     'Hello, $name! You are ${year - birth} years old.';
     // #enddocregion string-interpolation
@@ -56,7 +57,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion dont-use-length
   };
 
-  (Iterable animals) {
+  (Iterable<Animal> animals) {
     // #docregion use-higher-order-func
     var aquaticNames = animals
         .where((animal) => animal.isAquatic)
@@ -176,8 +177,13 @@ void miscDeclAnalyzedButNotTested() {
 
 class Address {}
 
+class Animal {
+  String name;
+  bool isAquatic;
+}
+
 class Person {
-  dynamic zip;
+  int zip;
 }
 
 //----------------------------------------------------------------------------

@@ -112,7 +112,7 @@ monsters.where((monster) => monster.hasClaws);
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 {% prettify dart %}
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...

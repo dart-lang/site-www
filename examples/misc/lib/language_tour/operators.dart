@@ -2,14 +2,13 @@
 // #docplaster
 
 void miscDeclAnalyzedButNotTested() {
-  {
-    var done, col;
+  (bool done, int col) {
     // #docregion op-logical
     if (!done && (col == 0 || col == 3)) {
       // ...Do something...
     }
     // #enddocregion op-logical
-  }
+  };
 
   {
     bool isPublic = true;

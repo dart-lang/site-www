@@ -28,7 +28,7 @@ Future<bool> guess() {
   return checkGuess(guess);
 }
 
-Future checkGuess(int guess) async {
+Future<bool> checkGuess(int guess) async {
   bool isGoodGuess = false;
   HttpClientRequest request =
       await client.get(InternetAddress.LOOPBACK_IP_V4.host, 4041, '/?q=$guess');

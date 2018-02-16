@@ -3,8 +3,13 @@
 typedef Pred0 = bool Function();
 typedef Void0 = void Function();
 
+class Candidate {
+  int yearsExperience;
+  void interview() {}
+}
+
 void miscDeclAnalyzedButNotTested() {
-  final candidates = <dynamic>[];
+  final candidates = <Candidate>[];
 
   {
     Pred0 isRaining, isSnowing;

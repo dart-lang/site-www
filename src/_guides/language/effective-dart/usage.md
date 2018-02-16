@@ -60,7 +60,7 @@ it's almost always cleaner and shorter to use interpolation:
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation)"?>
 {% prettify dart %}
-'Hello, ' + name + '! You are ' + (year - birth) + ' y...';
+'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 {% endprettify %}
 
 ### AVOID using curly braces in interpolation when not needed.

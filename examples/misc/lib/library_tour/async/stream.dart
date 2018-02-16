@@ -6,7 +6,7 @@ import 'dart:io';
 void miscDeclAnalyzedButNotTested() {
   const recursive = 0, followLinks = 1;
   final searchPath = '.', searchTerms = [''];
-  final argResults = {};
+  Map<dynamic, bool> argResults = {};
   void searchFile(FileSystemEntity e, List<String> terms) {}
 
   {

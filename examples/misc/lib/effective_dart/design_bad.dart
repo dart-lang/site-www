@@ -8,7 +8,7 @@ void miscDeclAnalyzedButNotTested() {
   (errors, monsters, subscription) {
     // #docregion code-like-prose
     // Telling errors to empty itself, or asking if it is?
-    if (errors.empty) {/*-...-*/}
+    if (errors.empty as bool) {/*-...-*/}
 
     // Toggle what? To what?
     subscription.toggle();
@@ -36,7 +36,7 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion type_annotate_public_apis
-    install(id, destination) => ellipsis;
+    install(id, destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
   };
 
@@ -59,7 +59,7 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   // #docregion avoid-Function
-  bool isValidString(String value, Function predicate) => ellipsis;
+  bool isValidString(String value, Function predicate) => ellipsis();
   // #enddocregion avoid-Function
 
   (int start) =>
@@ -137,8 +137,8 @@ class Person1 {
   final String name;
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
-  int get hashCode => ellipsis;
+  int get hashCode => ellipsis();
   // #docregion eq-dont-check-for-null
-  operator ==(other) => other != null && ellipsis;
+  operator ==(other) => other != null && ellipsis<bool>();
 }
 // #enddocregion eq-dont-check-for-null

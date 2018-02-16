@@ -215,10 +215,10 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "misc/lib/library_tour/io/http_server.dart"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
 {% prettify dart %}
 Future main() async {
-  var requests = await HttpServer.bind('localhost', 8888);
+  final requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
     processRequest(request);
   }
