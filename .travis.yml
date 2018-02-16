@@ -8,7 +8,6 @@ cache:
   - $HOME/.pub-cache
   - $HOME/.nvm
   - $HOME/.rvm
-  - src/.asset-cache
 
 env:
   global:
