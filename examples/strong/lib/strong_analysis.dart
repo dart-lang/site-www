@@ -116,25 +116,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // The original full "generic type assignment" example is below.
-    // But main() would cause a runtime error, and the prose doesn't
-    // mention that, so show only the initializing assignment.
-
-    void feedAnimals(Iterable<Animal> animals) =>
-        animals.forEach((animal) => animal.eat());
-
-    void main(List<String> args) {
-      // Was: List<Cat> myCats = new List<Cat>();
-      // #docregion generic-type-assignment-MaineCoon
-      List<Cat> myCats = new List<MaineCoon>();
-      // #enddocregion generic-type-assignment-MaineCoon
-      Cat muffin = new Cat();
-      Cat winky = new Cat();
-      Cat bongo = new Cat();
-      myCats.addAll([muffin, winky, bongo]); // RT error
-
-      feedAnimals(myCats);
-    }
+    // #docregion generic-type-assignment-MaineCoon
+    List<Cat> myCats = new List<MaineCoon>();
+    // #enddocregion generic-type-assignment-MaineCoon
   }
 
   {

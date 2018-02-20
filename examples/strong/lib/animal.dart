@@ -4,15 +4,12 @@
 
 import 'package:dartlang_examples_util/ellipsis.dart';
 
-// #docregion Animal, Animal-wo-eat
+// #docregion Animal
 class Animal {
   void chase(Animal a) {}
-  // #enddocregion Animal-wo-eat
-  void eat() {}
-  // #docregion Animal-wo-eat
   Animal get parent => ellipsis();
 }
-// #enddocregion Animal, Animal-wo-eat
+// #enddocregion Animal
 
 // #docregion HoneyBadger
 class HoneyBadger extends Animal {

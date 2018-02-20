@@ -215,7 +215,7 @@ The return type of a method in a subclass must be the same type or a
 subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
 
-<?code-excerpt "strong/lib/animal.dart (Animal-wo-eat)" replace="/Animal get.*/[!$&!]/g"?>
+<?code-excerpt "strong/lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
   void chase(Animal a) {}
@@ -260,7 +260,7 @@ subtype of the original parameter.
 
 Consider the `chase(Animal)` method for the Animal class:
 
-<?code-excerpt "strong/lib/animal.dart (Animal-wo-eat)" replace="/void chase.*/[!$&!]/g"?>
+<?code-excerpt "strong/lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
   [!void chase(Animal a) {}!]
