@@ -2,23 +2,25 @@
 layout: default
 permalink: /dart-2
 title: Dart 2 Updates
-description: How Dart 2 is different from Dart 1.x, and how you can prepare.
+description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
 
-This page has information about changes that are coming in Dart 2,
-and how you can migrate your code from Dart 1.x.
+This page has information about changes in Dart 2,
+and how you can migrate your code from Dart 1.x and
+older 2.0.0-dev releases.
 
 <aside class="alert alert-warning" markdown="1">
-**Don't rely on Dart 2 until it's stable.**
-Dart 2 pre-releases will have a series of incompatible changes.
-Although we appreciate your willingness to prepare for and test Dart 2,
-please don't bet your livelihood on a pre-release.
-For information on potential changes, see the
+**Dart 2 is still changing.**
+For information about what to expect, see the
 [Dart 2 changes](/guides/language/spec#dart-2-changes) section of the
 [Dart Language Specification](/guides/language/spec) page.
+For a complete list of committed (but not necessarily released)
+changes, see the
+[dart-lang/sdk CHANGELOG.](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200)
 </aside>
 
 * Migration tips
+  * [Flutter](#migration-tips-flutter)
   * [Web](#migration-tips-web)
   * [Servers and command-line scripts](#migration-tips-servers-and-command-line-scripts)
   * [Packages](#migration-tips-packages)
@@ -27,11 +29,18 @@ For information on potential changes, see the
   * [Obsolete features](#obsolete-features)
   * [Strong mode and static typing](#strong-mode-and-static-typing)
 
-<aside class="alert alert-info" markdown="1">
-**Flutter note:** You don't need to do anything to prepare Flutter code
-for Dart 2. If changes become necessary,
-we'll add Flutter details to this page.
-</aside>
+
+## Migration tips: Flutter
+
+Use `--preview-dart-2` with the `flutter` tool to enable the latest
+available Dart 2 syntax and semantics. For example:
+
+```nocode
+flutter run --preview-dart-2
+```
+
+For more information, see
+[Upgrading Flutter.](https://flutter.io/upgrading/)
 
 
 ## Migration tips: web
