@@ -97,8 +97,8 @@ void main() {
 }
 {% endprettify %}
 
-{% comment %}
-Note: Can't use embedded DP because DP
+{% comment %} update-for-dart-2
+Note: Can't use embedded DP because DartPad
 
 - Does not support no-implicit-casts
 - Runtime doesn't implement strong mode checks
@@ -333,11 +333,6 @@ The changes to Dart's type system as described in this document handle
 most of what's needed to make the Dart language sound. Dartdevc has
 runtime checks to deal with the remaining dynamism in the language.
 
-<aside class="alert alert-warning" markdown="1">
-  **Important:** As of release 1.24, only [dartdevc][] implements these runtime checks,
-  but support in other tools is coming.
-</aside>
-
 For example, the following code throws an exception at runtime because it is an error
 to assign a list of Dogs to a list of Cats:
 
@@ -349,6 +344,11 @@ void main() {
   [!List<Cat> cats = animals;!]
 }
 {% endprettify %}
+
+<aside class="alert alert-warning" markdown="1">
+  **Important:** As of release 1.24, only [dartdevc][] implements these runtime checks,
+  but support in other tools is coming.
+</aside>
 
 ## Type inference
 
@@ -475,7 +475,7 @@ y = 4.0;
 Type arguments to constructor calls and
 [generic method](/guides/language/language-tour#using-generic-methods) invocations are
 inferred based on a combination of downward information from the context
-of occurrence, and upwards information from the arguments to the constructor
+of occurrence, and upward information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
 you can always explicitly specify the type arguments.
 
@@ -492,9 +492,10 @@ var listOfDouble = [3.0];
 var ints = listOfDouble.map((x) => x.toInt());
 {% endprettify %}
 
-In the last example, `x` is inferred as double using downward information.
-The return type of the closure is inferred as int using upwards information.
-The type argument to `map()` is inferred as `<int>` using upwards information.
+In the last example, `x` is inferred as `double` using downward information.
+The return type of the closure is inferred as `int` using upward information.
+Dart uses this return type as upward information when inferring the `map()`
+method's type argument: `<int>`.
 
 ## How to enable strong mode
 
