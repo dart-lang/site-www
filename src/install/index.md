@@ -21,7 +21,7 @@ _Current stable version of Dart:
   </div>
 </div></aside>
 
-For non-Flutter developers, install the **Dart SDK** to get
+To use Dart for web or server-side development, install the **Dart SDK** to get
 everything you need to write and run Dart code:
 VM, libraries, analyzer, package manager, doc generator,
 formatter, debugger, and more.
