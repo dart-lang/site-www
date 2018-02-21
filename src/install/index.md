@@ -8,14 +8,21 @@ js:
 show_breadcrumbs: false
 ---
 
-<p><em>Current stable version of Dart:
-<span class="editor-build-rev-stable">[calculating]</span></em></p>
+_Current stable version of Dart:
+<span class="editor-build-rev-stable">[calculating]</span>_
 
-If you’re a Flutter developer, you get Dart when you
-[install Flutter](https://flutter.io/setup/)
-or [upgrade Flutter.](https://flutter.io/upgrading/)
+<aside class="alert alert-warning"><div class="alert-with-image">
+  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
+  <div markdown="1">
+  **Important:** The Flutter SDK contains Dart. To develop Flutter apps,
+  **don't install the Dart SDK separately.** Instead,
+  [install Flutter](https://flutter.io/setup/)
+  or [upgrade Flutter.](https://flutter.io/upgrading/)
+  </div>
+</div></aside>
 
-Otherwise, install the **Dart SDK** to get everything you need to write and run Dart code:
+To use Dart for web or server-side development, install the **Dart SDK** to get
+everything you need to write and run Dart code:
 VM, libraries, analyzer, package manager, doc generator,
 formatter, debugger, and more.
 

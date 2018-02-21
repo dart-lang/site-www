@@ -982,6 +982,20 @@ li.card {
   }
 }
 
+.alert-with-image {
+  display: table-row;
+  > img {
+    margin-right: $content-padding * 2;
+    width: $font-size-base * 3;
+    @media(max-width: $screen-xs-min) { display: none; }
+  }
+  > div {
+    display: table-cell;
+    @media(min-width: $screen-xs-min) { padding-left: $content-padding; }
+    vertical-align: top;
+  }
+}
+
 /* Used for inlined icon markers, usually at the start of a paragraph */
 .content > p > i.material-icons {
   vertical-align: bottom;
