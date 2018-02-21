@@ -5,10 +5,7 @@ analyzer:
   strong-mode:
     implicit-casts: false
     # implicit-dynamic: false
-  exclude:
-    # Exclude the "old" sources. Only the new sources need be analyzed.
-    - language_tour/**
-    - library_tour/**
+  # exclude: [paths, ...]
 
 linter:
   rules:
