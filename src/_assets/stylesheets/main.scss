@@ -983,12 +983,15 @@ li.card {
 }
 
 .alert-with-image {
+  display: table-row;
   > img {
-    float: left;
     width: $font-size-base * 3;
+    @media(max-width: $screen-xs-min) { display: none; }
   }
   > div {
-    padding-left: $font-size-base * 4;
+    display: table-cell;
+    @media(min-width: $screen-xs-min) { padding-left: $content-padding; }
+    vertical-align: top;
   }
 }
 

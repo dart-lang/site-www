@@ -11,15 +11,15 @@ show_breadcrumbs: false
 _Current stable version of Dart:
 <span class="editor-build-rev-stable">[calculating]</span>_
 
-<aside class="alert alert-with-image alert-warning">
-  <img src="{% asset_path flutter-logo.png %}" width="48px" alt="[Flutter]">
+<aside class="alert alert-warning"><div class="alert-with-image">
+  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
   <div markdown="1">
   **Important:**
   If you’re a _Flutter_ developer, you get Dart when you
   [install Flutter](https://flutter.io/setup/)
   or [upgrade Flutter.](https://flutter.io/upgrading/)
   </div>
-</aside>
+</div></aside>
 
 For non-Flutter developers, install the **Dart SDK** to get
 everything you need to write and run Dart code:
