@@ -10,7 +10,7 @@ and how you can migrate your code from Dart 1.x and
 older 2.0.0-dev releases.
 
 <aside class="alert alert-warning" markdown="1">
-**Dart 2 is still changing.**
+**Dart 2 is still landing.**
 For information about what to expect, see the
 [Dart 2 changes](/guides/language/spec#dart-2-changes) section of the
 [Dart Language Specification](/guides/language/spec) page.
