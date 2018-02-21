@@ -982,6 +982,16 @@ li.card {
   }
 }
 
+.alert-with-image {
+  > img {
+    float: left;
+    width: $font-size-base * 3;
+  }
+  > div {
+    padding-left: $font-size-base * 4;
+  }
+}
+
 /* Used for inlined icon markers, usually at the start of a paragraph */
 .content > p > i.material-icons {
   vertical-align: bottom;
