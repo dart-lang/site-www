@@ -985,6 +985,7 @@ li.card {
 .alert-with-image {
   display: table-row;
   > img {
+    margin-right: $content-padding * 2;
     width: $font-size-base * 3;
     @media(max-width: $screen-xs-min) { display: none; }
   }

@@ -14,8 +14,8 @@ _Current stable version of Dart:
 <aside class="alert alert-warning"><div class="alert-with-image">
   <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
   <div markdown="1">
-  **Important:**
-  If you’re a _Flutter_ developer, you get Dart when you
+  **Important:** The Flutter SDK contains Dart. To develop Flutter apps,
+  **don't install the Dart SDK separately.** Instead,
   [install Flutter](https://flutter.io/setup/)
   or [upgrade Flutter.](https://flutter.io/upgrading/)
   </div>
