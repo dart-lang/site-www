@@ -33,7 +33,8 @@ changes, see the
 
 ## Migration tips: Flutter
 
-See the [detailed instructions on the Flutter Wiki.](https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter)
+See the
+[detailed instructions on the Flutter Wiki.][Flutter migration instructions]
 
 ## Migration tips: web
 
@@ -252,6 +253,7 @@ for the web and using [dartdevc.][dartdevc]
   * [DartPad][]
 {% endcomment %}
 * Flutter
+  * [Trying the preview of Dart 2 in Flutter][Flutter migration instructions]
   * [Installing Flutter][]
   * [Upgrading Flutter][]
 * Web
@@ -271,6 +273,7 @@ for the web and using [dartdevc.][dartdevc]
 [DartPad]: {{site.custom.dartpad.direct-link}}
 [Doc preview of Angular 5.0]: https://webdev-dartlang-org-dev.firebaseapp.com/angular
 [enable strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode
+[Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter
 [Installing Flutter]: {{site.flutter}}/setup/
 [pre-release]: /install#about-sdk-release-channels-and-version-strings
 [pub.dartlang.org]: {{site.pub}}
