@@ -33,16 +33,7 @@ changes, see the
 
 ## Migration tips: Flutter
 
-Use `--preview-dart-2` with the `flutter` tool to enable the latest
-available Dart 2 syntax and semantics. For example:
-
-```nocode
-flutter run --preview-dart-2
-```
-
-For more information, see
-[Upgrading Flutter.][Upgrading Flutter]
-
+See the [detailed instructions on the Flutter Wiki](https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter).
 
 ## Migration tips: web
 
