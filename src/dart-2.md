@@ -12,11 +12,11 @@ older 2.0.0-dev releases.
 <aside class="alert alert-warning" markdown="1">
 **Dart 2 is still landing.**
 For information about what to expect, see the
-[Dart 2 changes](/guides/language/spec#dart-2-changes) section of the
-[Dart Language Specification](/guides/language/spec) page.
+[Dart 2 changes][] section of the
+[Dart Language Specification][] page.
 For a complete list of committed (but not necessarily released)
 changes, see the
-[dart-lang/sdk CHANGELOG.](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200)
+[dart-lang/sdk CHANGELOG.][dart-lang/sdk CHANGELOG]
 </aside>
 
 * Migration tips
@@ -28,6 +28,7 @@ changes, see the
 * Dart 2 differences
   * [Obsolete features](#obsolete-features)
   * [Strong mode and static typing](#strong-mode-and-static-typing)
+* [Resources](#resources)
 
 
 ## Migration tips: Flutter
@@ -40,7 +41,7 @@ flutter run --preview-dart-2
 ```
 
 For more information, see
-[Upgrading Flutter.](https://flutter.io/upgrading/)
+[Upgrading Flutter.][Upgrading Flutter]
 
 
 ## Migration tips: web
@@ -58,18 +59,15 @@ Optimize the structure of your libraries.
   You can find examples of this directory structure in the
   [Stagehand templates.][Stagehand templates]
 
-[creating library packages]: /guides/libraries/create-library-packages
-[Stagehand templates]: https://github.com/google/stagehand/tree/master/templates
-
 {% comment %}
 Save this section for when dartdevc is ready to use...
 Adding strong mode support to the Dart analyzer,
 made it possible to create a new development compiler,
-[dartdevc]({{site.webdev}}/tools/dartdevc) (also known as _DDC_).
+[dartdevc][] (also known as _DDC_).
 You can use dartdevc on strong mode-compliant
 code to run and debug your Dart web apps in Chrome or other browsers.
 With the introduction of dartdevc,
-[Dartium](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
+[Dartium][Dartium news]
 will eventually be phased out.
 {% endcomment %}
 
@@ -109,7 +107,7 @@ If a backward-compatible change isn't possible,
   Incorrect lower constraints can cause problems for users of the stable SDK.
 </aside>
 
-[Test your changes](/guides/testing) to make sure that your package works as expected.
+[Test your changes][testing] to make sure that your package works as expected.
 
 
 ### Upper constraints on the SDK version
@@ -150,15 +148,10 @@ If you publish packages, get ready for Dart 2:
 * Test your packages.
 
 
-[pub.dartlang.org]: https://pub.dartlang.org
-[SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[pubspec format]: /tools/pub/pubspec
-
-
 ## Testing with Dart 2 pre-releases {#testing}
 
 To test your code with Dart 2, you can use a
-[pre-release](/install#about-sdk-release-channels-and-version-strings)
+[pre-release][]
 of the Dart 2 SDK.
 
 When running `pub get`, `pub upgrade`, or other pub commands
@@ -176,15 +169,15 @@ The following features are redundant and won't be in Dart 2:
 Checked mode
 : Strong mode replaces checked mode. To learn how they differ, see
   [What is the difference between strong mode and checked
-  mode?](/guides/language/sound-faq#how-is-it-different-than-checked-mode)
+  mode?][strong vs checked]
 
 Dartium
-: The [dartdevc]({{site.webdev}}/tools/dartdevc) compiler
+: The [dartdevc][] compiler
   performs fast compiles to JavaScript,
   thanks to strong mode. Instead of Dartium, you’ll use Chrome
   or other standard browsers for testing. For information on
   Dartium's removal, see [A stronger Dart for
-  everyone.](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
+  everyone.][Dartium news]
 
 ## Strong mode and static typing
 
@@ -200,12 +193,12 @@ This type system enables better tooling, as well as
 clearer, earlier feedback when you write code.
 
 You can prepare for Dart 2 by using Dart 1.x with
-[strong mode](/guides/language/sound-dart).
+[strong mode][sound Dart].
 
 
 <aside class="alert alert-info" markdown="1">
 **A quick summary of the gnarly details:**
-Dart 2 supports [type inference](/guides/language/sound-dart#type-inference)
+Dart 2 supports [type inference][]
 and, in many cases, doesn't require type annotations. For example,
 the following is valid code in both Dart 1.x and Dart 2:
 
@@ -232,18 +225,71 @@ Dart 2 has the advantages of a strongly typed language,
 but requires only a bit more work than Dart 1.x.
 
 To experiment with strong mode,
-open [DartPad](https://dartpad.dartlang.org/)
+open [DartPad][]
 and check the **Strong mode** box at the lower right.
 </aside>
 
 Migrate your code to strong mode, and you may identify some
 lurking bugs that are now more easily identifiable and addressable.
 You'll also find it much easier to transition to Dart 2.
-For more information, see [A stronger Dart for
-everyone](http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html)
-and [Strong Mode Dart.](/guides/language/sound-dart)
+For more information, see [A stronger Dart for everyone][Dartium news]
+and [Strong Mode Dart.][sound Dart]
 
-To use strong mode in Dart 1.x, [you must enable
-it.](/guides/language/sound-dart#how-to-enable-strong-mode)
+To use strong mode in Dart 1.x, [you must enable it.][enable strong mode]
 Note that runtime checks are not yet available unless you are developing
-for the web and using [dartdevc.]({{site.webdev}}/tools/dartdevc)
+for the web and using [dartdevc.][dartdevc]
+
+
+## Resources
+
+* General
+  * [Strong mode Dart][sound Dart]
+    * [Fixing common problems][Strong Mode Dart: Fixing Common Problems]
+    * [FAQ][Strong Mode Dart: FAQ]
+  * Dart SDK
+    * [dart-lang/sdk CHANGELOG][]
+    * [About SDK release channels and version strings][pre-release]
+  * Pub and packages
+    * [Creating library packages][creating library packages]
+    * [pub.dartlang.org][]
+    * [Pubspec format][pubspec format]
+    * [SDK constraints][]
+  * [Dart 2 changes][] section of the [Dart Language Specification][] page
+  * [Dart testing][testing]
+  * [Stagehand templates][]
+{% comment %} update-for-dart-2
+  * [DartPad][]
+{% endcomment %}
+* Flutter
+  * [Installing Flutter][]
+  * [Upgrading Flutter][]
+* Web
+  * [Dartium news][]
+  * [dartdevc][]
+  * [Doc preview of Angular 5.0][]
+  * [angular-examples repos][] (see the 5-dev branches for the latest code)
+
+
+[angular-examples repos]: https://github.com/angular-examples
+[creating library packages]: /guides/libraries/create-library-packages
+[Dart 2 changes]: /guides/language/spec#dart-2-changes
+[Dart Language Specification]: /guides/language/spec
+[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
+[dartdevc]: {{site.webdev}}/tools/dartdevc
+[Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
+[DartPad]: {{site.custom.dartpad.direct-link}}
+[Doc preview of Angular 5.0]: https://webdev-dartlang-org-dev.firebaseapp.com/angular
+[enable strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode
+[Installing Flutter]: {{site.flutter}}/setup/
+[pre-release]: /install#about-sdk-release-channels-and-version-strings
+[pub.dartlang.org]: {{site.pub}}
+[pubspec format]: /tools/pub/pubspec
+[SDK constraints]: /tools/pub/pubspec#sdk-constraints
+[sound Dart]: /guides/language/sound-dart
+[Stagehand templates]: https://github.com/google/stagehand/tree/master/templates
+[Strong Mode Dart: FAQ]: /guides/language/sound-faq
+[Strong Mode Dart: Fixing Common Problems]: /guides/language/sound-problems
+[strong vs checked]: /guides/language/sound-faq#how-is-it-different-than-checked-mode
+[testing]: /guides/testing
+[type inference]: /guides/language/sound-dart#type-inference
+[Upgrading Flutter]: {{site.flutter}}/upgrading/
