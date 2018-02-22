@@ -33,7 +33,7 @@ changes, see the
 
 ## Migration tips: Flutter
 
-See the [detailed instructions on the Flutter Wiki](https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter).
+See the [detailed instructions on the Flutter Wiki.](https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter)
 
 ## Migration tips: web
 
