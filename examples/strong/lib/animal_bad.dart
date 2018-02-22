@@ -10,7 +10,7 @@ class Root {}
 
 // #docregion HoneyBadger
 class HoneyBadger extends Animal {
-  void chase(Animal a) {}
+  void chase(Animal a) {/* ... */}
   // ignore_for_file: 1, 2, strong_mode_invalid_method_override
   Root get parent => ellipsis(); //!analysis-issue ret. type not covariant
 }
@@ -23,7 +23,7 @@ class Mouse extends Animal {/*...*/}
 
 class Cat extends Animal {
   // ignore_for_file: 1, 2, strong_mode_invalid_method_override
-  void chase(Mouse x) {} //!analysis-issue
+  void chase(Mouse x) {/* ... */} //!analysis-issue
 }
 // #enddocregion chase-Mouse
 
@@ -39,9 +39,9 @@ void main() {
 //-----------------------------------------------
 
 // #docregion dynamic-list
-class Cat1 extends Animal {/*...*/}
+class Cat1 extends Animal {/* ... */}
 
-class Dog1 extends Animal {/*...*/}
+class Dog1 extends Animal {/* ... */}
 
 void main1() {
   // ignore_for_file: 1, invalid_assignment
@@ -50,10 +50,3 @@ void main1() {
   List<dynamic> bar = <dynamic>[new Dog1(), new Cat1()]; // OK
 }
 // #enddocregion dynamic-list
-
-//-----------------------------------------------
-
-void main9() {
-  // #docregion xxxx
-  // #enddocregion xxxx
-}

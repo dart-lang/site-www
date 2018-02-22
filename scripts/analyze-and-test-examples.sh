@@ -55,6 +55,9 @@ function analyze_and_test() {
   else
     echo
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
+    if [[ ! -e $EXPECTED_FILE ]]; then
+      EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
+    fi
     travis_fold start analyzeAndTest.analyze
     if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
       # Run the analyzer a first time to ensure that there are no errors.
@@ -103,7 +106,7 @@ function analyze_and_test() {
 
   if [[ "$DART_MAJOR_VERS" == "2" && "$PROJECT_ROOT" == *strong ]]; then
     TEST="dart"
-    TEST_ARGS="--preview_dart_2 --strong --reify-generic-functions test/*"
+    TEST_ARGS="--strong --preview-dart-2 --reify-generic-functions test/*"
   else
     TEST="pub run test"
     TEST_ARGS="--exclude-tags=browser"

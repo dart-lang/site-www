@@ -3,7 +3,7 @@
 
 import 'animal.dart';
 
-void miscDeclAnalyzedButNotTested() {
+void _miscDeclAnalyzedButNotTested() {
   {
     // #docregion opening-example
     void fn(List<int> a) => print(a);
@@ -68,7 +68,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion local-var-type-inference-error
     var x = 3; // x is inferred as an int
     // ignore_for_file: 1, 2, invalid_assignment
-    x = 4.0;
+    x = 4.0; //!analysis-issue
     // #enddocregion local-var-type-inference-error
   }
 

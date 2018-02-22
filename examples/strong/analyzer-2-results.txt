@@ -2,6 +2,14 @@ Analyzing lib, test...
   error • Invalid override. The type of 'HoneyBadger.parent' ('() → Root') isn't a subtype of 'Animal.parent' ('() → Animal') at lib/animal_bad.dart:15:3 • strong_mode_invalid_method_override
   error • Invalid override. The type of 'Cat.chase' ('(Mouse) → void') isn't a subtype of 'Animal.chase' ('(Animal) → void') at lib/animal_bad.dart:26:3 • strong_mode_invalid_method_override
   error • A value of type 'List' can't be assigned to a variable of type 'List<Cat>' at lib/animal_bad.dart:49:19 • invalid_assignment
+  error • A value of type 'Element' can't be assigned to a variable of type 'CanvasElement' at lib/common_fixes_analysis.dart:19:28 • invalid_assignment
+  error • A value of type 'int' can't be assigned to a variable of type 'bool' at lib/common_problems_analysis.dart:14:14 • invalid_assignment
+  error • The getter 'context2D' isn't defined for the class 'Element' at lib/common_problems_analysis.dart:22:12 • undefined_getter
+  error • A value of type 'double' can't be assigned to a variable of type 'int' at lib/common_problems_analysis.dart:37:16 • invalid_assignment
+  error • A value of type 'List<int>' can't be assigned to a variable of type 'List<String>' at lib/common_problems_analysis.dart:45:27 • invalid_assignment
+  error • Invalid override. The type of 'MyAdder.add' ('(int, int) → int') isn't a subtype of 'NumberAdder.add' ('(num, num) → num') at lib/common_problems_analysis.dart:60:3 • strong_mode_invalid_method_override
+  error • Invalid override. The type of 'Subclass.method' ('(int) → void') isn't a subtype of 'Superclass<dynamic>.method' ('(dynamic) → void') at lib/common_problems_analysis.dart:73:3 • strong_mode_invalid_method_override
+  error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' at lib/common_problems_analysis.dart:91:9 • strong_mode_invalid_super_invocation
   error • The argument type 'List' can't be assigned to the parameter type 'List<int>' at lib/strong_analysis.dart:16:10 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:27:15 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:43:15 • argument_type_not_assignable
@@ -11,5 +19,7 @@ Analyzing lib, test...
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at lib/strong_analysis.dart:128:24 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'String' at lib/strong_analysis.dart:141:21 • invalid_assignment
   error • A value of type 'List' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:41:27 • invalid_assignment
-  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:62:24 • invalid_assignment
-13 errors found.
+  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:63:26 • invalid_assignment
+  error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:157:26 • invalid_assignment
+  warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' at lib/common_problems_analysis.dart:102:17 • strong_mode_uses_dynamic_as_bottom
+22 errors and 1 warning found.

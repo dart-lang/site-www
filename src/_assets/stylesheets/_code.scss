@@ -81,12 +81,19 @@ li.L9 { background-color: #fefefe; }
 // Rouge / pygments classes (https://github.com/jneen/rouge)
 //
 
-@mixin console-base {
+$generic-output-color: white;
+
+@mixin console-base($color: $light-green-A700) {
   background: $grey-900;
-  color: $light-green-A700;
+  color: $color;
 }
+
 .language-console .highlight {
   @include console-base;
+}
+
+pre.console-output {
+  @include console-base($generic-output-color)
 }
 
 // `terminal` is like `console` with prompts and output colored differently
@@ -94,7 +101,7 @@ li.L9 { background-color: #fefefe; }
   @include console-base;
   .gp { color: $grey-500; } /* Generic.Prompt */
   .nb { color: $light-green-600; } /* Name.Builtin */
-  .go { color: white; } /* Generic.Output */
+  .go { color: $generic-output-color; } /* Generic.Output */
 }
 
 // Match prettifier classes defined above.

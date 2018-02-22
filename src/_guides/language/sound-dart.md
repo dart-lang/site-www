@@ -218,7 +218,7 @@ the getter method in the Animal class:
 <?code-excerpt "strong/lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
-  void chase(Animal a) {}
+  void chase(Animal a) { ... }
   [!Animal get parent => ...!]
 }
 {% endprettify %}
@@ -231,7 +231,7 @@ of Animal), but an unrelated type is not allowed.
 <?code-excerpt "strong/lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
-  void chase(Animal a) {}
+  void chase(Animal a) { ... }
   [!HoneyBadger!] get parent => ...
 }
 {% endprettify %}
@@ -240,7 +240,7 @@ class HoneyBadger extends Animal {
 <?code-excerpt "strong/lib/animal_bad.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
-  void chase(Animal a) {}
+  void chase(Animal a) { ... }
   [!Root!] get parent => ...
 }
 {% endprettify %}
@@ -263,7 +263,7 @@ Consider the `chase(Animal)` method for the Animal class:
 <?code-excerpt "strong/lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 {% prettify dart %}
 class Animal {
-  [!void chase(Animal a) {}!]
+  [!void chase(Animal a) { ... }!]
   Animal get parent => ...
 }
 {% endprettify %}
@@ -275,7 +275,7 @@ It's OK to override the `chase()` method to take anything (Object).
 <?code-excerpt "strong/lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
 {% prettify dart %}
 class HoneyBadger extends Animal {
-  void chase([!Object!] a) {}
+  void chase([!Object!] a) { ... }
   Animal get parent => ...
 }
 {% endprettify %}
@@ -289,7 +289,7 @@ from Animal to Mouse, a subclass of Animal.
 class Mouse extends Animal {...}
 
 class Cat extends Animal {
-  void chase([!Mouse!] x) {}
+  void chase([!Mouse!] x) { ... }
 }
 {% endprettify %}
 
@@ -317,9 +317,9 @@ a list of type Cat, which generates an error during static analysis.
 {:.fails-sa}
 <?code-excerpt "strong/lib/animal_bad.dart (dynamic-list)" replace="/.dynamic.(?!.*OK)/[!$&!]/g"?>
 {% prettify dart %}
-class Cat extends Animal {...}
+class Cat extends Animal { ... }
 
-class Dog extends Animal {...}
+class Dog extends Animal { ... }
 
 void main() {
   List<Cat> foo = [!<dynamic>!][new Dog()]; // Error
@@ -337,11 +337,11 @@ For example, the following code throws an exception at runtime because it is an 
 to assign a list of Dogs to a list of Cats:
 
 {:.runtime-fail}
-<?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/List.*/[!$&!]/g"?>
+<?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/cats[^;]*/[!$&!]/g"?>
 {% prettify dart %}
 void main() {
-  [!List<Animal> animals = [new Dog()];!]
-  [!List<Cat> cats = animals;!]
+  List<Animal> animals = [new Dog()];
+  List<Cat> [!cats = animals!];
 }
 {% endprettify %}
 

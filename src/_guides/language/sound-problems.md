@@ -2,6 +2,8 @@
 title: "Strong Mode Dart: Fixing Common Problems"
 description: Common problems you may have when converting to strong mode and how to fix them.
 ---
+{% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
+<?code-excerpt replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 {% comment %}
 The first few questions/answers are for strong mode under Dart 1.x.
@@ -38,16 +40,17 @@ make sure that you're using strong mode.
 A good test is to add the following code to a file:
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (is-strong-mode-enabled)"?>
 {% prettify dart %}
-void test() {
-  bool b = [0][0];
-}
+bool b = [0][0];
 {% endprettify %}
 
-If you're using strong mode, you'll see the following warning from the analyzer:
+If you're using strong mode, you'll see the following issue from the analyzer:
 
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
 ```nocode
-[warning] A value of type 'int' can't be assigned to a variable of type 'bool'.
+error • A value of type 'int' can't be assigned to a variable of type 'bool' • invalid_assignment
 ```
 
 <hr>
@@ -69,7 +72,9 @@ expected strong mode errors, try the following:
   make sure you've specified `strong mode: true` correctly.
   For more information, see [Specifying strong
   mode.](/guides/language/analysis-options#specifying-strong-mode)
-- Run the analyzer with the `--strong` tag:
+- Run the analyzer with the `--strong` option:
+{% comment %}Eventually link [`--strong` option] to [dartanalyzer README]{% endcomment %}
+
   ```nocode
   dartanalyzer --strong <file-or-directory>
   ```
@@ -115,26 +120,34 @@ Static analysis can't catch all errors.
 For help fixing strong-mode errors that appear only at runtime,
 see [Runtime errors](#common-errors-and-warnings).
 
-
-<a name="undefined-member"></a>
 ### Undefined member
 
-**Error:** <code>&lt;<em>member</em>&gt; isn't defined for the class &lt;<em>class</em>&gt;</code>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
+```nocode
+error • The <member> '...' isn't defined for the class '...' • undefined_<member>
+```
 
 These errors usually appear in code where a variable is statically known
 to be some supertype but the code assumes a subtype.
 
-**Fix:** Replace the definition of the member with an explicit type
-declaration or a downcast.
+#### Example
 
-For example, the analyzer complains that `context2D` in the following
-code is undefined:
+In the following code, the analyzer complains that `context2D` is undefined:
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (canvas-error)" replace="/context2D/[!$&!]/g"?>
 {% prettify dart %}
 var canvas = querySelector("canvas");
-canvas.[!context2D!]; // <-- Error.
+canvas.[!context2D!];
 {% endprettify %}
+
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't defined for the class/"?>
+```nocode
+error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
+```
+
+#### **Fix**: Replace the definition of the member with an explicit type declaration or a downcast
 
 The `querySelector()` method statically returns an Element,
 but the code assumes it returns the subtype CanvasElement
@@ -143,28 +156,48 @@ The `canvas` field is declared as `var` which, in classic Dart,
 types it as `dynamic` and silences all errors.
 Strong mode Dart infers `canvas` to be an Element.
 
-Fix this error with an explicit type declaration:
+You can fix this error with an explicit type declaration:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-ok)" replace="/CanvasElement/[!$&!]/g"?>
 {% prettify dart %}
 [!CanvasElement!] canvas = querySelector("canvas");
 canvas.context2D;
 {% endprettify %}
 
-If you actually want a dynamic type, specify `dynamic`:
+The code above passes static analysis when [implicit casts][] are permitted.
+
+You can also use an explicit downcast:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
 {% prettify dart %}
-[!dynamic!] canvas = querySelector("canvas");
+var canvas = querySelector("canvas") [!as CanvasElement!];
 canvas.context2D;
 {% endprettify %}
 
+{% comment %}
+NOTE TO Kathy: I don't think that we should recommend use of dynamic in this case,
+so I'm commenting this out. WDYT?
+
+- If you actually want a dynamic type, specify `dynamic`:
+
+  {:.passes-sa}
+  <?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
+  {% prettify dart %}
+  [!dynamic!] canvas = querySelector("canvas");
+  canvas.context2D;
+  {% endprettify %}
+{% endcomment %}
+
 <hr>
 
-<a name="invalid-method-override"></a>
 ### Invalid method override
 
-**Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*num.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+```nocode
+error • Invalid override. The type of '...'  isn't a subtype of '...'  • strong_mode_invalid_method_override
+```
 
 These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
@@ -175,45 +208,56 @@ to specify a type. For more information, see
 [Missing type arguments](#missing-type-arguments).
 </aside>
 
-**Fix:** Widen the types in the method's parameter list.
-The subclass's method should accept every
-object that the superclass's method takes.
+#### Example
 
-In the following example, the parameters in the `add()` method
-are changed from `num` to `int`, a subtype of `num`.
-This code passes static analysis in classic Dart,
-but is unsafe and fails analysis in strong mode Dart.
+In the following example, the parameters to the `add()` method are of type `int`,
+a subtype of `num`, which is the parameter type used in the parent class.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (invalid-method-override)" replace="/int(?= \w\b)/[!$&!]/g"?>
 {% prettify dart %}
 abstract class NumberAdder {
   num add(num a, num b);
 }
 
-class IntAdder extends NumberAdder {
+class MyAdder extends NumberAdder {
   int add([!int!] a, [!int!] b) => a + b;
 }
 {% endprettify %}
 
-Consider the following scenario where floating
-point values are passed to an IntAdder:
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*num.*common_problems/"?>
+```nocode
+error • Invalid override. The type of 'MyAdder.add' ('(int, int) → int') isn't a subtype of 'NumberAdder.add' ('(num, num) → num') • strong_mode_invalid_method_override
+```
 
+Consider the following scenario where floating
+point values are passed to an MyAdder:
+
+{:.runtime-fail}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (unsafe-method-call)" replace="/\d[\d\.]+/[!$&!]/g"?>
 {% prettify dart %}
-NumberAdder adder = new IntAdder(); // Upcast
-adder.add([!1.2!], [!3.4!]); // Kaboom!
+NumberAdder adder = new MyAdder();
+adder.add([!1.2!], [!3.4!]);
 {% endprettify %}
 
-If the override were allowed, this code would crash at runtime.
+If the override were allowed, the code would raise an error at runtime.
 
-Fix this error by widening the types in the subclass:
+#### **Fix:** Widen the method's parameter types
+
+The subclass's method should accept every
+object that the superclass's method takes.
+
+Fix the example by widening the types in the subclass:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (valid-method-override)" replace="/num(?= \w\b.*=)/[!$&!]/g"?>
 {% prettify dart %}
 abstract class NumberAdder {
   num add(num a, num b);
 }
 
-class IntAdder extends NumberAdder {
+class MyAdder extends NumberAdder {
   num add([!num!] a, [!num!] b) => a + b;
 }
 {% endprettify %}
@@ -225,131 +269,156 @@ For more information, see [Use proper input parameter types when overriding meth
   [covariant keyword](#the-covariant-keyword).
 </aside>
 
-
 <hr>
 
-<a name="missing-type-arguments"></a>
 ### Missing type arguments
 
-**Error:** <code>Invalid override. The type of &lt;<em>type</em>&gt; is not a subtype of &lt;<em>type</em>&gt;.</code>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*dynamic.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+```nocode
+error • Invalid override. The type of '...'  isn't a subtype of '...'  • strong_mode_invalid_method_override
+```
 
-**Fix:** Specify type arguments for the generic subclass.
-
-When a generic subclass neglects to specify a type argument,
-the analyzer infers the `dynamic` type. This is likely to cause
-errors.
+#### Example
 
 In the following example, `Subclass` extends `Superclass<T>` but doesn't
 specify a type argument. The analyzer infers `Subclass<dynamic>`,
 which results in an invalid override error on `method(int)`.
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (missing-type-arguments)" replace="/int(?= \w\b)/[!$&!]/g"?>
 {% prettify dart %}
 class Superclass<T> {
-  void method(T t) {}
+  void method(T t) { ... }
 }
 
 class Subclass extends Superclass {
-  [!void method(int i) {}!] // <-- Error.
+  void method([!int!] i) { ... }
 }
 {% endprettify %}
 
-You can fix this by specifying the type on the subclass:
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*dynamic.*common_problems/"?>
+```nocode
+error • Invalid override. The type of 'Subclass.method' ('(int) → void') isn't a subtype of 'Superclass<dynamic>.method' ('(dynamic) → void') • strong_mode_invalid_method_override
+```
+
+#### **Fix:** Specify type arguments for the generic subclass
+
+When a generic subclass neglects to specify a type argument,
+the analyzer infers the `dynamic` type. This is likely to cause
+errors.
+
+You can fix the example by specifying the type on the subclass:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (type-arguments)" replace="/<int\x3E/[!$&!]/g"?>
 {% prettify dart %}
 class Superclass<T> {
-  void method(T t) {}
+  void method(T t) { ... }
 }
 
 class Subclass extends Superclass[!<int>!] {
-  void method(int i) {}
+  void method(int i) { ... }
 }
 {% endprettify %}
 
 <hr>
 
-<a name="assigning-mismatched-types"></a>
+{% comment %}
+NOTE TO Kathy: I think that we should consider renaming this section. How about
+<a id ="assigning-mismatched-types"></a>
+### Unexpected collection element type
+
+If we do make this change, then an anchor below will need to be updated too.
+{% endcomment %}
 ### Assigning mismatched types
 
-**Warning:** <code>A value of type '&lt;<em>type</em>&gt;' cannot be
-assigned to a variable of type '<em>type</em>'.</code>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
+```nocode
+error • A value of type '...' can't be assigned to a variable of type '...' • invalid_assignment
+```
 
 This sometimes happens when you create a simple dynamic collection
-and the analyzer Dart infers the type in a way you didn't expect.
+and the analyzer infers the type in a way you didn't expect.
 When you later add values of a different type,
 the analyzer produces a warning.
 
-**Fix:** Specify the type explicitly.
+#### Example
 
-For example, the following code initializes a map with several
-(String, integer) pairs. The analyzer infers that map to be of type
+The following code initializes a map with several
+(String, int) pairs. The analyzer infers that map to be of type
 `<String, int>` but the code assumes `<String, dynamic>`.
-When the code then adds a (String, float) pair, the analyzer complains.
+When the code adds a (String, float) pair, the analyzer complains:
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (inferred-collection-types)" replace="/1.5/[!$&!]/g"?>
 {% prettify dart %}
-void main() {
-  var map = {
-    'a': 7,
-    'b': 11,
-    'c': 13
-  }; // <= inferred to be Map<String, int>
-
-  [!map['d'] = 1.5;!]  // 1.5 is not int!
-}
+// Inferred as Map<String, int>
+var map = {'a': 1, 'b': 2, 'c': 3};
+map['d'] = [!1.5!]; // a double is not an int
 {% endprettify %}
 
-This can be fixed by explicitly defining the map's type to be
-`<String, dynamic>`.
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
+```nocode
+error • A value of type 'double' can't be assigned to a variable of type 'int' • invalid_assignment
+```
+
+#### **Fix:** Specify the type explicitly
+
+The example can be fixed by explicitly defining the map's type to be
+`<String, num>`.
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (inferred-collection-types)" replace="/<.*?\x3E/[!$&!]/g"?>
 {% prettify dart %}
-void main() {
-  var map = [!<String, dynamic>!]{
-    'a': 7,
-    'b': 11,
-    'c': 13
-  };
-
-  map['d'] = 1.5;
-}
+var map = [!<String, num>!]{'a': 1, 'b': 2, 'c': 3};
+map['d'] = 1.5;
 {% endprettify %}
 
-Alternatively, if you only want this map to accept integers and floats,
-you can specify the type as `<String, num>`.
+Alternatively, if you want this map to accept any value, specify the type as `<String, dynamic>`.
 
 <hr>
 
-<a name="constructor-initialization-list"></a>
+<a id="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
-**Error:**  <code>super call must be last in an initializer list
-   (see https://goo.gl/EY6hDP): 'super(style)'.</code>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
+```nocode
+error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • strong_mode_invalid_super_invocation
+```
 
 This error occurs when the `super()` call is not last in a constructor's
 initialization list.
 
-**Fix:** Put the `super()` call last.
-
-The Dart dev compiler generates simpler code if
-it relies on the `super()` call appearing last.
-The following example generates an error in strong mode Dart:
+#### Example
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g"?>
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
-  : [!super!](food),
-    _name = name { ... }
+    : [!super!](food),
+      _name = name { ... }
 {% endprettify %}
 
-Fix the error by moving the `super()` call:
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/"?>
+```nocode
+error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • strong_mode_invalid_super_invocation
+```
+
+#### **Fix:** Put the `super()` call last
+
+The compiler can generate simpler code if it relies on the `super()` call appearing last.
+
+Fix this error by moving the `super()` call:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g"?>
 {% prettify dart %}
 HoneyBadger(Eats food, String name)
-  : _name = name,
-    [!super!](food) { ... }
+    : _name = name,
+      [!super!](food) { ... }
 {% endprettify %}
 
 For more information, see [DO place the super() call last in a
@@ -361,113 +430,114 @@ in [Effective Dart](/guides/language/effective-dart/).
 <a name="uses-dynamic-as-bottom"></a>
 ### A function of type ... can't be assigned
 
-In Dart 1.x `dynamic` was both a [top type][top_type_wiki] (also known as a
-_universal supertype_, or the _supertype of all other types_) and a
-[bottom type][bottom_type_wiki] (also known as the _zero_ or _empty_ type)
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/A function of type.*common_problems/" replace="/'\S+ → \S+'/'...'/g"?>
+```nocode
+warning • A function of type '...' can't be assigned to a location of type '...' • strong_mode_uses_dynamic_as_bottom
+```
+
+In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
+[bottom type][]  (subtype of all types)
 depending on the context. This meant it was legal to assign, for example,
 a function with a parameter of type `String` to a place that expected a
 function type with a parameter of `dynamic`.
 
-[top_type_wiki]: https://en.wikipedia.org/wiki/Top_type
-[bottom_type_wiki]: https://en.wikipedia.org/wiki/Bottom_type
-
 However, in Dart 2 passing something other than `dynamic` (or another _top_
 type, such as `Object`, or a specific bottom type, such as `Null`) fails at
-compile-time (called `uses_dynamic_as_bottom`):
+compile-time.
+
+#### Example
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (func-dynamic)" replace="/String/[!$&!]/g"?>
 {% prettify dart %}
 typedef bool Filter(dynamic any);
-
-main() {
-  Filter filter = (String x) => x.contains('Hello'); // <- Error
-}
+Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
-**Error:** <code>A function of type '(String) → void' can't be assigned to a variable of type '(dynamic) → void'</code>
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/A function of type.*common_problems/"?>
+```nocode
+warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' • strong_mode_uses_dynamic_as_bottom
+```
 
-**Fix:** Add generic type parameters _or_ cast from dynamic explicitly instead.
+#### **Fix:** Add generic type parameters _or_ cast from dynamic explicitly instead
 
-One fix could be, if possible, typing `Filter` as `Filter<T>`:
+When possible, fix this error by adding type parameters:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
 {% prettify dart %}
-typedef bool Filter<T>(T any);
-
-main() {
-  Filter<String> filter = (String x) => x.contains('Hello');
-}
+typedef bool Filter[!<T>!](T any);
+Filter[!<String>!] filter = (String x) => x.contains('Hello');
 {% endprettify %}
-                                                                   
-If not possible, another alternative is casting:
+
+If not possible, an alternative is casting:
 
 {:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
 {% prettify dart %}
 typedef bool Filter(dynamic any);
-
-main() {
-  Filter filter = (x) => (x as String).contains('Hello');
-}
+Filter filter = (x) => (x [!as String!]).contains('Hello');
 {% endprettify %}
 
 <hr>
 
-<a name="common-errors-and-warnings"></a>
+<a id="common-errors-and-warnings"></a>
 ## Runtime errors
 
-The strong-mode errors in this section can occur only when
-you're using a strong mode runtime for Dart 2,
-such as `dartdevc`, Flutter, or
-the command-line Dart VM with `--strong` (where supported).
-
-### Invalid casts
-
-Unlike Dart 1.x, Dart 2 enforces a sound type system. This means (roughly)
-you can't get into a situation where the value stored in some variable is
+Unlike Dart 1.x, Dart 2 enforces a sound type system. Roughly, this means
+you can't get into a situation where the value stored in a variable is
 different than the variable's static type. Like most modern statically
-typed langauges, Dart accomplishes this with a mixture of static
+typed langauges, Dart accomplishes this with a combination of static
 (compile-time) and dynamic (runtime) checking.
 
-For example, this type error is detected at compile-time:
+For example, the following type error is detected at compile-time
+(when the [implicit casts][] option is disabled):
 
 {:.fails-sa}
+<?code-excerpt "strong/lib/common_problems_analysis.dart (int-not-string)" replace="/string[^;]*/[!$&!]/g"?>
 {% prettify dart %}
-main() {
-  List<int> numbers = [1, 2, 3];
-  List<String> [!string = numbers!]; // <-- Static analysis error
-}
+List<int> numbers = [1, 2, 3];
+List<String> [!string = numbers!];
 {% endprettify %}
 
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
 static analysis errors in [Assigning Mismatched Types](#assigning-mismatched-types).
 
-In other cases, however, Dart needs to insert a _runtime_ check. Consider:
+The strong-mode errors discussed in the remainder of this section are reported when
+you use a [strong mode runtime](sound-dart#runtime-checks).
+
+### Invalid casts
+
+To ensure type safety, Dart needs to insert _runtime_ checks in some cases. Consider:
 
 {:.passes-sa}
+<?code-excerpt "strong/test/strong_test.dart (downcast-check)" replace="/string = objects/[!$&!]/g"?>
 {% prettify dart %}
 assumeStrings(List<Object> objects) {
-  List<String> [!strings = objects!]; // <- Implicit downcast
-  // Expect to get a type 'String' out.
-  String string = strings[0];
+  List<String> strings = objects; // Runtime downcast check
+  String string = strings[0]; // Expect a String value
 }
 {% endprettify %}
 
-The second line above is _downcasting_ the `List<Object>` to `List<String>`
-implicitly (as if you wrote `as List<String>`), so if the value you pass to
-`objects` at runtime actually is a `List<String>`, the cast succeeds.
+The assignment to `strings` is _downcasting_ the `List<Object>` to `List<String>`
+implicitly (as if you wrote `as List<String>`), so if the value you pass in
+`objects` at runtime is a `List<String>`, then the cast succeeds.
 
-But if not, the cast will fail at runtime:
+Otherwise, the cast will fail at runtime:
 
-```dart
-// Will fail at runtime.
-assumeStrings(<int>[1, 2, 3]);
+{:.runtime-fail}
+<?code-excerpt "strong/test/strong_test.dart (fail-downcast-check)" replace="/\[.*\]/[!$&!]/g"?>
+{% prettify dart %}
+assumeStrings(<int>[![1, 2, 3]!]);
+{% endprettify %}
+
+{:.console-output}
+<?code-excerpt "strong/test/strong_test.dart (downcast-check-msg)" replace="/final msg = ./Exception: /g; /.;//g"?>
+```nocode
+Exception: type 'List<int>' is not a subtype of type 'List<String>'
 ```
-
-**Error:** <code>Invalid cast. The type of &lt;<em>List&lt;int&gt;</em>&gt; is not a subtype of &lt;<em>List&lt;String&gt;</em>&gt;.</code>
-
-**Fix:** Tighten or correct the type of the object, if possible.
-Otherwise, create a new object of the correct type.
 
 <aside class="alert alert-warning" markdown="1">
   **Note for `dartdevc` users:**
@@ -481,59 +551,62 @@ update-for-dart-2
 TODO: Update that link once 2.0 is stable. Maybe create/use a macro for dev API docs.
 {% endcomment %}
 
+#### **Fix:** Tighten or correct types
+
 Sometimes, lack of a type, especially with empty collections, means that a `<dynamic>`
 collection is created, instead of the typed one you intended. Adding an explicit
 type argument can help:
 
 {:.runtime-success}
+<?code-excerpt "strong/test/strong_test.dart (typed-list-lit)" replace="/<String\x3E/[!$&!]/g"?>
 {% prettify dart %}
-  var list  = [!<String>[]!]; // <-- Give it an explicit type.
-  list.add('a string');
-  list.add('another');
-  assumeStrings(list);
+var list = [!<String>!][];
+list.add('a string');
+list.add('another');
+assumeStrings(list);
 {% endprettify %}
 
 You can also more precisely type the local variable, and let inference help:
 
 {:.runtime-success}
+<?code-excerpt "strong/test/strong_test.dart (typed-list)" replace="/<String\x3E/[!$&!]/g"?>
 {% prettify dart %}
-  List[!<String>!] list  = []; // <-- Give it an explicit left-hand type.
-  list.add('a string');
-  list.add('another');
-  assumeStrings(list);
+List[!<String>!] list = [];
+list.add('a string');
+list.add('another');
+assumeStrings(list);
 {% endprettify %}
 
 In cases where you are working with a collection that you don't create, such
 as from JSON or an external data source, you can use the
 [cast()]({{site.dart_api}}/dev/dart-core/List/cast.html) method
-provided by `List` (and other collection classes).
+provided by `List` and other collection classes.
 
 Here's an example of the preferred solution: tightening the object's type.
 
 {:.runtime-success}
+<?code-excerpt "strong/test/strong_test.dart (cast)" replace="/cast/[!$&!]/g"?>
 {% prettify dart %}
-main() {
-  Map<String, dynamic> json = getFromExternalSource();
-  var names = json['names'] as List;
-  assumeStrings(names.[!cast!]<String>());
-}
+Map<String, dynamic> json = getFromExternalSource();
+var names = json['names'] as List;
+assumeStrings(names.[!cast!]<String>());
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
   **Version note:**
-  The `cast` method was introduced in 2.0.0-dev.22.0.
+  The `cast()` method was introduced in 2.0.0-dev.22.0.
 </aside>
 
 If you can't tighten the type or use `cast`, you can copy the object
 in a different way. For example:
 
+{:.runtime-success}
+<?code-excerpt "strong/test/strong_test.dart (create-new-object)" replace="/\.map.*\.toList../[!$&!]/g"?>
 {% prettify dart %}
-main() {
-  Map<String, dynamic> json = getFromExternalSource();
-  var names = json['names'] as List;
-  // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
-  assumeStrings(names.map((name) => name [!as!] String).toList());
-}
+Map<String, dynamic> json = getFromExternalSource();
+var names = json['names'] as List;
+// Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
+assumeStrings(names[!.map((name) => name as String).toList()!]);
 {% endprettify %}
 
 {% comment %}
@@ -541,10 +614,8 @@ main() {
 Do we have any known issues or bugs to list here?
 {% endcomment %}
 
-<a name="appendix"></a>
 ## Appendix
 
-<a name="checked-annotation"></a>
 ### The covariant keyword
 
 Some (rarely used) coding patterns rely on tightening a type
@@ -562,17 +633,17 @@ parameter type at runtime.
 
 The following shows how you might use `covariant`:
 
+{:.passes-sa}
+<?code-excerpt "strong/lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
 {% prettify dart %}
-[!import 'package:meta/meta.dart';!]
-
 class Animal {
-  void chase(Animal x) {}
+  void chase(Animal x) { ... }
 }
 
-class Mouse extends Animal {}
+class Mouse extends Animal { ... }
 
 class Cat extends Animal {
-  void chase([!covariant!] Mouse x) {}
+  void chase([!covariant!] Mouse x) { ... }
 }
 {% endprettify %}
 
@@ -582,3 +653,8 @@ or the subclass method.
 Usually the superclass method is the best place to put it.
 The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
+
+[bottom type]: https://en.wikipedia.org/wiki/Bottom_type
+[dartanalyzer README]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
+[implicit casts]: sound-dart#call-dartanalyzer-with-strong-mode-enabled
+[top type]: https://en.wikipedia.org/wiki/Top_type
