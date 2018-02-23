@@ -4,11 +4,13 @@
 import 'dart:html';
 
 // Include in this file only excerpts used to illustrate fixes to common problems.
-void samplesFromCommonProblemsPage() {
+void _samplesFromCommonProblemsPage() {
+  num x, y;
+
   {
     // #docregion canvas-as
-    var canvas = querySelector("canvas") as CanvasElement;
-    canvas.context2D; //!analysis-issue
+    var canvas = querySelector('canvas') as CanvasElement;
+    canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-as
   }
 
@@ -16,16 +18,15 @@ void samplesFromCommonProblemsPage() {
     // We need to ignore invalid_assignment because we use --no-implicit-casts.
     // #docregion canvas-ok
     // ignore_for_file: 1, 2, invalid_assignment
-    CanvasElement canvas = querySelector("canvas");
-    canvas.context2D; //!analysis-issue
+    CanvasElement canvas = querySelector('canvas');
+    canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-ok
   }
 
   {
     // #docregion canvas-dynamic
-    dynamic canvas = querySelector("canvas");
-    // ignore_for_file: 1, 2, undefined_getter
-    canvas.context2D; //!analysis-issue
+    dynamic canvasOrImg = querySelector('canvas, img');
+    var width = canvasOrImg.width; //!analysis-issue
     // #enddocregion canvas-dynamic
   }
 

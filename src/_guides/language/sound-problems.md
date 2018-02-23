@@ -137,8 +137,8 @@ In the following code, the analyzer complains that `context2D` is undefined:
 {:.fails-sa}
 <?code-excerpt "strong/lib/common_problems_analysis.dart (canvas-error)" replace="/context2D/[!$&!]/g"?>
 {% prettify dart %}
-var canvas = querySelector("canvas");
-canvas.[!context2D!];
+var canvas = querySelector('canvas');
+canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
@@ -161,8 +161,8 @@ You can fix this error with an explicit type declaration:
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-ok)" replace="/CanvasElement/[!$&!]/g"?>
 {% prettify dart %}
-[!CanvasElement!] canvas = querySelector("canvas");
-canvas.context2D;
+[!CanvasElement!] canvas = querySelector('canvas');
+canvas.context2D.lineTo(x, y);
 {% endprettify %}
 
 The code above passes static analysis when [implicit casts][] are permitted.
@@ -172,23 +172,18 @@ You can also use an explicit downcast:
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-as)" replace="/as \w+/[!$&!]/g"?>
 {% prettify dart %}
-var canvas = querySelector("canvas") [!as CanvasElement!];
-canvas.context2D;
+var canvas = querySelector('canvas') [!as CanvasElement!];
+canvas.context2D.lineTo(x, y);
 {% endprettify %}
 
-{% comment %}
-NOTE TO Kathy: I don't think that we should recommend use of dynamic in this case,
-so I'm commenting this out. WDYT?
+Otherwise, use `dynamic` in situations where you cannot use a single type:
 
-- If you actually want a dynamic type, specify `dynamic`:
-
-  {:.passes-sa}
-  <?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
-  {% prettify dart %}
-  [!dynamic!] canvas = querySelector("canvas");
-  canvas.context2D;
-  {% endprettify %}
-{% endcomment %}
+{:.passes-sa}
+<?code-excerpt "strong/lib/common_fixes_analysis.dart (canvas-dynamic)" replace="/dynamic/[!$&!]/g"?>
+{% prettify dart %}
+[!dynamic!] canvasOrImg = querySelector('canvas, img');
+var width = canvasOrImg.width;
+{% endprettify %}
 
 <hr>
 

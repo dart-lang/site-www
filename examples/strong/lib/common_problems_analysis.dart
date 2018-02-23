@@ -7,7 +7,7 @@
 
 import 'dart:html';
 
-void samplesFromCommonProblemsPage() {
+void _samplesFromCommonProblemsPage() {
   {
     // #docregion is-strong-mode-enabled
     // ignore_for_file: 1, 2, invalid_assignment
@@ -16,10 +16,11 @@ void samplesFromCommonProblemsPage() {
   }
 
   {
+    num x, y;
     // #docregion canvas-error
-    var canvas = querySelector("canvas");
+    var canvas = querySelector('canvas');
     // ignore_for_file: 1, 2, undefined_getter
-    canvas.context2D; //!analysis-issue
+    canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-error
   }
 
