@@ -319,14 +319,8 @@ class Subclass extends Superclass[!<int>!] {
 
 <hr>
 
-{% comment %}
-NOTE TO Kathy: I think that we should consider renaming this section. How about
 <a id ="assigning-mismatched-types"></a>
 ### Unexpected collection element type
-
-If we do make this change, then an anchor below will need to be updated too.
-{% endcomment %}
-### Assigning mismatched types
 
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
@@ -498,7 +492,7 @@ List<String> [!string = numbers!];
 
 Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
-static analysis errors in [Assigning Mismatched Types](#assigning-mismatched-types).
+static analysis errors in [Unexpected collection element type](#unexpected-collection-element-type).
 
 The strong-mode errors discussed in the remainder of this section are reported when
 you use a [strong mode runtime](sound-dart#runtime-checks).
