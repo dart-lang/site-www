@@ -618,9 +618,8 @@ Animal, and a supertype of a List of MaineCoon:
 
 <img src="images/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
-In the following example, you can substitute
-`new List<Cat>()` with `new List<MaineCoon>()` because
-`List<MaineCoon>` is a subtype of `List<Cat>`.
+In the following example, you can assign a `MaineCoon` list to `myCats` because
+`List<MaineCoon>` is a subtype of `List<Cat>`:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
@@ -635,8 +634,7 @@ DartPad: https://dartpad.dartlang.org/4a2a9bc2242042ba5338533d091213c0
 [Try it in DartPad](https://dartpad.dartlang.org/4a2a9bc2242042ba5338533d091213c0).
 {% endcomment %}
 
-What about going in the other direction? Can you replace
-`new List<Cat>` with `new List<Animal>`?
+What about going in the other direction? Can you assign an `Animal` list to a `List<Cat>`?
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
@@ -645,15 +643,15 @@ List<Cat> myCats = new List<[!Animal!]>();
 {% endprettify %}
 
 This assignment passes static analysis under strong mode,
-but it creates an implied cast. It is equivalent to:
+but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart %}
 List<Cat> myCats = new List<Animal>() [!as List<Cat>!];
 {% endprettify %}
 
-The code may fail at runtime. You can disallow similar implied casts
-using the `-no-implicit-casts` flag. For more information, see
+The code may fail at runtime. You can disallow implicit casts
+using the `--no-implicit-casts` flag. For more information, see
 [How to enable strong mode](#how-to-enable-strong-mode).
 
 ### Methods
