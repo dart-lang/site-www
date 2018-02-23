@@ -66,8 +66,10 @@ void main() {
 If you enable strong mode, a type error is reported on `list` (highlighted
 above) at the call of `fn(list)`:
 
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-The argument type 'List' can't be assigned to the parameter type 'List<int>'
+error • The argument type 'List' can't be assigned to the parameter type 'List<int>' • argument_type_not_assignable
 ```
 
 The error, reported at runtime and by the analyzer (when
