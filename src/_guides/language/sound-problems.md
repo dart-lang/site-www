@@ -147,7 +147,7 @@ canvas.[!context2D!];
 error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
 ```
 
-#### **Fix**: Replace the definition of the member with an explicit type declaration or a downcast
+#### Fix: Replace the definition of the member with an explicit type declaration or a downcast
 
 The `querySelector()` method statically returns an Element,
 but the code assumes it returns the subtype CanvasElement
@@ -243,7 +243,7 @@ adder.add([!1.2!], [!3.4!]);
 
 If the override were allowed, the code would raise an error at runtime.
 
-#### **Fix:** Widen the method's parameter types
+#### Fix: Widen the method's parameter types
 
 The subclass's method should accept every
 object that the superclass's method takes.
@@ -302,7 +302,7 @@ class Subclass extends Superclass {
 error • Invalid override. The type of 'Subclass.method' ('(int) → void') isn't a subtype of 'Superclass<dynamic>.method' ('(dynamic) → void') • strong_mode_invalid_method_override
 ```
 
-#### **Fix:** Specify type arguments for the generic subclass
+#### Fix: Specify type arguments for the generic subclass
 
 When a generic subclass neglects to specify a type argument,
 the analyzer infers the `dynamic` type. This is likely to cause
@@ -364,7 +364,7 @@ map['d'] = [!1.5!]; // a double is not an int
 error • A value of type 'double' can't be assigned to a variable of type 'int' • invalid_assignment
 ```
 
-#### **Fix:** Specify the type explicitly
+#### Fix: Specify the type explicitly
 
 The example can be fixed by explicitly defining the map's type to be
 `<String, num>`.
@@ -407,7 +407,7 @@ HoneyBadger(Eats food, String name)
 error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • strong_mode_invalid_super_invocation
 ```
 
-#### **Fix:** Put the `super()` call last
+#### Fix: Put the `super()` call last
 
 The compiler can generate simpler code if it relies on the `super()` call appearing last.
 
@@ -460,7 +460,7 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' • strong_mode_uses_dynamic_as_bottom
 ```
 
-#### **Fix:** Add generic type parameters _or_ cast from dynamic explicitly instead
+#### Fix: Add generic type parameters _or_ cast from dynamic explicitly instead
 
 When possible, fix this error by adding type parameters:
 
@@ -551,7 +551,7 @@ update-for-dart-2
 TODO: Update that link once 2.0 is stable. Maybe create/use a macro for dev API docs.
 {% endcomment %}
 
-#### **Fix:** Tighten or correct types
+#### Fix: Tighten or correct types
 
 Sometimes, lack of a type, especially with empty collections, means that a `<dynamic>`
 collection is created, instead of the typed one you intended. Adding an explicit
