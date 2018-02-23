@@ -198,7 +198,7 @@ These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
 
 <aside class="alert alert-info" markdown="1">
-**Note:** This warning can also occur when a generic subclass neglects
+**Note:** This issue can also occur when a generic subclass neglects
 to specify a type. For more information, see
 [Missing type arguments](#missing-type-arguments).
 </aside>
@@ -329,14 +329,13 @@ error • A value of type '...' can't be assigned to a variable of type '...' �
 
 This sometimes happens when you create a simple dynamic collection
 and the analyzer infers the type in a way you didn't expect.
-When you later add values of a different type,
-the analyzer produces a warning.
+When you later add values of a different type, the analyzer reports an issue.
 
 #### Example
 
 The following code initializes a map with several
 (String, int) pairs. The analyzer infers that map to be of type
-`<String, int>` but the code assumes `<String, dynamic>`.
+`<String, int>` but the code seems to assume either `<String, dynamic>` or `<String, num>`.
 When the code adds a (String, float) pair, the analyzer complains:
 
 {:.fails-sa}
@@ -431,8 +430,8 @@ a function with a parameter of type `String` to a place that expected a
 function type with a parameter of `dynamic`.
 
 However, in Dart 2 passing something other than `dynamic` (or another _top_
-type, such as `Object`, or a specific bottom type, such as `Null`) fails at
-compile-time.
+type, such as `Object`, or a specific bottom type, such as `Null`) results
+in a compile-time warning.
 
 #### Example
 
@@ -449,9 +448,9 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' • strong_mode_uses_dynamic_as_bottom
 ```
 
-#### Fix: Add generic type parameters _or_ cast from dynamic explicitly instead
+#### Fix: Add generic type parameters _or_ cast from dynamic explicitly
 
-When possible, fix this error by adding type parameters:
+When possible, avoid this warning by adding type parameters:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
@@ -460,7 +459,7 @@ typedef bool Filter[!<T>!](T any);
 Filter[!<String>!] filter = (String x) => x.contains('Hello');
 {% endprettify %}
 
-If not possible, an alternative is casting:
+Otherwise use casting:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
@@ -477,7 +476,7 @@ Filter filter = (x) => (x [!as String!]).contains('Hello');
 Unlike Dart 1.x, Dart 2 enforces a sound type system. Roughly, this means
 you can't get into a situation where the value stored in a variable is
 different than the variable's static type. Like most modern statically
-typed langauges, Dart accomplishes this with a combination of static
+typed languages, Dart accomplishes this with a combination of static
 (compile-time) and dynamic (runtime) checking.
 
 For example, the following type error is detected at compile-time
