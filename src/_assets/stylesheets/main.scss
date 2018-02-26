@@ -234,13 +234,15 @@ img {
 .banner {
   background-color: $blue-light;
   text-align: center;
-  padding: 5px 0;
+  padding: .5em 0;
   margin-bottom: 40px;
 }
 
 .banner__text {
   font-weight: 300;
   margin-bottom: 0;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .banner__frontpage-row {

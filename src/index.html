@@ -8,7 +8,8 @@ description: Dart is an application programming language that’s easy to learn,
   <div class="row banner__frontpage-row">
     <div class="col-sm-12">
       <div class="content">
-        {% include banner-fp.html %}
+        {% capture banner %}{% include banner-fp.md %}{% endcapture %}
+        {{ banner | markdownify }}
       </div>
     </div>
   </div>
