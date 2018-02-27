@@ -165,7 +165,7 @@ String shout(String msg, {int exclamations}) {
 }
 {% endprettify %}
 
-To briefly recap, there are two ways to define optional parameters.
+To briefly recap, there are two ways to define optional parameters:
 
 * `[` `]` for optional positional parameters
 * `{` `}` for optional named parameters
