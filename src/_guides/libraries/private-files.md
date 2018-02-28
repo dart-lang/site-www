@@ -30,6 +30,12 @@ build/
 pubspec.lock  // Except for application packages
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+**Dart 2 note:** The `.dart_tool` directory, which is new in Dart 2,
+is used by pub and other tools. It replaces the `.pub` directory as of
+[SDK commit 699f7bc.](https://github.com/dart-lang/sdk/commit/699f7bc1b187557b55a285f7d950ea051de3c2d9)
+</aside>
+
 **Don't commit** the API documentation directory created by dartdoc:
 
 {% prettify none %}
