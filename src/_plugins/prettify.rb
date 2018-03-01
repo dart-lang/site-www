@@ -34,7 +34,8 @@ module Prettify
       end
       out += '">'
 
-      contents = super #.strip
+      # Strip excess whitespace at the end (which will be present if the code is indented)
+      contents = super.gsub /(\s*\n\s*)+\z/, "\n"
       contents = CGI::escapeHTML(contents)
 
       contents.gsub!('[[strike]]', '<code class="nocode strike">')
