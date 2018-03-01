@@ -118,7 +118,7 @@ specify an upper constraint of `<2.0.0` for the SDK version. Examples:
 
 ```yaml
 # Works in 1.20.1+; might work in 2.0.0-dev:
-sdk: '>=1.20.1 <2.0.0'       
+sdk: '>=1.20.1 <2.0.0'
 
 # Backward incompatible change requires at least 2.0.0-dev.1.2:
 sdk: '>=2.0.0-dev.1.2 <2.0.0'
@@ -189,36 +189,38 @@ You can prepare for Dart 2 by using Dart 1.x with
 
 
 <aside class="alert alert-info" markdown="1">
-**A quick summary of the gnarly details:**
-Dart 2 supports [type inference][]
-and, in many cases, doesn't require type annotations. For example,
-the following is valid code in both Dart 1.x and Dart 2:
+  **A quick summary of the gnarly details:**
+  Dart 2 supports [type inference][]
+  and, in many cases, doesn't require type annotations. For example,
+  the following is valid code in both Dart 1.x and Dart 2:
 
-<pre>
-var i = 1;   // In Dart 2, inferred to be int;
-             // previously, inferred to be dynamic.
+  <?code-excerpt "strong/lib/strong_analysis.dart (dart-2-note)"?>
+  {% prettify dart %}
+  var i = 1;
+  // i is dynamic in Dart 1.x
+  // i is inferred as int in Dart 2
 
-dynamic x = 1;
-x = "Hello";
-</pre>
+  dynamic x = 1;
+  x = "Hello";
+  {% endprettify %}
 
-As the example shows, you can use the static `dynamic` type
-to indicate that the runtime type is unknown.
-One big difference between optionally typed Dart and Dart 2
-is that, in the former, the analyzer infers the `dynamic` type.
-In Dart 2, tools like the analyzer can often infer
-types that are more specific than `dynamic`,
-following rules in the language specification.
+  As the example shows, you can use the static `dynamic` type
+  to indicate that the runtime type is unknown.
+  One big difference between optionally typed Dart and Dart 2
+  is that, in the former, the analyzer infers the `dynamic` type.
+  In Dart 2, tools like the analyzer can often infer
+  types that are more specific than `dynamic`,
+  following rules in the language specification.
 
-While Dart 2 is statically typed, type inference and
-less precise types such as `dynamic` and `num`
-take away much of the burden of specifying exact types.
-Dart 2 has the advantages of a strongly typed language,
-but requires only a bit more work than Dart 1.x.
+  While Dart 2 is statically typed, type inference and
+  less precise types such as `dynamic` and `num`
+  take away much of the burden of specifying exact types.
+  Dart 2 has the advantages of a strongly typed language,
+  but requires only a bit more work than Dart 1.x.
 
-To experiment with strong mode,
-open [DartPad][]
-and check the **Strong mode** box at the lower right.
+  To experiment with strong mode,
+  open [DartPad][]
+  and check the **Strong mode** box at the lower right.
 </aside>
 
 Migrate your code to strong mode, and you may identify some
