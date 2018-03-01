@@ -33,6 +33,10 @@ try WebStorm, which comes with Dart support.
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
+<img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
+<a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
+</li>
+<li>
 <img src="{% asset_path 'tools/webstorm.svg' %}"
      width="48" alt="WebStorm logo">
 <a href="{{site.webdev}}/tools/webstorm"><b>WebStorm</b></a>
@@ -58,10 +62,6 @@ and available as open source:
 <li>
 <img src="{% asset_path 'tools/vim.png' %}" alt="Vim logo">
 <a href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
-</li>
-<li>
-<img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
-<a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
 
