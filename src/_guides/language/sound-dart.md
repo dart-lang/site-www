@@ -137,7 +137,7 @@ In classic Dart, the problem occurs at runtime&mdash;fetching a
 `Stream` from a list but getting another type results in a runtime
 exception and the app crashes. For example, the following code
 assigns a list of type `dynamic` (which contains strings) to a list
-of type `int`. Iterating through the list and substracting 10 from
+of type `int`. Iterating through the list and subtracting 10 from
 each item causes a runtime exception because the minus operator isn't
 defined for strings.
 
