@@ -708,9 +708,11 @@ main .content {
   list-style: none;
   column-count: 2;
   column-gap: 0;
+  padding-left: $font-size-base / 2;
   li {
     page-break-inside: avoid;
-    padding-bottom: 15px;
+    padding: $font-size-base / 2;
+    font-size: smaller;
   }
 }
 .col3 {
