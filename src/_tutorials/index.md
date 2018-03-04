@@ -1,8 +1,8 @@
 ---
-layout: default
-title: "Dart Tutorials"
-description: "Tutorials for writing Dart apps."
+title: Dart Tutorials
+description: Tutorials for writing Dart apps.
 permalink: /tutorials
+toc: false
 ---
 
 **The Dart Tutorials** teach you how to build applications
