@@ -29,17 +29,17 @@ try WebStorm, which comes with Dart support.
 <li>
 <img src="{% asset_path 'tools/intellij-idea.svg' %}"
      width="48" alt="IntelliJ logo">
-<a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
+<a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
-<a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
+<a class="no-automatic-external" href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/webstorm.svg' %}"
      width="48" alt="WebStorm logo">
-<a href="{{site.webdev}}/tools/webstorm"><b>WebStorm</b></a>
+<a class="no-automatic-external" href="{{site.webdev}}/tools/webstorm"><b>WebStorm</b></a>
 </li>
 </ul>
 
@@ -49,19 +49,19 @@ and available as open source:
 <ul class="col2">
 <li>
 <img src="{% asset_path 'tools/atom-logo.png' %}" alt="Atom logo">
-<a href="https://github.com/dart-atom/dartlang/"><b>Atom</b></a>
+<a class="no-automatic-external" href="https://github.com/dart-atom/dartlang/"><b>Atom</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/emacs.png' %}" alt="Emacs logo">
-<a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
+<a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/sublime.png' %}" alt="Sublime logo">
-<a href="https://github.com/dart-lang/dart-sublime-bundle#readme"><b>Sublime Text 3</b></a>
+<a class="no-automatic-external" href="https://github.com/dart-lang/dart-sublime-bundle#readme"><b>Sublime Text 3</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/vim.png' %}" alt="Vim logo">
-<a href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+<a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 </ul>
 
