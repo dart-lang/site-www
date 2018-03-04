@@ -25,7 +25,7 @@ matrix:
 
 before_install:
   - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev
-  - source ./scripts/env-set.sh --reset --install
+  - source ./scripts/env-set.sh
   - ./scripts/install-webdev.sh
   - ./scripts/before-install.sh
 
