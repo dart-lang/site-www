@@ -710,6 +710,7 @@ main .content {
   column-gap: 0;
   li {
     page-break-inside: avoid;
+    padding-bottom: 15px;
   }
 }
 .col3 {
