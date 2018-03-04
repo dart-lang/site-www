@@ -13,15 +13,35 @@ echo "WARNING: running local copy of setup script."
 # This is a copy of the site-webdev script. It is embedded here so that
 # we don't force all users to clone site-webdev. This isn't DRY, but it is temporary.
 
-SITE_WEBDEV_ENV_SET_INSTALL_OPT="--no-install"
+SITE_WEBDEV_ENV_SET_INSTALL_OPT="--install"
 
-while [[ $# -gt 0 ]]; do
+if [[ $# -gt 0 ]]; then
   case "$1" in
-    --reset)    unset NGIO_ENV_DEFS; shift;;
-    --install)  SITE_WEBDEV_ENV_SET_INSTALL_OPT="--install"; shift;;
-    *)          echo "WARNING: Unrecognized option for env-set.sh: $1"; shift;;
+    -h|--help)  echo "source scripts/env-set.sh [--quick|--no-install]"
+                echo
+                echo "  Runs nvm and rvm commands 'install' and 'use' to get required Node"
+                echo "  and Ruby versions; then sets other required environment variables."
+                echo
+                echo "  --no-install  Skips nvm and rvm 'install' in favor of 'use'."
+                echo "  --quick       Do nothing if this script has already been sourced."
+                echo
+                return 0;;
+    -q|--quick) SITE_WEBDEV_ENV_SET_INSTALL_OPT="--quick"; shift;;
+    -n|--no-install)
+                SITE_WEBDEV_ENV_SET_INSTALL_OPT="--no-install"; shift;;
+    *)          echo "ERROR: Unrecognized option for env-set.sh: $1. Use --help for details."
+                return 1;;
   esac
-done
+fi
+
+if [[ $# -gt 0 ]]; then
+  echo "ERROR: too many arguments passed to env-set.sh: $1. Use --help for details."
+  return 1
+fi
+
+if [[ "$SITE_WEBDEV_ENV_SET_INSTALL_OPT" != "--quick" ]]; then
+  unset NGIO_ENV_DEFS
+fi
 
 if [[ -z "$(type -t rvm)" ]]; then
   echo "ERROR: rvm not installed. See site-webdev README. Skipping setup."

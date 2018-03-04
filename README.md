@@ -16,11 +16,8 @@ But if you want/need to build, here's how.
 
 Install the following tools if you don't have them already.
 
-- **[nvm][]**, the Node Version Manager. Then install the required version of node
-  (6 or later LTS release):
-  - `nvm install 8`
-- **[rvm][]**, the Ruby Version Manager. Then install the required version of ruby:
-  - `rvm install 2.4.2`
+- **[nvm][]**, the Node Version Manager.
+- **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
 
 > IMPORTANT: Follow the installation instructions for each of the tools
@@ -51,13 +48,16 @@ if you already have the required packages installed.
 1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
    **root of this repo**
 1. `source ./scripts/env-set.sh` &nbsp;&nbsp;#
-   initialize environment variables, set node & ruby version
+   initialize environment variables; install/use required Node & Ruby version
 1. `./scripts/before-install.sh` &nbsp;&nbsp;#
-   install required tools
-1. `./scripts/install.sh`
+   install core set of required tools
+1. `./scripts/install.sh` &nbsp;&nbsp;#
+   install everything else needed to build this site
 
-> IMPORTANT: Any time you create a **new terminal/command window** to work on
-this repo, **repeat steps 1 and 2** above.
+> IMPORTANT:
+> - Any time you create a **new terminal/command window** to work on
+>   this repo, **repeat steps 1 and 2** above.
+> - If you upgrade Dart then rerun all of the steps above.
 
 ## Building this site
 
