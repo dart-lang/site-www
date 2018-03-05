@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Guides"
-description: "Read about the Dart language and libraries with this collection of guides."
+title: Guides
+description: Read about the Dart language and libraries with this collection of guides.
 permalink: /guides
 toc: false
 ---
