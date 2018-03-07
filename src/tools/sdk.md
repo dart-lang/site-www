@@ -54,7 +54,7 @@ and a `bin` directory that has these command-line tools:
 </div> </div>
 
 For more information about the SDK, see its
-[README file](https://raw.github.com/dart-lang/bleeding_edge/master/dart/README.dart-sdk).
+[README file](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk).
 
 ## Installing the SDK
 

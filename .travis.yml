@@ -46,7 +46,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh
+    script: ./deploy/deploy-firebase.sh default
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
@@ -54,4 +54,4 @@ deploy:
       condition: $TASK == *build*
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
-  only: [master, /^\d-dev$/, /travis-build/]
+  only: [master, /^\d\.x$/, /^\d-dev$/, /travis-build/]
