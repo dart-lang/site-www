@@ -215,7 +215,7 @@ Again, make sure you are running the localhost server (`./serve_local.sh`), then
 linkcheck :4000 -i deploy/urls/old_site_urls.txt
 ```
 
-[Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
+[Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=1.x
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
 [Dart]: https://www.dartlang.org/install
 [Dart install]: https://www.dartlang.org/install
