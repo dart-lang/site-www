@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $CI_TASK != build* ]]; then exit; fi
+if [[ $TASK != *build* ]]; then exit; fi
 
 FILE=src/_data/ci.yaml
 
