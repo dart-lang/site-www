@@ -1,7 +1,8 @@
 # Site settings
 title: Dart
 description: "Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript."
-url: https://www.dartlang.org
+# url: https://www.dartlang.org # URL to use once we switch back to the main site
+url: https://dartlang-org-dev.firebaseapp.com
 repo: https://github.com/dart-lang/site-www
 branch: master
 

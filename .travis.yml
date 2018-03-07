@@ -1,5 +1,5 @@
 language: dart
-dart: [stable, dev]
+dart: dev
 
 cache:
   timeout: 300
@@ -19,9 +19,10 @@ env:
     - TASK="bundle exec jekyll build"
 
 matrix:
-  exclude:
-    - env: TASK="bundle exec jekyll build"
-      dart: dev
+  # Once we start building under stable again, reactivate the following exclusion:
+  # exclude:
+  #   - env: TASK="bundle exec jekyll build"
+  #     dart: dev
 
 before_install:
   - git clone https://github.com/dart-lang/site-webdev.git ../site-webdev
@@ -46,7 +47,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh default
+    script: ./deploy/deploy-firebase.sh dev
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
