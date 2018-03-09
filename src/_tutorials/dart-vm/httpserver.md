@@ -560,11 +560,11 @@ The `close()` method sends the request to the server
 and returns the second Future, which completes with
 an HttpClientResponse object.
 
-<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|UTF8.\w+/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|utf8.\w+/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert' show UTF8, JSON;
+import 'dart:convert' show utf8, JSON;
 
 String _host = InternetAddress.LOOPBACK_IP_V4.host;
 String path = 'file.txt';
@@ -583,7 +583,7 @@ Future main() async {
         ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
         ..[!write!](JSON.encode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
-  await response.transform([!UTF8.decoder!] [!/*5*/!]).forEach(print);
+  await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
 }
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
@@ -667,7 +667,7 @@ Future main() async {
         [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
       try {
         String content =
-            await req.transform(UTF8.decoder).join(); [!/*2*/!]
+            await req.transform(utf8.decoder).join(); [!/*2*/!]
         var [!json = JSON.decode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await new File(fileName)

@@ -263,7 +263,7 @@ main() async {
   var data = await file.readAsBytes();
 
   // Decode to a string, and print.
-  print(UTF8.decode(data)); // Prints 'Dart!'.
+  print(utf8.decode(data)); // Prints 'Dart!'.
 }
 {% endprettify %}
 
@@ -715,7 +715,7 @@ main() async {
   var serverSocket = await ServerSocket.bind('127.0.0.1', 4041);
   print('connected');
   await for (var socket in serverSocket)
-    socket.transform(UTF8.decoder).listen(print);
+    socket.transform(utf8.decoder).listen(print);
 }
 {% endprettify %}
 

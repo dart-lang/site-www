@@ -131,7 +131,7 @@ Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <span class="highlig
       int lineNumber = 1;
       <span class="highlight" data-toggle="popover" title="Create a File object" data-content="Use the File class to represent the file on the native file system.">Stream lines = new File(path)</span>
           <span class="highlight" data-toggle="popover" title="Open a file for reading" data-content="Read the content from the file asynchronously.">.openRead()</span>
-          <span class="highlight" data-toggle="popover" title="Data converters" data-content="Convert data as it becomes available on the stream.">.transform(UTF8.decoder)</span>
+          <span class="highlight" data-toggle="popover" title="Data converters" data-content="Convert data as it becomes available on the stream.">.transform(utf8.decoder)</span>
           .transform(const LineSplitter());
       <span class="highlight" data-toggle="popover" title="Exception handling" data-content='Function calls that might generate an exception are placed in a "try" block.'>try</span> {
         <span class="highlight" data-toggle="popover" title="Get data from the stream"
@@ -405,7 +405,7 @@ for (var path in paths) {
   int lineNumber = 1;
   Stream lines = new File(path)
       .openRead()
-      .transform(UTF8.decoder)
+      .transform(utf8.decoder)
       .transform(const LineSplitter());
   try {
     [!await for (var line in lines) {!]
@@ -430,7 +430,7 @@ for (var path in paths) {
   int lineNumber = 1;
   Stream lines = new File(path)
       .openRead()
-      [!.transform(UTF8.decoder)!]
+      [!.transform(utf8.decoder)!]
       [!.transform(const LineSplitter());!]
   try {
     await for (var line in lines) {

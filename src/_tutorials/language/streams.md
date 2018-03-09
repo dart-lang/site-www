@@ -375,7 +375,7 @@ A normal map requires one value for each incoming event.
 However, especially for IO streams,
 it might take several incoming events to produce an output event.
 A StreamTransformer can work with that.
-For example, decoders (like the UTF8.decoder) are transformers.
+For example, decoders (like the utf8.decoder) are transformers.
 A transformer has only one function, `bind()`, which can be
 easily implemented by an **async** function.
 
@@ -406,7 +406,7 @@ main(args) async {
   var file = new File(args[0]);
   var lines = file
       .openRead()
-      .transform(UTF8.decoder)
+      .transform(utf8.decoder)
       .transform(const LineSplitter());
   await for (var line in lines) {
     if (!line.startsWith('#')) {

@@ -61,7 +61,7 @@ void miscDeclAnalyzedButNotTested() {
 
       // #docregion transform
       var lines = inputStream
-          .transform(UTF8.decoder)
+          .transform(utf8.decoder)
           .transform(new LineSplitter());
       // #enddocregion transform
       try {
@@ -82,7 +82,7 @@ void miscDeclAnalyzedButNotTested() {
     Stream<List<int>> inputStream = config.openRead();
 
     inputStream
-        .transform(UTF8.decoder)
+        .transform(utf8.decoder)
         .transform(new LineSplitter())
         .listen((String line) {
       print('Got ${line.length} characters from stream');

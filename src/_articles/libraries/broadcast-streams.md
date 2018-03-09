@@ -426,7 +426,7 @@ Future moveNextAssert(iterator) {
 }
 
 var lines = new File(...).openRead()
-    .transform(UTF8.decoder)
+    .transform(utf8.decoder)
     .transform(new LineSplitter());
 var iterator = new StreamIterator(lines);
 moveNextAssert(iterator)

@@ -1346,11 +1346,11 @@ different type of data:
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 {% prettify dart %}
 var lines = inputStream
-    .transform(UTF8.decoder)
+    .transform(utf8.decoder)
     .transform(new LineSplitter());
 {% endprettify %}
 
-This example uses two transformers. First it uses UTF8.decoder to
+This example uses two transformers. First it uses utf8.decoder to
 transform the stream of integers into a stream of strings. Then it uses
 a LineSplitter to transform the stream of strings into a stream of
 separate lines. These transformers are from the dart:convert library (see the
@@ -1378,7 +1378,7 @@ Future readFileAwaitFor() async {
   Stream<List<int>> inputStream = config.openRead();
 
   var lines = inputStream
-      .transform(UTF8.decoder)
+      .transform(utf8.decoder)
       .transform(new LineSplitter());
   [!try!] {
     await for (var line in lines) {
@@ -1402,7 +1402,7 @@ var config = new File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
 inputStream
-    .transform(UTF8.decoder)
+    .transform(utf8.decoder)
     .transform(new LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
@@ -1592,9 +1592,9 @@ the object's `toJson()` method.
 
 ### Decoding and encoding UTF-8 characters
 
-Use `UTF8.decode()` to decode UTF8-encoded bytes to a Dart string:
+Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (UTF8-decode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
@@ -1604,18 +1604,18 @@ List<int> utf8Bytes = [
   0xa3, 0xc3, 0xae, 0xe1, 0xbb, 0x9d, 0xc3, 0xb1
 ];
 
-var funnyWord = UTF8.decode(utf8Bytes);
+var funnyWord = utf8.decode(utf8Bytes);
 
 assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 {% endprettify %}
 
 To convert a stream of UTF-8 characters into a Dart string, specify
-`UTF8.decoder` to the Stream `transform()` method:
+`utf8.decoder` to the Stream `transform()` method:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (UTF8-decoder)" replace="/UTF8.decoder/[!$&!]/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart %}
 var lines = inputStream
-    .transform([!UTF8.decoder!])
+    .transform([!utf8.decoder!])
     .transform(new LineSplitter());
 try {
   await for (var line in lines) {
@@ -1627,12 +1627,12 @@ try {
 }
 {% endprettify %}
 
-Use `UTF8.encode()` to encode a Dart string as a list of UTF8-encoded
+Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (UTF8-encode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
 {% prettify dart %}
-List<int> encoded = UTF8.encode('Îñţérñåţîöñåļîžåţîờñ');
+List<int> encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
 assert(encoded.length == utf8Bytes.length);
 for (int i = 0; i < encoded.length; i++) {

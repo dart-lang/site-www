@@ -118,10 +118,10 @@ nicer features of Converters). A fully implemented converter implements the
 interface and can thus be given to the `Stream.transform()` method.
 
 Probably the most common use case is the decoding of UTF-8 with
-[UTF8.decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec-class.html):
+[utf8.decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec-class.html):
 
 {% prettify dart %}
-File.openRead().transform(UTF8.decoder).
+File.openRead().transform(utf8.decoder).
 {% endprettify %}
 
 ## Chunked conversion
@@ -246,7 +246,7 @@ main() {
     print(chunks.single); // 𝅘𝅥𝅯
   });
 
-  var inSink = UTF8.decoder.startChunkedConversion(outSink);
+  var inSink = utf8.decoder.startChunkedConversion(outSink);
   var list = [0xF0, 0x9D];
   inSink.addSlice(list, 0, 2, false);
   // Since we used `addSlice` we are allowed to reuse the list.

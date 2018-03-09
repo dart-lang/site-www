@@ -118,7 +118,7 @@ Future main() async {
   Stream<List<int>> inputStream = config.openRead();
 
   var lines = inputStream
-      .transform(UTF8.decoder)
+      .transform(utf8.decoder)
       .transform(new LineSplitter());
   try {
     await for (var line in lines) {
@@ -258,7 +258,7 @@ Future main() async {
   var httpClient = new HttpClient();
   var request = await httpClient.getUrl(url);
   var response = await request.close();
-  var data = await response.transform(UTF8.decoder).toList();
+  var data = await response.transform(utf8.decoder).toList();
   print('Response ${response.statusCode}: $data');
   httpClient.close();
 }

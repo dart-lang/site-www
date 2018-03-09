@@ -35,7 +35,7 @@ Future<bool> checkGuess(int guess) async {
   print('Guess is $guess.');
   HttpClientResponse response = await request.close();
   if (response.statusCode == HttpStatus.OK) {
-    var contents = await response.transform(UTF8.decoder).join();
+    var contents = await response.transform(utf8.decoder).join();
     if (contents.startsWith('true')) {
       isGoodGuess = true;
       client.close();

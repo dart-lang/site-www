@@ -9,7 +9,7 @@
 // #docregion
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert' show UTF8, JSON;
+import 'dart:convert' show utf8, JSON;
 
 String _host = InternetAddress.LOOPBACK_IP_V4.host;
 String path = 'file.txt';
@@ -28,5 +28,5 @@ Future main() async {
         ..headers.contentType = ContentType.JSON /*2*/
         ..write(JSON.encode(jsonData)); /*3*/
   HttpClientResponse response = await request.close(); /*4*/
-  await response.transform(UTF8.decoder /*5*/).forEach(print);
+  await response.transform(utf8.decoder /*5*/).forEach(print);
 }
