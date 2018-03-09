@@ -31,11 +31,11 @@ void main() {
     expect(() {
       // #docregion constants
       // See the Math library for additional constants.
-      print(E); // 2.718281828459045
+      print(e); // 2.718281828459045
       print(pi); // 3.141592653589793
-      print(SQRT2); // 1.4142135623730951
+      print(sqrt2); // 1.4142135623730951
       // #enddocregion constants
-    }, m.prints([E, pi, SQRT2]));
+    }, m.prints([e, pi, sqrt2]));
   });
 
   test('Random', () {

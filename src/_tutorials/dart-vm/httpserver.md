@@ -649,7 +649,7 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
-<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|json) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|data) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
@@ -668,13 +668,13 @@ Future main() async {
       try {
         String content =
             await req.transform(utf8.decoder).join(); [!/*2*/!]
-        var [!json = json.decode(content) as Map!]; [!/*3*/!]
+        var [!data = json.decode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await new File(fileName)
             .writeAsString(content, mode: FileMode.WRITE);
         req.response
           ..statusCode = HttpStatus.OK
-          ..write('Wrote data for ${json['name']}.');
+          ..write('Wrote data for ${data['name']}.');
       } catch (e) {
         response
           ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR

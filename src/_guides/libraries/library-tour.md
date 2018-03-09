@@ -1486,9 +1486,9 @@ Find your favorite constants—*pi*, *e*, and more—in the Math library:
 <?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
 {% prettify dart %}
 // See the Math library for additional constants.
-print(E); // 2.718281828459045
+print(e); // 2.718281828459045
 print(pi); // 3.141592653589793
-print(SQRT2); // 1.4142135623730951
+print(sqrt2); // 1.4142135623730951
 {% endprettify %}
 
 
