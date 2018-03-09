@@ -163,8 +163,8 @@ class Circle1 {
 
   Circle1(num radius)
       : radius = radius,
-        area = PI * radius * radius,
-        circumference = PI * 2.0 * radius;
+        area = pi * radius * radius,
+        circumference = pi * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store1
 
@@ -190,8 +190,8 @@ class Circle2 {
   }
 
   void _recalculate() {
-    _area = PI * _radius * _radius;
-    _circumference = PI * 2.0 * _radius;
+    _area = pi * _radius * _radius;
+    _circumference = pi * 2.0 * _radius;
   }
 }
 // #enddocregion cacl-vs-store2

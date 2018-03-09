@@ -211,8 +211,8 @@ class Circle {
 
   Circle(this.radius);
 
-  num get area => PI * radius * radius;
-  num get circumference => PI * 2.0 * radius;
+  num get area => pi * radius * radius;
+  num get circumference => pi * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store
 

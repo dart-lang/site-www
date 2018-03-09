@@ -1451,11 +1451,11 @@ The Math library provides basic trigonometric functions:
 <?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 {% prettify dart %}
 // Cosine
-assert(cos(PI) == -1.0);
+assert(cos(pi) == -1.0);
 
 // Sine
 var degrees = 30;
-var radians = degrees * (PI / 180);
+var radians = degrees * (pi / 180);
 // radians is now 0.52359.
 var sinOf30degrees = sin(radians);
 // sin 30° = 0.5
@@ -1487,7 +1487,7 @@ Find your favorite constants—*pi*, *e*, and more—in the Math library:
 {% prettify dart %}
 // See the Math library for additional constants.
 print(E); // 2.718281828459045
-print(PI); // 3.141592653589793
+print(pi); // 3.141592653589793
 print(SQRT2); // 1.4142135623730951
 {% endprettify %}
 
