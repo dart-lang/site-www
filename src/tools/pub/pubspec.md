@@ -87,14 +87,14 @@ A simple but complete pubspec looks something like the following:
 {% prettify yaml %}
 name: newtify
 version: 1.2.3
-description: >
+description: >-
   Have you been turned into a newt?  Would you like to be?
-  This package can help: it has all of the
+  This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
 author: Natalie Weizenbaum <nweiz@google.com>
-homepage: http://newtify.dartlang.org
-documentation: http://docs.newtify.com
+homepage: https://newtify.dartlang.org
+documentation: https://example.com/customized-docs
 dependencies:
   efts: ^2.0.4
   transmogrify: ^0.4.0
