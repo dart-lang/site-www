@@ -24,7 +24,7 @@ Future main() async {
       try {
         String content =
             await req.transform(utf8.decoder).join(); /*2*/
-        var json = JSON.decode(content) as Map; /*3*/
+        var json = json.decode(content) as Map; /*3*/
         var fileName = req.uri.pathSegments.last; /*4*/
         await new File(fileName)
             .writeAsString(content, mode: FileMode.WRITE);

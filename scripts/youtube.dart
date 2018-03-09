@@ -9,5 +9,5 @@ final String YT_PLAYLIST_URL = 'http://gdata.youtube.com/feeds/api/playlists/';
 
 Future<Map> fetchPlaylist(String playlistId) {
   var uri = Uri.parse('$YT_PLAYLIST_URL$playlistId?alt=json');
-  return http.get(uri).then((resp) => JSON.decode(resp.body));
+  return http.get(uri).then((resp) => json.decode(resp.body));
 }

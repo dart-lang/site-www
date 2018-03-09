@@ -7,7 +7,7 @@
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert' show utf8, JSON;
+import 'dart:convert' show utf8, json;
 
 int count = 0;
 
@@ -51,7 +51,7 @@ Future handlePost(HttpRequest request) async {
 
   try {
     decoded = await request
-        .transform(utf8.decoder.fuse(JSON.decoder))
+        .transform(utf8.decoder.fuse(json.decoder))
         .first as Map;
   } catch (e) {
     print('Request listen error: $e');
