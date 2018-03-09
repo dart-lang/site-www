@@ -90,7 +90,7 @@ DateTime parseDateTime(String date) {
 }
 
 Future getListing(String channel, String respString) async {
-  Map<String, Object> resp = JSON.decode(respString);
+  Map<String, Object> resp = json.decode(respString);
   List<String> versions = (resp["prefixes"] as List<String>);
   versions.removeWhere((e) => e.contains('latest'));
 
@@ -109,7 +109,7 @@ Future getListing(String channel, String respString) async {
   List<Map<String, String>> versionStrings =
       (await Future.wait(versionRequests))
           .where((version) => version != null)
-          .map((e) => JSON.decode(e))
+          .map((e) => json.decode(e))
           .toList();
 
   versionStrings.sort(

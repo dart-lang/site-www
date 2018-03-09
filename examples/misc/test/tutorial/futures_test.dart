@@ -25,7 +25,7 @@ void futures() {
 
   test('async', () {
     _test() {
-      daily_news.oneSecond = Duration.ZERO;
+      daily_news.oneSecond = Duration.zero;
       return daily_news.mainAsync();
     }
 

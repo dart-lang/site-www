@@ -8,11 +8,11 @@ void main() {
   test('trigonometric functions', () {
     // #docregion trig
     // Cosine
-    assert(cos(PI) == -1.0);
+    assert(cos(pi) == -1.0);
 
     // Sine
     var degrees = 30;
-    var radians = degrees * (PI / 180);
+    var radians = degrees * (pi / 180);
     // radians is now 0.52359.
     var sinOf30degrees = sin(radians);
     // sin 30° = 0.5
@@ -31,11 +31,11 @@ void main() {
     expect(() {
       // #docregion constants
       // See the Math library for additional constants.
-      print(E); // 2.718281828459045
-      print(PI); // 3.141592653589793
-      print(SQRT2); // 1.4142135623730951
+      print(e); // 2.718281828459045
+      print(pi); // 3.141592653589793
+      print(sqrt2); // 1.4142135623730951
       // #enddocregion constants
-    }, m.prints([E, PI, SQRT2]));
+    }, m.prints([e, pi, sqrt2]));
   });
 
   test('Random', () {

@@ -560,11 +560,11 @@ The `close()` method sends the request to the server
 and returns the second Future, which completes with
 an HttpClientResponse object.
 
-<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|UTF8.\w+/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|utf8.\w+/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert' show UTF8, JSON;
+import 'dart:convert' show utf8, json;
 
 String _host = InternetAddress.LOOPBACK_IP_V4.host;
 String path = 'file.txt';
@@ -581,9 +581,9 @@ Future main() async {
   HttpClientRequest request =
       await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
         ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
-        ..[!write!](JSON.encode(jsonData)); [!/*3*/!]
+        ..[!write!](json.encode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
-  await response.transform([!UTF8.decoder!] [!/*5*/!]).forEach(print);
+  await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
 }
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
@@ -649,7 +649,7 @@ join() method in Stream to concatenate the string values of those chunks.
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
-<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|json) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
+<?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|data) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
@@ -667,14 +667,14 @@ Future main() async {
         [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
       try {
         String content =
-            await req.transform(UTF8.decoder).join(); [!/*2*/!]
-        var [!json = JSON.decode(content) as Map!]; [!/*3*/!]
+            await req.transform(utf8.decoder).join(); [!/*2*/!]
+        var [!data = json.decode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await new File(fileName)
             .writeAsString(content, mode: FileMode.WRITE);
         req.response
           ..statusCode = HttpStatus.OK
-          ..write('Wrote data for ${json['name']}.');
+          ..write('Wrote data for ${data['name']}.');
       } catch (e) {
         response
           ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR

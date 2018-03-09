@@ -263,7 +263,7 @@ main() async {
   var data = await file.readAsBytes();
 
   // Decode to a string, and print.
-  print(UTF8.decode(data)); // Prints 'Dart!'.
+  print(utf8.decode(data)); // Prints 'Dart!'.
 }
 {% endprettify %}
 
@@ -472,7 +472,7 @@ main() async {
   var response =
       await http.get(url, headers: {'User-Agent': 'Dart/1.0 (My Dart client)'});
 
-  List<String> repos = JSON.decode(response.body);
+  List<String> repos = json.decode(response.body);
   var heading = 'Repository | Star count  | Fork count';
   print(heading);
   print(new List.filled(heading.length, '=').join());
@@ -715,7 +715,7 @@ main() async {
   var serverSocket = await ServerSocket.bind('127.0.0.1', 4041);
   print('connected');
   await for (var socket in serverSocket)
-    socket.transform(UTF8.decoder).listen(print);
+    socket.transform(utf8.decoder).listen(print);
 }
 {% endprettify %}
 

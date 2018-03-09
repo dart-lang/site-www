@@ -2305,7 +2305,7 @@ for a class. Constructor names can be either <code><em>ClassName</em></code> or
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
-var jsonData = JSON.decode('{"x":1, "y":2}');
+var jsonData = json.decode('{"x":1, "y":2}');
 
 // Create a Point using Point().
 var p1 = new Point(2, 2);
