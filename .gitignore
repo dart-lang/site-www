@@ -3,6 +3,7 @@
 *.pyc
 *.swp
 .buildlog
+.dart_tool
 .DS_Store
 .idea
 .packages
