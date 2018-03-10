@@ -80,10 +80,10 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-<pre class="prettyprint lang-yaml allow-scroll">
-<span class="highlight"
+<pre class="prettyprint lang-yaml">
+<a tabindex="0" role="button" class="highlight"
   data-toggle="popover" data-content="Package name (required)"
->name: vector_victor</span>
+>name: vector_victor</a>
 description: An absolute bare-bones web app.
 version: 0.0.1
 
@@ -91,10 +91,10 @@ environment:
   sdk: '>=1.20.1 <2.0.0'
 
 dev_dependencies:
-  <span class="highlight"
+  <a tabindex="0" role="button" class="highlight"
     data-toggle="popover"
     data-content="The <code>browser</code> package is required by all web apps"
-  >browser: ^0.10.0</span>
+  >browser: ^0.10.0</a>
   dart_to_js_script_rewriter: ^1.0.1
 
 transformers:
