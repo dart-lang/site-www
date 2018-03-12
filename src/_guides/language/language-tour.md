@@ -2122,8 +2122,8 @@ a post on http://news.dartlang.org.] -->
 </div>
 
 The first argument to `assert` can be any expression that
-resolves to a boolean value or to a function. If the expression’s value
-or function’s return value is true, the assertion succeeds and execution
+resolves to a boolean value. If the expression’s value
+is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
 [AssertionError][]) is thrown.
 
