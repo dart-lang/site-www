@@ -5,7 +5,8 @@
     "staging-0": "dartlang-org-staging-0",
     "kw": "kw-www-dartlang-1",
     "kw2": "kw-staging-dartlang-2",
-    "sz" : "sz-www-1",
-    "sz2" : "sz-www-2"
+    "sz": "sz-www-1",
+    "sz2": "sz-www-2",
+    "v1": "v1-dartlang-org"
   }
 }
