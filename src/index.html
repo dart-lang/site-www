@@ -1,7 +1,7 @@
 ---
 layout: homepage
 title: Dart programming language
-description: Dart is an application programming language that’s easy to learn, easy to scale, and deployable everywhere.
+description: Dart is a language uniquely optimized for client-side development for web and mobile.
 ---
 <section id="code-sample-section">
 <div class="container">
@@ -78,22 +78,39 @@ description: Dart is an application programming language that’s easy to learn,
     <div class="row">
       <div class="col-sm-5 col-lg-4">
         <div class="content">
-          <h1>Core goals</h1>
+          <h1>Dart’s Core Tenets</h1>
           <p class="lead">
-            Dart is an ambitious, long-term project. These are the core goals that drive our design decisions.
+            Dart has been used to ship many high-quality, mission-critical applications on the web, iOS, and Android at 
+            Google and elsewhere. It is a great fit for mobile and web development because it is:
           </p>
         </div>
       </div>
       <div class="col-sm-7 col-lg-8">
         <div class="content">
-          <h2 class="core-goals__first">Provide a solid foundation of libraries and tools</h2>
-          <p>A programming language is nothing without its core libraries and tools. We call it <em>batteries included</em>. Dart’s batteries have been powering very large apps for years now.</p>
-          <h2>Make common programming tasks easy</h2>
-          <p>Application programming comes with a set of common problems and common errors. Dart is designed to make those problems easier to tackle, and errors easier to catch. This is why we have <code>async/await</code>, generators, string interpolation, earlier error detection and much more.</p>
-          <h2>Don’t surprise the programmer</h2>
-          <p>There should be a direct correspondence between what you type and what’s going to happen. Magic (automatic type coercion, hoisting, “helper” globals, &hellip;) doesn’t mix well with large apps.</p>
-          <h2>Be the stable, pragmatic solution for real apps</h2>
-          <p>Dart might seem boring to some. We prefer the terms <em>productive</em> and <em>stable</em>. We work closely with our core customers&mdash;the developers who build large applications with Dart&mdash;to make sure we’re here for the long run.</p>
+          <h2 class="core-goals__first">Productive</h2>
+          <p>Syntax must be clear and concise, tooling simple, and dev cycles near-instant and on-device.</p>
+          <p>Dart increases developer velocity because it has a clear, succinct syntax and is able to run on a 
+            VM with a JIT compiler. The latter allows for <a href='https://flutter.io/hot-reload/'>stateful hot reload</a> 
+            during mobile development, resulting in super fast dev cycles, where you can edit code, compile and replace 
+            in the running app on the device.</p>
+          <h2>Fast</h2>
+          <p>Runtime performance and startup must be great and predictable even on small mobile devices.</p>
+          <p>With its ability to efficiently compile to native code ahead of time, Dart provides predictable, 
+            high performance and fast startup on mobile devices.</p>
+          <h2>Portable</h2>
+          <p>Client developers have to think about three platforms today: iOS, Android, and Web. The language needs to work 
+            well on all of them.</p>
+          <p>Dart supports compilation to native code (ARM, x86, etc.) for fast mobile performance as well as transpilation 
+            to efficient JavaScript for the web.</p>
+          <h2>Approachable</h2>
+          <p>The language can’t stray too far from the familiar if it wishes to be relevant for millions of developers.</p>
+          <p>Dart is approachable to many existing developers, thanks to its unsurprising object-oriented aspects and syntax 
+            that — according to our users — allows any C++, C#, Objective-C, or Java developer to be productive in a matter 
+            of days.</p>
+          <h2>Reactive</h2>
+          <p>A reactive style of programming should be supported by the language.</p>
+          <p>Dart works well for reactive programming with its battle-hardened core libraries, including streams and futures; 
+            it also has great support for managing short-lived objects through its fast generational garbage collector.</p>
         </div>
       </div>
     </div>
