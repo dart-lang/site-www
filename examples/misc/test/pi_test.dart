@@ -32,5 +32,7 @@ void main() {
             return lines.length == expectedNumOutputLines;
           }, 'output $expectedNumOutputLines lines'),
         ])));
-  });
+  },
+      skip: 'Awaiting web compiler support for optional new. '
+          'https://github.com/dart-lang/site-www/issues/668');
 }

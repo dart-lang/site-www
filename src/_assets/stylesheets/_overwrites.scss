@@ -100,7 +100,10 @@ body.homepage {
 			}
 			@include front-page-first-section-height;
 			overflow: auto;
-			&.prettyprint a { background: transparent; }
+			&.prettyprint a {
+				background: transparent;
+				padding: 0;
+			}
 		}
 	}
 }
