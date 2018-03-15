@@ -346,63 +346,23 @@
         "type": 301
       },
       {
+        "source": "/resources/dart-tips",
+        "destination": "/guides/language/language-tour",
+        "type": 301
+      },
+      {
+        "source": "/resources/dart-tips/**",
+        "destination": "/guides/language/language-tour",
+        "type": 301
+      },
+      {
         "source": "/dart-tips",
-        "destination": "/resources/dart-tips",
+        "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
-        "source": "/dart-tips/dart-tips-ep-1.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-1",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-10.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-10",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-11.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-11",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-2.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-2",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-3.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-3",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-4.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-4",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-5.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-5",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-6.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-6",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-7.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-7",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-8.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-8",
-        "type": 301
-      },
-      {
-        "source": "/dart-tips/dart-tips-ep-9.html",
-        "destination": "/resources/dart-tips/dart-tips-ep-9",
+        "source": "/dart-tips/**",
+        "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
@@ -879,7 +839,7 @@
       },
       {
         "source": "/resources/dart-tips-ep-2/**",
-        "destination": "/resources/dart-tips/dart-tips-ep-2",
+        "destination": "/guides/language/language-tour",
         "type": 301
       },
       {
