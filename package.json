@@ -1,0 +1,9 @@
+{
+  "name": "dartlang.org",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dart website",
+  "devDependencies": {
+    "code-excerpter": "git+https://github.com/chalin/code-excerpter.git"
+  }
+}
