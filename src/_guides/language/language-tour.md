@@ -9,6 +9,13 @@ This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 
+<div class="alert alert-info" markdown="1">
+**Dart 2 note:**
+This tour is being updated for [Dart 2 changes](/dart-2),
+such as type safety, optional `new` and `const`,
+and changes to assertion support.
+</div>
+
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
@@ -48,13 +55,14 @@ apps:
 
 <code>// <em>This is a comment.</em> </code>
 
-:   Use // to indicate that the rest of the line is a comment.
-    Alternatively, use /\* ... \*/. For details, see
-    [Comments](#comments).
+:   A way to make Dart ignore some content.
+    For more information, see [Comments](#comments).
 
 `num`
 
-:   A type. Some of the other built-in types are String, int, and bool.
+:   A type. A `num` variable's value can be either an `int` or a
+    `double` object.
+    Some of the other built-in types are `String`, `List`, and `bool`.
 
 `42`
 
@@ -86,9 +94,8 @@ apps:
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-Our code follows the conventions in the
+This site's code follows the conventions in the
 [Dart style guide](/guides/language/effective-dart/style).
-For example, we use two-space indentation.
 </div>
 
 
@@ -101,21 +108,13 @@ mind:
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects. All objects inherit from the [Object][] class.
 
--   Specifying static types (such as `num` in the preceding example)
-    clarifies your intent and enables static checking by tools.
-    (You might notice when you’re debugging your code that
-    variables with no specified type get a special type: `dynamic`.)
-    Specifying static types is optional in Dart 1.x, however Dart is moving
-    towards being a fully type safe language.
+-   Although Dart is strongly typed, type annotations are optional
+    because Dart can often infer the type. In the code above, `number`
+    is inferred to be of type `int`. When you want to explicitly say
+    that no type is expected, use the special type `dynamic`.
 
--   In [strong mode](/guides/language/sound-dart), static and runtime
-    checks ensure that your code is type safe, helping you catch bugs
-    in development, rather than at runtime. Strong mode is optional in
-    Dart 1.x, but not optional in [Dart 2](/dart-2).
-
--   Dart parses all your code before running it. You can provide tips to
-    Dart—for example, by using types or compile-time constants—to catch
-    errors or help your code run faster.
+-   Dart supports generic types, like `List<int>` (a list of integers)
+    or `List<dynamic>` (a list of objects of any type). 
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
@@ -131,11 +130,11 @@ mind:
     private to its library. For details, see
     [Libraries and visibility](#libraries-and-visibility).
 
--   *Identifiers* can start with a letter or \_, followed by any
+-   *Identifiers* can start with a letter or underscore (\_), followed by any
     combination of those characters plus digits.
 
 -   Sometimes it matters whether something is an *expression* or a
-    *statement*, so we’ll be precise about those two words.
+    *statement*, so it helps to be precise about those two words.
 
 -   Dart tools can report two kinds of problems: warnings and errors.
     Warnings are just indications that your code might not work, but
@@ -144,21 +143,6 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
--   Dart 1.x has two <em>runtime modes</em>:
-    production and checked. We recommend that
-    you develop and debug in checked mode, and deploy to production mode.
-    *Production mode* is the default runtime mode of a Dart program,
-    optimized for speed. Production mode ignores [assert
-    statements](#assert) and static types.
-    *Checked mode* is a developer-friendly mode that helps you catch some
-    type errors during runtime. For example, if you assign a non-number to a
-    variable declared as a `num`, then checked mode throws an exception.
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 ## Keywords
 
@@ -207,11 +191,41 @@ Here’s an example of creating a variable and assigning a value to it:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 {% prettify dart %}
-var name = 'Bob';
+var handle = 'Bob';
 {% endprettify %}
 
 Variables are references. The variable called `name` contains a
 reference to a String object with a value of “Bob”.
+
+The type of the `handle` variable is inferred to be String,
+but you can change that type by specifying it.
+If an object isn't restricted to a single type,
+specify the `Object` or `dynamic` type, following
+[design guidelines](/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted).
+
+{% comment %}
+**[PENDING: check!]**
+{% endcomment %}
+
+<?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
+{% prettify dart %}
+Object handle = 'Bob';
+{% endprettify %}
+
+Another option is to explicitly declare the type that would be inferred:
+
+<?code-excerpt "misc/lib/language_tour/variables.dart (static-types)"?>
+{% prettify dart %}
+String name = 'Bob';
+{% endprettify %}
+
+<div class="alert alert-info" markdown="1">
+**Note:**
+This page follows the
+[style guide recommendation](/guides/language/effective-dart/design#type-annotations)
+of using `var`, rather than type annotations, for local variables.
+</div>
+
 
 ### Default value
 
@@ -227,45 +241,10 @@ assert(lineCount == null);
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-The `assert()` call is ignored in production mode. In checked mode,
-<code>assert(<em>condition</em>)</code>
+The `assert()` call is ignored in production code.
+During development, <code>assert(<em>condition</em>)</code>
 throws an exception unless *condition* is true. For details,
 see the [Assert](#assert) section.
-</div>
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-### Optional types
-
-{% include optional-types-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-You have the option of adding static types to your variable
-declarations:
-
-<?code-excerpt "misc/lib/language_tour/variables.dart (static-types)"?>
-{% prettify dart %}
-String name = 'Bob';
-{% endprettify %}
-
-Adding types is a way to clearly express your intent. Tools such as
-compilers and editors can use these types to help you, by providing code
-completion and early warnings for bugs and code completion.
-
-<div class="alert alert-info" markdown="1">
-**Note:**
-This page follows the
-[style guide recommendation](/guides/language/effective-dart/design#type-annotations)
-of using `var`, rather than type annotations, for local variables.
-Even under [strong mode](/dart-2), you can specify `var`&mdash;the
-analyzer infers the type where possible.
 </div>
 
 
@@ -363,8 +342,12 @@ Dart numbers come in two flavors:
 
 [int][]
 
-:   Integer values, which generally should be in the range
-    -2<sup>53</sup> to 2<sup>53</sup>
+:   64-bit integer values.
+
+{% comment %}
+[PENDING: Be more specific. What's the max value? Min value? We used to say
+that values should "generally be in the range -2<sup>53</sup> and 2<sup>53</sup>."
+{% endcomment %}
 
 [double][]
 
@@ -379,16 +362,6 @@ and `floor()`, among other methods.
 If num and its subtypes don’t have what you’re looking for, the
 [dart:math][] library might.
 
-<div class="alert alert-warning" markdown="1">
-**Warning:**
-Integers outside of the
--2<sup>53</sup> to 2<sup>53</sup> range currently behave
-differently in JavaScript produced from Dart code than they do when
-the same Dart code runs in the Dart VM. The reason is that Dart is
-specified to have arbitrary-precision integers, but JavaScript isn't.
-See [issue 1533](https://github.com/dart-lang/sdk/issues/1533) for details.
-</div>
-
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
 
@@ -396,7 +369,6 @@ defining integer literals:
 {% prettify dart %}
 int x = 1;
 int hex = 0xDEADBEEF;
-int bigInt = 34653465834652437659238476592374958739845729;
 {% endprettify %}
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -566,61 +538,6 @@ true. All other values are treated as false. Unlike in JavaScript,
 values such as `1`, `"aString"`, and `someObject` are all treated as
 false.
 
-For example, consider the following code, which is valid both as
-JavaScript and as Dart code:
-
-<?code-excerpt "misc/lib/language_tour/built_in_types.dart (strictly-boolean)"?>
-{% prettify dart %}
-var name = 'Bob';
-if (name) {
-  // Prints in JavaScript, not in Dart.
-  print('You have a name!');
-}
-{% endprettify %}
-
-If you run this code as JavaScript, it prints “You have a name!” because
-`name` is a non-null object. However, in Dart running in *production
-mode*, the preceding code doesn’t print at all because `name` is converted to
-`false` (because `name != true`).
-In Dart running in *checked mode*, the preceding code
-throws an exception because the `name` variable is not a bool.
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-{% comment %}
-xxx: This code also produces an error:
-     "Conditions must have a static type of "bool".
-{% endcomment %}
-
-Here’s another example of code that behaves differently in JavaScript
-and Dart:
-
-<?code-excerpt "misc/lib/language_tour/built_in_types.dart (if-one)"?>
-{% prettify dart %}
-if (1) {
-  print('JS prints this line.');
-} else {
-  print('Dart in production mode prints this line.');
-  // However, in checked mode, if (1) throws an
-  // exception because 1 is not boolean.
-}
-{% endprettify %}
-
-<div class="alert alert-info" markdown="1">
-**Note:**
-The previous two samples work only in production mode, not checked
-mode. In checked mode, an exception is thrown if a non-boolean is used
-when a boolean value is expected.
-</div>
-
-{% comment %}
-xxx: The previous example also produces the same error as above.
-{% endcomment %}
-
 Dart’s treatment of booleans is designed to avoid the strange behaviors
 that can arise when many values can be treated as true. What this means
 for you is that, instead of using code like
@@ -651,7 +568,7 @@ assert(iMeantToDoThis.isNaN);
 
 Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
-[List][] objects, so we usually just call them *lists*.
+[List][] objects, so most people just call them *lists*.
 
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
@@ -663,12 +580,11 @@ var list = [1, 2, 3];
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  If you're wondering whether this list literal is
-  [strong mode compliant](/guides/language/sound-dart), it is. Thanks to
-  [type inference](/guides/language/sound-dart#type-inference),
-  the analyzer infers that `list` has type `List<int>`.
-  If you try to add non-integer objects to this list under strong mode,
-  the analyzer raises an error.
+  The analyzer infers that `list` has type `List<int>`.
+  If you try to add non-integer objects to this list,
+  the analyzer or runtime raises an error.
+  For more information, read about
+  [type inference.](/guides/language/sound-dart#type-inference)
 </aside>
 
 Lists use zero-based indexing, where 0 is the index of the first element
@@ -727,12 +643,12 @@ var nobleGases = {
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  If you're wondering whether these map literals are [strong
-  mode compliant](/guides/language/sound-dart), they are. Thanks to
-  [type inference](/guides/language/sound-dart#type-inference),
-  the analyzer infers that `gifts`, for example, has the type
-  `Map<String, String>`. If you try to add non-string objects
-   to this map under strong mode, the analyzer raises an error.
+  The analyzer infers that `gifts` has the type
+  `Map<String, String>` and `nobleGases` has the type
+  `Map<int, String>`. If you try to add the wrong type of value
+  to either map, the analyzer or runtime raises an error.
+  For more information, read about
+  [type inference.](/guides/language/sound-dart#type-inference)
 </aside>
 
 You can create the same objects using a Map constructor:
@@ -1037,15 +953,20 @@ enableFlags(bold: true);
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
-**Version note:**
+**Deprecation note:**
 Old code might use a colon (`:`) instead of `=`
 to set default values of named parameters.
-The reason is that before SDK 1.21, only `:` was supported for named parameters.
+The reason is that originally, only `:` was supported for named parameters.
 That support is likely to be deprecated,
 so we recommend that you
-**use `=` to specify default values,
-and [specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constraints)**
+**[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
 </div>
+
+{% comment %}
+PENDING: I don't see evidence that we've dropped support for `:`.
+Update if/when we do. Issue #?
+See `defaultNamedParameter` in the language spec.
+{% endcomment %}
 
 The next example shows how to set default values for positional parameters:
 
@@ -1183,13 +1104,7 @@ for example, you can add or remove it from a collection.
 
 An anonymous function looks similar to a named function&mdash;
 zero or more parameters, separated by commas
-and optionally typed, between parentheses.
-
-{% include optional-types-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+and optional type annotations, between parentheses.
 
 The code block that follows contains the function's body:
 
@@ -2095,15 +2010,9 @@ assert(urlString.startsWith('https'));
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-Assert statements work only in checked mode. They have no effect in
-production mode.
+Assert statements work only during development. They have no effect in
+production code.
 </div>
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 To attach a message to an assert,
 add a string as the second argument.
@@ -2314,6 +2223,16 @@ var p1 = new Point(2, 2);
 var p2 = new Point.fromJson(jsonData);
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+**Dart 2 note:**
+You can omit the `new` before the constructor.
+Example: `p1 = Point(2, 2)`.
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+</aside>
+
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
 it on an object: the method has access to that object’s functions and
@@ -2356,6 +2275,16 @@ constant using a constant constructor, use `const` instead of `new`:
 {% prettify dart %}
 var p = const ImmutablePoint(2, 2);
 {% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Dart 2 note:**
+You can omit the `const` before the constructor.
+Example: `p = ImmutablePoint(2, 2)`.
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+</aside>
 
 Constructing two identical compile-time constants results in a single,
 canonical instance:
@@ -2613,6 +2542,25 @@ Point.fromJson(Map<String, num> json)
 The right-hand side of an initializer does not have access to `this`.
 </div>
 
+During development, you can validate inputs by using `assert` in the
+initializer list.
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)"?>
+{% prettify dart %}
+// Initializer list can use assert().
+Point.withAssert(this.x, this.y) : assert(x >= 0) {
+  print('In Point.withAssert(): ($x, $y)');
+}
+{% endprettify %}
+
+{% comment %}
+[PENDING: the example could be better.
+Note that DartPad doesn't support this yet?
+
+https://github.com/dart-lang/sdk/issues/30968
+https://github.com/dart-lang/sdk/blob/master/docs/language/informal/assert-in-initializer-list.md]
+{% endcomment %}
+
 Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
 Click the run button ( {% img 'red-run.png' %} ) to execute the code.
@@ -2649,6 +2597,7 @@ src="{{site.custom.dartpad.embed-dart-prefix}}?id=7a9764702c0608711e08&horizonta
     height="420px"
     style="border: 1px solid #ccc;">
 </iframe>
+
 
 #### Redirecting constructors
 
@@ -2811,8 +2760,10 @@ in a temporary variable.
 #### Abstract methods
 
 Instance, getter, and setter methods can be abstract, defining an
-interface but leaving its implementation up to other classes. To make a
-method abstract, use a semicolon (;) instead of a method body:
+interface but leaving its implementation up to other classes.
+Abstract methods can only exist in [abstract classes](#abstract-classes).
+
+To make a method abstract, use a semicolon (;) instead of a method body:
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 {% prettify dart %}
@@ -2831,7 +2782,6 @@ class EffectiveDoer extends Doer {
 
 Calling an abstract method results in a runtime error.
 
-Also see [Abstract classes](#abstract-classes).
 
 #### Overridable operators
 
@@ -2911,34 +2861,6 @@ abstract class AbstractContainer {
   void updateChildren(); // Abstract method.
 }
 {% endprettify %}
-
-The following class isn’t abstract, and thus can be instantiated even
-though it defines an abstract method:
-
-<?code-excerpt "misc/lib/language_tour/classes/misc.dart (extends)"?>
-{% prettify dart %}
-class SpecializedContainer extends AbstractContainer {
-  // Define constructors, fields, methods...
-
-  void updateChildren() {
-    // Provide an implementation, so the method is not abstract here...
-  }
-
-  // Abstract method causes a warning but
-  // doesn't prevent instantiation.
-  void doSomething();
-}
-{% endprettify %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-<aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2) difference**:
-  Only abstract classes can have abstract methods.
-  An error is reported otherwise.
-</aside>
 
 
 ### Implicit interfaces
@@ -3059,59 +2981,18 @@ class A {
 }
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2.0) difference**:
-  In Dart 2, you **can't invoke** an unimplemented method unless
-  **one** of the following is true:
+You **can't invoke** an unimplemented method unless
+**one** of the following is true:
 
-  * The receiver has the static type `dynamic`.
+* The receiver has the static type `dynamic`.
 
-  * The receiver has a static type that
-  defines the unimplemented method (abstract is OK),
-  and the dynamic type of the receiver has an implemention of `noSuchMethod()`
-  that's different from the one in class `Object`.
+* The receiver has a static type that
+defines the unimplemented method (abstract is OK),
+and the dynamic type of the receiver has an implemention of `noSuchMethod()`
+that's different from the one in class `Object`.
 
-  For more information, see the informal
-  [nosuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
-</aside>
-
-If you use `noSuchMethod()` to implement every possible getter, setter,
-and method for one or more types,
-then you can use the `@proxy` annotation to avoid warnings:
-
-<aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2.0) difference**:
-  The `@proxy` annotation will be removed.
-  For more information, see
-  [site issue #442.](https://github.com/dart-lang/site-www/issues/442)
-</aside>
-
-<?code-excerpt "misc/lib/language_tour/classes/proxy.dart" replace="/@proxy/[!$&!]/g"?>
-{% prettify dart %}
-[!@proxy!]
-class A {
-  @override
-  void noSuchMethod(Invocation invocation) {
-    // ···
-  }
-}
-{% endprettify %}
-
-An alternative to `@proxy`, if you know the types at compile time,
-is to just declare that the class implements those types.
-
-<?code-excerpt "misc/lib/language_tour/classes/proxy_alt.dart" replace="/implements[^{]+/[!$&!]/g"?>
-{% prettify dart %}
-class A [!implements SomeClass, SomeOtherClass !]{
-  @override
-  void noSuchMethod(Invocation invocation) {
-    // ···
-  }
-}
-{% endprettify %}
-
-For more information on annotations, see
-[Metadata](#metadata).
+For more information, see the informal
+[nosuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 
 
 <a id="enums"></a>
@@ -3323,18 +3204,13 @@ as E, T, S, K, and V.
 
 ### Why use generics?
 
-Because types are optional in Dart 1.x, you never *have* to use generics.
-You might *want* to, though, for the same reason you might want to use
-other types in your code: types (generic or not) let you document and
-annotate your code, making your intent clearer.
+Generics are often required for type safety, but they have other benefits
+than just allowing your code to run:
 
-{% include optional-types-2.0.html %}
+* Properly specifying generic types results in better generated code.
+* You can use generics to reduce code duplication.
 
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-For example, if you intend for a list to contain only strings, you can
+If you intend for a list to contain only strings, you can
 declare it as `List<String>` (read that as “list of string”). That way
 you, your fellow programmers, and your tools (such as your IDE and
 the Dart VM in checked mode) can detect that assigning a non-string to
@@ -3703,7 +3579,8 @@ to wait for the result of an asynchronous function:
 await lookUpVersion();
 {% endprettify %}
 
-To use `await`, code must be in a function marked as `async`:
+To use `await`, code must be in an _async function_—a
+function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
@@ -3712,6 +3589,16 @@ Future checkVersion() [!async!] {
   // Do something with version
 }
 {% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+Although an async function might perform time-consuming operations,
+it doesn't wait for those operations.
+Instead, the async function executes only until it encounters
+its first `await` expression.
+Then it returns a Future object,
+resuming execution only after the `await` expression completes.
+</aside>
 
 Use `try`, `catch`, and `finally`
 to handle errors and cleanup in code that uses `await`:
@@ -3760,33 +3647,8 @@ Future main() [!async!] {
 <a id="async"></a>
 ### Declaring async functions
 
-{% comment %}
-update-for-dart-2
-https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
-{% endcomment %}
-
 An _async function_ is a function whose body is marked with
 the `async` modifier.
-Although an async function might perform time-consuming operations,
-it returns immediately—before
-any of its body executes.
-
-
-<aside class="alert alert-info" markdown="1">
-  **[Dart 2](/dart-2) difference**:
-    Async functions won't return immediately.
-    Instead, an async function will continue executing until
-    it either suspends or completes.
-    For more information, see the
-    [synchronous async start discussion](https://github.com/dart-lang/sdk/tree/master/docs/newsletter/20170915.md#synchronous-async-start)
-    in the
-    [Dart Language and Library Newsletter.](https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters)
-{% comment %}
-More info:
-https://github.com/dart-lang/sdk/issues/29906
-https://github.com/dart-lang/sdk/issues/22909
-{% endcomment %}
-</aside>
 
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
@@ -3808,6 +3670,15 @@ Future<String> lookUpVersion() async => '1.0.0';
 
 Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
+
+If your function doesn't return a useful value,
+make its return type `Future<void>`.
+
+{% comment %}
+PENDING: add example here
+
+Where else should we cover generalized void?
+{% endcomment %}
 
 
 <a id="await-for"></a>

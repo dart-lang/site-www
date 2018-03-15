@@ -6,8 +6,6 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     int x = 1;
     int hex = 0xDEADBEEF;
-    // ignore_for_file: 2, integer_literal_out_of_range
-    int bigInt = 34653465834652437659238476592374958739845729;
     // #enddocregion integer-literals
   }
 
@@ -57,23 +55,6 @@ void miscDeclAnalyzedButNotTested() {
     const validConstString = '$aConstNum $aConstBool $aConstString';
     // const invalidConstString = '$aNum $aBool $aString $aConstList';
     // #enddocregion string-literals
-  }
-
-  {
-    // #docregion strictly-boolean
-    var name = 'Bob';
-    // #enddocregion strictly-boolean
-    /*
-    // #docregion strictly-boolean
-    if (name) {
-    // #enddocregion strictly-boolean
-    */
-    if (name != null && name.isNotEmpty) {
-      // #docregion strictly-boolean
-      // Prints in JavaScript, not in Dart.
-      print('You have a name!');
-    }
-    // #enddocregion strictly-boolean
   }
 
   {

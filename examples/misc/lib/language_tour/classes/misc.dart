@@ -10,26 +10,6 @@ abstract class AbstractContainer {
 }
 // #enddocregion abstract
 
-// #docregion extends
-class SpecializedContainer extends AbstractContainer {
-  // Define constructors, fields, methods...
-
-  void updateChildren() {
-    // Provide an implementation, so the method is not abstract here...
-  }
-
-  // Abstract method causes a warning but
-  // doesn't prevent instantiation.
-  // #enddocregion extends
-  /*
-  // #docregion extends
-  void doSomething();
-  // #enddocregion extends
-  */
-// #docregion extends
-}
-// #enddocregion extends
-
 class Comparable {}
 
 class Location {}

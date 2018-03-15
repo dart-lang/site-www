@@ -25,5 +25,12 @@ class Point {
   }
   // #enddocregion initializer-list
 
+  // #docregion initializer-list-with-assert
+  // Initializer list can use assert().
+  Point.withAssert(this.x, this.y) : assert(x >= 0) {
+    print('In Point.withAssert(): ($x, $y)');
+  }
+  // #enddocregion initializer-list-with-assert
+
 // #docregion constructor-long-way
 }

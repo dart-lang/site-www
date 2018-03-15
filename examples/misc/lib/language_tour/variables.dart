@@ -8,6 +8,12 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion type-decl
+    dynamic handle = 'Bob';
+    // #enddocregion type-decl
+  }
+
+  {
     // #docregion static-types
     String name = 'Bob';
     // #enddocregion static-types
