@@ -8,6 +8,7 @@ cache:
   - $HOME/.pub-cache
   - $HOME/.nvm
   - $HOME/.rvm
+  - node_modules
 
 env:
   global:
