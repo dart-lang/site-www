@@ -3212,21 +3212,20 @@ than just allowing your code to run:
 
 If you intend for a list to contain only strings, you can
 declare it as `List<String>` (read that as “list of string”). That way
-you, your fellow programmers, and your tools (such as your IDE and
-the Dart VM in checked mode) can detect that assigning a non-string to
+you, your fellow programmers, and your tools can detect that assigning a non-string to
 the list is probably a mistake. Here’s an example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (why-generics)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-names.add(42); // Fails in checked mode (succeeds in production mode).
+names.add(42); // Error.
 {% endprettify %}
 
 Another reason for using generics is to reduce code duplication.
 Generics let you share a single interface and implementation between
-many types, while still taking advantage of checked mode and static
-analysis early warnings. For example, say you create an interface for
+many types, while still taking advantage of static
+analysis. For example, say you create an interface for
 caching an object:
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (ObjectCache)"?>
@@ -3272,8 +3271,7 @@ List and map literals can be parameterized. Parameterized literals are
 just like the literals you’ve already seen, except that you add
 <code>&lt;<em>type</em>></code> (for lists) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
-before the opening bracket. You might use
-parameterized literals when you want type warnings in checked mode. Here
+before the opening bracket. Here
 is example of using typed literals:
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
@@ -3312,7 +3310,7 @@ var views = new Map<int, View>();
 
 Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
-collection, even in production mode:
+collection:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 {% prettify dart %}
@@ -3320,12 +3318,6 @@ var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
 print(names is List<String>); // true
 {% endprettify %}
-
-However, the `is` expression checks the type of the *collection*
-only—not of the objects inside it. In production mode, a `List<String>`
-might have some non-string items in it. The solution is to either check
-each item’s type or wrap item-manipulation code in an exception handler
-(see [Exceptions](#exceptions)).
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -3360,10 +3352,14 @@ void main() {
   // It's also OK to use no <> at all.
   var foo = new Foo();
 
-  // Specifying any non-SomeBaseClass type results in a warning and, in
-  // checked mode, a runtime error.
+  // Specifying any non-SomeBaseClass type results in an error.
   // var objectFoo = new Foo<Object>();
 {% endprettify %}
+
+{% comment %}
+TODO: Confirm that non-SomeBaseClass is an error.
+Perhaps be more specific.
+{% endcomment %}
 
 
 ### Using generic methods
