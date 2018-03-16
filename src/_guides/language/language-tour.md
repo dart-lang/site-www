@@ -118,7 +118,7 @@ mind:
     [use the special type `dynamic`][ObjectVsDynamic].
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
-    or `List<dynamic>` (a list of objects of any type). 
+    or `List<dynamic>` (a list of objects of any type).
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
@@ -2562,8 +2562,6 @@ The right-hand side of an initializer does not have access to `this`.
 During development, you can validate inputs by using `assert` in the
 initializer list.
 
-<?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
-
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 {% prettify dart %}
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
@@ -3361,23 +3359,30 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {
   // ···
 }
-
-void main() {
-  // It's OK to use SomeBaseClass or any of its subclasses inside <>.
-  var someBaseClassFoo = new Foo<SomeBaseClass>();
-  var extenderFoo = new Foo<Extender>();
-
-  // It's also OK to use no <> at all.
-  var foo = new Foo();
-
-  // Specifying any non-SomeBaseClass type results in an error.
-  // var objectFoo = new Foo<Object>();
 {% endprettify %}
 
-{% comment %}
-TODO: Confirm that non-SomeBaseClass is an error.
-Perhaps be more specific.
-{% endcomment %}
+It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
+
+<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+{% prettify dart %}
+var someBaseClassFoo = new [!Foo<SomeBaseClass>!]();
+var extenderFoo = new [!Foo<Extender>!]();
+{% endprettify %}
+
+It's also OK to specify no generic argument:
+
+<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (no-generic-arg-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+{% prettify dart %}
+var foo = new Foo();
+{% endprettify %}
+
+Specifying any non-`SomeBaseClass` type results in an error:
+
+{:.fails-sa}
+<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
+{% prettify dart %}
+var foo = new [!Foo<Object>!]();
+{% endprettify %}
 
 
 ### Using generic methods
