@@ -18,18 +18,21 @@ and changes to assertion support.
 
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
+Whenever you want more details about a language feature,
+consult the [Dart Language Specification](/guides/language/spec).
+
+{% comment %}
+update-for-dart-2
+TODO: Uncomment when DartPad supports Dart 2 semantics.
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
-You can play with most of these features using DartPad
+You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
 **<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
 </div>
-
-Consult the
-[Dart Language Specification](/guides/language/spec) whenever you want
-more details about a language feature.
+{% endcomment %}
 
 
 ## A basic Dart program
@@ -39,14 +42,14 @@ The following code uses many of Dart’s most basic features:
 <?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 {% prettify dart %}
 // Define a function.
-printNumber(num aNumber) {
+printInteger(int aNumber) {
   print('The number is $aNumber.'); // Print to console.
 }
 
 // This is where the app starts executing.
 main() {
   var number = 42; // Declare and initialize a variable.
-  printNumber(number); // Call a function.
+  printInteger(number); // Call a function.
 }
 {% endprettify %}
 
@@ -55,14 +58,14 @@ apps:
 
 <code>// <em>This is a comment.</em> </code>
 
-:   A way to make Dart ignore some content.
-    For more information, see [Comments](#comments).
+:   A single-line comment.
+    Dart also supports multi-line and document comments.
+    For details, see [Comments](#comments).
 
-`num`
+`int`
 
-:   A type. A `num` variable's value can be either an `int` or a
-    `double` object.
-    Some of the other built-in types are `String`, `List`, and `bool`.
+:   A type. Some of the other [built-in types](#built-in-types)
+    are `String`, `List`, and `bool`.
 
 `42`
 
@@ -109,9 +112,10 @@ mind:
     `null` are objects. All objects inherit from the [Object][] class.
 
 -   Although Dart is strongly typed, type annotations are optional
-    because Dart can often infer the type. In the code above, `number`
+    because Dart can infer types. In the code above, `number`
     is inferred to be of type `int`. When you want to explicitly say
-    that no type is expected, use the special type `dynamic`.
+    that no type is expected,
+    [use the special type `dynamic`][ObjectVsDynamic].
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<dynamic>` (a list of objects of any type). 
@@ -187,29 +191,29 @@ You can't use reserved words as identifiers.
 
 ## Variables
 
-Here’s an example of creating a variable and assigning a value to it:
+Here’s an example of creating a variable and initializing it:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 {% prettify dart %}
-var handle = 'Bob';
+var name = 'Bob';
 {% endprettify %}
 
-Variables are references. The variable called `name` contains a
-reference to a String object with a value of “Bob”.
+Variables store references. The variable called `name` contains a
+reference to a `String` object with a value of “Bob”.
 
-The type of the `handle` variable is inferred to be String,
+The type of the `name` variable is inferred to be `String`,
 but you can change that type by specifying it.
 If an object isn't restricted to a single type,
 specify the `Object` or `dynamic` type, following
-[design guidelines](/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted).
+[design guidelines][ObjectVsDynamic].
 
 {% comment %}
-**[PENDING: check!]**
+**[PENDING: check on Object vs. dynamic guidance.]**
 {% endcomment %}
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
 {% prettify dart %}
-Object handle = 'Bob';
+dynamic name = 'Bob';
 {% endprettify %}
 
 Another option is to explicitly declare the type that would be inferred:
@@ -230,13 +234,13 @@ of using `var`, rather than type annotations, for local variables.
 ### Default value
 
 Uninitialized variables have an initial value of `null`. Even variables
-with numeric types are initially null, because numbers are objects.
+with numeric types are initially null, because numbers—like everything
+else in Dart—are objects.
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 {% prettify dart %}
 int lineCount;
 assert(lineCount == null);
-// Variables (even if they will be numbers) are initially null.
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -244,7 +248,7 @@ assert(lineCount == null);
 The `assert()` call is ignored in production code.
 During development, <code>assert(<em>condition</em>)</code>
 throws an exception unless *condition* is true. For details,
-see the [Assert](#assert) section.
+see [Assert](#assert).
 </div>
 
 
@@ -342,17 +346,24 @@ Dart numbers come in two flavors:
 
 [int][]
 
-:   64-bit integer values.
+:   Integer values no larger than 64 bits,
+    depending on the platform.
+    On the Dart VM, values can be from
+    -2<sup>63</sup> to 2<sup>63</sup> - 1.
+    Dart that's compiled to JavaScript uses
+    [JavaScript numbers,][js numbers]
+    allowing values from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
 {% comment %}
-[PENDING: Be more specific. What's the max value? Min value? We used to say
-that values should "generally be in the range -2<sup>53</sup> and 2<sup>53</sup>."
+[PENDING: What about values on Android & iOS?
+The informal spec is at
+https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
 {% endcomment %}
 
 [double][]
 
 :   64-bit (double-precision) floating-point numbers, as specified by
-    the IEEE 754 standard
+    the IEEE 754 standard.
 
 Both `int` and `double` are subtypes of [`num`.][num]
 The num type includes basic operators such as +, -, /, and \*,
@@ -2230,6 +2241,9 @@ Example: `p1 = Point(2, 2)`.
 
 {% comment %}
 update-for-dart-2
+
+TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
+`p3 = Point(2, 2)` into the code snippet.
 {% endcomment %}
 </aside>
 
@@ -2283,6 +2297,9 @@ Example: `p = ImmutablePoint(2, 2)`.
 
 {% comment %}
 update-for-dart-2
+
+TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
+`p = ImmutablePoint(2, 2)` into the code snippet.
 {% endcomment %}
 </aside>
 
@@ -2545,10 +2562,11 @@ The right-hand side of an initializer does not have access to `this`.
 During development, you can validate inputs by using `assert` in the
 initializer list.
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)"?>
+<?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 {% prettify dart %}
-// Initializer list can use assert().
-Point.withAssert(this.x, this.y) : assert(x >= 0) {
+Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
 }
 {% endprettify %}
@@ -3204,7 +3222,7 @@ as E, T, S, K, and V.
 
 ### Why use generics?
 
-Generics are often required for type safety, but they have other benefits
+Generics are often required for type safety, but they have more benefits
 than just allowing your code to run:
 
 * Properly specifying generic types results in better generated code.
@@ -3219,7 +3237,7 @@ the list is probably a mistake. Here’s an example:
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-names.add(42); // Error.
+names.add(42); // Error
 {% endprettify %}
 
 Another reason for using generics is to reduce code duplication.
@@ -3591,7 +3609,8 @@ Future checkVersion() [!async!] {
 Although an async function might perform time-consuming operations,
 it doesn't wait for those operations.
 Instead, the async function executes only until it encounters
-its first `await` expression.
+its first `await` expression
+([details][synchronous-async-start]).
 Then it returns a Future object,
 resuming execution only after the `await` expression completes.
 </aside>
@@ -4108,16 +4127,19 @@ To learn more about Dart's core libraries, see
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
+[Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
 [Type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html

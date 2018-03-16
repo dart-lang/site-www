@@ -24,8 +24,7 @@ void main() {
   // It's also OK to use no <> at all.
   var foo = new Foo();
 
-  // Specifying any non-SomeBaseClass type results in a warning and, in
-  // checked mode, a runtime error.
+  // Specifying any non-SomeBaseClass type results in an error.
   // var objectFoo = new Foo<Object>();
   // #enddocregion
 

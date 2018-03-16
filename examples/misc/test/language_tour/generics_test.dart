@@ -64,7 +64,7 @@ void assignIntToStringList() {
   // #docregion why-generics
   var names = new List<String>();
   names.addAll(['Seth', 'Kathy', 'Lars']);
-  names.add(42); // Fails in checked mode (succeeds in production mode).
+  names.add(42); // Error
   // #enddocregion why-generics
 }
 
