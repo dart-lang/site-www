@@ -14,6 +14,10 @@ Thanks!
 
 <div class="who-uses-list" markdown="1">
 
+[Flutter](https://flutter.io/)
+: Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. 
+Read [Why Flutter uses Dart](https://hackernoon.com/why-flutter-uses-dart-dd635a054ebf).
+
 [Google AdWords](http://adwords.blogspot.com/2016/03/redesigning-adwords-for-the-mobile-first-marketer.html)
 : The next generation of AdWords runs on Dart. For more information,
   see [an interview with the lead developer](http://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
