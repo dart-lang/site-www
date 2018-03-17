@@ -547,7 +547,7 @@ which are both compile-time constants.
 When Dart expects a boolean value, only the value `true` is treated as
 true. All other values are treated as false. Unlike in JavaScript,
 values such as `1`, `"aString"`, and `someObject` are all treated as
-false.
+true.
 
 Dart’s treatment of booleans is designed to avoid the strange behaviors
 that can arise when many values can be treated as true. What this means
