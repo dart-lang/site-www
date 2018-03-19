@@ -4,11 +4,13 @@ title: Write Command-Line Apps
 description: Basics for command-line apps
 nextpage:
   url: /tutorials/dart-vm/httpserver
-  title: "Dart-VM: Write HTTP Clients & Servers"
+  title: "Write HTTP Clients & Servers"
 prevpage:
   url: /tutorials/dart-vm/get-started
-  title: Get Started
+  title: Get Started with the Dart VM
 ---
+
+{% include dart-vm-tutorial-banner.html %}
 
 ### An introduction to standalone apps
 
