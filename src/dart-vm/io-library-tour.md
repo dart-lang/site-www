@@ -272,7 +272,7 @@ Besides the APIs discussed in this section, the dart:io library also
 provides APIs for [processes,][Process] [sockets,][Socket] and
 [web sockets.][WebSocket]
 To find more examples of using dart:io, go to the
-[cookbook.](/dart-vm/dart-by-example)
+[dart-samples repo.](https://github.com/dart-lang/dart-samples)
 For more information about the Dart VM, see the
 [VM overview.](/dart-vm)
 

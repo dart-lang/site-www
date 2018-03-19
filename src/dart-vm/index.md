@@ -49,8 +49,8 @@ You might find the following tutorials helpful.
   You can use the dart:io library in command-line scripts, servers, and
   [Flutter mobile apps.]({{site.flutter}})
 
-[Cookbook: Dart by Example](/dart-vm/dart-by-example)
-: Code snippets that perform common I/O tasks, featuring APIs from
+[Dart samples repo](https://github.com/dart-lang/dart-samples)
+: Code that performs common I/O tasks, featuring APIs from
   dart:io, dart:convert, the path package, and more.
 
 [Articles: Dart VM](/articles/dart-vm)

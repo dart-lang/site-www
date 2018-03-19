@@ -5,15 +5,23 @@ description: Examples of idiomatic Dart with links to larger examples.
 
 This collection is not exhaustive&mdash;it's just a brief
 introduction to the language for people who like to learn by example. You may
-also want to check out the following pages.
+also want to check out the language and library tours.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/guides/language/language-tour">Language Tour</a></h3>
+    <h3><a href="/guides/language/language-tour">Language tour</a></h3>
     <p>
       A comprehensive tour, with examples, of the Dart language.
       Most of the <em>read more</em> links in this page
       point to the language tour.
+    </p>
+  </div>
+  <div class="card">
+    <h3><a href="/guides/libraries/library-tour">Library tour</a></h3>
+    <p>
+      An example-based introduction to the Dart core libraries.
+      See how to use the built-in types, collections,
+      dates and times, streams, and more.
     </p>
   </div>
   <!-- XXXXX TODO: XXXXX
@@ -22,13 +30,6 @@ also want to check out the following pages.
     <p>For those who like to see projects in their entirety.</p>
   </div>
   -->
-  <div class="card">
-    <h3><a href="/dart-vm/dart-by-example">Cookbook</a></h3>
-    <p>
-      A set of recipes to get you started with common programming
-      tasks.
-    </p>
-  </div>
 </div>
 
 

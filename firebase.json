@@ -342,7 +342,12 @@
       },
       {
         "source": "/dart-by-example",
-        "destination": "/dart-vm/dart-by-example",
+        "destination": "/samples",
+        "type": 301
+      },
+      {
+        "source": "/dart-vm/dart-by-example",
+        "destination": "/samples",
         "type": 301
       },
       {
@@ -392,7 +397,7 @@
       },
       {
         "source": "/docs/cookbook",
-        "destination": "/dart-vm/dart-by-example",
+        "destination": "/samples",
         "type": 301
       },
       {
