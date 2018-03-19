@@ -544,11 +544,10 @@ To represent boolean values, Dart has a type named `bool`. Only two
 objects have type bool: the boolean literals `true` and `false`,
 which are both compile-time constants.
 
-When Dart expects a boolean value, only the value `true` is treated as
-true. All other values are treated as false. Unlike in JavaScript,
-values such as `1`, `"aString"`, and `someObject` are all treated as
-false.
+In JavaScript many values, such as `1`, `"aString"`, and `someObject` are treated as
+true, whereas values like null, 0 or empty string are treated as false.
 
+Dart in contrast treats every value except 'true' as false.
 Dart’s treatment of booleans is designed to avoid the strange behaviors
 that can arise when many values can be treated as true. What this means
 for you is that, instead of using code like
