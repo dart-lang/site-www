@@ -10,6 +10,8 @@ nextpage:
   title: "Style"
 ---
 
+{% include effective-dart-banner.html %}
+
 Over the past several years, we've written a ton of Dart code and learned a lot
 about what works well and what doesn't. We're sharing this with you so you can
 write consistent, robust, fast code too.
@@ -62,6 +64,7 @@ We split the guidelines into a few separate pages for easy digestion:
 For links to all the guidelines, see the
 [summary](#summary-of-all-rules).
 
+{% comment %}
 <aside class="alert alert-info" markdown="1">
   **Have feedback on the guides?** <br>
   Please create a [new issue][] or comment on one of our [existing issues][].
@@ -69,6 +72,7 @@ For links to all the guidelines, see the
   [new issue]: {{site.repo}}/issues/new
   [existing issues]: {{site.repo}}/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
+{% endcomment %}
 
 [dartfmt]: https://github.com/dart-lang/dart_style#readme
 [style guide]: /guides/language/effective-dart/style
