@@ -11,7 +11,7 @@ prevpage:
   title: Dart VM Tutorials
 ---
 
-{% include dart-vm-tutorial-banner.html %}
+{% include tutorial-banner.html %}
 
 ### Get Dart. Run an app.
 

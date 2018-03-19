@@ -10,7 +10,7 @@ prevpage:
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
 {%- endcapture -%}
 
-{% include dart-vm-tutorial-banner.html %}
+{% include tutorial-banner.html %}
 
 ### Communicate over the internet
 

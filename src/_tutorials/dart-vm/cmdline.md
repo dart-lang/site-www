@@ -10,7 +10,7 @@ prevpage:
   title: Get Started with the Dart VM
 ---
 
-{% include dart-vm-tutorial-banner.html %}
+{% include tutorial-banner.html %}
 
 ### An introduction to standalone apps
 
