@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: "Get Started"
+title: "Get Started with the Dart VM"
 description: "Get Dart and run a Dart application"
 
 nextpage:
@@ -8,8 +8,10 @@ nextpage:
   title: "Write Command-Line Apps"
 prevpage:
   url: /tutorials/dart-vm
-  title: Tutorials Overview
+  title: Dart VM Tutorials
 ---
+
+{% include tutorial-banner.html %}
 
 ### Get Dart. Run an app.
 
@@ -37,7 +39,7 @@ from GitHub.
 Once you are ready to move beyond DartPad and create Dart apps in
 a real world environment, you need to download some software.
 
-At the very least, you need the Dart SDK, which contains all of
+The Dart SDK contains all of
 the tools and libraries that you need for basic Dart development.
 You may also want an IDE or code editor; this tutorial uses WebStorm.
 
@@ -69,14 +71,6 @@ See the [tools page](/tools) for a list of plugins.
 
 ## About Dart applications {#what-is-app}
 
-There are two kinds of Dart applications:
-command-line applications and web applications.
-A command-line application is a standalone program
-that you run in the Dart VM from the command line in a terminal window.
-Web applications are hosted on a web page and run in a browser
-(either directly in a browser that supports Dart
-or by compiling to JavaScript).
-
 The most minimal Dart application has
 
 * one Dart source file&mdash;a
@@ -85,7 +79,7 @@ The most minimal Dart application has
   This is the entry point for your application.
 
 As long as this simple Dart app can be run from the
-command line (and does not rely on the browser),
+command line (and does not rely on the browser or the Flutter SDK),
 you can run it using `dart`, the Dart VM tool.
 For example:
 
