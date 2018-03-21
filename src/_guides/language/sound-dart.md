@@ -1,12 +1,8 @@
 ---
-title: Sound Dart
+title: Dart's Type System
 description: Why and how to write sound Dart code.
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 Dart has a sound static
 type system that uses a combination of static and [runtime checks](#runtime-checks) to
@@ -14,12 +10,17 @@ ensure that your code is type safe: runtime types always match static types.
 Because Dart has [type inference](#type-inference),
 you don't always have to specify types.
 
+This page concentrates on the type safety features added in Dart 2.
+For a full introduction to the Dart language, including types, see the
+[language tour](/guides/language/language-tour).
+
 <aside class="alert alert-info" markdown="1">
   **Terminology note:**
-  The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
-  are sometimes used interchangeably.
-  Some 1.x releases have partial support for soundness through [strong mode.][strong mode]
-  **Classic** Dart refers to Dart before soundness was added to the language.
+  The terms **sound** Dart and **type safe** Dart
+  are often used interchangeably.
+  You might also see the term **strong mode**.
+  Strong mode was an opt-in Dart 1.x feature
+  that provided partial support for type safety.
 </aside>
 
 One benefit of type safety is the ability to find bugs
@@ -29,13 +30,13 @@ compile Dart code.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The sound static type system was introduced in Dart2,
-  and not all tools have been updated to fully support it.
-  For example, dart2js and tools that depend on dart2js (such as DartPad)
+  Not all tools have been updated to fully support
+  the sound static type system.
+  For example, dart2js and tools that depend on dart2js
+  (such as DartPad)
   don't yet have full support for sound Dart.
   Flutter and the developer release of the Dart VM, on the other hand,
   fully support sound Dart.
-  **[PENDING: check; add links?]**
 {% comment %}
 update-for-dart-2
 {% endcomment %}
@@ -379,8 +380,11 @@ var arguments = foo['args'];
 
 The resulting definition depends on the type of `foo` and
 its subscript operator.
+
+{% comment %}
 **[PENDING: That's unclear. Why isn't it `List<String>`?
   `foo` used to be `methodCall`, if that helps.]**
+{% endcomment %}
 
 ### Field and method inference
 
@@ -577,8 +581,8 @@ and [Use proper parameter types when overriding methods](#use-proper-param-types
 
 The following resources have further information on sound Dart:
 
-* [Sound Dart: Fixing Common
-  Problems](/guides/language/sound-problems) - Errors you may encounter when
+* [Fixing Common Type Problems](/guides/language/sound-problems) -
+  Errors you may encounter when
   writing sound Dart code, and how to fix them.
 * [Dart 2 Updates](/dart-2) - How to update Dart 1.x code to Dart 2.
 * [Customize Static Analysis](/guides/language/analysis-options) - How

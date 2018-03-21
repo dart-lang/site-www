@@ -46,12 +46,7 @@ add static analysis to your tool, see the
 <aside class="alert alert-info" markdown="1">
 **Note:**
 The analyzer error codes are listed in the [Dart SDK
-repo,](https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart)
-but they are likely to change for Dart 2.
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+repo.](https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart)
 </aside>
 
 ## The analysis options file
@@ -71,9 +66,6 @@ Here's a sample analysis options file:
 
 {% prettify yaml %}
 analyzer:
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
   errors:
     todo: ignore
   exclude:
@@ -107,33 +99,28 @@ The analyzer will use file #1 to analyze the code in `my_other_package`
 and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
-## Specifying strong mode
 
-The Dart 1.x language spec supports dynamic typing, allowing you to
-write code that has no type annotations at all.
-Strong mode applies more restrictive rules to the type system and,
-as a result, finds more errors during static analysis and at runtime.
-Another benefit of strong mode is faster compilation.
-Some tools, such as dartdevc, require strong mode compliance.
+## Finding implicit casts
 
-{% include optional-types-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-The simplest way to enable strong mode is to specify
-`strong-mode: true` in the analysis-options file:
+To find places in your code that could use explicit types,
+use the `implicit-casts` and `implicit-dynamic` flags:
 
 {% prettify yaml %}
 analyzer:
-  strong-mode: true
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
 {% endprettify %}
 
-Strong mode is disabled by default. Instead of specifying `true`
-you can use the following flags to look for specific types
-of implicit casting, on top of the standard strong mode checks.
-The presence of either flag, regardless of value, enables strong mode.
+{% comment %}
+PENDING: Will these flags still appear under strong-mode in Dart 2.0?
+We should mention related command-line flags
+(--no-implicit-casts? --no-implicit-dynamic?)
+We could give more help about when to use these flags.
+{% endcomment %}
+
+You can use the flags together or separately.
+Both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
@@ -146,33 +133,20 @@ String s = o;  // Implicit downcast
 String s2 = s.substring(1);
 {% endprettify %}
 
-  This flag defaults to `true`.
-
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type.
-  This flag defaults to `true`.
 
-To disallow both implicit downcasts and implicit dynamic types in the
-analysis options file:
-
-{% prettify yaml %}
-analyzer:
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
-{% endprettify %}
 
 ## Enabling linter rules
 
 The analyzer package also provides a code linter. A wide variety of
 [linter rules](http://dart-lang.github.io/linter/lints/)
 are available. Linters tend to be
-non denominational&mdash;rules don't have to agree with each other.
+nondenominational&mdash;rules don't have to agree with each other.
 For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
-Note that some of the linter rules don't play well with strong mode,
-and linter rules can have false positives, unlike static analysis.
+Note that linter rules can have false positives, unlike static analysis.
 
 To enable a linter rule, add `linter:` to the analysis options file,
 followed by `rules:`.
@@ -180,9 +154,6 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes. For example:
 
 {% prettify yaml %}
-analyzer:
-  strong-mode: true
-
 linter:
   rules:
     - always_declare_return_types
@@ -213,7 +184,6 @@ You can exclude files from static analysis using the `exclude:` field.
 
 {% prettify yaml %}
 analyzer:
-  strong-mode: true
   exclude:
     - lib/client/piratesapi.dart
 {% endprettify %}
@@ -223,7 +193,6 @@ You can specify a group of files using
 
 {% prettify yaml %}
 analyzer:
-  strong-mode: true
   exclude:
     - src/test/_data/**
     - test/*_example.dart
@@ -316,7 +285,7 @@ Join the discussion list for linter enthusiasts:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Strong mode](/guides/language/sound-dart)
+* [Dart's Type System](/guides/language/sound-dart)
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)

@@ -1,13 +1,13 @@
 ---
-title: "Sound Dart: Fixing Common Problems"
-description: Common problems you may have and how to fix them.
+title: "Fixing Common Type Problems"
+description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
 <?code-excerpt replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 If you're having problems with type checks,
 this page can help. To learn more, read
-[Sound Dart](/guides/language/sound-dart)
+[Dart's Type System](/guides/language/sound-dart)
 and [other resources](/guides/language/sound-dart#other-resources).
 
 <aside class="alert alert-info" markdown="1">
@@ -87,7 +87,8 @@ error • The getter 'context2D' isn't defined for the class 'Element' • undef
 The `querySelector()` method statically returns an Element,
 but the code assumes it returns the subtype CanvasElement
 where `context2D` is defined.
-The `canvas` field is declared as `var` which, in classic Dart,
+The `canvas` field is declared as `var` which,
+in Dart 1.x versions without strong mode,
 types it as `dynamic` and silences all errors.
 Dart infers `canvas` to be an Element.
 
