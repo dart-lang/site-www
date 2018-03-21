@@ -47,7 +47,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion type-inference-1
-    var arguments = {'argA': 'hello', 'argB': 42};
+    var arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
     // #enddocregion type-inference-1
 
     // ignore_for_file: 1, 2, argument_type_not_assignable

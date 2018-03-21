@@ -758,6 +758,11 @@
         "type": 301
       },
       {
+        "source": "/guides/language/sound-faq",
+        "destination": "/guides/language/sound-dart",
+        "type": 301
+      },
+      {
         "source": "/guides/language/library-tour",
         "destination": "/guides/libraries/library-tour",
         "type": 301

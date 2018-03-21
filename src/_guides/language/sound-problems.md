@@ -1,24 +1,14 @@
 ---
-title: "Strong Mode Dart: Fixing Common Problems"
-description: Common problems you may have when converting to strong mode and how to fix them.
+title: "Sound Dart: Fixing Common Problems"
+description: Common problems you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
 <?code-excerpt replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
-{% comment %}
-The first few questions/answers are for strong mode under Dart 1.x.
-update-for-dart-2
-{% endcomment %}
-
-If you're having problems converting your code to strong mode,
-this page can help. Be sure to also check out
-[Strong Mode Dart](/guides/language/sound-dart) for an overview of what "sound
-Dart" means, and how strong mode contributes to making Dart a sound
-language.
-
-For a complete list of sources about strong mode and sound Dart,
-see [other resources](/guides/language/sound-dart#other-resources)
-in [Strong Mode Dart](/guides/language/sound-dart).
+If you're having problems with type checks,
+this page can help. To learn more, read
+[Sound Dart](/guides/language/sound-dart)
+and [other resources](/guides/language/sound-dart#other-resources).
 
 <aside class="alert alert-info" markdown="1">
 **Help us improve this page!**
@@ -33,11 +23,12 @@ and its correct equivalent.
 ## Troubleshooting
 
 <a name="am-i-using-strong-mode"></a>
-### Am I really using strong mode?
+### Am I really using type-safe Dart?
 
-If you're not seeing strong mode errors or warnings,
-make sure that you're using strong mode.
-A good test is to add the following code to a file:
+If you're not seeing expected errors or warnings,
+make sure that you're using the latest version of Dart.
+
+Alternatively, try adding the following code to a file:
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/common_problems_analysis.dart (is-strong-mode-enabled)"?>
@@ -45,7 +36,7 @@ A good test is to add the following code to a file:
 bool b = [0][0];
 {% endprettify %}
 
-If you're using strong mode, you'll see the following issue from the analyzer:
+With type-safe Dart, the analyzer produces the following error:
 
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
@@ -53,71 +44,15 @@ If you're using strong mode, you'll see the following issue from the analyzer:
 error • A value of type 'int' can't be assigned to a variable of type 'bool' • invalid_assignment
 ```
 
-<hr>
-
-<a name="not-using-strong-mode"></a>
-### I'm not using strong mode and I think I should be
-
-Strong mode is enforced by the Dart analyzer.
-How you troubleshoot strong mode depends on whether you are running
-`dartanalyzer` from the command line, or via one of the JetBrains IDEs.
-
-#### Command line analyzer
-
-If you are running dartanalyzer from the command line and you don't see
-expected strong mode errors, try the following:
-
-- If your project contains an [analysis
-  options file,](/guides/language/analysis-options#the-analysis-options-file)
-  make sure you've specified `strong mode: true` correctly.
-  For more information, see [Specifying strong
-  mode.](/guides/language/analysis-options#specifying-strong-mode)
-- Run the analyzer with the `--strong` option:
-{% comment %}Eventually link [`--strong` option] to [dartanalyzer README]{% endcomment %}
-
-  ```nocode
-  dartanalyzer --strong <file-or-directory>
-  ```
-
-For information on how to set up an analysis options file,
-see [Customize Static Analysis](/guides/language/analysis-options).
-
-#### JetBrains IDEs
-
-Make sure that you have an analysis options file with
-[strong mode turned on](/guides/language/analysis-options#specifying-strong-mode).
-This file needs to be placed in a content root, or in a parent
-directory of your content root. The steps for viewing a project's
-content root varies a bit for WebStorm and IntelliJ.
-
-Note that a large project may have multiple content roots.
-The following instructions describe how to see a list of content roots in
-WebStorm or IntelliJ.
-
-WebStorm
-: In the **Preferences** panel (**WebStorm > Preferences**), click
-  **Directories** from the list on the left.
-  The **+Add Content Root** button in the column on the far right appears
-  above the content roots, shown in bold.
-
-IntelliJ
-: In the **Project Structure** panel (**File > Project Structure**),
-  **Modules** is selected from the list on the left by default.
-  The **+Add Content Root** button in the column on the far right appears
-  above the content roots, shown in bold.
-
-For more information on where to put your analysis options file, see
-[the analysis options file](/guides/language/analysis-options#the-analysis-options-file),
-part of [Customize Static Analysis](/guides/language/analysis-options).
 
 <a name="common-errors"></a>
 ## Static errors and warnings
 
 This section shows how to fix some of the errors and warnings
-you might see from the analyzer or an IDE with strong mode enabled.
+you might see from the analyzer or an IDE.
 
 Static analysis can't catch all errors.
-For help fixing strong-mode errors that appear only at runtime,
+For help fixing errors that appear only at runtime,
 see [Runtime errors](#common-errors-and-warnings).
 
 ### Undefined member
@@ -154,7 +89,7 @@ but the code assumes it returns the subtype CanvasElement
 where `context2D` is defined.
 The `canvas` field is declared as `var` which, in classic Dart,
 types it as `dynamic` and silences all errors.
-Strong mode Dart infers `canvas` to be an Element.
+Dart infers `canvas` to be an Element.
 
 You can fix this error with an explicit type declaration:
 
@@ -493,8 +428,8 @@ Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
 static analysis errors in [Unexpected collection element type](#unexpected-collection-element-type).
 
-The strong-mode errors discussed in the remainder of this section are reported when
-you use a [strong mode runtime](sound-dart#runtime-checks).
+The errors discussed in the remainder of this section are reported at 
+[runtime](sound-dart#runtime-checks).
 
 ### Invalid casts
 
@@ -607,8 +542,8 @@ Do we have any known issues or bugs to list here?
 ### The covariant keyword
 
 Some (rarely used) coding patterns rely on tightening a type
-by overriding a parameter's type with a subtype, which is illegal in strong
-mode Dart. In this case, you can use the `covariant` keyword to
+by overriding a parameter's type with a subtype, which is illegal.
+In this case, you can use the `covariant` keyword to
 tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
 parameter type at runtime.

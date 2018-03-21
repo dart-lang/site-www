@@ -30,12 +30,6 @@ These two resources are popular with both beginning Dartisans and experts.
 </li>
 
 <ul markdown="1">
-
-<li markdown="1"> [Strong Mode Dart: FAQ](/guides/language/sound-faq)<br>
-    A list of common questions for those who are interested in stronger
-    static typing.
-</li>
-
 <li markdown="1"> [Strong Mode Dart: Fixing Common
    Problems](/guides/language/sound-problems)<br>
    How to fix errors and warnings you may encounter when writing sound
