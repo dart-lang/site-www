@@ -4,11 +4,11 @@ description: Why and how to write sound Dart code.
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
-Dart has a sound static
-type system that uses a combination of static and [runtime checks](#runtime-checks) to
-ensure that your code is type safe: runtime types always match static types.
-Because Dart has [type inference](#type-inference),
-you don't always have to specify types.
+Dart is type safe: it uses a combination of static type checking and
+[runtime checks](#runtime-checks) to
+ensure that a variable's value always matches the variable's static type.
+Although _types_ are mandatory, type _annotations_ are optional
+because Dart performs [type inference](#type-inference).
 
 This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the
@@ -23,45 +23,41 @@ For a full introduction to the Dart language, including types, see the
   that provided partial support for type safety.
 </aside>
 
-One benefit of type safety is the ability to find bugs
-at compile time (rather than at runtime) using Dart's [static analyzer.][analyzer]
-Another benefit is being able to quickly and incrementally
-compile Dart code.
+One benefit of static type checking is the ability to find bugs
+at compile time using Dart's [static analyzer.][analyzer]
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  Not all tools have been updated to fully support
-  the sound static type system.
-  For example, dart2js and tools that depend on dart2js
+  The dart2js compiler and tools that depend on it
   (such as DartPad)
-  don't yet have full support for sound Dart.
-  Flutter and the developer release of the Dart VM, on the other hand,
-  fully support sound Dart.
+  don't yet have full support for runtime checks.
 {% comment %}
 update-for-dart-2
 {% endcomment %}
 </aside>
 
-Most static analysis errors can be fixed by adding type annotations to Lists and Maps.
+You can fix most static analysis errors by adding type annotations to generic
+classes. The most common generic classes are the collection types
+`List<T>` and `Map<K,V>`.
 
-For example, in the following code the `fn()` function prints an integer list,
-and `main()` creates a list and passes it to `fn()`.
+For example, in the following code the `handleInts()` function prints an integer list,
+and `main()` creates a list and passes it to `handleInts()`.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
 {% prettify dart %}
-void fn(List<int> a) => print(a);
+void printInts(List<int> a) => print(a);
 
 void main() {
   var list = [];
   list.add(1);
   list.add("2");
-  fn([!list!]);
+  printInts([!list!]);
 }
 {% endprettify %}
 
 The preceding code results in a type error on `list` (highlighted
-above) at the call of `fn(list)`:
+above) at the call of `handleInts(list)`:
 
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -73,7 +69,7 @@ The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>
 The `list` variable has static type `List<dynamic>`. This is because the
 initializing declaration `var list = []` doesn't provide the analyzer with
 enough information for it to infer a type argument more specific than `dynamic`.
-The `fn()` function expects a parameter of type `List<int>`,
+The `handleInts()` function expects a parameter of type `List<int>`,
 causing a mismatch of types.
 
 When adding a type annotation (`<int>`) on creation of the list
@@ -84,13 +80,13 @@ in code that passes static analysis and runs with no errors or warnings.
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
 {% prettify dart %}
-void fn(List<int> a) => print(a);
+void printInts(List<int> a) => print(a);
 
 void main() {
   var list = [!<int>!][];
   list.add(1);
   list.add([!2!]);
-  fn(list);
+  printInts(list);
 }
 {% endprettify %}
 
@@ -141,12 +137,8 @@ A sound type system has several benefits:
   of code that just broke.
 
 * Better ahead of time (AOT) compilation.<br>
-  While AOT compilation is possible without strong types, the generated
+  While AOT compilation is possible without types, the generated
   code is much less efficient.
-
-* Cleaner JavaScript.<br>
-  For web apps, sound typing allows
-  [dartdevc][] to generate cleaner, more compact JavaScript.
 
 
 ## Tips for passing static analysis
@@ -154,8 +146,8 @@ A sound type system has several benefits:
 Most of the rules for static types are easy to understand.
 Here are some of the less obvious rules:
 
-* Use proper return types when overriding methods.
-* Use proper parameter types when overriding methods.
+* Use sound return types when overriding methods.
+* Use sound parameter types when overriding methods.
 * Don't use a dynamic list as a typed list.
 
 Let's see these rules in detail, with examples that use the following
@@ -164,7 +156,7 @@ type hierarchy:
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
-### Use proper return types when overriding methods
+### Use sound return types when overriding methods
 
 The return type of a method in a subclass must be the same type or a
 subtype of the return type of the method in the superclass. Consider
@@ -201,7 +193,7 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 <a name="use-proper-param-types"></a>
-### Use proper parameter types when overriding methods
+### Use sound parameter types when overriding methods
 
 The parameter of an overridden method must have either the same type
 or a supertype of the corresponding parameter in the superclass.
@@ -301,90 +293,36 @@ void main() {
 
 ## Type inference
 
-Does type safety mean that you _always_ have to specify a type?
-
-No. Although _types_ are mandatory,
-type _annotations_ are optional.
 The analyzer can infer types for fields, methods, local variables,
-and generic type arguments.
-
+and most generic type arguments.
 When the analyzer doesn't have enough information to infer
 a specific type, it uses the `dynamic` type.
 
-How does type inference work with collections and generics?
-For example, what happens when you use `var` with maps or lists?
+Here's an example of how type inference works with generics.
+In this example, a variable named `arguments` holds a map that
+pairs string keys with values of various types.
 
-### Example 1: From Map\<String, dynamic> to `var`
+If you explicitly type the variable, you might write this:
 
-Explicit definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)"?>
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
 {% prettify dart %}
-Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
-Definition with var:
+Alternatively, you can use `var` and let Dart infer the type:
 
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)"?>
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
 {% prettify dart %}
-var arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
+[!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
 {% endprettify %}
 
-The map literal infers its type from the elements.
-The keys are both strings. Since the values have different
-types (String and int), you get the least upper bound of those,
-which is Object.
-So the resulting map has type Map<String, Object>, and `arguments`
-gets the same type by inferring it from its initializer.
+The map literal infers its type from its entries,
+and then the variable infers its type from the map literal's type.
+In this map, the keys are both strings, but the values have different
+types (String and int, which have the upper bound Object).
+So the map literal has the type `Map<String, Object>`,
+and so does the `arguments` variable.
 
-### Example 2: From Map\<String, dynamic> to `var`
-
-Explicit definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2-orig)"?>
-{% prettify dart %}
-Map<String, dynamic> message = {
-  'method': 'someMethod',
-  'args': <Map<String, dynamic>>[arguments],
-};
-{% endprettify %}
-
-Definition with var:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2)"?>
-{% prettify dart %}
-var message = {
-  'method': 'someMethod',
-  'args': <Map<String, dynamic>>[arguments],
-};
-{% endprettify %}
-
-This is the same case as above. If you define `message`
-using `var`, the resulting map has type Map<String, Object>.
-
-### Example 3: From List\<dynamic> to `var`
-
-Explicit definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3-orig)"?>
-{% prettify dart %}
-List<dynamic> arguments = foo['args'];
-{% endprettify %}
-
-Definition with var:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3)"?>
-{% prettify dart %}
-var arguments = foo['args'];
-{% endprettify %}
-
-The resulting definition depends on the type of `foo` and
-its subscript operator.
-
-{% comment %}
-**[PENDING: That's unclear. Why isn't it `List<String>`?
-  `foo` used to be `methodCall`, if that helps.]**
-{% endcomment %}
 
 ### Field and method inference
 
@@ -573,8 +511,8 @@ the `parent` getter method), you can replace the return type with
 a subtype.
 
 For more information, see
-[Use proper return types when overriding methods](#use-proper-return-types)
-and [Use proper parameter types when overriding methods](#use-proper-param-types).
+[Use sound return types when overriding methods](#use-proper-return-types)
+and [Use sound parameter types when overriding methods](#use-proper-param-types).
 
 
 ## Other resources

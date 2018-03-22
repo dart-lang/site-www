@@ -100,10 +100,11 @@ and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Finding implicit casts
+## Performing additional type checks
 
-To find places in your code that could use explicit types,
-use the `implicit-casts` and `implicit-dynamic` flags:
+If you want stricter static checks than
+the [Dart type system][sound-dart] requires,
+consider using the `implicit-casts` and `implicit-dynamic` flags:
 
 {% prettify yaml %}
 analyzer:
@@ -113,10 +114,11 @@ analyzer:
 {% endprettify %}
 
 {% comment %}
-PENDING: Will these flags still appear under strong-mode in Dart 2.0?
-We should mention related command-line flags
-(--no-implicit-casts? --no-implicit-dynamic?)
-We could give more help about when to use these flags.
+**PENDING:
+Do we still require strong-mode: true to make the analyzer using Dart 2 semantics?
+Will these flags still appear under strong-mode in Dart 2.0?
+Should we mention related command-line flags
+(--no-implicit-casts, --no-implicit-dynamic)?**
 {% endcomment %}
 
 You can use the flags together or separately.
@@ -124,7 +126,8 @@ Both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
-  implicitly casts to a more specific type. The following valid Dart code
+  implicitly casts to a more specific type.
+  The following valid Dart code
   includes an implicit downcast that would be caught by this flag:
 
 {% prettify dart %}
@@ -136,6 +139,10 @@ String s2 = s.substring(1);
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type.
+
+{% comment %}
+TODO: Clarify that description, and insert an example here.
+{% endcomment %}
 
 
 ## Enabling linter rules
@@ -285,9 +292,11 @@ Join the discussion list for linter enthusiasts:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Dart's Type System](/guides/language/sound-dart)
+* [Dart's Type System][sound-dart]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules](http://dart-lang.github.io/linter/lints/)
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 * [dartdevc]({{site.webdev}}/tools/dartdevc)
 * [analyzer package](https://pub.dartlang.org/packages/analyzer)
+
+[sound-dart]: /guides/language/sound-dart

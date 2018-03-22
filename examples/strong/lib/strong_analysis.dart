@@ -17,14 +17,14 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion opening-example
-    void fn(List<int> a) => print(a);
+    void printInts(List<int> a) => print(a);
 
     void main() {
       var list = [];
       list.add(1);
       list.add("2");
       // ignore_for_file: 1, 2, argument_type_not_assignable
-      fn(list); //!analysis-issue
+      printInts(list); //!analysis-issue
     }
     // #enddocregion opening-example
   }

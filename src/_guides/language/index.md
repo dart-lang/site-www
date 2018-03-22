@@ -25,7 +25,7 @@ These two resources are popular with both beginning Dartisans and experts.
 
 <ul markdown="1">
 <li markdown="1"> [Dart's Type System](/guides/language/sound-dart)<br>
-    Learn about Dart's sound static type system.
+    Learn about Dart's sound type system.
 </li>
 
 <ul markdown="1">

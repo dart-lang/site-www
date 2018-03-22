@@ -361,7 +361,7 @@ warning • A function of type '...' can't be assigned to a location of type '..
 
 In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
 [bottom type][]  (subtype of all types)
-depending on the context. This meant it was legal to assign, for example,
+depending on the context. This meant it was valid to assign, for example,
 a function with a parameter of type `String` to a place that expected a
 function type with a parameter of `dynamic`.
 
@@ -543,11 +543,11 @@ Do we have any known issues or bugs to list here?
 ### The covariant keyword
 
 Some (rarely used) coding patterns rely on tightening a type
-by overriding a parameter's type with a subtype, which is illegal.
+by overriding a parameter's type with a subtype, which is invalid.
 In this case, you can use the `covariant` keyword to
 tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
-parameter type at runtime.
+argument type at runtime.
 
 <aside class="alert alert-info" markdown="1">
   **Version note:**
