@@ -7,14 +7,13 @@ description: How Dart 2 is different from Dart 1.x, and how you can convert your
 
 This page will be rewritten to help developers migrating from Dart 1.x to Dart 2.
 
-Much of the content will come from [Leaf's email].
-
 
 ## Resources
 
 * General
   * [Dart's type system][sound Dart]
     * [Fixing common type problems][Fixing Common Type Problems]
+    * [Breaking Change: --preview-dart-2 turned on by default][Leaf's email]
   * Dart SDK
     * [dart-lang/sdk CHANGELOG][]
     * [About SDK release channels and version strings][pre-release]
