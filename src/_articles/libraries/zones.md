@@ -4,6 +4,7 @@ description: "Manage your asynchronous code: handle uncaught errors, override be
 written: 2014-03-03
 category: libraries
 css: ["/articles/styles.css"]
+obsolete: true
 ---
 
 ### Asynchronous dynamic extents

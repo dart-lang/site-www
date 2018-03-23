@@ -5,6 +5,7 @@ description: "Mixins let you implement functionality once and use it in multiple
 written: 2012-12-18
 updated: 2016-08-25
 category: language
+obsolete: true
 ---
 
 _Written by Gilad Bracha <br>

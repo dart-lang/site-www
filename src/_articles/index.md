@@ -14,6 +14,8 @@ Also see:
 * [Articles about the Dart VM](/articles/dart-vm)
 * [Articles about webdev]({{site.webdev}}/articles)
 
+{% include article_index_warning.md %}
+
 <div class="break-80">
   <h2>Language details</h2>
   {% assign articles = site.articles | filter: 'language' | order: 'date' | reverse %}

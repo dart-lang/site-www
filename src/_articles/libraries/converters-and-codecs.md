@@ -4,6 +4,7 @@ description: Learn how to write efficient conversions.
 written: 2014-02-06
 updated: 2015-03-17
 category: libraries
+obsolete: true
 ---
 
 ### **_How to write efficient conversions_**

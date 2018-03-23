@@ -5,6 +5,7 @@ description: "An introduction to the Dart I/O library, which is aimed at server-
 written: 2012-03-01
 updated: 2015-03-15
 category: dart-vm
+obsolete: true
 ---
 
 _Written by Mads Ager <br>
