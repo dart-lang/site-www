@@ -26,16 +26,6 @@ everything you need to write and run Dart code:
 VM, libraries, analyzer, package manager, doc generator,
 formatter, debugger, and more.
 
-If you're doing web development, you might also want **Dartium**.
-Instructions for installing Dartium are also provided in the following pages,
-or see the [zip file archive](/install/archive).
-
-{% include dartium-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
 
 ## Automated installation and updates
 
@@ -52,7 +42,7 @@ A package manager can help you easily install and update the Dart SDK.
 Not using a package manager for your OS? No problem!
 
 [Download](/install/archive)
-zip files of the Dart SDK, Dartium, and docs.
+zip files of the Dart SDK and docs.
 
 
 ## Looking for an older version?
@@ -77,15 +67,8 @@ They consist of dot-separated integers, with no hyphens or letters.
 
 **Dev** channel releases of the Dart SDK (pre-releases)
 have additional characters, starting with a hyphen (`-`).
-After the stable release of Dart 1.24.0 on June 12,
-dev channel SDKs had version strings beginning with
-`1.25.0-dev`—for example, `1.25.0-dev.16.4`.
-
-Although we don't plan to release a 1.25 Dart SDK on the stable channel,
-the `1.25.0-dev` releases made it possible to use the latest SDK without
-worrying about [SDK constraints][] and [semantic versioning.][semantic versioning]
-Now that breaking changes are expected,
-we’ve switched to version strings beginning with `2.0.0-dev`.
+Dart 2 pre-releases have version numbers starting with
+`2.0.0-dev`—for example, `2.0.0-dev.42.0`.
 
 For more information, see
 [Dart 2 Updates](/dart-2)

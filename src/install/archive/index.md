@@ -10,18 +10,21 @@ js:
 ---
 Use this index to install
 [specific versions](/install#about-sdk-release-channels-and-version-strings) of the
-[Dart SDK](/tools/sdk),
-[Dartium,]({{site.webdev}}/tools/dartium)
+[Dart SDK](/tools/sdk)
 and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 
 Want to install Dart with your OS's package manager?
 Go to the [main Dart installation page](/install).
 
-{% include dartium-2.0.html %}
-
+<aside class="alert alert-info" markdown="1">
+  **Note:** Many Dart 1.x releases include a third downloadable item,
+  the Dartium browser, which is no longer supported.
+  For more information, see the
+  [Dart 2 migration guide for web developers.]({{site.webdev}}/tools/dartium)
 {% comment %}
 update-for-dart-2
 {% endcomment %}
+</aside>
 
 ## Stable channel
 
