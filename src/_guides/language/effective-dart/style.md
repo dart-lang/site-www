@@ -368,7 +368,7 @@ if (isWeekDay) {
 {% endprettify %}
 
 There is one exception to this: `if` statements with no `else` clause that fit
-on one line may omit the braces.
+on one 80-character line may omit the braces.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
