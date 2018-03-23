@@ -20,13 +20,13 @@ Matcher _throwsA<T>(String msg) => throwsA(
 void main() {
   test('opening example', () {
     // #docregion opening-example
-    void fn(List<int> a) => print(a);
+    void printInts(List<int> a) => print(a);
 
     void main() {
       var list = <int>[];
       list.add(1);
       list.add(2);
-      fn(list);
+      printInts(list);
     }
 
     // #enddocregion opening-example

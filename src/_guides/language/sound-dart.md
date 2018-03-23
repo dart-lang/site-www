@@ -1,70 +1,63 @@
 ---
-title: Strong Mode Dart
+title: Dart's Type System
 description: Why and how to write sound Dart code.
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+Dart is type safe: it uses a combination of static type checking and
+[runtime checks](#runtime-checks) to
+ensure that a variable's value always matches the variable's static type.
+Although _types_ are mandatory, type _annotations_ are optional
+because Dart performs [type inference](#type-inference).
 
-This guide tells you why and how to write sound (type safe) Dart code.
-You'll learn how to use strong mode to enable soundness, as well as
-how to substitute types safely when overriding methods.
-
-**Strong mode** is a sound static
-type system that uses a combination of static and runtime checks to
-ensure your code is type safe&mdash;that you can never see a value
-whose runtime type does not match its static type.
-With strong mode enabled (in an implementation that has both the
-static and runtime checks), Dart is a sound language.
-
-<aside class="alert alert-warning" markdown="1">
-  **Warning:**
-  Currently, the Dart dev compiler
-  ([dartdevc,]({{site.webdev}}/tools/dartdevc) also known as _DDC_)
-  is the only full implementation of strong mode.
-  VM and dart2js support are on their way.
-</aside>
+This page concentrates on the type safety features added in Dart 2.
+For a full introduction to the Dart language, including types, see the
+[language tour](/guides/language/language-tour).
 
 <aside class="alert alert-info" markdown="1">
   **Terminology note:**
-  The terms **sound** Dart, **strong mode** Dart, and **type safe** Dart
-  are sometimes used interchangeably.
-  **Classic** Dart refers to Dart before soundness was added to the language.
+  The terms **sound** Dart and **type safe** Dart
+  are often used interchangeably.
+  You might also see the term **strong mode**.
+  Strong mode was an opt-in Dart 1.x feature
+  that provided partial support for type safety.
 </aside>
 
-By writing sound Dart code today, you'll reap some benefits now,
-with more in the near future. Current benefits include finding bugs
-at compile time (rather than at runtime) using Dart's static analyzer.
-And soon you'll be able to use new tools that quickly and incrementally
-compile your sound Dart code, giving you a better overall
-developer experience.
+One benefit of static type checking is the ability to find bugs
+at compile time using Dart's [static analyzer.][analyzer]
 
-Strong mode Dart adds only a few additional rules beyond that for classic
-Dart&mdash;mostly you clarify code where the types are ambiguous or
-incorrect. In fact, most strong mode errors can be fixed by adding type
-annotations to your Lists and Maps.
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  The dart2js compiler and tools that depend on it
+  (such as DartPad)
+  don't yet have full support for runtime checks.
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+</aside>
 
-For example, in the following code the `fn()` function prints an integer list,
-and `main()` creates a list and passes it to `fn()`.
-In classic Dart, the analyzer reports no issues and the code runs without errors.
+You can fix most static analysis errors by adding type annotations to generic
+classes. The most common generic classes are the collection types
+`List<T>` and `Map<K,V>`.
+
+For example, in the following code the `handleInts()` function prints an integer list,
+and `main()` creates a list and passes it to `handleInts()`.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
 {% prettify dart %}
-void fn(List<int> a) => print(a);
+void printInts(List<int> a) => print(a);
 
 void main() {
   var list = [];
   list.add(1);
   list.add("2");
-  fn([!list!]);
+  printInts([!list!]);
 }
 {% endprettify %}
 
-If you enable strong mode, a type error is reported on `list` (highlighted
-above) at the call of `fn(list)`:
+The preceding code results in a type error on `list` (highlighted
+above) at the call of `handleInts(list)`:
 
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -72,13 +65,11 @@ above) at the call of `fn(list)`:
 error • The argument type 'List' can't be assigned to the parameter type 'List<int>' • argument_type_not_assignable
 ```
 
-The error, reported at runtime and by the analyzer (when
-[implicit casts are disabled](#call-dartanalyzer-with-strong-mode-enabled)),
-highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
+The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
 The `list` variable has static type `List<dynamic>`. This is because the
 initializing declaration `var list = []` doesn't provide the analyzer with
 enough information for it to infer a type argument more specific than `dynamic`.
-The `fn()` function expects a parameter of type `List<int>`,
+The `handleInts()` function expects a parameter of type `List<int>`,
 causing a mismatch of types.
 
 When adding a type annotation (`<int>`) on creation of the list
@@ -89,13 +80,13 @@ in code that passes static analysis and runs with no errors or warnings.
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
 {% prettify dart %}
-void fn(List<int> a) => print(a);
+void printInts(List<int> a) => print(a);
 
 void main() {
   var list = [!<int>!][];
   list.add(1);
   list.add([!2!]);
-  fn(list);
+  printInts(list);
 }
 {% endprettify %}
 
@@ -119,46 +110,13 @@ the expression's static type. For example, if an expression's static
 type is `String`, at runtime you are guaranteed to only get a string
 when you evaluate it.
 
-Strong mode, like the type systems in Java and C#, is sound. It
+Dart's type system, like the type systems in Java and C#, is sound. It
 enforces that soundness using a combination of static checking
-(compile errors) and runtime checks. For example, assigning a `String`
-to `int` is a compile error. Casting an `Object` to a string using
-`as String` will fail with a runtime error if the object isn't a
+(compile-time errors) and runtime checks. For example, assigning a `String`
+to `int` is a compile-time error. Casting an `Object` to a string using
+`as String` fails with a runtime error if the object isn't a
 string.
 
-Dart was created as an optionally typed language and is not sound.
-For example, it is valid to create a list in Dart that contains
-integers, strings, and streams. Your program will not fail to compile
-or run just because the list contains mixed types, even if the list
-is specified as a list of `float` but contains every type except
-floating point values.
-
-In classic Dart, the problem occurs at runtime&mdash;fetching a
-`Stream` from a list but getting another type results in a runtime
-exception and the app crashes. For example, the following code
-assigns a list of type `dynamic` (which contains strings) to a list
-of type `int`. Iterating through the list and subtracting 10 from
-each item causes a runtime exception because the minus operator isn't
-defined for strings.
-
-{:.fails-sa}
-<?code-excerpt "strong/test/strong_test.dart (what-is-soundness)" replace="/List.int.*?;|print.*?;/[!$&!]/g"?>
-{% prettify dart %}
-void main() {
-  List<dynamic> strings = ["not", "ints"];
-  [!List<int> numbers = strings;!]
-  for (var number in numbers) {
-    [!print(number - 10);!] // Classic Dart runtime exception
-  }
-}
-{% endprettify %}
-
-Once strong mode is enabled, the analyzer warns you that this assignment
-is a problem, avoiding the runtime error.
-
-Strong mode enables Dart to have a sound type system. Strong mode Dart
-won't let a `List<dynamic>` pretend to be a `List<int>` and then let
-you pull non-integers out of it.
 
 ## The benefits of soundness
 
@@ -179,39 +137,26 @@ A sound type system has several benefits:
   of code that just broke.
 
 * Better ahead of time (AOT) compilation.<br>
-  While AOT compilation is possible without strong types, the generated
+  While AOT compilation is possible without types, the generated
   code is much less efficient.
 
-* Cleaner JavaScript.<br>
-  For web apps, strong mode's more restrictive typing allows
-  dartdevc to generate cleaner, more compact JavaScript.
 
-## What constitutes strong mode?
+## Tips for passing static analysis
 
-Dart's strong mode implementation, which enables soundness, consists
-of three pieces:
+Most of the rules for static types are easy to understand.
+Here are some of the less obvious rules:
 
-1. Sound type system
-2. Runtime checks
-3. Type inference
-
-### Sound type system
-
-Bringing soundness to Dart required adding only a few rules to the
-Dart language.
-With strong mode enabled, the Dart analyzer enforces three additional rules:
-
-* Use proper return types when overriding methods.
-* Use proper parameter types when overriding methods.
+* Use sound return types when overriding methods.
+* Use sound parameter types when overriding methods.
 * Don't use a dynamic list as a typed list.
 
-Let's see the rules in detail, with examples that use the following
+Let's see these rules in detail, with examples that use the following
 type hierarchy:
 
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
-#### Use proper return types when overriding methods
+### Use sound return types when overriding methods
 
 The return type of a method in a subclass must be the same type or a
 subtype of the return type of the method in the superclass. Consider
@@ -248,7 +193,7 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 <a name="use-proper-param-types"></a>
-#### Use proper parameter types when overriding methods
+### Use sound parameter types when overriding methods
 
 The parameter of an overridden method must have either the same type
 or a supertype of the corresponding parameter in the superclass.
@@ -304,12 +249,11 @@ Animal a = new Cat();
 a.chase(new [!Alligator!]()); // Not type safe or feline safe
 {% endprettify %}
 
-#### Don't use a dynamic list as a typed list
+### Don't use a dynamic list as a typed list
 
-Strong mode won't allow you to use a dynamic list as a typed list.
-You can use a dynamic list when you want to have a list with
-different kinds of things in it, but strong mode won't let you use
-that list as a typed list.
+A dynamic list is good when you want to have a list with
+different kinds of things in it. However, you can't use a
+dynamic list as a typed list.
 
 This rule also applies to instances of generic types.
 
@@ -331,9 +275,8 @@ void main() {
 
 ## Runtime checks
 
-The changes to Dart's type system as described in this document handle
-most of what's needed to make the Dart language sound. Dartdevc has
-runtime checks to deal with the remaining dynamism in the language.
+Runtime checks in tools like the [Dart VM][] and [dartdevc][]
+deal with type safety issues that the analyzer can't catch.
 
 For example, the following code throws an exception at runtime because it is an error
 to assign a list of Dogs to a list of Cats:
@@ -347,93 +290,39 @@ void main() {
 }
 {% endprettify %}
 
-<aside class="alert alert-warning" markdown="1">
-  **Important:** As of release 1.24, only [dartdevc][] implements these runtime checks,
-  but support in other tools is coming.
-</aside>
 
 ## Type inference
 
-Does strong mode Dart mean that you _always_ have to specify a type?
-
-No. Although _types_ are mandatory in strong mode,
-type _annotations_ are optional.
 The analyzer can infer types for fields, methods, local variables,
-and generic type arguments.
-
+and most generic type arguments.
 When the analyzer doesn't have enough information to infer
 a specific type, it uses the `dynamic` type.
 
-How does type inference work with collections and generics?
-For example, what happens when you use `var` with maps or lists
-under strong mode?
+Here's an example of how type inference works with generics.
+In this example, a variable named `arguments` holds a map that
+pairs string keys with values of various types.
 
-### Example 1: From Map\<String, dynamic> to `var`
+If you explicitly type the variable, you might write this:
 
-Original definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)"?>
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
 {% prettify dart %}
-Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
-New definition:
+Alternatively, you can use `var` and let Dart infer the type:
 
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)"?>
+<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
 {% prettify dart %}
-var arguments = {'argA': 'hello', 'argB': 42};
+[!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
 {% endprettify %}
 
-The map literal infers its type from the elements.
-The keys are both strings. Since the values have different
-types (String and int), you get the least upper bound of those,
-which is Object.
-So the resulting map has type Map<String, Object>, and `arguments`
-gets the same type by inferring it from its initializer.
+The map literal infers its type from its entries,
+and then the variable infers its type from the map literal's type.
+In this map, the keys are both strings, but the values have different
+types (String and int, which have the upper bound Object).
+So the map literal has the type `Map<String, Object>`,
+and so does the `arguments` variable.
 
-### Example 2: From Map\<String, dynamic> to `var`
-
-Original definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2-orig)"?>
-{% prettify dart %}
-Map<String, dynamic> message = {
-  'method': 'someMethod',
-  'args': <Map<String, dynamic>>[arguments],
-};
-{% endprettify %}
-
-New definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-2)"?>
-{% prettify dart %}
-var message = {
-  'method': 'someMethod',
-  'args': <Map<String, dynamic>>[arguments],
-};
-{% endprettify %}
-
-This is the same case as above. If you define `message`
-using `var`, the resulting map has type Map<String, Object>.
-
-### Example 3: From List\<dynamic> to `var`
-
-Original definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3-orig)"?>
-{% prettify dart %}
-List<dynamic> arguments = foo['args'];
-{% endprettify %}
-
-New definition:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-3)"?>
-{% prettify dart %}
-var arguments = foo['args'];
-{% endprettify %}
-
-The resulting definition depends on the type of `foo` and
-its subscript operator.
 
 ### Field and method inference
 
@@ -499,51 +388,6 @@ The return type of the closure is inferred as `int` using upward information.
 Dart uses this return type as upward information when inferring the `map()`
 method's type argument: `<int>`.
 
-## How to enable strong mode
-
-Dart's static analysis engine enforces type safety. You can enable
-strong mode using one of the following approaches:
-
-* Use an analysis options file
-* Call dartanalyzer with the strong mode flag
-* Enable strong mode in DartPad
-
-### Use an analysis options file
-
-By creating
-an analysis options file at the package root of your project,
-you can enable strong mode and any of the available linter rules.
-For more information, see
-[Customize Static Analysis](/guides/language/analysis-options).
-
-### Call dartanalyzer with strong mode enabled
-
-The [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-tool supports several flags related to strong mode:
-
-| `--[no-]strong` | Enable or disable strong static checks. |
-| `--no-implicit-casts` | Disable implicit casts in strong mode. |
-| `--no-implicit-dynamic` | Disable use of implicit dynamic types. |
-{:.table .table-striped .nowrap}
-
-For more information on these flags, see
-[Specifying strong mode](/guides/language/analysis-options#specifying-strong-mode).
-
-### Enable strong mode in DartPad
-
-If you use [DartPad](/tools/dartpad) to write and test code, you can
-enable strong mode by selecting the **Strong mode** box in the lower
-right corner.
-
-<aside class="alert alert-warning" markdown="1">
-  **Warning:**
-  While DartPad implements strong mode _static checks_,
-  DartPad does **not** yet implement strong mode _runtime checks_.
-</aside>
-
-Note that DartPad doesn't support the implicit casts flag,
-implicit dynamic flag, or enabling linter rules. For this functionality
-you can use dartdevc or IntelliJ.
 
 ## Substituting types
 
@@ -642,7 +486,7 @@ What about going in the other direction? Can you assign an `Animal` list to a `L
 List<Cat> myCats = new List<[!Animal!]>();
 {% endprettify %}
 
-This assignment passes static analysis under strong mode,
+This assignment passes static analysis,
 but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
@@ -651,8 +495,8 @@ List<Cat> myCats = new List<Animal>() [!as List<Cat>!];
 {% endprettify %}
 
 The code may fail at runtime. You can disallow implicit casts
-using the `--no-implicit-casts` flag. For more information, see
-[How to enable strong mode](#how-to-enable-strong-mode).
+by specifying `implicit-casts: false` in the [analysis options file.][analysis_options.yaml]
+
 
 ### Methods
 
@@ -667,100 +511,25 @@ the `parent` getter method), you can replace the return type with
 a subtype.
 
 For more information, see
-[Use proper return types when overriding methods](#use-proper-return-types)
-and [Use proper parameter types when overriding methods](#use-proper-param-types).
+[Use sound return types when overriding methods](#use-proper-return-types)
+and [Use sound parameter types when overriding methods](#use-proper-param-types).
 
-## Strong mode vs. checked mode
-
-You may be familiar with the Dart compiler's checked mode feature.
-In checked mode, the compiler inserts dynamic type assertions and
-generates a warning if the types don't match up. For example,
-the following line of code generates a runtime warning in checked mode:
-
-<?code-excerpt "strong/lib/strong_analysis.dart (dart-1-checked-mode-permissiveness)"?>
-{% prettify dart %}
-String result = 1 + 2;
-{% endprettify %}
-
-However, even in checked mode, there is no guarantee that an expression
-will evaluate to a specific type at runtime. Checked mode provides some
-type checking but does not result in fully sound code. Consider the
-following example:
-
-<?code-excerpt "strong/lib/dart_1_my_list_hello_world.dart (info)"?>
-{% prettify dart %}
-void info(List<int> list) {
-  var length = list.length;
-  if (length != 0) print(length + list[0]);
-}
-{% endprettify %}
-
-It is reasonable to expect the `info()` function to print either nothing
-(empty list) or a single integer (non-empty list), and that Dart's
-static tooling and checked mode would enforce this.
-
-However, in the following context, the info method prints
-"helloworld" in checked mode, without any static errors or warnings.
-
-{:.fails-sa}
-<?code-excerpt "strong/lib/dart_1_my_list_hello_world.dart (MyList-and-main)"?>
-{% prettify dart %}
-import 'dart:collection';
-
-class MyList extends ListBase<int> implements List {
-  Object length;
-
-  MyList(this.length);
-
-  operator [](index) => 'world';
-  operator []=(index, value) {}
-}
-
-void main() {
-  List<int> list = new MyList('hello');
-  info(list);
-}
-{% endprettify %}
-
-This code raises no issues when run in checked mode, but generates
-numerous errors when analyzed under strong mode.
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 ## Other resources
 
-The following resources have further information on sound Dart and
-strong mode:
+The following resources have further information on sound Dart:
 
-* [Strong Mode Dart: FAQ](/guides/language/sound-faq) - Questions and answers about
-  writing sound Dart code.
-* [Strong Mode Dart: Fixing Common
-  Problems](/guides/language/sound-problems) - Errors you may encounter when
+* [Fixing Common Type Problems](/guides/language/sound-problems) -
+  Errors you may encounter when
   writing sound Dart code, and how to fix them.
-* [Dart 2 Updates](/dart-2) - How you can start updating your projects
-  to Dart 2 now.
-* [Strong Mode Dart](https://www.youtube.com/watch?v=DKG5CMyol9U) - Leaf
-  Peterson's talk from 2016 Dart Summit.
+* [Dart 2 Updates](/dart-2) - How to update Dart 1.x code to Dart 2.
 * [Customize Static Analysis](/guides/language/analysis-options) - How
   to set up and customize the analyzer and linter using an analysis
   options file.
 
-The next few documents are part of the original
-[dartdevc][] documentation,
-but most of the information applies to anyone using strong mode Dart:
 
-* [Strong Mode](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/STRONG_MODE.md) -
-  Motivation for strong mode Dart.
-* [Strong Mode Static Checking](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/STATIC_SAFETY.md) -
-  Type inference in strong mode Dart.
-* [Strong Mode in the Dart Dev Compiler](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/RUNTIME_SAFETY.md) -
-  Runtime checks in dartdevc.
-* [Using Generic Methods](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md) -
-  Details beyond what the [generic methods](/guides/language/language-tour#using-generic-methods) section
-  of the language tour provides.
-
+[analysis_options.yaml]: /guides/language/analysis-options
+[analyzer]: /tools/analyzer
+[Dart VM]: /dart-vm/tools/dart-vm
 [dartdevc]: {{site.webdev}}/tools/dartdevc
+[strong mode]: https://www.dartlang.org/guides/language/sound-dart#how-to-enable-strong-mode

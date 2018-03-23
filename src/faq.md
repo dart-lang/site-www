@@ -23,7 +23,7 @@ Yes. As of December 2013, [Ecma TC52][tc52] has been put in charge to own,
 evolve, and publish the [standard specification][spec] of the Dart language.
 In addition to TC52, we have also introduced a process for submitting
 Dart enhancement proposals ([DEP][DEP]), because we wanted to make it easier
-to contribute to and follow the evolvement of Dart.
+to contribute to and follow the evolution of Dart.
 
 ### Q. How are you taking input on changes to the Dart repository?
 
@@ -123,8 +123,6 @@ support mirrors.](https://flutter.io/faq/#does-flutter-come-with-a-reflectionmir
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
-The Dart language is now at 1.x, and [Dart 2](/dart-2) is in development.
-
 Future releases might be able to include your feature,
 although we can't include everything.
 Some features don't fit the basic nature of the language,
@@ -148,17 +146,17 @@ appreciation through careful design choices and fair communication about them.
 
 ### Q. Is Dart a statically typed language?
 
+Yes, as of Dart 2.
+For more information, see [Dart's Type System].
+
 Dart 1.x is statically typed if you opt in to [strong mode]
 and use a compiler (such as the Dart development compiler,
 [dartdevc]({{site.webdev}}/tools/dartdevc)),
 that has static and runtime checks. With both types of checks,
 Dart has a sound type system, which guarantees that an expression of one
 type cannot produce a value of another type. (So, no surprises!)
-Types won't be optional in Dart 2.
-[Flutter]&mdash;a cross-platform mobile development system&mdash;already uses
-strong mode.
 
-Even in strong mode, though, you can annotate any variable with
+Even with type-safe Dart, you can annotate any variable with
 `dynamic` if you need the flexibility of a dynamic language.
 The `dynamic` type itself is static, but can contain any type at runtime.
 Of course, that removes many of the benefits of a type-safe language
@@ -166,21 +164,12 @@ for that variable.
 
 ### Q. What is strong mode?
 
-Strong mode contributes to Dart’s implementation of a sound type system.
+Strong mode is a Dart 1.x feature
+that contributed to Dart’s implementation of a sound type system.
 With strong mode enabled (in an implementation that has both the
-static and runtime checks), Dart is a statically typed language ensuring
+static and runtime checks), Dart 1.x is a statically typed language ensuring
 that static type annotations are actually correct at runtime.
-
-In Dart 1.x, you can [opt in to strong
-mode.](/guides/language/sound-dart#how-to-enable-strong-mode)
-We recommend that you migrate to strong mode now to take advantage of
-the new sound type system. For more information, see [Strong Mode Dart].
-
-{% include optional-types-2.0.html %}
-
-{% comment %}
-update-for-dart-2.0
-{% endcomment %}
+For more information, see [Dart's Type System][].
 
 
 ### Q. Why are generics covariant?
@@ -216,7 +205,7 @@ Yes. See [Dart on the Server] for details.
 
 ### Q. How do I use third party code, or share code?
 
-You can find many packages on [pub.dartlang.org][pub], a service for hosting
+You can find many packages on [pub.dartlang.org,][pub] a service for hosting
 packages of Dart code. Use the `pub` command to package your code and upload
 to pub.dartlang.org.
 
@@ -233,7 +222,7 @@ For more information, see [Dart Tools].
 ### Q. Can I build an Android app with Dart?
 
 Yes! You can build an Android app that also works on iOS from a single codebase
-using [Flutter].
+using [Flutter.][Flutter]
 
 ### Q. What are some real-world production deployments of Dart?
 
@@ -260,4 +249,4 @@ See [Who Uses Dart] for a more complete list.
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/sound-dart
-[Strong Mode Dart]: /guides/language/sound-dart
+[Dart's Type System]: /guides/language/sound-dart
