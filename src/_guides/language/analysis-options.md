@@ -66,6 +66,7 @@ Here's a sample analysis options file:
 
 {% prettify yaml %}
 analyzer:
+  strong-mode: true
   errors:
     todo: ignore
   exclude:
@@ -100,7 +101,23 @@ and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Performing additional type checks
+## Enabling Dart 2 semantics
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
+The analyzer in the Dart SDK doesn't yet use the
+[latest Dart type system][sound-dart], by default.
+The simplest way to enable Dart 2 semantics is to put
+`strong-mode: true` in the analysis-options file:
+
+{% prettify yaml %}
+analyzer:
+  strong-mode: true
+{% endprettify %}
+
+### Performing additional type checks
 
 If you want stricter static checks than
 the [Dart type system][sound-dart] requires,
@@ -113,6 +130,11 @@ analyzer:
     implicit-dynamic: false
 {% endprettify %}
 
+You can use the flags together or separately;
+both default to `true`.
+The presence of either flag, regardless of value, enables
+the Dart 2 type system.
+
 {% comment %}
 **PENDING:
 Do we still require strong-mode: true to make the analyzer using Dart 2 semantics?
@@ -120,9 +142,6 @@ Will these flags still appear under strong-mode in Dart 2.0?
 Should we mention related command-line flags
 (--no-implicit-casts, --no-implicit-dynamic)?**
 {% endcomment %}
-
-You can use the flags together or separately.
-Both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
