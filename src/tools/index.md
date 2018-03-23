@@ -77,16 +77,10 @@ Which SDK you need depends on what type of app you're developing.
 |------------------------+----------+-------------------------------------|
 | App type | SDK | Download instructions | More information |
 |--------------------------|------------------------------------------------|
-| Web app | Dart | [Install Dart and Dartium](/install) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools) |
+| Web app | Dart | [Install Dart](/install) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools) |
 | Script or server | Dart | [Install Dart](/install) | [Dart SDK](/tools/sdk), [Dart VM Tools](/dart-vm/tools) |
 | Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io]({{site.flutter}}) |
 {:.table .table-striped}
-
-{% include dartium-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 
 ## Command-line tools
