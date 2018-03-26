@@ -133,8 +133,6 @@ Once packages are in the system cache,
 pub creates a `.packages` file that maps each package
 used by your application to the corresponding package in the cache.
 
-{% include packages-dir.html %}
-
 You only have to download a given version of a package once
 and can then reuse it in as many packages as you would like.
 You can delete and regenerate your `.packages` file without having to access the network.

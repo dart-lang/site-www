@@ -60,42 +60,9 @@ All other directories are private.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl markdown="1">
-  <dt><code>--mode=&lt;mode&gt;</code></dt>
-  <dd markdown="1">
-  Optional. Specifies a transformation mode.
-  Transformers may use <code>--mode</code> to change how they behave.
-  Any word can be used,
-  but the following have special meaning:<br>
-  **[PENDING: How does this change now that we don't have transformers?]**
-
-  <dl>
-    <dt><code>debug</code></dt>
-    <dd>
-    If <code>mode</code> is not specified,
-    it defaults to <code>debug</code> for entrypoints.
-    </dd>
-
-    <dt><code>release</code></dt>
-    <dd>
-    If <code>mode</code> is not specified,
-    it defaults to <code>release</code> for dependencies.
-    </dd>
-  </dl>
-  </dd>
-
-  <dt><code>--checked</code></dt>
-  <dd>
-  Optional. Specify to run in checked mode.
-  It defaults to non-checked mode.
-  </dd>
-
-</dl>
-
-{% include checked-mode-2.0.html %}
-
 {% comment %}
 update-for-dart-2
+TODO: Add any run-specific options here.
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
