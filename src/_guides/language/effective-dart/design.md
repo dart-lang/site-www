@@ -337,6 +337,78 @@ map.containsValue(value)
 {% endprettify %}
 
 
+### DO follow existing mnemonic conventions when naming type parameters.
+
+Single letter names aren't exactly illuminating, but almost all generic types
+use them. Fortunately, they mostly use them in a consistent, mnemonic way.
+The conventions are:
+
+*   `E` for the **element** type in a collection:
+
+    {:.good-style}
+    {% prettify dart %}
+    class IterableBase<E> {}
+    class List<E> {}
+    class HashSet<E> {}
+    class RedBlackTree<E> {}
+    {% endprettify %}
+
+*   `K` and `V` for the **key** and **value** types in an associative
+    collection:
+
+    {:.good-style}
+    {% prettify dart %}
+    class Map<K, V> {}
+    class Multimap<K, V> {}
+    class MapEntry<K, V> {}
+    {% endprettify %}
+
+*   `R` for a type used as the **return** type of a function or a class's
+    methods. This isn't common, but appears in typedefs sometimes and in classes
+    that implement the visitor pattern:
+
+    {:.good-style}
+    {% prettify dart %}
+    abstract class ExpressionVisitor<R> {
+      R visitBinary(BinaryExpression node);
+      R visitLiteral(LiteralExpression node);
+      R visitUnary(UnaryExpression node);
+    }
+    {% endprettify %}
+
+*   Otherwise, use `T`, `S`, and `U` for generics that have a single type
+    parameter and where the surrounding type makes its meaning obvious. There
+    are multiple letters here to allow nesting without shadowing a surrounding
+    name. For example:
+
+    {:.good-style}
+    {% prettify dart %}
+    class Future<T> {
+      Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
+    }
+    {% endprettify %}
+
+    Here, the generic method `then<S>()` uses `S` to avoid shadowing the `T`
+    on `Future<T>`.
+
+If none of the above cases are a good fit, then either another single-letter
+mnemonic name or a descriptive name is fine:
+
+{:.good-style}
+{% prettify dart %}
+class Graph<N, E> {
+  final List<N> nodes;
+  final List<E> edges;
+}
+
+class Graph<Node, Edge> {
+  final List<Node> nodes;
+  final List<Edge> edges;
+}
+{% endprettify %}
+
+In practice, the existing conventions cover most type parameters.
+
 ## Libraries
 
 The underscore character ( `_` ) indicates that a member is private to its

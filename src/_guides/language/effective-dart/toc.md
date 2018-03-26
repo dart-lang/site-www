@@ -177,6 +177,7 @@
 * <a href='/guides/language/effective-dart/design#prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object'>PREFER naming a method <code>to___()</code> if it copies the object's state to a new object.</a>
 * <a href='/guides/language/effective-dart/design#prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object'>PREFER naming a method <code>as___()</code> if it returns a different representation backed by the original object.</a>
 * <a href='/guides/language/effective-dart/design#avoid-describing-the-parameters-in-the-functions-or-methods-name'>AVOID describing the parameters in the function's or method's name.</a>
+* <a href='/guides/language/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters'>DO follow existing mnemonic conventions when naming type parameters.</a>
 
 **Libraries**
 
@@ -208,7 +209,7 @@
 **Type annotations**
 
 * <a href='/guides/language/effective-dart/design#do-type-annotate-public-apis'>DO type annotate public APIs.</a>
-* <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON’T specify a return type for a setter.</a>
+* <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
 * <a href='/guides/language/effective-dart/design#prefer-type-annotating-private-declarations'>PREFER type annotating private declarations.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-types-on-function-expressions'>AVOID annotating types on function expressions.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-with-dynamic-when-not-required'>AVOID annotating with <code>dynamic</code> when not required.</a>
