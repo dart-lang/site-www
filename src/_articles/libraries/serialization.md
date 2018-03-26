@@ -5,6 +5,7 @@ description: "Choose the serialization strategy that's right for your project."
 written: 2015-02-09
 updated: 2017-03-15
 category: libraries
+obsolete: true
 ---
 
 <aside class="alert alert-info" markdown="1">

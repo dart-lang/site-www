@@ -24,18 +24,6 @@ $ brew tap dart-lang/dart
 $ brew install dart
 ```
 
-If you use Dart for web development work, you should also install Dartium and Content Shell:
-
-```terminal
-$ brew tap dart-lang/dart
-$ brew install dart --with-content-shell --with-dartium
-```
-
-{% include dartium-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
 
 ### Installing dev channel releases
 
@@ -45,11 +33,6 @@ use `--devel`:
 ```terminal
 $ brew install dart --devel
 ```
-
-You can use any combination of the
-`--devel`,
-`--with-dartium`, and
-`--with-content-shell` options.
 
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
@@ -74,17 +57,16 @@ depending on what arguments you used before.
 {% endcomment %}
 
 
-## Installation locations
+## SDK installation location {#installation-locations}
 
 Many tools, such as editors, ask you to specify the Dart SDK
-installation directory and the location of Dartium.
-Homebrew uses the following locations,
+installation directory.
+Homebrew uses the following location,
 where you replace `HOMEBREW_INSTALL` with the
 the homebrew installation directory
 (which you can get using `brew --prefix`):
 
-* SDK directory: `HOMEBREW_INSTALL/opt/dart/libexec`
-* Dartium: `HOMEBREW_INSTALL/opt/dart/Chromium.app`
+`HOMEBREW_INSTALL/opt/dart/libexec`
 
 
 ### Specifying a custom installation location {#homebrew-custom-location}

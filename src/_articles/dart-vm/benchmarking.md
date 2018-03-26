@@ -5,6 +5,7 @@ description: "Learn how to benchmark your applications"
 written: 2012-10-01
 updated: 2012-11-01
 category: dart-vm
+obsolete: true
 ---
 
 _Written by John McCutchan <br>
