@@ -1063,6 +1063,21 @@
         "type": 301
       },
       {
+        "source": "/tools/pub/assets-and-transformers",
+        "destination": "/dart-2",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers",
+        "destination": "/dart-2",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers/**",
+        "destination": "/dart-2",
+        "type": 301
+      },
+      {
         "source": "/tools/webstorm",
         "destination": "https://webdev.dartlang.org/tools/webstorm",
         "type": 301
