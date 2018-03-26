@@ -22,33 +22,6 @@ application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
 specify `any` for their dependencies' [version constraints](#version-constraint).
 
-## Asset
-
-A resource&mdash;Dart, HTML, JavaScript, CSS, image, or anything
-else&mdash;intended to be part of a deployed package. The package can be a web
-app, a package used by a web app, or any other package that benefits from a
-build step. Tools such as [`pub serve`]({{site.webdev}}/tools/pub/pub-serve)
-and [`pub build`]({{site.webdev}}/tools/pub/pub-build) take _source_ assets
-(such as an HTML file, a CSS file, and several Dart files)
-and produce _generated_ assets
-(such as the same HTML and CSS files, plus a single JavaScript file).
-
-Assets fall into four groups, with some overlap:
-
-* Source asset: An actual, authored file on disk that `pub build` and
-  `pub serve` can find and use.
-* Generated asset: An asset (possibly the output of a
-  [transformer](#transformer)) that's either served by `pub serve` or saved
-  to disk by `pub build`.
-* Input asset: An asset that is the input to a transformer. An input asset
-  might be a source asset, or it might be the output of a transformer in a
-  previous phase.
-* Output asset: An asset that is created by a transformer. An output asset
-  might be a generated asset, or it might be the input to a transformer in a
-  later phase.
-
-For more information, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
 
 ## Dependency
 
@@ -166,18 +139,6 @@ You only have to download a given version of a package once
 and can then reuse it in as many packages as you would like.
 You can delete and regenerate your `.packages` file without having to access the network.
 
-## Transformer
-
-For more information, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
-
-A transformer is a Dart object that converts input [assets](#asset) (such as
-Dart files or Polymer-formatted HTML) into output assets (such as JavaScript
-and HTML). The [`pub build`]({{site.webdev}}/tools/pub/pub-build)
-command puts the generated assets into files.
-The [`pub serve`]({{site.webdev}}/tools/pub/pub-serve) command,
-on the other hand, doesn't produce files;
-its generated assets are served directly by the dev server.
 
 ## Transitive dependency
 

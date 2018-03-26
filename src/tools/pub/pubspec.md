@@ -65,12 +65,6 @@ A pubspec can have the following fields:
   `https://pub.dartlang.org`. Specify `none` to prevent a package from
   being published.
 
-`transformers`
-: Optional. Used to configure dart2js or other transformers.
-  For more information, see
-  [Pub Assets and Transformers](/tools/pub/assets-and-transformers) and
-  [Configuring the Built-in dart2js Compiler]({{site.webdev}}/tools/pub/dart2js-transformer).
-
 Pub ignores all other fields.
 
 <aside class="alert alert-info" markdown="1">
@@ -111,8 +105,9 @@ dependency_overrides:
 This section has more information about most of the pubspec fields.
 
 {% comment %}
-TODO: Consider adding subsections for the remaining fields
-(publish_to, transformers) so we don't have to say "most of".
+TODO: Consider adding subsection for publish_to and anything else
+that's missing so we don't have to say "most of".
+https://github.com/dart-lang/site-www/issues/702
 {% endcomment %}
 
 

@@ -13,8 +13,6 @@ $ pub run [--mode=<mode>] [--checked] <executable> [args...]
 
 Use this command to run a Dart script in your package,
 or in one of its dependencies, from the command line.
-If your app uses transformers, pub loads and runs the appropriate
-transformers, then runs the app, passing in any specified parameters.
 
 To run an executable when you are not currently inside a package,
 see the [pub global](/tools/pub/cmd/pub-global) command.
@@ -62,13 +60,14 @@ All other directories are private.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl>
+<dl markdown="1">
   <dt><code>--mode=&lt;mode&gt;</code></dt>
-  <dd>
+  <dd markdown="1">
   Optional. Specifies a transformation mode.
   Transformers may use <code>--mode</code> to change how they behave.
   Any word can be used,
   but the following have special meaning:<br>
+  **[PENDING: How does this change now that we don't have transformers?]**
 
   <dl>
     <dt><code>debug</code></dt>

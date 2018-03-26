@@ -2,21 +2,26 @@
 layout: default
 permalink: /tools/pub/cmd
 title: "Pub Commands"
-description: "Pub, a package and asset management tool for Dart, supports a variety of commands."
+description: "Pub, a package management tool for Dart, supports a variety of commands."
 ---
 
-The [pub tool](/tools/pub) has commands for managing packages,
-running and serving apps, and building and deploying web apps.
+The [pub tool](/tools/pub) has commands for managing packages
+and for deploying packages and command-line apps.
 
-Flutter has its own commands for managing and updating packages.
-For more information, see
-[Using Packages]({{site.flutter}}/using-packages/) and
-[Upgrading Flutter]({{site.flutter}}/upgrading/)
-on the [Flutter website.]({{site.flutter}})
+<aside class="alert alert-warning"><div class="alert-with-image">
+  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
+  <div markdown="1">
+  **Important:**
+  The Flutter SDK has its own commands for managing and updating packages.
+  For more information, see
+  [Using Packages]({{site.flutter}}/using-packages/) and
+  [Upgrading Flutter]({{site.flutter}}/upgrading/)
+  on the [Flutter website.]({{site.flutter}})
+  </div>
+</div></aside>
 
 Quick links to the `pub` commands:
 
-* [`pub build`]({{site.webdev}}/tools/pub/pub-build)
 * [`pub cache`](/tools/pub/cmd/pub-cache)
 * [`pub deps`](/tools/pub/cmd/pub-deps)
 * [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
@@ -24,7 +29,6 @@ Quick links to the `pub` commands:
 * [`pub global`](/tools/pub/cmd/pub-global)
 * [`pub publish`](/tools/pub/cmd/pub-lish)
 * [`pub run`](/tools/pub/cmd/pub-run)
-* [`pub serve`]({{site.webdev}}/tools/pub/pub-serve)
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 * [`pub uploader`](/tools/pub/cmd/pub-uploader)
 
@@ -36,9 +40,9 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 Pub's commands fall into the following categories:
 
 * [Managing package dependencies](#managing-apps)
-* [Running and serving apps](#running-and-serving-apps)
-* [Building
-  and deploying apps and packages](#building-and-deploying-apps-and-packages)
+* [Running command-line apps](#running-command-line-apps)
+* [Deploying packages and apps](#deploying-packages-and-apps)
+
 
 <a id="managing-apps"></a>
 ## Managing package dependencies
@@ -81,55 +85,27 @@ or any modification of the pubspec.
   Creates or updates the lock file, as needed.
 
 
-## Running and serving apps
+## Running command-line apps
 
-Pub supports development for running web apps and command-line apps.
-
-### Web apps
-
-If your web app's directory structure follows pub's [package layout
-conventions](/tools/pub/package-layout), you can use the pub development
-server ([`pub serve`](({{site.webdev}}/tools/pub/pub-serve))) to continuously
-build and serve the app's assets.
-This server can be accessed via the browser on localhost and
-allows you to view your web-based app.
-
-IDEs such as WebStorm also use `pub serve` to serve all of the
-Dart scripts and assets (HTML, images, CSS) to the browser.
-
-### Command-line apps
-
-There are two commands that you can use to run Dart scripts
-from the command line. Each command first runs any needed
-transformers before invoking the specified script.
+Two commands let you run Dart scripts from the command line:
 
 * The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
   package, or in one of its dependencies.
 
 * The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
-  globally available packages that can be run when you are not currently inside
-  a package.
+  globally available packages.
 
-## Building and deploying apps and packages
+## Deploying packages and apps
 
-With pub you can publish packages, build deployable web apps, and
-deploy command-line apps.
+With pub you can publish packages and command-line apps.
 
-### Sharing packages
+### Packages
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
 package to [pub.dartlang.org](https://pub.dartlang.org). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
 users to modify and upload new versions of your package.
-
-### Web apps
-
-Once you're ready to deploy a web app,
-use [`pub build`]({{site.webdev}}/tools/pub/pub-build)
-to generate the final files. This command creates the `build` directory,
-compiles the Dart code, and places all necessary files into the build
-directory.
 
 ### Command-line apps
 

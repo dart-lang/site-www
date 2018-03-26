@@ -250,10 +250,8 @@ You can reference another package's assets using the
 Old code might refer to assets using `/packages/<package>/<path>` URLs.
 If that code breaks, you can work around the problem by using
 the `--packages-dir` flag.
+**[PENDING: check!!!]**
 </aside>
-
-For more information about using assets, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
 
 
 ## Implementation files
