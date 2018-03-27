@@ -11,7 +11,9 @@ branch: master
 #   {{site.webdev}}/downloads
 
 dartlang: ""
+dartlang_v1: "https://v1-dartlang-org.firebaseapp.com"
 webdev: "https://webdev.dartlang.org"
+webdev_dev: "https://webdev-dartlang-org-dev.firebaseapp.com"
 dart_vm:  "/dart-vm"
 flutter:  "https://flutter.io"
 dart_api: "https://api.dartlang.org"

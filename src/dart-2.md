@@ -19,9 +19,9 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
   * Pub no longer supports `build` and `serve`.
   * Dartium is no longer supported.
 * Pub no longer supports transformers.
-  Instead, use builders. For more information, see
-  your platform documentation or the
-  [dart-lang/build repo docs.](https://github.com/dart-lang/build/tree/master/docs)
+  Instead, use the new build system. More information:
+  * [Web-specific instructions for building, serving, and testing using build_runner][build_runner web]
+  * [Build system documentation](https://github.com/dart-lang/build/tree/master/docs)
 
 ### Language and libraries
 
@@ -55,6 +55,7 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
+[build_runner web]: {{site.webdev_dev}}/tools/build_runner
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
 [Dart Language Specification]: /guides/language/spec

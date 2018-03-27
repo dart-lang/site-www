@@ -36,6 +36,8 @@ Dart applications rely on packages. If your Dart app uses one or
 more library packages, then your app itself must be an
 application package.
 
+{% include tools/pub-was-a-builder.md %}
+
 ### How to
 
 * [Getting Started with Pub](/tools/pub/get-started)

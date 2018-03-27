@@ -14,8 +14,7 @@ and for deploying packages and command-line apps.
   **Important:**
   The Flutter SDK has its own commands for managing and updating packages.
   For more information, see
-  [Using Packages]({{site.flutter}}/using-packages/) and
-  [Upgrading Flutter]({{site.flutter}}/upgrading/)
+  [Using Packages]({{site.flutter}}/using-packages/)
   on the [Flutter website.]({{site.flutter}})
   </div>
 </div></aside>
@@ -98,6 +97,8 @@ Two commands let you run Dart scripts from the command line:
 ## Deploying packages and apps
 
 With pub you can publish packages and command-line apps.
+
+{% include tools/pub-was-a-builder.md %}
 
 ### Packages
 

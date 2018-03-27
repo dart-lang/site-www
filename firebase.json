@@ -1064,17 +1064,17 @@
       },
       {
         "source": "/tools/pub/assets-and-transformers",
-        "destination": "/dart-2",
+        "destination": "https://v1-dartlang-org.firebaseapp.com/tools/pub/assets-and-transformers",
         "type": 301
       },
       {
         "source": "/tools/pub/transformers",
-        "destination": "/dart-2",
+        "destination": "https://v1-dartlang-org.firebaseapp.com/tools/pub/transformers",
         "type": 301
       },
       {
         "source": "/tools/pub/transformers/**",
-        "destination": "/dart-2",
+        "destination": "https://v1-dartlang-org.firebaseapp.com/tools/pub/transformers",
         "type": 301
       },
       {
