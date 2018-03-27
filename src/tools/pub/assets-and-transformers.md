@@ -5,6 +5,8 @@ title: "Assets and Transformers"
 description: "How pub transforms and generates assets and files during development and build time."
 ---
 
+{% include tools/transformers-going-away.md %}
+
 The [`pub serve`]({{site.webdev}}/tools/pub/pub-serve),
 [`pub build`]({{site.webdev}}/tools/pub/pub-build),
 and [`pub run`](/tools/pub/cmd/pub-run) commands use [transformers][]

@@ -115,6 +115,8 @@ transformers before invoking the specified script.
 With pub you can publish packages, build deployable web apps, and
 deploy command-line apps.
 
+{% include tools/transformers-going-away.md %}
+
 ### Sharing packages
 
 To share your Dart packages with the world, you can
