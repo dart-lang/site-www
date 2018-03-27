@@ -93,6 +93,20 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   {
+    // #docregion default-separator
+    void insert(Object item, {int at = 0}) {/* ... */}
+    // #enddocregion default-separator
+  }
+
+  {
+    // #docregion default-value-null
+    void error([String message]) {
+      stderr.write(message ?? '\n');
+    }
+    // #enddocregion default-value-null
+  }
+
+  {
     // #docregion omit-types-on-locals
     Map<int, List<Person>> groupByZip(Iterable<Person> people) {
       var peopleByZip = <int, List<Person>>{};
