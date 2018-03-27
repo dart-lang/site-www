@@ -283,13 +283,13 @@ for named parameters. For consistency with optional positional parameters, use
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at = 0}) {  ...  }
+void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at: 0}) {  ...  }
+void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
 
 
