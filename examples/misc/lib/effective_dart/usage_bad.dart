@@ -78,7 +78,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-separator
-    void insert(Object item, {int at: 0}) { /* ... */ }
+    void insert(Object item, {int at: 0}) {/* ... */}
     // #enddocregion default-separator
   }
 
