@@ -94,20 +94,14 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-separator
-    void insert(Object item, {int at = 0}) {
-      // ...
-    }
+    void insert(Object item, {int at = 0}) { /* ... */ }
     // #enddocregion default-separator
   }
 
   {
     // #docregion default-value-null
     void error([String message]) {
-      if (message != null) {
-        stderr.write(message);
-      } else {
-        stderr.write("\n");
-      }
+      stderr.write(message ?? '\n');
     }
     // #enddocregion default-value-null
   }

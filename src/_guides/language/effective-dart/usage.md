@@ -283,17 +283,13 @@ for named parameters. For consistency with optional positional parameters, use
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at = 0}) {
-  // ...
-}
+void insert(Object item, {int at = 0}) {  ...  }
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at: 0}) {
-  // ...
-}
+void insert(Object item, {int at: 0}) {  ...  }
 {% endprettify %}
 
 
@@ -306,11 +302,7 @@ implicitly uses `null` as the default, so there's no need to write it.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-value-null)"?>
 {% prettify dart %}
 void error([String message]) {
-  if (message != null) {
-    stderr.write(message);
-  } else {
-    stderr.write("\n");
-  }
+  stderr.write(message ?? '\n');
 }
 {% endprettify %}
 
@@ -318,11 +310,7 @@ void error([String message]) {
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-value-null)"?>
 {% prettify dart %}
 void error([String message = null]) {
-  if (message != null) {
-    stderr.write(message);
-  } else {
-    stderr.write("\n");
-  }
+  stderr.write(message ?? '\n');
 }
 {% endprettify %}
 
