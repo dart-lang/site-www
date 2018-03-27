@@ -2,39 +2,15 @@
 layout: default
 permalink: /resources/synonyms
 title: "Synonyms - Dart, JavaScript, C#, Python"
-description: "Dart idioms and snippets translated to JavaScript, Python, and C#."
+description: "This page has been retired."
 toc: false
 ---
 
-<div class="synonym">
-  <p class="language-choice">
-    Dart idioms and snippets translated to JavaScript, Python, and C#&nbsp;
-    <select>
-      <option value="js">JavaScript</option>
-      <option value="csharp">C#</option>
-      <option value="java">Java/GWT</option>
-      <option value="python">Python</option>
-    </select>
-  </p>
-  <nav>
-    <ul class="nav col3"></ul>
-  </nav>
-  <hr>
-  <div id="synonym-meat">
-    <div class='page-header'>
-      <h1>Loading&hellip;</h1>
-      <p>Thanks for your patience!</p>
-    </div>
-  </div>
-</div>
+This page has been retired, due to bit rot.
+If you'd like to host your own version of Synonyms,
+you are welcome to use our source code!
 
-<script type="application/dart" src="/resources/synonyms/assets/synonyms.dart"></script>
-<script type="text/javascript" src="/resources/synonyms/assets/dart.js"></script>
+Here are links to the old files for Synonyms:
 
-<script type="text/javascript">
-  window.addEventListener('message', function(e) {
-    if (e.data == 'code:loaded') {
-      window.prettyPrint();
-    }
-  });
-</script>
+* [Synonyms (archived)]({{site.dartlang_v1}}/resources/synonyms)
+* [Source code for Synonyms](https://github.com/dart-lang/site-www/tree/1.x/src/resources/synonyms)
