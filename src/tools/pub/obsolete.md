@@ -11,9 +11,9 @@ They're replaced by the **build system**, which includes the **build_runner** to
 For information about building and serving apps in Dart 2, see the following:
 
 * Web development:
-  * [Setup for Angular development (v5)]({{site.webdev_dev}}/angular/guide/setup)
-  * [Deployment (v5)]({{site.webdev_dev}}/angular/guide/deployment)
-  * [Web-specific build_runner documentation]({{site.webdev_dev}}/tools/build_runner)
+  * [Setup for Angular development (v5)]({{site.dev-webdev}}/angular/guide/setup)
+  * [Deployment (v5)]({{site.dev-webdev}}/angular/guide/deployment)
+  * [Web-specific build_runner documentation]({{site.dev-webdev}}/tools/build_runner)
 * General:
   * [Build system](https://github.com/dart-lang/build)
   * [Build system documents,](https://github.com/dart-lang/build/tree/master/docs) including
@@ -30,12 +30,12 @@ If you use Dart 1.x for web development, see the following:
 
 If you maintain a transformer, see the following:
 
-* [Assets and Transformers]({{site.dartlang_v1}}/tools/pub/assets-and-transformers)
-  in the [archived Dart site]({{site.dartlang_v1}})
-* [Writing a Pub Transformer]({{site.dartlang_v1}}/tools/pub/transformers)
-  in the [archived Dart site]({{site.dartlang_v1}})
+* [Assets and Transformers]({{site.prev-dartlang}}/tools/pub/assets-and-transformers)
+  in the [archived Dart site]({{site.prev-dartlang}})
+* [Writing a Pub Transformer]({{site.prev-dartlang}}/tools/pub/transformers)
+  in the [archived Dart site]({{site.prev-dartlang}})
 
 For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 
 * [Language and core library migration guide](/dart-2)
-* [Web app migration guide]({{site.webdev_dev}}/dart-2)
+* [Web app migration guide]({{site.dev-webdev}}/dart-2)

@@ -55,7 +55,7 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
-[build_runner web]: {{site.webdev_dev}}/tools/build_runner
+[build_runner web]: {{site.dev-webdev}}/tools/build_runner
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
 [Dart Language Specification]: /guides/language/spec
