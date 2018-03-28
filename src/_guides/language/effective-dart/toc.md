@@ -73,7 +73,9 @@
 * <a href='/guides/language/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-writing-doc-comments-for-public-apis'>PREFER writing doc comments for public APIs.</a>
 * <a href='/guides/language/effective-dart/documentation#consider-writing-doc-comments-for-private-apis'>CONSIDER writing doc comments for private APIs.</a>
-* <a href='/guides/language/effective-dart/documentation#do-make-the-first-sentence-a-standalone-paragraph'>DO make the first sentence a standalone paragraph.</a>
+* <a href='/guides/language/effective-dart/documentation#do-start-doc-comments-with-a-single-sentence-summary'>DO start doc comments with a single-sentence summary.</a>
+* <a href='/guides/language/effective-dart/documentation#do-separate-the-first-sentence-of-a-doc-comment-into-its-own-paragraph'>DO separate the first sentence of a doc comment into its own paragraph.</a>
+* <a href='/guides/language/effective-dart/documentation#avoid-redundancy-with-the-surrounding-context'>AVOID redundancy with the surrounding context.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-starting-function-or-method-comments-with-third-person-verbs'>PREFER starting function or method comments with third-person verbs.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-starting-variable-getter-or-setter-comments-with-noun-phrases'>PREFER starting variable, getter, or setter comments with noun phrases.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-starting-library-or-type-comments-with-noun-phrases'>PREFER starting library or type comments with noun phrases.</a>
