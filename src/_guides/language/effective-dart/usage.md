@@ -271,6 +271,49 @@ names.forEach((name) {
 });
 {% endprettify %}
 
+
+## Parameters
+
+### DO use `=` to separate a named parameter from its default value.
+
+For legacy reasons, Dart allows both `:` and `=` as the default value separator
+for named parameters. For consistency with optional positional parameters, use
+`=`.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
+{% prettify dart %}
+void insert(Object item, {int at = 0}) { ... }
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
+{% prettify dart %}
+void insert(Object item, {int at: 0}) { ... }
+{% endprettify %}
+
+
+### DON'T use an explicit default value of `null`.
+
+If you make a parameter optional but don't give it a default value, the language
+implicitly uses `null` as the default, so there's no need to write it.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-value-null)"?>
+{% prettify dart %}
+void error([String message]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-value-null)"?>
+{% prettify dart %}
+void error([String message = null]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
 ## Variables
 
 The following best practices describe how to best use variables in Dart.
