@@ -115,32 +115,87 @@ Doc comments aren't just for external consumers of your library's public API.
 They can also be helpful for understanding private members that are called from
 other parts of the library.
 
-### DO make the first sentence a standalone paragraph.
+### DO start doc comments with a single-sentence summary.
 
-The first paragraph of any doc comment is a brief, user-oriented description
-ending with a period. As you can see below, it is often not a complete sentence.
+Start your doc comment with a brief, user-centric description ending with a
+period. A sentence fragment is often sufficient. Provide just enough context for
+the reader to orient themselves and decide if they should keep reading or look
+elsewhere for the solution to their problem.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence)"?>
+{% prettify dart %}
+/// Deletes the file at [path] from the file system.
+void delete(String path) => ...
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence)"?>
+{% prettify dart %}
+/// Depending on the state of the file system and the user's permissions,
+/// certain operations may or may not be possible. If there is no file at
+/// [path] or it can't be accessed, this function throws either [IOError]
+/// or [PermissionError], respectively. Otherwise, this deletes the file.
+void delete(String path) => ...
+{% endprettify %}
+
+### DO separate the first sentence of a doc comment into its own paragraph.
+
+Add a blank line after the first sentence to split it out into its own
+paragraph. If more than a single sentence of explanation is useful, put the
+rest in later paragraphs.
+
+This helps you write a tight first sentence that summarizes the documentation.
+Also, tools like Dartdoc use the first paragraph as a short summary in places
+like lists of classes and members.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
-/// Defines a flag.
+/// Deletes the file at [path].
 ///
-/// Throws an [ArgumentError] if there is already an option named [name] or
-/// there is already an option using abbreviation [abbr]. Returns the new flag.
-Flag addFlag(String name, String abbr) => ...
+/// Throws an [IOError] if the file could not be found. Throws a
+/// [PermissionError] if the file is present but could not be deleted.
+void delete(String path) => ...
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
-/// Starts a new block as a child of the current chunk. Nested blocks are
-/// handled using their own independent [LineWriter].
-ChunkBuilder startBlock() => ...
+/// Deletes the file at [path]. Throws an [IOError] if the file could not
+/// be found. Throws a [PermissionError] if the file is present but could
+/// not be deleted.
+void delete(String path) => ...
 {% endprettify %}
 
-The description should help the reader understand whether this API might
-be useful to them, compared to similar-sounding APIs. Don't just repeat the API
-name&mdash;tell the reader something they don't already know.
+### AVOID redundancy with the surrounding context.
+
+The reader of a class's doc comment can clearly see the name of the class, what
+interfaces it implements, etc. When reading docs for a member, the signature is
+right there, and the enclosing class is obvious. None of that needs to be
+spelled out in the doc comment. Instead, focus on explaining what the reader
+*doesn't* already know.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (redundant)"?>
+{% prettify dart %}
+class RadioButtonWidget extends Widget {
+  /// Sets the tooltip to [lines], which should have been word wrapped using
+  /// the current font.
+  void tooltip(List<String> lines) => ...
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (redundant)"?>
+{% prettify dart %}
+class RadioButtonWidget extends Widget {
+  /// Sets the tooltip for this radio button widget to the list of strings in
+  /// [lines].
+  void tooltip(List<String> lines) => ...
+}
+{% endprettify %}
+
 
 ### PREFER starting function or method comments with third-person verbs.
 

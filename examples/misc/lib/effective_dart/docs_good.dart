@@ -17,15 +17,22 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion block-comments
 
-  <Flag>() {
-    // #docregion first-sentence-a-paragraph, no-annotations
-    /// Defines a flag.
+  {
+    // #docregion first-sentence
+    /// Deletes the file at [path] from the file system.
+    void delete(String path) => ellipsis();
+    // #enddocregion first-sentence
+  }
+
+  {
+    // #docregion first-sentence-a-paragraph
+    /// Deletes the file at [path].
     ///
-    /// Throws an [ArgumentError] if there is already an option named [name] or
-    /// there is already an option using abbreviation [abbr]. Returns the new flag.
-    Flag addFlag(String name, String abbr) => ellipsis();
-    // #enddocregion first-sentence-a-paragraph, no-annotations
-  };
+    /// Throws an [IOError] if the file could not be found. Throws a
+    /// [PermissionError] if the file is present but could not be deleted.
+    void delete(String path) => ellipsis();
+    // #enddocregion first-sentence-a-paragraph
+  }
 
   <T>() {
     // #docregion third-person
@@ -102,6 +109,18 @@ void miscDeclAnalyzedButNotTested() {
   /// #### If you need this many levels of headers, you're doing it wrong
   // #enddocregion markdown
 }
+
+class IOError {}
+class PermissionError {}
+class Widget {}
+
+// #docregion redundant
+class RadioButtonWidget extends Widget {
+  /// Sets the tooltip to [lines], which should have been word wrapped using
+  /// the current font.
+  void tooltip(List<String> lines) => ellipsis();
+}
+// #enddocregion
 
 //----------------------------------------------------------------------------
 
