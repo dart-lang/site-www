@@ -77,6 +77,33 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   {
+    var sequence = [];
+    // #docregion list-from-1
+    var copy1 = sequence.toList();
+    var copy2 = new List.from(sequence);
+    // #enddocregion list-from-1
+  }
+
+  {
+    var sequence = [];
+    // #docregion list-from-2
+    var sequence = [1, 2, 3]; // Creates a List<int>.
+    print(sequence.toList().runtimeType); // "List<int>".
+    print(new List.from(sequence)
+        .runtimeType); // "List" (List<dynamic>).
+    // #enddocregion list-from-2
+  }
+
+  {
+    var sequence = [];
+    // #docregion list-from-3
+    var numbers = [1, 2.3, 4]; // List<num>.
+    numbers.removeAt(1); // Now it only contains integers.
+    var ints = new List<int>.from(numbers);
+    // #enddocregion list-from-3
+  }
+
+  {
     // #docregion func-decl
     void main() {
       localFunction() {

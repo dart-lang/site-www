@@ -213,6 +213,41 @@ with each element as the argument. In that case, `forEach()` is handy.
 people.forEach(print);
 {% endprettify %}
 
+### DON'T use `List.from()` unless you intend to change the type of the result.
+
+Given a sequence of some iterable type, there are two obvious ways to produce a
+new list that contains the same elements:
+
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (list-from-1)"?>
+{% prettify dart %}
+var copy1 = sequence.toList();
+var copy2 = new List.from(sequence);
+{% endprettify %}
+
+The obvious difference is that the first one is shorter. The *important*
+difference is that the first one preserves the type argument of the original
+sequence:
+
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (list-from-2)"?>
+{% prettify dart %}
+var sequence = [1, 2, 3]; // Creates a List<int>.
+print(sequence.toList().runtimeType); // "List<int>".
+print(new List.from(sequence)
+    .runtimeType); // "List" (List<dynamic>).
+{% endprettify %}
+
+If you *want* to change the type, then calling `List.from()` is useful:
+
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (list-from-3)"?>
+{% prettify dart %}
+var numbers = [1, 2.3, 4]; // List<num>.
+numbers.removeAt(1); // Now it only contains integers.
+var ints = new List<int>.from(numbers);
+{% endprettify %}
+
+But if your goal is just to copy the sequence and preserve its original type, or
+you don't care about the type, then use `toList()`.
+
 ## Functions
 
 In Dart, even functions are objects. Here are some best practices
