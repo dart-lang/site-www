@@ -4,5 +4,5 @@
   which includes the **build_runner** tool.
   For details, see the
   [build_runner README](https://github.com/dart-lang/build/blob/master/build_runner/README.md#build_runner) or the
-  [web-specific build_runner documentation.]({{site.webdev_dev}}/tools/build_runner)
+  [web-specific build_runner documentation.]({{site.dev-webdev}}/tools/build_runner)
 </aside>
