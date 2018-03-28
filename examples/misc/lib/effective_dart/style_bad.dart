@@ -10,3 +10,10 @@ class Dice {
   static final NUMBER_GENERATOR = new Random();
 }
 // #enddocregion const-names
+
+oneLineIf(dynamic overflowChars, dynamic other) {
+  // #docregion one-line-if-wrap
+  if (overflowChars != other.overflowChars)
+    return overflowChars < other.overflowChars;
+  // #enddocregion one-line-if-wrap
+};
