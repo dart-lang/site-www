@@ -111,7 +111,9 @@ void miscDeclAnalyzedButNotTested() {
 }
 
 class IOError {}
+
 class PermissionError {}
+
 class Widget {}
 
 // #docregion redundant
