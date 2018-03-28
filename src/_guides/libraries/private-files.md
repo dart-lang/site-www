@@ -25,15 +25,15 @@ created by pub:
 {% prettify none %}
 .dart_tool/
 .packages
-.pub/
 build/
 pubspec.lock  // Except for application packages
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
-**Dart 2 note:** The `.dart_tool` directory, which is new in Dart 2,
+**Note:** The `.dart_tool` directory, which is new in Dart 2,
 is used by pub and other tools. It replaces the `.pub` directory as of
-the 2.0.0-dev.32.0 SDK release.
+the 2.0.0-dev.32.0 SDK release. The `.packages` file replaces the
+`packages` directories that early Dart 1.x versions produced.
 </aside>
 
 **Don't commit** the API documentation directory created by dartdoc:
