@@ -5,6 +5,8 @@ description: "How to write a Pub transformer that processes a single input asset
 permalink: /tools/pub/transformers
 ---
 
+{% include tools/transformers-going-away.md %}
+
 Every time you prepare a Dart app for testing or deployment,
 you are using transformers behind the scenes. The [`pub`](/tools/pub)
 tool uses the [`dart2js`]({{site.webdev}}/tools/dart2js)

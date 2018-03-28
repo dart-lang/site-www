@@ -50,6 +50,8 @@ Assets fall into four groups, with some overlap:
 For more information, see
 [Pub Assets and Transformers](/tools/pub/assets-and-transformers).
 
+{% include tools/transformers-going-away.md %}
+
 ## Dependency
 
 Another package that your package relies on. If your package wants to import
@@ -178,6 +180,8 @@ command puts the generated assets into files.
 The [`pub serve`]({{site.webdev}}/tools/pub/pub-serve) command,
 on the other hand, doesn't produce files;
 its generated assets are served directly by the dev server.
+
+{% include tools/transformers-going-away.md %}
 
 ## Transitive dependency
 

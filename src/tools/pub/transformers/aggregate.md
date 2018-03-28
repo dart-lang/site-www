@@ -5,6 +5,8 @@ description: How to write a Pub transformer to processes multiple input assets.
 permalink: /tools/pub/transformers/aggregate
 ---
 
+{% include tools/transformers-going-away.md %}
+
 An aggregate transformer processes multiple assets in a single
 pass&ndash;for example, collaging multiple images into a single image.
 

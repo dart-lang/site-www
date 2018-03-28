@@ -73,6 +73,8 @@ are specific to web development. For more information, see
 
 ## Writing transformers
 
+{% include tools/transformers-going-away.md %}
+
 When `pub` serves or builds an app, it can run one or more
 transformers&mdash;for example, one transformer converts Dart
 files into a single JavaScript file.
