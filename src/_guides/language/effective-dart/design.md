@@ -346,10 +346,14 @@ The conventions are:
 *   `E` for the **element** type in a collection:
 
     {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)"?>
     {% prettify dart %}
     class IterableBase<E> {}
+
     class List<E> {}
+
     class HashSet<E> {}
+
     class RedBlackTree<E> {}
     {% endprettify %}
 
@@ -357,9 +361,12 @@ The conventions are:
     collection:
 
     {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)"?>
     {% prettify dart %}
     class Map<K, V> {}
+
     class Multimap<K, V> {}
+
     class MapEntry<K, V> {}
     {% endprettify %}
 
@@ -368,6 +375,7 @@ The conventions are:
     that implement the visitor pattern:
 
     {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-r)"?>
     {% prettify dart %}
     abstract class ExpressionVisitor<R> {
       R visitBinary(BinaryExpression node);
@@ -382,6 +390,7 @@ The conventions are:
     name. For example:
 
     {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-t)"?>
     {% prettify dart %}
     class Future<T> {
       Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
@@ -395,15 +404,16 @@ If none of the above cases are a good fit, then either another single-letter
 mnemonic name or a descriptive name is fine:
 
 {:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-graph)"?>
 {% prettify dart %}
 class Graph<N, E> {
-  final List<N> nodes;
-  final List<E> edges;
+  final List<N> nodes = [];
+  final List<E> edges = [];
 }
 
 class Graph<Node, Edge> {
-  final List<Node> nodes;
-  final List<Edge> edges;
+  final List<Node> nodes = [];
+  final List<Edge> edges = [];
 }
 {% endprettify %}
 
