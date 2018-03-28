@@ -9,17 +9,7 @@ You can use the `pub` tool to manage Dart packages.
 Pub is one of the tools that you get when you
 [install](/install) the Dart SDK.
 
-<aside class="alert alert-warning"><div class="alert-with-image">
-  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
-  <div markdown="1">
-  **Important:**
-  The Flutter SDK has its own commands for managing and updating packages.
-  For more information, see
-  [Using Packages]({{site.flutter}}/using-packages/) and
-  [Upgrading Flutter]({{site.flutter}}/upgrading/)
-  on the [Flutter website.]({{site.flutter}})
-  </div>
-</div></aside>
+{% include flutter-packages.md %}
 
 You can access the `pub` commands either through an IDE,
 such as WebStorm, or at the command line.
