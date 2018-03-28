@@ -37,8 +37,8 @@ Identifiers come in three flavors in Dart.
 
 ### DO name types using `UpperCamelCase`.
 
-Classes, enums, typedefs, and type parameters should capitalize the first letter of each word
-(including the first word), and use no separators.
+Classes, enums, typedefs, and type parameters should capitalize the first letter
+of each word (including the first word), and use no separators.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
