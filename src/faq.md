@@ -11,7 +11,6 @@ This page collects some of the top questions we've heard from the community
 since Dart was open sourced. For other questions and answers, see:
 
 * [tools FAQ](/tools/faq)
-* [performance FAQ](/performance)
 * [webdev FAQ]({{site.webdev}}/faq)
 * [Flutter FAQ]({{site.flutter}}/faq/)
 
