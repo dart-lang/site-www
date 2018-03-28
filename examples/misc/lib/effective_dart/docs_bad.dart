@@ -9,15 +9,42 @@ void miscDeclAnalyzedButNotTested() {
     print('Hi, $name!');
   }
   // #enddocregion block-comments
+
+  {
+    // #docregion first-sentence
+    /// Depending on the state of the file system and the user's permissions,
+    /// certain operations may or may not be possible. If there is no file at
+    /// [path] or it can't be accessed, this function throws either [IOError]
+    /// or [PermissionError], respectively. Otherwise, this deletes the file.
+    void delete(String path) => ellipsis();
+    // #enddocregion first-sentence
+  }
+
+  {
+    // #docregion first-sentence-a-paragraph
+    /// Deletes the file at [path]. Throws an [IOError] if the file could not
+    /// be found. Throws a [PermissionError] if the file is present but could
+    /// not be deleted.
+    void delete(String path) => ellipsis();
+    // #enddocregion first-sentence-a-paragraph
+  }
 }
 
-class C<ChunkBuilder, Flag, LineWriter> {
-  // #docregion first-sentence-a-paragraph
-  /// Starts a new block as a child of the current chunk. Nested blocks are
-  /// handled using their own independent [LineWriter].
-  ChunkBuilder startBlock() => ellipsis();
-  // #enddocregion first-sentence-a-paragraph
+class IOError {}
 
+class PermissionError {}
+
+class Widget {}
+
+// #docregion redundant
+class RadioButtonWidget extends Widget {
+  /// Sets the tooltip for this radio button widget to the list of strings in
+  /// [lines].
+  void tooltip(List<String> lines) => ellipsis();
+}
+// #enddocregion
+
+class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion no-annotations
   /// Defines a flag with the given name and abbreviation.
   ///
