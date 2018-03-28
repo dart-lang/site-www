@@ -30,10 +30,10 @@ If you use Dart 1.x for web development, see the following:
 
 If you maintain a transformer, see the following:
 
-* [Assets and Transformers]({{site.prev-dartlang}}/tools/pub/assets-and-transformers)
-  in the [archived Dart site]({{site.prev-dartlang}})
-* [Writing a Pub Transformer]({{site.prev-dartlang}}/tools/pub/transformers)
-  in the [archived Dart site]({{site.prev-dartlang}})
+* [Assets and Transformers]({{site.prev-url}}/tools/pub/assets-and-transformers)
+  in the [archived Dart site]({{site.prev-url}})
+* [Writing a Pub Transformer]({{site.prev-url}}/tools/pub/transformers)
+  in the [archived Dart site]({{site.prev-url}})
 
 For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 

@@ -10,8 +10,7 @@ branch: master
 # use case:
 #   {{site.webdev}}/downloads
 
-dartlang: ""
-prev-dartlang: "https://v1-dartlang-org.firebaseapp.com"
+prev-url: https://v1-dartlang-org.firebaseapp.com
 webdev: "https://webdev.dartlang.org"
 dev-webdev: "https://webdev-dartlang-org-dev.firebaseapp.com"
 dart_vm:  "/dart-vm"
