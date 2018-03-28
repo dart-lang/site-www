@@ -217,15 +217,10 @@ See [issue 1082](https://github.com/dart-lang/dartdoc/issues/1082).
 ## Distributing a library
 
 When checking your library into source code control, be aware
-that there are some files you should not commit. For library
-packages, don't commit `.packages`, the `pubspec.lock` file,
-or any `packages` directories. For more information, see
+that there are some files you should not commit.
+For example, don't commit `.packages` or `pubspec.lock` files.
+To learn more, see
 [What Not to Commit](private-files).
-
-{% comment %}
-PENDING: here just to make it easy to find discussions of `packages`...
-{% include packages-dir.html %}
-{% endcomment %}
 
 You can share your open source libraries with other developers on
 [pub.dartlang.org](https://pub.dartlang.org/) using

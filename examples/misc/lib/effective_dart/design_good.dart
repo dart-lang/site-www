@@ -190,6 +190,58 @@ class Task {
 
 //----------------------------------------------------------------------------
 
+// #docregion type-parameter-e
+class IterableBase1<E> {}
+
+class List1<E> {}
+
+class HashSet1<E> {}
+
+class RedBlackTree<E> {}
+// #enddocregion type-parameter-e
+
+// #docregion type-parameter-k-v
+class Map1<K, V> {}
+
+class Multimap<K, V> {}
+
+class MapEntry1<K, V> {}
+// #enddocregion type-parameter-k-v
+
+class BinaryExpression {}
+
+class LiteralExpression {}
+
+class UnaryExpression {}
+
+// #docregion type-parameter-r
+abstract class ExpressionVisitor<R> {
+  R visitBinary(BinaryExpression node);
+  R visitLiteral(LiteralExpression node);
+  R visitUnary(UnaryExpression node);
+}
+// #enddocregion type-parameter-r
+
+// #docregion type-parameter-t
+class Future1<T> {
+  Future<S> then<S>(FutureOr<S> onValue(T value)) => ellipsis();
+}
+// #enddocregion type-parameter-t
+
+// #docregion type-parameter-graph
+class Graph<N, E> {
+  final List<N> nodes = [];
+  final List<E> edges = [];
+}
+
+class Graph1<Node, Edge> {
+  final List<Node> nodes = [];
+  final List<Edge> edges = [];
+}
+// #enddocregion type-parameter-graph
+
+//----------------------------------------------------------------------------
+
 // #docregion one-member-abstract-class
 typedef bool Predicate<E>(E element);
 // #enddocregion one-member-abstract-class

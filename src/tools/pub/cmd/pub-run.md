@@ -13,8 +13,6 @@ $ pub run [--mode=<mode>] [--checked] <executable> [args...]
 
 Use this command to run a Dart script in your package,
 or in one of its dependencies, from the command line.
-If your app uses transformers, pub loads and runs the appropriate
-transformers, then runs the app, passing in any specified parameters.
 
 To run an executable when you are not currently inside a package,
 see the [pub global](/tools/pub/cmd/pub-global) command.
@@ -62,41 +60,9 @@ All other directories are private.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl>
-  <dt><code>--mode=&lt;mode&gt;</code></dt>
-  <dd>
-  Optional. Specifies a transformation mode.
-  Transformers may use <code>--mode</code> to change how they behave.
-  Any word can be used,
-  but the following have special meaning:<br>
-
-  <dl>
-    <dt><code>debug</code></dt>
-    <dd>
-    If <code>mode</code> is not specified,
-    it defaults to <code>debug</code> for entrypoints.
-    </dd>
-
-    <dt><code>release</code></dt>
-    <dd>
-    If <code>mode</code> is not specified,
-    it defaults to <code>release</code> for dependencies.
-    </dd>
-  </dl>
-  </dd>
-
-  <dt><code>--checked</code></dt>
-  <dd>
-  Optional. Specify to run in checked mode.
-  It defaults to non-checked mode.
-  </dd>
-
-</dl>
-
-{% include checked-mode-2.0.html %}
-
 {% comment %}
 update-for-dart-2
+TODO: Add any run-specific options here.
 {% endcomment %}
 
 <aside class="alert alert-info" markdown="1">

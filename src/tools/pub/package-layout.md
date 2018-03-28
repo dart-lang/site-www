@@ -5,25 +5,29 @@ description: "Learn more about the directory structure used by Dart's package ma
 permalink: /tools/pub/package-layout
 ---
 
-Part of a healthy code ecosystem is consistent conventions. When we all do the
-same thing the same way, it makes it easier for us to learn our way around
-each other's work. It also makes it easier to write tools that can
-automatically do things for us.
-
 When you build a [pub](/tools/pub) package,
-we have a set of conventions we encourage you to follow.
+we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
-package, and how to name things. You don't have to have every single thing
-these guidelines specify. If your package doesn't have binaries, it doesn't
-need a directory for them. But if it does, you'll make everyone's life easier
-if you call it `bin`.
+package, and how to name things.
 
-To give you a picture of the whole enchilada, here's what a complete package
-(conveniently named `enchilada`) that uses every corner of these guidelines
-would look like:
+<aside class="alert alert-info"><div class="alert-with-image">
+  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
+  <div markdown="1">
+  **Note:**
+  Flutter apps can use custom directories for their assets.
+  For details, see
+  [Adding Assets and Images in Flutter]({{site.flutter}}/assets-and-images/)
+  on the [Flutter website.]({{site.flutter}})
+  </div>
+</div></aside>
+
+Here's what a complete package (named `enchilada`)
+that uses every corner of these guidelines
+might look like:
 
 {% prettify none %}
 enchilada/
+  .dart_tool/ *
   .packages *
   pubspec.yaml
   pubspec.lock **
@@ -57,8 +61,8 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.packages` file exists after you've run `pub get`.
-   Don't check it into source control.
+\* The `.dart_tool` directory and `.packages` file exist after you've run
+   `pub get`. Don't check them into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
     Leave it out of source control unless your package is an
@@ -248,12 +252,7 @@ You can reference another package's assets using the
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
 Old code might refer to assets using `/packages/<package>/<path>` URLs.
-If that code breaks, you can work around the problem by using
-the `--packages-dir` flag.
 </aside>
-
-For more information about using assets, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
 
 
 ## Implementation files

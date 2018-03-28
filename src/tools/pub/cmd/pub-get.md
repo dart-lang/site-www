@@ -8,7 +8,7 @@ _Get_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
 {% prettify nocode %}
-$ pub get [--offline] [--packages-dir]
+$ pub get [--offline]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
@@ -27,14 +27,7 @@ doesn't already contain the dependencies, `pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
-this command creates a `.packages` file and—if you specify
-the `--packages-dir` flag—one or more
-`packages` directories.
-
-{% comment %}
-PENDING: here just to make it easy to find discussions of `packages`...
-{% include packages-dir.html %}
-{% endcomment %}
+this command creates a `.packages` file.
 
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
@@ -62,26 +55,23 @@ get the latest versions of all dependencies.
 
 {% include pub-in-prereleases.html %}
 
-## Package resolution: .packages and packages
+## Package resolution
 
 By default, pub creates a `.packages` file
 that maps from package names to location URIs.
 Before the `.packages` file, pub used to create `packages` directories.
 
-The `pub serve` command still
-produces a virtual `packages` directory,
-and the `pub build` command produces an actual `packages` directory
-in its output directory.
-To make other `pub` commands create `packages` directories,
-specify `--packages-dir`.
-
 <aside class="alert alert-info" markdown="1">
-**Note:** Don't check the generated `.package` file,
-`packages` directories, or `.pub` directory (when present)
-into your repo;
+**Note:** Don't check the generated `.packages` file,
+`packages` directories (if present), or
+`.dart_tool` directory into your repo;
 add them to your repo's `.gitignore` file.
 For more information, see
 [What Not to Commit](/guides/libraries/private-files).
+{% comment %}
+PENDING: here just to make it easy to find discussions of `packages`...
+{% include packages-dir.html %}
+{% endcomment %}
 </aside>
 
 For more information, see the
@@ -115,9 +105,7 @@ Dependencies downloaded over the internet, such as those from Git and
 [system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
-downloaded and stored locally once. It also means that it's safe to delete
-the `.packages` file and `packages` directories, without
-worrying about re-downloading packages.
+downloaded and stored locally once.
 
 By default, the system package cache is located in the `.pub-cache`
 subdirectory of your home directory (on Mac and Linux),
@@ -152,8 +140,8 @@ run [`pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
 ## Options
 
-The `pub get` command supports the `--offline` and `--packages-dir`
-command-line arguments, as discussed above.
+The `pub get` command supports the `--offline`
+command-line argument, as discussed above.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).

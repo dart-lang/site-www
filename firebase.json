@@ -794,7 +794,12 @@
       },
       {
         "source": "/performance/io",
-        "destination": "/performance",
+        "destination": "/articles/dart-vm/benchmarking",
+        "type": 301
+      },
+      {
+        "source": "/performance",
+        "destination": "/articles/dart-vm/benchmarking",
         "type": 301
       },
       {
@@ -1060,6 +1065,21 @@
       {
         "source": "/tools/pub/faq.html",
         "destination": "/tools/faq#pub",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/assets-and-transformers",
+        "destination": "/tools/pub/obsolete",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers",
+        "destination": "/tools/pub/obsolete",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/transformers/**",
+        "destination": "/tools/pub/obsolete",
         "type": 301
       },
       {

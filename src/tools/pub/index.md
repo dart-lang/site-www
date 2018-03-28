@@ -1,14 +1,15 @@
 ---
-title: Pub Package and Asset Manager
-description: Use the pub tool to manage Dart's packages and assets.
+title: Pub Package Manager
+description: Use the pub tool to manage Dart packages.
 short-title: Pub
 permalink: /tools/pub
 ---
 
-You can use the `pub` tool to manage Dart packages and assets.
-Pub also includes commands for creating, developing, and deploying Dart
-applications. When you [install](/install) the Dart SDK,
-one of the tools that you get is `pub`.
+You can use the `pub` tool to manage Dart packages.
+Pub is one of the tools that you get when you
+[install](/install) the Dart SDK.
+
+{% include flutter-packages.md %}
 
 You can access the `pub` commands either through an IDE,
 such as WebStorm, or at the command line.
@@ -25,6 +26,8 @@ Dart applications rely on packages. If your Dart app uses one or
 more library packages, then your app itself must be an
 application package.
 
+{% include tools/pub-was-a-builder.md %}
+
 ### How to
 
 * [Getting Started with Pub](/tools/pub/get-started)
@@ -36,7 +39,6 @@ application package.
 
 * [Pub Dependencies](/tools/pub/dependencies)
 * [Pub Package Layout Conventions](/tools/pub/package-layout)
-* [Pub Assets and Transformers](/tools/pub/assets-and-transformers)
 * [Pub Versioning Philosophy](/tools/pub/versioning)
 
 ### Reference
@@ -47,14 +49,7 @@ application package.
 
 ## Pub commands
 
-The `pub` tool provides commands for a variety of purposes.
-One command installs packages, another starts up an HTTP server for testing,
-another prepares your app for deployment, and another
-publishes your package to [pub.dartlang.org](https://pub.dartlang.org).
-
-For an overview of these commands, see [Pub Commands](/tools/pub/cmd).
-
-The following reference pages cover each command in detail:
+The `pub` tool provides the following commands:
 
 * [`pub cache`](/tools/pub/cmd/pub-cache)
 * [`pub deps`](/tools/pub/cmd/pub-deps)
@@ -66,28 +61,9 @@ The following reference pages cover each command in detail:
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 * [`pub uploader`](/tools/pub/cmd/pub-uploader)
 
-Two additional commands (`pub build` and `pub serve`)
-are specific to web development. For more information, see
-[Dart Tools for the Web]({{site.webdev}}/tools).
+For an overview of all the `pub` commands,
+see [Pub Commands](/tools/pub/cmd).
 
-
-## Writing transformers
-
-When `pub` serves or builds an app, it can run one or more
-transformers&mdash;for example, one transformer converts Dart
-files into a single JavaScript file.
-
-Transformers operate on assets, where an asset is
-a resource, such as a Dart file, a CSS file, or an
-image, that is intended to be part of a deployed package.
-
-The following pages cover how to write a custom transformer:
-
-* [Writing a Pub Transformer](/tools/pub/transformers)
-* [Writing an Aggregate Transformer](/tools/pub/transformers/aggregate)
-* [Writing a Lazy Transformer](/tools/pub/transformers/lazy-transformer)
-* [Examples of Transformer Code](/tools/pub/transformers/examples)
-* [Barback - Can We Build It? Yes, We Can!](https://docs.google.com/a/google.com/document/d/1juHkCRg-1YH6LvwhGPHgF2ihX-UQtR1fv-8aknO7t_4/edit?pli=1#)
 
 ## Troubleshooting
 
