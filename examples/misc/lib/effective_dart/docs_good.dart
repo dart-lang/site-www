@@ -17,6 +17,16 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion block-comments
 
+  <Flag>() {
+    // #docregion no-annotations
+    /// Defines a flag.
+    ///
+    /// Throws an [ArgumentError] if there is already an option named [name] or
+    /// there is already an option using abbreviation [abbr]. Returns the new flag.
+    Flag addFlag(String name, String abbr) => ellipsis();
+    // #enddocregion no-annotations
+  };
+
   {
     // #docregion first-sentence
     /// Deletes the file at [path] from the file system.

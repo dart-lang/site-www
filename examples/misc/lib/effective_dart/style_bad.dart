@@ -16,4 +16,4 @@ oneLineIf(dynamic overflowChars, dynamic other) {
   if (overflowChars != other.overflowChars)
     return overflowChars < other.overflowChars;
   // #enddocregion one-line-if-wrap
-};
+}
