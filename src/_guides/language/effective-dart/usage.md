@@ -315,6 +315,45 @@ with each element as the argument. In that case, `forEach()` is handy.
 people.forEach(print);
 {% endprettify %}
 
+### DON'T use `List.from()` unless you intend to change the type of the result.
+
+Given an Iterable, there are two obvious ways to produce a new List that
+contains the same elements:
+
+<?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
+{% prettify dart %}
+var copy1 = iterable.toList();
+var copy2 = new List.from(iterable);
+{% endprettify %}
+
+The obvious difference is that the first one is shorter. The *important*
+difference is that the first one preserves the type argument of the original
+object:
+
+<?code-excerpt "misc/test/effective_dart_test.dart (list-from-2)"?>
+{% prettify dart %}
+// Creates a List<int>:
+var iterable = [1, 2, 3];
+
+// Prints "List<int>":
+print(iterable.toList().runtimeType);
+
+// Prints "List", which means List<dynamic>:
+print(new List.from(iterable).runtimeType);
+{% endprettify %}
+
+If you *want* to change the type, then calling `List.from()` is useful:
+
+<?code-excerpt "misc/test/effective_dart_test.dart (list-from-3)"?>
+{% prettify dart %}
+var numbers = [1, 2.3, 4]; // List<num>.
+numbers.removeAt(1); // Now it only contains integers.
+var ints = new List<int>.from(numbers);
+{% endprettify %}
+
+But if your goal is just to copy the iterable and preserve its original type, or
+you don't care about the type, then use `toList()`.
+
 ## Functions
 
 In Dart, even functions are objects. Here are some best practices
