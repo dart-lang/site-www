@@ -118,13 +118,9 @@ documentation that introduces the reader to the main concepts and functionality
 provided within. Consider including:
 
 * A single-sentence summary of what the library is for.
-
 * Explanations of terminology used throughout the library.
-
 * A couple of complete code samples that walk through using the API.
-
 * Links to the most important or most commonly used classes and functions.
-
 * Links to external references on the domain the library is concerned with.
 
 ### CONSIDER writing doc comments for private APIs.
