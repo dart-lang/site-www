@@ -106,8 +106,26 @@ up.
 
 ### PREFER writing doc comments for public APIs.
 
-You don't have to document every single top-level variable, type, and member,
-but you should document most of them.
+You don't have to document every single library, top-level variable, type, and
+member, but you should document most of them.
+
+### CONSIDER writing doc comments for public libraries.
+
+Unlike languages like Java where the class is the only unit of program
+organization, in Dart, a library is itself an entity that users work with
+directly, import, and think about. That makes the library a great place for
+documentation that introduces the reader to the main concepts and functionality
+provided within. Consider including:
+
+* A single-sentence summary of what the library is for.
+
+* Explanations of terminology used throughout the library.
+
+* A couple of complete code samples that walk through using the API.
+
+* Links to the most important or most commonly used classes and functions.
+
+* Links to external references on the domain the library is concerned with.
 
 ### CONSIDER writing doc comments for private APIs.
 
@@ -324,17 +342,18 @@ Tell the reader something they *don't* already know.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (doc-before-meta)"?>
 {% prettify dart %}
-/// _Deprecated: Use [newMethod] instead._
-@deprecated
-oldMethod() { ... }
+/// A button that can be flipped on and off.
+@Component(selector: 'toggle')
+class ToggleComponent {}
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (doc-before-meta)"?>
 {% prettify dart %}
-@deprecated
-/// _Deprecated: Use [newMethod] instead._
-oldMethod() { ... }
+@Component(selector: 'toggle')
+
+/// A button that can be flipped on and off.
+class ToggleComponent {}
 {% endprettify %}
 
 
