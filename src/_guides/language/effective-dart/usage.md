@@ -29,15 +29,17 @@ to cover import and export directives. The guidelines apply equally to both.
 
 ### DO use strings in part-of directives.
 
-When you use `part` to split part of a library out into a second file, that
-other file needs to in turn indicate which library it's a part of. For legacy
-reasons, Dart allows a `part of` directive to use the *name* of the library it's
-a part of. That makes it harder for tools to physically find the main library
-file, and can make it ambiguous which library the part is actually part of.
+Many Dart developers avoid using `part` entirely. They find it easier to reason
+about their code when each library is a single file. If you do choose to use
+`part` to split part of a library out into a second file, Dart requires the
+other file to in turn indicate which library it's a part of.
 
-The preferred, modern syntax is to use a URI string that points directly to the
-library file, just like you use in other directives. If you have some library,
-"my_library.dart", that contains:
+For legacy reasons, Dart allows this `part of` directive to use the *name* of
+the library it's a part of. That makes it harder for tools to physically find
+the main library file, and can make it ambiguous which library the part is
+actually part of. The preferred, modern syntax is to use a URI string that
+points directly to the library file, just like you use in other directives. If
+you have some library, "my_library.dart", that contains:
 
 <?code-excerpt "misc/lib/effective_dart/my_library.dart (part)"?>
 {% prettify dart %}
