@@ -116,6 +116,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>DON'T use <code>.length</code> to see if a collection is empty.</a>
 * <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-sequence'>CONSIDER using higher-order methods to transform a sequence.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 
 **Functions**
 
