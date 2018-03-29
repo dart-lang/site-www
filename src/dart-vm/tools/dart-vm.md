@@ -14,7 +14,7 @@ server-side scripts, programs, and servers.
 Here’s an example of running a Dart file on the command line:
 
 ```terminal
-dart --enable-asserts test.dart
+$ dart --enable-asserts test.dart
 ```
 
 <aside class="alert alert-info" markdown="1">

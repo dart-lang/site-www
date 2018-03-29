@@ -75,4 +75,4 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
-[webdev dart2]: {{site.webdev}}/dart-2
+[webdev dart2]: {{site.dev-webdev}}/dart-2
