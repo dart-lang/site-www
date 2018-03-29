@@ -367,8 +367,9 @@ if (isWeekDay) {
 }
 {% endprettify %}
 
-There is one exception to this: `if` statements with no `else` clause that fit
-on one line may omit the braces.
+There is one exception to this: an `if` statement with no `else` clause where
+the entire `if` statement and the then body all fit in one line. In that case,
+you may leave off the braces if you prefer:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
@@ -376,16 +377,22 @@ on one line may omit the braces.
 if (arg == null) return defaultValue;
 {% endprettify %}
 
-These are typically used for "guard" code that returns or breaks if the
-condition is met. But they're also fine for expressions, as long as the entire
-`if` statement and the expression fit on one line.
+If the body wraps to the next line, though, use braces:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-expr)"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-wrap)"?>
 {% prettify dart %}
-if (parameter > limit) parameter = defaultValue;
+if (overflowChars != other.overflowChars) {
+  return overflowChars < other.overflowChars;
+}
 {% endprettify %}
 
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/style_bad.dart (one-line-if-wrap)"?>
+{% prettify dart %}
+if (overflowChars != other.overflowChars)
+  return overflowChars < other.overflowChars;
+{% endprettify %}
 
 ### DO format your code using `dartfmt`.
 
