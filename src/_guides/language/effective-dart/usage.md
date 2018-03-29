@@ -21,6 +21,106 @@ library may not be able to tell that you've internalized the ideas here, but
 * TOC
 {:toc}
 
+## Libraries
+
+These guidelines help you compose your program out of multiple files in a
+consistent, maintainable way. To keep these guidelines brief, they use "import"
+to cover import and export directives. The guidelines apply equally to both.
+
+### DO use strings in part-of directives.
+
+When you use `part` to split part of a library out into a second file, that
+other file needs to in turn indicate which library it's a part of. For legacy
+reasons, Dart allows a `part of` directive to use the *name* of the library it's
+a part of. That makes it harder for tools to physically find the main library
+file, and can make it ambiguous which library the part is actually part of.
+
+The preferred, modern syntax is to use a URI string that points directly to the
+library file, just like you use in other directives. If you have some library,
+"my_library.dart", that contains:
+
+<?code-excerpt "misc/lib/effective_dart/my_library.dart (part)"?>
+{% prettify dart %}
+library my_library;
+
+part "some/other/file.dart";
+{% endprettify %}
+
+Then the part file should look like:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/some/other/file.dart (part-of)"?>
+{% prettify dart %}
+part of "../../my_library.dart";
+{% endprettify %}
+
+And not:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/some/other/file_2.dart (part-of)"?>
+{% prettify dart %}
+part of my_library;
+{% endprettify %}
+
+### DON'T import libraries inside the "src" directory of another package.
+
+The "src" directory under "lib" is specified to contain libraries private to the
+package's own implementation. The way package maintainers version their package
+takes this convention into account. They are free to make sweeping changes to
+code under "src" without it being a breaking change to the package.
+
+That means that if you import some other package's private library, a minor
+theoretically non-breaking point release of that package could break your code.
+
+### PREFER relative paths when importing libraries within your own package's "lib" directory.
+
+When referencing a library inside your package's "lib" directory from another
+library in that same package, either a relative URI or an explicit "package:"
+will work.
+
+For example, say your directory structure looks like:
+
+```text
+my_package
+└─ lib
+   ├─ src
+   │  └─ utils.dart
+   └─ api.dart
+```
+
+If "api.dart" wants to import "utils.dart", it should do so using:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (import-relative)"?>
+{% prettify dart %}
+import 'src/utils.dart';
+{% endprettify %}
+
+And not:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (import-relative)"?>
+{% prettify dart %}
+import 'package:my_package/src/utils.dart';
+{% endprettify %}
+
+There is no profound reason to prefer the former—it's just shorter and we want
+to be consistent.
+
+The "within your own package's 'lib' directory" part is important. Libraries
+inside "lib" can import other libraries inside "lib" (or in subdirectories of
+it). Libraries outside of "lib" can use relative imports to reach other
+libraries outside of "lib". For example, you may have a test utility library
+under "test" that other libraries in "test" import.
+
+But you can't "cross the streams". A library outside of "lib" should never use a
+relative import to reach a library under "lib", or vice versa. Doing so will
+break Dart's ability to correctly tell if two library URIs refer to the same
+library. The two rules two remember this are:
+
+* An import path should never contain "/lib/".
+* A library under "lib" should never use "../" to escape the "lib" directory.
+
 ## Strings
 
 Here are some best practices to keep in mind when composing strings in Dart.
