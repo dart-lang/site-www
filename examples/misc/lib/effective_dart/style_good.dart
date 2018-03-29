@@ -45,10 +45,12 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion one-line-if
   };
 
-  (num parameter, num limit, num defaultValue) {
-    // #docregion one-line-if-expr
-    if (parameter > limit) parameter = defaultValue;
-    // #enddocregion one-line-if-expr
+  (dynamic overflowChars, dynamic other) {
+    // #docregion one-line-if-wrap
+    if (overflowChars != other.overflowChars) {
+      return overflowChars < other.overflowChars;
+    }
+    // #enddocregion one-line-if-wrap
   };
 
   (first, second, statement) {
