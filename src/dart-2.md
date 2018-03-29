@@ -28,6 +28,8 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 * [Dart's type system][sound Dart] is now sound.
   * [Fixing common type problems][Fixing Common Type Problems]
   * [Email: Breaking Change: --preview-dart-2 turned on by default][Leaf's email]
+* Dart no longer has checked mode.
+  * [Assert statements][] are still supported, but you enable them differently.
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
   * [Dev channel API reference documentation][apiref]
@@ -55,6 +57,7 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
+[assert statements]: /guides/language/language-tour#assert
 [build_runner web]: {{site.dev-webdev}}/tools/build_runner
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
@@ -72,4 +75,4 @@ It aims to help developers migrating from Dart 1.x to Dart 2.
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
-[webdev dart2]: {{site.webdev}}/dart-2
+[webdev dart2]: {{site.dev-webdev}}/dart-2

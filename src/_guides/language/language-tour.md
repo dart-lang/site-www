@@ -12,8 +12,7 @@ that you already know how to program in another language.
 <div class="alert alert-info" markdown="1">
 **Dart 2 note:**
 This tour is being updated for [Dart 2 changes](/dart-2),
-such as type safety, optional `new` and `const`,
-and changes to assertion support.
+such as optional `new` and `const`.
 </div>
 
 To learn more about Dart's core libraries, see
@@ -2021,8 +2020,13 @@ assert(urlString.startsWith('https'));
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-Assert statements work only during development. They have no effect in
-production code.
+Assert statements have no effect in production code;
+they're for development only.
+Flutter enables asserts in [debug mode.][flutter debug mode]
+Development-only tools such as [dartdevc][]
+typically support asserts by default.
+Some tools, such as [dart][] and [dart2js,][dart2js]
+support asserts through a command-line flag: `--enable-asserts`.
 </div>
 
 To attach a message to an assert,
@@ -2033,13 +2037,6 @@ add a string as the second argument.
 assert(urlString.startsWith('https'),
     'URL ($urlString) should start with "https".');
 {% endprettify %}
-
-<div class="alert alert-info" markdown="1">
-**Version note:**
-The second argument was introduced in SDK 1.22.
-<!-- [TODO: make "introduced in SDK 1.22" a link to
-a post on http://news.dartlang.org.] -->
-</div>
 
 The first argument to `assert` can be any expression that
 resolves to a boolean value. If the expression’s value
@@ -3409,14 +3406,6 @@ allows you to use the type argument `T` in several places:
 * In the type of an argument (`List<T>`).
 * In the type of a local variable (`T tmp`).
 
-<div class="alert alert-info" markdown="1">
-**Version note:**
-The new syntax for generic methods was [introduced in
-SDK 1.21.](http://news.dartlang.org/2016/12/dart-121-generic-method-syntax.html)
-If you use generic methods,
-[specify an SDK version of 1.21 or higher.](/tools/pub/pubspec#sdk-constraints)
-</div>
-
 For more information about generics, see
 [Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
@@ -3857,7 +3846,7 @@ For more information on treating classes like functions, see
 
 ## Isolates
 
-Modern web browsers, even on mobile platforms, run on multi-core CPUs.
+Most computers, even on mobile platforms, have multi-core CPUs.
 To take advantage of all those cores, developers traditionally use
 shared-memory threads running concurrently. However, shared-state
 concurrency is error prone and can lead to complicated code.
@@ -3865,6 +3854,9 @@ concurrency is error prone and can lead to complicated code.
 Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
+
+For more information, see the
+[dart:isolate library documentation.][dart:isolate]
 
 
 ## Typedefs
@@ -4125,11 +4117,16 @@ To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
-[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
+[dart2js]: {{site.dev-webdev}}/tools/dart2js
+[dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
+[dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
+[dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
+[dart]: /dart-vm/tools/dart-vm
+[dartdevc]: {{site.dev-webdev}}/tools/dartdevc
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

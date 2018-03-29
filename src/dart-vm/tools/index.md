@@ -13,7 +13,7 @@ need to write Dart scripts and servers.
 The following tools have special support for
 running scripts and servers.
 
-[Standalone Dart VM: `dart`](/dart-vm)
+[Standalone Dart VM: `dart`](/dart-vm/tools/dart-vm)
 : Executes Dart code.
   IDEs that support Dart,
   and some of the `pub` commands, use this
