@@ -13,29 +13,24 @@ server-side scripts, programs, and servers.
 
 Here’s an example of running a Dart file on the command line:
 
-{% prettify sh %}
-dart test.dart
-{% endprettify %}
+```terminal
+dart --enable-asserts test.dart
+```
 
 <aside class="alert alert-info" markdown="1">
-**Note:** You can't use `dart` to run web apps&mdash;apps
-that include `dart:html`, or that depend on libraries
-that use the browser environment. For more information, see
-[About Dart applications](/tutorials/dart-vm/get-started#about-dart-applications).
+**Note:** You can't use `dart` to run mobile apps or web apps
+(apps that include `dart:html`, or that depend on libraries
+that use the browser environment).
 </aside>
 
 ### Options
 
 Common command-line options for dart include:
 
-`-c` or `--checked`
-: Enables _both_ assertions and type checks (checked mode).
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+`--enable-asserts`
+: Enables `assert` statements. When asserts are enabled, an
+  [assert statement](/guides/language/language-tour#assert)
+  checks a boolean condition, raising an exception if the condition is false.
 
 `--packages=<path>`
 : Specifies the path to the package resolution configuration file.
@@ -97,11 +92,11 @@ instruct the VM to delay the start up, or the exit, of an isolate:
 
 The following is an example Observatory run:
 
-{% prettify sh %}
+```terminal
 $ dart --observe <script>.dart
-{% endprettify %}
+```
 
-For more information, see [Observatory](https://dart-lang.github.io/observatory/).
+For more information, see [Observatory.](https://dart-lang.github.io/observatory/)
 
 ### Snapshot option
 
@@ -111,30 +106,3 @@ You can also generate snapshots:
 : Generates a snapshot in the specified file. For information
   on generating and running snapshots, see
   [Snapshots](https://github.com/dart-lang/sdk/wiki/Snapshots) on GitHub.
-
-## Enabling checked mode
-
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-Dart programs run in one of two modes: checked or production. By default, the
-Dart VM runs in production mode. We recommend that you enable checked mode for
-development and testing.
-
-In checked mode, assignments are dynamically checked, and certain violations of
-the type system raise exceptions at runtime. In production mode, static type
-annotations have no effect.
-
-Assert statements are also enabled in checked mode. An
-[assert statement](/guides/language/language-tour#assert)
-checks a boolean condition, raising an exception if the condition is false.
-Assertions do not run in production mode.
-
-You can run the VM in checked mode with the `--checked` command-line flag:
-
-{% prettify sh %}
-dart --checked test.dart
-{% endprettify %}
