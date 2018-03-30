@@ -72,6 +72,7 @@
 
 * <a href='/guides/language/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-writing-doc-comments-for-public-apis'>PREFER writing doc comments for public APIs.</a>
+* <a href='/guides/language/effective-dart/documentation#consider-writing-doc-comments-for-public-libraries'>CONSIDER writing doc comments for public libraries.</a>
 * <a href='/guides/language/effective-dart/documentation#consider-writing-doc-comments-for-private-apis'>CONSIDER writing doc comments for private APIs.</a>
 * <a href='/guides/language/effective-dart/documentation#do-start-doc-comments-with-a-single-sentence-summary'>DO start doc comments with a single-sentence summary.</a>
 * <a href='/guides/language/effective-dart/documentation#do-separate-the-first-sentence-of-a-doc-comment-into-its-own-paragraph'>DO separate the first sentence of a doc comment into its own paragraph.</a>
@@ -89,6 +90,7 @@
 
 * <a href='/guides/language/effective-dart/documentation#avoid-using-markdown-excessively'>AVOID using markdown excessively.</a>
 * <a href='/guides/language/effective-dart/documentation#avoid-using-html-for-formatting'>AVOID using HTML for formatting.</a>
+* <a href='/guides/language/effective-dart/documentation#prefer-backtick-fences-for-code-blocks'>PREFER backtick fences for code blocks.</a>
 
 **Writing**
 
