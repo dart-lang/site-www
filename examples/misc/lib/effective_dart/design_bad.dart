@@ -62,10 +62,11 @@ void miscDeclAnalyzedButNotTested() {
   bool isValidString(String value, Function predicate) => ellipsis();
   // #enddocregion avoid-Function
 
-  (int start) =>
-      // #docregion avoid-mandatory-param
-      string.substring(start, null);
-  // #enddocregion avoid-mandatory-param
+  (int start) {
+    // #docregion avoid-mandatory-param
+    var rest = string.substring(start, null);
+    // #enddocregion avoid-mandatory-param
+  };
 }
 
 //----------------------------------------------------------------------------
