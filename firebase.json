@@ -521,6 +521,11 @@
         "type": 301
       },
       {
+        "source": "/docs/pub-package-manager",
+        "destination": "/tools/pub",
+        "type": 301
+      },
+      {
         "source": "/docs/pub-package-manager/pubspec/**",
         "destination": "/tools/pub/pubspec",
         "type": 301
@@ -691,7 +696,7 @@
         "type": 301
       },
       {
-        "source": "/eclipse/*",
+        "source": "/eclipse",
         "destination": "/tools",
         "type": 301
       },
@@ -804,6 +809,11 @@
       },
       {
         "source": "/polymer-dart/**",
+        "destination": "https://webdev.dartlang.org/guides/polymer",
+        "type": 301
+      },
+      {
+        "source": "/polymer-old",
         "destination": "https://webdev.dartlang.org/guides/polymer",
         "type": 301
       },
@@ -1043,8 +1053,18 @@
         "type": 301
       },
       {
+        "source": "/tools/pub/cmd/pub-build",
+        "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
+        "type": 301
+      },
+      {
         "source": "/tools/pub/cmd/pub-build.html",
         "destination": "https://webdev.dartlang.org/tools/pub/pub-build",
+        "type": 301
+      },
+      {
+        "source": "/tools/pub/cmd/pub-serve",
+        "destination": "https://webdev.dartlang.org/tools/pub/pub-serve",
         "type": 301
       },
       {
@@ -1135,6 +1155,11 @@
       {
         "source": "/tools/debian",
         "destination": "/install/linux",
+        "type": 301
+      },
+      {
+        "source": "/flutter",
+        "destination": "https://flutter.io",
         "type": 301
       },
       {
