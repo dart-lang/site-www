@@ -85,6 +85,12 @@
 ### Usage
 
 
+**Libraries**
+
+* <a href='/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
+* <a href='/guides/language/effective-dart/usage#dont-import-libraries-inside-the-src-directory-of-another-package'>DON'T import libraries inside the <code>src</code> directory of another package.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>PREFER relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
+
 **Strings**
 
 * <a href='/guides/language/effective-dart/usage#do-use-adjacent-strings-to-concatenate-string-literals'>DO use adjacent strings to concatenate string literals.</a>
