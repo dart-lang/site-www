@@ -11,16 +11,13 @@
         {% assign dart1status = 'stable' %}{% comment -%}This will soon be 'archive'{%- endcomment %}
         {% assign dart2status = 'preview' %}{% comment -%}This will soon be 'stable'{%- endcomment %}
         {% if site.branch == '1.x' -%}
-          {% if site.prev-url and site.data.pkg-vers.SDK.prev-vers -%}
-            <li><a href="{{site.prev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.prev-vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
-          {%- endif %}
-          <li><a href="/guides/language" class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;(stable)</a></li>
+          <li><a href="/guides/language" class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
           {% if site.dev-url and site.data.pkg-vers.SDK.next-vers -%}
             <li><a href="{{site.dev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.next-vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
           {%- endif -%}
         {% else -%}
-          {% if site.url and site.data.pkg-vers.SDK.prev-vers -%}
-            <li><a href="{{site.url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.prev-vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
+          {% if site.prev-url and site.data.pkg-vers.SDK.prev-vers -%}
+            <li><a href="{{site.prev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.prev-vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
           {%- endif -%}
           <li><a href="/guides/language" class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
         {%- endif %}
