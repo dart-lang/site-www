@@ -417,6 +417,34 @@ a flavor of what's supported:
 /// ### A subsubheader
 ///
 /// #### If you need this many levels of headers, you're doing it wrong
+/// ```
+/// this.code
+///     .will
+///     .retain(its, formatting);
+/// ```
+///
+/// The code language (for syntax highlighting) defaults to Dart. You can
+/// specify it by putting the name of the language after the opening backticks:
+///
+/// ```html
+/// <h1>HTML is magical!</h1>
+/// ```
+///
+/// Links can be:
+///
+/// * http://www.just-a-bare-url.com
+/// * [with the URL inline](http://google.com)
+/// * [or separated out][ref link]
+///
+/// [ref link]: http://google.com
+///
+/// # A Header
+///
+/// ## A subheader
+///
+/// ### A subsubheader
+///
+/// #### If you need this many levels of headers, you're doing it wrong
 {% endprettify %}
 
 ### AVOID using markdown excessively.
