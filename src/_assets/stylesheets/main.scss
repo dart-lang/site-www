@@ -273,12 +273,14 @@ img {
     margin-right: 0;
     padding: 0;
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-end;
+    &:not(.dropdown-menu) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+    }
     li {
-      margin: auto 15px;
+      padding: 0 15px;
       a {
         display: inline-block;
         padding: 0;
@@ -329,6 +331,19 @@ img {
           }
         }
       }
+    }
+  }
+  .dropdown-menu {
+    background-color: $gray-light;
+    &.dropdown-menu { border-top-color: transparent; }
+    color: $gray-base;
+    a:hover, a:focus { background-color: transparent; }
+    a.active:after {
+      font-family: 'Font Awesome 5 Free';
+      content: '\f00c'; // fas fa-check
+      font-weight: 900;
+      padding-left: .5em;
+      // color: $brand-secondary;
     }
   }
   .brand {
