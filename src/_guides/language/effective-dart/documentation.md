@@ -369,10 +369,10 @@ a flavor of what's supported:
 {% prettify dart %}
 /// This is a paragraph of regular text.
 ///
-/// This sentence has *two* _emphasized_ words (i.e. italics) and **two**
+/// This sentence has *two* _emphasized_ words (italics) and **two**
 /// __strong__ ones (bold).
 ///
-/// A blank line creates another separate paragraph. It has some `inline code`
+/// A blank line creates a separate paragraph. It has some `inline code`
 /// delimited using backticks.
 ///
 /// * Unordered lists.
@@ -387,11 +387,20 @@ a flavor of what's supported:
 ///     * They must be indented at least 4 spaces.
 ///     * (Well, 5 including the space after `///`.)
 ///
-/// Code blocks are indented the same way:
+/// Code blocks are fenced in triple backticks:
 ///
-///     this.code
-///         .will
-///         .retain(its, formatting);
+/// ```
+/// this.code
+///     .will
+///     .retain(its, formatting);
+/// ```
+///
+/// The code language (for syntax highlighting) defaults to Dart. You can
+/// specify it by putting the name of the language after the opening backticks:
+///
+/// ```html
+/// <h1>HTML is magical!</h1>
+/// ```
 ///
 /// Links can be:
 ///
@@ -420,6 +429,35 @@ replace it. Words are what matters.
 It *may* be useful to use it in rare cases for things like tables, but in almost
 all cases, if it's too complex too express in Markdown, you're better off not
 expressing it.
+
+### PREFER backtick fences for code blocks.
+
+Markdown has two ways to indicate a block of code: indenting the code four
+spaces on each line, or surrounding it in a pair of triple-backtick "fence"
+lines. The former syntax is brittle when used inside things like Markdown lists
+where indentation is already meaningful or when the code block itself contains
+indented code.
+
+The backtick syntax avoids those indentation woes, lets you indicate the code's
+language, and is consistent with using backticks for inline code.
+
+{:.good-style}
+{% prettify dart %}
+/// You can use [CodeBlockExample] like this:
+///
+/// ```
+/// var example = new CodeBlockExample();
+/// print(example.isItGreat); // "Yes."
+/// ```
+{% endprettify %}
+
+{:.bad-style}
+{% prettify dart %}
+/// You can use [CodeBlockExample] like this:
+///
+///     var example = new CodeBlockExample();
+///     print(example.isItGreat); // "Yes."
+{% endprettify %}
 
 ## Writing
 
