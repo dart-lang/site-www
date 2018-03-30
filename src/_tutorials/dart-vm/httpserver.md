@@ -893,7 +893,7 @@ Future main() async {
   print('Listening on port 4048');
   await server.forEach(staticFiles.serveRequest); [!/*4*/!]
 }
-{% endprettify dart %}
+{% endprettify %}
 <div class="prettify-filename">static_file_server.dart</div>
 
 {:.code-notes}
