@@ -90,7 +90,7 @@ my_package
    └─ api.dart
 ```
 
-If "api.dart" wants to import "utils.dart", it should do so using:
+If `api.dart` wants to import `utils.dart`, it should do so using:
 
 {:.good-style}
 {% prettify dart %}
