@@ -3,9 +3,9 @@ title: "Index of Downloads"
 description: "Download specific stable and dev channel versions of the Dart SDK, Dartium, and the Dart API documentation."
 permalink: /install/archive
 js:
-- url: /install/archive/out/web/download_archive.dart.js
+- url: /tools/sdk/archive/out/web/download_archive.dart.js
   defer: true
-- url: /install/archive/assets/install.js
+- url: /tools/sdk/archive/assets/install.js
   defer: true
 ---
 Use this index to install

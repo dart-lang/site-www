@@ -69,10 +69,6 @@ defaults:
   values:
     layout: codelab
 - scope:
-    path: install
-  values:
-    show_breadcrumbs: true
-- scope:
     path: tools
   values:
     show_breadcrumbs: true
