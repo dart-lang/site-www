@@ -55,14 +55,15 @@ class C<ChunkBuilder, Flag, LineWriter> {
   ///     the given name or abbreviation.
   Flag addFlag(String name, String abbr) => ellipsis();
   // #enddocregion no-annotations
-
-  void newMethod() {}
-  // #docregion doc-before-meta
-  @deprecated
-  // #enddocregion doc-before-meta
-
-  // #docregion doc-before-meta
-  /// _Deprecated: Use [newMethod] instead._
-  oldMethod() {/* ... */}
-  // #enddocregion doc-before-meta
 }
+
+class Component {
+  const Component({String selector});
+}
+
+// #docregion doc-before-meta
+@Component(selector: 'toggle')
+
+/// A button that can be flipped on and off.
+class ToggleComponent {}
+// #enddocregion doc-before-meta

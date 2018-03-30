@@ -182,18 +182,15 @@ class Chunk {/* ... */}
 
 //----------------------------------------------------------------------------
 
-class C2 {
-  newMethod() {}
-  // #docregion doc-before-meta
-  /// _Deprecated: Use [newMethod] instead._
-  @deprecated
-  oldMethod() {/* ... */}
-  // #enddocregion doc-before-meta
-
-  // https://github.com/dart-lang/site-www/issues/475
-  @Deprecated('Since 1.21. Use newMethod() instead. Will be removed in 2.0.')
-  anotherOldMethod() {}
+class Component {
+  const Component({String selector});
 }
+
+// #docregion doc-before-meta
+/// A button that can be flipped on and off.
+@Component(selector: 'toggle')
+class ToggleComponent {}
+// #enddocregion doc-before-meta
 
 //----------------------------------------------------------------------------
 
