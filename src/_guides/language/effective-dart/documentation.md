@@ -354,10 +354,10 @@ a flavor of what's supported:
 {% prettify dart %}
 /// This is a paragraph of regular text.
 ///
-/// This sentence has *two* _emphasized_ words (i.e. italics) and **two**
+/// This sentence has *two* _emphasized_ words (italics) and **two**
 /// __strong__ ones (bold).
 ///
-/// A blank line creates another separate paragraph. It has some `inline code`
+/// A blank line creates a separate paragraph. It has some `inline code`
 /// delimited using backticks.
 ///
 /// * Unordered lists.
