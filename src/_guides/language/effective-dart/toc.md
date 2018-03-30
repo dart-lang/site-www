@@ -31,30 +31,9 @@
 
 **Formatting**
 
+* <a href='/guides/language/effective-dart/style#do-format-your-code-using-dartfmt'>DO format your code using <code>dartfmt</code>.</a>
 * <a href='/guides/language/effective-dart/style#avoid-lines-longer-than-80-characters'>AVOID lines longer than 80 characters.</a>
 * <a href='/guides/language/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>DO use curly braces for all flow control structures.</a>
-* <a href='/guides/language/effective-dart/style#do-format-your-code-using-dartfmt'>DO format your code using <code>dartfmt</code>.</a>
-* <a href='/guides/language/effective-dart/style#dont-use-tabs'>DON'T use tabs.</a>
-* <a href='/guides/language/effective-dart/style#do-place-a-newline-after-each-statement-or-declaration'>DO place a newline after each statement or declaration.</a>
-* <a href='/guides/language/effective-dart/style#dont-place-a-space-between-the-declared-name-of-a-method-operator-or-setter-and-its-parameter-list'>DON'T place a space between the declared name of a method, operator, or setter and its parameter list.</a>
-* <a href='/guides/language/effective-dart/style#do-place-a-space-after-the-operator-keyword'>DO place a space after the <code>operator</code> keyword.</a>
-* <a href='/guides/language/effective-dart/style#do-place-spaces-around-binary-and-ternary-operators'>DO place spaces around binary and ternary operators.</a>
-* <a href='/guides/language/effective-dart/style#do-place-spaces-after--and--when-used-in-a-map-or-named-parameter'>DO place spaces after <code>,</code> and <code>:</code> when used in a map or named parameter.</a>
-* <a href='/guides/language/effective-dart/style#dont-place-spaces-around-unary-operators'>DON'T place spaces around unary operators.</a>
-* <a href='/guides/language/effective-dart/style#do-place-spaces-around-in-and-after-each--in-a-loop'>DO place spaces around <code>in</code>, and after each <code>;</code> in a loop.</a>
-* <a href='/guides/language/effective-dart/style#do-use-a-space-after-flow-control-keywords'>DO use a space after flow-control keywords.</a>
-* <a href='/guides/language/effective-dart/style#dont-use-a-space-after---and--or-before---and-'>DON'T use a space after <code>(</code>, <code>[</code>, and <code>{</code>, or before <code>)</code>, <code>]</code>, and <code>}</code>.</a>
-* <a href='/guides/language/effective-dart/style#do-use-a-space-before--in-function-and-method-bodies'>DO use a space before <code>{</code> in function and method bodies.</a>
-* <a href='/guides/language/effective-dart/style#do-place-the-opening-curly-brace--on-the-same-line-as-what-it-follows'>DO place the opening curly brace (<code>{</code>) on the same line as what it follows.</a>
-* <a href='/guides/language/effective-dart/style#do-place-binary-operators-on-the-preceding-line-in-a-multi-line-expression'>DO place binary operators on the preceding line in a multi-line expression.</a>
-* <a href='/guides/language/effective-dart/style#do-place-ternary-operators-on-the-next-line-in-a-multi-line-expression'>DO place ternary operators on the next line in a multi-line expression.</a>
-* <a href='/guides/language/effective-dart/style#do-place-the--on-the-next-line-in-a-multi-line-expression'>DO place the <code>.</code> on the next line in a multi-line expression.</a>
-* <a href='/guides/language/effective-dart/style#do-format-constructor-initialization-lists-with-each-field-on-its-own-line'>DO format constructor initialization lists with each field on its own line.</a>
-* <a href='/guides/language/effective-dart/style#prefer-splitting-every-element-in-a-collection-literal-if-it-does-not-fit-on-one-line'>PREFER splitting every element in a collection literal if it does not fit on one line.</a>
-* <a href='/guides/language/effective-dart/style#do-indent-block-and-collection-bodies-two-spaces'>DO indent block and collection bodies two spaces.</a>
-* <a href='/guides/language/effective-dart/style#do-indent-switch-cases-two-spaces-and-case-bodies-four-spaces'>DO indent switch cases two spaces and case bodies four spaces.</a>
-* <a href='/guides/language/effective-dart/style#do-indent-multi-line-method-cascades-at-least-two-spaces'>DO indent multi-line method cascades at least two spaces.</a>
-* <a href='/guides/language/effective-dart/style#prefer-indenting-continued-lines-with-at-least-four-spaces'>PREFER indenting continued lines with at least four spaces.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>
@@ -89,6 +68,7 @@
 
 * <a href='/guides/language/effective-dart/documentation#avoid-using-markdown-excessively'>AVOID using markdown excessively.</a>
 * <a href='/guides/language/effective-dart/documentation#avoid-using-html-for-formatting'>AVOID using HTML for formatting.</a>
+* <a href='/guides/language/effective-dart/documentation#prefer-backtick-fences-for-code-blocks'>PREFER backtick fences for code blocks.</a>
 
 **Writing**
 
