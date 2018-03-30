@@ -78,10 +78,10 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion markdown
   /// This is a paragraph of regular text.
   ///
-  /// This sentence has *two* _emphasized_ words (i.e. italics) and **two**
+  /// This sentence has *two* _emphasized_ words (italics) and **two**
   /// __strong__ ones (bold).
   ///
-  /// A blank line creates another separate paragraph. It has some `inline code`
+  /// A blank line creates a separate paragraph. It has some `inline code`
   /// delimited using backticks.
   ///
   /// * Unordered lists.
@@ -95,12 +95,6 @@ void miscDeclAnalyzedButNotTested() {
   ///     * You can nest lists too.
   ///     * They must be indented at least 4 spaces.
   ///     * (Well, 5 including the space after `///`.)
-  ///
-  /// Code blocks are indented the same way:
-  ///
-  ///     this.code
-  ///         .will
-  ///         .retain(its, formatting);
   ///
   /// Links can be:
   ///

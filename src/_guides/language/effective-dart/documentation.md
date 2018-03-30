@@ -354,10 +354,10 @@ a flavor of what's supported:
 {% prettify dart %}
 /// This is a paragraph of regular text.
 ///
-/// This sentence has *two* _emphasized_ words (i.e. italics) and **two**
+/// This sentence has *two* _emphasized_ words (italics) and **two**
 /// __strong__ ones (bold).
 ///
-/// A blank line creates another separate paragraph. It has some `inline code`
+/// A blank line creates a separate paragraph. It has some `inline code`
 /// delimited using backticks.
 ///
 /// * Unordered lists.
@@ -371,21 +371,6 @@ a flavor of what's supported:
 ///     * You can nest lists too.
 ///     * They must be indented at least 4 spaces.
 ///     * (Well, 5 including the space after `///`.)
-///
-/// Code blocks are fenced in triple backticks:
-///
-/// ```
-/// this.code
-///     .will
-///     .retain(its, formatting);
-/// ```
-///
-/// The code language (for syntax highlighting) defaults to Dart. You can
-/// specify it by putting the name of the language after the opening backticks:
-///
-/// ```html
-/// <h1>HTML is magical!</h1>
-/// ```
 ///
 /// Links can be:
 ///
