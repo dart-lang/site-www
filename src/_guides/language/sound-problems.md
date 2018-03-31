@@ -580,5 +580,5 @@ also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [dartanalyzer README]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
-[implicit casts]: sound-dart#call-dartanalyzer-with-strong-mode-enabled
+[implicit casts]: /guides/language/analysis-options#performing-additional-type-checks
 [top type]: https://en.wikipedia.org/wiki/Top_type
