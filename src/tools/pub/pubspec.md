@@ -61,9 +61,8 @@ A pubspec can have the following fields:
   [_Learn more._](#executables)
 
 `publish_to`
-: Optional. Specify where to publish a package. The default is
-  `https://pub.dartlang.org`. Specify `none` to prevent a package from
-  being published.
+: Optional. Specify where to publish a package.
+  [_Learn more._](#publish_to)
 
 Pub ignores all other fields.
 
@@ -236,6 +235,19 @@ If you don't specify the value, it is inferred from the key.
 
 For more information, see
 [pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+
+
+### Publish_to
+
+The default is `https://pub.dartlang.org`. Specify `none` to prevent
+a package from being published. This setting can be used to specify a
+[custom pub package server](https://github.com/dart-lang/pub-dartlang-dart/)
+to publish.
+
+{% prettify yaml %}
+publish to: none
+{% endprettify %}
+
 
 ### SDK constraints
 
