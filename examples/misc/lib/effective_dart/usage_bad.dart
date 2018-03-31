@@ -116,12 +116,16 @@ void miscDeclAnalyzedButNotTested() {
 
   (log) {
     // #docregion async-await
-    Future<bool> doAsyncComputation() {
-      return longRunningCalculation().then((result) {
-        return verifyResult(result.summary);
+    Future<int> countActivePlayers(String teamName) {
+      return downloadTeam(teamName).then((team) {
+        if (team == null) return 0;
+
+        return team.roster.then((players) {
+          return players.map((player) => player.isActive).length;
+        });
       }).catchError((e) {
         log.error(e);
-        return new Future.value(false);
+        return 0;
       });
     }
     // #enddocregion async-await

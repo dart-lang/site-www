@@ -132,13 +132,16 @@ void miscDeclAnalyzedButNotTested() {
 
   (log) {
     // #docregion async-await
-    Future<bool> doAsyncComputation() async {
+    Future<int> countActivePlayers(String teamName) async {
       try {
-        var result = await longRunningCalculation();
-        return verifyResult(result.summary);
+        var team = await downloadTeam(teamName);
+        if (team == null) return 0;
+
+        var players = await team.roster;
+        return players.map((player) => player.isActive).length;
       } catch (e) {
         log.error(e);
-        return false;
+        return 0;
       }
     }
     // #enddocregion async-await
