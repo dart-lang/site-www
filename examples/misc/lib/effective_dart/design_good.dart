@@ -57,10 +57,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion noun-for-func-returning-value
   };
 
-  (bool Function(dynamic) test) {
-    dynamic database;
-    dynamic packageGraph;
-
+  (database, packageGraph) {
     // #docregion verb-for-func-with-work
     var table = database.downloadData();
     var packageVersions = packageGraph.solveConstraints();
