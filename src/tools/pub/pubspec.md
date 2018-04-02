@@ -245,7 +245,7 @@ a package from being published. This setting can be used to specify a
 to publish.
 
 {% prettify yaml %}
-publish to: none
+publish_to: none
 {% endprettify %}
 
 
