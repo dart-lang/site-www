@@ -275,10 +275,10 @@ has no side effects but is still simpler to name with a verb phrase like
 ### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs.
 
 When a member produces a result without any side effects, it should usually be a
-getter or a method with noun phrase name describing the result it returns.
+getter or a method with a noun phrase name describing the result it returns.
 However, sometimes the work required to produce that result is important. It may
 be prone to runtime failures, or use heavyweight resources like networking or
-file IO. In cases like this, where you want the caller to think about the work
+file I/O. In cases like this, where you want the caller to think about the work
 the member is doing, give the member a verb phrase name that describes that
 work.
 
@@ -292,22 +292,22 @@ var packageVersions = packageGraph.solveConstraints();
 Note, though, that this guideline is softer than the previous two. The work an
 operation performs is often an implementation detail that isn't relevant to the
 caller, and performance and robustness boundaries change over time. Most of the
-time, name your members based on *what* it does for the caller, not *how* it
-does it.
+time, name your members based on *what* they do for the caller, not *how* they
+do it.
 
 
 ### AVOID starting a method name with `get`.
 
-In most cases, the method should be an actual getter whose name is whatever you
-would put after the `get`. For example, instead of a method named
-`getBreakfastOrder()`, define a getter named `breakfastOrder`.
+In most cases, the method should be a getter with `get` removed from the name.
+For example, instead of a method named `getBreakfastOrder()`, define a getter
+named `breakfastOrder`.
 
 Even if the member does need to be a method because it takes arguments or
 otherwise isn't a good fit for a getter, you should still avoid `get`. Like the
-previous guidelines states, you can give it a noun phrase name like
-`breakfastOrder()` or choose a verb that more usefully describes how it produces
-the result. The word `get` conveys nothing to the caller that they don't already
-know.
+previous guidelines state, you can use a noun phrase name like
+`breakfastOrder()` or choose a verb that more usefully describes how the method
+produces its result. The word `get` conveys nothing to the caller that they
+don't already know.
 
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
@@ -705,15 +705,14 @@ heavyweight than that gets `()` after the name to signal "computation goin' on
 here!" because a bare name after a `.` means "field".
 
 Dart is *not* like that. In Dart, *all* dotted names are member invocations that
-may do computation. Fields are the special-case — getters whose implementation
+may do computation. Fields are special — they're getters whose implementation
 is provided by the language. In other words, getters are not "particularly slow
-fields" in Dart, fields are "particularly fast getters".
+fields" in Dart; fields are "particularly fast getters".
 
-Even so, choosing a getter over a method sends an important signal to the caller
-and you should use a getter when that's the signal you want to send. The signal,
-roughly, is that the operation is "field-like". The operation, at least in
-principle, *could* be implemented using a field, as far as the caller knows.
-That implies:
+Even so, choosing a getter over a method sends an important signal to the
+caller. The signal, roughly, is that the operation is "field-like". The
+operation, at least in principle, *could* be implemented using a field, as far
+as the caller knows. That implies:
 
 *   **The operation does not take any arguments and returns a result.**
 
@@ -736,8 +735,8 @@ That implies:
 
 *   **The operation does not have user-visible side effects.** Accessing a real
     field does not alter the object or any other state in the program. It
-    doesn't produce output, write files, etc. A getter should generally follow
-    that.
+    doesn't produce output, write files, etc. A getter shouldn't do those things
+    either.
 
     The "user-visible" part is important. It's fine for getters to modify hidden
     state or produce out of band side effects. Getters can lazily calculate and
@@ -756,12 +755,12 @@ That implies:
     those calls. (Obviously, `list.length` produces different results if you add
     an element to the list between calls.)
 
-    "Same" here does not mean a getter must literally produce an identical
-    object on successive calls. Requiring that would force many getters to have
-    brittle caching, which negates the whole point of using a getter. It's
-    common, and perfectly fine, for a getter to return a new future or list each
-    time you call it. The important part is that the future completes to the
-    same value and the list contains the same elements.
+    "Same result" here does not mean a getter must literally produce an
+    identical object on successive calls. Requiring that would force many
+    getters to have brittle caching, which negates the whole point of using a
+    getter. It's common, and perfectly fine, for a getter to return a new future
+    or list each time you call it. The important part is that the future
+    completes to the same value, and the list contains the same elements.
 
     In other words, the result value should be the same *in the aspects that the
     caller cares about.*
@@ -793,11 +792,10 @@ dataSet.minimumValue;
 {% endprettify %}
 
 
-### DO use a setter for operations that conceptually change a property.
+### DO use setters for operations that conceptually change properties.
 
-The forces pushing you towards a setter versus a method are similar to when
-you'd choose a getter instead of a method. In both cases, the operation should
-be "field-like".
+Deciding between a setter versus a method is similar to deciding between a
+getter versus a method. In both cases, the operation should be "field-like".
 
 For a setter, "field-like" means:
 
