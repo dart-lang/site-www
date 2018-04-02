@@ -1,5 +1,9 @@
+Choose one of these options:
+
+* [Install using a setup wizard](#install-using-a-setup-wizard)
+* [Install using Chocolatey](#install-using-chocolatey)
+
 #### Install using a setup wizard
-{: style="margin-top: 0"}
 
 A [Dart SDK installer for Windows][]{: target="_blank"} is available and
 supported by the community. You can use the wizard to install **stable** or

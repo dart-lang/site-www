@@ -1,5 +1,11 @@
+If you're using Debian/Ubuntu on AMD64 (64-bit Intel), you can choose one of the
+following options, both of which can update the SDK automatically when new
+versions are released.
+
+* [Install using apt-get](#install-using-apt-get)
+* [Install a Debian package](#install-a-debian-package)
+
 #### Install using apt-get
-{: style="margin-top: 0"}
 
 Perform the following **one-time setup**:
 
@@ -35,7 +41,3 @@ Alternatively, download Dart SDK as Debian package in the `.deb` package format.
   data-bits="64" data-os="debian" data-tool="sdk"}
 - [Dev channel](#){:.download-link #debian-link-dev
   data-bits="64" data-os="debian" data-tool="sdk"}
-
-#### Compiling from source
-
-You can [build the SDK](https://github.com/dart-lang/sdk/wiki/Building) yourself.

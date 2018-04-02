@@ -1,13 +1,14 @@
 ---
-title: "Index of Downloads"
-description: "Download specific stable and dev channel versions of the Dart SDK, Dartium, and the Dart API documentation."
-permalink: /install/archive
+title: Dart SDK Download
+short-title: Download
+description: Download specific stable and dev channel versions of the Dart SDK and the Dart API documentation.
 js:
 - url: /tools/sdk/archive/out/web/download_archive.dart.js
   defer: true
 - url: /tools/sdk/archive/assets/install.js
   defer: true
 ---
+
 Use this index to install
 [specific versions](/install#about-sdk-release-channels-and-version-strings) of the
 [Dart SDK](/tools/sdk)
@@ -40,7 +41,7 @@ production use.
 
 {% include_relative _archives_table.html channel="dev" %}
 
-## Direct download URLs
+## Download URLs
 
 You can find the zip files at predictable URLs using the
 following pattern:

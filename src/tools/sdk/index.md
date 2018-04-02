@@ -11,10 +11,6 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart apps. To learn about other tools you can use for Dart development, see
 [Dart Tools](/tools).
 
-The [DartPad][]{: target="_blank"} is a great way to learn how to write a simple
-app in the Dart language, once you are ready to develop real apps, you need the
-Dart SDK.
-
 This site's documentation and examples use the
 [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
 release of the **Dart SDK**.
@@ -22,6 +18,10 @@ release of the **Dart SDK**.
 ## Install the SDK
 
 A package manager can help you easily install and update the Dart SDK.
+Don’t want to use a package manager? Other options are:
+
+* [Download the SDK manually](sdk/archive)
+* [Build the SDK from source][]
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -37,15 +37,6 @@ A package manager can help you easily install and update the Dart SDK.
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
 {% include_relative _mac.md %}
 </div>
-
-Alternatives:
-
-- Not using a package manager for your OS? No problem!
-  [Download](/install/archive)
-  zip files of the Dart SDK and docs.
-- Looking for an older version?
-  Check out our [zip file archive](/install/archive) for
-  previous versions of the Dart SDK.
 
 ## What's in the SDK
 
@@ -127,5 +118,5 @@ Here are some handy searches:
 * [pub issues](https://github.com/dart-lang/sdk/labels/Area-Pub)
 * [issues for the SDK as a whole](https://github.com/dart-lang/sdk/issues)
 
-[DartPad]: {{site.custom.dartpad.direct-link}}
+[Build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}
