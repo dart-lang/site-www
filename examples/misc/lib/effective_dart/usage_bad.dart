@@ -114,19 +114,6 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion rethrow
   }
 
-  (log) {
-    // #docregion async-await
-    Future<bool> doAsyncComputation() {
-      return longRunningCalculation().then((result) {
-        return verifyResult(result.summary);
-      }).catchError((e) {
-        log.error(e);
-        return new Future.value(false);
-      });
-    }
-    // #enddocregion async-await
-  };
-
   {
     // #docregion unnecessary-async
     Future afterTwoThings(Future first, Future second) async {
@@ -148,6 +135,29 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+}
+
+//----------------------------------------------------------------------------
+
+class BadTeam extends Team {
+  @override
+  dynamic get log => null;
+
+  @override
+  // #docregion async-await
+  Future<int> countActivePlayers(String teamName) {
+    return downloadTeam(teamName).then((team) {
+      if (team == null) return new Future.value(0);
+
+      return team.roster.then((players) {
+        return players.map((player) => player.isActive).length;
+      });
+    }).catchError((e) {
+      log.error(e);
+      return 0;
+    });
+  }
+  // #enddocregion async-await
 }
 
 //----------------------------------------------------------------------------

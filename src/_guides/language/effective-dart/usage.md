@@ -1020,22 +1020,23 @@ The following best practices apply to asynchronous coding.
 
 ### PREFER async/await over using raw futures.
 
-Explicit asynchronous code is notoriously hard to read and debug, even when
-using a nice abstraction like futures. This is why we added `async`/`await` to
-the language. They make a huge improvement in readability code and let you use
-all of the built-in control flow structures of the language within your
-asynchronous code.
+Asynchronous code is notoriously hard to read and debug, even when using a nice
+abstraction like futures. The `async`/`await` syntax improves readability and
+lets you use all of the Dart control flow structures within your async code.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
-Future<bool> doAsyncComputation() [!async!] {
+Future<int> countActivePlayers(String teamName) [!async!] {
   try {
-    var result = [!await!] longRunningCalculation();
-    return verifyResult(result.summary);
+    var team = [!await!] downloadTeam(teamName);
+    if (team == null) return 0;
+
+    var players = [!await!] team.roster;
+    return players.map((player) => player.isActive).length;
   } catch (e) {
     log.error(e);
-    return false;
+    return 0;
   }
 }
 {% endprettify %}
@@ -1043,12 +1044,16 @@ Future<bool> doAsyncComputation() [!async!] {
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (async-await)"?>
 {% prettify dart %}
-Future<bool> doAsyncComputation() {
-  return longRunningCalculation().then((result) {
-    return verifyResult(result.summary);
+Future<int> countActivePlayers(String teamName) {
+  return downloadTeam(teamName).then((team) {
+    if (team == null) return new Future.value(0);
+
+    return team.roster.then((players) {
+      return players.map((player) => player.isActive).length;
+    });
   }).catchError((e) {
     log.error(e);
-    return new Future.value(false);
+    return 0;
   });
 }
 {% endprettify %}
@@ -1084,9 +1089,6 @@ Cases where `async` *is* useful include:
 
 * You are returning a value and you want it implicitly wrapped in a future.
   `async` is shorter than `new Future.value(...)`.
-
-* You don't want any of the code to execute until after the event loop has taken
-  a turn.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
