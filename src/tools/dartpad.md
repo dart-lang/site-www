@@ -120,13 +120,6 @@ for (var char in 'hello'.split('')) {
   you get warnings at the bottom of the window and in the Run button.
   If you run the app, you'll see output from an uncaught exception.
   </li>
-
-  <li markdown="1">
-  Save your app by clicking **Share**.
-
-  DartPad gives you links to the app,
-  both in DartPad and in gist.github.com.
-</li>
 </ol>
 
 
@@ -136,7 +129,7 @@ To create a simple web app, start with the Hello World HTML sample.
 
 <ol>
   <li>
-    Click <b>Sample</b>, and choose <b>Hello World HTML</b>.
+    Click <b>Samples</b>, and choose <b>Hello World HTML</b>.
     If you've already edited Hello World HTML,
     click <b>Reset</b> to restore the original version.
   </li>
