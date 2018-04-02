@@ -1047,7 +1047,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
-    if (team == null) return 0;
+    if (team == null) return new Future.value(0);
 
     return team.roster.then((players) {
       return players.map((player) => player.isActive).length;

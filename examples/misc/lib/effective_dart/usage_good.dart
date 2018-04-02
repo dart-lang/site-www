@@ -130,23 +130,6 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion rethrow
   }
 
-  (log) {
-    // #docregion async-await
-    Future<int> countActivePlayers(String teamName) async {
-      try {
-        var team = await downloadTeam(teamName);
-        if (team == null) return 0;
-
-        var players = await team.roster;
-        return players.map((player) => player.isActive).length;
-      } catch (e) {
-        log.error(e);
-        return 0;
-      }
-    }
-    // #enddocregion async-await
-  };
-
   {
     // #docregion unnecessary-async
     Future afterTwoThings(Future first, Future second) {
@@ -201,6 +184,34 @@ class Animal {
 
 class Person {
   int zip;
+}
+
+//----------------------------------------------------------------------------
+
+class Player {
+  bool get isActive => false;
+}
+
+class Team {
+  Future<List<Player>> get roster => null;
+  Future<Team> downloadTeam(String name) => null;
+
+  dynamic log;
+
+  // #docregion async-await
+  Future<int> countActivePlayers(String teamName) async {
+    try {
+      var team = await downloadTeam(teamName);
+      if (team == null) return 0;
+
+      var players = await team.roster;
+      return players.map((player) => player.isActive).length;
+    } catch (e) {
+      log.error(e);
+      return 0;
+    }
+  }
+  // #enddocregion async-await
 }
 
 //----------------------------------------------------------------------------

@@ -114,23 +114,6 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion rethrow
   }
 
-  (log) {
-    // #docregion async-await
-    Future<int> countActivePlayers(String teamName) {
-      return downloadTeam(teamName).then((team) {
-        if (team == null) return 0;
-
-        return team.roster.then((players) {
-          return players.map((player) => player.isActive).length;
-        });
-      }).catchError((e) {
-        log.error(e);
-        return 0;
-      });
-    }
-    // #enddocregion async-await
-  };
-
   {
     // #docregion unnecessary-async
     Future afterTwoThings(Future first, Future second) async {
@@ -152,6 +135,34 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+}
+
+//----------------------------------------------------------------------------
+
+class Player {
+  bool get isActive => false;
+}
+
+class Team {
+  Future<List<Player>> get roster => null;
+  Future<Team> downloadTeam(String name) => null;
+
+  dynamic log;
+
+  // #docregion async-await
+  Future<int> countActivePlayers(String teamName) {
+    return downloadTeam(teamName).then((team) {
+      if (team == null) return new Future.value(0);
+
+      return team.roster.then((players) {
+        return players.map((player) => player.isActive).length;
+      });
+    }).catchError((e) {
+      log.error(e);
+      return 0;
+    });
+  }
+  // #enddocregion async-await
 }
 
 //----------------------------------------------------------------------------
