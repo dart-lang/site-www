@@ -76,8 +76,9 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   () {
+    dynamic table;
     // #docregion as___
-    var map = list.asMap();
+    var map = table.asMap();
     var list = bytes.asFloat32List();
     var future = subscription.asFuture();
     // #enddocregion as___
