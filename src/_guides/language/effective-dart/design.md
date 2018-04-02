@@ -340,7 +340,7 @@ The core library convention for you to follow is `as___()`.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)"?>
 {% prettify dart %}
-var map = list.asMap();
+var map = table.asMap();
 var list = bytes.asFloat32List();
 var future = subscription.asFuture();
 {% endprettify %}
