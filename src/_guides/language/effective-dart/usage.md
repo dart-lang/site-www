@@ -1031,6 +1031,8 @@ built-in control flow structures of the language within your async code.
 Future<int> countActivePlayers(String teamName) [!async!] {
   try {
     var team = [!await!] downloadTeam(teamName);
+    if (team == null) return 0;
+
     var players = [!await!] team.roster;
     return players.map((player) => player.isActive).length;
   } catch (e) {
@@ -1045,9 +1047,11 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
-    return team.roster;
-  }).then((players) {
-    return players.map((player) => player.isActive).length;
+    if (team == null) return 0;
+
+    return team.roster.then((players) {
+      return players.map((player) => player.isActive).length;
+    });
   }).catchError((e) {
     log.error(e);
     return 0;
