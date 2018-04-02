@@ -218,11 +218,11 @@ This refines the previous rule. For named parameters that are boolean, the name
 is often just as clear without the verb and it reads better at the callsite.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
 {% prettify dart %}
-Isolate.spawn(entryPoint, message, paused: false)
-new List.from(elements, growable: true)
-new RegExp(pattern, caseSensitive: false)
+Isolate.spawn(entryPoint, message, paused: false);
+var copy = new List.from(elements, growable: true);
+var regExp = new RegExp(pattern, caseSensitive: false);
 {% endprettify %}
 
 
@@ -237,17 +237,17 @@ Those kinds of members should be named using an imperative verb phrase that
 clarifies the work the member performs.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)"?>
 {% prettify dart %}
-list.add(...)
-queue.removeFirst()
-window.refresh()
-connection.downloadData()
+list.add("element");
+queue.removeFirst();
+window.refresh();
 {% endprettify %}
 
 This way, an invocation reads like a command to do that work.
 
-### CONSIDER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.
+
+### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.
 
 Other callable members have few side effects but return a useful result to the
 caller. If the member needs no parameters to do that, it should generally be a
@@ -260,16 +260,54 @@ property, and should be named as such using a phrase that describes *what* the
 member returns.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)"?>
 {% prettify dart %}
-list.elementAt(3)
-list.firstWhere(test)
-string.codeUnitAt(4)
+var element = list.elementAt(3);
+var first = list.firstWhere(test);
+var char = string.codeUnitAt(4);
 {% endprettify %}
 
 This guideline is deliberately softer than the previous one. Sometimes a method
 has no side effects but is still simpler to name with a verb phrase like
 `list.take()` or `string.split()`.
+
+
+### CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs.
+
+When a member produces a result without any side effects, it should usually be a
+getter or a method with a noun phrase name describing the result it returns.
+However, sometimes the work required to produce that result is important. It may
+be prone to runtime failures, or use heavyweight resources like networking or
+file I/O. In cases like this, where you want the caller to think about the work
+the member is doing, give the member a verb phrase name that describes that
+work.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-work)"?>
+{% prettify dart %}
+var table = database.downloadData();
+var packageVersions = packageGraph.solveConstraints();
+{% endprettify %}
+
+Note, though, that this guideline is softer than the previous two. The work an
+operation performs is often an implementation detail that isn't relevant to the
+caller, and performance and robustness boundaries change over time. Most of the
+time, name your members based on *what* they do for the caller, not *how* they
+do it.
+
+
+### AVOID starting a method name with `get`.
+
+In most cases, the method should be a getter with `get` removed from the name.
+For example, instead of a method named `getBreakfastOrder()`, define a getter
+named `breakfastOrder`.
+
+Even if the member does need to be a method because it takes arguments or
+otherwise isn't a good fit for a getter, you should still avoid `get`. Like the
+previous guidelines state, you can use a noun phrase name like
+`breakfastOrder()` or choose a verb that more usefully describes how the method
+produces its result. The word `get` conveys nothing to the caller that they
+don't already know.
 
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
@@ -282,11 +320,11 @@ named starting with `to` followed by the kind of result.
 If you define a conversion method, it's helpful to follow that convention.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (to___)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (to___)"?>
 {% prettify dart %}
-list.toSet()
-stackTrace.toString()
-dateTime.toLocal()
+list.toSet();
+stackTrace.toString();
+dateTime.toLocal();
 {% endprettify %}
 
 
@@ -300,11 +338,11 @@ original. Later changes to the original object are reflected in the view.
 The core library convention for you to follow is `as___()`.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)"?>
 {% prettify dart %}
-list.asMap()
-bytes.asFloat32List()
-subscription.asFuture()
+var map = table.asMap();
+var list = bytes.asFloat32List();
+var future = subscription.asFuture();
 {% endprettify %}
 
 
@@ -314,10 +352,10 @@ The user will see the argument at the callsite, so it usually doesn't help
 readability to also refer to it in the name itself.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-desc-param-in-func)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-desc-param-in-func)"?>
 {% prettify dart %}
-list.add(element)
-map.remove(key)
+list.add(element);
+map.remove(key);
 {% endprettify %}
 
 {:.bad-style}
@@ -330,10 +368,10 @@ However, it can be useful to mention a parameter to disambiguate it from other
 similarly-named methods that take different types:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (desc-param-in-func-ok)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (desc-param-in-func-ok)"?>
 {% prettify dart %}
-map.containsKey(key)
-map.containsValue(value)
+map.containsKey(key);
+map.containsValue(value);
 {% endprettify %}
 
 
@@ -658,50 +696,119 @@ can.
 
 ### DO use getters for operations that conceptually access properties.
 
-If the name of the method starts with `get` or is a noun phrase like `length` or
-`size` that's a sign you're better off using a getter. You
-should define a getter instead of a method when all of these are true:
+Deciding when a member should be a getter versus a method is a challenging,
+subtle, but important part of good API design, hence this very long guideline.
+Some other language's cultures shy away from getters. They only use them when
+the operation is almost exactly like a field — it does a miniscule amount of
+calculation on state that lives entirely on the object. Anything more complex or
+heavyweight than that gets `()` after the name to signal "computation goin' on
+here!" because a bare name after a `.` means "field".
 
-  * **Does not take any arguments.**
-  * **Returns a value.**
-  * **Is side-effect free.** Invoking a getter shouldn't change any
-  externally-visible state (caching internally or lazy initialization is
-  OK). Invoking the same getter repeatedly should return the same value
-  unless the object is explicitly changed between calls.
+Dart is *not* like that. In Dart, *all* dotted names are member invocations that
+may do computation. Fields are special — they're getters whose implementation
+is provided by the language. In other words, getters are not "particularly slow
+fields" in Dart; fields are "particularly fast getters".
+
+Even so, choosing a getter over a method sends an important signal to the
+caller. The signal, roughly, is that the operation is "field-like". The
+operation, at least in principle, *could* be implemented using a field, as far
+as the caller knows. That implies:
+
+*   **The operation does not take any arguments and returns a result.**
+
+*   **The caller cares mostly about the result.** If you want the caller to
+    worry about *how* the operation produces its result more than they do the
+    result being produced, then give the operation a verb name that describes
+    the work and make it a method.
+
+    This does *not* mean the operation has to be particularly fast in order to
+    be a getter. `IterableBase.length` is `O(n)`, and that's OK. It's fine for a
+    getter to do significant calculation. But if it does a *surprising* amount
+    of work, you may want to draw their attention to that by making it a method
+    whose name is a verb describing what it does.
+
+    {:.bad-style}
+    {% prettify dart %}
+    connection.nextIncomingMessage; // Does network IO.
+    expression.normalForm; // Could be exponential to calculate.
+    {% endprettify %}
+
+*   **The operation does not have user-visible side effects.** Accessing a real
+    field does not alter the object or any other state in the program. It
+    doesn't produce output, write files, etc. A getter shouldn't do those things
+    either.
+
+    The "user-visible" part is important. It's fine for getters to modify hidden
+    state or produce out of band side effects. Getters can lazily calculate and
+    store their result, write to a cache, log stuff, etc. As long as the caller
+    doesn't *care* about the side effect, it's probably fine.
+
+    {:.bad-style}
+    {% prettify dart %}
+    stdout.newline; // Produces output.
+    list.clear; // Modifies object.
+    {% endprettify %}
+
+*   **The operation is *idempotent*.** "Idempotent" is an odd word that, in this
+    context, basically means that calling the operation multiple times produces
+    the same result each time, unless some state is explicitly modified between
+    those calls. (Obviously, `list.length` produces different results if you add
+    an element to the list between calls.)
+
+    "Same result" here does not mean a getter must literally produce an
+    identical object on successive calls. Requiring that would force many
+    getters to have brittle caching, which negates the whole point of using a
+    getter. It's common, and perfectly fine, for a getter to return a new future
+    or list each time you call it. The important part is that the future
+    completes to the same value, and the list contains the same elements.
+
+    In other words, the result value should be the same *in the aspects that the
+    caller cares about.*
+
+    {:.bad-style}
+    {% prettify dart %}
+    DateTime.now; // New result each time.
+    {% endprettify %}
+
+*   **The resulting object doesn't expose all of the original object's state.**
+    A field exposes only a piece of an object. If your operation returns a
+    result that exposes the original object's entire state, it's likely better
+    off as a [`to___()`][to] or [`as___()`][as] method.
+
+[to]: #prefer-naming-a-method-to___-if-it-copies-the-objects-state-to-a-new-object
+[as]: #prefer-naming-a-method-as___-if-it-returns-a-different-representation-backed-by-the-original-object
+
+If all of the above describe your operation, it should be a getter. It seems
+like few members would survive that gauntlet, but surprisingly many do. Many
+operations just do some computation on some state and most of those can and
+should be getters.
 
 {:.good-style}
 {% prettify dart %}
-rectangle.width
-collection.isEmpty
-button.canShow
+rectangle.area;
+collection.isEmpty;
+button.canShow;
+dataSet.minimumValue;
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
-DateTime.now;   // Returns different value each call.
-window.refresh; // Doesn't return a value.
-{% endprettify %}
 
-Unlike other languages, in Dart we don't require getters to be particularly fast
-or have certain complexity guarantees. Calling `length` on an Iterable may be
-`O(n)`, and that's OK.
+### DO use setters for operations that conceptually change properties.
 
+Deciding between a setter versus a method is similar to deciding between a
+getter versus a method. In both cases, the operation should be "field-like".
 
-### DO use a setter for operations that conceptually change a property.
+For a setter, "field-like" means:
 
-If the name of the method starts with `set` that's often a sign that it could be
-a setter. More specifically, use a setter instead of a method when it:
+*   **The operation takes a single argument and does not produce a result
+    value.**
 
-*   **Takes a single argument.**
+*   **The operation changes some state in the object.**
 
-*   **Changes some state in the object.**
-
-*   **Has a corresponding getter.** It feels weird for users to have state that
-    they can modify but not see. (The converse is not true; it's fine to have
-    getters that don't have setters.)
-
-*   **Is idempotent.** Calling the same setter twice with the same value should
-    do nothing the second time.
+*   **The operation is idempotent.** Calling the same setter twice with the same
+    value should do nothing the second time as far as the caller is concerned.
+    Internally, maybe you've got some cache invalidation or logging going on.
+    That's fine. But from the caller's perspective, it appears that the second
+    call does nothing.
 
 {:.good-style}
 {% prettify dart %}
@@ -1005,9 +1112,9 @@ never need to explicitly pass a "hole" to omit an earlier positional argument to
 pass later one. You're better off using named arguments for that.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-optional-positional)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-optional-positional)"?>
 {% prettify dart %}
-String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end])
+String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
 
 DateTime(int year,
     [int month = 1,
@@ -1016,7 +1123,7 @@ DateTime(int year,
     int minute = 0,
     int second = 0,
     int millisecond = 0,
-    int microsecond = 0])
+    int microsecond = 0]);
 
 Duration(
     {int days: 0,
@@ -1024,7 +1131,7 @@ Duration(
     int minutes: 0,
     int seconds: 0,
     int milliseconds: 0,
-    int microseconds: 0})
+    int microseconds: 0});
 {% endprettify %}
 
 ### AVOID mandatory parameters that permit nonce values.
@@ -1038,15 +1145,15 @@ value like `null` is accidentally passed when the user thought they were
 providing a real value.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-mandatory-param)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-mandatory-param)"?>
 {% prettify dart %}
-string.substring(start)
+var rest = string.substring(start);
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-mandatory-param)" replace="/;//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-mandatory-param)"?>
 {% prettify dart %}
-string.substring(start, null)
+var rest = string.substring(start, null);
 {% endprettify %}
 
 

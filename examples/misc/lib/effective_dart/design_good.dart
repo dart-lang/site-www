@@ -36,26 +36,32 @@ void miscDeclAnalyzedButNotTested() {
   (Func1 entryPoint, message, Iterable elements, String pattern) {
     // #docregion omit-verb-for-bool-param
     Isolate.spawn(entryPoint, message, paused: false);
-    new List.from(elements, growable: true);
-    new RegExp(pattern, caseSensitive: false);
+    var copy = new List.from(elements, growable: true);
+    var regExp = new RegExp(pattern, caseSensitive: false);
     // #enddocregion omit-verb-for-bool-param
   };
 
   (Queue queue, window, connection) {
     // #docregion verb-for-func-with-side-effect
-    list.add(ellipsis);
+    list.add("element");
     queue.removeFirst();
     window.refresh();
-    connection.downloadData();
     // #enddocregion verb-for-func-with-side-effect
   };
 
   (bool Function(dynamic) test) {
     // #docregion noun-for-func-returning-value
-    list.elementAt(3);
-    list.firstWhere(test);
-    string.codeUnitAt(4);
+    var element = list.elementAt(3);
+    var first = list.firstWhere(test);
+    var char = string.codeUnitAt(4);
     // #enddocregion noun-for-func-returning-value
+  };
+
+  (database, packageGraph) {
+    // #docregion verb-for-func-with-work
+    var table = database.downloadData();
+    var packageVersions = packageGraph.solveConstraints();
+    // #enddocregion verb-for-func-with-work
   };
 
   (stackTrace) {
@@ -67,10 +73,11 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   () {
+    dynamic table;
     // #docregion as___
-    list.asMap();
-    bytes.asFloat32List();
-    subscription.asFuture();
+    var map = table.asMap();
+    var list = bytes.asFloat32List();
+    var future = subscription.asFuture();
     // #enddocregion as___
   };
 
@@ -158,10 +165,11 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion avoid-positional-bool-param
   };
 
-  (int start) =>
-      // #docregion avoid-mandatory-param
-      string.substring(start);
-  // #enddocregion avoid-mandatory-param
+  (int start) {
+    // #docregion avoid-mandatory-param
+    var rest = string.substring(start);
+    // #enddocregion avoid-mandatory-param
+  };
 }
 
 //----------------------------------------------------------------------------
