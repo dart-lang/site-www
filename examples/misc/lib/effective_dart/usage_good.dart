@@ -195,8 +195,7 @@ class Player {
 class Team {
   Future<List<Player>> get roster => null;
   Future<Team> downloadTeam(String name) => null;
-
-  dynamic log;
+  dynamic get log => null;
 
   // #docregion async-await
   Future<int> countActivePlayers(String teamName) async {

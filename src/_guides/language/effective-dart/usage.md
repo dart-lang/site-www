@@ -1021,9 +1021,8 @@ The following best practices apply to asynchronous coding.
 ### PREFER async/await over using raw futures.
 
 Asynchronous code is notoriously hard to read and debug, even when using a nice
-abstraction like futures. This is why we added `async`/`await` to the language.
-They make a huge improvement in code readability and let you use all of the
-built-in control flow structures of the language within your async code.
+abstraction like futures. The `async`/`await` syntax improves readability and
+lets you use all of the Dart control flow structures within your async code.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>

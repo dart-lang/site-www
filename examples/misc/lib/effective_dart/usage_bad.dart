@@ -139,16 +139,11 @@ void miscDeclAnalyzedButNotTested() {
 
 //----------------------------------------------------------------------------
 
-class Player {
-  bool get isActive => false;
-}
+class BadTeam extends Team {
+  @override
+  dynamic get log => null;
 
-class Team {
-  Future<List<Player>> get roster => null;
-  Future<Team> downloadTeam(String name) => null;
-
-  dynamic log;
-
+  @override
   // #docregion async-await
   Future<int> countActivePlayers(String teamName) {
     return downloadTeam(teamName).then((team) {
