@@ -337,6 +337,21 @@ for you.
 [dartfmt]: https://github.com/dart-lang/dart_style
 
 
+### CONSIDER changing your code to make it more formatter-friendly.
+
+The formatter does the best it can with whatever code you throw at it, but it
+can't work miracles. If your code has particularly long identifiers, deeply
+nested expressions, a mixture of different kinds of operators, etc. the
+formatted output may still be hard to read.
+
+When that happens, reorganize or simplify your code. Consider shortening a local
+variable name or hoisting out an expression into a new local variable. In other
+words, make the same kinds of modifications that you'd make if you were
+formatting the code by hand and trying to make it more readable. Think of
+dartfmt as a partnership where you work together, sometimes iteratively, to
+produce beautiful code.
+
+
 ### AVOID lines longer than 80 characters.
 
 Readability studies show that long lines of text are harder to read because your
@@ -353,9 +368,10 @@ Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
 split long string literals to fit in 80 columns, so you have to do that
 manually.
 
-We make an exception for strings containing URIs&mdash;mainly imports and
-exports. Those can remain single-line strings even if they go over the line
-limit. This makes it easier to search source files for a given path.
+We make an exception for URIs and file paths. When those occur in comments or
+strings (usually in imports and exports), they may remain on a single line even
+if they go over the line limit. This makes it easier to search source files for
+a given path.
 
 
 ### DO use curly braces for all flow control structures.
