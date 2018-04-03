@@ -1173,7 +1173,7 @@
         "type": 301
       },
       { "source": "/install/**", "destination": "/install", "type": 301 },
-      { "source": "/tools/pub/**", "destination": "/toosl/pub", "type": 301 }
+      { "source": "/tools/pub/installing", "destination": "/tools/pub/environment-variables", "type": 301 }
     ]
   }
 }

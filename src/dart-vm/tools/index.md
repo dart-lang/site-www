@@ -4,12 +4,10 @@ description: The tools that you get when you download the Dart SDK.
 toc: false
 ---
 
-When you [install](/tools/sdk#install) the
-[Dart SDK](/tools/sdk), you get all the command-line tools that you
-need to write Dart scripts and servers.
+When you install the [Dart SDK](/tools/sdk), you get all the command-line tools
+that you need to write Dart scripts and servers.
 
-The following tools have special support for
-running scripts and servers.
+The following tools have special support for running scripts and servers.
 
 [Standalone Dart VM: `dart`](/dart-vm/tools/dart-vm)
 : Executes Dart code.
