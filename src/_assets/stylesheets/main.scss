@@ -14,7 +14,7 @@
 
 @import '_dartvm';
 @import '_books';
-
+@import '_os-tabs';
 
 /* -----------------------------------------
   Global
@@ -764,6 +764,7 @@ main .content {
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
   }
+  &.narrow { width: 250px; }
 }
 
 // Support for .card-grid formatted as a markdown unordered list

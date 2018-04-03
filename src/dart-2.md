@@ -1,6 +1,4 @@
 ---
-layout: default
-permalink: /dart-2
 title: Dart 2 Migration
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
@@ -83,7 +81,7 @@ TODO:
 [dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
 [flutter package upgrade]: https://flutter.io/using-packages/#updating-package-dependencies
 [pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
-[dart2_fix]: https://github.com/dart-lang/dart2_fix 
+[dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
@@ -98,10 +96,10 @@ TODO:
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter
 [Flutter SDK install]: https://flutter.io/upgrading/
-[Dart SDK install]: /install
+[Dart SDK install]: /tools/sdk#install
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /install#about-sdk-release-channels-and-version-strings
+[pre-release]: /tools/sdk#about-release-channels-and-version-strings
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing

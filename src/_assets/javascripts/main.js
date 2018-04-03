@@ -1,7 +1,8 @@
-//= require vendor/jquery-1.12.3.min
+//= require vendor/jquery-3.3.1.min.js
 //= require bootstrap
 //= require _utilities
 //= require _search
+//= require _os-tabs
 //= require vendor/code-prettify/prettify
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
@@ -32,11 +33,13 @@ $(window).scroll(function(){
 });
 
 
-$(document).on('ready', function(){
+$(function() {
   // set heights for navigation elements
   fixNav();
   // Initiate Syntax Highlighting
   prettyPrint();
+
+  setupOsTabs();
 
   // Sidenav
   $('#sidenav i').on('click', function(e) {

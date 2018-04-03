@@ -39,8 +39,6 @@
     - title: "Dart VM"
       permalink: /dart-vm
       children:
-      - title: "Install Dart"
-        permalink: /install
       - title: "API Reference"
         permalink: https://api.dartlang.org
 

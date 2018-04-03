@@ -1,6 +1,5 @@
 ---
 title: Dart Plugin from JetBrains
-permalink: /tools/jetbrains-plugin
 description: Use Dart with a variety of IDEs and editors from JetBrains.
 ---
 
@@ -15,11 +14,11 @@ this page has resources to help you get started quickly
 and find more information when you need it.
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-WebStorm comes with the Dart plugin pre-installed.
-For details on using WebStorm,
-read the [WebStorm page]({{site.webdev}}/tools/webstorm)
-on [Dart webdev]({{site.webdev}}).
+  **Note:**
+  WebStorm comes with the Dart plugin pre-installed.
+  For details on using WebStorm,
+  read the [WebStorm page]({{site.webdev}}/tools/webstorm)
+  on [Dart webdev]({{site.webdev}}).
 </aside>
 
 ## Getting started
@@ -52,7 +51,7 @@ Install a JetBrains IDE if you don't already have one.
 If you don't already have the Dart SDK,
 install it.
 
-* [Download the Dart SDK](/install)
+* [Download the Dart SDK](/tools/sdk#install)
 
 
 ### Configuring Dart support

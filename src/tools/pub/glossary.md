@@ -1,8 +1,6 @@
 ---
-layout: default
-title: "Glossary of Pub Terms"
-description: "A glossary of terms relating to Dart's package management tool, pub."
-permalink: /tools/pub/glossary
+title: Glossary of Pub Terms
+description: A glossary of terms relating to Dart's package management tool, pub.
 ---
 
 The following terms are used in the documentation for the [pub](/tools/pub)
@@ -127,7 +125,7 @@ pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
 On Windows, the file lives in `%APPDATA%\Pub\Cache\bin`,
 though its exact location may vary depending on the Windows version.
 You can specify a different location using the
-[PUB_CACHE](/tools/pub/installing.html) environment variable.
+[PUB_CACHE](/tools/pub/environment-variables.html) environment variable.
 
 Once packages are in the system cache,
 pub creates a `.packages` file that maps each package
