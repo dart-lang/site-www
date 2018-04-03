@@ -1,6 +1,6 @@
 ---
 title: Write Command-Line Apps
-description: Basics for command-line apps
+description: Basics for command-line apps.
 nextpage:
   url: /tutorials/dart-vm/httpserver
   title: "Write HTTP Clients & Servers"

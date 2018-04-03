@@ -1,6 +1,6 @@
 ---
-title: "Get Started with the Dart VM"
-description: "Get Dart and run a Dart application"
+title: Get Started with the Dart VM
+description: Get Dart and run a Dart application.
 nextpage:
   url: /tutorials/dart-vm/cmdline
   title: "Write Command-Line Apps"

@@ -1172,6 +1172,7 @@
         "destination": "/dart-2",
         "type": 301
       },
+      { "source": "/install/archive", "destination": "/tools/sdk/archive", "type": 301 },
       { "source": "/install/**", "destination": "/install", "type": 301 },
       { "source": "/tools/pub/installing", "destination": "/tools/pub/environment-variables", "type": 301 }
     ]
