@@ -106,8 +106,6 @@ linkcheck :4000
 If the link checker crashes:
 * Make sure you're using the firebase server.
 * Rerun the command with the `-d` option to figure out what triggered the crash.
-  (Hint: If the last file read is get-started-flowchart.png,
-  then you're probably running the jekyll server, not the firebase one.)
 
 To also check external URLs (which is much slower), run the linkcheck command
 with the `--external` (or `-e`, for short) option.
