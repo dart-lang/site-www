@@ -1,9 +1,7 @@
 ---
-layout: default
-title: "Dart VM"
-description: "The landing page for all things relating to the Dart virtual machine (Dart VM)"
+title: Dart VM
+description: The landing page for all things relating to the Dart virtual machine (Dart VM).
 toc: false
-permalink: /dart-vm
 ---
 
 This page points to tools and documentation
@@ -22,7 +20,7 @@ for the standalone Dart VM.
   </aside>
 
 [Dart SDK](/tools/sdk)
-: [Download the Dart SDK](/install) to get the core Dart
+: [Install the Dart SDK](/tools/sdk#install) to get the core Dart
   libraries and [Dart VM Tools](/dart-vm/tools).
 
 More tools

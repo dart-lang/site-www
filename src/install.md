@@ -1,15 +1,13 @@
 ---
 title: Install Dart
 description: The bundles that support the Dart language.
-permalink: /install
 toc: false
 ---
 
-The [DartPad][]{: target="_blank"} is a great way to learn how to write a simple
-app in the Dart language, once you are ready to develop real apps, you need the
-Dart SDK.
+Although [DartPad][]{: target="_blank"} is a great way to learn how to write a
+simple app, once you're ready to develop real apps, you need an SDK.
 
-Install the Dart SDK for your platform.
+Install the SDK for your platform.
 
 {:.card-grid}
 - {:.card.narrow}[![Flutter logo][]{: width="100px"}][Flutter install]{:.no-automatic-external}
@@ -24,10 +22,7 @@ Install the Dart SDK for your platform.
 
   ### [Web][Web install]
 
-  Get the Dart SDK.
-  {% comment %}... plus web-specific tools.
-  To be added once we get a copy of the install instructions in webdev.
-  {% endcomment %}
+  [Get the Dart SDK][Web install] plus [web-specific tools.]({{site.webdev}}/tools)
 
 - {:.card.narrow}[![Dart logo][]{: width="100px"}][Dart install]{:.no-automatic-external}
   {:.logo}

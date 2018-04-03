@@ -1,12 +1,10 @@
 ---
-layout: default
-title: "Dart VM Tools"
-description: "The tools that you get when you download the Dart SDK."
-permalink: /dart-vm/tools
+title: Dart VM Tools
+description: The tools that you get when you download the Dart SDK.
 toc: false
 ---
 
-When you [install](/install) the
+When you [install](/tools/sdk#install) the
 [Dart SDK](/tools/sdk), you get all the command-line tools that you
 need to write Dart scripts and servers.
 

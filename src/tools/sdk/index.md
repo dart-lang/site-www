@@ -1,7 +1,6 @@
 ---
 title: Dart SDK
 description: Dart libraries and command-line tools.
-permalink: /tools/sdk
 js:
 - url: /tools/sdk/archive/assets/install.js
   defer: true
@@ -18,10 +17,9 @@ release of the **Dart SDK**.
 ## Install the SDK
 
 A package manager can help you easily install and update the Dart SDK.
-Don’t want to use a package manager? Other options are:
-
-* [Download the SDK manually](sdk/archive)
-* [Build the SDK from source][]
+Don’t want to use a package manager? Other options are
+[building the SDK from source][] and
+[downloading the SDK as a zip file](sdk/archive).
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -40,7 +38,7 @@ Don’t want to use a package manager? Other options are:
 
 ## What's in the SDK
 
-The SDK directory includes a `lib` directory for the
+The Dart SDK includes a `lib` directory for the
 [Dart libraries](/guides/libraries/library-tour)
 and a `bin` directory that has these command-line tools:
 
@@ -75,7 +73,7 @@ and a `bin` directory that has these command-line tools:
 For more information about the SDK, see its
 [README file](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk).
 
-## About SDK release channels and version strings
+## About release channels and version strings
 
 The Dart SDK has two release channels:
 
@@ -118,5 +116,5 @@ Here are some handy searches:
 * [pub issues](https://github.com/dart-lang/sdk/labels/Area-Pub)
 * [issues for the SDK as a whole](https://github.com/dart-lang/sdk/issues)
 
-[Build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
+[building the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}

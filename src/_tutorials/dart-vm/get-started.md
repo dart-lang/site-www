@@ -1,8 +1,6 @@
 ---
-layout: tutorial
 title: "Get Started with the Dart VM"
 description: "Get Dart and run a Dart application"
-
 nextpage:
   url: /tutorials/dart-vm/cmdline
   title: "Write Command-Line Apps"
@@ -43,7 +41,7 @@ The Dart SDK contains all of
 the tools and libraries that you need for basic Dart development.
 You may also want an IDE or code editor; this tutorial uses WebStorm.
 
-* [Get the Dart SDK](/install)
+* [Get the Dart SDK](/tools/sdk#install)
 * Recommended: [Get WebStorm]({{site.webdev}}/tools/webstorm)
 
 ## What did you get? {#what-did-you-get}

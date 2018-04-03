@@ -1,13 +1,12 @@
 ---
 title: Pub Package Manager
-description: Use the pub tool to manage Dart packages.
 short-title: Pub
-permalink: /tools/pub
+description: Use the pub tool to manage Dart packages.
 ---
 
 You can use the `pub` tool to manage Dart packages.
 Pub is one of the tools that you get when you
-[install](/install) the Dart SDK.
+[install](/tools/sdk#install) the Dart SDK.
 
 {% include flutter-packages.md %}
 
@@ -16,8 +15,8 @@ such as WebStorm, or at the command line.
 Use whatever approach is most convenient.
 
 <aside class="alert alert-info" markdown="1">
-**Problems?**
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  **Problems?**
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 
 ## Managing packages
@@ -32,7 +31,7 @@ application package.
 
 * [Getting Started with Pub](/tools/pub/get-started)
 * [Create Library Packages](/guides/libraries/create-library-packages)
-* [Installing and Configuring Pub](/tools/pub/installing)
+* [Configuring Pub Environment Variables](/tools/pub/environment-variables)
 * [Publishing a Package](/tools/pub/publishing)
 
 ### Concepts

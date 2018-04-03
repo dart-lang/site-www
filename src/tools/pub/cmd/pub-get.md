@@ -1,7 +1,6 @@
 ---
 title: pub get
 description: Use pub get to retrieve the dependencies used by your Dart application.
-permalink: /tools/pub/cmd/pub-get
 ---
 
 _Get_ is one of the commands of the _pub_ tool.
@@ -112,7 +111,7 @@ subdirectory of your home directory (on Mac and Linux),
 or in `%APPDATA%\Pub\Cache` (on Windows;
 the location might vary depending on the Windows version).
 You can configure the location of the cache by setting the
-[`PUB_CACHE`](/tools/pub/installing)
+[`PUB_CACHE`](/tools/pub/environment-variables)
 environment variable before running pub.
 
 
