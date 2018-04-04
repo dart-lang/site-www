@@ -107,19 +107,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion omit-types-on-locals
-    Map<int, List<Person>> groupByZip(Iterable<Person> people) {
-      var peopleByZip = <int, List<Person>>{};
-      for (var person in people) {
-        peopleByZip.putIfAbsent(person.zip, () => <Person>[]);
-        peopleByZip[person.zip].add(person);
-      }
-      return peopleByZip;
-    }
-    // #enddocregion omit-types-on-locals
-  }
-
-  {
     // #docregion rethrow
     try {
       somethingRisky();

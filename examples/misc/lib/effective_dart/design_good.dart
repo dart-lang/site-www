@@ -118,6 +118,10 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion type_annotate_public_apis
     Future<bool> install(PackageId id, String destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
+
+    // #docregion inferred
+    const screenWidth = 640; // Infers "int" from 640.
+    // #enddocregion inferred
   };
 
   () {
@@ -126,19 +130,59 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion func-expr-no-param-type
   };
 
+  {
+    // #docregion omit-types-on-locals
+    List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+      var desserts = <List<Ingredient>>[];
+      for (var recipe in cookbook) {
+        if (pantry.containsAll(recipe)) {
+          desserts.add(recipe);
+        }
+      }
+
+      return desserts;
+    }
+    // #enddocregion omit-types-on-locals
+  }
+
+  (AstNode node) {
+    // #docregion uninitialized-local
+    List<AstNode> parameters;
+    if (node is Constructor) {
+      parameters = node.signature;
+    } else if (node is Method) {
+      parameters = node.parameters;
+    }
+    // #enddocregion uninitialized-local
+  };
+
   () {
-    // #docregion avoid-dynamic
-    lookUpOrDefault(String name, Map map, defaultValue) {
+    // #docregion prefer-dynamic
+    T lookUp<T>(String name, Map<String, T> map, T defaultValue) {
       var value = map[name];
       if (value != null) return value;
       return defaultValue;
     }
-    // #enddocregion avoid-dynamic
+    // #enddocregion prefer-dynamic
   };
 
   // #docregion avoid-Function
-  bool isValidString(String value, bool predicate(String string)) => ellipsis();
+  bool isValid(String value, bool Function(String string) test) => ellipsis();
   // #enddocregion avoid-Function
+
+  // #docregion function-arity
+  void handleError(void Function() operation, Function errorHandler) {
+    try {
+      operation();
+    } catch (err, stack) {
+      if (errorHandler is Function(Object)) {
+        errorHandler(err);
+      } else if (errorHandler is Function(Object, Object)) {
+        errorHandler(err, stack);
+      }
+    }
+  }
+  // #enddocregion function-arity
 
   () {
     // #docregion Object-vs-dynamic
@@ -147,8 +191,8 @@ void miscDeclAnalyzedButNotTested() {
       print(object.toString());
     }
 
-    // Only accepts bool or String, which can't be expressed in a type annotation.
-    bool convertToBool(arg) {
+    // Only accepts bool or String, which type system can't express.
+    bool convertToBool(dynamic arg) {
       if (arg is bool) return arg;
       if (arg is String) return arg == 'true';
       throw new ArgumentError('Cannot convert $arg to a bool.');
@@ -172,8 +216,58 @@ void miscDeclAnalyzedButNotTested() {
   };
 }
 
+class MyIterable<T> {
+  // #docregion function-type-param
+  Iterable<T> where(bool Function(T element) predicate) => ellipsis();
+  // #enddocregion function-type-param
+}
+
+class Event {}
+
+// #docregion function-type
+class FilteredObservable {
+  // In a field:
+  final bool Function(Event) _predicate;
+
+  // In a generic:
+  final List<void Function(Event)> _observers;
+
+  FilteredObservable(this._predicate, this._observers);
+
+  // In a return type:
+  void Function(Event) notify(Event event) {
+    if (!_predicate(event)) return null;
+
+    // In a local variable:
+    void Function(Event) last;
+    for (var observer in _observers) {
+      observer(event);
+      last = observer;
+    }
+
+    return last;
+  }
+}
+// #enddocregion function-type
+
+//----------------------------------------------------------------------------
+
+// #docregion new-typedef
+typedef Comparison = int Function<T>(T, T);
+// #enddocregion new-typedef
+
 //----------------------------------------------------------------------------
 // Supporting declarations
+
+class AstNode {}
+
+class Constructor extends AstNode {
+  List<AstNode> get signature => null;
+}
+
+class Method extends AstNode {
+  List<AstNode> get parameters => null;
+}
 
 class Monster {
   bool hasClaws;
@@ -195,6 +289,10 @@ class Task {
   Task.oneShot();
   Task.repeating();
 }
+
+class Ingredient {}
+
+final List<List<Ingredient>> cookbook = null;
 
 //----------------------------------------------------------------------------
 

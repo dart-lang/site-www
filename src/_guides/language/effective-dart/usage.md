@@ -586,42 +586,6 @@ do that after you know you have a performance problem, do it carefully, and
 leave a comment explaining the optimization.
 
 
-### CONSIDER omitting the types for local variables.
-
-Method bodies in modern code tend to be short, and the types of local variables
-are almost always trivially inferrable from the initializing expression, so
-explicit type annotations are usually just visual noise.
-
-Dart comes with powerful static analysis tools that will infer the type of local
-variables and still provide the auto-complete and tooling support you expect.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (omit-types-on-locals)"?>
-{% prettify dart %}
-Map<int, List<Person>> groupByZip(Iterable<Person> people) {
-  var peopleByZip = <int, List<Person>>{};
-  for (var person in people) {
-    peopleByZip.putIfAbsent(person.zip, () => <Person>[]);
-    peopleByZip[person.zip].add(person);
-  }
-  return peopleByZip;
-}
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (omit-types-on-locals)"?>
-{% prettify dart %}
-Map<int, List<Person>> groupByZip(Iterable<Person> people) {
-  Map<int, List<Person>> peopleByZip = <int, List<Person>>{};
-  for (Person person in people) {
-    peopleByZip.putIfAbsent(person.zip, () => <Person>[]);
-    peopleByZip[person.zip].add(person);
-  }
-  return peopleByZip;
-}
-{% endprettify %}
-
-
 ## Members
 
 In Dart, objects have members which can be functions (methods) or data (instance

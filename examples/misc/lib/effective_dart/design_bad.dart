@@ -48,18 +48,33 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion func-expr-no-param-type
   };
 
+  {
+    // #docregion omit-types-on-locals
+    List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+      List<List<Ingredient>> recipes = <List<Ingredient>>[];
+      for (List<Ingredient> ingredients in cookbook) {
+        if (pantry.containsAll(ingredients)) {
+          recipes.add(ingredients);
+        }
+      }
+
+      return recipes;
+    }
+    // #enddocregion omit-types-on-locals
+  }
+
   () {
-    // #docregion avoid-dynamic
-    dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
+    // #docregion prefer-dynamic
+    lookUp(String name, Map map, defaultValue) {
       var value = map[name];
       if (value != null) return value;
       return defaultValue;
     }
-    // #enddocregion avoid-dynamic
+    // #enddocregion prefer-dynamic
   };
 
   // #docregion avoid-Function
-  bool isValidString(String value, Function predicate) => ellipsis();
+  bool isValid(String value, Function test) => ellipsis();
   // #enddocregion avoid-Function
 
   (int start) {
@@ -68,6 +83,22 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion avoid-mandatory-param
   };
 }
+
+class MyIterable<T> {
+  // #docregion function-type-param
+  Iterable<T> where(bool predicate(T element)) => ellipsis();
+  // #enddocregion function-type-param
+}
+
+//----------------------------------------------------------------------------
+
+// #docregion old-typedef
+typedef int Comparison<T>(T a, T b);
+// #enddocregion old-typedef
+
+// #docregion typedef-param
+typedef bool TestNumber(num);
+// #enddocregion typedef-param
 
 //----------------------------------------------------------------------------
 
