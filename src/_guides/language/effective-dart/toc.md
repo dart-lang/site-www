@@ -181,14 +181,16 @@
 
 * <a href='/guides/language/effective-dart/design#prefer-making-declarations-private'>PREFER making declarations private.</a>
 
-**Types**
+**Classes**
 
 * <a href='/guides/language/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/guides/language/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
 * <a href='/guides/language/effective-dart/design#avoid-extending-a-class-that-isnt-intended-to-be-subclassed'>AVOID extending a class that isn't intended to be subclassed.</a>
-* <a href='/guides/language/effective-dart/design#do-document-whether-your-class-supports-being-extended'>DO document whether your class supports being extended.</a>
+* <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
+* <a href='/guides/language/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
+* <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
 * <a href='/guides/language/effective-dart/design#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a class that isn't intended to be a mixin.</a>
-* <a href='/guides/language/effective-dart/design#do-document-whether-your-class-supports-being-used-as-a-mixin'>DO document whether your class supports being used as a mixin.</a>
+* <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-used-as-a-mixin'>DO document if your class supports being used as a mixin.</a>
 
 **Constructors**
 
