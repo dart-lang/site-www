@@ -494,7 +494,7 @@ just want a function.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
 {% prettify dart %}
-typedef bool Predicate<E>(E element);
+typedef Predicate = bool Function<E>(E element);
 {% endprettify %}
 
 {:.bad-style}
