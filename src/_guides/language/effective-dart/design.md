@@ -23,8 +23,8 @@ The following best practices can help you achieve that goal.
 ### DO use terms consistently.
 
 Use the same name for the same thing, throughout your code. If a precedent
-already exists outside your API that your API's users are likely to know, follow
-that precedent.
+already exists outside your API that users are likely to know, follow that
+precedent.
 
 {:.good-style}
 {% prettify dart %}
@@ -53,7 +53,7 @@ productive.
 ### AVOID abbreviations.
 
 Unless the abbreviation is more common than the unabbreviated term, don't
-abbreviate. If you do abbreviate, [capitalize them correctly][caps].
+abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 
 [caps]: /guides/language/effective-dart/style#identifiers
 
@@ -459,8 +459,8 @@ In practice, the existing conventions cover most type parameters.
 
 ## Libraries
 
-The underscore character ( `_` ) indicates that a member is private to its
-library. This distinction is enforced by the Dart tools.
+A leading underscore character ( `_` ) indicates that a member is private to its
+library. This is not mere convention, but is built into the language itself.
 
 ### PREFER making declarations private.
 
@@ -470,17 +470,18 @@ commitment on your library's part to support that and behave properly when it
 happens.
 
 If that's not what you intend, add the little `_` and be happy. Narrow public
-interfaces are easier for you to maintain and easier for users to learn.
-
-As a nice bonus, the analyzer will tell you about unused private declarations so
-you can delete dead code. It can't do that if the member is public because it
+interfaces are easier for you to maintain and easier for users to learn. As a
+nice bonus, the analyzer will tell you about unused private declarations so you
+can delete dead code. It can't do that if the member is public because it
 doesn't know if any code outside of its view is using it.
 
 
-## Types
+## Classes
 
-Dart supports a variety of built-in types and you can define your own types.
-Or, you can choose not to use types at all.
+Dart is a "pure" object-oriented language in that all objects are instances of
+classes. But it does not require all code to defined inside a class -- you can
+define top-level variables, constants, and functions like you can in a
+procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
 
@@ -581,11 +582,39 @@ doesn't do that, it's best to assume you should *not* extend the class.
 Otherwise, later changes to it may break your code.
 
 
-### DO document whether your class supports being extended.
+### DO document if your class supports being extended.
 
 This is the corollary to the above rule. If you want to allow subclasses of your
 class, state that. Suffix the class name with `Base`, or mention it in the
 class's doc comment.
+
+
+### AVOID implementing a class that isn't intended to be an interface.
+
+Implicit interfaces are a powerful tool in Dart to avoid having to repeat the
+contract of a class when it can be trivially inferred from the signatures of an
+implementation of that contract.
+
+But implementing a class's interface is a very tight coupling to that class. It
+means virtually *any* change to the class whose interface you are implementing
+will break your implementation. For example, adding a new member to a class is
+usually a safe, non-breaking change. But if you are implementing that class's
+interface, now your class has a static error because it lacks an implementation
+of that new method.
+
+Package maintainers need the ability to evolve existing classes without breaking
+users. Treating *every* class as exposing an interface you are free to implement
+makes that very difficult for them. That difficulty in turn means the packages
+you rely on are slower to grow and adapt to new needs.
+
+To give the authors of the classes you use more leeway, avoid implementing their
+implicit interface unless the class is clearly intended to be used in that way.
+Otherwise, you may introduce a coupling that the author doesn't intend and they
+may break your code without realizing it.
+
+### DO document if your class supports being used as an interface.
+
+Mention in the class's doc comment if the class can be used as an interface.
 
 
 ### AVOID mixing in a class that isn't intended to be a mixin.
@@ -602,7 +631,7 @@ comment or an obvious name like `IterableMixin`, you should assume you cannot
 mix in the class.
 
 
-### DO document whether your class supports being used as a mixin.
+### DO document if your class supports being used as a mixin.
 
 Mention in the class's doc comment whether the class can or must be used as a
 mixin. If your class is designed for use only as a mixin, then consider adding
@@ -611,9 +640,9 @@ mixin. If your class is designed for use only as a mixin, then consider adding
 
 ## Constructors
 
-Dart constructors are created by declaring a function with the same name
-as the class and, optionally, an additional identifier. These are called
-_named constructors_.
+Dart constructors are created by declaring a function with the same name as the
+class and, optionally, an additional identifier. The latter are called *named
+constructors*.
 
 ### PREFER defining constructors instead of static methods to create instances.
 
