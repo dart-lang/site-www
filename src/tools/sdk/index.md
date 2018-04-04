@@ -20,6 +20,8 @@ A package manager can help you easily install and update the Dart SDK.
 Don’t want to use a package manager? Other options are
 [building the SDK from source][] and
 [downloading the SDK as a zip file](/tools/sdk/archive).
+If you use either of these options, remember to
+add the SDK's `bin` directory to your `PATH`.
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
