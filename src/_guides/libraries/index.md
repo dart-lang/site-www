@@ -37,6 +37,14 @@ at the following links.
 
 ## Other resources
 
+API reference
+: * [api.dartlang.org:]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+    API docs for dart:* libraries
+  * [docs.flutter.io:](http://docs.flutter.io/)
+    API docs for Flutter libraries
+  * [dartdocs.org:](https://www.dartdocs.org/)
+    API docs for packages published on pub.dartlang.org
+
 [Futures and Error Handling](/guides/libraries/futures-error-handling)
 : How to handle errors when writing asynchronous code.
 
@@ -56,11 +64,3 @@ at the following links.
 
 [Articles about libraries](/articles/libraries)
 : API topics ranging from zones to streams to converters.
-
-API reference documentation
-: * [api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}):
-    Generated docs for dart:* libraries
-  * [docs.flutter.io](http://docs.flutter.io/):
-    Generated docs for Flutter libraries
-  * [dartdocs.org](https://www.dartdocs.org/):
-    Generated docs for packages published on pub.dartlang.org

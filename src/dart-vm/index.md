@@ -42,6 +42,9 @@ You might find the following tutorials helpful.
 
 ## More resources
 
+[api.dartlang.org]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+: API reference for dart:* libraries.
+
 [A Tour of the dart:io Library](/dart-vm/io-library-tour)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
