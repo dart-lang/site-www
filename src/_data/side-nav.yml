@@ -1,10 +1,10 @@
 - title: Language
   children:
-    - title: "Overview"
+    - title: Overview
       permalink: /guides/language
-    - title: "Tour"
+    - title: Tour
       permalink: /guides/language/language-tour
-    - title: "Effective Dart"
+    - title: Effective Dart
       permalink: /guides/language/effective-dart
       children:
         - title: Style
@@ -25,26 +25,20 @@
     - title: Tour
       permalink: /guides/libraries/library-tour
 
-- title: "Platforms"
+- title: Platforms
   children:
-    - title: "Overview"
+    - title: Overview
       permalink: /guides/platforms
-    - title: "Web"
-      permalink: https://webdev.dartlang.org/
-    - title: "Mobile (Flutter)"
-      permalink: https://flutter.io/
-      children:
-      - title: "API Reference"
-        permalink: http://docs.flutter.io/flutter/
-    - title: "Dart VM"
+    - title: Web
+      permalink: https://webdev.dartlang.org
+    - title: Mobile (Flutter)
+      permalink: https://flutter.io
+    - title: Dart VM
       permalink: /dart-vm
-      children:
-      - title: "API Reference"
-        permalink: https://api.dartlang.org
 
-- title: "Testing"
+- title: Testing
   children:
-  - title: "Dart Testing"
+  - title: Dart Testing
     permalink: /guides/testing
 
 - title: Resources
@@ -59,5 +53,5 @@
     permalink: /articles
   - title: Tools
     permalink: /tools
-  - title: "Community and Support"
+  - title: Community and Support
     permalink: /community
