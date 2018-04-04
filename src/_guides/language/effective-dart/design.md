@@ -479,8 +479,8 @@ doesn't know if any code outside of its view is using it.
 ## Classes
 
 Dart is a "pure" object-oriented language in that all objects are instances of
-classes. But it does not require all code to defined inside a class -- you can
-define top-level variables, constants, and functions like you can in a
+classes. But Dart does not require all code to be defined inside a class — you
+can define top-level variables, constants, and functions like you can in a
 procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
@@ -602,19 +602,21 @@ usually a safe, non-breaking change. But if you are implementing that class's
 interface, now your class has a static error because it lacks an implementation
 of that new method.
 
-Package maintainers need the ability to evolve existing classes without breaking
-users. Treating *every* class as exposing an interface you are free to implement
-makes that very difficult for them. That difficulty in turn means the packages
-you rely on are slower to grow and adapt to new needs.
+Library maintainers need the ability to evolve existing classes without breaking
+users. If you treat every class like it exposes an interface that users are free
+implement, then changing those classes becomes very difficult. That difficulty
+in turn means the libraries you rely on are slower to grow and adapt to new
+needs.
 
-To give the authors of the classes you use more leeway, avoid implementing their
-implicit interface unless the class is clearly intended to be used in that way.
-Otherwise, you may introduce a coupling that the author doesn't intend and they
-may break your code without realizing it.
+To give the authors of the classes you use more leeway, avoid implementing
+implicit interfaces except for classes that are clearly intended to be
+implemented. Otherwise, you may introduce a coupling that the author doesn't
+intend, and they may break your code without realizing it.
 
 ### DO document if your class supports being used as an interface.
 
-Mention in the class's doc comment if the class can be used as an interface.
+If your class can be used as an interface, mention that in the class's doc
+comment.
 
 
 ### AVOID mixing in a class that isn't intended to be a mixin.
