@@ -476,6 +476,25 @@ can delete dead code. It can't do that if the member is public because it
 doesn't know if any code outside of its view is using it.
 
 
+### CONSIDER declaring multiple classes in the same library.
+
+Java and C# tie the organization of files to the organization of classes — each
+file may only define a single top level class. Dart does not have that
+limitation. Libraries are distinct entities separate from classes. It's
+perfectly fine for a single library to contain multiple classes, top level
+variables, and functions if they all logically belong together.
+
+Placing multiple classes together in one library can enable some useful
+patterns. Since privacy in Dart works at the library level, not the class, this
+is a way to define "friend" classes like you might in C++. Every class declared
+in the same library can access each other's private members, but code outside of
+that library cannot.
+
+Of course, this guideline doesn't mean you *should* dump all of your classes
+into a huge monolithic library, just that you are allowed to place more than one
+class in a single library.
+
+
 ## Classes
 
 Dart is a "pure" object-oriented language in that all objects are instances of
