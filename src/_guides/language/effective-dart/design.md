@@ -1145,12 +1145,15 @@ types.
 </aside>
 
 
-### AVOID annotating with only `Function`.
+### PREFER signatures in function type annotations.
 
-The name `Function` by itself without any return type or parameter signature
-refers to the special `Function` type. This type is only marginally more useful
-than using `dynamic`. If you're going to annotate, prefer a full function type
-that describes the signature and return type of the function.
+The identifier `Function` by itself without any return type or parameter
+signature refers to the [special `Function` type][fn class]. This type is only
+marginally more useful than using `dynamic`. If you're going to annotate, prefer
+a full function type that includes the parameters and return type of the
+function.
+
+[fn class]: https://api.dartlang.org/stable/dart-core/Function-class.html
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)"?>
@@ -1163,12 +1166,6 @@ bool isValid(String value, bool Function(String string) test) => ...
 {% prettify dart %}
 bool isValid(String value, Function test) => ...
 {% endprettify %}
-
-In Dart 1, users sometimes used `Function` to avoid the necessary tedium of
-creating a typedef to use the function type in a field, variable, or generic
-type argument. Dart 2 has a [general function type syntax][fn syntax] that can
-be used anywhere a type annotation can occur, so this shortcut is no longer
-needed.
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
@@ -1223,7 +1220,7 @@ original syntax looks like:
 typedef int Comparison<T>(T a, T b);
 {% endprettify %}
 
-It has a couple of problems:
+That syntax has a couple of problems:
 
 *   There is no way to assign a name to a *generic* function type. In the above
     example, the typedef itself is generic. If you reference `Comparison` in
@@ -1261,7 +1258,7 @@ also allowed anywhere a type annotation may appear, giving us a single
 consistent way to write function types anywhere in a program.
 
 The old typedef syntax is still supported to avoid breaking existing code, but
-is deprecated.
+it's deprecated.
 
 
 ### PREFER inline function types over typedefs.
@@ -1271,23 +1268,18 @@ generic type argument, you had to first define a typedef for it. Dart 2 supports
 a function type syntax that can be used anywhere a type annotation is allowed:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
 {% prettify dart %}
 class FilteredObservable {
-  // In a field:
-  final bool Function(Event) _predicate;
-
-  // In a generic:
-  final List<void Function(Event)> _observers;
+  final [!bool Function(Event)!] _predicate;
+  final List<[!void Function(Event)!]> _observers;
 
   FilteredObservable(this._predicate, this._observers);
 
-  // In a return type:
-  void Function(Event) notify(Event event) {
+  [!void Function(Event)!] notify(Event event) {
     if (!_predicate(event)) return null;
 
-    // In a local variable:
-    void Function(Event) last;
+    [!void Function(Event)!] last;
     for (var observer in _observers) {
       observer(event);
       last = observer;
@@ -1333,9 +1325,8 @@ where you must use the new syntax.
 ### DO annotate with `Object` instead of `dynamic` to indicate any object is accepted.
 
 Some operations work with any possible object. For example, a `log()` method
-could take any object and call `toString()` on it. Two types in Dart permit
-values of all classes: `Object` and `dynamic`. However, they convey different
-things.
+could take any object and call `toString()` on it. Two types in Dart permit all
+values: `Object` and `dynamic`. However, they convey different things.
 
 Using `dynamic` sends a more complex signal. It may mean that Dart's type system
 isn't sophisticated enough to represent the set of types that are allowed, or
@@ -1349,12 +1340,12 @@ you accept all objects, use `Object`, as you would in Java or C#.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
 {% prettify dart %}
-// Accepts any object.
 void log(Object object) {
   print(object.toString());
 }
 
-// Only accepts bool or String, which type system can't express.
+/// Returns a Boolean representation for [arg], which must
+/// be a String or bool.
 bool convertToBool(dynamic arg) {
   if (arg is bool) return arg;
   if (arg is String) return arg == 'true';

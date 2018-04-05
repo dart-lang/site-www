@@ -186,12 +186,12 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion Object-vs-dynamic
-    // Accepts any object.
     void log(Object object) {
       print(object.toString());
     }
 
-    // Only accepts bool or String, which type system can't express.
+    /// Returns a Boolean representation for [arg], which must
+    /// be a String or bool.
     bool convertToBool(dynamic arg) {
       if (arg is bool) return arg;
       if (arg is String) return arg == 'true';
@@ -226,19 +226,14 @@ class Event {}
 
 // #docregion function-type
 class FilteredObservable {
-  // In a field:
   final bool Function(Event) _predicate;
-
-  // In a generic:
   final List<void Function(Event)> _observers;
 
   FilteredObservable(this._predicate, this._observers);
 
-  // In a return type:
   void Function(Event) notify(Event event) {
     if (!_predicate(event)) return null;
 
-    // In a local variable:
     void Function(Event) last;
     for (var observer in _observers) {
       observer(event);
