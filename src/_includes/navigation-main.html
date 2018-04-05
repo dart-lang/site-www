@@ -15,7 +15,7 @@
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Version <span class="caret"></span></a>
       <ul class="dropdown-menu">
         {% assign dart1status = 'stable' %}{% comment -%}This will soon be 'archive'{%- endcomment %}
-        {% assign dart2status = 'preview' %}{% comment -%}This will soon be 'stable'{%- endcomment %}
+        {% assign dart2status = 'beta' %}{% comment -%}This will soon be 'stable'{%- endcomment %}
         {% if site.branch == '1.x' -%}
           <li><a class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
           {% if site.dev-url and site.data.pkg-vers.SDK.next-vers -%}
