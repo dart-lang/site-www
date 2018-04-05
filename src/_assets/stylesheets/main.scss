@@ -944,6 +944,14 @@ li.card {
     font-size: 36px;
   }
 }
+
+// TODO: replace usage of .panel with .mini-toc
+
+.mini-toc {
+  @extend .alert;
+  background-color: $gray-light;
+}
+
 .panel {
   background-color: $gray-light;
   padding: $content-padding;
