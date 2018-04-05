@@ -1,6 +1,6 @@
 # Site settings
 title: Dart
-description: "Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript."
+description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
 # url: https://www.dartlang.org # URL to use once we switch back to the main site
 url: https://dartlang-org-dev.firebaseapp.com
 repo: https://github.com/dart-lang/site-www
@@ -11,13 +11,13 @@ branch: master
 #   {{site.webdev}}/downloads
 
 prev-url: https://v1-dartlang-org.firebaseapp.com
-webdev: "https://webdev.dartlang.org"
-dev-webdev: "https://webdev-dartlang-org-dev.firebaseapp.com"
-dart_vm:  "/dart-vm"
-flutter:  "https://flutter.io"
-dart_api: "https://api.dartlang.org"
-flutter_api: "https://docs.flutter.io"
-pub: "https://pub.dartlang.org"
+webdev: https://webdev.dartlang.org
+dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
+dart_vm:  /dart-vm
+flutter:  https://flutter.io
+dart_api: https://api.dartlang.org
+flutter_api: https://docs.flutter.io
+pub: https://pub.dartlang.org
 
 collections:
   articles:
@@ -75,14 +75,14 @@ defaults:
 
 custom:
   dartpad:
-    embed-dart-prefix: "https://dartpad.dartlang.org/embed-dart.html"
-    embed-html-prefix: "https://dartpad.dartlang.org/embed-html.html"
-    embed-inline-prefix: "https://dartpad.dartlang.org/embed-inline.html"
-    direct-link: "https://dartpad.dartlang.org"
+    embed-dart-prefix: https://dartpad.dartlang.org/embed-dart.html
+    embed-html-prefix: https://dartpad.dartlang.org/embed-html.html
+    embed-inline-prefix: https://dartpad.dartlang.org/embed-inline.html
+    direct-link: https://dartpad.dartlang.org
   downloads:
-    dartarchive-be-url-prefix: "https://storage.googleapis.com/dart-archive/channels/be/raw"
-    dartarchive-dev-url-prefix: "https://storage.googleapis.com/dart-archive/channels/dev/release"
-    dartarchive-stable-url-prefix: "https://storage.googleapis.com/dart-archive/channels/stable/release"
+    dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
+    dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release
+    dartarchive-stable-url-prefix: https://storage.googleapis.com/dart-archive/channels/stable/release
     binaries:
       - os: windows
         name: Windows
