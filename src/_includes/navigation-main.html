@@ -8,26 +8,12 @@
     <li><a href="/guides/language">Language</a></li>
     <li><a href="/guides/libraries">Libraries</a></li>
     <li><a href="/tools">Tools</a></li>
-    {% comment %}
+    {% comment %}Temporarily make room for the Version dropdown
     <li><a href="/community">Community</a></li>
     {% endcomment %}
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Version <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        {% assign dart1status = 'stable' %}{% comment -%}This will soon be 'archive'{%- endcomment %}
-        {% assign dart2status = 'beta' %}{% comment -%}This will soon be 'stable'{%- endcomment %}
-        {% if site.branch == '1.x' -%}
-          <li><a class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
-          {% if site.dev-url and site.data.pkg-vers.SDK.next-vers -%}
-            <li><a href="{{site.dev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.next-vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
-          {%- endif -%}
-        {% else -%}
-          {% if site.prev-url and site.data.pkg-vers.SDK.prev-vers -%}
-            <li><a href="{{site.prev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.prev-vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
-          {%- endif -%}
-          <li><a class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
-        {%- endif %}
-      </ul>
+      <ul class="dropdown-menu">{% include _version-menu-items.html %}</ul>
     </li>
     <li class="searchfield">
       <form class="navbar-search" action="/search" id="cse-search-box">
