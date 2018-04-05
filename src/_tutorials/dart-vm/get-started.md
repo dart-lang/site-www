@@ -220,7 +220,7 @@ In WebStorm, you can run the app in any of the following ways:
 WebStorm shows the output at the bottom in a pane titled
 **Run main.dart**.
 
-If you don't have WebStorm, you can run the app from the command line using
+If you don't have WebStorm, you can run the app from the command line:
 
 ```terminal
 $ pub run bin/main.dart
@@ -285,6 +285,5 @@ with words separated by underscores (`_`).
 
 ## What next?
 
-Try the next tutorial,
-[Write Command-Line Apps](cmdline),
-describes how to build command-line apps.
+Try the next tutorial, [Write Command-Line Apps](cmdline), which describes how
+to build command-line apps.
