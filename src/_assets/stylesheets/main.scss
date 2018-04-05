@@ -335,7 +335,7 @@ img {
   }
   .dropdown-menu {
     background-color: $gray-light;
-    &.dropdown-menu { border-top-color: transparent; }
+    border-top-color: transparent;
     color: $gray-base;
     a:hover, a:focus { background-color: transparent; }
     a.active:after {
@@ -479,7 +479,7 @@ img {
   right: 20px;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 10000;
+  z-index: 999;
   .content {
     padding: 0;
     padding-top: 30px;
