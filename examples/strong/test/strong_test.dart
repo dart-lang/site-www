@@ -28,8 +28,8 @@ void main() {
       list.add(2);
       printInts(list);
     }
-
     // #enddocregion opening-example
+
     expect(main, prints('[1, 2]\n'));
   });
 
@@ -45,7 +45,7 @@ void main() {
     }
     // #enddocregion what-is-soundness
 
-    final msg = "type 'List' is not a subtype of type 'List<int>'";
+    final msg = "type 'List<dynamic>' is not a subtype of type 'List<int>'";
     expect(
       main,
       dartMajorVers == 1
