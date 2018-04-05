@@ -5,16 +5,18 @@
   </a>
   <ul>
     <li class="mainnav__get-started"><a href="/guides/get-started"><span>Get Started</span></a></li>
-    <li><a href="/guides/language">Language</a></li>
-    <li><a href="/guides/libraries">Libraries</a></li>
-    <li><a href="/tools">Tools</a></li>
-    {% comment %}Temporarily make room for the Version dropdown
-    <li><a href="/community">Community</a></li>
-    {% endcomment %}
     <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Version <span class="caret"></span></a>
-      <ul class="dropdown-menu">{% include _version-menu-items.html %}</ul>
-    </li>
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/guides/language">Language Overview</a></li>
+          <li><a href="/dart-2">Dart 2 Migration</a></li>
+          <li role="separator" class="divider"></li>
+          {% include _version-menu-items.html %}
+        </ul>
+      </li>
+      <li><a href="/guides/libraries">Libraries</a></li>
+    <li><a href="/tools">Tools</a></li>
+    <li><a href="/community">Community</a></li>
     <li class="searchfield">
       <form class="navbar-search" action="/search" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
