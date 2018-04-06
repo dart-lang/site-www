@@ -688,27 +688,64 @@ constructor, you may need to do the "private field, public getter" pattern, but
 don't reach for that until you need to.
 
 
-### CONSIDER using `=>` for short members whose body is a single return statement.
+### CONSIDER using `=>` for simple members.
 
 In addition to using `=>` for function expressions, Dart also lets you define
-members with them. They are a good fit for simple members that just calculate
+members with it. That style is a good fit for simple members that just calculate
 and return a value.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart %}
-get width => right - left;
-bool ready(num time) => minTime == null || minTime <= time;
-containsValue(String value) => getValues().contains(value);
+double get area => (right - left) * (bottom - top);
+
+bool isReady(num time) => minTime == null || minTime <= time;
+
+String capitalize(String name) =>
+    "${name[0].toUpperCase()}${name.substring(1)}";
 {% endprettify %}
 
-Members that don't fit on one line can still use `=>`, but if you find yourself
-cramming a single expression into several continued lines, it is probably
-cleaner to just use a curly body with an explicit `return`.
+People *writing* code seem to love `=>`, but it's very easy to abuse it and end
+up with code that's hard to *read*. If your declaration is more than a couple of
+lines or contains deeply nested expressions&mdash;cascades and conditional
+operators are common offenders&mdash;do yourself and everyone who has to read
+your code a favor and use a block body and some statements.
 
-It's *not* a good idea to use this for `void` members. Readers expect `=>` to
-mean "returns a useful value", so even though it can be terse to use `=>` for
-a member that doesn't return anything, it's clearer to use `{ ... }`.
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-long)"?>
+{% prettify dart %}
+Treasure openChest(Chest chest, Point where) {
+  if (_opened.containsKey(chest)) return null;
+
+  var treasure = new Treasure(where);
+  treasure.addAll(chest.contents);
+  _opened[chest] = treasure;
+  return treasure;
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
+{% prettify dart %}
+Treasure openChest(Chest chest, Point where) =>
+    _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+      ..addAll(chest.contents);
+{% endprettify %}
+
+You can also use `=>` on void members that don't return a value. This is
+idiomatic for small setters that have a corresponding getter also using `=>` and
+where a block body would make the setter feel separate from its getter.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
+{% prettify dart %}
+int get x => center.x;
+void set x(int value) => center = new Point(value, center.y);
+{% endprettify %}
+
+It's rarely a good idea to use `=>` for other void members. The `=>` implies
+"returns a value", so readers may misinterpret what the void member does if you
+use it.
 
 
 ### DON'T use `this.` when not needed to avoid shadowing.
