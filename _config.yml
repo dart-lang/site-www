@@ -10,7 +10,8 @@ branch: master
 # use case:
 #   {{site.webdev}}/downloads
 
-prev-url: https://www.dartlang.org # will eventually switch to https://v1-dartlang-org.firebaseapp.com
+v1-url: https://v1-dartlang-org.firebaseapp.com # temporary, use prev-url after the switch
+prev-url: https://www.dartlang.org # will eventually switch to v1-url
 webdev: https://webdev.dartlang.org
 dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
 dart_vm:  /dart-vm
