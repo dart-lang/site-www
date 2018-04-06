@@ -312,7 +312,7 @@ don't already know.
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
 
-A "conversion" method is one that returns a new object containing a copy of
+A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
 representation. The core libraries have a convention that these methods are
 named starting with `to` followed by the kind of result.
@@ -911,36 +911,36 @@ var buffer = new StringBuffer()
 
 ## Type annotations
 
-A "type annotation" is a place in your code where you write down the static type
+A *type annotation* is a place in your code where you write down the static type
 of a variable, field, function return type, parameter, etc. Type annotations are
 how you tell the type checker your constraints on the kinds of values that flow
 into different parts of your code.
 
 In most places, Dart allows you to omit a type annotation and infers a type for
-you based on the nearby context (or defaults to the `dynamic` type). Inference
+you based on the nearby context, or defaults to the `dynamic` type. Inference
 is a powerful tool to spare you the effort of writing (and reading) types that
 are obvious or uninteresting, but it's still worth explicitly annotating in some
 cases. The guidelines here strike the best balance we've found between brevity
 and explicitness, flexibility and safety.
 
-The fact that Dart has both type inference and an actual `dynamic` type leads to
-some confusion about what it means to say code is "untyped". Does that mean the
-code is dynamically typed, or that you didn't *write* the type? To avoid that
-confusion, we avoid saying "untyped" and instead use:
+The fact that Dart has both type inference and a `dynamic` type leads to some
+confusion about what it means to say code is "untyped". Does that mean the code
+is dynamically typed, or that you didn't *write* the type? To avoid that
+confusion, we avoid saying "untyped" and instead use the following terminology:
 
-*   If the code is "type annotated", the type was explicitly written in the
+*   If the code is *type annotated*, the type was explicitly written in the
     code.
 
-*   If the code is "inferred", no type annotation was written down, and Dart
+*   If the code is *inferred*, no type annotation was written, and Dart
     successfully figured out the type on its own. Inference can fail, in which
-    case the guidelines don't consider that "inferred". In some places,
-    inference failure is a static error. In others, Dart uses `dynamic` as the
-    fallback type.
+    case the guidelines don't consider that inferred. In some places, inference
+    failure is a static error. In others, Dart uses `dynamic` as the fallback
+    type.
 
-*   If the code is "dynamic", then its static type is the special `dynamic`
+*   If the code is *dynamic*, then its static type is the special `dynamic`
     type. Code can be explicitly annotated `dynamic` or it can be inferred.
 
-*   If the code has any other type, it's not "dynamic". Code can end up with a
+*   If the code has any other type, it's not dynamic. Code can end up with a
     non-`dynamic` type by being explicitly annotated with some other type, or by
     having Dart infer a non-`dynamic` type.
 
@@ -950,8 +950,8 @@ whether it is `dynamic` or some other type.
 ### DO type annotate public declarations whose type isn't inferred.
 
 Type annotations are important documentation for how a library should be used.
-They form boundaries between regions of a program to pin down where a type error
-originates from.
+They form boundaries between regions of a program to isolate the source of a
+type error.
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
@@ -968,13 +968,12 @@ or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 Future<bool> install(PackageId id, String destination) => ...
 {% endprettify %}
 
-In some cases, especially with constants, Dart can infer the type for you. In
-that case, it's fine to omit the annotation:
+When Dart can infer the type for you, then it's fine to omit the annotation:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
 {% prettify dart %}
-const screenWidth = 640; // Infers "int" from 640.
+const screenWidth = 640; // Inferred as int.
 {% endprettify %}
 
 You may still wish to explicitly annotate even when inference would fill in the
@@ -984,8 +983,7 @@ change to that other library doesn't silently change the type of your own API
 without you realizing.
 
 This guideline does *not* mean you can never use the dynamic type in a public
-signature. Sometimes `dynamic` is the best type. What it states is that when
-you want to use `dynamic`, you should do so *explicitly*.
+signature, just that you should *annotate* it explicitly when you do so.
 
 
 ### PREFER type annotating private declarations whose type isn't inferred.
@@ -1074,8 +1072,8 @@ typed context, Dart tries to infer the function's parameter types based on the
 expected type.
 
 For example, when you pass a function expression to `Iterable.map()`, your
-function's parameter type is inferred based on the type of callback that
-`map()` expects and you don't need to annotate it:
+function's parameter type is inferred based on the type of callback that `map()`
+expects:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (func-expr-no-param-type)"?>
@@ -1107,29 +1105,21 @@ type checking whatsoever.
 Sometimes, `dynamic` is what you want. Dart does support a dynamic type for good
 reasons. But a casual reader of your code who sees an annotation is missing has
 no way of knowing if you intended it to be `dynamic`, expected inference to fill
-in some other type, or you simply forgot to write the annotation.
+in some other type, or simply forgot to write the annotation.
 
-Using `dynamic` explicitly when that is the type you want makes that intention
+When `dynamic` is the type you want, using it explicitly makes your intent
 clear.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (prefer-dynamic)"?>
 {% prettify dart %}
-T lookUp<T>(String name, Map<String, T> map, T defaultValue) {
-  var value = map[name];
-  if (value != null) return value;
-  return defaultValue;
-}
+dynamic mergeJson(dynamic original, dynamic changes) => ...
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (prefer-dynamic)"?>
 {% prettify dart %}
-lookUp(String name, Map map, defaultValue) {
-  var value = map[name];
-  if (value != null) return value;
-  return defaultValue;
-}
+mergeJson(original, changes) => ...
 {% endprettify %}
 
 
@@ -1148,23 +1138,23 @@ types.
 ### PREFER signatures in function type annotations.
 
 The identifier `Function` by itself without any return type or parameter
-signature refers to the [special `Function` type][fn class]. This type is only
+signature refers to the special [Function][] type. This type is only
 marginally more useful than using `dynamic`. If you're going to annotate, prefer
 a full function type that includes the parameters and return type of the
 function.
 
-[fn class]: https://api.dartlang.org/stable/dart-core/Function-class.html
+[Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
-bool isValid(String value, bool Function(String string) test) => ...
+bool isValid(String value, bool [!Function(String string)!] test) => ...
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
 {% prettify dart %}
-bool isValid(String value, Function test) => ...
+bool isValid(String value, [!Function!] test) => ...
 {% endprettify %}
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
@@ -1176,15 +1166,15 @@ types, there's no way to precisely type that and you'd normally have to use
 `dynamic`. `Function` is at least a little more helpful than that:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
-void handleError(void Function() operation, Function errorHandler) {
+void handleError([!void Function()!] operation, [!Function!] errorHandler) {
   try {
     operation();
   } catch (err, stack) {
-    if (errorHandler is Function(Object)) {
+    if (errorHandler is [!Function(Object)!]) {
       errorHandler(err);
-    } else if (errorHandler is Function(Object, Object)) {
+    } else if (errorHandler is [!Function(Object, Object)!]) {
       errorHandler(err, stack);
     }
   }

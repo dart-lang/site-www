@@ -65,11 +65,7 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion prefer-dynamic
-    lookUp(String name, Map map, defaultValue) {
-      var value = map[name];
-      if (value != null) return value;
-      return defaultValue;
-    }
+    mergeJson(original, changes) => ellipsis();
     // #enddocregion prefer-dynamic
   };
 

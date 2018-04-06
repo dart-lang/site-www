@@ -120,7 +120,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion type_annotate_public_apis
 
     // #docregion inferred
-    const screenWidth = 640; // Infers "int" from 640.
+    const screenWidth = 640; // Inferred as int.
     // #enddocregion inferred
   };
 
@@ -158,11 +158,7 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion prefer-dynamic
-    T lookUp<T>(String name, Map<String, T> map, T defaultValue) {
-      var value = map[name];
-      if (value != null) return value;
-      return defaultValue;
-    }
+    dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
     // #enddocregion prefer-dynamic
   };
 
