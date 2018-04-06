@@ -25,6 +25,14 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion code-like-prose-overdone
   };
 
+  (socket, database) {
+    // #docregion positive
+    if (!socket.isDisconnected && !database.isEmpty) {
+      socket.write(database.read());
+    }
+    // #enddocregion positive
+  };
+
   () {
     // #docregion cascades
     var buffer = new StringBuffer0() //!<br>

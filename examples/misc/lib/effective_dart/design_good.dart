@@ -105,6 +105,14 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion class-only-static
   };
 
+  (socket, database) {
+    // #docregion positive
+    if (socket.isConnected && database.hasData) {
+      socket.write(database.read());
+    }
+    // #enddocregion positive
+  };
+
   () {
     // #docregion cascades
     var buffer = new StringBuffer() //!<br>

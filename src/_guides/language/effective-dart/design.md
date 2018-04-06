@@ -212,6 +212,48 @@ showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
 
+### PREFER the "positive" name for a boolean property or variable.
+
+Most boolean names have conceptually "positive" and "negative" forms where the
+former feels like the fundamental concept and the latter is its
+negation&mdash;"open" and "closed", "enabled" and "disabled", etc. Often the
+latter name literally has a prefix that negates the former: "visible" and
+"*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
+
+When choosing which of the two cases that `true` represents &mdash; and thus
+which case the property is named for &mdash; prefer the positive or more
+fundamental one. Boolean members are often nested inside logical expressions,
+including negation operators. If your property itself reads like a negation,
+it's harder for the reader to mentally perform the double negation and
+understand what the code means.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (positive)"?>
+{% prettify dart %}
+if (socket.isConnected && database.hasData) {
+  socket.write(database.read());
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (positive)"?>
+{% prettify dart %}
+if (!socket.isDisconnected && !database.isEmpty) {
+  socket.write(database.read());
+}
+{% endprettify %}
+
+An exception to this rule is properties where the negative form is what users
+overwhelmingly need to use. Choosing the positive case would force them to
+negate the property with `!` everywhere. Instead, it may be better to use the
+negative case for that property.
+
+For some properties, there is no obvious positive form. Is a document that has
+been flushed to disc "saved" or "*un*-changed"? Is a document that *hasn't* been
+flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
+that is less likely to be negated by users or has the shorter name.
+
+
 ### CONSIDER omitting the verb for a named boolean *parameter*.
 
 This refines the previous rule. For named parameters that are boolean, the name
