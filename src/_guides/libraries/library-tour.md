@@ -923,7 +923,8 @@ convention, NaN != NaN.
 <?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
 {% prettify dart %}
 class Person {
-  final String firstName, lastName;
+  final String firstName;
+  final String lastName;
 
   Person(this.firstName, this.lastName);
 
