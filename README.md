@@ -1,11 +1,11 @@
 # The Dart language site (www.dartlang.org)
 
 [![Build Status SVG][]][Repo on Travis]
-[![first-timers-only SVG][]][first-timers-only]
+[![first-timers SVG][]][first-timers]
 
 The www.dartlang.org site, built with [Jekyll][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly](http://www.firsttimersonly.com)!
+[We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 
 For simple changes (such as to CSS and text), you probably don't need to build this site.
 But if you want/need to build, here's how.
@@ -24,13 +24,19 @@ Install the following tools if you don't have them already.
 carefully. In particular, configure your shell/environment so
 that the tools are available in every terminal/command window you create.
 
-### 2. Clone this repo
+### 2. Clone this repo _and_ its submodule
 
-1. **Create or choose a directory** to hold this site's Git repository, and the
-   other repositories needed to build this site (which will be fetched later);
-   for example, `~/git`.
-1. **Clone this repo** ([site-www][]) into the chosen directory by following
-   the instructions given in the GitHub help on [Cloning a repository][].
+> NOTE: This repo has a git _submodule_, which affects how you clone it.
+
+To **clone this repo** ([site-www][]), follow the instructions given in the
+GitHub help on [Cloning a repository][], and _choose one_ of the following
+submodule-cloning techniques:
+
+- Clone this repo and its submodule _at the same_: use the
+  `--recurse-submodules` option with the git clone command for this repo.
+- If you've already cloned this repo without its submodule, then run
+  this command from the repo root:<br>
+  `git submodule update --init --remote`
 
 ### 3. Run installation scripts
 
@@ -212,8 +218,8 @@ linkcheck :4000 -i deploy/urls/old_site_urls.txt
 [Dart]: https://www.dartlang.org/install
 [Dart install]: https://www.dartlang.org/install
 [Firebase]: https://firebase.google.com/
-[first-timers-only SVG]: http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
-[first-timers-only]: http://www.firsttimersonly.com/
+[first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
+[first-timers]: https://www.firsttimersonly.com/
 [Jekyll]: https://jekyllrb.com/
 [nvm]: https://github.com/creationix/nvm#installation
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
