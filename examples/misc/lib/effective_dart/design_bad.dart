@@ -25,7 +25,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion code-like-prose-overdone
   };
 
-  (socket, database) {
+  (Socket socket, Database database) {
     // #docregion positive
     if (!socket.isDisconnected && !database.isEmpty) {
       socket.write(database.read());
