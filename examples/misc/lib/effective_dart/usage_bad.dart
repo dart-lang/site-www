@@ -135,6 +135,12 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+
+  // #docregion arrow-long
+  Treasure openChest(Chest chest, Point where) =>
+      _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+        ..addAll(chest.contents);
+  // #enddocregion arrow-long
 }
 
 //----------------------------------------------------------------------------
