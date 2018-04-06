@@ -100,10 +100,11 @@ custom:
 
 # Build settings
 source: src
+symlinked-sources: [site-shared/src] # [src/tools/sdk] also works
 destination: publish
 bundler_args: --without production
 
-exclude: ["diagrams"]
+exclude: [diagrams]
 
 plugins:
 - jekyll-assets
