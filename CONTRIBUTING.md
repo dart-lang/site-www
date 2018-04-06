@@ -8,7 +8,7 @@ Here are a couple of ways that you can contribute:
   **[help wanted](https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20)**).
   * If this is your first contribution—_welcome!_—please
   [sign the CLA](https://developers.google.com/open-source/cla/individual)
-  and check out issues that are 
+  and check out issues that are
   labeled **[beginner](https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20)**.
   Beginner issues may or may not be easy to fix.
   Sometimes they're issues we don't have the expertise to fix ourselves,
@@ -20,8 +20,6 @@ To avoid wasting your time, talk with us before you make any nontrivial
 pull request. The [issue tracker](https://github.com/dart-lang/site-www/issues)
 is a good way to track your progress publicly, but we can also communicate
 other ways such as email and [Gitter](https://gitter.im/dart-lang/home).
-
-<!-- Put link to dart-lang/site-webdev and other receptive repos here?-->
 
 For more information on contributing to Dart, see the
 [dart-lang/sdk Contributing page](https://github.com/dart-lang/sdk/wiki/Contributing).

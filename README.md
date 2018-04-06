@@ -32,12 +32,6 @@ that the tools are available in every terminal/command window you create.
 1. **Clone this repo** ([site-www][]) into the chosen directory by following
    the instructions given in the GitHub help on [Cloning a repository][].
 
-### 2.5 (Optional) Clone and setup site-webdev
-
-If you'll be updating code under `examples`, and you'd like auto refresh
-code excerpts in this site's pages, then you'll need to clone and setup
-the [site-webdev][] repo under `~/git`.
-
 ### 3. Run installation scripts
 
 > NOTE: It is safe to (re-)run all of the commands and scripts given below even
@@ -224,5 +218,4 @@ linkcheck :4000 -i deploy/urls/old_site_urls.txt
 [nvm]: https://github.com/creationix/nvm#installation
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
 [rvm]: https://rvm.io/rvm/install#installation
-[site-webdev]: https://github.com/dart-lang/site-webdev
 [site-www]: https://github.com/dart-lang/site-www
