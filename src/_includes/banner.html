@@ -1,8 +1,11 @@
-<div class="banner">
-    <p class="banner__text">
-	Join the Dart team:
-        <a target="_blank" 
-          href="https://www.google.com/about/careers/jobs#t=sq&q=j&li=20&l=false&j=dart&jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&jcoid=e43afd0d-d215-45db-a154-5386c9036525">Become
-	    a Developer Advocate</a>
-    </p>
+{% if site.url != 'https://www.dartlang.org' %}
+{% comment %}Drop the div .alert classes to revert to the default banner styling.{% endcomment -%}
+<div class="banner alert alert-info">
+  <p class="banner__text">
+    This is the <b>Dart 1.x</b> archive of
+    <a href="{{site.url}}" class="no-automatic-external" target="_blank" rel="noopener">
+      {{site.url | regex_replace: '^https?://'}}.
+    </a>
+  </p>
 </div>
+{% endif %}
