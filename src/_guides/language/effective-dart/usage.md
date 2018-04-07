@@ -702,7 +702,7 @@ double get area => (right - left) * (bottom - top);
 bool isReady(num time) => minTime == null || minTime <= time;
 
 String capitalize(String name) =>
-    "${name[0].toUpperCase()}${name.substring(1)}";
+    '${name[0].toUpperCase()}${name.substring(1)}';
 {% endprettify %}
 
 People *writing* code seem to love `=>`, but it's very easy to abuse it and end
@@ -739,8 +739,8 @@ where a block body would make the setter feel separate from its getter.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
 {% prettify dart %}
-int get x => center.x;
-void set x(int value) => center = new Point(value, center.y);
+num get x => center.x;
+set x(num value) => center = new Point(value, center.y);
 {% endprettify %}
 
 It's rarely a good idea to use `=>` for other void members. The `=>` implies
