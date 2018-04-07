@@ -272,12 +272,15 @@ class Chest {
 }
 
 class Treasure {
+  Treasure(Point where);
+
   void addAll(List<String> what) {}
 }
 
 class C {
   double left, right, top, bottom, minTime;
-  Point position;
+  Point center;
+  Map<Chest, Treasure> _opened;
 
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);
@@ -290,7 +293,7 @@ class C {
 
   // #docregion arrow-setter
   int get x => center.x;
-  void set x(int value) => center = new Point(value, center.y);
+  set x(int value) => center = new Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
@@ -354,27 +357,27 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
+class Point1 {
   num x, y;
-  Point(this.x, this.y);
+  Point1(this.x, this.y);
 }
 // #enddocregion field-init-as-param
 
 //----------------------------------------------------------------------------
 
 // #docregion dont-type-init-formals
-class Point1 {
+class Point2 {
   int x, y;
-  Point1(this.x, this.y);
+  Point2(this.x, this.y);
 }
 // #enddocregion dont-type-init-formals
 
 //----------------------------------------------------------------------------
 
 // #docregion semicolon-for-empty-body
-class Point2 {
+class Point3 {
   int x, y;
-  Point2(this.x, this.y);
+  Point3(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
 
