@@ -2,7 +2,7 @@
   "SDK": {
     "doc-path": "install",
     "channel": "stable",
-    "vers": "1.24.2",
-    "next-vers": "2.0.0-dev.6.0"
+    "vers": "1.24.3",
+    "next-vers": "2.0.0-dev"
   }
 }

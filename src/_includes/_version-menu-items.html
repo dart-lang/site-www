@@ -1,0 +1,13 @@
+{% assign dart1status = 'archive' %}
+{% assign dart2status = 'beta' %}
+{% if site.branch == '1.x' -%}
+  <li><a class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
+  {% if site.dev-url and site.data.pkg-vers.SDK.next-vers -%}
+    <li><a href="{{site.dev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.next-vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
+  {%- endif -%}
+{% else -%}
+  {% if site.prev-url and site.data.pkg-vers.SDK.prev-vers -%}
+    <li><a href="{{site.prev-url}}{{page.url}}" class="no-automatic-external">{{site.data.pkg-vers.SDK.prev-vers}}&nbsp;&nbsp;({{dart1status}})</a></li>
+  {%- endif -%}
+  <li><a class="active">{{site.data.pkg-vers.SDK.vers}}&nbsp;&nbsp;({{dart2status}})</a></li>
+{%- endif %}
