@@ -105,6 +105,14 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion class-only-static
   };
 
+  (Socket socket, Database database) {
+    // #docregion positive
+    if (socket.isConnected && database.hasData) {
+      socket.write(database.read());
+    }
+    // #enddocregion positive
+  };
+
   () {
     // #docregion cascades
     var buffer = new StringBuffer() //!<br>
@@ -174,6 +182,18 @@ void miscDeclAnalyzedButNotTested() {
 
 //----------------------------------------------------------------------------
 // Supporting declarations
+
+class Socket {
+  bool get isConnected => false;
+  bool get isDisconnected => false;
+  void write(String data) {}
+}
+
+class Database {
+  bool get hasData => false;
+  bool get isEmpty => false;
+  String read() => null;
+}
 
 class Monster {
   bool hasClaws;
