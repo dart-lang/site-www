@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty, sort_constructors_first, type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps, unnecessary_getters_setters, unused_element, unused_local_variable
 import 'dart:async';
 import 'dart:io';
-import 'dart:math';
+import 'dart:math' hide Point;
 
 import 'usage_good.dart';
 
@@ -136,11 +136,13 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion avoid-completer
   }
 
+  (Map<Chest, Treasure> _opened) {
   // #docregion arrow-long
-  Treasure openChest(Chest chest, Point where) =>
-      _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
-        ..addAll(chest.contents);
-  // #enddocregion arrow-long
+    Treasure openChest(Chest chest, Point where) =>
+        _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+          ..addAll(chest.contents);
+    // #enddocregion arrow-long
+  };
 }
 
 //----------------------------------------------------------------------------
@@ -278,9 +280,9 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
+class Point1 {
   num x, y;
-  Point(num x, num y) {
+  Point1(num x, num y) {
     this.x = x;
     this.y = y;
   }
@@ -290,18 +292,18 @@ class Point {
 //----------------------------------------------------------------------------
 
 // #docregion dont-type-init-formals
-class Point1 {
+class Point2 {
   int x, y;
-  Point1(int this.x, int this.y);
+  Point2(int this.x, int this.y);
 }
 // #enddocregion dont-type-init-formals
 
 //----------------------------------------------------------------------------
 
 // #docregion semicolon-for-empty-body
-class Point2 {
+class Point3 {
   int x, y;
-  Point2(this.x, this.y) {}
+  Point3(this.x, this.y) {}
 }
 // #enddocregion semicolon-for-empty-body
 
