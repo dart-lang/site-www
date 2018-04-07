@@ -1,4 +1,4 @@
-{% if site.url != 'https://www.dartlang.org' -%}
+{% if site.url != site.www -%}
   {% include banner.html -%}
 {% else -%}
 <div class="banner" markdown="1">
