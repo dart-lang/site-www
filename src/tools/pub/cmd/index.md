@@ -89,7 +89,7 @@ Pub supports development for running web apps and command-line apps.
 
 If your web app's directory structure follows pub's [package layout
 conventions](/tools/pub/package-layout), you can use the pub development
-server ([`pub serve`](({{site.webdev}}/tools/pub/pub-serve))) to continuously
+server ([`pub serve`]({{site.webdev}}/tools/pub/pub-serve)) to continuously
 build and serve the app's assets.
 This server can be accessed via the browser on localhost and
 allows you to view your web-based app.
