@@ -100,7 +100,10 @@ custom:
 
 # Build settings
 source: src
-symlinked-sources: [site-shared/src] # [src/tools/sdk] also works
+# `symlinked-sources` can refer to individual files or directories
+# under `src` that are symlinked to somewhere outside `src`, or it can
+# refer to the root folder of the symlinked content (like `site-shared/src`):
+symlinked-sources: [site-shared/src]
 destination: publish
 bundler_args: --without production
 

@@ -32,8 +32,9 @@ To **clone this repo** ([site-www][]), follow the instructions given in the
 GitHub help on [Cloning a repository][], and _choose one_ of the following
 submodule-cloning techniques:
 
-- Clone this repo and its submodule _at the same_: use the
-  `--recurse-submodules` option with the git clone command for this repo.
+- Clone this repo and its submodule _at the same_, use the
+  `--recurse-submodules` option:<br>
+  `git clone --recurse-submodules https://github.com/dart-lang/site-www.git`
 - If you've already cloned this repo without its submodule, then run
   this command from the repo root:<br>
   `git submodule update --init --remote`
