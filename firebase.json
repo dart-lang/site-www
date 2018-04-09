@@ -1149,12 +1149,17 @@
       },
       {
         "source": "/2.0",
-        "destination": "/dart-2",
+        "destination": "https://www.dartlang.org/dart-2",
+        "type": 301
+      },
+      {
+        "source": "/dart-2",
+        "destination": "https://www.dartlang.org/dart-2",
         "type": 301
       },
       {
         "source": "/dart-2.0",
-        "destination": "/dart-2",
+        "destination": "https://www.dartlang.org/dart-2",
         "type": 301
       }
     ]
