@@ -6,6 +6,4 @@ description: How Dart 2 is different from Dart 1.x, and how you can convert your
 ---
 
 For the latest information on Dart 2 and migrating your code,
-see the corresponding page on www.dartlang.org:
-
-**[www.dartlang.org/dart-2]({{site.www}}/dart-2)**
+see [**www.dartlang.org/dart-2**.]({{site.www}}/dart-2)
