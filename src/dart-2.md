@@ -44,27 +44,33 @@ First, see the migration guide for your platform:
 * [Flutter migration guide][Flutter migration instructions]
 * [Web app migration guide][webdev dart2]
 
-Here's the general process for migrating to Dart 2,
+If you publish packages, then also see the
+[package migration instructions below.](#migrating-packages)
+
+
+### General process
+
+Here's an overview of the process of migrating to Dart 2,
 from either Dart 1.x or an earlier version of Dart 2.
 
-1. Get an up-to-date version of the Flutter or Dart SDK.
+1. **Get an up-to-date version of the Flutter or Dart SDK.**
    * [Flutter SDK instructions][Flutter SDK install]
    * [Dart SDK instructions][Dart SDK install] (VM or web)
-2. Upgrade the packages your app depends on.
+2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
    * Dart VM or web: [`pub upgrade`][pub upgrade]
-3. Run the [dart2_fix tool.][dart2_fix]
-4. Run the analyzer to find [compile-time errors][Fixing Common Type Problems].
+3. **Run the [dart2_fix tool.][dart2_fix]**
+4. **Run the analyzer** to find [compile-time errors][Fixing Common Type Problems].
    * Flutter: [`flutter analyze`][Flutter analyzer]
    * Dart VM or web: [`dartanalyzer`][dartanalyzer] with
      [Dart 2 semantics][enable strong mode]
-5. Fix issues in your code and run the analyzer again,
+5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
-6. Run tests to find runtime errors.
+6. **Run tests to find runtime errors.**
    * Run all [automated tests] for your software.
    * Do manual testing, and look for console errors.
    Consider adding automated tests to catch issues that you find.
-7. Fix issues until your code works.
+7. **Fix issues until your code works.**
 
 Each time the SDK has a significant release, repeat the process.
 
@@ -73,6 +79,63 @@ TODO:
 - talk about library vs. app migration?
 - talk more about versioning?
 {% endcomment %}
+
+### Migrating packages
+
+As a package owner, you need to do the following:
+
+* Follow the migration tips for the platforms that your package supports
+  (see above).
+* Make sure your package's users know how to report issues.
+* Respond quickly to issue reports.
+* If code changes aren't backward compatible,
+  update the lower SDK constraint.
+
+
+#### Changes and backward compatibility
+
+If you have to change your package's code,
+**try to make it work in 1.x**, as well as Dart 2.
+For example, you might be able to add type annotations
+or (if an API has been removed) to use an alternative 1.x API.
+
+If a backward-compatible change isn't possible,
+**update the lower [SDK constraint.][SDK constraints]**
+
+<aside class="alert alert-warning" markdown="1">
+  **Specify SDK constraints carefully!**
+  Incorrect lower constraints can cause problems for users of the stable SDK.
+</aside>
+
+[Test your changes][testing] to make sure that your package works as expected.
+
+
+#### Upper constraints on the SDK version
+
+Don't update an already-published package
+solely to indicate that it can be used with Dart 2 pre-releases.
+As long as a package has either no [SDK constraints][]
+or an upper constraint of `<2.0.0`,
+`pub get` and similar pub commands in any Dart 2 pre-release
+can download the package.
+(The package won't be usable with Dart 2 stable releases,
+but you can fix that later.)
+
+When you update an existing package or publish a new one,
+specify an upper constraint of `<2.0.0` for the SDK version. Examples:
+
+```yaml
+# Works in 1.20.1+; might work in 2.0.0-dev:
+sdk: '>=1.20.1 <2.0.0'
+
+# Backward incompatible change requires at least 2.0.0-dev.1.2:
+sdk: '>=2.0.0-dev.1.2 <2.0.0'
+```
+
+Eventually, you'll need to publish new versions of your packages to
+declare Dart 2 compatibility, most likely using a `<3.0.0` SDK constraint.
+Because incompatible changes might occur in any Dart 2 pre-release,
+don't declare Dart 2 compatibility until we announce that it's safe to do so.
 
 
 ## More resources
