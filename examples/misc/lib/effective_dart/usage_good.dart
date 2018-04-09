@@ -261,12 +261,6 @@ class Box1 {
 
 //----------------------------------------------------------------------------
 
-class Point {
-  Point(this.x, this.y);
-  int x;
-  int y;
-}
-
 class Chest {
   List<String> get contents => null;
 }
@@ -288,12 +282,12 @@ class C {
   bool isReady(num time) => minTime == null || minTime <= time;
 
   String capitalize(String name) =>
-      "${name[0].toUpperCase()}${name.substring(1)}";
+      '${name[0].toUpperCase()}${name.substring(1)}';
   // #enddocregion use-arrow
 
   // #docregion arrow-setter
-  int get x => center.x;
-  set x(int value) => center = new Point(value, center.y);
+  num get x => center.x;
+  set x(num value) => center = new Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
@@ -357,27 +351,27 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point1 {
+class Point0 {
   num x, y;
-  Point1(this.x, this.y);
+  Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
 
 //----------------------------------------------------------------------------
 
 // #docregion dont-type-init-formals
-class Point2 {
+class Point1 {
   int x, y;
-  Point2(this.x, this.y);
+  Point1(this.x, this.y);
 }
 // #enddocregion dont-type-init-formals
 
 //----------------------------------------------------------------------------
 
 // #docregion semicolon-for-empty-body
-class Point3 {
+class Point2 {
   int x, y;
-  Point3(this.x, this.y);
+  Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
 
