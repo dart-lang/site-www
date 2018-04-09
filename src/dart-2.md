@@ -6,10 +6,6 @@ description: How Dart 2 is different from Dart 1.x, and how you can convert your
 Dart 2 has a few key differences from earlier versions of Dart.
 This page briefly covers those differences and
 gives general advice on migrating your code to Dart 2.
-Also see the migration guide for your platform:
-
-* [Flutter migration instructions][]
-* [Web app migration guide][webdev dart2]
 
 For information on _why_ Dart 2 has changed, see the
 [Dart 2 announcement.][Dart 2 announcement]
@@ -17,9 +13,9 @@ For information on _why_ Dart 2 has changed, see the
 
 ## Differences
 
-The Dart language, library, build system, and web development have changed.
+The Dart language, libraries, build system, and web development tools have changed.
 
-### Language and library
+### Language and libraries
 
 * [Dart's type system][sound Dart] is now sound.
   * [Fixing common type problems][Fixing Common Type Problems]
@@ -40,10 +36,16 @@ The Dart language, library, build system, and web development have changed.
   * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
 
 
+<a id="migration"></a>
 ## Migrating your code
 
+First, see the migration guide for your platform:
+
+* [Flutter migration guide][Flutter migration instructions]
+* [Web app migration guide][webdev dart2]
+
 Here's the general process for migrating to Dart 2,
-from either Dart 1.x or an earlier version of Dart 2:
+from either Dart 1.x or an earlier version of Dart 2.
 
 1. Get an up-to-date version of the Flutter or Dart SDK.
    * [Flutter SDK instructions][Flutter SDK install]
@@ -65,9 +67,6 @@ from either Dart 1.x or an earlier version of Dart 2:
 7. Fix issues until your code works.
 
 Each time the SDK has a significant release, repeat the process.
-
-The rest of this page gives an overview of differences between Dart 1.x and Dart 2,
-with links to where you can find more information.
 
 {% comment %}
 TODO:
@@ -107,7 +106,7 @@ TODO:
 [DartPad]: {{site.custom.dartpad.direct-link}}
 [enable strong mode]: /guides/language/analysis-options#enabling-dart-2-semantics
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Trying-the-preview-of-Dart-2-in-Flutter
+[Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Dart-2-Migration
 [Flutter SDK install]: https://flutter.io/upgrading/
 [Dart SDK install]: /tools/sdk#install
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ

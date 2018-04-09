@@ -37,5 +37,5 @@ If you maintain a transformer, see the following:
 
 For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 
-* [Language and core library migration guide](/dart-2)
+* [Language and core library migration guide](/dart-2#migration)
 * [Web app migration guide]({{site.dev-webdev}}/dart-2)
