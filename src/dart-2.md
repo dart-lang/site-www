@@ -1,7 +1,46 @@
 ---
-title: Dart 2 Migration
+title: Dart 2
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
+
+Dart 2 has a few key differences from earlier versions of Dart.
+This page briefly covers those differences and
+gives general advice on migrating your code to Dart 2.
+Also see the migration guide for your platform:
+
+* [Flutter migration instructions][]
+* [Web app migration guide][webdev dart2]
+
+For information on _why_ Dart 2 has changed, see the
+[Dart 2 announcement.][Dart 2 announcement]
+
+
+## Differences
+
+The Dart language, library, build system, and web development have changed.
+
+### Language and library
+
+* [Dart's type system][sound Dart] is now sound.
+  * [Fixing common type problems][Fixing Common Type Problems]
+  * [Email: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
+* Dart no longer has checked mode.
+  * [Assert statements][] are still supported, but you enable them differently.
+* The Dart language and core libraries have changed,
+  partly as a result of the type system changes.
+  * [Dev channel API reference documentation][apiref]
+  * [dart-lang/sdk CHANGELOG][]
+
+### Tools
+
+* Pub no longer supports transformers.
+  Instead, use the [new build system.][build system]
+* Tools related to web development have changed.
+  * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
+  * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
+
+
+## Migrating your code
 
 Here's the general process for migrating to Dart 2,
 from either Dart 1.x or an earlier version of Dart 2:
@@ -37,41 +76,14 @@ TODO:
 {% endcomment %}
 
 
-## Differences
-
-### Language and libraries
-
-* [Dart's type system][sound Dart] is now sound.
-  * [Fixing common type problems][Fixing Common Type Problems]
-  * [Email: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
-* Dart no longer has checked mode.
-  * [Assert statements][] are still supported, but you enable them differently.
-* The Dart language and core libraries have changed,
-  partly as a result of the type system changes.
-  * [Dev channel API reference documentation][apiref]
-  * [dart-lang/sdk CHANGELOG][]
-
-### Tools
-
-* Pub no longer supports transformers.
-  Instead, use the [new build system.][build system]
-* Tools related to web development have changed.
-  * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
-  * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
-
-
 ## More resources
 
 {% comment %} update-for-dart-2
   * [DartPad][]
   * [Dart 2 changes][] section of the [Dart Language Specification][] page
 {% endcomment %}
-* Flutter:
-  * [Trying the preview of Dart 2 in Flutter][Flutter migration instructions]
-* VM and web:
-  * [About Dart SDK release channels and version strings][pre-release]
-  * [SDK constraints][]
-  * [Dart 2 page for web developers][webdev dart2]
+* [About Dart SDK release channels and version strings][pre-release]
+* [SDK constraints][]
 
 [dartdevc]: {{site.dev-webdev}}/tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
@@ -88,6 +100,7 @@ TODO:
 [build_runner web]: {{site.dev-webdev}}/tools/build_runner
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
+[Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
