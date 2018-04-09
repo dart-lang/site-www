@@ -732,9 +732,8 @@ Treasure openChest(Chest chest, Point where) =>
       ..addAll(chest.contents);
 {% endprettify %}
 
-You can also use `=>` on void members that don't return a value. This is
-idiomatic for small setters that have a corresponding getter also using `=>` and
-where a block body would make the setter feel separate from its getter.
+You can also use `=>` on members that don't return a value. This is idiomatic
+when a setter is small and has a corresponding getter that uses `=>`.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
@@ -743,7 +742,7 @@ num get x => center.x;
 set x(num value) => center = new Point(value, center.y);
 {% endprettify %}
 
-It's rarely a good idea to use `=>` for other void members. The `=>` implies
+It's rarely a good idea to use `=>` for non-setter void members. The `=>` implies
 "returns a value", so readers may misinterpret what the void member does if you
 use it.
 
