@@ -1,0 +1,3 @@
+[submodule "site-shared"]
+	path = site-shared
+	url = https://github.com/chalin/site-shared-dartlang.git
