@@ -81,6 +81,14 @@ elif [[ -z "$NGIO_ENV_DEFS" ]]; then
         export PATH="$PATH:$HOME/.pub-cache/bin"
     fi
   fi
+
+  if [[ -z $(git config push.recurseSubmodules) ]]; then
+    echo "INFO: git config push.recurseSubmodules is unset. Setting it to 'check':"
+    (set -x; git config push.recurseSubmodules check)
+  else
+    echo "CONFIRMING settings: git config push.recurseSubmodules $(git config push.recurseSubmodules)"
+  fi
+
 fi
 
 return 0

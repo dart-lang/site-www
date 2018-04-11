@@ -46,7 +46,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh dev
+    script: ./deploy/deploy-firebase.sh
     skip_cleanup: true
     on:
       repo: dart-lang/site-www

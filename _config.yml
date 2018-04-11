@@ -1,7 +1,7 @@
 # Site settings
 title: Dart
 description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
-url: https://dartlang-org-dev.firebaseapp.com
+url: https://www.dartlang.org
 dev-url: https://dartlang-org-dev.firebaseapp.com
 repo: https://github.com/dart-lang/site-www
 branch: master
@@ -11,8 +11,7 @@ branch: master
 #   {{site.webdev}}/downloads
 
 www: https://www.dartlang.org
-v1-url: https://v1-dartlang-org.firebaseapp.com # temporary, use prev-url after the switch
-prev-url: https://www.dartlang.org # will eventually switch to v1-url
+prev-url: https://v1-dartlang-org.firebaseapp.com
 webdev: https://webdev.dartlang.org
 dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
 dart_vm:  /dart-vm
@@ -101,10 +100,14 @@ custom:
 
 # Build settings
 source: src
+# `symlinked-sources` can refer to individual files or directories
+# under `src` that are symlinked to somewhere outside `src`, or it can
+# refer to the root folder of the symlinked content (like `site-shared/src`):
+symlinked-sources: [site-shared/src]
 destination: publish
 bundler_args: --without production
 
-exclude: ["diagrams"]
+exclude: [diagrams]
 
 plugins:
 - jekyll-assets
