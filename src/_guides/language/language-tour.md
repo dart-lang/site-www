@@ -543,16 +543,10 @@ To represent boolean values, Dart has a type named `bool`. Only two
 objects have type bool: the boolean literals `true` and `false`,
 which are both compile-time constants.
 
-When Dart expects a boolean value, only the value `true` is treated as
-true. All other values are treated as false. Unlike in JavaScript,
-values such as `1`, `"aString"`, and `someObject` are all treated as
-false.
-
-Dart’s treatment of booleans is designed to avoid the strange behaviors
-that can arise when many values can be treated as true. What this means
-for you is that, instead of using code like
-<code>if (<em>nonbooleanValue</em>)</code>, you should instead
-explicitly check for values. For example:
+Dart's type safety means that you can't use code like
+<code>if (<em>nonbooleanValue</em>)</code> or
+<code>assert (<em>nonbooleanValue</em>)</code>.
+Instead, explicitly check for values, like this:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 {% prettify dart %}
