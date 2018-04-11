@@ -156,8 +156,7 @@ dependencies:
 {% endprettify %}
 
 The `git` here says this package is found using Git, and the URL after that is
-the Git URL that can be used to clone the package. Pub assumes that the package
-is in the root of the git repository.
+the Git URL that can be used to clone the package.
 
 If you want to depend on a specific commit, branch, or tag, you can also
 provide a `ref` argument:
@@ -173,6 +172,20 @@ dependencies:
 The ref can be anything that Git allows to [identify a commit][commit].
 
 [commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
+
+Pub assumes that the package is in the root of the Git repository.  To specify a different
+location in the repo use the `path` argument:
+
+{% prettify yaml %}
+dependencies:
+  kittens:
+    git:
+      url: git://github.com/munificent/cats.git
+      ref: some-branch
+      path: path/to/kittens
+{% endprettify %}
+
+The path is relative to the Git repo's root.
 
 ### Path packages
 
