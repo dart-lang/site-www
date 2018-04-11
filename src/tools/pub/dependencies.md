@@ -180,9 +180,8 @@ location in the repo use the `path` argument:
 dependencies:
   kittens:
     git:
-      url: git://github.com/munificent/kittens.git
-      ref: some-branch
-      path: path/to/my/plugin/
+      url: git://github.com/munificent/cats.git
+      path: path/to/kittens
 {% endprettify %}
 
 The path is relative to the git repo's root.
