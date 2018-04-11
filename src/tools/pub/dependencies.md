@@ -173,9 +173,8 @@ The ref can be anything that Git allows to [identify a commit][commit].
 
 [commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-Pub assumes that the package is in the root of the git repository.  if this is
-not true, the path may be specified with the `path` argument:
-
+Pub assumes that the package is in the root of the Git repository.  To specify a different
+location in the repo use the `path` argument:
 
 {% prettify yaml %}
 dependencies:
