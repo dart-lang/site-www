@@ -31,7 +31,7 @@ import 'package:dartlang_examples_util/print_matcher.dart' as m;
 void main() {
   test('object-creation', () {
     // #docregion object-creation
-    var jsonData = json.decode('{"x":1, "y":2}') as Map<String, num>;
+    var jsonData = jsonDecode('{"x":1, "y":2}') as Map<String, num>;
 
     // Create a Point using Point().
     var p1 = new Point(2, 2);
