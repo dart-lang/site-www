@@ -181,7 +181,6 @@ dependencies:
   kittens:
     git:
       url: git://github.com/munificent/cats.git
-      ref: some-branch
       path: path/to/kittens
 {% endprettify %}
 
