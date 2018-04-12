@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:test/test.dart';
 
 void main() {
-  test('json.decode()', () {
+  test('jsonDecode()', () {
     // #docregion json-decode
     // NOTE: Be sure to use double quotes ("),
     // not single quotes ('), inside the JSON string.
@@ -16,7 +16,7 @@ void main() {
       ]
     ''';
 
-    var scores = json.decode(jsonString);
+    var scores = jsonDecode(jsonString);
     assert(scores is List);
 
     var firstScore = scores[0];
@@ -25,7 +25,7 @@ void main() {
     // #enddocregion json-decode
   });
 
-  test('json.encode()', () {
+  test('jsonEncode()', () {
     // #docregion json-encode
     var scores = [
       {'score': 40},
@@ -33,7 +33,7 @@ void main() {
       {'score': 100, 'overtime': true, 'special_guest': null}
     ];
 
-    var jsonText = json.encode(scores);
+    var jsonText = jsonEncode(scores);
     assert(jsonText ==
         '[{"score":40},{"score":80},'
         '{"score":100,"overtime":true,'

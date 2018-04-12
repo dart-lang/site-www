@@ -1539,7 +1539,7 @@ import 'dart:convert';
 
 ### Decoding and encoding JSON
 
-Decode a JSON-encoded string into a Dart object with `json.decode()`:
+Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
 {% prettify dart %}
@@ -1553,7 +1553,7 @@ var jsonString = '''
   ]
 ''';
 
-var scores = json.decode(jsonString);
+var scores = jsonDecode(jsonString);
 assert(scores is List);
 
 var firstScore = scores[0];
@@ -1562,7 +1562,7 @@ assert(firstScore['score'] == 40);
 {% endprettify %}
 
 Encode a supported Dart object into a JSON-formatted string with
-`json.encode()`:
+`jsonEncode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
 {% prettify dart %}
@@ -1572,7 +1572,7 @@ var scores = [
   {'score': 100, 'overtime': true, 'special_guest': null}
 ];
 
-var jsonText = json.encode(scores);
+var jsonText = jsonEncode(scores);
 assert(jsonText ==
     '[{"score":40},{"score":80},'
     '{"score":100,"overtime":true,'
