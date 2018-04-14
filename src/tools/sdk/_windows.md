@@ -11,7 +11,7 @@ supported by the community. You can use the wizard to install **stable** or
 
 ![Windows Dart Setup Wizard][Windows installer img]{:.text-center width="250"}
 
-#### Install using Chcolatey
+#### Install using Chocolatey
 
 Alternatively, you can install using [Chocolatey][].
 To install a stable release, run:
@@ -26,7 +26,7 @@ To install a **dev** release, run:
 C:\> choco install dart-sdk-dev
 ```
 
-To **upgrade**, run, the following command where \<package> is either `dart-sdk` or `dart-sdk-dev`:
+To **upgrade**, run the following command where \<package> is either `dart-sdk` or `dart-sdk-dev`:
 
 ```terminal
 C:\> choco upgrade <package>
