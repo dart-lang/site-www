@@ -86,8 +86,10 @@ elif [[ -z "$NGIO_ENV_DEFS" ]]; then
     echo "INFO: git config push.recurseSubmodules is unset. Setting it to 'check':"
     (set -x; git config push.recurseSubmodules check)
   else
-    echo "CONFIRMING settings: git config push.recurseSubmodules $(git config push.recurseSubmodules)"
+    echo "INFO: git config push.recurseSubmodules is set to $(git config push.recurseSubmodules)."
   fi
+  git config status.submodulesummary 1
+  echo "INFO: git config status.submodulesummary is set to $(git config status.submodulesummary)."
 
 fi
 
