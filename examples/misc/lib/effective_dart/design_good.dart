@@ -126,6 +126,10 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion type_annotate_public_apis
     Future<bool> install(PackageId id, String destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
+
+    // #docregion inferred
+    const screenWidth = 640; // Inferred as int.
+    // #enddocregion inferred
   };
 
   () {
@@ -134,29 +138,65 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion func-expr-no-param-type
   };
 
-  () {
-    // #docregion avoid-dynamic
-    lookUpOrDefault(String name, Map map, defaultValue) {
-      var value = map[name];
-      if (value != null) return value;
-      return defaultValue;
+  {
+    // #docregion omit-types-on-locals
+    List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+      var desserts = <List<Ingredient>>[];
+      for (var recipe in cookbook) {
+        if (pantry.containsAll(recipe)) {
+          desserts.add(recipe);
+        }
+      }
+
+      return desserts;
     }
-    // #enddocregion avoid-dynamic
+    // #enddocregion omit-types-on-locals
+  }
+
+  (AstNode node) {
+    // #docregion uninitialized-local
+    List<AstNode> parameters;
+    if (node is Constructor) {
+      parameters = node.signature;
+    } else if (node is Method) {
+      parameters = node.parameters;
+    }
+    // #enddocregion uninitialized-local
+  };
+
+  () {
+    // #docregion prefer-dynamic
+    dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
+    // #enddocregion prefer-dynamic
   };
 
   // #docregion avoid-Function
-  bool isValidString(String value, bool predicate(String string)) => ellipsis();
+  bool isValid(String value, bool Function(String string) test) => ellipsis();
   // #enddocregion avoid-Function
+
+  // #docregion function-arity
+  void handleError(void Function() operation, Function errorHandler) {
+    try {
+      operation();
+    } catch (err, stack) {
+      if (errorHandler is Function(Object)) {
+        errorHandler(err);
+      } else if (errorHandler is Function(Object, Object)) {
+        errorHandler(err, stack);
+      }
+    }
+  }
+  // #enddocregion function-arity
 
   () {
     // #docregion Object-vs-dynamic
-    // Accepts any object.
     void log(Object object) {
       print(object.toString());
     }
 
-    // Only accepts bool or String, which can't be expressed in a type annotation.
-    bool convertToBool(arg) {
+    /// Returns a Boolean representation for [arg], which must
+    /// be a String or bool.
+    bool convertToBool(dynamic arg) {
       if (arg is bool) return arg;
       if (arg is String) return arg == 'true';
       throw new ArgumentError('Cannot convert $arg to a bool.');
@@ -180,8 +220,53 @@ void miscDeclAnalyzedButNotTested() {
   };
 }
 
+class MyIterable<T> {
+  // #docregion function-type-param
+  Iterable<T> where(bool Function(T element) predicate) => ellipsis();
+  // #enddocregion function-type-param
+}
+
+class Event {}
+
+// #docregion function-type
+class FilteredObservable {
+  final bool Function(Event) _predicate;
+  final List<void Function(Event)> _observers;
+
+  FilteredObservable(this._predicate, this._observers);
+
+  void Function(Event) notify(Event event) {
+    if (!_predicate(event)) return null;
+
+    void Function(Event) last;
+    for (var observer in _observers) {
+      observer(event);
+      last = observer;
+    }
+
+    return last;
+  }
+}
+// #enddocregion function-type
+
+//----------------------------------------------------------------------------
+
+// #docregion new-typedef
+typedef Comparison = int Function<T>(T, T);
+// #enddocregion new-typedef
+
 //----------------------------------------------------------------------------
 // Supporting declarations
+
+class AstNode {}
+
+class Constructor extends AstNode {
+  List<AstNode> get signature => null;
+}
+
+class Method extends AstNode {
+  List<AstNode> get parameters => null;
+}
 
 class Socket {
   bool get isConnected => false;
@@ -215,6 +300,10 @@ class Task {
   Task.oneShot();
   Task.repeating();
 }
+
+class Ingredient {}
+
+final List<List<Ingredient>> cookbook = null;
 
 //----------------------------------------------------------------------------
 
@@ -271,7 +360,7 @@ class Graph1<Node, Edge> {
 //----------------------------------------------------------------------------
 
 // #docregion one-member-abstract-class
-typedef bool Predicate<E>(E element);
+typedef Predicate = bool Function<E>(E element);
 // #enddocregion one-member-abstract-class
 
 //----------------------------------------------------------------------------

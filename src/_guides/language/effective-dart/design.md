@@ -354,7 +354,7 @@ don't already know.
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
 
-A "conversion" method is one that returns a new object containing a copy of
+A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
 representation. The core libraries have a convention that these methods are
 named starting with `to` followed by the kind of result.
@@ -555,7 +555,7 @@ just want a function.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
 {% prettify dart %}
-typedef bool Predicate<E>(E element);
+typedef Predicate = bool Function<E>(E element);
 {% endprettify %}
 
 {:.bad-style}
@@ -972,26 +972,43 @@ var buffer = new StringBuffer()
 
 ## Type annotations
 
-In Dart 1.x, adding static types to your variables is optional.
+A *type annotation* is a place in your code where you write down the static type
+of a variable, field, function return type, parameter, etc. Type annotations are
+how you tell the type checker your constraints on the kinds of values that flow
+into different parts of your code.
 
-{% include optional-types-2.0.html %}
+In most places, Dart allows you to omit a type annotation and infers a type for
+you based on the nearby context, or defaults to the `dynamic` type. Inference
+is a powerful tool to spare you the effort of writing (and reading) types that
+are obvious or uninteresting, but it's still worth explicitly annotating in some
+cases. The guidelines here strike the best balance we've found between brevity
+and explicitness, flexibility and safety.
 
-{% comment %}
-update-for-dart-2.0
-{% endcomment %}
+The fact that Dart has both type inference and a `dynamic` type leads to some
+confusion about what it means to say code is "untyped". Does that mean the code
+is dynamically typed, or that you didn't *write* the type? To avoid that
+confusion, we avoid saying "untyped" and instead use the following terminology:
 
-### DO type annotate public APIs.
+*   If the code is *type annotated*, the type was explicitly written in the
+    code.
+
+*   If the code is *inferred*, no type annotation was written, and Dart
+    successfully figured out the type on its own. Inference can fail, in which
+    case the guidelines don't consider that inferred. In some places, inference
+    failure is a static error. In others, Dart uses `dynamic` as the fallback
+    type.
+
+*   If the code is *dynamic*, then its static type is the special `dynamic`
+    type. Code can be explicitly annotated `dynamic` or it can be inferred.
+
+In other words, whether some code is annotated or inferred is orthogonal to
+whether it is `dynamic` or some other type.
+
+### DO type annotate public declarations whose type isn't inferred.
 
 Type annotations are important documentation for how a library should be used.
-Annotating the parameter and return types of public methods and functions helps
-users understand what the API expects and what it provides.
-
-Note that if a public API accepts a range of values that Dart's type system
-cannot express, then it is acceptable to leave that untyped. In that case, the
-implicit `dynamic` *is* the correct type for the API.
-
-For code internal to a library (either private, or things like nested functions)
-annotate where you feel it helps, but don't feel that you *must* provide them.
+They form boundaries between regions of a program to isolate the source of a
+type error.
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
@@ -1000,7 +1017,7 @@ install(id, destination) => ...
 {% endprettify %}
 
 Here, it's unclear what `id` is. A string? And what is `destination`? A string
-or a `File` object? Is this method synchronous or asynchronous?
+or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (type_annotate_public_apis)"?>
@@ -1008,29 +1025,29 @@ or a `File` object? Is this method synchronous or asynchronous?
 Future<bool> install(PackageId id, String destination) => ...
 {% endprettify %}
 
-With types, all of this is clarified.
-
-
-### DON'T specify a return type for a setter.
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
-{% prettify dart %}
-void set foo(Foo value) { ... }
-{% endprettify %}
+When Dart can infer the type for you, then it's fine to omit the annotation:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid_return_types_on_setters)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
 {% prettify dart %}
-set foo(Foo value) { ... }
+const screenWidth = 640; // Inferred as int.
 {% endprettify %}
 
+You may still wish to explicitly annotate even when inference would fill in the
+same type. If the inference relies on values or declarations from other
+libraries, you may want to annotate the type in *your* declaration so that a
+change to that other library doesn't silently change the type of your own API
+without you realizing.
 
-### PREFER type annotating private declarations.
+This guideline does *not* mean you can never use the dynamic type in a public
+signature, just that you should *annotate* it explicitly when you do so.
 
-Type annotations on your public API help *users* of your code. Nearly as
-important is guiding *maintainers* of your code. Adding type annotations to
-internal member and variable declarations can future readers of your code
+
+### PREFER type annotating private declarations whose type isn't inferred.
+
+Type annotations on your public declarations help *users* of your code. Nearly
+as important is guiding *maintainers* of your code. Adding type annotations to
+private member and variable declarations can help future readers of your code
 understand it, and help corral bugs.
 
 {:.good-style}
@@ -1044,13 +1061,76 @@ class CallChainVisitor {
 }
 {% endprettify %}
 
+This guideline is deliberately softer than the previous one because the benefits
+of static typing are slightly reduced when code is confined within a single
+library. In practice, though, most Dart users type annotate all declarations,
+public or private.
 
-### AVOID annotating types on function expressions.
 
-The value of function expressions is their brevity. If a function is complex
-enough that types are needed to understand it, it should probably be a function
-statement or a method. Conversely, if it is short enough to be an expression, it
-likely doesn't need types.
+### AVOID annotating types for initialized local variables.
+
+Function bodies in idiomatic code tend to be short, and the types of local
+variables are almost always obvious and inferrable from the initializing
+expression. Writing that type down is often simply visual noise. Instead, spend
+that energy choosing a great *name* for your local variable.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-types-on-locals)"?>
+{% prettify dart %}
+List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+  var desserts = <List<Ingredient>>[];
+  for (var recipe in cookbook) {
+    if (pantry.containsAll(recipe)) {
+      desserts.add(recipe);
+    }
+  }
+
+  return desserts;
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
+{% prettify dart %}
+List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+  List<List<Ingredient>> recipes = <List<Ingredient>>[];
+  for (List<Ingredient> ingredients in cookbook) {
+    if (pantry.containsAll(ingredients)) {
+      recipes.add(ingredients);
+    }
+  }
+
+  return recipes;
+}
+{% endprettify %}
+
+If the local variable doesn't have an initializer, then its type can't be
+inferred. In that case, it *is* a good idea to annotate it. Otherwise, you get
+`dynamic` and lose the benefits of types.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
+{% prettify dart %}
+List<AstNode> parameters;
+if (node is Constructor) {
+  parameters = node.signature;
+} else if (node is Method) {
+  parameters = node.parameters;
+}
+{% endprettify %}
+
+
+### AVOID annotating inferrable parameter types on function expressions.
+
+Anonymous functions are almost always immediately passed to a method expecting a
+function of some type. (If it isn't used immediately, it's usually worth making
+it a named function declaration.) When a function expression is created in a
+typed context, Dart tries to infer the function's parameter types based on the
+expected type.
+
+For example, when you pass a function expression to `Iterable.map()`, your
+function's parameter type is inferred based on the type of callback that `map()`
+expects:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (func-expr-no-param-type)"?>
@@ -1066,90 +1146,252 @@ var names = people.map((Person person) {
 });
 {% endprettify %}
 
+In rare cases, the surrounding context is not precise enough to provide a type
+for one or more of the function's parameters. In those cases, you may need to
+annotate.
 
-### AVOID annotating with `dynamic` when not required.
 
-{% comment %}
-update-for-dart-2.0
-https://github.com/dart-lang/site-www/pull/480#discussion_r157355593
-{% endcomment %}
+### PREFER annotating with `dynamic` instead of letting inference fail.
 
-In most places in Dart, a type annotation can be omitted, in which case the type
-will automatically be `dynamic`. Thus, omitting the type annotation entirely is
-semantically equivalent but more terse.
+Dart allows you to omit type annotations in many places and will try to infer a
+type for you. In some cases, if inference fails, it silently gives you
+`dynamic`. If `dynamic` is the type you want, this is technically the most terse
+way to get it.
+
+However, it's not the most *clear* way. A casual reader of your code who sees an
+annotation is missing has no way of knowing if you intended it to be `dynamic`,
+expected inference to fill in some other type, or simply forgot to write the
+annotation.
+
+When `dynamic` is the type you want, writing it explicitly makes your intent
+clear.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-dynamic)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (prefer-dynamic)"?>
 {% prettify dart %}
-lookUpOrDefault(String name, Map map, defaultValue) {
-  var value = map[name];
-  if (value != null) return value;
-  return defaultValue;
-}
+dynamic mergeJson(dynamic original, dynamic changes) => ...
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-dynamic)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (prefer-dynamic)"?>
 {% prettify dart %}
-dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
-  var value = map[name];
-  if (value != null) return value;
-  return defaultValue;
+mergeJson(original, changes) => ...
+{% endprettify %}
+
+
+<aside class="alert alert-info" markdown="1">
+
+Before Dart 2, this guideline stated the exact opposite: *don't* annotate with
+`dynamic` when it is implicit. With the new stronger type system and type
+inference, users now expect Dart to behave like an inferred statically-typed
+language. With that mental model, it is an unpleasant surprise to discover that
+a region of code has silently lost all of the safety and performance of static
+types.
+
+</aside>
+
+
+### PREFER signatures in function type annotations.
+
+The identifier `Function` by itself without any return type or parameter
+signature refers to the special [Function][] type. This type is only
+marginally more useful than using `dynamic`. If you're going to annotate, prefer
+a full function type that includes the parameters and return type of the
+function.
+
+[Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
+{% prettify dart %}
+bool isValid(String value, bool [!Function(String string)!] test) => ...
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
+{% prettify dart %}
+bool isValid(String value, [!Function!] test) => ...
+{% endprettify %}
+
+[fn syntax]: #prefer-inline-function-types-over-typedefs
+
+One exception to this guideline is if you want a type that represents the union
+of multiple different function types. For example, you may accept a function
+that takes one parameter or a function that takes two. Since we don't have union
+types, there's no way to precisely type that and you'd normally have to use
+`dynamic`. `Function` is at least a little more helpful than that:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
+{% prettify dart %}
+void handleError([!void Function()!] operation, [!Function!] errorHandler) {
+  try {
+    operation();
+  } catch (err, stack) {
+    if (errorHandler is [!Function(Object)!]) {
+      errorHandler(err);
+    } else if (errorHandler is [!Function(Object, Object)!]) {
+      errorHandler(err, stack);
+    }
+  }
 }
 {% endprettify %}
 
 
-### AVOID annotating with `Function`.
+### DON'T specify a return type for a setter.
 
-The `Function` type is barely more precise than using no annotation at all. If
-you're bothering to annotate, it's better to use a precise function type that
-describes the signature and return type of the function.
-
-If you are annotating a field, this does mean you have to create a typedef, but
-that's usually worth doing.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)"?>
-{% prettify dart %}
-bool isValidString(String value, bool predicate(String string)) => ...
-{% endprettify %}
+Setters always return `void` in Dart. Writing the word is pointless.
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
 {% prettify dart %}
-bool isValidString(String value, Function predicate) => ...
+void set foo(Foo value) { ... }
 {% endprettify %}
 
-One exception is if the variable can be one of several different function types.
-For example, it may allow a function that takes one mandatory parameter or a
-function that takes two. Since we don't have union types, there's no way to
-precisely type that and you'd normally have to use `dynamic`. `Function` is at
-least a *little* more precise than that.
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid_return_types_on_setters)"?>
+{% prettify dart %}
+set foo(Foo value) { ... }
+{% endprettify %}
+
+
+### DON'T use the legacy typedef syntax.
+
+Dart has two notations for defining a named typedef for a function type. The
+original syntax looks like:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (old-typedef)"?>
+{% prettify dart %}
+typedef int Comparison<T>(T a, T b);
+{% endprettify %}
+
+That syntax has a couple of problems:
+
+*   There is no way to assign a name to a *generic* function type. In the above
+    example, the typedef itself is generic. If you reference `Comparison` in
+    your code, without a type argument, you implicitly get the function type
+    `int Function(dynamic, dynamic)`, *not* `int Function<T>(T, T)`. This
+    doesn't come up in practice often, but it matters in certain corner cases.
+
+*   A single identifier in a parameter is interpreted as the parameter's *name*,
+    not its *type*. Given:
+
+    {:.bad-style}
+    <?code-excerpt "misc/lib/effective_dart/design_bad.dart (typedef-param)"?>
+    {% prettify dart %}
+    typedef bool TestNumber(num);
+    {% endprettify %}
+
+    Most users expect this to be a function type that takes a `num` and returns
+    `bool`. It is actually a function type that takes *any* object (`dynamic`)
+    and returns `bool`. The parameter's *name* (which isn't used for anything
+    except documentation in the typedef) is "num". This has been a
+    long-standing source of errors in Dart.
+
+The new syntax looks like this:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
+{% prettify dart %}
+typedef Comparison = int Function<T>(T, T);
+{% endprettify %}
+
+The new syntax can express anything the old syntax could express and more, and
+lacks the error-prone misfeature where a single identifier is treated as the
+parameter's name. The same function type syntax after the `=` in the typedef is
+also allowed anywhere a type annotation may appear, giving us a single
+consistent way to write function types anywhere in a program.
+
+The old typedef syntax is still supported to avoid breaking existing code, but
+it's deprecated.
+
+
+### PREFER inline function types over typedefs.
+
+In Dart 1, if you wanted to use a function type for a field, variable, or
+generic type argument, you had to first define a typedef for it. Dart 2 supports
+a function type syntax that can be used anywhere a type annotation is allowed:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
+{% prettify dart %}
+class FilteredObservable {
+  final [!bool Function(Event)!] _predicate;
+  final List<[!void Function(Event)!]> _observers;
+
+  FilteredObservable(this._predicate, this._observers);
+
+  [!void Function(Event)!] notify(Event event) {
+    if (!_predicate(event)) return null;
+
+    [!void Function(Event)!] last;
+    for (var observer in _observers) {
+      observer(event);
+      last = observer;
+    }
+
+    return last;
+  }
+}
+{% endprettify %}
+
+It may still be worth defining a typedef if the function type is particularly
+long or frequently used. But in most cases, users want to see what the function
+type actually is right where it's used, and the function type syntax gives them
+that clarity.
+
+
+### CONSIDER using the generalized function type syntax for parameters.
+
+Dart has a special syntax when defining a parameter whose type is a function.
+Sort of like in C, you surround the parameter's name with the function's return
+type and parameter signature:
+
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (function-type-param)"?>
+{% prettify dart %}
+Iterable<T> where(bool predicate(T element)) => ...
+{% endprettify %}
+
+Before Dart 2 added the generalized function type syntax, this was the only way
+to give a parameter a function type without defining a typedef. Now that Dart
+has a general notation for function types, you can use it for function-typed
+parameters as well:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type-param)"?>
+{% prettify dart %}
+Iterable<T> where(bool Function(T element) predicate) => ...
+{% endprettify %}
+
+The new syntax is a little more verbose, but is consistent with other locations
+where you must use the new syntax.
 
 
 ### DO annotate with `Object` instead of `dynamic` to indicate any object is accepted.
 
-Some operations will work with any possible object. For example, a log method
+Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
-objects: `Object` and `dynamic`. However, they convey two different things.
+values: `Object` and `dynamic`. However, they convey different things. If you
+simply want to state that you accept all objects, use `Object`, as you would in
+Java or C#.
 
-The `Object` annotation says "I accept any object, and I only require it to have
-the methods that `Object` itself defines."
-
-A `dynamic` type annotation means that no type annotation can express what
-objects you actually allow. (Or maybe one could, but you don't care to write
-it.)
+Using `dynamic` sends a more complex signal. It may mean that Dart's type system
+isn't sophisticated enough to represent the set of types that are allowed, or
+that the values are coming from interop or otherwise outside of the purview of
+the static type system, or that you explicitly want runtime dynamism at that
+point in the program.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
 {% prettify dart %}
-// Accepts any object.
 void log(Object object) {
   print(object.toString());
 }
 
-// Only accepts bool or String, which can't be expressed in a type annotation.
-bool convertToBool(arg) {
+/// Returns a Boolean representation for [arg], which must
+/// be a String or bool.
+bool convertToBool(dynamic arg) {
   if (arg is bool) return arg;
   if (arg is String) return arg == 'true';
   throw new ArgumentError('Cannot convert $arg to a bool.');

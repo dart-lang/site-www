@@ -120,13 +120,12 @@
 
 * <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-storing-what-you-can-calculate'>AVOID storing what you can calculate.</a>
-* <a href='/guides/language/effective-dart/usage#consider-omitting-the-types-for-local-variables'>CONSIDER omitting the types for local variables.</a>
 
 **Members**
 
 * <a href='/guides/language/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily'>DON'T wrap a field in a getter and setter unnecessarily.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-using-a-final-field-to-make-a-read-only-property'>PREFER using a <code>final</code> field to make a read-only property.</a>
-* <a href='/guides/language/effective-dart/usage#consider-using--for-short-members-whose-body-is-a-single-return-statement'>CONSIDER using <code>=&gt;</code> for short members whose body is a single return statement.</a>
+* <a href='/guides/language/effective-dart/usage#consider-using--for-simple-members'>CONSIDER using <code>=&gt;</code> for simple members.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> when not needed to avoid shadowing.</a>
 * <a href='/guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible'>DO initialize fields at their declaration when possible.</a>
 
@@ -167,6 +166,7 @@
 * <a href='/guides/language/effective-dart/design#consider-making-the-code-read-like-a-sentence'>CONSIDER making the code read like a sentence.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-noun-phrase-for-a-non-boolean-property-or-variable'>PREFER a noun phrase for a non-boolean property or variable.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable'>PREFER a non-imperative verb phrase for a boolean property or variable.</a>
+* <a href='/guides/language/effective-dart/design#prefer-the-positive-name-for-a-boolean-property-or-variable'>PREFER the "positive" name for a boolean property or variable.</a>
 * <a href='/guides/language/effective-dart/design#consider-omitting-the-verb-for-a-named-boolean-parameter'>CONSIDER omitting the verb for a named boolean <em>parameter</em>.</a>
 * <a href='/guides/language/effective-dart/design#prefer-an-imperative-verb-phrase-for-a-function-or-method-whose-main-purpose-is-a-side-effect'>PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose'>PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.</a>
@@ -180,6 +180,7 @@
 **Libraries**
 
 * <a href='/guides/language/effective-dart/design#prefer-making-declarations-private'>PREFER making declarations private.</a>
+* <a href='/guides/language/effective-dart/design#consider-declaring-multiple-classes-in-the-same-library'>CONSIDER declaring multiple classes in the same library.</a>
 
 **Classes**
 
@@ -208,12 +209,16 @@
 
 **Type annotations**
 
-* <a href='/guides/language/effective-dart/design#do-type-annotate-public-apis'>DO type annotate public APIs.</a>
+* <a href='/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred'>DO type annotate public declarations whose type isn't inferred.</a>
+* <a href='/guides/language/effective-dart/design#prefer-type-annotating-private-declarations-whose-type-isnt-inferred'>PREFER type annotating private declarations whose type isn't inferred.</a>
+* <a href='/guides/language/effective-dart/design#avoid-annotating-types-for-initialized-local-variables'>AVOID annotating types for initialized local variables.</a>
+* <a href='/guides/language/effective-dart/design#avoid-annotating-inferrable-parameter-types-on-function-expressions'>AVOID annotating inferrable parameter types on function expressions.</a>
+* <a href='/guides/language/effective-dart/design#prefer-annotating-with-dynamic-instead-of-letting-inference-fail'>PREFER annotating with <code>dynamic</code> instead of letting inference fail.</a>
+* <a href='/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations'>PREFER signatures in function type annotations.</a>
 * <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-private-declarations'>PREFER type annotating private declarations.</a>
-* <a href='/guides/language/effective-dart/design#avoid-annotating-types-on-function-expressions'>AVOID annotating types on function expressions.</a>
-* <a href='/guides/language/effective-dart/design#avoid-annotating-with-dynamic-when-not-required'>AVOID annotating with <code>dynamic</code> when not required.</a>
-* <a href='/guides/language/effective-dart/design#avoid-annotating-with-function'>AVOID annotating with <code>Function</code>.</a>
+* <a href='/guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
+* <a href='/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
+* <a href='/guides/language/effective-dart/design#consider-using-the-generalized-function-type-syntax-for-parameters'>CONSIDER using the generalized function type syntax for parameters.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted'>DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is accepted.</a>
 
 **Parameters**
