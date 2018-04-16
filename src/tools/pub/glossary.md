@@ -97,8 +97,8 @@ specific versions of packages. A lockfile ensures that you can recreate the
 exact configuration of packages used by an application.
 
 The lockfile is generated automatically for you by pub when you run
-[`pub get`](/tools/pub/cmd/pub-get.html), [`pub upgrade`](/tools/pub/cmd/pub-upgrade.html),
-or [`pub downgrade`](/tools/pub/cmd/pub-downgrade.html).
+[`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade),
+or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
 If your package is an application package, you will typically check this into
 source control. For library packages, you usually won't.
 
@@ -107,7 +107,7 @@ source control. For library packages, you usually won't.
 The declared versions of the Dart SDK itself that a package declares that it
 supports. An SDK constraint is specified using normal
 [version constraint](#version-constraint) syntax, but in a special _environment_
-section [in the pubspec](/tools/pub/pubspec.html#sdk-constraints).
+section [in the pubspec](/tools/pub/pubspec#sdk-constraints).
 
 ## Source
 
@@ -125,7 +125,7 @@ pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
 On Windows, the file lives in `%APPDATA%\Pub\Cache\bin`,
 though its exact location may vary depending on the Windows version.
 You can specify a different location using the
-[PUB_CACHE](/tools/pub/environment-variables.html) environment variable.
+[PUB_CACHE](/tools/pub/environment-variables) environment variable.
 
 Once packages are in the system cache,
 pub creates a `.packages` file that maps each package
@@ -147,9 +147,9 @@ and C are transitive ones.
 
 An uploader of a package is someone who has administrative permissions
 for that package. They can not only upload new versions of a package,
-but also [add and remove other uploaders](/tools/pub/cmd/pub-uploader.html)
+but also [add and remove other uploaders](/tools/pub/cmd/pub-uploader)
 for that package. The uploader of a package is often, but not necessarily, the
-same as the [author](/tools/pub/pubspec.html#authorauthors) of a package.
+same as the [author](/tools/pub/pubspec#authorauthors) of a package.
 
 Anyone uploading a new package automatically becomes an uploader for
 that package. Otherwise, to become an uploader, you need to contact an
@@ -171,4 +171,4 @@ should usually allow any version of their dependencies, since they use the
 [lockfile](#lockfile) to manage their dependency versions.
 
 For more information, see
-[Pub Versioning Philosophy](/tools/pub/versioning.html).
+[Pub Versioning Philosophy](/tools/pub/versioning).

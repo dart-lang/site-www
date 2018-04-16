@@ -122,6 +122,14 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+
+  (Map<Chest, Treasure> _opened) {
+    // #docregion arrow-long
+    Treasure openChest(Chest chest, Point where) =>
+        _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+          ..addAll(chest.contents);
+    // #enddocregion arrow-long
+  };
 }
 
 //----------------------------------------------------------------------------
@@ -259,9 +267,9 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
+class Point0 {
   num x, y;
-  Point(num x, num y) {
+  Point0(num x, num y) {
     this.x = x;
     this.y = y;
   }

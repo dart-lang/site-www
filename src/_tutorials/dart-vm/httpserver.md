@@ -566,7 +566,7 @@ an HttpClientResponse object.
 {% prettify dart %}
 import 'dart:async';
 import 'dart:io';
-import 'dart:convert' show utf8, json;
+import 'dart:convert';
 
 String _host = InternetAddress.LOOPBACK_IP_V4.host;
 String path = 'file.txt';
@@ -583,7 +583,7 @@ Future main() async {
   HttpClientRequest request =
       await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
         ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
-        ..[!write!](json.encode(jsonData)); [!/*3*/!]
+        ..[!write!](jsonEncode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
   await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
 }
@@ -670,7 +670,7 @@ Future main() async {
       try {
         String content =
             await req.transform(utf8.decoder).join(); [!/*2*/!]
-        var [!data = json.decode(content) as Map!]; [!/*3*/!]
+        var [!data = jsonDecode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await new File(fileName)
             .writeAsString(content, mode: FileMode.WRITE);

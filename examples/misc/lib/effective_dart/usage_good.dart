@@ -248,14 +248,45 @@ class Box1 {
 
 //----------------------------------------------------------------------------
 
+class Chest {
+  List<String> get contents => null;
+}
+
+class Treasure {
+  Treasure(Point where);
+
+  void addAll(List<String> what) {}
+}
+
 class C {
-  int left, right, minTime;
-  Iterable getValues() => [];
+  double left, right, top, bottom, minTime;
+  Point center;
+  Map<Chest, Treasure> _opened;
+
   // #docregion use-arrow
-  get width => right - left;
-  bool ready(num time) => minTime == null || minTime <= time;
-  containsValue(String value) => getValues().contains(value);
-// #enddocregion use-arrow
+  double get area => (right - left) * (bottom - top);
+
+  bool isReady(num time) => minTime == null || minTime <= time;
+
+  String capitalize(String name) =>
+      '${name[0].toUpperCase()}${name.substring(1)}';
+  // #enddocregion use-arrow
+
+  // #docregion arrow-setter
+  num get x => center.x;
+  set x(num value) => center = new Point(value, center.y);
+  // #enddocregion arrow-setter
+
+  // #docregion arrow-long
+  Treasure openChest(Chest chest, Point where) {
+    if (_opened.containsKey(chest)) return null;
+
+    var treasure = new Treasure(where);
+    treasure.addAll(chest.contents);
+    _opened[chest] = treasure;
+    return treasure;
+  }
+  // #enddocregion arrow-long
 }
 
 //----------------------------------------------------------------------------
@@ -307,9 +338,9 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
+class Point0 {
   num x, y;
-  Point(this.x, this.y);
+  Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
 

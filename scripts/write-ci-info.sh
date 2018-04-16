@@ -36,7 +36,7 @@ fi
 # TRAVIS_PULL_REQUEST_BRANCH=
 # TRAVIS_PULL_REQUEST_SHA=
 # TRAVIS_PULL_REQUEST_SLUG=
-# TRAVIS_REPO_SLUG=dart-lang/site-webdev
+# TRAVIS_REPO_SLUG=dart-lang/site-foo
 
 # Sample values from a PR:
 #
@@ -52,5 +52,5 @@ fi
 # TRAVIS_PULL_REQUEST=1078
 # TRAVIS_PULL_REQUEST_BRANCH=chalin-chore-content-shell-0927
 # TRAVIS_PULL_REQUEST_SHA=4bbfbd729b507df32fe3b3beefc79b0ed40a67a7
-# TRAVIS_PULL_REQUEST_SLUG=chalin/site-webdev
-# TRAVIS_REPO_SLUG=dart-lang/site-webdev
+# TRAVIS_PULL_REQUEST_SLUG=chalin/site-foo
+# TRAVIS_REPO_SLUG=dart-lang/site-foo

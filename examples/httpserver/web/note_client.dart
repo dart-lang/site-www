@@ -37,10 +37,7 @@ void saveNote(Event e) {
 void requestNote(Event e) {
   if (chooseNote.value.isEmpty) return;
 
-  int getNoteNumber = int.parse(chooseNote.value, onError: (_) {
-    print('NaN');
-  });
-  if (getNoteNumber == null) getNoteNumber = 0;
+  int getNoteNumber = int.tryParse(chooseNote.value) ?? 0;
 
   request = new HttpRequest();
   request.onReadyStateChange.listen(onData);

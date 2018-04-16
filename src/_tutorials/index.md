@@ -7,6 +7,8 @@ toc: false
 
 **The Dart Tutorials** teach you how to build applications
 using the Dart language, tools, and APIs.
+If you want a hands-on coding experience, try a
+**[codelab](/codelabs)**.
 
 **Who are you?**
 

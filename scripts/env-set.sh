@@ -1,18 +1,5 @@
 # This bash file is meant to be source'd, not executed.
 
-export WEBDEV_REPO=../site-webdev
-
-if [[ -d $WEBDEV_REPO ]]; then
-  source $WEBDEV_REPO/scripts/env-set.sh "$@"
-  return 0
-fi
-
-echo "WARNING: expected to find webdev repo at $WEBDEV_REPO, but none found."
-echo "WARNING: running local copy of setup script."
-
-# This is a copy of the site-webdev script. It is embedded here so that
-# we don't force all users to clone site-webdev. This isn't DRY, but it is temporary.
-
 SITE_WEBDEV_ENV_SET_INSTALL_OPT="--install"
 
 if [[ $# -gt 0 ]]; then
@@ -44,9 +31,9 @@ if [[ "$SITE_WEBDEV_ENV_SET_INSTALL_OPT" != "--quick" ]]; then
 fi
 
 if [[ -z "$(type -t rvm)" ]]; then
-  echo "ERROR: rvm not installed. See site-webdev README. Skipping setup."
+  echo "ERROR: rvm not installed. See README setup instructions. Skipping setup."
 elif [[ -z "$(type -t nvm)" ]]; then
-  echo "ERROR: nvm not installed. See site-webdev README. Skipping setup."
+  echo "ERROR: nvm not installed. See README setup instructions. Skipping setup."
 elif [[ -z "$NGIO_ENV_DEFS" ]]; then
   export NGIO_ENV_DEFS=1
   export ANSI_YELLOW="\033[33;1m"
@@ -94,6 +81,16 @@ elif [[ -z "$NGIO_ENV_DEFS" ]]; then
         export PATH="$PATH:$HOME/.pub-cache/bin"
     fi
   fi
+
+  if [[ -z $(git config push.recurseSubmodules) ]]; then
+    echo "INFO: git config push.recurseSubmodules is unset. Setting it to 'check':"
+    (set -x; git config push.recurseSubmodules check)
+  else
+    echo "INFO: git config push.recurseSubmodules is set to $(git config push.recurseSubmodules)."
+  fi
+  git config status.submodulesummary 1
+  echo "INFO: git config status.submodulesummary is set to $(git config status.submodulesummary)."
+
 fi
 
 return 0

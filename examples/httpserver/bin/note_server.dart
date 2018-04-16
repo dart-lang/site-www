@@ -86,12 +86,7 @@ void saveNote(HttpRequest request, String myNote) {
 }
 
 void getNote(HttpRequest request, String getNote) {
-  var requestedNote = int.parse(getNote, onError: (_) {
-    print('error');
-  });
-  if (requestedNote == null) {
-    requestedNote = 0;
-  }
+  final requestedNote = int.tryParse(getNote) ?? 0;
   if (requestedNote >= 0 && requestedNote < count) {
     List<String> lines = new File('notes.txt').readAsLinesSync();
     request.response
@@ -102,7 +97,7 @@ void getNote(HttpRequest request, String getNote) {
 }
 
 void defaultHandler(HttpRequest request) {
-  var response = request.response;
+  final response = request.response;
   addCorsHeaders(response);
   response
     ..statusCode = HttpStatus.NOT_FOUND
@@ -111,7 +106,7 @@ void defaultHandler(HttpRequest request) {
 }
 
 void handleOptions(HttpRequest request) {
-  var response = request.response;
+  final response = request.response;
   addCorsHeaders(response);
   print('${request.method}: ${request.uri.path}');
   response

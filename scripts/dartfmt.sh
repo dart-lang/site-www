@@ -13,7 +13,8 @@ EXAMPLES=examples
 # except for the lib/pi_*.* files
 $DARTFMT -w `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
-    ! -path "**/misc/lib/pi_*"`
+    ! -path "**/misc/lib/pi_*" \
+    ! -path "**/build/**"`
 
 $DARTFMT -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \

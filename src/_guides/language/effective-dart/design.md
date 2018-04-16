@@ -212,6 +212,48 @@ showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
 
+### PREFER the "positive" name for a boolean property or variable.
+
+Most boolean names have conceptually "positive" and "negative" forms where the
+former feels like the fundamental concept and the latter is its
+negation&mdash;"open" and "closed", "enabled" and "disabled", etc. Often the
+latter name literally has a prefix that negates the former: "visible" and
+"*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
+
+When choosing which of the two cases that `true` represents &mdash; and thus
+which case the property is named for &mdash; prefer the positive or more
+fundamental one. Boolean members are often nested inside logical expressions,
+including negation operators. If your property itself reads like a negation,
+it's harder for the reader to mentally perform the double negation and
+understand what the code means.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (positive)"?>
+{% prettify dart %}
+if (socket.isConnected && database.hasData) {
+  socket.write(database.read());
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (positive)"?>
+{% prettify dart %}
+if (!socket.isDisconnected && !database.isEmpty) {
+  socket.write(database.read());
+}
+{% endprettify %}
+
+An exception to this rule is properties where the negative form is what users
+overwhelmingly need to use. Choosing the positive case would force them to
+negate the property with `!` everywhere. Instead, it may be better to use the
+negative case for that property.
+
+For some properties, there is no obvious positive form. Is a document that has
+been flushed to disc "saved" or "*un*-changed"? Is a document that *hasn't* been
+flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
+that is less likely to be negated by users or has the shorter name.
+
+
 ### CONSIDER omitting the verb for a named boolean *parameter*.
 
 This refines the previous rule. For named parameters that are boolean, the name
@@ -476,12 +518,31 @@ can delete dead code. It can't do that if the member is public because it
 doesn't know if any code outside of its view is using it.
 
 
+### CONSIDER declaring multiple classes in the same library.
+
+Java and C# tie the organization of files to the organization of
+classes&mdash;each file may only define a single top level class. Dart does not
+have that limitation. Libraries are distinct entities separate from classes.
+It's perfectly fine for a single library to contain multiple classes, top level
+variables, and functions if they all logically belong together.
+
+Placing multiple classes together in one library can enable some useful
+patterns. Since privacy in Dart works at the library level, not the class level,
+this is a way to define "friend" classes like you might in C++. Every class
+declared in the same library can access each other's private members, but code
+outside of that library cannot.
+
+Of course, this guideline doesn't mean you *should* put all of your classes into
+a huge monolithic library, just that you are allowed to place more than one
+class in a single library.
+
+
 ## Classes
 
 Dart is a "pure" object-oriented language in that all objects are instances of
-classes. But Dart does not require all code to be defined inside a class — you
-can define top-level variables, constants, and functions like you can in a
-procedural or functional language.
+classes. But Dart does not require all code to be defined inside a
+class&mdash;you can define top-level variables, constants, and functions like
+you can in a procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
 
@@ -730,15 +791,15 @@ can.
 Deciding when a member should be a getter versus a method is a challenging,
 subtle, but important part of good API design, hence this very long guideline.
 Some other language's cultures shy away from getters. They only use them when
-the operation is almost exactly like a field — it does a miniscule amount of
+the operation is almost exactly like a field&mdash;it does a miniscule amount of
 calculation on state that lives entirely on the object. Anything more complex or
 heavyweight than that gets `()` after the name to signal "computation goin' on
 here!" because a bare name after a `.` means "field".
 
 Dart is *not* like that. In Dart, *all* dotted names are member invocations that
-may do computation. Fields are special — they're getters whose implementation
-is provided by the language. In other words, getters are not "particularly slow
-fields" in Dart; fields are "particularly fast getters".
+may do computation. Fields are special&mdash;they're getters whose
+implementation is provided by the language. In other words, getters are not
+"particularly slow fields" in Dart; fields are "particularly fast getters".
 
 Even so, choosing a getter over a method sends an important signal to the
 caller. The signal, roughly, is that the operation is "field-like". The
