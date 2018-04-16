@@ -1001,10 +1001,6 @@ confusion, we avoid saying "untyped" and instead use the following terminology:
 *   If the code is *dynamic*, then its static type is the special `dynamic`
     type. Code can be explicitly annotated `dynamic` or it can be inferred.
 
-*   If the code has any other type, it's not dynamic. Code can end up with a
-    non-`dynamic` type by being explicitly annotated with some other type, or by
-    having Dart infer a non-`dynamic` type.
-
 In other words, whether some code is annotated or inferred is orthogonal to
 whether it is `dynamic` or some other type.
 
@@ -1073,7 +1069,7 @@ public or private.
 
 ### AVOID annotating types for initialized local variables.
 
-Function bodies in modern code tend to be short, and the types of local
+Function bodies in idiomatic code tend to be short, and the types of local
 variables are almost always obvious and inferrable from the initializing
 expression. Writing that type down is often simply visual noise. Instead, spend
 that energy choosing a great *name* for your local variable.
@@ -1155,20 +1151,19 @@ for one or more of the function's parameters. In those cases, you may need to
 annotate.
 
 
-### PREFER annotating with `dynamic` even when not required.
+### PREFER annotating with `dynamic` instead of letting inference fail.
 
-When you omit a type annotation, *most* of the time, Dart infers a correct
-static type for you. That word "most" is the alarming part. Sometimes, inference
-fails and silently uses `dynamic` instead. If you didn't realize that inference
-failed, you now have code that *looks* statically safe but actually has no
-type checking whatsoever.
+Dart allows you to omit type annotations in many places and will try to infer a
+type for you. In some cases, if inference fails, it silently gives you
+`dynamic`. If `dynamic` is the type you want, this is technically the most terse
+way to get it.
 
-Sometimes, `dynamic` is what you want. Dart does support a dynamic type for good
-reasons. But a casual reader of your code who sees an annotation is missing has
-no way of knowing if you intended it to be `dynamic`, expected inference to fill
-in some other type, or simply forgot to write the annotation.
+However, it's not the most *clear* way. A casual reader of your code who sees an
+annotation is missing has no way of knowing if you intended it to be `dynamic`,
+expected inference to fill in some other type, or simply forgot to write the
+annotation.
 
-When `dynamic` is the type you want, using it explicitly makes your intent
+When `dynamic` is the type you want, writing it explicitly makes your intent
 clear.
 
 {:.good-style}
@@ -1294,7 +1289,7 @@ That syntax has a couple of problems:
     except documentation in the typedef) is "num". This has been a
     long-standing source of errors in Dart.
 
-The new syntax looks like:
+The new syntax looks like this:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
@@ -1350,7 +1345,7 @@ that clarity.
 ### CONSIDER using the generalized function type syntax for parameters.
 
 Dart has a special syntax when defining a parameter whose type is a function.
-Sort of like C, you surround the parameter's name with the function's return
+Sort of like in C, you surround the parameter's name with the function's return
 type and parameter signature:
 
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (function-type-param)"?>
@@ -1358,9 +1353,9 @@ type and parameter signature:
 Iterable<T> where(bool predicate(T element)) => ...
 {% endprettify %}
 
-Before Dart 2 added general function type syntax, this was the only way to give
-a parameter a function type without defining a typedef. Now that Dart has a
-general notation for function types, you can use it for function-typed
+Before Dart 2 added the generalized function type syntax, this was the only way
+to give a parameter a function type without defining a typedef. Now that Dart
+has a general notation for function types, you can use it for function-typed
 parameters as well:
 
 {:.good-style}
@@ -1377,16 +1372,15 @@ where you must use the new syntax.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
-values: `Object` and `dynamic`. However, they convey different things.
+values: `Object` and `dynamic`. However, they convey different things. If you
+simply want to state that you accept all objects, use `Object`, as you would in
+Java or C#.
 
 Using `dynamic` sends a more complex signal. It may mean that Dart's type system
 isn't sophisticated enough to represent the set of types that are allowed, or
 that the values are coming from interop or otherwise outside of the purview of
-the static type system, or you explicitly want runtime dynamism at that point in
-the program.
-
-If those aren't the messages you want to send, and you simply want to state that
-you accept all objects, use `Object`, as you would in Java or C#.
+the static type system, or that you explicitly want runtime dynamism at that
+point in the program.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
