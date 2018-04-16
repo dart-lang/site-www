@@ -1,6 +1,4 @@
 ---
-layout: default
-permalink: /code-of-conduct
 title: Code of Conduct
 description: Be excellent to each other.
 toc: false
