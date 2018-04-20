@@ -105,6 +105,8 @@
 * <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-sequence'>CONSIDER using higher-order methods to transform a sequence.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
+* <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-cast-or-retype-if-you-are-already-performing-an-operation-that-can-change-the-type'>DON'T use <code>cast()</code> or <code>retype()</code> if you are already performing an operation that can change the type.</a>
 
 **Functions**
 
@@ -150,6 +152,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-async-when-it-has-no-useful-effect'>DON'T use <code>async</code> when it has no useful effect.</a>
 * <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-stream'>CONSIDER using higher-order methods to transform a stream.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-completer-directly'>AVOID using Completer directly.</a>
+* <a href='/guides/language/effective-dart/usage#do-test-for-a-future-when-disambiguating-a-futureort-whose-value-type-could-be-object'>DO test for a future when disambiguating a <code>FutureOr&lt;T&gt;</code> whose value type could be <code>Object</code>.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>
@@ -219,13 +222,14 @@
 * <a href='/guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
 * <a href='/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
 * <a href='/guides/language/effective-dart/design#consider-using-the-generalized-function-type-syntax-for-parameters'>CONSIDER using the generalized function type syntax for parameters.</a>
-* <a href='/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted'>DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is accepted.</a>
+* <a href='/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed'>DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is allowed.</a>
+* <a href='/guides/language/effective-dart/design#avoid-using-futureort-as-a-return-type'>AVOID using <code>FutureOr&lt;T&gt;</code> as a return type.</a>
 
 **Parameters**
 
 * <a href='/guides/language/effective-dart/design#avoid-positional-boolean-parameters'>AVOID positional boolean parameters.</a>
 * <a href='/guides/language/effective-dart/design#avoid-optional-positional-parameters-if-the-user-may-want-to-omit-earlier-parameters'>AVOID optional positional parameters if the user may want to omit earlier parameters.</a>
-* <a href='/guides/language/effective-dart/design#avoid-mandatory-parameters-that-permit-nonce-values'>AVOID mandatory parameters that permit nonce values.</a>
+* <a href='/guides/language/effective-dart/design#avoid-mandatory-parameters-that-permit-sentinel-values'>AVOID mandatory parameters that permit sentinel values.</a>
 * <a href='/guides/language/effective-dart/design#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range'>DO use inclusive start and exclusive end parameters to accept a range.</a>
 
 **Equality**

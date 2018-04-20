@@ -57,6 +57,27 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion dont-use-length
   };
 
+  {
+    // #docregion where-type
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.whereType<int>();
+    // #enddocregion where-type
+  }
+
+  {
+    // #docregion cast-list
+    var stuff = <dynamic>[1, 2];
+    var ints = new List<int>.from(stuff);
+    // #enddocregion cast-list
+  }
+
+  {
+    // #docregion cast-map
+    var stuff = <dynamic>[1, 2];
+    var reciprocals = stuff.map<double>((n) => 1 / (n as int));
+    // #enddocregion cast-map
+  }
+
   (Iterable<Animal> animals) {
     // #docregion use-higher-order-func
     var aquaticNames = animals
@@ -149,6 +170,19 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+
+  // #docregion test-future-or
+  Future<T> logValue<T>(FutureOr<T> value) async {
+    if (value is Future<T>) {
+      var result = await value;
+      print(result);
+      return result;
+    } else {
+      print(value);
+      return value as T;
+    }
+  }
+  // #enddocregion test-future-or
 
   {
     // #docregion avoid-completer-alt

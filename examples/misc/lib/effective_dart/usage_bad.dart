@@ -59,6 +59,34 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   {
+    // #docregion where-type
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.where((e) => e is int);
+    // #enddocregion where-type
+  }
+
+  {
+    // #docregion cast-list
+    var stuff = <dynamic>[1, 2];
+    var ints = stuff.toList().cast<int>();
+    // #enddocregion cast-list
+  }
+
+  {
+    // #docregion cast-map
+    var stuff = <dynamic>[1, 2];
+    var reciprocals = stuff.map((n) => 1 / (n as int)).cast<double>();
+    // #enddocregion cast-map
+  }
+
+  {
+    // #docregion where-type-2
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.where((e) => e is int).cast<int>();
+    // #enddocregion where-type-2
+  }
+
+  {
     // #docregion func-decl
     void main() {
       var localFunction = () {
@@ -122,6 +150,19 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+
+  // #docregion test-future-or
+  Future<T> logValue<T>(FutureOr<T> value) async {
+    if (value is T) {
+      print(value);
+      return value;
+    } else {
+      var result = await value;
+      print(result);
+      return result;
+    }
+  }
+  // #enddocregion test-future-or
 
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
