@@ -555,7 +555,7 @@ just want a function.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
 {% prettify dart %}
-typedef Predicate = bool Function<E>(E element);
+typedef Predicate<E> = bool Function(E element);
 {% endprettify %}
 
 {:.bad-style}
@@ -1342,7 +1342,7 @@ type actually is right where it's used, and the function type syntax gives them
 that clarity.
 
 
-### CONSIDER using the generalized function type syntax for parameters.
+### CONSIDER using function type syntax for parameters.
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
@@ -1353,9 +1353,9 @@ type and parameter signature:
 Iterable<T> where(bool predicate(T element)) => ...
 {% endprettify %}
 
-Before Dart 2 added the generalized function type syntax, this was the only way
-to give a parameter a function type without defining a typedef. Now that Dart
-has a general notation for function types, you can use it for function-typed
+Before Dart 2 added function type syntax, this was the only way to give a
+parameter a function type without defining a typedef. Now that Dart has a
+general notation for function types, you can use it for function-typed
 parameters as well:
 
 {:.good-style}
