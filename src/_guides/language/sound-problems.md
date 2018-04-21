@@ -354,9 +354,9 @@ in [Effective Dart](/guides/language/effective-dart/).
 <a name="uses-dynamic-as-bottom"></a>
 ### A function of type ... can't be assigned
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/A function of type.*common_problems/" replace="/'\S+ → \S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/" replace="/'\S+ → \S+'/'...'/g"?>
 ```nocode
-warning • A function of type '...' can't be assigned to a location of type '...' • strong_mode_uses_dynamic_as_bottom
+error • The function expression type '...' isn't of type '...'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
 
 In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
@@ -367,7 +367,7 @@ function type with a parameter of `dynamic`.
 
 However, in Dart 2 passing something other than `dynamic` (or another _top_
 type, such as `Object`, or a specific bottom type, such as `Null`) results
-in a compile-time warning.
+in a compile-time error.
 
 #### Example
 
@@ -379,14 +379,15 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/A function of type.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/type '\(String\) → bool'.*common_problems/"?>
 ```nocode
-warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' • strong_mode_uses_dynamic_as_bottom
+error • A value of type '(String) → bool' can't be assigned to a variable of type '(dynamic) → bool' • invalid_assignment
+error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
 
 #### Fix: Add generic type parameters _or_ cast from dynamic explicitly
 
-When possible, avoid this warning by adding type parameters:
+When possible, avoid this error by adding type parameters:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
@@ -429,7 +430,7 @@ Since neither `List<int>` nor `List<String>` is a subtype of the other,
 Dart rules this out statically. You can see other examples of these
 static analysis errors in [Unexpected collection element type](#unexpected-collection-element-type).
 
-The errors discussed in the remainder of this section are reported at 
+The errors discussed in the remainder of this section are reported at
 [runtime](sound-dart#runtime-checks).
 
 ### Invalid casts
