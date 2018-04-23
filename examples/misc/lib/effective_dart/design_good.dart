@@ -360,7 +360,7 @@ class Graph1<Node, Edge> {
 //----------------------------------------------------------------------------
 
 // #docregion one-member-abstract-class
-typedef Predicate = bool Function<E>(E element);
+typedef Predicate<E> = bool Function(E element);
 // #enddocregion one-member-abstract-class
 
 //----------------------------------------------------------------------------
