@@ -13,7 +13,7 @@ prevpage:
 
 ### An introduction to standalone apps
 
-<div class="panel" markdown="1">
+<div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
   * Command-line applications need to do input and output.
