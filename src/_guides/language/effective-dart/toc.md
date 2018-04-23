@@ -218,7 +218,7 @@
 * <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
 * <a href='/guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
 * <a href='/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
-* <a href='/guides/language/effective-dart/design#consider-using-the-generalized-function-type-syntax-for-parameters'>CONSIDER using the generalized function type syntax for parameters.</a>
+* <a href='/guides/language/effective-dart/design#consider-using-function-type-syntax-for-parameters'>CONSIDER using function type syntax for parameters.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted'>DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is accepted.</a>
 
 **Parameters**

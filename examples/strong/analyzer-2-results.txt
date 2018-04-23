@@ -10,6 +10,8 @@ Analyzing lib, test...
   error • Invalid override. The type of 'MyAdder.add' ('(int, int) → int') isn't a subtype of 'NumberAdder.add' ('(num, num) → num') at lib/common_problems_analysis.dart:61:3 • strong_mode_invalid_method_override
   error • Invalid override. The type of 'Subclass.method' ('(int) → void') isn't a subtype of 'Superclass<dynamic>.method' ('(dynamic) → void') at lib/common_problems_analysis.dart:74:3 • strong_mode_invalid_method_override
   error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' at lib/common_problems_analysis.dart:92:9 • strong_mode_invalid_super_invocation
+  error • A value of type '(String) → bool' can't be assigned to a variable of type '(dynamic) → bool' at lib/common_problems_analysis.dart:103:17 • invalid_assignment
+  error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) at lib/common_problems_analysis.dart:103:17 • strong_mode_invalid_cast_function_expr
   error • The argument type 'List' can't be assigned to the parameter type 'List<int>' at lib/strong_analysis.dart:27:17 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:38:15 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:54:15 • argument_type_not_assignable
@@ -21,5 +23,4 @@ Analyzing lib, test...
   error • A value of type 'List' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:41:27 • invalid_assignment
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:63:26 • invalid_assignment
   error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:157:26 • invalid_assignment
-  warning • A function of type '(String) → bool' can't be assigned to a location of type '(dynamic) → bool' at lib/common_problems_analysis.dart:103:17 • strong_mode_uses_dynamic_as_bottom
-22 errors and 1 warning found.
+24 errors found.
