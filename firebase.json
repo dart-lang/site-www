@@ -973,6 +973,11 @@
         "type": 301
       },
       {
+        "source": "/tools/faq",
+        "destination": "/faq",
+        "type": 301
+      },
+      {
         "source": "/tools/dart-vm",
         "destination": "/dart-vm/tools/dart-vm",
         "type": 301
