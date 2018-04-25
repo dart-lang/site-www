@@ -106,7 +106,7 @@
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-cast-or-retype-if-you-are-already-performing-an-operation-that-can-change-the-type'>DON'T use <code>cast()</code> or <code>retype()</code> if you are already performing an operation that can change the type.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-cast-or-retype-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> or <code>retype()</code> when a nearby operation will do.</a>
 
 **Functions**
 
@@ -152,7 +152,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-async-when-it-has-no-useful-effect'>DON'T use <code>async</code> when it has no useful effect.</a>
 * <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-stream'>CONSIDER using higher-order methods to transform a stream.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-completer-directly'>AVOID using Completer directly.</a>
-* <a href='/guides/language/effective-dart/usage#do-test-for-a-future-when-disambiguating-a-futureort-whose-value-type-could-be-object'>DO test for a future when disambiguating a <code>FutureOr&lt;T&gt;</code> whose value type could be <code>Object</code>.</a>
+* <a href='/guides/language/effective-dart/usage#do-test-for-future-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>

@@ -355,7 +355,8 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type.
 
-Let's say you have a list containing a mixture of objects and you want to get just the integers out of it. You could do:
+Let's say you have a list containing a mixture of objects, and you want to get
+just the integers out of it. You could use `where()` like this:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type)"?>
@@ -368,7 +369,7 @@ This is verbose, but, worse, it returns an Iterable whose type probably isn't
 what you want. In the example here, it returns an `Iterable<Object>` even though
 you likely want an `Iterable<int>` since that's the type you're filtering it to.
 
-Sometimes you see code that "corrects" the above error by doing:
+Sometimes you see code that "corrects" the above error by adding `cast()`:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type-2)"?>
@@ -377,9 +378,11 @@ var objects = [1, "a", 2, "b", 3];
 var ints = objects.where((e) => e is int).cast<int>();
 {% endprettify %}
 
-That's verbose, and causes two wrappers to be created, with two layers of
-indirection and redundant runtime checking. Fortunately, the core library has a
-method for this exact use case:
+That's verbose and causes two wrappers to be created, with two layers of
+indirection and redundant runtime checking. Fortunately, the core library has
+the [`whereType()`][where-type] method for this exact use case:
+
+[where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (where-type)"?>
@@ -388,15 +391,21 @@ var objects = [1, "a", 2, "b", 3];
 var ints = objects.whereType<int>();
 {% endprettify %}
 
-This is terse, produces an Iterable of the desired type, and has no unnecessary
-levels of wrapping.
+Using `whereType()` is concise, produces an [Iterable][] of the desired type,
+and has no unnecessary levels of wrapping.
 
 
-### DON'T use `cast()` or `retype()` if you are already performing an operation that can change the type.
+### DON'T use `cast()` or `retype()` when a nearby operation will do.
 
-Often, a number of transformations on Iterables or Streams are combined. At the end, you want to produce an object with a certain type argument. Instead of tacking on a call to `cast()` or `retype()`, see if one of the existing operations can change the type.
+Often when you're dealing with an iterable or stream, you perform several
+transformations on it. At the end, you want to produce an object with a certain
+type argument. Instead of tacking on a call to `cast()` or `retype()`, see if
+one of the existing transformations can change the type.
 
-If you are already calling `toList()`, replace that with a call to `List.from<T>()` where `T` is the type of resulting list you want.
+If you're already calling `toList()`, replace that with a call to
+[`List.from<T>()`][list-from] where `T` is the type of resulting list you want.
+
+[list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
@@ -412,7 +421,10 @@ var stuff = <dynamic>[1, 2];
 var ints = stuff.toList().cast<int>();
 {% endprettify %}
 
-If you are calling `map()`, give it an explicit type argument so that it produces an iterable of the desired type. Type inference will often pick the correct type for you based on the function you pass to `map()`, but sometimes you need to be explicit.
+If you are calling `map()`, give it an explicit type argument so that it
+produces an iterable of the desired type. Type inference often picks the correct
+type for you based on the function you pass to `map()`, but sometimes you need
+to be explicit.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
@@ -1234,18 +1246,18 @@ Future<bool> fileContainsBear(String path) async {
 {% endprettify %}
 
 
-### DO test for a future when disambiguating a `FutureOr<T>` whose value type could be `Object`.
+### DO test for `Future` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
 
 Before you can do anything useful with a `FutureOr<T>`, you typically need to do
 an `is` check to see if you have a `Future<T>` or a bare `T`. If the type
-argument is some specific type like `FutureOr<int>`, it doesn't matter which
+argument is some specific type as in `FutureOr<int>`, it doesn't matter which
 test you use, `is int` or `is Future<int>`. Either works because those two types
 are disjoint.
 
 However, if the value type is `Object` or a type parameter that could possibly
-be instantiated with `Object` then the two types overlap. `Future<Object>`
+be instantiated with `Object`, then the two branches overlap. `Future<Object>`
 itself implements `Object`, so `is Object` or `is T` where `T` is some type
-parameter that could be instantiated with object returns true even when the
+parameter that could be instantiated with `Object` returns true even when the
 object is a future. Instead, explicitly test for the `Future` case:
 
 {:.good-style}
