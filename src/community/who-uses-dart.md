@@ -113,8 +113,8 @@ Google internal sales tool
 [WorkTrail](https://worktrail.net)
 : Time tracking app.
 
-[AngularDart](https://github.com/angular/angular.dart)
-: AngularDart is a port of the popular framework to Dart.
+[AngularDart](https://webdev.dartlang.org/angular)
+: AngularDart is a web app framework that focuses on productivity, performance, and stability.
 
 [Google Elections](http://news.dartlang.org/2013/09/googles-german-election-map-powered-by.html)
 : Elections results maps built with Dart.

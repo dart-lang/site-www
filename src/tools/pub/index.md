@@ -43,7 +43,6 @@ application package.
 ### Reference
 
 * [Pubspec Format](/tools/pub/pubspec)
-* [FAQ](/tools/faq#pub)
 * [Glossary](/tools/pub/glossary)
 
 ## Pub commands
