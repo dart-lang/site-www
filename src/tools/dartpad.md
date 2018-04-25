@@ -168,3 +168,9 @@ To create a simple web app, start with the Hello World HTML sample.
     </ol>
   </li>
 </ol>
+
+### Checking DartPad version info
+
+To check what version of DartPad you're running, 
+simply inside the editor, press on the DartPad title.
+
