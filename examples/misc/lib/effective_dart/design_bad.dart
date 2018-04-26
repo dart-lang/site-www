@@ -34,28 +34,36 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion positive
   };
 
-  () {
+  {
     // #docregion cascades
     var buffer = new StringBuffer0() //!<br>
         .write('one')
         .write('two')
         .write('three');
     // #enddocregion cascades
-  };
+  }
 
-  () {
+  {
     // #docregion type_annotate_public_apis
     install(id, destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
-  };
+  }
 
-  () {
+  {
     // #docregion func-expr-no-param-type
     var names = people.map((Person person) {
       return person.name;
     });
     // #enddocregion func-expr-no-param-type
-  };
+  }
+
+  {
+    // #docregion generic-invocation
+    var strings = <String>["str", "ing"];
+    var threes = new List<int>.filled(3, 2);
+    var pointThrees = threes.map<double>((i) => i * 0.1);
+    // #enddocregion generic-invocation
+  }
 
   {
     // #docregion omit-types-on-locals
@@ -72,11 +80,22 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion omit-types-on-locals
   }
 
-  () {
+  // #docregion inferred-wrong
+  num highScore(List<num> scores) {
+    var highest = 0;
+    for (var score in scores) {
+      // Error: Can't assign num to int:
+      // if (score > highest) highest = score;
+    }
+    return highest;
+  }
+  // #enddocregion inferred-wrong
+
+  {
     // #docregion prefer-dynamic
     mergeJson(original, changes) => ellipsis();
     // #enddocregion prefer-dynamic
-  };
+  }
 
   // #docregion avoid-Function
   bool isValid(String value, Function test) => ellipsis();
@@ -111,6 +130,12 @@ typedef int Comparison<T>(T a, T b);
 // #docregion typedef-param
 typedef bool TestNumber(num);
 // #enddocregion typedef-param
+
+// #docregion explicit-field
+class Histogram {
+  final counts = <String, int>{};
+}
+// #enddocregion explicit-field
 
 //----------------------------------------------------------------------------
 

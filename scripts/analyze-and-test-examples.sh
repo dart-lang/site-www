@@ -41,7 +41,7 @@ function analyze_and_test() {
   PROJECT_ROOT="$1"
   pushd "$PROJECT_ROOT" > /dev/null
   travis_fold start analyzeAndTest.get
-  pub $PUB_ARGS
+  # pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
   DIR=()

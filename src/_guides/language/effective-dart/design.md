@@ -977,6 +977,31 @@ of a variable, field, function return type, parameter, etc. Type annotations are
 how you tell the type checker your constraints on the kinds of values that flow
 into different parts of your code.
 
+Type annotations can appear in two kinds of places: *declarations*, and *generic
+invocations*. A declaration is what you normally think of when writing down a
+type: a variable, parameter, field, or return type:
+
+{% prettify dart %}
+bool isEmpty(String parameter) {
+  bool result = parameter.length == 0;
+  return result;
+}
+{% endprettify %}
+
+Here, the `bool` and `String` are type annotations on declarations. A generic
+invocation is when you pass a type argument to a collection literal, generic
+class's constructor, or generic method:
+
+{% prettify dart %}
+var lists = <num>[1, 2];
+lists.addAll(new List<num>.filled(3, 4));
+lists.cast<int>();
+{% endprettify %}
+
+Here, the `num` and `int` annotations are all generic invocations. You usually
+don't need to worry about the distinction between the two kinds of type
+annotations, but it helps to have terms for them.
+
 In most places, Dart allows you to omit a type annotation and infers a type for
 you based on the nearby context, or defaults to the `dynamic` type. Inference
 is a powerful tool to spare you the effort of writing (and reading) types that
@@ -1003,6 +1028,42 @@ confusion, we avoid saying "untyped" and instead use the following terminology:
 
 In other words, whether some code is annotated or inferred is orthogonal to
 whether it is `dynamic` or some other type.
+
+
+### DO annotate when Dart infers the wrong type.
+
+Sometimes, Dart infers a type, but not the type you want. For example, you may
+want a variable's type to be a supertype of the initializer's type so that you
+can later assign some other sibling type to the variable:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
+{% prettify dart %}
+num highScore(List<num> scores) {
+  num highest = 0;
+  for (var score in scores) {
+    if (score > highest) highest = score;
+  }
+  return highest;
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)"?>
+{% prettify dart %}
+num highScore(List<num> scores) {
+  var highest = 0;
+  for (var score in scores) {
+    // Error: Can't assign num to int:
+    // if (score > highest) highest = score;
+  }
+  return highest;
+}
+{% endprettify %}
+
+In these cases, it makes sense to annotate it explicitly. In the guidelines
+below, treat "inferred" to mean "inferred to the type you want".
+
 
 ### DO type annotate public declarations whose type isn't inferred.
 
@@ -1120,11 +1181,11 @@ if (node is Constructor) {
 {% endprettify %}
 
 
-### AVOID annotating inferrable parameter types on function expressions.
+### AVOID annotating inferred parameter types on function expressions.
 
-Anonymous functions are almost always immediately passed to a method expecting a
-function of some type. (If it isn't used immediately, it's usually worth making
-it a named function declaration.) When a function expression is created in a
+Anonymous functions are almost always immediately passed to a method taking a
+callback of some type. (If the function isn't used immediately, it's usually
+worth making it a named declaration.) When a function expression is created in a
 typed context, Dart tries to infer the function's parameter types based on the
 expected type.
 
@@ -1149,6 +1210,90 @@ var names = people.map((Person person) {
 In rare cases, the surrounding context is not precise enough to provide a type
 for one or more of the function's parameters. In those cases, you may need to
 annotate.
+
+
+### AVOID type annotating generic invocations that can be inferred.
+
+It's often useful to annotate *declarations* because they form the boundary of your API. But when instantiating an object or invoking a generic method, the type is often just noise. If inference would produce the correct type, omit the annotation and let it do it's job.
+
+When this rule is followed consistently, it helps draw the reader's attention to cases where inference does *not* produce the right type. The presence of the type argument sends a signal that that type is not otherwise pinned down by the surrounding code, and is telling you something useful.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (generic-invocation)"?>
+{% prettify dart %}
+var strings = ["str", "ing"];
+var threes = new List.filled(3, 2);
+var pointThrees = threes.map((i) => i * 0.1);
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (generic-invocation)"?>
+{% prettify dart %}
+var strings = <String>["str", "ing"];
+var threes = new List<int>.filled(3, 2);
+var pointThrees = threes.map<double>((i) => i * 0.1);
+{% endprettify %}
+
+
+### PREFER type annotating declarations for top-level variables and fields that can't be inferred.
+
+Sometimes the initializer expression doesn't contain enough information to fully
+infer the type of a declaration and you need to give it a nudge. You often have
+two options:
+
+*   You can annotate the declaration on the left, which inference then pushes
+    over to the generic invocation on the right:
+
+    {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit-field)"?>
+    {% prettify dart %}
+    class Histogram {
+      final Map<String, int> counts = {};
+    }
+    {% endprettify %}
+
+    (We call this "downwards inference" because we think of the code as a tree
+    and the initializer expression is a subtree of the larger declaration tree.)
+
+*   You can annotate the generic invocation expression in the initializer, which
+    inference then uses to infer the field or variable's type:
+
+    {:.bad-style}
+    <?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit-field)"?>
+    {% prettify dart %}
+    class Histogram {
+      final counts = <String, int>{};
+    }
+    {% endprettify %}
+
+    (Conversely, we call this "upwards inference" because the type is flowing up
+    from the initializer expression to the surrounding declaration.)
+
+In other words, you can put the type "on the left" or "on the right". Since we
+already have a guideline encouraging you to explicitly type top-level
+declarations, this guideline just restates that you should prefer typing "on the
+left".
+
+
+### PREFER type annotating generic invocations for local variables that can't be inferred.
+
+This is the other side of the previous rule. For *local* variables, the guidance
+is that you should avoid annotating them when possible. To stay consistent with
+that, if inference fails on a local variable, prefer fixing it by typing the
+generic invocation so that you don't need to annotate the local variable itself:
+
+    {:.good-style}
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit-local)"?>
+    {% prettify dart %}
+    void countOccurrences(List<String> words) {
+      var wordCounts = <String, int>{};
+      // ...
+    }
+    {% endprettify %}
+
+Of course, if the initializer isn't a generic invocation or there isn't a way to
+put a type annotation in the initializer to get inference working, then typing
+the local variable itself is the way to go.
 
 
 ### PREFER annotating with `dynamic` instead of letting inference fail.
