@@ -1,5 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 
+import 'dart:async';
 import 'dart:math';
 import 'package:dartlang_examples_util/ellipsis.dart';
 import 'design_good.dart';
@@ -80,6 +81,13 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion avoid-Function
   bool isValid(String value, Function test) => ellipsis();
   // #enddocregion avoid-Function
+
+  // #docregion future-or
+  FutureOr<int> triple(FutureOr<int> value) {
+    if (value is int) return value * 3;
+    return (value as Future<int>).then((v) => v * 3);
+  }
+  // #enddocregion future-or
 
   (int start) {
     // #docregion avoid-mandatory-param

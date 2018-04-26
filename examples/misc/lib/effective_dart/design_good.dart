@@ -204,6 +204,19 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion Object-vs-dynamic
   };
 
+  // #docregion future-or
+  Future<int> triple(FutureOr<int> value) async => (await value) * 3;
+  // #enddocregion future-or
+
+  // #docregion future-or-contra
+  Stream<S> asyncMap<T, S>(Iterable<T> iterable,
+      FutureOr<S> Function(T) callback) async* {
+    for (var element in iterable) {
+      yield await callback(element);
+    }
+  }
+  // #enddocregion future-or-contra
+
   () {
     // #docregion avoid-positional-bool-param
     new Task.oneShot();

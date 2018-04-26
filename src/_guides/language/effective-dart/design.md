@@ -821,7 +821,7 @@ as the caller knows. That implies:
 
     {:.bad-style}
     {% prettify dart %}
-    connection.nextIncomingMessage; // Does network IO.
+    connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
     {% endprettify %}
 
@@ -1368,12 +1368,12 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### DO annotate with `Object` instead of `dynamic` to indicate any object is accepted.
+### DO annotate with `Object` instead of `dynamic` to indicate any object is allowed.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
 values: `Object` and `dynamic`. However, they convey different things. If you
-simply want to state that you accept all objects, use `Object`, as you would in
+simply want to state that you allow all objects, use `Object`, as you would in
 Java or C#.
 
 Using `dynamic` sends a more complex signal. It may mean that Dart's type system
@@ -1398,9 +1398,63 @@ bool convertToBool(dynamic arg) {
 }
 {% endprettify %}
 
+
+### AVOID using `FutureOr<T>` as a return type.
+
+If a method accepts a `FutureOr<int>`, it is [generous in what it
+accepts][postel]. Users can call the method with either an `int` or a
+`Future<int>`, so they don't need to wrap an `int` in `Future` that you are
+going to unwrap anyway.
+
+[postel]: https://en.wikipedia.org/wiki/Robustness_principle
+
+If you *return* a `FutureOr<int>`, users need to check whether get back an `int`
+or a `Future<int>` before they can do anything useful. (Or they'll just `await`
+the value, effectively always treating it as a `Future`.) Just return a
+`Future<int>`, it's cleaner. It's easier for users to understand that a function
+is either always asynchronous or always synchronous, but a function that can be
+either is hard to use correctly.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or)"?>
+{% prettify dart %}
+Future<int> triple(FutureOr<int> value) async => (await value) * 3;
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (future-or)"?>
+{% prettify dart %}
+FutureOr<int> triple(FutureOr<int> value) {
+  if (value is int) return value * 3;
+  return (value as Future<int>).then((v) => v * 3);
+}
+{% endprettify %}
+
+The more precise formulation of this guideline is to *only use `FutureOr<T>` in
+[contravariant][] positions.* Parameters are contravariant and return types are
+covariant. In nested function types, this gets flipped&mdash;if you have a
+parameter whose type is itself a function, then the callback's return type is
+now in contravariant position and the callback's parameters are covariant. This
+means it's OK for a *callback's* type to return `FutureOr<T>`:
+
+[contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
+{% prettify dart %}
+Stream<S> asyncMap<T, S>(Iterable<T> iterable,
+    [!FutureOr<S>!] Function(T) callback) async* {
+  for (var element in iterable) {
+    yield await callback(element);
+  }
+}
+{% endprettify %}
+
+
 ## Parameters
 
 In Dart, optional parameters can be either positional or named, but not both.
+
 
 ### AVOID positional boolean parameters.
 
@@ -1438,6 +1492,7 @@ listBox.canScroll = true;
 button.isEnabled = false;
 {% endprettify %}
 
+
 ### AVOID optional positional parameters if the user may want to omit earlier parameters.
 
 Optional positional parameters should have a logical progression such that
@@ -1468,11 +1523,12 @@ Duration(
     int microseconds: 0});
 {% endprettify %}
 
-### AVOID mandatory parameters that permit nonce values.
+
+### AVOID mandatory parameters that accept a special "no argument" value.
 
 If the user is logically omitting a parameter, prefer letting them actually omit
 it by making the parameter optional instead of forcing them to pass `null`, an
-empty string, or some other sentinel value that means "did not pass".
+empty string, or some other special value that means "did not pass".
 
 Omitting the parameter is more terse and helps prevent bugs where a sentinel
 value like `null` is accidentally passed when the user thought they were

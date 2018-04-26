@@ -352,6 +352,95 @@ var ints = new List<int>.from(numbers);
 But if your goal is just to copy the iterable and preserve its original type, or
 you don't care about the type, then use `toList()`.
 
+
+### DO use `whereType()` to filter a collection by type.
+
+Let's say you have a list containing a mixture of objects, and you want to get
+just the integers out of it. You could use `where()` like this:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type)"?>
+{% prettify dart %}
+var objects = [1, "a", 2, "b", 3];
+var ints = objects.where((e) => e is int);
+{% endprettify %}
+
+This is verbose, but, worse, it returns an Iterable whose type probably isn't
+what you want. In the example here, it returns an `Iterable<Object>` even though
+you likely want an `Iterable<int>` since that's the type you're filtering it to.
+
+Sometimes you see code that "corrects" the above error by adding `cast()`:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type-2)"?>
+{% prettify dart %}
+var objects = [1, "a", 2, "b", 3];
+var ints = objects.where((e) => e is int).cast<int>();
+{% endprettify %}
+
+That's verbose and causes two wrappers to be created, with two layers of
+indirection and redundant runtime checking. Fortunately, the core library has
+the [`whereType()`][where-type] method for this exact use case:
+
+[where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (where-type)"?>
+{% prettify dart %}
+var objects = [1, "a", 2, "b", 3];
+var ints = objects.whereType<int>();
+{% endprettify %}
+
+Using `whereType()` is concise, produces an [Iterable][] of the desired type,
+and has no unnecessary levels of wrapping.
+
+
+### DON'T use `cast()` or `retype()` when a nearby operation will do.
+
+Often when you're dealing with an iterable or stream, you perform several
+transformations on it. At the end, you want to produce an object with a certain
+type argument. Instead of tacking on a call to `cast()` or `retype()`, see if
+one of the existing transformations can change the type.
+
+If you're already calling `toList()`, replace that with a call to
+[`List.from<T>()`][list-from] where `T` is the type of resulting list you want.
+
+[list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
+{% prettify dart %}
+var stuff = <dynamic>[1, 2];
+var ints = new List<int>.from(stuff);
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-list)"?>
+{% prettify dart %}
+var stuff = <dynamic>[1, 2];
+var ints = stuff.toList().cast<int>();
+{% endprettify %}
+
+If you are calling `map()`, give it an explicit type argument so that it
+produces an iterable of the desired type. Type inference often picks the correct
+type for you based on the function you pass to `map()`, but sometimes you need
+to be explicit.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+{% prettify dart %}
+var stuff = <dynamic>[1, 2];
+var reciprocals = stuff.map<double>((n) => 1 / n);
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+{% prettify dart %}
+var stuff = <dynamic>[1, 2];
+var reciprocals = stuff.map((n) => 1 / n).cast<double>();
+{% endprettify %}
+
+
 ## Functions
 
 In Dart, even functions are objects. Here are some best practices
@@ -1155,6 +1244,54 @@ Future<bool> fileContainsBear(String path) async {
   return contents.contains('bear');
 }
 {% endprettify %}
+
+
+### DO test for `Future` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
+
+Before you can do anything useful with a `FutureOr<T>`, you typically need to do
+an `is` check to see if you have a `Future<T>` or a bare `T`. If the type
+argument is some specific type as in `FutureOr<int>`, it doesn't matter which
+test you use, `is int` or `is Future<int>`. Either works because those two types
+are disjoint.
+
+However, if the value type is `Object` or a type parameter that could possibly
+be instantiated with `Object`, then the two branches overlap. `Future<Object>`
+itself implements `Object`, so `is Object` or `is T` where `T` is some type
+parameter that could be instantiated with `Object` returns true even when the
+object is a future. Instead, explicitly test for the `Future` case:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (test-future-or)"?>
+{% prettify dart %}
+Future<T> logValue<T>(FutureOr<T> value) async {
+  if (value is Future<T>) {
+    var result = await value;
+    print(result);
+    return result;
+  } else {
+    print(value);
+    return value as T;
+  }
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (test-future-or)"?>
+{% prettify dart %}
+Future<T> logValue<T>(FutureOr<T> value) async {
+  if (value is T) {
+    print(value);
+    return value;
+  } else {
+    var result = await value;
+    print(result);
+    return result;
+  }
+}
+{% endprettify %}
+
+In the bad example, if you pass it a `Future<Object>`, it incorrectly treats it
+like a bare, synchronous value.
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
 [StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
