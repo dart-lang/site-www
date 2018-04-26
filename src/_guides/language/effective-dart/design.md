@@ -1524,7 +1524,7 @@ Duration(
 {% endprettify %}
 
 
-### AVOID mandatory parameters that permit sentinel values.
+### AVOID mandatory parameters that accept a special "no argument" value.
 
 If the user is logically omitting a parameter, prefer letting them actually omit
 it by making the parameter optional instead of forcing them to pass `null`, an

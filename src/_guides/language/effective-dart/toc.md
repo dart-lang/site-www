@@ -229,7 +229,7 @@
 
 * <a href='/guides/language/effective-dart/design#avoid-positional-boolean-parameters'>AVOID positional boolean parameters.</a>
 * <a href='/guides/language/effective-dart/design#avoid-optional-positional-parameters-if-the-user-may-want-to-omit-earlier-parameters'>AVOID optional positional parameters if the user may want to omit earlier parameters.</a>
-* <a href='/guides/language/effective-dart/design#avoid-mandatory-parameters-that-permit-sentinel-values'>AVOID mandatory parameters that permit sentinel values.</a>
+* <a href='/guides/language/effective-dart/design#avoid-mandatory-parameters-that-accept-a-special-no-argument-value'>AVOID mandatory parameters that accept a special "no argument" value.</a>
 * <a href='/guides/language/effective-dart/design#do-use-inclusive-start-and-exclusive-end-parameters-to-accept-a-range'>DO use inclusive start and exclusive end parameters to accept a range.</a>
 
 **Equality**
