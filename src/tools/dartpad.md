@@ -171,6 +171,28 @@ To create a simple web app, start with the Hello World HTML sample.
 
 ### Checking DartPad version info
 
-To check what version of DartPad you're running, 
-simply inside the editor, press on the DartPad title.
+DartPad's various language features and APIs depend on the
+<b>Dart SDK version</b> that DartPad is based on,
+to view the version number firstly go to the Dart editor.
+
+<ol>
+  <li>
+    Click the <b>DartPad</b> title, 
+    which is at the upper left of your DartPad Editor
+  </li>
+  <li>
+     At the bottom of the dialog that appears,
+     you can see the <b>Dart SDK</b> version number.
+  </li>
+</ol>
+
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+
+For example, if DartPad is based on Dart SDK 1.25.0, 
+then DartPad partially supports type safety but doesn't support many other Dart 2 features.
+
+
+
 
