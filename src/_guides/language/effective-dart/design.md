@@ -1442,8 +1442,8 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
 {% prettify dart %}
-Stream<S> asyncMap<T, S>(Iterable<T> iterable,
-    [!FutureOr<S>!] Function(T) callback) async* {
+Stream<S> asyncMap<T, S>(
+    Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
   for (var element in iterable) {
     yield await callback(element);
   }
