@@ -2283,14 +2283,20 @@ var p = const ImmutablePoint(2, 2);
 
 <aside class="alert alert-info" markdown="1">
 **Dart 2 note:**
-You can omit the `const` before the constructor.
-Example: `p = ImmutablePoint(2, 2)`.
-
+You can sometimes omit the `const` before the constructor,
+but not in this example.
+For more information, read about _constant context_ in the
+[informal specification for implicit creation.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/implicit-creation.md)
 {% comment %}
 update-for-dart-2
 
-TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
-`p = ImmutablePoint(2, 2)` into the code snippet.
+To omit the `const` before a constructor,
+you need to be in a `const` context,
+which requires at least one other use of `const`.
+[EXAMPLE OR LINK GOES HERE]
+
+[TODO: Once https://github.com/dart-lang/pub/issues/1807 is fixed,
+update code snippet and tests.]
 {% endcomment %}
 </aside>
 
