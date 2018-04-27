@@ -304,7 +304,7 @@ Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
 {% endprettify %}
 
-These correspond to similar methods on [Iterable][]
+The preceding methods correspond to similar methods on [Iterable][]
 which transform an iterable into another iterable.
 All of these can be written easily using an async function
 with an **await for** loop.
@@ -316,10 +316,10 @@ Stream<E> asyncMap<E>(FutureOr<E> Function(T event) convert);
 Stream<T> distinct([bool Function(T previous, T next) equals]);
 {% endprettify %}
 
-The `distinct()` function doesn't exist on `Iterable`, but it could have.
 The `asyncExpand()` and `asyncMap()` functions are similar to
 `expand()` and `map()`,
 but allow their function argument to be an asynchronous function.
+The `distinct()` function doesn't exist on `Iterable`, but it could have.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 {% prettify dart %}
@@ -345,8 +345,8 @@ A normal map requires one value for each incoming event.
 However, especially for I/O streams,
 it might take several incoming events to produce an output event.
 A [StreamTransformer][] can work with that.
-For example, decoders like [utf8.decode()] are transformers.
-A transformer has only one function, [bind()][], which can be
+For example, decoders like [Utf8Decoder][] are transformers.
+A transformer requires only one function, [bind()][], which can be
 easily implemented by an async function.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
@@ -439,4 +439,4 @@ and asynchronous programming in Dart.
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [StreamSubscription]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamSubscription-class.html
 [StreamTransformer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html
-[utf8.decode()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec/decode.html
+[Utf8Decoder]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html
