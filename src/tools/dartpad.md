@@ -169,7 +169,7 @@ To create a simple web app, start with the Hello World HTML sample.
   </li>
 </ol>
 
-### Checking DartPad version info
+### Checking Dart version info
 
 DartPad's various language features and APIs depend on the
 <b>Dart SDK version</b> that DartPad is based on,
@@ -178,7 +178,7 @@ to view the version number firstly go to the Dart editor.
 <ol>
   <li>
     Click the <b>DartPad</b> title, 
-    which is at the upper left of your DartPad Editor
+    which is at the upper left of your DartPad editor.
   </li>
   <li>
      At the bottom of the dialog that appears,
