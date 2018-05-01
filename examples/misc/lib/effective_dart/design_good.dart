@@ -122,6 +122,21 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cascades
   };
 
+  // #docregion annotate-declaration
+  bool isEmpty(String parameter) {
+    bool result = parameter.length == 0;
+    return result;
+  }
+  // #enddocregion annotate-declaration
+
+  // #docregion annotate-invocation
+  {
+    var lists = <num>[1, 2];
+    lists.addAll(new List<num>.filled(3, 4));
+    lists.cast<int>();
+  }
+  // #enddocregion annotate-invocation
+
   <PackageId>() {
     // #docregion type_annotate_public_apis
     Future<bool> install(PackageId id, String destination) => ellipsis();
@@ -227,8 +242,8 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion future-or
 
   // #docregion future-or-contra
-  Stream<S> asyncMap<T, S>(Iterable<T> iterable,
-      FutureOr<S> Function(T) callback) async* {
+  Stream<S> asyncMap<T, S>(
+      Iterable<T> iterable, FutureOr<S> Function(T) callback) async* {
     for (var element in iterable) {
       yield await callback(element);
     }

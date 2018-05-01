@@ -84,8 +84,8 @@ void miscDeclAnalyzedButNotTested() {
   num highScore(List<num> scores) {
     var highest = 0;
     for (var score in scores) {
-      // Error: Can't assign num to int:
-      // if (score > highest) highest = score;
+      // ignore: invalid_assignment
+      if (score > highest) highest = score;
     }
     return highest;
   }
