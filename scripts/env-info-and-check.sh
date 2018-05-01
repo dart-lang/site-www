@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
 travis_fold start env_info
   echo ENVIRONMENT INFO
@@ -18,7 +18,7 @@ travis_fold start env_info
   travis_fold start env_info.home
     echo Home: $HOME
     ls -la ~
-    echo 
+    echo
   travis_fold end env_info.home
   travis_fold start env_info.pwd
     echo Pwd: `pwd`
@@ -28,7 +28,7 @@ travis_fold start env_info
 travis_fold end env_info
 
 echo ENVIRONMENT CONFIG CHECK:
-if [[ -z "$NGIO_ENV_DEFS" ]]; then
+if [[ -z "$DART_SITE_ENV_DEFS" ]]; then
   echo Environment variables are not being set. Aborting.
   exit 1;
 else

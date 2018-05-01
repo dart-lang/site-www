@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
 if [[ -n "$TRAVIS" ]]; then
   ./scripts/env-info-and-check.sh
