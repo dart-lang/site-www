@@ -1027,10 +1027,12 @@ consider it deprecated and remove it from your code.
 ### DON'T use `const` when not needed.
 
 In contexts where only constant expressions are allowed, the `const` keyword is
-implicit, doesn't need to be written, and shouldn't. Those contexts are:
+implicit, doesn't need to be written, and shouldn't. Those contexts are any
+expression inside:
 
-* An element expression in a const collection literal.
-* An argument expression in a const constructor call or metadata annotation.
+* A const collection literal.
+* A const constructor call
+* A metadata annotation.
 * The initializer for a const variable declaration.
 * A switch case expression&mdash;the part right after `case` before the `:`, not
   the body of the case.
