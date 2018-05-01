@@ -843,7 +843,7 @@ bool isNoble(int atomicNumber) {
 {% endprettify %}
 
 Although Effective Dart recommends
-[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-apis),
+[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred),
 the function still works if you omit the types:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
