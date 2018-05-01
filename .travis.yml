@@ -16,7 +16,7 @@ env:
     - TZ=US/Pacific # normalize build timestamp
   matrix:
     - TASK="./scripts/check-code.sh"
-    - TASK="./scripts/analyze-and-test-examples.sh --get"
+    - TASK="./scripts/analyze-and-test-examples.sh"
     - TASK="bundle exec jekyll build"
 
 matrix:
@@ -37,9 +37,10 @@ script:
   - $TASK
 
 after_script:
+  - if [[ $TASK == *build* ]]; then ./scripts/shared/check-links.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
-  - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
-  - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
+  # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
+  # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
   # # Checks for bad HTML, broken links, and forces build to fail if it fails.
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"

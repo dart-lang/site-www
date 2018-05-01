@@ -4,7 +4,7 @@ set -e -o pipefail
 
 readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
-[[ -z "$NGIO_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
 
 travis_fold start dartfmt
 (set -x; $rootDir/scripts/dartfmt.sh)

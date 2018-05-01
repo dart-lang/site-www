@@ -5,7 +5,7 @@
 # Don't exit on pipefail because we use `find`.
 # set -e -o pipefail
 
-[[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
 cd `dirname $0`/..
 ROOT=$(pwd)

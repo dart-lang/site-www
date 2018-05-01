@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[[ -z "$NGIO_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
 
 if  [[ -z "$(type -t dart)" ]]; then
     travis_fold start install.dart
