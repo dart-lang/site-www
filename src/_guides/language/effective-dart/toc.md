@@ -210,14 +210,14 @@
 * <a href='/guides/language/effective-dart/design#avoid-returning-null-from-members-whose-return-type-is-bool-double-int-or-num'>AVOID returning <code>null</code> from members whose return type is <code>bool</code>, <code>double</code>, <code>int</code>, or <code>num</code>.</a>
 * <a href='/guides/language/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface'>AVOID returning <code>this</code> from methods just to enable a fluent interface.</a>
 
-**Type annotations**
+**Types**
 
 * <a href='/guides/language/effective-dart/design#do-annotate-when-dart-infers-the-wrong-type'>DO annotate when Dart infers the wrong type.</a>
 * <a href='/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred'>DO type annotate public declarations whose type isn't inferred.</a>
 * <a href='/guides/language/effective-dart/design#prefer-type-annotating-private-declarations-whose-type-isnt-inferred'>PREFER type annotating private declarations whose type isn't inferred.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-types-for-initialized-local-variables'>AVOID annotating types for initialized local variables.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-inferred-parameter-types-on-function-expressions'>AVOID annotating inferred parameter types on function expressions.</a>
-* <a href='/guides/language/effective-dart/design#avoid-type-annotating-generic-invocations-that-can-be-inferred'>AVOID type annotating generic invocations that can be inferred.</a>
+* <a href='/guides/language/effective-dart/design#avoid-type-arguments-on-generic-invocations-that-can-be-inferred'>AVOID type arguments on generic invocations that can be inferred.</a>
 * <a href='/guides/language/effective-dart/design#prefer-type-annotating-declarations-for-top-level-variables-and-fields-that-cant-be-inferred'>PREFER type annotating declarations for top-level variables and fields that can't be inferred.</a>
 * <a href='/guides/language/effective-dart/design#prefer-type-annotating-generic-invocations-for-local-variables-that-cant-be-inferred'>PREFER type annotating generic invocations for local variables that can't be inferred.</a>
 * <a href='/guides/language/effective-dart/design#prefer-annotating-with-dynamic-instead-of-letting-inference-fail'>PREFER annotating with <code>dynamic</code> instead of letting inference fail.</a>

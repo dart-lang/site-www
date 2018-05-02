@@ -982,8 +982,8 @@ types". You can type annotate a variable, parameter, field, or return type. In
 the following example, `bool` and `String` are type annotations. They hang off
 the static declarative structure of the code and aren't "executed" at runtime.
 
-{% prettify dart %}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-declaration)"?>
+{% prettify dart %}
 bool isEmpty(String parameter) {
   bool result = parameter.length == 0;
   return result;
@@ -996,8 +996,8 @@ and `int` are type arguments on generic invocations. Even though they are types,
 they are first-class entities that get reified and passed to the invocation at
 runtime.
 
-{% prettify dart %}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-invocation)"?>
+{% prettify dart %}
 var lists = <num>[1, 2];
 lists.addAll(new List<num>.filled(3, 4));
 lists.cast<int>();
@@ -1006,8 +1006,8 @@ lists.cast<int>();
 We stress the "generic invocation" part here, because type arguments can *also*
 appear in type annotations:
 
-{% prettify dart %}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-type-arg)"?>
+{% prettify dart %}
 List<int> ints = [1, 2];
 {% endprettify %}
 
