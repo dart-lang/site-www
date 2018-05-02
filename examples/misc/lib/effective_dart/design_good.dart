@@ -129,13 +129,13 @@ void miscDeclAnalyzedButNotTested() {
   }
   // #enddocregion annotate-declaration
 
-  // #docregion annotate-invocation
   {
+    // #docregion annotate-invocation
     var lists = <num>[1, 2];
     lists.addAll(new List<num>.filled(3, 4));
     lists.cast<int>();
+    // #enddocregion annotate-invocation
   }
-  // #enddocregion annotate-invocation
 
   <PackageId>() {
     // #docregion type_annotate_public_apis
