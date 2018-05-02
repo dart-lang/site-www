@@ -76,6 +76,16 @@ You can build, serve, and have a watcher for changes by running the following co
 
 - `./scripts/serve_local.sh`
 
+## Pre-push checks
+
+If you've made changes to this site's documentation and committed locally, then
+run the following command before pushing your work:
+
+    ./scripts/pre-push.sh
+
+If the script reports errors or warnings, then address the issues and rerun the
+script. Otherwise, you can push your changes.
+
 ## Site checks
 
 ### Checking example code
@@ -91,10 +101,10 @@ test failed, then rerun the command without the `-q` flag.
 
 ### Checking the site's HTML
 
-First, make sure you're using the Firebase server:
+First, build the site and launch the server:
 
 ```
-jekyll build && firebase serve --port 4000
+jekyll build && superstatic --port 4000
 ```
 
 Next, to check for broken links,
@@ -104,17 +114,13 @@ run this from the top of the repo:
 linkcheck :4000
 ```
 
-If the link checker crashes:
-* Make sure you're using the firebase server.
-* Rerun the command with the `-d` option to figure out what triggered the crash.
-
 To also check external URLs (which is much slower), run the linkcheck command
 with the `--external` (or `-e`, for short) option.
 
 With this tool you can check any URL by simply specifying it as a parameter:
 
 ```
-linkcheck https://webdev.dartlang.org/
+linkcheck https://www.dartlang.org
 ```
 
 To check for valid HTML, good images, and broken links (though not as well
@@ -203,16 +209,6 @@ Before making any more changes, stash `.firebaserc`:
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
 
-### Checking against the old sitemap
-
-To make sure we are not breaking any links (or bookmarks) from yesteryear, you
-can take the old sitemap as input for the link checker.
-
-Again, make sure you are running the localhost server (`./serve_local.sh`), then:
-
-```
-linkcheck :4000 -i deploy/urls/old_site_urls.txt
-```
 
 [Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
