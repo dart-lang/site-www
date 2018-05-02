@@ -1038,9 +1038,7 @@ expression inside:
   the body of the case.
 
 (Default values are *not* included in this list because future versions of Dart
-may support non-const default values. So you still need to explicit write
-`const` on the outermost expression there so that it doesn't become a breaking
-change to later support non-const expressions in that context.)
+may support non-const default values.)
 
 Basically, any place where it would be a static error to write `new` instead of
 `const`, you can and should omit the `const`.
