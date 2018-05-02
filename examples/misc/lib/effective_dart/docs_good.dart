@@ -69,10 +69,15 @@ void miscDeclAnalyzedButNotTested() {
     /// similar to [anotherMethod], but ...
     // #enddocregion identifiers
 
-    // #docregion new
-    /// To create a point, call [new Point] or use [new Point.polar] to ...
-    // #enddocregion new
-    void someMethod() {}
+    // #docregion member
+    /// Similar to [Duration.inDays], but handles fractional days.
+    // #enddocregion member
+    void method1() {}
+
+    // #docregion ctor
+    /// To create a point, call [Point.Point] or use [Point.polar] to ...
+    // #enddocregion ctor
+    void method2() {}
   };
 
   // #docregion markdown
