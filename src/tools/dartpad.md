@@ -10,7 +10,7 @@ is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Here's what DartPad looks like:
 
-<img src="images/DartPadWindow.png" alt="DartPad screenshot" />
+<img src="{% asset_path dartpad-hello.png %}" alt="DartPad Hello World" />
 
 
 ## Library support
@@ -177,7 +177,7 @@ to view the version number firstly go to the Dart editor.
 
 <ol>
   <li>
-    Click the <b>DartPad</b> title, 
+    Click the <b>DartPad</b> title,
     which is at the upper left of your DartPad editor.
   </li>
   <li>
@@ -190,7 +190,7 @@ to view the version number firstly go to the Dart editor.
 update-for-dart-2
 {% endcomment %}
 
-For example, if DartPad is based on Dart SDK 1.25.0, 
+For example, if DartPad is based on Dart SDK 1.25.0,
 then DartPad partially supports type safety but doesn't support many other Dart 2 features.
 
 
