@@ -7,7 +7,7 @@ nextpage:
 ---
 <?code-excerpt replace="/\b_(gather|print)/$1/g; /Async\w*\(\)/()/g"?>
 
-<div class="panel" markdown="1">
+<div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
   * Dart is single-threaded.

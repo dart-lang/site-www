@@ -14,7 +14,7 @@ prevpage:
 
 ### Communicate over the internet
 
-<div class="panel" markdown="1">
+<div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
   * Knowledge of Futures and Streams is a prerequisite.

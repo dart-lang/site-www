@@ -1,7 +1,0 @@
-In the 'Design' section of the twitter profile settings use the following colors
-
-background - white
-text - black
-links - 0081C6
-sidebar - f2f2f2
-sidebar border - f2f2f2

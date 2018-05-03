@@ -225,7 +225,7 @@ String name = 'Bob';
 <div class="alert alert-info" markdown="1">
 **Note:**
 This page follows the
-[style guide recommendation](/guides/language/effective-dart/design#type-annotations)
+[style guide recommendation](/guides/language/effective-dart/design#types)
 of using `var`, rather than type annotations, for local variables.
 </div>
 
@@ -843,7 +843,7 @@ bool isNoble(int atomicNumber) {
 {% endprettify %}
 
 Although Effective Dart recommends
-[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-apis),
+[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred),
 the function still works if you omit the types:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
@@ -2283,14 +2283,20 @@ var p = const ImmutablePoint(2, 2);
 
 <aside class="alert alert-info" markdown="1">
 **Dart 2 note:**
-You can omit the `const` before the constructor.
-Example: `p = ImmutablePoint(2, 2)`.
-
+You can sometimes omit the `const` before the constructor,
+but not in this example.
+For more information, read about _constant context_ in the
+[informal specification for implicit creation.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/implicit-creation.md)
 {% comment %}
 update-for-dart-2
 
-TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
-`p = ImmutablePoint(2, 2)` into the code snippet.
+To omit the `const` before a constructor,
+you need to be in a `const` context,
+which requires at least one other use of `const`.
+[EXAMPLE OR LINK GOES HERE]
+
+[TODO: Once https://github.com/dart-lang/pub/issues/1807 is fixed,
+update code snippet and tests.]
 {% endcomment %}
 </aside>
 
@@ -4132,7 +4138,7 @@ To learn more about Dart's core libraries, see
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted
+[ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html

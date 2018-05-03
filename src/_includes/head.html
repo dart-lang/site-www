@@ -9,7 +9,7 @@
   <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
 
   <!-- Favicon / Touch Icons -->
-  <link href="/favicon.ico" rel="shortcut icon">
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
   <link href="{% asset_path 'touch-icon-iphone.png' %}" rel="apple-touch-icon">
   <link href="{% asset_path 'touch-icon-ipad.png' %}" rel="apple-touch-icon" sizes="76x76">
   <link href="{% asset_path 'touch-icon-iphone-retina.png' %}" rel="apple-touch-icon" sizes="120x120">
@@ -25,7 +25,7 @@
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:description" content="{{desc}}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />{%
-    assign og_image_path = page.og_image | default: layout.og_image | default: '/assets/dart-logo-for-shares.png' %}{%
+    assign og_image_path = page.og_image | default: layout.og_image | default: '/assets/shared/dart-logo-for-shares.png' %}{%
     assign og_type = page.og_type | default: layout.og_type
   %}{% comment %}
   Add page URL to page relative paths

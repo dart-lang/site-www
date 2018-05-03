@@ -139,7 +139,7 @@ pre {
     //   display: block;
     //   z-index: 10;
     //   background-color: $white-base;
-    //   background-image: url('{% asset_path "logo-no-wordmark.svg" %}');
+    //   background-image: url('{% asset_path "shared/dart/logo/default.svg" %}');
     //   background-size: 18px;
     //   background-position: 7px center;
     //   background-repeat: no-repeat;
@@ -710,7 +710,7 @@ main .content {
     left: 10px;
     width: 18px;
     height: 18px;
-    background-image: url('{% asset_path "logo-no-wordmark.svg" %}');
+    background-image: url('{% asset_path "shared/dart/logo/default.svg" %}');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

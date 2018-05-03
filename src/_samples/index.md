@@ -97,7 +97,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 
 ## Functions
 
-[We recommend](/guides/language/effective-dart/design#type-annotations)
+[We recommend](/guides/language/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>

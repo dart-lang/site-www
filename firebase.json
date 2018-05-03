@@ -276,8 +276,8 @@
         "type": 301
       },
       {
-        "source": "/assets/dart-logo-for-shares-*.png",
-        "destination": "/assets/dart-logo-for-shares.png?1",
+        "source": "/assets/dart-logo-for-shares*.png",
+        "destination": "/assets/shared/dart-logo-for-shares.png?2",
         "type": 301
       },
       {

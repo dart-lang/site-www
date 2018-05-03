@@ -11,21 +11,21 @@ featured apps. Whether you're creating a mobile app, web app, command-line scrip
 or server, there's a Dart solution for that.
 
 {:.card-grid}
-- {:.card.narrow}[![Flutter logo][]{: width="100px"}][Flutter]{:.no-automatic-external}
+- {:.card.narrow}[![Flutter logo][]{: width="100"}][Flutter]{:.no-automatic-external}
   {:.logo}
 
   ### [Flutter][]
 
   Write a mobile app that runs on both iOS and Android.
 
-- {:.card.narrow}[![Web logo][]{: width="100px"}][Web]{:.no-automatic-external}
+- {:.card.narrow}[![Web logo][]{: width="100"}][Web]{:.no-automatic-external}
   {:.logo}
 
   ### [Web][]
 
   Write an app that runs in any modern web browser.
 
-- {:.card.narrow}[![Dart logo][]{: width="100px"}][Dart VM]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo][]{: width="100"}][Dart VM]{:.no-automatic-external}
   {:.logo}
 
   ### [Dart VM][]
@@ -33,9 +33,9 @@ or server, there's a Dart solution for that.
   Write a command-line app or server.
 
 
-[Dart logo]: {% asset_path 'dart-logo.png' %}
+[Dart logo]: {% asset_path 'shared/dart/logo/default.svg' %}
 [Dart VM]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}
-[Flutter logo]: {% asset_path 'flutter-logo.png' %}
-[Web logo]: {% asset_path 'angulardart-logo.png' %}
+[Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
+[Web logo]: {% asset_path 'shared/angular/logo/square.svg' %}
