@@ -66,7 +66,7 @@ void miscDeclAnalyzedButNotTested() {
 
     // #docregion identifiers
     /// Throws a [StateError] if ...
-    /// similar to [anotherMethod], but ...
+    /// similar to [anotherMethod()], but ...
     // #enddocregion identifiers
 
     // #docregion member
@@ -75,7 +75,7 @@ void miscDeclAnalyzedButNotTested() {
     void method1() {}
 
     // #docregion ctor
-    /// To create a point, call [Point.Point] or use [Point.polar] to ...
+    /// To create a point, call [Point()] or use [Point.polar()] to ...
     // #enddocregion ctor
     void method2() {}
   };

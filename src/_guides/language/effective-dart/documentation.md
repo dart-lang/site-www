@@ -283,11 +283,12 @@ then dartdoc looks up the name and links to the entity's docs:
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
 {% prettify none %}
 /// Throws a [StateError] if ...
-/// similar to [anotherMethod], but ...
+/// similar to [anotherMethod()], but ...
 {% endprettify %}
 
-You can link to a specific member of a class using the class name and member
-name, separated by a dot:
+You can put parentheses after the name too, which makes it clearer when you're
+referring to a method or constructor. You can link to a specific member of a
+class using the class name and member name, separated by a dot:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
@@ -295,13 +296,13 @@ name, separated by a dot:
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
-Constructors are similar except the "member" is the name of the constructor. For
-the unnamed constructor, the member name is the class's name:
+Named constructors work like members. For the unnamed constructor, put
+parentheses after the class name:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
 {% prettify none %}
-/// To create a point, call [Point.Point] or use [Point.polar] to ...
+/// To create a point, call [Point()] or use [Point.polar()] to ...
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
