@@ -122,6 +122,21 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cascades
   };
 
+  // #docregion annotate-declaration
+  bool isEmpty(String parameter) {
+    bool result = parameter.length == 0;
+    return result;
+  }
+  // #enddocregion annotate-declaration
+
+  {
+    // #docregion annotate-invocation
+    var lists = <num>[1, 2];
+    lists.addAll(new List<num>.filled(3, 4));
+    lists.cast<int>();
+    // #enddocregion annotate-invocation
+  }
+
   <PackageId>() {
     // #docregion type_annotate_public_apis
     Future<bool> install(PackageId id, String destination) => ellipsis();
@@ -132,11 +147,19 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion inferred
   };
 
-  () {
+  {
     // #docregion func-expr-no-param-type
     var names = people.map((person) => person.name);
     // #enddocregion func-expr-no-param-type
-  };
+  }
+
+  {
+    // #docregion generic-invocation
+    var strings = ["str", "ing"];
+    var threes = new List.filled(3, 2);
+    var pointThrees = threes.map((i) => i * 0.1);
+    // #enddocregion generic-invocation
+  }
 
   {
     // #docregion omit-types-on-locals
@@ -164,11 +187,21 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion uninitialized-local
   };
 
-  () {
+  // #docregion inferred-wrong
+  num highScore(List<num> scores) {
+    num highest = 0;
+    for (var score in scores) {
+      if (score > highest) highest = score;
+    }
+    return highest;
+  }
+  // #enddocregion inferred-wrong
+
+  {
     // #docregion prefer-dynamic
     dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
     // #enddocregion prefer-dynamic
-  };
+  }
 
   // #docregion avoid-Function
   bool isValid(String value, bool Function(String string) test) => ellipsis();
@@ -267,6 +300,19 @@ class FilteredObservable {
 // #docregion new-typedef
 typedef Comparison = int Function<T>(T, T);
 // #enddocregion new-typedef
+
+// #docregion explicit-field
+class Histogram {
+  final Map<String, int> counts = {};
+}
+// #enddocregion explicit-field
+
+// #docregion explicit-local
+void countOccurrences(List<String> words) {
+  var wordCounts = <String, int>{};
+  // ...
+}
+// #enddocregion explicit-local
 
 //----------------------------------------------------------------------------
 // Supporting declarations
