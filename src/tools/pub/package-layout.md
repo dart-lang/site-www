@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Pub Package Layout Conventions"
-description: "Learn more about the directory structure used by Dart's package management tool, pub."
+title: Pub Package Layout Conventions
+description: Learn more about the directory structure used by Dart's package management tool, pub.
 permalink: /tools/pub/package-layout
 ---
 
@@ -11,7 +10,7 @@ They describe how you organize the files and directories within your
 package, and how to name things.
 
 <aside class="alert alert-info"><div class="alert-with-image">
-  <img src="{% asset_path flutter-logo.png %}" alt="[Flutter]">
+  <img src="{% asset_path shared/flutter/logo/default.svg %}" alt="[Flutter]">
   <div markdown="1">
   **Note:**
   Flutter apps can use custom directories for their assets.
