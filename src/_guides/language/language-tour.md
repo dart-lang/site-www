@@ -225,7 +225,7 @@ String name = 'Bob';
 <div class="alert alert-info" markdown="1">
 **Note:**
 This page follows the
-[style guide recommendation](/guides/language/effective-dart/design#type-annotations)
+[style guide recommendation](/guides/language/effective-dart/design#types)
 of using `var`, rather than type annotations, for local variables.
 </div>
 

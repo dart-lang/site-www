@@ -137,6 +137,12 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion annotate-invocation
   }
 
+  {
+    // #docregion annotate-type-arg
+    List<int> ints = [1, 2];
+    // #enddocregion annotate-type-arg
+  }
+
   <PackageId>() {
     // #docregion type_annotate_public_apis
     Future<bool> install(PackageId id, String destination) => ellipsis();
