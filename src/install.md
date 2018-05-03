@@ -40,4 +40,4 @@ Install the SDK for your platform.
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
 [Web install]: /tools/sdk#install {% comment %}TODO: link to webdev install page{% endcomment %}
-[Web logo]: {% asset_path 'shared/angular/logo/square.svg' %}
+[Web logo]: {% asset_path 'shared/angular/icon/default.svg' %}
