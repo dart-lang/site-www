@@ -211,6 +211,16 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+
+  There is one exception to this rule. Input properties in [Angular][]
+  components sometimes use imperative verbs for boolean setters because these
+  setters are invoked in templates, not from other Dart code.
+
+  [angular]: http://angular.io
+
+</aside>
+
 
 ### PREFER the "positive" name for a boolean property or variable.
 
@@ -426,14 +436,11 @@ The conventions are:
 *   `E` for the **element** type in a collection:
 
     {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)"?>
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
     {% prettify dart %}
     class IterableBase<E> {}
-
     class List<E> {}
-
     class HashSet<E> {}
-
     class RedBlackTree<E> {}
     {% endprettify %}
 
@@ -441,12 +448,10 @@ The conventions are:
     collection:
 
     {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)"?>
+    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
     {% prettify dart %}
     class Map<K, V> {}
-
     class Multimap<K, V> {}
-
     class MapEntry<K, V> {}
     {% endprettify %}
 
