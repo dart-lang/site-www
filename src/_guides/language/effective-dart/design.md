@@ -212,13 +212,11 @@ showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
+There is one exception to this rule. Input properties in [Angular][]
+components sometimes use imperative verbs for boolean setters because these
+setters are invoked in templates, not from other Dart code.
 
-  There is one exception to this rule. Input properties in [Angular][]
-  components sometimes use imperative verbs for boolean setters because these
-  setters are invoked in templates, not from other Dart code.
-
-  [angular]: http://angular.io
-
+[angular]: {{site.webdev}}/angular
 </aside>
 
 
@@ -927,15 +925,13 @@ to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
 <aside class="alert alert-info" markdown="1">
+There is one exception to this rule. An [Angular][] component class may expose
+setters that are invoked from a template to initialize the component. Often,
+these setters are not intended to be invoked from Dart code and don't need a
+corresponding getter. (If they are used from Dart code, they *should* have a
+getter.)
 
-  There is one exception to this rule. An [Angular][] component class may expose
-  setters that are invoked from a template to initialize the component. Often,
-  these setters are not intended to be invoked from Dart code and don't need a
-  corresponding getter. (If they are used from Dart code, they *should* have a
-  getter.)
-
-  [angular]: http://angular.io
-
+[angular]: {{site.webdev}}/angular
 </aside>
 
 ### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
