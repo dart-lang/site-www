@@ -457,7 +457,7 @@ language, and is consistent with using backticks for inline code.
 /// You can use [CodeBlockExample] like this:
 ///
 /// ```
-/// var example = new CodeBlockExample();
+/// var example = CodeBlockExample();
 /// print(example.isItGreat); // "Yes."
 /// ```
 {% endprettify %}
@@ -466,7 +466,7 @@ language, and is consistent with using backticks for inline code.
 {% prettify dart %}
 /// You can use [CodeBlockExample] like this:
 ///
-///     var example = new CodeBlockExample();
+///     var example = CodeBlockExample();
 ///     print(example.isItGreat); // "Yes."
 {% endprettify %}
 

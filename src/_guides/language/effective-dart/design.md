@@ -67,7 +67,7 @@ HttpRequest
 
 {:.bad-style}
 {% prettify dart %}
-numPages    // "num" is an abbreviation of number(of)
+numPages // "num" is an abbreviation of "number (of)".
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
@@ -271,8 +271,8 @@ is often just as clear without the verb and it reads better at the callsite.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
 {% prettify dart %}
 Isolate.spawn(entryPoint, message, paused: false);
-var copy = new List.from(elements, growable: true);
-var regExp = new RegExp(pattern, caseSensitive: false);
+var copy = List.from(elements, growable: true);
+var regExp = RegExp(pattern, caseSensitive: false);
 {% endprettify %}
 
 
@@ -752,7 +752,7 @@ class Point {
   num x, y;
   Point(this.x, this.y);
   static Point polar(num theta, num radius) =>
-      new Point(radius * cos(theta), radius * sin(theta));
+      Point(radius * cos(theta), radius * sin(theta));
 }
 {% endprettify %}
 
@@ -955,7 +955,7 @@ Method cascades are a better solution for chaining method calls.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (cascades)"?>
 {% prettify dart %}
-var buffer = new StringBuffer()
+var buffer = StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
@@ -964,7 +964,7 @@ var buffer = new StringBuffer()
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (cascades)"?>
 {% prettify dart %}
-var buffer = new StringBuffer()
+var buffer = StringBuffer()
     .write('one')
     .write('two')
     .write('three');
@@ -1000,7 +1000,7 @@ runtime.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-invocation)"?>
 {% prettify dart %}
 var lists = <num>[1, 2];
-lists.addAll(new List<num>.filled(3, 4));
+lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
 {% endprettify %}
 
@@ -1244,7 +1244,7 @@ surrounding code, and is telling you something useful.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (generic-invocation)"?>
 {% prettify dart %}
 var strings = ["str", "ing"];
-var threes = new List.filled(3, 2);
+var threes = List.filled(3, 2);
 var pointThrees = threes.map((i) => i * 0.1);
 {% endprettify %}
 
@@ -1252,7 +1252,7 @@ var pointThrees = threes.map((i) => i * 0.1);
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (generic-invocation)"?>
 {% prettify dart %}
 var strings = <String>["str", "ing"];
-var threes = new List<int>.filled(3, 2);
+var threes = List<int>.filled(3, 2);
 var pointThrees = threes.map<double>((i) => i * 0.1);
 {% endprettify %}
 
@@ -1560,7 +1560,7 @@ void log(Object object) {
 bool convertToBool(dynamic arg) {
   if (arg is bool) return arg;
   if (arg is String) return arg == 'true';
-  throw new ArgumentError('Cannot convert $arg to a bool.');
+  throw ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
 
@@ -1631,10 +1631,10 @@ clear what the boolean represents:
 
 {:.bad-style}
 {% prettify dart %}
-new Task(true);
-new Task(false);
-new ListBox(false, true, true);
-new Button(false);
+Task(true);
+Task(false);
+ListBox(false, true, true);
+Button(false);
 {% endprettify %}
 
 Instead, consider using named arguments, named constructors, or named constants
@@ -1643,10 +1643,10 @@ to clarify what the call is doing.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-positional-bool-param)"?>
 {% prettify dart %}
-new Task.oneShot();
-new Task.repeating();
-new ListBox(scroll: true, showScrollbars: true);
-new Button(ButtonState.enabled);
+Task.oneShot();
+Task.repeating();
+ListBox(scroll: true, showScrollbars: true);
+Button(ButtonState.enabled);
 {% endprettify %}
 
 Note that this doesn't apply to setters, where the name makes it clear what the

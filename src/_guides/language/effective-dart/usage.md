@@ -192,9 +192,9 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible.
 
-There are two ways to make an empty growable list: `[]` and `new List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`, `new
-Map()`, and `new LinkedHashMap()`.
+There are two ways to make an empty growable list: `[]` and `List()`. Likewise,
+there are three ways to make an empty linked hash map: `{}`, `Map()`, and
+`LinkedHashMap()`.
 
 If you want to create a non-growable list, or some other custom collection type
 then, by all means, use a constructor. Otherwise, use the nice literal syntax.
@@ -211,8 +211,8 @@ var addresses = {};
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart %}
-var points = new List();
-var addresses = new Map();
+var points = List();
+var addresses = Map();
 {% endprettify %}
 
 You can even provide a type argument for them if that matters.
@@ -227,14 +227,14 @@ var addresses = <String, Address>{};
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
 {% prettify dart %}
-var points = new List<Point>();
-var addresses = new Map<String, Address>();
+var points = List<Point>();
+var addresses = Map<String, Address>();
 {% endprettify %}
 
 Note that this doesn't apply to the *named* constructors for those classes.
 `List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `new List()` to create a non-growable one, then it
-makes sense to use that.
+if you're passing a size to `List()` to create a non-growable one, then it makes
+sense to use that.
 
 ### DON'T use `.length` to see if a collection is empty.
 
@@ -321,7 +321,7 @@ contains the same elements:
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
 {% prettify dart %}
 var copy1 = iterable.toList();
-var copy2 = new List.from(iterable);
+var copy2 = List.from(iterable);
 {% endprettify %}
 
 The obvious difference is that the first one is shorter. The *important*
@@ -337,7 +337,7 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 
 // Prints "List", which means List<dynamic>:
-print(new List.from(iterable).runtimeType);
+print(List.from(iterable).runtimeType);
 {% endprettify %}
 
 If you *want* to change the type, then calling `List.from()` is useful:
@@ -346,7 +346,7 @@ If you *want* to change the type, then calling `List.from()` is useful:
 {% prettify dart %}
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
-var ints = new List<int>.from(numbers);
+var ints = List<int>.from(numbers);
 {% endprettify %}
 
 But if your goal is just to copy the iterable and preserve its original type, or
@@ -411,7 +411,7 @@ If you're already calling `toList()`, replace that with a call to
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
-var ints = new List<int>.from(stuff);
+var ints = List<int>.from(stuff);
 {% endprettify %}
 
 {:.bad-style}
@@ -800,7 +800,7 @@ your code a favor and use a block body and some statements.
 Treasure openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
 
-  var treasure = new Treasure(where);
+  var treasure = Treasure(where);
   treasure.addAll(chest.contents);
   _opened[chest] = treasure;
   return treasure;
@@ -811,7 +811,7 @@ Treasure openChest(Chest chest, Point where) {
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
 {% prettify dart %}
 Treasure openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+    _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
       ..addAll(chest.contents);
 {% endprettify %}
 
@@ -822,7 +822,7 @@ when a setter is small and has a corresponding getter that uses `=>`.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
 {% prettify dart %}
 num get x => center.x;
-set x(num value) => center = new Point(value, center.y);
+set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 It's rarely a good idea to use `=>` for non-setter void members. The `=>` implies
@@ -1196,7 +1196,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
-    if (team == null) return new Future.value(0);
+    if (team == null) return Future.value(0);
 
     return team.roster.then((players) {
       return players.map((player) => player.isActive).length;
@@ -1235,10 +1235,10 @@ Cases where `async` *is* useful include:
 * You are using `await`. (This is the obvious one.)
 
 * You are returning an error asynchronously. `async` and then `throw` is shorter
-  than `return new Future.error(...)`.
+  than `return Future.error(...)`.
 
 * You are returning a value and you want it implicitly wrapped in a future.
-  `async` is shorter than `new Future.value(...)`.
+  `async` is shorter than `Future.value(...)`.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
@@ -1270,9 +1270,9 @@ eventually find the Completer class and use that.
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
-  var completer = new Completer<bool>();
+  var completer = Completer<bool>();
 
-  new File(path).readAsString().then((contents) {
+  File(path).readAsString().then((contents) {
     completer.complete(contents.contains('bear'));
   });
 
@@ -1291,7 +1291,7 @@ they're clearer and make error handling easier.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
-  return new File(path).readAsString().then((contents) {
+  return File(path).readAsString().then((contents) {
     return contents.contains('bear');
   });
 }
@@ -1301,7 +1301,7 @@ Future<bool> fileContainsBear(String path) {
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) async {
-  var contents = await new File(path).readAsString();
+  var contents = await File(path).readAsString();
   return contents.contains('bear');
 }
 {% endprettify %}
