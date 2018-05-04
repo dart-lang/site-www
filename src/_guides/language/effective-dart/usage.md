@@ -441,10 +441,40 @@ var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 {% endprettify %}
 
 
+### AVOID using `cast()` or `retype()`.
+
+This is the softer generalization of the previous rule. Sometimes there is no
+nearby operation you can use to fix the type of some object. Even then, when
+possible avoid using `cast()` or `retype()` to "change" a collection's type.
+
+Prefer any of these options instead:
+
+*   Change the code where the collection is first created so that it has the
+    right type.
+
+*   If you immediately iterate over the collection, cast each element inside the
+    iteration.
+
+*   If you'll eventually access most of the elements in the collection, and
+    you don't need the object to be backed by the original live object, convert
+    it using `List.from()`.
+
+    The `cast()` and `retype()` methods return lazy collections that check the
+    element type on *every operation*. If you perform only a few operations on
+    only a few elements, that laziness can be good. But in many cases, the
+    overhead of lazy validation and of wrapping outweighs the benefits.
+
+These alternatives don't always work, of course, and sometimes `cast()` or
+`retype()` is the right answer. But consider those methods to be a little risky
+and undesirable&mdash;they can be slow and may produce errors at runtime if you
+aren't careful.
+
+
 ## Functions
 
 In Dart, even functions are objects. Here are some best practices
 involving functions.
+
 
 ### DO use a function declaration to bind a function to a name.
 

@@ -107,6 +107,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-cast-or-retype-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> or <code>retype()</code> when a nearby operation will do.</a>
+* <a href='/guides/language/effective-dart/usage#avoid-using-cast-or-retype'>AVOID using <code>cast()</code> or <code>retype()</code>.</a>
 
 **Functions**
 
