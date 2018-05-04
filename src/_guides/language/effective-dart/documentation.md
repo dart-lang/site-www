@@ -277,21 +277,33 @@ makes an API easier to learn.
 ### DO use square brackets in doc comments to refer to in-scope identifiers.
 
 If you surround things like variable, method, or type names in square brackets,
-then dartdoc will look up the name and link to its docs.
+then dartdoc looks up the name and links to the relevant API docs. Parentheses
+are optional, but can make it clearer when you're referring to a method or
+constructor.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
 {% prettify none %}
 /// Throws a [StateError] if ...
-/// similar to [anotherMethod], but ...
+/// similar to [anotherMethod()], but ...
 {% endprettify %}
 
-You can also link to constructors using `new` followed by the constructor:
+To link to a member of a specific class, use the class name and member name,
+separated by a dot:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (new)"?>
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
 {% prettify none %}
-/// To create a point, call [new Point] or use [new Point.polar] to ...
+/// Similar to [Duration.inDays], but handles fractional days.
+{% endprettify %}
+
+The dot syntax can also be used to refer to named constructors. For the unnamed
+constructor, put parentheses after the class name:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
+{% prettify none %}
+/// To create a point, call [Point()] or use [Point.polar()] to ...
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
