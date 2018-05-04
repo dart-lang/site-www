@@ -278,7 +278,7 @@ makes an API easier to learn.
 
 If you surround things like variable, method, or type names in square brackets,
 then dartdoc looks up the name and links to the relevant API docs. Parentheses
-are optional, but can it clearer when you're referring to a method or
+are optional, but can make it clearer when you're referring to a method or
 constructor.
 
 {:.good-style}
