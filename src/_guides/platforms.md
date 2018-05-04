@@ -38,4 +38,4 @@ or server, there's a Dart solution for that.
 [Flutter]: {{site.flutter}}
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
-[Web logo]: {% asset_path 'shared/angular/logo/square.svg' %}
+[Web logo]: {% asset_path 'shared/angular/icon/default.svg' %}
