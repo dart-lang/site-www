@@ -296,8 +296,8 @@ class using the class name and member name, separated by a dot:
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
-Named constructors work like members. For the unnamed constructor, put
-parentheses after the class name:
+The dot syntax can also be used to refer to named constructors. For the unnamed
+constructor, put parentheses after the class name:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
