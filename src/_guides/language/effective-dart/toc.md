@@ -137,6 +137,8 @@
 * <a href='/guides/language/effective-dart/usage#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
 * <a href='/guides/language/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
 * <a href='/guides/language/effective-dart/usage#do-place-the-super-call-last-in-a-constructor-initialization-list'>DO place the <code>super()</code> call last in a constructor initialization list.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-const-when-not-needed'>DON'T use <code>const</code> when not needed.</a>
 
 **Error handling**
 

@@ -1013,6 +1013,37 @@ View(Style style, List children)
 an error is reported.
 </div>
 
+
+### DON'T use `new`.
+
+Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
+clear because factory constructors mean a `new` invocation may still not
+actually return a new object.
+
+The language still permits `new` in order to make migration less painful, but
+consider it deprecated and remove it from your code.
+
+
+### DON'T use `const` when not needed.
+
+In contexts where only constant expressions are allowed, the `const` keyword is
+implicit, doesn't need to be written, and shouldn't. Those contexts are any
+expression inside:
+
+* A const collection literal.
+* A const constructor call
+* A metadata annotation.
+* The initializer for a const variable declaration.
+* A switch case expression&mdash;the part right after `case` before the `:`, not
+  the body of the case.
+
+(Default values are *not* included in this list because future versions of Dart
+may support non-const default values.)
+
+Basically, any place where it would be a static error to write `new` instead of
+`const`, you can and should omit the `const`.
+
+
 ## Error handling
 
 Dart uses exceptions when an error occurs in your program. The following
