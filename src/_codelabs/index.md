@@ -20,6 +20,6 @@ Dart makes writing modern apps easy and fun.
 
 If you're ready to download an SDK, try one of the platform-specific codelabs:
 
-* [Flutter codelabs](https://flutter.io/docs)
+* [Flutter codelabs](https://flutter.io/codelabs)
 * [AngularDart codelabs](https://webdev.dartlang.org/codelabs)
 
