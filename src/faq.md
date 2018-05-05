@@ -17,13 +17,12 @@ since Dart was open sourced. For other questions and answers, see:
 
 ### Q. Is Dart an open standard?
 
-Yes. [Ecma TC52][tc52] owns,
-evolves, and publishes the [standard specification][spec] of the Dart language.
-In addition to TC52, we are also spearheading the improvement of the Dart language 
-on Google’s Dart team by doing experiments and initial implementations. E.g., 
-Dart 2 is the result of work done together with our key users to improve the 
-language and we expect to have an updated formal specification available for 
-Ecma’s TC-52 in the coming quarters. 
+Yes. [Ecma TC52][tc52] owns, evolves, and publishes the [standard
+specification][spec] of the Dart language.  In addition, Google's Dart team
+improves the Dart language by doing experiments and initial implementations. For
+example, Dart 2 is the result of work by Google's Dart team, together with key
+users, to improve the language. We expect to have an updated formal
+specification available for Ecma TC52 in the coming quarters. 
 
 ### Q. How are you taking input on changes to the Dart repository?
 
@@ -83,7 +82,7 @@ literally on my first day of writing Dart code, I was productive in it."
 For servers and command-line scripts, we have reflection support from
 the <a href="/articles/libraries/reflection-with-mirrors">mirrors API</a>.
 There is no support for mirrors when using Dart to write web or 
-[Flutter][Flutter no mirrors] apps.
+Flutter apps ([more info][Flutter no mirrors]).
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
@@ -110,11 +109,11 @@ appreciation through careful design choices and fair communication about them.
 
 ### Q. Is Dart a statically typed language?
 
-Yes, Dart 2 is statically typed.  For more information, see [Dart's Type System].
+Yes, Dart 2 is statically typed. For more information, see [Dart's Type System].
 
-With it’s combination of static and runtime checks, Dart has a sound type system, 
-which guarantees that an expression of one type cannot produce a value of another 
-type. I.e., no surprises!
+With its combination of static and runtime checks, Dart has a sound type system,
+which guarantees that an expression of one type cannot produce a value of
+another type. No surprises!
 
 Even with type-safe Dart, you can annotate any variable with
 `dynamic` if you need the flexibility of a dynamic language.
@@ -126,13 +125,13 @@ for that variable.
 
 Covariant generics fit a common intuition that programmers have, and very often
 this intuition is correct, such as in the common "read-only" use of a generic.
-Although this intuition isn't always correct, Dart is erring on the side of convenience
-by having covariant generics.
+Although this intuition isn't always correct, Dart is erring on the side of
+convenience by having covariant generics.
 
 The only other reasonable default variance would be invariance. While having
-only invariant generics would definitely prevent more errors, it would also prevent
-a lot of valid programs or require conversion every time you have a list of “apples”,
-and someone just wants “fruits”.
+only invariant generics would definitely prevent more errors, it would also
+prevent a lot of valid programs or require conversion every time you have a list
+of “apples”, and someone just wants “fruits”.
 
 We are familiar with a variety of ways that languages try to mark or infer
 variance. We feel that variance inference systems add too much complexity for
@@ -160,7 +159,7 @@ to pub.dartlang.org.
 
 Nope. You can try out Dart code with [DartPad], and then use your favorite 
 editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA, 
-WebStorm and Visual Studio Code have Dart plugins. Open source Dart plugins 
+WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins 
 also exist for a number of editors. For more information, see [Dart Tools].
 
 ### Q. Can I build an Android app with Dart?
@@ -172,7 +171,6 @@ using [Flutter.][Flutter]
 
 Google AdWords, AdSense, and AdMob all use Dart.
 More than 75% of Google's revenue flows through these apps.
-Other examples
 See [Who Uses Dart] for a more complete list.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
