@@ -1,6 +1,4 @@
 ---
-layout: default
-permalink: /faq
 title: Frequently Asked Questions (FAQ)
 description: You have questions about Dart, we have answers.
 ---
@@ -10,8 +8,8 @@ _Updated May 2018_
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced. For other questions and answers, see:
 
-* [webdev FAQ]({{site.webdev}}/faq)
 * [Flutter FAQ]({{site.flutter}}/faq/)
+* [Dart for the web FAQ]({{site.webdev}}/faq)
 
 ## General
 
@@ -22,7 +20,7 @@ specification][spec] of the Dart language.  In addition, Google's Dart team
 improves the Dart language by doing experiments and initial implementations. For
 example, Dart 2 is the result of work by Google's Dart team, together with key
 users, to improve the language. We expect to have an updated formal
-specification available for Ecma TC52 in the coming quarters. 
+specification available for Ecma TC52 in the coming quarters.
 
 ### Q. How are you taking input on changes to the Dart repository?
 
@@ -60,13 +58,13 @@ performance to vary in ways that are not transparent to the programmer.
 For languages that are less mainstream: we expect that modeling Dart on these
 would, on the whole, hurt adoption.  Our team includes fans of these
 languages, and if we thought Dart could take up our favorite cool language
-features and push them to widespread adoption we might be tempted, and with 
-Dart 2 we are increasingly in a situation where we’d like to take on work to 
-add additional awesome features while respecting the ‘spirit’ of Dart and 
+features and push them to widespread adoption we might be tempted, and with
+Dart 2 we are increasingly in a situation where we’d like to take on work to
+add additional awesome features while respecting the ‘spirit’ of Dart and
 keeping breaking changes at an absolute minimum.
 
-For languages that are "more dynamic" than Dart: Dart deliberately trades off 
-some of this arbitrary runtime modification for the goal of better performance 
+For languages that are "more dynamic" than Dart: Dart deliberately trades off
+some of this arbitrary runtime modification for the goal of better performance
 and more productive tools.
 
 ### Q. Why isn't Dart syntax more exciting?
@@ -81,20 +79,20 @@ literally on my first day of writing Dart code, I was productive in it."
 
 For servers and command-line scripts, we have reflection support from
 the <a href="/articles/libraries/reflection-with-mirrors">mirrors API</a>.
-There is no support for mirrors when using Dart to write web or 
+There is no support for mirrors when using Dart to write web or
 Flutter apps ([more info][Flutter no mirrors]).
 
 ### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
 
-Future releases might be able to include (some of) those features, although 
-we can't include everything. Some features don't fit the basic nature of the 
-language, and some don't play well with other features. Simplicity is the single 
+Future releases might be able to include (some of) those features, although
+we can't include everything. Some features don't fit the basic nature of the
+language, and some don't play well with other features. Simplicity is the single
 most important gift we can give to future programmers.
 
 Please look at the [list of language issues][issues] to see if your request is
-already there. If it is, let us know that you care and give it a thumbs up. 
-Otherwise, go ahead and add a new issue.  Make a thoughtful argument for your feature.  
-Sample code with and without your feature is good evidence; a sizeable codebase 
+already there. If it is, let us know that you care and give it a thumbs up.
+Otherwise, go ahead and add a new issue.  Make a thoughtful argument for your feature.
+Sample code with and without your feature is good evidence; a sizeable codebase
 that shows the need is even better evidence.
 
 Don't be surprised if the Dart language team says "no" by default.
@@ -157,9 +155,9 @@ to pub.dartlang.org.
 
 ### Q. Do I need to use a particular editor or IDE to write Dart code?
 
-Nope. You can try out Dart code with [DartPad], and then use your favorite 
-editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA, 
-WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins 
+Nope. You can try out Dart code with [DartPad], and then use your favorite
+editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA,
+WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins
 also exist for a number of editors. For more information, see [Dart Tools].
 
 ### Q. Can I build an Android app with Dart?
