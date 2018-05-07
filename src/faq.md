@@ -5,7 +5,7 @@ title: Frequently Asked Questions (FAQ)
 description: You have questions about Dart, we have answers.
 ---
 
-_Updated August 2017_
+_Updated May 2018_
 
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced. For other questions and answers, see:
