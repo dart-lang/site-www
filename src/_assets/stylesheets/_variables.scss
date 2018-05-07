@@ -13,18 +13,22 @@ $teal:                      #1FBAAC;
 $blue:                      #1b87c9;
 $blue-light:                #e2f4fd;
 
-$brand-primary:             #0175C2;
+$brand-primary-dark:        #02569B; // 700
+$brand-primary:             #0175C2; // 600
+$brand-secondary:           #13B9FD; // 400
+$brand-highlight:           #FFC108; // 700
+
+$google-gray:               #202124; // 900
+$google-gray-light:         #60646B; // 600
+$google-gray-lighter:       #D5D7DA; // 100
 
 $default-link:              #0175C2;
 $default-link-visited:      #0175C2;
 
 // Typography
 $font-family-base:          Roboto, sans-serif;
-// $font-family-condensed:     'Trade Gothic W01', sans-serif;
-// $font-family-extended:      'Trade Gothic W01', sans-serif;
-// $font-family-serif:         'Trade Gothic W01', sans-serif;
-
 $font-family-monospace:     Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+$google-font-family:        "Product Sans", $font-family-base;
 
 // Baseline
 $font-size-base:          16px;
