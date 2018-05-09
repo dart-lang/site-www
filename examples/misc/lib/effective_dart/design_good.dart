@@ -210,7 +210,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   // #docregion avoid-Function
-  bool isValid(String value, bool Function(String string) test) => ellipsis();
+  bool isValid(String value, bool Function(String) test) => ellipsis();
   // #enddocregion avoid-Function
 
   // #docregion function-arity
