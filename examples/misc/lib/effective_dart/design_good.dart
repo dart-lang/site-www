@@ -274,7 +274,7 @@ void miscDeclAnalyzedButNotTested() {
 
 class MyIterable<T> {
   // #docregion function-type-param
-  Iterable<T> where(bool Function(T element) predicate) => ellipsis();
+  Iterable<T> where(bool Function(T) predicate) => ellipsis();
   // #enddocregion function-type-param
 }
 
