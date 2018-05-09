@@ -220,8 +220,10 @@ void miscDeclAnalyzedButNotTested() {
     } catch (err, stack) {
       if (errorHandler is Function(Object)) {
         errorHandler(err);
-      } else if (errorHandler is Function(Object, Object)) {
+      } else if (errorHandler is Function(Object, StackTrace)) {
         errorHandler(err, stack);
+      } else {
+        throw new ArgumentError("errorHandler has wrong signature.");
       }
     }
   }
