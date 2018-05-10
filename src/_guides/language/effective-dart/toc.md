@@ -155,7 +155,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-use-async-when-it-has-no-useful-effect'>DON'T use <code>async</code> when it has no useful effect.</a>
 * <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-stream'>CONSIDER using higher-order methods to transform a stream.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-completer-directly'>AVOID using Completer directly.</a>
-* <a href='/guides/language/effective-dart/usage#do-test-for-future-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
+* <a href='/guides/language/effective-dart/usage#do-test-for-futuret-when-disambiguating-a-futureort-whose-type-argument-could-be-object'>DO test for <code>Future&lt;T&gt;</code> when disambiguating a <code>FutureOr&lt;T&gt;</code> whose type argument could be <code>Object</code>.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>

@@ -1307,7 +1307,7 @@ Future<bool> fileContainsBear(String path) async {
 {% endprettify %}
 
 
-### DO test for `Future` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
+### DO test for `Future<T>` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
 
 Before you can do anything useful with a `FutureOr<T>`, you typically need to do
 an `is` check to see if you have a `Future<T>` or a bare `T`. If the type
