@@ -1370,7 +1370,7 @@ function.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
-bool isValid(String value, bool [!Function(String string)!] test) => ...
+bool isValid(String value, bool [!Function(String)!] test) => ...
 {% endprettify %}
 
 {:.bad-style}
@@ -1527,7 +1527,7 @@ parameters as well:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type-param)"?>
 {% prettify dart %}
-Iterable<T> where(bool Function(T element) predicate) => ...
+Iterable<T> where(bool Function(T) predicate) => ...
 {% endprettify %}
 
 The new syntax is a little more verbose, but is consistent with other locations
