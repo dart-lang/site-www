@@ -1307,19 +1307,6 @@ Future<bool> fileContainsBear(String path) async {
 {% endprettify %}
 
 
-### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
-
-Often you have an operation that is asynchronous but doesn't actually return a
-useful value when it's done. If it were a synchronous function, you'd use `void`
-as the return type to indicate that.
-
-The asynchronous equivalent of that is `Future<void>`. You may see code that
-uses `Future` or `Future<Null>` instead because older versions of Dart didn't
-allow `void` as a type argument. Now that it does, you should use it. Doing so
-more directly matches how you'd type a similar synchronous function, and gives
-you better error-checking for callers and in the body of the function.
-
-
 ### DO test for `Future` when disambiguating a `FutureOr<T>` whose type argument could be `Object`.
 
 Before you can do anything useful with a `FutureOr<T>`, you typically need to do
