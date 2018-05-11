@@ -79,6 +79,36 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cast-map
   }
 
+  // #docregion cast-at-create
+  List<int> makeList([int a, int b]) {
+    var list = []; // List<dynamic>.
+    if (a != null) list.add(a);
+    if (b != null) list.add(b);
+    return list.cast<int>();
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  int sum(List<Object> objects) {
+    var result = 0;
+    // We happen to know the list only contains ints.
+    for (var n in objects.cast<int>()) {
+      result += n;
+    }
+
+    return result;
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = new List<int>.from(objects);
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
+
   {
     // #docregion where-type-2
     var objects = [1, "a", 2, "b", 3];

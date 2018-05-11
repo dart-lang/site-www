@@ -307,6 +307,10 @@ class FilteredObservable {
 typedef Comparison = int Function<T>(T, T);
 // #enddocregion new-typedef
 
+// #docregion new-typedef-param-name
+typedef Comparison = int Function<T>(T a, T b);
+// #enddocregion new-typedef-param-name
+
 // #docregion explicit-field
 class Histogram {
   final Map<String, int> counts = {};

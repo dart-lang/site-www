@@ -78,6 +78,36 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cast-map
   }
 
+  // #docregion cast-at-create
+  List<int> makeList([int a, int b]) {
+    var list = <int>[];
+    if (a != null) list.add(a);
+    if (b != null) list.add(b);
+    return list;
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  int sum(List<Object> objects) {
+    var result = 0;
+    // We happen to know the list only contains ints.
+    for (int n in objects) {
+      result += n;
+    }
+
+    return result;
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = objects.cast<int>();
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
+
   (Iterable<Animal> animals) {
     // #docregion use-higher-order-func
     var aquaticNames = animals
@@ -395,6 +425,20 @@ class Point2 {
   Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
+
+// #docregion no-new
+Widget build(BuildContext context) {
+  return new Row(
+    children: [
+      new RaisedButton(
+        onPressed: increment,
+        child: new Text('Increment'),
+      ),
+      new Text('Count: $counter'),
+    ],
+  );
+}
+// #enddocregion no-new
 
 //----------------------------------------------------------------------------
 

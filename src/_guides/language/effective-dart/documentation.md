@@ -109,7 +109,7 @@ up.
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
 
-### CONSIDER writing doc comments for public libraries.
+### CONSIDER writing a library-level doc comment.
 
 Unlike languages like Java where the class is the only unit of program
 organization, in Dart, a library is itself an entity that users work with
@@ -122,6 +122,10 @@ provided within. Consider including:
 * A couple of complete code samples that walk through using the API.
 * Links to the most important or most commonly used classes and functions.
 * Links to external references on the domain the library is concerned with.
+
+You document a library by placing a doc comment right above the `library`
+directive at the start of the file. If the library doesn't have a `library`
+directive, you can add one just to hang the doc comment off of it.
 
 ### CONSIDER writing doc comments for private APIs.
 

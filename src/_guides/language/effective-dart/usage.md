@@ -64,14 +64,17 @@ And not:
 part of my_library;
 {% endprettify %}
 
-### DON'T import libraries inside the `src` directory of another package.
+### DON'T import libraries that are inside the `src` directory of another package.
 
-The `src` directory under `lib` is specified to contain libraries private to the
-package's own implementation. The way package maintainers version their package
-takes this convention into account. They are free to make sweeping changes to
-code under `src` without it being a breaking change to the package.
+The `src` directory under `lib` [is specified][package guide] to contain
+libraries private to the package's own implementation. The way package
+maintainers version their package takes this convention into account. They are
+free to make sweeping changes to code under `src` without it being a breaking
+change to the package.
 
-That means that if you import some other package's private library, a minor
+[package guide]: https://www.dartlang.org/tools/pub/package-layout
+
+That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
 ### PREFER relative paths when importing libraries within your own package's `lib` directory.
@@ -104,7 +107,7 @@ And not:
 import 'package:my_package/src/utils.dart';
 {% endprettify %}
 
-There is no profound reason to prefer the former—it's just shorter and we want
+There is no profound reason to prefer the former—it's just shorter, and we want
 to be consistent.
 
 The "within your own package's `lib` directory" part is important. Libraries
@@ -365,7 +368,7 @@ var objects = [1, "a", 2, "b", 3];
 var ints = objects.where((e) => e is int);
 {% endprettify %}
 
-This is verbose, but, worse, it returns an Iterable whose type probably isn't
+This is verbose, but, worse, it returns an iterable whose type probably isn't
 what you want. In the example here, it returns an `Iterable<Object>` even though
 you likely want an `Iterable<int>` since that's the type you're filtering it to.
 
@@ -395,12 +398,12 @@ Using `whereType()` is concise, produces an [Iterable][] of the desired type,
 and has no unnecessary levels of wrapping.
 
 
-### DON'T use `cast()` or `retype()` when a nearby operation will do.
+### DON'T use `cast()` when a nearby operation will do.
 
 Often when you're dealing with an iterable or stream, you perform several
 transformations on it. At the end, you want to produce an object with a certain
-type argument. Instead of tacking on a call to `cast()` or `retype()`, see if
-one of the existing transformations can change the type.
+type argument. Instead of tacking on a call to `cast()`, see if one of the
+existing transformations can change the type.
 
 If you're already calling `toList()`, replace that with a call to
 [`List.from<T>()`][list-from] where `T` is the type of resulting list you want.
@@ -441,33 +444,110 @@ var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 {% endprettify %}
 
 
-### AVOID using `cast()` or `retype()`.
+### AVOID using `cast()`.
 
 This is the softer generalization of the previous rule. Sometimes there is no
 nearby operation you can use to fix the type of some object. Even then, when
-possible avoid using `cast()` or `retype()` to "change" a collection's type.
+possible avoid using `cast()` to "change" a collection's type.
 
 Prefer any of these options instead:
 
-*   Change the code where the collection is first created so that it has the
-    right type.
+#### Create it with the right type
 
-*   If you immediately iterate over the collection, cast each element inside the
-    iteration.
+Change the code where the collection is first created so that it has the right
+type:
 
-*   If you'll eventually access most of the elements in the collection, and
-    you don't need the object to be backed by the original live object, convert
-    it using `List.from()`.
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
+{% prettify dart %}
+List<int> makeList([int a, int b]) {
+  var list = <int>[];
+  if (a != null) list.add(a);
+  if (b != null) list.add(b);
+  return list;
+}
+{% endprettify %}
 
-    The `cast()` and `retype()` methods return lazy collections that check the
-    element type on *every operation*. If you perform only a few operations on
-    only a few elements, that laziness can be good. But in many cases, the
-    overhead of lazy validation and of wrapping outweighs the benefits.
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-at-create)"?>
+{% prettify dart %}
+List<int> makeList([int a, int b]) {
+  var list = []; // List<dynamic>.
+  if (a != null) list.add(a);
+  if (b != null) list.add(b);
+  return list.cast<int>();
+}
+{% endprettify %}
 
-These alternatives don't always work, of course, and sometimes `cast()` or
-`retype()` is the right answer. But consider those methods to be a little risky
-and undesirable&mdash;they can be slow and may produce errors at runtime if you
-aren't careful.
+#### Cast the elements on access
+
+If you immediately iterate over the collection, cast each element inside the
+iteration:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/int n/[!int!] n/g"?>
+{% prettify dart %}
+int sum(List<Object> objects) {
+  var result = 0;
+  // We happen to know the list only contains ints.
+  for ([!int!] n in objects) {
+    result += n;
+  }
+
+  return result;
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-iterate)"?>
+{% prettify dart %}
+int sum(List<Object> objects) {
+  var result = 0;
+  // We happen to know the list only contains ints.
+  for (var n in objects.cast<int>()) {
+    result += n;
+  }
+
+  return result;
+}
+{% endprettify %}
+
+#### Eagerly cast using `List.from()`
+
+If you'll eventually access most of the elements in the collection, and you
+don't need the object to be backed by the original live object, convert it using
+`List.from()`:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
+{% prettify dart %}
+int median(List<Object> objects) {
+  // We happen to know the list only contains ints.
+  var ints = objects.cast<int>();
+  ints.sort();
+  return ints[ints.length ~/ 2];
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-from)"?>
+{% prettify dart %}
+int median(List<Object> objects) {
+  // We happen to know the list only contains ints.
+  var ints = new List<int>.from(objects);
+  ints.sort();
+  return ints[ints.length ~/ 2];
+}
+{% endprettify %}
+
+The `cast()` method returns a lazy collection that checks the element type on
+*every operation*. If you perform only a few operations on only a few elements,
+that laziness can be good. But in many cases, the overhead of lazy validation
+and of wrapping outweighs the benefits.
+
+These alternatives don't always work, of course, and sometimes `cast()` is the
+right answer. But consider that method a little risky and undesirable&mdash;it
+can be slow and may fail at runtime if you aren't careful.
 
 
 ## Functions
@@ -825,9 +905,9 @@ num get x => center.x;
 set x(num value) => center = new Point(value, center.y);
 {% endprettify %}
 
-It's rarely a good idea to use `=>` for non-setter void members. The `=>` implies
-"returns a value", so readers may misinterpret what the void member does if you
-use it.
+It's rarely a good idea to use `=>` for non-setter void members. The `=>`
+implies "returns a value", so readers may misinterpret what the void member does
+if you use it.
 
 
 ### DON'T use `this.` when not needed to avoid shadowing.
@@ -1009,41 +1089,6 @@ class Point {
 {% endprettify %}
 
 
-### DO place the `super()` call last in a constructor initialization list.
-
-Field initializers are evaluated in the order that they appear in the
-constructor initialization list. If you place a `super()` call in the middle of
-an initializer list, the superclass's initializers will be evaluated right then
-before evaluating the rest of the subclass's initializers.
-
-What it *doesn't* mean is that the superclass's *constructor body* is executed
-then. That always happens after all initializers are run regardless of where
-`super()` appears. Placing the `super()` elsewhere is confusing and almost never
-useful.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (super-first)"?>
-{% prettify dart %}
-View(Style style, List children)
-    : _children = children,
-      super(style);
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (super-first)"?>
-{% prettify dart %}
-View(Style style, List children)
-    : super(style),
-      _children = children;
-{% endprettify %}
-
-{% comment %}update-for-dart-2{% endcomment %}
-<div class="alert alert-danger" markdown="1">
-**Dart 2 note:** The call to `super()` _must be last_ in Dart 2, otherwise
-an error is reported.
-</div>
-
-
 ### DON'T use `new`.
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
@@ -1052,6 +1097,22 @@ actually return a new object.
 
 The language still permits `new` in order to make migration less painful, but
 consider it deprecated and remove it from your code.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)" replace="/new //g"?>
+{% prettify dart %}
+Widget build(BuildContext context) {
+  return Row(
+    children: [
+      RaisedButton(
+        onPressed: increment,
+        child: Text('Increment'),
+      ),
+      Text('Count: $counter'),
+    ],
+  );
+}
+{% endprettify %}
 
 
 ### DON'T use `const` when not needed.

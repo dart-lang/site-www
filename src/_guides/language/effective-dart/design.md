@@ -220,6 +220,20 @@ setters are invoked in templates, not from other Dart code.
 </aside>
 
 
+### CONSIDER omitting the verb for a named boolean *parameter*.
+
+This refines the previous rule. For named parameters that are boolean, the name
+is often just as clear without the verb and it reads better at the callsite.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
+{% prettify dart %}
+Isolate.spawn(entryPoint, message, paused: false);
+var copy = new List.from(elements, growable: true);
+var regExp = new RegExp(pattern, caseSensitive: false);
+{% endprettify %}
+
+
 ### PREFER the "positive" name for a boolean property or variable.
 
 Most boolean names have conceptually "positive" and "negative" forms where the
@@ -257,23 +271,9 @@ negate the property with `!` everywhere. Instead, it may be better to use the
 negative case for that property.
 
 For some properties, there is no obvious positive form. Is a document that has
-been flushed to disc "saved" or "*un*-changed"? Is a document that *hasn't* been
+been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
 that is less likely to be negated by users or has the shorter name.
-
-
-### CONSIDER omitting the verb for a named boolean *parameter*.
-
-This refines the previous rule. For named parameters that are boolean, the name
-is often just as clear without the verb and it reads better at the callsite.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
-{% prettify dart %}
-Isolate.spawn(entryPoint, message, paused: false);
-var copy = new List.from(elements, growable: true);
-var regExp = new RegExp(pattern, caseSensitive: false);
-{% endprettify %}
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -687,8 +687,8 @@ comment.
 
 If a constructor is added to a class that previously did not define any, that
 breaks any other classes that are mixing it in. This is a seemingly innocuous
-change in the class and the restrictions around mixins aren't widely known. It's
-likely an author may add a constructor without realizing it will break your
+change in the class, and the restrictions around mixins aren't widely known.
+It's likely an author may add a constructor without realizing it will break your
 class that's mixing it in.
 
 Like with subclassing, this means a class needs to be deliberate about whether
@@ -1463,11 +1463,19 @@ The new syntax looks like this:
 typedef Comparison = int Function<T>(T, T);
 {% endprettify %}
 
+If you want to include a parameter's name, you can do that too:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef-param-name)"?>
+{% prettify dart %}
+typedef Comparison = int Function<T>(T a, T b);
+{% endprettify %}
+
 The new syntax can express anything the old syntax could express and more, and
 lacks the error-prone misfeature where a single identifier is treated as the
-parameter's name. The same function type syntax after the `=` in the typedef is
-also allowed anywhere a type annotation may appear, giving us a single
-consistent way to write function types anywhere in a program.
+parameter's name instead of its type. The same function type syntax after the
+`=` in the typedef is also allowed anywhere a type annotation may appear, giving
+us a single consistent way to write function types anywhere in a program.
 
 The old typedef syntax is still supported to avoid breaking existing code, but
 it's deprecated.
