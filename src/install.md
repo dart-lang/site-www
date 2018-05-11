@@ -22,7 +22,7 @@ Install the SDK for your platform.
 
   ### [Web][Web install]
 
-  [Get the Dart SDK][Web install] plus [web-specific tools.]({{site.webdev}}/tools)
+  Get the Dart SDK.
 
 - {:.card.narrow}[![Dart logo][]{: width="100"}][Dart install]{:.no-automatic-external}
   {:.logo}
@@ -39,5 +39,5 @@ Install the SDK for your platform.
 [Flutter install]: {{site.flutter}}/setup/
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
-[Web install]: /tools/sdk#install {% comment %}TODO: link to webdev install page{% endcomment %}
+[Web install]: {{site.dev-webdev}}/tools/sdk#install {% comment %}FIXME: use site.webdev once the sites switch servers{% endcomment %}
 [Web logo]: {% asset_path 'shared/angular/icon/default.svg' %}
