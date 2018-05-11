@@ -22,7 +22,7 @@ Install the SDK for your platform.
 
   ### [Web][Web install]
 
-  [Get the Dart SDK][Web install] plus [web-specific tools.]({{site.webdev}}/tools)
+  Get the Dart SDK.
 
 - {:.card.narrow}[![Dart logo][]{: width="100"}][Dart install]{:.no-automatic-external}
   {:.logo}
