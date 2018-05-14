@@ -19,7 +19,7 @@ Future main() async {
   print("I'm thinking of a number: $myNumber");
 
   HttpServer server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4041,
   );
   await for (var request in server) {

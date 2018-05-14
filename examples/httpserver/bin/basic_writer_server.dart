@@ -11,7 +11,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String _host = InternetAddress.loopbackIPv4.host;
 
 Future main() async {
   var server = await HttpServer.bind(_host, 4049);
@@ -27,7 +27,7 @@ Future main() async {
         var data = jsonDecode(content) as Map; /*3*/
         var fileName = req.uri.pathSegments.last; /*4*/
         await new File(fileName)
-            .writeAsString(content, mode: FileMode.WRITE);
+            .writeAsString(content, mode: FileMode.write);
         req.response
           ..statusCode = HttpStatus.OK
           ..write('Wrote data for ${data['name']}.');

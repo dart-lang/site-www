@@ -11,7 +11,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String _host = InternetAddress.loopbackIPv4.host;
 String path = 'file.txt';
 
 Map jsonData = {

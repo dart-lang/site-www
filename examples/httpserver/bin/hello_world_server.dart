@@ -11,7 +11,7 @@ import 'dart:async';
 Future main() async {
   // #docregion bind
   var server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4040,
   );
   // #enddocregion bind

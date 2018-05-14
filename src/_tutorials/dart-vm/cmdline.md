@@ -465,7 +465,7 @@ File quotesFile = new File('quotes.txt');
 String stronger = 'That which does not kill us makes us stronger. -Nietzsche';
 
 try {
-  await quotesFile.writeAsString(stronger, mode: FileMode.APPEND);
+  await quotesFile.writeAsString(stronger, mode: FileMode.append);
   print('Data written.');
 } catch (e) {
   print('Oops!');
@@ -475,8 +475,8 @@ try {
 The `writeAsString()` method writes the data asynchronously.
 It opens the file before writing and closes the file when done.
 To append data to an existing file, you can use the optional
-parameter `mode` and set its value to `FileMode.APPEND`.
-Otherwise, the mode is `FileMode.WRITE` and the previous contents of the file,
+parameter `mode` and set its value to `FileMode.append`.
+Otherwise, the mode is `FileMode.write` and the previous contents of the file,
 if any, are overwritten.
 
 If you want to write more data, you can open the file for writing.
@@ -486,7 +486,7 @@ at which time, you must close the file.
 The `close()` method is asynchronous and returns a Future.
 
 {% prettify dart %}
-IOSink quotes = new File('quotes.txt').openWrite(mode: FileMode.APPEND);
+IOSink quotes = new File('quotes.txt').openWrite(mode: FileMode.append);
 
 quotes.write('A woman is like a tea bag; ');
 quotes.write('you never know how strong it is until it\'s in hot water.');

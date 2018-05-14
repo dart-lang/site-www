@@ -174,7 +174,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     var logFile = new File('test_data/log.txt');
     // #docregion append
-    var sink = logFile.openWrite(mode: FileMode.APPEND);
+    var sink = logFile.openWrite(mode: FileMode.append);
     // #enddocregion append
     sink.close();
   }

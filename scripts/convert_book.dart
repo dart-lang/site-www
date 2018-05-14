@@ -34,7 +34,7 @@ convertFile(String fileName) {
 writeFile(String fileName, String title, String body) {
   var out = new File('${outputDir.path}/${fileName}');
   out.writeAsStringSync(frontMatter(title));
-  out.writeAsStringSync(body, mode: FileMode.APPEND);
+  out.writeAsStringSync(body, mode: FileMode.append);
 }
 
 checkDir(Directory dir) {

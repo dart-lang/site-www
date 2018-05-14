@@ -133,7 +133,7 @@ import 'dart:async';
 
 Future main() async {
   var server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4040,
   );
   print('Listening on localhost:${server.port}');
@@ -162,7 +162,7 @@ The first statement in `main()` uses `HttpServer.bind()` to create an
 <?code-excerpt "httpserver/bin/hello_world_server.dart (bind)"?>
 {% prettify dart %}
 var server = await HttpServer.bind(
-  InternetAddress.LOOPBACK_IP_V4,
+  InternetAddress.loopbackIPv4,
   4040,
 );
 {% endprettify %}
@@ -343,7 +343,7 @@ Future main() async {
   print("I'm thinking of a number: $myNumber");
 
   HttpServer server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4041,
   );
   await for (var request in server) {
@@ -568,7 +568,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String _host = InternetAddress.loopbackIPv4.host;
 String path = 'file.txt';
 
 Map jsonData = {
@@ -657,7 +657,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String _host = InternetAddress.loopbackIPv4.host;
 
 Future main() async {
   var server = await HttpServer.bind(_host, 4049);
@@ -673,7 +673,7 @@ Future main() async {
         var [!data = jsonDecode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await new File(fileName)
-            .writeAsString(content, mode: FileMode.WRITE);
+            .writeAsString(content, mode: FileMode.write);
         req.response
           ..statusCode = HttpStatus.OK
           ..write('Wrote data for ${data['name']}.');
@@ -786,7 +786,7 @@ Future main() async {
   var server;
 
   try {
-    server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
+    server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4044);
   } catch (e) {
     print("Couldn't bind to port 4044: $e");
     exit(-1);
@@ -850,7 +850,7 @@ Future main() async {
   VirtualDirectory staticFiles = new VirtualDirectory('.');
 
   var serverRequests =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
+      await HttpServer.bind(InternetAddress.loopbackIPv4, 4046);
   await for (var request in serverRequests) {
     [!staticFiles.serveFile(targetFile, request);!]
   }
@@ -891,7 +891,7 @@ Future main() async {
     staticFiles.serveFile(new File(indexUri.toFilePath()), request); [!/*3*/!]
   };
 
-  var server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048);
+  var server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4048);
   print('Listening on port 4048');
   await server.forEach(staticFiles.serveRequest); [!/*4*/!]
 }
