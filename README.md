@@ -8,7 +8,9 @@ The www.dartlang.org site, built with [Jekyll][] and hosted on [Firebase][].
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 
 For simple changes (such as to CSS and text), you probably don't need to build this site.
-But if you want/need to build, here's how.
+Often you can make changes using the GitHub UI.
+
+If you want/need to build, read on.
 
 ## Before you build this site
 
@@ -38,6 +40,10 @@ submodule-cloning techniques:
 - If you've already cloned this repo without its submodule, then run
   this command from the repo root:<br>
   `git submodule update --init --remote`
+
+> IMPORTANT:
+> Whenever you update your repo, update the submodule as well:<br>
+> `git pull; git submodule update --init --remote`
 
 ### 3. Run installation scripts
 
