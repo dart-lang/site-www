@@ -19,7 +19,7 @@ Future main() async {
   VirtualDirectory staticFiles = new VirtualDirectory('.');
 
   var serverRequests =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
+      await HttpServer.bind(InternetAddress.loopbackIPv4, 4046);
   await for (var request in serverRequests) {
     staticFiles.serveFile(targetFile, request);
   }

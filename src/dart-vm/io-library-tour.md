@@ -135,7 +135,7 @@ Future main() async {
 
 You can use an [IOSink][] to
 write data to a file. Use the File `openWrite()` method to get an IOSink
-that you can write to. The default mode, `FileMode.WRITE`, completely
+that you can write to. The default mode, `FileMode.write`, completely
 overwrites existing data in the file.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
@@ -148,11 +148,11 @@ await sink.close();
 {% endprettify %}
 
 To add to the end of the file, use the optional `mode` parameter to
-specify `FileMode.APPEND`:
+specify `FileMode.append`:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
-var sink = logFile.openWrite(mode: FileMode.APPEND);
+var sink = logFile.openWrite(mode: FileMode.append);
 {% endprettify %}
 
 To write binary data, use `add(List<int> data)`.
