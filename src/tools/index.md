@@ -12,7 +12,7 @@ For specific tools for creating complete apps, see the following links:
 |------------------------+----------+-------------------------------------|
 | App type | Product | Download instructions | Tools information |
 |--------------------------|------------------------------------------------|
-| Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io](https://flutter.io/using-ide/) |
+| Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [Flutter Tools](https://flutter.io/using-ide/) |
 | Web app | Dart | [Install Dart](/tools/sdk#install) | [Dart Tools for the Web]({{site.webdev}}/tools) |
 | Script or server | Dart | [Install Dart](/tools/sdk#install) | [Dart VM Tools](/dart-vm/tools) |
 {:.table .table-striped}
