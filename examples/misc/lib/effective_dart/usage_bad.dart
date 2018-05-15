@@ -80,23 +80,19 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   // #docregion cast-at-create
-  List<int> makeList([int a, int b]) {
+  List<int> singletonList(int value) {
     var list = []; // List<dynamic>.
-    if (a != null) list.add(a);
-    if (b != null) list.add(b);
+    list.add(value);
     return list.cast<int>();
   }
   // #enddocregion cast-at-create
 
   // #docregion cast-iterate
-  int sum(List<Object> objects) {
-    var result = 0;
+  void printEvens(List<Object> objects) {
     // We happen to know the list only contains ints.
     for (var n in objects.cast<int>()) {
-      result += n;
+      if (n.isEven) print(n);
     }
-
-    return result;
   }
   // #enddocregion cast-iterate
 
@@ -201,6 +197,16 @@ void miscDeclAnalyzedButNotTested() {
           ..addAll(chest.contents);
     // #enddocregion arrow-long
   };
+
+  {
+    // #docregion no-const
+    const primaryColors = const [
+      const Color("red", const [255, 0, 0]),
+      const Color("green", const [0, 255, 0]),
+      const Color("blue", const [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+  }
 }
 
 //----------------------------------------------------------------------------

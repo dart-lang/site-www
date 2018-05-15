@@ -452,18 +452,31 @@ possible avoid using `cast()` to "change" a collection's type.
 
 Prefer any of these options instead:
 
-#### Create it with the right type
+*   **Create it with the right type.** Change the code where the collection is
+    first created so that it has the right type.
 
-Change the code where the collection is first created so that it has the right
-type:
+*   **Cast the elements on access.** If you immediately iterate over the
+    collection, cast each element inside the iteration.
+
+*   **Eagerly cast using `List.from()`.** If you'll eventually access most of
+    the elements in the collection, and you don't need the object to be backed
+    by the original live object, convert it using `List.from()`:
+
+    The `cast()` method returns a lazy collection that checks the element type
+    on *every operation*. If you perform only a few operations on only a few
+    elements, that laziness can be good. But in many cases, the overhead of lazy
+    validation and of wrapping outweighs the benefits.
+
+Here are examples of each approach:
+
+#### Create it with the right type:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
 {% prettify dart %}
-List<int> makeList([int a, int b]) {
+List<int> singletonList(int value) {
   var list = <int>[];
-  if (a != null) list.add(a);
-  if (b != null) list.add(b);
+  list.add(value);
   return list;
 }
 {% endprettify %}
@@ -471,52 +484,38 @@ List<int> makeList([int a, int b]) {
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-at-create)"?>
 {% prettify dart %}
-List<int> makeList([int a, int b]) {
+List<int> singletonList(int value) {
   var list = []; // List<dynamic>.
-  if (a != null) list.add(a);
-  if (b != null) list.add(b);
+  list.add(value);
   return list.cast<int>();
 }
 {% endprettify %}
 
-#### Cast the elements on access
-
-If you immediately iterate over the collection, cast each element inside the
-iteration:
+#### Cast each element on access:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/int n/[!int!] n/g"?>
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
 {% prettify dart %}
-int sum(List<Object> objects) {
-  var result = 0;
+void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
-  for ([!int!] n in objects) {
-    result += n;
+  for (var n in objects) {
+    if ([!(n as int)!].isEven) print(n);
   }
-
-  return result;
 }
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-iterate)"?>
 {% prettify dart %}
-int sum(List<Object> objects) {
-  var result = 0;
+void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
   for (var n in objects.cast<int>()) {
-    result += n;
+    if (n.isEven) print(n);
   }
-
-  return result;
 }
 {% endprettify %}
 
-#### Eagerly cast using `List.from()`
-
-If you'll eventually access most of the elements in the collection, and you
-don't need the object to be backed by the original live object, convert it using
-`List.from()`:
+#### Cast eagerly using `List.from()`:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
@@ -539,11 +538,6 @@ int median(List<Object> objects) {
   return ints[ints.length ~/ 2];
 }
 {% endprettify %}
-
-The `cast()` method returns a lazy collection that checks the element type on
-*every operation*. If you perform only a few operations on only a few elements,
-that laziness can be good. But in many cases, the overhead of lazy validation
-and of wrapping outweighs the benefits.
 
 These alternatives don't always work, of course, and sometimes `cast()` is the
 right answer. But consider that method a little risky and undesirable&mdash;it
@@ -1089,14 +1083,15 @@ class Point {
 {% endprettify %}
 
 
-### DON'T use `new`.
+### DON'T use `new` in code that doesn't need to support Dart 1.
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
 actually return a new object.
 
 The language still permits `new` in order to make migration less painful, but
-consider it deprecated and remove it from your code.
+consider it deprecated and remove it from your code as soon as you no longer
+need to run on older Dart tools.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)" replace="/new //g"?>
@@ -1105,17 +1100,16 @@ Widget build(BuildContext context) {
   return Row(
     children: [
       RaisedButton(
-        onPressed: increment,
         child: Text('Increment'),
       ),
-      Text('Count: $counter'),
+      Text('Click!'),
     ],
   );
 }
 {% endprettify %}
 
 
-### DON'T use `const` when not needed.
+### DON'T use `const` unnecesarily in code that doesn't need to support Dart 1.
 
 In contexts where only constant expressions are allowed, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
@@ -1128,11 +1122,33 @@ expression inside:
 * A switch case expression&mdash;the part right after `case` before the `:`, not
   the body of the case.
 
-(Default values are *not* included in this list because future versions of Dart
+(Default values are not included in this list because future versions of Dart
 may support non-const default values.)
 
-Basically, any place where it would be a static error to write `new` instead of
-`const`, you can and should omit the `const`.
+Basically, any place where it would be an error to write `new` instead of
+`const`, Dart 2 allows you to omit the `const`. If your code does not need to
+run on older versions of Dart, you should take advantage of that and drop the
+`const`.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-const)"?>
+{% prettify dart %}
+const primaryColors = [
+  Color("red", [255, 0, 0]),
+  Color("green", [0, 255, 0]),
+  Color("blue", [0, 0, 255]),
+];
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)"?>
+{% prettify dart %}
+const primaryColors = const [
+  const Color("red", const [255, 0, 0]),
+  const Color("green", const [0, 255, 0]),
+  const Color("blue", const [0, 0, 255]),
+];
+{% endprettify %}
 
 
 ## Error handling

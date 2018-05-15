@@ -223,7 +223,8 @@ setters are invoked in templates, not from other Dart code.
 ### CONSIDER omitting the verb for a named boolean *parameter*.
 
 This refines the previous rule. For named parameters that are boolean, the name
-is often just as clear without the verb and it reads better at the callsite.
+is often just as clear without the verb, and the code reads better at the call
+site.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>

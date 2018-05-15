@@ -79,23 +79,19 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   // #docregion cast-at-create
-  List<int> makeList([int a, int b]) {
+  List<int> singletonList(int value) {
     var list = <int>[];
-    if (a != null) list.add(a);
-    if (b != null) list.add(b);
+    list.add(value);
     return list;
   }
   // #enddocregion cast-at-create
 
   // #docregion cast-iterate
-  int sum(List<Object> objects) {
-    var result = 0;
+  void printEvens(List<Object> objects) {
     // We happen to know the list only contains ints.
-    for (int n in objects) {
-      result += n;
+    for (var n in objects) {
+      if ((n as int).isEven) print(n);
     }
-
-    return result;
   }
   // #enddocregion cast-iterate
 
@@ -222,6 +218,20 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer-alt
   }
+
+  // TODO(rnystrom): Uncomment this when the analyzer run on these excerpts
+  // supports optional const.
+  {
+    /*
+    // #docregion no-const
+    const primaryColors = [
+      Color("red", [255, 0, 0]),
+      Color("green", [0, 255, 0]),
+      Color("blue", [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+    */
+  }
 }
 
 //----------------------------------------------------------------------------
@@ -235,6 +245,10 @@ class Animal {
 
 class Person {
   int zip;
+}
+
+class Color {
+  const Color(String name, List<int> channels);
 }
 
 //----------------------------------------------------------------------------
@@ -426,15 +440,32 @@ class Point2 {
 }
 // #enddocregion semicolon-for-empty-body
 
+class Widget {}
+
+class BuildContext {}
+
+class Row extends Widget {
+  Row({children});
+}
+
+class RaisedButton {
+  RaisedButton({child});
+}
+
+class Text {
+  Text(String text);
+}
+
+// TODO(rnystrom): Remove "new" here instead of stripping it out later once
+// we support optional new for excerpts.
 // #docregion no-new
 Widget build(BuildContext context) {
   return new Row(
     children: [
       new RaisedButton(
-        onPressed: increment,
         child: new Text('Increment'),
       ),
-      new Text('Count: $counter'),
+      new Text('Click!'),
     ],
   );
 }
