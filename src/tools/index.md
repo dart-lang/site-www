@@ -5,7 +5,17 @@ show_breadcrumbs: false
 toc: false
 ---
 
-This page discusses tools that are useful with multiple Dart technologies.
+This page discusses tools that support the Dart language.
+
+For specific tools for creating complete apps with Flutter, see the following links:
+
+|------------------------+----------+-------------------------------------|
+| App type | SDK | Download instructions | Tools information |
+|--------------------------|------------------------------------------------|
+| Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io](https://flutter.io/using-ide/) |
+| Web app | Dart | [Install Dart](/tools/sdk#install) | [Dart Tools for the Web]({{site.webdev}}/tools) |
+| Script or server | Dart | [Install Dart](/tools/sdk#install) | [Dart VM Tools](/dart-vm/tools) |
+{:.table .table-striped}
 
 ## DartPad
 
@@ -13,18 +23,16 @@ This page discusses tools that are useful with multiple Dart technologies.
 a great way to learn Dart syntax and to experiment with Dart language features
 and core libraries (_except_ for dart:io and libraries that depend on dart:io).
 
-To write code that uses other libraries and features,
-you need an [SDK](#sdks).
-We also recommend using an IDE.
-
-
-## IDEs
+## Editors with support for the Dart language
 
 Dart plugins exist for many commonly used IDEs.
-If you're writing web apps and don't already have a favorite IDE,
-try WebStorm, which comes with Dart support.
 
 <ul class="col2">
+<li>
+<img src="{% asset_path 'tools/android_studio.svg' %}"
+     width="48" alt="IntelliJ logo">
+<a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>Android Studio<b</b></a>
+</li>
 <li>
 <img src="{% asset_path 'tools/intellij-idea.svg' %}"
      width="48" alt="IntelliJ logo">
@@ -34,11 +42,6 @@ try WebStorm, which comes with Dart support.
 <li>
 <img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
 <a class="no-automatic-external" href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
-</li>
-<li>
-<img src="{% asset_path 'tools/webstorm.svg' %}"
-     width="48" alt="WebStorm logo">
-<a class="no-automatic-external" href="{{site.webdev}}/tools/webstorm"><b>WebStorm</b></a>
 </li>
 </ul>
 
@@ -55,32 +58,10 @@ and available as open source:
 <a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/sublime.png' %}" alt="Sublime logo">
-<a class="no-automatic-external" href="https://github.com/dart-lang/dart-sublime-bundle#readme"><b>Sublime Text 3</b></a>
-</li>
-<li>
 <img src="{% asset_path 'tools/vim.png' %}" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 </ul>
-
-<aside class="alert alert-info" markdown="1">
-**Note:** Two previous options, Dart Editor and the Eclipse Plugin for Dart,
-are no longer maintained.
-</aside>
-
-## SDKs
-
-Which SDK you need depends on what type of app you're developing.
-
-|------------------------+----------+-------------------------------------|
-| App type | SDK | Download instructions | More information |
-|--------------------------|------------------------------------------------|
-| Web app | Dart | [Install Dart](/tools/sdk#install) | [Dart SDK](/tools/sdk), [Dart Tools for the Web]({{site.webdev}}/tools) |
-| Script or server | Dart | [Install Dart](/tools/sdk#install) | [Dart SDK](/tools/sdk), [Dart VM Tools](/dart-vm/tools) |
-| Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io]({{site.flutter}}) |
-{:.table .table-striped}
-
 
 ## Command-line tools
 
@@ -105,11 +86,3 @@ Most Dart-related SDKs include the following tools.
   [Dart Style Guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
   the IDE. Or you can run the formatter from the command line (`dartfmt`).
-
-For details about these and many other tools,
-see the tools documentation for the SDK you're using:
-
-* [Dart SDK](/tools/sdk) and specialized tools:
-  * [Dart Tools for the Web]({{site.webdev}}/tools)
-  * [Dart VM Tools]({{site.dart_vm}}/tools)
-* [Flutter]({{site.flutter}}/setup/)
