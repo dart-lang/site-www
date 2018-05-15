@@ -7,10 +7,10 @@ toc: false
 
 This page discusses tools that support the Dart language.
 
-For specific tools for creating complete apps with Flutter, see the following links:
+For specific tools for creating complete apps, see the following links:
 
 |------------------------+----------+-------------------------------------|
-| App type | SDK | Download instructions | Tools information |
+| App type | Product | Download instructions | Tools information |
 |--------------------------|------------------------------------------------|
 | Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [flutter.io](https://flutter.io/using-ide/) |
 | Web app | Dart | [Install Dart](/tools/sdk#install) | [Dart Tools for the Web]({{site.webdev}}/tools) |
@@ -31,7 +31,7 @@ Dart plugins exist for many commonly used IDEs.
 <li>
 <img src="{% asset_path 'tools/android_studio.svg' %}"
      width="48" alt="IntelliJ logo">
-<a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>Android Studio<b</b></a>
+<a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
 <img src="{% asset_path 'tools/intellij-idea.svg' %}"
