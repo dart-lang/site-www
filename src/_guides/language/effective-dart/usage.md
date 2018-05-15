@@ -403,7 +403,7 @@ type argument. Instead of tacking on a call to `cast()` or `retype()`, see if
 one of the existing transformations can change the type.
 
 If you're already calling `toList()`, replace that with a call to
-[`List.from<T>()`][list-from] where `T` is the type of resulting list you want.
+[`List<T>.from()`][list-from] where `T` is the type of resulting list you want.
 
 [list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
 
