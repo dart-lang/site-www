@@ -42,9 +42,10 @@ write consistent, robust, fast code too. There are two overarching themes:
 
 We split the guidelines into a few separate pages for easy digestion:
 
-  * **[Style Guide][]** &ndash; This defines the rules we use to format our
-    code&mdash;the same rules [dartfmt] implements. It also specifies how
-    identifiers are formatted: `camelCase`, `using_underscores`, etc.
+  * **[Style Guide][]** &ndash; This defines the rules for laying out and
+    organizing code, or at least the parts that [dartfmt] doesn't handle for
+    you. The style guide also specifies how identifiers are formatted:
+    `camelCase`, `using_underscores`, etc.
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
     know about what goes inside comments. Both doc comments and regular,

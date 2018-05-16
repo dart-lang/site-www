@@ -113,9 +113,9 @@ member, but you should document most of them.
 
 Unlike languages like Java where the class is the only unit of program
 organization, in Dart, a library is itself an entity that users work with
-directly, import, and think about. That makes the library a great place for
-documentation that introduces the reader to the main concepts and functionality
-provided within. Consider including:
+directly, import, and think about. That makes the `library` directive a great
+place for documentation that introduces the reader to the main concepts and
+functionality provided within. Consider including:
 
 * A single-sentence summary of what the library is for.
 * Explanations of terminology used throughout the library.
@@ -267,7 +267,9 @@ class Chunk { ... }
 {% prettify dart %}
 /// Returns the lesser of two numbers.
 ///
-///     min(5, 3); // 3.
+/// ```dart
+/// min(5, 3) == 3
+/// ```
 num min(num a, num b) => ...
 {% endprettify %}
 
@@ -336,14 +338,6 @@ and highlight parameters using square brackets.
 /// there is already an option using abbreviation [abbr]. Returns the new flag.
 Flag addFlag(String name, String abbr) => ...
 {% endprettify %}
-
-### AVOID redundantly mentioning types in doc comments.
-
-Users reading your doc comments can also see the type, return type, parameter
-types, etc. of the construct you're documenting. Dartdoc already provides links
-to them. There's no need to also state the type in the prose.
-
-Tell the reader something they *don't* already know.
 
 ### DO put doc comments before metadata annotations.
 

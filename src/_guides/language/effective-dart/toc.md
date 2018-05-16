@@ -63,7 +63,6 @@
 * <a href='/guides/language/effective-dart/documentation#consider-including-code-samples-in-doc-comments'>CONSIDER including code samples in doc comments.</a>
 * <a href='/guides/language/effective-dart/documentation#do-use-square-brackets-in-doc-comments-to-refer-to-in-scope-identifiers'>DO use square brackets in doc comments to refer to in-scope identifiers.</a>
 * <a href='/guides/language/effective-dart/documentation#do-use-prose-to-explain-parameters-return-values-and-exceptions'>DO use prose to explain parameters, return values, and exceptions.</a>
-* <a href='/guides/language/effective-dart/documentation#avoid-redundantly-mentioning-types-in-doc-comments'>AVOID redundantly mentioning types in doc comments.</a>
 * <a href='/guides/language/effective-dart/documentation#do-put-doc-comments-before-metadata-annotations'>DO put doc comments before metadata annotations.</a>
 
 **Markdown**
