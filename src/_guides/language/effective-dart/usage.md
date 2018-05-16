@@ -460,16 +460,14 @@ Prefer any of these options instead:
 
 *   **Eagerly cast using `List.from()`.** If you'll eventually access most of
     the elements in the collection, and you don't need the object to be backed
-    by the original live object, convert it using `List.from()`:
+    by the original live object, convert it using `List.from()`.
 
     The `cast()` method returns a lazy collection that checks the element type
     on *every operation*. If you perform only a few operations on only a few
     elements, that laziness can be good. But in many cases, the overhead of lazy
     validation and of wrapping outweighs the benefits.
 
-Here are examples of each approach:
-
-#### Create it with the right type:
+Here is an example of **creating it with the right type:**
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
@@ -491,7 +489,7 @@ List<int> singletonList(int value) {
 }
 {% endprettify %}
 
-#### Cast each element on access:
+Here is **casting each element on access:**
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
@@ -515,7 +513,7 @@ void printEvens(List<Object> objects) {
 }
 {% endprettify %}
 
-#### Cast eagerly using `List.from()`:
+Here is **casting eagerly using `List.from()`:**
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
@@ -1083,15 +1081,14 @@ class Point {
 {% endprettify %}
 
 
-### DON'T use `new` in code that doesn't need to support Dart 1.
+### DON'T use `new`.
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
 actually return a new object.
 
 The language still permits `new` in order to make migration less painful, but
-consider it deprecated and remove it from your code as soon as you no longer
-need to run on older Dart tools.
+consider it deprecated and remove it from your code.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)" replace="/new //g"?>
@@ -1109,9 +1106,9 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 
-### DON'T use `const` unnecesarily in code that doesn't need to support Dart 1.
+### DON'T use `const` redundantly.
 
-In contexts where only constant expressions are allowed, the `const` keyword is
+In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
 expression inside:
 
@@ -1126,9 +1123,7 @@ expression inside:
 may support non-const default values.)
 
 Basically, any place where it would be an error to write `new` instead of
-`const`, Dart 2 allows you to omit the `const`. If your code does not need to
-run on older versions of Dart, you should take advantage of that and drop the
-`const`.
+`const`, Dart 2 allows you to omit the `const`.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-const)"?>

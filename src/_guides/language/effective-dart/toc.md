@@ -137,8 +137,8 @@
 * <a href='/guides/language/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
 * <a href='/guides/language/effective-dart/usage#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
 * <a href='/guides/language/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-new-in-code-that-doesnt-need-to-support-dart-1'>DON'T use <code>new</code> in code that doesn't need to support Dart 1.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-const-unnecesarily-in-code-that-doesnt-need-to-support-dart-1'>DON'T use <code>const</code> unnecesarily in code that doesn't need to support Dart 1.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-const-redundantly'>DON'T use <code>const</code> redundantly.</a>
 
 **Error handling**
 
