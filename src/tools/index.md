@@ -5,27 +5,35 @@ show_breadcrumbs: false
 toc: false
 ---
 
-This page discusses tools that support the Dart language.
+When you're ready to create an app,
+get the SDK and tools for your app type.
 
-For specific tools for creating complete apps, see the following links:
-
-|------------------------+----------+-------------------------------------|
-| App type | Product | Download instructions | Tools information |
-|--------------------------|------------------------------------------------|
-| Mobile app | Flutter | [Flutter Setup]({{site.flutter}}/setup) | [Flutter Tools](https://flutter.io/using-ide/) |
-| Web app | Dart | [Install Dart](/tools/sdk#install) | [Dart Tools for the Web]({{site.webdev}}/tools) |
-| Script or server | Dart | [Install Dart](/tools/sdk#install) | [Dart VM Tools](/dart-vm/tools) |
+|------------+-----------------------------------+--------------------------|
+| App type   | Get started instructions          | Tool information         |
+|------------|-----------------------------------|--------------------------|
+| Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools](https://flutter.io/using-ide/) |
+| Web    | [Install the Dart SDK]({{site.dev-webdev}}/tools/sdk) | [Dart tools for the web]({{site.dev-webdev}}/tools) |
+| Script or server | [Install the Dart SDK](/tools/sdk) | [Dart VM tools](/dart-vm/tools) |
 {:.table .table-striped}
+
+The rest of this page covers general-purpose tools that
+support the Dart language.
+
 
 ## DartPad
 
+<img src="{% asset_path dartpad-hello.png %}" alt="DartPad Hello World"
+ width="200px" align="right" />
 [DartPad](/tools/dartpad) is
-a great way to learn Dart syntax and to experiment with Dart language features
-and core libraries (_except_ for dart:io and libraries that depend on dart:io).
+a great, no-download-required way to learn Dart syntax
+and to experiment with Dart language features.
+It supports Dart's core libraries,
+except for VM libraries such as dart:io.
 
-## Editors with support for the Dart language
 
-Dart plugins exist for many commonly used IDEs.
+## IDEs and editors
+
+Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
@@ -46,7 +54,7 @@ Dart plugins exist for many commonly used IDEs.
 </ul>
 
 The following Dart plugins are unsupported
-and available as open source:
+and available as open source.
 
 <ul class="col2">
 <li>
