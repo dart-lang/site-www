@@ -58,7 +58,7 @@ void miscDeclAnalyzedButNotTested() {
   /// Returns the lesser of two numbers.
   ///
   /// ```dart
-  /// min(5, 3); // 3.
+  /// min(5, 3) == 3
   /// ```
   num min(num a, num b) => ellipsis();
   // #enddocregion code-sample
