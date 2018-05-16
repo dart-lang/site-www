@@ -266,7 +266,7 @@ works with any 1.x Dart SDK that's version 1.23.0 or higher:
 
 {% prettify yaml %}
 environment:
-  sdk: ">=1.23.0 <2.0.0"
+  sdk: '>=1.23.0 <2.0.0'
 {% endprettify %}
 
 Pub tries to find the latest version of a package whose SDK constraint works
@@ -288,8 +288,8 @@ pub supports Flutter SDK constraints under the `environment:` field, like so:
 
 {% prettify yaml %}
 environment:
-  sdk: ">=1.19.0 <2.0.0"
-  flutter: "^0.1.2"
+  sdk: '>=1.19.0 <2.0.0'
+  flutter: ^0.1.2
 {% endprettify %}
 
 A Flutter SDK constraint is only satisfied if pub is running in the
