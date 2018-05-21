@@ -40,8 +40,8 @@ You can fix most static analysis errors by adding type annotations to generic
 classes. The most common generic classes are the collection types
 `List<T>` and `Map<K,V>`.
 
-For example, in the following code the `handleInts()` function prints an integer list,
-and `main()` creates a list and passes it to `handleInts()`.
+For example, in the following code the `printInts()` function prints an integer list,
+and `main()` creates a list and passes it to `printInts()`.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
@@ -57,7 +57,7 @@ void main() {
 {% endprettify %}
 
 The preceding code results in a type error on `list` (highlighted
-above) at the call of `handleInts(list)`:
+above) at the call of `printInts(list)`:
 
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -69,7 +69,7 @@ The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>
 The `list` variable has static type `List<dynamic>`. This is because the
 initializing declaration `var list = []` doesn't provide the analyzer with
 enough information for it to infer a type argument more specific than `dynamic`.
-The `handleInts()` function expects a parameter of type `List<int>`,
+The `printInts()` function expects a parameter of type `List<int>`,
 causing a mismatch of types.
 
 When adding a type annotation (`<int>`) on creation of the list
