@@ -154,20 +154,21 @@ The following table lists the words that the Dart language treats specially.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
 
-| abstract{{bii}}   | deferred{{bii}}   | if                | super             |
-| as{{bii}}         | do                | implements{{bii}} | switch            |
-| assert            | dynamic{{bii}}    | import{{bii}}     | sync*{{lrw}}      |
-| async{{lrw}}      | else              | in                | this              |
-| async*{{lrw}}     | enum              | is                | throw             |
-| await{{lrw}}      | export{{bii}}     | library{{bii}}    | true              |
-| break             | external{{bii}}   | new               | try               |
-| case              | extends           | null              | typedef{{bii}}    |
-| catch             | factory{{bii}}    | operator{{bii}}   | var               |
-| class             | false             | part{{bii}}       | void              |
-| const             | final             | rethrow           | while             |
-| continue          | finally           | return            | with              |
-| covariant{{bii}}  | for               | set{{bii}}        | yield{{lrw}}      |
-| default           | get{{bii}}        | static{{bii}}     | yield*{{lrw}}     |
+| abstract{{bii}}   | do                | import{{bii}}     | super             |
+| as{{bii}}         | dynamic{{bii}}    | in                | switch            |
+| assert            | else              | interface{{bii}}  | sync*{{lrw}}      |
+| async{{lrw}}      | enum              | is                | this              |
+| async*{{lrw}}     | export{{bii}}     | library{{bii}}    | throw             |
+| await{{lrw}}      | external{{bii}}   | mixin{{bii}}      | true              |
+| break             | extends           | new               | try               |
+| case              | factory{{bii}}    | null              | typedef{{bii}}    |
+| catch             | false             | operator{{bii}}   | var               |
+| class             | final             | part{{bii}}       | void              |
+| const             | finally           | rethrow           | while             |
+| continue          | for               | return            | with              |
+| covariant{{bii}}  | get{{bii}}        | set{{bii}}        | yield{{lrw}}      |
+| default           | if                | static{{bii}}     | yield*{{lrw}}     |
+| deferred{{bii}}   | implements{{bii}}                                          
 {:.table .table-striped .nowrap}
 
 <sup>1</sup> Words with the superscript **1**
