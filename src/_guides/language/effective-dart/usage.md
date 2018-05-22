@@ -1080,6 +1080,8 @@ class Point {
 }
 {% endprettify %}
 
+<!-- TODO(rnystrom): Uncomment this when all Dart tools support it. -->
+<!--
 
 ### DON'T use `new`.
 
@@ -1145,6 +1147,7 @@ const primaryColors = const [
 ];
 {% endprettify %}
 
+-->
 
 ## Error handling
 
