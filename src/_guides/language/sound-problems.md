@@ -345,10 +345,6 @@ HoneyBadger(Eats food, String name)
       [!super!](food) { ... }
 {% endprettify %}
 
-For more information, see [DO place the super() call last in a
-constructor initialization list](/guides/language/effective-dart/usage#do-place-the-super-call-last-in-a-constructor-initialization-list)
-in [Effective Dart](/guides/language/effective-dart/).
-
 <hr>
 
 <a name="uses-dynamic-as-bottom"></a>

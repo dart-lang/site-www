@@ -79,6 +79,32 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cast-map
   }
 
+  // #docregion cast-at-create
+  List<int> singletonList(int value) {
+    var list = []; // List<dynamic>.
+    list.add(value);
+    return list.cast<int>();
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  void printEvens(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    for (var n in objects.cast<int>()) {
+      if (n.isEven) print(n);
+    }
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = new List<int>.from(objects);
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
+
   {
     // #docregion where-type-2
     var objects = [1, "a", 2, "b", 3];
@@ -171,6 +197,16 @@ void miscDeclAnalyzedButNotTested() {
           ..addAll(chest.contents);
     // #enddocregion arrow-long
   };
+
+  {
+    // #docregion no-const
+    const primaryColors = const [
+      const Color("red", const [255, 0, 0]),
+      const Color("green", const [0, 255, 0]),
+      const Color("blue", const [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+  }
 }
 
 //----------------------------------------------------------------------------

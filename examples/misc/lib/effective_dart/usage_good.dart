@@ -78,6 +78,32 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion cast-map
   }
 
+  // #docregion cast-at-create
+  List<int> singletonList(int value) {
+    var list = <int>[];
+    list.add(value);
+    return list;
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  void printEvens(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    for (var n in objects) {
+      if ((n as int).isEven) print(n);
+    }
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = objects.cast<int>();
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
+
   (Iterable<Animal> animals) {
     // #docregion use-higher-order-func
     var aquaticNames = animals
@@ -192,6 +218,20 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer-alt
   }
+
+  // TODO(rnystrom): Uncomment this when the analyzer run on these excerpts
+  // supports optional const.
+  {
+    /*
+    // #docregion no-const
+    const primaryColors = [
+      Color("red", [255, 0, 0]),
+      Color("green", [0, 255, 0]),
+      Color("blue", [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+    */
+  }
 }
 
 //----------------------------------------------------------------------------
@@ -205,6 +245,10 @@ class Animal {
 
 class Person {
   int zip;
+}
+
+class Color {
+  const Color(String name, List<int> channels);
 }
 
 //----------------------------------------------------------------------------
@@ -395,6 +439,37 @@ class Point2 {
   Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
+
+class Widget {}
+
+class BuildContext {}
+
+class Row extends Widget {
+  Row({children});
+}
+
+class RaisedButton {
+  RaisedButton({child});
+}
+
+class Text {
+  Text(String text);
+}
+
+// TODO(rnystrom): Remove "new" here instead of stripping it out later once
+// we support optional new for excerpts.
+// #docregion no-new
+Widget build(BuildContext context) {
+  return new Row(
+    children: [
+      new RaisedButton(
+        child: new Text('Increment'),
+      ),
+      new Text('Click!'),
+    ],
+  );
+}
+// #enddocregion no-new
 
 //----------------------------------------------------------------------------
 

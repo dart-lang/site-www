@@ -2522,13 +2522,6 @@ class Employee extends Person {
 }
 {% endprettify %}
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-When using `super()` in a constructor's initialization list, put it last.
-For more information, see the
-[Dart usage guide](/guides/language/effective-dart/usage#do-place-the-super-call-last-in-a-constructor-initialization-list).
-</div>
-
 <div class="alert alert-warning" markdown="1">
 **Warning:**
 Arguments to the superclass constructor do not have access to `this`.

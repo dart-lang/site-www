@@ -52,7 +52,7 @@
 
 * <a href='/guides/language/effective-dart/documentation#do-use--doc-comments-to-document-members-and-types'>DO use <code>///</code> doc comments to document members and types.</a>
 * <a href='/guides/language/effective-dart/documentation#prefer-writing-doc-comments-for-public-apis'>PREFER writing doc comments for public APIs.</a>
-* <a href='/guides/language/effective-dart/documentation#consider-writing-doc-comments-for-public-libraries'>CONSIDER writing doc comments for public libraries.</a>
+* <a href='/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment'>CONSIDER writing a library-level doc comment.</a>
 * <a href='/guides/language/effective-dart/documentation#consider-writing-doc-comments-for-private-apis'>CONSIDER writing doc comments for private APIs.</a>
 * <a href='/guides/language/effective-dart/documentation#do-start-doc-comments-with-a-single-sentence-summary'>DO start doc comments with a single-sentence summary.</a>
 * <a href='/guides/language/effective-dart/documentation#do-separate-the-first-sentence-of-a-doc-comment-into-its-own-paragraph'>DO separate the first sentence of a doc comment into its own paragraph.</a>
@@ -88,7 +88,7 @@
 **Libraries**
 
 * <a href='/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
-* <a href='/guides/language/effective-dart/usage#dont-import-libraries-inside-the-src-directory-of-another-package'>DON'T import libraries inside the <code>src</code> directory of another package.</a>
+* <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>PREFER relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
 
 **Strings**
@@ -105,8 +105,8 @@
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-cast-or-retype-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> or <code>retype()</code> when a nearby operation will do.</a>
-* <a href='/guides/language/effective-dart/usage#avoid-using-cast-or-retype'>AVOID using <code>cast()</code> or <code>retype()</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-cast-when-a-nearby-operation-will-do'>DON'T use <code>cast()</code> when a nearby operation will do.</a>
+* <a href='/guides/language/effective-dart/usage#avoid-using-cast'>AVOID using <code>cast()</code>.</a>
 
 **Functions**
 
@@ -136,9 +136,6 @@
 * <a href='/guides/language/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
 * <a href='/guides/language/effective-dart/usage#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
 * <a href='/guides/language/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
-* <a href='/guides/language/effective-dart/usage#do-place-the-super-call-last-in-a-constructor-initialization-list'>DO place the <code>super()</code> call last in a constructor initialization list.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-const-when-not-needed'>DON'T use <code>const</code> when not needed.</a>
 
 **Error handling**
 
@@ -171,8 +168,8 @@
 * <a href='/guides/language/effective-dart/design#consider-making-the-code-read-like-a-sentence'>CONSIDER making the code read like a sentence.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-noun-phrase-for-a-non-boolean-property-or-variable'>PREFER a noun phrase for a non-boolean property or variable.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable'>PREFER a non-imperative verb phrase for a boolean property or variable.</a>
-* <a href='/guides/language/effective-dart/design#prefer-the-positive-name-for-a-boolean-property-or-variable'>PREFER the "positive" name for a boolean property or variable.</a>
 * <a href='/guides/language/effective-dart/design#consider-omitting-the-verb-for-a-named-boolean-parameter'>CONSIDER omitting the verb for a named boolean <em>parameter</em>.</a>
+* <a href='/guides/language/effective-dart/design#prefer-the-positive-name-for-a-boolean-property-or-variable'>PREFER the "positive" name for a boolean property or variable.</a>
 * <a href='/guides/language/effective-dart/design#prefer-an-imperative-verb-phrase-for-a-function-or-method-whose-main-purpose-is-a-side-effect'>PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.</a>
 * <a href='/guides/language/effective-dart/design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose'>PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose.</a>
 * <a href='/guides/language/effective-dart/design#consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs'>CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs.</a>
