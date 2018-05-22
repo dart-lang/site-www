@@ -67,7 +67,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-list
     var stuff = <dynamic>[1, 2];
-    var ints = new List<int>.from(stuff);
+    var ints = List<int>.from(stuff);
     // #enddocregion cast-list
   }
 
@@ -164,7 +164,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer
     Future<bool> fileContainsBear(String path) {
-      return new File(path).readAsString().then((contents) {
+      return File(path).readAsString().then((contents) {
         return contents.contains('bear');
       });
     }
@@ -187,7 +187,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer-alt
     Future<bool> fileContainsBear(String path) async {
-      var contents = await new File(path).readAsString();
+      var contents = await File(path).readAsString();
       return contents.contains('bear');
     }
     // #enddocregion avoid-completer-alt
@@ -308,14 +308,14 @@ class C {
 
   // #docregion arrow-setter
   num get x => center.x;
-  set x(num value) => center = new Point(value, center.y);
+  set x(num value) => center = Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
   Treasure openChest(Chest chest, Point where) {
     if (_opened.containsKey(chest)) return null;
 
-    var treasure = new Treasure(where);
+    var treasure = Treasure(where);
     treasure.addAll(chest.contents);
     _opened[chest] = treasure;
     return treasure;

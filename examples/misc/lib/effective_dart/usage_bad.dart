@@ -30,15 +30,15 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection-literals
-    var points = new List();
-    var addresses = new Map();
+    var points = List();
+    var addresses = Map();
     // #enddocregion collection-literals
   }
 
   {
     // #docregion generic-collection-literals
-    var points = new List<Point>();
-    var addresses = new Map<String, Address>();
+    var points = List<Point>();
+    var addresses = Map<String, Address>();
     // #enddocregion generic-collection-literals
   }
 
@@ -140,9 +140,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer
     Future<bool> fileContainsBear(String path) {
-      var completer = new Completer<bool>();
+      var completer = Completer<bool>();
 
-      new File(path).readAsString().then((contents) {
+      File(path).readAsString().then((contents) {
         completer.complete(contents.contains('bear'));
       });
 
@@ -167,7 +167,7 @@ void miscDeclAnalyzedButNotTested() {
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
     Treasure openChest(Chest chest, Point where) =>
-        _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+        _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
           ..addAll(chest.contents);
     // #enddocregion arrow-long
   };
@@ -183,7 +183,7 @@ class BadTeam extends Team {
   // #docregion async-await
   Future<int> countActivePlayers(String teamName) {
     return downloadTeam(teamName).then((team) {
-      if (team == null) return new Future.value(0);
+      if (team == null) return Future.value(0);
 
       return team.roster.then((players) {
         return players.map((player) => player.isActive).length;
