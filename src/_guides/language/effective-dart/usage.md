@@ -1083,7 +1083,9 @@ class Point {
 <!-- TODO(rnystrom): Uncomment this when all Dart tools support it. -->
 <!--
 
-### DON'T use `new`.
+**TODO: Use "###" for header. Removed so this doesn't go into TOC.**
+
+DON'T use `new`.
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
@@ -1108,7 +1110,9 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 
-### DON'T use `const` redundantly.
+**TODO: Use "###" for header. Removed so this doesn't go into TOC.**
+
+DON'T use `const` redundantly.
 
 In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
