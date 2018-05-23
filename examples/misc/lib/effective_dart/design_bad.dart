@@ -82,15 +82,15 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion inferred-wrong
 
   {
-    // #docregion redundant-inferred
+    // #docregion redundant
     Set<String> things = new Set<String>();
-    // #enddocregion redundant-inferred
+    // #enddocregion redundant
   }
 
   {
-    // #docregion redundant-explicit
+    // #docregion explicit
     var things = new Set();
-    // #enddocregion redundant-explicit
+    // #enddocregion explicit
   }
 
   {

@@ -211,8 +211,8 @@
 
 **Types**
 
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-public-top-level-variables-and-fields-if-the-type-isnt-obvious'>PREFER type annotating public top-level variables and fields if the type isn't obvious.</a>
-* <a href='/guides/language/effective-dart/design#consider-type-annotating-private-top-level-variables-and-fields-if-the-type-isnt-obvious'>CONSIDER type annotating private top-level variables and fields if the type isn't obvious.</a>
+* <a href='/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious'>PREFER type annotating public fields and top-level variables if the type isn't obvious.</a>
+* <a href='/guides/language/effective-dart/design#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious'>CONSIDER type annotating private fields and top-level variables if the type isn't obvious.</a>
 * <a href='/guides/language/effective-dart/design#avoid-type-annotating-initialized-local-variables'>AVOID type annotating initialized local variables.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-inferred-parameter-types-on-function-expressions'>AVOID annotating inferred parameter types on function expressions.</a>
 * <a href='/guides/language/effective-dart/design#avoid-redundant-type-arguments-on-generic-invocations'>AVOID redundant type arguments on generic invocations.</a>

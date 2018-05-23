@@ -1053,15 +1053,15 @@ The guidelines here strike the best balance we've found between brevity and
 explicitness, flexibility and safety. When deciding which types to write, you
 need to answer two questions:
 
-* What types should I write because I think it's best for them to be visible in
+* Which types should I write because I think it's best for them to be visible in
   the code?
 
 * Which types should I write because inference can't provide them for me?
 
 These guidelines help you answer the first question:
 
-* [PREFER type annotating public top-level variables and fields if the type isn't obvious.](#prefer-type-annotating-public-top-level-variables-and-fields-if-the-type-isnt-obvious)
-* [CONSIDER type annotating private top-level variables and fields if the type isn't obvious.](#consider-type-annotating-private-top-level-variables-and-fields-if-the-type-isnt-obvious)
+* [PREFER type annotating public fields and top-level variables if the type isn't obvious.](#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)
+* [CONSIDER type annotating private fields and top-level variables if the type isn't obvious.](#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious)
 * [AVOID type annotating initialized local variables.](#avoid-type-annotating-initialized-local-variables)
 * [AVOID annotating inferred parameter types on function expressions.](#avoid-annotating-inferred-parameter-types-on-function-expressions)
 * [AVOID redundant type arguments on generic invocations.](#avoid-redundant-type-arguments-on-generic-invocations)
@@ -1074,7 +1074,7 @@ These cover the second:
 The remaining guidelines cover other more specific questions around types.
 
 
-### PREFER type annotating public top-level variables and fields if the type isn't obvious.
+### PREFER type annotating public fields and top-level variables if the type isn't obvious.
 
 Consider:
 
@@ -1110,25 +1110,25 @@ const screenWidth = 640; // Inferred as int.
 * Factory methods like `int.parse()`, `Future.wait()`, etc. that readers are
   expected to be familiar with.
 
-In general, err on the side of annotating. You may still wish to explicitly
-annotate even the type is obvious. If the inferred type relies on values or
-declarations from other libraries, you may want to annotate the type in *your*
+When in doubt, add a type annotation. Even when a type is obvious, you may still
+wish to explicitly annotate. If the inferred type relies on values or
+declarations from other libraries, you may want to type annotate *your*
 declaration so that a change to that other library doesn't silently change the
 type of your own API without you realizing.
 
 
-### CONSIDER type annotating private top-level variables and fields if the type isn't obvious.
+### CONSIDER type annotating private fields and top-level variables if the type isn't obvious.
 
 Type annotations on your public declarations help *users* of your code. Types on
 private members help *maintainers*. The scope of a private declaration is
 smaller and those who need to know the type of that declaration are also more
 likely to be familiar with the surrounding code. That makes it reasonable to
-lean more heavily on inference and omit types in private declarations, which is
+lean more heavily on inference and omit types for private declarations, which is
 why this guideline is softer than the previous one.
 
 If you think the initializer expression&mdash;whatever it is&mdash;is
 sufficiently clear, then you may omit the annotation. But if you think
-annotating helps make the code clear, then by all means add one.
+annotating helps make the code clearer, then add one.
 
 
 ### AVOID type annotating initialized local variables.
@@ -1169,7 +1169,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
 If the local variable doesn't have an initializer, then its type can't be
 inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
-`dynamic` and lose the benefits of types.
+`dynamic` and lose the benefits of static type checking.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
@@ -1219,39 +1219,37 @@ invocation is the initializer for a type-annotated variable, or is an argument
 to a function, then inference usually fills in the type for you:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant-inferred)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
 {% prettify dart %}
 Set<String> things = new Set();
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant-inferred)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
 {% prettify dart %}
 Set<String> things = new Set<String>();
 {% endprettify %}
 
 Here, the type annotation on the variable is used to infer the type argument of
-constructor call in the initializer. In cases like this where inference produces
-the right type, it's usually abundantly obvious what the type argument will be
-and writing it again is just noise.
+constructor call in the initializer.
 
 In other contexts, there isn't enough information to infer the type and then you
 should write the type argument:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant-explicit)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
 {% prettify dart %}
 var things = new Set<String>();
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant-explicit)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
 {% prettify dart %}
 var things = new Set();
 {% endprettify %}
 
 Here, since the variable has no type annotation, there isn't enough context to
-determine what kind of Set to create, so the type argument should be provided
+determine what kind of `Set` to create, so the type argument should be provided
 explicitly.
 
 
@@ -1274,7 +1272,7 @@ num highScore(List<num> scores) {
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: invalid_assignment\n//g"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
 {% prettify dart %}
 num highScore(List<num> scores) {
   var highest = 0;
