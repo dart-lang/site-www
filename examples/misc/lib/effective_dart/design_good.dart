@@ -160,14 +160,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion generic-invocation
-    var strings = ["str", "ing"];
-    var threes = new List.filled(3, 2);
-    var pointThrees = threes.map((i) => i * 0.1);
-    // #enddocregion generic-invocation
-  }
-
-  {
     // #docregion omit-types-on-locals
     List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
       var desserts = <List<Ingredient>>[];
@@ -202,6 +194,18 @@ void miscDeclAnalyzedButNotTested() {
     return highest;
   }
   // #enddocregion inferred-wrong
+
+  {
+    // #docregion redundant-inferred
+    Set<String> things = new Set();
+    // #enddocregion redundant-inferred
+  }
+
+  {
+    // #docregion redundant-explicit
+    var things = new Set<String>();
+    // #enddocregion redundant-explicit
+  }
 
   {
     // #docregion prefer-dynamic
@@ -312,19 +316,6 @@ typedef Comparison = int Function<T>(T, T);
 // #docregion new-typedef-param-name
 typedef Comparison2 = int Function<T>(T a, T b);
 // #enddocregion new-typedef-param-name
-
-// #docregion explicit-field
-class Histogram {
-  final Map<String, int> counts = {};
-}
-// #enddocregion explicit-field
-
-// #docregion explicit-local
-void countOccurrences(List<String> words) {
-  var wordCounts = <String, int>{};
-  // ...
-}
-// #enddocregion explicit-local
 
 //----------------------------------------------------------------------------
 // Supporting declarations
@@ -453,28 +444,6 @@ class C<Foo> {
   set foo(Foo value) {/* ... */}
 // #enddocregion avoid_return_types_on_setters
 }
-
-//----------------------------------------------------------------------------
-
-class Expression {}
-
-class SourceVisitor {}
-
-// #docregion type-private
-class CallChainVisitor {
-  final SourceVisitor _visitor;
-  final Expression _target;
-  // #enddocregion type-private
-
-  CallChainVisitor(this._target, this._visitor);
-
-  SourceVisitor get visitor => _visitor; // to avoid unused_field hint
-  Expression get target => _target; // to avoid unused_field hint
-  // #docregion type-private
-  // ···
-  void _writeCall(Expression call) {/* ... */}
-}
-// #enddocregion type-private
 
 //----------------------------------------------------------------------------
 
