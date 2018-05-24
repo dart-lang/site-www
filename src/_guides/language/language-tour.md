@@ -168,7 +168,7 @@ The following table lists the words that the Dart language treats specially.
 | continue          | for               | return            | with              |
 | covariant{{bii}}  | get{{bii}}        | set{{bii}}        | yield{{lrw}}      |
 | default           | if                | static{{bii}}     | yield*{{lrw}}     |
-| deferred{{bii}}   | implements{{bii}}                                          
+| deferred{{bii}}   | implements{{bii}}
 {:.table .table-striped .nowrap}
 
 <sup>1</sup> Words with the superscript **1**
@@ -844,7 +844,7 @@ bool isNoble(int atomicNumber) {
 {% endprettify %}
 
 Although Effective Dart recommends
-[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred),
+[type annotations for public APIs](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious),
 the function still works if you omit the types:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>

@@ -51,31 +51,21 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion func-expr-no-param-type
-    var names = people.map((Person person) {
-      return person.name;
-    });
+    var names = people.map((Person person) => person.name);
     // #enddocregion func-expr-no-param-type
-  }
-
-  {
-    // #docregion generic-invocation
-    var strings = <String>["str", "ing"];
-    var threes = new List<int>.filled(3, 2);
-    var pointThrees = threes.map<double>((i) => i * 0.1);
-    // #enddocregion generic-invocation
   }
 
   {
     // #docregion omit-types-on-locals
     List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
-      List<List<Ingredient>> recipes = <List<Ingredient>>[];
-      for (List<Ingredient> ingredients in cookbook) {
-        if (pantry.containsAll(ingredients)) {
-          recipes.add(ingredients);
+      List<List<Ingredient>> desserts = <List<Ingredient>>[];
+      for (List<Ingredient> recipe in cookbook) {
+        if (pantry.containsAll(recipe)) {
+          desserts.add(recipe);
         }
       }
 
-      return recipes;
+      return desserts;
     }
     // #enddocregion omit-types-on-locals
   }
@@ -90,6 +80,18 @@ void miscDeclAnalyzedButNotTested() {
     return highest;
   }
   // #enddocregion inferred-wrong
+
+  {
+    // #docregion redundant
+    Set<String> things = new Set<String>();
+    // #enddocregion redundant
+  }
+
+  {
+    // #docregion explicit
+    var things = new Set();
+    // #enddocregion explicit
+  }
 
   {
     // #docregion prefer-dynamic
@@ -130,12 +132,6 @@ typedef int Comparison<T>(T a, T b);
 // #docregion typedef-param
 typedef bool TestNumber(num);
 // #enddocregion typedef-param
-
-// #docregion explicit-field
-class Histogram {
-  final counts = <String, int>{};
-}
-// #enddocregion explicit-field
 
 //----------------------------------------------------------------------------
 

@@ -1019,16 +1019,11 @@ in a couple of places, we have different guidance for when a type is used in a
 generic invocation as opposed to a type annotation.
 
 In most places, Dart allows you to omit a type annotation and infers a type for
-you based on the nearby context, or defaults to the `dynamic` type. Inference is
-a powerful tool to spare you the effort of writing (and reading) types that are
-obvious or uninteresting, but explicit annotations are still worthwhile in some
-cases. The guidelines here strike the best balance we've found between brevity
-and explicitness, flexibility and safety.
-
-The fact that Dart has both type inference and a `dynamic` type leads to some
-confusion about what it means to say code is "untyped". Does that mean the code
-is dynamically typed, or that you didn't *write* the type? To avoid that
-confusion, we avoid saying "untyped" and instead use the following terminology:
+you based on the nearby context, or defaults to the `dynamic` type. The fact
+that Dart has both type inference and a `dynamic` type leads to some confusion
+about what it means to say code is "untyped". Does that mean the code is
+dynamically typed, or that you didn't *write* the type? To avoid that confusion,
+we avoid saying "untyped" and instead use the following terminology:
 
 *   If the code is *type annotated*, the type was explicitly written in the
     code.
@@ -1045,48 +1040,44 @@ confusion, we avoid saying "untyped" and instead use the following terminology:
 In other words, whether some code is annotated or inferred is orthogonal to
 whether it is `dynamic` or some other type.
 
+Inference is a powerful tool to spare you the effort of writing and reading
+types that are obvious or uninteresting. Omitting types in obvious cases also
+draws the reader's attention to explicit types when those types are important,
+for things like casts.
 
-### DO annotate when Dart infers the wrong type.
+Explicit types are also a key part of robust, maintainable code. They define the
+static shape of an API. They document and enforce what kinds of values are
+allowed to reach different parts of the program.
 
-Sometimes, Dart infers a type, but not the type you want. For example, you may
-want a variable's type to be a supertype of the initializer's type so that you
-can later assign some other sibling type to the variable:
+The guidelines here strike the best balance we've found between brevity and
+explicitness, flexibility and safety. When deciding which types to write, you
+need to answer two questions:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
-{% prettify dart %}
-num highScore(List<num> scores) {
-  num highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
-}
-{% endprettify %}
+* Which types should I write because I think it's best for them to be visible in
+  the code?
+* Which types should I write because inference can't provide them for me?
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: invalid_assignment\n//g"?>
-{% prettify dart %}
-num highScore(List<num> scores) {
-  var highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
-}
-{% endprettify %}
+These guidelines help you answer the first question:
 
-Here, if `scores` contains doubles, like `[1.2]`, then the assignment to
-`highest` will fail since its inferred type is `int`, not `num`. In these cases,
-explicit annotations make sense. In the guidelines below, treat *inferred* as
-meaning *inferred to be the type you want*.
+* [PREFER type annotating public fields and top-level variables if the type isn't obvious.](#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)
+* [CONSIDER type annotating private fields and top-level variables if the type isn't obvious.](#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious)
+* [AVOID type annotating initialized local variables.](#avoid-type-annotating-initialized-local-variables)
+* [AVOID annotating inferred parameter types on function expressions.](#avoid-annotating-inferred-parameter-types-on-function-expressions)
+* [AVOID redundant type arguments on generic invocations.](#avoid-redundant-type-arguments-on-generic-invocations)
+
+These cover the second:
+
+* [DO annotate when Dart infers the wrong type.](#do-annotate-when-dart-infers-the-wrong-type)
+* [PREFER annotating with `dynamic` instead of letting inference fail.](#prefer-annotating-with-dynamic-instead-of-letting-inference-fail)
+
+The remaining guidelines cover other more specific questions around types.
 
 
-### DO type annotate public declarations whose type isn't inferred.
+### PREFER type annotating public fields and top-level variables if the type isn't obvious.
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
-type error.
+type error. Consider:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
@@ -1103,7 +1094,7 @@ or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 Future<bool> install(PackageId id, String destination) => ...
 {% endprettify %}
 
-When Dart can infer the type for you, then it's fine to omit the annotation:
+In some cases, though, the type is so obvious that writing it is pointless:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
@@ -1111,46 +1102,41 @@ When Dart can infer the type for you, then it's fine to omit the annotation:
 const screenWidth = 640; // Inferred as int.
 {% endprettify %}
 
-You may still wish to explicitly annotate even when inference would fill in the
-same type. If the inference relies on values or declarations from other
-libraries, you may want to annotate the type in *your* declaration so that a
-change to that other library doesn't silently change the type of your own API
-without you realizing.
+"Obvious" isn't precisely defined, but these are all good candidates:
 
-This guideline does *not* mean you can never use the dynamic type in a public
-signature, just that you should *annotate* it explicitly when you do so.
+* Literals.
+* Constructor invocations.
+* References to other constants that are explicitly typed.
+* Simple expressions on numbers and strings.
+* Factory methods like `int.parse()`, `Future.wait()`, etc. that readers are
+  expected to be familiar with.
 
-
-### PREFER type annotating private declarations whose type isn't inferred.
-
-Type annotations on your public declarations help *users* of your code. Nearly
-as important is guiding *maintainers* of your code. Adding type annotations to
-private member and variable declarations can help future readers of your code
-understand it, and help corral bugs.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (type-private)"?>
-{% prettify dart %}
-class CallChainVisitor {
-  final SourceVisitor _visitor;
-  final Expression _target;
-  // ···
-  void _writeCall(Expression call) { ... }
-}
-{% endprettify %}
-
-This guideline is deliberately softer than the previous one because the benefits
-of static typing are smaller when code is confined within a single library. In
-practice, though, most Dart users type annotate all declarations, public or
-private.
+When in doubt, add a type annotation. Even when a type is obvious, you may still
+wish to explicitly annotate. If the inferred type relies on values or
+declarations from other libraries, you may want to type annotate *your*
+declaration so that a change to that other library doesn't silently change the
+type of your own API without you realizing.
 
 
-### AVOID annotating types for initialized local variables.
+### CONSIDER type annotating private fields and top-level variables if the type isn't obvious.
 
-Function bodies in idiomatic code tend to be short, and the types of local
-variables are almost always obvious and inferrable from the initializing
-expression. Writing that type down is often simply visual noise. Instead, spend
-that energy choosing a great *name* for your local variable.
+Type annotations on your public declarations help *users* of your code. Types on
+private members help *maintainers*. The scope of a private declaration is
+smaller and those who need to know the type of that declaration are also more
+likely to be familiar with the surrounding code. That makes it reasonable to
+lean more heavily on inference and omit types for private declarations, which is
+why this guideline is softer than the previous one.
+
+If you think the initializer expression&mdash;whatever it is&mdash;is
+sufficiently clear, then you may omit the annotation. But if you think
+annotating helps make the code clearer, then add one.
+
+
+### AVOID type annotating initialized local variables.
+
+Local variables, especially in modern code where functions tend to be small,
+have very little scope. Omitting the type focuses the reader's attention on the
+more important *name* of the variable and its initialized value.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-types-on-locals)"?>
@@ -1171,20 +1157,20 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
-  List<List<Ingredient>> recipes = <List<Ingredient>>[];
-  for (List<Ingredient> ingredients in cookbook) {
-    if (pantry.containsAll(ingredients)) {
-      recipes.add(ingredients);
+  List<List<Ingredient>> desserts = <List<Ingredient>>[];
+  for (List<Ingredient> recipe in cookbook) {
+    if (pantry.containsAll(recipe)) {
+      desserts.add(recipe);
     }
   }
 
-  return recipes;
+  return desserts;
 }
 {% endprettify %}
 
 If the local variable doesn't have an initializer, then its type can't be
-inferred. In that case, it *is* a good idea to annotate it. Otherwise, you get
-`dynamic` and lose the benefits of types.
+inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
+`dynamic` and lose the benefits of static type checking.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
@@ -1219,9 +1205,7 @@ var names = people.map((person) => person.name);
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (func-expr-no-param-type)"?>
 {% prettify dart %}
-var names = people.map((Person person) {
-  return person.name;
-});
+var names = people.map((Person person) => person.name);
 {% endprettify %}
 
 In rare cases, the surrounding context is not precise enough to provide a type
@@ -1229,93 +1213,80 @@ for one or more of the function's parameters. In those cases, you may need to
 annotate.
 
 
-### AVOID type arguments on generic invocations that can be inferred.
+### AVOID redundant type arguments on generic invocations.
 
-It's often useful to annotate *declarations* because they form the boundary of
-your API. But when instantiating an object or invoking a generic method, the
-type is often just noise. If inference produces the correct type, omit the
-annotation.
-
-When this rule is followed consistently, it helps draw the reader's attention to
-cases where inference does *not* produce the right type. The presence of the
-type argument sends a signal that that type is not otherwise pinned down by the
-surrounding code, and is telling you something useful.
+A type argument is redundant if inference would fill in the same type. If the
+invocation is the initializer for a type-annotated variable, or is an argument
+to a function, then inference usually fills in the type for you:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (generic-invocation)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
 {% prettify dart %}
-var strings = ["str", "ing"];
-var threes = new List.filled(3, 2);
-var pointThrees = threes.map((i) => i * 0.1);
+Set<String> things = new Set();
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (generic-invocation)"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
 {% prettify dart %}
-var strings = <String>["str", "ing"];
-var threes = new List<int>.filled(3, 2);
-var pointThrees = threes.map<double>((i) => i * 0.1);
+Set<String> things = new Set<String>();
 {% endprettify %}
 
+Here, the type annotation on the variable is used to infer the type argument of
+constructor call in the initializer.
 
-### PREFER type annotating declarations for top-level variables and fields that can't be inferred.
-
-Sometimes the initializer expression doesn't contain enough information to fully
-infer the type of a declaration. You typically have two options:
-
-*   You can annotate the declaration, which inference then pushes over to the
-    generic invocation:
-
-    {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit-field)"?>
-    {% prettify dart %}
-    class Histogram {
-      final Map<String, int> counts = {};
-    }
-    {% endprettify %}
-
-    (We call this *downwards inference* because we think of the code as a tree,
-    and the initializer expression is a subtree of the larger declaration tree.)
-
-*   You can annotate the generic invocation expression in the initializer, which
-    inference then uses to infer the field or variable's type:
-
-    {:.bad-style}
-    <?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit-field)"?>
-    {% prettify dart %}
-    class Histogram {
-      final counts = <String, int>{};
-    }
-    {% endprettify %}
-
-    (Conversely, we call this *upwards inference* because the type is flowing up
-    from the initializer expression to the surrounding declaration.)
-
-In other words, you can put the type "on the left" or "on the right". Since we
-already have a guideline encouraging you to explicitly type top-level
-declarations, this guideline just restates that you should prefer typing "on the
-left".
-
-
-### PREFER type annotating generic invocations for local variables that can't be inferred.
-
-This is the other side of the previous rule. For *local* variables, the guidance
-is that you should avoid annotating them when possible. To stay consistent with
-that, if inference fails on a local variable, prefer fixing that by typing the
-generic invocation so that you don't need to annotate the local variable itself:
+In other contexts, there isn't enough information to infer the type and then you
+should write the type argument:
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit-local)"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
 {% prettify dart %}
-void countOccurrences(List<String> words) {
-  var wordCounts = <String, int>{};
-  // ...
+var things = new Set<String>();
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
+{% prettify dart %}
+var things = new Set();
+{% endprettify %}
+
+Here, since the variable has no type annotation, there isn't enough context to
+determine what kind of `Set` to create, so the type argument should be provided
+explicitly.
+
+
+### DO annotate when Dart infers the wrong type.
+
+Sometimes, Dart infers a type, but not the type you want. For example, you may
+want a variable's type to be a supertype of the initializer's type so that you
+can later assign some other sibling type to the variable:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
+{% prettify dart %}
+num highScore(List<num> scores) {
+  num highest = 0;
+  for (var score in scores) {
+    if (score > highest) highest = score;
+  }
+  return highest;
 }
 {% endprettify %}
 
-Of course, if the initializer isn't a generic invocation or there isn't a way to
-put a type annotation in the initializer to get inference working, then typing
-the local variable itself is the way to go.
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
+{% prettify dart %}
+num highScore(List<num> scores) {
+  var highest = 0;
+  for (var score in scores) {
+    if (score > highest) highest = score;
+  }
+  return highest;
+}
+{% endprettify %}
+
+Here, if `scores` contains doubles, like `[1.2]`, then the assignment to
+`highest` will fail since its inferred type is `int`, not `num`. In these cases,
+explicit annotations make sense.
 
 
 ### PREFER annotating with `dynamic` instead of letting inference fail.

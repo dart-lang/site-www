@@ -211,14 +211,12 @@
 
 **Types**
 
-* <a href='/guides/language/effective-dart/design#do-annotate-when-dart-infers-the-wrong-type'>DO annotate when Dart infers the wrong type.</a>
-* <a href='/guides/language/effective-dart/design#do-type-annotate-public-declarations-whose-type-isnt-inferred'>DO type annotate public declarations whose type isn't inferred.</a>
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-private-declarations-whose-type-isnt-inferred'>PREFER type annotating private declarations whose type isn't inferred.</a>
-* <a href='/guides/language/effective-dart/design#avoid-annotating-types-for-initialized-local-variables'>AVOID annotating types for initialized local variables.</a>
+* <a href='/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious'>PREFER type annotating public fields and top-level variables if the type isn't obvious.</a>
+* <a href='/guides/language/effective-dart/design#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious'>CONSIDER type annotating private fields and top-level variables if the type isn't obvious.</a>
+* <a href='/guides/language/effective-dart/design#avoid-type-annotating-initialized-local-variables'>AVOID type annotating initialized local variables.</a>
 * <a href='/guides/language/effective-dart/design#avoid-annotating-inferred-parameter-types-on-function-expressions'>AVOID annotating inferred parameter types on function expressions.</a>
-* <a href='/guides/language/effective-dart/design#avoid-type-arguments-on-generic-invocations-that-can-be-inferred'>AVOID type arguments on generic invocations that can be inferred.</a>
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-declarations-for-top-level-variables-and-fields-that-cant-be-inferred'>PREFER type annotating declarations for top-level variables and fields that can't be inferred.</a>
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-generic-invocations-for-local-variables-that-cant-be-inferred'>PREFER type annotating generic invocations for local variables that can't be inferred.</a>
+* <a href='/guides/language/effective-dart/design#avoid-redundant-type-arguments-on-generic-invocations'>AVOID redundant type arguments on generic invocations.</a>
+* <a href='/guides/language/effective-dart/design#do-annotate-when-dart-infers-the-wrong-type'>DO annotate when Dart infers the wrong type.</a>
 * <a href='/guides/language/effective-dart/design#prefer-annotating-with-dynamic-instead-of-letting-inference-fail'>PREFER annotating with <code>dynamic</code> instead of letting inference fail.</a>
 * <a href='/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations'>PREFER signatures in function type annotations.</a>
 * <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
