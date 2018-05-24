@@ -1786,8 +1786,8 @@ if (isRaining()) {
 }
 {% endprettify %}
 
-Remember, unlike JavaScript, Dart treats all values other than `true` as
-`false`. See [Booleans](#booleans) for more information.
+Unlike JavaScript, conditions must use boolean values, nothing else. See
+[Booleans](#booleans) for more information.
 
 
 ### For loops
