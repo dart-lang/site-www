@@ -1055,7 +1055,6 @@ need to answer two questions:
 
 * Which types should I write because I think it's best for them to be visible in
   the code?
-
 * Which types should I write because inference can't provide them for me?
 
 These guidelines help you answer the first question:
@@ -1076,7 +1075,9 @@ The remaining guidelines cover other more specific questions around types.
 
 ### PREFER type annotating public fields and top-level variables if the type isn't obvious.
 
-Consider:
+Type annotations are important documentation for how a library should be used.
+They form boundaries between regions of a program to isolate the source of a
+type error. Consider:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
@@ -1156,14 +1157,14 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
-  List<List<Ingredient>> recipes = <List<Ingredient>>[];
-  for (List<Ingredient> ingredients in cookbook) {
-    if (pantry.containsAll(ingredients)) {
-      recipes.add(ingredients);
+  List<List<Ingredient>> desserts = <List<Ingredient>>[];
+  for (List<Ingredient> recipe in cookbook) {
+    if (pantry.containsAll(recipe)) {
+      desserts.add(recipe);
     }
   }
 
-  return recipes;
+  return desserts;
 }
 {% endprettify %}
 

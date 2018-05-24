@@ -58,14 +58,14 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion omit-types-on-locals
     List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
-      List<List<Ingredient>> recipes = <List<Ingredient>>[];
-      for (List<Ingredient> ingredients in cookbook) {
-        if (pantry.containsAll(ingredients)) {
-          recipes.add(ingredients);
+      List<List<Ingredient>> desserts = <List<Ingredient>>[];
+      for (List<Ingredient> recipe in cookbook) {
+        if (pantry.containsAll(recipe)) {
+          desserts.add(recipe);
         }
       }
 
-      return recipes;
+      return desserts;
     }
     // #enddocregion omit-types-on-locals
   }
