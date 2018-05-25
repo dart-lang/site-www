@@ -355,10 +355,18 @@ named `breakfastOrder`.
 
 Even if the member does need to be a method because it takes arguments or
 otherwise isn't a good fit for a getter, you should still avoid `get`. Like the
-previous guidelines state, you can use a noun phrase name like
-`breakfastOrder()` or choose a verb that more usefully describes how the method
-produces its result. The word `get` conveys nothing to the caller that they
-don't already know.
+previous guidelines state, either:
+
+* Simply drop `get` and [use a noun phrase name][noun] like `breakfastOrder()`
+  if the caller mostly cares about the value the method returns.
+
+* [Use a verb phrase name][verb] if the caller cares about the work being done,
+  but pick a verb that more precisely describes the work than `get`, like
+  `create`, `download`, `fetch`, `calculate`, `request`, `aggregate`, etc.
+
+[noun]: #prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+
+[verb]: #consider-an-imperative-verb-phrase-for-a-function-or-method-if-you-want-to-draw-attention-to-the-work-it-performs
 
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
