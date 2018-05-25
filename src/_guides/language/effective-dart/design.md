@@ -624,8 +624,7 @@ In idiomatic Dart, classes define *kinds of objects*. A type that is never
 instantiated is a code smell.
 
 However, this isn't a hard rule. With constants and enum-like types, it may be
-natural to group them in a class. Even then, it's also reasonable to use a
-library instead.
+natural to group them in a class.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static-exception)"?>
