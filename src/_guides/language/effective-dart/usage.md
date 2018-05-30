@@ -520,7 +520,7 @@ Here is **casting eagerly using `List.from()`:**
 {% prettify dart %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
-  var ints = objects.cast<int>();
+  var ints = new List<int>.from(objects);
   ints.sort();
   return ints[ints.length ~/ 2];
 }
@@ -531,7 +531,7 @@ int median(List<Object> objects) {
 {% prettify dart %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
-  var ints = new List<int>.from(objects);
+  var ints = objects.cast<int>();
   ints.sort();
   return ints[ints.length ~/ 2];
 }
