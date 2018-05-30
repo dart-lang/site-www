@@ -19,7 +19,7 @@ The Dart language, libraries, build system, and web development tools have chang
 
 * [Dart's type system][sound Dart] is now sound.
   * [Fixing common type problems][Fixing Common Type Problems]
-  * [Email: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
+  * [Flutter announcement: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
 * Dart no longer has checked mode.
   * [Assert statements][] are still supported, but you enable them differently.
 * The Dart language and core libraries have changed,
