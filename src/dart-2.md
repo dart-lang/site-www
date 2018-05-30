@@ -60,13 +60,13 @@ from either Dart 1.x or an earlier version of Dart 2.
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
    * Dart VM or web: [`pub upgrade`][pub upgrade]
 3. **Run the [dart2_fix tool.][dart2_fix]**
-4. **Run the analyzer** to find [compile-time errors][Fixing Common Type Problems].
+4. **Run the analyzer** to find [compile-time errors][].
    * Flutter: [`flutter analyze`][Flutter analyzer]
    * Dart VM or web: [`dartanalyzer`][dartanalyzer] with
      [Dart 2 semantics][enable strong mode]
 5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
-6. **Run tests to find runtime errors.**
+6. **Run tests to find [runtime errors][].**
    * Run all [automated tests] for your software.
    * Do manual testing, and look for console errors.
    Consider adding automated tests to catch issues that you find.
@@ -160,6 +160,7 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
 [build_runner web]: {{site.dev-webdev}}/tools/build_runner
+[compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
@@ -175,6 +176,7 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
 [pre-release]: /tools/sdk#about-release-channels-and-version-strings
+[runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
