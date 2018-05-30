@@ -99,7 +99,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion cast-from
   int median(List<Object> objects) {
     // We happen to know the list only contains ints.
-    var ints = new List<int>.from(objects);
+    var ints = objects.cast<int>();
     ints.sort();
     return ints[ints.length ~/ 2];
   }
