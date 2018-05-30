@@ -59,7 +59,8 @@ from either Dart 1.x or an earlier version of Dart 2.
 2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
    * Dart VM or web: [`pub upgrade`][pub upgrade]
-3. **Run the [dart2_fix tool.][dart2_fix]**
+3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
+   usages of deprecated Dart 1.x APIs to Dart 2.
 4. **Run the analyzer** to find [compile-time errors][].
    * Flutter: [`flutter analyze`][Flutter analyzer]
    * Dart VM or web: [`dartanalyzer`][dartanalyzer] with
