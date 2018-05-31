@@ -1682,12 +1682,12 @@ DateTime(int year,
     int microsecond = 0]);
 
 Duration(
-    {int days: 0,
-    int hours: 0,
-    int minutes: 0,
-    int seconds: 0,
-    int milliseconds: 0,
-    int microseconds: 0});
+    {int days = 0,
+    int hours = 0,
+    int minutes = 0,
+    int seconds = 0,
+    int milliseconds = 0,
+    int microseconds = 0});
 {% endprettify %}
 
 
