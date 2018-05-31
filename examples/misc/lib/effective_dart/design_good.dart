@@ -471,12 +471,12 @@ class DateTime0 {
 class Duration0 {
   // #docregion omit-optional-positional
   Duration0(
-      {int days: 0,
-      int hours: 0,
-      int minutes: 0,
-      int seconds: 0,
-      int milliseconds: 0,
-      int microseconds: 0});
+      {int days = 0,
+      int hours = 0,
+      int minutes = 0,
+      int seconds = 0,
+      int milliseconds = 0,
+      int microseconds = 0});
   // #enddocregion omit-optional-positional
 }
 
