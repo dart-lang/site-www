@@ -118,9 +118,9 @@ function analyze_and_test() {
   if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
   travis_fold end analyzeAndTest.tests.vm
 
-  #TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
-  # Skip pi_test.dart until this is fixed: https://github.com/dart-lang/site-www/issues/673
-  TEST_FILES=`find . -name "*_test.dart" -exec grep -l "@TestOn('browser')" {} + | grep -v pi_test`
+  TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
+  # Use the following to selectively remove some tests:
+  # TEST_FILES=`find . -name "*_test.dart" -exec grep -l "@TestOn('browser')" {} + | grep -v pi_test`
   if [[ -z $TEST_FILES ]]; then
     echo "No browser-only tests."
   else
