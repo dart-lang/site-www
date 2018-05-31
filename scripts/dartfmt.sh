@@ -33,7 +33,6 @@ $DARTFMT -l 65 \
   $EXAMPLES/misc/lib/library_tour/async/future.dart \
   $EXAMPLES/misc/lib/library_tour/async/stream.dart \
   $EXAMPLES/misc/test/library_tour/io_test.dart \
-  $EXAMPLES/misc/test/library_tour/mirrors_test.dart \
   $EXAMPLES/httpserver/bin/basic_writer_server.dart \
   $EXAMPLES/httpserver/bin/note_server.dart \
   $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
