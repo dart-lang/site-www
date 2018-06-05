@@ -14,7 +14,6 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
-    - DART_VM_OPTIONS=--preview-dart-2
   matrix:
     - TASK="./scripts/check-code.sh"
     - TASK="./scripts/analyze-and-test-examples.sh"
