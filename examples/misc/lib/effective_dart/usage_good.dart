@@ -269,7 +269,7 @@ class Team {
       if (team == null) return 0;
 
       var players = await team.roster;
-      return players.map((player) => player.isActive).length;
+      return players.where((player) => player.isActive).length;
     } catch (e) {
       log.error(e);
       return 0;
