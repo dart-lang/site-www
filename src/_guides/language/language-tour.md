@@ -3222,7 +3222,8 @@ declare it as `List<String>` (read that as “list of string”). That way
 you, your fellow programmers, and your tools can detect that assigning a non-string to
 the list is probably a mistake. Here’s an example:
 
-<?code-excerpt "misc/test/language_tour/generics_test.dart (why-generics)"?>
+{:.fails-sa}
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3370,7 +3371,7 @@ var foo = new Foo();
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/generics/base_class_extra.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
 var foo = new [!Foo<Object>!]();
 {% endprettify %}

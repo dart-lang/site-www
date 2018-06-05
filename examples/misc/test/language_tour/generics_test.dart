@@ -7,10 +7,6 @@ import 'package:dartlang_examples_util/print_matcher.dart' as m;
 final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
 
 void main() {
-  test('why-generics', () {
-    expect(() => assignIntToStringList(), throwsATypeError);
-  });
-
   test('constructor-1', () {
     // #docregion constructor-1
     var names = new List<String>();
@@ -57,15 +53,7 @@ void main() {
   test('base_class', () {
     expect(base_class.main,
         m.prints('Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>'));
-  });
-}
-
-void assignIntToStringList() {
-  // #docregion why-generics
-  var names = new List<String>();
-  names.addAll(['Seth', 'Kathy', 'Lars']);
-  names.add(42); // Error
-  // #enddocregion why-generics
+  }, skip: 'https://github.com/dart-lang/sdk/issues/33334');
 }
 
 class View {}
