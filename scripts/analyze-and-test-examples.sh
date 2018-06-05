@@ -12,6 +12,7 @@ ROOT=$(pwd)
 
 # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
 ANALYZE="dartanalyzer --preview-dart-2 --strong --no-implicit-casts "
+DART_VM_OPTIONS=--preview-dart-2
 DART_MAJOR_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\d)\./')
 EXAMPLES="$ROOT/examples"
 
