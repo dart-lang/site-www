@@ -1,5 +1,5 @@
 language: dart
-dart: 2.0.0-dev.59.0
+dart: 2.0.0-dev.60.0
 
 cache:
   timeout: 300
@@ -14,6 +14,7 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
+    - DART_VM_OPTIONS=--preview-dart-2
   matrix:
     - TASK="./scripts/check-code.sh"
     - TASK="./scripts/analyze-and-test-examples.sh"
