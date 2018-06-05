@@ -34,13 +34,12 @@ void main() {
         // Prints "List<int>":
         print(iterable.toList().runtimeType);
 
-        // Prints "List", which means List<dynamic>:
+        // Prints "List<dynamic>":
         print(new List.from(iterable).runtimeType);
         // #enddocregion list-from-2
       }
 
-      // FIXME: For Dart 2 final, the first output should be "List<int>"
-      expect(_test, prints('List\nList\n'));
+      expect(_test, prints('List<int>\nList<dynamic>\n'));
     });
 
     test('List.from<int>() from List<num>', () {

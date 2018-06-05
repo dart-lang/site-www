@@ -339,7 +339,7 @@ var iterable = [1, 2, 3];
 // Prints "List<int>":
 print(iterable.toList().runtimeType);
 
-// Prints "List", which means List<dynamic>:
+// Prints "List<dynamic>":
 print(new List.from(iterable).runtimeType);
 {% endprettify %}
 
