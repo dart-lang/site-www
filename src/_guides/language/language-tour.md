@@ -2152,7 +2152,7 @@ use the `rethrow` keyword.
 void misbehave() {
   try {
     dynamic foo = true;
-    print(foo++); // Runtime type error
+    print(foo++); // Runtime error
   } catch (e) {
     print('misbehave() partially handled ${e.runtimeType}.');
     [!rethrow;!] // Allow callers to see the exception.
@@ -3340,35 +3340,34 @@ You can do this using `extends`.
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart %}
-// T must be SomeBaseClass or one of its descendants.
 class Foo<T [!extends SomeBaseClass!]> {
-  // ···
+  // Implementation goes here...
+  String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {
-  // ···
-}
+class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
 It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
 var someBaseClassFoo = new [!Foo<SomeBaseClass>!]();
 var extenderFoo = new [!Foo<Extender>!]();
 {% endprettify %}
 
-It's also OK to specify no generic argument:
+When you don't provide a type argument, it defaults to the type bound:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (no-generic-arg-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
 var foo = new Foo();
+print(foo); // Instance of 'Foo<SomeBaseClass>'
 {% endprettify %}
 
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/base_class_extra.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
 var foo = new [!Foo<Object>!]();
 {% endprettify %}

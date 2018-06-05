@@ -1,8 +1,7 @@
 // ignore_for_file: argument_type_not_assignable
 // #docplaster
-import 'package:examples/language_tour/generics/base_class.dart' as base_class;
+import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
 
@@ -32,7 +31,7 @@ void main() {
       // #enddocregion generic-collections
     }
 
-    expect(_test, m.prints('true'));
+    expect(_test, prints('true\n'));
   });
 
   test('method', () {
@@ -47,13 +46,22 @@ void main() {
 
     void main() => print('first: ${first<int>([1,2,3])}');
     // #enddocregion method-with-main
-    expect(main, m.prints('first: 1'));
+    expect(main, prints('first: 1\n'));
   });
 
   test('base_class', () {
-    expect(base_class.main,
-        m.prints('Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>'));
-  }, skip: 'https://github.com/dart-lang/sdk/issues/33334');
+    // #docregion SomeBaseClass-ok
+    var someBaseClassFoo = new Foo<SomeBaseClass>();
+    var extenderFoo = new Foo<Extender>();
+    // #enddocregion SomeBaseClass-ok
+    expect(someBaseClassFoo.toString(), "Instance of 'Foo<SomeBaseClass>'");
+    expect(extenderFoo.toString(), "Instance of 'Foo<Extender>'");
+
+    // #docregion no-generic-arg-ok
+    var foo = new Foo();
+    expect(foo.toString(), "Instance of 'Foo<SomeBaseClass>'");
+    // #enddocregion no-generic-arg-ok
+  });
 }
 
 class View {}
