@@ -1262,7 +1262,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
     if (team == null) return 0;
 
     var players = [!await!] team.roster;
-    return players.map((player) => player.isActive).length;
+    return players.where((player) => player.isActive).length;
   } catch (e) {
     log.error(e);
     return 0;
@@ -1278,7 +1278,7 @@ Future<int> countActivePlayers(String teamName) {
     if (team == null) return new Future.value(0);
 
     return team.roster.then((players) {
-      return players.map((player) => player.isActive).length;
+      return players.where((player) => player.isActive).length;
     });
   }).catchError((e) {
     log.error(e);

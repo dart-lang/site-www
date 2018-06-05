@@ -222,7 +222,7 @@ class BadTeam extends Team {
       if (team == null) return new Future.value(0);
 
       return team.roster.then((players) {
-        return players.map((player) => player.isActive).length;
+        return players.where((player) => player.isActive).length;
       });
     }).catchError((e) {
       log.error(e);
