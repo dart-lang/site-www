@@ -98,20 +98,8 @@ function analyze_and_test() {
   travis_fold start analyzeAndTest.tests.vm
   echo Running VM tests ...
 
-  # We cannot yet test httpserver under Dart 2:
-  # file:///Users/chalin/.pub-cache/hosted/pub.dartlang.org/http_server-0.9.7/lib/src/http_multipart_form_data_impl.dart:90:22: Error: The method 'HttpMultipartFormDataImpl::listen' doesn't have the named parameter 'onDone' of overriden method 'Stream::listen'.
-  # StreamSubscription listen(void onData(data),
-  #                    ^
-  # We also can't run misc tests under Dart 2 unless we write our own test runner,
-  # so for now, we'll only run the strong mode tests under Dart 2:
-
-  if [[ "$DART_MAJOR_VERS" == "2" && "$PROJECT_ROOT" == *strong ]]; then
-    TEST="dart"
-    TEST_ARGS="--strong --preview-dart-2 --reify-generic-functions test/*"
-  else
-    TEST="pub run test"
-    TEST_ARGS="--exclude-tags=browser"
-  fi
+  TEST="pub run test"
+  TEST_ARGS="--exclude-tags=browser"
 
   echo $TEST $TEST_ARGS
   $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
