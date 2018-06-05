@@ -2149,11 +2149,10 @@ use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
 {% prettify dart %}
-final foo = '';
-
 void misbehave() {
   try {
-    foo = "You can't change a final variable's value.";
+    dynamic foo = true;
+    print(foo++); // Runtime type error
   } catch (e) {
     print('misbehave() partially handled ${e.runtimeType}.');
     [!rethrow;!] // Allow callers to see the exception.
@@ -2217,13 +2216,11 @@ for a class. Constructor names can be either <code><em>ClassName</em></code> or
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
-var jsonData = jsonDecode('{"x":1, "y":2}');
-
 // Create a Point using Point().
 var p1 = new Point(2, 2);
 
 // Create a Point using Point.fromJson().
-var p2 = new Point.fromJson(jsonData);
+var p2 = new Point.fromJson({'x': 1, 'y': 2});
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
