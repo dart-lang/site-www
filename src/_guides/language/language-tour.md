@@ -3356,7 +3356,7 @@ var someBaseClassFoo = new [!Foo<SomeBaseClass>!]();
 var extenderFoo = new [!Foo<Extender>!]();
 {% endprettify %}
 
-When you don't provide a type argument, it defaults to the type bound:
+It’s also OK to specify no generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
