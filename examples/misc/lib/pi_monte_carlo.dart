@@ -40,9 +40,9 @@ Stream<double> computePi({int batch: 100000}) async* { //!tip("async*") //!tip("
 }
 
 Iterable<Point> generateRandom([int seed]) sync* { //!tip("sync*") //!tip("[int seed]") //!tip("Iterable")
-  final random = new Random(seed); //!tip("final")
+  final random = Random(seed); //!tip("final")
   while (true) {
-    yield new Point(random.nextDouble(), random.nextDouble()); //!tip("yield")
+    yield Point(random.nextDouble(), random.nextDouble()); //!tip("yield")
   }
 }
 
