@@ -33,9 +33,10 @@ ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dartfmt)
 ARGS+='/ellipsis(<\w+>)?(\(\))?;?/.../g;' # ellipses; --> ...
 ARGS+='/\/\*(\s*\.\.\.\s*)\*\//$1/g;' # /*...*/ --> ...
 ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brackets too)
-# Replace "//!analysis-issue" by, say, "Analysis issue" (although once we can use embedded DPs this won't be needed0)?
+# Replace "//!analysis-issue" by, say, "Analysis issue" (although once we can use embedded DPs this won't be needed)?
 ARGS+='/\/\/!(analysis-issue|runtime-error)[^\n]*//g;' # Removed warning/error marker
-ARGS+='/\x20*\/\/\s+ignore_for_file:[^\n]+\n//g;' # Remove warning/error marker
+ARGS+='/\x20*\/\/\s+ignore_for_file:[^\n]+\n//g;' # Remove analyzer ignore-issue marker
+ARGS+='/\x20*\/\/\s+ignore:[^\n]+//g;' # Remove analyzer ignore-issue marker
 
 echo "Source:     $SRC"
 echo "Fragments:  $FRAG"

@@ -1,7 +1,5 @@
 // ignore_for_file: unused_local_variable
 // #docplaster
-import 'dart:convert';
-
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
 import 'package:examples/language_tour/classes/enum.dart' as enum_with_main;
@@ -31,13 +29,11 @@ import 'package:dartlang_examples_util/print_matcher.dart' as m;
 void main() {
   test('object-creation', () {
     // #docregion object-creation
-    var jsonData = jsonDecode('{"x":1, "y":2}') as Map<String, num>;
-
     // Create a Point using Point().
     var p1 = new Point(2, 2);
 
     // Create a Point using Point.fromJson().
-    var p2 = new Point.fromJson(jsonData);
+    var p2 = new Point.fromJson({'x': 1, 'y': 2});
     // #enddocregion object-creation
     expect(p1.y, p2.y);
   });

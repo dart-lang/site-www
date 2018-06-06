@@ -2149,11 +2149,10 @@ use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
 {% prettify dart %}
-final foo = '';
-
 void misbehave() {
   try {
-    foo = "You can't change a final variable's value.";
+    dynamic foo = true;
+    print(foo++); // Runtime error
   } catch (e) {
     print('misbehave() partially handled ${e.runtimeType}.');
     [!rethrow;!] // Allow callers to see the exception.
@@ -2217,13 +2216,11 @@ for a class. Constructor names can be either <code><em>ClassName</em></code> or
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
-var jsonData = jsonDecode('{"x":1, "y":2}');
-
 // Create a Point using Point().
 var p1 = new Point(2, 2);
 
 // Create a Point using Point.fromJson().
-var p2 = new Point.fromJson(jsonData);
+var p2 = new Point.fromJson({'x': 1, 'y': 2});
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
@@ -3222,7 +3219,8 @@ declare it as `List<String>` (read that as “list of string”). That way
 you, your fellow programmers, and your tools can detect that assigning a non-string to
 the list is probably a mistake. Here’s an example:
 
-<?code-excerpt "misc/test/language_tour/generics_test.dart (why-generics)"?>
+{:.fails-sa}
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 {% prettify dart %}
 var names = new List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3342,19 +3340,17 @@ You can do this using `extends`.
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart %}
-// T must be SomeBaseClass or one of its descendants.
 class Foo<T [!extends SomeBaseClass!]> {
-  // ···
+  // Implementation goes here...
+  String toString() => "Instance of 'Foo<$T>'";
 }
 
-class Extender extends SomeBaseClass {
-  // ···
-}
+class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
 It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
 var someBaseClassFoo = new [!Foo<SomeBaseClass>!]();
 var extenderFoo = new [!Foo<Extender>!]();
@@ -3362,15 +3358,16 @@ var extenderFoo = new [!Foo<Extender>!]();
 
 It's also OK to specify no generic argument:
 
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (no-generic-arg-ok)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
 var foo = new Foo();
+print(foo); // Instance of 'Foo<SomeBaseClass>'
 {% endprettify %}
 
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/base_class.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
 var foo = new [!Foo<Object>!]();
 {% endprettify %}

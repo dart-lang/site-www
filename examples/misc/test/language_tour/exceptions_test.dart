@@ -6,11 +6,10 @@ import 'package:test/test.dart';
 void main() {
   test('rethrow', () {
     // #docregion rethrow
-    final foo = '';
-
     void misbehave() {
       try {
-        foo = "You can't change a final variable's value.";
+        dynamic foo = true;
+        print(foo++); // Runtime error
       } catch (e) {
         print('misbehave() partially handled ${e.runtimeType}.');
         rethrow; // Allow callers to see the exception.
