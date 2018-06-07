@@ -46,7 +46,7 @@ var name = 'Bob';
 Besides editing
 [/src/_guides/language/language-tour.md](https://github.com/dart-lang/site-www/blob/master/src/_guides/language/language-tour.md)
 (which you can find by clicking the GitHub icon at the top right of the page),
-you'll also need to edit
+you'll also need to edit the `var-decl` region of
 [/examples/misc/lib/language_tour/variables.dart](https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/language_tour/variables.dart).
 
 If you create a PR but forget to edit the Dart file,
