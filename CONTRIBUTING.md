@@ -25,3 +25,31 @@ For more information on contributing to Dart, see the
 [dart-lang/sdk Contributing page](https://github.com/dart-lang/sdk/wiki/Contributing).
 
 [www]: https://www.dartlang.org
+
+
+## Updating code samples
+
+If your PR changes Dart code within a page, you'll probably need to change it in two places:
+
+1. In a markdown file for the page.
+2. In a Dart file under the `/examples` directory.
+
+For example, say  you want to change the following code in the language tour:
+
+```
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
+{% prettify dart %}
+var name = 'Bob';
+{% endprettify %}
+```
+
+Besides editing
+[/src/_guides/language/language-tour.md](https://github.com/dart-lang/site-www/blob/master/src/_guides/language/language-tour.md)
+(which you can find by clicking the GitHub icon at the top right of the page),
+you'll also need to edit
+[/examples/misc/lib/language_tour/variables.dart](https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/language_tour/variables.dart).
+
+If you create a PR but forget to edit the Dart file,
+or if your changes don't analyze/test cleanly,
+the Travis CI build will fail.
+Just update the PR, and Travis will try again.
