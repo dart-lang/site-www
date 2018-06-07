@@ -34,7 +34,7 @@ If your PR changes Dart code within a page, you'll probably need to change it in
 1. In a markdown file for the page.
 2. In a Dart file under the `/examples` directory.
 
-For example, say  you want to change the following code in the language tour:
+For example, say  you want to change the following code in the [language tour](https://www.dartlang.org/guides/language/language-tour):
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
