@@ -29,10 +29,10 @@ For more information on contributing to Dart, see the
 
 ## Updating code samples
 
-If your PR changes Dart code within a page, you'll probably need to change it in two places:
+If your PR changes Dart code within a page, you'll probably need to change the code in two places:
 
-1. In a markdown file for the page.
-2. In a Dart file under the `/examples` directory.
+1. In a `.md` file for the page.
+2. In a `.dart` file under the `/examples` directory.
 
 For example, say  you want to change the following code in the [language tour](https://www.dartlang.org/guides/language/language-tour):
 
