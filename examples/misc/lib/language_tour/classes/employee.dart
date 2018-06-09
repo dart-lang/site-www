@@ -14,9 +14,8 @@ class Person {
 
 // #docregion method-then-constructor
 class Employee extends Person {
-  // #enddocregion ,
+  // #enddocregion ''
   Employee() : super.fromJson(getDefaultData());
-  // ···
   // #enddocregion method-then-constructor
   // #docregion
   // Person does not have a default constructor;

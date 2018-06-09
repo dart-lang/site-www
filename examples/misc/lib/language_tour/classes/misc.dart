@@ -15,15 +15,14 @@ class Comparable {}
 class Location {}
 
 // #docregion point_interfaces
-class Point implements Comparable, Location {
-  // ···
-}
+class Point implements Comparable, Location {/*...*/}
 // #enddocregion point_interfaces
 
 // #docregion static-field
 class Queue {
-  static const int initialCapacity = 16;
-  // ···
+  static const initialCapacity = 16;
+  // #enddocregion static-field
+  // #docregion static-field
 }
 
 void main() {

@@ -486,7 +486,6 @@ class Duration0 {
 // #docregion eq-dont-check-for-null
 class Person {
   final String name;
-  // ...
   // #enddocregion eq-dont-check-for-null
   Person(this.name);
   // #docregion eq-dont-check-for-null

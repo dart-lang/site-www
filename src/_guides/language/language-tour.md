@@ -1517,7 +1517,7 @@ b ??= value;
 https://gist.github.com/9de887c4daf76d39e524
 https://dartpad.dartlang.org/9de887c4daf76d39e524
 
-<?code-excerpt "misc/test/language_tour/operators_test.dart (assignment-gist-main-body)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (assignment-gist-main-body)" plaster="none"?>
 {% prettify dart %}
 void assignValues(int a, int b, int value) {
   print('Initially: a == $a, b == $b');
@@ -1716,7 +1716,7 @@ final addressBook = (new AddressBookBuilder()
 Be careful to construct your cascade on a function that returns
 an actual object. For example, the following code fails:
 
-<?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)"?>
+<?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 {% prettify dart %}
 var sb = new StringBuffer();
 sb.write('foo')
@@ -1942,7 +1942,7 @@ switch (command) {
 The following example omits the `break` statement in a `case` clause,
 thus generating an error:
 
-<?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-break-omitted)"?>
+<?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-break-omitted)" plaster="none"?>
 {% prettify dart %}
 var command = 'OPEN';
 switch (command) {
@@ -2340,7 +2340,7 @@ All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g" plaster="none"?>
 {% prettify dart %}
 class Point {
   num x;
@@ -2369,7 +2369,7 @@ class (plus, optionally, an additional identifier as described in
 The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 {% prettify dart %}
 class Point {
   num x, y;
@@ -2393,7 +2393,7 @@ omits the `this`.
 The pattern of assigning a constructor argument to an instance variable
 is so common, Dart has syntactic sugar to make it easy:
 
-<?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)"?>
+<?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 {% prettify dart %}
 class Point {
   num x, y;
@@ -2421,7 +2421,7 @@ name) constructor.
 Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
-<?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart %}
 class Point {
   num x, y;
@@ -2467,7 +2467,7 @@ Click the run button ( {% img 'red-run.png' %} ) to execute the code.
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
 https://dartpad.dartlang.org/e57aa06401e6618d4eb8
 
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart"?>
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart" plaster="none"?>
 {% prettify dart %}
 class Person {
   String firstName;
@@ -2703,7 +2703,7 @@ Instance methods on objects can access instance variables and `this`.
 The `distanceTo()` method in the following sample is an example of an
 instance method:
 
-<?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distanceTo)"?>
+<?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distanceTo)" plaster="none"?>
 {% prettify dart %}
 import 'dart:math';
 
@@ -2912,9 +2912,7 @@ interfaces:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
 {% prettify dart %}
-class Point implements Comparable, Location {
-  // ···
-}
+class Point implements Comparable, Location {...}
 {% endprettify %}
 
 
@@ -2955,9 +2953,7 @@ intentionally overriding a member:
 {% prettify dart %}
 class SmartTelevision extends Television {
   [!@override!]
-  void turnOn() {
-    // ···
-  }
+  void turnOn() {...}
   // ···
 }
 {% endprettify %}
@@ -3139,7 +3135,7 @@ constants:
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (static-field)"?>
 {% prettify dart %}
 class Queue {
-  static const int initialCapacity = 16;
+  static const initialCapacity = 16;
   // ···
 }
 
@@ -3965,9 +3961,7 @@ class Television {
   }
 
   /// Turns the TV's power on.
-  void turnOn() {
-    // ···
-  }
+  void turnOn() {...}
 }
 {% endprettify %}
 
