@@ -397,7 +397,9 @@ consider creating an example file with one of the following names:
 * <code>example/main.dart</code>
 * <code>example/lib/<em>package_name</em>.dart</code>
 * <code>example/<em>package_name</em>.dart</code>
+* <code>example/lib/<em>package_name</em>_example.dart</code>
 * <code>example/<em>package_name</em>_example.dart</code>
+* <code>example/lib/example.dart</code>
 * <code>example/example.dart</code>
 
 When you publish a package that contains one of the above files,
