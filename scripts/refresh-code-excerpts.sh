@@ -6,7 +6,7 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
 function usage() {
   echo $1; echo
-  echo "Usage: $(basename $0) [--help] [--legacy] [path-to-src-file-or-folder]";
+  echo "Usage: $(basename $0) [--help] [--legacy] [path-to-src-file-or-folder]"
   echo
   exit 1;
 }
@@ -14,8 +14,6 @@ function usage() {
 if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
 [[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
-
-if [[ $1 == --log-at* ]]; then LOG_AT="$1"; shift; fi
 
 ARGS=''
 FRAG="$rootDir/tmp/_fragments"
