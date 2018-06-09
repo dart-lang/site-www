@@ -407,6 +407,8 @@ the pub site creates an **Example** tab to display that file.
 For example, the json_serializable package contains a file named
 `example/example.dart`, which appears in the
 [json_serializable Example tab.](https://pub.dartlang.org/packages/json_serializable#pub-pkg-tab-example)
+To see exactly how the example file is chosen, look at the
+[source code.](https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code)
 
 
 ## Internal tools and scripts
