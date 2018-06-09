@@ -1,0 +1,12 @@
+targets:
+  $default:
+    sources: # [examples/**]
+      include:
+        - examples/**
+      exclude:
+        - '**/.*/**'
+        - '**/build/**'
+        - '**/node_modules/**'
+    builders:
+      code_excerpter|code_excerpter:
+        enabled: true

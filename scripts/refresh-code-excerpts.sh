@@ -6,7 +6,8 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
 function usage() {
   echo $1; echo
-  echo "Usage: $(basename $0) [path-to-src-file-or-folder]"; echo
+  echo "Usage: $(basename $0) [--help] [--legacy] [path-to-src-file-or-folder]";
+  echo
   exit 1;
 }
 
@@ -14,19 +15,31 @@ if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
 [[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
 
+if [[ $1 == --log-at* ]]; then LOG_AT="$1"; shift; fi
+
+ARGS=''
+FRAG="$rootDir/tmp/_fragments"
+
+if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
+
+if [[ $1 == '--legacy' ]]; then
+  shift
+  $(npm bin)/code-excerpter examples "$FRAG"
+else
+  ARGS+='--yaml '
+  if [[ ! -e "pubspec.lock" ]]; then pub get; fi
+  pub run build_runner build --delete-conflicting-outputs --config excerpt --output="$FRAG"
+  FRAG+=/examples
+fi
+
+[[ -e "$FRAG" ]] || usage "ERROR: fragments folder was not generated: '$FRAG'"
+
 SRC="$1"
 : ${SRC:="$rootDir/src"}
 [[ -e $SRC ]] || usage "ERROR: source file/folder does not exist: '$SRC'"
 
-FRAG="$rootDir/tmp/_fragments"
-
-if [[ -e $FRAG ]]; then rm -Rf "$FRAG"; echo removing old frag; fi
-
-$(npm bin)/code-excerpter examples "$FRAG"
-
-[[ -e $FRAG ]] || usage "ERROR: fragments folder does not exist: '$FRAG'"
-
-ARGS='--no-escape-ng-interpolation '
+ARGS+='--no-escape-ng-interpolation '
+# ARGS+='--plaster=none '
 ARGS+='--replace='
 # The replace expressions that follow must not contain (unencode/unescaped) spaces:
 ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dartfmt)
