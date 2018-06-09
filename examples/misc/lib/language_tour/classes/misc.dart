@@ -19,7 +19,7 @@ class Point implements Comparable, Location {/*...*/}
 
 // #docregion static-field
 class Queue {
-  static const initialCapacity = 16;
+  static const initialCapacity = 16; // ignore: type_annotate_public_apis
   // #enddocregion static-field
   // #docregion static-field
 }
