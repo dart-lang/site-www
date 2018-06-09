@@ -1,4 +1,3 @@
-// #docplaster
 // #docregion class, class-main
 class Point {
   num x; // Declare instance variable x, initially null.

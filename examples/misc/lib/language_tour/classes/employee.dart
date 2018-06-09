@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_cast
-// #docplaster
 
 Map getDefaultData() => {}; // stub
 
@@ -14,9 +13,8 @@ class Person {
 
 // #docregion method-then-constructor
 class Employee extends Person {
-  // #enddocregion ,
+  // #enddocregion ''
   Employee() : super.fromJson(getDefaultData());
-  // ···
   // #enddocregion method-then-constructor
   // #docregion
   // Person does not have a default constructor;

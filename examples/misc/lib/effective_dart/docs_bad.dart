@@ -1,5 +1,4 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
-// #docplaster
 import 'package:dartlang_examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
@@ -42,7 +41,7 @@ class RadioButtonWidget extends Widget {
   /// [lines].
   void tooltip(List<String> lines) => ellipsis();
 }
-// #enddocregion
+// #enddocregion redundant
 
 class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion no-annotations

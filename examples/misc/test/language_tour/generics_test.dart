@@ -1,5 +1,4 @@
 // ignore_for_file: argument_type_not_assignable
-// #docplaster
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 

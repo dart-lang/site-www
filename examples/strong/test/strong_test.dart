@@ -150,7 +150,6 @@ void main() {
 }
 
 // ignore_for_file: type_annotate_public_apis
-// #docplaster
 // #docregion downcast-check
 assumeStrings(List<Object> objects) {
   // ignore_for_file: 1, 2, invalid_assignment

@@ -1,5 +1,3 @@
-// #docplaster
-
 typedef Pred0 = bool Function();
 typedef Void0 = void Function();
 

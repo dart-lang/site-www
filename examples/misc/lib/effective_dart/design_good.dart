@@ -1,5 +1,4 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// #docplaster
 
 import 'dart:async';
 import 'dart:collection';
@@ -486,7 +485,6 @@ class Duration0 {
 // #docregion eq-dont-check-for-null
 class Person {
   final String name;
-  // ...
   // #enddocregion eq-dont-check-for-null
   Person(this.name);
   // #docregion eq-dont-check-for-null

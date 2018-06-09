@@ -8,6 +8,7 @@ prevpage:
   url: /guides/language/effective-dart
   title: Overview
 ---
+<?code-excerpt plaster="none"?>
 
 {% include effective-dart-banner.html %}
 

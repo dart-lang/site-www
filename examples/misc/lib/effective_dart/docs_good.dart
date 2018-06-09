@@ -148,7 +148,7 @@ class RadioButtonWidget extends Widget {
   /// the current font.
   void tooltip(List<String> lines) => ellipsis();
 }
-// #enddocregion
+// #enddocregion redundant
 
 //----------------------------------------------------------------------------
 

@@ -7,6 +7,7 @@ prevpage:
   title: Usage
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt plaster="none"?>
 
 {% include effective-dart-banner.html %}
 
@@ -1784,11 +1785,11 @@ The language specifies that this check is done automatically and your `==`
 method is called only if the right-hand side is not `null`.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g" plaster?>
 {% prettify dart %}
 class Person {
   final String name;
-  // ...
+  // ···
   [!operator ==!](other) => other is Person && name == other.name;
 
   int get hashCode => name.hashCode;
@@ -1796,7 +1797,7 @@ class Person {
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g"?>
+<?code-excerpt "misc/lib/effective_dart/design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g" plaster?>
 {% prettify dart %}
 class Person {
   final String name;

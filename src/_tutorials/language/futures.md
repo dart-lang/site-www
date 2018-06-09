@@ -6,6 +6,7 @@ nextpage:
   title: "Asynchronous Programming: Streams"
 ---
 <?code-excerpt replace="/\b_(gather|print)/$1/g; /Async\w*\(\)/()/g"?>
+<?code-excerpt plaster="none"?>
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
