@@ -42,7 +42,7 @@ class RadioButtonWidget extends Widget {
   /// [lines].
   void tooltip(List<String> lines) => ellipsis();
 }
-// #enddocregion
+// #enddocregion redundant
 
 class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion no-annotations
