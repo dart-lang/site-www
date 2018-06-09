@@ -1,5 +1,4 @@
 // ignore_for_file: unused_import
-// #docplaster
 // #docregion
 library peg_parser.source_scanner;
 

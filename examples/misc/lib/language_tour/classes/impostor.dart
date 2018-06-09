@@ -1,6 +1,4 @@
 // ignore_for_file: annotate_overrides
-// #docplaster
-// #docregion
 // A person. The implicit interface contains greet().
 class Person {
   // In the interface, but visible only in this library.

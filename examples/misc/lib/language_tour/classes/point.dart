@@ -1,4 +1,3 @@
-// #docplaster
 // #docregion class-with-distanceTo
 import 'dart:math';
 

@@ -1,5 +1,4 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// #docplaster
 
 import 'dart:async';
 import 'dart:collection';
