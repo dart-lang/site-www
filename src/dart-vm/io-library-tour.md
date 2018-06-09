@@ -4,6 +4,7 @@ title: "A Tour of the dart:io Library"
 description: Learn about the dart:io library and APIs.
 permalink: /dart-vm/io-library-tour
 ---
+<?code-excerpt plaster="none"?>
 
 The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
