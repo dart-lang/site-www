@@ -7,17 +7,14 @@ class Television {
   }
 
   /// Turns the TV's power on.
-  void turnOn() {
-    // ···
-  }
+  void turnOn() {/*...*/}
 }
 // #enddocregion deprecated
 
 // #docregion override
 class SmartTelevision extends Television {
   @override
-  void turnOn() {
-    // ···
-  }
-  // ···
+  void turnOn() {/*...*/}
+  // #enddocregion override
+  // #docregion override
 }

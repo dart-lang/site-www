@@ -1,4 +1,3 @@
-// #docplaster
 // NOTE: Declarations in this file are analyzed but not tested.
 // ignore_for_file: annotate_overrides
 

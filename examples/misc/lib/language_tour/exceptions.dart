@@ -58,7 +58,8 @@ void miscDeclAnalyzedButNotTested(bool c) {
   {
     // #docregion try-catch-2
     try {
-      // ···
+      // #enddocregion try-catch-2
+      // #docregion try-catch-2
     } on Exception catch (e) {
       print('Exception details:\n $e');
     } catch (e, s) {

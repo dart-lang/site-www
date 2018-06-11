@@ -1,5 +1,4 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
-// #docplaster
 // #docregion main-async, main-future-api
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a

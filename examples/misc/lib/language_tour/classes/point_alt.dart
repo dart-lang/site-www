@@ -1,4 +1,3 @@
-// #docplaster
 /// Example of:
 ///
 /// - A constructor initializing fields in the body "the long way"

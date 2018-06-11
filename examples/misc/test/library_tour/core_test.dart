@@ -1,5 +1,4 @@
 // ignore_for_file: type_annotate_public_apis
-// #docplaster
 import 'package:test/test.dart';
 
 import 'package:examples/library_tour/core/comparable.dart'

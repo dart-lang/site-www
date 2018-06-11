@@ -1,5 +1,4 @@
 // ignore_for_file: unused_local_variable
-// #docplaster
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
 import 'package:examples/language_tour/classes/enum.dart' as enum_with_main;

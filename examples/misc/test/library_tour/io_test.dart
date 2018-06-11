@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names
-// #docplaster
 // #docregion read-from-stream
 import 'dart:async';
 // #docregion import

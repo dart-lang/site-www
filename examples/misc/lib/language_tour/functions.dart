@@ -1,5 +1,4 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
-// #docplaster
 
 void miscDeclAnalyzedButNotTested() {
   var _nobleGases = {};
