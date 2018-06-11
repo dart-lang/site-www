@@ -393,23 +393,21 @@ like code outside of your package would look.
 If you might publish your package,
 consider creating an example file with one of the following names:
 
-* <code>example/lib/main.dart</code>
-* <code>example/main.dart</code>
-* <code>example/lib/<em>package_name</em>.dart</code>
-* <code>example/<em>package_name</em>.dart</code>
-* <code>example/lib/<em>package_name</em>_example.dart</code>
-* <code>example/<em>package_name</em>_example.dart</code>
-* <code>example/lib/example.dart</code>
-* <code>example/example.dart</code>
+* <code>example[/lib]/main.dart</code>
+* <code>example[/lib]/<em>package_name</em>.dart</code>
+* <code>example[/lib]/<em>package_name</em>_example.dart</code>
+* <code>example[/lib]/example.dart</code>
 
 When you publish a package that contains one of the above files,
 the pub site creates an **Example** tab to display that file.
 For example, the json_serializable package contains a file named
 `example/example.dart`, which appears in the
 [json_serializable Example tab.](https://pub.dartlang.org/packages/json_serializable#pub-pkg-tab-example)
-To see exactly how the example file is chosen, look at the
-[source code.](https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code)
-
+{% comment %}
+To see how the example file is chosen,
+search the dart-lang repos for exampleFileCandidates:
+https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
+{% endcomment %}
 
 ## Internal tools and scripts
 
