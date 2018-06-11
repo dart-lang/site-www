@@ -1441,7 +1441,7 @@ The new syntax looks like this:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
 {% prettify dart %}
-typedef Comparison = int Function<T>(T, T);
+typedef Comparison<T> = int Function(T, T);
 {% endprettify %}
 
 If you want to include a parameter's name, you can do that too:
@@ -1449,7 +1449,7 @@ If you want to include a parameter's name, you can do that too:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef-param-name)"?>
 {% prettify dart %}
-typedef Comparison = int Function<T>(T a, T b);
+typedef Comparison<T> = int Function(T a, T b);
 {% endprettify %}
 
 The new syntax can express anything the old syntax could express and more, and
