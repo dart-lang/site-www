@@ -397,7 +397,7 @@ if (request.method == 'GET') {
   [!handleGet!](request);
 } else {
   request.response
-    ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+    ..statusCode = HttpStatus.methodNotAllowed
     ..write('Unsupported request: ${request.method}.')
     ..close();
 }
@@ -679,12 +679,12 @@ Future main() async {
           ..write('Wrote data for ${data['name']}.');
       } catch (e) {
         response
-          ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+          ..statusCode = HttpStatus.internalServerError
           ..write("Exception during file I/O: $e.");
       }
     } else {
       response
-        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..statusCode = HttpStatus.methodNotAllowed
         ..write("Unsupported request: ${req.method}.");
     }
     response.close();
@@ -805,7 +805,7 @@ Future main() async {
     } else {
       print("Can't open ${targetFile.path}.");
       req.response
-        ..statusCode = HttpStatus.NOT_FOUND
+        ..statusCode = HttpStatus.notFound
         ..close();
     }
   }

@@ -37,7 +37,7 @@ void handleRequest(HttpRequest request) {
     } else {
       // #enddocregion handleRequest
       request.response
-        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..statusCode = HttpStatus.methodNotAllowed
         ..write('Unsupported request: ${request.method}.')
         ..close();
       // #docregion handleRequest

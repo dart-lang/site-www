@@ -36,7 +36,7 @@ Future main() async {
     } else {
       print("Can't open ${targetFile.path}.");
       req.response
-        ..statusCode = HttpStatus.NOT_FOUND
+        ..statusCode = HttpStatus.notFound
         ..close();
     }
   }

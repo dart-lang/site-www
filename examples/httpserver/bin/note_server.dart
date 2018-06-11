@@ -72,7 +72,7 @@ void saveNote(HttpRequest request, String myNote) {
   } catch (e) {
     print('Couldn\'t open notes.txt: $e');
     request.response
-      ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+      ..statusCode = HttpStatus.internalServerError
       ..writeln('Couldn\'t save note.')
       ..close();
     return;
@@ -100,7 +100,7 @@ void defaultHandler(HttpRequest request) {
   final response = request.response;
   addCorsHeaders(response);
   response
-    ..statusCode = HttpStatus.NOT_FOUND
+    ..statusCode = HttpStatus.notFound
     ..write('Not found: ${request.method}, ${request.uri.path}')
     ..close();
 }
