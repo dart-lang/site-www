@@ -763,8 +763,8 @@ void main() {
   print(clapping.codeUnits);
   print(clapping.runes.toList());
 
-  Runes input = Runes(
-      '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
+  Runes input =
+      Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
   print(String.fromCharCodes(input));
 }
 {% endprettify %}
@@ -2082,8 +2082,7 @@ in =\> statements, as well as anywhere else that allows expressions:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-is-an-expression)"?>
 {% prettify dart %}
-void distanceTo(Point other) =>
-    throw UnimplementedError();
+void distanceTo(Point other) => throw UnimplementedError();
 {% endprettify %}
 
 
