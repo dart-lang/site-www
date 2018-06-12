@@ -12,6 +12,6 @@ class Point {
 }
 
 void main() {
-  var p = new Point(2, 3);
+  var p = Point(2, 3);
   print(p.distanceFromOrigin);
 }

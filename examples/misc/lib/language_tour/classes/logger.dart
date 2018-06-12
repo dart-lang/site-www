@@ -12,7 +12,7 @@ class Logger {
     if (_cache.containsKey(name)) {
       return _cache[name];
     } else {
-      final logger = new Logger._internal(name);
+      final logger = Logger._internal(name);
       _cache[name] = logger;
       return logger;
     }
@@ -28,13 +28,13 @@ class Logger {
 
 void main() {
   // #docregion logger
-  var logger = new Logger('UI');
+  var logger = Logger('UI');
   logger.log('Button clicked');
   // #enddocregion logger
 
-  var l1 = new Logger('log1');
-  var l2 = new Logger('log1');
-  var l3 = new Logger('log2');
+  var l1 = Logger('log1');
+  var l2 = Logger('log1');
+  var l3 = Logger('log2');
 
   assert(identical(l1, l2));
   assert(l1 != l3);

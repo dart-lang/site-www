@@ -11,7 +11,7 @@ class Rectangle {
 }
 
 void main() {
-  var rect = new Rectangle(3, 4, 20, 15);
+  var rect = Rectangle(3, 4, 20, 15);
   assert(rect.left == 3);
   rect.right = 12;
   assert(rect.left == -8);

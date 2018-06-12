@@ -29,17 +29,17 @@ void main() {
   test('object-creation', () {
     // #docregion object-creation
     // Create a Point using Point().
-    var p1 = new Point(2, 2);
+    var p1 = Point(2, 2);
 
     // Create a Point using Point.fromJson().
-    var p2 = new Point.fromJson({'x': 1, 'y': 2});
+    var p2 = Point.fromJson({'x': 1, 'y': 2});
     // #enddocregion object-creation
     expect(p1.y, p2.y);
   });
 
   test('object-members', () {
     // #docregion object-members
-    var p = new Point(2, 2);
+    var p = Point(2, 2);
 
     // Set the value of the instance variable y.
     p.y = 3;
@@ -48,7 +48,7 @@ void main() {
     assert(p.y == 3);
 
     // Invoke distanceTo() on p.
-    num distance = p.distanceTo(new Point(4, 4));
+    num distance = p.distanceTo(Point(4, 4));
     // #enddocregion object-members
 
     // #docregion safe-member-access
@@ -92,7 +92,7 @@ void main() {
   });
 
   test('point_redirecting', () {
-    final p = new point_redirecting.Point.alongXAxis(42);
+    final p = point_redirecting.Point.alongXAxis(42);
     expect(p.y, 0);
   });
 

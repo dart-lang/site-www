@@ -27,7 +27,7 @@ class Employee extends Person {
 // #enddocregion method-then-constructor
 
 void main() {
-  var emp = new Employee.fromJson({});
+  var emp = Employee.fromJson({});
   // Prints:
   // in Person
   // in Employee

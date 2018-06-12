@@ -5,18 +5,18 @@ class Vector {
 
   /// Overrides + (a + b).
   Vector operator +(Vector v) {
-    return new Vector(x + v.x, y + v.y);
+    return Vector(x + v.x, y + v.y);
   }
 
   /// Overrides - (a - b).
   Vector operator -(Vector v) {
-    return new Vector(x - v.x, y - v.y);
+    return Vector(x - v.x, y - v.y);
   }
 }
 
 void main() {
-  final v = new Vector(2, 3);
-  final w = new Vector(2, 2);
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
 
   // v == (2, 3)
   assert(v.x == 2 && v.y == 3);

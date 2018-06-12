@@ -6,5 +6,5 @@ import 'lib1.dart' show foo;
 import 'lib2.dart' hide foo;
 // #enddocregion
 
-Element e = new Element();
+Element e = Element();
 dynamic bar = foo;

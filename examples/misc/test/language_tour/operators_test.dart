@@ -180,7 +180,7 @@ void main() {
 
     // #enddocregion if-null-alt
     final funcs = [playerName1, playerName2, playerName3];
-    expect(funcs.map((f) => f(null)), new List.filled(3, 'Guest'));
-    expect(funcs.map((f) => f('Alice')), new List.filled(3, 'Alice'));
+    expect(funcs.map((f) => f(null)), List.filled(3, 'Guest'));
+    expect(funcs.map((f) => f('Alice')), List.filled(3, 'Alice'));
   });
 }

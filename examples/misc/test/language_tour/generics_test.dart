@@ -2,21 +2,21 @@
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 
-final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
+final Matcher throwsATypeError = throwsA(isInstanceOf<TypeError>());
 
 void main() {
   test('constructor-1', () {
     // #docregion constructor-1
-    var names = new List<String>();
+    var names = List<String>();
     names.addAll(['Seth', 'Kathy', 'Lars']);
-    var nameSet = new Set<String>.from(names);
+    var nameSet = Set<String>.from(names);
     // #enddocregion constructor-1
     expect(nameSet.length, 3);
   });
 
   test('constructor-2', () {
     // #docregion constructor-2
-    var views = new Map<int, View>();
+    var views = Map<int, View>();
     // #enddocregion constructor-2
     expect(views.length, 0);
   });
@@ -24,7 +24,7 @@ void main() {
   test('generic-collections', () {
     _test() {
       // #docregion generic-collections
-      var names = new List<String>();
+      var names = List<String>();
       names.addAll(['Seth', 'Kathy', 'Lars']);
       print(names is List<String>); // true
       // #enddocregion generic-collections
@@ -50,14 +50,14 @@ void main() {
 
   test('base_class', () {
     // #docregion SomeBaseClass-ok
-    var someBaseClassFoo = new Foo<SomeBaseClass>();
-    var extenderFoo = new Foo<Extender>();
+    var someBaseClassFoo = Foo<SomeBaseClass>();
+    var extenderFoo = Foo<Extender>();
     // #enddocregion SomeBaseClass-ok
     expect(someBaseClassFoo.toString(), "Instance of 'Foo<SomeBaseClass>'");
     expect(extenderFoo.toString(), "Instance of 'Foo<Extender>'");
 
     // #docregion no-generic-arg-ok
-    var foo = new Foo();
+    var foo = Foo();
     expect(foo.toString(), "Instance of 'Foo<SomeBaseClass>'");
     // #enddocregion no-generic-arg-ok
   });

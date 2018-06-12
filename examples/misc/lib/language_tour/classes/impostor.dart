@@ -21,6 +21,6 @@ class Impostor implements Person {
 String greetBob(Person person) => person.greet('Bob');
 
 void main() {
-  print(greetBob(new Person('Kathy')));
-  print(greetBob(new Impostor()));
+  print(greetBob(Person('Kathy')));
+  print(greetBob(Impostor()));
 }
