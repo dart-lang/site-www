@@ -80,7 +80,7 @@ void saveNote(HttpRequest request, String myNote) {
 
   count++;
   request.response
-    ..statusCode = HttpStatus.OK
+    ..statusCode = HttpStatus.ok
     ..writeln('You have $count notes.')
     ..close();
 }
@@ -90,7 +90,7 @@ void getNote(HttpRequest request, String getNote) {
   if (requestedNote >= 0 && requestedNote < count) {
     List<String> lines = new File('notes.txt').readAsLinesSync();
     request.response
-      ..statusCode = HttpStatus.OK
+      ..statusCode = HttpStatus.ok
       ..writeln(lines[requestedNote])
       ..close();
   }
@@ -110,7 +110,7 @@ void handleOptions(HttpRequest request) {
   addCorsHeaders(response);
   print('${request.method}: ${request.uri.path}');
   response
-    ..statusCode = HttpStatus.NO_CONTENT
+    ..statusCode = HttpStatus.noContent
     ..close();
 }
 

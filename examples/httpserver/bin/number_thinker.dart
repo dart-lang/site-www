@@ -56,7 +56,7 @@ void handleGet(HttpRequest request) {
   final guess = request.uri.queryParameters['q'];
   // #enddocregion uri
   final response = request.response;
-  response.statusCode = HttpStatus.OK;
+  response.statusCode = HttpStatus.ok;
   // #enddocregion statusCode
   // #docregion write
   if (guess == myNumber.toString()) {

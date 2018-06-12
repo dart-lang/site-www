@@ -441,7 +441,7 @@ the number thinker server sets the HttpResponse status code to `HttpStatus.OK`.
 void handleGet(HttpRequest request) {
   final guess = request.uri.queryParameters['q'];
   final response = request.response;
-  [!response.statusCode = HttpStatus.OK;!]
+  [!response.statusCode = HttpStatus.ok;!]
   // ···
 }
 {% endprettify %}
@@ -582,7 +582,7 @@ Map jsonData = {
 Future main() async {
   HttpClientRequest request =
       await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
-        ..[!headers!].contentType = ContentType.JSON [!/*2*/!]
+        ..[!headers!].contentType = ContentType.json [!/*2*/!]
         ..[!write!](jsonEncode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
   await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
@@ -675,7 +675,7 @@ Future main() async {
         await new File(fileName)
             .writeAsString(content, mode: FileMode.write);
         req.response
-          ..statusCode = HttpStatus.OK
+          ..statusCode = HttpStatus.ok
           ..write('Wrote data for ${data['name']}.');
       } catch (e) {
         response
@@ -795,7 +795,7 @@ Future main() async {
   await for (HttpRequest req in server) {
     if (await targetFile.exists()) {
       print("Serving ${targetFile.path}.");
-      req.response.headers.contentType = ContentType.HTML;
+      req.response.headers.contentType = ContentType.html;
       try {
         await targetFile.openRead().pipe(req.response);
       } catch (e) {
