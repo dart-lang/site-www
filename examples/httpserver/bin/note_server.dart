@@ -72,7 +72,7 @@ void saveNote(HttpRequest request, String myNote) {
   } catch (e) {
     print('Couldn\'t open notes.txt: $e');
     request.response
-      ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+      ..statusCode = HttpStatus.internalServerError
       ..writeln('Couldn\'t save note.')
       ..close();
     return;
@@ -80,7 +80,7 @@ void saveNote(HttpRequest request, String myNote) {
 
   count++;
   request.response
-    ..statusCode = HttpStatus.OK
+    ..statusCode = HttpStatus.ok
     ..writeln('You have $count notes.')
     ..close();
 }
@@ -90,7 +90,7 @@ void getNote(HttpRequest request, String getNote) {
   if (requestedNote >= 0 && requestedNote < count) {
     List<String> lines = new File('notes.txt').readAsLinesSync();
     request.response
-      ..statusCode = HttpStatus.OK
+      ..statusCode = HttpStatus.ok
       ..writeln(lines[requestedNote])
       ..close();
   }
@@ -100,7 +100,7 @@ void defaultHandler(HttpRequest request) {
   final response = request.response;
   addCorsHeaders(response);
   response
-    ..statusCode = HttpStatus.NOT_FOUND
+    ..statusCode = HttpStatus.notFound
     ..write('Not found: ${request.method}, ${request.uri.path}')
     ..close();
 }
@@ -110,7 +110,7 @@ void handleOptions(HttpRequest request) {
   addCorsHeaders(response);
   print('${request.method}: ${request.uri.path}');
   response
-    ..statusCode = HttpStatus.NO_CONTENT
+    ..statusCode = HttpStatus.noContent
     ..close();
 }
 

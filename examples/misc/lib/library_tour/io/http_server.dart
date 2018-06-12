@@ -24,7 +24,7 @@ void processRequest(HttpRequest request) {
       )
       ..write('Hello from the server');
   } else {
-    response.statusCode = HttpStatus.NOT_FOUND;
+    response.statusCode = HttpStatus.notFound;
   }
   response.close();
 }

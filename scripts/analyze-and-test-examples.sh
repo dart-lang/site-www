@@ -85,6 +85,7 @@ function analyze_and_test() {
         if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
       fi
     elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
+      cat $LOG_FILE
       EXIT_STATUS=1
       if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
     else
