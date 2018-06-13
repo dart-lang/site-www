@@ -25,3 +25,5 @@ travis_fold end before_install.npm_install
 travis_fold start before_install.linkcheck
   (set -x; pub global activate linkcheck)
 travis_fold end before_install.linkcheck
+
+pub upgrade
