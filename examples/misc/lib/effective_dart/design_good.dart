@@ -309,11 +309,11 @@ class FilteredObservable {
 //----------------------------------------------------------------------------
 
 // #docregion new-typedef
-typedef Comparison = int Function<T>(T, T);
+typedef Comparison<T> = int Function(T, T);
 // #enddocregion new-typedef
 
 // #docregion new-typedef-param-name
-typedef Comparison2 = int Function<T>(T a, T b);
+typedef Comparison2<T> = int Function(T a, T b);
 // #enddocregion new-typedef-param-name
 
 //----------------------------------------------------------------------------
