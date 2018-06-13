@@ -8,9 +8,13 @@ environment:
 
 dev_dependencies:
   build_runner: any
-  code_excerpter: ^0.2.0
+  code_excerpt_updater: any
+  code_excerpter: any
 
 dependency_overrides:
+  code_excerpt_updater:
+    git: https://github.com/chalin/code_excerpt_updater.git
+    # path: ../code_excerpt_updater
   code_excerpter:
     git: https://github.com/chalin/code_excerpter.git
     # path: ../code_excerpter

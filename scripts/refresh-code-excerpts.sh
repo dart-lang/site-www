@@ -54,7 +54,7 @@ echo "Fragments:  $FRAG"
 echo "Other args: $ARGS"
 echo
 LOG_FILE=$TMP/refresh-code-excerpts-log.txt
-pub global run code_excerpt_updater \
+pub run code_excerpt_updater \
   --fragment-dir-path "$FRAG" \
   --src-dir-path examples \
   $ARGS \
