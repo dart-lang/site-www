@@ -371,7 +371,7 @@ in a compile-time error.
 {:.fails-sa}
 <?code-excerpt "strong/lib/common_problems_analysis.dart (func-dynamic)" replace="/String/[!$&!]/g"?>
 {% prettify dart %}
-typedef bool Filter(dynamic any);
+typedef Filter = bool Function(dynamic any);
 Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
@@ -382,14 +382,14 @@ error • A value of type '(String) → bool' can't be assigned to a variable of
 error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
 
-#### Fix: Add generic type parameters _or_ cast from dynamic explicitly
+#### Fix: Add type parameters _or_ cast from dynamic explicitly
 
 When possible, avoid this error by adding type parameters:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-T)" replace="/<\w+\x3E/[!$&!]/g"?>
 {% prettify dart %}
-typedef bool Filter[!<T>!](T any);
+typedef Filter[!<T>!] = bool Function(T any);
 Filter[!<String>!] filter = (String x) => x.contains('Hello');
 {% endprettify %}
 
@@ -398,7 +398,7 @@ Otherwise use casting:
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
 {% prettify dart %}
-typedef bool Filter(dynamic any);
+typedef Filter<T> = bool Function(T any);
 Filter filter = (x) => (x [!as String!]).contains('Hello');
 {% endprettify %}
 
