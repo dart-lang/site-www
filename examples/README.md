@@ -32,6 +32,24 @@ As can be expected, Travis jobs run the
 - Analyzer over both `lib` and `test`
 - Tests under `test`
 
+To run the analyzer and tests locally, use this command:
+
+`./scripts/analyze-and-test-examples.sh`
+
+If you get a warning about test failures or analysis errors,
+you might need to update one or more analyzer results files
+(for example, `examples/misc/analyzer-2-results.txt`).
+
+To update an analyzer results file:
+
+1. Run `./scripts/analyze-and-test-examples.sh  --save-logs`.
+2. Look at the diffs for the results files.
+3. If the diffs look good but some comments are missing,
+   add back the comments that are still relevant.
+4. Run `./scripts/analyze-and-test-examples.sh` to confirm that
+   your changes are good.
+
+
 ### File organisation for the Tours
 
 The new Language Tour sources are under `lib/language_tour` and `test/language_tour`.
