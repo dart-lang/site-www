@@ -1,4 +1,4 @@
-typedef int Compare(Object a, Object b);
+typedef Compare = int Function(Object a, Object b);
 
 class SortedCollection {
   Compare compare;
