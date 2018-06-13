@@ -10,8 +10,6 @@ prevpage:
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
 {%- endcapture -%}
 
-{% include tutorial-banner.html %}
-
 ### Communicate over the internet
 
 <div class="mini-toc" markdown="1">
