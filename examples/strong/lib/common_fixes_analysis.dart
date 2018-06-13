@@ -89,6 +89,6 @@ Filter<String> filter = (String x) => x.contains('Hello');
 //-----------------------------------------------
 
 // #docregion func-cast
-typedef Filter1<T> = bool Function(T any);
+typedef Filter1 = bool Function(dynamic any);
 Filter1 filter1 = (x) => (x as String).contains('Hello');
 // #enddocregion func-cast

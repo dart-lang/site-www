@@ -398,7 +398,7 @@ Otherwise use casting:
 {:.passes-sa}
 <?code-excerpt "strong/lib/common_fixes_analysis.dart (func-cast)" replace="/([Ff]ilter)1/$1/g; /as \w+/[!$&!]/g"?>
 {% prettify dart %}
-typedef Filter<T> = bool Function(T any);
+typedef Filter = bool Function(dynamic any);
 Filter filter = (x) => (x [!as String!]).contains('Hello');
 {% endprettify %}
 
