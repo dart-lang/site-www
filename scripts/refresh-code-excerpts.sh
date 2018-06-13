@@ -47,8 +47,7 @@ ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brack
 # Replace "//!analysis-issue" by, say, "Analysis issue" (although once we can use embedded DPs this won't be needed)?
 ARGS+='/\/\/!(analysis-issue|runtime-error)[^\n]*//g;' # Removed warning/error marker
 ARGS+='/\x20*\/\/\s+ignore_for_file:[^\n]+\n//g;' # Remove analyzer ignore-issue marker
-ARGS+='/(\S+)\x20*\/\/\s+ignore:[^\n]+/$1/g;' # Remove EOL analyzer ignore-issue marker
-ARGS+='/\x20*\/\/\s+ignore:[^\n]+\n//g;' # Remove (full-line) analyzer ignore-issue marker
+ARGS+='/\x20*\/\/\s+ignore:[^\n]+//g;' # Remove analyzer ignore-issue marker
 
 echo "Source:     $SRC"
 echo "Fragments:  $FRAG"
