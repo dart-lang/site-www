@@ -12,7 +12,8 @@ cache:
 
 env:
   global:
-    - DART_VM_OPTIONS=--preview-dart-2
+    # https://github.com/dart-lang/sdk/issues/33430
+    # - DART_VM_OPTIONS=--preview-dart-2
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
   matrix:
