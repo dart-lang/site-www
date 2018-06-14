@@ -41,8 +41,8 @@
   urlExactMatch: true
 
 - title: Resources
-  permalink: /resources
-  urlExactMatch: true
+  # permalink: /resources
+  # urlExactMatch: true
   children:
   - title: Install
     permalink: /install
