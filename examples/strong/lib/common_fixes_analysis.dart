@@ -82,13 +82,13 @@ class HoneyBadger extends Animal {
 //-----------------------------------------------
 
 // #docregion func-T
-typedef bool Filter<T>(T any);
+typedef Filter<T> = bool Function(T any);
 Filter<String> filter = (String x) => x.contains('Hello');
 // #enddocregion func-T
 
 //-----------------------------------------------
 
 // #docregion func-cast
-typedef bool Filter1(dynamic any);
+typedef Filter1 = bool Function(dynamic any);
 Filter1 filter1 = (x) => (x as String).contains('Hello');
 // #enddocregion func-cast

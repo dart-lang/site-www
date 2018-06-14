@@ -3885,7 +3885,7 @@ that information.
 
 <?code-excerpt "misc/lib/language_tour/typedefs/sorted_collection_2.dart"?>
 {% prettify dart %}
-typedef int Compare(Object a, Object b);
+typedef Compare = int Function(Object a, Object b);
 
 class SortedCollection {
   Compare compare;
@@ -3914,7 +3914,7 @@ of any function. For example:
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 {% prettify dart %}
-typedef int Compare<T>(T a, T b);
+typedef Compare<T> = int Function(T a, T b);
 
 int sort(int a, int b) => a - b;
 
