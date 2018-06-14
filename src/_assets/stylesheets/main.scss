@@ -378,7 +378,7 @@ img {
     }
   }
 }
-#footernav {}
+// #footernav {}
 
 #sidenav {
   position: relative;
@@ -393,11 +393,11 @@ img {
       font-size: 18px;
       font-weight: normal;
       text-transform: uppercase;
+      &.active { font-weight: bold; }
       a {
-        color: $gray-dark;
-        &:hover, &:focus, &:active {
-          color: $gray-dark;
-        }
+        color: $default-link;
+        &:hover { color: $brand-secondary; }
+        &:active { color: darken($brand-secondary, 15%); }
       }
     }
     ul {

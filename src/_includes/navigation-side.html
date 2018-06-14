@@ -15,7 +15,6 @@
         <a class="btn btn-default{% if page.url == '/guides/get-started' %} active{% endif %}" href="/guides/get-started">Get Started</a>
       </li>
     </ul>
-    {% assign linklist = site.data.side-nav %}
-    {% include linklist.html %}
+    {% include linklist.html list=site.data.side-nav %}
   </div>
 </div>
