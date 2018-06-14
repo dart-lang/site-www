@@ -15,7 +15,7 @@ Use this command to run a Dart script in your package,
 or in one of its dependencies, from the command line.
 
 To run an executable when you are not currently inside a package,
-see the [pub global](/tools/pub/cmd/pub-global) command.
+use the [pub global](/tools/pub/cmd/pub-global) command.
 
 ## Running a script in your package's bin directory
 
