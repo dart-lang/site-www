@@ -1,7 +1,7 @@
 - title: Language
+  permalink: /guides/language
+  urlExactMatch: true
   children:
-    - title: Overview
-      permalink: /guides/language
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Effective Dart
@@ -19,16 +19,16 @@
       permalink: /samples
 
 - title: Libraries
+  permalink: /guides/libraries
+  urlExactMatch: true
   children:
-    - title: Overview
-      permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
 
 - title: Platforms
+  permalink: /guides/platforms
+  urlExactMatch: true
   children:
-    - title: Overview
-      permalink: /guides/platforms
     - title: Web
       permalink: https://webdev.dartlang.org
     - title: Mobile (Flutter)
@@ -37,11 +37,12 @@
       permalink: /dart-vm
 
 - title: Testing
-  children:
-  - title: Dart Testing
-    permalink: /guides/testing
+  permalink: /guides/testing
+  urlExactMatch: true
 
 - title: Resources
+  permalink: /resources
+  urlExactMatch: true
   children:
   - title: Install
     permalink: /install
