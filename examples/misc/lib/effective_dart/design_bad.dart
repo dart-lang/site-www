@@ -2,7 +2,9 @@
 
 import 'dart:async';
 import 'dart:math';
+
 import 'package:dartlang_examples_util/ellipsis.dart';
+
 import 'design_good.dart';
 
 void miscDeclAnalyzedButNotTested() {
