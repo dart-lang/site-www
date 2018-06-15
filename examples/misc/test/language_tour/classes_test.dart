@@ -66,7 +66,7 @@ void main() {
   test('const, identical, runtimeType', () {
     _test() {
       // #docregion const
-      var p = const ImmutablePoint(2, 2);
+      final p = const ImmutablePoint(2, 2);
       // #enddocregion const
 
       // #docregion identical
