@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 import 'package:dartlang_examples_util/dart_version.dart';
 
 import '../lib/animal.dart';
-import '../lib/bounded/instantiate_to_bound.dart' as instantiate_to_bound;
+import '../lib/bounded/my_collection.dart';
 
 //@nullable
 String runtimeChecksSkipStatus() => dartMajorVers == 1
@@ -154,10 +154,13 @@ void main() {
       expect(b.typeOfT, 'dynamic');
     });
 
-    test(
-      'instantiate-to-bound example',
-      instantiate_to_bound.main, // contains assertions
-    );
+    test('instantiate-to-bound example', () {
+      // #docregion add-ok
+      var c = new C(Iterable.empty()).collection.toList();
+      c.add(2);
+      // #enddocregion add-ok
+      expect(c, [2]);
+    });
   });
 }
 

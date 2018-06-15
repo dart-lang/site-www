@@ -139,7 +139,7 @@ The following code creates a new instance of this class (omitting the type
 argument) and accesses its `collection` member:
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/bounded/instantiate_to_bound_error.dart (add-error)" replace="/c\..*;/[!$&!]/g"?>
+<?code-excerpt "strong/lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\..*;/[!$&!]/g"?>
 {% prettify dart %}
 var c = new C(Iterable.empty()).collection;
 [!c.add(2);!]
@@ -148,7 +148,7 @@ var c = new C(Iterable.empty()).collection;
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/add.*isn't defined for the class/"?>
 ```nocode
-error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound_error.dart:7:5 • undefined_method
+error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
 ```
 
 While the [List][] type has an `add()` method, [Iterable][] does not.
@@ -168,7 +168,7 @@ have a good understanding of the original design intent. In this case, you might
 realize that there is a missing call to `toList()`:
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/bounded/instantiate_to_bound.dart (add-ok)" replace="/collection.*;/[!$&!]/g"?>
+<?code-excerpt "strong/test/strong_test.dart (add-ok)" replace="/collection.*;/[!$&!]/g"?>
 {% prettify dart %}
 var c = new C(Iterable.empty()).[!collection.toList();!]
 c.add(2);

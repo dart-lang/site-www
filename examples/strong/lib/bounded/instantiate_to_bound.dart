@@ -1,9 +1,9 @@
 import 'my_collection.dart';
 
-void main() {
-  // #docregion add-ok
-  var c = new C(Iterable.empty()).collection.toList();
-  c.add(2);
-  // #enddocregion add-ok
-  assert(c.length == 1);
+void cannotRunThis() {
+  // #docregion undefined_method
+  var c = new C(Iterable.empty()).collection;
+  // ignore_for_file: 2, undefined_method
+  c.add(2); //!analysis-issue
+  // #enddocregion undefined_method
 }
