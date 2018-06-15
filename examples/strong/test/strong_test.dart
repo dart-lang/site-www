@@ -154,12 +154,20 @@ void main() {
       expect(b.typeOfT, 'dynamic');
     });
 
-    test('instantiate-to-bound example', () {
-      // #docregion add-ok
-      var c = new C(Iterable.empty()).collection.toList();
+    test('instantiate-to-bound fix: add type arg', () {
+      // #docregion add-type-arg
+      var c = new C<List>([]).collection;
       c.add(2);
-      // #enddocregion add-ok
+      // #enddocregion add-type-arg
       expect(c, [2]);
+    });
+
+    test('instantiate-to-bound fix 2', () {
+      // #docregion use-iterable
+      var c = new C(Iterable.empty()).collection;
+      // Use c as an iterable...
+      // #enddocregion use-iterable
+      expect(c, const TypeMatcher<Iterable>());
     });
   });
 }

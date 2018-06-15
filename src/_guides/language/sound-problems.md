@@ -63,10 +63,7 @@ see [Runtime errors](#common-errors-and-warnings).
 error • The <member> '...' isn't defined for the class '...' • undefined_<member>
 ```
 
-These errors usually appear in code where a variable is statically known
-to be some supertype but the code assumes a subtype.
-
-#### Example 1
+#### Example 1: A variable is statically known to be some supertype but the code assumes a subtype
 
 In the following code, the analyzer complains that `context2D` is undefined:
 
@@ -122,7 +119,7 @@ Otherwise, use `dynamic` in situations where you cannot use a single type:
 var width = canvasOrImg.width;
 {% endprettify %}
 
-#### Example 2
+#### Example 2: Omitted type parameters default to their type bounds
 
 Consider the following **generic class** with a **bounded type parameter** that extends
 `Iterable`:
@@ -153,25 +150,38 @@ error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded
 
 While the [List][] type has an `add()` method, [Iterable][] does not.
 
-#### Fix
+#### Fix: Specify type arguments or fix downstream errors
 
 In Dart 1.x, when a generic class is instantiated without explicit type
 arguments, `dynamic` is assumed. That is why, in the code excerpt above, `c` is
 of type `dynamic` and no error is reported for `c.add()`.
 
 In Dart 2, when a generic class is instantiated without explicit type arguments,
-each type parameter defaults to its type bound (`Interface` in this example) if
+each type parameter defaults to its type bound (`Iterable` in this example) if
 one is explicitly given, or `dynamic` otherwise.
 
 You'll need to approach fixing such errors on a case-by-case basis. It helps to
-have a good understanding of the original design intent. In this case, you might
-realize that there is a missing call to `toList()`:
+have a good understanding of the original design intent.
+
+Explicitly passing type arguments is one way to help identify type errors. For
+example, by specifying `List` as a type argument, the analyzer let's you know
+that the constructor argument has the wrong type and needs to be changed:
 
 {:.passes-sa}
-<?code-excerpt "strong/test/strong_test.dart (add-ok)" replace="/collection.*;/[!$&!]/g"?>
+<?code-excerpt "strong/test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
 {% prettify dart %}
-var c = new C(Iterable.empty()).[!collection.toList();!]
+var c = new C[!<List>!]([![]!]).collection;
 c.add(2);
+{% endprettify %}
+
+If you actually meant `collection` to be an `Iterable`, then subsequent uses of
+`c` are an error and need to be fixed:
+
+{:.passes-sa}
+<?code-excerpt "strong/test/strong_test.dart (use-iterable)" replace="/Use.*\.\.\./[!$&!]/g"?>
+{% prettify dart %}
+var c = new C(Iterable.empty()).collection;
+// [!Use c as an iterable...!]
 {% endprettify %}
 
 <hr>
