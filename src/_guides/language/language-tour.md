@@ -2281,7 +2281,7 @@ before the constructor name:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
 {% prettify dart %}
-final p = const ImmutablePoint(2, 2);
+var p = const ImmutablePoint(2, 2);
 {% endprettify %}
 
 Constructing two identical compile-time constants results in a single,
@@ -2320,7 +2320,7 @@ const pointAndLine = {
 
 <aside class="alert alert-info" markdown="1">
 **Version note:** The `const` keyword became optional
-(within a constant context) in Dart 2.
+within a constant context in Dart 2.
 </aside>
 
 

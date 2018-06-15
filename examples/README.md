@@ -44,7 +44,7 @@ dartanalyzer --preview-dart-2 .
 To run both the analyzer and tests:
 
 ```
-./scripts/analyze-and-test-examples.sh`
+./scripts/analyze-and-test-examples.sh
 ```
 
 If you get a warning about test failures or analysis errors,
@@ -109,9 +109,9 @@ scaffolding to be written and the effort isn't worth the small gain.
 Code segments enclosed in the special syntax [!...!] will be highlighted.
 For example, the code
 
-    ```
-      int [!foo!] = bar;
-    ```
+```
+int [!foo!] = bar;
+```
 
 will display as
 
@@ -122,10 +122,10 @@ will display as
 The code excerpt extractor can apply regular-expression-based replace transformations.
 There are global transformations applied to all code excerpts. See
 `./scripts/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
-along with the `--replace` command line argumet of the `code_excerpt_updater` command.
+along with the `--replace` command line argument of the `code_excerpt_updater` command.
 
 File-scope global replace expressions are included at the top of some of site page markdown files.
-For example, `src/_guides/language/effective-dart/design.md` currently use the file-global replace argument:
+For example, `src/_guides/language/effective-dart/design.md` currently uses the file-global replace argument:
 
 ```html
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
