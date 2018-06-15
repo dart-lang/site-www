@@ -3,6 +3,7 @@ import 'package:test/test.dart';
 import 'package:dartlang_examples_util/dart_version.dart';
 
 import '../lib/animal.dart';
+import '../lib/bounded/instantiate_to_bound.dart' as instantiate_to_bound;
 
 //@nullable
 String runtimeChecksSkipStatus() => dartMajorVers == 1
@@ -146,6 +147,17 @@ void main() {
 
       expect(_test, prints(expectedOutput));
     });
+
+    test('instantiate-to-bound sanity', () {
+      final b = new B();
+      expect(b.typeOfS, 'int');
+      expect(b.typeOfT, 'dynamic');
+    });
+
+    test(
+      'instantiate-to-bound example',
+      instantiate_to_bound.main, // contains assertions
+    );
   });
 }
 
@@ -160,3 +172,8 @@ assumeStrings(List<Object> objects) {
   // #docregion downcast-check
 }
 // #enddocregion downcast-check
+
+class B<S extends int, T> {
+  String get typeOfS => '$S';
+  String get typeOfT => '$T';
+}
