@@ -1,7 +1,6 @@
 ---
 title: DartPad
 description: The tool that lets you interactively play with Dart in a browser.
-permalink: /tools/dartpad
 ---
 
 <a href="{{site.custom.dartpad.direct-link}}"
