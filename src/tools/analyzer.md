@@ -1,7 +1,6 @@
 ---
 title: Static Analyzer
 description: The tool that analyzes and validates your Dart code.
-permalink: /tools/analyzer
 ---
 
 The static analyzer evaluates your Dart code,

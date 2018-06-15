@@ -1,5 +1,4 @@
 ---
-layout: article
 title: "Emulating Functions in Dart"
 description: "Learn how to define Dart classes that behave like functions."
 written: 2012-01-01

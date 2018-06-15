@@ -3941,21 +3941,6 @@ void main() {
 }
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-**New function type syntax:**
-Dart 1.24 introduced a new form of function types, the [generic function type
-alias.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/generic-function-type-alias.md)
-You might use this feature if you pass around generic methods,
-define fields that are function types,
-or define arguments with generic function types.
-Here's an example of using the new syntax:
-
-<?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (Function)"?>
-{% prettify dart %}
-typedef F = List<T> Function<T>(T);
-{% endprettify %}
-</aside>
-
 ## Metadata
 
 Use metadata to give additional information about your code. A metadata

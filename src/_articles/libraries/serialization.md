@@ -1,5 +1,4 @@
 ---
-layout: article
 title: "Serialization in Dart"
 description: "Choose the serialization strategy that's right for your project."
 written: 2015-02-09

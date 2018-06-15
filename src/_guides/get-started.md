@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: Get Started
 description: "A guide to getting started with Dart."
 toc: false
