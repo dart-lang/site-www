@@ -101,9 +101,7 @@ void main() {
     };
     // #enddocregion const-context-noconst
 
-    // Same instances!
-    assert(identical(pointAndLine1, pointAndLine2));
-    assert(identical(pointAndLine1['point'], pointAndLine2['point']));
+    expect(pointAndLine1 == pointAndLine2, isTrue);
   });
 
   test('point_with_main', () {
