@@ -668,7 +668,7 @@ nobleGases[18] = 'argon';
 **Note:**
 You might expect to see `new Map()` instead of just `Map()`.
 As of Dart 2, the `new` keyword is optional.
-For details, see [PENDING: constructor section].
+For details, see [Using constructors](#using-constructors).
 </aside>
 
 Add a new key-value pair to an existing map just as you would in
@@ -2209,31 +2209,8 @@ descend from [Object.][Object]
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 
-To create an object, you can use the `new` keyword with a *constructor*
-for a class. Constructor names can be either <code><em>ClassName</em></code> or
-<code><em>ClassName</em>.<em>identifier</em></code>. For example:
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
-{% prettify dart %}
-// Create a Point using Point().
-var p1 = Point(2, 2);
-
-// Create a Point using Point.fromJson().
-var p2 = Point.fromJson({'x': 1, 'y': 2});
-{% endprettify %}
-
-<aside class="alert alert-info" markdown="1">
-**Dart 2 note:**
-You can omit the `new` before the constructor.
-Example: `p1 = Point(2, 2)`.
-
-{% comment %}
-update-for-dart-2
-
-TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
-`p3 = Point(2, 2)` into the code snippet.
-{% endcomment %}
-</aside>
+### Using class members
 
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
@@ -2270,33 +2247,42 @@ https://gist.github.com/0cb25997742ed5382e4a
 p?.y = 4;
 {% endprettify %}
 
-Some classes provide constant constructors. To create a compile-time
-constant using a constant constructor, use `const` instead of `new`:
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
+### Using constructors
+
+You can create an object using a *constructor*.
+Constructor names can be either <code><em>ClassName</em></code> or
+<code><em>ClassName</em>.<em>identifier</em></code>. For example,
+the following code creates `Point` objects using the
+`Point()` and `Point.fromJson()` constructors:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
-var p = const ImmutablePoint(2, 2);
+var p1 = Point(2, 2);
+var p2 = Point.fromJson({'x': 1, 'y': 2});
+{% endprettify %}
+
+The following code has the same effect, but
+uses the optional `new` keyword before the constructor name:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation-new)" replace="/ as .*?;/;/g"?>
+{% prettify dart %}
+var p1 = new Point(2, 2);
+var p2 = new Point.fromJson({'x': 1, 'y': 2});
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-You can sometimes omit the `const` before the constructor,
-but not in this example.
-For more information, read about _constant context_ in the
-[informal specification for implicit creation.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/implicit-creation.md)
-[PENDING: Fix this?]
-{% comment %}
-update-for-dart-2
-
-To omit the `const` before a constructor,
-you need to be in a `const` context,
-which requires at least one other use of `const`.
-[EXAMPLE OR LINK GOES HERE]
-
-[TODO: Once https://github.com/dart-lang/pub/issues/1807 is fixed,
-update code snippet and tests.]
-{% endcomment %}
+**Version note:** The `new` keyword became optional in Dart 2.
 </aside>
+
+Some classes provide constant constructors. To create a compile-time
+constant using a constant constructor, put the `const` keyword
+before the constructor name:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
+{% prettify dart %}
+final p = const ImmutablePoint(2, 2);
+{% endprettify %}
 
 Constructing two identical compile-time constants results in a single,
 canonical instance:
@@ -2309,6 +2295,37 @@ var b = const ImmutablePoint(1, 1);
 assert(identical(a, b)); // They are the same instance!
 {% endprettify %}
 
+Within a _constant context_, you can omit the `const` before a constructor
+or literal. For example, look at this code, which creates a const map:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
+{% prettify dart %}
+// Lots of const keywords here.
+const pointAndLine = const {
+  'point': const [const ImmutablePoint(0, 0)],
+  'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
+};
+{% endprettify %}
+
+You can omit all but the first use of the `const` keyword:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
+{% prettify dart %}
+// Only one const, which establishes the constant context.
+const pointAndLine = {
+  'point': [ImmutablePoint(0, 0)],
+  'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+};
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Version note:** The `const` keyword became optional
+(within a constant context) in Dart 2.
+</aside>
+
+
+### Getting an object's type
+
 To get an object's type at runtime,
 you can use Object's `runtimeType` property,
 which returns a [Type][] object.
@@ -2318,7 +2335,8 @@ which returns a [Type][] object.
 print('The type of a is ${a.runtimeType}');
 {% endprettify %}
 
-The following sections discuss how to implement classes.
+Up to here, you've seen how to _use_ classes.
+The rest of this section shows how to _implement_ classes.
 
 
 ### Instance variables
