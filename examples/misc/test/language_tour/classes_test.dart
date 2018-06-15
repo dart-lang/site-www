@@ -28,12 +28,17 @@ import 'package:dartlang_examples_util/print_matcher.dart' as m;
 void main() {
   test('object-creation', () {
     // #docregion object-creation
-    // Create a Point using Point().
     var p1 = Point(2, 2);
-
-    // Create a Point using Point.fromJson().
     var p2 = Point.fromJson({'x': 1, 'y': 2});
     // #enddocregion object-creation
+    expect(p1.y, p2.y);
+  });
+
+  test('object-creation-new', () {
+    // #docregion object-creation-new
+    var p1 = new Point(2, 2);
+    var p2 = new Point.fromJson({'x': 1, 'y': 2});
+    // #enddocregion object-creation-new
     expect(p1.y, p2.y);
   });
 
@@ -77,6 +82,28 @@ void main() {
     }
 
     expect(_test, m.prints('The type of a is ImmutablePoint'));
+  });
+
+  test('const_context', () {
+    // #docregion const-context-withconst
+    // Lots of const keywords here.
+    const pointAndLine1 = const {
+      'point': const [const ImmutablePoint(0, 0)],
+      'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-withconst
+
+    // #docregion const-context-noconst
+    // Only one const, which establishes the constant context.
+    const pointAndLine2 = {
+      'point': [ImmutablePoint(0, 0)],
+      'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-noconst
+
+    // Same instances!
+    assert(identical(pointAndLine1, pointAndLine2));
+    assert(identical(pointAndLine1['point'], pointAndLine2['point']));
   });
 
   test('point_with_main', () {
