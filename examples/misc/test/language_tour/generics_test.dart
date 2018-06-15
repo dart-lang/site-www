@@ -2,7 +2,7 @@
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 
-final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
+final Matcher throwsATypeError = throwsA(new TypeMatcher<TypeError>());
 
 void main() {
   test('constructor-1', () {

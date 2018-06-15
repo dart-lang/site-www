@@ -11,7 +11,7 @@ String runtimeChecksSkipStatus() => dartMajorVers == 1
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
-          new isInstanceOf<T>(),
+          new TypeMatcher<T>(),
           predicate(
             (e) => e.toString().contains(msg),
           )),
