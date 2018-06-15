@@ -19,7 +19,3 @@ dependency_overrides:
   code_excerpter:
     git: https://github.com/chalin/code_excerpter.git
     # path: ../code_excerpter
-  linkcheck:
-    git:
-      url: https://github.com/chalin/linkcheck.git
-      # ref: chalin-dart-2-runtime-0612
