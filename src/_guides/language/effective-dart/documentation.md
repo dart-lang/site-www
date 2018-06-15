@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: "Effective Dart: Documentation"
 description: Clear, helpful comments and documentation.
 nextpage:

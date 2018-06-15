@@ -1,7 +1,6 @@
 ---
-layout: guide
-title: "A Tour of the Dart Libraries"
-description: "Learn about the major features in Dart's libraries."
+title: A Tour of the Dart Libraries
+description: Learn about the major features in Dart's libraries.
 short-title: Library Tour
 ---
 <?code-excerpt plaster="none"?>

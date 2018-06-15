@@ -1,5 +1,4 @@
 ---
-layout: article
 title: "Native Extensions for the Standalone Dart VM"
 description: "Learn how to enable command-line Dart apps to call C/C++ functions."
 written: 2012-05-01

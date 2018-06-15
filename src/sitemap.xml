@@ -1,12 +1,13 @@
 ---
 layout: null
+sitemap: false
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% assign collections = site.collections | map: 'label' | join: ',' | prepend: 'pages,' | split: ',' -%}
 {%- for colName in collections -%}
 {%- for page in site[colName] -%}
-{%- unless page.sitemap == false or page.url == 'sitemap.xml' -%}
+{%- unless page.sitemap == false -%}
 <url>
   <loc>{{ site.url | append: page.url | regex_replace: '(\.html|/)$' }}</loc>
   <lastmod>

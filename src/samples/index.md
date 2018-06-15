@@ -24,12 +24,6 @@ also want to check out the language and library tours.
       dates and times, streams, and more.
     </p>
   </div>
-  <!-- XXXXX TODO: XXXXX
-  <div class="card">
-    <h3><a href="/DOES_NOT_EXIST_YET">End-to-end repositories</a></h3>
-    <p>For those who like to see projects in their entirety.</p>
-  </div>
-  -->
 </div>
 
 

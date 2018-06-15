@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: "Effective Dart: Usage"
 description: Guidelines for using language features to write maintainable code.
 nextpage:

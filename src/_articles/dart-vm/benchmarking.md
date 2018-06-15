@@ -1,5 +1,4 @@
 ---
-layout: article
 title: "Benchmarking the Dart VM"
 description: "Learn how to benchmark your applications"
 written: 2012-10-01

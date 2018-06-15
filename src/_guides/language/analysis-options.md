@@ -1,7 +1,6 @@
 ---
-layout: guide
-title: "Customize Static Analysis"
-description: "Customize static analysis using the analysis_options file."
+title: Customize Static Analysis
+description: Customize static analysis using the analysis_options file.
 ---
 
 Static analysis allows you to find problems before
