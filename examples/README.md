@@ -21,20 +21,31 @@ The original sources for the (large) samples were copied from the
 
 ## New sources
 
-Consolidated and reworked versions of the original sources have been developed,
-and are found under these folders:
+Consolidated and reworked versions of the original sources
+are under these folders:
 
 - `examples/*/lib`
 - `examples/*/test`
 
-As can be expected, Travis jobs run the
+Travis jobs run the following:
 
 - Analyzer over both `lib` and `test`
 - Tests under `test`
 
-To run the analyzer and tests locally, use this command:
+You can run some or all of these at the command line, as well.
 
-`./scripts/analyze-and-test-examples.sh`
+To run only the analyzer:
+
+```
+cd examples
+dartanalyzer --preview-dart-2 .
+```
+
+To run both the analyzer and tests:
+
+```
+./scripts/analyze-and-test-examples.sh`
+```
 
 If you get a warning about test failures or analysis errors,
 you might need to update one or more analyzer results files
