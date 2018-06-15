@@ -17,8 +17,8 @@ void main() {
   assert(A.bar == x);
 
   // Comparing instance methods.
-  var v = new A(); // Instance #1 of A
-  var w = new A(); // Instance #2 of A
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
   var y = w;
   x = w.baz;
 

@@ -28,18 +28,23 @@ import 'package:dartlang_examples_util/print_matcher.dart' as m;
 void main() {
   test('object-creation', () {
     // #docregion object-creation
-    // Create a Point using Point().
-    var p1 = new Point(2, 2);
-
-    // Create a Point using Point.fromJson().
-    var p2 = new Point.fromJson({'x': 1, 'y': 2});
+    var p1 = Point(2, 2);
+    var p2 = Point.fromJson({'x': 1, 'y': 2});
     // #enddocregion object-creation
+    expect(p1.y, p2.y);
+  });
+
+  test('object-creation-new', () {
+    // #docregion object-creation-new
+    var p1 = new Point(2, 2);
+    var p2 = new Point.fromJson({'x': 1, 'y': 2});
+    // #enddocregion object-creation-new
     expect(p1.y, p2.y);
   });
 
   test('object-members', () {
     // #docregion object-members
-    var p = new Point(2, 2);
+    var p = Point(2, 2);
 
     // Set the value of the instance variable y.
     p.y = 3;
@@ -48,7 +53,7 @@ void main() {
     assert(p.y == 3);
 
     // Invoke distanceTo() on p.
-    num distance = p.distanceTo(new Point(4, 4));
+    num distance = p.distanceTo(Point(4, 4));
     // #enddocregion object-members
 
     // #docregion safe-member-access
@@ -79,6 +84,26 @@ void main() {
     expect(_test, m.prints('The type of a is ImmutablePoint'));
   });
 
+  test('const_context', () {
+    // #docregion const-context-withconst
+    // Lots of const keywords here.
+    const pointAndLine1 = const {
+      'point': const [const ImmutablePoint(0, 0)],
+      'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-withconst
+
+    // #docregion const-context-noconst
+    // Only one const, which establishes the constant context.
+    const pointAndLine2 = {
+      'point': [ImmutablePoint(0, 0)],
+      'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-noconst
+
+    expect(pointAndLine1 == pointAndLine2, isTrue);
+  });
+
   test('point_with_main', () {
     point_with_main.main(); // contains assertions
   });
@@ -92,7 +117,7 @@ void main() {
   });
 
   test('point_redirecting', () {
-    final p = new point_redirecting.Point.alongXAxis(42);
+    final p = point_redirecting.Point.alongXAxis(42);
     expect(p.y, 0);
   });
 

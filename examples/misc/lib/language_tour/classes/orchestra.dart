@@ -52,10 +52,10 @@ class Maestro extends Person
 // #enddocregion Musician-and-Maestro
 
 void main() {
-  var director = new Maestro('Allen');
+  var director = Maestro('Allen');
   director.entertainMe(); // Waving hands
 
-  var musician = new Musician('Kathy');
+  var musician = Musician('Kathy');
   musician.canPlayPiano = true;
   musician.entertainMe(); // Playing piano
 }

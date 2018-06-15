@@ -9,12 +9,6 @@ This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 
-<div class="alert alert-info" markdown="1">
-**Dart 2 note:**
-This tour is being updated for [Dart 2 changes](/dart-2),
-such as optional `new` and `const`.
-</div>
-
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
@@ -336,8 +330,7 @@ Those can't be initialized using literals, but they do have special support.
 Because every variable in Dart refers to an object—an instance of a
 *class*—you can usually use *constructors* to initialize variables. Some
 of the built-in types have their own constructors. For example, you can
-use the `Map()` constructor to create a map, using code such as
-`new Map()`.
+use the `Map()` constructor to create a map.
 
 
 ### Numbers
@@ -660,16 +653,23 @@ You can create the same objects using a Map constructor:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 {% prettify dart %}
-var gifts = new Map();
+var gifts = Map();
 gifts['first'] = 'partridge';
 gifts['second'] = 'turtledoves';
 gifts['fifth'] = 'golden rings';
 
-var nobleGases = new Map();
+var nobleGases = Map();
 nobleGases[2] = 'helium';
 nobleGases[10] = 'neon';
 nobleGases[18] = 'argon';
 {% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+You might expect to see `new Map()` instead of just `Map()`.
+As of Dart 2, the `new` keyword is optional.
+For details, see [Using constructors](#using-constructors).
+</aside>
 
 Add a new key-value pair to an existing map just as you would in
 JavaScript:
@@ -763,9 +763,9 @@ void main() {
   print(clapping.codeUnits);
   print(clapping.runes.toList());
 
-  Runes input = new Runes(
-      '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-  print(new String.fromCharCodes(input));
+  Runes input =
+      Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
+  print(String.fromCharCodes(input));
 }
 {% endprettify %}
 {% endcomment %}
@@ -1249,8 +1249,8 @@ void main() {
   assert(A.bar == x);
 
   // Comparing instance methods.
-  var v = new A(); // Instance #1 of A
-  var w = new A(); // Instance #2 of A
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
   var y = w;
   x = w.baz;
 
@@ -1703,10 +1703,10 @@ You can also nest your cascades. For example:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 {% prettify dart %}
-final addressBook = (new AddressBookBuilder()
+final addressBook = (AddressBookBuilder()
       ..name = 'jenny'
       ..email = 'jenny@example.com'
-      ..phone = (new PhoneNumberBuilder()
+      ..phone = (PhoneNumberBuilder()
             ..number = '415-555-0100'
             ..label = 'home')
           .build())
@@ -1718,7 +1718,7 @@ an actual object. For example, the following code fails:
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 {% prettify dart %}
-var sb = new StringBuffer();
+var sb = StringBuffer();
 sb.write('foo')
   ..write('bar'); // Error: method 'write' isn't defined for 'void'.
 {% endprettify %}
@@ -1796,7 +1796,7 @@ You can iterate with the standard `for` loop. For example:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (for)"?>
 {% prettify dart %}
-var message = new StringBuffer('Dart is fun');
+var message = StringBuffer('Dart is fun');
 for (var i = 0; i < 5; i++) {
   message.write('!');
 }
@@ -2062,7 +2062,7 @@ Here’s an example of throwing, or *raising*, an exception:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-FormatException)"?>
 {% prettify dart %}
-throw new FormatException('Expected at least 1 section');
+throw FormatException('Expected at least 1 section');
 {% endprettify %}
 
 You can also throw arbitrary objects:
@@ -2082,8 +2082,7 @@ in =\> statements, as well as anywhere else that allows expressions:
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-is-an-expression)"?>
 {% prettify dart %}
-void distanceTo(Point other) =>
-    throw new UnimplementedError();
+void distanceTo(Point other) => throw UnimplementedError();
 {% endprettify %}
 
 
@@ -2210,31 +2209,8 @@ descend from [Object.][Object]
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 
-To create an object, you can use the `new` keyword with a *constructor*
-for a class. Constructor names can be either <code><em>ClassName</em></code> or
-<code><em>ClassName</em>.<em>identifier</em></code>. For example:
 
-<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
-{% prettify dart %}
-// Create a Point using Point().
-var p1 = new Point(2, 2);
-
-// Create a Point using Point.fromJson().
-var p2 = new Point.fromJson({'x': 1, 'y': 2});
-{% endprettify %}
-
-<aside class="alert alert-info" markdown="1">
-**Dart 2 note:**
-You can omit the `new` before the constructor.
-Example: `p1 = Point(2, 2)`.
-
-{% comment %}
-update-for-dart-2
-
-TODO: Once dart-lang/pub#1807 is fixed, remove the note and put
-`p3 = Point(2, 2)` into the code snippet.
-{% endcomment %}
-</aside>
+### Using class members
 
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
@@ -2245,7 +2221,7 @@ Use a dot (`.`) to refer to an instance variable or method:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-members)"?>
 {% prettify dart %}
-var p = new Point(2, 2);
+var p = Point(2, 2);
 
 // Set the value of the instance variable y.
 p.y = 3;
@@ -2254,7 +2230,7 @@ p.y = 3;
 assert(p.y == 3);
 
 // Invoke distanceTo() on p.
-num distance = p.distanceTo(new Point(4, 4));
+num distance = p.distanceTo(Point(4, 4));
 {% endprettify %}
 
 Use `?.` instead of `.` to avoid an exception
@@ -2271,32 +2247,42 @@ https://gist.github.com/0cb25997742ed5382e4a
 p?.y = 4;
 {% endprettify %}
 
+
+### Using constructors
+
+You can create an object using a *constructor*.
+Constructor names can be either <code><em>ClassName</em></code> or
+<code><em>ClassName</em>.<em>identifier</em></code>. For example,
+the following code creates `Point` objects using the
+`Point()` and `Point.fromJson()` constructors:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
+{% prettify dart %}
+var p1 = Point(2, 2);
+var p2 = Point.fromJson({'x': 1, 'y': 2});
+{% endprettify %}
+
+The following code has the same effect, but
+uses the optional `new` keyword before the constructor name:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation-new)" replace="/ as .*?;/;/g"?>
+{% prettify dart %}
+var p1 = new Point(2, 2);
+var p2 = new Point.fromJson({'x': 1, 'y': 2});
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Version note:** The `new` keyword became optional in Dart 2.
+</aside>
+
 Some classes provide constant constructors. To create a compile-time
-constant using a constant constructor, use `const` instead of `new`:
+constant using a constant constructor, put the `const` keyword
+before the constructor name:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
 {% prettify dart %}
 var p = const ImmutablePoint(2, 2);
 {% endprettify %}
-
-<aside class="alert alert-info" markdown="1">
-**Dart 2 note:**
-You can sometimes omit the `const` before the constructor,
-but not in this example.
-For more information, read about _constant context_ in the
-[informal specification for implicit creation.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/implicit-creation.md)
-{% comment %}
-update-for-dart-2
-
-To omit the `const` before a constructor,
-you need to be in a `const` context,
-which requires at least one other use of `const`.
-[EXAMPLE OR LINK GOES HERE]
-
-[TODO: Once https://github.com/dart-lang/pub/issues/1807 is fixed,
-update code snippet and tests.]
-{% endcomment %}
-</aside>
 
 Constructing two identical compile-time constants results in a single,
 canonical instance:
@@ -2309,6 +2295,37 @@ var b = const ImmutablePoint(1, 1);
 assert(identical(a, b)); // They are the same instance!
 {% endprettify %}
 
+Within a _constant context_, you can omit the `const` before a constructor
+or literal. For example, look at this code, which creates a const map:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
+{% prettify dart %}
+// Lots of const keywords here.
+const pointAndLine = const {
+  'point': const [const ImmutablePoint(0, 0)],
+  'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
+};
+{% endprettify %}
+
+You can omit all but the first use of the `const` keyword:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
+{% prettify dart %}
+// Only one const, which establishes the constant context.
+const pointAndLine = {
+  'point': [ImmutablePoint(0, 0)],
+  'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+};
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+**Version note:** The `const` keyword became optional
+within a constant context in Dart 2.
+</aside>
+
+
+### Getting an object's type
+
 To get an object's type at runtime,
 you can use Object's `runtimeType` property,
 which returns a [Type][] object.
@@ -2318,7 +2335,8 @@ which returns a [Type][] object.
 print('The type of a is ${a.runtimeType}');
 {% endprettify %}
 
-The following sections discuss how to implement classes.
+Up to here, you've seen how to _use_ classes.
+The rest of this section shows how to _implement_ classes.
 
 
 ### Instance variables
@@ -2348,7 +2366,7 @@ class Point {
 }
 
 void main() {
-  var point = new Point();
+  var point = Point();
   point.x = 4; // Use the setter method for x.
   assert(point.x == 4); // Use the getter method for x.
   assert(point.y == null); // Values default to null.
@@ -2486,7 +2504,7 @@ class Employee extends Person {
 }
 
 void main() {
-  var emp = new Employee.fromJson({});
+  var emp = Employee.fromJson({});
   // Prints:
   // in Person
   // in Employee
@@ -2589,7 +2607,7 @@ class Point {
 }
 
 void main() {
-  var p = new Point(2, 3);
+  var p = Point(2, 3);
   print(p.distanceFromOrigin);
 }
 {% endprettify %}
@@ -2665,7 +2683,7 @@ class Logger {
     if (_cache.containsKey(name)) {
       return _cache[name];
     } else {
-      final logger = new Logger._internal(name);
+      final logger = Logger._internal(name);
       _cache[name] = logger;
       return logger;
     }
@@ -2688,7 +2706,7 @@ To invoke a factory constructor, you use the `new` keyword:
 
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart (logger)"?>
 {% prettify dart %}
-var logger = new Logger('UI');
+var logger = Logger('UI');
 logger.log('Button clicked');
 {% endprettify %}
 
@@ -2743,7 +2761,7 @@ class Rectangle {
 }
 
 void main() {
-  var rect = new Rectangle(3, 4, 20, 15);
+  var rect = Rectangle(3, 4, 20, 15);
   assert(rect.left == 3);
   rect.right = 12;
   assert(rect.left == -8);
@@ -2811,18 +2829,18 @@ class Vector {
 
   /// Overrides + (a + b).
   Vector operator +(Vector v) {
-    return new Vector(x + v.x, y + v.y);
+    return Vector(x + v.x, y + v.y);
   }
 
   /// Overrides - (a - b).
   Vector operator -(Vector v) {
-    return new Vector(x - v.x, y - v.y);
+    return Vector(x - v.x, y - v.y);
   }
 }
 
 void main() {
-  final v = new Vector(2, 3);
-  final w = new Vector(2, 2);
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
 
   // v == (2, 3)
   assert(v.x == 2 && v.y == 3);
@@ -2902,8 +2920,8 @@ class Impostor implements Person {
 String greetBob(Person person) => person.greet('Bob');
 
 void main() {
-  print(greetBob(new Person('Kathy')));
-  print(greetBob(new Impostor()));
+  print(greetBob(Person('Kathy')));
+  print(greetBob(Impostor()));
 }
 {% endprettify %}
 
@@ -3174,8 +3192,8 @@ class Point {
 }
 
 void main() {
-  var a = new Point(2, 2);
-  var b = new Point(4, 4);
+  var a = Point(2, 2);
+  var b = Point(4, 4);
   var distance = Point.distanceBetween(a, b);
   assert(2.8 < distance && distance < 2.9);
   print(distance);
@@ -3218,7 +3236,7 @@ the list is probably a mistake. Here’s an example:
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 {% prettify dart %}
-var names = new List<String>();
+var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
 names.add(42); // Error
 {% endprettify %}
@@ -3293,9 +3311,9 @@ angle brackets (`<...>`) just after the class name. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 {% prettify dart %}
-var names = new List<String>();
+var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-var nameSet = new Set<String>.from(names);
+var nameSet = Set<String>.from(names);
 {% endprettify %}
 
 The following code creates a map that has integer keys and values of
@@ -3303,7 +3321,7 @@ type View:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 {% prettify dart %}
-var views = new Map<int, View>();
+var views = Map<int, View>();
 {% endprettify %}
 
 
@@ -3315,7 +3333,7 @@ collection:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 {% prettify dart %}
-var names = new List<String>();
+var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
 print(names is List<String>); // true
 {% endprettify %}
@@ -3348,15 +3366,15 @@ It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
-var someBaseClassFoo = new [!Foo<SomeBaseClass>!]();
-var extenderFoo = new [!Foo<Extender>!]();
+var someBaseClassFoo = [!Foo<SomeBaseClass>!]();
+var extenderFoo = [!Foo<Extender>!]();
 {% endprettify %}
 
 It's also OK to specify no generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
-var foo = new Foo();
+var foo = Foo();
 print(foo); // Instance of 'Foo<SomeBaseClass>'
 {% endprettify %}
 
@@ -3365,7 +3383,7 @@ Specifying any non-`SomeBaseClass` type results in an error:
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
-var foo = new [!Foo<Object>!]();
+var foo = [!Foo<Object>!]();
 {% endprettify %}
 
 
@@ -3456,10 +3474,10 @@ import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 
 // Uses Element from lib1.
-Element element1 = new Element();
+Element element1 = Element();
 
 // Uses Element from lib2.
-lib2.Element element2 = new lib2.Element();
+lib2.Element element2 = lib2.Element();
 {% endprettify %}
 
 #### Importing only part of a library
@@ -3814,7 +3832,7 @@ class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }
 
-var wf = new WannabeFunction();
+var wf = WannabeFunction();
 var out = wf('Hi', 'there,', 'gang');
 
 main() => print(out);
@@ -3869,7 +3887,7 @@ class SortedCollection {
 int sort(Object a, Object b) => 0;
 
 void main() {
-  SortedCollection coll = new SortedCollection(sort);
+  SortedCollection coll = SortedCollection(sort);
 
   // All we know is that compare is a function,
   // but what type of function?
@@ -3897,7 +3915,7 @@ class SortedCollection {
 int sort(Object a, Object b) => 0;
 
 void main() {
-  SortedCollection coll = new SortedCollection(sort);
+  SortedCollection coll = SortedCollection(sort);
   assert(coll.compare is Function);
   assert(coll.compare is Compare);
 }
@@ -4016,7 +4034,7 @@ void main() {
   /*
    * This is a lot of work. Consider raising chickens.
 
-  Llama larry = new Llama();
+  Llama larry = Llama();
   larry.feed();
   larry.exercise();
   larry.clean();

@@ -3,7 +3,7 @@
 // ignore_for_file: deprecated_member_use
 
 void main() {
-  dynamic a = new A();
+  dynamic a = A();
   a.doSomething();
 }
 

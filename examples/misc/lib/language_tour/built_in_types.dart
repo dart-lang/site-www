@@ -106,12 +106,12 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion map-constructor
-    var gifts = new Map();
+    var gifts = Map();
     gifts['first'] = 'partridge';
     gifts['second'] = 'turtledoves';
     gifts['fifth'] = 'golden rings';
 
-    var nobleGases = new Map();
+    var nobleGases = Map();
     nobleGases[2] = 'helium';
     nobleGases[10] = 'neon';
     nobleGases[18] = 'argon';
@@ -156,9 +156,9 @@ class RunesExample {
     print(clapping.codeUnits);
     print(clapping.runes.toList());
 
-    Runes input = new Runes(
-        '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-    print(new String.fromCharCodes(input));
+    Runes input =
+        Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
+    print(String.fromCharCodes(input));
   }
 // #enddocregion runes
 }

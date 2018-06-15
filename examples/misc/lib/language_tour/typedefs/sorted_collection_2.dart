@@ -10,7 +10,7 @@ class SortedCollection {
 int sort(Object a, Object b) => 0;
 
 void main() {
-  SortedCollection coll = new SortedCollection(sort);
+  SortedCollection coll = SortedCollection(sort);
   assert(coll.compare is Function);
   assert(coll.compare is Compare);
 }

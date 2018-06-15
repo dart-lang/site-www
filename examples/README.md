@@ -21,16 +21,45 @@ The original sources for the (large) samples were copied from the
 
 ## New sources
 
-Consolidated and reworked versions of the original sources have been developed,
-and are found under these folders:
+Consolidated and reworked versions of the original sources
+are under these folders:
 
 - `examples/*/lib`
 - `examples/*/test`
 
-As can be expected, Travis jobs run the
+Travis jobs run the following:
 
 - Analyzer over both `lib` and `test`
 - Tests under `test`
+
+You can run some or all of these at the command line, as well.
+
+To run only the analyzer:
+
+```
+cd examples
+dartanalyzer --preview-dart-2 .
+```
+
+To run both the analyzer and tests:
+
+```
+./scripts/analyze-and-test-examples.sh
+```
+
+If you get a warning about test failures or analysis errors,
+you might need to update one or more analyzer results files
+(for example, `examples/misc/analyzer-2-results.txt`).
+
+To update an analyzer results file:
+
+1. Run `./scripts/analyze-and-test-examples.sh  --save-logs`.
+2. Look at the diffs for the results files.
+3. If the diffs look good but some comments are missing,
+   add back the comments that are still relevant.
+4. Run `./scripts/analyze-and-test-examples.sh` to confirm that
+   your changes are good.
+
 
 ### File organisation for the Tours
 
@@ -80,9 +109,9 @@ scaffolding to be written and the effort isn't worth the small gain.
 Code segments enclosed in the special syntax [!...!] will be highlighted.
 For example, the code
 
-    ```
-      int [!foo!] = bar;
-    ```
+```
+int [!foo!] = bar;
+```
 
 will display as
 
@@ -93,10 +122,10 @@ will display as
 The code excerpt extractor can apply regular-expression-based replace transformations.
 There are global transformations applied to all code excerpts. See
 `./scripts/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
-along with the `--replace` command line argumet of the `code_excerpt_updater` command.
+along with the `--replace` command line argument of the `code_excerpt_updater` command.
 
 File-scope global replace expressions are included at the top of some of site page markdown files.
-For example, `src/_guides/language/effective-dart/design.md` currently use the file-global replace argument:
+For example, `src/_guides/language/effective-dart/design.md` currently uses the file-global replace argument:
 
 ```html
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>

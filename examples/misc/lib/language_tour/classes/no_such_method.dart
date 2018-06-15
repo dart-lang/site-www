@@ -1,5 +1,5 @@
 void main() {
-  dynamic a = new A();
+  dynamic a = A();
   a.foo();
 }
 

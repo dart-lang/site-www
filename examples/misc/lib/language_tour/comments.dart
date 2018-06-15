@@ -16,7 +16,7 @@ void miscDeclAnalyzedButNotTested() {
       /*
        * This is a lot of work. Consider raising chickens.
 
-      Llama larry = new Llama();
+      Llama larry = Llama();
       larry.feed();
       larry.exercise();
       larry.clean();
