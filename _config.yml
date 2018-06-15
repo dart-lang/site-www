@@ -27,15 +27,9 @@ collections:
   tutorials:
     output: true
     permalink: /tutorials/:path
-  samples:
-    output: true
-    permalink: /samples/:path
   guides:
     output: true
     permalink: /guides/:path
-  codelabs:
-    output: true
-    permalink: /codelabs/:path
 
 defaults:
 - scope:
@@ -46,29 +40,9 @@ defaults:
     toc: true
 - scope:
     path: ''
-    type: articles
-  values:
-    layout: article
-- scope:
-    path: ''
     type: tutorials
   values:
     layout: tutorial
-- scope:
-    path: ''
-    type: samples
-  values:
-    layout: sample
-- scope:
-    path: ''
-    type: guides
-  values:
-    layout: guide
-- scope:
-    path: ''
-    type: codelabs
-  values:
-    layout: codelab
 - scope:
     path: tools
   values:

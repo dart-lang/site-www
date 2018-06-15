@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: "Effective Dart: Design"
 description: Design consistent, usable libraries.
 prevpage:
