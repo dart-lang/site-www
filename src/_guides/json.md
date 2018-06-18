@@ -1,5 +1,5 @@
 ---
-title: "Support for JSON"
+title: "JSON Support"
 description: "Dart solutions for reading and writing JSON."
 ---
 
