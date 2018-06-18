@@ -2,6 +2,7 @@ Analyzing lib, test...
   error • Invalid override. The type of 'HoneyBadger.parent' ('() → Root') isn't a subtype of 'Animal.parent' ('() → Animal') at lib/animal_bad.dart:15:3 • strong_mode_invalid_method_override
   error • Invalid override. The type of 'Cat.chase' ('(Mouse) → void') isn't a subtype of 'Animal.chase' ('(Animal) → void') at lib/animal_bad.dart:26:3 • strong_mode_invalid_method_override
   error • A value of type 'List' can't be assigned to a variable of type 'List<Cat>' at lib/animal_bad.dart:49:19 • invalid_assignment
+  error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
   error • A value of type 'Element' can't be assigned to a variable of type 'CanvasElement' at lib/common_fixes_analysis.dart:21:28 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'bool' at lib/common_problems_analysis.dart:14:14 • invalid_assignment
   error • The getter 'context2D' isn't defined for the class 'Element' at lib/common_problems_analysis.dart:23:12 • undefined_getter
@@ -20,7 +21,7 @@ Analyzing lib, test...
   error • A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon' at lib/strong_analysis.dart:119:19 • invalid_assignment
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at lib/strong_analysis.dart:139:24 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'String' at lib/strong_analysis.dart:152:21 • invalid_assignment
-  error • A value of type 'List' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:41:27 • invalid_assignment
-  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:63:26 • invalid_assignment
-  error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:156:26 • invalid_assignment
-24 errors found.
+  error • A value of type 'List' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:42:27 • invalid_assignment
+  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:64:26 • invalid_assignment
+  error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:179:26 • invalid_assignment
+25 errors found.

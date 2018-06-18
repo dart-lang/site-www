@@ -3,6 +3,7 @@ import 'package:test/test.dart';
 import 'package:dartlang_examples_util/dart_version.dart';
 
 import '../lib/animal.dart';
+import '../lib/bounded/my_collection.dart';
 
 //@nullable
 String runtimeChecksSkipStatus() => dartMajorVers == 1
@@ -146,6 +147,28 @@ void main() {
 
       expect(_test, prints(expectedOutput));
     });
+
+    test('instantiate-to-bound sanity', () {
+      final b = new B();
+      expect(b.typeOfS, 'int');
+      expect(b.typeOfT, 'dynamic');
+    });
+
+    test('instantiate-to-bound fix: add type arg', () {
+      // #docregion add-type-arg
+      var c = new C<List>([]).collection;
+      c.add(2);
+      // #enddocregion add-type-arg
+      expect(c, [2]);
+    });
+
+    test('instantiate-to-bound fix 2', () {
+      // #docregion use-iterable
+      var c = new C(Iterable.empty()).collection;
+      // Use c as an iterable...
+      // #enddocregion use-iterable
+      expect(c, const TypeMatcher<Iterable>());
+    });
   });
 }
 
@@ -160,3 +183,8 @@ assumeStrings(List<Object> objects) {
   // #docregion downcast-check
 }
 // #enddocregion downcast-check
+
+class B<S extends int, T> {
+  String get typeOfS => '$S';
+  String get typeOfT => '$T';
+}

@@ -63,10 +63,13 @@ see [Runtime errors](#common-errors-and-warnings).
 error • The <member> '...' isn't defined for the class '...' • undefined_<member>
 ```
 
-These errors usually appear in code where a variable is statically known
-to be some supertype but the code assumes a subtype.
+These errors can appear under the following conditions:
 
-#### Example
+- A variable is statically known to be some supertype, but the code assumes a subtype.
+- A generic class has a bounded type parameter, but an instance creation
+  expression of the class omits the type argument.
+
+#### Example 1: A variable is statically known to be some supertype, but the code assumes a subtype
 
 In the following code, the analyzer complains that `context2D` is undefined:
 
@@ -78,7 +81,7 @@ canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/context2D.*isn't defined for the class/"?>
 ```nocode
 error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
 ```
@@ -121,6 +124,76 @@ Otherwise, use `dynamic` in situations where you cannot use a single type:
 [!dynamic!] canvasOrImg = querySelector('canvas, img');
 var width = canvasOrImg.width;
 {% endprettify %}
+
+#### Example 2: Omitted type parameters default to their type bounds
+
+Consider the following **generic class** with a **bounded type parameter** that extends
+`Iterable`:
+
+<?code-excerpt "strong/lib/bounded/my_collection.dart"?>
+{% prettify dart %}
+class C<T extends Iterable> {
+  final T collection;
+  C(this.collection);
+}
+{% endprettify %}
+
+The following code creates a new instance of this class (omitting the type
+argument) and accesses its `collection` member:
+
+{:.fails-sa}
+<?code-excerpt "strong/lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\..*;/[!$&!]/g"?>
+{% prettify dart %}
+var c = new C(Iterable.empty()).collection;
+[!c.add(2);!]
+{% endprettify %}
+
+{:.console-output}
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/add.*isn't defined for the class/"?>
+```nocode
+error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+```
+
+While the [List][] type has an `add()` method, [Iterable][] does not.
+
+#### Fix: Specify type arguments or fix downstream errors
+
+In Dart 1.x, when a generic class is instantiated without explicit type
+arguments, `dynamic` is assumed. That is why, in the code excerpt above, `c` is
+of type `dynamic` and no error is reported for `c.add()`.
+
+In Dart 2, when a generic class is instantiated without explicit type arguments,
+each type parameter defaults to its type bound (`Iterable` in this example) if
+one is explicitly given, or `dynamic` otherwise.
+
+You need to approach fixing such errors on a case-by-case basis. It helps to
+have a good understanding of the original design intent.
+
+Explicitly passing type arguments is an effective way to help identify type
+errors. For example, if you change the code to specify `List` as a type
+argument, the analyzer can detect the type mismatch in the constructor argument.
+Fix the error by providing a constructor argument of the appropriate type:
+
+{:.passes-sa}
+<?code-excerpt "strong/test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
+{% prettify dart %}
+var c = new C[!<List>!]([![]!]).collection;
+c.add(2);
+{% endprettify %}
+
+{% comment %}
+TODO: remove this commentted out code once Kathy gives a thumbs up. Also remove the code excerpt from the original source.
+
+If you actually meant `collection` to be an `Iterable`, then subsequent uses of
+`c` are an error and need to be fixed:
+
+{:.passes-sa}
+<?code-excerpt "strong/test/strong_test.dart (use-iterable)" replace="/Use.*\.\.\./[!$&!]/g"?>
+{% prettify dart %}
+var c = new C(Iterable.empty()).collection;
+// [!Use c as an iterable...!]
+{% endprettify %}
+{% endcomment %}
 
 <hr>
 
@@ -578,5 +651,7 @@ also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [dartanalyzer README]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
+[Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [implicit casts]: /guides/language/analysis-options#performing-additional-type-checks
+[List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [top type]: https://en.wikipedia.org/wiki/Top_type
