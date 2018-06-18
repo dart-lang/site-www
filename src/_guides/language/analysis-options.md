@@ -190,7 +190,7 @@ linter:
     - one_member_abstracts
     - slash_for_doc_comments
     - sort_constructors_first
-    - unnecessary_brace_in_string_interp
+    - unnecessary_brace_in_string_interps
 {% endprettify %}
 
 {% comment %}
