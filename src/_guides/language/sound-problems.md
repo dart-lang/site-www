@@ -65,11 +65,11 @@ error • The <member> '...' isn't defined for the class '...' • undefined_<me
 
 These errors can appear under the following conditions:
 
-- A variable is statically known to be some supertype but the code assumes a subtype.
+- A variable is statically known to be some supertype, but the code assumes a subtype.
 - A generic class has a bounded type parameter, but an instance creation
   expression of the class omits the type argument.
 
-#### Example 1: A variable is statically known to be some supertype but the code assumes a subtype
+#### Example 1: A variable is statically known to be some supertype, but the code assumes a subtype
 
 In the following code, the analyzer complains that `context2D` is undefined:
 
