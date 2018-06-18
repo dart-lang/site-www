@@ -63,6 +63,12 @@ see [Runtime errors](#common-errors-and-warnings).
 error • The <member> '...' isn't defined for the class '...' • undefined_<member>
 ```
 
+These errors can appear under the following conditions:
+
+- A variable is statically known to be some supertype but the code assumes a subtype.
+- A generic class has a bounded type parameter, but an instance creation
+  expression of the class omits the type argument.
+
 #### Example 1: A variable is statically known to be some supertype but the code assumes a subtype
 
 In the following code, the analyzer complains that `context2D` is undefined:
@@ -160,12 +166,13 @@ In Dart 2, when a generic class is instantiated without explicit type arguments,
 each type parameter defaults to its type bound (`Iterable` in this example) if
 one is explicitly given, or `dynamic` otherwise.
 
-You'll need to approach fixing such errors on a case-by-case basis. It helps to
+You need to approach fixing such errors on a case-by-case basis. It helps to
 have a good understanding of the original design intent.
 
-Explicitly passing type arguments is one way to help identify type errors. For
-example, by specifying `List` as a type argument, the analyzer let's you know
-that the constructor argument has the wrong type and needs to be changed:
+Explicitly passing type arguments is an effective way to help identify type
+errors. For example, if you change the code to specify `List` as a type
+argument, the analyzer can detect the type mismatch in the constructor argument.
+Fix the error by providing a constructor argument of the appropriate type:
 
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
@@ -173,6 +180,9 @@ that the constructor argument has the wrong type and needs to be changed:
 var c = new C[!<List>!]([![]!]).collection;
 c.add(2);
 {% endprettify %}
+
+{% comment %}
+TODO: remove this commentted out code once Kathy gives a thumbs up. Also remove the code excerpt from the original source.
 
 If you actually meant `collection` to be an `Iterable`, then subsequent uses of
 `c` are an error and need to be fixed:
@@ -183,6 +193,7 @@ If you actually meant `collection` to be an `Iterable`, then subsequent uses of
 var c = new C(Iterable.empty()).collection;
 // [!Use c as an iterable...!]
 {% endprettify %}
+{% endcomment %}
 
 <hr>
 
