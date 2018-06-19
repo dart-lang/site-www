@@ -20,6 +20,10 @@ The Dart language, libraries, build system, and web development tools have chang
 * [Dart's type system][sound Dart] is now sound.
   * [Fixing common type problems][Fixing Common Type Problems]
   * [Flutter announcement: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
+* Some keywords used for object creation are now optional,
+  as described in [Using constructors][]:
+  * `new` is always optional.
+  * `const` is optional inside of a constant context.
 * Dart no longer has checked mode.
   * [Assert statements][] are still supported, but you enable them differently.
 * The Dart language and core libraries have changed,
@@ -181,4 +185,5 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
+[Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: {{site.dev-webdev}}/dart-2
