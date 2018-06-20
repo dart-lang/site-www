@@ -73,7 +73,7 @@ create a separate `lowerCamelCase` constant for it.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
 {% prettify dart %}
-const foo = const Foo();
+const foo = Foo();
 
 @foo
 class C { ... }
@@ -163,10 +163,10 @@ stay consistent.
 {% prettify dart %}
 const pi = 3.14;
 const defaultTimeout = 1000;
-final urlScheme = new RegExp('^([a-z]+):');
+final urlScheme = RegExp('^([a-z]+):');
 
 class Dice {
-  static final numberGenerator = new Random();
+  static final numberGenerator = Random();
 }
 {% endprettify %}
 
@@ -175,10 +175,10 @@ class Dice {
 {% prettify dart %}
 const PI = 3.14;
 const kDefaultTimeout = 1000;
-final URL_SCHEME = new RegExp('^([a-z]+):');
+final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
-  static final NUMBER_GENERATOR = new Random();
+  static final NUMBER_GENERATOR = Random();
 }
 {% endprettify %}
 

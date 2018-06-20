@@ -230,8 +230,8 @@ site.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
 {% prettify dart %}
 Isolate.spawn(entryPoint, message, paused: false);
-var copy = new List.from(elements, growable: true);
-var regExp = new RegExp(pattern, caseSensitive: false);
+var copy = List.from(elements, growable: true);
+var regExp = RegExp(pattern, caseSensitive: false);
 {% endprettify %}
 
 
@@ -760,7 +760,7 @@ class Point {
   num x, y;
   Point(this.x, this.y);
   static Point polar(num theta, num radius) =>
-      new Point(radius * cos(theta), radius * sin(theta));
+      Point(radius * cos(theta), radius * sin(theta));
 }
 {% endprettify %}
 
@@ -963,7 +963,7 @@ Method cascades are a better solution for chaining method calls.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (cascades)"?>
 {% prettify dart %}
-var buffer = new StringBuffer()
+var buffer = StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
@@ -972,7 +972,7 @@ var buffer = new StringBuffer()
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (cascades)"?>
 {% prettify dart %}
-var buffer = new StringBuffer()
+var buffer = StringBuffer()
     .write('one')
     .write('two')
     .write('three');
@@ -1008,7 +1008,7 @@ runtime.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-invocation)"?>
 {% prettify dart %}
 var lists = <num>[1, 2];
-lists.addAll(new List<num>.filled(3, 4));
+lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
 {% endprettify %}
 
@@ -1229,13 +1229,13 @@ to a function, then inference usually fills in the type for you:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
 {% prettify dart %}
-Set<String> things = new Set();
+Set<String> things = Set();
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
 {% prettify dart %}
-Set<String> things = new Set<String>();
+Set<String> things = Set<String>();
 {% endprettify %}
 
 Here, the type annotation on the variable is used to infer the type argument of
@@ -1247,13 +1247,13 @@ should write the type argument:
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
 {% prettify dart %}
-var things = new Set<String>();
+var things = Set<String>();
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
 {% prettify dart %}
-var things = new Set();
+var things = Set();
 {% endprettify %}
 
 Here, since the variable has no type annotation, there isn't enough context to
@@ -1378,7 +1378,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
     } else if (errorHandler is [!Function(Object, StackTrace)!]) {
       errorHandler(err, stack);
     } else {
-      throw new ArgumentError("errorHandler has wrong signature.");
+      throw ArgumentError("errorHandler has wrong signature.");
     }
   }
 }
@@ -1549,7 +1549,7 @@ void log(Object object) {
 bool convertToBool(dynamic arg) {
   if (arg is bool) return arg;
   if (arg is String) return arg == 'true';
-  throw new ArgumentError('Cannot convert $arg to a bool.');
+  throw ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
 
@@ -1644,10 +1644,10 @@ to clarify what the call is doing.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-positional-bool-param)"?>
 {% prettify dart %}
-new Task.oneShot();
-new Task.repeating();
-new ListBox(scroll: true, showScrollbars: true);
-new Button(ButtonState.enabled);
+Task.oneShot();
+Task.repeating();
+ListBox(scroll: true, showScrollbars: true);
+Button(ButtonState.enabled);
 {% endprettify %}
 
 Note that this doesn't apply to setters, where the name makes it clear what the

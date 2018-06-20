@@ -4,10 +4,10 @@ import 'dart:math';
 // #docregion const-names
 const PI = 3.14;
 const kDefaultTimeout = 1000;
-final URL_SCHEME = new RegExp('^([a-z]+):');
+final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
-  static final NUMBER_GENERATOR = new Random();
+  static final NUMBER_GENERATOR = Random();
 }
 // #enddocregion const-names
 

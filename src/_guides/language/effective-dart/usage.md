@@ -137,8 +137,7 @@ a single long string that doesn't fit on one line.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
-raiseAlarm(
-    'ERROR: Parts of the spaceship are on fire. Other '
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
@@ -213,8 +212,8 @@ var addresses = {};
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart %}
-var points = new List();
-var addresses = new Map();
+var points = List();
+var addresses = Map();
 {% endprettify %}
 
 You can even provide a type argument for them if that matters.
@@ -229,8 +228,8 @@ var addresses = <String, Address>{};
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
 {% prettify dart %}
-var points = new List<Point>();
-var addresses = new Map<String, Address>();
+var points = List<Point>();
+var addresses = Map<String, Address>();
 {% endprettify %}
 
 Note that this doesn't apply to the *named* constructors for those classes.
@@ -413,7 +412,7 @@ If you're already calling `toList()`, replace that with a call to
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
-var ints = new List<int>.from(stuff);
+var ints = List<int>.from(stuff);
 {% endprettify %}
 
 {:.bad-style}
@@ -519,7 +518,7 @@ Here is **casting eagerly using `List.from()`:**
 {% prettify dart %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
-  var ints = new List<int>.from(objects);
+  var ints = List<int>.from(objects);
   ints.sort();
   return ints[ints.length ~/ 2];
 }
@@ -618,7 +617,7 @@ void insert(Object item, {int at = 0}) { ... }
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at: 0}) { ... }
+void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
 
@@ -871,7 +870,7 @@ your code a favor and use a block body and some statements.
 Treasure openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
 
-  var treasure = new Treasure(where);
+  var treasure = Treasure(where);
   treasure.addAll(chest.contents);
   _opened[chest] = treasure;
   return treasure;
@@ -882,7 +881,7 @@ Treasure openChest(Chest chest, Point where) {
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
 {% prettify dart %}
 Treasure openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest) ? null : _opened[chest] = new Treasure(where)
+    _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
       ..addAll(chest.contents);
 {% endprettify %}
 
@@ -893,7 +892,7 @@ when a setter is small and has a corresponding getter that uses `=>`.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
 {% prettify dart %}
 num get x => center.x;
-set x(num value) => center = new Point(value, center.y);
+set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 It's rarely a good idea to use `=>` for non-setter void members. The `=>`
@@ -1079,12 +1078,7 @@ class Point {
 }
 {% endprettify %}
 
-<!-- TODO(rnystrom): Uncomment this when all Dart tools support it. -->
-<!--
-
-**TODO: Use "###" for header. Removed so this doesn't go into TOC.**
-
-DON'T use `new`.
+### DON'T use `new`.
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
@@ -1109,9 +1103,7 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 
-**TODO: Use "###" for header. Removed so this doesn't go into TOC.**
-
-DON'T use `const` redundantly.
+### DON'T use `const` redundantly.
 
 In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
@@ -1149,8 +1141,6 @@ const primaryColors = const [
   const Color("blue", const [0, 0, 255]),
 ];
 {% endprettify %}
-
--->
 
 ## Error handling
 
@@ -1274,7 +1264,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
-    if (team == null) return new Future.value(0);
+    if (team == null) return Future.value(0);
 
     return team.roster.then((players) {
       return players.where((player) => player.isActive).length;
@@ -1348,9 +1338,9 @@ eventually find the Completer class and use that.
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
-  var completer = new Completer<bool>();
+  var completer = Completer<bool>();
 
-  new File(path).readAsString().then((contents) {
+  File(path).readAsString().then((contents) {
     completer.complete(contents.contains('bear'));
   });
 
@@ -1369,7 +1359,7 @@ they're clearer and make error handling easier.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
-  return new File(path).readAsString().then((contents) {
+  return File(path).readAsString().then((contents) {
     return contents.contains('bear');
   });
 }
@@ -1379,7 +1369,7 @@ Future<bool> fileContainsBear(String path) {
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) async {
-  var contents = await new File(path).readAsString();
+  var contents = await File(path).readAsString();
   return contents.contains('bear');
 }
 {% endprettify %}

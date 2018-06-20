@@ -84,7 +84,7 @@ class B {/* ... */}
 //----------------------------------------------------------------------------
 
 // #docregion annotation-const
-const foo = const Foo();
+const foo = Foo();
 
 @foo
 class C {/* ... */}
@@ -95,9 +95,9 @@ class C {/* ... */}
 // #docregion const-names
 const pi = 3.14;
 const defaultTimeout = 1000;
-final urlScheme = new RegExp('^([a-z]+):');
+final urlScheme = RegExp('^([a-z]+):');
 
 class Dice {
-  static final numberGenerator = new Random();
+  static final numberGenerator = Random();
 }
 // #enddocregion const-names
