@@ -14,7 +14,8 @@ Func1<bool, dynamic> canHandle, verifyResult;
 void miscDeclAnalyzedButNotTested() {
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
+    raiseAlarm(
+        'ERROR: Parts of the spaceship are on fire. Other '
         'parts are overrun by martians. Unclear which are which.');
     // #enddocregion adjacent-strings-literals
   }
