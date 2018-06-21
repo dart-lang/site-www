@@ -1,5 +1,5 @@
 language: dart
-dart: 2.0.0-dev.63.0
+dart: 2.0.0-dev.64.1
 
 cache:
   timeout: 300
@@ -12,8 +12,6 @@ cache:
 
 env:
   global:
-    # https://github.com/dart-lang/sdk/issues/33430
-    # - DART_VM_OPTIONS=--preview-dart-2
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
   matrix:
