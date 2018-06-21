@@ -1,5 +1,5 @@
 language: dart
-dart: 2.0.0-dev.63.0
+dart: 2.0.0-dev.64.1
 
 cache:
   timeout: 300
@@ -12,8 +12,6 @@ cache:
 
 env:
   global:
-    # https://github.com/dart-lang/sdk/issues/33430
-    # - DART_VM_OPTIONS=--preview-dart-2
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
   matrix:
@@ -39,7 +37,8 @@ script:
   - $TASK
 
 after_script:
-  - if [[ $TASK == *build* ]]; then ./scripts/shared/check-links.sh || travis_terminate 1; fi
+  # Waiting on https://github.com/dart-lang/site-www/issues/952 to re-enable link checking:
+  # - if [[ $TASK == *build* ]]; then ./scripts/shared/check-links.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
