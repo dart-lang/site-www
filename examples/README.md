@@ -38,7 +38,7 @@ To run only the analyzer:
 
 ```
 cd examples
-dartanalyzer --preview-dart-2 .
+dartanalyzer .
 ```
 
 To run both the analyzer and tests:
