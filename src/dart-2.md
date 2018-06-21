@@ -20,7 +20,7 @@ The Dart language, libraries, build system, and web development tools have chang
 * [Dart's type system][sound Dart] is now sound.
   * [Fixing common type problems][Fixing Common Type Problems]
   * [Flutter announcement: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
-* Some keywords used for object creation are now optional,
+* Instance creation keywords are now generally optional,
   as described in [Using constructors][]:
   * `new` is always optional.
   * `const` is optional inside of a constant context.
