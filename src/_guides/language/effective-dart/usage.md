@@ -137,7 +137,8 @@ a single long string that doesn't fit on one line.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
-raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
+raiseAlarm(
+    'ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
@@ -617,7 +618,7 @@ void insert(Object item, {int at = 0}) { ... }
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
 {% prettify dart %}
-void insert(Object item, {int at = 0}) { ... }
+void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
 
 
@@ -1088,7 +1089,7 @@ The language still permits `new` in order to make migration less painful, but
 consider it deprecated and remove it from your code.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)" replace="/new //g"?>
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)"?>
 {% prettify dart %}
 Widget build(BuildContext context) {
   return Row(
@@ -1097,6 +1098,21 @@ Widget build(BuildContext context) {
         child: Text('Increment'),
       ),
       Text('Click!'),
+    ],
+  );
+}
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)"?>
+{% prettify dart %}
+Widget build(BuildContext context) {
+  return new Row(
+    children: [
+      new RaisedButton(
+        child: new Text('Increment'),
+      ),
+      new Text('Click!'),
     ],
   );
 }

@@ -452,8 +452,6 @@ class Text {
   Text(String text);
 }
 
-// TODO(rnystrom): Remove "new" here instead of stripping it out later once
-// we support optional new for excerpts.
 // #docregion no-new
 Widget build(BuildContext context) {
   return Row(

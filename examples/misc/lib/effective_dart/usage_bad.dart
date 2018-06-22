@@ -198,6 +198,19 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion arrow-long
   };
 
+  // #docregion no-new
+  Widget build(BuildContext context) {
+    return new Row(
+      children: [
+        new RaisedButton(
+          child: new Text('Increment'),
+        ),
+        new Text('Click!'),
+      ],
+    );
+  }
+  // #enddocregion no-new
+
   {
     // #docregion no-const
     const primaryColors = const [
