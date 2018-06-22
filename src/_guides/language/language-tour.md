@@ -3542,10 +3542,11 @@ Keep in mind the following when you use deferred loading:
 
 <aside class="alert alert-warning" markdown="1">
 **Dart VM difference:**
-Currently, the Dart VM allows access to members of deferred libraries
+Due to [issue #33118](https://github.com/dart-lang/sdk/issues/33118),
+the Dart VM allows access to members of deferred libraries
 even before the call to `loadLibrary()`.
-For more information, see
-[issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
+We expect this bug to be fixed soon, so
+**don't depend on the current VM behavior.**
 </aside>
 
 ### Implementing libraries
