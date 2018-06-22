@@ -7,7 +7,7 @@ environment:
   sdk: '>=2.0.0-dev <2.0.0'
 
 dev_dependencies:
-  build_runner: any
+  build_runner: ^0.8.10
   code_excerpt_updater: any
   code_excerpter: any
   linkcheck: ^2.0.0
