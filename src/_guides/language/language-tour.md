@@ -14,10 +14,6 @@ To learn more about Dart's core libraries, see
 Whenever you want more details about a language feature,
 consult the [Dart Language Specification](/guides/language/spec).
 
-{% comment %}
-update-for-dart-2
-TODO: Uncomment when DartPad supports Dart 2 semantics.
-
 <div class="alert alert-info" markdown="1">
 **Tip:**
 You can play with most of Dart's language features using DartPad
@@ -25,7 +21,6 @@ You can play with most of Dart's language features using DartPad
 
 **<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
 </div>
-{% endcomment %}
 
 
 ## A basic Dart program
@@ -3544,6 +3539,15 @@ Keep in mind the following when you use deferred loading:
 * Dart implicitly inserts `loadLibrary()` into the namespace that you define
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
+
+<aside class="alert alert-warning" markdown="1">
+**Dart VM difference:**
+Due to [issue #33118](https://github.com/dart-lang/sdk/issues/33118),
+the Dart VM allows access to members of deferred libraries
+even before the call to `loadLibrary()`.
+We expect this bug to be fixed soon, so
+**don't depend on the current VM behavior.**
+</aside>
 
 ### Implementing libraries
 
