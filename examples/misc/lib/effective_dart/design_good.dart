@@ -35,8 +35,8 @@ void miscDeclAnalyzedButNotTested() {
   (Func1 entryPoint, message, Iterable elements, String pattern) {
     // #docregion omit-verb-for-bool-param
     Isolate.spawn(entryPoint, message, paused: false);
-    var copy = new List.from(elements, growable: true);
-    var regExp = new RegExp(pattern, caseSensitive: false);
+    var copy = List.from(elements, growable: true);
+    var regExp = RegExp(pattern, caseSensitive: false);
     // #enddocregion omit-verb-for-bool-param
   };
 
@@ -114,7 +114,7 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion cascades
-    var buffer = new StringBuffer() //!<br>
+    var buffer = StringBuffer() //!<br>
       ..write('one')
       ..write('two')
       ..write('three');
@@ -131,7 +131,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion annotate-invocation
     var lists = <num>[1, 2];
-    lists.addAll(new List<num>.filled(3, 4));
+    lists.addAll(List<num>.filled(3, 4));
     lists.cast<int>();
     // #enddocregion annotate-invocation
   }
@@ -196,13 +196,13 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion redundant
-    Set<String> things = new Set();
+    Set<String> things = Set();
     // #enddocregion redundant
   }
 
   {
     // #docregion explicit
-    var things = new Set<String>();
+    var things = Set<String>();
     // #enddocregion explicit
   }
 
@@ -226,7 +226,7 @@ void miscDeclAnalyzedButNotTested() {
       } else if (errorHandler is Function(Object, StackTrace)) {
         errorHandler(err, stack);
       } else {
-        throw new ArgumentError("errorHandler has wrong signature.");
+        throw ArgumentError("errorHandler has wrong signature.");
       }
     }
   }
@@ -243,7 +243,7 @@ void miscDeclAnalyzedButNotTested() {
     bool convertToBool(dynamic arg) {
       if (arg is bool) return arg;
       if (arg is String) return arg == 'true';
-      throw new ArgumentError('Cannot convert $arg to a bool.');
+      throw ArgumentError('Cannot convert $arg to a bool.');
     }
     // #enddocregion Object-vs-dynamic
   };
@@ -263,10 +263,10 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion avoid-positional-bool-param
-    new Task.oneShot();
-    new Task.repeating();
-    new ListBox(scroll: true, showScrollbars: true);
-    new Button(ButtonState.enabled);
+    Task.oneShot();
+    Task.repeating();
+    ListBox(scroll: true, showScrollbars: true);
+    Button(ButtonState.enabled);
     // #enddocregion avoid-positional-bool-param
   };
 

@@ -38,7 +38,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion cascades
-    var buffer = new StringBuffer0() //!<br>
+    var buffer = StringBuffer0() //!<br>
         .write('one')
         .write('two')
         .write('three');
@@ -85,13 +85,13 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion redundant
-    Set<String> things = new Set<String>();
+    Set<String> things = Set<String>();
     // #enddocregion redundant
   }
 
   {
     // #docregion explicit
-    var things = new Set();
+    var things = Set();
     // #enddocregion explicit
   }
 
@@ -183,7 +183,7 @@ class Point {
   num x, y;
   Point(this.x, this.y);
   static Point polar(num theta, num radius) =>
-      new Point(radius * cos(theta), radius * sin(theta));
+      Point(radius * cos(theta), radius * sin(theta));
 }
 // #enddocregion named-ctr
 

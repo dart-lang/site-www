@@ -67,7 +67,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-list
     var stuff = <dynamic>[1, 2];
-    var ints = new List<int>.from(stuff);
+    var ints = List<int>.from(stuff);
     // #enddocregion cast-list
   }
 
@@ -98,7 +98,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion cast-from
   int median(List<Object> objects) {
     // We happen to know the list only contains ints.
-    var ints = new List<int>.from(objects);
+    var ints = List<int>.from(objects);
     ints.sort();
     return ints[ints.length ~/ 2];
   }
@@ -190,7 +190,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer
     Future<bool> fileContainsBear(String path) {
-      return new File(path).readAsString().then((contents) {
+      return File(path).readAsString().then((contents) {
         return contents.contains('bear');
       });
     }
@@ -213,16 +213,13 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer-alt
     Future<bool> fileContainsBear(String path) async {
-      var contents = await new File(path).readAsString();
+      var contents = await File(path).readAsString();
       return contents.contains('bear');
     }
     // #enddocregion avoid-completer-alt
   }
 
-  // TODO(rnystrom): Uncomment this when the analyzer run on these excerpts
-  // supports optional const.
   {
-    /*
     // #docregion no-const
     const primaryColors = [
       Color("red", [255, 0, 0]),
@@ -230,7 +227,6 @@ void miscDeclAnalyzedButNotTested() {
       Color("blue", [0, 0, 255]),
     ];
     // #enddocregion no-const
-    */
   }
 }
 
@@ -352,14 +348,14 @@ class C {
 
   // #docregion arrow-setter
   num get x => center.x;
-  set x(num value) => center = new Point(value, center.y);
+  set x(num value) => center = Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
   Treasure openChest(Chest chest, Point where) {
     if (_opened.containsKey(chest)) return null;
 
-    var treasure = new Treasure(where);
+    var treasure = Treasure(where);
     treasure.addAll(chest.contents);
     _opened[chest] = treasure;
     return treasure;
@@ -456,16 +452,14 @@ class Text {
   Text(String text);
 }
 
-// TODO(rnystrom): Remove "new" here instead of stripping it out later once
-// we support optional new for excerpts.
 // #docregion no-new
 Widget build(BuildContext context) {
-  return new Row(
+  return Row(
     children: [
-      new RaisedButton(
-        child: new Text('Increment'),
+      RaisedButton(
+        child: Text('Increment'),
       ),
-      new Text('Click!'),
+      Text('Click!'),
     ],
   );
 }
