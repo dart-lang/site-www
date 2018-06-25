@@ -2697,7 +2697,7 @@ class Logger {
 Factory constructors have no access to `this`.
 </div>
 
-To invoke a factory constructor, you use the `new` keyword:
+Invoke a factory constructor just like you would any other constructor:
 
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart (logger)"?>
 {% prettify dart %}
