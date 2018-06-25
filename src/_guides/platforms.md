@@ -25,16 +25,16 @@ or server, there's a Dart solution for that.
 
   Write an app that runs in any modern web browser.
 
-- {:.card.narrow}[![Dart logo][]{: width="100"}][Dart VM]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo][]{: width="100"}][Server]{:.no-automatic-external}
   {:.logo}
 
-  ### [Dart VM][]
+  ### [Server][]
 
-  Write a command-line app or server.
+  Write a command-line app or server for the Dart VM.
 
 
 [Dart logo]: {% asset_path 'shared/dart/logo/default.svg' %}
-[Dart VM]: {{site.dart_vm}}
+[Server]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
