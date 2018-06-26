@@ -108,7 +108,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion Animal-Cat-ok
-    Animal c = new Cat();
+    Animal c = Cat();
     // #enddocregion Animal-Cat-ok
   }
 
@@ -116,19 +116,19 @@ void _miscDeclAnalyzedButNotTested() {
     // #docregion MaineCoon-Cat-err
     // ignore_for_file: 1, invalid_assignment
     // ignore_for_file: 2, strong_mode_invalid_cast_new_expr
-    MaineCoon c = new Cat();
+    MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err
   }
 
   {
     // #docregion Cat-MaineCoon-ok
-    Cat c = new MaineCoon();
+    Cat c = MaineCoon();
     // #enddocregion Cat-MaineCoon-ok
   }
 
   {
     // #docregion generic-type-assignment-MaineCoon
-    List<Cat> myCats = new List<MaineCoon>();
+    List<Cat> myCats = List<MaineCoon>();
     // #enddocregion generic-type-assignment-MaineCoon
   }
 
@@ -136,13 +136,13 @@ void _miscDeclAnalyzedButNotTested() {
     // Since we're using --no-implicit-casts, the following causes a static error.
     // #docregion generic-type-assignment-Animal
     // ignore_for_file: 2, invalid_assignment
-    List<Cat> myCats = new List<Animal>();
+    List<Cat> myCats = List<Animal>();
     // #enddocregion generic-type-assignment-Animal
   }
 
   {
     // #docregion generic-type-assignment-implied-cast
-    List<Cat> myCats = new List<Animal>() as List<Cat>;
+    List<Cat> myCats = List<Animal>() as List<Cat>;
     // #enddocregion generic-type-assignment-implied-cast
   }
 

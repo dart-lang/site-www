@@ -11,7 +11,7 @@
 import 'dart:async';
 import 'dart:io';
 
-File targetFile = new File('index.html');
+File targetFile = File('index.html');
 
 Future main() async {
   var server;

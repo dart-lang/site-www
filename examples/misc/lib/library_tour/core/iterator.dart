@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 final Iterator<Process> _it =
-    [new Process(), new Process(), new Process()].iterator;
+    [Process(), Process(), Process()].iterator;
 
 // #docregion
 class Process {
@@ -29,12 +29,12 @@ class ProcessIterator implements Iterator<Process> {
 // processes. Extends a subclass of [Iterable].
 class Processes extends IterableBase<Process> {
   @override
-  final Iterator<Process> iterator = new ProcessIterator();
+  final Iterator<Process> iterator = ProcessIterator();
 }
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in new Processes()) {
+  for (var process in Processes()) {
     // Do something with the process.
     // #enddocregion
     print(process.id);

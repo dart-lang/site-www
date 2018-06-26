@@ -18,7 +18,7 @@ void main() {
       var iterable = [1, 2];
       // #docregion list-from-1
       var copy1 = iterable.toList();
-      var copy2 = new List.from(iterable);
+      var copy2 = List.from(iterable);
       // #enddocregion list-from-1
       expect(copy1, orderedEquals([1, 2]));
       expect(copy2, orderedEquals([1, 2]));
@@ -34,7 +34,7 @@ void main() {
         print(iterable.toList().runtimeType);
 
         // Prints "List<dynamic>":
-        print(new List.from(iterable).runtimeType);
+        print(List.from(iterable).runtimeType);
         // #enddocregion list-from-2
       }
 
@@ -45,7 +45,7 @@ void main() {
       // #docregion list-from-3
       var numbers = [1, 2.3, 4]; // List<num>.
       numbers.removeAt(1); // Now it only contains integers.
-      var ints = new List<int>.from(numbers);
+      var ints = List<int>.from(numbers);
       // #enddocregion list-from-3
 
       expect(ints, orderedEquals([1, 4]));

@@ -193,10 +193,9 @@ class Spacecraft {
   void describe() {
     print('Spacecraft: $name');
     if (launchDate != null) {
-      int years = new DateTime.now()
-              .difference(launchDate)
-              .inDays ~/
-          365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/
+              365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
@@ -209,10 +208,10 @@ You might use the `Spacecraft` class like this:
 
 <?code-excerpt "misc/test/samples_test.dart (use class)"?>
 {% prettify dart %}
-var voyager = new Spacecraft('Voyager I', new DateTime(1977, 9, 5));
+var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
 
-var voyager3 = new Spacecraft.unlaunched('Voyager III');
+var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 {% endprettify %}
 
@@ -305,10 +304,10 @@ using `async` and `await`.
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart %}
-const oneSecond = const Duration(seconds: 1);
+const oneSecond = Duration(seconds: 1);
 // ···
 Future<Null> printWithDelay(String message) [!async!] {
-  await new Future.delayed(oneSecond);
+  await Future.delayed(oneSecond);
   print(message);
 }
 {% endprettify %}
@@ -318,7 +317,7 @@ The method above is equivalent to:
 <?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 {% prettify dart %}
 Future<Null> printWithDelay(String message) {
-  return new Future.delayed(oneSecond).then((_) {
+  return Future.delayed(oneSecond).then((_) {
     print(message);
   });
 }
@@ -332,7 +331,7 @@ easy to read.
 Future<Null> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
-      var file = new File('$object.txt');
+      var file = File('$object.txt');
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
@@ -354,7 +353,7 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 {% prettify dart %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
-    await new Future.delayed(oneSecond);
+    await Future.delayed(oneSecond);
     yield '${craft.name} flies by $object';
   }
 }
@@ -372,7 +371,7 @@ To raise an exception, use `throw`:
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
 {% prettify dart %}
 if (astronauts == 0) {
-  throw new StateError('No astronauts.');
+  throw StateError('No astronauts.');
 }
 {% endprettify %}
 
@@ -382,7 +381,7 @@ To catch an exception, use a `try` statement with `on` or `catch` (or both):
 {% prettify dart %}
 try {
   for (var object in flybyObjects) {
-    var description = await new File('$object.txt').readAsString();
+    var description = await File('$object.txt').readAsString();
     print(description);
   }
 } on IOException catch (e) {

@@ -144,7 +144,7 @@ argument) and accesses its `collection` member:
 {:.fails-sa}
 <?code-excerpt "strong/lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\..*;/[!$&!]/g"?>
 {% prettify dart %}
-var c = new C(Iterable.empty()).collection;
+var c = C(Iterable.empty()).collection;
 [!c.add(2);!]
 {% endprettify %}
 
@@ -177,7 +177,7 @@ Fix the error by providing a constructor argument of the appropriate type:
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (add-type-arg)" replace="/.List.|\[\]/[!$&!]/g"?>
 {% prettify dart %}
-var c = new C[!<List>!]([![]!]).collection;
+var c = C[!<List>!]([![]!]).collection;
 c.add(2);
 {% endprettify %}
 
@@ -190,7 +190,7 @@ If you actually meant `collection` to be an `Iterable`, then subsequent uses of
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (use-iterable)" replace="/Use.*\.\.\./[!$&!]/g"?>
 {% prettify dart %}
-var c = new C(Iterable.empty()).collection;
+var c = C(Iterable.empty()).collection;
 // [!Use c as an iterable...!]
 {% endprettify %}
 {% endcomment %}
@@ -242,7 +242,7 @@ point values are passed to an MyAdder:
 {:.runtime-fail}
 <?code-excerpt "strong/lib/common_problems_analysis.dart (unsafe-method-call)" replace="/\d[\d\.]+/[!$&!]/g"?>
 {% prettify dart %}
-NumberAdder adder = new MyAdder();
+NumberAdder adder = MyAdder();
 adder.add([!1.2!], [!3.4!]);
 {% endprettify %}
 

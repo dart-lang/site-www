@@ -80,7 +80,7 @@ void main() {
   });
 
   group('basic_writer_client and server:', () {
-    final file = new File('file.txt');
+    final file = File('file.txt');
     final port = 4049;
 
     // Only resolve the server once for all tests in this group to avoid
@@ -130,7 +130,7 @@ void main() {
   });
 
   test('mini_file_server', () {
-    final file = new File('bin/index.html');
+    final file = File('bin/index.html');
 
     _server() {
       mini_file_server.targetFile = file;
@@ -150,7 +150,7 @@ void main() {
   });
 
   test('basic_file_server', () async {
-    final file = new File('bin/index.html');
+    final file = File('bin/index.html');
 
     _server() {
       basic_file_server.targetFile = file;
@@ -179,8 +179,8 @@ void main() {
     }
 
     _test() async {
-      final client = new HttpClient();
-      final url = new Uri.https('localhost:$port', '');
+      final client = HttpClient();
+      final url = Uri.https('localhost:$port', '');
       final response = await client.getUrl(url);
       // expect(..., 'Hello, world!');
       await response.close();
@@ -200,7 +200,7 @@ Future<String> getUrl([
   int port = 8080,
   String path = '',
 ]) async {
-  final client = new HttpClient();
+  final client = HttpClient();
   final request = await client.get(host, port, path);
   final response = await request.close();
   final data = await response.transform(utf8.decoder).toList();

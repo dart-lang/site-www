@@ -10,12 +10,12 @@ import 'dart:io';
 import 'dart:math';
 
 Duration oneSecond = const Duration(seconds: 1);
-Random myRandomGenerator = new Random();
-HttpClient client = new HttpClient();
+Random myRandomGenerator = Random();
+HttpClient client = HttpClient();
 
 Future main() async {
   // Delay successive guesses by oneSecond.
-  final guesses = new Stream.periodic(oneSecond, (_) => guess());
+  final guesses = Stream.periodic(oneSecond, (_) => guess());
 
   // Guess until we get it right
   await for (final guess in guesses) {

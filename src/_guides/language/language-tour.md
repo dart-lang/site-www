@@ -286,7 +286,7 @@ Any variable can have a constant value.
 // const [] creates an empty, immutable list (EIL).
 var foo = const []; // foo is currently an EIL.
 final bar = const []; // bar will always be an EIL.
-const baz = const []; // baz is a compile-time constant EIL.
+const baz = []; // baz is a compile-time constant EIL.
 
 // You can change the value of a non-final, non-const variable,
 // even if it used to have a const value.
@@ -516,7 +516,7 @@ const aConstString = 'a constant string';
 var aNum = 0;
 var aBool = true;
 var aString = 'a string';
-const aConstList = const [1, 2, 3];
+const aConstList = [1, 2, 3];
 
 const validConstString = '$aConstNum $aConstBool $aConstString';
 // const invalidConstString = '$aNum $aBool $aString $aConstList';

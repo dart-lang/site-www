@@ -15,7 +15,7 @@ class MyList extends ListBase<int> implements List {
 }
 
 void main() {
-  List<int> list = new MyList('hello');
+  List<int> list = MyList('hello');
   info(list);
 }
 // #enddocregion MyList-and-main

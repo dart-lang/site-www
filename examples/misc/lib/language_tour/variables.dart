@@ -40,7 +40,7 @@ void miscDeclAnalyzedButNotTested() {
     // const [] creates an empty, immutable list (EIL).
     var foo = const []; // foo is currently an EIL.
     final bar = const []; // bar will always be an EIL.
-    const baz = const []; // baz is a compile-time constant EIL.
+    const baz = []; // baz is a compile-time constant EIL.
 
     // You can change the value of a non-final, non-const variable,
     // even if it used to have a const value.

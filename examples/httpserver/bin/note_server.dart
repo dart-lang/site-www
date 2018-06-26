@@ -14,7 +14,7 @@ int count = 0;
 Future main() async {
   // One note per line.
   try {
-    List<String> lines = new File('notes.txt').readAsLinesSync();
+    List<String> lines = File('notes.txt').readAsLinesSync();
     count = lines.length;
   } on FileSystemException {
     print('Could not open notes.txt.');
@@ -67,7 +67,7 @@ Future handlePost(HttpRequest request) async {
 
 void saveNote(HttpRequest request, String myNote) {
   try {
-    new File('notes.txt')
+    File('notes.txt')
         .writeAsStringSync(myNote, mode: FileMode.append);
   } catch (e) {
     print('Couldn\'t open notes.txt: $e');
@@ -88,7 +88,7 @@ void saveNote(HttpRequest request, String myNote) {
 void getNote(HttpRequest request, String getNote) {
   final requestedNote = int.tryParse(getNote) ?? 0;
   if (requestedNote >= 0 && requestedNote < count) {
-    List<String> lines = new File('notes.txt').readAsLinesSync();
+    List<String> lines = File('notes.txt').readAsLinesSync();
     request.response
       ..statusCode = HttpStatus.ok
       ..writeln(lines[requestedNote])

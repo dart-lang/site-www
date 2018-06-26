@@ -18,7 +18,7 @@ String certificateChain = 'server_chain.pem';
 String serverKey = 'server_key.pem';
 
 Future main() async {
-  var serverContext = new SecurityContext(); /*1*/
+  var serverContext = SecurityContext(); /*1*/
   serverContext.useCertificateChain(certificateChain); /*2*/
   serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/
 

@@ -323,7 +323,7 @@ contains the same elements:
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
 {% prettify dart %}
 var copy1 = iterable.toList();
-var copy2 = new List.from(iterable);
+var copy2 = List.from(iterable);
 {% endprettify %}
 
 The obvious difference is that the first one is shorter. The *important*
@@ -339,7 +339,7 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 
 // Prints "List<dynamic>":
-print(new List.from(iterable).runtimeType);
+print(List.from(iterable).runtimeType);
 {% endprettify %}
 
 If you *want* to change the type, then calling `List.from()` is useful:
@@ -348,7 +348,7 @@ If you *want* to change the type, then calling `List.from()` is useful:
 {% prettify dart %}
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
-var ints = new List<int>.from(numbers);
+var ints = List<int>.from(numbers);
 {% endprettify %}
 
 But if your goal is just to copy the iterable and preserve its original type, or

@@ -288,7 +288,7 @@ original String:
 {% prettify dart %}
 var greetingTemplate = 'Hello, NAME!';
 var greeting =
-    greetingTemplate.replaceAll(new RegExp('NAME'), 'Bob');
+    greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
 // greetingTemplate didn't change.
 assert(greeting != greetingTemplate);
@@ -303,7 +303,7 @@ lets you specify a separator—in this case, a space.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
 {% prettify dart %}
-var sb = new StringBuffer();
+var sb = StringBuffer();
 sb
   ..write('Use a StringBuffer for ')
   ..writeAll(['efficient', 'string', 'creation'], ' ')
@@ -324,7 +324,7 @@ matching of strings.
 <?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
 {% prettify dart %}
 // Here's a regular expression for one or more digits.
-var numbers = new RegExp(r'\d+');
+var numbers = RegExp(r'\d+');
 
 var allCharacters = 'llamas live fifteen to twenty years';
 var someDigits = 'llamas live 15 to 20 years';
@@ -343,7 +343,7 @@ provides access to a regular expression match.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
 {% prettify dart %}
-var numbers = new RegExp(r'\d+');
+var numbers = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
 
 // Check whether the reg exp has a match in a string.
@@ -376,7 +376,7 @@ items to and removing items from lists.
 <?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
 {% prettify dart %}
 // Use a List constructor.
-var vegetables = new List();
+var vegetables = List();
 
 // Or simply use a list literal.
 var fruits = ['apples', 'oranges'];
@@ -434,7 +434,7 @@ should contain:
 <?code-excerpt "misc/test/library_tour/core_test.dart (ListOfString)"?>
 {% prettify dart %}
 // This list should contain only strings.
-var fruits = new List<String>();
+var fruits = List<String>();
 
 fruits.add('apples');
 var fruit = fruits[0];
@@ -459,7 +459,7 @@ is unordered, you can’t get a set’s items by index (position).
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
 {% prettify dart %}
-var ingredients = new Set();
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
@@ -477,7 +477,7 @@ objects are in a set:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
 {% prettify dart %}
-var ingredients = new Set();
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Check whether an item is in the set.
@@ -491,11 +491,11 @@ An intersection is a set whose items are in two other sets.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
 {% prettify dart %}
-var ingredients = new Set();
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Create the intersection of two sets.
-var nobleGases = new Set.from(['xenon', 'argon']);
+var nobleGases = Set.from(['xenon', 'argon']);
 var intersection = ingredients.intersection(nobleGases);
 assert(intersection.length == 1);
 assert(intersection.contains('xenon'));
@@ -522,11 +522,11 @@ var hawaiianBeaches = {
 };
 
 // Maps can be built from a constructor.
-var searchTerms = new Map();
+var searchTerms = Map();
 
 // Maps are parameterized types; you can specify what
 // types the key and value should be.
-var nobleGases = new Map<int, String>();
+var nobleGases = Map<int, String>();
 {% endprettify %}
 
 You add, get, and set map items using the bracket syntax. Use `remove()`
@@ -562,7 +562,7 @@ var hawaiianBeaches = {
 var keys = hawaiianBeaches.keys;
 
 assert(keys.length == 3);
-assert(new Set.from(keys).contains('Oahu'));
+assert(Set.from(keys).contains('Oahu'));
 
 // Get all the values as an unordered collection
 // (an Iterable of Lists).
@@ -789,7 +789,7 @@ constructor:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
 {% prettify dart %}
-var uri = new Uri(
+var uri = Uri(
     scheme: 'http',
     host: 'example.org',
     path: '/foo/bar',
@@ -809,19 +809,19 @@ You can create DateTime objects using several constructors:
 <?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
 {% prettify dart %}
 // Get the current date and time.
-var now = new DateTime.now();
+var now = DateTime.now();
 
 // Create a new DateTime with the local time zone.
-var y2k = new DateTime(2000); // January 1, 2000
+var y2k = DateTime(2000); // January 1, 2000
 
 // Specify the month and day.
-y2k = new DateTime(2000, 1, 2); // January 2, 2000
+y2k = DateTime(2000, 1, 2); // January 2, 2000
 
 // Specify the date as a UTC time.
-y2k = new DateTime.utc(2000); // 1/1/2000, UTC
+y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
 // Specify a date and time in ms since the Unix epoch.
-y2k = new DateTime.fromMillisecondsSinceEpoch(946684800000,
+y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
     isUtc: true);
 
 // Parse an ISO 8601 date.
@@ -834,11 +834,11 @@ milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 <?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
 {% prettify dart %}
 // 1/1/2000, UTC
-var y2k = new DateTime.utc(2000);
+var y2k = DateTime.utc(2000);
 assert(y2k.millisecondsSinceEpoch == 946684800000);
 
 // 1/1/1970, UTC
-var unixEpoch = new DateTime.utc(1970);
+var unixEpoch = DateTime.utc(1970);
 assert(unixEpoch.millisecondsSinceEpoch == 0);
 {% endprettify %}
 
@@ -847,7 +847,7 @@ to shift a date forward or backward:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
 {% prettify dart %}
-var y2k = new DateTime.utc(2000);
+var y2k = DateTime.utc(2000);
 
 // Add one year.
 var y2001 = y2k.add(const Duration(days: 366));
@@ -949,8 +949,8 @@ class Person {
 }
 
 void main() {
-  var p1 = new Person('Bob', 'Smith');
-  var p2 = new Person('Bob', 'Smith');
+  var p1 = Person('Bob', 'Smith');
+  var p2 = Person('Bob', 'Smith');
   var p3 = 'not a person';
   assert(p1.hashCode == p2.hashCode);
   assert(p1 == p2);
@@ -982,12 +982,12 @@ class ProcessIterator implements Iterator<Process> {
 // processes. Extends a subclass of [Iterable].
 class Processes extends IterableBase<Process> {
   @override
-  final Iterator<Process> iterator = new ProcessIterator();
+  final Iterator<Process> iterator = ProcessIterator();
 }
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in new Processes()) {
+  for (var process in Processes()) {
     // Do something with the process.
   }
 }
@@ -1251,7 +1251,7 @@ void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
     if (isDir) {
-      final startingDir = new Directory(searchPath);
+      final startingDir = Directory(searchPath);
       startingDir
           .list(
               recursive: argResults[recursive],
@@ -1262,7 +1262,7 @@ void main(List<String> arguments) {
         }
       });
     } else {
-      searchFile(new File(searchPath), searchTerms);
+      searchFile(File(searchPath), searchTerms);
     }
   });
 }
@@ -1277,7 +1277,7 @@ looks more like synchronous code:
 Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
-    final startingDir = new Directory(searchPath);
+    final startingDir = Directory(searchPath);
     [!await for!] (var entity in startingDir.list(
         recursive: argResults[recursive],
         followLinks: argResults[followLinks])) {
@@ -1286,7 +1286,7 @@ Future main(List<String> arguments) async {
       }
     }
   } else {
-    searchFile(new File(searchPath), searchTerms);
+    searchFile(File(searchPath), searchTerms);
   }
 }
 {% endprettify %}
@@ -1347,7 +1347,7 @@ different type of data:
 {% prettify dart %}
 var lines = inputStream
     .transform(utf8.decoder)
-    .transform(new LineSplitter());
+    .transform(LineSplitter());
 {% endprettify %}
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -1374,12 +1374,12 @@ goes after the asynchronous for loop.
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
 {% prettify dart %}
 Future readFileAwaitFor() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(new LineSplitter());
+      .transform(LineSplitter());
   [!try!] {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -1398,12 +1398,12 @@ an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
 {% prettify dart %}
-var config = new File('config.txt');
+var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
 inputStream
     .transform(utf8.decoder)
-    .transform(new LineSplitter())
+    .transform(LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
@@ -1499,7 +1499,7 @@ optionally provide a seed to the Random constructor.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
 {% prettify dart %}
-var random = new Random();
+var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
 random.nextInt(10); // Between 0 and 9.
 {% endprettify %}
@@ -1508,7 +1508,7 @@ You can even generate random booleans:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
 {% prettify dart %}
-var random = new Random();
+var random = Random();
 random.nextBool(); // true or false
 {% endprettify %}
 
@@ -1616,7 +1616,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 {% prettify dart %}
 var lines = inputStream
     .transform([!utf8.decoder!])
-    .transform(new LineSplitter());
+    .transform(LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
