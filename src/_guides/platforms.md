@@ -8,7 +8,7 @@ toc: false
 
 Dart is a scalable language that you can use to write simple scripts or full
 featured apps. Whether you're creating a mobile app, web app, command-line script,
-or server, there's a Dart solution for that.
+or server-side app, there's a Dart solution for that.
 
 {:.card-grid}
 - {:.card.narrow}[![Flutter logo][]{: width="100"}][Flutter]{:.no-automatic-external}
@@ -30,7 +30,7 @@ or server, there's a Dart solution for that.
 
   ### [Server][]
 
-  Write a command-line app or server for the Dart VM.
+  Write a command-line app or server-side app.
 
 
 [Dart logo]: {% asset_path 'shared/dart/logo/default.svg' %}
