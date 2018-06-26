@@ -15,21 +15,21 @@ Install the SDK for your platform.
 
   ### [Flutter][Flutter install]
 
-  To develop mobile apps, get the Flutter SDK.
+  To develop mobile apps, get the Flutter&nbsp;SDK.
 
 - {:.card.narrow}[![Web logo][]{: width="100"}][Web install]{:.no-automatic-external}
   {:.logo}
 
   ### [Web][Web install]
 
-  To develop web apps, get the Dart SDK.
+  To develop web apps, get the Dart&nbsp;SDK.
 
 - {:.card.narrow}[![Dart logo][]{: width="100"}][Dart install]{:.no-automatic-external}
   {:.logo}
 
   ### [Server][Dart install]
 
-  To develop command-line or server-side apps, get the Dart SDK.
+  To develop command-line or server-side apps, get the Dart&nbsp;SDK.
 
 [DartPad]: {{site.custom.dartpad.direct-link}}
 [Dart install]: /tools/sdk#install
