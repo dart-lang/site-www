@@ -436,8 +436,7 @@ with a list containing the values produced by each function.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (Future.wait)"?>
 {% prettify dart %}
-Future
-    .wait([expensiveA(), expensiveB(), expensiveC()])
+Future.wait([expensiveA(), expensiveB(), expensiveC()])
     .then((List responses) => chooseBestResponse(responses))
     .catchError((e) => handleError(e));
 {% endprettify %}

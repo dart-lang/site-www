@@ -27,8 +27,7 @@ void futuresTutorial() {
 
   Void1 chooseBestResponse, handleError;
   // #docregion Future-wait
-  Future
-      .wait([expensiveA(), expensiveB(), expensiveC()])
+  Future.wait([expensiveA(), expensiveB(), expensiveC()])
       .then((List responses) => chooseBestResponse(responses))
       .catchError((e) => handleError(e));
   // #enddocregion Future-wait

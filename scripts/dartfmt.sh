@@ -11,7 +11,7 @@ EXAMPLES=examples
 
 # Format all example source files under lib and tests
 # except for the lib/pi_*.* files
-$DARTFMT -w `find $EXAMPLES -name "*.dart" \
+$DARTFMT -w $* `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
     ! -path "**/misc/lib/pi_*" \
     ! -path "**/build/**"`
