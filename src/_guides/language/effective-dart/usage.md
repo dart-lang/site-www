@@ -1104,15 +1104,15 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
 {% prettify dart %}
 Widget build(BuildContext context) {
-  return new Row(
+  return [!new!] Row(
     children: [
-      new RaisedButton(
-        child: new Text('Increment'),
+      [!new!] RaisedButton(
+        child: [!new!] Text('Increment'),
       ),
-      new Text('Click!'),
+      [!new!] Text('Click!'),
     ],
   );
 }
@@ -1149,12 +1149,12 @@ const primaryColors = [
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart %}
-const primaryColors = const [
-  const Color("red", const [255, 0, 0]),
-  const Color("green", const [0, 255, 0]),
-  const Color("blue", const [0, 0, 255]),
+const primaryColors = [!const!] [
+  [!const!] Color("red", [!const!] [255, 0, 0]),
+  [!const!] Color("green", [!const!] [0, 255, 0]),
+  [!const!] Color("blue", [!const!] [0, 0, 255]),
 ];
 {% endprettify %}
 
