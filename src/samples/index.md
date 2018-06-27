@@ -216,7 +216,7 @@ voyager3.describe();
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#classes) about classes in Dart,
-including initializer lists, redirecting constructors, constant constructors,
+including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
 
