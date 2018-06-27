@@ -259,11 +259,18 @@ Here's an example of creating and setting a final variable:
 <?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 {% prettify dart %}
 final name = 'Bob'; // Without a type annotation
-// name = 'Alice';  // Uncommenting this causes an error
 final String nickname = 'Bobby';
 {% endprettify %}
 
-Use `const` for variables that you want to be compile-time constants. If
+You can't change the value of a final variable:
+
+{:.fails-sa}
+<?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
+{% prettify dart %}
+name = 'Alice'; // Error: a final variable can only be set once.
+{% endprettify %}
+
+Use `const` for variables that you want to be **compile-time constants**. If
 the const variable is at the class level, mark it `static const`.
 Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
@@ -282,19 +289,28 @@ Any variable can have a constant value.
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 {% prettify dart %}
-// Note: [] creates an empty list.
-// const [] creates an empty, immutable list (EIL).
-var foo = const []; // foo is currently an EIL.
-final bar = const []; // bar will always be an EIL.
-const baz = []; // baz is a compile-time constant EIL.
+var foo = const [];
+final bar = const [];
+const baz = []; // Equivalent to `const []`
+{% endprettify %}
 
-// You can change the value of a non-final, non-const variable,
-// even if it used to have a const value.
-foo = [];
+You can omit `const` from the initializing expression of a `const` declaration,
+like for `baz` above. For details, see [DON’T use const redundantly][].
 
-// You can't change the value of a final or const variable.
-// bar = []; // Unhandled exception.
-// baz = []; // Unhandled exception.
+You can change the value of a non-final, non-const variable,
+even if it used to have a const value:
+
+<?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
+{% prettify dart %}
+foo = [1, 2, 3]; // Was const []
+{% endprettify %}
+
+Being compile-time constants, you can't assign to a const variable:
+
+{:.fails-sa}
+<?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
+{% prettify dart %}
+baz = []; // Error: Constant variables can't be assigned a value.
 {% endprettify %}
 
 For more information on using `const` to create constant values, see
@@ -4115,6 +4131,7 @@ To learn more about Dart's core libraries, see
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
 [dart]: /dart-vm/tools/dart-vm
 [dartdevc]: {{site.dev-webdev}}/tools/dartdevc
+[DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
