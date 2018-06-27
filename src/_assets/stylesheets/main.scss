@@ -496,7 +496,7 @@ img {
     $padding: $font-size-base * .75;
     padding-left: $padding;
     /* Prevent the active entry from shifting right because of double border */
-    &.active { padding-left: $padding - $border-width; }
+    &.active { padding-left: $padding; }
   }
   h4 {
     // TODO: use mixin and share code with #sidenav .content h4
