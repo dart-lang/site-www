@@ -194,9 +194,9 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible.
 
-There are two ways to make an empty growable list: `[]` and `new List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`, `new
-Map()`, and `new LinkedHashMap()`.
+There are two ways to make an empty growable list: `[]` and `List()`.
+Likewise, there are three ways to make an empty linked hash map: `{}`,
+`Map()`, and `LinkedHashMap()`.
 
 If you want to create a non-growable list, or some other custom collection type
 then, by all means, use a constructor. Otherwise, use the nice literal syntax.
@@ -235,7 +235,7 @@ var addresses = Map<String, Address>();
 
 Note that this doesn't apply to the *named* constructors for those classes.
 `List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `new List()` to create a non-growable one, then it
+if you're passing a size to `List()` to create a non-growable one, then it
 makes sense to use that.
 
 ### DON'T use `.length` to see if a collection is empty.
@@ -1319,10 +1319,10 @@ Cases where `async` *is* useful include:
 * You are using `await`. (This is the obvious one.)
 
 * You are returning an error asynchronously. `async` and then `throw` is shorter
-  than `return new Future.error(...)`.
+  than `return Future.error(...)`.
 
 * You are returning a value and you want it implicitly wrapped in a future.
-  `async` is shorter than `new Future.value(...)`.
+  `async` is shorter than `Future.value(...)`.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
