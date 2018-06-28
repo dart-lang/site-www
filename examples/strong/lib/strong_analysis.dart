@@ -121,6 +121,12 @@ void _miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion Cat-Cat-ok
+    Cat c = Cat();
+    // #enddocregion Cat-Cat-ok
+  }
+
+  {
     // #docregion Cat-MaineCoon-ok
     Cat c = MaineCoon();
     // #enddocregion Cat-MaineCoon-ok

@@ -103,7 +103,7 @@ the contents of a file on www.dartlang.org. Click run ( {% img 'red-run.png'
 {% comment %}
 https://gist.github.com/chalin/a345206b09cc09eee1753fab11ec006b
 
-<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-async)"?>
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-async)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
@@ -136,7 +136,7 @@ printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-Duration oneSecond = const Duration(seconds: 1);
+const oneSecond = Duration(seconds: 1);
 
 final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
 
@@ -261,7 +261,7 @@ the contents of a file on www.dartlang.org.  Click run ( {% img 'red-run.png'
 {% comment %}
 https://gist.github.com/chalin/5e7eb16cd725f0a51926b85e3caa64b5
 
-<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api)"?>
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
@@ -294,7 +294,7 @@ printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-Duration oneSecond = const Duration(seconds: 1);
+const oneSecond = Duration(seconds: 1);
 
 final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
 

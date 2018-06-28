@@ -418,13 +418,16 @@ Consider the following type hierarchy:
 
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
-The following diagram shows the consumer and producer for a simple
-assignment:
+Consider the following simple assignment where `Cat c` is a _consumer_ and `Cat()`
+is a _producer_:
 
-<img src="images/consumer-producer-assignment.png" alt="Cat c = new Cat(), where Cat c is the consumer and new Cat() is the producer">
+<?code-excerpt "strong/lib/strong_analysis.dart (Cat-Cat-ok)"?>
+{% prettify dart %}
+Cat c = Cat();
+{% endprettify %}
 
 In a consuming position, it's safe to replace something that consumes a
-specific type (Cat) with something that consumes anything (Animal),
+specific type (`Cat`) with something that consumes anything (`Animal`),
 so replacing `Cat c` with `Animal c` is allowed, because Animal is
 a supertype of Cat.
 
