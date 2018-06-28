@@ -29,10 +29,10 @@
   permalink: /guides/platforms
   urlExactMatch: true
   children:
-    - title: Web
-      permalink: https://webdev.dartlang.org
     - title: Mobile (Flutter)
       permalink: https://flutter.io
+    - title: Web
+      permalink: https://webdev.dartlang.org
     - title: Server
       permalink: /dart-vm
 

@@ -5,8 +5,7 @@ toc: false
 ---
 
 This page points to tools and documentation
-that can help you develop command-line and server-side apps
-for the Dart VM.
+that can help you develop command-line and server-side apps.
 
 ## Tools
 
@@ -21,7 +20,7 @@ for the Dart VM.
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/tools/sdk#install) to get the core Dart
-  libraries and [Dart VM tools](/dart-vm/tools).
+  libraries and [tools](/dart-vm/tools).
 
 More tools
 : The Dart [Tools](/tools) page links to generally useful tools,
