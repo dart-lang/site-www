@@ -77,7 +77,7 @@ _printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-const oneSecond = Duration(seconds: 1);
+Duration oneSecond = Duration(seconds: 1);
 
 // #enddocregion main-async, main-future-api
 String _gatherNewsReportsSync() => news;
