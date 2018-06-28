@@ -305,12 +305,12 @@ even if it used to have a const value:
 foo = [1, 2, 3]; // Was const []
 {% endprettify %}
 
-Being compile-time constants, you can't assign to a const variable:
+You can't change the value of a const variable:
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
 {% prettify dart %}
-baz = []; // Error: Constant variables can't be assigned a value.
+baz = [42]; // Error: Constant variables can't be assigned a value.
 {% endprettify %}
 
 For more information on using `const` to create constant values, see

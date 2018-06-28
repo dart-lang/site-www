@@ -51,7 +51,7 @@ void miscDeclAnalyzedButNotTested() {
     name = 'Alice'; // Error: a final variable can only be set once.
     // #enddocregion cant-assign-to-final
     // #docregion cant-assign-to-const
-    baz = []; // Error: Constant variables can't be assigned a value.
+    baz = [42]; // Error: Constant variables can't be assigned a value.
     // #enddocregion cant-assign-to-const
   }
 }
