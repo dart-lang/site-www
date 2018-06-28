@@ -1,6 +1,7 @@
 ---
 title: Futures and Error Handling
 description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code.
+obsolete: true
 ---
 
 This guide describes how to handle errors when writing asynchronous code.

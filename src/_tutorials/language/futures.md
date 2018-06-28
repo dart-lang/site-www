@@ -136,7 +136,7 @@ printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-Duration oneSecond = const Duration(seconds: 1);
+const oneSecond = Duration(seconds: 1);
 
 final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
 
@@ -294,7 +294,7 @@ printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-Duration oneSecond = const Duration(seconds: 1);
+const oneSecond = Duration(seconds: 1);
 
 final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
 
