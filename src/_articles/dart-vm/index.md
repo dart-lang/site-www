@@ -1,12 +1,13 @@
 ---
 layout: default
-title: "Articles: Dart VM"
-description: "Articles pertaining to the Dart Virtual Machine (VM), such as benchmarking, native extensions, and numeric computation"
+title: "Articles: Server-Side Dart"
+description: "Articles pertaining to command-line and server-side Dart apps, covering topics such as benchmarking, native extensions, and numeric computation."
 permalink: /articles/dart-vm
 toc: false
 ---
 
-Read these articles for insight into the Dart VM.
+Read these articles for information that's relevant to
+Dart apps that run on the command line or as servers.
 
 Also see: [Articles about the Dart language and libraries](/articles)
 
