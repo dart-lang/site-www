@@ -244,8 +244,8 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-If there's both a setter and a getter, comment only the getter. That way,
-dartdoc will treat it like a variable.
+Avoid having a doc comment on the setter and the getter, as DartDoc will only show
+one (the one on the getter.)
 
 ### PREFER starting library or type comments with noun phrases.
 
