@@ -122,8 +122,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion Cat-Cat-ok
-    // Consumer c = Producer
-    Cat c /*---*/ = Cat();
+    Cat c = Cat();
     // #enddocregion Cat-Cat-ok
   }
 

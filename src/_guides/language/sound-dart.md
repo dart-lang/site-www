@@ -421,10 +421,9 @@ Consider the following type hierarchy:
 Consider the following simple assignment where `Cat c` is a _consumer_ and `Cat()`
 is a _producer_:
 
-<?code-excerpt "strong/lib/strong_analysis.dart (Cat-Cat-ok)" replace="/.\*---\*./       /g"?>
+<?code-excerpt "strong/lib/strong_analysis.dart (Cat-Cat-ok)"?>
 {% prettify dart %}
-// Consumer c = Producer
-Cat c         = Cat();
+Cat c = Cat();
 {% endprettify %}
 
 In a consuming position, it's safe to replace something that consumes a
