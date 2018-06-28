@@ -33,7 +33,7 @@
       permalink: https://webdev.dartlang.org
     - title: Mobile (Flutter)
       permalink: https://flutter.io
-    - title: Dart VM
+    - title: Server
       permalink: /dart-vm
 
 - title: Testing

@@ -1,12 +1,12 @@
 ---
-title: Dart VM
-description: The landing page for all things relating to the Dart virtual machine (Dart VM).
+title: Server-Side Dart
+description: All things relating to command-line and server-side apps.
 toc: false
 ---
 
 This page points to tools and documentation
-that can help you develop scripts and server apps
-for the standalone Dart VM.
+that can help you develop command-line and server-side apps
+for the Dart VM.
 
 ## Tools
 
@@ -21,7 +21,7 @@ for the standalone Dart VM.
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/tools/sdk#install) to get the core Dart
-  libraries and [Dart VM Tools](/dart-vm/tools).
+  libraries and [Dart VM tools](/dart-vm/tools).
 
 More tools
 : The Dart [Tools](/tools) page links to generally useful tools,
@@ -54,7 +54,7 @@ You might find the following tutorials helpful.
 : Code that performs common I/O tasks, featuring APIs from
   dart:io, dart:convert, the path package, and more.
 
-[Articles: Dart VM](/articles/dart-vm)
+[Articles: Server-Side Dart](/articles/dart-vm)
 : A collection of articles covering topics such as benchmarking,
   numeric computation, and SIMD.
 
