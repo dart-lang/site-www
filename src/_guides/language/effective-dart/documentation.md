@@ -244,8 +244,8 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-Avoid having a doc comment on the setter and the getter, as DartDoc will only show
-one (the one on the getter.)
+Avoid having a doc comment on both the setter and the getter, as DartDoc will show
+only one (the one on the getter.)
 
 ### PREFER starting library or type comments with noun phrases.
 
