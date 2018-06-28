@@ -2,7 +2,7 @@
 class Logger {
   final List<String> _log = [];
 
-  List<String> get log => new List.from(_log);
+  List<String> get log => List.from(_log);
   void clear() => _log.clear();
   void print(Object o) => _log.add(o.toString());
 

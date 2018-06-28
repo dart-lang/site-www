@@ -83,7 +83,7 @@ Duration oneSecond = const Duration(seconds: 1);
 String _gatherNewsReportsSync() => news;
 
 // #docregion main-async, main-future-api
-final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
+final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
 
 // Imagine that this function is more complex and slow. :)
 Future<String> _gatherNewsReportsAsync() => newsStream.first;

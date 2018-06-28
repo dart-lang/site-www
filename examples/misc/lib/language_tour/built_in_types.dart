@@ -49,7 +49,7 @@ void miscDeclAnalyzedButNotTested() {
     var aNum = 0;
     var aBool = true;
     var aString = 'a string';
-    const aConstList = const [1, 2, 3];
+    const aConstList = [1, 2, 3];
 
     const validConstString = '$aConstNum $aConstBool $aConstString';
     // const invalidConstString = '$aNum $aBool $aString $aConstList';

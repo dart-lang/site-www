@@ -12,7 +12,7 @@ String runtimeChecksSkipStatus() => dartMajorVers == 1
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
-          new TypeMatcher<T>(),
+          TypeMatcher<T>(),
           predicate(
             (e) => e.toString().contains(msg),
           )),
@@ -59,7 +59,7 @@ void main() {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
-        List<Animal> animals = [new Dog()];
+        List<Animal> animals = [Dog()];
         // ignore_for_file: 1, 2, invalid_assignment
         List<Cat> cats = animals;
       }
@@ -149,14 +149,14 @@ void main() {
     });
 
     test('instantiate-to-bound sanity', () {
-      final b = new B();
+      final b = B();
       expect(b.typeOfS, 'int');
       expect(b.typeOfT, 'dynamic');
     });
 
     test('instantiate-to-bound fix: add type arg', () {
       // #docregion add-type-arg
-      var c = new C<List>([]).collection;
+      var c = C<List>([]).collection;
       c.add(2);
       // #enddocregion add-type-arg
       expect(c, [2]);
@@ -164,7 +164,7 @@ void main() {
 
     test('instantiate-to-bound fix 2', () {
       // #docregion use-iterable
-      var c = new C(Iterable.empty()).collection;
+      var c = C(Iterable.empty()).collection;
       // Use c as an iterable...
       // #enddocregion use-iterable
       expect(c, const TypeMatcher<Iterable>());

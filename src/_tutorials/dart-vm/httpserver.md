@@ -334,7 +334,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-Random intGenerator = new Random();
+Random intGenerator = Random();
 int myNumber = intGenerator.nextInt(10);
 
 Future main() async {
@@ -578,10 +578,9 @@ Map jsonData = {
 };
 
 Future main() async {
-  HttpClientRequest request =
-      await new HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
-        ..[!headers!].contentType = ContentType.json [!/*2*/!]
-        ..[!write!](jsonEncode(jsonData)); [!/*3*/!]
+  HttpClientRequest request = await HttpClient().[!post!](_host, 4049, path) [!/*1*/!]
+    ..[!headers!].contentType = ContentType.json [!/*2*/!]
+    ..[!write!](jsonEncode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
   await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
 }
@@ -670,7 +669,7 @@ Future main() async {
             await req.transform(utf8.decoder).join(); [!/*2*/!]
         var [!data = jsonDecode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
-        await new File(fileName)
+        await File(fileName)
             .writeAsString(content, mode: FileMode.write);
         req.response
           ..statusCode = HttpStatus.ok
@@ -778,7 +777,7 @@ Here's the code for mini file server:
 import 'dart:async';
 import 'dart:io';
 
-File targetFile = new File('index.html');
+File targetFile = File('index.html');
 
 Future main() async {
   var server;
@@ -842,10 +841,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-File targetFile = new File('index.html');
+File targetFile = File('index.html');
 
 Future main() async {
-  VirtualDirectory staticFiles = new VirtualDirectory('.');
+  VirtualDirectory staticFiles = VirtualDirectory('.');
 
   var serverRequests =
       await HttpServer.bind(InternetAddress.loopbackIPv4, 4046);
@@ -882,11 +881,11 @@ import 'package:path/path.dart';
 Future main() async {
   var pathToBuild = join(dirname(Platform.script.toFilePath()));
 
-  var staticFiles = new VirtualDirectory(pathToBuild);
+  var staticFiles = VirtualDirectory(pathToBuild);
   staticFiles.allowDirectoryListing = true; [!/*1*/!]
   staticFiles.directoryHandler = (dir, request) [!/*2*/!] {
-    var indexUri = new Uri.file(dir.path).resolve('index.html');
-    staticFiles.serveFile(new File(indexUri.toFilePath()), request); [!/*3*/!]
+    var indexUri = Uri.file(dir.path).resolve('index.html');
+    staticFiles.serveFile(File(indexUri.toFilePath()), request); [!/*3*/!]
   };
 
   var server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4048);
@@ -937,7 +936,7 @@ String certificateChain = 'server_chain.pem';
 String serverKey = 'server_key.pem';
 
 Future main() async {
-  [!var serverContext = new SecurityContext(); /*1*/!]
+  [!var serverContext = SecurityContext(); /*1*/!]
   [!serverContext.useCertificateChain(certificateChain); /*2*/!]
   [!serverContext.usePrivateKey(serverKey, password: 'dartdart'); /*3*/!]
 

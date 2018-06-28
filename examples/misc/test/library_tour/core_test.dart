@@ -149,7 +149,7 @@ void main() {
       // #docregion replace
       var greetingTemplate = 'Hello, NAME!';
       var greeting =
-          greetingTemplate.replaceAll(new RegExp('NAME'), 'Bob');
+          greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
       // greetingTemplate didn't change.
       assert(greeting != greetingTemplate);
@@ -158,7 +158,7 @@ void main() {
 
     test('StringBuffer', () {
       // #docregion StringBuffer
-      var sb = new StringBuffer();
+      var sb = StringBuffer();
       sb
         ..write('Use a StringBuffer for ')
         ..writeAll(['efficient', 'string', 'creation'], ' ')
@@ -174,7 +174,7 @@ void main() {
     test('RegExp', () {
       // #docregion RegExp
       // Here's a regular expression for one or more digits.
-      var numbers = new RegExp(r'\d+');
+      var numbers = RegExp(r'\d+');
 
       var allCharacters = 'llamas live fifteen to twenty years';
       var someDigits = 'llamas live 15 to 20 years';
@@ -192,7 +192,7 @@ void main() {
     test('match', () {
       _test() {
         // #docregion match
-        var numbers = new RegExp(r'\d+');
+        var numbers = RegExp(r'\d+');
         var someDigits = 'llamas live 15 to 20 years';
 
         // Check whether the reg exp has a match in a string.
@@ -213,7 +213,7 @@ void main() {
     test('constructor', () {
       // #docregion List
       // Use a List constructor.
-      var vegetables = new List();
+      var vegetables = List();
 
       // Or simply use a list literal.
       var fruits = ['apples', 'oranges'];
@@ -264,7 +264,7 @@ void main() {
     test('ListOfString', () {
       // #docregion ListOfString
       // This list should contain only strings.
-      var fruits = new List<String>();
+      var fruits = List<String>();
 
       fruits.add('apples');
       var fruit = fruits[0];
@@ -283,7 +283,7 @@ void main() {
   group('Collections: Set', () {
     test('constructor', () {
       // #docregion Set
-      var ingredients = new Set();
+      var ingredients = Set();
       ingredients.addAll(['gold', 'titanium', 'xenon']);
       assert(ingredients.length == 3);
 
@@ -299,7 +299,7 @@ void main() {
 
     test('contains', () {
       // #docregion contains
-      var ingredients = new Set();
+      var ingredients = Set();
       ingredients.addAll(['gold', 'titanium', 'xenon']);
 
       // Check whether an item is in the set.
@@ -312,11 +312,11 @@ void main() {
 
     test('intersection', () {
       // #docregion intersection
-      var ingredients = new Set();
+      var ingredients = Set();
       ingredients.addAll(['gold', 'titanium', 'xenon']);
 
       // Create the intersection of two sets.
-      var nobleGases = new Set.from(['xenon', 'argon']);
+      var nobleGases = Set.from(['xenon', 'argon']);
       var intersection = ingredients.intersection(nobleGases);
       assert(intersection.length == 1);
       assert(intersection.contains('xenon'));
@@ -335,11 +335,11 @@ void main() {
       };
 
       // Maps can be built from a constructor.
-      var searchTerms = new Map();
+      var searchTerms = Map();
 
       // Maps are parameterized types; you can specify what
       // types the key and value should be.
-      var nobleGases = new Map<int, String>();
+      var nobleGases = Map<int, String>();
       // #enddocregion Map
       assert(hawaiianBeaches.isNotEmpty);
       assert(searchTerms.isEmpty);
@@ -375,7 +375,7 @@ void main() {
       var keys = hawaiianBeaches.keys;
 
       assert(keys.length == 3);
-      assert(new Set.from(keys).contains('Oahu'));
+      assert(Set.from(keys).contains('Oahu'));
 
       // Get all the values as an unordered collection
       // (an Iterable of Lists).
@@ -550,7 +550,7 @@ void main() {
 
     test('constructor', () {
       // #docregion Uri
-      var uri = new Uri(
+      var uri = Uri(
           scheme: 'http',
           host: 'example.org',
           path: '/foo/bar',
@@ -565,19 +565,19 @@ void main() {
     test('DateTime', () {
       // #docregion DateTime
       // Get the current date and time.
-      var now = new DateTime.now();
+      var now = DateTime.now();
 
       // Create a new DateTime with the local time zone.
-      var y2k = new DateTime(2000); // January 1, 2000
+      var y2k = DateTime(2000); // January 1, 2000
 
       // Specify the month and day.
-      y2k = new DateTime(2000, 1, 2); // January 2, 2000
+      y2k = DateTime(2000, 1, 2); // January 2, 2000
 
       // Specify the date as a UTC time.
-      y2k = new DateTime.utc(2000); // 1/1/2000, UTC
+      y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
       // Specify a date and time in ms since the Unix epoch.
-      y2k = new DateTime.fromMillisecondsSinceEpoch(946684800000,
+      y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
           isUtc: true);
 
       // Parse an ISO 8601 date.
@@ -590,18 +590,18 @@ void main() {
     test('millisecondsSinceEpoch', () {
       // #docregion millisecondsSinceEpoch
       // 1/1/2000, UTC
-      var y2k = new DateTime.utc(2000);
+      var y2k = DateTime.utc(2000);
       assert(y2k.millisecondsSinceEpoch == 946684800000);
 
       // 1/1/1970, UTC
-      var unixEpoch = new DateTime.utc(1970);
+      var unixEpoch = DateTime.utc(1970);
       assert(unixEpoch.millisecondsSinceEpoch == 0);
       // #enddocregion millisecondsSinceEpoch
     });
 
     test('Duration', () {
       // #docregion Duration
-      var y2k = new DateTime.utc(2000);
+      var y2k = DateTime.utc(2000);
 
       // Add one year.
       var y2001 = y2k.add(const Duration(days: 366));

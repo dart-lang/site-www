@@ -16,7 +16,7 @@ void main() {
   test('readAsString, readAsLines', () async {
     // #docregion readAsString
     Future main() async {
-      var config = new File('test_data/config.txt');
+      var config = File('test_data/config.txt');
       var contents;
 
       // Put the whole file in a single string.
@@ -40,7 +40,7 @@ void main() {
   test('readAsBytes', () {
     // #docregion readAsBytes
     Future main() async {
-      var config = new File('test_data/config.txt');
+      var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
       print('The file is ${contents.length} bytes long.');
@@ -53,7 +53,7 @@ void main() {
   test('try-catch', () {
     // #docregion try-catch
     Future main() async {
-      var config = new File('does-not-exist.txt');
+      var config = File('does-not-exist.txt');
       try {
         var contents = await config.readAsString();
         print(contents);
@@ -70,17 +70,16 @@ void main() {
     expect(
         main_test_read_from_stream,
         prints(allOf([
-          contains(
-              new RegExp(r'Got \d+ characters from stream')),
+          contains(RegExp(r'Got \d+ characters from stream')),
           contains('file is now closed'),
         ])));
   });
 
   test('write-file', () async {
     // #docregion write-file
-    var logFile = new File('test_data/log.txt');
+    var logFile = File('test_data/log.txt');
     var sink = logFile.openWrite();
-    sink.write('FILE ACCESSED ${new DateTime.now()}\n');
+    sink.write('FILE ACCESSED ${DateTime.now()}\n');
     await sink.flush();
     await sink.close();
     // #enddocregion write-file
@@ -96,7 +95,7 @@ void main() {
   test('list-dir', () {
     // #docregion list-dir
     Future main() async {
-      var dir = new Directory('test_data');
+      var dir = Directory('test_data');
 
       try {
         var dirList = dir.list();
@@ -120,7 +119,7 @@ void main() {
     // #docregion client
     Future main() async {
       var url = Uri.parse('http://localhost:8888/dart');
-      var httpClient = new HttpClient();
+      var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
       var response = await request.close();
       var data = await response.transform(utf8.decoder).toList();
@@ -149,13 +148,13 @@ void main() {
 
 // #docregion read-from-stream
 Future main_test_read_from_stream() async {
-  var config = new File('test_data/config.txt');
+  var config = File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(new LineSplitter());
+      .transform(LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -171,7 +170,7 @@ Future main_test_read_from_stream() async {
 /// No tests below this point. Excerpts only illustrate declarations.
 void miscDeclAnalyzedButNotTested() {
   {
-    var logFile = new File('test_data/log.txt');
+    var logFile = File('test_data/log.txt');
     // #docregion append
     var sink = logFile.openWrite(mode: FileMode.append);
     // #enddocregion append

@@ -12,7 +12,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-Random intGenerator = new Random();
+Random intGenerator = Random();
 int myNumber = intGenerator.nextInt(10);
 
 Future main() async {

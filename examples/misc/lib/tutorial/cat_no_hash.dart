@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 Future<void> main(List<String> args) async {
-  var file = new File(args[0]);
+  var file = File(args[0]);
   var lines = file
       .openRead()
       .transform(utf8.decoder) //!<br>

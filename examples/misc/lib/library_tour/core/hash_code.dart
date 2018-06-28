@@ -29,8 +29,8 @@ class Person {
 }
 
 void main() {
-  var p1 = new Person('Bob', 'Smith');
-  var p2 = new Person('Bob', 'Smith');
+  var p1 = Person('Bob', 'Smith');
+  var p2 = Person('Bob', 'Smith');
   var p3 = 'not a person';
   assert(p1.hashCode == p2.hashCode);
   assert(p1 == p2);

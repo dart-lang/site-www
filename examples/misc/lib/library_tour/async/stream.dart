@@ -15,7 +15,7 @@ void miscDeclAnalyzedButNotTested() {
       // ...
       FileSystemEntity.isDirectory(searchPath).then((isDir) {
         if (isDir) {
-          final startingDir = new Directory(searchPath);
+          final startingDir = Directory(searchPath);
           startingDir
               .list(
                   recursive: argResults[recursive],
@@ -26,7 +26,7 @@ void miscDeclAnalyzedButNotTested() {
             }
           });
         } else {
-          searchFile(new File(searchPath), searchTerms);
+          searchFile(File(searchPath), searchTerms);
         }
       });
     }
@@ -38,7 +38,7 @@ void miscDeclAnalyzedButNotTested() {
     Future main(List<String> arguments) async {
       // ...
       if (await FileSystemEntity.isDirectory(searchPath)) {
-        final startingDir = new Directory(searchPath);
+        final startingDir = Directory(searchPath);
         await for (var entity in startingDir.list(
             recursive: argResults[recursive],
             followLinks: argResults[followLinks])) {
@@ -47,7 +47,7 @@ void miscDeclAnalyzedButNotTested() {
           }
         }
       } else {
-        searchFile(new File(searchPath), searchTerms);
+        searchFile(File(searchPath), searchTerms);
       }
     }
     // #enddocregion await-for
@@ -56,13 +56,13 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion readFileAwaitFor
     Future readFileAwaitFor() async {
-      var config = new File('config.txt');
+      var config = File('config.txt');
       Stream<List<int>> inputStream = config.openRead();
 
       // #docregion transform
       var lines = inputStream
           .transform(utf8.decoder)
-          .transform(new LineSplitter());
+          .transform(LineSplitter());
       // #enddocregion transform
       try {
         await for (var line in lines) {
@@ -78,12 +78,12 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion onDone
-    var config = new File('config.txt');
+    var config = File('config.txt');
     Stream<List<int>> inputStream = config.openRead();
 
     inputStream
         .transform(utf8.decoder)
-        .transform(new LineSplitter())
+        .transform(LineSplitter())
         .listen((String line) {
       print('Got ${line.length} characters from stream');
     }, onDone: () {

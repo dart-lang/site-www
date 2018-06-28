@@ -52,7 +52,7 @@ strings.
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 Future main() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
   var contents;
 
   // Put the whole file in a single string.
@@ -75,7 +75,7 @@ when it’s available.
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 {% prettify dart %}
 Future main() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
 
   var contents = await config.readAsBytes();
   print('The file is ${contents.length} bytes long.');
@@ -91,7 +91,7 @@ or (in an async function) use try-catch:
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 {% prettify dart %}
 Future main() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
   try {
     var contents = await config.readAsString();
     print(contents);
@@ -115,12 +115,12 @@ import 'dart:io';
 import 'dart:convert';
 
 Future main() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(new LineSplitter());
+      .transform(LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -141,9 +141,9 @@ overwrites existing data in the file.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 {% prettify dart %}
-var logFile = new File('log.txt');
+var logFile = File('log.txt');
 var sink = logFile.openWrite();
-sink.write('FILE ACCESSED ${new DateTime.now()}\n');
+sink.write('FILE ACCESSED ${DateTime.now()}\n');
 await sink.flush();
 await sink.close();
 {% endprettify %}
@@ -168,7 +168,7 @@ when a file or directory is encountered.
 <?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 {% prettify dart %}
 Future main() async {
-  var dir = new Directory('tmp');
+  var dir = Directory('tmp');
 
   try {
     var dirList = dir.list();
@@ -230,7 +230,7 @@ void processRequest(HttpRequest request) {
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
-      ..headers.contentType = new ContentType(
+      ..headers.contentType = ContentType(
         'text',
         'plain',
       )
@@ -256,7 +256,7 @@ Here’s an example of using HttpClient:
 {% prettify dart %}
 Future main() async {
   var url = Uri.parse('http://localhost:8888/dart');
-  var httpClient = new HttpClient();
+  var httpClient = HttpClient();
   var request = await httpClient.getUrl(url);
   var response = await request.close();
   var data = await response.transform(utf8.decoder).toList();

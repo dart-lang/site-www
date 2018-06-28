@@ -13,10 +13,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-File targetFile = new File('index.html');
+File targetFile = File('index.html');
 
 Future main() async {
-  VirtualDirectory staticFiles = new VirtualDirectory('.');
+  VirtualDirectory staticFiles = VirtualDirectory('.');
 
   var serverRequests =
       await HttpServer.bind(InternetAddress.loopbackIPv4, 4046);

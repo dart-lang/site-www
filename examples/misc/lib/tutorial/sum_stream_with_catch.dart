@@ -17,7 +17,7 @@ Future<int> sumStream(Stream<int> stream) async {
 Stream<int> countStream(int to) async* {
   for (int i = 1; i <= to; i++) {
     if (i == 4) {
-      throw new Exception('Intentional exception');
+      throw Exception('Intentional exception');
     } else {
       yield i;
     }

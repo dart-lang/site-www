@@ -245,8 +245,8 @@ a cat and send it after an alligator:
 
 <?code-excerpt "strong/lib/animal_bad.dart (chase-Alligator)" replace="/Alligator/[!$&!]/g"?>
 {% prettify dart %}
-Animal a = new Cat();
-a.chase(new [!Alligator!]()); // Not type safe or feline safe
+Animal a = Cat();
+a.chase([!Alligator!]()); // Not type safe or feline safe
 {% endprettify %}
 
 ### Don't use a dynamic list as a typed list
@@ -268,8 +268,8 @@ class Cat extends Animal { ... }
 class Dog extends Animal { ... }
 
 void main() {
-  List<Cat> foo = [!<dynamic>!][new Dog()]; // Error
-  List<dynamic> bar = <dynamic>[new Dog(), new Cat()]; // OK
+  List<Cat> foo = [!<dynamic>!][Dog()]; // Error
+  List<dynamic> bar = <dynamic>[Dog(), Cat()]; // OK
 }
 {% endprettify %}
 
@@ -285,7 +285,7 @@ to assign a list of Dogs to a list of Cats:
 <?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/cats[^;]*/[!$&!]/g"?>
 {% prettify dart %}
 void main() {
-  List<Animal> animals = [new Dog()];
+  List<Animal> animals = [Dog()];
   List<Cat> [!cats = animals!];
 }
 {% endprettify %}
@@ -431,7 +431,7 @@ a supertype of Cat.
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (Animal-Cat-ok)"?>
 {% prettify dart %}
-Animal c = new Cat();
+Animal c = Cat();
 {% endprettify %}
 
 But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
@@ -441,7 +441,7 @@ as Lion:
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
 {% prettify dart %}
-MaineCoon c = new Cat();
+MaineCoon c = Cat();
 {% endprettify %}
 
 In a producing position, it's safe to replace something that produces a
@@ -451,7 +451,7 @@ is allowed:
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
 {% prettify dart %}
-Cat c = new MaineCoon();
+Cat c = MaineCoon();
 {% endprettify %}
 
 ### Generic type assignment
@@ -468,7 +468,7 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
 {% prettify dart %}
-List<Cat> myCats = new List<[!MaineCoon!]>();
+List<Cat> myCats = List<[!MaineCoon!]>();
 {% endprettify %}
 
 {% comment %}
@@ -483,7 +483,7 @@ What about going in the other direction? Can you assign an `Animal` list to a `L
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart %}
-List<Cat> myCats = new List<[!Animal!]>();
+List<Cat> myCats = List<[!Animal!]>();
 {% endprettify %}
 
 This assignment passes static analysis,
@@ -491,7 +491,7 @@ but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart %}
-List<Cat> myCats = new List<Animal>() [!as List<Cat>!];
+List<Cat> myCats = List<Animal>() [!as List<Cat>!];
 {% endprettify %}
 
 The code may fail at runtime. You can disallow implicit casts

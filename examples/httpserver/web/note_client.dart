@@ -27,7 +27,7 @@ void main() {
 }
 
 void saveNote(Event e) {
-  request = new HttpRequest();
+  request = HttpRequest();
   request.onReadyStateChange.listen(onData);
 
   request.open('POST', url);
@@ -39,7 +39,7 @@ void requestNote(Event e) {
 
   int getNoteNumber = int.tryParse(chooseNote.value) ?? 0;
 
-  request = new HttpRequest();
+  request = HttpRequest();
   request.onReadyStateChange.listen(onData);
 
   request.open('POST', url);

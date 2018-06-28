@@ -40,7 +40,7 @@ void main() {
 
   test('Random', () {
     // #docregion Random
-    var random = new Random();
+    var random = Random();
     random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
     random.nextInt(10); // Between 0 and 9.
     // #enddocregion Random
@@ -48,7 +48,7 @@ void main() {
 
   test('Random-bool', () {
     // #docregion Random-bool
-    var random = new Random();
+    var random = Random();
     random.nextBool(); // true or false
     // #enddocregion Random-bool
   });

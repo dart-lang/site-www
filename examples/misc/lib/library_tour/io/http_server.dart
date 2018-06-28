@@ -18,7 +18,7 @@ void processRequest(HttpRequest request) {
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
-      ..headers.contentType = new ContentType(
+      ..headers.contentType = ContentType(
         'text',
         'plain',
       )

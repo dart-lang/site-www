@@ -14,11 +14,11 @@ import 'package:path/path.dart';
 Future main() async {
   var pathToBuild = join(dirname(Platform.script.toFilePath()));
 
-  var staticFiles = new VirtualDirectory(pathToBuild);
+  var staticFiles = VirtualDirectory(pathToBuild);
   staticFiles.allowDirectoryListing = true; /*1*/
   staticFiles.directoryHandler = (dir, request) /*2*/ {
-    var indexUri = new Uri.file(dir.path).resolve('index.html');
-    staticFiles.serveFile(new File(indexUri.toFilePath()), request); /*3*/
+    var indexUri = Uri.file(dir.path).resolve('index.html');
+    staticFiles.serveFile(File(indexUri.toFilePath()), request); /*3*/
   };
 
   var server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4048);

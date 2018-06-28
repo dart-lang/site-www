@@ -194,9 +194,9 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible.
 
-There are two ways to make an empty growable list: `[]` and `new List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`, `new
-Map()`, and `new LinkedHashMap()`.
+There are two ways to make an empty growable list: `[]` and `List()`.
+Likewise, there are three ways to make an empty linked hash map: `{}`,
+`Map()`, and `LinkedHashMap()`.
 
 If you want to create a non-growable list, or some other custom collection type
 then, by all means, use a constructor. Otherwise, use the nice literal syntax.
@@ -235,7 +235,7 @@ var addresses = Map<String, Address>();
 
 Note that this doesn't apply to the *named* constructors for those classes.
 `List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `new List()` to create a non-growable one, then it
+if you're passing a size to `List()` to create a non-growable one, then it
 makes sense to use that.
 
 ### DON'T use `.length` to see if a collection is empty.
@@ -323,7 +323,7 @@ contains the same elements:
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
 {% prettify dart %}
 var copy1 = iterable.toList();
-var copy2 = new List.from(iterable);
+var copy2 = List.from(iterable);
 {% endprettify %}
 
 The obvious difference is that the first one is shorter. The *important*
@@ -339,7 +339,7 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 
 // Prints "List<dynamic>":
-print(new List.from(iterable).runtimeType);
+print(List.from(iterable).runtimeType);
 {% endprettify %}
 
 If you *want* to change the type, then calling `List.from()` is useful:
@@ -348,7 +348,7 @@ If you *want* to change the type, then calling `List.from()` is useful:
 {% prettify dart %}
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
-var ints = new List<int>.from(numbers);
+var ints = List<int>.from(numbers);
 {% endprettify %}
 
 But if your goal is just to copy the iterable and preserve its original type, or
@@ -1104,15 +1104,15 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
 {% prettify dart %}
 Widget build(BuildContext context) {
-  return new Row(
+  return [!new!] Row(
     children: [
-      new RaisedButton(
-        child: new Text('Increment'),
+      [!new!] RaisedButton(
+        child: [!new!] Text('Increment'),
       ),
-      new Text('Click!'),
+      [!new!] Text('Click!'),
     ],
   );
 }
@@ -1149,12 +1149,12 @@ const primaryColors = [
 {% endprettify %}
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart %}
-const primaryColors = const [
-  const Color("red", const [255, 0, 0]),
-  const Color("green", const [0, 255, 0]),
-  const Color("blue", const [0, 0, 255]),
+const primaryColors = [!const!] [
+  [!const!] Color("red", [!const!] [255, 0, 0]),
+  [!const!] Color("green", [!const!] [0, 255, 0]),
+  [!const!] Color("blue", [!const!] [0, 0, 255]),
 ];
 {% endprettify %}
 
@@ -1319,10 +1319,10 @@ Cases where `async` *is* useful include:
 * You are using `await`. (This is the obvious one.)
 
 * You are returning an error asynchronously. `async` and then `throw` is shorter
-  than `return new Future.error(...)`.
+  than `return Future.error(...)`.
 
 * You are returning a value and you want it implicitly wrapped in a future.
-  `async` is shorter than `new Future.value(...)`.
+  `async` is shorter than `Future.value(...)`.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>

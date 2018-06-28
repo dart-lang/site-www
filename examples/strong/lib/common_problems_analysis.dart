@@ -26,7 +26,7 @@ void _samplesFromCommonProblemsPage() {
 
   {
     // #docregion unsafe-method-call
-    NumberAdder adder = new MyAdder();
+    NumberAdder adder = MyAdder();
     adder.add(1.2, 3.4);
     // #enddocregion unsafe-method-call
   }

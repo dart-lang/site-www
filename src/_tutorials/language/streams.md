@@ -147,7 +147,7 @@ Future<int> sumStream(Stream<int> stream) async {
 Stream<int> countStream(int to) async* {
   for (int i = 1; i <= to; i++) {
     if (i == 4) {
-      throw new Exception('Intentional exception');
+      throw Exception('Intentional exception');
     } else {
       yield i;
     }
@@ -376,7 +376,7 @@ import 'dart:convert';
 import 'dart:io';
 
 Future<void> main(List<String> args) async {
-  var file = new File(args[0]);
+  var file = File(args[0]);
   var lines = file
       .openRead()
       .transform(utf8.decoder)
