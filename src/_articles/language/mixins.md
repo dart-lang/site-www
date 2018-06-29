@@ -13,20 +13,17 @@ Looking for an introduction to mixins?
 See the Language Tour section on [Adding features to a class: mixins][].
 
 This article provides a brief theoretical presentation of the evolution of mixins in Dart.
+Support for mixins changed in Dart 1.13, and again in Dart 2:
 
-Feature evolution notes:
-
-- Support for `--supermixin` is being rescinded in Dart 2.
-- Dart 1.13 and greater (< Dart 2) supports mixins that can extend from classes
-other than `Object`, and can call `super.method()`. This support is only
-available by default in the Dart VM and in Analyzer behind a flag.
-More specifically, it is behind the `--supermixin` flag in the
-command-line analyzer. It is also available in the analysis server,
-behind a client-configurable option. For example, in Atom use the
-analysis.updateOptions request to set the enableSuperMixins option to true.
-Dart2js and dartdevc (also known as _DDC_) do not support this yet.
-- Dart 1.12 or lower supports mixins that must extend Object,
-and must not call super().
+- Dart 1.12 or lower supports mixins that must extend `Object`, and must not
+  call `super()`.
+- Dart 1.13 or greater (< Dart 2) supports mixins that can extend from classes
+  other than `Object`, and can call `super.method()`. This support is only
+  available by default in the Dart VM and in Analyzer behind a flag. More
+  specifically, it is behind the `--supermixin` flag in the command-line
+  analyzer. It is also available in the analysis server, behind a
+  client-configurable option. Dart2js and dartdevc do not support super mixins.
+- Dart 2 deprecates `--supermixin`.
 
 ## Basic concepts
 

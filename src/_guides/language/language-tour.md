@@ -3127,7 +3127,7 @@ abstract class Musical {
 
 <div class="alert alert-info" markdown="1">
   **Note:**
-  As of 1.13, two restrictions on mixins have been lifted
+  In Dart 1.13, two restrictions on mixins were lifted
   from the Dart VM:
 
   * Mixins allow extending from a class other than Object.
