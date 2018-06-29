@@ -1,6 +1,6 @@
 ---
-title: "Mixins in Dart"
-description: "Mixins let you implement functionality once and use it in multiple classes."
+title: A Brief History of Mixins in Dart
+description: Mixins let you implement functionality once and use it in multiple classes.
 written: 2012-12-18
 updated: 2018-06-29
 category: language
@@ -8,6 +8,9 @@ category: language
 
 _Written by Gilad Bracha <br>
 December 2012 (updated June 2018)_
+
+Looking for an introduction to mixins?
+See the Language Tour section on [Adding features to a class: mixins][].
 
 This article provides a brief theoretical presentation of the evolution of mixins in Dart.
 
@@ -308,3 +311,5 @@ a _K_ is expected.
 
 If a class has type parameters,
 its mixin necessarily has identical type parameters.
+
+[Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins

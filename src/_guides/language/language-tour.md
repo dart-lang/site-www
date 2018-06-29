@@ -3126,20 +3126,20 @@ abstract class Musical {
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
-**Note:**
-As of 1.13, two restrictions on mixins have been lifted
-from the Dart VM:
+  **Note:**
+  As of 1.13, two restrictions on mixins have been lifted
+  from the Dart VM:
 
-* Mixins allow extending from a class other than Object.
-* Mixins can call `super()`.
+  * Mixins allow extending from a class other than Object.
+  * Mixins can call `super()`.
 
-These "super mixins" are
-[not yet supported in dart2js](https://github.com/dart-lang/sdk/issues/23773)
-and require the `--supermixin` flag in dartanalyzer.
+  These "super mixins" are
+  [not yet supported in dart2js](https://github.com/dart-lang/sdk/issues/23773)
+  and require the `--supermixin` flag in dartanalyzer.
 </div>
 
-For more information, see the article [Mixins in
-Dart.](/articles/language/mixins)
+For a theoretical presentation of the evolution of mixins in Dart, see
+[A Brief History of Mixins in Dart](/articles/language/mixins).
 
 
 ### Class variables and methods
