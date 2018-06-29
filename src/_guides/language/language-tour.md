@@ -2816,62 +2816,6 @@ class EffectiveDoer extends Doer {
 Calling an abstract method results in a runtime error.
 
 
-#### Overridable operators
-
-You can override the operators shown in the following table.
-For example, if you define a
-Vector class, you might define a `+` method to add two vectors.
-
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
-{:.table}
-
-Here’s an example of a class that overrides the `+` and `-` operators:
-
-<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
-{% prettify dart %}
-class Vector {
-  final int x, y;
-
-  const Vector(this.x, this.y);
-
-  /// Overrides + (a + b).
-  Vector operator +(Vector v) {
-    return Vector(x + v.x, y + v.y);
-  }
-
-  /// Overrides - (a - b).
-  Vector operator -(Vector v) {
-    return Vector(x - v.x, y - v.y);
-  }
-}
-
-void main() {
-  final v = Vector(2, 3);
-  final w = Vector(2, 2);
-
-  // v == (2, 3)
-  assert(v.x == 2 && v.y == 3);
-
-  // v + w == (4, 5)
-  assert((v + w).x == 4 && (v + w).y == 5);
-
-  // v - w == (0, 1)
-  assert((v - w).x == 0 && (v - w).y == 1);
-}
-{% endprettify %}
-
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-
-For more information on overriding, in general, see
-[Extending a class](#extending-a-class).
-
-
 ### Abstract classes
 
 Use the `abstract` modifier to define an *abstract class*—a class that
@@ -2990,6 +2934,52 @@ class SmartTelevision extends Television {
 To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/sound-dart),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+
+
+#### Overridable operators
+
+You can override the operators shown in the following table.
+For example, if you define a
+Vector class, you might define a `+` method to add two vectors.
+
+`<`  | `+`  | `|`  | `[]`
+`>`  | `/`  | `^`  | `[]=`
+`<=` | `~/` | `&`  | `~`
+`>=` | `*`  | `<<` | `==`
+`–`  | `%`  | `>>`
+{:.table}
+
+Here’s an example of a class that overrides the `+` and `-` operators:
+
+<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
+{% prettify dart %}
+class Vector {
+  final int x, y;
+
+  Vector(this.x, this.y);
+
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+
+  // Operator == and hashCode not shown. For details, see note below.
+  // ···
+}
+
+void main() {
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
+
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
+}
+{% endprettify %}
+
+If you override `==`, you should also override Object's `hashCode` getter.
+For an example of overriding `==` and `hashCode`, see
+[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
+
+For more information on overriding, in general, see
+[Extending a class](#extending-a-class).
 
 
 #### noSuchMethod()
