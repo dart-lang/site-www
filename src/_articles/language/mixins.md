@@ -10,7 +10,7 @@ _Written by Gilad Bracha <br>
 December 2012 (updated June 2018)_
 
 Looking for an introduction to mixins?
-See the Language Tour section on [Adding features to a class: mixins][].
+See the Language Tour section [Adding features to a class: mixins][].
 
 This article provides a brief theoretical presentation of the evolution of mixins in Dart.
 Support for mixins changed in Dart 1.13, and again in Dart 2:
