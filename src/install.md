@@ -39,5 +39,5 @@ Install the SDK for your platform.
 [Flutter install]: {{site.flutter}}/setup/
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
 [Web]: {{site.webdev}}
-[Web install]: {{site.dev-webdev}}/tools/sdk#install {% comment %}FIXME: use site.webdev once the sites switch servers{% endcomment %}
+[Web install]: {{site.webdev}}/tools/sdk#install {% comment %}FIXME: use site.webdev once the sites switch servers{% endcomment %}
 [Web logo]: {% asset_path 'shared/angular/icon/default.svg' %}
