@@ -13,17 +13,20 @@ Looking for an introduction to mixins?
 See the Language Tour section [Adding features to a class: mixins][].
 
 This article provides a brief theoretical presentation of the evolution of mixins in Dart.
-Support for mixins changed in Dart 1.13, and again in Dart 2:
+Support for mixins changed in Dart 1.13, and it will again in Dart 2:
 
 - Dart 1.12 or lower supports mixins that must extend `Object`, and must not
   call `super()`.
-- Dart 1.13 or greater (< Dart 2) supports mixins that can extend from classes
+- Dart 1.13 or greater supports mixins that can extend from classes
   other than `Object`, and can call `super.method()`. This support is only
   available by default in the Dart VM and in Analyzer behind a flag. More
   specifically, it is behind the `--supermixin` flag in the command-line
   analyzer. It is also available in the analysis server, behind a
   client-configurable option. Dart2js and dartdevc do not support super mixins.
-- Dart 2 deprecates `--supermixin`.
+- In Dart 2, mixins are expected to have fewer restrictions. For example,
+  Flutter supports mixins calling `super()` and extending from a class other
+  than `Object`, but the syntax is expected to change before appearing in all
+  Dart SDKs. For details, see [Dart 2.0 Mixins.][Dart 2.0 Mixins]
 
 ## Basic concepts
 
@@ -219,7 +222,6 @@ We now discuss a few issues in more detail:
 * Statics
 * Types
 
-
 ### Privacy
 
 A mixin application may well be declared outside the library
@@ -310,3 +312,4 @@ If a class has type parameters,
 its mixin necessarily has identical type parameters.
 
 [Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
+[Dart 2.0 Mixins]: https://github.com/dart-lang/sdk/blob/master/docs/language/informal/mixin-declaration.md
