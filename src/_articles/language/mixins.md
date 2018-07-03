@@ -26,7 +26,7 @@ Support for mixins changed in Dart 1.13, and it will again in Dart 2:
 - In Dart 2, mixins are expected to have fewer restrictions. For example,
   Flutter supports mixins calling `super()` and extending from a class other
   than `Object`, but the syntax is expected to change before appearing in all
-  Dart SDKs. For details, see [Dart 2.0 Mixins.][Dart 2.0 Mixins]
+  Dart SDKs. For details, see the [proposed mixin specification.][Dart 2.0 Mixins]
 
 ## Basic concepts
 
