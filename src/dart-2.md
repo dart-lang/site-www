@@ -152,7 +152,7 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 * [About Dart SDK release channels and version strings][pre-release]
 * [SDK constraints][]
 
-[dartdevc]: {{site.dev-webdev}}/tools/dartdevc
+[dartdevc]: {{site.webdev}}/tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
@@ -164,7 +164,7 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
-[build_runner web]: {{site.dev-webdev}}/tools/build_runner
+[build_runner web]: {{site.webdev}}/tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 changes]: /guides/language/spec#dart-2-changes
@@ -186,4 +186,4 @@ don't declare Dart 2 compatibility until we announce that it's safe to do so.
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
 [Using constructors]: /guides/language/language-tour#using-constructors
-[webdev dart2]: {{site.dev-webdev}}/dart-2
+[webdev dart2]: {{site.webdev}}/dart-2

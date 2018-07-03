@@ -11,9 +11,9 @@ They're replaced by the **build system**, which includes the **build_runner** to
 For information about building and serving apps in Dart 2, see the following:
 
 * Web development:
-  * [Setup for Angular development (v5)]({{site.dev-webdev}}/angular/guide/setup)
-  * [Deployment (v5)]({{site.dev-webdev}}/angular/guide/deployment)
-  * [Web-specific build_runner documentation]({{site.dev-webdev}}/tools/build_runner)
+  * [Setup for Angular development (v5)]({{site.webdev}}/angular/guide/setup)
+  * [Deployment (v5)]({{site.webdev}}/angular/guide/deployment)
+  * [Web-specific build_runner documentation]({{site.webdev}}/tools/build_runner)
 * General:
   * [Build system](https://github.com/dart-lang/build)
   * [Build system documents,](https://github.com/dart-lang/build/tree/master/docs) including
@@ -38,4 +38,4 @@ If you maintain a transformer, see the following:
 For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 
 * [Language and core library migration guide](/dart-2#migration)
-* [Web app migration guide]({{site.dev-webdev}}/dart-2)
+* [Web app migration guide]({{site.webdev}}/dart-2)
