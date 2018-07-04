@@ -40,7 +40,7 @@ void main() {
     assert(5 ~/ 2 == 2); // Result is an int
     assert(5 % 2 == 1); // Remainder
 
-    assert('5/2 = ${5~/2} r ${5%2}' == '5/2 = 2 r 1');
+    assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
     // #enddocregion arithmetic
   });
 

@@ -43,7 +43,7 @@ void main() {
     }
     // #enddocregion method
 
-    void main() => print('first: ${first<int>([1,2,3])}');
+    void main() => print('first: ${first<int>([1, 2, 3])}');
     // #enddocregion method-with-main
     expect(main, prints('first: 1\n'));
   });
