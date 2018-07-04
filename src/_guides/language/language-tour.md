@@ -887,7 +887,8 @@ expression](#conditional-expressions).
 
 A function can have two types of parameters: required and optional. The
 required parameters are listed first, followed by any optional
-parameters.
+parameters. Named optional parameters can also be marked as `@required`.
+See the next section for details.
 
 
 ### Optional parameters
@@ -911,10 +912,23 @@ to specify named parameters:
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold, bool hidden}) {
-  // ...
-}
+void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
+
+[Flutter][] instance creation expressions can get complex, so widget
+constructors use named parameters exclusively. This makes instance creation
+expressions easier to read.
+
+You can annotate a named parameter in any Dart code (not just Flutter) with
+[@required][] to indicate that it is a _required_ parameter. For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
+{% prettify dart %}
+const Scrollbar({Key key, [!@required!] Widget child})
+{% endprettify %}
+
+When a `Scrollbar` is constructed, the analyzer will report an issue if the
+`child` argument is absent.
 
 #### Optional positional parameters
 
@@ -960,9 +974,7 @@ Here's an example of setting default values for named parameters:
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 {% prettify dart %}
 /// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {
-  // ...
-}
+void enableFlags({bool bold = false, bool hidden = false}) {...}
 
 // bold will be true; hidden will be false.
 enableFlags(bold: true);
@@ -2028,7 +2040,7 @@ assert(urlString.startsWith('https'));
 **Note:**
 Assert statements have no effect in production code;
 they're for development only.
-Flutter enables asserts in [debug mode.][flutter debug mode]
+Flutter enables asserts in [debug mode.][Flutter debug mode]
 Development-only tools such as [dartdevc][]
 typically support asserts by default.
 Some tools, such as [dart][] and [dart2js,][dart2js]
@@ -4119,7 +4131,8 @@ To learn more about Dart's core libraries, see
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
+[Flutter]: https://flutter.io
+[Flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
@@ -4130,6 +4143,7 @@ To learn more about Dart's core libraries, see
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
+[@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html

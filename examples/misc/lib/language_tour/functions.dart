@@ -1,5 +1,7 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
 
+import 'package:meta/meta.dart';
+
 void miscDeclAnalyzedButNotTested() {
   var _nobleGases = {};
 
@@ -28,9 +30,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool bold, bool hidden}) {
-      // ...
-    }
+    void enableFlags({bool bold, bool hidden}) {/*...*/}
     // #enddocregion specify-named-parameters
 
     // #docregion use-named-parameters
@@ -41,9 +41,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion named-parameter-default-values
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool bold = false, bool hidden = false}) {
-      // ...
-    }
+    void enableFlags({bool bold = false, bool hidden = false}) {/*...*/}
 
     // bold will be true; hidden will be false.
     enableFlags(bold: true);
@@ -77,4 +75,17 @@ void miscDeclAnalyzedButNotTested() {
     list.forEach(printElement);
     // #enddocregion function-as-param
   }
+}
+
+class Key {}
+
+abstract class Widget {
+  const Widget({Key key});
+}
+
+class Scrollbar extends Widget {
+  // #docregion required-named-parameters
+  const Scrollbar({Key key, @required Widget child})
+      // #enddocregion required-named-parameters
+      : super(key: key);
 }
