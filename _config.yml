@@ -19,6 +19,8 @@ flutter:  https://flutter.io
 dart_api: https://api.dartlang.org
 flutter_api: https://docs.flutter.io
 pub: https://pub.dartlang.org
+pub-api: https://pub.dartlang.org/documentation
+pub-pkg: https://pub.dartlang.org/packages
 
 collections:
   articles:
