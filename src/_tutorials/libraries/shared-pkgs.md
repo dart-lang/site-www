@@ -11,14 +11,14 @@ description: Packages are bundles of source code, tools, and resources that help
   * pub.dartlang.org is the primary public repository for Dart packages.
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
-  * If you're developing a web or server app,
+  * If you're developing a web or server-side app,
     use Stagehand to generate starting files.
-  * If you're developing a web or server app,
+  * If you're developing a web or server-side app,
     use `pub get` to download packages.
   * If you're developing a mobile app, use Flutter's tools.
 </div>
 
-Once you can create and run a Dart application,
+Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the
@@ -39,7 +39,7 @@ in a well-built package.
   **Flutter note:**
   This page doesn't describe the tools you use with Flutter, but the
   concepts are the same, and you can share packages between
-  your Flutter and web or server apps.
+  your Flutter and web or server-side apps.
   For more information, see the
   [Flutter package documentation.](https://flutter.io/using-packages/)
 
@@ -49,8 +49,8 @@ in a well-built package.
 ## About the pubspec.yaml file
 
 To use an external package,
-your application must itself be a package.
-Any application with a valid pubspec.yaml file in its top-level directory
+your app must itself be a package.
+Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
 You can use the Stagehand tool to generate packages
@@ -71,7 +71,7 @@ it can generate:
 $ stagehand
 ```
 
-You'll see a list of generators, including various web and server apps.
+You'll see a list of generators, including various web and server-side apps.
 One of the generators is named **console-full**.
 
 In a new directory named `vector_victor`,
@@ -110,13 +110,13 @@ update-for-dart-2
 
 To use an external library package,
 you need to add the package to your
-application's list of dependencies
+app's list of dependencies
 in the pubspec.yaml file.
 Each item in the dependencies list
 specifies the name and version
-of a package that your application uses.
+of a package that your app uses.
 
-Let's make the vector_victor application have a dependency
+Let's make the vector_victor app have a dependency
 on the vector_math package,
 which is available at pub.dartlang.org.
 
@@ -203,7 +203,7 @@ to update to new versions as needed.
 
 Besides the Dart libraries,
 the vector_math package has other resources that might be useful to you
-that do not get installed into your application directory.
+that do not get installed into your app directory.
 Let's take a step back for a moment to look at what
 you got and where it came from.
 
@@ -268,7 +268,7 @@ only one, `lib`, was installed when you ran pub get.
 ## Import libraries from a package
 
 Now that you've installed the package,
-you can import its libraries and use them in your application.
+you can import its libraries and use them in your app.
 
 As with the SDK libraries,
 use the **import** directive to use code from an installed library.
@@ -289,7 +289,7 @@ use the `package:` prefix.
       {% endprettify %}
 
 
-2. In your vector_victor application, edit `lib/vector_victor.dart`,
+2. In your vector_victor app, edit `lib/vector_victor.dart`,
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
    [vector_math API docs](https://pub.dartlang.org/documentation/vector_math/latest/),
