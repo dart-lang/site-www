@@ -532,7 +532,7 @@ doesn't know if any code outside of its view is using it.
 
 ### CONSIDER declaring multiple classes in the same library.
 
-Java and C# tie the organization of files to the organization of
+Some languages, such as Java, tie the organization of files to the organization of
 classes&mdash;each file may only define a single top level class. Dart does not
 have that limitation. Libraries are distinct entities separate from classes.
 It's perfectly fine for a single library to contain multiple classes, top level
