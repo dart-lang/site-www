@@ -927,8 +927,12 @@ You can annotate a named parameter in any Dart code (not just Flutter) with
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
-When a `Scrollbar` is constructed, the analyzer will report an issue if the
+When a `Scrollbar` is constructed, the analyzer reports an issue when the
 `child` argument is absent.
+
+[Required][@required] is defined in the [meta][] package. Import
+`package:meta/meta.dart` directly, or other package that exports `meta` such
+as Flutter's `package:flutter/material.dart`.
 
 #### Optional positional parameters
 
@@ -4142,6 +4146,7 @@ To learn more about Dart's core libraries, see
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[meta]: {{site.pub-pkg}}/meta
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
