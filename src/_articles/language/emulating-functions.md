@@ -1,8 +1,8 @@
 ---
-title: "Emulating Functions in Dart"
-description: "Learn how to define Dart classes that behave like functions."
-written: 2012-01-01
-updated: 2014-02-20
+title: Emulating Functions in Dart
+description: Learn how to define Dart classes that behave like functions.
+original-date: 2012-01-01
+date: 2014-02-20
 category: language
 obsolete: true
 ---
