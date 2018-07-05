@@ -1,9 +1,8 @@
 ---
 title: Serialization in Dart
 description: Choose the serialization strategy that's right for your project.
-written: 2015-02-09
-updated: &date 2017-03-15
-date: *date
+original-date: 2015-02-09
+date: 2017-03-15
 category: libraries
 obsolete: true
 ---
