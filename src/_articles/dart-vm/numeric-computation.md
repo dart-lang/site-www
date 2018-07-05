@@ -1,7 +1,8 @@
 ---
-title: "Numeric Computation"
-description: "How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM."
-written: 2013-05-22
+title: Numeric Computation
+description: How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM.
+written: &date 2013-05-22
+date: *date
 category: dart-vm
 obsolete: true
 ---

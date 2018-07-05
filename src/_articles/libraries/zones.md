@@ -1,9 +1,10 @@
 ---
 title: Zones
 description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
-written: 2014-03-03
+written: &date 2014-03-03
+date: *date
 category: libraries
-css: ["/articles/styles.css"]
+css: [/articles/styles.css]
 obsolete: true
 ---
 

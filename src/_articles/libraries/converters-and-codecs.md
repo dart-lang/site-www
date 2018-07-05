@@ -2,7 +2,8 @@
 title: Converters and Codecs
 description: Learn how to write efficient conversions.
 written: 2014-02-06
-updated: 2015-03-17
+updated: &date 2015-03-17
+date: *date
 category: libraries
 obsolete: true
 ---

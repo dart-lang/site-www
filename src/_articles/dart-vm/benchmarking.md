@@ -1,8 +1,9 @@
 ---
-title: "Benchmarking the Dart VM"
-description: "Learn how to benchmark your applications"
+title: Benchmarking the Dart VM
+description: Learn how to benchmark your applications
 written: 2012-10-01
-updated: 2012-11-01
+updated: &date 2012-11-01
+date: *date
 category: dart-vm
 obsolete: true
 ---
