@@ -930,9 +930,9 @@ const Scrollbar({Key key, [!@required!] Widget child})
 When a `Scrollbar` is constructed, the analyzer reports an issue when the
 `child` argument is absent.
 
-[Required][@required] is defined in the [meta][] package. Import
-`package:meta/meta.dart` directly, or other package that exports `meta` such
-as Flutter's `package:flutter/material.dart`.
+[Required][@required] is defined in the [meta][] package. Either import
+`package:meta/meta.dart` directly, or import another package that exports
+`meta`, such as Flutter's `package:flutter/material.dart`.
 
 #### Optional positional parameters
 
