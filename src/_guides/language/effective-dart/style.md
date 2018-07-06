@@ -174,7 +174,7 @@ class Dice {
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
 {% prettify dart %}
 const PI = 3.14;
-const kDefaultTimeout = 1000;
+const DefaultTimeout = 1000;
 final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
