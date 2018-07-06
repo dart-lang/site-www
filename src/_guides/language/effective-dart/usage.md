@@ -357,6 +357,9 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type.
 
+{% comment %}
+update-for-dart-2
+{% endcomment %}
 <aside class="alert alert-warning" markdown="1">
   **Before using `whereType()`, make sure it's implemented.**
   We expect `whereType()` to be added late in Dart&nbsp;2 development.
