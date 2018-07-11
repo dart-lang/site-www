@@ -107,11 +107,8 @@ and `my_other_other_package`, and file #2 to analyze the code in
 update-for-dart-2
 {% endcomment %}
 
-The analyzer, in Dart SDK releases 2.0.0-dev.68.0 and later,
-uses the [latest Dart type system][sound-dart] by default.
-
-The simplest way to enable Dart 2 semantics in earlier
-dev releases of the Dart 2 SDK is to put
+As of release 2.0.0-dev.68.0, [Dart 2 semantics][sound-dart] are on by default.
+For earlier releases, the simplest way to enable Dart 2 semantics is to put
 `strong-mode: true` in the analysis-options file:
 
 {% prettify yaml %}
@@ -119,7 +116,9 @@ analyzer:
   strong-mode: true
 {% endprettify %}
 
-### Performing additional type checks
+Another way to enable Dart 2 semantics is to enable additional type checks.
+
+## Enabling additional type checks
 
 If you want stricter static checks than
 the [Dart type system][sound-dart] requires,
