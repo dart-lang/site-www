@@ -65,7 +65,8 @@ Here's a sample analysis options file:
 
 {% prettify yaml %}
 analyzer:
-  strong-mode: true
+  strong-mode:
+    implicit-casts: false
   errors:
     todo: ignore
   exclude:
@@ -100,15 +101,14 @@ and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Enabling Dart 2 semantics
+## Enabling Dart 2 semantics (SDK \<2.0.0-dev.68.0) {#enabling-dart-2-semantics}
 
 {% comment %}
 update-for-dart-2
 {% endcomment %}
 
-The analyzer in the Dart SDK doesn't yet use the
-[latest Dart type system][sound-dart], by default.
-The simplest way to enable Dart 2 semantics is to put
+As of release 2.0.0-dev.68.0, [Dart 2 semantics][sound-dart] are on by default.
+For earlier releases, the simplest way to enable Dart 2 semantics is to put
 `strong-mode: true` in the analysis-options file:
 
 {% prettify yaml %}
@@ -116,7 +116,9 @@ analyzer:
   strong-mode: true
 {% endprettify %}
 
-### Performing additional type checks
+Another way to enable Dart 2 semantics is to enable additional type checks.
+
+## Enabling additional type checks
 
 If you want stricter static checks than
 the [Dart type system][sound-dart] requires,
@@ -136,7 +138,6 @@ the Dart 2 type system.
 
 {% comment %}
 **PENDING:
-Do we still require strong-mode: true to make the analyzer using Dart 2 semantics?
 Will these flags still appear under strong-mode in Dart 2.0?
 Should we mention related command-line flags
 (--no-implicit-casts, --no-implicit-dynamic)?**
