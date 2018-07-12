@@ -91,11 +91,11 @@ As a package owner, you need to do the following:
 
 * Follow the migration tips for the platforms that your package supports
   (see above).
+* Make sure your package passes Dart 2 analysis (see 'Run the analyzer' above)
 * Make sure your package's users know how to report issues.
 * Respond quickly to issue reports.
 * If code changes aren't backward compatible,
   update the lower SDK constraint.
-
 
 #### Changes and backward compatibility
 
@@ -107,41 +107,28 @@ or (if an API has been removed) to use an alternative 1.x API.
 If a backward-compatible change isn't possible,
 **update the lower [SDK constraint.][SDK constraints]**
 
-<aside class="alert alert-warning" markdown="1">
-  **Specify SDK constraints carefully!**
-  Incorrect lower constraints can cause problems for users of the stable SDK.
-</aside>
-
 [Test your changes][testing] to make sure that your package works as expected.
-
 
 #### Upper constraints on the SDK version
 
-Don't update an already-published package
-solely to indicate that it can be used with Dart 2 pre-releases.
-As long as a package has either no [SDK constraints][]
-or an upper constraint of `<2.0.0`,
-`pub get` and similar pub commands in any Dart 2 pre-release
-can download the package.
-(The package won't be usable with Dart 2 stable releases,
-but you can fix that later.)
-
-When you update an existing package or publish a new one,
-specify an upper constraint of `<2.0.0` for the SDK version. Examples:
+Once your package passes Dart 2 analysis, please update the upper constraint
+to declare that the package is compatible with Dart 2:
 
 ```yaml
-# Works in 1.20.1+; might work in 2.0.0-dev:
-sdk: '>=1.20.1 <2.0.0'
+# Works in Dart 1, build 20.1+ and forward, and works in Dart 2
+sdk: '>=1.20.1 <3.0.0'
 
-# Backward incompatible change requires at least 2.0.0-dev.1.2:
-sdk: '>=2.0.0-dev.1.2 <2.0.0'
+# Works in Dart 2 only, starting with Dart 2 dev build 61
+sdk: '>=2.0.0-dev.61.0 <3.0.0'
 ```
 
-Eventually, you'll need to publish new versions of your packages to
-declare Dart 2 compatibility, most likely using a `<3.0.0` SDK constraint.
-Because incompatible changes might occur in any Dart 2 pre-release,
-don't declare Dart 2 compatibility until we announce that it's safe to do so.
-
+<aside class="alert alert-warning" markdown="1">
+Packages that declare an upper constraint of `<2.0.0` can still be consumed by
+Dart 2 dev builds, as those have lax upper constraint checking. However,
+once Dart 2 ships on the stable channel, those constraints will no longer
+resolve, and only packages that declare an upper constraint of `<3.0.0` will
+work with Dart 2.
+</aside>
 
 ## More resources
 
