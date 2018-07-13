@@ -3027,7 +3027,7 @@ and the dynamic type of the receiver has an implemention of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[nosuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 
 
 <a id="enums"></a>
