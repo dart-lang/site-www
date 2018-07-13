@@ -3,7 +3,7 @@ import 'dart:math';
 
 // #docregion const-names
 const PI = 3.14;
-const kDefaultTimeout = 1000;
+const DefaultTimeout = 1000;
 final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
