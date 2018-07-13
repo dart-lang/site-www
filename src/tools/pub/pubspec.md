@@ -262,7 +262,7 @@ separate top-level `environment` field in the pubspec and uses the same
 dependencies.
 
 For example, the following constraint says that this package
-works with any **Dart 2** SDK that's version 2.0.0-dev.66.0 or higher:
+works with any **Dart 2** SDK that's version 2.0.0-dev.67.0 or higher:
 
 {% prettify yaml %}
 environment:
