@@ -91,7 +91,7 @@ As a package owner, you need to do the following:
 
 * Follow the migration tips for the platforms that your package supports
   (see above).
-* Make sure your package passes Dart 2 analysis (see 'Run the analyzer' above)
+* Make sure your package passes Dart 2 analysis (see **Run the analyzer** above)
 * Make sure your package's users know how to report issues.
 * Respond quickly to issue reports.
 * If code changes aren't backward compatible,
@@ -112,11 +112,11 @@ If a backward-compatible change isn't possible,
 <a id="upper-constraint"></a>
 #### Upper constraints on the SDK version
 
-Once your package passes Dart 2 analysis, please update the upper constraint
+Once your package passes Dart 2 analysis, update the upper constraint
 to declare that the package is compatible with Dart 2:
 
 ```yaml
-# Works in Dart 1, build 20.1+ and forward, and works in Dart 2
+# Works in Dart 1 (starting with 1.20.1), and works in Dart 2
 sdk: '>=1.20.1 <3.0.0'
 
 # Works in Dart 2 only, starting with Dart 2 dev build 61
@@ -127,8 +127,8 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 Packages that declare an upper constraint of `<2.0.0` can still be consumed by
 Dart 2 dev builds, as those have lax upper constraint checking. However,
 once Dart 2 ships on the stable channel, those constraints will no longer
-resolve, and only packages that declare an upper constraint of `<3.0.0` will
-work with Dart 2.
+resolve, and **only packages that declare an upper constraint of `<3.0.0` will
+work with Dart 2**.
 </aside>
 
 ## More resources
