@@ -262,22 +262,22 @@ separate top-level `environment` field in the pubspec and uses the same
 dependencies.
 
 For example, the following constraint says that this package
-works with any 1.x Dart SDK that's version 1.23.0 or higher:
+works with any **Dart 2** SDK that's version 2.0.0-dev.66.0 or higher:
 
 {% prettify yaml %}
 environment:
-  sdk: '>=1.23.0 <2.0.0'
+  sdk: '>=2.0.0-dev.67.0 <3.0.0'
 {% endprettify %}
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
 <aside class="alert alert-warning" markdown="1">
-**Don't use caret syntax** (`^`) for the SDK constraint,
-and **do include an upper bound** (`<2.0.0`, usually).
-Packages that break these rules might stop working in the future
-and, for that reason, might not be allowed on pub.dartlang.org.
-For more information, see [Dart 2 Updates.](/dart-2)
+  **Don't use caret syntax** (`^`) for the SDK constraint,
+  and **do include an upper bound** (`<3.0.0`, usually).
+  Packages that break these rules might stop working in the future
+  and, for that reason, might not be allowed on pub.dartlang.org.
+  For more information, see [Dart 2 Updates.](/dart-2)
 </aside>
 
 
