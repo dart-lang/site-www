@@ -40,8 +40,7 @@ The Dart language, libraries, build system, and web development tools have chang
   * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
 
 
-<a id="migration"></a>
-## Migrating your code
+## Migrating your code {#migration}
 
 First, see the migration guide for your platform:
 
@@ -109,8 +108,7 @@ If a backward-compatible change isn't possible,
 
 [Test your changes][testing] to make sure that your package works as expected.
 
-<a id="upper-constraint"></a>
-#### Upper constraints on the SDK version
+#### Upper constraints on the SDK version {#upper-constraint}
 
 Once your package passes Dart 2 analysis, update the upper constraint
 to declare that the package is compatible with Dart 2:
@@ -124,19 +122,17 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 ```
 
 <aside class="alert alert-warning" markdown="1">
-Packages that declare an upper constraint of `<2.0.0` can still be consumed by
-Dart 2 dev builds, as those have lax upper constraint checking. However,
-once Dart 2 ships on the stable channel, those constraints will no longer
-resolve, and **only packages that declare an upper constraint of `<3.0.0` will
-work with Dart 2**.
+  Packages that declare an upper constraint of `<2.0.0` can still be consumed by
+  Dart 2 dev builds, as those have lax upper constraint checking. However,
+  once Dart 2 ships on the stable channel, those constraints will no longer
+  resolve, and **only packages that declare an upper constraint of `<3.0.0` will
+  work with Dart 2**.
 </aside>
 
 ## More resources
 
-{% comment %} update-for-dart-2
-  * [DartPad][]
-  * [Dart 2 changes][] section of the [Dart Language Specification][] page
-{% endcomment %}
+* [DartPad](/tools/dartpad)
+* [Dart 2 changes][] section of the [Dart Language Specification][] page
 * [About Dart SDK release channels and version strings][pre-release]
 * [SDK constraints][]
 
@@ -160,7 +156,6 @@ work with Dart 2**.
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
-[DartPad]: {{site.custom.dartpad.direct-link}}
 [enable strong mode]: /guides/language/analysis-options#enabling-dart-2-semantics
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Dart-2-Migration

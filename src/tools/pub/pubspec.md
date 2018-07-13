@@ -1,7 +1,5 @@
 ---
-layout: default
-permalink: /tools/pub/pubspec
-title: "Pubspec Format"
+title: Pubspec Format
 ---
 
 Every [pub](/tools/pub) package needs some metadata so it can specify its
@@ -288,7 +286,7 @@ pub supports Flutter SDK constraints under the `environment:` field, like so:
 
 {% prettify yaml %}
 environment:
-  sdk: '>=1.19.0 <2.0.0'
+  sdk: '>=1.19.0 <3.0.0'
   flutter: ^0.1.2
 {% endprettify %}
 
