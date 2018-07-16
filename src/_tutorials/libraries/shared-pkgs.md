@@ -58,7 +58,8 @@ with valid pubspec.yaml files and directory structures.
 Stagehand works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
-Install Stagehand using [pub global activate](/tools/pub/cmd/pub-global):
+Install or update Stagehand using
+[pub global activate](/tools/pub/cmd/pub-global):
 
 ```terminal
 $ pub global activate stagehand
@@ -93,7 +94,7 @@ name: vector_victor
 description: A sample command-line application.
 
 environment:
-  sdk: '>=2.0.0-dev.66.0 <3.0.0'
+  sdk: '>=2.0.0-dev.68.0 <3.0.0'
 
 #dependencies:
 #  path: ^1.4.1
@@ -143,7 +144,7 @@ which is available at pub.dartlang.org.
 
    <pre class="prettyprint lang-yaml">
    environment:
-     sdk: '>=2.0.0-dev.66.0 <3.0.0'
+     sdk: '>=2.0.0-dev.68.0 <3.0.0'
 
    dependencies:
      vector_math: ^2.0.7
