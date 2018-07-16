@@ -228,6 +228,24 @@ Db
 {% endprettify %}
 
 
+### DON’T use prefix letters to indicate type, mutability, or scope.
+
+The type system can tell you all about these for any identifier,
+so there's no need to use
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation)
+or any other prefix scheme to encode this information.
+
+{:.good-style}
+{% prettify dart %}
+defaultTimeout
+{% endprettify %}
+
+{:.bad-style}
+{% prettify dart %}
+kDefaultTimeout
+{% endprettify %}
+
+
 ## Ordering
 
 To keep the preamble of your file tidy, we have a prescribed order that
