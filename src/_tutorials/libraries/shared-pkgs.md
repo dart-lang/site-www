@@ -94,7 +94,7 @@ name: vector_victor
 description: A sample command-line application.
 
 environment:
-  sdk: '>=2.0.0-dev.68.0 <3.0.0'
+  sdk: '>=2.0.0-dev.69.0 <3.0.0'
 
 #dependencies:
 #  path: ^1.4.1
@@ -144,7 +144,7 @@ which is available at pub.dartlang.org.
 
    <pre class="prettyprint lang-yaml">
    environment:
-     sdk: '>=2.0.0-dev.68.0 <3.0.0'
+     sdk: '>=2.0.0-dev.69.0 <3.0.0'
 
    dependencies:
      vector_math: ^2.0.7
