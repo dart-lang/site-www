@@ -42,7 +42,6 @@ in a well-built package.
   your Flutter and web or server-side apps.
   For more information, see the
   [Flutter package documentation.](https://flutter.io/using-packages/)
-
 </aside>
 
 
@@ -62,14 +61,14 @@ Install or update Stagehand using
 [pub global activate](/tools/pub/cmd/pub-global):
 
 ```terminal
-$ pub global activate stagehand
+> pub global activate stagehand
 ```
 
 Now run the `stagehand` command to see what kinds of template files
 it can generate:
 
 ```terminal
-$ stagehand
+> stagehand
 ```
 
 You'll see a list of generators, including various web and server-side apps.
@@ -79,9 +78,9 @@ In a new directory named `vector_victor`,
 use Stagehand to generate a command-line app:
 
 ```terminal
-$ mkdir vector_victor
-$ cd vector_victor
-$ stagehand console-full
+> mkdir vector_victor
+> cd vector_victor
+> stagehand console-full
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -89,22 +88,19 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-<pre class="prettyprint lang-yaml">
-name: vector_victor
-description: A sample command-line application.
+{% prettify yaml %}
+  name: vector_victor
+  description: A sample command-line application.
 
-environment:
-  sdk: '>=2.0.0-dev.69.0 <3.0.0'
+  environment:
+    sdk: '>=2.0.0-dev.69.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.4.1
+  #dependencies:
+  #  path: ^1.4.1
 
-dev_dependencies:
-  test: ^1.0.0
-</pre>
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+  dev_dependencies:
+    test: ^1.0.0
+{% endprettify %}
 
 
 ## Name the package dependencies
@@ -121,37 +117,35 @@ Let's make the vector_victor app have a dependency
 on the vector_math package,
 which is available at pub.dartlang.org.
 
-1. Get the current installation details for the package:
+ 1. Get the current installation details for the package:
 
-   {: type="a"}
-   1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
-   2. Click the **Installing** tab.
-   3. Copy the **vector_math** line from the sample **dependencies** entry.
-      The entry should look something like this:
+    {: type="a"}
+     1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
+     2. Click the **Installing** tab.
+     3. Copy the **vector_math** line from the sample **dependencies** entry.
+        The entry should look something like this:
 
-      {% prettify yaml %}
+        {% prettify yaml %}
+          dependencies:
+            vector_math: ^2.0.7
+        {% endprettify %}
+
+ 2. Edit `pubspec.yaml`.
+
+ 3. In the dependencies section, add the string you copied from
+    pub.dartlang.org. Be careful to keep the indentation the same; YAML is
+    picky! For example:
+
+    {% prettify yaml %}
+      environment:
+        sdk: '>=2.0.0-dev.69.0 <3.0.0'
+
       dependencies:
         vector_math: ^2.0.7
-      {% endprettify %}
 
-2. Edit `pubspec.yaml`.
-
-3. In the dependencies section,
-   add the string you copied from pub.dartlang.org.
-   Be careful to keep the indentation the same;
-   YAML is picky!
-   For example:
-
-   <pre class="prettyprint lang-yaml">
-   environment:
-     sdk: '>=2.0.0-dev.69.0 <3.0.0'
-
-   dependencies:
-     vector_math: ^2.0.7
-
-   dev_dependencies:
-     test: ^1.0.0
-   </pre>
+      dev_dependencies:
+        test: ^1.0.0
+    {% endprettify %}
 
 See [Pub Versioning Philosophy](/tools/pub/versioning)
 for details of what version numbers mean,
@@ -174,7 +168,7 @@ If not, do it yourself by running
 [pub get](/tools/pub/cmd/pub-get):
 
 ```terminal
-$ pub get
+> pub get
 Resolving dependencies...
 + vector_math 2.0.7
 Changed 1 dependency!
@@ -297,8 +291,8 @@ use the `package:` prefix.
    which you can find from the pub.dartlang.org entry.
 
    <aside class="alert alert-info" markdown="1">
-   **Note:** You specify a filename, not a library name,
-   when you import a library from a package.
+     **Note:** You specify a filename, not a library name,
+     when you import a library from a package.
    </aside>
 
 
