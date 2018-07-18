@@ -8,7 +8,7 @@ Environment variables allow you to customize pub to suit your needs.
 
 `PUB_CACHE`
 : Some of pub's dependencies are downloaded to the pub cache.
-  By default, this directory is located under `.pub_cache`
+  By default, this directory is located under `.pub-cache`
   in your home directory (on Mac and Linux),
   or in `%APPDATA%\Pub\Cache` (on Windows). (The precise location of the
   cache may vary depending on the Windows version.)
