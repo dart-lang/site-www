@@ -182,7 +182,7 @@ Any tools or executables that you create during development that aren't for
 public use go into the `tool` directory.
 
 Other files that are required if you publish your library to
-pub.dartlang.com, such as a README and a CHANGELOG, are
+pub.dartlang.org, such as a README and a CHANGELOG, are
 described in [Publishing a Package](/tools/pub/publishing).
 Also see
 [Pub Package Layout Conventions](/tools/pub/package-layout)
