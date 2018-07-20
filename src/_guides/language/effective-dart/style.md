@@ -228,6 +228,25 @@ Db
 {% endprettify %}
 
 
+### DON’T use prefix letters
+
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
+other schemes arose in the time of BCPL, when the compiler didn't do much to
+help you understand your code. Because Dart can tell you the type, scope,
+mutability, and other properties of your declarations, there's no reason to
+encode those properties in identifier names.
+
+{:.good-style}
+{% prettify dart %}
+defaultTimeout
+{% endprettify %}
+
+{:.bad-style}
+{% prettify dart %}
+kDefaultTimeout
+{% endprettify %}
+
+
 ## Ordering
 
 To keep the preamble of your file tidy, we have a prescribed order that
