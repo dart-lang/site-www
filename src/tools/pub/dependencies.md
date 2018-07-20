@@ -314,7 +314,7 @@ to process it. For example:
 
 {% prettify yaml %}
 environment:
-  sdk: '>=1.8.3 <2.0.0'
+  sdk: '>=1.8.3 <3.0.0'
 {% endprettify %}
 
 ## Dev dependencies
