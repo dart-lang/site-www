@@ -76,9 +76,8 @@ from either Dart 1.x or an earlier version of Dart 2.
    * Do manual testing, and look for console errors.
    Consider adding automated tests to catch issues that you find.
 7. **Fix issues until your code works.**
-8. _Optional:_ Remove `new` and unnecessary `const`.
-   * Flutter: [PENDING]
-   * Dart VM or web: `dartfmt --fix`
+8. _Optional:_ **Remove `new` and unnecessary `const`.** You can do this
+   by hand or use a tool such as `dartfmt --fix`.
 
 Each time the SDK has a significant release, repeat the process.
 
