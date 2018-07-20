@@ -228,12 +228,13 @@ Db
 {% endprettify %}
 
 
-### DON’T use prefix letters to indicate type, mutability, or scope.
+### DON’T use prefix letters
 
-The type system can tell you all about these for any identifier,
-so there's no need to use
-[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation)
-or any other prefix scheme to encode this information.
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
+other schemes arose in the time of BCPL, when the compiler didn't do much to
+help you understand your code. Because Dart can tell you the type, scope,
+mutability, and other properties of your declarations, there's no reason to
+encode those properties in identifier names.
 
 {:.good-style}
 {% prettify dart %}
