@@ -511,7 +511,7 @@ You can create a “raw” string by prefixing it with `r`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 {% prettify dart %}
-var s = r'In a raw string, even \n isn't special.';
+var s = r'In a raw string, not even \n gets special treatment.';
 {% endprettify %}
 
 See [Runes](#runes) for details on how to express Unicode

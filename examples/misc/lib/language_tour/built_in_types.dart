@@ -34,7 +34,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion raw-strings
-    var s = r"In a raw string, even \n isn't special.";
+    var s = r'In a raw string, not even \n gets special treatment.';
     // #enddocregion raw-strings
   }
 
