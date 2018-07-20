@@ -190,7 +190,7 @@ with that URL. If provided, a link to it is shown on your package's page.
 
 If you specify the `documentation:` field with a blank value,
 documentation is created automatically for you, and is linked to from
-[pub.dartlang.com](https://pub.dartlang.org/).
+[pub.dartlang.org]({{site.pub}}).
 
 ### Dependencies
 
