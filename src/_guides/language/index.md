@@ -35,7 +35,7 @@ These two resources are popular with both beginning Dartisans and experts.
 </ul>
 
 <li markdown="1"> [Customize Static Analysis](/guides/language/analysis-options)<br>
-    A guide on customizing the analyzer using an analysis_options file.
+    A guide on customizing the analyzer using an analysis options file.
 </li>
 
 <li markdown="1">Asynchronous programming
