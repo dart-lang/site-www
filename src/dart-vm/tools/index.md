@@ -1,11 +1,11 @@
 ---
-title: Dart VM Tools
+title: Tools for Server-Side Development
 description: The tools that you get when you download the Dart SDK.
 toc: false
 ---
 
 When you install the [Dart SDK](/tools/sdk), you get all the command-line tools
-that you need to write Dart scripts and servers.
+that you need to write Dart servers and command-line scripts.
 
 The following tools have special support for running scripts and servers.
 

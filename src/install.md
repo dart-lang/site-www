@@ -34,10 +34,8 @@ Install the SDK for your platform.
 [DartPad]: {{site.custom.dartpad.direct-link}}
 [Dart install]: /tools/sdk#install
 [Dart logo]: {% asset_path 'shared/dart/logo/default.svg' %}
-[Dart VM]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}
 [Flutter install]: {{site.flutter}}/setup/
 [Flutter logo]: {% asset_path 'shared/flutter/logo/square.svg' %}
-[Web]: {{site.webdev}}
 [Web install]: {{site.webdev}}/tools/sdk#install {% comment %}FIXME: use site.webdev once the sites switch servers{% endcomment %}
 [Web logo]: {% asset_path 'shared/angular/icon/default.svg' %}

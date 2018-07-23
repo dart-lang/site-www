@@ -13,7 +13,7 @@ get the SDK and tools for your app type.
 |------------|-----------------------------------|--------------------------|
 | Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools](https://flutter.io/using-ide/) |
 | Web    | [Install the Dart SDK]({{site.webdev}}/tools/sdk) | [Dart tools for the web]({{site.webdev}}/tools) |
-| Script or server | [Install the Dart SDK](/tools/sdk) | [Dart VM tools](/dart-vm/tools) |
+| Script or server | [Install the Dart SDK](/tools/sdk) | [Tools for server-side development](/dart-vm/tools) |
 {:.table .table-striped}
 
 The rest of this page covers general-purpose tools that

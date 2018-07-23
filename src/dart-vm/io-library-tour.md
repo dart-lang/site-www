@@ -274,8 +274,8 @@ provides APIs for [processes,][Process] [sockets,][Socket] and
 [web sockets.][WebSocket]
 To find more examples of using dart:io, go to the
 [dart-samples repo.](https://github.com/dart-lang/dart-samples)
-For more information about the Dart VM, see the
-[VM overview.](/dart-vm)
+For more information about server-side and command-line app development, see the
+[server-side Dart overview.](/dart-vm)
 
 For information on other dart:* libraries, see the
 [library tour.][library tour]

@@ -61,13 +61,13 @@ from either Dart 1.x or an earlier version of Dart 2.
    * [Dart SDK instructions][Dart SDK install] (VM or web)
 2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
-   * Dart VM or web: [`pub upgrade`][pub upgrade]
+   * Server-side or web: [`pub upgrade`][pub upgrade]
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
    * Flutter: [`flutter analyze`][Flutter analyzer]
-   * Dart VM or web: [`dartanalyzer`][dartanalyzer] with
+   * Server-side or web: [`dartanalyzer`][dartanalyzer] with
      [Dart 2 semantics][enable strong mode]
 5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
