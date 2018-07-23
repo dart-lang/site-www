@@ -76,8 +76,11 @@ from either Dart 1.x or an earlier version of Dart 2.
    * Do manual testing, and look for console errors.
    Consider adding automated tests to catch issues that you find.
 7. **Fix issues until your code works.**
-8. _Optional:_ **Remove `new` and unnecessary `const`.** You can do this
-   by hand or use a tool such as `dartfmt --fix`.
+8. _Optional:_ **Remove `new` and unnecessary `const`.**
+   * You can remove these by hand or use a tool such as `dartfmt --fix`.
+   * To find occurrences of `new` and unnecessary `const`, add the rules
+     `unnecessary_new` and `unnecessary_const` to the `linter` section of your
+     [analysis options file][].
 
 Each time the SDK has a significant release, repeat the process.
 
@@ -139,6 +142,7 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 * [About Dart SDK release channels and version strings][pre-release]
 * [SDK constraints][]
 
+[analysis options file]: /guides/language/analysis-options#the-analysis-options-file
 [dartdevc]: {{site.webdev}}/tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing

@@ -1,6 +1,6 @@
 ---
 title: Customize Static Analysis
-description: Customize static analysis using the analysis_options file.
+description: Customize static analysis using an analysis options file.
 ---
 
 Static analysis allows you to find problems before
@@ -54,11 +54,14 @@ Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
 <aside class="alert alert-warning" markdown="1">
-**Breaking change:** The conventional name for the analysis options file
-used to be `.analysis_options` (note the leading dot and missing `.yaml` suffix).
-We expect support for the `.analysis_options` name to go away in a future
-release, so we recommend that you **rename your `.analysis_options` files to
-`analysis_options.yaml`.**
+  **Breaking change:** The conventional name for the analysis options file
+  used to be `.analysis_options` (note the leading dot and missing `.yaml` suffix).
+  We expect support for the `.analysis_options` name to go away in a future
+  release, so we recommend that you **rename your `.analysis_options` files to
+  `analysis_options.yaml`.**
+  {% comment %}
+  Tracking issue: https://github.com/dart-lang/sdk/issues/28385
+  {% endcomment %}
 </aside>
 
 Here's a sample analysis options file:
@@ -78,6 +81,8 @@ linter:
     - avoid_empty_else
     - cancel_subscriptions
     - close_sinks
+    - unnecessary_const
+    - unnecessary_new
 {% endprettify %}
 
 YAML is sensitive to whitespace&mdash;don't use tabs in a YAML file,
