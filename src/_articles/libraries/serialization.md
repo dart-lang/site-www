@@ -8,16 +8,18 @@ obsolete: true
 ---
 
 <aside class="alert alert-info" markdown="1">
-**Note:** This article is a bit outdated. Its general information and approach
-are still useful, but it doesn't cover new software such as the
-[built_value package](https://pub.dartlang.org/packages/built_value).
-For more up-to-date information and discussion of Dart serialization
-solutions, see the unofficial repo
-[matanlurey/dart_serialize_proposals](https://github.com/matanlurey/dart_serialize_proposal).
+  **Note:** This article is a bit outdated. Its general information and approach
+  are still useful, but it doesn't cover new software such as the
+  [built_value](https://pub.dartlang.org/packages/built_value) and 
+  [json_serializable](https://pub.dartlang.org/packages/json_serializable)
+  packages.
+  For more up-to-date information and discussion of Dart serialization
+  solutions, see the unofficial repo
+  [matanlurey/dart_serialize_proposal.](https://github.com/matanlurey/dart_serialize_proposal)
 </aside>
 
 _Written by Nicolas Garnier<br>
-February 2015 (note added March 2017)_
+February 2015 (note updated July 2018)_
 
 Being able to serialize and deserialize objects is a common task in web apps.
 Here are a few typical cases of using serialization:
