@@ -1,12 +1,12 @@
 ---
-title: Get Started with the Dart VM
+title: Get Started with Server-Side Dart
 description: Get Dart and run a Dart app.
 nextpage:
   url: /tutorials/dart-vm/cmdline
   title: Write Command-Line Apps
 prevpage:
   url: /tutorials/dart-vm
-  title: Dart VM Tutorials
+  title: Server-Side Dart Tutorials
 ---
 
 <div class="mini-toc" markdown="1">

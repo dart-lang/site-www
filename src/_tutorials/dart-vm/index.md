@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Dart VM Tutorials"
-description: "The Dart VM Tutorials&mdash;Your guide to building great apps."
+title: "Server-Side Dart Tutorials"
+description: "The server-side Dart tutorials show how to develop scripts and server apps for the standalone Dart VM."
 permalink: /tutorials/dart-vm
 toc: false
 

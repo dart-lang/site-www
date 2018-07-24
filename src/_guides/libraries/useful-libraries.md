@@ -86,13 +86,13 @@ JavaScript APIs, and the dart:html library for low-level HTML programming.
 
 **Learn more:** [webdev.dartlang.org]({{site.webdev}})
 
-### Dart VM libraries
+### Server-side libraries
 
 If you write servers or command-line applications, check out
 [dart:io](https://api.dartlang.org/stable/dart-io/dart-io-library.html)
 and related libraries.
 
-**Learn more:** [Dart VM]({{site.dart_vm}})
+**Learn more:** [server-side Dart]({{site.dart_vm}})
 
 ### Flutter libraries
 

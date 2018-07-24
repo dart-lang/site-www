@@ -11,7 +11,7 @@ Also see:
 
 * [Effective Dart](/guides/language/effective-dart)
 * [Tutorials](/tutorials)
-* [Articles about the Dart VM](/articles/dart-vm)
+* [Articles about server-side Dart](/articles/dart-vm)
 * [Articles about webdev]({{site.webdev}}/articles)
 
 {% include article_index_warning.md %}

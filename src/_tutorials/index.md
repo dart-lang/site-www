@@ -52,7 +52,7 @@ Organize and share code at
 
 ## More tutorials
 
-* [Dart VM Tutorials](/tutorials/dart-vm)
-* [Web Tutorials]({{site.webdev}}/tutorials)
+* [Server-side Dart tutorials](/tutorials/dart-vm)
+* [Web tutorials]({{site.webdev}}/tutorials)
 * [Dart Academy](https://dart.academy)
 

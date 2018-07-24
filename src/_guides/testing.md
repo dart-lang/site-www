@@ -51,7 +51,7 @@ encounter when using Dart technologies:
 ## Generally useful libraries
 
 Although your tests partly depend on the platform your code is intended
-for&mdash;Flutter, the Dart VM, or Angular Dart, for example&mdash;the
+for&mdash;Flutter, the web, or server-side, for example&mdash;the
 following packages are useful across Dart platforms:
 
 * [package:test](https://pub.dartlang.org/packages/test)<br>
