@@ -1,1 +1,1 @@
-../site-shared/tool/serve.sh
+shared/serve.sh
