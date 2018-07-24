@@ -5,6 +5,7 @@ url: https://www.dartlang.org
 dev-url: https://dartlang-org-dev.firebaseapp.com
 repo: https://github.com/dart-lang/site-www
 branch: master
+port: 4000
 
 # Global variables
 # use case:

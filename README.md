@@ -80,7 +80,7 @@ To view the generated site open [localhost:4000](http://localhost:4000) in a bro
 
 You can build, serve, and have a watcher for changes by running the following command:
 
-- `./scripts/serve_local.sh`
+- `./scripts/serve.sh`
 
 ## Pre-push checks
 
