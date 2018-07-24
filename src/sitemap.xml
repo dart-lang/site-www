@@ -14,7 +14,7 @@ sitemap: false
     {%- if page.sitemap.lastmod -%}
       {{ page.sitemap.lastmod | date: "%Y-%m-%d" }}
     {%- else -%}
-      {{ page.date | default: site.time | date_to_xmlschema }}
+      {{ site.now | default: page.date | default: site.time | date_to_xmlschema }}
     {%- endif -%}
   </lastmod>
   <changefreq>{{ page.sitemap.changefreq | default: 'monthly' }}</changefreq>

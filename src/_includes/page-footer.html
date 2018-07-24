@@ -24,7 +24,7 @@
                  href="{{site.repo | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
                  title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
                  {% else %}
-                 title="Site built on {{site.time | date: dateFormat}}"
+                 title="Site built on {{site.now | default: site.time | date: dateFormat}}"
                  {% endif %}
                  class="no-automatic-external"><i class="material-icons">build</i></a>
             </li>
