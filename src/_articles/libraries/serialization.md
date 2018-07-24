@@ -7,14 +7,14 @@ category: libraries
 obsolete: true
 ---
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** This article is a bit outdated. Its general information and approach
+<aside class="alert alert-warning" markdown="1">
+  This article's general information and approach
   are still useful, but it doesn't cover new software such as the
   [built_value](https://pub.dartlang.org/packages/built_value) and 
   [json_serializable](https://pub.dartlang.org/packages/json_serializable)
   packages.
-  For more up-to-date information and discussion of Dart serialization
-  solutions, see the unofficial repo
+  A more up-to-date discussion of Dart serialization solutions is
+  in the unofficial repo
   [matanlurey/dart_serialize_proposal.](https://github.com/matanlurey/dart_serialize_proposal)
 </aside>
 
