@@ -197,29 +197,6 @@ void miscDeclAnalyzedButNotTested() {
           ..addAll(chest.contents);
     // #enddocregion arrow-long
   };
-
-  // #docregion no-new
-  Widget build(BuildContext context) {
-    return new Row(
-      children: [
-        new RaisedButton(
-          child: new Text('Increment'),
-        ),
-        new Text('Click!'),
-      ],
-    );
-  }
-  // #enddocregion no-new
-
-  {
-    // #docregion no-const
-    const primaryColors = const [
-      const Color("red", const [255, 0, 0]),
-      const Color("green", const [0, 255, 0]),
-      const Color("blue", const [0, 0, 255]),
-    ];
-    // #enddocregion no-const
-  }
 }
 
 //----------------------------------------------------------------------------
@@ -395,4 +372,32 @@ class View extends ViewBase {
       : super(style),
         _children = children;
   // #enddocregion super-first
+}
+
+//----------------------------------------------------------------------------
+// ignore_for_file: unnecessary_const, unnecessary_new
+
+void unnecessaryNewOrConst() {
+  // #docregion no-new
+  Widget build(BuildContext context) {
+    return new Row(
+      children: [
+        new RaisedButton(
+          child: new Text('Increment'),
+        ),
+        new Text('Click!'),
+      ],
+    );
+  }
+  // #enddocregion no-new
+
+  {
+    // #docregion no-const
+    const primaryColors = const [
+      const Color("red", const [255, 0, 0]),
+      const Color("green", const [0, 255, 0]),
+      const Color("blue", const [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+  }
 }
