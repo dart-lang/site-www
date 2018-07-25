@@ -35,4 +35,6 @@ linter:
     - type_init_formals
     - unnecessary_brace_in_string_interps
     - unnecessary_getters_setters
+    - unnecessary_const
+    - unnecessary_new
     - unrelated_type_equality_checks
