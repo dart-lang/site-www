@@ -3,13 +3,18 @@ title: Using SIMD in Dart
 description: "Get more out of your CPU: operate on four numbers in parallel, using the Float32x4 class from the dart:typed_data library."
 date: 2013-08-02
 category: dart-vm
-obsolete: true
 ---
 
 _Written by John McCutchan <br>
 August 2013_
 
-Programs written in Dart can use new numeric types
+<aside class="alert alert-info" markdown="1">
+  As of July 2018, this article's content is still correct.
+  However, the examples haven't been tested recently,
+  and they use the now-optional `new` keyword.
+</aside>
+
+Programs written in Dart can use numeric types
 that take advantage of
 [Single Instruction Multiple Data (SIMD)](http://en.wikipedia.org/wiki/SIMD)
 instruction sets.
