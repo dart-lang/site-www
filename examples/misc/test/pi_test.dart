@@ -1,4 +1,4 @@
-@Tags(['browser'])
+@Tags(const ['browser']) // ignore: unnecessary_const
 @TestOn('browser')
 import 'dart:html';
 import 'package:test/test.dart';

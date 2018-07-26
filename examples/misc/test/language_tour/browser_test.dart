@@ -1,4 +1,4 @@
-@Tags(['browser'])
+@Tags(const ['browser']) // ignore: unnecessary_const
 @TestOn('browser')
 // #docregion dart-html-import
 import 'dart:html';
