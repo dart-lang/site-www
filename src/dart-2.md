@@ -141,6 +141,9 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 * [Dart 2 changes][] section of the [Dart Language Specification][] page
 * [About Dart SDK release channels and version strings][pre-release]
 * [SDK constraints][]
+* [Updating your pub package to Dart 2,][]
+  an article that includes tips for updating your code and
+  using Travis to perform continuous integration (CI) testing
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
 [dartdevc]: {{site.webdev}}/tools/dartdevc
@@ -175,5 +178,6 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
 [testing]: /guides/testing
+[Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: {{site.webdev}}/dart-2
