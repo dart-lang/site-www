@@ -21,6 +21,8 @@ linter:
     - list_remove_unrelated_type
     - test_types_in_equals
     - throw_in_finally
+    - unnecessary_const
+    - unnecessary_new
     - unrelated_type_equality_checks
     - valid_regexps
 

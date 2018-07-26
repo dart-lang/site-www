@@ -36,8 +36,8 @@ void main() {
 
   test('object-creation-new', () {
     // #docregion object-creation-new
-    var p1 = new Point(2, 2);
-    var p2 = new Point.fromJson({'x': 1, 'y': 2});
+    var p1 = new Point(2, 2); // ignore: unnecessary_new
+    var p2 = new Point.fromJson({'x': 1, 'y': 2}); // ignore: unnecessary_new
     // #enddocregion object-creation-new
     expect(p1.y, p2.y);
   });
@@ -82,26 +82,6 @@ void main() {
     }
 
     expect(_test, m.prints('The type of a is ImmutablePoint'));
-  });
-
-  test('const_context', () {
-    // #docregion const-context-withconst
-    // Lots of const keywords here.
-    const pointAndLine1 = const {
-      'point': const [const ImmutablePoint(0, 0)],
-      'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
-    };
-    // #enddocregion const-context-withconst
-
-    // #docregion const-context-noconst
-    // Only one const, which establishes the constant context.
-    const pointAndLine2 = {
-      'point': [ImmutablePoint(0, 0)],
-      'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
-    };
-    // #enddocregion const-context-noconst
-
-    expect(pointAndLine1 == pointAndLine2, isTrue);
   });
 
   test('point_with_main', () {
@@ -181,5 +161,26 @@ void main() {
 
   test('point_with_distance_method', () {
     expect(point_with_distance_method.main, prints(startsWith('2.82')));
+  });
+
+  // ignore_for_file: unnecessary_const
+  test('const_context', () {
+    // #docregion const-context-withconst
+    // Lots of const keywords here.
+    const pointAndLine1 = const {
+      'point': const [const ImmutablePoint(0, 0)],
+      'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-withconst
+
+    // #docregion const-context-noconst
+    // Only one const, which establishes the constant context.
+    const pointAndLine2 = {
+      'point': [ImmutablePoint(0, 0)],
+      'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
+    };
+    // #enddocregion const-context-noconst
+
+    expect(pointAndLine1 == pointAndLine2, isTrue);
   });
 }
