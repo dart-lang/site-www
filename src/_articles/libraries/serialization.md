@@ -7,6 +7,9 @@ category: libraries
 obsolete: true
 ---
 
+_Written by Nicolas Garnier<br>
+February 2015 (note updated July 2018)_
+
 <aside class="alert alert-warning" markdown="1">
   This article's general information and approach
   are still useful, but it doesn't cover new software such as the
@@ -17,9 +20,6 @@ obsolete: true
   in the unofficial repo
   [matanlurey/dart_serialize_proposal.](https://github.com/matanlurey/dart_serialize_proposal)
 </aside>
-
-_Written by Nicolas Garnier<br>
-February 2015 (note updated July 2018)_
 
 Being able to serialize and deserialize objects is a common task in web apps.
 Here are a few typical cases of using serialization:
