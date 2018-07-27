@@ -2,23 +2,22 @@
 title: Benchmarking the Dart VM
 description: Learn how to benchmark your applications
 original-date: 2012-10-01
-date: 2012-11-01
+date: 2018-07-26
 category: dart-vm
 obsolete: true
 ---
 
 _Written by John McCutchan <br>
-October 2012 (updated November 2012)_
+October 2012 (updated November 2012; note updated July 2018)_
 
-{% comment %}
-update-for-dart-2.0
-{% endcomment %}
-
-<aside class="alert alert-info" markdown="1">
-**Note:**
-This article was initially targeted for the standalone VM under the
-1.x Dart SDK.  It does not reflect the Flutter VM,
-nor does it reflect the changes that are coming in [Dart 2](/dart-2).
+<aside class="alert alert-warning" markdown="1">
+  This article was initially targeted for the standalone VM under the
+  1.x Dart SDK.  It does not reflect the Flutter VM,
+  nor does it reflect changes in [Dart 2](/dart-2).
+  For example, [Dartium doesn't work with Dart 2.]({{site.webdev}}/dart-2#tools)
+  Also, checked mode and production mode no longer exist;
+  instead, tools have platform-specific support for expensive development-time
+  checks such as [asserts](/guides/language/language-tour#assert).
 </aside>
 
 Programmers often create benchmarks that exercise an important algorithm in a
