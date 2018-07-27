@@ -1,13 +1,26 @@
 ---
 title: Numeric Computation
 description: How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM.
-date: 2013-05-22
+original-date: 2013-05-22
+date: 2018-07-26
 category: dart-vm
 obsolete: true
 ---
 
 _Written by John Mccutchan <br>
-May 2013_
+May 2013 (note added July 2018)_
+
+<aside class="alert alert-warning" markdown="1">
+  In Dart 2, "proper" integers were replaced with 64-bit signed, wrapping
+  integers. The smi and mint representations still exist, but overflow now
+  results in wrapping instead of automatic conversion to bigint (`BigInt`
+  objects). The [`BigInt` class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html)
+  is now available as a separate type, but it doesn't implement `int`.
+
+  Continue to avoid `BigInt` when possible. The VM has optimized code for
+  `BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
+  down to mints or smis that can be handled directly with CPU instructions.
+</aside>
 
 Performance matters to everyone.
 It directly impacts your bottom line, conversion rates, and user satisfaction.
