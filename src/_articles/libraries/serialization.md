@@ -2,10 +2,13 @@
 title: Serialization in Dart
 description: Choose the serialization strategy that's right for your project.
 original-date: 2015-02-09
-date: 2017-03-15
+date: 2018-07-25
 category: libraries
 obsolete: true
 ---
+
+_Written by Nicolas Garnier<br>
+February 2015 (note updated July 2018)_
 
 <aside class="alert alert-warning" markdown="1">
   This article's general information and approach
@@ -17,9 +20,6 @@ obsolete: true
   in the unofficial repo
   [matanlurey/dart_serialize_proposal.](https://github.com/matanlurey/dart_serialize_proposal)
 </aside>
-
-_Written by Nicolas Garnier<br>
-February 2015 (note updated July 2018)_
 
 Being able to serialize and deserialize objects is a common task in web apps.
 Here are a few typical cases of using serialization:
