@@ -11,13 +11,16 @@ _Written by John McCutchan <br>
 October 2012 (updated November 2012; note updated July 2018)_
 
 <aside class="alert alert-warning" markdown="1">
-  This article was initially targeted for the standalone VM under the
-  1.x Dart SDK.  It does not reflect the Flutter VM,
+  This article still has valid information, but it was initially targeted for
+  the standalone VM under the 1.x Dart SDK.  It does not reflect Flutter,
   nor does it reflect changes in [Dart 2](/dart-2).
-  For example, [Dartium doesn't work with Dart 2.]({{site.webdev}}/dart-2#tools)
-  Also, checked mode and production mode no longer exist;
-  instead, tools have platform-specific support for expensive development-time
-  checks such as [asserts](/guides/language/language-tour#assert).
+  For example, this article mentions Dartium, which
+  [doesn't work with Dart 2.]({{site.webdev}}/dart-2#tools)
+  Also, checked mode and production mode no longer exist; development modes vary
+  by platform, as you can see from the
+  [assert section](/guides/language/language-tour#assert) of the language tour.
+  For information about Flutter benchmarking, see the
+  [Flutter performance page.]({{site.flutter}}/ui-performance/)
 </aside>
 
 Programmers often create benchmarks that exercise an important algorithm in a
