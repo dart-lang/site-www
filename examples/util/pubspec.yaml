@@ -3,7 +3,7 @@ description: dartlang.org example utilities.
 version: 0.0.2
 
 environment:
-  sdk: '>=2.0.0-dev.69.4 <3.0.0'
+  sdk: '>=2.0.0-dev.69.5 <3.0.0'
 
 dependencies:
   test: ^1.0.0

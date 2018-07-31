@@ -1,5 +1,5 @@
 language: dart
-dart: 2.0.0-dev.69.4
+dart: 2.0.0-dev.69.5
 
 cache:
   timeout: 300
