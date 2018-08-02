@@ -1434,9 +1434,7 @@ provides common functionality such as sine and cosine,
 maximum and minimum, and constants such as *pi* and *e*. Most of the
 functionality in the Math library is implemented as top-level functions.
 
-To use this library in your app, import dart:math. The following
-examples use the prefix `math` to make clear which top-level functions
-and constants are from the Math library:
+To use this library in your app, import dart:math.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
 {% prettify dart %}
