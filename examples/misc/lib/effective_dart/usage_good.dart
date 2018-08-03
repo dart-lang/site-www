@@ -58,13 +58,6 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   {
-    // #docregion where-type
-    var objects = [1, "a", 2, "b", 3];
-    var ints = objects.whereType<int>();
-    // #enddocregion where-type
-  }
-
-  {
     // #docregion cast-list
     var stuff = <dynamic>[1, 2];
     var ints = List<int>.from(stuff);
