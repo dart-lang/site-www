@@ -30,7 +30,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion first-sentence
     /// Deletes the file at [path] from the file system.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence
   }
 
@@ -40,7 +42,9 @@ void miscDeclAnalyzedButNotTested() {
     ///
     /// Throws an [IOError] if the file could not be found. Throws a
     /// [PermissionError] if the file is present but could not be deleted.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence-a-paragraph
   }
 
@@ -50,7 +54,9 @@ void miscDeclAnalyzedButNotTested() {
     bool all(bool predicate(T element)) => ellipsis();
 
     /// Starts the stopwatch if not already running.
-    void start() => ellipsis();
+    void start() {
+      ellipsis();
+    }
     // #enddocregion third-person
   };
 
@@ -146,7 +152,9 @@ class Widget {}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
-  void tooltip(List<String> lines) => ellipsis();
+  void tooltip(List<String> lines) {
+    ellipsis();
+  }
 }
 // #enddocregion redundant
 

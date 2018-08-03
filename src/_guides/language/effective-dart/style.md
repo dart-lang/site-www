@@ -48,7 +48,7 @@ class SliderMenu { ... }
 
 class HttpRequest { ... }
 
-typedef Predicate = bool Function<T>(T value);
+typedef Predicate<T> = bool Function(T value);
 {% endprettify %}
 
 This even includes classes intended to be used in metadata annotations.

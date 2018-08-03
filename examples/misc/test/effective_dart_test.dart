@@ -25,20 +25,29 @@ void main() {
     });
 
     test('runtimeType', () {
-      _test() {
-        // #docregion list-from-2
+      good() {
+        // #docregion list-from-good
         // Creates a List<int>:
         var iterable = [1, 2, 3];
 
         // Prints "List<int>":
         print(iterable.toList().runtimeType);
+        // #enddocregion list-from-good
+      }
+
+      expect(good, prints('List<int>\n'));
+
+      bad() {
+        // #docregion list-from-bad
+        // Creates a List<int>:
+        var iterable = [1, 2, 3];
 
         // Prints "List<dynamic>":
         print(List.from(iterable).runtimeType);
-        // #enddocregion list-from-2
+        // #enddocregion list-from-bad
       }
 
-      expect(_test, prints('List<int>\nList<dynamic>\n'));
+      expect(bad, prints('List<dynamic>\n'));
     });
 
     test('List.from<int>() from List<num>', () {
