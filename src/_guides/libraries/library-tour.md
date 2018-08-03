@@ -396,7 +396,7 @@ assert(fruits[0] == 'apples');
 Lists are parameterized types, so you can specify the type that a list
 should contain:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (ListOfString)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
 {% prettify dart %}
 // This list should contain only strings.
 var fruits = List<String>();
@@ -404,16 +404,13 @@ var fruits = List<String>();
 fruits.add('apples');
 var fruit = fruits[0];
 assert(fruit is String);
-
-// Generates static analysis warning, num is not a string.
-fruits.add(5); // BAD: Throws exception in checked mode.
 {% endprettify %}
 
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+{:.fails-sa}
+<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+{% prettify dart %}
+fruits.add(5); // Error: 'int' can't be assigned to 'String'
+{% endprettify %}
 
 Refer to the [List API docs][List] for a full list of methods.
 
