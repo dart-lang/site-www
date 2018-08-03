@@ -90,7 +90,7 @@ support](/guides/language/language-tour#asynchrony-support). They allow you
 to write asynchronous code that looks like synchronous code and doesn't use
 the Future API.
 
-{% include async-await-2.0.html %}
+{% include async-await-2.0.md %}
 
 {% comment %}
 update-for-dart-2
