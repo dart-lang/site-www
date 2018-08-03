@@ -62,7 +62,7 @@ class SliderMenu {/* ... */}
 
 class HttpRequest {/* ... */}
 
-typedef Predicate = bool Function<T>(T value);
+typedef Predicate<T> = bool Function(T value);
 // #enddocregion type-names
 
 //----------------------------------------------------------------------------

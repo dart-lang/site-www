@@ -143,7 +143,9 @@ elsewhere for the solution to their problem.
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence)"?>
 {% prettify dart %}
 /// Deletes the file at [path] from the file system.
-void delete(String path) => ...
+void delete(String path) {
+  ...
+}
 {% endprettify %}
 
 {:.bad-style}
@@ -153,7 +155,9 @@ void delete(String path) => ...
 /// certain operations may or may not be possible. If there is no file at
 /// [path] or it can't be accessed, this function throws either [IOError]
 /// or [PermissionError], respectively. Otherwise, this deletes the file.
-void delete(String path) => ...
+void delete(String path) {
+  ...
+}
 {% endprettify %}
 
 ### DO separate the first sentence of a doc comment into its own paragraph.
@@ -173,7 +177,9 @@ like lists of classes and members.
 ///
 /// Throws an [IOError] if the file could not be found. Throws a
 /// [PermissionError] if the file is present but could not be deleted.
-void delete(String path) => ...
+void delete(String path) {
+  ...
+}
 {% endprettify %}
 
 {:.bad-style}
@@ -182,7 +188,9 @@ void delete(String path) => ...
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
 /// be found. Throws a [PermissionError] if the file is present but could
 /// not be deleted.
-void delete(String path) => ...
+void delete(String path) {
+  ...
+}
 {% endprettify %}
 
 ### AVOID redundancy with the surrounding context.
@@ -199,7 +207,9 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
-  void tooltip(List<String> lines) => ...
+  void tooltip(List<String> lines) {
+    ...
+  }
 }
 {% endprettify %}
 
@@ -209,7 +219,9 @@ class RadioButtonWidget extends Widget {
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
-  void tooltip(List<String> lines) => ...
+  void tooltip(List<String> lines) {
+    ...
+  }
 }
 {% endprettify %}
 
@@ -225,7 +237,9 @@ The doc comment should focus on what the code *does*.
 bool all(bool predicate(T element)) => ...
 
 /// Starts the stopwatch if not already running.
-void start() => ...
+void start() {
+  ...
+}
 {% endprettify %}
 
 ### PREFER starting variable, getter, or setter comments with noun phrases.
@@ -288,7 +302,7 @@ constructor.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
-{% prettify none %}
+{% prettify dart %}
 /// Throws a [StateError] if ...
 /// similar to [anotherMethod()], but ...
 {% endprettify %}
@@ -298,7 +312,7 @@ separated by a dot:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
-{% prettify none %}
+{% prettify dart %}
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
@@ -307,7 +321,7 @@ constructor, put parentheses after the class name:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
-{% prettify none %}
+{% prettify dart %}
 /// To create a point, call [Point()] or use [Point.polar()] to ...
 {% endprettify %}
 

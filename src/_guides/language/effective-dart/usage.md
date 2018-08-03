@@ -330,13 +330,21 @@ The obvious difference is that the first one is shorter. The *important*
 difference is that the first one preserves the type argument of the original
 object:
 
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-2)"?>
+{:.good-style}
+<?code-excerpt "misc/test/effective_dart_test.dart (list-from-good)"?>
 {% prettify dart %}
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
 // Prints "List<int>":
 print(iterable.toList().runtimeType);
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/test/effective_dart_test.dart (list-from-bad)"?>
+{% prettify dart %}
+// Creates a List<int>:
+var iterable = [1, 2, 3];
 
 // Prints "List<dynamic>":
 print(List.from(iterable).runtimeType);
@@ -344,6 +352,7 @@ print(List.from(iterable).runtimeType);
 
 If you *want* to change the type, then calling `List.from()` is useful:
 
+{:.good-style}
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-3)"?>
 {% prettify dart %}
 var numbers = [1, 2.3, 4]; // List<num>.
@@ -356,16 +365,6 @@ you don't care about the type, then use `toList()`.
 
 
 ### DO use `whereType()` to filter a collection by type.
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-<aside class="alert alert-warning" markdown="1">
-  **Before using `whereType()`, make sure it's implemented.**
-  We expect `whereType()` to be added late in Dart&nbsp;2 development.
-  For details, see
-  [SDK issue #32463.](https://github.com/dart-lang/sdk/issues/32463#issuecomment-402975456)
-</aside>
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
