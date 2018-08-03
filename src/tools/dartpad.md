@@ -15,20 +15,13 @@ Here's what DartPad looks like:
 ## Library support
 
 DartPad supports
-[dart:* libraries]({{site.dart_api}})
+[dart:* libraries]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 that work with web apps; it doesn't support
-[dart:io]({{site.dart_api}}/stable/dart-io) or
+[dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io) or
 libraries from [packages.]({{site.pub}})
 If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
 If you want to use a package, get the SDK for a
 [platform](/guides/platforms) that the package supports.
-
-{% comment %}
-update-for-dart-2
-Once DartPad is based on Dart 2, change all occurrences of
-{{site.dart_api}}/... to be
-{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/....
-{% endcomment %}
 
 ## Getting started
 

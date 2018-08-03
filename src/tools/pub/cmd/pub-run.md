@@ -7,6 +7,12 @@ permalink: /tools/pub/cmd/pub-run
 _Run_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
+{% comment %}
+update-for-dart-2
+https://github.com/dart-lang/pub/issues/1922 to track
+replacement of -c, --[no-]checked
+{% endcomment %}
+
 {% prettify nocode %}
 $ pub run [--mode=<mode>] [--checked] <executable> [args...]
 {% endprettify %}
@@ -59,11 +65,6 @@ All other directories are private.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
-
-{% comment %}
-update-for-dart-2
-TODO: Add any run-specific options here.
-{% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

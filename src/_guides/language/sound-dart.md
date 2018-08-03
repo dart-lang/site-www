@@ -26,16 +26,6 @@ For a full introduction to the Dart language, including types, see the
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analyzer]
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  The dart2js compiler and tools that depend on it
-  (such as DartPad)
-  don't yet have full support for runtime checks.
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-</aside>
-
 You can fix most static analysis errors by adding type annotations to generic
 classes. The most common generic classes are the collection types
 `List<T>` and `Map<K,V>`.
@@ -90,16 +80,12 @@ void main() {
 }
 {% endprettify %}
 
-{% comment %} update-for-dart-2
-Note: Can't use embedded DP because DartPad
+{% comment %}
+  Note: DartPad does not yet support no-implicit-casts, but it does
+  report a runtime type error.
+{% endcomment -%}
 
-- Does not support no-implicit-casts
-- Runtime doesn't implement strong mode checks
-
-https://github.com/dart-lang/dart-services/issues/334
-
-[Try it in DartPad](https://dartpad.dartlang.org/3c7c95683f0c06be8326a2fd3975cd19).
-{% endcomment %}
+[Try it in DartPad](https://dartpad.dartlang.org/f64e963cb5f894e2146c2b28d5efa4ed).
 
 ## What is soundness?
 
