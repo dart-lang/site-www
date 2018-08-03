@@ -18,8 +18,6 @@ import 'package:examples/language_tour/classes/point_with_distance_method.dart'
     as point_with_distance_method;
 import 'package:examples/language_tour/classes/point_with_main.dart'
     as point_with_main;
-import 'package:examples/language_tour/classes/proxy.dart' as proxy;
-import 'package:examples/language_tour/classes/proxy_alt.dart' as proxy_alt;
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
@@ -132,19 +130,6 @@ void main() {
   test('no_such_method', () {
     expect(no_such_method.main,
         m.prints('You tried to use a non-existent member: Symbol("foo")'));
-  });
-
-  test('proxy', () {
-    expect(proxy.main, m.prints('handling invocation: Symbol("doSomething")'));
-  });
-
-  test('proxy_alt', () {
-    expect(
-        proxy_alt.main,
-        m.prints([
-          'handling invocation: Symbol("doSomething")',
-          'handling invocation: Symbol("doSomeOtherThing")',
-        ]));
   });
 
   test('enum_with_main', () {
