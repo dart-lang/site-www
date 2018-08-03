@@ -261,22 +261,15 @@ void main() {
       // #enddocregion compareTo
     });
 
-    test('ListOfString', () {
-      // #docregion ListOfString
+    test('List-of-String', () {
+      // #docregion List-of-String
       // This list should contain only strings.
       var fruits = List<String>();
 
       fruits.add('apples');
       var fruit = fruits[0];
       assert(fruit is String);
-
-      // Generates static analysis warning, num is not a string.
-      // #enddocregion ListOfString
-      /*
-      // #docregion ListOfString
-      fruits.add(5); // BAD: Throws exception in checked mode.
-      // #enddocregion ListOfString
-      */
+      // #enddocregion List-of-String
     });
   });
 
