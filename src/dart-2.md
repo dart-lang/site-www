@@ -67,8 +67,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
    * Flutter: [`flutter analyze`][Flutter analyzer]
-   * Server-side or web: [`dartanalyzer`][dartanalyzer] with
-     [Dart 2 semantics][enable strong mode]
+   * Server-side or web: [`dartanalyzer`][dartanalyzer]
 5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
 6. **Run tests to find [runtime errors][].**
@@ -166,7 +165,6 @@ sdk: '>=2.0.0-dev.61.0 <3.0.0'
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
-[enable strong mode]: /guides/language/analysis-options#enabling-dart-2-semantics
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Dart-2-Migration
 [Flutter SDK install]: https://flutter.io/upgrading/
