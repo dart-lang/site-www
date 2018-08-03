@@ -44,43 +44,8 @@ You can find API documentation for all dart:* libraries in the
 the [Flutter API reference.][docs.flutter.io]
 
 <aside class="alert alert-info" markdown="1">
-**DartPad tip:**
-You can play with the code in this page
-by copying it into a [DartPad.][DartPad]
-Note, however, that [assert][] statements are no-ops in DartPad
-because DartPad executes in production mode, not checked mode.
-An easy workaround: **change `assert` to `print`.**
-<br>
-<br>
-
-{% comment %}
-update-for-dart-2
-[TODO: fix styling instead of using the <br><br> hack.]
-
-https://gist.github.com/2edc7174867be377021813ba4119ab8c
-https://dartpad.dartlang.org/2edc7174867be377021813ba4119ab8c
-
-{% prettify dart %}
-void main() {
-  assert(int.parse('42') == 42); // in checked mode: continues
-  print(int.parse('42') == 42); // true
-
-  assert(int.parse('43') == 42); // in checked mode: exception
-  print(int.parse('43') == 42); // false
-}
-{% endprettify %}
-{% endcomment %}
-
-<iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=2edc7174867be377021813ba4119ab8c&horizontalRatio=99&verticalRatio=70"
-    width="100%"
-    height="255px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
-{% comment %}
-https://github.com/dart-lang/dart-pad/issues/310
-{% endcomment %}
+  **DartPad tip:** You can play with the code in this page by copying it into a
+  [DartPad.][DartPad]
 </aside>
 
 
