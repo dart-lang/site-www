@@ -534,18 +534,6 @@ assumeStrings(<int>[![1, 2, 3]!]);
 Exception: type 'List<int>' is not a subtype of type 'List<String>'
 ```
 
-<aside class="alert alert-warning" markdown="1">
-  **Note for `dartdevc` users:**
-  The `dartdevc` compiler in `2.0.0-dev` releases currently ignores _some_
-  common type errors to make migrations easier. We expect to enforce all
-  errors by the final release.
-</aside>
-
-{% comment %}
-update-for-dart-2
-TODO: Update that link once 2.0 is stable. Maybe create/use a macro for dev API docs.
-{% endcomment %}
-
 #### Fix: Tighten or correct types
 
 Sometimes, lack of a type, especially with empty collections, means that a `<dynamic>`
