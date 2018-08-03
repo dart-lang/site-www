@@ -51,4 +51,13 @@ void main() {
       expect(ints, orderedEquals([1, 4]));
     });
   });
+
+  test('whereType usage_good', () {
+    // #docregion whereType
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.whereType<int>();
+    // #enddocregion whereType
+    expect(ints, TypeMatcher<Iterable<int>>());
+    expect(ints, [1, 2, 3]);
+  });
 }

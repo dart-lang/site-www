@@ -397,7 +397,7 @@ the [`whereType()`][where-type] method for this exact use case:
 [where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (where-type)"?>
+<?code-excerpt "misc/test/effective_dart_test.dart (whereType)"?>
 {% prettify dart %}
 var objects = [1, "a", 2, "b", 3];
 var ints = objects.whereType<int>();
