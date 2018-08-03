@@ -15,16 +15,11 @@ the most basic additions: `await` expressions and `async` methods.
 These are the most commonly used features related to asynchrony.
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-This article assumes that you are already familiar with asynchronous
-programming in Dart.
+  **Note:** This article assumes that you are already familiar with asynchronous
+  programming in Dart.
 </aside>
 
-{% include async-await-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
+{% include async-await-2.0.md %}
 
 ## Async functions
 
