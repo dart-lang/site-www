@@ -1,8 +1,8 @@
 {
   "SDK": {
     "doc-path": "install",
-    "channel": "dev",
+    "channel": "stable",
     "prev-vers": "1.24.3",
-    "vers": "2.0.0-dev.69.5"
+    "vers": "2.0.0"
   }
 }

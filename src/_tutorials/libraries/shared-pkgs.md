@@ -93,7 +93,7 @@ The contents of your pubspec.yaml file should look something like this:
   description: A sample command-line application.
 
   environment:
-    sdk: '>=2.0.0-dev.69.5 <3.0.0'
+    sdk: '>=2.0.0 <3.0.0'
 
   #dependencies:
   #  path: ^1.4.1
@@ -138,7 +138,7 @@ which is available at pub.dartlang.org.
 
     {% prettify yaml %}
       environment:
-        sdk: '>=2.0.0-dev.69.5 <3.0.0'
+        sdk: '>=2.0.0 <3.0.0'
 
       dependencies:
         vector_math: ^2.0.7

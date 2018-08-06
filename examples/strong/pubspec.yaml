@@ -2,7 +2,7 @@ name: dartlang_strong
 description: dartlang.org strong mode examples
 
 environment:
-  sdk: '>=2.0.0-dev.69.5 <3.0.0'
+  sdk: '>=2.0.0 <3.0.0'
 
 dependencies:
   test: ^1.0.0
