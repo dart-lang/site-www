@@ -205,7 +205,7 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation](https://www.dartdocs.org/documentation/shelf/latest/shelf/shelf-library.html).
+[shelf documentation](https://pub.dartlang.org/documentation/shelf/latest/shelf/shelf-library.html).
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -228,20 +228,21 @@ You can share your open source libraries with other developers on
 [Publishing a Package](/tools/pub/publishing)
 describes all the files that you should include.
 
-The [dartdocs.org generator](https://github.com/astashov/dartdocs.org)
-provides a handy service for packages published on pub.dartlang.org.
-The service watches the site, generating new docs to
-[dartdocs.org](https://www.dartdocs.org/) when it detects changes.
-Before publishing your package, run the dartdoc tool manually to
-make sure that your docs generate successfully and look as expected.
-If your docs don't appear on dartdocs.org, check
-[dartdocs.org/failed](https://www.dartdocs.org/failed/index.html)
-to learn what went wrong.
+[pub.dartlang.org](https://pub.dartlang.org/) provides a handy 
+service that generates new docs when it detects changes to published
+packages. The latest generated docs can be accessed from the 
+package's sidebar, while other version's docs are available from the
+`Versions` tab. Before publishing your package, run the dartdoc tool
+manually to make sure that your docs generate successfully and look
+as expected. Once uploaded, you can check the `Versions` tab to see
+if the docs were generated successfully, and if not you can access
+the log to see why not by clicking `failed`on that version's listing.
 
 To minimize the possibility of broken links as version numbers change,
 specify "latest" rather than a specific version when linking to
-dartdocs.org. For example:
-[https://www.dartdocs.org/documentation/shelf/latest/](https://www.dartdocs.org/documentation/shelf/latest/).
+documentation on [pub.dartlang.org](https://pub.dartlang.org/). 
+For example:
+[https://pub.dartlang.org/documentation/shelf/latest/](https://pub.dartlang.org/documentation/shelf/latest/).
 
 ## Resources
 
