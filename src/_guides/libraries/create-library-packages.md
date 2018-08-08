@@ -205,7 +205,7 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation](https://pub.dartlang.org/documentation/shelf/latest/shelf/shelf-library.html).
+[shelf documentation]({{site.pub}}/documentation/shelf/latest/shelf/shelf-library.html).
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -218,21 +218,22 @@ See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
 
 If your library is open source,
 we recommend sharing it on the pub site,
-[pub.dartlang.org.](https://pub.dartlang.org/)
+[pub.dartlang.org.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
 For example, the page for the shelf package is at
-[pub.dartlang.org/packages/shelf](https://pub.dartlang.org/packages/shelf).
+[pub.dartlang.org/packages/shelf]({{site.pub-pkg}}/shelf).
 See [Publishing a Package](/tools/pub/publishing)
 for details on how to prepare your package for publishing.
 
 The pub site not only hosts your package,
 but also generates and hosts your package's API reference docs.
 A link to the latest generated docs is in the package's **About** box;
-for example, the shelf package's **About** box links to the API docs at the URL
-[https://pub.dartlang.org/documentation/shelf/latest/](https://pub.dartlang.org/documentation/shelf/latest/).
-Links to previous versions' docs are in the **Versions** tab.
+for example, the shelf package's API docs are under
+[pub.dartlang.org/documentation/shelf]({{site.pub}}/documentation/shelf).
+Links to previous versions' docs are in the
+**Versions** tab of the package's page.
 
 To ensure that your package's API docs look good on the pub site,
 follow these steps:
@@ -264,4 +265,4 @@ Use the following resources to learn more about library packages:
   [source_gen](https://github.com/dart-lang/source_gen), and
   [test](https://github.com/dart-lang/test).
 
-[dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc)
+[dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc
