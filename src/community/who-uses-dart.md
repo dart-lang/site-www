@@ -63,6 +63,9 @@ Google internal sales tool
 [drone.io](http://drone.io)
 : Continuous integration with support for testing Dart apps.
 
+[eurovision.app](https://eurovision.app)
+: Unofficial Eurovision Song Contest PWA built with AngularDart using a Firebase backend.
+
 [Soundtrap](https://www.soundtrap.com/)
 : Collaboratively record music with your browser, built with Dart and WebRTC.
 
