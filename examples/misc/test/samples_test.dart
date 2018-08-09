@@ -44,8 +44,8 @@ void main() {
     // #enddocregion var
 
     test('var', () {
-      expect(flybyObjects, const TypeMatcher<List>());
-      expect(image, const TypeMatcher<Map>());
+      expect(flybyObjects, TypeMatcher<List>());
+      expect(image, TypeMatcher<Map>());
       expect(
           name.length > antennaDiameter, isTrue); // avoid unused_local_variable
     });

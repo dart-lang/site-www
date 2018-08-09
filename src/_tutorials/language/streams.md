@@ -380,7 +380,7 @@ Future<void> main(List<String> args) async {
   var lines = file
       .openRead()
       .transform(utf8.decoder)
-      .transform(const LineSplitter());
+      .transform(LineSplitter());
   await for (var line in lines) {
     if (!line.startsWith('#')) print(line);
   }
