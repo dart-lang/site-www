@@ -9,7 +9,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-Duration oneSecond = const Duration(seconds: 1);
+Duration oneSecond = Duration(seconds: 1);
 Random myRandomGenerator = Random();
 HttpClient client = HttpClient();
 

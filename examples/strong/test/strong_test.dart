@@ -167,7 +167,7 @@ void main() {
       var c = C(Iterable.empty()).collection;
       // Use c as an iterable...
       // #enddocregion use-iterable
-      expect(c, const TypeMatcher<Iterable>());
+      expect(c, TypeMatcher<Iterable>());
     });
   });
 }
