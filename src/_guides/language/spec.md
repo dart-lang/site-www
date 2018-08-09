@@ -19,9 +19,9 @@ You can find previous editions of the specification at
 
 ## Dart 2 changes
 
-Dart 2 is changing the Dart language in many ways,
+Dart 2 has changed the Dart language in many ways,
 some of which are not backward-compatible.
-For information about what is changing and the implementation status,
+For information about changes and implementation status,
 see the following resources:
 
 * [Dart 2 Updates](/dart-2)
