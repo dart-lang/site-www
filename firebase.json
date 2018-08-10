@@ -8,7 +8,7 @@
         "headers": [ { "key": "Access-Control-Allow-Origin", "value": "*" } ]
     }],
     "redirects": [
-      { "source": "/)", "destination": "/", "type": 301 },
+      { "source": "/\\)", "destination": "/", "type": 301 },
       { "source": "/+", "destination": "https://plus.sandbox.google.com/+dartlang", "type": 301 },
       { "source": "/+dart2js", "destination": "https://webdev.dartlang.org/tools/dart2js", "type": 301 },
       { "source": "/+isolates", "destination": "https://dart-lang.github.io/observatory/isolate.html", "type": 301 },
