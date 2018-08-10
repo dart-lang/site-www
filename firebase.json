@@ -142,7 +142,7 @@
       { "source": "/hackathons{,/**}", "destination": "/", "type": 301 },
       { "source": "/hangouts{,/**}", "destination": "/", "type": 301 },
       { "source": "/install/archive", "destination": "/tools/sdk/archive", "type": 301 },
-      { "source": "/install/**", "destination": "/install", "type": 301 },
+      { "source": "/install-should-be-just-install/**", "destination": "/install", "type": 301 },
       { "source": "/language-tour", "destination": "/guides/language/language-tour", "type": 301 },
       { "source": "/logos", "destination": "https://github.com/dart-lang/logos", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "http://dart-lang.github.io/linter/lints/:lints*", "type": 301 },
