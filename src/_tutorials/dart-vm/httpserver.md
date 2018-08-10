@@ -104,7 +104,7 @@ listening on localhost, port 4040
 ```
 
 <i class="material-icons">open_in_browser</i>
-**In any browser, visit** [localhost:4040](localhost:4040).
+**In any browser, visit** [localhost:4040](http://localhost:4040).
 The browser displays `Hello, world!`
 
 ![The response from the hello world server.](/tutorials/dart-vm/images/hello_world_response.png)
@@ -248,7 +248,7 @@ that you can use to guess the number.
 3. **Open the HTML page**
 
    In a browser, go to
-   [localhost:8080/make_a_guess.html](localhost:8080/make_a_guess.html).
+   [localhost:8080/make_a_guess.html](http://localhost:8080/make_a_guess.html).
 
 4. **Make a guess**
 
@@ -704,7 +704,7 @@ Future main() async {
    the JSON codec available in the [dart:convert][] library.
 
 4. The URL for the request is
-   [localhost:4049/file.txt](localhost:4049/file.txt). The code
+   [localhost:4049/file.txt](http://localhost:4049/file.txt). The code
    `req.uri.pathSegments.last` extracts the file name from the URI:
    `file.txt`.
 
@@ -765,7 +765,7 @@ It responds to all requests by returning the contents of the
    $ dart mini_file_server.dart
    ```
 
-2. Type [localhost:4044](localhost:4044) into the browser.
+2. Type [localhost:4044](http://localhost:4044) into the browser.
    The server displays an HTML file:
 
    ![The index.html file served by mini_file_server.dart.](/tutorials/dart-vm/images/index_file.png)
@@ -827,7 +827,7 @@ uses the [http_server][] package.
    $ dart basic_file_server.dart
    ```
 
-2. Type [localhost:4046](localhost:4046) into the browser.
+2. Type [localhost:4046](http://localhost:4046) into the browser.
    The server displays the same index.html file as the previous:
 
    ![The index.html file served by basic_file_server.dart.](/tutorials/dart-vm/images/index_file_4046.png)
