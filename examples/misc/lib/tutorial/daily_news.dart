@@ -16,23 +16,23 @@ import 'dart:async';
 
 // #docregion sync
 // Synchronous code
-_printDailyNewsDigestSync() {
+void _printDailyNewsDigestSync() {
   String news = _gatherNewsReportsSync(); // Can take a while.
   print(news);
 }
 // #enddocregion sync
 
 // #docregion main-async
-Future _printDailyNewsDigestAsync() async {
+Future<void> _printDailyNewsDigestAsync() async {
   String news = await _gatherNewsReportsAsync();
   print(news);
 }
 // #enddocregion main-async
 
 // #docregion main-future-api
-_printDailyNewsDigestAsyncUsingFutureAPI() {
+Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
   final future = _gatherNewsReportsAsync();
-  future.then((news) => print(news));
+  return future.then((news) => print(news));
 }
 // #enddocregion main-future-api
 
@@ -93,7 +93,7 @@ Future<String> _gatherNewsReportsAsync() => newsStream.first;
 //
 // import 'dart:html';
 //
-// Future _gatherNewsReportsFromServer() => HttpRequest.getString(
+// Future<String> _gatherNewsReportsFromServer() => HttpRequest.getString(
 //      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 // #enddocregion main-async, main-future-api
@@ -102,7 +102,7 @@ Future<String> _gatherNewsReportsAsync() => newsStream.first;
 // Extra function variants below here
 
 // #docregion try-catch
-_printDailyNewsDigestAsyncWithTryCatch() async {
+Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
   try {
     String news = await _gatherNewsReportsAsync();
     print(news);
@@ -113,9 +113,9 @@ _printDailyNewsDigestAsyncWithTryCatch() async {
 // #enddocregion try-catch
 
 // #docregion main-future-api-using-braces
-_printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
+Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
   final future = _gatherNewsReportsAsync();
-  future.then((news) {
+  return future.then((news) {
     print(news);
     // Do something else...
   });
@@ -123,14 +123,14 @@ _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
 // #enddocregion main-future-api-using-braces
 
 // #docregion main-future-api-pass-print
-_printDailyNewsDigestAsyncUsingFutureApiPassPrint() =>
+Future<void> _printDailyNewsDigestAsyncUsingFutureApiPassPrint() =>
     _gatherNewsReportsAsync().then(print);
 // #enddocregion main-future-api-pass-print
 
 handleError(_) {}
 
 // #docregion future-api-try-catch
-_printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
+Future<void> _printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
     _gatherNewsReportsAsync()
         .then((news) => print(news))
         .catchError((e) => handleError(e));
