@@ -34,8 +34,8 @@ Let's look at some code that could possibly cause a program to freeze:
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (sync)" replace="/Sync(\(\))/$1/g"?>
 {% prettify dart %}
 // Synchronous code
-printDailyNewsDigest() {
-  String news = gatherNewsReports(); // Can take a while.
+void printDailyNewsDigest() {
+  var news = gatherNewsReports(); // Can take a while.
   print(news);
 }
 
@@ -225,7 +225,7 @@ capture that error.  Async functions can use try-catch to capture the error.
 {% prettify dart %}
 Future<void> printDailyNewsDigest() async {
   try {
-    String news = await gatherNewsReports();
+    var news = await gatherNewsReports();
     print(news);
   } catch (e) {
     // Handle error...
@@ -381,7 +381,7 @@ written in a couple different ways.
 
   <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-pass-print)"?>
   {% prettify dart %}
-  printDailyNewsDigest() =>
+  Future<void> printDailyNewsDigest() =>
       gatherNewsReports().then(print);
   {% endprettify %}
 

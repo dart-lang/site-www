@@ -17,14 +17,14 @@ import 'dart:async';
 // #docregion sync
 // Synchronous code
 void _printDailyNewsDigestSync() {
-  String news = _gatherNewsReportsSync(); // Can take a while.
+  var news = _gatherNewsReportsSync(); // Can take a while.
   print(news);
 }
 // #enddocregion sync
 
 // #docregion main-async
 Future<void> _printDailyNewsDigestAsync() async {
-  String news = await _gatherNewsReportsAsync();
+  var news = await _gatherNewsReportsAsync();
   print(news);
 }
 // #enddocregion main-async
@@ -33,6 +33,8 @@ Future<void> _printDailyNewsDigestAsync() async {
 Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
   final future = _gatherNewsReportsAsync();
   return future.then((news) => print(news));
+  // You don't *have to* return the future here. But if you don't, callers can't
+  // await it.
 }
 // #enddocregion main-future-api
 
@@ -104,7 +106,7 @@ Future<String> _gatherNewsReportsAsync() => newsStream.first;
 // #docregion try-catch
 Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
   try {
-    String news = await _gatherNewsReportsAsync();
+    var news = await _gatherNewsReportsAsync();
     print(news);
   } catch (e) {
     // Handle error...
