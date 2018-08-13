@@ -34,8 +34,8 @@ Let's look at some code that could possibly cause a program to freeze:
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (sync)" replace="/Sync(\(\))/$1/g"?>
 {% prettify dart %}
 // Synchronous code
-printDailyNewsDigest() {
-  String news = gatherNewsReports(); // Can take a while.
+void printDailyNewsDigest() {
+  var news = gatherNewsReports(); // Can take a while.
   print(news);
 }
 
@@ -70,15 +70,16 @@ Such functions return their value using a [Future.][Future]
 
 ## What is a Future? {#what-is-a-future}
 
-A Future represents a means for getting a value sometime in the future. When a
-function that returns a Future is invoked, two things happen:
+A Future represents a means for tracking a calculation that will finish in
+the future. When a function that returns a Future is invoked, two things happen:
 
 1. The function queues up work to be done and returns an uncompleted Future
    object.
-1. Later, when a value is available, the Future object completes with that
-   value (or with an error; we'll discuss that later).
+1. Later, when the underlying calculation completes, the Future object
+   completes, often with some value (or with an error, or nothing at all; we'll
+   discuss that later).
 
-To get the value that the Future represents, you have two options:
+To schedule code around a task represented by a Future, you have two options:
 
 * Use `async` and `await`
 * Use the Future API
@@ -111,8 +112,8 @@ https://gist.github.com/chalin/a345206b09cc09eee1753fab11ec006b
 
 import 'dart:async';
 
-Future printDailyNewsDigest() async {
-  String news = await gatherNewsReports();
+Future<void> printDailyNewsDigest() async {
+  var news = await gatherNewsReports();
   print(news);
 }
 
@@ -148,7 +149,7 @@ Future<String> gatherNewsReports() => newsStream.first;
 //
 // import 'dart:html';
 //
-// Future gatherNewsReportsFromServer() => HttpRequest.getString(
+// Future<String> gatherNewsReportsFromServer() => HttpRequest.getString(
 //      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 {% endprettify %}
@@ -178,30 +179,41 @@ daily news digest is printed.
 The following diagram shows the flow of execution through the code.  Each
 number corresponds to a step below.
 
-<img src="../images/async-await.png"
-     alt="diagram showing flow of control through the main() and printDailyNewsDigest functions" />
+<!--img src="../images/async-await.png"
+     alt="diagram showing flow of control through the main() and printDailyNewsDigest functions" /-->
+<!-- this diagram needs to be updated -->
 
 1. The app begins executing.
-1. The main function calls `printDailyNewsDigest()`, which (because it's
-   marked `async`), immediately returns a Future, _before any code is
-   executed_.
+1. The main function calls `printDailyNewsDigest()`, which begins executing
+   synchronously.
+1. `printDailyNewsDigest()` calls `gatherNewsReports()`, which also begins
+   executing synchronously.
+1. `gatherNewsReports()` will be guaranteed to return a Future -- either uponthe
+   first `await`, thrown exception, return, or at the end. In this case, rather
+   than returning `newsStream.first`, a `Future<String>` is returned and
+   `gatherNewsReports()` pauses.
+1. The `Future` from `gatherNewsReports()` hits the await expression
+   (`await gatherNewsReports()`) and the program pauses, waiting for that Future
+   to complete.
+1. Like `gatherNewsReports()`, `printDailyNewsDigest()` is async. Since this is
+   its first `await`, it pauses and returns a `Future<void>` to its caller
+   (`main`).
 1. The remaining print functions execute. Because they're synchronous, each
    function executes fully before moving on to the next print function. For
    example, the winning lottery numbers are all printed before the weather
    forecast is printed.
-1. The body of the `printDailyNewsDigest()` function starts executing.
-
-1. After reaching the await expression (`await gatherNewsReports()`) and
-   calling `gatherNewsReports()`, the program pauses, waiting for the Future
-   returned by `gatherNewsReports()` to complete.
-1. Once that Future completes, execution of `printDailyNewsDigest()`
-   continues, printing the news.
+1. Once the Future returned by `gatherNewsReports()` completes (in this case, it
+   will complete immediately), execution of `printDailyNewsDigest()` continues,
+   printing the news.
 1. When the `printDailyNewsDigest()` function body has completed executing,
    the Future that it originally returned completes, and the app exits.
 
 <aside class="alert alert-info" markdown="1">
-  **Note:** If an async function doesn't explicitly return a value, it returns
-  a Future wrapped around a null value.
+Note the return types carefully. Instead of `gatherNewsReports()` returning a
+`String` it returns a `Future<String>`, which becomes a `String` when `await`ed.
+And instead of `printDailyNewsDigest()` returning `void`, which would be
+unusable, it returns a `Future<void>`, which can be awaited. However, the result
+of `await`ing a `Future<void>` is unusable, which is what we want.
 </aside>
 
 ### Handling errors {#handling-errors-async}
@@ -211,9 +223,9 @@ capture that error.  Async functions can use try-catch to capture the error.
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (try-catch)"?>
 {% prettify dart %}
-printDailyNewsDigest() async {
+Future<void> printDailyNewsDigest() async {
   try {
-    String news = await gatherNewsReports();
+    var news = await gatherNewsReports();
     print(news);
   } catch (e) {
     // Handle error...
@@ -269,9 +281,11 @@ https://gist.github.com/chalin/5e7eb16cd725f0a51926b85e3caa64b5
 
 import 'dart:async';
 
-printDailyNewsDigest() {
+Future<void> printDailyNewsDigest() {
   final future = gatherNewsReports();
-  future.then((news) => print(news));
+  return future.then((news) => print(news));
+  // You don't *have to* return the future here. But if you don't, callers can't
+  // await it.
 }
 
 main() {
@@ -306,7 +320,7 @@ Future<String> gatherNewsReports() => newsStream.first;
 //
 // import 'dart:html';
 //
-// Future gatherNewsReportsFromServer() => HttpRequest.getString(
+// Future<String> gatherNewsReportsFromServer() => HttpRequest.getString(
 //      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 {% endprettify %}
@@ -352,9 +366,9 @@ written in a couple different ways.
 
   <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-using-braces)"?>
   {% prettify dart %}
-  printDailyNewsDigest() {
+  Future<void> printDailyNewsDigest() {
     final future = gatherNewsReports();
-    future.then((news) {
+    return future.then((news) {
       print(news);
       // Do something else...
     });
@@ -367,9 +381,13 @@ written in a couple different ways.
 
   <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-pass-print)"?>
   {% prettify dart %}
-  printDailyNewsDigest() =>
+  Future<void> printDailyNewsDigest() =>
       gatherNewsReports().then(print);
   {% endprettify %}
+
+If you use `.then()` on a `Future<void>`, you still need to specify a parameter
+to the callback. However, you will be protected from accidentally using that
+parameter in that callback, because no usable value will be provided.
 
 ### Handling errors {#handling-errors-future-api}
 
@@ -377,7 +395,7 @@ With the Future API, you can capture an error using `catchError()`:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (future-api-try-catch)"?>
 {% prettify dart %}
-printDailyNewsDigest() =>
+Future<void> printDailyNewsDigest() =>
     gatherNewsReports()
         .then((news) => print(news))
         .catchError((e) => handleError(e));
