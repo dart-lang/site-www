@@ -4,7 +4,7 @@ set -e -o pipefail
 
 cd `dirname $0`/..
 
-if [[ "$(node --version)" < "v6" ]]; then
+if [[ "$(node --version)" < "v10" ]]; then
     echo "ERROR: bad version of node detected. If you have nvm installed, type:"
     echo "  nvm use"
     echo "Aborting installation."
