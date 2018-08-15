@@ -51,7 +51,7 @@ A pubspec can have the following fields:
   [_Learn more._](#dependencies)
 
 `environment`
-: Optional. Can be used to require a specific version of the Dart SDK.
+: Optional. It should be used to require a compatible version of the Dart SDK.
   [_Learn more._](#sdk-constraints)
 
 `executables`
@@ -86,6 +86,8 @@ description: >-
 author: Natalie Weizenbaum <nweiz@google.com>
 homepage: https://newtify.dartlang.org
 documentation: https://docs.newtify.com
+environment:
+  sdk: '>=2.0.0 <3.0.0'
 dependencies:
   efts: ^2.0.4
   transmogrify: ^0.4.0
@@ -260,11 +262,11 @@ separate top-level `environment` field in the pubspec and uses the same
 dependencies.
 
 For example, the following constraint says that this package
-works with any **Dart 2** SDK that's version 2.0.0-dev.67.0 or higher:
+works with any **Dart 2** SDK that's version 2.0.0 or higher:
 
 {% prettify yaml %}
 environment:
-  sdk: '>=2.0.0-dev.67.0 <3.0.0'
+  sdk: '>=2.0.0 <3.0.0'
 {% endprettify %}
 
 Pub tries to find the latest version of a package whose SDK constraint works
