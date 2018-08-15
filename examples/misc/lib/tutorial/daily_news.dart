@@ -129,6 +129,17 @@ Future<void> _printDailyNewsDigestAsyncUsingFutureApiPassPrint() =>
     _gatherNewsReportsAsync().then(print);
 // #enddocregion main-future-api-pass-print
 
+_noArgFuture() {
+  // #docregion main-future-api-then-no-arg
+  Future<void> future = _printDailyNewsDigestAsync();
+
+  return future.then((_) {
+    // Code that doesn't use the `_` parameter...
+    print('All reports printed.');
+  });
+  // #enddocregion main-future-api-then-no-arg
+}
+
 handleError(_) {}
 
 // #docregion future-api-try-catch
