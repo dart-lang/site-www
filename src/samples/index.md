@@ -306,7 +306,7 @@ using `async` and `await`.
 {% prettify dart %}
 const oneSecond = Duration(seconds: 1);
 // ···
-Future<Null> printWithDelay(String message) [!async!] {
+Future<void> printWithDelay(String message) [!async!] {
   await Future.delayed(oneSecond);
   print(message);
 }
@@ -316,7 +316,7 @@ The method above is equivalent to:
 
 <?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 {% prettify dart %}
-Future<Null> printWithDelay(String message) {
+Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
     print(message);
   });
@@ -328,7 +328,7 @@ easy to read.
 
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
 {% prettify dart %}
-Future<Null> createDescriptions(Iterable<String> objects) async {
+Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
       var file = File('$object.txt');
