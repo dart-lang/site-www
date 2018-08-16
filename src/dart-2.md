@@ -118,12 +118,22 @@ If a backward-compatible change isn't possible,
 Once your package passes Dart 2 analysis, update the upper constraint
 to declare that the package is compatible with Dart 2:
 
-```yaml
-# Works in Dart 1 (starting with 1.20.1), and works in Dart 2
-sdk: '>=1.20.1 <3.0.0'
+Once your package passes Dart 2 analysis, update the SDK constraint to declare
+that the package is compatible with Dart 2:
 
-# Works in Dart 2 only, starting with Dart 2 dev build 61
-sdk: '>=2.0.0-dev.61.0 <3.0.0'
+```yaml
+environment:
+  # Works in Dart 2 only.
+  sdk: '>=2.0.0 <3.0.0'
+```
+
+If you plan to maintain compatibility with older versions of Dart, adjust the
+lower SDK constraint accordingly:
+
+```yaml
+environment:
+  # Works in Dart 1 (starting with 1.20.1), and works in Dart 2.
+  sdk: '>=1.20.1 <3.0.0'
 ```
 
 <aside class="alert alert-warning" markdown="1">
