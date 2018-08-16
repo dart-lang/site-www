@@ -137,11 +137,11 @@ environment:
 ```
 
 <aside class="alert alert-warning" markdown="1">
-  Packages that declare an upper constraint of `<2.0.0` can still be consumed by
-  Dart 2 dev builds, as those have lax upper constraint checking. However,
-  once Dart 2 ships on the stable channel, those constraints will no longer
-  resolve, and **only packages that declare an upper constraint of `<3.0.0` will
-  work with Dart 2**.
+  **Packages must have an upper constraint of `<3.0.0`** to work in
+  Dart 2 stable and subsequent Dart 2 releases.
+  Dart 2 dev builds _before_ the stable release have
+  lax upper constraint checking and can use packages that have
+  no SDK constraints or an upper constraint of `<2.0.0`.
 </aside>
 
 ## More resources
