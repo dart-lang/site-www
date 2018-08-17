@@ -118,9 +118,6 @@ If a backward-compatible change isn't possible,
 Once your package passes Dart 2 analysis, update the upper constraint
 to declare that the package is compatible with Dart 2:
 
-Once your package passes Dart 2 analysis, update the SDK constraint to declare
-that the package is compatible with Dart 2:
-
 ```yaml
 environment:
   # Works in Dart 2 only.
