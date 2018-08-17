@@ -10,10 +10,10 @@
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
-  <link href="{% asset_path 'touch-icon-iphone.png' %}" rel="apple-touch-icon">
-  <link href="{% asset_path 'touch-icon-ipad.png' %}" rel="apple-touch-icon" sizes="76x76">
-  <link href="{% asset_path 'touch-icon-iphone-retina.png' %}" rel="apple-touch-icon" sizes="120x120">
-  <link href="{% asset_path 'touch-icon-ipad-retina.png' %}" rel="apple-touch-icon" sizes="152x152">
+  <link href="{% asset 'touch-icon-iphone.png' @path %}" rel="apple-touch-icon">
+  <link href="{% asset 'touch-icon-ipad.png' @path %}" rel="apple-touch-icon" sizes="76x76">
+  <link href="{% asset 'touch-icon-iphone-retina.png' @path %}" rel="apple-touch-icon" sizes="120x120">
+  <link href="{% asset 'touch-icon-ipad-retina.png' @path %}" rel="apple-touch-icon" sizes="152x152">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
@@ -39,7 +39,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
-  {% stylesheet style %}
+  {% asset style.css %}
   {% for css in page.css -%}
     <link href="{{css}}" rel="stylesheet" type="text/css">
   {%- endfor %}
@@ -51,7 +51,7 @@
     JavaScript and jQuery are doing just fine. Dart is here for application
     programming, not page scripting.
    -->
-  {% javascript main %}
+  {% asset main.js %}
   {% for js in page.js -%}
   <script {% if js.defer %}defer{% endif %} src="{{ js.url }}"></script>
   {%- endfor %}
