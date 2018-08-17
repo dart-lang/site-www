@@ -96,29 +96,8 @@ plugins:
 og_image_vers: "?2"
 
 assets:
-  # compress:
-  #  css: true # default - development: false, production: true
-  #  js: true # default - development: false, production: true
-  # cache: .asset-cache # default: .asset-cache
-  # cdn: https://cdn.example.com
-  # skip_baseurl_with_cdn: false
-  # skip_prefix_with_cdn: false
-  prefix: /assets
-  assets:
-    - "*.png"
-    - "*.jpg"
-    - "*.eot"
-    - "*.ttf"
-    - "*.woff"
-    - "*.woff2"
-    - "*.svg"
   sources:
     - _assets/icons
-    - _assets/images
-    - _assets/javascripts
-    - _assets/stylesheets
-    - _assets/page_assets
-  features:
-    liquid: true # default: false
-    automatic_img_size: true # default: true
-    automatic_img_alt : true # default: true
+    - _assets/javascripts # TODO: rename to js
+    - _assets/stylesheets # TODO: rename to css
+    - _assets/page_assets # TODO: move these
