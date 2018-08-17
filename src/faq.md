@@ -1,5 +1,6 @@
 ---
-title: Frequently Asked Questions (FAQ)
+title: Dart FAQ
+short-title: FAQ
 description: You have questions about Dart, we have answers.
 ---
 
@@ -9,7 +10,7 @@ This page collects some of the top questions we've heard from the community
 since Dart was open sourced. For other questions and answers, see:
 
 * [Flutter FAQ]({{site.flutter}}/faq/)
-* [Dart for the web FAQ]({{site.webdev}}/faq)
+* [Dart web development FAQ]({{site.webdev}}/faq)
 
 ## General
 
