@@ -366,6 +366,18 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type.
 
+{% comment %}
+update-for-dart-2
+{% endcomment %}
+<aside class="alert alert-warning" markdown="1">
+  This feature was implemented late in Dart&nbsp;2 development, so
+  **before using `whereType()`, make sure it's implemented.**
+  The first Flutter release expected to implement `whereType()` is
+  **Flutter v0.7.0.**
+  For more information, see
+  [SDK issue #32463.](https://github.com/dart-lang/sdk/issues/32463)
+</aside>
+
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
 
