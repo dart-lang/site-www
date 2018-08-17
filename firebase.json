@@ -206,7 +206,7 @@
       { "source": "/tools/pub/faq?(.html)", "destination": "/tools/faq#pub", "type": 301 },
       { "source": "/tools/pub/installing?(.html)", "destination": "/tools/pub/environment-variables", "type": 301 },
       { "source": "/tools/pub/transformers{,/**}", "destination": "/tools/pub/obsolete", "type": 301 },
-      { "source": "/tools/pub/**/glossary?(.html)", "destination": "/tools/pub", "type": 301 },
+      { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "https://webdev.dartlang.org/tools/webstorm", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dartlang.org/packages/observable", "type": 301 }
