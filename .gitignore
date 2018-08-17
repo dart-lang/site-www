@@ -37,3 +37,4 @@ publish
 tmp
 trash
 firebase-debug.log
+*.cache
