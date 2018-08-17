@@ -70,17 +70,16 @@ Such functions return their value using a [Future.][Future]
 
 ## What is a Future? {#what-is-a-future}
 
-A Future represents an asynchronous operation that, optionally,
-returns a value. When a function that returns a Future is invoked,
+A Future represents an asynchronous operation that returns a value (which
+can be `void`). When a function that returns a Future is invoked,
 two things happen:
 
 1. The function queues up work to be done and returns an uncompleted Future
    object.
 1. Later, when the operation is finished, the Future object
-   completes, often with some value (or with an error, or nothing at all; we'll
-   discuss that later).
+   completes with a value or with an error.
 
-To schedule code that depends on a Future, you have two options:
+When writing code that depends on a Future, you have two options:
 
 * Use `async` and `await`
 * Use the Future API
@@ -213,14 +212,14 @@ when it reaches the first occurrence of any of the following:
 
 * The function's first `await` expression (after the function
   gets the uncompleted Future from that expression).
-* The function's `return` statement.
+* Any `return` statement in the function.
 * The end of the function body.
 
 
 ### Handling errors {#handling-errors-async}
 
 If a Future-returning function completes with an error, you probably want to
-capture that error. Async functions can use try-catch to capture the error.
+capture that error. Async functions can handle errors using try-catch:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (try-catch)"?>
 {% prettify dart %}
