@@ -51,7 +51,7 @@ A pubspec can have the following fields:
   [_Learn more._](#dependencies)
 
 `environment`
-: Optional. It should be used to require a compatible version of the Dart SDK.
+: Required as of Dart 2.
   [_Learn more._](#sdk-constraints)
 
 `executables`
@@ -93,9 +93,6 @@ dependencies:
   transmogrify: ^0.4.0
 dev_dependencies:
   test: '>=0.6.0 <0.12.0'
-dependency_overrides:
-  transmogrify:
-    path: ../transmogrify_patch/
 {% endprettify %}
 
 
@@ -251,13 +248,14 @@ publish_to: none
 
 ### SDK constraints
 
-A package can indicate which versions of its dependencies it supports, but there
-is another implicit dependency all packages have: the Dart SDK itself.
-Since the Dart platform evolves over time, a package may only work with certain
-versions of it.
+A package can indicate which versions of its dependencies it supports, but
+packages have another implicit dependency: the Dart platform itself.
+The Dart platform evolves over time, and a package might only work with certain
+versions of the platform.
 
-A package can specify that using an *SDK constraint*. This goes inside a
-separate top-level `environment` field in the pubspec and uses the same
+A package can specify those versions using an *SDK constraint*. This
+constraint goes inside a separate top-level `environment` field in the pubspec
+and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies.
 
@@ -275,8 +273,6 @@ with the version of the Dart SDK that you have installed.
 <aside class="alert alert-warning" markdown="1">
   **Don't use caret syntax** (`^`) for the SDK constraint,
   and **do include an upper bound** (`<3.0.0`, usually).
-  Packages that break these rules might stop working in the future
-  and, for that reason, might not be allowed on pub.dartlang.org.
   For more information, see [Dart 2 Updates.](/dart-2)
 </aside>
 
@@ -284,7 +280,7 @@ with the version of the Dart SDK that you have installed.
 #### Flutter SDK constraints
 
 As of Dart 1.19.0,
-pub supports Flutter SDK constraints under the `environment:` field, like so:
+pub supports Flutter SDK constraints under the `environment:` field:
 
 {% prettify yaml %}
 environment:
@@ -292,7 +288,7 @@ environment:
   flutter: ^0.1.2
 {% endprettify %}
 
-A Flutter SDK constraint is only satisfied if pub is running in the
+A Flutter SDK constraint is satisfied only if pub is running in the
 context of the `flutter` executable, and the Flutter SDK's
 `version` file matches the given version constraint. Otherwise,
 the package will not be selected.
