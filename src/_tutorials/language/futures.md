@@ -97,8 +97,8 @@ update-for-dart-2
 {% endcomment %}
 
 The following app simulates reading the news by using async and await to read
-the contents of a file on www.dartlang.org. Click run ( {% img 'red-run.png'
-%} ) to start the app.
+the contents of a file on www.dartlang.org.
+Click run ( {% asset red-run.png %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/chalin/a345206b09cc09eee1753fab11ec006b
@@ -255,8 +255,8 @@ To write asynchronous code using the Future API, you use the `then()` method
 to register a callback.  This callback fires when the Future completes.
 
 The following app simulates reading the news by using the Future API to read
-the contents of a file on www.dartlang.org.  Click run ( {% img 'red-run.png'
-%} ) to start the app.
+the contents of a file on www.dartlang.org.
+Click run ( {% asset red-run.png %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/chalin/5e7eb16cd725f0a51926b85e3caa64b5

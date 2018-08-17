@@ -25,7 +25,7 @@ section.
 The following diagram shows the layout of the simplest
 library package:
 
-{% img 'libraries/simple-lib2.png' %}
+{% asset libraries/simple-lib2.png %}
 
 The minimal requirements for a library are:
 
@@ -97,7 +97,7 @@ package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart
 library packages:
 
-{% img 'libraries/shelf.png' %}
+{% asset libraries/shelf.png %}
 
 Directly under lib, the main library file,
 `shelf.dart`, exports several files from lib/src:
@@ -147,7 +147,7 @@ When in doubt, use the `package:` directive; it works in all cases.
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
 
-{% img 'libraries/import-lib-rules.png' %}
+{% asset libraries/import-lib-rules.png %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
