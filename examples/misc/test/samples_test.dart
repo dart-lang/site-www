@@ -152,7 +152,7 @@ void main() {
 
   test('async', () {
     // #docregion async
-    Future<Null> printWithDelay(String message) async {
+    Future<void> printWithDelay(String message) async {
       await Future.delayed(oneSecond);
       print(message);
     }
@@ -163,7 +163,7 @@ void main() {
 
   test('Future.then', () {
     // #docregion Future-then
-    Future<Null> printWithDelay(String message) {
+    Future<void> printWithDelay(String message) {
       return Future.delayed(oneSecond).then((_) {
         print(message);
       });
@@ -186,7 +186,7 @@ void main() {
 
     test('await', () {
       // #docregion await
-      Future<Null> createDescriptions(Iterable<String> objects) async {
+      Future<void> createDescriptions(Iterable<String> objects) async {
         for (var object in objects) {
           try {
             var file = File('$object.txt');
