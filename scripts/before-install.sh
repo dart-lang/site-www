@@ -26,7 +26,7 @@ travis_fold end before_install.ruby_bundler
 
 travis_fold start before_install.npm_install
   if [[ -n "$TRAVIS" || -n "$FORCE" || -z "$(type -t firebase)" || -z "$(type -t gulp)" || -z "$(type -t superstatic)" ]]; then
-    (set -x; npm install --global firebase-tools gulp-cli superstatic --no-optional)
+    (set -x; npm install --global firebase-tools@4.0.3 gulp-cli superstatic@5.0.2 --no-optional)
   else
     echo "Global NPM packages already installed. Use --force to reinstall/update."
   fi

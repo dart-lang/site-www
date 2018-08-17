@@ -26,23 +26,14 @@ src/site/events/2015/summit/node_modules
 
 /src/_data/ci.yaml
 
-# ============= OCUPOP =============
-# RVM users
-.ruby-gemset
-.ruby-version
-
 # Cache files
-.sass-cache
-.asset-cache
+*.cache
 .jekyll-metadata
 
 # Deployment Files
 publish
-credentials.tar.gz
-client-secret.json
-tmp
 
 # Misc
+tmp
 trash
-
 firebase-debug.log
