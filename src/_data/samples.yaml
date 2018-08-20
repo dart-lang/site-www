@@ -1,0 +1,156 @@
+## This info is obsolete, but is left here for now.
+
+col1:
+  -
+    heading: Animation and graphics
+    anchor: animation_and_graphics
+    screenshot: stagexl.png
+    caption: "FlipBook: Sprite sheet animations with StageXL"
+    link: http://www.stagexl.org/samples/flipbook/
+    examples:
+      -
+        title: Working with requestAnimationFrame
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/speed/animations#working-with-requestanimationframe
+        tryit_url: raf/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/speed/animations
+        description: A sample that demonstrates the correct way to use rAF.
+      -
+        title: 3D solar system animation
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/webgl/solar3d#3d-solar-system-simulation
+        tryit_url: solar3d/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/webgl/solar3d
+        description: A solar system implementation using WebGL.
+      -
+        title: Using image filters with canvas
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/canvas/imagefilters#using-image-filters-with-canvas
+        tryit_url: imagefilters/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/canvas/imagefilters
+        description: Process pixels, run simple filters, and modify an image using convolution filters.
+      -
+        title: "Shaped masks with StageXL"
+        explanation_url: https://github.com/bp74/StageXL_Samples/tree/master/web/mask#mask
+        tryit_url: http://www.stagexl.org/samples/mask/
+        source_url: https://github.com/bp74/StageXL_Samples/tree/master/web/mask
+        description: Simple demo showing flowers and the effect when different masks are applied.
+      -
+        title: "Sprite sheet animations with StageXL"
+        explanation_url: https://github.com/bp74/StageXL_Samples/tree/master/web/flipbook#flipbook
+        tryit_url: http://www.stagexl.org/samples/flipbook/
+        source_url: https://github.com/bp74/StageXL_Samples/tree/master/web/flipbook
+        description: Initialize the StageXL Stage, and the RenderLoop. Use the FlipBook class to play sprite sheet animations.
+      -
+        title: "Adobe Flash game ported to HTML5 using StageXL"
+        explanation_url: https://github.com/bp74/StageXL_Samples/tree/master/web/escape#escape
+        tryit_url: http://www.stagexl.org/samples/escape/
+        source_url: https://github.com/bp74/StageXL_Samples/tree/master/web/escape
+        description: From Flash to HTML5, with similarity between ActionScript and Dart making it easy to convert AS3 files to Dart.
+
+  -
+    heading: HTML5 persistence
+    anchor: html5_persistence
+    screenshot: terminal.png
+    caption: "Terminal: A terminal emulator that uses FileSystem APIs"
+    link: terminal/
+    examples:
+      -
+        title: LocalStorage 101
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/localstorage/basics#localstorage-101
+        tryit_url: localstorage/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/localstorage/basics
+        description: A dead-simple example that uses LocalStorage.
+      -
+        title: Simple todo app using IndexedDB
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/indexeddb/todo#simple-todo-app-using-indexeddb
+        tryit_url: indexeddb_todo/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/indexeddb
+        description: A todo app which persists data using IndexedDB.
+      -
+        title: Exploring the FileSystem APIs
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/filesystem#exploring-the-filesystem-apis
+        tryit_url: filesystem/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/filesystem
+        description: Read, write, and navigate to a sandboxed section of your local file system.
+      -
+        title: A terminal emulator that uses the FileSystem APIs
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/terminal#a-terminal-emulator-that-uses-the-filesystem-apis
+        tryit_url: terminal/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/terminal
+        description: A Unix terminal in the web that manipulates the local file system.
+
+  -
+    heading: Other HTML5 APIs
+    anchor: other_html5_apis
+    screenshot: files.png
+    caption: "Using the Files API"
+    link: dndfiles/
+
+    examples:
+      -
+        title: WebSockets 101
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/websockets/basics#websockets-101
+        tryit_url: websockets/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/websockets/basics
+        description: Example that opens a WebSocket connection to an echo server, and sends and receives data.
+      -
+        title: Basic HTML5 drag and drop
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/dnd/basics#basic-drag-and-drop
+        tryit_url: dnd/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/dnd/basics
+        description: A simple demo of HTML5 Drag and Drop to move elements on a page.
+      -
+        title: Using Application Cache
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/appcache/beginner#using-application-cache
+        tryit_url: appcache/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/appcache/beginner
+        description: Use Application Cache to tell the browser which files it should cache and make available to offline users.
+      -
+        title: Basic geolocation example
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/geolocation/trip_meter#trip-meter-a-basic-geolocaton-example
+        tryit_url: geolocation/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/geolocation/trip_meter
+        description: Calculate the distance traveled between locations.
+
+      -
+        title: Getting started with Web Audio API
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/webaudio/intro#getting-started-with-web-audio-api
+        tryit_url: webaudio/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/webaudio/intro
+        description: Sample that shows processing and synthesizing audio using the Web Audio API.
+      -
+        title: Using the Files API
+        explanation_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/dndfiles#using-the-file-api
+        tryit_url: dndfiles/
+        source_url: https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/dndfiles
+        description: Select a file using a form input, or using drag and drop, and monitor progress while uploading a file.
+
+  -
+    heading: Web programming fundamentals
+    anchor: web_programming_fundamentals
+    screenshot: todo.png
+    caption: "Todo: Adding elements to the low-level DOM"
+    link: /docs/tutorials/add-elements/#try-app
+    examples:
+      -
+        title: Adding elements to the DOM
+        explanation_url: /docs/tutorials/add-elements/
+        tryit_url: /docs/tutorials/add-elements/#try-app
+        source_url: /docs/tutorials/add-elements/#try-app
+        description: "A todo app using the dart:html library."
+      -
+        title: Removing elements from the DOM
+        explanation_url: /docs/tutorials/remove-elements
+        tryit_url: /docs/tutorials/remove-elements/#try-app
+        source_url: /docs/tutorials/remove-elements/#try-app
+        description: A todo app with a delete option.
+      -
+        title: Working with JSON
+        explanation_url: /docs/tutorials/fetchdata/#about-json
+        source_url: /docs/tutorials/fetchdata/#about-json
+        tryit_url: /docs/tutorials/fetchdata/#about-json
+        description: A sample app that shows JSON data obtained from a form.
+      -
+        title: Fetching data dynamically
+        explanation_url: /docs/tutorials/fetchdata/#using-getString-function
+        source_url: /docs/tutorials/fetchdata/#using-getString-function
+        tryit_url: /docs/tutorials/fetchdata/#using-getString-function
+        description: Using HttpRequest to fetch data.

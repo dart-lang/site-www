@@ -1,0 +1,4 @@
+name: post_data_to_server
+description: A sample web application
+dependencies:
+  browser: any

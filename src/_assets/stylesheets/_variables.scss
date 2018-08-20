@@ -1,0 +1,107 @@
+/* -----------------------------------------
+   Variables
+----------------------------------------- */
+
+// Color Palette
+$gray-base:                 #111111;
+$white-base:                #ffffff;
+$gray:                      #D3D3D3;
+$gray-light:                #eeeeee;
+$gray-lighter:              #f0f0f0;
+$gray-dark:                 #111111;
+$teal:                      #1FBAAC;
+$blue:                      #1b87c9;
+$blue-light:                #e2f4fd;
+
+$brand-primary-dark:        #02569B; // 700
+$brand-primary:             #0175C2; // 600
+$brand-secondary:           #13B9FD; // 400
+$brand-highlight:           #FFC108; // 700
+
+$google-gray:               #202124; // 900
+$google-gray-light:         #60646B; // 600
+$google-gray-lighter:       #D5D7DA; // 100
+
+$default-link:              #0175C2;
+$default-link-visited:      #0175C2;
+
+// Typography
+$font-family-base:          Roboto, sans-serif;
+$font-family-monospace:     Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+$google-font-family:        "Product Sans", $font-family-base;
+
+// Baseline
+$font-size-base:          16px;
+// $line-height-base:        1.428571429 !default;
+
+// Headings
+$font-size-h1:            37px;
+$font-size-h2:            28px;
+$font-size-h3:            24px;
+$font-size-h4:            21px;
+$font-size-h5:            18px;
+$font-size-h6:            16px;
+
+// Spacing
+$live-content-width:      1280px;
+$content-padding:         20px;
+
+// Alerts
+$alert-success-bg:        #dff0d8;
+$alert-info-bg:           $blue-light;
+$alert-warning-bg:        #fcf8e3;
+$alert-danger-bg:         #f2dede;
+
+// Border Radius
+$border-radius-base:        0px;
+$border-radius-large:       0px;
+$border-radius-small:       0px;
+
+
+
+
+
+//== Popovers
+//
+//##
+
+//** Popover body background color
+$popover-bg:                          #fff !default;
+//** Popover maximum width
+$popover-max-width:                   276px !default;
+//** Popover border color
+$popover-border-color:                rgba(0,0,0,0);
+//** Popover fallback border color
+$popover-fallback-border-color:       transparent;
+
+//** Popover title background color
+$popover-title-bg:                    darken($popover-bg, 3%) !default;
+
+//** Popover arrow width
+$popover-arrow-width:                 12px;
+//** Popover arrow color
+$popover-arrow-color:                 $popover-bg;
+
+//** Popover outer arrow width
+$popover-arrow-outer-width:           ($popover-arrow-width + 1) !default;
+//** Popover outer arrow color
+$popover-arrow-outer-color:           fade_in($popover-border-color, 0.05) !default;
+//** Popover outer arrow fallback color
+$popover-arrow-outer-fallback-color:  darken($popover-fallback-border-color, 20%) !default;
+
+
+//== Code
+//
+//##
+
+$code-color:                  #c7254e;
+$code-bg:                     #f9f9f9;
+
+$kbd-color:                   #fff;
+$kbd-bg:                      #333;
+
+// $pre-bg:                      #f5f5f5 !default;
+// $pre-color:                   $gray-dark !default;
+// $pre-border-color:            #ccc !default;
+// $pre-scrollable-max-height:   340px !default;
+

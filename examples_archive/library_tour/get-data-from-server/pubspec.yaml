@@ -1,0 +1,4 @@
+name: getting_data_from_server
+description: A sample web application
+dependencies:
+  browser: any

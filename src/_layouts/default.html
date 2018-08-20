@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}">
+    {% include page-header.html %}
+    <main id="page-content">
+      {% include navigation-side.html %}
+      {% include navigation-toc.html %}
+      <article>
+        <div class="content">
+          {% include banner.html %}
+          {% include navigation-sub.html %}
+          {% include breadcrumbs.html %}
+          <div>
+            {% include page-github-links.html %}
+            <h1>{{ page.title }}</h1>
+          </div>
+          {{ content | inject_anchors }}
+          {% include navigation-sub.html %}
+        </div>
+      </article>
+    </main>
+    {% include page-footer.html %}
+  </body>
+</html>

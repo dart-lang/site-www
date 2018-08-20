@@ -1,0 +1,40 @@
+*.iml
+*.js.deps
+*.pyc
+*.swp
+.buildlog
+.dart_tool
+.DS_Store
+.idea
+.packages
+.pub
+.sass-cache/
+.vscode
+_asset_bundler_cache
+_bookhtml
+_cache/
+_site/
+build
+node_modules/
+pubspec.lock
+scripts/packages
+# We haven't had any issues due to npm (sub-)package version discrepancies,
+# so we'll ignore the npm lock file for now.
+package-lock.json
+
+src/site/events/2015/summit/node_modules
+
+/src/_data/ci.yaml
+
+# Cache files
+*.cache
+.jekyll-metadata
+
+# Deployment Files
+publish
+
+# Misc
+tmp
+trash
+firebase-debug.log
+*.cache

@@ -1,0 +1,10 @@
+name: dartlang_strong
+description: dartlang.org strong mode examples
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  test: ^1.0.0
+  dartlang_examples_util:
+    path: ../util

@@ -1,0 +1,59 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="en_US" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">{%
+  assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160
+  %}
+  <meta name="description" content="{{desc}}">
+  <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="{% asset_path 'touch-icon-iphone.png' %}" rel="apple-touch-icon">
+  <link href="{% asset_path 'touch-icon-ipad.png' %}" rel="apple-touch-icon" sizes="76x76">
+  <link href="{% asset_path 'touch-icon-iphone-retina.png' %}" rel="apple-touch-icon" sizes="120x120">
+  <link href="{% asset_path 'touch-icon-ipad-retina.png' %}" rel="apple-touch-icon" sizes="152x152">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:description" content="{{desc}}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{desc}}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />{%
+    assign og_image_path = page.og_image | default: layout.og_image | default: '/assets/shared/dart-logo-for-shares.png' %}{%
+    assign og_type = page.og_type | default: layout.og_type
+  %}{% comment %}
+  Add page URL to page relative paths
+  {% endcomment %}{%
+  assign og_image_start = og_image_path | slice: 0
+  %}{% unless og_image_start == '/' %}{% capture og_image_path %}{{page.url}}/{{og_image_path}}{% endcapture %}{% endunless %}
+  <meta property="og:image" content="{{og_image_path | absolute_url}}{{site.og_image_vers}}" />{%
+  if og_type %}
+  <meta property="og:type" content="{{og_type}}" />{%
+  endif %}
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+  {% stylesheet style %}
+  {% for css in page.css -%}
+    <link href="{{css}}" rel="stylesheet" type="text/css">
+  {%- endfor %}
+  <!--
+    Why don't we use Dart here?
+
+    The only scripting we use here is stuff like the on-click footnotes on the
+    front page or resizing of the left nav. These happen to be use cases where
+    JavaScript and jQuery are doing just fine. Dart is here for application
+    programming, not page scripting.
+   -->
+  {% javascript main %}
+  {% for js in page.js -%}
+  <script {% if js.defer %}defer{% endif %} src="{{ js.url }}"></script>
+  {%- endfor %}
+  {% include analytics.html %}
+</head>
