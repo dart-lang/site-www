@@ -87,7 +87,6 @@ bundler_args: --without production
 exclude: [diagrams]
 
 plugins:
-- jekyll-assets
 - jekyll-toc
 
 # Increment this global og:image URL version number (used as a query parameter)
