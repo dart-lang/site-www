@@ -24,7 +24,6 @@ else
 fi
 
 echo "Ruby --version: $(ruby --version)"
-rvm list
 
 if [[ ! -e ~/.rvmrc ]] || ! grep -q rvm_silence_path_mismatch_check_flag ~/.rvmrc;  then
     echo rvm_silence_path_mismatch_check_flag=1 >> ~/.rvmrc
