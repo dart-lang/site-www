@@ -1,0 +1,10 @@
+name: dart_up_and_running_samples
+dependencies:
+  lib1:
+    path: lib1
+  lib2:
+    path: lib2
+  mylib:
+    path: mylib
+  utils:
+    path: utils

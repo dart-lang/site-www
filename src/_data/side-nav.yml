@@ -1,0 +1,58 @@
+- title: Language
+  permalink: /guides/language
+  urlExactMatch: true
+  children:
+    - title: Tour
+      permalink: /guides/language/language-tour
+    - title: Effective Dart
+      permalink: /guides/language/effective-dart
+      children:
+        - title: Style
+          permalink: /guides/language/effective-dart/style
+        - title: Documentation
+          permalink: /guides/language/effective-dart/documentation
+        - title: Usage
+          permalink: /guides/language/effective-dart/usage
+        - title: Design
+          permalink: /guides/language/effective-dart/design
+    - title: Sample Code
+      permalink: /samples
+
+- title: Libraries
+  permalink: /guides/libraries
+  urlExactMatch: true
+  children:
+    - title: Tour
+      permalink: /guides/libraries/library-tour
+
+- title: Platforms
+  permalink: /guides/platforms
+  urlExactMatch: true
+  children:
+    - title: Mobile (Flutter)
+      permalink: https://flutter.io
+    - title: Web
+      permalink: https://webdev.dartlang.org
+    - title: Server
+      permalink: /dart-vm
+
+- title: Testing
+  permalink: /guides/testing
+  urlExactMatch: true
+
+- title: Resources
+  # permalink: /resources
+  # urlExactMatch: true
+  children:
+  - title: Install
+    permalink: /install
+  - title: Codelabs
+    permalink: /codelabs
+  - title: Tutorials
+    permalink: /tutorials
+  - title: Articles
+    permalink: /articles
+  - title: Tools
+    permalink: /tools
+  - title: Community and Support
+    permalink: /community

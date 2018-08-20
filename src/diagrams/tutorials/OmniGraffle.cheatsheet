@@ -1,0 +1,20 @@
+Dear OmniGraffle,
+
+I both love you and hate you!
+
+Mostly, I love you, but you do exhibit some behaviors that can be 
+a tad frustrating, confusing, and/or undecipherable.
+
+So here is the beginning of a cheat sheet for future maintainers
+and creators of these files--most likely ME.
+
+Please add to this page, as appropriate.
+
+--shams
+
+
+- OmniGraffle wants to convert all single and double quotes to the
+  slanted variety, which is not Dart-like. To circumvent this behavior,
+  you can either copy/paste a straight quote from another
+  OmniGraffle file, OR you can type control-quote.
+  This works for both single- and double-quotes.

@@ -1,0 +1,20 @@
+<div id="sidenav" class="">
+  <div class="content">
+    <a href="/" class="brand" title="{{ site.title }}">
+      <img src="{% asset_path 'shared/dart/logo+text/horizontal/default.svg' %}" alt="{{ site.title }}">
+    </a>
+
+    <div class="sidenav__search">
+      <p>
+        <a href="/search">Search <i class="icon icon-search"></i></a>
+      </p>
+    </div>
+
+    <ul>
+      <li>
+        <a class="btn btn-default{% if page.url == '/guides/get-started' %} active{% endif %}" href="/guides/get-started">Get Started</a>
+      </li>
+    </ul>
+    {% include linklist.html list=site.data.side-nav %}
+  </div>
+</div>

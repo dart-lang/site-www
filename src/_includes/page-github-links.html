@@ -1,0 +1,19 @@
+{% if page.long-title or page.title -%}
+<ul class="page-github-links-menu" role="group">
+  <li>
+    <a href="{{site.repo}}/tree/{{site.branch}}/{{site.source}}/{{page.path}}"
+      class="no-automatic-external"
+      title="View page source"
+      target="_blank" rel="noopener">
+      <i class="fab fa-github fa-sm"></i>
+    </a>
+  </li>
+  <li>
+    <a href="{{site.repo}}/issues/new?title='{{page.title}}' page issue&body=From URL: {{site.url}}{{page.url}}"
+      class="no-automatic-external"
+      title="Report a bug on this page" target="_blank" rel="noopener">
+      <i class="fas fa-bug fa-sm"></i>
+    </a>
+  </li>
+</ul>
+{%- endif %}
