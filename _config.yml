@@ -93,10 +93,3 @@ plugins:
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
-
-assets:
-  sources:
-    - _assets/icons
-    - _assets/javascripts # TODO: rename to js
-    - _assets/stylesheets # TODO: rename to css
-    - _assets/page_assets # TODO: move these

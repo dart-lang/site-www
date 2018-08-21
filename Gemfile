@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass' # Use 'bootstrap'for v4
-gem 'font-awesome-sass', '5.0.13' # TODO: remove version, this is temporary to minimize diffs
+gem 'font-awesome-sass'
 gem 'html-proofer'
 gem 'jekyll'
 gem 'jekyll-assets', group: :jekyll_plugins
