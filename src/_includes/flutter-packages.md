@@ -1,5 +1,5 @@
 <aside class="alert alert-warning"><div class="alert-with-image">
-  <img src="{% asset_path shared/flutter/logo/default.svg %}" alt="[Flutter]">
+  <img src="{% asset shared/flutter/logo/default.svg @path %}" alt="[Flutter]">
   <div markdown="1">
   **Important:**
   The Flutter SDK has its own commands for managing and updating packages.

@@ -22,7 +22,7 @@ support the Dart language.
 
 ## DartPad
 
-<img src="{% asset_path dartpad-hello.png %}" alt="DartPad Hello World"
+<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World"
  width="200px" align="right" />
 [DartPad](/tools/dartpad) is
 a great, no-download-required way to learn Dart syntax
@@ -37,18 +37,18 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
-<img src="{% asset_path 'tools/android_studio.png' %}"
+<img src="{% asset tools/android_studio.png @path %}"
      width="48" alt="IntelliJ logo">
 <a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/intellij-idea.svg' %}"
+<img src="{% asset tools/intellij-idea.svg @path %}"
      width="48" alt="IntelliJ logo">
 <a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/vscode.png' %}" alt="Visual Studio Code logo">
+<img src="{% asset tools/vscode.png @path %}" alt="Visual Studio Code logo">
 <a class="no-automatic-external" href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
@@ -58,15 +58,15 @@ and available as open source.
 
 <ul class="col2">
 <li>
-<img src="{% asset_path 'tools/atom-logo.png' %}" alt="Atom logo">
+<img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
 <a class="no-automatic-external" href="https://github.com/dart-atom/dartlang/"><b>Atom</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/emacs.png' %}" alt="Emacs logo">
+<img src="{% asset tools/emacs.png @path %}" alt="Emacs logo">
 <a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="{% asset_path 'tools/vim.png' %}" alt="Vim logo">
+<img src="{% asset tools/vim.png @path %}" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 </ul>

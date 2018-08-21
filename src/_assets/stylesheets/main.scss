@@ -1,7 +1,8 @@
 @import '_variables';
 @import '_colors';
-@import "bootstrap-sprockets";
+@import "bootstrap-sprockets"; // TODO: remove for BS 4
 @import "bootstrap";
+// @import "bootstrap/_reboot.css"; // TODO: use for BS 4
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -139,7 +140,7 @@ pre {
     //   display: block;
     //   z-index: 10;
     //   background-color: $white-base;
-    //   background-image: url('{% asset_path "shared/dart/logo/default.svg" %}');
+    //   background-image: asset_url('shared/dart/logo/default.svg');
     //   background-size: 18px;
     //   background-position: 7px center;
     //   background-repeat: no-repeat;
@@ -633,7 +634,7 @@ main .content {
       .octicon-link {
         @include transition(.1s);
 
-        background-image: url('{% asset_path "ic_link_black_24px.svg" %}');
+        background-image: asset_url('ic_link_black_24px.svg');
         display: block;
         height: $icon-size;
         opacity: 0;
@@ -710,7 +711,7 @@ main .content {
     left: 10px;
     width: 18px;
     height: 18px;
-    background-image: url('{% asset_path "shared/dart/logo/default.svg" %}');
+    background-image: asset_url('shared/dart/logo/default.svg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

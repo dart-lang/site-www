@@ -10,12 +10,12 @@ guidelines. With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
-{% img 'guides/avoid-empty-statements.png' %}
+{% asset guides/avoid-empty-statements.png %}
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
-{% img 'guides/close-sinks.png' %}
+{% asset guides/close-sinks.png %}
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
@@ -99,7 +99,7 @@ If no file is available, the analyzer defaults to standard checks.
 
 Consider the following directory structure for a large project:
 
-{% img 'guides/analysis-options-directory-structure.png' %}
+{% asset guides/analysis-options-directory-structure.png %}
 
 The analyzer will use file #1 to analyze the code in `my_other_package`
 and `my_other_other_package`, and file #2 to analyze the code in

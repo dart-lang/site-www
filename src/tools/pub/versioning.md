@@ -51,7 +51,7 @@ all works fine as long as none of those dependencies _overlap_.
 
 But consider the following example:
 
-{% img 'tools/pub/PubConstraintsDiagram.png' %}
+{% asset tools/pub/PubConstraintsDiagram.png %}
 
 So your app uses `widgets` and `templates`, and _both_ of those use
 `collection`. This is called a **shared dependency**. Now what happens when
@@ -272,7 +272,7 @@ containing app.
 Package authors must define package contraints with care.
 Consider the following scenario:
 
-{% img 'tools/pub/PubExportedConstraints.png' %}
+{% asset tools/pub/PubExportedConstraints.png %}
 
 The `bookshelf` package depends on `widgets`.
 The `widgets` package, currently at 1.2.0, exports
