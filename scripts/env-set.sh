@@ -2,6 +2,4 @@
 
 source scripts/shared/env-set.sh
 
-# site-www specific settings here:
-
-export SITE_LOCALHOST_PORT=4000
+# site-www specific settings here: currently, none.
