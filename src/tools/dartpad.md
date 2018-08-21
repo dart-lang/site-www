@@ -9,7 +9,7 @@ is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Here's what DartPad looks like:
 
-<img src="{% asset_path dartpad-hello.png %}" alt="DartPad Hello World" />
+<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
 
 ## Library support

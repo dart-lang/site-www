@@ -95,8 +95,7 @@ before its body. The `await` keyword works only in async functions.
 {% include async-await-2.0.md %}
 
 The following app simulates reading the news by using async and await to read
-the contents of a file on www.dartlang.org. Click run ( {% img 'red-run.png'
-%} ) to start the app.
+the contents of a file on www.dartlang.org. Click run ( {% asset red-run.png %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/kwalrath/477fb799d21401f46f8c04462fd249c4
@@ -267,8 +266,7 @@ To write asynchronous code using the Future API, you use the `then()` method
 to register a callback.  This callback fires when the Future completes.
 
 The following app simulates reading the news by using the Future API to read
-the contents of a file on www.dartlang.org.  Click run ( {% img 'red-run.png'
-%} ) to start the app.
+the contents of a file on www.dartlang.org.  Click run ( {% asset red-run.png %} ) to start the app.
 
 {% comment %}
 https://gist.github.com/kwalrath/5ceabe371903b6672026bd3fb30cdf5b

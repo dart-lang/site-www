@@ -25,7 +25,7 @@ The following publications cover Dart 1.x.
 {% for book in site.data.books %}
 <div class="item-with-pic">
   <a href="{{ book.link }}" title="{{ book.title }}">
-    <img src="{% asset_path 'covers/{{ book.cover }}' %}" alt="Cover: {{ book.title }}"/>
+    <img src="{% asset 'cover/{{ book.cover }}' @path %}" alt="Cover: {{ book.title }}"/>
   </a>
   <div class="details">
     <h3 class="title"><a href="{{ book.link }}" title="{{ book.title }}">{{ book.title }}</a></h3>

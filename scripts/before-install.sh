@@ -32,4 +32,6 @@ travis_fold start before_install.npm_install
   fi
 travis_fold end before_install.npm_install
 
-pub upgrade
+travis_fold start before_install.pub
+  pub upgrade
+travis_fold end before_install.pub
