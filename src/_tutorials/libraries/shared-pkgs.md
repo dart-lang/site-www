@@ -214,11 +214,11 @@ only one, `lib`, was installed when you ran pub get.
 <div>
   <hr>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-3">
     <img class="scale-img-max" src="/tutorials/images/libraries-folder.png"
          alt="Dart libraries directory"/>
     </div>
-    <div class="col-md-7">
+    <div class="col-lg-7">
       <em>Dart libraries:</em>
       The lib directory contains one or more Dart libraries,
       which can be imported into your Dart programs.
@@ -226,11 +226,11 @@ only one, `lib`, was installed when you ran pub get.
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-3">
     <img class="scale-img-max" src="/tutorials/images/housekeeping-files.png"
          alt="Housekeeping files"/>
     </div>
-    <div class="col-md-7">
+    <div class="col-lg-7">
       <em>Housekeeping files:</em>
       When using a package written by someone else,
       the README file is a good place to start.
@@ -243,11 +243,11 @@ only one, `lib`, was installed when you ran pub get.
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-3">
     <img class="scale-img-max" src="/tutorials/images/other-folders.png"
          alt="Document, scripts, tests, and other resources"/>
     </div>
-    <div class="col-md-7">
+    <div class="col-lg-7">
       <em>Other resources:</em>
       Along with Dart libraries,
       a package might also contain other resources

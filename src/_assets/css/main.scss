@@ -690,10 +690,10 @@ main .content {
 
   font-weight: normal;
   font-size: $font-size-base * 0.8;
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     font-size: $font-size-base * 0.7;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     font-size: $font-size-base * 0.8;
   }
 
@@ -1043,11 +1043,11 @@ h3.popover-header {
   > img {
     margin-right: $content-padding * 2;
     width: $font-size-base * 3;
-    @include media-breakpoint-down(xs) { display: none; }
+    @include media-breakpoint-down(sm) { display: none; }
   }
   > div {
     display: table-cell;
-    @include media-breakpoint-up(xs) { padding-left: $content-padding; }
+    @include media-breakpoint-up(sm) { padding-left: $content-padding; }
     vertical-align: top;
   }
 }
@@ -1183,6 +1183,10 @@ body.obsolete {
 /* -----------------------------------------
   Media Queries
  ----------------------------------------- */
+
+$extra-grid-breakpoints: (
+  between-md-lg: (map-get($grid-breakpoints, md) + map-get($grid-breakpoints, lg)) / 2
+);
 
 @media(max-width: 1200px) {
   #toc {
