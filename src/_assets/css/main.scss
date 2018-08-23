@@ -1,8 +1,8 @@
+//= require vendor/code-prettify/prettify.css
+
 @import '_variables';
 @import '_colors';
-@import "bootstrap-sprockets"; // TODO: remove for BS 4
-@import "bootstrap";
-// @import "bootstrap/_reboot.css"; // TODO: use for BS 4
+@import 'bootstrap';
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -17,6 +17,10 @@
 @import '_books';
 @import '_os-tabs';
 
+// Extra variables (defined in terms of bootstrap and other defaults)
+
+$font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
+
 /* -----------------------------------------
   Global
   ----------------------------------------- */
@@ -24,7 +28,7 @@ body {
  font-family: $font-family-base;
  font-size: $font-size-base;
 }
-main {}
+
 section {
  position: relative;
 }
@@ -124,7 +128,7 @@ input, select {
   }
 }
 
-pre {
+pre, pre.prettyprint {
   padding: $content-padding;
   background-color: $gray-light;
   color: $blue;
@@ -686,10 +690,10 @@ main .content {
 
   font-weight: normal;
   font-size: $font-size-base * 0.8;
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(sm) {
     font-size: $font-size-base * 0.7;
   }
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(md) {
     font-size: $font-size-base * 0.8;
   }
 
@@ -966,17 +970,40 @@ li.card {
   }
 }
 
+// Popovers
+
+.popover {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+h3.popover-header {
+  font-weight: $font-weight-light-bold;
+  margin-top: 0;
+}
+
+@mixin popover-open {
+  &.popover-open {
+    font-weight: 500;
+    border-color: $default-link;
+  }
+}
+
+[data-toggle="popover"] {
+	background: none;
+	border-bottom: 2px dotted $gray;
+	padding: 0;
+  cursor: pointer;
+  @include popover-open;
+}
+
+@media (hover: hover) {
+  [data-toggle="popover"]:hover { border-color: $default-link !important; }
+}
+
 .table {
   width: 100%;
   @extend .table-striped;
   @extend .table-bordered;
-}
-
-.popover {
-  border-radius: 0;
-  .popover-title {
-    border-radius: 0;
-  }
 }
 
 .alert {
@@ -1016,11 +1043,11 @@ li.card {
   > img {
     margin-right: $content-padding * 2;
     width: $font-size-base * 3;
-    @media(max-width: $screen-xs-min) { display: none; }
+    @include media-breakpoint-down(xs) { display: none; }
   }
   > div {
     display: table-cell;
-    @media(min-width: $screen-xs-min) { padding-left: $content-padding; }
+    @include media-breakpoint-up(xs) { padding-left: $content-padding; }
     vertical-align: top;
   }
 }

@@ -1,4 +1,5 @@
 //= require vendor/jquery-3.3.1
+//= require popper
 //= require bootstrap
 //= require _utilities
 //= require _search
@@ -96,13 +97,14 @@ $(function() {
   const openPopClass = 'popover-open';
   const popSelector = '[data-toggle="popover"]';
   const openPopSelector = popSelector + '.' + openPopClass;
+
   function setPopovers(root, viewport) {
     const popovers = root.find(popSelector);
     // console.log('>> setPopovers: ' + popovers.length + ', ' + viewport);
     popovers.popover({
-      container: viewport === 'body' ? 'body' : undefined,
+      container: viewport === 'body' ? 'body' : root.find(viewport),
       html: true,
-      placement: 'auto top',
+      placement: 'top',
       trigger: 'focus',
       viewport: viewport,
     }).on('shown.bs.popover', function () {
