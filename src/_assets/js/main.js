@@ -1,9 +1,10 @@
-//= require vendor/jquery-3.3.1.min.js
+//= require vendor/jquery-3.3.1
 //= require bootstrap
 //= require _utilities
 //= require _search
 //= require _os-tabs
 //= require vendor/code-prettify/prettify
+//= require vendor/code-prettify/lang-css
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
