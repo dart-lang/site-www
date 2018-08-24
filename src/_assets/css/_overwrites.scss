@@ -84,19 +84,25 @@ body.homepage {
 }
 
 /* Slogan */
+
 .frontpage-slogan-with-footnotes {
 	@include front-page-first-section-min-height;
 	position: relative;
 }
 
 .frontpage-slogan {
+  .btn-resizable {
+    // Default is md
+    @include media-breakpoint-up(lg) {
+      @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+    }
+  }
 	h3 {
 		text-align: left;
 		background: none;
 		font-size: $font-size-h4;
 
-		@include media-breakpoint-up(md) { font-size: $font-size-h4 * 0.8; }
-		@include media-breakpoint-up(between-md-lg, $extra-grid-breakpoints) { font-size: $font-size-h4 * 0.9; }
+		@include media-breakpoint-up(md) { font-size: $font-size-h4 * 0.9; }
 		@include media-breakpoint-up(lg) { font-size: $font-size-h4; }
 		@include media-breakpoint-up(xl) { font-size: $font-size-h3; }
 

@@ -1184,10 +1184,6 @@ body.obsolete {
   Media Queries
  ----------------------------------------- */
 
-$extra-grid-breakpoints: (
-  between-md-lg: (map-get($grid-breakpoints, md) + map-get($grid-breakpoints, lg)) / 2
-);
-
 @media(max-width: 1200px) {
   #toc {
     display: none;
