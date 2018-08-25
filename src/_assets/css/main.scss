@@ -513,16 +513,15 @@ img {
     .nav-link {
       padding: 0 !important;
       &.active {
-        // font-weight: $font-weight-bold;
         color: $gray-dark;
         &:before {
-          content: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
-          margin-left: -0.63rem; // Below we tune the margin for top-level entries
+          @include md-icon-contennt('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
+          margin-left: -0.9rem; // Below we tune the margin for top-level entries
         }
       }
     }
   }
-  ul.section-nav.nav > li > .nav-link:before { margin-left: -0.73rem; }
+  ul.section-nav.nav > li > .nav-link:before { margin-left: -1rem; }
 }
 
 #site-search-results {
