@@ -18,7 +18,7 @@
 @import '_os-tabs';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
-
+$font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 
 /* -----------------------------------------
@@ -516,7 +516,7 @@ img {
         color: $gray-dark;
         &:before {
           @include md-icon-contennt('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
-          margin-left: -0.9rem; // Below we tune the margin for top-level entries
+          margin-left: -0.9rem; // We tune the margin for top-level entries below.
         }
       }
     }
@@ -1043,19 +1043,22 @@ h3.popover-header {
   vertical-align: bottom;
 }
 
-.breadcrumb {
+.breadcrumb { // Override BS
+  font-size: $font-size-sm;
   background-color: transparent;
   padding: 0;
-  font-size: small;
-  > .active {
-    color: inherit;
-  }
-  > li {
-    + li {
-      &:before {
-        font-family: 'Material Icons';
-        content: 'chevron_right';
-        vertical-align: bottom;
+  @at-root {
+    .breadcrumb-item {
+      + .breadcrumb-item {
+        padding-left: 0; // Fix BS 4.1 padding issue: push left padding into ::before for balance
+        &::before {
+          padding-left: $breadcrumb-item-padding;
+          @include md-icon-contennt($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
+        }
+      }
+      &.active a {
+        color: $breadcrumb-active-color;
+        cursor: default;
       }
     }
   }

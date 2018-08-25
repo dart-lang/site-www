@@ -1,8 +1,11 @@
 // Material design icons
 
-@mixin md-icon-contennt($icon-name) {
+@mixin md-icon-contennt($icon-name, $width: '') {
   font-family: 'Material Icons';
   content: $icon-name;
+  @if $width {
+    max-width: $width; // Improves UX by minimizing flicker due to delay in font rendering
+  }
   vertical-align: bottom;
 }
 
