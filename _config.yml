@@ -96,3 +96,7 @@ og_image_vers: "?2"
 
 assets:
   source_maps: false
+
+toc:
+  min_level: 2
+  max_level: 3

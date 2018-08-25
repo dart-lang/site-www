@@ -482,61 +482,47 @@ img {
   position: fixed;
   width: 225px;
   right: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
   z-index: 999;
   .content {
-    padding: 0;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-left: 0.75rem;
+    padding-bottom: 0;
+    padding-right: 0;
   }
   $border-width: 3px;
-  .section-nav {
-    opacity: 0;
-    /* Add a bit of extra space between top-level entries */
-    & > li { padding-top: 3px; }
+  $padding: $font-size-base * .5;
+  ul.section-nav {
+    @include list-unstyled;
+    line-height: normal;
+    > li { padding-bottom: $padding; } // Extra space for top-level entries
   }
-  /* Nested toc entries: */
-  .toc-entry ul li {
-    font-size: 0.9em;
-    $padding: $font-size-base * .75;
-    padding-left: $padding;
-    /* Prevent the active entry from shifting right because of double border */
-    &.active { padding-left: $padding; }
-  }
-  h4 {
-    // TODO: use mixin and share code with #sidenav .content h4
-    font-size: 18px;
-    font-weight: normal;
-    text-transform: uppercase;
-    border-left: 3px solid $gray-lighter;
-    padding: 3px 15px;
-    padding-bottom: 10px;
-    margin: 0;
-  }
-  .nav {
+  // Nested toc entries:
+  li.toc-entry ul {
+    @include list-unstyled;
+    padding-top: $padding;
     li {
-      border-left: $border-width solid $gray-lighter;
-      a {
-        padding: 3px 15px;
-        color: $brand-primary;
-      }
+      font-size: $font-size-sm;
+      padding-left: $font-size-base;
+      // &:not(:last-child) { padding-bottom: $padding; } // Don't add extra space between top-level entries, or
+      padding-bottom: $padding;
+    }
+  }
+  // Override BS defaults for .nav, etc.
+  .nav {
+    display: block;
+    .nav-link {
+      padding: 0 !important;
       &.active {
-        border-left: $border-width solid $gray-dark;
-        a {
-          color: $gray-dark;
+        // font-weight: $font-weight-bold;
+        color: $gray-dark;
+        &:before {
+          content: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
+          margin-left: -0.63rem; // Below we tune the margin for top-level entries
         }
       }
     }
   }
-  /* Don't show a double border for nested inactive entries */
-  li li { border-left: none; }
-  &::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.26);
-  }
+  ul.section-nav.nav > li > .nav-link:before { margin-left: -0.73rem; }
 }
 
 #site-search-results {
@@ -594,11 +580,12 @@ input.gsc-search-button {
 }
 
 /* -----------------------------------------
- Table of Contents
+ Table of Contents (jekyll-toc)
  ----------------------------------------- */
- .toc-entry.toc-h2,
- .toc-entry.toc-h3 {}
+
 .toc-entry.toc-h1,
+// .toc-entry.toc-h2,
+// .toc-entry.toc-h3,
 .toc-entry.toc-h4,
 .toc-entry.toc-h5,
 .toc-entry.toc-h6,
