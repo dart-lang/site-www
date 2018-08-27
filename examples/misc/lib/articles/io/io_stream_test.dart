@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:async';
 
 main() async {
-  List result = [];
+  var result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
   int semicolon = ';'.codeUnitAt(0);
