@@ -106,23 +106,32 @@ void main() {
   });
 
   test('use class', () {
-    _test() {
+    _test1() {
       // #docregion use-class
       var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
       voyager.describe();
 
+      // #enddocregion use-class
+    }
+
+    _test2() {
+      // #docregion use-class
       var voyager3 = Spacecraft.unlaunched('Voyager III');
       voyager3.describe();
       // #enddocregion use-class
     }
 
     expect(
-        _test,
+        _test1,
+        prints(allOf(
+          startsWith('Spacecraft: Voyager I'),
+          contains('Launched: 1977'),
+        )));
+    expect(
+        _test2,
         m.prints([
-          'Spacecraft: Voyager I',
-          'Launched: 1977 (40 years ago)',
           'Spacecraft: Voyager III',
-          'Unlaunched'
+          'Unlaunched',
         ]));
   });
 
