@@ -782,9 +782,9 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=589bc5c95318696cefe5&horizontalRatio=99&verticalRatio=65"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=589bc5c95318696cefe5&verticalRatio=65"
     width="100%"
-    height="310px"
+    height="333px"
     style="border: 1px solid #ccc;">
 </iframe>
 
@@ -1049,7 +1049,7 @@ https://gist.github.com/d988cfce0a54c6853799
 https://dartpad.dartlang.org/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=d988cfce0a54c6853799&horizontalRatio=99&verticalRatio=70"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=d988cfce0a54c6853799&verticalRatio=70"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1166,7 +1166,7 @@ https://dartpad.dartlang.org/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&horizontalRatio=99&verticalRatio=50"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&verticalRatio=60"
     width="100%"
     height="250px"
     style="border: 1px solid #ccc;">
@@ -2546,7 +2546,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=e57aa06401e6618d4eb8&horizontalRatio=99&verticalRatio=80"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&verticalRatio=80"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -2641,7 +2641,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=7a9764702c0608711e08&horizontalRatio=99&verticalRatio=85"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=7a9764702c0608711e08&verticalRatio=85"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -3860,7 +3860,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=405379bacf30335f3aed&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=405379bacf30335f3aed&verticalRatio=73"
     width="100%"
     height="240px"
     style="border: 1px solid #ccc;">
