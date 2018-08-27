@@ -3,4 +3,4 @@ now: 2018-07-01 12:34:56
 
 assets:
   digest: false
-  source_maps: false
+  source_maps: true

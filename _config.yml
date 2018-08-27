@@ -93,3 +93,10 @@ plugins:
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
+
+assets:
+  source_maps: false
+
+toc:
+  min_level: 2
+  max_level: 2 # FIXME(temporary): disable level 3 headings until we've fully fixed migrated the TOC

@@ -1,8 +1,8 @@
+//= require vendor/code-prettify/prettify.css
+
 @import '_variables';
 @import '_colors';
-@import "bootstrap-sprockets"; // TODO: remove for BS 4
-@import "bootstrap";
-// @import "bootstrap/_reboot.css"; // TODO: use for BS 4
+@import 'bootstrap';
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -17,6 +17,10 @@
 @import '_books';
 @import '_os-tabs';
 
+// Extra variables (defined in terms of bootstrap and other defaults)
+$font-color: $body-color;
+$font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
+
 /* -----------------------------------------
   Global
   ----------------------------------------- */
@@ -24,7 +28,7 @@ body {
  font-family: $font-family-base;
  font-size: $font-size-base;
 }
-main {}
+
 section {
  position: relative;
 }
@@ -124,7 +128,7 @@ input, select {
   }
 }
 
-pre {
+pre, pre.prettyprint {
   padding: $content-padding;
   background-color: $gray-light;
   color: $blue;
@@ -478,61 +482,46 @@ img {
   position: fixed;
   width: 225px;
   right: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
   z-index: 999;
   .content {
-    padding: 0;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-left: 0.75rem;
+    padding-bottom: 0;
+    padding-right: 0;
   }
   $border-width: 3px;
-  .section-nav {
-    opacity: 0;
-    /* Add a bit of extra space between top-level entries */
-    & > li { padding-top: 3px; }
+  $padding: $font-size-base * .5;
+  ul.section-nav {
+    @include list-unstyled;
+    line-height: normal;
+    > li { padding-bottom: $padding; } // Extra space for top-level entries
   }
-  /* Nested toc entries: */
-  .toc-entry ul li {
-    font-size: 0.9em;
-    $padding: $font-size-base * .75;
-    padding-left: $padding;
-    /* Prevent the active entry from shifting right because of double border */
-    &.active { padding-left: $padding; }
-  }
-  h4 {
-    // TODO: use mixin and share code with #sidenav .content h4
-    font-size: 18px;
-    font-weight: normal;
-    text-transform: uppercase;
-    border-left: 3px solid $gray-lighter;
-    padding: 3px 15px;
-    padding-bottom: 10px;
-    margin: 0;
-  }
-  .nav {
+  // Nested toc entries:
+  li.toc-entry ul {
+    @include list-unstyled;
+    padding-top: $padding;
     li {
-      border-left: $border-width solid $gray-lighter;
-      a {
-        padding: 3px 15px;
-        color: $brand-primary;
-      }
+      font-size: $font-size-sm;
+      padding-left: $font-size-base;
+      // &:not(:last-child) { padding-bottom: $padding; } // Don't add extra space between top-level entries, or
+      padding-bottom: $padding;
+    }
+  }
+  // Override BS defaults for .nav, etc.
+  .nav {
+    display: block;
+    .nav-link {
+      padding: 0 !important;
       &.active {
-        border-left: $border-width solid $gray-dark;
-        a {
-          color: $gray-dark;
+        color: $gray-dark;
+        &:before {
+          @include md-icon-contennt('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
+          margin-left: -0.9rem; // We tune the margin for top-level entries below.
         }
       }
     }
   }
-  /* Don't show a double border for nested inactive entries */
-  li li { border-left: none; }
-  &::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.26);
-  }
+  ul.section-nav.nav > li > .nav-link:before { margin-left: -1rem; }
 }
 
 #site-search-results {
@@ -590,11 +579,12 @@ input.gsc-search-button {
 }
 
 /* -----------------------------------------
- Table of Contents
+ Table of Contents (jekyll-toc)
  ----------------------------------------- */
- .toc-entry.toc-h2,
- .toc-entry.toc-h3 {}
+
 .toc-entry.toc-h1,
+// .toc-entry.toc-h2,
+// .toc-entry.toc-h3,
 .toc-entry.toc-h4,
 .toc-entry.toc-h5,
 .toc-entry.toc-h6,
@@ -686,10 +676,10 @@ main .content {
 
   font-weight: normal;
   font-size: $font-size-base * 0.8;
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     font-size: $font-size-base * 0.7;
   }
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     font-size: $font-size-base * 0.8;
   }
 
@@ -966,17 +956,36 @@ li.card {
   }
 }
 
+// Popovers
+
+h3.popover-header {
+  font-weight: $font-weight-light-bold;
+  margin-top: 0;
+}
+
+@mixin popover-open {
+  &.popover-open {
+    font-weight: 500;
+    border-color: $default-link;
+  }
+}
+
+[data-toggle="popover"] {
+  background: none;
+  border-bottom: 2px dotted $gray;
+  padding: 0;
+  cursor: pointer;
+  @include popover-open;
+}
+
+@media (hover: hover) {
+  [data-toggle="popover"]:hover { border-color: $default-link !important; }
+}
+
 .table {
   width: 100%;
   @extend .table-striped;
   @extend .table-bordered;
-}
-
-.popover {
-  border-radius: 0;
-  .popover-title {
-    border-radius: 0;
-  }
 }
 
 .alert {
@@ -1016,11 +1025,11 @@ li.card {
   > img {
     margin-right: $content-padding * 2;
     width: $font-size-base * 3;
-    @media(max-width: $screen-xs-min) { display: none; }
+    @include media-breakpoint-down(sm) { display: none; }
   }
   > div {
     display: table-cell;
-    @media(min-width: $screen-xs-min) { padding-left: $content-padding; }
+    @include media-breakpoint-up(sm) { padding-left: $content-padding; }
     vertical-align: top;
   }
 }
@@ -1030,19 +1039,22 @@ li.card {
   vertical-align: bottom;
 }
 
-.breadcrumb {
+.breadcrumb { // Override BS
+  font-size: $font-size-sm;
   background-color: transparent;
   padding: 0;
-  font-size: small;
-  > .active {
-    color: inherit;
-  }
-  > li {
-    + li {
-      &:before {
-        font-family: 'Material Icons';
-        content: 'chevron_right';
-        vertical-align: bottom;
+  @at-root {
+    .breadcrumb-item {
+      + .breadcrumb-item {
+        padding-left: 0; // Fix BS 4.1 padding issue: push left padding into ::before for balance
+        &::before {
+          padding-left: $breadcrumb-item-padding;
+          @include md-icon-contennt($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
+        }
+      }
+      &.active a {
+        color: $breadcrumb-active-color;
+        cursor: default;
       }
     }
   }
@@ -1103,7 +1115,6 @@ body.homepage {
    margin-top: 0;
    height: 200px;
    overflow: auto;
-   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
   }
   .card-grid {
     justify-content: center;

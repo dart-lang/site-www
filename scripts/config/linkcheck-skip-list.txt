@@ -1,1 +1,5 @@
 # Enter regexp pattern, one per line.
+
+# FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
+# https://github.com/dart-lang/site-www/issues/1107
+/assets/main(-[0-9a-f]+)?.css

@@ -1,24 +1,33 @@
-{% if page.show_breadcrumbs == true -%}
+{% comment %}
+Embeds breadcrumb RDFa, follows ARIA guidelines. References:
+- https://developers.google.com/search/docs/data-types/breadcrumb
+- https://schema.org/BreadcrumbList
+- https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html
+- https://search.google.com/structured-data/testing-tool
+{% endcomment %}
 
-{%- capture url %}{% if page.language%}{{ page.url | remove: "/" | remove: page.language }}{% else %}{{ page.url | remove: "/" }}{% endif %}{% endcapture -%}
-{%- if url.size > 0 -%}
-  <ol class="breadcrumb list-unstyled" vocab="http://schema.org/" typeof="BreadcrumbList">
+{% assign url = page.url | regex_replace: '/index$|/index.html$|/$' -%}
+
+{% if url.size > 0 -%}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
   {% assign position = 0 -%}
-  {%- for crumb in breadcrumbs -%}
-    {%- if crumb.url == "/" -%}
-      {%- continue -%}
-    {%- endif -%}
-
-    {%- assign caption = crumb.title -%}
-    {%- assign position = position  | plus: 1 %}
-    <li class="breadcrumb-item{% if crumb.url == page.url %} active{% endif %}" property="itemListElement" typeof="ListItem">
-      {% if crumb.url != page.url %}<a property="item" typeof="WebPage" href="{{ crumb.url }}">{% endif %}
-      <span property="name">{{ caption }}</span>
-      {% if crumb.url != page.url %}</a>{% endif %}
-      <meta property="position" content="{{ position }}" />
+  {% for crumb in breadcrumbs -%}
+    {% if forloop.first -%}
+      {% comment %}Skip site root{% endcomment -%}
+      {% continue -%}
+    {% endif -%}
+    <li class="breadcrumb-item {%- if forloop.last %} active {%- endif %}"
+      property="itemListElement" typeof="ListItem"
+      {%- if forloop.last %} aria-current="page"{% endif %}>
+      {%- comment %}Avoid spaces here, it messes up formatting{% endcomment -%}
+      <a href="{{ crumb.url }}" property="item" typeof="WebPage">
+        {%- comment %}Avoid spaces here, it messes up formatting{% endcomment -%}
+        <span property="name">{{crumb.title}}</span>
+      </a>
+      <meta property="position" content="{{forloop.index0}}" />
     </li>
   {% endfor %}
   </ol>
-{%- endif -%}
-
+</nav>
 {%- endif -%}

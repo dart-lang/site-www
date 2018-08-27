@@ -1,4 +1,20 @@
-// Leave blank line
+// Material design icons
+
+@mixin md-icon-contennt($icon-name, $width: '') {
+  font-family: 'Material Icons';
+  content: $icon-name;
+  @if $width {
+    max-width: $width; // Improves UX by minimizing flicker due to delay in font rendering
+  }
+  vertical-align: bottom;
+}
+
+@mixin md-icon-before($icon-name) {
+  &:before { @include md-icon-contennt($icon-name); }
+}
+
+// Icons based on custom font "dart"
+
 $icon-search: "\e904";
 $icon-arrow: "\e900";
 $icon-caret-up: "\e901";
