@@ -5,8 +5,7 @@ import 'dart:async';
 main() async {
   List result = [];
 
-  Stream<List<int>> stream =
-      new File(Platform.script.toFilePath()).openRead();
+  Stream<List<int>> stream = new File(Platform.script.toFilePath()).openRead();
   int semicolon = ';'.codeUnitAt(0);
 
   await for (var data in stream) {

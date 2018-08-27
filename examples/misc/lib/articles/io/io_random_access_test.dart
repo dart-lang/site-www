@@ -18,6 +18,7 @@ main() async {
       onByte(await file.readByte());
     }
   }
+
   onByte(await file.readByte());
 }
 // END(io_random_access)
