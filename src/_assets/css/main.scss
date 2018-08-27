@@ -971,9 +971,9 @@ h3.popover-header {
 }
 
 [data-toggle="popover"] {
-	background: none;
-	border-bottom: 2px dotted $gray;
-	padding: 0;
+  background: none;
+  border-bottom: 2px dotted $gray;
+  padding: 0;
   cursor: pointer;
   @include popover-open;
 }
