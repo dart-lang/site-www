@@ -8,7 +8,7 @@
 .idea
 .packages
 .pub
-.sass-cache/
+.*-cache/
 .vscode
 _asset_bundler_cache
 _bookhtml
@@ -37,4 +37,3 @@ publish
 tmp
 trash
 firebase-debug.log
-*.cache
