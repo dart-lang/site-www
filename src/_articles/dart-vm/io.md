@@ -1,18 +1,21 @@
 ---
 title: "An Introduction to the dart:io Library"
-description: "An introduction to the Dart I/O library, which is aimed at server-side code that runs on the standalone Dart VM."
+description: "An introduction to the Dart I/O library, which is aimed at server-side code that runs in Flutter and the standalone Dart VM."
 original-date: 2012-03-01
-date: 2015-03-15
+date: 2018-08-28
 category: dart-vm
-obsolete: true
 ---
 
-_Written by Mads Ager <br>
-March 2012 (updated October 2012, February 2013, January 2014, and March 2015)_
+_Written by Mads Ager<br>
+March 2012 (updated August 2018)_
+
+<aside class="alert alert-info" markdown="1">
+  [PENDING: note goes here for any changes we haven't included or tested]
+</aside>
 
 The [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) library
 is aimed at server-side code
-that runs on the standalone Dart VM.
+that runs in Flutter and the standalone Dart VM.
 In this article we will give you a feel for
 what is currently possible with dart:io
 by going through a couple of examples.
@@ -92,7 +95,7 @@ import 'dart:convert';
 
 main() async {
   var file = new File(Platform.script.toFilePath());
-  print("${await (file.readAsString(encoding: ASCII))}");
+  print("${await (file.readAsString(encoding: ascii))}");
 }
 {% endprettify %}<!--- END(io_file_system) -->
 
@@ -121,10 +124,10 @@ import 'dart:io';
 
 main() async {
   var semicolon = ';'.codeUnitAt(0);
-  var result = [];
+  var result = <int>[];
 
   File script = new File(Platform.script.toFilePath());
-  RandomAccessFile file = await script.open(mode: FileMode.READ);
+  RandomAccessFile file = await script.open(mode: FileMode.read);
 
   // Callback to deal with each byte.
   onByte(int byte) async {
@@ -158,7 +161,7 @@ import 'dart:io';
 import 'dart:async';
 
 main() async {
-  List result = [];
+  var result = <int>[];
 
   Stream<List<int>> stream =
       new File(Platform.script.toFilePath()).openRead();
@@ -178,6 +181,8 @@ main() async {
 
 The stream subscription is implicitly handled by `await for`.
 Exiting from the function that contains `await for` cancels the subscription.
+Two ways of exiting the `await for` are a `break` statement and
+an uncaught exception.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.
@@ -306,7 +311,7 @@ to pipe all the data read from a file directly to the response stream.
 import 'dart:io';
 
 _sendNotFound(HttpResponse response) {
-  response.statusCode = HttpStatus.NOT_FOUND;
+  response.statusCode = HttpStatus.notFound;
   response.close();
 }
 
@@ -347,16 +352,14 @@ class.
 The dart:io library is already capable of performing a lot of tasks.
 As an example of our own use of dart:io,
 we have rewritten the Dart testing scripts from Python to Dart.
-All of the tests that you see being run on the
-[buildbot](http://build.chromium.org/p/client.dart)
-are running on the Dart VM using the dart:io library!
 
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!
 When you file a bug or feature request,
-use the Area-IO label in the issue tracker at
-[dartbug.com](http://dartbug.com).
+use [dartbug.com](http://dartbug.com).
+To find reported issues, search for the
+[library-io label.](https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io)
 
 {% comment %}
-The tests for this article are at /src/tests/site/articles/io.
+The tests for this article are at /examples_archive/site_tests/articles/io.
 {% endcomment %}
