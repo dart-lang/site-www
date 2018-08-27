@@ -2,7 +2,7 @@
 import 'dart:io';
 
 _sendNotFound(HttpResponse response) {
-  response.statusCode = HttpStatus.NOT_FOUND;
+  response.statusCode = HttpStatus.notFound;
   response.close();
 }
 

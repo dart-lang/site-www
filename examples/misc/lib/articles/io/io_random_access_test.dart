@@ -6,7 +6,7 @@ main() async {
   var result = <int>[];
 
   File script = File(Platform.script.toFilePath());
-  RandomAccessFile file = await script.open(mode: FileMode.READ);
+  RandomAccessFile file = await script.open(mode: FileMode.read);
 
   // Callback to deal with each byte.
   onByte(int byte) async {
