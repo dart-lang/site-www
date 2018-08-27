@@ -12,7 +12,7 @@ startServer(String basePath) async {
     final String path = request.uri.toFilePath();
     // PENDING: Do more security checks here.
     final String resultPath = path == '/' ? '/index.html' : path;
-    final File file = new File('${basePath}${resultPath}');
+    final File file = File('${basePath}${resultPath}');
     if (await file.exists()) {
       try {
         await file.openRead().pipe(request.response);
@@ -28,7 +28,7 @@ startServer(String basePath) async {
 main() {
   // Compute base path for the request based on the location of the
   // script and then start the server.
-  File script = new File(Platform.script.toFilePath());
+  File script = File(Platform.script.toFilePath());
   startServer(script.parent.path);
 }
 // END(io_http_server_file)
