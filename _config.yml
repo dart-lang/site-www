@@ -99,4 +99,4 @@ assets:
 
 toc:
   min_level: 2
-  max_level: 3
+  max_level: 2 # FIXME(temporary): disable level 3 headings until we've fully fixed migrated the TOC
