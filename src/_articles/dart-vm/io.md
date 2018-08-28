@@ -55,22 +55,23 @@ Once that code executes to completion,
 no more pending operations are in the event queue
 and the VM terminates.
 
-<!--- BEGIN(io_timer) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_timer_test.dart"?>
+{% prettify dart %}
 import 'dart:async';
 
 main() {
-  new Timer(new Duration(seconds: 1), () => print('timer'));
+  Timer(Duration(seconds: 1), () => print('timer'));
   print('end of main');
 }
-{% endprettify %}<!--- END(io_timer) -->
+{% endprettify %}
 
 Running this example at the command line, we get:
 
-{% prettify none %}
+```terminal
 $ dart timer.dart
 end of main
 timer
-{% endprettify %}
+```
 
 Had we made the timer repeating by using the Timer.periodic() constructor,
 the VM would not terminate
@@ -88,16 +89,18 @@ we use the
 [Platform]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html)
 class.
 
-<!--- BEGIN(io_file_system) -->{% prettify dart %}
+
+<?code-excerpt "misc/lib/articles/io/io_file_system_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
 main() async {
-  var file = new File(Platform.script.toFilePath());
+  var file = File(Platform.script.toFilePath());
   print("${await (file.readAsString(encoding: ascii))}");
 }
-{% endprettify %}<!--- END(io_file_system) -->
+{% endprettify %}
 
 Notice that the readAsString() method is asynchronous;
 it returns a [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
@@ -119,29 +122,31 @@ Here is a version that opens the file for random access operations.
 The code opens the file for reading and then reads one byte at a time
 until it encounters the char code for ';'.
 
-<!--- BEGIN(io_random_access) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 
 main() async {
   var semicolon = ';'.codeUnitAt(0);
   var result = <int>[];
 
-  File script = new File(Platform.script.toFilePath());
+  File script = File(Platform.script.toFilePath());
   RandomAccessFile file = await script.open(mode: FileMode.read);
 
   // Callback to deal with each byte.
   onByte(int byte) async {
     result.add(byte);
     if (byte == semicolon) {
-      print(new String.fromCharCodes(result));
+      print(String.fromCharCodes(result));
       file.close();
     } else {
       onByte(await file.readByte());
     }
   }
+
   onByte(await file.readByte());
 }
-{% endprettify %}<!--- END(io_random_access) -->
+{% endprettify %}
 
 When you see a use of `async` or `await`, you are seeing a Future in action.
 Both the `open()` and `readByte()` methods return a Future object.
@@ -156,28 +161,28 @@ The following code opens the file for reading presenting the content
 as a stream of lists of bytes. Like all streams in Dart you listen on
 this stream (using `await for`) and the data is given in chunks.
 
-<!--- BEGIN(io_stream) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_stream_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 import 'dart:async';
 
 main() async {
   var result = <int>[];
 
-  Stream<List<int>> stream =
-      new File(Platform.script.toFilePath()).openRead();
+  Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
   int semicolon = ';'.codeUnitAt(0);
 
   await for (var data in stream) {
     for (int i = 0; i < data.length; i++) {
       result.add(data[i]);
       if (data[i] == semicolon) {
-        print(new String.fromCharCodes(result));
+        print(String.fromCharCodes(result));
         return;
       }
     }
   }
 }
-{% endprettify %}<!--- END(io_stream) -->
+{% endprettify %}
 
 The stream subscription is implicitly handled by `await for`.
 Exiting from the function that contains `await for` cancels the subscription.
@@ -198,7 +203,8 @@ to run a process
 and collect its output. Use `run()` when you don't
 need interactive control over the process.
 
-<!--- BEGIN(io_process) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_process_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 
 main() async {
@@ -207,7 +213,7 @@ main() async {
   ProcessResult results = await Process.run('ls', ['-l']);
   print(results.stdout);
 }
-{% endprettify %}<!--- END(io_process) -->
+{% endprettify %}
 
 You can also start a process by creating a
 [Process]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html) object
@@ -228,15 +234,15 @@ which decodes chunks of bytes into strings followed by a
 [LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html),
 which splits the strings at line boundaries.
 
-<!--- BEGIN(io_process_transform) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 import 'dart:convert';
 
 main() async {
   Process process = await Process.start('ls', ['-l']);
-  var lineStream = process.stdout
-      .transform(new Utf8Decoder())
-      .transform(new LineSplitter());
+  var lineStream =
+      process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
   await for (var line in lineStream) {
     print(line);
   }
@@ -244,7 +250,7 @@ main() async {
   process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
-{% endprettify %}<!--- END(io_process_transform) -->
+{% endprettify %}
 
 Notice that exitCode can complete before all of the lines of output
 have been processed. Also note
@@ -257,17 +263,18 @@ Instead of printing the output to stdout,
 we can use the streaming classes
 to pipe the output of the process to a file.
 
-<!--- BEGIN(io_process_stdio) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 
 main() async {
-  var output = new File('output.txt').openWrite();
+  var output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
   process.stdout.pipe(output);
   process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
-{% endprettify %}<!--- END(io_process_stdio) -->
+{% endprettify %}
 
 
 ## Writing web servers
@@ -281,7 +288,8 @@ and hook up a listener (using `await for`) to its stream of `HttpRequest`s.
 Here is a simple web server
 that just answers 'Hello, world' to any request.
 
-<!--- BEGIN(io_http_server) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_http_server_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 
 main() async {
@@ -291,7 +299,7 @@ main() async {
     request.response.close();
   }
 }
-{% endprettify %}<!--- END(io_http_server) -->
+{% endprettify %}
 
 Running this application
 and pointing your browser to 'http://127.0.0.1:8082'
@@ -307,7 +315,8 @@ If the file is not found we will respond with a '404 Not Found' status.
 We make use of the streaming interface
 to pipe all the data read from a file directly to the response stream.
 
-<!--- BEGIN(io_http_server_file) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_http_server_file_test.dart"?>
+{% prettify dart %}
 import 'dart:io';
 
 _sendNotFound(HttpResponse response) {
@@ -321,7 +330,7 @@ startServer(String basePath) async {
     final String path = request.uri.toFilePath();
     // PENDING: Do more security checks here.
     final String resultPath = path == '/' ? '/index.html' : path;
-    final File file = new File('${basePath}${resultPath}');
+    final File file = File('${basePath}${resultPath}');
     if (await file.exists()) {
       try {
         await file.openRead().pipe(request.response);
@@ -337,10 +346,10 @@ startServer(String basePath) async {
 main() {
   // Compute base path for the request based on the location of the
   // script and then start the server.
-  File script = new File(Platform.script.toFilePath());
+  File script = File(Platform.script.toFilePath());
   startServer(script.parent.path);
 }
-{% endprettify %}<!--- END(io_http_server_file) -->
+{% endprettify %}
 
 Writing HTTP clients is very similar to using the
 [HttpClient]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html)
