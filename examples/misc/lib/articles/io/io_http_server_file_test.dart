@@ -1,4 +1,4 @@
-// BEGIN(io_http_server_file)
+// #docregion
 import 'dart:io';
 
 _sendNotFound(HttpResponse response) {
@@ -31,4 +31,3 @@ main() {
   File script = File(Platform.script.toFilePath());
   startServer(script.parent.path);
 }
-// END(io_http_server_file)

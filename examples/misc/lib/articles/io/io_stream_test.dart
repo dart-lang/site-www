@@ -1,4 +1,4 @@
-// BEGIN(io_stream)
+// #docregion
 import 'dart:io';
 import 'dart:async';
 
@@ -18,4 +18,3 @@ main() async {
     }
   }
 }
-// END(io_stream)

@@ -1,4 +1,4 @@
-// BEGIN(io_process_stdio)
+// #docregion
 import 'dart:io';
 
 main() async {
@@ -8,4 +8,3 @@ main() async {
   process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
-// END(io_process_stdio)

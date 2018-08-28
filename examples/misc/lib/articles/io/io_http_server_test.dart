@@ -1,4 +1,4 @@
-// BEGIN(io_http_server)
+// #docregion
 import 'dart:io';
 
 main() async {
@@ -8,4 +8,3 @@ main() async {
     request.response.close();
   }
 }
-// END(io_http_server)

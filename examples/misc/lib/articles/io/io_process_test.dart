@@ -1,4 +1,4 @@
-// BEGIN(io_process)
+// #docregion
 import 'dart:io';
 
 main() async {
@@ -7,4 +7,3 @@ main() async {
   ProcessResult results = await Process.run('ls', ['-l']);
   print(results.stdout);
 }
-// END(io_process)

@@ -1,4 +1,4 @@
-// BEGIN(io_random_access)
+// #docregion
 import 'dart:io';
 
 main() async {
@@ -21,4 +21,3 @@ main() async {
 
   onByte(await file.readByte());
 }
-// END(io_random_access)

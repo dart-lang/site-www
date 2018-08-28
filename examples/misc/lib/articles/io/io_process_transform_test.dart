@@ -1,4 +1,4 @@
-// BEGIN(io_process_transform)
+// #docregion
 import 'dart:io';
 import 'dart:convert';
 
@@ -13,4 +13,3 @@ main() async {
   process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
-// END(io_process_transform)
