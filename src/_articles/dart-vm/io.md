@@ -1,8 +1,8 @@
 ---
 title: "An Introduction to the dart:io Library"
-description: "An introduction to the Dart I/O library, which is aimed at server-side code that runs in Flutter and the standalone Dart VM."
+description: "An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM."
 original-date: 2012-03-01
-date: 2018-08-28
+date: 2018-08-30
 category: dart-vm
 ---
 
@@ -384,7 +384,3 @@ When you file a bug or feature request,
 use [dartbug.com.](http://dartbug.com)
 To find reported issues, search for the
 [library-io label.](https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io)
-
-{% comment %}
-The tests for this article are at /examples_archive/site_tests/articles/io.
-{% endcomment %}
