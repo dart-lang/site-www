@@ -9,13 +9,8 @@ category: dart-vm
 _Written by Mads Ager<br>
 March 2012 (updated August 2018)_
 
-<aside class="alert alert-info" markdown="1">
-  [PENDING: note goes here for any changes we haven't included or tested]
-</aside>
-
 The [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) library
-is aimed at server-side code
-that runs in Flutter and the standalone Dart VM.
+is aimed at code that runs in Flutter and the standalone Dart VM.
 In this article we will give you a feel for
 what is currently possible with dart:io
 by going through a couple of examples.
@@ -26,9 +21,9 @@ the application makes no progress before that operation completes.
 For scalability it is therefore crucial that no I/O operations block.
 Instead of blocking on I/O operations,
 dart:io uses an asynchronous programming model inspired by
-[node.js](http://nodejs.org),
-[EventMachine](https://github.com/eventmachine/eventmachine/wiki), and
-[Twisted](http://twistedmatrix.com/trac/).
+[node.js,](http://nodejs.org)
+[EventMachine,](https://github.com/eventmachine/eventmachine/wiki) and
+[Twisted.](http://twistedmatrix.com/trac/)
 
 ## The Dart VM and the event loop
 
@@ -189,7 +184,7 @@ cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.
-Similarly, [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html)s
+Similarly, [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html) objects
 are used to stream data to
 stdout, files, sockets, HTTP connections, and so on.
 
@@ -223,17 +218,17 @@ Once you have a Process object you can interact with the process
 by writing data to its stdin sink,
 reading data from its stderr and stdout streams,
 and killing the process.
-When the process exits the exitCode future completes with
+When the process exits, the `exitCode` future completes with
 the exit code of the process.
 
-The following example runs 'ls -l' in a separate process
+The following example runs `ls -l` in a separate process
 and prints the output and the exit code for the process to stdout.
 Since we are interested in getting lines,
 we use a
-[Utf8Decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html),
-which decodes chunks of bytes into strings followed by a
-[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html),
-which splits the strings at line boundaries.
+[Utf8Decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html)
+(which decodes chunks of bytes into strings) followed by a
+[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html)
+(which splits the strings at line boundaries).
 
 <?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
 {% prettify dart %}
@@ -254,7 +249,7 @@ Future<void> main() async {
 }
 {% endprettify %}
 
-Notice that exitCode can complete before all of the lines of output
+Notice that `exitCode` can complete before all of the lines of output
 have been processed. Also note
 that we do not explicitly close the process. In order to
 not leak resources we have to drain both the stderr and the stdout
@@ -386,7 +381,7 @@ we have rewritten the Dart testing scripts from Python to Dart.
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!
 When you file a bug or feature request,
-use [dartbug.com](http://dartbug.com).
+use [dartbug.com.](http://dartbug.com)
 To find reported issues, search for the
 [library-io label.](https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io)
 
