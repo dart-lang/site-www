@@ -1,8 +1,9 @@
 // #docregion
-import 'dart:io';
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io';
 
-main() async {
+Future<void> main() async {
   Process process = await Process.start('ls', ['-l']);
   var lineStream =
       process.stdout.transform(Utf8Decoder()).transform(LineSplitter());

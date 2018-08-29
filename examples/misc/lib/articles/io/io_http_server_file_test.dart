@@ -1,4 +1,5 @@
 // #docregion
+import 'dart:async' show Future;
 import 'dart:io';
 
 _sendNotFound(HttpResponse response) {
@@ -6,7 +7,7 @@ _sendNotFound(HttpResponse response) {
   response.close();
 }
 
-startServer(String basePath) async {
+Future<void> startServer(String basePath) async {
   HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     final String path = request.uri.toFilePath();
@@ -25,7 +26,7 @@ startServer(String basePath) async {
   }
 }
 
-main() {
+void main() {
   // Compute base path for the request based on the location of the
   // script and then start the server.
   File script = File(Platform.script.toFilePath());

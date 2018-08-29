@@ -1,7 +1,8 @@
 // #docregion
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     request.response.write('Hello, world');

@@ -1,5 +1,5 @@
 // #docregion
-import 'dart:async';
+import 'dart:async' show Future;
 import 'dart:io';
 
 main() async {

@@ -1,8 +1,8 @@
 // #docregion
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
