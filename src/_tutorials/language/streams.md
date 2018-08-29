@@ -97,7 +97,7 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=15d5ef986238c97dbc14&vertica
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Click run ( {% asset red-run.png %} )
+Click run ( {% asset red-run.png alt="image of run button" %} )
 to see the result in the **Console output**.
 </aside>
 
@@ -171,7 +171,7 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Click run ( {% asset red-run.png %} )
+Click run ( {% asset red-run.png alt="image of run button" %} )
 to see the result in the **Console output**.
 </aside>
 

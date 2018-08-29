@@ -33,9 +33,9 @@ or server-side app, there's a Dart solution for that.
   Write a command-line app or server-side app.
 
 
-[Dart logo]: {% asset shared/dart/logo/default.svg @path %}
+[Dart logo]: {% asset shared/dart/logo/default.svg @path alt="Dart logo" %}
 [Server]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}
-[Flutter logo]: {% asset shared/flutter/logo/square.svg @path %}
+[Flutter logo]: {% asset shared/flutter/logo/square.svg @path alt="Flutter logo" %}
 [Web]: {{site.webdev}}
-[Web logo]: {% asset shared/angular/icon/default.svg @path %}
+[Web logo]: {% asset shared/angular/icon/default.svg @path alt="Web logo" %}

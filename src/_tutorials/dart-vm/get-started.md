@@ -212,7 +212,7 @@ are automatically available to all Dart apps.
 
 In WebStorm, you can run the app in any of the following ways:
 
-* Click the Run button ( {% asset green-run.png %} ) in the upper right corner.
+* Click the Run button ( {% asset green-run.png alt="image of run button" %} ) in the upper right corner.
 * Click the Run button to the left of the messages pane.
 * Right-click `main.dart` in the files pane and select **Run 'main.dart'**
   from the pop-up menu.

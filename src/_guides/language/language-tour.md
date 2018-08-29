@@ -758,7 +758,7 @@ units. Use the `runes` property to get the runes of a string.
 
 The following example illustrates the relationship between runes,
 16-bit code units, and 32-bit code points.
-Click the run button ( {% asset red-run.png %} )
+Click the run button ( {% asset red-run.png alt="image of run button" %} )
 to see runes in action.
 
 {% comment %}
@@ -1026,7 +1026,7 @@ that specifies a default list for the `list`
 parameter and a default map for the `gifts` parameter.
 {% comment %}
 The function is called three times with different values.
-Click the run button ( {% asset red-run.png %} )
+Click the run button ( {% asset red-run.png alt="image of run button" %} )
 to see list and map default values in action.
 {% endcomment %}
 
@@ -1158,7 +1158,7 @@ list.forEach((item) {
 });
 {% endprettify %}
 
-Click the run button ( {% asset red-run.png %} ) to execute the code.
+Click the run button ( {% asset red-run.png alt="image of run button" %} ) to execute the code.
 
 {% comment %}
 https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
@@ -2506,7 +2506,7 @@ before the constructor body (if any).
 
 In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
-Click the run button ( {% asset red-run.png %} ) to execute the code.
+Click the run button ( {% asset red-run.png alt="image of run button" %} ) to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
@@ -2612,7 +2612,7 @@ https://github.com/dart-lang/sdk/blob/master/docs/language/informal/assert-in-in
 
 Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
-Click the run button ( {% asset red-run.png %} ) to execute the code.
+Click the run button ( {% asset red-run.png alt="image of run button" %} ) to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
@@ -3840,7 +3840,7 @@ implement the `call()` method.
 In the following example, the `WannabeFunction` class defines
 a call() function that takes three strings and concatenates them,
 separating each with a space, and appending an exclamation.
-Click the run button ( {% asset red-run.png %} ) to execute the code.
+Click the run button ( {% asset red-run.png alt="image of run button" %} ) to execute the code.
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
