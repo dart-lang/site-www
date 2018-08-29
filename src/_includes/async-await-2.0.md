@@ -1,6 +1,6 @@
 <aside class="alert alert-info" markdown="1">
-  **Dart 2 note:** In Dart 2, instead of immediately suspending, async functions
-  execute synchronously until the first await. In most cases, you won't notice a
-  difference in behavior relative to Dart 1&mdash;as long as you await each time you
-  call an async method, it won't be an issue.
+  **Version note:** In Dart 1.x, async functions immediately suspended
+  execution. In Dart 2, instead of immediately suspending, async functions
+  execute synchronously until the first `await`. If you use `await` each time
+  you call an async function, the behavior is the same in Dart 1.x and Dart 2.
 </aside>

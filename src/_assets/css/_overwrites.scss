@@ -1,10 +1,5 @@
 // Make all css changes here. These change will get added into the current SCSS structure where applicable.
 
-$screen-lg-min: 1200px;
-$screen-md-min: 992px;
-$screen-sm-min: 768px;
-$screen-xs-min: 480px;
-
 /* Add space between definitions. */
 dd {
 	margin-bottom: 15px;
@@ -31,7 +26,7 @@ a code {
 	margin-bottom: 20px;
 	display: block;
 
-	@media (min-width: $screen-xs-min) {
+	@include media-breakpoint-up(sm) {
 		display: none;
 	}
 }
@@ -40,62 +35,42 @@ a code {
 
 @mixin front-page-first-section-height {
 	height: 230px;
-	@media (min-width: $screen-sm-min) {
+	@include media-breakpoint-up(md) {
 		height: 350px;
 	}
-	@media (min-width: $screen-lg-min) {
+	@include media-breakpoint-up(xl) {
 		height: 300px;
 	}
 }
 
 @mixin front-page-first-section-min-height {
 	min-height: 230px;
-	@media (min-width: $screen-sm-min) {
+	@include media-breakpoint-up(md) {
 		min-height: 350px;
 	}
-	@media (min-width: $screen-lg-min) {
+	@include media-breakpoint-up(xl) {
 		min-height: 300px;
 	}
 }
 
-@mixin popover-open {
-  &.popover-open {
-    font-weight: 500;
-    border-color: $default-link;
-  }
-}
-
-[data-toggle="popover"] {
-	background: none;
-	border-bottom: 2px dotted $gray;
-	padding: 0;
-  cursor: pointer;
-  @include popover-open;
-}
-
-@media (hover: hover) {
-  [data-toggle="popover"]:hover { border-color: $default-link !important; }
-}
+// Popovers
 
 body.homepage #code-sample {
   [data-toggle="popover"] {
     border-color: darken($gray, 10%);
     @include popover-open;
   }
-  .popover-content {
-    color: $gray-base;
-    code { color: $blue; }
-  }
+  .popover-body code { color: $blue; }
 }
 
 body.homepage {
 	#code-sample-section {
 		pre {
 			font-size: $font-size-base * 0.8;
-			@media (min-width: $screen-sm-min) {
+			@include media-breakpoint-up(md) {
 				font-size: $font-size-base * 0.7;
 			}
-			@media (min-width: $screen-md-min) {
+			@include media-breakpoint-up(lg) {
 				font-size: $font-size-base * 0.8;
 			}
 			@include front-page-first-section-height;
@@ -109,32 +84,31 @@ body.homepage {
 }
 
 /* Slogan */
+
 .frontpage-slogan-with-footnotes {
 	@include front-page-first-section-min-height;
 	position: relative;
 }
 
 .frontpage-slogan {
+  .btn-resizable {
+    // Default is md
+    @include media-breakpoint-up(lg) {
+      @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+    }
+  }
 	h3 {
 		text-align: left;
 		background: none;
 		font-size: $font-size-h4;
 
-		@media (min-width: $screen-sm-min) {
-			font-size: $font-size-h4 * 0.9;
-		}
-
-		@media (min-width: $screen-lg-min) {
-			font-size: $font-size-h3;
-		}
+		@include media-breakpoint-up(md) { font-size: $font-size-h4 * 0.9; }
+		@include media-breakpoint-up(lg) { font-size: $font-size-h4; }
+		@include media-breakpoint-up(xl) { font-size: $font-size-h3; }
 
 		font-weight: 300;
 		line-height: 150%;
 		margin-bottom: 1em;
-	}
-
-	[data-toggle="popover"] {
-		padding: 0 2px;
 	}
 }
 
@@ -218,7 +192,7 @@ body.homepage .get-started-section {
 
 .core-goals__first {
 	margin-top: 0;
-	@media (min-width: $screen-sm-min) {
+	@include media-breakpoint-up(md) {
 		margin-top: 40px + 25px;  // Core values headline height + bottom margin
 	}
 }
@@ -243,7 +217,7 @@ body.homepage .get-started-section {
 	}
 
 	td:first-child {
-		@media (min-width: $screen-xs-min) {
+		@include media-breakpoint-up(sm) {
 		  padding-right: 0;
 		}
 	}
@@ -254,7 +228,7 @@ body.homepage .get-started-section {
 		display: none;
 		text-align: center;
 
-		@media (min-width: $screen-xs-min) {
+		@include media-breakpoint-up(sm) {
 			display: table-cell;
 		}
 	}
@@ -268,7 +242,7 @@ body.homepage .get-started-section {
 }
 
 .get-started-table__text {
-	@media (min-width: $screen-sm-min) {
+	@include media-breakpoint-up(md) {
 		float: left;
 		width: 35%;
 	}
@@ -282,10 +256,10 @@ body.homepage .get-started-section {
 	column-rule: 1px solid $gray-light;
 	column-gap: 40px;
 
-	@media (min-width: $screen-md-min) {
+	@include media-breakpoint-up(lg) {
 		column-count: 2;
 	}
-	@media (min-width: $screen-lg-min) {
+	@include media-breakpoint-up(xl) {
 		column-count: 3;
 	}
 }
@@ -293,7 +267,7 @@ body.homepage .get-started-section {
 /* Effective Dart TOC */
 
 .effective_dart--summary_column {
-	@media (min-width: $screen-sm-min) {
+	@include media-breakpoint-up(md) {
 		width: 50%;
 		float: left;
 		padding-right: 5%;

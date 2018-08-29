@@ -1,9 +1,12 @@
 {% unless page.toc == false or page.layout == 'homepage' %}
 <div id="toc">
   <div class="content">
-    <h4>On this page
-      <a href="#page-content" title="Back to top" class="pull-right"><i class="icon icon-caret-up"></i></a>
-    </h4>
+    <header class="h4 text-uppercase">
+      On this page
+      <a title="Back to top" class="back-to-top float-right mr-3">
+        <i class="fas fa-angle-up"></i>
+      </a>
+    </header>
     {{ content | toc_only }}
   </div>
 </div>

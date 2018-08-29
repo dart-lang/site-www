@@ -1,9 +1,11 @@
-//= require vendor/jquery-3.3.1.min.js
+//= require vendor/jquery-3.3.1
+//= require popper
 //= require bootstrap
 //= require _utilities
 //= require _search
 //= require _os-tabs
 //= require vendor/code-prettify/prettify
+//= require vendor/code-prettify/lang-css
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
@@ -12,60 +14,60 @@ var tocToSidenavDiff = 50;
 
 function fixNav() {
   var t = $(document).scrollTop(),
-      f = $("#page-footer").offset().top,
-      h = window.innerHeight,
-      // space between scroll position and top of the footer
-      whenAtBottom = f - t,
-      mh = Math.min(h, whenAtBottom) - condensedHeaderHeight;
-  $("#sidenav").css({maxHeight: mh});
-  $("#toc").css({maxHeight: mh - tocToSidenavDiff});
+    f = $("#page-footer").offset().top,
+    h = window.innerHeight,
+    // space between scroll position and top of the footer
+    whenAtBottom = f - t,
+    mh = Math.min(h, whenAtBottom) - condensedHeaderHeight;
+  $("#sidenav").css({ maxHeight: mh });
+  $("#toc").css({ maxHeight: mh - tocToSidenavDiff });
 }
 
-// When a user scrolls to 50px add class  condensed-header to body
-$(window).scroll(function(){
+// When a user scrolls to 50px add class condensed-header to body
+$(window).scroll(function () {
   fixNav();
   var currentScreenPosition = $(document).scrollTop();
-  if(currentScreenPosition > 50) {
+  if (currentScreenPosition > 50) {
     $('body').addClass('fixed_nav');
   } else {
     $('body').removeClass('fixed_nav');
   }
 });
 
+function adjustToc() {
+  // Adjustments to the jekyll-toc TOC.
+  var tocWrapper = $('#toc');
+  $(tocWrapper).find('header').click(function() {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
+  })
 
-$(function() {
-  // set heights for navigation elements
-  fixNav();
-  // Initiate Syntax Highlighting
-  prettyPrint();
+  // TODO: consider doing most of the HTML TOC manipulation statically (maybe requiring a jekyll-toc adaptor plugin)
+  // Bootstrap 4's ScrollSpy works only for .nav or .list-group,
+  // with items and link classes set too. Add the classes.
+  var toc = $(tocWrapper).find('ul.section-nav');
+  $(toc).addClass('nav');
 
+  var ul = $(toc).find('ul');
+  $(ul).addClass('nav');
+  var li = $(toc).find('.toc-entry');
+  $(li).addClass('nav-item');
+  $(li).find('a').addClass('nav-link');
+
+  $('body').scrollspy({ offset: 100, target: '#toc' });
+}
+
+$(function () {
+  fixNav(); // Adjust heights for navigation elements
+  prettyPrint(); // Initiate Syntax Highlighting
   setupOsTabs();
 
   // Sidenav
-  $('#sidenav i').on('click', function(e) {
+  $('#sidenav i').on('click', function (e) {
     e.stopPropagation();
     $(this).parent('li').toggleClass('active');
   });
 
-  // TOC: Table of Contents
-  // TODO: consider doing most of the HTML TOC manipulation statically.
-  $('.toc-entry').not('.toc-h2,.toc-h3').remove();
-  var sectionNav = $('.section-nav');
-  $(sectionNav).addClass('nav').css({opacity: 1});
-  // Bootstrap 3 Nav styles are defined for single level lists using
-  // selectors like ".nav > li". (Bootstrap 4 doesn't have this limitation.)
-  // Rather than try to rewrite styles over ".nav > li" as ".nav li",
-  // we've chose to simply apply the .nav class to nested toc ul elements.
-  $(sectionNav).find('ul').addClass('nav');
-
-  $('body').scrollspy({
-     offset: 100,
-     target: '#toc'
-  });
-
-  $('#toc').on('activate.bs.scrollspy', function () {
-    // do something…
-  });
+  adjustToc();
 
   // This code interferes with valid deeplinks (for example, clicking on a link
   // from /somepath to /somepath/subpage#hash will just scroll the page.
@@ -95,13 +97,14 @@ $(function() {
   const openPopClass = 'popover-open';
   const popSelector = '[data-toggle="popover"]';
   const openPopSelector = popSelector + '.' + openPopClass;
+
   function setPopovers(root, viewport) {
     const popovers = root.find(popSelector);
     // console.log('>> setPopovers: ' + popovers.length + ', ' + viewport);
     popovers.popover({
-      container: viewport === 'body' ? 'body' : undefined,
+      container: viewport === 'body' ? 'body' : root.find(viewport),
       html: true,
-      placement: 'auto top',
+      placement: 'top',
       trigger: 'focus',
       viewport: viewport,
     }).on('shown.bs.popover', function () {
@@ -119,12 +122,12 @@ $(function() {
 
 
   // open - close mobile navigation
-  $('#menu-toggle').on('click', function(e) {
+  $('#menu-toggle').on('click', function (e) {
     e.stopPropagation();
     $("body").toggleClass('open_menu');
   });
 
-  $("#page-content").on('click', function() {
+  $("#page-content").on('click', function () {
     if ($('body').hasClass('open_menu')) {
       $('body').removeClass("open_menu");
     }

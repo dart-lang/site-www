@@ -206,7 +206,7 @@ class Spacecraft {
 
 You might use the `Spacecraft` class like this:
 
-<?code-excerpt "misc/test/samples_test.dart (use class)"?>
+<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
 {% prettify dart %}
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
