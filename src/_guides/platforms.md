@@ -25,7 +25,7 @@ or server-side app, there's a Dart solution for that.
 
   Write an app that runs in any modern web browser.
 
-- {:.card.narrow}[![Dart logo][]{: width="100"}][Server]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo representing server-side Dart][Dart logo]{: width="100"}][Server]{:.no-automatic-external}
   {:.logo}
 
   ### [Server][]
@@ -33,9 +33,9 @@ or server-side app, there's a Dart solution for that.
   Write a command-line app or server-side app.
 
 
-[Dart logo]: {% asset shared/dart/logo/default.svg @path alt="Dart logo" %}
+[Dart logo]: {% asset shared/dart/logo/default.svg @path %}
 [Server]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}
-[Flutter logo]: {% asset shared/flutter/logo/square.svg @path alt="Flutter logo" %}
+[Flutter logo]: {% asset shared/flutter/logo/square.svg @path %}
 [Web]: {{site.webdev}}
-[Web logo]: {% asset shared/angular/icon/default.svg @path alt="Web logo" %}
+[Web logo]: {% asset shared/angular/icon/default.svg @path %}

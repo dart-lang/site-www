@@ -24,7 +24,7 @@ Install the SDK for your platform.
 
   To develop web apps, get the Dart&nbsp;SDK.
 
-- {:.card.narrow}[![Dart logo][]{: width="100"}][Dart install]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo representing server-side Dart][Dart logo]{: width="100"}][Dart install]{:.no-automatic-external}
   {:.logo}
 
   ### [Server][Dart install]
@@ -33,9 +33,9 @@ Install the SDK for your platform.
 
 [DartPad]: {{site.custom.dartpad.direct-link}}
 [Dart install]: /tools/sdk#install
-[Dart logo]: {% asset shared/dart/logo/default.svg @path alt="Dart logo" %}
+[Dart logo]: {% asset shared/dart/logo/default.svg @path %}
 [Flutter]: {{site.flutter}}
 [Flutter install]: {{site.flutter}}/setup/
-[Flutter logo]: {% asset shared/flutter/logo/square.svg @path alt="Flutter logo" %}
+[Flutter logo]: {% asset shared/flutter/logo/square.svg @path %}
 [Web install]: {{site.webdev}}/tools/sdk#install {% comment %}FIXME: use site.webdev once the sites switch servers{% endcomment %}
-[Web logo]: {% asset shared/angular/icon/default.svg @path alt="Web logo" %}
+[Web logo]: {% asset shared/angular/icon/default.svg @path %}
