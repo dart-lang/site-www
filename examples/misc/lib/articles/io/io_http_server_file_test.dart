@@ -13,7 +13,7 @@ Future<void> handleRequest(String basePath, HttpRequest request) async {
   final String path = request.uri.toFilePath();
   // PENDING: Do more security checks here.
   final String resultPath = path == '/' ? '/index.html' : path;
-  final File file = File('${basePath}${resultPath}');
+  final File file = File('$basePath$resultPath');
   if (await file.exists()) {
     try {
       await file.openRead().pipe(request.response);

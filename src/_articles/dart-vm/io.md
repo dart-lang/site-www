@@ -59,7 +59,7 @@ and the VM terminates.
 {% prettify dart %}
 import 'dart:async';
 
-main() {
+void main() {
   Timer(Duration(seconds: 1), () => print('timer'));
   print('end of main');
 }
@@ -92,11 +92,11 @@ class.
 
 <?code-excerpt "misc/lib/articles/io/io_file_system_test.dart"?>
 {% prettify dart %}
-import 'dart:io';
-import 'dart:async';
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var file = File(Platform.script.toFilePath());
   print("${await (file.readAsString(encoding: ascii))}");
 }
@@ -124,9 +124,10 @@ until it encounters the char code for ';'.
 
 <?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
 {% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var semicolon = ';'.codeUnitAt(0);
   var result = <int>[];
 
@@ -161,10 +162,10 @@ this stream (using `await for`) and the data is given in chunks.
 
 <?code-excerpt "misc/lib/articles/io/io_stream_test.dart"?>
 {% prettify dart %}
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
@@ -202,9 +203,10 @@ need interactive control over the process.
 
 <?code-excerpt "misc/lib/articles/io/io_process_test.dart"?>
 {% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   // List all files in the current directory,
   // in UNIX-like operating systems.
   ProcessResult results = await Process.run('ls', ['-l']);
@@ -235,10 +237,11 @@ which splits the strings at line boundaries.
 
 <?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
 {% prettify dart %}
-import 'dart:io';
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io';
 
-main() async {
+Future<void> main() async {
   Process process = await Process.start('ls', ['-l']);
   var lineStream =
       process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
@@ -264,10 +267,10 @@ to pipe the output of the process to a file.
 
 <?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
 {% prettify dart %}
-import 'dart:async';
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
 
@@ -296,9 +299,10 @@ that just answers 'Hello, world' to any request.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_test.dart"?>
 {% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     request.response.write('Hello, world');
@@ -323,37 +327,48 @@ to pipe all the data read from a file directly to the response stream.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_file_test.dart"?>
 {% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-_sendNotFound(HttpResponse response) {
-  response.statusCode = HttpStatus.notFound;
-  response.close();
-}
-
-startServer(String basePath) async {
+Future<void> runServer(String basePath) async {
   HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
-    final String path = request.uri.toFilePath();
-    // PENDING: Do more security checks here.
-    final String resultPath = path == '/' ? '/index.html' : path;
-    final File file = File('${basePath}${resultPath}');
-    if (await file.exists()) {
-      try {
-        await file.openRead().pipe(request.response);
-      } catch (e) {
-        print(e);
-      }
-    } else {
-      _sendNotFound(request.response);
-    }
+    handleRequest(basePath, request);
   }
 }
 
-main() {
+Future<void> handleRequest(String basePath, HttpRequest request) async {
+  final String path = request.uri.toFilePath();
+  // PENDING: Do more security checks here.
+  final String resultPath = path == '/' ? '/index.html' : path;
+  final File file = File('$basePath$resultPath');
+  if (await file.exists()) {
+    try {
+      await file.openRead().pipe(request.response);
+    } catch (exception) {
+      print('Error happened: $exception');
+      await sendInternalError(request.response);
+    }
+  } else {
+    await sendNotFound(request.response);
+  }
+}
+
+Future<void> sendInternalError(HttpResponse response) async {
+  response.statusCode = HttpStatus.internalServerError;
+  await response.close();
+}
+
+Future<void> sendNotFound(HttpResponse response) async {
+  response.statusCode = HttpStatus.notFound;
+  await response.close();
+}
+
+Future<void> main() async {
   // Compute base path for the request based on the location of the
-  // script and then start the server.
-  File script = File(Platform.script.toFilePath());
-  startServer(script.parent.path);
+  // script, and then start the server.
+  final script = File(Platform.script.toFilePath());
+  await runServer(script.parent.path);
 }
 {% endprettify %}
 

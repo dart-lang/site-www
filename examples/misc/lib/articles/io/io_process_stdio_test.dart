@@ -2,7 +2,7 @@
 import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   var output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
 
