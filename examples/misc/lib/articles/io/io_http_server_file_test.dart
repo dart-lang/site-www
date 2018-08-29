@@ -2,33 +2,43 @@
 import 'dart:async' show Future;
 import 'dart:io';
 
-_sendNotFound(HttpResponse response) {
-  response.statusCode = HttpStatus.notFound;
-  response.close();
-}
-
-Future<void> startServer(String basePath) async {
+Future<void> runServer(String basePath) async {
   HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
-    final String path = request.uri.toFilePath();
-    // PENDING: Do more security checks here.
-    final String resultPath = path == '/' ? '/index.html' : path;
-    final File file = File('${basePath}${resultPath}');
-    if (await file.exists()) {
-      try {
-        await file.openRead().pipe(request.response);
-      } catch (e) {
-        print(e);
-      }
-    } else {
-      _sendNotFound(request.response);
-    }
+    handleRequest(basePath, request);
   }
 }
 
-void main() {
+Future<void> handleRequest(String basePath, HttpRequest request) async {
+  final String path = request.uri.toFilePath();
+  // PENDING: Do more security checks here.
+  final String resultPath = path == '/' ? '/index.html' : path;
+  final File file = File('${basePath}${resultPath}');
+  if (await file.exists()) {
+    try {
+      await file.openRead().pipe(request.response);
+    } catch (exception) {
+      print('Error happened: $exception');
+      await sendInternalError(request.response);
+    }
+  } else {
+    await sendNotFound(request.response);
+  }
+}
+
+Future<void> sendInternalError(HttpResponse response) async {
+  response.statusCode = HttpStatus.internalServerError;
+  await response.close();
+}
+
+Future<void> sendNotFound(HttpResponse response) async {
+  response.statusCode = HttpStatus.notFound;
+  await response.close();
+}
+
+Future<void> main() async {
   // Compute base path for the request based on the location of the
-  // script and then start the server.
-  File script = File(Platform.script.toFilePath());
-  startServer(script.parent.path);
+  // script, and then start the server.
+  final script = File(Platform.script.toFilePath());
+  await runServer(script.parent.path);
 }
