@@ -133,18 +133,16 @@ main() async {
   File script = File(Platform.script.toFilePath());
   RandomAccessFile file = await script.open(mode: FileMode.read);
 
-  // Callback to deal with each byte.
-  onByte(int byte) async {
+  // Deal with each byte.
+  while (true) {
+    final byte = await file.readByte();
     result.add(byte);
     if (byte == semicolon) {
       print(String.fromCharCodes(result));
-      file.close();
-    } else {
-      onByte(await file.readByte());
+      await file.close();
+      break;
     }
   }
-
-  onByte(await file.readByte());
 }
 {% endprettify %}
 
@@ -185,9 +183,8 @@ main() async {
 {% endprettify %}
 
 The stream subscription is implicitly handled by `await for`.
-Exiting from the function that contains `await for` cancels the subscription.
-Two ways of exiting the `await for` are a `break` statement and
-an uncaught exception.
+Exiting the `await for` statement — using `break`, `return`, or an uncaught exception —
+cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.
@@ -217,7 +214,9 @@ main() async {
 
 You can also start a process by creating a
 [Process]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html) object
-using the Process.start() constructor.
+using
+[Process.start().]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process/start.html)
+
 Once you have a Process object you can interact with the process
 by writing data to its stdin sink,
 reading data from its stderr and stdout streams,
@@ -247,7 +246,7 @@ main() async {
     print(line);
   }
 
-  process.stderr.drain();
+  await process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
 {% endprettify %}
@@ -265,14 +264,21 @@ to pipe the output of the process to a file.
 
 <?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
 {% prettify dart %}
+import 'dart:async';
 import 'dart:io';
 
 main() async {
   var output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
-  process.stdout.pipe(output);
-  process.stderr.drain();
-  print('exit code: ${await process.exitCode}');
+
+  // Wait for the process to finish; get the exit code.
+  final exitCode = (await Future.wait([
+    process.stdout.pipe(output), // Send stdout to file
+    process.stderr.drain(),
+    process.exitCode
+  ]))[2];
+
+  print('exit code: $exitCode');
 }
 {% endprettify %}
 

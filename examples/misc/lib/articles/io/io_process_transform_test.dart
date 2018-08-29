@@ -10,6 +10,6 @@ main() async {
     print(line);
   }
 
-  process.stderr.drain();
+  await process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }

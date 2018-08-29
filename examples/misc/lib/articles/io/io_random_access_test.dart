@@ -8,16 +8,14 @@ main() async {
   File script = File(Platform.script.toFilePath());
   RandomAccessFile file = await script.open(mode: FileMode.read);
 
-  // Callback to deal with each byte.
-  onByte(int byte) async {
+  // Deal with each byte.
+  while (true) {
+    final byte = await file.readByte();
     result.add(byte);
     if (byte == semicolon) {
       print(String.fromCharCodes(result));
-      file.close();
-    } else {
-      onByte(await file.readByte());
+      await file.close();
+      break;
     }
   }
-
-  onByte(await file.readByte());
 }

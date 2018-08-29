@@ -1,10 +1,17 @@
 // #docregion
+import 'dart:async';
 import 'dart:io';
 
 main() async {
   var output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
-  process.stdout.pipe(output);
-  process.stderr.drain();
-  print('exit code: ${await process.exitCode}');
+
+  // Wait for the process to finish; get the exit code.
+  final exitCode = (await Future.wait([
+    process.stdout.pipe(output), // Send stdout to file
+    process.stderr.drain(),
+    process.exitCode
+  ]))[2];
+
+  print('exit code: $exitCode');
 }
