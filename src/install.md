@@ -24,7 +24,7 @@ Install the SDK for your platform.
 
   To develop web apps, get the Dart&nbsp;SDK.
 
-- {:.card.narrow}[![Dart logo][]{: width="100"}][Dart install]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo representing server-side Dart][Dart logo]{: width="100"}][Dart install]{:.no-automatic-external}
   {:.logo}
 
   ### [Server][Dart install]
