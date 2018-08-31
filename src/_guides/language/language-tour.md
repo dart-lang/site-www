@@ -2299,7 +2299,7 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
-**Version note:** The `new` keyword became optional in Dart 2.
+  **Version note:** The `new` keyword became optional in Dart 2.
 </aside>
 
 Some classes provide constant constructors. To create a compile-time
@@ -2345,9 +2345,20 @@ const pointAndLine = {
 };
 {% endprettify %}
 
+Outside of a constant context, constant constructors create
+**non-constant objects** if you invoke them without `const`:
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
+{% prettify dart %}
+var a = const ImmutablePoint(1, 1); // Creates a constant
+var b = ImmutablePoint(1, 1); // Does NOT create a constant
+
+assert(!identical(a, b)); // NOT the same instance!
+{% endprettify %}
+
 <aside class="alert alert-info" markdown="1">
-**Version note:** The `const` keyword became optional
-within a constant context in Dart 2.
+  **Version note:** The `const` keyword became optional
+  within a constant context in Dart 2.
 </aside>
 
 
@@ -2684,6 +2695,21 @@ class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
 }
 {% endprettify %}
+
+**Constant constructors don't always create constants.**
+When a `const` constructor is invoked outside of a constant context
+and without the `const` keyword,
+it creates a non-constant object.
+
+<?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor-2)"?>
+{% prettify dart %}
+var a = const ImmutablePoint(0, 0);
+var b = ImmutablePoint(0, 0);
+
+assert(identical(a, ImmutablePoint.origin));
+assert(!identical(a, b));
+{% endprettify %}
+
 
 #### Factory constructors
 
