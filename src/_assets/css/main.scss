@@ -811,7 +811,7 @@ li.card {
 
 @mixin dart-style-for($kind, $bg-color, $msg) {
   .#{$kind} {
-    background-color: $bg-color;
+    background-color: $bg-color !important;
     &:after {
       font-family: $font-family-base;
       content: $msg;
