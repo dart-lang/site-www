@@ -243,7 +243,7 @@ assert('  '.isNotEmpty);
 #### Replacing part of a string
 
 Strings are immutable objects, which means you can create them but you
-can’t change them. If you look closely at the [String API docs,][String]
+can’t change them. If you look closely at the [String API reference,][String]
 you’ll notice that
 none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
@@ -322,8 +322,8 @@ for (var match in numbers.allMatches(someDigits)) {
 
 #### More information
 
-Refer to the [String API docs][String] for a full list of
-methods. Also see the API docs for [StringBuffer,][StringBuffer]
+Refer to the [String API reference][String] for a full list of
+methods. Also see the API reference for [StringBuffer,][StringBuffer]
 [Pattern,][Pattern] [RegExp,][RegExp] and [Match.][Match]
 
 ### Collections
@@ -412,7 +412,7 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 {% endprettify %}
 
-Refer to the [List API docs][List] for a full list of methods.
+Refer to the [List API reference][List] for a full list of methods.
 
 #### Sets
 
@@ -463,7 +463,7 @@ assert(intersection.length == 1);
 assert(intersection.contains('xenon'));
 {% endprettify %}
 
-Refer to the [Set API docs][Set] for a full list of methods.
+Refer to the [Set API reference][Set] for a full list of methods.
 
 #### Maps
 
@@ -561,7 +561,7 @@ teamAssignments.putIfAbsent(
 assert(teamAssignments['Catcher'] != null);
 {% endprettify %}
 
-Refer to the [Map API docs][Map] for a full list of methods.
+Refer to the [Map API reference][Map] for a full list of methods.
 
 #### Common collection methods
 
@@ -666,8 +666,8 @@ assert(teas.any(isDecaffeinated));
 assert(!teas.every(isDecaffeinated));
 {% endprettify %}
 
-For a full list of methods, refer to the [Iterable API docs,][Iterable] as well as those
-for [List,][List] [Set,][Set] and [Map.][Map]
+For a full list of methods, refer to the [Iterable API reference,][Iterable]
+as well as those for [List,][List] [Set,][Set] and [Map.][Map]
 
 
 ### URIs
@@ -742,7 +742,7 @@ assert(uri.fragment == 'frag');
 assert(uri.origin == 'http://example.org:8080');
 {% endprettify %}
 
-See the [Uri API docs][Uri] for more URI components that you can get.
+See the [Uri API reference][Uri] for more URI components that you can get.
 
 #### Building URIs
 
@@ -833,7 +833,8 @@ to clock shifts (to daylight saving time, for example). Use UTC dates
 if you must shift days.
 </div>
 
-Refer to the API docs for [DateTime][] and [Duration][] for a full list of methods.
+For a full list of methods,
+refer to the API reference for [DateTime][] and [Duration.][Duration]
 
 
 ### Utility classes
@@ -988,7 +989,9 @@ class FooException implements Exception {
 }
 {% endprettify %}
 
-For more information, see [Exceptions](#exceptions) and the [Exception API docs.][Exception]
+For more information, see
+[Exceptions](/guides/language/language-tour#exceptions) 
+(in the language tour) and the [Exception API reference.][Exception]
 
 
 ## dart:async - asynchronous programming
@@ -1474,8 +1477,8 @@ random.nextBool(); // true or false
 
 ### More information
 
-Refer to the [Math API docs][dart:math] for a full list of methods.
-Also see the API docs for [num,][num] [int,][int] and [double.][double]
+Refer to the [Math API reference][dart:math] for a full list of methods.
+Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
@@ -1603,7 +1606,7 @@ for (int i = 0; i < encoded.length; i++) {
 ### Other functionality
 
 The dart:convert library also has converters for ASCII and ISO-8859-1
-(Latin1). For details, see the [API docs for the dart:convert library.][dart:convert]
+(Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
 
 ## Summary
