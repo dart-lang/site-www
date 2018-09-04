@@ -13,5 +13,5 @@ you're welcome to use our source code!
 Here are links to the old files for Synonyms:
 
 * [Synonyms (archived)]({{site.prev-url}}/resources/synonyms)
-* [Source code for Synonyms]({{site.repo}}/tree/1.x/src/resources/synonyms)
-  ([LICENSE]({{site.repo}}/blob/master/LICENSE))
+* [Source code for Synonyms]({{site.repo.this}}/tree/1.x/src/resources/synonyms)
+  ([LICENSE]({{site.repo.this}}/blob/master/LICENSE))
