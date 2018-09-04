@@ -6,7 +6,7 @@ Future<void> main() async {
   var result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
-  int semicolon = ';'.codeUnitAt(0);
+  final semicolon = ';'.codeUnitAt(0);
 
   await for (var data in stream) {
     for (int i = 0; i < data.length; i++) {

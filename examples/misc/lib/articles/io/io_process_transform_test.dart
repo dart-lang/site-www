@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 Future<void> main() async {
-  Process process = await Process.start('ls', ['-l']);
+  final process = await Process.start('ls', ['-l']);
   var lineStream =
       process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
   await for (var line in lineStream) {
