@@ -2829,8 +2829,6 @@ class EffectiveDoer extends Doer {
 }
 {% endprettify %}
 
-Calling an abstract method results in a runtime error.
-
 
 ### Abstract classes
 
