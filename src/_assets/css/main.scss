@@ -515,7 +515,7 @@ img {
       &.active {
         color: $gray-dark;
         &:before {
-          @include md-icon-contennt('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
+          @include md-icon-content('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
           margin-left: -0.9rem; // We tune the margin for top-level entries below.
         }
       }
@@ -1049,7 +1049,7 @@ h3.popover-header {
         padding-left: 0; // Fix BS 4.1 padding issue: push left padding into ::before for balance
         &::before {
           padding-left: $breadcrumb-item-padding;
-          @include md-icon-contennt($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
+          @include md-icon-content($breadcrumb-divider, 1rem + 2 * $breadcrumb-item-padding);
         }
       }
       &.active a {
