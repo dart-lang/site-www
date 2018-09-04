@@ -1,6 +1,6 @@
 // Material design icons
 
-@mixin md-icon-contennt($icon-name, $width: '') {
+@mixin md-icon-content($icon-name, $width: '') {
   font-family: 'Material Icons';
   content: $icon-name;
   @if $width {
@@ -10,7 +10,7 @@
 }
 
 @mixin md-icon-before($icon-name) {
-  &:before { @include md-icon-contennt($icon-name); }
+  &:before { @include md-icon-content($icon-name); }
 }
 
 // Icons based on custom font "dart"
