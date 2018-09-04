@@ -2,12 +2,12 @@
 title: "An Introduction to the dart:io Library"
 description: "An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM."
 original-date: 2012-03-01
-date: 2018-08-29
+date: 2018-09-04
 category: libraries
 ---
 
 _Written by Mads Ager<br>
-March 2012 (updated August 2018)_
+March 2012 (updated September 2018)_
 
 The [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) library
 is aimed at code that runs in Flutter and the standalone Dart VM.
@@ -123,10 +123,10 @@ import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
-  var semicolon = ';'.codeUnitAt(0);
+  final semicolon = ';'.codeUnitAt(0);
   var result = <int>[];
 
-  File script = File(Platform.script.toFilePath());
+  final script = File(Platform.script.toFilePath());
   RandomAccessFile file = await script.open(mode: FileMode.read);
 
   // Deal with each byte.
@@ -164,7 +164,7 @@ Future<void> main() async {
   var result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
-  int semicolon = ';'.codeUnitAt(0);
+  final semicolon = ';'.codeUnitAt(0);
 
   await for (var data in stream) {
     for (int i = 0; i < data.length; i++) {
@@ -237,7 +237,7 @@ import 'dart:convert';
 import 'dart:io';
 
 Future<void> main() async {
-  Process process = await Process.start('ls', ['-l']);
+  final process = await Process.start('ls', ['-l']);
   var lineStream =
       process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
   await for (var line in lineStream) {
@@ -266,13 +266,13 @@ import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
-  var output = File('output.txt').openWrite();
+  final output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
 
   // Wait for the process to finish; get the exit code.
   final exitCode = (await Future.wait([
-    process.stdout.pipe(output), // Send stdout to file
-    process.stderr.drain(),
+    process.stdout.pipe(output), // Send stdout to file.
+    process.stderr.drain(), // Discard stderr.
     process.exitCode
   ]))[2];
 
@@ -298,7 +298,7 @@ import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
-  HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
+  final server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     request.response.write('Hello, world');
     request.response.close();
@@ -326,7 +326,7 @@ import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> runServer(String basePath) async {
-  HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
+  final server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     handleRequest(basePath, request);
   }
