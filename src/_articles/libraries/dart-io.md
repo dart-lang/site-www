@@ -15,6 +15,14 @@ In this article we will give you a feel for
 what is currently possible with dart:io
 by going through a couple of examples.
 
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  When writing a Flutter app, use Flutter-specific APIs instead of dart:io
+  whenever possible. For example, use the
+  [Flutter asset support](https://flutter.io/assets-and-images/) to load
+  images and other assets into your app.
+</aside>
+
 Dart is a single-threaded programming language.
 If an operation blocks the Dart thread,
 the application makes no progress before that operation completes.
@@ -41,7 +49,7 @@ schedule a function to be called in the future.
 You can do this by creating a
 [Timer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Timer-class.html) object.
 The following example registers a timer with the event queue
-and then drops off the end of main().
+and then drops off the end of `main()`.
 Because a pending operation is in the event queue,
 the VM does not terminate at that point.
 After one second,
@@ -68,7 +76,8 @@ end of main
 timer
 ```
 
-Had we made the timer repeating by using the Timer.periodic() constructor,
+Had we made the timer repeating by using the
+[Timer.periodic]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Timer/Timer.periodic.html) constructor,
 the VM would not terminate
 and would continue to print out 'timer' every second.
 
@@ -97,7 +106,7 @@ Future<void> main() async {
 }
 {% endprettify %}
 
-Notice that the readAsString() method is asynchronous;
+Notice that the `readAsString()` method is asynchronous;
 it returns a [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
 that returns the contents of the file
 once the file has been read from the underlying system.
@@ -252,9 +261,9 @@ Future<void> main() async {
 Notice that `exitCode` can complete before all of the lines of output
 have been processed. Also note
 that we do not explicitly close the process. In order to
-not leak resources we have to drain both the stderr and the stdout
-streams. To do that we set a listener (using `await for`)
-to drain the stderr stream.
+not leak resources we have to listen to both the stderr and stdout
+streams. We use `await for` to listen to stdout,
+and `stderr.drain()` to listen to (and discard) stderr.
 
 Instead of printing the output to stdout,
 we can use the streaming classes
@@ -375,8 +384,9 @@ class.
 ## Feature requests welcome
 
 The dart:io library is already capable of performing a lot of tasks.
-As an example of our own use of dart:io,
-we have rewritten the Dart testing scripts from Python to Dart.
+For example, the
+[pub.dartlang.org site](https://github.com/dart-lang/pub-dartlang-dart)
+uses dart:io.
 
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!
