@@ -13,11 +13,11 @@
     <li><a href="/community">Community</a></li>
     {% else %}
     <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dart 2 <span class="caret"></span></a>
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dart 2</a>
       <ul class="dropdown-menu">
         {% include _version-menu-items.html %}
-        <li role="separator" class="divider"></li>
-        <li><a href="/dart-2#migration">Migration guide</a></li>
+        <li role="separator" class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/dart-2#migration">Migration guide</a></li>
       </ul>
     </li>
     {% endif %}

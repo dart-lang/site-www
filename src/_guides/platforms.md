@@ -25,7 +25,7 @@ or server-side app, there's a Dart solution for that.
 
   Write an app that runs in any modern web browser.
 
-- {:.card.narrow}[![Dart logo][]{: width="100"}][Server]{:.no-automatic-external}
+- {:.card.narrow}[![Dart logo representing server-side Dart][Dart logo]{: width="100"}][Server]{:.no-automatic-external}
   {:.logo}
 
   ### [Server][]

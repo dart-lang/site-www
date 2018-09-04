@@ -125,14 +125,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
   bootstrap
   font-awesome-sass
   html-proofer
   jekyll
   jekyll-assets
   jekyll-toc
-  kramdown
   liquid-tag-parser
   nokogiri
   sass

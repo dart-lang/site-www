@@ -95,7 +95,7 @@ before its body. The `await` keyword works only in async functions.
 {% include async-await-2.0.md %}
 
 The following app simulates reading the news by using async and await to read
-the contents of a file on www.dartlang.org. Click run ( {% asset red-run.png %} ) to start the app.
+the contents of a file on www.dartlang.org. Click run {% asset red-run.png alt="" %} to start the app.
 
 {% comment %}
 https://gist.github.com/kwalrath/477fb799d21401f46f8c04462fd249c4
