@@ -273,6 +273,7 @@ img {
 #mainnav {
   display: flex;
   color: $gray-base;
+  $mainnav-entry-spacing: 15px;
   ul {
     margin: auto;
     margin-right: 0;
@@ -285,7 +286,7 @@ img {
       align-items: flex-end;
     }
     li {
-      padding: 0 15px;
+      padding: 0 $mainnav-entry-spacing;
       a {
         display: inline-block;
         padding: 0;
@@ -342,6 +343,7 @@ img {
     background-color: $gray-light;
     border-top-color: transparent;
     color: $gray-base;
+    margin-left: -$mainnav-entry-spacing;
     a:hover, a:focus { background-color: transparent; }
     a.active:after {
       font-family: 'Font Awesome 5 Free';
