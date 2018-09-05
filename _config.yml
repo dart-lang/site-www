@@ -87,7 +87,7 @@ source: src
 # under `src` that are symlinked to somewhere outside `src`, or it can
 # refer to the root folder of the symlinked content (like `site-shared/src`):
 symlinked-sources: [site-shared/src]
-destination: publish
+destination: site.g
 bundler_args: --without production
 
 exclude: [diagrams]
