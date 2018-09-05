@@ -4,7 +4,7 @@ title: "Dart Language Specification"
 description: "The Dart language specification."
 ---
 
-The following information talks about the formal Dart language specification.
+Use this page to find the formal Dart language specification.
 For a gentler introduction to the Dart language, see the
 [Dart language tour](/guides/language/language-tour).
 
@@ -12,18 +12,22 @@ For a gentler introduction to the Dart language, see the
 
 Dart 2 has changed the Dart language in many ways,
 some of which are not backward-compatible.
-For additional details, please see the [Dart 2 changelog](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200---2018-08-07).
+For details, see the [Dart 2 page](/dart-2).
 
-The formal specification is still in the process of being completed.
-For information about changes, see the following resources:
+The formal language specification is not yet up-to-date.
+For information about Dart 2 changes, see the following resources.
 
-* [Dart language specification source file (TeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
-* [Dart informal specifications](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
+* Feature specifications in the dart-lang/sdk repo:
+  * [/docs/language/informal](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
+* Feature specifications in the dart-lang/language repo:
+  * [/accepted](https://github.com/dart-lang/language/tree/master/accepted)
+  * [/working](https://github.com/dart-lang/language/tree/master/working)
+* [Dart language specification source file (LaTeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
 
-## Dart 1
+## Dart 1.x
 
-Download the Dart 1 programming language secification from
-the Ecma website:
+Download the formal language specification from the Ecma International
+website:
 
 * <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
-   target="_blank">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
+   target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
