@@ -31,7 +31,7 @@ src/site/events/2015/summit/node_modules
 .jekyll-metadata
 
 # Deployment Files
-publish
+site.g
 
 # Misc
 tmp
