@@ -3,7 +3,9 @@ title: Dart
 description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
 url: https://www.dartlang.org
 dev-url: https://dartlang-org-dev.firebaseapp.com
-repo: https://github.com/dart-lang/site-www
+repo:
+  this: https://github.com/dart-lang/site-www
+  shared: &repo-shared https://github.com/dart-lang/site-shared
 branch: master
 port: 4000
 
@@ -50,6 +52,10 @@ defaults:
     path: tools
   values:
     show_breadcrumbs: true
+- scope:
+    path: tools/sdk
+  values:
+    repo: *repo-shared
 
 custom:
   dartpad:

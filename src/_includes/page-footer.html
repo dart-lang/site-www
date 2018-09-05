@@ -12,16 +12,16 @@
           <ul class="menu">
             <li>Site&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;3.0</a></li>
             <li>
-              <a href="{{site.repo}}"
+              <a href="{{site.repo.this}}"
                  title="This site's source is on GitHub."
                  class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
               &nbsp;
-              <a href="{{site.repo}}/issues"
+              <a href="{{site.repo.this}}/issues"
                  title="File an issue about this site."
                  class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
               &nbsp;
               <a {% if site.data.ci.job-id %}
-                 href="{{site.repo | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
+                 href="{{site.repo.this | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
                  title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
                  {% else %}
                  title="Site built on {{site.now | default: site.time | date: dateFormat}}"
