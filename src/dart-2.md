@@ -58,7 +58,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 
 1. **Get an up-to-date version of the Flutter or Dart SDK.**
    * [Flutter SDK instructions][Flutter SDK install]
-   * [Dart SDK instructions][Dart SDK install] (VM or web)
+   * [Dart SDK instructions][Dart SDK install] (server-side or web)
 2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
    * Server-side or web: [`pub upgrade`][pub upgrade]
@@ -80,8 +80,6 @@ from either Dart 1.x or an earlier version of Dart 2.
    * To find occurrences of `new` and unnecessary `const`, add the rules
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
-
-Each time the SDK has a significant release, repeat the process.
 
 {% comment %}
 TODO:
@@ -144,7 +142,7 @@ environment:
 ## More resources
 
 * [DartPad](/tools/dartpad)
-* [Dart 2 changes][] section of the [Dart Language Specification][] page
+* [Dart Language Specification][]
 * [About Dart SDK release channels and version strings][pre-release]
 * [SDK constraints][]
 * [Updating your pub package to Dart 2,][]
@@ -167,7 +165,6 @@ environment:
 [build_runner web]: {{site.webdev}}/tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [creating library packages]: /guides/libraries/create-library-packages
-[Dart 2 changes]: /guides/language/spec#dart-2-changes
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
