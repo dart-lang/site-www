@@ -17,8 +17,9 @@ by going through a couple of examples.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  When writing a Flutter app, use Flutter-specific APIs instead of dart:io
-  whenever possible. For example, use the
+  When writing a Flutter app, use
+  [Flutter-specific APIs](https://docs.flutter.io)
+  instead of dart:io whenever possible. For example, use the
   [Flutter asset support](https://flutter.io/assets-and-images/) to load
   images and other assets into your app.
 </aside>
@@ -124,7 +125,7 @@ for the file and stream in the data.
 
 Here is a version that opens the file for random access operations.
 The code opens the file for reading and then reads one byte at a time
-until it encounters the char code for ';'.
+until it encounters the char code for `;`.
 
 <?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
 {% prettify dart %}
