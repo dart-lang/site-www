@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "site.g",
+    "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
     "headers": [{

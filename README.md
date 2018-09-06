@@ -72,7 +72,7 @@ Once everything is installed, you need to do a full site build at least once:
 
 - `jekyll build` &nbsp;&nbsp;# full site build
 
-The generated site is placed in the `site.g` folder. To serve this folder use:
+The generated site is placed in the `_site` folder. To serve this folder use:
 
 - `npx superstatic --port 4000`
 

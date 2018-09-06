@@ -13,7 +13,7 @@
 _asset_bundler_cache
 _bookhtml
 _cache/
-_site/
+_site
 build
 node_modules/
 pubspec.lock
@@ -29,9 +29,6 @@ src/site/events/2015/summit/node_modules
 # Cache files
 *.cache
 .jekyll-metadata
-
-# Deployment Files
-site.g
 
 # Misc
 tmp
