@@ -1,21 +1,28 @@
 ---
 title: "An Introduction to the dart:io Library"
-description: "An introduction to the Dart I/O library, which is aimed at server-side code that runs on the standalone Dart VM."
+description: "An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM."
 original-date: 2012-03-01
-date: 2015-03-15
-category: dart-vm
-obsolete: true
+date: 2018-09-04
+category: libraries
 ---
 
-_Written by Mads Ager <br>
-March 2012 (updated October 2012, February 2013, January 2014, and March 2015)_
+_Written by Mads Ager<br>
+March 2012 (updated September 2018)_
 
 The [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html) library
-is aimed at server-side code
-that runs on the standalone Dart VM.
+is aimed at code that runs in Flutter and the standalone Dart VM.
 In this article we will give you a feel for
 what is currently possible with dart:io
 by going through a couple of examples.
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  When writing a Flutter app, use
+  [Flutter-specific APIs](https://docs.flutter.io)
+  instead of dart:io whenever possible. For example, use the
+  [Flutter asset support](https://flutter.io/assets-and-images/) to load
+  images and other assets into your app.
+</aside>
 
 Dart is a single-threaded programming language.
 If an operation blocks the Dart thread,
@@ -23,9 +30,9 @@ the application makes no progress before that operation completes.
 For scalability it is therefore crucial that no I/O operations block.
 Instead of blocking on I/O operations,
 dart:io uses an asynchronous programming model inspired by
-[node.js](http://nodejs.org),
-[EventMachine](https://github.com/eventmachine/eventmachine/wiki), and
-[Twisted](http://twistedmatrix.com/trac/).
+[node.js,](http://nodejs.org)
+[EventMachine,](https://github.com/eventmachine/eventmachine/wiki) and
+[Twisted.](http://twistedmatrix.com/trac/)
 
 ## The Dart VM and the event loop
 
@@ -43,7 +50,7 @@ schedule a function to be called in the future.
 You can do this by creating a
 [Timer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Timer-class.html) object.
 The following example registers a timer with the event queue
-and then drops off the end of main().
+and then drops off the end of `main()`.
 Because a pending operation is in the event queue,
 the VM does not terminate at that point.
 After one second,
@@ -52,24 +59,26 @@ Once that code executes to completion,
 no more pending operations are in the event queue
 and the VM terminates.
 
-<!--- BEGIN(io_timer) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_timer_test.dart"?>
+{% prettify dart %}
 import 'dart:async';
 
-main() {
-  new Timer(new Duration(seconds: 1), () => print('timer'));
+void main() {
+  Timer(Duration(seconds: 1), () => print('timer'));
   print('end of main');
 }
-{% endprettify %}<!--- END(io_timer) -->
+{% endprettify %}
 
 Running this example at the command line, we get:
 
-{% prettify none %}
+```terminal
 $ dart timer.dart
 end of main
 timer
-{% endprettify %}
+```
 
-Had we made the timer repeating by using the Timer.periodic() constructor,
+Had we made the timer repeating by using the
+[Timer.periodic]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Timer/Timer.periodic.html) constructor,
 the VM would not terminate
 and would continue to print out 'timer' every second.
 
@@ -85,18 +94,20 @@ we use the
 [Platform]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html)
 class.
 
-<!--- BEGIN(io_file_system) -->{% prettify dart %}
-import 'dart:io';
-import 'dart:async';
+
+<?code-excerpt "misc/lib/articles/io/io_file_system_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io';
 
-main() async {
-  var file = new File(Platform.script.toFilePath());
-  print("${await (file.readAsString(encoding: ASCII))}");
+Future<void> main() async {
+  var file = File(Platform.script.toFilePath());
+  print("${await (file.readAsString(encoding: ascii))}");
 }
-{% endprettify %}<!--- END(io_file_system) -->
+{% endprettify %}
 
-Notice that the readAsString() method is asynchronous;
+Notice that the `readAsString()` method is asynchronous;
 it returns a [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
 that returns the contents of the file
 once the file has been read from the underlying system.
@@ -114,31 +125,32 @@ for the file and stream in the data.
 
 Here is a version that opens the file for random access operations.
 The code opens the file for reading and then reads one byte at a time
-until it encounters the char code for ';'.
+until it encounters the char code for `;`.
 
-<!--- BEGIN(io_random_access) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
-  var semicolon = ';'.codeUnitAt(0);
-  var result = [];
+Future<void> main() async {
+  final semicolon = ';'.codeUnitAt(0);
+  var result = <int>[];
 
-  File script = new File(Platform.script.toFilePath());
-  RandomAccessFile file = await script.open(mode: FileMode.READ);
+  final script = File(Platform.script.toFilePath());
+  RandomAccessFile file = await script.open(mode: FileMode.read);
 
-  // Callback to deal with each byte.
-  onByte(int byte) async {
+  // Deal with each byte.
+  while (true) {
+    final byte = await file.readByte();
     result.add(byte);
     if (byte == semicolon) {
-      print(new String.fromCharCodes(result));
-      file.close();
-    } else {
-      onByte(await file.readByte());
+      print(String.fromCharCodes(result));
+      await file.close();
+      break;
     }
   }
-  onByte(await file.readByte());
 }
-{% endprettify %}<!--- END(io_random_access) -->
+{% endprettify %}
 
 When you see a use of `async` or `await`, you are seeing a Future in action.
 Both the `open()` and `readByte()` methods return a Future object.
@@ -153,35 +165,36 @@ The following code opens the file for reading presenting the content
 as a stream of lists of bytes. Like all streams in Dart you listen on
 this stream (using `await for`) and the data is given in chunks.
 
-<!--- BEGIN(io_stream) -->{% prettify dart %}
-import 'dart:io';
+<?code-excerpt "misc/lib/articles/io/io_stream_test.dart"?>
+{% prettify dart %}
 import 'dart:async';
+import 'dart:io';
 
-main() async {
-  List result = [];
+Future<void> main() async {
+  var result = <int>[];
 
-  Stream<List<int>> stream =
-      new File(Platform.script.toFilePath()).openRead();
-  int semicolon = ';'.codeUnitAt(0);
+  Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
+  final semicolon = ';'.codeUnitAt(0);
 
   await for (var data in stream) {
     for (int i = 0; i < data.length; i++) {
       result.add(data[i]);
       if (data[i] == semicolon) {
-        print(new String.fromCharCodes(result));
+        print(String.fromCharCodes(result));
         return;
       }
     }
   }
 }
-{% endprettify %}<!--- END(io_stream) -->
+{% endprettify %}
 
 The stream subscription is implicitly handled by `await for`.
-Exiting from the function that contains `await for` cancels the subscription.
+Exiting the `await for` statement — using `break`, `return`, or an uncaught exception —
+cancels the subscription.
 
 `Stream<List<int>>` is used in multiple places in dart:io:
 when working with stdin, files, sockets, HTTP connections, and so on.
-Similarly, [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html)s
+Similarly, [IOSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html) objects
 are used to stream data to
 stdout, files, sockets, HTTP connections, and so on.
 
@@ -193,76 +206,89 @@ to run a process
 and collect its output. Use `run()` when you don't
 need interactive control over the process.
 
-<!--- BEGIN(io_process) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_process_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
+Future<void> main() async {
   // List all files in the current directory,
   // in UNIX-like operating systems.
   ProcessResult results = await Process.run('ls', ['-l']);
   print(results.stdout);
 }
-{% endprettify %}<!--- END(io_process) -->
+{% endprettify %}
 
 You can also start a process by creating a
 [Process]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process-class.html) object
-using the Process.start() constructor.
+using
+[Process.start().]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Process/start.html)
+
 Once you have a Process object you can interact with the process
 by writing data to its stdin sink,
 reading data from its stderr and stdout streams,
 and killing the process.
-When the process exits the exitCode future completes with
+When the process exits, the `exitCode` future completes with
 the exit code of the process.
 
-The following example runs 'ls -l' in a separate process
+The following example runs `ls -l` in a separate process
 and prints the output and the exit code for the process to stdout.
 Since we are interested in getting lines,
 we use a
-[Utf8Decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html),
-which decodes chunks of bytes into strings followed by a
-[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html),
-which splits the strings at line boundaries.
+[Utf8Decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Decoder-class.html)
+(which decodes chunks of bytes into strings) followed by a
+[LineSplitter]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/LineSplitter-class.html)
+(which splits the strings at line boundaries).
 
-<!--- BEGIN(io_process_transform) -->{% prettify dart %}
-import 'dart:io';
+<?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:io';
 
-main() async {
-  Process process = await Process.start('ls', ['-l']);
-  var lineStream = process.stdout
-      .transform(new Utf8Decoder())
-      .transform(new LineSplitter());
+Future<void> main() async {
+  final process = await Process.start('ls', ['-l']);
+  var lineStream =
+      process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
   await for (var line in lineStream) {
     print(line);
   }
 
-  process.stderr.drain();
+  await process.stderr.drain();
   print('exit code: ${await process.exitCode}');
 }
-{% endprettify %}<!--- END(io_process_transform) -->
+{% endprettify %}
 
-Notice that exitCode can complete before all of the lines of output
+Notice that `exitCode` can complete before all of the lines of output
 have been processed. Also note
 that we do not explicitly close the process. In order to
-not leak resources we have to drain both the stderr and the stdout
-streams. To do that we set a listener (using `await for`)
-to drain the stderr stream.
+not leak resources we have to listen to both the stderr and stdout
+streams. We use `await for` to listen to stdout,
+and `stderr.drain()` to listen to (and discard) stderr.
 
 Instead of printing the output to stdout,
 we can use the streaming classes
 to pipe the output of the process to a file.
 
-<!--- BEGIN(io_process_stdio) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
-  var output = new File('output.txt').openWrite();
+Future<void> main() async {
+  final output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
-  process.stdout.pipe(output);
-  process.stderr.drain();
-  print('exit code: ${await process.exitCode}');
+
+  // Wait for the process to finish; get the exit code.
+  final exitCode = (await Future.wait([
+    process.stdout.pipe(output), // Send stdout to file.
+    process.stderr.drain(), // Discard stderr.
+    process.exitCode
+  ]))[2];
+
+  print('exit code: $exitCode');
 }
-{% endprettify %}<!--- END(io_process_stdio) -->
+{% endprettify %}
 
 
 ## Writing web servers
@@ -276,17 +302,19 @@ and hook up a listener (using `await for`) to its stream of `HttpRequest`s.
 Here is a simple web server
 that just answers 'Hello, world' to any request.
 
-<!--- BEGIN(io_http_server) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_http_server_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-main() async {
-  HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
+Future<void> main() async {
+  final server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
     request.response.write('Hello, world');
     request.response.close();
   }
 }
-{% endprettify %}<!--- END(io_http_server) -->
+{% endprettify %}
 
 Running this application
 and pointing your browser to 'http://127.0.0.1:8082'
@@ -302,40 +330,52 @@ If the file is not found we will respond with a '404 Not Found' status.
 We make use of the streaming interface
 to pipe all the data read from a file directly to the response stream.
 
-<!--- BEGIN(io_http_server_file) -->{% prettify dart %}
+<?code-excerpt "misc/lib/articles/io/io_http_server_file_test.dart"?>
+{% prettify dart %}
+import 'dart:async' show Future;
 import 'dart:io';
 
-_sendNotFound(HttpResponse response) {
-  response.statusCode = HttpStatus.NOT_FOUND;
-  response.close();
-}
-
-startServer(String basePath) async {
-  HttpServer server = await HttpServer.bind('127.0.0.1', 8082);
+Future<void> runServer(String basePath) async {
+  final server = await HttpServer.bind('127.0.0.1', 8082);
   await for (HttpRequest request in server) {
-    final String path = request.uri.toFilePath();
-    // PENDING: Do more security checks here.
-    final String resultPath = path == '/' ? '/index.html' : path;
-    final File file = new File('${basePath}${resultPath}');
-    if (await file.exists()) {
-      try {
-        await file.openRead().pipe(request.response);
-      } catch (e) {
-        print(e);
-      }
-    } else {
-      _sendNotFound(request.response);
-    }
+    handleRequest(basePath, request);
   }
 }
 
-main() {
-  // Compute base path for the request based on the location of the
-  // script and then start the server.
-  File script = new File(Platform.script.toFilePath());
-  startServer(script.parent.path);
+Future<void> handleRequest(String basePath, HttpRequest request) async {
+  final String path = request.uri.toFilePath();
+  // PENDING: Do more security checks here.
+  final String resultPath = path == '/' ? '/index.html' : path;
+  final File file = File('$basePath$resultPath');
+  if (await file.exists()) {
+    try {
+      await file.openRead().pipe(request.response);
+    } catch (exception) {
+      print('Error happened: $exception');
+      await sendInternalError(request.response);
+    }
+  } else {
+    await sendNotFound(request.response);
+  }
 }
-{% endprettify %}<!--- END(io_http_server_file) -->
+
+Future<void> sendInternalError(HttpResponse response) async {
+  response.statusCode = HttpStatus.internalServerError;
+  await response.close();
+}
+
+Future<void> sendNotFound(HttpResponse response) async {
+  response.statusCode = HttpStatus.notFound;
+  await response.close();
+}
+
+Future<void> main() async {
+  // Compute base path for the request based on the location of the
+  // script, and then start the server.
+  final script = File(Platform.script.toFilePath());
+  await runServer(script.parent.path);
+}
+{% endprettify %}
 
 Writing HTTP clients is very similar to using the
 [HttpClient]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html)
@@ -345,18 +385,13 @@ class.
 ## Feature requests welcome
 
 The dart:io library is already capable of performing a lot of tasks.
-As an example of our own use of dart:io,
-we have rewritten the Dart testing scripts from Python to Dart.
-All of the tests that you see being run on the
-[buildbot](http://build.chromium.org/p/client.dart)
-are running on the Dart VM using the dart:io library!
+For example, the
+[pub.dartlang.org site](https://github.com/dart-lang/pub-dartlang-dart)
+uses dart:io.
 
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!
 When you file a bug or feature request,
-use the Area-IO label in the issue tracker at
-[dartbug.com](http://dartbug.com).
-
-{% comment %}
-The tests for this article are at /src/tests/site/articles/io.
-{% endcomment %}
+use [dartbug.com.](http://dartbug.com)
+To find reported issues, search for the
+[library-io label.](https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io)

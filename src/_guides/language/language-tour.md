@@ -2855,8 +2855,6 @@ class EffectiveDoer extends Doer {
 }
 {% endprettify %}
 
-Calling an abstract method results in a runtime error.
-
 
 ### Abstract classes
 
@@ -3584,11 +3582,11 @@ Keep in mind the following when you use deferred loading:
 
 <aside class="alert alert-warning" markdown="1">
 **Dart VM difference:**
-Due to [issue #33118](https://github.com/dart-lang/sdk/issues/33118),
-the Dart VM allows access to members of deferred libraries
+The Dart VM allows access to members of deferred libraries
 even before the call to `loadLibrary()`.
-We expect this bug to be fixed soon, so
+This behavior might change, so
 **don't depend on the current VM behavior.**
+For details, see [issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
 </aside>
 
 ### Implementing libraries

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "publish",
+    "public": "site.g",
     "cleanUrls": true,
     "trailingSlash": false,
     "headers": [{
@@ -38,7 +38,8 @@
       { "source": "/articles/futures-and-error-handling", "destination": "/guides/libraries/futures-error-handling", "type": 301 },
       { "source": "/articles/idiomatic-dart{,/**}", "destination": "/guides/language/effective-dart", "type": 301 },
       { "source": "/articles/improving-the-dom", "destination": "https://webdev.dartlang.org/guides/web-programming", "type": 301 },
-      { "source": "/articles/io", "destination": "/articles/dart-vm/io", "type": 301 },
+      { "source": "/articles/io", "destination": "/articles/libraries/dart-io", "type": 301 },
+      { "source": "/articles/dart-vm/io", "destination": "/articles/libraries/dart-io", "type": 301 },
       { "source": "/articles/js-dart-interop", "destination": "https://webdev.dartlang.org/guides/web-programming#js-interop", "type": 301 },
       { "source": "/articles/json-web-service", "destination": "https://webdev.dartlang.org/articles/get-data/json-web-service", "type": 301 },
       { "source": "/articles/language/optional-types", "destination": "/faq#types", "type": 301 },
