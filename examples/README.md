@@ -44,7 +44,7 @@ dartanalyzer .
 To run both the analyzer and tests:
 
 ```
-./scripts/analyze-and-test-examples.sh
+./tool/analyze-and-test-examples.sh
 ```
 
 If you get a warning about test failures or analysis errors,
@@ -53,11 +53,11 @@ you might need to update one or more analyzer results files
 
 To update an analyzer results file:
 
-1. Run `./scripts/analyze-and-test-examples.sh  --save-logs`.
+1. Run `./tool/analyze-and-test-examples.sh  --save-logs`.
 2. Look at the diffs for the results files.
 3. If the diffs look good but some comments are missing,
    add back the comments that are still relevant.
-4. Run `./scripts/analyze-and-test-examples.sh` to confirm that
+4. Run `./tool/analyze-and-test-examples.sh` to confirm that
    your changes are good.
 
 
@@ -121,7 +121,7 @@ will display as
 
 The code excerpt extractor can apply regular-expression-based replace transformations.
 There are global transformations applied to all code excerpts. See
-`./scripts/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
+`./tool/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
 along with the `--replace` command line argument of the `code_excerpt_updater` command.
 
 File-scope global replace expressions are included at the top of some of site page markdown files.

@@ -1,5 +1,5 @@
 language: dart
-dart: stable
+dart: [stable, dev]
 
 cache:
   timeout: 300
@@ -15,29 +15,28 @@ env:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
   matrix:
-    - TASK="./scripts/check-code.sh"
-    - TASK="./scripts/analyze-and-test-examples.sh"
+    - TASK="./tool/check-code.sh"
+    - TASK="./tool/analyze-and-test-examples.sh"
     - TASK="bundle exec jekyll build"
 
 matrix:
-  # Once we start building under stable again, reactivate the following exclusion:
-  # exclude:
-  #   - env: TASK="bundle exec jekyll build"
-  #     dart: dev
+  exclude:
+    - env: TASK="bundle exec jekyll build"
+      dart: dev
 
 before_install:
-  - source ./scripts/env-set.sh
-  - ./scripts/before-install.sh
+  - source ./tool/env-set.sh
+  - ./tool/before-install.sh
 
 install:
-  - ./scripts/install.sh
-  - ./scripts/write-ci-info.sh -v
+  - ./tool/install.sh
+  - ./tool/write-ci-info.sh -v
 
 script:
   - $TASK
 
 after_script:
-  - if [[ $TASK == *build* ]]; then ./scripts/shared/check-links.sh || travis_terminate 1; fi
+  - if [[ $TASK == *build* ]]; then ./tool/shared/check-links.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi

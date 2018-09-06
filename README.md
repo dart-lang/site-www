@@ -54,11 +54,11 @@ if you already have the required packages installed.
 
 1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
    **root of this repo**
-1. `source ./scripts/env-set.sh` &nbsp;&nbsp;#
+1. `source ./tool/env-set.sh` &nbsp;&nbsp;#
    initialize environment variables; install/use required Node & Ruby version
-1. `./scripts/before-install.sh` &nbsp;&nbsp;#
+1. `./tool/before-install.sh` &nbsp;&nbsp;#
    install core set of required tools
-1. `./scripts/install.sh` &nbsp;&nbsp;#
+1. `./tool/install.sh` &nbsp;&nbsp;#
    install everything else needed to build this site
 
 > IMPORTANT:
@@ -74,7 +74,7 @@ Once everything is installed, you need to do a full site build at least once:
 
 The generated site is placed in the `site.g` folder. To serve this folder use:
 
-- `superstatic --port 4000`
+- `npx superstatic --port 4000`
 
 Or, if you aren't testing redirects, use this command (which has the bonus of
 autorefreshing your browser after edits):
@@ -85,14 +85,14 @@ To view the generated site open [localhost:4000](http://localhost:4000) in a bro
 
 You can build, serve, and have a watcher for changes by running the following command:
 
-- `./scripts/serve.sh`
+- `./tool/serve.sh`
 
 ## Pre-push checks
 
 If you've made changes to this site's documentation and committed locally, then
 run the following command before pushing your work:
 
-    ./scripts/pre-push.sh
+    ./tool/pre-push.sh
 
 If the script reports errors or warnings, then address the issues and rerun the
 script. Otherwise, you can push your changes.
@@ -103,9 +103,9 @@ script. Otherwise, you can push your changes.
 
 If you've made changes to the example code run the following commands:
 
-- `./scripts/dartfmt.sh`
-- `./scripts/refresh-code-excerpts.sh`
-- `./scripts/analyze-and-test-examples.sh -q`
+- `./tool/dartfmt.sh`
+- `./tool/refresh-code-excerpts.sh`
+- `./tool/analyze-and-test-examples.sh -q`
 
 If the last command reports failed tests and you'd like to know which
 test failed, then rerun the command without the `-q` flag.
@@ -115,7 +115,7 @@ test failed, then rerun the command without the `-q` flag.
 First, build the site and launch the server:
 
 ```
-jekyll build && superstatic --port 4000
+jekyll build && npx superstatic --port 4000
 ```
 
 Next, to check for broken links,

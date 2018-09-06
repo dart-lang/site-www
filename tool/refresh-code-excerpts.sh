@@ -13,7 +13,7 @@ function usage() {
 
 if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/tool/env-set.sh
 [[ -z "$DART_SITE_ENV_DEFS" ]] && exit 1; # env-set failed, abort.
 
 ARGS=''
@@ -23,7 +23,7 @@ if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
 
 if [[ $1 == '--legacy' ]]; then
   shift
-  $(npm bin)/code-excerpter examples "$FRAG"
+  npx code-excerpter examples "$FRAG"
 else
   ARGS+='--yaml '
   if [[ ! -e "pubspec.lock" ]]; then pub get; fi

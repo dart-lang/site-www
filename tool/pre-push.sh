@@ -12,9 +12,9 @@ fi
 STATUS=0
 set -x
 
-./scripts/dartfmt.sh | grep -v Unchanged && \
-./scripts/refresh-code-excerpts.sh && \
-./scripts/analyze-and-test-examples.sh $* && \
+./tool/dartfmt.sh | grep -v Unchanged && \
+./tool/refresh-code-excerpts.sh && \
+./tool/analyze-and-test-examples.sh $* && \
 pushd deploy/effective-dart-rules && pub get && \
 popd && \
 dart deploy/effective-dart-rules/bin/main.dart
