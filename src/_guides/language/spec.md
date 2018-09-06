@@ -1,12 +1,12 @@
 ---
-layout: default
-title: "Dart Language Specification"
 description: "The Dart language specification."
+title: Dart Language Specification
+description: The formal specification for the Dart language.
 ---
 
 Use this page to find the formal Dart language specification.
-For a gentler introduction to the Dart language, see the
-[Dart language tour](/guides/language/language-tour).
+For a gentler introduction to Dart, see the
+[language tour](/guides/language/language-tour).
 
 ## Dart 2
 
@@ -18,11 +18,13 @@ The formal language specification is not yet up-to-date.
 For information about Dart 2 changes, see the following resources.
 
 * Feature specifications in the dart-lang/sdk repo:
-  * [/docs/language/informal](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
+  * [docs/language/informal](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
 * Feature specifications in the dart-lang/language repo:
-  * [/accepted](https://github.com/dart-lang/language/tree/master/accepted)
-  * [/working](https://github.com/dart-lang/language/tree/master/working)
-* [Dart language specification source file (LaTeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+  * [accepted](https://github.com/dart-lang/language/tree/master/accepted)
+  * [working](https://github.com/dart-lang/language/tree/master/working)
+* Dart language specification work in progress:
+  * [Source file (LaTeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+  * [Community-contributed PDF built from the source file](https://github.com/chalin/dart-spec-and-grammar/blob/master/doc/dartLangSpec.pdf)
 
 ## Dart 1.x
 
