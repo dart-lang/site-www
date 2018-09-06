@@ -179,17 +179,4 @@ void main() {
 
     expect(a == b, isFalse);
   });
-
-  test('nonconst_const_constructor_2', () {
-    // #docregion nonconst-const-constructor-2
-    var a = const ImmutablePoint(0, 0);
-    var b = ImmutablePoint(0, 0);
-
-    assert(identical(a, ImmutablePoint.origin));
-    assert(!identical(a, b));
-    // #enddocregion nonconst-const-constructor-2
-
-    expect(ImmutablePoint.origin == a, isTrue);
-    expect(a == b, isFalse);
-  });
 }
