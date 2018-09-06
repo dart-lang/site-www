@@ -1,5 +1,4 @@
 ---
-description: "The Dart language specification."
 title: Dart Language Specification
 description: The formal specification for the Dart language.
 ---
