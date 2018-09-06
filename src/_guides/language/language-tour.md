@@ -125,10 +125,15 @@ mind:
 -   *Identifiers* can start with a letter or underscore (\_), followed by any
     combination of those characters plus digits.
 
--   Sometimes it matters whether something is an *expression* or a
-    *statement*, so it helps to be precise about those two words.
+-   Dart has both *expressions* (which have runtime values) and
+    *statements* (which don't).
+    For example, the [conditional expression](#conditional-expressions)
+    `condition ? expr1 : expr2` has a value of `expr1` or `expr2`.
+    Compare that to an [if-else statement](#if-and-else), which has no value.
+    A statement often contains one or more expressions,
+    but an expression can't contain a statement.
 
--   Dart tools can report two kinds of problems: warnings and errors.
+-   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
     they don’t prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
@@ -139,6 +144,7 @@ mind:
 ## Keywords
 
 The following table lists the words that the Dart language treats specially.
+**Avoid using these words as identifiers.**
 
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
@@ -160,22 +166,23 @@ The following table lists the words that the Dart language treats specially.
 | deferred{{bii}}   | implements{{bii}}
 {:.table .table-striped .nowrap}
 
-<sup>1</sup> Words with the superscript **1**
-are **built-in identifiers**. Avoid using
-built-in identifiers as identifiers.
-A compile-time error happens if you try to
-use a built-in identifier for a class or type name.
+When necessary, the words marked with superscripts can sometimes be used as
+identifiers:
 
-<sup>2</sup> Words with the superscript **2**
-are newer, limited reserved words related to **asynchrony** support
-added after Dart's 1.0 release.
-You can't use `async`, `await`, or `yield` as
-an identifier in any function body marked with `async`, `async*`, or `sync*`.
-For more information, see
-[Asynchrony support](#asynchrony-support).
+* Words with the superscript **1** are **built-in identifiers**.
+  To simplify the task of porting JavaScript code to Dart,
+  built-in identifiers are valid in most places,
+  but they can't be used as class or type names.
 
-All other words in the keyword table are **reserved words**.
-You can't use reserved words as identifiers.
+* Words with the superscript **2** are newer, limited reserved words related to
+  the **asynchrony** support that was added after Dart's 1.0 release.
+  You can't use `async`, `await`, or `yield` as an identifier
+  in any function body marked with `async`, `async*`, or `sync*`.
+  For more information, see
+  [Asynchrony support](#asynchrony-support).
+
+All other words in the table are **reserved words**,
+which can't be identifiers.
 
 
 ## Variables
@@ -252,6 +259,10 @@ the first time it's used.
 <div class="alert alert-info" markdown="1">
 **Note:**
 Instance variables can be `final` but not `const`.
+Final instance variables must be initialized before
+the constructor body starts —
+at the variable declaration, in a constructor argument,
+or in the constructor's [initializer list](#initializer-list).
 </div>
 
 Here's an example of creating and setting a final variable:
@@ -441,7 +452,8 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 ### Strings
 
-A Dart string is a sequence of UTF-16 code units. You can use either
+A Dart string is a sequence of UTF-16 code units. (When Dart is compiled to
+JavaScript, the string representation remains the same.) You can use either
 single or double quotes to create a string:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
@@ -1782,15 +1794,10 @@ For more information about the `.`, `?.`, and `..` operators, see
 You can control the flow of your Dart code using any of the following:
 
 -   `if` and `else`
-
 -   `for` loops
-
 -   `while` and `do`-`while` loops
-
 -   `break` and `continue`
-
 -   `switch` and `case`
-
 -   `assert`
 
 You can also affect the control flow using `try-catch` and `throw`, as
@@ -2225,7 +2232,8 @@ try {
 {% endprettify %}
 
 Learn more by reading the
-[Exceptions](/guides/libraries/library-tour#exceptions) section.
+[Exceptions](/guides/libraries/library-tour#exceptions)
+section of the library tour.
 
 ## Classes
 
