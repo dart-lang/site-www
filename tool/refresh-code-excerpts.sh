@@ -13,7 +13,7 @@ function usage() {
 
 if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
 
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/tool/env-set.sh
 [[ -z "$DART_SITE_ENV_DEFS" ]] && exit 1; # env-set failed, abort.
 
 ARGS=''

@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./tool/env-set.sh
 
 if  [[ -z "$(type -t dart)" ]]; then
     travis_fold start install.dart
@@ -44,7 +44,7 @@ if  [[ -z "$(type -t dart)" ]]; then
         if [[ "1000" -lt "$(wc -c $TMP/$zip | awk '{print $1}')" ]]; then
             unzip "$TMP/$zip" -d "$PKG" > /dev/null
             rm -f "$TMP/$zip"
-            # PATH is set in ./scripts/env-set.sh
+            # PATH is set in ./tool/env-set.sh
         else
             echo FAILED to download Dart $pkg. Check URL.
             exitStatus=1;
@@ -59,6 +59,6 @@ if  [[ -z "$(type -t dart)" ]]; then
     travis_fold end install.dart
 else
     echo Dart SDK appears to be installed: `type dart`
-    # PATH is set in ./scripts/env-set.sh
+    # PATH is set in ./tool/env-set.sh
     dart --version
 fi

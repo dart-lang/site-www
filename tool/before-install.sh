@@ -2,12 +2,12 @@
 
 set -e -o pipefail
 
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./scripts/env-set.sh
+[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./tool/env-set.sh
 
 if [[ "$1" == --force ]]; then FORCE=1; fi
 
 if [[ -n "$TRAVIS" ]]; then
-  ./scripts/env-info-and-check.sh
+  ./tool/env-info-and-check.sh
   # travis_fold start before_install.update_apt_get
   #   (set -x; sudo apt-get update --yes)
   # travis_fold end before_install.update_apt_get
@@ -22,7 +22,7 @@ travis_fold start before_install.ruby_bundler
   fi
 travis_fold end before_install.ruby_bundler
 
-./scripts/install-dart-sdk.sh
+./tool/install-dart-sdk.sh
 
 travis_fold start before_install.pub
   pub upgrade
