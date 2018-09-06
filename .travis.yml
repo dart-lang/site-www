@@ -30,7 +30,7 @@ before_install:
 
 install:
   - ./tool/install.sh
-  - ./tool/write-ci-info.sh -v
+  - ./tool/shared/write-ci-info.sh -v
 
 script:
   - $TASK
@@ -46,12 +46,13 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh
+    script: ./tool/deploy.sh
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
       branch: master
       condition: $TASK == *build*
+
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
   only: [master, /^\d\.x$/, /^\d-dev$/, /travis-build/]
