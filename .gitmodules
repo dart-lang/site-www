@@ -1,4 +1,4 @@
 [submodule "site-shared"]
   path = site-shared
   url = https://github.com/dart-lang/site-shared.git
-  branch = chalin-more-sharing-0906
+  branch = master
