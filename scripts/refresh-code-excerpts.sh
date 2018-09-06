@@ -23,7 +23,7 @@ if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
 
 if [[ $1 == '--legacy' ]]; then
   shift
-  $(npm bin)/code-excerpter examples "$FRAG"
+  npx code-excerpter examples "$FRAG"
 else
   ARGS+='--yaml '
   if [[ ! -e "pubspec.lock" ]]; then pub get; fi

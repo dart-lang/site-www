@@ -24,14 +24,6 @@ travis_fold end before_install.ruby_bundler
 
 ./scripts/install-dart-sdk.sh
 
-travis_fold start before_install.npm_install
-  if [[ -n "$TRAVIS" || -n "$FORCE" || -z "$(type -t firebase)" || -z "$(type -t gulp)" || -z "$(type -t superstatic)" ]]; then
-    (set -x; npm install --global firebase-tools@4.0.3 gulp-cli superstatic@5.0.2 --no-optional)
-  else
-    echo "Global NPM packages already installed. Use --force to reinstall/update."
-  fi
-travis_fold end before_install.npm_install
-
 travis_fold start before_install.pub
   pub upgrade
 travis_fold end before_install.pub

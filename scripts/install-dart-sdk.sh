@@ -6,11 +6,9 @@ set -e -o pipefail
 
 if  [[ -z "$(type -t dart)" ]]; then
     travis_fold start install.dart
-    echo INSTALLING Dart SDK and Dartium ...
+    echo INSTALLING Dart SDK ...
 
-    # URLs for sdk and dartium:
     # https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-x64-release.zip
-    # https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/dartium-macos-x64-release.zip
 
     : ${DART_CHANNEL:=$(node -p 'require("./src/_data/pkg-vers.json").SDK.channel')} # dev or stable
 

@@ -74,7 +74,7 @@ Once everything is installed, you need to do a full site build at least once:
 
 The generated site is placed in the `site.g` folder. To serve this folder use:
 
-- `superstatic --port 4000`
+- `npx superstatic --port 4000`
 
 Or, if you aren't testing redirects, use this command (which has the bonus of
 autorefreshing your browser after edits):
@@ -115,7 +115,7 @@ test failed, then rerun the command without the `-q` flag.
 First, build the site and launch the server:
 
 ```
-jekyll build && superstatic --port 4000
+jekyll build && npx superstatic --port 4000
 ```
 
 Next, to check for broken links,

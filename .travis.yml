@@ -1,5 +1,5 @@
 language: dart
-dart: stable
+dart: [stable, dev]
 
 cache:
   timeout: 300
@@ -20,10 +20,9 @@ env:
     - TASK="bundle exec jekyll build"
 
 matrix:
-  # Once we start building under stable again, reactivate the following exclusion:
-  # exclude:
-  #   - env: TASK="bundle exec jekyll build"
-  #     dart: dev
+  exclude:
+    - env: TASK="bundle exec jekyll build"
+      dart: dev
 
 before_install:
   - source ./scripts/env-set.sh
