@@ -32,7 +32,7 @@ for the appropriate Dart platform:
 
 | **Platform** | | **Use case** | **Get started** |
 | **Mobile** | <i class="fab fa-android" aria-hidden="true"></i> <i class="fab fa-apple" aria-hidden="true"></i> | Create an app from a single codebase that runs on both iOS and Android. | <a href="https://flutter.io/getting-started/" class="btn btn-primary no-automatic-external">Flutter</a> |
-| **Web** | <i class="fas fa-code fa-sm" aria-hidden="true"></i> | Create an app that runs in any modern browser. | <a href="{{site.webdev}}/guides/get-started" class="btn btn-primary no-automatic-external">Dart webdev</a> |
+| **Web** | <i class="fas fa-code fa-sm" aria-hidden="true"></i> | Create an app that runs in any modern browser. | <a href="{{site.webdev}}/guides/get-started" class="btn btn-primary no-automatic-external">Dart for the web</a> |
 | **Server** | <i class="fas fa-terminal fa-sm" aria-hidden="true"></i> | Create a command-line tool or server. | <a href="/tutorials/dart-vm/get-started" class="btn btn-primary">Server-side Dart</a> |
 {:.get-started-table}
 
