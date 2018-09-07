@@ -131,7 +131,7 @@ mind:
     `condition ? expr1 : expr2` has a value of `expr1` or `expr2`.
     Compare that to an [if-else statement](#if-and-else), which has no value.
     A statement often contains one or more expressions,
-    but an expression can't contain a statement.
+    but an expression can't directly contain a statement.
 
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
@@ -144,42 +144,44 @@ mind:
 ## Keywords
 
 The following table lists the words that the Dart language treats specially.
-**Avoid using these words as identifiers.**
 
-{% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
-{% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
-
-| abstract{{bii}}   | do                | import{{bii}}     | super             |
-| as{{bii}}         | dynamic{{bii}}    | in                | switch            |
-| assert            | else              | interface{{bii}}  | sync*{{lrw}}      |
-| async{{lrw}}      | enum              | is                | this              |
-| async*{{lrw}}     | export{{bii}}     | library{{bii}}    | throw             |
-| await{{lrw}}      | external{{bii}}   | mixin{{bii}}      | true              |
-| break             | extends           | new               | try               |
-| case              | factory{{bii}}    | null              | typedef{{bii}}    |
-| catch             | false             | operator{{bii}}   | var               |
-| class             | final             | part{{bii}}       | void              |
-| const             | finally           | rethrow           | while             |
-| continue          | for               | return            | with              |
-| covariant{{bii}}  | get{{bii}}        | set{{bii}}        | yield{{lrw}}      |
-| default           | if                | static{{bii}}     | yield*{{lrw}}     |
-| deferred{{bii}}   | implements{{bii}}
+{% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
+{% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
+{% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+| abstract{{bii}}   | dynamic{{bii}}    | implements{{bii}} | show{{ckw}}   |
+| as{{bii}}         | else              | import{{bii}}     | static{{bii}} |
+| assert            | enum              | in                | super         |
+| async{{ckw}}      | export{{bii}}     | interface{{bii}}  | switch        |
+| await{{lrw}}      | external{{bii}}   | is                | sync{{ckw}}   |
+| break             | extends           | library{{bii}}    | this          |
+| case              | factory{{bii}}    | mixin{{bii}}      | throw         |
+| catch             | false             | new               | true          |
+| class             | final             | null              | try           |
+| const             | finally           | on{{ckw}}         | typedef{{bii}}|
+| continue          | for               | operator{{bii}}   | var           |
+| covariant{{bii}}  | Function{{bii}}   | part{{bii}}       | void          |
+| default           | get{{bii}}        | rethrow           | while         |
+| deferred{{bii}}   | hide{{ckw}}       | return            | with          |
+| do                | if                | set{{bii}}        | yield{{lrw}}  |
 {:.table .table-striped .nowrap}
 
-When necessary, the words marked with superscripts can sometimes be used as
-identifiers:
+Avoid using these words as identifiers.
+However, if necessary, the keywords marked with superscripts can be identifiers:
 
-* Words with the superscript **1** are **built-in identifiers**.
+* Words with the superscript **1** are **contextual keywords**,
+  which have meaning only in specific places.
+  They're valid identifiers everywhere.
+
+* Words with the superscript **2** are **built-in identifiers**.
   To simplify the task of porting JavaScript code to Dart,
-  built-in identifiers are valid in most places,
-  but they can't be used as class or type names.
+  these keywords are valid identifiers in most places,
+  but they can't be used as class or type names, or as import prefixes.
 
-* Words with the superscript **2** are newer, limited reserved words related to
-  the **asynchrony** support that was added after Dart's 1.0 release.
-  You can't use `async`, `await`, or `yield` as an identifier
+* Words with the superscript **3** are newer, limited reserved words related to
+  the [asynchrony support](#asynchrony-support) that was added
+  after Dart's 1.0 release.
+  You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
-  For more information, see
-  [Asynchrony support](#asynchrony-support).
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
@@ -261,7 +263,7 @@ the first time it's used.
 Instance variables can be `final` but not `const`.
 Final instance variables must be initialized before
 the constructor body starts —
-at the variable declaration, in a constructor argument,
+at the variable declaration, by a constructor parameter,
 or in the constructor's [initializer list](#initializer-list).
 </div>
 
@@ -452,8 +454,7 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 ### Strings
 
-A Dart string is a sequence of UTF-16 code units. (When Dart is compiled to
-JavaScript, the string representation remains the same.) You can use either
+A Dart string is a sequence of UTF-16 code units. You can use either
 single or double quotes to create a string:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
