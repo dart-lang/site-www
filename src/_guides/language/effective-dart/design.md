@@ -8,8 +8,6 @@ prevpage:
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
 
-{% include effective-dart-banner.html %}
-
 Here are some guidelines for writing consistent, usable APIs for libraries.
 
 * TOC
