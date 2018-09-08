@@ -511,7 +511,7 @@ The following resources have further information on sound Dart:
 * [Fixing Common Type Problems](/guides/language/sound-problems) -
   Errors you may encounter when
   writing sound Dart code, and how to fix them.
-* [Dart 2 Updates](/dart-2) - How to update Dart 1.x code to Dart 2.
+* [Dart 2](/dart-2) - How to update Dart 1.x code to Dart 2.
 * [Customize Static Analysis](/guides/language/analysis-options) - How
   to set up and customize the analyzer and linter using an analysis
   options file.
