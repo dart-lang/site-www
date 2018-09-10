@@ -168,4 +168,15 @@ void main() {
 
     expect(pointAndLine1 == pointAndLine2, isTrue);
   });
+
+  test('nonconst_const_constructor', () {
+    // #docregion nonconst-const-constructor
+    var a = const ImmutablePoint(1, 1); // Creates a constant
+    var b = ImmutablePoint(1, 1); // Does NOT create a constant
+
+    assert(!identical(a, b)); // NOT the same instance!
+    // #enddocregion nonconst-const-constructor
+
+    expect(a == b, isFalse);
+  });
 }
