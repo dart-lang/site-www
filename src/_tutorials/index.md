@@ -5,8 +5,8 @@ permalink: /tutorials
 toc: false
 ---
 
-**The Dart Tutorials** teach you how to build applications
-using the Dart language, tools, and APIs.
+**The Dart Tutorials** teach you how to use the Dart
+language, tools, and APIs to build applications.
 If you want a hands-on coding experience, try a
 **[codelab](/codelabs)**.
 
@@ -17,15 +17,20 @@ If you want a hands-on coding experience, try a
 
 ## Language tutorials
 
-The Future and Stream classes provide API for performing tasks,
-such as input/output, asynchronously, so as to avoid blocking your
-program. Futures and Streams are fundamental to most Dart programs.
+The language tour shows you how to use each major Dart feature.
+Once you're familiar with the language,
+learn more about _futures_ and _streams_,
+which are fundamental to most Dart programs.
 
 <div class="card-grid">
   <div class="card">
+    <h3><a href="/guides/language/language-tour">A Tour of the Dart Language</a></h3>
+    <p>Take an example-driven tour of the Dart programming language.</p>
+  </div>
+  <div class="card">
     <h3><a href="/tutorials/language/futures">Asynchronous Programming:
         Futures</a></h3>
-    <p>A first look at using Futures for asynchronous tasks.</p>
+    <p>Use futures for asynchronous tasks.</p>
   </div>
   <div class="card">
     <h3><a href="/tutorials/language/streams">Asynchronous Programming:
@@ -39,14 +44,12 @@ program. Futures and Streams are fundamental to most Dart programs.
 Dart developers have been busy creating code libraries that can help you
 be more productive.
 Leverage that code or put your code out in the world to share with others.
-Organize and share code at
-<a href="https://pub.dartlang.org/">pub.dartlang.org</a>.
 
 <div class="card-grid">
   <div class="card">
     <h3><a href="/tutorials/libraries/shared-pkgs">Install Shared Packages</a></h3>
     <p>Organize and share code at
-       <a href="https://pub.dartlang.org/">pub.dartlang.org</a>.</p>
+       <a href="{{site.pub}}">pub.dartlang.org.</a></p>
   </div>
 </div>
 
