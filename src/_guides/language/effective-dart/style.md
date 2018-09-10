@@ -10,8 +10,6 @@ prevpage:
 ---
 <?code-excerpt plaster="none"?>
 
-{% include effective-dart-banner.html %}
-
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
 advantage of the powerful pattern-matching hardware most of us have in our
