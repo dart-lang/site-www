@@ -17,11 +17,16 @@ If you want a hands-on coding experience, try a
 
 ## Language tutorials
 
+The language tour shows you how to use each major Dart feature.
 The Future and Stream classes provide API for performing tasks,
 such as input/output, asynchronously, so as to avoid blocking your
 program. Futures and Streams are fundamental to most Dart programs.
 
 <div class="card-grid">
+  <div class="card">
+    <h3><a href="/guides/language/language-tour">Dart Language Tour</a></h3>
+    <p>A general introduction to the Dart programmin language.</p>
+  </div>
   <div class="card">
     <h3><a href="/tutorials/language/futures">Asynchronous Programming:
         Futures</a></h3>
