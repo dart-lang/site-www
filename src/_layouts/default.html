@@ -8,7 +8,7 @@
       {% include navigation-toc.html %}
       <article>
         <div class="content">
-          {% include banner.html %}
+          {% if site.show_banner %} {% include banner.html %} {% endif %}
           {% include navigation-sub.html %}
           {% if page.show_breadcrumbs -%}
             {% include breadcrumbs.html %}
