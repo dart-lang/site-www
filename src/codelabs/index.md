@@ -9,7 +9,7 @@ toc: false
 For a guided, hands-on coding experience,
 go through one of the Dart codelabs.
 
-<img src="https://webdev.dartlang.org/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
+<img src="{{site.webdev}}/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
 #### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
 
@@ -20,6 +20,6 @@ Dart makes writing modern apps easy and fun.
 
 If you're ready to download an SDK, try one of the platform-specific codelabs:
 
-* [Flutter codelabs](https://flutter.io/codelabs)
-* [AngularDart codelabs](https://webdev.dartlang.org/codelabs)
+* [Flutter codelabs]({{site.flutter}}/codelabs)
+* [AngularDart codelabs]({{site.webdev}}/codelabs)
 

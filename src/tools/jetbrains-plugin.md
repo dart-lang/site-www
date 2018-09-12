@@ -18,7 +18,7 @@ and find more information when you need it.
   WebStorm comes with the Dart plugin pre-installed.
   For details on using WebStorm,
   read the [WebStorm page]({{site.webdev}}/tools/webstorm)
-  on [Dart webdev]({{site.webdev}}).
+  on the [Dart web development site.]({{site.webdev}})
 </aside>
 
 ## Getting started
