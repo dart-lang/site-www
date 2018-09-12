@@ -487,7 +487,7 @@ and renders response.}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 3. pub serve responds\
+\f0\fs24 \cf0 3. dartdevc responds\
 with content}</string>
 			</dict>
 			<key>Wrap</key>
@@ -614,7 +614,7 @@ Chrome on Android\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs24 \cf0 2. Chrome port-forwards \
-to pub serve}</string>
+to dartdevc}</string>
 			</dict>
 			<key>Wrap</key>
 			<string>NO</string>
@@ -741,7 +741,7 @@ to pub serve}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Dart Editor/pub serve}</string>
+\f0\fs24 \cf0 dartdevc}</string>
 			</dict>
 			<key>Wrap</key>
 			<string>NO</string>
