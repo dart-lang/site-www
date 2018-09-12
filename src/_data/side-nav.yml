@@ -32,7 +32,7 @@
     - title: Mobile (Flutter)
       permalink: https://flutter.io
     - title: Web
-      permalink: {{site.webdev}}
+      permalink: https://webdev.dartlang.org
     - title: Server
       permalink: /dart-vm
 
