@@ -85,10 +85,9 @@ Duration oneSecond = Duration(seconds: 1);
 String _gatherNewsReportsSync() => news;
 
 // #docregion main-async, main-future-api
-final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
-
 // Imagine that this function is more complex and slow. :)
-Future<String> _gatherNewsReportsAsync() => newsStream.first;
+Future<String> _gatherNewsReportsAsync() =>
+    Future.delayed(oneSecond, () => news);
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
