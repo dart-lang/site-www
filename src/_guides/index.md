@@ -19,9 +19,8 @@ The getting started guide helps you get up and running with Dart as quickly as p
 
 The following guides teach you about the Dart language.
 
-* [Language Tour](/guides/language/language-tour)
+* [Language Tour](/guides/language/language-tour) (for more detail, see the [language specification](/guides/language/spec))
 * [Effective Dart](/guides/language/effective-dart)
-* [Spec](/guides/language/spec)
 
 The following guides teach you about Dart's core libraries.
 
