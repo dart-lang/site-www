@@ -210,7 +210,10 @@
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "https://webdev.dartlang.org/tools/webstorm", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
-      { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dartlang.org/packages/observable", "type": 301 }
+      { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dartlang.org/packages/observable", "type": 301 },
+      { "source": "/Dart-vm", "destination": "/dart-vm", "type": 301 },
+      { "source": "/dart-1", "destination": "https://v1-dartlang-org.firebaseapp.com", "type": 301 },
+      { "source": "/packages", "destination": "https://pub.dartlang.org", "type": 301 }
     ]
   }
 }
