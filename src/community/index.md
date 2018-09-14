@@ -67,7 +67,6 @@ Our wonderful community has provided these resources.
 * [dartdocs.org](http://www.dartdocs.org) - Documentation for pub packages
 * [Dart Academy](https://dart.academy/) - Tutorials
   and articles written by the Dart community
-* [Dartosphere blog aggregator](http://www.dartosphere.org)
 * [Chinese version of this site（此网站的中文版）](http://dart.goodev.org/)
 
 Also see [Community and Support]({{site.webdev}}/community) on Dart webdev.

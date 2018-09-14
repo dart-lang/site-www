@@ -20,4 +20,4 @@ Also see:
 
 * [Libraries articles](/articles/libraries)
 * [Server-side Dart articles](/articles/dart-vm)
-* [webdev articles]({{site.webdev}}/articles)
+* [Articles about Dart web development]({{site.webdev}}/articles)

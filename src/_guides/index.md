@@ -9,8 +9,8 @@ Read these guides to learn about the Dart language and its libraries.
 
 Also see:
 
-* [webdev guides]({{site.webdev}}/guides)
-* [Flutter's developer guides]({{site.flutter}})
+* [Flutter guides]({{site.flutter}})
+* [Web development guides]({{site.webdev}}/guides)
 * [Server-side get started tutorial](/tutorials/dart-vm/get-started)
 
 The getting started guide helps you get up and running with Dart as quickly as possible.
@@ -19,9 +19,8 @@ The getting started guide helps you get up and running with Dart as quickly as p
 
 The following guides teach you about the Dart language.
 
-* [Language Tour](/guides/language/language-tour)
+* [Language Tour](/guides/language/language-tour) (for more detail, see the [language specification](/guides/language/spec))
 * [Effective Dart](/guides/language/effective-dart)
-* [Spec](/guides/language/spec)
 
 The following guides teach you about Dart's core libraries.
 

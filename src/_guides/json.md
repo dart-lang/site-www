@@ -36,13 +36,13 @@ The following libraries and packages are useful across Dart platforms:
 
 ## Web app resources
 
-[AngularDart Tutorial, part 6: HTTP](https://webdev-dartlang-org-dev.firebaseapp.com/angular/tutorial/toh-pt6)
+[AngularDart Tutorial, part 6: HTTP]({{site.webdev}}/angular/tutorial/toh-pt6)
 : Illustrates how a Dart web app can interact with a
   RESTful backend using JSON data.
 
-[Using HTTP resources with HttpRequest](https://webdev-dartlang-org-dev.firebaseapp.com/guides/html-library-tour#using-http-resources-with-httprequest)
+[Using HTTP resources with HttpRequest]({{site.webdev}}/guides/html-library-tour#using-http-resources-with-httprequest)
 : Demonstrates how to use HttpRequest to exchange data with a web server.
-  Part of the [HTML library tour.](https://webdev-dartlang-org-dev.firebaseapp.com/guides/html-library-tour)
+  Part of the [HTML library tour.]({{site.webdev}}/guides/html-library-tour)
 
 
 ## VM resources

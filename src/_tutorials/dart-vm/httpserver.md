@@ -243,7 +243,7 @@ that you can use to guess the number.
 
 2. **Launch the web server**
 
-   Run `pub serve` from the top directory of the app.
+   Run `webdev serve` from the top directory of the app.
 
 3. **Open the HTML page**
 
