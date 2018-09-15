@@ -13,7 +13,7 @@ nextpage:
 
   * Dart is single-threaded.
   * Synchronous code can make your program freeze.
-  * Use `Future` objects to perform asynchronous operations.
+  * Use `Future` objects (_futures_) to perform asynchronous operations.
   * Use `await` in an async function to pause execution until a future completes.
   * Or use the future's `then()` method.
   * Use try-catch expressions in async functions to catch errors.
@@ -97,10 +97,11 @@ before its body. The `await` keyword works only in async functions.
 The following app simulates reading the news by using async and await to read
 the contents of a file on www.dartlang.org.
 Click run {% asset red-run.png alt="" %} to start the app.
+Or open a
+[DartPad window containing the app.]({{site.custom.dartpad.direct-link}}/ff795a8d7ac9079fd5c5b822c2d78c80){: target="_blank"}
 
 {% comment %}
-https://gist.github.com/kwalrath/477fb799d21401f46f8c04462fd249c4
-
+https://gist.github.com/kwalrath/ff795a8d7ac9079fd5c5b822c2d78c80
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-async)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
@@ -152,11 +153,17 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=ff795a8d7ac9079fd5c5b822c2d78c80&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
+{% comment %}
+TODO: Once this is published (or close to it), copy code from
+https://gist.github.com/ff795a8d7ac9079fd5c5b822c2d78c80 to the
+original gist (https://gist.github.com/477fb799d21401f46f8c04462fd249c4), and
+change the DartPad to use 477fb799d21401f46f8c04462fd249c4.
+{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
@@ -186,10 +193,9 @@ number corresponds to a step below.
 1. The app begins executing.
 1. The `main()` function calls the async function `printDailyNewsDigest()`,
    which begins executing synchronously.
-1. `printDailyNewsDigest()` uses `await` to call the async function
-   `gatherNewsReports()`, which begins executing synchronously.
-1. Because `gatherNewsReports()` is an async function, when it reaches its
-   `return` statement it pauses its execution and returns an uncompleted
+1. `printDailyNewsDigest()` uses `await` to call the function
+   `gatherNewsReports()`, which begins executing.
+1. The `gatherNewsReports()` function returns an uncompleted
    future (an instance of `Future<String>`).
 1. Because `printDailyNewsDigest()` is an async function and is
    awaiting a value, it pauses its execution and returns an uncompleted
@@ -266,10 +272,13 @@ To write asynchronous code using the `Future` API, you use the `then()` method
 to register a callback.  This callback fires when the `Future` completes.
 
 The following app simulates reading the news by using the `Future` API to read
-the contents of a file on www.dartlang.org.  Click run ( {% asset red-run.png %} ) to start the app.
+the contents of a file on www.dartlang.org.
+Click run ( {% asset red-run.png %} ) to start the app.
+Or open a
+[DartPad window containing the app.]({{site.custom.dartpad.direct-link}}/d1061ba2001619091757431c04522c54){: target="_blank"}
 
 {% comment %}
-https://gist.github.com/kwalrath/5ceabe371903b6672026bd3fb30cdf5b
+https://gist.github.com/kwalrath/d1061ba2001619091757431c04522c54
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
@@ -325,11 +334,17 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=d1061ba2001619091757431c04522c54&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
+{% comment %}
+TODO: Once this is published (or close to it), copy code from
+https://gist.github.com/d1061ba2001619091757431c04522c54 to the
+original gist (https://gist.github.com/5ceabe371903b6672026bd3fb30cdf5b), and
+change the DartPad to use 5ceabe371903b6672026bd3fb30cdf5b.
+{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
