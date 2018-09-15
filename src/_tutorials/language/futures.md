@@ -35,8 +35,8 @@ Let's look at some code that could possibly cause a program to freeze:
 {% prettify dart %}
 // Synchronous code
 void printDailyNewsDigest() {
-  var news = gatherNewsReports(); // Can take a while.
-  print(news);
+  var newsDigest = gatherNewsReports(); // Can take a while.
+  print(newsDigest);
 }
 
 main() {
@@ -111,8 +111,8 @@ https://gist.github.com/kwalrath/ff795a8d7ac9079fd5c5b822c2d78c80
 import 'dart:async';
 
 Future<void> printDailyNewsDigest() async {
-  var news = await gatherNewsReports();
-  print(news);
+  var newsDigest = await gatherNewsReports();
+  print(newsDigest);
 }
 
 main() {
@@ -230,8 +230,8 @@ capture that error. Async functions can handle errors using try-catch:
 {% prettify dart %}
 Future<void> printDailyNewsDigest() async {
   try {
-    var news = await gatherNewsReports();
-    print(news);
+    var newsDigest = await gatherNewsReports();
+    print(newsDigest);
   } catch (e) {
     // Handle error...
   }
@@ -290,7 +290,7 @@ import 'dart:async';
 
 Future<void> printDailyNewsDigest() {
   final future = gatherNewsReports();
-  return future.then((news) => print(news));
+  return future.then((newsDigest) => print(newsDigest));
   // You don't *have to* return the future here. But if you don't, callers can't
   // await it.
 }
@@ -380,8 +380,8 @@ written in a couple different ways.
   {% prettify dart %}
   Future<void> printDailyNewsDigest() {
     final future = gatherNewsReports();
-    return future.then((news) {
-      print(news);
+    return future.then((newsDigest) {
+      print(newsDigest);
       // Do something else...
     });
   }
@@ -419,7 +419,7 @@ With the `Future` API, you can capture an error using `catchError()`:
 {% prettify dart %}
 Future<void> printDailyNewsDigest() =>
     gatherNewsReports()
-        .then((news) => print(news))
+        .then((newsDigest) => print(newsDigest))
         .catchError((e) => handleError(e));
 {% endprettify %}
 
