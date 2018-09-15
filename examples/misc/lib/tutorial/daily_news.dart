@@ -17,22 +17,22 @@ import 'dart:async';
 // #docregion sync
 // Synchronous code
 void _printDailyNewsDigestSync() {
-  var news = _gatherNewsReportsSync(); // Can take a while.
-  print(news);
+  var newsDigest = _gatherNewsReportsSync(); // Can take a while.
+  print(newsDigest);
 }
 // #enddocregion sync
 
 // #docregion main-async
 Future<void> _printDailyNewsDigestAsync() async {
-  var news = await _gatherNewsReportsAsync();
-  print(news);
+  var newsDigest = await _gatherNewsReportsAsync();
+  print(newsDigest);
 }
 // #enddocregion main-async
 
 // #docregion main-future-api
 Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
   final future = _gatherNewsReportsAsync();
-  return future.then((news) => print(news));
+  return future.then((newsDigest) => print(newsDigest));
   // You don't *have to* return the future here. But if you don't, callers can't
   // await it.
 }
@@ -105,8 +105,8 @@ Future<String> _gatherNewsReportsAsync() =>
 // #docregion try-catch
 Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
   try {
-    var news = await _gatherNewsReportsAsync();
-    print(news);
+    var newsDigest = await _gatherNewsReportsAsync();
+    print(newsDigest);
   } catch (e) {
     // Handle error...
   }
@@ -116,8 +116,8 @@ Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
 // #docregion main-future-api-using-braces
 Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
   final future = _gatherNewsReportsAsync();
-  return future.then((news) {
-    print(news);
+  return future.then((newsDigest) {
+    print(newsDigest);
     // Do something else...
   });
 }
@@ -144,6 +144,6 @@ handleError(_) {}
 // #docregion future-api-try-catch
 Future<void> _printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
     _gatherNewsReportsAsync()
-        .then((news) => print(news))
+        .then((newsDigest) => print(newsDigest))
         .catchError((e) => handleError(e));
 // #enddocregion future-api-try-catch
