@@ -14,7 +14,7 @@ nextpage:
   * Dart is single-threaded.
   * Synchronous code can make your program freeze.
   * Use `Future` objects (_futures_) to perform asynchronous operations.
-  * Use `await` in an async function to pause execution until a future completes.
+  * Use `await` in an async function to suspend execution until a future completes.
   * Or use the future's `then()` method.
   * Use try-catch expressions in async functions to catch errors.
   * Or use the `catchError()` method.
@@ -70,9 +70,10 @@ Such functions return their value using a [`Future`.][Future]
 
 ## What is a future? {#what-is-a-future}
 
-A `Future` object represents an asynchronous operation that returns a value (which
-can be `void`). When a function that returns a future is invoked,
-two things happen:
+A future is a `Future<T>` object, which
+represents an asynchronous operation that produces a result of type `T`.
+If the result isn't a usable value, then the future's type is `Future<void>`.
+When a function that returns a future is invoked, two things happen:
 
 1. The function queues up work to be done and returns an uncompleted `Future`
    object.
@@ -212,7 +213,7 @@ number corresponds to a step below.
    the future that it originally returned completes, and the app exits.
 
 Note that an async function starts executing right away (synchronously).
-The function pauses execution and returns an uncompleted future
+The function suspends execution and returns an uncompleted future
 when it reaches the first occurrence of any of the following:
 
 * The function's first `await` expression (after the function
@@ -290,9 +291,9 @@ import 'dart:async';
 
 Future<void> printDailyNewsDigest() {
   final future = gatherNewsReports();
-  return future.then((newsDigest) => print(newsDigest));
-  // You don't *have to* return the future here. But if you don't, callers can't
-  // await it.
+  return future.then(print);
+  // You don't *have* to return the future here.
+  // But if you don't, callers can't await it.
 }
 
 main() {
@@ -369,36 +370,30 @@ This app executes as follows:
    the news.
 1. The app exits.
 
-In the `printDailyNewsDigest()` function, the code inside `then()` could be
-written in a couple different ways.
+In the `printDailyNewsDigest()` function, the code `future.then(print)` is
+is equivalent to the following:
 
-- Using curly braces. This is useful if you want to perform more than one
-  operation.  **Try it!** Replace the `printDailyNewsDigest()` method with the
-  following:
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-dont-pass-print)"?>
+{% prettify dart %}
+future.then((newsDigest) => print(newsDigest))
+{% endprettify %}
 
-  <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-using-braces)"?>
-  {% prettify dart %}
-  Future<void> printDailyNewsDigest() {
-    final future = gatherNewsReports();
-    return future.then((newsDigest) {
-      print(newsDigest);
-      // Do something else...
-    });
-  }
-  {% endprettify %}
+Alternatively, the code inside `then()` can use curly braces:
 
-- Passing the `print` function directly, since it takes a single
-  argument&mdash;the completed value of the `Future`.  Try this version of
-  `printDailyNewsDigest()`:
-
-  <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-pass-print)"?>
-  {% prettify dart %}
-  Future<void> printDailyNewsDigest() =>
-      gatherNewsReports().then(print);
-  {% endprettify %}
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-using-braces)"?>
+{% prettify dart %}
+Future<void> printDailyNewsDigest() {
+  final future = gatherNewsReports();
+  return future.then((newsDigest) {
+    print(newsDigest);
+    // Do something else...
+  });
+}
+{% endprettify %}
 
 You need to provide an argument to `then()`'s callback,
-even if the `Future` is of type `Future<void>`:
+even if the `Future` is of type `Future<void>`.
+By convention, this unused argument is named `_` (underscore).
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-then-no-arg)"?>
 ```dart
@@ -418,23 +413,22 @@ With the `Future` API, you can capture an error using `catchError()`:
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (future-api-try-catch)"?>
 {% prettify dart %}
 Future<void> printDailyNewsDigest() =>
-    gatherNewsReports()
-        .then((newsDigest) => print(newsDigest))
-        .catchError((e) => handleError(e));
+    gatherNewsReports().then(print).catchError(handleError);
 {% endprettify %}
 
 If the news stream isn't available for reading, the
 code above executes as follows:
 
 1. `gatherNewsReports()`'s `Future` completes with an error.
-1. `then()`'s `Future` completes with an error.
-1. `catchError()`'s callback handles the error, `catchError()`'s `Future`
-    completes normally, and the error does not propagate.
+1. `then()`'s `Future` completes with an error; `print()` isn't called.
+1. `catchError()`'s callback (`handleError()`) handles the error,
+   `catchError()`'s `Future` completes normally,
+   and the error does not propagate.
 
 <aside class="alert alert-info" markdown="1">
-  Chaining catchError() to then() is a common pattern when using the `Future`
-  API.  **Consider this pairing the `Future` API's equivalent of try-catch
-  blocks.**
+  Chaining `catchError()` to `then()` is a common pattern
+  when using the `Future` API.
+  **Consider this pairing the `Future` API's equivalent of try-catch blocks.**
 </aside>
 
 Like `then()`, `catchError()` returns a new `Future` that completes with the
@@ -470,17 +464,17 @@ Nested callbacks also work, but they're harder to read and not as Dart-y.
 If the order of execution of the functions is not important, you can use
 `Future.wait()`.
 
-When you pass `Future.wait()` a list of uncompleted futures,
+When you pass `Future.wait()` a list of futures,
 it immediately returns a `Future`. That future doesn't complete until
 all of the given futures have completed.
 Then it completes with a list containing the values produced by
 each future in the original list.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (Future.wait)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (Future-wait)"?>
 {% prettify dart %}
 Future.wait([expensiveA(), expensiveB(), expensiveC()])
-    .then((List responses) => chooseBestResponse(responses))
-    .catchError((e) => handleError(e));
+    .then((List responses) => chooseBestResponse(responses, moreInfo))
+    .catchError(handleError);
 {% endprettify %}
 
 If any of the invoked functions completes with an error, the `Future` returned

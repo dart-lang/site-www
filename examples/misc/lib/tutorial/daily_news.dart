@@ -32,9 +32,9 @@ Future<void> _printDailyNewsDigestAsync() async {
 // #docregion main-future-api
 Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
   final future = _gatherNewsReportsAsync();
-  return future.then((newsDigest) => print(newsDigest));
-  // You don't *have to* return the future here. But if you don't, callers can't
-  // await it.
+  return future.then(print);
+  // You don't *have* to return the future here.
+  // But if you don't, callers can't await it.
 }
 // #enddocregion main-future-api
 
@@ -113,6 +113,15 @@ Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
 }
 // #enddocregion try-catch
 
+Future<void> _printDailyNewsDigestAsyncUsingFutureApiPassPrint() {
+  final future = _gatherNewsReportsAsync();
+  // #docregion main-future-api-dont-pass-print
+  future.then((newsDigest) => print(newsDigest))
+      // #enddocregion main-future-api-dont-pass-print
+      ;
+  return future;
+}
+
 // #docregion main-future-api-using-braces
 Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
   final future = _gatherNewsReportsAsync();
@@ -122,11 +131,6 @@ Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
   });
 }
 // #enddocregion main-future-api-using-braces
-
-// #docregion main-future-api-pass-print
-Future<void> _printDailyNewsDigestAsyncUsingFutureApiPassPrint() =>
-    _gatherNewsReportsAsync().then(print);
-// #enddocregion main-future-api-pass-print
 
 _noArgFuture() {
   // #docregion main-future-api-then-no-arg
@@ -143,7 +147,5 @@ handleError(_) {}
 
 // #docregion future-api-try-catch
 Future<void> _printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
-    _gatherNewsReportsAsync()
-        .then((newsDigest) => print(newsDigest))
-        .catchError((e) => handleError(e));
+    _gatherNewsReportsAsync().then(print).catchError(handleError);
 // #enddocregion future-api-try-catch
