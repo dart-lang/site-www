@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./tool/env-set.sh
+source ./tool/shared/env-set-check.sh
 
 travis_fold start env_info
   echo ENVIRONMENT INFO

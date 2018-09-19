@@ -2,13 +2,12 @@
 #
 # Run dartfmt over the examples.
 
-# Don't exit on pipefail because we use `find`.
-# set -e -o pipefail
-
-[[ -z "$DART_SITE_ENV_DEFS" ]] && . ./tool/env-set.sh
+set -e -o pipefail
 
 cd `dirname $0`/..
 ROOT=$(pwd)
+
+source ./tool/shared/env-set-check.sh
 
 # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
 ANALYZE="dartanalyzer --no-implicit-casts "
@@ -61,7 +60,12 @@ function analyze_and_test() {
     travis_fold start analyzeAndTest.analyze
     if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
       # Run the analyzer a first time to ensure that there are no errors.
-      $ANALYZE ${DIR[*]} > $LOG_FILE
+      #
+      # Note: catch non-zero exit codes to avoid aborting this script when the
+      # analyzer reports "foo.dart is a part and cannot be analyzed":
+      $ANALYZE ${DIR[*]} > $LOG_FILE || {
+        echo "WARNING: Ignoring Analyzer exit code $?"
+      }
       if grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
         cat $LOG_FILE
         echo "No analysis errors or warnings should be present in original source files."
@@ -72,7 +76,9 @@ function analyze_and_test() {
       fi
     fi
     disableInFileAnalyzerFlags ${DIR[*]}
-    $ANALYZE ${DIR[*]} > $LOG_FILE
+    $ANALYZE ${DIR[*]} > $LOG_FILE || {
+      echo "WARNING: Ignoring Analyzer exit code $?"
+    }
     if [[ -e $EXPECTED_FILE ]]; then
       if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
         echo "Analyzer output is as expected ($EXPECTED_FILE)."

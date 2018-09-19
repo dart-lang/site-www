@@ -122,7 +122,7 @@ Next, to check for broken links,
 run this from the top of the repo:
 
 ```
-linkcheck :4000
+./tool/shared/check-links.sh
 ```
 
 To also check external URLs (which is much slower), run the linkcheck command
@@ -201,7 +201,7 @@ jekyll build
 Then deploy the docs:
 
 ```
-firebase deploy
+./tool/shared/deploy.sh --robots ok default
 ```
 
 You can now navigate to the staged version at

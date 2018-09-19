@@ -46,7 +46,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./tool/shared/deploy.sh
+    script: ./tool/shared/deploy.sh --robots ok default
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
