@@ -134,8 +134,7 @@ Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
 
 _noArgFuture() {
   // #docregion main-future-api-then-no-arg
-  Future<void> future = _printDailyNewsDigestAsync();
-
+  final future = _printDailyNewsDigestAsync();
   return future.then((_) {
     // Code that doesn't use the `_` parameter...
     print('All reports printed.');
