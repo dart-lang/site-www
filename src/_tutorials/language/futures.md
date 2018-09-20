@@ -99,11 +99,10 @@ The following app simulates reading the news by using `async` and `await`
 to read the contents of a file on www.dartlang.org.
 Click run {% asset red-run.png alt="" %} to start the app.
 Or open a
-[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/ff795a8d7ac9079fd5c5b822c2d78c80){: target="_blank"}
+[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.
 
 {% comment %}
-https://gist.github.com/kwalrath/ff795a8d7ac9079fd5c5b822c2d78c80
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-async)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
@@ -155,17 +154,11 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=ff795a8d7ac9079fd5c5b822c2d78c80&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
-{% comment %}
-TODO: Once this is published (or close to it), copy code from
-https://gist.github.com/ff795a8d7ac9079fd5c5b822c2d78c80 to the
-original gist (https://gist.github.com/477fb799d21401f46f8c04462fd249c4), and
-change the DartPad to use 477fb799d21401f46f8c04462fd249c4.
-{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
@@ -278,12 +271,10 @@ The following app simulates reading the news by using the `Future` API to read
 the contents of a file on www.dartlang.org.
 Click run {% asset red-run.png %} to start the app.
 Or open a
-[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/d1061ba2001619091757431c04522c54){: target="_blank"}
+[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.
 
 {% comment %}
-https://gist.github.com/kwalrath/d1061ba2001619091757431c04522c54
-
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
@@ -338,17 +329,11 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=d1061ba2001619091757431c04522c54&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
-{% comment %}
-TODO: Once this is published (or close to it), copy code from
-https://gist.github.com/d1061ba2001619091757431c04522c54 to the
-original gist (https://gist.github.com/5ceabe371903b6672026bd3fb30cdf5b), and
-change the DartPad to use 5ceabe371903b6672026bd3fb30cdf5b.
-{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
