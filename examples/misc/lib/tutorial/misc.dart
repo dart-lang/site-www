@@ -25,11 +25,14 @@ void futuresTutorial() {
       .then((cValue) => doSomethingWith(cValue));
   // #enddocregion chaining
 
-  Void1 chooseBestResponse, handleError;
+  Void1 handleError;
+  void chooseBestResponse(List responses, bool anotherArg) => responses[0];
+  bool moreInfo = true;
+
   // #docregion Future-wait
   Future.wait([expensiveA(), expensiveB(), expensiveC()])
-      .then((List responses) => chooseBestResponse(responses))
-      .catchError((e) => handleError(e));
+      .then((List responses) => chooseBestResponse(responses, moreInfo))
+      .catchError(handleError);
   // #enddocregion Future-wait
 }
 

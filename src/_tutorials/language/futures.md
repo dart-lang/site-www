@@ -1,6 +1,6 @@
 ---
 title: "Asynchronous Programming: Futures"
-description: A first look at Futures and how to use them to make your asynchronous code better.
+description: A first look at futures and how to use them to make your asynchronous code better.
 nextpage:
   url: /tutorials/language/streams
   title: "Asynchronous Programming: Streams"
@@ -13,19 +13,19 @@ nextpage:
 
   * Dart is single-threaded.
   * Synchronous code can make your program freeze.
-  * Use Futures to perform asynchronous operations.
-  * Use `await` in an async function to pause execution until a Future completes.
-  * Or use Future's `then()` method.
+  * Use `Future` objects (_futures_) to perform asynchronous operations.
+  * Use `await` in an async function to suspend execution until a future completes.
+  * Or use the `then()` method.
   * Use try-catch expressions in async functions to catch errors.
-  * Or use Future's `catchError()` method.
-  * You can chain Futures to run asynchronous functions in order.
+  * Or use the `catchError()` method.
+  * You can chain futures to run asynchronous functions in order.
 </div>
 
 Dart is a single-threaded programming language. If any code blocks the thread
-of execution (for example, by waiting for a time-consuming operation or
+of execution (for example, by performing a long-running calculation or
 blocking on I/O) the program effectively freezes. Asynchronous operations let
-your program run without getting blocked. Dart uses Future objects to
-represent asynchronous operations.
+your program complete other work while waiting for an operation to complete.
+Dart uses `Future` objects to represent asynchronous operations.
 
 ## Introduction
 
@@ -35,8 +35,8 @@ Let's look at some code that could possibly cause a program to freeze:
 {% prettify dart %}
 // Synchronous code
 void printDailyNewsDigest() {
-  var news = gatherNewsReports(); // Can take a while.
-  print(news);
+  var newsDigest = gatherNewsReports(); // Can take a while.
+  print(newsDigest);
 }
 
 main() {
@@ -59,47 +59,51 @@ Baseball score: Red Sox 10, Yankees 0
 ```
 
 Our code is problematic: since `gatherNewsReports()` blocks, the remaining
-code runs only when `gatherNewsReports()` returns with the contents of the
-file, _however long that takes_. And if reading the file takes a long time,
-the user waits passively, wondering if she won the lottery, what tomorrow's
-weather will be like, and who won today's game. Not good.
+code runs only after `gatherNewsReports()` returns with the contents of the
+file, _however long that takes_. If reading the file takes a long time,
+the user has to wait, wondering if they won the lottery, what tomorrow's
+weather will be, and who won today's game.
 
 To help keep the application responsive, Dart library authors use an
 asynchronous model when defining functions that do potentially expensive work.
-Such functions return their value using a [Future.][Future]
+Such functions return their value using a future.
 
-## What is a Future? {#what-is-a-future}
+## What is a future? {#what-is-a-future}
 
-A Future represents an asynchronous operation that returns a value (which
-can be `void`). When a function that returns a Future is invoked,
-two things happen:
+A future is a [`Future<T>`][Future] object, which
+represents an asynchronous operation that produces a result of type `T`.
+If the result isn't a usable value, then the future's type is `Future<void>`.
+When a function that returns a future is invoked, two things happen:
 
-1. The function queues up work to be done and returns an uncompleted Future
+1. The function queues up work to be done and returns an uncompleted `Future`
    object.
-1. Later, when the operation is finished, the Future object
+1. Later, when the operation is finished, the `Future` object
    completes with a value or with an error.
 
-When writing code that depends on a Future, you have two options:
+When writing code that depends on a future, you have two options:
 
 * Use `async` and `await`
-* Use the Future API
+* Use the `Future` API
 
 ## Async and await {#async-await}
 
 The `async` and `await` keywords are part of the Dart language's [asynchrony
 support](/guides/language/language-tour#asynchrony-support). They allow you
 to write asynchronous code that looks like synchronous code and doesn't use
-the Future API. An _async function_ is one that has the `async` keyword
+the `Future` API. An _async function_ is one that has the `async` keyword
 before its body. The `await` keyword works only in async functions.
 
 {% include async-await-2.0.md %}
 
-The following app simulates reading the news by using async and await to read
-the contents of a file on www.dartlang.org. Click run {% asset red-run.png alt="" %} to start the app.
+The following app simulates reading the news by using `async` and `await`
+to read the contents of a file on www.dartlang.org.
+Click run {% asset red-run.png alt="" %} to start the app.
+Or open a
+[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/ff795a8d7ac9079fd5c5b822c2d78c80){: target="_blank"}
+run the app, and click CONSOLE to see the app's output.
 
 {% comment %}
-https://gist.github.com/kwalrath/477fb799d21401f46f8c04462fd249c4
-
+https://gist.github.com/kwalrath/ff795a8d7ac9079fd5c5b822c2d78c80
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-async)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
@@ -109,8 +113,8 @@ https://gist.github.com/kwalrath/477fb799d21401f46f8c04462fd249c4
 import 'dart:async';
 
 Future<void> printDailyNewsDigest() async {
-  var news = await gatherNewsReports();
-  print(news);
+  var newsDigest = await gatherNewsReports();
+  print(newsDigest);
 }
 
 main() {
@@ -135,10 +139,9 @@ printBaseballScore() {
 const news = '<gathered news goes here>';
 const oneSecond = Duration(seconds: 1);
 
-final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
-
 // Imagine that this function is more complex and slow. :)
-Future<String> gatherNewsReports() => newsStream.first;
+Future<String> gatherNewsReports() =>
+    Future.delayed(oneSecond, () => news);
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
@@ -152,11 +155,17 @@ Future<String> gatherNewsReports() => newsStream.first;
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=ff795a8d7ac9079fd5c5b822c2d78c80&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
+{% comment %}
+TODO: Once this is published (or close to it), copy code from
+https://gist.github.com/ff795a8d7ac9079fd5c5b822c2d78c80 to the
+original gist (https://gist.github.com/477fb799d21401f46f8c04462fd249c4), and
+change the DartPad to use 477fb799d21401f46f8c04462fd249c4.
+{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
@@ -173,8 +182,8 @@ work, no great harm is done: the user gets to read other things before the
 daily news digest is printed.
 
 Note the return types. The return type of `gatherNewsReports()` is
-`Future<String>`, which means that it returns a Future that completes with
-a String value. The `printDailyNewsDigest()` function, which doesn't
+`Future<String>`, which means that it returns a future that completes with
+a string value. The `printDailyNewsDigest()` function, which doesn't
 return a value, has the return type `Future<void>`.
 
 The following diagram shows the flow of execution through the code.  Each
@@ -186,54 +195,53 @@ number corresponds to a step below.
 1. The app begins executing.
 1. The `main()` function calls the async function `printDailyNewsDigest()`,
    which begins executing synchronously.
-1. `printDailyNewsDigest()` uses `await` to call the async function
-   `gatherNewsReports()`, which begins executing synchronously.
-1. Because `gatherNewsReports()` is an async function, when it reaches its
-   `return` statement it pauses its execution and returns an uncompleted
-   Future (an instance of `Future<String>`).
+1. `printDailyNewsDigest()` uses `await` to call the function
+   `gatherNewsReports()`, which begins executing.
+1. The `gatherNewsReports()` function returns an uncompleted
+   future (an instance of `Future<String>`).
 1. Because `printDailyNewsDigest()` is an async function and is
    awaiting a value, it pauses its execution and returns an uncompleted
-   Future (in this case, an instance of `Future<void>`)
+   future (in this case, an instance of `Future<void>`)
    to its caller (`main()`).
 1. The remaining print functions execute. Because they're synchronous, each
    function executes fully before moving on to the next print function. For
    example, the winning lottery numbers are all printed before the weather
    forecast is printed.
 1. When `main()` has finished executing, the asynchronous functions can resume
-   execution. First, the Future returned by `gatherNewsReports()` completes.
+   execution. First, the future returned by `gatherNewsReports()` completes.
    Then `printDailyNewsDigest()` continues executing, printing the news.
 1. When the `printDailyNewsDigest()` function body finishes executing,
-   the Future that it originally returned completes, and the app exits.
+   the future that it originally returned completes, and the app exits.
 
 Note that an async function starts executing right away (synchronously).
-The function pauses execution and returns an uncompleted Future
+The function suspends execution and returns an uncompleted future
 when it reaches the first occurrence of any of the following:
 
 * The function's first `await` expression (after the function
-  gets the uncompleted Future from that expression).
+  gets the uncompleted future from that expression).
 * Any `return` statement in the function.
 * The end of the function body.
 
 
 ### Handling errors {#handling-errors-async}
 
-If a Future-returning function completes with an error, you probably want to
+If a `Future`-returning function completes with an error, you probably want to
 capture that error. Async functions can handle errors using try-catch:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (try-catch)"?>
 {% prettify dart %}
 Future<void> printDailyNewsDigest() async {
   try {
-    var news = await gatherNewsReports();
-    print(news);
+    var newsDigest = await gatherNewsReports();
+    print(newsDigest);
   } catch (e) {
     // Handle error...
   }
 }
 {% endprettify %}
 
-The try-catch code behaves in the same way with asynchronous code that it does
-for synchronous code: If the code within the `try` block throws an exception,
+The try-catch code behaves in the same way with asynchronous code as it does
+with synchronous code: if the code within the `try` block throws an exception,
 the code inside the `catch` clause executes.
 
 ### Sequential processing {#sequential-processing-async}
@@ -251,25 +259,30 @@ main() async {
 }
 {% endprettify %}
 
-The `expensiveB()` function will not execute until `expensiveA()` has
+The `expensiveB()` function doesn't execute until `expensiveA()` has
 finished, and so on.
 
 ---
 
 ## The Future API
 
-Before async and await were added in Dart 1.9, you had to use the Future API.
-You might still see the Future API used in older code and in code that needs
+Before `async` and `await` were added in Dart 1.9,
+you had to use the `Future` API.
+You might still see the `Future` API used in older code and in code that needs
 more functionality than async-await offers.
 
-To write asynchronous code using the Future API, you use the `then()` method
-to register a callback.  This callback fires when the Future completes.
+To write asynchronous code using the `Future` API, you use the `then()` method
+to register a callback.  This callback fires when the `Future` completes.
 
-The following app simulates reading the news by using the Future API to read
-the contents of a file on www.dartlang.org.  Click run ( {% asset red-run.png %} ) to start the app.
+The following app simulates reading the news by using the `Future` API to read
+the contents of a file on www.dartlang.org.
+Click run {% asset red-run.png %} to start the app.
+Or open a
+[DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/d1061ba2001619091757431c04522c54){: target="_blank"}
+run the app, and click CONSOLE to see the app's output.
 
 {% comment %}
-https://gist.github.com/kwalrath/5ceabe371903b6672026bd3fb30cdf5b
+https://gist.github.com/kwalrath/d1061ba2001619091757431c04522c54
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api)" replace="/Duration (oneSecond)/const $1/g"?>
 {% prettify dart %}
@@ -281,9 +294,9 @@ import 'dart:async';
 
 Future<void> printDailyNewsDigest() {
   final future = gatherNewsReports();
-  return future.then((news) => print(news));
-  // You don't *have to* return the future here. But if you don't, callers can't
-  // await it.
+  return future.then(print);
+  // You don't *have* to return the future here.
+  // But if you don't, callers can't await it.
 }
 
 main() {
@@ -308,10 +321,9 @@ printBaseballScore() {
 const news = '<gathered news goes here>';
 const oneSecond = Duration(seconds: 1);
 
-final newsStream = Stream<String>.periodic(oneSecond, (_) => news);
-
 // Imagine that this function is more complex and slow. :)
-Future<String> gatherNewsReports() => newsStream.first;
+Future<String> gatherNewsReports() =>
+    Future.delayed(oneSecond, () => news);
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
@@ -326,11 +338,17 @@ Future<String> gatherNewsReports() => newsStream.first;
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpad.embed-inline-prefix}}?id=d1061ba2001619091757431c04522c54&horizontalRatio=99&verticalRatio=73"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
 </iframe>
+{% comment %}
+TODO: Once this is published (or close to it), copy code from
+https://gist.github.com/d1061ba2001619091757431c04522c54 to the
+original gist (https://gist.github.com/5ceabe371903b6672026bd3fb30cdf5b), and
+change the DartPad to use 5ceabe371903b6672026bd3fb30cdf5b.
+{% endcomment %}
 
 Notice that `printDailyNewsDigest()` is the first function called, but the news
 is the last thing to print, even though the file contains only a single
@@ -341,55 +359,56 @@ This app executes as follows:
 1. The app begins executing.
 1. The main function calls the `printDailyNewsDigest()` function, which does
    not return immediately, but calls `gatherNewsReports()`.
-1. `gatherNewsReports()` starts gathering news and returns a Future.
+1. `gatherNewsReports()` starts gathering news and returns a `Future`.
 1. `printDailyNewsDigest()` uses `then()` to specify a response to the
-   Future. Calling `then()` returns a new Future that will complete with the
+   `Future`. Calling `then()` returns a new `Future` that will complete with the
    value returned by `then()`'s callback.
 1. The remaining print functions execute. Because they're synchronous, each
    function executes fully before moving on to the next print function. For
    example, the winning lottery numbers are all printed before the weather
    forecast is printed.
-1. When all of the news has arrived, the Future returned by
+1. When all of the news has arrived, the `Future` returned by
    `gatherNewsReports()` completes with a string containing the gathered news.
 1. The code specified by `then()` in `printDailyNewsDigest()` runs, printing
    the news.
 1. The app exits.
 
-In the `printDailyNewsDigest()` function, the code inside `then()` could be
-written in a couple different ways.
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  In the `printDailyNewsDigest()` function, the code `future.then(print)`
+  is equivalent to the following:<br>
+  `future.then((newsDigest) => print(newsDigest))`
+{% comment %}
+TODO: When https://github.com/dart-lang/site-www/issues/1158 is fixed,
+link to the descriptions of lambdas and tear-offs.
 
-- Using curly braces. This is useful if you want to perform more than one
-  operation.  **Try it!** Replace the `printDailyNewsDigest()` method with the
-  following:
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-dont-pass-print)"?>
+{% prettify dart %}
+future.then((newsDigest) => print(newsDigest))
+{% endprettify %}
+{% endcomment %}
+</aside>
 
-  <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-using-braces)"?>
-  {% prettify dart %}
-  Future<void> printDailyNewsDigest() {
-    final future = gatherNewsReports();
-    return future.then((news) {
-      print(news);
-      // Do something else...
-    });
-  }
-  {% endprettify %}
+Alternatively, the code inside `then()` can use curly braces:
 
-- Passing the `print` function directly, since it takes a single
-  argument&mdash;the completed value of the Future.  Try this version of
-  `printDailyNewsDigest()`:
-
-  <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-pass-print)"?>
-  {% prettify dart %}
-  Future<void> printDailyNewsDigest() =>
-      gatherNewsReports().then(print);
-  {% endprettify %}
+<?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-using-braces)"?>
+{% prettify dart %}
+Future<void> printDailyNewsDigest() {
+  final future = gatherNewsReports();
+  return future.then((newsDigest) {
+    print(newsDigest);
+    // Do something else...
+  });
+}
+{% endprettify %}
 
 You need to provide an argument to `then()`'s callback,
-even if the Future is of type `Future<void>`:
+even if the `Future` is of type `Future<void>`.
+By convention, an unused argument is named `_` (underscore).
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (main-future-api-then-no-arg)"?>
 ```dart
-Future<void> future = printDailyNewsDigest();
-
+final future = printDailyNewsDigest();
 return future.then((_) {
   // Code that doesn't use the `_` parameter...
   print('All reports printed.');
@@ -399,46 +418,46 @@ return future.then((_) {
 
 ### Handling errors {#handling-errors-future-api}
 
-With the Future API, you can capture an error using `catchError()`:
+With the `Future` API, you can capture an error using `catchError()`:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (future-api-try-catch)"?>
 {% prettify dart %}
 Future<void> printDailyNewsDigest() =>
-    gatherNewsReports()
-        .then((news) => print(news))
-        .catchError((e) => handleError(e));
+    gatherNewsReports().then(print).catchError(handleError);
 {% endprettify %}
 
 If the news stream isn't available for reading, the
 code above executes as follows:
 
-1. `gatherNewsReports()`'s Future completes with an error.
-1. `then()`'s Future completes with an error.
-1. `catchError()`'s callback handles the error, `catchError()`'s Future
-    completes normally, and the error does not propagate.
+1. The future returned by `gatherNewsReports()` completes with an error.
+1. The future returned by `then()` completes with an error;
+   `print()` isn't called.
+1. The callback for `catchError()` (`handleError()`) handles the error,
+   the future returned by `catchError()` completes normally,
+   and the error does not propagate.
 
 <aside class="alert alert-info" markdown="1">
-  Chaining catchError() to then() is a common pattern when using the Future
-  API.  **Consider this pairing the Future API's equivalent of try-catch
-  blocks.**
+  Chaining `catchError()` to `then()` is a common pattern
+  when using the `Future` API.
+  **Consider this pairing the `Future` API's equivalent of try-catch blocks.**
 </aside>
 
-Like `then()`, `catchError()` returns a new Future that completes with the
+Like `then()`, `catchError()` returns a new `Future` that completes with the
 return value of its callback.
 
 For more details and examples, read [Futures and Error Handling][].
 
-### Calling multiple functions that return Futures {#calling-multiple-funcs}
+### Calling multiple functions that return futures {#calling-multiple-funcs}
 
 Consider three functions, `expensiveA()`, `expensiveB()`, and `expensiveC()`,
-that return Futures.  You can invoke them sequentially (one function starts
+that return `Future` objects.  You can invoke them sequentially (one function starts
 when a previous one completes), or you can kick off all of them at the same
-time and do something once all the values return. The Future interface is
+time and do something once all the values return. The `Future` interface is
 fluid enough to deal with both use cases.
 
 #### Chaining function calls using then()
 
-When Future-returning functions need to run in order, use chained `then()`
+When `Future`-returning functions need to run in order, use chained `then()`
 calls:
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (chaining)"?>
@@ -451,35 +470,37 @@ expensiveA()
 
 Nested callbacks also work, but they're harder to read and not as Dart-y.
 
-#### Waiting on multiple Futures to complete using Future.wait()
+#### Waiting on multiple futures to complete using Future.wait()
 
 If the order of execution of the functions is not important, you can use
 `Future.wait()`.
 
-The functions get triggered in quick succession; when all of them complete
-with a value, `Future.wait()` returns a new Future.  This Future completes
-with a list containing the values produced by each function.
+When you pass `Future.wait()` a list of futures,
+it immediately returns a `Future`. That future doesn't complete until
+all of the given futures have completed.
+Then it completes with a list containing the values produced by
+each future in the original list.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (Future.wait)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (Future-wait)"?>
 {% prettify dart %}
 Future.wait([expensiveA(), expensiveB(), expensiveC()])
-    .then((List responses) => chooseBestResponse(responses))
-    .catchError((e) => handleError(e));
+    .then((List responses) => chooseBestResponse(responses, moreInfo))
+    .catchError(handleError);
 {% endprettify %}
 
-If any of the invoked functions completes with an error, the Future returned
+If any of the invoked functions completes with an error, the `Future` returned
 by `Future.wait()` also completes with an error. Use `catchError()` to handle
 the error.
 
 ## Other resources {#other-resources}
 
-Read the following documentation for more details on using Futures and
+Read the following documentation for more details on using futures and
 asynchronous programming in Dart:
 
 * [Futures and Error Handling][], an article that starts where this tutorial
   ends
 * [The Event Loop and Dart,]({{site.webdev}}/articles/performance/event-loop)
-  an article that describes how to schedule tasks using Futures
+  an article that describes how to schedule tasks using futures
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
   a section in the [language tour](/guides/language/language-tour)
 * [Future API reference][Future]
