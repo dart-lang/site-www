@@ -2990,9 +2990,9 @@ Vector class, you might define a `+` method to add two vectors.
 {:.table}
 
 <div class="alert alert-info" markdown="1">
-**Note** You may have noticed that `!=` is not an overridable operator. 
-This is because `!=` is not an operator in its own right, the expression `e1 != e2` 
-is just syntactic sugar for `!(e1 == e2)`.
+  **Note:** You may have noticed that `!=` is not an overridable operator.
+  This is because `!=` is not an operator in its own right; the expression `e1 != e2`
+  is just syntactic sugar for `!(e1 == e2)`.
 </div>
 
 Here’s an example of a class that overrides the `+` and `-` operators:
