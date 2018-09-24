@@ -888,7 +888,7 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
-is sometimes referred to as _fat arrow_ syntax.
+is sometimes referred to as _arrow_ syntax.
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -1186,7 +1186,7 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874
 </iframe>
 
 If the function contains only one statement, you can shorten it using
-fat arrow notation. Paste the following line into DartPad
+arrow notation. Paste the following line into DartPad
 and click run to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>

@@ -104,11 +104,11 @@ int fibonacci(int n) {
 var result = fibonacci(20);
 {% endprettify %}
 
-A shorthand `=>` (_fat arrow_) syntax is handy for functions that
+A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-<?code-excerpt "misc/test/samples_test.dart (fat arrow)"?>
+<?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 {% prettify dart %}
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 {% endprettify %}
