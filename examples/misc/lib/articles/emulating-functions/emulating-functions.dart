@@ -1,3 +1,4 @@
+// ignore_for_file: one_member_abstracts
 // #docregion call-method
 class WannabeFunction {
   int call(int a, int b) => a + b;
@@ -6,13 +7,14 @@ class WannabeFunction {
 
 abstract class Fooer {
   // Define foo, so we can call NsmTest().foo().
-  foo();
+  void foo();
 }
 
 class NsmTest extends Fooer {
-  baz() => print('Called baz!');
+  void baz() => print('Called baz!');
 
   // #docregion no-such-method
+  @override
   dynamic noSuchMethod(Invocation invocation) {
     return invocation.memberName == #foo
         ? Function.apply(
