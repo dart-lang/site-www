@@ -484,6 +484,8 @@ img {
   position: fixed;
   width: 225px;
   right: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
   z-index: 999;
   .content {
     padding-top: 20px;

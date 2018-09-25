@@ -82,11 +82,11 @@ void main() {
           ])));
     });
 
-    test('fat arrow', () {
+    test('arrow', () {
       _test() {
-        // #docregion fat-arrow
+        // #docregion arrow
         flybyObjects.where((name) => name.contains('turn')).forEach(print);
-        // #enddocregion fat-arrow
+        // #enddocregion arrow
       }
 
       expect(_test, m.prints('Saturn'));

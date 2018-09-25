@@ -2,7 +2,7 @@
 title: A Brief History of Mixins in Dart
 description: Mixins let you implement functionality once and use it in multiple classes.
 original-date: 2012-12-18
-date: 2018-06-29
+date: 2018-09-21
 category: language
 ---
 
@@ -23,10 +23,10 @@ Support for mixins changed in Dart 1.13, and it will again in Dart 2:
   specifically, it is behind the `--supermixin` flag in the command-line
   analyzer. It is also available in the analysis server, behind a
   client-configurable option. Dart2js and dartdevc do not support super mixins.
-- In Dart 2, mixins are expected to have fewer restrictions. For example,
+- In Dart 2.1, mixins are expected to have fewer restrictions. For example,
   Flutter supports mixins calling `super()` and extending from a class other
   than `Object`, but the syntax is expected to change before appearing in all
-  Dart SDKs. For details, see the [proposed mixin specification.][Dart 2.0 Mixins]
+  Dart SDKs. For details, see the [mixin specification.][Dart 2.1 Mixins]
 
 ## Basic concepts
 
@@ -312,4 +312,4 @@ If a class has type parameters,
 its mixin necessarily has identical type parameters.
 
 [Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
-[Dart 2.0 Mixins]: https://github.com/dart-lang/sdk/blob/master/docs/language/informal/mixin-declaration.md
+[Dart 2.1 Mixins]: https://github.com/dart-lang/language/blob/master/working/0006.%20Super-invocations%20in%20mixins/0007.%20Mixin%20declarations/lrhn-strawman.md
