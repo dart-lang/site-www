@@ -25,7 +25,7 @@ class WannabeFunction {
 {% endprettify %}
 
 The `call()` method is special, in that anyone who defines a `call()` method is
-presumed to dynamically emulate a function. This allows us to use instances of
+presumed to emulate a function. This allows us to use instances of
 `WannabeFunction` as if they were functions that take two integer arguments
 and return an integer:
 
@@ -109,6 +109,7 @@ showing how you could use function emulation inside noSuchMethod():
 
 <?code-excerpt "misc/lib/articles/emulating-functions/emulating-functions.dart (no-such-method)"?>
 {% prettify dart %}
+@override
 dynamic noSuchMethod(Invocation invocation) {
   return invocation.memberName == #foo
       ? Function.apply(
