@@ -238,6 +238,13 @@ For example:
 const x = y;
 {% endprettify %}
 
+Alternatively, you can append the ignore rule to the line that it applies to.
+For example:
+
+{% prettify dart %}
+int x = ''; // ignore: invalid_assignment
+{% endprettify %}
+
 ## Ignoring specific analysis rules
 
 Sometimes your code doesn't fit perfectly within the standard
