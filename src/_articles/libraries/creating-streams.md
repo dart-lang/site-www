@@ -4,7 +4,6 @@ description: A stream is a sequence of results; learn how to create your own.
 original-date: 2013-04-08
 date: 2018-09-26
 category: libraries
-obsolete: true
 ---
 
 <style>
@@ -15,15 +14,15 @@ _Written by Lasse Nielsen <br>
 April 2013 (note added September 2018)_
 
 <aside class="alert alert-warning" markdown="1">
-  This article needs to be updated:
+  This article has some out-of-date content:
 
-  * It should feature `async*` and `yield`,
+  * The text and example code should feature `async*` and `yield`,
     which are the recommended way to work with streams today.
     For examples of using them, see the
     [generators](/guides/language/language-tour#generators) section
     of the language tour.
-  * The code isn't continuously tested, and there's a chance it doesn't run.
-  * The code doesn't follow the latest guidelines.
+  * The example code isn't continuously tested and might not be valid.
+  * The example code doesn't follow the latest guidelines.
     For example, it uses `new`.
 
   We plan to update this article. For the latest status, see
