@@ -2,35 +2,37 @@
 title: Emulating Functions in Dart
 description: Learn how to define Dart classes that behave like functions.
 original-date: 2012-01-01
-date: 2014-02-20
+date: 2018-09-20
 category: language
-obsolete: true
 ---
 
 _Written by Gilad Bracha <br>
-January 2012 (updated February 2014)_
+January 2012 (updated September 2018)_
 
 This document describes how to define Dart classes
 that behave like functions.
 
 ## The call() method
 
-In the following example, we have an ordinary class `WannabeFunction` that
-happens to define a method named `call()`.
+The following example has an ordinary class, `WannabeFunction`, that
+defines a method named `call()`.
 
+<?code-excerpt "misc/lib/articles/emulating-functions/emulating-functions.dart (call-method)"?>
 {% prettify dart %}
 class WannabeFunction {
-  call(int a, int b) => a + b;
+  int call(int a, int b) => a + b;
 }
 {% endprettify %}
 
-The call() method is special, in that anyone who defines a call() method is
-presumed to dynamically emulate a function. This allows us to use instances of
-WannabeFunction as if they were functions that take two integer arguments:
+The `call()` method is special, in that anyone who defines a `call()` method is
+presumed to emulate a function. This allows us to use instances of
+`WannabeFunction` as if they were functions that take two integer arguments
+and return an integer:
 
+<?code-excerpt "misc/lib/articles/emulating-functions/emulating-functions.dart (call-object-as-function)"?>
 {% prettify dart %}
-var wf = new WannabeFunction();
-wf(3, 4); // 7
+var wf = WannabeFunction();
+assert(wf(3, 4) == 7);
 {% endprettify %}
 
 The example above is rather trivial, and we would be better off writing a
@@ -45,14 +47,23 @@ suitably defined object.
 
 ### How does it work?
 
-When x(a<sub>1</sub>, .., a<sub>n</sub>) is evaluated, if it is a normal
-function, it gets called in the normal way. If it isn't we just invoke call()
-on it. If x supports a call() method with suitable arguments it gets called.
+When <code>x(a<sub>1</sub>, .., a<sub>n</sub>)</code> is evaluated,
+if it is a normal
+function, it gets called in the normal way. If it isn't we just invoke `call()`
+on it. If `x` supports a `call()` method with suitable arguments it gets called.
+Otherwise, `noSuchMethod()` gets invoked. 
 
-Otherwise, `noSuchMethod()` gets invoked. The default implementation of
-noSuchMethod() checks to see whether it was invoked due to an attempt to use call(),
-and if so issues a helpful error message suggesting you might have wanted to use
-a closure.
+Assignment is different.
+When an object that supports `call()` is assigned to a target that
+has a function type, the object is converted to a function object.
+More precisely, when `e`
+(an expression that has a type with a `call` method)
+is assigned to a variable
+(or passed as a parameter, or returned,
+or used to initialize something, etc.)
+**and** the type of the target is a function type,
+then `e` is implicitly transformed to `e.call` —
+a tear-off operation that yields a function object.
 
 
 ## The apply() method
@@ -90,34 +101,21 @@ const Symbol('myFavoriteMethodName');
 Using constant symbols helps dart2js minify your code.
 
 
-## Function types
-
-An additional issue is how user-defined function classes relate to the type
-system.  To simulate functions properly, we want them to be members of the
-appropriate function type:
-
-{% prettify dart %}
-typedef BinaryFunction(a,b);
-...
-new WannabeFunction() is BinaryFunction; // true
-{% endprettify %}
-
-Therefore, we decree that an object is a member of a function type if the
-object’s class has a call() method and that method is a member of the function
-type.
-
 ## Interactions with mirrors and noSuchMethod()
 
 In Dart, you can customize how objects react to methods that are not explicitly
 defined in their class chain by overriding noSuchMethod(). Here's an example
 showing how you could use function emulation inside noSuchMethod():
 
+<?code-excerpt "misc/lib/articles/emulating-functions/emulating-functions.dart (no-such-method)"?>
 {% prettify dart %}
-noSuchMethod(Invocation invocation) =>
-  invocation.memberName == #foo ? Function.apply(baz,
-                             invocation.positionalArguments,
-                             invocation.namedArguments)
-                        : super.noSuchMethod(invocation);
+@override
+dynamic noSuchMethod(Invocation invocation) {
+  return invocation.memberName == #foo
+      ? Function.apply(
+          baz, invocation.positionalArguments, invocation.namedArguments)
+      : super.noSuchMethod(invocation);
+}
 {% endprettify %}
 
 The first branch handles the case where you want to forward just the parameters to
@@ -181,15 +179,13 @@ was present, it would be closurized and returned.
 
 ## Summary
 
-Here is what you need to know in order to
-implement your own function type in Dart:
+Here is what you need to know to
+define a class that works similarly to a function in Dart:
 
 1.  Define a class with a method named **call**.
-1.  Implement the call() method to define
+1.  Implement the `call()` method to define
     what instances of your class do
     when invoked as functions via the **()** syntax.
-1.  As a matter of good style,
-    have the class implement the **Function** interface.
 
 {% comment %}
 The tests for this article are at /src/tests/site/articles/emulating-functions.
