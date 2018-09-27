@@ -3,7 +3,7 @@ import 'dart:async';
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller = new StreamController<int>();
+  StreamController<int> controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
     counter++;
@@ -13,29 +13,29 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
       controller.close();    // Ask stream to shut down and tell listeners.
     }
   }
-  new Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
+  Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
   return controller.stream;
 }
 
-main() {
+void main() {
   // showBasicUsage();
   showPreSubscribeProblem();
   // showPauseProblem();
 }
 
-showBasicUsage() {
+void showBasicUsage() {
   Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
   counterStream.listen(print);      // Print an integer every second, 15 times.
 }
 
-showPreSubscribeProblem() {
+void showPreSubscribeProblem() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
 
   // After 5 seconds, add a listener.
-  new Timer(const Duration(seconds: 5), () => counterStream.listen(print));
+  Timer(const Duration(seconds: 5), () => counterStream.listen(print));
 }
 
-showPauseProblem() {
+void showPauseProblem() {
   Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
   StreamSubscription<int> subscription;
   subscription = counterStream.listen((int counter) {
@@ -43,7 +43,8 @@ showPauseProblem() {
     if (counter == 5) {
       // After 5 ticks, pause for five seconds, then resume.
       subscription.pause();
-      new Timer(const Duration(seconds: 5), subscription.resume);
+      Timer(const Duration(seconds: 5), subscription.resume);
     }
   });
+  subscription.cancel();
 }
