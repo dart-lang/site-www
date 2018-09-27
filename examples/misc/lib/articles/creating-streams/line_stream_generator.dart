@@ -6,7 +6,7 @@ import 'dart:async';
 /// The input string is provided in smaller chunks through
 /// the `source` stream.
 Stream<String> lines(Stream<String> source) async* {
-  // Stores any partial line from the previous chunk
+  // Stores any partial line from the previous chunk.
   String partial = "";
   // Wait until a new chunk is available, then process it.
   await for (var chunk in source) {

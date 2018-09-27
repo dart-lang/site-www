@@ -1,5 +1,28 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
+// #docregion async-generator
+Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
+  int i = 0;
+  while (true) {
+    await Future.delayed(interval);
+    yield i++;
+    if (i == maxCount) break;
+  }
+}
+// #enddocregion async-generator
+
+// #docregion stream-from-futures
+Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
+  for (var future in futures) {
+    var result = await future;
+    yield result;
+  }
+}
+// #enddocregion stream-from-futures
+
+// #docregion better-stream
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
   StreamController<int> controller;
   Timer timer;
@@ -8,9 +31,9 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
   void tick(_) {
     counter++;
     controller.add(counter); // Ask stream to send counter values as event.
-    if (maxCount != null && counter >= maxCount) {
+    if (counter == maxCount) {
       timer.cancel();
-      controller.close();    // Ask stream to shut down and tell listeners.
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
 
@@ -33,26 +56,37 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
 
   return controller.stream;
 }
+// #enddocregion better-stream
 
 void main() {
-  showBasicUsage();
-  // useMap();
-  // useWhere();
-  // useExpand();
+//  showBasicUsage();
+//  useMap();
+//  useWhere();
+//  useTransform();
+//  useExpand();
+//  useGenerator();
+  useStreamFromFutureGenerator();
   // useTake();
   // demoPause();
 }
 
 void showBasicUsage() {
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
-  counterStream.listen(print);      // Print an integer every second, 15 times.
+  // #docregion basic-usage
+  var counterStream =
+      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+  // #enddocregion basic-usage
+
+  // #docregion basic-for-each
+  counterStream.forEach(print); // Print an integer every second, 15 times.
+  // #enddocregion basic-for-each
 }
 
 void demoPause() {
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+  var counterStream =
+      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
   StreamSubscription<int> subscription;
   subscription = counterStream.listen((int counter) {
-    print(counter);  // Print an integer every second.
+    print(counter); // Print an integer every second.
     if (counter == 5) {
       // After 5 ticks, pause for five seconds, then resume.
       subscription.pause();
@@ -63,29 +97,71 @@ void demoPause() {
 }
 
 void useMap() {
-  Stream<int> counterStream2 =
-      timedCounter(const Duration(seconds: 1), 15)
-      .map((int x) => x * 2);       // Double the integer in each event.
-  counterStream2.listen(print);
+  var counterStream =
+      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+
+  // #docregion use-map
+  // Double the integer in each event.
+  Stream<int> doubleCounterStream = counterStream.map((int x) => x * 2);
+  doubleCounterStream.forEach(print);
+  // #enddocregion use-map
 }
 
 void useWhere() {
-  Stream<int> counterStream2 =
-      timedCounter(const Duration(seconds: 1), 15)
-      .where((int x) => x.isEven);      // Retain only even integer events.
-  counterStream2.listen(print);
+  var counterStream =
+      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+
+  Stream<int> mappedStream = counterStream
+          // #docregion use-where
+          .where((int x) => x.isEven) // Retain only even integer events.
+          .expand((var x) => [x, x]) // Duplicate each event.
+          .take(5) // Stop after the first five events.
+      // #enddocregion use-where
+      ;
+
+  mappedStream.forEach(print);
+}
+
+void useTransform() async {
+  // #docregion use-transform
+  Stream<List<int>> content = File("someFile.txt").openRead();
+  List<String> lines =
+      await content.transform(utf8.decoder).transform(LineSplitter()).toList();
+  // #enddocregion use-transform
+
+  print(lines);
+}
+
+StreamSubscription subscription;
+
+void handleInt(int number) {
+  if (number == 3) {
+    print('Found $number!');
+    subscription.cancel();
+  } else {
+    print(number);
+  }
+}
+
+void useGenerator() {
+  Stream<int> generatedStream = timedCounter(const Duration(seconds: 1), 15);
+  subscription = generatedStream.listen(handleInt);
+}
+
+void useStreamFromFutureGenerator() {
+  var futures = [Future.value(1), Future.value(2), Future.value(3)];
+  Stream<int> generatedStream = streamFromFutures(futures);
+  generatedStream.listen(print);
 }
 
 void useExpand() {
-  Stream<int> counterStream2 =
-      timedCounter(const Duration(seconds: 1), 15)
-      .expand((var x) => [x, x]);       // Duplicate each event.
+  Stream<int> counterStream2 = timedCounter(const Duration(seconds: 1), 15)
+      .expand((var x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 
 void useTake() {
-  Stream<int> counterStream2 =
-      timedCounter(const Duration(seconds: 1), 15)
-      .take(5);                         // Stop after the first five events.
+  Stream<int> counterStream2 = timedCounter(const Duration(seconds: 1), 15)
+      .take(5); // Stop after the first five events.
   counterStream2.listen(print);
 }

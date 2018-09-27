@@ -47,7 +47,7 @@ The most general approach is to create a new stream that
 waits for events on the original stream and then
 outputs new events. Example:
 
-<?code-excerpt "misc/lib/creating-streams/line_stream_generator.dart (split into lines)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
 {% prettify dart %}
 /// Split a stream of consecutive strings into lines.
 ///
@@ -59,10 +59,10 @@ Stream<String> lines(Stream<String> source) async* {
   // Wait until a new chunk is available, then process it.
   await for (var chunk in source) {
     var lines = chunk.split("\n");
-    lines[0] = partial + lines[0];  // Prepend partial line.
-    partial = lines.removeLast();   // Remove new partial line.
+    lines[0] = partial + lines[0]; // Prepend partial line.
+    partial = lines.removeLast(); // Remove new partial line.
     for (var line in lines) {
-      yield line;  // Add lines to output stream.
+      yield line; // Add lines to output stream.
     }
   }
   // Add final partial line to output stream, if any.
@@ -78,34 +78,39 @@ For example, assume you have a stream, `counterStream`,
 that emits an increasing counter every second.
 Here's how it might be implemented:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
 {% prettify dart %}
-var counterStream = Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15)
-{% endprettify dart %}
+var counterStream =
+    Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+{% endprettify %}
 
 To quickly see the events, you can use code like this:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
 {% prettify dart %}
-counterStream.forEach(print);      // Print an integer every second, 15 times.
-{% endprettify dart %}
+counterStream.forEach(print); // Print an integer every second, 15 times.
+{% endprettify %}
 
 To transform the stream events, you can invoke a transforming method
 such as `map()` on the stream before listening to it.
 The method returns a new stream.
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
 {% prettify dart %}
 // Double the integer in each event.
 Stream<int> doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
-{% endprettify dart %}
+{% endprettify %}
 
 Instead of `map()`, you could use any transforming method,
 such as any of the following:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
 {% prettify dart %}
-.where((int x) => x.isEven)      // Retain only even integer events.
-.expand((var x) => [x, x])       // Duplicate each event.
-.take(5)                         // Stop after the first five events.
-{% endprettify dart %}
+.where((int x) => x.isEven) // Retain only even integer events.
+.expand((var x) => [x, x]) // Duplicate each event.
+.take(5) // Stop after the first five events.
+{% endprettify %}
 
 Often, a transforming method is all you need.
 However, if you need even more control over the transformation,
@@ -113,13 +118,15 @@ you can specify a
 [StreamTransformer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)
 with `Stream`’s `transform()` method.
 The platform libraries provide stream transformers for common tasks.
-The following example uses a utf8 and LineSplitter decoders provided by
-[PENDING: x & y libraries].
+The following example uses `utf8.decoder` and `LineSplitter` transformers
+provided by the dart:convert library.
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 {% prettify dart %}
 Stream<List<int>> content = File("someFile.txt").openRead();
-List<String> lines = content.transform(utf8.decoder).transform(LineSplitter());
-{% endprettify dart %}
+List<String> lines =
+    await content.transform(utf8.decoder).transform(LineSplitter()).toList();
+{% endprettify %}
 
 
 ## Creating a stream from scratch
@@ -134,9 +141,9 @@ using `yield` or `yield*` statements.
 
 Here's a primitive example that emits numbers at regular intervals:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)"?>
 {% prettify dart %}
-Stream<int> timedCounter(Duration interval, 
-                         [int maxCount]) async* {
+Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
   int i = 0;
   while (true) {
     await Future.delayed(interval);
@@ -144,37 +151,45 @@ Stream<int> timedCounter(Duration interval,
     if (i == maxCount) break;
   }
 }
-{% endprettify dart %}
+{% endprettify %}
+
+**[PENDING: show code that uses it, so we have some context for
+the mention of StreamSubscription?]**
 
 This function returns a `Stream`.
 When that stream is listened to, the body starts running.
 It repeatedly delays for the requested interval and then yields the next number.
 If the count parameter is omitted, there is no stop-condition on the loop,
 so the stream will output increasingly larger numbers forever -
-or until the listener cancels.
+or until the listener cancels its subscription.
 
-When the listener calls cancel on the `StreamSubscription`,
-the next time the body reaches a `yield` statement,
-it instead acts as a `return` statement, trying to exit the function body.
+When the listener cancels
+(by invoking `cancel()` on the `StreamSubscription`
+object returned by the `listen()` method),
+then the next time the body reaches a `yield` statement,
+the `yield` instead acts as a `return` statement.
 Any enclosing `finally` block is executed,
-and all further attempts to yield a value fail and act as a return.
+and the function exits.
+If the function attempts to yield a value before exiting,
+that fails and acts as a return.
 
 When the function finally exits, the future returned by
-`StreamSubscription.cancel` completes.
+the `cancel()` method completes.
 If the function exits with an error, the future completes with that error;
 otherwise, it completes with `null`.
 
 Another, more useful, example is a function that converts
 a sequence of futures to a stream:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
 {% prettify dart %}
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
     var result = await future;
-    yield result;new 
+    yield result;
   }
 }
-{% endprettify dart %}
+{% endprettify %}
 
 This function asks the `futures` iterable for a new future,
 waits for that future, emits the resulting value, and then loops.
@@ -204,7 +219,9 @@ The stream has all the logic necessary to handle listeners and pausing.
 You return the stream and keep the controller to yourself.
 
 The following example
-(from [stream_controller_bad.dart](code/stream_controller_bad.dart))
+(from [stream_controller_bad.dart](code/stream_controller_bad.dart)
+**[PENDING: update that link to point to examples directory,
+and then delete the old file]**)
 shows a basic, though flawed, usage of `StreamController`
 to implement the `timedCounter()` function from the previous examples.
 This code creates a stream to return,
@@ -212,32 +229,34 @@ and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
 {:.bad-style}
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart %}
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller = new StreamController<int>();
+  StreamController<int> controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
     counter++;
     controller.add(counter); // Ask stream to send counter values as event.
     if (maxCount != null && counter >= maxCount) {
       timer.cancel();
-      controller.close();    // Ask stream to shut down and tell listeners.
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
-  new Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
+
+  Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
   return controller.stream;
 }
 {% endprettify %}
 
 As before, you can use the stream returned by `timedCounter()` like this:
+**[PENDING: Did we show this before?]**
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
 {% prettify dart %}
-main() {
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
-  counterStream.listen(print);      // Print an integer every second, 15 times.
-}
+Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+counterStream.listen(print); // Print an integer every second, 15 times.
 {% endprettify %}
 
 This implementation of `timedCounter()` has
@@ -263,17 +282,16 @@ its `StreamController` buffers events,
 which can lead to a memory leak
 if the stream never gets a subscriber.
 
-Try changing `main()` to the following:
+Try changing the code that uses the stream to the following:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
 {% prettify dart %}
-main() async {
-  var counterStream = timedCounter(const Duration(seconds: 1), 15);
-  await new Future.delayed(const Duration(seconds: 5));
+var counterStream = timedCounter(const Duration(seconds: 1), 15);
+await Future.delayed(const Duration(seconds: 5));
 
-  // After 5 seconds, add a listener. 
-  await for (int n in counterStream) {
-    print(n); // Print an integer every second, 15 times.
-  }
+// After 5 seconds, add a listener.
+await for (int n in counterStream) {
+  print(n); // Print an integer every second, 15 times.
 }
 {% endprettify %}
 
@@ -281,7 +299,7 @@ When this code runs,
 nothing is printed for the first 5 seconds,
 although the stream is doing work.
 Then the listener is added,
-and the first 10 or so events are printed all at once,
+and the first 5 or so events are printed all at once,
 since they were buffered by the `StreamController`.
 
 To be notified of subscriptions, specify an
@@ -308,20 +326,19 @@ Also, if the listener stops listening soon after pausing,
 then the work spent creating the buffer is wasted.
 
 To see what happens without pause support,
-try changing the `main()` function above to this:
+try changing the code that uses the stream to the following:
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
 {% prettify dart %}
-main() {
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
-  StreamSubscription<int> subscription;
-  subscription = counterStream.listen((int counter) {
-    print(counter);  // Print an integer every second.
-    if (counter == 5) {
-      // After 5 ticks, pause for five seconds, then resume.
-      subscription.pause(Future.delayed(const Duration(seconds: 5)));
-    }
-  });
-}
+Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+StreamSubscription<int> subscription;
+subscription = counterStream.listen((int counter) {
+  print(counter); // Print an integer every second.
+  if (counter == 5) {
+    // After 5 ticks, pause for five seconds, then resume.
+    subscription.pause(Future.delayed(const Duration(seconds: 5)));
+  }
+});
 {% endprettify %}
 
 When the five seconds of pause are up,
@@ -332,28 +349,28 @@ So the stream buffers the events,
 and it then empties its buffer when the stream becomes unpaused.
 
 The following version of `timedCounter()`
-(from [stream_controller.dart](code/stream_controller.dart))
+(from [stream_controller.dart](code/stream_controller.dart)
+**[PENDING: update file]**)
 implements pause by using the
 `onListen`, `onPause`, `onResume`, and `onCancel` callbacks
 on the `StreamController`.
 
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
 {% prettify dart %}
-import 'dart:async';
-
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
   StreamController<int> controller;
   Timer timer;
   int counter = 0;
-  
+
   void tick(_) {
     counter++;
     controller.add(counter); // Ask stream to send counter values as event.
     if (counter == maxCount) {
       timer.cancel();
-      controller.close();    // Ask stream to shut down and tell listeners.
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
-  
+
   void startTimer() {
     timer = Timer.periodic(interval, tick);
   }
