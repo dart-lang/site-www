@@ -47,6 +47,7 @@ The most general approach is to create a new stream that
 waits for events on the original stream and then
 outputs new events. Example:
 
+<?code-excerpt "misc/lib/creating-streams/line_stream_generator.dart (split into lines)"?>
 {% prettify dart %}
 /// Split a stream of consecutive strings into lines.
 ///
@@ -67,7 +68,7 @@ Stream<String> lines(Stream<String> source) async* {
   // Add final partial line to output stream, if any.
   if (partial.isNotEmpty) yield partial;
 }
-{% endprettify dart %}
+{% endprettify %}
 
 For many common transformations,
 you can use `Stream`-supplied transforming methods
