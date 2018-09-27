@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 // #docregion async-generator
-Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
+Stream<int> timedCounterGenerator(Duration interval, [int maxCount]) async* {
   int i = 0;
   while (true) {
     await Future.delayed(interval);
@@ -144,7 +144,7 @@ void handleInt(int number) {
 }
 
 void useGenerator() {
-  Stream<int> generatedStream = timedCounter(const Duration(seconds: 1), 15);
+  Stream<int> generatedStream = timedCounterGenerator(const Duration(seconds: 1), 15);
   subscription = generatedStream.listen(handleInt);
 }
 
@@ -155,13 +155,13 @@ void useStreamFromFutureGenerator() {
 }
 
 void useExpand() {
-  Stream<int> counterStream2 = timedCounter(const Duration(seconds: 1), 15)
+  Stream<int> counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
       .expand((var x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 
 void useTake() {
-  Stream<int> counterStream2 = timedCounter(const Duration(seconds: 1), 15)
+  Stream<int> counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
       .take(5); // Stop after the first five events.
   counterStream2.listen(print);
 }
