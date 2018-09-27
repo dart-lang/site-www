@@ -442,7 +442,7 @@ a flavor of what's supported:
 ### AVOID using markdown excessively.
 
 When in doubt, format less. Formatting exists to illuminate your content, not
-replace it. Words are what matters.
+replace it. Words are what matter.
 
 ### AVOID using HTML for formatting.
 
