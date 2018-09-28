@@ -144,7 +144,8 @@ void handleInt(int number) {
 }
 
 void useGenerator() {
-  Stream<int> generatedStream = timedCounterGenerator(const Duration(seconds: 1), 15);
+  Stream<int> generatedStream =
+      timedCounterGenerator(const Duration(seconds: 1), 15);
   subscription = generatedStream.listen(handleInt);
 }
 
@@ -155,13 +156,15 @@ void useStreamFromFutureGenerator() {
 }
 
 void useExpand() {
-  Stream<int> counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
-      .expand((var x) => [x, x]); // Duplicate each event.
+  Stream<int> counterStream2 =
+      timedCounterGenerator(const Duration(seconds: 1), 15)
+          .expand((var x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 
 void useTake() {
-  Stream<int> counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
-      .take(5); // Stop after the first five events.
+  Stream<int> counterStream2 =
+      timedCounterGenerator(const Duration(seconds: 1), 15)
+          .take(5); // Stop after the first five events.
   counterStream2.listen(print);
 }

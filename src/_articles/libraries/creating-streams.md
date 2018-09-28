@@ -157,7 +157,7 @@ using `yield` or `yield*` statements.
 
 Here's a primitive example that emits numbers at regular intervals:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
 {% prettify dart %}
 Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
   int i = 0;

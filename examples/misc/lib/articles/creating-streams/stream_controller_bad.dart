@@ -56,6 +56,6 @@ void showPauseProblem() {
       subscription.pause(Future.delayed(const Duration(seconds: 5)));
     }
   });
-  subscription.cancel();
   // #enddocregion pause-problem
+  subscription.cancel();
 }
