@@ -1,16 +1,16 @@
 import 'dart:async';
 
 // #docregion split-into-lines
-/// Split a stream of consecutive strings into lines.
+/// Splits a stream of consecutive strings into lines.
 ///
 /// The input string is provided in smaller chunks through
 /// the `source` stream.
 Stream<String> lines(Stream<String> source) async* {
   // Stores any partial line from the previous chunk.
-  String partial = "";
+  var partial = '';
   // Wait until a new chunk is available, then process it.
   await for (var chunk in source) {
-    var lines = chunk.split("\n");
+    var lines = chunk.split('\n');
     lines[0] = partial + lines[0]; // Prepend partial line.
     partial = lines.removeLast(); // Remove new partial line.
     for (var line in lines) {

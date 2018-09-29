@@ -1,10 +1,11 @@
+// ignore_for_file: cancel_subscriptions
 import 'dart:async';
 
 // #docregion flawed-stream
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller = StreamController<int>();
+  var controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
     counter++;
@@ -22,19 +23,19 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
 
 void main() {
 //   showBasicUsage();
-//   showPreSubscribeProblem();
-  showPauseProblem();
+//   listenAfterDelay();
+  listenWithPause();
 }
 
 void showBasicUsage() {
   // #docregion using-stream
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+  var counterStream = timedCounter(const Duration(seconds: 1), 15);
   counterStream.listen(print); // Print an integer every second, 15 times.
   // #enddocregion using-stream
 }
 
-void showPreSubscribeProblem() async {
-  // #docregion pre-subscribe-problem
+// #docregion pre-subscribe-problem
+void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
 
@@ -42,13 +43,14 @@ void showPreSubscribeProblem() async {
   await for (int n in counterStream) {
     print(n); // Print an integer every second, 15 times.
   }
-  // #enddocregion pre-subscribe-problem
 }
+// #enddocregion pre-subscribe-problem
 
-void showPauseProblem() {
-  // #docregion pause-problem
-  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+// #docregion pause-problem
+void listenWithPause() {
+  var counterStream = timedCounter(const Duration(seconds: 1), 15);
   StreamSubscription<int> subscription;
+
   subscription = counterStream.listen((int counter) {
     print(counter); // Print an integer every second.
     if (counter == 5) {
@@ -56,6 +58,5 @@ void showPauseProblem() {
       subscription.pause(Future.delayed(const Duration(seconds: 5)));
     }
   });
-  // #enddocregion pause-problem
-  subscription.cancel();
 }
+// #enddocregion pause-problem

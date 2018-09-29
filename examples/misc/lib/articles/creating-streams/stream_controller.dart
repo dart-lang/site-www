@@ -85,6 +85,7 @@ void demoPause() {
   var counterStream =
       Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
   StreamSubscription<int> subscription;
+
   subscription = counterStream.listen((int counter) {
     print(counter); // Print an integer every second.
     if (counter == 5) {
@@ -102,7 +103,7 @@ void useMap() {
 
   // #docregion use-map
   // Double the integer in each event.
-  Stream<int> doubleCounterStream = counterStream.map((int x) => x * 2);
+  var doubleCounterStream = counterStream.map((int x) => x * 2);
   doubleCounterStream.forEach(print);
   // #enddocregion use-map
 }
@@ -111,7 +112,7 @@ void useWhere() {
   var counterStream =
       Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
 
-  Stream<int> mappedStream = counterStream
+  var mappedStream = counterStream
           // #docregion use-where
           .where((int x) => x.isEven) // Retain only even integer events.
           .expand((var x) => [x, x]) // Duplicate each event.
@@ -124,7 +125,7 @@ void useWhere() {
 
 void useTransform() async {
   // #docregion use-transform
-  Stream<List<int>> content = File("someFile.txt").openRead();
+  Stream<List<int>> content = File('someFile.txt').openRead();
   List<String> lines =
       await content.transform(utf8.decoder).transform(LineSplitter()).toList();
   // #enddocregion use-transform
@@ -144,27 +145,24 @@ void handleInt(int number) {
 }
 
 void useGenerator() {
-  Stream<int> generatedStream =
-      timedCounterGenerator(const Duration(seconds: 1), 15);
+  var generatedStream = timedCounterGenerator(const Duration(seconds: 1), 15);
   subscription = generatedStream.listen(handleInt);
 }
 
 void useStreamFromFutureGenerator() {
   var futures = [Future.value(1), Future.value(2), Future.value(3)];
-  Stream<int> generatedStream = streamFromFutures(futures);
+  var generatedStream = streamFromFutures(futures);
   generatedStream.listen(print);
 }
 
 void useExpand() {
-  Stream<int> counterStream2 =
-      timedCounterGenerator(const Duration(seconds: 1), 15)
-          .expand((var x) => [x, x]); // Duplicate each event.
+  var counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
+      .expand((var x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 
 void useTake() {
-  Stream<int> counterStream2 =
-      timedCounterGenerator(const Duration(seconds: 1), 15)
-          .take(5); // Stop after the first five events.
+  var counterStream2 = timedCounterGenerator(const Duration(seconds: 1), 15)
+      .take(5); // Stop after the first five events.
   counterStream2.listen(print);
 }
