@@ -5,7 +5,7 @@ class LineStream extends Stream<String> {
   /// Input stream.
   Stream<String> _source;
 
-  /// Subscription on [source] while subscribed.
+  /// Subscription on [_source] while subscribed.
   StreamSubscription<String> _subscription;
 
   /// Controller for output stream.
@@ -19,7 +19,7 @@ class LineStream extends Stream<String> {
 
   /// Creates a stream of lines from a stream of string parts.
   LineStream(Stream<String> source) : _source = source {
-    _controller = new StreamController<String>(
+    _controller = StreamController<String>(
         onListen: _onListen,
         onPause: _onPause,
         onResume: _onResume,
@@ -29,8 +29,9 @@ class LineStream extends Stream<String> {
   /// The number of lines that have been output by this stream.
   int get lineCount => _lineCount;
 
+  @override
   StreamSubscription<String> listen(void onData(String line),
-      {void onError(Error error), void onDone(), bool cancelOnError}) {
+      {Function onError, void onDone(), bool cancelOnError}) {
     return _controller.stream.listen(onData,
         onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
@@ -68,12 +69,12 @@ class LineStream extends Stream<String> {
   }
 
   void _onDone() {
-    if (!_remainder.isEmpty) _controller.add(_remainder);
+    if (_remainder.isNotEmpty) _controller.add(_remainder);
     _controller.close();
   }
 }
 
-main() {
+void main() {
   var part1 = '''
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
 doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
@@ -91,11 +92,11 @@ nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
 ex ea commodi consequatur?
 ''';
 
-  StreamController<String> text = new StreamController<String>();
-  LineStream lines = new LineStream(text.stream);
+  StreamController<String> text = StreamController<String>();
+  LineStream lines = LineStream(text.stream);
   int lineCount = 0;
-  var sub;
-  sub = lines.listen((String line) {
+  // StreamSubscription<String> sub;
+  /* sub = */ lines.listen((String line) {
     lineCount++;
     print('$lineCount: $line');
   }, onDone: () {
