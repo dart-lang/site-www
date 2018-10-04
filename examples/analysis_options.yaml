@@ -58,3 +58,4 @@ linter:
     - unnecessary_getters_setters
 
     - package_names
+    - avoid_relative_lib_imports

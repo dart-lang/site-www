@@ -10,7 +10,7 @@ import 'package:test/test.dart';
 
 // Importing files
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
-import '../lib/samples/spacecraft.dart';
+import 'package:examples/samples/spacecraft.dart';
 // #enddocregion import
 
 Iterable flatten(Iterable it) => it.expand((e) => e is Iterable ? e : [e]);
