@@ -154,7 +154,7 @@ import 'package:test/test.dart';
 
 // Importing files
 import 'path/to/my_other_file.dart';
-import '../lib/samples/spacecraft.dart';
+import 'package:examples/samples/spacecraft.dart';
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,
