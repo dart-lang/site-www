@@ -903,10 +903,6 @@ num get x => center.x;
 set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
-It's rarely a good idea to use `=>` for non-setter void members. The `=>`
-implies "returns a value", so readers may misinterpret what the void member does
-if you use it.
-
 
 ### DON'T use `this.` when not needed to avoid shadowing.
 
