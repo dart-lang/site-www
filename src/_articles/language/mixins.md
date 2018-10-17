@@ -312,4 +312,4 @@ If a class has type parameters,
 its mixin necessarily has identical type parameters.
 
 [Adding features to a class: mixins]: /guides/language/language-tour#adding-features-to-a-class-mixins
-[Dart 2.1 Mixins]: https://github.com/dart-lang/language/blob/master/working/0006.%20Super-invocations%20in%20mixins/0007.%20Mixin%20declarations/lrhn-strawman.md
+[Dart 2.1 Mixins]: https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md
