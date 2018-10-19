@@ -57,7 +57,7 @@ abstract class NumberAdder {
 }
 
 class MyAdder extends NumberAdder {
-  // ignore_for_file: 1, 2, strong_mode_invalid_method_override
+  // ignore_for_file: 1, 2, invalid_override
   int add(int a, int b) => a + b;
 }
 // #enddocregion invalid-method-override
@@ -70,7 +70,7 @@ class Superclass<T> {
 }
 
 class Subclass extends Superclass {
-  // ignore_for_file: 1, 2, strong_mode_invalid_method_override
+  // ignore_for_file: 1, 2, invalid_override
   void method(int i) {/* ... */}
 }
 // #enddocregion missing-type-arguments

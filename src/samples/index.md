@@ -143,7 +143,7 @@ including how the documentation tooling works.
 
 To access APIs defined in other libraries, use `import`.
 
-<?code-excerpt "misc/test/samples_test.dart (import)" replace="/'.*?' as \w+/'path\/to\/my_other_file.dart'/g"?>
+<?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart %}
 // Importing core libraries
 import 'dart:async';
@@ -154,7 +154,6 @@ import 'package:test/test.dart';
 
 // Importing files
 import 'path/to/my_other_file.dart';
-import '../lib/samples/spacecraft.dart';
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,

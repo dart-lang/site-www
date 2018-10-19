@@ -199,9 +199,9 @@ var c = C(Iterable.empty()).collection;
 
 ### Invalid method override
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*num.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*num.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
-error • Invalid override. The type of '...'  isn't a subtype of '...'  • strong_mode_invalid_method_override
+error • '...'  isn't a valid override of '...'  • invalid_override
 ```
 
 These errors typically occur when a subclass tightens up a method's
@@ -231,9 +231,9 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*num.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*num.*common_problems/"?>
 ```nocode
-error • Invalid override. The type of 'MyAdder.add' ('(int, int) → int') isn't a subtype of 'NumberAdder.add' ('(num, num) → num') • strong_mode_invalid_method_override
+error • 'MyAdder.add' ('(int, int) → int') isn't a valid override of 'NumberAdder.add' ('(num, num) → num') • invalid_override
 ```
 
 Consider the following scenario where floating
@@ -278,9 +278,9 @@ For more information, see [Use proper input parameter types when overriding meth
 
 ### Missing type arguments
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*dynamic.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*dynamic.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
-error • Invalid override. The type of '...'  isn't a subtype of '...'  • strong_mode_invalid_method_override
+error • '...'  isn't a valid override of '...'  • invalid_override
 ```
 
 #### Example
@@ -302,9 +302,9 @@ class Subclass extends Superclass {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a subtype of.*dynamic.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*dynamic.*common_problems/"?>
 ```nocode
-error • Invalid override. The type of 'Subclass.method' ('(int) → void') isn't a subtype of 'Superclass<dynamic>.method' ('(dynamic) → void') • strong_mode_invalid_method_override
+error • 'Subclass.method' ('(int) → void') isn't a valid override of 'Superclass.method' ('(dynamic) → void') • invalid_override
 ```
 
 #### Fix: Specify type arguments for the generic subclass
@@ -451,8 +451,8 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/type '\(String\) → bool'.*common_problems/"?>
 ```nocode
-error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 error • A value of type '(String) → bool' can't be assigned to a variable of type '(dynamic) → bool' • invalid_assignment
+error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
 
 #### Fix: Add type parameters _or_ cast from dynamic explicitly

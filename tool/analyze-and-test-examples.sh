@@ -21,7 +21,7 @@ while [[ $# -gt 0 ]]; do
     --get)        PUB_ARGS="get"; shift;;
     --quick)      QUICK=1; shift;;
     --save-logs)  SAVE_LOGS=1; shift;;
-    -h|--help)    echo "Usage: $(basename $0) [--get] [--save-logs] [--help]"; exit 0;;
+    -h|--help)    echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"; exit 0;;
     *)            echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
   esac
 done
@@ -85,7 +85,7 @@ function analyze_and_test() {
       else
         cat $LOG_FILE
         echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
-        diff $LOG_FILE $EXPECTED_FILE
+        (set -x; diff $LOG_FILE $EXPECTED_FILE) || true
         EXIT_STATUS=1
         if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
       fi

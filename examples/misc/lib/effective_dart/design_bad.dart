@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names
 
 import 'dart:async';
 import 'dart:math';

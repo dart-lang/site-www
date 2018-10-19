@@ -8,7 +8,7 @@ import 'dart:convert';
 
 // #enddocregion read-from-stream
 import 'package:test/test.dart';
-import '../../lib/library_tour/io/http_server.dart'
+import 'package:examples/library_tour/io/http_server.dart'
     as http_server;
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
