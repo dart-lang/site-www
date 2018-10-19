@@ -7,10 +7,13 @@ import 'dart:math';
 
 // Importing libraries from external packages
 import 'package:test/test.dart';
-
-// Importing files
+// #enddocregion import
 import 'package:dartlang_examples_util/print_matcher.dart' as m;
 import 'package:examples/samples/spacecraft.dart';
+// #docregion import
+
+// Importing files
+import 'path/to/my_other_file.dart';
 // #enddocregion import
 
 Iterable flatten(Iterable it) => it.expand((e) => e is Iterable ? e : [e]);
