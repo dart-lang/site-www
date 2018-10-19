@@ -47,7 +47,7 @@ linter:
     #- public_member_api_docs
     - recursive_getters
     - slash_for_doc_comments
-    - sort_constructors_first
+    #- sort_constructors_first # TODO: reinstate after https://github.com/dart-lang/site-www/issues/1196 is resolved?
     - sort_unnamed_constructors_first
     - super_goes_last
     - test_types_in_equals
