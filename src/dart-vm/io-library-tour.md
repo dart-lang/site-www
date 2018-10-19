@@ -272,8 +272,6 @@ This page showed how to use the major features of the [dart:io][] library.
 Besides the APIs discussed in this section, the dart:io library also
 provides APIs for [processes,][Process] [sockets,][Socket] and
 [web sockets.][WebSocket]
-To find more examples of using dart:io, go to the
-[dart-samples repo.](https://github.com/dart-lang/dart-samples)
 For more information about server-side and command-line app development, see the
 [server-side Dart overview.](/dart-vm)
 
