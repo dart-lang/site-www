@@ -85,6 +85,8 @@ custom:
 
 # Build settings
 
+future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+
 # bundler_args: --without production
 exclude: [diagrams]
 plugins: [jekyll-toc]
