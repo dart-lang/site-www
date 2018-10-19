@@ -11,7 +11,7 @@ class Root {}
 // #docregion HoneyBadger
 class HoneyBadger extends Animal {
   void chase(Animal a) {/* ... */}
-  // ignore_for_file: 1, 2, strong_mode_invalid_method_override
+  // ignore_for_file: 1, 2, invalid_override
   Root get parent => ellipsis(); //!analysis-issue ret. type not covariant
 }
 // #enddocregion HoneyBadger
@@ -22,7 +22,7 @@ class HoneyBadger extends Animal {
 class Mouse extends Animal {/*...*/}
 
 class Cat extends Animal {
-  // ignore_for_file: 1, 2, strong_mode_invalid_method_override
+  // ignore_for_file: 1, 2, invalid_override
   void chase(Mouse x) {/* ... */} //!analysis-issue
 }
 // #enddocregion chase-Mouse

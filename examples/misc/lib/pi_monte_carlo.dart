@@ -21,7 +21,7 @@ main() async { //!tip("main()")
 }
 
 /// Generates a stream of increasingly accurate estimates of π. //!tip("///")
-Stream<double> computePi({int batch: 100000}) async* { //!tip("async*") //!tip("{int batch: 100000}") //!tip("<double>")
+Stream<double> computePi({int batch = 100000}) async* { //!tip("async*") //!tip("{int batch = 100000}") //!tip("<double>")
   var total = 0; //!tip("var")
   var count = 0;
   while (true) { //!tip("while (true)")
