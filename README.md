@@ -215,7 +215,9 @@ the names of your reviewers, and so on.
 
 Before making any more changes, stash `.firebaserc`:
 
-`git stash`
+```
+git stash
+```
 
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
