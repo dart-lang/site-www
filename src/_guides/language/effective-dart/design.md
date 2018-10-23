@@ -1564,7 +1564,7 @@ should use it. Doing so more directly matches how you'd type a similar
 synchronous function, and gives you better error-checking for callers and in the
 body of the function.
 
-For functions which are "fire and forget", which will neither return a useful
+For functions that are "fire and forget", which neither return a useful
 value nor need to have their asynchronous work finished before the caller
 containues, use a return type of `void`.
 
