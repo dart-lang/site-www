@@ -1564,8 +1564,9 @@ should use it. Doing so more directly matches how you'd type a similar
 synchronous function, and gives you better error-checking for callers and in the
 body of the function.
 
-For asynchronous functions that do not return a useful value and do not need to
-have their asynchronous work awaited, use a return type of `void`.
+For asynchronous functions that do not return a useful value and where no
+callers need to await the asynchronous work or handle an asynchronous failure,
+use a return type of `void`.
 
 
 ### AVOID using `FutureOr<T>` as a return type.
