@@ -1556,7 +1556,7 @@ bool convertToBool(dynamic arg) {
 
 When you have a synchronous function that doesn't return a value, you use `void`
 as the return type. The asynchronous equivalent for a method that doesn't
-produce a value, but should have the work awaited, is `Future<void>`.
+produce a value, but that the caller might need to await, is `Future<void>`.
 
 You may see code that uses `Future` or `Future<Null>` instead because older
 versions of Dart didn't allow `void` as a type argument. Now that it does, you
