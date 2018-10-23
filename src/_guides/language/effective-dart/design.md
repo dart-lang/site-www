@@ -1566,7 +1566,7 @@ body of the function.
 
 For functions that are "fire and forget", which neither return a useful
 value nor need to have their asynchronous work finished before the caller
-containues, use a return type of `void`.
+continues, use a return type of `void`.
 
 
 ### AVOID using `FutureOr<T>` as a return type.
