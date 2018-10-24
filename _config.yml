@@ -85,6 +85,12 @@ custom:
 
 # Build settings
 
+assets:
+  source_maps: false
+  sources:
+    - _shared/_assets
+    - _shared/_assets/css
+
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 
 # bundler_args: --without production
@@ -100,9 +106,6 @@ symlinked-sources: [site-shared/src]
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
-
-assets:
-  source_maps: false
 
 toc:
   min_level: 2

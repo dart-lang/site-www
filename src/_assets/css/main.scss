@@ -1,21 +1,22 @@
 //= require vendor/code-prettify/prettify.css
 
-@import '_variables';
-@import '_colors';
+@import 'variables';
+@import 'colors';
 @import 'bootstrap';
+@import 'bootstrap_adjust';
 
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
-@import '_mixins';
+@import 'mixins';
 
-@import '_icons';
-@import '_code';
-@import '_animations';
+@import 'icons';
+@import 'code_pre';
+@import 'animations';
 
-@import '_dartvm';
-@import '_books';
-@import '_os-tabs';
+@import 'dartvm';
+@import 'books';
+@import 'os-tabs';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
