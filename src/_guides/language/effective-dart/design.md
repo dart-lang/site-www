@@ -1555,13 +1555,18 @@ bool convertToBool(dynamic arg) {
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
 
 When you have a synchronous function that doesn't return a value, you use `void`
-as the return type. The asynchronous equivalent is `Future<void>`.
+as the return type. The asynchronous equivalent for a method that doesn't
+produce a value, but that the caller might need to await, is `Future<void>`.
 
 You may see code that uses `Future` or `Future<Null>` instead because older
 versions of Dart didn't allow `void` as a type argument. Now that it does, you
 should use it. Doing so more directly matches how you'd type a similar
 synchronous function, and gives you better error-checking for callers and in the
 body of the function.
+
+For asynchronous functions that do not return a useful value and where no
+callers need to await the asynchronous work or handle an asynchronous failure,
+use a return type of `void`.
 
 
 ### AVOID using `FutureOr<T>` as a return type.
