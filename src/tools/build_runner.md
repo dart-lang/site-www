@@ -4,7 +4,7 @@ description: A tool for building, testing, and running Dart code.
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
-optionally serving or testing the output files.
+optionally serving or testing the generated files.
 
 <aside class="alert alert-info" markdown="1">
   **If you're a web developer:**
@@ -77,12 +77,13 @@ watch
 For details of using build_runner, see the following pages:
 
 - [Getting started with build_runner][]
-- Documentation and example code for the packages you use
-  that depend on build or build_runner.
+- [Build FAQ][]
+- Documentation for packages you use that depend on build or build_runner.
 
 If you're working on web-specific code, see the [webdev documentation.][webdev]
 
 [build]: https://github.com/dart-lang/build
+[Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [Getting started with build_runner]: https://github.com/dart-lang/build/blob/master/docs/getting_started.md
