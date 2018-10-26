@@ -4,12 +4,12 @@ description: A tool for building, testing, and running Dart code.
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
-optionally serving or testing the generated files.
+and optionally serving or testing the generated files.
 
 <aside class="alert alert-info" markdown="1">
   **If you're a web developer:**
-  Use the [`webdev` tool][webdev] instead of directly using
-  build_runner to build, serve, and test web apps.
+  You can use the [`webdev` tool][webdev] instead of directly using
+  build_runner to build and serve web apps.
 </aside>
 
 The build_runner commands work with _builders_—packages
@@ -17,7 +17,6 @@ that use the [Dart build system][build]
 to specify how to generate output files from input files.
 For example, the [json_serializable][] and [built_value_generator][]
 packages define builders.
-**[PENDING: are those good examples to point to?]**
 
 
 ## Setting up build_runner
@@ -31,7 +30,7 @@ To use build_runner, add these dev dependencies to your app's pubspec:
   dev_dependencies:
     # ···
     build_runner: ^1.0.0
-    build_test: ^0.10.3+3
+    build_test: ^0.10.3
 ```
 
 The **build_test** package is optional; add it if you'll be testing your code.
@@ -62,7 +61,7 @@ build
 serve
 : Runs a development server.
   Instead of directly using this command,
-  you should usually use [`webdev serve`.][webdev]
+  you can use [`webdev serve`.][webdev]
 
 test
 : Runs [tests.][tests]
@@ -80,7 +79,8 @@ For details of using build_runner, see the following pages:
 - [Build FAQ][]
 - Documentation for packages you use that depend on build or build_runner.
 
-If you're working on web-specific code, see the [webdev documentation.][webdev]
+If you're working on web-specific code,
+see the [webdev and build_runner page.][webdev]
 
 [build]: https://github.com/dart-lang/build
 [Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
