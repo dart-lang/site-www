@@ -1,10 +1,14 @@
 ---
-title: Build_runner
+title: build_runner
 description: A tool for building, testing, and running Dart code.
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
-and optionally serving or testing the generated files.
+and for optionally serving or testing the generated files.
+Read this page for an overview of using build_runner, with links to
+where you can find more information.
+For details of using build_runner with a specific package,
+see the documentation for that package.
 
 <aside class="alert alert-info" markdown="1">
   **If you're a web developer:**
@@ -14,9 +18,16 @@ and optionally serving or testing the generated files.
 
 The build_runner commands work with _builders_—packages
 that use the [Dart build system][build]
-to specify how to generate output files from input files.
+to generate output files from input files.
 For example, the [json_serializable][] and [built_value_generator][]
-packages define builders.
+packages define builders that generate Dart code.
+
+Although the Dart build system is a good alternative to
+[reflection][] (which has performance issues) and
+macros (which Dart's compilers don't support),
+it can do more than just read and write Dart code.
+For example, the [sass_builder][] package implements a builder that
+generates `.css` files from `.scss` and `.sass` files.
 
 
 ## Setting up build_runner
@@ -61,7 +72,8 @@ build
 serve
 : Runs a development server.
   Instead of directly using this command,
-  you can use [`webdev serve`.][webdev]
+  you can use [`webdev serve`,][webdev serve]
+  which has better default behavior.
 
 test
 : Runs [tests.][tests]
@@ -73,20 +85,28 @@ watch
 
 ## More information
 
-For details of using build_runner, see the following pages:
-
-- [Getting started with build_runner][]
-- [Build FAQ][]
-- Documentation for packages you use that depend on build or build_runner.
-
 If you're working on web-specific code,
 see the [webdev and build_runner page.][webdev]
+
+For details on using build_runner, see the following:
+
+- Documentation for packages that require you to use build_runner.
+  These packages generally have a dependency
+  [on build][] or [on build_runner.][]
+- Build_runner documentation:
+  - [Getting started with build_runner][]
+  - [Build FAQ][]
 
 [build]: https://github.com/dart-lang/build
 [Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [Getting started with build_runner]: https://github.com/dart-lang/build/blob/master/docs/getting_started.md
-[json_serializable]: {{site.pub-pkg}}/json-serializable
+[json_serializable]: {{site.pub-pkg}}/json_serializable
+[on build]: {{site.pub-pkg}}?q=dependency%3Abuild
+[on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
+[reflection]: /articles/dart-vm/reflection-with-mirrors
+[sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /guides/testing
 [webdev]: {{site.webdev}}/tools/webdev
+[webdev serve]: {{site.webdev}}/tools/webdev#serve
