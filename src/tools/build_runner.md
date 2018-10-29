@@ -32,11 +32,9 @@ generates `.css` files from `.scss` and `.sass` files.
 
 ## Setting up build_runner
 
-To use build_runner, add these dev dependencies to your app's pubspec:
+To use build_runner, add a [dev dependency][] on **build_runner**
+to your app's pubspec:
 
-**[TODO: update the code-excerpt directive]**
-
-<?code-excerpt "quickstart/pubspec.yaml (build dependencies)" title?>
 ```
   dev_dependencies:
     # ···
@@ -44,7 +42,7 @@ To use build_runner, add these dev dependencies to your app's pubspec:
     build_test: ^0.10.3
 ```
 
-The **build_test** package is optional; add it if you'll be testing your code.
+Depending on **build_test** is optional; do it if you'll be testing your code.
 
 As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
 
@@ -101,6 +99,7 @@ For details on using build_runner, see the following:
 [Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
 [Getting started with build_runner]: https://github.com/dart-lang/build/blob/master/docs/getting_started.md
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
