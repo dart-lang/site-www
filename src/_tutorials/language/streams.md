@@ -64,8 +64,6 @@ https://gist.github.com/Sfshaza/15d5ef986238c97dbc14
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
 {% prettify dart %}
-import 'dart:async';
-
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (var value in stream) {
@@ -130,8 +128,6 @@ https://gist.github.com/chalin/df7c1168a5c6b20fda2a76d6ff33a1da
 
 <?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
 {% prettify dart %}
-import 'dart:async';
-
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
@@ -371,7 +367,6 @@ All lines are printed, except any that begin with a hashtag, `#`.
 
 <?code-excerpt "misc/lib/tutorial/cat_no_hash.dart"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 

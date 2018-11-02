@@ -1017,7 +1017,7 @@ use it, import dart:async:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
 {% prettify dart %}
-import 'dart:async';
+// [PENDING: fix the page that uses this!!]
 {% endprettify %}
 
 

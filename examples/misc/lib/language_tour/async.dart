@@ -1,6 +1,4 @@
 // ignore_for_file: unused_element, unused_local_variable
-import 'dart:async';
-
 typedef Async0 = Future Function();
 typedef Async1 = Future Function(dynamic);
 typedef Async2 = Future Function(dynamic, dynamic);

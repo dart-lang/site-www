@@ -110,7 +110,6 @@ or `await for`, part of Dart's
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 

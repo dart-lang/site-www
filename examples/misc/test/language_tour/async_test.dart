@@ -1,6 +1,4 @@
 // ignore_for_file: type_annotate_public_apis
-import 'dart:async';
-
 import 'package:test/test.dart';
 
 void main() {

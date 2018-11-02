@@ -4,7 +4,6 @@
 // (approximations of π are added to the DOM in addition to being
 // printed on the console).
 
-import 'dart:async'; //!tip("import")
 import 'dart:html'; //!web-only
 import 'dart:math' show Random; //!tip("dart:math")
 //!web-only

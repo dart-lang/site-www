@@ -8,7 +8,6 @@
 // see basic_file_server.dart.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 
 File targetFile = File('index.html');

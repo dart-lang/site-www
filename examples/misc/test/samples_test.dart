@@ -2,7 +2,6 @@
 import 'dart:io';
 // #docregion import
 // Importing core libraries
-import 'dart:async';
 import 'dart:math';
 
 // Importing libraries from external packages

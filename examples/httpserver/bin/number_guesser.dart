@@ -4,7 +4,6 @@
 
 // Automatic client to number_thinker.dart.
 
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';

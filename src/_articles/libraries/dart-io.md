@@ -97,7 +97,6 @@ class.
 
 <?code-excerpt "misc/lib/articles/io/io_file_system_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:convert';
 import 'dart:io';
 
@@ -129,7 +128,6 @@ until it encounters the char code for `;`.
 
 <?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
@@ -167,7 +165,6 @@ this stream (using `await for`) and the data is given in chunks.
 
 <?code-excerpt "misc/lib/articles/io/io_stream_test.dart"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 
 Future<void> main() async {
@@ -208,7 +205,6 @@ need interactive control over the process.
 
 <?code-excerpt "misc/lib/articles/io/io_process_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
@@ -242,7 +238,6 @@ we use a
 
 <?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:convert';
 import 'dart:io';
 
@@ -272,7 +267,6 @@ to pipe the output of the process to a file.
 
 <?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
@@ -304,7 +298,6 @@ that just answers 'Hello, world' to any request.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> main() async {
@@ -332,7 +325,6 @@ to pipe all the data read from a file directly to the response stream.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_file_test.dart"?>
 {% prettify dart %}
-import 'dart:async' show Future;
 import 'dart:io';
 
 Future<void> runServer(String basePath) async {

@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 // #docregion read-from-stream
-import 'dart:async';
 // #docregion import
 import 'dart:io';
 // #enddocregion import

@@ -7,7 +7,6 @@
 // the file specified in the URI.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 

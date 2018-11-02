@@ -8,7 +8,6 @@
 // Or, you can use the make_a_guess.html UI.
 
 // #docregion main
-import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
