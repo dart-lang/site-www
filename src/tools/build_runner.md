@@ -4,7 +4,8 @@ description: A tool for building, testing, and running Dart code.
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
-and for optionally serving or testing the generated files.
+and for optionally testing the generated files
+or serving both source and generated files.
 Read this page for an overview of using build_runner, with links to
 where you can find more information.
 For details of using build_runner with a specific package,
@@ -71,7 +72,7 @@ serve
 : Runs a development server.
   Instead of directly using this command,
   you can use [`webdev serve`,][webdev serve]
-  which has better default behavior.
+  which has convenient default behavior.
 
 test
 : Runs [tests.][tests]
