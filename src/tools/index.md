@@ -94,3 +94,6 @@ Most Dart-related SDKs include the following tools.
   [Dart Style Guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
   the IDE. Or you can run the formatter from the command line (`dartfmt`).
+
+Other tools, such as the [build_runner code generator,](/tools/build_runner)
+aren't in the SDK but are distributed in packages.
