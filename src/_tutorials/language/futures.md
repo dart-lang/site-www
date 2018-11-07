@@ -11,21 +11,40 @@ nextpage:
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * Dart is single-threaded.
-  * Synchronous code can make your program freeze.
-  * Use `Future` objects (_futures_) to perform asynchronous operations.
-  * Use `await` in an async function to suspend execution until a future completes.
-  * Or use the `then()` method.
-  * Use try-catch expressions in async functions to catch errors.
-  * Or use the `catchError()` method.
-  * You can chain futures to run asynchronous functions in order.
+  * Dart code runs straight through, in a single "thread" of execution.
+  * Code that blocks the thread of execution can make your program freeze.
+  * `Future` objects (_futures_) represent asynchronous operations —
+    processing or I/O to be completed later.
+  * To suspend execution until a future completes,
+    use `await` in an async function (or use `then()`).
+  * To catch errors, use try-catch expressions in async functions
+    (or use `catchError()`).
+  * To run code concurrently, create an _isolate_
+    (or for web apps, a _worker_).
 </div>
 
-Dart is a single-threaded programming language. If any code blocks the thread
-of execution (for example, by performing a long-running calculation or
-blocking on I/O) the program effectively freezes. Asynchronous operations let
+Dart code runs in a predictable order, in a single "thread" of execution.
+Any code that blocks that thread of execution
+(for example, by performing a long-running calculation or blocking on I/O)
+can freeze a Dart program. Asynchronous operations let
 your program complete other work while waiting for an operation to complete.
 Dart uses `Future` objects to represent asynchronous operations.
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  All Dart code runs in the context of an **isolate** that
+  owns all of the memory that the Dart code uses.
+  While Dart code is executing, no other code in the same isolate can run.
+  This page describes how to pause execution and
+  give control to another part of the program (in the same isolate)
+  using `async` and `await` or the `Future` API.
+
+  <br>If you want multiple parts of the program to run concurrently,
+  you can run them in separate isolates (or for web apps, workers).
+  Multiple isolates run at the same time, usually each on its own CPU core.
+  Because isolates don't share memory, the only way for isolates to interact
+  is by sending messages to each other.
+</aside>
 
 ## Introduction
 
@@ -483,12 +502,15 @@ Read the following documentation for more details on using futures and
 asynchronous programming in Dart:
 
 * [Futures and Error Handling][], an article that starts where this tutorial
-  ends
+  ends.
 * [The Event Loop and Dart,]({{site.webdev}}/articles/performance/event-loop)
-  an article that describes how to schedule tasks using futures
+  an article that describes how to schedule tasks using futures.
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
-  a section in the [language tour](/guides/language/language-tour)
-* [Future API reference][Future]
+  a section in the [language tour](/guides/language/language-tour).
+* API reference documentation for
+  [futures,][Future]
+  [isolates,][isolate] and
+  [web workers.][worker]
 
 ## What next? {#what-next}
 
@@ -497,3 +519,5 @@ asynchronous programming in Dart:
 
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [Futures and Error Handling]: /guides/libraries/futures-error-handling
+[isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
+[worker]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Worker-class.html
