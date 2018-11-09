@@ -35,7 +35,7 @@ Install the SDK for your platform.
 [Dart install]: /tools/sdk#install
 [Dart logo]: {% asset shared/dart/logo/default.svg @path %}
 [Flutter]: {{site.flutter}}
-[Flutter install]: {{site.flutter}}/setup/
+[Flutter install]: {{site.flutter}}/get-started
 [Flutter logo]: {% asset shared/flutter/logo/square.svg @path %}
 [Web install]: {{site.webdev}}/tools/sdk#install
 [Web logo]: {% asset shared/angular/icon/default.svg @path %}
