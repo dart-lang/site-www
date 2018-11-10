@@ -175,6 +175,10 @@ The following table lists the words that the Dart language treats specially.
 [catch]: #catch
 [class]: #instance-variables
 [const]: #final-and-const
+{% comment %}
+  [TODO: Make sure that points to a place that talks about const constructors,
+  as well as const literals and variables.]
+{% endcomment %}
 [continue]: #break-and-continue
 [covariant]: /guides/language/sound-problems#the-covariant-keyword
 [default]: #switch-and-case
@@ -191,7 +195,7 @@ The following table lists the words that the Dart language treats specially.
 [final]: #final-and-const
 [finally]: #finally
 [for]: #for-loops
-[Function]: #typedefs
+[Function]: #functions
 [get]: #getters-and-setters
 [hide]: #importing-only-part-of-a-library
 [if]: #if-and-else
@@ -221,11 +225,11 @@ The following table lists the words that the Dart language treats specially.
 [try]: #catch
 [typedef]: #typedefs
 [var]: #variables
-[void]: #variables
-[with]: #adding-features-to-a-class-mixins
+[void]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
 {% comment %}
-  TODO: Add coverage of void to the Variables section.
+  TODO: Add coverage of void to the language tour.
 {% endcomment %}
+[with]: #adding-features-to-a-class-mixins
 [while]: #while-and-do-while
 [yield]: #generators
 
@@ -917,7 +921,7 @@ Symbol literals are compile-time constants.
 ## Functions
 
 Dart is a true object-oriented language, so even functions are objects
-and have a type, [Function][].
+and have a type, [Function.][Function API reference]
 This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
@@ -4230,8 +4234,8 @@ To learn more about Dart's core libraries, see
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [Flutter]: https://flutter.io
 [Flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
-[forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
-[Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach. API referencehtml
+[Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
