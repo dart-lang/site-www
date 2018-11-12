@@ -11,25 +11,49 @@ nextpage:
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * Dart is single-threaded.
-  * Synchronous code can make your program freeze.
-  * Use `Future` objects (_futures_) to perform asynchronous operations.
-  * Use `await` in an async function to suspend execution until a future completes.
-  * Or use the `then()` method.
-  * Use try-catch expressions in async functions to catch errors.
-  * Or use the `catchError()` method.
-  * You can chain futures to run asynchronous functions in order.
+  * Dart code runs in a single "thread" of execution.
+  * Code that blocks the thread of execution can make your program freeze.
+  * `Future` objects (_futures_) represent the results of
+    _asynchronous operations_ — processing or I/O to be completed later.
+  * To suspend execution until a future completes,
+    use `await` in an async function (or use `then()`).
+  * To catch errors, use try-catch expressions in async functions
+    (or use `catchError()`).
+  * To run code concurrently, create an _isolate_
+    (or for a web app, a _worker_).
 </div>
 
-Dart is a single-threaded programming language. If any code blocks the thread
-of execution (for example, by performing a long-running calculation or
-blocking on I/O) the program effectively freezes. Asynchronous operations let
-your program complete other work while waiting for an operation to complete.
-Dart uses `Future` objects to represent asynchronous operations.
+Dart code runs in a single "thread" of execution.
+If Dart code blocks — for example, by performing a
+long-running calculation or waiting for I/O — the entire program freezes.
+
+Asynchronous operations let your program complete other work while
+waiting for an operation to finish.
+Dart uses `Future` objects (futures) to represent the results of
+asynchronous operations.
+To work with futures,
+you can use either `async` and `await` or the `Future` API.
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  All Dart code runs in the context of an _isolate_ that
+  owns all of the memory that the Dart code uses.
+  While Dart code is executing, no other code in the same isolate can run.
+
+  <br>
+  If you want multiple parts of Dart code to run concurrently,
+  you can run them in separate isolates.
+  (Web apps use workers instead of isolates.)
+  Multiple isolates run at the same time, usually each on its own CPU core.
+  Isolates don't share memory, and the only way they can interact
+  is by sending messages to each other.
+  For more information, see the documentation for
+  [isolates][isolate] or [web workers.][worker]
+</aside>
 
 ## Introduction
 
-Let's look at some code that could possibly cause a program to freeze:
+Let's look at some code that might cause a program to freeze:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (sync)" replace="/Sync(\(\))/$1/g"?>
 {% prettify dart %}
@@ -483,12 +507,15 @@ Read the following documentation for more details on using futures and
 asynchronous programming in Dart:
 
 * [Futures and Error Handling][], an article that starts where this tutorial
-  ends
+  ends.
 * [The Event Loop and Dart,]({{site.webdev}}/articles/performance/event-loop)
-  an article that describes how to schedule tasks using futures
+  an article that describes how to schedule tasks using futures.
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
-  a section in the [language tour](/guides/language/language-tour)
-* [Future API reference][Future]
+  a section in the [language tour](/guides/language/language-tour).
+* API reference documentation for
+  [futures,][Future]
+  [isolates,][isolate] and
+  [web workers.][worker]
 
 ## What next? {#what-next}
 
@@ -497,3 +524,5 @@ asynchronous programming in Dart:
 
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [Futures and Error Handling]: /guides/libraries/futures-error-handling
+[isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
+[worker]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Worker-class.html
