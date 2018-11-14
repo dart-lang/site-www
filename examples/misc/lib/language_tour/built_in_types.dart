@@ -3,16 +3,22 @@
 void miscDeclAnalyzedButNotTested() {
   {
     // #docregion integer-literals
-    int x = 1;
-    int hex = 0xDEADBEEF;
+    var x = 1;
+    var hex = 0xDEADBEEF;
     // #enddocregion integer-literals
   }
 
   {
     // #docregion double-literals
-    double y = 1.1;
-    double exponents = 1.42e5;
+    var y = 1.1;
+    var exponents = 1.42e5;
     // #enddocregion double-literals
+  }
+
+  {
+    // #docregion int-to-double
+    double z = 1; // Equivalent to double z = 1.0.
+    // #enddocregion int-to-double
   }
 
   {

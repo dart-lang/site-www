@@ -463,8 +463,8 @@ defining integer literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
 {% prettify dart %}
-int x = 1;
-int hex = 0xDEADBEEF;
+var x = 1;
+var hex = 0xDEADBEEF;
 {% endprettify %}
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -472,9 +472,23 @@ of defining double literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
 {% prettify dart %}
-double y = 1.1;
-double exponents = 1.42e5;
+var y = 1.1;
+var exponents = 1.42e5;
 {% endprettify %}
+
+As of Dart 2.1, integer literals are automatically converted to doubles
+when necessary:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
+{% prettify dart %}
+double z = 1; // Equivalent to double z = 1.0.
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:**
+  Before Dart 2.1, it was an error to use an integer literal
+  in a double context.
+</aside>
 
 Here’s how you turn a string into a number, or vice versa:
 
