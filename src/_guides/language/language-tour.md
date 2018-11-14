@@ -148,22 +148,90 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
-| abstract{{bii}}   | dynamic{{bii}}    | implements{{bii}} | show{{ckw}}   |
-| as{{bii}}         | else              | import{{bii}}     | static{{bii}} |
-| assert            | enum              | in                | super         |
-| async{{ckw}}      | export{{bii}}     | interface{{bii}}  | switch        |
-| await{{lrw}}      | external{{bii}}   | is                | sync{{ckw}}   |
-| break             | extends           | library{{bii}}    | this          |
-| case              | factory{{bii}}    | mixin{{bii}}      | throw         |
-| catch             | false             | new               | true          |
-| class             | final             | null              | try           |
-| const             | finally           | on{{ckw}}         | typedef{{bii}}|
-| continue          | for               | operator{{bii}}   | var           |
-| covariant{{bii}}  | Function{{bii}}   | part{{bii}}       | void          |
-| default           | get{{bii}}        | rethrow           | while         |
-| deferred{{bii}}   | hide{{ckw}}       | return            | with          |
-| do                | if                | set{{bii}}        | yield{{lrw}}  |
+| [abstract][]{{bii}}   | [dynamic][]{{bii}}    | [implements][]{{bii}} | [show][]{{ckw}}   |
+| [as][]{{bii}}         | [else][]              | [import][]{{bii}}     | [static][]{{bii}} |
+| [assert][]            | [enum][]              | [in][]                | [super][]         |
+| [async][]{{ckw}}      | [export][]{{bii}}     | [interface][]{{bii}}  | [switch][]        |
+| [await][]{{lrw}}      | [extends][]           | [is][]                | [sync][]{{ckw}}   |
+| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
+| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
+| [catch][]             | [false][]             | [new][]               | [true][]          |
+| [class][]             | [final][]             | [null][]              | [try][]           |
+| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
+| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
+| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
+| [default][]           | [get][]{{bii}}        | [rethrow][]           | [while][]         |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [return][]            | [with][]          |
+| [do][]                | [if][]                | [set][]{{bii}}        | [yield][]{{lrw}}  |
 {:.table .table-striped .nowrap}
+
+[abstract]: #abstract-classes
+[as]: #type-test-operators
+[assert]: #assert
+[async]: #asynchrony-support
+[await]: #asynchrony-support
+[break]: #break-and-continue
+[case]: #switch-and-case
+[catch]: #catch
+[class]: #instance-variables
+[const]: #final-and-const
+{% comment %}
+  [TODO: Make sure that points to a place that talks about const constructors,
+  as well as const literals and variables.]
+{% endcomment %}
+[continue]: #break-and-continue
+[covariant]: /guides/language/sound-problems#the-covariant-keyword
+[default]: #switch-and-case
+[deferred]: #lazily-loading-a-library
+[do]: #while-and-do-while
+[dynamic]: #important-concepts
+[else]: #if-and-else
+[enum]: #enumerated-types
+[export]: /guides/libraries/create-library-packages
+[extends]: #extending-a-class
+[external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
+[factory]: #factory-constructors
+[false]: #booleans
+[final]: #final-and-const
+[finally]: #finally
+[for]: #for-loops
+[Function]: #functions
+[get]: #getters-and-setters
+[hide]: #importing-only-part-of-a-library
+[if]: #if-and-else
+[implements]: #implicit-interfaces
+[import]: #using-libraries
+[in]: #for-loops
+[interface]: https://stackoverflow.com/questions/28595501/was-the-interface-keyword-removed-from-dart
+[is]: #type-test-operators
+[library]: #libraries-and-visibility
+[mixin]: #adding-features-to-a-class-mixins
+[new]: #using-constructors
+[null]: #default-value
+[on]: #catch
+[operator]: #overridable-operators
+[part]: /guides/libraries/create-library-packages#organizing-a-library-package
+[rethrow]: #catch
+[return]: #functions
+[set]: #getters-and-setters
+[show]: #importing-only-part-of-a-library
+[static]: #class-variables-and-methods
+[super]: #extending-a-class
+[switch]: #switch-and-case
+[sync]: #generators
+[this]: #constructors
+[throw]: #throw
+[true]: #booleans
+[try]: #catch
+[typedef]: #typedefs
+[var]: #variables
+[void]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
+{% comment %}
+  TODO: Add coverage of void to the language tour.
+{% endcomment %}
+[with]: #adding-features-to-a-class-mixins
+[while]: #while-and-do-while
+[yield]: #generators
 
 Avoid using these words as identifiers.
 However, if necessary, the keywords marked with superscripts can be identifiers:
@@ -853,7 +921,7 @@ Symbol literals are compile-time constants.
 ## Functions
 
 Dart is a true object-oriented language, so even functions are objects
-and have a type, [Function][].
+and have a type, [Function.][Function API reference]
 This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
@@ -1502,7 +1570,7 @@ runtime.
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
-| `as`      | Typecast
+| `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
 | `is`      | True if the object has the specified type
 | `is!`     | False if the object has the specified type
 {:.table .table-striped}
@@ -4167,7 +4235,7 @@ To learn more about Dart's core libraries, see
 [Flutter]: https://flutter.io
 [Flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
-[Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
