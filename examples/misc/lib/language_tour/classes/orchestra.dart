@@ -1,5 +1,5 @@
 // #docregion Musical
-abstract class Musical {
+mixin Musical {
   bool canPlayPiano = false;
   bool canCompose = false;
   bool canConduct = false;
@@ -38,6 +38,7 @@ abstract class Performer {
 // #docregion Musician-and-Maestro
 class Musician extends Performer with Musical {
   // #enddocregion Musician-and-Maestro
+//  Musician() : super('Anonymous');
   Musician(String name) : super(name);
   // #docregion Musician-and-Maestro
 }
@@ -51,6 +52,25 @@ class Maestro extends Person
 }
 // #enddocregion Musician-and-Maestro
 
+// #docregion mixin-on
+mixin MusicalPerformer on Musician {
+  // #enddocregion mixin-on
+  bool canDance = true;
+
+  @override
+  void entertainMe() {
+    canDance ? dance() : super.entertainMe();
+  }
+
+  void dance() => print('Dancing');
+  // #docregion mixin-on
+}
+// #enddocregion mixin-on
+
+class SingerDancer extends Musician with MusicalPerformer {
+  SingerDancer(String name) : super(name);
+}
+
 void main() {
   var director = Maestro('Allen');
   director.entertainMe(); // Waving hands
@@ -58,4 +78,7 @@ void main() {
   var musician = Musician('Kathy');
   musician.canPlayPiano = true;
   musician.entertainMe(); // Playing piano
+
+  var singerDancer = SingerDancer('Todd');
+  singerDancer.entertainMe(); // Dancing
 }
