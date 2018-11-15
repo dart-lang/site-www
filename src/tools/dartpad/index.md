@@ -25,11 +25,8 @@ If you want to use a package, get the SDK for a
 
 ## Getting started
 
-To get familiar with DartPad, try these steps:
-
-* [Run some samples.](#step-1-open-and-run)
-* [Create a simple command-line app.](#step-2-server)
-* [Create a simple web app.](#step-3-web)
+To get familiar with DartPad,
+try running some samples and then creating a simple command-line app.
 
 
 ### Open DartPad, and run some samples {#step-1-open-and-run}
@@ -50,9 +47,9 @@ To get familiar with DartPad, try these steps:
   </li>
 
   <li markdown="1">
-  Choose an HTML sample, using the **Samples** list at the upper right.
+  Choose an HTML sample like **Sunflower**,
+  using the **Samples** list at the upper right.
 
-  For example, choose **Hello World HTML**.
   Again, the output appears to the right.
   By default, you see the HTML output—what you'd see in a browser.
   </li>
@@ -73,10 +70,18 @@ To create a simple command-line app, use **New Pad**.
 
 <ol markdown="1">
   <li markdown="1">
-  Click the **New Pad** button.
+  Click the **New Pad** button,
+  and confirm that you want to discard changes to the current pad.
 
   The source code for the Hello World app appears
   under the DART tab.
+  </li>
+
+  <li markdown="1">
+  Clear the **Show web content** checkbox,
+  at the bottom right of DartPad.
+
+  The HTML and CSS tabs disappear.
   </li>
 
   <li markdown="1">
@@ -115,54 +120,8 @@ for (var char in 'hello'.split('')) {
 </ol>
 
 
-### Create a web app {#step-3-web}
-
-To create a simple web app, start with the Hello World HTML sample.
-
-<ol>
-  <li>
-    Click <b>Samples</b>, and choose <b>Hello World HTML</b>.
-    If you've already edited Hello World HTML,
-    click <b>Reset</b> to restore the original version.
-  </li>
-
-  <li>
-    Edit the HTML:
-    <ol>
-      <li>
-        Click <b>HTML</b> to view the HTML code.
-      </li>
-      <li>
-        Change the text inside the h2 element
-        from <code>Hello world</code> to something else—perhaps
-        <b>Hola mundo</b>.
-      </li>
-    </ol>
-    <p>
-      The display under HTML OUTPUT updates as you type.
-    </p>
-  </li>
-
-  <li>
-    Edit the Dart code:
-    <ol>
-      <li>
-        Click <b>DART</b> to view the Dart code.
-      </li>
-      <li>
-        Change the value displayed by <code>count.text</code>.
-        For example, change <code>'${i}'</code> to <code>'#${i}'</code>.
-      </li>
-      <li>
-        Click <b>Run</b> to compile and run the Dart code,
-        updating the HTML OUTPUT display.
-      </li>
-    </ol>
-  </li>
-</ol>
-
 ## Checking Dart version info
 
-DartPad's various language features and APIs depend on the **Dart SDK version**
-that DartPad is based on. You can find the SDK version in the DartPad editor
-footer.
+The language features and APIs that DartPad supports depend on the
+**Dart SDK** version that DartPad is based on.
+You can find the SDK version at the bottom right of DartPad.
