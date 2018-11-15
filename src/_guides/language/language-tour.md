@@ -3268,9 +3268,9 @@ mixin MusicalPerformer on Musician {
 
 <aside class="alert alert-info" markdown="1">
   **Version note:** Support for the `mixin` keyword was introduced in Dart 2.1.
-  Code in earlier releases usually uses `abstract class` instead.
+  Code in earlier releases usually used `abstract class` instead.
   For more information on 2.1 mixin changes, see the
-  [Dart SDK changelog][] and [2.1 mixin specification.]
+  [Dart SDK changelog][] and [2.1 mixin specification.][]
 </aside>
 
 [Dart SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md

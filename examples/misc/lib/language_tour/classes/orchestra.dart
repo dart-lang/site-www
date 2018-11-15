@@ -38,13 +38,11 @@ abstract class Performer {
 // #docregion Musician-and-Maestro
 class Musician extends Performer with Musical {
   // #enddocregion Musician-and-Maestro
-//  Musician() : super('Anonymous');
   Musician(String name) : super(name);
   // #docregion Musician-and-Maestro
 }
 
-class Maestro extends Person
-    with Musical, Aggressive, Demented {
+class Maestro extends Person with Musical, Aggressive, Demented {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;
@@ -58,9 +56,7 @@ mixin MusicalPerformer on Musician {
   bool canDance = true;
 
   @override
-  void entertainMe() {
-    canDance ? dance() : super.entertainMe();
-  }
+  void entertainMe() => canDance ? dance() : super.entertainMe();
 
   void dance() => print('Dancing');
   // #docregion mixin-on
