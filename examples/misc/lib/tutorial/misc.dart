@@ -1,8 +1,5 @@
 // ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element
 // NOTE: Declarations in this file are analyzed but not tested.
-
-import 'dart:async';
-
 typedef Void1 = void Function(dynamic);
 typedef Async0 = Future Function();
 

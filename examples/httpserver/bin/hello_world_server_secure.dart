@@ -11,7 +11,6 @@
 // authority to avoid this message, but that may make that browser less secure.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 
 String certificateChain = 'server_chain.pem';

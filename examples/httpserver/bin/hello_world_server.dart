@@ -6,7 +6,6 @@
 // Use the URL localhost:4040 in your browser.
 // #docregion
 import 'dart:io';
-import 'dart:async';
 
 Future main() async {
   // #docregion bind

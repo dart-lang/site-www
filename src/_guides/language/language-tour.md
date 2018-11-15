@@ -463,8 +463,8 @@ defining integer literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
 {% prettify dart %}
-int x = 1;
-int hex = 0xDEADBEEF;
+var x = 1;
+var hex = 0xDEADBEEF;
 {% endprettify %}
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -472,9 +472,23 @@ of defining double literals:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
 {% prettify dart %}
-double y = 1.1;
-double exponents = 1.42e5;
+var y = 1.1;
+var exponents = 1.42e5;
 {% endprettify %}
+
+As of Dart 2.1, integer literals are automatically converted to doubles
+when necessary:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
+{% prettify dart %}
+double z = 1; // Equivalent to double z = 1.0.
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:**
+  Before Dart 2.1, it was an error to use an integer literal
+  in a double context.
+</aside>
 
 Here’s how you turn a string into a number, or vice versa:
 
@@ -3198,7 +3212,7 @@ For more information, see the
 Mixins are a way of reusing a class's code in multiple class
 hierarchies.
 
-To use a mixin, use the `with` keyword followed by one or more mixin
+To _use_ a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
@@ -3216,12 +3230,15 @@ class Maestro extends Person
 }
 {% endprettify %}
 
-To implement a mixin, create a class that extends Object,
-declares no constructors, and has no calls to `super`. For example:
+To _implement_ a mixin, create a class that extends Object and
+declares no constructors.
+Unless you want your mixin to be usable as a regular class,
+use the `mixin` keyword instead of `class`.
+For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musical)"?>
 {% prettify dart %}
-abstract class Musical {
+mixin Musical {
   bool canPlayPiano = false;
   bool canCompose = false;
   bool canConduct = false;
@@ -3238,15 +3255,30 @@ abstract class Musical {
 }
 {% endprettify %}
 
-<div class="alert alert-info" markdown="1">
-  **Note:** Some restrictions on mixins are being removed. For details, see the
-  [proposed mixin specification.][Dart 2.0 Mixins]
+To specify that only certain types can use the mixin — for example,
+so your mixin can invoke a method that it doesn't define —
+use `on` to specify the required superclass:
 
-  [Dart 2.0 Mixins]: https://github.com/dart-lang/sdk/blob/master/docs/language/informal/mixin-declaration.md
-</div>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
+{% prettify dart %}
+mixin MusicalPerformer on Musician {
+  // ···
+}
+{% endprettify %}
 
-For a theoretical presentation of the evolution of mixins in Dart, see
-[A Brief History of Mixins in Dart](/articles/language/mixins).
+<!-- Previous code snippet reveals an issue we expect to be fixed in 2.1.1:
+  https://github.com/dart-lang/sdk/issues/35011
+-->
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:** Support for the `mixin` keyword was introduced in Dart 2.1.
+  Code in earlier releases usually used `abstract class` instead.
+  For more information on 2.1 mixin changes, see the
+  [Dart SDK changelog][] and [2.1 mixin specification.][]
+</aside>
+
+[Dart SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
+[2.1 mixin specification.]: https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md#dart-2-mixin-declarations
 
 
 ### Class variables and methods

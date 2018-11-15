@@ -5,7 +5,6 @@
 // Client program is note_client.dart.
 // Use note_taker.html to run the client.
 
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert' show utf8, json;
 

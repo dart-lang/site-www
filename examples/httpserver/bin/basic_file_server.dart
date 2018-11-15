@@ -9,7 +9,6 @@
 // Also see static_file_server.dart.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 

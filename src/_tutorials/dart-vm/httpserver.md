@@ -127,7 +127,6 @@ client-side programs (but not for web apps).
 <?code-excerpt "httpserver/bin/hello_world_server.dart" replace="/.*?dart:io.*/[!$&!]/g"?>
 {% prettify dart %}
 [!import 'dart:io';!]
-import 'dart:async';
 
 Future main() async {
   var server = await HttpServer.bind(
@@ -330,7 +329,6 @@ you can use `await for` to process the requests.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (main)" replace="/handleRequest/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
@@ -562,7 +560,6 @@ an HttpClientResponse object.
 
 <?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|utf8.\w+/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
@@ -650,7 +647,6 @@ a server that follows this pattern.
 
 <?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|data) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
@@ -774,7 +770,6 @@ Here's the code for mini file server:
 
 <?code-excerpt "httpserver/bin/mini_file_server.dart"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 
 File targetFile = File('index.html');
@@ -837,7 +832,6 @@ because the [VirtualDirectory][] class handles the details of serving the file.
 
 <?code-excerpt "httpserver/bin/basic_file_server.dart" replace="/staticFiles\..*/[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
@@ -873,7 +867,6 @@ Here is the code for `static_file_server.dart`.
 
 <?code-excerpt "httpserver/bin/static_file_server.dart" replace="/\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 import 'package:path/path.dart';
@@ -929,7 +922,6 @@ You **must** provide your own certificates for your servers.
 
 <?code-excerpt "httpserver/bin/hello_world_server_secure.dart" replace="/\S.*\/\*\d\*\//[!$&!]/g"?>
 {% prettify dart %}
-import 'dart:async';
 import 'dart:io';
 
 String certificateChain = 'server_chain.pem';

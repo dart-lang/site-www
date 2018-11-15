@@ -1,7 +1,5 @@
 // ignore_for_file: type_annotate_public_apis
 // #docregion
-import 'dart:async';
-
 // #docregion sumStream
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;

@@ -7,7 +7,6 @@
 // to the server and prints the response.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 

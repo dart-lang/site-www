@@ -6,7 +6,6 @@
 // This server returns the contents of index.html for all requests.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 import 'package:path/path.dart';

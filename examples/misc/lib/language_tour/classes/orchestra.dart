@@ -1,5 +1,5 @@
 // #docregion Musical
-abstract class Musical {
+mixin Musical {
   bool canPlayPiano = false;
   bool canCompose = false;
   bool canConduct = false;
@@ -51,6 +51,32 @@ class Maestro extends Person
 }
 // #enddocregion Musician-and-Maestro
 
+// Musician2 is a workaround for https://github.com/dart-lang/sdk/issues/35011.
+
+class Musician2 extends Performer with Musical {
+  Musician2() : super('Anonymous');
+  Musician2.withName(String name) : super(name);
+}
+
+// #docregion mixin-on
+mixin MusicalPerformer on Musician2 {
+  // #enddocregion mixin-on
+  bool canDance = true;
+
+  @override
+  void entertainMe() =>
+      canDance ? dance() : super.entertainMe();
+
+  void dance() => print('Dancing');
+  // #docregion mixin-on
+}
+// #enddocregion mixin-on
+
+class SingerDancer extends Musician2 with MusicalPerformer {
+//  SingerDancer(String name) : super(name);
+  SingerDancer(String name) : super.withName(name);
+}
+
 void main() {
   var director = Maestro('Allen');
   director.entertainMe(); // Waving hands
@@ -58,4 +84,7 @@ void main() {
   var musician = Musician('Kathy');
   musician.canPlayPiano = true;
   musician.entertainMe(); // Playing piano
+
+  var singerDancer = SingerDancer('Todd');
+  singerDancer.entertainMe(); // Dancing
 }

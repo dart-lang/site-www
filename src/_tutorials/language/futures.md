@@ -132,9 +132,6 @@ run the app, and click CONSOLE to see the app's output.
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
-import 'dart:async';
-
 Future<void> printDailyNewsDigest() async {
   var newsDigest = await gatherNewsReports();
   print(newsDigest);
@@ -304,9 +301,6 @@ run the app, and click CONSOLE to see the app's output.
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
-import 'dart:async';
-
 Future<void> printDailyNewsDigest() {
   final future = gatherNewsReports();
   return future.then(print);

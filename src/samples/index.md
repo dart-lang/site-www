@@ -146,7 +146,6 @@ To access APIs defined in other libraries, use `import`.
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart %}
 // Importing core libraries
-import 'dart:async';
 import 'dart:math';
 
 // Importing libraries from external packages

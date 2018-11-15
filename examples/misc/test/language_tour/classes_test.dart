@@ -137,7 +137,8 @@ void main() {
   });
 
   test('orchestra', () {
-    expect(orchestra.main, m.prints(['Waving hands', 'Playing piano']));
+    expect(
+        orchestra.main, m.prints(['Waving hands', 'Playing piano', 'Dancing']));
   });
 
   test('static-field', () {

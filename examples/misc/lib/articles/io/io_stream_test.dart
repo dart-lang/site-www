@@ -1,5 +1,4 @@
 // #docregion
-import 'dart:async';
 import 'dart:io';
 
 Future<void> main() async {
