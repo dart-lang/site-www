@@ -42,7 +42,8 @@ class Musician extends Performer with Musical {
   // #docregion Musician-and-Maestro
 }
 
-class Maestro extends Person with Musical, Aggressive, Demented {
+class Maestro extends Person
+    with Musical, Aggressive, Demented {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;
@@ -56,7 +57,8 @@ mixin MusicalPerformer on Musician {
   bool canDance = true;
 
   @override
-  void entertainMe() => canDance ? dance() : super.entertainMe();
+  void entertainMe() =>
+      canDance ? dance() : super.entertainMe();
 
   void dance() => print('Dancing');
   // #docregion mixin-on
