@@ -51,8 +51,15 @@ class Maestro extends Person
 }
 // #enddocregion Musician-and-Maestro
 
+// Musician2 is a workaround for https://github.com/dart-lang/sdk/issues/35011.
+
+class Musician2 extends Performer with Musical {
+  Musician2() : super('Anonymous');
+  Musician2.withName(String name) : super(name);
+}
+
 // #docregion mixin-on
-mixin MusicalPerformer on Musician {
+mixin MusicalPerformer on Musician2 {
   // #enddocregion mixin-on
   bool canDance = true;
 
@@ -65,8 +72,9 @@ mixin MusicalPerformer on Musician {
 }
 // #enddocregion mixin-on
 
-class SingerDancer extends Musician with MusicalPerformer {
-  SingerDancer(String name) : super(name);
+class SingerDancer extends Musician2 with MusicalPerformer {
+//  SingerDancer(String name) : super(name);
+  SingerDancer(String name) : super.withName(name);
 }
 
 void main() {

@@ -3266,6 +3266,10 @@ mixin MusicalPerformer on Musician {
 }
 {% endprettify %}
 
+<!-- Previous code snippet reveals an issue we expect to be fixed in 2.1.1:
+  https://github.com/dart-lang/sdk/issues/35011
+-->
+
 <aside class="alert alert-info" markdown="1">
   **Version note:** Support for the `mixin` keyword was introduced in Dart 2.1.
   Code in earlier releases usually used `abstract class` instead.
