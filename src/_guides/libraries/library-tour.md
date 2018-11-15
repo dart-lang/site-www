@@ -1017,9 +1017,14 @@ use it, import dart:async:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
 {% prettify dart %}
-// [PENDING: fix the page that uses this!!]
+import 'dart:async';
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+  **Version note:**
+  As of Dart 2.1, you don't need to import dart:async to
+  use the Future and Stream APIs, because dart:core exports those classes.
+</aside>
 
 ### Future
 

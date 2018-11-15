@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, type_annotate_public_apis
 // #docregion import
-// [PENDING: fix the page that uses this!!]
+import 'dart:async';
 // #enddocregion import
 
 void miscDeclAnalyzedButNotTested() {
