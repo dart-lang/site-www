@@ -20,9 +20,9 @@ env:
     - TASK="bundle exec jekyll build"
 
 matrix:
-  allow_failures:
-    - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: dev
+  # allow_failures:
+    # - env: TASK="./tool/analyze-and-test-examples.sh"
+      # dart: dev
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
