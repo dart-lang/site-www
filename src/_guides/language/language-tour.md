@@ -3703,6 +3703,7 @@ for advice on how to implement a library package, including:
 * How to organize library source code.
 * How to use the `export` directive.
 * When to use the `part` directive.
+* When to use the `library` directive.
 
 
 <a id="asynchrony"></a>
