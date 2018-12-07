@@ -2,7 +2,6 @@
 title: Tools
 description: The tools that support the Dart language.
 show_breadcrumbs: false
-toc: false
 ---
 
 When you're ready to create an app,
@@ -73,27 +72,50 @@ and available as open source.
 
 ## Command-line tools
 
-Most Dart-related SDKs include the following tools.
+Some command-line tools are in Dart-related SDKs,
+and some are in packages.
 
-[Pub package manager](/tools/pub)
+### Tools in SDKs
+
+Most Dart-related SDKs include the following tools:
+
+[Pub package manager (`pub`)](/tools/pub) 
 : Manages Dart packages,
   making it easy for you to install, use, and share Dart libraries,
   command-line tools, and other assets.
   Some Dart technologies, such as Flutter, may not support
   all of the pub commands.
   IDEs that support Dart generally have special support for pub,
-  but you can also use it from the command line (`pub`).
+  but you can also use it from the command line.
 
-[Static analyzer](/tools/analyzer)
+[Static analyzer (`dartanalyzer`)](/tools/analyzer)
 : Evaluates and reports any errors or warnings in your code.
   The Dart plugin for your IDE should make use of Dart's analysis engine,
-  but you can also run the analyzer from the command line (`dartanalyzer`).
+  but you can also run the analyzer from the command line.
 
-[Code formatter](https://github.com/dart-lang/dart_style#readme)
+[Code formatter (`dartfmt`)](https://github.com/dart-lang/dart_style#readme)
 : Formats your code, following the recommendations of the
   [Dart Style Guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
-  the IDE. Or you can run the formatter from the command line (`dartfmt`).
+  the IDE. Or you can run the formatter from the command line.
 
-Other tools, such as the [build_runner code generator,](/tools/build_runner)
-aren't in the SDK but are distributed in packages.
+### Tools in packages
+
+The following tools are distributed in packages on the Dart package site.
+To install them, use the `pub` command, as described in each tool's
+installation instructions.
+
+[build_runner][]
+: A code generator.
+
+[dartfix][]
+: A tool for migrating Dart source code and fixing common issues.
+
+Also see the [dart_style][] package, which can be useful
+for getting a version of `dartfmt` that's different
+from the one included in the SDK.
+
+[build_runner]: /tools/build_runner
+[dartfix]: {{site.pub-pkg}}/dartfix
+[dart_style]: {{site.pub-pkg}}/dart_style
+
