@@ -2,7 +2,6 @@
 title: Tools
 description: The tools that support the Dart language.
 show_breadcrumbs: false
-toc: false
 ---
 
 When you're ready to create an app,
@@ -112,10 +111,11 @@ installation instructions.
 [dartfix][]
 : A tool for migrating Dart source code and fixing common issues.
 
+Also see the [dart_style][] package, which can be useful
+for getting a version of `dartfmt` that's different
+from the one included in the SDK.
+
 [build_runner]: /tools/build_runner
 [dartfix]: {{site.pub-pkg}}/dartfix
 [dart_style]: {{site.pub-pkg}}/dart_style
-
-Also see the [dart_style][] package, which can be useful
-for getting a version of `dartfmt` that's newer than the SDK tool.
 
