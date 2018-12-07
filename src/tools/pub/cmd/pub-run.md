@@ -7,14 +7,8 @@ permalink: /tools/pub/cmd/pub-run
 _Run_ is one of the commands of the _pub_ tool.
 [Learn more about pub](/tools/pub).
 
-{% comment %}
-update-for-dart-2
-https://github.com/dart-lang/pub/issues/1922 to track
-replacement of -c, --[no-]checked
-{% endcomment %}
-
 {% prettify nocode %}
-$ pub run [--mode=<mode>] [--checked] <executable> [args...]
+$ pub run [--enable-asserts] <executable> [args...]
 {% endprettify %}
 
 Use this command to run a Dart script in your package,
