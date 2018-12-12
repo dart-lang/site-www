@@ -3356,8 +3356,10 @@ If you look at the API documentation for the basic array type,
 [List,][List] you’ll see that the
 type is actually `List<E>`. The \<...\> notation marks List as a
 *generic* (or *parameterized*) type—a type that has formal type
-parameters. By convention, type variables have single-letter names, such
-as E, T, S, K, and V.
+parameters. [By convention][], most type variables have single-letter names,
+such as E, T, S, K, and V.
+
+[By convention]: /guides/language/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
 
 
 ### Why use generics?
