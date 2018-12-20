@@ -55,7 +55,7 @@ Leverage that code or put your code out in the world to share with others.
 
 ## More tutorials
 
-* [Server-side Dart tutorials](/tutorials/dart-vm)
+* [Server-side Dart tutorials](/tutorials/server)
 * [Web tutorials]({{site.webdev}}/tutorials)
 * [Dart Academy](https://dart.academy)
 

@@ -3,7 +3,7 @@ layout: tutorial
 title: "Write HTTP Clients & Servers"
 description: Communicate over the internet
 prevpage:
-  url: /tutorials/dart-vm/cmdline
+  url: /tutorials/server/cmdline
   title: "Write Command-Line Apps"
 ---
 {% capture gh-path -%}
@@ -107,7 +107,7 @@ listening on localhost, port 4040
 **In any browser, visit** [localhost:4040](http://localhost:4040).
 The browser displays `Hello, world!`
 
-![The response from the hello world server.](/tutorials/dart-vm/images/hello_world_response.png)
+![The response from the hello world server.](/tutorials/server/images/hello_world_response.png)
 
 In this case, the server is a Dart program
 and the client is the browser you used.
@@ -253,7 +253,7 @@ that you can use to guess the number.
 
    Choose a number and press the **Guess** button.
 
-   ![The user makes a guess using a pull-down menu.](/tutorials/dart-vm/images/guessing.png)
+   ![The user makes a guess using a pull-down menu.](/tutorials/server/images/guessing.png)
 
 <hr>
 
@@ -640,7 +640,7 @@ If the request from the client contains a large amount of
 data, the data might arrive in multiple chunks. You can use the
 join() method in Stream to concatenate the string values of those chunks.
 
-![The flow of control in a server processing requests.](/tutorials/dart-vm/images/flowchart.png)
+![The flow of control in a server processing requests.](/tutorials/server/images/flowchart.png)
 
 The `basic_writer_server.dart` file implements
 a server that follows this pattern.
@@ -764,7 +764,7 @@ It responds to all requests by returning the contents of the
 2. Type [localhost:4044](http://localhost:4044) into the browser.
    The server displays an HTML file:
 
-   ![The index.html file served by mini_file_server.dart.](/tutorials/dart-vm/images/index_file.png)
+   ![The index.html file served by mini_file_server.dart.](/tutorials/server/images/index_file.png)
 
 Here's the code for mini file server:
 
@@ -825,7 +825,7 @@ uses the [http_server][] package.
 2. Type [localhost:4046](http://localhost:4046) into the browser.
    The server displays the same index.html file as the previous:
 
-   ![The index.html file served by basic_file_server.dart.](/tutorials/dart-vm/images/index_file_4046.png)
+   ![The index.html file served by basic_file_server.dart.](/tutorials/server/images/index_file_4046.png)
 
 In this server, the code for handling the request is much shorter,
 because the [VirtualDirectory][] class handles the details of serving the file.
