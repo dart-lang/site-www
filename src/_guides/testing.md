@@ -9,7 +9,7 @@ your app is working correctly before you release it.
 This Dart testing guide outlines several types of testing, and points
 you to where you can learn how to test your
 [mobile]({{site.flutter}}), [web]({{site.webdev}}),
-and [server-side apps and scripts](/dart-vm).
+and [server-side apps and scripts](/server).
 
 <aside class="alert alert-info" markdown="1">
 **Terminology: widget vs. component**<br>

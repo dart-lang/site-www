@@ -2,7 +2,7 @@
 layout: default
 title: "A Tour of the dart:io Library"
 description: Learn about the dart:io library and APIs.
-permalink: /dart-vm/io-library-tour
+permalink: /server/io-library-tour
 ---
 <?code-excerpt plaster="none"?>
 
@@ -272,7 +272,7 @@ Besides the APIs discussed in this section, the dart:io library also
 provides APIs for [processes,][Process] [sockets,][Socket] and
 [web sockets.][WebSocket]
 For more information about server-side and command-line app development, see the
-[server-side Dart overview.](/dart-vm)
+[server-side Dart overview.](/server)
 
 For information on other dart:* libraries, see the
 [library tour.][library tour]

@@ -1648,7 +1648,7 @@ To learn more about the Dart language, see the
 [dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:html tour]: {{site.webdev}}/guides/html-library-tour
-[dart:io tour]: /dart-vm/io-library-tour
+[dart:io tour]: /server/io-library-tour
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}

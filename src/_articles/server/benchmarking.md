@@ -115,7 +115,7 @@ to get an accurate measurement of real world performance.
 
 When executing from the command line checked mode is off by default and can be
 turned on by passing the
-[`--checked`]({{site.prev-url}}/dart-vm/tools/dart-vm#enabling-checked-mode) command line flag.
+[`--checked`]({{site.prev-url}}/server/tools/dart-vm#enabling-checked-mode) command line flag.
 WebStorm has checked mode on by default but can be turned off by
 going to **Preferences** > **Languages & Frameworks** > **Dart**
 and toggling the **Start Dartium in checked mode** checkbox.

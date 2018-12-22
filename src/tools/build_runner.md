@@ -105,7 +105,7 @@ For details on using build_runner, see the following:
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
-[reflection]: /articles/dart-vm/reflection-with-mirrors
+[reflection]: /articles/server/reflection-with-mirrors
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /guides/testing
 [webdev]: {{site.webdev}}/tools/webdev
