@@ -257,7 +257,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 }
 {% endprettify %}
 
-`Orbiter` now has the `astronauts` field as well as the `describeCrew()` method.
+`PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
 [Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
 
