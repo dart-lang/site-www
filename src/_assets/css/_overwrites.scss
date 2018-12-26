@@ -209,17 +209,21 @@ body.homepage .get-started-section {
 	margin-top: 20px;
 	margin-bottom: 20px;
 
-	td {
-		padding: 10px;
-		padding-left: 0;
-		padding-right: 2em;
-		border-bottom: 1px solid $gray-light;
+  td {
+    border-bottom: 1px solid $gray-light;
+    @include media-breakpoint-up(sm) {
+      padding: 10px;
+      padding-left: 0;
+      padding-right: 2em;
+    }
 	}
 
+  tr:first-child > td {
+    text-align: center !important;
+  }
+
 	td:first-child {
-		@include media-breakpoint-up(sm) {
-		  padding-right: 0;
-		}
+		@include media-breakpoint-up(sm) { padding-right: 0; }
 	}
 
   /* icon column */
@@ -232,6 +236,12 @@ body.homepage .get-started-section {
 			display: table-cell;
 		}
 	}
+
+  // Use-case column
+  td:nth-child(3) {
+    min-width: 150px;
+		@include media-breakpoint-down(sm) { padding-left: .5rem; }
+  }
 
 	td:last-child {
 		padding-left: 10px;

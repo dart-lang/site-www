@@ -993,6 +993,10 @@ h3.popover-header {
   @extend .table-bordered;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .alert {
   padding: $content-padding;
   border: none;
