@@ -47,7 +47,7 @@ The following libraries and packages are useful across Dart platforms:
 
 ## VM resources
 
-[Write HTTP Clients & Servers](/tutorials/dart-vm/httpserver)
+[Write HTTP Clients & Servers](/tutorials/server/httpserver)
 : Walks through how to implement command-line clients and servers
   that exchange JSON data.
 

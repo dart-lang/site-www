@@ -2,10 +2,10 @@
 title: Get Started with Server-Side Dart
 description: Get Dart and run a Dart app.
 nextpage:
-  url: /tutorials/dart-vm/cmdline
+  url: /tutorials/server/cmdline
   title: Write Command-Line Apps
 prevpage:
-  url: /tutorials/dart-vm
+  url: /tutorials/server
   title: Server-Side Dart Tutorials
 ---
 
@@ -101,7 +101,7 @@ Pub assumes that the files and directories in a Dart app are
 [laid out in a particular way](/tools/pub/package-layout). The following diagram shows some of the
 conventions used by pub. Not all of these directories are required.
 
-<img class="scale-img-max" src="/tutorials/dart-vm/images/pub-directory-structure.png"
+<img class="scale-img-max" src="/tutorials/server/images/pub-directory-structure.png"
 alt="Pub's directory structure including bin, lib, build directories, and pubspec">
 
 `bin`
@@ -128,7 +128,7 @@ but they can also be scripts.
 
 The Dart VM runs Dart code directly without intermediate compilation.
 
-<img class="scale-img-max" src="/tutorials/dart-vm/images/dartvm-cmd-line.png"
+<img class="scale-img-max" src="/tutorials/server/images/dartvm-cmd-line.png"
      alt="Run a command-line app without compilation">
 
 ## Create a command-line app {#create-cmd-line}
@@ -240,14 +240,14 @@ a top-level function defined in `dart:core`.
 A function declaration
 has two parts: a _signature_ and a _body_.
 
-<img class="scale-img-max" src="/tutorials/dart-vm/images/function-parts.png"
+<img class="scale-img-max" src="/tutorials/server/images/function-parts.png"
      alt="Two parts of a function, the signature and the body"/>
 
 The signature sets the function name,
 the data type of its return value,
 and the number and type of its input arguments.
 
-<img class="scale-img-max" src="/tutorials/dart-vm/images/signature-parts.png"
+<img class="scale-img-max" src="/tutorials/server/images/signature-parts.png"
      alt="The parts of a function signature"/>
 
 The body is the code that defines the function's behavior.

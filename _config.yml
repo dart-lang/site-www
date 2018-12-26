@@ -17,7 +17,7 @@ www: https://www.dartlang.org
 prev-url: https://v1-dartlang-org.firebaseapp.com
 webdev: https://webdev.dartlang.org
 dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
-dart_vm:  /dart-vm
+dart_vm:  /server
 flutter:  https://flutter.io
 dart_api: https://api.dartlang.org
 flutter_api: https://docs.flutter.io

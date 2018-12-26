@@ -2,7 +2,7 @@
 layout: default
 title: "dart: The Standalone VM"
 description: "The reference page for 'dart' at the command line."
-permalink: /dart-vm/tools/dart-vm
+permalink: /server/tools/dart-vm
 short-title: "dart"
 ---
 
