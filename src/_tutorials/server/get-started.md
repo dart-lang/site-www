@@ -164,7 +164,7 @@ It then runs `pub get` to download the packages that the app depends on.
 **If you don't have WebStorm:**
 You can create the command-line app's files
 using the **console-full** generator from
-[Stagehand.](http://stagehand.pub/)
+[Stagehand.](https://pub.dartlang.org/packages/stagehand)
 Then run `pub get`.
 </aside>
 
