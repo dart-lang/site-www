@@ -345,9 +345,8 @@ To call this from Dart, we put it in a wrapper that unpacks the Dart_CObject
 containing seed and length, and that packs the result values into a
 Dart_CObject.  A Dart_CObject can hold an integer (of various sizes), a double,
 a string, or an array of Dart_CObjects. It is implemented in
-[dart_api.h](https://github.com/dart-lang/sdk/blob/master/runtime/include/dart_api.h)
-as a struct
-containing a union. Look in dart_api.h to see the fields and tags used to access
+[dart_native_api.h](https://github.com/dart-lang/sdk/blob/master/runtime/include/dart_native_api.h)
+as a struct containing a union. Look in dart_native_api.h to see the fields and tags used to access
 the union's members. After the Dart_CObject is posted, it and all its resources
 can be freed, since they have been copied into Dart objects on the Dart heap.
 
