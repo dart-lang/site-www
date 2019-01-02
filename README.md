@@ -141,6 +141,14 @@ as linkcheck.dart), run this from the top of the repo:
 ./deploy/html_proof.rb
 ```
 
+To check which old links (from the site version before this one) are broken,
+use these commands:
+
+```
+./tool/serve.sh &
+pub run linkcheck -i deploy/urls/old_site_urls.txt
+```
+
 ## Staging the site
 
 First, save your changes.
