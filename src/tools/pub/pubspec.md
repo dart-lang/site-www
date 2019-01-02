@@ -31,8 +31,16 @@ A pubspec can have the following fields:
   [_Learn more._](#authorauthors)
 
 `homepage`
-: Optional.
+: Optional. URL pointing to the package's homepage (or source code repository).
   [_Learn more._](#homepage)
+
+`repository`
+: Optional. URL pointing to the package's source code repository.
+  [_Learn more._](#repository)
+
+`issue_tracker`
+: Optional. URL pointing to an issue tracker for the package.
+  [_Learn more._](#issue-tracker)
 
 `documentation`
 : Optional. Can be used to automatically create documentation.
@@ -176,10 +184,26 @@ public.
 This should be a URL pointing to the website for your package.
 For [hosted packages](/tools/pub/dependencies#hosted-packages),
 this URL is linked from the package's page.
-While this is technically optional *please do* provide one. It
-helps users understand where your package is coming from. If nothing else, you
-can always use the URL where you host the source code, such as
-[GitHub](https://github.com).
+While providing a `homepage` is optional, *please provide* it or `repository`
+(or both). It helps users understand where your package is coming from.
+
+### Repository
+
+The optional `repository` field should contain the URL for your package's source
+code repository — for example, `https://github.com/<user>/<repository>`.
+If you publish your package to pub.dartlang.org, then your package's page
+displays the repository URL.
+While providing a `repositoryu` is optional, *please provide* it or `homepage`
+(or both). It helps users understand where your package is coming from.
+
+### Issue tracker
+
+The optional `issue_tracker` field should contain a URL for the package's
+issue tracker, where existing bugs can be viewed and new bugs can be filed.
+The pub.dartlang.org site attempts to display a link to each package's issue
+tracker, using the value of this field. If `issue_tracker` is missing but
+`repository` is present and points to GitHub, then pub.dartlang.org uses the
+default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
 
