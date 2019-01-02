@@ -25,7 +25,7 @@ pub: https://pub.dartlang.org
 pub-api: https://pub.dartlang.org/documentation
 pub-pkg: https://pub.dartlang.org/packages
 
-show_banner: true
+show_banner: false
 
 collections:
   articles:
