@@ -13,8 +13,7 @@ $ pub upgrade [args] [dependencies]
 
 Like [`pub get`](/tools/pub/cmd/pub-get),
 `pub upgrade` gets dependencies.
-The difference is that `pub upgrade` ignores any ex
-isting
+The difference is that `pub upgrade` ignores any existing
 [lockfile](/tools/pub/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
 
