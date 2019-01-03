@@ -230,7 +230,7 @@ git stash
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
 
-## Troubleshooting
+## Troubleshooting the build
 
 See the [Troubleshooting wiki page].
 
