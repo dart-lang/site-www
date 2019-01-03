@@ -230,6 +230,10 @@ git stash
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
 
+## Troubleshooting
+
+See the [Troubleshooting wiki page].
+
 
 [Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
@@ -243,3 +247,4 @@ using `git stash pop`.
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
+[Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting
