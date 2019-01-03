@@ -40,15 +40,8 @@ because libraries are expected to work with a range of dependency versions.
 If a lockfile already exists, `pub upgrade` ignores it and generates a new
 one from scratch, using the latest versions of all dependencies.
 
-{% include pub-in-prereleases.html %}
-
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** In earlier releases of Dart, _pub upgrade_ was called _pub update_.
-</aside>
-
 
 ## Upgrading specific dependencies
 
