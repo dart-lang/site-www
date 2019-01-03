@@ -182,6 +182,7 @@
       { "source": "/server/tls-ssl?(.html)", "destination": "https://dart-lang.github.io/server/tls-ssl.html", "type": 301 },
       { "source": "/dart-vm", "destination": "/server", "type": 301 },
       { "source": "/dart-vm/:page*", "destination": "/server/:page*", "type": 301 },
+      { "source": "/tutorials/dart-vm", "destination": "/tutorials/server", "type": 301 },
       { "source": "/tutorials/dart-vm/:page*", "destination": "/tutorials/server/:page*", "type": 301 },
       { "source": "/stable{,/**}", "destination": "https://api.dartlang.org/stable", "type": 301 },
       { "source": "/support/faq?(.html)", "destination": "/faq", "type": 301 },
