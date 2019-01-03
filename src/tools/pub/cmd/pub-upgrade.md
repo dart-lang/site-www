@@ -13,7 +13,8 @@ $ pub upgrade [args] [dependencies]
 
 Like [`pub get`](/tools/pub/cmd/pub-get),
 `pub upgrade` gets dependencies.
-The difference is that `pub upgrade` ignores any existing
+The difference is that `pub upgrade` ignores any ex
+isting
 [lockfile](/tools/pub/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
 
@@ -40,15 +41,8 @@ because libraries are expected to work with a range of dependency versions.
 If a lockfile already exists, `pub upgrade` ignores it and generates a new
 one from scratch, using the latest versions of all dependencies.
 
-{% include pub-in-prereleases.html %}
-
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** In earlier releases of Dart, _pub upgrade_ was called _pub update_.
-</aside>
-
 
 ## Upgrading specific dependencies
 
