@@ -42,13 +42,15 @@ The Dart language, libraries, build system, and web development tools have chang
 
 ## Migrating your code {#migration}
 
-First, see the migration guide for your platform:
-
-* [Flutter migration guide][Flutter migration instructions]
-* [Web app migration guide][webdev dart2]
-
-If you publish packages, then also see the
-[package migration instructions below.](#migrating-packages)
+How to migrate your code depends on how old your code is
+and what platforms it runs on.
+For help with migrating web apps,
+see the [web app migration guide.][webdev dart2]
+If you're migrating a Flutter app,
+consult the [breaking change notification.][Flutter breaking changes]
+If you publish packages,
+then in addition to making platform-specific changes,
+follow the [package migration instructions below](#migrating-packages).
 
 
 ### General process
@@ -56,8 +58,9 @@ If you publish packages, then also see the
 Here's an overview of the process of migrating to Dart 2,
 from either Dart 1.x or an earlier version of Dart 2.
 
-1. **Get an up-to-date version of the Flutter or Dart SDK.**
-   * [Flutter SDK instructions][Flutter SDK install]
+1. **Get an up-to-date version of the Flutter or Dart SDK
+   and the plugins for any IDEs you use.**
+   * [Flutter SDK upgrade instructions][Flutter SDK upgrade]
    * [Dart SDK instructions][Dart SDK install] (server-side or web)
 2. **Upgrade the packages your app depends on.**
    * Flutter: [`flutter packages upgrade`][flutter package upgrade]
@@ -67,6 +70,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
    * Flutter: [`flutter analyze`][Flutter analyzer]
+     or use the problems view in Android Studio/IntelliJ or VS Code.
    * Server-side or web: [`dartanalyzer`][dartanalyzer]
 5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
@@ -81,18 +85,13 @@ from either Dart 1.x or an earlier version of Dart 2.
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
 
-{% comment %}
-TODO:
-- talk about library vs. app migration?
-- talk more about versioning?
-{% endcomment %}
 
 ### Migrating packages
 
 As a package owner, you need to do the following:
 
 * Follow the migration tips for the platforms that your package supports
-  (see above).
+  (see [above](#migration)).
 * Make sure your package passes Dart 2 analysis (see **Run the analyzer** above)
 * Make sure your package's users know how to report issues.
 * Respond quickly to issue reports.
@@ -165,9 +164,9 @@ environment:
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
-[Flutter analyzer]: https://flutter.io/debugging/#the-dart-analyzer
+[Flutter analyzer]: https://flutter.io/docs/testing/debugging/#the-dart-analyzer
 [dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
-[flutter package upgrade]: https://flutter.io/using-packages/#updating-package-dependencies
+[flutter package upgrade]: https://flutter.io/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
 [pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
@@ -181,8 +180,8 @@ environment:
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter migration instructions]: https://github.com/flutter/flutter/wiki/Dart-2-Migration
-[Flutter SDK install]: https://flutter.io/upgrading/
+[Flutter breaking changes]: https://groups.google.com/forum/#!topic/flutter-dev/H8dDhWg_c8I
+[Flutter SDK upgrade]: https://flutter.io/docs/development/tools/sdk/upgrading
 [Dart SDK install]: /tools/sdk#install
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
