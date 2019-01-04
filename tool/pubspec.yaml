@@ -2,7 +2,7 @@ name: site_scripts
 description: Utility scripts
 
 dependencies:
-  html_unescape: ^0.1.5
-  http: ^0.11.3+16
+  html_unescape: ^1.0.0
+  http: ^0.12.0
   logging: ^0.11.3+1
   path: ^1.4.0

@@ -1,0 +1,2 @@
+analyzer:
+  exclude: [_site, examples_archive, site-shared, src, tmp]
