@@ -3,7 +3,6 @@
 import 'dart:async';
 import 'dart:collection';
 import 'dart:isolate';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:dartlang_examples_util/ellipsis.dart';
@@ -423,18 +422,6 @@ class Graph1<Node, Edge> {
 // #docregion one-member-abstract-class
 typedef Predicate<E> = bool Function(E element);
 // #enddocregion one-member-abstract-class
-
-//----------------------------------------------------------------------------
-
-// #docregion named-ctr
-class Point {
-  num x, y;
-  Point(this.x, this.y);
-  Point.polar(num theta, num radius)
-      : x = radius * cos(theta),
-        y = radius * sin(theta);
-}
-// #enddocregion named-ctr
 
 //----------------------------------------------------------------------------
 
