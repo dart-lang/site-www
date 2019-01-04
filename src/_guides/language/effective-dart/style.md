@@ -276,10 +276,10 @@ import 'util.dart';
 {% endprettify %}
 
 
-### PREFER placing "third-party" "package:" imports before other imports.
+### PREFER placing external "package:" imports before other imports. {#prefer-placing-third-party-package-imports-before-other-imports}
 
 If you have a number of "package:" imports for your own package along with other
-third-party packages, place yours in a separate section after the external ones.
+external packages, place yours in a separate section after the external ones.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
