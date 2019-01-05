@@ -716,52 +716,6 @@ Dart constructors are created by declaring a function with the same name as the
 class and, optionally, an additional identifier. The latter are called *named
 constructors*.
 
-### PREFER defining constructors instead of static methods to create instances.
-
-Constructors are invoked using `new` or `const`, which communicates
-that the main purpose of the call is to return an instance of the class
-(or at least something that implements its interface).
-
-You never _need_ to use a static method to create an instance. Named
-constructors let you clarify how the object is created, and factory
-constructors let you construct instances of subclasses or
-subinterfaces when appropriate.
-
-Still, some methods that technically create a new object don't feel
-"constructor-like". For example, [`Uri.parse()`][uri.parse] is a static method
-even though it creates a new URI from the given arguments. Likewise, classes
-implementing the [Builder pattern][] may read better using static methods.
-
-[uri.parse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/parse.html
-[builder pattern]: http://en.wikipedia.org/wiki/Builder_pattern
-
-But, in most cases, you should use a constructor even though it's more verbose.
-When users want a new instance of your class, they expect a constructor to be
-the normal way to create one.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (named-ctr)"?>
-{% prettify dart %}
-class Point {
-  num x, y;
-  Point(this.x, this.y);
-  Point.polar(num theta, num radius)
-      : x = radius * cos(theta),
-        y = radius * sin(theta);
-}
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (named-ctr)"?>
-{% prettify dart %}
-class Point {
-  num x, y;
-  Point(this.x, this.y);
-  static Point polar(num theta, num radius) =>
-      Point(radius * cos(theta), radius * sin(theta));
-}
-{% endprettify %}
-
 
 ### CONSIDER making your constructor `const` if the class supports it.
 
