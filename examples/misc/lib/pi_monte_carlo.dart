@@ -7,7 +7,7 @@
 // 2. Regenerate the HTML version of the sample, which is used on the site
 //    homepage by running tool/create_site_main_example.dart
 // 3. To generate the DartPad version, simply delete all the //!foo markers
-//    e.g., using this Perl regexp: / ?//!.*//g
+//    e.g., using this Perl regexp: / ?\/\/!.*//g
 
 import 'dart:html'; //!web-only
 import 'dart:math' show Random; //!tip("dart:math") //!tip("import")
