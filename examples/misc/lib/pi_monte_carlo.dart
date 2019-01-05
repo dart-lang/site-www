@@ -1,13 +1,23 @@
 // ignore_for_file: type_annotate_public_apis
-// Note: this DartPad version has a few extra lines of code,
-// marked "web-only", to make the sample execution nicer on the web
-// (approximations of π are added to the DOM in addition to being
-// printed on the console).
+
+// WARNING:
+//
+// 1. If you change this file, make sure that the tool tips in
+//    pi_monte_carlo_tooltips.html still have valid name attributes.
+// 2. Regenerate the HTML version of the sample, which is used on the site
+//    homepage by running tool/create_site_main_example.dart
+// 3. To generate the DartPad version, simply delete all the //!foo markers
+//    e.g., using this Perl regexp: / ?//!.*//g
 
 import 'dart:html'; //!web-only
-import 'dart:math' show Random; //!tip("dart:math")
+import 'dart:math' show Random; //!tip("dart:math") //!tip("import")
 //!web-only
 int numIterations = 500; //!web-only
+ //!web-only
+// We changed a few lines of code to make this sample nicer //!web-only
+// on the web (so that the execution waits for animation frame, //!web-only
+// the number gets updated in the DOM, and the program ends //!web-only
+// after 500 iterations). //!web-only
 
 main() async { //!tip("main()")
   print('Compute π using the Monte Carlo method.'); //!tip("π")
@@ -50,4 +60,3 @@ class Point { //!tip("class")
   const Point(this.x, this.y); //!tip("this.x") //!tip("const")
   bool get isInsideUnitCircle => x * x + y * y <= 1; //!tip("get")
 }
-
