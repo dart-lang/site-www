@@ -193,7 +193,7 @@ The optional `repository` field should contain the URL for your package's source
 code repository — for example, `https://github.com/<user>/<repository>`.
 If you publish your package to pub.dartlang.org, then your package's page
 displays the repository URL.
-While providing a `repositoryu` is optional, *please provide* it or `homepage`
+While providing a `repository` is optional, *please provide* it or `homepage`
 (or both). It helps users understand where your package is coming from.
 
 ### Issue tracker
