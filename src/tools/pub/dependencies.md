@@ -141,7 +141,7 @@ dependencies:
 
 ### Git packages
 
-Sometimes you live on the bleeding edge and you need to use packages that
+Sometimes you live on the bleeding edge and need to use packages that
 haven't been formally released yet. Maybe your package itself is still in
 development and is using other packages that are being developed at the
 same time. To make that easier, you can depend directly on a package
@@ -158,8 +158,18 @@ dependencies:
 The `git` here says this package is found using Git, and the URL after that is
 the Git URL that can be used to clone the package.
 
-If you want to depend on a specific commit, branch, or tag, you can also
-provide a `ref` argument:
+Even if the package repo is private, if you can
+[connect to the repo using SSH,][GitHub SSH]
+then you can depend on the package by using the repo's SSH URL:
+
+{% prettify yaml %}
+dependencies:
+  kittens:
+    git: git@github.com:munificent/kittens.git
+{% endprettify %}
+
+If you want to depend on a specific commit, branch, or tag,
+add a `ref` argument:
 
 {% prettify yaml %}
 dependencies:
@@ -169,12 +179,12 @@ dependencies:
       ref: some-branch
 {% endprettify %}
 
-The ref can be anything that Git allows to [identify a commit][commit].
+The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-Pub assumes that the package is in the root of the Git repository.  To specify a different
-location in the repo use the `path` argument:
+Pub assumes that the package is in the root of the Git repository.
+To specify a different location in the repo, use the `path` argument:
 
 {% prettify yaml %}
 dependencies:
@@ -405,5 +415,6 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 </aside>
 
+[GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pubsite]: https://pub.dartlang.org
 [semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
