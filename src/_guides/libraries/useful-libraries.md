@@ -49,6 +49,7 @@ in alphabetical order:
 | **Package** | **Description** | **Commonly used APIs** |
 | [http]({{site.pub-pkg}}/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
 | [intl]({{site.pub-pkg}}/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
+| [json_serializable]({{site.pub-pkg}}/json_serializable) | An easy-to-use code generation package. For more information, see [JSON Support](/guides/json). | @JsonSerializable |
 | [logging]({{site.pub-pkg}}/logging) | A configurable mechanism for adding message logging to your application. | LoggerHandler, Level, LogRecord |
 | [mockito]({{site.pub-pkg}}/mockito) | A popular framework for mocking objects in tests. Especially useful if you are writing tests for dependency injection. Used with the [test]({{site.pub-pkg}}/test) package. | Answering, Expectation, Verification |
 | [path]({{site.pub-pkg}}/path) | Common operations for manipulating different types of paths. For more information, see [Unboxing Packages: path.](https://news.dartlang.org/2016/06/unboxing-packages-path.html) | absolute(), basename(), extension(), join(), normalize(), relative(), split() |
