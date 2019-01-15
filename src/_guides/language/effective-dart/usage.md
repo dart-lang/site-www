@@ -313,6 +313,12 @@ with each element as the argument. In that case, `forEach()` is handy.
 people.forEach(print);
 {% endprettify %}
 
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  It's OK to call `Map.forEach()`.
+  Maps aren't iterable, so they aren't covered by this guideline.
+</aside>
+
 ### DON'T use `List.from()` unless you intend to change the type of the result.
 
 Given an Iterable, there are two obvious ways to produce a new List that
