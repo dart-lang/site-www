@@ -153,8 +153,6 @@ void align(bool clearItems) {
 ### PREFER using `lowerCamelCase` for constant names.
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
-In existing code that uses `SCREAMING_CAPS`, you may continue to use all caps to
-stay consistent.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
@@ -180,9 +178,16 @@ class Dice {
 }
 {% endprettify %}
 
+You may use `SCREAMING_CAPS` for consistency with existing code,
+as in the following cases:
+
+* When adding code to a file or library that already uses `SCREAMING_CAPS`.
+* When generating Dart code that's parallel to Java code —
+  for example, in enumerated types generated from [protobufs.][]
+
 <aside class="alert alert-info" markdown="1">
   **Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
-  changed because:
+  changed for a few reasons:
 
   *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
       things like CSS colors.
@@ -191,6 +196,8 @@ class Dice {
   *   The `values` property automatically defined on an enum type is const and
       lowercase.
 </aside>
+
+[protobufs.]: {{site.pub-pkg}}/protobuf
 
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words.
