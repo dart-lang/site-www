@@ -369,6 +369,8 @@ previous guidelines state, either:
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
 
+{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
+
 A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
 representation. The core libraries have a convention that these methods are
@@ -386,6 +388,8 @@ dateTime.toLocal();
 
 
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object.
+
+{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
@@ -556,6 +560,8 @@ you can in a procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
 
+{% include linter-rule.html rule="one_member_abstracts" %}
+
 Unlike Java, Dart has first-class functions, closures, and a nice light syntax
 for using them. If all you need is something like a callback, just use a
 function. If you're defining a class and it only has a single abstract member
@@ -578,6 +584,8 @@ abstract class Predicate<E> {
 
 
 ### AVOID defining a class that contains only static members.
+
+{% include linter-rule.html rule="avoid_classes_with_only_static_members" %}
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
@@ -740,6 +748,8 @@ A member belongs to an object and can be either methods or instance variables.
 
 ### PREFER making fields and top-level variables `final`.
 
+{% include linter-rule.html rule="prefer_final_fields" %}
+
 State that is not *mutable*&mdash;that does not change over time&mdash;is
 easier for programmers to reason about. Classes and libraries that minimize the
 amount of mutable state they work with tend to be easier to maintain.
@@ -849,6 +859,8 @@ dataSet.minimumValue;
 
 ### DO use setters for operations that conceptually change properties.
 
+{% include linter-rule.html rule="use_setters_to_change_properties" %}
+
 Deciding between a setter versus a method is similar to deciding between a
 getter versus a method. In both cases, the operation should be "field-like".
 
@@ -874,6 +886,8 @@ button.visible = false;
 
 ### DON'T define a setter without a corresponding getter.
 
+{% include linter-rule.html rule="avoid_setters_without_getters" %}
+
 Users think of getters and setters as visible properties of an object. A
 "dropbox" property that can be written to but not seen is confusing and
 confounds their intuition about how properties work. For example, a setter
@@ -896,6 +910,8 @@ getter.)
 
 ### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
 
+{% include linter-rule.html rule="avoid_returning_null" %}
+
 Even though all types are nullable in Dart, users assume those types almost
 never contain `null`, and the lowercase names encourage a "Java primitive"
 mindset.
@@ -909,6 +925,8 @@ clearly, including the conditions under which `null` will be returned.
 
 
 ### AVOID returning `this` from methods just to enable a fluent interface.
+
+{% include linter-rule.html rule="avoid_returning_this" %}
 
 Method cascades are a better solution for chaining method calls.
 
@@ -1034,6 +1052,8 @@ The remaining guidelines cover other more specific questions around types.
 
 ### PREFER type annotating public fields and top-level variables if the type isn't obvious.
 
+{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
 type error. Consider:
@@ -1079,6 +1099,8 @@ type of your own API without you realizing.
 
 ### CONSIDER type annotating private fields and top-level variables if the type isn't obvious.
 
+{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+
 Type annotations on your public declarations help *users* of your code. Types on
 private members help *maintainers*. The scope of a private declaration is
 smaller and those who need to know the type of that declaration are also more
@@ -1092,6 +1114,8 @@ annotating helps make the code clearer, then add one.
 
 
 ### AVOID type annotating initialized local variables.
+
+{% include linter-rule.html rule="omit_local_variable_types" %}
 
 Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
@@ -1339,6 +1363,8 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 ### DON'T specify a return type for a setter.
 
+{% include linter-rule.html rule="avoid_return_types_on_setters" %}
+
 Setters always return `void` in Dart. Writing the word is pointless.
 
 {:.bad-style}
@@ -1355,6 +1381,8 @@ set foo(Foo value) { ... }
 
 
 ### DON'T use the legacy typedef syntax.
+
+{% include linter-rule.html rule="prefer_generic_function_type_aliases" %}
 
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
@@ -1416,6 +1444,8 @@ it's deprecated.
 
 ### PREFER inline function types over typedefs.
 
+{% include linter-rule.html rule="avoid_private_typedef_functions" %}
+
 In Dart 1, if you wanted to use a function type for a field, variable, or
 generic type argument, you had to first define a typedef for it. Dart 2 supports
 a function type syntax that can be used anywhere a type annotation is allowed:
@@ -1450,6 +1480,8 @@ that clarity.
 
 
 ### CONSIDER using function type syntax for parameters.
+
+{% include linter-rule.html rule="use_function_type_syntax_for_parameters" %}
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
@@ -1582,6 +1614,8 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 ### AVOID positional boolean parameters.
 
+{% include linter-rule.html rule="avoid_positional_boolean_parameters" %}
+
 Unlike other types, booleans are usually used in literal form. Things like
 numbers are usually wrapped in named constants, but we usually just pass around
 `true` and `false` directly. That can make callsites unreadable if it isn't
@@ -1701,6 +1735,8 @@ elements to follow.
 
 ### DO override `hashCode` if you override `==`.
 
+{% include linter-rule.html rule="hash_and_equals" %}
+
 The default hash code implementation provides an *identity* hash&mdash;two
 objects generally only have the same hash code if they are the exact same
 object. Likewise, the default behavior for `==` is identity.
@@ -1736,6 +1772,8 @@ hash code will be the same forever and may behave unpredictably if that isn't
 true.
 
 ### DON'T check for `null` in custom `==` operators.
+
+{% include linter-rule.html rule="avoid_null_checks_in_equality_operators" %}
 
 The language specifies that this check is done automatically and your `==`
 method is called only if the right-hand side is not `null`.

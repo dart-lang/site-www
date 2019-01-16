@@ -24,6 +24,7 @@ flutter_api: https://docs.flutter.io
 pub: https://pub.dartlang.org
 pub-api: https://pub.dartlang.org/documentation
 pub-pkg: https://pub.dartlang.org/packages
+lints: https://dart-lang.github.io/linter/lints
 
 show_banner: false
 

@@ -36,6 +36,8 @@ Identifiers come in three flavors in Dart.
 
 ### DO name types using `UpperCamelCase`.
 
+{% include linter-rule.html rule="camel_case_types" %}
+
 Classes, enums, typedefs, and type parameters should capitalize the first letter
 of each word (including the first word), and use no separators.
 
@@ -77,8 +79,12 @@ const foo = Foo();
 class C { ... }
 {% endprettify %}
 
+[camel_case_types]: http://dart-lang.github.io/linter/lints/camel_case_types.html
+[Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
 ### DO name libraries and source files using `lowercase_with_underscores`.
+
+{% include linter-rule.html rule1="library_names" rule2="file_names" %}
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -112,6 +118,8 @@ import 'SliderMenu.dart';
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
+{% include linter-rule.html rule="library_prefixes" %}
+
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
 {% prettify dart %}
@@ -133,6 +141,8 @@ import 'package:js/js.dart' as JS;
 
 ### DO name other identifiers using `lowerCamelCase`.
 
+{% include linter-rule.html rule="non_constant_identifier_names" %}
+
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
 word, and use no separators.
@@ -151,6 +161,8 @@ void align(bool clearItems) {
 
 
 ### PREFER using `lowerCamelCase` for constant names.
+
+{% include linter-rule.html rule="constant_identifier_names" %}
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 In existing code that uses `SCREAMING_CAPS`, you may continue to use all caps to
@@ -250,8 +262,13 @@ kDefaultTimeout
 To keep the preamble of your file tidy, we have a prescribed order that
 directives should appear in. Each "section" should be separated by a blank line.
 
+A single linter rule handles all the ordering guidelines:
+[directives_ordering.]({{ site.lints }}/directives_ordering.html)
+
 
 ### DO place "dart:" imports before other imports.
+
+{% include linter-rule.html rule="directives_ordering" %}
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
@@ -266,6 +283,8 @@ import 'package:foo/foo.dart';
 
 ### DO place "package:" imports before relative imports.
 
+{% include linter-rule.html rule="directives_ordering" %}
+
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 {% prettify dart %}
@@ -277,6 +296,8 @@ import 'util.dart';
 
 
 ### PREFER placing external "package:" imports before other imports. {#prefer-placing-third-party-package-imports-before-other-imports}
+
+{% include linter-rule.html rule="directives_ordering" %}
 
 If you have a number of "package:" imports for your own package along with other
 external packages, place yours in a separate section after the external ones.
@@ -292,6 +313,8 @@ import 'package:my_package/util.dart';
 
 
 ### DO specify exports in a separate section after all imports.
+
+{% include linter-rule.html rule="directives_ordering" %}
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
@@ -312,6 +335,8 @@ import 'src/foo_bar.dart';
 
 
 ### DO sort sections alphabetically.
+
+{% include linter-rule.html rule="directives_ordering" %}
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
@@ -372,6 +397,8 @@ produce beautiful code.
 
 ### AVOID lines longer than 80 characters.
 
+{% include linter-rule.html rule="lines_longer_than_80_chars" %}
+
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
 why newspapers and magazines use multiple columns of text.
@@ -393,6 +420,8 @@ a given path.
 
 
 ### DO use curly braces for all flow control structures.
+
+{% include linter-rule.html rule="curly_braces_in_flow_control_structures" %}
 
 Doing so avoids the [dangling else][] problem.
 

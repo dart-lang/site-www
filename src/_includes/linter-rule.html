@@ -1,0 +1,6 @@
+{:.linter-rule}
+{% if include.rule %}
+Linter rule: <a href="{{ site.lints }}/{{ include.rule }}.html">{{ include.rule }}</a>
+{% else %}
+Linter rules: <a href="{{ site.lints }}/{{ include.rule1 }}.html">{{ include.rule1 }},</a> <a href="{{ site.lints }}/{{ include.rule2 }}.html">{{ include.rule2 }}</a>
+{% endif %}
