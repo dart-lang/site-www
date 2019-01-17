@@ -75,6 +75,8 @@ before a declaration and uses the special `///` syntax that dartdoc looks for.
 
 ### DO use `///` doc comments to document members and types.
 
+{% include linter-rule.html rule="slash_for_doc_comments" %}
+
 Using a doc comment instead of a regular comment enables [dartdoc][] to find it
 and generate documentation for it.
 
@@ -102,6 +104,8 @@ If you stumble onto code that still uses the JavaDoc style, consider cleaning it
 up.
 
 ### PREFER writing doc comments for public APIs.
+
+{% include linter-rule.html rule1="package_api_docs" rule2="public_member_api_docs"%}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
@@ -293,6 +297,8 @@ makes an API easier to learn.
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers.
 
+{% include linter-rule.html rule="comment_references" %}
+
 If you surround things like variable, method, or type names in square brackets,
 then dartdoc looks up the name and links to the relevant API docs. Parentheses
 are optional, but can make it clearer when you're referring to a method or
@@ -376,10 +382,10 @@ class ToggleComponent {}
 ## Markdown
 
 You are allowed to use most [markdown][] formatting in your doc comments and
-dartdoc will process it accordingly using the [markdown package][].
+dartdoc will process it accordingly using the [markdown package.][]
 
 [markdown]: https://daringfireball.net/projects/markdown/
-[markdown package]: https://pub.dartlang.org/packages/markdown
+[markdown package.]: https://pub.dartlang.org/packages/markdown
 
 There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
