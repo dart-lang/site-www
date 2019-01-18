@@ -2,18 +2,27 @@
 title: A Brief History of Mixins in Dart
 description: Mixins let you implement functionality once and use it in multiple classes.
 original-date: 2012-12-18
-date: 2018-09-21
+date: 2018-06-01
 category: language
+obsolete: true
 ---
 
 _Written by Gilad Bracha <br>
 December 2012 (updated June 2018)_
 
-Looking for an introduction to mixins?
-See the Language Tour section [Adding features to a class: mixins][].
+This article provides a brief theoretical presentation of
+the evolution of mixins in Dart.
 
-This article provides a brief theoretical presentation of the evolution of mixins in Dart.
-Support for mixins changed in Dart 1.13, and it will again in Dart 2:
+<aside class="alert alert-info" markdown="1">
+  For information on _using_ or _implementing_ mixins,
+  see the language tour:
+
+  **[Adding features to a class: mixins][]**
+</aside>
+
+## Mixin support by Dart release
+
+Support for mixins changed in Dart 1.13 and Dart 2.1:
 
 - Dart 1.12 or lower supports mixins that must extend `Object`, and must not
   call `super()`.
