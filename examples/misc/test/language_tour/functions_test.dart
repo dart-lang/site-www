@@ -2,8 +2,7 @@
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart'
-    as m;
+import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
 void main() {
   test('optional-positional-parameters', () {
@@ -40,8 +39,7 @@ void main() {
       return result;
     }
 
-    assert(say('Bob', 'Howdy') ==
-        'Bob says Howdy with a carrier pigeon');
+    assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
     // #enddocregion optional-positional-param-default
   });
 
@@ -90,8 +88,7 @@ void main() {
     _test() {
       var list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
-      list.forEach(
-          (item) => print('${list.indexOf(item)}: $item'));
+      list.forEach((item) => print('${list.indexOf(item)}: $item'));
       // #enddocregion anon-func
     }
 
