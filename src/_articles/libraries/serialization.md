@@ -42,10 +42,10 @@ we reviewed three solutions in depth:
 [dartson]({{site.pub}}/packages/dartson)
 : Simple JSON for simple objects.
 
-[serialization]({{pub.site}}/packages/serialization)
+[serialization]({{site.pub}}/packages/serialization)
 : A custom format for complex Dart objects.
 
-[protobuf]({{pub.site}}/packages/protobuf)
+[protobuf]({{site.pub}}/packages/protobuf)
 : Google's [protocol buffer](https://developers.google.com/protocol-buffers/)
   format.
 
@@ -252,7 +252,7 @@ For more information about dartson, see these resources:
 
 * Step-by-step how-to: [dartson example](#dartson-example)
 * Source code: <https://github.com/eredo/dartson>
-* Homepage: <{{pub.site}}/packages/dartson>
+* Homepage: <{{site.pub}}/packages/dartson>
 
 
 ### serialization {#serialization-review}
@@ -314,7 +314,7 @@ For more information about the serialization package, see these resources:
 
 * Step-by-step how-to: [serialization example](#serialization-example)
 * Source code: <https://github.com/google/serialization.dart>
-* Homepage: <{{pub.site}}/packages/serialization>
+* Homepage: <{{site.pub}}/packages/serialization>
 
 
 ### protobuf {#protobuf-review}
@@ -525,7 +525,7 @@ Person deserializedPerson = dson.decode(personString, new Person());
 ### serialization {#serialization-example}
 
 This package is still changing. See the
-[serialization package page]({{pub.site}}/packages/serialization)
+[serialization package page]({{site.pub}}/packages/serialization)
 for the latest details.
 
 
