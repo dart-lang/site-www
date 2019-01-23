@@ -39,7 +39,7 @@ a serialization solution that best fits your app.
 After looking at many serialization options for Dart,
 we reviewed three solutions in depth:
 
-[dartson]({{pub.site}}/packages/dartson)
+[dartson]({{site.pub}}/packages/dartson)
 : Simple JSON for simple objects.
 
 [serialization]({{pub.site}}/packages/serialization)
@@ -380,7 +380,7 @@ For more information about using protocol buffers, see these resources:
 * Step-by-step how-to: [protobuf example](#protobuf-example)
 * Protocol buffer documentation:
   <https://developers.google.com/protocol-buffers/>
-* protobuf package: <{{pub.site}}/packages/protobuf>
+* protobuf package: <{{site.pub}}/packages/protobuf>
 * Dart plugin for protoc: <https://github.com/dart-lang/dart-protoc-plugin>
 
 

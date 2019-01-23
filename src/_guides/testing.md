@@ -54,7 +54,7 @@ Although your tests partly depend on the platform your code is intended
 for&mdash;Flutter, the web, or server-side, for example&mdash;the
 following packages are useful across Dart platforms:
 
-* [package:test]({{site.puyb}}/packages/test)<br>
+* [package:test]({{site.pub}}/packages/test)<br>
   Provides a standard way of writing tests in Dart. You can use the test
   package to:
     * Write single tests, or groups of tests.
