@@ -36,12 +36,12 @@ and no third-party libraries.
 The platform-specific dart:io and dart:html libraries
 are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
 
-Other places to find library information are
-[pub.dartlang.org][pub.dartlang.org] and the
+Other places to find library information are the
+[Package site][pub.dartlang] and the
 [Dart web developer library guide.][webdev libraries]
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.][docs.flutter.io]
+the [Flutter API reference.][docs.flutter]
 
 <aside class="alert alert-info" markdown="1">
   **DartPad tip:** You can play with the code in this page by copying it into a
@@ -1625,24 +1625,24 @@ libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
 as well as platform-specific libaries like the
 [Dart web development libraries][webdev libraries]
-and the [Flutter libraries.][docs.flutter.io]
+and the [Flutter libraries.][docs.flutter]
 
 You can get yet more libraries by using the [pub tool](/tools/pub). The
-[collection,](https://pub.dartlang.org/packages/collection)
-[crypto,](https://pub.dartlang.org/packages/crypto)
-[http,](https://pub.dartlang.org/packages/http)
-[intl,](https://pub.dartlang.org/packages/intl) and
-[test](https://pub.dartlang.org/packages/test) libraries are just a
+[collection,]({{site.pub}}/packages/collection)
+[crypto,]({{site.pub}}/packages/crypto)
+[http,]({{site.pub}}/packages/http)
+[intl,]({{site.pub}}/packages/intl) and
+[test]({{site.pub}}/packages/test) libraries are just a
 sampling of what you can install using pub.
 
 To learn more about the Dart language, see the
 [language tour][].
 
 [language tour]: /guides/language/language-tour
-[docs.flutter.io]: https://docs.flutter.io/
+[docs.flutter]: {{site.flutter}}
 [dartdocs.org]: https://www.dartdocs.org/
-[pub.dartlang.org]: https://pub.dartlang.org
-[DartPad]: https://dartpad.dartlang.org
+[pub.dartlang]: {{site.pub}}
+[DartPad]: {{site.dartpad}}
 [Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html

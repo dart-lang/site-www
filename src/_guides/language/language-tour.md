@@ -858,7 +858,7 @@ to see runes in action.
 
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
-https://dartpad.dartlang.org/589bc5c95318696cefe5
+{{site.dartpad}}/589bc5c95318696cefe5
 Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
@@ -1141,7 +1141,7 @@ void doStuff(
 
 {% comment %}
 https://gist.github.com/d988cfce0a54c6853799
-https://dartpad.dartlang.org/d988cfce0a54c6853799
+{{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
 src="{{site.custom.dartpad.embed-inline-prefix}}?id=d988cfce0a54c6853799&verticalRatio=70"
@@ -1191,7 +1191,7 @@ void main(List<String> arguments) {
 }
 {% endprettify %}
 
-You can use the [args library](https://pub.dartlang.org/packages/args) to
+You can use the [args library]({{site.pub}}/packages/args) to
 define and parse command-line arguments.
 
 ### Functions as first-class objects
@@ -1257,7 +1257,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
-https://dartpad.dartlang.org/5d70bc1889d055c7a18d35d77874af88
+{{site.dartpad}}/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
@@ -1637,7 +1637,7 @@ b ??= value;
 {% comment %}
 <!-- embed a dartpad when we can hide code -->
 https://gist.github.com/9de887c4daf76d39e524
-https://dartpad.dartlang.org/9de887c4daf76d39e524
+{{site.dartpad}}/9de887c4daf76d39e524
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment-gist-main-body)" plaster="none"?>
 {% prettify dart %}
@@ -2355,7 +2355,7 @@ Use `?.` instead of `.` to avoid an exception
 when the leftmost operand is null:
 
 {% comment %}
-https://dartpad.dartlang.org/0cb25997742ed5382e4a
+{{site.dartpad}}/0cb25997742ed5382e4a
 https://gist.github.com/0cb25997742ed5382e4a
 {% endcomment %}
 
@@ -2613,7 +2613,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
-https://dartpad.dartlang.org/e57aa06401e6618d4eb8
+{{site.dartpad}}/e57aa06401e6618d4eb8
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart" plaster="none"?>
 {% prettify dart %}
@@ -2719,7 +2719,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
-https://dartpad.dartlang.org/7a9764702c0608711e08
+{{site.dartpad}}/a9764702c0608711e08
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
 {% prettify dart %}
@@ -3534,7 +3534,7 @@ var foo = [!Foo<Object>!]();
 Initially, Dart's generic support was limited to classes.
 A newer syntax, called _generic methods_, allows type arguments on methods and functions:
 
-<!-- https://dartpad.dartlang.org/a02c53b001977efa4d803109900f21bb -->
+<!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 {% prettify dart %}
@@ -3976,7 +3976,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
-https://dartpad.dartlang.org/405379bacf30335f3aed
+{{site.dartpad}}/405379bacf30335f3aed
 
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
 {% prettify dart %}
@@ -4267,8 +4267,8 @@ To learn more about Dart's core libraries, see
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Flutter]: https://flutter.io
-[Flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
+[Flutter]: {{site.flutter}}
+[Flutter debug mode]: {{site.fluttewr}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

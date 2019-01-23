@@ -85,7 +85,7 @@ void main() {
   report a runtime type error.
 {% endcomment -%}
 
-[Try it in DartPad](https://dartpad.dartlang.org/f64e963cb5f894e2146c2b28d5efa4ed).
+[Try it in DartPad]({{site.dartpad}}/f64e963cb5f894e2146c2b28d5efa4ed).
 
 ## What is soundness?
 
@@ -462,9 +462,9 @@ List<Cat> myCats = List<[!MaineCoon!]>();
 
 {% comment %}
 Gist:  https://gist.github.com/4a2a9bc2242042ba5338533d091213c0
-DartPad: https://dartpad.dartlang.org/4a2a9bc2242042ba5338533d091213c0
+DartPad: {{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0
 
-[Try it in DartPad](https://dartpad.dartlang.org/4a2a9bc2242042ba5338533d091213c0).
+[Try it in DartPad]({{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0).
 {% endcomment %}
 
 What about going in the other direction? Can you assign an `Animal` list to a `List<Cat>`?
@@ -521,4 +521,4 @@ The following resources have further information on sound Dart:
 [analyzer]: /tools/analyzer
 [Dart VM]: /server/tools/dart-vm
 [dartdevc]: {{site.webdev}}/tools/dartdevc
-[strong mode]: https://www.dartlang.org/guides/language/sound-dart#how-to-enable-strong-mode
+[strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode

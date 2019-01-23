@@ -14,14 +14,14 @@ Thanks!
 
 <div class="who-uses-list" markdown="1">
 
-[Flutter](https://flutter.io/)
+[Flutter]({{site.flutter}})
 : Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. 
 Read [Why Flutter uses Dart](https://hackernoon.com/why-flutter-uses-dart-dd635a054ebf).
 
 [Google AdWords](http://adwords.blogspot.com/2016/03/redesigning-adwords-for-the-mobile-first-marketer.html)
 : The next generation of AdWords runs on Dart. For more information,
-  see [an interview with the lead developer](http://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
-  on [news.dartlang.org](http://news.dartlang.org/).
+  see [an interview with the lead developer]({{site.news}}/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
+  on [Dart news]({{site.news}}).
 
 [Wrike](https://www.wrike.com/)
 : Outcollaborate. Wrike combines real-time collaboration with easy-to-use
@@ -31,7 +31,7 @@ Read [Why Flutter uses Dart](https://hackernoon.com/why-flutter-uses-dart-dd635a
 [Workiva](https://www.workiva.com/)
 : Next generation client applications for our Wdesk productivity suite are
   built with Dart. Check out our
-  [OSS contributions](https://pub.dartlang.org/search?q=workiva) as well.
+  [OSS contributions]({{site.pub}}/search?q=workiva) as well.
 
 [Pick & School](https://www.picknschool.com)
 : An online catalog of studies in French higher education.
@@ -119,7 +119,7 @@ Google internal sales tool
 [AngularDart]({{site.webdev}}/angular)
 : AngularDart is a web app framework that focuses on productivity, performance, and stability.
 
-[Google Elections](http://news.dartlang.org/2013/09/googles-german-election-map-powered-by.html)
+[Google Elections]({{site.news}}/2013/09/googles-german-election-map-powered-by.html)
 : Elections results maps built with Dart.
 
 [Runnable](http://runnable.com)

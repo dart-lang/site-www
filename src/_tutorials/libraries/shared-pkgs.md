@@ -8,7 +8,8 @@ description: Packages are bundles of source code, tools, and resources that help
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * pub.dartlang.org is the primary public repository for Dart packages.
+  * The [Package site]({{site.puyb}} is the primary public repository for Dart
+    packages.
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
   * If you're developing a web or server-side app,
@@ -21,16 +22,14 @@ description: Packages are bundles of source code, tools, and resources that help
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
-are available at the
-<a href="https://pub.dartlang.org/">pub.dartlang.org</a>
-repository.
+are available at the [Package site]({{site.pub}}) repository.
 
 This tutorial shows how to use `pub`&mdash;a package manager
 that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
-<a href="https://pub.dartlang.org/">pub.dartlang.org</a>;
+the [Package site]({{site.pub}};
 just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
@@ -41,7 +40,7 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.](https://flutter.io/using-packages/)
+  [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 </aside>
 
 
@@ -115,12 +114,13 @@ of a package that your app uses.
 
 Let's make the vector_victor app have a dependency
 on the vector_math package,
-which is available at pub.dartlang.org.
+which is available at the [Package site]({{site.pub}}).
 
  1. Get the current installation details for the package:
 
     {: type="a"}
-     1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
+     1. Go to [vector_math's entry on the Package
+        site.]({{site.pub}}/packages/vector_math)
      2. Click the **Installing** tab.
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
@@ -132,8 +132,8 @@ which is available at pub.dartlang.org.
 
  2. Edit `pubspec.yaml`.
 
- 3. In the dependencies section, add the string you copied from
-    pub.dartlang.org. Be careful to keep the indentation the same; YAML is
+ 3. In the dependencies section, add the string you copied from the
+    Package site. Be careful to keep the indentation the same; YAML is
     picky! For example:
 
     {% prettify yaml %}
@@ -151,7 +151,7 @@ See [Pub Versioning Philosophy](/tools/pub/versioning)
 for details of what version numbers mean,
 and how you can format them.
 
-<a href="https://pub.dartlang.org/">pub.dartlang.org</a>
+The [Package site]({{site.pub}})
 is the primary public repository for Dart packages.
 `pub` automatically checks that
 website when resolving package dependencies.
@@ -275,7 +275,8 @@ use the `package:` prefix.
 1. Get the import details for the package's main library:
 
    {: type="a"}
-   1. Go to [vector_math's pub.dartlang.org entry.](https://pub.dartlang.org/packages/vector_math)
+   1. Go to [vector_math's entry on the Package
+      site.]({{site.pub}}/packages/vector_math)
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
 
@@ -287,8 +288,9 @@ use the `package:` prefix.
 2. In your vector_victor app, edit `lib/vector_victor.dart`,
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
-   [vector_math API docs](https://pub.dartlang.org/documentation/vector_math/latest/),
-   which you can find from the pub.dartlang.org entry.
+   [vector_math API
+   docs]({{site.pub}}/documentation/vector_math/latest),
+   which you can find from the Package site entry.
 
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
@@ -298,8 +300,7 @@ use the `package:` prefix.
 
 ## Other resources
 
-* Dart developers share packages at
-  [pub.dartlang.org](https://pub.dartlang.org/).
+* Dart developers share packages at the [Package site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
 * See the [pub documentation](/tools/pub)

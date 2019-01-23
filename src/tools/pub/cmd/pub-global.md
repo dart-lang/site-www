@@ -1,6 +1,6 @@
 ---
 title: pub global
-description: Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line.
+description: Use pub global to run Dart scripts hosted on the Package site from the command line.
 permalink: /tools/pub/cmd/pub-global
 ---
 
@@ -15,7 +15,7 @@ After [activating a package](#activating-a-package), you can
 your list of globally available packages.
 
 For example, say you want to run
-[Stagehand](https://pub.dartlang.org/packages/stagehand)
+[Stagehand]({{site.pub}}/packages/stagehand)
 the Dart project generator, from the command line.
 
 ```terminal
@@ -35,8 +35,8 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
-You can activate packages that live on
-[pub.dartlang.org](https://pub.dartlang.org/), a Git repository,
+You can activate packages that live on the
+[Package site]({{site.pub}}), a Git repository,
 or your local machine.
 Once you have activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
@@ -45,13 +45,13 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on pub.dartlang.org
+### Activating a package on the Package site
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on pub.dartlang.org to activate it. For example:
+Specify a package on the Package site to activate it. For example:
 
 ```terminal
 $ pub global activate markdown

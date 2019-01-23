@@ -19,11 +19,11 @@ A pubspec can have the following fields:
   [_Learn more._](#name)
 
 `version`
-: Required for packages that are hosted on pub.dartlang.org.
+: Required for packages that are hosted on the Package site.
   [_Learn more._](#version)
 
 `description`
-: Required for packages that are hosted on pub.dartlang.org.
+: Required for packages that are hosted on the [Package site]({{site.pub}}).
   [_Learn more._](#description)
 
 `author` or `authors`
@@ -92,8 +92,8 @@ description: >-
   newt-transmogrification functionality you have been looking
   for.
 author: Natalie Weizenbaum <nweiz@google.com>
-homepage: https://newtify.dartlang.org
-documentation: https://docs.newtify.com
+homepage: https://example-pet-store.com/newtify
+documentation: https://example-pet-store.com/newtify/docs
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dependencies:
@@ -127,14 +127,14 @@ doesn't start with digits and isn't a
 [reserved word](/guides/language/language-tour#keywords).
 
 Try to pick a name that is clear, terse, and not already in use.
-A quick search of packages on
-[pub.dartlang.org](https://pub.dartlang.org/packages)
+A quick search of packages on the
+[Package site]({{site.pub}}/packages)
 to make sure that nothing else is using your name is recommended.
 
 ### Version
 
 Every package has a version. A version number is required to host your package
-on pub.dartlang.org, but can be omitted for local-only packages. If you omit
+on the Package site, but can be omitted for local-only packages. If you omit
 it, your package is implicitly versioned `0.0.0`.
 
 Versioning is necessary for reusing code while letting it evolve quickly. A
@@ -157,7 +157,7 @@ be relatively short&mdash;a few sentences, maybe a whole paragraph&mdash;and
 tells a casual reader what they might want to know about your package.
 
 Think of the description as the sales pitch for your package. Users see it
-when they [browse for packages](https://pub.dartlang.org/packages).
+when they [browse for packages]({{site.pub}}/packages).
 It should be simple plain text: no markdown or HTML.
 That's what your README is for.
 
@@ -176,7 +176,7 @@ authors:
 - Bob Nystrom <rnystrom@google.com>
 {% endprettify %}
 
-If anyone uploads your package to pub.dartlang.org, your email address is
+If anyone uploads your package to the Package site, your email address is
 public.
 
 ### Homepage
@@ -191,7 +191,7 @@ While providing a `homepage` is optional, *please provide* it or `repository`
 
 The optional `repository` field should contain the URL for your package's source
 code repository — for example, `https://github.com/<user>/<repository>`.
-If you publish your package to pub.dartlang.org, then your package's page
+If you publish your package to the Package site, then your package's page
 displays the repository URL.
 While providing a `repository` is optional, *please provide* it or `homepage`
 (or both). It helps users understand where your package is coming from.
@@ -200,9 +200,9 @@ While providing a `repository` is optional, *please provide* it or `homepage`
 
 The optional `issue_tracker` field should contain a URL for the package's
 issue tracker, where existing bugs can be viewed and new bugs can be filed.
-The pub.dartlang.org site attempts to display a link to each package's issue
+The Package site attempts to display a link to each package's issue
 tracker, using the value of this field. If `issue_tracker` is missing but
-`repository` is present and points to GitHub, then pub.dartlang.org uses the
+`repository` is present and points to GitHub, then the Package site uses the
 default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
@@ -212,8 +212,8 @@ homepage. If your package has that, you can also add a `documentation:` field
 with that URL. If provided, a link to it is shown on your package's page.
 
 If you specify the `documentation:` field with a blank value,
-documentation is created automatically for you, and is linked to from
-[pub.dartlang.org]({{site.pub}}).
+documentation is created automatically for you, and is linked to from the
+[Package site]({{site.pub}}).
 
 ### Dependencies
 
@@ -260,7 +260,7 @@ For more information, see
 
 ### Publish_to
 
-The default is `https://pub.dartlang.org`. Specify `none` to prevent
+The default uses the [Package site]{{site.pub}}. Specify `none` to prevent
 a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dartlang-dart/)
 to publish.
@@ -322,5 +322,5 @@ you must specify a Dart SDK constraint with a minimum version of
 at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
-[pubsite]: https://pub.dartlang.org
+[pubsite]: {{site.pub}}
 [semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html

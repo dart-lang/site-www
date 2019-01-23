@@ -45,7 +45,7 @@ for protocol details.) The following tools use the analysis server:
 * [DartPad](/tools/dartpad)
 
 If your tool requires access to the abstract syntax tree (AST), use the
-[package:analyzer](https://pub.dartlang.org/packages/analyzer) library.
+[package:analyzer]({{site.pub}}/packages/analyzer) library.
 The following tools use package:analyzer:
 
 * [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
@@ -56,4 +56,4 @@ The following tools use package:analyzer:
 * [`flutter analyze`]({{site.flutter}}/debugging/#the-dart-analyzer)
 
 You might also be interested in the [Dart analyzer discussion
-group.](https://groups.google.com/a/dartlang.org/forum/#!forum/analyzer-discuss)
+group.]({{site.group}}/forum/#!forum/analyzer-discuss)

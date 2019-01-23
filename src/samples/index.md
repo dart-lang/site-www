@@ -401,5 +401,5 @@ Error and Exception.
 Many more code samples are in the
 [Language Tour](/guides/language/language-tour) and the
 [Library Tour](/guides/libraries/library-tour).
-Also see the [API reference](https://api.dartlang.org),
+Also see the [Dart API reference]({{site.dart_api}}),
 which often contains examples.

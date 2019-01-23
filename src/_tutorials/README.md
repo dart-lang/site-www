@@ -23,7 +23,7 @@ Gist generator:
 https://github.com/kasperpeulen/gist-generator
 
 DartPad:
-https://dartpad.dartlang.org/
+{{site.dartpad}}
 
 Definitions for the DartPad constants used on dartlang:
 src/site/_config.yml

@@ -166,9 +166,8 @@ Future _handleError(String path) async {
 
 ## Parsing command-line arguments
 
-The
-<a href="https://pub.dartlang.org/packages/args" target="_blank">args</a>
-package, a software bundle that contains a library of Dart code, provides
+The [args]({{site.pub}}/packages/args) package
+a software bundle that contains a library of Dart code, provides
 parser support for transforming raw command-line arguments
 into a set of options, flags, and additional values.
 Import the library as follows:
