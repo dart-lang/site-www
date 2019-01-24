@@ -82,9 +82,12 @@ class C { ... }
 [camel_case_types]: http://dart-lang.github.io/linter/lints/camel_case_types.html
 [Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
-### DO name libraries and source files using `lowercase_with_underscores`.
+### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
 {% include linter-rule.html rule1="library_names" rule2="file_names" %}
+<!-- source for rules (update these if you update the guideline):
+https://github.com/dart-lang/linter/blob/master/lib/src/rules/library_names.dart
+https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -245,7 +248,7 @@ Db
 {% endprettify %}
 
 
-### DON’T use prefix letters
+### DON’T use prefix letters.
 
 [Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
 other schemes arose in the time of BCPL, when the compiler didn't do much to
