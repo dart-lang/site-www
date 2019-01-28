@@ -175,8 +175,8 @@ provided by the [InternetAddress][] class:
 
 | Value | Use case |
 |---|---|
-| LOOPBACK_IP_V4<br/>_or_<br/>LOOPBACK_IP_V6 | The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of `localhost` or `127.0.0.1`. |
-| ANY_IP_V4<br/>_or_<br/>ANY_IP_V6 | The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol. |
+| loopbackIPv4<br/>_or_<br/>loopbackIPv6 | The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of `localhost` or `127.0.0.1`. |
+| anyIPv4<br/>_or_<br/>anyIPv6 | The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol. |
 {: .table}
 
 By default, when using a V6 internet address,
@@ -427,10 +427,10 @@ This example uses `q` to identify the guessed number.
 
 The server should set the status code to indicate the success or
 failure of the request. Earlier you saw the number thinker set
-the status code to `METHOD_NOT_ALLOWED` to reject non-GET requests.
+the status code to `methodNotAllowed` to reject non-GET requests.
 Later in the code,
 to indicate that the request was successful and the response is complete,
-the number thinker server sets the HttpResponse status code to `HttpStatus.OK`.
+the number thinker server sets the HttpResponse status code to `HttpStatus.ok`.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (statusCode)" replace="/response.statusCode.*?;/[!$&!]/g"?>
 {% prettify dart %}
@@ -443,10 +443,10 @@ void handleGet(HttpRequest request) {
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
-`HttpStatus.OK` and `HttpStatus.METHOD_NOT_ALLOWED` are
+`HttpStatus.ok` and `HttpStatus.methodNotAllowed` are
 two of many predefined status codes in the [HttpStatus][] class.
 Another useful predefined status code is
-`HttpStatus.NOT_FOUND` (your classic 404).
+`HttpStatus.notFound` (your classic 404).
 
 In addition to `statusCode`,
 the HttpResponse object has other useful properties:
