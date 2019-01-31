@@ -85,7 +85,7 @@ For example:
 <?code-excerpt "misc/pubspec.yaml" retain="/^(name|desc)/"?>
 {% prettify yaml %}
 name: examples
-description: example code.
+description: dartlang.org example code.
 {% endprettify %}
 
 ### Pub package manager

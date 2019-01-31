@@ -139,8 +139,7 @@ a single long string that doesn't fit on one line.
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
-raiseAlarm(
-    'ERROR: Parts of the spaceship are on fire. Other '
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
