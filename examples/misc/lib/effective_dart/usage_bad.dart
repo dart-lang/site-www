@@ -321,6 +321,19 @@ class Box2 {
 
 //----------------------------------------------------------------------------
 
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray._(int val) : brightness = val;
+
+  ShadeOfGray.black() : _(0);
+  ShadeOfGray.white() : _(255);
+}
+// #enddocregion this-dot-constructor
+
+//----------------------------------------------------------------------------
+
 // #docregion field-init-at-decl
 class Folder {
   final String name;

@@ -938,7 +938,7 @@ set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 
-### DON'T use `this.` when not needed to avoid shadowing.
+### DON'T use `this.` except to avoid shadowing or redirect a named constructor.
 
 {% include linter-rule.html rule="unnecessary_this" %}
 
@@ -946,8 +946,8 @@ JavaScript requires an explicit `this.` to refer to members on the object whose
 method is currently being executed, but Dart&mdash;like C++, Java, and
 C#&mdash;doesn't have that limitation.
 
-The only time you need to use `this.` is when a local variable with the same
-name shadows the member you want to access.
+There are only two times you need to use `this.`. One is when a local variable
+with the same name shadows the member you want to access:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
@@ -978,6 +978,35 @@ class Box {
   void update(value) {
     this.value = value;
   }
+}
+{% endprettify %}
+
+The other time to use `this.` is when redirecting a named constructor:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
+{% prettify dart %}
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray._(int val) : brightness = val;
+
+  // These won't compile!
+  ShadeOfGray.black() : _(0);
+  ShadeOfGray.white() : _(255);
+}
+{% endprettify %}
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray._(int val) : brightness = val;
+
+  // But with "this.", they will.
+  ShadeOfGray.black() : this._(0);
+  ShadeOfGray.white() : this._(255);
 }
 {% endprettify %}
 
