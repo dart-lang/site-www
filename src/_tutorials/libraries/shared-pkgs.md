@@ -87,20 +87,19 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-{% prettify yaml %}
-  name: vector_victor
-  description: A sample command-line application.
+```yaml
+name: vector_victor
+description: A sample command-line application.
 
-  environment:
-    sdk: '>=2.1.0 <3.0.0'
+environment:
+  sdk: '>=2.1.0 <3.0.0'
 
-  #dependencies:
-  #  path: ^1.4.1
+#dependencies:
+#  path: ^1.4.1
 
-  dev_dependencies:
-    test: ^1.0.0
-{% endprettify %}
-
+dev_dependencies:
+  test: ^1.0.0
+```
 
 ## Name the package dependencies
 
@@ -125,10 +124,10 @@ which is available at the [Pub site]({{site.pub}}).
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
 
-        {% prettify yaml %}
-          dependencies:
-            vector_math: ^2.0.7
-        {% endprettify %}
+        ```yaml
+        dependencies:
+          vector_math: ^2.0.7
+        ```
 
  2. Edit `pubspec.yaml`.
 
@@ -136,16 +135,16 @@ which is available at the [Pub site]({{site.pub}}).
     Pub site. Be careful to keep the indentation the same; YAML is
     picky! For example:
 
-    {% prettify yaml %}
-      environment:
-        sdk: '>=2.1.0 <3.0.0'
+    ```yaml
+    environment:
+      sdk: '>=2.1.0 <3.0.0'
 
-      dependencies:
-        vector_math: ^2.0.7
+    dependencies:
+      vector_math: ^2.0.7
 
-      dev_dependencies:
-        test: ^1.0.0
-    {% endprettify %}
+    dev_dependencies:
+      test: ^1.0.0
+    ```
 
 See [Pub Versioning Philosophy](/tools/pub/versioning)
 for details of what version numbers mean,
@@ -280,10 +279,9 @@ use the `package:` prefix.
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
 
-      {% prettify dart %}
+      ```dart
       import 'package:vector_math/vector_math.dart';
-      {% endprettify %}
-
+      ```
 
 2. In your vector_victor app, edit `lib/vector_victor.dart`,
    so that it imports the vector_math library and uses some of its API.
