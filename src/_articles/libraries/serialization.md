@@ -65,7 +65,7 @@ try dartson first.
 {: .table}
 
 Other compelling options are likely to exist on the
-[Package site]({{site.pub}}),
+[Pub site]({{site.pub}}),
 so we encourage you to look around.
 We focused on these solutions because they
 are all dart2js-friendly—they
@@ -697,5 +697,5 @@ and the desire to generate small JavaScript.
 
 This article covered three solutions,
 recommending dartson as a starting point.
-To find more solutions, [search the Package site
+To find more solutions, [search the Pub site
 for serialization]({{site.pub}}/search?q=serialization).

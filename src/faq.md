@@ -150,7 +150,7 @@ Yes. See [Dart on the Server] for details.
 
 ### Q. How do I use third party code, or share code?
 
-You can find many packages on the [Package site][pub] a service for hosting
+You can find many packages on the [Pub site][pub] a service for hosting
 packages of Dart code. Use the `pub` command to package your code and upload
 to the site.
 

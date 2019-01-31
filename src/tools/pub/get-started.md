@@ -28,7 +28,7 @@ contents of the pubspec file.
 
 A package can live anywhere. For example, some packages are on GitHub.
 The Dart team publishes packages at the
-[Package site]({{site.pub}}),
+[Pub site]({{site.pub}}),
 and we hope you will, too.
 
 To use a library that is in a Dart package, you need to do the
@@ -53,7 +53,7 @@ and it must be in the top directory of your application.
 
 Here is an example of a pubspec that specifies the locations of
 two packages. First, it points to the js package that is hosted on
-the Package site, and then it points to the intl package in the Dart
+the Pub site, and then it points to the intl package in the Dart
 SDK:
 
 {% prettify yaml %}
@@ -81,7 +81,7 @@ The `pub get` command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 For git dependencies, pub clones the git repository.
 For hosted dependencies, pub downloads the package from the
-[Package site]({{site.pub}}). Transitive dependencies are included, too.
+[Pub site]({{site.pub}}). Transitive dependencies are included, too.
 For example, if the js package depends on the test package, `pub`
 grabs both the js package and the test package.
 

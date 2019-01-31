@@ -11,7 +11,7 @@ Dart libraries come from a variety of sources:
   dart:collection&mdash;are distributed with the SDK and documented at the
   [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}).
 * Libraries shared with the Dart community are distributed as library packages,
-  published at the [Package site.]({{site.pub}})
+  published at the [Pub site.]({{site.pub}})
   The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
 * Libraries from GitHub, a URL, or a local path can be included in your application.
   For more information, see
@@ -27,7 +27,7 @@ and tells you where to learn more about some of the most widely used Dart librar
 **Tip:**
 If you don't find the functionality you need in the [Dart API
 docs,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-check the [Package site]({{site.pub}})
+check the [Pub site]({{site.pub}})
 </aside>
 
 Looking for web, server, or Flutter libraries?
@@ -63,7 +63,7 @@ in alphabetical order:
 | [yaml]({{site.pub-pkg}}/yaml) | A parser for YAML. | loadYaml(), loadYamlStream() |
 {:.table .table-striped .nowrap}
 
-To find more packages, see the [Package site.]({{site.pub}})
+To find more packages, see the [Pub site.]({{site.pub}})
 
 ## Packages that correspond to SDK libraries
 
@@ -115,7 +115,7 @@ The core libraries distributed with the Flutter SDK are documented at
 follow the instructions in [Importing libraries from
 packages](/tools/pub/get-started#importing-libraries-from-packages).
 
-**Learn more:** [Flutter API]({{site.flutter}})
+**Learn more:** [Flutter API]({{site.flutter_api}})
 
 ## Resources
 
@@ -148,12 +148,12 @@ Use the following resources to learn more about libraries and library packages.
 
 ### Packages contributed by the community
 
-* [Package site]({{site.pub}})
+* [Pub site]({{site.pub}})
 
 ### API reference documentation
 
 * [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) contains the generated docs for dart:* libraries.
-* [Package site]({{site.pub}}) hosts the generated docs for published packages.
+* [Pub site]({{site.pub}}) hosts the generated docs for published packages.
 * [Flutter API]({{site.flutter_api}}) contains the generated docs for Flutter
   libraries.
 

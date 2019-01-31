@@ -100,7 +100,7 @@ already-acquired dependencies.
 ## The system package cache
 
 Dependencies downloaded over the internet, such as those from Git and the
-[Package site]({{site.pub}}), are stored in a
+[Pub site]({{site.pub}}), are stored in a
 [system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be

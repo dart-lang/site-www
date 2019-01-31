@@ -1,6 +1,6 @@
 ---
 title: pub publish
-description: Use pub publish to publish your Dart package to the Package site
+description: Use pub publish to publish your Dart package to the Pub site.
 permalink: /tools/pub/cmd/pub-lish
 toc: false
 ---
@@ -13,7 +13,7 @@ $ pub publish [--dry-run] [--force] [--server <url>]
 {% endprettify %}
 
 This command publishes your package on the
-[Package site]({{site.pub}}) for anyone to download and depend
+[Pub site]({{site.pub}}) for anyone to download and depend
 on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing a Package](/tools/pub/publishing).
@@ -43,7 +43,7 @@ either don't use `--force`, or use `--dry-run` first.
 
 If you pass `--server` followed by a URL, it attempts to publish the
 package to that server. It assumes the server supports the same HTTP API that
-the [Package site][pubsite] uses.
+the [Pub site][pubsite] uses.
 
 This can be useful if you're running your own local package server for testing.
 The main pub server is itself open source and available [here][pub repo].

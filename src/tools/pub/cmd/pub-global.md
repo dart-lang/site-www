@@ -1,6 +1,6 @@
 ---
 title: pub global
-description: Use pub global to run Dart scripts hosted on the Package site from the command line.
+description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
 permalink: /tools/pub/cmd/pub-global
 ---
 
@@ -36,7 +36,7 @@ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <packa
 ```
 
 You can activate packages that live on the
-[Package site]({{site.pub}}), a Git repository,
+[Pub site]({{site.pub}}), a Git repository,
 or your local machine.
 Once you have activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
@@ -45,13 +45,13 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on the Package site
+### Activating a package on the Pub site
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on the Package site to activate it. For example:
+Specify a package on the Pub site to activate it. For example:
 
 ```terminal
 $ pub global activate markdown

@@ -1,6 +1,6 @@
 ---
 title: pub uploader
-description: Use pub uploader to add or remove uploaders for your Dart package on the Package site.
+description: Use pub uploader to add or remove uploaders for your Dart package on the Pub site.
 permalink: /tools/pub/cmd/pub-uploader
 toc: false
 ---
@@ -14,7 +14,7 @@ $ pub uploader [options] {add/remove} <email>
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
-package on the [Package site]({{site.pub}}) to add or remove
+package on the [Pub site]({{site.pub}}) to add or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:

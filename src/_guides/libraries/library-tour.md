@@ -37,7 +37,7 @@ The platform-specific dart:io and dart:html libraries
 are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
 
 Other places to find library information are the
-[Package site][pub.dartlang] and the
+[Pub site][pub.dartlang] and the
 [Dart web developer library guide.][webdev libraries]
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
@@ -1639,7 +1639,7 @@ To learn more about the Dart language, see the
 [language tour][].
 
 [language tour]: /guides/language/language-tour
-[docs.flutter]: {{site.flutter}}
+[docs.flutter]: {{site.flutter_api}}
 [dartdocs.org]: https://www.dartdocs.org/
 [pub.dartlang]: {{site.pub}}
 [DartPad]: {{site.dartpad}}

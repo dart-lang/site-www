@@ -182,7 +182,7 @@ Any tools or executables that you create during development that aren't for
 public use go into the `tool` directory.
 
 Other files that are required if you publish your library to the
-Package site, such as a README and a CHANGELOG, are
+Pub site, such as a README and a CHANGELOG, are
 described in [Publishing a Package](/tools/pub/publishing).
 Also see
 [Pub Package Layout Conventions](/tools/pub/package-layout)
@@ -205,7 +205,7 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation]({{site.pub}}/documentation/shelf/latest).
+[shelf documentation]({{site.pub-api}}/shelf/latest).
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -217,7 +217,7 @@ See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
 ## Distributing an open source library {#distributing-a-library}
 
 If your library is open source,
-we recommend sharing it on the [Package site.]({{site.pub}})
+we recommend sharing it on the [Pub site.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
@@ -229,7 +229,7 @@ The pub site not only hosts your package,
 but also generates and hosts your package's API reference docs.
 A link to the latest generated docs is in the package's **About** box;
 for example, see the shelf package's
-[API docs.]({{site.pub}}/documentation/shelf)
+[API docs.]({{site.pub-api}}/shelf)
 Links to previous versions' docs are in the
 **Versions** tab of the package's page.
 

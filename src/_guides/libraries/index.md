@@ -40,9 +40,9 @@ at the following links.
 API reference documentation
 : * [Dart API:]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
     API docs for dart:* libraries.
-  * [Flutter API]({{site.flutter}})
+  * [Flutter API:]({{site.flutter_api}})
     API docs for Flutter libraries.
-  * [Package site]({{site.pub}})
+  * [Pub site]({{site.pub}})
     Published packages and their API docs.
 
 Additional documentation for core libraries

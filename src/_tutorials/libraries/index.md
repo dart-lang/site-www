@@ -11,5 +11,5 @@ be more productive. Leverage that code or put your code out in the world
 to share with others.
 
 * [Install shared packages](/tutorials/libraries/shared-pkgs).
-  <p>Organize and share code at the [Package site]({{site.pub}}).
+  <p>Organize and share code at the [Pub site]({{site.pub}}).
 
