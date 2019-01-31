@@ -23,7 +23,8 @@ class Person {
     // ignore_for_file: 1, invalid_assignment
     // ignore_for_file: 2, invalid_assignment // https://github.com/dart-lang/sdk/issues/32236
     Person person = other; //!analysis-issue in Dart 1
-    return (person.firstName == firstName && person.lastName == lastName);
+    return (person.firstName == firstName &&
+        person.lastName == lastName);
   }
 }
 

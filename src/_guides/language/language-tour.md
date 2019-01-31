@@ -557,9 +557,12 @@ object’s `toString()` method.
 var s = 'string interpolation';
 
 assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, ' + 'which is very handy.');
-assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
+    'Dart has string interpolation, ' +
+        'which is very handy.');
+assert('That deserves all caps. ' +
+        '${s.toUpperCase()} is very handy!' ==
+    'That deserves all caps. ' +
+        'STRING INTERPOLATION is very handy!');
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -1108,7 +1111,8 @@ String say(String from, String msg,
   return result;
 }
 
-assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
+assert(say('Bob', 'Howdy') ==
+    'Bob says Howdy with a carrier pigeon');
 {% endprettify %}
 
 You can also pass lists or maps as default values.
@@ -1269,7 +1273,8 @@ and click run to verify that it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 {% prettify dart %}
-list.forEach((item) => print('${list.indexOf(item)}: $item'));
+list.forEach(
+    (item) => print('${list.indexOf(item)}: $item'));
 {% endprettify %}
 
 
@@ -2774,7 +2779,8 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 {% prettify dart %}
 class ImmutablePoint {
-  static final ImmutablePoint origin = const ImmutablePoint(0, 0);
+  static final ImmutablePoint origin =
+      const ImmutablePoint(0, 0);
 
   final num x, y;
 
@@ -2805,7 +2811,8 @@ class Logger {
 
   // _cache is library-private, thanks to
   // the _ in front of its name.
-  static final Map<String, Logger> _cache = <String, Logger>{};
+  static final Map<String, Logger> _cache =
+      <String, Logger>{};
 
   factory Logger(String name) {
     if (_cache.containsKey(name)) {

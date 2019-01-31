@@ -195,7 +195,8 @@ for (var char in 'hello'.split('')) {
 }
 
 // Get all the UTF-16 code units in the string.
-var codeUnitList = 'Never odd or even'.codeUnits.toList();
+var codeUnitList =
+    'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 {% endprettify %}
 
@@ -207,10 +208,12 @@ variants:
 <?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
 {% prettify dart %}
 // Convert to uppercase.
-assert('structured web apps'.toUpperCase() == 'STRUCTURED WEB APPS');
+assert('structured web apps'.toUpperCase() ==
+    'STRUCTURED WEB APPS');
 
 // Convert to lowercase.
-assert('STRUCTURED WEB APPS'.toLowerCase() == 'structured web apps');
+assert('STRUCTURED WEB APPS'.toLowerCase() ==
+    'structured web apps');
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -249,7 +252,8 @@ original String:
 <?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
 {% prettify dart %}
 var greetingTemplate = 'Hello, NAME!';
-var greeting = greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
+var greeting =
+    greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
 // greetingTemplate didn't change.
 assert(greeting != greetingTemplate);
@@ -272,7 +276,8 @@ sb
 
 var fullString = sb.toString();
 
-assert(fullString == 'Use a StringBuffer for efficient string creation.');
+assert(fullString ==
+    'Use a StringBuffer for efficient string creation.');
 {% endprettify %}
 
 #### Regular expressions
@@ -551,7 +556,8 @@ a function that returns the value.
 <?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
 {% prettify dart %}
 var teamAssignments = {};
-teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
+teamAssignments.putIfAbsent(
+    'Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
 {% endprettify %}
 
@@ -624,7 +630,8 @@ To force your function to be called immediately on each item, use
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
 {% prettify dart %}
-var loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
+var loudTeas =
+    teas.map((tea) => tea.toUpperCase()).toList();
 {% endprettify %}
 
 Use Iterable’s `where()` method to get all the items that match a
@@ -641,11 +648,13 @@ cities instead of isDecaffeinated.
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
 // Chamomile is not caffeinated.
-bool isDecaffeinated(String teaName) => teaName == 'chamomile';
+bool isDecaffeinated(String teaName) =>
+    teaName == 'chamomile';
 
 // Use where() to find only the items that return true
 // from the provided function.
-var decaffeinatedTeas = teas.where((tea) => isDecaffeinated(tea));
+var decaffeinatedTeas =
+    teas.where((tea) => isDecaffeinated(tea));
 // or teas.where(isDecaffeinated)
 
 // Use any() to check whether at least one item in the
@@ -685,7 +694,8 @@ a fully qualified URI, leaving intact special URI characters.
 var uri = 'http://example.org/api?foo=some message';
 
 var encoded = Uri.encodeFull(uri);
-assert(encoded == 'http://example.org/api?foo=some%20message');
+assert(encoded ==
+    'http://example.org/api?foo=some%20message');
 
 var decoded = Uri.decodeFull(encoded);
 assert(uri == decoded);
@@ -704,8 +714,8 @@ the `encodeComponent()` and `decodeComponent()` methods.
 var uri = 'http://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
-assert(
-    encoded == 'http%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+assert(encoded ==
+    'http%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
@@ -722,7 +732,8 @@ Uri fields such as `path`. To create a Uri from a string, use the
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
 {% prettify dart %}
-var uri = Uri.parse('http://example.org:8080/foo/bar#frag');
+var uri =
+    Uri.parse('http://example.org:8080/foo/bar#frag');
 
 assert(uri.scheme == 'http');
 assert(uri.host == 'example.org');
@@ -745,7 +756,8 @@ var uri = Uri(
     host: 'example.org',
     path: '/foo/bar',
     fragment: 'frag');
-assert(uri.toString() == 'http://example.org/foo/bar#frag');
+assert(
+    uri.toString() == 'http://example.org/foo/bar#frag');
 {% endprettify %}
 
 
@@ -771,7 +783,8 @@ y2k = DateTime(2000, 1, 2); // January 2, 2000
 y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
 // Specify a date and time in ms since the Unix epoch.
-y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
+y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
+    isUtc: true);
 
 // Parse an ISO 8601 date.
 y2k = DateTime.parse('2000-01-01T00:00:00Z');
@@ -892,7 +905,8 @@ class Person {
   bool operator ==(dynamic other) {
     if (other is! Person) return false;
     Person person = other;
-    return (person.firstName == firstName && person.lastName == lastName);
+    return (person.firstName == firstName &&
+        person.lastName == lastName);
   }
 }
 
@@ -1300,7 +1314,9 @@ different type of data:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
 {% prettify dart %}
-var lines = inputStream.transform(utf8.decoder).transform(LineSplitter());
+var lines = inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter());
 {% endprettify %}
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -1330,7 +1346,9 @@ Future readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines = inputStream.transform(utf8.decoder).transform(LineSplitter());
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(LineSplitter());
   [!try!] {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -1352,8 +1370,10 @@ an `onDone` listener.
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
-inputStream.transform(utf8.decoder).transform(LineSplitter()).listen(
-    (String line) {
+inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter())
+    .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
   print('file is now closed');
@@ -1564,7 +1584,9 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart %}
-var lines = inputStream.transform([!utf8.decoder!]).transform(LineSplitter());
+var lines = inputStream
+    .transform([!utf8.decoder!])
+    .transform(LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');

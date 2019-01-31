@@ -59,7 +59,9 @@ void miscDeclAnalyzedButNotTested() {
       Stream<List<int>> inputStream = config.openRead();
 
       // #docregion transform
-      var lines = inputStream.transform(utf8.decoder).transform(LineSplitter());
+      var lines = inputStream
+          .transform(utf8.decoder)
+          .transform(LineSplitter());
       // #enddocregion transform
       try {
         await for (var line in lines) {
@@ -78,8 +80,10 @@ void miscDeclAnalyzedButNotTested() {
     var config = File('config.txt');
     Stream<List<int>> inputStream = config.openRead();
 
-    inputStream.transform(utf8.decoder).transform(LineSplitter()).listen(
-        (String line) {
+    inputStream
+        .transform(utf8.decoder)
+        .transform(LineSplitter())
+        .listen((String line) {
       print('Got ${line.length} characters from stream');
     }, onDone: () {
       print('file is now closed');
