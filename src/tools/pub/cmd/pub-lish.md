@@ -1,6 +1,6 @@
 ---
 title: pub publish
-description: Use pub publish to publish your Dart package to pub.dartlang.org.
+description: Use pub publish to publish your Dart package to the Pub site.
 permalink: /tools/pub/cmd/pub-lish
 toc: false
 ---
@@ -12,8 +12,8 @@ _Publish_ is one of the commands of the _pub_ tool.
 $ pub publish [--dry-run] [--force] [--server <url>]
 {% endprettify %}
 
-This command publishes your package on
-[pub.dartlang.org](https://pub.dartlang.org) for anyone to download and depend
+This command publishes your package on the
+[Pub site]({{site.pub}}) for anyone to download and depend
 on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing a Package](/tools/pub/publishing).
@@ -43,12 +43,12 @@ either don't use `--force`, or use `--dry-run` first.
 
 If you pass `--server` followed by a URL, it attempts to publish the
 package to that server. It assumes the server supports the same HTTP API that
-[pub.dartlang.org][pubsite] uses.
+the [Pub site][pubsite] uses.
 
 This can be useful if you're running your own local package server for testing.
 The main pub server is itself open source and available [here][pub repo].
 
-[pubsite]: https://pub.dartlang.org
+[pubsite]: {{site.pub}}
 [pub repo]: https://github.com/dart-lang/pub-dartlang
 
 <aside class="alert alert-info" markdown="1">

@@ -95,7 +95,7 @@ With pub you can publish packages and command-line apps.
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
-package to [pub.dartlang.org](https://pub.dartlang.org). The
+package to the [Pub site]({{site.pub}}). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
 users to modify and upload new versions of your package.
 

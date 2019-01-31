@@ -737,7 +737,7 @@ _Example files for this section:_
 
 For some higher-level building blocks,
 we recommend that you try the
-[http_server](https://pub.dartlang.org/packages/http_server)
+[http_server]({{site.pub}}/packages/http_server)
 pub package,
 which contains a set of classes that,
 together with the HttpServer class in the `dart:io` library,
@@ -1000,7 +1000,7 @@ for further details about the classes and libraries discussed in this tutorial.
 [dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [Encoding]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Encoding-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[http_server]: https://pub.dartlang.org/packages/http_server
+[http_server]: {{site.pub}}/packages/http_server
 [HttpClient]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
 [HttpClientRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientRequest-class.html
 [HttpClientResponse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientResponse-class.html

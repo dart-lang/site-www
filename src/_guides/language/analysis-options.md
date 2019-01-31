@@ -21,7 +21,7 @@ For example, perhaps you've forgotten to close a sink method:
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
-[analyzer package](https://pub.dartlang.org/packages/analyzer)
+[analyzer package]({{site.pub}}/packages/analyzer)
 to perform static analysis.
 
 You can customize static analysis to look for a variety of potential
@@ -34,14 +34,14 @@ and other suggested guidelines in
 [Effective Dart](/guides/language/effective-dart). Dart tools such as the
 [Dart dev compiler (dartdevc),]({{site.webdev}}/tools/dartdevc)
 [`dartanalyzer`,](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-[`flutter analyze`,](https://flutter.io/debugging/#the-dart-analyzer)
+[`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
-[analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
+[analyzer package]({{site.pub}}/packages/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
 <aside class="alert alert-info" markdown="1">
@@ -244,7 +244,7 @@ analyzer:
 {% endprettify %}
 
 You can specify a group of files using
-[glob](https://pub.dartlang.org/packages/glob) syntax:
+[glob]({{site.pub}}/packages/glob) syntax:
 
 {% prettify yaml %}
 analyzer:
@@ -366,7 +366,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart linter rules][linter rules]
 * [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
 * [dartdevc]({{site.webdev}}/tools/dartdevc)
-* [analyzer package](https://pub.dartlang.org/packages/analyzer)
+* [analyzer package]({{site.pub}}/packages/analyzer)
 
 [analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html
 [analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart

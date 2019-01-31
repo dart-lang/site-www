@@ -69,7 +69,7 @@ maintainers version their package takes this convention into account. They are
 free to make sweeping changes to code under `src` without it being a breaking
 change to the package.
 
-[package guide]: https://www.dartlang.org/tools/pub/package-layout
+[package guide]: /tools/pub/package-layout
 
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.

@@ -116,7 +116,7 @@ enchilada/
 
 One file that's very common in open source is a README file that
 describes the project. This is especially important in pub. When you upload
-to [pub.dartlang.org](https://pub.dartlang.org), your README is shown on
+to the [Pub site]({{site.pub}}), your README is shown on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
@@ -134,9 +134,8 @@ enchilada/
 
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
-release. When you upload your package to
-[pub.dartlang.org](https://pub.dartlang.org),
-your package's changelog file (if any)
+release. When you upload your package to the
+[Pub site]({{site.pub}}), your package's changelog file (if any)
 appears in the changelog tab.
 
 If your CHANGELOG ends in `.md`, `.markdown`, or `.mdown`, it is parsed as
@@ -339,7 +338,7 @@ Every package should have tests. With pub, the convention is
 that these go in a `test` directory (or some directory inside it if you like)
 and have `_test` at the end of their file names.
 
-Typically, these use the [test](https://pub.dartlang.org/packages/test)
+Typically, these use the [test]({{site.pub}}/packages/test)
 package.
 
 {% prettify none %}
@@ -403,7 +402,7 @@ When you publish a package that contains one of the above files,
 the pub site creates an **Example** tab to display that file.
 For example, the json_serializable package contains a file named
 `example/example.dart`, which appears in the
-[json_serializable Example tab.](https://pub.dartlang.org/packages/json_serializable#pub-pkg-tab-example)
+[json_serializable Example tab.]({{site.pub}}/packages/json_serializable#pub-pkg-tab-example)
 {% comment %}
 To see how the example file is chosen,
 search the dart-lang repos for exampleFileCandidates:

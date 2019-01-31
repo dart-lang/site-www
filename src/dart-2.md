@@ -164,9 +164,9 @@ environment:
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
-[Flutter analyzer]: https://flutter.io/docs/testing/debugging/#the-dart-analyzer
+[Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
 [dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
-[flutter package upgrade]: https://flutter.io/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
+[flutter package upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
 [pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
@@ -178,10 +178,10 @@ environment:
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
-[Dartium news]: http://news.dartlang.org/2017/06/a-stronger-dart-for-everyone.html
+[Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter breaking changes]: https://groups.google.com/forum/#!topic/flutter-dev/H8dDhWg_c8I
-[Flutter SDK upgrade]: https://flutter.io/docs/development/tools/sdk/upgrading
+[Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
 [Dart SDK install]: /tools/sdk#install
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters

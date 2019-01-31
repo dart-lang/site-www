@@ -13,8 +13,8 @@ February 2015 (note updated July 2018)_
 <aside class="alert alert-warning" markdown="1">
   This article's general information and approach
   are still useful, but it doesn't cover new software such as the
-  [built_value](https://pub.dartlang.org/packages/built_value) and 
-  [json_serializable](https://pub.dartlang.org/packages/json_serializable)
+  [built_value]({{site.pub}}/packages/built_value) and 
+  [json_serializable]({{site.pub}}/packages/json_serializable)
   packages.
   A more up-to-date discussion of Dart serialization solutions is
   in the unofficial repo
@@ -39,13 +39,13 @@ a serialization solution that best fits your app.
 After looking at many serialization options for Dart,
 we reviewed three solutions in depth:
 
-[dartson](https://pub.dartlang.org/packages/dartson)
+[dartson]({{site.pub}}/packages/dartson)
 : Simple JSON for simple objects.
 
-[serialization](https://pub.dartlang.org/packages/serialization)
+[serialization]({{site.pub}}/packages/serialization)
 : A custom format for complex Dart objects.
 
-[protobuf](https://pub.dartlang.org/packages/protobuf)
+[protobuf]({{site.pub}}/packages/protobuf)
 : Google's [protocol buffer](https://developers.google.com/protocol-buffers/)
   format.
 
@@ -64,8 +64,8 @@ try dartson first.
 |Works well with dart2js  | &#x2713; | &#x2713;      | &#x2713;
 {: .table}
 
-Other compelling options are likely to exist on
-[pub.dartlang.org](https://pub.dartlang.org/),
+Other compelling options are likely to exist on the
+[Pub site]({{site.pub}}),
 so we encourage you to look around.
 We focused on these solutions because they
 are all dart2js-friendly—they
@@ -112,10 +112,10 @@ along with examples of how they could apply to your project.
 Object complexity:
 
 * Simple:
-  All of the objects to be serialized are
-  [data transfer objects](http://en.wikipedia.org/wiki/Data_transfer_object)
-  (DTOs)
-  with a [default constructor](/guides/language/language-tour#default-constructors).
+  All of the objects to be serialized are [data transfer
+  objects](http://en.wikipedia.org/wiki/Data_transfer_object) (DTOs)
+  with a [default
+  constructor](/guides/language/language-tour#default-constructors).
 * Complex:
   Some or all of the objects to be serialized have cycles,
   can't be created with no-argument constructors,
@@ -201,7 +201,7 @@ For example, the dartson package supplies a DateTime type transformer,
 implemented in
 [transformers/date_time.dart](https://github.com/eredo/dartson/blob/master/lib/transformers/date_time.dart).
 You can create your own serialization rules by subclassing
-[TypeTransformer](https://www.dartdocs.org/documentation/dartson/latest/dartson.type_transformer/TypeTransformer-class.html).
+[TypeTransformer]({{site.pub}}/documentation/dartson/latest).
 
 During development,
 you can use dartson's mirrors-based implementation
@@ -244,15 +244,15 @@ that work with simple JSON,
 here are a few. All require mirrors,
 and thus should be used only with the Dart VM:
 
-* [json_object](https://pub.dartlang.org/packages/json_object)
-* [exportable](https://pub.dartlang.org/packages/exportable)
-* [jsonx](https://pub.dartlang.org/packages/jsonx)
+* [json_object]({{site.pub}}/packages/json_object)
+* [exportable]({{site.pub}}/packages/exportable)
+* [jsonx]({{site.pub}}/packages/jsonx)
 
 For more information about dartson, see these resources:
 
 * Step-by-step how-to: [dartson example](#dartson-example)
 * Source code: <https://github.com/eredo/dartson>
-* Homepage: <https://pub.dartlang.org/packages/dartson>
+* Homepage: <{{site.pub}}/packages/dartson>
 
 
 ### serialization {#serialization-review}
@@ -314,7 +314,7 @@ For more information about the serialization package, see these resources:
 
 * Step-by-step how-to: [serialization example](#serialization-example)
 * Source code: <https://github.com/google/serialization.dart>
-* Homepage: <https://pub.dartlang.org/packages/serialization>
+* Homepage: <{{site.pub}}/packages/serialization>
 
 
 ### protobuf {#protobuf-review}
@@ -380,7 +380,7 @@ For more information about using protocol buffers, see these resources:
 * Step-by-step how-to: [protobuf example](#protobuf-example)
 * Protocol buffer documentation:
   <https://developers.google.com/protocol-buffers/>
-* protobuf package: <https://pub.dartlang.org/packages/protobuf>
+* protobuf package: <{{site.pub}}/packages/protobuf>
 * Dart plugin for protoc: <https://github.com/dart-lang/dart-protoc-plugin>
 
 
@@ -485,7 +485,7 @@ import 'package:dartson/transformers/date_time.dart';
 
 <li markdown="1">
   Create an instance of
-  [Dartson](https://www.dartdocs.org/documentation/dartson/latest/index.html),
+  [Dartson]({{site.pub}}/documentation/dartson/latest),
   and add any type transformers you need:
 
 {% prettify dart %}
@@ -525,7 +525,7 @@ Person deserializedPerson = dson.decode(personString, new Person());
 ### serialization {#serialization-example}
 
 This package is still changing. See the
-[serialization package page](https://pub.dartlang.org/packages/serialization)
+[serialization package page]({{site.pub}}/packages/serialization)
 for the latest details.
 
 
@@ -615,7 +615,8 @@ import 'person.pb.dart'; // This is the file generated by protoc.
 <li markdown="1">
   Serialize objects using one of the generated write methods,
   which you can find in the
-  [GeneratedMessage class API docs](https://www.dartdocs.org/documentation/protobuf/latest/protobuf/GeneratedMessage-class.html).
+  [GeneratedMessage class API
+  docs]({{site.pub}}/protobuf/latest/GeneratedMessage-class.html).
 
 {% prettify dart %}
 Uint8List personBuffer = bob.writeToBuffer();
@@ -626,7 +627,8 @@ String personJson = bob.writeToJson();
 <li markdown="1">
   Deserialize objects using one of the generated constructors.
   These constructors are named like the
-  [GeneratedMessage](https://www.dartdocs.org/documentation/protobuf/latest/protobuf/GeneratedMessage-class.html) constructors.
+  [GeneratedMessage]({{site.pub}}/protobuf/latest/GeneratedMessage-class.html)
+  constructors.
 
 {% prettify dart %}
 Person deserializedPerson1 = new Person.fromBuffer(personBuffer);
@@ -695,5 +697,5 @@ and the desire to generate small JavaScript.
 
 This article covered three solutions,
 recommending dartson as a starting point.
-To find more solutions,
-[search pub.dartlang.org for serialization](https://pub.dartlang.org/search?q=serialization).
+To find more solutions, [search the Pub site
+for serialization]({{site.pub}}/search?q=serialization).

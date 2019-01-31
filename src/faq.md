@@ -150,9 +150,9 @@ Yes. See [Dart on the Server] for details.
 
 ### Q. How do I use third party code, or share code?
 
-You can find many packages on [pub.dartlang.org,][pub] a service for hosting
+You can find many packages on the [Pub site][pub] a service for hosting
 packages of Dart code. Use the `pub` command to package your code and upload
-to pub.dartlang.org.
+to the site.
 
 ### Q. Do I need to use a particular editor or IDE to write Dart code?
 
@@ -175,16 +175,16 @@ See [Who Uses Dart] for a more complete list.
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
 [issues]: https://github.com/dart-lang/sdk/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-language
-[pub]: https://pub.dartlang.org
+[pub]: {{site.pub}}
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
-[tc52]: http://news.dartlang.org/2013/12/ecma-forms-tc52-for-dart-standardization.html
+[tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
 [Dart on the Server]: https://dart-lang.github.io/server/
 [Dart Tools]: /tools/
 [Dart and Google Cloud Platform]: https://dart-lang.github.io/server/google-cloud-platform/
-[Who Uses Dart]: /community/who-uses-dart.html
+[Who Uses Dart]: /community/who-uses-dart
 [spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
 [DartPad]: {{site.custom.dartpad.direct-link}}
@@ -192,4 +192,4 @@ See [Who Uses Dart] for a more complete list.
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/sound-dart
 [Dart's Type System]: /guides/language/sound-dart
-[Flutter no mirrors]: https://flutter.io/faq/#does-flutter-come-with-a-reflectionmirrors-system
+[Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflectionmirrors-system

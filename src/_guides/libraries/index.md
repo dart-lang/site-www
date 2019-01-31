@@ -38,11 +38,11 @@ at the following links.
 ## Other resources
 
 API reference documentation
-: * [api.dartlang.org:]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+: * [Dart API:]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
     API docs for dart:* libraries.
-  * [docs.flutter.io:](http://docs.flutter.io/)
+  * [Flutter API:]({{site.flutter_api}})
     API docs for Flutter libraries.
-  * [pub.dartlang.org:]({{site.pub}})
+  * [Pub site]({{site.pub}})
     Published packages and their API docs.
 
 Additional documentation for core libraries

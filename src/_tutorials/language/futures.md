@@ -120,7 +120,7 @@ before its body. The `await` keyword works only in async functions.
 {% include async-await-2.0.md %}
 
 The following app simulates reading the news by using `async` and `await`
-to read the contents of a file on www.dartlang.org.
+to read the contents of a file on this site.
 Click run {% asset red-run.png alt="" %} to start the app.
 Or open a
 [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
@@ -289,7 +289,7 @@ To write asynchronous code using the `Future` API, you use the `then()` method
 to register a callback.  This callback fires when the `Future` completes.
 
 The following app simulates reading the news by using the `Future` API to read
-the contents of a file on www.dartlang.org.
+the contents of a file on this site.
 Click run {% asset red-run.png %} to start the app.
 Or open a
 [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
@@ -343,7 +343,6 @@ Future<String> gatherNewsReports() =>
 //      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 {% endprettify %}
-
 {% endcomment %}
 
 <iframe

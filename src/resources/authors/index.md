@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Authors"
-description: "Information about some of the more visible authors who have contributed to dartlang.org."
+description: "Information about some of the more visible authors who have contributed to this site."
 permalink: /resources/authors
 toc: false
 ---

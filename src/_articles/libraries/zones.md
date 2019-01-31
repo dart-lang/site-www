@@ -755,8 +755,8 @@ stack_trace
 : With the stack_trace library's
   [Chain class](https://www.dartdocs.org/documentation/stack_trace/1.6.5/stack_trace/Chain-class.html)
   you can get better stack traces for asynchronously executed code.
-  See the [stack_trace package](https://pub.dartlang.org/packages/stack_trace)
-  at pub.dartlang.org for more information.
+  See the [stack_trace package]({{site.pub}}/packages/stack_trace)
+  at the Pub site for more information.
 
 
 ### More examples
@@ -771,7 +771,7 @@ The task_interceptor example
   without yielding to the event loop.
 
 The source code for the stack_trace package
-: The [stack_trace package](https://pub.dartlang.org/packages/stack_trace)
+: The [stack_trace package]({{site.pub}}/packages/stack_trace)
   uses zones to form chains of stack traces
   for debugging asynchronous code.
   Zone features used include error handling, zone-local values, and callbacks.
