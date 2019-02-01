@@ -84,4 +84,4 @@ gain.
 
 [CI]: https://www.thoughtworks.com/continuous-integration
 [site-shared docs]: https://github.com/dart-lang/site-shared/tree/master/doc
-[Examples]: https://github.com/dart-lang/site-shared/doc/examples.md
+[Examples]: https://github.com/dart-lang/site-shared/blob/master/doc/examples.md
