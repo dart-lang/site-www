@@ -130,13 +130,20 @@ both default to `true`.
 : A value of `false` ensures that the type inference engine never
   implicitly casts to a more specific type.
   The following valid Dart code
-  includes an implicit downcast that would be caught by this flag:
+  includes an implicit downcast that's caught by this flag:
 
-{% prettify dart %}
-Object o = ...;
-String s = o;  // Implicit downcast
+<?code-excerpt "analysis_options_samples/strict.dart (implicit-dynamic)"?>
+```dart
+Object o = someValue;
+String s = o; // Implicit downcast
 String s2 = s.substring(1);
-{% endprettify %}
+```
+
+<aside class="alert alert-warning" markdown="1">
+  Due to [issue #32235,](https://github.com/dart-lang/sdk/issues/32235)
+  dartanalyzer ignores this flag.
+  Instead, use the `--no-implicit-casts` command-line flag.
+</aside>
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses

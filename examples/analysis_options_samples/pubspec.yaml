@@ -1,0 +1,10 @@
+name: analysis_options_samples
+description: Example code for dartlang.org/guides/language/analysis-options.
+
+environment:
+  sdk: '>=2.1.0 <3.0.0'
+
+dev_dependencies:
+  test: ^1.0.0
+  dartlang_examples_util:
+    path: ../util
