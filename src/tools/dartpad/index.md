@@ -11,6 +11,9 @@ Here's what DartPad looks like:
 
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
+<aside class="alert alert-info" markdown="1">
+  **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
+</aside>
 
 ## Library support
 
