@@ -45,8 +45,8 @@ versions.</dd>
 
 <dt><code>repair</code></dt>
 <dd>It's possible for packages in your pub cache to change or break.
-For example, if you follow a symlink in the <code>packages</code> directory
-and modify a package, this affects the canonical copy of that package in
+For example, if your editor follows the reference in the <code>.packages</code> file
+and you modify a file in a package, this affects the canonical copy of that package in
 the system cache. The <code>pub cache repair</code> command performs a clean
 reinstall of all hosted and git packages in the system cache.</dd>
 
