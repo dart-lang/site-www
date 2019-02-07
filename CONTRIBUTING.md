@@ -3,7 +3,8 @@
 Thanks for thinking about helping with [www.dartlang.org][www]!
 Here are a couple of ways that you can contribute:
 
-* [Report issues](https://github.com/dart-lang/site-www/issues/new).
+* [Report issues](https://github.com/dart-lang/site-www/issues/new). For small issues like typos,
+  it might be easier for you to just fix the issue. (Click the doc icon at the upper right of the page.)
 * Fix issues (especially ones with the label
   **[help wanted](https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20)**).
   * If this is your first contribution—_welcome!_—please
