@@ -42,7 +42,7 @@ API reference documentation
     API docs for dart:* libraries.
   * [Flutter API:]({{site.flutter_api}})
     API docs for Flutter libraries.
-  * [Pub site]({{site.pub}})
+  * [Pub site:]({{site.pub}})
     Published packages and their API docs.
 
 Additional documentation for core libraries
