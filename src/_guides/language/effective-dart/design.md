@@ -1784,7 +1784,7 @@ method is called only if the right-hand side is not `null`.
 class Person {
   final String name;
   // ···
-  [!operator ==!](other) => other is Person && name == other.name;
+  bool [!operator ==!](other) => other is Person && name == other.name;
 
   int get hashCode => name.hashCode;
 }
@@ -1796,7 +1796,7 @@ class Person {
 class Person {
   final String name;
   // ···
-  operator ==(other) => [!other != null!] && ...
+  bool operator ==(other) => [!other != null!] && ...
 }
 {% endprettify %}
 
