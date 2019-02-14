@@ -194,6 +194,6 @@ class Person1 {
   Person1(this.name);
   int get hashCode => ellipsis();
   // #docregion eq-dont-check-for-null
-  operator ==(other) => other != null && ellipsis<bool>();
+  bool operator ==(other) => other != null && ellipsis<bool>();
 }
 // #enddocregion eq-dont-check-for-null
