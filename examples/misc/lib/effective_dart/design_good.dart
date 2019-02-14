@@ -475,7 +475,7 @@ class Person {
   // #enddocregion eq-dont-check-for-null
   Person(this.name);
   // #docregion eq-dont-check-for-null
-  operator ==(other) => other is Person && name == other.name;
+  bool operator ==(other) => other is Person && name == other.name;
 
   int get hashCode => name.hashCode;
 }
