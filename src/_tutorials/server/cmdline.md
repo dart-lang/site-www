@@ -180,8 +180,8 @@ The args library contains two classes:
 
 | Library | Description |
 |---|---|
-| <a href="https://www.dartdocs.org/documentation/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that parses command-line arguments |
-| <a href="https://www.dartdocs.org/documentation/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing command-line arguments using ArgParser. |
+| <a href="{{site.pub-api}}/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that parses command-line arguments |
+| <a href="{{site.pub-api}}/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing command-line arguments using ArgParser. |
 {: .table }
 
 Let's take a look at the `dcat` sample,
@@ -239,7 +239,7 @@ void main(<a tabindex="0" role="button" class="highlight" data-toggle="popover" 
 </pre>
 
 The
-<a href="https://www.dartdocs.org/documentation/args/latest/index.html" target="_blank">API docs</a>
+<a href="{{site.pub-api}}/args/latest/index.html" target="_blank">API docs</a>
 for the args library
 provide detailed information
 to help you use ArgsParser and ArgResults classes.
@@ -595,8 +595,8 @@ In addition, this tutorial covers two classes that help with command-line argume
 
 | Class | Description |
 |---|---|
-| <a href="https://www.dartdocs.org/documentation/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that transforms a list of raw arguments and into a set of options, flags, and remaining values. |
-| <a href="https://www.dartdocs.org/documentation/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing raw command line arguments using ArgParser. |
+| <a href="{{site.pub-api}}/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that transforms a list of raw arguments and into a set of options, flags, and remaining values. |
+| <a href="{{site.pub-api}}/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing raw command line arguments using ArgParser. |
 {: .table }
 
 ## Other resources
@@ -609,7 +609,7 @@ Refer to the API docs for
 <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html" target="_blank">dart:async</a>,
 <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert</a>,
 and the
-<a href="https://www.dartdocs.org/documentation/args/latest/index.html" target="_blank">args</a>
+<a href="{{site.pub-api}}/args/latest/index.html" target="_blank">args</a>
 package for more classes, functions, and properties.
 
 ## What next?
