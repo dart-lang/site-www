@@ -1640,7 +1640,6 @@ To learn more about the Dart language, see the
 
 [language tour]: /guides/language/language-tour
 [docs.flutter]: {{site.flutter_api}}
-[dartdocs.org]: https://www.dartdocs.org/
 [pub.dartlang]: {{site.pub}}
 [DartPad]: {{site.dartpad}}
 [Assert]: /guides/language/language-tour#assert

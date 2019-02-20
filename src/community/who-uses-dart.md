@@ -137,12 +137,6 @@ Google internal sales tool
 [Anionu](http://sourcey.com/anionu/)
 : Cloud surveillance and security platform using Dart and native WebRTC.
 
-[dartdocs.org](http://www.dartdocs.org)
-: Automated documentation generation for Pub packages.
-
-Google internal customer support tool
-: Built with polymer.dart.
-
 [Quire](https://quire.io/)
 : A simple, collaborative, multi-level task management tool with both the
   client and server written in Dart.

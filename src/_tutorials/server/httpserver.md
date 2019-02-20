@@ -1014,4 +1014,4 @@ for further details about the classes and libraries discussed in this tutorial.
 [SecurityContext]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/SecurityContext-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[VirtualDirectory]: https://www.dartdocs.org/documentation/http_server/latest/http_server/VirtualDirectory-class.html
+[VirtualDirectory]: {{site.pub-api}}/http_server/latest/http_server/VirtualDirectory-class.html

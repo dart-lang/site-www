@@ -753,7 +753,7 @@ Zone-related API documentation
 
 stack_trace
 : With the stack_trace library's
-  [Chain class](https://www.dartdocs.org/documentation/stack_trace/1.6.5/stack_trace/Chain-class.html)
+  [Chain class]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
   you can get better stack traces for asynchronously executed code.
   See the [stack_trace package]({{site.pub}}/packages/stack_trace)
   at the Pub site for more information.
