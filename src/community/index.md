@@ -64,9 +64,9 @@ Dart is open source. Learn how to
 
 Our wonderful community has provided these resources.
 
-* [dartdocs.org](http://www.dartdocs.org) - Documentation for pub packages
 * [Dart Academy](https://dart.academy/) - Tutorials
   and articles written by the Dart community
+* [Smartherd videos](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - A series of tutorial videos about the Dart language
 * [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
 
 Also see [Community and Support]({{site.webdev}}/community) on Dart webdev.
