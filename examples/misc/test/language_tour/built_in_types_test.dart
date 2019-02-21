@@ -34,12 +34,9 @@ void main() {
     var s = 'string interpolation';
 
     assert('Dart has $s, which is very handy.' ==
-        'Dart has string interpolation, ' +
-            'which is very handy.');
-    assert('That deserves all caps. ' +
-            '${s.toUpperCase()} is very handy!' ==
-        'That deserves all caps. ' +
-            'STRING INTERPOLATION is very handy!');
+        'Dart has string interpolation, ' + 'which is very handy.');
+    assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
+        'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
     // #enddocregion string-interpolation
   });
 
@@ -86,6 +83,17 @@ void main() {
     list[1] = 1;
     assert(list[1] == 1);
     // #enddocregion list-indexing
+  });
+
+  test('set-length', () {
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+
+    // #docregion set-length
+    var elements = <String>{};
+    elements.add('fluorine');
+    elements.addAll(halogens);
+    assert(elements.length == 5);
+    // #enddocregion set-length
   });
 
   test('map-retrieve-item', () {
