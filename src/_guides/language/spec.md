@@ -26,7 +26,7 @@ These are located inside the dart-lang/language repo:
 
 The in-progress formal Dart language specification is written using
 the [LaTeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex),
-and is available as a [draft specification in PDF format](https://dart-specification.firebaseapp.com/DartLanguageSpecificationDraft.pdf).
+and is available as a [draft specification in PDF format](https://dart-specification.firebaseapp.com/DartLangSpecDraft.pdf).
 
 ## Dart 1.x
 
