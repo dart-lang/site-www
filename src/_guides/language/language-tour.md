@@ -558,9 +558,12 @@ object’s `toString()` method.
 var s = 'string interpolation';
 
 assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, ' + 'which is very handy.');
-assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
+    'Dart has string interpolation, ' +
+        'which is very handy.');
+assert('That deserves all caps. ' +
+        '${s.toUpperCase()} is very handy!' ==
+    'That deserves all caps. ' +
+        'STRING INTERPOLATION is very handy!');
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -768,7 +771,8 @@ add `const` before the set literal:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 {% prettify dart %}
-final constantSet = const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+final constantSet =
+    const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 // constantSet.add('helium'); // Uncommenting this causes an error.
 {% endprettify %}
 
