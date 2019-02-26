@@ -740,14 +740,14 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The analyzer infers that `halogens` has the type
+  It is inferred that `halogens` has the type
   `Set<String>`. If you try to add the wrong type of value
   to the set, the analyzer or runtime raises an error.
   For more information, read about
   [type inference.](/guides/language/sound-dart#type-inference)
 </aside>
 
-To create an empty set, use `{}` preceded by a generic type annotation,
+To create an empty set, use `{}` preceded by a type argument,
 or assign `{}` to a variable of type `Set`:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
