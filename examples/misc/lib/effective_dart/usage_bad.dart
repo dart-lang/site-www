@@ -207,7 +207,8 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  ShadeOfGray.alsoBlack() : black(); // ignore: initializer_for_non_existent_field, missing_assignment_in_initializer
+  // This won't parse or compile!
+  // ShadeOfGray.alsoBlack() : black();
 }
 // #enddocregion this-dot-constructor
 
