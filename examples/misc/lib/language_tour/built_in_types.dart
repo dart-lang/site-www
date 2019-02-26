@@ -98,6 +98,12 @@ void miscDeclAnalyzedButNotTested() {
     var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
     // #enddocregion set-literal
 
+    // #docregion set-vs-map
+    var names = <String>{};
+    // Set<String> names = {}; // This works, too.
+    // var names = {}; // Creates a map, not a set.
+    // #enddocregion set-vs-map
+
     // #docregion set-add-items
     var elements = <String>{};
     elements.add('fluorine');

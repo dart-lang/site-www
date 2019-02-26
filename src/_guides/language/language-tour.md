@@ -747,6 +747,24 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   [type inference.](/guides/language/sound-dart#type-inference)
 </aside>
 
+To create an empty set, use `{}` preceded by a generic type annotation,
+or assign `{}` to a variable of type `Set`:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
+{% prettify dart %}
+var names = <String>{};
+// Set<String> names = {}; // This works, too.
+// var names = {}; // Creates a map, not a set.
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Set or map?**
+  The syntax for map literals is similar to that for set literals.
+  Because map literals came first, `{}` defaults to the `Map` type.
+  If you forget the type annotation on `{}` or the variable it's assigned to,
+  then Dart creates an object of type `Map<dynamic, dynamic>`.
+</aside>
+
 Add items to an existing set using the `add()` or `addAll()` methods:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
