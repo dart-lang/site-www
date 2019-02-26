@@ -94,6 +94,32 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion set-literal
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+    // #enddocregion set-literal
+
+    // #docregion set-vs-map
+    var names = <String>{};
+    // Set<String> names = {}; // This works, too.
+    // var names = {}; // Creates a map, not a set.
+    // #enddocregion set-vs-map
+
+    // #docregion set-add-items
+    var elements = <String>{};
+    elements.add('fluorine');
+    elements.addAll(halogens);
+    // #enddocregion set-add-items
+  }
+
+  {
+    // #docregion const-set
+    final constantSet =
+        const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+    // constantSet.add('helium'); // Uncommenting this causes an error.
+    // #enddocregion const-set
+  }
+
+  {
     // #docregion map-literal
     var gifts = {
       // Key:    Value

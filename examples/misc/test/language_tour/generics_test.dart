@@ -6,9 +6,9 @@ final Matcher throwsATypeError = throwsA(TypeMatcher<TypeError>());
 
 void main() {
   test('constructor-1', () {
-    // #docregion constructor-1
     var names = List<String>();
     names.addAll(['Seth', 'Kathy', 'Lars']);
+    // #docregion constructor-1
     var nameSet = Set<String>.from(names);
     // #enddocregion constructor-1
     expect(nameSet.length, 3);

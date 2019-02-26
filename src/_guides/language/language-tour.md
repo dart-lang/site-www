@@ -406,6 +406,7 @@ The Dart language has special support for the following types:
 - strings
 - booleans
 - lists (also known as *arrays*)
+- sets
 - maps
 - runes (for expressing Unicode characters in a string)
 - symbols
@@ -719,6 +720,83 @@ The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
+
+### Sets
+
+A set in Dart is an unordered collection of unique items.
+Dart support for sets is provided by set literals and the [Set][] type.
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:** Although the Set _type_ has always been a core part of Dart,
+  set _literals_ were introduced in Dart 2.2.
+</aside>
+
+Here is a simple Dart set, created using a set literal:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
+{% prettify dart %}
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  It is inferred that `halogens` has the type
+  `Set<String>`. If you try to add the wrong type of value
+  to the set, the analyzer or runtime raises an error.
+  For more information, read about
+  [type inference.](/guides/language/sound-dart#type-inference)
+</aside>
+
+To create an empty set, use `{}` preceded by a type argument,
+or assign `{}` to a variable of type `Set`:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
+{% prettify dart %}
+var names = <String>{};
+// Set<String> names = {}; // This works, too.
+// var names = {}; // Creates a map, not a set.
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Set or map?**
+  The syntax for map literals is similar to that for set literals.
+  Because map literals came first, `{}` defaults to the `Map` type.
+  If you forget the type annotation on `{}` or the variable it's assigned to,
+  then Dart creates an object of type `Map<dynamic, dynamic>`.
+</aside>
+
+Add items to an existing set using the `add()` or `addAll()` methods:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
+{% prettify dart %}
+var elements = <String>{};
+elements.add('fluorine');
+elements.addAll(halogens);
+{% endprettify %}
+
+Use `.length` to get the number of items in the set:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
+{% prettify dart %}
+var elements = <String>{};
+elements.add('fluorine');
+elements.addAll(halogens);
+assert(elements.length == 5);
+{% endprettify %}
+
+To create a set that's a compile-time constant,
+add `const` before the set literal:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
+{% prettify dart %}
+final constantSet =
+    const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+// constantSet.add('helium'); // Uncommenting this causes an error.
+{% endprettify %}
+
+For more information about sets, see
+[Generics](#generics) and
+[Sets](/guides/libraries/library-tour#sets).
 
 ### Maps
 
@@ -3428,9 +3506,9 @@ think of as a type that a developer will define later.
 
 ### Using collection literals
 
-List and map literals can be parameterized. Parameterized literals are
+List, set, and map literals can be parameterized. Parameterized literals are
 just like the literals you’ve already seen, except that you add
-<code>&lt;<em>type</em>></code> (for lists) or
+<code>&lt;<em>type</em>></code> (for lists and sets) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
 before the opening bracket. Here
 is example of using typed literals:
@@ -3438,6 +3516,7 @@ is example of using typed literals:
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 {% prettify dart %}
 var names = <String>['Seth', 'Kathy', 'Lars'];
+var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
@@ -3453,10 +3532,10 @@ angle brackets (`<...>`) just after the class name. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 {% prettify dart %}
-var names = List<String>();
-names.addAll(['Seth', 'Kathy', 'Lars']);
 var nameSet = Set<String>.from(names);
 {% endprettify %}
+
+[PENDING: update this sample; it ]
 
 The following code creates a map that has integer keys and values of
 type View:
@@ -4283,6 +4362,7 @@ To learn more about Dart's core libraries, see
 [@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
+[Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html

@@ -88,6 +88,23 @@ void main() {
     // #enddocregion list-indexing
   });
 
+  test('set-length', () {
+    var halogens = {
+      'fluorine',
+      'chlorine',
+      'bromine',
+      'iodine',
+      'astatine'
+    };
+
+    // #docregion set-length
+    var elements = <String>{};
+    elements.add('fluorine');
+    elements.addAll(halogens);
+    assert(elements.length == 5);
+    // #enddocregion set-length
+  });
+
   test('map-retrieve-item', () {
     // #docregion map-retrieve-item
     var gifts = {'first': 'partridge'};

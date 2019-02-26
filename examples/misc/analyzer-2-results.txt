@@ -1,6 +1,6 @@
 Analyzing lib, test...
 # https://github.com/dart-lang/sdk/issues/32236 - flow analysis can't yet figure out that the variable is of type Person.
-  error • 'Object' doesn't extend 'SomeBaseClass' at lib/language_tour/generics/misc.dart:28:19 • type_argument_not_matching_bounds
+  error • 'Object' doesn't extend 'SomeBaseClass' at lib/language_tour/generics/misc.dart:29:19 • type_argument_not_matching_bounds
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/library_tour/core/collections.dart:5:14 • argument_type_not_assignable
   error • A value of type 'dynamic' can't be assigned to a variable of type 'Person' at lib/library_tour/core/hash_code.dart:25:21 • invalid_assignment
 3 errors found.
