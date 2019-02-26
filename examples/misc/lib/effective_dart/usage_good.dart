@@ -378,10 +378,11 @@ class Box2 {
 class ShadeOfGray {
   final int brightness;
 
-  ShadeOfGray._(int val) : brightness = val;
+  ShadeOfGray(int val) : brightness = val;
 
-  ShadeOfGray.black() : this._(0);
-  ShadeOfGray.white() : this._(255);
+  ShadeOfGray.black() : this(0);
+
+  ShadeOfGray.alsoBlack() : this.black();
 }
 // #enddocregion this-dot-constructor
 

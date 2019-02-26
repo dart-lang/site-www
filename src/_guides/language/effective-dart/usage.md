@@ -938,7 +938,7 @@ set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 
-### DON'T use `this.` except to avoid shadowing or redirect a named constructor.
+### DON'T use `this.` except to avoid shadowing or redirect to a named constructor.
 
 {% include linter-rule.html rule="unnecessary_this" %}
 
@@ -981,7 +981,7 @@ class Box {
 }
 {% endprettify %}
 
-The other time to use `this.` is when redirecting a named constructor:
+The other time to use `this.` is when redirecting to a named constructor:
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
@@ -989,11 +989,12 @@ The other time to use `this.` is when redirecting a named constructor:
 class ShadeOfGray {
   final int brightness;
 
-  ShadeOfGray._(int val) : brightness = val;
+  ShadeOfGray(int val) : brightness = val;
 
-  // These won't compile!
-  ShadeOfGray.black() : _(0);
-  ShadeOfGray.white() : _(255);
+  ShadeOfGray.black() : this(0);
+
+  // This won't compile!
+  ShadeOfGray.alsoBlack() : black();
 }
 {% endprettify %}
 
@@ -1002,11 +1003,12 @@ class ShadeOfGray {
 class ShadeOfGray {
   final int brightness;
 
-  ShadeOfGray._(int val) : brightness = val;
+  ShadeOfGray(int val) : brightness = val;
 
-  // But with "this.", they will.
-  ShadeOfGray.black() : this._(0);
-  ShadeOfGray.white() : this._(255);
+  ShadeOfGray.black() : this(0);
+
+  // But with "this." it will.
+  ShadeOfGray.alsoBlack() : this.black();
 }
 {% endprettify %}
 

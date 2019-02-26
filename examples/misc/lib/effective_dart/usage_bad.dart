@@ -199,6 +199,19 @@ void miscDeclAnalyzedButNotTested() {
   };
 }
 
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  ShadeOfGray.alsoBlack() : black(); // ignore: initializer_for_non_existent_field, missing_assignment_in_initializer
+}
+// #enddocregion this-dot-constructor
+
+
 //----------------------------------------------------------------------------
 
 class BadTeam extends Team {
@@ -318,19 +331,6 @@ class Box2 {
   }
 }
 // #enddocregion this-dot
-
-//----------------------------------------------------------------------------
-
-// #docregion this-dot-constructor
-class ShadeOfGray {
-  final int brightness;
-
-  ShadeOfGray._(int val) : brightness = val;
-
-  ShadeOfGray.black() : _(0);
-  ShadeOfGray.white() : _(255);
-}
-// #enddocregion this-dot-constructor
 
 //----------------------------------------------------------------------------
 
