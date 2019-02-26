@@ -105,7 +105,7 @@ If you've made changes to the example code run the following commands:
 
 - `./tool/dartfmt.sh`
 - `./tool/refresh-code-excerpts.sh`
-- `./tool/analyze-and-test-examples.sh -q`
+- `./tool/analyze-and-test-examples.sh --quick`
 
 If the last command reports failed tests and you'd like to know which
 test failed, then rerun the command without the `-q` flag.
