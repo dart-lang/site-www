@@ -382,6 +382,7 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
+  // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
 }
 // #enddocregion this-dot-constructor

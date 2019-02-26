@@ -984,7 +984,7 @@ class Box {
 The other time to use `this.` is when redirecting to a named constructor:
 
 {:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot-constructor)"?>
 {% prettify dart %}
 class ShadeOfGray {
   final int brightness;
@@ -993,13 +993,13 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // This won't compile!
-  ShadeOfGray.alsoBlack() : black();
+  // This won't parse or compile!
+  // ShadeOfGray.alsoBlack() : black();
 }
 {% endprettify %}
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot-constructor)"?>
 class ShadeOfGray {
   final int brightness;
 
@@ -1007,7 +1007,7 @@ class ShadeOfGray {
 
   ShadeOfGray.black() : this(0);
 
-  // But with "this." it will.
+  // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
 }
 {% endprettify %}
