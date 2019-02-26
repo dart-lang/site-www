@@ -685,7 +685,7 @@ var list = [1, 2, 3];
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The analyzer infers that `list` has type `List<int>`.
+  Dart infers that `list` has type `List<int>`.
   If you try to add non-integer objects to this list,
   the analyzer or runtime raises an error.
   For more information, read about
@@ -740,7 +740,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  It is inferred that `halogens` has the type
+  Dart infers that `halogens` has the type
   `Set<String>`. If you try to add the wrong type of value
   to the set, the analyzer or runtime raises an error.
   For more information, read about
@@ -825,7 +825,7 @@ var nobleGases = {
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The analyzer infers that `gifts` has the type
+  Dart infers that `gifts` has the type
   `Map<String, String>` and `nobleGases` has the type
   `Map<int, String>`. If you try to add the wrong type of value
   to either map, the analyzer or runtime raises an error.
