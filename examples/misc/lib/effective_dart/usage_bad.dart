@@ -212,7 +212,6 @@ class ShadeOfGray {
 }
 // #enddocregion this-dot-constructor
 
-
 //----------------------------------------------------------------------------
 
 class BadTeam extends Team {
