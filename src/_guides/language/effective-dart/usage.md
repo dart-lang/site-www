@@ -1000,6 +1000,7 @@ class ShadeOfGray {
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot-constructor)"?>
+{% prettify dart %}
 class ShadeOfGray {
   final int brightness;
 
