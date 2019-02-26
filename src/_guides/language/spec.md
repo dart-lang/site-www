@@ -9,11 +9,11 @@ For a gentler introduction to Dart, see the
 
 ## Dart 2
 
-Dart 2 has changed the Dart language in many ways,
-some of which are not backward-compatible.
-For details, see the [Dart 2 page](/dart-2).
+The following formal Dart 2 specifications are available in PDF format:
+  * [Dart 2.2 specification](/guides/language/specifications/DartLangSpec-v2.2.pdf)
 
-The formal Dart 2 language specification is not yet up-to-date.
+Note: Dart 2 has changed the Dart language in many ways, some of which are not
+backward-compatible. For details, see the [Dart 2 page](/dart-2).
 
 ### In-progress specification
 
