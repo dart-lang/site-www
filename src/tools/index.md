@@ -59,10 +59,6 @@ and available as open source.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
-<a class="no-automatic-external" href="https://github.com/dart-atom/dartlang/"><b>Atom</b></a>
-</li>
-<li>
 <img src="{% asset tools/emacs.png @path %}" alt="Emacs logo">
 <a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
