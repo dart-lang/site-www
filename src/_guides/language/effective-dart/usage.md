@@ -938,7 +938,7 @@ set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 
-### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing.
+### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing. {#dont-use-this-when-not-needed-to-avoid-shadowing}
 
 {% include linter-rule.html rule="unnecessary_this" %}
 
