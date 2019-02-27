@@ -253,7 +253,7 @@ dependencies:
   collection: '>=1.0.0 <2.0.0'
 {% endprettify %}
 
-The `other_app` package uses depends directly on `collection` itself. The
+The `other_app` package depends directly on `collection` itself. The
 interesting part is that it happens to have a different version constraint on
 it than `widgets` does.
 
