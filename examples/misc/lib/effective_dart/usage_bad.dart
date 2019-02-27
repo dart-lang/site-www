@@ -199,6 +199,19 @@ void miscDeclAnalyzedButNotTested() {
   };
 }
 
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // This won't parse or compile!
+  // ShadeOfGray.alsoBlack() : black();
+}
+// #enddocregion this-dot-constructor
+
 //----------------------------------------------------------------------------
 
 class BadTeam extends Team {
