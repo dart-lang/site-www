@@ -8,7 +8,7 @@ description: Packages are bundles of source code, tools, and resources that help
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * The [Pub site]({{site.puyb}} is the primary public repository for Dart
+  * The [Pub site]({{site.pub}}) is the primary public repository for Dart
     packages.
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
