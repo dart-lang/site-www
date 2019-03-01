@@ -260,7 +260,7 @@ For more information, see
 
 ### Publish_to
 
-The default uses the [Pub site]{{site.pub}}. Specify `none` to prevent
+The default uses the [Pub site]({{site.pub}}). Specify `none` to prevent
 a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dartlang-dart/)
 to publish.
