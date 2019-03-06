@@ -1507,7 +1507,7 @@ You can override many of these operators, as described in
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  For the latest, definitive list of operators, consult the
+  The definitive list of Dart operators is in the
   [Dart language specification][].
 </aside>
 
