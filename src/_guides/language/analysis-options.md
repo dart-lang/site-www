@@ -147,7 +147,7 @@ TODO: Clarify that description, and insert an example here.
 {% endcomment %}
 
 
-## Enabling linter rules
+## Enabling and disabling linter rules {#enabling-linter-rules}
 
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
@@ -156,7 +156,7 @@ For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-### Default Google rules: pedantic
+### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
 
 To enable the list of linter rules that Google uses in its own Dart code,
 depend on the [pedantic package]({{site.pub-pkg}}/pedantic)
@@ -182,10 +182,13 @@ include: package:pedantic/analysis_options.yaml
   code that previously passed analysis might **start failing analysis.**
   We recommend updating your code to work with the new rules.
   Other options are to [use a specific version][]
-  of `pedantic` or to explicitly enable individual linter rules.
+  of `pedantic`, explicitly enable individual linter rules,
+  or [disable individual rules][].
 </aside>
 
-### Individual rules
+[disable individual rules]: #disabling-individual-rules
+
+### Enabling individual rules {#individual-rules}
 
 To enable a single linter rule, add `linter:` to the analysis options file,
 followed by `rules:`.
@@ -213,6 +216,26 @@ In future, related lint rules may be coalesced into meta rules. See
 [Issue 99: Meta linter rules](https://github.com/dart-lang/linter/issues/288)
 for more information.
 {% endcomment %}
+
+
+### Disabling individual rules
+
+If you include an analysis options file such as the one in `pedantic`, 
+you might want to disable some of the included rules.
+Disabling individual rules is just like enabling them,
+except that you add `: false` after the rule name.
+Here's an example of an analysis options file
+that uses all pedantic rules except `unawaited_futures`:
+
+{% prettify yaml %}
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    - unawaited_futures: false
+{% endprettify %}
+
+
 
 ## Excluding code from analysis
 
