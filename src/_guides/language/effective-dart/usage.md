@@ -376,8 +376,8 @@ numbers.removeAt(1); // Now it only contains integers.
 var ints = List<int>.from(numbers);
 {% endprettify %}
 
-If your goal is to _copy_ the iterable and preserve its original element type
-use `List.of()`. If you don't care about the element type, or the intent is to
+If your goal is to _copy_ the iterable and preserve its original element type,
+then use `List.of()`. If you don't care about the element type, or the intent is to
 get a `List` from an `Iterable` or another collection type, then use `toList()`.
 
 
