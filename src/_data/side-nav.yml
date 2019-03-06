@@ -1,7 +1,12 @@
 - title: Language
-  permalink: /guides/language
   urlExactMatch: true
+  match-page-url-exactly: true
+  expanded: true
   children:
+    - title: Get started
+      permalink: /guides/get-started
+    - title: Dart language overview
+      permalink: /guides/language
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Effective Dart
@@ -19,16 +24,22 @@
       permalink: /samples
 
 - title: Libraries
-  permalink: /guides/libraries
   urlExactMatch: true
+  match-page-url-exactly: true
+  expanded: true
   children:
+    - title: Overview
+      permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
 
 - title: Platforms
-  permalink: /guides/platforms
   urlExactMatch: true
+  match-page-url-exactly: true
+  expanded: true
   children:
+    - title: Overview
+      permalink: /guides/platforms
     - title: Mobile (Flutter)
       permalink: https://flutter.io
     - title: Web
@@ -37,12 +48,18 @@
       permalink: /server
 
 - title: Testing
-  permalink: /guides/testing
   urlExactMatch: true
+  match-page-url-exactly: true
+  expanded: true
+  children:
+    - title: Overview
+      permalink: /guides/testing
 
 - title: Resources
   # permalink: /resources
   # urlExactMatch: true
+  # match-page-url-exactly: true
+  expanded: true
   children:
   - title: Install
     permalink: /install

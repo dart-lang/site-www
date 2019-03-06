@@ -25,6 +25,10 @@ $google-gray-lighter:       #D5D7DA; // 100
 $default-link:              #0175C2;
 $default-link-visited:      #0175C2;
 
+$site-color-body: #4A4A4A;
+$site-color-body-light: rgba(74/255, 74/255, 74/255, .8);
+$site-color-primary: $brand-primary;
+
 // Typography
 
 $font-size-base:            1rem;
@@ -44,6 +48,22 @@ $font-size-h6:            16px;
 // Spacing
 $live-content-width:      1280px;
 $content-padding:         20px;
+
+// Fonts
+$site-font-family-base: 'Roboto', sans-serif;
+$site-font-family-alt: 'Google Sans', 'Roboto', sans-serif;
+$site-font-family-icon: 'Material Icons';
+$site-font-family-monospace: 'Roboto Mono', monospace;
+$site-font-icon: 24px/1 $site-font-family-icon;
+
+// Layout
+$site-header-height: 66px;
+$site-footer-md-default-height: 140px;
+$site-content-top-padding: 40px;
+$site-content-max-width: 960px;
+$site-sidebar-side-padding: 16px;
+$site-nav-mobile-side-padding: 20px;
+$site-snackbar-padding: 20px;
 
 // Alerts
 $alert-success-bg:        #dff0d8;

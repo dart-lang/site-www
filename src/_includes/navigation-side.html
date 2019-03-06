@@ -1,5 +1,5 @@
 <div id="sidenav" class="">
-  <div class="content">
+  <div class="site-sidebar">
     <a href="/" class="brand" title="{{ site.title }}">
       <img src="{% asset shared/dart/logo+text/horizontal/default.svg @path %}" alt="{{ site.title }}">
     </a>
@@ -10,11 +10,6 @@
       </p>
     </div>
 
-    <ul>
-      <li>
-        <a class="btn btn-light{% if page.url == '/guides/get-started' %} active{% endif %}" href="/guides/get-started">Get Started</a>
-      </li>
-    </ul>
-    {% include shared/sidenav.html list=site.data.side-nav %}
+    {% include sidenav.html nav=site.data.side-nav %}
   </div>
 </div>
