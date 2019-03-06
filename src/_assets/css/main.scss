@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'colors';
 @import 'bootstrap';
+@import 'bootstrap_config';
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';
@@ -17,6 +18,7 @@
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
+@import 'sidebar';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
@@ -70,6 +72,9 @@ a, button {
     font-size: 11px;
     color: inherit;
     opacity: 0.5;
+  }
+  i.fa-external-link-alt {
+    display: none;
   }
  }
 }
@@ -395,74 +400,6 @@ img {
   float: left;
   overflow-x: hidden;
   overflow-y: auto;
-  .content {
-    h4 {
-      margin-top: 0;
-      font-size: 18px;
-      font-weight: normal;
-      text-transform: uppercase;
-      &.active { font-weight: bold; }
-      a {
-        color: $default-link;
-        &:hover { color: $brand-secondary; }
-        &:active { color: darken($brand-secondary, 15%); }
-      }
-    }
-    ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      li {
-        position: relative;
-        margin-top: 10px;
-        line-height: 110%;
-        a:visited {
-          color: $brand-primary;
-        }
-        i {
-          display: inline-block;
-          margin-left: 4px;
-          font-size: 10px;
-          cursor: pointer;
-          transform-origin: center;
-          @include transition();
-          &:hover {
-            transform: rotate(90deg);
-          }
-        }
-        ul {
-          display: none;
-          height: 0;
-          opacity: 0;
-          @include transition(0.5s);
-          li {
-            padding-left: 15px;
-            a {
-              font-weight: 300;
-            }
-          }
-        }
-        &.active {
-          > a {
-            color: $gray-dark;
-            font-weight: bold;
-          }
-          i {
-            cursor: pointer;
-            transform: rotate(-90deg);
-          }
-          > ul {
-            display: block;
-            height: auto;
-            opacity: 1;
-          }
-        }
-      }
-    }
-    & > ul {
-      margin-bottom: 25px;
-    }
-  }
   .brand {
     display: none;
     border-bottom: 1px solid $gray-light;
