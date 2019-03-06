@@ -232,10 +232,14 @@ include: package:pedantic/analysis_options.yaml
 
 linter:
   rules:
-    - unawaited_futures: false
+    unawaited_futures: false
 {% endprettify %}
 
-
+<aside class="alert alert-warning" markdown="1">
+  **Don't include an initial dash (`- `)** when you specify a value (`: false)`.
+  The YAML syntax for key-value maps is slightly different
+  from the YAML syntax for lists.
+</aside>
 
 ## Excluding code from analysis
 
