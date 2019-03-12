@@ -10,7 +10,6 @@
 //= require vendor/code-prettify/lang-yaml
 
 var condensedHeaderHeight = 50;
-var tocToSidenavDiff = 50;
 
 function fixNav() {
   var t = $(document).scrollTop(),
@@ -20,7 +19,7 @@ function fixNav() {
     whenAtBottom = f - t,
     mh = Math.min(h, whenAtBottom) - condensedHeaderHeight;
   $("#sidenav").css({ maxHeight: mh });
-  $("#toc").css({ maxHeight: mh - tocToSidenavDiff });
+  $("#site-toc--side").css({ maxHeight: mh });
 }
 
 // When a user scrolls to 50px add class condensed-header to body
@@ -36,7 +35,7 @@ $(window).scroll(function () {
 
 function adjustToc() {
   // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#toc');
+  var tocWrapper = $('#site-toc--side');
   $(tocWrapper).find('header').click(function() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   })
@@ -53,7 +52,7 @@ function adjustToc() {
   $(li).addClass('nav-item');
   $(li).find('a').addClass('nav-link');
 
-  $('body').scrollspy({ offset: 100, target: '#toc' });
+  $('body').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 $(function () {
