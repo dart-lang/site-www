@@ -7,10 +7,12 @@
       permalink: /guides/get-started
     - title: Dart language overview
       permalink: /guides/language
+      match-page-url-exactly: true
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Effective Dart
       permalink: /guides/language/effective-dart
+      match-page-url-exactly: true
       children:
         - title: Style
           permalink: /guides/language/effective-dart/style
