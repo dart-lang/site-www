@@ -2,7 +2,6 @@
 //= require popper
 //= require bootstrap
 //= require _utilities
-//= require _search
 //= require _os-tabs
 //= require vendor/code-prettify/prettify
 //= require vendor/code-prettify/lang-css

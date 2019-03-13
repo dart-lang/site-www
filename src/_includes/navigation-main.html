@@ -22,12 +22,11 @@
     </li>
     {% endif %}
     <li class="searchfield">
-      <form class="navbar-search" action="/search" id="cse-search-box">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
         <input type="hidden" name="ie" value="UTF-8">
         <input type="hidden" name="hl" value="en">
-        <input type="search" name="q" id="q" autocomplete="off" placeholder="Search">
-        <button type="submit"><i class="icon icon-search"></i></button>
+        <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
       </form>
     </li>
   </ul>
