@@ -14,6 +14,7 @@
 @import 'icons';
 @import 'code_pre';
 @import 'animations';
+@import 'header';
 
 @import 'dartvm';
 @import 'books';
@@ -313,37 +314,6 @@ img {
           }
         }
       }
-      &.searchfield {
-        line-height: 50px;
-        button {
-          position: absolute;
-          top: 1px;
-          right: 16px;
-          line-height: 50px;
-          height: 50px;
-          padding: 0;
-          border: none;
-          background: transparent;
-          i {
-            display: block;
-            height: 32px;
-            width: 40px;
-            line-height: 32px;
-            margin-top: 2px;
-            font-size: 24px;
-            background-color: transparent;
-            color: $gray-light;
-          }
-        }
-        &.active {
-          button {
-            i {
-              background-color: $gray-dark;
-              color: #ffffff;
-            }
-          }
-        }
-      }
     }
   }
   .dropdown-menu {
@@ -495,10 +465,31 @@ img {
 /* -----------------------------------------
  Search
  ----------------------------------------- */
-#q {
-  position: relative;
-  width: 225px;
-  background-color: #ffffff;
+.site-header__search {
+  &::before {
+    color: $gray;
+    z-index: 1;
+  }
+
+  #mainnav & {
+    // Override of _header.scss
+    border: 0;
+  }
+}
+
+.site-header__searchfield {
+  #mainnav & {
+    // Override of _header.scss
+    @include media-breakpoint-down(sm) {
+      font-size: inherit;
+      height: inherit;
+
+      width: 24px !important;
+      &:focus {
+        width: 220px !important;
+      }
+    }
+  }
 }
 
 input.gsc-search-button {
