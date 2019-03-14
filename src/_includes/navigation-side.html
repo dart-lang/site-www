@@ -1,15 +1,9 @@
 <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
   <div class="site-sidebar">
-    <a href="/" class="brand" title="{{ site.title }}">
-      <img src="{% asset shared/dart/logo+text/horizontal/default.svg @path %}" alt="{{ site.title }}">
-    </a>
-
-    <div class="sidenav__search">
-      <p>
-        <a href="/search">Search <i class="icon icon-search"></i></a>
-      </p>
-    </div>
-
     {% include shared/sidenav-level-1.html nav=site.data.side-nav %}
   </div>
 </div>

@@ -20,17 +20,6 @@ a code {
 	color: #fff;
 }
 
-// SIDE NAV
-
-.sidenav__search {
-	margin-bottom: 20px;
-	display: block;
-
-	@include media-breakpoint-up(sm) {
-		display: none;
-	}
-}
-
 // FRONT-PAGE RELATED
 
 @mixin front-page-first-section-height {
