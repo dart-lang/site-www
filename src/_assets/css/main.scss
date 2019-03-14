@@ -373,16 +373,6 @@ img {
   border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
   overflow-y: auto;
-  .brand {
-    display: none;
-    border-bottom: 1px solid $gray-light;
-    margin-top: -5px;
-    margin-bottom: 20px;
-    img {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-  }
 }
 
 // The table-of-content section on the right side of the screen.
