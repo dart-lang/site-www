@@ -1,13 +1,9 @@
 {% unless page.toc == false or page.layout == 'homepage' %}
-<div id="toc">
-  <div class="content">
-    <header class="h4 text-uppercase">
-      On this page
-      <a title="Back to top" class="back-to-top float-right mr-3">
-        <i class="fas fa-angle-up"></i>
-      </a>
-    </header>
-    {{ content | toc_only }}
-  </div>
+<div id="{{include.id}}" class="site-toc">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+  </header>
+  {{ content | toc_only }}
 </div>
 {% endunless %}
