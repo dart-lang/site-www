@@ -1141,6 +1141,8 @@ body.obsolete {
     #sidenav {
       display: block;
       left: 0 !important;
+      max-height: 100vh !important;
+      bottom: 0;
     }
   }
 }
