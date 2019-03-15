@@ -12,7 +12,7 @@ that you already know how to program in another language.
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
-consult the [Dart Language Specification](/guides/language/spec).
+consult the [Dart language specification][].
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
@@ -1496,7 +1496,7 @@ You can override many of these operators, as described in
 | unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
 | multiplicative           | `*`    `/`    `%`    `~/`                      |
 | additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`                                   |
+| shift                    | `<<`    `>>`    `>>>`                          |
 | bitwise AND              | `&`                                            |
 | bitwise XOR              | `^`                                            |
 | bitwise OR               | `|`                                            |
@@ -1507,8 +1507,15 @@ You can override many of these operators, as described in
 | if null                  | `??`                                           |
 | conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
 | cascade                  | `..`                                           |
-| assignment               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`    `??=` |
+| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
 {:.table .table-striped}
+
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
+  Operator precedence is an approximation of the behavior of a Dart parser.
+  For definitive answers, consult the grammar in the
+  [Dart language specification][].
+</aside>
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -3286,8 +3293,7 @@ Enumerated types have the following limits:
 * You can't subclass, mix in, or implement an enum.
 * You can't explicitly instantiate an enum.
 
-For more information, see the
-[Dart Language Specification](/guides/language/spec).
+For more information, see the [Dart language specification][].
 
 
 ### Adding features to a class: mixins
@@ -3994,7 +4000,7 @@ Also see the articles
 [Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
 and
 [Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
-and the [Dart language specification](/guides/language/spec).
+and the [Dart language specification][].
 
 
 <a id="generator"></a>
@@ -4333,8 +4339,7 @@ your comments, see
 
 This page summarized the commonly used features in the Dart language.
 More features are being implemented, but we expect that they won’t break
-existing code. For more information, see the [Dart Language
-Specification](/guides/language/spec) and
+existing code. For more information, see the [Dart language specification][] and
 [Effective Dart](/guides/language/effective-dart).
 
 To learn more about Dart's core libraries, see
@@ -4346,6 +4351,7 @@ To learn more about Dart's core libraries, see
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
 [dart]: /server/tools/dart-vm
+[Dart language specification]: /guides/language/spec
 [dartdevc]: {{site.webdev}}/tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
