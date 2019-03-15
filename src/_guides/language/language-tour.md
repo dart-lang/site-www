@@ -1510,9 +1510,10 @@ You can override many of these operators, as described in
 | assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
 {:.table .table-striped}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  The definitive list of Dart operators is in the
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
+  Operator precedence is an approximation of the behavior of a Dart parser.
+  For definitive answers, consult the grammar in the
   [Dart language specification][].
 </aside>
 
