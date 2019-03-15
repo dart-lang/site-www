@@ -113,8 +113,13 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion const-set
-    final constantSet =
-        const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+    final constantSet = const {
+      'fluorine',
+      'chlorine',
+      'bromine',
+      'iodine',
+      'astatine'
+    };
     // constantSet.add('helium'); // Uncommenting this causes an error.
     // #enddocregion const-set
   }
