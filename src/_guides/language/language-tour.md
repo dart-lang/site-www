@@ -789,8 +789,13 @@ add `const` before the set literal:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 {% prettify dart %}
-final constantSet =
-    const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+final constantSet = const {
+  'fluorine',
+  'chlorine',
+  'bromine',
+  'iodine',
+  'astatine',
+};
 // constantSet.add('helium'); // Uncommenting this causes an error.
 {% endprettify %}
 
