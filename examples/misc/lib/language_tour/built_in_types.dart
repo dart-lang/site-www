@@ -118,7 +118,7 @@ void miscDeclAnalyzedButNotTested() {
       'chlorine',
       'bromine',
       'iodine',
-      'astatine'
+      'astatine',
     };
     // constantSet.add('helium'); // Uncommenting this causes an error.
     // #enddocregion const-set
