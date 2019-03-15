@@ -373,16 +373,6 @@ img {
   border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
   overflow-y: auto;
-  .brand {
-    display: none;
-    border-bottom: 1px solid $gray-light;
-    margin-top: -5px;
-    margin-bottom: 20px;
-    img {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-  }
 }
 
 // The table-of-content section on the right side of the screen.
@@ -477,9 +467,21 @@ img {
     // Override of _header.scss
     border: 0;
   }
+
+  #sidenav & {
+    display: none;
+    border-bottom: 1px solid $site-color-light-grey;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 $site-nav-mobile-side-padding;
+    order: -1;
+  }
 }
 
 .site-header__searchfield {
+  border: 0;
+  box-shadow: none;
+
   #mainnav & {
     // Override of _header.scss
     @include media-breakpoint-down(sm) {
@@ -489,6 +491,20 @@ img {
       width: 24px !important;
       &:focus {
         width: 220px !important;
+      }
+    }
+  }
+
+  #sidenav & {
+    font-size: $font-size-lg;
+    height: 66px;
+    width: 100%;
+
+    // Override of _header.scss
+    @include media-breakpoint-up(md) {
+      width: 100% !important;
+      &:focus {
+        width: 100% !important;
       }
     }
   }
@@ -1107,13 +1123,15 @@ body.obsolete {
 
   #sidenav {
     top: 0;
-    left: -300px;
+    left: -100vw;
+    width: calc(100vw - 60px);
     background: #fff;
     z-index: 9999;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
     @include transition(left, .5s);
-    .brand {
-      display: block;
+
+    .site-header__search {
+      display: flex;
     }
   }
 
