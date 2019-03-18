@@ -205,16 +205,16 @@ img {
 }
 #page-footer {
   position: relative;
-  color: $white-base;
+  background-color: $site-color-footer;
+  color: $site-color-white;
   font-weight: 300;
-  background-color: $brand-primary;
+  font-size: $font-size-sm;
   z-index: 5;
   .brand {
     width: 120px;
   }
-  small {
-    display: block;
-    padding-right: 25px;
+  .licenses {
+    font-size: 10px;
   }
   h4 {
     color: #fff;
