@@ -8,17 +8,16 @@
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
-var condensedHeaderHeight = 50;
-
 function fixNav() {
   var t = $(document).scrollTop(),
     f = $("#page-footer").offset().top,
+    hh = $("#page-header").height(),
     h = window.innerHeight,
     // space between scroll position and top of the footer
     whenAtBottom = f - t,
-    mh = Math.min(h, whenAtBottom) - condensedHeaderHeight;
-  $("#sidenav").css({ maxHeight: mh });
-  $("#site-toc--side").css({ maxHeight: mh });
+    mh = Math.min(h, whenAtBottom) - hh;
+  $("#sidenav").css({ top: hh, maxHeight: mh });
+  $("#site-toc--side").css({ top: hh, maxHeight: mh });
 }
 
 // When a user scrolls to 50px add class condensed-header to body

@@ -184,19 +184,14 @@ img {
 // Structure
 
 #page-header {
-  position: fixed;
-  width: 100%;
-  height: $site-header-height;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $gray-light;
   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-  z-index: 1030;
+
+  // override of shared/_header.scss
+  .site-header {
+    box-shadow: none;
+  }
 }
 #page-content {
-  position: relative;
-  margin-top: $site-header-height;
   min-height: calc(100vh);
   > article {
     width: calc(100vw - 525px);
@@ -279,6 +274,7 @@ img {
   z-index: 9999;
 }
 #mainnav {
+  background-color: $gray-light;
   display: flex;
   $mainnav-entry-spacing: 15px;
   ul {
@@ -1074,15 +1070,16 @@ body.hide_toc {
 body.obsolete {
   #page-header {
     .alert {
-      position: relative;
-      top: 5px;
       margin: 0;
-      h4 { margin-bottom: 0; }
+      h4 {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
     }
   }
   #page-content {
-    margin-top: 120px;
     border: 10px solid $alert-warning-bg;
+    border-top: none;
   }
 }
 /* -----------------------------------------
@@ -1110,7 +1107,9 @@ body.obsolete {
   }
 
   #sidenav {
-    top: 0;
+    top: 0 !important;
+    max-height: 100vh !important;
+    bottom: 0;
     left: -100vw;
     width: calc(100vw - 60px);
     background: #fff;
@@ -1147,8 +1146,6 @@ body.obsolete {
     #sidenav {
       display: block;
       left: 0 !important;
-      max-height: 100vh !important;
-      bottom: 0;
     }
   }
 }
