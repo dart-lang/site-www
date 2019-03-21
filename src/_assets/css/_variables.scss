@@ -82,8 +82,10 @@ $live-content-width:      1280px;
 $content-padding:         20px;
 
 // Fonts
-$site-font-family-base: 'Roboto', sans-serif;
-$site-font-family-alt: 'Google Sans', 'Roboto', sans-serif;
+$site-font-family-roboto: 'Roboto', sans-serif;
+$site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
+$site-font-family-base: $site-font-family-roboto;
+$site-font-family-alt: $site-font-family-gsans;
 $site-font-family-icon: 'Material Icons';
 $site-font-family-monospace: 'Roboto Mono', monospace;
 $site-font-icon: 24px/1 $site-font-family-icon;

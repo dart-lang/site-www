@@ -360,18 +360,16 @@ img {
 
   .site-sidebar {
     .nav-link {
-      font-family: $site-font-family-base;
-      font-weight: light;
+      font-family: $site-font-family-roboto;
+      font-weight: 300;
       color: #4a4a4a;
       font-size: 13px;
-      line-height: 26px;
 
       &[data-toggle] {
         &:not(.collapsable) {
-          font-family: $site-font-family-alt;
-          font-weight: regular;
+          font-family: $site-font-family-gsans;
+          font-weight: 400;
           font-size: 20px;
-          line-height: 25px;
         }
 
         &.active {
