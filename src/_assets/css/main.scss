@@ -274,7 +274,8 @@ img {
   z-index: 9999;
 }
 #mainnav {
-  background-color: $gray-light;
+  background-color: $site-color-header;
+  color: $site-color-header-text;
   display: flex;
   $mainnav-entry-spacing: 15px;
   ul {
@@ -291,20 +292,22 @@ img {
     li {
       padding: 0 $mainnav-entry-spacing;
       a {
+        color: $site-color-header-text;
         display: inline-block;
         padding: 0;
-        font-size: 16px;
+        font-size: $site-font-size-header;
+        font-weight: 400;
         line-height: 50px;
-        &:hover {
-          color: $brand-primary;
+        &:hover, &:focus, &:active {
+          color: $gray-lighter;
         }
       }
     }
   }
   .dropdown-menu {
-    border-top-color: transparent;
+    background-color: $site-color-header;
     margin-left: -$mainnav-entry-spacing;
-    a:hover, a:focus { background-color: transparent; }
+    a:hover, a:focus { background-color: rgba(255, 255, 255, 0.05); }
     a.active:after {
       font-family: 'Font Awesome 5 Free';
       content: '\f00c'; // fas fa-check
@@ -492,6 +495,10 @@ img {
   box-shadow: none;
 
   #mainnav & {
+    background-color: $site-color-header;
+    color: $site-color-header-text;
+    font-size: $site-font-size-header;
+
     // Override of _header.scss
     @include media-breakpoint-down(sm) {
       font-size: inherit;
