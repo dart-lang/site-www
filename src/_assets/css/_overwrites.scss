@@ -55,12 +55,12 @@ body.homepage #code-sample {
 body.homepage {
 	#code-sample-section {
 		pre {
-			font-size: $font-size-base * 0.8;
+			font-size: $font-size-base * 0.91;
 			@include media-breakpoint-up(md) {
-				font-size: $font-size-base * 0.7;
+				font-size: $font-size-base * 0.8;
 			}
 			@include media-breakpoint-up(lg) {
-				font-size: $font-size-base * 0.8;
+				font-size: $font-size-base * 0.91;
 			}
 			@include front-page-first-section-height;
 			overflow: auto;
@@ -158,7 +158,7 @@ body.homepage .chip-grid-section {
 	}
 	p {
 		color: $gray-base;
-		font-size: $font-size-base * 0.8;
+		font-size: $font-size-base * 0.91;
 		margin-bottom: 0;
 	}
 }
