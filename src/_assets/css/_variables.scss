@@ -8,6 +8,7 @@ $flutter-color-blue-500: #1389FD;
 $flutter-color-dark-blue: #075b9a;
 $flutter-color-fuchsia: #FF2B5B;
 $flutter-color-light-blue: #E7F8FF;
+$site-color-dark-background: #27323a;
 $site-color-black: #000;
 $site-color-white: #FFF;
 $site-color-codeblock-bg: #F8F9FA;
@@ -15,11 +16,11 @@ $site-color-light-grey: #D8D8D8;
 $site-color-nav-links: #6E7274;
 $site-color-body: #4A4A4A;
 $site-color-body-light: rgba(74/255, 74/255, 74/255, .8);
-$site-color-footer: #303c42;
+$site-color-footer: $site-color-dark-background;
 $site-color-primary: $flutter-color-blue-500;
 
 // Layer stack
-$site-z-header: 100;
+$site-z-header: 1000;
 $site-z-footer: 99;
 $site-z-snackbar: 150;
 $hero-layer-1-z: 40;
@@ -57,8 +58,9 @@ $google-gray-lighter:       #D5D7DA; // 100
 $default-link:              #0175C2;
 $default-link-visited:      #0175C2;
 
-$site-color-body: #4A4A4A;
-$site-color-body-light: rgba(74/255, 74/255, 74/255, .8);
+$site-color-header: $site-color-dark-background;
+$site-color-header-text: #f8f9fa;
+$site-font-size-header: 14px;
 $site-color-primary: $brand-primary;
 
 // Typography
