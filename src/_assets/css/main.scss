@@ -1041,6 +1041,7 @@ ul.nav-list {
 #page-github-links {
   float: right;
   .btn {
+    color: $site-color-body;
     $padding-x: $btn-padding-x / 2;
     padding-left: $padding-x;
     padding-right: $padding-x;
