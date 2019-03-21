@@ -296,7 +296,7 @@ img {
         display: inline-block;
         padding: 0;
         font-size: $site-font-size-header;
-        font-weight: regular;
+        font-weight: 400;
         line-height: 50px;
         &:hover, &:focus, &:active {
           color: $gray-lighter;
