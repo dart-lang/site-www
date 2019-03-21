@@ -189,6 +189,15 @@ img {
   // override of shared/_header.scss
   .site-header {
     box-shadow: none;
+    .navbar {
+      .nav-link {
+        &.active {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
 #page-content {
