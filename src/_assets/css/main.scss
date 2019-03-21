@@ -399,31 +399,17 @@ img {
   z-index: 999;
   padding-left: 20px;
   padding-right: 20px;
-  $border-width: 3px;
-  $padding: $font-size-base * .5;
-  ul.section-nav {
-    @include list-unstyled;
-    line-height: normal;
-    > li { padding-bottom: $padding; } // Extra space for top-level entries
-  }
-  // Nested toc entries:
-  li.toc-entry ul {
-    @include list-unstyled;
-    padding-top: $padding;
-    li {
-      font-size: $font-size-sm;
-      padding-left: $font-size-base;
-      // &:not(:last-child) { padding-bottom: $padding; } // Don't add extra space between top-level entries, or
-      padding-bottom: $padding;
-    }
-  }
   // Override BS defaults for .nav, etc.
+  .site-toc__title {
+    font-size: 20px;
+  }
   .nav {
     display: block;
     .nav-link {
-      padding: 0 !important;
+      font-size: $font-size-base;
+      font-weight: 300;
+      padding: 1px 0;
       &.active {
-        color: $gray-dark;
         &:before {
           @include md-icon-content('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
           margin-left: -0.9rem; // We tune the margin for top-level entries below.
@@ -431,7 +417,7 @@ img {
       }
     }
   }
-  ul.section-nav.nav > li > .nav-link:before { margin-left: -1rem; }
+  ul.section-nav.nav > li > .nav-link:before { margin-left: -0.88rem; }
 }
 
 #site-search-results {
