@@ -403,8 +403,12 @@ img {
   .site-toc__title {
     font-size: 20px;
   }
+  .toc-entry {
+    padding-bottom: 0.5rem;
+  }
   .nav {
     display: block;
+    padding-top: 0.5rem;
     .nav-link {
       font-size: $font-size-base;
       font-weight: 300;
