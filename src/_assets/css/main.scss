@@ -357,6 +357,31 @@ img {
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
+
+  .site-sidebar {
+    .nav-link {
+      font-family: $site-font-family-roboto;
+      font-weight: 300;
+      color: $site-color-body;
+      font-size: 13px;
+
+      &[data-toggle] {
+        &:not(.collapsable) {
+          font-family: $site-font-family-gsans;
+          font-weight: 400;
+          font-size: 20px;
+        }
+
+        &.active {
+          color: inherit;
+        }
+      }
+
+      &.active {
+        color: #1389fd;
+      }
+    }
+  }
 }
 
 // The table-of-content section on the right side of the screen.
