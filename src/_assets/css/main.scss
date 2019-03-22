@@ -431,6 +431,10 @@ img {
     }
   }
   ul.section-nav.nav > li > .nav-link:before { margin-left: -0.88rem; }
+
+  body.hide_toc & {
+    display: none;
+  }
 }
 
 #site-search-results {
@@ -1083,19 +1087,6 @@ body.homepage {
 body.error {
   #sidenav {
     display: none;
-  }
-}
-
-// Page States
-body.hide_toc {
-  #page-content {
-    > article {
-      width: calc(100vw - 300px);
-    }
-  }
-  #site-toc--side {
-    display: none;
-    right: -250px;
   }
 }
 
