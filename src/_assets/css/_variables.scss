@@ -46,8 +46,7 @@ $teal:                      #1FBAAC;
 $blue:                      #1b87c9;
 $blue-light:                #e2f4fd;
 
-$brand-primary-dark:        #02569B; // 700
-$brand-primary:             #0175C2; // 600
+$brand-primary:             #0171B7;
 $brand-secondary:           #13B9FD; // 400
 $brand-highlight:           #FFC108; // 700
 
@@ -67,7 +66,7 @@ $site-color-primary: $brand-primary;
 
 $font-size-base:            0.875rem; // 14px
 $font-family-base:          Roboto, sans-serif;
-$font-family-monospace:     Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+$font-family-monospace:     "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 $google-font-family:        "Product Sans", $font-family-base;
 
 // TODO: use / override BS defaults named $hX-font-size.

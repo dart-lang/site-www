@@ -139,11 +139,22 @@ input, select {
 
 pre, pre.prettyprint {
   padding: $content-padding;
-  background-color: $gray-light;
+  background-color: #F5F5F7;
   color: $blue;
   position: relative;
   border: none;
   border-radius: 0;
+
+  .kwd {
+    color: #BC0056;
+  }
+  .pln {
+    color: #7500A0;
+  }
+  .lit, .str {
+    color: #00677A;
+  }
+
   &.dartpad {
     // &:after {
     //   content: 'Run';
@@ -169,8 +180,9 @@ pre, pre.prettyprint {
 }
 code {
   background-color: transparent;
+  color: #006666;
+  font-size: 100%;
   padding: 0;
-  color: darken($brand-primary, 20%);
 }
 img {
   max-width: 100%;
