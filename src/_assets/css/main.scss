@@ -724,12 +724,22 @@ main .content {
   margin: 15px;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $gray-light;
+  background-color: #29b6f6;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
-  text-align: center;
+  color: $site-color-white;
+  font-family: $site-font-family-gsans;
+
   h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
+    a {
+      color: $site-color-white;
+    }
   }
+
+  h3 {
+    font-size: $font-size-h2;
+  }
+
   &.narrow { width: 250px; }
 }
 
