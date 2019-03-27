@@ -49,7 +49,7 @@ Leverage that code or put your code out in the world to share with others.
   <div class="card">
     <h3><a href="/tutorials/libraries/shared-pkgs">Install Shared Packages</a></h3>
     <p>Organize and share code at the
-       [Pub site]({{site.pub}}).</p>
+       <a href="{{site.pub}}">Pub site.</a></p>
   </div>
 </div>
 
