@@ -230,21 +230,21 @@ ID and Mr. are still capitalized like words.)
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart %}
 HttpConnectionInfo
-uiHandler
-IOStream
+UiHandler
+IoStream
 HttpRequest
 Id
-DB
+Db
 {% endprettify %}
 
 {:.bad-style}
 {% prettify dart %}
 HTTPConnection
-UiHandler
-IoStream
+UIHandler
+IOStream
 HTTPRequest
 ID
-Db
+DB
 {% endprettify %}
 
 
