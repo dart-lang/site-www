@@ -5,7 +5,7 @@
     {% include page-header.html %}
     {% include navigation-side.html %}
     <main id="page-content">
-      {% include navigation-toc.html id='site-toc--side' %}
+      {% include navigation-toc.html id='site-toc--side' extendToc=true %}
       <article>
         <div class="content">
           {% if site.show_banner %} {% include banner.html %} {% endif %}
