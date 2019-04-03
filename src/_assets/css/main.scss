@@ -491,7 +491,7 @@ img {
 .site-header__search {
   &::before {
     color: $gray;
-    z-index: 1;
+    z-index: $site-z-header + 1;
   }
 
   #mainnav & {
