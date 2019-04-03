@@ -491,6 +491,7 @@ img {
 .site-header__search {
   &::before {
     color: $gray;
+    float: left;
     z-index: $site-z-header + 1;
   }
 
