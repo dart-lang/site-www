@@ -22,9 +22,6 @@ For details, see our [code of conduct](/code-of-conduct).
   Information about existing features and planned changes.
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
-* [+dartlang](https://plus.google.com/+dartlang) -
-  The official Google+ account.
-
 
 ## Join the conversation
 
@@ -37,7 +34,6 @@ Get answers and connect with Dart developers.
 * [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
 * [Dart on Reddit](https://www.reddit.com/r/dartlang)
-* [Dartisans on Google+](http://g.co/dartisans)
 
 #### Google Groups
 
