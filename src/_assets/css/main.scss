@@ -41,13 +41,18 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
- font-family: $font-family-base;
+ font-family: $site-font-family-gsans;
  font-weight: 400;
  margin-top: 1.5em;
- color: $gray-dark;
+ color: $site-color-body;
 }
 
-h1, .h1 { font-size: $font-size-h1; margin-top: 0; margin-bottom: 0.67em;}
+h1, .h1 {
+  font-family: $site-font-family-gsans-display;
+  font-size: $font-size-h1;
+  margin-top: 0;
+  margin-bottom: 0.67em;
+}
 h2, .h2 { font-size: $font-size-h2;}
 h3, .h3 { font-size: $font-size-h3;}
 h4, .h4 { font-size: $font-size-h4;}
