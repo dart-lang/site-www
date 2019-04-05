@@ -59,6 +59,8 @@ p {}
 a, button {
  text-decoration: none;
  color: $brand-primary;
+ font-family: $site-font-family-roboto;
+ font-weight: 400;
  &:visited {
    color: $brand-primary;
  }
