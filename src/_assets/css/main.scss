@@ -235,20 +235,24 @@ img {
   }
 
   > article {
-    width: calc(100vw - 525px);
-    margin-left: 250px;
-
-    body.hide_toc  & {
-      width: 100%;
+    @media(min-width: 1024px) {
+      margin-left: 230px;
+      > .content {
+         padding-left: 100px;
+      }
     }
 
-    @media(max-width: 1200px) {
-      width: calc(100vw - 270px);
+    @media(min-width: 1200px) {
+      margin-right: 225px;
+      > .content {
+        padding-right: 15%;
+      }
     }
 
-    @media(max-width: 1024px) {
-      width: calc(100vw - 40px);
-      margin: 0 auto;
+    @media(min-width: 1400px) {
+      > .content {
+        padding-right: 20%;
+      }
     }
   }
 }
