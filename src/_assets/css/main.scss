@@ -272,13 +272,14 @@ img {
 
 // Banner
 .banner {
-  background-color: $blue-light;
+  background-color: #e7f8ff;
+  padding: 20px 0;
   text-align: center;
-  padding: .5em 0;
-  margin-bottom: 40px;
 }
 
 .banner__text {
+  font-family: $site-font-family-roboto;
+  font-size: 16px;
   font-weight: 300;
   margin-bottom: 0;
   padding-left: 1em;
