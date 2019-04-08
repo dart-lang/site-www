@@ -396,11 +396,23 @@ img {
   z-index: 1;
 
   .site-sidebar {
+    // override shared/_sidebar.scss
+    // the first-level nav block is indented on the same level as the headers
+    > .nav > .nav-item > .nav {
+      padding-left: 0;
+    }
+
     .nav-link {
       font-family: $site-font-family-roboto;
       font-weight: 300;
       color: $site-color-body;
       font-size: 13px;
+
+      // override shared/_sidebar.scss
+      &.collapsable::before {
+        top: 2px;
+        left: -18px;
+      }
 
       &[data-toggle] {
         &:not(.collapsable) {
@@ -416,6 +428,7 @@ img {
 
       &.active {
         color: $site-color-sidebar-active;
+        font-weight: 400;
       }
     }
   }
