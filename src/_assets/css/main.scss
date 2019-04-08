@@ -154,6 +154,9 @@ pre, pre.prettyprint {
   border-radius: 0;
   font-size: 12px;
 
+  .com {
+    color: #6E6E70;
+  }
   .kwd {
     color: #BC0056;
   }
@@ -431,6 +434,7 @@ img {
   padding-right: 20px;
   // Override BS defaults for .nav, etc.
   .site-toc__title {
+    color: $site-color-body;
     font-size: 20px;
   }
   .toc-entry {
@@ -818,7 +822,7 @@ li.card {
       position: absolute;
       top: 0;
       right: $font-size-base / 4;
-      color: darken($bg-color, 25%);
+      color: $site-color-body;
     }
   }
 }
@@ -985,7 +989,9 @@ h3.popover-header {
 .table {
   width: 100%;
   @extend .table-striped;
-  @extend .table-bordered;
+
+  // override .table-striped macro, remove top border
+  td { border-top: none; }
 }
 
 .table-wrapper {
