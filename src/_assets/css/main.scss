@@ -754,13 +754,13 @@ main .content {
   background-color: #294058;
   border-radius: 0;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
-  color: #f8f9fa;
+  color: $site-color-card-text;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: $site-font-family-gsans;
     margin-top: 0;
     a {
-      color: #f8f9fa;
+      color: $site-color-card-text;
       font-family: $site-font-family-gsans;
     }
     .octicon-link {
