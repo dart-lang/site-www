@@ -780,11 +780,17 @@ ul.card-grid { padding-left: 0; }
 
 // Platform logos
 li.card {
+  color: inherit;
   background-color: transparent;
   box-shadow: none;
   .logo {
     display: block;
     padding-bottom: $font-size-base;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      color: inherit;
+    }
   }
 }
 
