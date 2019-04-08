@@ -12,12 +12,15 @@ function fixNav() {
   var t = $(document).scrollTop(),
     f = $("#page-footer").offset().top,
     hh = $("#page-header").height(),
+    banner = $(".banner"),
+    bb = banner.length > 0 ? banner[0].getBoundingClientRect().bottom : hh,
+    headerHeight = Math.max(hh, bb),
     h = window.innerHeight,
     // space between scroll position and top of the footer
     whenAtBottom = f - t,
     mh = Math.min(h, whenAtBottom) - hh;
-  $("#sidenav").css({ top: hh, maxHeight: mh });
-  $("#site-toc--side").css({ top: hh, maxHeight: mh });
+  $("#sidenav").css({ top: headerHeight, maxHeight: mh });
+  $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
 }
 
 // When a user scrolls to 50px add class condensed-header to body
