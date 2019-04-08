@@ -1,11 +1,4 @@
-{% assign hasExtra = site.show_banner or page.obsolete %}
-{% if hasExtra -%}
-  {% assign shadowClass = '' -%}
-{% else -%}
-  {% assign shadowClass = 'header-shadow' -%}
-{% endif -%}
-
-<header id="page-header" class="site-header {{shadowClass}}">
+<header id="page-header" class="site-header">
   {% include navigation-main.html %}
   {% if page.obsolete == true %}
   <div class="alert alert-warning">

@@ -198,9 +198,7 @@ img {
 // Structure
 
 #page-header {
-  // Display shadow only if the top header is visible (no banner or obsolete warning).
-  &.site-header { box-shadow: none; }
-  &.header-shadow { box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
   // override of shared/_header.scss
   .site-header {
