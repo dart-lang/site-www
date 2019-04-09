@@ -126,4 +126,9 @@ $(function () {
   // Add external link indicators
   $('a[href^="http"], a[target="_blank"]').not('.no-automatic-external').addClass('external');
 
+  // Collapsible inline TOC expand/collapse
+  $(".site-toc--inline__toggle").on('click', function () {
+    var root = $("#site-toc--inline");
+    root.toggleClass('toc-collapsed');
+  });
 });
