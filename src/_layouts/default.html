@@ -16,7 +16,7 @@
             {% include shared/page-github-links.html %}
             <h1>{{ page.title }}</h1>
           </div>
-          {% include navigation-toc.html id='site-toc--inline' %}
+          {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
           {{ content | inject_anchors }}
           {% include navigation-sub.html %}
         </div>
