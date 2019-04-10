@@ -3546,7 +3546,7 @@ angle brackets (`<...>`) just after the class name. For example:
 var nameSet = Set<String>.from(names);
 {% endprettify %}
 
-[PENDING: update this sample; it ]
+{% comment %}[PENDING: update this sample; it ]{% endcomment %}
 
 The following code creates a map that has integer keys and values of
 type View:
