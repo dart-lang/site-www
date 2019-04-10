@@ -8,9 +8,8 @@ trademarks by members of the developer community who have obtained our
 consent to use the trademarks pursuant to the [Dart Terms of Service](/terms).
 These guidelines will ensure that the Dart trademarks are used in a
 manner that promotes Google's mission to provide a free and open source
-SDK for crafting high-quality native interfaces on iOS and
-Android in record time, and are not associated with objectionable material,
-as determined by Google.  
+SDK, and are not associated with objectionable
+material, as determined by Google.
 
 Use of the Dart trademarks that is not expressly permitted by these
 guidelines is prohibited absent written permission from Google.
