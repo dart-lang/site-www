@@ -18,7 +18,7 @@ guidelines is prohibited absent written permission from Google.
 The official Dart logos can be found in the [Dart and Flutter logo
 assets](https://drive.google.com/corp/drive/folders/1KXNtO9My2AMpDOF9A9Y_4aj4_BcgmDDT) Drive folder.
 
-## General Rules That Govern the Use of the Dart Trademarks
+## General rules that govern the use of the Dart trademarks
 
 You are free to use the Dart trademarks: (i) in connection with your
 download and use of the Dart SDK to build and develop 
@@ -44,7 +44,7 @@ of the webpage or the title of the blog). In the case of social media
 accounts, this means you should not use the Dart trademarks in the
 background, in your profile image or in your social media username.  
 
-## Specific Rules for Proper Usage of the Dart Trademarks
+## Specific rules for proper usage of the Dart trademarks
 
 In addition to the general rules discussed above, below are specific
 rules governing the proper use of the Dart trademarks.  
@@ -89,7 +89,7 @@ rules governing the proper use of the Dart trademarks.
   any non-software goods or services (e.g., merchandise such as clothing,
   pens, and stickers).
 
-## Community Use Exceptions
+## Community use exceptions
 
 To allow for the use of the Dart trademarks by the Dart community,
 below are specific exceptions to the rules described above:  
