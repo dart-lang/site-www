@@ -413,10 +413,32 @@ img {
 }
 // #footernav {}
 
+// The left and right sidebar is dynamically repositioned as the user scrolls,
+// to follow both the header's bottom and the banner's bottom position.
+//
+// On page load this repositioning happens with a delay, which causes a "flash"
+// as it finally happens. The below rulesmatch the expected initial positions
+// to minimize the "flash".
+@mixin sidenav-top-position() {
+  top: $site-header-height;
+
+  body.show_banner & {
+    top: $site-header-with-banner-height;
+  }
+
+  body.obsolete & {
+    top: $site-header-with-obsolete-height;
+  }
+
+  body.obsolete.show_banner & {
+    top: $site-header-with-banner-obsolete-height;
+  }
+}
+
 #sidenav {
+  @include sidenav-top-position;
   position: fixed;
   bottom: 0px;
-  top: $site-header-height;
   left: 0px;
   width: 230px;
   border-right: 1px solid #d8d8d8;
@@ -505,9 +527,10 @@ img {
 
 // The table-of-content section on the right side of the screen.
 #site-toc--side {
+  @include sidenav-top-position;
+
   position: fixed;
   bottom: 0px;
-  top: $site-header-height;
   width: 225px;
   right: 0px;
   overflow-x: hidden;
