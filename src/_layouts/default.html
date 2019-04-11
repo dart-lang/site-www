@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}">
+  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
     {% include page-header.html %}
     {% include navigation-side.html %}
     <main id="page-content">
