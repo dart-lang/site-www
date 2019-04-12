@@ -171,7 +171,7 @@
       children:
         - title: Get started [TBM]
           permalink: https://webdev.dartlang.org/guides/get-started
-        - title: Connec Dart & HTML [TBM]
+        - title: Connect Dart & HTML [TBM]
           permalink: https://webdev.dartlang.org/tutorials/low-level-html/connect-dart-html
         - title: Add elements to the DOM [TBM]
           permalink: https://webdev.dartlang.org/tutorials/low-level-html/add-elements 
