@@ -1,73 +1,31 @@
 <footer id="page-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-lg-3">
-        <div class="content">
-          <div class="brand">
-            <img src="{% asset shared/dart/logo+text/horizontal/mono.svg @path %}" alt="Dart logo" class="brand"/>
-          </div>
-          <h4><a href="/terms">Terms</a> | <a href="https://policies.google.com/privacy">Privacy</a></h4>
-          <style>.menu .material-icons { font-size: 14px; }</style>
-          {%- assign dateFormat = '%Y/%m/%d %R %Z' -%}
-          <ul class="menu">
-            <li class="licenses">Site&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;3.0</a></li>
-            <li>
-              <a href="{{site.repo.this}}"
-                 title="This site's source is on GitHub."
-                 class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
-              &nbsp;
-              <a href="{{site.repo.this}}/issues"
-                 title="File an issue about this site."
-                 class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
-              &nbsp;
-              <a {% if site.data.ci.job-id %}
-                 href="{{site.repo.this | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
-                 title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
-                 {% else %}
-                 title="Site built on {{site.now | default: site.time | date: dateFormat}}"
-                 {% endif %}
-                 class="no-automatic-external"><i class="material-icons">build</i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-3">
-        <div class="content">
-          <h4>Technologies</h4>
-          <ul>
-            <li><a href="{{site.flutter}}">Mobile (Flutter)</a></li>
-            <li><a href="{{site.webdev}}">Dart for the web</a></li>
-            <li><a href="{{site.dart_vm}}">Server-side Dart</a></li>
-            <li><a href="https://dart-lang.github.io/observatory/">Observatory</a></li>
-            <li><a href="/guides/libraries">Dart libraries</a></li>
-            <li><a href="/guides/language">Dart programming language</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-lg-3">
-        <div class="content">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}">API reference</a></li>
-            <li><a href="{{site.custom.dartpad.direct-link}}">DartPad</a></li>
-            <li><a href="{{site.pub}}">Dart packages</a></li>
-            <li><a href="{{site.news}}">Dart news</a></li>
-            <li><a href="https://github.com/dart-lang/sdk/issues">Dart bugs and <br> feature requests</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-lg-3">
-        <div class="content">
-          <h4>Community</h4>
-          <ul>
-            <li><a href="/community">Support & mailing lists</a></li>
-            <li><a href="/community/who-uses-dart">Who uses Dart</a></li>
-            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
-            <li><a href="https://gitter.im/dart-lang/home">Gitter chat rooms</a></li>
-          </ul>
-        </div>
+    <div class="content">
+      <div class="text-center" martdown="1">
+        <style>.menu .material-icons { font-size: 14px; }</style>
+        {%- assign dateFormat = '%Y/%m/%d %R %Z' -%}
+        <ul class="menu">
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="http://www.google.com/intl/en/policies/privacy/" class="no-automatic-external">Privacy</a></li>
+          <li>Site&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;3.0</a></li>
+          <li>
+            <a href="{{site.repo.this}}"
+               title="This site's source is on GitHub."
+               class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
+            &nbsp;
+            <a href="{{site.repo.this}}/issues"
+               title="File an issue about this site."
+               class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
+            &nbsp;
+            <a {% if site.data.ci.job-id %}
+               href="{{site.repo.this | regex_replace: 'github.com','travis-ci.org'}}/jobs/{{site.data.ci.job-id}}"
+               title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
+               {% else %}
+               title="Site built on {{site.now | default: site.time | date: dateFormat}}"
+               {% endif %}
+               class="no-automatic-external"><i class="material-icons">build</i></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
