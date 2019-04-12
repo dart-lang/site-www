@@ -84,10 +84,16 @@ a, button {
     color: inherit;
     opacity: 0.5;
   }
-  i.fa-external-link-alt {
+ }
+}
+// Disable template-generated external links.
+i.fa-external-link-alt {
+  a.external & {
     display: none;
   }
- }
+  #sidenav & {
+    display: none;
+  }
 }
 
 form {
