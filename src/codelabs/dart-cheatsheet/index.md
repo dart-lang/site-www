@@ -24,6 +24,17 @@ malapropisms, annoyances, and other general weirdness. If that happens, please t
 and let us know. Feature requests and suggestions are also greatly appreciated.
 </aside>
 
+Dart is designed to be easy to learn for coders coming from other languages,
+but it also has a few unique features.
+This codelab will walk you through the most important ones,
+and can be a handy place to return for a refresher as you grow your Dart skills.
+
+In addition to explanations and examples,
+the codelab includes embedded editors with partially completed code snippets.
+You can use these editors to test your knowledge by completing the code and
+clicking the **Test Code** button.
+
+
 
 ## String interpolation
 
@@ -120,29 +131,29 @@ Dart has built-in support for lists, maps, and sets. You can create them using l
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
 final aMapOfStringsToInts = {
-    'one': 1,
-    'two': 2,
-    'three': 3,
+  'one': 1,
+  'two': 2,
+  'three': 3,
 };
 {% endprettify %}
 
 Dart's type inference is capable of assigning types to these variables for you. In this case, the
-inferred types are `List&lt;String&gt;`,
-`Set&lt;String&gt;`, and `Map&lt;String, int&gt;`.
+inferred types are `List<String>`,
+`Set<String>`, and `Map<String, int>`.
 
 You can also specify the type for a collection literal:
 
 {% prettify dart %}
-final aListOfInts = &lt;int&gt;[];
-final aSetOfInts = &lt;int&gt;{};
-final aMapOfIntToDouble = &lt;int, double&gt;{};
+final aListOfInts = <int>[];
+final aSetOfInts = <int>{};
+final aMapOfIntToDouble = <int, double>{};
 {% endprettify %}
 
 Specifying types is handy if you initialize a list with contents of a subtype, but still want the list
-itself to be `List&lt;BaseType&gt;`:
+itself to be `List<BaseType>`:
 
 {% prettify dart %}
-final aListOfBaseType = &lt;BaseType&gt;[SubType(), SubType()];
+final aListOfBaseType = <BaseType>[SubType(), SubType()];
 {% endprettify %}
 
 ### Code example
@@ -233,8 +244,8 @@ properties to `1`, `'String!'`, and
 
 ## Getters and setters
 
-Dart supports getters and setters for properties via the get and set keywords. You can use getters and
-setters to guard access of a private variable:
+Dart supports getters and setters for properties via the `get` and `set` keywords.
+You can use getters and setters to guard access of a private variable:
 
 {% prettify dart %}
 class MyClass {
@@ -254,7 +265,7 @@ You can also define getters for computed properties like this one:
 
 {% prettify dart %}
 class MyClass {
-  List&lt;div&gt; _values = [];
+  List<div> _values = [];
 
   void addValue(int value) {
     _values.add(value);
@@ -268,14 +279,14 @@ class MyClass {
 
 ### Code example
 
-Imagine you have a shopping cart class that keeps a private `List&lt;double&gt;`
+Imagine you have a shopping cart class that keeps a private `List<double>`
 of prices.
 Add the following:
 
 * A getter called `total` that returns the sum of the prices
-* A setter that replaces the list with a new one, as long as the new list doesn't contain any negative
-
-  prices (in which case the setter should throw an `InvalidPriceException`).
+* A setter that replaces the list with a new one,
+  as long as the new list doesn't contain any negative prices
+  (in which case the setter should throw an `InvalidPriceException`).
 
 <iframe src="{{site.dartpadx}}?id=84561041d263cbd4c92f614eceec85e6"></iframe>
 
@@ -326,9 +337,9 @@ print(newTotal); // <-- prints 15
 Implement a function called `joinWithCommas` that accepts at least one and up to
 five integers, then returns a string of those numbers separated by commas:
 
-* `joinWithCommas(1)` should return '1'.
-* `joinWithCommas(1, 2, 3)` should return '1,2,3'.
-* `joinWithCommas(1, 1, 1, 1, 1)` should return '1,1,1,1,1'.
+* `joinWithCommas(1)` should return `'1'`.
+* `joinWithCommas(1, 2, 3)` should return `'1,2,3'`.
+* `joinWithCommas(1, 1, 1, 1, 1)` should return `'1,1,1,1,1'`.
 * etc.
 
 <iframe src="{{site.dartpadx}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1"></iframe>
@@ -513,7 +524,7 @@ In between a constructor's signature and its body, you can place an initializer 
 {% prettify dart %}
 // Initializer list sets instance variables before
 // the constructor body runs.
-Point.fromJson(Map&lt;String, num&gt; json)
+Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
   print('In Point.fromJson(): ($x, $y)');
