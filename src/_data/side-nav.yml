@@ -130,10 +130,8 @@
       children:
         - title: JS/TS interop
           permalink: /platforms/js-interop
-        - title: Web development
-          permalink: '#tbd'
         - title: Web deployment
-          permalink: '#tbd'
+          permalink: '/platforms/web-deployment'
 
 - title: Tools
   expanded: false
