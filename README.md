@@ -136,6 +136,8 @@ linkcheck https://www.dartlang.org
 
 To check for valid HTML, good images, and broken links (though not as well
 as linkcheck.dart), run this from the top of the repo:
+**NOTE: As of April 16, 2019, this doesn't work. See
+[issue #1461](https://github.com/dart-lang/site-www/issues/1461).**
 
 ```
 ./deploy/html_proof.rb
