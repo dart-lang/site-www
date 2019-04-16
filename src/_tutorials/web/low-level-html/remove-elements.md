@@ -3,7 +3,7 @@ title: "Remove DOM Elements"
 description: "Remove a child element from the DOM"
 
 prevpage:
-  url: /web/tutorials/low-level-html/add-elements
+  url: /tutorials/web/low-level-html/add-elements
   title: "Add Elements to the DOM"
 ---
 
@@ -137,7 +137,7 @@ using the element's remove() function
 is shorter and more concise than
 using functions from the List class.
 
-<img class="scale-img-max" src="/tutorials/images/remove-element.png"
+<img class="scale-img-max" src="/tutorials/web/images/remove-element.png"
      alt="Use element.remove() to remove an element from the DOM">
 
 In the todo_with_delete app,
@@ -149,7 +149,7 @@ When the user clicks that new element,
 its event handler causes the element to remove itself from the DOM
 with remove().
 
-<img class="scale-img-max" src="/tutorials/images/remove-element-code.png"
+<img class="scale-img-max" src="/tutorials/web/images/remove-element-code.png"
      alt="Registering an event handler to delete an item">
 
 When the element removes itself from the DOM,
@@ -161,7 +161,7 @@ and the item disappears from the to do list.
 When the user clicks the **Delete All** button,
 all elements are removed from the list.
 
-<img class="scale-img-max" src="/tutorials/images/remove-all-elements.png"
+<img class="scale-img-max" src="/tutorials/web/images/remove-all-elements.png"
      alt="Use element.children.clear() to remove all of an element's children">
 
 In this case, using the List class's clear() function
@@ -187,7 +187,7 @@ The code registers a mouse click handler on the button;
 the handler removes all of the child elements from the to do list.
 Here is all of the Dart code related to the **Delete All** button.
 
-<img class="scale-img-max" src="/tutorials/images/remove-all-code.png"
+<img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
      alt="Remove all child elements from an Element">
 
 </li>
@@ -203,7 +203,7 @@ is an example of a _function expression_,
 which is a shorthand way of defining functions
 and it uses the => syntax to define the function concisely.
 
-<img class="scale-img-max" src="/tutorials/images/event-listener-exp.png"
+<img class="scale-img-max" src="/tutorials/web/images/event-listener-exp.png"
      alt="A one-line function definition">
 
 It is equivalent to writing this:
@@ -245,5 +245,5 @@ existing toolkits.
 We recommend AngularDart, an app framework designed for building
 scalable web apps. It's featured in the Dart web development codelabs.
 
-* [AngularDart](/angular)
+* [AngularDart]({{site.angulardart}})
 * [Codelabs](/codelabs)

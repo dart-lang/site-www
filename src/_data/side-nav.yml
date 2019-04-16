@@ -133,10 +133,10 @@
             children:
               - title: dart2js [TBM]
                 permalink: https://webdev.dartlang.org/tools/dart2js
-              - title: dartdevc [TBM]
-                permalink: https://webdev.dartlang.org/tools/dartdevc
-              - title: webdev [TBM]
-                permalink: https://webdev.dartlang.org/tools/webdev
+              - title: dartdevc
+                permalink: /tools/dartdevc
+              - title: webdev
+                permalink: /tools/webdev
       - title: Formatting code [TBD]
         permalink: '#tbd'
       - title: Static analysis
@@ -153,8 +153,8 @@
         children:
           - title: Testing
             permalink: /guides/testing
-          - title: Debugging web apps [TBM]
-            permalink: https://webdev.dartlang.org/guides/debugging
+          - title: Debugging web apps
+            permalink: /web/debugging
     - title: Command-line & server
       children:
         - title: Get started
@@ -172,13 +172,13 @@
         - title: Get started
           permalink: /web/get-started
         - title: Connect Dart & HTML
-          permalink: /web/tutorials/low-level-html/connect-dart-html
+          permalink: /tutorials/web/low-level-html/connect-dart-html
         - title: Add elements to the DOM
-          permalink: /web/tutorials/low-level-html/add-elements 
+          permalink: /tutorials/web/low-level-html/add-elements 
         - title: Remove DOM elements
-          permalink: /web/tutorials/low-level-html/remove-elements 
+          permalink: /tutorials/web/low-level-html/remove-elements 
         - title: Fetch data dynamically
-          permalink: /web/tutorials/get-data/fetch-data
+          permalink: /tutorials/web/get-data/fetch-data
         - title: Native extensions (TypeScript & JavaScript) [TBM]
           permalink: https://webdev.dartlang.org/guides/web-programming#js-interop
 

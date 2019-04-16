@@ -237,7 +237,7 @@ Check out these resources:
   * [Dart SDK]({{site.dartlang}}/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
-  * [Web libraries](/guides/web-programming)
+  * [Web libraries](/web/web-programming)
 
 If you get stuck, find help at [Community and Support.](/community)
 
@@ -247,13 +247,13 @@ If you get stuck, find help at [Community and Support.](/community)
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
-[Debugging Dart Web Apps]: /webdev/guides/debugging
+[Debugging Dart Web Apps]: /web/debugging
 [Homebrew,]: http://brew.sh/
 [Install the SDK]: /tools/sdk#install
-[low-level HTML tutorial for Dart]: /tutorials/low-level-html
-[Overview of Dart web libraries]: /guides/web-programming
+[low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
+[Overview of Dart web libraries]: /web/web-programming
 [overview of editors & debuggers]: /tools#ides-and-editors
 [stagehand]: {{site.pub-pkg}}/stagehand
-[Tutorial introduction to using Dart for basic web programming]: /tutorials/low-level-html/connect-dart-html
+[Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
 [webdev]: /tools/webdev
 [webdev serve]: /tools/webdev#serve

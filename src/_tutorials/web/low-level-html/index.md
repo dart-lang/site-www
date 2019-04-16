@@ -12,15 +12,15 @@ Then learn how to add, move, and remove DOM elements.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/web/tutorials/low-level-html/connect-dart-html">Connect Dart & HTML</a></h3>
+    <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a></h3>
     <p>Include a Dart script in an HTML page.</p>
   </div>
   <div class="card">
-    <h3><a href="/web/tutorials/low-level-html/add-elements">Add Elements to the DOM</a></h3>
+    <h3><a href="/tutorials/web/low-level-html/add-elements">Add Elements to the DOM</a></h3>
     <p>Add elements to the web page and move them.</p>
   </div>
   <div class="card">
-    <h3><a href="/web/tutorials/low-level-html/remove-elements">Remove DOM Elements</a></h3>
+    <h3><a href="/tutorials/web/low-level-html/remove-elements">Remove DOM Elements</a></h3>
     <p>Delete elements from the web page.</p>
   </div>
 </div>
