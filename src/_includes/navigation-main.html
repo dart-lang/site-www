@@ -7,37 +7,21 @@
   </a>
   <ul class="navbar">
     <li class="mainnav__get-started">
-      <a href="/guides/get-started" class="nav-link
-        {%- if page_url_path contains '/*/guides/get-started/' %} active {%- endif -%}"><span>Get Started</span></a>
+      <a href="/guides" class="nav-link
+        {%- if page_url_path contains '/*/guides/' %} active {%- endif -%}"><span>Docs</span></a>
     </li>
     <li>
-      <a href="/guides/language" class="nav-link
-        {%- if page_url_path contains '/*/guides/language/' %} active {%- endif -%}">Language</a>
+      <a href="/guides/platforms" class="nav-link
+        {%- if page_url_path contains '/*/guides/platforms/' %} active {%- endif -%}">Platforms</a>
     </li>
-    <li>
-      <a href="/guides/libraries" class="nav-link
-        {%- if page_url_path contains '/*/guides/libraries/' %} active {%- endif -%}">Libraries</a>
-    </li>
-    <li>
-      <a href="/tools" class="nav-link
-        {%- if page_url_path contains '/*/tools/' %} active {%- endif -%}">Tools</a>
-    </li>
-    {% comment %}Temporarily make room for the version dropdown by omitting Community{% endcomment %}
-    {% if site.url != site.www %}
     <li>
       <a href="/community" class="nav-link
         {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
     </li>
-    {% else %}
-    <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dart 2</a>
-      <ul class="dropdown-menu">
-        {% include _version-menu-items.html %}
-        <li role="separator" class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/dart-2#migration">Migration guide</a></li>
-      </ul>
+    <li>
+      <a href="/#dartpad" class="nav-link
+        {%- if page_url_path contains '/*/#dartpad' %} active {%- endif -%}">Try Dart</a>
     </li>
-    {% endif %}
     <li class="searchfield">
       <form action="/search" class="site-header__search form-inline" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">

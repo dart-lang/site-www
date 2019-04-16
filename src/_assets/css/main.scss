@@ -294,6 +294,9 @@ img {
     list-style: none;
     padding: 0;
     li {
+      display: inline;
+      border-right: 1px solid $site-color-white;
+      padding: 0 .5em;
       a {
         color: #ffffff;
         line-height: 16px;
@@ -301,6 +304,9 @@ img {
           color: $gray-lighter;
         }
       }
+    }
+    li:last-child {
+      border: none;
     }
   }
 }
