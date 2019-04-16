@@ -1,14 +1,7 @@
 ---
-title: Get Started
+title: 'Get started: web apps'
 description: A guide to get you quickly writing web apps in Dart.
 ---
-
-{% assign channel = site.data.pkg-vers.SDK.channel -%}
-{% if channel == 'stable' -%}
-  {% assign isStable = true -%}
-{% else -%}
-  {% assign isDev = true -%}
-{% endif -%}
 
 Follow these steps to start using Dart to develop web apps.
 First you'll play with Dart in your browser, no download required.
@@ -39,11 +32,10 @@ which includes the web UI that the app produces,
 
 More information:
 
-* [DartPad documentation]({{site.dartlang}}/tools/dartpad)
-* [Dart language tour]({{site.dartlang}}/guides/language/language-tour)
-* [Dart library tour]({{site.dartlang}}/guides/libraries/library-tour)
-* [Tutorial introduction to using Dart for basic web programming](/tutorials/low-level-html/connect-dart-html)
-
+* [DartPad documentation][]
+* [Dart language tour][]
+* [Dart library tour][]
+* [Tutorial introduction to using Dart for basic web programming][]
 
 ## 2. Install Dart {%-if isDev%} 2 **dev channel** release {%-endif%}
 
@@ -60,7 +52,7 @@ You'll need it in step 4.
 </ul>
 
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-  Use [Chocolatey](https://chocolatey.org) to install a {{channel}} release of
+  Use [Chocolatey][] to install a {{channel}} release of
   the Dart SDK:
   ```terminal
   C:\> choco install dart-sdk {%-if isDev%} --pre {%-endif%}
@@ -92,7 +84,7 @@ You'll need it in step 4.
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-  With [Homebrew](http://brew.sh/),
+  With [Homebrew,][]
   installing Dart is easy.
 
   ```terminal
@@ -108,10 +100,10 @@ You'll need it in step 4.
   ```
 </div>
 
-More information: [Install the SDK](/tools/sdk#install)
+More information: [Install the SDK][]
 
 
-## 3. Get CLI tools or WebStorm (or both)
+## 3. Get CLI tools or an IDE (or both)
 
 <i class="fas fa-terminal dark"></i>
 If you like to use the command line, install [webdev][]
@@ -123,14 +115,11 @@ and [stagehand:][stagehand]
 ```
 
 <i class="material-icons">web</i>
-Although using an IDE is optional, we highly recommend that you
-[download and install WebStorm](/tools/webstorm). WebStorm comes
-with Dart support, making it easy to write correct Dart code and to run it in a
-browser.
+Although using an IDE is optional, we highly recommend using one.
+For a list of available IDEs, see the
+[overview of editors & debuggers][].
 
-{% include webstorm-status.md %}
 
-More information: [Dart tools for the web](/tools)
 
 ## 4. Create a web app
 
@@ -145,19 +134,9 @@ To create a web app from the command line, use these commands:
 ```
 
 <i class="material-icons">web</i>
-Here's how to use WebStorm to create the same web app:
+To create the same web app from an IDE that has Dart integration,
+create a project using the template named **Bare-bones Web App**.
 
-1. Choose **Create New Project** from WebStorm's welcome screen,
-   or **File > New > Project...** from the menu. A dialog appears.
-1. Choose **Dart** from the list on the left.
-1. If the **Dart SDK path** field doesn't have a value, enter it.
-1. Edit the **Location** field to set the app location and name.
-1. Select **Generate sample content** to show the list of templates.
-1. Choose the **Bare-bones Web App** template.
-1. Click **Create**.<br>![WebStorm new project dialog][]
-
-More information:
-[Overview of Dart web libraries](/guides/web-programming)
 
 ## 5. Run the app
 
@@ -168,27 +147,22 @@ To run the app from the command line, use [webdev][] to build and serve the app:
 > webdev serve
 ```
 
-Then, to view your app, use the Chrome browser to visit
-[localhost:8080](localhost:8080).
-(Details about Dart's browser support are
-[in the FAQ](/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets).)
-Webdev is slowest when it builds and serves your app for the first time.
-After that, assets are cached on disk and incremental builds are much faster.
-
 <i class="material-icons">web</i>
-To run the app from WebStorm, do the following:
+Or run the app from your IDE.
 
-1. Right-click the app's `web/index.html` file in the project view.
-2. Choose **Run 'index.html'** in the pop up menu.
+To view your app, use the Chrome browser to visit the app's URL —
+for example, [localhost:8080](localhost:8080).
 
-![Running the app from WebStorm]({% asset webstorm-run-index-html.png @path %})
-
-{% include pub-get-workaround.html %}
+Whether you use an IDE or the command line,
+[webdev serve][] builds and serves your app
+using the Dart development compiler, [dartdevc][].
+Startup is slowest the first time dartdevc builds and serves your app.
+After that, assets are cached on disk and incremental builds are much faster.
 
 Once your app has compiled, the browser should display
 "Your Dart app is running."
 
-![Launched bare-bones app]({% asset bare-bones-dart-app.png @path %}){:width="500"}
+![Launched bare-bones app]({% asset bare-bones-web-app.png @path %}){:width="500"}
 
 
 ## 6. Add custom code to the app
@@ -214,14 +188,11 @@ Let's customize the app you just created.
 
  3. Save your changes.
 
- 4. WebStorm and webdev automatically rebuild your app.
+ 4. The webdev tool automatically rebuilds your app.
     Refresh the app's browser window.
     Now your simple Dart app has a todo list!
     It should look something like this:<br>
     ![Running the revised app]({% asset bare-bones-todo.png @path %}){:width="500"}
-{% comment %}
-TODO: remove my-first-angular-app-at-work.png
-{% endcomment %}
 
  5. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
@@ -239,15 +210,14 @@ TODO: remove my-first-angular-app-at-work.png
 Use Chrome DevTools to set breakpoints, view values and types,
 and step through your app's Dart code.
 For setup details and a walkthrough, see
-[Debugging Dart Web Apps](/guides/debugging).
+[Debugging Dart Web Apps][].
 
 <aside class="alert alert-info" markdown="1">
   **Feeling lost? Don't worry!**
   This was a whirlwind introduction to Dart and web programming
   that left out many details.
   For a gentler approach, try a
-  [low-level HTML tutorial for Dart](/tutorials/low-level-html) or the
-  [AngularDart tutorial](/angular/tutorial).
+  [low-level HTML tutorial for Dart][].
 </aside>
 
 
@@ -255,7 +225,7 @@ For setup details and a walkthrough, see
 
 Check out these resources:
 
-* Web-related tutorials and codelabs for Dart
+* Tutorials and codelabs for Dart
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
@@ -265,15 +235,25 @@ Check out these resources:
   * [Effective Dart]({{site.dartlang}}/guides/language/effective-dart)
 * Tools & libraries
   * [Dart SDK]({{site.dartlang}}/tools/sdk)
-  * [Dart tools for the web](/tools)
+  * [Dart tools](/tools)
   * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
   * [Web libraries](/guides/web-programming)
-  * [AngularDart](/angular)
 
 If you get stuck, find help at [Community and Support.](/community)
 
-[AngularDart]: /angular
-[AngularDart Components]: /angular/components
+[Chocolatey]: https://chocolatey.org
+[dartdevc]: /tools/dartdevc
+[DartPad documentation]: /tools/dartpad
+[Dart language tour]: /guides/language/language-tour
+[Dart library tour]: /guides/libraries/library-tour
+[Dart tools]: /tools
+[Debugging Dart Web Apps]: /webdev/guides/debugging
+[Homebrew,]: http://brew.sh/
+[Install the SDK]: /tools/sdk#install
+[low-level HTML tutorial for Dart]: /tutorials/low-level-html
+[Overview of Dart web libraries]: /guides/web-programming
+[overview of editors & debuggers]: /tools#ides-and-editors
 [stagehand]: {{site.pub-pkg}}/stagehand
+[Tutorial introduction to using Dart for basic web programming]: /tutorials/low-level-html/connect-dart-html
 [webdev]: /tools/webdev
-[WebStorm new project dialog]: {% asset webstorm-new-project.png @path %}
+[webdev serve]: /tools/webdev#serve
