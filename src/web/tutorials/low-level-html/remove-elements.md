@@ -3,7 +3,7 @@ title: "Remove DOM Elements"
 description: "Remove a child element from the DOM"
 
 prevpage:
-  url: /tutorials/low-level-html/add-elements
+  url: /web/tutorials/low-level-html/add-elements
   title: "Add Elements to the DOM"
 ---
 

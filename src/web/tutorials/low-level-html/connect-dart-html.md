@@ -2,10 +2,10 @@
 title: "Connect Dart &amp; HTML"
 description: "Shows basic scaffolding of a Dart web app"
 nextpage:
-  url: /tutorials/low-level-html/add-elements
+  url: /web/tutorials/low-level-html/add-elements
   title: "Add Elements to the DOM"
 prevpage:
-  url: /tutorials/get-data/fetch-data
+  url: /web/tutorials/get-data/fetch-data
   title: "Fetch Data Dynamically"
 ---
 

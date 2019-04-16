@@ -169,16 +169,16 @@
           permalink: '#tbd'
     - title: Web
       children:
-        - title: Get started [TBM]
-          permalink: https://webdev.dartlang.org/guides/get-started
-        - title: Connect Dart & HTML [TBM]
-          permalink: https://webdev.dartlang.org/tutorials/low-level-html/connect-dart-html
-        - title: Add elements to the DOM [TBM]
-          permalink: https://webdev.dartlang.org/tutorials/low-level-html/add-elements 
-        - title: Remove DOM elements [TBM]
-          permalink: https://webdev.dartlang.org/tutorials/low-level-html/remove-elements 
-        - title: Fetch data dynamically [TBM]
-          permalink: https://webdev.dartlang.org/tutorials/get-data/fetch-data
+        - title: Get started
+          permalink: /web/get-started
+        - title: Connect Dart & HTML
+          permalink: /web/tutorials/low-level-html/connect-dart-html
+        - title: Add elements to the DOM
+          permalink: /web/tutorials/low-level-html/add-elements 
+        - title: Remove DOM elements
+          permalink: /web/tutorials/low-level-html/remove-elements 
+        - title: Fetch data dynamically
+          permalink: /web/tutorials/get-data/fetch-data
         - title: Native extensions (TypeScript & JavaScript) [TBM]
           permalink: https://webdev.dartlang.org/guides/web-programming#js-interop
 
