@@ -170,7 +170,7 @@ using [Flutter.][Flutter]
 
 Google AdWords, AdSense, and AdMob all use Dart.
 More than 75% of Google's revenue flows through these apps.
-See [Who Uses Dart] for a more complete list.
+Inside or outside of Google, every Flutter app uses Dart.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview

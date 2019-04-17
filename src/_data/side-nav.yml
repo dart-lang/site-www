@@ -194,10 +194,12 @@
       permalink: /tools/sdk
     - title: History
       children:
-        - title: Converting to Dart&nbsp;2
+        - title: Migrating to Dart&nbsp;2
+          urlExactMatch: true
+          match-page-url-exactly: true
           permalink: /dart-2
-        - title: Converting web apps to Dart&nbsp;2 [TBM]
-          permalink: https://webdev.dartlang.org/dart-2
+        - title: Migrating web apps to Dart&nbsp;2
+          permalink: /web/dart-2
     - title: FAQ
       permalink: /faq
 
