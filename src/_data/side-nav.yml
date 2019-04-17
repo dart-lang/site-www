@@ -93,68 +93,6 @@
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
-    - title: Tools & techniques
-      children:
-      - title: Editors & debuggers
-        children:
-          - title: Overview [TBD]
-            permalink: '#tbd'
-          - title: Dart DevTools [TBD]
-            permalink: '#tbd'
-          - title: IntelliJ & Android Studio
-            permalink: /tools/jetbrains-plugin
-          - title: VS Code [TBD]
-            permalink: '#tbd'
-          - title: Other
-            urlExactMatch: true
-            match-page-url-exactly: true
-            permalink: /tools#ides-and-editors
-      - title: Command-line tools
-        children:
-          - title: Overview [TBD]
-            permalink: '#tbd'
-          - title: build_runner
-            permalink: /tools/build_runner
-          - title: dart
-            permalink: /server/tools/dart-vm
-          - title: dartanalyzer [TBD]
-            permalink: '#tbd'
-          - title: dartdoc [TBD]
-            permalink: '#tbd'
-          - title: dartfmt [TBD]
-            permalink: '#tbd'
-          - title: pub
-            permalink: /tools/pub
-          - title: Script/server
-            children:
-              - title: dart (Dart VM)
-                permalink: /server/tools/dart-vm
-          - title: Web
-            children:
-              - title: dart2js [TBM]
-                permalink: https://webdev.dartlang.org/tools/dart2js
-              - title: dartdevc
-                permalink: /tools/dartdevc
-              - title: webdev
-                permalink: /tools/webdev
-      - title: Formatting code [TBD]
-        permalink: '#tbd'
-      - title: Static analysis
-        children:
-          - title: Overview
-            permalink: /tools/analyzer
-          - title: Customizing
-            permalink: /guides/language/analysis-options
-          - title: Fixing common type problems
-            permalink: /guides/language/sound-problems
-          - title: What not to commit
-            permalink: /guides/libraries/private-files
-      - title: Testing & optimization
-        children:
-          - title: Testing
-            permalink: /guides/testing
-          - title: Debugging web apps
-            permalink: /web/debugging
     - title: Command-line & server
       children:
         - title: Get started
@@ -182,7 +120,72 @@
           - title: Add elements to the DOM
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: Remove DOM elements
-            permalink: /tutorials/web/low-level-html/remove-elements 
+            permalink: /tutorials/web/low-level-html/remove-elements
+
+- title: Tools & techniques
+  expanded: false
+  children:
+  - title: Editors & debuggers
+    children:
+      - title: Overview [TBD]
+        permalink: '#tbd'
+      - title: Dart DevTools [TBD]
+        permalink: '#tbd'
+      - title: IntelliJ & Android Studio
+        permalink: /tools/jetbrains-plugin
+      - title: VS Code [TBD]
+        permalink: '#tbd'
+      - title: Other
+        urlExactMatch: true
+        match-page-url-exactly: true
+        permalink: /tools#ides-and-editors
+  - title: Command-line tools
+    children:
+      - title: Overview [TBD]
+        permalink: '#tbd'
+      - title: build_runner
+        permalink: /tools/build_runner
+      - title: dartanalyzer [TBD]
+        permalink: '#tbd'
+      - title: dartdoc [TBD]
+        permalink: '#tbd'
+      - title: dartfmt [TBD]
+        permalink: '#tbd'
+      - title: pub
+        permalink: /tools/pub
+      - title: Server & command-line apps
+        children:
+          - title: dart (Dart VM)
+            permalink: /server/tools/dart-vm
+      - title: Web
+        children:
+          - title: dart2js
+            permalink: /tools/dart2js
+          - title: dartdevc
+            permalink: /tools/dartdevc
+          - title: webdev and build_runner
+            permalink: /tools/webdev
+  - title: Managing source code
+    children:
+      - title: Formatting code [TBD]
+        permalink: '#tbd'
+      - title: What not to commit
+        permalink: /guides/libraries/private-files
+
+  - title: Static analysis
+    children:
+      - title: Overview
+        permalink: /tools/analyzer
+      - title: Customizing
+        permalink: /guides/language/analysis-options
+      - title: Fixing common type problems
+        permalink: /guides/language/sound-problems
+  - title: Testing & optimization
+    children:
+      - title: Testing
+        permalink: /guides/testing
+      - title: Debugging web apps
+        permalink: /web/debugging
 
 - title: Resources
   expanded: false

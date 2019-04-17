@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "dart: The Standalone VM"
+title: "dart (Dart VM)"
 description: "The reference page for 'dart' at the command line."
 permalink: /server/tools/dart-vm
 short-title: "dart"
@@ -23,7 +23,7 @@ $ dart --enable-asserts test.dart
 that use the browser environment).
 </aside>
 
-### Options
+## Options
 
 Common command-line options for dart include:
 
