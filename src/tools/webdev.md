@@ -2,7 +2,7 @@
 title: webdev and build_runner
 description: Command-line tools for Dart web development.
 ---
-<?code-excerpt path-base="examples/ng/doc"?>
+<!--?code-excerpt path-base="examples/ng/doc"?-->
 
 The `webdev` and `build_runner` tools are command-line interfaces (CLIs)
 that you can use to build, serve, and test web apps.
@@ -57,7 +57,7 @@ To depend on these packages,
 add the following [dev dependencies][]
 to your app's `pubspec.yaml` file:
 
-<?code-excerpt "quickstart/pubspec.yaml (build dependencies)"?>
+<!--?code-excerpt "quickstart/pubspec.yaml (build dependencies)"?-->
 ```
   dev_dependencies:
     # ···
