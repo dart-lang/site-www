@@ -10,6 +10,9 @@ called the DOM (Document Object Model). Dart apps can modify the DOM programatic
 thus dynamically changing the web page. First, learn now to connect Dart and HTML.
 Then learn how to add, move, and remove DOM elements.
 
+[TBD: Refer to frameworks like AngularDart that
+handle most of this for you.]
+
 <div class="card-grid">
   <div class="card">
     <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a></h3>

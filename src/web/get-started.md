@@ -237,7 +237,7 @@ Check out these resources:
   * [Dart SDK]({{site.dartlang}}/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
-  * [Web libraries](/web/web-programming)
+  * [Web libraries and packages](/web/libraries)
 
 If you get stuck, find help at [Community and Support.](/community)
 
