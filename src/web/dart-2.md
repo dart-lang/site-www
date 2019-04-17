@@ -2,8 +2,6 @@
 title: Dart 2 Migration Guide for Web Apps
 description: Tips for migrating your web app from Dart 1.x to Dart 2.
 ---
-{% assign ng5-url = '' -%}
-{% assign ng5-desc = '' -%}
 
 <style>
 del { color: rgba(255,0,0,.35); }
@@ -18,7 +16,7 @@ These changes are necessary because of the following:
   - A **new build system** replaces `pub build`, `pub serve`, pub transformers.
 - Dart 2 [language and library changes.][dart-2]
 
-See also: [Angular Migration Guide v4 to v5](/angular/note/migrating-to-v5)
+See also: [Angular Migration Guide v4 to v5]({{site.angulardart}}/note/migrating-to-v5)
 
 
 ## Tools
@@ -31,7 +29,7 @@ Here are the highlights:
 | Dartium, content shell | Chrome and [dartdevc][] |
 | `pub build` | [`webdev build`](/tools/webdev#build) |
 | `pub serve` | [`webdev serve`](/tools/webdev#serve) |
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][]{{ng5-desc}} |
+| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
 | pub transformers | [build][] package transformers. See: [Transforming code][] |
 
 ## Code
@@ -43,7 +41,7 @@ To migrate to Dart 2, you'll need to edit your web app's project files:
   such as `web/index.html`. [See details below.](#web-index-html)
 - Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
-For complete examples of migrated apps, compare the `master` and `5-dev` branches
+For complete examples of migrated apps, compare the `4.x` and `master` branches
 of any one of the [angular-examples][] apps, such as these:
 
 - [Quickstart][angular-examples/quickstart]
@@ -88,7 +86,7 @@ with these changes applied.
 
 - [Dart 2 Updates:][dart-2]
   Information about changes in Dart 2, and how to migrate your code from Dart 1.x.
-- [Changelog][Documentation changelog]{{ng5-desc}}:
+- [Changelog][Documentation changelog]:
   Lists changes made to this site's documentation and examples.
 
 [angular-examples]: https://github.com/angular-examples
@@ -99,6 +97,6 @@ with these changes applied.
 [build]: https://github.com/dart-lang/build
 [dart-2]: {{site.dartlang}}/dart-2
 [dartdevc]: /tools/dartdevc
-[Documentation changelog]: {{ng5-url}}/changelog
-[Running tests]: {{ng5-url}}/angular/guide/testing/component/running-tests
+[Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
+[Running tests]: {{site.angulardart}}/guide/testing/component/running-tests
 [Transforming code]: https://github.com/dart-lang/build/blob/master/docs/transforming_code.md
