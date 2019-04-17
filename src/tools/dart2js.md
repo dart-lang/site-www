@@ -1,8 +1,7 @@
 ---
-title: "dart2js: The Dart-to-JavaScript Compiler"
+title: "dart2js: Dart-to-JavaScript compiler"
 short-title: dart2js
-description: Dart's dart2js tool compiles Dart code to JavaScript.
-permalink: /tools/dart2js
+description: Dart's dart2js tool compiles Dart code to deployable JavaScript.
 ---
 
 Use the _dart2js_ tool to compile Dart code to deployable JavaScript.
