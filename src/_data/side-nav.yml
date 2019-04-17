@@ -104,7 +104,7 @@
         - title: Native extensions
           permalink: /articles/server/native-extensions
         - title: AOT and JIT compilation [TBD]
-          permalink: '#tbd'
+          permalink: /tbd
     - title: Web
       children:
         - title: Get started
@@ -128,13 +128,13 @@
   - title: Editors & debuggers
     children:
       - title: Overview [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: Dart DevTools [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: IntelliJ & Android Studio
         permalink: /tools/jetbrains-plugin
       - title: VS Code [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: Other
         urlExactMatch: true
         match-page-url-exactly: true
@@ -142,15 +142,15 @@
   - title: Command-line tools
     children:
       - title: Overview [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: build_runner
         permalink: /tools/build_runner
       - title: dartanalyzer [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: dartdoc [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: dartfmt [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: pub
         permalink: /tools/pub
       - title: Server & command-line apps
@@ -168,7 +168,7 @@
   - title: Managing source code
     children:
       - title: Formatting code [TBD]
-        permalink: '#tbd'
+        permalink: /tbd
       - title: What not to commit
         permalink: /guides/libraries/private-files
 
