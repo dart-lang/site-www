@@ -2,6 +2,7 @@
 layout: top
 title: Platforms
 description: "You can use Dart when writing web apps, standalone apps, servers, mobile apps, and embedded apps."
+toc: false
 ---
 
 Dart is a scalable language that you can use to write simple scripts or full
@@ -10,10 +11,6 @@ or server-side app, there's a Dart solution for that.
 
 [TBD: Write this page. Here's a
 [first draft.](https://dartlang-org-staging-1.firebaseapp.com/platforms/overview)]
-
-## Test head
-
-### Test subhead
 
 <!-- LATER: Delete the following if we don't need them. -->
 [Dart logo]: {% asset shared/dart/logo/default.svg @path %}
