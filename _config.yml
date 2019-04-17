@@ -57,10 +57,6 @@ defaults:
   values:
     layout: tutorial
 - scope:
-    path: tools
-  values:
-    show_breadcrumbs: true
-- scope:
     path: tools/sdk
   values:
     repo: *repo-shared
