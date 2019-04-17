@@ -43,7 +43,7 @@ To migrate to Dart 2, you'll need to edit your web app's project files:
   such as `web/index.html`. [See details below.](#web-index-html)
 - Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
-For complete examples of migrated apps, compare the `master` and `5-dev` branches
+For complete examples of migrated apps, compare the `4.x` and `master` branches
 of any one of the [angular-examples][] apps, such as these:
 
 - [Quickstart][angular-examples/quickstart]
