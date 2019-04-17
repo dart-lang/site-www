@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
+    {% include page-header.html %}
+    <main id="page-content">
+        <div class="content">
+          <div>
+            {% include shared/page-github-links.html %}
+            <h1>{{ page.title }}</h1>
+          </div>
+          {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
+          {{ content | inject_anchors }}
+        </div>
+    </main>
+    {% include page-footer.html %}
+  </body>
+</html>

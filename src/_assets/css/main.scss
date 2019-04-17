@@ -1261,6 +1261,15 @@ body.error {
   }
 }
 
+// Top-level Page
+body.top {
+  #sidenav {
+    display: none;
+  }
+  #site-toc--inline { display: block; }
+  #site-toc--side { display: none; }
+}
+
 body.obsolete {
   #page-header {
     .alert {
