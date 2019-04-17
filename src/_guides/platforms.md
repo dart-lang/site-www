@@ -1,38 +1,21 @@
 ---
-layout: default
-title: "Overview: Platforms"
-short-title: Platforms
+layout: top
+title: Platforms
 description: "You can use Dart when writing web apps, standalone apps, servers, mobile apps, and embedded apps."
-toc: false
 ---
 
 Dart is a scalable language that you can use to write simple scripts or full
 featured apps. Whether you're creating a mobile app, web app, command-line script,
 or server-side app, there's a Dart solution for that.
 
-{:.card-grid}
-- {:.card.narrow}[![Flutter logo][]{: width="100"}][Flutter]{:.no-automatic-external}
-  {:.logo}
+[TBD: Write this page. Here's a
+[first draft.](https://dartlang-org-staging-1.firebaseapp.com/platforms/overview)]
 
-  ### [Flutter][]
+## Test head
 
-  Write a mobile app that runs on both iOS and Android.
+### Test subhead
 
-- {:.card.narrow}[![Web logo][]{: width="100"}][Web]{:.no-automatic-external}
-  {:.logo}
-
-  ### [Web][]
-
-  Write an app that runs in any modern web browser.
-
-- {:.card.narrow}[![Dart logo representing server-side Dart][Dart logo]{: width="100"}][Server]{:.no-automatic-external}
-  {:.logo}
-
-  ### [Server][]
-
-  Write a command-line app or server-side app.
-
-
+<!-- LATER: Delete the following if we don't need them. -->
 [Dart logo]: {% asset shared/dart/logo/default.svg @path %}
 [Server]: {{site.dart_vm}}
 [Flutter]: {{site.flutter}}

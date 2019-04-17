@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: top
 permalink: /community
 title: "Community and Support"
 description: "Communities, mailing lists, and bug databases for the Dart project."
