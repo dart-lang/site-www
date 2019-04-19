@@ -1,5 +1,5 @@
 ---
-title: "Fixing Common Type Problems"
+title: "Fixing common type problems"
 description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}

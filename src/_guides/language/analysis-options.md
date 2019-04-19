@@ -1,6 +1,6 @@
 ---
-title: Customize Static Analysis
-description: Customize static analysis using an analysis options file.
+title: Customizing static analysis
+description: Use an analysis options file and code comments to customize static analysis.
 ---
 
 Static analysis allows you to find problems before
