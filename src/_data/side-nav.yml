@@ -152,14 +152,12 @@
         permalink: /tbd
       - title: What not to commit
         permalink: /guides/libraries/private-files
-
   - title: Static analysis
     children:
       - title: Customizing static analysis
         permalink: /guides/language/analysis-options
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
-
   - title: Testing & optimization
     children:
       - title: Testing
