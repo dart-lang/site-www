@@ -283,7 +283,7 @@ update the tools by activating them again:
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
 [Dart 2 compatible web app]: /dart-2
 [Dart fork of Chrome DevTools]: https://github.com/dart-lang/devtools-frontend
-[Dart IDE or editor]: /tools#recommended-ide
+[Dart IDE or editor]: /tools#ides-and-editors
 [Dart SDK]: /tools/sdk#install
 [dartdevc]: /tools/dartdevc
 [devtools-frontend README]: https://github.com/dart-lang/devtools-frontend/blob/master/readme.md#dart-devtools

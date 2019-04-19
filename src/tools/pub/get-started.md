@@ -1,11 +1,13 @@
 ---
 layout: default
-title: "Getting Started with Pub"
+title: "How to use packages"
 description: "Learn more about Dart's tool for managing packages and assets, the pub tool."
 permalink: /tools/pub/get-started
 ---
 
 You can use [pub](/tools/pub) to manage Dart packages.
+**[TBD: improve this intro. mention importing, pub site,
+and other stuff covered on this page.]**
 
 At the very minimum,
 a Dart package is simply a directory containing a _pubspec_ file.

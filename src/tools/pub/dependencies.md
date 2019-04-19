@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /tools/pub/dependencies
-title: "Pub Dependencies"
+title: "Package dependencies"
 description: "Add other packages to your app. Specify package locations, version constraints, and more."
 ---
 
