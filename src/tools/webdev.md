@@ -1,11 +1,12 @@
 ---
-title: webdev and build_runner
+title: webdev
 description: Command-line tools for Dart web development.
 ---
 <!--?code-excerpt path-base="examples/ng/doc"?-->
 
-The `webdev` and `build_runner` tools are command-line interfaces (CLIs)
-that you can use to build, serve, and test web apps.
+This page explains how to use `webdev` and
+a tool it depends on — `build_runner` —
+to build, serve, and test your web apps.
 The [webdev][] package provides `webdev`,
 which wraps around the more general-purpose
 [`build_runner` tool.][build_runner]
@@ -20,12 +21,9 @@ The only time most web app developers run `build_runner` is for tests.
 
 ## Setup
 
-The easiest way to use `webdev` is to globally install it,
+The easiest way to get `webdev` is to globally install it,
 so that it can be [in your PATH.][PATH]
-The `build_runner` tool can't be globally installed;
-to run it, you need `pub run`.
-
-Before you can use either tool,
+Before you can use `webdev`,
 your web app must depend on the
 build_runner and build_web_compilers packages.
 
