@@ -1,5 +1,5 @@
 ---
-title: Glossary of Pub Terms
+title: Glossary of package terms
 description: A glossary of terms relating to Dart's package management tool, pub.
 ---
 
