@@ -1,46 +1,10 @@
 ---
 layout: default
-title: "Commonly Used Dart Libraries"
+title: "Commonly used packages"
 description: "What are some of the most useful and popular Dart libraries and where can you learn more?"
 ---
 
-You can use many Dart libraries when writing your code.
-Dart libraries come from a variety of sources:
-
-* Core libraries&mdash;such as dart:core, dart:async, and
-  dart:collection&mdash;are distributed with the SDK and documented at the
-  [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}).
-* Libraries shared with the Dart community are distributed as library packages,
-  published at the [Pub site.]({{site.pub}})
-  The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
-* Libraries from GitHub, a URL, or a local path can be included in your application.
-  For more information, see
-  [Dependency sources](/tools/pub/dependencies#dependency-sources),
-  a section in [Pub Dependencies](/tools/pub/dependencies).
-* Local libraries are placed under the `/lib` directory of your [application's directory
-  structure](/tools/pub/package-layout#public-directories).
-
-This document discusses the first two kinds of libraries,
-and tells you where to learn more about some of the most widely used Dart libraries.
-
-<aside class="alert alert-info" markdown="1">
-**Tip:**
-If you don't find the functionality you need in the [Dart API
-docs,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-check the [Pub site]({{site.pub}})
-</aside>
-
-Looking for web, server, or Flutter libraries?
-See [Specialized libraries](#specialized-libraries).
-
-## Dart SDK libraries
-
-The SDK libraries (such as dart:core, dart:async, dart:math, dart:convert)
-contain the fundamental classes used in Dart applications.
-Classes that aren't as universal are placed in packages outside of the SDK.
-
-The [library tour](/guides/libraries/library-tour) walks you through the
-libraries distributed with the SDK.
+**[TBD: Add overview here.]**
 
 ## Commonly used packages
 
@@ -80,6 +44,50 @@ additional functionality and filling in missing features:
   update-for-dart-2
   TODO: Add math after it's been updated
 {% endcomment %}
+
+<hr>
+<hr>
+<hr>
+
+## TBD: MOVE all non-package-focused parts of the following OUT of this page!
+
+You can use many Dart libraries when writing your code.
+Dart libraries come from a variety of sources:
+
+* Core libraries&mdash;such as dart:core, dart:async, and
+  dart:collection&mdash;are distributed with the SDK and documented at the
+  [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}).
+* Libraries shared with the Dart community are distributed as library packages,
+  published at the [Pub site.]({{site.pub}})
+  The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
+* Libraries from GitHub, a URL, or a local path can be included in your application.
+  For more information, see
+  [Dependency sources](/tools/pub/dependencies#dependency-sources),
+  a section in [Pub Dependencies](/tools/pub/dependencies).
+* Local libraries are placed under the `/lib` directory of your [application's directory
+  structure](/tools/pub/package-layout#public-directories).
+
+This document discusses the first two kinds of libraries,
+and tells you where to learn more about some of the most widely used Dart libraries.
+
+<aside class="alert alert-info" markdown="1">
+**Tip:**
+If you don't find the functionality you need in the [Dart API
+docs,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+check the [Pub site]({{site.pub}})
+</aside>
+
+Looking for web, server, or Flutter libraries?
+See [Specialized libraries](#specialized-libraries).
+
+## Dart SDK libraries
+
+The SDK libraries (such as dart:core, dart:async, dart:math, dart:convert)
+contain the fundamental classes used in Dart applications.
+Classes that aren't as universal are placed in packages outside of the SDK.
+
+The [library tour](/guides/libraries/library-tour) walks you through the
+libraries distributed with the SDK.
 
 ## Specialized libraries
 
