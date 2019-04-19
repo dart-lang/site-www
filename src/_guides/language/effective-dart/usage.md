@@ -182,15 +182,15 @@ alphanumeric text, the `{}` should be omitted.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, $name!'
-"Wear your wildest $decade's outfit."
-'Wear your wildest ${decade}s outfit.'
+    "Wear your wildest $decade's outfit."
+    'Wear your wildest ${decade}s outfit.'
 {% endprettify %}
 
 {:.bad-style}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, ${name}!'
-"Wear your wildest ${decade}'s outfit."
+    "Wear your wildest ${decade}'s outfit."
 {% endprettify %}
 
 ## Collections

@@ -30,8 +30,8 @@ void miscDeclAnalyzedButNotTested() {
     return
         // #docregion string-interpolation-avoid-curly
         'Hi, $name!'
-        "Wear your wildest $decade's outfit."
-        'Wear your wildest ${decade}s outfit.'
+            "Wear your wildest $decade's outfit."
+            'Wear your wildest ${decade}s outfit.'
         // #enddocregion string-interpolation-avoid-curly
         ;
   };
