@@ -1,8 +1,13 @@
 ---
 layout: default
-title: "Create Library Packages"
+title: "Creating packages"
 description: "Learn how to create library packages in Dart."
 ---
+
+**[TBD: Rewrite slightly to introduce on packages in general,
+instead of just focusing on libraries. Basically, explain creating
+packages in terms of the common case, distributing reusable code (libraries).
+Mention tools as another use case for packages.]**
 
 Libraries are a great way to create modular code that can
 be easily shared. In the Dart ecosystem,

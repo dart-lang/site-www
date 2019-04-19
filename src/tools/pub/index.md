@@ -1,10 +1,10 @@
 ---
-title: Pub Package Manager
+title: Pub package manager
 short-title: Pub
 description: Use the pub tool to manage Dart packages.
 ---
 
-You can use the `pub` tool to manage Dart packages.
+You can use the [`pub` tool](/tools/pub/cmd) to manage Dart packages.
 Pub is one of the tools that you get when you
 [install](/tools/sdk#install) the Dart SDK.
 

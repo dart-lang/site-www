@@ -85,7 +85,7 @@ watch
 ## More information
 
 If you're working on web-specific code,
-see the [webdev and build_runner page.][webdev]
+see the [webdev page.][webdev]
 
 For details on using build_runner, see the following:
 
@@ -108,5 +108,5 @@ For details on using build_runner, see the following:
 [reflection]: /articles/server/reflection-with-mirrors
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /guides/testing
-[webdev]: {{site.webdev}}/tools/webdev
-[webdev serve]: {{site.webdev}}/tools/webdev#serve
+[webdev]: /tools/webdev
+[webdev serve]: /tools/webdev#serve

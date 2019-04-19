@@ -24,7 +24,7 @@ For a full introduction to the Dart language, including types, see the
 </aside>
 
 One benefit of static type checking is the ability to find bugs
-at compile time using Dart's [static analyzer.][analyzer]
+at compile time using Dart's [static analyzer.][analysis]
 
 You can fix most static analysis errors by adding type annotations to generic
 classes. The most common generic classes are the collection types
@@ -508,17 +508,17 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 
 The following resources have further information on sound Dart:
 
-* [Fixing Common Type Problems](/guides/language/sound-problems) -
+* [Fixing common type problems](/guides/language/sound-problems) -
   Errors you may encounter when
   writing sound Dart code, and how to fix them.
 * [Dart 2](/dart-2) - How to update Dart 1.x code to Dart 2.
-* [Customize Static Analysis](/guides/language/analysis-options) - How
+* [Customizing static analysis][analysis] - How
   to set up and customize the analyzer and linter using an analysis
   options file.
 
 
 [analysis_options.yaml]: /guides/language/analysis-options
-[analyzer]: /tools/analyzer
+[analysis]: /guides/language/analysis-options
 [Dart VM]: /server/tools/dart-vm
 [dartdevc]: {{site.webdev}}/tools/dartdevc
 [strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode

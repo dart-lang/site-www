@@ -52,37 +52,18 @@
           permalink: /tools/pub/glossary
         - title: Package layout conventions
           permalink: /tools/pub/package-layout
-        - title: Pubspec file
-          permalink: /tools/pub/pubspec
-        - title: Versioning
-          permalink: /tools/pub/versioning
-    - title: The pub tool
-      children:
-        - title: Overview
+        - title: 'Pub package manager [TBD: move]'
+          # Move this?
           # Are both of the following necessary, or just one of them?
           urlExactMatch: true
           match-page-url-exactly: true
-          permalink: /tools/pub/cmd
-        - title: pub cache
-          permalink: /tools/pub/cmd/pub-cache
-        - title: pub deps
-          permalink: /tools/pub/cmd/pub-deps
-        - title: pub downgrade
-          permalink: /tools/pub/cmd/pub-downgrade
-        - title: pub get
-          permalink: /tools/pub/cmd/pub-get
-        - title: pub global
-          permalink: /tools/pub/cmd/pub-global
-        - title: pub publish
-          permalink: /tools/pub/cmd/pub-lish
-        - title: pub run
-          permalink: /tools/pub/cmd/pub-run
-        - title: pub upgrade
-          permalink: /tools/pub/cmd/pub-upgrade
-        - title: pub uploader
-          permalink: /tools/pub/cmd/pub-uploader
-        - title: Troubleshooting
+          permalink: /tools/pub
+        - title: Pubspec file
+          permalink: /tools/pub/pubspec
+        - title: Troubleshooting pub
           permalink: /tools/pub/troubleshoot
+        - title: Versioning
+          permalink: /tools/pub/versioning
 
 - title: Development
   expanded: false
@@ -93,7 +74,7 @@
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
-    - title: Command-line & server
+    - title: Command line & server
       children:
         - title: Get started
           permalink: /tutorials/server/get-started
@@ -125,6 +106,10 @@
 - title: Tools & techniques
   expanded: false
   children:
+  - title: Tools overview
+    urlExactMatch: true
+    match-page-url-exactly: true
+    permalink: /tools
   - title: Editors & debuggers
     children:
       - title: Overview [TBD]
@@ -135,48 +120,43 @@
         permalink: /tools/jetbrains-plugin
       - title: VS Code [TBD]
         permalink: /tbd
-      - title: Other
-        urlExactMatch: true
-        match-page-url-exactly: true
-        permalink: /tools#ides-and-editors
   - title: Command-line tools
     children:
-      - title: Overview [TBD]
-        permalink: /tbd
-      - title: build_runner
-        permalink: /tools/build_runner
-      - title: dartanalyzer [TBD]
-        permalink: /tbd
-      - title: dartdoc [TBD]
-        permalink: /tbd
-      - title: dartfmt [TBD]
-        permalink: /tbd
-      - title: pub
-        permalink: /tools/pub
-      - title: Server & command-line apps
-        children:
-          - title: dart (Dart VM)
-            permalink: /server/tools/dart-vm
-      - title: Web
-        children:
-          - title: dart2js
-            permalink: /tools/dart2js
-          - title: dartdevc
-            permalink: /tools/dartdevc
-          - title: webdev and build_runner
-            permalink: /tools/webdev
+    - title: Dart SDK
+      expanded: true
+      children:
+        - title: Overview and installation
+          permalink: /tools/sdk
+        - title: dart (Dart VM)
+          permalink: /tools/dart-vm
+        - title: dartanalyzer
+          permalink: /tools/dartanalyzer
+        - title: "dart2js (prod JS)"
+          permalink: /tools/dart2js
+        - title: "dartdevc (dev JS)"
+          permalink: /tools/dartdevc
+        - title: dartdoc
+          permalink: /tools/dartdoc
+        - title: dartfmt
+          permalink: /tools/dartfmt
+        - title: pub
+          permalink: /tools/pub/cmd
+    - title: Other command-line tools
+      expanded: true
+      children:
+        - title: build_runner
+          permalink: /tools/build_runner
+        - title: webdev
+          permalink: /tools/webdev
   - title: Managing source code
     children:
       - title: Formatting code [TBD]
         permalink: /tbd
       - title: What not to commit
         permalink: /guides/libraries/private-files
-
   - title: Static analysis
     children:
-      - title: Overview
-        permalink: /tools/analyzer
-      - title: Customizing
+      - title: Customizing static analysis
         permalink: /guides/language/analysis-options
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
@@ -190,8 +170,6 @@
 - title: Resources
   expanded: false
   children:
-    - title: Install Dart
-      permalink: /tools/sdk
     - title: History
       children:
         - title: Migrating to Dart&nbsp;2

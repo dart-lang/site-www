@@ -1,7 +1,6 @@
 ---
 title: Tools
 description: The tools that support the Dart language.
-show_breadcrumbs: false
 ---
 
 When you're ready to create an app,
@@ -12,16 +11,21 @@ get the SDK and tools for your app type.
 | App type   | Get started instructions          | Tool information         |
 |------------|-----------------------------------|--------------------------|
 | Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
-| Web    | [Install the Dart SDK](/tools/sdk) | [Dart tools for the web](/web/tools) |
-| Server or command line | [Install the Dart SDK](/tools/sdk) | [Tools for server-side development](/server/tools) |
+| Web    | [Install the Dart SDK](/tools/sdk) | [Web tools](#web) |
+| Server or command line | [Install the Dart SDK](/tools/sdk) | [Server-side tools](#server) |
 {:.table .table-striped}
 </div>
 
-The rest of this page covers general-purpose tools that
-support the Dart language.
+## General-purpose tools
+
+The following tools support the Dart language on all platforms.
+
+* [DartPad](#dartpad)
+* [IDEs and editors](#ides-and-editors)
+* [Command-line tools](#cli)
 
 
-## DartPad
+### DartPad
 
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World"
  width="200px" align="right" />
@@ -32,7 +36,7 @@ It supports Dart's core libraries,
 except for VM libraries such as dart:io.
 
 
-## IDEs and editors
+### IDEs and editors
 
 Dart plugins exist for these commonly used IDEs.
 
@@ -68,16 +72,30 @@ and available as open source.
 </li>
 </ul>
 
-## Command-line tools
+### Command-line tools {#cli}
 
-Some command-line tools are in Dart-related SDKs,
-and some are in packages.
+The Dart SDK includes the following general-purpose tools:
 
-### Tools in SDKs
+[`dartanalyzer`](/tools/dartanalyzer)
+: A static analyzer that evaluates and reports any errors or warnings in your code.
+  The Dart plugin for your IDE should make use of Dart's analysis engine,
+  but you can also run the analyzer from the command line.
 
-Most Dart-related SDKs include the following tools:
+[`dartdoc`](https://github.com/dart-lang/dartdoc#dartdoc)
+: Generates API reference documentation.
+  [TBD: create and link to a page on this site]
 
-[Pub package manager (`pub`)](/tools/pub) 
+[`dartfmt`](https://github.com/dart-lang/dart_style#readme)
+: Formats your code, following the recommendations of the
+  [Dart style guide](/guides/language/effective-dart/style).
+  IDEs that support Dart generally allow you to format the code within
+  the IDE. Or you can run the formatter from the command line.
+  [TBD: create and link to a page on this site. put the following in it:]
+  Also see the [dart_style][] package, which can be useful
+  for getting a version of `dartfmt` that's different
+  from the one included in the SDK.
+
+[`pub`](/tools/pub)
 : Manages Dart packages,
   making it easy for you to install, use, and share Dart libraries,
   command-line tools, and other assets.
@@ -86,34 +104,61 @@ Most Dart-related SDKs include the following tools:
   IDEs that support Dart generally have special support for pub,
   but you can also use it from the command line.
 
-[Static analyzer (`dartanalyzer`)](/tools/analyzer)
-: Evaluates and reports any errors or warnings in your code.
-  The Dart plugin for your IDE should make use of Dart's analysis engine,
-  but you can also run the analyzer from the command line.
-
-[Code formatter (`dartfmt`)](https://github.com/dart-lang/dart_style#readme)
-: Formats your code, following the recommendations of the
-  [Dart Style Guide](/guides/language/effective-dart/style).
-  IDEs that support Dart generally allow you to format the code within
-  the IDE. Or you can run the formatter from the command line.
-
-### Tools in packages
-
-The following tools are distributed in packages on the Dart package site.
-To install them, use the `pub` command, as described in each tool's
+Some additional tools are available in [packages](/tools/pub/get-started).
+To install these tools, use the `pub` command, as described in each tool's
 installation instructions.
+Here are the general-purpose tools you might want to install:
 
-[build_runner][]
+[`build_runner`][build_runner]
 : A code generator.
 
-[dartfix][]
+[`dartfix`][dartfix]
 : A tool for migrating Dart source code and fixing common issues.
 
-Also see the [dart_style][] package, which can be useful
-for getting a version of `dartfmt` that's different
-from the one included in the SDK.
-
 [build_runner]: /tools/build_runner
-[dartfix]: {{site.pub-pkg}}/dartfix
 [dart_style]: {{site.pub-pkg}}/dart_style
+[dartfix]: {{site.pub-pkg}}/dartfix
+
+
+## Tools for developing web apps {#web}
+
+The following tools are especially for developing web apps:
+
+[webdev](/tools/webdev)
+: A command line interface (CLI) for Dart web app development,
+  including building and serving web apps.
+
+[dart2js](/tools/dart2js)
+: The original Dart-to-JavaScript compiler, with tree shaking.
+  IDEs and the webdev CLI use dart2js when building web apps for deployment.
+
+[dartdevc](/tools/dartdevc)
+: The Dart dev compiler, a modular Dart-to-JavaScript compiler.
+  IDEs and the webdev CLI use dartdevc when running a development server.
+
+[build_runner](/tools/webdev)
+: A build package that's used by the webdev CLI.
+  You can use it directly for [testing](/tools/webdev#test)
+  or if you need more configurability than webdev provides.
+
+
+## Tools for developing command-line apps and servers {#server}
+
+The following tools have special support for developing or running
+command line apps and servers:
+
+[Standalone Dart VM: `dart`](/server/tools/dart-vm)
+: Executes Dart code.
+  IDEs that support Dart,
+  and some of the `pub` commands, use this
+  command behind-the-scenes to execute Dart scripts.
+  Note that you must configure your IDE with the location of
+  the `dart` binary.
+
+[Pub package manager: `pub`](/tools/pub)
+: Simplifies downloading and running scripts,
+  with commands such as `pub get`, `pub global activate`, `pub global run`,
+  and `pub run`.
+
+[PENDING: AOT]
 

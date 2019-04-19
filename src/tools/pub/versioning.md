@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Pub Versioning Philosophy"
+title: "Package versioning"
 description: "How Dart's package management tool, pub, handles versioning of packages."
 permalink: /tools/pub/versioning
 ---

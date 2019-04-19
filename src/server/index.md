@@ -20,10 +20,10 @@ that can help you develop command-line and server-side apps.
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/tools/sdk#install) to get the core Dart
-  libraries and [tools](/server/tools).
+  libraries and [tools](/tools).
 
 More tools
-: The Dart [Tools](/tools) page links to generally useful tools,
+: The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
 
 ## Tutorials
