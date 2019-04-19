@@ -165,6 +165,7 @@
       { "source": "/server/app-engine{,/**}", "destination": "https://dart-lang.github.io/server/google-cloud-platform", "type": 301 },
       { "source": "/server/google-cloud-platform{,/**}", "destination": "https://dart-lang.github.io/server/google-cloud-platform", "type": 301 },
       { "source": "/server/tls-ssl?(.html)", "destination": "https://dart-lang.github.io/server/tls-ssl.html", "type": 301 },
+      { "source": "/server/tools/dart-vm", "destination": "/tools/dart-vm", "type": 301 },
       { "source": "/dart-vm", "destination": "/server", "type": 301 },
       { "source": "/dart-vm/:page*", "destination": "/server/:page*", "type": 301 },
       { "source": "/tutorials/dart-vm", "destination": "/tutorials/server", "type": 301 },
@@ -172,10 +173,7 @@
       { "source": "/stable{,/**}", "destination": "https://api.dartlang.org/stable", "type": 301 },
       { "source": "/support/faq?(.html)", "destination": "/faq", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
-      { "source": "/tools/dart-vm", "destination": "/dart-vm/tools/dart-vm", "type": 301 },
-      { "source": "/tools/dartdoc?(.html)", "destination": "https://github.com/dart-lang/dartdoc", "type": 301 },
       { "source": "/tools/dartdocgen{,/**}", "destination": "https://github.com/dart-lang/dartdoc#dartdoc", "type": 301 },
-      { "source": "/tools/dartfmt?(.html)", "destination": "https://github.com/dart-lang/dart_style#readme", "type": 301 },
       { "source": "/tools/dartium?(.html)", "destination": "/web/dart-2#tools", "type": 301 },
       { "source": "/tools/debian?(.html)", "destination": "/install/linux", "type": 301 },
       { "source": "/tools/docgen{,/**}", "destination": "https://pub.dartlang.org/packages/dartdoc", "type": 301 },
@@ -198,7 +196,6 @@
       { "source": "/tools/webstorm?(.html)", "destination": "https://webdev.dartlang.org/tools/webstorm", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dartlang.org/packages/observable", "type": 301 },
-      { "source": "/Dart-vm", "destination": "/dart-vm", "type": 301 },
       { "source": "/dart-1", "destination": "https://v1-dartlang-org.firebaseapp.com", "type": 301 },
       { "source": "/packages", "destination": "https://pub.dartlang.org", "type": 301 }
     ]

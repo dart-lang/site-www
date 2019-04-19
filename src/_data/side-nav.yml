@@ -123,6 +123,7 @@
   - title: Command-line tools
     children:
     - title: Dart SDK
+      expanded: true
       children:
         - title: Overview and installation
           permalink: /tools/sdk
@@ -141,6 +142,7 @@
         - title: pub
           permalink: /tools/pub/cmd
     - title: Other command-line tools
+      expanded: true
       children:
         - title: build_runner
           permalink: /tools/build_runner
