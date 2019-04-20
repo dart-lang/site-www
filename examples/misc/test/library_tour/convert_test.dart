@@ -36,8 +36,8 @@ void main() {
     var jsonText = jsonEncode(scores);
     assert(jsonText ==
         '[{"score":40},{"score":80},'
-        '{"score":100,"overtime":true,'
-        '"special_guest":null}]');
+            '{"score":100,"overtime":true,'
+            '"special_guest":null}]');
     // #enddocregion json-encode
   });
 
