@@ -25,10 +25,11 @@ consult the [Dart API reference.][Dart API]
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
 [dart:html](#darthtml)
-: [PENDING: description]
+: DOM and other APIs for browser-based apps.
 
 [dart:io](#dartio)
-: [PENDING: description]
+: I/O for programs that run in the Dart VM,
+  such as servers and command-line scripts.
 
 This page is just an overview;
 it covers only a few dart:* libraries

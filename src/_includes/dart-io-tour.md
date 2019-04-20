@@ -23,7 +23,7 @@ To use the dart:io library you must import it:
 import 'dart:io';
 {% endprettify %}
 
-## Files and directories
+### Files and directories
 
 The I/O library enables command-line apps to read and write files and
 browse directories. You have two choices for reading the contents of a
@@ -33,7 +33,7 @@ large or you want to process it while reading it, you should use a
 Stream, as described in
 [Streaming file contents](#streaming-file-contents).
 
-### Reading a file as text
+#### Reading a file as text
 
 When reading a text file encoded using UTF-8, you can read the entire
 file contents with `readAsString()`. When the individual lines are
@@ -58,7 +58,7 @@ Future main() async {
 {% endprettify %}
 
 
-### Reading a file as binary
+#### Reading a file as binary
 
 The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
@@ -74,7 +74,7 @@ Future main() async {
 }
 {% endprettify %}
 
-### Handling errors
+#### Handling errors
 
 To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
@@ -93,7 +93,7 @@ Future main() async {
 }
 {% endprettify %}
 
-### Streaming file contents
+#### Streaming file contents
 
 Use a Stream to read a file, a little at a time.
 You can use either the [Stream API](/guides/libraries/library-tour#stream)
@@ -123,7 +123,7 @@ Future main() async {
 }
 {% endprettify %}
 
-### Writing file contents
+#### Writing file contents
 
 You can use an [IOSink][] to
 write data to a file. Use the File `openWrite()` method to get an IOSink
@@ -150,7 +150,7 @@ var sink = logFile.openWrite(mode: FileMode.append);
 To write binary data, use `add(List<int> data)`.
 
 
-### Listing files in a directory
+#### Listing files in a directory
 
 Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
@@ -177,7 +177,7 @@ Future main() async {
 {% endprettify %}
 
 
-### Other common functionality
+#### Other common functionality
 
 The File and Directory classes contain other functionality, including
 but not limited to:
@@ -191,12 +191,12 @@ Refer to the API docs for [File][] and [Directory][] for a full
 list of methods.
 
 
-## HTTP clients and servers
+### HTTP clients and servers
 
 The dart:io library provides classes that command-line apps can use for
 accessing HTTP resources, as well as running HTTP servers.
 
-### HTTP server
+#### HTTP server
 
 The [HttpServer][] class
 provides the low-level functionality for building web servers. You can
@@ -233,7 +233,7 @@ void processRequest(HttpRequest request) {
 }
 {% endprettify %}
 
-### HTTP client
+#### HTTP client
 
 The [HttpClient][] class
 helps you connect to HTTP resources from your Dart command-line or
@@ -257,7 +257,7 @@ Future main() async {
 {% endprettify %}
 
 
-## More information
+### More information
 
 This page showed how to use the major features of the [dart:io][] library.
 Besides the APIs discussed in this section, the dart:io library also
