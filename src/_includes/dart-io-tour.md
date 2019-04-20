@@ -1,3 +1,5 @@
+<?code-excerpt plaster="none"?>
+
 The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
