@@ -24,7 +24,7 @@ specification available for Ecma TC52 in the coming quarters.
 
 ### Q. How are you taking input on changes to the Dart repository?
 
-We listen to feedback and [issues][issues], and we review patches from contributors.
+We listen to feedback and [issues,][SDK issues] and we review patches from contributors.
 A contributor with a good track record can become a committer to the repository.
 Google engineers will also be working in the public repository, making visible
 changes. The project is lucky to have received many external patches and has
@@ -91,7 +91,7 @@ we can't include everything. Some features don't fit the basic nature of the
 language, and some don't play well with other features. Simplicity is the single
 most important gift we can give to future programmers.
 
-Please look at the [list of language issues][issues] to see if your request is
+Please look at the [list of language issues][language issues] to see if your request is
 already there. If it is, let us know that you care and give it a thumbs up.
 Otherwise, go ahead and add a new issue.  Make a thoughtful argument for your feature.
 Sample code with and without your feature is good evidence; a sizeable codebase
@@ -111,7 +111,8 @@ appreciation through careful design choices and fair communication about them.
 
 ### Q. Is Dart a statically typed language?
 
-Yes, Dart 2 is statically typed. For more information, see [Dart's Type System].
+Yes, Dart 2 is statically typed. For more information,
+read about [Dart's type system][].
 
 With its combination of static and runtime checks, Dart has a sound type system,
 which guarantees that an expression of one type cannot produce a value of
@@ -161,10 +162,10 @@ to the site.
 
 ### Q. Do I need to use a particular editor or IDE to write Dart code?
 
-Nope. You can try out Dart code with [DartPad], and then use your favorite
+Nope. You can try out Dart code with [DartPad,][DartPad] and then use your favorite
 editor or IDE for development. Some full-featured IDEs such as IntelliJ IDEA,
 WebStorm, and Visual Studio Code have Dart plugins. Open source Dart plugins
-also exist for a number of editors. For more information, see [Dart Tools].
+also exist for a number of editors. For more information, see the [Dart tools][].
 
 ### Q. Can I build an Android app with Dart?
 
@@ -180,7 +181,8 @@ Inside or outside of Google, every Flutter app uses Dart.
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
-[issues]: https://github.com/dart-lang/sdk/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-language
+[SDK issues]: https://github.com/dart-lang/sdk/issues
+[language issues]: https://github.com/dart-lang/language/issues
 [pub]: {{site.pub}}
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
@@ -188,7 +190,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
 [tc52]: {{site.news}}/2013/12/ecma-forms-tc52-for-dart-standardization.html
 [Dart on the Server]: https://dart-lang.github.io/server/
-[Dart Tools]: /tools/
+[Dart tools]: /tools/
 [Dart and Google Cloud Platform]: https://dart-lang.github.io/server/google-cloud-platform/
 [Who Uses Dart]: /community/who-uses-dart
 [spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
@@ -197,5 +199,5 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/sound-dart
-[Dart's Type System]: /guides/language/sound-dart
+[Dart's type system]: /guides/language/sound-dart
 [Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflectionmirrors-system

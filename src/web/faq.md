@@ -149,7 +149,7 @@ For example, the `dart:io` library
 provides access to operating system files and directories with APIs not
 available to the browser.
 
-### Q. Why does Dart have two compilers, dartdevc and dart2js?
+### Q. Why does Dart have two JavaScript compilers, dartdevc and dart2js?
 
 The two compilers have different use cases. You don't usually have to worry
 about which compiler you're using, because the [webdev][] tool
