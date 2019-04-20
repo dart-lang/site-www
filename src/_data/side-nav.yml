@@ -179,7 +179,11 @@
         - title: Migrating web apps to Dart&nbsp;2
           permalink: /web/dart-2
     - title: FAQ
+      urlExactMatch: true
+      match-page-url-exactly: true
       permalink: /faq
+    - title: Web FAQ
+      permalink: /web/faq
 
 - title: Related sites
   expanded: true
