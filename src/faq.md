@@ -7,10 +7,9 @@ description: You have questions about Dart, we have answers.
 _Updated May 2018_
 
 This page collects some of the top questions we've heard from the community
-since Dart was open sourced. For other questions and answers, see:
+since Dart was open sourced. For web-specific questions and answers, see the
+[Dart web FAQ](/web/faq).
 
-* [Flutter FAQ]({{site.flutter}}/faq/)
-* [Dart web development FAQ]({{site.webdev}}/faq)
 
 ## General
 
@@ -30,6 +29,8 @@ A contributor with a good track record can become a committer to the repository.
 Google engineers will also be working in the public repository, making visible
 changes. The project is lucky to have received many external patches and has
 welcomed distributed committers.
+
+---
 
 ## Language
 
@@ -104,6 +105,8 @@ that can fit into any single language without making a total hash of it.   But
 we do very much appreciate suggestions and evidence.  We hope you'll see our
 appreciation through careful design choices and fair communication about them.
 
+---
+
 ## Types
 
 ### Q. Is Dart a statically typed language?
@@ -138,6 +141,8 @@ their benefit in Dart.
 
 Again, we're trying to be pragmatic, and we think the outcome is reasonable.
 
+---
+
 ## Usage and tools
 
 ### Q. Does Dart support JSON?
@@ -171,6 +176,7 @@ using [Flutter.][Flutter]
 Google AdWords, AdSense, and AdMob all use Dart.
 More than 75% of Google's revenue flows through these apps.
 Inside or outside of Google, every Flutter app uses Dart.
+
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
 [pnacl]: https://developer.chrome.com/native-client/overview
