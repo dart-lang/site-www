@@ -1544,8 +1544,8 @@ var scores = [
 var jsonText = jsonEncode(scores);
 assert(jsonText ==
     '[{"score":40},{"score":80},'
-    '{"score":100,"overtime":true,'
-    '"special_guest":null}]');
+        '{"score":100,"overtime":true,'
+        '"special_guest":null}]');
 {% endprettify %}
 
 Only objects of type int, double, String, bool, null, List, or Map (with
