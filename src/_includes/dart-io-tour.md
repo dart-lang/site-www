@@ -1,18 +1,10 @@
----
-layout: default
-title: "A Tour of the dart:io Library"
-description: Learn about the dart:io library and APIs.
-permalink: /server/io-library-tour
----
-<?code-excerpt plaster="none"?>
-
 The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
 <div class="alert alert-warning" markdown="1">
   **Important:**
-  Only [Flutter mobile apps]({{site.flutter}}), command-line scripts, and servers
+  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, and servers
   can import and use `dart:io`, not web apps.
 </div>
 
