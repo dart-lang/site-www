@@ -28,8 +28,8 @@ consult the [Dart API reference.][Dart API]
 : DOM and other APIs for browser-based apps.
 
 [dart:io](#dartio)
-: I/O for programs that run in the Dart VM,
-  such as servers and command-line scripts.
+: I/O for programs that can use the Dart VM,
+  including Flutter apps, servers, and command-line scripts.
 
 This page is just an overview;
 it covers only a few dart:* libraries
