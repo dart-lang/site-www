@@ -2,7 +2,6 @@
 title: Effective Dart
 description: Best practices for building consistent, maintainable, efficient Dart libraries.
 permalink: /guides/language/effective-dart
-toc: true
 nextpage:
   url: /guides/language/effective-dart/style
   title: Style

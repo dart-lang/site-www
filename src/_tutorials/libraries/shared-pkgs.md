@@ -1,5 +1,5 @@
 ---
-title: Install Shared Packages
+title: Install shared packages
 description: Packages are bundles of source code, tools, and resources that help you to organize and share code
 ---
 

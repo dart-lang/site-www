@@ -4,14 +4,13 @@ description: Learn how to benchmark your applications
 original-date: 2012-10-01
 date: 2018-07-26
 category: dart-vm
-obsolete: true
 ---
 
 _Written by John McCutchan <br>
 October 2012 (updated November 2012; note updated July 2018)_
 
 <aside class="alert alert-warning" markdown="1">
-  This article still has valid information, but it was initially targeted for
+  This article was initially targeted for
   the standalone VM under the 1.x Dart SDK.  It does not reflect Flutter,
   nor does it reflect changes in [Dart 2](/dart-2).
   For example, this article mentions Dartium, which

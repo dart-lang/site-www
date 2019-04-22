@@ -1,10 +1,8 @@
 ---
-title: Fetch Data Dynamically
+title: Fetching data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
 <!--?code-excerpt path-base="examples/fetch_data"?-->
-
-### Get data from a file or server.
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>

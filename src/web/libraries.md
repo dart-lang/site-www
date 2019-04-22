@@ -1,7 +1,7 @@
 ---
-title: "Overview: Web libraries and packages"
-short-title: "Web libraries"
-description: "What libraries and packages are available for writing web apps in Dart?"
+title: "Overview: web libraries and packages"
+short-title: Web libraries
+description: Libraries and packages that can help you write Dart web apps.
 ---
 
 The [Dart SDK][] contains [dart:html][] and other libraries

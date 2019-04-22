@@ -1,5 +1,5 @@
 ---
-title: "Dart Language Asynchrony Support: Phase 2"
+title: "Dart language asynchrony support: phase 2"
 description: "Async*, sync*, yield, and yield* are now available as part of Dart's asynchrony support."
 date: 2015-03-24
 category: language

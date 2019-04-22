@@ -1,8 +1,8 @@
 ---
 layout: top
 permalink: /community
-title: "Community and Support"
-description: "Communities, mailing lists, and bug databases for the Dart project."
+title: Community and support
+description: Communities, mailing lists, and bug databases for the Dart project.
 ---
 
 Track the Dart project, get help, and talk with other Dart developers.
@@ -13,13 +13,9 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## Stay informed
 
-* [Dart news]({{site.news}}) -
-  Official news feed for the Dart project.
 * [Dart announce]({{site.group}}/d/forum/announce) -
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
-* [Dart Language & Library Newsletters](https://github.com/dart-lang/sdk/blob/master/docs/newsletter/README.md#dart-language-and-library-newsletters) -
-  Information about existing features and planned changes.
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
 
@@ -38,10 +34,7 @@ Get answers and connect with Dart developers.
 #### Google Groups
 
 * [General discussions]({{site.group}}/d/forum/misc)
-* [Dart plugin for JetBrains editors]({{site.group}}/d/forum/jetbrains-dart-plugin-discuss) (WebStorm, IntelliJ)
-* [Dart VM developers]({{site.group}}/d/forum/vm-dev)
 * [Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
-* [Server-side Dart]({{site.group}}/d/forum/cloud)
 
 ## Contribute
 
@@ -65,5 +58,5 @@ Our wonderful community has provided these resources.
 * [Smartherd videos](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - A series of tutorial videos about the Dart language
 * [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
 
-Also see [Community and Support]({{site.webdev}}/community) on Dart webdev.
+Also see the [Flutter community page.]({{site.flutter}}/community)
 

@@ -1,7 +1,7 @@
 ---
-title: "Terms of Use"
+title: Terms of use
 permalink: /terms
-description: "The terms of use for dartlang.org."
+description: The terms of use for dartlang.org.
 toc: false
 ---
 

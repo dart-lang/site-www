@@ -1,5 +1,5 @@
 ---
-title: Server-Side Dart
+title: Server-side Dart
 description: All things relating to command-line and server-side apps.
 toc: false
 ---
@@ -30,16 +30,16 @@ More tools
 
 You might find the following tutorials helpful.
 
-[Get Started](/tutorials/server/get-started)
+[Get started with server-side Dart](/tutorials/server/get-started)
 : Shows how to write a basic Dart script.
 
 [gRPC Quickstart](https://grpc.io/docs/quickstart/dart.html)
 : Walks you through running and modifying a client-server example that uses the gRPC framework.
 
-[Write Command-Line Apps](/tutorials/server/cmdline)
+[Write command-line apps](/tutorials/server/cmdline)
 : Introduces dart:io and the args package.
 
-[Write HTTP Clients & Servers](/tutorials/server/httpserver)
+[Write HTTP clients & servers](/tutorials/server/httpserver)
 : Features dart:io and the http_server package.
 
 ## More resources
@@ -51,9 +51,3 @@ You might find the following tutorials helpful.
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   [Flutter mobile apps.]({{site.flutter}})
-
-[Articles: Server-Side Dart](/articles/server)
-: A collection of articles covering topics such as benchmarking,
-  numeric computation, and SIMD.
-
-

@@ -1,6 +1,6 @@
 ---
-title: Configuring Pub Environment Variables
-short-title: Environment Variables
+title: Configuring pub environment variables
+short-title: Pub environment variables
 description: How to configure your environment for Dart's package management tool, pub.
 ---
 
@@ -17,7 +17,7 @@ Environment variables allow you to customize pub to suit your needs.
   [The system package cache](/tools/pub/cmd/pub-get#the-system-package-cache).
 
 `PUB_HOSTED_URL`
-: Pub downloads dependencies from the [Pub site]({{site.pub}}).
+: Pub downloads dependencies from the [Pub site.]({{site.pub}})
   To specify the location of a particular mirror server,
   use the `PUB_HOSTED_URL` environment variable. For example:
 

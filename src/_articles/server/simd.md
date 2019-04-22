@@ -9,10 +9,9 @@ category: dart-vm
 _Written by John McCutchan <br>
 August 2013 (note added July 2018)_
 
-<aside class="alert alert-info" markdown="1">
+<aside class="alert alert-warning" markdown="1">
   This article's content is still relevant in Dart 2.
-  However, the examples haven't been tested recently,
-  and they use the now-optional `new` keyword.
+  However, the examples haven't been tested recently.
 </aside>
 
 Programs written in Dart can use numeric types

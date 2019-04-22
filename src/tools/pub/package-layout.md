@@ -1,7 +1,6 @@
 ---
 title: Package layout conventions
 description: Learn more about the directory structure used by Dart's package management tool, pub.
-permalink: /tools/pub/package-layout
 ---
 
 When you build a [pub](/tools/pub) package,

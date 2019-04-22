@@ -5,6 +5,7 @@ description: "Read these articles about Dart's core libraries and its APIs."
 toc: false
 ---
 
+{% comment %} TBD: update list of articles and titles {% endcomment %}
 Read these articles for insight into the Dart libraries and APIs.
 
 <div class="break-80">
@@ -15,9 +16,3 @@ Read these articles for insight into the Dart libraries and APIs.
     {% endfor %}
   </ul>
 </div>
-
-Also see:
-
-* [Language articles](/articles/language)
-* [Server-side Dart articles](/articles/server)
-* [webdev articles]({{site.webdev}}/articles)

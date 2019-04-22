@@ -1,5 +1,5 @@
 ---
-title: Dart 2
+title: Dart 2 migration guide
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
 

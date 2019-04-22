@@ -1,14 +1,14 @@
 ---
-title: Dart's Type System
+title: The Dart type system
 description: Why and how to write sound Dart code.
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
-Dart is type safe: it uses a combination of static type checking and
+The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
 ensure that a variable's value always matches the variable's static type.
 Although _types_ are mandatory, type _annotations_ are optional
-because Dart performs [type inference](#type-inference).
+because of [type inference](#type-inference).
 
 This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the

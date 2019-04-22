@@ -1,5 +1,5 @@
 ---
-title: Debugging Dart Web Apps
+title: Debugging Dart web apps
 description: Learn how to use DevTools to debug your Dart web app.
 ---
 
