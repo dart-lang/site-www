@@ -1,5 +1,5 @@
 ---
-title: "Overview: the Dart language
+title: "Overview: the Dart language"
 permalink: /guides/language
 short-title: Dart language
 toc: false
