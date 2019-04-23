@@ -1,7 +1,7 @@
 ---
-title: A Tour of the Dart Language
+title: A tour of the Dart language
 description: A tour of all of the major Dart language features.
-short-title: Language Tour
+short-title: Language tour
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
@@ -9,8 +9,8 @@ This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 
-To learn more about Dart's core libraries, see
-[A Tour of the Dart Libraries](/guides/libraries/library-tour).
+To learn more about Dart's core libraries, see the
+[library tour](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 

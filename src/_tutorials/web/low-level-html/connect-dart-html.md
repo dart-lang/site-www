@@ -1,12 +1,9 @@
 ---
 title: "Connect Dart &amp; HTML"
-description: "Shows basic scaffolding of a Dart web app"
+description: "Shows basic scaffolding of a Dart web app."
 nextpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add Elements to the DOM"
-prevpage:
-  url: /tutorials/web/get-data/fetch-data
-  title: "Fetch Data Dynamically"
+  title: "Add elements to the DOM"
 ---
 
 {% capture sample_links %}
@@ -22,17 +19,11 @@ Don't have the source code?
 {% endcapture %}
 
 
-### Write a mini Dart app.
-
-<aside class="alert alert-info" markdown="1">
-  **Note:** 
-  This page introduces basic, low-level web programming
-  with the dart:html library;
-  [AngularDart]({{site.angulardart}}) handles many of these low-level details for you.
-  If you want to quickly get started with AngularDart,
-  you can skip this tutorial and go to the
-  [AngularDart tutorial]({{site.angulardart}}/tutorial).
-</aside>
+This tutorial is the first of a series on
+basic, low-level web programming with the dart:html library.
+If you use a web framework like [AngularDart,]({{site.angulardart}})
+some of these concepts might be useful,
+but you might not need to use the dart:html library at all.
 
 <div class="panel" markdown="1">
 

@@ -79,8 +79,8 @@ literally on my first day of writing Dart code, I was productive in it."
 
 ### Q. Does Dart have reflection capabilities?
 
-For servers and command-line scripts, we have reflection support from
-the <a href="/articles/libraries/reflection-with-mirrors">mirrors API</a>.
+For servers and command-line scripts, we have reflection support from the
+[mirrors API.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors)
 There is no support for mirrors when using Dart to write web or
 Flutter apps ([more info][Flutter no mirrors]).
 

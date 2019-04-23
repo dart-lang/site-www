@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Creating packages"
-description: "Learn how to create library packages in Dart."
+title: Creating packages
+description: Learn how to create library packages in Dart.
 ---
 
 **[TBD: Rewrite slightly to introduce on packages in general,

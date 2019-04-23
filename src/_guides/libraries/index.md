@@ -1,11 +1,15 @@
 ---
-layout: default
-title: "Overview: Libraries"
-description: "Learn about Dart's core libraries and APIs."
-permalink: /guides/libraries
-short-title: "Libraries"
+title: "Overview: libraries"
+description: Learn about Dart's core libraries and APIs.
+short-title: Libraries
 toc: false
 ---
+
+[TBD: Have a table of ALL the dart:* libraries in the Dart SDK,
+with brief descriptions and a marker of where you can use each one.]
+
+{% comment %}
+-----------------
 
 Dart programs rely on _libraries_.
 Several common libraries are provided for you.
@@ -20,17 +24,17 @@ at the following links.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/guides/libraries/library-tour">Tour of Dart Libraries</a></h3>
+    <h3><a href="/guides/libraries/library-tour">Tour of Dart libraries</a></h3>
     <p>An introduction to the major features in Dart's core libraries.</p>
   </div>
 
   <div class="card">
-    <h3><a href="/guides/libraries/useful-libraries">Commonly Used Libraries</a></h3>
-    <p>Useful libraries that you should know about.</p>
+    <h3><a href="/guides/libraries/useful-libraries">Commonly used packages</a></h3>
+    <p>Packages containing libraries that you should know about.</p>
   </div>
 
   <div class="card">
-    <h3><a href="/guides/libraries/create-library-packages">Create Library Packages</a></h3>
+    <h3><a href="/guides/libraries/create-library-packages">Create library packages</a></h3>
     <p>How to create your own libraries.</p>
   </div>
 </div>
@@ -60,3 +64,4 @@ Help on using and implementing packages
     to a code repo.
   * [pub](/tools/pub):
     A tool for managing Dart packages.
+{% endcomment %}

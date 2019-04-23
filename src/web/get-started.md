@@ -1,5 +1,5 @@
 ---
-title: 'Get started: web apps'
+title: "Get started: web apps"
 description: A guide to get you quickly writing web apps in Dart.
 ---
 

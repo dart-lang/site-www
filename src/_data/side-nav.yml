@@ -58,6 +58,8 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /tools/pub
+        - title: Pub environment variables
+          permalink: /tools/pub/environment-variables
         - title: Pubspec file
           permalink: /tools/pub/pubspec
         - title: Troubleshooting pub
@@ -92,7 +94,7 @@
           permalink: /web/get-started
         - title: 'Overview: web libraries and packages'
           permalink: /web/libraries
-        - title: Fetch data dynamically
+        - title: Fetching data dynamically
           permalink: /tutorials/web/get-data/fetch-data
         - title: Low-level web programming
           children:
@@ -116,6 +118,8 @@
         permalink: /tbd
       - title: Dart DevTools [TBD]
         permalink: /tbd
+      - title: DartPad
+        permalink: /tools/dartpad
       - title: IntelliJ & Android Studio
         permalink: /tools/jetbrains-plugin
       - title: VS Code [TBD]
@@ -170,20 +174,28 @@
 - title: Resources
   expanded: false
   children:
+    - title: Code of conduct
+      permalink: /code-of-conduct
+    - title: FAQs
+      children:
+        - title: Dart FAQ
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /faq
+        - title: Web FAQ
+          permalink: /web/faq
     - title: History
       children:
+        - title: Articles
+          permalink: /articles
         - title: Migrating to Dart&nbsp;2
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /dart-2
         - title: Migrating web apps to Dart&nbsp;2
           permalink: /web/dart-2
-    - title: FAQ
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /faq
-    - title: Web FAQ
-      permalink: /web/faq
+        - title: Obsolete pub features
+          permalink: /tools/pub/obsolete
 
 - title: Related sites
   expanded: true

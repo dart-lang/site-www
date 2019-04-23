@@ -1,14 +1,13 @@
 ---
-layout: default
-title: "Dart Testing"
-description: "How to test Flutter, Web, and VM Applications."
+title: Dart testing
+description: How to test Flutter, web, and VM applications.
 ---
 
 Software testing, an important part of app development, helps verify that
 your app is working correctly before you release it.
 This Dart testing guide outlines several types of testing, and points
 you to where you can learn how to test your
-[mobile]({{site.flutter}}), [web]({{site.webdev}}),
+[mobile,]({{site.flutter}}) [web](/web),
 and [server-side apps and scripts](/server).
 
 <aside class="alert alert-info" markdown="1">

@@ -1,18 +1,16 @@
 ---
-title: "Remove DOM Elements"
+title: "Remove DOM elements"
 description: "Remove a child element from the DOM"
 
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add Elements to the DOM"
+  title: "Add elements to the DOM"
 ---
 
 {% comment %}
 NOTE: No sample_links section goes here because all the samples are in
 embedded DartPads.
 {% endcomment %}
-
-### Dynamically delete items from the browser page.
 
 <div class="panel" markdown="1">
 
@@ -241,9 +239,6 @@ it returns no value and takes an Event object as a parameter.
 ## What next?
 
 Rather than implement your web app using low-level APIs, you can leverage
-existing toolkits.
-We recommend AngularDart, an app framework designed for building
-scalable web apps. It's featured in the Dart web development codelabs.
+existing web programming frameworks.
+For more information, see the [web libraries overview](/web/libraries).
 
-* [AngularDart]({{site.angulardart}})
-* [Codelabs](/codelabs)

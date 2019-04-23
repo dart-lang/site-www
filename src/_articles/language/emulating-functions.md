@@ -1,5 +1,5 @@
 ---
-title: Emulating Functions in Dart
+title: Emulating functions in Dart
 description: Learn how to define Dart classes that behave like functions.
 original-date: 2012-01-01
 date: 2018-09-20

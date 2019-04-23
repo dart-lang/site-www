@@ -1,10 +1,9 @@
 ---
-title: A Brief History of Mixins in Dart
+title: A brief history of mixins in dart
 description: Mixins let you implement functionality once and use it in multiple classes.
 original-date: 2012-12-18
 date: 2018-06-01
 category: language
-obsolete: true
 ---
 
 _Written by Gilad Bracha <br>

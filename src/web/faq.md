@@ -1,12 +1,13 @@
 ---
-title: Dart Web Development FAQ
+title: Web development FAQ
 short-title: Web FAQ
 description: FAQ and other tips for using Dart for web development.
 ---
 
 _Updated December 2018_
 
-This FAQ applies to web programming. For more general Dart questions,
+This page covers frequently asked questions about
+using Dart to create browser-based apps. For more general Dart questions,
 see the [Dart FAQ.](/faq)
 
 ## General

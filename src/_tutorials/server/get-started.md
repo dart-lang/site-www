@@ -1,19 +1,19 @@
 ---
-title: Get Started with Server-Side Dart
+title: Get started with server-side Dart
 description: Get Dart and run a Dart app.
 nextpage:
   url: /tutorials/server/cmdline
-  title: Write Command-Line Apps
+  title: Write command-line apps
 prevpage:
   url: /tutorials/server
-  title: Server-Side Dart Tutorials
+  title: Server-side Dart tutorials
 ---
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
   * The Dart SDK has development tools and libraries.
-  * Use an IDE (such as WebStorm) or code editor to create your app.
+  * Use an IDE or a code editor to create your app.
   * All Dart apps have a `main()` function.
   * Dart supports top-level functions.
 </div>
@@ -30,10 +30,10 @@ a real world environment, you need to download some software.
 
 The Dart SDK contains all of
 the tools and libraries that you need for basic Dart development.
-You may also want an IDE or code editor; this tutorial uses WebStorm.
+You may also want an IDE or code editor.
 
 * [Get the Dart SDK](/tools/sdk#install)
-* Recommended: [Get WebStorm]({{site.webdev}}/tools/webstorm)
+* Optional: [Get a Dart-savvy IDE or editor][ide]
 
 ## What did you get? {#what-did-you-get}
 
@@ -50,13 +50,6 @@ command-line tools, such as the **pub** package manager,
 the Dart-to-JavaScript compiler,
 and the command-line version of the Dart VM.
 
-**WebStorm** has a pre-installed Dart plugin,
-but it requires a bit of configuration,
-as we'll describe later.
-If you prefer to use another IDE or code editor,
-you might want to download and install a Dart plugin,
-if available.
-See the [tools page](/tools) for a list of plugins.
 
 ## About Dart apps {#what-is-app}
 
@@ -116,7 +109,8 @@ alt="Pub's directory structure including bin, lib, build directories, and pubspe
   packages the app depends on and which versions of those
   packages are required.
 
-You can invoke pub commands from the command line or from the WebStorm UI.
+You can invoke pub commands from the command line or
+from your IDE or editor's UI.
 
 ### Command-line apps
 
@@ -133,98 +127,83 @@ The Dart VM runs Dart code directly without intermediate compilation.
 
 ## Create a command-line app {#create-cmd-line}
 
-1.  Launch WebStorm. This brings up a "Welcome to Webstorm" dialog.
+Whether you use an IDE or the command line,
+you can create a basic app using standard Dart templates.
 
-1.  If this is the first time you have run WebStorm, you will
-    need to set the path to the SDK.
-    You can find the instructions at
-    [Configuring Dart support]({{site.webdev}}/tools/webstorm#configuring-dart-support).
+If you're using a [Dart-savvy IDE][ide], follow these instructions:
 
-1.  Choose **Create New Project**.
-    A dialog appears asking you to fill out a simple form.
+1. Create a new Dart project called `hello_world`,
+   using files from the template named
+   **console-full**, which has the description 
+   **A command-line application sample.**
 
-1.  Select **Dart** from the list on the left.
+1. If the IDE doesn't automatically download the packages
+   that the app depends on, make the IDE run `pub get`.
 
-1.  Replace the `untitled` portion of the string with `hello_world`.
-    This name is used for the app's directory name and package name.
-    By convention, these names are lowercase, with words
-    separated by underscores (`_`).
+If you're using the command line, follow these instructions:
 
-1.  Make sure that **Generate sample content** is checked.
+1. Get [Stagehand.]({{site.pub}}/packages/stagehand)
 
-1.  Select **Console app** from the list.
-
-1.  Click **Create**.
-
-WebStorm creates a `hello_world` directory for the app
-and boilerplate files for a small command-line app.
-It then runs `pub get` to download the packages that the app depends on.
-
-<aside class="alert alert-info" markdown="1">
-**If you don't have WebStorm:**
-You can create the command-line app's files
-using the **console-full** generator from
-[Stagehand.]({{site.pub}}/packages/stagehand)
-Then run `pub get`.
-</aside>
+1. Use Stagehand to get the files, and then
+   use the pub tool to download dependent packages.
+   The commands you use should be something like this:
+   
+   ```terminal
+   mkdir hello_world
+   cd hello_world
+   stagehand console-full
+   pub get
+   ```
 
 Some of the files and directories in the hello_world app
 include the following:
 
-`.dart_tool`
-: Support files used by `pub` and other Dart tools. You can ignore this.
+`analysis_options.yaml`
+: Defines lint rules enforced for this project.
+  By default, this file specifies the set of rules used for Google projects,
+  but you can [customize these options](/guides/language/analysis-options).
 
 `bin`
 : Contains the source files for the app.
-  Expand `bin` to see `main.dart`, which is the main
-  Dart file for this example.
+  The main Dart file for this example is `bin/main.dart`.
 
-`pubspec.yaml`
-: Declares which packages your app needs.
+`lib`
+: Contains library code.
+  In this directory, `hello_world.dart` defines
+  a simple `calculate()` method.
 
 `pubspec.lock`
 : A generated file that specifies the version numbers
   of the packages on which the app depends.
 
-`lib`
-: Contains library code. Expand `lib` to see
-  `hello_world.dart`, a library file with
-  a simple `calculate()` method.
+`pubspec.yaml`
+: Declares which packages your app needs.
+
+`test`
+: Contains test code for the hello_world app.
+
+`.dart_tool`
+: Support files used by `pub` and other Dart tools. You can ignore this.
 
 `.packages`
 : Tells the Dart tools where to get the packages that your
   app uses. This file is created by the `pub get` command.
   You can ignore this.
 
-Double-clicking any filename displays the contents of that file
-in the pane to the right.
-
-The messages pane at the bottom contains the results of calling
-`pub get`, which fetches the packages used by the app.
-
-When executed, the program prints
-"Hello world: 42!" to the standard output stream,
-using the `print()` function provided by the `dart:core` library.
-The functions and objects defined in the dart:core library
-are automatically available to all Dart apps.
 
 ## Run a command-line app {#run-cmd-line}
 
-In WebStorm, you can run the app in any of the following ways:
-
-* Click the Run button {% asset green-run.png alt="" %} in the upper right corner.
-* Click the Run button to the left of the messages pane.
-* Right-click `main.dart` in the files pane and select **Run 'main.dart'**
-  from the pop-up menu.
-
-WebStorm shows the output at the bottom in a pane titled
-**Run main.dart**.
-
-If you don't have WebStorm, you can run the app from the command line:
+Run the app, using either your IDE or the command line:
 
 ```terminal
 $ pub run bin/main.dart
 ```
+
+The program prints "Hello world: 42!" to the standard output stream,
+using the `print()` function provided by the `dart:core` library.
+The functions and objects defined in the dart:core library
+are automatically available to all Dart apps.
+
 
 ## About main() and other top-level functions {#top-level-functions}
 
@@ -275,15 +254,10 @@ By convention, app names
 (and thus, the related files and directories) are lowercase,
 with words separated by underscores (`_`).
 
-## Other resources
-
-- The <a href="{{site.webdev}}/tools/webstorm">WebStorm</a> page
-  provides more information about this tool.
-- The <a href="/tools/pub">pub</a>
-  pages contain more information
-  about Dart's package and asset manager.
 
 ## What next?
 
-Try the next tutorial, [Write Command-Line Apps](cmdline), which describes how
+Try the next tutorial, [Write command-line apps](cmdline), which describes how
 to build command-line apps.
+
+[ide]: /tools#ides-and-editors

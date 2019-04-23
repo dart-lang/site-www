@@ -42,4 +42,13 @@ $ dartfmt --help
 
 {% comment %}
 [PENDING: Add info on commonly used options.]
+
+[PENDING: Advocate using this! Perhaps steal the first paragraph from
+dart_style's readme:
+
+The dart_style package defines an automatic, opinionated formatter
+for Dart code. It replaces the whitespace in your program with what
+it deems to be the best formatting for it. Resulting code should
+follow the Dart style guide and, more importantly, should look nice
+to most human readers, most of the time.]
 {% endcomment %}

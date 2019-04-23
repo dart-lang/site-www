@@ -1,8 +1,6 @@
 ---
-layout: default
-permalink: /tools/pub/dependencies
-title: "Package dependencies"
-description: "Add other packages to your app. Specify package locations, version constraints, and more."
+title: Package dependencies
+description: Add other packages to your app. Specify package locations, version constraints, and more.
 ---
 
 Dependencies are one of [pub](/tools/pub)'s core concepts.

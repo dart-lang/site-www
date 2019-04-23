@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "What Not to Commit"
-description: "Your development tools generate a bunch of files. Not all of them should be committed."
+title: What not to commit
+description: Your development tools generate a bunch of files. Not all of them should be committed.
 ---
 
 When you put Dart source code in a repository—using the
