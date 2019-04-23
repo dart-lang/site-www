@@ -33,7 +33,7 @@ the tools and libraries that you need for basic Dart development.
 You may also want an IDE or code editor.
 
 * [Get the Dart SDK](/tools/sdk#install)
-* Optional: [Get a Dart-savvy IDE or editor](/tools#ides-and-editors)
+* Optional: [Get a Dart-savvy IDE or editor][ide]
 
 ## What did you get? {#what-did-you-get}
 
@@ -130,7 +130,7 @@ The Dart VM runs Dart code directly without intermediate compilation.
 Whether you use an IDE or the command line,
 you can create a basic app using standard Dart templates.
 
-If you're using a Dart-savvy IDE, follow these instructions:
+If you're using a [Dart-savvy IDE][ide], follow these instructions:
 
 1. Create a new Dart project called `hello_world`,
    using files from the template named
@@ -259,3 +259,5 @@ with words separated by underscores (`_`).
 
 Try the next tutorial, [Write command-line apps](cmdline), which describes how
 to build command-line apps.
+
+[ide]: /tools#ides-and-editors
