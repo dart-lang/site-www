@@ -1,17 +1,15 @@
 ---
-title: Write Command-Line Apps
+title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
   url: /tutorials/server/httpserver
-  title: "Write HTTP Clients & Servers"
+  title: "Write HTTP clients & servers"
 prevpage:
   url: /tutorials/server/get-started
-  title: Get Started with the Dart VM
+  title: Get started with the Dart VM
 ---
 
 {% include tutorial-banner.html %}
-
-### An introduction to standalone apps
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -33,9 +31,9 @@ This tutorial uses the `async` and `await` language features, which rely on the
 and
 <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
    target="_blank">Stream</a> classes for asynchronous support.
-Refer to [Asynchronous Programming: Futures](/tutorials/language/futures)
-and [Asynchronous Programming: Streams](/tutorials/language/streams)
-to learn more about these features.
+To learn more about these features, see the
+[futures tutorial](/tutorials/language/futures) and the
+[streams tutorial](/tutorials/language/streams).
 </aside>
 
 This tutorial teaches you how to build command-line apps
@@ -614,6 +612,6 @@ package for more classes, functions, and properties.
 
 ## What next?
 
-* If you are interested in server-side programming,
-check out the next tutorial,
-[Write HTTP Clients & Servers](/tutorials/server/httpserver).
+* If you're interested in server-side programming,
+check out the next tutorial, which covers
+[HTTP clients and servers](/tutorials/server/httpserver).

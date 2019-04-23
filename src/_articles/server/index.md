@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Articles: Server-Side Dart"
-description: Articles pertaining to command-line and server-side Dart apps, covering topics such as benchmarking, native extensions, and numeric computation.
+title: "Articles: server-side Dart"
+description: Articles pertaining to command-line and server-side Dart apps, covering topics such as native extensions and numeric computation.
 toc: false
 ---
 

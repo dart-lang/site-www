@@ -1,5 +1,5 @@
 ---
-title: Code of Conduct
+title: Code of conduct
 description: Be excellent to each other.
 toc: false
 ---

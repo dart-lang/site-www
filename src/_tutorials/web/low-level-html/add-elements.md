@@ -1,10 +1,10 @@
 ---
-title: "Add Elements to the DOM"
+title: "Add elements to the DOM"
 description: "You have an Element object, now what?"
 
 nextpage:
   url: /tutorials/web/low-level-html/remove-elements
-  title: "Remove DOM Elements"
+  title: "Remove DOM elements"
 prevpage:
   url: /tutorials/web/low-level-html/connect-dart-html
   title: "Connect Dart & HTML"
@@ -14,8 +14,6 @@ prevpage:
 NOTE: No sample_links section goes here because all the samples are in embedded
 DartPads.
 {% endcomment %}
-
-### Dynamically add items to the browser page.
 
 <div class="panel" markdown="1">
 

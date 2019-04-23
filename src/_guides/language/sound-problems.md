@@ -1,5 +1,5 @@
 ---
-title: "Fixing common type problems"
+title: Fixing common type problems
 description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
@@ -7,9 +7,9 @@ description: Common type issues you may have and how to fix them.
 <?code-excerpt plaster="none"?>
 
 If you're having problems with type checks,
-this page can help. To learn more, read
-[Dart's Type System](/guides/language/sound-dart)
-and [other resources](/guides/language/sound-dart#other-resources).
+this page can help. To learn more, read about
+[Dart's type system](/guides/language/sound-dart),
+and see [these other resources](/guides/language/sound-dart#other-resources).
 
 <aside class="alert alert-info" markdown="1">
 **Help us improve this page!**

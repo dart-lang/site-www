@@ -1,12 +1,9 @@
 ---
-layout: default
-title: "Commonly used packages"
-description: "What are some of the most useful and popular Dart libraries and where can you learn more?"
+title: Commonly used packages
+description: Some of the most useful and popular packages, and where you can learn more.
 ---
 
 **[TBD: Add overview here.]**
-
-## Commonly used packages
 
 Developers have written some excellent packages for use by the
 Dart community.  Here are some popular and useful packages,

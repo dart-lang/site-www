@@ -29,6 +29,9 @@ $ dartanalyzer --help
 {% comment %}
 [PENDING: Add info on commonly used options.]
 
+[PENDING: Consider providing some sample output and
+using it to explain to users how to interpret the output.]
+
 Feature `--options`, `--no-implicit-casts`, `--no-implicit-dynamic`?
 
 ```

@@ -1,8 +1,10 @@
 ---
-title: Get Started
+title: Get started
 description: A guide to getting started with Dart.
 toc: false
 ---
+
+[TBD: delete this page?]
 
 Jump right in. Use the embedded DartPad below to play with Dart and to experience the language and core APIs.
 DartPad is a quick and easy way to

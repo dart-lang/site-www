@@ -1,5 +1,5 @@
 ---
-title: "Dart Tutorials: Get Data"
+title: "Dart web tutorials: get data"
 description: Tutorials related to getting data.
 toc: false
 ---
@@ -12,7 +12,7 @@ and receive responses.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/web/tutorials/get-data/fetch-data">Fetch Data Dynamically</a></h3>
+    <h3><a href="/tutorials/web/get-data/fetch-data">Fetch data dynamically</a></h3>
     <p>Load data from a static file or from a server.</p>
   </div>
 </div>

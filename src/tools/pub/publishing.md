@@ -1,7 +1,6 @@
 ---
-layout: default
-title: "Publishing packages"
-description: "Learn how to publish a Dart package to the Pub site."
+title: Publishing packages
+description: Learn how to publish a Dart package to the Pub site.
 permalink: /tools/pub/publishing
 ---
 

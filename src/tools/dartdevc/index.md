@@ -1,5 +1,5 @@
 ---
-title: "dartdevc: The Dart Dev Compiler"
+title: "dartdevc: the Dart dev compiler"
 short-title: dartdevc
 description: Fast, modular compilation of Dart code to JavaScript.
 ---

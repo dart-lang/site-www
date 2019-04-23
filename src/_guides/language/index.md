@@ -1,8 +1,7 @@
 ---
-layout: default
-title: "Overview: The Dart Language"
+title: "Overview: the Dart language"
 permalink: /guides/language
-short-title: "Dart Language"
+short-title: Dart language
 toc: false
 ---
 
@@ -10,8 +9,8 @@ These two resources are popular with both beginning Dartisans and experts.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/guides/language/language-tour">A Tour of the Dart Language</a></h3>
-    <p>A walk through all of Dart's major language features.</p>
+    <h3><a href="/guides/language/language-tour">Language tour</a></h3>
+    <p>A walk through all of the major features of the Dart language.</p>
   </div>
   <div class="card">
     <h3><a href="/guides/language/effective-dart">Effective Dart</a></h3>
@@ -24,17 +23,17 @@ These two resources are popular with both beginning Dartisans and experts.
 ## Other resources
 
 <ul markdown="1">
-<li markdown="1"> [Dart's Type System](/guides/language/sound-dart)<br>
+<li markdown="1"> [Dart's type system](/guides/language/sound-dart)<br>
     Learn about Dart's sound type system.
 </li>
 
 <ul markdown="1">
-<li markdown="1"> [Fixing Common Type Problems](/guides/language/sound-problems)<br>
+<li markdown="1"> [Fixing common type problems](/guides/language/sound-problems)<br>
    How to fix errors and warnings you may encounter.
 </li>
 </ul>
 
-<li markdown="1"> [Customize Static Analysis](/guides/language/analysis-options)<br>
+<li markdown="1"> [Customizing static analysis](/guides/language/analysis-options)<br>
     A guide on customizing the analyzer using an analysis options file.
 </li>
 

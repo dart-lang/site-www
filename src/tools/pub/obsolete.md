@@ -1,8 +1,6 @@
 ---
-layout: default
-title: "Obsolete Pub Features"
-description: "As of Dart 2, pub no longer supports pub build/serve or transformers."
-permalink: /tools/pub/obsolete
+title: Obsolete pub features
+description: As of Dart 2, pub no longer supports pub build/serve or transformers.
 ---
 
 As of Dart 2, pub no longer supports `pub build`, `pub serve`, or transformers.

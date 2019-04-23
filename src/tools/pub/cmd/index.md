@@ -1,5 +1,4 @@
 ---
-layout: default
 permalink: /tools/pub/cmd
 title: "The pub tool"
 description: "Pub, a package management tool for Dart, supports a variety of commands."

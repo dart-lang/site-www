@@ -7,13 +7,6 @@
   cover: scalable-app-development.png
   link: "https://www.packtpub.com/application-development/dart-scalable-application-development"
   desc: "Master the art of designing for web, client, and server with Google's bold and productive language &mdash; Dart."
-- title: Learning Dart [Video]
-  authors:
-    - Joris Hermans
-  publisher: Packt Publishing
-  cover: learning-dart-video.png
-  link: "https://www.packtpub.com/web-development/learning-dart-video"
-  desc: "Program applications with Dart 1.0, a language specifically designed to produce better-structured, high-performance applications."
 - title: The Dart Programming Language
   authors:
     - Gilad Bracha
