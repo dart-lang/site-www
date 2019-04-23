@@ -370,7 +370,7 @@ and better CPU cache performance:
   using much less memory and making better use of your CPU’s cache.
 
 In general and specifically because of the above caveats,
-it is always a good idea to [benchmark](benchmarking)
+it is always a good idea to benchmark
 your algorithm using both object and typed lists.
 
 **Performance tip:**
@@ -425,8 +425,7 @@ Unlike the case with smis,
 using an object list with doubles is always slower.
 
 **Performance tip:**
-[Benchmark](benchmarking)
-your application using both Float32List and Float64List
+Benchmark your application using both Float32List and Float64List
 to determine which performs best.
 
 ### Boxing
