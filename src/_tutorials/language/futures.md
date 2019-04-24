@@ -1,6 +1,6 @@
 ---
-title: "Asynchronous programming: futures"
-description: A first look at futures and how to use them to make your asynchronous code better.
+title: "Asynchronous programming: futures & async-await"
+description: How to write asynchronous Dart code that uses futures and the async and await keywords.
 nextpage:
   url: /tutorials/language/streams
   title: "Asynchronous programming: streams"
