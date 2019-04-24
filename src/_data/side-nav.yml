@@ -178,14 +178,8 @@
   children:
     - title: Code of conduct
       permalink: /code-of-conduct
-    - title: FAQs
-      children:
-        - title: Dart FAQ
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /faq
-        - title: Web FAQ
-          permalink: /web/faq
+    - title: FAQ
+      permalink: /faq
     - title: History
       children:
         - title: Articles

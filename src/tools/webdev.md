@@ -208,6 +208,6 @@ Also see the following pages:
 [dartdevc]: /tools/dartdevc
 [dev dependencies]: {{site.dartlang}}/tools/pub/dependencies#dev-dependencies
 [PATH]: {{site.dartlang}}/tools/pub/cmd/pub-global#running-a-script-from-your-path
-[supported browsers]: /web/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
+[supported browsers]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev
