@@ -244,24 +244,17 @@ img {
   }
 
   > article {
+    > .content {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
     @media(min-width: 1024px) {
-      margin-left: 230px;
-      > .content {
-         padding-left: 100px;
-      }
+      margin-left: 266px;
     }
 
     @media(min-width: 1200px) {
-      margin-right: 225px;
-      > .content {
-        padding-right: 15%;
-      }
-    }
-
-    @media(min-width: 1400px) {
-      > .content {
-        padding-right: 20%;
-      }
+      margin-right: 266px;
     }
   }
 }
@@ -452,13 +445,16 @@ img {
   position: fixed;
   bottom: 0px;
   left: 0px;
-  width: 230px;
+  width: 266px;
   border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
 
   .site-sidebar {
+    // override shared/_sidebar.scss
+    padding: $content-padding 50px;
+
     // override shared/_sidebar.scss
     // the first-level nav block is indented on the same level as the headers
     > .nav > .nav-item > .nav {
@@ -543,13 +539,17 @@ img {
 
   position: fixed;
   bottom: 0px;
-  width: 225px;
+  width: 266px;
   right: 0px;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 999;
-  padding-left: 20px;
-  padding-right: 20px;
+
+  // override shared/_toc.scss
+  &.site-toc {
+    padding: $content-padding 50px;
+  }
+
   // Override BS defaults for .nav, etc.
   .site-toc__title {
     color: $site-color-body;
