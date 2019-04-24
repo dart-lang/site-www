@@ -1,7 +1,12 @@
 {% unless page.toc == false or page.layout == 'homepage' %}
 {% assign toc = content | toc_only %}
 {% assign itemCount = toc | split: 'class="toc-entry' | size %}
-{% assign collapsible = include.collapsible and itemCount > 10 %}
+
+{% assign collapsible = false %}
+{% if include.collapsible and itemCount > 10 %}
+  {% assign collapsible = true %}
+{% endif %}
+
 {% if collapsible %}
   {% assign topStyle = 'toc-collapsible toc-collapsed' %}
 {% endif %}
@@ -21,9 +26,5 @@
     {% endif %}
   </header>
   {{ toc }}
-  {% if collapsible %}
-  <span class="{{include.id}}__toggle toc-toggle-down"><i class="fas fa-chevron-down fa-m"></i></span>
-  <span class="{{include.id}}__toggle toc-toggle-up"><i class="fas fa-chevron-up fa-m"></i></span>
-  {% endif %}
 </div>
 {% endunless %}

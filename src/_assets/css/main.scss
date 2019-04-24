@@ -502,16 +502,27 @@ img {
 }
 
 #site-toc--inline {
-  &.toc-collapsible {
-    border-left: 3px solid $gray-light;
-    padding-left: 12px;
-    margin-bottom: 1rem;
+  background: #f5f5f7;
+  padding: 15px 30px;
+  margin-bottom: 1rem;
 
+  .site-toc__title {
+    font-size: 16px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+
+  &.toc-collapsible {
     > .section-nav {
-      background: white;
       margin-bottom: 0;
-      opacity: 1.0;
-      transition: opacity .5s ease-in-out, background .5s ease-in-out;
+      padding-left: 0;
+    }
+
+    .site-toc--inline__toggle {
+      float: right;
     }
 
     .toc-toggle-down {
@@ -520,9 +531,7 @@ img {
 
     &.toc-collapsed {
       .section-nav {
-        background: $gray-light;
-        max-height: 80px;
-        opacity: 0.5;
+        max-height: 72px;
         overflow: hidden;
       }
 
