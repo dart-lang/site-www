@@ -477,6 +477,10 @@ img {
         left: -18px;
       }
 
+      &.external::after {
+        display:none;
+      }
+
       &[data-toggle] {
         &:not(.collapsable) {
           font-family: $site-font-family-gsans;
