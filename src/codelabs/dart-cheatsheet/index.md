@@ -32,7 +32,7 @@ and can be a handy place to return for a refresher as you grow your Dart skills.
 In addition to explanations and examples,
 the codelab includes embedded editors with partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
-clicking the **Test Code** button.
+clicking the **Run** button.
 
 
 
