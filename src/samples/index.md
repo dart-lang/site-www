@@ -17,7 +17,7 @@ You might also want to check out the language and library tours.
     </p>
   </div>
   <div class="card">
-    <h3><a href="/guides/libraries/library-tour">Library tour</a></h3>
+    <h3><a href="/guides/libraries/library-tour">Core Libraries tour</a></h3>
     <p>
       An example-based introduction to the Dart core libraries.
       See how to use the built-in types, collections,
