@@ -626,6 +626,10 @@ img {
   #mainnav & {
     // Override of _header.scss
     border: 0;
+
+    .open_menu & {
+      visibility: hidden;
+    }
   }
 
   #sidenav & {
