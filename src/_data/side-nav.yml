@@ -188,8 +188,6 @@
           permalink: /web/faq
     - title: History
       children:
-        - title: Articles
-          permalink: /articles
         - title: Migrating to Dart&nbsp;2
           urlExactMatch: true
           match-page-url-exactly: true
