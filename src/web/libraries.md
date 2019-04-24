@@ -1,5 +1,5 @@
 ---
-title: "Overview: web libraries and packages"
+title: "Web libraries and packages"
 short-title: Web libraries
 description: Libraries and packages that can help you write Dart web apps.
 ---

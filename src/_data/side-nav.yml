@@ -90,9 +90,13 @@
           permalink: /tbd
     - title: Web
       children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /web
         - title: Get started
           permalink: /web/get-started
-        - title: 'Overview: web libraries and packages'
+        - title: Web libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically
           permalink: /tutorials/web/get-data/fetch-data
