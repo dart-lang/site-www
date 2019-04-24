@@ -466,6 +466,7 @@ img {
       font-weight: 300;
       color: $site-color-body;
       font-size: 13px;
+      align-items: start;
 
       // override shared/_sidebar.scss
       &.collapsable::before {
@@ -477,7 +478,7 @@ img {
         &:not(.collapsable) {
           font-family: $site-font-family-gsans;
           font-weight: 400;
-          font-size: 20px;
+          font-size: 16px;
         }
 
         &.active {
@@ -553,7 +554,7 @@ img {
   // Override BS defaults for .nav, etc.
   .site-toc__title {
     color: $site-color-body;
-    font-size: 20px;
+    font-size: 16px;
   }
   .toc-entry {
     padding-bottom: 0.5rem;
