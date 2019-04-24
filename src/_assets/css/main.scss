@@ -223,7 +223,7 @@ img {
       .nav-link {
         &.active {
           &:after {
-            display: none;
+            background-color: #40c4ff;
           }
         }
       }
