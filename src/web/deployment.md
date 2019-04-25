@@ -1,11 +1,10 @@
 ---
-title: "Web Production Deployment"
-short-title: "Production deployment"
-description: "Learn how to build your Dart Web app for production deployment"
+title: "Web deployment"
+description: "Learn how to build your Dart web app for production deployment"
 toc: true
 ---
 
-Deploying an Dart Web app is similar to deploying any other web app:
+Deploying a Dart web app is similar to deploying any other web app:
 you first need to compile the app to JavaScript.
 This page describes how to compile your app—with
 tips for making it smaller and faster—and
