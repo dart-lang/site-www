@@ -195,6 +195,11 @@ pre, pre.prettyprint {
     background: #fffde7;
     padding: 2px;
   }
+
+  a {
+    font-family: inherit;
+    font-weight: inherit;
+  }
 }
 code {
   background-color: transparent;
