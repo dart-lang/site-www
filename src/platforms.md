@@ -20,7 +20,7 @@ Dart code in two ways:
     development time compiler (`dartdevc`), and a production time compiler
     (`dart2js`).
 
-<img src="images/platforms.png" alt="Dart platform run-times">
+<img src="{% asset platforms.png @path %}" width="800px" alt="Dart platform">
 
 ## Dart Native (VM & AOT)
 
