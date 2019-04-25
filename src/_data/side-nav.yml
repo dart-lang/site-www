@@ -76,7 +76,9 @@
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
-    - title: Command line & server
+    - title: Mobile apps
+      permalink: /mobile
+    - title: Command-line & server apps
       children:
         - title: Get started
           permalink: /tutorials/server/get-started
@@ -88,7 +90,7 @@
           permalink: /articles/server/native-extensions
         - title: AOT and JIT compilation [TBD]
           permalink: /tbd
-    - title: Web
+    - title: Web apps
       children:
         - title: Overview
           urlExactMatch: true
