@@ -8,11 +8,11 @@
   <ul class="navbar">
     <li class="mainnav__get-started">
       <a href="/guides" class="nav-link
-        {%- if page_url_path contains '/*/guides/' %} active {%- endif -%}"><span>Docs</span></a>
+        {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/dart-2/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}"><span>Docs</span></a>
     </li>
     <li>
-      <a href="/guides/platforms" class="nav-link
-        {%- if page_url_path contains '/*/guides/platforms/' %} active {%- endif -%}">Platforms</a>
+      <a href="/platforms" class="nav-link
+        {%- if page_url_path contains '/*/platforms/' %} active {%- endif -%}">Platforms</a>
     </li>
     <li>
       <a href="/community" class="nav-link

@@ -13,7 +13,7 @@ data (`dart:convert`).
 The following table shows an inventory of all Dart core libraries. Aadditional
 APIs are available in community contributed packages located [in shared
 packages](/guides/libraries/useful-libraries). Also note that some core
-libraries are only available on some [Dart platforms](/guides/platforms).
+libraries are only available on some [Dart platforms](/platforms).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-----------------------|---------|

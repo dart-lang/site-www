@@ -24,7 +24,7 @@ that work with web apps; it doesn't support
 libraries from [packages.]({{site.pub}})
 If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
 If you want to use a package, get the SDK for a
-[platform](/guides/platforms) that the package supports.
+[platform](/platforms) that the package supports.
 
 ## Getting started
 
