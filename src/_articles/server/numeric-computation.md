@@ -35,8 +35,6 @@ how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
 This article focuses on the Dart VM.
-If your primary compile target is JavaScript, see
-the [Dart web development FAQ.]({{site.webdev}}/faq)
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
