@@ -382,6 +382,10 @@ img {
           color: $gray-lighter;
         }
       }
+      &.searchfield {
+        position: relative;
+        top: -3px;
+      }
     }
   }
   .dropdown-menu {
