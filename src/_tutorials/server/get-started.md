@@ -1,263 +1,237 @@
 ---
-title: Get started with server-side Dart
-description: Get Dart and run a Dart app.
+title: "Get started: Dart native apps"
+description: Get Dart, run and compile a small app
+toc: true
 nextpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
 prevpage:
   url: /tutorials/server
-  title: Server-side Dart tutorials
+  title: Tutorials
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
+Follow these steps to start using Dart to develop web apps. First you’ll play
+with Dart in your browser, no download required. Then you’ll install Dart and
+run a small program with the Dart VM. Finally, you will AOT-compile that program
+to native machine code.
 
-  * The Dart SDK has development tools and libraries.
-  * Use an IDE or a code editor to create your app.
-  * All Dart apps have a `main()` function.
-  * Dart supports top-level functions.
+## 1. Play with a command-line app in DartPad
+
+With DartPad you can experiment with the Dart language and APIs,
+no download necessary.
+
+For example, here's an embedded DartPad that lets you play with
+the code for a small Hello World program.
+Click run {% asset red-run.png alt="" %} to run the app;
+the console output appears beneath the code.
+Try editing the source code—perhaps you'd like to change the greeting
+to use another language. To get the full DartPad experience,
+which includes the web UI that the app produces,
+<a href="https://dartpad.dartlang.org/27e044ec9e2957d9c5c7062871ce8bf3"
+   target="_blank">open the example at dartpad.dartlang.org.</a>
+
+<iframe
+    src="{{site.custom.dartpad.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3&verticalRatio=70"
+    width="100%"
+    height="200px"
+    style="border: 1px solid #ccc;">
+</iframe>
+
+More information:
+
+* [DartPad documentation][]
+* [Dart language tour][]
+* [Dart library tour][]
+
+## 2. Install Dart
+
+As you install, **note the path to the SDK.**
+You'll need it in step 3.
+
+<ul class="tabs__top-bar">
+  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
+  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
+  <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
+</ul>
+
+<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+  Use [Chocolatey](https://chocolatey.org) to install a {{channel}} release of
+  the Dart SDK:
+  ```terminal
+  C:\> choco install dart-sdk {%-if isDev%} --pre {%-endif%}
+  ```
 </div>
 
-This tutorial gets you ready
-to begin writing Dart apps in an editor or IDE.
-Here you will download the Dart software and
-create and run a small app.
+<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+  You can use Aptitude to install the Dart SDK on Linux.
 
-## Download Dart and an IDE {#download-dart}
+   1. Perform the following one-time setup:
+      ```terminal
+      > sudo apt-get update
+      > sudo apt-get install apt-transport-https
+      > sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+      {% if isStable -%}
+      > sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+      {% else -%}
+      ```
+      Set up Dart **{{site.data.pkg-vers.SDK.channel}} channel**:
+      ```terminal
+      > sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
+      {% endif -%}
+      ```
+   2. Install the Dart SDK:
+      ```terminal
+      > sudo apt-get update
+      > sudo apt-get install dart
+      ```
+</div>
 
-Once you are ready to move beyond DartPad and create Dart apps in
-a real world environment, you need to download some software.
+<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+  With [Homebrew](http://brew.sh/),
+  installing Dart is easy.
 
-The Dart SDK contains all of
-the tools and libraries that you need for basic Dart development.
-You may also want an IDE or code editor.
+  ```terminal
+  > brew tap dart-lang/dart
+  {% if isStable -%}
+  > brew install dart
+  {% else -%}
+  ```
+  Get **{{site.data.pkg-vers.SDK.channel}} channel** release:
+  ```terminal
+  > brew install dart --devel
+  {% endif -%}
+  ```
+</div>
 
-* [Get the Dart SDK](/tools/sdk#install)
-* Optional: [Get a Dart-savvy IDE or editor][ide]
-
-## What did you get? {#what-did-you-get}
-
-When you download the **Dart SDK**, you get a directory
-that contains tools (under `bin`) and libraries (under `lib`),
-along with supporting files.
-The location of the directory (we'll call it the _&lt;sdk-install-dir&gt;_)
-depends on your platform and how you downloaded the SDK.
-
-Under _&lt;sdk-install-dir&gt;_/lib are Dart libraries, such as dart:core,
-dart:html, and dart:io, that define APIs useful to most apps.
-The _&lt;sdk-install-dir&gt;_/bin directory contains several useful
-command-line tools, such as the **pub** package manager,
-the Dart-to-JavaScript compiler,
-and the command-line version of the Dart VM.
-
-
-## About Dart apps {#what-is-app}
-
-The most minimal Dart app has the following:
-
-* One Dart source file&mdash;a
-  file with the `.dart` suffix that contains Dart code
-* One top-level `main()` function.
-  This is the entry point for your app.
-
-As long as this simple Dart app can be run from the
-command line (and does not rely on the browser or the Flutter SDK),
-you can run it using `dart`, the Dart VM tool.
-For example:
-
-```terminal
-$ dart main.dart
-```
-
-**An app with any level of complexity should also
-include a pubspec file.** The pubspec.yaml file contains
-the name of the app and (optionally) a description.
-
-For example:
-
-<?code-excerpt "misc/pubspec.yaml" retain="/^(name|desc)/"?>
-{% prettify yaml %}
-name: examples
-description: dartlang.org example code.
-{% endprettify %}
-
-### Pub package manager
-
-The [pub](/tools/pub) tool allows you to manage Dart packages.
-Pub also includes commands for creating, developing, running, and deploying
-Dart apps. Behind the scenes, [`pub run`](/tools/pub/cmd/pub-run),
-for example, uses the `dart` tool to run a command-line app.
-
-Pub uses the `pubspec.yaml` file to determine
-your app's dependencies and any special setup that your app requires.
-Pub assumes that the files and directories in a Dart app are
-[laid out in a particular way](/tools/pub/package-layout). The following diagram shows some of the
-conventions used by pub. Not all of these directories are required.
-
-<img class="scale-img-max" src="/tutorials/server/images/pub-directory-structure.png"
-alt="Pub's directory structure including bin, lib, build directories, and pubspec">
-
-`bin`
-: The main files for a command-line app. One of the
-  files must include a top-level `main()` function.
-
-`lib`
-: Additional code to be used by your app.
-
-`pubspec.yaml`
-: The app's metadata, including information about which
-  packages the app depends on and which versions of those
-  packages are required.
-
-You can invoke pub commands from the command line or
-from your IDE or editor's UI.
-
-### Command-line apps
-
-Dart command-line apps
-run standalone from the command line.
-Command-line apps are often used
-to provide server-side support to a web app,
-but they can also be scripts.
-
-The Dart VM runs Dart code directly without intermediate compilation.
-
-<img class="scale-img-max" src="/tutorials/server/images/dartvm-cmd-line.png"
-     alt="Run a command-line app without compilation">
-
-## Create a command-line app {#create-cmd-line}
-
-Whether you use an IDE or the command line,
-you can create a basic app using standard Dart templates.
-
-If you're using a [Dart-savvy IDE][ide], follow these instructions:
-
-1. Create a new Dart project called `hello_world`,
-   using files from the template named
-   **console-full**, which has the description 
-   **A command-line application sample.**
-
-1. If the IDE doesn't automatically download the packages
-   that the app depends on, make the IDE run `pub get`.
-
-If you're using the command line, follow these instructions:
-
-1. Get [Stagehand.]({{site.pub}}/packages/stagehand)
-
-1. Use Stagehand to get the files, and then
-   use the pub tool to download dependent packages.
-   The commands you use should be something like this:
-   
-   ```terminal
-   mkdir hello_world
-   cd hello_world
-   stagehand console-full
-   pub get
-   ```
-
-Some of the files and directories in the hello_world app
-include the following:
-
-`analysis_options.yaml`
-: Defines lint rules enforced for this project.
-  By default, this file specifies the set of rules used for Google projects,
-  but you can [customize these options](/guides/language/analysis-options).
-
-`bin`
-: Contains the source files for the app.
-  The main Dart file for this example is `bin/main.dart`.
-
-`lib`
-: Contains library code.
-  In this directory, `hello_world.dart` defines
-  a simple `calculate()` method.
-
-`pubspec.lock`
-: A generated file that specifies the version numbers
-  of the packages on which the app depends.
-
-`pubspec.yaml`
-: Declares which packages your app needs.
-
-`test`
-: Contains test code for the hello_world app.
-
-`.dart_tool`
-: Support files used by `pub` and other Dart tools. You can ignore this.
-
-`.packages`
-: Tells the Dart tools where to get the packages that your
-  app uses. This file is created by the `pub get` command.
-  You can ignore this.
+More information: [Install the SDK](/tools/sdk#install)
 
 
-## Run a command-line app {#run-cmd-line}
+## 3. Get command-line developer tools
 
-Run the app, using either your IDE or the command line:
+Install [`stagehand`][stagehand], used for creating Dart apps from a set of
+templates´:
 
 ```terminal
-$ pub run bin/main.dart
+> pub global activate stagehand
 ```
 
-The program prints "Hello world: 42!" to the standard output stream,
-using the `print()` function provided by the `dart:core` library.
-The functions and objects defined in the dart:core library
-are automatically available to all Dart apps.
+More information, incl. tips for IDEs that support Dart native: [Dart
+tools](/tools).
 
+## 4. Create a small app
 
-## About main() and other top-level functions {#top-level-functions}
+To create a command-line app and retrive all it's dependencies, use these
+commands:
 
-Dart lets you define _top-level_ functions,
-that is, functions that are not encapsulated within a class or object.
-All apps have at least one top-level function,
-namely the `main()` function.
+```terminal
+> mkdir quickstart
+> cd quickstart
+> stagehand console-full
+> pub get
+```
 
-The app you've seen in this tutorial has other top-level functions.
-The Hello World example calls `print()`,
-a top-level function defined in `dart:core`.
+This creates a minimal Dart app that has the following:
 
-A function declaration
-has two parts: a _signature_ and a _body_.
+* One main Dart source file: `bin/main.dart`. This contains one top-level
+  `main()` function. This is the entry point for your app.
+* One additional Dart file: `lib/cli.dart`. This contains the functionality of
+  the app, and is imported by the `main.dart` file.
+* One `pubspec.yaml` file. This contains the app's metadata, including
+  information about which [packages](tools/pub/get-started) the app depends on
+  and which versions of those packages are required.
 
-<img class="scale-img-max" src="/tutorials/server/images/function-parts.png"
-     alt="Two parts of a function, the signature and the body"/>
+## 5. Run the app
 
-The signature sets the function name,
-the data type of its return value,
-and the number and type of its input arguments.
+First we need to get the dependencies of the app using the
+[`pub`](/tools/pub/cmd) command:
 
-<img class="scale-img-max" src="/tutorials/server/images/signature-parts.png"
-     alt="The parts of a function signature"/>
+```terminal
+> pub get
+```
 
-The body is the code that defines the function's behavior.
-It usually appears between curly braces (`{`_code_`}`).
-If the body is a single expression, then you
-can skip the braces and use the `=>` shorthand:
+To run the app from the command line, use the Dart VM by running the
+[`dart`][/tools/dart-vm] command:
 
-<?code-excerpt "misc/lib/vm_get_started.dart"?>
-{% prettify dart %}
-double milesToKM(double miles) => miles / 0.62;
-{% endprettify %}
+```terminal
+> dart bin/main.dart
+Hello world: 42!
+```
 
-The `milesToKM()` function performs a simple arithmetic calculation
-and returns the result.
+## 6. Add custom code to the app
 
-This function takes a single argument.
-Functions can take multiple arguments,
-in which case the arguments are set apart by commas.
+Let's customize the app you just created:
 
-## About file naming conventions {#file-names}
+ 1. Edit `lib/cli.dart` to return a different result:
 
-When creating an app with WebStorm,
-you are asked to provide an app name.
-By convention, app names
-(and thus, the related files and directories) are lowercase,
-with words separated by underscores (`_`).
+    ```dart
+    int calculate() {
+      return -1;
+    }
+    ```
+ 1. Save your changes.
 
+ 1. Re-run the main entry-point of your app:
+
+    ```terminal
+    > dart bin/main.dart
+    Hello world: -1
+    ```
+
+More information:
+[Write Command-Line Apps](/tutorials/server/cmdline)
+
+## 7. Use DevTools to debug the app
+
+If you wish to debug the app, you can use [Dart DevTools](/tools/dart-devtools).
+
+## 8. Compile for production
+
+The steps above used `dart`, the Dart VM to run the app. The Dart VM is
+optimized for fast, incremental compilation to provide instant feedback
+duringdevelopment. Now that our small app is done, it's time to AOT compile our
+Dart code to optimized native machine code.
+
+Use the `dart2aot` tool to AOT-compile the program to machine code:
+
+```terminal
+> dart2aot bin/main.dart bin/main.dart.aot
+```
+
+To run the compiled program, use the Dart Run-time:
+
+```terminal
+> dartaotruntime bin/main.dart.aot
+```
+
+Notice how it starts instantly, and completes very quicly:
+
+```terminal
+> time dartaotruntime bin/main.dart.aot
+
+real	0m0.032s
+```
 
 ## What next?
 
-Try the next tutorial, [Write command-line apps](cmdline), which describes how
-to build command-line apps.
+Check out these resources:
 
+* Additional tutorials and codelabs for Dart
+  * [Tutorials](/tutorials)
+  * [Codelabs](/codelabs)
+* Dart language, libraries, and conventions
+  * [Sample code]({{site.dartlang}}/samples)
+  * [Language tour]({{site.dartlang}}/guides/language/language-tour)
+  * [Library tour]({{site.dartlang}}/guides/libraries/library-tour)
+  * [Effective Dart]({{site.dartlang}}/guides/language/effective-dart)
+* Tools & libraries
+  * [Dart SDK]({{site.dartlang}}/tools/sdk)
+  * [Dart tools](/tools)
+  * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
+
+If you get stuck, find help at [Community and Support.](/community)
+
+[stagehand]: https://pub.dartlang.org/packages/stagehand
+[DartPad documentation]: /tools/dartpad
+[Dart language tour]: /guides/language/language-tour
+[Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors
