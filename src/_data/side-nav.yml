@@ -98,6 +98,8 @@
           permalink: /web
         - title: Get started
           permalink: /web/get-started
+        - title: Building for deployment
+          permalink: /web/deployment
         - title: Web libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically
