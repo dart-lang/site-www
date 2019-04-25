@@ -137,7 +137,7 @@ This creates a minimal Dart app that has the following:
 * One additional Dart file: `lib/cli.dart`. This contains the functionality of
   the app, and is imported by the `main.dart` file.
 * One `pubspec.yaml` file. This contains the app's metadata, including
-  information about which [packages](tools/pub/get-started) the app depends on
+  information about which [packages](/tools/pub/get-started) the app depends on
   and which versions of those packages are required.
 
 ## 5. Run the app
