@@ -911,6 +911,10 @@ main .content {
     font-size: $font-size-h2;
   }
 
+  a {
+    color: $site-color-card-link;
+  }
+
   &.narrow { width: 250px; }
 }
 
