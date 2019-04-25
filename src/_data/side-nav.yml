@@ -76,7 +76,7 @@
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
-    - title: Command line & server
+    - title: Command-line & server apps
       children:
         - title: Get started
           permalink: /tutorials/server/get-started
@@ -84,11 +84,11 @@
           permalink: /tutorials/server/cmdline
         - title: Writing HTTP clients & servers
           permalink: /tutorials/server/httpserver
+        - title: C/C++ interop
+          permalink: /articles/server/c-interop
         - title: Native extensions
           permalink: /articles/server/native-extensions
-        - title: AOT and JIT compilation [TBD]
-          permalink: /tbd
-    - title: Web
+    - title: Web apps
       children:
         - title: Overview
           urlExactMatch: true
