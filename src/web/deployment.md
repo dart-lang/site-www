@@ -56,7 +56,7 @@ For more information, see the [documentation for dart2js][dart2js].
 
 <aside class="alert alert-warning" markdown="1">
   **Important:**
-  Make sure your app has good [test coverage](/angular/guide/testing)
+  Make sure your app has good [test coverage](https://webdev.dartlang.org/angular/guide/testing)
   before you use either of the `--trust-*` options.
   If some code paths aren't tested,
   your app might run in dartdevc but
