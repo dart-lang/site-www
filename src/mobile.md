@@ -1,22 +1,20 @@
 ---
-title: Dart mobile apps
-description: Dart mobile apps can be written using the Flutter framework.
+title: Mobile app development
+short-title: Mobile
+description: Use the Flutter framework to build beautiful native apps on iOS and Android from a single codebase.
 toc: false
 ---
 
-## Dart mobile apps using the Flutter framework
-
-Mobile apps can be written in Dart using the Flutter framework. The Flutter
-framework is powered by the [Dart platform](/platforms), using the [Dart
-VM](/platforms) for it's instant 'hot reload' developer cycle, and the [Dart
+We recommend the [Flutter framework][] for developing mobile apps.
+It's powered by the [Dart platform](/platforms), using the [Dart
+VM](/platforms) for its instant _hot reload_ developer cycle and the [Dart
 AOT](/platforms) native code compiler for creating fast production code.
 
 <p class="text-center"> 
-  <a href="{{site.flutter}}">
-    <img src="{% asset shared/flutter/logo+text/horizontal/default.svg @path %}" width="400px" alt="Flutter logo"/>
+  <a href="{{site.flutter}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
+    <img src="{% asset shared/flutter/icon/64.png @path %}" width="32px" alt=""/>
+    Get started
   </a>
 </p>
 
-<p class="text-center"> 
-  <a href="{{site.flutter}}/get-started" class="btn btn-primary btn-lg">Get started</a>
-</p>
+[Flutter framework]: {{site.flutter}}
