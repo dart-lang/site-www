@@ -245,16 +245,16 @@ img {
 
   > article {
     > .content {
-      padding-left: 8%;
+      padding-left: 5%;
       padding-right: 8%;
     }
 
     @media(min-width: 1024px) {
-      margin-left: 246px;
+      margin-left: 236px;
     }
 
     @media(min-width: 1200px) {
-      margin-right: 246px;
+      margin-right: 236px;
     }
   }
 }
@@ -445,7 +445,7 @@ img {
   position: fixed;
   bottom: 0px;
   left: 0px;
-  width: 246px;
+  width: 236px;
   border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
   overflow-y: auto;
@@ -453,7 +453,7 @@ img {
 
   .site-sidebar {
     // override shared/_sidebar.scss
-    padding: $content-padding 40px;
+    padding: $content-padding 40px $content-padding 30px;
 
     // override shared/_sidebar.scss
     // the first-level nav block is indented on the same level as the headers
@@ -553,7 +553,7 @@ img {
 
   position: fixed;
   bottom: 0px;
-  width: 246px;
+  width: 236px;
   right: 0px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -561,7 +561,7 @@ img {
 
   // override shared/_toc.scss
   &.site-toc {
-    padding: $content-padding 40px;
+    padding: $content-padding 30px $content-padding 40px;
   }
 
   // Override BS defaults for .nav, etc.
