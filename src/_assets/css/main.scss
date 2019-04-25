@@ -503,6 +503,25 @@ img {
         font-weight: 400;
       }
     }
+
+    .navbar-nav {
+      display: none;
+
+      @media(max-width: 1024px) {
+        display: block;
+        margin-bottom: 1rem;
+
+        a.nav-link {
+          font-family: $site-font-family-gsans;
+          font-weight: 400;
+          font-size: 20px;
+
+          &.active {
+            color: $site-color-body
+          }
+        }
+      }
+    }
   }
 }
 
