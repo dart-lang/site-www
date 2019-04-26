@@ -38,7 +38,8 @@ that provide low-level web APIs.
 
 ## Web packages
 
-Many packages support web development with Dart. Here are a few:
+Many [packages](/tools/pub/get-started) support web development with Dart. Here
+are a few:
 
 |-----------------+---------------------------------+--------------------------|
 | Library         | Packages                        | Notes                    |
@@ -56,24 +57,6 @@ Many packages support web development with Dart. Here are a few:
 
 To find more libraries that support writing web apps, search for
 [web packages.][web packages]
-
-
-## JS interop
-
-With the [`js` package,]({{site.pub-pkg}}/js), also known as _package:js,_
-you can use one of the many existing libraries written in JavaScript.
-For help using the `js` package, see the following:
-
-[js_facade_gen](https://github.com/dart-lang/js_facade_gen)
-: A tool that generates Dart code from JavaScript libraries that have
-  [TypeScript type definitions.](http://definitelytyped.org/)
-
-[dart_js_interop](https://github.com/matanlurey/dart_js_interop)
-: Examples of using the `js` package,
-  with comparisons to old code that uses the dart:js library.
-
-[Packages that depend on `js`]({{pub-pkg}}?q=dependency%3Ajs)
-: Published packages that have `js` in their pubspec.
 
 {% comment %}
 Check out these pages:
