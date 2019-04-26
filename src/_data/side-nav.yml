@@ -98,6 +98,8 @@
           permalink: /web/get-started
         - title: JS/TS interop
           permalink: /web/js-interop
+        - title: Building for deployment
+          permalink: /web/deployment
         - title: Web libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically
