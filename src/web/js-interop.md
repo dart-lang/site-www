@@ -1,7 +1,7 @@
 ---
-title: "JS/TS interop"
+title: "JavaScript and TypeScript interop"
 short-title: JS-interop
-description: "The Dart Web platform supports JavaScript/TypeScrupt integration via package:js"
+description: "Use package:js to integrate JavaScript or TypeScript code into your Dart web app."
 toc: false
 ---
 
