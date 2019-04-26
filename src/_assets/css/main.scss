@@ -477,12 +477,30 @@ img {
       font-weight: 300;
       color: $site-color-body;
       font-size: 13px;
-      align-items: start;
+
+      // copy of shared/_sidebar.scss
+      // @mixin collapsable() is not reachable from here, this is a copy of that
+      &.collapsable {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        &::after {
+          content: 'keyboard_arrow_down';
+          font: $site-font-icon;
+          transition: transform .25s ease-in-out;
+        }
+
+        &:not(.collapsed) {
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
 
       // override shared/_sidebar.scss
       &.collapsable::before {
-        top: 2px;
-        left: -18px;
+        display: none;
       }
 
       &.external::after {
