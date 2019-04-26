@@ -1,5 +1,4 @@
 ---
-layout: top
 title: Platforms
 description: "You can use Dart when writing web apps, standalone apps, servers, mobile apps, and embedded apps."
 toc: false
