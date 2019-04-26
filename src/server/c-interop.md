@@ -1,5 +1,5 @@
 ---
-title: "C/C++ interop"
+title: "C & C++ interop"
 description: "To use C or C++ code in your Dart program, use the dart:ffi library (currently in preview)."
 toc: false
 ---
