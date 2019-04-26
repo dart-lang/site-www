@@ -16,26 +16,26 @@ packages](/guides/libraries/useful-libraries). Also note that some core
 libraries are only available on some [Dart platforms](/platforms).
 
 <div class="table-wrapper" markdown="1">
-|-----------------------------------------------+-----------------------|---------|
-| Library                                       | Supported platforms   | Notes   |
-|-----------------------------------------------|-----------------------|---------|
-| [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program | All | |
-| [`dart:async`][dart-async]              <br> Support for asynchronous programming, with classes such as Future and Stream | All | |
-| [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core` | All | |
-| [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8 | All | |
-| [`dart:developer`][dart-developer]      <br> Interact with developer tools such as the debugger and inspector | Dart VM | |
-| [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator | All | |
-| [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8 byte integers) and SIMD numeric types | All | |
-| [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications | Dart VM, Dart AOT | |
-| [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads | Dart VM, Dart AOT | |
-| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation | Dart VM, Dart web | Experimental |
-| [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications | Dart web | |
-| [`dart:index_db`][dart-index_db]        <br> Client-side key-value store with support for indexes | Dart web | |
-| [`dart:js`][dart-js]                    <br> Interoperability with JavaScript | Dart web | |
-| [`dart:js_util`][dart-js_util]          <br> Utility methods to efficiently manipulate typed JSInterop objects | Dart web | |
-| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser | Dart web | |
+|-----------------------------------------------+-------------------------------|
+| Library                                       | Supported platforms & Notes   |
+|-----------------------------------------------|-------------------------------|
+| [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program | All |
+| [`dart:async`][dart-async]              <br> Support for asynchronous programming, with classes such as Future and Stream | All |
+| [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core` | All |
+| [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8 | All |
+| [`dart:developer`][dart-developer]      <br> Interact with developer tools such as the debugger and inspector | Dart VM JIT<br>Dart web (development-time only; Experimental) |
+| [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator | All
+| [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8 byte integers) and SIMD numeric types | All |
+| [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications | Dart VM JIT<br>Dart AOT |
+| [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads | Dart VM JIT<br>Dart AOT |
+| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation | Dart VM JIT; Experimental |
+| [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications | Dart web |
+| [`dart:index_db`][dart-index_db]        <br> Client-side key-value store with support for indexes | Dart web |
+| [`dart:js`][dart-js]                    <br> Interoperability with JavaScript | Dart web |
+| [`dart:js_util`][dart-js_util]          <br> Utility methods to efficiently manipulate typed JSInterop objects | Dart web |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser | Dart web |
 | [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser | Dart web | |
-| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL | Dart web | Obsolete |
+| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL | Dart web; Obsolete |
 {:.table .table-striped}
 </div>
 
