@@ -76,6 +76,8 @@
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
+    - title: Mobile apps
+      permalink: /mobile
     - title: Command-line & server apps
       children:
         - title: Get started
@@ -88,6 +90,8 @@
           permalink: /articles/server/c-interop
         - title: Native extensions
           permalink: /articles/server/native-extensions
+        - title: AOT and JIT compilation [TBD]
+          permalink: /tbd
     - title: Web apps
       children:
         - title: Overview
@@ -96,6 +100,8 @@
           permalink: /web
         - title: Get started
           permalink: /web/get-started
+        - title: Building for deployment
+          permalink: /web/deployment
         - title: Web libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically

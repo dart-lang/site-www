@@ -1,5 +1,6 @@
 ---
-title: Web development with Dart
+title: Web app development
+short-title: Web
 description: Resources for developing Dart web apps.
 toc: false
 ---
