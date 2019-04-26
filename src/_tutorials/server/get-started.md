@@ -1,5 +1,5 @@
 ---
-title: "Get started: Dart native apps"
+title: "Get started: command-line & server apps"
 description: Get Dart, run and compile a small app
 toc: true
 nextpage:
@@ -10,10 +10,10 @@ prevpage:
   title: Tutorials
 ---
 
-Follow these steps to start using Dart to develop web apps. First you’ll play
-with Dart in your browser, no download required. Then you’ll install Dart and
-run a small program with the Dart VM. Finally, you will AOT-compile that program
-to native machine code.
+Follow these steps to start using Dart to develop command-line & server apps.
+First you’ll play with Dart in your browser, no download required. Then you’ll
+install Dart and run a small program with the Dart VM. Finally, you'll
+AOT-compile that program to native machine code.
 
 ## 1. Play with a command-line app in DartPad
 
