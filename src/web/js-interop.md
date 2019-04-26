@@ -1,13 +1,13 @@
 ---
 title: "JavaScript and TypeScript interop"
-short-title: JS-interop
+short-title: JS/TS interop
 description: "Use package:js to integrate JavaScript or TypeScript code into your Dart web app."
 toc: false
 ---
 
-On the [Dart web platform](/platforms/), Dart supports calling
-JavaScript (JS) and TypeScript (TS) via the [`js`
-package,]({{site.pub-pkg}}/js), also known as _`package:js`,_.
+The [Dart web platform](/platforms/) supports calling
+JavaScript (JS) and TypeScript (TS) using the [`js`
+package,]({{site.pub-pkg}}/js) also known as _`package:js`_.
 
 For help using the `js` package, see the following:
 
