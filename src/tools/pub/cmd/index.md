@@ -1,7 +1,6 @@
 ---
-permalink: /tools/pub/cmd
-title: "The pub tool"
-description: "Pub, a package management tool for Dart, supports a variety of commands."
+title: The pub tool
+description: Pub, a package management tool for Dart, supports a variety of commands.
 ---
 
 The `pub` tool has commands for managing packages
