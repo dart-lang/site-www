@@ -1,16 +1,15 @@
 ---
-layout: default
-title: "Package versioning"
+title: Package versioning
 description: "How Dart's package management tool, pub, handles versioning of packages."
-permalink: /tools/pub/versioning
 ---
 
-One of [pub](/tools/pub)'s main jobs is helping you work with versioning.
+One of the main jobs of the [pub package manager](/guides/packages)
+is helping you work with versioning.
 This document explains a bit about the history of versioning and pub's
 approach to it.
 Consider this to be advanced information. If you want a better picture of _why_
 pub was designed the way it was, read on. If you just want to _use_ pub,
-the [other docs](/tools/pub) will serve you better.
+the [other docs](/guides/packages) will serve you better.
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the
@@ -447,5 +446,6 @@ That was a lot of information, but here are the key points:
     pinned down in a _lockfile_. That ensures that every machine your app is
     on is using the same versions of all of its dependencies.
 
-If you'd like to know more about version solving, see the article
+If you'd like to know more about pub's version solving algorithm,
+see the article
 [PubGrub: Next-Generation Version Solving.](https://medium.com/@nex3/pubgrub-2fb6470504f)

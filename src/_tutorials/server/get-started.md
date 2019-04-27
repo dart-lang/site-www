@@ -83,10 +83,10 @@ description: dartlang.org example code.
 
 ### Pub package manager
 
-The [pub](/tools/pub) tool allows you to manage Dart packages.
+The [pub tool](/tools/pub/cmd) tool allows you to manage Dart packages.
 Pub also includes commands for creating, developing, running, and deploying
-Dart apps. Behind the scenes, [`pub run`](/tools/pub/cmd/pub-run),
-for example, uses the `dart` tool to run a command-line app.
+Dart apps. Behind the scenes, for example, [`pub run`](/tools/pub/cmd/pub-run)
+uses the `dart` tool to run a command-line app.
 
 Pub uses the `pubspec.yaml` file to determine
 your app's dependencies and any special setup that your app requires.

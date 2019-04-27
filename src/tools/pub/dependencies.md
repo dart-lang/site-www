@@ -3,9 +3,9 @@ title: Package dependencies
 description: Add other packages to your app. Specify package locations, version constraints, and more.
 ---
 
-Dependencies are one of [pub](/tools/pub)'s core concepts.
+Dependencies are one of the core concepts of the [pub package manager](/guides/packages).
 A dependency is another package that your package needs in order to work.
-Dependencies are specified in your [pubspec](/tools/pub/pubspec.html).
+Dependencies are specified in your [pubspec](/tools/pub/pubspec).
 You only list
 [immediate dependencies](/tools/pub/glossary#immediate-dependency)&mdash;the
 software that your package uses directly. Pub handles

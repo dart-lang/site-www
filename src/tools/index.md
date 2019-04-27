@@ -95,7 +95,7 @@ The Dart SDK includes the following general-purpose tools:
   for getting a version of `dartfmt` that's different
   from the one included in the SDK.
 
-[`pub`](/tools/pub)
+[`pub`](/tools/pub/cmd)
 : Manages Dart packages,
   making it easy for you to install, use, and share Dart libraries,
   command-line tools, and other assets.
@@ -104,7 +104,7 @@ The Dart SDK includes the following general-purpose tools:
   IDEs that support Dart generally have special support for pub,
   but you can also use it from the command line.
 
-Some additional tools are available in [packages](/tools/pub/get-started).
+Some additional tools are available in [packages](/guides/packages).
 To install these tools, use the `pub` command, as described in each tool's
 installation instructions.
 Here are the general-purpose tools you might want to install:
@@ -155,10 +155,8 @@ command line apps and servers:
   Note that you must configure your IDE with the location of
   the `dart` binary.
 
-[Pub package manager: `pub`](/tools/pub)
+[Pub package manager: `pub`](/tools/pub/cmd)
 : Simplifies downloading and running scripts,
   with commands such as `pub get`, `pub global activate`, `pub global run`,
   and `pub run`.
-
-[PENDING: AOT]
 
