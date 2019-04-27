@@ -1,5 +1,4 @@
 ---
-layout: top
 permalink: /community
 title: Community and support
 description: Communities, mailing lists, and bug databases for the Dart project.

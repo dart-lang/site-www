@@ -60,6 +60,7 @@ $default-link-visited:      #0175C2;
 $site-color-header: $site-color-dark-background;
 $site-color-header-text: #f8f9fa;
 $site-color-card-text: #f8f9fa;
+$site-color-card-link: #40C4FF;
 $site-font-size-header: 14px;
 $site-color-primary: $brand-primary;
 $site-color-sidebar-active: #1389FD;
@@ -75,10 +76,10 @@ $google-font-family:        "Product Sans", $font-family-base;
 // Headings
 $font-size-h1:            48px;
 $font-size-h2:            24px;
-$font-size-h3:            21px;
-$font-size-h4:            18px;
-$font-size-h5:            16px;
-$font-size-h6:            14px;
+$font-size-h3:            17px;
+$font-size-h4:            15px;
+$font-size-h5:            15px;
+$font-size-h6:            15px;
 
 // Spacing
 $live-content-width:      1280px;
@@ -96,9 +97,9 @@ $site-font-icon: 24px/1 $site-font-family-icon;
 
 // Layout
 $site-header-height: 50px;
-$site-header-with-banner-height: 114px; // 50 + 64
+$site-header-with-banner-height: 98px; // 50 + 48
 $site-header-with-obsolete-height: 131px; // 50 + 81
-$site-header-with-banner-obsolete-height: 195px; // 50 + 81 + 64
+$site-header-with-banner-obsolete-height: 179px; // 50 + 81 + 48
 $site-footer-md-default-height: 140px;
 $site-content-top-padding: 40px;
 $site-content-max-width: 960px;
