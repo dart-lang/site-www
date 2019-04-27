@@ -446,3 +446,6 @@ That was a lot of information, but here are the key points:
  *  Once your app has a solid set of versions for its dependencies, that gets
     pinned down in a _lockfile_. That ensures that every machine your app is
     on is using the same versions of all of its dependencies.
+
+If you'd like to know more about version solving, see the article
+[PubGrub: Next-Generation Version Solving.](https://medium.com/@nex3/pubgrub-2fb6470504f)
