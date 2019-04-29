@@ -9,7 +9,7 @@ such as libraries and tools.
 To get Dart packages, you use the **pub package manager**.
 You can find publicly available packages on the [**Pub site**,]({{site.pub}})
 or you can load packages from the local file system or elsewhere,
-such as git repositories.
+such as Git repositories.
 Wherever your packages come from, pub manages version dependencies,
 helping you get package versions that work with each other and
 with your SDK version.
@@ -18,22 +18,15 @@ Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, installing, updating, and publishing packages.
 Or you can use [`pub` on the command line](/tools/pub/cmd).
 
-{% include flutter-packages.md %}
-
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
 The pubspec contains some metadata about the package. Additionally,
 a package can contain dependencies (listed in the pubspec),
 Dart libraries, apps, resources, tests, images, and examples.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** If your Dart app depends on one or more packages,
-  then your app itself must be in a package.
-</aside>
-
 To use a package, do the following:
 
-* Create a pubspec (a file that lists package dependencies and includes
+* Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
   other metadata, such as a name for your package).
 * Use pub to get your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
@@ -50,7 +43,7 @@ name: my_app
 {% endprettify %}
 
 Here is an example of a pubspec that declares dependencies on
-two packages that are hosted on the Pub site:
+two packages (`js` and `intl`) that are hosted on the Pub site:
 
 {% prettify yaml %}
 name: my_app
@@ -64,6 +57,7 @@ see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
 
 ## Installing packages
+
 Once you have a pubspec, you can run <code class="literal">pub
 get</code> from the top directory of your application:
 
@@ -78,10 +72,11 @@ The `pub get` command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [Pub site.]({{site.pub}})
-For a git dependency, pub clones the git repository.
+For a [Git dependency](/tools/pub/dependencies#git-packages),
+pub clones the Git repository.
 Transitive dependencies are included, too.
-For example, if the js package depends on the test package, `pub`
-grabs both the js package and the test package.
+For example, if the `js` package depends on the `test` package, `pub`
+grabs both the `js` package and the `test` package.
 
 Pub creates a
 `.packages` file (under your app’s top directory)
@@ -94,6 +89,7 @@ packages-dir.html
 {% endcomment %}
 
 ## Importing libraries from packages
+
 To import libraries found in packages, use the
 <code class="literal">package:</code> prefix:
 
@@ -157,7 +153,8 @@ pubspec. It lists the specific versions of each dependency (immediate and
 transitive) that your package uses.
 
 If your package is an application package,
-you should check this file into source control.
+you should check this file into
+[source control](/guides/libraries/private-files).
 That way, everyone working on your app uses the same versions
 of all of the packages.
 Checking in the lockfile also ensures that your deployed app
