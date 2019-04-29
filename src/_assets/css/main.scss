@@ -701,6 +701,11 @@ img {
     margin: 0;
     padding: 0 $site-nav-mobile-side-padding;
     order: -1;
+
+    // Override of _header.scss
+    &::before {
+      left: 1.5rem;
+    }
   }
 }
 
