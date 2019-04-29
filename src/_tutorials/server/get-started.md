@@ -7,7 +7,7 @@ nextpage:
   title: Write command-line apps
 prevpage:
   url: /tutorials/server
-  title: Tutorials
+  title: Dart command-line and server tutorials
 ---
 
 Follow these steps to start using Dart to develop command-line & server apps.
