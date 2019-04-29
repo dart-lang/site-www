@@ -5,20 +5,23 @@ toc: false
 ---
 
 Use the `dart2aot` command to AOT (ahead-of-time) compile a Dart program to
-native x86 machine code. The tool is supported on Windows, macOSm, and Linux.
-
-Provide the file name of the main entrypoint of the program (typically
-`main.dart`) and the file name where the tool should should write the compiled
-code, for example:
+native x86 machine code. This tool is supported on Windows, macOS, and Linux.
+Here's an example of using `dart2aot`:
 
 ```terminal
 $ dart2aot main.dart main.dart.aot
 ```
 
-After compilation, the compiled program can be run with the `dartaotruntime`
-command (see [Dart platforms](/platforms) for details):
+The command takes two arguments:
+
+* The location of the file that contains the main entrypoint of the program (typically `main.dart`)
+* The filename to use for the tool's output (the compiled program)
+
+To run the compiled program, use the `dartaotruntime` command:
 
 ```terminal
 $ dartaotruntime main.dart.aot
 Hello from Dart.
 ```
+
+For more information, see [Dart platforms](/platforms).
