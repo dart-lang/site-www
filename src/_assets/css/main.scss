@@ -1339,8 +1339,13 @@ body.error {
     display: none;
   }
 
-  background: #151528;
+  background-color: #132030;
+  background-image: asset_url('404-bg-pattern.jpg');
   color: #8d9399;
+
+  @media(min-width: 1600px) {
+    background-size: cover;
+  }
 
   h1 {
     color: white;
