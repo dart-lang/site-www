@@ -181,11 +181,7 @@ Let's customize the app you just created:
 More information:
 [Write Command-Line Apps](/tutorials/server/cmdline)
 
-## 7. Use DevTools to debug the app
-
-If you wish to debug the app, you can use [Dart DevTools](/tools/dart-devtools).
-
-## 8. Compile for production
+## 7. Compile for production
 
 The steps above used `dart`, the Dart VM to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
