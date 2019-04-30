@@ -3,8 +3,7 @@ title: pub get
 description: Use pub get to retrieve the dependencies used by your Dart application.
 ---
 
-_Get_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode %}
 $ pub get [--offline]

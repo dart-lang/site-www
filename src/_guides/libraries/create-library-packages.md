@@ -188,11 +188,9 @@ public use go into the `tool` directory.
 
 Other files that are required if you publish your library to the
 Pub site, such as a README and a CHANGELOG, are
-described in [Publishing a Package](/tools/pub/publishing).
-Also see
-[Pub Package Layout Conventions](/tools/pub/package-layout)
-for further information on how to organize a package directory
-structure.
+described in [Publishing a package](/tools/pub/publishing).
+For more information on how to organize a package directory,
+see the [pub package layout conventions](/tools/pub/package-layout).
 
 ## Documenting a library
 
@@ -227,7 +225,7 @@ To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
 For example, see the page for the [shelf package]({{site.pub}}/packages/shelf).
-See [Publishing a Package](/tools/pub/publishing)
+See [Publishing a package](/tools/pub/publishing)
 for details on how to prepare your package for publishing.
 
 The pub site not only hosts your package,
@@ -255,9 +253,9 @@ Use the following resources to learn more about library packages:
 * [Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
   in the [language tour](/guides/language/language-tour) covers
   using library files.
-* The [pub](/tools/pub) documentation is useful, particularly
-  [Pub Package Layout Conventions](/tools/pub/package-layout).
-* [What Not to Commit](private-files)
+* The [package](/guides/packages) documentation is useful, particularly the
+  [package layout conventions](/tools/pub/package-layout).
+* [What not to commit](private-files)
   covers what should not be checked into a source code repository.
 * The newer library packages under the
   [dart-lang](https://github.com/dart-lang) organization tend

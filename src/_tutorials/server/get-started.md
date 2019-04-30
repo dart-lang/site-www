@@ -58,6 +58,7 @@ Install [`stagehand`,][stagehand] which gives you templates for creating Dart ap
 > pub global activate stagehand
 ```
 
+
 Note that although these instructions feature the command line,
 many IDEs support Dart development.
 Those IDEs use Stagehand behind the scenes when you create new Dart projects.

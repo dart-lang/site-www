@@ -56,11 +56,12 @@ Dart libraries come from a variety of sources:
   [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}).
 * Libraries shared with the Dart community are distributed as library packages,
   published at the [Pub site.]({{site.pub}})
-  The [pub](/tools/pub/) tool allows you to create, publish, and manage library packages.
+  The [pub package manager](/guides/packages/) helps you
+  create, publish, and manage library packages.
 * Libraries from GitHub, a URL, or a local path can be included in your application.
   For more information, see
   [Dependency sources](/tools/pub/dependencies#dependency-sources),
-  a section in [Pub Dependencies](/tools/pub/dependencies).
+  a section in [Pub dependencies](/tools/pub/dependencies).
 * Local libraries are placed under the `/lib` directory of your [application's directory
   structure](/tools/pub/package-layout#public-directories).
 
@@ -133,9 +134,9 @@ Use the following resources to learn more about libraries and library packages.
 * [Importing library
   files](/guides/libraries/create-library-packages#importing-library-files),
   a section in [Create Library Packages](/guides/libraries/create-library-packages)
-* [Pub docs](/tools/pub), particularly
-  [Pub Package Layout Conventions](/tools/pub/package-layout) and
-  [Dependency sources](/tools/pub/dependencies#dependency-sources)
+* [pub package documentation](/guides/packages), particularly
+  [layout conventions](/tools/pub/package-layout) and
+  [dependency sources](/tools/pub/dependencies#dependency-sources)
 
 ### Creating library packages
 

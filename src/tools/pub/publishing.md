@@ -1,10 +1,9 @@
 ---
 title: Publishing packages
 description: Learn how to publish a Dart package to the Pub site.
-permalink: /tools/pub/publishing
 ---
 
-[Pub](/tools/pub) isn't just for using other people's packages.
+[The pub package manager](/guides/packages) isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
