@@ -36,7 +36,7 @@
   expanded: false
   children:
     - title: How to use packages
-      permalink: /tools/pub/get-started
+      permalink: /guides/packages
     - title: Commonly used packages
       permalink: /guides/libraries/useful-libraries
     - title: Creating packages
@@ -52,12 +52,6 @@
           permalink: /tools/pub/glossary
         - title: Package layout conventions
           permalink: /tools/pub/package-layout
-        - title: 'Pub package manager [TBD: move]'
-          # Move this?
-          # Are both of the following necessary, or just one of them?
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /tools/pub
         - title: Pub environment variables
           permalink: /tools/pub/environment-variables
         - title: Pubspec file
@@ -86,10 +80,10 @@
           permalink: /tutorials/server/cmdline
         - title: Writing HTTP clients & servers
           permalink: /tutorials/server/httpserver
+        - title: C & C++ interop
+          permalink: /server/c-interop
         - title: Native extensions
           permalink: /articles/server/native-extensions
-        - title: AOT and JIT compilation [TBD]
-          permalink: /tbd
     - title: Web apps
       children:
         - title: Overview

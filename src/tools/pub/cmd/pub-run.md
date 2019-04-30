@@ -1,11 +1,9 @@
 ---
 title: pub run
 description: Use pub run to run a Dart script in your package.
-permalink: /tools/pub/cmd/pub-run
 ---
 
-_Run_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode %}
 $ pub run [--enable-asserts] <executable> [args...]

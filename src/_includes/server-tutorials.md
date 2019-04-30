@@ -4,7 +4,8 @@ and server apps that can run in the standalone Dart VM.
 <div class="card-grid">
   <div class="card">
     <h3><a href="/tutorials/server/get-started">Get started</a></h3>
-    <p>Get Dart. Create a simple standalone app.</p>
+    <p>Get Dart. Create a simple standalone app, run it in the Dart VM,
+    and AOT-compile it to native machine code.</p>
   </div>
   <div class="card">
     <h3><a href="/tutorials/server/cmdline">Write command-line apps</a></h3>

@@ -1,12 +1,10 @@
 ---
 title: pub deps
 description: Use pub deps to print a dependency graph for a package.
-permalink: /tools/pub/cmd/pub-deps
 toc: false
 ---
 
-_Deps_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify none %}
 $ pub deps [--style=<style>]

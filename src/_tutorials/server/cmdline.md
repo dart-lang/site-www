@@ -3,13 +3,11 @@ title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
   url: /tutorials/server/httpserver
-  title: "Write HTTP clients & servers"
+  title: Write HTTP clients & servers
 prevpage:
   url: /tutorials/server/get-started
-  title: Get started with the Dart VM
+  title: "Get started: command-line & server apps"
 ---
-
-{% include tutorial-banner.html %}
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -17,11 +15,9 @@ prevpage:
   * Command-line applications need to do input and output.
   * The dart:io library provides I/O functionality.
   * The args package helps define and parse command-line arguments.
-  * The dart:async library supports asynchronous programming with Future and
-    Stream classes.
   * A Future represents a value that will be available at some time in the future.
   * Streams provide a series of asynchronous data events.
-  * Most input and output requires the use of Streams.
+  * Most input and output requires the use of streams.
 </div>
 
 <aside class="alert alert-info" markdown="1">
@@ -42,10 +38,6 @@ These programs use resources that most command-line applications need,
 including the standard output, error, and input streams,
 command-line arguments, files and directories, and more.
 
-This tutorial uses the `dcat` example.
-You can get it by
-[downloading the tutorial examples](https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip)
-from GitHub.
 
 ## Running an app with the standalone Dart VM
 
@@ -58,7 +50,7 @@ and how you installed the SDK.
 You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
 By putting this directory in your PATH
 you can refer to the `dart` command and other commands, such as
-[dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer),
+[dartanalyzer](/tools/dartanalyzer),
 by name.
 
 Let's run a small program.
@@ -100,9 +92,6 @@ For a brief look now, hover over the highlighted code below for explanations.
 <pre class="prettyprint lang-dart">
 import 'dart:io';
 import 'dart:convert';
-<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Asynchronous library"
-  data-content="The dart:async library defines Future and Stream classes."
->import 'dart:async';</a>
 
 import 'package:args/args.dart';
 
@@ -121,10 +110,10 @@ void main(<a tabindex="0" role="button" class="highlight" data-toggle="popover" 
   dcat(paths, argResults[lineNumber]);
 }
 
-Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Asynchronous function" data-content='An asynchronous function is marked with "async" and returns a Future.'>async</a> {
+Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Async function" data-content='An async function is marked with "async" and returns a Future.'>async</a> {
   if (paths.isEmpty) {
     // No files provided as arguments. Read from stdin and print each line.
-    <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
+    <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Using await" data-content='The "await" keyword, which works only in async functions, makes the program pause until the following expression completes.'>await</a> <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
   } else {
     for (var path in paths) {
       int lineNumber = 1;
@@ -142,7 +131,7 @@ Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role
           stdout.writeln(line);
         }
       } <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Exception handling" data-content='Any errors encountered in the stream are handled in the "catch" block.'>catch</a> (_) {
-        _handleError(path);
+        await _handleError(path);
       }
     }
   }
@@ -188,7 +177,7 @@ which uses ArgParser and ArgResults to parse and store its command-line argument
 <ol>
 <li markdown="1">
 Copy the sample file from the github repo:
-<a href="https://raw.githubusercontent.com/dart-lang/dart-tutorials-samples/master/cmdline/bin/dcat.dart">dcat.dart</a>.
+<a href="https://raw.githubusercontent.com/dart-lang/dart-tutorials-samples/master/cmdline/bin/dcat.dart">dcat.dart.</a>
 </li>
 
 <li markdown="1">
@@ -255,16 +244,14 @@ The standard I/O streams are defined at the top level of the dart:io library,
 | <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
 {: .table }
 
-Import the dart:io and dart:async libraries as follows:
+Import the dart:io library as follows:
 
 {% prettify dart %}
 import 'dart:io';
-import 'dart:async';
 {% endprettify %}
 
 Only command-line applications, not web applications, can use the dart:io library.
-The `async`, `await`, and `await for` keywords are built into the Dart language,
-but you must import dart:async to refer to the Future or Stream class.
+
 
 ### stdout
 
@@ -340,11 +327,14 @@ This little program prints out the typed text.
 
 In the `dcat` program,
 if the user does not provide a filename on the command line,
-the program instead reads synchronously from stdin
+the program instead reads from stdin
 using the `pipe()` method.
+Because `pipe()` is asynchronous
+(returning a Future, even though this code doesn't use that return value),
+the code that calls it uses `await`.
 
 {% prettify dart %}
-[!stdin!].pipe(stdout);
+await [!stdin!].pipe(stdout);
 {% endprettify %}
 
 In this case,
@@ -353,8 +343,8 @@ The user signals the end of input by typing &lt;ctl-d&gt;.
 
 ```terminal
 $ dart dcat.dart
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
+The quick brown fox jumps over the lazy dog.
+The quick brown fox jumps over the lazy dog.
 ```
 
 ## Getting info about a file
@@ -413,7 +403,7 @@ for (var path in paths) {
       [!stdout.writeln(line);!]
     }
   } catch (_) {
-    _handleError(path);
+    await _handleError(path);
   }
 }
 {% endprettify %}
@@ -438,7 +428,7 @@ for (var path in paths) {
       stdout.writeln(line);
     }
   } catch (_) {
-    _handleError(path);
+    await _handleError(path);
   }
 }
 {% endprettify %}
@@ -603,9 +593,8 @@ Check out the [Servers with Dart](https://dart-lang.github.io/server/)
 to find more resources related to writing command-line apps.
 
 Refer to the API docs for
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html" target="_blank">dart:io</a>,
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html" target="_blank">dart:async</a>,
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert</a>,
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html" target="_blank">dart:io,</a>
+<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert,</a>
 and the
 <a href="{{site.pub-api}}/args/latest/index.html" target="_blank">args</a>
 package for more classes, functions, and properties.
