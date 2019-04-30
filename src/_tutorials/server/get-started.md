@@ -15,7 +15,7 @@ First you’ll play with Dart in your browser, no download required. Then you’
 install Dart and run a small program with the Dart VM. Finally, you'll
 AOT-compile that program to native machine code.
 
-## 1. Play with a command-line app in DartPad
+## 1. Play with Dart code in DartPad
 
 With DartPad you can experiment with the Dart language and APIs,
 no download necessary.
@@ -26,7 +26,6 @@ Click run {% asset red-run.png alt="" %} to run the app;
 the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to change the greeting
 to use another language. To get the full DartPad experience,
-which includes the web UI that the app produces,
 <a href="https://dartpad.dartlang.org/27e044ec9e2957d9c5c7062871ce8bf3"
    target="_blank">open the example at dartpad.dartlang.org.</a>
 
@@ -44,6 +43,9 @@ More information:
 * [Dart library tour][]
 
 ## 2. Install Dart
+
+Once you’re ready to move beyond DartPad and develop real apps,
+you need the Dart SDK.
 
 As you install, **note the path to the SDK.**
 You'll need it in step 3.
@@ -96,9 +98,9 @@ You'll need it in step 3.
   > brew install dart
   {% else -%}
   ```
-  Get **{{site.data.pkg-vers.SDK.channel}} channel** release:
+  Get latest stable release:
   ```terminal
-  > brew install dart --devel
+  > brew install dart
   {% endif -%}
   ```
 </div>
@@ -124,13 +126,12 @@ To create a command-line app and retrive all it's dependencies, use these
 commands:
 
 ```terminal
-> mkdir quickstart
-> cd quickstart
+> mkdir cli
+> cd cli
 > stagehand console-full
-> pub get
 ```
 
-This creates a minimal Dart app that has the following:
+This creates a small Dart app that has the following:
 
 * One main Dart source file: `bin/main.dart`. This contains one top-level
   `main()` function. This is the entry point for your app.
