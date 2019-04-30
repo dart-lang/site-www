@@ -8,8 +8,8 @@ Dart is a scalable platform that you can use to write simple scripts or full
 featured apps. Whether you're creating a mobile app, web app, command-line
 script, or server-side app, there's a Dart solution for that.
 
-The Dart platform contains flexible compiler technology that enables running
-Dart code in two ways:
+Dart platform flexible compiler technology that enables running Dart code in
+several ways:
 
   * **Dart Native**: For programs targeting devices (mobile, desktop, server,
     etc.), Dart Native includes both a Dart VM with JIT (just-in-time)
@@ -26,7 +26,14 @@ Dart code in two ways:
 The Dart Native platform enables running Dart code compiled to native ARM or X86
 machine code for apps running on mobile, desktop, and server.
 
-More information: [A tour of Dart Native](/tutorials/server/get-started), [Tutorial: Command-line apps](), [Tutorial: client/server apps]().
+The [Flutter framework]({{site.flutter}}) is a popular UI toolkit that is
+powered by Dart Native.
+
+More information:
+[Flutter Get Started]({{site.flutter}}/docs/get-started/),
+[A tour of Dart Native](/tutorials/server/get-started),
+[Tutorial: Command-line apps](),
+[Tutorial: client/server apps]().
 
 ### Lightning fast developer workflow (Dart VM)
 
@@ -59,6 +66,9 @@ The Dart Web platform enables running Dart code on web platforms powered by
 JavaScript. It does so by transpiling Dart code to JavaScript code, which is
 turn run in a JS browser run-time (e.g. [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/)).
+
+The [AngularDart]({{site.angulardart}}) framework is a popular web app toolkit
+that is powered by Dart Web.
 
 More information: [A tour of Dart Web](/web/get-started)
 
