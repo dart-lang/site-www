@@ -37,71 +37,9 @@ More information:
 * [Dart library tour][]
 * [Tutorial introduction to using Dart for basic web programming][]
 
-## 2. Install Dart {%-if isDev%} 2 **dev channel** release {%-endif%}
+## 2. Install Dart
 
-Once you're ready to move beyond DartPad and develop real apps,
-you need the Dart SDK.
-
-As you install, **note the path to the SDK.**
-You'll need it in step 4.
-
-<ul class="tabs__top-bar">
-  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
-  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
-</ul>
-
-<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-  Use [Chocolatey][] to install a {{channel}} release of
-  the Dart SDK:
-  ```terminal
-  C:\> choco install dart-sdk {%-if isDev%} --pre {%-endif%}
-  ```
-</div>
-
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-  You can use Aptitude to install the Dart SDK on Linux.
-
-   1. Perform the following one-time setup:
-      ```terminal
-      > sudo apt-get update
-      > sudo apt-get install apt-transport-https
-      > sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-      {% if isStable -%}
-      > sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
-      {% else -%}
-      ```
-      Set up Dart **{{site.data.pkg-vers.SDK.channel}} channel**:
-      ```terminal
-      > sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
-      {% endif -%}
-      ```
-   2. Install the Dart SDK:
-      ```terminal
-      > sudo apt-get update
-      > sudo apt-get install dart
-      ```
-</div>
-
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-  With [Homebrew,][]
-  installing Dart is easy.
-
-  ```terminal
-  > brew tap dart-lang/dart
-  {% if isStable -%}
-  > brew install dart
-  {% else -%}
-  ```
-  Get **{{site.data.pkg-vers.SDK.channel}} channel** release:
-  ```terminal
-  > brew install dart --devel
-  {% endif -%}
-  ```
-</div>
-
-More information: [Install the SDK][]
-
+{% include get-sdk.md %}
 
 ## 3. Get CLI tools or an IDE (or both)
 
