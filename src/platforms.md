@@ -1,6 +1,6 @@
 ---
 title: Platforms
-description: "You can use the Dart SDK to write mobile apps, web apps, standalone apps, servers, and more."
+description: "You can use Dart to write mobile apps, web apps, command-line apps, backends, and more."
 toc: true
 ---
 
