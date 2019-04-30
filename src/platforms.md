@@ -1,93 +1,92 @@
 ---
 title: Platforms
-description: "You can use Dart when writing web apps, standalone apps, servers, mobile apps, and embedded apps."
+description: "You can use the Dart language to write mobile apps, web apps, standalone apps, servers, and more."
 toc: true
 ---
 
-Dart is a scalable platform that you can use to write simple scripts or full
-featured apps. Whether you're creating a mobile app, web app, command-line
+Using the Dart programming language and libraries, you can write simple scripts or
+full-featured apps. Whether you're creating a mobile app, web app, command-line
 script, or server-side app, there's a Dart solution for that.
 
-Dart platform flexible compiler technology that enables running Dart code in
-several ways:
+Flexible compiler technology lets you run Dart code in different ways,
+depending on your target platform and goals:
 
   * **Dart Native**: For programs targeting devices (mobile, desktop, server,
-    etc.), Dart Native includes both a Dart VM with JIT (just-in-time)
-    compilation and a Dart AOT (ahead-of-time) compiler for producing machine
-    code for ARM of X86.
+    and more), Dart Native includes both a Dart VM with JIT (just-in-time)
+    compilation and an AOT (ahead-of-time) compiler for producing machine
+    code for ARM or X86.
   * **Dart Web**: For programs targeting the web, Dart Web includes both a
-    development time compiler (`dartdevc`), and a production time compiler
+    development time compiler (`dartdevc`) and a production time compiler
     (`dart2js`).
 
 <img src="{% asset platforms.png @path %}" width="800px" alt="Dart platform">
 
 ## Dart Native (VM & AOT)
 
-The Dart Native platform enables running Dart code compiled to native ARM or X86
-machine code for apps running on mobile, desktop, and server.
+Dart Native enables running Dart code compiled to native ARM or X86
+machine code for apps running on mobile, desktop, and server devices.
 
-The [Flutter framework]({{site.flutter}}) is a popular UI toolkit that is
+The [Flutter framework]({{site.flutter}}) is a popular UI toolkit that's
 powered by Dart Native.
 
 More information:
-[Flutter Get Started]({{site.flutter}}/docs/get-started/),
-[A tour of Dart Native](/tutorials/server/get-started),
-[Tutorial: Command-line apps](),
-[Tutorial: client/server apps]().
+* [Flutter get started documentation]({{site.flutter}}/docs/get-started/)
+* [Get started: command-line & server apps](/tutorials/server/get-started)
+* [Write command-line apps](/tutorials/server/cmdline)
+* [Write HTTP clients and servers](/tutorials/server/httpserver)
 
 ### Lightning fast developer workflow (Dart VM)
 
-During development having a fast developer cycle is critical to enable fast
-iteration. 
+Having a fast developer cycle is critical for iteration. 
 
-The Dart VM supports both pure intrepretation (as required on for example iOS
-devices), and runtime optimization via a just-in-time compiler (JIT).
+The Dart VM has a just-in-time compiler (JIT) that supports both pure interpretation
+(as required on iOS devices, for example) and runtime optimization.
 
-More information: [`dart` VM tool](/tools/dart2aot)
+More information: [`dart` VM tool](/tools/dart-vm)
 
 ### Optimized production code (Dart AOT)
 
-When apps are ready to be deployed to production (i.e., published to an app
-store, or be deployed to a production backend), the Dart AOT compiler can be
-used to Ahead-of-time compile them to native ARM and x86 code machine code. This
-ensures that your app starts instantly (as no code needs to be compiled), and
-runs smoothly.
+When apps are ready to be deployed to production — whether you're
+publishing to an app store or deploying to a production backend —
+you can use the Dart AOT compiler to ahead-of-time compile your app
+to native ARM and x86 code machine code.
+Your AOT-compiled app starts instantly and runs smoothly.
 
-The AOT code is run inside an efficient Dart run-time, which ensures the sound
-Dart type system is enforced, and which manages Dart memory with high
-performance through Dart’s fast object allocation and [generational garbage
-collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
+The AOT-compiled code runs inside an efficient Dart runtime that enforces
+the sound Dart type system and manages memory using fast object allocation and a [generational garbage
+collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)
 
 More information: [`dart2aot` tool](/tools/dart2aot)
 
-## Dart Web (JS)
+## Dart Web (JavaScript)
 
-The Dart Web platform enables running Dart code on web platforms powered by
-JavaScript. It does so by transpiling Dart code to JavaScript code, which is
-turn run in a JS browser run-time (e.g. [V8](https://v8.dev/) inside
-[Chrome](https://www.google.com/chrome/)).
+Dart Web enables running Dart code on web platforms powered by
+JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
+turn runs in a browser — for example, [V8](https://v8.dev/) inside
+[Chrome](https://www.google.com/chrome/).
 
 The [AngularDart]({{site.angulardart}}) framework is a popular web app toolkit
 that is powered by Dart Web.
 
-More information: [A tour of Dart Web](/web/get-started)
+More information: [Get started: web apps](/web/get-started)
 
-### Lightning fast developer workflow (Dart Dev compiler)
+### Lightning fast developer workflow (Dart dev compiler)
 
-The Dart Web platform enables fast development via the Dart Dev Compiler
-(`dartdevc`), a dedicated JS transpiler optimized for quick turn-around. This is
-paired with `webdev`, a web-specific end-to-end CLI (command-line interface)
-tool that supports core developer tasks such as running, debugging, and
-building.
+The Dart dev compiler (dartdevc) is a Dart-to-JavaScript compiler
+that's optimized for quick turnaround. Instead of using dartdevc directly,
+you use it with `webdev`, a tool that supports core developer tasks such as
+running, debugging, and building.
 
 More information:
-[`dartdevc` compiler](/tools/dartdevc),
-[`webdev` tool](/tools/webdev)
+* [`dartdevc` compiler](/tools/dartdevc)
+* [`webdev` tool](/tools/webdev)
 
 ### Optimized production code (Dart JS compiler)
 
-The `dart2js` tool compiles Dart code to fast & compact, deployable JavaScript.
-It employes a number of techniques such as dead-code elimination, 
+The `dart2js` tool compiles Dart code to fast, compact, deployable JavaScript.
+It employs techniques such as dead-code elimination
 
-More information: [`dart2js` compiler](/tools/dart2js), [`webdev`
-tool](/tools/webdev), [deployment tips](/web/deployment)
+More information:
+* [Deployment tips](/web/deployment)
+* [`dart2js` compiler](/tools/dart2js)
+* [`webdev` tool](/tools/webdev)
