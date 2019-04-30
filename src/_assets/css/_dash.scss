@@ -5,6 +5,7 @@ $dash-off-white: #f8f9fa;
 $dash-dark-black: #4a4a4a;
 $dash-highlight: #1967d2;
 $dash-off-black: #12202f;
+$dark-darker-black: #0d1520;
 
 .dash-header-callout {
   background-color: $dash-callout;
@@ -31,7 +32,7 @@ $dash-off-black: #12202f;
 
 .dash-dart-features {
   padding-bottom: 80px !important;
-  background-color: #0d1520;
+  background-color: $dark-darker-black;
   .feature {
     margin-left: auto;
     margin-right: auto;
@@ -115,7 +116,7 @@ $dash-off-black: #12202f;
   }
 
   .content-image {
-    background-color: #13202f;
+    background-color: $dark-darker-black;
   }
 
   .content-image img {
