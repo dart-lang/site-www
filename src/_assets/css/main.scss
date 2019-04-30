@@ -480,11 +480,16 @@ img {
       font-size: 13px;
       line-height: 45px;
 
+      // center text and arrow button
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
       // copy of shared/_sidebar.scss
       // @mixin collapsable() is not reachable from here, this is a copy of that
       &.collapsable {
         display: flex;
-        align-items: start;
+        align-items: center;
         justify-content: space-between;
 
         &::after {
