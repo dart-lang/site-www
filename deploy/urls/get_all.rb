@@ -1,6 +1,14 @@
 require 'nokogiri'
 
-require_relative 'old_site_urls'
+#require_relative 'old_site_urls'
+
+OLD_SITE_URLS=[]
+
+f = File.open(__dir__ + '/old_site_urls.txt', "r")
+f.each_line { |line|
+  OLD_SITE_URLS.push(line)
+}
+f.close
 
 $PORT = 5000
 $DOMAIN = 'https://www.dartlang.org/'
@@ -14,7 +22,7 @@ $NEW_URLS = sitemap.xpath("//xmlns:loc").map { |node| node.content }
 $NEW_URLS.sort!
 
 puts "Adding old site's sitemap URLs"
-$URLS = $NEW_URLS | $OLD_SITE_URLS  # does not add URLs that already exist
+$URLS = $NEW_URLS | OLD_SITE_URLS  # does not add URLs that already exist
 $URLS.sort!
 
 # Change dartlang.org to localhost:4000
