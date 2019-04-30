@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body class="{{ page.layout }}">
+  <body class="{{ page.layout }} hide_toc">
     {% include page-header.html %}
+    {% include navigation-side.html %}
     <main id="page-content">
-      {% include navigation-side.html %}
-      <div class="content text-center">
-        <h1>{{ page.title }}</h1>
+      <div class="content">
         {{ content }}
-      </div>
-      <div class="gray-light text-center content">
-        <form action="/search.html" id="cse-search-box">
-          <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
-          <input type="hidden" name="ie" value="UTF-8">
-          <input type="hidden" name="hl" value="en">
-          <input type="search" name="q" id="q" autocomplete="off" placeholder="Enter keywords">
-          <button type="submit" class="btn btn-primary">Search</button>
-        </form>
       </div>
     </main>
     {% include page-footer.html %}
