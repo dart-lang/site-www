@@ -36,7 +36,7 @@ You'll need it in the next step.
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-  With [Homebrew](http://brew.sh/),
+  With [Homebrew,](http://brew.sh/)
   installing Dart is easy.
 
   ```terminal
