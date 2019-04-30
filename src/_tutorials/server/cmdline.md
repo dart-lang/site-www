@@ -3,10 +3,10 @@ title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
   url: /tutorials/server/httpserver
-  title: "Write HTTP clients & servers"
+  title: Write HTTP clients & servers
 prevpage:
   url: /tutorials/server/get-started
-  title: Get started with the Dart VM
+  title: Get started with server-side Dart
 ---
 
 <div class="mini-toc" markdown="1">
