@@ -18,6 +18,7 @@ The packages fall into three groups:
 The following packages are useful for a wide range of projects.
 
 | **Package** | **Description** | **Commonly used APIs** |
+| [archive]({{site.pub-pkg}}/archive) | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
 | [http]({{site.pub-pkg}}/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
 | [intl]({{site.pub-pkg}}/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [json_serializable]({{site.pub-pkg}}/json_serializable) | An easy-to-use code generation package. For more information, see [JSON Support](/guides/json). | @JsonSerializable |
@@ -70,17 +71,32 @@ The [Pub site]({{site.pub}}) doesn't currently support
 limiting your search to packages that support these kinds of apps.
 You can, however, search for words that describe the functionality you need.
 
-Command-line apps often use the following packages:
+Command-line apps often use the following packages,
+in addition to general-purpose packages such as `archive`, `intl`, and `yaml`:
 
-* [args]({{site.pub-pkg}}/args)
-* [cli_util]({{site.pub-pkg}}/cli_util)
-* [path]({{site.pub-pkg}}/path)
-* [usage]({{site.pub-pkg}}/usage)
+| **Package**                   | **Description** |
+| [args]({{site.pub-pkg}}/args) | Parses raw command-line arguments into a set of options and values. |
+| [cli_util]({{site.pub-pkg}}/cli_util) | Provides utilities for building command-line apps. |
+| [completion]({{site.pub-pkg}}/completion) | Adds command-line completion to apps that use the `args` package. |
+| [path]({{site.pub-pkg}}/path) | Provides comprehensive, cross-platform operations for manipulating paths. |
+| [usage]({{site.pub-pkg}}/usage) | Wraps Google Analytics. |
+{:.table .table-striped .nowrap}
 
-Server apps can choose from many packages, including the following:
+Server apps can choose from many packages, in addition to
+the packages listed in the previous table
+and general-purpose packages such as `logging`:
 
-* [aqueduct]({{site.pub-pkg}}/aqueduct)
-* [grpc]({{site.pub-pkg}}/grpc)
-* [http_server]({{site.pub-pkg}}/http_server)
-* [http_multi_server]({{site.pub-pkg}}/http_multi_server)
-* [shelf]({{site.pub-pkg}}/shelf)
+| **Package**                   | **Description** |
+| [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
+| [aqueduct]({{site.pub-pkg}}/aqueduct) | Supports building scalable REST APIs that run on the Dart VM. |
+| [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
+| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC,][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
+| [http_multi_server]({{site.pub-pkg}}/http_multi_server) | Extends the [dart:io HttpServer][HttpServer] class with support for multiple servers. |
+| [http_server]({{site.pub-pkg}}/http_server) | Provides utility classes that work with [HttpServer][] to serve web content. |
+| [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
+{:.table .table-striped .nowrap}
+
+[Google App Engine]: https://cloud.google.com/appengine/
+[Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
+[gRPC,]: https://grpc.io/
+[HttpServer]: https://api.dartlang.org/stable/dart-io/HttpServer-class.html
