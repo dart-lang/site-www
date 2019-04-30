@@ -630,14 +630,15 @@ img {
       padding: 1px 0;
       &.active {
         color: $site-color-sidebar-active;
+
+        // removing the '>' before the menu item
+        // override shared/_toc.scss
         &:before {
-          @include md-icon-content('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
-          margin-left: -0.9rem; // We tune the margin for top-level entries below.
+          display: none;
         }
       }
     }
   }
-  ul.section-nav.nav > li > .nav-link:before { margin-left: -0.88rem; }
 
   body.hide_toc & {
     display: none;
