@@ -89,8 +89,8 @@ Here's one way to configure Dart support:
   </p>
 
   <p>
-    For example, the SDK path might be
-    <code><em>&lt;dart installation directory></em>/dart/dart-sdk</code>.
+    For example, the SDK path might be (if you installed via homebrew)
+    <code>usr/local/opt/dart/libexec</code>.
   </p>
 
 <aside class="alert alert-info" markdown="1">
