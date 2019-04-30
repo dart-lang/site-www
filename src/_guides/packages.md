@@ -15,7 +15,7 @@ helping you get package versions that work with each other and
 with your SDK version.
 
 Most [Dart-savvy IDEs][] offer support for using pub that
-includes creating, installing, updating, and publishing packages.
+includes creating, downloading, updating, and publishing packages.
 Or you can use [`pub` on the command line](/tools/pub/cmd).
 
 At a minimum,
@@ -56,7 +56,7 @@ For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
 
-## Installing packages
+## Getting packages
 
 Once you have a pubspec, you can run <code class="literal">pub
 get</code> from the top directory of your application:
