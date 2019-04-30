@@ -19,12 +19,12 @@ webdev: https://webdev.dartlang.org
 angulardart: https://webdev.dartlang.org/angular
 dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
 dart_vm:  /server
-flutter:  https://flutter.io
+flutter:  https://flutter.dev
 dart_api: https://api.dartlang.org
-flutter_api: https://docs.flutter.io
-pub: https://pub.dartlang.org
-pub-api: https://pub.dartlang.org/documentation
-pub-pkg: https://pub.dartlang.org/packages
+flutter_api: https://api.flutter.dev
+pub: https://pub.dev
+pub-api: https://pub.dev/documentation
+pub-pkg: https://pub.dev/packages
 lints: https://dart-lang.github.io/linter/lints
 dartpad: https://dartpad.dartlang.org
 dartpadx: https://dartpad.dartlang.org/experimental/embed-new.html
