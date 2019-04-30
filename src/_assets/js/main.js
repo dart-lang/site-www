@@ -146,7 +146,7 @@ $(document).ready(function () {
         });
 
         $('#galleryTwo .selector li').click(function () {
-            $('#galleryOne .selector li').removeClass('highlight');
+            $('#galleryTwo .selector li').removeClass('highlight');
             $(this).addClass('highlight');
             $('.galleryTwo').attr('src', $(this).data('banner'));
         });
