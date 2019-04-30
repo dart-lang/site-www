@@ -1,12 +1,10 @@
 ---
 title: pub cache
 description: Use pub cache to manage your system cache.
-permalink: /tools/pub/cmd/pub-cache
 toc: false
 ---
 
-_Cache_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```
 $ pub cache add <package> [--version <constraint>] [--all]

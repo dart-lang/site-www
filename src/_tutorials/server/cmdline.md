@@ -6,7 +6,7 @@ nextpage:
   title: Write HTTP clients & servers
 prevpage:
   url: /tutorials/server/get-started
-  title: Get started with server-side Dart
+  title: "Get started: command-line & server apps"
 ---
 
 <div class="mini-toc" markdown="1">

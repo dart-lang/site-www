@@ -1639,7 +1639,7 @@ as well as platform-specific libaries like the
 [Dart web development libraries][webdev libraries]
 and the [Flutter libraries.][docs.flutter]
 
-You can get yet more libraries by using the [pub tool](/tools/pub). The
+You can get yet more libraries by using the [pub package manager](/guides/packages). The
 [collection,]({{site.pub}}/packages/collection)
 [crypto,]({{site.pub}}/packages/crypto)
 [http,]({{site.pub}}/packages/http)
