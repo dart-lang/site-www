@@ -138,3 +138,11 @@ $dash-off-black: #12202f;
   margin-bottom: -10px;
 }
 
+
+.banner{
+  background-color: $dash_callout;
+
+  .banner__text{
+    color: white;
+  }
+}
