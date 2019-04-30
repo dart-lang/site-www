@@ -86,10 +86,10 @@
           permalink: /tutorials/server/cmdline
         - title: Writing HTTP clients & servers
           permalink: /tutorials/server/httpserver
+        - title: C & C++ interop
+          permalink: /server/c-interop
         - title: Native extensions
           permalink: /articles/server/native-extensions
-        - title: AOT and JIT compilation [TBD]
-          permalink: /tbd
     - title: Web apps
       children:
         - title: Overview
