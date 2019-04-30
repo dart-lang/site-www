@@ -6,7 +6,7 @@ nextpage:
   title: "Write HTTP clients & servers"
 prevpage:
   url: /tutorials/server/get-started
-  title: Get started with Dart Native
+  title: "Get started: command-line & server apps"
 ---
 
 {% include tutorial-banner.html %}
