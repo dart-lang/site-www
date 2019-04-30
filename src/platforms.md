@@ -26,8 +26,8 @@ depending on your target platform and goals:
 Dart Native enables running Dart code compiled to native ARM, X86, or X64
 machine code for mobile, desktop, and server apps.
 
-The [Flutter framework]({{site.flutter}}) is a popular UI toolkit that's
-powered by Dart Native.
+The [Flutter framework]({{site.flutter}}) is a popular multi-platform UI toolkit
+that's powered by Dart Native when targeting mobile or desktop devices.
 
 More information:
 * [Flutter get started documentation]({{site.flutter}}/docs/get-started/)
@@ -65,8 +65,11 @@ JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser — for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
-The [AngularDart]({{site.angulardart}}) framework is a popular web app toolkit
-that is powered by Dart Web.
+The [Flutter framework]({{site.flutter}}), a popular multi-platform UI toolkit,
+is powered by Dart Web when targeting web apps. The
+[AngularDart]({{site.angulardart}}) framework, a popular web app toolkit, is
+also powered by Dart Web.
+
 
 More information: [Get started: web apps](/web/get-started)
 
