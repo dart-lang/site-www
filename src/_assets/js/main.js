@@ -139,22 +139,23 @@ $(function () {
 
 
 $(document).ready(function () {
-        $('#galleryOne .selector li').click(function () {
-            $('#galleryOne .selector li').removeClass('highlight');
-            $(this).addClass('highlight');
-            $('.galleryOne').attr('src', $(this).data('banner'));
-        });
+        function createGallery() {
+            for (var i = 0; i < arguments.length; i++) {
+                const galleryName = arguments[i];
+                $('#' + galleryName + ' .selector li').click(function () {
+                    $('#' + galleryName + ' .selector li').removeClass('highlight');
+                    $(this).addClass('highlight');
+                    $('.' + galleryName).attr('src', $(this).data('banner'));
+                });
+            }
+        }
 
-        $('#galleryTwo .selector li').click(function () {
-            $('#galleryTwo .selector li').removeClass('highlight');
-            $(this).addClass('highlight');
-            $('.galleryTwo').attr('src', $(this).data('banner'));
-        });
-
-        $('#galleryThree .selector li').click(function () {
-            $('#galleryThree .selector li').removeClass('highlight');
-            $(this).addClass('highlight');
-            $('.galleryThree').attr('src', $(this).data('banner'));
-        });
+        createGallery(
+            'galleryOne',
+            'galleryTwo',
+            'galleryThree',
+            'galleryFour',
+            'galleryFive',
+            'gallerySix');
     }
 );
