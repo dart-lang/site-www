@@ -107,10 +107,20 @@ $dark-darker-black: #0d1520;
 
       .highlight {
         color: $dash-highlight;
+        list-style-type: square;
       }
 
       @include media-breakpoint-down(md) {
         font-size: 14px;
+      }
+
+      ul li{
+        list-style: none;
+        cursor: pointer;
+      }
+
+      .current-item{
+        color: black!important;
       }
     }
   }
