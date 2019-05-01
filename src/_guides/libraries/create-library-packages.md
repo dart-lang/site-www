@@ -1,29 +1,19 @@
 ---
-layout: default
 title: Creating packages
 description: Learn how to create library packages in Dart.
 ---
 
-**[TBD: Rewrite slightly to introduce on packages in general,
-instead of just focusing on libraries. Basically, explain creating
-packages in terms of the common case, distributing reusable code (libraries).
-Mention tools as another use case for packages.]**
-
-Libraries are a great way to create modular code that can
-be easily shared. In the Dart ecosystem,
-libraries are created and distributed as packages.
-Dart has two kinds of packages:
-[_application_ packages](/tools/pub/glossary#application-package),
-which may include local libraries, and
+The Dart ecosystem uses [packages][]
+to share software such as libraries and tools.
+This page tells you how to create a package,
+with a focus on the most common kind of package,
 [_library_ packages](/tools/pub/glossary#library-package).
 
-This document explains how to create a library package
-and points you to further resources.
-For information on _using_ libraries, see
-[Install Shared Packages](/tutorials/libraries/shared-pkgs) or the
-language tour's
-[Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
-section.
+{% comment %}
+TODO: Add coverage of packages that contain tools.
+{% endcomment %}
+
+[packages]: /guides/packages
 
 ## What makes a library package
 
@@ -208,7 +198,7 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation]({{site.pub-api}}/shelf/latest).
+[shelf documentation.]({{site.pub-api}}/shelf/latest)
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -224,7 +214,7 @@ we recommend sharing it on the [Pub site.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
-For example, see the page for the [shelf package]({{site.pub}}/packages/shelf).
+For example, see the page for the [shelf package.]({{site.pub}}/packages/shelf)
 See [Publishing a package](/tools/pub/publishing)
 for details on how to prepare your package for publishing.
 
@@ -260,10 +250,10 @@ Use the following resources to learn more about library packages:
 * The newer library packages under the
   [dart-lang](https://github.com/dart-lang) organization tend
   to show best practices. Consider studying these examples:
-  [dart_style](https://github.com/dart-lang/dart_style),
-  [path](https://github.com/dart-lang/path),
-  [shelf](https://github.com/dart-lang/shelf),
-  [source_gen](https://github.com/dart-lang/source_gen), and
-  [test](https://github.com/dart-lang/test).
+  [dart_style,](https://github.com/dart-lang/dart_style)
+  [path,](https://github.com/dart-lang/path)
+  [shelf,](https://github.com/dart-lang/shelf)
+  [source_gen,](https://github.com/dart-lang/source_gen) and
+  [test.](https://github.com/dart-lang/test)
 
 [dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc
