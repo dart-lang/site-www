@@ -126,8 +126,8 @@
         permalink: /tools/dartpad
       - title: IntelliJ & Android Studio
         permalink: /tools/jetbrains-plugin
-      - title: VS Code [TBD]
-        permalink: /tbd
+      - title: VS Code 
+        permalink: /tools/vs-code
   - title: Command-line tools
     children:
     - title: Dart SDK

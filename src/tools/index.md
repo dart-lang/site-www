@@ -11,10 +11,12 @@ get the SDK and tools for your app type.
 | App type   | Get started instructions          | Tool information         |
 |------------|-----------------------------------|--------------------------|
 | Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
-| Web    | [Install the Dart SDK](/tools/sdk) | [Web tools](#web) |
-| Server or command line | [Install the Dart SDK](/tools/sdk) | [Server-side tools](#server) |
+| Web    | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
+| Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
 {:.table .table-striped}
 </div>
+
+[General-purpose tools]: #general-purpose-tools
 
 ## General-purpose tools
 
@@ -44,17 +46,17 @@ Dart plugins exist for these commonly used IDEs.
 <li>
 <img src="{% asset tools/android_studio.png @path %}"
      width="48" alt="IntelliJ logo">
-<a class="no-automatic-external" href="https://developer.android.com/studio"><b>Android Studio</b></a>
+<a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
 <img src="{% asset tools/intellij-idea.svg @path %}"
      width="48" alt="IntelliJ logo">
-<a class="no-automatic-external" href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
+<a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
 <img src="{% asset tools/vscode.png @path %}" alt="Visual Studio Code logo">
-<a class="no-automatic-external" href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code"><b>Visual Studio Code</b></a>
+<a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
 
