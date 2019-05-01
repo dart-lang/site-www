@@ -1432,7 +1432,8 @@ body.obsolete {
     max-height: 100vh !important;
     bottom: 0;
     left: -100vw;
-    width: calc(100vw - 60px);
+    min-width: 300px;
+    max-width: calc(100vw - 60px);
     background: #fff;
     z-index: 9999;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
@@ -1440,6 +1441,10 @@ body.obsolete {
 
     .site-header__search {
       display: flex;
+    }
+
+    .nav-link {
+      white-space: nowrap;
     }
   }
 
