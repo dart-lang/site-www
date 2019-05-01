@@ -156,8 +156,10 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
 }
 {% endprettify %}
 
-**[PENDING: show code that uses it, so we have some context for
-the mention of StreamSubscription?]**
+{% comment %}
+[PENDING: show code that uses it, so we have some context for
+the mention of StreamSubscription?]
+{% endcomment %}
 
 This function returns a `Stream`.
 When that stream is listened to, the body starts running.
