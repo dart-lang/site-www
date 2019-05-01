@@ -80,6 +80,8 @@
           permalink: /tutorials/server/cmdline
         - title: Writing HTTP clients & servers
           permalink: /tutorials/server/httpserver
+        - title: Libraries and packages
+          permalink: /server/libraries
         - title: C & C++ interop
           permalink: /server/c-interop
         - title: Native extensions
