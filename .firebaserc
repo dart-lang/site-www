@@ -2,11 +2,12 @@
   "projects": {
     "default": "www-dartlang-org",
     "dev": "dartlang-org-dev",
-    "staging-0": "dartlang-org-staging-0",
-    "staging-1": "dartlang-org-staging-1",
+    "jtstaging": "jt-ww-1",
     "kw": "kw-www-dartlang-1",
     "kw2": "kw-staging-dartlang-2",
-    "sz" : "sz-www-1",
-    "sz2" : "sz-www-2"
+    "staging-0": "dartlang-org-staging-0",
+    "staging-1": "dartlang-org-staging-1",
+    "sz": "sz-www-1",
+    "sz2": "sz-www-2"
   }
 }
