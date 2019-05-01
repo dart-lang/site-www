@@ -38,7 +38,7 @@ that provide low-level web APIs.
 
 ## Web packages
 
-Many [packages](/tools/pub/get-started) support web development with Dart. Here
+Many [packages](/guides/packages) support web development with Dart. Here
 are a few:
 
 |-----------------+---------------------------------+--------------------------|

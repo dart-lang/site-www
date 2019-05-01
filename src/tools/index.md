@@ -81,19 +81,14 @@ The Dart SDK includes the following general-purpose tools:
   The Dart plugin for your IDE should make use of Dart's analysis engine,
   but you can also run the analyzer from the command line.
 
-[`dartdoc`](https://github.com/dart-lang/dartdoc#dartdoc)
+[`dartdoc`](/tools/dartdoc)
 : Generates API reference documentation.
-  [TBD: create and link to a page on this site]
 
-[`dartfmt`](https://github.com/dart-lang/dart_style#readme)
+[`dartfmt`](/tools/dartfmt)
 : Formats your code, following the recommendations of the
   [Dart style guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
   the IDE. Or you can run the formatter from the command line.
-  [TBD: create and link to a page on this site. put the following in it:]
-  Also see the [dart_style][] package, which can be useful
-  for getting a version of `dartfmt` that's different
-  from the one included in the SDK.
 
 [`pub`](/tools/pub/cmd)
 : Manages Dart packages,

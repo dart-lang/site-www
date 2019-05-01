@@ -87,7 +87,7 @@ These commands create a small Dart app that has the following:
 * An additional Dart file, `lib/cli.dart`, that contains the functionality of
   the app and is imported by the `main.dart` file.
 * A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
-  information about which [packages](/tools/pub/get-started) the app depends on
+  information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
 ## 5. Get the app's dependencies

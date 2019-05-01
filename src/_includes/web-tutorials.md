@@ -1,4 +1,5 @@
-[TBD: intro here]
+These tutorials cover topics relevant to Dart web apps.
+Also see the [AngularDart tutorial.]({{site.angulardart}}/tutorial)
 
 <div class="card-grid">
   <div class="card">
@@ -19,4 +20,3 @@
   </div>
 </div>
 
-Also see the [AngularDart tutorial.]({{site.angulardart}}/tutorial)

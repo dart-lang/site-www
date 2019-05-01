@@ -80,6 +80,8 @@
           permalink: /tutorials/server/cmdline
         - title: Writing HTTP clients & servers
           permalink: /tutorials/server/httpserver
+        - title: Libraries and packages
+          permalink: /server/libraries
         - title: C & C++ interop
           permalink: /server/c-interop
         - title: Native extensions
@@ -96,7 +98,7 @@
           permalink: /web/js-interop
         - title: Building for deployment
           permalink: /web/deployment
-        - title: Web libraries and packages
+        - title: Libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically
           permalink: /tutorials/web/get-data/fetch-data
@@ -156,8 +158,8 @@
           permalink: /tools/webdev
   - title: Managing source code
     children:
-      - title: Formatting code [TBD]
-        permalink: /tbd
+      - title: Formatting code
+        permalink: /guides/language/formatting
       - title: What not to commit
         permalink: /guides/libraries/private-files
   - title: Static analysis

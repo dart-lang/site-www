@@ -285,7 +285,7 @@ finished, and so on.
 
 {% comment %}
 
-[TBD: Move this to the error handling page?]
+[PENDING: Move this to the error handling page?]
 
 ## The Future API
 
