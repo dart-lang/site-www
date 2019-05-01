@@ -6,10 +6,10 @@ require 'tempfile'
 
 require_relative 'urls/get_all'
 
-if !$FIREBASE_TOKEN
-  puts "#{$PROGRAM_NAME}: FIREBASE_TOKEN environment variable isn't defined. Skipping checks."
-  exit(0)
-end
+# if !$FIREBASE_TOKEN
+#   puts "#{$PROGRAM_NAME}: FIREBASE_TOKEN environment variable isn't defined. Skipping checks."
+#   exit(0)
+# end
 
 puts "===== Checking HTML and outbound links through HTMLProofer ====="
 
@@ -17,7 +17,8 @@ puts "===== Checking HTML and outbound links through HTMLProofer ====="
 $LOCALHOST_NEW_URLS.delete("#{$LOCALHOST}events/2016/summit/index.html")
 
 puts "Spawning firebase server on localhost"
-pid = spawn("firebase serve --port #{$PORT} --token '#{$FIREBASE_TOKEN}' --project #{$FIREBASE_PROJECT}", :out => "/dev/null")
+#pid = spawn("firebase serve --port #{$PORT} --token '#{$FIREBASE_TOKEN}' --project #{$FIREBASE_PROJECT}", :out => "/dev/null")
+pid = spawn("firebase serve --port #{$PORT} --project #{$FIREBASE_PROJECT}", :out => "/dev/null")
 puts "..."
 sleep 5
 
