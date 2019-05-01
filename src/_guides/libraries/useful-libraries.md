@@ -63,7 +63,7 @@ Or search for [Flutter packages.]({{site.pub}}/flutter)
 See [Web libraries and packages](/web/libraries).
 Or search for [web packages.]({{site.pub}}/web)
 
-### Web packages
+### Command-line and server packages
 
 See [command-line & server libraries and packages](/server/libraries).
 Or search for [other packages.]({{site.pub}})
