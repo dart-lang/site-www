@@ -10,9 +10,7 @@ $dark-darker-black: #0d1520;
 .dash-header-callout {
   background-color: $dash-callout;
   text-align: center;
-  //todo: optimize
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
+  padding: 40px 0 40px 0 !important;
 
   .callout-title {
     font-size: 28px;
