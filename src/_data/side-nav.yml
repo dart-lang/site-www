@@ -156,8 +156,8 @@
           permalink: /tools/webdev
   - title: Managing source code
     children:
-      - title: Formatting code [TBD]
-        permalink: /tbd
+      - title: Formatting code
+        permalink: /guides/language/formatting
       - title: What not to commit
         permalink: /guides/libraries/private-files
   - title: Static analysis
