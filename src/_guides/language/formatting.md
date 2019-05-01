@@ -1,6 +1,7 @@
 ---
 title: Formatting code
 description: Use dartfmt to format your code, and follow Effective Dart guidelines for what dartfmt doesn't cover.
+toc: false
 ---
 
 As [Effective Dart][] says, when it comes to things like formatting,
