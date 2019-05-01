@@ -98,7 +98,7 @@
           permalink: /web/js-interop
         - title: Building for deployment
           permalink: /web/deployment
-        - title: Web libraries and packages
+        - title: Libraries and packages
           permalink: /web/libraries
         - title: Fetching data dynamically
           permalink: /tutorials/web/get-data/fetch-data
