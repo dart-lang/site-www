@@ -58,45 +58,12 @@ See [Using packages]({{site.flutter}}/docs/development/packages-and-plugins/usin
 on the Flutter site.
 Or search for [Flutter packages.]({{site.pub}}/flutter)
 
-
 ### Web packages
 
 See [Web libraries and packages](/web/libraries).
 Or search for [web packages.]({{site.pub}}/web)
 
-
 ### Command-line and server packages
 
-The [Pub site]({{site.pub}}) doesn't currently support
-limiting your search to packages that support these kinds of apps.
-You can, however, search for words that describe the functionality you need.
-
-Command-line apps often use the following packages,
-in addition to general-purpose packages such as `archive`, `intl`, and `yaml`:
-
-| **Package**                   | **Description** |
-| [args]({{site.pub-pkg}}/args) | Parses raw command-line arguments into a set of options and values. |
-| [cli_util]({{site.pub-pkg}}/cli_util) | Provides utilities for building command-line apps. |
-| [completion]({{site.pub-pkg}}/completion) | Adds command-line completion to apps that use the `args` package. |
-| [path]({{site.pub-pkg}}/path) | Provides comprehensive, cross-platform operations for manipulating paths. |
-| [usage]({{site.pub-pkg}}/usage) | Wraps Google Analytics. |
-{:.table .table-striped .nowrap}
-
-Server apps can choose from many packages, in addition to
-the packages listed in the previous table
-and general-purpose packages such as `logging`:
-
-| **Package**                   | **Description** |
-| [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
-| [aqueduct]({{site.pub-pkg}}/aqueduct) | Supports building scalable REST APIs that run on the Dart VM. |
-| [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
-| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC,][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
-| [http_multi_server]({{site.pub-pkg}}/http_multi_server) | Extends the [dart:io HttpServer][HttpServer] class with support for multiple servers. |
-| [http_server]({{site.pub-pkg}}/http_server) | Provides utility classes that work with [HttpServer][] to serve web content. |
-| [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
-{:.table .table-striped .nowrap}
-
-[Google App Engine]: https://cloud.google.com/appengine/
-[Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
-[gRPC,]: https://grpc.io/
-[HttpServer]: https://api.dartlang.org/stable/dart-io/HttpServer-class.html
+See [command-line & server libraries and packages](/server/libraries).
+Or search for [other packages.]({{site.pub}})
