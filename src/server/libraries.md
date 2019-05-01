@@ -33,7 +33,7 @@ You can, however, search for words that describe the functionality you need.
 ### Command-line packages
 
 Command-line apps often use the following packages,
-in addition to general-purpose packages such as `archive`, `intl`, and `yaml`:
+in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
 
 | **Package**                   | **Description** |
 | [args]({{site.pub-pkg}}/args) | Parses raw command-line arguments into a set of options and values. |
@@ -47,7 +47,7 @@ in addition to general-purpose packages such as `archive`, `intl`, and `yaml`:
 
 Server apps can choose from many packages, in addition to
 the packages listed in the previous table
-and general-purpose packages such as `logging`:
+and [general-purpose packages][] such as `logging`:
 
 | **Package**                   | **Description** |
 | [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
@@ -61,5 +61,6 @@ and general-purpose packages such as `logging`:
 
 [Google App Engine]: https://cloud.google.com/appengine/
 [Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
+[general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
 [gRPC,]: https://grpc.io/
 [HttpServer]: https://api.dartlang.org/stable/dart-io/HttpServer-class.html
