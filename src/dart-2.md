@@ -167,7 +167,7 @@ environment:
 [Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
 [dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
 [flutter package upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
-[pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
+[pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev

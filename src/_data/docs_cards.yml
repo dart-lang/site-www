@@ -9,7 +9,7 @@
   url: /guides/language/effective-dart
 - name: Library tour
   description: An example-based introduction to the major features in the Dart SDK's core libraries.
-  url: /guides/language/language-tour
+  url: /guides/libraries/library-tour
 - name: Dart SDK
   description: What's in the SDK, and how to install it.
   url: /tools/sdk

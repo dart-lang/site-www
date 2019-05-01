@@ -7,6 +7,10 @@ toc: false
 Welcome to the Dart documentation!
 Here are some of the most visited pages:
 
+{% comment %}
+To update these cards, edit src/_data/docs_cards.yml.
+{% endcomment %}
+
 <div class="card-grid">
 {% for card in site.data.docs_cards -%}
   {% capture index0Modulo3 %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
