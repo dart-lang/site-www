@@ -11,10 +11,12 @@ get the SDK and tools for your app type.
 | App type   | Get started instructions          | Tool information         |
 |------------|-----------------------------------|--------------------------|
 | Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
-| Web    | [Install the Dart SDK](/tools/sdk) | [Web tools](#web) |
-| Server or command line | [Install the Dart SDK](/tools/sdk) | [Server-side tools](#server) |
+| Web    | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
+| Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
 {:.table .table-striped}
 </div>
+
+[General-purpose tools]: #general-purpose-tools
 
 ## General-purpose tools
 
