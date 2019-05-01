@@ -478,7 +478,10 @@ img {
       font-weight: 300;
       color: $site-color-body;
       font-size: 13px;
-      line-height: 45px;
+
+      .open_menu & {
+        padding-bottom: 21px;
+      }
 
       // center text and arrow button
       display: flex;
