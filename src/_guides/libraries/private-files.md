@@ -100,7 +100,7 @@ see the GitHub help page
 
 The `.packages` file contains a list of dependencies used by your application.
 Users of your code should generate their own packages information
-using [pub get](/tools/pub/get-started#installing-packages).
+using [pub get](/guides/packages#getting-packages).
 
 {% include packages-dir.html %}
 
