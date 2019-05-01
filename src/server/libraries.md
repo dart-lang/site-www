@@ -27,7 +27,7 @@ that provide low-level web APIs.
 ## Community packages
 
 The [Pub site]({{site.pub}}) doesn't currently support
-limiting your search to packages that support these kinds of apps.
+limiting your search to packages that support command-line and server apps.
 You can, however, search for words that describe the functionality you need.
 
 ### Command-line packages
