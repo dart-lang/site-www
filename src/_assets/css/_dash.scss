@@ -71,22 +71,32 @@ $dark-darker-black: #0d1520;
 
   .content-info {
     .content-container {
-      margin-top: 130px;
       width: 370px;
-
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0 -50% 0 0;
+      transform: translate(-50%, -50%);
       @include media-breakpoint-down(md) {
-        margin-top: 20px;
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 20px auto 0;
+        transform: none !important;
       }
     }
 
-    .content-container-left {
-      float: left !important;
-    }
     .content-icon img {
-      width: 34px;
-      height: 34px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       margin-bottom: 18px;
+
+      @include media-breakpoint-down(md) {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 10px;
+      }
     }
 
     .content-feature {
@@ -101,7 +111,8 @@ $dark-darker-black: #0d1520;
     .content-desc {
       font-family: Roboto, Arial, sans-serif;
       font-weight: lighter;
-      font-size: 16px;
+      font-size: 18px;
+      line-height: 24px;
       color: $dash-dark-black;
 
       .highlight {
