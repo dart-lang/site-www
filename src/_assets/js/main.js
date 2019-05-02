@@ -136,3 +136,26 @@ $(function () {
     root.toggleClass('toc-collapsed');
   });
 });
+
+
+$(document).ready(function () {
+        function createGallery() {
+            for (var i = 0; i < arguments.length; i++) {
+                const galleryName = arguments[i];
+                $('#' + galleryName + ' .selector li').click(function () {
+                    $('#' + galleryName + ' .selector li').removeClass('highlight');
+                    $(this).addClass('highlight');
+                    $('.' + galleryName).attr('src', $(this).data('banner'));
+                });
+            }
+        }
+
+        createGallery(
+            'galleryOne',
+            'galleryTwo',
+            'galleryThree',
+            'galleryFour',
+            'galleryFive',
+            'gallerySix');
+    }
+);
