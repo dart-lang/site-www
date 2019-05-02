@@ -41,7 +41,7 @@ $dark-darker-black: #0d1520;
     font-size: 28px;
     color: $dash-off-white;
     margin-top: 25px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     @include media-breakpoint-down(md) {
       font-size: 22px;
     }
@@ -157,4 +157,8 @@ $dark-darker-black: #0d1520;
 
 .dart-dash-details {
   font-family: "Google Sans", "Roboto", sans-serif;
+
+  a {
+    text-decoration: underline;
+  }
 }
