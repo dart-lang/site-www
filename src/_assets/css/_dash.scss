@@ -68,7 +68,7 @@ $dark-darker-black: #0d1520;
   a, button{
     color: $dash-dark-black;;
   }
-  
+
   .content-info {
     .content-container {
       float: right;
@@ -133,6 +133,7 @@ $dark-darker-black: #0d1520;
 
   .content-image {
     background-color: $dark-darker-black;
+    padding: 0 !important;
   }
 
 }
