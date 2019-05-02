@@ -1,8 +1,9 @@
 ---
 layout: homepage
 title: Dart programming language
-description: Dart is a language optimized for client-side development for web and mobile.
+description: Dart is a client-optimized language for fast apps on any platform
 ---
+<!-- Hero animation -->
 <section class="dash-header">
     <video autoplay loop muted>
         <source src="assets/dash/video/hotreload.webm"
@@ -11,47 +12,52 @@ description: Dart is a language optimized for client-side development for web an
                 type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
     </video>
 </section>
+
+<!-- Dart tag-line -->
 <section class="dash-header-callout">
     <div class="made-by">Made By <span>Google</span></div>
     <div class="callout-title">Dart is a client-optimized platform with native multi-platform performance and the
         fastest developer cycle
     </div>
 </section>
+
+<!-- Dart pillars -->
 <section class="dash-dart-features">
     <div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="feature">
-                <div class="feature-icon"><img src="assets/dash/2x/1-1 - aot compile@2x-80.jpg"/></div>
-                <div class="feature-title">Multi-Platform Performance</div>
-                <div class="feature-desc">Execute code efficiently across all platforms: AOT-compiled to machine code,
-                    transpiled to JS for the web, or in a VM with JIT
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="feature">
                 <div class="feature-icon"><img src="assets/dash/2x/1-2 target web@2x-80.jpg"/></div>
-                <div class="feature-title">Client-Optimized  Language</div>
-                <div class="feature-desc">A modern programming language, optimized for building clients, crafted to
-                    enable the qualities of the Dart Platform.
+                <div class="feature-title">Optimized for UI</div>
+                <div class="feature-desc">Develop with a programming language
+                specialized around the needs of user interface creation
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-12">
             <div class="feature">
                 <div class="feature-icon"><img src="assets/dash/2x/1-3 backend code@2x-80.jpg"/></div>
-                <div class="feature-title">Productive  Development</div>
-                <div class="feature-desc">Rich editing and analysis tools. Make changes iteratively and ‘hot reload’ to
-                    see the effect in the running app.
+                <div class="feature-title">Productive Development</div>
+                <div class="feature-desc">Make changes iteratively: use hot
+                reload to see the result instantly in your running app
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+                <div class="feature">
+                    <div class="feature-icon"><img src="assets/dash/2x/1-1 - aot compile@2x-80.jpg"/></div>
+                    <div class="feature-title">Fast on all platforms</div>
+                    <div class="feature-desc">Compile to ARM, x86, & x64 machine
+                    code for mobile,  desktop, and backend. Or compile to JavaScript
+                    for the web
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
 
-
+<!-- Dart pillar details, narrow design -->
 <div class="container-fluid d-sm-block d-md-none">
     <section class="row dash-row">
         <div class="col-lg-7 col-md-6 col-sm-12 content-image">
@@ -60,12 +66,24 @@ description: Dart is a language optimized for client-side development for web an
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container">
                 <div class="content-icon"></div>
-                <div class="content-feature">Multi-Platform Performance</div>
+                <div class="content-feature">Optimized for UI</div>
                 <div class="content-desc" id="gallerySix">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            for user interfaces containing event-driven code, paired with
+                            <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            A programming language optimized for building user
+                            interfaces with features such as spreads for
+                            expanding collections, and conditionals for
+                            customizing UI for each platform
+                        </li>
+                        <li data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            A programming language that is easy to learn, with a
+                            familiar syntax
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -79,12 +97,25 @@ description: Dart is a language optimized for client-side development for web an
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container">
                 <div class="content-icon"></div>
-                <div class="content-feature">Multi-Platform Performance</div>
+                <div class="content-feature">Productive development</div>
                 <div class="content-desc" id="galleryFive">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            Make changes to your source code iteratively, using
+                            <a href="https://flutter.dev/docs/development/tools/hot-reload">hot reload</a>
+                            to instantly see the effect in the running app
+                        </li>
+                        <li data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            Write code using a flexible type system with rich
+                            static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                            tooling</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            Do <a href="https://flutter.github.io/devtools/timeline">profiling</a>,
+                            <a href="https://flutter.github.io/devtools/logging">logging</a>,
+                            and <a href="https://flutter.github.io/devtools/debugger#getting-started">debugging</a>
+                            with your code editor of choice
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -98,12 +129,21 @@ description: Dart is a language optimized for client-side development for web an
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container">
                 <div class="content-icon"></div>
-                <div class="content-feature">Multi-Platform Performance</div>
+                <div class="content-feature">Fast on all platforms</div>
                 <div class="content-desc" id="galleryFour">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/3-1 aot compile@2x-80.jpg">
+                            <a href="/platforms">AOT-compile</a> apps to native
+                            machine code for instant startup
+                        </li>
+                        <li data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            Target the web with complete, mature, fast compilers
+                            for JavaScript
+                        </li>
+                        <li data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            Run backend code supporting your app, written using
+                            a single programming language
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -112,17 +152,30 @@ description: Dart is a language optimized for client-side development for web an
     </section>
 </div>
 
+<!-- Dart pillar details, wide design -->
 <div class="container-fluid d-none d-sm-none d-md-block">
     <section class="row dash-row">
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container">
                 <div class="content-icon"></div>
-                <div class="content-feature">Multi-Platform Performance</div>
+                <div class="content-feature">Optimized for UI</div>
                 <div class="content-desc" id="galleryOne">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            for user interfaces containing event-driven code, paired with
+                            <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            A programming language optimized for building user
+                            interfaces with features such as spreads for
+                            expanding collections, and conditionals for
+                            customizing UI for each platform
+                        </li>
+                        <li data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            A programming language that is easy to learn, with a
+                            familiar syntax
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -140,12 +193,25 @@ description: Dart is a language optimized for client-side development for web an
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container content-container-left">
                 <div class="content-icon"></div>
-                <div class="content-feature">Client-Optimized  Language</div>
+                <div class="content-feature">Productive development</div>
                 <div class="content-desc" id="galleryTwo">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            Make changes to your source code iteratively, using
+                            <a href="https://flutter.dev/docs/development/tools/hot-reload">hot reload</a>
+                            to instantly see the effect in the running app
+                        </li>
+                        <li data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            Write code using a flexible type system with rich
+                            static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                            tooling</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            Do <a href="https://flutter.github.io/devtools/timeline">profiling</a>,
+                            <a href="https://flutter.github.io/devtools/logging">logging</a>,
+                            and <a href="https://flutter.github.io/devtools/debugger#getting-started">debugging</a>
+                            with your code editor of choice
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -157,12 +223,21 @@ description: Dart is a language optimized for client-side development for web an
         <div class="col-lg-5 col-md-6 col-sm-12 content-info">
             <div class="content-container">
                 <div class="content-icon"></div>
-                <div class="content-feature">Productive  Development</div>
+                <div class="content-feature">Fast on all platforms</div>
                 <div class="content-desc" id="galleryThree">
                     <ul class="selector">
-                        <li class="highlight"  data-banner="assets/dash/2x/3-1 hot reload iterative changes@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-2 runtime insights@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
-                        <li data-banner="assets/dash/2x/3-3 rich tools@2x-80.jpg">AOT-compile mobile and desktop apps to machine code for instant startup</li>
+                        <li class="highlight"  data-banner="assets/dash/2x/3-1 aot compile@2x-80.jpg">
+                            <a href="/platforms">AOT-compile</a> apps to native
+                            machine code for instant startup
+                        </li>
+                        <li data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            Target the web with complete, mature, fast compilers
+                            for JavaScript
+                        </li>
+                        <li data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            Run backend code supporting your app, written using
+                            a single programming language
+                        </li>
                     </ul>
                 </div>
             </div>
