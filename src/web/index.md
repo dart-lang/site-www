@@ -1,5 +1,5 @@
 ---
-title: Web app development
+title: Web apps
 short-title: Web
 description: Resources for developing Dart web apps.
 toc: false
@@ -15,5 +15,5 @@ So is Google&rsquo;s internal CRM.
 <img src="{% asset adwords-screenshot.png @path %}" alt="screenshot of Google ads front end" class="center-block">
 
 <p class="text-center">
-  <a href="/web/get-started" class="btn btn-primary btn-lg">Get started</a>
+  <a href="/tutorials/web/get-started" class="btn btn-primary btn-lg">Get started</a>
 </p>

@@ -71,7 +71,7 @@ is powered by Dart Web when targeting web apps. The
 also powered by Dart Web.
 
 
-More information: [Get started: web apps](/web/get-started)
+More information: [Get started: web apps](/tutorials/web/get-started)
 
 ### Lightning fast developer workflow (Dart dev compiler)
 

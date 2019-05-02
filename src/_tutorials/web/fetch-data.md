@@ -1,5 +1,5 @@
 ---
-title: Fetching data dynamically
+title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
 <!--?code-excerpt path-base="examples/fetch_data"?-->
