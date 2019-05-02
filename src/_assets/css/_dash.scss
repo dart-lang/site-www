@@ -65,13 +65,12 @@ $dark-darker-black: #0d1520;
   background-color: white;
   padding-bottom: 20px;
 
-  a, button{
+  a, button {
     color: $dash-dark-black;;
   }
 
   .content-info {
     .content-container {
-      float: right;
       margin-top: 130px;
       width: 370px;
 
@@ -97,7 +96,6 @@ $dark-darker-black: #0d1520;
       @include media-breakpoint-down(md) {
         font-size: 24px;
       }
-
     }
 
     .content-desc {
@@ -110,7 +108,7 @@ $dark-darker-black: #0d1520;
         color: $dash-highlight;
         list-style-type: square;
 
-        a, button{
+        a, button {
           color: $dash-highlight;
         }
       }
