@@ -64,6 +64,11 @@ $dark-darker-black: #0d1520;
 .dash-row {
   background-color: white;
   padding-bottom: 20px;
+
+  a, button{
+    color: $dash-dark-black;;
+  }
+  
   .content-info {
     .content-container {
       float: right;
@@ -104,6 +109,10 @@ $dark-darker-black: #0d1520;
       .highlight {
         color: $dash-highlight;
         list-style-type: square;
+
+        a, button{
+          color: $dash-highlight;
+        }
       }
 
       @include media-breakpoint-down(md) {
