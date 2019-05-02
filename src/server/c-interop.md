@@ -12,4 +12,7 @@ to call native C and C++ APIs.
 This mechanism is currently [in active
 development](https://github.com/dart-lang/sdk/issues/34452) and is not yet
 complete. For a small preview example, see the [dart:ffi sqllite
-sample](https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/README.md).
+sample.](https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/README.md)
+
+For information on the old native interface, see
+[Native extensions for the standalone Dart VM](/server/c-interop-old).

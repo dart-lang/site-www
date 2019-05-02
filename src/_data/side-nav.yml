@@ -84,8 +84,6 @@
           permalink: /server/libraries
         - title: C & C++ interop
           permalink: /server/c-interop
-        - title: Native extensions
-          permalink: /articles/server/native-extensions
     - title: Web apps
       children:
         - title: Overview

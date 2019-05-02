@@ -1,15 +1,15 @@
 ---
 title: Native extensions for the standalone Dart VM
-description: Learn how to enable command-line Dart apps to call C/C++ functions.
-date: 2012-05-01
-category: dart-vm
+description: The original way for command-line Dart apps to call C/C++ functions.
 ---
 
 _Written by William Hesse <br>
 May 2012_
 
 <aside class="alert alert-warning" markdown="1">
-  The example code on this page has some
+  The extension mechanism discussed in this page is being replaced by an
+  [FFI API](/server/c-interop).
+  Also, the example code on this page has some
   [known issues.]({{site.repo.this}}/issues/1389)
 </aside>
 
