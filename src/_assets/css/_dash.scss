@@ -8,6 +8,7 @@ $dash-off-black: #12202f;
 $dark-darker-black: #0d1520;
 
 .dash-header-callout {
+  font-family: "Google Sans", "Roboto", sans-serif;
   background-color: $dash-callout;
   text-align: center;
   padding: 40px 0 40px 0 !important;
@@ -18,17 +19,12 @@ $dark-darker-black: #0d1520;
   }
 
   .made-by {
-    font-size: 16px;
-    color: white;
-  }
-
-  .callout-subtitle {
-    font-size: 16px;
-    color: $dash-sub-grey;
+    width: 180px;
   }
 }
 
 .dash-dart-features {
+  font-family: "Google Sans", "Roboto", sans-serif;
   padding-bottom: 80px !important;
   background-color: $dark-darker-black;
   .feature {
@@ -45,7 +41,7 @@ $dark-darker-black: #0d1520;
     font-size: 28px;
     color: $dash-off-white;
     margin-top: 25px;
-    min-height: 100px;
+    margin-bottom:20px;
     @include media-breakpoint-down(md) {
       font-size: 22px;
     }
@@ -53,7 +49,7 @@ $dark-darker-black: #0d1520;
 
   .feature-icon img {
     width: 80px;
-    height:80px;
+    height: 80px;
     margin-top: 50px;
     border-radius: 50%;
   }
@@ -100,6 +96,8 @@ $dark-darker-black: #0d1520;
     }
 
     .content-desc {
+      font-family: Roboto, Arial, sans-serif;
+      font-weight: lighter;
       font-size: 16px;
       color: $dash-dark-black;
 
@@ -112,13 +110,14 @@ $dark-darker-black: #0d1520;
         font-size: 14px;
       }
 
-      ul li{
+      ul li {
         list-style: none;
         cursor: pointer;
+        margin-bottom: 10px;
       }
 
-      .current-item{
-        color: black!important;
+      .current-item {
+        color: black !important;
       }
     }
   }
@@ -144,15 +143,18 @@ $dark-darker-black: #0d1520;
   margin-bottom: -10px;
 }
 
-
-.banner{
+.banner {
   background-color: $dash_callout;
 
-  .banner__text{
+  .banner__text {
     color: white;
   }
 }
 
-#page-content{
+#page-content {
   padding-bottom: 0 !important;
+}
+
+.dart-dash-details {
+  font-family: "Google Sans", "Roboto", sans-serif;
 }
