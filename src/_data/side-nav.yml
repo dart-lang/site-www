@@ -86,8 +86,6 @@
           permalink: /tutorials/server/httpserver
         - title: C & C++ interop
           permalink: /server/c-interop
-        - title: Native extensions
-          permalink: /articles/server/native-extensions
         - title: Libraries and packages
           permalink: /server/libraries
     - title: Web apps
