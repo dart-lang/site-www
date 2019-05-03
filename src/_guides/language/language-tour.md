@@ -766,9 +766,12 @@ adding them to another list:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 {% prettify dart %}
-var list = [1, 2, 3];
-var list2 = ['#0', for (var i in list) '#$i'];
-assert(list2[1] == '#1');
+var listOfInts = [1, 2, 3];
+var listOfStrings = [
+  '#0',
+  for (var i in listOfInts) '#$i'
+];
+assert(listOfStrings[1] == '#1');
 {% endprettify %}
 
 For more details and examples of using collection if and for, see the 

@@ -115,9 +115,12 @@ void main() {
 
   test('list-for', () {
     // #docregion list-for
-    var list = [1, 2, 3];
-    var list2 = ['#0', for (var i in list) '#$i'];
-    assert(list2[1] == '#1');
+    var listOfInts = [1, 2, 3];
+    var listOfStrings = [
+      '#0',
+      for (var i in listOfInts) '#$i'
+    ];
+    assert(listOfStrings[1] == '#1');
     // #enddocregion list-for
   });
 
