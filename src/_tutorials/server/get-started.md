@@ -1,7 +1,6 @@
 ---
-title: "Get started: command-line & server apps"
+title: "Get started: command-line and server apps"
 description: Get Dart, run and compile a small app
-toc: true
 nextpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
@@ -10,7 +9,7 @@ prevpage:
   title: Dart command-line and server tutorials
 ---
 
-Follow these steps to start using the Dart SDK to develop command-line & server apps.
+Follow these steps to start using the Dart SDK to develop command-line and server apps.
 First you’ll play with the Dart language and libraries in your browser, no download required.
 Then you’ll install the Dart SDK, write a small program, and run that program using the Dart VM.
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
@@ -171,7 +170,7 @@ Check out these resources:
   * [Language tour]({{site.dartlang}}/guides/language/language-tour)
   * [Library tour]({{site.dartlang}}/guides/libraries/library-tour)
   * [Effective Dart]({{site.dartlang}}/guides/language/effective-dart)
-* Tools & libraries
+* Tools and libraries
   * [Dart SDK]({{site.dartlang}}/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
