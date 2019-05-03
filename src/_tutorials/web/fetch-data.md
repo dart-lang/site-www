@@ -1,5 +1,5 @@
 ---
-title: Fetching data dynamically
+title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
 <!--?code-excerpt path-base="examples/fetch_data"?-->
@@ -245,7 +245,7 @@ void showJson(Event _) {
 Shown below is the JSON string that results from the code
 using the original values from the app:
 
-<img class="scale-img-max" src="../images/jsonstring.png"
+<img class="scale-img-max" src="images/jsonstring.png"
      alt="The JSON string for the its_all_about_you app">
 
 - **Numeric** and boolean values
@@ -326,7 +326,7 @@ contain three pieces of information:
 
 For example, the URL for this page breaks down as follows:
 
-<img class="scale-img-max" src="../images/uri-details.png"
+<img class="scale-img-max" src="images/uri-details.png"
      alt="The tutorial URL">
 
 This URL specifies the HTTP protocol.
@@ -335,7 +335,7 @@ the browser sends an HTTP GET request to a web server,
 and the web server sends an HTTP response that contains the
 contents of the page (or an error message).
 
-<img class="scale-img-max" src="../images/client-server.png"
+<img class="scale-img-max" src="images/client-server.png"
      alt="Basic HTTP communication between client and server">
 
 Most HTTP requests in a web browser are simple GET requests
@@ -500,7 +500,7 @@ Future<void> makeRequest(Event _) async {
 }
 {% endprettify %}
 
-<img class="scale-img-max" src="../images/portmanteaux-code.png"
+<img class="scale-img-max" src="images/portmanteaux-code.png"
      alt="Making an HTTP GET request">
 
 ### Sending the request
@@ -530,7 +530,7 @@ that in turn calls `requestComplete()`.
 This callback function is called when the request completes,
 either successfully or unsuccessfully.
 
-<img class="scale-img-max" src="../images/set-callback.png"
+<img class="scale-img-max" src="images/set-callback.png"
      alt="Set up a callback function for request completion">
 
 The `requestComplete()` function
