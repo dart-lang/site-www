@@ -435,7 +435,7 @@ modern JavaScript VMs.
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
-[dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
+[dartanalyzer]: /tools/dartanalyzer
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
 [fixallthethings]: http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html

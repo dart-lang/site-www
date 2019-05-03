@@ -116,7 +116,7 @@ This adapter handles HttpRequest objects from dart:io.
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
 For the best performance when developing with
-[dartdevc,]({{site.webdev}}/tools/dartdevc)
+[dartdevc,](/tools/dartdevc)
 put [implementation
 files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.

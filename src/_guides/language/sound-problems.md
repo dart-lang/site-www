@@ -638,7 +638,6 @@ The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
-[dartanalyzer README]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [implicit casts]: /guides/language/analysis-options#enabling-additional-type-checks
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
