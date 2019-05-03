@@ -21,10 +21,6 @@ If you use Dart 1.x for web development, see the following:
 
 * [Setup for Angular development (v4)]({{site.angulardart}}/guide/setup)
 * [Deployment (v4)]({{site.angulardart}}/guide/deployment)
-* Pub command reference:
-  * [pub build](/tools/pub/pub-build)
-  * [pub serve](/tools/pub/pub-serve)
-
 
 If you maintain a transformer, see the following:
 
