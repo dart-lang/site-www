@@ -66,7 +66,7 @@
   children:
     - title: Futures & async-await
       permalink: /tutorials/language/futures
-    - title: JSON
+    - title: Using JSON
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams
@@ -135,15 +135,17 @@
     - title: Dart SDK
       expanded: true
       children:
-        - title: Overview and installation
+        - title: Overview & installation
           permalink: /tools/sdk
         - title: dart (Dart VM)
           permalink: /tools/dart-vm
+        - title: dart2aot & dartaotruntime
+          permalink: /tools/dart2aot
+        - title: dart2js (prod JS)
+          permalink: /tools/dart2js
         - title: dartanalyzer
           permalink: /tools/dartanalyzer
-        - title: "dart2js (prod JS)"
-          permalink: /tools/dart2js
-        - title: "dartdevc (dev JS)"
+        - title: dartdevc (dev JS)
           permalink: /tools/dartdevc
         - title: dartdoc
           permalink: /tools/dartdoc

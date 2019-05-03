@@ -399,7 +399,7 @@ Error and Exception.
 ## Other topics
 
 Many more code samples are in the
-[Language Tour](/guides/language/language-tour) and the
-[Library Tour](/guides/libraries/library-tour).
-Also see the [Dart API reference]({{site.dart_api}}),
+[language tour](/guides/language/language-tour) and the
+[library tour](/guides/libraries/library-tour).
+Also see the [Dart API reference,]({{site.dart_api}})
 which often contains examples.
