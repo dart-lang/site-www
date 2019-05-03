@@ -11,7 +11,7 @@ $dark-darker-black: #0d1520;
   font-family: "Google Sans", "Roboto", sans-serif;
   background-color: $dash-callout;
   text-align: center;
-  padding: 40px 0 40px 0 !important;
+  padding: 70px 0 70px 0 !important;
 
   .callout-title {
     font-size: 28px;
@@ -42,6 +42,7 @@ $dark-darker-black: #0d1520;
     color: $dash-off-white;
     margin-top: 25px;
     margin-bottom: 20px;
+    line-height: 33px;
     @include media-breakpoint-down(md) {
       font-size: 22px;
     }
@@ -56,7 +57,8 @@ $dark-darker-black: #0d1520;
 
   .feature-desc {
     font-size: 16px;
-    color: $dash-dark-grey
+    color: $dash-dark-grey;
+    line-height: 20px;
   }
 
 }
