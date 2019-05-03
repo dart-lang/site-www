@@ -3,11 +3,13 @@ title: Commonly used packages
 description: Some of the most useful and popular packages, and where you can learn more.
 ---
 
-Developers have written some excellent [packages](/guides/packages) for use by the
-Dart community. This page lists some of the most popular and useful packages.
-To find more, visit the [Pub site.]({{site.pub}})
+This page lists some of the most popular and useful
+[packages](/guides/packages) that Dart developers have published.
+To find more packages —
+and search [core libraries](/guides/libraries), as well —
+use the [Pub site.]({{site.pub}})
 
-The packages fall into three groups:
+Commonly used packages fall into three groups:
 
 * [General-purpose packages](#general-purpose-packages)
 * [Packages that expand on Dart core libraries](#packages-that-correspond-to-sdk-libraries)
@@ -56,14 +58,14 @@ such as packages for mobile (Flutter) and web development.
 
 See [Using packages]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 on the Flutter site.
-Or search for [Flutter packages.]({{site.pub}}/flutter)
+Or use the Pub site to [search for Flutter packages.]({{site.pub}}/flutter)
 
 ### Web packages
 
 See [Web libraries and packages](/web/libraries).
-Or search for [web packages.]({{site.pub}}/web)
+Or use the Pub site to [search for web packages.]({{site.pub}}/web)
 
 ### Command-line and server packages
 
-See [command-line & server libraries and packages](/server/libraries).
-Or search for [other packages.]({{site.pub}})
+See [Command-line and server libraries and packages](/server/libraries).
+Or use the Pub site to [search for other packages.]({{site.pub}})

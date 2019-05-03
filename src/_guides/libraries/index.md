@@ -5,7 +5,7 @@ toc: false
 ---
 
 Dart has a rich set of core libraries that provide essentials for many everyday
-programming tasks such as working on collections of objects,
+programming tasks such as working on collections of objects
 (`dart:collection`), making calculations (`dart:math`), and encoding/decoding
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
