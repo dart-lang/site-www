@@ -269,8 +269,9 @@ img {
   position: relative;
   background-color: $site-color-footer;
   color: $site-color-white;
-  font-weight: 300;
-  font-size: $font-size-sm;
+  font-family: $site-font-family-gsans;
+  font-weight: 400;
+  font-size: 14px;
   z-index: 5;
   .brand {
     width: 120px;
@@ -295,10 +296,9 @@ img {
     li {
       display: inline;
       border-right: 1px solid $site-color-white;
-      padding: 0 .5em;
+      padding: 0 1rem;
       a {
         color: #ffffff;
-        line-height: 16px;
         &:hover, &:focus, &:active {
           color: $gray-lighter;
         }
@@ -1513,3 +1513,4 @@ body.obsolete {
 }
 
 @import '_overwrites';
+@import '_dash';
