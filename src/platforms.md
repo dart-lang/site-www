@@ -21,7 +21,7 @@ depending on your target platform and goals:
 
 <img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
 
-## Dart Native (VM JIT & AOT)
+## Dart Native (VM JIT and AOT)
 
 Dart Native enables running Dart code compiled to native ARM, X86, or X64
 machine code for mobile, desktop, and server apps.
@@ -31,7 +31,7 @@ that's powered by Dart Native when targeting mobile or desktop devices.
 
 More information:
 * [Flutter get started documentation]({{site.flutter}}/docs/get-started/)
-* [Get started: command-line & server apps](/tutorials/server/get-started)
+* [Get started: command-line and server apps](/tutorials/server/get-started)
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP clients and servers](/tutorials/server/httpserver)
 

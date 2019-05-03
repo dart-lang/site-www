@@ -1,5 +1,5 @@
 ---
-title: JSON support
+title: Using JSON
 description: Dart solutions for reading and writing JSON.
 ---
 
@@ -40,9 +40,9 @@ The following libraries and packages are useful across Dart platforms:
 : Illustrates how a Dart web app can interact with a
   RESTful backend using JSON data.
 
-[Using HTTP resources with HttpRequest]({{site.webdev}}/guides/html-library-tour#using-http-resources-with-httprequest)
+[Using HTTP resources with HttpRequest](/guides/libraries/library-tour#using-http-resources-with-httprequest)
 : Demonstrates how to use HttpRequest to exchange data with a web server.
-  Part of the [HTML library tour.]({{site.webdev}}/guides/html-library-tour)
+  Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
 
 ## VM resources
