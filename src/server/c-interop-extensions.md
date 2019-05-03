@@ -6,10 +6,13 @@ description: The original way for command-line Dart apps to call C/C++ functions
 _Written by William Hesse <br>
 May 2012_
 
+The extension mechanism discussed in this page is for
+deep integration of the VM.
+If you just need to call existing code written in C or C++, see
+[C & C++ interop using FFI](/server/c-interop).
+
 <aside class="alert alert-warning" markdown="1">
-  The extension mechanism discussed in this page is being replaced by an
-  [FFI API](/server/c-interop).
-  Also, the example code on this page has some
+  The example code on this page has some
   [known issues.]({{site.repo.this}}/issues/1389)
 </aside>
 
