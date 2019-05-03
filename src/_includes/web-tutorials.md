@@ -3,7 +3,7 @@ Also see the [AngularDart tutorial.]({{site.angulardart}}/tutorial)
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/tutorials/web/get-data/fetch-data">Fetch data dynamically</a></h3>
+    <h3><a href="/tutorials/web/fetch-data">Fetch data dynamically</a></h3>
     <p> Load data from a static file or from a server. </p>
   </div>
   <div class="card">

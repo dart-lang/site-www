@@ -1,11 +1,16 @@
 ---
-title: Server-side Dart
-description: All things relating to command-line and server-side apps.
+title: Command-line & server apps
+description: All things relating to command-line and server apps.
 toc: false
 ---
 
 This page points to tools and documentation
-that can help you develop command-line and server-side apps.
+that can help you develop command-line and server apps.
+
+<p class="text-center">
+  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Get started</a>
+</p>
+
 
 ## Tools
 
@@ -30,8 +35,8 @@ More tools
 
 You might find the following tutorials helpful.
 
-[Get started with server-side Dart](/tutorials/server/get-started)
-: Shows how to write a basic Dart script.
+[Get started](/tutorials/server/get-started)
+: Learn how to use the Dart SDK to develop command-line and server apps.
 
 [gRPC Quickstart](https://grpc.io/docs/quickstart/dart.html)
 : Walks you through running and modifying a client-server example that uses the gRPC framework.
