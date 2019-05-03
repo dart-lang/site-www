@@ -96,11 +96,7 @@
           permalink: /web
         - title: Get started
           permalink: /tutorials/web/get-started
-        - title: JS/TS interop
-          permalink: /web/js-interop
-        - title: Deployment
-          permalink: /web/deployment
-        - title: Fetching data dynamically
+        - title: Fetch data dynamically
           permalink: /tutorials/web/fetch-data
         - title: Low-level web programming
           children:
@@ -110,6 +106,10 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: Remove DOM elements
             permalink: /tutorials/web/low-level-html/remove-elements
+        - title: JS/TS interop
+          permalink: /web/js-interop
+        - title: Deployment
+          permalink: /web/deployment
         - title: Libraries and packages
           permalink: /web/libraries
 
