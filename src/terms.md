@@ -8,7 +8,7 @@ toc: false
 The Dart website (the "Website") is hosted by Google.
 By using and/or visiting the Website,
 you consent to be bound by Google's general [Terms of Service][]
-and Google's general [Privacy Policy][].
+and Google's general [Privacy Policy.][Privacy Policy]
 
 The "Dart" name and the Dart logo
 {% asset shared/dart/icon/64.png width="32px" alt="Dart logo" class="align-baseline" %}
@@ -16,7 +16,7 @@ The "Dart" name and the Dart logo
 within the assets licensed under the Creative Commons Attribution 4.0
 International License.  Google grants you a non-transferable,
 non-exclusive, royalty-free limited license to use the Dart Marks
-subject to your compliance with the [Dart Brand Guidelines](/brand).
+subject to your compliance with the [Dart brand guidelines](/brand).
 Except as set forth above, nothing herein grants or should be deemed
 to grant to you any right, title or interest in or to the Dart Marks.
 

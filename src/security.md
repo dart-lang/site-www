@@ -13,7 +13,7 @@ In the rare event that you find a vulnerability in Dart itself,
 email us at
 [product-security@google.com](mailto:product-security@google.com).
 For more information about how Google handles security issues, see
-[Google’s security philosophy](https://www.google.com/about/appsecurity/).
+[Google’s security philosophy.](https://www.google.com/about/appsecurity/)
 
 ## Best practices
 
