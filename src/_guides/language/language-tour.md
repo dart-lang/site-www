@@ -756,7 +756,7 @@ to create a list with zero, one, or two items in it:
 {% prettify dart %}
 var first = true;
 var last = false;
-var nav = <String>[if (!first) 'Previous', if (!last) 'Next'];
+var nav = [if (!first) 'Previous', if (!last) 'Next'];
 assert(nav.length == 1);
 {% endprettify %}
 

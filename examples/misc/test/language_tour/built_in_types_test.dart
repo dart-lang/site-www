@@ -108,7 +108,7 @@ void main() {
     // #docregion list-if
     var first = true;
     var last = false;
-    var nav = <String>[if (!first) 'Previous', if (!last) 'Next'];
+    var nav = [if (!first) 'Previous', if (!last) 'Next'];
     assert(nav.length == 1);
     // #enddocregion list-if
   });
