@@ -100,7 +100,7 @@ Use the following resources to learn more about testing Flutter apps:
 Use the following resources to learn more about testing Dart web
 applications:
 
-* [Testing]({{site.webdev}}/angular/guide/testing)(a page
+* [Testing]({{site.angulardart}}/guide/testing)(a page
   in the AngularDart guide)<br>
   How to use the [angular_test]({{site.pub}}/packages/angular_test)
   package to test AngularDart components and subsystems.
@@ -117,13 +117,7 @@ debugging Dart applications.
 ### IDE
 
 When it comes to debugging, your first line of defense is your IDE.
-Dart plugins exist for many commonly used IDEs.
-
-If you don't have a preferred IDE, try
-[WebStorm]({{site.webdev}}/tools/webstorm) for web apps, or
-[IntelliJ](/tools/jetbrains-plugin) for Flutter.
-The JetBrains products have a full-featured Dart debugger, and WebStorm and
-IntelliJ Ultimate include additional built-in support for running test suites.
+Dart plugins exist for many [commonly used IDEs](/tools/#ides-and-editors).
 
 ### Observatory
 

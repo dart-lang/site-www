@@ -110,8 +110,9 @@ the completion of the Future.
 <aside class="alert alert-info" markdown="1">
 **Note:**
 After suspension, execution resumes in a later cycle of the event loop.
-For a description of the Dart event loop, see
-[The Event Loop and Dart.]({{site.webdev}}/articles/performance/event-loop)
+{% comment %}
+PENDING: link to event loop discussion.
+{% endcomment %}
 </aside>
 
 If the Future completed with an error rather than with a value,

@@ -129,4 +129,4 @@ dart2js -o main.dart.js main.dart
 
 For more information on generating and debugging
 JavaScript source for Dart apps, see the
-[dart2js documentation]({{site.webdev}}/tools/dart2js).
+[dart2js documentation](/tools/dart2js).

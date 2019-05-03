@@ -520,5 +520,5 @@ The following resources have further information on sound Dart:
 [analysis_options.yaml]: /guides/language/analysis-options
 [analysis]: /guides/language/analysis-options
 [Dart VM]: /server/tools/dart-vm
-[dartdevc]: {{site.webdev}}/tools/dartdevc
+[dartdevc]: /tools/dartdevc
 [strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode

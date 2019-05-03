@@ -11,7 +11,6 @@ Also see:
 
 * [Effective Dart](/guides/language/effective-dart)
 * [Tutorials](/tutorials)
-* [Articles about Dart web development]({{site.webdev}}/articles)
 
 <div class="break-80">
   <h2>Language details</h2>
