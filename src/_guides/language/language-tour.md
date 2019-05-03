@@ -716,6 +716,68 @@ var constantList = const [1, 2, 3];
 // constantList[1] = 1; // Uncommenting this causes an error.
 {% endprettify %}
 
+<a id="spread-operator"> </a>
+Dart 2.3 introduced the **spread operator** (`...`) and the
+**null-aware spread operator** (`...?`),
+which provide a concise way to insert multiple elements into a collection.
+
+For example, you can use the spread operator (`...`) to insert
+all the elements of a list into another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
+{% prettify dart %}
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+assert(list2.length == 4);
+{% endprettify %}
+
+If the expression to the right of the spread operator might be null,
+you can avoid exceptions by using a null-aware spread operator (`...?`):
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
+{% prettify dart %}
+var list;
+var list2 = [0, ...?list];
+assert(list2.length == 1);
+{% endprettify %}
+
+For more details and examples of using the spread operator, see the 
+[spread operator proposal.][spread proposal]
+
+<a id="collection-operators"> </a>
+Dart 2.3 also introduced **collection if** and **collection for**,
+which you can use to build collections using conditionals (`if`)
+and repetition (`for`).
+
+Here's an example of using **collection if**
+to create a list with zero, one, or two items in it:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
+{% prettify dart %}
+var first = true;
+var last = false;
+var nav = <String>[if (!first) 'Previous', if (!last) 'Next'];
+assert(nav.length == 1);
+{% endprettify %}
+
+Here's an example of using **collection for**
+to manipulate the items of a list before
+adding them to another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
+{% prettify dart %}
+var list = [1, 2, 3];
+var list2 = ['#0', for (var i in list) '#$i'];
+assert(list2[1] == '#1');
+{% endprettify %}
+
+For more details and examples of using collection if and for, see the 
+[control flow collections proposal.][collections proposal]
+
+[collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/control-flow-collections/feature-specification.md
+
+[spread proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/spread-collections/feature-specification.md
+
 The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
@@ -798,6 +860,13 @@ final constantSet = const {
 };
 // constantSet.add('helium'); // Uncommenting this causes an error.
 {% endprettify %}
+
+As of Dart 2.3, sets support spread operators (`...` and `...?`)
+and collection ifs and fors,
+just like lists do.
+For more information, see the
+[list spread operator](#spread-operator) and
+[list collection operator](#collection-operators) discussions.
 
 For more information about sets, see
 [Generics](#generics) and
@@ -907,6 +976,12 @@ final constantMap = const {
 
 // constantMap[2] = 'Helium'; // Uncommenting this causes an error.
 {% endprettify %}
+
+As of Dart 2.3, maps support spread operators (`...` and `...?`)
+and collection if and for, just like lists do.
+For details and examples, see the
+[spread operator proposal][spread proposal] and the
+[control flow collections proposal.][collections proposal]
 
 For more information about maps, see
 [Generics](#generics) and

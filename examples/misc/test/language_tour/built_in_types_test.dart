@@ -88,6 +88,39 @@ void main() {
     // #enddocregion list-indexing
   });
 
+  test('list-spread', () {
+    // #docregion list-spread
+    var list = [1, 2, 3];
+    var list2 = [0, ...list];
+    assert(list2.length == 4);
+    // #enddocregion list-spread
+  });
+
+  test('list-null-spread', () {
+    // #docregion list-null-spread
+    var list;
+    var list2 = [0, ...?list];
+    assert(list2.length == 1);
+    // #enddocregion list-null-spread
+  });
+
+  test('list-if', () {
+    // #docregion list-if
+    var first = true;
+    var last = false;
+    var nav = <String>[if (!first) 'Previous', if (!last) 'Next'];
+    assert(nav.length == 1);
+    // #enddocregion list-if
+  });
+
+  test('list-for', () {
+    // #docregion list-for
+    var list = [1, 2, 3];
+    var list2 = ['#0', for (var i in list) '#$i'];
+    assert(list2[1] == '#1');
+    // #enddocregion list-for
+  });
+
   test('set-length', () {
     var halogens = {
       'fluorine',
