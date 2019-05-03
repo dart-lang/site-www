@@ -269,7 +269,6 @@ img {
   position: relative;
   background-color: $site-color-footer;
   color: $site-color-white;
-  font-family: $site-font-family-gsans;
   font-weight: 400;
   font-size: 14px;
   z-index: 5;
@@ -293,12 +292,15 @@ img {
   ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 0;
     li {
       display: inline;
       border-right: 1px solid $site-color-white;
       padding: 0 1rem;
       a {
         color: #ffffff;
+        font-family: $site-font-family-gsans;
+
         &:hover, &:focus, &:active {
           color: $gray-lighter;
         }
