@@ -23,7 +23,7 @@ depending on your target platform and goals:
 
 ## Dart Native (VM JIT and AOT)
 
-Dart Native enables running Dart code compiled to native ARM, X86, or X64
+Dart Native enables running Dart code compiled to native ARM or X64
 machine code for mobile, desktop, and server apps.
 
 The [Flutter framework]({{site.flutter}}) is a popular multi-platform UI toolkit
@@ -49,7 +49,7 @@ More information: [`dart` VM tool](/tools/dart-vm)
 When apps are ready to be deployed to production — whether you're
 publishing to an app store or deploying to a production backend —
 you can use the Dart AOT compiler to ahead-of-time compile your app
-to native ARM, X86, or X64 code machine code.
+to native ARM or X64 code machine code.
 Your AOT-compiled app starts instantly and runs smoothly.
 
 The AOT-compiled code runs inside an efficient Dart runtime that enforces
