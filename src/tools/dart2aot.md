@@ -5,7 +5,7 @@ toc: false
 ---
 
 Use the `dart2aot` command to AOT (ahead-of-time) compile a Dart program to
-native x86 machine code. This tool is supported on Windows, macOS, and Linux.
+native x64 machine code. This tool is supported on Windows, macOS, and Linux.
 Here's an example of using `dart2aot`:
 
 ```terminal
