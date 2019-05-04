@@ -105,12 +105,15 @@ void main() {
   });
 
   test('list-if', () {
-    // #docregion list-if
     var first = true;
     var last = false;
-    var nav = [if (!first) 'Previous', if (!last) 'Next'];
-    assert(nav.length == 1);
+    // #docregion list-if
+    List<String> nav = [
+      if (!first) 'Previous',
+      if (!last) 'Next'
+    ];
     // #enddocregion list-if
+    assert(nav.length == 1);
   });
 
   test('list-for', () {

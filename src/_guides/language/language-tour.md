@@ -754,10 +754,10 @@ to create a list with zero, one, or two items in it:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 {% prettify dart %}
-var first = true;
-var last = false;
-var nav = [if (!first) 'Previous', if (!last) 'Next'];
-assert(nav.length == 1);
+List<String> nav = [
+  if (!first) 'Previous',
+  if (!last) 'Next'
+];
 {% endprettify %}
 
 Here's an example of using **collection for**
