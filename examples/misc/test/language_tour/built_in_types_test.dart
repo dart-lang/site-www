@@ -105,15 +105,16 @@ void main() {
   });
 
   test('list-if', () {
-    var first = true;
-    var last = false;
+    var promoActive = false;
     // #docregion list-if
-    List<String> nav = [
-      if (!first) 'Previous',
-      if (!last) 'Next'
+    var nav = [
+      'Home',
+      'Furniture',
+      'Plants',
+      if (promoActive) 'Outlet'
     ];
     // #enddocregion list-if
-    assert(nav.length == 1);
+    assert(nav.length == 3);
   });
 
   test('list-for', () {

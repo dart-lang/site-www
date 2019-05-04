@@ -750,13 +750,15 @@ which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
 Here's an example of using **collection if**
-to create a list with zero, one, or two items in it:
+to create a list with three or four items in it:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 {% prettify dart %}
-List<String> nav = [
-  if (!first) 'Previous',
-  if (!last) 'Next'
+var nav = [
+  'Home',
+  'Furniture',
+  'Plants',
+  if (promoActive) 'Outlet'
 ];
 {% endprettify %}
 
