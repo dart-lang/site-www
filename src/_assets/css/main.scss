@@ -839,6 +839,13 @@ main .content {
       display: block;
     }
   }
+
+  // Invisible pre-element to avoid modifying styles on headings.
+  a[id]::before {
+    @include header-clearance;
+    content: "";
+    display: block;
+  }
 }
 
 /* -----------------------------------------
