@@ -12,7 +12,7 @@ such as those in the [AngularDart][] framework.
 
 [Dart SDK]: /tools/sdk
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[web packages]: https://pub.dartlang.org/web
+[web packages]: https://pub.dev/web
 
 
 ## SDK libraries

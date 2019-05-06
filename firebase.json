@@ -41,7 +41,7 @@
       { "source": "/articles/libraries/futures-and-error-handling", "destination": "/guides/libraries/futures-error-handling", "type": 301 },
       { "source": "/articles/m1-language-changes{,/**}", "destination": "/guides/language/spec", "type": 301 },
       { "source": "/articles/mixins", "destination": "/articles/language/mixins", "type": 301 },
-      { "source": "/articles/mocking-with-dart", "destination": "https://pub.dartlang.org/packages/mockito", "type": 301 },
+      { "source": "/articles/mocking-with-dart", "destination": "https://pub.dev/packages/mockito", "type": 301 },
       { "source": "/articles/native-extensions-for-standalone-dart-vm", "destination": "/server/c-interop-native-extensions", "type": 301 },
       { "source": "/articles/server/native-extensions", "destination": "/server/c-interop-native-extensions", "type": 301 },
       { "source": "/articles/optional-types", "destination": "/faq#types", "type": 301 },
@@ -169,7 +169,7 @@
       { "source": "/tools/dartdocgen{,/**}", "destination": "https://github.com/dart-lang/dartdoc#dartdoc", "type": 301 },
       { "source": "/tools/dartium?(.html)", "destination": "/web/dart-2#tools", "type": 301 },
       { "source": "/tools/debian?(.html)", "destination": "/tools/sdk#install", "type": 301 },
-      { "source": "/tools/docgen{,/**}", "destination": "https://pub.dartlang.org/packages/dartdoc", "type": 301 },
+      { "source": "/tools/docgen{,/**}", "destination": "https://pub.dev/packages/dartdoc", "type": 301 },
       { "source": "/tools/download-archive{,/**}", "destination": "/tools/sdk/archive", "type": 301 },
       { "source": "/tools/download-editor?(.html)", "destination": "/tools", "type": 301 },
       { "source": "/tools/**/download{,.html,/**}", "destination": "/tools/sdk#install", "type": 301 },
@@ -190,9 +190,9 @@
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "https://webdev.dartlang.org/tools/webstorm", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
-      { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dartlang.org/packages/observable", "type": 301 },
+      { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/dart-1", "destination": "https://v1-dartlang-org.firebaseapp.com", "type": 301 },
-      { "source": "/packages", "destination": "https://pub.dartlang.org", "type": 301 }
+      { "source": "/packages", "destination": "https://pub.dev", "type": 301 }
     ]
   }
 }
