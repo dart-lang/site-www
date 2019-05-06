@@ -26,6 +26,7 @@
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
+$code-padding: 16px;
 
 /* -----------------------------------------
   Global
@@ -152,7 +153,8 @@ input, select {
 }
 
 pre, pre.prettyprint {
-  padding: 30px;
+  padding: $code-padding;
+  font-weight: normal;
   background-color: #F5F5F7;
   color: $blue;
   position: relative;
@@ -204,6 +206,7 @@ pre, pre.prettyprint {
 code {
   background-color: transparent;
   color: #bc0056;
+  font-weight: normal;
   font-size: 100%;
   padding: 0;
 }
@@ -1226,7 +1229,7 @@ h3.popover-header {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 32px;
-  padding: 30px 40px;
+  padding: $code-padding;
 
   pre, code {
     background-color: transparent;
