@@ -166,14 +166,14 @@ Check out these resources:
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
-  * [Sample code]({{site.dartlang}}/samples)
-  * [Language tour]({{site.dartlang}}/guides/language/language-tour)
-  * [Library tour]({{site.dartlang}}/guides/libraries/library-tour)
-  * [Effective Dart]({{site.dartlang}}/guides/language/effective-dart)
+  * [Sample code](/samples)
+  * [Language tour](/guides/language/language-tour)
+  * [Library tour](/guides/libraries/library-tour)
+  * [Effective Dart](/guides/language/effective-dart)
 * Tools and libraries
-  * [Dart SDK]({{site.dartlang}}/tools/sdk)
+  * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
-  * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
+  * [IDEs](/tools#ides-and-editors)
 
 If you get stuck, find help at [Community and support.](/community)
 

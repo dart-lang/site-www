@@ -40,7 +40,7 @@ Use the same command to update `webdev`.
 We recommend updating `webdev` whenever you update your Dart SDK
 or when `webdev` commands unexpectedly fail.
 
-[Globally install]: {{site.dartlang}}/tools/pub/cmd/pub-global
+[Globally install]: /tools/pub/cmd/pub-global
 
 
 ### Depending on build_* packages
@@ -199,15 +199,15 @@ Also see the following pages:
   with an example of using `dart2js_args` to specify
   [dart2js options.][]
 
-[build_runner]: {{site.dartlang}}/tools/build_runner
+[build_runner]: /tools/build_runner
 [build_runner test]: #test
 [build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
 [component tests]: {{site.angulardart}}/guide/testing/component
 [dart2js]: /tools/dart2js
 [dart2js options.]: /tools/dart2js#options
 [dartdevc]: /tools/dartdevc
-[dev dependencies]: {{site.dartlang}}/tools/pub/dependencies#dev-dependencies
-[PATH]: {{site.dartlang}}/tools/pub/cmd/pub-global#running-a-script-from-your-path
+[dev dependencies]: /tools/pub/dependencies#dev-dependencies
+[PATH]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 [supported browsers]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev

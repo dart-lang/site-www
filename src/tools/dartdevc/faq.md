@@ -190,7 +190,7 @@ Try one of the [Dart Gitter rooms](https://gitter.im/dart-lang/home)—perhaps
 #### Where can I learn what to do about common dartdevc errors?
 
 Although you can find help for
-[common analyzer errors and warnings,]({{site.dartlang}}/guides/language/sound-problems#common-errors-and-warnings)
+[common analyzer errors and warnings,](/guides/language/sound-problems#common-errors-and-warnings)
 there's no similar help for dartdevc-specific errors.
 See [SDK issue #29825](https://github.com/dart-lang/sdk/issues/29825)
 for more information.

@@ -95,7 +95,7 @@ with these changes applied.
 [angular-examples/quickstart/web/index.html]: https://github.com/angular-examples/quickstart/compare/4.x...master#diff-6
 [angular-examples/toh-5]: https://github.com/angular-examples/toh-5/compare/4.x...master
 [build]: https://github.com/dart-lang/build
-[dart-2]: {{site.dartlang}}/dart-2
+[dart-2]: /dart-2
 [dartdevc]: /tools/dartdevc
 [Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
 [Running tests]: {{site.angulardart}}/guide/testing/component/running-tests

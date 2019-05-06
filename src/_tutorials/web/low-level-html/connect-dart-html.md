@@ -509,14 +509,14 @@ for example, it sets the text color to Yellow.
 PENDING: Link to WebStorm docs? DartPad docs?
 {% endcomment %}
 
-* The <a href="{{site.dartlang}}/guides/language/language-tour">language tour</a>
+* The <a href="/guides/language/language-tour">language tour</a>
   provides thorough coverage of the Dart language.
-* <a href="{{site.dartlang}}/tools">Dart Tools</a>
+* <a href="/tools">Dart tools page</a>
   lists IDEs and editors that have Dart plugins.
 
 ## What next?
 
-The next tutorial, [Add Elements to the DOM](add-elements),
+The next tutorial, [Add elements to the DOM](add-elements),
 shows you how to dynamically change the HTML page
 by adding elements to the DOM.
 
