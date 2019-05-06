@@ -1,11 +1,11 @@
 ---
-title: Dart Brand Guidelines
+title: Dart brand guidelines
 ---
 
 The "Dart" name and logo are trademarks owned by Google.
 These Brand Guidelines describe the appropriate uses of the Dart
 trademarks by members of the developer community who have obtained our
-consent to use the trademarks pursuant to the [Dart Terms of Service](/terms).
+consent to use the trademarks pursuant to the [Dart terms of service](/terms).
 These guidelines will ensure that the Dart trademarks are used in a
 manner that promotes Google's mission to provide a free and open source
 SDK, and are not associated with objectionable

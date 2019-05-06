@@ -1,8 +1,7 @@
 ---
-layout: default
 permalink: /tools/pub/troubleshoot
-title: "Troubleshooting Pub"
-description: "Common gotchas you might run into when using Pub."
+title: "Troubleshooting pub"
+description: "Common gotchas you might run into when using pub."
 ---
 
 ## Getting a "403" error when publishing a package {#pub-publish-403}

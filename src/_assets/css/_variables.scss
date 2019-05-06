@@ -1,4 +1,37 @@
 /* -----------------------------------------
+   Variables (from Flutter)
+----------------------------------------- */
+
+// Colors
+$flutter-color-teal: #60caf6;
+$flutter-color-blue-500: #1389FD;
+$flutter-color-dark-blue: #075b9a;
+$flutter-color-fuchsia: #FF2B5B;
+$flutter-color-light-blue: #E7F8FF;
+$site-color-dark-background: #1C2834;
+$site-color-black: #000;
+$site-color-white: #FFF;
+$site-color-codeblock-bg: #F8F9FA;
+$site-color-light-grey: #D8D8D8;
+$site-color-nav-links: #6E7274;
+$site-color-body: #4A4A4A;
+$site-color-body-light: rgba(74/255, 74/255, 74/255, .8);
+$site-color-footer: $site-color-dark-background;
+$site-color-primary: $flutter-color-blue-500;
+
+// Layer stack
+$site-z-header: 1000;
+$site-z-footer: 99;
+$site-z-snackbar: 150;
+$hero-layer-1-z: 40;
+$hero-layer-2-z: 41;
+$hero-layer-3-z: 42;
+$hero-layer-4-z: 43;
+$hero-layer-5-z: 44;
+$hero-phone-z: 50;
+$hero-text-z: 60;
+
+/* -----------------------------------------
    Variables
 ----------------------------------------- */
 
@@ -13,8 +46,7 @@ $teal:                      #1FBAAC;
 $blue:                      #1b87c9;
 $blue-light:                #e2f4fd;
 
-$brand-primary-dark:        #02569B; // 700
-$brand-primary:             #0175C2; // 600
+$brand-primary:             #1967D2;
 $brand-secondary:           #13B9FD; // 400
 $brand-highlight:           #FFC108; // 700
 
@@ -25,31 +57,64 @@ $google-gray-lighter:       #D5D7DA; // 100
 $default-link:              #0175C2;
 $default-link-visited:      #0175C2;
 
+$site-color-header: $site-color-dark-background;
+$site-color-header-text: #f8f9fa;
+$site-color-card-text: #f8f9fa;
+$site-color-card-link: #40C4FF;
+$site-font-size-header: 14px;
+$site-color-primary: $brand-primary;
+$site-color-sidebar-active: #1389FD;
+
 // Typography
 
-$font-size-base:            1rem;
+$font-size-base:            0.875rem; // 14px
 $font-family-base:          Roboto, sans-serif;
-$font-family-monospace:     Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+$font-family-monospace:     "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 $google-font-family:        "Product Sans", $font-family-base;
 
 // TODO: use / override BS defaults named $hX-font-size.
 // Headings
-$font-size-h1:            37px;
-$font-size-h2:            28px;
-$font-size-h3:            24px;
-$font-size-h4:            21px;
-$font-size-h5:            18px;
-$font-size-h6:            16px;
+$font-size-h1:            48px;
+$font-size-h2:            24px;
+$font-size-h3:            17px;
+$font-size-h4:            15px;
+$font-size-h5:            15px;
+$font-size-h6:            15px;
 
 // Spacing
 $live-content-width:      1280px;
 $content-padding:         20px;
+$top-content-padding:     55px;
+
+// Fonts
+$site-font-family-roboto: 'Roboto', sans-serif;
+$site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
+$site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
+$site-font-family-base: $site-font-family-roboto;
+$site-font-family-alt: $site-font-family-gsans;
+$site-font-family-icon: 'Material Icons';
+$site-font-family-monospace: 'Roboto Mono', monospace;
+$site-font-icon: 24px/1 $site-font-family-icon;
+
+// Layout
+$site-header-height: 50px;
+$site-header-with-banner-height: 98px; // 50 + 48
+$site-header-with-obsolete-height: 131px; // 50 + 81
+$site-header-with-banner-obsolete-height: 179px; // 50 + 81 + 48
+$site-footer-md-default-height: 140px;
+$site-content-top-padding: 40px;
+$site-content-max-width: 960px;
+$site-sidebar-side-padding: 16px;
+$site-nav-mobile-side-padding: 20px;
+$site-snackbar-padding: 20px;
 
 // Alerts
-$alert-success-bg:        #dff0d8;
-$alert-info-bg:           $blue-light;
+$alert-success-bg:        #ecfaf7;
+$alert-success-fg:        #155723;
+$alert-info-bg:           #e7f8ff;
 $alert-warning-bg:        #fcf8e3;
-$alert-danger-bg:         #f2dede;
+$alert-danger-bg:         #fde9ee;
+$alert-danger-fg:         #cb1425;
 
 // Border Radius
 $border-radius-base:        0px;

@@ -1,21 +1,19 @@
 ---
-layout: tutorial
-title: "Write HTTP Clients & Servers"
+title: "Write HTTP clients & servers"
 description: Communicate over the internet
 prevpage:
   url: /tutorials/server/cmdline
-  title: "Write Command-Line Apps"
+  title: "Write command-line apps"
 ---
 {% capture gh-path -%}
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
 {%- endcapture -%}
 
-### Communicate over the internet
-
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * Knowledge of Futures and Streams is a prerequisite.
+  * Knowledge of asynchronous programming with futures and streams
+    is a prerequisite.
   * The HTTP protocol allows clients and servers to communicate.
   * The dart:io package has classes for writing HTTP programs.
   * Servers listen for requests on a host and port.
@@ -25,11 +23,10 @@ prevpage:
 
 <aside class="alert alert-info" markdown="1">
   <strong>Prerequisite:</strong> HTTP servers and clients rely heavily on
-  [Futures][Future] and [Streams][Stream], which are not explained in this
-  tutorial. Refer to
-  [Asynchronous Programming: Futures](/tutorials/language/futures) and
-  [Asynchronous Programming: Streams](/tutorials/language/streams)
-  for information about using these classes.
+  futures and streams, which are not explained in this tutorial.
+  You can learn about them from the
+  [futures tutorial](/tutorials/language/futures) and the
+  [streams tutorial](/tutorials/language/streams).
 </aside>
 
 HTTP (Hypertext Transfer Protocol) is a communication protocol used

@@ -24,7 +24,7 @@ For example, the [json_serializable][] and [built_value_generator][]
 packages define builders that generate Dart code.
 
 Although the Dart build system is a good alternative to
-[reflection][] (which has performance issues) and
+reflection (which has performance issues) and
 macros (which Dart's compilers don't support),
 it can do more than just read and write Dart code.
 For example, the [sass_builder][] package implements a builder that
@@ -85,7 +85,7 @@ watch
 ## More information
 
 If you're working on web-specific code,
-see the [webdev and build_runner page.][webdev]
+see the [webdev page.][webdev]
 
 For details on using build_runner, see the following:
 
@@ -105,8 +105,7 @@ For details on using build_runner, see the following:
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [on build]: {{site.pub-pkg}}?q=dependency%3Abuild
 [on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
-[reflection]: /articles/server/reflection-with-mirrors
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /guides/testing
-[webdev]: {{site.webdev}}/tools/webdev
-[webdev serve]: {{site.webdev}}/tools/webdev#serve
+[webdev]: /tools/webdev
+[webdev serve]: /tools/webdev#serve

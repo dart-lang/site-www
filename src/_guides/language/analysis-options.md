@@ -1,6 +1,6 @@
 ---
-title: Customize Static Analysis
-description: Customize static analysis using an analysis options file.
+title: Customizing static analysis
+description: Use an analysis options file and code comments to customize static analysis.
 ---
 
 Static analysis allows you to find problems before
@@ -32,8 +32,8 @@ to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines in
 [Effective Dart](/guides/language/effective-dart). Dart tools such as the
-[Dart dev compiler (dartdevc),]({{site.webdev}}/tools/dartdevc)
-[`dartanalyzer`,](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
+[Dart dev compiler (dartdevc),](/tools/dartdevc)
+[`dartanalyzer`,](/tools/dartanalyzer)
 [`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
@@ -388,11 +388,11 @@ analyzer:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Dart's Type System][sound-dart]
+* [Dart's type system][sound-dart]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
-* [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-* [dartdevc]({{site.webdev}}/tools/dartdevc)
+* [dartanalyzer](/tools/dartanalyzer)
+* [dartdevc](/tools/dartdevc)
 * [analyzer package]({{site.pub}}/packages/analyzer)
 
 [analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html

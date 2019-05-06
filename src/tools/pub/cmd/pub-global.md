@@ -1,11 +1,9 @@
 ---
 title: pub global
 description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
-permalink: /tools/pub/cmd/pub-global
 ---
 
-_Global_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
@@ -168,7 +166,7 @@ If you are not a package developer, you can skip this section.
 A package can expose some of its scripts as executables
 that can be run directly from the command line. The script or scripts
 must be listed in the
-[`executables`](/tools/pub/pubspec.html#executables)
+[`executables`](/tools/pub/pubspec#executables)
 entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
@@ -254,5 +252,5 @@ For options that apply to all pub commands, see
   the new executable overwrites the previously activated executable.
 
 <aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>

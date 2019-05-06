@@ -1,62 +1,59 @@
 ---
-layout: default
-title: "Overview: Libraries"
-description: "Learn about Dart's core libraries and APIs."
-permalink: /guides/libraries
-short-title: "Libraries"
+title: "Core libraries"
+description: Learn about Dart's core libraries and APIs.
 toc: false
 ---
 
-Dart programs rely on _libraries_.
-Several common libraries are provided for you.
-For example, `dart:core` provides a small but critical set of built-in functionality,
-such as numbers, collections, and strings. Another essential library is
-`dart:async`, which supports asynchronous programming with classes
-like Future and Stream.
-You can get additional libraries by importing them from _packages_.
+Dart has a rich set of core libraries that provide essentials for many everyday
+programming tasks such as working on collections of objects
+(`dart:collection`), making calculations (`dart:math`), and encoding/decoding
+data (`dart:convert`). Additional APIs are available in
+[community contributed packages](/guides/libraries/useful-libraries).
 
-Learn more about using, creating, and sharing Dart libraries and packages
-at the following links.
+The following table lists all of the Dart core libraries.
+Each library works on at least one [platform](/platforms).
 
-<div class="card-grid">
-  <div class="card">
-    <h3><a href="/guides/libraries/library-tour">Tour of Dart Libraries</a></h3>
-    <p>An introduction to the major features in Dart's core libraries.</p>
-  </div>
-
-  <div class="card">
-    <h3><a href="/guides/libraries/useful-libraries">Commonly Used Libraries</a></h3>
-    <p>Useful libraries that you should know about.</p>
-  </div>
-
-  <div class="card">
-    <h3><a href="/guides/libraries/create-library-packages">Create Library Packages</a></h3>
-    <p>How to create your own libraries.</p>
-  </div>
+<div class="table-wrapper" markdown="1">
+|-----------------------------------------------+-------------------------------|
+| Library                                       | Supported platforms   |
+|-----------------------------------------------|-------------------------------|
+| [`dart:async`][dart-async]              <br> Support for asynchronous programming, with classes such as Future and Stream. | All |
+| [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core`. | All |
+| [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8. | All |
+| [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program. | All |
+| [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | JIT<br>Web (experimental, dartdevc&nbsp;only) |
+| [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | Web |
+| [`dart:index_db`][dart-index_db]        <br> Client-side key-value store with support for indexes. | Web |
+| [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | JIT<br>AOT |
+| [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | JIT<br>AOT |
+| [`dart:js`][dart-js]                    <br> Interoperability with JavaScript. [PENDING: obsolete? use package:js instead?] | Web |
+| [`dart:js_util`][dart-js_util]          <br> Utility methods to efficiently manipulate typed JSInterop objects. | Web |
+| [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | All
+| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | JIT (experimental, _not_&nbsp;Flutter) |
+| [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | All |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | Web |
+| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | Web 
+| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL. | Web (obsolete) |
+{:.table .table-striped}
 </div>
 
-## Other resources
-
-API reference documentation
-: * [Dart API:]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-    API docs for dart:* libraries.
-  * [Flutter API:]({{site.flutter_api}})
-    API docs for Flutter libraries.
-  * [Pub site:]({{site.pub}})
-    Published packages and their API docs.
-
-Additional documentation for core libraries
-: * [Futures and Error Handling](/guides/libraries/futures-error-handling):
-    How to handle errors when writing asynchronous code.
-  * [Articles about libraries](/articles/libraries):
-    API topics ranging from zones to streams to converters.
-
-Help on using and implementing packages
-: * [Install Shared Packages](/tutorials/libraries/shared-pkgs):
-    A beginner's guide to installing packages and using their libraries in your
-    code.
-  * [What Not to Commit](/guides/libraries/private-files):
-    Which files, generated by your development tools, should not be committed
-    to a code repo.
-  * [pub](/tools/pub):
-    A tool for managing Dart packages.
+[dart-async]: https://api.dartlang.org/stable/dart-async/dart-async-library.html
+[dart-collection]: https://api.dartlang.org/stable/dart-collection/dart-collection-library.html
+[dart-convert]: https://api.dartlang.org/stable/dart-convert/dart-convert-library.html
+[dart-core]: https://api.dartlang.org/stable/dart-core/dart-core-library.html
+[dart-developer]: https://api.dartlang.org/stable/dart-developer/dart-developer-library.html
+[dart-math]: https://api.dartlang.org/stable/dart-math/dart-math-library.html
+[dart-collection]: https://api.dartlang.org/stable/dart-collection/dart-collection-library.html
+[dart-typed_data]: https://api.dartlang.org/stable/dart-typed_data/dart-typed_data-library.html
+[dart-cli]: https://api.dartlang.org/stable/dart-cli/dart-cli-library.html
+[dart-io]: https://api.dartlang.org/stable/dart-io/dart-io-library.html
+[dart-isolate]: https://api.dartlang.org/stable/dart-isolate/dart-isolate-library.html
+[dart-mirrors]: https://api.dartlang.org/stable/dart-mirrors/dart-mirrors-library.html
+[dart-html]: https://api.dartlang.org/stable/dart-html/dart-html-library.html
+[dart-index_db]: https://api.dartlang.org/stable/dart-index_db/dart-index_db-library.html
+[dart-js]: https://api.dartlang.org/stable/dart-js/dart-js-library.html
+[dart-js_util]: https://api.dartlang.org/stable/dart-js_util/dart-js_util-library.html
+[dart-svg]: https://api.dartlang.org/stable/dart-svg/dart-svg-library.html
+[dart-web_audio]: https://api.dartlang.org/stable/dart-web_audio/dart-web_audio-library.html
+[dart-web_gl]: https://api.dartlang.org/stable/dart-web_gl/dart-web_gl-library.html
+[dart-web_sql]: https://api.dartlang.org/stable/dart-web_sql/dart-web_sql-library.html

@@ -88,6 +88,46 @@ void main() {
     // #enddocregion list-indexing
   });
 
+  test('list-spread', () {
+    // #docregion list-spread
+    var list = [1, 2, 3];
+    var list2 = [0, ...list];
+    assert(list2.length == 4);
+    // #enddocregion list-spread
+  });
+
+  test('list-null-spread', () {
+    // #docregion list-null-spread
+    var list;
+    var list2 = [0, ...?list];
+    assert(list2.length == 1);
+    // #enddocregion list-null-spread
+  });
+
+  test('list-if', () {
+    var promoActive = false;
+    // #docregion list-if
+    var nav = [
+      'Home',
+      'Furniture',
+      'Plants',
+      if (promoActive) 'Outlet'
+    ];
+    // #enddocregion list-if
+    assert(nav.length == 3);
+  });
+
+  test('list-for', () {
+    // #docregion list-for
+    var listOfInts = [1, 2, 3];
+    var listOfStrings = [
+      '#0',
+      for (var i in listOfInts) '#$i'
+    ];
+    assert(listOfStrings[1] == '#1');
+    // #enddocregion list-for
+  });
+
   test('set-length', () {
     var halogens = {
       'fluorine',

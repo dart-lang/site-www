@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}">
+  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
     {% include page-header.html %}
+    {% include navigation-side.html %}
     <main id="page-content">
-      {% include navigation-side.html %}
-      {% include navigation-toc.html %}
+      {% include navigation-toc.html id='site-toc--side' extendToc=true %}
       <article>
         <div class="content">
-          {% if site.show_banner %} {% include banner.html %} {% endif %}
           {% include navigation-sub.html %}
           {% if page.show_breadcrumbs -%}
             {% include shared/breadcrumbs.html %}
@@ -17,6 +16,7 @@
             {% include shared/page-github-links.html %}
             <h1>{{ page.title }}</h1>
           </div>
+          {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
           {{ content | inject_anchors }}
           {% include navigation-sub.html %}
         </div>

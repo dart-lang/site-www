@@ -1,153 +1,246 @@
 ---
 layout: homepage
 title: Dart programming language
-description: Dart is a language optimized for client-side development for web and mobile.
+description: Dart is a client-optimized language for fast apps on any platform
 ---
-<section id="code-sample-section">
-  <div class="container">
+<!-- Hero animation -->
+<section class="dash-header">
+    <video autoplay loop muted>
+        <source src="assets/dash/video/hotreload.webm"
+                type='video/webm;codecs="vp8, vorbis"' />
+        <source src="assets/dash/video/hotreload.mp4"
+                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+    </video>
+</section>
 
-    {% if site.show_banner %}
-    <div class="row banner__frontpage-row">
-      <div class="col-md-12">
-        <div class="content">
-          {% include banner.html %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
-    <div class="row">
-      <div class="col-md-7 col-xl-6">
-        <div id="code-sample" class="content">
-          <a href="https://dartpad.dartlang.org/fae22cffa7b184b4d27cd96dd633a5af"
-            class='codesample__open-in-dartpad no-automatic-external'
-            target='_blank'>Open in DartPad</a>
-          {% include_relative _main-example.html %}
-        </div>
-      </div>
-      <div class="col-md-5 col-xl-6">
-        <div class="content">
-          <div class="frontpage-slogan-with-footnotes">
-            <div class="frontpage-slogan">
-              <h3>
-                Dart helps you craft beautiful, high-quality experiences across all screens, with:
-                <ul>
-                  <li> A <a tabindex="0" role="button" data-toggle="popover" data-content="Dart started out being optimized for web apps, and is evolving to provide great support for mobile apps. Dart also runs on the command line and server-side.">client-optimized</a>
-                    language </li>
-                  <li> Rich, powerful <a tabindex="0" role="button" data-toggle="popover" data-content="For mobile apps, we recommend <a href='https://flutter.io'>Flutter</a>. For desktop apps, <a href='{{site.webdev}}/angular'>AngularDart</a>.">frameworks</a>
-                    </li>
-                  <li> Delightful, flexible <a tabindex="0" role="button" data-toggle="popover" data-content="These range from <a href='/tools'>general-purpose tools</a> to framework-specific ones like the <a href='https://flutter.io/getting-started'><code>flutter</code> tool</a>.">tooling</a>
-                  </li>
-                </ul>
-                <p>
-                  <a href="/guides/get-started" class="btn btn-primary btn-resizable mr-3">Get started</a>
-                  <a href="/install" class="btn btn-light btn-resizable">Install Dart</a>
-                </p>
-              </h3>
-              <p> <em>Click the
-                  <a tabindex="0" role="button" data-toggle="popover" data-content="In the text above and in the code sample, click dotted underlines to get more details.">underlined
-                    text</a>
-                  to learn more.</em> </p>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- Dart tag-line -->
+<section class="dash-header-callout">
+    <img class="made-by" src="assets/dash/2x/made by google@2x.png"/>
+    <div class="callout-title">
+        A client-optimized language for fast apps on any platform
     </div>
 </section>
 
-<section class="card-grid-section">
-  <div class="container">
+<!-- Dart pillars -->
+<section class="dash-dart-features">
+    <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div class="content">
-          <div class="card-grid">
-            <div class="card">
-              <h4><a href="/guides/language/language-tour">Language tour</a></h4>
-              <p>Learn how to use Dart's major language features.</p>
+        <div class="col-md-4 col-sm-12">
+            <div class="feature">
+                <div class="feature-icon"><img src="assets/dash/2x/multiplatform performance op1@2x.png"/></div>
+                <div class="feature-title">Optimized<br/>for UI</div>
+                <div class="feature-desc">Develop with a programming language
+                specialized around the needs of user interface creation
+                </div>
             </div>
-            <div class="card">
-              <h4><a href="/guides/platforms">Platforms</a></h4>
-              <p>Use Dart to build mobile apps, web apps, and more.</p>
-            </div>
-            <div class="card">
-              <h4><a href="{{site.pub}}">Dart packages</a></h4>
-              <p>Discover libraries and tools to help you build apps.</p>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="feature">
+                <div class="feature-icon"><img src="assets/dash/2x/client optimised op1@2x.png"/></div>
+                <div class="feature-title">Productive</br>development</div>
+                <div class="feature-desc">Make changes iteratively: use hot
+                reload to see the result instantly in your running app
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+                <div class="feature">
+                    <div class="feature-icon"><img src="assets/dash/2x/productive dev op1@2x.png"/></div>
+                    <div class="feature-title">Fast on all<br/>platforms</div>
+                    <div class="feature-desc">Compile to ARM & x64 machine
+                    code for mobile,  desktop, and backend. Or compile to JavaScript
+                    for the web
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5 col-xl-4">
-        <div class="content">
-          <h1>Why Dart?</h1>
-          <p class="lead">
-            Developers at Google and elsewhere use Dart to create
-            high-quality, mission-critical apps for iOS, Android, and the web.
-            With features aimed at client-side development,
-            Dart is a great fit for both mobile and web apps.
-          </p>
-
-          <p class="lead">
-	    Dart is free and open source,
-	    developed <a href="https://github.com/dart-lang">on GitHub.</a>
-          </p>
+<!-- Dart pillar details, narrow design -->
+<div class="dart-dash-details container-fluid d-sm-block d-md-none">
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="gallerySix" src="assets/dash/2x/1-1 async await@2x-80.jpg"/>
         </div>
-      </div>
-      <div class="col-md-7 col-xl-8">
-        <div class="content">
-
-          <h2 class="core-goals__first">Productive</h2>
-          <p>
-            Dart’s syntax is clear and concise,
-            its tooling simple yet powerful.
-            Sound typing helps you to identify subtle errors early.
-            Dart has battle-hardened
-            <a href="/guides/libraries/library-tour">core libraries</a> and an
-            <a href="{{site.pub}}">ecosystem</a> of
-            thousands of packages.
-          </p>
-
-          <h2>Fast</h2>
-          <p>
-            Dart provides optimizing ahead-of-time compilation to get
-            predictably high performance and fast startup across
-            mobile devices and the web.
-          </p>
-
-          <h2>Portable</h2>
-          <p>
-            Dart compiles to ARM and x86 code, so that Dart mobile apps
-            can run natively on iOS, Android, and beyond.
-            For web apps, Dart transpiles to JavaScript.
-          </p>
-
-          <h2>Approachable</h2>
-          <p>
-            Dart is familiar to many existing developers,
-            thanks to its unsurprising object orientation and syntax.
-            If you already know C++, C#, or Java, you can be
-            productive with Dart in just a few days.
-          </p>
-
-          <h2>Reactive</h2>
-          <p>
-            Dart is well-suited to reactive programming, with support for
-            managing short-lived objects—such as UI widgets—through
-            Dart’s fast object allocation and
-	    <a href="https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30">generational garbage collector.</a>
-            Dart supports asynchronous programming through
-            language features and APIs that use
-            <a href="/guides/libraries/library-tour#future">Future</a> and
-            <a href="/guides/libraries/library-tour#stream">Stream</a> objects.
-          </p>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/></div>
+                <div class="content-feature">Optimized for UI</div>
+                <div class="content-desc" id="gallerySix">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            for user interfaces containing event-driven code, paired with
+                            <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            A programming language optimized for building user
+                            interfaces with features such as the <a href="/guides/language/language-tour#spread-operator">spread operator</a> for
+                            expanding collections, and <a href="/guides/language/language-tour#collection-operators">collection if</a> for
+                            customizing UI for each platform
+                        </li>
+                        <li data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            A programming language that is easy to learn, with a
+                            <a href="/samples">familiar syntax</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryFive" src="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/productive dev light op1@2x.png"/></div>
+                <div class="content-feature">Productive Development</div>
+                <div class="content-desc" id="galleryFive">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            Make changes to your source code iteratively, using
+                            <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">hot reload</a>
+                            to instantly see the effect in the running app
+                        </li>
+                        <li data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            Write code using a flexible type system with rich
+                            static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                            tooling</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            Do <a href="https://flutter.github.io/devtools/timeline" class="no-automatic-external">profiling</a>,
+                            <a href="https://flutter.github.io/devtools/logging" class="no-automatic-external">logging</a>,
+                            and <a href="https://flutter.github.io/devtools/debugger#getting-started" class="no-automatic-external">debugging</a>
+                            with your code editor of choice
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryFour" src="assets/dash/2x/3-1 aot compile@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/client optimised light op1@2x.png"/></div>
+                <div class="content-feature">Fast on all platforms</div>
+                <div class="content-desc" id="galleryFour">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/3-1 aot compile@2x-80.jpg">
+                            <a href="/platforms">AOT-compile</a> apps to native
+                            machine code for instant startup
+                        </li>
+                        <li data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            Target the web with complete, mature, fast
+                            <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            Run <a href="/tutorials/server/httpserver">backend code</a>
+                            supporting your app, written using a single programming language
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Dart pillar details, wide design -->
+<div class="dart-dash-details container-fluid d-none d-sm-none d-md-block">
+    <section class="row dash-row">
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/> </div>
+                <div class="content-feature">Optimized for UI</div>
+                <div class="content-desc" id="galleryOne">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            for user interfaces containing event-driven code, paired with
+                            <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            A programming language optimized for building user
+                            interfaces with features such as the <a href="/guides/language/language-tour#spread-operator">spread operator</a> for
+                            expanding collections, and <a href="/guides/language/language-tour#collection-operators">collection if</a> for
+                            customizing UI for each platform
+                        </li>
+                        <li data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            A programming language that is easy to learn, with a
+                            <a href="/samples">familiar syntax</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryOne" src="assets/dash/2x/1-1 async await@2x-80.jpg"/>
+        </div>
+    </section>
+
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image"><img class="galleryTwo"
+                src="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container content-container-left">
+                <div class="content-icon"><img src="assets/dash/2x/productive dev op1@2x.png"/></div>
+                <div class="content-feature">Productive development</div>
+                <div class="content-desc" id="galleryTwo">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            Make changes to your source code iteratively, using
+                            <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">hot reload</a>
+                            to instantly see the effect in the running app
+                        </li>
+                        <li data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            Write code using a flexible type system with rich
+                            static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                            tooling</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            Do <a href="https://flutter.github.io/devtools/timeline" class="no-automatic-external">profiling</a>,
+                            <a href="https://flutter.github.io/devtools/logging" class="no-automatic-external">logging</a>,
+                            and <a href="https://flutter.github.io/devtools/debugger#getting-started" class="no-automatic-external">debugging</a>
+                            with your code editor of choice
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row dash-row">
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/></div>
+                <div class="content-feature">Fast on all platforms</div>
+                <div class="content-desc" id="galleryThree">
+                    <ul class="selector">
+                        <li class="highlight"  data-banner="assets/dash/2x/3-1 aot compile@2x-80.jpg">
+                            <a href="/platforms">AOT-compile</a> apps to native
+                            machine code for instant startup
+                        </li>
+                        <li data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            Target the web with complete, mature, fast
+                            <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
+                        </li>
+                        <li data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            Run <a href="/tutorials/server/httpserver">backend code</a>
+                            supporting your app, written using a single programming language
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image"><img class="galleryThree"
+                src="assets/dash/2x/3-1 aot compile@2x-80.jpg"/>
+        </div>
+    </section>
+</div>

@@ -1,11 +1,10 @@
 ---
-layout: default
-title: "What Not to Commit"
-description: "Your development tools generate a bunch of files. Not all of them should be committed."
+title: What not to commit
+description: Your development tools generate a bunch of files. Not all of them should be committed.
 ---
 
 When you put Dart source code in a repository—using the
-[pub](/tools/pub) tool, [GitHub,](https://github.com/)
+[pub tool](/tools/pub/cmd), [GitHub,](https://github.com/)
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
@@ -101,7 +100,7 @@ see the GitHub help page
 
 The `.packages` file contains a list of dependencies used by your application.
 Users of your code should generate their own packages information
-using [pub get](/tools/pub/get-started#installing-packages).
+using [pub get](/guides/packages#getting-packages).
 
 {% include packages-dir.html %}
 
@@ -130,4 +129,4 @@ dart2js -o main.dart.js main.dart
 
 For more information on generating and debugging
 JavaScript source for Dart apps, see the
-[dart2js documentation]({{site.webdev}}/tools/dart2js).
+[dart2js documentation](/tools/dart2js).

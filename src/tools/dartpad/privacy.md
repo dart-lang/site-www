@@ -1,5 +1,5 @@
 ---
-title: Privacy Notice
+title: Privacy notice
 description: How Google uses the source code that you enter into DartPad.
 ---
 

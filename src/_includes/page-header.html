@@ -1,4 +1,4 @@
-<header id="page-header">
+<header id="page-header" class="site-header">
   {% include navigation-main.html %}
   {% if page.obsolete == true %}
   <div class="alert alert-warning">
@@ -8,3 +8,4 @@
   </div>
   {% endif %}
 </header>
+{% if site.show_banner %} {% include banner.html %} {% endif %}

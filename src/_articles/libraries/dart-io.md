@@ -1,6 +1,6 @@
 ---
-title: "An Introduction to the dart:io Library"
-description: "An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM."
+title: "An introduction to the dart:io library"
+description: An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM.
 original-date: 2012-03-01
 date: 2018-09-04
 category: libraries

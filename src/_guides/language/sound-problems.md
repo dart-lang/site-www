@@ -1,5 +1,5 @@
 ---
-title: "Fixing Common Type Problems"
+title: Fixing common type problems
 description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
@@ -7,9 +7,9 @@ description: Common type issues you may have and how to fix them.
 <?code-excerpt plaster="none"?>
 
 If you're having problems with type checks,
-this page can help. To learn more, read
-[Dart's Type System](/guides/language/sound-dart)
-and [other resources](/guides/language/sound-dart#other-resources).
+this page can help. To learn more, read about
+[Dart's type system](/guides/language/sound-dart),
+and see [these other resources](/guides/language/sound-dart#other-resources).
 
 <aside class="alert alert-info" markdown="1">
 **Help us improve this page!**
@@ -638,7 +638,6 @@ The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
 
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
-[dartanalyzer README]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [implicit casts]: /guides/language/analysis-options#enabling-additional-type-checks
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html

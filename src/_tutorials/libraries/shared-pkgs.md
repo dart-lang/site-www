@@ -1,5 +1,5 @@
 ---
-title: Install Shared Packages
+title: Install shared packages
 description: Packages are bundles of source code, tools, and resources that help you to organize and share code
 ---
 
@@ -146,9 +146,9 @@ which is available at the [Pub site]({{site.pub}}).
       test: ^1.0.0
     ```
 
-See [Pub Versioning Philosophy](/tools/pub/versioning)
-for details of what version numbers mean,
-and how you can format them.
+For details of what version numbers mean
+and how you can format them,
+see [Pub versioning philosophy](/tools/pub/versioning).
 
 The [Pub site]({{site.pub}})
 is the primary public repository for Dart packages.
@@ -301,6 +301,6 @@ use the `package:` prefix.
 * Dart developers share packages at the [Pub site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
-* See the [pub documentation](/tools/pub)
+* See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
 

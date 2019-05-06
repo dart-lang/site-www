@@ -4,7 +4,7 @@ description: The tool that lets you interactively play with Dart in a browser.
 ---
 
 <a href="{{site.custom.dartpad.direct-link}}"
-target="_blank">DartPad ({{site.dartpad}})</a>
+target="_blank">DartPad (dartpad.dartlang.org)</a>
 is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Here's what DartPad looks like:
@@ -24,7 +24,7 @@ that work with web apps; it doesn't support
 libraries from [packages.]({{site.pub}})
 If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
 If you want to use a package, get the SDK for a
-[platform](/guides/platforms) that the package supports.
+[platform](/platforms) that the package supports.
 
 ## Getting started
 

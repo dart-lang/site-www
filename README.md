@@ -1,9 +1,9 @@
-# The Dart language site (www.dartlang.org)
+# The Dart language site (dart.dev)
 
 [![Build Status SVG][]][Repo on Travis]
 [![first-timers SVG][]][first-timers]
 
-The www.dartlang.org site, built with [Jekyll][] and hosted on [Firebase][].
+The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 

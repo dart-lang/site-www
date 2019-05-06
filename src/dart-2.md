@@ -1,5 +1,5 @@
 ---
-title: Dart 2
+title: Dart 2 migration guide
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
 
@@ -160,19 +160,19 @@ environment:
   using Travis to perform continuous integration (CI) testing
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
-[dartdevc]: {{site.webdev}}/tools/dartdevc
+[dartdevc]: /tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
-[dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
+[dartanalyzer]: /tools/dartanalyzer
 [flutter package upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
-[pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
+[pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
-[build_runner web]: {{site.webdev}}/tools/build_runner
+[build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
@@ -192,4 +192,4 @@ environment:
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
-[webdev dart2]: {{site.webdev}}/dart-2
+[webdev dart2]: /web/dart-2

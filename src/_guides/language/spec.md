@@ -1,5 +1,6 @@
 ---
-title: Dart Language Specification
+title: Dart language specification
+short-title: Language specification
 description: The formal specification for the Dart language.
 ---
 
@@ -18,14 +19,14 @@ backward-compatible. For details, see the [Dart 2 page](/dart-2).
 
 ### In-progress specification
 
-New language features are typically described using informal language feature specifications.
-These are located inside the dart-lang/language repo:
-  * [accepted](https://github.com/dart-lang/language/tree/master/accepted): Accepted informal proposals
-  * [working](https://github.com/dart-lang/language/tree/master/working): Drafts of potential features
-
 The in-progress formal Dart language specification is written as a
-[LaTeX file](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex),
-and is available as a [draft specification in PDF format](https://spec.dart.dev/DartLangSpecDraft.pdf).
+[LaTeX file,](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
+
+New language features are typically described using informal language feature specifications in the dart-lang/language repo:
+  * [Accepted informal proposals](https://github.com/dart-lang/language/tree/master/accepted)
+  * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
+
 
 ## Dart 1.x
 

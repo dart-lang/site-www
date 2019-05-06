@@ -1,13 +1,30 @@
 {% unless page.toc == false or page.layout == 'homepage' %}
-<div id="toc">
-  <div class="content">
-    <header class="h4 text-uppercase">
-      On this page
-      <a title="Back to top" class="back-to-top float-right mr-3">
-        <i class="fas fa-angle-up"></i>
-      </a>
-    </header>
-    {{ content | toc_only }}
-  </div>
+{% assign toc = content | toc_only %}
+{% assign itemCount = toc | split: 'class="toc-entry' | size %}
+
+{% assign collapsible = false %}
+{% if include.collapsible and itemCount > 10 %}
+  {% assign collapsible = true %}
+{% endif %}
+
+{% if collapsible %}
+  {% assign topStyle = 'toc-collapsible toc-collapsed' %}
+{% endif %}
+{% if include.extendToc -%}
+  {% assign toc = toc | replace: '<ul>', '<ul class="nav">' %}
+  {% assign toc = toc | replace: '<ul class="section-nav">', '<ul class="section-nav nav">' %}
+  {% assign toc = toc | replace: 'class="toc-entry', 'class="toc-entry nav-item' %}
+  {% assign toc = toc | replace: '<a href="#', '<a class="nav-link" href="#' %}
+{% endif -%}
+<div id="{{include.id}}" class="site-toc {{topStyle}}">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    {% if collapsible %}
+      <span class="{{include.id}}__toggle toc-toggle-down"><i class="fas fa-chevron-down fa-m"></i></span>
+      <span class="{{include.id}}__toggle toc-toggle-up"><i class="fas fa-chevron-up fa-m"></i></span>
+    {% endif %}
+  </header>
+  {{ toc }}
 </div>
 {% endunless %}

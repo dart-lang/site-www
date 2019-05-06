@@ -1,11 +1,11 @@
 ---
-title: Sample Code
+title: Language samples
 description: Examples of idiomatic Dart with links to larger examples.
 ---
 
 This collection is not exhaustive&mdash;it's just a brief
-introduction to the language for people who like to learn by example. You may
-also want to check out the language and library tours.
+introduction to the language for people who like to learn by example.
+You might also want to check out the language and library tours.
 
 <div class="card-grid">
   <div class="card">
@@ -399,7 +399,7 @@ Error and Exception.
 ## Other topics
 
 Many more code samples are in the
-[Language Tour](/guides/language/language-tour) and the
-[Library Tour](/guides/libraries/library-tour).
-Also see the [Dart API reference]({{site.dart_api}}),
+[language tour](/guides/language/language-tour) and the
+[library tour](/guides/libraries/library-tour).
+Also see the [Dart API reference,]({{site.dart_api}})
 which often contains examples.

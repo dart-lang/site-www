@@ -1,8 +1,6 @@
 ---
-layout: default
-title: "Dart Cheatsheet Codelab"
-description: "Interactively learn (or relearn) some of Dart's unique features."
-permalink: /codelabs/dart-cheatsheet
+title: Dart cheatsheet codelab
+description: Interactively learn (or relearn) some of Dart's unique features.
 ---
 
 <style>
