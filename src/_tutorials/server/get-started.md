@@ -26,7 +26,7 @@ Click run {% asset red-run.png alt="" %} to run the app;
 the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to change the greeting
 to use another language. To get the full DartPad experience,
-<a href="https://dartpad.dartlang.org/27e044ec9e2957d9c5c7062871ce8bf3"
+<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3"
    target="_blank">open the example at dartpad.dartlang.org.</a>
 
 <iframe
@@ -177,7 +177,7 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
-[stagehand]: https://pub.dartlang.org/packages/stagehand
+[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour

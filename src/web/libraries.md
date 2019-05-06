@@ -1,5 +1,5 @@
 ---
-title: "Web libraries and packages"
+title: Web libraries and packages
 short-title: Web libraries
 description: Libraries and packages that can help you write Dart web apps.
 ---
@@ -12,7 +12,7 @@ such as those in the [AngularDart][] framework.
 
 [Dart SDK]: /tools/sdk
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[web packages]: https://pub.dartlang.org/web
+[web packages]: {{site.pub}}/web
 
 
 ## SDK libraries

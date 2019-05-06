@@ -1,5 +1,5 @@
 ---
-title: "Core libraries"
+title: Core libraries
 description: Learn about Dart's core libraries and APIs.
 toc: false
 ---
