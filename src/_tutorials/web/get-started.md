@@ -20,7 +20,7 @@ the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. To get the full DartPad experience,
 which includes the web UI that the app produces,
-<a href="http://dartpad.dartlang.org/2a24f3f042f1c86cf91621c30adce771"
+<a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
    target="_blank">open the example at dartpad.dartlang.org.</a>
 
 <iframe

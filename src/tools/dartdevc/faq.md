@@ -202,12 +202,12 @@ You can find source code and more documentation in the Dart SDK repo under
 [`/pkg/dev_compiler`.](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)
 
 [build]: /tools/webdev#build
-[build_runner]: {{site.dartlang}}/tools/build_runner
+[build_runner]: /tools/build_runner
 [build_web_compilers]: https://github.com/dart-lang/build/tree/master/build_web_compilers
 [dart2js]: /tools/dart2js
 [dartdevc issue]: https://github.com/dart-lang/sdk/issues/new?title=[dartdevc]%20
-[runtime errors]: https://www.dartlang.org/guides/language/sound-problems#runtime-errors
+[runtime errors]: /guides/language/sound-problems#runtime-errors
 [serve]: /tools/webdev#serve
 [test]: /tools/webdev#test
-[type safety checks]: https://www.dartlang.org/guides/language/sound-dart
+[type safety checks]: /guides/language/sound-dart
 [webdev]: /tools/webdev

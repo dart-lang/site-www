@@ -761,7 +761,7 @@ Here are some more complex examples of using zones.
 
 The task_interceptor example
 : The toy zone in
-  [task_interceptor.dart](https://github.com/dart-lang/dartlang.org/blob/master/src/tests/site/articles/zones/task_interceptor.dart)
+  [task_interceptor.dart](https://github.com/dart-archive/www.dartlang.org/blob/master/src/tests/site/articles/zones/task_interceptor.dart)
   intercepts `scheduleMicrotask`, `createTimer`, and `createPeriodicTimer`
   to simulate the behavior of the Dart primitives
   without yielding to the event loop.
