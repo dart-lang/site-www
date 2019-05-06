@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "www-dartlang-org",
+    "default": "dart-dev",
     "dev": "dartlang-org-dev",
     "staging-0": "dartlang-org-staging-0",
     "staging-1": "dartlang-org-staging-1",
