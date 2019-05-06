@@ -1,5 +1,6 @@
 language: dart
-dart: [stable, dev]
+# dart: [stable, dev]
+dart: [stable/raw/2.3.0, dev]
 
 cache:
   timeout: 300
@@ -23,9 +24,6 @@ matrix:
   # allow_failures:
     # - env: TASK="./tool/analyze-and-test-examples.sh"
       # dart: stable
-  allow_failures:
-    - env: TASK="./tool/check-code.sh"
-      dart: stable
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
@@ -50,14 +48,14 @@ after_script:
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"
 
-deploy:
-  - provider: script
-    script: ./tool/shared/deploy.sh --robots ok default
-    skip_cleanup: true
-    on:
-      repo: dart-lang/site-www
-      branch: master
-      condition: $TASK == *build*
+# deploy:
+#   - provider: script
+#     script: ./tool/shared/deploy.sh --robots ok default
+#     skip_cleanup: true
+#     on:
+#       repo: dart-lang/site-www
+#       branch: master
+#       condition: $TASK == *build*
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:

@@ -1,14 +1,14 @@
 ---
-title: Dart's Type System
+title: The Dart type system
 description: Why and how to write sound Dart code.
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
-Dart is type safe: it uses a combination of static type checking and
+The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
 ensure that a variable's value always matches the variable's static type.
 Although _types_ are mandatory, type _annotations_ are optional
-because Dart performs [type inference](#type-inference).
+because of [type inference](#type-inference).
 
 This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the
@@ -24,7 +24,7 @@ For a full introduction to the Dart language, including types, see the
 </aside>
 
 One benefit of static type checking is the ability to find bugs
-at compile time using Dart's [static analyzer.][analyzer]
+at compile time using Dart's [static analyzer.][analysis]
 
 You can fix most static analysis errors by adding type annotations to generic
 classes. The most common generic classes are the collection types
@@ -508,17 +508,17 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 
 The following resources have further information on sound Dart:
 
-* [Fixing Common Type Problems](/guides/language/sound-problems) -
+* [Fixing common type problems](/guides/language/sound-problems) -
   Errors you may encounter when
   writing sound Dart code, and how to fix them.
 * [Dart 2](/dart-2) - How to update Dart 1.x code to Dart 2.
-* [Customize Static Analysis](/guides/language/analysis-options) - How
+* [Customizing static analysis][analysis] - How
   to set up and customize the analyzer and linter using an analysis
   options file.
 
 
 [analysis_options.yaml]: /guides/language/analysis-options
-[analyzer]: /tools/analyzer
+[analysis]: /guides/language/analysis-options
 [Dart VM]: /server/tools/dart-vm
-[dartdevc]: {{site.webdev}}/tools/dartdevc
+[dartdevc]: /tools/dartdevc
 [strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode

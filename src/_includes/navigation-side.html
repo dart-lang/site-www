@@ -1,20 +1,28 @@
 <div id="sidenav" class="">
-  <div class="content">
-    <a href="/" class="brand" title="{{ site.title }}">
-      <img src="{% asset shared/dart/logo+text/horizontal/default.svg @path %}" alt="{{ site.title }}">
-    </a>
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
 
-    <div class="sidenav__search">
-      <p>
-        <a href="/search">Search <i class="icon icon-search"></i></a>
-      </p>
-    </div>
-
-    <ul>
-      <li>
-        <a class="btn btn-light{% if page.url == '/guides/get-started' %} active{% endif %}" href="/guides/get-started">Get Started</a>
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/platforms" class="nav-link
+          {%- if page_url_path contains '/*/platforms/' %} active {%- endif -%}">Platforms</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link
+          {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dartlang.org" class="nav-link
+          {%- if page_url_path contains '/*/#dartpad' %} active {%- endif -%}">Try Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link
+          {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/dart-2/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}">Docs</a>
       </li>
     </ul>
-    {% include shared/sidenav.html list=site.data.side-nav %}
+
+    {% include shared/sidenav-level-1.html nav=site.data.side-nav %}
   </div>
 </div>

@@ -1,20 +1,16 @@
 ---
-layout: default
 title: Articles
-description: "Read about the Dart language and tools with this collection of articles, style guides, and more."
-permalink: /articles
+description: Read early articles about the Dart language and libraries.
 ---
 
 Read these articles for insight into the Dart language and its libraries.
+To find newer articles, see the
+[Dart publication on medium.com.](https://medium.com/dartlang)
 
 Also see:
 
 * [Effective Dart](/guides/language/effective-dart)
 * [Tutorials](/tutorials)
-* [Articles about server-side Dart](/articles/server)
-* [Articles about Dart web development]({{site.webdev}}/articles)
-
-{% include article_index_warning.md %}
 
 <div class="break-80">
   <h2>Language details</h2>

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Articles: Language Details"
+title: "Articles: language details"
 description: Articles that clarify aspects of the Dart language.
 toc: false
 ---
@@ -15,9 +15,3 @@ Read these articles for insight into the Dart language.
     {% endfor %}
   </ul>
 </div>
-
-Also see:
-
-* [Libraries articles](/articles/libraries)
-* [Server-side Dart articles](/articles/server)
-* [Articles about Dart web development]({{site.webdev}}/articles)

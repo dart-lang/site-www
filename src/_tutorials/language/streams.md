@@ -1,9 +1,9 @@
 ---
-title: "Asynchronous Programming: Streams"
+title: "Asynchronous programming: streams"
 description: Learn how to consume single-subscriber and broadcast streams.
 prevpage:
   url: /tutorials/language/futures
-  title: "Asynchronous Programming: Futures"
+  title: "Asynchronous programming: futures"
 ---
 
 <div class="mini-toc" markdown="1">

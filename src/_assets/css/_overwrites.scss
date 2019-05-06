@@ -5,11 +5,6 @@ dd {
 	margin-bottom: 15px;
 }
 
-/* Make code font more noticeable (without being obnoxious). */
-code {
-	color: #008f83
-}
-
 /* Make code-font links look like links. Should also change the hover color. */
 a code {
     color: $default-link
@@ -18,17 +13,6 @@ a code {
 /* Make links in page footer white, not blue. */
 #page-footer h4 a {
 	color: #fff;
-}
-
-// SIDE NAV
-
-.sidenav__search {
-	margin-bottom: 20px;
-	display: block;
-
-	@include media-breakpoint-up(sm) {
-		display: none;
-	}
 }
 
 // FRONT-PAGE RELATED
@@ -66,12 +50,12 @@ body.homepage #code-sample {
 body.homepage {
 	#code-sample-section {
 		pre {
-			font-size: $font-size-base * 0.8;
+			font-size: $font-size-base * 0.91;
 			@include media-breakpoint-up(md) {
-				font-size: $font-size-base * 0.7;
+				font-size: $font-size-base * 0.8;
 			}
 			@include media-breakpoint-up(lg) {
-				font-size: $font-size-base * 0.8;
+				font-size: $font-size-base * 0.91;
 			}
 			@include front-page-first-section-height;
 			overflow: auto;
@@ -169,7 +153,7 @@ body.homepage .chip-grid-section {
 	}
 	p {
 		color: $gray-base;
-		font-size: $font-size-base * 0.8;
+		font-size: $font-size-base * 0.91;
 		margin-bottom: 0;
 	}
 }

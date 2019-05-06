@@ -1,12 +1,12 @@
 ---
-layout: default
-permalink: /tools/pub/cmd
-title: "Pub Commands"
-description: "Pub, a package management tool for Dart, supports a variety of commands."
+title: The pub tool
+description: Pub, a package management tool for Dart, supports a variety of commands.
 ---
 
-The [pub tool](/tools/pub) has commands for managing packages
+The `pub` tool has commands for managing packages
 and for deploying packages and command-line apps.
+For general information about using the pub package manager, see
+[How to use packages](/guides/packages).
 
 {% include flutter-packages.md %}
 

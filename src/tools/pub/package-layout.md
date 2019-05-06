@@ -1,10 +1,9 @@
 ---
-title: Pub Package Layout Conventions
+title: Package layout conventions
 description: Learn more about the directory structure used by Dart's package management tool, pub.
-permalink: /tools/pub/package-layout
 ---
 
-When you build a [pub](/tools/pub) package,
+When you build a [pub package](/guides/packages),
 we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
@@ -105,7 +104,7 @@ The open source community has a few other files that commonly appear at
 the top level of a project: `LICENSE`, `AUTHORS`, etc. If you use any
 of those, they can go in the top level of the package too.
 
-For more information, see [Pubspec Format](/tools/pub/pubspec).
+For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## README
 
@@ -204,7 +203,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
 For the best performance when developing with
-[dartdevc,]({{site.webdev}}/tools/dartdevc)
+[dartdevc,](/tools/dartdevc)
 put [implementation files](#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.

@@ -3,7 +3,6 @@ title: Zones
 description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
 date: 2014-03-03
 category: libraries
-css: [/articles/styles.css]
 obsolete: true
 ---
 
@@ -740,10 +739,7 @@ that you can use for functionality such as profiling.
 
 ### More resources
 
-[The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
-: Learn more about scheduling tasks
-  using Future, Timer, and `scheduleMicrotask()`.
-
+{% comment %} PENDING: add link to event loop discussion {% endcomment %}
 Zone-related API documentation
 : Read the docs for
   [runZoned()]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),

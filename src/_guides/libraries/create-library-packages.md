@@ -1,24 +1,19 @@
 ---
-layout: default
-title: "Create Library Packages"
-description: "Learn how to create library packages in Dart."
+title: Creating packages
+description: Learn how to create library packages in Dart.
 ---
 
-Libraries are a great way to create modular code that can
-be easily shared. In the Dart ecosystem,
-libraries are created and distributed as packages.
-Dart has two kinds of packages:
-[_application_ packages](/tools/pub/glossary#application-package),
-which may include local libraries, and
+The Dart ecosystem uses [packages][]
+to share software such as libraries and tools.
+This page tells you how to create a package,
+with a focus on the most common kind of package,
 [_library_ packages](/tools/pub/glossary#library-package).
 
-This document explains how to create a library package
-and points you to further resources.
-For information on _using_ libraries, see
-[Install Shared Packages](/tutorials/libraries/shared-pkgs) or the
-language tour's
-[Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
-section.
+{% comment %}
+TODO: Add coverage of packages that contain tools.
+{% endcomment %}
+
+[packages]: /guides/packages
 
 ## What makes a library package
 
@@ -121,7 +116,7 @@ This adapter handles HttpRequest objects from dart:io.
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
 For the best performance when developing with
-[dartdevc,]({{site.webdev}}/tools/dartdevc)
+[dartdevc,](/tools/dartdevc)
 put [implementation
 files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
@@ -183,11 +178,9 @@ public use go into the `tool` directory.
 
 Other files that are required if you publish your library to the
 Pub site, such as a README and a CHANGELOG, are
-described in [Publishing a Package](/tools/pub/publishing).
-Also see
-[Pub Package Layout Conventions](/tools/pub/package-layout)
-for further information on how to organize a package directory
-structure.
+described in [Publishing a package](/tools/pub/publishing).
+For more information on how to organize a package directory,
+see the [pub package layout conventions](/tools/pub/package-layout).
 
 ## Documenting a library
 
@@ -205,7 +198,7 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation]({{site.pub-api}}/shelf/latest).
+[shelf documentation.]({{site.pub-api}}/shelf/latest)
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -221,8 +214,8 @@ we recommend sharing it on the [Pub site.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
-For example, see the page for the [shelf package]({{site.pub}}/packages/shelf).
-See [Publishing a Package](/tools/pub/publishing)
+For example, see the page for the [shelf package.]({{site.pub}}/packages/shelf)
+See [Publishing a package](/tools/pub/publishing)
 for details on how to prepare your package for publishing.
 
 The pub site not only hosts your package,
@@ -250,17 +243,17 @@ Use the following resources to learn more about library packages:
 * [Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
   in the [language tour](/guides/language/language-tour) covers
   using library files.
-* The [pub](/tools/pub) documentation is useful, particularly
-  [Pub Package Layout Conventions](/tools/pub/package-layout).
-* [What Not to Commit](private-files)
+* The [package](/guides/packages) documentation is useful, particularly the
+  [package layout conventions](/tools/pub/package-layout).
+* [What not to commit](private-files)
   covers what should not be checked into a source code repository.
 * The newer library packages under the
   [dart-lang](https://github.com/dart-lang) organization tend
   to show best practices. Consider studying these examples:
-  [dart_style](https://github.com/dart-lang/dart_style),
-  [path](https://github.com/dart-lang/path),
-  [shelf](https://github.com/dart-lang/shelf),
-  [source_gen](https://github.com/dart-lang/source_gen), and
-  [test](https://github.com/dart-lang/test).
+  [dart_style,](https://github.com/dart-lang/dart_style)
+  [path,](https://github.com/dart-lang/path)
+  [shelf,](https://github.com/dart-lang/shelf)
+  [source_gen,](https://github.com/dart-lang/source_gen) and
+  [test.](https://github.com/dart-lang/test)
 
 [dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc

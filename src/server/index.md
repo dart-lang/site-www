@@ -1,11 +1,16 @@
 ---
-title: Server-Side Dart
-description: All things relating to command-line and server-side apps.
+title: Command-line & server apps
+description: All things relating to command-line and server apps.
 toc: false
 ---
 
 This page points to tools and documentation
-that can help you develop command-line and server-side apps.
+that can help you develop command-line and server apps.
+
+<p class="text-center">
+  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Get started</a>
+</p>
+
 
 ## Tools
 
@@ -20,26 +25,26 @@ that can help you develop command-line and server-side apps.
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/tools/sdk#install) to get the core Dart
-  libraries and [tools](/server/tools).
+  libraries and [tools](/tools).
 
 More tools
-: The Dart [Tools](/tools) page links to generally useful tools,
+: The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
 
 ## Tutorials
 
 You might find the following tutorials helpful.
 
-[Get Started](/tutorials/server/get-started)
-: Shows how to write a basic Dart script.
+[Get started](/tutorials/server/get-started)
+: Learn how to use the Dart SDK to develop command-line and server apps.
 
 [gRPC Quickstart](https://grpc.io/docs/quickstart/dart.html)
 : Walks you through running and modifying a client-server example that uses the gRPC framework.
 
-[Write Command-Line Apps](/tutorials/server/cmdline)
+[Write command-line apps](/tutorials/server/cmdline)
 : Introduces dart:io and the args package.
 
-[Write HTTP Clients & Servers](/tutorials/server/httpserver)
+[Write HTTP clients & servers](/tutorials/server/httpserver)
 : Features dart:io and the http_server package.
 
 ## More resources
@@ -47,13 +52,7 @@ You might find the following tutorials helpful.
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 : API reference for dart:* libraries.
 
-[A Tour of the dart:io Library](/server/io-library-tour)
+[dart:io section of the library tour](/guides/libraries/library-tour/#dartio)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   [Flutter mobile apps.]({{site.flutter}})
-
-[Articles: Server-Side Dart](/articles/server)
-: A collection of articles covering topics such as benchmarking,
-  numeric computation, and SIMD.
-
-

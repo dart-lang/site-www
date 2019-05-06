@@ -1,0 +1,18 @@
+- name: Language samples
+  description: A brief, example-based introduction to the Dart language.
+  url: /samples
+- name: Language tour
+  description: A more thorough (yet still example-based) introduction to the Dart language.
+  url: /guides/language/language-tour
+- name: Effective Dart
+  description: Best practices for building consistent, maintainable, efficient Dart code.
+  url: /guides/language/effective-dart
+- name: Library tour
+  description: An example-based introduction to the major features in the Dart SDK's core libraries.
+  url: /guides/libraries/library-tour
+- name: Dart SDK
+  description: What's in the SDK, and how to install it.
+  url: /tools/sdk
+- name: Futures & async-await
+  description: How to write asynchronous Dart code that uses futures and the async and await keywords.
+  url: /tutorials/language/futures
