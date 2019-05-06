@@ -78,7 +78,7 @@ but they can help make your app more reliable and responsive.
 
 #### Use the pwa package to make your app work offline
 
-The [pwa package](https://pub.dartlang.org/packages/pwa) simplifies the task of
+The [pwa package](https://pub.dev/packages/pwa) simplifies the task of
 making your app work with limited or no connectivity.
 For information on using this package, see
 [Making a Dart web app offline-capable: 3 lines of code.](https://medium.com/dartlang/making-a-dart-web-app-offline-capable-3-lines-of-code-e980010a7815)

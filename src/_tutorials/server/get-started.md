@@ -177,7 +177,7 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
-[stagehand]: https://pub.dartlang.org/packages/stagehand
+[stagehand]: https://pub.dev/packages/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
