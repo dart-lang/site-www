@@ -131,6 +131,7 @@ with the `--external` (or `-e`, for short) option.
 With this tool you can check any URL by simply specifying it as a parameter:
 
 ```
+pub global activate linkcheck
 linkcheck https://www.dartlang.org
 ```
 
@@ -148,7 +149,7 @@ use these commands:
 
 ```
 ./tool/serve.sh &
-pub run linkcheck -i deploy/urls/old_site_urls.txt
+linkcheck -i deploy/urls/old_site_urls.txt
 ```
 
 ## Staging the site
