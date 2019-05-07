@@ -4073,11 +4073,6 @@ Future main() [!async!] {
 For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
-Also see the articles
-[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
-and
-[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
-and the [Dart language specification][].
 
 
 <a id="generator"></a>
@@ -4127,9 +4122,6 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 {% endprettify %}
 
-For more information about generators, see the article
-[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async).
-
 
 ## Callable classes
 
@@ -4165,8 +4157,6 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=405379bacf30335f3aed&vertica
     style="border: 1px solid #ccc;">
 </iframe>
 
-For more information on treating classes like functions, see
-[Emulating Functions in Dart](/articles/language/emulating-functions).
 
 ## Isolates
 
