@@ -12,11 +12,11 @@ $dash-header-bg: #17212f;
   font-family: "Google Sans", "Roboto", sans-serif;
   background-color: $dash-callout;
   text-align: center;
-  padding: 70px 0 70px 0 !important;
+  padding: 64px 0 64px 0 !important;
 
   .callout-title {
     font-size: 28px;
-    color: $dash-sub-grey;
+    color: white;
 
     @include media-breakpoint-down(md) {
       font-size: 18px;
@@ -27,6 +27,8 @@ $dash-header-bg: #17212f;
 
   .made-by {
     width: 180px;
+    margin-top:27px;
+    opacity: 0.5;
   }
 }
 
@@ -109,7 +111,7 @@ $dash-header-bg: #17212f;
 
     .content-feature {
       font-size: 43px;
-      margin-bottom: 10px;
+      margin-bottom: 34px;
       line-height: 1.2;
       color: $dash-dark-black;
       @include media-breakpoint-down(md) {
@@ -203,6 +205,6 @@ $dash-header-bg: #17212f;
   }
 
   .selector{
-    margin-left:-20px;
+    margin-left:-24px;
   }
 }
