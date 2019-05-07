@@ -447,7 +447,7 @@ A [Future][] is a way to perform potentially time-consuming operations,
 such as HTTP requests, asynchronously.
 If you haven't encountered Futures yet,
 you can learn more about them in
-[Asynchronous Programming: Futures]({{site.dartlang}}/tutorials/language/futures).
+[Asynchronous Programming: Futures](/tutorials/language/futures).
 Until then, you can use the code above as a guide
 and provide your own code for the body of the `processResponse()` function
 and your own code to handle the error.
@@ -456,8 +456,8 @@ and your own code to handle the error.
   **Note:**
   The examples in this section use the `async` and `await` keywords.
   If you are not familiar with these keywords, see
-  [Asynchrony support]({{site.dartlang}}/guides/language/language-tour#asynchrony)
-  in the [language tour]({{site.dartlang}}/guides/language/language-tour).
+  [Asynchrony support](/guides/language/language-tour#asynchrony)
+  in the [language tour](/guides/language/language-tour).
 </aside>
 
 ## Using an HttpRequest object to load a file {#making-a-get-request}
@@ -592,8 +592,8 @@ void processResponse(String jsonString) {
 
 ## Other resources
 
-* [JSON Support]({{site.dartlang}}/guides/json)
-* [Asynchronous Programming: Futures]({{site.dartlang}}/tutorials/language/futures)
+* [Using JSON](/guides/json)
+* [Asynchronous programming: futures](/tutorials/language/futures)
 
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
