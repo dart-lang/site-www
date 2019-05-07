@@ -417,8 +417,6 @@ error event, and when the stream is closed.
 Read the following documentation for more details on using streams
 and asynchronous programming in Dart.
 
-* [Single-Subscription vs Broadcast Streams](/articles/libraries/broadcast-streams),
-  an article about the two different types of streams
 * [Creating Streams in Dart](/articles/libraries/creating-streams),
   an article about creating your own streams
 * [Futures and Error Handling](/guides/libraries/futures-error-handling),

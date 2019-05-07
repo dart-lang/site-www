@@ -31,6 +31,12 @@
       permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
+    - title: Articles
+      children:
+        - title: Intro to dart:io
+          permalink: /articles/libraries/dart-io
+        - title: Creating streams
+          permalink: /articles/libraries/creating-streams
 
 - title: Packages
   expanded: false
