@@ -13,7 +13,7 @@ port: 4000
 # use case:
 #   {{site.webdev}}/downloads
 
-www: https://www.dartlang.org
+www: https://dart.dev
 prev-url: https://v1-dartlang-org.firebaseapp.com
 webdev: https://webdev.dartlang.org
 angulardart: https://webdev.dartlang.org/angular

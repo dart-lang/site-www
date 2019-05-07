@@ -88,7 +88,7 @@ For information on using this package, see
 You can use Dart's support for deferred loading to
 reduce your app's initial download size.
 For details, see the language tour's coverage of
-[deferred loading]({{site.www}}/guides/language/language-tour#lazily-loading-a-library)
+[deferred loading](/guides/language/language-tour#lazily-loading-a-library)
 and the dart-lang/angular page
 [Imperative Component Loading.](https://github.com/dart-lang/angular/blob/master/doc/faq/component-loading.md)
 
