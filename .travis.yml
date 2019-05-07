@@ -48,14 +48,14 @@ after_script:
   # # (By default, Travis doesn't fail builds after deployment.)
   # - "./deploy/html_proof.rb || travis_terminate 1"
 
-# deploy:
-#   - provider: script
-#     script: ./tool/shared/deploy.sh --robots ok default
-#     skip_cleanup: true
-#     on:
-#       repo: dart-lang/site-www
-#       branch: master
-#       condition: $TASK == *build*
+deploy:
+  - provider: script
+    script: ./tool/shared/deploy.sh --robots ok default
+    skip_cleanup: true
+    on:
+      repo: dart-lang/site-www
+      branch: master
+      condition: $TASK == *build*
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
