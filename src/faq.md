@@ -250,13 +250,13 @@ Dart is designed to compile to JavaScript to run across the modern web.
 
 Although Dart and JavaScript are completely separate languages with
 separate VMs, they can interoperate. For more information, see
-[package:js](https://pub.dev/packages/js) and
+[package:js][] and
 the [chartjs](https://github.com/google/chartjs.dart/) example.
 
 ### Q. I have a large JavaScript codebase. How can I migrate it to Dart?
 
 Try migrating one major feature at a time, and use the
-[JavaScript interoperability library][jsinterop]
+[JavaScript interoperability library][package:js]
 only when necessary.
 
 ### Q. How does Dart compare with using the Closure compiler on JavaScript?
@@ -324,7 +324,7 @@ so this might be easier than you think.
 You can rely on the [Dart analyzer][dartanalyzer]
 to flag any syntax problems. Alternatively, you may
 consider porting one feature at a time to Dart and using the
-[JavaScript interoperability library][jsinterop] as the common middle
+[JavaScript interoperability library][package:js] as the common middle
 ground. Be sure to watch [Dart-JavaScript
 interoperability,](https://www.youtube.com/watch?v=aIonwL-8hdE)
 a talk from Dart Developer Summit 2016.
@@ -431,7 +431,7 @@ modern JavaScript VMs.
 
 [ppwsize]: http://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
 [sourcemaps]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
-[jsinterop]: https://pub.dev/packages/js
+[package:js]: {{site.pub-pkg}}/js
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js

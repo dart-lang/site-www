@@ -190,7 +190,7 @@ Try one of the [Dart Gitter rooms](https://gitter.im/dart-lang/home)—perhaps
 #### Where can I learn what to do about common dartdevc errors?
 
 Although you can find help for
-[common analyzer errors and warnings,]({{site.dartlang}}/guides/language/sound-problems#common-errors-and-warnings)
+[common analyzer errors and warnings,](/guides/language/sound-problems#common-errors-and-warnings)
 there's no similar help for dartdevc-specific errors.
 See [SDK issue #29825](https://github.com/dart-lang/sdk/issues/29825)
 for more information.
@@ -202,12 +202,12 @@ You can find source code and more documentation in the Dart SDK repo under
 [`/pkg/dev_compiler`.](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)
 
 [build]: /tools/webdev#build
-[build_runner]: {{site.dartlang}}/tools/build_runner
+[build_runner]: /tools/build_runner
 [build_web_compilers]: https://github.com/dart-lang/build/tree/master/build_web_compilers
 [dart2js]: /tools/dart2js
 [dartdevc issue]: https://github.com/dart-lang/sdk/issues/new?title=[dartdevc]%20
-[runtime errors]: https://www.dartlang.org/guides/language/sound-problems#runtime-errors
+[runtime errors]: /guides/language/sound-problems#runtime-errors
 [serve]: /tools/webdev#serve
 [test]: /tools/webdev#test
-[type safety checks]: https://www.dartlang.org/guides/language/sound-dart
+[type safety checks]: /guides/language/sound-dart
 [webdev]: /tools/webdev

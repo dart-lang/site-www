@@ -26,7 +26,7 @@ Click run {% asset red-run.png alt="" %} to run the app;
 the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to change the greeting
 to use another language. To get the full DartPad experience,
-<a href="https://dartpad.dartlang.org/27e044ec9e2957d9c5c7062871ce8bf3"
+<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3"
    target="_blank">open the example at dartpad.dartlang.org.</a>
 
 <iframe
@@ -166,18 +166,18 @@ Check out these resources:
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
-  * [Sample code]({{site.dartlang}}/samples)
-  * [Language tour]({{site.dartlang}}/guides/language/language-tour)
-  * [Library tour]({{site.dartlang}}/guides/libraries/library-tour)
-  * [Effective Dart]({{site.dartlang}}/guides/language/effective-dart)
+  * [Sample code](/samples)
+  * [Language tour](/guides/language/language-tour)
+  * [Library tour](/guides/libraries/library-tour)
+  * [Effective Dart](/guides/language/effective-dart)
 * Tools and libraries
-  * [Dart SDK]({{site.dartlang}}/tools/sdk)
+  * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
-  * [IDEs]({{site.dartlang}}/tools#ides-and-editors)
+  * [IDEs](/tools#ides-and-editors)
 
 If you get stuck, find help at [Community and support.](/community)
 
-[stagehand]: https://pub.dev/packages/stagehand
+[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
