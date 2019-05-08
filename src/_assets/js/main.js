@@ -138,14 +138,24 @@ $(function () {
 });
 
 
+function switchBanner(galleryName) {
+    $('#' + galleryName + ' .selector li').removeClass('highlight');
+    $(this).addClass('highlight');
+    $('.' + galleryName).attr('src', $(this).data('banner'));
+}
+
 $(document).ready(function () {
         function createGallery() {
             for (var i = 0; i < arguments.length; i++) {
                 const galleryName = arguments[i];
-                $('#' + galleryName + ' .selector li').hover(function () {
-                    $('#' + galleryName + ' .selector li').removeClass('highlight');
-                    $(this).addClass('highlight');
-                    $('.' + galleryName).attr('src', $(this).data('banner'));
+                const selector = $('#' + galleryName + ' .selector li');
+                selector.hover(function () {
+                    switchBanner.call(this, galleryName);
+                });
+
+                selector.focus(function () {
+                    switchBanner.call(this, galleryName);
+
                 });
             }
         }
