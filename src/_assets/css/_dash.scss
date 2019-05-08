@@ -36,7 +36,6 @@ $dash-header-bg: #17212f;
   font-family: "Google Sans", "Roboto", sans-serif;
   padding-bottom: 80px !important;
   background-color: $dark-darker-black;
-
   .feature {
     margin-left: auto;
     margin-right: auto;
@@ -78,11 +77,7 @@ $dash-header-bg: #17212f;
   padding-bottom: 20px;
 
   a, button {
-    color: $dash-dark-black;
-
-    &:focus{
-      outline: $dash-highlight auto 2px;
-    }
+    color: $dash-dark-black;;
   }
 
   .content-info {
@@ -211,12 +206,5 @@ $dash-header-bg: #17212f;
 
   .selector{
     margin-left:-24px;
-  }
-}
-
-
-.nav-link{
-  &:focus{
-    outline: $dash-highlight auto 2px;
   }
 }
