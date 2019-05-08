@@ -10,9 +10,6 @@ prevpage:
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
 
-* TOC
-{:toc}
-
 ## Names
 
 Naming is an important part of writing readable, maintainable code.
