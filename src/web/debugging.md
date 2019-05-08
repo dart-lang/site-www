@@ -291,7 +291,7 @@ update the tools by activating them again:
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[pub global documentation]: {{site.www}}/tools/pub/cmd/pub-global
+[pub global documentation]: /tools/pub/cmd/pub-global
 [stagehand]: {{site.pub-pkg}}/stagehand
 [todo_list_component.dart]: https://github.com/dart-lang/stagehand/blob/master/templates/web-angular/lib/src/todo_list/todo_list_component.dart
 [web-angular template]: https://github.com/dart-lang/stagehand/tree/master/templates/web-angular

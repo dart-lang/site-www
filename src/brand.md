@@ -50,10 +50,9 @@ rules governing the proper use of the Dart trademarks.
 
 **DO:**
 
-* Use the "Dart" name as an adjective, never as a noun or verb,
-  and never in the plural or possessive form.
-* Use a generic term following the "Dart" name, for example,
-  "the Dart SDK" or "the Dart platform."
+* Use the “Dart” name as an adjective and never as a verb or in the plural form.
+* When using “Dart” as an adjective, follow it with a generic term, 
+  for example, “the Dart SDK” or “the Dart platform.”
 * Distinguish the "Dart" name from the surrounding text in some way.
   Capitalize the first letter, capitalize or italicize the entire mark,
   place the mark in quotes, use a different type style or font for the mark.

@@ -141,7 +141,7 @@
     - title: Dart SDK
       expanded: true
       children:
-        - title: Overview & installation
+        - title: Overview
           permalink: /tools/sdk
         - title: dart (Dart VM)
           permalink: /tools/dart-vm
