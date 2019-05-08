@@ -142,7 +142,7 @@ $(document).ready(function () {
         function createGallery() {
             for (var i = 0; i < arguments.length; i++) {
                 const galleryName = arguments[i];
-                $('#' + galleryName + ' .selector li').hover(function () {
+                $('#' + galleryName + ' .selector li').bind('hover focus', function () {
                     $('#' + galleryName + ' .selector li').removeClass('highlight');
                     $(this).addClass('highlight');
                     $('.' + galleryName).attr('src', $(this).data('banner'));
