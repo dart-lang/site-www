@@ -60,8 +60,8 @@ Dart plugins exist for these commonly used IDEs.
 </li>
 </ul>
 
-The following Dart plugins are unsupported
-and available as open source.
+The following Dart plugins are also available,
+thanks to the Dart community.
 
 <ul class="col2">
 <li>
