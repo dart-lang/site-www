@@ -491,7 +491,7 @@ Let's take a look at the Dart code:
 <!--?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" indent-by="0" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
 {% prettify dart %}
 Future<void> makeRequest(Event _) async {
-  const path = 'https://www.dartlang.org/f/portmanteaux.json';
+  const path = 'https://dart.dev/f/portmanteaux.json';
   final httpRequest = HttpRequest();
   httpRequest
     ..open('GET', path)
