@@ -139,11 +139,11 @@ production version of your app. Add `--no-release` to compile with [dartdevc][].
 Using the `--output` option, you can control which top-level project folders are
 compiled and where output is written.
 
-For example, the following command uses the dartdevc to compile the project's
+For example, the following command uses dart2js to compile the project's
 top-level `web` folder into the `build` directory:
 
 ```terminal
-$ webdev build --no-release --output web:build
+$ webdev build --output web:build
 ```
 
 
