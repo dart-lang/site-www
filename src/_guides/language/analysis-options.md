@@ -402,4 +402,4 @@ Use the following resources to learn more about static analysis in Dart:
 [linter rules]: http://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
-[use a specific version]: /tools/pub/dependencies#version-constraints
+[use a specific version]: https://github.com/dart-lang/pedantic/blob/master/README.md#using-the-lints
