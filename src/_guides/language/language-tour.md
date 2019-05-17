@@ -4125,7 +4125,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 
 ## Callable classes
 
-To allow your instance of Dart class to be called like a function,
+To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 
 In the following example, the `WannabeFunction` class defines
