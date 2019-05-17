@@ -233,9 +233,9 @@ has some tips for specific browsers.
 
 You can use the low-level HTML API defined by core libraries such as dart:html,
 or you can use a framework such as [AngularDart][].
-At [Flutter Live][] we announced [Hummingbird][] as
-an experimental way to write web applications.
-We'll let you know when Hummingbird is ready to use.
+During Google I/O 2019 we [announced][fwebannounce] a technical preview of
+[Flutter for web][] that lets you take Flutter UI code and business logic
+and run it directly in the browser.
 
 ### Q. Will the Dart VM get into Chrome?
 
@@ -439,8 +439,7 @@ modern JavaScript VMs.
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
 [fixallthethings]: http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
-[Flutter Live]: https://developers.google.com/events/flutter-live/
-[Hummingbird]: https://medium.com/flutter-io/hummingbird-building-flutter-for-the-web-e687c2a023a8
 [typescript]: http://news.dartlang.org/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
-
+[fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0
+[Flutter for web]: {{site.flutter}}/web
