@@ -48,7 +48,6 @@ Here are some examples of using string interpolation:
 | `'$myObject'`               | | The value of `myObject.toString()` |
 
 ### Code example
-{: .no_toc}
 
 The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
@@ -88,7 +87,6 @@ in which case it evaluates and returns the expression on its right:
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Try putting the `??=` and `??` operators to work below.
 
@@ -122,7 +120,6 @@ null.
 
 
 ### Code example
-{: .no_toc}
 
 Try using conditional property access to finish the code snippet below.
 
@@ -164,7 +161,6 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Try setting the following variables to the indicated values.
 
@@ -193,7 +189,6 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Try finishing the following statements, which use arrow syntax.
 
@@ -250,7 +245,6 @@ querySelector('#confirm')
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
@@ -300,7 +294,6 @@ class MyClass {
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Imagine you have a shopping cart class that keeps a private `List<double>`
 of prices.
@@ -357,7 +350,6 @@ print(newTotal); // <-- prints 15
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Implement a function called `joinWithCommas` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
@@ -401,7 +393,6 @@ A function can't have both optional positional and optional named parameters.
 
 
 ### Code example
-{: .no_toc}
 
 Add a `copyWith` instance method to the `MyDataObject`
 class. It should take three named parameters:
@@ -482,7 +473,6 @@ try {
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Implement `tryFunction` below. It should execute an untrustworthy method and
 then do the following:
@@ -560,7 +550,6 @@ MyColor({this.red = 0, this.green = 0, this.blue = 0});
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
@@ -605,7 +594,6 @@ NonNegativePoint(this.x, this.y)
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Complete the `FirstTwoLetters` constructor below.
 Use an initializer list to assign the first two characters in `word` to
@@ -659,7 +647,6 @@ final myPoint = Point.origin();
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Give the Color class a constructor named `Color.black`
 that sets all three properties to zero.
@@ -697,7 +684,6 @@ class Shape {
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Fill in the factory constructor named `IntegerHolder.fromList`,
 making it do the following:
@@ -742,7 +728,6 @@ class Automobile {
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
@@ -770,7 +755,6 @@ class ImmutablePoint {
 {% endprettify %}
 
 ### Code example
-{: .no_toc}
 
 Modify the `Recipe` class so its instances can be constants,
 and create a constant constructor that does the following:
