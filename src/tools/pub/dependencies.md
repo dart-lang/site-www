@@ -32,7 +32,7 @@ dependencies:
 {% endprettify %}
 
 This creates a dependency on `transmogrify` that  allows any version, and looks
-it up using the default source, which is the [Pub site]({{site.pub}}.
+it up using the default source, which is the [Pub site]({{site.pub}}).
 To limit the dependency to a range of versions,
 you can provide a *version constraint*:
 
