@@ -741,9 +741,6 @@ var list2 = [0, ...?list];
 assert(list2.length == 1);
 {% endprettify %}
 
-For more details and examples of using the spread operator, see the 
-[spread operator proposal.][spread proposal]
-
 <a id="collection-operators"> </a>
 Dart 2.3 also introduced **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
