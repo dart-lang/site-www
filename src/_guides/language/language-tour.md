@@ -773,13 +773,6 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 {% endprettify %}
 
-For more details and examples of using collection if and for, see the 
-[control flow collections proposal.][collections proposal]
-
-[collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/control-flow-collections/feature-specification.md
-
-[spread proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/spread-collections/feature-specification.md
-
 The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
