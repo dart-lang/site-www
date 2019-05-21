@@ -60,7 +60,7 @@ Here are examples of using the build_runner **build** command:
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
 $ pub run build_runner build  # Dart SDK
-$ flutter packages pub run build_runner build  # Flutter SDK
+$ flutter pub run build_runner build  # Flutter SDK
 ```
 
 The build_runner package includes the following commands:

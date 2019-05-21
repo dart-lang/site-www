@@ -63,7 +63,7 @@ from either Dart 1.x or an earlier version of Dart 2.
    * [Flutter SDK upgrade instructions][Flutter SDK upgrade]
    * [Dart SDK instructions][Dart SDK install] (server-side or web)
 2. **Upgrade the packages your app depends on.**
-   * Flutter: [`flutter packages upgrade`][flutter package upgrade]
+   * Flutter: [`flutter pub upgrade`][flutter pub upgrade]
    * Server-side or web: [`pub upgrade`][pub upgrade]
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
@@ -166,7 +166,7 @@ environment:
 [customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
 [dartanalyzer]: /tools/dartanalyzer
-[flutter package upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
+[flutter pub upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
 [pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
