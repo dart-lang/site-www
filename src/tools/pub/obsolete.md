@@ -33,3 +33,4 @@ For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 
 * [Language and core library migration guide](/dart-2#migration)
 * [Web app migration guide](/web/dart-2)
+* [Barback/transformer migration guide](https://github.com/dart-lang/build/blob/master/docs/from_barback_transformer.md)
