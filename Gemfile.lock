@@ -171,7 +171,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionview (>= 5.2.2.1)
   bootstrap
   font-awesome-sass
   html-proofer
