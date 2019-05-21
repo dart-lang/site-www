@@ -741,6 +741,9 @@ var list2 = [0, ...?list];
 assert(list2.length == 1);
 {% endprettify %}
 
+For more details and examples of using the spread operator, see the 
+[spread operator proposal.][spread proposal]
+
 <a id="collection-operators"> </a>
 Dart 2.3 also introduced **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
@@ -772,6 +775,13 @@ var listOfStrings = [
 ];
 assert(listOfStrings[1] == '#1');
 {% endprettify %}
+
+For more details and examples of using collection if and for, see the 
+[control flow collections proposal.][collections proposal]
+
+[collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
+
+[spread proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/spread-collections/feature-specification.md
 
 The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
