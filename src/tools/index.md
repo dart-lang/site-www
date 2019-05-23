@@ -45,7 +45,7 @@ Dart plugins exist for these commonly used IDEs.
 <ul class="col2">
 <li>
 <img src="{% asset tools/android_studio.png @path %}"
-     width="48" alt="IntelliJ logo">
+     width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
@@ -71,6 +71,10 @@ thanks to the Dart community.
 <li>
 <img src="{% asset tools/vim.png @path %}" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+</li>
+<li>
+<img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
+<a class="no-automatic-external" href="https://github.com/dart-atom/dart"><b>Atom</b></a>
 </li>
 </ul>
 
