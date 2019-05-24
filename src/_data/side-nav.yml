@@ -20,7 +20,20 @@
     - title: Specification
       permalink: /guides/language/spec
     - title: Effective Dart
-      permalink: /guides/language/effective-dart
+      expanded: false
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /guides/language/effective-dart
+        - title: Style
+          permalink: /guides/language/effective-dart/style
+        - title: Documentation
+          permalink: /guides/language/effective-dart/documentation
+        - title: Usage
+          permalink: /guides/language/effective-dart/usage
+        - title: Design
+          permalink: /guides/language/effective-dart/design
 
 - title: Core libraries
   expanded: false
