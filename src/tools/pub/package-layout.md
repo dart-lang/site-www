@@ -101,9 +101,11 @@ enchilada/
   LICENSE
 {% endprettify %}
 
-If you're publishing your package, you need a license file.
-The [Pub site]({{site.pub}}) accepts files named `LICENSE`,
-`COPYING`, or `UNLICENSE`, with any file extension. 
+If you're publishing your package, include a license file named `LICENSE`,
+optionally with a file extension such as `.md`. 
+We recommend using an [OSI-approved license](https://opensource.org/licenses)
+such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
+so that others can reuse your work.
 
 ## README
 
@@ -118,7 +120,7 @@ to the [Pub site,]({{site.pub}}) your README is shown on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
-If your README ends in `.md`, `.markdown`, or `.mdown`, it's parsed as
+If your README ends in `.md`, it's parsed as
 [Markdown.][markdown]
 
 [markdown]: http://daringfireball.net/projects/markdown/
@@ -136,7 +138,7 @@ release. When you upload your package to the
 [Pub site,]({{site.pub}}) your package's changelog file (if any)
 appears in the changelog tab.
 
-If your CHANGELOG ends in `.md`, `.markdown`, or `.mdown`, it's parsed as
+If your CHANGELOG ends in `.md`, it's parsed as
 [Markdown.][markdown]
 
 ## Public directories
