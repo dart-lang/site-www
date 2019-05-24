@@ -7,7 +7,6 @@ nextpage:
 prevpage:
   url: /guides/language/effective-dart
   title: Overview
-toc: false
 ---
 <?code-excerpt plaster="none"?>
 
@@ -17,9 +16,6 @@ advantage of the powerful pattern-matching hardware most of us have in our
 ocular systems.  If we use a consistent style across the entire Dart ecosystem,
 it makes it easier for all of us to learn from and contribute to each others'
 code.
-
-* TOC
-{:toc}
 
 ## Identifiers
 

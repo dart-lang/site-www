@@ -4,15 +4,11 @@ description: Design consistent, usable libraries.
 prevpage:
   url: /guides/language/effective-dart/usage
   title: Usage
-toc: false
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
-
-* TOC
-{:toc}
 
 ## Names
 
