@@ -7,7 +7,6 @@ nextpage:
 prevpage:
   url: /guides/language/effective-dart/style
   title: Style
-toc: false
 ---
 
 It's easy to think your code is obvious today without realizing how much you
@@ -20,9 +19,6 @@ We all know code should be self-documenting and not all comments are helpful.
 But the reality is that most of us don't write as many comments as we should.
 It's like exercise: you technically *can* do too much, but it's a lot more
 likely that you're doing too little. Try to step it up.
-
-* TOC
-{:toc}
 
 ## Comments
 
