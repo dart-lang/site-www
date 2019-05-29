@@ -27,7 +27,7 @@ A pubspec can have the following fields:
   [_Learn more._](#version)
 
 `description`
-: Required for packages that are hosted on the [Pub site]({{site.pub}}).
+: Required for packages that are hosted on the [Pub site.]({{site.pub}})
   [_Learn more._](#description)
 
 `author` or `authors`
@@ -47,7 +47,7 @@ A pubspec can have the following fields:
   [_Learn more._](#issue-tracker)
 
 `documentation`
-: Optional. Can be used to automatically create documentation.
+: Optional. URL pointing to documentation for the package.
   [_Learn more._](#documentation)
 
 `dependencies`
@@ -74,13 +74,18 @@ A pubspec can have the following fields:
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
 
-Pub ignores all other fields.
+Pub ignores all other fields,
 
 <aside class="alert alert-info" markdown="1">
 **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
 [a few additional fields]({{site.flutter}}/assets-and-images)
 for managing assets.
 </aside>
+
+If you add a custom field, give it a unique name
+that won't clash with future pubspec fields.
+For example, instead of adding `bugs`,
+you might add a field named `my_pkg_bugs`.
 
 
 ## Example
@@ -149,28 +154,27 @@ Each time you publish your package, you publish it at a specific version.
 Once that's been done, consider it hermetically sealed: you can't touch it
 anymore. To make more changes, you'll need a new version.
 
-When you select a version, follow [semantic versioning][].
+When you select a version, follow [semantic versioning.][semantic versioning]
 
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
 
 ### Description
 
 This is optional for your own personal packages, but if you intend to
-publish your package you must provide a description. This should
-be relatively short&mdash;a few sentences, maybe a whole paragraph&mdash;and
-tells a casual reader what they might want to know about your package.
+publish your package you must provide a description, which should be in English.
+The description should be relatively short&mdash;60 to 180 characters&mdash;and
+tell a casual reader what they might want to know about your package.
 
 Think of the description as the sales pitch for your package. Users see it
-when they [browse for packages]({{site.pub}}/packages).
-It should be simple plain text: no markdown or HTML.
-That's what your README is for.
+when they [browse for packages.]({{site.pub}}/packages)
+The description is plain text: no markdown or HTML.
 
-### Author/Authors
+### Author/authors
 
 You're encouraged to use these fields to describe the author(s) of your package
-and provide contact information. `author` should be used if your package has a
-single author, while `authors` should be used with a YAML list if more than one
-person wrote the package. Each author can either be a single name
+and provide contact information. Use `author` if your package has a
+single author, or use `authors` with a YAML list if more than one
+person wrote the package. Each author can be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
 (`Natalie Weizenbaum <nweiz@google.com>`). For example:
 
@@ -211,13 +215,10 @@ default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
 
-Some packages may have a site that hosts documentation separate from the main
-homepage. If your package has that, you can also add a `documentation:` field
-with that URL. If provided, a link to it is shown on your package's page.
-
-If you specify the `documentation:` field with a blank value,
-documentation is created automatically for you, and is linked to from the
-[Pub site]({{site.pub}}).
+Some packages have a site that hosts documentation, separate from the main
+homepage and from the Pub-generated API reference.
+If your package has additional documentation, add a `documentation:` field
+with that URL; pub shows a link to this documentation on your package's page.
 
 ### Dependencies
 
@@ -232,7 +233,7 @@ the package itself are listed under `dev_dependencies`.
 During the development process, you might need to temporarily override
 a dependency.  You can do so using `dependency_overrides`.
 
-For more information, see [Pub Dependencies](/tools/pub/dependencies).
+For more information, see [Package dependencies](/tools/pub/dependencies).
 
 ### Executables
 
@@ -264,7 +265,7 @@ For more information, see
 
 ### Publish_to
 
-The default uses the [Pub site]({{site.pub}}). Specify `none` to prevent
+The default uses the [Pub site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dartlang-dart/)
 to publish.

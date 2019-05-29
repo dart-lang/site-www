@@ -26,10 +26,11 @@ But this doesn't come for free: There's a challenge to code
 reuse, especially reusing code you don't maintain. When your app uses code
 being developed by other people, what happens when they change it?
 They don't want to break your app, and you certainly don't either.
+We solve this problem by _versioning_. 
 
 ## A name and a number
 
-We solve this by _versioning_. When you depend on some piece of outside code,
+When you depend on some piece of outside code,
 you don't just say "My app uses `widgets`." You say, "My app uses
 `widgets 2.0.5`." That combination of name and version number uniquely
 identifies an _immutable_ chunk of code. The people updating `widgets` can
@@ -39,11 +40,11 @@ one whit because the version you use is unchanged.
 
 When you _do_ want to get those changes, you can always point your app to a
 newer version of `widgets` and you don't have to coordinate with those
-developers to do it. So, problem solved, right?
+developers to do it. However, that doesn't entirely solve the problem.
 
-## Shared dependencies and unshared libraries
+## Resolving shared dependencies
 
-Well, no. Depending on specific versions works fine when your dependency
+Depending on specific versions works fine when your dependency
 _graph_ is really just a dependency _tree_. If your app depends on a bunch of
 packages, and those things in turn have their own dependencies and so on, that
 all works fine as long as none of those dependencies _overlap_.
@@ -56,6 +57,8 @@ So your app uses `widgets` and `templates`, and _both_ of those use
 `collection`. This is called a **shared dependency**. Now what happens when
 `widgets` wants to use `collection 2.3.5` and `templates` wants
 `collection 2.3.7`? What if they don't agree on a version?
+
+### Unshared libraries (the npm approach)
 
 One option is to just let the app use both
 versions of `collection`. It will have two copies of the library at different
@@ -83,7 +86,7 @@ isn't a good fit.
 
 [npm]: https://npmjs.org/
 
-## Version lock
+### Version lock (the dead end approach)
 
 Instead, when you depend on a package, your app only uses a single copy of
 that package. When you have a shared dependency, everything that depends on it
@@ -113,7 +116,7 @@ That's called **version lock**:
 everyone wants to move their dependencies forward,
 but no one can take the first step because it forces everyone else to as well.
 
-## Version constraints
+### Version constraints (the Dart approach)
 
 To solve version lock, we loosen the constraints that packages place on their
 dependencies. If `widgets` and `templates` can both indicate a _range_ of
@@ -138,7 +141,7 @@ and `templates` have their constraints satisfied by a single concrete version.
 ## Semantic versions
 
 When you add a dependency to your package, you'll sometimes want to specify a
-range of versions to allow. How do you know what range to pick? You need to
+range of versions to allow. How do you know what range to pick? You need to be
 forward compatible, so ideally the range encompasses future versions that
 haven't been released yet. But how do you know your package is going to work
 with some new version that doesn't even exist yet?

@@ -14,7 +14,7 @@ package, and how to name things.
   **Note:**
   Flutter apps can use custom directories for their assets.
   For details, see
-  [Adding Assets and Images in Flutter]({{site.flutter}}/assets-and-images/)
+  [Adding assets and images]({{site.flutter}}/assets-and-images/)
   on the [Flutter website.]({{site.flutter}})
   </div>
 </div></aside>
@@ -29,9 +29,9 @@ enchilada/
   .packages *
   pubspec.yaml
   pubspec.lock **
+  LICENSE
   README.md
   CHANGELOG.md
-  LICENSE
   benchmark/
     make_lunch.dart
   bin/
@@ -67,13 +67,13 @@ enchilada/
     [application package](/tools/pub/glossary#application-package).
 
 \*** The `doc/api` directory exists locally after you've run
-      [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc).
+      [dartdoc.](https://github.com/dart-lang/dartdoc#dartdoc)
       Don't check the `api` directory into source control.
 
 {% include packages-dir.html %}
 
 
-## The basics
+## The pubspec
 
 {% prettify none %}
 enchilada/
@@ -85,26 +85,27 @@ Every package has a [_pubspec_](/tools/pub/pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
 package.
 
-Once you've run [`pub get`](/tools/pub/cmd/pub-get),
+Running [`pub get`](/tools/pub/cmd/pub-get),
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), or
-[`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package, you will also have a
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package creates a
 **lockfile**, named `pubspec.lock`. If your package is an [application
 package](/tools/pub/glossary#application-package), check the lockfile into source
 control. Otherwise, don't.
 
+For more information, see the [pubspec page](/tools/pub/pubspec).
+
+## LICENSE
+
 {% prettify none %}
 enchilada/
-  .packages
+  LICENSE
 {% endprettify %}
 
-Running pub also generates a `.packages` file.
-Don't check this into source control.
-
-The open source community has a few other files that commonly appear at
-the top level of a project: `LICENSE`, `AUTHORS`, etc. If you use any
-of those, they can go in the top level of the package too.
-
-For more information, see the [pubspec page](/tools/pub/pubspec).
+If you're publishing your package, include a license file named `LICENSE`,
+optionally with a file extension such as `.md`. 
+We recommend using an [OSI-approved license](https://opensource.org/licenses)
+such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
+so that others can reuse your work.
 
 ## README
 
@@ -115,12 +116,12 @@ enchilada/
 
 One file that's very common in open source is a README file that
 describes the project. This is especially important in pub. When you upload
-to the [Pub site]({{site.pub}}), your README is shown on
+to the [Pub site,]({{site.pub}}) your README is shown on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
-If your README ends in `.md`, `.markdown`, or `.mdown`, it is parsed as
-[Markdown][].
+If your README ends in `.md`, it's parsed as
+[Markdown.][markdown]
 
 [markdown]: http://daringfireball.net/projects/markdown/
 
@@ -134,11 +135,11 @@ enchilada/
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
 release. When you upload your package to the
-[Pub site]({{site.pub}}), your package's changelog file (if any)
+[Pub site,]({{site.pub}}) your package's changelog file (if any)
 appears in the changelog tab.
 
-If your CHANGELOG ends in `.md`, `.markdown`, or `.mdown`, it is parsed as
-[Markdown][].
+If your CHANGELOG ends in `.md`, it's parsed as
+[Markdown.][markdown]
 
 ## Public directories
 
@@ -210,7 +211,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 </aside>
 
 For more information on library packages, see
-[Create Library Packages](/guides/libraries/create-library-packages).
+[Creating packages](/guides/libraries/create-library-packages).
 
 ### Public tools {#public-tools}
 
@@ -245,7 +246,7 @@ These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
 You can reference another package's assets using the
-[resource package](https://github.com/dart-lang/resource).
+[resource package.](https://github.com/dart-lang/resource)
 
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
@@ -386,22 +387,28 @@ and use multiple files, consider making a directory for each example. Otherwise,
 you can place each one right inside `example`.
 
 In your examples, use `package:` to import files from your own package.
-That ensures the example code in your package looks exactly
+That ensures that the example code in your package looks exactly
 like code outside of your package would look.
 
 If you might publish your package,
-consider creating an example file with one of the following names:
+consider creating an example file with one of the following names
+(case insensitive):
 
+* <code>example/readme[.md]</code>
+* <code>example/example[.md]</code>
 * <code>example[/lib]/main.dart</code>
 * <code>example[/lib]/<em>package_name</em>.dart</code>
 * <code>example[/lib]/<em>package_name</em>_example.dart</code>
 * <code>example[/lib]/example.dart</code>
 
-When you publish a package that contains one of the above files,
-the pub site creates an **Example** tab to display that file.
-For example, the json_serializable package contains a file named
-`example/example.dart`, which appears in the
-[json_serializable Example tab.]({{site.pub}}/packages/json_serializable#pub-pkg-tab-example)
+When you publish a package that contains one or more of the above files,
+the Pub site creates an **Example** tab to display the first file it finds
+(searching in the order shown in the list above).
+For example, if your package has many files under its `example` directory,
+including a file named `README.md`,
+then your package's Example tab displays the contents of `example/README.md`
+(parsed as [Markdown.)][markdown]
+
 {% comment %}
 To see how the example file is chosen,
 search the dart-lang repos for exampleFileCandidates:

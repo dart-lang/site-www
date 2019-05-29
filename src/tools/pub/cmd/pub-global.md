@@ -21,7 +21,7 @@ $ pub global activate stagehand
 $ stagehand
 ```
 
-If this doesn't work, you may need to
+If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
@@ -33,10 +33,12 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
+Activate a package when you want to be able to run
+one or more of its executable files from the command line.
 You can activate packages that live on the
 [Pub site]({{site.pub}}), a Git repository,
 or your local machine.
-Once you have activated a package, see [Running a
+Once you've activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
 `bin` directory.
 
