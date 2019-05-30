@@ -1,5 +1,5 @@
 ---
-title: Dart cheatsheet
+title: Dart cheatsheet codelab
 description: Interactively learn (or relearn) some of Dart's unique features.
 ---
 
@@ -18,19 +18,26 @@ description: Interactively learn (or relearn) some of Dart's unique features.
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab walks you through the most important of these features.
+This codelab — which is based on a 
+[Dart language cheatsheet](/guides/language/cheatsheet)
+written by and for Google engineers —
+walks you through the most important of these language features.
 
-This [codelab](/codelabs) has embedded editors with
-partially completed code snippets.
+The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
+If you need help, click the **Hint** button.
+To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
+The **Reset** button erases your work and
+restores the editor to its original state.
 
 <aside class="alert alert-warning">
 The embedded editors use an experimental version of DartPad.
 If you find a DartPad bug or have suggestions for DartPad, please
 <a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">create a DartPad issue.</a>
-If you have suggestions for the text or examples in this codelab, please
-create a site issue by clicking the bug icon at the top right of this page.
+If you have suggestions for the text or examples in this codelab,
+you can create a site issue by clicking the bug icon
+at the top right of this page.
 </aside>
 
 
@@ -768,8 +775,17 @@ and create a constant constructor that does the following:
 
 <iframe src="{{site.dartpadx}}?id=c400cb84fab309ddbbb436c1ced90dad"></iframe>
 
-[PENDING: Add something here. Congratulations, where to go next, ...]
-
 {% comment %}
 TODO: Copy edit the hint.
 {% endcomment %}
+
+## What next?
+
+We hope you enjoyed using this codelab to learn or test your knowledge of
+some of the most interesting features of the Dart language.
+Here are some suggestions for what to do now:
+
+* Try [other Dart codelabs](/codelabs).
+* Read the [Dart language tour](/guides/language/language-tour).
+* Play with [DartPad.]({{site.dartpad}})
+* [Get the Dart SDK](/get-dart).

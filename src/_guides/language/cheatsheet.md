@@ -3,11 +3,11 @@ title: Dart language cheatsheet
 description: A one-page summary of some of Dart's most useful, interesting features.
 ---
 
-This page summarizes Dart syntax that's frequently used
-but that you might not remember.
-This cheatsheet is based on one created by Googler
-[Mehmet Fidanboylu.](https://medium.com/@mehmetf_71205)
-For an interactive guide to these features, see the
+This cheatsheet is based on an internal document
+created by Googler [Mehmet Fidanboylu](https://medium.com/@mehmetf_71205)
+to help Google engineers remember the syntax for
+some of Dart's commonly used features.
+For an interactive guide to these features and more, see the
 [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
 ## Using literals
