@@ -15,43 +15,50 @@ description: Interactively learn (or relearn) some of Dart's unique features.
   }
 </style>
 
-<aside class="alert alert-warning">
-This codelab is being used to test out some new features of DartPad! You may encounter bugs,
-malapropisms, annoyances, and other general weirdness. If that happens, please take a moment to
-<a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">fill out a bug report on GitHub</a>
-and let us know. Feature requests and suggestions are also greatly appreciated.
-</aside>
+The Dart language is designed to be easy to learn for
+coders coming from other languages,
+but it has a few unique features.
+This codelab — which is based on a 
+[Dart language cheatsheet](/guides/language/cheatsheet)
+written by and for Google engineers —
+walks you through the most important of these language features.
 
-Dart is designed to be easy to learn for coders coming from other languages,
-but it also has a few unique features.
-This codelab will walk you through the most important ones,
-and can be a handy place to return for a refresher as you grow your Dart skills.
-
-In addition to explanations and examples,
-the codelab includes embedded editors with partially completed code snippets.
+The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
+If you need help, click the **Hint** button.
+To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
+The **Reset** button erases your work and
+restores the editor to its original state.
 
+<aside class="alert alert-warning">
+The embedded editors use an experimental version of DartPad.
+If you find a DartPad bug or have suggestions for DartPad, please
+<a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">create a DartPad issue.</a>
+If you have suggestions for the text or examples in this codelab,
+you can create a site issue by clicking the bug icon
+at the top right of this page.
+</aside>
 
 
 ## String interpolation
 
-Dart offers string interpolation to simplify formatting variables and expressions
-as strings. You can put the value of an expression inside a string by using
-`${expression}`. If the expression is an identifier, you can
-skip the `{}`.
+To put the value of an expression inside a string, use `${expression}`.
+If the expression is an identifier, you can omit the `{}`.
 
-Some examples:
+Here are some examples of using string interpolation:
 
-* `'${3 + 2}'` becomes `'5'`
-* `'${"word".toUpperCase()}'` becomes `'WORD'`
-* `'$myObject'` becomes the value of `myObject.toString()`
+| String                      | | Result |
+|-----------------------------+-+ -------|
+| `'${3 + 2}'`                | | `'5'` |
+| `'${"word".toUpperCase()}'` | | `'WORD'` |
+| `'$myObject'`               | | The value of `myObject.toString()` |
 
 ### Code example
 
-The following function takes two integers as parameters. Add code to make it return
-a string containing both numbers separated by a space (e.g.
-`2` and `3` become `'2 3'`).
+The following function takes two integers as parameters.
+Make it return a string containing both integers separated by a space.
+For example, `stringify(2, 3)` should return `'2 3'`.
 
 <iframe src="{{site.dartpadx}}?id=43f3db47b0632c557200270807696687"></iframe>
 
@@ -63,41 +70,46 @@ Dart offers some handy operators for dealing with values that might be null. One
 `??=` assignment operator, which assigns a value to a variable only if that
 variable is currently null:
 
+{% comment %}
+TBD: Make this and all non-trivial snippets testable.
+I found an error in one of the getter/setter snippets.
+{% endcomment %}
+
 {% prettify dart %}
-int a = null;
+int a; // The initial value of any object is null.
 a ??= 3;
-print(a); // <-- Prints 3;
+print(a); // <-- Prints 3.
 
 a ??= 5;
-print(a); // <-- Still prints 3;
+print(a); // <-- Still prints 3.
 {% endprettify %}
 
-There's also the `??` operator, which returns the expression on its left unless
-its value is null, in which case it evaluates and returns the expression on its right:
+Another null-aware operator is `??`,
+which returns the expression on its left unless that expression's value is null,
+in which case it evaluates and returns the expression on its right:
 
 {% prettify dart %}
-    print(1 ?? 3); // <-- Prints 1;
+    print(1 ?? 3); // <-- Prints 1.
     print(null ?? 12); // <-- Prints 12.
 {% endprettify %}
 
 ### Code example
 
-Try putting the `??=` and `??`
-operators to work below:
+Try putting the `??=` and `??` operators to work below.
 
-<iframe src="{{site.dartpadx}}?id=f8ab52228b9c03aee9504dbdc15d797d"></iframe>
+<iframe src="{{site.dartpadx}}?id=ee3d441f60acc95a07d73762a61b3b98"></iframe>
 
 
 ## Conditional property access
 
-To access a property or method on a reference that might be null, you can use
-`?.` to guard the call:
+To guard access to a property or method of an object that might be null,
+put a question mark (`?`) before the dot (`.`):
 
 {% prettify dart %}
 myObject?.someProperty
 {% endprettify %}
 
-The above code is equivalent to:
+The preceding code is equivalent to the following:
 
 {% prettify dart %}
 (myObject != null) ? myObject.someProperty : null
@@ -109,21 +121,22 @@ You can chain multiple uses of `?.` together in a single expression:
 myObject?.someProperty?.someMethod()
 {% endprettify %}
 
-The above code returns null (and never calls `someMethod`) if either
+The preceding code returns null (and never calls `someMethod`) if either
 `myObject` or `myObject.someProperty` is
 null.
 
 
 ### Code example
 
-Try using conditional property access to finish the code snippet below:
+Try using conditional property access to finish the code snippet below.
 
 <iframe src="{{site.dartpadx}}?id=58f14a3d943be6231ae611036fcfc80d"></iframe>
 
 
 ## Collection literals
 
-Dart has built-in support for lists, maps, and sets. You can create them using literals:
+Dart has built-in support for lists, maps, and sets.
+You can create them using literals:
 
 {% prettify dart %}
 final aListOfStrings = ['one', 'two', 'three'];
@@ -135,11 +148,11 @@ final aMapOfStringsToInts = {
 };
 {% endprettify %}
 
-Dart's type inference is capable of assigning types to these variables for you. In this case, the
-inferred types are `List<String>`,
+Dart's type inference can assign types to these variables for you.
+In this case, the inferred types are `List<String>`,
 `Set<String>`, and `Map<String, int>`.
 
-You can also specify the type for a collection literal:
+Or you can specify the type yourself:
 
 {% prettify dart %}
 final aListOfInts = <int>[];
@@ -147,8 +160,8 @@ final aSetOfInts = <int>{};
 final aMapOfIntToDouble = <int, double>{};
 {% endprettify %}
 
-Specifying types is handy if you initialize a list with contents of a subtype, but still want the list
-itself to be `List<BaseType>`:
+Specifying types is handy when you initialize a list with contents of a subtype,
+but still want the list to be `List<BaseType>`:
 
 {% prettify dart %}
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
@@ -156,15 +169,15 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 ### Code example
 
-Try setting the following variables to the indicated values:
+Try setting the following variables to the indicated values.
 
-<iframe src="{{site.dartpadx}}?id=f0d6e5f14e4606befa388f52eebc2647"></iframe>
+<iframe src="{{site.dartpadx}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff"></iframe>
 
 
 ## Arrow syntax
 
-In the previous examples, you may have noticed an operator that looks like `=>`.
-Dart's docs refer to it as "arrow syntax," and it's a way to define a function that executes the
+You might have seen the `=>` symbol in Dart code.
+This arrow syntax is a way to define a function that executes the
 expression to its right and returns its value.
 
 For example, consider this call to the `List` class's
@@ -184,34 +197,42 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 ### Code example
 
-Try finishing these statements that use arrow syntax:
+Try finishing the following statements, which use arrow syntax.
 
 <iframe src="{{site.dartpadx}}?id=7c287c55dcc7f414a5dfa5837e3450e3"></iframe>
 
+{% comment %}
+ISSUE: The analysis output kept getting in the way of my typing for the
+last part of this code. Also, how are they supposed to know to use the
+join() method?
+
+TBD: The comments in "Your code" are in the form of doc comments,
+but they don't use `///`, and they end in `:`, not `.`.
+{% endcomment %}
 
 ## Cascades
 
-Cascades (`..`) allow you to make a sequence of operations on the same object.
+To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
 
 {% prettify dart %}
 myObject.someMethod()
 {% endprettify %}
 
-
 It invokes `someMethod` on `myObject`, and the result of
 the expression is the return value of `someMethod`.
 
-The same expression with a cascade, however:
+Here's the same expression with a cascade:
 
 {% prettify dart %}
 myObject..someMethod()
 {% endprettify %}
 
-Still invokes `someMethod` on `myObject`, but the result
-of the expression isn't the return value -- it's a reference to `myObject`! This
-way, you can chain together operations that would otherwise require separate statements. For example,
-consider this code:
+Although it still invokes `someMethod` on `myObject`, the result
+of the expression **isn't** the return value — it's a reference to `myObject`!
+Using cascades, you can chain together operations that
+would otherwise require separate statements.
+For example, consider this code:
 
 {% prettify dart %}
 var button = querySelector('#confirm');
@@ -220,8 +241,8 @@ button.classes.add('important');
 button.onClick.listen((e) => window.alert('Confirmed!'));
 {% endprettify %}
 
-With cascades, the code becomes much shorter, and you don’t need the `button`
-variable:
+With cascades, the code becomes much shorter,
+and you don’t need the `button` variable:
 
 {% prettify dart %}
 querySelector('#confirm')
@@ -232,43 +253,47 @@ querySelector('#confirm')
 
 ### Code example
 
-Use cascades to create a single statement that sets a `BigObject`’s
-`anInt`, `aString`, and `aList`
-properties to `1`, `'String!'`, and
-`[3.0]`, respectively, and then calls `allDone`:
+Use cascades to create a single statement that
+sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
+to `1`, `'String!'`, and `[3.0]` (respectively)
+and then calls `allDone()`.
 
 <iframe src="{{site.dartpadx}}?id=72bde0b4d5c8c6046b4853a3b4053c3a"></iframe>
 
 
 ## Getters and setters
 
-Dart supports getters and setters for properties via the `get` and `set` keywords.
-You can use getters and setters to guard access of a private variable:
+You can define getters and setters
+whenever you need more control over a property
+than a simple field allows.
+
+For example, you can make sure a property's value is valid:
 
 {% prettify dart %}
 class MyClass {
-  int _privateField = 0;
+  int _aProperty = 0;
 
-  int get privateField => _privateField;
+  int get aProperty => _aProperty;
 
-  set privateField(int value) {
+  set aProperty(int value) {
     if (value >= 0) {
-      _privateField = value;
+      _aProperty = value;
     }
   }
 }
 {% endprettify %}
 
-You can also define getters for computed properties like this one:
+You can also use a getter to define a computed property:
 
 {% prettify dart %}
 class MyClass {
-  List<div> _values = [];
+  List<int> _values = [];
 
   void addValue(int value) {
     _values.add(value);
   }
 
+  // A computed property.
   int get count {
     return _values.length;
   }
@@ -318,8 +343,9 @@ int total = sumUptoFive(1, 2);
 int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 {% endprettify %}
 
-Optional positional parameters should always be placed last in a function's parameter list. They default
-to null, but you can provide default values if desired:
+Optional positional parameters are always last
+in a function's parameter list.
+Their default value is null unless you provide another default value:
 
 {% prettify dart %}
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
@@ -332,21 +358,25 @@ print(newTotal); // <-- prints 15
 
 ### Code example
 
-Implement a function called `joinWithCommas` that accepts at least one and up to
-five integers, then returns a string of those numbers separated by commas:
+Implement a function called `joinWithCommas` that accepts one to
+five integers, then returns a string of those numbers separated by commas.
+Here are some examples of function calls and returned values:
 
-* `joinWithCommas(1)` should return `'1'`.
-* `joinWithCommas(1, 2, 3)` should return `'1,2,3'`.
-* `joinWithCommas(1, 1, 1, 1, 1)` should return `'1,1,1,1,1'`.
-* etc.
+| Function call                   | | Returned value |
+|---------------------------------+-+----------------|
+| `joinWithCommas(1)`             | | `'1'`          |
+| `joinWithCommas(1, 2, 3)`       | | `'1,2,3'`      |
+| `joinWithCommas(1, 1, 1, 1, 1)` | | `'1,1,1,1,1'`  |
+
+<br>
 
 <iframe src="{{site.dartpadx}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1"></iframe>
 
 
 ## Optional named parameters
 
-Dart also allows for optional parameters that are referenced by name when the function is invoked. These
-are defined using a brace syntax:
+Using a curly brace syntax,
+you can define optional parameters that have names.
 
 {% prettify dart %}
 void printName(String firstName, String lastName, {String suffix}) {
@@ -357,8 +387,8 @@ printName('Avinash', 'Gupta');
 printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
 {% endprettify %}
 
-Like optional positional parameters they default to null, but it's possible to provide default values as
-well:
+As you might expect, the value of these parameters is null by default,
+but you can provide default values:
 
 {% prettify dart %}
 void printName(String firstName, String lastName, {String suffix = ''}) {
@@ -366,7 +396,7 @@ void printName(String firstName, String lastName, {String suffix = ''}) {
 }
 {% endprettify %}
 
-A function cannot have both optional positional and optional named parameters.
+A function can't have both optional positional and optional named parameters.
 
 
 ### Code example
@@ -378,10 +408,12 @@ class. It should take three named parameters:
 * `String newString`
 * `double newDouble`
 
-When called, it should return a new `MyDataObject` based on the current
-instance, with data from the above parameters copied into the object's properties (e.g. the value of
-`newInt` is copied into `anInt`). Any parameters that
-aren't supplied (they'll be null) should be ignored.
+When called, `copyWith` should return a new `MyDataObject`
+based on the current instance,
+with data from the preceding parameters (if any)
+copied into the object's properties.
+For example, if `newInt` is non-null,
+then copy its value into `anInt`.
 
 <iframe src="{{site.dartpadx}}?id=1dd9cc9654f9e6d080f99bfb9772dae4"></iframe>
 
@@ -389,7 +421,7 @@ aren't supplied (they'll be null) should be ignored.
 ## Exceptions
 
 Dart code can throw and catch exceptions. In contrast to Java, all of Dart’s exceptions are unchecked
-exceptions. Methods do not declare which exceptions they might throw, and you are not required to catch
+exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
 any exceptions.
 
 Dart provides `Exception` and `Error` types, but you're
@@ -400,8 +432,7 @@ throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
 {% endprettify %}
 
-There are three keywords to remember for handling exceptions: `try`,
-`on`, and `catch`:
+Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
 {% prettify dart %}
 try {
@@ -418,12 +449,12 @@ try {
 }
 {% endprettify %}
 
-The `try` keyword works as it does in most other languages. The
-`on` keyword is used to filter for specific exceptions by type, and the
-`catch` keyword is used to get a reference to the exception object. They can be
-used together or separately, as shown in the previous example.
+The `try` keyword works as it does in most other languages.
+Use the `on` keyword to filter for specific exceptions by type,
+and the `catch` keyword to get a reference to the exception object.
 
-Exceptions can be rethrown using the `rethrow` keyword:
+If you can't completely handle the exception, use the `rethrow` keyword
+to propagate the exception:
 
 {% prettify dart %}
 try {
@@ -434,8 +465,8 @@ try {
 }
 {% endprettify %}
 
-And if you need to execute code whether or not an exception is thrown, you can do so with
-`finally`:
+To execute code whether or not an exception is thrown,
+use `finally`:
 
 {% prettify dart %}
 try {
@@ -454,25 +485,43 @@ Implement `tryFunction` below. It should execute an untrustworthy method and
 then do the following:
 
 * If `untrustworthy` throws an `ExceptionWithMessage`,
-  `logger.logException` should be called with the exception type and message
+  call `logger.logException` with the exception type and message
   (try using `on` and `catch`).
-    
 * If `untrustworthy` throws an `Exception`,
-  `logger.logException` should be called with the exception type (try using
-  `on` for this one).
-    
-* If `untrustworthy` throws any other object, it shouldn't be caught.
-    
-* After everything's caught and handled, `logger.doneLogging` should be called
+  call `logger.logException` with the exception type
+  (try using `on` for this one).
+* If `untrustworthy` throws any other object, don't catch the exception.
+* After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
 <iframe src="{{site.dartpadx}}?id=e221e3fd667825e62aac79079b8b5c59"></iframe>
 
+{% comment %}
+I was confused about the text saying "call... with the exception type" but
+using only on for it (since how would you know the type without the exception
+object?). I used on catch at first, and that worked. Then I looked at the
+solution and changed to what it used, and it did NOT work! Here's what I saw:
+
+Untrustworthy threw an Exception, but a different type was logged: Exception.
+
+(Looking at the test code, I see the type it looks for is actually _Exception.)
+
+Both the text & the test need to be changed.
+
+ISSUE: Solution doesn't exactly match the comments in "Your code", so the
+line count is off.
+
+ISSUE: When I select all in the Solution and then switch to the Your code tab,
+everything in THAT tab looks selected, too. The same is NOT true of the
+Test code tab. After I reloaded, this behavior stopped.
+{% endcomment %}
+
 
 ## Using `this` in a constructor
 
-Dart provides a handy shortcut for assigning values to properties in a constructor. Simply use
-`this.propertyName` when declaring the constructor:
+Dart provides a handy shortcut for assigning
+values to properties in a constructor:
+use `this.propertyName` when declaring the constructor:
 
 {% prettify dart %}
 class MyColor {
@@ -486,7 +535,8 @@ class MyColor {
 final color = MyColor(80, 80, 128);
 {% endprettify %}
 
-This works for named parameters as well. Property names become the names of the parameters:
+This technique works for named parameters, too.
+Property names become the names of the parameters:
 
 {% prettify dart %}
 class MyColor {
@@ -498,7 +548,7 @@ class MyColor {
 final color = MyColor(red: 80, green: 80, blue: 80);
 {% endprettify %}
 
-Default values work as expected for both parameter types:
+For optional parameters, default values work as expected:
 
 {% prettify dart %}
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
@@ -508,20 +558,30 @@ MyColor({this.red = 0, this.green = 0, this.blue = 0});
 
 ### Code example
 
-Add a one-line constructor to `MyClass` that will use
-`this.` syntax to receive and assign values for all three of the class's
-properties:
+Add a one-line constructor to `MyClass` that uses
+`this.` syntax to receive and assign values for
+all three properties of the class.
 
 <iframe src="{{site.dartpadx}}?id=2778e81ae2c5729d45c611829f3888c2"></iframe>
 
+{% comment %}
+This one seems super easy compared to previous ones.
+We've already seen it in the Exceptions example,
+and I'd already used it in a previous example.
+Move it up higher? Or make it more challenging, somehow?
+Maybe require both positional and optional named parameters (with defaults)?
+{% endcomment %}
 
 ## Initializer lists
 
-In between a constructor's signature and its body, you can place an initializer list:
+Sometimes when you implement a constructor,
+you need to do some setup before the constructor body executes.
+For example, final fields must have values
+before the constructor body executes.
+Do this work in an initializer list,
+which goes between the constructor's signature and its body:
 
 {% prettify dart %}
-// Initializer list sets instance variables before
-// the constructor body runs.
 Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
@@ -529,8 +589,8 @@ Point.fromJson(Map<String, num> json)
 }
 {% endprettify %}
 
-This is a good place to initialize final fields, and it's executed before the constructor body. In
-addition, the initializer list is a handy place to put asserts for running in debug mode:
+The initializer list is also a handy place to put asserts,
+which run only during development:
 
 {% prettify dart %}
 NonNegativePoint(this.x, this.y)
@@ -542,20 +602,37 @@ NonNegativePoint(this.x, this.y)
 
 ### Code example
 
-Complete the `FirstTwoLetters` constructor below. It should use an initializer
-list to assign the first two characters in `word` to the
-`letterOne` and `LetterTwo` properties. You can also
-throw in an `assert` to catch words less than two characters in length for extra
-credit!
+Complete the `FirstTwoLetters` constructor below.
+Use an initializer list to assign the first two characters in `word` to
+the `letterOne` and `LetterTwo` properties.
+For extra credit, add an `assert` to catch words of less than two characters.
 
-<iframe src="{{site.dartpadx}}?id=4bf47cf7e11bc5902e605a3efc3183ec"></iframe>
+{% comment %}
+ISSUE: The test was broken. I've fixed it in my gist.
+
+Is the assert even executed? I can't see any effect on the test,
+which makes me think asserts are ignored.
+Also, the test just checks for the presence of any exception, not for
+an AssertionError.
+
+Also, my print() wasn't visible in the Output until I fixed my code and/or
+the test. That was unexpected.
+It'd be cool if Output appeared only if you want it, like Solution does.
+{% endcomment %}
+
+<iframe src="{{site.dartpadx}}?id=df45dfc1af2e6af712930c331115eb78"></iframe>
 
 
 ## Named constructors
 
-Much like JavaScript, Dart does not support method overloads (two methods with the same name but
-different signatures). To allow for classes with multiple constructors, Dart supports named
-constructors:
+{% comment %}
+Much like JavaScript, Dart doesn't support method overloads
+(two methods with the same name but different signatures).
+[ISSUE: methods & constructors aren't the same thing,
+so I deleted that. We can add it back if we can word it better.]
+{% endcomment %}
+To allow classes to have multiple constructors,
+Dart supports named constructors:
 
 {% prettify dart %}
 class Point {
@@ -570,7 +647,7 @@ class Point {
 }
 {% endprettify %}
 
-These are invoked using their full name:
+To use a named constructor, invoke it using its full name:
 
 {% prettify dart %}
 final myPoint = Point.origin();
@@ -578,16 +655,22 @@ final myPoint = Point.origin();
 
 ### Code example
 
-Try giving this class a named constructor called `black` that sets all three
-properties to zero.
+Give the Color class a constructor named `Color.black`
+that sets all three properties to zero.
+
+{% comment %}
+ISSUE: comment says "a named constructor called "black"", which sounds
+wrong to me. I fixed it in the text but not in the example.
+{% endcomment %}
 
 <iframe src="{{site.dartpadx}}?id=e1a82c77547e659eb24f4e698abf1eca"></iframe>
 
 
 ## Factory constructors
 
-Dart also supports factory constructors, which are named constructors that can return subtypes or even
-null. To create one, use the `factory` keyword:
+Dart supports factory constructors,
+which can return subtypes or even null.
+To create a factory constructor, use the `factory` keyword:
 
 {% prettify dart %}
 class Square extends Shape {}
@@ -609,21 +692,30 @@ class Shape {
 
 ### Code example
 
-Fill in the factory constructor for `IntegerHolder` below. It should do the
-following:
+Fill in the factory constructor named `IntegerHolder.fromList`,
+making it do the following:
 
-* If there's one value in the list, create an `IntegerSingle` with that value.
-* If there are two values, create an `IntegerDouble` with the values in order.
-* If there are three values, create an `IntegerTriple` with values in order.
+* If the list has **one** value,
+  create an `IntegerSingle` with that value.
+* If the list has **two** values,
+  create an `IntegerDouble` with the values in order.
+* If the list has **three** values,
+  create an `IntegerTriple` with the values in order.
 * Otherwise, return null.
     
+{% comment %}
+TODO: Fix the comment to not say "named".
+ISSUE: The hint acts like you don't already have the signature for the constructor.
+{% endcomment %}
 <iframe src="{{site.dartpadx}}?id=727981a8ece1244b52a3c6dc377a8085"></iframe>
 
 
 ## Redirecting constructors
 
-Sometimes a constructor’s only purpose is to redirect to another constructor in the same class. A
-redirecting constructor’s body is empty, with the constructor call appearing after a colon (:).
+Sometimes a constructor’s only purpose is to redirect to
+another constructor in the same class.
+A redirecting constructor’s body is empty,
+with the constructor call appearing after a colon (`:`).
 
 {% prettify dart %}
 class Automobile {
@@ -671,14 +763,29 @@ class ImmutablePoint {
 
 ### Code example
 
-Create a constant constructor for the `Recipe` class below. It should do the
-following:
+Modify the `Recipe` class so its instances can be constants,
+and create a constant constructor that does the following:
 
-* Have three parameters: `ingredients`, `calories`,
+* Has three parameters: `ingredients`, `calories`,
   and `milligramsOfSodium` (in that order).
-* Use `this.` syntax to automatically assign the parameter values to the
+* Uses `this.` syntax to automatically assign the parameter values to the
   object properties of the same name.
-* Be constant (use the `const` keyword just before
-  `Recipe` when declaring the constructor.
+* Is constant, with the `const` keyword just before
+  `Recipe` in the constructor declaration.
 
 <iframe src="{{site.dartpadx}}?id=c400cb84fab309ddbbb436c1ced90dad"></iframe>
+
+{% comment %}
+TODO: Copy edit the hint.
+{% endcomment %}
+
+## What next?
+
+We hope you enjoyed using this codelab to learn or test your knowledge of
+some of the most interesting features of the Dart language.
+Here are some suggestions for what to do now:
+
+* Try [other Dart codelabs](/codelabs).
+* Read the [Dart language tour](/guides/language/language-tour).
+* Play with [DartPad.]({{site.dartpad}})
+* [Get the Dart SDK](/get-dart).
