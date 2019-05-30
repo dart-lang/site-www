@@ -4,7 +4,14 @@
     - title: Language samples
       permalink: /samples
     - title: Codelabs
-      permalink: /codelabs
+      expanded: true
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /codelabs
+        - title: Cheatsheet codelab
+          permalink: /codelabs/dart-cheatsheet
     - title: Tutorials
       urlExactMatch: true
       match-page-url-exactly: true
