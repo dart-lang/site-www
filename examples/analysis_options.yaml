@@ -1,6 +1,8 @@
 # Supported lint rules and documentation:
 #   http://dart-lang.github.io/linter/lints/
 
+include: package:pedantic/analysis_options.yaml
+
 analyzer:
   exclude: [build/**]
   strong-mode:
@@ -8,15 +10,8 @@ analyzer:
 
 linter:
   rules:
-    #- always_declare_return_types
-    #- always_specify_types
+    avoid_shadowing_type_parameters: false # TODO: reinstate?
     - annotate_overrides
-    #- avoid_as
-    - avoid_empty_else
-    - avoid_init_to_null
-    - avoid_relative_lib_imports
-    - avoid_return_types_on_setters
-    - avoid_types_as_parameter_names
     - await_only_futures
     - camel_case_types
     - cancel_subscriptions
@@ -24,16 +19,11 @@ linter:
     - comment_references
     - constant_identifier_names
     - control_flow_in_finally
-    - empty_catches
-    - empty_constructor_bodies
     - empty_statements
     - hash_and_equals
     - implementation_imports
     - iterable_contains_unrelated_type
-    - library_names
-    - library_prefixes
     - list_remove_unrelated_type
-    - no_duplicate_case_values
     - non_constant_identifier_names
     - one_member_abstracts
     - only_throw_errors
@@ -41,24 +31,12 @@ linter:
     - package_api_docs
     - package_names
     - package_prefixed_library_names
-    - prefer_contains
-    - prefer_equal_for_default_values
-    - prefer_is_not_empty
-    #- public_member_api_docs
-    - recursive_getters
-    - slash_for_doc_comments
-    #- sort_constructors_first # TODO: reinstate after https://github.com/dart-lang/site-www/issues/1196 is resolved?
+    - sort_constructors_first
     - sort_unnamed_constructors_first
-    - super_goes_last
     - test_types_in_equals
     - throw_in_finally
     - type_annotate_public_apis
-    - type_init_formals
-    #- unawaited_futures
     - unnecessary_brace_in_string_interps
     - unnecessary_const
     - unnecessary_getters_setters
     - unnecessary_new
-    - unrelated_type_equality_checks
-    - use_rethrow_when_possible
-    - valid_regexps

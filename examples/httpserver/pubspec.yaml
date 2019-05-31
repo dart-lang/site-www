@@ -3,10 +3,11 @@ description: Sample HTTP clients and servers
 homepage: https://www.dartlang.org/docs/tutorials/httpserver/
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.3.1 <3.0.0'
 
 dependencies:
   http_server: ^0.9.6
 
 dev_dependencies:
   test: ^1.0.0
+  pedantic: ^1.0.0
