@@ -31,7 +31,7 @@ linter:
     - package_api_docs
     - package_names
     - package_prefixed_library_names
-    #- sort_constructors_first # TODO: reinstate after https://github.com/dart-lang/site-www/issues/1196 is resolved?
+    - sort_constructors_first
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
