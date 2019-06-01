@@ -311,10 +311,11 @@ assert(lineCount == null);
 
 <div class="alert alert-info" markdown="1">
 **Note:**
-The `assert()` call is ignored in production code.
-During development, <code>assert(<em>condition</em>)</code>
-throws an exception unless *condition* is true. For details,
-see [Assert](#assert).
+Production code ignores the `assert()` call.
+During development, on the other hand,
+<code>assert(<em>condition</em>)</code> throws an exception if
+_condition_ is false.
+For details, see [Assert](#assert).
 </div>
 
 
@@ -2284,7 +2285,9 @@ the scope of that clause.
 
 ### Assert
 
-Use an `assert` statement to disrupt normal execution if a boolean
+During development, use an assert statement
+— <code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>; —
+to disrupt normal execution if a boolean
 condition is false. You can find examples of assert statements
 throughout this tour. Here are some more:
 
@@ -2300,19 +2303,8 @@ assert(number < 100);
 assert(urlString.startsWith('https'));
 {% endprettify %}
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Assert statements have no effect in production code;
-they're for development only.
-Flutter enables asserts in [debug mode.][Flutter debug mode]
-Development-only tools such as [dartdevc][]
-typically support asserts by default.
-Some tools, such as [dart][] and [dart2js,][dart2js]
-support asserts through a command-line flag: `--enable-asserts`.
-</div>
-
-To attach a message to an assert,
-add a string as the second argument.
+To attach a message to an assertion,
+add a string as the second argument to `assert`.
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 {% prettify dart %}
@@ -2325,6 +2317,18 @@ resolves to a boolean value. If the expression’s value
 is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
 [AssertionError][]) is thrown.
+
+When exactly do assertions work?
+That depends on the tools and framework you're using:
+
+* Flutter enables assertions in [debug mode.][Flutter debug mode]
+* Development-only tools such as [dartdevc][]
+  typically support assertions by default.
+* Some tools, such as [dart][] and [dart2js,][dart2js]
+  support assertions through a command-line flag: `--enable-asserts`.
+
+In production code, assertions are ignored, and
+the arguments to `assert` aren't evaluated.
 
 
 ## Exceptions
