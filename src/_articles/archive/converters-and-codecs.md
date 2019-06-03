@@ -3,7 +3,6 @@ title: Converters and codecs
 description: Learn how to write efficient conversions.
 original-date: 2014-02-06
 date: 2015-03-17
-category: libraries
 obsolete: true
 ---
 
@@ -135,7 +134,7 @@ method is invoked with an output-
 sink as argument. The method then returns an input sink into which the caller
 puts data.
 
-![Chunked conversion](/articles/libraries/images/chunked-conversion.png)
+![Chunked conversion](/articles/archive/images/chunked-conversion.png)
 
 **Note**: An asterisk (`*`) in the diagram represents optional multiple calls.
 
