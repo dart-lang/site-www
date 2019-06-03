@@ -181,8 +181,9 @@ include: package:pedantic/analysis_options.yaml
   When a **new version of `pedantic`** is published,
   code that previously passed analysis might **start failing analysis.**
   We recommend updating your code to work with the new rules.
-  Other options are to use a [specific version of pedantic,][]
-  include a specific version of the [pedantic analysis options file,][]
+  Other options are to
+  include a specific version of the pedantic analysis options file
+  (as described [in the pedantic README][]),
   explicitly enable individual linter rules,
   or [disable individual rules][].
 </aside>
@@ -410,5 +411,4 @@ Use the following resources to learn more about static analysis in Dart:
 [linter rules]: http://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
-[specific version of pedantic,]: https://github.com/dart-lang/pedantic/blob/master/README.md#using-the-lints
-[pedantic analysis options file,]: https://github.com/dart-lang/pedantic/tree/master/lib
+[in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
