@@ -2323,7 +2323,7 @@ That depends on the tools and framework you're using:
 
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
 * Development-only tools such as [dartdevc][]
-  typically support assertions by default.
+  typically enable assertions by default.
 * Some tools, such as [dart][] and [dart2js,][dart2js]
   support assertions through a command-line flag: `--enable-asserts`.
 
