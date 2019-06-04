@@ -181,8 +181,10 @@ include: package:pedantic/analysis_options.yaml
   When a **new version of `pedantic`** is published,
   code that previously passed analysis might **start failing analysis.**
   We recommend updating your code to work with the new rules.
-  Other options are to [use a specific version][]
-  of `pedantic`, explicitly enable individual linter rules,
+  Other options are to
+  include a specific version of the pedantic analysis options file
+  (as described [in the pedantic README][]),
+  explicitly enable individual linter rules,
   or [disable individual rules][].
 </aside>
 
@@ -222,22 +224,29 @@ for more information.
 
 If you include an analysis options file such as the one in `pedantic`, 
 you might want to disable some of the included rules.
-Disabling individual rules is just like enabling them,
-except that you add `: false` after the rule name.
+Disabling individual rules is similar enabling them,
+but with two differences:
+
+* Omit the dash (`-`) before the rule name.
+* Add `: false` _after_ the rule name.
+
 Here's an example of an analysis options file
-that uses all pedantic rules except `unawaited_futures`:
+that uses all pedantic rules except `avoid_shadowing_type_parameters`.
+It also adds the lint `await_only_futures`:
 
 {% prettify yaml %}
 include: package:pedantic/analysis_options.yaml
 
 linter:
   rules:
-    unawaited_futures: false
+    avoid_shadowing_type_parameters: false
+    - await_only_futures
 {% endprettify %}
 
-<aside class="alert alert-warning" markdown="1">
-  **Don't include an initial dash (`- `)** when you specify a value (`: false)`.
-  The YAML syntax for key-value maps is slightly different
+<aside class="alert alert-info" markdown="1">
+  The reason you don't include an initial dash (`- `)
+  when you specify a value (`: false`) is that
+  the YAML syntax for key-value maps is slightly different
   from the YAML syntax for lists.
 </aside>
 
@@ -402,4 +411,4 @@ Use the following resources to learn more about static analysis in Dart:
 [linter rules]: http://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
-[use a specific version]: https://github.com/dart-lang/pedantic/blob/master/README.md#using-the-lints
+[in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
