@@ -8,6 +8,7 @@ void miscDeclAnalyzedButNotTested() {
     // Not if there is nothing before it.
     if (_chunks.isEmpty) return false;
     // #enddocregion comments-like-sentences
+    return true;
   };
 
   // #docregion block-comments
