@@ -148,13 +148,16 @@ The following tools are especially for developing web apps:
 The following tools have special support for developing or running
 command line apps and servers:
 
-[Standalone Dart VM: `dart`](/server/tools/dart-vm)
+[Standalone Dart VM: `dart`](/tools/dart-vm)
 : Executes Dart code.
   IDEs that support Dart,
   and some of the `pub` commands, use this
   command behind-the-scenes to execute Dart scripts.
   Note that you must configure your IDE with the location of
   the `dart` binary.
+
+[AOT compiler and runtime: `dart2aot`, `dartaotruntime`](/tools/dart2aot)
+: Support ahead-of-time compilation of Dart code to native x64 machine code.
 
 [Pub package manager: `pub`](/tools/pub/cmd)
 : Simplifies downloading and running scripts,
