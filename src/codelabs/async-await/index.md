@@ -314,9 +314,9 @@ main() async {
 
 
 
-The exercise below is created with partially completed code snippets as a
-failing unit test, and you will be writing code and make it pass. Verify your
-code by clicking the Run button.
+The following example is a failing unit test that contains partially completed
+code snippets. Your task is to complete the example so that the test passes.
+Verify your code by clicking the "Run" button.
 
 Add the following:
 
@@ -324,12 +324,12 @@ Add the following:
   that produces the String result ‘User role: <user role>!'. The <user role> can
   be obtained by calling the provided async function `getRole` which returns a
   `String` describing the user role. Example return value from
-  `reportUserRole()`: `'User role: tester'`
-* Part 2: Write an `async` function `reportLogins` that returns the string:
-  ‘Total number of logins: <login amount>'. The <login amount> can be obtained
+  `reportUserRole()`: `'User role: tester'`.
+* Part 2: Write an `async` function `reportLogins` that returns the string
+  'Total number of logins: <# of logins>'. You can obtain the number of logins
   by calling the provided asynchronous function `getLoginAmount`, which returns
   an `int` representing the number of times that the user has logged in. Example
-  return value from `reportLogins(): 'Total number of logins: 57'`
+  return value from `reportLogins(): 'Total number of logins: 57'`.
 
 
 ## Handling errors
@@ -369,12 +369,12 @@ the code inside the `catch` clause executes.
 ## Practice handling errors
 Use `async` and `await` to accomplish the following:
 
-* Make `changeUsername` call the provided asynchronous function
-  `getNewUsername`, and return its result
-* `changeUsername` must catch and return any errors thrown by getNewUsername,
-  prefixing the returned error with the following string: `Error:`
-* Example return value from `changeUsername` when `getNewUsername` throws an
-  error: `Error: Username must contain only alphanumeric values`
+* Update `changeUsername` to call the provided asynchronous function
+  `getNewUsername`, and return its result.
+* The `changeUsername` function must catch and return any errors thrown by getNewUsername
+* Prefix the returned error with the following string: `Error:`.
+* An example return value from `changeUsername` when `getNewUsername` throws an
+  error: `Error: Username must contain only alphanumeric values`.
 
 
 ## Putting it all together
@@ -417,10 +417,9 @@ other. </aside>
 
 * Try [other Dart codelabs](/codelabs).
 * Play with [DartPad.]({{site.dartpad}})
-* The [Futures]({{site.url}}/tutorials/language/futures) tutorial
-* [Isolates]({{site.dart_api}}/stable/2.2.0/dart-isolate/dart-isolate-library.html)
-* Read about [Dart's type system]({{site.url}}/guides/language/sound-dart)
+* The [Futures](/tutorials/language/futures) tutorial
+* Read about [Dart's type system](/guides/language/sound-dart)
   for more examples of type signatures with futures. You should [prefer
   signatures in function type
-  annotations]({{site.url}}/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
+  annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
   wherever possible!
