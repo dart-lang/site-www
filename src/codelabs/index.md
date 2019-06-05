@@ -20,6 +20,10 @@ Use the latest, experimental version of DartPad to learn,
 remind yourself about, or test your knowledge of
 some of the most commonly used, yet unique features of the Dart language.
 
+### [Futures Async & Await](/codelabs/async-await)
+
+Use DartPad to learn how to write asynchronous code in Dart via futures and the
+async/await keywords.
 
 ## Flutter
 

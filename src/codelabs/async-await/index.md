@@ -1,10 +1,16 @@
-## Asynchronous Dart Code: Future, async, and await
+---
+title: Asynchronous Dart code - futures, async, and await 
+description: A series of explanations and exercises for writing asynchronous code in Dart
+date: 2019-06-07
+tags: [ future, async, await, asynchronous, try, catch, error ]
+---
 
+## Asynchronous Dart code: future, async, and await
 
 ## Introduction
 
 
-Welcome to the asynchronous Dart codelab! In this codelab you'll practice using
+Welcome to the asynchronous Dart codelab! In this codelab you practice using
 Dart to run asynchronous code via the `async` and `await` keywords.
 
 In addition to explanations, this codelab includes embedded editors that show 
@@ -13,22 +19,22 @@ test your knowledge by completing the exercises.
 
 Before you begin this codelab, you should:
 
-* Have some experience writing asynchronous code -- for example, writing code 
-that sends a request to a server and then handles a response
+* Have some experience writing asynchronous code. (For example, send a request
+  to a server and handle the response)
 
 When you finish this codelab, you'll know the following: 
 
 * How to use the `async` keyword
 * How to use the `await` keyword
 * When to use `async` and `await` in your code
-* How your code will be executed when you use the `async/await` keywords
+* How your code executes when using the `async/await` keywords
 * How to handle errors from an asynchronous call using `try/catch` expressions 
 in async functions.
-* Where to find more information for related to the `async/await` material 
+* Where to find more information for the `async/await` material 
 covered in this codelab.
 
 
-## Why Async Matters
+## Why async matters
 
 Asynchronous operations let your program complete other work while waiting for 
 an operation to finish. Some common processes that require asynchronous 
@@ -38,17 +44,16 @@ operations include:
 * Writing to a database
 * Reading data from a file
 
-In order to write code that implements these features, you will need to learn 
-the Dart syntax for Futures, async, and await. In Dart you cannot use 
-synchronous code to handle asynchronous operations. 
+To implement these features, you will need to learn the Dart syntax for
+futures, async, and await. In Dart you cannot use synchronous code to handle
+asynchronous operations.
 
 Consider the following example that fails to print the desired user order to the
 console: 
 
-Note: this example shows how *not* to handle asynchronous code in dart. 
-{:.fails-sa}
+```dart
+// Note: this example shows how *not* to handle asynchronous code in dart. 
 
-```
 String createOrderMessage () {
   var order = getUserOrder(); 
   return 'Your order is: $order';
@@ -62,49 +67,46 @@ Future<String> getUserOrder() {
 main() {
   print(createOrderMessage()); 
 }
+`// Your order is: Instance of '_Future<String>'`
 ```
 
-`// Your order is: Instance of '_Future<String>'`
 
 In the above code:
 
-* `getUserOrder` is an asynchronous function that waits four seconds before 
+* `getUserOrder` is an asynchronous function that waits four seconds before
 returning a string describing the user's order: a large latte. (For a further
- explanation you can  
- [find out more about Future.delayed](https://api.dartlang.org/stable/2.3.0/dart-async/Future/Future.delayed.html))
+explanation you can [find out more about
+Future.delayed](https://api.dartlang.org/stable/2.3.0/dart-async/Future/Future.delayed.html))
 * `createOrderMessage` calls `getUserOrder` as if it were a synchronous function
  -- it invokes `getUserOrder` and immediately prints the result. 
-* Since `getUserOrder` waits four seconds before returning the user's order, 
-`createOrderMessage` never actually prints the user's order. Instead you can see
- `Instance of '_Future<String>'`  printed to the console as the value returned 
- by `createOrderMessage().`
+* Since `getUserOrder` waits four seconds before returning the user's order,
+`createOrderMessage` never actually prints the user's order. Instead the console
+prints the value that is immediately returned by `createOrderMessage` which
+turns out to be `Instance of '_Future<String>'`.
 
-What is a future, and how do we write code to handle the asynchronous function
+What is a future, and how do you write code to handle the asynchronous function
  `getUserOrder`?
 
 
-## Async in Dart: What is a Future?
+## Async in Dart: What is a future?
 
-
-
-In Dart, the result of an asynchronous operation is represented by a
+In Dart, a
 [Future](https://api.dartlang.org/stable/2.2.0/dart-async/Future-class.html)
-object. A future object can be in one of two states: uncompleted or completed.
+represents the result of an asynchronous operation. A future object can be in
+one of two states: uncompleted or completed.
 
-### **Lifecycle of a Future Object**
-
-### **Uncompleted**
+### Uncompleted
 
 When you invoke a function that returns a future, that function immediately 
 returns a future object in an uncompleted state. While in its uncompleted state,
  a future object is simply waiting for asynchronous operations to finish or to 
  throw an error. 
 
-### **Completed **
+### Completed
 
 There are two ways that a future object can complete:
 
-#### **Completed - Success**
+#### Success
 
 If the asynchronous operations succeed, the future completes and returns a 
 result of type T. For example,  
@@ -113,12 +115,12 @@ result of type T. For example,
 result. If a future produces a result that isn't a usable value, then the
 future's type is `Future<void>`. 
 
-#### **Completed - Error**
+#### Error
 
-Instead of succeeding, if the asynchronous operations being performed by the 
+If the asynchronous operations being performed by the 
 function throw an error, the future completes and returns an error. 
 
-To see this lifecycle at work consider what happens after you invoke the 
+To see this lifecycle at work consider what happens after invoking the 
 `getUserOrder` function:
 
 ```
@@ -139,7 +141,7 @@ main() {
 
 `// Your order is: Instance of '_Future<String>'`
 
-* after 1 second has passed: the future is uncomplete - we cannot access the
+* after 1 second has passed: the future hasn't been completed - you can't access the
 desired result yet
 
 `     Your order is: Instance of '_Future<String>'`
@@ -150,41 +152,39 @@ result
 `'Large Latte'`
 
 
-But how do you access this result that completes 4 seconds later? In addition
+How do you access this result that completes 4 seconds later? In addition
 to providing future objects, Dart also provides a clean and easy way to handle
 their results -- the `async` and `await` keywords. 
 
 Quick Review:
 
-* In Dart, the result of an asynchronous operation is represented by a
-[Future](https://api.dartlang.org/stable/2.2.0/dart-async/Future-class.html)`<T>`
-object that produces a result of type `T`. For example,
+* In Dart, a
+[Future](https://api.dartlang.org/stable/2.2.0/dart-async/Future-class.html)
+produces a result of type `<T>`. For example,
 [Future](https://api.dartlang.org/stable/2.3.0/dart-async/Future-class.html)`<String>`
-is the type signature for a future object that produces a string result. If a 
+is the type signature for a future object that produces a string result. If a
 future produces a result that isn't a usable value, then the future's type is
-`Future<void>`. 
+`Future<void>`.
 * A future can be in one of two states: uncompleted, or completed. 
 * A completed future can either (1) complete with a result or (2) complete with
-an error
-* When a function that returns a future is invoked, two things happen:
+an error.
+* When you invoke a function that returns a future, two things happen:
 
 1. The function queues up work to be done and returns an uncompleted future.
 2. Later, when the operation is finished, the future completes with a value or
 with an error.
 
 
-## Working with Futures in Dart: async and await
-
-
+## Working with futures in Dart: async and await
 
 In the previous section you learned that, in Dart, future objects represent the
 results of asynchronous operations -- if a function does asynchronous work, it
-returns a future object. But how do we access the results of future objects when
+returns a future object. But how to access the results of future objects when
 using asynchronous functions?
 
-The `async` and `await` keywords provide a declarative way to (1) define
-asynchronous functions and (2) access their results *after they have completed.*
-
+The `async` and `await` keywords provide a declarative way to:
+1. Define asynchronous functions
+2. Access their results *after they have completed.*
 
 To define an `async` function:
 
@@ -193,18 +193,19 @@ To define an `async` function:
 
     createOrderMessage () async {
 
-2. Update the function's type signature to return a future. In the following example, we define an `async` function that completes with a string.   
+2. Update the function's type signature to return a future. The following 
+example defines an `async` function that completes with a string.   
 
-    Future<String> createOrderMessage () async {
+[[[ Example ]]]
 
- *Note: You can * [use
+{{site.alert.note}}
+ Note: You can [use
  Future<void>](https://dart.dev/guides/language/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values) *
  as the return type for asynchronous functions that don't return usable values.
- *
+ {{site.alert.end}}
 
-
-Once you have defined an async function, that function will return a future
-object. Using the await keyword, you can "wait" for the completed future to
+Once you've defined an async function, that function returns a future
+object. Use the `await` keyword to "wait" for the completed future to
 return either its value or its error.
 
     String order = await getUserOrder();
@@ -239,22 +240,23 @@ main() async {
 }
 ```
 
-*  *Note: * [All functions return a
-   value](https://dart.dev/guides/language/language-tour#return-values) * even
-   if you don't explicitly use the * *`return`* * keyword. *
-*  *Note: Dart can *  [infer the Future<String> type](https://dart.dev/guides/language/sound-dart#type-inference) * for you.
-* 
+{{site.alert.note}}
+Note: [All functions return a
+   value](https://dart.dev/guides/language/language-tour#return-values) even
+   if you don't explicitly use the `return` keyword.
+{{site.alert.end}}
+   
+{{site.alert.note}}
+Note: Dart can [infer the Future<String> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+{{site.alert.end}}
 
 This code has only three changes from the preceding implementation:
 
-1. Mark the return type for `createOrderMessage` with `Future<String>`
-2. Add **`async`** before the method body (the `createOrderMessage` and the `main` method)
-3. Add **`await`** before the calling the asynchronous function (before we invoke `getUserOrder` and `createOrderMessage`)
+1. Mark the return type for `createOrderMessage` with `Future<String>`.
+2. Add **`async`** before the method body (the `createOrderMessage` and the `main` method).
+3. Add **`await`** before the calling the asynchronous function (before invoking `getUserOrder` and `createOrderMessage`).
 
-
-## Execution Flow with async and await
-
-
+## Execution flow with async and await
 
 As of Dart 2.0, functions marked as `async` run synchronously until the first
 `await` keyword. This means that within an `async` function's body, all
@@ -308,7 +310,7 @@ main() async {
 ```
 
 
-## Practice Using async and await
+## Practice using async and await
 
 
 
@@ -334,7 +336,7 @@ Add the following:
 
 
 
-`Async` functions can handle errors using try-catch:
+Handle errors in an `async` function by using try / catch: 
 
 ```
 void createOrderMessage () async {
@@ -347,7 +349,7 @@ void createOrderMessage () async {
 }
 
 Future<String> getUserOrder() {
-  // Imagine that this function is more complex and throws an exception
+  // Imagine that this function is more complex and throws an exception.
   var str = Future.delayed(Duration(seconds: 4), () => throw 'Cannot locate user order');
   return str;
 }
@@ -364,9 +366,8 @@ with synchronous code: if the code within the `try` block throws an exception,
 the code inside the `catch` clause executes.
 
 
-## Practice Handling Errors with async and awaitImplement code to accomplish the following:
-
-
+## Practice handling errors
+Use `async` and `await` to accomplish the following:
 
 * Make `changeUsername` call the provided asynchronous function
   `getNewUsername`, and return its result
@@ -376,12 +377,9 @@ the code inside the `catch` clause executes.
   error: `Error: Username must contain only alphanumeric values`
 
 
-## Putting It All Together
+## Putting it all together
 
-
-
-Now it's time to sum up what you've learned in one final exercise. In the
-following snippet, write the following:
+It's time to sum up what you've learned in one final exercise. Write the following:
 
 * Part1: Write a function `addHello.` `addHello` should take a single string
   argument, and return that argument surrounded by the text ‘Hello <string>!'
@@ -402,10 +400,12 @@ following snippet, write the following:
 
 <aside class="special">
 
-**Note**: All Dart code runs in the context of an
-[isolate](https://api.dartlang.org/stable/2.2.0/dart-isolate/dart-isolate-library.html)
+{{site.alert.note}}
+Note: All Dart code runs in the context of an
+[isolate]({{site.dart_api}}/stable/2.2.0/dart-isolate/dart-isolate-library.html)
 that owns all of the memory that the Dart code uses. While Dart code is
 executing, no other code in the same isolate can run.
+{{site.alert.end}}
 
 If you want multiple parts of Dart code to run concurrently, you can run them in
 separate isolates. (Web apps use *workers* instead of isolates.) Multiple
@@ -413,13 +413,14 @@ isolates run at the same time, usually each on its own CPU core. Isolates don't
 share memory, and the only way they can interact is by sending messages to each
 other. </aside>
 
-Find Out More
+### Find out more
 
-*  [Futures](https://www.dartlang.org/tutorials/language/futures)
-*  [The Event Loop in Dart](https://webdev.dartlang.org/articles/performance/event-loop)
-*  [Isolates](https://api.dartlang.org/stable/2.2.0/dart-isolate/dart-isolate-library.html)
-* Read about [Dart's type system](https://dart.dev/guides/language/sound-dart)
+* Try [other Dart codelabs](/codelabs).
+* Play with [DartPad.]({{site.dartpad}})
+* The [Futures]({{site.url}}/tutorials/language/futures) tutorial
+* [Isolates]({{site.dart_api}}/stable/2.2.0/dart-isolate/dart-isolate-library.html)
+* Read about [Dart's type system]({{site.url}}/guides/language/sound-dart)
   for more examples of type signatures with futures. You should [prefer
   signatures in function type
-  annotations](https://dart.dev/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
+  annotations]({{site.url}}/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
   wherever possible!
