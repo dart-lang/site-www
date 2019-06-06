@@ -107,7 +107,7 @@ returns a future object in an uncompleted state. While in its uncompleted state,
 
 There are two ways that a future object can complete:
 
-#### Success
+#### 1. Success
 
 If the asynchronous operations succeed, the future completes and returns a 
 result of type T. For example,  
@@ -115,7 +115,7 @@ result of type T. For example,
 result. If a future produces a result that isn't a usable value, then the
 future's type is `Future<void>`. 
 
-#### Error
+#### 2. Error
 
 If the asynchronous operations being performed by the 
 function throw an error, the future completes and returns an error. 
@@ -123,7 +123,7 @@ function throw an error, the future completes and returns an error.
 To see this lifecycle at work consider what happens after invoking the 
 `getUserOrder` function:
 
-```
+```dart
 String createOrderMessage () {
   var order = getUserOrder(); 
   return 'Your order is: $order';
@@ -137,9 +137,10 @@ Future<String> getUserOrder() {
 main() {
   print(createOrderMessage()); 
 }
-```
 
 `// Your order is: Instance of '_Future<String>'`
+```
+
 
 * after 1 second has passed: the future hasn't been completed - you can't access the
 desired result yet
@@ -227,7 +228,7 @@ main() {
 }
 ```
 
-```
+```dart
 // After: handle an async function that returns a Future<String>
 
 Future<String> createOrderMessage () async {
@@ -296,7 +297,7 @@ void createOrderMessage () async {
 }
 
 Future<String> getUserOrder() {
-  return Future.delayed(Duration(seconds: 4), () => 'Large Latte'); 
+  return Future.delayed(Duration(seconds: 4), () => 'Large Latte');
 }
 
 main() async {
@@ -312,31 +313,48 @@ main() async {
 
 ## Practice using async and await
 
-
-
 The following example is a failing unit test that contains partially completed
 code snippets. Your task is to complete the example so that the test passes.
 Verify your code by clicking the "Run" button.
 
 Add the following:
 
-* Part 1: Add logic to the `reportUserRole` function so that it returns a Future
-  that produces the String result ‘User role: <user role>!'. The <user role> can
-  be obtained by calling the provided async function `getRole` which returns a
-  `String` describing the user role. Example return value from
-  `reportUserRole()`: `'User role: tester'`.
-* Part 2: Write an `async` function `reportLogins` that returns the string
-  'Total number of logins: <# of logins>'. You can obtain the number of logins
-  by calling the provided asynchronous function `getLoginAmount`, which returns
-  an `int` representing the number of times that the user has logged in. Example
-  return value from `reportLogins(): 'Total number of logins: 57'`.
+#### Part 1
+Add logic to the `reportUserRole` function:
 
+1. `reportUserRole` returns a Future that produces the String result `'User role: <user role>'`.
+1. Obtain the user role by calling the provided `async` function `getRole`
+1. `getRole` returns a `String` describing the user's role.
+1. Example return value from `reportUserRole`: `'User role: tester'`
+
+#### Part 2
+Implement an `async` function `reportLogins`:
+
+1. `reportLogins` returns the string `'Total number of logins: <# of logins>'`.
+1. Obtain the number of logins by calling the provided `async` function `getLoginAmount`
+1. `getLoginAmount` returns an `int` representing the number of times that the user has logged in.
+1. Example return value from `reportLogins: 'Total number of logins: 57'`
+
+<iframe frameborder="no" height="525" src="https://dartpad2-ux.firebaseapp.com/experimental/embed-new?id=f751b692502c4ee43d932f745860b056" width="100%"></iframe>
 
 ## Handling errors
 
-
-
 Handle errors in an `async` function by using try / catch: 
+
+
+```dart
+  try {
+    var order = await getUserOrder();
+    print('Awaiting user order...');
+  } catch (err) {
+    print('Caught error: $err');
+  }
+}
+```
+The [try/catch clause](/guides/language/language-tour#catch)
+behaves the same way with asynchronous as with
+synchronous code: if the code within the `try` clause throws an exception,
+the code inside the `catch` clause executes.
 
 ```dart
 void createOrderMessage () async {
@@ -360,10 +378,6 @@ main() async {
 
 // Caught error: Cannot locate user order
 ```
-
-The try-catch code behaves in the same way with asynchronous code as it does
-with synchronous code: if the code within the `try` block throws an exception,
-the code inside the `catch` clause executes.
 
 
 ## Practice handling errors
