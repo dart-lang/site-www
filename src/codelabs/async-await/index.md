@@ -8,7 +8,7 @@ tags: [ future, async, await, asynchronous, try, catch, error ]
 # Asynchronous Dart code: future, async, and await
 
 ## Introduction
-
+ 
 Welcome to the asynchronous Dart codelab! In this codelab you practice using
 Dart to run asynchronous code via the `async` and `await` keywords.
 
@@ -77,7 +77,7 @@ In the above code:
 * `getUserOrder` is an asynchronous function that waits four seconds before
 returning a string describing the user's order: a large latte. (For a further
 explanation you can [find out more about
-Future.delayed](https://api.dartlang.org/stable/2.3.0/dart-async/Future/Future.delayed.html))
+Future.delayed]({{site.dart_api}}/Future.delayed.html))
 * `createOrderMessage` calls `getUserOrder` as if it were a synchronous function
  -- it invokes `getUserOrder` and immediately prints the result. 
 * Since `getUserOrder` waits four seconds before returning the user's order,
@@ -92,7 +92,7 @@ What is a future, and how do you write code to handle the asynchronous function
 ## Async in Dart: What is a future?
 
 In Dart, a
-[Future](https://api.dartlang.org/stable/2.2.0/dart-async/Future-class.html)
+[Future]({{site.dart_api}}/Future-class.html)
 represents the result of an asynchronous operation. A future object has
 two states: uncompleted or completed.
 
@@ -159,9 +159,9 @@ their results -- the `async` and `await` keywords.
 Quick Review:
 
 * In Dart, a
-[Future](https://api.dartlang.org/stable/2.2.0/dart-async/Future-class.html)
+[Future]({{site.dart_api}}/Future-class.html)
 produces a result of type `<T>`. For example,
-[Future](https://api.dartlang.org/stable/2.3.0/dart-async/Future-class.html)`<String>`
+[Future]({{site.dart_api}}/Future-class.html)`<String>`
 is the type signature for a future object that produces a string result. If a
 future produces a result that isn't a usable value, then the future's type is
 `Future<void>`.
@@ -196,11 +196,11 @@ To define an `async` function:
 2. Update the function's type signature to return a future. The following 
 example defines an `async` function that completes with a string.   
 
-<div class="alert alert-info" markdown="1">
- Note: You can 
+{{ site.alert.info }}
+ You can 
  [use Future\<void\>]({{url}}/guides/language/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values)
  as the return type for asynchronous functions that don't return usable values.
-</div>
+{{ site.alert.end }}
 
 Once you've defined an async function, that function returns a future
 object. Use the `await` keyword to "wait" for the completed future to
@@ -240,15 +240,15 @@ main() async {
 }
 ```
 
-<div class="alert alert-info" markdown="1">
-Note: [All functions return a
+{{ site.alert.info }} 
+[All functions return a
    value](https://dart.dev/guides/language/language-tour#return-values) even
    if you don't explicitly use the `return` keyword.
-</div>
+{{ site.alert.end }}
    
-<div class="alert alert-info" markdown="1">
-Note: Dart can [infer the Future\<String\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
-</div>
+{{ site.alert.info }}
+Dart can [infer the Future\<String\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+{{ site.alert.end }}
 
 This code has only three changes from the preceding implementation:
 
@@ -400,12 +400,12 @@ It's time to sum up what you've learned in one final exercise. Write the followi
 
 <aside class="special">
 
-<div class="alert alert-info" markdown="1">
+{{ site.alert.info }}
 Note: All Dart code runs in the context of an
-[isolate]({{site.dart_api}}/stable/2.2.0/dart-isolate/dart-isolate-library.html)
+[isolate]({{site.dart_api}}/dart-isolate-library.html)
 that owns all of the memory that the Dart code uses. While Dart code is
 executing, no other code in the same isolate can run.
-</div>
+{{ site.alert.end }}
 
 If you want multiple parts of Dart code to run concurrently, you can run them in
 separate isolates. (Web apps use *workers* instead of isolates.) Multiple
@@ -418,8 +418,7 @@ other. </aside>
 * Try [other Dart codelabs](/codelabs).
 * Play with [DartPad.]({{site.dartpad}})
 * The [Futures](/tutorials/language/futures) tutorial
-* Read about [Dart's type system](/guides/language/sound-dart)
-  for more examples of type signatures with futures. You should [prefer
-  signatures in function type
-  annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
-  wherever possible!
+* Read about [Dart's type system](/guides/language/sound-dart) for more examples
+of type signatures with futures. You should
+[prefer signatures in function type annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
+wherever possible!

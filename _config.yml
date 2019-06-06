@@ -85,6 +85,8 @@ custom:
         ext: zip
         editor-ext: zip
 
+
+
 # Build settings
 
 assets:
@@ -94,6 +96,30 @@ assets:
     - _shared/_assets/css
 
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+
+## Site-wide shorthands
+
+os-list: [Windows, macOS, Linux]
+
+alert:
+  important: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-circle"></i> **Important:**
+  info: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i>
+  note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i> **Note:**
+  secondary: >-
+    <aside class="alert alert-secondary" role="alert" markdown="1">
+  tip: >-
+    <aside class="alert alert-success" role="alert" markdown="1">
+    <i class="far fa-lightbulb"></i> **Tip:**
+  warning: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-triangle"></i> **Warning:**
+  end: </aside>
 
 # bundler_args: --without production
 exclude: [diagrams]
