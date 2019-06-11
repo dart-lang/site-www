@@ -1,11 +1,9 @@
 ---
 title: Asynchronous Dart code - futures, async, and await 
 description: A series of explanations and exercises for writing asynchronous code in Dart
-date: 2019-06-07
+date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
 ---
-
-# Asynchronous Dart code: future, async, and await
 
 ## Introduction
  
