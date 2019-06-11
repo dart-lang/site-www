@@ -5,8 +5,6 @@ date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
 ---
 
-## Introduction
- 
 Welcome to the asynchronous Dart codelab! In this codelab you practice using
 Dart to run asynchronous code via the `async` and `await` keywords.
 
@@ -80,7 +78,7 @@ What is a future, and how do you write code to handle the asynchronous function
 
 In Dart, a
 [Future]({{site.dart_api}}/Future-class.html)
-represents the result of an asynchronous operation. A future object has
+represents the result of an asynchronous operation. A future has
 two states: uncompleted or completed.
 
 {{ site.alert.note }}
@@ -91,19 +89,19 @@ two states: uncompleted or completed.
 ### Uncompleted
 
 When you invoke a function that returns a future, that function immediately 
-returns a future object in an uncompleted state. While in its uncompleted state,
-a future object is simply waiting for asynchronous operations to finish or to 
+returns a future in an uncompleted state. While in its uncompleted state,
+a future is simply waiting for asynchronous operations to finish or to 
 throw an error. 
 
 ### Completed
 
-There are two ways that a future object can complete:
+There are two ways that a future can complete:
 
 #### 1. Success
 
 If the asynchronous operations succeed, the future completes and returns a 
 result of type T. For example,  
-`Future<String>` is the type signature for a future object that produces a string
+`Future<String>` is the type signature for a future that produces a string
 result. If a future produces a result that isn't a usable value, then the
 future's type is `Future<void>`. 
 
@@ -140,7 +138,7 @@ Quick Review:
 [Future]({{site.dart_api}}/Future-class.html)
 produces a result of type `<T>`. For example,
 [Future]({{site.dart_api}}/Future-class.html)`<String>`
-is the type signature for a future object that produces a string result. If a
+is the type signature for a future that produces a string result. If a
 future produces a result that isn't a usable value, then the future's type is
 `Future<void>`.
 * A future can be in one of two states: uncompleted, or completed. 
@@ -180,7 +178,7 @@ example defines an `async` function that completes with a string.
  as the return type for asynchronous functions that don't return usable values.
 {{ site.alert.end }}
 
-Now that you've declared an async function, it returns a future object. Use the
+Now that you've declared an async function, it returns a future. Use the
 `await` keyword to "wait" for the completed future to return either its value or its error.
 
 ```dart
@@ -221,7 +219,7 @@ Quick review:
 * An `async` function returns a future.
 * You can only use the `async` and `await` keywords within an `async` function body.
 * To declare an `async` function, add the keyword after the function's parameters but before the function's body.
-* Use the `await` keyword before invoking an async function to "wait" for the completed future to return either its value or its error.
+* Use the `await` keyword before invoking an async function to "wait" for the future to complete either with a value or an error.
 {{ site.alert.end }}
 
 ## Execution flow with async and await
