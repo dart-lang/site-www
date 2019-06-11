@@ -5,20 +5,21 @@ date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
 ---
 
-Welcome to the asynchronous Dart codelab! In this codelab you practice using
+Welcome to the asynchronous Dart codelab! In this codelab, you practice using
 Dart to run asynchronous code via the `async` and `await` keywords.
 
-In addition to explanations, this codelab includes embedded editors that show 
+In addition to explaining how to write asynchronous Dart code,
+this codelab includes embedded editors that show
 you working code examples and coding exercises. You can use these editors to 
 test your knowledge by completing the exercises.
 
 Before you begin this codelab, you should:
 
 * Have programming experience in another language
-* Know basic syntax in Dart 
+* Know basic Dart syntax
 * Have some experience writing asynchronous code in another language
 
-When you finish this codelab, you'll know the following: 
+This codelab covers the following material:
 
 * How to use the `async` keyword
 * How to use the `await` keyword
@@ -40,9 +41,9 @@ operations include:
 * Writing to a database
 * Reading data from a file
 
-To implement these features, you will need to learn the Dart syntax for
-futures, async, and await. In Dart you cannot use synchronous code to handle
-asynchronous operations.
+To implement these features, you will need to learn about the `Futures` class
+as well as the `async` and `await` keywords. In Dart you cannot use synchronous
+code to handle asynchronous operations.
 
 Consider the following example that fails to print the desired user order to the
 console: 
@@ -60,7 +61,7 @@ Future.delayed]({{site.dart_api}}/Future.delayed.html))
 * `createOrderMessage` calls `getUserOrder` as if it were a synchronous function
  -- it invokes `getUserOrder` and immediately prints the result. 
 * Since `getUserOrder` waits four seconds before returning the user's order,
-`createOrderMessage` never actually prints the user's order. Instead the console
+`createOrderMessage` never prints the user's order. Instead the console
 prints the value immediately returned by `createOrderMessage` which
 turns out to be `Instance of '_Future<String>'`.
 
@@ -70,7 +71,7 @@ What is a future, and how do you write code to handle the asynchronous function
  {{ site.alert.secondary }} 
  Quick review: 
  * Asynchronous operations let a program do work while waiting for an operation to finish.
- * In Dart, you can use Futures, `async` and `await` to write declarative asynchronous code.
+ * Dart contains specific keywords and classes for writing asynchronous code.
  {{ site.alert.end }}
 
 
@@ -82,7 +83,7 @@ represents the result of an asynchronous operation. A future has
 two states: uncompleted or completed.
 
 {{ site.alert.note }}
-'Uncompleted' is a special term in Dart referring to the state of a future 
+'Uncompleted' is a Dart term referring to the state of a future
  before it has produced a result.
 {{ site.alert.end }}
 
@@ -154,7 +155,7 @@ with an error.
 
 ## Working with futures in Dart: async and await
 
-The `async` and `await` keywords provide a declarative way to: Define 
+The `async` and `await` keywords provide a declarative way to define 
 asynchronous functions and access their results *after they have completed.*
 
 To define an `async` function:
