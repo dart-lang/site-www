@@ -13,35 +13,34 @@ this codelab includes embedded editors that show
 you working code examples and coding exercises. You can use these editors to 
 test your knowledge by completing the exercises.
 
-Before you begin this codelab, you should:
+Here's what you should know to get the most out of this codelab:
 
-* Have programming experience in another language
-* Know basic Dart syntax
-* Have some experience writing asynchronous code in another language
+* Have programming experience in another language.
+* Know basic Dart syntax.
+* Have some experience writing asynchronous code in another language.
 
 This codelab covers the following material:
 
-* How to use the `async` keyword
-* How to use the `await` keyword
-* When to use `async` and `await` in your code
-* How your code executes when using the `async/await` keywords
-* How to handle errors from an asynchronous call using `try/catch` expressions 
+* How to use the `async` keyword.
+* How to use the `await` keyword.
+* When to use `async` and `await` in your code.
+* How your code executes when using the `async/await` keywords.
+* How to handle errors from an asynchronous call using `try/catch` expressions
 in async functions.
 * Where to find more information for the `async/await` material 
 covered in this codelab.
 
-
-## Why async matters
+## Why asynchronous code matters
 
 Asynchronous operations let your program complete other work while waiting for 
 an operation to finish. Some common processes that require asynchronous 
 operations include: 
 
-* Fetching data over a network
-* Writing to a database
-* Reading data from a file
+* Fetching data over a network.
+* Writing to a database.
+* Reading data from a file.
 
-To implement these features, you will need to learn about the `Futures` class
+To implement these features, you will need to learn about the `Future` class
 as well as the `async` and `await` keywords. In Dart you cannot use synchronous
 code to handle asynchronous operations.
 
@@ -66,7 +65,7 @@ prints the value immediately returned by `createOrderMessage` which
 turns out to be `Instance of '_Future<String>'`.
 
 What is a future, and how do you write code to handle the asynchronous function
- `getUserOrder`?
+`getUserOrder`?
  
  {{ site.alert.secondary }} 
  Quick review: 
@@ -277,7 +276,6 @@ Handle errors in an `async` function by using try / catch:
   } catch (err) {
     print('Caught error: $err');
   }
-}
 ```
 You can write [try/catch clauses](/guides/language/language-tour#catch)
 the same way with asynchronous as with
@@ -293,7 +291,7 @@ Use `async` and `await` to accomplish the following:
 
 * Implement a `changeUsername` function that calls the provided asynchronous function
   `getNewUsername` and returns its result.
-* The `changeUsername` function must catch any errors thrown by `getNewUsername`
+* The `changeUsername` function must catch any errors thrown by `getNewUsername`.
 
 <iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=858f71f0ad0e70051999bcafa41806a3" width="100%"></iframe>
 
@@ -301,22 +299,27 @@ Use `async` and `await` to accomplish the following:
 
 It's time to sum up what you've learned in one final exercise. Write the following:
 
-* Part1: Write a function `addHello.` `addHello` should take a single string
+## Part1: 
+* Write a function `addHello.` `addHello` should take a single string
   argument, and return that argument surrounded by the text ‘Hello <string>!'
-* Part2: Write a function `greetUser` that takes no arguments
+
+## Part2:
+* Write a function `greetUser` that takes no arguments.
 * To obtain the username, `greetUser` should call the provided async function
-  `getUsername`, which waits for 1 second before returning a string
+  `getUsername`, which waits for 1 second before returning a string.
 * `greetUser` should create a greeting for the user by calling `addHello,`
   passing it the username, and returning the result. For example, if the
   username is ‘Jenny' `greetUser` should create and return the greeting "Hello
   Jenny!"
-* Part3: Write a function `sayGoodbye` that takes no arguments
+
+## Part3: 
+* Write a function `sayGoodbye` that takes no arguments.
 * Within its function body, `sayGoodbye` should call the provided async function
   `logoutUser` which takes no arguments.
-* `sayGoodbye` should catch any errors thrown by `logoutUser`
+* `sayGoodbye` should catch any errors thrown by `logoutUser`.
 * If `logoutUser` succeeds, `sayGoodbye` should return the string "<result>
   Thanks! See you next time!" where <result> is the String value returned by
-  calling `logoutUser`
+  calling `logoutUser`.
 
 <iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=f601d25bc2833c957186e3c6bf71effc" width="100%"></iframe>
 
@@ -334,7 +337,7 @@ isolates run at the same time, usually each on its own CPU core. Isolates don't
 share memory, and the only way they can interact is by sending messages to each
 other. </aside>
 
-### Find out more
+## What next?
 
 * Try [other Dart codelabs](/codelabs).
 * Play with [DartPad.]({{site.dartpad}})
