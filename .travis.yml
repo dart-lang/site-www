@@ -29,6 +29,8 @@ matrix:
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
+    - env: TASK="./tool/check-code.sh"
+      dart: dev
 
 before_install:
   - source ./tool/env-set.sh
