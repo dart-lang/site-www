@@ -227,7 +227,7 @@
   expanded: true
   children:
     - title: API reference
-      permalink: https://api.dartlang.org
+      permalink: https://api.dart.dev
     - title: Blog
       permalink: https://medium.com/dartlang
     - title: DartPad (online editor)

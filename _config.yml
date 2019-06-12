@@ -20,7 +20,7 @@ angulardart: https://webdev.dartlang.org/angular
 dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
 dart_vm:  /server
 flutter:  https://flutter.dev
-dart_api: https://api.dartlang.org
+dart_api: https://api.dart.dev
 flutter_api: https://api.flutter.dev
 pub: https://pub.dev
 pub-api: https://pub.dev/documentation
