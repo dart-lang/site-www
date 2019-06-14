@@ -198,8 +198,6 @@
         permalink: /guides/language/analysis-options
       - title: Fixing common type problems
         permalink: /guides/language/sound-problems
-      - title: Diagnostics
-        permalink: /guides/diagnostics
   - title: Testing & optimization
     children:
       - title: Testing
