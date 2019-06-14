@@ -18,7 +18,7 @@ The analyzer produces the following diagnostics for code that
 doesn't conform to the language specification or
 that might work in unexpected ways.
 
-### ambiguous\_set\_or\_map\_literal\_both
+### ambiguous_set_or_map_literal_both
 
 _This literal contains both 'Map' and 'Iterable' spreads, which makes it
 impossible to determine whether the literal is a map or a set._
@@ -71,7 +71,7 @@ union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     {...a, for (String s in b) s: s, ...c};
 ```
 
-### ambiguous\_set\_or\_map\_literal\_either
+### ambiguous_set_or_map_literal_either
 
 _This literal must be either a map or a set, but the elements don't have enough
 information for type inference to work._
@@ -145,7 +145,7 @@ union(a, b) {
 }
 ```
 
-### deprecated\_member\_use
+### deprecated_member_use
 
 _'{0}' is deprecated and shouldn't be used._
 
@@ -170,7 +170,7 @@ void f(C c) {
 The documentation for declarations that are annotated with `@deprecated`
 should indicate what code to use in place of the deprecated code.
 
-### expression\_in\_map
+### expression_in_map
 
 _Expressions can't be used in a map literal._
 
@@ -197,7 +197,7 @@ For example:
 var map = <String, int>{'a': 0, 'b': 1, 'c': 2};
 ```
 
-### invalid\_literal\_annotation
+### invalid_literal_annotation
 
 _Only const constructors can have the `@literal` annotation._
 
@@ -223,7 +223,7 @@ Remove the annotation:
 var x;
 ```
 
-### not\_iterable\_spread
+### not_iterable_spread
 
 _Spread elements in list or set literals must implement 'Iterable'._
 
@@ -252,7 +252,7 @@ var m = <String, int>{'a': 0, 'b': 1};
 var s = <String>{...m.keys};
 ```
 
-### sdk\_version\_set\_literal
+### sdk_version_set_literal
 
 _Set literals weren't supported until version 2.2, but this code must be able to
 run on earlier versions._
