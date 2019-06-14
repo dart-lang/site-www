@@ -34,12 +34,9 @@ void main() {
     var s = 'string interpolation';
 
     assert('Dart has $s, which is very handy.' ==
-        'Dart has string interpolation, ' +
-            'which is very handy.');
-    assert('That deserves all caps. ' +
-            '${s.toUpperCase()} is very handy!' ==
-        'That deserves all caps. ' +
-            'STRING INTERPOLATION is very handy!');
+        'Dart has string interpolation, ' + 'which is very handy.');
+    assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
+        'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
     // #enddocregion string-interpolation
   });
 
@@ -107,12 +104,7 @@ void main() {
   test('list-if', () {
     var promoActive = false;
     // #docregion list-if
-    var nav = [
-      'Home',
-      'Furniture',
-      'Plants',
-      if (promoActive) 'Outlet'
-    ];
+    var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
     // #enddocregion list-if
     assert(nav.length == 3);
   });
@@ -120,22 +112,13 @@ void main() {
   test('list-for', () {
     // #docregion list-for
     var listOfInts = [1, 2, 3];
-    var listOfStrings = [
-      '#0',
-      for (var i in listOfInts) '#$i'
-    ];
+    var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
     assert(listOfStrings[1] == '#1');
     // #enddocregion list-for
   });
 
   test('set-length', () {
-    var halogens = {
-      'fluorine',
-      'chlorine',
-      'bromine',
-      'iodine',
-      'astatine'
-    };
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 
     // #docregion set-length
     var elements = <String>{};

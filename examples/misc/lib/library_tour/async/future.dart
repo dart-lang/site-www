@@ -6,9 +6,7 @@ import 'dart:async';
 void miscDeclAnalyzedButNotTested() {
   final args = <String>[];
   Future<String> findEntryPoint() async => 'entrypoint';
-  Future<int> runExecutable(
-          String entryPoint, List<String> args) async =>
-      0;
+  Future<int> runExecutable(String entryPoint, List<String> args) async => 0;
   Future<int> flushThenExit(int exitCode) async => 0;
 
   {

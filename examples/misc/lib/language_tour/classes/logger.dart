@@ -5,8 +5,7 @@ class Logger {
 
   // _cache is library-private, thanks to
   // the _ in front of its name.
-  static final Map<String, Logger> _cache =
-      <String, Logger>{};
+  static final Map<String, Logger> _cache = <String, Logger>{};
 
   factory Logger(String name) {
     if (_cache.containsKey(name)) {
