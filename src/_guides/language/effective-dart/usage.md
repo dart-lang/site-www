@@ -10,7 +10,7 @@ prevpage:
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
-You can use the guidelines every day in the bodies of your Dart code. *Users*
+You can use these guidelines every day in the bodies of your Dart code. *Users*
 of your library may not be able to tell that you've internalized the ideas here,
 but *maintainers* of it sure will.
 
