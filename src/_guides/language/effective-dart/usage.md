@@ -10,10 +10,9 @@ prevpage:
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
-This is the most "blue-collar" guide in Effective Dart. You'll apply the
-guidelines here every day in the bodies of your Dart code. *Users* of your
-library may not be able to tell that you've internalized the ideas here, but
-*maintainers* of it sure will.
+You can use these guidelines every day in the bodies of your Dart code. *Users*
+of your library may not be able to tell that you've internalized the ideas here,
+but *maintainers* of it sure will.
 
 ## Libraries
 
