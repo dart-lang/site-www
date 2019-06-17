@@ -101,6 +101,9 @@ $dash-header-bg: #17212f;
         transform: none !important;
         padding:20px;
       }
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
     }
 
     .content-icon img {
