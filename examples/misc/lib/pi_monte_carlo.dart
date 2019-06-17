@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis
+// ignore_for_file: sort_constructors_first, type_annotate_public_apis
 
 // WARNING:
 //

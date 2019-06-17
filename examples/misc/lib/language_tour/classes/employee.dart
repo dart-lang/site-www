@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_cast, sort_constructors_first
 
 Map getDefaultData() => {}; // stub
 

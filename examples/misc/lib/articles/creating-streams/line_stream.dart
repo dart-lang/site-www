@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 import 'dart:async';
 
 /// Combines incoming strings into a single stream and outputs its lines.

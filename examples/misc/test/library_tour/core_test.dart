@@ -234,9 +234,9 @@ void main() {
 
       // Remove all elements from a list.
       fruits.clear();
-      assert(fruits.length == 0);
+      assert(fruits.isEmpty);
       // #enddocregion List
-      assert(vegetables.length == 0);
+      assert(vegetables.isEmpty);
     });
 
     test('indexOf', () {

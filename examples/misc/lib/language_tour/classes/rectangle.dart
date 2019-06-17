@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 class Rectangle {
   num left, top, width, height;
 

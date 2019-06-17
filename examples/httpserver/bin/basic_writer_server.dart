@@ -40,6 +40,6 @@ Future main() async {
         ..statusCode = HttpStatus.methodNotAllowed
         ..write("Unsupported request: ${req.method}.");
     }
-    response.close();
+    await response.close();
   }
 }

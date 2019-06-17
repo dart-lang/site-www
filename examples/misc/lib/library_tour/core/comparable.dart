@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 class Line implements Comparable<Line> {
   final int length;
   const Line(this.length);

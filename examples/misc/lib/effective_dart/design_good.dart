@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
 
 import 'dart:async';
 import 'dart:collection';
@@ -122,7 +122,7 @@ void miscDeclAnalyzedButNotTested() {
 
   // #docregion annotate-declaration
   bool isEmpty(String parameter) {
-    bool result = parameter.length == 0;
+    bool result = parameter.isEmpty;
     return result;
   }
   // #enddocregion annotate-declaration

@@ -10,7 +10,6 @@ analyzer:
 
 linter:
   rules:
-    avoid_shadowing_type_parameters: false # TODO: reinstate?
     - annotate_overrides
     - await_only_futures
     - camel_case_types
