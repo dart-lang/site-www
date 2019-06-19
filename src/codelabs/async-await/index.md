@@ -5,6 +5,8 @@ date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
 ---
 
+## Introduction
+
 Welcome to the asynchronous Dart codelab! In this codelab, you practice using
 Dart to run asynchronous code via the `async` and `await` keywords.
 
@@ -30,10 +32,54 @@ in async functions.
 * Where to find more information for the `async/await` material 
 covered in this codelab.
 
+
+## Key terms 
+This section provides definitions for the key terms that appear 
+throughout this codelab. The first section lists key terms that are generally
+used in asynchronous programming. The second section defines keywords and 
+terminology for writing asynchronous programs in Dart.
+
+### Asynchronous programming 
+
+**synchronous operation**   
+A synchronous operation blocks other operations from executing until it completes. 
+
+**synchronous function**  
+A synchronous function only performs synchronous operations.
+
+**asynchronous operation**   
+Once initiated, an asynchronous operation allows 
+other operations to execute before it completes.
+
+**asynchronous function**   
+An asynchronous function performs asynchronous operations.
+
+### Asynchronous programming in Dart
+**Future**  
+"Future" refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
+
+**future**   
+"future" refers to an instance of the Dart Future class.
+
+__`async`__  
+Use the `async` keyword to define an asynchronous function. To use the
+`async` keyword you must add it to a function definition just before the 
+function's body. Once you define an `async` function, you invoke it by prefixing
+it with the `await` keyword. 
+
+**async function**  
+A Dart async function is a function labeled with the `async` keyword.
+
+__`await`__  
+Before invoking an `async` function, you must use the `await` keyword. 
+This syntax allows the caller to access the completed value of the future.
+
+ 
+
 ## Why asynchronous code matters
 
-Asynchronous operations let your program complete other work while waiting for 
-an operation to finish. Some common processes that require asynchronous 
+Asynchronous operations let your program complete work while waiting for 
+another operation to finish. Some common processes that use asynchronous 
 operations include: 
 
 * Fetching data over a network.
@@ -47,11 +93,16 @@ code to handle asynchronous operations.
 Consider the following example that fails to print the desired user order to the
 console: 
 
+[//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=5c8c7716b6b4284842f15fe079f61e47"
+  style="margin-top: 25px; margin-bottom: 25px"
+  frameborder="no"
+  height="420"
+  width="100%" >
+</iframe>
 
-<iframe style="margin-top: 25px; margin-bottom: 25px" frameborder="no" height="420" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=5c8c7716b6b4284842f15fe079f61e47" width="100%"></iframe>
-
-
-In the above code:
+In the preceding example:
 
 * `getUserOrder` is an asynchronous function that waits four seconds before
 returning a string describing the user's order: a large latte. (For a further
@@ -90,7 +141,7 @@ two states: uncompleted or completed.
 
 When you invoke a function that returns a future, that function immediately 
 returns a future in an uncompleted state. While in its uncompleted state,
-a future is simply waiting for asynchronous operations to finish or to 
+a future is waiting for asynchronous operations to finish or to 
 throw an error. 
 
 ### Completed
@@ -105,31 +156,46 @@ result of type T. For example,
 result. If a future produces a result that isn't a usable value, then the
 future's type is `Future<void>`. 
 
+In the following example `getUserOrder` returns a future that completes by printing 
+to the console.
+
+[//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=57e6085344cbd1719ed42b32f8ad1bce"
+  style="margin-top: 25px; margin-bottom: 25px"
+  frameborder="no"
+  height="350"
+  width="100%" >
+</iframe>
+
+In the preceding example:
+1. Even though `getUserOrder` executes before the `print` method on line 8, the console
+   shows the `print` output from line 8 ("Fetching user order...") before the output from
+   `getUserOrder` ("Large Latte). This is because `getUserOrder` delays for 3 seconds before it
+   completes successfully by printing `Large Latte` to the console.
+
 #### 2. Error
 
 If the asynchronous operations being performed by the 
-function throw an error, the future completes and returns an error. 
+function throw an error or exception, the future completes and throws the error or exception.
 
-To see this lifecycle at work consider what happens after invoking the 
-`getUserOrder` function:
+In the following example, `getUserOrder` returns a future that completes by 
+throwing an Exception.
 
+[//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d843061bbd9388b837c57613dc6d5125"
+  style="margin-top: 25px; margin-bottom: 25px"
+  frameborder="no"
+  height="350"
+  width="100%" >
+</iframe>
 
-<iframe style="margin-top: 25px; margin-bottom: 25px" frameborder="no" height="450" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=57e6085344cbd1719ed42b32f8ad1bce" width="100%"></iframe>
+In this example, `getUserOrder` completes with an Exception indicating that the user ID is invalid.
 
-
-After 1 second has passed, notice that the future is in an uncompleted state - you can't access the
-desired result yet:
-
-`     Your order is: Instance of '_Future<String>'`
-
-After 4 seconds have passed, the future completes and produces the desired
-result:
-
-`Your order is: 'Large Latte'`
-
-How do you access this result that completes 4 seconds later? In the next section
-you will learn about using  the `async` and `await` keywords to handle the results
-of asynchronous functions. 
+You have learned about futures and how they complete, but how do you handle their
+results? In the next section you will learn how to use the `async` and `await`
+keywords to handle the results of asynchronous functions. 
 
 {{ site.alert.secondary }}
 Quick Review:
@@ -160,17 +226,15 @@ asynchronous functions and access their results *after they have completed.*
 To define an `async` function:
 
 1. Add the `async` keyword after the function's parameters but before the function's body:  
-
-    ```
-    createOrderMessage () async {
-    ```
+    {% prettify dart %}
+        void getUserOrder() [!async!] {
+    {% endprettify %}
 
 2. Update the function's type signature to return a future. The following  
-example defines an `async` function that completes with a string.  
-
-    ```
-    Future<String> createOrderMessage() async {
-    ```
+example defines an `async` function that doesn't return a usable value:
+    {% prettify dart %}
+        [!Future<void>!] getUserOrder() async {
+    {% endprettify %}
 
 {{ site.alert.info }}
  You can 
@@ -178,41 +242,60 @@ example defines an `async` function that completes with a string.
  as the return type for asynchronous functions that don't return usable values.
 {{ site.alert.end }}
 
-Now that you've declared an async function, it returns a future. Use the
-`await` keyword to "wait" for the completed future to return either its value or its error.
+Now that you have declared an async function:
+  1. Your function returns a future that completes with the type that you specify
+  1. You must use the `await` keyword before invoking the function  to "wait"
+   for the future to complete either with a value or an error.
 
-```dart
-var order = await getUserOrder();
-```
+{% prettify dart %}
+var order = [!await!] getUserOrder();
+{% endprettify %}
 
-Remember: you can only use the `await` keyword within an `async` function body.
-The following example demonstrates how to use the `await` keyword to access
-the result of the async function `getUserOrder`. Notice that `createOrderMessage`
-is an `async` function:
 
+The following example provides a side-by-side comparison of a synchronous function
+and an asynchronous function. Since you can only use the `await` keyword within 
+an `async` function body, the example converts the parent function from 
+synchronous to asynchronous thus enabling use of the `await` keyword: 
+
+
+[//]: https://gist.github.com/8f4d136e7eb447f4acc7ccb523006e10
 <iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=8f4d136e7eb447f4acc7ccb523006e10"
   style="margin-top: 25px; margin-bottom: 25px"
   frameborder="no"
-  height="400"
-  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=b8d026d2b23102084534159fafc9d7c6"
+  height="425"
   width="100%">
 </iframe>
 
-{{ site.alert.info }} 
-[All functions return a
-   value](https://dart.dev/guides/language/language-tour#return-values) even
-   if you don't explicitly use the `return` keyword.
-{{ site.alert.end }}
-   
+In this synchronous example the console immediately prints the messages 
+"Fetching user order..." and "Your order is: Large Latte".
+
+[//]: https://gist.github.com/b8d026d2b23102084534159fafc9d7c6
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=b8d026d2b23102084534159fafc9d7c6"
+  style="margin-top: 25px; margin-bottom: 25px"
+  frameborder="no"
+  height="425"
+  width="100%">
+</iframe>
+
+In this asynchronous example, the console does not print "Your order is: Large
+Latte" until after a four second delay has passed. This asynchronous example has
+only four changes from the preceding synchronous example:
+
+1. Update the return types for `createOrderMessage` and `getUserOrder` from 
+`String` to `Future<String>`.
+2. Add the **`async`** keyword before the method bodies for `createOrderMessage`
+and the `main` method.
+3. Use the **`await`** keyword before calling the asynchronous functions 
+`getUserOrder` and `createOrderMessage`.
+4. Update the body of `getUserOrder` to use `Future.delayed` to mock asynchronous
+operations that fetch the user's order.
+
+
 {{ site.alert.info }}
-Dart can [infer the Future\<String\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+Dart can [infer the Future\<T\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
 {{ site.alert.end }}
-
-This code has only three changes from the preceding implementation:
-
-1. Mark the return type for `createOrderMessage` with `Future<String>`.
-2. Add **`async`** before the method body (the `createOrderMessage` and the `main` method).
-3. Add **`await`** before the calling the asynchronous function (before invoking `getUserOrder` and `createOrderMessage`).
 
 {{ site.alert.secondary }}
 Quick review: 
@@ -229,14 +312,27 @@ As of Dart 2.0, functions marked as `async` run synchronously until the first
 synchronous code immediately executes. The following example demonstrates how 
 execution proceeds within an `async` function body:
 
-<iframe frameborder="no" height="325" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d7abfdea1ae5596e96c7c0203d975dba" width="100%"></iframe>
+[//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d7abfdea1ae5596e96c7c0203d975dba"
+  style="margin-top: 40px; margin-bottom: 40px"
+  frameborder="no"
+  height="425"
+  width="100%">
+</iframe>
 
 Notice that the timing of the output shifts if the print statement
 "Awaiting user order" moves to the line after the first `await` keyword in
 `createOrderMessage`:
 
-<iframe frameborder="no" height="325" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=e6ee207677e9f0e9220e73440e35eefc" width="100%"></iframe>
-
+[//]: https://gist.github.com/e6ee207677e9f0e9220e73440e35eefc
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=e6ee207677e9f0e9220e73440e35eefc"
+  style="margin-top: 25px; margin-bottom: 25px"
+  frameborder="no"
+  height="425"
+  width="100%">
+</iframe>
 
 ## Practice using async and await
 
@@ -244,9 +340,7 @@ The following example is a failing unit test that contains partially completed
 code snippets. Your task is to complete the example so that the test passes.
 Verify your code by clicking the "Run" button.
 
-Add the following:
-
-#### Part 1
+### Part 1: `reportUserRole`
 Add logic to the `reportUserRole` function:
 
 1. `reportUserRole` returns a Future that produces the String result `'User role: <user role>'`.
@@ -254,7 +348,7 @@ Add logic to the `reportUserRole` function:
 1. `getRole` returns a `String` describing the user's role.
 1. Example return value from `reportUserRole`: `'User role: tester'`
 
-#### Part 2
+### Part 2: `reportLogins`
 Implement an `async` function `reportLogins`:
 
 1. `reportLogins` returns the string `'Total number of logins: <# of logins>'`.
@@ -262,7 +356,13 @@ Implement an `async` function `reportLogins`:
 1. `getLoginAmount` returns an `int` representing the number of times that the user has logged in.
 1. Example return value from `reportLogins: 'Total number of logins: 57'`
 
-<iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=f751b692502c4ee43d932f745860b056" width="100%"></iframe>
+[//]: https://gist.github.com/f751b692502c4ee43d932f745860b056
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=f751b692502c4ee43d932f745860b056&theme=dark"
+  frameborder="no"
+  height="525"
+  width="100%">
+</iframe>
 
 ## Handling errors
 
@@ -284,7 +384,13 @@ the code inside the `catch` clause executes. The only difference is that with
 asynchronous functions you must use the async/await keywords following the 
 syntax you used in the prior section:
 
-<iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=25ade03f0632878a9169209e3cd7bef2" width="100%"></iframe>
+[//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=25ade03f0632878a9169209e3cd7bef2"
+  frameborder="no"
+  height="525"
+  width="100%" >
+</iframe>
 
 ## Practice handling errors
 Use `async` and `await` to accomplish the following:
@@ -293,17 +399,24 @@ Use `async` and `await` to accomplish the following:
   `getNewUsername` and returns its result.
 * The `changeUsername` function must catch any errors thrown by `getNewUsername`.
 
-<iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=858f71f0ad0e70051999bcafa41806a3" width="100%"></iframe>
+[//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
+  frameborder="no"
+  height="525"
+  width="100%" >
+</iframe>
 
 ## Putting it all together
 
 It's time to sum up what you've learned in one final exercise. Write the following:
 
-## Part1: 
-* Write a function `addHello.` `addHello` should take a single string
-  argument, and return that argument surrounded by the text ‘Hello <string>!'
+### Part 1: `addHello` 
+* Write a function `addHello.` that takes a single string
+  argument
+ * `addHello` should return its String argument surrounded by the text ‘Hello <string>!'
 
-## Part2:
+### Part 2: `greetUser`
 * Write a function `greetUser` that takes no arguments.
 * To obtain the username, `greetUser` should call the provided async function
   `getUsername`, which waits for 1 second before returning a string.
@@ -312,30 +425,22 @@ It's time to sum up what you've learned in one final exercise. Write the followi
   username is ‘Jenny' `greetUser` should create and return the greeting "Hello
   Jenny!"
 
-## Part3: 
+### Part 3: `sayGoodbye`
 * Write a function `sayGoodbye` that takes no arguments.
-* Within its function body, `sayGoodbye` should call the provided async function
+* Within its body, `sayGoodbye` should call the provided async function
   `logoutUser` which takes no arguments.
 * `sayGoodbye` should catch any errors thrown by `logoutUser`.
 * If `logoutUser` succeeds, `sayGoodbye` should return the string "<result>
   Thanks! See you next time!" where <result> is the String value returned by
   calling `logoutUser`.
 
-<iframe frameborder="no" height="525" src="https://dartpad.dartlang.org/experimental/embed-new.html?id=f601d25bc2833c957186e3c6bf71effc" width="100%"></iframe>
-
-
-{{ site.alert.info }}
-Note: All Dart code runs in the context of an
-[isolate]({{site.dart_api}}/dart-isolate-library.html)
-that owns all of the memory that the Dart code uses. While Dart code is
-executing, no other code in the same isolate can run.
-{{ site.alert.end }}
-
-If you want multiple parts of Dart code to run concurrently, you can run them in
-separate isolates. (Web apps use *workers* instead of isolates.) Multiple
-isolates run at the same time, usually each on its own CPU core. Isolates don't
-share memory, and the only way they can interact is by sending messages to each
-other. </aside>
+[//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
+  frameborder="no"
+  height="525"
+  width="100%">
+</iframe>
 
 ## What next?
 
