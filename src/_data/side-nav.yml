@@ -12,7 +12,7 @@
           permalink: /codelabs
         - title: Cheatsheet codelab
           permalink: /codelabs/dart-cheatsheet
-        - title: Futures Async Await
+        - title: Asynchronous Programming with Dart
           permalink: /codelabs/async-await
     - title: Tutorials
       urlExactMatch: true

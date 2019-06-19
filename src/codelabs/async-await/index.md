@@ -8,7 +8,7 @@ tags: [ future, async, await, asynchronous, try, catch, error ]
 ## Introduction
 
 Welcome to the asynchronous Dart codelab! In this codelab, you practice using
-Dart to run asynchronous code via the `async` and `await` keywords.
+Dart to run asynchronous code using the `async` and `await` keywords.
 
 In addition to explaining how to write asynchronous Dart code,
 this codelab includes embedded editors that show
@@ -61,7 +61,7 @@ An asynchronous function performs asynchronous operations.
 **future**   
 "future" refers to an instance of the Dart Future class.
 
-__`async`__  
+**async**  
 Use the `async` keyword to define an asynchronous function. To use the
 `async` keyword you must add it to a function definition just before the 
 function's body. Once you define an `async` function, you invoke it by prefixing
@@ -70,7 +70,7 @@ it with the `await` keyword.
 **async function**  
 A Dart async function is a function labeled with the `async` keyword.
 
-__`await`__  
+**await**    
 Before invoking an `async` function, you must use the `await` keyword. 
 This syntax allows the caller to access the completed value of the future.
 
@@ -106,10 +106,10 @@ In the preceding example:
 
 * `getUserOrder` is an asynchronous function that waits four seconds before
 returning a string describing the user's order: a large latte. (For a further
-explanation you can [find out more about
-Future.delayed]({{site.dart_api}}/Future.delayed.html))
-* `createOrderMessage` calls `getUserOrder` as if it were a synchronous function
- -- it invokes `getUserOrder` and immediately prints the result. 
+explanation you can find out more about 
+[Future.delayed]({{site.dart_api}}/Future.delayed.html)).
+* `createOrderMessage` calls `getUserOrder` as if it were a synchronous 
+function&mdash;it invokes `getUserOrder` and immediately prints the result. 
 * Since `getUserOrder` waits four seconds before returning the user's order,
 `createOrderMessage` never prints the user's order. Instead the console
 prints the value immediately returned by `createOrderMessage` which
@@ -119,9 +119,9 @@ What is a future, and how do you write code to handle the asynchronous function
 `getUserOrder`?
  
  {{ site.alert.secondary }} 
- Quick review: 
- * Asynchronous operations let a program do work while waiting for an operation to finish.
- * Dart contains specific keywords and classes for writing asynchronous code.
+  Quick review: 
+  * Asynchronous operations let a program do work while waiting for an operation to finish.
+  * Dart contains specific keywords and classes for writing asynchronous code.
  {{ site.alert.end }}
 
 
@@ -133,8 +133,8 @@ represents the result of an asynchronous operation. A future has
 two states: uncompleted or completed.
 
 {{ site.alert.note }}
-'Uncompleted' is a Dart term referring to the state of a future
- before it has produced a result.
+  'Uncompleted' is a Dart term referring to the state of a future
+  before it has produced a result.
 {{ site.alert.end }}
 
 ### Uncompleted
@@ -198,23 +198,23 @@ results? In the next section you will learn how to use the `async` and `await`
 keywords to handle the results of asynchronous functions. 
 
 {{ site.alert.secondary }}
-Quick Review:
+  Quick Review:
 
-* In Dart, a
-[Future]({{site.dart_api}}/Future-class.html)
-produces a result of type `<T>`. For example,
-[Future]({{site.dart_api}}/Future-class.html)`<String>`
-is the type signature for a future that produces a string result. If a
-future produces a result that isn't a usable value, then the future's type is
-`Future<void>`.
-* A future can be in one of two states: uncompleted, or completed. 
-* A completed future can either (1) complete with a result or (2) complete with
-an error.
-* When you invoke a function that returns a future, two things happen:
+  * In Dart, a
+  [Future]({{site.dart_api}}/Future-class.html)
+  produces a result of type `<T>`. For example,
+  [Future]({{site.dart_api}}/Future-class.html)`<String>`
+  is the type signature for a future that produces a string result. If a
+  future produces a result that isn't a usable value, then the future's type is
+  `Future<void>`.
+  * A future can be in one of two states: uncompleted, or completed. 
+  * A completed future can either (1) complete with a result or (2) complete with
+  an error.
+  * When you invoke a function that returns a future, two things happen:
 
-1. The function queues up work to be done and returns an uncompleted future.
-2. Later, when the operation is finished, the future completes with a value or
-with an error.
+  1. The function queues up work to be done and returns an uncompleted future.
+  2. Later, when the operation is finished, the future completes with a value or
+  with an error.
 {{ site.alert.end }}
 
 
@@ -243,7 +243,7 @@ example defines an `async` function that doesn't return a usable value:
 {{ site.alert.end }}
 
 Now that you have declared an async function:
-  1. Your function returns a future that completes with the type that you specify
+  1. Your function returns a future that completes with the type that you specify.
   1. You must use the `await` keyword before invoking the function  to "wait"
    for the future to complete either with a value or an error.
 
@@ -294,15 +294,15 @@ operations that fetch the user's order.
 
 
 {{ site.alert.info }}
-Dart can [infer the Future\<T\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+  Dart can [infer the Future\<T\> type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
 {{ site.alert.end }}
 
 {{ site.alert.secondary }}
-Quick review: 
-* An `async` function returns a future.
-* You can only use the `async` and `await` keywords within an `async` function body.
-* To declare an `async` function, add the keyword after the function's parameters but before the function's body.
-* Use the `await` keyword before invoking an async function to "wait" for the future to complete either with a value or an error.
+  Quick review: 
+  * An `async` function returns a future.
+  * You can only use the `async` and `await` keywords within an `async` function body.
+  * To declare an `async` function, add the keyword after the function's parameters but before the function's body.
+  * Use the `await` keyword before invoking an async function to "wait" for the future to complete either with a value or an error.
 {{ site.alert.end }}
 
 ## Execution flow with async and await
@@ -444,10 +444,9 @@ It's time to sum up what you've learned in one final exercise. Write the followi
 
 ## What next?
 
+* [Asynchronous programming: futures & async-await](/tutorials/language/futures) tutorial
+* [Dart's type system](/guides/language/sound-dart) (Includes more examples of type signatures with futures).
+* [Preferring signatures in function type annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
+from [Effective Dart](/guides/language/effective-dart)
 * Try [other Dart codelabs](/codelabs).
 * Play with [DartPad.]({{site.dartpad}})
-* The [Futures](/tutorials/language/futures) tutorial
-* Read about [Dart's type system](/guides/language/sound-dart) for more examples
-of type signatures with futures. You should
-[prefer signatures in function type annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
-wherever possible!
