@@ -4,7 +4,7 @@ short-title: FAQ
 description: You have questions about Dart, we have answers.
 ---
 
-_Updated May 2018_
+_Updated June 2019_
 
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced.
@@ -12,16 +12,14 @@ since Dart was open sourced.
 
 ## General
 
-### Q. Is Dart an open standard?
+### Q. Is there a specification for Dart?
 
-Yes. [Ecma TC52][tc52] owns, evolves, and publishes the [standard
-specification][spec] of the Dart language.  In addition, Google's Dart team
-improves the Dart language by doing experiments and initial implementations. For
-example, Dart 2 is the result of work by Google's Dart team, together with key
-users, to improve the language. We expect to have an updated formal
-specification available for Ecma TC52 in the coming quarters.
+Yes. Dart 1 has a formal specification owned by [Ecma TC52][tc52].
 
-### Q. How are you taking input on changes to the Dart repository?
+Dart 2.x is currently being specified; the specification is available from the
+[Dart language specification](/guides/language/spec) page.
+
+### Q. How are you taking input on changes to Dart?
 
 We listen to feedback and [issues,][SDK issues] and we review patches from contributors.
 A contributor with a good track record can become a committer to the repository.
@@ -56,13 +54,9 @@ language is too different from JavaScript, it creates some cases where complex
 output code is needed to emulate the source language's behavior. This can cause
 performance to vary in ways that are not transparent to the programmer.
 
-For languages that are less mainstream: we expect that modeling Dart on these
-would, on the whole, hurt adoption.  Our team includes fans of these
-languages, and if we thought Dart could take up our favorite cool language
-features and push them to widespread adoption we might be tempted, and with
-Dart 2 we are increasingly in a situation where we’d like to take on work to
-add additional awesome features while respecting the ‘spirit’ of Dart and
-keeping breaking changes at an absolute minimum.
+For languages that are compiled to native code: it's important that Dart
+compiles efficiently to machine code, and thus it shares a number of aspects
+with other compiled languages.
 
 For languages that are "more dynamic" than Dart: Dart deliberately trades off
 some of this arbitrary runtime modification for the goal of better performance
@@ -90,11 +84,13 @@ we can't include everything. Some features don't fit the basic nature of the
 language, and some don't play well with other features. Simplicity is the single
 most important gift we can give to future programmers.
 
-Please look at the [list of language issues][language issues] to see if your request is
-already there. If it is, let us know that you care and give it a thumbs up.
-Otherwise, go ahead and add a new issue.  Make a thoughtful argument for your feature.
-Sample code with and without your feature is good evidence; a sizeable codebase
-that shows the need is even better evidence.
+Please look at the [language funnel][language funnel] and
+[language issues list][language issues] to see if your request is already there.
+If it is, let us know that you care and give it a thumbs up. Otherwise, go ahead
+and add a new request issue (see the [language evolution process][languageprocess]
+for details).  Make a thoughtful argument for your feature. Sample code with and
+without your feature is good evidence; a sizeable codebase that shows the need
+is even better evidence.
 
 Don't be surprised if the Dart language team says "no" by default.
 It's far more painful to remove a language feature than to add it, so
@@ -169,12 +165,12 @@ also exist for a number of editors. For more information, see the [Dart tools][]
 ### Q. Can I build an Android app with Dart?
 
 Yes! You can build an Android app that also works on iOS from a single codebase
-using [Flutter.][Flutter]
+using [Flutter][Flutter], which is powered by the Dart platform.
 
 ### Q. What are some real-world production deployments of Dart?
 
-Google AdWords, AdSense, and AdMob all use Dart.
-More than 75% of Google's revenue flows through these apps.
+Google AdWords, AdSense, AdMob, and the Google Assistant all use Dart.
+A significant portion of Google's revenue flows through these apps.
 Inside or outside of Google, every Flutter app uses Dart.
 
 
@@ -182,6 +178,8 @@ Inside or outside of Google, every Flutter app uses Dart.
 [pnacl]: https://developer.chrome.com/native-client/overview
 [SDK issues]: https://github.com/dart-lang/sdk/issues
 [language issues]: https://github.com/dart-lang/language/issues
+[language funnel]: https://github.com/dart-lang/language/projects/1
+[language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
 [announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
@@ -202,6 +200,27 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflectionmirrors-system
 
 ---
+
+## Native execution
+
+### Q. Can I compile Dart code to native code?
+
+Yes. For programs targeting devices (mobile, desktop, server, and more), [Dart
+Native](/platforms#dart-native-vm-jit-and-aot) includes both a Dart VM with JIT
+(just-in-time) compilation and an AOT (ahead-of-time) compiler for producing
+machine code.
+
+[Flutter][] is a sample framework that uses Dart's native compilation capability
+to produce fast native apps.
+
+### Q. Can I compile a Dart program for running in a terminal?
+
+Yes. Dart programs can be compiled to native x64 machine code for running in a
+Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
+Linux. For more details, see the [dart2aot](/tools/dart2aot) documentation.
+
+---
+
 
 ## Web: general
 
@@ -250,8 +269,7 @@ Dart is designed to compile to JavaScript to run across the modern web.
 
 Although Dart and JavaScript are completely separate languages with
 separate VMs, they can interoperate. For more information, see
-[package:js][] and
-the [chartjs](https://github.com/google/chartjs.dart/) example.
+[JavaScript and TypeScript interop](/web/js-interop).
 
 ### Q. I have a large JavaScript codebase. How can I migrate it to Dart?
 
