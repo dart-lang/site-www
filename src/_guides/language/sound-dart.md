@@ -104,7 +104,7 @@ to `int` is a compile-time error. Casting an `Object` to a string using
 string.
 
 
-## The benefits of soundness
+## The benefits of sound
 
 A sound type system has several benefits:
 
