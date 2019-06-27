@@ -160,7 +160,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var text, number, urlString;
+    String text;
+    num number;
+    String urlString;
     // #docregion assert
     // Make sure the variable has a non-null value.
     assert(text != null);
