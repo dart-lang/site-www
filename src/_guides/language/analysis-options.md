@@ -243,13 +243,12 @@ linter:
     await_only_futures: true
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  The dash shorthand (`-`) is actually shorthand for a key 
-  followed by a value of `true` (`- await_only_futures` 
-  is equivalent to `await_only_futures: true`). Since YAML does
-  not support mixing list and key-value syntaxes, if you want
-  to disable one rule it is important to enumerate them all,
-  specifying `true` for all the rules you want enabled.
+<aside class="alert alert-warning” markdown="1">
+  If you disable any rules, then use key-value syntax to enable rules.
+  For example, the preceding example can’t use `- await_only_futures`;
+  instead, it must use `await_only_futures: true`.
+  The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
+  is that YAML doesn't support mixing list and key-value syntaxes.
 </aside>
 
 ## Excluding code from analysis
