@@ -47,6 +47,7 @@ void miscDeclAnalyzedButNotTested() {
     if (lunchBox.length == 0) return 'so hungry...';
     if (!words.isEmpty) return words.join(' ');
     // #enddocregion dont-use-length
+    return 'foo';
   };
 
   (Iterable people) {

@@ -55,6 +55,7 @@ void miscDeclAnalyzedButNotTested() {
     if (lunchBox.isEmpty) return 'so hungry...';
     if (words.isNotEmpty) return words.join(' ');
     // #enddocregion dont-use-length
+    return 'foo';
   };
 
   {
