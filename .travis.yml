@@ -26,14 +26,14 @@ matrix:
       dart: stable
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
-    - env: TASK="bundle exec jekyll build; ./tool/shared/check-links.sh"
+    - env: TASK="./tool/shared/check-links.sh"
       dart: stable
   allow_failures:
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
     - env: TASK="./tool/check-code.sh"
       dart: dev
-    - env: TASK="bundle exec jekyll build; ./tool/shared/check-links.sh"
+    - env: TASK="./tool/shared/check-links.sh"
       dart: stable
 
 before_install:
@@ -45,6 +45,9 @@ install:
   - ./tool/shared/write-ci-info.sh -v
 
 script:
+  # If the task is links checking, make sure we build first.
+  - if [[ $TASK == *check-links* ]]; then bundle exec jekyll build; fi
+  # Execute the task.
   - $TASK
 
 after_script:
