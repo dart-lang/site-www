@@ -19,9 +19,13 @@ matrix:
     - env: TASK="bundle exec jekyll build"
       dart: stable
     - env: TASK="./tool/check-code.sh"
-      dart: stable, dev
+      dart: stable
+    - env: TASK="./tool/check-code.sh"
+      dart: dev
     - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: stable, dev
+      dart: stable
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
     - env: TASK="bundle exec jekyll build && ./tool/shared/check-links.sh"
       dart: stable
   allow_failures:
