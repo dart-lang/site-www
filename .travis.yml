@@ -28,6 +28,7 @@ matrix:
       dart: dev
     - env: TASK="./tool/check-code.sh"
       dart: dev
+    - env: TASK="./tool/shared/check-links.sh"
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
