@@ -267,7 +267,7 @@ against earlier versions of the SDK.
 #### Example
 
 In a package that defines the SDK constraint (in the pubspec.yaml file),
-with a lower bound of less than 2.2:
+with a lower bound of less than 2.2. For example:
 
 ```yaml
 environment:

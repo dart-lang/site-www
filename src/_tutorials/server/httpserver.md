@@ -133,9 +133,8 @@ Future main() async {
   print('Listening on localhost:${server.port}');
 
   await for (HttpRequest request in server) {
-    request.response
-      ..write('Hello, world!')
-      ..close();
+    request.response.write('Hello, world!');
+    await request.response.close();
   }
 }
 {% endprettify %}
@@ -200,9 +199,8 @@ For each request received, the code sends a "Hello, world!" response.
 <?code-excerpt "httpserver/bin/hello_world_server.dart (listen)"?>
 {% prettify dart %}
 await for (HttpRequest request in server) {
-  request.response
-    ..write('Hello, world!')
-    ..close();
+  request.response.write('Hello, world!');
+  await request.response.close();
 }
 {% endprettify %}
 <div class="prettify-filename">hello_world_server.dart</div>
@@ -677,7 +675,7 @@ Future main() async {
         ..statusCode = HttpStatus.methodNotAllowed
         ..write("Unsupported request: ${req.method}.");
     }
-    response.close();
+    await response.close();
   }
 }
 {% endprettify %}
@@ -793,9 +791,8 @@ Future main() async {
       }
     } else {
       print("Can't open ${targetFile.path}.");
-      req.response
-        ..statusCode = HttpStatus.notFound
-        ..close();
+      req.response.statusCode = HttpStatus.notFound;
+      await req.response.close();
     }
   }
 }
@@ -936,9 +933,8 @@ Future main() async {
   );
   print('Listening on localhost:${server.port}');
   await for (HttpRequest request in server) {
-    request.response
-      ..write('Hello, world!')
-      ..close();
+    request.response.write('Hello, world!');
+    await request.response.close();
   }
 }
 {% endprettify %}

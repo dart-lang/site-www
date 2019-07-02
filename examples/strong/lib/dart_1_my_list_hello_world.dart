@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_override_from_base
 // ignore_for_file: invalid_override, type_annotate_public_apis
 // ignore_for_file: conflicting_generic_interfaces
+// ignore_for_file: sort_constructors_first
 // #docregion MyList-and-main
 import 'dart:collection';
 

@@ -1,5 +1,5 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable
+// ignore_for_file: sort_constructors_first, unused_element, unused_local_variable
 
 import 'dart:html';
 

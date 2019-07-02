@@ -30,7 +30,7 @@ Future listenForRequests(HttpServer requests) async {
   await for (HttpRequest request in requests) {
     switch (request.method) {
       case 'POST':
-        handlePost(request);
+        await handlePost(request);
         break;
       case 'OPTION':
         handleOptions(request);

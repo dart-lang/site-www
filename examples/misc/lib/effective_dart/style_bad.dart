@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names, non_constant_identifier_names, type_annotate_public_apis
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, type_annotate_public_apis, curly_braces_in_flow_control_structures
 import 'dart:math';
 
 // #docregion const-names

@@ -87,7 +87,7 @@ void main() {
       expect(logFile.readAsStringSync(),
           startsWith('FILE ACCESSED'));
     } finally {
-      logFile?.delete();
+      await logFile?.delete();
     }
   });
 
