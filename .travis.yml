@@ -18,7 +18,7 @@ env:
     - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
     - TASK="bundle exec jekyll build"
-    - TASK="./tool/shared/check-links.sh"
+    - TASK="bundle exec jekyll build;./tool/shared/check-links.sh"
 
 matrix:
   # allow_failures:
@@ -34,7 +34,7 @@ matrix:
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
-    - env: TASK="./tool/shared/check-links.sh"
+    - env: TASK="bundle exec jekyll build;./tool/shared/check-links.sh"
       dart: dev
 
 before_install:
@@ -49,7 +49,6 @@ script:
   - $TASK
 
 after_script:
-  - if [[ $TASK == *build* ]]; then ./tool/shared/check-links.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
