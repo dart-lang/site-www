@@ -14,28 +14,22 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
-  matrix:
-    - TASK="./tool/check-code.sh"
-    - TASK="./tool/analyze-and-test-examples.sh"
-    - TASK="bundle exec jekyll build"
-    - TASK="bundle exec jekyll build;./tool/shared/check-links.sh"
 
 matrix:
-  # allow_failures:
-    # - env: TASK="./tool/analyze-and-test-examples.sh"
-      # dart: stable
+  include:
+    - env: TASK="bundle exec jekyll build"
+      dart: stable
+    - env: TASK="./tool/check-code.sh"
+      dart: stable
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: stable
   allow_failures:
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
     - env: TASK="./tool/check-code.sh"
       dart: dev
-    - env: TASK="bundle exec jekyll build;./tool/shared/check-links.sh"
+    - env: TASK="bundle exec jekyll build && ./tool/shared/check-links.sh"
       dart: stable
-  exclude:
-    - env: TASK="bundle exec jekyll build"
-      dart: dev
-    - env: TASK="bundle exec jekyll build;./tool/shared/check-links.sh"
-      dart: dev
 
 before_install:
   - source ./tool/env-set.sh
