@@ -150,7 +150,7 @@ To solve that, you need to agree on what a version number _means_.
 Imagine that the developers of a package you depend on say,
 "If we make any backwards incompatible change,
 then we promise to increment the major version number."
-If you trust them, then if you know your package works with `2.5.7` of theirs,
+If you trust them, then if you know your package works with `2.3.5` of theirs,
 you can rely on it working all the way up to `3.0.0`.
 You can set your range like:
 
