@@ -182,10 +182,10 @@ environment:
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter breaking changes]: https://groups.google.com/forum/#!topic/flutter-dev/H8dDhWg_c8I
 [Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
-[Dart SDK install]: /tools/sdk#install
+[Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /tools/sdk#about-release-channels-and-version-strings
+[pre-release]: /get-dart#about-release-channels-and-version-strings
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart
