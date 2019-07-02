@@ -24,7 +24,7 @@ that can help you develop command-line and server apps.
   </aside>
 
 [Dart SDK](/tools/sdk)
-: [Install the Dart SDK](/tools/sdk#install) to get the core Dart
+: [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
 More tools
