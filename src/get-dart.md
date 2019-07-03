@@ -16,13 +16,6 @@ the [Dart tools]({{site.dartlang}}/tools) page.
 
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** This site's documentation and examples use
-  {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
-  version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
-  of the **Dart SDK**.
-</aside>
-
 ## Install the Dart SDK {#install}
 
 As the following instructions show,
