@@ -26,13 +26,14 @@ you might need to update one or more analyzer results files
 
 ## How do I update the analyzer results files?
 
-To update an analyzer results files:
+To update the analyzer results files:
 
+1. Run `pub upgrade` to get the latest version of the pedantic package.
 1. Run `./tool/analyze-and-test-examples.sh  --save-logs`.
-2. Look at the diffs for the results files.
-3. If the diffs look good but some comments are missing,
+1. Look at the diffs for the results files.
+1. If the diffs look good but some comments are missing,
    add back the comments that are still relevant.
-4. Run `./tool/analyze-and-test-examples.sh` to confirm that
+1. Run `./tool/analyze-and-test-examples.sh` to confirm that
    your changes are good.
 
 **Pro tip:** You can embed in a doc page specific line(s) from an analyzer
