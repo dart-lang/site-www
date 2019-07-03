@@ -51,7 +51,7 @@ Install a JetBrains IDE if you don't already have one.
 If you don't already have the Dart SDK,
 install it.
 
-* [Download the Dart SDK](/tools/sdk#install)
+* [Download the Dart SDK](/get-dart)
 
 
 ### Configuring Dart support

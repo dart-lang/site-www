@@ -42,7 +42,7 @@ command-line arguments, files and directories, and more.
 ## Running an app with the standalone Dart VM
 
 To run a command-line app, you need the Dart VM (`dart`),
-which comes when you [install the Dart SDK](/tools/sdk#install).
+which comes when you [install the Dart SDK](/get-dart).
 
 The location of the SDK installation directory
 (we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
