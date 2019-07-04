@@ -955,7 +955,7 @@ Future main() async {
 4. The context argument is required on servers, optional for clients. If it is
    omitted, then the default context with built-in trusted roots is used.
 
-[PEM format.]: http://how2ssl.com/articles/working_with_pem_files
+[PEM format.]: https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail
 
 ## Other resources
 
