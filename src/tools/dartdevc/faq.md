@@ -183,8 +183,7 @@ PENDING: talk about summaries?
 
 #### Where can I talk to people who are using dartdevc?
 
-Try one of the [Dart Gitter rooms](https://gitter.im/dart-lang/home)—perhaps
-[dev_compiler](https://gitter.im/dart-lang/dev_compiler).
+Try one of the [Dart Gitter rooms.](https://gitter.im/dart-lang/home)
 
 
 #### Where can I learn what to do about common dartdevc errors?
