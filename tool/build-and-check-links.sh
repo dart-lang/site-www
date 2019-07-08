@@ -8,4 +8,4 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 bundle exec jekyll build
 
 # Check links
-$rootDir/tool/shared/check-links.sh
+$rootDir/tool/shared/check-links.sh --fail-on-warnings
