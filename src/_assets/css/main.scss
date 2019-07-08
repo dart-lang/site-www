@@ -228,7 +228,7 @@ img {
       .nav-link {
         &.active {
           &:after {
-            background-color: #40c4ff;
+            background-color: $site-color-card-link;
           }
         }
       }
