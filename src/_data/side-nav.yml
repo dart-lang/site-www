@@ -150,14 +150,14 @@
     permalink: /tools
   - title: Editors & debuggers
     children:
-      - title: Dart DevTools
-        permalink: /tools/dart-devtools
-      - title: DartPad
-        permalink: /tools/dartpad
       - title: IntelliJ & Android Studio
         permalink: /tools/jetbrains-plugin
       - title: VS Code 
         permalink: /tools/vs-code
+      - title: Dart DevTools
+        permalink: /tools/dart-devtools
+      - title: DartPad
+        permalink: /tools/dartpad
   - title: Command-line tools
     children:
     - title: Dart SDK
@@ -229,7 +229,7 @@
   expanded: true
   children:
     - title: API reference
-      permalink: https://api.dartlang.org
+      permalink: https://api.dart.dev
     - title: Blog
       permalink: https://medium.com/dartlang
     - title: DartPad (online editor)

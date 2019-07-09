@@ -233,7 +233,7 @@ class MyAdder extends NumberAdder {
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*num.*common_problems/"?>
 ```nocode
-error • 'MyAdder.add' ('(int, int) → int') isn't a valid override of 'NumberAdder.add' ('(num, num) → num') • invalid_override
+error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)') • invalid_override
 ```
 
 Consider the following scenario where floating
@@ -304,7 +304,7 @@ class Subclass extends Superclass {
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*dynamic.*common_problems/"?>
 ```nocode
-error • 'Subclass.method' ('(int) → void') isn't a valid override of 'Superclass.method' ('(dynamic) → void') • invalid_override
+error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)') • invalid_override
 ```
 
 #### Fix: Specify type arguments for the generic subclass
@@ -422,9 +422,9 @@ HoneyBadger(Eats food, String name)
 <hr>
 
 <a name="uses-dynamic-as-bottom"></a>
-### A function of type ... can't be assigned
+### The function expression type ... isn't of type ...
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/" replace="/'\S+ → \S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
 ```nocode
 error • The function expression type '...' isn't of type '...'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
@@ -449,10 +449,9 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/type '\(String\) → bool'.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/"?>
 ```nocode
-error • A value of type '(String) → bool' can't be assigned to a variable of type '(dynamic) → bool' • invalid_assignment
-error • The function expression type '(String) → bool' isn't of type '(dynamic) → bool'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
+error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
 ```
 
 #### Fix: Add type parameters _or_ cast from dynamic explicitly

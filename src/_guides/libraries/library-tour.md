@@ -361,7 +361,7 @@ assert(fruits.length == 4);
 
 // Remove all elements from a list.
 fruits.clear();
-assert(fruits.length == 0);
+assert(fruits.isEmpty);
 {% endprettify %}
 
 Use `indexOf()` to find the index of an object in a list:

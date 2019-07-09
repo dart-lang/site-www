@@ -187,7 +187,7 @@ If you get stuck, find help at [Community and Support.](/community)
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
 [Homebrew,]: http://brew.sh/
-[Install the SDK]: /tools/sdk#install
+[Install the SDK]: /get-dart
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [Overview of Dart web libraries]: /web/web-programming
 [overview of editors & debuggers]: /tools#ides-and-editors

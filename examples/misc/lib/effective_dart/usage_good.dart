@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -55,6 +55,7 @@ void miscDeclAnalyzedButNotTested() {
     if (lunchBox.isEmpty) return 'so hungry...';
     if (words.isNotEmpty) return words.join(' ');
     // #enddocregion dont-use-length
+    return 'foo';
   };
 
   {

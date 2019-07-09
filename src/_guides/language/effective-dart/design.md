@@ -961,7 +961,7 @@ the static declarative structure of the code and aren't "executed" at runtime.
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-declaration)"?>
 {% prettify dart %}
 bool isEmpty(String parameter) {
-  bool result = parameter.length == 0;
+  bool result = parameter.isEmpty;
   return result;
 }
 {% endprettify %}

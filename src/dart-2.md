@@ -47,7 +47,7 @@ and what platforms it runs on.
 For help with migrating web apps,
 see the [web app migration guide.][webdev dart2]
 If you're migrating a Flutter app,
-consult the [breaking change notification.][Flutter breaking changes]
+consult the [breaking change notification.][Leaf's email]
 If you publish packages,
 then in addition to making platform-specific changes,
 follow the [package migration instructions below](#migrating-packages).
@@ -180,12 +180,11 @@ environment:
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter breaking changes]: https://groups.google.com/forum/#!topic/flutter-dev/H8dDhWg_c8I
 [Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
-[Dart SDK install]: /tools/sdk#install
+[Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /tools/sdk#about-release-channels-and-version-strings
+[pre-release]: /get-dart#about-release-channels-and-version-strings
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart

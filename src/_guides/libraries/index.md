@@ -23,7 +23,7 @@ Each library works on at least one [platform](/platforms).
 | [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program. | All |
 | [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | JIT<br>Web (experimental, dartdevc&nbsp;only) |
 | [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | Web |
-| [`dart:index_db`][dart-index_db]        <br> Client-side key-value store with support for indexes. | Web |
+| [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | Web |
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | JIT<br>AOT |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | JIT<br>AOT |
 | [`dart:js`][dart-js]                    <br> Interoperability with JavaScript. [PENDING: obsolete? use package:js instead?] | Web |
@@ -37,23 +37,23 @@ Each library works on at least one [platform](/platforms).
 {:.table .table-striped}
 </div>
 
-[dart-async]: https://api.dartlang.org/stable/dart-async/dart-async-library.html
-[dart-collection]: https://api.dartlang.org/stable/dart-collection/dart-collection-library.html
-[dart-convert]: https://api.dartlang.org/stable/dart-convert/dart-convert-library.html
-[dart-core]: https://api.dartlang.org/stable/dart-core/dart-core-library.html
-[dart-developer]: https://api.dartlang.org/stable/dart-developer/dart-developer-library.html
-[dart-math]: https://api.dartlang.org/stable/dart-math/dart-math-library.html
-[dart-collection]: https://api.dartlang.org/stable/dart-collection/dart-collection-library.html
-[dart-typed_data]: https://api.dartlang.org/stable/dart-typed_data/dart-typed_data-library.html
-[dart-cli]: https://api.dartlang.org/stable/dart-cli/dart-cli-library.html
-[dart-io]: https://api.dartlang.org/stable/dart-io/dart-io-library.html
-[dart-isolate]: https://api.dartlang.org/stable/dart-isolate/dart-isolate-library.html
-[dart-mirrors]: https://api.dartlang.org/stable/dart-mirrors/dart-mirrors-library.html
-[dart-html]: https://api.dartlang.org/stable/dart-html/dart-html-library.html
-[dart-index_db]: https://api.dartlang.org/stable/dart-index_db/dart-index_db-library.html
-[dart-js]: https://api.dartlang.org/stable/dart-js/dart-js-library.html
-[dart-js_util]: https://api.dartlang.org/stable/dart-js_util/dart-js_util-library.html
-[dart-svg]: https://api.dartlang.org/stable/dart-svg/dart-svg-library.html
-[dart-web_audio]: https://api.dartlang.org/stable/dart-web_audio/dart-web_audio-library.html
-[dart-web_gl]: https://api.dartlang.org/stable/dart-web_gl/dart-web_gl-library.html
-[dart-web_sql]: https://api.dartlang.org/stable/dart-web_sql/dart-web_sql-library.html
+[dart-async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
+[dart-collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
+[dart-convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart-core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[dart-developer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
+[dart-math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
+[dart-collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
+[dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart-cli]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-cli/dart-cli-library.html
+[dart-io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
+[dart-isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/dart-isolate-library.html
+[dart-mirrors]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-mirrors/dart-mirrors-library.html
+[dart-html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
+[dart-indexed_db]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[dart-js]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js/dart-js-library.html
+[dart-js_util]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[dart-svg]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
+[dart-web_audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
+[dart-web_gl]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
+[dart-web_sql]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_sql/dart-web_sql-library.html

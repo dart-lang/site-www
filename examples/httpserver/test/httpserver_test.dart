@@ -100,9 +100,9 @@ void main() {
 
       expect(
         () async => Future.any([
-              server,
-              _test(),
-            ]),
+          server,
+          _test(),
+        ]),
         prints(''),
       );
     });
@@ -120,9 +120,9 @@ void main() {
 
       expect(
         () async => Future.any([
-              server,
-              _test(),
-            ]),
+          server,
+          _test(),
+        ]),
         prints('Wrote data for Han Solo.\n'),
       );
     });

@@ -240,14 +240,15 @@ include: package:pedantic/analysis_options.yaml
 linter:
   rules:
     avoid_shadowing_type_parameters: false
-    - await_only_futures
+    await_only_futures: true
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  The reason you don't include an initial dash (`- `)
-  when you specify a value (`: false`) is that
-  the YAML syntax for key-value maps is slightly different
-  from the YAML syntax for lists.
+<aside class="alert alert-warning” markdown="1">
+  If you disable any rules, then use key-value syntax to enable rules.
+  For example, the preceding example can’t use `- await_only_futures`;
+  instead, it must use `await_only_futures: true`.
+  The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
+  is that YAML doesn't support mixing list and key-value syntaxes.
 </aside>
 
 ## Excluding code from analysis

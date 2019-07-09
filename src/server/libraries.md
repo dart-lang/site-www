@@ -64,4 +64,4 @@ and [general-purpose packages][] such as `logging`:
 [Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
 [gRPC,]: https://grpc.io/
-[HttpServer]: https://api.dartlang.org/stable/dart-io/HttpServer-class.html
+[HttpServer]: https://api.dart.dev/stable/dart-io/HttpServer-class.html

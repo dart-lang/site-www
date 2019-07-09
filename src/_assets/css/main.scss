@@ -228,7 +228,7 @@ img {
       .nav-link {
         &.active {
           &:after {
-            background-color: #40c4ff;
+            background-color: $site-color-card-link;
           }
         }
       }
@@ -250,8 +250,9 @@ img {
 
   > article {
     > .content {
-      padding-left: 5%;
-      padding-right: 8%;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
       padding-top: $top-content-padding;
     }
 

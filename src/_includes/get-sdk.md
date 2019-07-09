@@ -45,4 +45,4 @@ You'll need it in the next step.
   ```
 </div>
 
-More information: [Install the SDK](/tools/sdk#install)
+More information: [Get the Dart SDK](/get-dart)

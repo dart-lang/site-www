@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 // #docregion Musical
 mixin Musical {
   bool canPlayPiano = false;
