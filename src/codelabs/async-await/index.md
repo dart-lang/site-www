@@ -28,7 +28,7 @@ This codelab covers the following material:
 * When to use `async` and `await` in your code.
 * How your code executes when using the `async/await` keywords.
 * How to handle errors from an asynchronous call using `try/catch` expressions
-in async functions.
+in `async` functions.
 * Where to find more information for the `async/await` material 
 covered in this codelab.
 
@@ -39,7 +39,8 @@ throughout this codelab. The first section lists key terms that are generally
 used in asynchronous programming. The second section defines keywords and 
 terminology for writing asynchronous programs in Dart.
 
-### Asynchronous programming 
+### Asynchronous programming terms
+
 
 **synchronous operation**   
 A synchronous operation blocks other operations from executing until it completes. 
@@ -54,7 +55,9 @@ other operations to execute before it completes.
 **asynchronous function**   
 An asynchronous function performs asynchronous operations.
 
-### Asynchronous programming in Dart
+### Terms for asynchronous programming in Dart
+
+
 **Future**  
 "Future" refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
 
@@ -68,7 +71,7 @@ function's body. Once you define an `async` function, you invoke it by prefixing
 it with the `await` keyword. 
 
 **async function**  
-A Dart async function is a function labeled with the `async` keyword.
+A Dart `async` function is a function labeled with the `async` keyword.
 
 **await**    
 Before invoking an `async` function, you must use the `await` keyword. 
@@ -242,7 +245,7 @@ example defines an `async` function that doesn't return a usable value:
  as the return type for asynchronous functions that don't return usable values.
 {{ site.alert.end }}
 
-Now that you have declared an async function:
+Now that you have declared an `async` function:
   1. Your function returns a future that completes with the type that you specify.
   1. You must use the `await` keyword before invoking the function  to "wait"
    for the future to complete either with a value or an error.
@@ -252,11 +255,11 @@ var order = [!await!] getUserOrder();
 {% endprettify %}
 
 
-The following example provides a side-by-side comparison of a synchronous function
-and an asynchronous function. Since you can only use the `await` keyword within 
-an `async` function body, the example converts the parent function from 
-synchronous to asynchronous thus enabling use of the `await` keyword: 
+The following examples provide a comparison of a synchronous function
+and an asynchronous function.  
 
+In this synchronous example the console immediately prints the messages 
+"Fetching user order..." and "Your order is: Large Latte".
 
 [//]: https://gist.github.com/8f4d136e7eb447f4acc7ccb523006e10
 <iframe 
@@ -267,8 +270,12 @@ synchronous to asynchronous thus enabling use of the `await` keyword:
   width="100%">
 </iframe>
 
-In this synchronous example the console immediately prints the messages 
-"Fetching user order..." and "Your order is: Large Latte".
+The following example shows the same code as before, but implemented asynchronously.
+Since you can only use the `await` keyword within an `async` function body, the 
+`createOrderMessage()` function is now marked with the `async` keyword.
+
+In this asynchronous example, the console does not print "Your order is: Large
+Latte" until after a four second delay. 
 
 [//]: https://gist.github.com/b8d026d2b23102084534159fafc9d7c6
 <iframe 
@@ -279,9 +286,7 @@ In this synchronous example the console immediately prints the messages
   width="100%">
 </iframe>
 
-In this asynchronous example, the console does not print "Your order is: Large
-Latte" until after a four second delay has passed. This asynchronous example has
-only four changes from the preceding synchronous example:
+This asynchronous example has only four changes from the preceding synchronous example:
 
 1. Update the return types for `createOrderMessage` and `getUserOrder` from 
 `String` to `Future<String>`.
@@ -302,14 +307,15 @@ operations that fetch the user's order.
   * An `async` function returns a future.
   * You can only use the `async` and `await` keywords within an `async` function body.
   * To declare an `async` function, add the keyword after the function's parameters but before the function's body.
-  * Use the `await` keyword before invoking an async function to "wait" for the future to complete either with a value or an error.
+  * Use the `await` keyword before invoking an `async` function to "wait" for the future to complete either with a value or an error.
 {{ site.alert.end }}
 
 ## Execution flow with async and await
 
-As of Dart 2.0, functions marked as `async` run synchronously until the first
+As of Dart 2, functions marked as `async` run synchronously until the first
 `await` keyword. This means that within an `async` function's body, all
-synchronous code immediately executes. The following example demonstrates how 
+synchronous code immediately executes so long as the synchronous code appears
+before the first `await` keyword. The following example demonstrates how 
 execution proceeds within an `async` function body:
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
@@ -317,22 +323,19 @@ execution proceeds within an `async` function body:
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d7abfdea1ae5596e96c7c0203d975dba"
   style="margin-top: 40px; margin-bottom: 40px"
   frameborder="no"
-  height="425"
+  height="550"
   width="100%">
 </iframe>
 
-Notice that the timing of the output shifts if the print statement
-"Awaiting user order" moves to the line after the first `await` keyword in
-`createOrderMessage`:
+After running the code in the preceding example, try reversing L4 and L5:
 
-[//]: https://gist.github.com/e6ee207677e9f0e9220e73440e35eefc
-<iframe 
-  src="https://dartpad.dartlang.org/experimental/embed-new.html?id=e6ee207677e9f0e9220e73440e35eefc"
-  style="margin-top: 25px; margin-bottom: 25px"
-  frameborder="no"
-  height="425"
-  width="100%">
-</iframe>
+{% prettify dart %}
+  var order = await getUserOrder();
+  print('Awaiting user order...');
+{% endprettify %}
+
+Notice that the timing of the output shifts now that the `print("Awaiting user order")`
+statement appears after the first `await` keyword in `createOrderMessage`.
 
 ## Practice using async and await
 
@@ -409,16 +412,16 @@ Use `async` and `await` to accomplish the following:
 
 ## Putting it all together
 
-It's time to sum up what you've learned in one final exercise. Write the following:
+It's time to practice what you've learned in one final exercise. Write the following:
 
 ### Part 1: `addHello` 
-* Write a function `addHello.` that takes a single string
+* Write a function `addHello` that takes a single string
   argument
  * `addHello` should return its String argument surrounded by the text ‘Hello <string>!'
 
 ### Part 2: `greetUser`
 * Write a function `greetUser` that takes no arguments.
-* To obtain the username, `greetUser` should call the provided async function
+* To obtain the username, `greetUser` should call the provided `async` function
   `getUsername`, which waits for 1 second before returning a string.
 * `greetUser` should create a greeting for the user by calling `addHello,`
   passing it the username, and returning the result. For example, if the
@@ -427,7 +430,7 @@ It's time to sum up what you've learned in one final exercise. Write the followi
 
 ### Part 3: `sayGoodbye`
 * Write a function `sayGoodbye` that takes no arguments.
-* Within its body, `sayGoodbye` should call the provided async function
+* Within its body, `sayGoodbye` should call the provided `async` function
   `logoutUser` which takes no arguments.
 * `sayGoodbye` should catch any errors thrown by `logoutUser`.
 * If `logoutUser` succeeds, `sayGoodbye` should return the string "<result>
