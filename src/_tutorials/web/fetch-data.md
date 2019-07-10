@@ -45,7 +45,7 @@ Click run ( {% asset red-run.png %} ) to start the app.
 Then change the values of the input elements,
 and check out the JSON format for each data type.
 You might prefer to
-[open the app in DartPad]({{site.custom.dartpad.direct-link}}/1d42e4eadb75bcc1ffbc079e299b862e){: target="_blank" rel="noopener"}
+[open the app in DartPad]({{site.dartpad}}/1d42e4eadb75bcc1ffbc079e299b862e){: target="_blank" rel="noopener"}
 to have more space for the app's code and UI.
 
 {% comment %}
@@ -397,7 +397,7 @@ and loads the file.
 <aside class="alert alert-info" markdown="1">
   **Implementation note:**
   The original portmanteaux example loaded the co-located file `portmanteaux.json`.
-  When we moved the example into [**DartPad**]({{site.custom.dartpad.direct-link}}),
+  When we moved the example into [**DartPad**]({{site.dartpad}}),
   we couldn't co-locate the JSON file because DartPad
   supports at most 3 files: one Dart file, one HTML file,
   and one CSS file.

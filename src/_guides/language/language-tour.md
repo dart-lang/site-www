@@ -19,7 +19,7 @@ consult the [Dart language specification][].
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
-**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
+**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 </div>
 
 

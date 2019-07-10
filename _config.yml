@@ -66,7 +66,6 @@ custom:
     embed-dart-prefix: https://dartpad.dev/embed-dart.html
     embed-html-prefix: https://dartpad.dev/embed-html.html
     embed-inline-prefix: https://dartpad.dev/embed-inline.html
-    direct-link: https://dartpad.dev
   downloads:
     dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
     dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release
