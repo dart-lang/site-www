@@ -5,7 +5,7 @@ description: Fast, modular compilation of Dart code to JavaScript.
 ---
 
 The Dart development compiler _(dartdevc_, also known as _DDC)_
-lets you run and debug your Dart web app in any modern web browser.
+lets you run and debug your Dart web app in the Chrome browser.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
