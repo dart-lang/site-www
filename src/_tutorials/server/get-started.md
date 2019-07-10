@@ -27,7 +27,7 @@ the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to change the greeting
 to use another language. To get the full DartPad experience,
 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3"
-   target="_blank">open the example at dartpad.dartlang.org.</a>
+   target="_blank">open the example at dartpad.dev.</a>
 
 <iframe
     src="{{site.custom.dartpad.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3&verticalRatio=70"

@@ -4,7 +4,7 @@ description: The tool that lets you interactively play with Dart in a browser.
 ---
 
 <a href="{{site.custom.dartpad.direct-link}}"
-target="_blank">DartPad (dartpad.dartlang.org)</a>
+target="_blank">DartPad (dartpad.dev)</a>
 is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Here's what DartPad looks like:
