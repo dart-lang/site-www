@@ -192,7 +192,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Who Uses Dart]: /community/who-uses-dart
 [spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
-[DartPad]: {{site.custom.dartpad.direct-link}}
+[DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/sound-dart
