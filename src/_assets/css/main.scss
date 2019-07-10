@@ -26,6 +26,7 @@
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
+$code-weight: 400;
 
 /* -----------------------------------------
   Global
@@ -153,6 +154,7 @@ input, select {
 
 pre, pre.prettyprint {
   padding: 30px;
+  font-weight: $code-weight;
   background-color: #F5F5F7;
   color: $blue;
   position: relative;
@@ -205,6 +207,7 @@ code {
   background-color: transparent;
   color: #bc0056;
   font-size: 100%;
+  font-weight: $code-weight;
   padding: 0;
 }
 img {
