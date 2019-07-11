@@ -9,21 +9,21 @@ For information on how to use dartdevc, see the
 
 ## The basics
 
-#### What is dartdevc?
+### What is dartdevc?
 
 The dartdevc tool is a Dart-to-JavaScript compiler
 that's targeted at web app development in modern browsers.
 The existing Dart-to-JavaScript compiler, [dart2js][], is still supported.
 
 
-#### How do I use dartdevc?
+### How do I use dartdevc?
 
 Don't run `dartdevc` directly. The [webdev][] and [build_runner][] tools use
 `dartdevc` as the default web compiler when [building][build], [serving][serve],
 and [testing][test] web apps.
 
 
-#### When should I use dartdevc?
+### When should I use dartdevc?
 
 Use **dartdevc** whenever you're actively working on your code.
 Here are some of the advantages of dartdevc over dart2js:
@@ -38,7 +38,7 @@ With dart2js you get advanced optimizations such as
 tree shaking to minimize downloaded code size.
 
 
-#### What browsers does dartdevc work with?
+### What browsers does dartdevc work with?
 
 Chrome is the only supported browser.
 You _might_ be able to use other modern browsers
@@ -50,7 +50,7 @@ If you find a bug in dartdevc's support for Chrome, Edge, Firefox, or Safari, pl
 
 ## Common problems
 
-#### My code analyzes correctly, so why am I getting compile-time errors?
+### My code analyzes correctly, so why am I getting compile-time errors?
 
 Because dartdevc analyzes more code.
 
@@ -66,13 +66,13 @@ especially when they come from generated code or third-party libraries.
 {% endcomment %}
 
 
-#### My code analyzes correctly, so why am I getting runtime errors?
+### My code analyzes correctly, so why am I getting runtime errors?
 
 Some of Dart's [type safety checks][] are implemented only at runtime.
 Even if your code has no static type errors, you may see [runtime errors.][runtime errors]
 
 
-#### Why does dartdevc take longer to run the first time?
+### Why does dartdevc take longer to run the first time?
 
 Because it's compiling your entire app,
 including the packages your app depends on.
@@ -84,7 +84,7 @@ it tracks which Dart files change,
 and dartdevc recompiles only the modules that are affected by those changes.
 
 
-#### Why are subsequent runs taking a long time?
+### Why are subsequent runs taking a long time?
 
 Are the implementation files for your package under `lib/src`?
 If not, dartdevc is probably creating too many modules.
@@ -92,7 +92,7 @@ For more information, see
 [How are the modules created?](#how-are-the-modules-created)
 
 
-#### Why is dartdevc producing so many JavaScript files?
+### Why is dartdevc producing so many JavaScript files?
 
 This happens when dartdevc is creating too many modules.
 Are the implementation files for your package under `lib/src`?
@@ -100,7 +100,20 @@ For more information, see
 [How are the modules created?](#how-are-the-modules-created)
 
 
-#### Where can I see known problems with dartdevc?
+### Why doesn't dartdevc lazily load deferred libraries?
+
+[Lazily loading libraries][] is a production use case,
+and dartdevc isn't intended for production code.
+However, dartdevc could be more helpful and validate that
+when code uses a deferred library,
+that code first calls `loadLibrary()`.
+For more information, see [SDK issue #2776.][2776]
+
+[Lazily loading libraries]: /guides/language/language-tour#lazily-loading-a-library
+[2776]: https://github.com/dart-lang/sdk/issues/27776
+
+
+### Where can I see known problems with dartdevc?
 
 Issues are in the Dart SDK repo
 with the label [area-dev-compiler.](https://github.com/dart-lang/sdk/issues?q=is%3Aissue%20is%3Aopen%20label%3Aarea-dev-compiler)
@@ -108,7 +121,7 @@ with the label [area-dev-compiler.](https://github.com/dart-lang/sdk/issues?q=is
 
 ## Modules
 
-#### What are JavaScript modules?
+### What are JavaScript modules?
 
 When you use dartdevc, modules are an implementation detail.
 
@@ -128,7 +141,7 @@ Addy Osmani’s
 [article on writing modular JavaScript.](https://addyosmani.com/writing-modular-js/)
 
 
-#### How are the modules created?
+### How are the modules created?
 
 When you use a webdev command with dartdevc,
 a heuristic that's based on package structure
@@ -159,7 +172,7 @@ Importing only from `lib` and not `lib/src`
 minimizes the amount of code that your app loads.
 
 
-#### What kind of modules does dartdevc produce?
+### What kind of modules does dartdevc produce?
 
 When run with [webdev][], dartdevc generates
 [AMD modules.](https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd)
@@ -170,7 +183,7 @@ modules, but these options aren't currently supported by the
 [build_web_compilers][] package used with the [build_runner][] and [webdev][] tools.
 
 
-#### Can I customize my modules?
+### Can I customize my modules?
 
 Not today, but possibly in the future.
 
@@ -181,12 +194,12 @@ PENDING: talk about summaries?
 
 ## Resources
 
-#### Where can I talk to people who are using dartdevc?
+### Where can I talk to people who are using dartdevc?
 
 Try one of the [Dart Gitter rooms.](https://gitter.im/dart-lang/home)
 
 
-#### Where can I learn what to do about common dartdevc errors?
+### Where can I learn what to do about common dartdevc errors?
 
 Although you can find help for
 [common analyzer errors and warnings,](/guides/language/sound-problems#common-errors-and-warnings)
@@ -195,7 +208,7 @@ See [SDK issue #29825](https://github.com/dart-lang/sdk/issues/29825)
 for more information.
 
 
-#### Where can I learn the gory details of dartdevc?
+### Where can I learn the gory details of dartdevc?
 
 You can find source code and more documentation in the Dart SDK repo under
 [`/pkg/dev_compiler`.](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)
