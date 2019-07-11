@@ -1,7 +1,7 @@
 name: site_www
 
 author: Dart Team <misc@dartlang.org>
-homepage: https://webdev.dartlang.org
+homepage: https://dart.dev
 
 environment:
   sdk: '>=2.0.0 <3.0.0'

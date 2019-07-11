@@ -16,7 +16,6 @@ port: 4000
 www: https://dart.dev
 prev-url: https://v1-dartlang-org.firebaseapp.com
 angulardart: https://angulardart.dev
-dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
 dart_vm:  /server
 flutter:  https://flutter.dev
 dart_api: https://api.dart.dev

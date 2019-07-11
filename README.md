@@ -182,8 +182,7 @@ create it:
 **Note:** To keep the number of projects under control,
 we reuse them. Our naming convention is
 `<first initial><last initial>-www-dartlang-<number>`, for example,
-`sz-www-dartlang-1` and `kw-www-dartlang-1`. For webdev.org, replace `www`
-with `webdev`.
+`sz-www-dartlang-1` and `kw-www-dartlang-1`.
 
 Return to the [Firebase console](https://console.firebase.google.com/).
 You should now see your project in the list.
