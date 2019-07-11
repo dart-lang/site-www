@@ -96,10 +96,12 @@ code to handle asynchronous operations.
 Consider the following example that fails to print the desired user order to the
 console: 
 
+## Example
+
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=5c8c7716b6b4284842f15fe079f61e47"
-  style="margin-top: 25px; margin-bottom: 25px"
+  style="margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="420"
   width="100%" >
@@ -118,8 +120,8 @@ function&mdash;it invokes `getUserOrder` and immediately prints the result.
 prints the value immediately returned by `createOrderMessage` which
 turns out to be `Instance of '_Future<String>'`.
 
-What is a future, and how do you write code to handle the asynchronous function
-`getUserOrder`?
+Next, you will learn about futures like the ones shown in the preceding example.
+You will also learn how to write code to handle the asynchronous function `getUserOrder`.
  
  {{ site.alert.secondary }} 
   Quick review: 
@@ -162,10 +164,12 @@ future's type is `Future<void>`.
 In the following example `getUserOrder` returns a future that completes by printing 
 to the console.
 
+## Example
+
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=57e6085344cbd1719ed42b32f8ad1bce"
-  style="margin-top: 25px; margin-bottom: 25px"
+  style="margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="350"
   width="100%" >
@@ -185,10 +189,12 @@ function throw an error or exception, the future completes and throws the error 
 In the following example, `getUserOrder` returns a future that completes by 
 throwing an Exception.
 
+## Example
+
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d843061bbd9388b837c57613dc6d5125"
-  style="margin-top: 25px; margin-bottom: 25px"
+  style="margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="350"
   width="100%" >
@@ -261,12 +267,14 @@ and an asynchronous function.
 In this synchronous example the console immediately prints the messages 
 "Fetching user order..." and "Your order is: Large Latte".
 
+## Example
+
 [//]: https://gist.github.com/8f4d136e7eb447f4acc7ccb523006e10
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=8f4d136e7eb447f4acc7ccb523006e10"
-  style="margin-top: 25px; margin-bottom: 25px"
+  style="margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
-  height="425"
+  height="450"
   width="100%">
 </iframe>
 
@@ -277,12 +285,14 @@ Since you can only use the `await` keyword within an `async` function body, the
 In this asynchronous example, the console does not print "Your order is: Large
 Latte" until after a four second delay. 
 
+## Example
+
 [//]: https://gist.github.com/b8d026d2b23102084534159fafc9d7c6
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=b8d026d2b23102084534159fafc9d7c6"
-  style="margin-top: 25px; margin-bottom: 25px"
+  style="margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
-  height="425"
+  height="450"
   width="100%">
 </iframe>
 
@@ -318,10 +328,12 @@ synchronous code immediately executes so long as the synchronous code appears
 before the first `await` keyword. The following example demonstrates how 
 execution proceeds within an `async` function body:
 
+## Example
+
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=d7abfdea1ae5596e96c7c0203d975dba"
-  style="margin-top: 40px; margin-bottom: 40px"
+  style="margin-top: 10px; margin-bottom: 40px"
   frameborder="no"
   height="550"
   width="100%">
@@ -339,8 +351,11 @@ statement appears after the first `await` keyword in `createOrderMessage`.
 
 ## Practice using async and await
 
-The following example is a failing unit test that contains partially completed
-code snippets. Your task is to complete the example so that the test passes.
+The following exercise is a failing unit test that contains partially completed
+code snippets. Your task is to complete the exercise by writing code to make the 
+tests pass. To simulate asynchronous operations, __some async functions 
+(e.g. `getRole` and `getLoginAmount`) are provided in the background. You don't need
+to implement these provided functions.__
 Verify your code by clicking the "Run" button.
 
 ### Part 1: `reportUserRole`
@@ -358,6 +373,8 @@ Implement an `async` function `reportLogins`:
 1. Obtain the number of logins by calling the provided `async` function `getLoginAmount`
 1. `getLoginAmount` returns an `int` representing the number of times that the user has logged in.
 1. Example return value from `reportLogins: 'Total number of logins: 57'`
+
+## Exercise
 
 [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056
 <iframe 
@@ -387,6 +404,8 @@ the code inside the `catch` clause executes. The only difference is that with
 asynchronous functions you must use the async/await keywords following the 
 syntax you used in the prior section:
 
+## Example
+
 [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new.html?id=25ade03f0632878a9169209e3cd7bef2"
@@ -396,11 +415,15 @@ syntax you used in the prior section:
 </iframe>
 
 ## Practice handling errors
+_In this exercise, an async functions `getNewUsername` is provided in the background. 
+You don’t need to implement this provided function._
 Use `async` and `await` to accomplish the following:
 
 * Implement a `changeUsername` function that calls the provided asynchronous function
   `getNewUsername` and returns its result.
 * The `changeUsername` function must catch any errors thrown by `getNewUsername`.
+
+## Exercise
 
 [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3
 <iframe 
@@ -412,7 +435,11 @@ Use `async` and `await` to accomplish the following:
 
 ## Putting it all together
 
-It's time to practice what you've learned in one final exercise. Write the following:
+It's time to practice what you've learned in one final exercise. 
+_Some async functions (e.g. `getUsername` and `logoutUser`) are provided in the background.
+You don’t need to implement these provided functions._
+
+Write the following:
 
 ### Part 1: `addHello` 
 * Write a function `addHello` that takes a single string
@@ -436,6 +463,8 @@ It's time to practice what you've learned in one final exercise. Write the follo
 * If `logoutUser` succeeds, `sayGoodbye` should return the string "<result>
   Thanks! See you next time!" where <result> is the String value returned by
   calling `logoutUser`.
+
+## Exercise
 
 [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc
 <iframe 
