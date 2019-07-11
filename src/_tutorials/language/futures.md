@@ -172,7 +172,7 @@ Future<String> gatherNewsReports() =>
 // import 'dart:html';
 //
 // Future<String> gatherNewsReportsFromServer() => HttpRequest.getString(
-//      'https://dart.dev/f/dailyNewsDigest.txt',
+//      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 {% endprettify %}
 {% endcomment %}
