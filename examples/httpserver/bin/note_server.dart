@@ -20,8 +20,7 @@ Future main() async {
     return;
   }
 
-  var server =
-      await HttpServer.bind(InternetAddress.loopbackIPv4, 4042);
+  var server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4042);
   print('Listening for requests on 4042.');
   await listenForRequests(server);
 }
@@ -65,8 +64,7 @@ Future handlePost(HttpRequest request) async {
 
 void saveNote(HttpRequest request, String myNote) {
   try {
-    File('notes.txt')
-        .writeAsStringSync(myNote, mode: FileMode.append);
+    File('notes.txt').writeAsStringSync(myNote, mode: FileMode.append);
   } catch (e) {
     print('Couldn\'t open notes.txt: $e');
     request.response
@@ -115,8 +113,7 @@ void handleOptions(HttpRequest request) {
 // #docregion addCorsHeaders
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
-  response.headers
-      .add('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS');
   response.headers.add('Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept');
 }
