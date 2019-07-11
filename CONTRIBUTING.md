@@ -1,6 +1,6 @@
 # Contributing :heart:
 
-Thanks for thinking about helping with [www.dartlang.org][www]!
+Thanks for thinking about helping with [dart.dev][www]!
 You can contribute in a few ways.
 
 * **Fix typos.** The GitHub UI makes it easy to contribute small fixes, and
@@ -43,7 +43,7 @@ More info:
 [issue tracker]: https://github.com/dart-lang/site-www/issues
 [Report issues]: https://github.com/dart-lang/site-www/issues/new
 [sign the CLA]: https://developers.google.com/open-source/cla/individual
-[www]: https://www.dartlang.org
+[www]: https://dart.dev
 
 ## Updating code samples
 
@@ -52,7 +52,7 @@ If your PR changes Dart code within a page, you'll probably need to change the c
 1. In a `.md` file for the page.
 2. In a `.dart` file under the `/examples` directory.
 
-For example, say  you want to change the following code in the [language tour](https://www.dartlang.org/guides/language/language-tour):
+For example, say  you want to change the following code in the [language tour](https://dart.dev/guides/language/language-tour):
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
