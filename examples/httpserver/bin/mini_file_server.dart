@@ -27,7 +27,7 @@ Future main() async {
       print("Serving ${targetFile.path}.");
       req.response.headers.contentType = ContentType.html;
       try {
-        await targetFile.openRead().pipe(req.response);
+        await req.response.addStream(targetFile.openRead());
       } catch (e) {
         print("Couldn't read file: $e");
         exit(-1);

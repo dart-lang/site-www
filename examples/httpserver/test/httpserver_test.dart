@@ -202,6 +202,6 @@ Future<String> getUrl([
   final client = HttpClient();
   final request = await client.get(host, port, path);
   final response = await request.close();
-  final data = await response.transform(utf8.decoder).toList();
+  final data = await utf8.decoder.bind(response).toList();
   return data.join('');
 }
