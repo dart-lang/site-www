@@ -423,7 +423,7 @@ This program uses a convenience method, [getString()][], provided by the
 <!--?code-excerpt "web/portmanteaux/main.dart (makeRequest)" indent-by="0" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
 {% prettify dart %}
 Future<void> makeRequest(Event _) async {
-  const path = 'https://www.dartlang.org/f/portmanteaux.json';
+  const path = 'https://dart.dev/f/portmanteaux.json';
   try {
     [!// Make the GET request!]
     final jsonString = await HttpRequest.getString(path);
