@@ -184,8 +184,7 @@ authors:
 - Bob Nystrom <rnystrom@google.com>
 {% endprettify %}
 
-If anyone uploads your package to the Pub site, your email address is
-public.
+In order to authenticate with the pub server your `email` **must** be a Google or Gmail email address. If anyone uploads your package to the Pub site, your email address is public.
 
 ### Homepage
 
