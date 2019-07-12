@@ -41,9 +41,12 @@ are a few additional requirements for uploading a package:
   and Git dependencies don't support version resolution as well as hosted
   dependencies do.
 
-* Once you run `pub publish` you will be required to authenticate with a "Google Account". This can be a Gmail account, but you can use any Google account, including one registered with your own email address.
+* You must have a [Google Account,][Google Account]
+  which pub uses to manage package upload permissions.
+  Your Google Account can be associated with a Gmail address or
+  with any other email address.
 
-This allows us to leverage all the security and account recovery features associated with Google Accounts.
+[Google Account]: https://support.google.com/accounts/answer/27441
 
 Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
