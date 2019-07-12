@@ -184,7 +184,7 @@ authors:
 - Bob Nystrom <rnystrom@google.com>
 {% endprettify %}
 
-In order to authenticate with the pub server your `email` **must** be a Google or Gmail email address. If anyone uploads your package to the Pub site, your email address is public.
+If anyone uploads your package to the Pub site, your email address is public. The email can be from any email provider as long as it being listed publicly is okay.
 
 ### Homepage
 
