@@ -1586,9 +1586,8 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart %}
-var lines = inputStream
-    .transform([!utf8.decoder!])
-    .transform(LineSplitter());
+var lines =
+    [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
