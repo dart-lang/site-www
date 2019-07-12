@@ -121,7 +121,7 @@ void main() {
       var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
       var response = await request.close();
-      var data = await response.transform(utf8.decoder).toList();
+      var data = await utf8.decoder.bind(response).toList();
       print('Response ${response.statusCode}: $data');
       httpClient.close();
     }

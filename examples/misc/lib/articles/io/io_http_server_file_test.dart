@@ -15,7 +15,7 @@ Future<void> handleRequest(String basePath, HttpRequest request) async {
   final File file = File('$basePath$resultPath');
   if (await file.exists()) {
     try {
-      await file.openRead().pipe(request.response);
+      await request.response.addStream(file.openRead());
     } catch (exception) {
       print('Error happened: $exception');
       await sendInternalError(request.response);

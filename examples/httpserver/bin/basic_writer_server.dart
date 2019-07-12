@@ -22,7 +22,7 @@ Future main() async {
         contentType?.mimeType == 'application/json' /*1*/) {
       try {
         String content =
-            await req.transform(utf8.decoder).join(); /*2*/
+            await utf8.decoder.bind(req).join(); /*2*/
         var data = jsonDecode(content) as Map; /*3*/
         var fileName = req.uri.pathSegments.last; /*4*/
         await File(fileName)

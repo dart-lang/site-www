@@ -49,8 +49,9 @@ Future handlePost(HttpRequest request) async {
   addCorsHeaders(request.response);
 
   try {
-    decoded = await request
-        .transform(utf8.decoder.fuse(json.decoder))
+    decoded = await utf8.decoder
+        .bind(request)
+        .transform(json.decoder)
         .first as Map;
   } catch (e) {
     print('Request listen error: $e');
