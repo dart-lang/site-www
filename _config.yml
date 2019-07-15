@@ -11,13 +11,11 @@ port: 4000
 
 # Global variables
 # use case:
-#   {{site.webdev}}/downloads
+#   {{site.flutter}}/docs
 
 www: https://dart.dev
 prev-url: https://v1-dartlang-org.firebaseapp.com
-webdev: https://webdev.dartlang.org
-angulardart: https://webdev.dartlang.org/angular
-dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
+angulardart: https://angulardart.dev
 dart_vm:  /server
 flutter:  https://flutter.dev
 dart_api: https://api.dart.dev
@@ -26,8 +24,8 @@ pub: https://pub.dev
 pub-api: https://pub.dev/documentation
 pub-pkg: https://pub.dev/packages
 lints: https://dart-lang.github.io/linter/lints
-dartpad: https://dartpad.dartlang.org
-dartpadx: https://dartpad.dartlang.org/experimental/embed-new-dart.html
+dartpad: https://dartpad.dev
+dartpadx: https://dartpad.dev/experimental/embed-new-dart.html
 news: https://news.dartlang.org
 group: https://groups.google.com/a/dartlang.org
 
@@ -63,10 +61,9 @@ defaults:
 
 custom:
   dartpad:
-    embed-dart-prefix: https://dartpad.dartlang.org/embed-dart.html
-    embed-html-prefix: https://dartpad.dartlang.org/embed-html.html
-    embed-inline-prefix: https://dartpad.dartlang.org/embed-inline.html
-    direct-link: https://dartpad.dartlang.org
+    embed-dart-prefix: https://dartpad.dev/embed-dart.html
+    embed-html-prefix: https://dartpad.dev/embed-html.html
+    embed-inline-prefix: https://dartpad.dev/embed-inline.html
   downloads:
     dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
     dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release

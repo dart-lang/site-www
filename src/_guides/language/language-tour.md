@@ -19,7 +19,7 @@ consult the [Dart language specification][].
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
-**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
+**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 </div>
 
 
@@ -3811,14 +3811,22 @@ import 'package:lib2/lib2.dart' hide foo;
 #### Lazily loading a library
 
 _Deferred loading_ (also called _lazy loading_)
-allows an application to load a library on demand,
-if and when it's needed.
+allows a web app to load a library on demand,
+if and when the library is needed.
 Here are some cases when you might use deferred loading:
 
-* To reduce an app's initial startup time.
+* To reduce a web app's initial startup time.
 * To perform A/B testing—trying out
   alternative implementations of an algorithm, for example.
 * To load rarely used functionality, such as optional screens and dialogs.
+
+<aside class="alert alert-warning" markdown="1">
+**Only dart2js supports deferred loading.**
+Flutter, the Dart VM, and dartdevc don't support deferred loading.
+For more information, see
+[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
+[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+</aside>
 
 To lazily load a library, you must first
 import it using `deferred as`.
@@ -3858,14 +3866,6 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
-<aside class="alert alert-warning" markdown="1">
-**Dart VM difference:**
-The Dart VM allows access to members of deferred libraries
-even before the call to `loadLibrary()`.
-This behavior might change, so
-**don't depend on the current VM behavior.**
-For details, see [issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
-</aside>
 
 ### Implementing libraries
 

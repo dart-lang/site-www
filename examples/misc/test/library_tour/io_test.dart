@@ -121,7 +121,7 @@ void main() {
       var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
       var response = await request.close();
-      var data = await response.transform(utf8.decoder).toList();
+      var data = await utf8.decoder.bind(response).toList();
       print('Response ${response.statusCode}: $data');
       httpClient.close();
     }
@@ -151,9 +151,8 @@ Future main_test_read_from_stream() async {
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
-  var lines = inputStream
-      .transform(utf8.decoder)
-      .transform(LineSplitter());
+  var lines =
+      utf8.decoder.bind(inputStream).transform(LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');

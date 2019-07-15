@@ -1320,9 +1320,9 @@ function.
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
-bool isValid(String value, bool [!Function(String)!] test) => ...
+bool isValid(String value, [!bool Function(String)!] test) => ...
 {% endprettify %}
 
 {:.bad-style}

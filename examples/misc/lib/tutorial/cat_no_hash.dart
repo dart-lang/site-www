@@ -3,9 +3,8 @@ import 'dart:io';
 
 Future<void> main(List<String> args) async {
   var file = File(args[0]);
-  var lines = file
-      .openRead()
-      .transform(utf8.decoder) //!<br>
+  var lines = utf8.decoder
+      .bind(file.openRead()) //!<br>
       .transform(LineSplitter());
   await for (var line in lines) {
     if (!line.startsWith('#')) print(line);

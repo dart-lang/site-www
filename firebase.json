@@ -15,7 +15,7 @@
       { "source": "/+lexicalscope", "destination": "/guides/language/language-tour#lexical-scope", "type": 301 },
       { "source": "/+pub", "destination": "/tools/pub", "type": 301 },
       { "source": "/2.0", "destination": "/dart-2", "type": 301 },
-      { "source": "/angular/cheatsheet", "destination": "https://webdev.dartlang.org/angular/cheatsheet", "type": 301 },
+      { "source": "/angular/cheatsheet", "destination": "https://angulardart.dev/cheatsheet", "type": 301 },
       { "source": "/api", "destination": "https://api.dart.dev", "type": 301 },
       { "source": "/articles/api-naming-guide{,/**}", "destination": "/guides/language/effective-dart/design", "type": 301 },
       { "source": "/articles/server{,/**}", "destination": "/server", "type": 301 },
@@ -98,7 +98,7 @@
       { "source": "/docs/tutorials/cmdline", "destination": "/tutorials/server/cmdline", "type": 301 },
       { "source": "/docs/tutorials/connect-dart-html", "destination": "/tutorials/web/low-level-html/connect-dart-html", "type": 301 },
       { "source": "/docs/tutorials/fetchdata", "destination": "/tutorials/web/get-data/fetch-data", "type": 301 },
-      { "source": "/docs/tutorials/forms{,/**}", "destination": "https://webdev.dartlang.org/angular/guide/forms", "type": 301 },
+      { "source": "/docs/tutorials/forms{,/**}", "destination": "https://angulardart.dev/guide/forms", "type": 301 },
       { "source": "/docs/tutorials/futures", "destination": "/tutorials/language/futures", "type": 301 },
       { "source": "/docs/tutorials/get-started", "destination": "/tutorials/server/get-started", "type": 301 },
       { "source": "/docs/tutorials/httpserver", "destination": "/tutorials/server/httpserver", "type": 301 },
@@ -181,8 +181,8 @@
       { "source": "/tools/observatory{,/**}", "destination": "https://dart-lang.github.io/observatory", "type": 301 },
       { "source": "/tools/**/private-files?(.html)", "destination": "/guides/libraries/private-files", "type": 301 },
       { "source": "/tools/pub/assets-and-*transformers?(.html)", "destination": "/tools/pub/obsolete", "type": 301 },
-      { "source": "/tools/pub/cmd/pub-build?(.html)", "destination": "https://webdev.dartlang.org/tools/pub/pub-build", "type": 301 },
-      { "source": "/tools/pub/cmd/pub-serve?(.html)", "destination": "https://webdev.dartlang.org/tools/pub/pub-serve", "type": 301 },
+      { "source": "/tools/pub/cmd/pub-build?(.html)", "destination": "/tools/webdev", "type": 301 },
+      { "source": "/tools/pub/cmd/pub-serve?(.html)", "destination": "/tools/webdev", "type": 301 },
       { "source": "/tools/pub/create-library-packages?(.html)", "destination": "/guides/libraries/create-library-packages", "type": 301 },
       { "source": "/tools/pub/faq?(.html)", "destination": "/tools/faq#pub", "type": 301 },
       { "source": "/tools/pub/installing?(.html)", "destination": "/tools/pub/environment-variables", "type": 301 },
@@ -190,11 +190,12 @@
       { "source": "/tools/pub/get-started", "destination": "/guides/packages", "type": 301 },
       { "source": "/tools/pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
-      { "source": "/tools/webstorm?(.html)", "destination": "https://webdev.dartlang.org/tools/webstorm", "type": 301 },
+      { "source": "/tools/webstorm?(.html)", "destination": "/tools", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/dart-1", "destination": "https://v1-dartlang-org.firebaseapp.com", "type": 301 },
-      { "source": "/packages", "destination": "https://pub.dev", "type": 301 }
+      { "source": "/packages", "destination": "https://pub.dev", "type": 301 },
+      { "source": "/sdk-changelog-2.4.0", "destination": "https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#240---2019-06-27", "type": 301 }
     ]
   }
 }

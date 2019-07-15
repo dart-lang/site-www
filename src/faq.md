@@ -87,7 +87,7 @@ most important gift we can give to future programmers.
 Please look at the [language funnel][language funnel] and
 [language issues list][language issues] to see if your request is already there.
 If it is, let us know that you care and give it a thumbs up. Otherwise, go ahead
-and add a new request issue (see the [language evolution process][languageprocess]
+and add a new request issue (see the [language evolution process][language process]
 for details).  Make a thoughtful argument for your feature. Sample code with and
 without your feature is good evidence; a sizeable codebase that shows the need
 is even better evidence.
@@ -192,7 +192,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Who Uses Dart]: /community/who-uses-dart
 [spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
-[DartPad]: {{site.custom.dartpad.direct-link}}
+[DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/sound-dart

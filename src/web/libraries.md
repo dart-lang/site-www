@@ -25,7 +25,7 @@ that provide low-level web APIs.
   how to include a Dart script in an HTML page and
   how to add and remove elements from a web page.
   These tutorials feature interactive examples in
-  [DartPad.]({{site.custom.dartpad.direct-link}})
+  [DartPad.]({{site.dartpad}})
 
 [The dart:html section](/guides/libraries/library-tour) of the library tour
 : An example-driven tour of using the dart:html library.
