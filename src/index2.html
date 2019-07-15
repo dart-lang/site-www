@@ -7,44 +7,30 @@ description: Dart is a client-optimized language for fast apps on any platform
 
 <style>
 
-.video-visible {
-  
-}
-
-.video-hidden {
-  display: none;
-}
-
-.dartpad-hidden {
-  display: none;
-}
-
-.dartpad-visible {
-  width: 960px;
-  height: 500px;
-  margin-top: 20px;
-  margin-right: auto;
-  margin-bottom: 20px;
-  margin-left: auto;
-}
-
-.try-it-container {
-  margin-top: 20px;
-}
-
-#tryItLink {
-  font-size: 28px;
-  color: #00D2FA;
-}
-
-#tryItLink:hover {
-  text-decoration: underline;
+#dartpadRow {
+  background: #1F3044;
 }
 
 @media(max-width: 991.98px) {
-  .try-it-container {
+  #dartpadRow {
     display: none;
   }
+}
+
+.dartpad-callout {
+  display: block;
+  margin: auto;
+  font-size: 28px;
+  color: white;
+}
+
+iframe {
+  width: 960px;
+  height: 500px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
 }
 
 </style>
@@ -57,7 +43,6 @@ description: Dart is a client-optimized language for fast apps on any platform
             <source src="assets/dash/video/hotreload.mp4"
                     type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
         </video>
-        <iframe id="dartpadIframe" class="dartpad-hidden" src="https://dartpad.dev/experimental/embed-new-dart.html?id=43f3db47b0632c557200270807696687"></iframe>
     </section>
 </div>
 
@@ -71,9 +56,6 @@ description: Dart is a client-optimized language for fast apps on any platform
         Dart is a client-optimized language for fast apps on any platform
     </div>
     <img class="made-by" src="assets/dash/2x/made by google@2x.png"/>
-    <div class="try-it-container">
-        <a href="#page-header" id="tryItLink">Try it now in your browser!</a>
-    </div>
 </section>
 
 <!-- Dart pillars -->
@@ -298,17 +280,11 @@ description: Dart is a client-optimized language for fast apps on any platform
                 src="assets/dash/2x/3-1 - aot compile@2x-80.jpg"/>
         </div>
     </section>
-</div>
-
-<script>
-  var linkElement = document.querySelector('#tryItLink');
-
-  // Add a click handler to the "try it!" link that disappears
-  // the video and replaces it with the DartPad editor.
-  linkElement.addEventListener('click', function() {
-    var videoElement = document.querySelector('#introVideo');
-    var dartpadElement = document.querySelector('#dartpadIframe');
-    videoElement.classList.replace('video-visible', 'video-hidden');
-    dartpadElement.classList.replace('dartpad-hidden', 'dartpad-visible');
-  });
-</script>
+  </div>
+  
+  <section id="dartpadRow" class="dash-header-callout">
+    <div class="callout-title">
+      Try Dart right now in your browser!
+    </div>
+    <iframe id="dartpadIframe" class="dartpad-hidden" src="https://dartpad.dev/experimental/embed-new-dart.html?id=43f3db47b0632c557200270807696687"></iframe>
+  </section>
