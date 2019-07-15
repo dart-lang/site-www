@@ -1,5 +1,13 @@
 {
   "projects": {
-    "default": "ab-dartlang-1"
+    "default": "dart-dev",
+    "dev": "dartlang-org-dev",
+    "staging-0": "dartlang-org-staging-0",
+    "staging-1": "dartlang-org-staging-1",
+    "jt": "jt-dartdev-1",
+    "kw": "kw-www-dartlang-1",
+    "kw2": "kw-staging-dartlang-2",
+    "sz" : "sz-www-1",
+    "sz2" : "sz-www-2"
   }
 }
