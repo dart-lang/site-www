@@ -36,11 +36,10 @@ Estimated time to complete this codelab: 45-50 minutes.
 
 ## Key terms 
 This section provides definitions for the key terms that appear 
-throughout this codelab. The first section lists key terms that are generally
-used in asynchronous programming. The second section defines keywords and 
-terminology for writing asynchronous programs in Dart.
+throughout this codelab. 
 
-### Asynchronous programming terms
+### General asynchronous programming terms
+This section lists key terms that are generally used in asynchronous programming. 
 
 **synchronous operation**   
 A synchronous operation blocks other operations from executing until it completes. 
@@ -56,8 +55,10 @@ other operations to execute before it completes.
 An asynchronous function performs asynchronous operations.
 
 
-### Terms for asynchronous programming in Dart 
-Don't worry if you are unfamiliar with these terms - this codelab will cover them in detail.
+### Terms specific to asynchronous programming in Dart 
+The second section defines keywords and terminology for writing asynchronous
+programs in Dart. Don't worry if you are unfamiliar with these terms - this
+codelab covers them in detail.
 
 **Future**  
 "Future" refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
@@ -90,14 +91,14 @@ operations include:
 * Writing to a database.
 * Reading data from a file.
 
-To implement these features, you will need to learn about the `Future` class
+To implement these features, you need to learn about the `Future` class
 as well as the `async` and `await` keywords. In Dart you cannot use synchronous
 code to handle asynchronous operations.
 
 Consider the following example that fails to print the desired user order to the
 console: 
 
-## Example
+### Example - failing to handle asynchronous function
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
@@ -115,19 +116,19 @@ returning a string describing the user's order: a large latte. (For a further
 explanation you can find out more about 
 [Future.delayed]({{site.dart_api}}/Future.delayed.html)).
 * `createOrderMessage` calls `getUserOrder` as if it were a synchronous 
-function&mdash;it invokes `getUserOrder` and immediately prints the result. 
+function &mdash; it invokes `getUserOrder` and immediately prints the result. 
 * Since `getUserOrder` waits four seconds before returning the user's order,
 `createOrderMessage` never prints the user's order. Instead the console
 prints the value returned by `createOrderMessage` which
 turns out to be `Instance of '_Future<String>'`.
 
-Next, you will learn about futures like the ones shown in the preceding example.
-You will also learn how to write code to handle the asynchronous function `getUserOrder`.
+Next, you'll learn about futures like the ones shown in the preceding example.
+You'll also learn how to write code to handle the asynchronous function `getUserOrder`.
  
  {{ site.alert.secondary }} 
   Quick review: 
   * Asynchronous operations let a program do work while waiting for an operation to finish.
-  * Dart contains specific keywords and classes for writing asynchronous code.
+  * Dart provides specific keywords and classes for writing asynchronous code.
  {{ site.alert.end }}
 
 
@@ -156,16 +157,15 @@ There are two ways that a future can complete:
 
 #### 1. Success
 
-If the asynchronous operations succeed, the future completes and returns a 
-result of type T. For example,  
-`Future<String>` is the type signature for a future that produces a string
-result. If a future produces a result that isn't a usable value, then the
-future's type is `Future<void>`. 
+If the asynchronous operations succeed, the future completes with a 
+result of type T. For example, `Future<String>` is the type signature for a
+future that produces a string result. If a future produces a result that isn't
+a usable value, then the future's type is `Future<void>`. 
 
 In the following example `getUserOrder` returns a future that completes by printing 
 to the console.
 
-## Example
+### Example - introducing futures
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
 <iframe 
@@ -189,7 +189,7 @@ exception, the future completes and throws the error or exception.
 In the following example, `getUserOrder` returns a future that completes by 
 throwing an Exception.
 
-## Example
+### Example - futures and exceptions
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
 <iframe 
@@ -260,14 +260,9 @@ Now that you have declared an `async` function:
 var order = [!await!] getUserOrder();
 {% endprettify %}
 
+The following examples provide a comparison of synchronous and asynchronous functions.
 
-The following examples provide a comparison of a synchronous function
-and an asynchronous function.  
-
-In this synchronous example the console immediately prints the messages 
-"Your order is: Instance of '_Future<String>'". 
-
-## Example
+### Example - synchronous functions
 
 [//]: https://gist.github.com/8f4d136e7eb447f4acc7ccb523006e10
 <iframe 
@@ -278,14 +273,14 @@ In this synchronous example the console immediately prints the messages
   width="100%">
 </iframe>
 
+In the preceding synchronous example the console immediately prints the messages 
+"Your order is: Instance of '_Future<String>'". 
+
 The following example shows the same code as before, but implemented asynchronously.
 Since you can only use the `await` keyword within an `async` function body, the 
 `createOrderMessage()` function is now marked with the `async` keyword.
 
-In this asynchronous example, the console  prints the result "Your order is: Large
-Latte" after a four second delay. 
-
-## Example
+### Example - asynchronous functions
 
 [//]: https://gist.github.com/b8d026d2b23102084534159fafc9d7c6
 <iframe 
@@ -296,7 +291,8 @@ Latte" after a four second delay.
   width="100%">
 </iframe>
 
-This asynchronous example has three changes from the preceding synchronous example:
+In the preceding asynchronous example, the console  prints the result "Your order is: Large
+Latte" after a four second delay. This asynchronous example has three changes from the synchronous example:
 
 1. Update the return types for `createOrderMessage` and `getUserOrder` from 
 `String` to `Future<String>`.
@@ -326,7 +322,7 @@ synchronous code immediately executes so long as the synchronous code appears
 before the first `await` keyword. The following example demonstrates how 
 execution proceeds within an `async` function body:
 
-## Example
+### Example - execution within async functions
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
@@ -375,7 +371,7 @@ use the actual value returned by `getLoginAmount`; copying and pasting this text
 1. `getLoginAmount` returns an `int` representing the number of times that the user has logged in.
 
 
-## Exercise
+### Exercise
 
 [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056
 <iframe 
@@ -410,7 +406,7 @@ the code inside the `catch` clause executes. The difference is that with
 asynchronous functions you must use the async/await keywords following the 
 syntax you used in the prior section:
 
-## Example
+### Example - async/await with try/catch
 
 [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2
 <iframe 
@@ -429,7 +425,7 @@ Use `async` and `await` to do the following:
   `getNewUsername` and returns its result.
 * The `changeUsername` function must catch any errors thrown by `getNewUsername`.
 
-## Exercise
+### Exercise
 
 [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3
 <iframe 
@@ -471,7 +467,7 @@ Write the following:
   Thanks! See you next time!" where \<result\> is the String value returned by
   calling `logoutUser`.
 
-## Exercise
+### Exercise
 
 [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc
 <iframe 
@@ -481,7 +477,7 @@ Write the following:
   width="100%">
 </iframe>
 
-## What next?
+## What's next?
 
 * [Asynchronous programming: futures & async-await](/tutorials/language/futures) tutorial
 * [Dart's type system](/guides/language/sound-dart) (Includes more examples of type signatures with futures).
