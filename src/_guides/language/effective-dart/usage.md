@@ -1096,9 +1096,11 @@ class Point {
 {% endprettify %}
 
 This `this.` syntax before a constructor parameter is called an "initializing
-formal". You can't always take advantage of it. In particular, using it means
-the parameter is not visible in the initialization list. But, when you can, you
-should.
+formal". You can't always take advantage of it. It requires that the constructor
+parameter name is the same as the field name, and that may look weird in
+documentation if the field name is private, and a private name cannot be
+used for a named parameter.
+Still, when you can use an initializing formal, you should.
 
 
 ### DON'T type annotate initializing formals.
