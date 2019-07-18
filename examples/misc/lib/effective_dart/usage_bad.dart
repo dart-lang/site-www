@@ -7,6 +7,26 @@ import 'usage_good.dart';
 
 void miscDeclAnalyzedButNotTested() {
   {
+    dynamic optionalThing;
+    // #docregion null-aware-condition
+    if (optionalThing?.isEnabled) {
+      print("Have enabled thing.");
+    }
+    // #enddocregion null-aware-condition
+  }
+
+  {
+    dynamic optionalThing;
+    // #docregion convert-null-equals
+    // If you want null to be false:
+    optionalThing?.isEnabled == true;
+
+    // If you want null to be true:
+    optionalThing?.isEnabled == false;
+    // #enddocregion convert-null-equals
+  }
+
+  {
     // #docregion adjacent-strings-literals
     raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
         'parts are overrun by martians. Unclear which are which.');

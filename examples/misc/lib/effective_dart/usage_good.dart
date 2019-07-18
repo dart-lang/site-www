@@ -13,6 +13,17 @@ Func1<bool, dynamic> canHandle, verifyResult;
 
 void miscDeclAnalyzedButNotTested() {
   {
+    dynamic optionalThing;
+    // #docregion convert-null-aware
+    // If you want null to be false:
+    optionalThing?.isEnabled ?? false;
+
+    // If you want null to be true:
+    optionalThing?.isEnabled ?? true;
+    // #enddocregion convert-null-aware
+  }
+
+  {
     // #docregion adjacent-strings-literals
     raiseAlarm(
         'ERROR: Parts of the spaceship are on fire. Other '
