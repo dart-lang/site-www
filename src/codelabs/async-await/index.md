@@ -10,10 +10,21 @@ tags: [ future, async, await, asynchronous, try, catch, error ]
 Welcome to the asynchronous Dart codelab! In this codelab, you practice using
 Dart to run asynchronous code using the `async` and `await` keywords.
 
+{% include dartpad-exercise-how-to.md %}
+
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=215ba63265350c02dfbd586dfd30b8c3"
+  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
+  frameborder="no"
+  height="420"
+  width="100%" >
+</iframe>
+
 In addition to explaining how to write asynchronous Dart code,
 this codelab includes embedded editors that show
 you working code examples and coding exercises. You can use these editors to 
 test your knowledge by completing the exercises.
+
 
 Here's what you should know to get the most out of this codelab:
 
@@ -35,11 +46,9 @@ covered in this codelab.
 Estimated time to complete this codelab: 45-50 minutes.
 
 ## Key terms 
-This section provides definitions for the key terms that appear 
-throughout this codelab. 
+This section defines key terms that appear throughout this codelab. 
 
 ### General asynchronous programming terms
-This section lists key terms that are generally used in asynchronous programming. 
 
 **synchronous operation**   
 A synchronous operation blocks other operations from executing until it completes. 
@@ -54,17 +63,17 @@ other operations to execute before it completes.
 **asynchronous function**   
 An asynchronous function performs asynchronous operations.
 
-
 ### Terms specific to asynchronous programming in Dart 
-The second section defines keywords and terminology for writing asynchronous
-programs in Dart. Don't worry if you are unfamiliar with these terms - this
-codelab covers them in detail.
+You can use the following class and keywords to write asynchronous programs in Dart.
+Don't worry if you're unfamiliar with these terms - this codelab covers them in detail.
 
 **Future**  
-"Future" refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
+Future (with a capitalised "F") refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
 
 **future**   
-"future" refers to an instance of the Dart Future class.
+future (with a lower case "f") refers to an instance of the Dart Future class.
+In Dart, asynchronous functions return futures. A future has two states: 
+uncompleted and completed. 
 
 **async**  
 Use the `async` keyword to define an asynchronous function. To use the
@@ -73,13 +82,11 @@ function's body. Once you define an `async` function, you invoke it by prefixing
 it with the `await` keyword. 
 
 **async function**  
-A Dart `async` function is a function labeled with the `async` keyword.
+An `async` function is a function labeled with the `async` keyword.
 
 **await**    
-Before invoking an `async` function, you must use the `await` keyword. 
-This syntax allows the caller to access the completed value of the future.
-
- 
+Before invoking an `async` function, you can use the `await` keyword. 
+This allows the caller to access the completed result of the future.
 
 ## Why asynchronous code matters
 
@@ -91,14 +98,11 @@ operations include:
 * Writing to a database.
 * Reading data from a file.
 
-To implement these features, you need to learn about the `Future` class
-as well as the `async` and `await` keywords. In Dart you cannot use synchronous
-code to handle asynchronous operations.
+To perform these processes in Dart, you need to learn about the `Future` class
+as well as the `async` and `await` keywords. Consider the following example that
+fails to print the desired user order to the console: 
 
-Consider the following example that fails to print the desired user order to the
-console: 
-
-### Example - failing to handle asynchronous function
+### Example - failing to handle an asynchronous function
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
@@ -119,11 +123,14 @@ explanation you can find out more about
 function &mdash; it invokes `getUserOrder` and immediately prints the result. 
 * Since `getUserOrder` waits four seconds before returning the user's order,
 `createOrderMessage` never prints the user's order. Instead the console
-prints the value returned by `createOrderMessage` which
+prints the value immediately returned by `createOrderMessage` which
 turns out to be `Instance of '_Future<String>'`.
+* Because `createOrderMessage` calls `getUserOrder` as if it were a synchronous
+function, `createOrderMessage` fails to print the desired output "Large Latte".
 
 Next, you'll learn about futures like the ones shown in the preceding example.
-You'll also learn how to write code to handle the asynchronous function `getUserOrder`.
+You'll also learn how to use the `async` and `await` keywords to handle the 
+asynchronous function `getUserOrder`.
  
  {{ site.alert.secondary }} 
   Quick review: 
@@ -134,9 +141,7 @@ You'll also learn how to write code to handle the asynchronous function `getUser
 
 ## Async in Dart: What is a future?
 
-In Dart, a
-[Future]({{site.dart_api}}/Future-class.html)
-represents the result of an asynchronous operation. A future has
+In Dart, a future represents the result of an asynchronous operation. A future has
 two states: uncompleted or completed.
 
 {{ site.alert.note }}
@@ -146,10 +151,9 @@ two states: uncompleted or completed.
 
 ### Uncompleted
 
-When you invoke a function that returns a future, that function immediately 
-returns a future in an uncompleted state. While in its uncompleted state,
-a future is waiting for asynchronous operations to finish or to 
-throw an error. 
+When you invoke an asynchronous function, that function immediately 
+returns an uncompleted future. While uncomplete, a future is waiting for 
+asynchronous operations to finish or to throw an error. 
 
 ### Completed
 
@@ -176,18 +180,18 @@ to the console.
   width="100%" >
 </iframe>
 
-In the preceding example, even though `getUserOrder` executes before the `print` method on line 8, the console
-shows the `print` output from line 8 ("Fetching user order...") before the output from
-`getUserOrder` ("Large Latte). This is because `getUserOrder` delays for 3 seconds before it
-completes by printing `Large Latte` to the console.
+In the preceding example, even though `getUserOrder` executes before the print
+statement on line 8, the console shows the printed output from line 8 
+("Fetching user order...") before the output from `getUserOrder` ("Large Latte).
+This is because `getUserOrder` delays for 3 seconds before it completes by 
+printing `Large Latte` to the console.
 
 #### 2. Error
 
 If the asynchronous operations performed by the function throw an error or
 exception, the future completes and throws the error or exception.
 
-In the following example, `getUserOrder` returns a future that completes by 
-throwing an Exception.
+In the following example, `getUserOrder` returns a future that completes with an exception.
 
 ### Example - futures and exceptions
 
@@ -200,7 +204,7 @@ throwing an Exception.
   width="100%" >
 </iframe>
 
-In this example, `getUserOrder` completes with an Exception indicating that the user ID is invalid.
+In this example, `getUserOrder` completes with an exception indicating that the user ID is invalid.
 
 You have learned about futures and how they complete, but how do you handle their
 results? In the next section you will learn how to use the `async` and `await`
@@ -349,8 +353,9 @@ The following exercise is a failing unit test that contains partially completed
 code snippets. Your task is to complete the exercise by writing code to make the 
 tests pass. To simulate asynchronous operations, __the exercise provides the 
 async functions `getRole` and `getLoginAmount`. You don't need
-to implement these provided functions. You don't need to implement `main()`.__
-Verify your code by clicking the "Run" button.
+to implement these functions -- they are provided but not shown in the exercise.
+You don't need to implement `main()`.__
+
 
 ### Part 1: `reportUserRole`
 Add logic to the `reportUserRole` function:
@@ -421,9 +426,10 @@ __This exercise provides the async function `getNewUsername`.
 You don’t need to implement this provided function.__
 Use `async` and `await` to do the following:
 
-* Implement a `changeUsername` function that calls the provided asynchronous function
+* Implement an asynchronous `changeUsername` function that calls the provided asynchronous function
   `getNewUsername` and returns its result.
-* The `changeUsername` function must catch any errors thrown by `getNewUsername`.
+* If it succeeds, `getNewUsername` returns a String, otherwise it throws an Exception.
+* Since `getNewUsername` can throw an Exception, the `changeUsername` function must __catch and return any errors__ thrown by `getNewUsername` and it must __stringify the error before returning it__.
 
 ### Exercise
 
