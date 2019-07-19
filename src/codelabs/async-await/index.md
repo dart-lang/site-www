@@ -12,6 +12,8 @@ Dart to run asynchronous code using the `async` and `await` keywords.
 
 {% include dartpad-exercise-how-to.md %}
 
+The following is an example of the embedded editor you will use in this codelab:
+
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=215ba63265350c02dfbd586dfd30b8c3"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
@@ -416,6 +418,7 @@ syntax you used in the prior section:
 [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
+  style="border: 1px solid lightgrey;"
   frameborder="no"
   height="475"
   width="100%" >
@@ -428,8 +431,13 @@ Use `async` and `await` to do the following:
 
 * Implement an asynchronous `changeUsername` function that calls the provided asynchronous function
   `getNewUsername` and returns its result.
+* Since `getNewUsername` can throw an Exception, the `changeUsername` function
+must __catch and return any errors__ thrown by `getNewUsername` and it must 
+__stringify the error before returning it__.
 * If it succeeds, `getNewUsername` returns a String, otherwise it throws an Exception.
-* Since `getNewUsername` can throw an Exception, the `changeUsername` function must __catch and return any errors__ thrown by `getNewUsername` and it must __stringify the error before returning it__.
+* You can use the [toString]({{site.dart_api}}/stable/dart-core/ArgumentError/toString.html)
+method to stringify both [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html)
+and [Errors]({{site.dart_api}}/stable/dart-core/Error-class.html).
 
 ### Exercise
 
