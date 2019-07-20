@@ -40,6 +40,7 @@
       { "source": "/articles/json-web-service", "destination": "/guides/json", "type": 301 },
       { "source": "/articles/language/optional-types", "destination": "/faq#types", "type": 301 },
       { "source": "/articles/m1-language-changes{,/**}", "destination": "/guides/language/spec", "type": 301 },
+      { "source": "/articles/mixins", "destination": "/guides/language/language-tour#adding-features-to-a-class-mixins", "type": 301 },
       { "source": "/articles/mocking-with-dart", "destination": "https://pub.dev/packages/mockito", "type": 301 },
       { "source": "/articles/native-extensions-for-standalone-dart-vm", "destination": "/server/c-interop-native-extensions", "type": 301 },
       { "source": "/articles/server/native-extensions", "destination": "/server/c-interop-native-extensions", "type": 301 },
