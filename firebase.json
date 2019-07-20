@@ -21,6 +21,7 @@
       { "source": "/articles/server{,/**}", "destination": "/server", "type": 301 },
       { "source": "/articles/language", "destination": "/articles", "type": 301 },
       { "source": "/articles/libraries", "destination": "/articles", "type": 301 },
+      { "source": "/articles/await-async", "destination": "/tutorials/language/futures", "type": 301 },
       { "source": "/articles/creating-streams", "destination": "/articles/libraries/creating-streams", "type": 301 },
       { "source": "/articles/dart-unit-tests{,/**}", "destination": "https://github.com/dart-lang/test#writing-tests", "type": 301 },
       { "source": "/articles/dart-vm/io", "destination": "/articles/libraries/dart-io", "type": 301 },
