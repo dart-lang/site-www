@@ -5,27 +5,12 @@ date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
 ---
 
-## Introduction
-
 Welcome to the asynchronous Dart codelab! In this codelab, you practice using
-Dart to run asynchronous code using the `async` and `await` keywords.
-
-{% include dartpad-exercise-how-to.md %}
-
-The following is an example of the embedded editor you will use in this codelab:
-
-<iframe 
-  src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=215ba63265350c02dfbd586dfd30b8c3"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="420"
-  width="100%" >
-</iframe>
-
-In addition to explaining how to write asynchronous Dart code,
-this codelab includes embedded editors that show
-you working code examples and coding exercises. You can use these editors to 
-test your knowledge by completing the exercises.
+Dart to run asynchronous code using the `async` and `await` keywords. In 
+addition to explaining how to write asynchronous Dart code, this codelab 
+includes embedded editors that show you working code examples and coding 
+exercises. You can use these editors to test your knowledge by completing 
+the exercises.
 
 
 Here's what you should know to get the most out of this codelab:
@@ -46,49 +31,6 @@ in `async` functions.
 covered in this codelab.
 
 Estimated time to complete this codelab: 45-50 minutes.
-
-## Key terms 
-This section defines key terms that appear throughout this codelab. 
-
-### General asynchronous programming terms
-
-**synchronous operation**   
-A synchronous operation blocks other operations from executing until it completes. 
-
-**synchronous function**  
-A synchronous function only performs synchronous operations.
-
-**asynchronous operation**   
-Once initiated, an asynchronous operation allows 
-other operations to execute before it completes.
-
-**asynchronous function**   
-An asynchronous function performs asynchronous operations.
-
-### Terms specific to asynchronous programming in Dart 
-You can use the following class and keywords to write asynchronous programs in Dart.
-Don't worry if you're unfamiliar with these terms - this codelab covers them in detail.
-
-**Future**  
-Future (with a capitalised "F") refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
-
-**future**   
-future (with a lower case "f") refers to an instance of the Dart Future class.
-In Dart, asynchronous functions return futures. A future has two states: 
-uncompleted and completed. 
-
-**async**  
-Use the `async` keyword to define an asynchronous function. To use the
-`async` keyword you must add it to a function definition just before the 
-function's body. Once you define an `async` function, you invoke it by prefixing
-it with the `await` keyword. 
-
-**async function**  
-An `async` function is a function labeled with the `async` keyword.
-
-**await**    
-Before invoking an `async` function, you can use the `await` keyword. 
-This allows the caller to access the completed result of the future.
 
 ## Why asynchronous code matters
 
@@ -135,9 +77,18 @@ You'll also learn how to use the `async` and `await` keywords to handle the
 asynchronous function `getUserOrder`.
  
  {{ site.alert.secondary }} 
-  Quick review: 
-  * Asynchronous operations let a program do work while waiting for an operation to finish.
-  * Dart provides specific keywords and classes for writing asynchronous code.
+  **Key Terms** 
+
+  * **synchronous operation**: A synchronous operation blocks other operations from executing until it completes. 
+
+  * **synchronous function**: A synchronous function only performs synchronous operations.
+
+  * **asynchronous operation**: Once initiated, an asynchronous operation allows 
+    other operations to execute before it completes.
+
+  * **asynchronous function**: An asynchronous function performs at least one 
+  asynchronous operation and can also perform synchronous operations. 
+
  {{ site.alert.end }}
 
 
@@ -213,7 +164,7 @@ results? In the next section you will learn how to use the `async` and `await`
 keywords to handle the results of asynchronous functions. 
 
 {{ site.alert.secondary }}
-  Quick Review:
+  **Quick review**:
 
   * In Dart, a
   [Future]({{site.dart_api}}/Future-class.html)
@@ -230,6 +181,14 @@ keywords to handle the results of asynchronous functions.
   1. The function queues up work to be done and returns an uncompleted future.
   2. Later, when the operation finishes, the future completes with a value or
   with an error.
+
+**Key Terms**
+* **Future**: Future (with a capitalised "F") refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
+
+* **future**: future (with a lower case "f") refers to an instance of the Dart Future class.
+In Dart, asynchronous functions return futures. A future has two states: 
+uncompleted and completed. 
+
 {{ site.alert.end }}
 
 
@@ -313,11 +272,16 @@ and the `main` method.
 {{ site.alert.end }}
 
 {{ site.alert.secondary }}
-  Quick review: 
-  * An `async` function returns a future.
-  * You can only use the `async` and `await` keywords within an `async` function body.
-  * To declare an `async` function, add the keyword after the function's parameters but before the function's body.
-  * Use the `await` keyword before invoking an `async` function to "wait" for the future to complete either with a value or an error.
+  **Key terms**:
+* **async**:  Use the `async` keyword to define an asynchronous function. To use the
+`async` keyword you must add it to a function definition just before the 
+function's body. Once you define an `async` function, you invoke it by prefixing
+it with the `await` keyword. 
+* **async function**:  An `async` function is a function labeled with the `async` keyword. 
+An `async` function returns a future. 
+* **await**: Before invoking an `async` function, you can use the `await` keyword. 
+This allows the caller to access the completed result of the future. You can 
+only use the `await` keyword within an `async` function body.
 {{ site.alert.end }}
 
 ## Execution flow with async and await
