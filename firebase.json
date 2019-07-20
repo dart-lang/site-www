@@ -43,6 +43,7 @@
       { "source": "/articles/native-extensions-for-standalone-dart-vm", "destination": "/server/c-interop-native-extensions", "type": 301 },
       { "source": "/articles/server/native-extensions", "destination": "/server/c-interop-native-extensions", "type": 301 },
       { "source": "/articles/optional-types", "destination": "/faq#types", "type": 301 },
+      { "source": "/articles/serialization", "destination": "/guides/json", "type": 301 },
       { "source": "/articles/snapshots", "destination": "https://github.com/dart-lang/sdk/wiki/Snapshots", "type": 301 },
       { "source": "/articles/style-guide{,/**}", "destination": "/guides/language/effective-dart/style", "type": 301 },
       { "source": "/articles/using-future-based-apis{,/**}", "destination": "/tutorials/language/futures", "type": 301 },
