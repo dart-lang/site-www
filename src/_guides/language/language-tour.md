@@ -1151,7 +1151,7 @@ Optional parameters can be _named_ or _positional_.
 <aside class="alert alert-info" markdown="1">
   **Note:**
   Some APIs — notably [Flutter][] widget constructors —
-  use only optional named parameters,
+  use only named parameters,
   even for parameters that are mandatory.
   See the next section for details.
 </aside>
