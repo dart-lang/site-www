@@ -48,7 +48,7 @@ packages you upload.
 ### Important files
 
 Pub uses the contents of a few files to create a page for your
-package at `<package site>/packages/<your_package>`. Here are the files that
+package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
 * **README**: The README file (`README`, `README.md`, `README.mdown`,
