@@ -271,7 +271,7 @@ containing app.
 
 ## Constraint solving for exported dependencies
 
-Package authors must define package contraints with care.
+Package authors must define package constraints with care.
 Consider the following scenario:
 
 {% asset tools/pub/PubExportedConstraints.png alt="dependency graph" %}
@@ -294,7 +294,7 @@ dependencies:
 {% endprettify %}
 
 The `collection` package is then updated to 2.5.0.
-The 2.5.0 verion of `collection` includes a new method called `sortBackwards`.
+The 2.5.0 version of `collection` includes a new method called `sortBackwards`.
 `bookshelf` may call `sortBackwards`,
 because it's part of the API exposed by `widgets`,
 despite `bookshelf` having only a transitive dependency on `collection`.
@@ -348,7 +348,7 @@ find out.)
 
 The next important thing pub does is it _stops touching the lockfile_. Once
 you've got a lockfile for your app, pub won't touch it until you tell it to.
-This is important. It means you won't spontanteously start using new versions
+This is important. It means you won't spontaneously start using new versions
 of random packages in your app without intending to. Once your app is locked,
 it stays locked until you manually tell it to update the lockfile.
 
