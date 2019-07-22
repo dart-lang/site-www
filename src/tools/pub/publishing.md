@@ -140,6 +140,35 @@ the first and only person authorized to upload additional versions of the packag
 To allow or disallow other people to upload versions,
 use the [`pub uploader`](cmd/pub-uploader) command.
 
+## Publishing pre-releases
+
+A package can be published as a pre-release while under development. This is
+often useful when:
+ * The next major of version of the package is under active development,
+ * The package depends on unstable Dart or Flutter SDK, or,
+ * Beta testing of the next release candidate is desired.
+
+As outlined in [semantic versioning][semver], a pre-release of version `2.0.0`
+is made by appending a suffix to the version (`2.0.0-dev.1`). When version
+`2.0.0` is released it'll take precedence over all `2.0.0-XXX` the pre-releases.
+`pub` will prefer stable releases when available, thus, developers who wish to
+test out the pre-release may have to increase their dependency constraints
+(`^2.0.0-dev.1` equivalent to `>=2.0.0-dev.1 <3.0.0`).
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+In certain scenarios with nested dependencies the dependency resolution
+algorithm in `pub`, may pick a pre-release over a stable release.
+</aside>
+
+When a pre-release is published to [pub.dev](https://pub.dev) it will not
+replace the latest stable release. This means that pre-releases will not
+interfere with the analysis score, show up in search results or replace the
+package README and documentation. Instead a link to the pre-release will be
+displayed on the package page.
+
+[semver]: https://semver.org/spec/v2.0.0-rc.1.html
+
 ## Publishing is forever
 
 Keep in mind that publishing is forever. As soon as you publish your package,
