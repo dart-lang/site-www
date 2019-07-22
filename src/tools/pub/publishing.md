@@ -142,30 +142,33 @@ use the [`pub uploader`](cmd/pub-uploader) command.
 
 ## Publishing pre-releases
 
-A package can be published as a pre-release while under development. This is
-often useful when:
- * The next major of version of the package is under active development,
- * The package depends on unstable Dart or Flutter SDK, or,
- * Beta testing of the next release candidate is desired.
+As you work on a package, consider publishing it as a pre-release.
+Pre-releases can be useful when any of the following are true:
 
-As outlined in [semantic versioning][semver], a pre-release of version `2.0.0`
-is made by appending a suffix to the version (`2.0.0-dev.1`). When version
-`2.0.0` is released it'll take precedence over all `2.0.0-XXX` the pre-releases.
-`pub` will prefer stable releases when available, thus, developers who wish to
-test out the pre-release may have to increase their dependency constraints
-(`^2.0.0-dev.1` equivalent to `>=2.0.0-dev.1 <3.0.0`).
+* You're actively developing the next major version of the package.
+* You want beta testers for the next release candidate of the package.
+* The package depends on an unstable version of the Dart or Flutter SDK.
+
+As described in [semantic versioning][semver], to make a pre-release of a version,
+you append a suffix to the version. For example, to make a pre-release of
+version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
+release version `2.0.0`, it will take precedence over all `2.0.0-XXX` pre-releases.
+
+Because `pub` prefers stable releases when available, users of a pre-release package
+might need to change their dependency constraints.
+For example, if a user wants to test pre-releases of version 2.1, then
+instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-In certain scenarios with nested dependencies the dependency resolution
-algorithm in `pub`, may pick a pre-release over a stable release.
+  **Note:**
+  Sometimes `pub` might choose a pre-release instead of a stable release;
+  this can occur when dependencies are nested.
 </aside>
 
-When a pre-release is published to [pub.dev](https://pub.dev) it will not
-replace the latest stable release. This means that pre-releases will not
-interfere with the analysis score, show up in search results or replace the
-package README and documentation. Instead a link to the pre-release will be
-displayed on the package page.
+When a pre-release is published to [pub.dev](https://pub.dev),
+the package page displays links to both the pre-release and the stable release.
+The pre-release doesn't affect the analysis score, show up in search results,
+or replace the package README and documentation. 
 
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 
