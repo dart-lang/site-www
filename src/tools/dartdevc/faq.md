@@ -116,7 +116,7 @@ For more information, see [SDK issue #27776.][27776]
 ### Where can I see known problems with dartdevc?
 
 Issues are in the Dart SDK repo
-with the label [area-dev-compiler.](https://github.com/dart-lang/sdk/issues?q=is%3Aissue%20is%3Aopen%20label%3Aarea-dev-compiler)
+with the label [web-dev-compiler.](https://github.com/dart-lang/sdk/issues?q=is%3Aissue%20is%3Aopen%20label%3Aweb-dev-compiler)
 
 
 ## Modules
