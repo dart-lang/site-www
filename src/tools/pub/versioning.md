@@ -169,7 +169,7 @@ to 3.0.0, not including 3.0.0." For more information, see
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and
-named it [*semantic versioning*](http://semver.org/spec/v2.0.0-rc.1.html).
+named it [*semantic versioning*](https://semver.org/spec/v2.0.0-rc.1.html).
 
 That describes the format of a version number, and the exact API behavioral
 differences when you increment to a later version number. Pub requires versions
