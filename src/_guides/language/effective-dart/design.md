@@ -206,13 +206,11 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. Input properties in [Angular][]
-components sometimes use imperative verbs for boolean setters because these
-setters are invoked in templates, not from other Dart code.
+**Exception:** Input properties in [Angular][] components sometimes use
+imperative verbs for boolean setters because these setters are invoked in
+templates, not from other Dart code.
 
 [angular]: {{site.angulardart}}
-</aside>
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
@@ -261,15 +259,15 @@ if (!socket.isDisconnected && !database.isEmpty) {
 }
 {% endprettify %}
 
-An exception to this rule is properties where the negative form is what users
-overwhelmingly need to use. Choosing the positive case would force them to
-negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property.
-
 For some properties, there is no obvious positive form. Is a document that has
 been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
 that is less likely to be negated by users or has the shorter name.
+
+**Exception:** With some properties, the negative form is what users
+overwhelmingly need to use. Choosing the positive case would force them to
+negate the property with `!` everywhere. Instead, it may be better to use the
+negative case for that property.
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -548,7 +546,7 @@ a huge monolithic library, just that you are allowed to place more than one
 class in a single library.
 
 
-## Classes
+## Classes and mixins
 
 Dart is a "pure" object-oriented language in that all objects are instances of
 classes. But Dart does not require all code to be defined inside a
@@ -694,25 +692,52 @@ If your class can be used as an interface, mention that in the class's doc
 comment.
 
 
-### AVOID mixing in a class that isn't intended to be a mixin.
+### DO use `mixin` to define a mixin type.
 
-If a constructor is added to a class that previously did not define any, that
-breaks any other classes that are mixing it in. This is a seemingly innocuous
-change in the class, and the restrictions around mixins aren't widely known.
-It's likely an author may add a constructor without realizing it will break your
-class that's mixing it in.
+Dart originally didn't have a separate syntax for declaring a class intended to
+be mixed in to other classes. Instead, any class that met certain restrictions
+(no non-default constructor, no superclass, etc.) could be used as a mixin. This
+was confusing because the author of the class might not have intended it to be
+mixed in.
 
-Like with subclassing, this means a class needs to be deliberate about whether
-or not it wants to allow being used as a mixin. If the class doesn't have a doc
-comment or an obvious name like `IterableMixin`, you should assume you cannot
-mix in the class.
+Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
+created using that can *only* be used as mixins, and the language also ensures
+that your mixin stays within the restrictions. When defining a new type that you
+intend to be used as a mixin, use this syntax.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (mixin)"?>
+{% prettify dart %}
+mixin ClickableMixin implements Control {
+  bool _isDown = false;
+
+  void click();
+
+  void mouseDown() {
+    _isDown = true;
+  }
+
+  void mouseUp() {
+    if (_isDown) click();
+    _isDown = false;
+  }
+}
+{% endprettify %}
+
+You might still encounter older code using `class` to define mixins, but the new
+syntax is preferred.
 
 
-### DO document if your class supports being used as a mixin.
+### AVOID mixing in a type that isn't intended to be a mixin.
 
-Mention in the class's doc comment whether the class can or must be used as a
-mixin. If your class is designed for use only as a mixin, then consider adding
-`Mixin` to the end of the class name.
+For compatibility, Dart still allows you to mix in classes that aren't defined
+using `mixin`. However, that's risky. If the author of the class doesn't intend
+the class to be used as a mixin, they might change the class in a way that
+breaks the mixin restrictions. For example, if they add a constructor, your
+class will break.
+
+If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
+assume you cannot mix in the class if it isn't declared using `mixin`.
 
 
 ## Constructors
@@ -895,15 +920,13 @@ you want to add. Object's shouldn't generally expose more state than they need
 to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. An [Angular][] component class may expose
-setters that are invoked from a template to initialize the component. Often,
-these setters are not intended to be invoked from Dart code and don't need a
-corresponding getter. (If they are used from Dart code, they *should* have a
-getter.)
+**Exception:** An [Angular][] component class may expose setters that are
+invoked from a template to initialize the component. Often, these setters are
+not intended to be invoked from Dart code and don't need a corresponding getter.
+(If they are used from Dart code, they *should* have a getter.)
 
 [angular]: {{site.angulardart}}
-</aside>
+
 
 ### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
 
@@ -1049,7 +1072,7 @@ The remaining guidelines cover other more specific questions around types.
 
 ### PREFER type annotating public fields and top-level variables if the type isn't obvious.
 
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+{% include linter-rule.html rule="type_annotate_public_apis" %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
@@ -1333,11 +1356,11 @@ bool isValid(String value, [!Function!] test) => ...
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
-One exception to this guideline is if you want a type that represents the union
-of multiple different function types. For example, you may accept a function
-that takes one parameter or a function that takes two. Since we don't have union
-types, there's no way to precisely type that and you'd normally have to use
-`dynamic`. `Function` is at least a little more helpful than that:
+**Exception:** Sometimes, you want a type that represents the union of multiple
+different function types. For example, you may accept a function that takes one
+parameter or a function that takes two. Since we don't have union types, there's
+no way to precisely type that and you'd normally have to use `dynamic`.
+`Function` is at least a little more helpful than that:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>

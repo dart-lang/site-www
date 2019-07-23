@@ -5,7 +5,33 @@ import 'dart:math';
 
 import 'usage_good.dart';
 
+class EnableableThing {
+  bool isEnabled;
+  EnableableThing(this.isEnabled);
+}
+
 void miscDeclAnalyzedButNotTested() {
+  {
+    // ignore_for_file: null_aware_in_condition
+    var optionalThing = EnableableThing(true);
+    // #docregion null-aware-condition
+    if (optionalThing?.isEnabled) {
+      print("Have enabled thing.");
+    }
+    // #enddocregion null-aware-condition
+  }
+
+  {
+    dynamic optionalThing;
+    // #docregion convert-null-equals
+    // If you want null to be false:
+    optionalThing?.isEnabled == true;
+
+    // If you want null to be true:
+    optionalThing?.isEnabled == false;
+    // #enddocregion convert-null-equals
+  }
+
   {
     // #docregion adjacent-strings-literals
     raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
