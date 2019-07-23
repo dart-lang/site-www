@@ -1136,25 +1136,31 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Only an *expression*—not a *statement*—can appear between the arrow
-(=\>) and the semicolon (;). For example, you can’t put an [if
-statement](#if-and-else) there, but you can use a [conditional
-expression](#conditional-expressions).
-</div>
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Only an *expression*—not a *statement*—can appear between the arrow
+  (=\>) and the semicolon (;). For example, you can’t put an [if
+  statement](#if-and-else) there, but you can use a [conditional
+  expression](#conditional-expressions).
+</aside>
 
-A function can have two types of parameters: required and optional. The
-required parameters are listed first, followed by any optional
-parameters. Named optional parameters can also be marked as `@required`.
-See the next section for details.
+A function can have two types of parameters: _required_ and _optional_.
+The required parameters are listed first, followed by any optional parameters.
+Optional parameters can be _named_ or _positional_.
 
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Some APIs — notably [Flutter][] widget constructors —
+  use only named parameters,
+  even for parameters that are mandatory.
+  See the next section for details.
+</aside>
 
 ### Optional parameters
 
-Optional parameters can be either positional or named, but not both.
+Optional parameters can be either named or positional, but not both.
 
-#### Optional named parameters
+#### Named parameters
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
@@ -1174,26 +1180,25 @@ to specify named parameters:
 void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
 
-[Flutter][] instance creation expressions can get complex, so widget
-constructors use named parameters exclusively. This makes instance creation
-expressions easier to read.
-
-You can annotate a named parameter in any Dart code (not just Flutter) with
-[@required][] to indicate that it is a _required_ parameter. For example:
+Although named parameters are a kind of optional parameter,
+you can annotate them with [@required][] to indicate
+that the parameter is mandatory —
+that users must provide a value for the parameter.
+For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
 {% prettify dart %}
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
-When a `Scrollbar` is constructed, the analyzer reports an issue when the
-`child` argument is absent.
+If someone tries to create a `Scrollbar`
+without specifying the `child` argument,
+then the analyzer reports an issue.
 
-[Required][@required] is defined in the [meta][] package. Either import
-`package:meta/meta.dart` directly, or import another package that exports
-`meta`, such as Flutter's `package:flutter/material.dart`.
+To use the [@required][] annotation,
+depend on the [meta][] package and import `package:meta/meta.dart`.
 
-#### Optional positional parameters
+#### Positional parameters
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
@@ -1248,9 +1253,9 @@ enableFlags(bold: true);
 Old code might use a colon (`:`) instead of `=`
 to set default values of named parameters.
 The reason is that originally, only `:` was supported for named parameters.
-That support is likely to be deprecated,
+That support might be deprecated,
 so we recommend that you
-**[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
+**[use `=` to specify default values.](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
 </div>
 
 {% comment %}
