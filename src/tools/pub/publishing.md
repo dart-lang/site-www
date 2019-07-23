@@ -154,15 +154,15 @@ you append a suffix to the version. For example, to make a pre-release of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
 release version `2.0.0`, it will take precedence over all `2.0.0-XXX` pre-releases.
 
-Because `pub` prefers stable releases when available, users of a pre-release package
+Because pub prefers stable releases when available, users of a pre-release package
 might need to change their dependency constraints.
 For example, if a user wants to test pre-releases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  Sometimes `pub` might choose a pre-release instead of a stable release;
-  this can occur when dependencies are nested.
+  If a stable package in the dependency graph depends on a pre-release,
+  then pub chooses that pre-release instead of a stable release.
 </aside>
 
 When a pre-release is published to [pub.dev](https://pub.dev),
