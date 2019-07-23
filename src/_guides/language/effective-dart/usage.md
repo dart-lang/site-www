@@ -121,9 +121,9 @@ library. Follow these two rules:
 
 ## Booleans
 
-### DO use `??` to convert `null` to a Boolean value.
+### DO use `??` to convert `null` to a boolean value.
 
-You sometimes have an expression that can evaluate to `true`, `false`, or `null`
+This rule applies when an expression can evaluate `true`, `false`, or `null`,
 and you need to pass the result to something that doesn't accept `null`. A
 common case is the result of a null-aware method call being used as a condition:
 
@@ -135,9 +135,9 @@ if (optionalThing?.isEnabled) {
 }
 {% endprettify %}
 
-This code will throw an exception if `optionalThing` is `null`. To fix this, you
-need to "convert" the `null` value either to `true` or `false`. There are two
-ways to do this, using `??` or `==`:
+This code throws an exception if `optionalThing` is `null`. To fix this, you
+need to "convert" the `null` value to either `true` or `false`. Although you
+could do this using `==`, we recommend using `??`:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (convert-null-aware)"?>
@@ -166,11 +166,11 @@ preferred for three main reasons:
     `null` value.
 
 *   The `== true` looks like a common new programmer mistake where the equality
-    operator is redundant and can be removed. That's true when the Boolean
+    operator is redundant and can be removed. That's true when the boolean
     expression on the left will not produce `null`, but not when it can.
 
 *   The `?? false` and `?? true` clearly show what value will be used when the
-    expression is `null`. With `== true`, you have to think through the Boolean
+    expression is `null`. With `== true`, you have to think through the boolean
     logic to realize that means that a `null` gets converted to *false*.
 
 ## Strings
@@ -366,7 +366,7 @@ people.forEach((person) {
 });
 {% endprettify %}
 
-Note that this guideline specifically says "function *literal*". If want to
+Note that this guideline specifically says "function *literal*". If you want to
 invoke some *already existing* function on each element, `forEach()` is fine.
 
 {:.good-style}
@@ -1149,7 +1149,7 @@ class Point {
 This `this.` syntax before a constructor parameter is called an "initializing
 formal". You can't always take advantage of it. Sometimes you want to have a
 named parameter whose name doesn't match the name of the field you are
-initializing. But, when you can use initialing formals, you should.
+initializing. But when you *can* use initializing formals, you *should*.
 
 ### DON'T type annotate initializing formals.
 

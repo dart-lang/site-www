@@ -442,7 +442,7 @@ an import or export), it may remain whole even if it causes the line to go over
 80 characters. This makes it easier to search source files for a path.
 
 **Exception:** Multi-line strings can contain lines longer than 80 characters
-since newlines are significant inside the string and splitting the lines into
+because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
 ### DO use curly braces for all flow control statements.
@@ -463,8 +463,8 @@ if (isWeekDay) {
 }
 {% endprettify %}
 
-**Exception:** An `if` statement with no `else` clause that fits entirely on one
-line. You may omit the braces if you prefer:
+**Exception:** When you have an `if` statement with no `else` clause and the
+whole `if` statement fits on one line, you can omit the braces if you prefer:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>

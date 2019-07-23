@@ -5,9 +5,15 @@ import 'dart:math';
 
 import 'usage_good.dart';
 
+class EnableableThing {
+  bool isEnabled;
+  EnableableThing(this.isEnabled);
+}
+
 void miscDeclAnalyzedButNotTested() {
   {
-    dynamic optionalThing;
+    // ignore_for_file: null_aware_in_condition
+    var optionalThing = EnableableThing(true);
     // #docregion null-aware-condition
     if (optionalThing?.isEnabled) {
       print("Have enabled thing.");

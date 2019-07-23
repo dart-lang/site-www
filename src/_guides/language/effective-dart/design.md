@@ -546,7 +546,7 @@ a huge monolithic library, just that you are allowed to place more than one
 class in a single library.
 
 
-## Classes and Mixins
+## Classes and mixins
 
 Dart is a "pure" object-oriented language in that all objects are instances of
 classes. But Dart does not require all code to be defined inside a
@@ -694,15 +694,15 @@ comment.
 
 ### DO use `mixin` to define a mixin type.
 
-Dart originally did not have a separate syntax for declaring a class intended to
+Dart originally didn't have a separate syntax for declaring a class intended to
 be mixed in to other classes. Instead, any class that met certain restrictions
 (no non-default constructor, no superclass, etc.) could be used as a mixin. This
-was confusing because the author of the class may not have intended it to be
+was confusing because the author of the class might not have intended it to be
 mixed in.
 
 Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
 created using that can *only* be used as mixins, and the language also ensures
-your mixin stays within the restrictions. When defining a new type that you
+that your mixin stays within the restrictions. When defining a new type that you
 intend to be used as a mixin, use this syntax.
 
 {:.good-style}
@@ -724,17 +724,17 @@ mixin ClickableMixin implements Control {
 }
 {% endprettify %}
 
-You may still encounter older code using `class` to define mixins, but the new
+You might still encounter older code using `class` to define mixins, but the new
 syntax is preferred.
 
 
 ### AVOID mixing in a type that isn't intended to be a mixin.
 
-For compatibility, Dart still allows you to mix in classes not defined using
-`mixin`. However, that's risky. If the author of the class does not intend the
-class to be used as a mixin, they may change the class in a way that breaks the
-mixin restrictions. For example, if they add a constructor, it will break your
-class that mixes it in.
+For compatibility, Dart still allows you to mix in classes that aren't defined
+using `mixin`. However, that's risky. If the author of the class doesn't intend
+the class to be used as a mixin, they might change the class in a way that
+breaks the mixin restrictions. For example, if they add a constructor, your
+class will break.
 
 If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
 assume you cannot mix in the class if it isn't declared using `mixin`.

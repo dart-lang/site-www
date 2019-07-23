@@ -108,9 +108,9 @@ Each guideline starts with one of these words:
 * **CONSIDER** guidelines are practices that you might or might not want to
   follow, depending on circumstances, precedents, and your own preference.
 
-Some guidelines may describe an **exception** where the rule does *not* apply.
-When listed, the exceptions may not be exhaustive&mdash;you may still need to
-use your judgement on other cases.
+Some guidelines describe an **exception** where the rule does *not* apply. When
+listed, the exceptions may not be exhaustive&mdash;you might still need to use
+your judgement on other cases.
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here
