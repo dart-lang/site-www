@@ -434,7 +434,7 @@ Write the following:
 * `greetUser` should create a greeting for the user by calling `addHello,`
   passing it the username, and returning the result. For example, if the
   username is ‘Jenny' `greetUser` should create and return the greeting "Hello
-  Jenny!"
+  Jenny"
 
 ### Part 3: `sayGoodbye`
 * Write a function `sayGoodbye` that takes no arguments.
@@ -442,7 +442,7 @@ Write the following:
 * `sayGoodbye` should call the provided `async` function
   `logoutUser` which takes no arguments.
 * If `logoutUser` succeeds, `sayGoodbye` should return the string "\<result\>
-  Thanks! See you next time!" where \<result\> is the String value returned by
+  Thanks, see you next time" where \<result\> is the String value returned by
   calling `logoutUser`.
 
 ### Exercise
