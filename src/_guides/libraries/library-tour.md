@@ -1392,10 +1392,7 @@ Also see these articles and tutorials:
 -   [Futures and Error Handling](/guides/libraries/futures-error-handling)
 -   [Asynchronous Programming: Streams](/tutorials/language/streams)
 -   [Creating Streams in Dart](/articles/libraries/creating-streams)
-{% comment %}
-[PENDING: update/remove article link]
--   [The Event Loop and Dart](/articles/performance/event-loop)
-{% endcomment %}
+-   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
 
 
 ## dart:math - math and random
