@@ -740,12 +740,6 @@ that you can use for functionality such as profiling.
 
 ### More resources
 
-{% comment %}
-[The Event Loop and Dart](/articles/performance/event-loop)
-: Learn more about scheduling tasks
-  using Future, Timer, and `scheduleMicrotask()`.
-{% endcomment %}
-
 Zone-related API documentation
 : Read the docs for
   [runZoned()]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/runZoned.html),

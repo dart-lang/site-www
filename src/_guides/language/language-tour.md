@@ -2340,7 +2340,7 @@ the arguments to `assert` aren't evaluated.
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn’t
-caught, the isolate that raised the exception is suspended, and
+caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
@@ -4178,8 +4178,17 @@ Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
-For more information, see the
-[dart:isolate library documentation.][dart:isolate]
+For more information, see the following:
+* [Dart asynchronous programming: Isolates and event loops][isolates article]
+* [dart:isolate API reference,][dart:isolate]
+  including [Isolate.spawn()][] and
+  [TransferableTypedData][]
+* [Background parsing][background json] cookbook on the Flutter site
+
+[isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
+[Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
+[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
 
 
 ## Typedefs
