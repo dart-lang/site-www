@@ -1,5 +1,4 @@
 language: dart
-dart: [stable, dev]
 
 cache:
   timeout: 300
@@ -14,23 +13,28 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
-  matrix:
-    - TASK="./tool/check-code.sh"
-    - TASK="./tool/analyze-and-test-examples.sh"
-    - TASK="bundle exec jekyll build"
 
 matrix:
-  # allow_failures:
-    # - env: TASK="./tool/analyze-and-test-examples.sh"
-      # dart: stable
+  include:
+    - env: TASK="bundle exec jekyll build"
+      dart: stable
+    - env: TASK="./tool/check-code.sh"
+      dart: stable
+    - env: TASK="./tool/check-code.sh"
+      dart: dev
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: stable
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
+    - env: TASK="./tool/build-and-check-links.sh"
+      dart: stable
   allow_failures:
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
     - env: TASK="./tool/check-code.sh"
       dart: dev
-  exclude:
-    - env: TASK="bundle exec jekyll build"
-      dart: dev
+    - env: TASK="./tool/build-and-check-links.sh"
+      dart: stable
 
 before_install:
   - source ./tool/env-set.sh
@@ -44,7 +48,6 @@ script:
   - $TASK
 
 after_script:
-  - if [[ $TASK == *build* ]]; then ./tool/shared/check-links.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi

@@ -26,6 +26,7 @@
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
+$code-weight: 400;
 
 /* -----------------------------------------
   Global
@@ -153,6 +154,7 @@ input, select {
 
 pre, pre.prettyprint {
   padding: 30px;
+  font-weight: $code-weight;
   background-color: #F5F5F7;
   color: $blue;
   position: relative;
@@ -228,7 +230,7 @@ img {
       .nav-link {
         &.active {
           &:after {
-            background-color: #40c4ff;
+            background-color: $site-color-card-link;
           }
         }
       }

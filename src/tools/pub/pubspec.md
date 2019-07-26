@@ -148,7 +148,8 @@ it, your package is implicitly versioned `0.0.0`.
 
 Versioning is necessary for reusing code while letting it evolve quickly. A
 version number is three numbers separated by dots, like `0.2.43`. It can also
-optionally have a build (`+hotfix.oopsie`) or pre-release (`-alpha.12`) suffix.
+optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or pre-release
+(`-dev.4`, `-alpha.12`, `-beta.7`, `-rc.5`) suffix.
 
 Each time you publish your package, you publish it at a specific version.
 Once that's been done, consider it hermetically sealed: you can't touch it
@@ -184,8 +185,9 @@ authors:
 - Bob Nystrom <rnystrom@google.com>
 {% endprettify %}
 
-If anyone uploads your package to the Pub site, your email address is
-public.
+The email addresses can be from any provider.
+If anyone uploads your package to the Pub site,
+then the author information (including email addresses) becomes public.
 
 ### Homepage
 

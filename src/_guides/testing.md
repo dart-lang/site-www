@@ -119,19 +119,12 @@ debugging Dart applications.
 When it comes to debugging, your first line of defense is your IDE.
 Dart plugins exist for many [commonly used IDEs](/tools/#ides-and-editors).
 
-### Observatory
+### Dart DevTools
 
-Observatory is a browser-based tool for profiling and debugging your
-Dart applications. You can learn more using the following resources:
+Dart DevTools is a suite of performance tools for Dart and Flutter.
+For details, see the
+[Dart DevTools documentation.](https://flutter.github.io/devtools/)
 
-* [Observatory: A Profiler for Dart
-  Apps](https://dart-lang.github.io/observatory/)
-* [Dart
-  Observatory]({{site.flutter}}/testing/debugging#dart-observatory-statement-level-single-stepping-debugger-and-profiler),
-  a section in [Debugging Flutter Apps]({{site.flutter}}/testing//debugging)
-* [Dart VM
-  Observatory]({{site.group}}/forum/#!forum/observatory-discuss)
-  discussion group
 
 ### Continuous integration
 

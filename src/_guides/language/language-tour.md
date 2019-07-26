@@ -19,7 +19,7 @@ consult the [Dart language specification][].
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
-**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
+**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 </div>
 
 
@@ -1136,25 +1136,31 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Only an *expression*—not a *statement*—can appear between the arrow
-(=\>) and the semicolon (;). For example, you can’t put an [if
-statement](#if-and-else) there, but you can use a [conditional
-expression](#conditional-expressions).
-</div>
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Only an *expression*—not a *statement*—can appear between the arrow
+  (=\>) and the semicolon (;). For example, you can’t put an [if
+  statement](#if-and-else) there, but you can use a [conditional
+  expression](#conditional-expressions).
+</aside>
 
-A function can have two types of parameters: required and optional. The
-required parameters are listed first, followed by any optional
-parameters. Named optional parameters can also be marked as `@required`.
-See the next section for details.
+A function can have two types of parameters: _required_ and _optional_.
+The required parameters are listed first, followed by any optional parameters.
+Optional parameters can be _named_ or _positional_.
 
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Some APIs — notably [Flutter][] widget constructors —
+  use only named parameters,
+  even for parameters that are mandatory.
+  See the next section for details.
+</aside>
 
 ### Optional parameters
 
-Optional parameters can be either positional or named, but not both.
+Optional parameters can be either named or positional, but not both.
 
-#### Optional named parameters
+#### Named parameters
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
@@ -1174,26 +1180,25 @@ to specify named parameters:
 void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
 
-[Flutter][] instance creation expressions can get complex, so widget
-constructors use named parameters exclusively. This makes instance creation
-expressions easier to read.
-
-You can annotate a named parameter in any Dart code (not just Flutter) with
-[@required][] to indicate that it is a _required_ parameter. For example:
+Although named parameters are a kind of optional parameter,
+you can annotate them with [@required][] to indicate
+that the parameter is mandatory —
+that users must provide a value for the parameter.
+For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
 {% prettify dart %}
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
-When a `Scrollbar` is constructed, the analyzer reports an issue when the
-`child` argument is absent.
+If someone tries to create a `Scrollbar`
+without specifying the `child` argument,
+then the analyzer reports an issue.
 
-[Required][@required] is defined in the [meta][] package. Either import
-`package:meta/meta.dart` directly, or import another package that exports
-`meta`, such as Flutter's `package:flutter/material.dart`.
+To use the [@required][] annotation,
+depend on the [meta][] package and import `package:meta/meta.dart`.
 
-#### Optional positional parameters
+#### Positional parameters
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
@@ -1248,9 +1253,9 @@ enableFlags(bold: true);
 Old code might use a colon (`:`) instead of `=`
 to set default values of named parameters.
 The reason is that originally, only `:` was supported for named parameters.
-That support is likely to be deprecated,
+That support might be deprecated,
 so we recommend that you
-**[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
+**[use `=` to specify default values.](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
 </div>
 
 {% comment %}
@@ -2335,7 +2340,7 @@ the arguments to `assert` aren't evaluated.
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn’t
-caught, the isolate that raised the exception is suspended, and
+caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
@@ -3811,14 +3816,22 @@ import 'package:lib2/lib2.dart' hide foo;
 #### Lazily loading a library
 
 _Deferred loading_ (also called _lazy loading_)
-allows an application to load a library on demand,
-if and when it's needed.
+allows a web app to load a library on demand,
+if and when the library is needed.
 Here are some cases when you might use deferred loading:
 
-* To reduce an app's initial startup time.
+* To reduce a web app's initial startup time.
 * To perform A/B testing—trying out
   alternative implementations of an algorithm, for example.
 * To load rarely used functionality, such as optional screens and dialogs.
+
+<aside class="alert alert-warning" markdown="1">
+**Only dart2js supports deferred loading.**
+Flutter, the Dart VM, and dartdevc don't support deferred loading.
+For more information, see
+[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
+[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+</aside>
 
 To lazily load a library, you must first
 import it using `deferred as`.
@@ -3858,14 +3871,6 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
-<aside class="alert alert-warning" markdown="1">
-**Dart VM difference:**
-The Dart VM allows access to members of deferred libraries
-even before the call to `loadLibrary()`.
-This behavior might change, so
-**don't depend on the current VM behavior.**
-For details, see [issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
-</aside>
 
 ### Implementing libraries
 
@@ -4173,8 +4178,17 @@ Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
-For more information, see the
-[dart:isolate library documentation.][dart:isolate]
+For more information, see the following:
+* [Dart asynchronous programming: Isolates and event loops][isolates article]
+* [dart:isolate API reference,][dart:isolate]
+  including [Isolate.spawn()][] and
+  [TransferableTypedData][]
+* [Background parsing][background json] cookbook on the Flutter site
+
+[isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
+[Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
+[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
 
 
 ## Typedefs

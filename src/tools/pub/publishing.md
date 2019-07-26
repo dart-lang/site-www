@@ -36,10 +36,17 @@ are a few additional requirements for uploading a package:
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
 
-* Your package should only have hosted dependencies. Git dependencies are
-  allowed but strongly discouraged; not everyone using Dart has Git installed,
-  and Git dependencies don't support version resolution as well as hosted
-  dependencies do.
+* Your package should depend only on hosted dependencies (from the default pub
+  package server) and SDK dependencies (`sdk: flutter`). These restrictions
+  ensure that dependencies of your packages cannot become unavailable in the
+  future.
+
+* You must have a [Google Account,][Google Account]
+  which pub uses to manage package upload permissions.
+  Your Google Account can be associated with a Gmail address or
+  with any other email address.
+
+[Google Account]: https://support.google.com/accounts/answer/27441
 
 Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
@@ -48,7 +55,7 @@ packages you upload.
 ### Important files
 
 Pub uses the contents of a few files to create a page for your
-package at `<package site>/packages/<your_package>`. Here are the files that
+package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
 * **README**: The README file (`README`, `README.md`, `README.mdown`,
@@ -139,6 +146,38 @@ Whoever publishes the first version of some package automatically becomes
 the first and only person authorized to upload additional versions of the package.
 To allow or disallow other people to upload versions,
 use the [`pub uploader`](cmd/pub-uploader) command.
+
+## Publishing pre-releases
+
+As you work on a package, consider publishing it as a pre-release.
+Pre-releases can be useful when any of the following are true:
+
+* You're actively developing the next major version of the package.
+* You want beta testers for the next release candidate of the package.
+* The package depends on an unstable version of the Dart or Flutter SDK.
+
+As described in [semantic versioning][semver], to make a pre-release of a version,
+you append a suffix to the version. For example, to make a pre-release of
+version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
+release version `2.0.0`, it will take precedence over all `2.0.0-XXX` pre-releases.
+
+Because pub prefers stable releases when available, users of a pre-release package
+might need to change their dependency constraints.
+For example, if a user wants to test pre-releases of version 2.1, then
+instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  If a stable package in the dependency graph depends on a pre-release,
+  then pub chooses that pre-release instead of a stable release.
+</aside>
+
+When a pre-release is published to [pub.dev](https://pub.dev),
+the package page displays links to both the pre-release and the stable release.
+The pre-release doesn't affect the analysis score, show up in search results,
+or replace the package README and documentation. 
+
+[semver]: https://semver.org/spec/v2.0.0-rc.1.html
 
 ## Publishing is forever
 

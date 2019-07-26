@@ -132,7 +132,7 @@ With this tool you can check any URL by simply specifying it as a parameter:
 
 ```
 pub global activate linkcheck
-linkcheck https://www.dartlang.org
+linkcheck https://dart.dev
 ```
 
 To check for valid HTML, good images, and broken links (though not as well
@@ -182,8 +182,7 @@ create it:
 **Note:** To keep the number of projects under control,
 we reuse them. Our naming convention is
 `<first initial><last initial>-www-dartlang-<number>`, for example,
-`sz-www-dartlang-1` and `kw-www-dartlang-1`. For webdev.org, replace `www`
-with `webdev`.
+`sz-www-dartlang-1` and `kw-www-dartlang-1`.
 
 Return to the [Firebase console](https://console.firebase.google.com/).
 You should now see your project in the list.
@@ -240,8 +239,8 @@ See the [Troubleshooting wiki page].
 
 [Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
-[Dart]: https://www.dartlang.org/install
-[Dart install]: https://www.dartlang.org/install
+[Dart]: https://dart.dev/get-dart
+[Dart install]: https://dart.dev/get-dart
 [Firebase]: https://firebase.google.com/
 [first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
 [first-timers]: https://www.firsttimersonly.com/

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dart_sdk_archive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script defer src="main.dart.js"></script>
+</head>
+<body class="default show_banner">
+<main id="page-content">
+    <form class="form-inline">
+        <div class="form-group select">
+            <label for="stable-versions">Version:</label>
+            <select id="stable-versions"></select>
+        </div>
+        <div class="form-group select">
+            <label for="stable-os">OS:</label>
+            <select id="stable-os">
+                <option value="all">All</option>
+                <option value="macos" id="stable-macos" class="macos-option">Mac</option>
+                <option value="linux" id="stable-linux" class="linux-option">Linux</option>
+                <option value="windows" id="stable-windows" class="windows-option">Windows</option>
+            </select>
+        </div>
+    </form>
+    <table id="stable" class="table">
+        <thead>
+        <tr>
+            <th>Version</th>
+            <th>OS</th>
+            <th>Architecture</th>
+            <th>Downloads</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="template">
+
+            <td>0.0.0 (rev 00000)</td>
+
+            <td>Windows</td>
+            <td>64-width</td>
+            <td>JSON-formatted API documentation</td>
+        </tr>
+        </tbody>
+    </table>
+    <form class="form-inline">
+        <div class="form-group select">
+            <label for="dev-versions">Version:</label>
+            <select id="dev-versions"></select>
+        </div>
+        <div class="form-group select">
+            <label for="dev-os">OS:</label>
+            <select id="dev-os">
+                <option value="all">All</option>
+                <option value="macos" id="dev-macos" class="macos-option">Mac</option>
+                <option value="linux" id="dev-linux" class="linux-option">Linux</option>
+                <option value="windows" id="dev-windows" class="windows-option">Windows</option>
+            </select>
+        </div>
+    </form>
+    <table id="dev" class="table">
+        <thead>
+        <tr>
+            <th>Version</th>
+            <th>OS</th>
+            <th>Architecture</th>
+            <th>Downloads</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="template">
+            <td>0.0.0-dev.0.0 (rev 00000)</td>
+            <td>Windows</td>
+            <td>64-width</td>
+            <td>JSON-formatted API documentation</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -26,5 +26,5 @@ Future main() async {
     ..headers.contentType = ContentType.json /*2*/
     ..write(jsonEncode(jsonData)); /*3*/
   HttpClientResponse response = await request.close(); /*4*/
-  await response.transform(utf8.decoder /*5*/).forEach(print);
+  await utf8.decoder.bind(response /*5*/).forEach(print);
 }

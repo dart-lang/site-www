@@ -574,7 +574,7 @@ Future main() async {
     ..[!headers!].contentType = ContentType.json [!/*2*/!]
     ..[!write!](jsonEncode(jsonData)); [!/*3*/!]
   HttpClientResponse response = await request.[!close!](); [!/*4*/!]
-  await response.transform([!utf8.decoder!] [!/*5*/!]).forEach(print);
+  await [!utf8.decoder!].bind(response [!/*5*/!]).forEach(print);
 }
 {% endprettify %}
 <div class="prettify-filename">basic_writer_client.dart</div>
@@ -657,7 +657,7 @@ Future main() async {
         [!contentType?.mimeType == 'application/json'!] [!/*1*/!]) {
       try {
         String content =
-            await req.transform(utf8.decoder).join(); [!/*2*/!]
+            await utf8.decoder.bind(req).join(); [!/*2*/!]
         var [!data = jsonDecode(content) as Map!]; [!/*3*/!]
         var fileName = [!req.uri.pathSegments.last;!] [!/*4*/!]
         await File(fileName)
@@ -784,7 +784,7 @@ Future main() async {
       print("Serving ${targetFile.path}.");
       req.response.headers.contentType = ContentType.html;
       try {
-        await targetFile.openRead().pipe(req.response);
+        await req.response.addStream(targetFile.openRead());
       } catch (e) {
         print("Couldn't read file: $e");
         exit(-1);
@@ -792,8 +792,8 @@ Future main() async {
     } else {
       print("Can't open ${targetFile.path}.");
       req.response.statusCode = HttpStatus.notFound;
-      await req.response.close();
     }
+    await req.response.close();
   }
 }
 {% endprettify %}
@@ -955,7 +955,7 @@ Future main() async {
 4. The context argument is required on servers, optional for clients. If it is
    omitted, then the default context with built-in trusted roots is used.
 
-[PEM format.]: http://how2ssl.com/articles/working_with_pem_files
+[PEM format.]: https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail
 
 ## Other resources
 

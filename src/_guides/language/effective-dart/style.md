@@ -245,7 +245,24 @@ Db
 {% endprettify %}
 
 
-### DON’T use prefix letters.
+### DON'T use a leading underscore for identifiers that aren't private.
+
+Dart uses a leading underscore in an identifier to mark members and top-level
+declarations as private. This trains users to associate a leading underscore
+with one of those kinds of declarations. They see "_" and think "private".
+
+There is no concept of "private" for local variables, parameters, or library
+prefixes. When one of those has a name that starts with an underscore, it sends
+a confusing signal to the reader. To avoid that, don't use leading underscores
+in those names.
+
+**Exception:** An unused parameter can be named `_`, `__`, `___`, etc. This
+happens in things like callbacks where you are passed a value but you don't need
+to use it. Giving it a name that consists *solely* of underscores is the
+idiomatic way to indicate the value isn't used.
+
+
+### DON'T use prefix letters.
 
 [Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
 other schemes arose in the time of BCPL, when the compiler didn't do much to
@@ -420,13 +437,15 @@ Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
 split long string literals to fit in 80 columns, so you have to do that
 manually.
 
-We make an exception for URIs and file paths. When those occur in comments or
-strings (usually in imports and exports), they may remain on a single line even
-if they go over the line limit. This makes it easier to search source files for
-a given path.
+**Exception:** When a URI or file path occurs in a comment or string (usually in
+an import or export), it may remain whole even if it causes the line to go over
+80 characters. This makes it easier to search source files for a path.
 
+**Exception:** Multi-line strings can contain lines longer than 80 characters
+because newlines are significant inside the string and splitting the lines into
+shorter ones can alter the program.
 
-### DO use curly braces for all flow control structures.
+### DO use curly braces for all flow control statements.
 
 {% include linter-rule.html rule="curly_braces_in_flow_control_structures" %}
 
@@ -444,9 +463,8 @@ if (isWeekDay) {
 }
 {% endprettify %}
 
-There is one exception to this: an `if` statement with no `else` clause where
-the entire `if` statement and the then body all fit in one line. In that case,
-you may leave off the braces if you prefer:
+**Exception:** When you have an `if` statement with no `else` clause and the
+whole `if` statement fits on one line, you can omit the braces if you prefer:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>

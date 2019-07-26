@@ -119,6 +119,60 @@ library. Follow these two rules:
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
 
+## Booleans
+
+### DO use `??` to convert `null` to a boolean value.
+
+This rule applies when an expression can evaluate `true`, `false`, or `null`,
+and you need to pass the result to something that doesn't accept `null`. A
+common case is the result of a null-aware method call being used as a condition:
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (null-aware-condition)"?>
+{% prettify dart %}
+if (optionalThing?.isEnabled) {
+  print("Have enabled thing.");
+}
+{% endprettify %}
+
+This code throws an exception if `optionalThing` is `null`. To fix this, you
+need to "convert" the `null` value to either `true` or `false`. Although you
+could do this using `==`, we recommend using `??`:
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/usage_good.dart (convert-null-aware)"?>
+{% prettify dart %}
+// If you want null to be false:
+optionalThing?.isEnabled ?? false;
+
+// If you want null to be true:
+optionalThing?.isEnabled ?? true;
+{% endprettify %}
+
+{:.bad-style}
+<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (convert-null-equals)"?>
+{% prettify dart %}
+// If you want null to be false:
+optionalThing?.isEnabled == true;
+
+// If you want null to be true:
+optionalThing?.isEnabled == false;
+{% endprettify %}
+
+Both operations produce the same result and do the right thing, but `??` is
+preferred for three main reasons:
+
+*   The `??` operator clearly signals that the code has something to do with a
+    `null` value.
+
+*   The `== true` looks like a common new programmer mistake where the equality
+    operator is redundant and can be removed. That's true when the boolean
+    expression on the left will not produce `null`, but not when it can.
+
+*   The `?? false` and `?? true` clearly show what value will be used when the
+    expression is `null`. With `== true`, you have to think through the boolean
+    logic to realize that means that a `null` gets converted to *false*.
+
 ## Strings
 
 Here are some best practices to keep in mind when composing strings in Dart.
@@ -312,8 +366,8 @@ people.forEach((person) {
 });
 {% endprettify %}
 
-The exception is if all you want to do is invoke some already existing function
-with each element as the argument. In that case, `forEach()` is handy.
+Note that this guideline specifically says "function *literal*". If you want to
+invoke some *already existing* function on each element, `forEach()` is fine.
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (forEach-over-func)"?>
@@ -321,11 +375,8 @@ with each element as the argument. In that case, `forEach()` is handy.
 people.forEach(print);
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  It's OK to call `Map.forEach()`.
-  Maps aren't iterable, so they aren't covered by this guideline.
-</aside>
+Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
+this guideline doesn't apply.
 
 ### DON'T use `List.from()` unless you intend to change the type of the result.
 
@@ -1096,10 +1147,9 @@ class Point {
 {% endprettify %}
 
 This `this.` syntax before a constructor parameter is called an "initializing
-formal". You can't always take advantage of it. In particular, using it means
-the parameter is not visible in the initialization list. But, when you can, you
-should.
-
+formal". You can't always take advantage of it. Sometimes you want to have a
+named parameter whose name doesn't match the name of the field you are
+initializing. But when you *can* use initializing formals, you *should*.
 
 ### DON'T type annotate initializing formals.
 
