@@ -55,6 +55,7 @@
       { "source": "/articles/numeric-computation", "destination": "/articles/archive/numeric-computation", "type": 301 },
       { "source": "/articles/dart-vm/numeric-computation", "destination": "/articles/archive/numeric-computation", "type": 301 },
       { "source": "/articles/libraries/zones", "destination": "/articles/archive/zones", "type": 301 },
+      { "source": "/articles/zones", "destination": "/articles/archive/zones", "type": 301 },
       { "source": "/articles/m*{,/**}", "destination": "/articles", "type": 301 },
       { "source": "/assets/dart-logo-for-shares*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
       { "source": "/assets/dart-logo-wordmark*.png", "destination": "/assets/shared/dart-logo-for-shares.png?2", "type": 301 },
