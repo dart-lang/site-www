@@ -4,21 +4,21 @@ description: Be excellent to each other.
 toc: false
 ---
 
-As contributors and maintainers of the Dart project,
-we promise to extend courtesy and respect to everyone involved in this project
-regardless of gender, gender identity, sexual orientation, disability, age,
-race, ethnicity, religion, or level of experience.
-We expect anyone contributing to the Dart project to do the same.
+We expect Dart contributors to act professionally and respectfully, and
+we expect our social spaces to be safe and dignified environments.
 
-Communication through any of Dart's channels
-(GitHub, Gitter, mailing lists, Google+, Twitter, etc.)
-must be constructive and never resort to personal attacks, trolling,
-public or private harassment, insults, or other unprofessional conduct.
+Specifically:
+
+* Respect people, their identities, their culture, and their work.
+* Be kind. Be courteous. Be welcoming.
+* Listen. Consider and acknowledge people's points before responding.
 
 If any member of the community violates this code of conduct,
-the maintainers of the Dart project may take action, removing issues,
-comments, and PRs or blocking accounts as deemed appropriate.
+the maintainers of the Dart project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
+We will not tolerate harassment from anyone in the Dart community,
+even outside of Dart's public communication channels.
 
 If you are subject to or witness unacceptable behavior,
 or have any other concerns,
 please [email us](mailto:conduct@dartlang.org).
+
