@@ -16,19 +16,6 @@ the [Dart tools]({{site.dartlang}}/tools) page.
 
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
-## DArt SDK release types
-
-We produce two types of releases. Generally we recommend that you use
-**stable releases** for all production use. For experimental use, testing,
-or previewing new features, **dev releases** can be used. Our typical
-release cadence is:
-
-* **stable** channel: stable releases,
-  updated no more frequently than every 6 weeks;
-  currently `[calculating]`{:.editor-build-rev-stable}.
-* **dev** channel: pre-releases, usually updated 1/week;
-  currently `[calculating]`{:.editor-build-rev-dev}.
-
 ## Install the Dart SDK {#install}
 
 As the following instructions show,
@@ -61,7 +48,22 @@ so it's easy to find (but not more tempting than package managers).
 {% include_relative tools/sdk/_mac.md %}
 </div>
 
-## Release version strings
+## About release channels and version strings
+
+The Dart SDK has two release channels:
+
+* **stable** channel: **stable releases**,
+  updated no more frequently than every 6 weeks;
+  currently `[calculating]`{:.editor-build-rev-stable}.
+* **dev** channel: **pre-releases**, usually updated 1/week;
+  currently `[calculating]`{:.editor-build-rev-dev}.
+
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
+  To give you early access to new features and fixes,
+  dev channel releases are not as heavily tested as the stable release.
+</aside>
+
 
 **Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
 They consist of dot-separated integers, with no hyphens or letters.
