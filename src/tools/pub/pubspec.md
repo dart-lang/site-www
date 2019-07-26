@@ -184,7 +184,9 @@ authors:
 - Bob Nystrom <rnystrom@google.com>
 {% endprettify %}
 
-If anyone uploads your package to the Pub site, your email address is public. The email can be from any email provider as long as it being listed publicly is okay.
+The email addresses can be from any provider.
+If anyone uploads your package to the Pub site,
+then the author information (including email addresses) becomes public.
 
 ### Homepage
 
