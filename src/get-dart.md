@@ -13,7 +13,6 @@ then you don't need the Dart SDK; just [install Flutter.][flutter]
 
 To learn about other tools you can use for Dart development, see
 the [Dart tools]({{site.dartlang}}/tools) page.
-
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
 ## Install the Dart SDK {#install}
