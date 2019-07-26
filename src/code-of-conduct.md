@@ -4,7 +4,7 @@ description: Be excellent to each other.
 toc: false
 ---
 
-We expect Dart contributors to act professionally and respectfully, and
+We expect Dart community members to act professionally and respectfully, and
 we expect our social spaces to be safe and dignified environments.
 
 Specifically:
