@@ -728,7 +728,7 @@ You might still encounter older code using `class` to define mixins, but the new
 syntax is preferred.
 
 
-### AVOID mixing in a type that isn't intended to be a mixin.
+### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
 For compatibility, Dart still allows you to mix in classes that aren't defined
 using `mixin`. However, that's risky. If the author of the class doesn't intend
