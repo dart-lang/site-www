@@ -1,4 +1,7 @@
     {% comment %}
+    NOTE: The generator is broken.
+    See https://github.com/dart-lang/site-www/issues/1325.
+
     This file is generated from the other files in this directory.
     To re-generate it, please run the following command from root of
     the project:
@@ -20,7 +23,8 @@
 * <a href='/guides/language/effective-dart/style#do-name-other-identifiers-using-lowercamelcase'>DO name other identifiers using <code>lowerCamelCase</code>.</a>
 * <a href='/guides/language/effective-dart/style#prefer-using-lowercamelcase-for-constant-names'>PREFER using <code>lowerCamelCase</code> for constant names.</a>
 * <a href='/guides/language/effective-dart/style#do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words'>DO capitalize acronyms and abbreviations longer than two letters like words.</a>
-* <a href='/guides/language/effective-dart/style#dont-use-prefix-letters'>DON’T use prefix letters.</a>
+* <a href='/guides/language/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private'>DON'T use a leading underscore for identifiers that aren't private.</a>
+* <a href='/guides/language/effective-dart/style#dont-use-prefix-letters'>DON'T use prefix letters.</a>
 
 **Ordering**
 
@@ -35,7 +39,7 @@
 * <a href='/guides/language/effective-dart/style#do-format-your-code-using-dartfmt'>DO format your code using <code>dartfmt</code>.</a>
 * <a href='/guides/language/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDER changing your code to make it more formatter-friendly.</a>
 * <a href='/guides/language/effective-dart/style#avoid-lines-longer-than-80-characters'>AVOID lines longer than 80 characters.</a>
-* <a href='/guides/language/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>DO use curly braces for all flow control structures.</a>
+* <a href='/guides/language/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>DO use curly braces for all flow control statements.</a>
 
 </div>
 <div class='effective_dart--summary_column' markdown='1'>
@@ -91,6 +95,10 @@
 * <a href='/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
 * <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>PREFER relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
+
+**Booleans**
+
+* <a href='/guides/language/effective-dart/usage#do-use--to-convert-null-to-a-boolean-value'>DO use <code>??</code> to convert <code>null</code> to a boolean value.</a>
 
 **Strings**
 
@@ -187,7 +195,7 @@
 * <a href='/guides/language/effective-dart/design#prefer-making-declarations-private'>PREFER making declarations private.</a>
 * <a href='/guides/language/effective-dart/design#consider-declaring-multiple-classes-in-the-same-library'>CONSIDER declaring multiple classes in the same library.</a>
 
-**Classes**
+**Classes and mixins**
 
 * <a href='/guides/language/effective-dart/design#avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do'>AVOID defining a one-member abstract class when a simple function will do.</a>
 * <a href='/guides/language/effective-dart/design#avoid-defining-a-class-that-contains-only-static-members'>AVOID defining a class that contains only static members.</a>
@@ -195,8 +203,8 @@
 * <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-extended'>DO document if your class supports being extended.</a>
 * <a href='/guides/language/effective-dart/design#avoid-implementing-a-class-that-isnt-intended-to-be-an-interface'>AVOID implementing a class that isn't intended to be an interface.</a>
 * <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-used-as-an-interface'>DO document if your class supports being used as an interface.</a>
-* <a href='/guides/language/effective-dart/design#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a class that isn't intended to be a mixin.</a>
-* <a href='/guides/language/effective-dart/design#do-document-if-your-class-supports-being-used-as-a-mixin'>DO document if your class supports being used as a mixin.</a>
+* <a href='/guides/language/effective-dart/design#do-use-mixin-to-define-a-mixin-type'>DO use <code>mixin</code> to define a mixin type.</a>
+* <a href='/guides/language/effective-dart/design#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin'>AVOID mixing in a type that isn't intended to be a mixin.</a>
 
 **Constructors**
 
