@@ -445,7 +445,7 @@ an import or export), it may remain whole even if it causes the line to go over
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
-### DO use curly braces for all flow control statements.
+### DO use curly braces for all flow control statements. {#do-use-curly-braces-for-all-flow-control-structures}
 
 {% include linter-rule.html rule="curly_braces_in_flow_control_structures" %}
 
