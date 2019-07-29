@@ -178,7 +178,7 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -355,7 +355,7 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
