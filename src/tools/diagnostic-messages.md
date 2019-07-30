@@ -1,5 +1,5 @@
 ---
-title: Diagnostics
+title: Diagnostic messages
 description: Details for diagnostics produced by the Dart analyzer.
 ---
 {%- comment %}
@@ -273,11 +273,11 @@ const y = x;
 {% endprettify %}
 
 If the value can't be declared to be `const`, then remove the `const`
-modifier from the variable:
+modifier from the variable, possibly using `final` in its place:
 
 {% prettify dart %}
 var x = 0;
-var y = x;
+final y = x;
 {% endprettify %}
 
 ### deprecated_member_use
@@ -634,8 +634,8 @@ class C {
 
 ### sdk_version_set_literal
 
-_Set literals weren't supported until version 2.2, but this code must be able to
-run on earlier versions._
+_Set literals weren't supported until version 2.2, but this code is required to
+be able to run on earlier versions._
 
 #### Description
 
