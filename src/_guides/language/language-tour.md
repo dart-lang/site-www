@@ -1015,10 +1015,8 @@ class has several properties you can use to extract rune information.
 The `codeUnitAt` and `codeUnit` properties return 16-bit code
 units. Use the `runes` property to get the runes of a string.
 
-The following example illustrates the relationship between runes,
-16-bit code units, and 32-bit code points.
-Click the run button {% asset red-run.png alt="" %}
-to see runes in action.
+The following example illustrates the relationship between runes, 16-bit code
+units, and 32-bit code points. Click **Run** to see runes in action.
 
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
@@ -1289,9 +1287,8 @@ The following example defines a function, `doStuff()`,
 that specifies a default list for the `list`
 parameter and a default map for the `gifts` parameter.
 {% comment %}
-The function is called three times with different values.
-Click the run button {% asset red-run.png alt="" %}
-to see list and map default values in action.
+The function is called three times with different values. Click **Run** to see
+list and map default values in action.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
@@ -1422,7 +1419,7 @@ list.forEach((item) {
 });
 {% endprettify %}
 
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+Click **Run** to execute the code.
 
 {% comment %}
 https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
@@ -1430,9 +1427,9 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
     width="100%"
-    height="250px"
+    height="400px"
     style="border: 1px solid #ccc;">
 </iframe>
 
@@ -2786,9 +2783,8 @@ then you must manually call one of the constructors in the
 superclass. Specify the superclass constructor after a colon (`:`), just
 before the constructor body (if any).
 
-In the following example, the constructor for the Employee class
-calls the named constructor for its superclass, Person.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+In the following example, the constructor for the Employee class calls the named
+constructor for its superclass, Person. Click **Run** to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
@@ -2828,7 +2824,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=e57aa06401e6618d4eb8"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&split=90"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -2892,9 +2888,9 @@ https://github.com/dart-lang/sdk/issues/30968
 https://github.com/dart-lang/sdk/blob/master/docs/language/informal/assert-in-initializer-list.md]
 {% endcomment %}
 
-Initializer lists are handy when setting up final fields.
-The following example initializes three final fields in an initializer list.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+Initializer lists are handy when setting up final fields. The following example
+initializes three final fields in an initializer list. Click **Run** to execute
+the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
@@ -2923,7 +2919,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=7a9764702c0608711e08"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=7a9764702c0608711e08&split=90"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -4137,10 +4133,9 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 
-In the following example, the `WannabeFunction` class defines
-a call() function that takes three strings and concatenates them,
-separating each with a space, and appending an exclamation.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+In the following example, the `WannabeFunction` class defines a call() function
+that takes three strings and concatenates them, separating each with a space,
+and appending an exclamation. Click **Run** to execute the code.
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
