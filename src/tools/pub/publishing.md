@@ -41,6 +41,13 @@ are a few additional requirements for uploading a package:
   ensure that dependencies of your packages cannot become unavailable in the
   future.
 
+* You must have a [Google Account,][Google Account]
+  which pub uses to manage package upload permissions.
+  Your Google Account can be associated with a Gmail address or
+  with any other email address.
+
+[Google Account]: https://support.google.com/accounts/answer/27441
+
 Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
 packages you upload.
