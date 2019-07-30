@@ -28,7 +28,7 @@ void miscDeclAnalyzedButNotTested() {
     optionalThing?.isEnabled == true;
 
     // If you want null to be true:
-    optionalThing?.isEnabled == false;
+    optionalThing?.isEnabled != false;
     // #enddocregion convert-null-equals
   }
 
