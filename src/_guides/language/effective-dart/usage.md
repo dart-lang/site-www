@@ -156,7 +156,7 @@ optionalThing?.isEnabled ?? true;
 optionalThing?.isEnabled == true;
 
 // If you want null to be true:
-optionalThing?.isEnabled == false;
+optionalThing?.isEnabled !== false;
 {% endprettify %}
 
 Both operations produce the same result and do the right thing, but `??` is
