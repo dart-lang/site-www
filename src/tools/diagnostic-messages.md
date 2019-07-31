@@ -291,7 +291,7 @@ member is used in a different package.
 
 #### Example
 
-If the method `m()` in the class `C` is annotated with `@deprecated`, then
+If the method `m` in the class `C` is annotated with `@deprecated`, then
 the following code produces this diagnostic:
 
 {% prettify dart %}
