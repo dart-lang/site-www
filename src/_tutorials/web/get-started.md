@@ -110,7 +110,7 @@ Let's customize the app you just created.
  1. Copy the `thingsTodo()` function from the DartPad above
     to the `web/main.dart` file.
 
- 2. In the `main()` method, initialize the `output` element using
+ 2. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
     {% prettify dart %}

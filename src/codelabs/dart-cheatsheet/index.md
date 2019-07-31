@@ -121,7 +121,7 @@ You can chain multiple uses of `?.` together in a single expression:
 myObject?.someProperty?.someMethod()
 {% endprettify %}
 
-The preceding code returns null (and never calls `someMethod`) if either
+The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is
 null.
 
@@ -219,8 +219,8 @@ We've all seen an expression like this:
 myObject.someMethod()
 {% endprettify %}
 
-It invokes `someMethod` on `myObject`, and the result of
-the expression is the return value of `someMethod`.
+It invokes `someMethod()` on `myObject`, and the result of
+the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
@@ -228,7 +228,7 @@ Here's the same expression with a cascade:
 myObject..someMethod()
 {% endprettify %}
 
-Although it still invokes `someMethod` on `myObject`, the result
+Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
@@ -306,7 +306,7 @@ Imagine you have a shopping cart class that keeps a private `List<double>`
 of prices.
 Add the following:
 
-* A getter called `total` that returns the sum of the prices
+* A getter called `total()` that returns the sum of the prices
 * A setter that replaces the list with a new one,
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).

@@ -155,7 +155,7 @@ determines which modules the webdev command creates:
   and can be imported by other packages.
 
 * One module for each Dart file that’s not under `lib` and
-  that contains a top-level `main` function. <br>
+  that contains a top-level `main()` function. <br>
   For example, `web/main.dart` gets its own module.
 
 * One module for each Dart file that’s not imported by one of the above.
