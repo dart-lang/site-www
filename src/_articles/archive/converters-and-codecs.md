@@ -434,7 +434,7 @@ advanced method (for example `addModifiableSlice()`) would take range arguments
 (`from`, `to`) and an `isLast` boolean as arguments.
 
 This new method is not yet used by transformers, but we can already use it when
-invoking `startChunkedConversion` explicitly.
+invoking `startChunkedConversion()` explicitly.
 
 {% prettify dart %}
 
