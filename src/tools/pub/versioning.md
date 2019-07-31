@@ -294,18 +294,18 @@ dependencies:
 {% endprettify %}
 
 The `collection` package is then updated to 2.5.0.
-The 2.5.0 version of `collection` includes a new method called `sortBackwards`.
-`bookshelf` may call `sortBackwards`,
+The 2.5.0 version of `collection` includes a new method called `sortBackwards()`.
+`bookshelf` may call `sortBackwards()`,
 because it's part of the API exposed by `widgets`,
 despite `bookshelf` having only a transitive dependency on `collection`.
 
 Because `widgets` has an API that is not reflected in its version number,
-the app that uses the `bookshelf` package and calls `sortBackwards` may crash.
+the app that uses the `bookshelf` package and calls `sortBackwards()` may crash.
 
 Exporting an API causes that API to be treated as if it is
 defined in the package itself, but it can't increase the version number when
 the API adds features. This means that `bookshelf` has no way of declaring
-that it needs a version of `widgets` that supports `sortBackwards`.
+that it needs a version of `widgets` that supports `sortBackwards()`.
 
 For this reason, when dealing with exported packages,
 it's recommended that the package's author keeps a tighter

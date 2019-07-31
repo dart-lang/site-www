@@ -326,7 +326,7 @@ as shown in the next section.
 ### Honoring the pause state
 
 Avoid producing events when the listener has requested a pause.
-An async* function automatically pauses at a `yield` statement
+An `async*` function automatically pauses at a `yield` statement
 while the stream subscription is paused.
 A `StreamController`, on the other hand, buffers events during the pause.
 If the code providing the events doesn't respect the pause,

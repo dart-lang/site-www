@@ -181,7 +181,7 @@ This arrow syntax is a way to define a function that executes the
 expression to its right and returns its value.
 
 For example, consider this call to the `List` class's
-`any` method:
+`any()` method:
 
 {% prettify dart %}
 bool hasEmpty = aListOfStrings.any((s) {
@@ -358,7 +358,7 @@ print(newTotal); // <-- prints 15
 
 ### Code example
 
-Implement a function called `joinWithCommas` that accepts one to
+Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
@@ -401,14 +401,14 @@ A function can't have both optional positional and optional named parameters.
 
 ### Code example
 
-Add a `copyWith` instance method to the `MyDataObject`
+Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named parameters:
 
 * `int newInt`
 * `String newString`
 * `double newDouble`
 
-When called, `copyWith` should return a new `MyDataObject`
+When called, `copyWith()` should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
@@ -481,16 +481,16 @@ try {
 
 ### Code example
 
-Implement `tryFunction` below. It should execute an untrustworthy method and
+Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
 
-* If `untrustworthy` throws an `ExceptionWithMessage`,
+* If `untrustworthy()` throws an `ExceptionWithMessage`,
   call `logger.logException` with the exception type and message
   (try using `on` and `catch`).
-* If `untrustworthy` throws an `Exception`,
+* If `untrustworthy()` throws an `Exception`,
   call `logger.logException` with the exception type
   (try using `on` for this one).
-* If `untrustworthy` throws any other object, don't catch the exception.
+* If `untrustworthy()` throws any other object, don't catch the exception.
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 

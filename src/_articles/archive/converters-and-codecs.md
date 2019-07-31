@@ -61,7 +61,7 @@ abstract class Codec<S, T> {
 
 As can be seen, codecs provide convenience methods such as `encode()` and
 `decode()` that are expressed in terms of the encoder and decoder. The `fuse()`
-method and `inverted` getter allow you to fuse converters and
+method and `inverted()` getter allow you to fuse converters and
 change the direction of a codec, respectively.
 The base implementation of
 [Codec]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Codec-class.html)
