@@ -306,7 +306,7 @@ Imagine you have a shopping cart class that keeps a private `List<double>`
 of prices.
 Add the following:
 
-* A getter called `total()` that returns the sum of the prices
+* A getter called `total` that returns the sum of the prices
 * A setter that replaces the list with a new one,
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).
