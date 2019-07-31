@@ -4157,7 +4157,7 @@ main() => print(out);
 <iframe
 src="{{site.custom.dartpadx.embed-inline-prefix}}?id=405379bacf30335f3aed"
     width="100%"
-    height="240px"
+    height="350px"
     style="border: 1px solid #ccc;">
 </iframe>
 
