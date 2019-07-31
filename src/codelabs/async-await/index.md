@@ -42,13 +42,13 @@ fails to print the desired user's order to the console:
 ### Example: failing to use an asynchronous function
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
-<!-- <iframe 
+<iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=5c8c7716b6b4284842f15fe079f61e47"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="420"
   width="100%" >
-</iframe> -->
+</iframe>
 
 In the preceding example:
 
@@ -124,13 +124,13 @@ to the console.
 ### Example: introducing futures
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
-<!-- <iframe 
+<iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=57e6085344cbd1719ed42b32f8ad1bce"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
   width="100%" >
-</iframe> -->
+</iframe>
 
 In the preceding example, even though `getUserOrder()` executes before the print
 statement on line 8, the console shows the printed output from line 8 
@@ -144,13 +144,13 @@ In the following example, `getUserOrder()` returns a future that completes with 
 ### Example: futures and exceptions
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
-<!-- <iframe 
+<iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=d843061bbd9388b837c57613dc6d5125"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
   width="100%" >
-</iframe> -->
+</iframe>
 
 In this example, `getUserOrder()` completes with an exception indicating that the user ID is invalid.
 
@@ -184,76 +184,95 @@ A future has two states: uncompleted and completed.
 ## Working with futures: async and await
 
 The `async` and `await` keywords provide a declarative way to define 
-asynchronous functions and use their results. 
+asynchronous functions and use their results. There are two basic guidelines
+to remember when using `async` and `await`: 
+* __The `await` keyword works only in `async` functions.__
+* __To use the `async` keyword, add it before the start of a function body.__
 
-To define an `async` function:
+To define an `async` function, add the `async` keyword after the function's parameters but before the function's body:  
 
-* Add the `async` keyword after the function's parameters but before the function's body:  
-    {% prettify dart %}
-        String createOrderMessage() [!async!] {
-    {% endprettify %}
+{% prettify dart %}
+    String createOrderMessage() [!async!] {
+{% endprettify %}
 
-* Update the function's type signature to return a future.
-    {% prettify dart %}
-        [!Future<void>!] createOrderMessage() async {
-    {% endprettify %}
+Update the function's type signature to return a future.
+{% prettify dart %}
+    [!Future<void>!] createOrderMessage() async {
+{% endprettify %}
 
-{{ site.alert.info }}
- You can 
- [use Future\<void\>]({{url}}/guides/language/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values)
- as the return type for asynchronous functions that don't return usable values.
-{{ site.alert.end }}
-
-Now that you've declared an async function:
-  * Your function returns a future that completes with the type that you specify.
-  * You must use the `await` keyword before invoking the function  to "wait"
-   for the future to complete either with a value or an error.
+Now that you've declared an `async` function, it returns a future that completes
+with the type that you specified. You must use the `await` keyword before invoking it.
 
 {% prettify dart %}
 var order = [!await!] getUserOrder();
 {% endprettify %}
 
+Remember, you can only use the `await` keyword within an `async` function. 
 The following examples provide a comparison of synchronous and asynchronous functions.
 
-### Example: synchronous functions
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <h3> Example: synchronous functions</h3>
 
-[//]: https://gist.github.com/8f4d136e7eb447f4acc7ccb523006e10
-<!-- <iframe 
-  src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=8f4d136e7eb447f4acc7ccb523006e10"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="450"
-  width="100%">
-</iframe> -->
+{% prettify dart %}
+// Synchronous
+String createOrderMessage () {
+  var order = getUserOrder();
+  return 'Your order is: $order';
+}
 
-In the preceding synchronous example the console immediately prints the messages 
-"Your order is: Instance of '_Future<String>'". 
+Future<String> getUserOrder() {
+  // Imagine that this function is
+  // more complex and slow
+  return 
+    Future.delayed(
+      Duration(seconds: 4), () => 'Large Latte'); 
+}
 
-The following example shows the same code as before, but implemented asynchronously.
-Since you can only use the `await` keyword within an `async` function body, the 
-`createOrderMessage()` function is now marked with the `async` keyword.
+// Synchronous
+main() {
+  print("Fetching user order...");
+  print(createOrderMessage());
+}
 
-### Example: asynchronous functions
+// "Your order is: Instance of '_Future<String>'"
+{% endprettify %}
+    </div>
+    <div class="col-sm">
+    <h3> Example: asynchronous functions</h3>
 
-[//]: https://gist.github.com/b8d026d2b23102084534159fafc9d7c6
-<!-- <iframe 
-  src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=b8d026d2b23102084534159fafc9d7c6"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="450"
-  width="100%">
-</iframe> -->
+{% prettify dart %}
+// Asynchronous
+[!Future<String>!] createOrderMessage () [!async!] {
+  var order = [!await!] getUserOrder();
+  return 'Your order is: $order';
+}
 
-In the preceding asynchronous example, the console  prints the result "Your order is: Large
-Latte" after a four second delay. This asynchronous example has three changes from the synchronous example:
+Future<String> getUserOrder() {
+  // Imagine that this function is
+  // more complex and slow
+  return
+   Future.delayed(
+     Duration(seconds: 4), () => 'Large Latte');
+}
 
-* Update the return types for `createOrderMessage()` from 
-`String` to `Future<String>`.
-* Add the **`async`** keyword before the function bodies for `createOrderMessage()`
-and the `main()` function.
-* Use the **`await`** keyword before calling the asynchronous functions 
-`getUserOrder()` and `createOrderMessage()`.
+// Asynchronous
+main() [!async!] {
+  print("Fetching user order...");
+  print([!await!] createOrderMessage());
+}
 
+// "Your order is: Large Latte"
+{% endprettify %}
+    </div>
+  </div>
+</div>
+
+The asynchronous example is different in three ways:
+  * The return types for `createOrderMessage()` are changed from `String` to `Future<String>`.
+  * The **`async`** keyword appears before the function bodies for `createOrderMessage()` and the `main()` function.
+  * The **`await`** keyword appears before calling the asynchronous functions `getUserOrder()` and `createOrderMessage()`.
 
 {{ site.alert.info }}
   Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
@@ -283,13 +302,13 @@ execution proceeds within an `async` function body:
 ### Example: execution within async functions
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
-<!-- <iframe 
+<iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=d7abfdea1ae5596e96c7c0203d975dba"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
   frameborder="no"
-  height="550"
+  height="600"
   width="100%">
-</iframe> -->
+</iframe>
 
 After running the code in the preceding example, try reversing line 4 and line 5:
 
@@ -346,13 +365,12 @@ You don't need to implement `main()`.__
     <div class="col-sm">
 
   <!-- [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056 -->
-
-  <!-- <iframe 
+  <iframe 
     src="https://dartpad.dartlang.org/experimental/embed-new-inline.html?id=f751b692502c4ee43d932f745860b056&theme=dark"
     frameborder="no"
     height="525"
     width="100%">
-  </iframe> -->
+  </iframe>
 
 
   </div>
@@ -383,16 +401,16 @@ the code inside the `catch` clause executes. The difference is that with
 asynchronous functions you must use the async/await keywords following the 
 syntax you used in the prior section:
 
-### Example: async/await with try-catch
+### Example: async and await with try-catch
 
-[//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2
-<!-- <iframe 
+<!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
+<iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
   style="border: 1px solid lightgrey;"
   frameborder="no"
   height="475"
   width="100%" >
-</iframe> -->
+</iframe>
 
 ## Exercise: Practice handling errors
 <span markdown="1">
@@ -412,12 +430,12 @@ syntax you used in the prior section:
    </div>
    <div class="col-sm">
     <!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
-    <!-- <iframe 
+    <iframe 
       src="https://dartpad.dartlang.org/experimental/embed-new-inline.html?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
       frameborder="no"
       height="525"
       width="100%" >
-    </iframe> -->
+    </iframe>
    </div>
   </div> 
 </div>
@@ -458,12 +476,13 @@ Write the following:
    </div>
 
    <div class="col-sm">
-    <!-- <iframe 
+    <!-- [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc -->
+    <iframe 
       src="https://dartpad.dev/experimental/embed-new-inline.html?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
       frameborder="no"
       height="525"
       width="100%">
-    </iframe> -->
+    </iframe>
    </div>
   </div> 
 </div>
