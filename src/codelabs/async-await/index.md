@@ -36,10 +36,12 @@ another operation to finish. Here are some common asynchronous operations:
 * Reading data from a file.
 
 To perform asynchronous operations in Dart, you can use the `Future` class
-and the `async` and `await` keywords. Consider the following example that
-fails to print the desired user's order to the console: 
+and the `async` and `await` keywords. 
 
 ### Example: failing to use an asynchronous function
+Run the following example to familiarize yourself with some failing code that 
+needs to be refactored to use `async` and `await`. Can you guess what the 
+output will be?
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
@@ -122,6 +124,8 @@ exception, the future completes and throws the error or exception.
 In the following example `getUserOrder()` returns a future that completes by printing 
 to the console.
 ### Example: introducing futures
+Run the following example to see how a future completes successfully, and try
+to guess the order in which values will be printed to the console.
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
 <iframe 
@@ -138,10 +142,9 @@ statement on line 8, the console shows the printed output from line 8
 This is because `getUserOrder()` delays for 3 seconds before it completes by 
 printing `Large Latte` to the console.
 
-
-In the following example, `getUserOrder()` returns a future that completes with an exception.
-
 ### Example: futures and exceptions
+Run the following example to see how a future completes with an exception.
+Can you guess how you might handle the exception?
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
 <iframe 
@@ -274,10 +277,6 @@ The asynchronous example is different in three ways:
   * The **`async`** keyword appears before the function bodies for `createOrderMessage()` and the `main()` function.
   * The **`await`** keyword appears before calling the asynchronous functions `getUserOrder()` and `createOrderMessage()`.
 
-{{ site.alert.info }}
-  Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
-{{ site.alert.end }}
-
 {{ site.alert.secondary }}
   **Key terms**:
 * **async**:  Use the `async` keyword to define an asynchronous function. To use the
@@ -296,10 +295,11 @@ only use the `await` keyword within an `async` function body.
 As of Dart 2, functions marked as `async` run synchronously until the first
 `await` keyword. This means that within an `async` function's body, all
 synchronous code immediately executes so long as the synchronous code appears
-before the first `await` keyword. The following example demonstrates how 
-execution proceeds within an `async` function body:
+before the first `await` keyword. 
 
 ### Example: execution within async functions
+Run the following example to see how execution proceeds within an `async` 
+function body. Which line in `createOrderMessage()` will run synchronously?
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe 
@@ -398,11 +398,12 @@ You can write [try-catch clauses](/guides/language/language-tour#catch)
 the same way with asynchronous as with
 synchronous code: if the code within the `try` clause throws an exception,
 the code inside the `catch` clause executes. The difference is that with
-asynchronous functions you must use the async/await keywords following the 
-syntax you used in the prior section:
+asynchronous functions you must use the `async` and `await` keywords following the 
+syntax outlined in the prior section.
 
 ### Example: async and await with try-catch
-
+Run the following example to see how to handle an exception from an 
+asynchronous function. Can you guess what the output will be before running it?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
@@ -486,6 +487,10 @@ Write the following:
    </div>
   </div> 
 </div>
+
+{{ site.alert.info }}
+  Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+{{ site.alert.end }}
 
 ## What's next?
 
