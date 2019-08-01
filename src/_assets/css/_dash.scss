@@ -209,15 +209,25 @@ $dash-header-bg: #17212f;
     line-height: 1.2;
     color: $dash-off-white;
   }
+
   h3 {
     color: $dash-off-white
   }
 
-  iframe {
+  select {
+    margin-bottom: 8px;
+  }
+
+  #dartpad-host {
     height: 512px;
     width: 100%;
     max-width: 896px;
-    border: none;
+    display: flex;
+
+    iframe {
+      flex: 1;
+      border: none;
+    }
   }
 }
 
