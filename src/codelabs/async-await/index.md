@@ -158,9 +158,7 @@ the `async` and `await` keywords.
 
 {{ site.alert.secondary }}
   **Quick review:**
-
-  * A [Future<T>](https://api.dartlang.org/stable/dart-async/Future-class.html) instance
-  produces a value of type `<T>`. For example, `Future<String>`
+  * A [Future\<T\>][future class] instance produces a value of type `<T>`. For example, `Future<String>`
   is the type for a future that produces a string value. If a
   future doesn't produce a usable value, then the future's type is
   `Future<void>`.
@@ -170,7 +168,7 @@ the `async` and `await` keywords.
   * Later, when the operation finishes, the future completes with a value or with an error.
 
 **Key terms:**
-* **Future**: Future (with a capitalized "F") refers to the Dart [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) class.
+* **Future**: Future (with a capitalized "F") refers to the Dart [Future][future class] class.
 
 * **future**: future (with a lower case "f") refers to an instance of the Dart Future class.
 {{ site.alert.end }}
@@ -300,76 +298,58 @@ After running the code in the preceding example, try reversing line 4 and line 5
 
 Notice that the timing of the output shifts, now that the `print('Awaiting user order')`
 statement appears after the first `await` keyword in `createOrderMessage()`.
+
 ### Exercise: Practice using async and await
 
 The following exercise is a failing unit test that contains partially completed
 code snippets. Your task is to complete the exercise by writing code to make the 
-tests pass. To simulate asynchronous operations, __the exercise provides the 
-async functions `getRole()` and `getLoginAmount()`. You don't need
-to implement these functions -- they are provided but not shown in the exercise.
-You don't need to implement `main()`.__
+tests pass. 
+You don't need to implement `main()`.
 
-<div class="container">
-  <div class="row">
-   <div class="col-sm">
-<!-- TODO: Your code will call the following methods, which are provided for you... -->
-<!-- (Provide function signatures, break them out from the instructions) -->
-        <h4 markdown="1">Part 1: `reportUserRole()`</h4>
-        <span markdown="1">Add logic to the `reportUserRole()`function:</span>  
-        <ul>
-          <li><span markdown="1">`reportUserRole()` returns a Future that completes
-            with the String `"User role: <user role>"`. 
-          </span></li>
-          <!-- TODO: indent all "Example return values" -->
-          <li><span markdown="1"> Example return value from `reportUserRole()`: 
-          <!-- TODO: separate list item for note about actual value needed -->
-            `'User role: tester'` (Note: you must use the actual value returned 
-            by `getRole()`; copying and pasting the example return value won't make your test pass). 
-          </span></li>
-          <li><span markdown="1">Obtain the user role by calling the provided
-           `async` function `getRole()`</span></li> 
-          <li><span markdown="1">  `getRole()` returns a `String` describing the
-            user's role.</span></li>
-        </ul>
-      <h4 markdown="1"> Part 2: `reportLogins()`</h4>
-      <!-- TODO: example return value, and note, like above -->
-        <span markdown="1">Implement an `async` function `reportLogins()`:</span>
-        <ul>
-          <li><span markdown="1">  `reportLogins()` returns the string 
-            `'Total number of logins: <# of logins>'`. </span></li>
-          <li><span markdown="1">  Example return value from `reportLogins(): 
-            'Total number of logins: 57'` (Note: you must use the actual value 
-            returned by `getLoginAmount()`; copying and pasting this text will
-            not pass the test). </span></li>
-          <li><span markdown="1">  Obtain the number of logins by calling the 
-            provided `async` function `getLoginAmount()`</span></li>
-          <li><span markdown="1"> `getLoginAmount()` returns an `int` 
-            representing the number of times that the user has logged in. </span></li>
-        </ul>
-    </div>
-    <div class="col-sm">
+To simulate asynchronous operations, your code will call the following functions, which are 
+provided for you:
 
-  <!-- [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056 -->
-  <iframe 
-    src="https://dartpad.dartlang.org/experimental/embed-new-inline.html?id=f751b692502c4ee43d932f745860b056&theme=dark"
-    frameborder="no"
-    height="650"
-    width="100%">
-  </iframe>
+<!-- dart annotation format borrowed from  
+https://api.dartlang.org/stable/2.4.0/dart-developer/dart-developer-library.html -->
+<!-- See e.g. getCurrentTag() → UserTag -->
 
+{% prettify dart %}
+getRole() → Future<String> 
+// Returns a short description of the user's role
 
-  </div>
-  </div>
-</div>
+getLoginAmount() → Future<int> 
+// Returns the number of times a user has logged in
+{% endprettify %}
 
-<!-- If your tests pass you can ignore the info level messages  -->
+#### Part 1: `reportUserRole()`
+
+Add logic to the `reportUserRole()` function:
+<!-- Some bulleted items are intentionally lacking punctuation to avoid confusing the users about characters in string values -->
+* `reportUserRole()` returns a future that completes with the String: `"User role: <user role>"`
+  * Example return value from `reportUserRole()`: `"User role: tester"` 
+  * Note: you must use the actual value returned by `getRole()`; copying and pasting the example return value won't make the test pass. 
+* Get the user role by calling the provided function `getRole()` 
+
+####  Part 2: `reportLogins()`
+Implement an `async` function `reportLogins()`:
+* `reportLogins()` returns the string `"Total number of logins: <# of logins>"`.
+  * Example return value from `reportLogins()`: `"Total number of logins: 57"` 
+  * Note: you must use the actual value returned by `getLoginAmount()`; copying and pasting the example return value won't make the test pass.
+* Get the number of logins by calling the provided function `getLoginAmount()`
+
+<!-- [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056 -->
+<iframe 
+  src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=f751b692502c4ee43d932f745860b056&theme=dark"
+  frameborder="no"
+  height="550"
+  width="100%">
+</iframe>
+
   {{ site.alert.info }}
-    [Info-level messages](/guides/language/analysis-options#customizing-analysis-rules)
-    from DartPad provide you with additional information, but they don't
-    prevent you from passing the exercise.
+    If your tests pass, you can ignore [Info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
   {{ site.alert.end }}
-## Handling errors
 
+## Handling errors
 Handle errors in an `async` function by using try-catch: 
 
 ```dart
@@ -386,7 +366,7 @@ the same way for asynchronous and synchronous code.
 <!-- Exception vs. Error -->
 
 ### Example: async and await with try-catch
-Run the following example to see how to handle an exception from an 
+Run the following example to see how to handle an error from an 
 asynchronous function. Can you guess what the output will be before running it?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
 <iframe 
@@ -398,87 +378,69 @@ asynchronous function. Can you guess what the output will be before running it?
 </iframe>
 
 ### Exercise: Practice handling errors
-<span markdown="1">
+
 <!-- TODO: same fix as above w/ section about provided functions -->
+To simulate asynchronous operations, your code will call the following function,
+which is provided for you:
+
+{% prettify dart %}
+getNewUsername() → Future<String> 
+// Returns the username from a user-initiated request for update
+{% endprettify %}
+
 <!-- Indent the example values -->
-<!-- Pull "provided functions" out of instructions section -->
-    __This exercise provides the async function `getNewUsername()`. 
-    You don’t need to implement this provided function.__
-    Use `async` and `await` to do the following:
-</span>
-<div class="container">
-  <div class="row">
-   <div class="col-sm">
-    <ul>
-      <li><span markdown="1">Implement an asynchronous `changeUsername()` function that calls the provided asynchronous function `getNewUsername()` and returns its result.</span></li>
-      <li><span markdown="1">Because `getNewUsername()` can throw an Exception, the `changeUsername()` function must __catch and return any errors__ thrown by `getNewUsername()` and it must __stringify the error before returning it__.</span></li>
-      <li><span markdown="1">If `getNewUsername()` succeeds it returns a String, otherwise it throws an Exception.</span></li>
-      <li><span markdown="1">You can use the [toString()]({{site.dart_api}}/stable/dart-core/ArgumentError/toString.html) method to stringify both [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)</span></li>
-    </ul>
-   </div>
-   <div class="col-sm">
-    <!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
-    <iframe 
-      src="https://dartpad.dartlang.org/experimental/embed-new-inline.html?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
-      frameborder="no"
-      height="525"
-      width="100%" >
-    </iframe>
-   </div>
-  </div> 
-</div>
+
+Use `async` and `await` to do the following:
+* Implement an asynchronous `changeUsername()` function that calls the provided asynchronous function `getNewUsername()` and returns its result.
+  * Example return value from `changeUsername()`: `"jane_smith_92"` 
+  * Because `getNewUsername()` can encounter errors, the `changeUsername()` function must __catch and return any errors__ and it must __stringify the error before returning it__.
+* You can use the [toString()]({{site.dart_api}}/stable/dart-core/ArgumentError/toString.html) method to stringify both [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
+
+<!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
+
+<iframe 
+src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
+frameborder="no"
+height="525"
+width="100%" >
+</iframe>
 
 ### Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise. 
 To simulate asynchronous operations, __this exercise provides the async functions
 `getUsername()` and `logoutUser()`. You don’t need to implement these provided functions.
-You don't need to implement `main()`.__
+You don't need to implement `main()`.
 
 Write the following:
 
-<div class="container">
-  <div class="row">
-   <div class="col-sm">
+####  Part 1: `addHello()` 
+* Write a function `addHello()` that takes a single String argument 
+<!-- try to avoid should -->
+* `addHello()` should return its String argument surrounded by the text ‘Hello \<string\>'
 
-   <h4 markdown="1"> Part 1: `addHello()` </h4>
-    <ul>
-      <li><span markdown="1"> Write a function `addHello()` that takes a single String argument</span></li> 
-      <!-- try to avoid should -->
-      <li><span markdown="1"> `addHello()` should return its String argument surrounded by the text ‘Hello \<string\>'</span></li>
-    </ul>
+####  Part 2: `greetUser()` 
+* Write a function `greetUser()` that takes no arguments.
+* To obtain the username, `greetUser()` should call the provided asynchronous function `getUsername()`, which waits for 1 second before returning a string.
+* `greetUser()` should create a greeting for the user by calling `addHello()`, passing it the username, and returning the result. For example, if the username is ‘Jenny' `greetUser()` should create and return the greeting "Hello Jenny"
 
-   <h4 markdown="1"> Part 2: `greetUser()` </h4>
-    <ul>
-      <li><span markdown="1"> Write a function `greetUser()` that takes no arguments. </span></li>
-      <li><span markdown="1"> To obtain the username, `greetUser()` should call the provided asynchronous function `getUsername()`, which waits for 1 second before returning a string. </span></li>
-      <li><span markdown="1"> `greetUser()` should create a greeting for the user by calling `addHello()`, passing it the username, and returning the result. For example, if the username is ‘Jenny' `greetUser()` should create and return the greeting "Hello Jenny" </span></li>
-    </ul>
-
-   <h4 markdown="1"> Part 3: `sayGoodbye()` </h4>
-   <!-- Write a function sayGoodbye that does the following: takes no arguments, catch any errors,  -->
+####  Part 3: `sayGoodbye()` 
+<!-- Write a function sayGoodbye that does the following: takes no arguments, catch any errors,  -->
 <!-- pull out descriptions of  -->
 <!-- consider describe how to handle logoutUser if it fails -->
-    <ul>
-      <li><span markdown="1"> Write a function `sayGoodbye()` that takes no arguments.</span></li>
-      <li><span markdown="1"> `sayGoodbye()` should catch any errors.</span></li>
-      <li><span markdown="1"> `sayGoodbye()` should call the provided asynchronous function `logoutUser()`, which takes no arguments.</span></li>
-      <!-- italicize <result> -->
-      <li><span markdown="1"> If `logoutUser()` succeeds, `sayGoodbye()` should return the string "\<result\> Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.</span></li>
-    </ul>
-   </div>
+* Write a function `sayGoodbye()` that takes no arguments.
+* `sayGoodbye()` should catch any errors.
+* `sayGoodbye()` should call the provided asynchronous function `logoutUser()`, which takes no arguments.
+<!-- italicize <result> -->
+* If `logoutUser()` succeeds, `sayGoodbye()` should return the string "\<result\> Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
 
-   <div class="col-sm">
     <!-- [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc -->
-    <iframe 
-      src="https://dartpad.dev/experimental/embed-new-inline.html?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
-      frameborder="no"
-      height="650"
-      width="100%">
-    </iframe>
-   </div>
-  </div> 
-</div>
+<iframe 
+  src="https://dartpad.dev/experimental/embed-new-dart.html?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
+  frameborder="no"
+  height="550"
+  width="100%">
+</iframe>
 
 {{ site.alert.info }}
   Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
