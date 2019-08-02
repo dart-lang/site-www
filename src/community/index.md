@@ -54,7 +54,6 @@ Our wonderful community has provided these resources.
 
 * [Dart Academy](https://dart.academy/) - Tutorials
   and articles written by the Dart community
-* [Smartherd videos](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - A series of tutorial videos about the Dart language
 * [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)

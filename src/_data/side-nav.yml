@@ -208,6 +208,12 @@
 - title: Resources
   expanded: false
   children:
+    - title: Overview
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /resources
+    - title: Books
+      permalink: /resources/books
     - title: Code of conduct
       permalink: /code-of-conduct
     - title: FAQ
@@ -222,6 +228,8 @@
           permalink: /web/dart-2
         - title: Obsolete pub features
           permalink: /tools/pub/obsolete
+    - title: Videos
+      permalink: /resources/videos
 
 - title: Related sites
   expanded: true
