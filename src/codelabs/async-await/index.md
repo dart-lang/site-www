@@ -320,7 +320,6 @@ getRole() → Future<String>
 getLoginAmount() → Future<int> 
 // Returns the number of times a user has logged in
 {% endprettify %}
-
 #### Part 1: `reportUserRole()`
 
 Add logic to the `reportUserRole()` function:
@@ -412,6 +411,17 @@ To simulate asynchronous operations, __this exercise provides the async function
 `getUsername()` and `logoutUser()`. You don’t need to implement these provided functions.
 You don't need to implement `main()`.
 
+To simulate asynchronous operations, your code will call the following functions, which are 
+provided for you:
+
+{% prettify dart %}
+getUsername() → Future<String> 
+// Returns the name associated with the current user.
+
+logoutUser() → Future<String> 
+// Performs logout of current user and returns the username that was logged out.
+{% endprettify %}
+
 Write the following:
 
 ####  Part 1: `addHello()` 
@@ -421,18 +431,18 @@ Write the following:
 
 ####  Part 2: `greetUser()` 
 * Write a function `greetUser()` that takes no arguments.
-* To obtain the username, `greetUser()` should call the provided asynchronous function `getUsername()`, which waits for 1 second before returning a string.
-* `greetUser()` should create a greeting for the user by calling `addHello()`, passing it the username, and returning the result. For example, if the username is ‘Jenny' `greetUser()` should create and return the greeting "Hello Jenny"
+* To obtain the username, `greetUser()` should call the provided asynchronous function `getUsername()`
+* `greetUser()` should create a greeting for the user by calling `addHello()`, passing it the username, and returning the result. 
+  * For example, if the username is "Jenny", `greetUser()` should create and return the greeting "Hello Jenny"
 
 ####  Part 3: `sayGoodbye()` 
-<!-- Write a function sayGoodbye that does the following: takes no arguments, catch any errors,  -->
 <!-- pull out descriptions of  -->
-<!-- consider describe how to handle logoutUser if it fails -->
-* Write a function `sayGoodbye()` that takes no arguments.
-* `sayGoodbye()` should catch any errors.
-* `sayGoodbye()` should call the provided asynchronous function `logoutUser()`, which takes no arguments.
+* Write a function `sayGoodbye()` that does the following:
+* `sayGoodbye()` takes no arguments.
+* `sayGoodbye()` catches any errors.
+* `sayGoodbye()` calls the provided asynchronous function `logoutUser()`.
 <!-- italicize <result> -->
-* If `logoutUser()` succeeds, `sayGoodbye()` should return the string "\<result\> Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
+* If `logoutUser()` succeeds, `sayGoodbye()` returns the string "\<result\> Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
 
     <!-- [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc -->
 <iframe 
