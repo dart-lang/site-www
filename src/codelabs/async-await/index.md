@@ -1,5 +1,5 @@
 ---
-title: "Asynchronous Dart codelab: futures, async, and await"
+title: "Asynchrony: futures, async, await"
 description: A series of explanations and exercises for writing asynchronous code in Dart
 date: 2019-06-12
 tags: [ future, async, await, asynchronous, try, catch, error ]
