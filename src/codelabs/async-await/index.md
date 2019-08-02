@@ -407,7 +407,7 @@ width="100%" >
 ### Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise. 
-To simulate asynchronous operations, __this exercise provides the async functions
+To simulate asynchronous operations, this exercise provides the async functions
 `getUsername()` and `logoutUser()`. You don’t need to implement these provided functions.
 You don't need to implement `main()`.
 

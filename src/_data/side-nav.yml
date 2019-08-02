@@ -6,13 +6,13 @@
     - title: Codelabs
       expanded: true
       children:
-        - title: Overview
+        - title: List of Dart codelabs
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
-        - title: Cheatsheet codelab
+        - title: Language cheatsheet
           permalink: /codelabs/dart-cheatsheet
-        - title: Asynchronous Programming with Dart
+        - title: "Asynchrony: futures, async, await"
           permalink: /codelabs/async-await
     - title: Tutorials
       urlExactMatch: true

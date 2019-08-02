@@ -23,7 +23,23 @@ This codelab — which is based on a
 written by and for Google engineers —
 walks you through the most important of these language features.
 
-{% include dartpad-exercise-how-to.md %}
+The embedded editors in this codelab have partially completed code snippets.
+You can use these editors to test your knowledge by completing the code and
+clicking the **Run** button.
+If you need help, click the **Hint** button.
+To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
+The **Reset** button erases your work and
+restores the editor to its original state.
+
+<aside class="alert alert-warning">
+The embedded editors use an experimental version of DartPad.
+If you find a DartPad bug or have suggestions for DartPad, please
+<a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">create a DartPad issue.</a>
+If you have suggestions for the text or examples in this codelab,
+you can create a site issue by clicking the bug icon
+at the top right of this page.
+</aside>
+
 
 ## String interpolation
 
@@ -105,7 +121,7 @@ You can chain multiple uses of `?.` together in a single expression:
 myObject?.someProperty?.someMethod()
 {% endprettify %}
 
-The preceding code returns null (and never calls `someMethod`) if either
+The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is
 null.
 
@@ -165,7 +181,7 @@ This arrow syntax is a way to define a function that executes the
 expression to its right and returns its value.
 
 For example, consider this call to the `List` class's
-`any` method:
+`any()` method:
 
 {% prettify dart %}
 bool hasEmpty = aListOfStrings.any((s) {
@@ -203,8 +219,8 @@ We've all seen an expression like this:
 myObject.someMethod()
 {% endprettify %}
 
-It invokes `someMethod` on `myObject`, and the result of
-the expression is the return value of `someMethod`.
+It invokes `someMethod()` on `myObject`, and the result of
+the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
@@ -212,7 +228,7 @@ Here's the same expression with a cascade:
 myObject..someMethod()
 {% endprettify %}
 
-Although it still invokes `someMethod` on `myObject`, the result
+Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
@@ -342,7 +358,7 @@ print(newTotal); // <-- prints 15
 
 ### Code example
 
-Implement a function called `joinWithCommas` that accepts one to
+Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
@@ -385,14 +401,14 @@ A function can't have both optional positional and optional named parameters.
 
 ### Code example
 
-Add a `copyWith` instance method to the `MyDataObject`
+Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named parameters:
 
 * `int newInt`
 * `String newString`
 * `double newDouble`
 
-When called, `copyWith` should return a new `MyDataObject`
+When called, `copyWith()` should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
@@ -465,16 +481,16 @@ try {
 
 ### Code example
 
-Implement `tryFunction` below. It should execute an untrustworthy method and
+Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
 
-* If `untrustworthy` throws an `ExceptionWithMessage`,
+* If `untrustworthy()` throws an `ExceptionWithMessage`,
   call `logger.logException` with the exception type and message
   (try using `on` and `catch`).
-* If `untrustworthy` throws an `Exception`,
+* If `untrustworthy()` throws an `Exception`,
   call `logger.logException` with the exception type
   (try using `on` for this one).
-* If `untrustworthy` throws any other object, don't catch the exception.
+* If `untrustworthy()` throws any other object, don't catch the exception.
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 

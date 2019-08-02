@@ -22,11 +22,10 @@ some of the most commonly used, yet unique features of the Dart language.
 
 ### [Futures Async & Await](/codelabs/async-await)
 
-Use DartPad to learn how to write asynchronous code in Dart via futures and the
-async/await keywords.
+Use the latest, experimental version of DartPad to learn how to write 
+asynchronous code using futures and the `async` and `await` keywords.
 
 ## Flutter
 
 To learn about Flutter, try one of the
 [Flutter codelabs.]({{site.flutter}}/codelabs)
-
