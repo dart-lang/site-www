@@ -62,6 +62,12 @@ h6, .h6 { font-size: $font-size-h6;}
 
 p {}
 
+dt {
+  a {
+    font-weight: $font-weight-bold
+  }
+}
+
 a, button {
  text-decoration: none;
  color: $brand-primary;
