@@ -20,8 +20,8 @@ nextpage:
   * `Future` objects (_futures_) represent the results of
     _asynchronous operations_ — processing or I/O to be completed later.
   * To suspend execution until a future completes,
-    use `await` in an async function.
-  * To catch errors, use try-catch expressions in async functions.
+    use `await` in an `async` function.
+  * To catch errors, use try-catch expressions in `async` functions.
   * To run code concurrently, create an _isolate_
     (or for a web app, a _worker_).
 </div>
@@ -117,8 +117,8 @@ When writing code that depends on a future, you have two options:
 The `async` and `await` keywords are part of the Dart language's [asynchrony
 support](/guides/language/language-tour#asynchrony-support). They allow you
 to write asynchronous code that looks like synchronous code and doesn't use
-the `Future` API. An _async function_ is one that has the `async` keyword
-before its body. The `await` keyword works only in async functions.
+the `Future` API. An async function is one that has the `async` keyword
+before its body. The `await` keyword works only in `async` functions.
 
 {% include async-await-2.0.md %}
 
@@ -210,13 +210,13 @@ number corresponds to a step below.
      alt="diagram showing flow of control through the main() and printDailyNewsDigest functions">
 
 1. The app begins executing.
-1. The `main()` function calls the async function `printDailyNewsDigest()`,
+1. The `main()` function calls the `async` function `printDailyNewsDigest()`,
    which begins executing synchronously.
 1. `printDailyNewsDigest()` uses `await` to call the function
    `gatherNewsReports()`, which begins executing.
 1. The `gatherNewsReports()` function returns an uncompleted
    future (an instance of `Future<String>`).
-1. Because `printDailyNewsDigest()` is an async function and is
+1. Because `printDailyNewsDigest()` is an `async` function and is
    awaiting a value, it pauses its execution and returns an uncompleted
    future (in this case, an instance of `Future<void>`)
    to its caller (`main()`).
@@ -230,7 +230,7 @@ number corresponds to a step below.
 1. When the `printDailyNewsDigest()` function body finishes executing,
    the future that it originally returned completes, and the app exits.
 
-Note that an async function starts executing right away (synchronously).
+Note that an `async` function starts executing right away (synchronously).
 The function suspends execution and returns an uncompleted future
 when it reaches the first occurrence of any of the following:
 
@@ -243,7 +243,7 @@ when it reaches the first occurrence of any of the following:
 ### Handling errors {#handling-errors-async}
 
 If a `Future`-returning function completes with an error, you probably want to
-capture that error. Async functions can handle errors using try-catch:
+capture that error. An `async` function can handle errors using try-catch:
 
 <?code-excerpt "misc/lib/tutorial/daily_news.dart (try-catch)"?>
 {% prettify dart %}
