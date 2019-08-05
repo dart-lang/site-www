@@ -1,12 +1,10 @@
 ---
-permalink: /resources/books
 title: Books about Dart
-description: Read all about it! Here's a collection of publications about Dart.
-toc: false
+description: Read all about it! Here's a collection of books about Dart.
 ---
 
 Here's a collection of books about Dart.
-If you find another resource that we should add,
+If you find another one that we should add,
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
 ## Dart 2
