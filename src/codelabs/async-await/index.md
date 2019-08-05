@@ -8,7 +8,7 @@ embedded editors that you can use to test your knowledge by running
 example code and completing exercises.
 
 To get the most out of this codelab, you should have the following:
-* [Basic Dart syntax](/codelabs/dart-cheatsheet).
+* Knowledge of [basic Dart syntax](/samples).
 * Some experience writing asynchronous code in another language.
 
 This codelab covers the following material:
@@ -116,7 +116,7 @@ future completes with an error.
 In the following example, `getUserOrder()` returns a future that completes after
 printing to the console. Because it doesn't return a usable value, 
 `getUserOrder()` has the type `Future<void>`. Before you run the example, 
-try to predict which will print first: "Large Latte" or "Fetching user order..." ?
+try to predict which will print first: "Large Latte" or "Fetching user order...".
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
 <iframe 
@@ -174,8 +174,8 @@ results with the `async` and `await` keywords.
 The `async` and `await` keywords provide a declarative way to define 
 asynchronous functions and use their results. Remember these two basic guidelines
 when using `async` and `await`: 
-* __The `await` keyword works only in `async` functions.__
 * __To define an async function, add `async` before the function body:__
+* __The `await` keyword works only in `async` functions.__
 
 Here's an example  that converts `main()` from a synchronous to asynchronous
 function.
@@ -185,10 +185,8 @@ First, add the `async` keyword before the function body.
     main() [!async!] {
 {% endprettify %}
 
-If needed, update the function's type signature to return a future.
 If the function has a declared return type, then update the type to be
-`Future<T>`,
-where `T` is the type of the value that the function returns. 
+`Future<T>`, where `T` is the type of the value that the function returns. 
 If the function doesn't explicitly return a value, then the return type is
 `Future<void>`:
 
@@ -481,6 +479,7 @@ Thanks, see you next time" where \<result\> is the String value returned by call
 </iframe>
 
 {{ site.alert.info }}
+  You might have noticed that the functions in the exercises don't have return types. That's because Dart can infer the return type for you. Omitting return types is fine when you're prototyping, but when you write production code, we recommend that you specify the return type.
   Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
 {{ site.alert.end }}
 
