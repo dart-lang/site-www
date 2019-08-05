@@ -3920,7 +3920,7 @@ to wait for the result of an asynchronous function:
 await lookUpVersion();
 {% endprettify %}
 
-To use `await`, code must be in an _async function_—a
+To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
@@ -3933,9 +3933,9 @@ Future checkVersion() [!async!] {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Although an async function might perform time-consuming operations,
+Although an `async` function might perform time-consuming operations,
 it doesn't wait for those operations.
-Instead, the async function executes only until it encounters
+Instead, the `async` function executes only until it encounters
 its first `await` expression
 ([details][synchronous-async-start]).
 Then it returns a Future object,
@@ -3954,7 +3954,7 @@ try {
 }
 {% endprettify %}
 
-You can use `await` multiple times in an async function.
+You can use `await` multiple times in an `async` function.
 For example, the following code waits three times
 for the results of functions:
 
@@ -3973,7 +3973,7 @@ The value of <code>await <em>expression</em></code> is that returned object.
 The await expression makes execution pause until that object is available.
 
 **If you get a compile-time error when using `await`,
-make sure `await` is in an async function.**
+make sure `await` is in an `async` function.**
 For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
@@ -3989,7 +3989,7 @@ Future main() [!async!] {
 <a id="async"></a>
 ### Declaring async functions
 
-An _async function_ is a function whose body is marked with
+An `async` function is a function whose body is marked with
 the `async` modifier.
 
 Adding the `async` keyword to a function makes it return a Future.
@@ -4001,7 +4001,7 @@ which returns a String:
 String lookUpVersion() => '1.0.0';
 {% endprettify %}
 
-If you change it to be an async function—for example,
+If you change it to be an `async` function—for example,
 because a future implementation will be time consuming—the
 returned value is a Future:
 
@@ -4064,7 +4064,7 @@ which breaks out of the for loop
 and unsubscribes from the stream.
 
 **If you get a compile-time error when implementing an asynchronous for loop,
-make sure the `await for` is in an async function.**
+make sure the `await for` is in an `async` function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 

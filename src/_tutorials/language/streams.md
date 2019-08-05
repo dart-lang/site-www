@@ -248,7 +248,7 @@ Future<Set<T>> toSet();
 
 All of these functions, except `drain()` and `pipe()`,
 correspond to a similar function on [Iterable.][Iterable]
-Each one can be written easily by using an async function
+Each one can be written easily by using an `async` function
 with an **await for** loop (or just using one of the other methods).
 For example, some implementations could be:
 
@@ -302,7 +302,7 @@ Stream<T> where(bool Function(T event) test);
 
 The preceding methods correspond to similar methods on [Iterable][]
 which transform an iterable into another iterable.
-All of these can be written easily using an async function
+All of these can be written easily using an `async` function
 with an **await for** loop.
 
 <?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
@@ -343,7 +343,7 @@ it might take several incoming events to produce an output event.
 A [StreamTransformer][] can work with that.
 For example, decoders like [Utf8Decoder][] are transformers.
 A transformer requires only one function, [bind()][], which can be
-easily implemented by an async function.
+easily implemented by an `async` function.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
 {% prettify dart %}

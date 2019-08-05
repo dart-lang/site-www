@@ -358,7 +358,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#asynchrony-support) about
-asynchrony support, including async functions, `Future`, `Stream`,
+asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
 
@@ -390,7 +390,7 @@ try {
 {% endprettify %}
 
 Note that the code above is asynchronous;
-`try` works for both synchronous code and code in an async function.
+`try` works for both synchronous code and code in an `async` function.
 
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
 Error and Exception.

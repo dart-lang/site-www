@@ -213,7 +213,7 @@ That's where the `StreamController` class comes in.
 ## Using a StreamController
 
 If the events of your stream comes from different parts of your program,
-and not just from a stream or futures that can traversed by an async function,
+and not just from a stream or futures that can traversed by an `async` function,
 then use a
 [StreamController]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamController-class.html)
 to create and populate the stream.

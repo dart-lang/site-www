@@ -80,7 +80,7 @@ Future main() async {
 
 To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
-or (in an async function) use try-catch:
+or (in an `async` function) use try-catch:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 {% prettify dart %}
