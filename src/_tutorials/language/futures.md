@@ -124,7 +124,7 @@ before its body. The `await` keyword works only in async functions.
 
 The following app simulates reading the news by using `async` and `await`
 to read the contents of a file on this site.
-Click run {% asset red-run.png alt="" %} to start the app.
+Click **Run** to start the app.
 Or open a
 [DartPad window containing the app,]({{site.dartpad}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.
@@ -299,7 +299,7 @@ to register a callback.  This callback fires when the `Future` completes.
 
 The following app simulates reading the news by using the `Future` API to read
 the contents of a file on this site.
-Click run {% asset red-run.png %} to start the app.
+Click **Run** to start the app.
 Or open a
 [DartPad window containing the app,]({{site.dartpad}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.

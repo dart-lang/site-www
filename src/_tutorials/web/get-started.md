@@ -15,7 +15,7 @@ no download necessary.
 
 For example, here's an embedded DartPad that lets you play with
 the code for a todo-list generator.
-Click run {% asset red-run.png alt="" %} to run the app;
+Click **Run** to run the app;
 the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. To get the full DartPad experience,

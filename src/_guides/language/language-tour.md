@@ -1433,9 +1433,9 @@ src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d7787
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using
-arrow notation. Paste the following line into DartPad
-and click run to verify that it is functionally equivalent.
+If the function contains only one statement, you can shorten it using arrow
+notation. Paste the following line into DartPad and click **Run** to verify that
+it is functionally equivalent.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 {% prettify dart %}
