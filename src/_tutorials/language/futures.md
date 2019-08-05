@@ -117,7 +117,7 @@ When writing code that depends on a future, you have two options:
 The `async` and `await` keywords are part of the Dart language's [asynchrony
 support](/guides/language/language-tour#asynchrony-support). They allow you
 to write asynchronous code that looks like synchronous code and doesn't use
-the `Future` API. An async function is one that has the `async` keyword
+the `Future` API. An `async` function is one that has the `async` keyword
 before its body. The `await` keyword works only in `async` functions.
 
 {% include async-await-2.0.md %}

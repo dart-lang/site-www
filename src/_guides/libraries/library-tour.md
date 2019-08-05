@@ -1065,7 +1065,7 @@ runUsingAsyncAwait() async {
 }
 {% endprettify %}
 
-An async function can catch exceptions from Futures.
+An `async` function can catch exceptions from Futures.
 For example:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (catch)"?>
@@ -1084,7 +1084,7 @@ try {
 Async functions return Futures.
 If you don't want your function to return a future,
 then use a different solution.
-For example, you might call an async function from your function.
+For example, you might call an `async` function from your function.
 </div>
 
 For more information on using `await` and related Dart language features,
