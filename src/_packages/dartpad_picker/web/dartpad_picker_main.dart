@@ -1,3 +1,7 @@
+// Copyright 2019 the Dart project authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
 import 'dart:html';
 import 'package:dartpad_picker/dartpad_picker.dart';
 
@@ -20,11 +24,7 @@ main() => print("Hello, World!");
     .trim();
 
 var fibbonacci = r'''
-// Copyright 2015 the Dart project authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license
-// that can be found in the LICENSE file.
-
-void main() {
+main() {
   var i = 20;
   print('fibonacci($i) = ${fibonacci(i)}');
 }
