@@ -6,6 +6,11 @@ import 'dart:html';
 import 'package:dartpad_picker/dartpad_picker.dart';
 
 void main() {
+  if (isMobile()) {
+    querySelector('.dash-dartpad').style.display = 'none';
+    return;
+  }
+
   var dartPadHost = querySelector('#dartpad-host');
   var select = querySelector('#dartpad-select');
 
@@ -14,7 +19,16 @@ void main() {
     Snippet('Fibbonacci', fibbonacci),
     Snippet('Compute Pi', piMonteCarlo),
   ];
+
   DartPadPicker(dartPadHost, select, snippets);
+}
+
+// Mobile browser detection
+
+final RegExp _mobileRegex =
+    RegExp(r'Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini');
+bool isMobile() {
+  return _mobileRegex.hasMatch(window.navigator.userAgent);
 }
 
 // Snippets
