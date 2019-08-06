@@ -76,6 +76,10 @@ thanks to the Dart community.
 <img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
 <a class="no-automatic-external" href="https://github.com/dart-atom/dart"><b>Atom</b></a>
 </li>
+<li>
+<img src="{% asset tools/eclipse-logo.png @path %}" alt="Eclipse logo">
+<a class="no-automatic-external" href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
+</li>
 </ul>
 
 ### Command-line tools {#cli}
