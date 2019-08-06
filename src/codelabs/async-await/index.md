@@ -3,9 +3,9 @@ title: "Asynchrony: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
 ---
 This codelab teaches you how to write asynchronous code using
-futures and the `async` and `await` keywords. This codelab includes
-embedded editors that you can use to test your knowledge by running 
-example code and completing exercises.
+futures and the `async` and `await` keywords. Using the embedded DartPad 
+editors, you can test your knowledge by running example code and completing
+exercises.
 
 To get the most out of this codelab, you should have the following:
 * Knowledge of [basic Dart syntax](/samples).
@@ -134,7 +134,7 @@ This is because `getUserOrder()` delays before it prints "Large Latte".
 
 ### Example: Completing with an error
 Run the following example to see how a future completes with an error.
-How do you think you might handle the error?
+A bit later you'll learn how to handle the error.
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
 <iframe 
@@ -180,7 +180,7 @@ when using `async` and `await`:
 Here's an example  that converts `main()` from a synchronous to asynchronous
 function.
 
-First, add the `async` keyword before the function body.
+First, add the `async` keyword before the function body:
 {% prettify dart %}
     main() [!async!] {
 {% endprettify %}
@@ -194,7 +194,7 @@ If the function doesn't explicitly return a value, then the return type is
     [!Future<void>!] main() async {
 {% endprettify %}
 
-Now that you have an async function, you can use the `await` keyword to wait
+Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 {% prettify dart %}
     print(await createOrderMessage());
@@ -277,21 +277,21 @@ The asynchronous example is different in three ways:
   **Key terms:**
 * **async**: You can use the `async` keyword before a function's body to mark it as
 asynchronous.
-* **async function**:  An async function is a function labeled with the `async` 
+* **async function**:  An `async` function is a function labeled with the `async` 
 keyword. 
 * **await**: You can use the `await` keyword to get the completed result of an
-asynchronous expression. The `await` keyword only works within an async function.
+asynchronous expression. The `await` keyword only works within an `async` function.
 {{ site.alert.end }}
 
 ## Execution flow with async and await
 
-Async functions run synchronously until the first
-`await` keyword. This means that within an async function body, all
+An `async` function runs synchronously until the first
+`await` keyword. This means that within an `async` function body, all
 synchronous code before the first `await` keyword executes immediately. 
 
 {{ site.alert.note }}
-Before Dart 2.0, async functions returned immediately,
-without executing any code within the async function body.
+Before Dart 2.0, an `async` function returned immediately,
+without executing any code within the `async` function body.
 {{ site.alert.end }}
 
 ### Example: Execution within async functions
@@ -324,7 +324,7 @@ code snippets. Your task is to complete the exercise by writing code to make the
 tests pass. 
 You don't need to implement `main()`.
 
-To simulate asynchronous operations, call the following functions which are 
+To simulate asynchronous operations, call the following functions, which are 
 provided for you:
 
 <!-- dart annotation format borrowed from  
@@ -341,10 +341,10 @@ https://api.dartlang.org/stable/2.4.0/dart-developer/dart-developer-library.html
 
 #### Part 1: `reportUserRole()`
 
-Add code to the `reportUserRole` function so that it does the following:
+Add code to the `reportUserRole()` function so that it does the following:
 <!-- Some bulleted items are intentionally lacking punctuation to avoid 
 confusing the users about characters in string values -->
-* `reportUserRole()` Returns a future that completes with the following 
+* Returns a future that completes with the following 
 string: `"User role: <user role>"`
   * Note: You must use the actual value returned by `getRole()`; copying and 
   pasting the example return value won't make the test pass. 
@@ -352,8 +352,8 @@ string: `"User role: <user role>"`
 * Gets the user role by calling the provided function `getRole()`. 
 
 ####  Part 2: `reportLogins()`
-Implement an async function `reportLogins()`:
-* `reportLogins()` returns the string `"Total number of logins: <# of logins>"`.
+Implement an `async` function `reportLogins()` so that it does the following:
+* Returns the string `"Total number of logins: <# of logins>"`.
   * Note: You must use the actual value returned by `getLoginAmount()`; copying 
   and pasting the example return value won't make the test pass.
   * Example return value from `reportLogins()`: `"Total number of logins: 57"` 
@@ -372,7 +372,7 @@ Implement an async function `reportLogins()`:
   {{ site.alert.end }}
 
 ## Handling errors
-To handle errors in an async function, use try-catch: 
+To handle errors in an `async` function, use try-catch: 
 
 ```dart
   try {
@@ -382,7 +382,7 @@ To handle errors in an async function, use try-catch:
     print('Caught error: $err');
   }
 ```
-Within an async function, you can write [try-catch clauses](/guides/language/language-tour#catch)
+Within an `async` function, you can write [try-catch clauses](/guides/language/language-tour#catch)
 the same way you would in synchronous code. 
 
 ### Example: async and await with try-catch
@@ -429,10 +429,9 @@ width="100%" >
 ### Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise. 
-To simulate asynchronous operations, this exercise provides the async functions
-`getUsername()` and `logoutUser()`. You don’t need to implement these provided 
-functions.
-You don't need to implement `main()`.
+To simulate asynchronous operations, this exercise provides the asynchronous 
+functions `getUsername()` and `logoutUser()`. You don’t need to implement these
+provided functions. You don't need to implement `main()`.
 
 To simulate asynchronous operations, your code will call the following 
 functions, which are provided for you:
