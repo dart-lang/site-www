@@ -35,7 +35,7 @@ and the `async` and `await` keywords.
 ### Example: Incorrectly using an asynchronous function
 The following example shows the wrong way to use an asynchronous function
 (`getUserOrder()`). Later you'll fix the example using `async` and `await`. 
-Before running this example, try to spot the issue -- can you guess what the
+Before running this example, try to spot the issue -- what do you think the
 output will be? 
 
 [//]: https://gist.github.com/5c8c7716b6b4284842f15fe079f61e47
@@ -368,7 +368,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
 </iframe>
 
   {{ site.alert.info }}
-    If your tests pass, you can ignore [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
+    If your code passes the tests, you can ignore [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
   {{ site.alert.end }}
 
 ## Handling errors
@@ -387,7 +387,7 @@ the same way you would in synchronous code.
 
 ### Example: async and await with try-catch
 Run the following example to see how to handle an error from an 
-asynchronous function. Can you guess what the output will be before running it?
+asynchronous function. What do you think the output will be before running it?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
@@ -399,23 +399,22 @@ asynchronous function. Can you guess what the output will be before running it?
 
 ### Exercise: Practice handling errors
 
-The following exercise provides practice handling errors with asynchronous code
+The following exercise provides practice handling errors with asynchronous code,
 using the approach described in the previous section. To simulate asynchronous
 operations, your code will call the following function, which is provided for you:
 
 |------------------+-----------------------------------+-------------|
 | Function         | Type signature                    | Description |
 |------------------|-----------------------------------|-------------|
-| getNewUsername() | `Future<String> getNewUsername()` |      Returns the username from a user-initiated request for update|
+| getNewUsername() | `Future<String> getNewUsername()` | Returns the new username that you can use to replace an old one.|
 {:.table .table-striped}
 
-Use `async` and `await` to do the following:
-* Implement an asynchronous `changeUsername()` function that calls the provided
- asynchronous function `getNewUsername()` and returns its result.
+Use `async` and `await` to implement an asynchronous `changeUsername()` function 
+that does the following:
+* Calls the provided asynchronous function `getNewUsername()` and returns its result.
   * Example return value from `changeUsername()`: `"jane_smith_92"` 
-  * Because `getNewUsername()` can encounter errors, the `changeUsername()` 
-  function must __catch and return any errors__ and it must __stringify the error before returning it__.
-* You can use the [toString()]({{site.dart_api}}/stable/dart-core/ArgumentError/toString.html) method to stringify both [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
+* Catches any error that occurs and returns the string value of the error.
+  * You can use the [toString()]({{site.dart_api}}/stable/dart-core/ArgumentError/toString.html) method to stringify both [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
 
 <!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
 
@@ -478,18 +477,21 @@ Thanks, see you next time" where \<result\> is the String value returned by call
 </iframe>
 
 {{ site.alert.info }}
-  You might have noticed that the functions in the exercises don't have return types. That's because Dart can infer the return type for you. Omitting return types is fine when you're prototyping, but when you write production code, we recommend that you specify the return type.
-  Dart can [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) for you.
+  You might have noticed that the functions in the exercises don't have return types. That's because Dart can 
+  [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) 
+   for you. Omitting return types is fine when you're prototyping, but when you write production code, we recommend that you specify the return type.
 {{ site.alert.end }}
 
 ## What's next?
 
-* [Asynchronous programming: futures & async-await](/tutorials/language/futures) tutorial
-* [Dart's type system](/guides/language/sound-dart) (Includes more examples of type signatures with futures).
-* [Preferring signatures in function type annotations](/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations)
-* [Effective Dart](/guides/language/effective-dart)
-* Try [other Dart codelabs](/codelabs).
+Congratulations, you've finished the codelab! If you'd like to learn more, here 
+are some suggestions for other topics to explore:
+
 * Play with [DartPad.]({{site.dartpad}})
+* Try another codelab or a tutorial:
+  * [Dart codelabs](/codelabs).
+  * [Asynchronous programming: futures & async-await](/tutorials/language/futures) tutorial.
+* Read about [Dart's type system](/guides/language/sound-dart). 
 
 [future class]: {{site.dart_api}}/stable/dart-async/Future-class.html
 [style guide]: /guides/language/effective-dart/style
