@@ -429,11 +429,7 @@ width="100%" >
 
 It's time to practice what you've learned in one final exercise. 
 To simulate asynchronous operations, this exercise provides the asynchronous 
-functions `getUsername()` and `logoutUser()`. You don’t need to implement these
-provided functions. You don't need to implement `main()`.
-
-To simulate asynchronous operations, your code will call the following 
-functions, which are provided for you:
+functions `getUsername()` and `logoutUser()`: 
 
 |------------------+-----------------------------------+-------------|
 | Function         | Type signature                    | Description |
@@ -446,7 +442,6 @@ Write the following:
 
 ####  Part 1: `addHello()` 
 * Write a function `addHello()` that takes a single String argument 
-<!-- try to avoid should -->
 * `addHello()` returns its String argument surrounded by the text ‘Hello \<string\>'
 
 ####  Part 2: `greetUser()` 
@@ -456,15 +451,13 @@ function `getUsername()`
 * `greetUser()` creates a greeting for the user by calling `addHello()`, 
 passing it the username, and returning the result. 
   * For example, if the username is "Jenny", `greetUser()` should create and
-   return the greeting "Hello Jenny"
+   return the following: "Hello Jenny"
 
 ####  Part 3: `sayGoodbye()` 
-<!-- pull out descriptions of  -->
 * Write a function `sayGoodbye()` that does the following:
-* `sayGoodbye()` takes no arguments.
-* `sayGoodbye()` catches any errors.
-* `sayGoodbye()` calls the provided asynchronous function `logoutUser()`.
-<!-- italicize <result> -->
+  * Takes no arguments.
+  * Catches any errors.
+  * Calls the provided asynchronous function `logoutUser()`.
 * If `logoutUser()` succeeds, `sayGoodbye()` returns the string "\<result\> 
 Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
 
