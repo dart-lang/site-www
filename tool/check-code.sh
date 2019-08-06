@@ -15,6 +15,6 @@ Error: some code excerpts need to be refreshed.
 Rerun '$rootDir/tool/refresh-code-excerpts.sh' locally.
 "
 
-# travis_fold start refresh_code_excerpts
-# (set -x; $rootdir/tool/refresh-code-excerpts.sh) || (printf "$errormessage" && exit 1)
-# travis_fold end refresh_code_excerpts
+travis_fold start refresh_code_excerpts
+(set -x; $rootDir/tool/refresh-code-excerpts.sh) || (printf "$errorMessage" && exit 1)
+travis_fold end refresh_code_excerpts
