@@ -387,7 +387,7 @@ the same way you would in synchronous code.
 
 ### Example: async and await with try-catch
 Run the following example to see how to handle an error from an 
-asynchronous function. What do you think the output will be before running it?
+asynchronous function. What do you think the output will be?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
 <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
