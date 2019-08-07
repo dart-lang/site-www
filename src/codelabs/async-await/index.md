@@ -425,7 +425,9 @@ height="525"
 width="100%" >
 </iframe>
 
-### Exercise: Putting it all together
+<!-- TODO: Consider summary section before final exercise -->
+<!-- TODO: Consider adding new content to final section (not repeating same stuff) -->
+## Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise. 
 To simulate asynchronous operations, this exercise provides the asynchronous 
@@ -441,7 +443,7 @@ functions `getUsername()` and `logoutUser()`:
 Write the following:
 
 ####  Part 1: `addHello()` 
-* Write a function `addHello()` that takes a single String argument 
+* Write a function `addHello()` that takes a single String argument. 
 * `addHello()` returns its String argument surrounded by the text ‘Hello \<string\>'
 
 ####  Part 2: `greetUser()` 
