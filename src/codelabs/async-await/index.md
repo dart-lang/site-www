@@ -283,7 +283,7 @@ keyword.
 asynchronous expression. The `await` keyword only works within an `async` function.
 {{ site.alert.end }}
 
-## Execution flow with async and await
+### Execution flow with async and await
 
 An `async` function runs synchronously until the first
 `await` keyword. This means that within an `async` function body, all
