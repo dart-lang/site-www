@@ -74,7 +74,7 @@ void addToDoItem(Event e) {
 {% endcomment %}
 
 **Try it!**
-Click run ( {% asset red-run.png %} ) to start the web app.
+Click **Run** to start the web app.
 Then type in the app's input field, and press the return key;
 a new item appears in the list.
 Enter a few more items.
@@ -85,7 +85,7 @@ Use the **Delete All** button
 to remove all of the items in the list at once.
 
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=582b9a8d36786566ba08&horizontalRatio=60&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=582b9a8d36786566ba08"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">

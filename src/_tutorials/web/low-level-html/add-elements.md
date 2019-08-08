@@ -61,7 +61,7 @@ and therefore the web page,
 by adding elements to the DOM tree.
 
 **Try it!**
-Click run ( {% asset red-run.png %} ) to start the web app.
+Click **Run** to start the web app.
 Then type in the app's text field, and press return.
 The app adds an item to the list.
 Enter a few items into the input field.
@@ -97,7 +97,7 @@ void addToDoItem(Event e) {
 } -->
 
 <!-- <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=65c90ff6b078c332d4b6&horizontalRatio=60&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=65c90ff6b078c332d4b6"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -344,7 +344,7 @@ each item in the to do list.
 The Anagram app shows how to move an element within the DOM.
 
 **Try it!**
-Click run ( {% asset red-run.png %} ) to start the web app.
+Click **Run** to start the web app.
 Then form a word by clicking the app's letter tiles.
 You might prefer to
 <a href="{{site.dartpad}}/0532bfcb70bf5e4a900c" target="_blank" rel="noopener">open
@@ -432,7 +432,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=0532bfcb70bf5e4a900c&horizontalRatio=70&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=0532bfcb70bf5e4a900c"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">

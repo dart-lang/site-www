@@ -124,7 +124,7 @@ before its body. The `await` keyword works only in `async` functions.
 
 The following app simulates reading the news by using `async` and `await`
 to read the contents of a file on this site.
-Click run {% asset red-run.png alt="" %} to start the app.
+Click **Run** to start the app.
 Or open a
 [DartPad window containing the app,]({{site.dartpad}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.
@@ -178,7 +178,7 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=477fb799d21401f46f8c04462fd249c4"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -299,7 +299,7 @@ to register a callback.  This callback fires when the `Future` completes.
 
 The following app simulates reading the news by using the `Future` API to read
 the contents of a file on this site.
-Click run {% asset red-run.png %} to start the app.
+Click **Run** to start the app.
 Or open a
 [DartPad window containing the app,]({{site.dartpad}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
 run the app, and click CONSOLE to see the app's output.
@@ -355,7 +355,7 @@ Future<String> gatherNewsReports() =>
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b&horizontalRatio=99&verticalRatio=73"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5ceabe371903b6672026bd3fb30cdf5b"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">

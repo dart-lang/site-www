@@ -87,16 +87,14 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=15d5ef986238c97dbc14&verticalRatio=85"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=15d5ef986238c97dbc14"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
+**Note:** Click **Run** to see the result in the **Console**.
 </aside>
 
 ## Error events
@@ -159,16 +157,14 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
+**Note:** Click **Run** to see the result in the **Console**.
 </aside>
 
 

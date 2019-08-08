@@ -41,7 +41,7 @@ can be serialized and represented by strings.
 **Try it!**
 The following app, `its_all_about_you`,
 displays the JSON string for data of various types.
-Click run ( {% asset red-run.png %} ) to start the app.
+Click **Run** to start the app.
 Then change the values of the input elements,
 and check out the JSON format for each data type.
 You might prefer to
@@ -171,7 +171,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=1d42e4eadb75bcc1ffbc079e299b862e&horizontalRatio=50&verticalRatio=90"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -406,12 +406,11 @@ and loads the file.
   from everywhere.
 </aside>
 
-**Try it!** Click run ( {% asset red-run.png %} )
-and then click the **Get portmanteaux** button.
+**Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
 {% comment %} https://gist.github.com/chalin/6b76bce8d46986e624f4e82925c48287 {% endcomment %}
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=6b76bce8d46986e624f4e82925c48287&horizontalRatio=68&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=6b76bce8d46986e624f4e82925c48287"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -474,7 +473,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/chalin/c387e454cb751ab0632c68ccbbf94d12 {% endcomment %}
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=c387e454cb751ab0632c68ccbbf94d12&horizontalRatio=68&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=c387e454cb751ab0632c68ccbbf94d12"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">

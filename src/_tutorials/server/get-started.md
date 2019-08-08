@@ -20,19 +20,17 @@ which you'll execute using the Dart runtime.
 With DartPad you can experiment with the Dart language and APIs,
 no download necessary.
 
-For example, here's an embedded DartPad that lets you play with
-the code for a small Hello World program.
-Click run {% asset red-run.png alt="" %} to run the app;
-the console output appears beneath the code.
-Try editing the source code—perhaps you'd like to change the greeting
-to use another language. To get the full DartPad experience,
-<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3"
-   target="_blank">open the example at dartpad.dev.</a>
+For example, here's an embedded DartPad that lets you play with the code for a
+small Hello World program. Click **Run** to run the app; the console output
+appears beneath the code. Try editing the source code—perhaps you'd like to
+change the greeting to use another language. To get the full DartPad experience,
+<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
+the example at dartpad.dev.</a>
 
 <iframe
-    src="{{site.custom.dartpad.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3&verticalRatio=70"
+    src="{{site.custom.dartpadx.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
     width="100%"
-    height="200px"
+    height="300px"
     style="border: 1px solid #ccc;">
 </iframe>
 
