@@ -205,7 +205,7 @@ $dash-header-bg: #17212f;
 
   h2 {
     font-size: 43px;
-    margin-bottom: 34px;
+    margin: 0.5em 0 0.5em 0;
     line-height: 1.2;
     color: $dash-off-white;
   }
@@ -215,7 +215,11 @@ $dash-header-bg: #17212f;
   }
 
   select {
-    margin-bottom: 8px;
+    margin: 8px 0 8px 0;
+  }
+
+  a {
+    color: $site-color-card-link;
   }
 
   #dartpad-host {
