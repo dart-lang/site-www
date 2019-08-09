@@ -15,8 +15,12 @@ void main() {
   var select = querySelector('#dartpad-select');
 
   var snippets = [
-    Snippet('Hello World', helloWorld),
-    Snippet('Fibbonacci', fibbonacci),
+    Snippet('Hello world', helloWorld),
+    Snippet('Functions', functions),
+    Snippet('Control flow', controlFlow),
+    Snippet('Strings', strings),
+    Snippet('Collection literals', collectionLiterals),
+    Snippet('Classes', classes),
     Snippet('Compute Pi', piMonteCarlo),
   ];
 
@@ -39,17 +43,153 @@ main() {
 }
 '''
     .trim();
+var functions = r'''
+// A function declaration
+int timesTwo(int x) {
+  return x * 2;
+}
 
-var fibbonacci = r'''
+// Arrow syntax is shorthand for { return expr; }
+int timesFour(int x) => timesTwo(timesTwo(x));
+
+// Functions are objects
+int runTwice(int x, Function f) {
+  for (var i = 0; i < 2; i++) {
+    x = f(x);
+  }
+  return x;
+}
+
 main() {
-  var i = 20;
-  print('fibonacci($i) = ${fibonacci(i)}');
+  print("4 times two is ${timesTwo(4)}");
+  print("4 times four is ${timesFour(4)}");
+  print("2 x 2 x 2 is ${runTwice(2, timesTwo)}");
 }
 
-/// Computes the nth Fibonacci number.
-int fibonacci(int n) {
-  return n < 2 ? n : (fibonacci(n - 1) + fibonacci(n - 2));
+'''
+    .trim();
+
+var controlFlow = r'''
+isEven(int x) {
+  // An if-else statement
+  if (x % 2 == 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+
+List<int> getEvenNumbers(Iterable<int> numbers) {
+  var evenNumbers = <int>[];
+
+  // A for-in loop
+  for (var i in numbers) {
+    // A single line if statement
+    if (isEven(i)) evenNumbers.add(i);
+  }
+
+  return evenNumbers;
+}
+
+main() {
+  var numbers = List.generate(10, (i) => i);
+  print(getEvenNumbers(numbers));
+}
+'''
+    .trim();
+
+var strings = '''
+main() {
+  print('a single quoted string');
+  print("a double quoted string");
+
+  // Strings can be combined with the + operator
+  print("cat" + "dog");
+
+  // Triple quotes define a multi-line string
+  print(\'\'\'triple quoted strings
+are for multiple lines\'\'\');
+
+  // Raw strings ignore unicode escape sequences
+  print(r'The \n escape sequence is for new lines.');
+
+  // Dart supports string interpolation
+  var pi = 3.14;
+  print('pi is \$pi');
+  print('tau is \${2 * pi}');
+}
+'''
+    .trim();
+
+var collectionLiterals = r'''
+// A list literal
+var lostNumbers = [4, 8, 15, 16, 23, 42];
+
+// A map literal
+var nobleGases = {
+  'He': 'Helium',
+  'Ne': 'Neon',
+  'Ar': 'Argon',
+};
+
+// A set literal
+var frogs = {
+  'Tree',
+  'Poison dart',
+  'Glass',
+};
+
+main() {
+  print(lostNumbers.last);
+  print(nobleGases['Ne']);
+  print(frogs.difference({'Poison dart'}));
+}
+
+'''
+    .trim();
+
+var classes = r'''
+// Abstract classes can't be instantiated
+abstract class Item {
+  use();
+}
+
+// Classes can implement other classes
+class Chest<T> implements Item {
+  List<T> contents;
+
+  // Constructors can assign arguments to instance variables using `this`.
+  Chest(this.contents);
+
+  use() => print("$this has ${contents.length} items.");
+}
+
+class Sword implements Item {
+  int damage = 5;
+
+  use() => print("$this dealt $damage damage.");
+}
+
+// Classes can extend other classes
+class DiamondSword extends Sword {
+  int damage = 50;
+}
+
+main() {
+  // The 'new' keyword is optional
+  var chest = Chest<Item>([
+    DiamondSword(),
+    Sword(),
+  ]);
+
+  chest.use();
+
+  for (var item in chest.contents) {
+    item.use();
+  }
+}
+
 '''
     .trim();
 
