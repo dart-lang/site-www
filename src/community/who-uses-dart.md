@@ -8,7 +8,7 @@ Many Dart developers write mobile apps for Android, iOS, or both,
 using the [Flutter toolkit.][Flutter]
 To find a list of Flutter apps, visit the [Flutter showcase.][showcase]
 
-[Flutter]: https://flutter.dev
+[Flutter]: {{site.flutter}}
 [showcase]: {{site.flutter}}/showcase
 
 Google engineers use Dart to create many apps,
