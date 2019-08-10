@@ -92,9 +92,9 @@
 - title: Development
   expanded: false
   children:
-    - title: Futures & async-await
-      permalink: /tutorials/language/futures
-    - title: Using JSON
+    - title: Futures
+      permalink: /codelabs/async-await
+    - title: JSON
       permalink: /guides/json
     - title: Streams
       permalink: /tutorials/language/streams

@@ -483,9 +483,7 @@ Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for other topics to explore:
 
 * Play with [DartPad.]({{site.dartpad}})
-* Try another codelab or a tutorial:
-  * [Dart codelabs](/codelabs).
-  * [Asynchronous programming: futures & async-await](/tutorials/language/futures) tutorial.
+* Try another [codelab](/codelabs) or a [tutorial](/tutorials).
 * Read about [Dart's type system](/guides/language/sound-dart). 
 
 [future class]: {{site.dart_api}}/stable/dart-async/Future-class.html

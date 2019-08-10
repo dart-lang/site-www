@@ -25,7 +25,7 @@ prevpage:
   <strong>Prerequisite:</strong> HTTP servers and clients rely heavily on
   futures and streams, which are not explained in this tutorial.
   You can learn about them from the
-  [futures tutorial](/tutorials/language/futures) and the
+  [asynchrony codelab](/codelabs/async-await) and the
   [streams tutorial](/tutorials/language/streams).
 </aside>
 

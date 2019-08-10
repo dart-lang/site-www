@@ -4008,14 +4008,14 @@ Future<String> lookUpVersion() async => '1.0.0';
 
 Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
-
 If your function doesn't return a useful value,
 make its return type `Future<void>`.
 
-{% comment %}
-PENDING: add example here
+For an interactive introduction to using futures, `async`, and `await`,
+see the [asynchrony codelab](/codelabs/async-await).
 
-Where else should we cover generalized void?
+{% comment %}
+TODO: Where else should we cover generalized void?
 {% endcomment %}
 
 

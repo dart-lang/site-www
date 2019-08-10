@@ -444,20 +444,13 @@ void processResponse(String jsonString) {
 The `getString()` method uses a Future object to handle the request.
 A [Future][] is a way to perform potentially time-consuming operations,
 such as HTTP requests, asynchronously.
-If you haven't encountered Futures yet,
-you can learn more about them in
-[Asynchronous Programming: Futures](/tutorials/language/futures).
+If you haven't encountered futures yet,
+you can learn about them — as well as the `async` and `await` keywords — in the
+[asynchrony codelab](/codelabs/async-await).
 Until then, you can use the code above as a guide
 and provide your own code for the body of the `processResponse()` function
 and your own code to handle the error.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  The examples in this section use the `async` and `await` keywords.
-  If you are not familiar with these keywords, see
-  [Asynchrony support](/guides/language/language-tour#asynchrony)
-  in the [language tour](/guides/language/language-tour).
-</aside>
 
 ## Using an HttpRequest object to load a file {#making-a-get-request}
 
@@ -592,7 +585,7 @@ void processResponse(String jsonString) {
 ## Other resources
 
 * [Using JSON](/guides/json)
-* [Asynchronous programming: futures](/tutorials/language/futures)
+* [Asynchrony: futures, async, await](/codelabs/async-await)
 
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html

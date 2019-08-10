@@ -28,7 +28,7 @@ and
 <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
    target="_blank">Stream</a> classes for asynchronous support.
 To learn more about these features, see the
-[futures tutorial](/tutorials/language/futures) and the
+[asynchrony codelab](/codelabs/async-await) and the
 [streams tutorial](/tutorials/language/streams).
 </aside>
 

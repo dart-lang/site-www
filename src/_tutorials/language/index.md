@@ -4,14 +4,14 @@ description: Tutorials pertaining to the Dart language, such as asynchronous pro
 toc: false
 ---
 
-{% comment %} [PENDING: fix format to look like other tutorial pages] {% endcomment %}
-
 The Future and Stream classes provide API for performing tasks,
 such as input/output, asynchronously, so as to avoid blocking your
-program. Futures and Streams are fundamental to most Dart programs.
+program. Futures and streams are fundamental to most Dart programs.
 
-- [Asynchronous Programming: Futures](/tutorials/language/futures)<br>
-  A first look at using Futures for asynchronous tasks.
-  
-- [Asynchronous Programming: Streams](/tutorials/language/streams)<br>
-  Use streams to manage sequences of data.
+- The futures tutorial has been replaced by a codelab:
+  [Asynchrony: futures, async, await](/codelabs/async-await).
+- The [streams tutorial](/tutorials/language/streams)
+  tells you how to use streams to manage sequences of data.
+
+For a guided, hands-on introduction to Dart concepts,
+try one of the [Dart codelabs](/codelabs).
