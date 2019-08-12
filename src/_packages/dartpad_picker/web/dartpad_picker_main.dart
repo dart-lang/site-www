@@ -108,11 +108,8 @@ main() {
   print("cat" + "dog");
 
   // Triple quotes define a multi-line string
-  print(\'\'\'triple quoted strings
-are for multiple lines\'\'\');
-
-  // Raw strings ignore unicode escape sequences
-  print(r'The \n escape sequence is for new lines.');
+  print(\'''triple quoted strings
+are for multiple lines\''');
 
   // Dart supports string interpolation
   var pi = 3.14;
