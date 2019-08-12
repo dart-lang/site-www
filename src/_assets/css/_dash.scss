@@ -7,6 +7,7 @@ $dash-highlight: #1967d2;
 $dash-off-black: #12202f;
 $dark-darker-black: #0d1520;
 $dash-header-bg: #17212f;
+$dash-dartpad-border: #293542;
 
 .dash-header-callout {
   font-family: "Google Sans", "Roboto", sans-serif;
@@ -189,6 +190,49 @@ $dash-header-bg: #17212f;
   @include media-breakpoint-down(md) {
     padding-top:30px;
     padding-bottom:30px;
+  }
+}
+
+.dash-dartpad {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 32px;
+
+  background-color: $dash-callout;
+
+  h2 {
+    font-size: 43px;
+    margin: 0.5em 0 0.5em 0;
+    line-height: 1.2;
+    color: $dash-off-white;
+  }
+
+  h3 {
+    color: $dash-off-white
+  }
+
+  select {
+    margin: 8px 0 8px 0;
+  }
+
+  a {
+    color: $site-color-card-link;
+  }
+
+  #dartpad-host {
+    height: 512px;
+    width: 100%;
+    max-width: 896px;
+    display: flex;
+
+    iframe {
+      flex: 1;
+      border: 1px solid $dash-dartpad-border;
+    }
   }
 }
 

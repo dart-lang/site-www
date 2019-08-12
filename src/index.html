@@ -2,6 +2,9 @@
 layout: homepage
 title: Dart programming language
 description: Dart is a client-optimized language for fast apps on any platform
+js:
+- url: /assets/dash/js/dartpad_picker_main.dart.js
+  defer: true
 ---
 <!-- Hero animation -->
 <div class="d-none d-sm-none d-md-block">
@@ -247,6 +250,15 @@ description: Dart is a client-optimized language for fast apps on any platform
         </div>
         <div class="col-lg-7 col-md-6 col-sm-12 content-image"><img class="galleryThree"
                 src="assets/dash/2x/3-1 - aot compile@2x-80.jpg"/>
+        </div>
+    </section>
+    <section class="row">
+        <div class="dash-dartpad">
+            <a name="try-dart"></a>
+            <h2>Try Dart in your browser</h2>
+            <select id="dartpad-select"></select>
+            <div id="dartpad-host"></div>
+            <h3>Want more practice? <a href="/codelabs">Try a codelab</a>. Or <a href="/get-dart">download Dart</a>.</h3>
         </div>
     </section>
 </div>
