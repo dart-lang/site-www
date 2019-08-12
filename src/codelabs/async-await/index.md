@@ -233,7 +233,7 @@ main() {
 }
 
 // 'Fetching user order...'
-// "Your order is: Instance of '_Future<String>'"
+// 'Your order is: Instance of _Future<String>'
 {% endprettify %}
     </div>
     <div class="col-sm">
