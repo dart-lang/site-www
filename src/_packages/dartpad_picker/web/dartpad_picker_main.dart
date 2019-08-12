@@ -44,15 +44,15 @@ main() {
 '''
     .trim();
 var functions = r'''
-// A function declaration
+// A function declaration.
 int timesTwo(int x) {
   return x * 2;
 }
 
-// Arrow syntax is shorthand for { return expr; }
+// Arrow syntax is shorthand for `{ return expr; }`.
 int timesFour(int x) => timesTwo(timesTwo(x));
 
-// Functions are objects
+// Functions are objects.
 int runTwice(int x, Function f) {
   for (var i = 0; i < 2; i++) {
     x = f(x);
@@ -71,7 +71,7 @@ main() {
 
 var controlFlow = r'''
 isEven(int x) {
-  // An if-else statement
+  // An if-else statement.
   if (x % 2 == 0) {
     return true;
   } else {
@@ -83,9 +83,9 @@ isEven(int x) {
 List<int> getEvenNumbers(Iterable<int> numbers) {
   var evenNumbers = <int>[];
 
-  // A for-in loop
+  // A for-in loop.
   for (var i in numbers) {
-    // A single line if statement
+    // A single line if statement.
     if (isEven(i)) evenNumbers.add(i);
   }
 
@@ -104,14 +104,14 @@ main() {
   print('a single quoted string');
   print("a double quoted string");
 
-  // Strings can be combined with the + operator
+  // Strings can be combined with the + operator.
   print("cat" + "dog");
 
-  // Triple quotes define a multi-line string
+  // Triple quotes define a multi-line string.
   print(\'''triple quoted strings
 are for multiple lines\''');
 
-  // Dart supports string interpolation
+  // Dart supports string interpolation.
   var pi = 3.14;
   print('pi is \$pi');
   print('tau is \${2 * pi}');
@@ -120,17 +120,17 @@ are for multiple lines\''');
     .trim();
 
 var collectionLiterals = r'''
-// A list literal
+// A list literal.
 var lostNumbers = [4, 8, 15, 16, 23, 42];
 
-// A map literal
+// A map literal.
 var nobleGases = {
   'He': 'Helium',
   'Ne': 'Neon',
   'Ar': 'Argon',
 };
 
-// A set literal
+// A set literal.
 var frogs = {
   'Tree',
   'Poison dart',
@@ -147,12 +147,12 @@ main() {
     .trim();
 
 var classes = r'''
-// Abstract classes can't be instantiated
+// Abstract classes can't be instantiated.
 abstract class Item {
   use();
 }
 
-// Classes can implement other classes
+// Classes can implement other classes.
 class Chest<T> implements Item {
   List<T> contents;
 
@@ -168,13 +168,13 @@ class Sword implements Item {
   use() => print("$this dealt $damage damage.");
 }
 
-// Classes can extend other classes
+// Classes can extend other classes.
 class DiamondSword extends Sword {
   int damage = 50;
 }
 
 main() {
-  // The 'new' keyword is optional
+  // The 'new' keyword is optional.
   var chest = Chest<Item>([
     DiamondSword(),
     Sword(),
