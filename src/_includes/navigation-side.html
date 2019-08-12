@@ -18,6 +18,10 @@
           {%- if page_url_path contains '/*/#dartpad' %} active {%- endif -%}">Try Dart</a>
       </li>
       <li class="nav-item">
+        <a href="/get-dart" class="nav-link
+          {%- if page_url_path contains '/*/get-dart' %} active {%- endif -%}">Get Dart</a>
+      </li>
+      <li class="nav-item">
         <a href="/guides" class="nav-link
           {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/dart-2/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}">Docs</a>
       </li>
