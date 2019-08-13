@@ -446,7 +446,7 @@ A [Future][] is a way to perform potentially time-consuming operations,
 such as HTTP requests, asynchronously.
 If you haven't encountered futures yet,
 you can learn about them — as well as the `async` and `await` keywords — in the
-[asynchrony codelab](/codelabs/async-await).
+[asynchronous programming codelab](/codelabs/async-await).
 Until then, you can use the code above as a guide
 and provide your own code for the body of the `processResponse()` function
 and your own code to handle the error.
@@ -585,7 +585,7 @@ void processResponse(String jsonString) {
 ## Other resources
 
 * [Using JSON](/guides/json)
-* [Asynchrony: futures, async, await](/codelabs/async-await)
+* [Asynchronous programming: futures, async, await](/codelabs/async-await)
 
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html

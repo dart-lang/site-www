@@ -1,5 +1,5 @@
 ---
-title: "Asynchrony: futures, async, await"
+title: "Asynchronous programming: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
 ---
 This codelab teaches you how to write asynchronous code using

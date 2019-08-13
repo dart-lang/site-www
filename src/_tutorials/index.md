@@ -15,7 +15,7 @@ which you can get from skimming the
 [language samples](/samples) or the
 [language tour](/guides/language/language-tour).
 Next, learn about futures by following the
-asynchrony codelab: [Asynchrony: futures, async, await](/codelabs/async-await).
+[asynchronous programming codelab](/codelabs/async-await).
 
 Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,
