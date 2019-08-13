@@ -232,7 +232,8 @@ main() {
   print(createOrderMessage());
 }
 
-// "Your order is: Instance of '_Future<String>'"
+// 'Fetching user order...'
+// 'Your order is: Instance of _Future<String>'
 {% endprettify %}
     </div>
     <div class="col-sm">
@@ -259,7 +260,8 @@ main() [!async!] {
   print([!await!] createOrderMessage());
 }
 
-// "Your order is: Large Latte"
+// 'Fetching user order...'
+// 'Your order is: Large Latte'
 {% endprettify %}
     </div>
   </div>
