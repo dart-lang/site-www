@@ -1007,8 +1007,8 @@ dart:async library ([API reference][dart:async]).
 You don't always need to use the Future or Stream APIs directly.
 The Dart language supports asynchronous coding
 using keywords such as `async` and `await`.
-See [Asynchrony support](/guides/language/language-tour#asynchrony-support)
-in the language tour for details.
+See the [asynchronous programming codelab](/codelabs/async-await)
+for details.
 </div>
 
 The dart:async library works in both web apps and command-line apps. To
@@ -1088,7 +1088,7 @@ For example, you might call an `async` function from your function.
 </div>
 
 For more information on using `await` and related Dart language features,
-see [Asynchrony support](/guides/language/language-tour#asynchrony-support).
+see the [asynchronous programming codelab](/codelabs/async-await).
 
 
 #### Basic usage
@@ -1270,8 +1270,8 @@ then the second kind of event is never handled.
 </div>
 
 For more information on using `await` and related
-Dart language features, see
-[Asynchrony support](/guides/language/language-tour#asynchrony-support).
+Dart language features, see the
+[asynchronous programming codelab](/codelabs/async-await).
 
 
 #### Listening for stream data
@@ -1386,12 +1386,12 @@ inputStream
 
 For some examples of using Future and Stream in command-line apps,
 see the [dart:io tour][dart:io tour].
-Also see these articles and tutorials:
+Also see these articles, codelabs, and tutorials:
 
--   [Asynchronous Programming: Futures](/tutorials/language/futures)
--   [Futures and Error Handling](/guides/libraries/futures-error-handling)
--   [Asynchronous Programming: Streams](/tutorials/language/streams)
--   [Creating Streams in Dart](/articles/libraries/creating-streams)
+-   [Asynchronous programming: futures, async, await](/codelabs/async-await)
+-   [Futures and error handling](/guides/libraries/futures-error-handling)
+-   [Asynchronous programming: streams](/tutorials/language/streams)
+-   [Creating streams in Dart](/articles/libraries/creating-streams)
 -   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
 
 
@@ -1556,7 +1556,7 @@ option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
 
 For more examples and links to JSON-related packages, see
-[JSON Support](/guides/json).
+[Using JSON](/guides/json).
 
 
 ### Decoding and encoding UTF-8 characters

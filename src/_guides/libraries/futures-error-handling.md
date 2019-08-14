@@ -19,7 +19,7 @@ when using those Future methods.
   the language's asynchrony support — `async`, `await`,
   and error handling using try-catch.
   For more information, see the
-  [futures tutorial](/tutorials/language/futures).
+  [asynchronous programming codelab](/codelabs/async-await).
 </aside>
 
 
