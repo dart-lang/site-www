@@ -12,7 +12,7 @@
           permalink: /codelabs
         - title: Language cheatsheet
           permalink: /codelabs/dart-cheatsheet
-        - title: "Asynchronous programming: futures, async, await"
+        - title: Asynchronous programming
           permalink: /codelabs/async-await
     - title: Tutorials
       urlExactMatch: true
@@ -92,7 +92,7 @@
 - title: Development
   expanded: false
   children:
-    - title: Futures
+    - title: Futures, async, await
       permalink: /codelabs/async-await
     - title: JSON
       permalink: /guides/json
