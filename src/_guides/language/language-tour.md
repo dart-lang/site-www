@@ -2993,8 +2993,9 @@ class Logger {
   static final Map<String, Logger> _cache =
       <String, Logger>{};
 
-  factory Logger(String name) {    
-    return _cache.putIfAbsent(name, () => Logger._internal(name));
+  factory Logger(String name) {
+    return _cache.putIfAbsent(
+        name, () => Logger._internal(name));
   }
 
   Logger._internal(this.name);
