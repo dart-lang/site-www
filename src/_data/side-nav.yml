@@ -134,7 +134,7 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: Remove DOM elements
             permalink: /tutorials/web/low-level-html/remove-elements
-        - title: JS/TS interop
+        - title: JS interop
           permalink: /web/js-interop
         - title: Deployment
           permalink: /web/deployment

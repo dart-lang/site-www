@@ -1,23 +1,27 @@
 ---
-title: "JavaScript and TypeScript interop"
-short-title: JS/TS interop
-description: "Use package:js to integrate JavaScript or TypeScript code into your Dart web app."
+title: JavaScript interoperability
+short-title: JS interop
+description: "Use package:js to integrate JavaScript code into your Dart web app."
 toc: false
 ---
 
 The [Dart web platform](/platforms/) supports calling
-JavaScript (JS) and TypeScript (TS) using the [`js`
-package,]({{site.pub-pkg}}/js) also known as _`package:js`_.
+JavaScript using the `js` package,
+also known as _package:js_.
 
 For help using the `js` package, see the following:
 
-[js_facade_gen](https://github.com/dart-lang/js_facade_gen)
-: A tool that generates Dart code from JavaScript libraries that have
-  [TypeScript type definitions.](http://definitelytyped.org/)
+* Documentation for the `js` package:
+  * [Pub site page][js]
+  * [API reference][js-api]
+* Packages that use the `js` package:
+  * [firebase_web][] is a good example of providing a Dart-like API
+    to a JavaScript library.
+  * [sass][] is an example of a more unusual use case: providing a
+    way for JavaScript code to call Dart code.
 
-[dart_js_interop](https://github.com/matanlurey/dart_js_interop)
-: Examples of using the `js` package,
-  with comparisons to old code that uses the dart:js library.
+[js]: {{site.pub-pkg}}/js
+[js-api]: {{site.pub-api}}/js
+[firebase_web]: {{site.pub-pkg}}/firebase_web
+[sass]: {{site.pub-pkg}}/sass
 
-[Packages that depend on `js`]({{site.pub}}?q=dependency%3Ajs)
-: Published packages that have `js` in their pubspec.
