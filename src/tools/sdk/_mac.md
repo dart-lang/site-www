@@ -46,7 +46,7 @@ To upgrade to a dev channel release when a stable release is
 currently active, run:
 
 ```terminal
-$ brew upgrade dart --force -- --devel
+$ brew upgrade --force dart -- --devel
 ```
 
 ### Switch release
