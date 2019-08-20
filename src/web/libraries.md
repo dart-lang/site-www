@@ -44,12 +44,15 @@ are a few:
 |-----------------+---------------------------------+--------------------------|
 | Library         | Packages                        | Notes                    |
 |-----------------|---------------------------------|--------------------------|
-| AngularDart     | angular*                        | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation]({{site.angulardart}}), [AngularDart Components]({{site.angulardart}}/components) | 
+| AngularDart     | angular*                        | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation,]({{site.angulardart}}) [AngularDart Components]({{site.angulardart}}/components) | 
+| JavaScript interop | [js][] | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
 | Material Design | [md_core,][] [m4d_components][] | Basic Material Design components. |
 | React           | [react][]                       | Bindings for the ReactJS library. |
 | Vue             | [vue][]                         | Bindings for the Vue.js library. |
 {:.table .table-striped}
 
+[js]: {{site.pub-pkg}}/js
+[JavaScript interoperability]: /web/js-interop
 [md_core,]: {{site.pub-pkg}}/m4d_core
 [m4d_components]: {{site.pub-pkg}}/m4d_components
 [vue]: {{site.pub-pkg}}/vue

@@ -26,8 +26,8 @@ Each library works on at least one [platform](/platforms).
 | [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | Web |
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | JIT<br>AOT |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | JIT<br>AOT |
-| [`dart:js`][dart-js]                    <br> Interoperability with JavaScript. [PENDING: obsolete? use package:js instead?] | Web |
-| [`dart:js_util`][dart-js_util]          <br> Utility methods to efficiently manipulate typed JSInterop objects. | Web |
+| [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
+| [`dart:js_util`][dart-js_util]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
 | [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | All
 | [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | JIT (experimental, _not_&nbsp;Flutter) |
 | [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | All |
@@ -57,3 +57,4 @@ Each library works on at least one [platform](/platforms).
 [dart-web_audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [dart-web_gl]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
 [dart-web_sql]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_sql/dart-web_sql-library.html
+[JavaScript interoperability]: /web/js-interop
