@@ -27,6 +27,7 @@
       { "source": "/articles/dart-unit-tests{,/**}", "destination": "https://github.com/dart-lang/test#writing-tests", "type": 301 },
       { "source": "/articles/dart-vm/io", "destination": "/articles/libraries/dart-io", "type": 301 },
       { "source": "/articles/dart-vm/native-extensions", "destination": "/server/c-interop-native-extensions", "type": 301 },
+      { "source": "/server/c-interop", "destination": "/guides/libraries/c-interop", "type": 301 },
       { "source": "/articles/dart-vm/snapshots", "destination": "https://github.com/dart-lang/sdk/wiki/Snapshots", "type": 301 },
       { "source": "/articles/dart-vm/why-not-bytecode", "destination": "/faq#q-why-didnt-google-build-a-bytecode-vm-targetable-by-multiple-languages-including-dart", "type": 301 },
       { "source": "/articles/design-decisions/why-dart-types", "destination": "/faq#types", "type": 301 },

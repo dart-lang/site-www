@@ -1,13 +1,12 @@
 ---
-title: "C & C++ interop using FFI"
-description: "To use C or C++ code in your Dart program, use the dart:ffi library (currently in preview)."
-toc: false
+title: "C interop using FFI"
+description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
 platform](/platforms/) can use a foreign function interface
 ([FFI](https://en.wikipedia.org/wiki/Foreign_function_interface))
-to call native C and C++ APIs.
+to call native C APIs.
 
 This mechanism is currently [in active
 development](https://github.com/dart-lang/sdk/issues/34452) and is not yet
