@@ -24,7 +24,7 @@ The dart.dev homepage and many codelabs have embedded DartPads.
 If these DartPads don't appear at all,
 then try the following:
 
-* If you use an ad blocker, try disabling it.
+* Disable your ad blocker if you are using one.
 
 * If you don't use an ad blocker, check whether you've disabled third-party
   tracking cookies ([Chrome instructions][chrome-cookies]).
