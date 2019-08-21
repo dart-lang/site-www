@@ -79,6 +79,19 @@ class C { ... }
 [camel_case_types]: http://dart-lang.github.io/linter/lints/camel_case_types.html
 [Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
+### DO name extensions using `UpperCamelCase`.
+
+Like types, extensions should capitalize the first letter of each word (including the first word), 
+and use no separators.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
+{% prettify dart %}
+extension MyFancyList<T> on List<T> { ... }
+  
+extension SmartIterable<T> on Iterable<T> { ... }
+{% endprettify %}
+
 ### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
 {% include linter-rule.html rule1="library_names" rule2="file_names" %}
