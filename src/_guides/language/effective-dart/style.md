@@ -85,7 +85,7 @@ Like types, extensions should capitalize the first letter of each word (includin
 and use no separators.
 
 {:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
 {% prettify dart %}
 extension MyFancyList<T> on List<T> { ... }
   
