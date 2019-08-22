@@ -86,38 +86,38 @@ illustrates the steps for using dart:ffi to call a C function:
 Here's the code for each step.
 
 1. Import dart:ffi.
-```
+```dart
 import 'dart:ffi' as ffi;
 ```
 
 2. Create a typedef with the FFI type signature of the C function. <br>
    Commonly used types defined by dart:ffi library include
    `Double`, `Int32`, `NativeFunction`, `Pointer`, `Struct`, `Uint8`, and `Void`.
-```
+```dart
 typedef hello_world_func = ffi.Void Function();
 ```
 
 3. Create a typedef for the variable that you'll use when calling the C function.
-```
+```dart
 typedef HelloWorld = void Function();
 ```
 
 4. Open the dynamic library that contains the C function.
-```
+```dart
   final dylib = ffi.DynamicLibrary.open('hello_world.dylib');
 ```
 
 5. Get a reference to the C function, and put it into a variable.
    This code uses the typedefs defined in steps 2 and 3, along with
    the dynamic library variable from step 4.
-```
+```dart
   final HelloWorld hello = dylib
       .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
       .asFunction();
 ```
 
 6. Call the C function.
-```
+```dart
   hello();
 ```
 
