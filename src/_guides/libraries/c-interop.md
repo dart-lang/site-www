@@ -1,14 +1,134 @@
 ---
 title: "C interop using FFI"
 description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
+hw: "https://github.com/mjohnsullivan/ffi/blob/master/hello_world"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
-platform](/platforms/) can use a foreign function interface
-([FFI](https://en.wikipedia.org/wiki/Foreign_function_interface))
-to call native C APIs.
+platform](/platforms/) can use the dart:ffi library to call native C APIs.
+The _ffi_ name stands for [_foreign function interface._][FFI]
+Other terms for similar functionality include _native interface_
+and _language bindings._
 
-This mechanism is currently [in active
-development](https://github.com/dart-lang/sdk/issues/34452) and is not yet
-complete. For a small preview example, see the [dart:ffi sqllite
-sample.](https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/README.md)
+The dart:ffi library is [in active development][ffi issue]
+and isn't complete yet.
+Although its API reference documentation hasn't been published yet,
+<!-- https://github.com/dart-lang/sdk/issues/37946 -->
+you can find its source code
+[in the SDK repo.](https://github.com/dart-lang/sdk/tree/master/sdk/lib/ffi)
+
+## Examples
+
+The following examples show how to use the dart:ffi library:
+
+| **Example** | **Description** |
+| [hello_world][] | Shows how to call a C function with no arguments and no return value. |
+| [primitives][] | Shows how to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates using **varargs**.
+| [structs][] | Shows how to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
+| [sqllite][] | An example in the Dart SDK repo that comes with a [mini tutorial][]. |
+
+
+## Walkthrough of hello_world
+
+The [hello_world example][hello_world] has the minimum necessary code for
+calling a C library.
+
+### Files
+
+The hello_world example has the following files:
+
+| **Source file** | **Description** |
+| [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
+| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.5. |
+| [c/hello.h]({{ page.hw}}/c/hello.h) | Declares the `hello_world()` function. |
+| [c/hello.c]({{ page.hw}}/c/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [c/Makefile]({{ page.hw}}/c/Makefile) | A macOS-specific build file that compiles the C code into a dynamic library. |
+{:.table .table-striped }
+
+[PENDING: say something about setup.sh? It doesn't seem necessary for this example, but maybe it's needed by other examples?]
+<!-- 
+  | [setup.sh]({{ page.hw}}/setup.sh) | A macOS-specific script that sets an environment variable. [PENDING: Omit from this list? Why is it necessary? I didn't seem to need it.] |
+-->
+
+Building the C library creates two additional files:
+
+| **Generated file** | **Description** |
+| hello_world.dylib | The dynamic library loaded by the Dart app. |
+| c/hello.o | An intermediate object file. |
+{:.table .table-striped }
+
+### Building and running
+
+Here's an example of building the dynamic library and executing the Dart app:
+
+```terminal
+$ cd c
+$ make dylib
+gcc -dynamiclib -undefined suppress -flat_namespace hello.o -o ../hello_world.dylib
+$ cd ..
+$ dart hello.dart
+Hello World
+$ 
+```
+
+### Using dart:ffi
+
+The [`hello.dart` file]({{ page.hw}}/hello.dart)
+illustrates the steps for using dart:ffi to call a C function:
+
+1. Import dart:ffi.
+2. Create a typedef with the FFI type signature of the C function.
+3. Create a typedef for the variable that you'll use when calling the C function.
+4. Open the dynamic library that contains the C function.
+5. Get a reference to the C function, and put it into a variable.
+6. Call the C function.
+
+Here's the code for each step.
+
+1. Import dart:ffi.
+```
+import 'dart:ffi' as ffi;
+```
+
+2. Create a typedef with the FFI type signature of the C function. <br>
+   Commonly used types defined by dart:ffi library include
+   `Double`, `Int32`, `NativeFunction`, `Pointer`, `Struct`, `Uint8`, and `Void`.
+```
+typedef hello_world_func = ffi.Void Function();
+```
+
+3. Create a typedef for the variable that you'll use when calling the C function.
+```
+typedef HelloWorld = void Function();
+```
+
+4. Open the dynamic library that contains the C function.
+```
+  final dylib = ffi.DynamicLibrary.open('hello_world.dylib');
+```
+
+5. Get a reference to the C function, and put it into a variable.
+   This code uses the typedefs defined in steps 2 and 3, along with
+   the dynamic library variable from step 4.
+```
+  final HelloWorld hello = dylib
+      .lookup<ffi.NativeFunction<hello_world_func>>('hello_world')
+      .asFunction();
+```
+
+6. Call the C function.
+```
+  hello();
+```
+
+Once you understand the hello_world example, you should be ready to look at the
+[other dart:ffi examples](#examples).
+
+
+[mini tutorial]: https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md
+[FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
+[ffi issue]: https://github.com/dart-lang/sdk/issues/34452
+[hello_world]: https://github.com/mjohnsullivan/ffi/tree/master/hello_world
+[primitives]: https://github.com/mjohnsullivan/ffi/tree/master/primitives
+[structs]: https://github.com/mjohnsullivan/ffi/tree/master/structs
+[sqllite]: https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite
