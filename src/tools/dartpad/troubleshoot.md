@@ -9,9 +9,9 @@ or in a page that has embedded DartPads.
 
 ## Embedded DartPads on flutter.dev are slow in Safari
 
-Try using another major [browser that Dart supports.][browser], such as Firefox,
-Edge (dev channel), or Chrome.
-
+Try using another major [browser that Dart supports][browser], such as Firefox,
+Edge (dev channel), or Chrome. 
+This issue is being tracked in the WebKit issue tracker.
 
 [More information](https://github.com/dart-lang/dart-pad/issues/1108)
 
