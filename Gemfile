@@ -6,7 +6,7 @@ gem 'jekyll'
 gem 'jekyll-assets', group: :jekyll_plugins
 gem 'jekyll-toc'
 gem 'liquid-tag-parser'
-gem 'nokogiri'
+gem "nokogiri", ">= 1.10.4"
 gem 'sass'
 gem 'sprockets', '~> 4.0.beta' , { require: false }
 gem 'uglifier'
