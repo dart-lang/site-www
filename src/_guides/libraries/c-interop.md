@@ -125,6 +125,14 @@ Once you understand the hello_world example, you should be ready to look at the
 [other dart:ffi examples](#examples).
 
 
+## Packaging and loading C libraries
+
+How you get C libraries, distribute them, and load them into your code
+depends on your platform and the origin of the library.
+For details, see [Binding to native code via FFI.][binding]
+
+
+[binding]: https://github.com/flutter/flutter/wiki/Binding-to-native-code-via-FFI
 [mini tutorial]: https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
