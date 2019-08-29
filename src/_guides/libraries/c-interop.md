@@ -125,10 +125,10 @@ Once you understand the hello_world example, you should be ready to look at the
 [other dart:ffi examples](#examples).
 
 
-## Packaging and loading C libraries
+## Loading and packaging C libraries
 
-How you get C libraries, distribute them, and load them into your code
-depends on your platform and the origin of the library.
+How you load C libraries and bundle them with your package or app
+depends on your platform and the type of library.
 For details, see [Binding to native code via FFI.][binding]
 
 
