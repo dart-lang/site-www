@@ -224,7 +224,7 @@ for more information.
 
 If you include an analysis options file such as the one in `pedantic`, 
 you might want to disable some of the included rules.
-Disabling individual rules is similar enabling them,
+Disabling individual rules is similar to enabling them,
 but with two differences:
 
 * Omit the dash (`-`) before the rule name.
