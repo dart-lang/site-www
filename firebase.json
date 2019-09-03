@@ -195,7 +195,7 @@
       { "source": "/tools/pub/faq?(.html)", "destination": "/tools/faq#pub", "type": 301 },
       { "source": "/tools/pub/installing?(.html)", "destination": "/tools/pub/environment-variables", "type": 301 },
       { "source": "/tools/pub/transformers{,/**}", "destination": "/tools/pub/obsolete", "type": 301 },
-      { "source": "/tools/pub/get-started", "destination": "/guides/packages", "type": 301 },
+      { "source": "/tools/pub/get-started?(.html)", "destination": "/guides/packages", "type": 301 },
       { "source": "/tools/pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "/tools", "type": 301 },
