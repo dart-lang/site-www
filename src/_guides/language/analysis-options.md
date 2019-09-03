@@ -243,8 +243,8 @@ linter:
     await_only_futures: true
 {% endprettify %}
 
-<aside class="alert alert-warning” markdown="1">
-  If you disable any rules, then use key-value syntax to enable rules.
+<aside class="alert alert-warning" markdown="1">
+  **If you disable any rules, then use key-value syntax to enable rules.**
   For example, the preceding example can’t use `- await_only_futures`;
   instead, it must use `await_only_futures: true`.
   The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
