@@ -54,4 +54,14 @@ void miscDeclAnalyzedButNotTested() {
     baz = [42]; // Error: Constant variables can't be assigned a value.
     // #enddocregion cant-assign-to-const
   }
+
+  {
+    // #docregion const-dart-25
+    // Valid compile-time constants as of Dart 2.5.
+    const Object i = 3; // Where i is a const Object with an int value...
+    const list = [i as int]; // Use a typecast in a const list.
+    const map = {if (i is int) i: "int"}; // Use collection if in a const map.
+    const set = {if (list is List<int>) ...list}; // Use spread in a const set.
+    // #enddocregion const-dart-25
+  }
 }
