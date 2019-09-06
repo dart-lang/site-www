@@ -224,7 +224,7 @@ for more information.
 
 If you include an analysis options file such as the one in `pedantic`, 
 you might want to disable some of the included rules.
-Disabling individual rules is similar enabling them,
+Disabling individual rules is similar to enabling them,
 but with two differences:
 
 * Omit the dash (`-`) before the rule name.
@@ -243,8 +243,8 @@ linter:
     await_only_futures: true
 {% endprettify %}
 
-<aside class="alert alert-warning” markdown="1">
-  If you disable any rules, then use key-value syntax to enable rules.
+<aside class="alert alert-warning" markdown="1">
+  **If you disable any rules, then use key-value syntax to enable rules.**
   For example, the preceding example can’t use `- await_only_futures`;
   instead, it must use `await_only_futures: true`.
   The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
