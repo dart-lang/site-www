@@ -49,10 +49,13 @@ The hello_world example has the following files:
 | [c/Makefile]({{ page.hw}}/c/Makefile) | A macOS-specific build file that compiles the C code into a dynamic library. |
 {:.table .table-striped }
 
+{% comment %}
 [PENDING: say something about setup.sh? It doesn't seem necessary for this example, but maybe it's needed by other examples?]
+
 <!-- 
   | [setup.sh]({{ page.hw}}/setup.sh) | A macOS-specific script that sets an environment variable. [PENDING: Omit from this list? Why is it necessary? I didn't seem to need it.] |
 -->
+{% endcomment %}
 
 Building the C library creates two additional files:
 
