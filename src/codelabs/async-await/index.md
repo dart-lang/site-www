@@ -185,6 +185,17 @@ First, add the `async` keyword before the function body:
     main() [!async!] {
 {% endprettify %}
 
+{{ site.alert.info }}
+  You might have noticed that some functions (like `main()`, above)
+  don't have return types.
+  That's because Dart can [infer the return type][infer] for you.
+  Omitting return types is fine when you're prototyping,
+  but when you write production code,
+  we recommend that you specify the return type.
+{{ site.alert.end }}
+
+[infer]: https://dart.dev/guides/language/sound-dart#type-inference
+
 If the function has a declared return type, then update the type to be
 `Future<T>`, where `T` is the type of the value that the function returns. 
 If the function doesn't explicitly return a value, then the return type is
@@ -213,7 +224,7 @@ your window is wide enough — is to the right of the synchronous example.
 
 {% prettify dart %}
 // Synchronous
-String createOrderMessage () {
+String createOrderMessage() {
   var order = getUserOrder();
   return 'Your order is: $order';
 }
@@ -241,7 +252,7 @@ main() {
 
 {% prettify dart %}
 // Asynchronous
-[!Future<String>!] createOrderMessage () [!async!] {
+[!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] getUserOrder();
   return 'Your order is: $order';
 }
@@ -446,24 +457,27 @@ Write the following:
 
 ####  Part 1: `addHello()` 
 * Write a function `addHello()` that takes a single String argument. 
-* `addHello()` returns its String argument surrounded by the text ‘Hello \<string\>'
+* `addHello()` returns its String argument preceded by 'Hello '.<br>
+  Example: `addHello('Jon')` returns `'Hello Jon'`.
 
 ####  Part 2: `greetUser()` 
 * Write a function `greetUser()` that takes no arguments.
-* To obtain the username, `greetUser()` calls the provided asynchronous 
-function `getUsername()`
+* To get the username, `greetUser()` calls the provided asynchronous 
+  function `getUsername()`.
 * `greetUser()` creates a greeting for the user by calling `addHello()`, 
-passing it the username, and returning the result. 
-  * For example, if the username is "Jenny", `greetUser()` should create and
-   return the following: "Hello Jenny"
+  passing it the username, and returning the result.<br>
+  Example: If `getUsername()` returns `'Jenny'`, then
+  `greetUser()` returns `'Hello Jenny'`.
 
 ####  Part 3: `sayGoodbye()` 
 * Write a function `sayGoodbye()` that does the following:
   * Takes no arguments.
   * Catches any errors.
   * Calls the provided asynchronous function `logoutUser()`.
-* If `logoutUser()` succeeds, `sayGoodbye()` returns the string "\<result\> 
-Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
+* If `logoutUser()` fails, `sayGoodbye()` returns any string you like.
+* If `logoutUser()` succeeds, `sayGoodbye()` returns the string
+  `'<result> Thanks, see you next time'`, where `<result>` is
+  the String value returned by calling `logoutUser()`.
 
     <!-- [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc -->
 <iframe 
@@ -473,21 +487,25 @@ Thanks, see you next time" where \<result\> is the String value returned by call
   width="100%">
 </iframe>
 
-{{ site.alert.info }}
-  You might have noticed that the functions in the exercises don't have return types. That's because Dart can 
-  [infer the return type](https://dart.dev/guides/language/sound-dart#type-inference) 
-   for you. Omitting return types is fine when you're prototyping, but when you write production code, we recommend that you specify the return type.
-{{ site.alert.end }}
 
 ## What's next?
 
 Congratulations, you've finished the codelab! If you'd like to learn more, here 
-are some suggestions for other topics to explore:
+are some suggestions for where to go next:
 
 * Play with [DartPad.]({{site.dartpad}})
-* Try another [codelab](/codelabs) or a [tutorial](/tutorials).
-* Read about [Dart's type system](/guides/language/sound-dart). 
+* Try another [codelab](/codelabs).
+* Learn more about futures and asynchrony:
+  * [Streams tutorial](/tutorials/language/streams):
+    Learn how to work with a sequence of asynchronous events.
+  * [Dart videos from Google:][Dart videos]
+    Watch one or more of the videos about asynchronous coding.
+    Or, if you prefer, read the articles that are based on these videos. 
+    (Start with [isolates and event loops.][article])
+* [Get the Dart SDK.](/get-dart) 
 
+[Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
+[article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [future class]: {{site.dart_api}}/stable/dart-async/Future-class.html
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
