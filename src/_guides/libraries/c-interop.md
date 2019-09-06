@@ -3,6 +3,10 @@ title: "C interop using FFI"
 description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
 hw: "https://github.com/mjohnsullivan/ffi/blob/master/hello_world"
 ---
+{% comment %}
+TODO: Change hw to https://github.com/dart-lang/samples/blob/master/ffi/hello_world
+once https://github.com/dart-lang/samples/pull/1 is merged.
+{% endcomment %}
 
 Dart mobile, command-line, and server apps running on the [Dart Native
 platform](/platforms/) can use the dart:ffi library to call native C APIs.
@@ -125,9 +129,10 @@ Once you understand the hello_world example, you should be ready to look at the
 [other dart:ffi examples](#examples).
 
 
-## Loading and packaging C libraries
+## Bundling and loading C libraries
 
-How you load C libraries and bundle them with your package or app
+How you bundle (or _package_ or _distribute_)
+a C library with your package or app and then load that library
 depends on your platform and the type of library.
 For details, see [Binding to native code via FFI.][binding]
 
