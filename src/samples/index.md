@@ -5,7 +5,8 @@ description: Examples of idiomatic Dart with links to larger examples.
 
 This collection is not exhaustive&mdash;it's just a brief
 introduction to the language for people who like to learn by example.
-You might also want to check out the language and library tours.
+You might also want to check out the language and library tours,
+or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
 <div class="card-grid">
   <div class="card">
