@@ -1,12 +1,10 @@
 ---
 title: "C interop using FFI"
 description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
-hw: "https://github.com/mjohnsullivan/ffi/blob/master/hello_world"
+hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
+samples: "https://github.com/dart-lang/samples/tree/master/ffi"
+sqllite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
-{% comment %}
-TODO: Change hw to https://github.com/dart-lang/samples/blob/master/ffi/hello_world
-once https://github.com/dart-lang/samples/pull/1 is merged.
-{% endcomment %}
 
 Dart mobile, command-line, and server apps running on the [Dart Native
 platform](/platforms/) can use the dart:ffi library to call native C APIs.
@@ -29,7 +27,7 @@ The following examples show how to use the dart:ffi library:
 | [hello_world][] | Shows how to call a C function with no arguments and no return value. |
 | [primitives][] | Shows how to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates using **varargs**.
 | [structs][] | Shows how to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
-| [sqllite][] | An example in the Dart SDK repo that comes with a [mini tutorial][]. |
+| [sqllite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
 
 
 ## Walkthrough of hello_world
@@ -141,10 +139,10 @@ For details, see [Binding to native code via FFI.][binding]
 
 
 [binding]: https://github.com/flutter/flutter/wiki/Binding-to-native-code-via-FFI
-[mini tutorial]: https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
-[hello_world]: https://github.com/mjohnsullivan/ffi/tree/master/hello_world
-[primitives]: https://github.com/mjohnsullivan/ffi/tree/master/primitives
-[structs]: https://github.com/mjohnsullivan/ffi/tree/master/structs
-[sqllite]: https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite
+[hello_world]: {{ page.hw }}
+[primitives]: {{ page.samples }}/primitives
+[structs]: {{ page.samples }}/structs
+[sqllite]: {{ page.sqllite }}
+[mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
