@@ -4189,11 +4189,13 @@ For more information, see the following:
   including [Isolate.spawn()][] and
   [TransferableTypedData][]
 * [Background parsing][background json] cookbook on the Flutter site
+* [Isolate sample app][]
 
 [isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+[Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 
 ## Typedefs
