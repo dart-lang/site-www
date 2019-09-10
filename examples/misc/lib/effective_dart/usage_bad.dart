@@ -402,19 +402,6 @@ class Point2 {
 // #enddocregion semicolon-for-empty-body
 
 //----------------------------------------------------------------------------
-// ignore_for_file: super_goes_last, strong_mode_invalid_super_invocation
-
-class View extends ViewBase {
-  var _children;
-  get children => _children;
-  // #docregion super-first
-  View(Style style, List children)
-      : super(style),
-        _children = children;
-  // #enddocregion super-first
-}
-
-//----------------------------------------------------------------------------
 // ignore_for_file: unnecessary_const, unnecessary_new
 
 void unnecessaryNewOrConst() {
