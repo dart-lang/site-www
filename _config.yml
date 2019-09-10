@@ -29,7 +29,7 @@ dartpadx: https://dartpad.dev/experimental/embed-new-dart.html
 news: https://news.dartlang.org
 group: https://groups.google.com/a/dartlang.org
 
-show_banner: false
+show_banner: true
 
 collections:
   articles:
