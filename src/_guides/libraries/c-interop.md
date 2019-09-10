@@ -1,5 +1,5 @@
 ---
-title: "C interop using FFI"
+title: "C interop using dart:ffi"
 description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
 hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/master/ffi"
