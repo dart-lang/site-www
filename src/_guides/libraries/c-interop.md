@@ -12,12 +12,16 @@ The _ffi_ name stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
+{{ site.alert.note }}
 The dart:ffi library is [in active development][ffi issue]
-and isn't complete yet.
-Although its API reference documentation hasn't been published yet,
-<!-- https://github.com/dart-lang/sdk/issues/37946 -->
-you can find its source code
-[in the SDK repo.](https://github.com/dart-lang/sdk/tree/master/sdk/lib/ffi)
+and isn't complete yet. Note that the API is likely to have breaking changes
+between now and its completion, as we add polish and broaden support for common patterns.
+
+Usage of the feature requires a [Dart 2.6.x dev channel](https://dart.dev/tools/sdk/archive#dev-channel)
+build.
+{{ site.alert.end }}
+
+API documentation is available from the dev channel: [API reference documentation](https://api.dart.dev/dev/).
 
 ## Examples
 
