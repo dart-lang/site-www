@@ -3,7 +3,7 @@
 {% if site.data.pkg-vers.SDK.channel == 'dev' %}
 ```terminal
 $ brew tap dart-lang/dart
-$ brew install dart --devel
+$ brew install dart -- --devel
 ```
 
 To install a **stable channel** release,
@@ -22,7 +22,7 @@ $ brew install dart
 To install a **dev channel** release, use `--devel`:
 
 ```terminal
-$ brew install dart --devel
+$ brew install dart -- --devel
 ```
 {% endif %}
 
@@ -46,7 +46,7 @@ To upgrade to a dev channel release when a stable release is
 currently active, run:
 
 ```terminal
-$ brew upgrade dart --devel --force
+$ brew upgrade --force dart -- --devel
 ```
 
 ### Switch release

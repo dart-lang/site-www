@@ -13,6 +13,9 @@ Here's what DartPad looks like:
 
 <aside class="alert alert-info" markdown="1">
   **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
+  
+  If you have issues using DartPad, see the [DartPad troubleshooting
+  tips](/tools/dartpad/troubleshoot).
 </aside>
 
 ## Library support

@@ -88,7 +88,7 @@ class HoneyBadger extends Animal {
   String _name;
   // #docregion super-goes-last
   HoneyBadger(Eats food, String name)
-      // ignore_for_file: 1, 2, strong_mode_invalid_super_invocation
+      // ignore_for_file: 1, 2, invalid_super_invocation
       : super(food),
         _name = name {/* ... */}
   // #enddocregion super-goes-last
@@ -98,6 +98,6 @@ class HoneyBadger extends Animal {
 
 // #docregion func-dynamic
 typedef Filter = bool Function(dynamic any);
-// ignore_for_file: 2, strong_mode_invalid_cast_function_expr
+// ignore_for_file: 2, invalid_cast_function_expr
 Filter filter = (String x) => x.contains('Hello');
 // #enddocregion func-dynamic
