@@ -94,6 +94,12 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
+    - title: Interoperability
+      children:
+        - title: C interop
+          permalink: /guides/libraries/c-interop
+        - title: JavaScript interop
+          permalink: /web/js-interop
     - title: JSON
       permalink: /guides/json
     - title: Streams
@@ -112,8 +118,6 @@
           permalink: /tutorials/server/cmdline
         - title: Write HTTP clients & servers
           permalink: /tutorials/server/httpserver
-        - title: C & C++ interop
-          permalink: /server/c-interop
         - title: Libraries and packages
           permalink: /server/libraries
     - title: Web apps
@@ -134,8 +138,6 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: Remove DOM elements
             permalink: /tutorials/web/low-level-html/remove-elements
-        - title: JS interop
-          permalink: /web/js-interop
         - title: Deployment
           permalink: /web/deployment
         - title: Libraries and packages
