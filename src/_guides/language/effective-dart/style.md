@@ -88,7 +88,7 @@ and use no separators.
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
 {% prettify dart %}
 extension MyFancyList<T> on List<T> { ... }
-  
+
 extension SmartIterable<T> on Iterable<T> { ... }
 {% endprettify %}
 
