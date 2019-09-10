@@ -199,7 +199,7 @@ var c = C(Iterable.empty()).collection;
 
 ### Invalid method override
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*num.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -231,9 +231,9 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*num.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
 ```nocode
-error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)') • invalid_override
+error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('add') • invalid_override
 ```
 
 Consider the following scenario where floating
@@ -278,7 +278,7 @@ For more information, see [Use proper input parameter types when overriding meth
 
 ### Missing type arguments
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*dynamic.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -302,9 +302,9 @@ class Subclass extends Superclass {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*dynamic.*common_problems/"?>
+<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
 ```nocode
-error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)') • invalid_override
+error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('method') • invalid_override
 ```
 
 #### Fix: Specify type arguments for the generic subclass
@@ -383,7 +383,7 @@ Alternatively, if you want this map to accept any value, specify the type as `<S
 
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
-error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • strong_mode_invalid_super_invocation
+error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • invalid_super_invocation
 ```
 
 This error occurs when the `super()` call is not last in a constructor's
@@ -402,7 +402,7 @@ HoneyBadger(Eats food, String name)
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/"?>
 ```nocode
-error • super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • strong_mode_invalid_super_invocation
+error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • invalid_super_invocation
 ```
 
 #### Fix: Put the `super()` call last
@@ -426,7 +426,7 @@ HoneyBadger(Eats food, String name)
 
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
 ```nocode
-error • The function expression type '...' isn't of type '...'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
+error • The function expression type '...' isn't of type '...'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
 
 In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
@@ -451,7 +451,7 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/"?>
 ```nocode
-error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type does not match what is expected. Consider changing parameter type(s) or the returned type(s) • strong_mode_invalid_cast_function_expr
+error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
 
 #### Fix: Add type parameters _or_ cast from dynamic explicitly

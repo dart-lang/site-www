@@ -8,6 +8,8 @@ short-title: Language tour
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
+For a briefer, less complete introduction to the language, see the
+[language samples page](/samples).
 
 To learn more about Dart's core libraries, see the
 [library tour](/guides/libraries/library-tour).
@@ -395,6 +397,19 @@ You can't change the value of a const variable:
 baz = [42]; // Error: Constant variables can't be assigned a value.
 {% endprettify %}
 
+As of Dart 2.5, you can define constants that use
+[type checks and casts](#type-test-operators) (`is` and `as`),
+[collection if and collection for](#collection-operators),
+and [spread operators](#spread-operator) (`...` and `...?`):
+
+<?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
+```dart
+// Valid compile-time constants as of Dart 2.5.
+const Object i = 3; // Where i is a const Object with an int value...
+const list = [i as int]; // Use a typecast.
+const map = {if (i is int) i: "int"}; // Use is and collection if.
+const set = {if (list is List<int>) ...list}; // ...and a spread.
+```
 For more information on using `const` to create constant values, see
 [Lists](#lists), [Maps](#maps), and [Classes](#classes).
 
