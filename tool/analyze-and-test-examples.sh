@@ -45,7 +45,7 @@ function analyze_and_test() {
 
   DIR=()
   for d in bin lib test; do
-    if [[ -d $d ]]; then DIR[${#DIR}]=$d; fi
+    if [[ -d $d ]]; then DIR+=($d); fi
   done
 
   if [[ ${#DIR} -le 0 ]]; then
