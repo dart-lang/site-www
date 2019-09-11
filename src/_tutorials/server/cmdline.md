@@ -20,17 +20,16 @@ prevpage:
   * Most input and output requires the use of streams.
 </div>
 
-<aside class="alert alert-info" markdown="1">
-<strong>Prerequisite:</strong>
-This tutorial uses the `async` and `await` language features, which rely on the
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html" target="_blank">Future</a>
-and
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
-   target="_blank">Stream</a> classes for asynchronous support.
-To learn more about these features, see the
-[asynchronous programming codelab](/codelabs/async-await) and the
-[streams tutorial](/tutorials/language/streams).
-</aside>
+{{site.alert.note}}
+  This tutorial uses the `async` and `await` language features, which rely on the
+  <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html"
+    target="_blank">Future</a> and
+  <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
+    target="_blank">Stream</a> classes for asynchronous support.
+  To learn more about these features, see the
+  [asynchronous programming codelab](/codelabs/async-await) and the
+  [streams tutorial](/tutorials/language/streams).
+{{site.alert.end}}
 
 This tutorial teaches you how to build command-line apps
 and shows you a few small command-line applications.
@@ -50,31 +49,25 @@ and how you installed the SDK.
 You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
 By putting this directory in your PATH
 you can refer to the `dart` command and other commands, such as
-[dartanalyzer](/tools/dartanalyzer),
-by name.
+[dartanalyzer](/tools/dartanalyzer), by name.
 
 Let's run a small program.
 
-<ol>
-<li markdown="1">
-Create a file called `helloworld.dart` that contains this code:
+ 1. Create a file called `helloworld.dart` that contains this code:
 
-{% prettify dart %}
-void main() {
-  print('Hello, World!');
-}
-{% endprettify %}
-</li>
+    <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+    ```dart
+    void main() {
+      print('Hello, World!');
+    }
+    ```
 
-<li markdown="1">
-In the directory that contains the file you just created, run the program:
+ 2. In the directory that contains the file you just created, run the program:
 
-```terminal
-$ dart helloworld.dart
-Hello, World!
-```
-</li>
-</ol>
+    ```terminal
+    $ dart helloworld.dart
+    Hello, World!
+    ```
 
 The Dart VM supports many options.
 Use `dart --help` to see commonly used options.
