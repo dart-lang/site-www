@@ -5,7 +5,7 @@ documented in the [Examples][] page of the [site-shared docs][]. Consult that
 page for general information about project file organization, testing, [CI][],
 and more. Site-www specific information is given below.
 
-## How do I run the analyzer on all examples
+## How do I run the analyzer on all examples?
 
 ```
 cd examples
@@ -29,7 +29,7 @@ you might need to update one or more analyzer results files
 To update the analyzer results files:
 
 1. Run `pub upgrade` to get the latest version of the pedantic package.
-1. Run `./tool/analyze-and-test-examples.sh  --save-logs`.
+1. Run `./tool/analyze-and-test-examples.sh --save-logs`.
 1. Look at the diffs for the results files.
 1. If the diffs look good but some comments are missing,
    add back the comments that are still relevant.
