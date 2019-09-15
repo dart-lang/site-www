@@ -4,7 +4,7 @@
 // 1. If you change this file, ensure that the associated tooltip data remains
 //    valid (*_tooltips.html).
 // 2. Regenerate the HTML version of this sample, by running
-//    tool/create_site_main_example.dart
+//    tool/create_code_with_tooltips.dart
 // 3. To generate the DartPad version: (1) delete lines containly only tip
 //    instructions. (2) Trim //!foo markers from the end of the remaining lines,
 //    e.g., using this Perl regexp: / ?\/\/!.*//g
