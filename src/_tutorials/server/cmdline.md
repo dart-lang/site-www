@@ -9,6 +9,15 @@ prevpage:
   title: "Get started: command-line & server apps"
 ---
 
+{% assign _api = site.dart_api | append: '/' | append: site.data.pkg-vers.SDK.channel -%}
+{% assign argsAPI = site.pub-api | append: '/args/latest/args' -%}
+{% assign ioAPI = _api | append: '/dart-io' -%}
+
+<?code-excerpt replace="/ ?\/\/!tip.*//g"?>
+<style>
+[data-toggle="popover"] { background: #fffde7; }
+</style>
+
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
@@ -22,10 +31,9 @@ prevpage:
 
 {{site.alert.note}}
   This tutorial uses the `async` and `await` language features, which rely on the
-  <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html"
-    target="_blank">Future</a> and
-  <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html"
-    target="_blank">Stream</a> classes for asynchronous support.
+  [Future]({{_api}}/dart-async/Future-class.html){:target="_blank"} and
+  [Stream]({{_api}}/dart-async/Stream-class.html){:target="_blank"}
+  classes for asynchronous support.
   To learn more about these features, see the
   [asynchronous programming codelab](/codelabs/async-await) and the
   [streams tutorial](/tutorials/language/streams).
@@ -37,19 +45,20 @@ These programs use resources that most command-line applications need,
 including the standard output, error, and input streams,
 command-line arguments, files and directories, and more.
 
-
 ## Running an app with the standalone Dart VM
 
 To run a command-line app, you need the Dart VM (`dart`),
 which comes when you [install the Dart SDK](/get-dart).
 
-The location of the SDK installation directory
-(we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
-and how you installed the SDK.
-You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
-By putting this directory in your PATH
-you can refer to the `dart` command and other commands, such as
-[dartanalyzer](/tools/dartanalyzer), by name.
+{{site.alert.important}}
+  The location of the SDK installation directory
+  (we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
+  and how you installed the SDK.
+  You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
+  By putting this directory in your PATH
+  you can refer to the `dart` command and other commands, such as
+  [dartanalyzer](/tools/dartanalyzer), by name.
+{{site.alert.end}}
 
 Let's run a small program.
 
@@ -73,156 +82,84 @@ The Dart VM supports many options.
 Use `dart --help` to see commonly used options.
 Use `dart --verbose` to see all options.
 
-## Review briefly the dcat example code
+## Overview of the dcat app code
 
-Take a quick look at the code for a small sample called `dcat`,
-which displays the contents of any files listed on the command line.
-This program uses various classes, functions, and properties
-available to command-line apps.
-This tutorial goes into detail about this app in the following sections.
-For a brief look now, hover over the highlighted code below for explanations.
+This tutorial covers the details of a small sample app called `dcat`, which
+displays the contents of any files listed on the command line. This app uses
+various classes, functions, and properties available to command-line apps. For a
+brief description of key app features, click on the highlighted code below.
 
-<pre class="prettyprint lang-dart">
-import 'dart:io';
-import 'dart:convert';
+{% include_relative _dcat-example.html %}
 
-import 'package:args/args.dart';
+Run the app from the command line:
 
-const lineNumber = 'line-number';
+```terminal
+$ dart dcat.dart -n dcat.dart
+1 // Copyright (c) 2013, the Dart project authors. Please see the AUTHORS file
+2 // for details. All rights reserved. Use of this source code is governed by a
+3 // BSD-style license that can be found in the LICENSE file.
+...
+```
 
-ArgResults argResults;
-
-void main(<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Command-line arguments" data-content="Command-line arguments are passed in by the system when the program starts.">List&lt;String&gt; arguments</a>) {
-  exitCode = 0; //presume success
-  final parser = new ArgParser()
-      ..addFlag(lineNumber, negatable: false, abbr: 'n');
-
-  <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Arguments parser" data-content="The ArgParser class provides help with parsing command-line arguments.">argResults = parser.parse(arguments);</a>
-  List&lt;String&gt; paths = argResults.rest;
-
-  dcat(paths, argResults[lineNumber]);
-}
-
-Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Async function" data-content='An async function is marked with "async" and returns a Future.'>async</a> {
-  if (paths.isEmpty) {
-    // No files provided as arguments. Read from stdin and print each line.
-    <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Using await" data-content='The "await" keyword, which works only in async functions, makes the program pause until the following expression completes.'>await</a> <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
-  } else {
-    for (var path in paths) {
-      int lineNumber = 1;
-      <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Create a File object" data-content="Use the File class to represent the file on the native file system.">Stream lines = new File(path)</a>
-          <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Open a file for reading" data-content="Read the content from the file asynchronously.">.openRead()</a>
-          <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Data converters" data-content="Convert data as it becomes available on the stream.">.transform(utf8.decoder)</a>
-          .transform(const LineSplitter());
-      <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Exception handling" data-content='Function calls that might generate an exception are placed in a "try" block.'>try</a> {
-        <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Get data from the stream"
-          data-content='Use "await for" to loop over the values as they become available on the stream. The program pauses while waiting for the next line.'
-        >await for (var line in lines)</a> {
-          if (showLineNumbers) {
-            stdout.write('${lineNumber++} ');
-          }
-          stdout.writeln(line);
-        }
-      } <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Exception handling" data-content='Any errors encountered in the stream are handled in the "catch" block.'>catch</a> (_) {
-        await _handleError(path);
-      }
-    }
-  }
-}
-
-Future _handleError(String path) async {
-  if (<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Test the path"
-    data-content='You can get information about the file system on which your program is running. The "await" keyword causes error handling to pause until the path is available.'
-  >await FileSystemEntity.isDirectory(path)</a>) {
-    stderr.writeln('error: $path is a directory');
-  } else {
-    <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Exit code"
-      data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful."
-    >exitCode = 2;</a>
-  }
-}
-
-</pre>
+The app displays the contents of the source code file and preceeds each line
+with a line number.
 
 ## Parsing command-line arguments
 
-The [args]({{site.pub}}/packages/args) package
-a software bundle that contains a library of Dart code, provides
-parser support for transforming raw command-line arguments
+The [args]({{site.pub}}/packages/args) package provides
+parser support for transforming command-line arguments
 into a set of options, flags, and additional values.
 Import the library as follows:
 
-{% prettify dart %}
+<?code-excerpt "misc/bin/dcat.dart" retain="package:args"?>
+```dart
 import 'package:args/args.dart';
-{% endprettify %}
+```
 
-The args library contains two classes:
+The `args` package contains these classes, among others:
 
-| Library | Description |
+| Class | Description |
 |---|---|
-| <a href="{{site.pub-api}}/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that parses command-line arguments |
-| <a href="{{site.pub-api}}/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing command-line arguments using ArgParser. |
+| [ArgParser]({{argsAPI}}/ArgParser-class.html){:target="_blank"} | A command-line argument parser. |
+| [ArgResults]({{argsAPI}}/ArgResults-class.html){:target="_blank"} | The result of parsing command-line arguments using `ArgParser`. |
 {: .table }
 
-Let's take a look at the `dcat` sample,
-which uses ArgParser and ArgResults to parse and store its command-line arguments.
+Here is the `dcat` code that uses these classes to parse and store command-line
+arguments:
 
-<ol>
-<li markdown="1">
-Copy the sample file from the github repo:
-<a href="https://raw.githubusercontent.com/dart-lang/dart-tutorials-samples/master/cmdline/bin/dcat.dart">dcat.dart.</a>
-</li>
+<?code-excerpt "misc/bin/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
+{% prettify dart %}
+[!ArgResults argResults;!]
 
-<li markdown="1">
-Run the program from the command line as shown by the **boldface** text.
+void main([!List<String> arguments!]) {
+  exitCode = 0; // presume success
+  final [!parser = ArgParser()!]
+    [!..addFlag(lineNumber, negatable: false, abbr: 'n');!]
 
-<pre>
-$ <b>dart dcat.dart -n quotes.txt</b>
-1 Be yourself. Everyone else is taken. -Oscar Wilde
-2 Don't cry because it's over, smile because it happened. -Dr. Seuss
-3 You only live once, but if you do it right, once is enough. -Mae West
-...
-</pre>
 
-The program displays the contents of the source code file and
-preceeds each line with a line number.
-</li>
+  argResults = [!parser.parse(arguments);!]
+  final paths = [!argResults.rest!];
 
-</ol>
+  dcat(paths, [!argResults[lineNumber] as bool!]);
+}
+{% endprettify %}
+
+The runtime passes command-line arguments to the app's `main()` function as a
+list of strings. The `ArgParser` is configured to parse the `-n` flag. The
+result of parsing command-line arguments is stored in `argResults`.
 
 The following diagram shows how the `dcat` command line used above
-is parsed into the `ArgResults` object.
+is parsed into an `ArgResults` object.
 
 ![ArgsParser parses command-line arguments](images/commandlineargs.png)
 
 You can access flags and options by name,
-treating the ArgResults object like a Map.
-You can access other values with properties such as `rest`.
+treating an `ArgResults` like a `Map`.
+You can access other values using the `rest` property.
 
-Here's the code from `dcat` that deals with command-line arguments:
-
-<pre class="prettyprint lang-dart">
-...
-<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Parsed arguments" data-content="This object contains parsed options and flags.">ArgResults argResults;</a>
-
-void main(<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Command-line arguments" data-content="The system passes command-line arguments into the program in a list of strings.">List&lt;String&gt; arguments</a>) {
-  exitCode = 0; //presume success
-  final parser = new ArgParser()
-    <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Define a valid flag" data-content="Add a flag definition to the command-line argument parser. This code defines the flag -n, which when used displays line numbers.">..addFlag(lineNumber, negatable: false, abbr: 'n')</a>;
-
-  argResults = parser.<a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Parse the arguments" data-content="Parse the arguments that were passed into the main() function. The parser stops parsing if it finds an undefined option or flag.">parse(arguments)</a>;
-  List&lt;String&gt; paths = <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Remaining arguments" data-content="To get the arguments that remain after parsing all of the valid options and flags, use the rest property.">argResults.rest</a>;
-
-  dcat(paths, <a tabindex="0" role="button" class="highlight" data-toggle="popover" title="Refer to options and flags by name" data-content="You can refer to an option or flag by name treating the ArgResults object like a Map.">argResults[lineNumber])</a>;
-}
-...
-</pre>
-
-The
-<a href="{{site.pub-api}}/args/latest/index.html" target="_blank">API docs</a>
-for the args library
-provide detailed information
-to help you use ArgsParser and ArgResults classes.
+The [API docs]({{argsAPI}}/..){:target="_blank"}
+for the `args` library provide detailed information to help you use
+`ArgsParser` and `ArgResults` classes.
 
 ## Reading and writing with stdin, stdout, and stderr
 
@@ -232,30 +169,30 @@ The standard I/O streams are defined at the top level of the dart:io library,
 
 | Stream | Description |
 |---|---|
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
+| [stdout]({{ioAPI}}/stdout.html){:target="_blank"} | The standard output |
+| [stderr]({{ioAPI}}/stderr.html){:target="_blank"} | The standard error |
+| [stdin]({{ioAPI}}/stdin.html){:target="_blank"} | The standard input |
 {: .table }
 
 Import the dart:io library as follows:
 
-{% prettify dart %}
+<?code-excerpt "misc/bin/dcat.dart" retain="dart:io"?>
+```dart
 import 'dart:io';
-{% endprettify %}
+```
 
 Only command-line applications, not web applications, can use the dart:io library.
-
 
 ### stdout
 
 Here's the code from the `dcat` program that writes the line number to
 the `stdout` (if the -n flag is set) followed by the line from the file.
 
+<?code-excerpt "misc/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
 {% prettify dart %}
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
 }
-
 [!stdout.writeln(line);!]
 {% endprettify %}
 
@@ -286,6 +223,7 @@ or programmatically to different destinations.
 This code from `dcat` prints an error message if the user
 tries to list a directory.
 
+<?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
 {% prettify dart %}
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
@@ -304,7 +242,8 @@ output of another program.
 
 Here's a small program that reads a single line from `stdin`:
 
-{% prettify dart %}
+<?code-excerpt "misc/bin/dcat1.dart"?>
+```dart
 import 'dart:io';
 
 void main() {
@@ -312,7 +251,7 @@ void main() {
   String input = stdin.readLineSync();
   stdout.writeln('You typed: $input');
 }
-{% endprettify %}
+```
 
 The `readLineSync()` method reads text from the standard input stream,
 blocking until the user types in text and presses return.
@@ -326,13 +265,15 @@ Because `pipe()` is asynchronous
 (returning a Future, even though this code doesn't use that return value),
 the code that calls it uses `await`.
 
+<?code-excerpt "misc/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
 {% prettify dart %}
-await [!stdin!].pipe(stdout);
+
+await stdin.[!pipe!](stdout);
 {% endprettify %}
 
 In this case,
 the user types in lines of text and the program copies them to stdout.
-The user signals the end of input by typing &lt;ctl-d&gt;.
+The user signals the end of input by pressing <kbd>Control</kbd>-<kbd>D</kbd>.
 
 ```terminal
 $ dart dcat.dart
@@ -343,7 +284,7 @@ The quick brown fox jumps over the lazy dog.
 ## Getting info about a file
 
 The
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a>
+[FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html){:target="_blank"}
 class in the dart:io library provides properties and static methods
 that help you inspect and manipulate the file system.
 
@@ -359,8 +300,9 @@ The Future returns a boolean that indicates if the path is a directory or not.
 Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
+<?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
 {% prettify dart %}
-if (await [!FileSystemEntity.isDirectory(path)!]) {
+if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
 } else {
   exitCode = 2;
@@ -371,7 +313,7 @@ Other interesting methods in the `FileSystemEntity` class
 include `isFile()`, `exists()`, `stat()`, `delete()`,
 and `rename()`, all of which also use a Future to return a value.
 
-FileSystemEntity is the superclass for the File, Directory, and Link classes.
+`FileSystemEntity` is the superclass for the `File`, `Directory`, and `Link` classes.
 
 ## Reading a file
 
@@ -381,20 +323,20 @@ The `await for` block waits for the file to be read
 asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
+<?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
 {% prettify dart %}
 for (var path in paths) {
-  int lineNumber = 1;
-  Stream lines = new File(path)
-      .openRead()
-      .transform(utf8.decoder)
+  var lineNumber = 1;
+  final lines = utf8.decoder
+      .bind(File(path).openRead())
       .transform(const LineSplitter());
   try {
     [!await for (var line in lines) {!]
-      [!if (showLineNumbers) {!]
-        [!stdout.write('${lineNumber++} ');!]
-      [!}!]
-      [!stdout.writeln(line);!]
-    }
+    [!  if (showLineNumbers) {!]
+    [!    stdout.write('${lineNumber++} ');!]
+    [!  }!]
+    [!  stdout.writeln(line);!]
+    [!}!]
   } catch (_) {
     await _handleError(path);
   }
@@ -406,13 +348,13 @@ transform the data before making it available in the `await for` block.
 The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
+<?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
 {% prettify dart %}
 for (var path in paths) {
-  int lineNumber = 1;
-  Stream lines = new File(path)
-      .openRead()
-      [!.transform(utf8.decoder)!]
-      [!.transform(const LineSplitter());!]
+  var lineNumber = 1;
+  final lines = [!utf8.decoder!]
+      .bind(File(path).openRead())
+      .transform(const [!LineSplitter!]());
   try {
     await for (var line in lines) {
       if (showLineNumbers) {
@@ -430,27 +372,24 @@ The dart:convert library contains these and other data converters,
 including one for JSON.
 To use these converters you need to import the dart:convert library:
 
-{% prettify dart %}
+<?code-excerpt "misc/bin/dcat.dart" retain="dart:convert"?>
+```dart
 import 'dart:convert';
-{% endprettify %}
+```
 
 ## Writing a file
 
 The easiest way to write text to a file is to create a
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html" target="_blank">File</a>
+[File]({{ioAPI}}/File-class.html){:target="_blank"}
 object and use the `writeAsString()` method:
 
-{% prettify dart %}
-File quotesFile = new File('quotes.txt');
-String stronger = 'That which does not kill us makes us stronger. -Nietzsche';
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quote)"?>
+```dart
+final quotes = File('quotes.txt');
+const stronger = 'That which does not kill us makes us stronger. -Nietzsche';
 
-try {
-  await quotesFile.writeAsString(stronger, mode: FileMode.append);
-  print('Data written.');
-} catch (e) {
-  print('Oops!');
-}
-{% endprettify %}
+await quotes.writeAsString(stronger, mode: FileMode.append);
+```
 
 The `writeAsString()` method writes the data asynchronously.
 It opens the file before writing and closes the file when done.
@@ -465,45 +404,45 @@ You can continue to write to the file until done,
 at which time, you must close the file.
 The `close()` method is asynchronous and returns a Future.
 
-{% prettify dart %}
-IOSink quotes = new File('quotes.txt').openWrite(mode: FileMode.append);
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quotes)"?>
+```dart
+final quotes = File('quotes.txt').openWrite(mode: FileMode.append);
 
-quotes.write('A woman is like a tea bag; ');
-quotes.write('you never know how strong it is until it\'s in hot water.');
-quotes.writeln(' -Eleanor Roosevelt');
+quotes.write("Don't cry because it's over, ");
+quotes.writeln("smile because it happened. -Dr. Seuss");
 await quotes.close();
-print('Done!');
-{% endprettify %}
+```
 
 ## Getting environment information
 
-Use the
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html" target="_blank">Platform</a>
-class
+{% assign PlatformAPI = ioAPI | append: '/Platform' -%}
+
+Use the [Platform]({{PlatformAPI}}-class.html){:target="_blank"} class
 to get information about the machine and OS that the program is running on.
 Note: Use the Platform class from the dart:io library,
 not from the dart:html library.
 
-`Platform.environment` provides a copy of the environment
+[Platform.environment]({{PlatformAPI}}/environment.html){:target="_blank"}
+provides a copy of the environment
 variables in an immutable map. If you need a mutable map (modifiable copy) you
 can use `Map.from(Platform.environment)`.
 
-{% prettify dart %}
-Map environmentVars = Platform.environment;
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (env)"?>
+```dart
+final envVarMap = Platform.environment;
 
-print('PWD = ${environmentVars["PWD"]}');
-print('LOGNAME = ${environmentVars["LOGNAME"]}');
-print('PATH = ${environmentVars["PATH"]}');
-{% endprettify %}
+print('PWD = ${envVarMap["PWD"]}');
+print('LOGNAME = ${envVarMap["LOGNAME"]}');
+print('PATH = ${envVarMap["PATH"]}');
+```
 
 `Platform` provides other useful properties that give
 information about the machine, OS, and currently
-running program.
-For example:
+running program. For example:
 
-* `Platform.isMacOS()`
-* `Platform.numberOfProcessors`
-* `Platform.script.path`
+- [Platform.isMacOS()]({{PlatformAPI}}/isMacOS.html){:target="_blank"}
+- [Platform.numberOfProcessors]({{PlatformAPI}}/numberOfProcessors.html){:target="_blank"}
+- [Platform.script]({{PlatformAPI}}/script.html){:target="_blank"}
 
 ## Setting exit codes
 
@@ -519,6 +458,7 @@ The `dcat` program sets the exit code
 in the `_handleError()` function to indicate that an error
 occcurred during execution.
 
+<?code-excerpt "misc/bin/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
 {% prettify dart %}
 Future _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
@@ -538,11 +478,11 @@ instead of setting `exitCode` to 2,
 but `exit()` would quit the program
 and it might not process all of the files on the command line.
 
-<aside class="alert alert-info" markdown="1">
-Generally speaking, you are better off using the `exitCode` property,
-which sets the exit code but allows the program to continue through to its
-natural completion.
-</aside>
+{{site.alert.info}}
+  Generally speaking, you're better off using the `exitCode` property,
+  which sets the exit code but allows the program to continue through to its
+  natural completion.
+{{site.alert.end}}
 
 Although you can use any number for an exit code,
 by convention, the codes in the table below have the following meanings:
@@ -560,36 +500,31 @@ This tutorial described some basic API found in these classes from the dart:io l
 
 | API | Description |
 |---|---|
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/IOSink-class.html" target="_blank">IOSink</a> | Helper class for objects that consume data from streams. |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File-class.html" target="_blank">File</a> | Represents a file on the native file system |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Directory-class.html" target="_blank">Directory</a> | Represents a directory on the native file system |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/FileSystemEntity-class.html" target="_blank">FileSystemEntity</a> | Superclass for File and Directory |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/Platform-class.html" target="_blank">Platform</a> | Provides information about the machine and operating system |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdout.html" target="_blank">stdout</a> | The standard output |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stderr.html" target="_blank">stderr</a> | The standard error |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/stdin.html" target="_blank">stdin</a> | The standard input |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/exitCode.html" target="_blank">exitCode</a> | Sets the exit code |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/exit.html" target="_blank">exit()</a> | Sets the exit code and quits |
+| [IOSink]({{ioAPI}}/IOSink-class.html){:target="_blank"} | Helper class for objects that consume data from streams. |
+| [File]({{ioAPI}}/File-class.html){:target="_blank"} | Represents a file on the native file system |
+| [Directory]({{ioAPI}}/Directory-class.html){:target="_blank"} | Represents a directory on the native file system |
+| [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html){:target="_blank"} | Superclass for File and Directory |
+| [Platform]({{ioAPI}}/Platform-class.html){:target="_blank"} | Provides information about the machine and operating system |
+| [stdout]({{ioAPI}}/stdout.html){:target="_blank"} | The standard output |
+| [stderr]({{ioAPI}}/stderr.html){:target="_blank"} | The standard error |
+| [stdin]({{ioAPI}}/stdin.html){:target="_blank"} | The standard input |
+| [exitCode]({{ioAPI}}/exitCode.html){:target="_blank"} | Sets the exit code |
+| [exit()]({{ioAPI}}/exit.html){:target="_blank"} | Sets the exit code and quits |
 {: .table }
 
 In addition, this tutorial covers two classes that help with command-line arguments:
-
-| Class | Description |
-|---|---|
-| <a href="{{site.pub-api}}/args/latest/args/ArgParser-class.html" target="_blank">ArgParser</a> | A class that transforms a list of raw arguments and into a set of options, flags, and remaining values. |
-| <a href="{{site.pub-api}}/args/latest/args/ArgResults-class.html" target="_blank">ArgResults</a> | The result of parsing raw command line arguments using ArgParser. |
-{: .table }
+[ArgParser]({{argsAPI}}/ArgParser-class.html){:target="_blank"} and
+[ArgResults]({{argsAPI}}/ArgResults-class.html){:target="_blank"}.
 
 ## Other resources
 
-Check out the [Servers with Dart](https://dart-lang.github.io/server/)
+Check out the [Servers with Dart](https://dart-lang.github.io/server)
 to find more resources related to writing command-line apps.
 
 Refer to the API docs for
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html" target="_blank">dart:io,</a>
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html" target="_blank">dart:convert,</a>
-and the
-<a href="{{site.pub-api}}/args/latest/index.html" target="_blank">args</a>
+[dart:io,]({{ioAPI}}/dart-io-library.html){:target="_blank"}
+[dart:convert,]({{ioAPI}}/dart-convert-library.html){:target="_blank"}
+and the [args]({{argsAPI}}/..){:target="_blank"}
 package for more classes, functions, and properties.
 
 ## What next?
