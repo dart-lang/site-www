@@ -12,12 +12,37 @@ With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
-{% asset guides/avoid-empty-statements.png alt="`if (count < 10);` results in a hint: Avoid empty statements." %}
+<blockquote class="ml-3" markdown="1">
+<?code-excerpt "analysis/lib/lint.dart (empty_statements)"?>
+```dart
+void increment() {
+  if (count < 10) ; /*1*/
+  count++;
+}
+```
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+/ at \/*1*\//g"?>
+```nocode
+lint • Avoid empty statements at /*1*/ • empty_statements
+```
+</blockquote>
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
-{% asset guides/close-sinks.png alt="`_controller = new StreamController()` results in a hint: Close instances of `dart.core.Sink`." %}
+<blockquote class="ml-3" markdown="1">
+<?code-excerpt "analysis/lib/lint.dart (close_sinks)"?>
+```dart
+var _controller = StreamController<String>(); /*2*/
+```
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+/ at \/*2*\//g"?>
+```nocode
+lint • Close instances of `dart.core.Sink` at /*2*/ • close_sinks
+```
+</blockquote>
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
