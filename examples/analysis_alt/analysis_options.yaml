@@ -1,0 +1,23 @@
+include: analysis_options_linter.yaml
+
+# #docregion exclude, errors
+analyzer:
+  # #enddocregion exclude
+  errors:
+    todo: ignore
+    invalid_assignment: warning
+    missing_return: error
+    dead_code: info
+  # #enddocregion errors
+  # #docregion exclude
+  exclude:
+    - lib/client.dart
+    - lib/server/*.g.dart
+    - test/_data/**
+# #enddocregion exclude
+
+linter:
+  rules:
+    - annotate_overrides
+    - await_only_futures
+    - camel_case_types

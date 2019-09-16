@@ -4,6 +4,7 @@ analyzer:
   exclude: [build/**]
   strong-mode:
     implicit-casts: false
+    implicit-dynamic: false
 
 linter:
   # Rules and documentation: http://dart-lang.github.io/linter/lints

@@ -1,0 +1,3 @@
+Analyzing analysis_options.yaml, lib...
+  error • A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 • invalid_assignment
+1 error found.
