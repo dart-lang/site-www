@@ -2,7 +2,7 @@
 title: The Dart type system
 description: Why and how to write sound Dart code.
 ---
-<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
