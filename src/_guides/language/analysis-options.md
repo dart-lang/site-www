@@ -3,6 +3,17 @@ title: Customizing static analysis
 description: Use an analysis options file and code comments to customize static analysis.
 ---
 
+<style>
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8, li.L9 {
+  background: none;
+  list-style-type: decimal;
+}
+pre.prettyprint.analyzer .highlight {
+    border-bottom: 2px red dashed;
+}
+</style>
+
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
@@ -13,18 +24,18 @@ simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "analysis/lib/lint.dart (empty_statements)"?>
-```dart
+<?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
+{% prettify dart class="linenums:10 analyzer"%}
 void increment() {
-  if (count < 10) ; /*1*/
+  if (count < 10) [!;!]
   count++;
 }
-```
+{% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+/ at \/*1*\//g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Avoid empty statements at /*1*/ • empty_statements
+lint • Avoid empty statements at example.dart:11 • empty_statements
 ```
 </blockquote>
 
@@ -32,15 +43,15 @@ The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "analysis/lib/lint.dart (close_sinks)"?>
-```dart
-var _controller = StreamController<String>(); /*2*/
-```
+<?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(_c.*?)(;)/[!$1!]$2/g"?>
+{% prettify dart class="linenums:11 analyzer"%}
+var [!_controller = StreamController<String>()!];
+{% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+/ at \/*2*\//g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Close instances of `dart.core.Sink` at /*2*/ • close_sinks
+lint • Close instances of `dart.core.Sink` at example.dart:11 • close_sinks
 ```
 </blockquote>
 
@@ -346,9 +357,9 @@ To suppress more than one rule, use a comma-separated list:
 
 ### Suppressing rules for a line of code
 
-To suppress a specific rule on a specific line of code, preceed that line with
-an `ignore` comment.Here's example of ignoring code that causes a runtime error,
-as you might do in a language test:
+To suppress a specific rule on a specific line of code, put an `ignore` comment
+above the line of code. Here's an example of ignoring code that causes a runtime
+error, as you might do in a language test:
 
 <?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart

@@ -6,13 +6,13 @@ import 'dart:async';
 int count = 0;
 // #docregion empty_statements
 void increment() {
-  if (count < 10) ; /*1*/
+  if (count < 10) ;
   count++;
 }
 // #enddocregion empty_statements
 
 void controller() {
   // #docregion close_sinks
-  var _controller = StreamController<String>(); /*2*/
+  var _controller = StreamController<String>();
   // #enddocregion close_sinks
 }
