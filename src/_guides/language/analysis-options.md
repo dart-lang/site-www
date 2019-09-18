@@ -174,7 +174,7 @@ You can use the flags together or separately; both default to `true`.
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
-{% prettify dart class="linenums:10 analyzer" %}
+{% prettify dart class="analyzer" %}
 Object o = ...
 String s = [!o!]; // Implicit downcast
 String s2 = s.substring(1);
