@@ -24,10 +24,10 @@ void main(<a tabindex="0" role="button" data-toggle="popover" title="Command-lin
   dcat(paths, argResults[lineNumber] as bool);
 }
 
-Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role="button" data-toggle="popover" title="Async function" data-content="An async function is marked with <code>async</code> and returns a Future.">async</a> {
+Future dcat(List&lt;String&gt; paths, bool showLineNumbers) <a tabindex="0" role="button" data-toggle="popover" title="Async function" data-content="An asynchronous function marked with <code>async</code> that returns a future.">async</a> {
   if (paths.isEmpty) {
     // No files provided as arguments. Read from stdin and print each line.
-    <a tabindex="0" role="button" data-toggle="popover" title="Using await" data-content="The <code>await</code> keyword, which works only in async functions, makes the program pause until the following expression completes.">await</a> <a tabindex="0" role="button" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout)</a>;
+    <a tabindex="0" role="button" data-toggle="popover" title="Using await" data-content="The <code>await</code> keyword, which works only in <code>async</code> functions, makes the program pause until the following expression completes.">await</a> <a tabindex="0" role="button" data-toggle="popover" title="Standard I/O streams" data-content="This line reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout)</a>;
   } else {
     for (var path in paths) {
       var lineNumber = 1;

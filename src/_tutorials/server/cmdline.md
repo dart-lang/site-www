@@ -24,7 +24,7 @@ prevpage:
   * Command-line applications need to do input and output.
   * The dart:io library provides I/O functionality.
   * The args package helps define and parse command-line arguments.
-  * A Future represents a value that will be available at some time in the future.
+  * A `Future` object represents a value that will be available at some time in the future.
   * Streams provide a series of asynchronous data events.
   * Most input and output requires the use of streams.
 </div>
@@ -87,36 +87,38 @@ Use `dart --verbose` to see all options.
 This tutorial covers the details of a small sample app called `dcat`, which
 displays the contents of any files listed on the command line. This app uses
 various classes, functions, and properties available to command-line apps. For a
-brief description of key app features, click on the highlighted code below.
+brief description of key app features, click the highlighted code below.
 
 {% include_relative _dcat-example.html %}
 
-Run the app from the command line:
+Here's an example of running the app from the command line:
 
 ```terminal
-$ dart dcat.dart -n dcat.dart
-1 // Copyright (c) 2013, the Dart project authors. Please see the AUTHORS file
-2 // for details. All rights reserved. Use of this source code is governed by a
-3 // BSD-style license that can be found in the LICENSE file.
+$ dart dcat.dart -n quote.txt
+1 Be yourself. Everyone else is taken. -Oscar Wilde
+2 Don't cry because it's over, smile because it happened. -Dr. Seuss
+3 You only live once, but if you do it right, once is enough. -Mae West
 ...
 ```
 
-The app displays the contents of the source code file and preceeds each line
-with a line number.
+This command displays each line of the specified file. Because the `-n` argument
+is present, a line number is displayed before each line.
 
 ## Parsing command-line arguments
 
-The [args]({{site.pub}}/packages/args) package provides
+The [args package]({{site.pub}}/packages/args){:target="_blank"} provides
 parser support for transforming command-line arguments
 into a set of options, flags, and additional values.
-Import the library as follows:
+Import the package's
+[args library]({{argsAPI}}/args-library.html){:target="_blank"}
+as follows:
 
 <?code-excerpt "misc/bin/dcat.dart" retain="package:args"?>
 ```dart
 import 'package:args/args.dart';
 ```
 
-The `args` package contains these classes, among others:
+The `args` library contains these classes, among others:
 
 | Class | Description |
 |---|---|
@@ -151,21 +153,21 @@ result of parsing command-line arguments is stored in `argResults`.
 The following diagram shows how the `dcat` command line used above
 is parsed into an `ArgResults` object.
 
-![ArgsParser parses command-line arguments](images/commandlineargs.png)
+![Run dcat from the command-line](images/commandlineargs.png){:width="350"}
 
 You can access flags and options by name,
 treating an `ArgResults` like a `Map`.
 You can access other values using the `rest` property.
 
-The [API docs]({{argsAPI}}/..){:target="_blank"}
-for the `args` library provide detailed information to help you use
-`ArgsParser` and `ArgResults` classes.
+The [API reference]({{argsAPI}}/args-library.html){:target="_blank"}
+for the `args` library provides detailed information to help you use
+the `ArgParser` and `ArgResults` classes.
 
 ## Reading and writing with stdin, stdout, and stderr
 
 Like other languages,
 Dart has standard output, standard error, and standard input streams.
-The standard I/O streams are defined at the top level of the dart:io library,
+The standard I/O streams are defined at the top level of the dart:io library:
 
 | Stream | Description |
 |---|---|
@@ -181,7 +183,9 @@ Import the dart:io library as follows:
 import 'dart:io';
 ```
 
-Only command-line applications, not web applications, can use the dart:io library.
+{{site.alert.note}}
+  Web apps (apps that depend on dart:html) can't use the dart:io library.
+{{site.alert.end}}
 
 ### stdout
 
@@ -262,7 +266,7 @@ if the user does not provide a filename on the command line,
 the program instead reads from stdin
 using the `pipe()` method.
 Because `pipe()` is asynchronous
-(returning a Future, even though this code doesn't use that return value),
+(returning a future, even though this code doesn't use that return value),
 the code that calls it uses `await`.
 
 <?code-excerpt "misc/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
@@ -273,7 +277,7 @@ await stdin.[!pipe!](stdout);
 
 In this case,
 the user types in lines of text and the program copies them to stdout.
-The user signals the end of input by pressing <kbd>Control</kbd>-<kbd>D</kbd>.
+The user signals the end of input by pressing `Control`+`D`.
 
 ```terminal
 $ dart dcat.dart
@@ -296,7 +300,7 @@ it performs the check asynchronously.
 
 The following code from the `dcat` example uses `FileSystemEntity`
 to determine if the path provided on the command line is a directory.
-The Future returns a boolean that indicates if the path is a directory or not.
+The future returns a boolean that indicates if the path is a directory or not.
 Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
@@ -311,7 +315,7 @@ if ([!await FileSystemEntity.isDirectory(path)!]) {
 
 Other interesting methods in the `FileSystemEntity` class
 include `isFile()`, `exists()`, `stat()`, `delete()`,
-and `rename()`, all of which also use a Future to return a value.
+and `rename()`, all of which also use a future to return a value.
 
 `FileSystemEntity` is the superclass for the `File`, `Directory`, and `Link` classes.
 
@@ -402,7 +406,7 @@ If you want to write more data, you can open the file for writing.
 The `openWrite()` method returns an IOSink (the same type as stdin and stderr).
 You can continue to write to the file until done,
 at which time, you must close the file.
-The `close()` method is asynchronous and returns a Future.
+The `close()` method is asynchronous and returns a future.
 
 <?code-excerpt "misc/lib/tutorial/cmdline.dart (write quotes)"?>
 ```dart
@@ -419,8 +423,6 @@ await quotes.close();
 
 Use the [Platform]({{PlatformAPI}}-class.html){:target="_blank"} class
 to get information about the machine and OS that the program is running on.
-Note: Use the Platform class from the dart:io library,
-not from the dart:html library.
 
 [Platform.environment]({{PlatformAPI}}/environment.html){:target="_blank"}
 provides a copy of the environment
@@ -514,21 +516,16 @@ This tutorial described some basic API found in these classes from the dart:io l
 
 In addition, this tutorial covers two classes that help with command-line arguments:
 [ArgParser]({{argsAPI}}/ArgParser-class.html){:target="_blank"} and
-[ArgResults]({{argsAPI}}/ArgResults-class.html){:target="_blank"}.
+[ArgResults.]({{argsAPI}}/ArgResults-class.html){:target="_blank"}
 
-## Other resources
-
-Check out the [Servers with Dart](https://dart-lang.github.io/server)
-to find more resources related to writing command-line apps.
-
-Refer to the API docs for
+For more classes, functions, and properties,
+consult to the API reference for
 [dart:io,]({{ioAPI}}/dart-io-library.html){:target="_blank"}
 [dart:convert,]({{ioAPI}}/dart-convert-library.html){:target="_blank"}
-and the [args]({{argsAPI}}/..){:target="_blank"}
-package for more classes, functions, and properties.
+and the [args]({{argsAPI}}/args-library.html){:target="_blank"} package.
 
 ## What next?
 
-* If you're interested in server-side programming,
+If you're interested in server-side programming,
 check out the next tutorial, which covers
 [HTTP clients and servers](/tutorials/server/httpserver).
