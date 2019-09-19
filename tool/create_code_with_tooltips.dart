@@ -19,6 +19,11 @@ final sources = [
     '$repoBase/examples/misc/lib/pi_monte_carlo_tooltips.html',
     '$repoBase/src/_main-example.html',
   ),
+  _SrcAndTipPaths(
+    '$repoBase/examples/misc/bin/dcat.dart',
+    '$repoBase/examples/misc/bin/dcat_tooltips.html',
+    '$repoBase/src/_tutorials/server/_dcat-example.html',
+  ),
 ];
 
 void main() {
