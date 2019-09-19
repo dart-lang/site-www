@@ -3,7 +3,7 @@ title: A tour of the Dart language
 description: A tour of all of the major Dart language features.
 short-title: Language tour
 ---
-<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
@@ -757,7 +757,7 @@ var list2 = [0, ...?list];
 assert(list2.length == 1);
 {% endprettify %}
 
-For more details and examples of using the spread operator, see the 
+For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
 <a id="collection-operators"> </a>
@@ -792,7 +792,7 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 {% endprettify %}
 
-For more details and examples of using collection if and for, see the 
+For more details and examples of using collection if and for, see the
 [control flow collections proposal.][collections proposal]
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md

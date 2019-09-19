@@ -285,7 +285,6 @@ listening on the original.
 Stream<R> cast<R>();
 Stream<S> expand<S>(Iterable<S> Function(T element) convert);
 Stream<S> map<S>(S Function(T event) convert);
-Stream<R> retype<R>();
 Stream<T> skip(int count);
 Stream<T> skipWhile(bool Function(T element) test);
 Stream<T> take(int count);

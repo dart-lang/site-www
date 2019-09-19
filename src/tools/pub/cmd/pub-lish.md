@@ -47,7 +47,7 @@ This can be useful if you're running your own local package server for testing.
 The main pub server is itself open source and available [here][pub repo].
 
 [pubsite]: {{site.pub}}
-[pub repo]: https://github.com/dart-lang/pub-dartlang
+[pub repo]: https://github.com/dart-lang/pub-dev
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).

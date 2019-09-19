@@ -43,61 +43,71 @@ function analyze_and_test() {
   pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
+  # TODO: rename DIR since it now more generally contains analysis targets, not only directories
   DIR=()
-  for d in bin lib test; do
-    if [[ -d $d ]]; then DIR[${#DIR}]=$d; fi
+  for d in analysis_options.yaml bin lib test; do
+    if [[ -e $d ]]; then DIR+=($d); fi
   done
 
   if [[ ${#DIR} -le 0 ]]; then
     echo
     echo "NOTHING TO ANALYZE in this project."
-  else
-    echo
-    EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
-    if [[ ! -e $EXPECTED_FILE ]]; then
-      EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
-    fi
-    travis_fold start analyzeAndTest.analyze
-    if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
-      # Run the analyzer a first time to ensure that there are no errors.
-      #
-      # Note: catch non-zero exit codes to avoid aborting this script when the
-      # analyzer reports "foo.dart is a part and cannot be analyzed":
-      $ANALYZE ${DIR[*]} > $LOG_FILE || {
-        echo "WARNING: Ignoring Analyzer exit code $?"
-      }
-      if grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
-        cat $LOG_FILE
-        echo "No analysis errors or warnings should be present in original source files."
-        echo "Ensure that these issues are disabled using appropriate markers like: "
-        echo "  // ignore_for_file: $DART_MAJOR_VERS, some_analyzer_error_or_warning_id"
-        EXIT_STATUS=1
-        return 1;
-      fi
-    fi
-    disableInFileAnalyzerFlags ${DIR[*]}
+    return
+  fi
+
+  echo
+  EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
+  if [[ ! -e $EXPECTED_FILE ]]; then
+    EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
+  fi
+  travis_fold start analyzeAndTest.analyze
+  if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
+    # Run the analyzer a first time to ensure that there are no errors.
+    #
+    # Note: catch non-zero exit codes to avoid aborting this script when the
+    # analyzer reports "foo.dart is a part and cannot be analyzed":
+    echo "$ $ANALYZE ${DIR[*]}"
     $ANALYZE ${DIR[*]} > $LOG_FILE || {
       echo "WARNING: Ignoring Analyzer exit code $?"
     }
-    if [[ -e $EXPECTED_FILE ]]; then
-      if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
-        echo "Analyzer output is as expected ($EXPECTED_FILE)."
-      else
-        cat $LOG_FILE
-        echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
-        (set -x; diff $LOG_FILE $EXPECTED_FILE) || true
-        EXIT_STATUS=1
-        if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
-      fi
-    elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
+    if grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
       cat $LOG_FILE
+      echo "No analysis errors or warnings should be present in original source files."
+      echo "Ensure that these issues are disabled using appropriate markers like: "
+      echo "  // ignore_for_file: $DART_MAJOR_VERS, some_analyzer_error_or_warning_id"
       EXIT_STATUS=1
-      if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+      return 1;
+    fi
+  fi
+  disableInFileAnalyzerFlags ${DIR[*]}
+  echo "$ $ANALYZE ${DIR[*]}"
+  $ANALYZE ${DIR[*]} > $LOG_FILE || {
+    echo "WARNING: Ignoring analyzer exit code $?"
+  }
+  if [[ -e $EXPECTED_FILE ]]; then
+    if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
+      echo "Analyzer output is as expected ($EXPECTED_FILE)."
     else
       cat $LOG_FILE
+      echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
+      (set -x; diff $LOG_FILE $EXPECTED_FILE) || true
+      EXIT_STATUS=1
+      if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
     fi
-    reEnableInFileAnalyzerFlags ${DIR[*]}
-    travis_fold end analyzeAndTest.analyze
+  elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
+    cat $LOG_FILE
+    EXIT_STATUS=1
+    if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+  else
+    cat $LOG_FILE
+  fi
+  reEnableInFileAnalyzerFlags ${DIR[*]}
+  travis_fold end analyzeAndTest.analyze
+
+  if [[ ! -d test ]]; then
+    echo
+    echo "NOTHING TO TEST in this project."
+    return
   fi
 
   echo
@@ -107,7 +117,7 @@ function analyze_and_test() {
   TEST="pub run test"
   TEST_ARGS="--exclude-tags=browser"
 
-  echo $TEST $TEST_ARGS
+  echo "$ $TEST $TEST_ARGS"
   $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
   LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
   if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
@@ -125,6 +135,7 @@ function analyze_and_test() {
     if [[ -n $TRAVIS ]]; then PLATFORM=travischrome; fi
     # Name the sole browser test file, otherwise all other files get compiled too:
     TEST="pub run test"
+    echo "$ $TEST --tags browser --platform $PLATFORM $TEST_FILES"
     $TEST --tags browser --platform $PLATFORM $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)

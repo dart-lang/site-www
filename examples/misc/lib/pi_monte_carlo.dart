@@ -1,28 +1,30 @@
 // ignore_for_file: sort_constructors_first, type_annotate_public_apis
 
-// WARNING:
-//
-// 1. If you change this file, make sure that the tool tips in
-//    pi_monte_carlo_tooltips.html still have valid name attributes.
-// 2. Regenerate the HTML version of the sample, which is used on the site
-//    homepage by running tool/create_site_main_example.dart
-// 3. To generate the DartPad version, simply delete all the //!foo markers
+// IMPORTANT NOTE:
+// 1. If you change this file, ensure that the associated tooltip data remains
+//    valid (*_tooltips.html).
+// 2. Regenerate the HTML version of this sample, by running
+//    tool/create_code_with_tooltips.dart
+// 3. To generate the DartPad version: (1) delete lines containly only tip
+//    instructions. (2) Trim //!foo markers from the end of the remaining lines,
 //    e.g., using this Perl regexp: / ?\/\/!.*//g
 
 import 'dart:html'; //!web-only
 import 'dart:math' show Random; //!tip("dart:math") //!tip("import")
-//!web-only
+
 int numIterations = 500; //!web-only
- //!web-only
+//!web-only
 // We changed a few lines of code to make this sample nicer //!web-only
 // on the web (so that the execution waits for animation frame, //!web-only
 // the number gets updated in the DOM, and the program ends //!web-only
 // after 500 iterations). //!web-only
-
-main() async { //!tip("main()")
+//!web-only
+//!tip("main()")
+main() async {
   print('Compute π using the Monte Carlo method.'); //!tip("π")
   var output = querySelector("#value-of-pi"); //!web-only
-  await for (var estimate in computePi().take(numIterations)) { //!tip("await")
+  //!tip("await")
+  await for (var estimate in computePi().take(numIterations)) {
     print('π ≅ $estimate'); //!tip("$estimate")
     output.text = estimate.toStringAsFixed(5); //!web-only
     await window.animationFrame; //!web-only
@@ -30,10 +32,12 @@ main() async { //!tip("main()")
 }
 
 /// Generates a stream of increasingly accurate estimates of π. //!tip("///")
-Stream<double> computePi({int batch = 100000}) async* { //!tip("async*") //!tip("{int batch = 100000}") //!tip("<double>")
+//!tip("async*") //!tip("{int batch = 100000}") //!tip("<double>")
+Stream<double> computePi({int batch = 100000}) async* {
   var total = 0; //!tip("var")
   var count = 0;
-  while (true) { //!tip("while (true)")
+  //!tip("while (true)")
+  while (true) {
     var points = generateRandom().take(batch); //!tip("take")
     var inside = points.where((p) => p.isInsideUnitCircle); //!tip("=>")
     total += batch;
@@ -48,14 +52,16 @@ Stream<double> computePi({int batch = 100000}) async* { //!tip("async*") //!tip(
   }
 }
 
-Iterable<Point> generateRandom([int seed]) sync* { //!tip("sync*") //!tip("[int seed]") //!tip("Iterable")
+//!tip("sync*") //!tip("[int seed]") //!tip("Iterable")
+Iterable<Point> generateRandom([int seed]) sync* {
   final random = Random(seed); //!tip("final")
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble()); //!tip("yield")
   }
 }
 
-class Point { //!tip("class")
+//!tip("class")
+class Point {
   final double x, y; //!tip("double")
   const Point(this.x, this.y); //!tip("this.x") //!tip("const")
   bool get isInsideUnitCircle => x * x + y * y <= 1; //!tip("get")

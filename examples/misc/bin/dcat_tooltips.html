@@ -1,0 +1,53 @@
+<!--
+  Tooltip data.
+
+  Source file: dcat.dart
+
+  Ensure that:
+  - Each //!tip() entry in the source file has a corresponding entry below (an
+    entry with a `name` attribute that matches the //!tip() text), in the same
+    order as in the source file.
+  - Each entry below has a corresponding //!tip() entry in the source file.
+-->
+<ul class="fp-tooltips" style="display: none">
+  <li name="List<String> arguments" title="Command-line arguments">
+    Command-line arguments are passed in by the system when the program starts.
+  </li>
+  <li name="argResults = parser.parse(arguments)" title="Arguments parser">
+    The <code>ArgParser</code> class provides help with parsing command-line arguments.
+  </li>
+  <li name="async" title="Async function">
+    A function marked as <code>async</code>. These functions are asynchronous and return futures.
+  </li>
+  <li name="await" title="Using await">
+    The <code>await</code> keyword, which works only in <code>async</code> functions,
+    makes the program pause until the following expression completes.
+  </li>
+  <li name="stdin.pipe(stdout)" title="Standard I/O streams">
+    This line reads from the standard input stream and pipes the data to the standard output stream.
+  </li>
+  <li name="File(path)" title="Create a File object">
+    Use the <code>File</code> class to represent the file on the native file system.
+  </li>
+  <li name="openRead()" title="Open a file for reading">
+    Read the content from the file asynchronously.
+  </li>
+  <li name="transform(const LineSplitter())" title="Data converters">
+    Convert data as it becomes available on the stream.
+  </li>
+  <li name="try" title="Exception handling">
+    Function calls that might generate an exception are placed in a <code>try</code> block.
+  </li>
+  <li name="await for (var line in lines)" title="Get data from the stream">
+    Use <code>await for</code> to loop over the values as they become available on the stream. The program pauses while waiting for the next line.
+  </li>
+  <li name="catch" title="Exception handling">
+    Any errors encountered in the stream are handled in the <code>catch</code> block.
+  </li>
+  <li name="await FileSystemEntity.isDirectory(path)" title="Test the path">
+    You can get information about the file system on which your program is running. The <code>await</code> keyword causes error handling to pause until the path is available.
+  </li>
+  <li name="exitCode = 2" title="Exit code">
+    A well-behaved command-line app sets an exit code to indicate whether the program was successful.
+  </li>
+</ul>

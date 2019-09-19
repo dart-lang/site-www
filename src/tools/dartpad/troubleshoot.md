@@ -24,6 +24,10 @@ The dart.dev homepage and many codelabs have embedded DartPads.
 If these DartPads don't appear at all,
 then try the following:
 
+* Make sure you're using a [supported browser][browser].
+  DartPad might not work in other browsers, and is known not to work in
+  the default configuration of the Brave browser.
+
 * If you're using an ad blocker, disable it.
 
 * If you don't use an ad blocker, check whether you've disabled third-party
@@ -33,7 +37,6 @@ then try the following:
 
   DartPad doesn't use cookies, but it does rely on local storage,
   which browsers generally disable when you disable cookies.
-
 
 ## DartPad doesn't work in China
   
