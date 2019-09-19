@@ -3,6 +3,17 @@ title: Customizing static analysis
 description: Use an analysis options file and code comments to customize static analysis.
 ---
 
+<style>
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8, li.L9 {
+  background: none;
+  list-style-type: decimal;
+}
+pre.prettyprint.analyzer .highlight {
+    border-bottom: 2px red dashed;
+}
+</style>
+
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
@@ -12,12 +23,37 @@ With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
-{% asset guides/avoid-empty-statements.png alt="`if (count < 10);` results in a hint: Avoid empty statements." %}
+<blockquote class="ml-3" markdown="1">
+<?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
+{% prettify dart class="linenums:10 analyzer"%}
+void increment() {
+  if (count < 10) [!;!]
+  count++;
+}
+{% endprettify %}
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+```nocode
+lint • Avoid empty statements at example.dart:11 • empty_statements
+```
+</blockquote>
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
-{% asset guides/close-sinks.png alt="`_controller = new StreamController()` results in a hint: Close instances of `dart.core.Sink`." %}
+<blockquote class="ml-3" markdown="1">
+<?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(_c.*?)(;)/[!$1!]$2/g"?>
+{% prettify dart class="linenums:11 analyzer"%}
+var [!_controller = StreamController<String>()!];
+{% endprettify %}
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+```nocode
+lint • Close instances of `dart.core.Sink` at example.dart:11 • close_sinks
+```
+</blockquote>
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
@@ -44,18 +80,17 @@ add static analysis to your tool, see the
 [analyzer package]({{site.pub}}/packages/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-The analyzer error codes are listed in the [Dart SDK
-repo.][analyzer error codes]
-</aside>
+{{site.alert.note}}
+  The analyzer error codes are listed in the [Dart SDK
+  repo.][analyzer error codes]
+{{site.alert.end}}
 
 ## The analysis options file
 
 Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warn}}
   **Breaking change:** The conventional name for the analysis options file
   used to be `.analysis_options` (note the leading dot and missing `.yaml` suffix).
   We expect support for the `.analysis_options` name to go away in a future
@@ -64,38 +99,43 @@ at the root of the package, in the same directory as the pubspec file.
   {% comment %}
   Tracking issue: https://github.com/dart-lang/sdk/issues/28385
   {% endcomment %}
-</aside>
+{{site.alert.end}}
 
 Here's a sample analysis options file:
 
-{% prettify yaml %}
+<?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- camel/" remove="http:"?>
+```yaml
 include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  exclude: [build/**]
+  strong-mode:
+    implicit-casts: false
 
 linter:
   rules:
     - camel_case_types
+```
 
-analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-{% endprettify %}
+The sample illustrates the most common top-level entries:
 
-The <code>include: <em>url</em></code> entry
-brings in YAML code from the specified URL — in this case,
-from a file in the `pedantic` package.
-The `linter:` entry [enables linter rules](#enabling-linter-rules).
-You can use the `analyzer:` entry to customize static analysis —
-[enabling stricter type checks](#enabling-additional-type-checks), 
-[excluding files](#excluding-files),
-[ignoring specific rules](#ignoring-rules), or
-[changing the severity of rules](#changing-the-severity-of-rules).
+- Use <code>include: <em>url</em></code> to
+  bring in options from the specified URL — in this case,
+  from a file in the `pedantic` package.
+- Use the `analyzer:` entry to customize static analysis —
+  [enabling stricter type checks](#enabling-additional-type-checks),
+  [excluding files](#excluding-files),
+  [ignoring specific rules](#ignoring-rules), or
+  [changing the severity of rules](#changing-the-severity-of-rules).
+- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
+
 Another tag you might see is `language:`,
 which is used for experimental language features.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.warn}}
   **YAML is sensitive to whitespace.** Don't use tabs in a YAML file,
   and use 2 spaces to denote each level of indentation.
-</aside>
+{{site.alert.end}}
 
 If the analyzer can't find an analysis options file at the package root,
 it walks up the directory tree, looking for one.
@@ -116,15 +156,15 @@ If you want stricter static checks than
 the [Dart type system][sound-dart] requires,
 consider using the `implicit-casts` and `implicit-dynamic` flags:
 
-{% prettify yaml %}
+<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
+```yaml
 analyzer:
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
-{% endprettify %}
+```
 
-You can use the flags together or separately;
-both default to `true`.
+You can use the flags together or separately; both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
@@ -132,11 +172,19 @@ both default to `true`.
   The following valid Dart code
   includes an implicit downcast that would be caught by this flag:
 
-{% prettify dart %}
-Object o = ...;
-String s = o;  // Implicit downcast
+{:.fails-sa}
+<?code-excerpt "analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
+{% prettify dart class="analyzer" %}
+Object o = ...
+String s = [!o!]; // Implicit downcast
 String s2 = s.substring(1);
 {% endprettify %}
+
+{:.console-output}
+<?code-excerpt "analysis/analyzer-results.txt" retain="lib/assignment.dart" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+```nocode
+error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
+```
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
@@ -164,6 +212,7 @@ and include its `analysis_options.yaml` file.
 Unless you need to use the `pedantic` API, declare a dev dependency on `pedantic`
 in your `pubspec.yaml` file:
 
+<?code-excerpt "analysis/pubspec.yaml" retain="/dev_dep|pedantic/"?>
 ```yaml
 dev_dependencies:
   pedantic: ^1.0.0
@@ -172,12 +221,12 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
+<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:"?>
 ```yaml
 include: package:pedantic/analysis_options.yaml
 ```
 
-<aside class="alert alert-warning" markdown="1">
-  **Note:**
+{{site.alert.important}}
   When a **new version of `pedantic`** is published,
   code that previously passed analysis might **start failing analysis.**
   We recommend updating your code to work with the new rules.
@@ -186,7 +235,7 @@ include: package:pedantic/analysis_options.yaml
   (as described [in the pedantic README][]),
   explicitly enable individual linter rules,
   or [disable individual rules][].
-</aside>
+{{site.alert.end}}
 
 [disable individual rules]: #disabling-individual-rules
 
@@ -197,20 +246,20 @@ followed by `rules:`.
 On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes. For example:
 
-{% prettify yaml %}
+<?code-excerpt "analysis/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
+```yaml
 linter:
   rules:
-    - always_declare_return_types
-    - camel_case_types
-    - empty_constructor_bodies
     - annotate_overrides
-    - avoid_init_to_null
+    - await_only_futures
+    - camel_case_types
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
     - constant_identifier_names
-    - one_member_abstracts
-    - slash_for_doc_comments
-    - sort_constructors_first
-    - unnecessary_brace_in_string_interps
-{% endprettify %}
+    - control_flow_in_finally
+    - empty_statements
+```
 
 {% comment %}
 Brian expressed concern about including this:
@@ -222,7 +271,7 @@ for more information.
 
 ### Disabling individual rules
 
-If you include an analysis options file such as the one in `pedantic`, 
+If you include an analysis options file such as the one in `pedantic`,
 you might want to disable some of the included rules.
 Disabling individual rules is similar to enabling them,
 but with two differences:
@@ -232,24 +281,25 @@ but with two differences:
 
 Here's an example of an analysis options file
 that uses all pedantic rules except `avoid_shadowing_type_parameters`.
-It also adds the lint `await_only_futures`:
+It also enables the lint `await_only_futures`:
 
-{% prettify yaml %}
+<?code-excerpt "analysis_alt/analysis_options_linter.yaml"?>
+```yaml
 include: package:pedantic/analysis_options.yaml
 
 linter:
   rules:
     avoid_shadowing_type_parameters: false
     await_only_futures: true
-{% endprettify %}
+```
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.note}}
   **If you disable any rules, then use key-value syntax to enable rules.**
   For example, the preceding example can’t use `- await_only_futures`;
   instead, it must use `await_only_futures: true`.
   The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
   is that YAML doesn't support mixing list and key-value syntaxes.
-</aside>
+{{site.alert.end}}
 
 ## Excluding code from analysis
 
@@ -271,24 +321,17 @@ You can also [change the severity of rules][].
 
 ### Excluding files
 
-To exclude files from static analysis,
-use `exclude:` in the analysis options file:
+To exclude files from static analysis, use the `exclude:` analyzer option. You
+can list individual files, or use [glob]({{site.pub}}/packages/glob) syntax:
 
-{% prettify yaml %}
+<?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
+```yaml
 analyzer:
   exclude:
-    - lib/client/piratesapi.dart
-{% endprettify %}
-
-You can specify a group of files using
-[glob]({{site.pub}}/packages/glob) syntax:
-
-{% prettify yaml %}
-analyzer:
-  exclude:
-    - src/test/_data/**
-    - test/*_example.dart
-{% endprettify %}
+    - lib/client.dart
+    - lib/server/*.g.dart
+    - test/_data/**
+```
 
 
 ### Suppressing rules for a file
@@ -296,49 +339,48 @@ analyzer:
 To ignore a specific rule for a specific file,
 add an `ignore_for_file` comment to the file:
 
-{% prettify dart %}
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
+```dart
 // ignore_for_file: unused_import
-{% endprettify %}
+```
 
 This acts for the whole file, before or after the comment, and is
 particularly useful for generated code.
 
 To suppress more than one rule, use a comma-separated list:
 
-{% prettify dart %}
-// ignore_for_file: unused_import, invalid_assignment
-{% endprettify %}
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
+```dart
+// ignore_for_file: unused_import, unused_local_variable
+```
 
 
 ### Suppressing rules for a line of code
 
-To suppress a specific rule on a specific line of code,
-preceed that line with an `ignore` comment:
+To suppress a specific rule on a specific line of code, put an `ignore` comment
+above the line of code. Here's an example of ignoring code that causes a runtime
+error, as you might do in a language test:
 
-{% prettify dart %}
-// ignore: <linter rule>
-{% endprettify %}
-
-Here's example of ignoring code that causes a runtime error,
-as you might do in a language test:
-
-{% prettify dart %}
+<?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
+```dart
 // ignore: invalid_assignment
 int x = '';
-{% endprettify %}
+```
 
 To suppress more than one rule, supply a comma-separated list:
 
-{% prettify dart %}
+<?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
+```dart
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;
-{% endprettify %}
+```
 
 Alternatively, append the ignore rule to the line that it applies to:
 
-{% prettify dart %}
+<?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
+```dart
 int x = ''; // ignore: invalid_assignment
-{% endprettify %}
+```
 
 ## Customizing analysis rules
 
@@ -370,11 +412,12 @@ by using the `errors:` field.
 List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
 analysis options file instructs the analysis tools to ignore the TODO rule:
 
-{% prettify yaml %}
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
+```yaml
 analyzer:
   errors:
     todo: ignore
-{% endprettify %}
+```
 
 
 ### Changing the severity of rules
@@ -385,13 +428,14 @@ For example, the following analysis options file instructs the analysis tools to
 treat invalid assignments as warnings and missing returns as errors,
 and to provide information (but not a warning or error) about dead code:
 
-{% prettify yaml %}
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
+```yaml
 analyzer:
   errors:
     invalid_assignment: warning
     missing_return: error
     dead_code: info
-{% endprettify %}
+```
 
 
 ## Resources
