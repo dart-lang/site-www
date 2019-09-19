@@ -85,11 +85,11 @@ but you'll need to adjust the instructions to match your app.
      using [Stagehand:][stagehand]
 
      ```terminal
-> mkdir test_app
-> cd test_app
-> stagehand web-angular
-> pub get
-```
+     $ mkdir test_app
+     $ cd test_app
+     $ stagehand web-angular
+     $ pub get
+     ```
 
    * If you're using a Dart IDE or editor,
     create an **AngularDart web app** and name it `test_app`.
@@ -99,7 +99,7 @@ but you'll need to adjust the instructions to match your app.
    using either your IDE or `webdev` at the command line.
 
    ```terminal
-   > webdev serve
+   $ webdev serve
    ```
 
    <aside class="alert alert-info" markdown="1">
@@ -255,15 +255,15 @@ you also need the [stagehand tool.][stagehand]
 Use pub to get these tools:
 
 ```terminal
-> pub global activate webdev
-> pub global activate stagehand
+$ pub global activate webdev
+$ pub global activate stagehand
 ```
 
 If your PATH environment variable is set up correctly,
 you can now use these tools at the command line:
 
 ```terminal
-> webdev --help
+$ webdev --help
 A tool to develop Dart web projects.
 ...
 ```
@@ -276,8 +276,8 @@ want to get the latest Stagehand templates,
 update the tools by activating them again:
 
 ```terminal
-> pub global activate webdev     # update webdev
-> pub global activate stagehand  # update stagehand
+$ pub global activate webdev     # update webdev
+$ pub global activate stagehand  # update stagehand
 ```
 
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools

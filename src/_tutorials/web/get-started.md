@@ -48,8 +48,8 @@ If you like to use the command line, install [webdev][]
 and [stagehand:][stagehand]
 
 ```terminal
-> pub global activate webdev
-> pub global activate stagehand
+$ pub global activate webdev
+$ pub global activate stagehand
 ```
 
 <i class="material-icons">web</i>
@@ -65,10 +65,10 @@ For a list of available IDEs, see the
 To create a web app from the command line, use these commands:
 
 ```terminal
-> mkdir quickstart
-> cd quickstart
-> stagehand web-simple
-> pub get
+$ mkdir quickstart
+$ cd quickstart
+$ stagehand web-simple
+$ pub get
 ```
 
 <i class="material-icons">web</i>
@@ -82,7 +82,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 ```terminal
-> webdev serve
+$ webdev serve
 ```
 
 <i class="material-icons">web</i>
