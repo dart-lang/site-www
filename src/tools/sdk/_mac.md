@@ -1,4 +1,4 @@
-[Install homebrew](http://brew.sh/), and then run:
+[Install Homebrew](http://brew.sh), and then run:
 
 {% if site.data.pkg-vers.SDK.channel == 'dev' %}
 ```terminal
@@ -6,8 +6,7 @@ $ brew tap dart-lang/dart
 $ brew install dart -- --devel
 ```
 
-To install a **stable channel** release,
-don't use `--devel`:
+To install a **stable channel** release, don't use `--devel`:
 
 ```terminal
 $ brew install dart
@@ -26,6 +25,7 @@ $ brew install dart -- --devel
 ```
 {% endif %}
 
+{% include mac-path.md %}
 
 ### Upgrade
 

@@ -28,9 +28,9 @@ NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warn}}
   {% include_relative tools/sdk/archive/_sdk-terms.md %}
-</aside>
+{{site.alert.end}}
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -57,12 +57,10 @@ The Dart SDK has two release channels:
 * **dev** channel: **pre-releases**, usually updated 1/week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
-<aside class="alert alert-warning" markdown="1">
-  **Warning:**
+{{site.alert.warning}}
   To give you early access to new features and fixes,
   dev channel releases are not as heavily tested as the stable release.
-</aside>
-
+{{site.alert.end}}
 
 **Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
 They consist of dot-separated integers, with no hyphens or letters.

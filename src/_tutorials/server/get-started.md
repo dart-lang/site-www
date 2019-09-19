@@ -44,23 +44,17 @@ More information:
 
 {% include get-sdk.md %}
 
-<!-- PENDING: the following instructions assume you have set the PATH.
-     We should update the included instructions to refer to that. -->
-
 ## 3. Get more command-line developer tools
 
 Install [`stagehand`,][stagehand] which gives you templates for creating Dart apps:
 
 ```terminal
-> pub global activate stagehand
+$ pub global activate stagehand
 ```
-
 
 Note that although these instructions feature the command line,
 many IDEs support Dart development.
 Those IDEs use Stagehand behind the scenes when you create new Dart projects.
-
-<!-- PENDING: the following instructions assume you have the bin directory for the system cache in your path. -->
 
 More information:
 
@@ -72,9 +66,9 @@ More information:
 Create a command-line app:
 
 ```terminal
-> mkdir cli
-> cd cli
-> stagehand console-full
+$ mkdir cli
+$ cd cli
+$ stagehand console-full
 ```
 
 These commands create a small Dart app that has the following:
@@ -93,7 +87,7 @@ Use the [`pub`](/tools/pub/cmd) command to get the packages
 that the app depends on:
 
 ```terminal
-> pub get
+$ pub get
 ```
 
 ## 6. Run the app
@@ -102,7 +96,7 @@ To run the app from the command line, use the Dart VM by running the
 [`dart`](/tools/dart-vm) command:
 
 ```terminal
-> dart bin/main.dart
+$ dart bin/main.dart
 Hello world: 42!
 ```
 
@@ -110,20 +104,23 @@ Hello world: 42!
 
 Let's customize the app you just created.
 
- 1. Edit `lib/cli.dart` to return a different result:
+ 1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
+    previous value by two (see [Arithmetic operators][] for operator details):
 
-    ```dart
+    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    {% prettify dart %}
     int calculate() {
-      return -1;
+      return 6 * 7 [!~/ 2!];
     }
-    ```
+    {% endprettify %}
+
  1. Save your changes.
 
  1. Rerun the main entrypoint of your app:
 
     ```terminal
-    > dart bin/main.dart
-    Hello world: -1
+    $ dart bin/main.dart
+    Hello world: 21!
     ```
 
 More information:
@@ -139,21 +136,25 @@ Dart code to optimized native machine code.
 Use the `dart2aot` tool to AOT compile the program to machine code:
 
 ```terminal
-> dart2aot bin/main.dart bin/main.dart.aot
+$ dart2aot bin/main.dart bin/main.dart.aot
 ```
 
 To run the compiled program, use the Dart runtime (`dartaotruntime`):
 
 ```terminal
-> dartaotruntime bin/main.dart.aot
+$ dartaotruntime bin/main.dart.aot
+Hello world: 21!
 ```
 
 Notice how the compiled program starts instantly, completing quickly:
 
 ```terminal
-> time dartaotruntime bin/main.dart.aot
+$ time dartaotruntime bin/main.dart.aot
+Hello world: 21!
 
-real	0m0.032s
+real	0m0.016s
+user	0m0.008s
+sys	0m0.006s
 ```
 
 ## What next?
@@ -175,6 +176,7 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
+[Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
 [stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
