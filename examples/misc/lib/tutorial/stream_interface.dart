@@ -29,7 +29,6 @@ abstract class MyStream<T> implements Stream<T> {
   Stream<S> map<S>(S Function(T event) convert);
   Future pipe(StreamConsumer<T> streamConsumer);
   Future<T> reduce(T Function(T previous, T element) combine);
-  Stream<R> retype<R>();
   Future<T> singleWhere(bool Function(T element) test, {T Function() orElse});
   Stream<T> skip(int count);
   Stream<T> skipWhile(bool Function(T element) test);
