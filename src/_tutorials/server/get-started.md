@@ -105,7 +105,7 @@ Hello world: 42!
 Let's customize the app you just created.
 
  1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
-    previous value by two (see [Arithmetic operators][] for operator details):
+    previous value by two (operator details, see [Arithmetic operators][]):
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     {% prettify dart %}
