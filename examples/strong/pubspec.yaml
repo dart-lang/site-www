@@ -1,5 +1,5 @@
 name: dartlang_strong
-description: dartlang.org strong mode examples
+description: dart.dev strong mode examples
 
 environment:
   sdk: '>=2.3.1 <3.0.0'

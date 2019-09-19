@@ -1,5 +1,5 @@
 name: examples
-description: dartlang.org example code.
+description: dart.dev example code.
 
 environment:
   sdk: '>=2.5.0 <3.0.0'
