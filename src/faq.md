@@ -258,7 +258,7 @@ and run it directly in the browser.
 
 ### Q. Will the Dart VM get into Chrome?
 
-[No.](http://news.dartlang.org/2015/03/dart-for-entire-web.html)
+[No.]({{site.news}}/2015/03/dart-for-entire-web.html)
 Dart is designed to compile to JavaScript to run across the modern web.
 
 ---
@@ -457,7 +457,7 @@ modern JavaScript VMs.
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
 [fixallthethings]: http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
-[typescript]: http://news.dartlang.org/2012/10/the-dart-team-welcomes-typescript.html
+[typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
 [fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0
 [Flutter for web]: {{site.flutter}}/web

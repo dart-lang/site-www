@@ -37,7 +37,7 @@ it covers only a few dart:* libraries
 and no third-party libraries.
 
 Other places to find library information are the
-[Pub site][pub.dartlang] and the
+[Pub site]({{site.pub}}) and the
 [Dart web developer library guide][webdev libraries].
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
@@ -45,7 +45,7 @@ the [Flutter API reference.][docs.flutter]
 
 <aside class="alert alert-info" markdown="1">
   **DartPad tip:** You can play with the code in this page by copying it into a
-  [DartPad.][DartPad]
+  [DartPad.]({{site.dartpad}})
 </aside>
 
 
@@ -1649,8 +1649,6 @@ To learn more about the Dart language, see the
 
 [language tour]: /guides/language/language-tour
 [docs.flutter]: {{site.flutter_api}}
-[pub.dartlang]: {{site.pub}}
-[DartPad]: {{site.dartpad}}
 [Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html

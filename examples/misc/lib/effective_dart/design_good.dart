@@ -5,7 +5,7 @@ import 'dart:collection';
 import 'dart:isolate';
 import 'dart:typed_data';
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 typedef Func1<S, T> = S Function(T _);
 

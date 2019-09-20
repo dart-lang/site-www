@@ -9,7 +9,7 @@ import 'dart:convert';
 import 'package:test/test.dart';
 import 'package:examples/library_tour/io/http_server.dart'
     as http_server;
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('readAsString, readAsLines', () async {

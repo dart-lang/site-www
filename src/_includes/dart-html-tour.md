@@ -115,7 +115,7 @@ AnchorElement’s `href` property:
 {% comment %}code-excerpt "test/html_test.dart (href)"{% endcomment %}
 ```dart
 var anchor = querySelector('#example') as AnchorElement;
-anchor.href = 'http://dartlang.org';
+anchor.href = 'http://dart.dev';
 ```
 
 Often you need to set properties on multiple elements. For example, the

@@ -1,6 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
