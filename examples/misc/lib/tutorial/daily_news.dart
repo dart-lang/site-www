@@ -92,7 +92,7 @@ Future<String> _gatherNewsReportsAsync() =>
 // import 'dart:html';
 //
 // Future<String> _gatherNewsReportsFromServer() => HttpRequest.getString(
-//      'https://www.dartlang.org/f/dailyNewsDigest.txt',
+//      'https://dart.dev/f/dailyNewsDigest.txt',
 //    );
 // #enddocregion main-async, main-future-api
 
