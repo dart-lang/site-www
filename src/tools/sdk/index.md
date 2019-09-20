@@ -13,7 +13,7 @@ If you're developing only mobile apps,
 then you don't need the Dart SDK; just [install Flutter.][flutter]
 
 To learn about other tools you can use for Dart development, see
-the [Dart tools]({{site.dartlang}}/tools) page.
+the [Dart tools](/tools) page.
 
 <aside class="alert alert-info" markdown="1">
   **Note:** This site's documentation and examples use
@@ -29,29 +29,29 @@ directory that has these command-line tools:
 
 <div class="row">
   <div class="col-lg-6" markdown="1">
-  [dart]({{site.dartlang}}/server)
+  [dart](/server)
   : The standalone VM
 
-  [dart2aot & dartaotruntime]({{site.dartlang}}/tools/dart2aot)
+  [dart2aot & dartaotruntime](/tools/dart2aot)
   : Tools for compiling Dart code to native x64 machine code
 
-  [dart2js]({{site.dartlang}}/tools/dart2js)
+  [dart2js](/tools/dart2js)
   : The Dart-to-JavaScript compiler (used only for web development)
 
-  [dartanalyzer]({{site.dartlang}}/tools/dartanalyzer)
+  [dartanalyzer](/tools/dartanalyzer)
   : The static analyzer
   </div><div class="col-lg-6" markdown="1">
-  [dartdevc]({{site.dartlang}}/tools/dartdevc)
+  [dartdevc](/tools/dartdevc)
   : The Dart development compiler
   (used only for web development)
 
-  [dartdoc]({{site.dartlang}}/tools/dartdoc)
+  [dartdoc](/tools/dartdoc)
   : The API documentation generator
 
-  [dartfmt]({{site.dartlang}}/tools/dartfmt)
+  [dartfmt](/tools/dartfmt)
   : The Dart code formatter
 
-  [pub]({{site.dartlang}}/tools/pub)
+  [pub](/tools/pub)
   : The Dart package manager
   </div>
 </div>
@@ -71,8 +71,8 @@ Here are some handy searches:
 * [pub issues](https://github.com/dart-lang/sdk/labels/Area-Pub)
 * [issues for the SDK as a whole](https://github.com/dart-lang/sdk/issues)
 
-[Dart 2]: {{site.dartlang}}/dart-2
+[Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: {{site.dartlang}}/guides/libraries/library-tour
+[Dart libraries]: /guides/libraries/library-tour
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
