@@ -8,8 +8,8 @@ description: "Common gotchas you might run into when using pub."
 
 You receive the following error when running `pub publish`:
 
-```terminal
-$ pub publish ...
+{:.console-output}
+```nocode
 HTTP error 403: Forbidden
 ...
 You aren't an uploader for package '<foo>'
@@ -28,8 +28,8 @@ $ rm ~/.pub-cache/credentials.json
 
 You receive the following error when running `pub publish`:
 
-```terminal
-$ pub publish ...
+{:.console-output}
+```nocode
 UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'.
 ```
 
@@ -42,8 +42,8 @@ See [Authors versus uploaders](publishing#authors-versus-uploaders).
 You receive an HttpException error similar to the following when
 running `pub build`:
 
-```terminal
-$ pub build ...
+{:.console-output}
+```nocode
 Pub build failed, [1] IsolateSpawnException: 'HttpException: Connection closed while receiving data,
 ...
 library handler failed
