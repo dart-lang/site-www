@@ -7,7 +7,7 @@ int calculate() {
 // #enddocregion calculate
 
 void main() {
-  test('calculate update', () {
+  test('updated calculate function', () {
     expect(calculate(), 21);
   });
 }
