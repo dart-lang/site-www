@@ -12,7 +12,7 @@ If you're developing only mobile apps,
 then you don't need the Dart SDK; just [install Flutter.][flutter]
 
 To learn about other tools you can use for Dart development, see
-the [Dart tools]({{site.dartlang}}/tools) page.
+the [Dart tools](/tools) page.
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
 ## Install the Dart SDK {#install}
@@ -22,7 +22,7 @@ you can use a package manager
 to easily install and update the Dart SDK.
 Alternatively, you can
 [build the SDK from source][] or
-[download the SDK as a zip file]({{site.dartlang}}/tools/sdk/archive).
+[download the SDK as a zip file](/tools/sdk/archive).
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
@@ -76,8 +76,8 @@ For more information, see the [Dart 2 page.][Dart 2]
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning]: http://semver.org/
-[Dart 2]: {{site.dartlang}}/dart-2
+[Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: {{site.dartlang}}/guides/libraries/library-tour
+[Dart libraries]: /guides/libraries/library-tour
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
