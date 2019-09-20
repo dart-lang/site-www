@@ -340,10 +340,6 @@ You don't need to implement `main()`.
 To simulate asynchronous operations, call the following functions, which are
 provided for you:
 
-<!-- dart annotation format borrowed from
-https://api.dartlang.org/stable/2.4.0/dart-developer/dart-developer-library.html -->
-<!-- See e.g. getCurrentTag() → UserTag -->
-
 |------------------+--------------------------------+-------------|
 | Function         | Type signature                 | Description |
 |------------------|--------------------------------|-------------|
