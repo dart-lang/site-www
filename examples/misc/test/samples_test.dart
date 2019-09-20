@@ -7,7 +7,7 @@ import 'dart:math';
 // Importing libraries from external packages
 import 'package:test/test.dart';
 // #enddocregion import
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 import 'package:examples/samples/spacecraft.dart';
 // #docregion import
 

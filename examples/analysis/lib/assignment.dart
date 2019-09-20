@@ -3,7 +3,7 @@
 // #enddocregion ignore_for_file
 // ignore_for_file: 2, invalid_assignment
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 String downcastExample() {
   // #docregion implicit-downcast

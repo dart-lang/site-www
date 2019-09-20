@@ -5,6 +5,6 @@ environment:
   sdk: '>=2.5.0 <3.0.0'
 
 dev_dependencies:
-  dartlang_examples_util:
+  examples_util:
     path: ../util
   pedantic: ^1.0.0

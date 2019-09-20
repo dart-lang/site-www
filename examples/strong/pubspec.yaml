@@ -7,5 +7,5 @@ environment:
 dev_dependencies:
   test: ^1.0.0
   pedantic: ^1.0.0
-  dartlang_examples_util:
+  examples_util:
     path: ../util

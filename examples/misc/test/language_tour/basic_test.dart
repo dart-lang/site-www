@@ -1,6 +1,6 @@
 // ignore_for_file: type_annotate_public_apis
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('basic', () {

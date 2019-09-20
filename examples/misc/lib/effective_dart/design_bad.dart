@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 import 'design_good.dart';
 
