@@ -71,8 +71,8 @@ Alternatively, download Dart SDK as Debian package in the `.deb` package format.
 
 #### Modify PATH for access to all Dart binaries
 
-After installing the SDK, **add its bin directory to your PATH**. For example,
-use the following command to change PATH in your active terminal session:
+After installing the SDK, **add its `bin` directory to your `PATH`**. For example,
+use the following command to change `PATH` in your active terminal session:
 
 ```terminal
 $ export PATH="$PATH:/usr/lib/dart/bin"

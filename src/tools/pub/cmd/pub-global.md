@@ -101,10 +101,10 @@ you can also use `pub global run`.
 
 ### Running a script from your PATH
 
-To run a script directly from the command line, add the `bin` file
-for the [system cache](/tools/pub/glossary#system-cache) to your path.
+To run a script directly from the command line, add the [system cache][] `bin`
+directory to your `PATH` environment variable.
 
-For example, say you've activated the Stagehand script,
+For example, say you've activated the Stagehand package,
 but you still can't run the command:
 
 ```terminal
@@ -114,14 +114,14 @@ $ stagehand
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
-The following path, on macOS, includes the system cache.
+The following `PATH` variable, on macOS, includes the system cache:
 
 {% prettify none %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
 
-If this directory is missing from your path,
+If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
 |-------------------+---------------------------|
@@ -256,3 +256,5 @@ For options that apply to all pub commands, see
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>
+
+[system cache]: /tools/pub/glossary#system-cache

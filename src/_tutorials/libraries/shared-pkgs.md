@@ -60,14 +60,14 @@ Install or update Stagehand using
 [pub global activate](/tools/pub/cmd/pub-global):
 
 ```terminal
-> pub global activate stagehand
+$ pub global activate stagehand
 ```
 
 Now run the `stagehand` command to see what kinds of template files
 it can generate:
 
 ```terminal
-> stagehand
+$ stagehand
 ```
 
 You'll see a list of generators, including various web and server-side apps.
@@ -77,9 +77,9 @@ In a new directory named `vector_victor`,
 use Stagehand to generate a command-line app:
 
 ```terminal
-> mkdir vector_victor
-> cd vector_victor
-> stagehand console-full
+$ mkdir vector_victor
+$ cd vector_victor
+$ stagehand console-full
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -167,7 +167,7 @@ If not, do it yourself by running
 [pub get](/tools/pub/cmd/pub-get):
 
 ```terminal
-> pub get
+$ pub get
 Resolving dependencies...
 + vector_math 2.0.7
 Changed 1 dependency!
