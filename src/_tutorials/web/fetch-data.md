@@ -401,8 +401,8 @@ and loads the file.
   we couldn't co-locate the JSON file because DartPad
   supports at most 3 files: one Dart file, one HTML file,
   and one CSS file.
-  A workaround was to move `portmanteaux.json` to dartlang.org and
-  configure dartlang.org's CORS headers to allow read-only access
+  A workaround was to move `portmanteaux.json` to dart.dev and
+  configure dart.dev's CORS headers to allow read-only access
   from everywhere.
 </aside>
 

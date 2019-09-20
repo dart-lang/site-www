@@ -1,9 +1,9 @@
 // ignore_for_file: unused_local_variable
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/dart_version.dart';
+import 'package:examples_util/dart_version.dart';
 
-import 'package:dartlang_strong/animal.dart';
-import 'package:dartlang_strong/bounded/my_collection.dart';
+import 'package:examples_strong/animal.dart';
+import 'package:examples_strong/bounded/my_collection.dart';
 
 //@nullable
 String runtimeChecksSkipStatus() => dartMajorVers == 1

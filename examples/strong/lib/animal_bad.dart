@@ -1,7 +1,7 @@
 // NOTE: Declarations in this file are analyzed but not tested.
 // ignore_for_file: annotate_overrides, unused_local_variable
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 import 'animal.dart';
 

@@ -21,7 +21,7 @@ import 'package:examples/language_tour/classes/point_with_main.dart'
 import 'package:examples/language_tour/classes/rectangle.dart'
     as rectangle_with_main;
 import 'package:examples/language_tour/classes/vector.dart' as vector_with_main;
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('object-creation', () {

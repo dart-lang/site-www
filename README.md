@@ -174,29 +174,27 @@ If you don't already have a project to stage to,
 create it:
 
 1. Select **Create New Project**.
-1. Enter a project name in the dialog, such as
-  `zz-www-dartlang-1`.
+1. Enter a project name in the dialog, such as `staging-1`.
 1. Click **Create Project**. This takes you to the
   page for your new project.
 
-**Note:** To keep the number of projects under control,
+> **Note:** To keep the number of projects under control,
 we reuse them. Our naming convention is
-`<first initial><last initial>-www-dartlang-<number>`, for example,
-`sz-www-dartlang-1` and `kw-www-dartlang-1`.
+`<first initial><last initial>-dart-dev-<number>`, for example,
+`sz-dart-dev-1` and `kw-dart-dev-1`.
 
-Return to the [Firebase console](https://console.firebase.google.com/).
+Return to the [Firebase console](https://console.firebase.google.com).
 You should now see your project in the list.
-Copy the name of your project (e.g. `sz-www-dartlang-2`) to your clipboard.
+Copy the name of your project (e.g. `sz-dart-dev-2`) to your clipboard.
 
-On the command line, from the top of GitHub repo, edit the
-`.firebaserc` file.
+On the command line, from the top of GitHub repo, edit the `.firebaserc` file.
 
-Change `www-dartlang-org` to the name of your project. For example:
+Change `dart-dev` to the name of your project. For example:
 
-```
+```json
 {
   "projects": {
-    "default": "sz-www-dartlang-2"
+    "default": "sz-dart-dev-2"
   }
 }
 ```
@@ -215,8 +213,8 @@ Then deploy the docs:
 ```
 
 You can now navigate to the staged version at
-`https://<your-instance>.firebaseapp.com`/—for example,
-`https://sz-www-dartlang-2.firebaseapp.com/`.
+`https://<your-instance>.firebaseapp.com` -— for example,
+`https://sz-dart-dev-2.firebaseapp.com`.
 
 **Important:** Don't commit the `.firebaserc` file containing the name of your staged version.
 

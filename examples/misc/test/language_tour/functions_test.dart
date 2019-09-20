@@ -2,8 +2,7 @@
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart'
-    as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('optional-positional-parameters', () {
