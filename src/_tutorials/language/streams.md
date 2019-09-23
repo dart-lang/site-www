@@ -357,7 +357,7 @@ It first converts the data from UTF8 and then runs it through
 a [LineSplitter.][LineSplitter]
 All lines are printed, except any that begin with a hashtag, `#`.
 
-<?code-excerpt "misc/lib/tutorial/cat_no_hash.dart"?>
+<?code-excerpt "misc/bin/cat_no_hash.dart"?>
 {% prettify dart %}
 import 'dart:convert';
 import 'dart:io';
