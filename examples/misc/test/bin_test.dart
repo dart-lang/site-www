@@ -27,6 +27,7 @@ void main() {
         allOf(
           startsWith('1'), // Line number
           contains('Dr. Seuss'),
+          endsWith('Nietzsche\n'),
         ));
   });
 
@@ -36,10 +37,10 @@ void main() {
         await Process.start('dart', ['--enable-asserts', 'bin/dcat1.dart']);
     process.stdin.writeln(greeting);
     final output = await process.stdout.transform(Utf8Decoder()).join('');
-    await process.stderr.drain();
-    final exitCode = await process.exitCode;
+    final errors = await process.stderr.transform(Utf8Decoder()).join('');
 
-    expect(exitCode, 0);
+    expect(await process.exitCode, 0);
     expect(output, contains('You typed: $greeting'));
+    expect(errors, isEmpty);
   });
 }
