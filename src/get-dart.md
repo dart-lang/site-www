@@ -54,7 +54,7 @@ The Dart SDK has two release channels:
 * **stable** channel: **stable releases**,
   updated no more frequently than every 6 weeks;
   currently `[calculating]`{:.editor-build-rev-stable}.
-* **dev** channel: **pre-releases**, usually updated 1/week;
+* **dev** channel: **prereleases**, usually updated 1/week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
 {{site.alert.warning}}
@@ -65,12 +65,14 @@ The Dart SDK has two release channels:
 **Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
 They consist of dot-separated integers, with no hyphens or letters.
 
-**Dev** channel releases of the Dart SDK (pre-releases)
+**Dev** channel releases of the Dart SDK (prereleases)
 have additional characters, starting with a hyphen (`-`).
-For example, Dart 2 pre-releases have version numbers starting with
+For example, Dart 2 prereleases have version numbers starting with
 `2.0.0-dev` such as `2.0.0-dev.69.5`.
 
-For more information, see the [Dart 2 page.][Dart 2]
+You can get stable and dev channel releases using
+the [instructions above](#install), or you can
+[download the SDK as a zip file](/tools/sdk/archive).
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning]: http://semver.org/

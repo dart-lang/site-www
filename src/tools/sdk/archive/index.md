@@ -31,8 +31,8 @@ Stable channel builds are tested and approved for production use.
 ## Dev channel
 
 Dev channel builds can provide early access
-to new features but may contain bugs. We do not recommended dev channel builds for
-production use.
+to new features but might contain bugs.
+We don't recommend dev channel builds for production use.
 
 {% include_relative _archives_table.html channel="dev" %}
 
