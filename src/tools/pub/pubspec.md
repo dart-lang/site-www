@@ -148,7 +148,7 @@ it, your package is implicitly versioned `0.0.0`.
 
 Versioning is necessary for reusing code while letting it evolve quickly. A
 version number is three numbers separated by dots, like `0.2.43`. It can also
-optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or pre-release
+optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or prerelease
 (`-dev.4`, `-alpha.12`, `-beta.7`, `-rc.5`) suffix.
 
 Each time you publish your package, you publish it at a specific version.

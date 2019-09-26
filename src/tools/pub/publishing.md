@@ -147,34 +147,34 @@ the first and only person authorized to upload additional versions of the packag
 To allow or disallow other people to upload versions,
 use the [`pub uploader`](cmd/pub-uploader) command.
 
-## Publishing pre-releases
+## Publishing prereleases
 
-As you work on a package, consider publishing it as a pre-release.
-Pre-releases can be useful when any of the following are true:
+As you work on a package, consider publishing it as a prerelease.
+Prereleases can be useful when any of the following are true:
 
 * You're actively developing the next major version of the package.
 * You want beta testers for the next release candidate of the package.
 * The package depends on an unstable version of the Dart or Flutter SDK.
 
-As described in [semantic versioning][semver], to make a pre-release of a version,
-you append a suffix to the version. For example, to make a pre-release of
+As described in [semantic versioning][semver], to make a prerelease of a version,
+you append a suffix to the version. For example, to make a prerelease of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
-release version `2.0.0`, it will take precedence over all `2.0.0-XXX` pre-releases.
+release version `2.0.0`, it will take precedence over all `2.0.0-XXX` prereleases.
 
-Because pub prefers stable releases when available, users of a pre-release package
+Because pub prefers stable releases when available, users of a prerelease package
 might need to change their dependency constraints.
-For example, if a user wants to test pre-releases of version 2.1, then
+For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  If a stable package in the dependency graph depends on a pre-release,
-  then pub chooses that pre-release instead of a stable release.
+  If a stable package in the dependency graph depends on a prerelease,
+  then pub chooses that prerelease instead of a stable release.
 </aside>
 
-When a pre-release is published to [pub.dev](https://pub.dev),
-the package page displays links to both the pre-release and the stable release.
-The pre-release doesn't affect the analysis score, show up in search results,
+When a prerelease is published to [pub.dev](https://pub.dev),
+the package page displays links to both the prerelease and the stable release.
+The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package README and documentation. 
 
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
