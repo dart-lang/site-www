@@ -6,19 +6,6 @@ nextpage:
   title: "Add elements to the DOM"
 ---
 
-{% capture sample_links %}
-<p>
-This tutorial features these examples:</p>
-* mini
-* mini_with_style
-<p>
-Don't have the source code?
-<a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
-  Download it.
-</a>
-{% endcapture %}
-
-
 This tutorial is the first of a series on
 basic, low-level web programming with the dart:html library.
 If you use a web framework like [AngularDart,]({{site.angulardart}})
@@ -380,22 +367,23 @@ on how to convert a DartPad app into one you can run in the browser.
 Here's the full HTML code for this app,
 assuming that the Dart code is in a file named `main.dart`:
 
-<pre class="prettyprint lang-dart allow-scroll">
-&lt;!DOCTYPE html>
+```dart
+<!DOCTYPE html>
 
-&lt;html>
-  &lt;head>
-    &lt;title>A Minimalist App&lt;/title>
-    <a href="#" class="dart-popover" data-toggle="popover" data-html="true" data-trigger="hover focus" data-content="Specifies the location of the compiled Dart code">&lt;script defer src="main.dart.js">&lt;/script></a>
-  &lt;/head>
-  &lt;body>
-    &lt;p id="RipVanWinkle">
+<html>
+  <head>
+    <title>A Minimalist App</title>
+    <script defer src="main.dart.js"></script>
+  </head>
+  <body>
+    <p id="RipVanWinkle">
       RipVanWinkle paragraph.
-    &lt;/p>
-  &lt;/body>
-&lt;/html>
-</pre>
+    </p>
+  </body>
+</html>
+```
 
+The `<script>` element specifies the location of the compiled Dart code.
 
 ## Give the app some style with CSS {#add-css}
 
