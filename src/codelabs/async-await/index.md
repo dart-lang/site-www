@@ -21,7 +21,7 @@ in `async` functions.
 Estimated time to complete this codelab: 40-60 minutes.
 
 {{ site.alert.note }}
-  This codelab uses embedded DartPads to display examples and exercises.
+  This page uses embedded DartPads to display examples and exercises.
   {% include dartpads-embedded-troubleshooting.md %}
 {{ site.alert.end }}
 

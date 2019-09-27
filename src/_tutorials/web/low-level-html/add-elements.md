@@ -10,11 +10,6 @@ prevpage:
   title: "Connect Dart & HTML"
 ---
 
-{% comment %}
-NOTE: No sample_links section goes here because all the samples are in embedded
-DartPads.
-{% endcomment %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
@@ -350,6 +345,11 @@ You might prefer to
 <a href="{{site.dartpad}}/0532bfcb70bf5e4a900c" target="_blank" rel="noopener">open
 the app in DartPad</a>
 to have more space for the app's code and UI.
+
+{{ site.alert.note }}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
 
 {% comment %}
 https://gist.github.com/Sfshaza/0532bfcb70bf5e4a900c

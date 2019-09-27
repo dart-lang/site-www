@@ -1240,7 +1240,7 @@ h3.popover-header {
   pre, code {
     background-color: transparent;
   }
-  p {
+  p:last-child {
     margin-bottom: 0;
   }
   &.alert-success {

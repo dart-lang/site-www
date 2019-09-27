@@ -16,13 +16,14 @@ To learn more about Dart's core libraries, see the
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-<div class="alert alert-info" markdown="1">
-**Tip:**
-You can play with most of Dart's language features using DartPad
-([learn more](/tools/dartpad)).
+{{ site.alert.note }}
+  You can play with most of Dart's language features using DartPad
+  ([learn more](/tools/dartpad)).
+  **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 
-**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
-</div>
+  This page uses embedded DartPads to display some of the examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
 
 
 ## A basic Dart program

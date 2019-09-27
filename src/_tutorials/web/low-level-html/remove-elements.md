@@ -7,11 +7,6 @@ prevpage:
   title: "Add elements to the DOM"
 ---
 
-{% comment %}
-NOTE: No sample_links section goes here because all the samples are in
-embedded DartPads.
-{% endcomment %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
@@ -83,6 +78,10 @@ the item turns red and gets slightly larger.
 Click it and it disappears from the list.
 Use the **Delete All** button
 to remove all of the items in the list at once.
+
+{{ site.alert.note }}
+  {% include dartpad-embedded-troubleshooting.md %}
+{{ site.alert.end }}
 
 <iframe
 src="{{site.dartpad-embed-html}}?id=582b9a8d36786566ba08"
