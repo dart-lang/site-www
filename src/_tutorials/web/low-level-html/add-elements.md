@@ -97,7 +97,7 @@ void addToDoItem(Event e) {
 } -->
 
 <!-- <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=65c90ff6b078c332d4b6"
+src="{{site.dartpad-embed-html}}?id=65c90ff6b078c332d4b6"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -432,7 +432,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=0532bfcb70bf5e4a900c"
+src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">

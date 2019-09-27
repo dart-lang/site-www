@@ -24,7 +24,7 @@ which includes the web UI that the app produces,
    target="_blank">open the example at dartpad.dev.</a>
 
 <iframe
-    src="{{site.custom.dartpadx.embed-html-prefix}}?id=2a24f3f042f1c86cf91621c30adce771"
+    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
