@@ -30,13 +30,14 @@ then try the following:
 
 * If you're using an ad blocker, disable it.
 
-* If you don't use an ad blocker, check whether you've disabled third-party
+* Check whether you've disabled third-party
   tracking cookies ([Chrome instructions][chrome-cookies]).
   If you've disabled cookies, change your settings to
   **allow cookies for dartpad.dev.**
 
-  DartPad doesn't use cookies, but it does rely on local storage,
-  which browsers generally disable when you disable cookies.
+Although DartPad doesn't use cookies, it does rely on local storage,
+which browsers usually disable when cookies are disabled.
+
 
 ## DartPad doesn't work in China
   
