@@ -7,7 +7,7 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 
-For simple changes (such as to CSS and text), you probably don't need to build this site.
+For simple changes (such as to CSS and text),you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 
 If you want/need to build, read on.
