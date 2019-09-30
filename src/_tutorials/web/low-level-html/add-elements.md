@@ -10,11 +10,6 @@ prevpage:
   title: "Connect Dart & HTML"
 ---
 
-{% comment %}
-NOTE: No sample_links section goes here because all the samples are in embedded
-DartPads.
-{% endcomment %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
@@ -97,7 +92,7 @@ void addToDoItem(Event e) {
 } -->
 
 <!-- <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=65c90ff6b078c332d4b6"
+src="{{site.dartpad-embed-html}}?id=65c90ff6b078c332d4b6"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -351,6 +346,11 @@ You might prefer to
 the app in DartPad</a>
 to have more space for the app's code and UI.
 
+{{ site.alert.note }}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
+
 {% comment %}
 https://gist.github.com/Sfshaza/0532bfcb70bf5e4a900c
 
@@ -432,7 +432,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=0532bfcb70bf5e4a900c"
+src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">

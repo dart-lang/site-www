@@ -3,20 +3,25 @@ title: DartPad
 description: The tool that lets you interactively play with Dart in a browser.
 ---
 
-<a href="{{site.dartpad}}"
-target="_blank">DartPad (dartpad.dev)</a>
-is an open-source tool that
+DartPad is an open-source tool that
 lets you play with the Dart language in any modern browser.
+Many pages in this site — especially [codelabs](/codelabs) —
+have embedded DartPads.
+To get a DartPad as big as your browser window, go to the
+<a href="{{site.dartpad}}"
+target="_blank">DartPad site (dartpad.dev).</a>
+
+{{ site.alert.tip }}
+  If you're in China, try [dartpad.cn.](https://dartpad.cn)
+  
+  If you have issues using DartPad, see the [DartPad troubleshooting
+  tips](/tools/dartpad/troubleshoot).
+{{ site.alert.end }}
+
 Here's what DartPad looks like:
 
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
-<aside class="alert alert-info" markdown="1">
-  **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
-  
-  If you have issues using DartPad, see the [DartPad troubleshooting
-  tips](/tools/dartpad/troubleshoot).
-</aside>
 
 ## Library support
 

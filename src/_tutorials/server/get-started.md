@@ -27,8 +27,12 @@ change the greeting to use another language. To get the full DartPad experience,
 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
 the example at dartpad.dev.</a>
 
+{{ site.alert.note }}
+  {% include dartpad-embedded-troubleshooting.md %}
+{{ site.alert.end }}
+
 <iframe
-    src="{{site.custom.dartpadx.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
+    src="{{site.dartpad-embed-inline}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
     width="100%"
     height="300px"
     style="border: 1px solid #ccc;">
