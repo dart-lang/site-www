@@ -295,8 +295,8 @@ linter:
 
 {{site.alert.important}}
   **Don't mix list and key-value syntaxes in the same options file.**
-  YAML doesn't support mixing both syntaxes,
-  however you can use the other syntax in another YAML file
+  YAML doesn't support mixing both syntaxes.
+  However, you can use the other syntax in another YAML file
   and add it to your main options file using `include:`.
 {{site.alert.end}}
 
