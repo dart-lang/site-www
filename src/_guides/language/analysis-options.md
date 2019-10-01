@@ -293,12 +293,11 @@ linter:
     await_only_futures: true
 ```
 
-{{site.alert.note}}
-  **If you disable any rules, then use key-value syntax to enable rules.**
-  For example, the preceding example can’t use `- await_only_futures`;
-  instead, it must use `await_only_futures: true`.
-  The reason it can’t use the dash shortcut (`-`) to enable `await_only_futures`
-  is that YAML doesn't support mixing list and key-value syntaxes.
+{{site.alert.important}}
+  **Don't mix list and key-value syntaxes in the same options file.**
+  YAML doesn't support mixing both syntaxes,
+  however you can use the other syntax in another YAML file
+  and add it to your main options file using `include:`.
 {{site.alert.end}}
 
 ## Excluding code from analysis
