@@ -140,7 +140,7 @@ $dash-dartpad-border: #293542;
         color: $dash-highlight;
 
         .animated-bullet {
-          height: 35px;
+          height: 25px;
           background-color: $dash-highlight;
         }
         //list-style-image: url(../../assets/dash/2x/bullet.png);
@@ -170,6 +170,7 @@ $dash-dartpad-border: #293542;
     background-color: $dark-darker-black; 
     height:10px;
     width:5px;
+    margin-top:5px;
     transition: height 0.5s, background-color 0.5s;
   }
 
