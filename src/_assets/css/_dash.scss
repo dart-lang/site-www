@@ -143,8 +143,7 @@ $dash-dartpad-border: #293542;
           height: 25px;
           background-color: $dash-highlight;
         }
-        //list-style-image: url(../../assets/dash/2x/bullet.png);
-
+      
         a, button {
           color: $dash-highlight;
         }
@@ -155,7 +154,6 @@ $dash-dartpad-border: #293542;
       }
 
       ul li {
-        //list-style-image: url(../../assets/dash/2x/bullet-black.png);
         margin-bottom: 10px;
         list-style: none;
       }
@@ -168,20 +166,19 @@ $dash-dartpad-border: #293542;
 
   .animated-bullet{
     background-color: $dark-darker-black; 
-    height:10px;
-    width:5px;
-    margin-top:5px;
+    height: 10px;
+    width: 5px;
+    margin-top: 5px;
     transition: height 0.5s, background-color 0.5s;
   }
 
   .bullet-container{
-  
-    float:left; 
-    margin-right:10px;
+    float: left; 
+    margin-right: 10px;
   }
 
   .bullet-text{
-    margin-left:20px;
+    margin-left: 20px;
   }
 
   .content-image {
@@ -284,7 +281,7 @@ $dash-dartpad-border: #293542;
   }
 
   .selector{
-    margin-left:-30px;
+    margin-left: -30px;
     
   }
 }
