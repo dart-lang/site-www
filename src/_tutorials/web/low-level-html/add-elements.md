@@ -61,10 +61,8 @@ Then type in the app's text field, and press return.
 The app adds an item to the list.
 Enter a few items into the input field.
 
-Example goes here...
-
-<!-- need to fix this section, not working properly -->
-<!-- https://gist.github.com/Sfshaza/65c90ff6b078c332d4b6
+{% comment %}
+https://gist.github.com/kwalrath/aab6ad8c04d161458d32161ea6e87a97
 
 main.dart:
 // Copyright (c) 2012, the Dart project authors.
