@@ -12,6 +12,13 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
+{{ site.alert.info }}
+Although dart:ffi requires a C interface,
+you aren't restricted to using only C libraries.
+Many languages — including C++, Swift, Objective-C, Rust, and Go — 
+can implement C interfaces.
+{{ site.alert.end }}
+
 {{ site.alert.warning }}
 The dart:ffi library is [in active development][ffi issue]
 and isn't complete yet.
