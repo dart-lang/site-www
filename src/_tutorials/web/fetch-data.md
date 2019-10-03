@@ -416,7 +416,7 @@ and loads the file.
 
 {% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=6b76bce8d46986e624f4e82925c48287"
+src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -472,7 +472,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/kwalrath/f8aa7310e96d359c5f68343c9ccba8ed {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=c387e454cb751ab0632c68ccbbf94d12"
+src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
