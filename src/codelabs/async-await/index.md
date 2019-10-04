@@ -20,6 +20,11 @@ in `async` functions.
 
 Estimated time to complete this codelab: 40-60 minutes.
 
+{{ site.alert.note }}
+  This page uses embedded DartPads to display examples and exercises.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
+
 ## Why asynchronous code matters
 
 Asynchronous operations let your program complete work while waiting for
@@ -40,7 +45,7 @@ output will be?
 
 [//]: https://gist.github.com/5c8c7716b6b4284842f15fe079f61e47
 <iframe
-  src="{{site.dartpadx}}?id=5c8c7716b6b4284842f15fe079f61e47"
+  src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="420"
@@ -120,7 +125,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
 <iframe
-  src="{{site.dartpadx}}?id=57e6085344cbd1719ed42b32f8ad1bce"
+  src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
@@ -138,7 +143,7 @@ A bit later you'll learn how to handle the error.
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
 <iframe
-  src="{{site.dartpadx}}?id=d843061bbd9388b837c57613dc6d5125"
+  src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
@@ -313,7 +318,7 @@ function body. What do you think the output will be?
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
 <iframe
-  src="{{site.dartpadx}}?id=d7abfdea1ae5596e96c7c0203d975dba"
+  src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
   frameborder="no"
   height="600"
@@ -370,7 +375,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
 
 <!-- [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056 -->
 <iframe
-  src="{{site.dartpadx}}?id=f751b692502c4ee43d932f745860b056&theme=dark"
+  src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark"
   frameborder="no"
   height="550"
   width="100%">
@@ -399,7 +404,7 @@ Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
 <iframe
-  src="{{site.dartpadx}}?id=25ade03f0632878a9169209e3cd7bef2"
+  src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2"
   style="border: 1px solid lightgrey;"
   frameborder="no"
   height="525"
@@ -428,7 +433,7 @@ that does the following:
 <!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
 
 <iframe
-src="{{site.dartpadx}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
+src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
 frameborder="no"
 height="525"
 width="100%" >
@@ -477,7 +482,7 @@ Write the following:
 
 {% comment %}https://gist.github.com/f601d25bc2833c957186e3c6bf71effc{% endcomment -%}
 <iframe
-  src="{{site.dartpadx}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
+  src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
   frameborder="no"
   height="550"
   width="100%">

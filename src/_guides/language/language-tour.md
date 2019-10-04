@@ -16,13 +16,14 @@ To learn more about Dart's core libraries, see the
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-<div class="alert alert-info" markdown="1">
-**Tip:**
-You can play with most of Dart's language features using DartPad
-([learn more](/tools/dartpad)).
+{{ site.alert.note }}
+  You can play with most of Dart's language features using DartPad
+  ([learn more](/tools/dartpad)).
+  **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 
-**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
-</div>
+  This page uses embedded DartPads to display some of the examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
 
 
 ## A basic Dart program
@@ -1054,7 +1055,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=589bc5c95318696cefe5"
+src="{{site.dartpad-embed-inline}}?id=589bc5c95318696cefe5"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -1325,7 +1326,7 @@ https://gist.github.com/d988cfce0a54c6853799
 {{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=d988cfce0a54c6853799"
+src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1442,7 +1443,7 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
+src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -2839,7 +2840,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&split=90"
+src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -2934,7 +2935,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=7a9764702c0608711e08&split=90"
+src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -4165,7 +4166,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=405379bacf30335f3aed"
+src="{{site.dartpad-embed-inline}}?id=405379bacf30335f3aed"
     width="100%"
     height="350px"
     style="border: 1px solid #ccc;">

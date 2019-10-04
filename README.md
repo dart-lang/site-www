@@ -12,6 +12,12 @@ Often you can make changes using the GitHub UI.
 
 If you want/need to build, read on.
 
+> **Help us improve these instructions!**
+> If you have any problems getting set up to build or performing the actual build,
+> please [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
+> (or both).
+
 ## Before you build this site
 
 ### 1. Get the prerequisites

@@ -30,6 +30,12 @@ For web apps,
 HTTP requests are served by the browser in which the app is running,
 and thus are subject to the browser's security restrictions.
 
+{{ site.alert.note }}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
+
+
 ## About JSON
 
 The JSON data format is easy for humans
@@ -171,7 +177,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
+src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -408,9 +414,9 @@ and loads the file.
 
 **Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
-{% comment %} https://gist.github.com/chalin/6b76bce8d46986e624f4e82925c48287 {% endcomment %}
+{% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=6b76bce8d46986e624f4e82925c48287"
+src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -464,9 +470,9 @@ and use the [send()][] method to make the request.
 This section rewrites the portmanteaux code to explicitly construct
 an HttpRequest object.
 
-{% comment %} https://gist.github.com/chalin/c387e454cb751ab0632c68ccbbf94d12 {% endcomment %}
+{% comment %} https://gist.github.com/kwalrath/f8aa7310e96d359c5f68343c9ccba8ed {% endcomment %}
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=c387e454cb751ab0632c68ccbbf94d12"
+src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">

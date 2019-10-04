@@ -56,6 +56,11 @@ when using the **await for** loop.
 The following example tests the previous code by
 generating a simple stream of integers using an `async*` function:
 
+{{ site.alert.note }}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{ site.alert.end }}
+
 {% comment %}
 https://gist.github.com/Sfshaza/15d5ef986238c97dbc14
 
@@ -84,7 +89,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=15d5ef986238c97dbc14"
+src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
@@ -154,7 +159,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
+src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">

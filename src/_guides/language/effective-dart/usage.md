@@ -1135,7 +1135,7 @@ class Point {
 }
 {% endprettify %}
 
-We've got to type `x` _four_ times here define a field. We can do better:
+We've got to type `x` _four_ times here to define a field. We can do better:
 
 {:.good-style}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
