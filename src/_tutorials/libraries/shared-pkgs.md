@@ -29,7 +29,7 @@ that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
-the [Pub site]({{site.pub}};
+the [Pub site]({{site.pub}});
 just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
