@@ -293,11 +293,9 @@ linter:
     await_only_futures: true
 ```
 
-{{site.alert.important}}
-  **Don't mix list and key-value syntaxes for the rules in the same options file.**
-  YAML doesn't support mixing both syntaxes in the same collection.
-  However, you can use the other syntax in another YAML file
-  and add it to your main options file using `include:`.
+{{site.alert.note}}
+  Due to YAML restrictions, you can't mix list and key-value syntax in the same rules entry.
+  You can, however, use the other syntax for rules in an included file.
 {{site.alert.end}}
 
 ## Excluding code from analysis
