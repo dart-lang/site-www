@@ -11,6 +11,8 @@ li.L5, li.L6, li.L7, li.L8, li.L9 {
 }
 pre.prettyprint.analyzer .highlight {
     border-bottom: 2px red dashed;
+    background: inherit;
+    padding-bottom: 1px;
 }
 </style>
 
