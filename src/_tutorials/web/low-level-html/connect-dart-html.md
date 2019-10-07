@@ -154,7 +154,8 @@ or even insert an entire subtree of nodes.
 1. Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 2. Click the **New Pad** button to undo any changes you might have made
    the last time you visited DartPad.
-3. Check the **Show web content** checkbox at the bottom right corner to edit HTML and CSS in DartPad
+3. Select the **Show web content** checkbox at the bottom right corner,
+   so you can edit HTML and CSS in DartPad.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
