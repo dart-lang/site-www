@@ -27,7 +27,7 @@ Dart libraries, apps, resources, tests, images, and examples.
 To use a package, do the following:
 
 * Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
-  other metadata, such as a name for your package).
+  other metadata, such as a version numner).
 * Use pub to get your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
 
