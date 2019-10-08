@@ -207,6 +207,8 @@ $dash-dartpad-border: #293542;
   }
 
   .content-image {
+    display: flex;
+    
     background-color: $dark-darker-black;
     padding: 0 !important;
 
