@@ -7,7 +7,7 @@ description: Learn more about pub, Dart's tool for managing packages.
 The Dart ecosystem uses _packages_ to manage shared software
 such as libraries and tools.
 To get Dart packages, you use the **pub package manager**.
-You can find publicly available packages on the [**Pub site**,]({{site.pub}})
+You can find publicly available packages on the [**pub.dev site**,]({{site.pub}})
 or you can load packages from the local file system or elsewhere,
 such as Git repositories.
 Wherever your packages come from, pub manages version dependencies,
@@ -43,7 +43,7 @@ name: my_app
 {% endprettify %}
 
 Here is an example of a pubspec that declares dependencies on
-two packages (`js` and `intl`) that are hosted on the Pub site:
+two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
 {% prettify yaml %}
 name: my_app
@@ -71,7 +71,7 @@ This process is called _getting the dependencies_.
 The `pub get` command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
-[Pub site.]({{site.pub}})
+[pub.dev site.]({{site.pub}})
 For a [Git dependency](/tools/pub/dependencies#git-packages),
 pub clones the Git repository.
 Transitive dependencies are included, too.

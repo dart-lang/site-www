@@ -751,7 +751,7 @@ stack_trace
   [Chain class]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
   you can get better stack traces for asynchronously executed code.
   See the [stack_trace package]({{site.pub}}/packages/stack_trace)
-  at the Pub site for more information.
+  at the pub.dev site for more information.
 
 
 ### More examples
