@@ -1,6 +1,6 @@
 ---
 title: Publishing packages
-description: Learn how to publish a Dart package to the Pub site.
+description: Learn how to publish a Dart package to the pub.dev site.
 ---
 
 [The pub package manager](/guides/packages) isn't just for using other people's packages.
@@ -10,7 +10,7 @@ command.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-To publish to a location other than the Pub site,
+To publish to a location other than the pub.dev site,
 or to prevent publication anywhere, use the `publish_to` field,
 as defined in the [pubspec](/tools/pub/pubspec).
 </aside>
@@ -49,7 +49,7 @@ are a few additional requirements for uploading a package:
 [Google Account]: https://support.google.com/accounts/answer/27441
 
 Be aware that the email address associated with your Google account is
-displayed on the [Pub site]({{site.pub}}) along with any
+displayed on the [pub.dev site]({{site.pub}}) along with any
 packages you upload.
 
 ### Important files
@@ -63,7 +63,7 @@ affect how your package's page looks:
 * **CHANGELOG**: Your package's CHANGELOG (`CHANGELOG`, `CHANGELOG.md`,
   `CHANGELOG.mdown`, `CHANGELOG.markdown`), if found, will also be featured in a
   tab on your package's page, so that developers can read it right from
-  the Pub site.
+  the pub.dev site.
 * **The pubspec**: Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
   description, authors, etc.
@@ -80,7 +80,7 @@ Pub will check to make sure that your package follows the
 [pubspec format](/tools/pub/pubspec) and
 [package layout conventions](/tools/pub/package-layout),
 and then upload your package to the
-[Pub site]({{site.pub}}). Pub will also show you all of
+[pub.dev site]({{site.pub}}). Pub will also show you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
@@ -108,7 +108,7 @@ $ pub publish
 {% endprettify %}
 
 After your package has been successfully uploaded to
-[Pub site]({{site.pub}}), any pub user will be able to
+[pub.dev site]({{site.pub}}), any pub user will be able to
 download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:

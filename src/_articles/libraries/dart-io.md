@@ -377,7 +377,7 @@ class.
 ## Feature requests welcome
 
 The dart:io library is already capable of performing a lot of tasks.
-For example, the [Pub site]({{site.pub}}) uses dart:io.
+For example, the [pub.dev site]({{site.pub}}) uses dart:io.
 
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!

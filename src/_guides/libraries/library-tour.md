@@ -37,7 +37,7 @@ it covers only a few dart:* libraries
 and no third-party libraries.
 
 Other places to find library information are the
-[Pub site]({{site.pub}}) and the
+[pub.dev site]({{site.pub}}) and the
 [Dart web developer library guide][webdev libraries].
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
