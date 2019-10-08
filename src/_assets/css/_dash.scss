@@ -175,6 +175,9 @@ $dash-dartpad-border: #293542;
       ul li {
         margin-bottom: 10px;
         list-style: none;
+        &:focus {
+          outline: none;
+        }
       }
 
       .current-item {
@@ -198,12 +201,6 @@ $dash-dartpad-border: #293542;
 
   .bullet-text{
     margin-left: 20px;
-
-    // Disable text selection to avoid blue focus outline on macOS
-    user-select: none;
-    &:focus {
-      outline: none;
-    }
   }
 
   .content-image {
