@@ -52,6 +52,34 @@ Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
 packages you upload.
 
+### Publishing as a pub.dev Verified Publisher
+
+Packages can be published using either your personal Google account, or under a
+pub.dev Verified Publisher. We recommend that you use a pub.dev Verified
+Publisher when possible, as this enables the consumers of your package to trust
+that the publisher entity has been verified. Additionally, while packages
+published by a personal Google account will publically display the email address
+of the personal account used to upload the package, a package published by a
+Verified Publisher will display the publisher account, and it's associated
+contact address. Packages published by a Verified Publisher additionally display
+a Verified Publisher badge visible both on search pages, and on an individual
+package page.
+
+TODO mit@: Create screenshot showing the badge for a Verified Publisher.
+
+### Creating a new pub.dev Verified Publisher account
+
+Verified Publisher accounts on pub.dev are created using the following steps.
+Note that Verified Publisher accounts are based on an associated domain for
+indetity, and that during creation of the account, the verification relies on
+DNS (domain name system) configuration of the associated domain.
+
+1. Open the [pub.dev site]{{site.pub}} in a web browser.
+1. Log in to the site using a Google account
+1. Click the user menu in the top-right corner
+1. Select **Create Publisher**
+1. TODO
+
 ### Important files
 
 Pub uses the contents of a few files to create a page for your
@@ -146,6 +174,10 @@ Whoever publishes the first version of some package automatically becomes
 the first and only person authorized to upload additional versions of the package.
 To allow or disallow other people to upload versions,
 use the [`pub uploader`](cmd/pub-uploader) command.
+
+Note that for packages published with a pub.dev Verified Publisher, the package
+details page will display the Verified Publisher account, rather than the author
+field.
 
 ## Publishing prereleases
 
