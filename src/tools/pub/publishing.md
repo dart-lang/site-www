@@ -55,35 +55,74 @@ packages you upload.
 ### Publishing as a verified publisher {#verified-publisher}
 
 Packages can be published using either your personal Google account, or under a
-pub.dev verified publisher. We recommend that you use a verified publisher when
-possible, as this enables the consumers of your package to trust that the
-publisher entity has been verified. Additionally, while packages published by a
-personal Google account will publically display the email address of the
-personal account used to upload the package, a package published by a verified
-publisher will display the publisher account, and it's associated contact
-address. Packages published by a Verified Publisher additionally display a
-verified publisher badge {% asset verified-publisher.svg alt="pub.dev verified
-publisher logo" %} {#create-verified-publisher} on both search pages, and on
-individual package pages.
+[verified publisher](/verified-publishers) account. We recommend that you use a
+verified publisher when possible, as this enables the consumers of your package
+to trust that the publisher entity has been verified. Additionally, while
+packages published by a personal Google account will publically display the
+email address of the personal account used to upload the package, a package
+published by a verified publisher will display the publisher account, and it's
+associated contact address. Packages published by a verified publisher
+additionally display a verified publisher badge {% asset verified-publisher.svg
+alt="pub.dev verified publisher logo" %} on both search pages, and on individual
+package pages.
 
-### Creating a new pub.dev Verified Publisher account {% asset verified-publisher.svg alt="pub.dev verified publisher logo" %} {#create-verified-publisher}
+### Creating a new {% asset verified-publisher.svg alt="pub.dev verified publisher logo" %} verified publisher account  {#create-verified-publisher}
 
 Verified publisher accounts on pub.dev are created using the following steps.
 Note that verified publisher accounts are based on an associated domain for
 indetity, and that during creation of the account, the verification relies on
 DNS (domain name system) configuration of the associated domain.
 
-1. Open the [pub.dev site]{{site.pub}} in a web browser.
-1. Log in to the site using a Google account
-1. Click the user menu in the top-right corner
-1. Select **Create Publisher**
-1. Enter the domain name you wish to use for your publisher account (e.g. `dart.dev`), and click **create publisher**
-1. Select **OK** in the confirmation dialog
-1. If prompted, complete the verification flow. This will open the Google Search
-   Console. Note that when adding DNS records, it may take a few hours before
-   the Search Console is able to see the changes.
+1. Open the [pub.dev site]({{site.pub}}).
+
+1. Log in to the site using a Google account.
+
+1. Click the user menu in the top-right corner.
+
+1. Select **Create Publisher**.
+
+1. Enter the domain name you wish to use for your publisher account (e.g.
+   `dart.dev`), and click **create publisher**.
+
+1. Select **OK** in the confirmation dialog.
+
+1. If prompted, complete the verification flow. This will open the (Google
+   Search Console)[https://search.google.com/search-console/about]. Note that
+   when adding DNS records, it may take a few hours before the Search Console is
+   able to see the changes.
+
 1. Once the DNS flow has completed, re-initiate the creation step by clicking
-   **create publisher**
+   **create publisher**.
+
+You are now ready to publish packages for your publisher.
+
+<aside class="alert alert-info" markdown="1">
+**Note:**
+The pub client currently doesn't support publishing a new package directly to a
+publisher account. As a temporary workaround you need to publish it to a user
+account, and then transfer the package to a publisher (see below).´
+
+Once a package has been transferred to a publisher account, you can publish new
+versions using `pub publish`.
+</aside>
+
+### Transferring an existing package to a verified publisher account
+
+Packages already published to {{site.pub}} under a user account can be
+transferred to a verified publisher account using the following steps. Note that
+this process is not reversible.
+
+1. Login to {{site.pub}} with a user that is listed as an [uploader](#uploader)
+   of the package
+
+1. Go to the package details page for the package (e.g.
+   https://pub.dev/packages/http)
+
+1. Select the **Admin** tab (you will only see this if you are an uploader)
+
+1. Enter the name of the publisher, and click **transfer to publisher**. You
+   will only be able to complete this step if you are an admin in the verified
+   publisher account.
 
 ### Important files
 
@@ -171,7 +210,7 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Authors versus uploaders
+## Uploaders {#uploaders}
 
 The package authors as listed in the `pubspec.yaml` file
 are different from the list of people authorized to publish that package.
