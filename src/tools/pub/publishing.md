@@ -52,25 +52,24 @@ Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
 packages you upload.
 
-### Publishing as a pub.dev Verified Publisher
+### Publishing as a verified publisher {#verified-publisher}
 
 Packages can be published using either your personal Google account, or under a
-pub.dev Verified Publisher. We recommend that you use a pub.dev Verified
-Publisher when possible, as this enables the consumers of your package to trust
-that the publisher entity has been verified. Additionally, while packages
-published by a personal Google account will publically display the email address
-of the personal account used to upload the package, a package published by a
-Verified Publisher will display the publisher account, and it's associated
-contact address. Packages published by a Verified Publisher additionally display
-a Verified Publisher badge visible both on search pages, and on an individual
-package page.
+pub.dev verified publisher. We recommend that you use a verified publisher when
+possible, as this enables the consumers of your package to trust that the
+publisher entity has been verified. Additionally, while packages published by a
+personal Google account will publically display the email address of the
+personal account used to upload the package, a package published by a verified
+publisher will display the publisher account, and it's associated contact
+address. Packages published by a Verified Publisher additionally display a
+verified publisher badge {% asset verified-publisher.svg alt="pub.dev verified
+publisher logo" %} {#create-verified-publisher} on both search pages, and on
+individual package pages.
 
-TODO mit@: Create screenshot showing the badge for a Verified Publisher.
+### Creating a new pub.dev Verified Publisher account {% asset verified-publisher.svg alt="pub.dev verified publisher logo" %} {#create-verified-publisher}
 
-### Creating a new pub.dev Verified Publisher account
-
-Verified Publisher accounts on pub.dev are created using the following steps.
-Note that Verified Publisher accounts are based on an associated domain for
+Verified publisher accounts on pub.dev are created using the following steps.
+Note that verified publisher accounts are based on an associated domain for
 indetity, and that during creation of the account, the verification relies on
 DNS (domain name system) configuration of the associated domain.
 
@@ -78,7 +77,13 @@ DNS (domain name system) configuration of the associated domain.
 1. Log in to the site using a Google account
 1. Click the user menu in the top-right corner
 1. Select **Create Publisher**
-1. TODO
+1. Enter the domain name you wish to use for your publisher account (e.g. `dart.dev`), and click **create publisher**
+1. Select **OK** in the confirmation dialog
+1. If prompted, complete the verification flow. This will open the Google Search
+   Console. Note that when adding DNS records, it may take a few hours before
+   the Search Console is able to see the changes.
+1. Once the DNS flow has completed, re-initiate the creation step by clicking
+   **create publisher**
 
 ### Important files
 
