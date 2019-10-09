@@ -93,13 +93,17 @@ brief description of key app features, click the highlighted code below.
 
 Here's an example of running the app from the command line:
 
-```terminal
-$ dart dcat.dart -n quote.txt
-1 Be yourself. Everyone else is taken. -Oscar Wilde
-2 Don't cry because it's over, smile because it happened. -Dr. Seuss
-3 You only live once, but if you do it right, once is enough. -Mae West
-...
-```
+ 1. Download the file called [quote.txt]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt){:target="_blank"} and save it.
+ 
+ 2. In the directory that contains the file quote.txt and dcat.dart, run the program:
+ 
+    ```terminal
+     $ dart dcat.dart -n quote.txt
+     1 Be yourself. Everyone else is taken. -Oscar Wilde
+     2 Don't cry because it's over, smile because it happened. -Dr. Seuss
+     3 You only live once, but if you do it right, once is enough. -Mae West
+     ...
+     ```
 
 This command displays each line of the specified file. Because the `-n` argument
 is present, a line number is displayed before each line.
