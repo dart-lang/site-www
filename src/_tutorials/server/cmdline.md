@@ -100,6 +100,7 @@ $ dart dcat.dart -n quote.txt
 3 You only live once, but if you do it right, once is enough. -Mae West
 ...
 ```
+
 This command displays each line of the specified file. Because the `-n` argument
 is present, a line number is displayed before each line.
 
