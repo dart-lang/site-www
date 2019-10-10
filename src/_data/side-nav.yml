@@ -86,6 +86,8 @@
           permalink: /tools/pub/pubspec
         - title: Troubleshooting pub
           permalink: /tools/pub/troubleshoot
+        - title: Verified publishers
+          permalink: /tools/pub/verified-publishers
         - title: Versioning
           permalink: /tools/pub/versioning
 
