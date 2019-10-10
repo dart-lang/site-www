@@ -198,8 +198,7 @@ and viewable on pub.dev, but is annotated with a clear `DISCONTINUED` badge, and
 is removed from search.
 
 Packages can be marked discontinued using the **Admin** tab of an individual
-package. Note that this functionality is only available for packages published
-under a verified publisher (see above).
+package when logged in to pub.dev as an uploader or verified publisher administrator.
 
 ## Resources
 
