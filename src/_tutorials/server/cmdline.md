@@ -521,7 +521,7 @@ In addition, this tutorial covers two classes that help with command-line argume
 For more classes, functions, and properties,
 consult to the API reference for
 [dart:io,]({{ioAPI}}/dart-io-library.html){:target="_blank"}
-[dart:convert,]({{ioAPI}}/dart-convert-library.html){:target="_blank"}
+[dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html){:target="_blank"}
 and the [args]({{argsAPI}}/args-library.html){:target="_blank"} package.
 
 ## What next?

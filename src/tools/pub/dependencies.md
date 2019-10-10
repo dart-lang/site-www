@@ -32,7 +32,7 @@ dependencies:
 {% endprettify %}
 
 This creates a dependency on `transmogrify` that  allows any version, and looks
-it up using the default source, which is the [Pub site]({{site.pub}}).
+it up using the default source, which is the [pub.dev site]({{site.pub}}).
 To limit the dependency to a range of versions,
 you can provide a *version constraint*:
 
@@ -113,7 +113,7 @@ install packages that have `sdk` dependencies.
 
 ### Hosted packages
 
-A *hosted* package is one that can be downloaded from the Pub site
+A *hosted* package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
 of declaring a dependency on a hosted package:
 
@@ -223,7 +223,7 @@ containing your pubspec.
 Path dependencies are useful for local development, but do not work when
 sharing code with the outside world&mdash;not everyone can get to
 your file system. Because of this, you cannot upload a package to the
-[Pub site][pubsite] if it has any path dependencies in its pubspec.
+[pub.dev site][pubsite] if it has any path dependencies in its pubspec.
 
 Instead, the typical workflow is:
 

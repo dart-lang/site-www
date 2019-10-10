@@ -161,7 +161,6 @@ $ pub publish
   you can update the package using `pub publish`.
 {{ site.alert.end }}
 
-
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart

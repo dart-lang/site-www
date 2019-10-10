@@ -30,7 +30,7 @@ which are fundamental to most Dart programs.
   <div class="card">
     <h3><a href="/tutorials/libraries/shared-pkgs">Install shared packages</a></h3>
     <p>Organize and share code at the
-       <a href="{{site.pub}}">Pub site.</a></p>
+       <a href="{{site.pub}}">pub.dev site.</a></p>
   </div>
 </div>
 

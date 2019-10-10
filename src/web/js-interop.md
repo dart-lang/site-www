@@ -12,7 +12,7 @@ also known as _package:js_.
 For help using the `js` package, see the following:
 
 * Documentation for the `js` package:
-  * [Pub site page][js]
+  * [pub.dev site page][js]
   * [API reference][js-api]
 * Packages that use the `js` package:
   * [firebase_web][] is a good example of providing a Dart-like API
