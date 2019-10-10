@@ -194,7 +194,7 @@ Although packages always remain published, it can be useful to signal to
 developers that a package is no longer being actively maintained.
 For this, you can mark a package as **discontinued**.
 A discontinued package remains published and viewable on pub.dev,
-but it has a clear `DISCONTINUED` badge and
+but it has a clear **DISCONTINUED** badge and
 doesn't appear in pub.dev search results.
 
 To mark a package as discontinued, sign in to pub.dev using a Google Account
