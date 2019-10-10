@@ -69,8 +69,6 @@
       permalink: /guides/libraries/useful-libraries
     - title: Creating packages
       permalink: /guides/libraries/create-library-packages
-    - title: Verified publishers
-      permalink: /tools/pub/verified-publishers
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Package reference
@@ -88,6 +86,8 @@
           permalink: /tools/pub/pubspec
         - title: Troubleshooting pub
           permalink: /tools/pub/troubleshoot
+        - title: Verified publishers
+          permalink: /tools/pub/verified-publishers
         - title: Versioning
           permalink: /tools/pub/versioning
 
