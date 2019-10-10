@@ -17,23 +17,21 @@ places:
   * On a publisher profile page
 
 If you wish to see additional details (such as the contact email) for a
-publisher (e.g. [dart.dev](https://pub.dev/publishers/dart.dev/packages)), or
-see a list of all packages published by the publisher, click the pubisher
+publisher (e.g. [dart.dev](https://pub.dev/publishers/dart.dev/)), or
+see a list of all packages published by the publisher, click the publisher
 identity link (e.g. `dart.dev`) next to the badge.
 
 ## Verification process
 
-To ensure anyone who wishes to create a publisher account is able to do so
-themselves, and to ensure there are no high verification costs, pub.dev relies
-on DNS (domain name system) domains as an identification token. This was
-selected as we believe most organizations who with to publish content already
-have a domain/home-page. During the publisher creation process (see below),
-pub.dev verifies that the user creating the verified publisher account has admin
-access to the associated domain based on existing logic available in the (Google
-Search Console)[https://search.google.com/search-console/about].
-
+To ensure that verified publishers are trustworthy, low cost, available to
+anyone interested in being a verified publisher, pub.dev relies on DNS (domain
+name system) domains as an identification token. We chose DNS because we believe
+that most package publishers already have a domain/homepage. During the
+publisher creation process (see below), pub.dev verifies that the user creating
+the verified publisher has admin access to the associated domain, based on
+existing logic in the (Google Search Console)[https://search.google.com/search-console/about].
 
 ## Creating a verified publisher account
 
-If you are a publisher and wish to create a new verified publisher account,
+If you are a publisher and wish to create a new verified publisher,
 please see the [publishing page](/tools/pub/publishing#create-verified-publisher).
