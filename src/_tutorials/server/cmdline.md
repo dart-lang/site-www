@@ -91,7 +91,9 @@ brief description of key app features, click the highlighted code below.
 
 {% include_relative _dcat-example.html %}
 
-You can run the app from the command line over the quote.txt file (which you can download from this [repo] ({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"}) or any other text file, as shown here:
+You can run the app from the command line over `quote.txt`
+([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"})
+or any other text file:
 
 ```terminal
 $ dart dcat.dart -n quote.txt
