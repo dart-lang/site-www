@@ -188,17 +188,19 @@ deleting packages. You can always upload new versions of your package, but
 old ones will continue to be available for users that aren't ready to
 upgrade yet.
 
-## Marking packages discontinued {#discontinue}
+## Marking packages as discontinued {#discontinue}
 
-While package must always remain published, it can be useful to signal to
-developers that a package is no longer being actively maintained, and that no
-future improvements should be expected. For this, we support marking a package
-**discontinued**. When a package is marked discontinued, it remains published
-and viewable on pub.dev, but is annotated with a clear `DISCONTINUED` badge, and
-is removed from search.
+Although packages always remain published, it can be useful to signal to
+developers that a package is no longer being actively maintained.
+For this, you can mark a package as **discontinued**.
+A discontinued package remains published and viewable on pub.dev,
+but it has a clear `DISCONTINUED` badge and
+doesn't appear in pub.dev search results.
 
-Packages can be marked discontinued using the **Admin** tab of an individual
-package when logged in to pub.dev as an uploader or verified publisher administrator.
+To mark a package as discontinued, sign in to pub.dev using a Google Account
+that's an uploader or verified publisher admin for the package.
+Then use the **Admin** tab of the individual package to mark the package as
+discontinued.
 
 ## Resources
 
