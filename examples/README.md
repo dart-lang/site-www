@@ -5,11 +5,15 @@ documented in the [Examples][] page of the [site-shared docs][]. Consult that
 page for general information about project file organization, testing, [CI][],
 and more. Site-www specific information is given below.
 
-## How do I run the analyzer on all examples?
+## How do I run the analyzer on an example?
 
-```
-cd examples
-dartanalyzer .
+You'll need to `cd` into the example's folder and run Dart commands there. For
+example:
+
+```console
+$ cd examples/misc
+$ pub get
+$ dartanalyzer analysis_options.yaml .
 ```
 
 ## How do I run example tests?
