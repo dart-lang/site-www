@@ -76,7 +76,7 @@ following packages are useful across Dart platforms:
   expected ways.
   For an example that uses both package:test and package:mockito,
   see the [International Space Station API library and its unit
-  tests](https://github.com/dart-lang/mockito/tree/master/test/example/iss)
+  tests](https://github.com/dart-lang/mockito/tree/master/example/iss)
   in the [mockito package](https://github.com/dart-lang/mockito).
 
 ## Flutter testing
