@@ -126,6 +126,7 @@ and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
+{:.console-output}
 ```nocode
 Publishing transmogrify 1.0.0
     .gitignore
