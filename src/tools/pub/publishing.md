@@ -122,7 +122,7 @@ $ pub publish --dry-run
 Pub makes sure that your package follows the
 [pubspec format](/tools/pub/pubspec) and
 [package layout conventions](/tools/pub/package-layout),
-and then uploads your package to pub.dev]. Pub also shows you all of
+and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
