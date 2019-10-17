@@ -114,7 +114,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion MaineCoon-Cat-err
-    // ignore_for_file: 2, invalid_cast_new_expr
+    // ignore_for_file: stable, dev, invalid_cast_new_expr
     MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err
   }
@@ -140,7 +140,7 @@ void _miscDeclAnalyzedButNotTested() {
   {
     // Since we're using --no-implicit-casts, the following causes a static error.
     // #docregion generic-type-assignment-Animal
-    // ignore_for_file: 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     List<Cat> myCats = List<Animal>();
     // #enddocregion generic-type-assignment-Animal
   }

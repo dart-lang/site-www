@@ -13,8 +13,8 @@ Analyzing analysis_options.yaml, lib, test...
   error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('add') at lib/common_problems_analysis.dart:61:3 • invalid_override
   error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('method') at lib/common_problems_analysis.dart:74:3 • invalid_override
   error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' at lib/common_problems_analysis.dart:92:9 • invalid_super_invocation
-  error • A value of type 'bool Function(String)' can't be assigned to a variable of type 'bool Function(dynamic)' at lib/common_problems_analysis.dart:102:17 • invalid_assignment
   error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) at lib/common_problems_analysis.dart:102:17 • invalid_cast_function_expr
+  error • A value of type 'bool Function(String)' can't be assigned to a variable of type 'bool Function(dynamic)' at lib/common_problems_analysis.dart:102:17 • invalid_assignment
   error • The argument type 'List' can't be assigned to the parameter type 'List<int>' at lib/strong_analysis.dart:27:17 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:38:15 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:54:15 • argument_type_not_assignable

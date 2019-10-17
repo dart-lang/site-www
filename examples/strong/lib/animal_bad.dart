@@ -44,7 +44,7 @@ class Cat1 extends Animal {/* ... */}
 class Dog1 extends Animal {/* ... */}
 
 void main1() {
-  // ignore_for_file: 2, invalid_assignment
+  // ignore_for_file: stable, dev, invalid_assignment
   List<Cat> foo = <dynamic>[Dog1()]; // Error//!analysis-issue
   List<dynamic> bar = <dynamic>[Dog1(), Cat1()]; // OK
 }

@@ -98,6 +98,6 @@ class HoneyBadger extends Animal {
 
 // #docregion func-dynamic
 typedef Filter = bool Function(dynamic any);
-// ignore_for_file: 2, invalid_cast_function_expr
+// ignore_for_file: stable, dev, invalid_cast_function_expr
 Filter filter = (String x) => x.contains('Hello');
 // #enddocregion func-dynamic

@@ -23,7 +23,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // ignore_for_file: 2, type_argument_not_matching_bounds
+    // ignore_for_file: stable, dev, type_argument_not_matching_bounds
     // Specifying any non-SomeBaseClass type results in an error.
     // #docregion Foo-Object-error
     var foo = Foo<Object>(); //!analysis-issue
