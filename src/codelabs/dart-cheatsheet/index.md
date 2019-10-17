@@ -18,7 +18,7 @@ description: Interactively learn (or relearn) some of Dart's unique features.
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab — which is based on a 
+This codelab — which is based on a
 [Dart language cheatsheet](/guides/language/cheatsheet)
 written by and for Google engineers —
 walks you through the most important of these language features.
@@ -31,10 +31,10 @@ To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This page uses embedded DartPads to display runnable examples.
   {% include dartpads-embedded-troubleshooting.md %}
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## String interpolation
 
@@ -697,7 +697,7 @@ making it do the following:
 * If the list has **three** values,
   create an `IntegerTriple` with the values in order.
 * Otherwise, return null.
-    
+
 {% comment %}
 TODO: Fix the comment to not say "named".
 ISSUE: The hint acts like you don't already have the signature for the constructor.

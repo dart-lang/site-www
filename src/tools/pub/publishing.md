@@ -48,10 +48,10 @@ are a few additional requirements for uploading a package:
 
 [Google Account]: https://support.google.com/accounts/answer/27441
 
-{{ site.alert.note }}
+{{site.alert.note}}
 Unless you publish using a [verified publisher](#verified-publisher),
 **pub.dev displays the email address associated with your Google Account.**
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### Important files
 
@@ -78,7 +78,7 @@ Using a verified publisher has the following advantages:
 
 * The consumers of your package know that the publisher domain has been verified.
 * You can avoid having pub.dev display your personal email address.
-  Instead, pub.dev displays displays the publisher domain and contact address. 
+  Instead, pub.dev displays displays the publisher domain and contact address.
 * A verified publisher badge {% asset verified-publisher.svg
   alt="pub.dev verified publisher logo" %} is displayed next to your package name
   on both search pages and individual package pages.
@@ -102,7 +102,7 @@ To create a verified publisher, follow these steps:
 1. If prompted, complete the verification flow, which opens the [Google
    Search Console.](https://search.google.com/search-console/about)
    * When adding DNS records, it may take a few hours before the Search Console
-   reflects the changes. 
+   reflects the changes.
    * When the verification flow is complete, return to step 4.
 
 
@@ -152,14 +152,14 @@ When you're ready to publish your package, remove the `--dry-run` argument:
 $ pub publish
 {% endprettify %}
 
-{{ site.alert.note }}
+{{site.alert.note}}
   The `pub` command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
   Once a package has been transferred to a publisher,
   you can update the package using `pub publish`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
@@ -175,12 +175,12 @@ dependencies:
 
 To transfer a package to a verified publisher,
 you must be an [uploader](#uploader) for the package
-and an admin for the verified publisher. 
+and an admin for the verified publisher.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This process isn't reversible. Once you transfer a package to a publisher,
   you can't transfer it back to an individual account.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Here's how to transfer a package to a verified publisher:
 
@@ -189,7 +189,7 @@ Here's how to transfer a package to a verified publisher:
 1. Go to the package details page (for example,
    `{{site.pub-pkg}}/http`).
 1. Select the **Admin** tab.
-1. Enter the name of the publisher, and click **Transfer to Publisher**. 
+1. Enter the name of the publisher, and click **Transfer to Publisher**.
 
 
 ## What files are published?
@@ -221,11 +221,11 @@ the first and only person authorized to upload additional versions of the packag
 To allow or disallow other people to upload versions,
 use the [`pub uploader`][] command.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   For packages published using a verified publisher,
   the package details page displays the verified publisher domain,
   rather than the author field.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## Publishing prereleases
 
@@ -255,7 +255,7 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
-or replace the package README and documentation. 
+or replace the package README and documentation.
 
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 
