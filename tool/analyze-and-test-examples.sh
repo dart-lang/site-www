@@ -41,7 +41,7 @@ function toggleInFileAnalyzerFlags() {
   fi
 
   find $* -name "*.dart" ! -path "**/.*" \
-    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(\d|stable|dev)\b)}{//$toggle\$1}g" {} \;
+    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|dev)\b)}{//$toggle\$1}g" {} \;
 }
 
 function analyze_and_test() {
