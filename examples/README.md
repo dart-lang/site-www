@@ -25,8 +25,12 @@ To run both the analyzer and tests for all examples use:
 ```
 
 If you get a warning about test failures or analysis errors,
-you might need to update one or more analyzer results files
-(for example, `examples/misc/analyzer-2-results.txt`).
+you might need to update one or more analyzer results files.
+For example, update `examples/misc/analyzer-results.txt`, if
+the change applies to both stable and dev Dart releases. Otherwise,
+update only the release specific file: either
+`examples/misc/analyzer-results-stable.txt` or
+`examples/misc/analyzer-results-dev.txt`.
 
 ## How do I update the analyzer results files?
 
