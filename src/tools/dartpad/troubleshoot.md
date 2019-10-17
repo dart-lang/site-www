@@ -35,6 +35,10 @@ then try the following:
   If you've disabled cookies, change your settings to
   **allow cookies for dartpad.dev.**
 
+* If you repeatedly reload a page that contains embedded DartPads, 
+  then you might run into [GitHub rate limiting](https://developer.github.com/v3/#rate-limiting).
+  Within 60 minutes, you should be able to reload the page and see code in the embedded DartPads.
+
 Although DartPad doesn't use cookies, it does rely on local storage,
 which browsers usually disable when cookies are disabled.
 
