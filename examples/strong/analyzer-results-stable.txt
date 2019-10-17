@@ -1,5 +1,4 @@
 # https://github.com/dart-lang/sdk/issues/38238 - Regression in reporting of invalid overrides
-# Also, line numbers appear to be off in the case of invalid overrides.
 Analyzing analysis_options.yaml, lib, test...
   error • 'HoneyBadger.parent' ('Root Function()') isn't a valid override of 'Animal.parent' ('parent') at lib/animal_bad.dart:15:3 • invalid_override
   error • 'Cat.chase' ('void Function(Mouse)') isn't a valid override of 'Animal.chase' ('chase') at lib/animal_bad.dart:26:3 • invalid_override
