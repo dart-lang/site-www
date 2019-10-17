@@ -8,7 +8,7 @@ description: Packages are bundles of source code, tools, and resources that help
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * The [Pub site]({{site.pub}}) is the primary public repository for Dart
+  * The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
     packages.
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
@@ -22,14 +22,14 @@ description: Packages are bundles of source code, tools, and resources that help
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
-are available at the [Pub site]({{site.pub}}) repository.
+are available at the [pub.dev site]({{site.pub}}) repository.
 
 This tutorial shows how to use `pub`&mdash;a package manager
 that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
-the [Pub site]({{site.pub}});
+the [pub.dev site]({{site.pub}});
 just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
@@ -113,7 +113,7 @@ of a package that your app uses.
 
 Let's make the vector_victor app have a dependency
 on the vector_math package,
-which is available at the [Pub site]({{site.pub}}).
+which is available at the [pub.dev site]({{site.pub}}).
 
  1. Get the current installation details for the package:
 
@@ -132,7 +132,7 @@ which is available at the [Pub site]({{site.pub}}).
  2. Edit `pubspec.yaml`.
 
  3. In the dependencies section, add the string you copied from the
-    Pub site. Be careful to keep the indentation the same; YAML is
+    pub.dev site. Be careful to keep the indentation the same; YAML is
     picky! For example:
 
     ```yaml
@@ -150,7 +150,7 @@ For details of what version numbers mean
 and how you can format them,
 see [Pub versioning philosophy](/tools/pub/versioning).
 
-The [Pub site]({{site.pub}})
+The [pub.dev site]({{site.pub}})
 is the primary public repository for Dart packages.
 `pub` automatically checks that
 website when resolving package dependencies.
@@ -288,7 +288,7 @@ use the `package:` prefix.
    For inspiration, look at the
    [vector_math API
    docs]({{site.pub}}/documentation/vector_math/latest),
-   which you can find from the Pub site entry.
+   which you can find from the pub.dev site entry.
 
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
@@ -298,7 +298,7 @@ use the `package:` prefix.
 
 ## Other resources
 
-* Dart developers share packages at the [Pub site]({{site.pub}}).
+* Dart developers share packages at the [pub.dev site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
 * See the [pub package documentation](/guides/packages)

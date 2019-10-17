@@ -116,7 +116,7 @@ enchilada/
 
 One file that's very common in open source is a README file that
 describes the project. This is especially important in pub. When you upload
-to the [Pub site,]({{site.pub}}) your README is shown on
+to the [pub.dev site,]({{site.pub}}) your README is shown on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
@@ -135,7 +135,7 @@ enchilada/
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
 release. When you upload your package to the
-[Pub site,]({{site.pub}}) your package's changelog file (if any)
+[pub.dev site,]({{site.pub}}) your package's changelog file (if any)
 appears in the changelog tab.
 
 If your CHANGELOG ends in `.md`, it's parsed as
@@ -402,7 +402,7 @@ consider creating an example file with one of the following names
 * <code>example[/lib]/example.dart</code>
 
 When you publish a package that contains one or more of the above files,
-the Pub site creates an **Example** tab to display the first file it finds
+the pub.dev site creates an **Example** tab to display the first file it finds
 (searching in the order shown in the list above).
 For example, if your package has many files under its `example` directory,
 including a file named `README.md`,

@@ -23,11 +23,11 @@ A pubspec can have the following fields:
   [_Learn more._](#name)
 
 `version`
-: Required for packages that are hosted on the Pub site.
+: Required for packages that are hosted on the pub.dev site.
   [_Learn more._](#version)
 
 `description`
-: Required for packages that are hosted on the [Pub site.]({{site.pub}})
+: Required for packages that are hosted on the [pub.dev site.]({{site.pub}})
   [_Learn more._](#description)
 
 `author` or `authors`
@@ -137,13 +137,13 @@ doesn't start with digits and isn't a
 
 Try to pick a name that is clear, terse, and not already in use.
 A quick search of packages on the
-[Pub site]({{site.pub}}/packages)
+[pub.dev site]({{site.pub}}/packages)
 to make sure that nothing else is using your name is recommended.
 
 ### Version
 
 Every package has a version. A version number is required to host your package
-on the Pub site, but can be omitted for local-only packages. If you omit
+on the pub.dev site, but can be omitted for local-only packages. If you omit
 it, your package is implicitly versioned `0.0.0`.
 
 Versioning is necessary for reusing code while letting it evolve quickly. A
@@ -186,7 +186,7 @@ authors:
 {% endprettify %}
 
 The email addresses can be from any provider.
-If anyone uploads your package to the Pub site,
+If anyone uploads your package to the pub.dev site,
 then the author information (including email addresses) becomes public.
 
 ### Homepage
@@ -201,7 +201,7 @@ While providing a `homepage` is optional, *please provide* it or `repository`
 
 The optional `repository` field should contain the URL for your package's source
 code repository — for example, `https://github.com/<user>/<repository>`.
-If you publish your package to the Pub site, then your package's page
+If you publish your package to the pub.dev site, then your package's page
 displays the repository URL.
 While providing a `repository` is optional, *please provide* it or `homepage`
 (or both). It helps users understand where your package is coming from.
@@ -210,9 +210,9 @@ While providing a `repository` is optional, *please provide* it or `homepage`
 
 The optional `issue_tracker` field should contain a URL for the package's
 issue tracker, where existing bugs can be viewed and new bugs can be filed.
-The Pub site attempts to display a link to each package's issue
+The pub.dev site attempts to display a link to each package's issue
 tracker, using the value of this field. If `issue_tracker` is missing but
-`repository` is present and points to GitHub, then the Pub site uses the
+`repository` is present and points to GitHub, then the pub.dev site uses the
 default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
@@ -267,7 +267,7 @@ For more information, see
 
 ### Publish_to
 
-The default uses the [Pub site.]({{site.pub}}) Specify `none` to prevent
+The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dev)
 to publish.

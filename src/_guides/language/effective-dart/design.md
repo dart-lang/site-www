@@ -916,7 +916,7 @@ confounds their intuition about how properties work. For example, a setter
 without a getter means you can use `=` to modify it, but not `+=`.
 
 This guideline does *not* mean you should add a getter just to permit the setter
-you want to add. Object's shouldn't generally expose more state than they need
+you want to add. Objects shouldn't generally expose more state than they need
 to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 

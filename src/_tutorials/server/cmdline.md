@@ -91,7 +91,9 @@ brief description of key app features, click the highlighted code below.
 
 {% include_relative _dcat-example.html %}
 
-Here's an example of running the app from the command line:
+You can run the app from the command line over `quote.txt`
+([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"})
+or any other text file:
 
 ```terminal
 $ dart dcat.dart -n quote.txt
@@ -521,7 +523,7 @@ In addition, this tutorial covers two classes that help with command-line argume
 For more classes, functions, and properties,
 consult to the API reference for
 [dart:io,]({{ioAPI}}/dart-io-library.html){:target="_blank"}
-[dart:convert,]({{ioAPI}}/dart-convert-library.html){:target="_blank"}
+[dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html){:target="_blank"}
 and the [args]({{argsAPI}}/args-library.html){:target="_blank"} package.
 
 ## What next?

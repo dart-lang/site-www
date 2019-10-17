@@ -1,6 +1,6 @@
 ---
 title: Publishing packages
-description: Learn how to publish a Dart package to the Pub site.
+description: Learn how to publish a Dart package to pub.dev.
 ---
 
 [The pub package manager](/guides/packages) isn't just for using other people's packages.
@@ -10,7 +10,7 @@ command.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-To publish to a location other than the Pub site,
+To publish to a location other than pub.dev,
 or to prevent publication anywhere, use the `publish_to` field,
 as defined in the [pubspec](/tools/pub/pubspec).
 </aside>
@@ -48,9 +48,10 @@ are a few additional requirements for uploading a package:
 
 [Google Account]: https://support.google.com/accounts/answer/27441
 
-Be aware that the email address associated with your Google account is
-displayed on the [Pub site]({{site.pub}}) along with any
-packages you upload.
+{{ site.alert.note }}
+Unless you publish using a [verified publisher](#verified-publisher),
+**pub.dev displays the email address associated with your Google Account.**
+{{ site.alert.end }}
 
 ### Important files
 
@@ -61,26 +62,68 @@ affect how your package's page looks:
 * **README**: The README file (`README`, `README.md`, `README.mdown`,
   `README.markdown`) is the main content featured in your package's page.
 * **CHANGELOG**: Your package's CHANGELOG (`CHANGELOG`, `CHANGELOG.md`,
-  `CHANGELOG.mdown`, `CHANGELOG.markdown`), if found, will also be featured in a
+  `CHANGELOG.mdown`, `CHANGELOG.markdown`), if found, is also featured in a
   tab on your package's page, so that developers can read it right from
-  the Pub site.
+  pub.dev.
 * **The pubspec**: Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
   description, authors, etc.
 
+
+### Advantages of using a verified publisher {#verified-publisher}
+
+You can publish packages using either a verified publisher (recommended)
+or an independent Google Account.
+Using a verified publisher has the following advantages:
+
+* The consumers of your package know that the publisher domain has been verified.
+* You can avoid having pub.dev display your personal email address.
+  Instead, pub.dev displays displays the publisher domain and contact address. 
+* A verified publisher badge {% asset verified-publisher.svg
+  alt="pub.dev verified publisher logo" %} is displayed next to your package name
+  on both search pages and individual package pages.
+
+
+### Creating a verified publisher {#create-verified-publisher}
+
+To create a verified publisher, follow these steps:
+
+1. Go to [pub.dev.]({{site.pub}})
+
+1. Log in to pub.dev using a Google Account.
+
+1. In the user menu in the top-right corner, select **Create Publisher**.
+
+1. Enter the domain name that you want to associate with your publisher (for example,
+   `dart.dev`), and click **Create Publisher**.
+
+1. In the confirmation dialog, select **OK**.
+
+1. If prompted, complete the verification flow, which opens the [Google
+   Search Console.](https://search.google.com/search-console/about)
+   * When adding DNS records, it may take a few hours before the Search Console
+   reflects the changes. 
+   * When the verification flow is complete, return to step 4.
+
+
 ## Publishing your package
 
-For your first time around, you can perform a dry run:
+Use the [`pub publish`][] command to publish your package for the first time,
+or to update it to a new version.
+
+
+### Performing a dry run
+
+To test how `pub publish` will work, you can perform a dry run:
 
 {% prettify none %}
 $ pub publish --dry-run
 {% endprettify %}
 
-Pub will check to make sure that your package follows the
+Pub makes sure that your package follows the
 [pubspec format](/tools/pub/pubspec) and
 [package layout conventions](/tools/pub/package-layout),
-and then upload your package to the
-[Pub site]({{site.pub}}). Pub will also show you all of
+and then uploads your package to pub.dev]. Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
@@ -101,14 +144,24 @@ Publishing transmogrify 1.0.0
 Package has 0 warnings.
 {% endprettify %}
 
+### Publishing
+
 When you're ready to publish your package, remove the `--dry-run` argument:
 
 {% prettify none %}
 $ pub publish
 {% endprettify %}
 
-After your package has been successfully uploaded to
-[Pub site]({{site.pub}}), any pub user will be able to
+{{ site.alert.note }}
+  The `pub` command currently doesn't support publishing a new package directly to a
+  verified publisher. As a temporary workaround, publish new packages to a Google Account,
+  and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
+
+  Once a package has been transferred to a publisher,
+  you can update the package using `pub publish`.
+{{ site.alert.end }}
+
+After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
@@ -117,6 +170,27 @@ developer can add it as a dependency in their `pubspec.yaml`:
 dependencies:
   transmogrify: ^1.0.0
 {% endprettify %}
+
+### Transferring a package to a verified publisher
+
+To transfer a package to a verified publisher,
+you must be an [uploader](#uploader) for the package
+and an admin for the verified publisher. 
+
+{{ site.alert.note }}
+  This process isn't reversible. Once you transfer a package to a publisher,
+  you can't transfer it back to an individual account.
+{{ site.alert.end }}
+
+Here's how to transfer a package to a verified publisher:
+
+1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
+   an uploader of the package.
+1. Go to the package details page (for example,
+   `{{site.pub-pkg}}/http`).
+1. Select the **Admin** tab.
+1. Enter the name of the publisher, and click **Transfer to Publisher**. 
+
 
 ## What files are published?
 
@@ -138,14 +212,20 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Authors versus uploaders
+## Uploaders {#uploaders}
 
 The package authors as listed in the `pubspec.yaml` file
 are different from the list of people authorized to publish that package.
 Whoever publishes the first version of some package automatically becomes
 the first and only person authorized to upload additional versions of the package.
 To allow or disallow other people to upload versions,
-use the [`pub uploader`](cmd/pub-uploader) command.
+use the [`pub uploader`][] command.
+
+{{ site.alert.note }}
+  For packages published using a verified publisher,
+  the package details page displays the verified publisher domain,
+  rather than the author field.
+{{ site.alert.end }}
 
 ## Publishing prereleases
 
@@ -172,7 +252,7 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
   then pub chooses that prerelease instead of a stable release.
 </aside>
 
-When a prerelease is published to [pub.dev](https://pub.dev),
+When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package README and documentation. 
@@ -182,15 +262,32 @@ or replace the package README and documentation.
 ## Publishing is forever
 
 Keep in mind that publishing is forever. As soon as you publish your package,
-users will be able to depend on it. Once they start doing that, removing
+users can depend on it. Once they start doing that, removing
 the package would break theirs. To avoid that, pub strongly discourages
 deleting packages. You can always upload new versions of your package, but
 old ones will continue to be available for users that aren't ready to
 upgrade yet.
 
+## Marking packages as discontinued {#discontinue}
+
+Although packages always remain published, it can be useful to signal to
+developers that a package is no longer being actively maintained.
+For this, you can mark a package as **discontinued**.
+A discontinued package remains published and viewable on pub.dev,
+but it has a clear **DISCONTINUED** badge and
+doesn't appear in pub.dev search results.
+
+To mark a package as discontinued, sign in to pub.dev using a Google Account
+that's an uploader or verified publisher admin for the package.
+Then use the **Admin** tab of the individual package to mark the package as
+discontinued.
+
 ## Resources
 
-For more information, see the reference pages for:
+For more information, see the reference pages for the `pub` commands:
 
-* [`pub publish`](/tools/pub/cmd/pub-lish)
-* [`pub uploader`](/tools/pub/cmd/pub-uploader)
+* [`pub publish`][]
+* [`pub uploader`][]
+
+[`pub publish`]: /tools/pub/cmd/pub-lish
+[`pub uploader`]: /tools/pub/cmd/pub-uploader
