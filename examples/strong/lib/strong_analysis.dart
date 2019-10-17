@@ -114,7 +114,6 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion MaineCoon-Cat-err
-    // ignore_for_file: 1, invalid_assignment
     // ignore_for_file: 2, invalid_cast_new_expr
     MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err

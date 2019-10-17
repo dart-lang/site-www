@@ -119,7 +119,6 @@ void main() {
         // #docregion cast
         Map<String, dynamic> json = getFromExternalSource();
         var names = json['names'] as List;
-        // ignore_for_file: 1, argument_type_not_assignable, undefined_method
         assumeStrings(names.cast<String>());
         // #enddocregion cast
       }
