@@ -30,10 +30,10 @@ For web apps,
 HTTP requests are served by the browser in which the app is running,
 and thus are subject to the browser's security restrictions.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This page uses embedded DartPads to display runnable examples.
   {% include dartpads-embedded-troubleshooting.md %}
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ## About JSON

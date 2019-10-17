@@ -11,12 +11,12 @@ To get a DartPad as big as your browser window, go to the
 <a href="{{site.dartpad}}"
 target="_blank">DartPad site (dartpad.dev).</a>
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
-  
+
   If you have issues using DartPad, see the [DartPad troubleshooting
   tips](/tools/dartpad/troubleshoot).
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Here's what DartPad looks like:
 

@@ -12,7 +12,7 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{ site.alert.warning }}
+{{site.alert.warning}}
 The dart:ffi library is [in active development][ffi issue]
 and isn't complete yet.
 The API is likely to have breaking changes
@@ -22,7 +22,7 @@ If you're developing a Flutter app, use the Flutter dev channel,
 as described in the [Flutter dart:ffi page.][binding]
 Otherwise, use the
 [Dart dev channel](/get-dart#about-release-channels-and-version-strings).
-{{ site.alert.end }}
+{{site.alert.end}}
 
 API documentation is available from the dev channel:
 [dart:ffi API reference.]({{site.dart_api}}/dev/dart-ffi/dart-ffi-library.html)
@@ -58,7 +58,7 @@ The hello_world example has the following files:
 {% comment %}
 [PENDING: say something about setup.sh? It doesn't seem necessary for this example, but maybe it's needed by other examples?]
 
-<!-- 
+<!--
   | [setup.sh]({{ page.hw}}/setup.sh) | A macOS-specific script that sets an environment variable. [PENDING: Omit from this list? Why is it necessary? I didn't seem to need it.] |
 -->
 {% endcomment %}
@@ -81,7 +81,7 @@ gcc -dynamiclib -undefined suppress -flat_namespace hello.o -o ../hello_world.dy
 $ cd ..
 $ dart hello.dart
 Hello World
-$ 
+$
 ```
 
 ### Using dart:ffi
