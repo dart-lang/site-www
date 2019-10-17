@@ -8,12 +8,11 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-To publish to a location other than pub.dev,
-or to prevent publication anywhere, use the `publish_to` field,
-as defined in the [pubspec](/tools/pub/pubspec).
-</aside>
+{{site.alert.note}}
+  To publish to a location other than pub.dev,
+  or to prevent publication anywhere, use the `publish_to` field,
+  as defined in the [pubspec](/tools/pub/pubspec).
+{{site.alert.end}}
 
 ## Preparing to publish
 
@@ -49,8 +48,8 @@ are a few additional requirements for uploading a package:
 [Google Account]: https://support.google.com/accounts/answer/27441
 
 {{site.alert.note}}
-Unless you publish using a [verified publisher](#verified-publisher),
-**pub.dev displays the email address associated with your Google Account.**
+  Unless you publish using a [verified publisher](#verified-publisher),
+  **pub.dev displays the email address associated with your Google Account.**
 {{site.alert.end}}
 
 ### Important files
@@ -108,7 +107,7 @@ To create a verified publisher, follow these steps:
 
 ## Publishing your package
 
-Use the [`pub publish`][] command to publish your package for the first time,
+Use the [pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
 
@@ -116,9 +115,9 @@ or to update it to a new version.
 
 To test how `pub publish` will work, you can perform a dry run:
 
-{% prettify none %}
+```terminal
 $ pub publish --dry-run
-{% endprettify %}
+```
 
 Pub makes sure that your package follows the
 [pubspec format](/tools/pub/pubspec) and
@@ -127,7 +126,7 @@ and then uploads your package to pub.dev]. Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
-{% prettify none %}
+```nocode
 Publishing transmogrify 1.0.0
     .gitignore
     CHANGELOG.md
@@ -142,15 +141,15 @@ Publishing transmogrify 1.0.0
         transmogrify_test.dart
 
 Package has 0 warnings.
-{% endprettify %}
+```
 
 ### Publishing
 
 When you're ready to publish your package, remove the `--dry-run` argument:
 
-{% prettify none %}
+```terminal
 $ pub publish
-{% endprettify %}
+```
 
 {{site.alert.note}}
   The `pub` command currently doesn't support publishing a new package directly to a
@@ -166,15 +165,15 @@ download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
 
-{% prettify yaml %}
+```yaml
 dependencies:
   transmogrify: ^1.0.0
-{% endprettify %}
+```
 
 ### Transferring a package to a verified publisher
 
 To transfer a package to a verified publisher,
-you must be an [uploader](#uploader) for the package
+you must be an [uploader](#uploaders) for the package
 and an admin for the verified publisher.
 
 {{site.alert.note}}
@@ -212,14 +211,14 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Uploaders {#uploaders}
+## Uploaders
 
 The package authors as listed in the `pubspec.yaml` file
 are different from the list of people authorized to publish that package.
 Whoever publishes the first version of some package automatically becomes
 the first and only person authorized to upload additional versions of the package.
 To allow or disallow other people to upload versions,
-use the [`pub uploader`][] command.
+use the [pub uploader][] command.
 
 {{site.alert.note}}
   For packages published using a verified publisher,
@@ -246,11 +245,10 @@ might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.note}}
   If a stable package in the dependency graph depends on a prerelease,
   then pub chooses that prerelease instead of a stable release.
-</aside>
+{{site.alert.end}}
 
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
@@ -286,8 +284,8 @@ discontinued.
 
 For more information, see the reference pages for the `pub` commands:
 
-* [`pub publish`][]
-* [`pub uploader`][]
+* [pub publish][]
+* [pub uploader][]
 
-[`pub publish`]: /tools/pub/cmd/pub-lish
-[`pub uploader`]: /tools/pub/cmd/pub-uploader
+[pub publish]: /tools/pub/cmd/pub-lish
+[pub uploader]: /tools/pub/cmd/pub-uploader
