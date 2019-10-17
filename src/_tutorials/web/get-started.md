@@ -23,9 +23,9 @@ which includes the web UI that the app produces,
 <a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
    target="_blank">open the example at dartpad.dev.</a>
 
-{{ site.alert.note }}
+{{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
-{{ site.alert.end }}
+{{site.alert.end}}
 
 <iframe
     src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"

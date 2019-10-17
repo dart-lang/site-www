@@ -20,10 +20,10 @@ in `async` functions.
 
 Estimated time to complete this codelab: 40-60 minutes.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This page uses embedded DartPads to display examples and exercises.
   {% include dartpads-embedded-troubleshooting.md %}
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## Why asynchronous code matters
 
@@ -71,7 +71,7 @@ In the next sections you'll learn the about futures, `async`, and `await`
 so that you'll be able to write the code necessary to make `getUserOrder()`
 print the desired value ("Large Latte") to the console.
 
- {{ site.alert.secondary }}
+ {{site.alert.secondary}}
  **Key terms:**
 * **synchronous operation**: A synchronous operation blocks other operations
 from executing until it completes.
@@ -81,7 +81,7 @@ operations.
 other operations to execute before it completes.
 * **asynchronous function**: An asynchronous function performs at least one
 asynchronous operation and can also perform _synchronous_ operations.
- {{ site.alert.end }}
+ {{site.alert.end}}
 
 
 ## What is a future?
@@ -89,10 +89,10 @@ A future (lower case "f") is an instance of the [Future][future class]
 (capitalized "F") class. A future represents the result of an asynchronous
 operation, and can have two states: uncompleted or completed.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   _Uncompleted_ is a Dart term referring to the state of a future
   before it has produced a value.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### Uncompleted
 
@@ -157,7 +157,7 @@ You've learned about futures and how they complete, but how do you use the
 results of asynchronous functions? In the next section you'll learn how to get
 results with the `async` and `await` keywords.
 
-{{ site.alert.secondary }}
+{{site.alert.secondary}}
   **Quick review:**
   * A [Future\<T\>][future class] instance produces a value of type `T`.
   * If a future doesn't produce a usable value, then the future's type is
@@ -172,7 +172,7 @@ results with the `async` and `await` keywords.
 * **Future**: the Dart [Future][future class] class.
 
 * **future**: an instance of the Dart Future class.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## Working with futures: async and await
 
@@ -190,14 +190,14 @@ First, add the `async` keyword before the function body:
     main() [!async!] {
 {% endprettify %}
 
-{{ site.alert.info }}
+{{site.alert.info}}
   You might have noticed that some functions (like `main()`, above)
   don't have return types.
   That's because Dart can [infer the return type][infer] for you.
   Omitting return types is fine when you're prototyping,
   but when you write production code,
   we recommend that you specify the return type.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [infer]: https://dart.dev/guides/language/sound-dart#type-inference
 
@@ -291,7 +291,7 @@ The asynchronous example is different in three ways:
   * The **`await`** keyword appears before calling the asynchronous functions
   `getUserOrder()` and `createOrderMessage()`.
 
-{{ site.alert.secondary }}
+{{site.alert.secondary}}
   **Key terms:**
 * **async**: You can use the `async` keyword before a function's body to mark it as
 asynchronous.
@@ -299,7 +299,7 @@ asynchronous.
 keyword.
 * **await**: You can use the `await` keyword to get the completed result of an
 asynchronous expression. The `await` keyword only works within an `async` function.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### Execution flow with async and await
 
@@ -307,10 +307,10 @@ An `async` function runs synchronously until the first
 `await` keyword. This means that within an `async` function body, all
 synchronous code before the first `await` keyword executes immediately.
 
-{{ site.alert.note }}
+{{site.alert.note}}
 Before Dart 2.0, an `async` function returned immediately,
 without executing any code within the `async` function body.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### Example: Execution within async functions
 Run the following example to see how execution proceeds within an `async`
@@ -381,9 +381,9 @@ Implement an `async` function `reportLogins()` so that it does the following:
   width="100%">
 </iframe>
 
-  {{ site.alert.info }}
+  {{site.alert.info}}
     If your code passes the tests, you can ignore [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
-  {{ site.alert.end }}
+  {{site.alert.end}}
 
 ## Handling errors
 To handle errors in an `async` function, use try-catch:

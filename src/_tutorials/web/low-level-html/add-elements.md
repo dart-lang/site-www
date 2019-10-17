@@ -22,10 +22,10 @@ prevpage:
 
 </div>
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This page uses embedded DartPads to display runnable examples.
   {% include dartpads-embedded-troubleshooting.md %}
-{{ site.alert.end }}
+{{site.alert.end}}
 
 As you learned in the previous tutorial,
 the DOM represents the structure
