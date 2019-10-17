@@ -27,6 +27,7 @@
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 $code-weight: 400;
+$code-color: #247776; // Temporary fix
 
 /* -----------------------------------------
   Global
@@ -211,7 +212,7 @@ pre, pre.prettyprint {
 }
 code {
   background-color: transparent;
-  color: #bc0056;
+  color: $code-color;
   font-size: 100%;
   padding: 0;
 }
