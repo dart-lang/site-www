@@ -23,7 +23,7 @@ void _miscDeclAnalyzedButNotTested() {
       var list = [];
       list.add(1);
       list.add("2");
-      // ignore_for_file: 1, 2, argument_type_not_assignable
+      // ignore_for_file: stable, dev, argument_type_not_assignable
       printInts(list); //!analysis-issue
     }
     // #enddocregion opening-example
@@ -34,7 +34,7 @@ void _miscDeclAnalyzedButNotTested() {
     Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
     // #enddocregion type-inference-1-orig
 
-    // ignore_for_file: 1, 2, argument_type_not_assignable
+    // ignore_for_file: stable, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2-orig
@@ -50,7 +50,7 @@ void _miscDeclAnalyzedButNotTested() {
     var arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
     // #enddocregion type-inference-1
 
-    // ignore_for_file: 1, 2, argument_type_not_assignable
+    // ignore_for_file: stable, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2
@@ -78,7 +78,7 @@ void _miscDeclAnalyzedButNotTested() {
   {
     // #docregion local-var-type-inference-error
     var x = 3; // x is inferred as an int
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     x = 4.0; //!analysis-issue
     // #enddocregion local-var-type-inference-error
   }
@@ -102,7 +102,7 @@ void _miscDeclAnalyzedButNotTested() {
     var ints = listOfDouble.map((x) => x.toInt());
     // #enddocregion type-arg-inference
 
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     listOfDouble[0] = '';
   }
 
@@ -114,8 +114,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion MaineCoon-Cat-err
-    // ignore_for_file: 1, invalid_assignment
-    // ignore_for_file: 2, invalid_cast_new_expr
+    // ignore_for_file: stable, dev, invalid_cast_new_expr
     MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err
   }
@@ -141,7 +140,7 @@ void _miscDeclAnalyzedButNotTested() {
   {
     // Since we're using --no-implicit-casts, the following causes a static error.
     // #docregion generic-type-assignment-Animal
-    // ignore_for_file: 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     List<Cat> myCats = List<Animal>();
     // #enddocregion generic-type-assignment-Animal
   }
@@ -154,7 +153,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion dart-1-checked-mode-permissiveness
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     String result = 1 + 2;
     // #enddocregion dart-1-checked-mode-permissiveness
   }

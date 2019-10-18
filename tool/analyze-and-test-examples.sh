@@ -11,9 +11,12 @@ source ./tool/shared/env-set-check.sh
 
 # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
 ANALYZE="dartanalyzer --no-implicit-casts "
-DART_MAJOR_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\d)\./')
+DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
+DART_CHAN=stable
+if [[ $DART_VERS == *-dev* ]]; then
+  DART_CHAN=dev
+fi
 EXAMPLES="$ROOT/examples"
-
 PUB_ARGS="upgrade" # --no-precomiple
 
 while [[ $# -gt 0 ]]; do
@@ -26,14 +29,19 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-function reEnableInFileAnalyzerFlags() {
-  find $* -name "*.dart" ! -path "**/.*" \
-    -exec perl -i -pe "s|//!(ignore_for_file: \d, )|// \$1|g" {} \;
-}
+echo DART_VERS: $DART_VERS
+echo DART_CHAN: $DART_CHAN
 
-function disableInFileAnalyzerFlags() {
+function toggleInFileAnalyzerFlags() {
+  # Arguments: [disable|reenable] path path...
+  local action=$1; shift;
+  local mark='!'; local toggle=' '
+  if [[ $action == 'disable' ]]; then
+    mark=' '; toggle='!'
+  fi
+
   find $* -name "*.dart" ! -path "**/.*" \
-    -exec perl -i -pe "s|// (ignore_for_file: \d, )|//!\$1|g" {} \;
+    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|dev)\b)}{//$toggle\$1}g" {} \;
 }
 
 function analyze_and_test() {
@@ -56,7 +64,7 @@ function analyze_and_test() {
   fi
 
   echo
-  EXPECTED_FILE=$PROJECT_ROOT/analyzer-$DART_MAJOR_VERS-results.txt
+  EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHAN.txt
   if [[ ! -e $EXPECTED_FILE ]]; then
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
   fi
@@ -74,12 +82,12 @@ function analyze_and_test() {
       cat $LOG_FILE
       echo "No analysis errors or warnings should be present in original source files."
       echo "Ensure that these issues are disabled using appropriate markers like: "
-      echo "  // ignore_for_file: $DART_MAJOR_VERS, some_analyzer_error_or_warning_id"
+      echo "  // ignore_for_file: $DART_CHAN, some_analyzer_error_or_warning_id"
       EXIT_STATUS=1
       return 1;
     fi
   fi
-  disableInFileAnalyzerFlags ${DIR[*]}
+  toggleInFileAnalyzerFlags disable ${DIR[*]}
   echo "$ $ANALYZE ${DIR[*]}"
   $ANALYZE ${DIR[*]} > $LOG_FILE || {
     echo "WARNING: Ignoring analyzer exit code $?"
@@ -101,7 +109,7 @@ function analyze_and_test() {
   else
     cat $LOG_FILE
   fi
-  reEnableInFileAnalyzerFlags ${DIR[*]}
+  toggleInFileAnalyzerFlags reenable ${DIR[*]}
   travis_fold end analyzeAndTest.analyze
 
   if [[ ! -d test ]]; then

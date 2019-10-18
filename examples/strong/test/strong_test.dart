@@ -38,7 +38,7 @@ void main() {
     // #docregion what-is-soundness
     void main() {
       List<dynamic> strings = ["not", "ints"];
-      // ignore_for_file: 1, 2, invalid_assignment
+      // ignore_for_file: stable, dev, invalid_assignment
       List<int> numbers = strings; //!analysis-issue
       for (var number in numbers) {
         print(number - 10); // Classic Dart runtime exception
@@ -60,7 +60,7 @@ void main() {
       // #docregion runtime-checks
       void main() {
         List<Animal> animals = [Dog()];
-        // ignore_for_file: 1, 2, invalid_assignment
+        // ignore_for_file: stable, dev, invalid_assignment
         List<Cat> cats = animals;
       }
       // #enddocregion runtime-checks
@@ -119,7 +119,6 @@ void main() {
         // #docregion cast
         Map<String, dynamic> json = getFromExternalSource();
         var names = json['names'] as List;
-        // ignore_for_file: 1, argument_type_not_assignable, undefined_method
         assumeStrings(names.cast<String>());
         // #enddocregion cast
       }
@@ -175,7 +174,7 @@ void main() {
 // ignore_for_file: type_annotate_public_apis
 // #docregion downcast-check
 assumeStrings(List<Object> objects) {
-  // ignore_for_file: 1, 2, invalid_assignment
+  // ignore_for_file: stable, dev, invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
   // #enddocregion downcast-check

@@ -1,7 +1,8 @@
+# https://github.com/dart-lang/sdk/issues/38238 - Regression in reporting of invalid overrides
 Analyzing analysis_options.yaml, lib, test...
   error • 'HoneyBadger.parent' ('Root Function()') isn't a valid override of 'Animal.parent' ('parent') at lib/animal_bad.dart:15:3 • invalid_override
   error • 'Cat.chase' ('void Function(Mouse)') isn't a valid override of 'Animal.chase' ('chase') at lib/animal_bad.dart:26:3 • invalid_override
-  error • A value of type 'List' can't be assigned to a variable of type 'List<Cat>' at lib/animal_bad.dart:49:19 • invalid_assignment
+  error • A value of type 'List' can't be assigned to a variable of type 'List<Cat>' at lib/animal_bad.dart:48:19 • invalid_assignment
   error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
   error • A value of type 'Element' can't be assigned to a variable of type 'CanvasElement' at lib/common_fixes_analysis.dart:21:28 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'bool' at lib/common_problems_analysis.dart:14:14 • invalid_assignment
@@ -18,10 +19,10 @@ Analyzing analysis_options.yaml, lib, test...
   error • The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:54:15 • argument_type_not_assignable
   error • A value of type 'double' can't be assigned to a variable of type 'int' at lib/strong_analysis.dart:82:9 • invalid_assignment
   error • A value of type 'String' can't be assigned to a variable of type 'double' at lib/strong_analysis.dart:106:23 • invalid_assignment
-  error • A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon' at lib/strong_analysis.dart:119:19 • invalid_assignment
-  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at lib/strong_analysis.dart:145:24 • invalid_assignment
-  error • A value of type 'int' can't be assigned to a variable of type 'String' at lib/strong_analysis.dart:158:21 • invalid_assignment
+  error • A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon' at lib/strong_analysis.dart:118:19 • invalid_assignment
+  error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at lib/strong_analysis.dart:144:24 • invalid_assignment
+  error • A value of type 'int' can't be assigned to a variable of type 'String' at lib/strong_analysis.dart:157:21 • invalid_assignment
   error • A value of type 'List' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:42:27 • invalid_assignment
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:64:26 • invalid_assignment
-  error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:179:26 • invalid_assignment
+  error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:178:26 • invalid_assignment
 25 errors found.

@@ -17,7 +17,7 @@ void _samplesFromCommonProblemsPage() {
   {
     // We need to ignore invalid_assignment because we use --no-implicit-casts.
     // #docregion canvas-ok
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     CanvasElement canvas = querySelector('canvas');
     canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-ok
