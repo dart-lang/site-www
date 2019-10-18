@@ -19,11 +19,6 @@ env:
     - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
 
-# matrix:
-#   allow_failures:
-#     - env: TASK="./tool/analyze-and-test-examples.sh"
-#       dart: dev
-
 before_install:
   - source ./tool/env-set.sh
   - ./tool/before-install.sh
@@ -41,7 +36,7 @@ deploy:
     on:
       repo: dart-lang/site-www
       branch: master
-      condition: $TASK == *build* && $TRAVIS_DART_VERSION == stable
+      condition: $TASK == *tool/build.sh* && $TRAVIS_DART_VERSION == stable
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
