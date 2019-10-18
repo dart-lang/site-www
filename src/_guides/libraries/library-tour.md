@@ -3,7 +3,7 @@ title: A tour of the core libraries
 description: Learn about the major features in Dart's libraries.
 short-title: Library tour
 ---
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g;"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /\n? *\/\/\s+ignore:[^\n]+//g"?>
 <?code-excerpt plaster="none"?>
 
 This page shows you how to use the major features in Dart’s core libraries.
