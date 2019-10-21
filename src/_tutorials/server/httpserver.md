@@ -6,7 +6,7 @@ prevpage:
   title: "Write command-line apps"
 ---
 {% capture gh-path -%}
-  https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
+  https://github.com/dart-lang/site-www/blob/master/examples/httpserver
 {%- endcapture -%}
 
 <div class="mini-toc" markdown="1">
