@@ -75,11 +75,11 @@ After installing the SDK, **add its `bin` directory to your `PATH`**. For exampl
 use the following command to change `PATH` in your active terminal session:
 
 ```terminal
-$ export PATH="$PATH:/usr/lib/dart/bin"
+$ export PATH="$PATH:/usr/lib/dart/bin:$HOME/.pub-cache/bin"
 ```
 
 To change the PATH for future terminal sessions, use a command like this:
 
 ```terminal
-$ echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> ~/.profile
+$ echo 'export PATH="$PATH:/usr/lib/dart/bin:$HOME/.pub-cache/bin"' >> ~/.profile
 ```
