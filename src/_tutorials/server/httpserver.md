@@ -239,6 +239,9 @@ that you can use to guess the number.
 
    Run `webdev serve` from the top directory of the app.
 
+   _More information about webdev installation and usage:_
+   [webdev documentation]({{site.www}}/tools/webdev)
+
 3. **Open the HTML page**
 
    In a browser, go to
