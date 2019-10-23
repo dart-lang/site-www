@@ -505,6 +505,11 @@ are some suggestions for where to go next:
     (Start with [isolates and event loops.][article])
 * [Get the Dart SDK.](/get-dart)
 
+If you're interested in using embedded DartPads,
+like this codelab does,
+see [best practices for using DartPad in tutorials][].
+
+[best practices for using DartPad in tutorials]: /resources/dartpad-tutorials.pdf
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [future class]: {{site.dart_api}}/stable/dart-async/Future-class.html
