@@ -1783,7 +1783,7 @@ specified by `T`. For example, `obj is Object` is always true.
 
 Use the `as` operator to cast an object to a particular type. In
 general, you should use it as a shorthand for an `is` test on an object
-following by an expression using that object. For example, consider the
+followed by an expression using that object. For example, consider the
 following code:
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
