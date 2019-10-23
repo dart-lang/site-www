@@ -1531,5 +1531,15 @@ body.obsolete {
   }
 }
 
+// FIXME: move into _code.scss once #2008 is merged
+.prettify-filename {
+  position: relative;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
+}
+
 @import '_overwrites';
 @import '_dash';
