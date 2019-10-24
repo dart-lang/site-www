@@ -2,8 +2,9 @@
 
 @import 'variables';
 @import 'colors';
-@import 'bootstrap';
 @import 'bootstrap_config';
+@import 'bootstrap';
+@import 'bootstrap_config_shared'; // FIXME(chalin): this should be before the bootstrap import; move to site file.
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';
@@ -11,23 +12,21 @@
 
 @import 'mixins';
 
+@import 'code';
 @import 'icons';
-@import 'code_pre';
 @import 'animations';
-@import 'header';
+@import 'header_shared';
 
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
-@import 'sidebar';
-@import 'toc';
+@import 'sidebar_shared';
+@import 'toc_shared';
 @import 'site_overrides';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
-$code-weight: 400;
-$code-color: #247776; // Temporary fix
 
 /* -----------------------------------------
   Global
@@ -159,63 +158,6 @@ input, select {
   }
 }
 
-pre, pre.prettyprint {
-  padding: 30px;
-  font-weight: $code-weight;
-  background-color: #F5F5F7;
-  color: $blue;
-  position: relative;
-  border: none;
-  border-radius: 0;
-  font-size: 12px;
-
-  .com {
-    color: #6E6E70;
-  }
-  .kwd {
-    color: #BC0056;
-  }
-  .pln {
-    color: #7500A0;
-  }
-  .lit, .str {
-    color: #00677A;
-  }
-
-  &.dartpad {
-    // &:after {
-    //   content: 'Run';
-    //   position: absolute;
-    //   top: 10px;
-    //   right: 10px;
-    //   display: block;
-    //   z-index: 10;
-    //   background-color: $white-base;
-    //   background-image: asset_url('shared/dart/logo/default.svg');
-    //   background-size: 18px;
-    //   background-position: 7px center;
-    //   background-repeat: no-repeat;
-    //   padding: 5px 10px 5px 30px;
-    //   border-radius: 8px;
-    //   font-family: $font-family-base;
-    // }
-  }
-  .highlight {
-    background: #fffde7;
-    padding: 2px;
-  }
-
-  a {
-    font-family: inherit;
-    font-weight: inherit;
-  }
-}
-code {
-  background-color: transparent;
-  color: $code-color;
-  font-size: 100%;
-  padding: 0;
-}
 img {
   max-width: 100%;
   height: auto;
