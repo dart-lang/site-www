@@ -20,7 +20,7 @@ You can contribute in a few ways.
 
 * **Fix known issues** (especially ones with the label **[help wanted][]** or
   **[beginner][]**). These issues may or may not be easy to fix. Sometimes
-  they're issues we don't have the expertise to fix it by ourselves, and we'd love to
+  they're issues that we don't have the expertise to fix, and we'd love to
   work with a contributor who has the right skills.
   
 More info:
