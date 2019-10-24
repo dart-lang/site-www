@@ -677,9 +677,9 @@ of that new method.
 
 Library maintainers need the ability to evolve existing classes without breaking
 users. If you treat every class like it exposes an interface that users are free
-implement, then changing those classes becomes very difficult. That difficulty
-in turn means the libraries you rely on are slower to grow and adapt to new
-needs.
+to implement, then changing those classes becomes very difficult. That
+difficulty in turn means the libraries you rely on are slower to grow and adapt
+to new needs.
 
 To give the authors of the classes you use more leeway, avoid implementing
 implicit interfaces except for classes that are clearly intended to be
