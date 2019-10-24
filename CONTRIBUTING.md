@@ -1,6 +1,6 @@
 # Contributing :heart:
 
-Thanks for thinking about helping, with [dart.dev][www]!
+Thanks for thinking about helping with [dart.dev][www]!
 You can contribute in a few ways.
 
 * **Fix typos.** The GitHub UI makes it easy to contribute small fixes, and
