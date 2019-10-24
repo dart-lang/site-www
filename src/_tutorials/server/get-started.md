@@ -134,25 +134,18 @@ More information:
 
 The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
-during development. Now that your small app is done, it's time to AOT compile your
-Dart code to optimized native machine code.
+during development. Now that your small app is done,
+it's time to AOT compile your Dart code to optimized native machine code.
 
-Use the `dart2aot` tool to AOT compile the program to machine code:
-
-```terminal
-$ dart2aot bin/main.dart bin/main.dart.aot
-```
-
-To run the compiled program, use the Dart runtime (`dartaotruntime`):
+Use the `dart2native` tool to AOT compile the program to machine code:
 
 ```terminal
-$ dartaotruntime bin/main.dart.aot
+$ dart2native bin/main.dart -o bin/my_app
 ```
-
 Notice how the compiled program starts instantly, completing quickly:
 
 ```terminal
-$ time dartaotruntime bin/main.dart.aot
+$ time bin/my_app
 Hello world: 21!
 
 real	0m0.016s

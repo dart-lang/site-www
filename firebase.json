@@ -185,6 +185,7 @@
       { "source": "/tools/download-editor?(.html)", "destination": "/tools", "type": 301 },
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
       { "source": "/tools/eclipse-plugin", "destination": "/tools", "type": 301 },
+      { "source": "/tools/dart2aot", "destination": "/tools/dart2native", "type": 301 },
       { "source": "/tools/editor{,/**}", "destination": "/tools", "type": 301 },
       { "source": "/tools/faq?(.html)", "destination": "/faq", "type": 301 },
       { "source": "/tools/observatory{,/**}", "destination": "https://dart-lang.github.io/observatory", "type": 301 },
