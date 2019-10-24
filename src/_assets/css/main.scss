@@ -989,6 +989,7 @@ li.card {
 @mixin dart-style-for($kind, $bg-color, $fg-color, $msg) {
   .#{$kind} {
     background-color: $bg-color !important;
+    position: relative;
     &:after {
       font-family: $font-family-monospace;
       font-size: 10px;
@@ -1011,46 +1012,6 @@ li.card {
 
 @include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
 @include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
-
-// Deprecated, use good-style
-.good {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-success;
-  &:after {
-    content: 'good';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-success-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
-
-// Deprecated, use bad-style
-.bad {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-danger;
-  &:after {
-    content: 'bad';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-danger-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
 
 .muted {
   color: $gray;
