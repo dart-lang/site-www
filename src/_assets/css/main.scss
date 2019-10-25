@@ -1003,9 +1003,8 @@ li.card {
   }
 }
 
-// TODO: reclaim and use the class names good and bad (rather than good-style and bad-style):
-@include dart-style-for(good-style, $alert-success-bg, $alert-success-fg, 'good');
-@include dart-style-for(bad-style, $alert-danger-bg, $alert-danger-fg, 'bad');
+@include dart-style-for(good, $alert-success-bg, $alert-success-fg, 'good');
+@include dart-style-for(bad, $alert-danger-bg, $alert-danger-fg, 'bad');
 
 @include dart-style-for(passes-sa, $alert-success-bg, $alert-success-fg, '\2714  static analysis: success');
 @include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
