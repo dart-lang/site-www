@@ -10,6 +10,14 @@ a **standalone executable** (the default)
 or an **AOT snapshot** that you can run with the [`dartaotruntime` command][].
 The `dart2native` command is supported on Windows, macOS, and Linux.
 
+{{site.alert.note}}
+  To execute Dart code without AOT compiling it,
+  use [`dart`, the standalone Dart VM](/tools/dart-vm).
+{{site.alert.end}}
+
+
+## Creating standalone executables
+
 Here's an example of using `dart2native` to create a standalone executable:
 
 ```terminal
@@ -24,22 +32,13 @@ $ cp bin/my_app ~/bin
 $ my_app
 ```
 
-Each standalone executable has its own copy of the Dart VM.
-If space is an issue and you need to distribute multiple AOT-compiled apps,
-consider creating AOT snapshots instead.
-
-{{site.alert.note}}
-  To execute Dart code without AOT compiling it,
-  use [`dart`, the standalone Dart VM](/tools/dart-vm).
-{{site.alert.end}}
-
 
 ## Creating AOT snapshots
 
-To create an AOT snapshot, add `-k aot` to the command:
+To create an AOT snapshot, add `-o aot` to the command:
 
 ```terminal
-$ dart2native bin/main.dart -k aot
+$ dart2native bin/main.dart -o aot
 ```
 
 You can then run the app using the [`dartaotruntime` command][]:
@@ -49,6 +48,21 @@ $ dartaotruntime bin/main.aot
 ```
 
 For more information, see [Dart platforms](/platforms).
+
+
+## Choosing the output format
+
+By default, `dart2native` produces a standalone executable.
+This executable is native machine code that's compiled from
+the specified Dart file and its dependencies,
+plus a small Dart runtime system that handles
+type checking and garbage collection.
+
+When you use the `-o aot` option,
+the output is still native machine code,
+but it's a snapshot that doesn't include the Dart runtime.
+Consider using a snapshot when
+you're distributing several programs and want the smallest total size.
 
 
 ## Options
@@ -75,8 +89,8 @@ You can use the following options:
 `-o <path>` or `--output=<path>`
 : Generates the output into `<path>`. If you don't use this option,
   the output goes into a file next to the main Dart file.
-  Standalone executables have an `.exe` suffix by default;
-  AOT snapshots have `.aot`.
+  Standalone executables have the suffix `.exe`, by default;
+  the AOT snapshot suffix is `.aot`.
 
 `-p <path>` or `--packages=<path>`
 : Specifies the path to the package resolution configuration file.
