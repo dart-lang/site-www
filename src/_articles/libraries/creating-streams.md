@@ -235,7 +235,7 @@ This code creates a stream to return,
 and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart %}
 // NOTE: This implementation is FLAWED!

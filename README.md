@@ -10,7 +10,7 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 For simple changes (such as to CSS and text), you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 
-If you want/need to build, read on.
+If you want or need to build, follow the steps below.
 
 > **Help us improve these instructions!**
 > If you have any problems getting set up to build or performing the actual build,
@@ -150,7 +150,7 @@ as linkcheck.dart), run this from the top of the repo:
 ./deploy/html_proof.rb
 ```
 
-To check which old links (from the site version before this one) are broken,
+To find old links (from the site version before this one) that are broken,
 use these commands:
 
 ```
