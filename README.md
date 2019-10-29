@@ -224,7 +224,7 @@ You can now navigate to the staged version at
 
 **Important:** Don't commit the `.firebaserc` file containing the name of your staged version.
 
-Navigate to the PR on GitHub and update the it with the location of the staged version,
+Navigate to the PR on GitHub and update it with the location of the staged version,
 the names of your reviewers, and so on.
 
 Before making any more changes, stash `.firebaserc`:
