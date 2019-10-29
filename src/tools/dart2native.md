@@ -4,16 +4,25 @@ description: Command-line tool for AOT-compiling Dart source code.
 ---
 
 Use the `dart2native` command to AOT (ahead-of-time) compile
-a Dart program to native x64 machine code.
-The output of `dart2native` is either
-a **standalone executable** (the default)
-or an **AOT snapshot** that you can run with the [`dartaotruntime` command][].
+a Dart program to [native x64 machine code](/platforms).
 The `dart2native` command is supported on Windows, macOS, and Linux.
 
 {{site.alert.note}}
   To execute Dart code without AOT compiling it,
   use [`dart`, the standalone Dart VM](/tools/dart-vm).
 {{site.alert.end}}
+
+The output of `dart2native` is either
+a standalone executable (the default)
+or an AOT snapshot that you can run with the [`dartaotruntime` command][].
+A **standalone executable** is native machine code that's compiled from
+the specified Dart file and its dependencies,
+plus a small Dart runtime that handles
+type checking and garbage collection.
+
+An **AOT snapshot** doesn't include the Dart runtime.
+Consider using snapshots if you're distributing multiple programs
+and disk space is limited.
 
 
 ## Creating standalone executables
@@ -46,24 +55,6 @@ You can then run the app using the [`dartaotruntime` command][]:
 ```terminal
 $ dartaotruntime bin/main.aot
 ```
-
-For more information, see [Dart platforms](/platforms).
-
-
-## Choosing the output format
-
-By default, `dart2native` produces a standalone executable.
-This executable is native machine code that's compiled from
-the specified Dart file and its dependencies,
-plus a small Dart runtime system that handles
-type checking and garbage collection.
-
-When you use the `-k aot` option,
-the output is still native machine code,
-but it's a snapshot that doesn't include the Dart runtime.
-Consider using a snapshot when
-you're distributing several programs and want the smallest total size.
-
 
 ## Options
 
