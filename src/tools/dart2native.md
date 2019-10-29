@@ -35,10 +35,10 @@ $ my_app
 
 ## Creating AOT snapshots
 
-To create an AOT snapshot, add `-o aot` to the command:
+To create an AOT snapshot, add `-k aot` to the command:
 
 ```terminal
-$ dart2native bin/main.dart -o aot
+$ dart2native bin/main.dart -k aot
 ```
 
 You can then run the app using the [`dartaotruntime` command][]:
@@ -58,7 +58,7 @@ the specified Dart file and its dependencies,
 plus a small Dart runtime system that handles
 type checking and garbage collection.
 
-When you use the `-o aot` option,
+When you use the `-k aot` option,
 the output is still native machine code,
 but it's a snapshot that doesn't include the Dart runtime.
 Consider using a snapshot when
@@ -85,6 +85,11 @@ You can use the following options:
 
 `-h` or `--help`
 : Displays help for all options.
+
+`-k (aot|exe)` or `--output-kind=(aot|exe)`
+: Specifies the output type, where `exe` is the default
+  (a standalone executable). To generate an AOT snapshot,
+  use `-k aot`.
 
 `-o <path>` or `--output=<path>`
 : Generates the output into `<path>`. If you don't use this option,
