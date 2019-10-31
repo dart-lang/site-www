@@ -235,20 +235,32 @@ Instead, the typical workflow is:
 
 ## Version constraints
 
-If your package is an application, you don't usually need to specify [version
-constraints](/tools/pub/glossary#version-constraint) for your dependencies. You
-typically want to use the latest versions of the dependencies when you first
-create your app. Then you'll create and check in a
-[lockfile](/tools/pub/glossary#lockfile) that pins your dependencies to those specific
-versions. Specifying version constraints in your pubspec then is usually
-redundant (though you can do it if you want).
+It's always important to have some kind of [version
+constraints](/tools/pub/glossary#version-constraint) set for your
+dependencies. Your own project can immediately and randomly break if any of
+its dependencies are updated with a breaking change.
 
-For a [library package](/tools/pub/glossary#library-package) that you want users to
-reuse, though, it is important to specify version constraints. That lets people
-using your package know which versions of its dependencies they can rely on to
-be compatible with your library. Your goal is to allow a range of versions as
-wide as possible to give your users flexibility. But it should be narrow enough
-to exclude versions that you know don't work or haven't been tested.
+Specifying version constraints in your pubspec.yaml always gives you the most
+control. You technically don't need to do this if your package is an
+application. You can instead create and check in a
+[lockfile](/tools/pub/glossary#lockfile) that pins your dependencies to those
+specific versions. Specifying version constraints in your pubspec after that
+is generally redundant. However the only way to upgrade your dependencies
+using just a lockfile is with [pub upgrade](/tools/pub/cmd/pub-upgrade),
+which will limit you to the latest version and by default will try to upgrade
+all your packages at once. This can be a problem if the latest version of the
+package isn't compatible with some other latest version in your dependency
+graph. If you want more control over your versions you should still specify
+them in the pubspec.yaml so that you can pick and choose specific versions if
+you need to.
+
+For a [library package](/tools/pub/glossary#library-package) that you want
+users to reuse, though, it is necessary to always specify version
+constraints. That lets people using your package know which versions of its
+dependencies they can rely on to be compatible with your library. Your goal
+is to allow a range of versions as wide as possible to give your users
+flexibility. But it should be narrow enough to exclude versions that you know
+don't work or haven't been tested.
 
 The Dart community uses [semantic versioning][]<sup id="fnref:semver"><a
 href="#fn:semver">1</a></sup>, which helps you know which versions should work.
