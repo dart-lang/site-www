@@ -13,7 +13,8 @@ Other terms for similar functionality include _native interface_
 and _language bindings._
 
 {{site.alert.info}}
-  As of Dart 2.6, [dart:ffi is in beta.][ffi issue]
+  As of Dart 2.6, [dart:ffi is in technical preview,][ffi issue]
+  and breaking API changes might still happen.
   If you're developing a Flutter app,
   you can get access to dart:ffi by using the Flutter dev channel,
   as described in the [Flutter dart:ffi page.][binding]
