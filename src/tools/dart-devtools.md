@@ -15,7 +15,7 @@ general log and diagnostics information about a running app.
 
 If you have `pub` on your path, you can run:
 
-```console
+```terminal
 $ pub global activate devtools
 ```
 
@@ -27,7 +27,7 @@ Next, run the local web server, which serves the DevTools application itself. To
 do that, run the following command. You should see output that looks something
 like this:
 
-```console
+```terminal
 $ pub global run devtools
 
 Serving DevTools at http://127.0.0.1.9100
@@ -38,7 +38,7 @@ Serving DevTools at http://127.0.0.1.9100
 Next, start an app to connect to. Once the app starts, you'll see a message in
 your terminal that looks like:
 
-```console
+```terminal
 $ cd path/to/dart/app
 $ dart --observe main.dart
 
