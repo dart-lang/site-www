@@ -1,15 +1,13 @@
 .item-with-pic {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   img {
-    margin:0;
-    max-width: none;
+    @include media-breakpoint-down(sm) { max-width: 200px; }
+    width: 100%;
   }
   .details {
-    margin-left: 20px;
     .title {
-      margin: 0;
+      @include media-breakpoint-up(sm) { margin-top: 0; }
+      margin-bottom: 0;
     }
     .authors {
       color: $site-color-body; // TODO: drop once heading class styles (like .h4) are fixed.
