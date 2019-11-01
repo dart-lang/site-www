@@ -25,6 +25,16 @@ $dropdown-divider-bg: #bbbbbb;
 $dropdown-link-active-color: transparent;
 $dropdown-link-active-bg: transparent;
 
+//== Headings
+
+// The following are needed only because _bootstrap_config_shared is not imported in the right order:
+// https://github.com/dart-lang/site-www/issues/2007
+$headings-font-family: $site-font-family-gsans;
+$headings-font-weight: 400;
+
+// Move to _bootstrap_config_shared once #2007 is fixed:
+$headings-color: $site-color-body;
+
 //== Popovers
 
 $popover-font-size: $font-size-base;
