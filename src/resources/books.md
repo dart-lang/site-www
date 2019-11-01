@@ -20,7 +20,7 @@ For information on converting Dart 1.x code to Dart 2, see the
 The following books cover Dart 1.x.
 
 {% for book in site.data.books %}
-<div class="item-with-pic row">
+<div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
   <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
 </a>
