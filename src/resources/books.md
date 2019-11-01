@@ -21,13 +21,17 @@ The following books cover Dart 1.x.
 
 {% for book in site.data.books %}
 <div class="item-with-pic">
-  <a href="{{ book.link }}" title="{{ book.title }}">
-    <img src="{% asset 'cover/{{ book.cover }}' @path %}" alt="Cover: {{ book.title }}"/>
-  </a>
-  <div class="details">
-    <h3 class="title"><a href="{{ book.link }}" title="{{ book.title }}">{{ book.title }}</a></h3>
-    <h4 class="authors">by {{ book.authors | array_to_sentence_string }}</h4>
-    <p>{{ book.desc }}</p>
-  </div>
+<a href="{{book.link}}" title="{{book.title}}" class="no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+</div>
 </div>
 {% endfor %}
