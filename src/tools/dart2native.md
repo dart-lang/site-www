@@ -37,7 +37,7 @@ You can distribute and run that executable like you would
 any other executable file:
 
 ```terminal
-$ cp bin/my_app ~/bin
+$ cp bin/my_app /usr/local/bin
 $ my_app
 ```
 
