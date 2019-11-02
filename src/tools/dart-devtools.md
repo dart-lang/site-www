@@ -1,42 +1,53 @@
 ---
 title: Dart DevTools
 description: A suite of debugging and performance tools.
-toc: false
 ---
 
-Dart DevTools is a suite of debugging and performance tools for Dart and
-Flutter. In addition to [Flutter-specific features][Flutter DevTools documentation.],
-DevTools supports source-level debugging of Dart apps, as well as viewing
-general log and diagnostics information about a running app.
+Dart DevTools is a suite of debugging and performance tools
+for Dart and Flutter.
+
+## Using DevTools with a Flutter app
+
+For details on using DevTools with a Flutter app, see the [Flutter
+DevTools documentation.][flutter-devtools]
+
+[flutter-devtools]: https://flutter.dev/docs/development/tools/devtools/overview
 
 ## Using DevTools with a command-line app
 
-### Install DevTools
+You can use DevTools to perform source-level debugging 
+or to view general log and diagnostics information
+for a running command-line app.
 
-If you have `pub` on your path, you can run:
+### 1. Install DevTools
+
+Use [pub](/tools/pub) to install or update DevTools:
 
 ```terminal
 $ pub global activate devtools
 ```
 
-That command installs (or updates) DevTools on your machine.
+### 2. Launch the DevTools server
 
-### Launch the DevTools application server
-
-Next, run the local web server, which serves the DevTools application itself. To
-do that, run the following command. You should see output that looks something
-like this:
+Once you have DevTools, use the `devtools` command
+to run the local web server for DevTools:
 
 ```terminal
 $ pub global run devtools
-
 Serving DevTools at http://127.0.0.1.9100
 ```
 
-### Start an application to debug
+{{site.alert.note}}
+  If the [system cache `bin` directory is in your path][cache-bin],
+  then you can just run `devtools`, without `pub global run`.
+{{site.alert.end}}
+[cache-bin]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
-Next, start an app to connect to. Once the app starts, you'll see a message in
-your terminal that looks like:
+
+### 3. Start the target app
+
+Use the `dart --observe` command to execute the main file
+for the Dart command-line app that you want to debug or observe:
 
 ```terminal
 $ cd path/to/dart/app
@@ -45,29 +56,22 @@ $ dart --observe main.dart
 Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
 ```
 
-Keep note this URL, as you will use it to connect your app to DevTools.
+**Note the "listening" URL.**
+You'll need this URL in the next step.
 
-### Open DevTools and connect to the target app
+{{site.alert.important}}
+  This URL contains a security token and
+  is different for each run of your app.
+  If you stop your app and rerun it,
+  then you need to connect to DevTools with the new "listening" URL.
+{{site.alert.end}}
 
-Once it's set up, using DevTools is as simple as opening a Chrome browser window
-and navigating to `http://localhost:9100`.
+### 4. Open DevTools and connect to the target app
 
-Once DevTools opens, you should see a connect dialog:
+1. Open Chrome browser window and navigate to `http://localhost:9100`.
+2. Paste the "listening" URL into the text field
+   under **Connect to a running app**, and click the **Connect** button.
 
-![DevTools connection dialog]({% asset tools/devtools-connect.png @path %}){:width="100%"}
-
-Paste the URL you got from running your app (in this example,
-`http://127.0.0.1:8181/wYDP3x9mvbw=/`) into the connect dialog to connect your
-app to DevTools.
-
-This URL contains a security token, so it will be different for each run of your
-app. This means that if you stop your application and re-run it, you need to
-connect to DevTools with the new URL.
+![DevTools connection dialog]({% asset tools/devtools-connect.png @path %})
 
 
-## Using DevTools with a Flutter app
-
-For more information about using DevTools with a Flutter app, see the [Flutter
-DevTools documentation.][]
-
-[Flutter DevTools documentation.]: https://flutter.dev/docs/development/tools/devtools/overview
