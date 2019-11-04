@@ -133,6 +133,10 @@ Here are the general-purpose tools you might want to install:
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dartfix]: {{site.pub-pkg}}/dartfix
 
+### Debugging and diagnostics
+
+[Dart DevTools](/tools/dart-devtools)
+: A suite of suite of debugging and performance tools.
 
 ## Tools for developing web apps {#web}
 
@@ -149,7 +153,6 @@ The following tools support developing web apps:
 [`webdev`](/tools/webdev)
 : A command-line interface (CLI) for Dart web app development,
   including building and serving web apps.
-
 
 ## Tools for developing command-line apps and servers {#server}
 
