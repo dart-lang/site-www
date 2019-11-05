@@ -58,7 +58,7 @@ $ dartaotruntime bin/main.aot
 
 ## Known limitations
 
-The initial (Dart 2.6) version of `dart2native` some known limitations:
+The initial (Dart 2.6) version of `dart2native` has some known limitations:
 
 No cross-compilation support ([issue 28617][])
 : The compiler supports creating machine code only for
