@@ -217,7 +217,7 @@ to produce fast native apps.
 
 Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
-Linux. For more details, see the [dart2aot](/tools/dart2aot) documentation.
+Linux. For more details, see the [dart2native][] documentation.
 
 ---
 
@@ -453,6 +453,7 @@ modern JavaScript VMs.
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
+[dart2native]: /tools/dart2native
 [dartanalyzer]: /tools/dartanalyzer
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart

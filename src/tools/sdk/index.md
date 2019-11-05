@@ -32,8 +32,12 @@ directory that has these command-line tools:
   [dart](/server)
   : The standalone VM
 
-  [dart2aot & dartaotruntime](/tools/dart2aot)
-  : Tools for compiling Dart code to native x64 machine code
+  [dart2native](/tools/dart2native)
+  : A tool that AOT compiles Dart code to native x64 machine code,
+  producing either a standalone executable or a snapshot
+
+  [dartaotruntime](/tools/dartaotruntime)
+  : A Dart runtime for AOT-compiled snapshots
 
   [dart2js](/tools/dart2js)
   : The Dart-to-JavaScript compiler (used only for web development)
