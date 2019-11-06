@@ -75,7 +75,6 @@ the [instructions above](#install), or you can
 [download the SDK as a zip file](/tools/sdk/archive).
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[semantic versioning]: http://semver.org/
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour

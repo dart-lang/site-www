@@ -190,7 +190,7 @@ If you get stuck, find help at [Community and Support.](/community)
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
-[Homebrew,]: http://brew.sh/
+[Homebrew,]: https://brew.sh/
 [Install the SDK]: /get-dart
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [Overview of Dart web libraries]: /web/web-programming

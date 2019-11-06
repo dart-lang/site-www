@@ -123,7 +123,7 @@ your code.
 If your README ends in `.md`, it's parsed as
 [Markdown.][markdown]
 
-[markdown]: http://daringfireball.net/projects/markdown/
+[markdown]: https://daringfireball.net/projects/markdown/
 
 ## CHANGELOG
 
@@ -239,7 +239,7 @@ enchilada/
 
 While most library packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
-[Bootstrap](http://getbootstrap.com/) might include a number of CSS files
+[Bootstrap](https://getbootstrap.com/) might include a number of CSS files
 for consumers of the package to use.
 
 These go in the top-level `lib` directory. You can put any kind of file

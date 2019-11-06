@@ -105,7 +105,7 @@ graduates from smi to mint to bigint:
 ### Floating-point numbers
 
 The VM has a single representation for floating-point numbers, the
-[IEEE-754 double-precision floating-point number](http://en.wikipedia.org/wiki/Double_precision_floating-point_format).
+[IEEE-754 double-precision floating-point number](https://en.wikipedia.org/wiki/Double_precision_floating-point_format).
 
 ### Boxed and unboxed numbers
 

@@ -1,4 +1,4 @@
-Scripts and utilities for [dart.dev/tools/sdk/archive](http://dart.dev/tools/sdk/archive)
+Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/tools/sdk/archive)
 
 ## Developing
 

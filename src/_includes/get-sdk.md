@@ -33,7 +33,7 @@ you need the Dart SDK.
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-  With [Homebrew,](http://brew.sh/)
+  With [Homebrew,](https://brew.sh/)
   installing Dart is easy.
 
   ```terminal

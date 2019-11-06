@@ -30,9 +30,9 @@ the application makes no progress before that operation completes.
 For scalability it is therefore crucial that no I/O operations block.
 Instead of blocking on I/O operations,
 dart:io uses an asynchronous programming model inspired by
-[node.js,](http://nodejs.org)
+[node.js,](https://nodejs.org)
 [EventMachine,](https://github.com/eventmachine/eventmachine/wiki) and
-[Twisted.](http://twistedmatrix.com/trac/)
+[Twisted.](https://twistedmatrix.com/trac/)
 
 ## The Dart VM and the event loop
 
@@ -382,6 +382,6 @@ For example, the [pub.dev site]({{site.pub}}) uses dart:io.
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!
 When you file a bug or feature request,
-use [dartbug.com.](http://dartbug.com)
+use [dartbug.com.](https://dartbug.com)
 To find reported issues, search for the
 [library-io label.](https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io)
