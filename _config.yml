@@ -56,10 +56,6 @@ defaults:
     type: tutorials
   values:
     layout: tutorial
-- scope:
-    path: tools/sdk
-  values:
-    repo: *repo-shared
 
 custom:
   downloads:
@@ -117,7 +113,6 @@ alert:
     <i class="fas fa-exclamation-triangle"></i> **Warning:**
   end: </aside>
 
-# bundler_args: --without production
 exclude: [diagrams]
 plugins: [jekyll-toc]
 source: src

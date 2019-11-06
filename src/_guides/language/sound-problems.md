@@ -3,7 +3,7 @@ title: Fixing common type problems
 description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 <?code-excerpt plaster="none"?>
 
 If you're having problems with type checks,
@@ -40,7 +40,7 @@ bool b = [0][0];
 With type-safe Dart, the analyzer produces the following error:
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
 ```nocode
 error • A value of type 'int' can't be assigned to a variable of type 'bool' • invalid_assignment
 ```
@@ -58,7 +58,7 @@ see [Runtime errors](#common-errors-and-warnings).
 
 ### Undefined member
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
 ```nocode
 error • The <member> '...' isn't defined for the class '...' • undefined_<member>
 ```
@@ -81,7 +81,7 @@ canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/context2D.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/context2D.*isn't defined for the class/"?>
 ```nocode
 error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
 ```
@@ -149,9 +149,9 @@ var c = C(Iterable.empty()).collection;
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/add.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/add.*isn't defined for the class/"?>
 ```nocode
-error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+error • The method 'add' isn't defined for the class 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
 ```
 
 While the [List][] type has an `add()` method, [Iterable][] does not.
@@ -199,7 +199,7 @@ var c = C(Iterable.empty()).collection;
 
 ### Invalid method override
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -231,9 +231,9 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
 ```nocode
-error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('add') • invalid_override
+error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)') • invalid_override
 ```
 
 Consider the following scenario where floating
@@ -278,7 +278,7 @@ For more information, see [Use proper input parameter types when overriding meth
 
 ### Missing type arguments
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -302,9 +302,9 @@ class Subclass extends Superclass {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
 ```nocode
-error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('method') • invalid_override
+error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)') • invalid_override
 ```
 
 #### Fix: Specify type arguments for the generic subclass
@@ -332,7 +332,7 @@ class Subclass extends Superclass[!<int>!] {
 <a id ="assigning-mismatched-types"></a>
 ### Unexpected collection element type
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
 error • A value of type '...' can't be assigned to a variable of type '...' • invalid_assignment
 ```
@@ -357,7 +357,7 @@ map['d'] = [!1.5!]; // a double is not an int
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
 ```nocode
 error • A value of type 'double' can't be assigned to a variable of type 'int' • invalid_assignment
 ```
@@ -381,7 +381,7 @@ Alternatively, if you want this map to accept any value, specify the type as `<S
 <a id="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
 error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • invalid_super_invocation
 ```
@@ -400,7 +400,7 @@ HoneyBadger(Eats food, String name)
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/super call must be last.*common_problems/"?>
 ```nocode
 error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • invalid_super_invocation
 ```
@@ -424,7 +424,7 @@ HoneyBadger(Eats food, String name)
 <a name="uses-dynamic-as-bottom"></a>
 ### The function expression type ... isn't of type ...
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
 ```nocode
 error • The function expression type '...' isn't of type '...'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
@@ -449,7 +449,7 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/The function expression type.*common_problems/"?>
 ```nocode
 error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```

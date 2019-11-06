@@ -4,7 +4,7 @@ Thanks for thinking about helping with [dart.dev][www]!
 You can contribute in a few ways.
 
 * **Fix typos.** The GitHub UI makes it easy to contribute small fixes, and
-  you'll get credit   for your contribution! To start, click the **page icon**
+  you'll get credit for your contribution! To start, click the **page icon**
   at the upper right of the page. Then click the **pencil icon** to start
   editing the file. Once you've fixed the typo, commit your changes to a new
   branch and create a **pull request.**
@@ -20,7 +20,7 @@ You can contribute in a few ways.
 
 * **Fix known issues** (especially ones with the label **[help wanted][]** or
   **[beginner][]**). These issues may or may not be easy to fix. Sometimes
-  they're issues we don't have the expertise to fix ourselves, and we'd love to
+  they're issues that we don't have the expertise to fix, and we'd love to
   work with a contributor who has the right skills.
   
 More info:

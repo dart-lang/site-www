@@ -12,16 +12,12 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{site.alert.warning}}
-The dart:ffi library is [in active development][ffi issue]
-and isn't complete yet.
-The API is likely to have breaking changes
-between now and its completion.
-To use dart:fii, you need a 2.6 prerelease of the Dart SDK.
-If you're developing a Flutter app, use the Flutter dev channel,
-as described in the [Flutter dart:ffi page.][binding]
-Otherwise, use the
-[Dart dev channel](/get-dart#about-release-channels-and-version-strings).
+{{site.alert.info}}
+  As of Dart 2.6, [dart:ffi is in beta,][ffi issue]
+  and breaking API changes might still happen.
+  If you're developing a Flutter app,
+  you can get access to dart:ffi by using the Flutter dev channel,
+  as described in the [Flutter dart:ffi page.][binding]
 {{site.alert.end}}
 
 API documentation is available from the dev channel:

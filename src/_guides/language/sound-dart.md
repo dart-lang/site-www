@@ -50,7 +50,7 @@ The preceding code results in a type error on `list` (highlighted
 above) at the call of `printInts(list)`:
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • The argument type 'List' can't be assigned to the parameter type 'List<int>' • argument_type_not_assignable
 ```

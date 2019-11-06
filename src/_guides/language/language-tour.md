@@ -1783,7 +1783,7 @@ specified by `T`. For example, `obj is Object` is always true.
 
 Use the `as` operator to cast an object to a particular type. In
 general, you should use it as a shorthand for an `is` test on an object
-following by an expression using that object. For example, consider the
+followed by an expression using that object. For example, consider the
 following code:
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
@@ -3617,8 +3617,7 @@ List, set, and map literals can be parameterized. Parameterized literals are
 just like the literals you’ve already seen, except that you add
 <code>&lt;<em>type</em>></code> (for lists and sets) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
-before the opening bracket. Here
-is example of using typed literals:
+before the opening bracket. Here is an example of using typed literals:
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 {% prettify dart %}

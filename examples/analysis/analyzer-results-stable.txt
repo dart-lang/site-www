@@ -1,5 +1,0 @@
-Analyzing analysis_options.yaml, lib...
-  error • A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 • invalid_assignment
-  lint • Avoid empty statements at lib/lint.dart:9:19 • empty_statements
-  lint • Close instances of `dart.core.Sink` at lib/lint.dart:16:7 • close_sinks
-1 error and 2 lints found.
