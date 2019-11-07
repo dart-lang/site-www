@@ -1037,7 +1037,7 @@ units, and 32-bit code points. Click **Run** to see runes in action.
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
 {{site.dartpad}}/589bc5c95318696cefe5
-Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
+Unicode emoji: https://unicode.org/emoji/charts/full-emoji-list.html
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
 {% prettify dart %}
@@ -1067,7 +1067,7 @@ Be careful when manipulating runes using list operations.
 This approach can easily break down,
 depending on the particular language, character set, and operation.
 For more information, see
-[How do I reverse a String in Dart?](http://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart) on Stack Overflow.
+[How do I reverse a String in Dart?](https://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart) on Stack Overflow.
 </div>
 
 ### Symbols

@@ -26,8 +26,8 @@ changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
 * You must include a license file (named `LICENSE`, `COPYING`, or some
-  variation) that contains an [open-source license](http://opensource.org/). We
-  recommend the [BSD license](http://opensource.org/licenses/BSD-2-Clause),
+  variation) that contains an [open-source license](https://opensource.org/). We
+  recommend the [BSD license](https://opensource.org/licenses/BSD-2-Clause),
   which is used by Dart itself. You must also have the legal right to
   redistribute anything that you upload as part of your package.
 

@@ -14,5 +14,5 @@ example, we may use the source code to help offer better code completion
 suggestions. The raw source code is deleted after no more than 60 days.
 
 Learn more about Google's [privacy
-policy.](http://www.google.com/policies/privacy/) We look forward to your
+policy.](https://www.google.com/policies/privacy/) We look forward to your
 [feedback.](https://github.com/dart-lang/dart-pad/issues)

@@ -61,7 +61,7 @@ You can get this object using a query.
 Find one or more elements using the top-level functions
 `querySelector()` and `querySelectorAll()`. You can query by ID, class, tag, name, or
 any combination of these. The [CSS Selector Specification
-guide](http://www.w3.org/TR/css3-selectors/) defines the formats of the
+guide](https://www.w3.org/TR/css3-selectors/) defines the formats of the
 selectors such as using a \# prefix to specify IDs and a period (.) for
 classes.
 
@@ -115,7 +115,7 @@ AnchorElement’s `href` property:
 {% comment %}code-excerpt "test/html_test.dart (href)"{% endcomment %}
 ```dart
 var anchor = querySelector('#example') as AnchorElement;
-anchor.href = 'http://dart.dev';
+anchor.href = 'https://dart.dev';
 ```
 
 Often you need to set properties on multiple elements. For example, the
@@ -285,7 +285,7 @@ To respond to external events such as clicks, changes of focus, and
 selections, add an event listener. You can add an event listener to any
 element on the page. Event dispatch and propagation is a complicated
 subject; [research the
-details](http://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
+details](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
 if you’re new to web programming.
 
 Add an event handler using

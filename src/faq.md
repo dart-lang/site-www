@@ -181,7 +181,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
-[announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
+[announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
@@ -190,7 +190,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Dart tools]: /tools/
 [Dart and Google Cloud Platform]: https://dart-lang.github.io/server/google-cloud-platform/
 [Who Uses Dart]: /community/who-uses-dart
-[spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
+[spec]: https://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
 [DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
@@ -447,7 +447,7 @@ noticeably slower than the well-tuned garbage collectors of
 modern JavaScript VMs.
 
 
-[ppwsize]: http://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
+[ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
 [sourcemaps]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [package:js]: {{site.pub-pkg}}/js
 [AngularDart]: {{site.angulardart}}
@@ -457,7 +457,7 @@ modern JavaScript VMs.
 [dartanalyzer]: /tools/dartanalyzer
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
-[fixallthethings]: http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
+[fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
 [fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0

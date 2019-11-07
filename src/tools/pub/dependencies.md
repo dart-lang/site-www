@@ -146,7 +146,7 @@ development and is using other packages that are being developed at the
 same time. To make that easier, you can depend directly on a package
 stored in a [Git][] repository.
 
-[git]: http://git-scm.com/
+[git]: https://git-scm.com/
 
 {% prettify yaml %}
 dependencies:
@@ -180,7 +180,7 @@ dependencies:
 
 The ref can be anything that Git allows to [identify a commit.][commit]
 
-[commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
+[commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
 Pub assumes that the package is in the root of the Git repository.
 To specify a different location in the repo, use the `path` argument:
@@ -416,4 +416,4 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pubsite]: {{site.pub}}
-[semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

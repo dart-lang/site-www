@@ -66,7 +66,7 @@ For more information about the SDK, see its
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
-go to [dartbug.com](http://dartbug.com).
+go to [dartbug.com](https://dartbug.com).
 Here are some handy searches:
 
 * [dart (VM) issues](https://github.com/dart-lang/sdk/labels/Area-VM)
