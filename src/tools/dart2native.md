@@ -24,13 +24,6 @@ An **AOT snapshot** doesn't include the Dart runtime.
 Consider using snapshots if you're distributing multiple programs
 and disk space is limited.
 
-{{site.alert.note}}
-  Releases before Dart 2.6 contained
-  a tool named `dart2aot` that produced AOT snapshots.
-  The `dart2native` command replaces `dart2aot` and
-  has a superset of the `dart2aot` functionality.
-{{site.alert.end}}
-
 
 ## Creating standalone executables
 
@@ -135,6 +128,14 @@ You can use the following options:
 
 `-v` or `--verbose`
 : Displays more information.
+
+## dart2aot
+
+Releases before Dart 2.6 contained
+a tool named `dart2aot` that produced AOT snapshots.
+The `dart2native` command replaces `dart2aot` and
+has a superset of the `dart2aot` functionality.
+
 
 [assert statements]: /guides/language/language-tour#assert
 [`dartaotruntime` command]: /tools/dartaotruntime
