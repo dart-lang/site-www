@@ -123,6 +123,7 @@ instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 </aside>
 
+
 ## Importing library files
 
 When importing a library file, you can use the
@@ -152,6 +153,67 @@ it could instead use the `package:` directive
 (`import 'package:my_package/foo/a.dart'`).
 </aside>
 
+
+## Conditionally importing and exporting library files
+
+If your library supports multiple platforms,
+then you might need to conditionally import or export library files.
+A common use case is a library that supports both web and native platforms.
+
+To conditionally import or export,
+you must check for the presence of `dart:*` libraries.
+Here's an example of checking for the presence of `dart:io` and `dart:html`:
+
+<!-- in lib/src/hw_mp_base.dart: -->
+```dart
+export 'hw.dart' // stub implementation
+    if (dart.library.io) 'hw_io.dart' // native|dart:io implementation
+    if (dart.library.html) 'hw_html.dart'; // JS|dart:html implementation
+```
+
+Here's how the code works:
+
+* If this code is running in the Dart VM (JIT or AOT),
+  then export `hw_io.dart`.
+  [PENDING: check!!! you don't have to explicitly import dart:io, do you?},
+* If this code is running in a browser,
+  then export `hw_html.dart`.
+* Otherwise, export `hw.dart`.
+
+All three of the conditionally exported libraries provide the same API.
+Here's an example implementation:
+
+```dart
+String get message => 'Hello World!'; // In lib/src/hw.dart
+```
+
+```dart
+String get message => 'Hello World from the VM!'; // In lib/src/hw_io.dart
+```
+
+```dart
+String get message => 'Hello World from JavaScript!'; // In lib/src/hw_html.dart
+```
+
+In `lib/hw_mp.dart`:
+[PENDING: Explain why we need the following indirection — if we really do need it.]
+
+```dart
+/// A multi-platform Hello World library.
+library hw_mp;
+
+export 'src/hw_mp_base.dart';
+```
+
+Here's an example of an app that uses the multi-platform library:
+
+```dart
+import 'package:hw_mp/hw_mp.dart';
+
+main() {
+  print('greeting: ${message}');
+}
+```
 
 ## Providing additional files
 
