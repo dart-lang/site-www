@@ -1,12 +1,12 @@
 // To run this test:
-// cd hw_mp
+// cd create_libraries
 // pub run test -p chrome
 @Tags(['browser'])
 @TestOn('browser')
 
 import 'dart:html';
 
-import 'package:hw_mp/src/hw_mp_base.dart';
+import 'package:create_libraries/src/hw_mp_base.dart';
 import 'package:test/test.dart';
 
 void main() {

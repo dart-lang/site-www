@@ -1,5 +1,5 @@
 @TestOn('vm')
-import 'package:hw_mp/hw_mp.dart';
+import 'package:create_libraries/hw_mp.dart';
 import 'package:test/test.dart';
 
 void main() {
