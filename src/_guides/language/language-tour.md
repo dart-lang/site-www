@@ -3889,7 +3889,7 @@ for advice on how to implement a library package, including:
 * When to use the `part` directive.
 * When to use the `library` directive.
 * How to use conditional imports and exports to implement
-  a platform-specific library.
+  a library that supports multiple platforms.
 
 
 <a id="asynchrony"></a>
