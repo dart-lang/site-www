@@ -162,51 +162,47 @@ A common use case is a library that supports both web and native platforms.
 
 To conditionally import or export,
 you must check for the presence of `dart:*` libraries.
-Here's an example of checking for the presence of `dart:io` and `dart:html`:
+Here's an example of conditional export code that
+checks for the presence of `dart:io` and `dart:html`:
 
-<!-- in lib/src/hw_mp_base.dart: -->
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
-export 'hw.dart' // stub implementation
-    if (dart.library.io) 'hw_io.dart' // native|dart:io implementation
-    if (dart.library.html) 'hw_html.dart'; // JS|dart:html implementation
+export 'src/hw.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // Native|dart:io implementation
+    if (dart.library.html) 'src/hw_html.dart'; // JS|dart:html implementation
 ```
 
-Here's how the code works:
+Here's how the conditional export code works:
 
 * If this code is running in the Dart VM (JIT or AOT),
   then export `hw_io.dart`.
-  [PENDING: check!!! you don't have to explicitly import dart:io, do you?},
 * If this code is running in a browser,
   then export `hw_html.dart`.
-* Otherwise, export `hw.dart`.
+* Otherwise, export `hw.dart`. **[PENDING: when would this happen?]**
 
-All three of the conditionally exported libraries provide the same API.
-Here's an example implementation:
+To conditionally import a file, just change `export` to `import`.
+Everything else is the same. **[PENDING: check!]**
 
+{{site.alert.note}}
+  The platform-specific code doesn't need to import `dart:io` or `dart:html`.
+  The conditional import or export checks only whether the library is
+  _available for use_ on the current platform,
+  not whether it's actually imported or used.
+  **[PENDING: check!]**
+{{site.alert.end}}
+
+In the previous sample,
+all three of the conditionally exported libraries implement the same API.
+Here's an example of the `lib/src/hw_io.dart` implementation:
+
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
 ```dart
-String get message => 'Hello World!'; // In lib/src/hw.dart
+String get message => 'Hello World from the VM!';
 ```
 
-```dart
-String get message => 'Hello World from the VM!'; // In lib/src/hw_io.dart
-```
+Any code that uses the multi-platform library imports it in the usual way:
 
-```dart
-String get message => 'Hello World from JavaScript!'; // In lib/src/hw_html.dart
-```
-
-In `lib/hw_mp.dart`:
-[PENDING: Explain why we need the following indirection — if we really do need it.]
-
-```dart
-/// A multi-platform Hello World library.
-library hw_mp;
-
-export 'src/hw_mp_base.dart';
-```
-
-Here's an example of an app that uses the multi-platform library:
-
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
