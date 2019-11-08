@@ -1,6 +1,7 @@
 // To run this test:
 // cd hw_mp
 // pub run test -p chrome
+@Tags(['browser'])
 @TestOn('browser')
 
 import 'dart:html';
