@@ -9,10 +9,10 @@ var updatePlaceholders = function(channel, version) {
   });
   var download = 'https://storage.googleapis.com/dart-archive/channels/' + channel + '/release/latest/linux_packages/dart_' + version + '-1_amd64.deb';
   if (channel == 'stable') {
-    var target = $("#debian-link-stable");
+    var target = $(".debian-link-stable");
     target.attr('href', download);
   } else {
-    var target = $("#debian-link-dev");
+    var target = $(".debian-link-dev");
     target.attr('href', download);
   }
 }

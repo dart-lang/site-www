@@ -62,11 +62,8 @@ $ sudo apt-get install dart
 
 Alternatively, download Dart SDK as Debian package in the `.deb` package format.
 
-{:.downloads}
-- [Stable channel](#){:.download-link #debian-link-stable
-  data-bits="64" data-os="debian" data-tool="sdk"}
-- [Dev channel](#){:.download-link #debian-link-dev
-  data-bits="64" data-os="debian" data-tool="sdk"}
+- [Stable channel](#){:.debian-link-stable}
+- [Dev channel](#){:.debian-link-dev}
 
 
 #### Modify PATH for access to all Dart binaries
