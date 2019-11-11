@@ -167,9 +167,9 @@ checks for the presence of `dart:io` and `dart:html`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
-export 'src/hw.dart' // Stub implementation
-    if (dart.library.io) 'src/hw_io.dart' // Native|dart:io implementation
-    if (dart.library.html) 'src/hw_html.dart'; // JS|dart:html implementation
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
 ```
 
 Here's how the conditional export code works:
@@ -178,17 +178,15 @@ Here's how the conditional export code works:
   then export `hw_io.dart`.
 * If this code is running in a browser,
   then export `hw_html.dart`.
-* Otherwise, export `hw.dart`. **[PENDING: when would this happen?]**
+* Otherwise, export `hw_none.dart`.
 
-To conditionally import a file, just change `export` to `import`.
-Everything else is the same. **[PENDING: check!]**
+To conditionally import a file, use the same code as above,
+but change `export` to `import`.
 
 {{site.alert.note}}
-  The platform-specific code doesn't need to import `dart:io` or `dart:html`.
   The conditional import or export checks only whether the library is
   _available for use_ on the current platform,
   not whether it's actually imported or used.
-  **[PENDING: check!]**
 {{site.alert.end}}
 
 In the previous sample,
@@ -197,18 +195,20 @@ Here's an example of the `lib/src/hw_io.dart` implementation:
 
 <?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
 ```dart
+import 'dart:io';
+
+void alarm([String text]) {
+  stderr.writeln(text ?? message);
+}
+
 String get message => 'Hello World from the VM!';
 ```
 
 Any code that uses the multi-platform library imports it in the usual way:
 
-<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+<?code-excerpt "create_libraries/example/hw_example.dart (import)" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
-
-main() {
-  print('greeting: ${message}');
-}
 ```
 
 ## Providing additional files
