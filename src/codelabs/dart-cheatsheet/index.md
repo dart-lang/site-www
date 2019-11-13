@@ -70,14 +70,14 @@ TBD: Make this and all non-trivial snippets testable.
 I found an error in one of the getter/setter snippets.
 {% endcomment %}
 
-{% prettify dart %}
-int a; // The initial value of any object is null.
+```dart
+int a; // The initial value of a is null.
 a ??= 3;
 print(a); // <-- Prints 3.
 
 a ??= 5;
 print(a); // <-- Still prints 3.
-{% endprettify %}
+```
 
 Another null-aware operator is `??`,
 which returns the expression on its left unless that expression's value is null,
