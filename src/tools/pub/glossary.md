@@ -146,15 +146,33 @@ and C are transitive ones.
 
 ## Uploader
 
-An uploader of a package is someone who has administrative permissions
-for that package. They can not only upload new versions of a package,
-but also [add and remove other uploaders](/tools/pub/cmd/pub-uploader)
-for that package. The uploader of a package is often, but not necessarily, the
-same as the [author](/tools/pub/pubspec#authorauthors) of a package.
+Someone who has administrative permissions for a package.
+A package uploader can upload new versions of the package,
+and they can also [add and remove other uploaders](/tools/pub/cmd/pub-uploader)
+for that package. 
+
+If a package has a verified publisher,
+then all members of the publisher can upload the package.
 
 Anyone uploading a new package automatically becomes an uploader for
-that package. Otherwise, to become an uploader, you need to contact an
+that package. Otherwise, to become an uploader of a package that
+doesn't have a verified publisher, you need to contact an
 existing uploader and ask them to add you as another uploader.
+
+
+## Verified publisher
+
+One or more users who own a set of packages.
+Each publisher is identified by a verified domain name.
+This domain lends credibility to packages owned by the publisher.
+For example, the Dart team at Google uses the [dart.dev domain][]
+as the verified publisher of the packages that the team supports.
+
+For more information, see the [verified publishers page][].
+
+[dart.dev domain]: https://pub.dev/publishers/dart.dev
+[verified publishers page]: /tools/pub/verified-publishers
+
 
 ## Version constraint
 
