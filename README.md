@@ -24,6 +24,7 @@ If you want or need to build, follow the steps below.
 
 Install the following tools if you don't have them already.
 
+- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
@@ -56,7 +57,7 @@ submodule-cloning techniques:
 > NOTE: It is safe to (re-)run all of the commands and scripts given below even
 if you already have the required packages installed.
 
-**Open a terminal/command window** and execute the following commands:
+**Open a bash terminal/command window** and execute the following commands:
 
 1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
    **root of this repo**
