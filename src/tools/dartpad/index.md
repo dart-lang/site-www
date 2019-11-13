@@ -148,10 +148,10 @@ labeled as _examples_ and _exercises_.
 For more information about how to use embedded DartPads, see
 [best practices for using DartPad in tutorials][].
 
-[futures codelab]: /codelabs/async-await
-
 For technical details on embedding DartPads, see the
 [DartPad embedding guide.][]
 
 [best practices for using DartPad in tutorials]: /resources/dartpad-tutorials.pdf
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[futures codelab]: /codelabs/async-await
+
