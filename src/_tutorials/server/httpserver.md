@@ -725,7 +725,7 @@ void addCorsHeaders(HttpResponse response) {
 <div class="prettify-filename">note_server.dart</div>
 
 For more information, refer to Wikipedia's article
-[Cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+[Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 ## Using the http_server package {#using-http-server-package}
 
@@ -909,7 +909,7 @@ using HTTPS (Hyper Text Transfer Protocol with Secure Sockets Layer).
 To use the bindSecure() method, you need a certificate,
 which is provided by a Certificate Authority (CA).
 For more information about certificates refer to
-[What is SSL and what are Certificates?](http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
+[What is SSL and what are Certificates?](https://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
 
 For illustrative purposes only,
 the following server, `hello_world_server_secure.dart`,

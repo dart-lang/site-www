@@ -7,7 +7,7 @@ Every [pub package](/guides/packages) needs some metadata so it can specify its
 others also need to provide some other information so users can discover them.
 All of this metadata goes in the package's _pubspec:_
 a file named `pubspec.yaml` that's written in the
-[YAML](http://www.yaml.org/) language.
+[YAML](https://yaml.org/) language.
 
 {% comment %}
 PENDING: acknowledge the existence of pubspec.lock files.
@@ -157,7 +157,7 @@ anymore. To make more changes, you'll need a new version.
 
 When you select a version, follow [semantic versioning.][semantic versioning]
 
-[semantic versioning]: http://semver.org/spec/v2.0.0.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
 ### Description
 
@@ -330,4 +330,4 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
-[semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

@@ -56,6 +56,39 @@ You can then run the app using the [`dartaotruntime` command][]:
 $ dartaotruntime bin/main.aot
 ```
 
+## Known limitations
+
+The initial (Dart 2.6) version of `dart2native` has some known limitations:
+
+No cross-compilation support ([issue 28617][])
+: The compiler supports creating machine code only for
+  the operating system it’s running on.
+  You need to run the compiler three times —
+  on macOS, Windows, and Linux —
+  to create executables for all three operating systems.
+  A workaround is to use a CI (continuous integration) provider
+  that supports all three operating systems.
+
+No signing support ([issue 39106][])
+: The format of the executables isn’t compatible with
+  standard signing tools such as codesign and SignTool.
+
+No support for dart:mirrors and dart:developer
+: The code compiled by `dart2native` can use all of the other libraries
+  that the Dart VM supports.
+  For a complete list of the core libraries you can use,
+  see the **All** and **AOT** entries in the
+  [table of core Dart libraries](/guides/libraries).
+
+[issue 28617]: https://github.com/dart-lang/sdk/issues/28617
+[issue 39106]: https://github.com/dart-lang/sdk/issues/39106
+
+{{site.alert.tip}}
+  If one of these issues is important to you,
+  let the Dart team know by adding a "thumbs up" to the issue.
+{{site.alert.end}}
+
+
 ## Options
 
 The first argument to `dart2native` is the path to the main Dart file:
@@ -95,6 +128,14 @@ You can use the following options:
 
 `-v` or `--verbose`
 : Displays more information.
+
+## dart2aot
+
+Releases before Dart 2.6 contained
+a tool named `dart2aot` that produced AOT snapshots.
+The `dart2native` command replaces `dart2aot` and
+has a superset of the `dart2aot` functionality.
+
 
 [assert statements]: /guides/language/language-tour#assert
 [`dartaotruntime` command]: /tools/dartaotruntime

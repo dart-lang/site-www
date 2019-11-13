@@ -144,7 +144,7 @@ and were built using [peanut.][peanut]
 ### Firebase
 
 For a walk-through of using Firebase to serve a chat app, see
-[Build a Real-Time Chat Web App with Dart, Angular 2, and Firebase 3.](http://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/)
+[Build a Real-Time Chat Web App with Dart, Angular 2, and Firebase 3.](https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/)
 {% comment %}
 TODO: Instead of just pointing to that very long article,
 show how to deploy here.

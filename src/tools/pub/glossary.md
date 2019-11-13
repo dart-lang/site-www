@@ -78,7 +78,7 @@ constraints](#version-constraint) should be as wide as possible while still
 ensuring that the dependencies will be compatible with the versions that were
 tested against.
 
-Since [semantic versioning](http://semver.org/spec/v2.0.0-rc.1.html) requires
+Since [semantic versioning](https://semver.org/spec/v2.0.0-rc.1.html) requires
 that libraries increment their major version numbers for any backwards
 incompatible changes, library packages will usually require their dependencies'
 versions to be greater than or equal to the versions that were tested and less
