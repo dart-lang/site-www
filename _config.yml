@@ -84,7 +84,24 @@ assets:
     - _shared/_assets
     - _shared/_assets/css
 
+exclude: [diagrams]
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+plugins: [jekyll-toc]
+source: src
+strict_front_matter: true
+# `symlinked-sources` can refer to individual files or directories
+# under `src` that are symlinked to somewhere outside `src`, or it can
+# refer to the root folder of the symlinked content (like `site-shared/src`):
+symlinked-sources: [site-shared/src]
+
+# Increment this global og:image URL version number (used as a query parameter)
+# when you update any og:image file. (Also increment the corresponding number
+# in the `firebase.json` redirect rule.)
+og_image_vers: "?2"
+
+toc:
+  min_level: 2
+  max_level: 3
 
 ## Site-wide shorthands
 
@@ -112,20 +129,3 @@ alert:
     <aside class="alert alert-warning" role="alert" markdown="1">
     <i class="fas fa-exclamation-triangle"></i> **Warning:**
   end: </aside>
-
-exclude: [diagrams]
-plugins: [jekyll-toc]
-source: src
-# `symlinked-sources` can refer to individual files or directories
-# under `src` that are symlinked to somewhere outside `src`, or it can
-# refer to the root folder of the symlinked content (like `site-shared/src`):
-symlinked-sources: [site-shared/src]
-
-# Increment this global og:image URL version number (used as a query parameter)
-# when you update any og:image file. (Also increment the corresponding number
-# in the `firebase.json` redirect rule.)
-og_image_vers: "?2"
-
-toc:
-  min_level: 2
-  max_level: 3
