@@ -295,11 +295,6 @@ body.homepage .get-started-section {
 	.alert, pre {
 		border: 1px solid black;
 	}
-
-	/* Hide "Open Dartpad" link */
-	.run-in-dartpad {
-		display: none;
-	}
 }
 
 /* Overwrite bootstrap: don't wrap code */

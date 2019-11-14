@@ -628,19 +628,6 @@ img {
   }
 }
 
-
-/* -----------------------------------------
- Dartpad
- ----------------------------------------- */
-
-#run-dartpad {
-  position: relative;
-  padding: 15px 0;
-  background: $gray-light;
-  border-top: 1px solid $gray;
-  z-index: 5;
-}
-
 /* -----------------------------------------
  Search
  ----------------------------------------- */
@@ -813,51 +800,6 @@ main .content {
   padding: 5px 10px;
   color: $blue;
   border-radius: 8px;
-}
-
-.codesample__open-in-dartpad {
-  display: block;
-  position: absolute;
-  width: auto;
-  z-index: 10;
-  padding: 5px 10px 5px 35px;
-  top: 35px;
-  right: 38px;
-  background-color: $gray;
-  color: $gray-base;
-
-  font-weight: normal;
-  font-size: $font-size-base * 0.91;
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-base * 0.8;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $font-size-base * 0.91;
-  }
-
-  &.top {
-    top: 0;
-  }
-  &:visited, &:active {
-    color: $gray-base;
-  }
-  &:hover {
-    background-color: darken($gray, 10%);
-    color: $white-base;
-  }
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 18px;
-    height: 18px;
-    background-image: asset_url('shared/dart/logo/default.svg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
 }
 
 // Columns
