@@ -7,36 +7,43 @@ nextpage:
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
+js: [{url: 'https://dartpad.dev/experimental/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
-First you’ll play with the Dart language and libraries in your browser, no download required.
+First you’ll play with the Dart language in your browser, no download required.
 Then you’ll install the Dart SDK, write a small program, and run that program using the Dart VM.
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
 ## 1. Play with Dart code in DartPad
 
-With DartPad you can experiment with the Dart language and APIs,
-no download necessary.
+With [DartPad](/tools/dartpad) you can experiment with the Dart language and
+APIs, no download necessary.
 
 For example, here's an embedded DartPad that lets you play with the code for a
-small Hello World program. Click **Run** to run the app; the console output
-appears beneath the code. Try editing the source code—perhaps you'd like to
-change the greeting to use another language. To get the full DartPad experience,
-<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
-the example at dartpad.dev.</a>
+small Hello World program. Click **Run** to run the app; output appears in the
+console view. Try editing the source code &mdash; perhaps you'd like to change the
+greeting to use another language.
 
 {{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<iframe
-    src="{{site.dartpad-embed-inline}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
-    width="100%"
-    height="300px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<style>
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+</style>
+
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+```dart:run-dartpad
+void main() {
+  print('Hello, World!');
+}
+```
 
 More information:
 

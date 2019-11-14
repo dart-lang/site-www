@@ -18,6 +18,7 @@ done
 
 travis_fold start build_site
   (
+    bundle exec jekyll --version;
     set -x;
     bundle exec jekyll build;
   )

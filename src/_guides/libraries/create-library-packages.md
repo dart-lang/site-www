@@ -123,6 +123,7 @@ instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 </aside>
 
+
 ## Importing library files
 
 When importing a library file, you can use the
@@ -152,6 +153,82 @@ it could instead use the `package:` directive
 (`import 'package:my_package/foo/a.dart'`).
 </aside>
 
+
+## Conditionally importing and exporting library files
+
+If your library supports multiple platforms,
+then you might need to conditionally import or export library files.
+A common use case is a library that supports both web and native platforms.
+
+To conditionally import or export,
+you need to check for the presence of `dart:*` libraries.
+Here's an example of conditional export code that
+checks for the presence of `dart:io` and `dart:html`:
+
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
+```dart
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
+```
+<div class="prettify-filename">lib/hw_mp.dart</div>
+
+Here's what that code does:
+
+* In an app that can use `dart:io`
+  (for example, a command-line app),
+  export `src/hw_io.dart`.
+* In an app that can use `dart:html`
+  (a web app),
+  export `src/hw_html.dart`.
+* Otherwise, export `src/hw_none.dart`.
+
+To conditionally import a file, use the same code as above,
+but change `export` to `import`.
+
+{{site.alert.note}}
+  The conditional import or export checks only whether the library is
+  _available for use_ on the current platform,
+  not whether it's actually imported or used.
+{{site.alert.end}}
+
+All of the conditionally exported libraries must implement the same API.
+For example, here's the `dart:io` implementation:
+
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
+```dart
+import 'dart:io';
+
+void alarm([String text]) {
+  stderr.writeln(text ?? message);
+}
+
+String get message => 'Hello World from the VM!';
+```
+<div class="prettify-filename">lib/src/hw_io.dart</div>
+
+And here's the default implementation,
+which is a stub that throws UnsupportedErrors:
+
+<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
+```dart
+void alarm([String text]) => throw UnsupportedError('hw_none alarm');
+
+String get message => throw UnsupportedError('hw_none message');
+```
+<div class="prettify-filename">lib/src/hw_none.dart</div>
+
+On any platform,
+you can import the library that has the conditional export code:
+
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+```dart
+import 'package:hw_mp/hw_mp.dart';
+
+main() {
+  print(message);
+}
+```
 
 ## Providing additional files
 
