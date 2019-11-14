@@ -34,6 +34,8 @@ greeting to use another language.
 iframe[src^="https://dartpad"] {
   border: 1px solid #ccc;
   margin-bottom: 1rem;
+  min-height: 150px;
+  resize: vertical;
   width: 100%;
 }
 </style>
