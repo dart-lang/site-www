@@ -6,6 +6,8 @@ description: Common problems with using DartPad
 This page describes solutions to problems that might occur when
 you're trying to use DartPad, whether at [dartpad.dev]({{ site.dartpad }})
 or in a page that has embedded DartPads.
+For an overview of DartPad, see the
+[DartPad page](/tools/dartpad).
 
 ## Embedded DartPads on flutter.dev are slow in Safari
 

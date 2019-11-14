@@ -6,7 +6,7 @@ description: The tool that lets you interactively play with Dart in a browser.
 DartPad is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
-have embedded DartPads.
+have [embedded DartPads](#embedding).
 To get a DartPad as big as your browser window, go to the
 <a href="{{site.dartpad}}"
 target="_blank">DartPad site (dartpad.dev).</a>
@@ -136,3 +136,22 @@ for (var char in 'hello'.split('')) {
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is based on.
 You can find the SDK version at the bottom right of DartPad.
+
+## Embedding DartPad in web pages {#embedding}
+
+You can embed DartPad inside of web pages,
+customizing it to suit your purpose.
+For example, the [futures codelab][]
+contains multiple embedded DartPads
+labeled as _examples_ and _exercises_.
+
+For more information about how to use embedded DartPads, see
+[best practices for using DartPad in tutorials][].
+
+For technical details on embedding DartPads, see the
+[DartPad embedding guide.][]
+
+[best practices for using DartPad in tutorials]: /resources/dartpad-tutorials.pdf
+[DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[futures codelab]: /codelabs/async-await
+
