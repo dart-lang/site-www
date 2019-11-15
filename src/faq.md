@@ -223,9 +223,9 @@ Linux. For more details, see the [dart2native][] documentation.
 
 Code compiled ahead-of-time (AOT) with a compiler such as [dart2native][] or
 just-in-time (JIT) in the VM has different performance characteristics.
-AOT-compiled code is guranteed to have fast startup, and a consistent run-time
+AOT-compiled code is guaranteed to have fast startup, and a consistent run-time
 performance with no latency during early runs. JIT-compiled code is slower at
-starting, but may have better peak performance once it has run for a while, and
+startup, but may have better peak performance once it has run for a while, and
 run-time optimizations have been applied.
 
 ---
