@@ -177,10 +177,10 @@ the author(s) of your package and to provide contact information.
 Each author could be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
 (`Natalie Weizenbaum <nweiz@google.com>`).
-However, these values weren't verified,
-and pub.dev no longer displays them.
+However, these values weren't verified.
 
-As of Dart 2.7, the `pub publish` command
+The pub.dev site no longer displays package authors, and
+(as of Dart 2.7) the `pub publish` command
 displays a warning if your pubspec has an `author` or `authors` section.
 
 
