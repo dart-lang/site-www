@@ -1592,7 +1592,7 @@ You can override many of these operators, as described in
 |Description               | Operator                                       |
 |--------------------------|------------------------------------------------|
 | unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`    `?.` |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
+| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    |
 | multiplicative           | `*`    `/`    `%`    `~/`                      |
 | additive                 | `+`    `-`                                     |
 | shift                    | `<<`    `>>`    `>>>`                          |
