@@ -219,6 +219,15 @@ Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
 Linux. For more details, see the [dart2native][] documentation.
 
+### Q. Which is faster; JIT- or AOT-compiled code?
+
+Code compiled ahead-of-time (AOT) with a compiler such as [dart2native][] or
+just-in-time (JIT) in the VM has different performance characteristics.
+AOT-compiled code is guranteed to have fast startup, and a consistent run-time
+performance with no latency during early runs. JIT-compiled code is slower at
+starting, but may have better peak performance once it has run for a while, and
+run-time optimizations have been applied.
+
 ---
 
 
