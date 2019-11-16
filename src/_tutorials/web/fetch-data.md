@@ -58,7 +58,7 @@ to have more space for the app's code and UI.
 https://gist.github.com/chalin/1d42e4eadb75bcc1ffbc079e299b862e
 
 <!--?code-excerpt "web/main.dart" indent-by="0"?-->
-{% prettify %}
+```dart
 // Copyright (c) 2015, the Dart project authors.
 // Please see the AUTHORS file for details.
 // All rights reserved. Use of this source code is governed
@@ -173,7 +173,7 @@ void showJson(Event _) {
   listAsJson.text = json.encode(favoriteThings);
   mapAsJson.text = json.encode(formData);
 }
-{% endprettify %}
+```
 {% endcomment %}
 
 <iframe
@@ -196,9 +196,9 @@ To use these functions,
 you need to import dart:convert into your Dart code:
 
 <!--?code-excerpt "web/main.dart" retain="dart:convert"?-->
-{% prettify dart %}
-  import 'dart:convert';
-{% endprettify %}
+```dart
+import 'dart:convert';
+```
 
 The `json.encode()` and `json.decode()` functions can handle these Dart types
 automatically:
@@ -279,7 +279,7 @@ The example initially populates the values in the form
 from this JSON string:
 
 <!--?code-excerpt "web/main.dart (jsonDataAsString)" indent-by="0" ?-->
-{% prettify dart %}
+```dart
 final jsonDataAsString = '''{
   "favoriteNumber": 73,
   "valueOfPi": 3.141592,
@@ -289,15 +289,15 @@ final jsonDataAsString = '''{
 }''';
 
 Map jsonData = json.decode(jsonDataAsString);
-{% endprettify %}
+```
 
 This code calls [json.decode()][] with a properly formatted JSON
 string.
 
-<aside class="alert alert-warning" markdown="1">
-  **Note:** Dart strings can use either single or double
+{{site.alert.warning}}
+  Dart strings can use either single or double
   quotes to denote strings. **JSON requires double quotes**.
-</aside>
+{{site.alert.end}}
 
 In this example, the full JSON string is hard coded into the Dart code,
 but it could be created by the form itself
@@ -360,25 +360,18 @@ HTTP requests from web apps are primarily useful for
 retrieving information in files specific to
 and co-located with the app.
 
-<aside class="alert alert-info" markdown="1">
-  **Security note:**
-  Browsers place tight security restrictions on HTTP requests
-  made by embedded apps.
-  Specifically, any resources requested by a web app
-  must be served from the same origin.
-  That is, the resources must be from the same protocol, host, and port
-  as the app itself.
-  This means that your web app cannot request
-  just any resource from the web with HTTP requests through the browser,
-  even if that request is seemingly harmless (like a GET.)
+{{site.alert.warn}}
+  **Security note:** Browsers place tight security restrictions on HTTP requests
+  made by embedded apps. Specifically, any resources requested by a web app must
+  be served from the same origin. That is, the resources must be from the same
+  protocol, host, and port as the app itself. This means that your web app
+  cannot request just any resource from the web with HTTP requests through the
+  browser, even if that request is seemingly harmless (like a GET.)
 
-  Some servers do allow cross-origin requests
-  through a mechanism called
-  CORS (Cross-origin resource sharing),
-  which uses headers in an HTTP request
-  to ask for and receive permission.
-  CORS is server specific.
-</aside>
+  Some servers do allow cross-origin requests through a mechanism called CORS
+  (Cross-origin resource sharing), which uses headers in an HTTP request to ask
+  for and receive permission. CORS is server specific.
+{{site.alert.end}}
 
 The SDK provides these useful classes for
 formulating URIs and making HTTP requests:
@@ -400,17 +393,14 @@ When you click the button,
 the app makes a GET request of the server
 and loads the file.
 
-<aside class="alert alert-info" markdown="1">
-  **Implementation note:**
-  The original portmanteaux example loaded the co-located file `portmanteaux.json`.
-  When we moved the example into [**DartPad**]({{site.dartpad}}),
-  we couldn't co-locate the JSON file because DartPad
-  supports at most 3 files: one Dart file, one HTML file,
-  and one CSS file.
-  A workaround was to move `portmanteaux.json` to dart.dev and
-  configure dart.dev's CORS headers to allow read-only access
-  from everywhere.
-</aside>
+{{site.alert.info}}
+  **Implementation note:** The original portmanteaux example loaded the
+  co-located file `portmanteaux.json`. When we moved the example into
+  [DartPad]({{site.dartpad}}), we couldn't co-locate the JSON file because
+  DartPad supports at most 3 files: one Dart file, one HTML file, and one CSS
+  file. A workaround was to move `portmanteaux.json` to dart.dev and configure
+  dart.dev's CORS headers to allow read-only access from everywhere.
+{{site.alert.end}}
 
 **Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
@@ -487,7 +477,7 @@ and then sends the request.
 Let's take a look at the Dart code:
 
 <!--?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" indent-by="0" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
-{% prettify dart %}
+```dart
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
   final httpRequest = HttpRequest();
@@ -496,7 +486,7 @@ Future<void> makeRequest(Event _) async {
     ..onLoadEnd.listen((e) => requestComplete(httpRequest))
     ..send('');
 }
-{% endprettify %}
+```
 
 <img class="scale-img-max" src="images/portmanteaux-code.png"
      alt="Making an HTTP GET request">
@@ -505,9 +495,9 @@ Future<void> makeRequest(Event _) async {
 
 The [send()][] method sends the request to the server.
 
-{% prettify dart %}
+```dart
 httpRequest.send('');
-{% endprettify %}
+```
 
 Because the request in this example is a simple GET request,
 the code can send an empty string.

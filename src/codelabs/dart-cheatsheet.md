@@ -83,10 +83,10 @@ Another null-aware operator is `??`,
 which returns the expression on its left unless that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
-{% prettify dart %}
-    print(1 ?? 3); // <-- Prints 1.
-    print(null ?? 12); // <-- Prints 12.
-{% endprettify %}
+```dart
+print(1 ?? 3); // <-- Prints 1.
+print(null ?? 12); // <-- Prints 12.
+```
 
 ### Code example
 
@@ -100,21 +100,21 @@ Try putting the `??=` and `??` operators to work below.
 To guard access to a property or method of an object that might be null,
 put a question mark (`?`) before the dot (`.`):
 
-{% prettify dart %}
+```dart
 myObject?.someProperty
-{% endprettify %}
+```
 
 The preceding code is equivalent to the following:
 
-{% prettify dart %}
+```dart
 (myObject != null) ? myObject.someProperty : null
-{% endprettify %}
+```
 
 You can chain multiple uses of `?.` together in a single expression:
 
-{% prettify dart %}
+```dart
 myObject?.someProperty?.someMethod()
-{% endprettify %}
+```
 
 The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is
@@ -133,7 +133,7 @@ Try using conditional property access to finish the code snippet below.
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-{% prettify dart %}
+```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
 final aMapOfStringsToInts = {
@@ -141,7 +141,7 @@ final aMapOfStringsToInts = {
   'two': 2,
   'three': 3,
 };
-{% endprettify %}
+```
 
 Dart's type inference can assign types to these variables for you.
 In this case, the inferred types are `List<String>`,
@@ -149,18 +149,18 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-{% prettify dart %}
+```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
 final aMapOfIntToDouble = <int, double>{};
-{% endprettify %}
+```
 
 Specifying types is handy when you initialize a list with contents of a subtype,
 but still want the list to be `List<BaseType>`:
 
-{% prettify dart %}
+```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
-{% endprettify %}
+```
 
 ### Code example
 
@@ -178,17 +178,17 @@ expression to its right and returns its value.
 For example, consider this call to the `List` class's
 `any()` method:
 
-{% prettify dart %}
+```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
 });
-{% endprettify %}
+```
 
 Here’s a simpler way to write that code:
 
-{% prettify dart %}
+```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
-{% endprettify %}
+```
 
 ### Code example
 
@@ -210,18 +210,18 @@ but they don't use `///`, and they end in `:`, not `.`.
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
 
-{% prettify dart %}
+```dart
 myObject.someMethod()
-{% endprettify %}
+```
 
 It invokes `someMethod()` on `myObject`, and the result of
 the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
-{% prettify dart %}
+```dart
 myObject..someMethod()
-{% endprettify %}
+```
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
@@ -229,22 +229,22 @@ Using cascades, you can chain together operations that
 would otherwise require separate statements.
 For example, consider this code:
 
-{% prettify dart %}
+```dart
 var button = querySelector('#confirm');
 button.text = 'Confirm';
 button.classes.add('important');
 button.onClick.listen((e) => window.alert('Confirmed!'));
-{% endprettify %}
+```
 
 With cascades, the code becomes much shorter,
 and you don’t need the `button` variable:
 
-{% prettify dart %}
+```dart
 querySelector('#confirm')
 ..text = 'Confirm'
 ..classes.add('important')
 ..onClick.listen((e) => window.alert('Confirmed!'));
-{% endprettify %}
+```
 
 ### Code example
 
@@ -264,7 +264,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-{% prettify dart %}
+```dart
 class MyClass {
   int _aProperty = 0;
 
@@ -276,11 +276,11 @@ class MyClass {
     }
   }
 }
-{% endprettify %}
+```
 
 You can also use a getter to define a computed property:
 
-{% prettify dart %}
+```dart
 class MyClass {
   List<int> _values = [];
 
@@ -293,7 +293,7 @@ class MyClass {
     return _values.length;
   }
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -314,17 +314,17 @@ Add the following:
 Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
 you're likely familiar with:
 
-{% prettify dart %}
+```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
 
 int total = sumUp(1, 2, 3);
-{% endprettify %}
+```
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-{% prettify dart %}
+```dart
 int sumUpToFive(int a, [int b, int c, int d, int e]) {
   int sum = a;
   if (b != null) sum += b;
@@ -336,20 +336,20 @@ int sumUpToFive(int a, [int b, int c, int d, int e]) {
 
 int total = sumUptoFive(1, 2);
 int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
-{% endprettify %}
+```
 
 Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-{% prettify dart %}
+```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
   ...
 }
 
 int newTotal = sumUpToFive(1);
 print(newTotal); // <-- prints 15
-{% endprettify %}
+```
 
 ### Code example
 
@@ -373,23 +373,23 @@ Here are some examples of function calls and returned values:
 Using a curly brace syntax,
 you can define optional parameters that have names.
 
-{% prettify dart %}
+```dart
 void printName(String firstName, String lastName, {String suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
 
 printName('Avinash', 'Gupta');
 printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
-{% endprettify %}
+```
 
 As you might expect, the value of these parameters is null by default,
 but you can provide default values:
 
-{% prettify dart %}
+```dart
 void printName(String firstName, String lastName, {String suffix = ''}) {
   print('$firstName $lastName ${suffix}');
 }
-{% endprettify %}
+```
 
 A function can't have both optional positional and optional named parameters.
 
@@ -422,14 +422,14 @@ any exceptions.
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
 
-{% prettify dart %}
+```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
-{% endprettify %}
+```
 
 Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
@@ -442,7 +442,7 @@ try {
   // No specified type, handles all
   print('Something really unknown: $e');
 }
-{% endprettify %}
+```
 
 The `try` keyword works as it does in most other languages.
 Use the `on` keyword to filter for specific exceptions by type,
@@ -451,19 +451,19 @@ and the `catch` keyword to get a reference to the exception object.
 If you can't completely handle the exception, use the `rethrow` keyword
 to propagate the exception:
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } catch (e) {
   print('I was just trying to breed llamas!.');
   rethrow;
 }
-{% endprettify %}
+```
 
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } catch (e) {
@@ -472,7 +472,7 @@ try {
   // Always clean up, even if an exception is thrown.
   cleanLlamaStalls();
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -518,7 +518,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-{% prettify dart %}
+```dart
 class MyColor {
   int red;
   int green;
@@ -528,12 +528,12 @@ class MyColor {
 }
 
 final color = MyColor(80, 80, 128);
-{% endprettify %}
+```
 
 This technique works for named parameters, too.
 Property names become the names of the parameters:
 
-{% prettify dart %}
+```dart
 class MyColor {
   ...
 
@@ -541,15 +541,15 @@ class MyColor {
 }
 
 final color = MyColor(red: 80, green: 80, blue: 80);
-{% endprettify %}
+```
 
 For optional parameters, default values work as expected:
 
-{% prettify dart %}
+```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 // or
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
-{% endprettify %}
+```
 
 ### Code example
 
@@ -576,24 +576,24 @@ before the constructor body executes.
 Do this work in an initializer list,
 which goes between the constructor's signature and its body:
 
-{% prettify dart %}
+```dart
 Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
   print('In Point.fromJson(): ($x, $y)');
 }
-{% endprettify %}
+```
 
 The initializer list is also a handy place to put asserts,
 which run only during development:
 
-{% prettify dart %}
+```dart
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
       assert(y >= 0) {
   print('I just made a NonNegativePoint: ($x, $y)');
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -629,7 +629,7 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-{% prettify dart %}
+```dart
 class Point {
   num x, y;
 
@@ -640,13 +640,13 @@ class Point {
     y = 0;
   }
 }
-{% endprettify %}
+```
 
 To use a named constructor, invoke it using its full name:
 
-{% prettify dart %}
+```dart
 final myPoint = Point.origin();
-{% endprettify %}
+```
 
 ### Code example
 
@@ -667,7 +667,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-{% prettify dart %}
+```dart
 class Square extends Shape {}
 
 class Circle extends Shape {}
@@ -683,7 +683,7 @@ class Shape {
     return null;
   }
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -712,7 +712,7 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-{% prettify dart %}
+```dart
 class Automobile {
   String make;
   String model;
@@ -727,7 +727,7 @@ class Automobile {
   // Delegates to a named constructor
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -744,7 +744,7 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-{% prettify dart %}
+```dart
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
 
@@ -754,7 +754,7 @@ class ImmutablePoint {
   static const ImmutablePoint origin =
       ImmutablePoint(0, 0);
 }
-{% endprettify %}
+```
 
 ### Code example
 

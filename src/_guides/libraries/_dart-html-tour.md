@@ -1,7 +1,6 @@
-Use the [dart:html][] library to
-program the browser, manipulate objects and elements in the DOM, and
-access HTML5 APIs. DOM stands for *Document Object Model*, which
-describes the hierarchy of an HTML page.
+Use the [dart:html][] library to program the browser, manipulate objects and
+elements in the DOM, and access HTML5 APIs. DOM stands for *Document Object
+Model*, which describes the hierarchy of an HTML page.
 
 Other common uses of dart:html are manipulating styles (*CSS*), getting
 data using HTTP requests, and exchanging data using
@@ -10,20 +9,16 @@ HTML5 (and dart:html) has many
 additional APIs that this section doesn’t cover. Only web apps can use
 dart:html, not command-line apps.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-For a higher level approach to web app UIs, use a web framework such as
-[AngularDart.]({{site.angulardart}})
-</div>
+{{site.alert.note}}
+  For a higher level approach to web app UIs, use a web framework such as
+  [AngularDart.]({{site.angulardart}})
+{{site.alert.end}}
 
 To use the HTML library in your web app, import dart:html:
 
 {% comment %}
-TODO: Figure out why we get ERRORs when using code-excerpt with triple ticks.
-Workaround: use prettify dart (with liquid syntax,
-surrounded with braces and percent marks).
-
-TODO: Consider helping users run these examples in DartPad.
+  TODO: Switch back to using code-excerpt instructions.
+  TODO: Consider helping users run these examples in DartPad.
 {% endcomment %}
 
 {% comment %} code-excerpt "lib/html.dart (import)" {% endcomment %}
@@ -343,12 +338,12 @@ from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
 {% comment %}code-excerpt "test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"{% endcomment %}
-```dart
+{% prettify dart %}
   Future main() async {
     String pageHtml = [!await HttpRequest.getString(url);!]
     // Do something with pageHtml...
   }
-```
+{% endprettify %}
 
 Use try-catch to specify an error handler:
 
