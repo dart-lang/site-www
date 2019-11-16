@@ -15,7 +15,7 @@ void main() {
 
     // #docregion href
     var anchor = querySelector('#example') as AnchorElement;
-    anchor.href = 'http://dartlang.org';
+    anchor.href = 'https://dart.dev';
     // #enddocregion href
     // The code above should throw no exceptions.
   });
@@ -97,7 +97,7 @@ void main() {
   test('POST', () async {
     final url = 'http://httpbin.org/post';
     // #docregion POST
-    String encodeMap(Map data) => data.keys
+    String encodeMap(Map<String, String> data) => data.keys
         .map((k) => '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
         .join('&');
 

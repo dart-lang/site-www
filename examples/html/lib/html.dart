@@ -121,7 +121,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var url, encodedData;
+    var encodedData;
+    String url;
     void requestComplete(HttpRequest req) {}
     // #docregion new-HttpRequest
     var request = HttpRequest();
