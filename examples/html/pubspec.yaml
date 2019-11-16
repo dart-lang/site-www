@@ -11,6 +11,4 @@ dependencies:
 dev_dependencies:
   test: ^1.6.3
   examples_util:
-    git:
-      url: https://github.com/dart-lang/site-www.git
-      path: examples/util
+    path: ../util
