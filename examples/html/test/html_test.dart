@@ -9,15 +9,18 @@ void main() {
   test('querySelector', () {
     final html =
         // #docregion anchor-html
-        '<a id="example" href="http://example.com">link text</a>';
+        '<a id="example" href="/another/example">link text</a>';
     // #enddocregion anchor-html
     document.body.appendHtml(html);
 
     // #docregion href
     var anchor = querySelector('#example') as AnchorElement;
+    // #enddocregion href
+    expect(anchor.href, endsWith('/another/example'));
+    // #docregion href
     anchor.href = 'https://dart.dev';
     // #enddocregion href
-    // The code above should throw no exceptions.
+    expect(anchor.href, 'https://dart.dev/');
   });
 
   test('querySelectorAll', () {
@@ -57,7 +60,7 @@ void main() {
   });
 
   test('getString', () async {
-    final url = 'http://httpbin.org';
+    final url = 'https://httpbin.org';
     // #docregion getString
     Future main() async {
       String pageHtml = await HttpRequest.getString(url);
@@ -95,7 +98,7 @@ void main() {
   });
 
   test('POST', () async {
-    final url = 'http://httpbin.org/post';
+    final url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.keys
         .map((k) => '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')

@@ -504,11 +504,11 @@ void main() {
   group('URIs', () {
     test('encodeFull', () {
       // #docregion encodeFull
-      var uri = 'http://example.org/api?foo=some message';
+      var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeFull(uri);
       assert(encoded ==
-          'http://example.org/api?foo=some%20message');
+          'https://example.org/api?foo=some%20message');
 
       var decoded = Uri.decodeFull(encoded);
       assert(uri == decoded);
@@ -517,11 +517,11 @@ void main() {
 
     test('encodeComponent', () {
       // #docregion encodeComponent
-      var uri = 'http://example.org/api?foo=some message';
+      var uri = 'https://example.org/api?foo=some message';
 
       var encoded = Uri.encodeComponent(uri);
       assert(encoded ==
-          'http%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+          'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
       var decoded = Uri.decodeComponent(encoded);
       assert(uri == decoded);
@@ -531,25 +531,25 @@ void main() {
     test('Uri.parse', () {
       // #docregion Uri-parse
       var uri =
-          Uri.parse('http://example.org:8080/foo/bar#frag');
+          Uri.parse('https://example.org:8080/foo/bar#frag');
 
-      assert(uri.scheme == 'http');
+      assert(uri.scheme == 'https');
       assert(uri.host == 'example.org');
       assert(uri.path == '/foo/bar');
       assert(uri.fragment == 'frag');
-      assert(uri.origin == 'http://example.org:8080');
+      assert(uri.origin == 'https://example.org:8080');
       // #enddocregion Uri-parse
     });
 
     test('constructor', () {
       // #docregion Uri
       var uri = Uri(
-          scheme: 'http',
+          scheme: 'https',
           host: 'example.org',
           path: '/foo/bar',
           fragment: 'frag');
       assert(
-          uri.toString() == 'http://example.org/foo/bar#frag');
+          uri.toString() == 'https://example.org/foo/bar#frag');
       // #enddocregion Uri
     });
   });

@@ -14,7 +14,7 @@ description: Use HttpRequest to fetch data from a file or a server.
 </div>
 
 Web apps often use
-[JSON](http://www.json.org/)
+[JSON](https://www.json.org)
 (JavaScript Object Notation)
 to pass data between clients and servers.
 Data can be _serialized_ into a JSON string,
