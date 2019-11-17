@@ -4,11 +4,10 @@ The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
-<div class="alert alert-warning" markdown="1">
-  **Important:**
+{{site.alert.important}}
   Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, and servers
   can import and use `dart:io`, not web apps.
-</div>
+{{site.alert.end}}
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it
@@ -20,10 +19,11 @@ The few synchronous methods in the dart:io library are clearly marked
 with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
 To use the dart:io library you must import it:
+
 <?code-excerpt "misc/test/library_tour/io_test.dart (import)"?>
-{% prettify dart %}
+```dart
 import 'dart:io';
-{% endprettify %}
+```
 
 ### Files and directories
 
@@ -44,7 +44,7 @@ is returned that provides the contents of the file as one or more
 strings.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
-{% prettify dart %}
+```dart
 Future main() async {
   var config = File('config.txt');
   var contents;
@@ -57,7 +57,7 @@ Future main() async {
   contents = await config.readAsLines();
   print('The file is ${contents.length} lines long.');
 }
-{% endprettify %}
+```
 
 
 #### Reading a file as binary
@@ -67,14 +67,14 @@ The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
-{% prettify dart %}
+```dart
 Future main() async {
   var config = File('config.txt');
 
   var contents = await config.readAsBytes();
   print('The file is ${contents.length} bytes long.');
 }
-{% endprettify %}
+```
 
 #### Handling errors
 
@@ -83,7 +83,7 @@ register a `catchError` handler on the Future,
 or (in an `async` function) use try-catch:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
-{% prettify dart %}
+```dart
 Future main() async {
   var config = File('config.txt');
   try {
@@ -93,7 +93,7 @@ Future main() async {
     print(e);
   }
 }
-{% endprettify %}
+```
 
 #### Streaming file contents
 
@@ -103,7 +103,7 @@ or `await for`, part of Dart's
 [asynchrony support.](/guides/language/language-tour#asynchrony-support)
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
-{% prettify dart %}
+```dart
 import 'dart:io';
 import 'dart:convert';
 
@@ -122,7 +122,7 @@ Future main() async {
     print(e);
   }
 }
-{% endprettify %}
+```
 
 #### Writing file contents
 
@@ -132,21 +132,21 @@ that you can write to. The default mode, `FileMode.write`, completely
 overwrites existing data in the file.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
-{% prettify dart %}
+```dart
 var logFile = File('log.txt');
 var sink = logFile.openWrite();
 sink.write('FILE ACCESSED ${DateTime.now()}\n');
 await sink.flush();
 await sink.close();
-{% endprettify %}
+```
 
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.append`:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
-{% prettify dart %}
+```dart
 var sink = logFile.openWrite(mode: FileMode.append);
-{% endprettify %}
+```
 
 To write binary data, use `add(List<int> data)`.
 
@@ -158,7 +158,7 @@ operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
-{% prettify dart %}
+```dart
 Future main() async {
   var dir = Directory('tmp');
 
@@ -175,7 +175,7 @@ Future main() async {
     print(e.toString());
   }
 }
-{% endprettify %}
+```
 
 
 #### Other common functionality
@@ -209,7 +209,7 @@ responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
 <?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
-{% prettify dart %}
+```dart
 Future main() async {
   final requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
@@ -232,7 +232,7 @@ void processRequest(HttpRequest request) {
   }
   response.close();
 }
-{% endprettify %}
+```
 
 #### HTTP client
 
@@ -245,7 +245,7 @@ apps. When programming in the browser, use the
 Here’s an example of using HttpClient:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
-{% prettify dart %}
+```dart
 Future main() async {
   var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = HttpClient();
@@ -255,7 +255,7 @@ Future main() async {
   print('Response ${response.statusCode}: $data');
   httpClient.close();
 }
-{% endprettify %}
+```
 
 
 ### More information
