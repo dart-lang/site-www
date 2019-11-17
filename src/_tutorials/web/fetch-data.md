@@ -2,7 +2,7 @@
 title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
-<!--?code-excerpt path-base="examples/fetch_data"?-->
+<?code-excerpt path-base="examples/fetch_data"?>
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -57,7 +57,7 @@ to have more space for the app's code and UI.
 {% comment %}
 https://gist.github.com/chalin/1d42e4eadb75bcc1ffbc079e299b862e
 
-<!--?code-excerpt "web/main.dart" indent-by="0"?-->
+<?code-excerpt "web/main.dart"?>
 ```dart
 // Copyright (c) 2015, the Dart project authors.
 // Please see the AUTHORS file for details.
@@ -216,7 +216,7 @@ Use the [json.encode()][] function to serialize an object that supports JSON.
 The `showJson()` function, from the example,
 converts all of the data to JSON strings.
 
-<!--?code-excerpt "web/main.dart (showJson)" indent-by="0" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?-->
+<!--?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?-->
 {% prettify dart %}
 void showJson(Event _) {
   // Grab the data that will be converted to JSON.
@@ -278,7 +278,7 @@ create Dart objects from a JSON string.
 The example initially populates the values in the form
 from this JSON string:
 
-<!--?code-excerpt "web/main.dart (jsonDataAsString)" indent-by="0" ?-->
+<!--?code-excerpt "web/main.dart (jsonDataAsString)" ?-->
 ```dart
 final jsonDataAsString = '''{
   "favoriteNumber": 73,
@@ -415,7 +415,7 @@ src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
 This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
 
-<!--?code-excerpt "web/portmanteaux/main.dart (makeRequest)" indent-by="0" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
+<!--?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
 {% prettify dart %}
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -476,7 +476,7 @@ configures it with a URI and callback function,
 and then sends the request.
 Let's take a look at the Dart code:
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" indent-by="0" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
+<!--?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
 ```dart
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -524,7 +524,7 @@ either successfully or unsuccessfully.
 The `requestComplete()` function
 checks the status code for the request.
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" indent-by="0" replace="/request\.\w+(?=\))/[!$&!]/g"?-->
+<!--?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?-->
 {% prettify dart %}
 void requestComplete(HttpRequest request) {
   switch ([!request.status!]) {
@@ -549,7 +549,7 @@ The data file in the portmanteaux example,
 `portmanteaux.json`,
 contains the following JSON-formatted list of strings:
 
-<!--?code-excerpt "web/portmanteaux.json" indent-by="0"?-->
+<!--?code-excerpt "web/portmanteaux.json"?-->
 {% prettify json %}
 [
   "portmanteau", "fantabulous", "spork", "smog",
@@ -569,7 +569,7 @@ to a Dart list of strings,
 creates a new [LIElement][] for each one,
 and adds it to the `<ul>` element on the page.
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (processResponse)" indent-by="0" replace="/json\.\w+/[!$&!]/g"?-->
+<!--?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?-->
 {% prettify dart %}
 void processResponse(String jsonString) {
   for (final portmanteau in [!json.decode!](jsonString)) {
