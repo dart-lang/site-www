@@ -1,3 +1,9 @@
+# When analyzing build/test logs, the expanded reporter is better:
+reporter: expanded
+
+tags:
+  browser:
+
 # Chrome option required because Travis is't running under sudo
 # https://docs.travis-ci.com/user/chrome#Sandboxing
 define_platforms:

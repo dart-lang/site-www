@@ -687,11 +687,11 @@ a fully qualified URI, leaving intact special URI characters.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
 ```dart
-var uri = 'http://example.org/api?foo=some message';
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeFull(uri);
 assert(encoded ==
-    'http://example.org/api?foo=some%20message');
+    'https://example.org/api?foo=some%20message');
 
 var decoded = Uri.decodeFull(encoded);
 assert(uri == decoded);
@@ -707,11 +707,11 @@ the `encodeComponent()` and `decodeComponent()` methods.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
 ```dart
-var uri = 'http://example.org/api?foo=some message';
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
 assert(encoded ==
-    'http%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+    'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
@@ -729,13 +729,13 @@ Uri fields such as `path`. To create a Uri from a string, use the
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
 ```dart
 var uri =
-    Uri.parse('http://example.org:8080/foo/bar#frag');
+    Uri.parse('https://example.org:8080/foo/bar#frag');
 
-assert(uri.scheme == 'http');
+assert(uri.scheme == 'https');
 assert(uri.host == 'example.org');
 assert(uri.path == '/foo/bar');
 assert(uri.fragment == 'frag');
-assert(uri.origin == 'http://example.org:8080');
+assert(uri.origin == 'https://example.org:8080');
 ```
 
 See the [Uri API reference][Uri] for more URI components that you can get.
@@ -748,12 +748,12 @@ constructor:
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
 ```dart
 var uri = Uri(
-    scheme: 'http',
+    scheme: 'https',
     host: 'example.org',
     path: '/foo/bar',
     fragment: 'frag');
 assert(
-    uri.toString() == 'http://example.org/foo/bar#frag');
+    uri.toString() == 'https://example.org/foo/bar#frag');
 ```
 
 
@@ -1609,7 +1609,7 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 
 ## dart:io - I/O for servers and command-line apps {#dartio}
 
-{% include dart-io-tour.md %}
+{% include_relative _dart-io-tour.md %}
 
 
 ## Summary

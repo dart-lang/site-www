@@ -26,7 +26,7 @@ But this doesn't come for free: There's a challenge to code
 reuse, especially reusing code you don't maintain. When your app uses code
 being developed by other people, what happens when they change it?
 They don't want to break your app, and you certainly don't either.
-We solve this problem by _versioning_. 
+We solve this problem by _versioning_.
 
 ## A name and a number
 
@@ -125,7 +125,7 @@ wiggle room to move our dependencies forward to newer versions. As long as there
 is overlap in their ranges, we can still find a single version that makes them
 both happy.
 
-This is the model that [bundler](http://gembundler.com/) follows,
+This is the model that [bundler](https://gembundler.com/) follows,
 and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:

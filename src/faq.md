@@ -458,7 +458,7 @@ modern JavaScript VMs.
 
 
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
-[sourcemaps]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+[sourcemaps]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [package:js]: {{site.pub-pkg}}/js
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
