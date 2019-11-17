@@ -4,6 +4,6 @@ import 'package:test/test.dart';
 
 void main() {
   test('dart:io test', () {
-    expect(message, equals('Hello World from the VM!'));
+    expect(message, 'Hello World from the VM!');
   });
 }

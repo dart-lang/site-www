@@ -1,9 +1,8 @@
-// Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2014, the Dart project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Client to note_server.dart.
-// Use note_taker.html to run this script.
+// Client to note_server.dart. This client script is used by note_taker.html.
 
 import 'dart:html';
 
@@ -43,7 +42,7 @@ void requestNote(Event e) {
   request.onReadyStateChange.listen(onData);
 
   request.open('POST', url);
-  request.send('{"getNote":"$getNoteNumber}"');
+  request.send('{"getNote":"$getNoteNumber"}');
 }
 
 void onData(_) {

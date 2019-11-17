@@ -7,7 +7,7 @@ and more. Site-www specific information is given below.
 
 ## How do I run the analyzer on an example?
 
-You'll need to `cd` into the example's folder and run Dart commands there. For
+Change directory into the example's folder and run Dart commands there. For
 example:
 
 ```console
@@ -18,17 +18,28 @@ $ dartanalyzer analysis_options.yaml .
 
 ## How do I run example tests?
 
+Change directory into the example's folder and run Dart commands there. For
+example:
+
+```console
+$ cd examples/misc
+$ pub get
+$ pub run test  # Run VM tests
+$ pub run test -p chrome  # Run browser tests
+```
+
+## How do I run the analyzer and tests for all examples?
+
 To run both the analyzer and tests for all examples use:
 
 ```
 ./tool/analyze-and-test-examples.sh
 ```
 
-If you get a warning about test failures or analysis errors,
-you might need to update one or more analyzer results files.
-For example, update `examples/misc/analyzer-results.txt`, if
-the change applies to both stable and dev Dart releases. Otherwise,
-update only the release specific file: either
+If you get a warning about test failures or analysis errors, you might need to
+update one or more analyzer results files. For example, update
+`examples/misc/analyzer-results.txt`, if the change applies to both stable and
+dev Dart releases. Otherwise, update only the release specific file: either
 `examples/misc/analyzer-results-stable.txt` or
 `examples/misc/analyzer-results-dev.txt`.
 
