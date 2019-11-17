@@ -1,14 +1,12 @@
-// Copyright (c) 2012, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// Copyright (c) 2012, the Dart project authors. Please see the AUTHORS file for
+// details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
-UListElement wordList = querySelector('#wordList');
+UListElement wordList = querySelector('#wordList') as UListElement;
 
 void main() {
   querySelector('#getWords').onClick.listen(makeRequest);
@@ -16,7 +14,7 @@ void main() {
 
 // #docregion makeRequest
 Future<void> makeRequest(Event _) async {
-  const path = 'https://www.dartlang.org/f/portmanteaux.json';
+  const path = 'https://dart.dev/f/portmanteaux.json';
   try {
     // Make the GET request
     final jsonString = await HttpRequest.getString(path);
@@ -32,7 +30,8 @@ Future<void> makeRequest(Event _) async {
 }
 
 void processResponse(String jsonString) {
-  for (final portmanteau in json.decode(jsonString)) {
+  final portmanteauList = json.decode(jsonString) as List<String>;
+  for (final portmanteau in portmanteauList) {
     wordList.children.add(LIElement()..text = portmanteau);
   }
 }

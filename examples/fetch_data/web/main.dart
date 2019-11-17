@@ -1,7 +1,6 @@
-// Copyright (c) 2015, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code is governed
-// by a BSD-style license that can be found in the LICENSE file.
+// Copyright (c) 2015, the Dart project authors. Please see the AUTHORS file for
+// details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
 import 'dart:convert';
@@ -26,23 +25,24 @@ TextAreaElement mapAsJson;
 
 void main() {
   // Set up the input text areas.
-  favoriteNumber = querySelector('#favoriteNumber');
-  valueOfPi = querySelector('#valueOfPi');
-  horoscope = querySelector('#horoscope');
-  favOne = querySelector('#favOne');
-  favTwo = querySelector('#favTwo');
-  favThree = querySelector('#favThree');
-  loveChocolate = querySelector('#loveChocolate');
-  noLoveForChocolate = querySelector('#noLoveForChocolate');
+  favoriteNumber = querySelector('#favoriteNumber') as InputElement;
+  valueOfPi = querySelector('#valueOfPi') as InputElement;
+  horoscope = querySelector('#horoscope') as InputElement;
+  favOne = querySelector('#favOne') as InputElement;
+  favTwo = querySelector('#favTwo') as InputElement;
+  favThree = querySelector('#favThree') as InputElement;
+  loveChocolate = querySelector('#loveChocolate') as RadioButtonInputElement;
+  noLoveForChocolate =
+      querySelector('#noLoveForChocolate') as RadioButtonInputElement;
 
   // Set up the results text areas
   // to display the values as JSON.
-  intAsJson = querySelector('#intAsJson');
-  doubleAsJson = querySelector('#doubleAsJson');
-  boolAsJson = querySelector('#boolAsJson');
-  stringAsJson = querySelector('#stringAsJson');
-  listAsJson = querySelector('#listAsJson');
-  mapAsJson = querySelector('#mapAsJson');
+  intAsJson = querySelector('#intAsJson') as TextAreaElement;
+  doubleAsJson = querySelector('#doubleAsJson') as TextAreaElement;
+  boolAsJson = querySelector('#boolAsJson') as TextAreaElement;
+  stringAsJson = querySelector('#stringAsJson') as TextAreaElement;
+  listAsJson = querySelector('#listAsJson') as TextAreaElement;
+  mapAsJson = querySelector('#mapAsJson') as TextAreaElement;
 
   // Set up the listeners.
   favoriteNumber.onKeyUp.listen(showJson);
@@ -69,15 +69,16 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString);
+  Map jsonData = json.decode(jsonDataAsString) as Map<String, dynamic>;
   // #enddocregion jsonDataAsString
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  favOne.value = jsonData['favoriteThings'][0];
-  favTwo.value = jsonData['favoriteThings'][1];
-  favThree.value = jsonData['favoriteThings'][2];
+  final favoriteThings = jsonData['favoriteThings'] as List;
+  favOne.value = favoriteThings[0] as String;
+  favTwo.value = favoriteThings[1] as String;
+  favThree.value = favoriteThings[2] as String;
 
   final chocolateRadioButton =
       jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
