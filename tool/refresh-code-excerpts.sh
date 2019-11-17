@@ -6,23 +6,31 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
 function usage() {
   echo $1; echo
-  echo "Usage: $(basename $0) [--help] [--legacy] [path-to-src-file-or-folder]"
+  echo "Usage: $(basename $0) [--help] [-k|--keep-dart-tool] [--legacy] [path-to-src-file-or-folder]"
   echo
   exit 1;
 }
 
-if [[ $1 == '-h' || $1 == '--help' ]]; then usage; fi
+ARGS=''
+
+while [[ "$1" == -* ]]; do
+  case "$1" in
+    --log-fine) ARGS+='--log-fine '; shift;;
+    -k|--keep-dart-tool) KEEP_CACHE=1; shift;;
+    --legacy)   LEGACY=get; shift;;
+    -h|--help)  usage;;
+  esac
+done
 
 [[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/tool/env-set.sh
 [[ -z "$DART_SITE_ENV_DEFS" ]] && exit 1; # env-set failed, abort.
 
-ARGS=''
-FRAG="$rootDir/tmp/_fragments"
+TMP="$rootDir/tmp"
+FRAG="$TMP/_fragments"
 
 if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
 
-if [[ $1 == '--legacy' ]]; then
-  shift
+if [[ -n "$LEGACY" ]]; then
   npx code-excerpter examples "$FRAG"
 else
   ARGS+='--yaml '
@@ -52,7 +60,7 @@ echo "Source:     $SRC"
 echo "Fragments:  $FRAG"
 echo "Other args: $ARGS"
 echo
-LOG_FILE=$TMP/refresh-code-excerpts-log.txt
+LOG_FILE="$TMP/refresh-code-excerpts-log.txt"
 pub run code_excerpt_updater \
   --fragment-dir-path "$FRAG" \
   --src-dir-path examples \
@@ -60,5 +68,9 @@ pub run code_excerpt_updater \
   --write-in-place \
   "$SRC" 2>&1 | tee $LOG_FILE
 LOG=$(cat $LOG_FILE)
+
+if [[ -z "$KEEP_CACHE" ]]; then
+  (set -x; rm -r "$rootDir/.dart_tool/")
+fi
 
 [[ $LOG == *" 0 out of"* && $LOG != *Error* ]]
