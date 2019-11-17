@@ -99,13 +99,22 @@ trying to find a set of versions that work with your package from what's already
 available.
 
 
-## Options {#options}
 
-The `pub downgrade` command supports the
-[`pub get` options](/tools/pub/cmd/pub-get#options).
+## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+`--offline`
+: Uses locally cached packages instead of accessing the network.
+
+`--no-offline`
+: Connects to the network to check for hosted dependencies. This is the 
+default setting.
+
+`--dry-run` or `-n`
+: Reports what dependencies would change but would not change any.
+
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
