@@ -2,7 +2,7 @@
 title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
-<?code-excerpt path-base="examples/fetch_data"?>
+<?code-excerpt path-base="fetch_data"?>
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -59,10 +59,9 @@ https://gist.github.com/chalin/1d42e4eadb75bcc1ffbc079e299b862e
 
 <?code-excerpt "web/main.dart"?>
 ```dart
-// Copyright (c) 2015, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code is governed
-// by a BSD-style license that can be found in the LICENSE file.
+// Copyright (c) 2015, the Dart project authors. Please see the AUTHORS file for
+// details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
 import 'dart:convert';
@@ -87,23 +86,24 @@ TextAreaElement mapAsJson;
 
 void main() {
   // Set up the input text areas.
-  favoriteNumber = querySelector('#favoriteNumber');
-  valueOfPi = querySelector('#valueOfPi');
-  horoscope = querySelector('#horoscope');
-  favOne = querySelector('#favOne');
-  favTwo = querySelector('#favTwo');
-  favThree = querySelector('#favThree');
-  loveChocolate = querySelector('#loveChocolate');
-  noLoveForChocolate = querySelector('#noLoveForChocolate');
+  favoriteNumber = querySelector('#favoriteNumber') as InputElement;
+  valueOfPi = querySelector('#valueOfPi') as InputElement;
+  horoscope = querySelector('#horoscope') as InputElement;
+  favOne = querySelector('#favOne') as InputElement;
+  favTwo = querySelector('#favTwo') as InputElement;
+  favThree = querySelector('#favThree') as InputElement;
+  loveChocolate = querySelector('#loveChocolate') as RadioButtonInputElement;
+  noLoveForChocolate =
+      querySelector('#noLoveForChocolate') as RadioButtonInputElement;
 
   // Set up the results text areas
   // to display the values as JSON.
-  intAsJson = querySelector('#intAsJson');
-  doubleAsJson = querySelector('#doubleAsJson');
-  boolAsJson = querySelector('#boolAsJson');
-  stringAsJson = querySelector('#stringAsJson');
-  listAsJson = querySelector('#listAsJson');
-  mapAsJson = querySelector('#mapAsJson');
+  intAsJson = querySelector('#intAsJson') as TextAreaElement;
+  doubleAsJson = querySelector('#doubleAsJson') as TextAreaElement;
+  boolAsJson = querySelector('#boolAsJson') as TextAreaElement;
+  stringAsJson = querySelector('#stringAsJson') as TextAreaElement;
+  listAsJson = querySelector('#listAsJson') as TextAreaElement;
+  mapAsJson = querySelector('#mapAsJson') as TextAreaElement;
 
   // Set up the listeners.
   favoriteNumber.onKeyUp.listen(showJson);
@@ -129,14 +129,15 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString);
+  Map jsonData = json.decode(jsonDataAsString) as Map<String, dynamic>;
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  favOne.value = jsonData['favoriteThings'][0];
-  favTwo.value = jsonData['favoriteThings'][1];
-  favThree.value = jsonData['favoriteThings'][2];
+  final favoriteThings = jsonData['favoriteThings'] as List;
+  favOne.value = favoriteThings[0] as String;
+  favTwo.value = favoriteThings[1] as String;
+  favThree.value = favoriteThings[2] as String;
 
   final chocolateRadioButton =
       jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
@@ -195,7 +196,7 @@ for working with JSON strings:
 To use these functions,
 you need to import dart:convert into your Dart code:
 
-<!--?code-excerpt "web/main.dart" retain="dart:convert"?-->
+<?code-excerpt "web/main.dart" retain="dart:convert"?>
 ```dart
 import 'dart:convert';
 ```
@@ -216,7 +217,7 @@ Use the [json.encode()][] function to serialize an object that supports JSON.
 The `showJson()` function, from the example,
 converts all of the data to JSON strings.
 
-<!--?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?-->
+<?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
 {% prettify dart %}
 void showJson(Event _) {
   // Grab the data that will be converted to JSON.
@@ -278,7 +279,7 @@ create Dart objects from a JSON string.
 The example initially populates the values in the form
 from this JSON string:
 
-<!--?code-excerpt "web/main.dart (jsonDataAsString)" ?-->
+<?code-excerpt "web/main.dart (jsonDataAsString)" ?>
 ```dart
 final jsonDataAsString = '''{
   "favoriteNumber": 73,
@@ -415,7 +416,7 @@ src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
 This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
 
-<!--?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
+<?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
 {% prettify dart %}
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -432,7 +433,7 @@ Future<void> makeRequest(Event _) async {
 
 void processResponse(String jsonString) {
   for (final portmanteau in json.decode(jsonString)) {
-    wordList.children.add(LIElement()..text = portmanteau);
+    wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
 {% endprettify %}
@@ -476,7 +477,7 @@ configures it with a URI and callback function,
 and then sends the request.
 Let's take a look at the Dart code:
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?-->
+<?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
 ```dart
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -524,7 +525,7 @@ either successfully or unsuccessfully.
 The `requestComplete()` function
 checks the status code for the request.
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?-->
+<?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?>
 {% prettify dart %}
 void requestComplete(HttpRequest request) {
   switch ([!request.status!]) {
@@ -549,7 +550,7 @@ The data file in the portmanteaux example,
 `portmanteaux.json`,
 contains the following JSON-formatted list of strings:
 
-<!--?code-excerpt "web/portmanteaux.json"?-->
+<?code-excerpt "web/portmanteaux.json"?>
 {% prettify json %}
 [
   "portmanteau", "fantabulous", "spork", "smog",
@@ -569,11 +570,11 @@ to a Dart list of strings,
 creates a new [LIElement][] for each one,
 and adds it to the `<ul>` element on the page.
 
-<!--?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?-->
+<?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?>
 {% prettify dart %}
 void processResponse(String jsonString) {
   for (final portmanteau in [!json.decode!](jsonString)) {
-    wordList.children.add(LIElement()..text = portmanteau);
+    wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
 {% endprettify %}

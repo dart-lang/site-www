@@ -14,7 +14,7 @@ void main() {
 
 // #docregion makeRequest
 Future<void> makeRequest(Event _) async {
-  const path = 'https://www.dartlang.org/f/portmanteaux.json';
+  const path = 'https://dart.dev/f/portmanteaux.json';
   final httpRequest = HttpRequest();
   httpRequest
     ..open('GET', path)

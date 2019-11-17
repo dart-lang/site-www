@@ -30,8 +30,7 @@ Future<void> makeRequest(Event _) async {
 }
 
 void processResponse(String jsonString) {
-  final portmanteauList = json.decode(jsonString) as List<String>;
-  for (final portmanteau in portmanteauList) {
-    wordList.children.add(LIElement()..text = portmanteau);
+  for (final portmanteau in json.decode(jsonString)) {
+    wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
