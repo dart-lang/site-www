@@ -129,7 +129,7 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString) as Map<String, dynamic>;
+  Map jsonData = json.decode(jsonDataAsString) as Map;
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
@@ -279,7 +279,7 @@ create Dart objects from a JSON string.
 The example initially populates the values in the form
 from this JSON string:
 
-<?code-excerpt "web/main.dart (jsonDataAsString)" ?>
+<?code-excerpt "web/main.dart (jsonDataAsString)"?>
 ```dart
 final jsonDataAsString = '''{
   "favoriteNumber": 73,
@@ -289,7 +289,7 @@ final jsonDataAsString = '''{
   "favoriteThings": ["monkeys", "parrots", "lattes"]
 }''';
 
-Map jsonData = json.decode(jsonDataAsString);
+Map jsonData = json.decode(jsonDataAsString) as Map;
 ```
 
 This code calls [json.decode()][] with a properly formatted JSON

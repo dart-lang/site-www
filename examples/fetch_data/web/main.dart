@@ -69,7 +69,7 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString) as Map<String, dynamic>;
+  Map jsonData = json.decode(jsonDataAsString) as Map;
   // #enddocregion jsonDataAsString
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
