@@ -2,7 +2,9 @@
 #
 # Run dartfmt over the examples.
 
-set -e -o pipefail
+# `find` exit code reflects whether it encountered errors during the search.
+# We ignore such errors, so don't exit on a pipefail.
+# set -e -o pipefail
 
 cd `dirname $0`/..
 ROOT=$(pwd)
