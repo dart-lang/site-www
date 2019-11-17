@@ -225,7 +225,7 @@ you can import the library that has the conditional export code:
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
-main() {
+void main() {
   print(message);
 }
 ```

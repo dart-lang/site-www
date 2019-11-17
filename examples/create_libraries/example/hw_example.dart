@@ -1,5 +1,5 @@
 import 'package:create_libraries/hw_mp.dart';
 
-main() {
+void main() {
   print(message);
 }

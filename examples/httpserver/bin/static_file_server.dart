@@ -2,18 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Type localhost:4048 into your browser.
-// This server returns the contents of index.html for all requests.
-
+/// A static file server, serving files from the web directory.
+/// Launch from the package root directory.
+/// Visit http://localhost:4048 into your browser.
 // #docregion
 import 'dart:io';
 import 'package:http_server/http_server.dart';
-import 'package:path/path.dart';
 
 Future main() async {
-  var pathToBuild = join(dirname(Platform.script.toFilePath()));
-
-  var staticFiles = VirtualDirectory(pathToBuild);
+  var staticFiles = VirtualDirectory('web');
   staticFiles.allowDirectoryListing = true; /*1*/
   staticFiles.directoryHandler = (dir, request) /*2*/ {
     var indexUri = Uri.file(dir.path).resolve('index.html');

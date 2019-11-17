@@ -1,5 +1,4 @@
 // ignore_for_file: unused_element, unused_local_variable
-import 'dart:async';
 // #docregion import
 import 'dart:html';
 // #enddocregion import

@@ -1,5 +1,4 @@
-# When analyzing build/test logs, the expanded reporter is better:
-reporter: expanded
+include: dart_test_base.yaml
 
 tags:
   browser:

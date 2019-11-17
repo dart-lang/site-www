@@ -1,16 +1,13 @@
-// Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+// Copyright (c) 2014, the Dart project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Serves the index.html in the same directory as this script.
-// Use the URL localhost:4044 in your browser.
-// For a similar server that uses http_server package
-// see basic_file_server.dart.
-
+/// A server built using dart:io that serves the same file for all requests.
+/// Visit http://localhost:4044 into your browser.
 // #docregion
 import 'dart:io';
 
-File targetFile = File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
   var server;

@@ -1,5 +1,5 @@
 name: html_library_sample
-description: HTML package sample
+description: dart.dev example code.
 version: 0.0.1
 
 environment:
@@ -10,5 +10,4 @@ dependencies:
 
 dev_dependencies:
   test: ^1.6.3
-  examples_util:
-    path: ../util
+  examples_util: {path: ../util}
