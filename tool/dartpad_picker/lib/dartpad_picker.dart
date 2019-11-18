@@ -51,7 +51,12 @@ class DartPadPicker {
       ..src = iFrameSrc(theme: 'dark', mode: 'dart');
     iFrameHost.children.add(_iFrameElement);
     window.addEventListener('message', (dynamic e) {
-      if (e.data['type'] == 'ready') {
+      // Avoid handling
+      if (e.data != null &&
+          e.data is Map &&
+          e.data.containsKey('type') &&
+          e.data['type'] is String &&
+          e.data['type'] == 'ready') {
         _sendSourceCode();
       }
     });
