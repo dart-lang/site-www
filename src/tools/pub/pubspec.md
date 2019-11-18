@@ -30,10 +30,6 @@ A pubspec can have the following fields:
 : Required for packages that are hosted on the [pub.dev site.]({{site.pub}})
   [_Learn more._](#description)
 
-`author` or `authors`
-: Optional.
-  [_Learn more._](#authorauthors)
-
 `homepage`
 : Optional. URL pointing to the package's homepage (or source code repository).
   [_Learn more._](#homepage)
@@ -100,7 +96,6 @@ description: >-
   This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
-author: Natalie Weizenbaum <nweiz@google.com>
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 environment:
@@ -172,22 +167,22 @@ The description is plain text: no markdown or HTML.
 
 ### Author/authors
 
-You're encouraged to use these fields to describe the author(s) of your package
-and provide contact information. Use `author` if your package has a
-single author, or use `authors` with a YAML list if more than one
-person wrote the package. Each author can be either a single name
+_Deprecated._ Use a [verified publisher][] instead.
+
+[verified publisher]: /tools/pub/verified-publishers
+
+You might see an `author` or `authors` section in old pubspecs.
+These optional fields were a way to describe
+the author(s) of your package and to provide contact information.
+Each author could be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
-(`Natalie Weizenbaum <nweiz@google.com>`). For example:
+(`Natalie Weizenbaum <nweiz@google.com>`).
+However, these values weren't verified.
 
-{% prettify yaml %}
-authors:
-- Natalie Weizenbaum <nweiz@google.com>
-- Bob Nystrom <rnystrom@google.com>
-{% endprettify %}
+The pub.dev site no longer displays package authors, and
+(as of Dart 2.7) the `pub publish` command
+displays a warning if your pubspec has an `author` or `authors` section.
 
-The email addresses can be from any provider.
-If anyone uploads your package to the pub.dev site,
-then the author information (including email addresses) becomes public.
 
 ### Homepage
 
