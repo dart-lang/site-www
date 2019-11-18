@@ -11,15 +11,12 @@ this page can help. To learn more, read about
 [Dart's type system](/guides/language/sound-dart),
 and see [these other resources](/guides/language/sound-dart#other-resources).
 
-<aside class="alert alert-info" markdown="1">
-**Help us improve this page!**
-If you encounter a warning or error that isn't listed here,
-please file an issue by clicking the **bug icon** at the top right.
-Include the **warning or error message** and,
-if possible, the code for both a small reproducible case
-and its correct equivalent.
-</aside>
-
+{{site.alert.info}}
+  **Help us improve this page!** If you encounter a warning or error that isn't
+  listed here, please file an issue by clicking the **bug icon** at the top
+  right. Include the **warning or error message** and, if possible, the code for
+  both a small reproducible case and its correct equivalent.
+{{site.alert.end}}
 
 ## Troubleshooting
 
@@ -207,11 +204,10 @@ error • '...'  isn't a valid override of '...'  • invalid_override
 These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** This issue can also occur when a generic subclass neglects
-to specify a type. For more information, see
-[Missing type arguments](#missing-type-arguments).
-</aside>
+{{site.alert.note}}
+  This issue can also occur when a generic subclass neglects to specify a type.
+  For more information, see [Missing type arguments](#missing-type-arguments).
+{{site.alert.end}}
 
 #### Example
 
@@ -269,10 +265,10 @@ class MyAdder extends NumberAdder {
 
 For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-param-types).
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** If you have a valid reason to use a subtype, you can use the
+{{site.alert.note}}
+  If you have a valid reason to use a subtype, you can use the
   [covariant keyword](#the-covariant-keyword).
-</aside>
+{{site.alert.end}}
 
 <hr>
 
@@ -574,10 +570,9 @@ var names = json['names'] as List;
 assumeStrings(names.[!cast!]<String>());
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Version note:**
+{{site.alert.version-note}}
   The `cast()` method was introduced in 2.0.0-dev.22.0.
-</aside>
+{{site.alert.end}}
 
 If you can't tighten the type or use `cast`, you can copy the object
 in a different way. For example:
@@ -607,11 +602,10 @@ tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
 argument type at runtime.
 
-<aside class="alert alert-info" markdown="1">
-  **Version note:**
-  The `covariant` keyword was introduced in 1.22.
-  It replaces the `@checked` annotation.
-</aside>
+{{site.alert.version-note}}
+  The `covariant` keyword was introduced in 1.22. It replaces the `@checked`
+  annotation.
+{{site.alert.end}}
 
 The following shows how you might use `covariant`:
 

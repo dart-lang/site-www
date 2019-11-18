@@ -220,7 +220,7 @@ To see Dart types in Chrome DevTools, you need to enable custom formatters.
 1. Close Settings: Press <kbd>Esc</kbd> or click the **x** at the upper right.
 
 {% comment %}
-The best description I found was http://www.mattzeunert.com/2016/02/19/custom-chrome-devtools-object-formatters.html.
+The best description I found was https://www.mattzeunert.com/2016/02/19/custom-chrome-devtools-object-formatters.html.
 {% endcomment %}
 
 

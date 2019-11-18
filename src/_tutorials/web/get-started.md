@@ -154,13 +154,11 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-<aside class="alert alert-info" markdown="1">
-  **Feeling lost? Don't worry!**
-  This was a whirlwind introduction to Dart and web programming
-  that left out many details.
-  For a gentler approach, try a
+{{site.alert.info}}
+  **Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
+  web programming that left out many details. For a gentler approach, try a
   [low-level HTML tutorial for Dart][].
-</aside>
+{{site.alert.end}}
 
 
 ## What next?

@@ -1,3 +1,8 @@
+include: dart_test_base.yaml
+
+tags:
+  browser:
+
 # Chrome option required because Travis is't running under sudo
 # https://docs.travis-ci.com/user/chrome#Sandboxing
 define_platforms:

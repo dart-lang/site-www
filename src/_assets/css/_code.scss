@@ -9,23 +9,20 @@ $pre-bg: #F5F5F5; // TODO(chalin): use $site-color-codeblock-bg?
 
 @import 'code_shared';
 
-// code {
-//   background-color: transparent;
-// }
 pre {
   @include pre-defaults;
 
-  &.prettyprint {
-    .com { color: #6E6E70; }
-    // TODO(chalin): dropping the following overrides would allow us to be consistent with Flutter
-    .kwd { color: #BC0056; }
-    .pln { color: #7500A0; }
-    .lit,
-    .str { color: #00677A; }
-  }
   a {
     font-family: inherit;
     font-weight: inherit;
   }
 }
 
+@media screen {
+  .com { color: #6E6E70; }
+  // TODO(chalin): dropping the following overrides would allow us to be consistent with Flutter
+  .kwd { color: #BC0056; }
+  .pln { color: #7500A0; }
+  .lit,
+  .str { color: #00677A; }
+}
