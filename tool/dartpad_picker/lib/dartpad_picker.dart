@@ -51,7 +51,7 @@ class DartPadPicker {
       ..src = iFrameSrc(theme: 'dark', mode: 'dart');
     iFrameHost.children.add(_iFrameElement);
     window.addEventListener('message', (dynamic e) {
-      // Avoid handling
+      // Don't handle events from other iframe elements
       if (e.data != null &&
           e.data is Map &&
           e.data.containsKey('type') &&
