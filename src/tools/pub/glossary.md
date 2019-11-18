@@ -149,6 +149,7 @@ requires it. If your package depends on A, which in turn depends on B which
 depends on C, then A is an [immediate dependency](#immediate-dependency) and B
 and C are transitive ones.
 
+
 ## Uploader
 
 Someone who has administrative permissions for a package.
@@ -158,11 +159,6 @@ for that package.
 
 If a package has a verified publisher,
 then all members of the publisher can upload the package.
-
-Anyone uploading a new package automatically becomes an uploader for
-that package. Otherwise, to become an uploader of a package that
-doesn't have a verified publisher, you need to contact an
-existing uploader and ask them to add you as another uploader.
 
 
 ## Verified publisher
