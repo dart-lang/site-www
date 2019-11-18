@@ -91,9 +91,55 @@ brief description of key app features, click the highlighted code below.
 
 {% include_relative _dcat-example.html %}
 
-You can run the app from the command line over `quote.txt`
-([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"})
-or any other text file:
+
+### Getting dependencies
+
+You might notice that dcat depends on a package named **args**.
+To get the args package, use the
+[pub package manager](/guides/packages).
+
+A real app has tests, license files, and so on, in a file hierarchy
+such as the one in the [Dart command-line app template.][]
+But for this first app, let's do the minimum necessary to get the code to run:
+
+[Dart command-line app template.]: https://github.com/dart-lang/stagehand/tree/master/templates/console-full
+
+1. Create a directory named `dcat`, and change to that directory.
+2. Inside `dcat`, create a file named `dcat.dart`
+   and copy the preceding code into it.
+3. Inside `dcat`, create a file named `pubspec.yaml`
+   with the following code:
+
+   ```yaml
+   name: dcat
+
+   environment:
+     sdk: '>=2.6.0 <3.0.0'
+
+   dependencies:
+     args: ^1.5.0
+   ```
+4. Still in the `dcat` directory, run `pub get` to get the args package:
+
+   ```terminal
+   $ pub get
+   Resolving dependencies... 
+   + args 1.5.2
+   Changed 1 dependency!
+   ```
+
+{{site.alert.note}}
+  To learn more about using packages and organizing your code, see the
+  [package documentation](/guides/packages) and
+  [layout conventions](/tools/pub/package-layout).
+{{site.alert.end}}
+
+### Running dcat
+
+Once you have your app's dependencies,
+you can run the app from the command line over any text file,
+like `pubspec.yaml` or `quote.txt`
+([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"}):
 
 ```terminal
 $ dart dcat.dart -n quote.txt
