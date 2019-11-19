@@ -81,10 +81,11 @@ class C { ... }
 
 ### DO name extensions using `UpperCamelCase`.
 
-Like types, extensions should capitalize the first letter of each word (including the first word), 
+Like types, extensions should capitalize the first letter of each word
+(including the first word), 
 and use no separators.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
 {% prettify dart %}
 extension MyFancyList<T> on List<T> { ... }
