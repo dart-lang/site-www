@@ -35,6 +35,27 @@ $dash-dartpad-border: #293542;
   text-align: center;
   padding: 64px 0 64px 0 !important;
 
+  .callout-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 18px;
+    > button {
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      align-items: center;
+      color: $site-color-card-link;
+      &:hover {
+        text-decoration: none;
+        color: darken($site-color-card-link, 20%);
+      }
+      > i {
+        margin-right: 8px;
+      }
+    }
+  }
+
   .callout-title {
     font-size: 28px;
     color: white;
@@ -50,6 +71,18 @@ $dash-dartpad-border: #293542;
     width: 180px;
     margin-top:27px;
     opacity: 0.5;
+  }
+}
+
+.embedded-video-wrapper {
+  width: 100%;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  position: relative;
+
+  #video-player {
+    height: 100%;
+    position: absolute;
+    width: 100%;
   }
 }
 
