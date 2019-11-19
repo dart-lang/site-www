@@ -10,7 +10,13 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 For simple changes (such as to CSS and text), you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 
-If you want/need to build, read on.
+If you want or need to build, follow the steps below.
+
+> **Help us improve these instructions!**
+> If you have any problems getting set up to build or performing the actual build,
+> please [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
+> (or both).
 
 ## Before you build this site
 
@@ -18,6 +24,7 @@ If you want/need to build, read on.
 
 Install the following tools if you don't have them already.
 
+- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
@@ -50,7 +57,7 @@ submodule-cloning techniques:
 > NOTE: It is safe to (re-)run all of the commands and scripts given below even
 if you already have the required packages installed.
 
-**Open a terminal/command window** and execute the following commands:
+**Open a bash terminal/command window** and execute the following commands:
 
 1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
    **root of this repo**
@@ -144,7 +151,7 @@ as linkcheck.dart), run this from the top of the repo:
 ./deploy/html_proof.rb
 ```
 
-To check which old links (from the site version before this one) are broken,
+To find old links (from the site version before this one) that are broken,
 use these commands:
 
 ```
@@ -174,29 +181,27 @@ If you don't already have a project to stage to,
 create it:
 
 1. Select **Create New Project**.
-1. Enter a project name in the dialog, such as
-  `zz-www-dartlang-1`.
+1. Enter a project name in the dialog, such as `staging-1`.
 1. Click **Create Project**. This takes you to the
   page for your new project.
 
-**Note:** To keep the number of projects under control,
+> **Note:** To keep the number of projects under control,
 we reuse them. Our naming convention is
-`<first initial><last initial>-www-dartlang-<number>`, for example,
-`sz-www-dartlang-1` and `kw-www-dartlang-1`.
+`<first initial><last initial>-dart-dev-<number>`, for example,
+`sz-dart-dev-1` and `kw-dart-dev-1`.
 
-Return to the [Firebase console](https://console.firebase.google.com/).
+Return to the [Firebase console](https://console.firebase.google.com).
 You should now see your project in the list.
-Copy the name of your project (e.g. `sz-www-dartlang-2`) to your clipboard.
+Copy the name of your project (e.g. `sz-dart-dev-2`) to your clipboard.
 
-On the command line, from the top of GitHub repo, edit the
-`.firebaserc` file.
+On the command line, from the top of GitHub repo, edit the `.firebaserc` file.
 
-Change `www-dartlang-org` to the name of your project. For example:
+Change `dart-dev` to the name of your project. For example:
 
-```
+```json
 {
   "projects": {
-    "default": "sz-www-dartlang-2"
+    "default": "sz-dart-dev-2"
   }
 }
 ```
@@ -215,12 +220,12 @@ Then deploy the docs:
 ```
 
 You can now navigate to the staged version at
-`https://<your-instance>.firebaseapp.com`/—for example,
-`https://sz-www-dartlang-2.firebaseapp.com/`.
+`https://<your-instance>.firebaseapp.com` -— for example,
+`https://sz-dart-dev-2.firebaseapp.com`.
 
 **Important:** Don't commit the `.firebaserc` file containing the name of your staged version.
 
-Navigate to the PR on GitHub and update the it with the location of the staged version,
+Navigate to the PR on GitHub and update it with the location of the staged version,
 the names of your reviewers, and so on.
 
 Before making any more changes, stash `.firebaserc`:

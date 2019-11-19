@@ -1,0 +1,10 @@
+name: examples
+description: dart.dev example code.
+
+environment:
+  sdk: '>=2.5.0 <3.0.0'
+
+dev_dependencies:
+  examples_util:
+    path: ../util
+  pedantic: ^1.0.0

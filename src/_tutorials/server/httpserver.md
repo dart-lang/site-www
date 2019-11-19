@@ -6,7 +6,7 @@ prevpage:
   title: "Write command-line apps"
 ---
 {% capture gh-path -%}
-  https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
+  https://github.com/dart-lang/site-www/blob/master/examples/httpserver
 {%- endcapture -%}
 
 <div class="mini-toc" markdown="1">
@@ -95,8 +95,8 @@ with the string `Hello, world!`
 At the command line, run the `hello_world_server.dart` script:
 
 ```terminal
-$ cd httpserver/bin
-$ dart hello_world_server.dart
+$ cd httpserver
+$ dart bin/hello_world_server.dart
 listening on localhost, port 4040
 ```
 
@@ -230,14 +230,17 @@ that you can use to guess the number.
    You should see something similar to the following:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart number_thinker.dart
+   $ cd httpserver
+   $ dart bin/number_thinker.dart
    I'm thinking of a number: 6
    ```
 
 2. **Launch the web server**
 
    Run `webdev serve` from the top directory of the app.
+
+   _More information:_
+   [webdev documentation](/tools/webdev)
 
 3. **Open the HTML page**
 
@@ -520,23 +523,23 @@ Run the server and client on the command line.
 1. First, run the server:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_writer_server.dart
+   $ cd httpserver
+   $ dart bin/basic_writer_server.dart
    ```
 
 2. In a new terminal, run the client:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_writer_client.dart
+   $ cd httpserver
+   $ dart bin/basic_writer_client.dart
    Wrote data for Han Solo.
    ```
 
 Look at the JSON data that the server wrote to `file.txt`:
 
-   ```json
-   {"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
-   ```
+```json
+{"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
+```
 
 <hr>
 
@@ -545,13 +548,13 @@ The client creates an HttpClient object and uses the
 Making a request involves two Futures:
 
 * The `post()` method establishes a network
-connection to the server and completes with the first Future,
-which returns an HttpClientRequest object.
+  connection to the server and completes with the first Future,
+  which returns an HttpClientRequest object.
 
 * The client composes the request object and closes it.
-The `close()` method sends the request to the server
-and returns the second Future, which completes with
-an HttpClientResponse object.
+  The `close()` method sends the request to the server
+  and returns the second Future, which completes with
+  an HttpClientResponse object.
 
 <?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|utf8.\w+/[!$&!]/g"?>
 {% prettify dart %}
@@ -722,7 +725,7 @@ void addCorsHeaders(HttpResponse response) {
 <div class="prettify-filename">note_server.dart</div>
 
 For more information, refer to Wikipedia's article
-[Cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+[Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 ## Using the http_server package {#using-http-server-package}
 
@@ -745,29 +748,29 @@ written using dart:io together with http_server.
 
 You can find the first server in `mini_file_server.dart`.
 It responds to all requests by returning the contents of the
-`index.html` file in the same directory as its source.
+`index.html` file from the `web` directory.
 
 **Try it!**
 
 1. Run the server on the command line:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart mini_file_server.dart
+   $ cd httpserver
+   $ dart bin/mini_file_server.dart
    ```
 
 2. Type [localhost:4044](http://localhost:4044) into the browser.
    The server displays an HTML file:
 
-   ![The index.html file served by mini_file_server.dart.](/tutorials/server/images/index_file.png)
+   ![The file served by mini_file_server.dart.](/tutorials/server/images/index_file.png)
 
 Here's the code for mini file server:
 
 <?code-excerpt "httpserver/bin/mini_file_server.dart"?>
-{% prettify dart %}
+```dart
 import 'dart:io';
 
-File targetFile = File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
   var server;
@@ -796,7 +799,7 @@ Future main() async {
     await req.response.close();
   }
 }
-{% endprettify %}
+```
 <div class="prettify-filename">mini_file_server.dart</div>
 
 This code determines whether the file exists,
@@ -812,8 +815,8 @@ uses the [http_server][] package.
 1. Run the server on the command line:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_file_server.dart
+   $ cd httpserver
+   $ dart bin/basic_file_server.dart
    ```
 
 2. Type [localhost:4046](http://localhost:4046) into the browser.
@@ -829,7 +832,7 @@ because the [VirtualDirectory][] class handles the details of serving the file.
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-File targetFile = File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
   VirtualDirectory staticFiles = VirtualDirectory('.');
@@ -853,9 +856,8 @@ also uses the http_server package.
 This server serves any file from the server's directory
 or subdirectory.
 
-Run `static_file_server.dart`,
-and test it with the URL localhost:4048/file.txt.
-Change `file.txt` to other filenames within the directory.
+Run `static_file_server.dart`, and test it with the URL
+[localhost:4048](http://localhost:4048).
 
 Here is the code for `static_file_server.dart`.
 
@@ -863,12 +865,9 @@ Here is the code for `static_file_server.dart`.
 {% prettify dart %}
 import 'dart:io';
 import 'package:http_server/http_server.dart';
-import 'package:path/path.dart';
 
 Future main() async {
-  var pathToBuild = join(dirname(Platform.script.toFilePath()));
-
-  var staticFiles = VirtualDirectory(pathToBuild);
+  var staticFiles = VirtualDirectory('web');
   staticFiles.allowDirectoryListing = true; [!/*1*/!]
   staticFiles.directoryHandler = (dir, request) [!/*2*/!] {
     var indexUri = Uri.file(dir.path).resolve('index.html');
@@ -906,7 +905,7 @@ using HTTPS (Hyper Text Transfer Protocol with Secure Sockets Layer).
 To use the bindSecure() method, you need a certificate,
 which is provided by a Certificate Authority (CA).
 For more information about certificates refer to
-[What is SSL and what are Certificates?](http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
+[What is SSL and what are Certificates?](https://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
 
 For illustrative purposes only,
 the following server, `hello_world_server_secure.dart`,

@@ -13,15 +13,15 @@ Perform the following **one-time setup**:
 ```terminal
 $ sudo apt-get update
 $ sudo apt-get install apt-transport-https
-$ sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-$ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
+$ sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
 ```
 {% else %}
 ```terminal
 $ sudo apt-get update
 $ sudo apt-get install apt-transport-https
-$ sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-$ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+$ sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
 ```
 {% endif %}
 
@@ -45,13 +45,13 @@ run the one-time setup commands followed by:
 
 {% if site.data.pkg-vers.SDK.channel == 'dev' %}
 ```terminal
-$ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
 $ sudo apt-get update
 $ sudo apt-get install dart
 ```
 {% else %}
 ```terminal
-$ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
+$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
 $ sudo apt-get update
 $ sudo apt-get install dart
 ```
@@ -62,17 +62,14 @@ $ sudo apt-get install dart
 
 Alternatively, download Dart SDK as Debian package in the `.deb` package format.
 
-{:.downloads}
-- [Stable channel](#){:.download-link #debian-link-stable
-  data-bits="64" data-os="debian" data-tool="sdk"}
-- [Dev channel](#){:.download-link #debian-link-dev
-  data-bits="64" data-os="debian" data-tool="sdk"}
+- [Stable channel](#){:.debian-link-stable}
+- [Dev channel](#){:.debian-link-dev}
 
 
 #### Modify PATH for access to all Dart binaries
 
-After installing the SDK, **add its bin directory to your PATH**. For example,
-use the following command to change PATH in your active terminal session:
+After installing the SDK, **add its `bin` directory to your `PATH`**. For example,
+use the following command to change `PATH` in your active terminal session:
 
 ```terminal
 $ export PATH="$PATH:/usr/lib/dart/bin"

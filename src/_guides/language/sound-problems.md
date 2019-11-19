@@ -3,7 +3,7 @@ title: Fixing common type problems
 description: Common type issues you may have and how to fix them.
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
-<?code-excerpt replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 <?code-excerpt plaster="none"?>
 
 If you're having problems with type checks,
@@ -11,15 +11,12 @@ this page can help. To learn more, read about
 [Dart's type system](/guides/language/sound-dart),
 and see [these other resources](/guides/language/sound-dart#other-resources).
 
-<aside class="alert alert-info" markdown="1">
-**Help us improve this page!**
-If you encounter a warning or error that isn't listed here,
-please file an issue by clicking the **bug icon** at the top right.
-Include the **warning or error message** and,
-if possible, the code for both a small reproducible case
-and its correct equivalent.
-</aside>
-
+{{site.alert.info}}
+  **Help us improve this page!** If you encounter a warning or error that isn't
+  listed here, please file an issue by clicking the **bug icon** at the top
+  right. Include the **warning or error message** and, if possible, the code for
+  both a small reproducible case and its correct equivalent.
+{{site.alert.end}}
 
 ## Troubleshooting
 
@@ -40,7 +37,7 @@ bool b = [0][0];
 With type-safe Dart, the analyzer produces the following error:
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
 ```nocode
 error • A value of type 'int' can't be assigned to a variable of type 'bool' • invalid_assignment
 ```
@@ -58,7 +55,7 @@ see [Runtime errors](#common-errors-and-warnings).
 
 ### Undefined member
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
 ```nocode
 error • The <member> '...' isn't defined for the class '...' • undefined_<member>
 ```
@@ -81,7 +78,7 @@ canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/context2D.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/context2D.*isn't defined for the class/"?>
 ```nocode
 error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
 ```
@@ -149,9 +146,9 @@ var c = C(Iterable.empty()).collection;
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/add.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/add.*isn't defined for the class/"?>
 ```nocode
-error • The method 'add' isn't defined for the class 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+error • The method 'add' isn't defined for the class 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
 ```
 
 While the [List][] type has an `add()` method, [Iterable][] does not.
@@ -199,7 +196,7 @@ var c = C(Iterable.empty()).collection;
 
 ### Invalid method override
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -207,11 +204,10 @@ error • '...'  isn't a valid override of '...'  • invalid_override
 These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** This issue can also occur when a generic subclass neglects
-to specify a type. For more information, see
-[Missing type arguments](#missing-type-arguments).
-</aside>
+{{site.alert.note}}
+  This issue can also occur when a generic subclass neglects to specify a type.
+  For more information, see [Missing type arguments](#missing-type-arguments).
+{{site.alert.end}}
 
 #### Example
 
@@ -231,9 +227,9 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
 ```nocode
-error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('add') • invalid_override
+error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)') • invalid_override
 ```
 
 Consider the following scenario where floating
@@ -269,16 +265,16 @@ class MyAdder extends NumberAdder {
 
 For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-param-types).
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** If you have a valid reason to use a subtype, you can use the
+{{site.alert.note}}
+  If you have a valid reason to use a subtype, you can use the
   [covariant keyword](#the-covariant-keyword).
-</aside>
+{{site.alert.end}}
 
 <hr>
 
 ### Missing type arguments
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -302,9 +298,9 @@ class Subclass extends Superclass {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
 ```nocode
-error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('method') • invalid_override
+error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)') • invalid_override
 ```
 
 #### Fix: Specify type arguments for the generic subclass
@@ -332,7 +328,7 @@ class Subclass extends Superclass[!<int>!] {
 <a id ="assigning-mismatched-types"></a>
 ### Unexpected collection element type
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
 error • A value of type '...' can't be assigned to a variable of type '...' • invalid_assignment
 ```
@@ -357,7 +353,7 @@ map['d'] = [!1.5!]; // a double is not an int
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
 ```nocode
 error • A value of type 'double' can't be assigned to a variable of type 'int' • invalid_assignment
 ```
@@ -381,7 +377,7 @@ Alternatively, if you want this map to accept any value, specify the type as `<S
 <a id="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
 error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • invalid_super_invocation
 ```
@@ -400,7 +396,7 @@ HoneyBadger(Eats food, String name)
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/super call must be last.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/super call must be last.*common_problems/"?>
 ```nocode
 error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • invalid_super_invocation
 ```
@@ -424,7 +420,7 @@ HoneyBadger(Eats food, String name)
 <a name="uses-dynamic-as-bottom"></a>
 ### The function expression type ... isn't of type ...
 
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
 ```nocode
 error • The function expression type '...' isn't of type '...'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
@@ -449,7 +445,7 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/The function expression type.*common_problems/"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/The function expression type.*common_problems/"?>
 ```nocode
 error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
@@ -574,10 +570,9 @@ var names = json['names'] as List;
 assumeStrings(names.[!cast!]<String>());
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Version note:**
+{{site.alert.version-note}}
   The `cast()` method was introduced in 2.0.0-dev.22.0.
-</aside>
+{{site.alert.end}}
 
 If you can't tighten the type or use `cast`, you can copy the object
 in a different way. For example:
@@ -607,11 +602,10 @@ tell the analyzer that you are doing this intentionally.
 This removes the static error and instead checks for an invalid
 argument type at runtime.
 
-<aside class="alert alert-info" markdown="1">
-  **Version note:**
-  The `covariant` keyword was introduced in 1.22.
-  It replaces the `@checked` annotation.
-</aside>
+{{site.alert.version-note}}
+  The `covariant` keyword was introduced in 1.22. It replaces the `@checked`
+  annotation.
+{{site.alert.end}}
 
 The following shows how you might use `covariant`:
 

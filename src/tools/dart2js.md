@@ -144,7 +144,7 @@ The following options control the analysis that dart2js performs on Dart code:
 `--csp`
 : Disables dynamic generation of code in the generated output.
   This is necessary to satisfy CSP restrictions
-  (see [W3C Content Security Policy.](http://www.w3.org/TR/CSP/))
+  (see [W3C Content Security Policy.](https://www.w3.org/TR/CSP/))
 
 `--dump-info`
 : Generates a file (with the suffix `.info.json`)
@@ -190,7 +190,7 @@ To debug in Chrome:
 1. Open the Developer Tools window, as described in the
    [Chrome DevTools documentation.](https://developer.chrome.com/devtools/index)
 2. Turn on source maps, as described in the video
-   [SourceMaps in Chrome.](http://bit.ly/YugIUY)
+   [SourceMaps in Chrome.](https://bit.ly/YugIUY)
 3. Enable debugging, either on all exceptions or only on uncaught exceptions,
    as described in
    [How to set breakpoints.](https://developers.google.com/web/tools/chrome-devtools/debug/breakpoints/add-breakpoints)
@@ -203,7 +203,7 @@ To debug in Internet Explorer:
 1. Update to the latest version of Internet Explorer. (Source-map support
    was added to IE in April 2014).
 2. Load **Developer Tools** (**F12**). For more information, see
-   [Using the F12 developer tools.](http://msdn.microsoft.com/library/ie/bg182326(v=vs.85))
+   [Using the F12 developer tools.](https://msdn.microsoft.com/library/ie/bg182326(v=vs.85))
 3. Reload the app. The **debugger** tab shows source-mapped files.
 4. Exception behavior can be controlled through **Ctrl+Shift+E**;
    the default is **Break on unhandled exceptions**.

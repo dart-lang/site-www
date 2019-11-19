@@ -9,11 +9,9 @@ cd `dirname $0`/..
 DARTFMT="dartfmt -w"
 EXAMPLES=examples
 
-# Format all example source files under lib and tests
-# except for the lib/pi_*.* files
+# Format all example source files, except the excluded paths:
 $DARTFMT -w $* `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
-    ! -path "**/misc/lib/pi_*" \
     ! -path "**/build/**"`
 
 $DARTFMT -l 60 \
@@ -29,6 +27,7 @@ $DARTFMT -l 60 \
 $DARTFMT -l 65 \
   $EXAMPLES/httpserver/bin/basic_writer_server.dart \
   $EXAMPLES/httpserver/bin/note_server.dart \
+  $EXAMPLES/misc/bin/dcat.dart \
   $EXAMPLES/misc/lib/language_tour/exceptions.dart \
   $EXAMPLES/misc/lib/library_tour/core \
   $EXAMPLES/misc/lib/library_tour/async/future.dart \

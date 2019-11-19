@@ -2,7 +2,7 @@
 title: The Dart type system
 description: Why and how to write sound Dart code.
 ---
-<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
@@ -50,7 +50,7 @@ The preceding code results in a type error on `list` (highlighted
 above) at the call of `printInts(list)`:
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • The argument type 'List' can't be assigned to the parameter type 'List<int>' • argument_type_not_assignable
 ```

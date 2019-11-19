@@ -86,6 +86,8 @@
           permalink: /tools/pub/pubspec
         - title: Troubleshooting pub
           permalink: /tools/pub/troubleshoot
+        - title: Verified publishers
+          permalink: /tools/pub/verified-publishers
         - title: Versioning
           permalink: /tools/pub/versioning
 
@@ -169,12 +171,14 @@
           permalink: /tools/sdk
         - title: dart (Dart VM)
           permalink: /tools/dart-vm
-        - title: dart2aot & dartaotruntime
-          permalink: /tools/dart2aot
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
+        - title: dart2native
+          permalink: /tools/dart2native
         - title: dartanalyzer
           permalink: /tools/dartanalyzer
+        - title: dartaotruntime
+          permalink: /tools/dartaotruntime
         - title: dartdevc (dev JS)
           permalink: /tools/dartdevc
         - title: dartdoc

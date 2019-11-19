@@ -153,7 +153,7 @@ environment:
 
 * [DartPad](/tools/dartpad)
 * [Dart Language Specification][]
-* [About Dart SDK release channels and version strings][pre-release]
+* [About Dart SDK release channels and version strings][prerelease]
 * [SDK constraints][]
 * [Updating your pub package to Dart 2,][]
   an article that includes tips for updating your code and
@@ -184,7 +184,7 @@ environment:
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /get-dart#about-release-channels-and-version-strings
+[prerelease]: /get-dart#about-release-channels-and-version-strings
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart

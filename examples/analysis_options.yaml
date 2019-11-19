@@ -1,6 +1,3 @@
-# Supported lint rules and documentation:
-#   http://dart-lang.github.io/linter/lints/
-
 include: package:pedantic/analysis_options.yaml
 
 analyzer:
@@ -9,6 +6,7 @@ analyzer:
     implicit-casts: false
 
 linter:
+  # Rules and documentation: http://dart-lang.github.io/linter/lints
   rules:
     - annotate_overrides
     - await_only_futures

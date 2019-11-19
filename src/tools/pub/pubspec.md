@@ -7,7 +7,7 @@ Every [pub package](/guides/packages) needs some metadata so it can specify its
 others also need to provide some other information so users can discover them.
 All of this metadata goes in the package's _pubspec:_
 a file named `pubspec.yaml` that's written in the
-[YAML](http://www.yaml.org/) language.
+[YAML](https://yaml.org/) language.
 
 {% comment %}
 PENDING: acknowledge the existence of pubspec.lock files.
@@ -23,16 +23,12 @@ A pubspec can have the following fields:
   [_Learn more._](#name)
 
 `version`
-: Required for packages that are hosted on the Pub site.
+: Required for packages that are hosted on the pub.dev site.
   [_Learn more._](#version)
 
 `description`
-: Required for packages that are hosted on the [Pub site.]({{site.pub}})
+: Required for packages that are hosted on the [pub.dev site.]({{site.pub}})
   [_Learn more._](#description)
-
-`author` or `authors`
-: Optional.
-  [_Learn more._](#authorauthors)
 
 `homepage`
 : Optional. URL pointing to the package's homepage (or source code repository).
@@ -100,7 +96,6 @@ description: >-
   This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
-author: Natalie Weizenbaum <nweiz@google.com>
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 environment:
@@ -137,18 +132,18 @@ doesn't start with digits and isn't a
 
 Try to pick a name that is clear, terse, and not already in use.
 A quick search of packages on the
-[Pub site]({{site.pub}}/packages)
+[pub.dev site]({{site.pub}}/packages)
 to make sure that nothing else is using your name is recommended.
 
 ### Version
 
 Every package has a version. A version number is required to host your package
-on the Pub site, but can be omitted for local-only packages. If you omit
+on the pub.dev site, but can be omitted for local-only packages. If you omit
 it, your package is implicitly versioned `0.0.0`.
 
 Versioning is necessary for reusing code while letting it evolve quickly. A
 version number is three numbers separated by dots, like `0.2.43`. It can also
-optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or pre-release
+optionally have a build ( `+1`, `+2`, `+hotfix.oopsie`) or prerelease
 (`-dev.4`, `-alpha.12`, `-beta.7`, `-rc.5`) suffix.
 
 Each time you publish your package, you publish it at a specific version.
@@ -157,7 +152,7 @@ anymore. To make more changes, you'll need a new version.
 
 When you select a version, follow [semantic versioning.][semantic versioning]
 
-[semantic versioning]: http://semver.org/spec/v2.0.0.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
 ### Description
 
@@ -172,22 +167,22 @@ The description is plain text: no markdown or HTML.
 
 ### Author/authors
 
-You're encouraged to use these fields to describe the author(s) of your package
-and provide contact information. Use `author` if your package has a
-single author, or use `authors` with a YAML list if more than one
-person wrote the package. Each author can be either a single name
+_Deprecated._ Use a [verified publisher][] instead.
+
+[verified publisher]: /tools/pub/verified-publishers
+
+You might see an `author` or `authors` section in old pubspecs.
+These optional fields were a way to describe
+the author(s) of your package and to provide contact information.
+Each author could be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
-(`Natalie Weizenbaum <nweiz@google.com>`). For example:
+(`Natalie Weizenbaum <nweiz@google.com>`).
+However, these values weren't verified.
 
-{% prettify yaml %}
-authors:
-- Natalie Weizenbaum <nweiz@google.com>
-- Bob Nystrom <rnystrom@google.com>
-{% endprettify %}
+The pub.dev site no longer displays package authors, and
+(as of Dart 2.7) the `pub publish` command
+displays a warning if your pubspec has an `author` or `authors` section.
 
-The email addresses can be from any provider.
-If anyone uploads your package to the Pub site,
-then the author information (including email addresses) becomes public.
 
 ### Homepage
 
@@ -201,7 +196,7 @@ While providing a `homepage` is optional, *please provide* it or `repository`
 
 The optional `repository` field should contain the URL for your package's source
 code repository — for example, `https://github.com/<user>/<repository>`.
-If you publish your package to the Pub site, then your package's page
+If you publish your package to the pub.dev site, then your package's page
 displays the repository URL.
 While providing a `repository` is optional, *please provide* it or `homepage`
 (or both). It helps users understand where your package is coming from.
@@ -210,9 +205,9 @@ While providing a `repository` is optional, *please provide* it or `homepage`
 
 The optional `issue_tracker` field should contain a URL for the package's
 issue tracker, where existing bugs can be viewed and new bugs can be filed.
-The Pub site attempts to display a link to each package's issue
+The pub.dev site attempts to display a link to each package's issue
 tracker, using the value of this field. If `issue_tracker` is missing but
-`repository` is present and points to GitHub, then the Pub site uses the
+`repository` is present and points to GitHub, then the pub.dev site uses the
 default issue tracker (`https://github.com/<user>/<repository>/issues`).
 
 ### Documentation
@@ -267,9 +262,9 @@ For more information, see
 
 ### Publish_to
 
-The default uses the [Pub site.]({{site.pub}}) Specify `none` to prevent
+The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
-[custom pub package server](https://github.com/dart-lang/pub-dartlang-dart/)
+[custom pub package server](https://github.com/dart-lang/pub-dev)
 to publish.
 
 {% prettify yaml %}
@@ -330,4 +325,4 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
-[semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

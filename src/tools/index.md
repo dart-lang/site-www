@@ -98,17 +98,20 @@ The Dart SDK includes the following general-purpose tools:
   but you can also run the analyzer from the command line.
 
 [`dartdoc`](/tools/dartdoc)
-: Generates API reference documentation.
+: A documentation generator.
+  For examples of dartdoc's output, see the API reference documentation
+  published at [api.dart.dev]({{site.dart_api}}) and pub.dev
+  (for example, the [`path` API reference]({{site.pub-api}}/path)).
 
 [`dartfmt`](/tools/dartfmt)
-: Formats your code, following the recommendations of the
+: An opinionated code formatter that follows the recommendations of the
   [Dart style guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
   the IDE. Or you can run the formatter from the command line.
 
 [`pub`](/tools/pub/cmd)
-: Manages Dart packages,
-  making it easy for you to install, use, and share Dart libraries,
+: A package manager that
+  makes it easy for you to install, use, and share Dart libraries,
   command-line tools, and other assets.
   Some Dart technologies, such as Flutter, may not support
   all of the pub commands.
@@ -121,7 +124,7 @@ installation instructions.
 Here are the general-purpose tools you might want to install:
 
 [`build_runner`][build_runner]
-: A code generator.
+: A build package that's used behind-the-scenes by the `webdev` command.
 
 [`dartfix`][dartfix]
 : A tool for migrating Dart source code and fixing common issues.
@@ -130,47 +133,45 @@ Here are the general-purpose tools you might want to install:
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dartfix]: {{site.pub-pkg}}/dartfix
 
+### Debugging and diagnostics
+
+[Dart DevTools](/tools/dart-devtools)
+: A suite of suite of debugging and performance tools.
 
 ## Tools for developing web apps {#web}
 
-The following tools are especially for developing web apps:
+The following tools support developing web apps:
 
-[webdev](/tools/webdev)
-: A command line interface (CLI) for Dart web app development,
-  including building and serving web apps.
-
-[dart2js](/tools/dart2js)
+[`dart2js`](/tools/dart2js)
 : The original Dart-to-JavaScript compiler, with tree shaking.
   IDEs and the webdev CLI use dart2js when building web apps for deployment.
 
-[dartdevc](/tools/dartdevc)
+[`dartdevc`](/tools/dartdevc)
 : The Dart dev compiler, a modular Dart-to-JavaScript compiler.
   IDEs and the webdev CLI use dartdevc when running a development server.
 
-[build_runner](/tools/webdev)
-: A build package that's used by the webdev CLI.
-  You can use it directly for [testing](/tools/webdev#test)
-  or if you need more configurability than webdev provides.
-
+[`webdev`](/tools/webdev)
+: A command-line interface (CLI) for Dart web app development,
+  including building and serving web apps.
 
 ## Tools for developing command-line apps and servers {#server}
 
-The following tools have special support for developing or running
-command line apps and servers:
+The following tools support developing or running
+command-line apps and servers:
 
-[Standalone Dart VM: `dart`](/tools/dart-vm)
-: Executes Dart code.
+[`dart`](/tools/dart-vm)
+: The standalone Dart VM, which you can use to execute Dart code.
   IDEs that support Dart,
-  and some of the `pub` commands, use this
+  and some of the pub commands, use this
   command behind-the-scenes to execute Dart scripts.
   Note that you must configure your IDE with the location of
   the `dart` binary.
 
-[AOT compiler and runtime: `dart2aot`, `dartaotruntime`](/tools/dart2aot)
-: Support ahead-of-time compilation of Dart code to native x64 machine code.
+[`dart2native`](/tools/dart2native)
+: An ahead-of-time (AOT) compiler that compiles
+  Dart code to native x64 machine code.
+  The output is either a standalone executable (the default)
+  or an AOT snapshot.
 
-[Pub package manager: `pub`](/tools/pub/cmd)
-: Simplifies downloading and running scripts,
-  with commands such as `pub get`, `pub global activate`, `pub global run`,
-  and `pub run`.
-
+[`dartaotruntime`](/tools/dartaotruntime)
+: A Dart runtime that you can use to run AOT snapshots.

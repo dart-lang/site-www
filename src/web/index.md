@@ -9,7 +9,7 @@ toc: false
 Google builds many critical web apps using the Dart language, often with
 [AngularDart.]({{site.angulardart}})
 The Google Ads front end (formerly called Google AdWords) is
-[built in Dart.](https://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
+[built in Dart.]({{site.news}}/2016/03/the-new-adwords-ui-uses-dart-we-asked.html)
 So is Google&rsquo;s internal CRM.
 
 <img src="{% asset adwords-screenshot.png @path %}" alt="screenshot of Google ads front end" class="center-block">

@@ -1,8 +1,14 @@
 ---
 title: pub uploader
-description: Use pub uploader to add or remove uploaders for your Dart package on the Pub site.
+description: Use pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
 toc: false
 ---
+
+{{site.alert.tip}}
+  Instead of specifying uploaders for each package you publish,
+  consider using a
+  [verified publisher](/tools/pub/verified-publishers).
+{{site.alert.end}}
 
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
@@ -12,7 +18,7 @@ $ pub uploader [options] {add/remove} <email>
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
-package on the [Pub site]({{site.pub}}) to add or remove
+package on the [pub.dev site]({{site.pub}}) to add or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:
@@ -25,9 +31,9 @@ add/remove as an uploader. For example:
 'bob@example.com' is no longer an uploader for package 'transmogrify'.
 ```
 
-If a package has only one uploader, that uploader can't be removed. You may
+If a package has only one uploader, that uploader can't be removed. You can
 remove yourself as an uploader (as long as other uploaders are available),
-but you won't be able to re-add yourself again afterwards.
+but you can't re-add yourself again afterwards.
 
 By default, the package in the current working directory will have its
 uploaders modified. You can also pass the `--package` flag to choose a

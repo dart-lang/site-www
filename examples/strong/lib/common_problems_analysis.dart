@@ -10,7 +10,7 @@ import 'dart:html';
 void _samplesFromCommonProblemsPage() {
   {
     // #docregion is-strong-mode-enabled
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     bool b = [0][0];
     // #enddocregion is-strong-mode-enabled
   }
@@ -19,7 +19,7 @@ void _samplesFromCommonProblemsPage() {
     num x, y;
     // #docregion canvas-error
     var canvas = querySelector('canvas');
-    // ignore_for_file: 1, 2, undefined_getter
+    // ignore_for_file: stable, dev, undefined_getter
     canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-error
   }
@@ -42,7 +42,7 @@ void _samplesFromCommonProblemsPage() {
   {
     // #docregion int-not-string
     List<int> numbers = [1, 2, 3];
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     List<String> string = numbers;
     // #enddocregion int-not-string
   }
@@ -57,7 +57,7 @@ abstract class NumberAdder {
 }
 
 class MyAdder extends NumberAdder {
-  // ignore_for_file: 1, 2, invalid_override
+  // ignore_for_file: stable, dev, invalid_override
   int add(int a, int b) => a + b;
 }
 // #enddocregion invalid-method-override
@@ -70,7 +70,7 @@ class Superclass<T> {
 }
 
 class Subclass extends Superclass {
-  // ignore_for_file: 1, 2, invalid_override
+  // ignore_for_file: stable, dev, invalid_override
   void method(int i) {/* ... */}
 }
 // #enddocregion missing-type-arguments
@@ -88,7 +88,7 @@ class HoneyBadger extends Animal {
   String _name;
   // #docregion super-goes-last
   HoneyBadger(Eats food, String name)
-      // ignore_for_file: 1, 2, invalid_super_invocation
+      // ignore_for_file: stable, dev, invalid_super_invocation
       : super(food),
         _name = name {/* ... */}
   // #enddocregion super-goes-last
@@ -98,6 +98,6 @@ class HoneyBadger extends Animal {
 
 // #docregion func-dynamic
 typedef Filter = bool Function(dynamic any);
-// ignore_for_file: 2, invalid_cast_function_expr
+// ignore_for_file: stable, dev, invalid_cast_function_expr
 Filter filter = (String x) => x.contains('Hello');
 // #enddocregion func-dynamic

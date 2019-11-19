@@ -10,11 +10,6 @@ prevpage:
   title: "Connect Dart & HTML"
 ---
 
-{% comment %}
-NOTE: No sample_links section goes here because all the samples are in embedded
-DartPads.
-{% endcomment %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
@@ -26,6 +21,11 @@ DartPads.
 * Respond to user input with an EventListener.
 
 </div>
+
+{{site.alert.note}}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
 As you learned in the previous tutorial,
 the DOM represents the structure
@@ -66,42 +66,12 @@ Then type in the app's text field, and press return.
 The app adds an item to the list.
 Enter a few items into the input field.
 
-Example goes here...
-
-<!-- need to fix this section, not working properly -->
-<!-- https://gist.github.com/Sfshaza/65c90ff6b078c332d4b6
-
-main.dart:
-// Copyright (c) 2012, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-import 'dart:html';
-
-InputElement toDoInput;
-UListElement toDoList;
-
-void main() {
-  toDoInput = querySelector('#to-do-input');
-  toDoList = querySelector('#to-do-list');
-  toDoInput.onChange.listen(addToDoItem);
-}
-
-void addToDoItem(Event e) {
-  var newToDo = new LIElement();
-  newToDo.text = toDoInput.value;
-  toDoInput.value = '';
-  toDoList.children.add(newToDo);
-} -->
-
-<!-- <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=65c90ff6b078c332d4b6"
+<iframe
+src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
-</iframe>-->
+</iframe>
 
 This is the beginning of an app to manage a list of things to do.
 Right now, this app is for procrastinators only
@@ -432,7 +402,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-html-prefix}}?id=0532bfcb70bf5e4a900c"
+src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">

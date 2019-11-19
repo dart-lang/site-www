@@ -1,6 +1,6 @@
 ---
 title: pub global
-description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
+description: Use pub global to run Dart scripts hosted on the pub.dev site from the command line.
 ---
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -36,7 +36,7 @@ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <packa
 Activate a package when you want to be able to run
 one or more of its executable files from the command line.
 You can activate packages that live on the
-[Pub site]({{site.pub}}), a Git repository,
+[pub.dev site]({{site.pub}}), a Git repository,
 or your local machine.
 Once you've activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
@@ -45,13 +45,13 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on the Pub site
+### Activating a package on the pub.dev site
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on the Pub site to activate it. For example:
+Specify a package on the pub.dev site to activate it. For example:
 
 ```terminal
 $ pub global activate markdown
@@ -101,10 +101,10 @@ you can also use `pub global run`.
 
 ### Running a script from your PATH
 
-To run a script directly from the command line, add the `bin` file
-for the [system cache](/tools/pub/glossary#system-cache) to your path.
+To run a script directly from the command line, add the [system cache][] `bin`
+directory to your `PATH` environment variable.
 
-For example, say you've activated the Stagehand script,
+For example, say you've activated the Stagehand package,
 but you still can't run the command:
 
 ```terminal
@@ -114,14 +114,14 @@ $ stagehand
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
-The following path, on macOS, includes the system cache.
+The following `PATH` variable, on macOS, includes the system cache:
 
 {% prettify none %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
 
-If this directory is missing from your path,
+If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
 |-------------------+---------------------------|
@@ -256,3 +256,5 @@ For options that apply to all pub commands, see
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>
+
+[system cache]: /tools/pub/glossary#system-cache

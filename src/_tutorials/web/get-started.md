@@ -23,8 +23,12 @@ which includes the web UI that the app produces,
 <a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
    target="_blank">open the example at dartpad.dev.</a>
 
+{{site.alert.note}}
+  {% include dartpad-embedded-troubleshooting.md %}
+{{site.alert.end}}
+
 <iframe
-    src="{{site.custom.dartpadx.embed-html-prefix}}?id=2a24f3f042f1c86cf91621c30adce771"
+    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -48,8 +52,8 @@ If you like to use the command line, install [webdev][]
 and [stagehand:][stagehand]
 
 ```terminal
-> pub global activate webdev
-> pub global activate stagehand
+$ pub global activate webdev
+$ pub global activate stagehand
 ```
 
 <i class="material-icons">web</i>
@@ -65,10 +69,10 @@ For a list of available IDEs, see the
 To create a web app from the command line, use these commands:
 
 ```terminal
-> mkdir quickstart
-> cd quickstart
-> stagehand web-simple
-> pub get
+$ mkdir quickstart
+$ cd quickstart
+$ stagehand web-simple
+$ pub get
 ```
 
 <i class="material-icons">web</i>
@@ -82,7 +86,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 ```terminal
-> webdev serve
+$ webdev serve
 ```
 
 <i class="material-icons">web</i>
@@ -150,13 +154,11 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-<aside class="alert alert-info" markdown="1">
-  **Feeling lost? Don't worry!**
-  This was a whirlwind introduction to Dart and web programming
-  that left out many details.
-  For a gentler approach, try a
+{{site.alert.info}}
+  **Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
+  web programming that left out many details. For a gentler approach, try a
   [low-level HTML tutorial for Dart][].
-</aside>
+{{site.alert.end}}
 
 
 ## What next?
@@ -186,7 +188,7 @@ If you get stuck, find help at [Community and Support.](/community)
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
-[Homebrew,]: http://brew.sh/
+[Homebrew,]: https://brew.sh/
 [Install the SDK]: /get-dart
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [Overview of Dart web libraries]: /web/web-programming

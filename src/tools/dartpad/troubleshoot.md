@@ -6,6 +6,8 @@ description: Common problems with using DartPad
 This page describes solutions to problems that might occur when
 you're trying to use DartPad, whether at [dartpad.dev]({{ site.dartpad }})
 or in a page that has embedded DartPads.
+For an overview of DartPad, see the
+[DartPad page](/tools/dartpad).
 
 ## Embedded DartPads on flutter.dev are slow in Safari
 
@@ -24,15 +26,23 @@ The dart.dev homepage and many codelabs have embedded DartPads.
 If these DartPads don't appear at all,
 then try the following:
 
+* Make sure you're using a [supported browser][browser].
+  DartPad might not work in other browsers, and is known not to work in
+  the default configuration of the Brave browser.
+
 * If you're using an ad blocker, disable it.
 
-* If you don't use an ad blocker, check whether you've disabled third-party
+* Check whether you've disabled third-party
   tracking cookies ([Chrome instructions][chrome-cookies]).
   If you've disabled cookies, change your settings to
   **allow cookies for dartpad.dev.**
 
-  DartPad doesn't use cookies, but it does rely on local storage,
-  which browsers generally disable when you disable cookies.
+* If you repeatedly reload a page that contains embedded DartPads, 
+  then you might run into [GitHub rate limiting.](https://developer.github.com/v3/#rate-limiting)
+  Within 60 minutes, you should be able to reload the page and see code in the embedded DartPads.
+
+Although DartPad doesn't use cookies, it does rely on local storage,
+which browsers usually disable when cookies are disabled.
 
 
 ## DartPad doesn't work in China

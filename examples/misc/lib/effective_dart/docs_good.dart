@@ -1,6 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
@@ -127,11 +127,11 @@ void miscDeclAnalyzedButNotTested() {
   ///
   /// Links can be:
   ///
-  /// * http://www.just-a-bare-url.com
-  /// * [with the URL inline](http://google.com)
+  /// * https://www.just-a-bare-url.com
+  /// * [with the URL inline](https://google.com)
   /// * [or separated out][ref link]
   ///
-  /// [ref link]: http://google.com
+  /// [ref link]: https://google.com
   ///
   /// # A Header
   ///

@@ -33,5 +33,5 @@ New language features are typically described using informal language feature sp
 The formal Dart 1.x language specification is available from
 the Ecma International website:
 
-* <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
+* <a href="https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
    target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
