@@ -15,7 +15,7 @@ data (`dart:convert`). Additional APIs are available in
   }
 </style>
 
-## Libraries that support all Dart platforms
+## Multi-platform libraries
 
 The following table lists the Dart core libraries that work on all
 [Dart platforms](/platforms).
