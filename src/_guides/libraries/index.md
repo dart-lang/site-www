@@ -10,7 +10,7 @@ programming tasks such as working on collections of objects
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
 
-The following table lists all of the Dart core libraries that work on all
+The following table lists the Dart core libraries that work on all
 [Dart platforms](/platforms).
 
 <div class="table-wrapper" markdown="1">
@@ -29,7 +29,7 @@ The following table lists all of the Dart core libraries that work on all
 
 ## Native platform libraries
 
-The following table lists all of the Dart core libraries that work on the
+The following table lists the Dart core libraries that work on the
 [Dart native platform](/platforms) (AOT- and JIT-compiled code).
 
 <div class="table-wrapper" markdown="1">
@@ -38,14 +38,14 @@ The following table lists all of the Dart core libraries that work on the
 |-----------------------------------------------|-------------------------------|
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | |
-| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT-only (_not_&nbsp;Flutter) |
+| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT only (_not_&nbsp;Flutter) |
 {:.table .table-striped}
 </div>
 
 ## Web platform libraries
 
-The following table lists all of the Dart core libraries that work on the
-[Dart web platform](/platforms) (code compiled to JS).
+The following table lists the Dart core libraries that work on the
+[Dart web platform](/platforms) (code compiled to JavaScript).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
