@@ -20,7 +20,7 @@ class DartPadPicker {
   int _selected = 0;
 
   DartPadPicker(this.iFrameHost, this.selectElement, this.snippets,
-      {this.dartPadUrl = 'https://dartpad.dev/'}) {
+      {this.dartPadUrl = 'https://dartpad.dev'}) {
     _initSelectElement();
     _initDartPad();
   }
@@ -40,7 +40,7 @@ class DartPadPicker {
       var option = OptionElement(value: '$i')..text = snippet.name;
       selectElement.children.add(option);
     }
-    selectElement.onChange.listen((Event e) {
+    selectElement.onChange.listen((Event _) {
       _selected = selectElement.selectedIndex;
       _sendSourceCode();
     });
@@ -50,10 +50,10 @@ class DartPadPicker {
     _iFrameElement = IFrameElement()
       ..src = iFrameSrc(theme: 'dark', mode: 'dart');
     iFrameHost.children.add(_iFrameElement);
-    window.addEventListener('message', (dynamic e) {
+    window.addEventListener('message', (Event _e) {
+      final e = _e as MessageEvent;
       // Don't handle events from other iframe elements
-      if (e.data != null &&
-          e.data is Map &&
+      if (e.data is Map &&
           e.data.containsKey('type') &&
           e.data['type'] is String &&
           e.data['type'] == 'ready') {
@@ -67,6 +67,6 @@ class DartPadPicker {
   }
 
   String iFrameSrc({String theme, String mode}) {
-    return '${dartPadUrl}embed-$mode.html?theme=$theme';
+    return '${dartPadUrl}/embed-$mode.html?theme=$theme';
   }
 }
