@@ -9,6 +9,12 @@ programming tasks such as working on collections of objects
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
 
+<style>
+  th:first-child {
+    width: 80%;
+  }
+</style>
+
 ## Libraries that support all Dart platforms
 
 The following table lists the Dart core libraries that work on all
