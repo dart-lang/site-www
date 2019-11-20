@@ -1,7 +1,6 @@
 ---
 title: Core libraries
 description: Learn about Dart's core libraries and APIs.
-toc: false
 ---
 
 Dart has a rich set of core libraries that provide essentials for many everyday
@@ -9,6 +8,8 @@ programming tasks such as working on collections of objects
 (`dart:collection`), making calculations (`dart:math`), and encoding/decoding
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
+
+## Libraries that support all Dart platforms
 
 The following table lists the Dart core libraries that work on all
 [Dart platforms](/platforms).
