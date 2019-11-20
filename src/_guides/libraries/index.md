@@ -21,7 +21,7 @@ The following table lists all of the Dart core libraries that work on all
 | [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core`. | |
 | [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8. | |
 | [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program. | |
-| [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | Experimental<br>JIT and dartdevc only) |
+| [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | Experimental<br>JIT and dartdevc only |
 | [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | |
 | [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | |
 {:.table .table-striped}
