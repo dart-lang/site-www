@@ -16,14 +16,14 @@ class Chest<T> implements Item {
 }
 
 class Sword implements Item {
-  int get damage => 5;
+  int damage = 5;
 
   use() => print("$this dealt $damage damage.");
 }
 
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  int get damage => 50;
+  int damage = 50; // ignore: overridden_fields
 }
 
 main() {

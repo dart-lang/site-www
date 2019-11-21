@@ -1,4 +1,4 @@
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+\n//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
 <div id="try-dart-examples" style="display:none" markdown="1">
 
@@ -26,7 +26,7 @@ int timesTwo(int x) {
 int timesFour(int x) => timesTwo(timesTwo(x));
 
 // Functions are objects.
-int runTwice(int x, int Function(int) f) {
+int runTwice(int x, Function f) {
   for (var i = 0; i < 2; i++) {
     x = f(x);
   }
@@ -145,14 +145,14 @@ class Chest<T> implements Item {
 }
 
 class Sword implements Item {
-  int get damage => 5;
+  int damage = 5;
 
   use() => print("$this dealt $damage damage.");
 }
 
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  int get damage => 50;
+  int damage = 50;
 }
 
 main() {
