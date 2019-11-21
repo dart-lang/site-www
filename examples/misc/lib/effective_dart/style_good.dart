@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable, sdk_version_extension_methods
 import 'dart:io';
 import 'dart:math';
 
@@ -101,3 +101,11 @@ class Dice {
   static final numberGenerator = Random();
 }
 // #enddocregion const-names
+
+//----------------------------------------------------------------------------
+
+// #docregion extension-names
+extension MyFancyList<T> on List<T> {/* ... */}
+
+extension SmartIterable<T> on Iterable<T> {/* ... */}
+// #enddocregion extension-names
