@@ -1,6 +1,7 @@
 # Enter regexp pattern, one per line.
 
-^(https?://)?localhost\b
+# Skip links used by example web apps
+localhost:(404\d|8080)
 
 # FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
 # https://github.com/dart-lang/site-www/issues/1107
