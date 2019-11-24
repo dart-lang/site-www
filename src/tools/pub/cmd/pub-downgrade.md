@@ -6,7 +6,7 @@ description: Use pub downgrade to get the lowest versions of all dependencies us
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify sh %}
-$ pub downgrade [args] [dependencies] [--offline] [--no-offline] [--dry-run]
+$ pub downgrade [--[no]-offline] [-n|--dry-run] [dependencies...] 
 {% endprettify %}
 
 Without any additional arguments, `pub downgrade` gets the lowest versions of
@@ -105,15 +105,12 @@ available.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--offline`
-: Use locally cached packages instead of accessing the network.
-
-`--no-offline`
-: Connect to the network to check for hosted dependencies. This is the 
-default setting.
+`--[no]-offline`
+: By default, pub connects to the network to check for hosted 
+dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
 
 `--dry-run` or `-n`
-: Report what dependencies would change but would not change any.
+: Report what dependencies would change but don't change any.
 
 
 <aside class="alert alert-info" markdown="1">
