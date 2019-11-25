@@ -261,7 +261,7 @@ js:
                                 </div>
                             </div>
                         </li>
-                    
+
                         <li tabindex="0" data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
                             <div>
                                 <div class="bullet-container">
@@ -345,7 +345,7 @@ js:
                                     with your code editor of choice
                                 </div>
                             </div>
-                    
+
                         </li>
                     </ul>
                 </div>
@@ -370,7 +370,7 @@ js:
                                     machine code for instant startup
                                 </div>
                             </div>
-                    
+
                         </li>
                         <li tabindex="0" data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
                             <div>
@@ -382,7 +382,7 @@ js:
                                     <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
                                 </div>
                             </div>
-                    
+
                         </li>
                         <li tabindex="0" data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
                             <div>
@@ -410,6 +410,8 @@ js:
             <select id="dartpad-select"></select>
             <div id="dartpad-host"></div>
             <h3>Want more practice? <a href="/codelabs">Try a codelab</a>. Or <a href="/get-dart">download Dart</a>.</h3>
+            {% capture md %}{% include_relative _try-dart-examples.md %}{% endcapture %}
+            {{ md | markdownify }}
         </div>
     </section>
 </div>
