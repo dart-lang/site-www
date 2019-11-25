@@ -37,7 +37,7 @@ void _processSrc(_SrcAndTipPaths paths) {
   _log.info('Processing $paths');
 
   final srcAsHtmlWithTips =
-      _SrcWithTips(paths.srcPath, paths.toolTipDataPath).getSrcHtmlWithTips();
+      _SrcWithTips(paths.srcPath, paths.toolTipDataPath).srcHtmlWithTips();
   final html = [
     warning,
     '<pre class="prettyprint lang-dart">\n',
@@ -65,13 +65,13 @@ class _SrcWithTips {
   int indexOfNextTooltip = 0;
 
   _SrcWithTips(this.srcPath, this.toolTipDataPath) {
-    tooltips = _getTooltips(toolTipDataPath).toList();
+    tooltips = _tooltips(toolTipDataPath).toList();
   }
 
   // Side-effect: updates lineNum
-  List<String> getSrcHtmlWithTips() {
+  List<String> srcHtmlWithTips() {
     final result = <String>[];
-    final srcLines = getSrcLinesWithoutInitialCommentBlock();
+    final srcLines = srcLinesWithoutInitialCommentBlock();
     final tooltipAnchors = <String>[];
 
     for (int i = 0; i < srcLines.length; i++, lineNum++) {
@@ -156,7 +156,7 @@ class _SrcWithTips {
   }
 
   // Side-effect: updates lineNum
-  List<String> getSrcLinesWithoutInitialCommentBlock() {
+  List<String> srcLinesWithoutInitialCommentBlock() {
     final lines = File(srcPath).readAsLinesSync();
     while (!lines.first.startsWith('import')) {
       // Skip initial comment block
@@ -173,7 +173,7 @@ class _SrcWithTips {
   String htmlEscape(String s) => _htmlEscape.convert(s);
 }
 
-Iterable<List<String>> _getTooltips(String toolTipDataPath) sync* {
+Iterable<List<String>> _tooltips(String toolTipDataPath) sync* {
   final _tooltipLineRE =
       RegExp(r'^\s*<li name="(.*?)"(\s+title="(.*?)")?>(.*?)(</li>)?$');
   final _tooltipLineEndRE = RegExp(r'^\s*(.*?)(</li>)?$');
