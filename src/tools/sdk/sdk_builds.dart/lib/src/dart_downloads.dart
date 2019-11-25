@@ -36,7 +36,7 @@ class DartDownloads {
     return new DartDownloads._(client);
   }
 
-  Future<Uri> downloadLink(
+  Future<Uri> createDownloadUrl(
       String channel, String revision, String path) async {
     var prefix = _revisionPath(channel, revision, [path]);
 

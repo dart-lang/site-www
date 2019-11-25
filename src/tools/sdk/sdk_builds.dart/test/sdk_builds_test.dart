@@ -80,7 +80,7 @@ main() async {
     var channel = 'stable';
     var revision = '44672';
 
-    var content = await _dd.downloadLink(
+    var content = await _dd.createDownloadUrl(
         channel, revision, 'api-docs/dart-api-docs.zip');
     expect(content.pathSegments, [
       'download',
