@@ -40,7 +40,7 @@ Snippet _createSnippet(HtmlElement root, String name) => Snippet(
       ),
     );
 
-String /*?*/ _getSrc(HtmlElement root, String id, [String fallback]) =>
+String _getSrc(HtmlElement root, String id, [String fallback]) =>
     root.querySelector(id)?.innerText ??
     fallback ??
     "/* Can't load example sources. Please refresh the page. */";
