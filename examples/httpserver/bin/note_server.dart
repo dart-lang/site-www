@@ -62,7 +62,7 @@ Future handlePost(HttpRequest request) async {
   if (decoded.containsKey('myNote')) {
     saveNote(request, "${decoded['myNote']}\n");
   } else {
-    getNote(request, decoded['getNote'] as String);
+    readNote(request, decoded['getNote'] as String);
   }
 }
 
@@ -86,7 +86,7 @@ void saveNote(HttpRequest request, String myNote) {
     ..close();
 }
 
-void getNote(HttpRequest request, String getNote) {
+void readNote(HttpRequest request, String getNote) {
   final requestedNote = int.tryParse(getNote) ?? 0;
   if (requestedNote >= 0 && requestedNote < count) {
     List<String> lines = File(noteFilePath).readAsLinesSync();

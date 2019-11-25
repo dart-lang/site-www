@@ -40,7 +40,7 @@ and the `async` and `await` keywords.
 
 ### Example: Incorrectly using an asynchronous function
 The following example shows the wrong way to use an asynchronous function
-(`getUserOrder()`). Later you'll fix the example using `async` and `await`.
+(`fetchUserOrder()`). Later you'll fix the example using `async` and `await`.
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
@@ -52,15 +52,15 @@ output will be?
   width="100%" >
 </iframe>
 
-Here's why the example fails to print the value that `getUserOrder()` eventually
-produces:
+Here's why the example fails to print the value that `fetchUserOrder()`
+eventually produces:
 
-* `getUserOrder()` is an asynchronous function that, after a delay,
+* `fetchUserOrder()` is an asynchronous function that, after a delay,
   provides a string that describes the user's order: a "Large Latte".
-* To get the user's order, `createOrderMessage()` should call `getUserOrder()`
+* To get the user's order, `createOrderMessage()` should call `fetchUserOrder()`
   and wait for it to finish. Because `createOrderMessage()` does *not* wait
-  for `getUserOrder()` to finish, `createOrderMessage()` fails to get the string
-  value that `getUserOrder()` eventually provides.
+  for `fetchUserOrder()` to finish, `createOrderMessage()` fails to get the
+  string value that `fetchUserOrder()` eventually provides.
 * Instead, `createOrderMessage()` gets a representation of pending work to be
   done: an uncompleted future. You'll learn more about futures in the next section.
 * Because `createOrderMessage()` fails to get the value describing the user's
@@ -68,7 +68,7 @@ produces:
   prints "Your order is: Instance of '_Future<String>'".
 
 In the next sections you'll learn the about futures, `async`, and `await`
-so that you'll be able to write the code necessary to make `getUserOrder()`
+so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
 {{site.alert.secondary}}
@@ -121,9 +121,9 @@ future completes with an error.
 
 ### Example: Introducing futures
 
-In the following example, `getUserOrder()` returns a future that completes after
-printing to the console. Because it doesn't return a usable value,
-`getUserOrder()` has the type `Future<void>`. Before you run the example,
+In the following example, `fetchUserOrder()` returns a future that completes
+after printing to the console. Because it doesn't return a usable value,
+`fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
 <iframe
@@ -134,10 +134,11 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
   width="100%" >
 </iframe>
 
-In the preceding example, even though `getUserOrder()` executes before
+In the preceding example, even though `fetchUserOrder()` executes before
 the `print()` call on line 8, the console shows the output from line 8
-("Fetching user order...") before the output from `getUserOrder()` ("Large Latte").
-This is because `getUserOrder()` delays before it prints "Large Latte".
+("Fetching user order...") before the output from `fetchUserOrder()` ("Large
+Latte"). This is because `fetchUserOrder()` delays before it prints "Large
+Latte".
 
 ### Example: Completing with an error
 
@@ -152,7 +153,7 @@ A bit later you'll learn how to handle the error.
   width="100%" >
 </iframe>
 
-In this example, `getUserOrder()` completes with an error indicating that the
+In this example, `fetchUserOrder()` completes with an error indicating that the
 user ID is invalid.
 
 You've learned about futures and how they complete, but how do you use the
@@ -234,11 +235,11 @@ your window is wide enough — is to the right of the synchronous example.
 ```dart
 // Synchronous
 String createOrderMessage() {
-  var order = getUserOrder();
+  var order = fetchUserOrder();
   return 'Your order is: $order';
 }
 
-Future<String> getUserOrder() {
+Future<String> fetchUserOrder() {
   // Imagine that this function is
   // more complex and slow.
   return
@@ -262,11 +263,11 @@ main() {
 {% prettify dart %}
 // Asynchronous
 [!Future<String>!] createOrderMessage() [!async!] {
-var order = [!await!] getUserOrder();
+var order = [!await!] fetchUserOrder();
 return 'Your order is: $order';
 }
 
-Future<String> getUserOrder() {
+Future<String> fetchUserOrder() {
 // Imagine that this function is
 // more complex and slow.
 return
@@ -294,7 +295,7 @@ The asynchronous example is different in three ways:
 * The **`async`** keyword appears before the function bodies for
   `createOrderMessage()` and `main()`.
 * The **`await`** keyword appears before calling the asynchronous functions
-  `getUserOrder()` and `createOrderMessage()`.
+  `fetchUserOrder()` and `createOrderMessage()`.
 
 {{site.alert.secondary}}
   **Key terms:**
@@ -332,7 +333,7 @@ function body. What do you think the output will be?
 After running the code in the preceding example, try reversing line 4 and line 5:
 
 ```dart
-var order = await getUserOrder();
+var order = await fetchUserOrder();
 print('Awaiting user order...');
 ```
 
@@ -399,7 +400,7 @@ To handle errors in an `async` function, use try-catch:
 
 ```dart
 try {
-  var order = await getUserOrder();
+  var order = await fetchUserOrder();
   print('Awaiting user order...');
 } catch (err) {
   print('Caught error: $err');

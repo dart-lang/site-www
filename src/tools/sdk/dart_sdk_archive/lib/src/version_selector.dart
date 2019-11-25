@@ -25,7 +25,7 @@ class VersionSelector {
     _osSelector.onChange.listen((Event event) {
       filterTable();
     });
-    var versions = (await getSdkVersions(channel)
+    var versions = (await fetchSdkVersions(channel)
           ..sort())
         .reversed
         .toList();
@@ -54,7 +54,7 @@ class VersionSelector {
         _versionSelector.selectedOptions.first.attributes['value'];
     var svnRevision = svnRevisionForVersion(selectedVersion);
     var versionInfo =
-        await _client.getVersion(channel, svnRevision ?? selectedVersion);
+        await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();

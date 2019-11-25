@@ -80,7 +80,7 @@ isEven(int x) {
 }
 
 
-List<int> getEvenNumbers(Iterable<int> numbers) {
+List<int> evenNumbers(Iterable<int> numbers) {
   var evenNumbers = <int>[];
 
   // A for-in loop.
@@ -94,7 +94,7 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
 
 main() {
   var numbers = List.generate(10, (i) => i);
-  print(getEvenNumbers(numbers));
+  print(evenNumbers(numbers));
 }
 '''
     .trim();

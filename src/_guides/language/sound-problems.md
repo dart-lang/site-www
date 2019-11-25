@@ -565,7 +565,7 @@ Here's an example of the preferred solution: tightening the object's type.
 {:.runtime-success}
 <?code-excerpt "strong/test/strong_test.dart (cast)" replace="/cast/[!$&!]/g"?>
 {% prettify dart %}
-Map<String, dynamic> json = getFromExternalSource();
+Map<String, dynamic> json = fetchFromExternalSource();
 var names = json['names'] as List;
 assumeStrings(names.[!cast!]<String>());
 {% endprettify %}
@@ -580,7 +580,7 @@ in a different way. For example:
 {:.runtime-success}
 <?code-excerpt "strong/test/strong_test.dart (create-new-object)" replace="/\.map.*\.toList../[!$&!]/g"?>
 {% prettify dart %}
-Map<String, dynamic> json = getFromExternalSource();
+Map<String, dynamic> json = fetchFromExternalSource();
 var names = json['names'] as List;
 // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
 assumeStrings(names[!.map((name) => name as String).toList()!]);

@@ -2811,7 +2811,7 @@ function call:
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
 ```dart
 class Employee extends Person {
-  Employee() : super.fromJson(getDefaultData());
+  Employee() : super.fromJson(defaultData);
   // ···
 }
 ```
