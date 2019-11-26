@@ -12,7 +12,7 @@
           permalink: /codelabs
         - title: Language cheatsheet
           permalink: /codelabs/dart-cheatsheet
-        - title: Iterable Collections
+        - title: Iterable collections
           permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await

@@ -21,10 +21,10 @@ Use the latest, experimental version of DartPad to learn,
 remind yourself about, or test your knowledge of
 some of the most commonly used, yet unique features of the Dart language.
 
-### [Iterable Collections in Dart](/codelabs/iterables)
+### [Iterable collections](/codelabs/iterables)
 
 Use the latest, experimental version of DartPad to learn how to use
-Iterables in Dart, including filtering and mapping values.
+iterables in Dart, including filtering and mapping values.
 
 ### [Asynchronous programming: futures, async, await](/codelabs/async-await)
 

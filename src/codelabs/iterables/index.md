@@ -1,11 +1,16 @@
 ---
-title: "Iterable Collections in Dart"
-description: Learn about and practice using Iterables in Dart!
+title: "Iterable collections"
+description: An interactive guide to using Iterable objects such as lists and sets.
 ---
 
 This codelab teaches you how to use collections that implement the 
 [Iterable][iterable class] class, for example [List][list class] and
-[Set][set class]. Using the embedded DartPad editors, you can test your
+[Set][set class]. Iterables are a basic building block for all
+sorts of Dart applications, and you are probably already using them
+even without noticing. This codelab will help you take the most out of 
+them.
+
+Using the embedded DartPad editors, you can test your
 knowledge by running example code and completing exercises.
 
 To get the most out of this codelab, you should have the basic knowledge
@@ -13,7 +18,7 @@ of the [Dart syntax](/samples).
 
 This codelab covers the following material:
 
-* How to access elements of an Iterable.
+* How to read elements of an Iterable.
 * How to check if the elements of an Iterable match a condition.
 * How to filter the contents of an Iterable.
 * How to map the contents of an Iterable to a different value.
@@ -27,24 +32,30 @@ Estimated time to complete this codelab: 60 minutes.
 
 ## Why do you need collections
 
-Collections are classes that represented a group of objects, also called "elements".
+Iterables are a kind of collection. Collections are classes that represented 
+a group of objects, also called "elements".
 
 A collection can be empty, or contain many elements in it. Depending on its purpose,
 a collection will follow a different data structure and have different implementations.
 These are some of the most common collection types:
 
-* [List][list class]: Used to access elements by their index.
+* [List][list class]: Used to read elements by their index.
 * [Set][set class]: Used to contain elements that can only occur once.
-* [Map][map class]: Used to access elements using a key.
+* [Map][map class]: Used to read elements using a key.
 
 In Dart, both `List` and `Set` are `Iterable`, meaning that they share the same methods as the 
 `Iterable` class. 
+
+`Map` uses a different data structure internally depending on their implementation, 
+for example [HashMap][hashmap class] uses a hash-table,
+in which the elements (also called values) are obtained using a key. Elements of a `Map` can
+also be read as `Iterable`, with the properties `entries` or `values`.
 
 ## What is an Iterable?
 
 An `Iterable` is a collection of elements that can be accessed sequentially.
 
-`Iterable`, in Dart, is an abstract class, meaning that you cannot instantiate it directly.
+`Iterable`, in Dart, is an abstract class, meaning that you can't instantiate it directly.
 However you can create a new `Iterable` by creating a new `List` or a `Set`.
  
 This example shows a `List` of `int`, which is also an `Iterable` of `int`:
@@ -53,75 +64,98 @@ This example shows a `List` of `int`, which is also an `Iterable` of `int`:
     Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
 
-The difference with a `List`, is that with the `Iterable` you cannot 
-access elements using their index.
+The difference with a `List`, is that with the `Iterable` you can't 
+guarantee that reading elements by index will be efficient.
+`Iterable`, as opposed as `List`, does not have the `[]` operator.
+
 For example **the following code will give you an error**:
 
+{:.bad}
 {% prettify dart %}
     Iterable<int> iterable = [1, 2, 3];
     var value = iterable[![1]!];
 {% endprettify %}
 
-If you access elements by the index, the compiler will tell you that
-`The operator '[]' isn't defined for the class 'Iterable'` which
-means that you cannot use `[index]` in this case.
+If you read elements with `[]`, the compiler will tell you that
+the operator `'[]'` isn't defined for the class `Iterable` which
+means that you can't use `[index]` in this case.
 
-Continue to the next section to learn how to access elements of an `Iterable`.
+You can instead read elements with `elementAt()`, which will step through
+the elements of the iterable until reaching that position.
 
-## Accessing elements
+{% prettify dart %}
+    Iterable<int> iterable = [1, 2, 3];
+    var value = iterable.elementAt(1);
+{% endprettify %}
 
-The elements of an `Iterable` can be accessed sequentially.
+Continue to the next section to learn more about how to access elements of an `Iterable`.
+
+## Reading elements
+
+The elements of an `Iterable` can be read sequentially.
 
 One way to do that, is by getting an `Iterator` using the `iterator` getter,
-and using it to step through the values. Stepping with the `Iterator` is done
-by calling `Iterator.moveNext`, and if the call returns true, the `Iterator` 
-has now moved to the next element, which is then available as `Iterator.current`. 
-If the call returns `false`, there are no more elements, and `iterator.current` returns `null`.
+and using it to step through the values. However, it is easier to use the 
+`for-in loop`, which internally uses an `Iterator` too.
 
-However, it is easier to use the `for-in loop`, which internally uses an `Iterator` too.
+### Example: Using for-in loop
 
-### Example: Using Iterator and for-in loop
-
-The following example shows how to access elements using an `Iterator`
-and a `for-in loop`. These two code snippets give the same results.
+The following example shows how to read elements using  a `for-in loop`.
 
 [//]: https://gist.github.com/597f152c1df414fc4d7d78d1be22ac22
 <iframe
   src="{{site.dartpad-embed}}?id=597f152c1df414fc4d7d78d1be22ac22"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
-  height="420"
+  height="200"
   width="100%" >
 </iframe>
 
-In the example, you can see how accessing elements using `for-in loop`
-is more convenient than using the `Iterator`.
-The `for-in loop` makes your code easier
+The `for-in loop`, as opposed to the `Iterator`, makes your code easier
 to read and understand, and it is less prone to errors.
+
+Here's an example with `Iterator`:
+
+{% prettify dart %}
+var it = iterable.iterator;	
+while (it.moveNext()) {	
+  print(it.current);	
+}
+{% endprettify %}
+
+{{site.alert.info}}
+Stepping with the `Iterator` is done
+by calling `Iterator.moveNext`, and if the call returns true, the `Iterator` 
+has now moved to the next element, which is then available as `Iterator.current`. 
+
+If the call returns `false`, there are no more elements, and `iterator.current` returns `null`.
+{{site.alert.end}}
 
 {{site.alert.secondary}}
 **Key terms:**
 * **Iterable**: the Dart [Iterable][iterable class] class.
-* **Iterator**: used to access elements from an Iterable.
-* **for-in loop**: an easy way to sequentially access elements from an Iterable.
+* **Iterator**: used to read elements from an Iterable.
+* **for-in loop**: an easy way to sequentially read elements from an Iterable.
 {{site.alert.end}}
 
 ### Example: Using first and last
 
 In some cases, you only want to access the first or the last element of an `Iterable`.
 
-With the `Iterable` class we cannot access to the elements directly, so you cannot call
+With the `Iterable` class you can't access to the elements directly, so you can't call
 to `iterable[0]` to access the first element. Instead, you can use the method `first`
 which will return the first element.
 
-As well, you cannot use the operator `[]` to access the last element, but you can use the
-method `last`. Be aware that to access the last element of an `Iterable` you need to
-step through all the elements of it, which can be a slow operation in a very large collection.
+As well, you can't use the operator `[]` to access the last element, but you can use the
+method `last`. 
 
-{{site.alert.note}}
-  Accessing to the `first` or `last` element of an empty `Iterable` will throw a
-  [StateError][StateError class].
+{{site.alert.warn}}
+  Because accessing the last element of an iterable requires stepping through all the other elements,
+  **`last` can be slow.**
 {{site.alert.end}}
+
+Accessing to the `first` or `last` element of an empty `Iterable` will throw a 
+[StateError][StateError class].
 
 [//]: https://gist.github.com/f3d96039195566d934a966390ea4ad62
 <iframe
@@ -167,7 +201,7 @@ different way. Do all the functions give the same result?
 
 In this example, you can see three different ways to write a predicate:
 
-* As **expresion**: the test code takes one line using a "fat arrow" `=>` 
+* As **expresion**: the test code takes one line using an "arrow" `=>` 
 without a return statement or brackets.
 * As **block**: the test code takes multiple lines between brackets and a return statement.
 * As **function**: the test code is moved into an external function and passed to
@@ -190,9 +224,9 @@ condition.
   **Quick review:**
   * Elements of an `Iterable` must be accessed sequentially.
   * Using a `for-in loop` is the easiest way to iterate through all elements.
-  * To access the first and last elements, we can use the methods `fist` and `last`.
-  * We can also find the first element that matches a condition with `firstWhere`.
-  * We can write test predicates as expressions, blocks or functions.
+  * To access the first and last elements, you can use the methods `fist` and `last`.
+  * You can also find the first element that matches a condition with `firstWhere`.
+  * You can write test predicates as expressions, blocks or functions.
 
 **Key terms:**
 * **Predicate**: a function that returns `true` when satisfies certain condition.
@@ -208,6 +242,11 @@ This exercise introduces `singleWhere`. This method works similarly to `firstWhe
 in this case it expects that only one element of the `Iterable` matches the predicate.
 If more than one or no element in the `Iterable` satisfies the predicate condition, the
 method throws a [StateError][StateError class] exception.
+
+{{site.alert.warn}}
+  `singleWhere` steps through the whole `Iterable` until the last element, which can cause
+  problems if the `Iterable` is infinite or it contains a large collection of elements.
+{{site.alert.end}}
 
 Your goal is to implement the predicate for `singleWhere` that satisfies the following condition:
 
@@ -232,6 +271,7 @@ satisfy some condition.
 
 You could be tempted to write a solution using a `for-in loop` like this one:
 
+{:.bad}
 {% prettify dart %}
     for (var item in items) {
       if (items.length < 5) {
@@ -246,6 +286,8 @@ However, you can accomplish the same using the `every` method:
 {% prettify dart %}
   return items.every((element) => element.length >= 5);
 {% endprettify %}
+
+Which results in code that is more readable, compact and less error prone.
 
 ### Example: Using any and every
 
@@ -368,7 +410,7 @@ But since there are none, the result is an empty `Iterable`.
 
 {{site.alert.note}}
   If no element matches the predicate in `where`, the method will return an empty
-  `Iterator`. Unlikely `singleWhere` or `firstWhere`, that would throw a
+  `Iterable`. Unlikely `singleWhere` or `firstWhere`, that would throw a
    [StateError][StateError class] exception.
 {{site.alert.end}}
 
@@ -475,9 +517,12 @@ In the previous example you multiplied the elements of an `Iterable` by two.
 Both the input and the output of that operation were an `Iterable` of `int`.
 
 In this exercise, you code takes an `Iterable` of `User`, and you need to
-return an `Iterable` that contains the `age` multiplied by two.
+return an `Iterable` that contains `String` with the `name` and `age`.
 
-As a reminder, the class `User` contains a member `age` of the type `int`.
+The `String` must follow this format: `'{name} is {age}'`, for example `'Alice is 21'`.
+
+As a reminder, the class `User` contains a member `name` of the type `String` and 
+a member `age` of the type `int`.
 
 {% prettify dart %}
   class User {
@@ -505,46 +550,44 @@ width="100%" >
 
 It’s time to practice what you’ve learned in one final exercise.
 
-This exercise provides the class `Email` with a constructor, that takes a `String`.
+This exercise provides the class `EmailAddress` with a constructor, that takes a `String`.
 
 {% prettify dart %}
-class Email {
+class EmailAddress {
   String address;
 
-  Email(
-    this.address,
-  );
+  EmailAddress(this.address);
 }
 {% endprettify %}
 
-This exercise also provides the function `checkIfEmailInvalid` that returns `true` if
-an `Email` is invalid.
+This exercise also provides the function `isValidEmailAddress` that returns `true` if
+an `EmailAddress` is valid.
 
 |--------------------------+-----------------------------------+-------------|
 | Function                 | Type signature                    | Description |
 |--------------------------|-----------------------------------|-------------|
-| checkIfEmailInvalid()    | `bool checkIfEmailInvalid(Email)` | Returns `true` if the provided `Email` is invalid. | 
+| isValidEmailAddress()    | `bool isValidEmailAddress(Email)` | Returns `true` if the provided `Email` is valid. | 
 |--------------------------+-----------------------------------+-------------|
-{:.table .table-striped}
+{:.table}
 
-Your goal is:
+Write the following code:
 
-**Part 1:** `parseEmails`
-- Write the function `parseEmails` that takes an `Iterable` of `String` containing emails, 
-and returns an `Iterable` of `Email`.
-- Use the method `map` to map between the `String` to `Email`.
-- Create the `Email` objects with the constructor `Email(String)`.
+**Part 1:** `parseEmailAddresses`
+- Write the function `parseEmailAddresses` that takes an `Iterable<String>` containing emails, 
+and returns an `Iterable<EmailAddress>`.
+- Use the method `map` to map from a `String` to `EmailAddress`.
+- Create the `EmailAddress` objects with the constructor `EmailAddress(String)`.
 
-**Part 2:** `anyInvalidEmail`
-- Write the function `anyInvalidEmail` that takes an `Iterable` of `Email` and returns `true`
-if any `Email` in the `Iterable` is invalid.
-- Use the method `any` together with the provided function `checkIfEmailInvalid`.
+**Part 2:** `anyInvalidEmailAddress`
+- Write the function `anyInvalidEmailAddress` that takes an `Iterable<EmailAddress>` and returns `true`
+if any `Email` in the `Iterable` is not valid.
+- Use the method `any` together with the provided function `isValidEmailAddress()`.
 
-**Part 3:** `validEmails`
-- Write the function `validEmails` that takes an `Iterable` of `Email` and returns
-another `Iterable` of `Email` containing only valid `Emails`.
-- Use the method `where` to filter the `Iterable` of `Email`.
-- Use the provided function `checkIfEmailInvalid` to evaluate if an `Email` is valid or not.
+**Part 3:** `validEmailAddresses`
+- Write the function `validEmailAddresses` that takes an `Iterable<EmailAddress>` and returns
+another `Iterable<EmailAddress>` containing only valid addresses.
+- Use the method `where` to filter the `Iterable<EmailAddress>`.
+- Use the provided function `isValidEmailAddress` to evaluate if an `EmailAddress` is valid or not.
 
 [//]: https://gist.github.com/bea254b823dd449a0610115405c3c5f7
 <iframe
@@ -567,5 +610,6 @@ are some suggestions for where to go next:
 [list class]: {{site.dart_api}}/stable/dart-core/List-class.html
 [set class]: {{site.dart_api}}/stable/dart-core/Set-class.html
 [map class]: {{site.dart_api}}/stable/dart-core/Map-class.html
+[hashmap class]: {{site.dart_api}}/stable/dart-collection/HashMap-class.html
 [StateError class]: {{site.dart_api}}/stable/dart-core/StateError-class.html
 [String class]: {{site.dart_api}}/stable/dart-core/String-class.html
