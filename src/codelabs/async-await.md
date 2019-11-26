@@ -192,7 +192,7 @@ function.
 First, add the `async` keyword before the function body:
 
 {% prettify dart %}
-main() [!async!] {
+void main() [!async!] {
 {% endprettify %}
 
 {{site.alert.note}}
