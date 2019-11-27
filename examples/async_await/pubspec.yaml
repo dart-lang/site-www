@@ -1,4 +1,4 @@
-name: examples
+name: async_await
 description: dart.dev example code.
 
 environment:
@@ -6,4 +6,5 @@ environment:
 
 dev_dependencies:
   examples_util: {path: ../util}
-  pedantic: ^1.0.0
+  pedantic: ^1.8.0
+  test: ^1.6.0
