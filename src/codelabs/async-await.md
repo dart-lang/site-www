@@ -57,13 +57,13 @@ produces:
 
 * `fetchUserOrder()` is an asynchronous function that, after a delay,
   provides a string that describes the user's order: a "Large Latte".
-* To get the user's order, `printOrderMessage()` should call `fetchUserOrder()`
-  and wait for it to finish. Because `printOrderMessage()` does *not* wait
-  for `fetchUserOrder()` to finish, `printOrderMessage()` fails to get the string
+* To get the user's order, `createOrderMessage()` should call `fetchUserOrder()`
+  and wait for it to finish. Because `createOrderMessage()` does *not* wait
+  for `fetchUserOrder()` to finish, `createOrderMessage()` fails to get the string
   value that `fetchUserOrder()` eventually provides.
-* Instead, `printOrderMessage()` gets a representation of pending work to be
+* Instead, `createOrderMessage()` gets a representation of pending work to be
   done: an uncompleted future. You'll learn more about futures in the next section.
-* Because `printOrderMessage()` fails to get the value describing the user's
+* Because `createOrderMessage()` fails to get the value describing the user's
   order, the example fails to print "Large Latte" to the console, and instead
   prints "Your order is: Instance of '_Future<String>'".
 
@@ -195,15 +195,6 @@ First, add the `async` keyword before the function body:
 void main() [!async!] {
 {% endprettify %}
 
-{{site.alert.note}}
-  You might have noticed that some functions (like `main()`, above) don't have
-  return types. That's because Dart can [infer the return type][infer] for you.
-  Omitting return types is fine when you're prototyping, but when you write
-  production code, we recommend that you specify the return type.
-{{site.alert.end}}
-
-[infer]: https://dart.dev/guides/language/sound-dart#type-inference
-
 If the function has a declared return type, then update the type to be
 `Future<T>`, where `T` is the type of the value that the function returns.
 If the function doesn't explicitly return a value, then the return type is
@@ -217,7 +208,7 @@ Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 
 ```dart
-print(await printOrderMessage());
+print(await createOrderMessage());
 ```
 
 
@@ -233,7 +224,7 @@ your window is wide enough — is to the right of the synchronous example.
 
 ```dart
 // Synchronous
-String printOrderMessage() {
+String createOrderMessage() {
   var order = fetchUserOrder();
   return 'Your order is: $order';
 }
@@ -247,9 +238,9 @@ Future<String> fetchUserOrder() {
 }
 
 // Synchronous
-main() {
+void main() {
   print('Fetching user order...');
-  print(printOrderMessage());
+  print(createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -261,7 +252,7 @@ main() {
 
 {% prettify dart %}
 // Asynchronous
-[!Future<String>!] printOrderMessage() [!async!] {
+[!Future<String>!] createOrderMessage() [!async!] {
 var order = [!await!] fetchUserOrder();
 return 'Your order is: $order';
 }
@@ -275,9 +266,9 @@ return
 }
 
 // Asynchronous
-main() [!async!] {
-print('Fetching user order...');
-print([!await!] printOrderMessage());
+Future<void> main() [!async!] {
+  print('Fetching user order...');
+  print([!await!] createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -289,12 +280,12 @@ print([!await!] printOrderMessage());
 
 The asynchronous example is different in three ways:
 
-* The return type for `printOrderMessage()` changes from `String` to
+* The return type for `createOrderMessage()` changes from `String` to
   `Future<String>`.
 * The **`async`** keyword appears before the function bodies for
-  `printOrderMessage()` and `main()`.
+  `createOrderMessage()` and `main()`.
 * The **`await`** keyword appears before calling the asynchronous functions
-  `fetchUserOrder()` and `printOrderMessage()`.
+  `fetchUserOrder()` and `createOrderMessage()`.
 
 {{site.alert.secondary}}
   **Key terms:**
@@ -329,7 +320,7 @@ function body. What do you think the output will be?
   width="100%">
 </iframe>
 
-After running the code in the preceding example, try reversing line 4 and line 5:
+After running the code in the preceding example, try reversing lines 2 and 3:
 
 ```dart
 var order = await fetchUserOrder();
