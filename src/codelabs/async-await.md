@@ -195,15 +195,6 @@ First, add the `async` keyword before the function body:
 void main() [!async!] {
 {% endprettify %}
 
-{{site.alert.note}}
-  You might have noticed that some functions (like `main()`, above) don't have
-  return types. That's because Dart can [infer the return type][infer] for you.
-  Omitting return types is fine when you're prototyping, but when you write
-  production code, we recommend that you specify the return type.
-{{site.alert.end}}
-
-[infer]: https://dart.dev/guides/language/sound-dart#type-inference
-
 If the function has a declared return type, then update the type to be
 `Future<T>`, where `T` is the type of the value that the function returns.
 If the function doesn't explicitly return a value, then the return type is
