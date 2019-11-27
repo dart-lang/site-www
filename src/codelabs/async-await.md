@@ -57,13 +57,13 @@ produces:
 
 * `fetchUserOrder()` is an asynchronous function that, after a delay,
   provides a string that describes the user's order: a "Large Latte".
-* To get the user's order, `printOrderMessage()` should call `fetchUserOrder()`
-  and wait for it to finish. Because `printOrderMessage()` does *not* wait
-  for `fetchUserOrder()` to finish, `printOrderMessage()` fails to get the string
+* To get the user's order, `createOrderMessage()` should call `fetchUserOrder()`
+  and wait for it to finish. Because `createOrderMessage()` does *not* wait
+  for `fetchUserOrder()` to finish, `createOrderMessage()` fails to get the string
   value that `fetchUserOrder()` eventually provides.
-* Instead, `printOrderMessage()` gets a representation of pending work to be
+* Instead, `createOrderMessage()` gets a representation of pending work to be
   done: an uncompleted future. You'll learn more about futures in the next section.
-* Because `printOrderMessage()` fails to get the value describing the user's
+* Because `createOrderMessage()` fails to get the value describing the user's
   order, the example fails to print "Large Latte" to the console, and instead
   prints "Your order is: Instance of '_Future<String>'".
 
@@ -247,7 +247,7 @@ Future<String> fetchUserOrder() {
 }
 
 // Synchronous
-main() {
+void main() {
   print('Fetching user order...');
   print(createOrderMessage());
 }
@@ -275,9 +275,9 @@ return
 }
 
 // Asynchronous
-main() [!async!] {
-print('Fetching user order...');
-print([!await!] createOrderMessage());
+Future<void> main() [!async!] {
+  print('Fetching user order...');
+  print([!await!] createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -329,7 +329,7 @@ function body. What do you think the output will be?
   width="100%">
 </iframe>
 
-After running the code in the preceding example, try reversing line 4 and line 5:
+After running the code in the preceding example, try reversing lines 2 and 3:
 
 ```dart
 var order = await fetchUserOrder();
