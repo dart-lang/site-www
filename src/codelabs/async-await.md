@@ -217,7 +217,7 @@ Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 
 ```dart
-print(await printOrderMessage());
+print(await createOrderMessage());
 ```
 
 
@@ -233,7 +233,7 @@ your window is wide enough — is to the right of the synchronous example.
 
 ```dart
 // Synchronous
-String printOrderMessage() {
+String createOrderMessage() {
   var order = fetchUserOrder();
   return 'Your order is: $order';
 }
@@ -249,7 +249,7 @@ Future<String> fetchUserOrder() {
 // Synchronous
 main() {
   print('Fetching user order...');
-  print(printOrderMessage());
+  print(createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -261,7 +261,7 @@ main() {
 
 {% prettify dart %}
 // Asynchronous
-[!Future<String>!] printOrderMessage() [!async!] {
+[!Future<String>!] createOrderMessage() [!async!] {
 var order = [!await!] fetchUserOrder();
 return 'Your order is: $order';
 }
@@ -277,7 +277,7 @@ return
 // Asynchronous
 main() [!async!] {
 print('Fetching user order...');
-print([!await!] printOrderMessage());
+print([!await!] createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -289,12 +289,12 @@ print([!await!] printOrderMessage());
 
 The asynchronous example is different in three ways:
 
-* The return type for `printOrderMessage()` changes from `String` to
+* The return type for `createOrderMessage()` changes from `String` to
   `Future<String>`.
 * The **`async`** keyword appears before the function bodies for
-  `printOrderMessage()` and `main()`.
+  `createOrderMessage()` and `main()`.
 * The **`await`** keyword appears before calling the asynchronous functions
-  `fetchUserOrder()` and `printOrderMessage()`.
+  `fetchUserOrder()` and `createOrderMessage()`.
 
 {{site.alert.secondary}}
   **Key terms:**
