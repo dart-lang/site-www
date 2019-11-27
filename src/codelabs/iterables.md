@@ -71,11 +71,11 @@ guarantee that reading elements by index will be efficient.
 
 For example **the following code will give you an error**:
 
-// TODO: Handle bad code?
 {:.bad}
+<?code-excerpt "iterables/bin/iterable_2.dart" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 {% prettify dart %}
-    Iterable<int> iterable = [1, 2, 3];
-    var value = iterable[![1]!];
+Iterable<int> iterable = [1, 2, 3];
+int value = iterable[![1]!];
 {% endprettify %}
 
 If you read elements with `[]`, the compiler will tell you that
