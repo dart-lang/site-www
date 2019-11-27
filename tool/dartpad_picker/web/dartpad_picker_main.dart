@@ -34,13 +34,13 @@ void main() {
 
 Snippet _createSnippet(HtmlElement root, String name) => Snippet(
       name,
-      _getSrc(
+      _src(
         root,
         '#try-dart-${name.toLowerCase().replaceAll(' ', '-')}',
       ),
     );
 
-String _getSrc(HtmlElement root, String id, [String fallback]) =>
+String _src(HtmlElement root, String id, [String fallback]) =>
     root.querySelector(id)?.innerText ??
     fallback ??
     "/* Can't load example sources. Please refresh the page. */";

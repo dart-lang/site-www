@@ -5,8 +5,8 @@ import 'package:path/path.dart' as path;
 
 final _downloader = DartDownloads();
 
-Future<List<Version>> getSdkVersions(String channel) async {
-  var versionPaths = await _downloader.getVersionPaths(channel).toList();
+Future<List<Version>> fetchSdkVersions(String channel) async {
+  var versionPaths = await _downloader.fetchVersionPaths(channel).toList();
   var versions = <Version>[];
   for (var versionPath in versionPaths) {
     var basename = path.basename(versionPath);

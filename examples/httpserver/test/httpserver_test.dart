@@ -33,7 +33,7 @@ void main() {
     // Only resolve the server once for all tests in this group to avoid
     // "binding multiple times on the same (address, port) combination".
     Future _server;
-    Future getServer() => _server ??= number_thinker.main();
+    Future startServer() => _server ??= number_thinker.main();
 
     test('number_thinker response', () {
       _test() async {
@@ -42,7 +42,7 @@ void main() {
 
       expect(
           () => Future.any([
-                getServer(),
+                startServer(),
                 _test(),
               ]),
           prints(allOf(
@@ -54,7 +54,7 @@ void main() {
     test('client bad guess', () async {
       expect(
           () => Future.any([
-                getServer(),
+                startServer(),
                 number_guesser.checkGuess(99),
               ]),
           prints(allOf(
@@ -74,7 +74,7 @@ void main() {
 
       expect(
           () => Future.any([
-                getServer(),
+                startServer(),
                 _test(),
               ]),
           prints(contains('Good guess')));
