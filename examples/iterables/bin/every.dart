@@ -1,7 +1,7 @@
 bool bad(Iterable<String> items) {
 // #docregion bad
   for (var item in items) {
-    if (items.length < 5) {
+    if (item.length < 5) {
       return false;
     }
   }

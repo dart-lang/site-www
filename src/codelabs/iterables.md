@@ -279,7 +279,7 @@ You could be tempted to write a solution using a `for-in loop` like this one:
 <?code-excerpt "iterables/bin/every.dart (bad)"?>
 {% prettify dart %}
 for (var item in items) {
-  if (items.length < 5) {
+  if (item.length < 5) {
     return false;
   }
 }
@@ -452,7 +452,8 @@ the first negative number.
 
 <?code-excerpt "iterables/bin/takewhile.dart (takewhile)"?>
 {% prettify dart %}
-Iterable<int> numbersUntilNegative = numbers.takeWhile((number) => !number.isNegative);
+Iterable<int> numbersUntilNegative =
+    numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
 
 Notice that the condition `number.isNegative` is negated with `!`.

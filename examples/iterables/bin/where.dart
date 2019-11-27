@@ -1,4 +1,4 @@
-void where(Iterable<int> numbers) {
+Iterable<int> where(Iterable<int> numbers) {
   // #docregion where
   // #docregion where-for
   Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
@@ -7,4 +7,5 @@ void where(Iterable<int> numbers) {
     print('$number is even');
   }
   // #enddocregion where-for
+  return evenNumbers;
 }
