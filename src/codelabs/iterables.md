@@ -60,7 +60,7 @@ However you can create a new `Iterable` by creating a new `List` or a `Set`.
  
 This example shows a `List` of `int`, which is also an `Iterable` of `int`:
 
-<?code-excerpt "iterables/bin/iterable_1.dart"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
 {% prettify dart %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
@@ -72,7 +72,7 @@ guarantee that reading elements by index will be efficient.
 For example **the following code will give you an error**:
 
 {:.bad}
-<?code-excerpt "iterables/bin/iterable_2.dart" replace="/\.elementAt\(1\)/[![1]!]/g"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 {% prettify dart %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
@@ -85,7 +85,7 @@ means that you can't use `[index]` in this case.
 You can instead read elements with `elementAt()`, which will step through
 the elements of the iterable until reaching that position.
 
-<?code-excerpt "iterables/bin/iterable_2.dart"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 {% prettify dart %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
@@ -166,7 +166,7 @@ Now you'll learn how to find an element that satisfies certain conditions using 
 `firstWhere`. This method requires you to pass a "predicate", which is a function
 that will return true if the input satisfies certain condition.
 
-<?code-excerpt "iterables/bin/firstwhere.dart (firstwhere)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
 {% prettify dart %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
@@ -259,7 +259,7 @@ satisfy some condition.
 You could be tempted to write a solution using a `for-in loop` like this one:
 
 {:.bad}
-<?code-excerpt "iterables/bin/every.dart (bad)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
 {% prettify dart %}
 for (var item in items) {
   if (item.length < 5) {
@@ -271,7 +271,7 @@ return true;
 
 However, you can accomplish the same using the `every` method:
 
-<?code-excerpt "iterables/bin/every.dart (good)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
 {% prettify dart %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
@@ -303,7 +303,7 @@ or greater than 5.
 After running the code, try changing the predicate of `any` so it
 returns false:
 
-<?code-excerpt "iterables/bin/any.dart (any-false)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
 {% prettify dart %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
@@ -322,7 +322,7 @@ The following exercise provides practice using the `any` and `every` methods des
 in the previous example. In this case, there's a list of users with the class `User`
 with the member field `age`.
 
-<?code-excerpt "iterables/bin/user.dart"?>
+<?code-excerpt "iterables/lib/user.dart"?>
 {% prettify dart %}
 class User {
   String name;
@@ -361,7 +361,7 @@ In the previous sections, you have seen how using methods like `firstWhere` or
 But what if you want to find all the elements that match certain condition?
 You can accomplish that using the `where` method.
 
-<?code-excerpt "iterables/bin/where.dart (where)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where)"?>
 {% prettify dart %}
 Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
@@ -373,7 +373,7 @@ The output of `where` is another `Iterable`, and you can use it as such to itera
 over it or apply other `Iterable` methods. In the next example, the output of `where`
 is used directly inside the `for-in loop`.
 
-<?code-excerpt "iterables/bin/where.dart (where-for)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart %}
 Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
@@ -433,7 +433,7 @@ Note that the element that matched the predicate is also included.
 After running the example, change the `takeWhile` to take elements until it reaches
 the first negative number.
 
-<?code-excerpt "iterables/bin/takewhile.dart (takewhile)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart %}
 Iterable<int> numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
@@ -474,7 +474,7 @@ width="100%" >
 Mapping `Iterables` with the method `map` allows you to apply a function
 over each one of the elements, replacing each element by a new one.
 
-<?code-excerpt "iterables/bin/map.dart (int)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
 {% prettify dart %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
@@ -484,7 +484,7 @@ In this example, each element of the `Iterable` numbers is multiplied by 10.
 You can also use `map` to transform an element into a different object, for example,
 to convert all `int` to `String` as you can see in the example below.
 
-<?code-excerpt "iterables/bin/map.dart (string)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
 {% prettify dart %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}
@@ -521,7 +521,7 @@ The `String` must follow this format: `'{name} is {age}'`, for example `'Alice i
 As a reminder, the class `User` contains a member `name` of the type `String` and 
 a member `age` of the type `int`.
 
-<?code-excerpt "iterables/bin/user.dart"?>
+<?code-excerpt "iterables/lib/user.dart"?>
 {% prettify dart %}
 class User {
   String name;
@@ -550,7 +550,7 @@ It’s time to practice what you’ve learned in one final exercise.
 
 This exercise provides the class `EmailAddress` with a constructor, that takes a `String`.
 
-<?code-excerpt "iterables/bin/email.dart"?>
+<?code-excerpt "iterables/lib/email.dart"?>
 {% prettify dart %}
 class EmailAddress {
   EmailAddress(this.address);
