@@ -43,32 +43,11 @@ void main() {
     });
 
     test('takeWhile_example', () {
-      expect(
-        _listEquals(
-          takewhile.takeWhile([1, 2, 3, -1, 4, 5]).toList(),
-          [1, 2, 3],
-        ),
-        true,
-      );
+      expect(takewhile.takeWhile([1, 2, 3, -1, 4, 5]), [1, 2, 3]);
     });
 
     test('where_example', () {
-      expect(
-        _listEquals(
-          where.where([1, 2, 3, 4]).toList(),
-          [2, 4],
-        ),
-        true,
-      );
+      expect(where.where([1, 2, 3, 4]), [2, 4]);
     });
   });
-}
-
-bool _listEquals<T>(List<T> a, List<T> b) {
-  if (a == null) return b == null;
-  if (b == null || a.length != b.length) return false;
-  for (int index = 0; index < a.length; index += 1) {
-    if (a[index] != b[index]) return false;
-  }
-  return true;
 }
