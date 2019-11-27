@@ -95,11 +95,7 @@ Continue to the next section to learn more about how to access elements of an `I
 
 ## Reading elements
 
-The elements of an `Iterable` can be read sequentially.
-
-One way to do that, is by getting an `Iterator` using the `iterator` getter,
-and using it to step through the values. However, it is easier to use the 
-`for-in loop`, which internally uses an `Iterator` too.
+You can read the elements of an iterable sequentially, using a for-in loop.
 
 ### Example: Using for-in loop
 
@@ -114,31 +110,18 @@ The following example shows how to read elements using  a `for-in loop`.
   width="100%" >
 </iframe>
 
-The `for-in loop`, as opposed to the `Iterator`, makes your code easier
-to read and understand, and it is less prone to errors.
-
-Here's an example with `Iterator`:
-
-{% prettify dart %}
-var it = iterable.iterator;	
-while (it.moveNext()) {	
-  print(it.current);	
-}
-{% endprettify %}
-
 {{site.alert.info}}
-Stepping with the `Iterator` is done
-by calling `Iterator.moveNext`, and if the call returns true, the `Iterator` 
-has now moved to the next element, which is then available as `Iterator.current`. 
-
-If the call returns `false`, there are no more elements, and `iterator.current` returns `null`.
+Behind the scenes, the for-in loop uses an [iterator]({{site.dart_api}}/stable/dart-core/Iterable/iterator.html).
+You rarely see the [Iterator API][iterator class] used directly, however,
+because for-in is easier to read and understand,
+and less prone to errors.
 {{site.alert.end}}
 
 {{site.alert.secondary}}
 **Key terms:**
 * **Iterable**: the Dart [Iterable][iterable class] class.
-* **Iterator**: used to read elements from an Iterable.
-* **for-in loop**: an easy way to sequentially read elements from an Iterable.
+* **Iterator**: An object used by `for-in` to read elements from an `Iterable` object.
+* **for-in loop**: an easy way to sequentially read elements from an `Iterable`.
 {{site.alert.end}}
 
 ### Example: Using first and last
@@ -170,7 +153,7 @@ Accessing to the `first` or `last` element of an empty `Iterable` will throw a
 </iframe>
 
 In this example you have seen how `first` and `last` can be used to access the first
-and the last elements of an `Iterator`, but would it be possible to use a similar method
+and the last elements of an `Iterable`, but would it be possible to use a similar method
 to find the first element that matches a condition? In the next section you'll learn
 how to use `firstWhere` to find the first element that matches certain condition.
 
@@ -622,10 +605,11 @@ are some suggestions for where to go next:
 * Try another [codelab](/codelabs).
 * Check the [Iterable][iterable class] class to learn the methods not covered by this codelab.
 
-[iterable class]: {{site.dart_api}}/stable/dart-core/Iterable-class.html
-[list class]: {{site.dart_api}}/stable/dart-core/List-class.html
-[set class]: {{site.dart_api}}/stable/dart-core/Set-class.html
-[map class]: {{site.dart_api}}/stable/dart-core/Map-class.html
 [hashmap class]: {{site.dart_api}}/stable/dart-collection/HashMap-class.html
+[iterable class]: {{site.dart_api}}/stable/dart-core/Iterable-class.html
+[iterator class]: {{site.dart_api}}/stable/dart-core/Iterator-class.html
+[list class]: {{site.dart_api}}/stable/dart-core/List-class.html
+[map class]: {{site.dart_api}}/stable/dart-core/Map-class.html
+[set class]: {{site.dart_api}}/stable/dart-core/Set-class.html
 [StateError class]: {{site.dart_api}}/stable/dart-core/StateError-class.html
 [String class]: {{site.dart_api}}/stable/dart-core/String-class.html
