@@ -60,8 +60,9 @@ However you can create a new `Iterable` by creating a new `List` or a `Set`.
  
 This example shows a `List` of `int`, which is also an `Iterable` of `int`:
 
+<?code-excerpt "iterables/bin/iterable_1.dart"?>
 {% prettify dart %}
-    Iterable<int> iterable = [1, 2, 3];
+Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
 
 The difference with a `List`, is that with the `Iterable` you can't 
@@ -70,6 +71,7 @@ guarantee that reading elements by index will be efficient.
 
 For example **the following code will give you an error**:
 
+// TODO: Handle bad code?
 {:.bad}
 {% prettify dart %}
     Iterable<int> iterable = [1, 2, 3];
@@ -83,9 +85,10 @@ means that you can't use `[index]` in this case.
 You can instead read elements with `elementAt()`, which will step through
 the elements of the iterable until reaching that position.
 
+<?code-excerpt "iterables/bin/iterable_2.dart"?>
 {% prettify dart %}
-    Iterable<int> iterable = [1, 2, 3];
-    var value = iterable.elementAt(1);
+Iterable<int> iterable = [1, 2, 3];
+int value = iterable.elementAt(1);
 {% endprettify %}
 
 Continue to the next section to learn more about how to access elements of an `Iterable`.
@@ -180,8 +183,9 @@ Now you'll learn how to find an element that satisfies certain conditions using 
 `firstWhere`. This method requires you to pass a "predicate", which is a function
 that will return true if the input satisfies certain condition.
 
+<?code-excerpt "iterables/bin/firstwhere.dart (firstwhere)"?>
 {% prettify dart %}
-    var element = iterable.firstWhere((element) => element.length > 5);
+String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
 
 For example, if you want to find the first `String` that has more than five characters,
@@ -272,19 +276,21 @@ satisfy some condition.
 You could be tempted to write a solution using a `for-in loop` like this one:
 
 {:.bad}
+<?code-excerpt "iterables/bin/every.dart (bad)"?>
 {% prettify dart %}
-    for (var item in items) {
-      if (items.length < 5) {
-        return false;
-      }
-    }
-    return true;
+for (var item in items) {
+  if (items.length < 5) {
+    return false;
+  }
+}
+return true;
 {% endprettify %}
 
 However, you can accomplish the same using the `every` method:
 
+<?code-excerpt "iterables/bin/every.dart (good)"?>
 {% prettify dart %}
-  return items.every((element) => element.length >= 5);
+return items.every((element) => element.length >= 5);
 {% endprettify %}
 
 Which results in code that is more readable, compact and less error prone.
@@ -314,6 +320,7 @@ or greater than 5.
 After running the code, try changing the predicate of `any` so it
 returns false:
 
+<?code-excerpt "iterables/bin/any.dart (any-false)"?>
 {% prettify dart %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
@@ -332,11 +339,12 @@ The following exercise provides practice using the `any` and `every` methods des
 in the previous example. In this case, there's a list of users with the class `User`
 with the member field `age`.
 
+<?code-excerpt "iterables/bin/user.dart"?>
 {% prettify dart %}
-  class User {
-    String name;
-    int age;
-  }
+class User {
+  String name;
+  int age;
+}
 {% endprettify %}
 
 Use `any` and `every` to implement two methods:
@@ -370,8 +378,9 @@ In the previous sections, you have seen how using methods like `firstWhere` or
 But what if you want to find all the elements that match certain condition?
 You can accomplish that using the `where` method.
 
+<?code-excerpt "iterables/bin/where.dart (where)"?>
 {% prettify dart %}
-  var evenNumbers = numbers.where((number) => number.isEven);
+Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
 
 In this example, `numbers` contains an `Iterable` with multiple `int`, and 
@@ -381,11 +390,12 @@ The output of `where` is another `Iterable`, and you can use it as such to itera
 over it or apply other `Iterable` methods. In the next example, the output of `where`
 is used directly inside the `for-in loop`.
 
+<?code-excerpt "iterables/bin/where.dart (where-for)"?>
 {% prettify dart %}
-  var evenNumbers = numbers.where((number) => number.isEven);
-  for (var number in evenNumbers) {
-    print('$number is even');
-  }
+Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
+for (var number in evenNumbers) {
+  print('$number is even');
+}
 {% endprettify %}
 
 ### Example: Using where
@@ -440,8 +450,9 @@ Note that the element that matched the predicate is also included.
 After running the example, change the `takeWhile` to take elements until it reaches
 the first negative number.
 
+<?code-excerpt "iterables/bin/takewhile.dart (takewhile)"?>
 {% prettify dart %}
-var numbersUntilNegative = numbers.takeWhile((number) => !number.isNegative);
+Iterable<int> numbersUntilNegative = numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
 
 Notice that the condition `number.isNegative` is negated with `!`.
@@ -479,8 +490,9 @@ width="100%" >
 Mapping `Iterables` with the method `map` allows you to apply a function
 over each one of the elements, replacing each element by a new one.
 
+<?code-excerpt "iterables/bin/map.dart (int)"?>
 {% prettify dart %}
-  Iterable<int> output = numbers.map((number) => number * 10);
+Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
 
 In this example, each element of the `Iterable` numbers is multiplied by 10.
@@ -488,8 +500,9 @@ In this example, each element of the `Iterable` numbers is multiplied by 10.
 You can also use `map` to transform an element into a different object, for example,
 to convert all `int` to `String` as you can see in the example below.
 
+<?code-excerpt "iterables/bin/map.dart (string)"?>
 {% prettify dart %}
-  Iterable<String> output = numbers.map((number) => number.toString());
+Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}
 
 {{site.alert.note}}
@@ -524,11 +537,12 @@ The `String` must follow this format: `'{name} is {age}'`, for example `'Alice i
 As a reminder, the class `User` contains a member `name` of the type `String` and 
 a member `age` of the type `int`.
 
+<?code-excerpt "iterables/bin/user.dart"?>
 {% prettify dart %}
-  class User {
-    String name;
-    int age;
-  }
+class User {
+  String name;
+  int age;
+}
 {% endprettify %}
 
 [//]: https://gist.github.com/c2ca9085b2376471b30569d570590894
@@ -552,11 +566,12 @@ It’s time to practice what you’ve learned in one final exercise.
 
 This exercise provides the class `EmailAddress` with a constructor, that takes a `String`.
 
+<?code-excerpt "iterables/bin/email.dart"?>
 {% prettify dart %}
 class EmailAddress {
-  String address;
-
   EmailAddress(this.address);
+
+  String address;
 }
 {% endprettify %}
 
