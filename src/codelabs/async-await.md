@@ -1,9 +1,26 @@
 ---
 title: "Asynchronous programming: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
+js: [{url: 'https://dartpad.dev/experimental/inject_embed.dart.js', defer: true}]
 ---
+{% assign useIframe = true -%}
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+<?code-excerpt plaster="none"?>
+<style>
+{% comment %}
+TODO(chalin): move this into one of our SCSS files
+{% endcomment -%}
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 150px;
+  resize: vertical;
+  width: 100%;
+}
+</style>
+
 This codelab teaches you how to write asynchronous code using
-futures and the `async` and `await` keywords. Using the embedded DartPad
+futures and the `async` and `await` keywords. Using embedded DartPad
 editors, you can test your knowledge by running example code and completing
 exercises.
 
@@ -44,6 +61,7 @@ The following example shows the wrong way to use an asynchronous function
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
@@ -51,6 +69,29 @@ output will be?
   height="420"
   width="100%" >
 </iframe>
+{% else -%}
+
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
+```dart:run-dartpad:height-380px
+// This example shows how *not* to write asynchronous Dart code.
+
+String createOrderMessage() {
+  var order = fetchUserOrder();
+  return 'Your order is: $order';
+}
+
+Future<String> fetchUserOrder() =>
+    // Imagine that this function is more complex and slow.
+    Future.delayed(
+      Duration(seconds: 2),
+      () => 'Large Latte',
+    );
+
+void main() {
+  print(createOrderMessage());
+}
+```
+{% endif -%}
 
 Here's why the example fails to print the value that `fetchUserOrder()` eventually
 produces:
@@ -126,6 +167,7 @@ printing to the console. Because it doesn't return a usable value,
 `fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
@@ -133,6 +175,21 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
   height="300"
   width="100%" >
 </iframe>
+{% else -%}
+
+<?code-excerpt "async_await/bin/futures_intro.dart"?>
+```dart:run-dartpad:height-300px
+Future<void> fetchUserOrder() {
+  // Imagine that this function is fetching user info from another service or database.
+  return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
+}
+
+void main() {
+  fetchUserOrder();
+  print('Fetching user order...');
+}
+```
+{% endif -%}
 
 In the preceding example, even though `fetchUserOrder()` executes before
 the `print()` call on line 8, the console shows the output from line 8
@@ -144,6 +201,7 @@ This is because `fetchUserOrder()` delays before it prints "Large Latte".
 Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
@@ -151,6 +209,22 @@ A bit later you'll learn how to handle the error.
   height="275"
   width="100%" >
 </iframe>
+{% else -%}
+
+<?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
+```dart:run-dartpad:height-300px
+Future<void> fetchUserOrder() {
+// Imagine that this function is fetching user info but encounters a bug
+  return Future.delayed(Duration(seconds: 2),
+      () => throw Exception('Logout failed: user ID is invalid'));
+}
+
+void main() {
+  fetchUserOrder();
+  print('Fetching user order...');
+}
+```
+{% endif -%}
 
 In this example, `fetchUserOrder()` completes with an error indicating that the
 user ID is invalid.
@@ -191,8 +265,9 @@ function.
 
 First, add the `async` keyword before the function body:
 
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
 {% prettify dart %}
-void main() [!async!] {
+void main() [!async!] { ··· }
 {% endprettify %}
 
 If the function has a declared return type, then update the type to be
@@ -200,17 +275,18 @@ If the function has a declared return type, then update the type to be
 If the function doesn't explicitly return a value, then the return type is
 `Future<void>`:
 
+<?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
 {% prettify dart %}
-[!Future<void>!] main() async {
+[!Future<void>!] main() async { ··· }
 {% endprettify %}
 
 Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 
-```dart
-print(await createOrderMessage());
-```
-
+<?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
+{% prettify dart %}
+print([!await!] createOrderMessage());
+{% endprettify %}
 
 As the following two examples show, the `async` and `await` keywords result in
 asynchronous code that looks a lot like synchronous code.
@@ -222,58 +298,62 @@ your window is wide enough — is to the right of the synchronous example.
 <div class="col-sm" markdown="1">
 #### Example: synchronous functions
 
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
 ```dart
-// Synchronous
 String createOrderMessage() {
   var order = fetchUserOrder();
   return 'Your order is: $order';
 }
 
-Future<String> fetchUserOrder() {
-  // Imagine that this function is
-  // more complex and slow.
-  return
+Future<String> fetchUserOrder() =>
+    // Imagine that this function is
+    // more complex and slow.
     Future.delayed(
-      Duration(seconds: 4), () => 'Large Latte');
-}
+      Duration(seconds: 2),
+      () => 'Large Latte',
+    );
 
-// Synchronous
 void main() {
   print('Fetching user order...');
   print(createOrderMessage());
 }
+```
 
-// 'Fetching user order...'
-// 'Your order is: Instance of _Future<String>'
+{:.console-output}
+```nocode
+Fetching user order...
+Your order is: Instance of _Future<String>
 ```
 </div>
 <div class="col-sm" markdown="1">
 #### Example: asynchronous functions
 
+<?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^g])/[!$1!] $2/g; /4/2/g"?>
 {% prettify dart %}
-// Asynchronous
-[!Future<String>!] createOrderMessage() [!async!] {
-var order = [!await!] fetchUserOrder();
-return 'Your order is: $order';
+[!Future<String>!]  createOrderMessage() [!async!] {
+  var order = [!await!] fetchUserOrder();
+  return 'Your order is: $order';
 }
 
-Future<String> fetchUserOrder() {
-// Imagine that this function is
-// more complex and slow.
-return
-  Future.delayed(
-    Duration(seconds: 4), () => 'Large Latte');
-}
+[!Future<String>!]  fetchUserOrder() =>
+    // Imagine that this function is
+    // more complex and slow.
+    Future.delayed(
+      Duration(seconds: 2),
+      () => 'Large Latte',
+    );
 
-// Asynchronous
-Future<void> main() [!async!] {
+[!Future<void>!]  main() [!async!] {
   print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
-
-// 'Fetching user order...'
-// 'Your order is: Large Latte'
 {% endprettify %}
+
+{:.console-output}
+```nocode
+Fetching user order...
+Your order is: Large Latte
+```
 </div>
 </div>
 </div>
@@ -312,6 +392,7 @@ synchronous code before the first `await` keyword executes immediately.
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
@@ -319,9 +400,38 @@ function body. What do you think the output will be?
   height="600"
   width="100%">
 </iframe>
+{% else -%}
+
+<?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
+```dart:run-dartpad:height-530px
+Future<void> printOrderMessage() async {
+  print('Awaiting user order...');
+  var order = await fetchUserOrder();
+  print('Your order is: $order');
+}
+
+Future<String> fetchUserOrder() {
+  // Imagine that this function is more complex and slow.
+  return Future.delayed(Duration(seconds: 4), () => 'Large Latte');
+}
+
+Future<void> main() async {
+  countSeconds(4);
+  await printOrderMessage();
+}
+
+// You can ignore this function - it's here to visualize delay time in this example.
+void countSeconds(int s) {
+  for (var i = 1; i <= s; i++) {
+    Future.delayed(Duration(seconds: i), () => print(i));
+  }
+}
+```
+{% endif -%}
 
 After running the code in the preceding example, try reversing lines 2 and 3:
 
+<?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
 ```dart
 var order = await fetchUserOrder();
 print('Awaiting user order...');
@@ -388,6 +498,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
 ## Handling errors
 To handle errors in an `async` function, use try-catch:
 
+<?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
   var order = await fetchUserOrder();
@@ -405,6 +516,7 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2"
   style="border: 1px solid lightgrey;"
@@ -412,6 +524,33 @@ asynchronous function. What do you think the output will be?
   height="525"
   width="100%">
 </iframe>
+{% else -%}
+
+<?code-excerpt "async_await/bin/try_catch.dart"?>
+```dart:run-dartpad:height-530px
+Future<void> printOrderMessage() async {
+  try {
+    var order = await fetchUserOrder();
+    print('Awaiting user order...');
+    print(order);
+  } catch (err) {
+    print('Caught error: $err');
+  }
+}
+
+Future<String> fetchUserOrder() {
+  // Imagine that this function is more complex.
+  var str = Future.delayed(
+      Duration(seconds: 4),
+      () => throw 'Cannot locate user order');
+  return str;
+}
+
+Future<void> main() async {
+  await printOrderMessage();
+}
+```
+{% endif -%}
 
 ### Exercise: Practice handling errors
 

@@ -31,6 +31,9 @@ greeting to use another language.
 {{site.alert.end}}
 
 <style>
+{% comment %}
+TODO(chalin): move this into one of our SCSS files
+{% endcomment -%}
 iframe[src^="https://dartpad"] {
   border: 1px solid #ccc;
   margin-bottom: 1rem;
