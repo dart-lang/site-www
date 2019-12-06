@@ -610,8 +610,8 @@ You can create a “raw” string by prefixing it with `r`:
 var s = r'In a raw string, not even \n gets special treatment.';
 ```
 
-See [Runes](#runes) for details on how to express Unicode
-characters in a string.
+See [Runes and grapheme clusters](#runes) for details on how
+to express Unicode characters in a string.
 
 Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
@@ -983,16 +983,21 @@ For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
 
-### Runes
+<a id="runes"></a>
+### Runes and grapheme clusters
 
 In Dart, runes are the UTF-32 code points of a string.
+As of Dart 2.6, instead of using runes use the
+[characters package,][characters package]
+which has better support for user-perceived characters,
+also known as
+[Unicode (extended) grapheme clusters.][grapheme clusters]
 
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
 Because a Dart string is a sequence of UTF-16 code units,
 expressing 32-bit Unicode values within a string requires
 special syntax.
-
 The usual way to express a Unicode code point is
 `\uXXXX`, where XXXX is a 4-digit hexadecimal value.
 For example, the heart character (♥) is `\u2665`.
@@ -1000,49 +1005,14 @@ To specify more or less than 4 hex digits,
 place the value in curly brackets.
 For example, the laughing emoji (😆) is `\u{1f600}`.
 
-The [String][]
-class has several properties you can use to extract rune information.
-The `codeUnitAt` and `codeUnit` properties return 16-bit code
-units. Use the `runes` property to get the runes of a string.
+If you need to read or write individual Unicode characters,
+use the `Characters` class from the characters package.
+A `Characters` object is a string viewed as a sequence of grapheme clusters.
 
-The following example illustrates the relationship between runes, 16-bit code
-units, and 32-bit code points. Click **Run** to see runes in action.
+For information on using the characters package to manipulate strings,
+see the [example][characters example] and [API reference][characters API]
+for the characters package.
 
-{% comment %}
-https://gist.github.com/589bc5c95318696cefe5
-{{site.dartpad}}/589bc5c95318696cefe5
-Unicode emoji: https://unicode.org/emoji/charts/full-emoji-list.html
-
-<?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
-```dart
-void main() {
-  var clapping = '\u{1f44f}';
-  print(clapping);
-  print(clapping.codeUnits);
-  print(clapping.runes.toList());
-
-  Runes input =
-      Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-  print(String.fromCharCodes(input));
-}
-```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=589bc5c95318696cefe5"
-    width="100%"
-    height="400px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
-{{site.alert.note}}
-  Be careful when manipulating runes using list operations. This approach can
-  easily break down, depending on the particular language, character set, and
-  operation. For more information, see [How do I reverse a String in Dart?][] on
-  Stack Overflow.
-
-  [How do I reverse a String in Dart?]: https://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart
-{{site.alert.end}}
 
 ### Symbols
 
@@ -4380,6 +4350,9 @@ To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
+[characters API]: {{site.pub-api}}/characters
+[characters example]: {{site.pub-pkg}}/characters#-example-tab-
+[characters package]: {{site.pub-pkg}}/characters
 [dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
@@ -4396,6 +4369,7 @@ To learn more about Dart's core libraries, see
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
