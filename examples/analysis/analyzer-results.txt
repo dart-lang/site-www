@@ -1,5 +1,7 @@
 Analyzing analysis_options.yaml, lib...
   error • A value of type 'Object' can't be assigned to a variable of type 'String'. • lib/assignment.dart:11:14 • invalid_assignment
+  lint • Omit type annotations for local variables. • lib/assignment.dart:10:3 • omit_local_variable_types
+  lint • Omit type annotations for local variables. • lib/assignment.dart:12:3 • omit_local_variable_types
   lint • Avoid empty statements. • lib/lint.dart:9:19 • empty_statements
   lint • Close instances of `dart.core.Sink`. • lib/lint.dart:16:7 • close_sinks
-1 error and 2 lints found.
+1 error and 4 lints found.
