@@ -610,7 +610,7 @@ You can create a “raw” string by prefixing it with `r`:
 var s = r'In a raw string, not even \n gets special treatment.';
 ```
 
-See [Runes and grapheme clusters](#runes) for details on how
+See [Runes and grapheme clusters](#characters) for details on how
 to express Unicode characters in a string.
 
 Literal strings are compile-time constants,
@@ -983,10 +983,10 @@ For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
 
-<a id="runes"></a>
+<a id="characters"></a>
 ### Runes and grapheme clusters
 
-In Dart, runes are the UTF-32 code points of a string.
+In Dart, [runes][] are the UTF-32 code points of a string.
 As of Dart 2.6, instead of using runes use the
 [characters package,][characters package]
 which has better support for user-perceived characters,
@@ -1006,10 +1006,36 @@ place the value in curly brackets.
 For example, the laughing emoji (😆) is `\u{1f600}`.
 
 If you need to read or write individual Unicode characters,
-use the `Characters` class from the characters package.
-A `Characters` object is a string viewed as a sequence of grapheme clusters.
+use the `characters` getter defined on String
+by the characters package.
+The returned [`Characters`][] object is the string as
+a sequence of grapheme clusters.
+Here's an example of using the characters API:
 
-For information on using the characters package to manipulate strings,
+{% comment %}
+TODO: add link to extension methods section?
+TODO: add test code
+{% endcomment %}
+
+```dart
+import 'package:characters/characters.dart';
+...
+var hi = 'Hi 🇩🇰';
+print(hi);
+print('The end of the string: ${hi.substring(hi.length - 1)}');
+print('The last character: ${hi.characters.last}\n');
+```
+
+The output, depending on your environment, looks something like this:
+
+```terminal
+$ dart bin/main.dart
+Hi 🇩🇰
+The end of the string: ???
+The last character: 🇩🇰
+```
+
+For details on using the characters package to manipulate strings,
 see the [example][characters example] and [API reference][characters API]
 for the characters package.
 
@@ -4350,6 +4376,7 @@ To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
+[`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters#-example-tab-
 [characters package]: {{site.pub-pkg}}/characters
@@ -4381,6 +4408,7 @@ To learn more about Dart's core libraries, see
 [@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
+[runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
