@@ -11,3 +11,6 @@ dependencies:
 dev_dependencies:
   test: ^1.6.3
   examples_util: {path: ../util}
+
+dependency_overrides:
+  analyzer: 0.39.1

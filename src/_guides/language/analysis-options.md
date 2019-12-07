@@ -107,7 +107,7 @@ Here's a sample analysis options file:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- camel/" remove="http:"?>
 ```yaml
-include: package:pedantic/analysis_options.yaml
+include: package:pedantic/analysis_options.1.8.0.yaml
 
 analyzer:
   exclude: [build/**]
@@ -223,7 +223,7 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
-<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
 ```yaml
 include: package:pedantic/analysis_options.yaml
 ```
@@ -350,7 +350,7 @@ To suppress more than one rule, use a comma-separated list:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, omit_local_variable_types
 ```
 
 
