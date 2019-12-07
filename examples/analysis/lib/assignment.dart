@@ -1,5 +1,5 @@
 // #docregion ignore_for_file
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, omit_local_variable_types
 // #enddocregion ignore_for_file
 // ignore_for_file: stable, dev, invalid_assignment
 
