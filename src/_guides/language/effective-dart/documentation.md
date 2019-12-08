@@ -450,7 +450,7 @@ replace it. Words are what matter.
 ### AVOID using HTML for formatting.
 
 It *may* be useful to use it in rare cases for things like tables, but in almost
-all cases, if it's too complex too express in Markdown, you're better off not
+all cases, if it's too complex to express in Markdown, you're better off not
 expressing it.
 
 ### PREFER backtick fences for code blocks.
