@@ -415,7 +415,7 @@ way the compiler does.
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
-sophisticated automated code formatter called [dartfmt][] that does do it for
+sophisticated automated code formatter called [dartfmt][] that does it for
 you. We have [some documentation][dartfmt docs] on the rules it applies, but the
 official whitespace-handling rules for Dart are *whatever dartfmt produces*.
 
