@@ -51,8 +51,6 @@ This is the primary difference between `pub get` and
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
-{% include pub-in-prereleases.html %}
-
 ## Package resolution
 
 By default, pub creates a `.packages` file
