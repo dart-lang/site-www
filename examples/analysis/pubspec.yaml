@@ -7,3 +7,7 @@ environment:
 dev_dependencies:
   examples_util: {path: ../util}
   pedantic: ^1.0.0
+
+dependency_overrides:
+  analyzer: 0.39.1
+
