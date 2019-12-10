@@ -3289,23 +3289,18 @@ For more information, see the informal
 
 Extension methods, introduced in Dart 2.7,
 are a way to add functionality to existing libraries.
-You might not ever need to _use_ extension methods, much less _create_ them.
-But if you generate code or find yourself writing lots of wrappers,
-consider using extension methods to reduce
-the amount of boilerplate code that you need to write.
-
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-Here's an example of using an extension method:
+Here's an example of using an extension method on `String`
+named `parseInt()` that's defined in `string_apis.dart`:
 
 ```dart
-// Import a library that contains an extension on String. 
 import string_apis.dart';
 ...
 print('42'.padLeft(5)); // Use a String method.
-print('42'.toInt()); // Use an extension method.
+print('42'.parseInt()); // Use an extension method.
 ```
 
 For details of using and implementing extension methods, see the
