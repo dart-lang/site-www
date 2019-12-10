@@ -986,7 +986,7 @@ For more information about maps, see
 <a id="characters"></a>
 ### Runes and grapheme clusters
 
-In Dart, [runes][] are the UTF-32 code points of a string.
+In Dart, [runes][] are the Unicode code points of a string.
 As of Dart 2.6, instead of using runes use the
 [characters package,][characters package]
 which has better support for user-perceived characters,
@@ -996,7 +996,7 @@ also known as
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
 Because a Dart string is a sequence of UTF-16 code units,
-expressing 32-bit Unicode values within a string requires
+expressing Unicode code points within a string requires
 special syntax.
 The usual way to express a Unicode code point is
 `\uXXXX`, where XXXX is a 4-digit hexadecimal value.
