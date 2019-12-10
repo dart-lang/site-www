@@ -986,10 +986,9 @@ For more information about maps, see
 <a id="characters"></a>
 ### Runes and grapheme clusters
 
-In Dart, [runes][] are the Unicode code points of a string.
-As of Dart 2.6, instead of using runes use the
-[characters package,][characters package]
-which has better support for user-perceived characters,
+In Dart, [runes][] expose the Unicode code points of a string.
+As of Dart 2.6, use the [characters package][]
+to view or manipulate user-perceived characters,
 also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
 
@@ -1013,7 +1012,6 @@ a sequence of grapheme clusters.
 Here's an example of using the characters API:
 
 {% comment %}
-TODO: add link to extension methods section?
 TODO: add test code
 {% endcomment %}
 
