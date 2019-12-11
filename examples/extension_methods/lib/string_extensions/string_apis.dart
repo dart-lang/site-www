@@ -1,4 +1,3 @@
-//
 // #docregion parseInt
 extension NumberParsing on String {
   int parseInt() {

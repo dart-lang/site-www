@@ -197,7 +197,6 @@ For example, here’s how you might implement an extension of the `String` class
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart"?>
 ```dart
-//
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
