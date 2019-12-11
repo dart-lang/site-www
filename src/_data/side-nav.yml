@@ -22,12 +22,6 @@
 - title: Language
   expanded: false
   children:
-    - title: Tour
-      permalink: /guides/language/language-tour
-    - title: Type system
-      permalink: /guides/language/sound-dart
-    - title: Specification
-      permalink: /guides/language/spec
     - title: Effective Dart
       expanded: false
       children:
@@ -43,6 +37,14 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+    - title: Extension methods
+      permalink: /guides/language/extension-methods
+    - title: Specification
+      permalink: /guides/language/spec
+    - title: Tour
+      permalink: /guides/language/language-tour
+    - title: Type system
+      permalink: /guides/language/sound-dart
 
 - title: Core libraries
   expanded: false

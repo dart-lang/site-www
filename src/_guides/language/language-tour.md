@@ -2472,6 +2472,8 @@ descend from [Object.][Object]
 *Mixin-based inheritance* means that although every class (except for
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
+[Extension methods](#extension-methods) are a way to
+add functionality to a class without changing the class or creating a subclass.
 
 
 ### Using class members
@@ -3172,6 +3174,8 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
+
+
 #### Overriding members
 
 Subclasses can override instance methods, getters, and setters.
@@ -3274,6 +3278,27 @@ that's different from the one in class `Object`.
 For more information, see the informal
 [noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 
+
+### Extension methods
+
+Extension methods, introduced in Dart 2.7,
+are a way to add functionality to existing libraries.
+You might use extension methods without even knowing it.
+For example, when you use code completion in an IDE,
+it suggests extension methods alongside regular methods.
+
+Here's an example of using an extension method on `String`
+named `parseInt()` that's defined in `string_apis.dart`:
+
+```dart
+import string_apis.dart';
+...
+print('42'.padLeft(5)); // Use a String method.
+print('42'.parseInt()); // Use an extension method.
+```
+
+For details of using and implementing extension methods, see the
+[extension methods page][].
 
 <a id="enums"></a>
 ### Enumerated types
@@ -4389,6 +4414,7 @@ To learn more about Dart's core libraries, see
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
