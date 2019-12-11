@@ -96,15 +96,15 @@ Continue to the next section to learn more about how to access elements of an `I
 
 ## Reading elements
 
-You can read the elements of an iterable sequentially, using a for-in loop.
+You can read the elements of an iterable sequentially, using a `for-in` loop.
 
 ### Example: Using a for-in loop
 
-The following example shows you how to read elements using  a `for-in loop`.
+The following example shows you how to read elements using  a `for-in` loop.
 
-[//]: https://gist.github.com/597f152c1df414fc4d7d78d1be22ac22
+[//]: https://gist.github.com/c419f595f95e8317c54192491ae017cd
 <iframe
-  src="{{site.dartpad-embed}}?id=597f152c1df414fc4d7d78d1be22ac22"
+  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -112,9 +112,9 @@ The following example shows you how to read elements using  a `for-in loop`.
 </iframe>
 
 {{site.alert.info}}
-Behind the scenes, the for-in loop uses an [iterator]({{site.dart_api}}/stable/dart-core/Iterable/iterator.html).
+Behind the scenes, the `for-in` loop uses an [iterator.]({{site.dart_api}}/stable/dart-core/Iterable/iterator.html)
 You rarely see the [Iterator API][iterator class] used directly, however,
-because for-in is easier to read and understand,
+because `for-in` is easier to read and understand,
 and is less prone to errors.
 {{site.alert.end}}
 
@@ -122,7 +122,7 @@ and is less prone to errors.
 **Key terms:**
 * **Iterable**: The Dart [Iterable][iterable class] class.
 * **Iterator**: An object used by `for-in` to read elements from an `Iterable` object.
-* **for-in loop**: An easy way to sequentially read elements from an `Iterable`.
+* **`for-in` loop**: An easy way to sequentially read elements from an `Iterable`.
 {{site.alert.end}}
 
 ### Example: Using first and last
@@ -179,9 +179,9 @@ you must pass a predicate that returns true when the element size is greater tha
 Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
-[//]: https://gist.github.com/8faef6308ed5ae90ff5e8a74fcede768
+[//]: https://gist.github.com/03b4100365c1b871a36b9a1c5781dab1
 <iframe
-  src="{{site.dartpad-embed}}?id=8faef6308ed5ae90ff5e8a74fcede768"
+  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="500"
@@ -212,7 +212,7 @@ condition.
 {{site.alert.secondary}}
   **Quick review:**
   * The elements of an `Iterable` must be accessed sequentially.
-  * The easiest way to iterate through all the elements is using a `for-in loop`.
+  * The easiest way to iterate through all the elements is using a `for-in` loop.
   * You can use the `first` and `last` getters to get the first and last elements.
   * You can also find the first element that matches a condition with `firstWhere()`.
   * You can write test predicates as expressions, blocks, or functions.
@@ -245,9 +245,9 @@ Your goal is to implement the predicate for `singleWhere()` that satisfies the f
 All the elements in the test data are [strings;][String class]
 you can check the class documentation for help.
 
-[//]: https://gist.github.com/b4897cc97fec87093139a4aab8228af3
+[//]: https://gist.github.com/241c6bc591f9436a9be0116724222953
 <iframe
-  src="{{site.dartpad-embed}}?id=b4897cc97fec87093139a4aab8228af3&theme=dark"
+  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark"
   frameborder="no"
   height="250"
   width="100%">
@@ -289,9 +289,9 @@ The `Iterable` class provides two methods that you can use to verify conditions:
 
 Run this exercise to see them in action.
 
-[//]: https://gist.github.com/9823ba4e7f8344e4a00f1d12d5b2d901
+[//]: https://gist.github.com/d56963729339cea951e16209e0a26e4c
 <iframe
-  src="{{site.dartpad-embed}}?id=9823ba4e7f8344e4a00f1d12d5b2d901"
+  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -339,10 +339,10 @@ Use `any()` and `every()` to implement two functions:
 * Part 2: Implement `everyUserOver13()`.
   * Return `true` if all users are 14 or older.
 
-<!-- [//]: https://gist.github.com/f9fe58bad32355350900d5343fdb8fd4 -->
+<!-- [//]: https://gist.github.com/76dc5c8644652adf4e2032912d974ac3 -->
 
 <iframe
-src="{{site.dartpad-embed}}?id=f9fe58bad32355350900d5343fdb8fd4&theme=dark"
+src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark"
 frameborder="no"
 height="325"
 width="100%" >
@@ -373,7 +373,7 @@ In this example, `numbers` contains an `Iterable` with multiple `int`, and
 
 The output of `where()` is another `Iterable`, and you can use it as such to iterate
 over it or apply other `Iterable` methods. In the next example, the output of `where()`
-is used directly inside the `for-in loop`.
+is used directly inside the `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart %}
@@ -383,14 +383,14 @@ for (var number in evenNumbers) {
 }
 {% endprettify %}
 
-### Example: Using where
+### Example: Using where()
 
 Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
-[//]: https://gist.github.com/7d79929806341338fd2588d11d2c0195
+[//]: https://gist.github.com/f96f2f630ee327bd69ee7737301d9628
 <iframe
-  src="{{site.dartpad-embed}}?id=7d79929806341338fd2588d11d2c0195"
+  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -417,9 +417,9 @@ The methods `takeWhile()` and `skipWhile()` can also help you filter elements fr
 Run this example to see how `takeWhile()` and `skipWhile()` can split an `Iterable`
 containing numbers.
 
-[//]: https://gist.github.com/755d3f4af5ed365c81b2e2a81ae79e46
+[//]: https://gist.github.com/5e3582c858517f93baf160892d131ec9
 <iframe
-  src="{{site.dartpad-embed}}?id=755d3f4af5ed365c81b2e2a81ae79e46"
+  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
@@ -455,9 +455,9 @@ Use `where()` to implement two functions:
 * Part 2: Implement `findShortNamed()`.
   * Return an `Iterable` containing all users with names of length of 3 or less.
   
-[//]: https://gist.github.com/7ea77da468069db721b7363ef03f97c3
+[//]: https://gist.github.com/8113e2880772456f9036ddf55c517e9e
 <iframe
-src="{{site.dartpad-embed}}?id=7ea77da468069db721b7363ef03f97c3&theme=dark"
+src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark"
 frameborder="no"
 height="325"
 width="100%" >
@@ -501,9 +501,9 @@ Iterable<String> output = numbers.map((number) => number.toString());
 Run this example to see how to use `map()` to multiply all the elements
 of an `Iterable` by 2. What do you think the output will be?
 
-[//]: https://gist.github.com/ba4352e121b19ecb1b171cce553de72f
+[//]: https://gist.github.com/8c2f129d88c5ce166cca0f4bb9e2a906
 <iframe
-  src="{{site.dartpad-embed}}?id=ba4352e121b19ecb1b171cce553de72f"
+  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -521,20 +521,9 @@ return an `Iterable` that contains strings containing user name and age.
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
-As a reminder, the class `User` contains a member `name` of type `String` and 
-a member `age` of type `int`:
-
-<?code-excerpt "iterables/lib/user.dart"?>
-{% prettify dart %}
-class User {
-  String name;
-  int age;
-}
-{% endprettify %}
-
-[//]: https://gist.github.com/c2ca9085b2376471b30569d570590894
+[//]: https://gist.github.com/5ce89481a3dc8b14800825c78bd547e2
 <iframe
-src="{{site.dartpad-embed}}?id=c2ca9085b2376471b30569d570590894&theme=dark"
+src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark"
 frameborder="no"
 height="325"
 width="100%" >
@@ -562,14 +551,14 @@ class EmailAddress {
 }
 {% endprettify %}
 
-This exercise also provides the function `isValidEmailAddress` that returns `true` if
-an `EmailAddress` is valid.
+This exercise also provides the function `isValidEmailAddress()`,
+which you can use to test whether an address is valid.
 
-|--------------------------+-----------------------------------+-------------|
-| Function                 | Type signature                    | Description |
-|--------------------------|-----------------------------------|-------------|
-| isValidEmailAddress()    | `bool isValidEmailAddress(Email)` | Returns `true` if the provided `Email` is valid. | 
-|--------------------------+-----------------------------------+-------------|
+|------------------------------------------+-----------------------------------|
+| Function type signature                  | Description                       |
+|------------------------------------------|-----------------------------------|
+| `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
+|------------------------------------------+-----------------------------------|
 {:.table}
 
 Write the following code:
@@ -591,9 +580,9 @@ another `Iterable<EmailAddress>` containing only valid addresses.
 - Use the method `where()` to filter the `Iterable<EmailAddress>`.
 - Use the provided function `isValidEmailAddress()` to evaluate whether an `EmailAddress` is valid.
 
-[//]: https://gist.github.com/bea254b823dd449a0610115405c3c5f7
+[//]: https://gist.github.com/0be68487b124b4e55927c3e026094547
 <iframe
-src="{{site.dartpad-embed}}?id=bea254b823dd449a0610115405c3c5f7&theme=dark"
+src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark"
 frameborder="no"
 height="600"
 width="100%" >
