@@ -1,6 +1,6 @@
 ---
 title: Dart 2 migration guide for web apps
-description: Tips for migrating your web app from Dart 1.x to Dart 2.
+description: Tips for migrating your web app from Dart 1 to Dart 2.
 ---
 
 <style>
@@ -8,7 +8,7 @@ del { color: rgba(255,0,0,.35); }
 del code { color: darkred; }
 </style>
 
-This page has information on migrating your Dart 1.x web app to Dart 2.
+This page has information on migrating your Dart 1 web app to Dart 2.
 These changes are necessary because of the following:
 
 - [Tooling changes](#tools):
@@ -21,11 +21,11 @@ See also: [Angular Migration Guide v4 to v5]({{site.angulardart}}/note/migrating
 
 ## Tools
 
-The development environment for web apps is different in Dart 2 from Dart 1.x.
+The development environment for web apps is different in Dart 2 from Dart 1.
 Here are the highlights:
 
 {:.table .table-striped}
-| **Dart 1.x** | **Dart 2** |
+| **Dart 1** | **Dart 2** |
 | Dartium, content shell | Chrome and [dartdevc][] |
 | `pub build` | [`webdev build`](/tools/webdev#build) |
 | `pub serve` | [`webdev serve`](/tools/webdev#serve) |
@@ -85,7 +85,7 @@ with these changes applied.
 ## Additional resources
 
 - [Dart 2 Updates:][dart-2]
-  Information about changes in Dart 2, and how to migrate your code from Dart 1.x.
+  Information about changes in Dart 2, and how to migrate your code from Dart 1.
 - [Changelog][Documentation changelog]:
   Lists changes made to this site's documentation and examples.
 

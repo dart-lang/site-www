@@ -17,7 +17,7 @@ For information about building and serving apps in Dart 2, see the following:
   * [Build system documents,](https://github.com/dart-lang/build/tree/master/docs) including
     [getting started with build_runner](https://github.com/dart-lang/build/blob/master/docs/getting_started.md#getting-started-with-build_runner)
 
-If you use Dart 1.x for web development, see the following:
+If you use Dart 1 for web development, see the following:
 
 * [Setup for Angular development (v4)]({{site.angulardart}}/guide/setup)
 * [Deployment (v4)]({{site.angulardart}}/guide/deployment)
@@ -29,7 +29,7 @@ If you maintain a transformer, see the following:
 * [Writing a Pub Transformer]({{site.prev-url}}/tools/pub/transformers)
   in the [archived Dart site]({{site.prev-url}})
 
-For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
+For help in switching from Dart 1 to Dart 2, see the Dart 2 migration guides:
 
 * [Language and core library migration guide](/dart-2#migration)
 * [Web app migration guide](/web/dart-2)

@@ -19,7 +19,7 @@ For a full introduction to the Dart language, including types, see the
   The terms **sound** Dart and **type safe** Dart
   are often used interchangeably.
   You might also see the term **strong mode**.
-  Strong mode was an opt-in Dart 1.x feature
+  Strong mode was an opt-in Dart 1 feature
   that provided partial support for type safety.
 </aside>
 
@@ -511,7 +511,7 @@ The following resources have further information on sound Dart:
 * [Fixing common type problems](/guides/language/sound-problems) -
   Errors you may encounter when
   writing sound Dart code, and how to fix them.
-* [Dart 2](/dart-2) - How to update Dart 1.x code to Dart 2.
+* [Dart 2](/dart-2) - How to update Dart 1 code to Dart 2.
 * [Customizing static analysis][analysis] - How
   to set up and customize the analyzer and linter using an analysis
   options file.

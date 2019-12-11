@@ -89,7 +89,7 @@ The `querySelector()` method statically returns an Element,
 but the code assumes it returns the subtype CanvasElement
 where `context2D` is defined.
 The `canvas` field is declared as `var` which,
-in Dart 1.x versions without strong mode,
+in Dart 1 versions without strong mode,
 types it as `dynamic` and silences all errors.
 Dart infers `canvas` to be an Element.
 
@@ -155,7 +155,7 @@ While the [List][] type has an `add()` method, [Iterable][] does not.
 
 #### Fix: Specify type arguments or fix downstream errors
 
-In Dart 1.x, when a generic class is instantiated without explicit type
+In Dart 1, when a generic class is instantiated without explicit type
 arguments, `dynamic` is assumed. That is why, in the code excerpt above, `c` is
 of type `dynamic` and no error is reported for `c.add()`.
 
@@ -425,7 +425,7 @@ HoneyBadger(Eats food, String name)
 error • The function expression type '...' isn't of type '...'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
 
-In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
+In Dart 1 `dynamic` was both a [top type][] (supertype of all types) and a
 [bottom type][]  (subtype of all types)
 depending on the context. This meant it was valid to assign, for example,
 a function with a parameter of type `String` to a place that expected a
@@ -475,7 +475,7 @@ Filter filter = (x) => (x [!as String!]).contains('Hello');
 <a id="common-errors-and-warnings"></a>
 ## Runtime errors
 
-Unlike Dart 1.x, Dart 2 enforces a sound type system. Roughly, this means
+Unlike Dart 1, Dart 2 enforces a sound type system. Roughly, this means
 you can't get into a situation where the value stored in a variable is
 different than the variable's static type. Like most modern statically
 typed languages, Dart accomplishes this with a combination of static
