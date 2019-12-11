@@ -40,7 +40,7 @@ you can import a library that contains an extension of the String class:
 
 <!-- lib/string_extensions/usage_simple_extension.dart -->
 ```dart
-import string_apis.dart';
+import 'string_apis.dart';
 ...
 print('42'.parseInt());
 ```
@@ -73,7 +73,7 @@ just import the library it’s in, and use it like an ordinary method:
 <!-- lib/string_extensions/usage_simple_extension.dart -->
 ```dart
 // Import a library that contains an extension on String. 
-import string_apis.dart';
+import 'string_apis.dart';
 ...
 print('42'.padLeft(5)); // Use a String method.
 print('42'.parseInt()); // Use an extension method.
