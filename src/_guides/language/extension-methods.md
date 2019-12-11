@@ -236,7 +236,8 @@ extension MyFancyList<T> on List<T> {
 The type `T` is bound based on the static type of the list that
 the methods are called on.
 {% comment %}
-TODO: Add more info about generic extensions. 
+TODO (https://github.com/dart-lang/site-www/issues/2171):
+Add more info about generic extensions. 
 For example, in the following code, `T` is `PENDING` because PENDING:
 
 [PENDING: example]
