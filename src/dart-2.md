@@ -1,6 +1,6 @@
 ---
 title: Dart 2 migration guide
-description: How Dart 2 is different from Dart 1, and how you can convert your code to work with Dart 2.
+description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
 
 Dart 2 has a few key differences from earlier versions of Dart.
@@ -56,7 +56,7 @@ follow the [package migration instructions below](#migrating-packages).
 ### General process
 
 Here's an overview of the process of migrating to Dart 2,
-from either Dart 1 or an earlier version of Dart 2.
+from either Dart 1.x or an earlier version of Dart 2.
 
 1. **Get an up-to-date version of the Flutter or Dart SDK
    and the plugins for any IDEs you use.**
@@ -66,7 +66,7 @@ from either Dart 1 or an earlier version of Dart 2.
    * Flutter: [`flutter pub upgrade`][flutter pub upgrade]
    * Server-side or web: [`pub upgrade`][pub upgrade]
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
-   usages of deprecated Dart 1 APIs to Dart 2.
+   usages of deprecated Dart 1.x APIs to Dart 2.
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
    * Flutter: [`flutter analyze`][Flutter analyzer]
