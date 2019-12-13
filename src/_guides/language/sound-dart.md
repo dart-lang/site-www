@@ -6,22 +6,13 @@ description: Why and how to write sound Dart code.
 
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
-ensure that a variable's value always matches the variable's static type.
+ensure that a variable's value always matches the variable's static type,
+sometimes referred to as sound typing.
 Although _types_ are mandatory, type _annotations_ are optional
 because of [type inference](#type-inference).
 
-This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the
 [language tour](/guides/language/language-tour).
-
-<aside class="alert alert-info" markdown="1">
-  **Terminology note:**
-  The terms **sound** Dart and **type safe** Dart
-  are often used interchangeably.
-  You might also see the term **strong mode**.
-  Strong mode was an opt-in Dart 1 feature
-  that provided partial support for type safety.
-</aside>
 
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]
