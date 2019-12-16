@@ -3,11 +3,11 @@ extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
   }
-// #enddocregion parseInt
+  // #enddocregion parseInt
 
   double parseDouble() {
     return double.parse(this);
   }
-// #docregion parseInt
+  // #docregion parseInt
 }
 // #enddocregion parseInt

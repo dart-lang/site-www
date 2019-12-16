@@ -1,9 +1,6 @@
 // ignore_for_file: dead_code
 // #docregion import-and-use
 // Import a library that contains an extension on String.
-// #enddocregion import-and-use
-// The extension (named NumberParsing) defines the extension methods
-// parseInt() and parseDouble().
 // #docregion basic, import-and-use
 import 'string_apis.dart';
 // #enddocregion basic, import-and-use
