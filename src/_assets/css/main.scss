@@ -544,7 +544,7 @@ img {
 
     &.toc-collapsed {
       .section-nav {
-        max-height: 72px;
+        max-height: 0px;
         overflow: hidden;
       }
 
@@ -554,6 +554,10 @@ img {
 
       .toc-toggle-down {
         display: inline-block;
+      }
+
+      .site-toc__title {
+        margin: 0px;
       }
     }
   }
