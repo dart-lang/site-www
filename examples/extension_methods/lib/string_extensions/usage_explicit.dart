@@ -6,7 +6,6 @@ import 'string_apis_2.dart'; // Contains NumberParsing2 extension.
 
 // #enddocregion
 void main() {
-
 // #docregion
 // print('42'.parseInt()); // Doesn't work.
   print(NumberParsing('42').parseInt());
