@@ -28,9 +28,9 @@ New language features are typically described using informal language feature sp
   * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
 
 
-## Dart 1
+## Dart 1.x
 
-The formal Dart 1 language specification is available from
+The formal Dart 1.x language specification is available from
 the Ecma International website:
 
 * <a href="https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"

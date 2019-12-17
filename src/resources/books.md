@@ -11,13 +11,13 @@ If you find another one that we should add,
 
 We don't know of any Dart 2 books yet.
 Check back later to see the latest updates.
-For information on converting Dart 1 code to Dart 2, see the
+For information on converting Dart 1.x code to Dart 2, see the
 [Dart 2 migration guide](/dart-2).
 
 
-## Dart 1
+## Dart 1.x
 
-The following books cover Dart 1.
+The following books cover Dart 1.x.
 
 {% for book in site.data.books %}
 <div class="book-img-with-details row">

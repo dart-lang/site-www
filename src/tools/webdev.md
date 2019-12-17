@@ -16,7 +16,7 @@ The only time most web app developers run `build_runner` is for tests.
 
 <aside class="alert alert-info" markdown="1">
   **Dart 2 note:**
-  The `webdev` tool replaces the Dart 1 `pub build` and `pub serve` commands.
+  The `webdev` tool replaces the Dart 1.x `pub build` and `pub serve` commands.
 </aside>
 
 ## Setup

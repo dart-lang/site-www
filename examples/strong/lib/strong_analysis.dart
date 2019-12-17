@@ -7,7 +7,7 @@ void _miscDeclAnalyzedButNotTested() {
   {
     // #docregion dart-2-note
     var i = 1;
-    // i is dynamic in Dart 1
+    // i is dynamic in Dart 1.x
     // i is inferred as int in Dart 2
 
     dynamic x = 1;
