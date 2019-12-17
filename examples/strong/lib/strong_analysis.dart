@@ -5,17 +5,6 @@ import 'animal.dart';
 
 void _miscDeclAnalyzedButNotTested() {
   {
-    // #docregion dart-2-note
-    var i = 1;
-    // i is dynamic in Dart 1.x
-    // i is inferred as int in Dart 2
-
-    dynamic x = 1;
-    x = "Hello";
-    // #enddocregion dart-2-note
-  }
-
-  {
     // #docregion opening-example
     void printInts(List<int> a) => print(a);
 
