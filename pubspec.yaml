@@ -13,7 +13,6 @@ dev_dependencies:
   linkcheck: ^2.0.0+1
 
 dependency_overrides:
-  analyzer: 0.39.1
   code_excerpt_updater:
     git: https://github.com/chalin/code_excerpt_updater.git
     # path: ../code_excerpt_updater
