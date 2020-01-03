@@ -1783,6 +1783,8 @@ you're trying to express.
 
 ### AVOID defining custom equality for mutable classes.
 
+{% include linter-rule.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
+
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
 implies the object's hash code can change.
