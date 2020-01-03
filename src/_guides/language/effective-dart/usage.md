@@ -1335,6 +1335,8 @@ one of the core Exception classes or some other type.
 
 ### DON'T explicitly catch `Error` or types that implement it.
 
+{% include linter-rule.html rule="avoid_catching_errors" %}
+
 This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
 you can locate and fix the bug.
