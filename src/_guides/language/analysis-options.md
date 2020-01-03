@@ -243,7 +243,7 @@ include: package:pedantic/analysis_options.yaml
 
 To enable the list of linter rules corresponding to the Effective Dart guide, add a dev dependency on the [effective_dart package]({{site.pub-pkg}}/effective_dart) and include its `analysis_options.yaml` file.
 
-<?code-excerpt "analysis/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
+<?code-excerpt "analysis_effdart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
 ```yaml
 dev_dependencies:
   effective_dart: ^1.0.0
@@ -252,7 +252,7 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
-<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
+<?code-excerpt "analysis_effdart/analysis_options.yaml" from="include" retain="include:"?>
 ```yaml
 include: package:effective_dart/analysis_options.yaml
 ```
