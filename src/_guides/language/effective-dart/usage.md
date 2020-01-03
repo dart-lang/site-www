@@ -72,7 +72,7 @@ theoretically non-breaking point release of that package could break your code.
 
 ### PREFER relative paths when importing libraries within your own package's `lib` directory.
 
-{% include linter-rule.html rule="avoid_relative_lib_imports" %}
+{% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
 
 When referencing a library inside your package's `lib` directory from another
 library in that same package, either a relative URI or an explicit `package:`
