@@ -143,6 +143,13 @@ class VersionSelector {
           }
         }
 
+        if (name == 'Mac' && platformVariant.architecture == 'ia32') {
+          // No Mac 32-bit SDK builds >= 2.80
+          if (versionInfo.version > Version(2, 7, 0)) {
+            continue;
+          }
+        }
+
         var row = _table.tBodies.first.addRow()
           ..attributes['data-version'] = versionInfo.version.toString()
           ..attributes['data-os'] = archiveMap[name];
