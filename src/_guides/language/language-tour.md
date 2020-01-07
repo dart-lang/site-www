@@ -3291,7 +3291,7 @@ Here's an example of using an extension method on `String`
 named `parseInt()` that's defined in `string_apis.dart`:
 
 ```dart
-import string_apis.dart';
+import 'string_apis.dart';
 ...
 print('42'.padLeft(5)); // Use a String method.
 print('42'.parseInt()); // Use an extension method.
