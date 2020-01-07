@@ -59,6 +59,8 @@ part of my_library;
 
 ### DON'T import libraries that are inside the `src` directory of another package.
 
+{% include linter-rule.html rule="implementation_imports" %}
+
 The `src` directory under `lib` [is specified][package guide] to contain
 libraries private to the package's own implementation. The way package
 maintainers version their package takes this convention into account. They are
@@ -72,7 +74,7 @@ theoretically non-breaking point release of that package could break your code.
 
 ### PREFER relative paths when importing libraries within your own package's `lib` directory.
 
-{% include linter-rule.html rule="avoid_relative_lib_imports" %}
+{% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
 
 When referencing a library inside your package's `lib` directory from another
 library in that same package, either a relative URI or an explicit `package:`
@@ -731,6 +733,8 @@ The following best practices describe how to best use variables in Dart.
 
 ### DON'T explicitly initialize variables to `null`.
 
+{% include linter-rule.html rule="avoid_init_to_null" %}
+
 In Dart, a variable or field that is not explicitly initialized automatically
 gets initialized to `null`. This is reliably specified by the language. There's
 no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
@@ -1334,6 +1338,8 @@ one of the core Exception classes or some other type.
 
 
 ### DON'T explicitly catch `Error` or types that implement it.
+
+{% include linter-rule.html rule="avoid_catching_errors" %}
 
 This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so

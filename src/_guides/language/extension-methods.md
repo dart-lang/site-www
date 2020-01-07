@@ -8,10 +8,15 @@ You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-{% comment %}
-[PENDING: embed video here.]
-Watch this video for an introduction to extension methods.
-{% endcomment %}
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/D3j0OSfT9ZI"
+  frameborder="0"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+<em>If you like to learn by watching videos,
+here's a good overview of extension methods.</em>
+
 
 ## Overview
 
