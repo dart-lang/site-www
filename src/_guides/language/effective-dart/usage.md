@@ -59,6 +59,8 @@ part of my_library;
 
 ### DON'T import libraries that are inside the `src` directory of another package.
 
+{% include linter-rule.html rule="implementation_imports" %}
+
 The `src` directory under `lib` [is specified][package guide] to contain
 libraries private to the package's own implementation. The way package
 maintainers version their package takes this convention into account. They are
