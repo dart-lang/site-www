@@ -1890,7 +1890,7 @@ assert((value >> 4) == 0x02); // Shift right
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else](#if-and-else) statements:
 
-<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em>
+<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em></code>
 : If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
