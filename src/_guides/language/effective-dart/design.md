@@ -694,6 +694,8 @@ comment.
 
 ### DO use `mixin` to define a mixin type.
 
+{% include linter-rule.html rule="prefer_mixin" %}
+
 Dart originally didn't have a separate syntax for declaring a class intended to
 be mixed in to other classes. Instead, any class that met certain restrictions
 (no non-default constructor, no superclass, etc.) could be used as a mixin. This
@@ -729,6 +731,8 @@ syntax is preferred.
 
 
 ### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
+
+{% include linter-rule.html rule="prefer_mixin" %}
 
 For compatibility, Dart still allows you to mix in classes that aren't defined
 using `mixin`. However, that's risky. If the author of the class doesn't intend
