@@ -731,6 +731,8 @@ The following best practices describe how to best use variables in Dart.
 
 ### DON'T explicitly initialize variables to `null`.
 
+{% include linter-rule.html rule="avoid_init_to_null" %}
+
 In Dart, a variable or field that is not explicitly initialized automatically
 gets initialized to `null`. This is reliably specified by the language. There's
 no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
