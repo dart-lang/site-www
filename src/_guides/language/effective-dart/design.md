@@ -1193,6 +1193,8 @@ if (node is Constructor) {
 
 ### AVOID annotating inferred parameter types on function expressions.
 
+{% include linter-rule.html rule="avoid_types_on_closure_parameters" %}
+
 Anonymous functions are almost always immediately passed to a method taking a
 callback of some type. (If the function isn't used immediately, it's usually
 worth making it a named declaration.) When a function expression is created in a
