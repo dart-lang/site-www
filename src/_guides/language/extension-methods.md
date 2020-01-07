@@ -15,7 +15,7 @@ it suggests extension methods alongside regular methods.
   allowfullscreen>
 </iframe>
 <em>If you like to learn by watching videos,
-here's a good introduction to extension methods.</em>
+here's a good overview of extension methods.</em>
 
 
 ## Overview
