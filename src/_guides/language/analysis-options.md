@@ -239,11 +239,12 @@ include: package:pedantic/analysis_options.yaml
   or [disable individual rules][].
 {{site.alert.end}}
 
-### Enabling the set of rules corresponding to the Effective Dart guide: effective_dart {#enabling-effective-dart-rules}
+### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
 
-To enable the list of linter rules corresponding to the Effective Dart guide, add a dev dependency on the [effective_dart package]({{site.pub-pkg}}/effective_dart) and include its `analysis_options.yaml` file.
+To enable linter rules corresponding to the guidelines in [Effective Dart][],
+add a dev dependency on the [effective_dart package][]:
 
-<?code-excerpt "analysis_effdart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
+<?code-excerpt "analysis_effective_dart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
 ```yaml
 dev_dependencies:
   effective_dart: ^1.0.0
@@ -252,7 +253,7 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
-<?code-excerpt "analysis_effdart/analysis_options.yaml" from="include" retain="include:"?>
+<?code-excerpt "analysis_effective_dart/analysis_options.yaml" from="include" retain="include:"?>
 ```yaml
 include: package:effective_dart/analysis_options.yaml
 ```
@@ -483,5 +484,6 @@ Use the following resources to learn more about static analysis in Dart:
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
 [in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
-[in the effective_dart README]: {{site.pub-pkg}}/effective_dart#using-the-lints
 [disable individual rules]: #disabling-individual-rules
+[in the effective_dart README]: {{site.pub-pkg}}/effective_dart#using-the-lints
+[effective_dart package]: {{site.pub-pkg}}/effective_dart
