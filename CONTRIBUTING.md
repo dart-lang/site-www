@@ -71,3 +71,9 @@ If you create a PR but forget to edit the Dart file,
 or if your changes don't analyze/test cleanly,
 the Travis CI build will fail.
 Just update the PR, and Travis will try again.
+
+
+## A word about conduct 
+
+We pledge to maintain an open and welcoming environment.
+For details, see our [code of conduct](https://dart.dev/code-of-conduct).
