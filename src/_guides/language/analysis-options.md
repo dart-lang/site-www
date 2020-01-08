@@ -69,7 +69,7 @@ You can also configure the linter, one of the analyzer's plugins,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines in
-[Effective Dart](/guides/language/effective-dart). Dart tools such as the
+[Effective Dart][]. Dart tools such as the
 [Dart dev compiler (dartdevc),](/tools/dartdevc)
 [`dartanalyzer`,](/tools/dartanalyzer)
 [`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
@@ -242,7 +242,7 @@ include: package:pedantic/analysis_options.yaml
 ### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
 
 To enable linter rules corresponding to the guidelines in [Effective Dart][],
-add a dev dependency on the [effective_dart package][]:
+add a dev dependency on the [effective_dart package:][effective_dart]
 
 <?code-excerpt "analysis_effective_dart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
 ```yaml
@@ -486,4 +486,5 @@ Use the following resources to learn more about static analysis in Dart:
 [in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
 [disable individual rules]: #disabling-individual-rules
 [in the effective_dart README]: {{site.pub-pkg}}/effective_dart#using-the-lints
-[effective_dart package]: {{site.pub-pkg}}/effective_dart
+[effective_dart]: {{site.pub-pkg}}/effective_dart
+[Effective Dart]: /guides/language/effective-dart
