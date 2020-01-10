@@ -163,7 +163,7 @@ shows how to do that using a method called `firstWhere()`.
 You already saw that you can access the elements of an `Iterable` sequentially,
 and you can easily get the first or last element.
 
-Now, you learn how to use `firstWhere()` to find an element that
+Now, you learn how to use `firstWhere()` to find the first element that
 satisfies certain conditions. This method requires you to pass a _predicate_,
 which is a function
 that returns true if the input satisfies a certain condition.
@@ -352,15 +352,15 @@ width="100%" >
   **Quick review:**
   * Although you can use `for-in` loops to check conditions, there are better ways to do that.
   * The method `any()` enables you to check if any element matches a condition.
-  * The method `every()` enables you to verify if all elements match a condition.
+  * The method `every()` enables you to verify that all elements satisfy a condition.
 {{site.alert.end}}
 
 ## Filtering
 
-In the previous sections, you saw how using methods like `firstWhere()` or
-`singleWhere()` can help you find an element that matches a certain predicate.
+The previous sections cover methods like `firstWhere()` or
+`singleWhere()` that can help you find an element that satisfies a certain predicate.
 
-But, what if you want to find all the elements that match a certain condition?
+But what if you want to find all the elements that satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
@@ -368,7 +368,7 @@ You can accomplish that using the `where()` method.
 Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
 
-In this example, `numbers` contains an `Iterable` with multiple `int`, and 
+In this example, `numbers` contains an `Iterable` with multiple `int` values, and
 `where()` finds all the numbers that are even.
 
 The output of `where()` is another `Iterable`, and you can use it as such to iterate
@@ -400,11 +400,11 @@ methods like `any()`.
 In this example, `where()` is used to find all numbers that are even, then
 `any()` is used to check if the results contain a negative number.
 
-Then, in the example, `where()` is used again to find all numbers larger than `1000`.
+Later in the example, `where()` is used again to find all numbers larger than `1000`.
 Because there are none, the result is an empty `Iterable`.
 
 {{site.alert.note}}
-  If no element matches the predicate in `where()`, the method returns an empty
+  If no element satisfies the predicate in `where()`, the method returns an empty
   `Iterable`. Unlike `singleWhere()` or `firstWhere()`, `where()` doesn't throw a
    [StateError][StateError class] exception.
 {{site.alert.end}}
@@ -427,17 +427,17 @@ containing numbers.
 </iframe>
 
 In this example, `takeWhile()` returns an `Iterable` that contains all the elements
-leading to the element that matches the predicate.
+leading to the element that satisfies the predicate.
 On the other hand, `skipWhile()` 
-returns an `Iterable` while skipping all the elements before the one that matches the predicate.
-Note that the element that matches the predicate is also included.
+returns an `Iterable` while skipping all the elements before the one that satisfies the predicate.
+Note that the element that satisfies the predicate is also included.
 
 After running the example, change `takeWhile()` to take elements until it reaches
 the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart %}
-Iterable<int> numbersUntilNegative =
+var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
 
