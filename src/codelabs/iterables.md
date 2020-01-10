@@ -321,16 +321,9 @@ satisfies a certain condition.
 ### Exercise: Verify that an Iterable satisfies a condition
 
 The following exercise provides practice using the `any()` and `every()` methods, described
-in the previous example. In this case, there's a list of users with the class `User`
-with the member field `age`.
-
-<?code-excerpt "iterables/lib/user.dart"?>
-{% prettify dart %}
-class User {
-  String name;
-  int age;
-}
-{% endprettify %}
+in the previous example.
+In this case, you work with a group of users,
+represented by `User` objects that have the member field `age`.
 
 Use `any()` and `every()` to implement two functions:
 
@@ -540,26 +533,18 @@ width="100%" >
 
 It’s time to practice what you learned, in one final exercise.
 
-This exercise provides the class `EmailAddress` with a constructor that takes a `String`:
+This exercise provides the class `EmailAddress`,
+which has a constructor that takes a string.
+Another provided function is `isValidEmailAddress()`,
+which tests whether an email address is valid.
 
-<?code-excerpt "iterables/lib/email.dart"?>
-{% prettify dart %}
-class EmailAddress {
-  EmailAddress(this.address);
-
-  String address;
-}
-{% endprettify %}
-
-This exercise also provides the function `isValidEmailAddress()`,
-which you can use to test whether an address is valid.
-
-|------------------------------------------+-----------------------------------|
-| Function type signature                  | Description                       |
-|------------------------------------------|-----------------------------------|
-| `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
-|------------------------------------------+-----------------------------------|
-{:.table}
+|----------------------+-------------------+-----------------------------------|
+| Constructor/function | Type signature    | Description                       |
+|----------------------|-------------------|-----------------------------------|
+| EmailAddress() | `EmailAddress(String address)` | Creates an `EmailAddress` for the specified address. | 
+| isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
+|----------------------+-------------------+-----------------------------------|
+{:.table .table-striped}
 
 Write the following code:
 
