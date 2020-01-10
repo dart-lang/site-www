@@ -255,7 +255,7 @@ you can check the class documentation for help.
 
 ## Checking conditions
 
-When working with `Iterable`, sometimes you need to verify that the elements of a collection
+When working with `Iterable`, sometimes you need to verify that all of the elements of a collection
 satisfy some condition.
 
 You might be tempted to write a solution using a `for-in` loop like this one:
