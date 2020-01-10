@@ -437,7 +437,7 @@ the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart %}
-Iterable<int> numbersUntilNegative =
+var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
 

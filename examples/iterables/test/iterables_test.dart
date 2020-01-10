@@ -85,7 +85,7 @@ void main() {
     test('takeWhile_example', () {
       final numbers = [1, 2, 3, -1, 4, 5];
       // #docregion takewhile
-      Iterable<int> numbersUntilNegative =
+      var numbersUntilNegative =
           numbers.takeWhile((number) => !number.isNegative);
       // #enddocregion takewhile
       expect(numbersUntilNegative, [1, 2, 3]);
