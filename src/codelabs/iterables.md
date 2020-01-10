@@ -19,7 +19,7 @@ of the [Dart syntax](/samples).
 This codelab covers the following material:
 
 * How to read elements of an Iterable.
-* How to check if the elements of an Iterable match a condition.
+* How to check if the elements of an Iterable satisfy a condition.
 * How to filter the contents of an Iterable.
 * How to map the contents of an Iterable to a different value.
 
@@ -155,7 +155,7 @@ Also, with the `Iterable` class, you can't use the operator `[]` to access the l
 
 In this example, you saw how to use `first` and `last` to get the first
 and last elements of an `Iterable`. It's also possible to
-find the first element that matches a condition. The next section
+find the first element that satisfies a condition. The next section
 shows how to do that using a method called `firstWhere()`.
 
 ### Example: Using firstWhere()
@@ -214,7 +214,7 @@ condition.
   * The elements of an `Iterable` must be accessed sequentially.
   * The easiest way to iterate through all the elements is using a `for-in` loop.
   * You can use the `first` and `last` getters to get the first and last elements.
-  * You can also find the first element that matches a condition with `firstWhere()`.
+  * You can also find the first element that satisfies a condition with `firstWhere()`.
   * You can write test predicates as expressions, blocks, or functions.
 
 **Key terms:**
@@ -228,7 +228,7 @@ Your task is to complete the exercise by writing code to make the tests pass.
 You don't need to implement `main()`.
 
 This exercise introduces `singleWhere()`. This method works similarly to `firstWhere()`, but
-in this case, it expects only one element of the `Iterable` to match the predicate.
+in this case, it expects only one element of the `Iterable` to satisfy the predicate.
 If more than one or no element in the `Iterable` satisfies the predicate condition, then the
 method throws a [StateError][StateError class] exception.
 
@@ -315,7 +315,7 @@ if (items.any((element) => element.contains('Z'))) {
 {% endprettify %}
 
 You can also use `any()` to verify that no element of an `Iterable`
-matches a certain condition.
+satisfies a certain condition.
 
 
 ### Exercise: Verify that an Iterable satisfies a condition
@@ -351,7 +351,7 @@ width="100%" >
 {{site.alert.secondary}}
   **Quick review:**
   * Although you can use `for-in` loops to check conditions, there are better ways to do that.
-  * The method `any()` enables you to check if any element matches a condition.
+  * The method `any()` enables you to check if any element satisfies a condition.
   * The method `every()` enables you to verify that all elements satisfy a condition.
 {{site.alert.end}}
 
