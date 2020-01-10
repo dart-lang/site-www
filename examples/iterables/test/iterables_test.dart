@@ -95,7 +95,7 @@ void main() {
       final numbers = [1, 2, 3, 4];
       // #docregion where
       // #docregion where-for
-      Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
+      var evenNumbers = numbers.where((number) => number.isEven);
       // #enddocregion where
       for (var number in evenNumbers) {
         print('$number is even');
