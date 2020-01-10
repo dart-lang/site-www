@@ -365,7 +365,7 @@ You can accomplish that using the `where()` method.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
 {% prettify dart %}
-Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
+var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
 
 In this example, `numbers` contains an `Iterable` with multiple `int` values, and
@@ -377,7 +377,7 @@ is used directly inside the `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart %}
-Iterable<int> evenNumbers = numbers.where((number) => number.isEven);
+var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
   print('$number is even');
 }
@@ -437,7 +437,7 @@ the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart %}
-var numbersUntilNegative =
+Iterable<int> numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
 
