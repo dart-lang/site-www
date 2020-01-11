@@ -242,7 +242,7 @@ Your goal is to implement the predicate for `singleWhere()` that satisfies the f
 * The element contains the character `'a'`.
 * The element starts with the character `'M'`.
 
-All the elements in the test data are [strings;][String class]
+All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
 [//]: https://gist.github.com/241c6bc591f9436a9be0116724222953
