@@ -14,7 +14,7 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
-  matrix:
+  jobs:
     - TASK="./tool/build.sh --check-links"
     - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
