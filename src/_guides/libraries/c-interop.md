@@ -57,26 +57,35 @@ The hello_world example has the following files:
 [TODO (https://github.com/dart-lang/site-www/issues/2219): Fix build instructions.]
 {% endcomment %}
 
-Building the C library creates two additional files:
+Building the C library creates several files,
+including a dynamic library file named
+`libhello.dylib` (macOS), `libhello.dll` (Windows), or
+`libhello.so` (Linux).
 
-| **Generated file** | **Description** |
-| hello_world.dylib | The dynamic library loaded by the Dart app. |
-| hello_library/hello.o | An intermediate object file. |
-{:.table .table-striped }
 
 ### Building and running
 
 Here's an example of building the dynamic library and executing the Dart app:
 
 ```terminal
-$ cd c
-$ make dylib
-gcc -dynamiclib -undefined suppress -flat_namespace hello.o -o ../hello_world.dylib
+$ cd hello_library
+$ cmake .
+...
+$ make
+...
 $ cd ..
 $ dart hello.dart
 Hello World
-$
 ```
+
+{{site.alert.info}}
+  **On macOS,** the Dart VM (`dart`) can load only **signed libraries.**
+  For details and workarounds,
+  see [SDK issue #38314.][38314]
+{{site.alert.end}}
+
+[38314]: https://github.com/dart-lang/sdk/issues/38314
+  
 
 ### Using dart:ffi
 
