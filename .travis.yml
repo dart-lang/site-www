@@ -19,6 +19,11 @@ env:
     - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
 
+matrix:
+  allow_failures:
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
+    
 before_install:
   - source ./tool/env-set.sh
   - ./tool/before-install.sh
