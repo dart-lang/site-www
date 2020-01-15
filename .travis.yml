@@ -21,7 +21,8 @@ env:
 
 matrix:
   allow_failures:
-    - env: TRAVIS_DART_VERSION=dev
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
     
 before_install:
   - source ./tool/env-set.sh
