@@ -14,14 +14,14 @@ env:
   global:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
-  jobs:
+  matrix:
     - TASK="./tool/build.sh --check-links"
     - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
 
-jobs:
+matrix:
   allow_failures:
-    - env: TASK="./tool/analyze-and-test-examples.sh" TRAVIS_DART_VERSION=dev
+    - env: TRAVIS_DART_VERSION=dev
     
 before_install:
   - source ./tool/env-set.sh
