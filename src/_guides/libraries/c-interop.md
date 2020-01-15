@@ -46,24 +46,22 @@ The hello_world example has the following files:
 | **Source file** | **Description** |
 | [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
 | [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.5. |
-| [c/hello.h]({{ page.hw}}/c/hello.h) | Declares the `hello_world()` function. |
-| [c/hello.c]({{ page.hw}}/c/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
-| [c/Makefile]({{ page.hw}}/c/Makefile) | A macOS-specific build file that compiles the C code into a dynamic library. |
+| [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
+| [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 {:.table .table-striped }
 
 {% comment %}
-[PENDING: say something about setup.sh? It doesn't seem necessary for this example, but maybe it's needed by other examples?]
-
-<!--
-  | [setup.sh]({{ page.hw}}/setup.sh) | A macOS-specific script that sets an environment variable. [PENDING: Omit from this list? Why is it necessary? I didn't seem to need it.] |
--->
+[PENDING: say something about other files, like setup.sh?]
+[PENDING: clarify that the build instructions reflect Mac.]
+[TODO (https://github.com/dart-lang/site-www/issues/2219): Fix build instructions.]
 {% endcomment %}
 
 Building the C library creates two additional files:
 
 | **Generated file** | **Description** |
 | hello_world.dylib | The dynamic library loaded by the Dart app. |
-| c/hello.o | An intermediate object file. |
+| hello_library/hello.o | An intermediate object file. |
 {:.table .table-striped }
 
 ### Building and running
