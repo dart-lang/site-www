@@ -1,71 +1,60 @@
 ---
-layout: default
 permalink: /community
-title: "Community and Support"
-description: "Communities, mailing lists, and bug databases for the Dart project."
+title: Community and support
+description: Communities, mailing lists, and bug databases for the Dart project.
 ---
 
-Track the Dart project and join the conversation in a variety of ways.
+Track the Dart project, get help, and talk with other Dart developers.
 
-Also see:
+We pledge to maintain an open and welcoming environment.
+For details, see our [code of conduct](/code-of-conduct).
 
-* [Community and Support]({{site.webdev}}/community) on Dart webdev
-* [Dart Academy](https://dart.academy/), which contains a collection of tutorials
-  and articles written by the Dart community
+
+## Stay informed
+
+* [Dart announce]({{site.group}}/d/forum/announce) -
+  Low traffic announcements of new releases, breaking changes,
+  and other important news. Recommended!
+* [@dart_lang](https://twitter.com/dart_lang) -
+  The official Twitter account.
 
 ## Join the conversation
 
-Dart is an open-source project, and we look forward to hearing from you.
-
-#### General
-
-* [Discussion](https://groups.google.com/a/dartlang.org/d/forum/misc)
-* [Google+ page](https://plus.google.com/+dartlang)
-* [Twitter](https://twitter.com/dart_lang)
-* [Bugs and feature requests](https://github.com/dart-lang/sdk/issues/new)
+Get answers and connect with Dart developers.
 
 #### Communities
 
-* [StackOverflow](http://stackoverflow.com/tags/dart)
-* [Reddit](https://www.reddit.com/r/dartlang)
-* [Dartisans on Google+](http://g.co/dartisans)
-* [Dartosphere blog aggregator](http://dartosphere.org)
-* [Slack](https://dartlang.slack.com/) ([register](https://dartlang-slack.herokuapp.com/))
+* [StackOverflow](https://stackoverflow.com/tags/dart) -
+  The best place for how-to questions.
+* [Gitter](https://gitter.im/dart-lang/home) -
+  Chat with Dart team and community members.
+* [Dart on Reddit](https://www.reddit.com/r/dartlang)
 
-#### Targeted discussion groups
+#### Google Groups
 
-* [Dart plugin for JetBrains editors](https://groups.google.com/a/dartlang.org/d/forum/jetbrains-dart-plugin-discuss) (WebStorm, IntelliJ)
-* [Dart VM developers](https://groups.google.com/a/dartlang.org/d/forum/vm-dev)
-* [Dart analyzer](https://groups.google.com/a/dartlang.org/d/forum/analyzer-discuss)
-* [Server-side Dart](https://groups.google.com/a/dartlang.org/d/forum/cloud)
-* [Dart plugin for Atom](https://gitter.im/dart-atom/dartlang) (Gitter chat)
-
-Also see channels in the Slack community.
-
-## Track the project
-
-These lists are read only.
-
-* [news.dartlang.org](http://news.dartlang.org)<br>
-  Official news feed for the Dart project.
-
-* [announce@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/announce)<br>
-  Low traffic announcements of new releases, breaking changes,
-  and other important news. Recommended!
-
-* [reviews@dartlang.org](https://groups.google.com/a/dartlang.org/d/forum/reviews)<br>
-  High-traffic list of all comments and code reviews from the main
-  Dart repo.
+* [General discussions]({{site.group}}/d/forum/misc)
+* [Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
 
 ## Contribute
 
 Dart is open source. Learn how to
-[contribute to the core SDK](https://github.com/dart-lang/sdk/wiki/Contributing).
+[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)
+
+* [Dart GitHub repositories](https://github.com/dart-lang/)
+  * [Core SDK](https://github.com/dart-lang/sdk/)
+    ([issue tracker](https://github.com/dart-lang/sdk/issues/))
+  * [This site](https://github.com/dart-lang/site-www/)
+    ([issue tracker](https://github.com/dart-lang/site-www/issues/))
+* [Dart reviews]({{site.group}}/d/forum/reviews) -
+  High-traffic list of all core SDK code reviews.
 
 ## Additional community resources
 
-Our wonderful community has provided these
-(unofficial, unsupported) resources.
+Our wonderful community has provided these resources.
 
-* [Resources for Chinese developers](http://www.dartlang.cc/support/for-chinese.html)
-* [dartdocs.org: documentation for pub packages](http://www.dartdocs.org)
+* [Dart Academy](https://dart.academy/) - Tutorials
+  and articles written by the Dart community
+* [Chinese version of this site (此网站的中文版)](https://www.dartdoc.cn)
+
+Also see the [Flutter community page.]({{site.flutter}}/community)
+

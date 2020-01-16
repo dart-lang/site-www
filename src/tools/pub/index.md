@@ -1,68 +1,16 @@
 ---
-layout: default
-title: "Pub Package and Asset Manager"
-description: "Use the pub tool to manage Dart's packages and assets."
-short-title: "Pub"
-permalink: /tools/pub
+title: The pub tool
+description: Pub, a package management tool for Dart, supports a variety of commands.
 ---
 
-You can use the `pub` tool to manage Dart packages and assets.
-Pub also includes commands for creating, developing, and deploying Dart
-applications. When you [install](/install) the Dart SDK,
-one of the tools that you get is `pub`.
+The `pub` tool has commands for managing packages
+and for deploying packages and command-line apps.
+For general information about using the pub package manager, see
+[how to use packages](/guides/packages).
 
-<aside class="alert alert-info" markdown="1">
-**Hey!**
-Want to make your Dart script available from the command line?
-You can do this using `pub global activate`. For more information, see
-[Running a script from your PATH](/tools/pub/cmd/pub-global).
-</aside>
+{% include flutter-packages.md %}
 
-You can access the `pub` commands either through an IDE,
-such as WebStorm, or at the command line.
-Use whatever approach is most convenient.
-
-<aside class="alert alert-info" markdown="1">
-**Problems?**
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
-
-## Managing packages
-
-Dart applications rely on packages. If your Dart app uses one or
-more library packages, then your app itself must be an
-application package.
-
-### How to
-
-* [Getting Started with Pub](/tools/pub/get-started)
-* [Create Library Packages](/guides/libraries/create-library-packages)
-* [Installing and Configuring Pub](/tools/pub/installing)
-* [Publishing a Package](/tools/pub/publishing)
-
-### Concepts
-
-* [Pub Dependencies](/tools/pub/dependencies)
-* [Pub Package Layout Conventions](/tools/pub/package-layout)
-* [Pub Assets and Transformers](/tools/pub/assets-and-transformers)
-* [Pub Versioning Philosophy](/tools/pub/versioning)
-
-### Reference
-
-* [Pubspec Format](/tools/pub/pubspec)
-* [FAQ](/tools/faq#pub)
-* [Glossary](/tools/pub/glossary)
-
-## Pub commands
-
-The `pub` tool provides commands for a variety of purposes.
-One command installs packages, another starts up an HTTP server for testing,
-another prepares your app for deployment, and another
-publishes your package to [pub.dartlang.org](https://pub.dartlang.org).
-
-For an overview of these commands, see [Pub Commands](/tools/pub/cmd).
-
-The following reference pages cover each command in detail:
+Quick links to the `pub` commands:
 
 * [`pub cache`](/tools/pub/cmd/pub-cache)
 * [`pub deps`](/tools/pub/cmd/pub-deps)
@@ -74,29 +22,121 @@ The following reference pages cover each command in detail:
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 * [`pub uploader`](/tools/pub/cmd/pub-uploader)
 
-In addition to these commands, there are two pub commands specific
-to web development. See [Dart webdev]({{site.webdev}}/tools) for more
-information.
+<aside class="alert alert-info" markdown="1">
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+</aside>
 
-## Writing transformers
+Pub's commands fall into the following categories:
 
-When `pub` serves or builds an app, it can run one or more
-transformers&mdash;for example, one transformer converts Dart
-files into a single JavaScript file.
+* [Managing package dependencies](#managing-apps)
+* [Running command-line apps](#running-command-line-apps)
+* [Deploying packages and apps](#deploying-packages-and-apps)
 
-Transformers operate on assets, where an asset is
-a resource, such as a Dart file, a CSS file, or an
-image, that is intended to be part of a deployed package.
 
-The following pages cover how to write a custom transformer:
+<a id="managing-apps"></a>
+## Managing package dependencies
 
-* [Writing a Pub Transformer](/tools/pub/transformers)
-* [Writing an Aggregate Transformer](/tools/pub/transformers/aggregate)
-* [Writing a Lazy Transformer](/tools/pub/transformers/lazy-transformer)
-* [Examples of Transformer Code](/tools/pub/transformers/examples)
-* [Barback - Can We Build It? Yes, We Can!](https://docs.google.com/a/google.com/document/d/1juHkCRg-1YH6LvwhGPHgF2ihX-UQtR1fv-8aknO7t_4/edit?pli=1#)
+Pub provides a number of commands for managing the
+[packages your code depends on](/tools/pub/dependencies).
 
-## Troubleshooting
+In this group, the most commonly used commands are `pub get` and
+`pub upgrade`, which retrieve or upgrade dependencies used by a package.
+Every time you modify a pubspec file, run `pub get`
+to make sure the dependencies are up to date. Some IDEs
+perform this step automatically on the creation of a project,
+or any modification of the pubspec.
 
-[Troubleshooting Pub](/tools/pub/troubleshoot) gives solutions to problems that
-you might encounter when using pub.
+[`pub cache`](/tools/pub/cmd/pub-cache)
+: Manages pub's local package cache. Use this command to add packages
+  to your cache, or to perform a clean reinstall of all packages in
+  your cache.
+
+[`pub deps`](/tools/pub/cmd/pub-deps)
+: Lists all dependencies used by the current package.
+
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade)
+: Retrieves the lowest versions of all the packages that are
+  listed as dependencies used by the current package. Used for testing
+  the lower range of your package's dependencies.
+
+[`pub get`](/tools/pub/cmd/pub-get)
+: Retrieves the packages that are listed as the dependencies for
+  the current package.
+  If a `pubspec.lock` file already exists, fetches the version
+  of each dependency (if possible) as listed in the lock file.
+  Creates or updates the lock file, as needed.
+
+[`pub upgrade`](/tools/pub/cmd/pub-upgrade)
+: Retrieves the latest version of each package listed
+  as dependencies used by the current package. If a `pubspec.lock`
+  file exists, ignores the versions listed in the lock file and fetches
+  the newest versions that honor the constraints in the pubspec.
+  Creates or updates the lock file, as needed.
+
+
+## Running command-line apps
+
+Two commands let you run Dart scripts from the command line:
+
+* The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
+  package, or in one of its dependencies.
+
+* The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
+  globally available packages.
+
+## Deploying packages and apps
+
+With pub you can publish packages and command-line apps.
+
+{% include tools/pub-was-a-builder.md %}
+
+### Packages
+
+To share your Dart packages with the world, you can
+use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
+package to the [pub.dev site]({{site.pub}}). The
+[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
+users to modify and upload new versions of your package.
+
+### Command-line apps
+
+For any package that contains scripts (anything under the `bin/`
+directory), consider adding the `executables` tag to the pubspec file.
+When a script is listed under `executables`, users can run
+[`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
+to make it directly available from the command line.
+
+---
+
+## Global options
+
+Several command-line options work with all of the pub commands.
+These include:
+
+`--help` or `-h`
+: Print usage information.
+
+`--version`
+: Print version of pub.
+
+`--trace`
+: Print debugging information when an error occurs.
+
+`--verbosity=<level>`
+: The specified level determines the amount of information that is displayed:
+
+* `all`
+: Show all output, including internal tracing messages.
+
+* `io`
+: Show I/O operations.
+
+* `normal`
+: Show errors, warnings, and user messages.
+
+* `solver`
+: Show steps during version resolution.
+
+`-verbose` or `-v`
+: Equivalent to `--verbosity=all`.

@@ -1,19 +1,36 @@
-- title: Quick Start
+- title: Samples & tutorials
+  expanded: false
   children:
-    - title: Get Started
-      permalink: /guides/get-started
-    - title: Sample Code
+    - title: Language samples
       permalink: /samples
+    - title: Codelabs
+      expanded: true
+      children:
+        - title: List of Dart codelabs
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /codelabs
+        - title: Language cheatsheet
+          permalink: /codelabs/dart-cheatsheet
+        - title: Iterable collections
+          permalink: /codelabs/iterables
+        - title: Asynchronous programming
+          permalink: /codelabs/async-await
+    - title: Tutorials
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /tutorials
 
 - title: Language
+  expanded: false
   children:
-    - title: "Overview"
-      permalink: /guides/language
-    - title: "Tour"
-      permalink: /guides/language/language-tour
-    - title: "Effective Dart"
-      permalink: /guides/language/effective-dart
+    - title: Effective Dart
+      expanded: false
       children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /guides/language/effective-dart
         - title: Style
           permalink: /guides/language/effective-dart/style
         - title: Documentation
@@ -22,40 +39,225 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+    - title: Extension methods
+      permalink: /guides/language/extension-methods
+    - title: Specification
+      permalink: /guides/language/spec
+    - title: Tour
+      permalink: /guides/language/language-tour
+    - title: Type system
+      permalink: /guides/language/sound-dart
 
-- title: Libraries
+- title: Core libraries
+  expanded: false
   children:
     - title: Overview
+      urlExactMatch: true
+      match-page-url-exactly: true
       permalink: /guides/libraries
     - title: Tour
       permalink: /guides/libraries/library-tour
+    - title: Articles
+      children:
+        - title: Intro to dart:io
+          permalink: /articles/libraries/dart-io
+        - title: Creating streams
+          permalink: /articles/libraries/creating-streams
 
-- title: "Tools"
+- title: Packages
+  expanded: false
   children:
-  - title: "Dart Tools"
+    - title: How to use packages
+      permalink: /guides/packages
+    - title: Commonly used packages
+      permalink: /guides/libraries/useful-libraries
+    - title: Creating packages
+      permalink: /guides/libraries/create-library-packages
+    - title: Publishing packages
+      permalink: /tools/pub/publishing
+    - title: Package reference
+      expanded: false
+      children:
+        - title: Dependencies
+          permalink: /tools/pub/dependencies
+        - title: Glossary
+          permalink: /tools/pub/glossary
+        - title: Package layout conventions
+          permalink: /tools/pub/package-layout
+        - title: Pub environment variables
+          permalink: /tools/pub/environment-variables
+        - title: Pubspec file
+          permalink: /tools/pub/pubspec
+        - title: Troubleshooting pub
+          permalink: /tools/pub/troubleshoot
+        - title: Verified publishers
+          permalink: /tools/pub/verified-publishers
+        - title: Versioning
+          permalink: /tools/pub/versioning
+
+- title: Development
+  expanded: false
+  children:
+    - title: Futures, async, await
+      permalink: /codelabs/async-await
+    - title: Interoperability
+      children:
+        - title: C interop
+          permalink: /guides/libraries/c-interop
+        - title: JavaScript interop
+          permalink: /web/js-interop
+    - title: JSON
+      permalink: /guides/json
+    - title: Streams
+      permalink: /tutorials/language/streams
+    - title: Mobile apps
+      permalink: /mobile
+    - title: Command-line & server apps
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /server
+        - title: Get started
+          permalink: /tutorials/server/get-started
+        - title: Write command-line apps
+          permalink: /tutorials/server/cmdline
+        - title: Write HTTP clients & servers
+          permalink: /tutorials/server/httpserver
+        - title: Libraries and packages
+          permalink: /server/libraries
+    - title: Web apps
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /web
+        - title: Get started
+          permalink: /tutorials/web/get-started
+        - title: Fetch data dynamically
+          permalink: /tutorials/web/fetch-data
+        - title: Low-level web programming
+          children:
+          - title: Connect Dart & HTML
+            permalink: /tutorials/web/low-level-html/connect-dart-html
+          - title: Add elements to the DOM
+            permalink: /tutorials/web/low-level-html/add-elements 
+          - title: Remove DOM elements
+            permalink: /tutorials/web/low-level-html/remove-elements
+        - title: Deployment
+          permalink: /web/deployment
+        - title: Libraries and packages
+          permalink: /web/libraries
+
+- title: Tools & techniques
+  expanded: false
+  children:
+  - title: Overview
+    urlExactMatch: true
+    match-page-url-exactly: true
     permalink: /tools
-
-- title: "Community"
-  children:
-  - title: "Community and Support"
-    permalink: /community
-
-- title: "Platforms"
-  children:
-    - title: "Overview"
-      permalink: /guides/platforms
-    - title: "Web"
-      permalink: https://webdev.dartlang.org/
-#     permalink: http://localhost:4001/
-    - title: "Mobile (Flutter)"
-      permalink: https://flutter.io/
+  - title: Editors & debuggers
+    children:
+      - title: IntelliJ & Android Studio
+        permalink: /tools/jetbrains-plugin
+      - title: VS Code 
+        permalink: /tools/vs-code
+      - title: Dart DevTools
+        permalink: /tools/dart-devtools
+      - title: DartPad
+        permalink: /tools/dartpad
+  - title: Command-line tools
+    children:
+    - title: Dart SDK
+      expanded: true
       children:
-      - title: "API Reference"
-        permalink: http://docs.flutter.io/flutter/
-    - title: "Dart VM"
-      permalink: /dart-vm
+        - title: Overview
+          permalink: /tools/sdk
+        - title: dart (Dart VM)
+          permalink: /tools/dart-vm
+        - title: dart2js (prod JS)
+          permalink: /tools/dart2js
+        - title: dart2native
+          permalink: /tools/dart2native
+        - title: dartanalyzer
+          permalink: /tools/dartanalyzer
+        - title: dartaotruntime
+          permalink: /tools/dartaotruntime
+        - title: dartdevc (dev JS)
+          permalink: /tools/dartdevc
+        - title: dartdoc
+          permalink: /tools/dartdoc
+        - title: dartfmt
+          permalink: /tools/dartfmt
+        - title: pub
+          permalink: /tools/pub/cmd
+    - title: Other command-line tools
+      expanded: true
       children:
-      - title: "Install Dart"
-        permalink: /install
-      - title: "API Reference"
-        permalink: https://api.dartlang.org
+        - title: build_runner
+          permalink: /tools/build_runner
+        - title: webdev
+          permalink: /tools/webdev
+  - title: Managing source code
+    children:
+      - title: Formatting code
+        permalink: /guides/language/formatting
+      - title: What not to commit
+        permalink: /guides/libraries/private-files
+  - title: Static analysis
+    children:
+      - title: Customizing static analysis
+        permalink: /guides/language/analysis-options
+      - title: Fixing common type problems
+        permalink: /guides/language/sound-problems
+  - title: Testing & optimization
+    children:
+      - title: Testing
+        permalink: /guides/testing
+      - title: Debugging web apps
+        permalink: /web/debugging
+
+- title: Resources
+  expanded: false
+  children:
+    - title: Overview
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /resources
+    - title: Books
+      permalink: /resources/books
+    - title: Code of conduct
+      permalink: /code-of-conduct
+    - title: FAQ
+      permalink: /faq
+    - title: History
+      children:
+        - title: Migrating to Dart&nbsp;2
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /dart-2
+        - title: Migrating web apps to Dart&nbsp;2
+          permalink: /web/dart-2
+        - title: Obsolete pub features
+          permalink: /tools/pub/obsolete
+    - title: Videos
+      permalink: /resources/videos
+
+- title: Related sites
+  expanded: true
+  children:
+    - title: API reference
+      permalink: https://api.dart.dev
+    - title: Blog
+      permalink: https://medium.com/dartlang
+    - title: DartPad (online editor)
+      permalink: https://dartpad.dev
+    - title: Flutter
+      permalink: https://flutter.dev
+    - title: Package site
+      permalink: https://pub.dev
+
+# - title: Books
+#   permalink: /resources/books
+# - title: Videos
+#   permalink: /resources/videos

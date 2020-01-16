@@ -1,4 +1,0 @@
-name: download_archive
-description: Display a list of downloads for www.dartlang.org.
-dependencies:
-  browser: any

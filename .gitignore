@@ -1,90 +1,37 @@
-.DS_Store
-build
-*.swp
-_site/
-node_modules/
-.sass-cache/
-_cache/
-_bookhtml
-scripts/packages
-.buildlog
-*.pyc
-pubspec.lock
-packages
-*.js.deps
-_asset_bundler_cache
-.pub
-.packages
-.idea
 *.iml
+*.js.deps
+*.pyc
+*.swp
+.buildlog
+.dart_tool
+.DS_Store
+.idea
+.packages
+.pub
+.*-cache/
+.vscode
+.spelling
+_asset_bundler_cache
+_bookhtml
+_cache/
+_site
+build
+node_modules/
+pubspec.lock
 
-!src/site/docs/spec/examples/lazyloader/packages/
-!src/site/samples/searchable_list/example/packages/
-!src/site/samples/tracker/example/packages/
-!src/site/samples/polymer_intl/example/packages/
-!src/site/samples/angular_todo/example/packages/
-!src/site/samples/recipe_book/example/web/packages/
-!src/site/samples/google_maps/example/packages/
-!src/site/samples/gauge/example/packages/
-!src/site/samples/jsonp/example/packages/
-!src/site/samples/swipe/example/packages/
-!src/site/samples/multi_touch/example/packages/
-!src/site/samples/geolocation/example/packages/
-!src/site/samples/helloworld/example/packages
-!src/site/samples/todomvc/example/packages/
-!src/site/codelabs/darrrt/examples/packages/
-!src/site/samples/appcache/example/packages/
-!src/site/samples/dnd/example/packages/
-!src/site/samples/dndfiles/example/packages/
-!src/site/samples/filesystem/example/packages/
-!src/site/samples/imagefilters/example/packages/
-!src/site/samples/localstorage/example/packages/
-!src/site/samples/notifications/example/packages/
-!src/site/samples/indexeddb_todo/example/packages/
-!src/site/samples/notifications/example/packages/
-!src/site/samples/raf/example/packages/
-!src/site/samples/solar/example/packages/
-!src/site/samples/solar3d/example/web/packages/
-!src/site/samples/terminal/example/packages/
-!src/site/samples/video/example/packages/
-!src/site/samples/webaudio/example/packages/
-!src/site/samples/websockets/example/packages/
+# We haven't had any issues due to npm (sub-)package version discrepancies,
+# so we'll ignore the npm lock file for now.
+package-lock.json
 
-!src/site/docs/tutorials/indexeddb/examples/count_down/out/web/packages/
-!src/site/docs/tutorials/forms/examples/slambook/out/web/packages/
-!src/site/docs/tutorials/fetchdata/examples/its_all_about_you/out/web/packages/
-!src/site/docs/tutorials/fetchdata/examples/portmanteaux_simple/packages/
-!src/site/docs/tutorials/polymer-intro/examples/stopwatch/out/web/packages/
-!src/site/docs/tutorials/get-started/examples/clickme/packages/
-!src/site/docs/tutorials/connect-dart-html/examples/mini/packages/
-!src/site/docs/tutorials/connect-dart-html/examples/mini_with_style/packages/
-!src/site/docs/tutorials/add-elements/examples/todo/packages/
-!src/site/docs/tutorials/add-elements/examples/anagram/packages/
-!src/site/docs/tutorials/remove-elements/examples/todo_with_delete/packages/
-!src/site/docs/tutorials/using-polymer/examples/using_paper_elements/web/packages/
-
-!src/site/tools/download-archive/out/web/packages/
 src/site/events/2015/summit/node_modules
 
-# ============= OCUPOP =============
-# RVM users
-.ruby-gemset
-.ruby-version
+/src/_data/ci.yaml
 
 # Cache files
-.sass-cache
-src/.asset-cache
+*.cache
 .jekyll-metadata
 
-# Deployment Files
-publish
-credentials.tar.gz
-client-secret.json
-tmp
-
 # Misc
+tmp
 trash
-Gemfile.lock
-
-
 firebase-debug.log

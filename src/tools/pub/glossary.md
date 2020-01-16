@@ -1,12 +1,11 @@
 ---
-layout: default
-title: "Glossary of Pub Terms"
-description: "A glossary of terms relating to Dart's package management tool, pub."
-permalink: /tools/pub/glossary
+title: Glossary of package terms
+description: A glossary of terms relating to Dart's package management tool, pub.
 ---
 
-The following terms are used in the documentation for the [pub](/tools/pub)
-tool.
+The following terms are used in the documentation for
+[packagement management](/guides/packages) and
+the [pub tool](/tools/pub/cmd).
 
 ## Application package
 
@@ -22,33 +21,6 @@ application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
 specify `any` for their dependencies' [version constraints](#version-constraint).
 
-## Asset
-
-A resource&mdash;Dart, HTML, JavaScript, CSS, image, or anything
-else&mdash;intended to be part of a deployed package. The package can be a web
-app, a package used by a web app, or any other package that benefits from a
-build step. Tools such as [`pub serve`]({{site.webdev}}/tools/pub/pub-serve)
-and [`pub build`]({{site.webdev}}/tools/pub/pub-build) take _source_ assets
-(such as an HTML file, a CSS file, and several Dart files)
-and produce _generated_ assets
-(such as the same HTML and CSS files, plus a single JavaScript file).
-
-Assets fall into four groups, with some overlap:
-
-* Source asset: An actual, authored file on disk that `pub build` and
-  `pub serve` can find and use.
-* Generated asset: An asset (possibly the output of a
-  [transformer](#transformer)) that's either served by `pub serve` or saved
-  to disk by `pub build`.
-* Input asset: An asset that is the input to a transformer. An input asset
-  might be a source asset, or it might be the output of a transformer in a
-  previous phase.
-* Output asset: An asset that is created by a transformer. An output asset
-  might be a generated asset, or it might be the input to a transformer in a
-  later phase.
-
-For more information, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
 
 ## Dependency
 
@@ -61,9 +33,9 @@ To see the dependencies used by a package, use [`pub deps`](/tools/pub/cmd/pub-d
 
 ## Entrypoint
 
-_Entrypoint_ is used to mean two things. In the general context of Dart, it is
+In the general context of Dart, an _entrypoint_ is
 a Dart library that is directly invoked by a Dart implementation. When you
-reference a Dart library in a `<script>` tag or pass it as a command line
+reference a Dart library in a `<script>` tag or pass it as a command-line
 argument to the standalone Dart VM, that library is the entrypoint. In other
 words, it's usually the `.dart` file that contains `main()`.
 
@@ -72,7 +44,7 @@ of a dependency graph. It will usually be an application. When you run your app,
 it's the entrypoint package. Every other package it depends on will not be an
 entrypoint in that context.
 
-A package can be an entrypoint in some contexts and not in others. Lets say your
+A package can be an entrypoint in some contexts and not in others. Say your
 app uses a library package A. When you run your app, A is not the entrypoint
 package. However, if you go over to A and execute its tests, in that
 context, it *is* the entrypoint since your app isn't involved.
@@ -94,19 +66,24 @@ All other dependencies are [transitive dependencies](#transitive-dependency).
 
 ## Library package
 
-A package that other packages will depend on. Library packages may have
-[dependencies](#dependency) on other packages *and* may be dependencies
-themselves. They may also include scripts that will be run directly. The
-opposite of a library package is an [application package](#application-package).
+A package that other packages can depend on. Library packages can have
+[dependencies](#dependency) on other packages *and* can be dependencies
+themselves. They can also include scripts to be run directly. The
+opposite of a library package is an [application package][].
 
-Library packages should not check their [lockfile](#lockfile) into source
-control, since they should support a range of dependency versions. Their
-[immediate dependencies](#immediate-dependency)' [version
-constraints](#version-constraint) should be as wide as possible while still
+[application package]: #application-package
+[lockfile]: #lockfile
+[version constraints]: #version-constraint
+[immediate dependencies]: #immediate-dependency
+
+Don't check the [lockfile][] of a library package into source
+control, since libraries should support a range of dependency versions. The
+[version constraints][] of a library package's
+[immediate dependencies][] should be as wide as possible while still
 ensuring that the dependencies will be compatible with the versions that were
 tested against.
 
-Since [semantic versioning](http://semver.org/spec/v2.0.0-rc.1.html) requires
+Since [semantic versioning](https://semver.org/spec/v2.0.0-rc.1.html) requires
 that libraries increment their major version numbers for any backwards
 incompatible changes, library packages will usually require their dependencies'
 versions to be greater than or equal to the versions that were tested and less
@@ -126,8 +103,8 @@ specific versions of packages. A lockfile ensures that you can recreate the
 exact configuration of packages used by an application.
 
 The lockfile is generated automatically for you by pub when you run
-[`pub get`](/tools/pub/cmd/pub-get.html), [`pub upgrade`](/tools/pub/cmd/pub-upgrade.html),
-or [`pub downgrade`](/tools/pub/cmd/pub-downgrade.html)..
+[`pub get`](/tools/pub/cmd/pub-get), [`pub upgrade`](/tools/pub/cmd/pub-upgrade),
+or [`pub downgrade`](/tools/pub/cmd/pub-downgrade).
 If your package is an application package, you will typically check this into
 source control. For library packages, you usually won't.
 
@@ -136,12 +113,12 @@ source control. For library packages, you usually won't.
 The declared versions of the Dart SDK itself that a package declares that it
 supports. An SDK constraint is specified using normal
 [version constraint](#version-constraint) syntax, but in a special _environment_
-section [in the pubspec](/tools/pub/pubspec.html#sdk-constraints).
+section [in the pubspec](/tools/pub/pubspec#sdk-constraints).
 
 ## Source
 
 A kind of place that pub can get packages from. A source isn't a specific place
-like pub.dartlang.org or some specific Git URL. Each source describes a general
+like the pub.dev site or some specific Git URL. Each source describes a general
 procedure for accessing a package in some way. For example, _git_ is one source.
 The git source knows how to download packages given a Git URL. Several
 different [supported sources](/tools/pub/dependencies#dependency-sources) are available.
@@ -149,36 +126,21 @@ different [supported sources](/tools/pub/dependencies#dependency-sources) are av
 ## System cache
 
 When pub gets a remote package,
-it downloads it into a single _system cache_ directory maintained by pub.
-On Mac and Linux, this directory defaults to `~/.pub-cache`.
-On Windows, it goes in `AppData\Roaming\Pub\Cache`.
+it downloads it into a single _system cache_ directory maintained by
+pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
+On Windows, the file lives in `%APPDATA%\Pub\Cache\bin`,
+though its exact location may vary depending on the Windows version.
 You can specify a different location using the
-[PUB_CACHE](/tools/pub/installing.html) environment variable.
+[PUB_CACHE](/tools/pub/environment-variables) environment variable.
 
 Once packages are in the system cache,
-pub creates symbolic links to the real packages in the system cache.
-As of 1.12, pub also creates a `.packages` file that maps each package
+pub creates a `.packages` file that maps each package
 used by your application to the corresponding package in the cache.
-
-{% include coming-release.html %}
 
 You only have to download a given version of a package once
 and can then reuse it in as many packages as you would like.
-You can delete and regenerate your `packages` directories
-or `.packages` file without having to access the network.
+You can delete and regenerate your `.packages` file without having to access the network.
 
-## Transformer
-
-For more information, see
-[Pub Assets and Transformers](/tools/pub/assets-and-transformers).
-
-A transformer is a Dart object that converts input [assets](#asset) (such as
-Dart files or Polymer-formatted HTML) into output assets (such as JavaScript
-and HTML). The [`pub build`]({{site.webdev}}/tools/pub/pub-build)
-command puts the generated assets into files.
-The [`pub serve`]({{site.webdev}}/tools/pub/pub-serve) command,
-on the other hand, doesn't produce files;
-its generated assets are served directly by the dev server.
 
 ## Transitive dependency
 
@@ -187,17 +149,31 @@ requires it. If your package depends on A, which in turn depends on B which
 depends on C, then A is an [immediate dependency](#immediate-dependency) and B
 and C are transitive ones.
 
+
 ## Uploader
 
-An uploader of a package is someone who has administrative permissions
-for that package. They can not only upload new versions of a package,
-but also [add and remove other uploaders](/tools/pub/cmd/pub-uploader.html)
-for that package. The uploader of a package is often, but not necessarily, the
-same as the [author](/tools/pub/pubspec.html#authorauthors) of a package.
+Someone who has administrative permissions for a package.
+A package uploader can upload new versions of the package,
+and they can also [add and remove other uploaders](/tools/pub/cmd/pub-uploader)
+for that package. 
 
-Anyone uploading a new package automatically becomes an uploader for
-that package. Otherwise, to become an uploader, you need to contact an
-existing uploader and ask them to add you as another uploader.
+If a package has a verified publisher,
+then all members of the publisher can upload the package.
+
+
+## Verified publisher
+
+One or more users who own a set of packages.
+Each verified publisher is identified by a verified domain name, such as
+**dart.dev**.
+For general information about verified publishers,
+see the [verified publishers page][].
+For details on creating a verified publisher
+and transferring packages to it,
+see the documentation for [publishing packages][].
+
+[verified publishers page]: /tools/pub/verified-publishers
+[publishing packages]: /tools/pub/publishing#verified-publisher
 
 ## Version constraint
 
@@ -215,4 +191,4 @@ should usually allow any version of their dependencies, since they use the
 [lockfile](#lockfile) to manage their dependency versions.
 
 For more information, see
-[Pub Versioning Philosophy](/tools/pub/versioning.html).
+[Pub Versioning Philosophy](/tools/pub/versioning).

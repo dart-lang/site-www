@@ -2,10 +2,15 @@
 
 require_relative 'urls/get_all'
 
+if !$FIREBASE_TOKEN
+  puts "#{$PROGRAM_NAME}: FIREBASE_TOKEN environment variable isn't defined. Skipping checks."
+  exit(0)
+end
+
 puts "===== Checking inbound links and redirects through HTMLProofer ====="
 
 puts "Spawning firebase server on localhost"
-pid = spawn("firebase serve --port #{$PORT}", :out => "/dev/null")
+pid = spawn("firebase serve --port #{$PORT} --token '#{$FIREBASE_TOKEN}' --project #{$FIREBASE_PROJECT}", :out => "/dev/null")
 puts "..."
 sleep 5
 

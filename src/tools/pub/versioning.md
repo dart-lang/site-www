@@ -1,16 +1,15 @@
 ---
-layout: default
-title: "Pub Versioning Philosophy"
+title: Package versioning
 description: "How Dart's package management tool, pub, handles versioning of packages."
-permalink: /tools/pub/versioning
 ---
 
-One of [pub](/tools/pub)'s main jobs is helping you work with versioning.
+One of the main jobs of the [pub package manager](/guides/packages)
+is helping you work with versioning.
 This document explains a bit about the history of versioning and pub's
 approach to it.
 Consider this to be advanced information. If you want a better picture of _why_
 pub was designed the way it was, read on. If you just want to _use_ pub,
-the [other docs](/tools/pub) will serve you better.
+the [other docs](/guides/packages) will serve you better.
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the
@@ -27,10 +26,11 @@ But this doesn't come for free: There's a challenge to code
 reuse, especially reusing code you don't maintain. When your app uses code
 being developed by other people, what happens when they change it?
 They don't want to break your app, and you certainly don't either.
+We solve this problem by _versioning_.
 
 ## A name and a number
 
-We solve this by _versioning_. When you depend on some piece of outside code,
+When you depend on some piece of outside code,
 you don't just say "My app uses `widgets`." You say, "My app uses
 `widgets 2.0.5`." That combination of name and version number uniquely
 identifies an _immutable_ chunk of code. The people updating `widgets` can
@@ -40,23 +40,25 @@ one whit because the version you use is unchanged.
 
 When you _do_ want to get those changes, you can always point your app to a
 newer version of `widgets` and you don't have to coordinate with those
-developers to do it. So, problem solved, right?
+developers to do it. However, that doesn't entirely solve the problem.
 
-## Shared dependencies and unshared libraries
+## Resolving shared dependencies
 
-Well, no. Depending on specific versions works fine when your dependency
+Depending on specific versions works fine when your dependency
 _graph_ is really just a dependency _tree_. If your app depends on a bunch of
 packages, and those things in turn have their own dependencies and so on, that
 all works fine as long as none of those dependencies _overlap_.
 
 But consider the following example:
 
-{% img 'tools/pub/PubConstraintsDiagram.png' %}
+{% asset tools/pub/PubConstraintsDiagram.png alt="dependency graph" %}
 
 So your app uses `widgets` and `templates`, and _both_ of those use
 `collection`. This is called a **shared dependency**. Now what happens when
 `widgets` wants to use `collection 2.3.5` and `templates` wants
 `collection 2.3.7`? What if they don't agree on a version?
+
+### Unshared libraries (the npm approach)
 
 One option is to just let the app use both
 versions of `collection`. It will have two copies of the library at different
@@ -84,7 +86,7 @@ isn't a good fit.
 
 [npm]: https://npmjs.org/
 
-## Version lock
+### Version lock (the dead end approach)
 
 Instead, when you depend on a package, your app only uses a single copy of
 that package. When you have a shared dependency, everything that depends on it
@@ -114,7 +116,7 @@ That's called **version lock**:
 everyone wants to move their dependencies forward,
 but no one can take the first step because it forces everyone else to as well.
 
-## Version constraints
+### Version constraints (the Dart approach)
 
 To solve version lock, we loosen the constraints that packages place on their
 dependencies. If `widgets` and `templates` can both indicate a _range_ of
@@ -123,7 +125,7 @@ wiggle room to move our dependencies forward to newer versions. As long as there
 is overlap in their ranges, we can still find a single version that makes them
 both happy.
 
-This is the model that [bundler](http://gembundler.com/) follows,
+This is the model that [bundler](https://gembundler.com/) follows,
 and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:
@@ -139,7 +141,7 @@ and `templates` have their constraints satisfied by a single concrete version.
 ## Semantic versions
 
 When you add a dependency to your package, you'll sometimes want to specify a
-range of versions to allow. How do you know what range to pick? You need to
+range of versions to allow. How do you know what range to pick? You need to be
 forward compatible, so ideally the range encompasses future versions that
 haven't been released yet. But how do you know your package is going to work
 with some new version that doesn't even exist yet?
@@ -148,7 +150,7 @@ To solve that, you need to agree on what a version number _means_.
 Imagine that the developers of a package you depend on say,
 "If we make any backwards incompatible change,
 then we promise to increment the major version number."
-If you trust them, then if you know your package works with `2.5.7` of theirs,
+If you trust them, then if you know your package works with `2.3.5` of theirs,
 you can rely on it working all the way up to `3.0.0`.
 You can set your range like:
 
@@ -167,7 +169,7 @@ to 3.0.0, not including 3.0.0." For more information, see
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and
-named it [*semantic versioning*](http://semver.org/spec/v2.0.0-rc.1.html).
+named it [*semantic versioning*](https://semver.org/spec/v2.0.0-rc.1.html).
 
 That describes the format of a version number, and the exact API behavioral
 differences when you increment to a later version number. Pub requires versions
@@ -253,7 +255,7 @@ dependencies:
   collection: '>=1.0.0 <2.0.0'
 {% endprettify %}
 
-The `other_app` package uses depends directly on `collection` itself. The
+The `other_app` package depends directly on `collection` itself. The
 interesting part is that it happens to have a different version constraint on
 it than `widgets` does.
 
@@ -269,10 +271,10 @@ containing app.
 
 ## Constraint solving for exported dependencies
 
-Package authors must define package contraints with care.
+Package authors must define package constraints with care.
 Consider the following scenario:
 
-{% img 'tools/pub/PubExportedConstraints.png' %}
+{% asset tools/pub/PubExportedConstraints.png alt="dependency graph" %}
 
 The `bookshelf` package depends on `widgets`.
 The `widgets` package, currently at 1.2.0, exports
@@ -292,18 +294,18 @@ dependencies:
 {% endprettify %}
 
 The `collection` package is then updated to 2.5.0.
-The 2.5.0 verion of `collection` includes a new method called `sortBackwards`.
-`bookshelf` may call `sortBackwards`,
+The 2.5.0 version of `collection` includes a new method called `sortBackwards()`.
+`bookshelf` may call `sortBackwards()`,
 because it's part of the API exposed by `widgets`,
 despite `bookshelf` having only a transitive dependency on `collection`.
 
 Because `widgets` has an API that is not reflected in its version number,
-the app that uses the `bookshelf` package and calls `sortBackwards` may crash.
+the app that uses the `bookshelf` package and calls `sortBackwards()` may crash.
 
 Exporting an API causes that API to be treated as if it is
 defined in the package itself, but it can't increase the version number when
 the API adds features. This means that `bookshelf` has no way of declaring
-that it needs a version of `widgets` that supports `sortBackwards`.
+that it needs a version of `widgets` that supports `sortBackwards()`.
 
 For this reason, when dealing with exported packages,
 it's recommended that the package's author keeps a tighter
@@ -346,7 +348,7 @@ find out.)
 
 The next important thing pub does is it _stops touching the lockfile_. Once
 you've got a lockfile for your app, pub won't touch it until you tell it to.
-This is important. It means you won't spontanteously start using new versions
+This is important. It means you won't spontaneously start using new versions
 of random packages in your app without intending to. Once your app is locked,
 it stays locked until you manually tell it to update the lockfile.
 
@@ -446,3 +448,7 @@ That was a lot of information, but here are the key points:
  *  Once your app has a solid set of versions for its dependencies, that gets
     pinned down in a _lockfile_. That ensures that every machine your app is
     on is using the same versions of all of its dependencies.
+
+If you'd like to know more about pub's version solving algorithm,
+see the article
+[PubGrub: Next-Generation Version Solving.](https://medium.com/@nex3/pubgrub-2fb6470504f)

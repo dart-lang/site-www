@@ -1,22 +1,37 @@
 # Site settings
 title: Dart
-description: "Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript."
-url: https://www.dartlang.org
-baseurl: "" # the subpath of your site, e.g. /blog/
-# permalink: /:path/:basename
+description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
+url: https://dart.dev
+dev-url: https://dartlang-org-dev.firebaseapp.com
+repo:
+  this: https://github.com/dart-lang/site-www
+  shared: &repo-shared https://github.com/dart-lang/site-shared
+branch: master
+port: 4000
 
 # Global variables
 # use case:
-#   {{site.webdev}}/downloads
+#   {{site.flutter}}/docs
 
-dartlang: ""
-webdev: "https://webdev.dartlang.org"
-# webdev: "http://localhost:4001"
-# webdev: "https://webdev-dartlang-org.firebaseapp.com"
-dart_vm:  "/dart-vm"
-flutter:  "https://flutter.io"
-dart_api: "https://api.dartlang.org/stable"
-flutter_api: "http://docs.flutter.io"
+www: https://dart.dev
+prev-url: https://v1-dartlang-org.firebaseapp.com
+angulardart: https://angulardart.dev
+dart_vm:  /server
+flutter:  https://flutter.dev
+dart_api: https://api.dart.dev
+flutter_api: https://api.flutter.dev
+pub: https://pub.dev
+pub-api: https://pub.dev/documentation
+pub-pkg: https://pub.dev/packages
+lints: https://dart-lang.github.io/linter/lints
+dartpad: https://dartpad.dev
+dartpad-embed: https://dartpad.dev/embed-dart.html
+dartpad-embed-html: https://dartpad.dev/embed-html.html
+dartpad-embed-inline: https://dartpad.dev/embed-inline.html
+news: https://news.dartlang.org
+group: https://groups.google.com/a/dartlang.org
+
+show_banner: true
 
 collections:
   articles:
@@ -25,64 +40,28 @@ collections:
   tutorials:
     output: true
     permalink: /tutorials/:path
-  samples:
-    output: true
-    permalink: /samples/:path
   guides:
     output: true
     permalink: /guides/:path
-  codelabs:
-    output: true
-    permalink: /codelabs/:path
 
 defaults:
 - scope:
-    path: ""
-    type: pages
+    path: ''
+    # type: pages
   values:
     layout: default
     toc: true
 - scope:
-    path: ""
-    type: articles
-  values:
-    layout: article
-    toc: true
-- scope:
-    path: ""
+    path: ''
     type: tutorials
   values:
     layout: tutorial
-    toc: true
-- scope:
-    path: ""
-    type: samples
-  values:
-    layout: sample
-    toc: true
-- scope:
-    path: ""
-    type: guides
-  values:
-    layout: guide
-    toc: true
-- scope:
-    path: ""
-    type: codelabs
-  values:
-    layout: codelab
-    toc: true
 
 custom:
-  dartpad:
-    embed-dart-prefix: "https://dartpad.dartlang.org/embed-dart.html"
-    embed-html-prefix: "https://dartpad.dartlang.org/embed-html.html"
-    embed-inline-prefix: "https://dartpad.dartlang.org/embed-inline.html"
-    direct-link: "https://dartpad.dartlang.org"
   downloads:
-    dartarchive-be-url-prefix: "https://storage.googleapis.com/dart-archive/channels/be/raw"
-    dartarchive-dev-url-prefix: "https://storage.googleapis.com/dart-archive/channels/dev/release"
-    dartarchive-stable-url-prefix: "https://storage.googleapis.com/dart-archive/channels/stable/release"
+    dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
+    dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release
+    dartarchive-stable-url-prefix: https://storage.googleapis.com/dart-archive/channels/stable/release
     binaries:
       - os: windows
         name: Windows
@@ -97,51 +76,59 @@ custom:
         ext: zip
         editor-ext: zip
 
-
-
 # Build settings
-safe: false
-source: src
-destination: publish
-incremental: true
-bundler_args: --without production
-markdown: kramdown
-excerpt_separator: "~~~"
-
-include: ["_pages"]
-exclude: ["diagrams", "appengine", "tests", "site"]
-
-gems:
-- jekyll-assets
-- jekyll-toc
-- jekyll-sitemap
-
 
 assets:
-  compress:
-    css: true # default - development: false, production: true
-    js: true # default - development: false, production: true
-  cache: .asset-cache # default: .asset-cache
-  # cdn: https://cdn.example.com
-  # skip_baseurl_with_cdn: false
-  # skip_prefix_with_cdn: false
-  prefix: "/assets"
-  assets:
-    - "*.png"
-    - "*.jpg"
-    - "*.eot"
-    - "*.ttf"
-    - "*.woff"
-    - "*.woff2"
-    - "*.svg"
-  digest: true
+  source_maps: false
   sources:
-    - _assets/icons
-    - _assets/images
-    - _assets/javascripts
-    - _assets/stylesheets
-    - _assets/page_assets
-  features:
-    liquid: true # default: false
-    automatic_img_size: true # default: true
-    automatic_img_alt : true # default: true
+    - _shared/_assets
+    - _shared/_assets/css
+
+exclude: [diagrams]
+future: true # In support of https://github.com/dart-lang/site-www/issues/1111
+plugins: [jekyll-toc]
+source: src
+strict_front_matter: true
+# `symlinked-sources` can refer to individual files or directories
+# under `src` that are symlinked to somewhere outside `src`, or it can
+# refer to the root folder of the symlinked content (like `site-shared/src`):
+symlinked-sources: [site-shared/src]
+
+# Increment this global og:image URL version number (used as a query parameter)
+# when you update any og:image file. (Also increment the corresponding number
+# in the `firebase.json` redirect rule.)
+og_image_vers: "?2"
+
+toc:
+  min_level: 2
+  max_level: 3
+
+## Site-wide shorthands
+
+os-list: [Windows, macOS, Linux]
+
+alert:
+  important: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-circle"></i> **Important:**
+  info: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i>
+  note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i> **Note:**
+  version-note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-code-branch"></i> **Version note:**
+  secondary: >-
+    <aside class="alert alert-secondary" role="alert" markdown="1">
+  tip: >-
+    <aside class="alert alert-success" role="alert" markdown="1">
+    <i class="far fa-lightbulb"></i> **Tip:**
+  warn: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-triangle"></i>
+  warning: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-triangle"></i> **Warning:**
+  end: </aside>

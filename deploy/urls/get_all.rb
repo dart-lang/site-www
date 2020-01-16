@@ -5,9 +5,11 @@ require_relative 'old_site_urls'
 $PORT = 5000
 $DOMAIN = 'https://www.dartlang.org/'
 $LOCALHOST = "http://localhost:#{$PORT}/"
+$FIREBASE_TOKEN = ENV['FIREBASE_TOKEN']
+$FIREBASE_PROJECT = ENV['FIREBASE_PROJECT'] || 'default'
 
 puts "Parsing current sitemap.xml for all current URLs"
-sitemap = File.open("publish/sitemap.xml") { |f| Nokogiri::XML(f) }
+sitemap = File.open("_site/sitemap.xml") { |f| Nokogiri::XML(f) }
 $NEW_URLS = sitemap.xpath("//xmlns:loc").map { |node| node.content }
 $NEW_URLS.sort!
 

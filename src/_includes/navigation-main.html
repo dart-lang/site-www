@@ -1,21 +1,39 @@
-<nav id="mainnav">
+{% assign page_url_path = page.url | regex_replace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
+
+<nav id="mainnav" class="site-header">
   <div id="menu-toggle"><i class="icon icon-menu"></i></div>
   <a href="/" class="brand" title="{{ site.title }}">
-    <img src="{% asset_path 'logo.svg' %}" alt="{{ site.title }}">
+    <img src="{% asset shared/dart/logo+text/horizontal/white.svg @path %}" alt="{{ site.title }}">
   </a>
-  <ul>
-    <li class="mainnav__get-started"><a href="/guides/get-started"><span>Get Started</span></a></li>
-    <li><a href="/guides/language">Language</a></li>
-    <li><a href="/guides/libraries">Libraries</a></li>
-    <li><a href="/tools">Tools</a></li>
-    <li><a href="/community">Community</a></li>
+  <ul class="navbar">
+    {%- comment -%}
+      If you edit this list, also edit navigation-side.html (mobile).
+    {% endcomment %}
+    <li class="mainnav__get-started">
+      <a href="/docs" class="nav-link
+        {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/dart-2/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}"><span>Docs</span></a>
+    </li>
+    <li>
+      <a href="/platforms" class="nav-link
+        {%- if page_url_path contains '/*/platforms/' %} active {%- endif -%}">Platforms</a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link
+        {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">Community</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Try Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link
+        {%- if page_url_path contains '/*/get-dart/' %} active {%- endif -%}">Get Dart</a>
+    </li>
     <li class="searchfield">
-      <form class="navbar-search" action="/search" id="cse-search-box">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
         <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
         <input type="hidden" name="ie" value="UTF-8">
         <input type="hidden" name="hl" value="en">
-        <input type="search" name="q" id="q" autocomplete="off" placeholder="Search">
-        <button type="submit"><i class="icon icon-search"></i></button>
+        <input class="site-header__searchfield form-control" type="search" name="q" id="q" autocomplete="off" placeholder="Search" aria-label="Search">
       </form>
     </li>
   </ul>

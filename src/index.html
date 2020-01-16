@@ -1,155 +1,431 @@
 ---
 layout: homepage
-title: "Dart programming language"
-description: "Dart is an application programming language that’s easy to learn, easy to scale, and deployable everywhere."
-image: https://www.dartlang.org/samples/images/frontpage-sample.png
+title: Dart programming language
+description: Dart is a client-optimized language for fast apps on any platform
+js:
+- url: /assets/dash/js/dartpad_picker_main.dart.js
+  defer: true
 ---
-<section id="code-sample">
-<div class="container">
-  <div class="row banner__frontpage-row">
-    <div class="col-sm-12">
-      <div class="content">
-        {% include banner.html %}
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-7 col-lg-6">
-      <div class="content">
-        <a href="https://dartpad.dartlang.org/fb763a4a770b5cdd896982e10ccf4118" class='codesample__open-in-dartpad no-automatic-external' target='_blank'>Open in DartPad</a>
-<pre class="prettyprint">
-<span class="frontpage-highlight" data-text="Dart has one canonical way to import libraries, and one canonical (and easy) way to install library packages.">import</span> &#x27;dart:async&#x27;;
-import &#x27;<span class="frontpage-highlight" data-text='The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.'>dart:math</span>&#x27; show Random;
-
-<span class="frontpage-highlight" data-text="The main() function is the single point of entry.">main()</span> async {
-  print(&#x27;Compute <span class="frontpage-highlight" data-text="Unicode support is baked in.">&#x3C0;</span> using the Monte Carlo method.&#x27;);
-  <span class="frontpage-highlight" data-text="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</span> for (var estimate in computePi()) {
-    print(&#x27;&#x3C0; &#x2245; <span class="frontpage-highlight" data-text="String interpolation is easy. Just put ${expression} or $variable in your string literal.">$estimate</span>&#x27;);
-  }
-}
-
-<span class="frontpage-highlight" data-text="Add doc comments like this to flesh out the API reference docs that the SDK’s dartdoc tool generates.">///</span> Generates a stream of increasingly accurate estimates of &#x3C0;.
-Stream<span class="frontpage-highlight" data-text="Generics are optional but extremely useful in large codebases.">&#x3C;double&#x3E;</span> computePi(<span class="frontpage-highlight" data-text="Named parameters make call sites more readable.">{int batch: 1000000}</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for asynchronous generators.">async*</span> {
-  <span class="frontpage-highlight" data-text="The type is inferred in this variable declaration. Note: no JavaScript-style hoisting.">var</span> total = 0;
-  var count = 0;
-  <span class="frontpage-highlight" data-text="Because generators are lazy, we can safely do this.">while (true)</span> {
-    var points = generateRandom().<span class="frontpage-highlight" data-text="Synchronous generators produce (lazy) Iterables, and Iterables have a well-crafted API.">take</span>(batch);
-    var inside = points.where((p) <span class="frontpage-highlight" data-text="The optional arrow syntax makes simple functions more readable.">=&#x3E;</span> p.isInsideUnitCircle);
-    total += batch;
-    count += inside.<span class="frontpage-highlight" data-text="Since the Iterable is lazy, the program doesn’t actually iterate over it until it’s needed by the length getter. No new array will be constructed.">length</span>;
-    var ratio = count / total;
-    // Area of a circle is A = &#x3C0;&#x22C5;r&#xB2;, therefore &#x3C0; = A/r&#xB2;.
-    // So, when given random points with x &#x2208; &#x3C;0,1&#x3E;,
-    // y &#x2208; &#x3C;0,1&#x3E;, the ratio of those inside a unit circle
-    // should approach &#x3C0; / 4. Therefore, the value of &#x3C0;
-    // should be:
-    <span class="frontpage-highlight" data-text="In an async generator, yield takes care of sending the values through the stream (including the logic of suspending execution when needed).">yield</span> ratio * 4;
-  }
-}
-
-<span class="frontpage-highlight" data-text="Iterable is a core type extended by all iterable collections, which makes for some elegant Dart code.">Iterable</span>&#x3C;Point&#x3E; generateRandom(<span class="frontpage-highlight" data-text="Optional parameters make call sites cleaner.">[int seed]</span>) <span class="frontpage-highlight" data-text="Dart has language-level support for synchronous generators, too.">sync*</span> {
-  <span class="frontpage-highlight" data-text="Variables and fields can be final. Any attempt to change them later in the code will produce a static error.">final</span> random = new Random(seed);
-  while (true) {
-    <span class="frontpage-highlight" data-text="Producing lazy Iterables through yield is readable and corresponds nicely with the same concept in asynchronous generators.">yield</span> new Point(random.nextDouble(), random.nextDouble());
-  }
-}
-
-<span class="frontpage-highlight" data-text="Dart is purely object-oriented and class-based, with mixin-based inheritance.">class</span> Point {
-  final <span class="frontpage-highlight" data-text="Although Dart can compile to JavaScript, it doesn’t lack the distinction between double and int.">double</span> x, y;
-  <span class="frontpage-highlight" data-text="Constructors can be constant.">const</span> Point(<span class="frontpage-highlight" data-text="Initializing fields through this shorthand syntax is both easier and more readable.">this.x</span>, this.y);
-  bool <span class="frontpage-highlight" data-text="Language-level support for getters means you can freely switch between properties and methods without changing the API.">get</span> isInsideUnitCircle =&#x3E; x * x + y * y &#x3C;= 1;
-}
-</pre>
-      </div>
-    </div>
-    <div class="col-sm-5 col-lg-6">
-      <div class="content">
-        <div class="frontpage-slogan-with-footnotes">
-          <div class="frontpage-slogan">
-            <h3>
-              Dart is an
-              <span class="frontpage-highlight" data-text="Dart is focused on client-side programming, be it in the browser or on mobile.">application</span> programming
-              <span class="frontpage-highlight" data-text="But it’s not just a language. Dart comes with well-crafted core libraries, a package manager, static analysis tools, and more.">language</span> that’s
-              <span class="frontpage-highlight" data-text="The syntax feels familiar, and the semantics are clean and consistent. No nasty surprises.">easy to learn</span>,
-              <span class="frontpage-highlight" data-text="Google alone has over 2 million lines of production Dart code. Apps can reach hundreds of thousands of lines of code.">easy to scale</span>, and deployable
-              <span class="frontpage-highlight" data-text="Dart runs fast in every modern browser, on the command line, on servers, and on mobile.">everywhere</span>.
-            </h3>
-            <h3>
-              Google depends on Dart to make
-              <span class="frontpage-highlight" data-text="For example, the next generation of AdWords (Google’s foremost money-making app) runs on Dart.">very large apps</span>.
-            </h3>
-            <p><a href="/guides/get-started" class="frontpage-slogan__get-started btn btn-default btn-lg">Get Started</a> <a href="/install" class="btn btn-lg">Install Dart</a></p>
-          <div id="code-display">
-            <p>[&nbsp;Click underlined text or code to learn more.&nbsp;]</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Hero animation -->
+<div class="d-none d-sm-none d-md-block">
+    <section class="dash-header">
+        <video autoplay loop muted playsinline>
+            <source src="assets/dash/video/hotreload.webm"
+                    type='video/webm;codecs="vp8, vorbis"' />
+            <source src="assets/dash/video/hotreload.mp4"
+                    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+            <img src=assets/dash/2x/paint-your-ui.png />
+        </video>
+    </section>
 </div>
-  </div>
+
+<section class="dash-header d-sm-block d-md-none">
+    <img src="assets/dash/2x/paint-your-ui.png"/>
 </section>
 
-<section class="chip-grid-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="content">
-          <div class="chip-grid">
-            <a href="http://news.dartlang.org/" class="chip no-automatic-external">
-              <h3>News</h3>
-              <p>Follow the latest.</p>
-            </a>
-            <a href="https://api.dartlang.org/" class="chip no-automatic-external">
-              <h3>API</h3>
-              <p>Browse core libraries.</p>
-            </a>
-            <a href="https://pub.dartlang.org/" class="chip no-automatic-external">
-              <h3>Pub</h3>
-              <p>Find packages.</p>
-            </a>
-            <a href="{{site.webdev}}" class="chip no-automatic-external">
-              <h3>Dart webdev</h3>
-              <p>Build browser apps.</p>
-            </a>
-            <a href="https://flutter.io/" class="chip no-automatic-external">
-              <h3>Flutter</h3>
-              <p>Build mobile apps.</p>
-            </a>
-            <a href="/dart-vm" class="chip no-automatic-external">
-              <h3>Dart VM</h3>
-              <p>Build scripts, servers.</p>
-            </a>
-          </div>
-        </div>
-      </div>
+<!-- Dart tag-line -->
+<section class="dash-header-callout">
+    <div class="callout-title">
+        Dart is a client-optimized language for fast apps on any platform
     </div>
-  </div>
+    <div class="callout-button">
+        <button class="btn btn-link btn-icon" type="button" data-toggle="modal" data-target="#videoModal" data-video="5F-6n_2XWR8">
+            <i class="material-icons">play_circle_filled</i> Watch video
+        </button>
+    </div>
+
+    <img class="made-by" src="assets/dash/2x/made by google@2x.png"/>
 </section>
 
-<section>
-  <div class="container">
+<!-- Dart pillars -->
+<section class="dash-dart-features">
+    <div class="container">
     <div class="row">
-      <div class="col-sm-5 col-lg-4">
-        <div class="content">
-          <h1>Core goals</h1>
-          <p class="lead">
-            Dart is an ambitious, long-term project. These are the core goals that drive our design decisions.
-          </p>
+        <div class="col-md-4 col-sm-12">
+            <div class="feature">
+                <div class="feature-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/></div>
+                <div class="feature-title">Optimized<br/>for UI</div>
+                <div class="feature-desc">Develop with a programming language
+                specialized around the needs of user interface creation
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-7 col-lg-8">
-        <div class="content">
-          <h2 class="core-goals__first">Provide a solid foundation of libraries and tools</h2>
-          <p>A programming language is nothing without its core libraries and tools. Dart’s have been powering very large apps for years now.</p>
-          <h2>Make common programming tasks easy</h2>
-          <p>Application programming comes with a set of common problems and common errors. Dart is designed to make those problems easier to tackle, and errors easier to catch. This is why we have <code>async/await</code>, generators, string interpolation, earlier error detection and much more.</p>
-          <h2>Don’t surprise the programmer</h2>
-          <p>There should be a direct correspondence between what you type and what’s going to happen. Magic (automatic type coercion, hoisting, “helper” globals, &hellip;) doesn’t mix well with large apps.</p>
-          <h2>Be the stable, pragmatic solution for real apps</h2>
-          <p>Dart might seem boring to some. We prefer the terms <em>productive</em> and <em>stable</em>. We work closely with our core customers&mdash;the developers who build large applications with Dart&mdash;to make sure we’re here for the long run.</p>
+        <div class="col-md-4 col-sm-12">
+            <div class="feature">
+                <div class="feature-icon"><img src="assets/dash/2x/client optimised light op1@2x.png"/></div>
+                <div class="feature-title">Productive</br>development</div>
+                <div class="feature-desc">Make changes iteratively: use hot
+                reload to see the result instantly in your running app
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="col-md-4 col-sm-12">
+                <div class="feature">
+                    <div class="feature-icon"><img src="assets/dash/2x/productive dev light op1@2x.png"/></div>
+                    <div class="feature-title">Fast on all<br/>platforms</div>
+                    <div class="feature-desc">Compile to ARM & x64 machine
+                    code for mobile,  desktop, and backend. Or compile to JavaScript
+                    for the web
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
+
+<!-- Dart pillar details, narrow design -->
+<div class="dart-dash-details container-fluid d-sm-block d-md-none" tabindex="-1">
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="gallerySix" src="assets/dash/2x/1-1 async await@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon">
+                    <img src="assets/dash/2x/multiplatform performance light op1@2x.png"/>
+                </div>
+                <div class="content-feature">Optimized for UI</div>
+                <div class="content-desc" id="gallerySix">
+                    <ul class="selector">
+                        <li class="highlight" data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Mature and complete <a href="/codelabs/async-await">async-await</a>
+                                    for user interfaces containing event-driven code, paired with
+                                    <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    A programming language optimized for building user
+                                    interfaces with features such as the <a href="/guides/language/language-tour#spread-operator">spread
+                                        operator</a> for
+                                    expanding collections, and <a href="/guides/language/language-tour#collection-operators">collection
+                                        if</a> for
+                                    customizing UI for each platform
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    A programming language that is easy to learn, with a
+                                    <a href="/samples">familiar syntax</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryFive" src="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon">
+                    <img src="assets/dash/2x/productive dev light op1@2x.png"/>
+                </div>
+                <div class="content-feature">Productive Development</div>
+                <div class="content-desc" id="galleryFive">
+                    <ul class="selector">
+                        <li class="highlight" data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Make changes to your source code iteratively, using
+                                    <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">hot
+                                        reload</a>
+                                    to instantly see the effect in the running app
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Write code using a flexible type system with rich
+                                    static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                                        tooling</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Do <a href="https://flutter.github.io/devtools/timeline" class="no-automatic-external">profiling</a>,
+                                    <a href="https://flutter.github.io/devtools/logging" class="no-automatic-external">logging</a>,
+                                    and <a href="https://flutter.github.io/devtools/debugger#getting-started"
+                                        class="no-automatic-external">debugging</a>
+                                    with your code editor of choice
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryOne dash-align-left" src="assets/dash/2x/3-1 - aot compile@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container">
+                <div class="content-icon">
+                    <img src="assets/dash/2x/client optimised light op1@2x.png"/>
+                </div>
+                <div class="content-feature">Fast on all platforms</div>
+                <div class="content-desc" id="galleryFour">
+                    <ul class="selector">
+                        <li class="highlight" data-banner="assets/dash/2x/3-1 - aot compile@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    <a href="/platforms">AOT-compile</a> apps to native
+                                    machine code for instant startup
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Target the web with complete, mature, fast
+                                    <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Run <a href="/tutorials/server/httpserver">backend code</a>
+                                    supporting your app, written using a single programming language
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Dart pillar details, wide design -->
+<div class="dart-dash-details container-fluid d-none d-sm-none d-md-block">
+    <section class="row dash-row">
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container dash-align-right">
+                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/> </div>
+                <div class="content-feature">Optimized for UI</div>
+                <div class="content-desc" id="galleryOne">
+                    <ul class="selector">
+                        <li class="highlight" tabindex="0" data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Mature and complete <a href="/codelabs/async-await">async-await</a>
+                                    for user interfaces containing event-driven code, paired with
+                                    <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li tabindex="0" data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    A programming language optimized for building user
+                                    interfaces with features such as the <a href="/guides/language/language-tour#spread-operator">spread
+                                        operator</a> for
+                                    expanding collections, and <a href="/guides/language/language-tour#collection-operators">collection
+                                        if</a> for
+                                    customizing UI for each platform
+                                </div>
+                            </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/2x/1-3 familiar syntax@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    A programming language that is easy to learn, with a
+                                    <a href="/samples">familiar syntax</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryOne dash-align-left" src="assets/dash/2x/1-1 async await@2x-80.jpg"/>
+        </div>
+    </section>
+
+    <section class="row dash-row">
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryTwo dash-align-right" src="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg"/>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container dash-align-left">
+                <div class="content-icon"><img src="assets/dash/2x/productive dev light op1@2x.png"/></div>
+                <div class="content-feature">Productive development</div>
+                <div class="content-desc" id="galleryTwo">
+                    <ul class="selector">
+                        <li class="highlight" tabindex="0" data-banner="assets/dash/2x/2-1 hot reload iterative changes@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Make changes to your source code iteratively, using
+                                    <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">hot
+                                        reload</a>
+                                    to instantly see the effect in the running app
+                                </div>
+                            </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/2x/2-2 flexible type@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Write code using a flexible type system with rich
+                                    static analysis and powerful, <a href="/guides/language/analysis-options">configurable
+                                        tooling</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/2x/2-3 runtime insights@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Do <a href="https://flutter.github.io/devtools/timeline" class="no-automatic-external">profiling</a>,
+                                    <a href="https://flutter.github.io/devtools/logging" class="no-automatic-external">logging</a>,
+                                    and <a href="https://flutter.github.io/devtools/debugger#getting-started"
+                                        class="no-automatic-external">debugging</a>
+                                    with your code editor of choice
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row dash-row">
+        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
+            <div class="content-container dash-align-right">
+                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"/></div>
+                <div class="content-feature">Fast on all platforms</div>
+                <div class="content-desc" id="galleryThree">
+                    <ul class="selector">
+                        <li class="highlight" tabindex="0" data-banner="assets/dash/2x/3-1 - aot compile@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    <a href="/platforms">AOT-compile</a> apps to native
+                                    machine code for instant startup
+                                </div>
+                            </div>
+
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Target the web with complete, mature, fast
+                                    <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
+                            <div>
+                                <div class="bullet-container">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Run <a href="/tutorials/server/httpserver">backend code</a>
+                                    supporting your app, written using a single programming language
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
+            <img class="galleryThree dash-align-left" src="assets/dash/2x/3-1 - aot compile@2x-80.jpg"/>
+        </div>
+    </section>
+    <section class="row">
+        <div class="dash-dartpad">
+            <a name="try-dart"></a>
+            <h2>Try Dart in your browser</h2>
+            <select id="dartpad-select"></select>
+            <div id="dartpad-host"></div>
+            <h3>Want more practice? <a href="/codelabs">Try a codelab</a>. Or <a href="/get-dart">download Dart</a>.</h3>
+            {% capture md %}{% include_relative _try-dart-examples.md %}{% endcapture %}
+            {{ md | markdownify }}
+        </div>
+    </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" data-video-modal id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="embedded-video-wrapper">
+                    <div id="video-player"></div>
+<!--                    <iframe id="video-player-iframe" class="embedded-video-wrapper__frame" width="auto" height="auto" src="https://youtube.com/embed/5F-6n_2XWR8?cc_lang_pref=en&cc_load_policy=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

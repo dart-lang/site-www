@@ -1,68 +1,37 @@
 ---
-layout: default
-title: "Dart Language Specification"
-description: "The Dart language specification and proposed changes."
-toc: false
+title: Dart language specification
+short-title: Language specification
+description: The formal specification for the Dart language.
 ---
 
-Download the _Dart Programming Language Specification_ from
-the Ecma website:
+Use this page to find the formal Dart language specification.
+For a gentler introduction to Dart, see the
+[language tour](/guides/language/language-tour).
 
-* <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
-   target="_blank">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
+## Dart 2
 
-For a gentler introduction to the Dart language, see the
-[Dart language tour](/guides/language/language-tour).
+A formal Dart 2 specification is available in PDF format:
 
-You can find previous editions of the specification at
-[Standard ECMA-408](http://www.ecma-international.org/publications/standards/Ecma-408-arch.htm).
+  * [Dart Programming Language Specification (Version 2.2)](/guides/language/specifications/DartLangSpec-v2.2.pdf)
 
-## Changes in the 4<sup>th</sup> edition
+Note: Dart 2 has changed the Dart language in many ways, some of which are not
+backward-compatible. For details, see the [Dart 2 page](/dart-2).
 
-The 4<sup>th</sup> edition of the specification has fewer restrictions on mixins.
-The restrictions on mixins up until this edition were:
+### In-progress specification
 
-* Mixins must inherit directly from Object.
-* Mixins cannot contain super calls.
-* Mixins cannot define constructors.
+The in-progress formal Dart language specification is written as a
+[LaTeX file,](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
 
-Only the last one, mixins cannot define constructors, remains.
+New language features are typically described using informal language feature specifications in the dart-lang/language repo:
+  * [Accepted informal proposals](https://github.com/dart-lang/language/tree/master/accepted)
+  * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
 
-## Changes in the 3<sup>rd</sup> edition
 
-The 3<sup>rd</sup> edition of the specification added information
-about the following new language features:
+## Dart 1.x
 
-* Null-aware operators
+The formal Dart 1.x language specification is available from
+the Ecma International website:
 
-* [Generalized tear offs](https://github.com/gbracha/generalizedTearOffs/blob/master/proposal.md)
-
-{% comment %}
-Do we want to save this info on this page or delete it?
-
-## Changes in the 2<sup>nd</sup> edition
-
-The 2<sup>nd</sup> edition of the specification added information about
-the following new language features:
-
-* Enumerations (`enum`)<br>
-  Implemented in 1.8. For details, see the language tour:
-  [Enumerated types](/guides/language/language-tour#enums).
-
-* Asynchrony support (`async`, `await`, and more)<br>
-  Partially implemented in 1.8.
-  For details, see the language tour:
-  [Asynchrony support](/guides/language/language-tour#asynchrony).
-
-* Deferred loading (`import ... deferred as`)<br>
-  Implemented in 1.6. For details, see the language tour:
-  [Lazily loading a library](/guides/language/language-tour#deferred-loading).
-{% endcomment %}
-
-## Proposed enhancements to the Dart language
-
-Interested in learning about new features that may be added to Dart?
-
-You can track all Dart Enhancement Proposals (DEPs) in the
-[dart_enhancement_proposals](https://github.com/dart-lang/dart_enhancement_proposals)
-repo on GitHub.
+* <a href="https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
+   target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>

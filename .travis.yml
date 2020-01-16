@@ -1,54 +1,48 @@
-language: ruby
-sudo: false
+language: dart
+dart: [stable, dev]
+
 cache:
+  timeout: 300
   bundler: true
   directories:
-  # - $HOME/[path]
-rvm:
-- 2.2.3
-
-# before_install:
-
-install:
-  - bundle install
-  - npm install -g firebase-tools
-
-before_script:
-  # - chmod +x ./deploy/runtests.sh
-  - chmod +x ./deploy/cibuild
-  - chmod +x ./deploy/deploy-firebase.sh
-  - chmod +x ./deploy/check_url.sh
-  - chmod +x ./deploy/html_proof.rb
-  - chmod +x ./deploy/check_sitemap.rb
-
-script:
-  - ./deploy/cibuild
-
-# branch whitelist
-# branches:
-#   only:
-#   - master        # test the master branch
-#   - /stage-(.*)/  # test every branch which starts with "stage-"
+  - $HOME/.pub-cache
+  - $HOME/.nvm
+  - $HOME/.rvm
+  - node_modules
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - JEKYLL_ENV=production
+    - TZ=US/Pacific # normalize build timestamp
+  matrix:
+    - TASK="./tool/build.sh --check-links"
+    - TASK="./tool/check-code.sh"
+    - TASK="./tool/analyze-and-test-examples.sh"
 
+matrix:
+  allow_failures:
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
+    
+before_install:
+  - source ./tool/env-set.sh
+  - ./tool/before-install.sh
 
-# after_success:
-# We could add the deployment to firebase here if there are no additional customizations etc...
+install:
+  - ./tool/install.sh
+  - ./tool/shared/write-ci-info.sh -v
+
+script: $TASK
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh
+    script: ./tool/shared/deploy.sh --robots ok default
     skip_cleanup: true
     on:
+      repo: dart-lang/site-www
       branch: master
+      condition: $TASK == *tool/build.sh* && $TRAVIS_DART_VERSION == stable && $TRAVIS_EVENT_TYPE == push
 
-after_deploy:
-  # Just FYI test. Won't fail the build if it has errors.
-  - ./deploy/check_sitemap.rb
-  - ./deploy/html_proof.rb
-  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
-  # # (By default, Travis doesn't fail builds after deployment.)
-  # - "./deploy/html_proof.rb || travis_terminate 1"
+# Only run Travis jobs for named branches (to avoid double builds for each PR)
+branches:
+  only: [master, /^\d\.x$/, /^\d-dev$/, /travis-build/]
