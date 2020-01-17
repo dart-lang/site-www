@@ -285,6 +285,8 @@ $dash-dartpad-border: #293542;
   flex-direction: column;
   align-items: center;
 
+  width: 100vw;
+  height: 100vh;
   padding: 32px;
 
   background-color: $dash-callout;
@@ -309,9 +311,9 @@ $dash-dartpad-border: #293542;
   }
 
   #dartpad-host {
-    height: 512px;
+    height: 100%;
     width: 100%;
-    max-width: 896px;
+    max-width: 1200px;
     display: flex;
 
     iframe {
@@ -352,4 +354,8 @@ $dash-dartpad-border: #293542;
   &:focus{
     outline: $dash-highlight auto 2px;
   }
+}
+
+a.frontanchor {
+  padding-top: 50px;
 }
