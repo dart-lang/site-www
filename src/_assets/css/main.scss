@@ -730,12 +730,6 @@ input.gsc-search-button {
 $icon-size: 24px;
 $anchor-padding: 4px;
 
-// Push # link targets clear of page header.
-@mixin header-clearance {
-  margin-top: -60px;
-  padding-top: 60px;
-}
-
 main .content {
   h1,
   h2,
@@ -744,8 +738,6 @@ main .content {
   h5,
   h6 {
     .anchor {
-      @include header-clearance;
-
       box-sizing: border-box;
       float: left;
       margin-left: -($icon-size + $anchor-padding);
@@ -770,20 +762,15 @@ main .content {
       }
     }
 
-    // Invisible pre-element to avoid modifying styles on headings.
-    &[id]::before {
-      @include header-clearance;
-
-      content: "";
-      display: block;
+    // Push # link targets clear of page header.
+    &[id] {
+      scroll-margin: 60px;
     }
   }
 
-  // Invisible pre-element to avoid modifying styles on headings.
-  a[id]::before {
-    @include header-clearance;
-    content: "";
-    display: block;
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
   }
 }
 
