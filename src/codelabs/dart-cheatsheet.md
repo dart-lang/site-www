@@ -387,7 +387,7 @@ but you can provide default values:
 
 ```dart
 void printName(String firstName, String lastName, {String suffix = ''}) {
-  print('$firstName $lastName ${suffix}');
+  print('$firstName $lastName $suffix');
 }
 ```
 
