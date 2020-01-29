@@ -44,19 +44,19 @@ The following screenshot shows DartPad.
 <div class="row">
 <div class="col-sm-7" markdown="1">
 
-- **1. Tabs**: Dart, Solution, and Tests (hidden)
-- **2. Hint**: Offers help 
-- **3. Format**: Runs the code formatter (dartfmt)
-- **4. Reset**: Erases your work and restores the editor to its original state
-- **5. Run**
+**1. Tabs:** Dart, Solution, and Tests (hidden) <br>
+**2. Hint:** Offers help <br>
+**3. Format:** Runs the code formatter (dartfmt) <br>
+**4. Reset:** Erases your work and restores the editor to its original state <br>
+**5. Run**
 
 </div>
 <div class="col-sm-5" markdown="1">
 
-- **6. Menu**: The Tests tab toggle 
-- **7. Code pane**
-- **8. Output**: Console, UI output
-- **9. Analyzer**: Instantly checks the code
+**6. Menu:** The Tests tab toggle  <br>
+**7. Code pane** <br>
+**8. Output:** Console, UI output <br>
+**9. Analyzer:** Instantly checks the code
 
 </div>
 </div>
