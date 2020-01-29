@@ -1,7 +1,6 @@
 ---
-title: "DartPad in Tutorials: Best Practices"
-description: Landing page for dartlang's resources.
-toc: true
+title: "DartPad in tutorials: best practices"
+description: Research-tested advice for creating effective and engaging educational content for Dart and Flutter users.
 ---
 <style>
 
@@ -20,7 +19,7 @@ toc: true
 This guide introduces DartPad,
 a tool for creating effective and engaging educational content for
 Dart and Flutter users.
-It provides you, the tutorial authors,
+It provides you, the tutorial author,
 with advice, tips, and examples for using DartPad.
 
 ## What is DartPad? 
@@ -64,10 +63,11 @@ The following screenshot shows DartPad.
 </div>
 
 DartPad is under development.
-If you find a bug or have suggestions, please [create an issue][].
-Learn more about [DartPad on dart.dev][],
-its [GitHub repo][],
-and the [DartPad Embedding Guide][].
+If you find a bug or have suggestions, please [create an issue.][new dp issue]
+To learn more about DartPad read the
+[DartPad documentation][dart.dev DP docs],
+visit the [DartPad GitHub repo,][dart-lang/dart-pad]
+and read the [DartPad Embedding Guide.][embedding guide]
 
 
 ## Why use DartPad in a tutorial?
@@ -76,20 +76,21 @@ and the [DartPad Embedding Guide][].
 <div class="col-lg-8 col-md-8 col-sm" markdown="1">
 
 A traditional tutorial provides learners with
-step-by-step instructions and static code snippets in order to
+step-by-step instructions and static code snippets
+aimed at helping the learner to
 complete a software development task.
 
 DartPad enables learners to test their knowledge by
 running example code and by completing exercises as
 they go through the steps in the tutorial.
 
-Coding tutorials are sometimes referred to as codelabs.
+Coding tutorials are sometimes referred to as _codelabs._
 
 ## What you'll learn from this guide
 
-*   Design principles for interactive tutorials
-*   Ways of using DartPad in tutorials
-*   Case study: DartPad in a Google tutorial
+* Design principles for interactive tutorials
+* Ways of using DartPad in tutorials
+* Case study: DartPad in a Google tutorial
 
 </div>
 <div class="col-lg-4 col-md-4 col-sm" markdown="1">
@@ -100,16 +101,17 @@ Coding tutorials are sometimes referred to as codelabs.
 </div>
 </div>
 
-This guide doesn’t provide general technical writing information.
-If you’re new to technical writing, you can reference the following resources:
+This guide doesn’t provide general technical writing information,
+which you can find in the following resources:
 
-* [Google Developer Documentation Style Guide][]:
+* [Google Developer Documentation Style Guide:][gddsg]
   The primary writing style reference for Google-related developer documentation
-* [Cloud Shell Walkthrough Writing Guide][]: Suggestions about high-level tutorial structure
+* [Cloud Shell Walkthrough Writing Guide:][cswwg]
+  Suggestions about high-level tutorial structure
 * [Content guidelines: Content handbook for web.dev][]
 * [Other editorial resources][]
 
-The guidance provided in this doc is based on
+The guidance provided in this page is based on
 Google’s internal research and
 related academic research about instructional design.
 This document will evolve as we learn more about what works.
@@ -119,7 +121,7 @@ This document will evolve as we learn more about what works.
 ## Design principles for interactive tutorials
 
 DartPad enhances a traditional tutorial through its ability to
-support [guided discovery learning][],
+support [guided discovery learning,][guided discovery learning]
 a recognized learning approach that calls for a balance between
 the student’s freedom of exploration and
 the teacher’s scaffolding of the learning process.
@@ -142,7 +144,7 @@ using DartPad in interactive tutorials:
 {% asset dartpad-best-practices/p_hands-on.png alt="An illustration of hands-on exercise" %}
 {: .img-xs-wrapper}
 
-#### Enable hands-on exercises
+#### **Enable hands-on exercises**
 
 Provide code examples and hands-on practice that
 engage learners in actively writing code.
@@ -153,7 +155,7 @@ engage learners in actively writing code.
 {% asset dartpad-best-practices/p_feedback.png alt="An illustration of feedback" %}
 {: .img-xs-wrapper}
 
-#### Give just-in-time and just-enough help, and feedback
+#### **Give just-in-time and just-enough help, and feedback**
 
 Offer precise, contextualized, and immediate feedback on
 learners’ progress without taking away learning opportunities.
@@ -164,9 +166,9 @@ learners’ progress without taking away learning opportunities.
 {% asset dartpad-best-practices/p_reflection.png alt="An illustration of reflection" %}
 {: .img-xs-wrapper}
 
-#### Facilitate reflection
+#### **Facilitate reflection**
 
-Encourage meta-cognitive learning, the  learners’ ability to
+Encourage meta-cognitive learning, the learners’ ability to
 predict the outcomes of their learning and monitor their understanding.
 
 </div>
@@ -175,7 +177,7 @@ predict the outcomes of their learning and monitor their understanding.
 {% asset dartpad-best-practices/p_transferlearning alt="An illustration of learning transfer" %}
 {: .img-xs-wrapper}
 
-#### Support learning transfer
+#### **Support learning transfer**
 
 Help learners leverage accumulated knowledge gained from tutorials and
 apply it to new settings.
@@ -188,7 +190,7 @@ apply it to new settings.
 ## Ways of using DartPad in tutorials
 
 The pedagogical principles previously described are realized by
-configuring DartPad to show demos, exercises and quizzes.
+configuring DartPad to show demos, exercises, and quizzes.
 
 
 <div class="row">
@@ -220,7 +222,7 @@ configuring DartPad to show demos, exercises and quizzes.
 
 ### I. Demo
 
-The **demo** provides interactive code examples for concepts and feature use.
+The _demo_ provides interactive code examples for concepts and feature use.
 This is similar to how science teachers bring experiments into the classroom to make concepts concrete and memorable.
 
 <div class="col-md-11" markdown="1">
@@ -234,7 +236,7 @@ This is similar to how science teachers bring experiments into the classroom to 
 
 ### II. Exercise
 
-The **exercise** provides the necessary scaffolds for the learner to carry out a specific task.
+The _exercise_ provides the necessary scaffolds for the learner to carry out a specific task.
 The scaffolds can include a starting template, key information, check points,
 and other kinds of feedback and help.
 
@@ -249,7 +251,7 @@ and other kinds of feedback and help.
 
 ### III. Quiz
 
-The **quiz** enables the learner to work on another similar problem,
+The _quiz_ enables the learner to work on another similar problem,
 and automatically check if the solution is correct.
 This is useful to evaluate whether the [transfer of learning][] happened.
 
@@ -257,15 +259,16 @@ This is useful to evaluate whether the [transfer of learning][] happened.
 
 {% asset dartpad-best-practices/quiz_future.png alt="A screenshot of a quiz" %}
 <p style="text-align: center;" markdown="1">
-  *A quiz on implementing 3 functions about async functions,
-  async/await keywords and handling errors*
+  *A quiz on async functions, the async and await keywords,
+  and errors handling
 </p>
 
 </div>
 
 
 
-What’s the difference between exercise and quiz? There are two main differences:
+What’s the difference between exercise and quiz?
+There are two main differences:
 
 1. **Exercises provide more scaffolds.**
   When you write exercise instructions,
@@ -283,7 +286,7 @@ What’s the difference between exercise and quiz? There are two main difference
   and requires a real understanding of how to complete a task,
   instead of just copying and pasting code snippets.
   Until now, we might not have explicitly claimed "this is a quiz" because
-  we didn’t know how users would perceive the word "quiz,"
+  we didn’t know how users would perceive the word _quiz,_
   and we didn’t want to add too much pressure.
 
 
@@ -291,19 +294,20 @@ What’s the difference between exercise and quiz? There are two main difference
 
 ## Case study: the Dart Futures codelab 
 
-So far, you learned about the guiding principles and
+So far you've learned about the guiding principles and
 ways of using DartPad for creating interactive tutorials.
-But, how can you apply them when you are developing a real-world tutorial?
+But how do you apply these principles when you're
+developing a real-world tutorial?
 We’ll explain that through a detailed case study.
 In the case study we used DartPad in the instructional design of
-a tutorial titled “[Asynchronous programming: futures, async, await][]”
-or “the Dart Futures codelab” for short.
+a tutorial titled _[Asynchronous programming: futures, async, await][],_
+or _the Dart Futures codelab_ for short.
 
 <div class="col-md-10" markdown="1">
 
 {% asset dartpad-best-practices/futurecodelab2.png alt="A screenshot of the Dart Futures codelab" %}
 <p style="text-align: center;" markdown="1">
-  *The “Asynchronous programming: futures, async, await” codelab*
+  *The Dart Futures codelab*
 </p>
 
 </div>
@@ -329,13 +333,13 @@ we walk you through how each use case is used in the design of this tutorial.
 
 ### I. Demo 
 
-First, demos was used to accomplish the following goals: 
+First, demos were used to accomplish the following goals: 
 
-*   Demonstrate how concepts work in action and
-    show the use of features in concrete examples.
-*   Familiarize learners with the Dart syntax for
-    `Future`, `async` and `await` keywords.
-*   Provide sample code used as a reference for hands-on coding exercises.
+* Demonstrate how concepts work in action and
+  show the use of features in concrete examples.
+* Familiarize learners with how to use
+  `Future` objects and the `async` and `await` keywords.
+* Provide sample code as a reference for hands-on coding exercises.
 
 When you design a demo using DartPad, pay attention to the following things.
 
@@ -349,11 +353,10 @@ what they thought would happen and what might not make sense to them.
 
 For example, the following [demo][] presents learners with
 an example of incorrectly using an asynchronous function.
-Above the code snippet, there is a prompt:
-“_Before running this example, try to spot the issue –
-what do you think the output will be_?”
-Beneath the code example,
-there is a description of what the code example is about,
+Above the code snippet is a prompt:
+_Before running this example, try to spot the issue –
+what do you think the output will be?_
+Beneath the code example is a description of what the code example is about,
 how the code is executed,
 and an explanation of why the code fails to print the desired value.
 
@@ -400,7 +403,7 @@ using the `Future` class, the `async` keyword, and the `await` keyword.
 Learners have an opportunity to practice what they just learned from the demos.
 
 <div class="col-md-11" markdown="1">
-{% asset dartpad-best-practices/exercise_future.png alt="A coding exercise:  implementing two async functions" %}
+{% asset dartpad-best-practices/exercise_future.png alt="A coding exercise: implementing two async functions" %}
 <p style="text-align: center;" markdown="1">
   *A coding exercise: implementing two async functions*
 </p>
@@ -418,16 +421,16 @@ In this case, it’s important to point out that
 the goal is to modify the snippet, to make the unit test pass.
 
 For example, the following exercise starts with an introduction:
-“_The following exercise is a failing unit test that
+_The following exercise is a failing unit test that
 contains partially completed code snippets.
-Your task is to complete the exercise by writing code to make the tests pass._”
+Your task is to complete the exercise by writing code to make the tests pass._
 In addition to explaining what the exercise is about,
 the author also clearly communicates that learners don’t need to
 implement the hidden code that was provided, such as `main()` and
 two asynchronous functions, `getRole()` and `getLoginAmount()`.
 
 <div class="col-md-9" markdown="1">
-{% asset dartpad-best-practices/exercise_workflow.png alt="Briefly explain what the exercise is about  and what learners are supposed (or not supposed) to do." %}
+{% asset dartpad-best-practices/exercise_workflow.png alt="Briefly explain what the exercise is about and what learners are supposed (or not supposed) to do." %}
 <p style="text-align: center;" markdown="1">
   *Briefly explain what the exercise is about and
   what learners are supposed (or not supposed) to do.*
@@ -441,16 +444,16 @@ a clear, visual distinction between demos and exercises help
 users quickly recognize the expected actions.
 When we used the same UIs for both demos and exercises,
 one of our study participants said,
-_“I wasn't sure whether I should just code something or
-I'm supposed to just run it to see it.”_
+“I wasn't sure whether I should just code something or
+I'm supposed to just run it to see it.”
 
 In the published Futures codelab,
 all embedded DartPads are labeled with clear headings,
-such as “_Example: Introducing futures_” and
-“_Exercise: Practice using async and await._”
+such as _Example: Introducing futures_ and
+_Exercise: Practice using async and await._
 Also, we adopted the light DartPad theme for demos and
 the dark DartPad theme for exercises.
-The continuous improvement is tracked using this [issue][] on GitHub.
+The continuous improvement is tracked using [this GitHub issue.][1150]
 
 <div class="col-md-9" markdown="1">
 {% asset dartpad-best-practices/instruction_title.png alt="Clearly label the titles, and use different themes for demos and exercises." %}
@@ -465,7 +468,7 @@ The continuous improvement is tracked using this [issue][] on GitHub.
 Interactive tutorials provide hands-on practice so that
 learners can accumulate knowledge as they tackle
 more and more sophisticated problems.
-However,learners could get frustrated if the tutorial
+However, learners can get frustrated if the tutorial
 doesn’t prepare them for bigger challenges.
 We learned four lessons from developing the Futures codelab.
 
@@ -475,12 +478,12 @@ An earlier draft of this codelab had a demo for handling errors,
 but didn’t have a corresponding exercise to
 practice the try-catch concept before the final quiz.
 One of our study participants who tried that version said,
-_“When you have to do something for the first time during the test,
+“When you have to do something for the first time during the test,
 it doesn't feel good.
-Because I'm not confident that I'll get this part right.”_ 
+Because I'm not confident that I'll get this part right.” 
 
 Second, exercises need to provide necessary scaffolds.
-When there are multiple tasks in an exercise,
+When an exercise has multiple tasks,
 consider providing more support in the first task.
 In the following example, Part 1, `reportUserRole()`,
 has more pre-filled code snippets in the starting state,
@@ -501,8 +504,8 @@ they check the code examples less frequently.
 In the Futures codelab,
 all code examples and exercises are put on the same page.
 One of our study participants said,
-“_I liked how I could be typing here but then also
-refer back to the examples to see where I should put stuff._”
+“I liked how I could be typing here but then also
+refer back to the examples to see where I should put stuff.”
 
 Last, demos and exercises (or quizzes) shouldn’t be too similar,
 to avoid feeling redundant.
@@ -512,9 +515,9 @@ instead of practicing on their own.
 In our initial prototype, the demos and the first exercise used
 a similar context and function names, `getUserOrder()` and `reportChange()`.
 One of our study participants said,
-“_This exercise is slightly odd that they’re looking for
+“This exercise is slightly odd that they’re looking for
 basically the exact same code as the example.
-I’m not sure what they’re asking me to do.”_
+I’m not sure what they’re asking me to do.”
 We then improved this by changing the context of exercise to
 access control instead of ordering coffee.
 
@@ -530,20 +533,20 @@ and async functions, `greetUser()` and `sayGoodbye()`.
 Learners can practice when to use async functions,
 where to use the `Future` class,
 how to use the `async` and `await` keywords,
-and handling errors.
+and how to handle errors.
 
 Even though this section is not explicitly labeled as a quiz,
 learners may still consider it as a final assessment.
 As one of our study participants said,
-_“Whenever you do like a tutorial and it's the final part,
+“Whenever you do like a tutorial and it's the final part,
 it's usually to me that means it's like a test of
-every single thing that you've written out and combining them.“_
+every single thing that you've written out and combining them.“
 
 <div class="col-md-9" markdown="1">
 {% asset dartpad-best-practices/quiz_future.png alt="A coding quiz: implementing 3 functions about async functions, async/await keywords and handling errors" %}
 <p style="text-align: center;" markdown="1">
   *A coding quiz: implementing 3 functions about async functions,
-  async/await keywords and handling errors*
+  async/await keywords, and handling errors*
 </p>
 </div>
 
@@ -553,7 +556,7 @@ The problem in a quiz is usually a bit harder than
 the problem in an exercise and less guidance is provided.
 Compared to the previous “Exercise: Practice using async and await,”
 the partially completed code in the starting point for this quiz is minimized.
-Also, there is no **Hint** button in this quiz.
+Also, this quiz has no **Hint** button.
 
 
 ## Final words 
@@ -569,10 +572,9 @@ this interactive tutorial for the following reasons:
 * Gives just-in-time and just-enough help and feedback.
 
 DartPad enables us to create effective tutorials that
-lower the learning curves, are easy to use and more engaging.
+lower the learning curves, are easy to use, and are more engaging.
 If you write tutorials for Dart or Flutter,
 we encourage you to consider using DartPad to enhance your tutorial.
-
 
 “*Exercises are an excellent learning tool!!! Thank you!*”
 
@@ -584,22 +586,22 @@ As long as you get the return correct,
 being able to write how you write it is nice.*”
 
 [DartPad]: http://dartpad.dev
-[create an issue]: https://github.com/dart-lang/dart-pad/issues/new
-[DartPad on dart.dev]:/tools/dartpad
-[GitHub repo]: https://github.com/dart-lang/dart-pad
-[DartPad Embedding Guide]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
-[Google Developer Documentation Style Guide]: https://developers.google.com/style/
-[Cloud Shell Walkthrough Writing Guide]: https://cloud.google.com/shell/docs/walkthrough-writing-guide#writing_style
+[new dp issue]: https://github.com/dart-lang/dart-pad/issues/new
+[dart.dev DP docs]:/tools/dartpad
+[dart-lang/dart-pad]: https://github.com/dart-lang/dart-pad
+[embedding guide]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[gddsg]: https://developers.google.com/style/
+[cswwg]: https://cloud.google.com/shell/docs/walkthrough-writing-guide#writing_style
 [Content guidelines: Content handbook for web.dev]: https://web.dev/handbook#content-guidelines
 [Other editorial resources]: https://developers.google.com/style/resources
-[guided discovery learning]:https://thinkeracademy.com/guided-discovery-learning/
+[guided discovery learning]: https://thinkeracademy.com/guided-discovery-learning/
 [Mayer, Richard E., 2004]: http://www.csun.edu/learningnet/TeachScience/UPimages/1/12/MayerThreeStrikesAP04.pdf
 [Kim, Ada S., and Amy J. Ko., 2017]: https://faculty.washington.edu/ajko/papers/Kim2017CodingTutorialEvaluation.pdf
 [transfer of learning]: https://en.wikipedia.org/wiki/Transfer_of_learning
 [Asynchronous programming: futures, async, await]: /codelabs/async-await
-[demo]:/codelabs/async-await#example-incorrectly-using-an-asynchronous-function
+[demo]: /codelabs/async-await#example-incorrectly-using-an-asynchronous-function
 [exercises]: /codelabs/async-await#exercise-practice-using-async-and-await
-[issue]: https://github.com/dart-lang/dart-pad/issues/1150
+[1150]: https://github.com/dart-lang/dart-pad/issues/1150
 
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeTPsbOh5YPxF2lMzKEvdkq5UXZP9QO8iuTtbp6GNa8kCfcZA/viewform?embedded=true" width="100%" height="1011" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
