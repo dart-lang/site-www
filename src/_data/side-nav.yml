@@ -226,6 +226,8 @@
       permalink: /resources
     - title: Books
       permalink: /resources/books
+    - title: DartPad in tutorials&#58; best practices
+      permalink: /resources/dartpad-best-practices
     - title: Code of conduct
       permalink: /code-of-conduct
     - title: FAQ
