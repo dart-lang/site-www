@@ -236,8 +236,7 @@ long enough for runtime optimizations to be applied.
 
 ### Q. What browsers do you support as JavaScript compilation targets?
 
-The _production_ compiler ([dart2js][]) supports Internet Explorer 11
-and the last two major releases of the following browsers:
+The _production_ compiler ([dart2js][]) supports the last two major releases of the following browsers:
 
   * Chrome
   * Edge
