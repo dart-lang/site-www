@@ -78,5 +78,5 @@ $ export PATH="$PATH:/usr/lib/dart/bin"
 To change the PATH for future terminal sessions, use a command like this:
 
 ```terminal
-$ echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> ~/.profile
+$ echo "export PATH=\"${PATH}:/usr/lib/dart/bin\"" >> ~/.profile
 ```
