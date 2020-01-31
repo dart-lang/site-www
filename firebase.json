@@ -204,6 +204,7 @@
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },
       { "source": "/web-ui/observables{,/**}", "destination": "https://pub.dev/packages/observable", "type": 301 },
       { "source": "/dart-1", "destination": "https://v1-dartlang-org.firebaseapp.com", "type": 301 },
+      { "source": "/resources/dartpad-tutorials.pdf", "destination": "/resources/dartpad-best-practices", "type": 301 },
       { "source": "/packages", "destination": "https://pub.dev", "type": 301 },
       { "source": "/sdk-changelog-2.4.0", "destination": "https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#240---2019-06-27", "type": 301 }
     ]

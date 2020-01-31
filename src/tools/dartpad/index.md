@@ -151,7 +151,7 @@ For more information about how to use embedded DartPads, see
 For technical details on embedding DartPads, see the
 [DartPad embedding guide.][]
 
-[best practices for using DartPad in tutorials]: /resources/dartpad-tutorials.pdf
+[best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [futures codelab]: /codelabs/async-await
 
