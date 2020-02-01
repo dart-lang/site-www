@@ -15,7 +15,7 @@ Use this archive to download
 and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 
 Want to install Dart with your OS's package manager?
-Go to the [Dart SDK page](/tools/sdk).
+[Get Dart.](/get-dart)
 
 <aside class="alert alert-warning" markdown="1">
   {% include_relative _sdk-terms.md %}
