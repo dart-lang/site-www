@@ -1740,11 +1740,16 @@ runtime.
 The result of `obj is T` is true if `obj` implements the interface
 specified by `T`. For example, `obj is Object` is always true.
 
-Use the `as` operator to cast an object to a particular type. In
-general, you should use it as a shorthand for an `is` test on an object
-followed by an expression using that object. For example, consider the
-following code:
+Use the `as` operator to cast an object to a particular type if and only if
+you are sure that the object is of that type. Example:
 
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
+```dart
+(emp as Person).firstName = 'Bob';
+```
+
+If you aren't sure that the object is of type `T`, then use `is T` to check the 
+type before using the object.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
 if (emp is Person) {
@@ -1753,17 +1758,9 @@ if (emp is Person) {
 }
 ```
 
-You can make the code shorter using the `as` operator:
-
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
-```dart
-(emp as Person).firstName = 'Bob';
-```
-
 {{site.alert.note}}
-  The code isn’t equivalent. If `emp` is null or not a Person, the
-  first example (with `is`) does nothing; the second (with `as`) throws
-  an exception.
+  The code isn’t equivalent. If `emp` is null or not a `Person`, the
+  first example throws an exception; the second does nothing.
 {{site.alert.end}}
 
 ### Assignment operators
