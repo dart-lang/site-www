@@ -1741,7 +1741,7 @@ The result of `obj is T` is true if `obj` implements the interface
 specified by `T`. For example, `obj is Object` is always true.
 
 Use the `as` operator to cast an object to a particular type if and only if
-you are sure that the object is of that. Example:
+you are sure that the object is of that type. Example:
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
 ```dart
