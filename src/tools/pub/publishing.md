@@ -26,7 +26,7 @@ old ones will continue to be available for users that aren't ready to
 upgrade yet.
 
 For already published packages that are no longer relevant or being maintained,
-you can [mark them discontinued(#discontinue).
+you can [mark them as discontinued](#discontinue).
 
 ## Preparing to publish
 
