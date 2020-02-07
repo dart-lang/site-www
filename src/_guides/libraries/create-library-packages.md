@@ -97,7 +97,7 @@ library packages:
 Directly under lib, the main library file,
 `shelf.dart`, exports several files from lib/src:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 export 'src/cascade.dart';
 export 'src/handler.dart';
 export 'src/handlers/logger.dart';
@@ -129,7 +129,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 When importing a library file, you can use the
 the `package:` directive to specify the URI of that file.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
@@ -267,7 +267,7 @@ Dartdoc parses the source looking for
 [documentation comments](/guides/language/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// The event handler responsible for updating the badge in the UI.
 void updateBadge() {
   ...

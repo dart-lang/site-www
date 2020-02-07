@@ -88,7 +88,7 @@ you might add a field named `my_pkg_bugs`.
 
 A simple but complete pubspec looks something like the following:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: newtify
 version: 1.2.3
 description: >-
@@ -239,13 +239,13 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 <name-of-executable>: <Dart-script-from-bin>
 {% endprettify %}
 
 For example, the following pubspec entry lists two scripts:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 executables:
   polymer-new-element: new_element
   useful-script:
@@ -267,7 +267,7 @@ a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dev)
 to publish.
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 publish_to: none
 {% endprettify %}
 
@@ -288,7 +288,7 @@ dependencies.
 For example, the following constraint says that this package
 works with any **Dart 2** SDK that's version 2.0.0 or higher:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 environment:
   sdk: '>=2.0.0 <3.0.0'
 {% endprettify %}
@@ -308,7 +308,7 @@ with the version of the Dart SDK that you have installed.
 As of Dart 1.19.0,
 pub supports Flutter SDK constraints under the `environment:` field:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 environment:
   sdk: '>=1.19.0 <3.0.0'
   flutter: ^0.1.2

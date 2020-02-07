@@ -6,7 +6,7 @@ toc: false
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
 {% endprettify %}
 
@@ -22,7 +22,7 @@ The dependency information is printed as a tree by default.
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2

@@ -108,7 +108,7 @@ that something will happen when the item is clicked.
 
 This behavior is coded in the todo_with_delete app's CSS file with this rule:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 #to-do-list li:hover {
   color: red;
   font-size: 18px;
@@ -171,7 +171,7 @@ that implements the **Delete All** button.
 The HTML code creates a button with the ID delete-all.
 (The CSS styles it.)
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 <button id="delete-all" type="button" style="float:right"> Delete All </button>
 {% endprettify %}
 
@@ -205,7 +205,7 @@ and it uses the => syntax to define the function concisely.
 
 It is equivalent to writing this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 deleteAll.onClick.listen((e) {
   toDoList.children.clear();
 });
@@ -213,7 +213,7 @@ deleteAll.onClick.listen((e) {
 
 or even this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 ...
 void main() {
   ...

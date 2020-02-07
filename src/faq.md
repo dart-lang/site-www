@@ -294,7 +294,7 @@ Dart's are nicer syntactically.
 
 Compare the following Closure compiler code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Closure compiler code
 
 /**
@@ -310,7 +310,7 @@ makeGreeting = function(name) {
 
 With the following Dart code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Dart code
 
 String makeGreeting(String name) {

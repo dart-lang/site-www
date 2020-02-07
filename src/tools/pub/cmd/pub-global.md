@@ -116,7 +116,7 @@ $ stagehand
 Verify that the `bin` directory for the system cache is in your path.
 The following `PATH` variable, on macOS, includes the system cache:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
@@ -136,7 +136,7 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ mkdir angular_project
 $ cd angular_project
 $ [!stagehand web-angular!]
@@ -173,7 +173,7 @@ entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: helloworld
 
 executables:

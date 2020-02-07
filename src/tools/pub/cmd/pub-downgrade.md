@@ -5,7 +5,7 @@ description: Use pub downgrade to get the lowest versions of all dependencies us
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 {% endprettify %}
 

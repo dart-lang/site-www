@@ -41,13 +41,13 @@ We don't recommend dev channel builds for production use.
 You can find the zip files at predictable URLs using the
 following pattern:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/<[!stable|dev!]>/release/<[!release!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 {% endprettify %}
 
 Examples:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/stable/release/2.0.0/sdk/dartsdk-windows-ia32-release.zip
 https://storage.googleapis.com/dart-archive/channels/stable/release/1.24.3/sdk/dartsdk-macos-x64-release.zip
 https://storage.googleapis.com/dart-archive/channels/dev/release/2.0.0-dev.69.5/sdk/dartsdk-linux-x64-release.zip

@@ -218,7 +218,7 @@ The `showJson()` function, from the example,
 converts all of the data to JSON strings.
 
 <?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void showJson(Event _) {
   // Grab the data that will be converted to JSON.
   final favNum = int.tryParse(favoriteNumber.value);
@@ -417,7 +417,7 @@ This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
 
 <?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
   try {
@@ -526,7 +526,7 @@ The `requestComplete()` function
 checks the status code for the request.
 
 <?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void requestComplete(HttpRequest request) {
   switch ([!request.status!]) {
     case 200:
@@ -551,7 +551,7 @@ The data file in the portmanteaux example,
 contains the following JSON-formatted list of strings:
 
 <?code-excerpt "web/portmanteaux.json"?>
-{% prettify json %}
+{% prettify json tag=pre+code %}
 [
   "portmanteau", "fantabulous", "spork", "smog",
   "spanglish", "gerrymander", "turducken", "stagflation",
@@ -571,7 +571,7 @@ creates a new [LIElement][] for each one,
 and adds it to the `<ul>` element on the page.
 
 <?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void processResponse(String jsonString) {
   for (final portmanteau in [!json.decode!](jsonString)) {
     wordList.children.add(LIElement()..text = portmanteau as String);
