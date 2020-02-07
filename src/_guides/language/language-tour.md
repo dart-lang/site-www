@@ -385,7 +385,7 @@ baz = [42]; // Error: Constant variables can't be assigned a value.
 
 As of Dart 2.5, you can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
-[collection if and collection for](#collection-operators),
+[collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
