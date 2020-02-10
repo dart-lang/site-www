@@ -5,7 +5,7 @@ description: Use pub run to run a Dart script in your package.
 
 _Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub run [--enable-asserts] <executable> [args...]
 {% endprettify %}
 

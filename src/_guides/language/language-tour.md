@@ -1165,7 +1165,7 @@ that users must provide a value for the parameter.
 For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
@@ -2391,7 +2391,7 @@ The first is the exception that was thrown,
 and the second is the stack trace (a [StackTrace][] object).
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 try {
   // ···
 } on Exception catch [!(e)!] {
@@ -2407,7 +2407,7 @@ while allowing it to propagate,
 use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void misbehave() {
   try {
     dynamic foo = true;
@@ -2713,7 +2713,7 @@ Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Point {
   num x, y;
 
@@ -2839,7 +2839,7 @@ During development, you can validate inputs by using `assert` in the
 initializer list.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
 }
@@ -3150,7 +3150,7 @@ Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Television {
   void turnOn() {
     _illuminateDisplay();
@@ -3180,7 +3180,7 @@ You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class SmartTelevision extends Television {
   [!@override!]
   void turnOn() {...}
@@ -3250,7 +3250,7 @@ To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   // Unless you override noSuchMethod, using a
   // non-existent member results in a NoSuchMethodError.
@@ -3371,7 +3371,7 @@ To _use_ a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Musician extends Performer [!with Musical!] {
   // ···
 }
@@ -3642,7 +3642,7 @@ you might want to limit the types of its parameters.
 You can do this using `extends`.
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Foo<T [!extends SomeBaseClass!]> {
   // Implementation goes here...
   String toString() => "Instance of 'Foo<$T>'";
@@ -3654,7 +3654,7 @@ class Extender extends SomeBaseClass {...}
 It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var someBaseClassFoo = [!Foo<SomeBaseClass>!]();
 var extenderFoo = [!Foo<Extender>!]();
 {% endprettify %}
@@ -3671,7 +3671,7 @@ Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}
 
@@ -3684,7 +3684,7 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!T!] first[!<T>!](List<[!T!]> ts) {
   // Do some initial work or error checking, then...
   [!T!] tmp = ts[0];
@@ -3893,7 +3893,7 @@ To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
@@ -3944,7 +3944,7 @@ For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
@@ -4034,7 +4034,7 @@ For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
@@ -4247,7 +4247,7 @@ Here’s an example of using the `@deprecated`
 annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Television {
   /// _Deprecated: Use [turnOn] instead._
   [!@deprecated!]

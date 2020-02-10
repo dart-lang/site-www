@@ -56,7 +56,7 @@ For example, say  you want to change the following code in the [language tour](h
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var name = 'Bob';
 {% endprettify %}
 ```

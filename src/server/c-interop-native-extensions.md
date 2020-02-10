@@ -101,7 +101,7 @@ API, show the native code, and show what happens when the extension is called.
 Here is the Dart part of the synchronous extension, called
 <b>sample_synchronous_extension.dart</b>:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library sample_synchronous_extension;
 
 import 'dart-ext:sample_extension';
@@ -164,7 +164,7 @@ using them are in the unit test file
 A native function to be called from Dart must have the
 type **Dart\_NativeFunction**, which is defined in dart_api.h as:
 
-{% prettify cpp %}
+{% prettify cpp tag=pre+code %}
 typedef void (*Dart_NativeFunction)(Dart_NativeArguments arguments);
 {% endprettify %}
 
@@ -217,7 +217,7 @@ initialization function, then the native function implementations, and ending
 with the name resolution function. The two native functions implementing the
 asynchronous extension are shown later.
 
-{% prettify cpp %}
+{% prettify cpp tag=pre+code %}
 #include <string.h>
 #include "dart_api.h"
 // Forward declaration of ResolveName function.
@@ -334,7 +334,7 @@ reinterpret_cast) that creates an array of random bytes,
 given a seed and a length.  It returns the data in a newly allocated array,
 which will be freed by the wrapper:
 
-{% prettify cpp %}
+{% prettify cpp tag=pre+code %}
 uint8_t* random_array(int seed, int length) {
   if (length <= 0 || length > 10000000) return NULL;
 
@@ -358,7 +358,7 @@ as a struct containing a union. Look in dart_native_api.h to see the fields and 
 the union's members. After the Dart_CObject is posted, it and all its resources
 can be freed, since they have been copied into Dart objects on the Dart heap.
 
-{% prettify cpp %}
+{% prettify cpp tag=pre+code %}
 void wrappedRandomArray(Dart_Port dest_port_id,
                         Dart_Port reply_port_id,
                         Dart_CObject* message) {
@@ -406,7 +406,7 @@ by sending a message. We create a native port that calls this function, and
 return a send port connected to that port. The Dart library gets the port from
 this function, and forwards calls to the port.
 
-{% prettify cpp %}
+{% prettify cpp tag=pre+code %}
 void randomArrayServicePort(Dart_NativeArguments arguments) {
   Dart_SetReturnValue(arguments, Dart_Null());
   Dart_Port service_port =
@@ -425,7 +425,7 @@ to it when a Dart asynchronous function with a callback is called. The Dart
 class gets the port the first time the function is called, caching it in the
 usual way. Here is the Dart library for the asynchronous extension:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library sample_asynchronous_extension;
 
 import 'dart-ext:sample_extension';
@@ -489,13 +489,13 @@ sample extension.
 
 On Linux, you can compile the code in the samples/sample_extension directory like this:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 g++ -fPIC -m32 -I{path to SDK include directory} -DDART_SHARED_LIB -c sample_extension.cc
 {% endprettify %}
 
 To create the shared library from the object file:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 gcc -shared -m32 -Wl,-soname,libsample_extension.so -o
 libsample_extension.so sample_extension.o
 {% endprettify %}

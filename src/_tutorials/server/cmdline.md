@@ -178,7 +178,7 @@ Here is the `dcat` code that uses these classes to parse and store command-line
 arguments:
 
 <?code-excerpt "misc/bin/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!ArgResults argResults;!]
 
 void main([!List<String> arguments!]) {
@@ -241,7 +241,7 @@ Here's the code from the `dcat` program that writes the line number to
 the `stdout` (if the -n flag is set) followed by the line from the file.
 
 <?code-excerpt "misc/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
 }
@@ -276,7 +276,7 @@ This code from `dcat` prints an error message if the user
 tries to list a directory.
 
 <?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
 } else {
@@ -318,7 +318,7 @@ Because `pipe()` is asynchronous
 the code that calls it uses `await`.
 
 <?code-excerpt "misc/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 
 await stdin.[!pipe!](stdout);
 {% endprettify %}
@@ -353,7 +353,7 @@ Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
 <?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
 } else {
@@ -376,7 +376,7 @@ asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
 <?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
   final lines = utf8.decoder
@@ -401,7 +401,7 @@ The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
 <?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
   final lines = [!utf8.decoder!]
@@ -509,7 +509,7 @@ in the `_handleError()` function to indicate that an error
 occcurred during execution.
 
 <?code-excerpt "misc/bin/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
     stderr.writeln('error: $path is a directory');

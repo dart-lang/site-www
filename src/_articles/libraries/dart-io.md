@@ -60,7 +60,7 @@ no more pending operations are in the event queue
 and the VM terminates.
 
 <?code-excerpt "misc/lib/articles/io/io_timer_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 
 void main() {
@@ -96,7 +96,7 @@ class.
 
 
 <?code-excerpt "misc/lib/articles/io/io_file_system_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:convert';
 import 'dart:io';
 
@@ -127,7 +127,7 @@ The code opens the file for reading and then reads one byte at a time
 until it encounters the char code for `;`.
 
 <?code-excerpt "misc/lib/articles/io/io_random_access_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> main() async {
@@ -164,7 +164,7 @@ as a stream of lists of bytes. Like all streams in Dart you listen on
 this stream (using `await for`) and the data is given in chunks.
 
 <?code-excerpt "misc/lib/articles/io/io_stream_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> main() async {
@@ -204,7 +204,7 @@ and collect its output. Use `run()` when you don't
 need interactive control over the process.
 
 <?code-excerpt "misc/lib/articles/io/io_process_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> main() async {
@@ -237,7 +237,7 @@ we use a
 (which splits the strings at line boundaries).
 
 <?code-excerpt "misc/lib/articles/io/io_process_transform_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:convert';
 import 'dart:io';
 
@@ -266,7 +266,7 @@ we can use the streaming classes
 to pipe the output of the process to a file.
 
 <?code-excerpt "misc/lib/articles/io/io_process_stdio_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> main() async {
@@ -297,7 +297,7 @@ Here is a simple web server
 that just answers 'Hello, world' to any request.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> main() async {
@@ -324,7 +324,7 @@ We make use of the streaming interface
 to pipe all the data read from a file directly to the response stream.
 
 <?code-excerpt "misc/lib/articles/io/io_http_server_file_test.dart"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 Future<void> runServer(String basePath) async {

@@ -117,7 +117,7 @@ Let's customize the app you just created.
  2. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     void main() {
       Element output = querySelector('#output');
       [!output.children.addAll(thingsTodo().map(newLI));!]
@@ -139,7 +139,7 @@ Let's customize the app you just created.
  5. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
-    {% prettify css %}
+    {% prettify css tag=pre+code %}
     #output {
       padding: 20px;
       [!text-align: left;!]

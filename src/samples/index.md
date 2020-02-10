@@ -34,7 +34,7 @@ Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   print('Hello, World!');
 }
@@ -47,7 +47,7 @@ Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var name = 'Voyager I';
 var year = 1977;
 var antennaDiameter = 3.7;
@@ -66,7 +66,7 @@ var image = {
 Dart supports the usual control flow statements:
 
 <?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (year >= 2001) {
   print('21st century');
 } else if (year >= 1901) {
@@ -96,7 +96,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 specifying the types of each function's arguments and return value:
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
@@ -110,7 +110,7 @@ contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 {% endprettify %}
 
@@ -126,7 +126,7 @@ including optional parameters, default parameter values, and lexical scope.
 
 Dart comments usually start with `//`.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // This is a normal, one-line comment.
 
 /// This is a documentation comment, used to document libraries,
@@ -145,7 +145,7 @@ including how the documentation tooling works.
 To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Importing core libraries
 import 'dart:math';
 
@@ -172,7 +172,7 @@ the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Spacecraft {
   String name;
   DateTime launchDate;
@@ -206,7 +206,7 @@ class Spacecraft {
 You might use the `Spacecraft` class like this:
 
 <?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
 
@@ -224,7 +224,7 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 Dart has single inheritance.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Orbiter extends Spacecraft {
   num altitude;
   Orbiter(String name, DateTime launchDate, this.altitude)
@@ -240,7 +240,7 @@ class Orbiter extends Spacecraft {
 Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Piloted {
   int astronauts = 1;
   void describeCrew() {
@@ -252,7 +252,7 @@ class Piloted {
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
 }
@@ -268,7 +268,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class MockSpaceship implements Spacecraft {
   // ···
 }
@@ -279,7 +279,7 @@ class MockSpaceship implements Spacecraft {
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
 
@@ -302,7 +302,7 @@ Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
 Future<void> printWithDelay(String message) [!async!] {
@@ -314,7 +314,7 @@ Future<void> printWithDelay(String message) [!async!] {
 The method above is equivalent to:
 
 <?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
     print(message);
@@ -326,7 +326,7 @@ As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
 
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
@@ -349,7 +349,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
 <?code-excerpt "misc/test/samples_test.dart (async*)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
@@ -368,7 +368,7 @@ and the asynchronous loop (`await for`).
 To raise an exception, use `throw`:
 
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (astronauts == 0) {
   throw StateError('No astronauts.');
 }
@@ -377,7 +377,7 @@ if (astronauts == 0) {
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 try {
   for (var object in flybyObjects) {
     var description = await File('$object.txt').readAsString();

@@ -23,7 +23,7 @@ For example,
 a simple HTTP server
 might use the following code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!runZoned(() {!]
   HttpServer.bind('0.0.0.0', port).then((server) {
     server.listen(staticFiles.serveRequest);
@@ -158,7 +158,7 @@ that's invoked for every uncaught error in the zone.
 For example:
 
 <!-- run_zoned1.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 runZoned(() {
   Timer.run(() { throw 'Would normally kill the program'; });
 }, onError: (error, stackTrace) {
@@ -203,7 +203,7 @@ the error raised by the first line
 can't cross into an error zone.
 
 <!-- run_zoned2.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var f = new Future.error(499);
 f = f.whenComplete(() { print('Outside runZoned'); });
 runZoned(() {
@@ -216,7 +216,7 @@ runZoned(() {
 
 Here's the output you see if you run the example:
 
-{% prettify xml %}
+{% prettify xml tag=pre+code %}
 Outside runZoned
 Inside non-error zone
 Uncaught Error: 499
@@ -229,7 +229,7 @@ If you remove the calls to `runZoned()` or
 remove the `onError` argument,
 you see this output:
 
-{% prettify xml %}
+{% prettify xml tag=pre+code %}
 Outside runZoned
 Inside non-error zone
 [!Inside error zone (not called)!]
@@ -255,7 +255,7 @@ Similarly, errors can't cross _out_ of error zones.
 Consider this example:
 
 <!-- run_zoned3.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var completer = new Completer();
 var future = completer.future.then((x) => x + 1);
 var zoneFuture;
@@ -296,7 +296,7 @@ which aren't evaluated until you ask for values.
 Here is an example of using a stream with `runZoned()`:
 
 <!-- stream.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var stream = new File('stream.dart').openRead()
     .map((x) => throw 'Callback throws');
 
@@ -308,7 +308,7 @@ The exception thrown by the callback
 is caught by the error handler of `runZoned()`.
 Here's the output:
 
-{% prettify xml %}
+{% prettify xml tag=pre+code %}
 Caught error: Callback throws
 {% endprettify %}
 
@@ -332,7 +332,7 @@ Use the `zoneValues` argument to `runZoned()` to
 store values in the newly created zone:
 
 <!-- value1.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 runZoned(() {
   print(Zone.current[#key]);
 }, zoneValues: { #key: 499 });
@@ -351,7 +351,7 @@ For example, the following code
 adds an item to a zone-local list:
 
 <!-- value1_1.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 runZoned(() {
   Zone.current[#key].add(499);
   print(Zone.current[#key]); // [499]
@@ -376,7 +376,7 @@ and want to print all of their lines.
 The program might look like this:
 
 <!-- value2.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -406,7 +406,7 @@ With zone-local values you can add the filename to the returned string
 (new lines are highlighted):
 
 <!-- value3.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -460,7 +460,7 @@ As a simple example of overriding functionality,
 here is a way to silence all prints inside a zone:
 
 <!-- specification1.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 
 main() {
@@ -535,7 +535,7 @@ for another interceptable method, `scheduleMicrotask()`:
 Here is an example that shows how to delegate to the parent zone:
 
 <!-- specification2.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 
 main() {
@@ -585,7 +585,7 @@ that executes just after calling `runZoned()`.
 Here's an example of profiling code using `run*`:
 
 <!-- profile_run.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 final total = new Stopwatch();
 final user = new Stopwatch();
 
@@ -640,7 +640,7 @@ save a stack trace
 before the code disappears into an asynchronous context.
 
 <!-- debug.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 
 get currentStackTrace {

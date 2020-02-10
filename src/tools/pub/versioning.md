@@ -130,7 +130,7 @@ and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   collection: '>=2.3.5 <2.4.0'
 {% endprettify %}
@@ -154,7 +154,7 @@ If you trust them, then if you know your package works with `2.3.5` of theirs,
 you can rely on it working all the way up to `3.0.0`.
 You can set your range like:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   collection: ^2.3.5
 {% endprettify %}
@@ -234,13 +234,13 @@ package._
 The following example shows what this means. Let's say we have
 two apps. Here are their pubspecs:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   widgets:
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: other_app
 dependencies:
   widgets:
@@ -249,7 +249,7 @@ dependencies:
 
 They both depend on `widgets`, whose pubspec is:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: widgets
 dependencies:
   collection: '>=1.0.0 <2.0.0'
@@ -281,13 +281,13 @@ The `widgets` package, currently at 1.2.0, exports
 `collection` via `export 'package:collection/collection.dart'`, and is
 at 2.4.0. The pubspec files are as follows:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: bookshelf
 dependencies:
   widgets:  ^1.2.0
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: widgets
 dependencies:
   collection:  ^2.4.0
@@ -312,13 +312,13 @@ it's recommended that the package's author keeps a tighter
 limit on the upper and lower bounds of a dependency.
 In this case, the range for the `widgets` package should be narrowed:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: bookshelf
 dependencies:
   widgets:  '>=1.2.0 <1.3.0'
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: widgets
 dependencies:
   collection:  '>=2.4.0 <2.5.0'
@@ -402,27 +402,27 @@ go right back around in a circle.
 Sometimes this process never settles down into a stable solution.
 Gaze into the abyss:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 version: 0.0.0
 dependencies:
   yin: '>=1.0.0'
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: yin
 version: 1.0.0
 dependencies:
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: yin
 version: 2.0.0
 dependencies:
   yang: '1.0.0'
 {% endprettify %}
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: yang
 version: 1.0.0
 dependencies:

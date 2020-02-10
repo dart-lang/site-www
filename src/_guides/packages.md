@@ -38,14 +38,14 @@ that's in the top directory of your application.
 The simplest possible pubspec lists only the package name:
 
 {% comment %} TODO: make 3-backtick-yaml the same as prettify yaml {% endcomment %}
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 {% endprettify %}
 
 Here is an example of a pubspec that declares dependencies on
 two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   js: ^0.6.0
@@ -106,7 +106,7 @@ You can also use this style to import libraries from within your own package.
 Consider the following pubspec file, which declares a dependency on
 the (fictional) `transmogrify` package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify:
@@ -114,7 +114,7 @@ dependencies:
 
 Let's say that your package is laid out as follows:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 transmogrify/
   lib/
     transmogrify.dart
@@ -126,7 +126,7 @@ transmogrify/
 
 The `parser_test` file *could* import `parser.dart` like this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import '../../lib/parser.dart';
 {% endprettify %}
 
@@ -134,7 +134,7 @@ But that's a fragile relative path. If `parser_test.dart` ever moves
 up or down a directory, that path breaks.
 Instead, you can do as follows:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:transmogrify/parser.dart';
 {% endprettify %}
 
@@ -163,7 +163,7 @@ uses the same versions of code.
 When you're ready to upgrade your dependencies to the latest versions,
 use pub upgrade:
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub upgrade
 {% endprettify %}
 
@@ -172,7 +172,7 @@ available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub upgrade transmogrify
 {% endprettify %}
 

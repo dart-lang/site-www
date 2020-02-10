@@ -1204,7 +1204,7 @@ passing in a function literal that searches each file or directory.
 
 <!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
@@ -1231,7 +1231,7 @@ including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
@@ -1268,7 +1268,7 @@ To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Find a button by ID and add an event handler.
 querySelector('#submitInfo').onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
@@ -1328,7 +1328,7 @@ Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
@@ -1353,7 +1353,7 @@ Run code after the stream is closed by registering
 an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
@@ -1569,7 +1569,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var lines =
     [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
 try {

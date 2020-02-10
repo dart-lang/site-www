@@ -70,7 +70,7 @@ This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
 
@@ -82,7 +82,7 @@ For example, consider the following code, which is **invalid**:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
 {% endprettify %}
@@ -97,7 +97,7 @@ which steps through the elements of the iterable until
 it reaches that position.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
 {% endprettify %}
@@ -188,7 +188,7 @@ which is a function that returns true if
 the input satisfies a certain condition.
 
 <?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
 
@@ -298,7 +298,7 @@ You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var item in items) {
   if (item.length < 5) {
     return false;
@@ -310,7 +310,7 @@ return true;
 However, you can accomplish the same using the `every()` method:
 
 <?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
 
@@ -345,7 +345,7 @@ After running the code, try changing the predicate of `any()` so
 it returns false:
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
 } else {
@@ -401,7 +401,7 @@ satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
 
@@ -416,7 +416,7 @@ In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
   print('$number is even');
@@ -480,7 +480,7 @@ change `takeWhile()` to take elements until
 it reaches the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
@@ -524,7 +524,7 @@ apply a function over each of the elements,
 replacing each element with a new one.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
 
@@ -535,7 +535,7 @@ for example, to convert all `int` to `String`,
 as you can see in the following example.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}
 

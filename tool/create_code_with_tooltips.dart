@@ -41,8 +41,10 @@ void _processSrc(_SrcAndTipPaths paths) {
   final html = [
     warning,
     '<pre class="prettyprint lang-dart">\n',
+    '<code>\n',
     srcAsHtmlWithTips.join('\n'),
-    '</pre>\n'
+    '</code>\n'
+    '</pre>\n',
   ].join('');
   File(paths.htmlPath).writeAsStringSync(html);
 }

@@ -100,7 +100,7 @@ To create a simple command-line app, use **New Pad**.
   to contain this code:
 
 <!-- library-tour/string-tests/bin/main.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var char in 'hello'.split('')) {
   print(char);
 }

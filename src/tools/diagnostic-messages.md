@@ -78,7 +78,7 @@ member in the superclass chain. Abstract members can't be invoked.
 The following code produces this diagnostic because `B` doesn't inherit a
 concrete implementation of `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   int get a;
 }
@@ -117,7 +117,7 @@ other extensions, making the reference to the member ambiguous.
 The following code produces this diagnostic because there's no way to
 choose between the member in `E1` and the member in `E2`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E1 on String {
   int get charCount => 1;
 }
@@ -138,7 +138,7 @@ If you don't need both extensions, then you can delete or hide one of them.
 If you need both, then explicitly select the one you want to use by using
 an extension override:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E1 on String {
   int get charCount => length;
 }
@@ -165,21 +165,21 @@ declared in two or more imported libraries.
 
 Given a library (`a.dart`) that defines a class (`C` in this example):
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 class C {}
 {% endprettify %}
 
 And a library (`b.dart`) that defines a different class with the same name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class B {}
 class C {}
 {% endprettify %}
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'a.dart';
 import 'b.dart';
 
@@ -191,7 +191,7 @@ void f([!C!] c1, [!C!] c2) {}
 If any of the libraries aren't needed, then remove the import directives
 for them:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'a.dart';
 
 void f(C c1, C c2) {}
@@ -200,7 +200,7 @@ void f(C c1, C c2) {}
 If the name is still defined by more than one library, then add a `hide`
 clause to the import directives for all except one library:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'a.dart' hide C;
 import 'b.dart';
 
@@ -211,7 +211,7 @@ If you must be able to reference more than one of these types, then add a
 prefix to each of the import directives, and qualify the references with
 the appropriate prefix:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'a.dart' as a;
 import 'b.dart' as b;
 
@@ -242,7 +242,7 @@ literal or a set literal.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     [!{...a, ...b, ...c}!];
 {% endprettify %}
@@ -257,7 +257,7 @@ of the spread elements of one kind or another, so that the elements are
 consistent. In this case, that likely means removing the list and deciding
 what to do about the now unused parameter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     {...a, ...c};
 {% endprettify %}
@@ -266,7 +266,7 @@ The second fix is to change the elements of one kind into elements that are
 consistent with the other elements. For example, you can add the elements
 of the list as keys that map to themselves:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(Map<String, String> a, List<String> b, Map<String, String> c) =>
     {...a, for (String s in b) s: s, ...c};
 {% endprettify %}
@@ -294,7 +294,7 @@ literal or a set literal.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(a, b) => [!{...a, ...b}!];
 {% endprettify %}
 
@@ -307,7 +307,7 @@ There are three common ways to fix this problem. The first is to add type
 arguments to the literal. For example, if the literal is intended to be a
 map literal, you might write something like this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(a, b) => <String, String>{...a, ...b};
 {% endprettify %}
 
@@ -315,21 +315,21 @@ The second fix is to add type information so that the expressions have
 either the type `Iterable` or the type `Map`. You can add an explicit cast
 or, in this case, add types to the declarations of the two parameters:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(List<int> a, List<int> b) => {...a, ...b};
 {% endprettify %}
 
 The third fix is to add context information. In this case, that means
 adding a return type to the function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Set<String> union(a, b) => {...a, ...b};
 {% endprettify %}
 
 In other cases, you might add a type somewhere else. For example, say the
 original code looks like this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(a, b) {
   var x = [!{...a, ...b}!];
   return x;
@@ -338,7 +338,7 @@ union(a, b) {
 
 You might add a type annotation on `x`, like this:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 union(a, b) {
   Map<String, String> x = {...a, ...b};
   return x;
@@ -359,7 +359,7 @@ can't be assigned to the static type of the corresponding parameter.
 The following code produces this diagnostic because a `num` can't be
 assigned to a `String`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f(String x) => x;
 String g(num y) => f([!y!]);
 {% endprettify %}
@@ -369,7 +369,7 @@ String g(num y) => f([!y!]);
 If possible, rewrite the code so that the static type is assignable. In the
 example above you might be able to change the type of the parameter `y`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f(String x) => x;
 String g(String y) => f(y);
 {% endprettify %}
@@ -378,14 +378,14 @@ If that fix isn't possible, then add code to handle the case where the
 argument value isn't the required type. One approach is to coerce other
 types to the required type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f(String x) => x;
 String g(num y) => f(y.toString());
 {% endprettify %}
 
 Another approach is to add explicit type tests and fallback code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f(String x) => x;
 String g(num y) => f(y is String ? y : '');
 {% endprettify %}
@@ -394,7 +394,7 @@ If you believe that the runtime type of the argument will always be the
 same as the static type of the parameter, and you're willing to risk having
 an exception thrown at runtime if you're wrong, then add an explicit cast:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f(String x) => x;
 String g(num y) => f(y as String);
 {% endprettify %}
@@ -413,7 +413,7 @@ declared to be `final` or `const`.
 
 The following code produces this diagnostic because `v` is final:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final v = 0;
 }
@@ -428,7 +428,7 @@ f(C c) {
 If you need to be able to set the value of the field, then remove the
 modifier `final` from the field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int v = 0;
 }
@@ -452,7 +452,7 @@ declared to be final is assigned after it was initialized.
 The following code produces this diagnostic because `x` is final, so it
 can't have a value assigned to it after it was initialized:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   final x = 0;
   [!x!] = 3;
@@ -465,7 +465,7 @@ void f() {
 Remove the keyword `final`, and replace it with `var` if there's no type
 annotation:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   var x = 0;
   x = 3;
@@ -488,7 +488,7 @@ defined with the same name.
 The following code produces this diagnostic because there is no setter
 named `x` in `C`, but there is a getter named `x`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int get x => 0;
   set y(int p) {}
@@ -503,7 +503,7 @@ void f(C c) {
 
 If you want to invoke an existing setter, then correct the name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int get x => 0;
   set y(int p) {}
@@ -517,7 +517,7 @@ void f(C c) {
 If you want to invoke the setter but it just doesn't exist yet, then
 declare it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int get x => 0;
   set x(int p) {}
@@ -543,7 +543,7 @@ method.
 The following code produces this diagnostic because `f` can't be assigned a
 value because it's a method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   void f() {}
 
@@ -571,7 +571,7 @@ built-in identifier. Built-in identifiers can’t be used as extension names.
 The following code produces this diagnostic because `mixin` is a built-in
 identifier:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension [!mixin!] on int {}
 {% endprettify %}
 
@@ -593,7 +593,7 @@ where a type name is expected.
 The following code produces this diagnostic because `import` can't be used
 as a type because it's a built-in identifier:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!import!]<int> x;
 {% endprettify %}
 
@@ -601,7 +601,7 @@ as a type because it's a built-in identifier:
 
 Replace the built-in identifier with the name of a valid type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> x;
 {% endprettify %}
 
@@ -621,7 +621,7 @@ block isn't one of the required terminators: `break`, `continue`,
 The following code produces this diagnostic because the case block ends
 with an assignment:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int x) {
   switch (x) {
     [!case!] 0:
@@ -636,7 +636,7 @@ void f(int x) {
 
 Add one of the required terminators:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int x) {
   switch (x) {
     case 0:
@@ -662,7 +662,7 @@ cast expression is defined to be something other than a type.
 The following code produces this diagnostic because `x` is a variable, not
 a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num x = 0;
 int y = x as [!x!];
 {% endprettify %}
@@ -671,7 +671,7 @@ int y = x as [!x!];
 
 Replace the name with the name of a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num x = 0;
 int y = x as int;
 {% endprettify %}
@@ -691,7 +691,7 @@ allowed to contain abstract members.
 The following code produces this diagnostic because `m` is an abstract
 method but `C` isn't an abstract class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   [!void m();!]
 }
@@ -702,7 +702,7 @@ class C {
 If it's valid to create instances of the class, provide an implementation
 for the member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   void m() {}
 }
@@ -711,7 +711,7 @@ class C {
 If it isn't valid to create instances of the class, mark the class as being
 abstract:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class C {
   void m();
 }
@@ -732,7 +732,7 @@ least one non-final instance field (either directly or by inheritance).
 The following code produces this diagnostic because the field `x` isn't
 final:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -744,7 +744,7 @@ class C {
 
 If it's possible to mark all of the fields as final, then do so:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int x;
 
@@ -755,7 +755,7 @@ class C {
 If it isn't possible to mark all of the fields as final, then remove the
 keyword `const` from the constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -778,7 +778,7 @@ known to be a constant is assigned to a variable that's declared to be a
 The following code produces this diagnostic because `x` isn't declared to
 be `const`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 0;
 const y = [!x!];
 {% endprettify %}
@@ -788,7 +788,7 @@ const y = [!x!];
 If the value being assigned can be declared to be `const`, then change the
 declaration:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const x = 0;
 const y = x;
 {% endprettify %}
@@ -796,7 +796,7 @@ const y = x;
 If the value can't be declared to be `const`, then remove the `const`
 modifier from the variable, possibly using `final` in its place:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 0;
 final y = x;
 {% endprettify %}
@@ -815,7 +815,7 @@ being const.
 The following code produces this diagnostic because `f` is an instance
 field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   [!const!] int f = 3;
 }
@@ -826,7 +826,7 @@ class C {
 If the field needs to be an instance field, then remove the keyword
 `const`, or replace it with `final`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int f = 3;
 }
@@ -834,7 +834,7 @@ class C {
 
 If the field really should be a const field, then make it a static field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static const int f = 3;
 }
@@ -853,7 +853,7 @@ be a constant doesn't have an initializer.
 
 The following code produces this diagnostic because `c` isn't initialized:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const [!c!];
 {% endprettify %}
 
@@ -861,7 +861,7 @@ const [!c!];
 
 Add an initializer:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const c = 'c';
 {% endprettify %}
 
@@ -880,7 +880,7 @@ or a set.
 The following code produces this diagnostic because the value of `list1` is
 `null`, which is neither a list nor a set:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const List<int> list1 = null;
 const List<int> list2 = [...[!list1!]];
 {% endprettify %}
@@ -890,7 +890,7 @@ const List<int> list2 = [...[!list1!]];
 Change the expression to something that evaluates to either a constant list
 or a constant set:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const List<int> list1 = [];
 const List<int> list2 = [...list1];
 {% endprettify %}
@@ -909,7 +909,7 @@ operator in a constant map evaluates to something other than a map.
 The following code produces this diagnostic because the value of `map1` is
 `null`, which isn't a map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Map<String, int> map1 = null;
 const Map<String, int> map2 = {...[!map1!]};
 {% endprettify %}
@@ -918,7 +918,7 @@ const Map<String, int> map2 = {...[!map1!]};
 
 Change the expression to something that evaluates to a constant map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Map<String, int> map1 = {};
 const Map<String, int> map2 = {...map1};
 {% endprettify %}
@@ -937,7 +937,7 @@ invoke a constructor that isn't marked with `const`.
 The following code produces this diagnostic because the constructor in `A`
 isn't a const constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A();
 }
@@ -951,7 +951,7 @@ If it's desirable and possible to make the class a constant class (by
 making all of the fields of the class, including inherited fields, final),
 then add the keyword `const` to the constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   const A();
 }
@@ -961,7 +961,7 @@ A f() => const A();
 
 Otherwise, remove the keyword `const`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A();
 }
@@ -982,7 +982,7 @@ with an argument that isn't a constant expression.
 
 The following code produces this diagnostic because `i` isn't a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int i;
   const C(this.i);
@@ -995,7 +995,7 @@ C f(int i) => const C([!i!]);
 Either make all of the arguments constant expressions, or remove the
 `const` keyword to use the non-constant form of the constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int i;
   const C(this.i);
@@ -1017,7 +1017,7 @@ executed because execution will never reach the code.
 The following code produces this diagnostic because the invocation of
 `print` occurs after the function has returned:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   return;
   [!print('here');!]
@@ -1028,7 +1028,7 @@ void f() {
 
 If the code isn't needed, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   return;
 }
@@ -1037,7 +1037,7 @@ void f() {
 If the code needs to be executed, then either move the code to a place
 where it will be executed:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   print('here');
   return;
@@ -1046,7 +1046,7 @@ void f() {
 
 Or, rewrite the code before it, so that it can be reached:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f({bool skipPrinting = true}) {
   if (skipPrinting) {
     return;
@@ -1072,7 +1072,7 @@ catch clauses that follow them will be selected.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } catch (e) {
@@ -1086,7 +1086,7 @@ void f() {
 If the clause should be selectable, then move the clause before the general
 clause:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } on String {
@@ -1097,7 +1097,7 @@ void f() {
 
 If the clause doesn't need to be selectable, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } catch (e) {
@@ -1123,7 +1123,7 @@ clause will never be selected.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } on num {
@@ -1137,7 +1137,7 @@ void f() {
 If the clause should be selectable, then move the clause before the general
 clause:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } on int {
@@ -1148,7 +1148,7 @@ void f() {
 
 If the clause doesn't need to be selectable, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
   } on num {
@@ -1172,7 +1172,7 @@ member is used in a different package.
 If the method `m` in the class `C` is annotated with `@deprecated`, then
 the following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   c.[!m!]();
 }
@@ -1198,7 +1198,7 @@ class member is used in the same package in which it's declared.
 
 The following code produces this diagnostic because `x` is deprecated:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 @deprecated
 var x = 0;
 var y = [!x!];
@@ -1227,7 +1227,7 @@ same name.
 The following code produces this diagnostic because there are two
 declarations for the unnamed constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C();
 
@@ -1238,7 +1238,7 @@ class C {
 The following code produces this diagnostic because there are two
 declarations for the constructor named `m`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C.m();
 
@@ -1251,7 +1251,7 @@ class C {
 If there are multiple unnamed constructors and all of the constructors are
 needed, then give all of them, or all except one of them, a name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C();
 
@@ -1262,7 +1262,7 @@ class C {
 If there are multiple unnamed constructors and all except one of them are
 unneeded, then remove the constructors that aren't needed:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C();
 }
@@ -1271,7 +1271,7 @@ class C {
 If there are multiple named constructors and all of the constructors are
 needed, then rename all except one of them:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C.m();
 
@@ -1282,7 +1282,7 @@ class C {
 If there are multiple named constructors and all except one of them are
 unneeded, then remove the constructorsthat aren't needed:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C.m();
 }
@@ -1302,7 +1302,7 @@ a previous declaration with the same name in the same scope.
 The following code produces this diagnostic because the name `x` is
 declared twice:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 int [!x!] = 1;
 {% endprettify %}
@@ -1311,7 +1311,7 @@ int [!x!] = 1;
 
 Choose a different name for one of the declarations.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 int y = 1;
 {% endprettify %}
@@ -1330,7 +1330,7 @@ doesn’t add value and should be removed.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 import [!'package:meta/meta.dart'!];
 
@@ -1341,7 +1341,7 @@ import [!'package:meta/meta.dart'!];
 
 Remove the unnecessary import:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 @sealed class C {}
@@ -1361,7 +1361,7 @@ named arguments that have the same name.
 The following code produces this diagnostic because there are two arguments
 with the name `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   c.m(a: 0, [!a!]: 1);
 }
@@ -1375,7 +1375,7 @@ class C {
 
 If one of the arguments should have a different name, then change the name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   c.m(a: 0, b: 1);
 }
@@ -1387,7 +1387,7 @@ class C {
 
 If one of the arguments is wrong, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   c.m(a: 1);
 }
@@ -1412,7 +1412,7 @@ which means that one of the values is unnecessary.
 The following code produces this diagnostic because the string `'a'` is
 specified twice:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Set<String> set = {'a', [!'a'!]};
 {% endprettify %}
 
@@ -1420,7 +1420,7 @@ const Set<String> set = {'a', [!'a'!]};
 
 Remove one of the duplicate values:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Set<String> set = {'a'};
 {% endprettify %}
 
@@ -1444,7 +1444,7 @@ pointless.
 The following code produces this diagnostic because the key `1` is used
 twice:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const map = <int, String>{1: 'a', 2: 'b', [!1!]: 'c', 4: 'd'};
 {% endprettify %}
 
@@ -1453,14 +1453,14 @@ const map = <int, String>{1: 'a', 2: 'b', [!1!]: 'c', 4: 'd'};
 If both entries should be included in the map, then change one of the keys
 to be different:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const map = <int, String>{1: 'a', 2: 'b', 3: 'c', 4: 'd'};
 {% endprettify %}
 
 If only one of the entries is needed, then remove the one that isn't
 needed:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const map = <int, String>{1: 'a', 2: 'b', 4: 'd'};
 {% endprettify %}
 
@@ -1481,7 +1481,7 @@ expression, rather than a map entry, in what appears to be a map literal.
 
 The following code generates this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var map = <String, int>{'a': 0, 'b': 1, [!'c'!]};
 {% endprettify %}
 
@@ -1491,7 +1491,7 @@ If the expression is intended to compute either a key or a value in an
 entry, fix the issue by replacing the expression with the key or the value.
 For example:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var map = <String, int>{'a': 0, 'b': 1, 'c': 2};
 {% endprettify %}
 
@@ -1509,7 +1509,7 @@ name that is declared to be something other than a class.
 The following code produces this diagnostic because `f` is declared to be a
 function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {}
 
 class C extends [!f!] {}
@@ -1520,7 +1520,7 @@ class C extends [!f!] {}
 If you want the class to extend a class other than `Object`, then replace
 the name in the extends clause with the name of that class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {}
 
 class C extends B {}
@@ -1530,7 +1530,7 @@ class B {}
 
 If you want the class to extend `Object`, then remove the extends clause:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {}
 
 class C {}
@@ -1553,7 +1553,7 @@ define a type and can't be used as a type literal.
 
 The following code produces this diagnostic because `E` is an extension:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   static String m() => '';
 }
@@ -1566,7 +1566,7 @@ var x = [!E!];
 Replace the name of the extension with a name that can be referenced, such
 as a static member defined on the extension:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   static String m() => '';
 }
@@ -1592,7 +1592,7 @@ of the name within the body of the extension.
 The following code produces this diagnostic because the name `a` is being
 used for two different members:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on Object {
   int get a => 0;
   static int [!a!]() => 0;
@@ -1603,7 +1603,7 @@ extension E on Object {
 
 Rename or remove one of the members:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on Object {
   int get a => 0;
   static int b() => 0;
@@ -1624,7 +1624,7 @@ declared in an extension. Extensions can declare only concrete members.
 The following code produces this diagnostic because the method `a` doesn't
 have a body:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   int [!a!]();
 }
@@ -1650,7 +1650,7 @@ an extension.
 The following code produces this diagnostic because there is a constructor
 declaration in `E`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   [!E!]() : super();
 }
@@ -1675,7 +1675,7 @@ extensions can only add behavior, not state.
 The following code produces this diagnostic because `s` is an instance
 field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String [!s!];
 }
@@ -1703,7 +1703,7 @@ always found first.
 The following code produces this diagnostic because `toString` is defined
 by `Object`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String [!toString!]() => this;
 }
@@ -1714,7 +1714,7 @@ extension E on String {
 Remove the member or rename it so that the name doesn't conflict with the
 member in `Object`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String displayString() => this;
 }
@@ -1736,7 +1736,7 @@ name of the extension, not an extension override.
 
 The following code produces this diagnostic because `m` is static:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   static void m() {}
 }
@@ -1750,7 +1750,7 @@ void f() {
 
 Replace the extension override with the name of the extension:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   static void m() {}
 }
@@ -1774,7 +1774,7 @@ override isn't assignable to the type being extended by the extension.
 
 The following code produces this diagnostic because `3` isn't a `String`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   void method() {}
 }
@@ -1789,7 +1789,7 @@ void f() {
 If you're using the correct extension, then update the argument to have the
 correct type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   void method() {}
 }
@@ -1819,7 +1819,7 @@ controls which member is selected at compile time.
 The following code produces this diagnostic because `E(i)` isn't an
 expression:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   int get a => 0;
 }
@@ -1834,7 +1834,7 @@ void f(int i) {
 If you want to invoke one of the members of the extension, then add the
 invocation:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   int get a => 0;
 }
@@ -1846,7 +1846,7 @@ void f(int i) {
 
 If you don't want to invoke a member, then unwrap the target:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   int get a => 0;
 }
@@ -1873,7 +1873,7 @@ expressions and don't have a value.
 The following code produces this diagnostic because `E(3)` isn't an
 expression:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   void m() {}
 }
@@ -1886,7 +1886,7 @@ f() {
 
 Use '.' rather than '..':
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on int {
   void m() {}
 }
@@ -1912,7 +1912,7 @@ has more positional arguments than the method or function allows.
 The following code produces this diagnostic because `f` defines 2
 parameters but is invoked with 3 arguments:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b) {}
 void g() {
   f[!(1, 2, 3)!];
@@ -1923,7 +1923,7 @@ void g() {
 
 Remove the arguments that don't correspond to parameters:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b) {}
 void g() {
   f(1, 2);
@@ -1946,7 +1946,7 @@ The following code produces this diagnostic because `f` defines 2
 positional parameters but has a named parameter that could be used for the
 third argument:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b, {int c}) {}
 void g() {
   f[!(1, 2, 3)!];
@@ -1958,7 +1958,7 @@ void g() {
 If some of the arguments should be values for named parameters, then add
 the names before the arguments:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b, {int c}) {}
 void g() {
   f(1, 2, c: 3);
@@ -1968,7 +1968,7 @@ void g() {
 Otherwise, remove the arguments that don't correspond to positional
 parameters:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b, {int c}) {}
 void g() {
   f(1, 2);
@@ -1989,7 +1989,7 @@ initialized.
 The following code produces this diagnostic because `x` doesn't have an
 initializer:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 final [!x!];
 {% endprettify %}
 
@@ -1997,7 +1997,7 @@ final [!x!];
 
 For variables and static fields, you can add an initializer:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 final x = 0;
 {% endprettify %}
 
@@ -2005,7 +2005,7 @@ For instance fields, you can add an initializer as shown in the previous
 example, or you can initialize the field in every constructor. You can
 initialize the field by using a field formal parameter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int x;
   C(this.x);
@@ -2015,7 +2015,7 @@ class C {
 You can also initialize the field by using an initializer in the
 constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final int x;
   C(int y) : x = y * 2;
@@ -2043,7 +2043,7 @@ or by the constructor.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final String value;
 
@@ -2056,7 +2056,7 @@ class C {
 If the value should be passed in to the constructor directly, then use a
 field formal parameter to initialize the field `value`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final String value;
 
@@ -2067,7 +2067,7 @@ class C {
 If the value should be computed indirectly from a value provided by the
 caller, then add a parameter and include an initializer:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final String value;
 
@@ -2079,7 +2079,7 @@ If the value of the field doesn't depend on values that can be passed to
 the constructor, then add an initializer for the field as part of the field
 declaration:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final String value = '';
 
@@ -2092,7 +2092,7 @@ the constructor but different constructors need to initialize it to
 different values, then add an initializer for the field in the initializer
 list:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   final String value;
 
@@ -2105,7 +2105,7 @@ class C {
 However, if the value is the same for all instances, then consider using a
 static field instead of an instance field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static const String value = '';
 
@@ -2127,7 +2127,7 @@ a for-in loop has a type that isn't a subclass of `Iterable`.
 The following code produces this diagnostic because `m` is a `Map`, and
 `Map` isn't a subclass of `Iterable`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(Map<String, String> m) {
   for (String s in [!m!]) {
     print(s);
@@ -2139,7 +2139,7 @@ void f(Map<String, String> m) {
 
 Replace the expression with one that produces an iterable value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(Map<String, String> m) {
   for (String s in m.values) {
     print(s);
@@ -2162,7 +2162,7 @@ than a class or mixin.
 The following code produces this diagnostic because `x` is a variable
 rather than a class or mixin:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x;
 class C implements [!x!] {}
 {% endprettify %}
@@ -2195,7 +2195,7 @@ than once in an implements clause.
 The following code produces this diagnostic because `A` is in the list
 twice:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 class B implements A, [!A!] {}
 {% endprettify %}
@@ -2204,7 +2204,7 @@ class B implements A, [!A!] {}
 
 Remove all except one occurrence of the class name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 class B implements A {}
 {% endprettify %}
@@ -2223,7 +2223,7 @@ instance member in a constructor's initializer list.
 The following code produces this diagnostic because `defaultX` is an
 instance member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2237,7 +2237,7 @@ class C {
 
 If the member can be made static, then do so:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2250,7 +2250,7 @@ class C {
 If not, then replace the reference in the initializer with a different
 expression that doesn't use an instance member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2276,7 +2276,7 @@ are inherited from superclasses.
 The following code produces this diagnostic because the initializer is
 initializing `x`, but `x` isn't a field in the class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2289,7 +2289,7 @@ class C {
 If a different field should be initialized, then change the name to the
 name of the field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2299,7 +2299,7 @@ class C {
 
 If the field must be declared, then add a declaration:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
   int y;
@@ -2324,7 +2324,7 @@ fields that are inherited from superclasses.
 The following code produces this diagnostic because the field `x` isn't
 defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2337,7 +2337,7 @@ class C {
 If the field name was wrong, then change it to the name of an existing
 field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2348,7 +2348,7 @@ class C {
 If the field name is correct but hasn't yet been defined, then declare the
 field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
   int y;
@@ -2360,7 +2360,7 @@ class C {
 If the parameter is needed but shouldn't initialize a field, then convert
 it to a normal parameter and use it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2370,7 +2370,7 @@ class C {
 
 If the parameter isn't needed, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int y;
 
@@ -2392,7 +2392,7 @@ access a static member through an instance of the class.
 The following code produces this diagnostic because `zero` is a static
 field, but it’s being accessed as if it were an instance field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   c.[!zero!];
 }
@@ -2406,7 +2406,7 @@ class C {
 
 Use the class to access the static member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(C c) {
   C.zero;
 }
@@ -2435,7 +2435,7 @@ so `this` can't be used to reference it.
 The following code produces this diagnostic because `x` isn't in scope in
 the factory constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
   factory C() {
@@ -2449,7 +2449,7 @@ class C {
 
 Rewrite the code so that it doesn't reference the instance member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
   factory C() {
@@ -2473,7 +2473,7 @@ unqualified reference to an instance member.
 The following code produces this diagnostic because the instance field `x`
 is being referenced in a static method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2488,7 +2488,7 @@ class C {
 If the method must reference the instance member, then it can't be static,
 so remove the keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2501,7 +2501,7 @@ class C {
 If the method can't be made an instance method, then add a parameter so
 that an instance of the class can be passed in:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -2527,7 +2527,7 @@ can declare constructors that can be invoked by subclasses.
 The following code produces this diagnostic because `C` is an abstract
 class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class C {}
 
 var c = new [!C!]();
@@ -2554,7 +2554,7 @@ The following code produces this diagnostic because the type of the
 initializer (`int`) isn't assignable to the type of the variable
 (`String`):
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int i = 0;
 String s = [!i!];
 {% endprettify %}
@@ -2567,7 +2567,7 @@ the static types don't reflect that, then add an explicit cast.
 Otherwise, change the value being assigned so that it has the expected
 type. In the previous example, this might look like:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int i = 0;
 String s = i.toString();
 {% endprettify %}
@@ -2575,7 +2575,7 @@ String s = i.toString();
 If you can’t change the value, then change the type of the variable to be
 compatible with the type of the value being assigned:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int i = 0;
 int s = i;
 {% endprettify %}
@@ -2596,7 +2596,7 @@ argument.
 
 The following code produces this diagnostic because there are no arguments:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String join(String other) => '$this $other';
 }
@@ -2609,7 +2609,7 @@ void f() {
 And, the following code produces this diagnostic because there's more than
 one argument:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String join(String other) => '$this $other';
 }
@@ -2623,7 +2623,7 @@ void f() {
 
 Provide one argument for the extension override:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String join(String other) => '$this $other';
 }
@@ -2648,7 +2648,7 @@ constructor isn't the same as the name of the surrounding class.
 The following code produces this diagnostic because the name of the factory
 constructor (`A`) isn't the same as the surrounding class (`C`):
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 
 class C {
@@ -2661,7 +2661,7 @@ class C {
 If the factory returns an instance of the surrounding class, then rename
 the factory:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 
 class C {
@@ -2672,7 +2672,7 @@ class C {
 If the factory returns an instance of a different class, then move the
 factory to that class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   factory A() => null;
 }
@@ -2684,7 +2684,7 @@ If the factory returns an instance of a different class, but you can't
 modify that class or don't want to move the factory, then convert it to be
 a static method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 
 class C {
@@ -2706,7 +2706,7 @@ applied to anything other than a const constructor.
 The following code produces this diagnostic because the constructor is not
 a `const` constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class C {
@@ -2718,7 +2718,7 @@ class C {
 The following code produces this diagnostic because `x` isn't a
 constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 [!@literal!]
@@ -2731,7 +2731,7 @@ If the annotation is on a constructor and the constructor should always be
 invoked with `const`, when possible, then mark the constructor with the
 `const` keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class C {
@@ -2745,7 +2745,7 @@ If the constructor can't be marked as `const`, then remove the annotation.
 If the annotation is on anything other than a constructor, then remove the
 annotation:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x;
 {% endprettify %}
 
@@ -2772,7 +2772,7 @@ The following code produces this diagnostic because the type of the
 parameter `s` (`String`) isn't assignable to the type of the parameter `i`
 (`int`):
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   void m(int i) {}
 }
@@ -2787,7 +2787,7 @@ class B extends A {
 If the invalid method is intended to override the method from the
 superclass, then change it to conform:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   void m(int i) {}
 }
@@ -2800,7 +2800,7 @@ class B extends A {
 If it isn't intended to override the method from the superclass, then
 rename it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   void m(int i) {}
 }
@@ -2826,7 +2826,7 @@ constructor.
 The following code produces this diagnostic because `v` is a top-level
 variable:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 C f() => [!this!];
 
 class C {}
@@ -2837,7 +2837,7 @@ class C {}
 Use a variable of the appropriate type in place of `this`, declaring it if
 necessary:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 C f(C c) => c;
 
 class C {}
@@ -2857,7 +2857,7 @@ conform to the syntax of a valid URI.
 The following code produces this diagnostic because `'#'` isn't a valid
 URI:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import [!'#'!];
 {% endprettify %}
 
@@ -2881,7 +2881,7 @@ no purpose.
 The following code produces this diagnostic because `i` is marked as being
 covariant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   void a([!covariant!] int i) {}
 }
@@ -2891,7 +2891,7 @@ extension E on String {
 
 Remove the 'covariant' keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   void a(int i) {}
 }
@@ -2911,7 +2911,7 @@ or `@visibleForTesting` annotation is applied to a non-public declaration.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 [!@visibleForTesting!]
@@ -2925,7 +2925,7 @@ void f() => _someFunction();
 If the declaration doesn't need to be used by test code, then remove the
 annotation:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void _someFunction() {}
 
 void f() => _someFunction();
@@ -2933,7 +2933,7 @@ void f() => _someFunction();
 
 If it does, then make it public:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 @visibleForTesting
@@ -2957,7 +2957,7 @@ invoke a function but the extension doesn't declare a `call` method.
 The following code produces this diagnostic because the extension `E`
 doesn't define a `call` method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {}
 
 void f() {
@@ -2969,7 +2969,7 @@ void f() {
 
 If the extension is intended to define a `call` method, then declare it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   int call() => 0;
 }
@@ -3000,7 +3000,7 @@ than a function.
 The following code produces this diagnostic because `Binary` is the name of
 a function type, not a function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef Binary = int Function(int, int);
 
 int f() {
@@ -3026,7 +3026,7 @@ expression computing the function doesn't compute a function.
 
 The following code produces this diagnostic because `x` isn't a function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 
 int f() => x;
@@ -3037,7 +3037,7 @@ var y = [!x!]();
 The following code produces this diagnostic because `f()` doesn't return a
 function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 
 int f() => x;
@@ -3051,7 +3051,7 @@ If you need to invoke a function, then replace the code before the argument
 list with the name of a function or with an expression that computes a
 function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 
 int f() => x;
@@ -3073,7 +3073,7 @@ literal isn't assignable to the element type of the list.
 The following code produces this diagnostic because `2.5` is a double, and
 the list can hold only integers:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> x = [1, [!2.5!], 3];
 {% endprettify %}
 
@@ -3082,20 +3082,20 @@ List<int> x = [1, [!2.5!], 3];
 If you intended to add a different object to the list, then replace the
 element with an expression that computes the intended object:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> x = [1, 2, 3];
 {% endprettify %}
 
 If the object shouldn't be in the list, then remove the element:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> x = [1, 3];
 {% endprettify %}
 
 If the object being computed is correct, then widen the element type of the
 list to allow all of the different types of objects it needs to contain:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<num> x = [1, 2.5, 3];
 {% endprettify %}
 
@@ -3113,7 +3113,7 @@ is found in a set literal.
 The following code produces this diagnostic because the literal has a map
 entry even though it's a set literal:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const collection = <String>{[!'a' : 'b'!]};
 {% endprettify %}
 
@@ -3123,7 +3123,7 @@ If you intended for the collection to be a map, then change the code so
 that it is a map. In the previous example, you could do this by adding
 another type argument:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const collection = <String, String>{'a' : 'b'};
 {% endprettify %}
 
@@ -3134,7 +3134,7 @@ If you intended for the collection to be a set, then remove the map entry,
 possibly by replacing the colon with a comma if both values should be
 included in the set:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const collection = <String>{'a', 'b'};
 {% endprettify %}
 
@@ -3152,7 +3152,7 @@ map literal has a type that isn't assignable to the key type of the map.
 The following code produces this diagnostic because `2` is an `int`, but
 the keys of the map are required to be `String`s:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, String>{[!2!] : 'a'};
 {% endprettify %}
 
@@ -3161,13 +3161,13 @@ var m = <String, String>{[!2!] : 'a'};
 If the type of the map is correct, then change the key to have the correct
 type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, String>{'2' : 'a'};
 {% endprettify %}
 
 If the type of the key is correct, then change the key type of the map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <int, String>{2 : 'a'};
 {% endprettify %}
 
@@ -3186,7 +3186,7 @@ map.
 The following code produces this diagnostic because `2` is an `int`, but/
 the values of the map are required to be `String`s:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, String>{'a' : [!2!]};
 {% endprettify %}
 
@@ -3195,13 +3195,13 @@ var m = <String, String>{'a' : [!2!]};
 If the type of the map is correct, then change the value to have the
 correct type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, String>{'a' : '2'};
 {% endprettify %}
 
 If the type of the value is correct, then change the value type of the map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, int>{'a' : 2};
 {% endprettify %}
 
@@ -3222,7 +3222,7 @@ must be handled.
 The following code produces this diagnostic because the enum constant `e2`
 isn't handled:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 enum E { e1, e2 }
 
 void f(E e) {
@@ -3238,7 +3238,7 @@ void f(E e) {
 If there's special handling for the missing values, then add a case clause
 for each of the missing values:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 enum E { e1, e2 }
 
 void f(E e) {
@@ -3254,7 +3254,7 @@ void f(E e) {
 If the missing values should be handled the same way, then add a default
 clause:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 enum E { e1, e2 }
 
 void f(E e) {
@@ -3284,7 +3284,7 @@ providing a value for the parameter.
 The following code produces this diagnostic because the named parameter `x`
 is required:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 void f({@required int x}) {}
@@ -3298,7 +3298,7 @@ void g() {
 
 Provide the required value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 void f({@required int x}) {}
@@ -3324,7 +3324,7 @@ analyzer produces this diagnostic when it finds an implicit return.
 The following code produces this diagnostic because `f` doesn't end with a
 return:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int [!f!](int x) {
   if (x < 0) {
     return 0;
@@ -3351,7 +3351,7 @@ defined to be something other than a mixin or a class.
 The following code produces this diagnostic because `F` is defined to be a
 function type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef F = int Function(String);
 
 class C with [!F!] {}
@@ -3361,7 +3361,7 @@ class C with [!F!] {}
 
 Remove the invalid name from the list, possibly replacing it with the name of the intended mixin or class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef F = int Function(String);
 
 class C {}
@@ -3383,7 +3383,7 @@ as a superclass constraint.
 
 If the package 'p' defines a sealed class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 @sealed
@@ -3393,7 +3393,7 @@ class C {}
 Then, the following code, when in a package other than 'p', produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:p/p.dart';
 
 [!mixin M on C {}!]
@@ -3419,7 +3419,7 @@ keyword in a mixin declaration is neither a class nor a mixin.
 The following code produces this diagnostic because `F` is neither a class
 nor a mixin:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef F = void Function();
 
 mixin M on [!F!] {}
@@ -3449,7 +3449,7 @@ subclass of an immutable class.
 The following code produces this diagnostic because the field `x` isn't
 final:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 @immutable
@@ -3465,7 +3465,7 @@ class [!C!] {
 If instances of the class should be immutable, then add the keyword `final`
 to all non-final field declarations:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 @immutable
@@ -3478,7 +3478,7 @@ class C {
 
 If the instances of the class should be mutable, then remove the
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x;
 
@@ -3502,7 +3502,7 @@ as required.
 The following code produces this diagnostic because the method `m` in `B`
 doesn't invoke the overridden method `m` in `A`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class A {
@@ -3520,7 +3520,7 @@ class B extends A {
 
 Add an invocation of the overridden method in the overriding method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class A {
@@ -3551,7 +3551,7 @@ have an unnamed constructor.
 The following code produces this diagnostic because `A` doesn't define an
 unnamed constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.a();
 }
@@ -3563,7 +3563,7 @@ A f() => [!A!]();
 
 If one of the named constructors does what you need, then use it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.a();
 }
@@ -3574,7 +3574,7 @@ A f() => A.a();
 If none of the named constructors does what you need, and you're able to
 add an unnamed constructor, then add the constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A();
   A.a();
@@ -3606,7 +3606,7 @@ at least one of those abstract members.
 The following code produces this diagnostic because the class `B` doesn't
 have a concrete implementation of `m`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   void m();
 }
@@ -3619,7 +3619,7 @@ class [!B!] extends A {}
 If the subclass can provide a concrete implementation for some or all of
 the abstract inherited members, then add the concrete implementations:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   void m();
 }
@@ -3632,7 +3632,7 @@ class B extends A {
 If there is a mixin that provides an implementation of the inherited
 methods, then apply the mixin to the subclass:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   void m();
 }
@@ -3647,7 +3647,7 @@ mixin M {
 If the subclass can't provide a concrete implementation for all of the
 abstract inherited members, then mark the subclass as being abstract:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   void m();
 }
@@ -3669,7 +3669,7 @@ The analyzer produces this diagnostic when a condition, such as an `if` or
 The following code produces this diagnostic because `x` has the static type
 `int`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int x) {
   if ([!x!]) {
     // ...
@@ -3681,7 +3681,7 @@ void f(int x) {
 
 Change the condition so that it produces a Boolean value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int x) {
   if (x == 0) {
     // ...
@@ -3703,7 +3703,7 @@ assert has a type other than `bool`.
 The following code produces this diagnostic because the type of `p` is
 `int`, but a `bool` is required:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int p) {
   assert([!p!]);
 }
@@ -3713,7 +3713,7 @@ void f(int p) {
 
 Change the expression so that it has the type `bool`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int p) {
   assert(p > 0);
 }
@@ -3733,7 +3733,7 @@ negation operator (`!`) doesn't have the type `bool`.
 The following code produces this diagnostic because `x` is an `int` when it
 must be a `bool`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 bool y = ![!x!];
 {% endprettify %}
@@ -3742,7 +3742,7 @@ bool y = ![!x!];
 
 Replace the operand with an expression that has the type `bool`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int x = 0;
 bool y = !(x > 0);
 {% endprettify %}
@@ -3761,7 +3761,7 @@ the `&&` or `||` operator doesn't have the type `bool`.
 The following code produces this diagnostic because `a` isn't a Boolean
 value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int a = 3;
 bool b = [!a!] || a > 1;
 {% endprettify %}
@@ -3770,7 +3770,7 @@ bool b = [!a!] || a > 1;
 
 Change the operand to a Boolean value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int a = 3;
 bool b = a == 0 || a > 1;
 {% endprettify %}
@@ -3788,7 +3788,7 @@ isn't a constant expression.
 
 The following code produces this diagnostic because `j` isn't a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int i, int j) {
   switch (i) {
     case [!j!]:
@@ -3803,7 +3803,7 @@ void f(int i, int j) {
 Either make the expression a constant expression, or rewrite the switch
 statement as a sequence of if statements:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int i, int j) {
   if (i == j) {
     // ...
@@ -3825,7 +3825,7 @@ constant.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var defaultValue = 3;
 
 void f([int value = [!defaultValue!]]) {}
@@ -3835,7 +3835,7 @@ void f([int value = [!defaultValue!]]) {}
 
 If the default value can be converted to be a constant, then convert it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const defaultValue = 3;
 
 void f([int value = defaultValue]) {}
@@ -3844,7 +3844,7 @@ void f([int value = defaultValue]) {}
 If the default value needs to change over time, then apply the default
 value inside the function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var defaultValue = 3;
 
 void f([int value]) {
@@ -3868,7 +3868,7 @@ explicitly (because it's prefixed by the `const` keyword) or implicitly
 The following code produces this diagnostic because `x` isn't a constant,
 even though it appears in an implicitly constant list literal:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 2;
 var y = const <int>[0, 1, [!x!]];
 {% endprettify %}
@@ -3879,7 +3879,7 @@ If the list needs to be a constant list, then convert the element to be a
 constant. In the example above, you might add the `const` keyword to the
 declaration of `x`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const x = 2;
 var y = const <int>[0, 1, x];
 {% endprettify %}
@@ -3889,7 +3889,7 @@ constant either, so you must change the code so that the list isn't a
 constant. In the example above this means removing the `const` keyword
 before the list literal:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 2;
 var y = <int>[0, 1, x];
 {% endprettify %}
@@ -3908,7 +3908,7 @@ element in a constant map isn't a constant element.
 The following code produces this diagnostic because it is attempting to
 spread a non-constant map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var notConst = <int, int>{};
 var map = const <int, int>{...[!notConst!]};
 {% endprettify %}
@@ -3916,7 +3916,7 @@ var map = const <int, int>{...[!notConst!]};
 Similarly, the following code produces this diagnostic because the
 condition in the if element isn't a constant expression:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 bool notConst = true;
 var map = const <int, int>{if ([!notConst!]) 1 : 2};
 {% endprettify %}
@@ -3927,7 +3927,7 @@ If the map needs to be a constant map, then make the elements  constants.
 In the spread example, you might do that by making the collection being
 spread a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const notConst = <int, int>{};
 var map = const <int, int>{...notConst};
 {% endprettify %}
@@ -3935,7 +3935,7 @@ var map = const <int, int>{...notConst};
 If the map doesn't need to be a constant map, then remove the `const`
 keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 bool notConst = true;
 var map = <int, int>{if (notConst) 1 : 2};
 {% endprettify %}
@@ -3953,7 +3953,7 @@ isn't a constant value.
 
 The following code produces this diagnostic beause `a` isn't a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var a = 'a';
 var m = const {[!a!]: 0};
 {% endprettify %}
@@ -3962,7 +3962,7 @@ var m = const {[!a!]: 0};
 
 If the map needs to be a constant map, then make the key a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const a = 'a';
 var m = const {a: 0};
 {% endprettify %}
@@ -3970,7 +3970,7 @@ var m = const {a: 0};
 If the map doesn't need to be a constant map, then remove the `const`
 keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var a = 'a';
 var m = {a: 0};
 {% endprettify %}
@@ -3988,7 +3988,7 @@ literal isn't a constant value.
 
 The following code produces this diagnostic because `a` isn't a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var a = 'a';
 var m = const {0: [!a!]};
 {% endprettify %}
@@ -3997,7 +3997,7 @@ var m = const {0: [!a!]};
 
 If the map needs to be a constant map, then make the key a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const a = 'a';
 var m = const {0: a};
 {% endprettify %}
@@ -4005,7 +4005,7 @@ var m = const {0: a};
 If the map doesn't need to be a constant map, then remove the `const`
 keyword:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var a = 'a';
 var m = {0: a};
 {% endprettify %}
@@ -4023,7 +4023,7 @@ an element that isn't a compile-time constant.
 
 The following code produces this diagnostic because `i` isn't a constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var i = 0;
 
 var s = const {[!i!]};
@@ -4033,7 +4033,7 @@ var s = const {[!i!]};
 
 If the element can be changed to be a constant, then change it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const i = 0;
 
 var s = const {i};
@@ -4041,7 +4041,7 @@ var s = const {i};
 
 If the element can't be a constant, then remove the keyword `const`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var i = 0;
 
 var s = {i};
@@ -4067,7 +4067,7 @@ possible.
 
 The following code produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class C {
@@ -4082,7 +4082,7 @@ C f() => [!C()!];
 
 Add the keyword `const` before the constructor invocation:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:meta/meta.dart';
 
 class C {
@@ -4107,7 +4107,7 @@ is used as a type argument.
 The following code produces this diagnostic because `x` is a variable, not
 a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 0;
 List<[!x!]> xList = [];
 {% endprettify %}
@@ -4116,7 +4116,7 @@ List<[!x!]> xList = [];
 
 Change the type argument to be a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 0;
 List<int> xList = [];
 {% endprettify %}
@@ -4135,7 +4135,7 @@ The analyzer produces this diagnostic when the identifier following the
 The following code produces this diagnostic because `f` is a function, not
 a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     // ...
@@ -4149,7 +4149,7 @@ void f() {
 
 Change the name to the type of object that should be caught:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     // ...
@@ -4172,7 +4172,7 @@ declared to be something other than a type.
 
 The following code produces this diagnostic because `f` is a function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 f() {}
 g([!f!] v) {}
 {% endprettify %}
@@ -4196,7 +4196,7 @@ parameters.
 The following code produces this diagnostic because `f` declares two
 required parameters, but only one argument is provided:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b) {}
 void g() {
   f[!(0)!];
@@ -4207,7 +4207,7 @@ void g() {
 
 Add arguments corresponding to the remaining parameters:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int a, int b) {}
 void g() {
   f(0, 1);
@@ -4228,7 +4228,7 @@ set literal doesn't implement the type `Iterable`.
 
 The following code generates this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, int>{'a': 0, 'b': 1};
 var s = <String>{...[!m!]};
 {% endprettify %}
@@ -4238,7 +4238,7 @@ var s = <String>{...[!m!]};
 The most common fix is to replace the expression with one that produces an
 iterable object:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var m = <String, int>{'a': 0, 'b': 1};
 var s = <String>{...m.keys};
 {% endprettify %}
@@ -4257,7 +4257,7 @@ implement the type `Map`.
 
 The following code produces this diagnostic because `l` isn't a `Map`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var l =  <String>['a', 'b'];
 var m = <int, String>{...[!l!]};
 {% endprettify %}
@@ -4267,7 +4267,7 @@ var m = <int, String>{...[!l!]};
 The most common fix is to replace the expression with one that produces a
 map:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var l =  <String>['a', 'b'];
 var m = <int, String>{...l.asMap()};
 {% endprettify %}
@@ -4289,7 +4289,7 @@ The following code produces this diagnostic because `C` is a class, and a
 class can't be used as an annotation without invoking a `const` constructor
 from the class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   const C();
 }
@@ -4302,7 +4302,7 @@ var x;
 
 Add the missing argument list:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   const C();
 }
@@ -4332,7 +4332,7 @@ supertypes of the class.
 The following code produces this diagnostic because `m` isn't declared in
 any of the supertypes of `C`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   @override
   String [!m!]() => '';
@@ -4344,7 +4344,7 @@ class C {
 If the member is intended to override a member with a different name, then
 update the member to have the same name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   @override
   String toString() => '';
@@ -4369,14 +4369,14 @@ the referenced file doesn't have a part-of directive.
 
 Given a file (`a.dart`) containing:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 {% endprettify %}
 
 The following code produces this diagnostic because `a.dart` doesn't
 contain a part-of directive:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 part [!'a.dart'!];
 {% endprettify %}
 
@@ -4385,7 +4385,7 @@ part [!'a.dart'!];
 If the referenced file is intended to be a part of another library, then
 add a part-of directive to the file:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 part of 'test.dart';
 
 class A {}
@@ -4394,7 +4394,7 @@ class A {}
 If the referenced file is intended to be a library, then replace the part
 directive with an import directive:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'a.dart';
 {% endprettify %}
 
@@ -4416,7 +4416,7 @@ the redirecting constructor.
 The following code produces this diagnostic because the constructor for `A`
 doesn't declare a parameter that the constructor for `B` requires:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   factory A() = [!B!];
 }
@@ -4431,7 +4431,7 @@ The following code produces this diagnostic because the constructor for `A`
 declares a named parameter (`y`) that the constructor for `B` doesn't
 allow:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   factory A(int x, {int y}) = [!B!];
 }
@@ -4446,7 +4446,7 @@ class B implements A {
 If there's a different constructor that is compatible with the redirecting
 constructor, then redirect to that constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   factory A() = B.zero;
 }
@@ -4459,7 +4459,7 @@ class B implements A {
 
 Otherwise, update the redirecting constructor to be compatible:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class A {
   factory A(int x) = B;
 }
@@ -4485,7 +4485,7 @@ The following code produces this diagnostic because `A` isn't a subclass
 of `C`, which means that the value returned by the constructor `A()`
 couldn't be returned from the constructor `C()`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 
 class B implements C {}
@@ -4501,7 +4501,7 @@ If the factory constructor is redirecting to a constructor in the wrong
 class, then update the factory constructor to redirect to the correct
 constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {}
 
 class B implements C {}
@@ -4514,7 +4514,7 @@ class C {
 If the class defining the constructor being redirected to is the class that
 should be returned, then make it a subtype of the factory's return type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A implements C {}
 
 class B implements C {}
@@ -4539,7 +4539,7 @@ constructor.
 
 The following code produces this diagnostic because `f` is a function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 C f() => null;
 
 class C {
@@ -4558,7 +4558,7 @@ then you probably need to add an import.
 If you're trying to return the value returned by a function, then rewrite
 the constructor to return the value from the constructor's body:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 C f() => null;
 
 class C {
@@ -4585,7 +4585,7 @@ declaration is located.
 The following code produces this diagnostic because `i` is used before it
 is declared:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   print([!i!]);
   int i = 5;
@@ -4597,7 +4597,7 @@ void f() {
 If you intended to reference the local variable, move the declaration
 before the first reference:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   int i = 5;
   print(i);
@@ -4608,7 +4608,7 @@ If you intended to reference a name from an outer scope, such as a
 parameter, instance field or top-level variable, then rename the local
 declaration so that it doesn't hide the outer variable.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int i) {
   print(i);
   int x = 5;
@@ -4634,7 +4634,7 @@ value whose type isn't assignable to the declared return type.
 The following code produces this diagnostic because `f` has a return type
 of `String` but is returning an `int`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f() => [!3!];
 {% endprettify %}
 
@@ -4643,13 +4643,13 @@ String f() => [!3!];
 If the return type is correct, then replace the value being returned with a
 value of the correct type, possibly by converting the existing value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String f() => 3.toString();
 {% endprettify %}
 
 If the value is correct, then change the return type to match:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f() => 3;
 {% endprettify %}
 
@@ -4669,7 +4669,7 @@ The following code produces this diagnostic because `f` is defined to be a
 function that returns a `String`, but the closure assigned to it returns an
 `int`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String Function(String) f = (s) => [!3!];
 {% endprettify %}
 
@@ -4678,7 +4678,7 @@ String Function(String) f = (s) => [!3!];
 If the return type is correct, then replace the returned value with a value
 of the correct type, possibly by converting the existing value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String Function(String) f = (s) => 3.toString();
 {% endprettify %}
 
@@ -4696,7 +4696,7 @@ without an expression in a function that declares a return type.
 The following code produces this diagnostic because the function `f` is
 expected to return an `int`, but no value is being returned:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f() {
   [!return!];
 }
@@ -4706,7 +4706,7 @@ int f() {
 
 Add an expression that computes the value to be returned:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f() {
   return 0;
 }
@@ -4738,7 +4738,7 @@ environment:
 In the package that has that pubspec, code like the following produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f([!Future!] f) {}
 {% endprettify %}
 
@@ -4755,7 +4755,7 @@ environment:
 If you need to support older versions of the SDK, then import the
 `dart:async` library.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 
 void f(Future f) {}
@@ -4788,7 +4788,7 @@ environment:
 In the package that has that pubspec, code like the following generates
 this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const num n = 3;
 const int i = [!n as int!];
 {% endprettify %}
@@ -4807,7 +4807,7 @@ If you need to support older versions of the SDK, then either rewrite the
 code to not use an as expression, or change the code so that the as
 expression is not in a [constant context](#constant-context).:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num x = 3;
 int y = x as int;
 {% endprettify %}
@@ -4839,7 +4839,7 @@ environment:
 In the package that has that pubspec, code like the following produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const bool a = true;
 const bool b = false;
 const bool c = a [!&!] b;
@@ -4859,7 +4859,7 @@ If you need to support older versions of the SDK, then either rewrite the
 code to not use these operators, or change the code so that the expression
 is not in a [constant context](#constant-context).:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const bool a = true;
 const bool b = false;
 bool c = a & b;
@@ -4892,7 +4892,7 @@ environment:
 In the package that has that pubspec, code like the following produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {}
 const C a = null;
 const C b = null;
@@ -4913,7 +4913,7 @@ If you need to support older versions of the SDK, then either rewrite the
 code to not use the `==` operator, or change the code so that the
 expression is not in a [constant context](#constant-context).:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {}
 const C a = null;
 const C b = null;
@@ -4946,7 +4946,7 @@ environment:
 In the package that has that pubspec, code like the following generates
 this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!extension!] E on String {
   void sayHello() {
     print('Hello $this');
@@ -4969,7 +4969,7 @@ not make use of extensions. The most common way to do this is to rewrite
 the members of the extension as top-level functions (or methods) that take
 the value that would have been bound to `this` as a parameter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void sayHello(String s) {
   print('Hello $s');
 }
@@ -5002,7 +5002,7 @@ environment:
 In the package that has that pubspec, code like the following generates
 this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const x = 4;
 const y = [!x is int!] ? 0 : 1;
 {% endprettify %}
@@ -5022,7 +5022,7 @@ code to not use the is operator, or, if that's not possible, change the
 code so that the is expression is not in a
 [constant context](#constant-context).:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const x = 4;
 var y = x is int ? 0 : 1;
 {% endprettify %}
@@ -5052,7 +5052,7 @@ environment:
 In the package that has that pubspec, code like the following produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var s = [!<int>{}!];
 {% endprettify %}
 
@@ -5069,7 +5069,7 @@ environment:
 If you do need to support older versions of the SDK, then replace the set
 literal with code that creates the set without the use of a literal:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var s = new Set<int>();
 {% endprettify %}
 
@@ -5099,7 +5099,7 @@ environment:
 In the package that has that pubspec, code like the following generates
 this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var digits = [[!for (int i = 0; i < 10; i++) i!]];
 {% endprettify %}
 
@@ -5116,7 +5116,7 @@ environment:
 If you need to support older versions of the SDK, then rewrite the code to
 not make use of those elements:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var digits = _initializeDigits();
 
 List<int> _initializeDigits() {
@@ -5155,7 +5155,7 @@ environment:
 In the package that has that pubspec, code like the following generates
 this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const a = [1, 2];
 const b = [[!...a!]];
 {% endprettify %}
@@ -5173,7 +5173,7 @@ environment:
 If you need to support older versions of the SDK, then rewrite the code to
 not make use of those elements:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const a = [1, 2];
 const b = [1, 2];
 {% endprettify %}
@@ -5181,7 +5181,7 @@ const b = [1, 2];
 If that's not possible, change the code so that the element is not in a
 [constant context](#constant-context).:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const a = [1, 2];
 var b = [...a];
 {% endprettify %}
@@ -5201,7 +5201,7 @@ on an instance of the class.
 The following code produces this diagnostic because `x` is an instance
 field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static int a;
 
@@ -5216,7 +5216,7 @@ int f() => C.[!b!];
 If you intend to access a static field, then change the name of the field
 to an existing static field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static int a;
 
@@ -5229,7 +5229,7 @@ int f() => C.a;
 If you intend to access the instance field, then use an instance of the
 class to access the field:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static int a;
 
@@ -5255,7 +5255,7 @@ have superclasses, so the `super` keyword serves no purpose.
 The following code produces this diagnostic because `super` can't be used
 in an extension:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on Object {
   String get displayString => [!super!].toString();
 }
@@ -5265,7 +5265,7 @@ extension E on Object {
 
 Remove the `super` keyword :
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on Object {
   String get displayString => toString();
 }
@@ -5285,7 +5285,7 @@ outside of a instance method.
 The following code produces this diagnostic because `super` is used in a
 top-level function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   [!super!].f();
 }
@@ -5309,7 +5309,7 @@ as or a subclass of the bounds of the corresponding type parameter.
 The following code produces this diagnostic because `String` isn't a
 subclass of `num`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A<E extends num> {}
 
 var a = A<[!String!]>();
@@ -5319,7 +5319,7 @@ var a = A<[!String!]>();
 
 Change the type argument to be a subclass of the bounds:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A<E extends num> {}
 
 var a = A<int>();
@@ -5339,7 +5339,7 @@ type test expression isn't defined.
 The following code produces this diagnostic because the name `Srting` isn't
 defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is [!Srting!]) {
     // ...
@@ -5351,7 +5351,7 @@ void f(Object o) {
 
 Replace the name with the name of a type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is String) {
     // ...
@@ -5373,7 +5373,7 @@ used as an annotation.
 The following code produces this diagnostic because the name `undefined`
 isn't defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!@undefined!]
 void f() {}
 {% endprettify %}
@@ -5383,7 +5383,7 @@ void f() {}
 If the name is correct, but it isn’t declared yet, then declare the name as
 a constant value:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const undefined = 'undefined';
 
 @undefined
@@ -5392,7 +5392,7 @@ void f() {}
 
 If the name is wrong, replace the name with the name of a valid constant:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 @deprecated
 void f() {}
 {% endprettify %}
@@ -5413,7 +5413,7 @@ in the scope in which it's being referenced.
 
 The following code produces this diagnostic because `Piont` isn't defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Point {}
 
 void f([!Piont!] p) {}
@@ -5425,7 +5425,7 @@ If the identifier isn't defined, then either define it or replace it with
 the name of a class that is defined. The example above can be corrected by
 fixing the spelling of the class:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Point {}
 
 void f(Point p) {}
@@ -5451,7 +5451,7 @@ doesn't define the constructor being invoked.
 The following code produces this diagnostic because `A` doesn't have an
 unnamed constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.n();
 }
@@ -5463,7 +5463,7 @@ class B extends A {
 The following code produces this diagnostic because `A` doesn't have a
 constructor named `m`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.n();
 }
@@ -5477,7 +5477,7 @@ class B extends A {
 If the superclass defines a constructor that should be invoked, then change
 the constructor being invoked:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.n();
 }
@@ -5489,7 +5489,7 @@ class B extends A {
 If the superclass doesn't define an appropriate constructor, then define
 the constructor being invoked:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   A.m();
   A.n();
@@ -5515,7 +5515,7 @@ referenced but isn't defined by the specified extension.
 The following code produces this diagnostic because the extension `E`
 doesn't declare an instance getter named `b`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String get a => 'a';
 }
@@ -5532,7 +5532,7 @@ void f() {
 The following code produces this diagnostic because the extension `E`
 doesn't declare a static getter named `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {}
 
 var x = E.[!a!];
@@ -5543,7 +5543,7 @@ var x = E.[!a!];
 If the name of the getter is incorrect, then change it to the name of an
 existing getter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String get a => 'a';
 }
@@ -5560,7 +5560,7 @@ void f() {
 If the name of the getter is correct but the name of the extension is
 wrong, then change the name of the extension to the correct name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String get a => 'a';
 }
@@ -5577,7 +5577,7 @@ void f() {
 If the name of the getter and extension are both correct, but the getter
 isn't defined, then define the getter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String get a => 'a';
   String get b => 'z';
@@ -5608,7 +5608,7 @@ referenced but isn't defined by the specified extension.
 The following code produces this diagnostic because the extension `E`
 doesn't declare an instance method named `b`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String a() => 'a';
 }
@@ -5625,7 +5625,7 @@ void f() {
 The following code produces this diagnostic because the extension `E`
 doesn't declare a static method named `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {}
 
 var x = E.[!a!]();
@@ -5636,7 +5636,7 @@ var x = E.[!a!]();
 If the name of the method is incorrect, then change it to the name of an
 existing method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String a() => 'a';
 }
@@ -5653,7 +5653,7 @@ void f() {
 If the name of the method is correct, but the name of the extension is
 wrong, then change the name of the extension to the correct name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String a() => 'a';
 }
@@ -5670,7 +5670,7 @@ void f() {
 If the name of the method and extension are both correct, but the method
 isn't defined, then define the method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   String a() => 'a';
   String b() => 'z';
@@ -5701,7 +5701,7 @@ referenced but isn't defined by the specified extension.
 The following code produces this diagnostic because the extension `E`
 doesn't declare an instance setter named `b`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   set a(String v) {}
 }
@@ -5718,7 +5718,7 @@ void f() {
 The following code produces this diagnostic because the extension `E`
 doesn't declare a static setter named `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {}
 
 void f() {
@@ -5731,7 +5731,7 @@ void f() {
 If the name of the setter is incorrect, then change it to the name of an
 existing setter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   set a(String v) {}
 }
@@ -5748,7 +5748,7 @@ void f() {
 If the name of the setter is correct, but the name of the extension is
 wrong, then change the name of the extension to the correct name:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   set a(String v) {}
 }
@@ -5765,7 +5765,7 @@ void f() {
 If the name of the setter and extension are both correct, but the setter
 isn't defined, then define the setter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension E on String {
   set a(String v) {}
   set b(String v) {}
@@ -5795,7 +5795,7 @@ visible in the scope in which it's being referenced.
 The following code produces this diagnostic because the name `emty` isn't
 defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> empty() => [];
 
 void main() {
@@ -5809,7 +5809,7 @@ If the identifier isn't defined, then either define it or replace it with
 the name of a function that is defined. The example above can be corrected
 by fixing the spelling of the function:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> empty() => [];
 
 void main() {
@@ -5835,7 +5835,7 @@ visible in the scope in which it's being referenced.
 The following code produces this diagnostic because `String` has no member
 named `len`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f(String s) => s.[!len!];
 {% endprettify %}
 
@@ -5845,7 +5845,7 @@ If the identifier isn't defined, then either define it or replace it with
 the name of a getter that is defined. The example above can be corrected by
 fixing the spelling of the getter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f(String s) => s.length;
 {% endprettify %}
 
@@ -5863,7 +5863,7 @@ name that isn't defined by the library being imported.
 The following code produces this diagnostic because `dart:math` doesn't
 define the name `String`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' hide [!String!], max;
 
 var x = min(0, 1);
@@ -5874,7 +5874,7 @@ var x = min(0, 1);
 If a different name should be hidden, then correct the name. Otherwise,
 remove the name from the list:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' hide max;
 
 var x = min(0, 1);
@@ -5895,7 +5895,7 @@ referenced.
 The following code produces this diagnostic because the name `rihgt` isn't
 defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int min(int left, int right) => left <= [!rihgt!] ? left : right;
 {% endprettify %}
 
@@ -5905,7 +5905,7 @@ If the identifier isn't defined, then either define it or replace it with
 an identifier that is defined. The example above can be corrected by
 fixing the spelling of the variable:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int min(int left, int right) => left <= right ? left : right;
 {% endprettify %}
 
@@ -5927,7 +5927,7 @@ visible in the scope in which it's being referenced.
 The following code produces this diagnostic because the identifier
 `removeMiddle` isn't defined:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f(List<int> l) => l.[!removeMiddle!]();
 {% endprettify %}
 
@@ -5937,7 +5937,7 @@ If the identifier isn't defined, then either define it or replace it with
 the name of a method that is defined. The example above can be corrected by
 fixing the spelling of the method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int f(List<int> l) => l.removeLast();
 {% endprettify %}
 
@@ -5956,7 +5956,7 @@ define a parameter with the same name.
 The following code produces this diagnostic because `m` doesn't declare a
 named parameter named `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   m({int b}) {}
 }
@@ -5971,7 +5971,7 @@ void f(C c) {
 If the argument name is mistyped, then replace it with the correct name.
 The example above can be fixed by changing `a` to `b`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   m({int b}) {}
 }
@@ -5984,7 +5984,7 @@ void f(C c) {
 If a subclass adds a parameter with the name in question, then cast the
 target to the subclass:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   m({int b}) {}
 }
@@ -6000,7 +6000,7 @@ void f(C c) {
 
 If the parameter should be added to the function, then add it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   m({int a, int b}) {}
 }
@@ -6024,7 +6024,7 @@ invoked on an object for which the operator isn't defined.
 The following code produces this diagnostic because the class `C` doesn't
 define the operator `+`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {}
 
 C f(C c) => c [!+!] 2;
@@ -6034,7 +6034,7 @@ C f(C c) => c [!+!] 2;
 
 If the operator should be defined for the class, then define it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   C operator +(int i) => this;
 }
@@ -6058,7 +6058,7 @@ libraries imported using that prefix.
 The following code produces this diagnostic because `dart:core` doesn't
 define anything named `a`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:core' as p;
 
 void f() {
@@ -6089,7 +6089,7 @@ visible in the scope in which the identifier is being referenced.
 The following code produces this diagnostic because there isn't a setter
 named `z`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x = 0;
   void m(int y) {
@@ -6104,7 +6104,7 @@ If the identifier isn't defined, then either define it or replace it with
 the name of a setter that is defined. The example above can be corrected by
 fixing the spelling of the setter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int x = 0;
   void m(int y) {
@@ -6127,7 +6127,7 @@ name that isn't defined by the library being imported.
 The following code produces this diagnostic because `dart:math` doesn't
 define the name `String`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' show min, [!String!];
 
 var x = min(0, 1);
@@ -6138,7 +6138,7 @@ var x = min(0, 1);
 If a different name should be shown, then correct the name. Otherwise,
 remove the name from the list:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' show min;
 
 var x = min(0, 1);
@@ -6159,7 +6159,7 @@ superclass chain.
 The following code produces this diagnostic because `Object` doesn't define
 a member named `n`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   void m() {
     super.[!n!]();
@@ -6192,7 +6192,7 @@ known to be of the type that it's being cast to.
 The following code produces this diagnostic because `n` is already known to
 be an `int` as a result of the `is` test:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(num n) {
   if (n is int) {
     ([!n as int!]).isEven;
@@ -6204,7 +6204,7 @@ void f(num n) {
 
 Remove the unnecessary cast:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(num n) {
   if (n is int) {
     n.isEven;
@@ -6228,7 +6228,7 @@ superclasses.
 The following code produces this diagnostic because `m` is a static member
 of the extended type `C`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static void m() {}
 }
@@ -6246,7 +6246,7 @@ If you're trying to reference a static member that's declared outside the
 extension, then add the name of the class or extension before the reference
 to the member:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static void m() {}
 }
@@ -6260,7 +6260,7 @@ extension E on C {
 
 If you're referencing a member that isn't declared yet, add a declaration:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   static void m() {}
 }
@@ -6288,7 +6288,7 @@ used in the catch block.
 
 The following code produces this diagnostic because `e` isn't referenced:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     int.parse(';');
@@ -6302,7 +6302,7 @@ void f() {
 
 Remove the unused catch clause:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     int.parse(';');
@@ -6326,7 +6326,7 @@ catch clause isn't referenced within the body of the catch block.
 The following code produces this diagnostic because `stackTrace` isn't
 referenced:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     // ...
@@ -6341,7 +6341,7 @@ void f() {
 If you need to reference the stack trace parameter, then add a reference to
 it. Otherwise, remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {
   try {
     // ...
@@ -6366,7 +6366,7 @@ never referenced.
 Assuming that no code in the library references `_C`, the following code
 produces this diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class [!_C!] {}
 {% endprettify %}
 
@@ -6390,7 +6390,7 @@ never read, even if it's written in one or more places.
 The following code produces this diagnostic because `_x` isn't referenced
 anywhere in the library:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Point {
   int [!_x!];
 }
@@ -6417,7 +6417,7 @@ library.
 The following code produces this diagnostic because nothing defined in
 `dart:async` is referenced in the library:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import [!'dart:async'!];
 
 void main() {}
@@ -6444,7 +6444,7 @@ found.
 The following code produces this diagnostic because the label `loop` isn't
 referenced anywhere in the method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int limit) {
   [!loop:!] for (int i = 0; i < limit; i++) {
     print(i);
@@ -6456,7 +6456,7 @@ void f(int limit) {
 
 If the label isn't needed, then remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int limit) {
   for (int i = 0; i < limit; i++) {
     print(i);
@@ -6466,7 +6466,7 @@ void f(int limit) {
 
 If the label is needed, then use it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f(int limit) {
   loop: for (int i = 0; i < limit; i++) {
     print(i);
@@ -6489,7 +6489,7 @@ never read, even if it's written in one or more places.
 The following code produces this diagnostic because the value of `count` is
 never read:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   int [!count!] = 0;
 }
@@ -6516,7 +6516,7 @@ name can be removed.
 The following code produces this diagnostic because the function `max`
 isn't used:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' show min, [!max!];
 
 var x = min(0, 1);
@@ -6526,7 +6526,7 @@ var x = min(0, 1);
 
 Either use the name or remove it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' show min;
 
 var x = min(0, 1);
@@ -6546,7 +6546,7 @@ directive is found where the URI refers to a file that doesn't exist.
 If the file `lib.dart` doesn't exist, the following code produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import [!'lib.dart'!];
 {% endprettify %}
 
@@ -6578,7 +6578,7 @@ generators, such as one of the following:
 If the file `lib.g.dart` doesn't exist, the following code produces this
 diagnostic:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import [!'lib.g.dart'!];
 {% endprettify %}
 
@@ -6606,7 +6606,7 @@ assignment.
 The following code produces this diagnostic because `f` doesn't produce an
 object on which `toString` can be invoked:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void f() {}
 
 void g() {
@@ -6633,7 +6633,7 @@ expression would result in a `CastException`.
 The following code produces this diagnostic because the value of `x` is an
 `int`, which can't be assigned to `y` because an `int` isn't a `String`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Object x = 0;
 const String y = [!x!];
 {% endprettify %}
@@ -6643,7 +6643,7 @@ const String y = [!x!];
 If the declaration of the constant is correct, then change the value being
 assigned to be of the correct type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Object x = 0;
 const String y = '$x';
 {% endprettify %}
@@ -6651,7 +6651,7 @@ const String y = '$x';
 If the assigned value is correct, then change the declaration to have the
 correct type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Object x = 0;
 const int y = x;
 {% endprettify %}
@@ -6670,7 +6670,7 @@ the wrong number of parameters.
 The following code produces this diagnostic because the operator `+` must
 have a single parameter corresponding to the right operand:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int operator [!+!](a, b) => 0;
 }
@@ -6680,7 +6680,7 @@ class C {
 
 Add or remove parameters to match the required number:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   int operator +(a) => 0;
 }
@@ -6700,7 +6700,7 @@ declare exactly one required positional parameter.
 The following code produces this diagnostic because the setter `s` declares
 two required parameters:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   set [!s!](int x, int y) {}
 }
@@ -6709,7 +6709,7 @@ class C {
 The following code produces this diagnostic because the setter `s` declares
 one optional parameter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   set [!s!]([int x]) {}
 }
@@ -6720,7 +6720,7 @@ class C {
 Change the declaration so that there's exactly one required positional
 parameter:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C {
   set s(int x) {}
 }
@@ -6742,7 +6742,7 @@ isn't the same as the number of type parameters.
 The following code produces this diagnostic because `C` has one type
 parameter but two type arguments are provided:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C<E> {}
 
 void f([!C<int, int>!] x) {}
@@ -6753,7 +6753,7 @@ void f([!C<int, int>!] x) {}
 Add or remove type arguments, as necessary, to match the number of type
 parameters defined for the type:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class C<E> {}
 
 void f(C<int> x) {}

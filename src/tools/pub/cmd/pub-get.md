@@ -5,7 +5,7 @@ description: Use pub get to retrieve the dependencies used by your Dart applicat
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub get [--offline]
 {% endprettify %}
 
@@ -30,7 +30,7 @@ this command creates a `.packages` file.
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:test/test.dart';
 {% endprettify %}
 

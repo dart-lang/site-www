@@ -26,7 +26,7 @@ and any additional *description* that the source needs to find the package.
 Based on what data you want to provide, you can specify dependencies in two
 ways. The shortest way is to just specify a name:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
 {% endprettify %}
@@ -36,7 +36,7 @@ it up using the default source, which is the [pub.dev site]({{site.pub}}).
 To limit the dependency to a range of versions,
 you can provide a *version constraint*:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify: ^1.0.0
 {% endprettify %}
@@ -48,7 +48,7 @@ for details on the version constraint syntax.
 
 If you want to specify a source, the syntax looks a bit different:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
@@ -63,7 +63,7 @@ format, detailed below.
 
 You can also provide a version constraint:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
@@ -90,7 +90,7 @@ Currently, Flutter is the only SDK that is supported.
 
 The syntax looks like this:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   flutter_driver:
     sdk: flutter
@@ -117,7 +117,7 @@ A *hosted* package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
 of declaring a dependency on a hosted package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify: ^1.4.0
 {% endprettify %}
@@ -129,7 +129,7 @@ This example specifies that your package depends on a hosted package named
 If you want to use your own package server, you can use a description that
 specifies its URL:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
@@ -148,7 +148,7 @@ stored in a [Git][] repository.
 
 [git]: https://git-scm.com/
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
     git: git://github.com/munificent/kittens.git
@@ -161,7 +161,7 @@ Even if the package repo is private, if you can
 [connect to the repo using SSH,][GitHub SSH]
 then you can depend on the package by using the repo's SSH URL:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
     git: git@github.com:munificent/kittens.git
@@ -170,7 +170,7 @@ dependencies:
 If you want to depend on a specific commit, branch, or tag,
 add a `ref` argument:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
     git:
@@ -185,7 +185,7 @@ The ref can be anything that Git allows to [identify a commit.][commit]
 Pub assumes that the package is in the root of the Git repository.
 To specify a different location in the repo, use the `path` argument:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
     git:
@@ -205,7 +205,7 @@ package are instantly picked up by the one that depends on it.
 
 To handle that, pub supports *path dependencies*.
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     path: /Users/me/transmogrify
@@ -309,7 +309,7 @@ For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
 `^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
 The following is an example of caret syntax:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   path: ^1.3.0
   collection: ^1.1.0
@@ -321,7 +321,7 @@ don't understand it, so you'll need to include an SDK constraint (using
 traditional syntax) to ensure that older versions of pub will not try
 to process it. For example:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 environment:
   sdk: '>=1.8.3 <3.0.0'
 {% endprettify %}
@@ -337,7 +337,7 @@ in its tests. If someone just wants to use `transmogrify`&mdash;import its
 libraries&mdash;it doesn't actually need `test`. In this case, it specifies
 `test` as a dev dependency. Its pubspec will have something like:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dev_dependencies:
   test: '>=0.5.0 <0.12.0'
 {% endprettify %}
@@ -373,7 +373,7 @@ copy of the package.
 
 The pubspec would look something like the following:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify: ^1.2.0
@@ -389,7 +389,7 @@ uses the local version instead.
 You can also use `dependency_overrides` to specify a particular
 version of a package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify: ^1.2.0

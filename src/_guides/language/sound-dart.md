@@ -26,7 +26,7 @@ and `main()` creates a list and passes it to `printInts()`.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -60,7 +60,7 @@ in code that passes static analysis and runs with no errors or warnings.
 
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void printInts(List<int> a) => print(a);
 
 void main() {
@@ -140,7 +140,7 @@ subtype of the return type of the method in the superclass. Consider
 the getter method in the Animal class:
 
 <?code-excerpt "strong/lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Animal {
   void chase(Animal a) { ... }
   [!Animal get parent => ...!]
@@ -153,7 +153,7 @@ of Animal), but an unrelated type is not allowed.
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   void chase(Animal a) { ... }
   [!HoneyBadger!] get parent => ...
@@ -162,7 +162,7 @@ class HoneyBadger extends Animal {
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/animal_bad.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   void chase(Animal a) { ... }
   [!Root!] get parent => ...
@@ -185,7 +185,7 @@ subtype of the original parameter.
 Consider the `chase(Animal)` method for the Animal class:
 
 <?code-excerpt "strong/lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Animal {
   [!void chase(Animal a) { ... }!]
   Animal get parent => ...
@@ -197,7 +197,7 @@ It's OK to override the `chase()` method to take anything (Object).
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   void chase([!Object!] a) { ... }
   Animal get parent => ...
@@ -209,7 +209,7 @@ from Animal to Mouse, a subclass of Animal.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/animal_bad.dart (chase-Mouse)" replace="/(\w+)(?= x)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Mouse extends Animal {...}
 
 class Cat extends Animal {
@@ -221,7 +221,7 @@ This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
 <?code-excerpt "strong/lib/animal_bad.dart (chase-Alligator)" replace="/Alligator/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe
 {% endprettify %}
@@ -239,7 +239,7 @@ a list of type Cat, which generates an error during static analysis.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/animal_bad.dart (dynamic-list)" replace="/.dynamic.(?!.*OK)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Cat extends Animal { ... }
 
 class Dog extends Animal { ... }
@@ -260,7 +260,7 @@ to assign a list of Dogs to a list of Cats:
 
 {:.runtime-fail}
 <?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/cats[^;]*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   List<Animal> animals = [Dog()];
   List<Cat> [!cats = animals!];
@@ -282,14 +282,14 @@ pairs string keys with values of various types.
 If you explicitly type the variable, you might write this:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
 Alternatively, you can use `var` and let Dart infer the type:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
 {% endprettify %}
 
@@ -326,14 +326,14 @@ If so, you can add a type annotation.
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-error)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var x = 3; // x is inferred as an int
 x = 4.0;
 {% endprettify %}
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-ok)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num y = 3; // a num can be double or int
 y = 4.0;
 {% endprettify %}
@@ -349,7 +349,7 @@ you can always explicitly specify the type arguments.
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (type-arg-inference)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
 
@@ -399,7 +399,7 @@ Consider the following simple assignment where `Cat c` is a _consumer_ and `Cat(
 is a _producer_:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (Cat-Cat-ok)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Cat c = Cat();
 {% endprettify %}
 
@@ -410,7 +410,7 @@ a supertype of Cat.
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (Animal-Cat-ok)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Animal c = Cat();
 {% endprettify %}
 
@@ -420,7 +420,7 @@ as Lion:
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 MaineCoon c = Cat();
 {% endprettify %}
 
@@ -430,7 +430,7 @@ is allowed:
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Cat c = MaineCoon();
 {% endprettify %}
 
@@ -447,7 +447,7 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<Cat> myCats = List<[!MaineCoon!]>();
 {% endprettify %}
 
@@ -462,7 +462,7 @@ What about going in the other direction? Can you assign an `Animal` list to a `L
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<Cat> myCats = List<[!Animal!]>();
 {% endprettify %}
 
@@ -470,7 +470,7 @@ This assignment passes static analysis,
 but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<Cat> myCats = List<Animal>() [!as List<Cat>!];
 {% endprettify %}
 
