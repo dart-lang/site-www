@@ -55,6 +55,8 @@ Our wonderful community has provided these resources.
 * [Dart Academy](https://dart.academy/) - Tutorials
   and articles written by the Dart community
 * [Chinese version of this site (此网站的中文版)](https://www.dartdoc.cn)
+* [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
+
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
