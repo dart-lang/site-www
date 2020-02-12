@@ -134,10 +134,11 @@ Here are the general-purpose tools you might want to install:
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dartfix]: {{site.pub-pkg}}/dartfix
 
-### Debugging and diagnostics
+### Debugging
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of suite of debugging and performance tools.
+: A suite of debugging and performance tools.
+
 
 ## Tools for developing web apps {#web}
 
