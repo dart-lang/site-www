@@ -137,7 +137,11 @@ Here are the general-purpose tools you might want to install:
 ### Debugging and diagnostics
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of suite of debugging and performance tools.
+: A suite of debugging and performance tools.
+
+[Diagnostic messages](/tools/diagnostic-messages)
+: A list of diagnostic messages produced by the Dart analyzer,
+  with details about what those messages mean and how you can fix your code.
 
 ## Tools for developing web apps {#web}
 
