@@ -21,7 +21,8 @@ layout: default
         {% for example in page.examples %}
         <li>
           {% if example.url %}
-            <a href="{{ exampl.url }}" target="_blank">{{ example.title }}</a>
+            <a href="{{ example.url }}"
+              target="_blank" rel="noopener">{{ example.title }}</a>
           {% else %}
             {{ example.title }}
           {% endif %}

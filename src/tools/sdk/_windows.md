@@ -50,7 +50,8 @@ C:\> choco upgrade dart-sdk
 #### Install using a setup wizard
 
 Alternatively, use the community-supported
-[Dart SDK installer for Windows.][Dart SDK installer for Windows]{: target="_blank"}
+<a href="https://www.gekorm.com/dart-windows"
+  target="_blank" rel="noopener">Dart SDK installer for Windows.</a>
 You can use the wizard to install **stable** or
 **dev** versions of the Dart SDK.
 
@@ -58,5 +59,4 @@ You can use the wizard to install **stable** or
 
 
 [Chocolatey]: https://chocolatey.org
-[Dart SDK installer for Windows]: https://www.gekorm.com/dart-windows
 [Windows installer img]: {% asset shared/dart/installer-screenshot-no.png @path %}

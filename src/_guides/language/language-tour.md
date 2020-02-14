@@ -19,7 +19,8 @@ consult the [Dart language specification][].
 {{site.alert.note}}
   You can play with most of Dart's language features using DartPad
   ([learn more](/tools/dartpad)).
-  **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
+  **<a href="{{site.dartpad}}" target="_blank" rel="noopener">Open
+  DartPad.</a>**
 
   This page uses embedded DartPads to display some of the examples.
   {% include dartpads-embedded-troubleshooting.md %}
