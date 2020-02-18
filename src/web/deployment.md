@@ -142,25 +142,21 @@ and were built using [peanut.][peanut]
 
 
 ### Firebase
-
-For a walk-through of using Firebase to serve a chat app, see
-[Build a Real-Time Chat Web App with Dart, Angular 2, and Firebase 3.](https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/)
 {% comment %}
-TODO: Instead of just pointing to that very long article,
-show how to deploy here.
+TODO: Give an example of how to deploy with Firebase, which originally was shown on https://dart.academy/build-a-real-time-chat-web-app-with-dart-angular-2-and-firebase-3/
 {% endcomment %}
 
-Other resources:
+For information on deploying with Firebase, see the following resources:
 
-* The Google I/O 2017 codelab
-  [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app/)
-  walks through using Firebase for server-side communication,
-  but doesn't include instructions for serving the app.
 * The [Firebase Hosting documentation](https://firebase.google.com/docs/hosting/)
   describes how to deploy web apps with Firebase.
 * In the Firebase Hosting documentation,
   [Customize Hosting Behavior](https://firebase.google.com/docs/hosting/url-redirects-rewrites)
   covers redirects, rewrites, and more.
+* The Google I/O 2017 codelab
+  [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app/)
+  walks through using Firebase for server-side communication,
+  but doesn't include instructions for serving the app.
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner
