@@ -203,9 +203,8 @@ you got and where it came from.
 
 To see the contents of the vector_math package,
 visit the
-<a href="https://github.com/johnmccutchan/vector_math" target="_blank">
-Dart vector math repository
-</a>
+<a href="https://github.com/johnmccutchan/vector_math"
+target="_blank" rel="noopener">Dart vector math repository</a>
 at GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.

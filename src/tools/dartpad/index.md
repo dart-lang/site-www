@@ -8,8 +8,8 @@ lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
 To get a DartPad as big as your browser window, go to the
-<a href="{{site.dartpad}}"
-target="_blank">DartPad site (dartpad.dev).</a>
+<a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad
+site (dartpad.dev).</a>
 
 {{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
@@ -44,7 +44,7 @@ try running some samples and then creating a simple command-line app.
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.dartpad}}" target="_blank">DartPad.</a>
+  Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
