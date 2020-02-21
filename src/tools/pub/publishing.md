@@ -14,6 +14,20 @@ command.
   as defined in the [pubspec][].
 {{site.alert.end}}
 
+## Publishing is forever
+
+Keep in mind that publishing is forever. As soon as you publish your package,
+users can depend on it. Once they start doing that, removing
+the package would break theirs. To avoid that, the [pub.dev policy][policy]
+disallows unpublishing packages except for very few cases.
+
+You can always upload new versions of your package, but
+old ones will continue to be available for users that aren't ready to
+upgrade yet.
+
+For already published packages that are no longer relevant or being maintained,
+you can [mark them as discontinued](#discontinue).
+
 ## Preparing to publish
 
 When publishing a package, it's important to follow the [pubspec
@@ -254,15 +268,6 @@ The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package README and documentation.
 
 
-## Publishing is forever
-
-Keep in mind that publishing is forever. As soon as you publish your package,
-users can depend on it. Once they start doing that, removing
-the package would break theirs. To avoid that, pub strongly discourages
-deleting packages. You can always upload new versions of your package, but
-old ones will continue to be available for users that aren't ready to
-upgrade yet.
-
 ## Marking packages as discontinued {#discontinue}
 
 Although packages always remain published, it can be useful to signal to
@@ -288,6 +293,7 @@ For more information, see the reference pages for the following `pub` commands:
 [Google Account]: https://support.google.com/accounts/answer/27441
 [open-source license]: https://opensource.org/
 [package layout conventions]: /tools/pub/package-layout
+[policy]: https://pub.dev/policy
 [pub]: /guides/packages
 [pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader
