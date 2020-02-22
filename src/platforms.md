@@ -19,7 +19,7 @@ depending on your target platform and goals:
     development time compiler (`dartdevc`) and a production time compiler
     (`dart2js`).
 
-<img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
+<img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An illustration of the devices in the Dart Native and Dart Web platforms">
 
 ## Dart Native (VM JIT and AOT)
 
