@@ -64,7 +64,7 @@ Let's run a small program.
 
  1. Create a file called `helloworld.dart` that contains this code:
 
-    <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+    <?code-excerpt "misc/bin/helloworld.dart (hello-world)"?>
     ```dart
     void main() {
       print('Hello, World!');
