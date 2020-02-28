@@ -39,6 +39,8 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+        - title: Evolution
+          permalink: /guides/language/evolution
     - title: Extension methods
       permalink: /guides/language/extension-methods
     - title: Specification
