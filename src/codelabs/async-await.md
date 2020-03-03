@@ -72,7 +72,7 @@ output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px
+```dart:run-dartpad:height-380px:ga_id-get_order_sync_bad
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -178,7 +178,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart"?>
-```dart:run-dartpad:height-300px
+```dart:run-dartpad:height-300px:ga_id-futures_intro
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
@@ -212,7 +212,7 @@ A bit later you'll learn how to handle the error.
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px
+```dart:run-dartpad:height-300px:ga_id-futures_intro_error
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
   return Future.delayed(Duration(seconds: 2),
@@ -403,7 +403,7 @@ function body. What do you think the output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px
+```dart:run-dartpad:height-530px:ga_id-async_example
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -527,7 +527,7 @@ asynchronous function. What do you think the output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px
+```dart:run-dartpad:height-530px:ga_id-try_catch
 Future<void> printOrderMessage() async {
   try {
     var order = await fetchUserOrder();
