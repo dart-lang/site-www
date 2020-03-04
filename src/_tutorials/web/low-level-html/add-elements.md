@@ -67,7 +67,7 @@ The app adds an item to the list.
 Enter a few items into the input field.
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97"
+src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97&ga_id=running_the_todo_app"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -402,7 +402,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c"
+src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c&ga_id=moving_elements_within_the_dom_tree"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
