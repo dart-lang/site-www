@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first, type_annotate_public_apis
 class MyColor {
   int red;
   int green;
