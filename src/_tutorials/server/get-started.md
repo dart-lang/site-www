@@ -7,7 +7,7 @@ nextpage:
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
-js: [{url: 'https://dartpad.dev/experimental/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
