@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_null_in_if_null_operators
 void main() {
   int a; // The initial value of a is null.
   a ??= 3;
