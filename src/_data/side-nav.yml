@@ -41,6 +41,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
+    - title: Evolution
+      permalink: /guides/language/evolution
     - title: Specification
       permalink: /guides/language/spec
     - title: Tour
