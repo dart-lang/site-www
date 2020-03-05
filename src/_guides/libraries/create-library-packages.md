@@ -254,7 +254,7 @@ Any tools or executables that you create during development that aren't for
 public use go into the `tool` directory.
 
 Other files that are required if you publish your library to the
-pub.dev site, such as a README and a CHANGELOG, are
+pub.dev site, such as `README.md` and `CHANGELOG.md`, are
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).

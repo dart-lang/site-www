@@ -231,12 +231,16 @@ only one, `lib`, was installed when you ran pub get.
     <div class="col-lg-7">
       <em>Housekeeping files:</em>
       When using a package written by someone else,
-      the README file is a good place to start.
+      the <code>README.md</code> file is a good place to start.
       It should contain important information about the package,
       such as its intent, contents, samples, and instructions.
-      The LICENSE file provides copyright and rules-of-use information.
-      These files can be found at the package repository.
-      They are not installed when you install a package.
+      The <code>LICENSE</code> file provides
+      copyright and rules-of-use information.
+      All of these files are in the package repository;
+      the contents of some,
+      such as <code>README.md</code>,
+      are also displayed in pub.dev.
+      These files aren't installed when you install a package.
     </div>
   </div>
   <hr>

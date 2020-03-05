@@ -101,31 +101,27 @@ enchilada/
   LICENSE
 {% endprettify %}
 
-If you're publishing your package, include a license file named `LICENSE`,
-optionally with a file extension such as `.md`. 
+If you're publishing your package, include a license file named `LICENSE`.
 We recommend using an [OSI-approved license](https://opensource.org/licenses)
 such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
 so that others can reuse your work.
 
-## README
+## README.md
 
 {% prettify none tag=pre+code %}
 enchilada/
   README.md
 {% endprettify %}
 
-One file that's very common in open source is a README file that
+One file that's very common in open source is a _README_ file that
 describes the project. This is especially important in pub. When you upload
-to the [pub.dev site,]({{site.pub}}) your README is shown on
+to the [pub.dev site,]({{site.pub}}) your `README.md` file is shown —
+rendered as [Markdown][] — on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
-If your README ends in `.md`, it's parsed as
-[Markdown.][markdown]
 
-[markdown]: https://daringfireball.net/projects/markdown/
-
-## CHANGELOG
+## CHANGELOG.md
 
 {% prettify none tag=pre+code %}
 enchilada/
@@ -135,11 +131,9 @@ enchilada/
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
 release. When you upload your package to the
-[pub.dev site,]({{site.pub}}) your package's changelog file (if any)
-appears in the changelog tab.
+[pub.dev site,]({{site.pub}}) your package's `CHANGELOG.md` file (if any)
+appears in the changelog tab, rendered as [Markdown.][Markdown]
 
-If your CHANGELOG ends in `.md`, it's parsed as
-[Markdown.][markdown]
 
 ## Public directories
 
@@ -407,7 +401,7 @@ the pub.dev site creates an **Example** tab to display the first file it finds
 For example, if your package has many files under its `example` directory,
 including a file named `README.md`,
 then your package's Example tab displays the contents of `example/README.md`
-(parsed as [Markdown.)][markdown]
+(parsed as [Markdown.)][Markdown]
 
 {% comment %}
 To see how the example file is chosen,
@@ -429,3 +423,5 @@ documentation generators, or other bits of automation.
 
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
+
+[Markdown]: {{pub-pkg}}/markdown
