@@ -4125,7 +4125,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=405379bacf30335f3aed&ga_id=callable_classes"
+src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=callable_classes"
     width="100%"
     height="350px"
     style="border: 1px solid #ccc;">
