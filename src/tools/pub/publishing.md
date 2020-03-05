@@ -292,7 +292,7 @@ For more information, see the reference pages for the following `pub` commands:
 
 [BSD license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
-[Markdown]: {{pub-pkg}}/markdown
+[Markdown]: {{site.pub-pkg}}/markdown
 [open-source license]: https://opensource.org/
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
