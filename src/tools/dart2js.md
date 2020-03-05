@@ -44,7 +44,8 @@ JavaScript version of the app more easily.
 ## Build config usage
 
 You can also configure dart2js options in a build config file.
-For more information, see the [build_web_compilers README.][build_web_compilers]
+For more information,
+see the [build_web_compilers package.][build_web_compilers]
 
 ## Options
 

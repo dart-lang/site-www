@@ -62,7 +62,7 @@ For more information, see the [documentation for dart2js][dart2js].
 </aside>
 
 You can specify dart2js options in a build config file,
-as described in the [build_web_compilers README.][build_web_compilers]
+as described in the [build_web_compilers page.][build_web_compilers]
 
 ### Make your app smaller, faster, and more reliable
 

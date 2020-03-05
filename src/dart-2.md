@@ -130,7 +130,7 @@ environment:
   sdk: '>=1.20.1 <3.0.0'
 ```
 
-If you use [features introduced after 2.0,][CHANGELOG]
+If you use [features introduced after 2.0,][dart-lang/sdk CHANGELOG]
 be sure to specify the correct lower SDK constraint:
 
 ```yaml
@@ -138,8 +138,6 @@ environment:
   # Works in 2.1 but not 2.0.
   sdk: '>=2.1.0 <3.0.0'
 ```
-
-[CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 
 <aside class="alert alert-warning" markdown="1">
   **Packages must have an upper constraint of `<3.0.0`** to work in

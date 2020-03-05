@@ -83,7 +83,7 @@ This section describes how to use the following commands:
 : Runs tests.
 
 You can customize your build using build config files. For details, see
-the [build_web_compilers README.][build_web_compilers]
+the [build_web_compilers package.][build_web_compilers]
 
 
 ### webdev serve {#serve}
@@ -187,7 +187,7 @@ $ pub run test -h
 ## More information
 
 For a complete list of `webdev` options, run `webdev --help` or see the
-[webdev package README.][webdev]
+[webdev package.][webdev]
 
 Also see the following pages:
 
