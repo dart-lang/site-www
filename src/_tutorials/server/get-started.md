@@ -44,7 +44,7 @@ iframe[src^="https://dartpad"] {
 </style>
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad
+```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
 }

@@ -28,7 +28,7 @@ which includes the web UI that the app produces,
 {{site.alert.end}}
 
 <iframe
-    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"
+    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771&ga_id=play_with_a_web_app"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">

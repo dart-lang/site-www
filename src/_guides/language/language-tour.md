@@ -1290,7 +1290,7 @@ https://gist.github.com/d988cfce0a54c6853799
 {{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799"
+src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799&ga_id=default_parameter_values"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1406,7 +1406,7 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
+src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&ga_id=anonymous_functions"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -2792,7 +2792,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90"
+src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90&ga_id=non_default_superclass_constructor"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -2885,7 +2885,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90"
+src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90&ga_id=initializer_list"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -4125,7 +4125,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=405379bacf30335f3aed"
+src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=callable_classes"
     width="100%"
     height="350px"
     style="border: 1px solid #ccc;">

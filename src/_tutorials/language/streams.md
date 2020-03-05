@@ -89,7 +89,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14"
+src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14&ga_id=receiving_stream_events"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
@@ -159,7 +159,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
+src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&ga_id=error_events"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
