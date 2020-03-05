@@ -424,4 +424,4 @@ documentation generators, or other bits of automation.
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
 
-[Markdown]: {{pub-pkg}}/markdown
+[Markdown]: {{site.pub-pkg}}/markdown
