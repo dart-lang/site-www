@@ -767,8 +767,7 @@ class ImmutablePoint {
   final int x;
   final int y;
 
-  static const ImmutablePoint origin =
-      ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 }
 ```
 
