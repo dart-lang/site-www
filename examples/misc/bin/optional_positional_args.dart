@@ -24,5 +24,6 @@ void main() {
   int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
   // #enddocregion optional-positional-args-2
   print(total);
+  print(total2);
   print(otherTotal);
 }
