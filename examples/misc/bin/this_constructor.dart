@@ -1,6 +1,6 @@
 // ignore_for_file: sort_constructors_first, type_annotate_public_apis
 
-// #docregion this-constructor
+// #docregion
 class MyColor {
   int red;
   int green;
@@ -10,7 +10,7 @@ class MyColor {
 }
 
 final color = MyColor(80, 80, 128);
-// #enddocregion this-constructor
+// #enddocregion
 
 void main() {
   print(color.blue.toString());

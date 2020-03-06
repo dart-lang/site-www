@@ -1,4 +1,4 @@
-// #docregion getters-compute
+// #docregion
 class MyClass {
   List<int> _values = [];
 
@@ -11,7 +11,7 @@ class MyClass {
     return _values.length;
   }
 }
-// #enddocregion getters-compute
+// #enddocregion
 
 void main() {
   MyClass _class = MyClass();

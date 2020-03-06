@@ -1,4 +1,4 @@
-// #docregion getters-setters
+// #docregion
 class MyClass {
   int _aProperty = 0;
 
@@ -10,10 +10,10 @@ class MyClass {
     }
   }
 }
+// #enddocregion
 
 void main() {
   MyClass _class = MyClass();
   _class.aProperty = 5;
   print(_class.aProperty);
 }
-// #enddocregion getters-setters

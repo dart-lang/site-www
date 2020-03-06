@@ -1,6 +1,6 @@
 // ignore_for_file: sort_constructors_first
 
-// #docregion named-constructor
+// #docregion
 class Point {
   num x, y;
 
@@ -11,7 +11,7 @@ class Point {
     y = 0;
   }
 }
-// #enddocregion named-constructor
+// #enddocregion
 
 void main() {
   final myPoint = Point.origin();
