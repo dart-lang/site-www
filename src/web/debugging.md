@@ -273,7 +273,6 @@ $ pub global activate stagehand  # update stagehand
 [Dart IDE or editor]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
 [dartdevc]: /tools/dartdevc
-[devtools-frontend README]: https://github.com/dart-lang/devtools-frontend/blob/master/readme.md#dart-devtools
 [Google Chrome]: https://www.google.com/chrome
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/

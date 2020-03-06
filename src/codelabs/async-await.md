@@ -63,7 +63,7 @@ output will be?
 
 {% if useIframe -%}
 <iframe
-  src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47"
+  src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47&ga_id=incorrect_usage"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="420"
@@ -72,7 +72,7 @@ output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px
+```dart:run-dartpad:height-380px:ga_id-get_order_sync_bad
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -169,7 +169,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 
 {% if useIframe -%}
 <iframe
-  src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce"
+  src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce&ga_id=introducting_futures"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
@@ -178,7 +178,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart"?>
-```dart:run-dartpad:height-300px
+```dart:run-dartpad:height-300px:ga_id-futures_intro
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
@@ -203,7 +203,7 @@ A bit later you'll learn how to handle the error.
 
 {% if useIframe -%}
 <iframe
-  src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125"
+  src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125&ga_id=completing_with_error"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
@@ -212,7 +212,7 @@ A bit later you'll learn how to handle the error.
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px
+```dart:run-dartpad:height-300px:ga_id-futures_intro_error
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
   return Future.delayed(Duration(seconds: 2),
@@ -394,7 +394,7 @@ function body. What do you think the output will be?
 
 {% if useIframe -%}
 <iframe
-  src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba"
+  src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba&ga_id=execution_within_async_function"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
   frameborder="no"
   height="600"
@@ -403,7 +403,7 @@ function body. What do you think the output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px
+```dart:run-dartpad:height-530px:ga_id-async_example
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -484,7 +484,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
 <iframe
-  src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark"
+  src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark&ga_id=practice_using"
   frameborder="no"
   height="550"
   width="100%">
@@ -518,7 +518,7 @@ asynchronous function. What do you think the output will be?
 
 {% if useIframe -%}
 <iframe
-  src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2"
+  src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2&ga_id=try_catch"
   style="border: 1px solid lightgrey;"
   frameborder="no"
   height="525"
@@ -527,7 +527,7 @@ asynchronous function. What do you think the output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px
+```dart:run-dartpad:height-530px:ga_id-try_catch
 Future<void> printOrderMessage() async {
   try {
     var order = await fetchUserOrder();
@@ -577,7 +577,7 @@ that does the following:
     [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
 
 <iframe
-  src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
+  src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark&ga_id=practice_errors"
   frameborder="no"
   height="525"
   width="100%">
@@ -631,7 +631,7 @@ Write the following:
   the String value returned by calling `logoutUser()`.
 
 <iframe
-  src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
+  src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark&ga_id=putting_it_all_together"
   frameborder="no"
   height="550"
   width="100%">

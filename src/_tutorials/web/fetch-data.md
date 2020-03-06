@@ -178,7 +178,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
+src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e&ga_id=about_json"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -407,7 +407,7 @@ and loads the file.
 
 {% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
+src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2&ga_id=using_getstring"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -463,7 +463,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/kwalrath/f8aa7310e96d359c5f68343c9ccba8ed {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed"
+src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed&ga_id=using_http_request"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">

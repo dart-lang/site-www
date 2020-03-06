@@ -8,7 +8,7 @@ introduction to the language for people who like to learn by example.
 You might also want to check out the language and library tours,
 or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
-<div class="card-grid">
+<div class="card-grid no_toc_section">
   <div class="card">
     <h3><a href="/guides/language/language-tour">Language tour</a></h3>
     <p>

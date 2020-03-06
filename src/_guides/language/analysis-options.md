@@ -234,7 +234,7 @@ include: package:pedantic/analysis_options.yaml
   We recommend updating your code to work with the new rules.
   Other options are to
   include a specific version of the pedantic analysis options file
-  (as described [in the pedantic README][]),
+  (as described [in the pedantic package page][]),
   explicitly enable individual linter rules,
   or [disable individual rules][].
 {{site.alert.end}}
@@ -264,7 +264,7 @@ include: package:effective_dart/analysis_options.yaml
   We recommend updating your code to work with the new rules.
   Other options are to
   include a specific version of the effective_dart analysis options file
-  (as described [in the effective_dart README][]),
+  (as described [in the effective_dart package page][]),
   explicitly enable individual linter rules,
   or [disable individual rules][].
 {{site.alert.end}}
@@ -483,8 +483,8 @@ Use the following resources to learn more about static analysis in Dart:
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
-[in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
+[in the pedantic package page]: {{site.pub-pkg}}/pedantic#using-the-lints
 [disable individual rules]: #disabling-individual-rules
-[in the effective_dart README]: {{site.pub-pkg}}/effective_dart#using-the-lints
+[in the effective_dart package page]: {{site.pub-pkg}}/effective_dart#using-the-lints
 [effective_dart]: {{site.pub-pkg}}/effective_dart
 [Effective Dart]: /guides/language/effective-dart

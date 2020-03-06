@@ -116,7 +116,7 @@ The following example shows you how to read elements using  a `for-in` loop.
 
 [//]: https://gist.github.com/c419f595f95e8317c54192491ae017cd
 <iframe
-  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd"
+  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd&ga_id=for_in_loop"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -164,7 +164,7 @@ but you can use the `last` property.
 
 [//]: https://gist.github.com/f3d96039195566d934a966390ea4ad62
 <iframe
-  src="{{site.dartpad-embed}}?id=f3d96039195566d934a966390ea4ad62"
+  src="{{site.dartpad-embed}}?id=f3d96039195566d934a966390ea4ad62&ga_id=first_and_last"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
@@ -202,7 +202,7 @@ Do you think all the functions will give the same result?
 
 [//]: https://gist.github.com/03b4100365c1b871a36b9a1c5781dab1
 <iframe
-  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1"
+  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1&ga_id=using_firstwhere"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="500"
@@ -283,7 +283,7 @@ you can check the class documentation for help.
 
 [//]: https://gist.github.com/241c6bc591f9436a9be0116724222953
 <iframe
-  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark"
+  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark&ga_id=practice_writing_a_test_predicate"
   frameborder="no"
   height="250"
   width="100%">
@@ -329,7 +329,7 @@ Run this exercise to see them in action.
 
 [//]: https://gist.github.com/d56963729339cea951e16209e0a26e4c
 <iframe
-  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c"
+  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c&ga_id=using_any_and_every"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -374,7 +374,7 @@ Use `any()` and `every()` to implement two functions:
 <!-- [//]: https://gist.github.com/76dc5c8644652adf4e2032912d974ac3 -->
 
 <iframe
-src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark"
+src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark&ga_id=verify_iterable"
 frameborder="no"
 height="325"
 width="100%" >
@@ -430,7 +430,7 @@ methods like `any()`.
 
 [//]: https://gist.github.com/f96f2f630ee327bd69ee7737301d9628
 <iframe
-  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628"
+  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628&ga_id=using_where"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -461,7 +461,7 @@ split an `Iterable` containing numbers.
 
 [//]: https://gist.github.com/5e3582c858517f93baf160892d131ec9
 <iframe
-  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9"
+  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9&ga_id=using_takewhile"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
@@ -502,7 +502,7 @@ Use `where()` to implement two functions:
   
 [//]: https://gist.github.com/8113e2880772456f9036ddf55c517e9e
 <iframe
-src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark"
+src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark&ga_id=filtering_elements_from_a_list"
 frameborder="no"
 height="325"
 width="100%" >
@@ -552,7 +552,7 @@ What do you think the output will be?
 
 [//]: https://gist.github.com/8c2f129d88c5ce166cca0f4bb9e2a906
 <iframe
-  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906"
+  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906&ga_id=using_map"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -573,7 +573,7 @@ Each string in the `Iterable` must follow this format:
 
 [//]: https://gist.github.com/5ce89481a3dc8b14800825c78bd547e2
 <iframe
-src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark"
+src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark&ga_id=mapping_to_a_different_type"
 frameborder="no"
 height="325"
 width="100%" >
@@ -630,7 +630,7 @@ Part 3: Implement `validEmailAddresses()`.
 
 [//]: https://gist.github.com/0be68487b124b4e55927c3e026094547
 <iframe
-src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark"
+src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark&ga_id=putting_it_all_together"
 frameborder="no"
 height="600"
 width="100%" >
