@@ -6,6 +6,7 @@ void cleanLlamaStalls() {
   print('clean Llama stalls');
 }
 
+// #docregion exceptions
 void main() {
   try {
     breedMoreLlamas();
@@ -16,3 +17,4 @@ void main() {
     cleanLlamaStalls();
   }
 }
+// #enddocregion exceptions
