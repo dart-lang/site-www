@@ -1,3 +1,4 @@
+// #docregion optional-positional-args
 int sumUpToFive(int a, [int b, int c, int d, int e]) {
   int sum = a;
   if (b != null) sum += b;
@@ -10,6 +11,7 @@ int sumUpToFive(int a, [int b, int c, int d, int e]) {
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
+// #enddocregion optional-positional-args
 
 void main() {
   int total = sumUp(1, 2, 3);
