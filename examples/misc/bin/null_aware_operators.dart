@@ -1,4 +1,6 @@
 // ignore_for_file: unnecessary_null_in_if_null_operators
+
+// #docregion null-aware-operators
 void main() {
   int a; // The initial value of a is null.
   a ??= 3;
@@ -10,3 +12,4 @@ void main() {
   print(1 ?? 3); // <-- Prints 1.
   print(null ?? 12); // <-- Prints 12.
 }
+// #endregion null-aware-operators
