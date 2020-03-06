@@ -1,4 +1,6 @@
 // ignore_for_file: sort_constructors_first
+
+// #docregion redirecting-constructors
 class Automobile {
   String make;
   String model;
@@ -13,7 +15,9 @@ class Automobile {
   // Delegates to a named constructor
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
+// #enddocregion redirecting-constructors
 
+// #docregion const-constructors
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
 
@@ -22,3 +26,4 @@ class ImmutablePoint {
 
   static const ImmutablePoint origin = ImmutablePoint(0, 0);
 }
+// #enddocregion const-constructors
