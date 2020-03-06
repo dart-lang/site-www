@@ -1,4 +1,6 @@
 // ignore_for_file: unused_local_variable
+
+// #docregion collection-literals
 void main() {
   final aListOfStrings = ['one', 'two', 'three'];
   final aSetOfStrings = {'one', 'two', 'three'};
@@ -12,3 +14,4 @@ void main() {
   final aSetOfInts = <int>{};
   final aMapOfIntToDouble = <int, double>{};
 }
+// #enddocregion collection-literals
