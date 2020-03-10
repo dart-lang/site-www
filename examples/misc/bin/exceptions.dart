@@ -7,12 +7,14 @@ void cleanLlamaStalls() {
 }
 
 void main() {
+// #docregion
   try {
     breedMoreLlamas();
   } catch (e) {
-    // … handle exception ...
+    // ... handle exception ...
   } finally {
     // Always clean up, even if an exception is thrown.
     cleanLlamaStalls();
   }
+// #enddocregion
 }

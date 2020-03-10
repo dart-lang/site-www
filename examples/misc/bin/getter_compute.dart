@@ -1,3 +1,4 @@
+// #docregion
 class MyClass {
   List<int> _values = [];
 
@@ -10,6 +11,7 @@ class MyClass {
     return _values.length;
   }
 }
+// #enddocregion
 
 void main() {
   MyClass _class = MyClass();

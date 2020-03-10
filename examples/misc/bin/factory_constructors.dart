@@ -1,4 +1,6 @@
 // ignore_for_file: unused_local_variable
+
+// #docregion
 class Square extends Shape {}
 
 class Circle extends Shape {}
@@ -14,6 +16,7 @@ class Shape {
     return null;
   }
 }
+// #enddocregion
 
 void main() {
   final shape = Shape();

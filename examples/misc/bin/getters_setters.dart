@@ -1,3 +1,4 @@
+// #docregion
 class MyClass {
   int _aProperty = 0;
 
@@ -9,6 +10,7 @@ class MyClass {
     }
   }
 }
+// #enddocregion
 
 void main() {
   MyClass _class = MyClass();
