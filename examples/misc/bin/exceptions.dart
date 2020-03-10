@@ -6,15 +6,15 @@ void cleanLlamaStalls() {
   print('clean Llama stalls');
 }
 
-// #docregion exceptions
 void main() {
+// #docregion
   try {
     breedMoreLlamas();
   } catch (e) {
-    // … handle exception ...
+    // ... handle exception ...
   } finally {
     // Always clean up, even if an exception is thrown.
     cleanLlamaStalls();
   }
+// #enddocregion
 }
-// #enddocregion exceptions

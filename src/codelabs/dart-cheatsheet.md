@@ -84,7 +84,7 @@ Another null-aware operator is `??`,
 which returns the expression on its left unless that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -152,7 +152,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -268,7 +268,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/getters_setters.dart (getters-setters)"?>
+<?code-excerpt "misc/bin/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -285,7 +285,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/getters_compute.dart (getters-compute)"?>
+<?code-excerpt "misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
   List<int> _values = [];
@@ -325,13 +325,13 @@ you're likely familiar with:
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
-
-int total = sumUp(1, 2, 3);
+// ···
+  int total = sumUp(1, 2, 3);
 ```
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
 int sumUpToFive(int a, [int b, int c, int d, int e]) {
   int sum = a;
@@ -341,23 +341,23 @@ int sumUpToFive(int a, [int b, int c, int d, int e]) {
   if (e != null) sum += e;
   return sum;
 }
-
-int total = sumUptoFive(1, 2);
-int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
+// ···
+  int total = sumUpToFive(1, 2);
+  int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 ```
 
 Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-  ...
+// ···
 }
-
-int newTotal = sumUpToFive(1);
-print(newTotal); // <-- prints 15
+// ···
+  int newTotal = sumUpToFive(1);
+  print(newTotal); // <-- prints 15
 ```
 
 ### Code example
@@ -382,14 +382,14 @@ Here are some examples of function calls and returned values:
 Using a curly brace syntax,
 you can define optional parameters that have names.
 
-<?code-excerpt "misc/bin/optional_named_params.dart (optional-named-params)"?>
+<?code-excerpt "misc/bin/optional_named_params.dart"?>
 ```dart
 void printName(String firstName, String lastName, {String suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
-
-printName('Avinash', 'Gupta');
-printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
+// ···
+  printName('Avinash', 'Gupta');
+  printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
 ```
 
 As you might expect, the value of these parameters is null by default,
@@ -473,12 +473,12 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/exceptions.dart (exceptions)"?>
+<?code-excerpt "misc/bin/exceptions.dart"?>
 ```dart
 try {
   breedMoreLlamas();
 } catch (e) {
-  … handle exception ...
+  // ... handle exception ...
 } finally {
   // Always clean up, even if an exception is thrown.
   cleanLlamaStalls();
@@ -529,7 +529,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-<?code-excerpt "misc/bin/this_constructor.dart (this-constructor)"?>
+<?code-excerpt "misc/bin/this_constructor.dart"?>
 ```dart
 class MyColor {
   int red;
@@ -641,7 +641,7 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-<?code-excerpt "misc/bin/named_constructor.dart (named-constructor)"?>
+<?code-excerpt "misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
   num x, y;
@@ -680,7 +680,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-<?code-excerpt "misc/bin/factory_constructors.dart (factory-constructors)"?>
+<?code-excerpt "misc/bin/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -767,8 +767,7 @@ class ImmutablePoint {
   final int x;
   final int y;
 
-  static const ImmutablePoint origin =
-      ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 }
 ```
 
