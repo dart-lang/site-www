@@ -1345,8 +1345,6 @@ This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
 you can locate and fix the bug.
 
-[error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/Error-class.html
-
 Catching errors of these types breaks that process and masks the bug. Instead of
 *adding* error-handling code to deal with this exception after the fact, go back
 and fix the code that is causing it to be thrown in the first place.
@@ -1576,6 +1574,7 @@ In the bad example, if you pass it a `Future<Object>`, it incorrectly treats it
 like a bare, synchronous value.
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
+[Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
 [OutOfMemoryError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/OutOfMemoryError-class.html
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
