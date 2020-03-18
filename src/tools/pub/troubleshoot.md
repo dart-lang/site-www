@@ -116,9 +116,10 @@ Try this workaround, which uses the command line to complete sign-in:
    (`http://localhost:<port>?code=...`)
    but complains that the URL isn't reachable.
 3. Copy the _new localhost URL_  from the browser.
-4. In another terminal window, use the `curl` command to
+4. In another terminal window in the same container or on the same host
+   as the one where `pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
    ```terminal
-$ curl http://localhost:<port>?code=...
+$ curl 'http://localhost:<port>?code=...'
 ```
