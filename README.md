@@ -63,9 +63,9 @@ if you already have the required packages installed.
    **root of this repo**
 1. `source ./tool/env-set.sh` &nbsp;&nbsp;#
    initialize environment variables; install/use required Node & Ruby version
-1. `./tool/before-install.sh` &nbsp;&nbsp;#
+1. `source ./tool/before-install.sh` &nbsp;&nbsp;#
    install core set of required tools
-1. `./tool/install.sh` &nbsp;&nbsp;#
+1. `source ./tool/install.sh` &nbsp;&nbsp;#
    install everything else needed to build this site
 
 > IMPORTANT:
