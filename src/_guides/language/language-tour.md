@@ -1003,7 +1003,7 @@ The usual way to express a Unicode code point is
 For example, the heart character (♥) is `\u2665`.
 To specify more or less than 4 hex digits,
 place the value in curly brackets.
-For example, the laughing emoji (😆) is `\u{1f600}`.
+For example, the laughing emoji (😆) is `\u{1f606}`.
 
 If you need to read or write individual Unicode characters,
 use the `characters` getter defined on String
