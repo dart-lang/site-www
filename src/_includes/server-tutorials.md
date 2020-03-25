@@ -1,7 +1,7 @@
 The following tutorials show how to develop scripts, command-line apps,
 and server apps that can run in the standalone Dart VM.
 
-<div class="card-grid">
+<div class="card-grid no_toc_section">
   <div class="card">
     <h3><a href="/tutorials/server/get-started">Get started</a></h3>
     <p>Get Dart. Create a simple standalone app, run it in the Dart VM,

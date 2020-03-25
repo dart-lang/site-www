@@ -8,15 +8,16 @@
 import 'dart:io';
 import 'dart:convert' show utf8, json;
 
+const noteFilePath = 'data/notes.txt';
 int count = 0;
 
 Future main() async {
   // One note per line.
   try {
-    List<String> lines = File('notes.txt').readAsLinesSync();
+    List<String> lines = File(noteFilePath).readAsLinesSync();
     count = lines.length;
   } on FileSystemException {
-    print('Could not open notes.txt.');
+    print('Could not open $noteFilePath.');
     return;
   }
 
@@ -61,16 +62,16 @@ Future handlePost(HttpRequest request) async {
   if (decoded.containsKey('myNote')) {
     saveNote(request, "${decoded['myNote']}\n");
   } else {
-    getNote(request, decoded['getNote'] as String);
+    readNote(request, decoded['getNote'] as String);
   }
 }
 
 void saveNote(HttpRequest request, String myNote) {
   try {
-    File('notes.txt')
+    File(noteFilePath)
         .writeAsStringSync(myNote, mode: FileMode.append);
   } catch (e) {
-    print('Couldn\'t open notes.txt: $e');
+    print('Couldn\'t open $noteFilePath: $e');
     request.response
       ..statusCode = HttpStatus.internalServerError
       ..writeln('Couldn\'t save note.')
@@ -85,10 +86,10 @@ void saveNote(HttpRequest request, String myNote) {
     ..close();
 }
 
-void getNote(HttpRequest request, String getNote) {
+void readNote(HttpRequest request, String getNote) {
   final requestedNote = int.tryParse(getNote) ?? 0;
   if (requestedNote >= 0 && requestedNote < count) {
-    List<String> lines = File('notes.txt').readAsLinesSync();
+    List<String> lines = File(noteFilePath).readAsLinesSync();
     request.response
       ..statusCode = HttpStatus.ok
       ..writeln(lines[requestedNote])

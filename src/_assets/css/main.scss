@@ -2,8 +2,9 @@
 
 @import 'variables';
 @import 'colors';
-@import 'bootstrap';
 @import 'bootstrap_config';
+@import 'bootstrap';
+@import 'bootstrap_config_shared'; // FIXME(chalin): this should be before the bootstrap import; move to site file.
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';
@@ -11,23 +12,21 @@
 
 @import 'mixins';
 
+@import 'code';
 @import 'icons';
-@import 'code_pre';
 @import 'animations';
-@import 'header';
+@import 'header_shared';
 
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
-@import 'sidebar';
-@import 'toc';
+@import 'sidebar_shared';
+@import 'toc_shared';
 @import 'site_overrides';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
 $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
-$code-weight: 400;
-$code-color: #247776; // Temporary fix
 
 /* -----------------------------------------
   Global
@@ -159,63 +158,6 @@ input, select {
   }
 }
 
-pre, pre.prettyprint {
-  padding: 30px;
-  font-weight: $code-weight;
-  background-color: #F5F5F7;
-  color: $blue;
-  position: relative;
-  border: none;
-  border-radius: 0;
-  font-size: 12px;
-
-  .com {
-    color: #6E6E70;
-  }
-  .kwd {
-    color: #BC0056;
-  }
-  .pln {
-    color: #7500A0;
-  }
-  .lit, .str {
-    color: #00677A;
-  }
-
-  &.dartpad {
-    // &:after {
-    //   content: 'Run';
-    //   position: absolute;
-    //   top: 10px;
-    //   right: 10px;
-    //   display: block;
-    //   z-index: 10;
-    //   background-color: $white-base;
-    //   background-image: asset_url('shared/dart/logo/default.svg');
-    //   background-size: 18px;
-    //   background-position: 7px center;
-    //   background-repeat: no-repeat;
-    //   padding: 5px 10px 5px 30px;
-    //   border-radius: 8px;
-    //   font-family: $font-family-base;
-    // }
-  }
-  .highlight {
-    background: #fffde7;
-    padding: 2px;
-  }
-
-  a {
-    font-family: inherit;
-    font-weight: inherit;
-  }
-}
-code {
-  background-color: transparent;
-  color: $code-color;
-  font-size: 100%;
-  padding: 0;
-}
 img {
   max-width: 100%;
   height: auto;
@@ -686,19 +628,6 @@ img {
   }
 }
 
-
-/* -----------------------------------------
- Dartpad
- ----------------------------------------- */
-
-#run-dartpad {
-  position: relative;
-  padding: 15px 0;
-  background: $gray-light;
-  border-top: 1px solid $gray;
-  z-index: 5;
-}
-
 /* -----------------------------------------
  Search
  ----------------------------------------- */
@@ -801,12 +730,6 @@ input.gsc-search-button {
 $icon-size: 24px;
 $anchor-padding: 4px;
 
-// Push # link targets clear of page header.
-@mixin header-clearance {
-  margin-top: -60px;
-  padding-top: 60px;
-}
-
 main .content {
   h1,
   h2,
@@ -815,8 +738,6 @@ main .content {
   h5,
   h6 {
     .anchor {
-      @include header-clearance;
-
       box-sizing: border-box;
       float: left;
       margin-left: -($icon-size + $anchor-padding);
@@ -841,20 +762,15 @@ main .content {
       }
     }
 
-    // Invisible pre-element to avoid modifying styles on headings.
-    &[id]::before {
-      @include header-clearance;
-
-      content: "";
-      display: block;
+    // Push # link targets clear of page header.
+    &[id] {
+      scroll-margin: 60px;
     }
   }
 
-  // Invisible pre-element to avoid modifying styles on headings.
-  a[id]::before {
-    @include header-clearance;
-    content: "";
-    display: block;
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
   }
 }
 
@@ -871,51 +787,6 @@ main .content {
   padding: 5px 10px;
   color: $blue;
   border-radius: 8px;
-}
-
-.codesample__open-in-dartpad {
-  display: block;
-  position: absolute;
-  width: auto;
-  z-index: 10;
-  padding: 5px 10px 5px 35px;
-  top: 35px;
-  right: 38px;
-  background-color: $gray;
-  color: $gray-base;
-
-  font-weight: normal;
-  font-size: $font-size-base * 0.91;
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-base * 0.8;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $font-size-base * 0.91;
-  }
-
-  &.top {
-    top: 0;
-  }
-  &:visited, &:active {
-    color: $gray-base;
-  }
-  &:hover {
-    background-color: darken($gray, 10%);
-    color: $white-base;
-  }
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 18px;
-    height: 18px;
-    background-image: asset_url('shared/dart/logo/default.svg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
 }
 
 // Columns
@@ -1047,6 +918,7 @@ li.card {
 @mixin dart-style-for($kind, $bg-color, $fg-color, $msg) {
   .#{$kind} {
     background-color: $bg-color !important;
+    position: relative;
     &:after {
       font-family: $font-family-monospace;
       font-size: 10px;
@@ -1060,55 +932,14 @@ li.card {
   }
 }
 
-// TODO: reclaim and use the class names good and bad (rather than good-style and bad-style):
-@include dart-style-for(good-style, $alert-success-bg, $alert-success-fg, 'good');
-@include dart-style-for(bad-style, $alert-danger-bg, $alert-danger-fg, 'bad');
+@include dart-style-for(good, $alert-success-bg, $alert-success-fg, 'good');
+@include dart-style-for(bad, $alert-danger-bg, $alert-danger-fg, 'bad');
 
 @include dart-style-for(passes-sa, $alert-success-bg, $alert-success-fg, '\2714  static analysis: success');
 @include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
 
 @include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
 @include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
-
-// Deprecated, use good-style
-.good {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-success;
-  &:after {
-    content: 'good';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-success-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
-
-// Deprecated, use bad-style
-.bad {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-danger;
-  &:after {
-    content: 'bad';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-danger-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
 
 .muted {
   color: $gray;
@@ -1529,6 +1360,16 @@ body.obsolete {
       }
     }
   }
+}
+
+// FIXME: move into _code.scss once #2008 is merged
+.prettify-filename {
+  position: relative;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
 }
 
 @import '_overwrites';

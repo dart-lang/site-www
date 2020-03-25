@@ -181,7 +181,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language process]: https://github.com/dart-lang/language/blob/master/doc/life_of_a_language_feature.md
 [pub]: {{site.pub}}
-[announcement]: http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
+[announcement]: https://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html
 [lang]: /guides/language/language-tour
 [libs]: /guides/libraries/library-tour
 [JSON]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec-class.html
@@ -190,7 +190,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [Dart tools]: /tools/
 [Dart and Google Cloud Platform]: https://dart-lang.github.io/server/google-cloud-platform/
 [Who Uses Dart]: /community/who-uses-dart
-[spec]: http://www.ecma-international.org/publications/standards/Ecma-408.htm
+[spec]: https://www.ecma-international.org/publications/standards/Ecma-408.htm
 [DEP]: https://github.com/dart-lang/dart_enhancement_proposals
 [DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
@@ -217,7 +217,17 @@ to produce fast native apps.
 
 Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
-Linux. For more details, see the [dart2aot](/tools/dart2aot) documentation.
+Linux. For more details, see the [dart2native][] documentation.
+
+### Q. Which is faster — AOT- or JIT-compiled code?
+
+Code that's compiled ahead-of-time (_AOT_) with a compiler such as [dart2native][]
+has different performance characteristics from
+code that's compiled just-in-time (_JIT_) in the Dart VM.
+AOT-compiled code is guaranteed to have fast startup and consistent runtime
+performance, with no latency during early runs. JIT-compiled code is slower at
+startup, but it can have better peak performance after it runs
+long enough for runtime optimizations to be applied.
 
 ---
 
@@ -226,8 +236,8 @@ Linux. For more details, see the [dart2aot](/tools/dart2aot) documentation.
 
 ### Q. What browsers do you support as JavaScript compilation targets?
 
-The _production_ compiler ([dart2js][]) supports Internet Explorer 11
-and the last two major releases of the following browsers:
+The _production_ compiler ([dart2js][]) supports
+the last two major releases of the following browsers:
 
   * Chrome
   * Edge
@@ -284,7 +294,7 @@ Dart's are nicer syntactically.
 
 Compare the following Closure compiler code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Closure compiler code
 
 /**
@@ -300,7 +310,7 @@ makeGreeting = function(name) {
 
 With the following Dart code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Dart code
 
 String makeGreeting(String name) {
@@ -447,16 +457,17 @@ noticeably slower than the well-tuned garbage collectors of
 modern JavaScript VMs.
 
 
-[ppwsize]: http://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
-[sourcemaps]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+[ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
+[sourcemaps]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [package:js]: {{site.pub-pkg}}/js
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
+[dart2native]: /tools/dart2native
 [dartanalyzer]: /tools/dartanalyzer
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
-[fixallthethings]: http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
+[fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
 [fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0

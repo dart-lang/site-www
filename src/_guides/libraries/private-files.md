@@ -21,7 +21,7 @@ are useful or essential when you deploy an app.
 **Don't commit** the following files and directories
 created by pub:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 .dart_tool/
 .packages
 build/
@@ -32,12 +32,12 @@ pubspec.lock  // Except for application packages
 **Note:** The `.dart_tool` directory, which is new in Dart 2,
 is used by pub and other tools. It replaces the `.pub` directory as of
 the 2.0.0-dev.32.0 SDK release. The `.packages` file replaces the
-`packages` directories that early Dart 1.x versions produced.
+`packages` directories that early Dart versions produced.
 </aside>
 
 **Don't commit** the API documentation directory created by dartdoc:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 doc/api/
 {% endprettify %}
 
@@ -47,7 +47,7 @@ For example, if your development environment creates
 any of the following files,
 consider putting them in a global ignore file:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 *.iml         // IntelliJ
 *.ipr         // IntelliJ
 *.iws         // IntelliJ

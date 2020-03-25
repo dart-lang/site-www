@@ -20,7 +20,7 @@ backward-compatible. For details, see the [Dart 2 page](/dart-2).
 ### In-progress specification
 
 The in-progress formal Dart language specification is written as a
-[LaTeX file,](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+[LaTeX file,](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
 and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
 
 New language features are typically described using informal language feature specifications in the dart-lang/language repo:
@@ -33,5 +33,5 @@ New language features are typically described using informal language feature sp
 The formal Dart 1.x language specification is available from
 the Ecma International website:
 
-* <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
+* <a href="https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
    target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>

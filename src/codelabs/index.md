@@ -17,13 +17,18 @@ Dart makes writing apps easy and fun.
 
 ### [Dart cheatsheet](/codelabs/dart-cheatsheet)
 
-Use the latest, experimental version of DartPad to learn,
-remind yourself about, or test your knowledge of
+Use DartPad to learn or remind yourself of
 some of the most commonly used, yet unique features of the Dart language.
+
+### [Iterable collections](/codelabs/iterables)
+
+Use DartPad to learn or remind yourself of how to use
+lists, sets, and other iterable collections in Dart,
+with special attention to filtering and mapping values.
 
 ### [Asynchronous programming: futures, async, await](/codelabs/async-await)
 
-Use the latest, experimental version of DartPad to learn how to write 
+Use DartPad to learn or remind yourself of how to write 
 asynchronous code using futures and the `async` and `await` keywords.
 
 ## Flutter

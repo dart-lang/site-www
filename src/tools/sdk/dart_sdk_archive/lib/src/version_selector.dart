@@ -25,7 +25,7 @@ class VersionSelector {
     _osSelector.onChange.listen((Event event) {
       filterTable();
     });
-    var versions = (await getSdkVersions(channel)
+    var versions = (await fetchSdkVersions(channel)
           ..sort())
         .reversed
         .toList();
@@ -54,7 +54,7 @@ class VersionSelector {
         _versionSelector.selectedOptions.first.attributes['value'];
     var svnRevision = svnRevisionForVersion(selectedVersion);
     var versionInfo =
-        await _client.getVersion(channel, svnRevision ?? selectedVersion);
+        await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
     updateTable(versionInfo);
     if (!_hasPopulatedTable) {
       _selectOsDropdown();
@@ -139,6 +139,13 @@ class VersionSelector {
             continue;
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
+            continue;
+          }
+        }
+
+        if (name == 'Mac' && platformVariant.architecture == 'ia32') {
+          // No Mac 32-bit SDK builds >= 2.80
+          if (versionInfo.version > Version(2, 7, 0)) {
             continue;
           }
         }

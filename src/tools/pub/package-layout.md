@@ -23,7 +23,7 @@ Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
 might look like:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   .dart_tool/ *
   .packages *
@@ -75,7 +75,7 @@ enchilada/
 
 ## The pubspec
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   pubspec.yaml
   pubspec.lock
@@ -96,38 +96,34 @@ For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   LICENSE
 {% endprettify %}
 
-If you're publishing your package, include a license file named `LICENSE`,
-optionally with a file extension such as `.md`. 
+If you're publishing your package, include a license file named `LICENSE`.
 We recommend using an [OSI-approved license](https://opensource.org/licenses)
 such as [BSD-3-Clause,](https://opensource.org/licenses/BSD-3-Clause)
 so that others can reuse your work.
 
-## README
+## README.md
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   README.md
 {% endprettify %}
 
-One file that's very common in open source is a README file that
+One file that's very common in open source is a _README_ file that
 describes the project. This is especially important in pub. When you upload
-to the [pub.dev site,]({{site.pub}}) your README is shown on
+to the [pub.dev site,]({{site.pub}}) your `README.md` file is shown —
+rendered as [Markdown][] — on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
-If your README ends in `.md`, it's parsed as
-[Markdown.][markdown]
 
-[markdown]: http://daringfireball.net/projects/markdown/
+## CHANGELOG.md
 
-## CHANGELOG
-
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   CHANGELOG.md
 {% endprettify %}
@@ -135,11 +131,9 @@ enchilada/
 To show users the latest changes to your package, you can include a changelog
 file where you can write a short note about the changes in your latest
 release. When you upload your package to the
-[pub.dev site,]({{site.pub}}) your package's changelog file (if any)
-appears in the changelog tab.
+[pub.dev site,]({{site.pub}}) your package's `CHANGELOG.md` file (if any)
+appears in the changelog tab, rendered as [Markdown.][Markdown]
 
-If your CHANGELOG ends in `.md`, it's parsed as
-[Markdown.][markdown]
 
 ## Public directories
 
@@ -151,7 +145,7 @@ Two directories in your package are public to other packages: `lib` and
 
 The following directory structure shows the `lib` portion of enchilada:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   lib/
     enchilada.dart
@@ -171,7 +165,7 @@ libraries with whatever names make sense for your package.
 When you do, users can import these libraries using the name of the
 package and the library file, like so:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:enchilada/enchilada.dart';
 import 'package:enchilada/tortilla.dart';
 {% endprettify %}
@@ -180,7 +174,7 @@ If you want to organize your public libraries, you can also create
 subdirectories inside `lib`. If you do that, users will specify that path
 when they import it. Say you have the following file hierarchy:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   lib/
     some/
@@ -190,7 +184,7 @@ enchilada/
 
 Users import `olives.dart` as follows:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:enchilada/some/path/olives.dart';
 {% endprettify %}
 
@@ -231,7 +225,7 @@ scripts in `bin`.
 
 ## Public assets
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   lib/
     guacamole.css
@@ -239,7 +233,7 @@ enchilada/
 
 While most library packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
-[Bootstrap](http://getbootstrap.com/) might include a number of CSS files
+[Bootstrap](https://getbootstrap.com/) might include a number of CSS files
 for consumers of the package to use.
 
 These go in the top-level `lib` directory. You can put any kind of file
@@ -256,7 +250,7 @@ Old code might refer to assets using `/packages/<package>/<path>` URLs.
 
 ## Implementation files
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   lib/
     src/
@@ -279,7 +273,7 @@ ways that could break your code.
 When you use libraries from within your own package, even code in `src`, you
 can (and should) still use `package:` to import them. For example:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:enchilada/src/beans.dart';
 {% endprettify %}
 
@@ -288,7 +282,7 @@ your package in its [pubspec](/tools/pub/pubspec).
 
 ## Web files
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   web/
     index.html
@@ -309,7 +303,7 @@ such as images.
 
 ## Command-line apps
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   bin/
     enchilada
@@ -327,7 +321,7 @@ using
 
 ## Tests and benchmarks
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   test/
     enchilada_test.dart
@@ -341,7 +335,7 @@ and have `_test` at the end of their file names.
 Typically, these use the [test]({{site.pub}}/packages/test)
 package.
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   benchmark/
     make_lunch.dart
@@ -353,7 +347,7 @@ other empirical metrics).
 
 ## Documentation
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   doc/
     api/
@@ -374,7 +368,7 @@ that you author.  Use whatever markup format that you prefer.
 
 ## Examples
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   example/
     main.dart
@@ -394,12 +388,12 @@ If you might publish your package,
 consider creating an example file with one of the following names
 (case insensitive):
 
-* <code>example/readme[.md]</code>
 * <code>example/example[.md]</code>
 * <code>example[/lib]/main.dart</code>
 * <code>example[/lib]/<em>package_name</em>.dart</code>
 * <code>example[/lib]/<em>package_name</em>_example.dart</code>
 * <code>example[/lib]/example.dart</code>
+* <code>example/readme[.md]</code>
 
 When you publish a package that contains one or more of the above files,
 the pub.dev site creates an **Example** tab to display the first file it finds
@@ -407,7 +401,7 @@ the pub.dev site creates an **Example** tab to display the first file it finds
 For example, if your package has many files under its `example` directory,
 including a file named `README.md`,
 then your package's Example tab displays the contents of `example/README.md`
-(parsed as [Markdown.)][markdown]
+(parsed as [Markdown.)][Markdown]
 
 {% comment %}
 To see how the example file is chosen,
@@ -417,7 +411,7 @@ https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 
 ## Internal tools and scripts
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 enchilada/
   tool/
     generate_docs.dart
@@ -429,3 +423,5 @@ documentation generators, or other bits of automation.
 
 Unlike the scripts in `bin`, these are *not* for external users of the package.
 If you have any of these, place them in a directory called `tool`.
+
+[Markdown]: {{site.pub-pkg}}/markdown

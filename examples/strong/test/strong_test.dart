@@ -110,14 +110,14 @@ void main() {
       expect(_test, prints(expectedOutput));
     });
 
-    Map<String, dynamic> getFromExternalSource() => {
+    Map<String, dynamic> fetchFromExternalSource() => {
           'names': ['a string']
         };
 
     test('downcast check ok: use cast()', () {
       _test() {
         // #docregion cast
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
         assumeStrings(names.cast<String>());
         // #enddocregion cast
@@ -137,7 +137,7 @@ void main() {
     test('downcast check ok: create new object', () {
       _test() {
         // #docregion create-new-object
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
         // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
         assumeStrings(names.map((name) => name as String).toList());

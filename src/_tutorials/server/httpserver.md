@@ -95,8 +95,8 @@ with the string `Hello, world!`
 At the command line, run the `hello_world_server.dart` script:
 
 ```terminal
-$ cd httpserver/bin
-$ dart hello_world_server.dart
+$ cd httpserver
+$ dart bin/hello_world_server.dart
 listening on localhost, port 4040
 ```
 
@@ -122,7 +122,7 @@ classes both for server-side programs and for
 client-side programs (but not for web apps).
 
 <?code-excerpt "httpserver/bin/hello_world_server.dart" replace="/.*?dart:io.*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!import 'dart:io';!]
 
 Future main() async {
@@ -153,7 +153,7 @@ The first statement in `main()` uses `HttpServer.bind()` to create an
 [HttpServer][] object and bind it to a host and port.
 
 <?code-excerpt "httpserver/bin/hello_world_server.dart (bind)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var server = await HttpServer.bind(
   InternetAddress.loopbackIPv4,
   4040,
@@ -197,7 +197,7 @@ The server begins listening for HTTP requests using `await for`.
 For each request received, the code sends a "Hello, world!" response.
 
 <?code-excerpt "httpserver/bin/hello_world_server.dart (listen)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 await for (HttpRequest request in server) {
   request.response.write('Hello, world!');
   await request.response.close();
@@ -230,14 +230,17 @@ that you can use to guess the number.
    You should see something similar to the following:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart number_thinker.dart
+   $ cd httpserver
+   $ dart bin/number_thinker.dart
    I'm thinking of a number: 6
    ```
 
 2. **Launch the web server**
 
    Run `webdev serve` from the top directory of the app.
+
+   _More information:_
+   [webdev documentation](/tools/webdev)
 
 3. **Open the HTML page**
 
@@ -265,7 +268,7 @@ It might also include elements that build a query string.
 Here's the form HTML from `make_a_guess.html`:
 
 <?code-excerpt "httpserver/web/make_a_guess.html (form)" replace="/(action|method|name|type)=(.).*?\2/[!$&!]/g"?>
-{% prettify html %}
+{% prettify html tag=pre+code %}
 <form [!action="http://localhost:4041"!] [!method="GET"!]>
   <select [!name="q"!]>
     <option value="0">0</option>
@@ -323,7 +326,7 @@ request received. Because HttpServer implements [Stream,][Stream]
 you can use `await for` to process the requests.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (main)" replace="/handleRequest/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 import 'dart:math' show Random;
 
@@ -348,7 +351,7 @@ When a `GET` request arrives, the `handleRequest()` method calls
 `handleGet()` to process the request.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (handleRequest)" replace="/handleGet/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void handleRequest(HttpRequest request) {
   try {
     if (request.method == 'GET') {
@@ -383,7 +386,7 @@ property to determine what kind of request has been received.
 This server handles only GET requests.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (request-method)" replace="/handleGet/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (request.method == 'GET') {
   [!handleGet!](request);
 } else {
@@ -403,7 +406,7 @@ It can send a minimal amount of data along with the request
 through a query string attached to the URI.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (uri)" replace="/request.uri/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void handleGet(HttpRequest request) {
   final guess = [!request.uri!].queryParameters['q'];
   // ···
@@ -428,7 +431,7 @@ to indicate that the request was successful and the response is complete,
 the number thinker server sets the HttpResponse status code to `HttpStatus.ok`.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (statusCode)" replace="/response.statusCode.*?;/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void handleGet(HttpRequest request) {
   final guess = request.uri.queryParameters['q'];
   final response = request.response;
@@ -469,7 +472,7 @@ Closing the HttpResponse object
 sends the data back to the client.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (write)" replace="/\.\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void handleGet(HttpRequest request) {
   // ···
   if (guess == myNumber.toString()) {
@@ -520,23 +523,23 @@ Run the server and client on the command line.
 1. First, run the server:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_writer_server.dart
+   $ cd httpserver
+   $ dart bin/basic_writer_server.dart
    ```
 
 2. In a new terminal, run the client:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_writer_client.dart
+   $ cd httpserver
+   $ dart bin/basic_writer_client.dart
    Wrote data for Han Solo.
    ```
 
 Look at the JSON data that the server wrote to `file.txt`:
 
-   ```json
-   {"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
-   ```
+```json
+{"name":"Han Solo","job":"reluctant hero","BFF":"Chewbacca","ship":"Millennium Falcon","weakness":"smuggling debts"}
+```
 
 <hr>
 
@@ -545,16 +548,16 @@ The client creates an HttpClient object and uses the
 Making a request involves two Futures:
 
 * The `post()` method establishes a network
-connection to the server and completes with the first Future,
-which returns an HttpClientRequest object.
+  connection to the server and completes with the first Future,
+  which returns an HttpClientRequest object.
 
 * The client composes the request object and closes it.
-The `close()` method sends the request to the server
-and returns the second Future, which completes with
-an HttpClientResponse object.
+  The `close()` method sends the request to the server
+  and returns the second Future, which completes with
+  an HttpClientResponse object.
 
 <?code-excerpt "httpserver/bin/basic_writer_client.dart" replace="/\/\*.\*\/|post|headers|write|close|utf8.\w+/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 import 'dart:convert';
 
@@ -641,7 +644,7 @@ The `basic_writer_server.dart` file implements
 a server that follows this pattern.
 
 <?code-excerpt "httpserver/bin/basic_writer_server.dart" replace="/\/\*\d\*\/|contentType.*? == \S+|(content|data) = [^;]*|req\.uri[^ ]*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 import 'dart:convert';
 
@@ -668,12 +671,12 @@ Future main() async {
       } catch (e) {
         response
           ..statusCode = HttpStatus.internalServerError
-          ..write("Exception during file I/O: $e.");
+          ..write('Exception during file I/O: $e.');
       }
     } else {
       response
         ..statusCode = HttpStatus.methodNotAllowed
-        ..write("Unsupported request: ${req.method}.");
+        ..write('Unsupported request: ${req.method}.');
     }
     await response.close();
   }
@@ -710,7 +713,7 @@ Use CORS headers with caution,
 because they can open your network up to security risks.
 
 <?code-excerpt "httpserver/bin/note_server.dart (addCorsHeaders)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void addCorsHeaders(HttpResponse response) {
   response.headers.add('Access-Control-Allow-Origin', '*');
   response.headers
@@ -722,7 +725,7 @@ void addCorsHeaders(HttpResponse response) {
 <div class="prettify-filename">note_server.dart</div>
 
 For more information, refer to Wikipedia's article
-[Cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+[Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 ## Using the http_server package {#using-http-server-package}
 
@@ -745,29 +748,29 @@ written using dart:io together with http_server.
 
 You can find the first server in `mini_file_server.dart`.
 It responds to all requests by returning the contents of the
-`index.html` file in the same directory as its source.
+`index.html` file from the `web` directory.
 
 **Try it!**
 
 1. Run the server on the command line:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart mini_file_server.dart
+   $ cd httpserver
+   $ dart bin/mini_file_server.dart
    ```
 
 2. Type [localhost:4044](http://localhost:4044) into the browser.
    The server displays an HTML file:
 
-   ![The index.html file served by mini_file_server.dart.](/tutorials/server/images/index_file.png)
+   ![The file served by mini_file_server.dart.](/tutorials/server/images/index_file.png)
 
 Here's the code for mini file server:
 
 <?code-excerpt "httpserver/bin/mini_file_server.dart"?>
-{% prettify dart %}
+```dart
 import 'dart:io';
 
-File targetFile = File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
   var server;
@@ -796,7 +799,7 @@ Future main() async {
     await req.response.close();
   }
 }
-{% endprettify %}
+```
 <div class="prettify-filename">mini_file_server.dart</div>
 
 This code determines whether the file exists,
@@ -812,8 +815,8 @@ uses the [http_server][] package.
 1. Run the server on the command line:
 
    ```terminal
-   $ cd httpserver/bin
-   $ dart basic_file_server.dart
+   $ cd httpserver
+   $ dart bin/basic_file_server.dart
    ```
 
 2. Type [localhost:4046](http://localhost:4046) into the browser.
@@ -825,11 +828,11 @@ In this server, the code for handling the request is much shorter,
 because the [VirtualDirectory][] class handles the details of serving the file.
 
 <?code-excerpt "httpserver/bin/basic_file_server.dart" replace="/staticFiles\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-File targetFile = File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
   VirtualDirectory staticFiles = VirtualDirectory('.');
@@ -853,22 +856,18 @@ also uses the http_server package.
 This server serves any file from the server's directory
 or subdirectory.
 
-Run `static_file_server.dart`,
-and test it with the URL localhost:4048/file.txt.
-Change `file.txt` to other filenames within the directory.
+Run `static_file_server.dart`, and test it with the URL
+[localhost:4048](http://localhost:4048).
 
 Here is the code for `static_file_server.dart`.
 
 <?code-excerpt "httpserver/bin/static_file_server.dart" replace="/\/\*\d\*\//[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 import 'package:http_server/http_server.dart';
-import 'package:path/path.dart';
 
 Future main() async {
-  var pathToBuild = join(dirname(Platform.script.toFilePath()));
-
-  var staticFiles = VirtualDirectory(pathToBuild);
+  var staticFiles = VirtualDirectory('web');
   staticFiles.allowDirectoryListing = true; [!/*1*/!]
   staticFiles.directoryHandler = (dir, request) [!/*2*/!] {
     var indexUri = Uri.file(dir.path).resolve('index.html');
@@ -906,7 +905,7 @@ using HTTPS (Hyper Text Transfer Protocol with Secure Sockets Layer).
 To use the bindSecure() method, you need a certificate,
 which is provided by a Certificate Authority (CA).
 For more information about certificates refer to
-[What is SSL and what are Certificates?](http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
+[What is SSL and what are Certificates?](https://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html)
 
 For illustrative purposes only,
 the following server, `hello_world_server_secure.dart`,
@@ -915,7 +914,7 @@ a certificate created by the Dart team for testing.
 You **must** provide your own certificates for your servers.
 
 <?code-excerpt "httpserver/bin/hello_world_server_secure.dart" replace="/\S.*\/\*\d\*\//[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:io';
 
 String certificateChain = 'server_chain.pem';

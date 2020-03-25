@@ -24,7 +24,7 @@ Get answers and connect with Dart developers.
 
 #### Communities
 
-* [StackOverflow](http://stackoverflow.com/tags/dart) -
+* [StackOverflow](https://stackoverflow.com/tags/dart) -
   The best place for how-to questions.
 * [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
@@ -38,7 +38,7 @@ Get answers and connect with Dart developers.
 ## Contribute
 
 Dart is open source. Learn how to
-[contribute to the core SDK.](https://github.com/dart-lang/sdk/wiki/Contributing)
+[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)
 
 * [Dart GitHub repositories](https://github.com/dart-lang/)
   * [Core SDK](https://github.com/dart-lang/sdk/)
@@ -52,9 +52,9 @@ Dart is open source. Learn how to
 
 Our wonderful community has provided these resources.
 
-* [Dart Academy](https://dart.academy/) - Tutorials
-  and articles written by the Dart community
-* [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
+* [Chinese version of this site (此网站的中文版)](https://dart.cn)
+* [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
+
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 

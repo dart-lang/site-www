@@ -1,6 +1,6 @@
 ---
 title: Debugging Dart web apps
-description: Learn how to use DevTools to debug your Dart web app.
+description: Learn how to debug your Dart web app.
 ---
 
 You can use [Chrome DevTools][] and the
@@ -26,13 +26,6 @@ see the JavaScript debugging
     [disabling and re-enabling source maps](#enabling-and-disabling-source-maps).
 </div>
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  A [Dart fork of Chrome DevTools][]
-  exists but isn't ready yet for general use. For the latest status, see the
-  [devtools-frontend README.][devtools-frontend README]
-</aside>
-
 {% asset chrome-devtools-screenshot.png %}
 
 {% comment %}
@@ -41,12 +34,6 @@ Be careful to match the text formatting and terminology of the Chrome DevTools
 docs (https://developers.google.com/web/tools/chrome-devtools/) — especially
 the JavaScript debugging reference and JavaScript get started guide,
 so readers can easily switch back and forth between these docs.
-
-TODO:
-Once Dart DevTools (or whatever we call it)
-is ready for use by ordinary developers,
-make DDT the first section/page and CDT the second,
-with the DDT section having all the step-by-step directions.
 {% endcomment %}
 
 
@@ -220,7 +207,7 @@ To see Dart types in Chrome DevTools, you need to enable custom formatters.
 1. Close Settings: Press <kbd>Esc</kbd> or click the **x** at the upper right.
 
 {% comment %}
-The best description I found was http://www.mattzeunert.com/2016/02/19/custom-chrome-devtools-object-formatters.html.
+The best description I found was https://www.mattzeunert.com/2016/02/19/custom-chrome-devtools-object-formatters.html.
 {% endcomment %}
 
 
@@ -286,7 +273,6 @@ $ pub global activate stagehand  # update stagehand
 [Dart IDE or editor]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
 [dartdevc]: /tools/dartdevc
-[devtools-frontend README]: https://github.com/dart-lang/devtools-frontend/blob/master/readme.md#dart-devtools
 [Google Chrome]: https://www.google.com/chrome
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/

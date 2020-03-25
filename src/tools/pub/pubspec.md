@@ -7,7 +7,7 @@ Every [pub package](/guides/packages) needs some metadata so it can specify its
 others also need to provide some other information so users can discover them.
 All of this metadata goes in the package's _pubspec:_
 a file named `pubspec.yaml` that's written in the
-[YAML](http://www.yaml.org/) language.
+[YAML](https://yaml.org/) language.
 
 {% comment %}
 PENDING: acknowledge the existence of pubspec.lock files.
@@ -29,10 +29,6 @@ A pubspec can have the following fields:
 `description`
 : Required for packages that are hosted on the [pub.dev site.]({{site.pub}})
   [_Learn more._](#description)
-
-`author` or `authors`
-: Optional.
-  [_Learn more._](#authorauthors)
 
 `homepage`
 : Optional. URL pointing to the package's homepage (or source code repository).
@@ -92,7 +88,7 @@ you might add a field named `my_pkg_bugs`.
 
 A simple but complete pubspec looks something like the following:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: newtify
 version: 1.2.3
 description: >-
@@ -100,7 +96,6 @@ description: >-
   This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
-author: Natalie Weizenbaum <nweiz@google.com>
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 environment:
@@ -157,7 +152,7 @@ anymore. To make more changes, you'll need a new version.
 
 When you select a version, follow [semantic versioning.][semantic versioning]
 
-[semantic versioning]: http://semver.org/spec/v2.0.0.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 
 ### Description
 
@@ -172,22 +167,22 @@ The description is plain text: no markdown or HTML.
 
 ### Author/authors
 
-You're encouraged to use these fields to describe the author(s) of your package
-and provide contact information. Use `author` if your package has a
-single author, or use `authors` with a YAML list if more than one
-person wrote the package. Each author can be either a single name
+_Deprecated._ Use a [verified publisher][] instead.
+
+[verified publisher]: /tools/pub/verified-publishers
+
+You might see an `author` or `authors` section in old pubspecs.
+These optional fields were a way to describe
+the author(s) of your package and to provide contact information.
+Each author could be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
-(`Natalie Weizenbaum <nweiz@google.com>`). For example:
+(`Natalie Weizenbaum <nweiz@google.com>`).
+However, these values weren't verified.
 
-{% prettify yaml %}
-authors:
-- Natalie Weizenbaum <nweiz@google.com>
-- Bob Nystrom <rnystrom@google.com>
-{% endprettify %}
+The pub.dev site no longer displays package authors, and
+(as of Dart 2.7) the `pub publish` command
+displays a warning if your pubspec has an `author` or `authors` section.
 
-The email addresses can be from any provider.
-If anyone uploads your package to the pub.dev site,
-then the author information (including email addresses) becomes public.
 
 ### Homepage
 
@@ -244,13 +239,13 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 <name-of-executable>: <Dart-script-from-bin>
 {% endprettify %}
 
 For example, the following pubspec entry lists two scripts:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 executables:
   polymer-new-element: new_element
   useful-script:
@@ -272,7 +267,7 @@ a package from being published. This setting can be used to specify a
 [custom pub package server](https://github.com/dart-lang/pub-dev)
 to publish.
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 publish_to: none
 {% endprettify %}
 
@@ -293,7 +288,7 @@ dependencies.
 For example, the following constraint says that this package
 works with any **Dart 2** SDK that's version 2.0.0 or higher:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 environment:
   sdk: '>=2.0.0 <3.0.0'
 {% endprettify %}
@@ -313,7 +308,7 @@ with the version of the Dart SDK that you have installed.
 As of Dart 1.19.0,
 pub supports Flutter SDK constraints under the `environment:` field:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 environment:
   sdk: '>=1.19.0 <3.0.0'
   flutter: ^0.1.2
@@ -330,4 +325,4 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
-[semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
+[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

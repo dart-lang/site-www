@@ -34,7 +34,7 @@ matching versions of a library.</dd>
 <dd>Optional. Use with <code>pub add</code> to install the best
 version matching the specified constraint. For example:
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub cache add barback --version "<=0.8.0 <0.110"
 {% endprettify %}
 

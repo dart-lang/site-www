@@ -12,7 +12,7 @@ buildJson() async {
   print("fetching SVN versions...");
   var filePath = 'lib/src/svn_versions.dart';
   var generator = SvnVersionGenerator();
-  var svnVersions = await generator.getSvnVersions();
+  var svnVersions = await generator.svnVersions;
   var file = File(filePath);
   var jsonStr = json.encode(svnVersions);
   var fileContents = '''

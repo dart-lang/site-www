@@ -1,7 +1,6 @@
 ---
 title: Core libraries
 description: Learn about Dart's core libraries and APIs.
-toc: false
 ---
 
 Dart has a rich set of core libraries that provide essentials for many everyday
@@ -10,31 +9,64 @@ programming tasks such as working on collections of objects
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
 
-The following table lists all of the Dart core libraries.
-Each library works on at least one [platform](/platforms).
+<style>
+  th:first-child {
+    width: 80%;
+  }
+</style>
+
+## Multi-platform libraries
+
+The following table lists the Dart core libraries that work on all
+[Dart platforms](/platforms).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
-| Library                                       | Supported platforms   |
+| Library                                       | Notes   |
 |-----------------------------------------------|-------------------------------|
-| [`dart:async`][dart-async]              <br> Support for asynchronous programming, with classes such as Future and Stream. | All |
-| [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core`. | All |
-| [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8. | All |
-| [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program. | All |
-| [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | JIT<br>Web (experimental, dartdevc&nbsp;only) |
-| [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | Web |
-| [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | Web |
-| [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | JIT<br>AOT |
-| [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | JIT<br>AOT |
-| [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
-| [`dart:js_util`][dart-js_util]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
-| [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | All
-| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | JIT (experimental, _not_&nbsp;Flutter) |
-| [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | All |
-| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | Web |
-| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | Web 
-| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL. | Web (obsolete) |
+| [`dart:async`][dart-async]              <br> Support for asynchronous programming, with classes such as Future and Stream. | |
+| [`dart:collection`][dart-collection]    <br> Classes and utilities that supplement the collection support in `dart:core`. | |
+| [`dart:convert`][dart-convert]          <br> Encoders and decoders for converting between different data representations, including JSON and UTF-8. | |
+| [`dart:core`][dart-core]                <br> Built-in types, collections, and other core functionality for every Dart program. | |
+| [`dart:developer`][dart-developer]      <br> Interaction with developer tools such as the debugger and inspector. | JIT and dartdevc only |
+| [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | |
+| [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | |
 {:.table .table-striped}
+</div>
+
+## Native platform libraries
+
+The following table lists the Dart core libraries that work on the
+[Dart native platform](/platforms) (AOT- and JIT-compiled code).
+
+<div class="table-wrapper" markdown="1">
+|-----------------------------------------------+-------------------------------|
+| Library                                       | Notes   |
+|-----------------------------------------------|-------------------------------|
+| [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | |
+| [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | |
+| [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT only (_not_&nbsp;Flutter) |
+{:.table .table-striped}
+</div>
+
+## Web platform libraries
+
+The following table lists the Dart core libraries that work on the
+[Dart web platform](/platforms) (code compiled to JavaScript).
+
+<div class="table-wrapper" markdown="1">
+|-----------------------------------------------+-------------------------------|
+| Library                                       | Notes   |
+|-----------------------------------------------|-------------------------------|
+| [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | |
+| [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
+| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
+| [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
+| [`dart:js_util`][dart-js_util]          <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
+| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL. | *DEPRECATED* |
+{:.table .table-striped}
+
 </div>
 
 [dart-async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html

@@ -185,21 +185,6 @@ var s2 = """This is also a
 multi-line string.""";
 // #enddocregion triple-quotes
 
-class RunesExample {
-  // #docregion runes
-  void main() {
-    var clapping = '\u{1f44f}';
-    print(clapping);
-    print(clapping.codeUnits);
-    print(clapping.runes.toList());
-
-    Runes input =
-        Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-    print(String.fromCharCodes(input));
-  }
-// #enddocregion runes
-}
-
 class SymbolExampleNotUsedYet {
   // #docregion symbols
   // MOVE TO library tour?

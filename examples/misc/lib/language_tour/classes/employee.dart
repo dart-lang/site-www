@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_cast, sort_constructors_first
 
-Map getDefaultData() => {}; // stub
+Map get defaultData => {}; // stub
 
 // #docregion
 class Person {
@@ -14,7 +14,7 @@ class Person {
 // #docregion method-then-constructor
 class Employee extends Person {
   // #enddocregion ''
-  Employee() : super.fromJson(getDefaultData());
+  Employee() : super.fromJson(defaultData);
   // #enddocregion method-then-constructor
   // #docregion
   // Person does not have a default constructor;

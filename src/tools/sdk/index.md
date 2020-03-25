@@ -32,8 +32,12 @@ directory that has these command-line tools:
   [dart](/server)
   : The standalone VM
 
-  [dart2aot & dartaotruntime](/tools/dart2aot)
-  : Tools for compiling Dart code to native x64 machine code
+  [dart2native](/tools/dart2native)
+  : A tool that AOT compiles Dart code to native x64 machine code,
+  producing either a standalone executable or a snapshot
+
+  [dartaotruntime](/tools/dartaotruntime)
+  : A Dart runtime for AOT-compiled snapshots
 
   [dart2js](/tools/dart2js)
   : The Dart-to-JavaScript compiler (used only for web development)
@@ -62,7 +66,7 @@ For more information about the SDK, see its
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
-go to [dartbug.com](http://dartbug.com).
+go to [dartbug.com](https://dartbug.com).
 Here are some handy searches:
 
 * [dart (VM) issues](https://github.com/dart-lang/sdk/labels/Area-VM)

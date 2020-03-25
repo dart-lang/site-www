@@ -10,8 +10,10 @@
 //    e.g., using this Perl regexp: / ?\/\/!.*//g
 
 import 'dart:html'; //!web-only
+// #docregion try-dart
 import 'dart:math' show Random; //!tip("dart:math") //!tip("import")
 
+// #enddocregion try-dart
 int numIterations = 500; //!web-only
 //!web-only
 // We changed a few lines of code to make this sample nicer //!web-only
@@ -20,6 +22,7 @@ int numIterations = 500; //!web-only
 // after 500 iterations). //!web-only
 //!web-only
 //!tip("main()")
+// #docregion try-dart
 main() async {
   print('Compute π using the Monte Carlo method.'); //!tip("π")
   var output = querySelector("#value-of-pi"); //!web-only

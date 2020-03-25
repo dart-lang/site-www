@@ -5,7 +5,7 @@ description: Use pub upgrade to get the latest versions of all dependencies used
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub upgrade [args] [dependencies]
 {% endprettify %}
 

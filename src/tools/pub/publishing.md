@@ -3,7 +3,7 @@ title: Publishing packages
 description: Learn how to publish a Dart package to pub.dev.
 ---
 
-[The pub package manager](/guides/packages) isn't just for using other people's packages.
+[The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
@@ -11,23 +11,37 @@ command.
 {{site.alert.note}}
   To publish to a location other than pub.dev,
   or to prevent publication anywhere, use the `publish_to` field,
-  as defined in the [pubspec](/tools/pub/pubspec).
+  as defined in the [pubspec][].
 {{site.alert.end}}
+
+## Publishing is forever
+
+Keep in mind that publishing is forever. As soon as you publish your package,
+users can depend on it. Once they start doing that, removing
+the package would break theirs. To avoid that, the [pub.dev policy][policy]
+disallows unpublishing packages except for very few cases.
+
+You can always upload new versions of your package, but
+old ones will continue to be available for users that aren't ready to
+upgrade yet.
+
+For already published packages that are no longer relevant or being maintained,
+you can [mark them as discontinued](#discontinue).
 
 ## Preparing to publish
 
 When publishing a package, it's important to follow the [pubspec
-format](/tools/pub/pubspec) and
-[package layout conventions](/tools/pub/package-layout).
+format][pubspec] and
+[package layout conventions][].
 Some of these are required in order for others to be able to use your package.
 Others are suggestions to help make it easier for users to understand and work
 with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-* You must include a license file (named `LICENSE`, `COPYING`, or some
-  variation) that contains an [open-source license](http://opensource.org/). We
-  recommend the [BSD license](http://opensource.org/licenses/BSD-2-Clause),
+* You must include a `LICENSE` file
+  that contains an [open-source license.][open-source license]
+  We recommend the [BSD license,][BSD license]
   which is used by Dart itself. You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
@@ -45,10 +59,8 @@ are a few additional requirements for uploading a package:
   Your Google Account can be associated with a Gmail address or
   with any other email address.
 
-[Google Account]: https://support.google.com/accounts/answer/27441
-
 {{site.alert.note}}
-  Unless you publish using a [verified publisher](#verified-publisher),
+  Unless you publish using a [verified publisher][],
   **pub.dev displays the email address associated with your Google Account.**
 {{site.alert.end}}
 
@@ -58,15 +70,16 @@ Pub uses the contents of a few files to create a page for your
 package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
-* **README**: The README file (`README`, `README.md`, `README.mdown`,
-  `README.markdown`) is the main content featured in your package's page.
-* **CHANGELOG**: Your package's CHANGELOG (`CHANGELOG`, `CHANGELOG.md`,
-  `CHANGELOG.mdown`, `CHANGELOG.markdown`), if found, is also featured in a
-  tab on your package's page, so that developers can read it right from
-  pub.dev.
-* **The pubspec**: Your package's `pubspec.yaml` file is used to fill out
+* **README.md:** The `README.md` file
+  is the main content featured in your package's page.
+  The file's contents are rendered as [Markdown.][Markdown]
+* **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
+  is also featured in a tab on your package's page,
+  so that developers can read it right from pub.dev.
+  The file's contents are rendered as [Markdown.][Markdown]
+* **The pubspec:** Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
-  description, authors, etc.
+  description, homepage, etc.
 
 
 ### Advantages of using a verified publisher {#verified-publisher}
@@ -120,8 +133,8 @@ $ pub publish --dry-run
 ```
 
 Pub makes sure that your package follows the
-[pubspec format](/tools/pub/pubspec) and
-[package layout conventions](/tools/pub/package-layout),
+[pubspec format][pubspec] and
+[package layout conventions][],
 and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
@@ -214,18 +227,17 @@ so examine the list carefully before completing your upload.
 
 ## Uploaders
 
-The package authors as listed in the `pubspec.yaml` file
-are different from the list of people authorized to publish that package.
-Whoever publishes the first version of some package automatically becomes
-the first and only person authorized to upload additional versions of the package.
+Whoever publishes the first version of a package automatically becomes
+the first and only person authorized to upload additional versions of that package.
 To allow or disallow other people to upload versions,
-use the [pub uploader][] command.
+use the [pub uploader][] command
+or transfer the package to a [verified publisher][].
 
-{{site.alert.note}}
-  For packages published using a verified publisher,
-  the package details page displays the verified publisher domain,
-  rather than the author field.
-{{site.alert.end}}
+If a package has a verified publisher,
+then the pub.dev page for that package displays the publisher domain.
+Otherwise, the page displays the email addresses of
+the authorized uploaders for the package.
+
 
 ## Publishing prereleases
 
@@ -236,7 +248,7 @@ Prereleases can be useful when any of the following are true:
 * You want beta testers for the next release candidate of the package.
 * The package depends on an unstable version of the Dart or Flutter SDK.
 
-As described in [semantic versioning][semver], to make a prerelease of a version,
+As described in [semantic versioning,][semver] to make a prerelease of a version
 you append a suffix to the version. For example, to make a prerelease of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
 release version `2.0.0`, it will take precedence over all `2.0.0-XXX` prereleases.
@@ -254,18 +266,8 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
-or replace the package README and documentation.
+or replace the package `README.md` and documentation.
 
-[semver]: https://semver.org/spec/v2.0.0-rc.1.html
-
-## Publishing is forever
-
-Keep in mind that publishing is forever. As soon as you publish your package,
-users can depend on it. Once they start doing that, removing
-the package would break theirs. To avoid that, pub strongly discourages
-deleting packages. You can always upload new versions of your package, but
-old ones will continue to be available for users that aren't ready to
-upgrade yet.
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -283,10 +285,21 @@ discontinued.
 
 ## Resources
 
-For more information, see the reference pages for the `pub` commands:
+For more information, see the reference pages for the following `pub` commands:
 
 * [pub publish][]
 * [pub uploader][]
 
+[BSD license]: https://opensource.org/licenses/BSD-3-Clause
+[Google Account]: https://support.google.com/accounts/answer/27441
+[Markdown]: {{site.pub-pkg}}/markdown
+[open-source license]: https://opensource.org/
+[package layout conventions]: /tools/pub/package-layout
+[policy]: https://pub.dev/policy
+[pub]: /guides/packages
 [pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader
+[pubspec]: /tools/pub/pubspec
+[semver]: https://semver.org/spec/v2.0.0-rc.1.html
+[verified publisher]: /tools/pub/verified-publishers
+

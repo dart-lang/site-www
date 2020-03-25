@@ -1,0 +1,13 @@
+name: html_library_sample
+description: dart.dev example code.
+version: 0.0.1
+
+environment:
+  sdk: '>=2.5.0 <3.0.0'
+
+dependencies:
+  html: any
+
+dev_dependencies:
+  test: ^1.6.3
+  examples_util: {path: ../util}

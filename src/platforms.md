@@ -19,7 +19,7 @@ depending on your target platform and goals:
     development time compiler (`dartdevc`) and a production time compiler
     (`dart2js`).
 
-<img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
+<img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An illustration of the devices in the Dart Native and Dart Web platforms">
 
 ## Dart Native (VM JIT and AOT)
 
@@ -56,7 +56,7 @@ The AOT-compiled code runs inside an efficient Dart runtime that enforces
 the sound Dart type system and manages memory using fast object allocation and a [generational garbage
 collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)
 
-More information: [`dart2aot` tool](/tools/dart2aot)
+More information: [`dart2native` tool](/tools/dart2native)
 
 ## Dart Web (JavaScript)
 

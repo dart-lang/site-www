@@ -33,12 +33,12 @@ Future main() async {
       } catch (e) {
         response
           ..statusCode = HttpStatus.internalServerError
-          ..write("Exception during file I/O: $e.");
+          ..write('Exception during file I/O: $e.');
       }
     } else {
       response
         ..statusCode = HttpStatus.methodNotAllowed
-        ..write("Unsupported request: ${req.method}.");
+        ..write('Unsupported request: ${req.method}.');
     }
     await response.close();
   }

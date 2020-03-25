@@ -2,7 +2,9 @@
 #
 # Run dartfmt over the examples.
 
-set -e -o pipefail
+# `find` exit code reflects whether it encountered errors during the search.
+# We ignore such errors, so don't exit on a pipefail.
+# set -e -o pipefail
 
 cd `dirname $0`/..
 ROOT=$(pwd)
@@ -53,7 +55,7 @@ function analyze_and_test() {
 
   # TODO: rename DIR since it now more generally contains analysis targets, not only directories
   DIR=()
-  for d in analysis_options.yaml bin lib test; do
+  for d in analysis_options.yaml bin lib test web; do
     if [[ -e $d ]]; then DIR+=($d); fi
   done
 
@@ -131,6 +133,7 @@ function analyze_and_test() {
   if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
   travis_fold end analyzeAndTest.tests.vm
 
+  # TODO(chalin): as of 2019/11/17, we don't need to select individual browser test files. Run browser tests over all files, since VM-only tests have been annotated as such.
   TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
   # Use the following to selectively remove some tests:
   # TEST_FILES=`find . -name "*_test.dart" -exec grep -l "@TestOn('browser')" {} + | grep -v pi_test`

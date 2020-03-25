@@ -21,6 +21,7 @@ The following packages are useful for a wide range of projects.
 
 | **Package** | **Description** | **Commonly used APIs** |
 | [archive]({{site.pub-pkg}}/archive) | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
+| [characters]({{site.pub-pkg}}/characters) | String manipulation for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
 | [http]({{site.pub-pkg}}/http) | A set of high-level functions and classes that make it easy to consume HTTP resources. | delete(), get(), post(), read() |
 | [intl]({{site.pub-pkg}}/intl) | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [json_serializable]({{site.pub-pkg}}/json_serializable) | An easy-to-use code generation package. For more information, see [JSON Support](/guides/json). | @JsonSerializable |

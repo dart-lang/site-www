@@ -12,6 +12,8 @@
           permalink: /codelabs
         - title: Language cheatsheet
           permalink: /codelabs/dart-cheatsheet
+        - title: Iterable collections
+          permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await
     - title: Tutorials
@@ -22,12 +24,6 @@
 - title: Language
   expanded: false
   children:
-    - title: Tour
-      permalink: /guides/language/language-tour
-    - title: Type system
-      permalink: /guides/language/sound-dart
-    - title: Specification
-      permalink: /guides/language/spec
     - title: Effective Dart
       expanded: false
       children:
@@ -43,6 +39,16 @@
           permalink: /guides/language/effective-dart/usage
         - title: Design
           permalink: /guides/language/effective-dart/design
+    - title: Extension methods
+      permalink: /guides/language/extension-methods
+    - title: Evolution
+      permalink: /guides/language/evolution
+    - title: Specification
+      permalink: /guides/language/spec
+    - title: Tour
+      permalink: /guides/language/language-tour
+    - title: Type system
+      permalink: /guides/language/sound-dart
 
 - title: Core libraries
   expanded: false
@@ -171,12 +177,14 @@
           permalink: /tools/sdk
         - title: dart (Dart VM)
           permalink: /tools/dart-vm
-        - title: dart2aot & dartaotruntime
-          permalink: /tools/dart2aot
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
+        - title: dart2native
+          permalink: /tools/dart2native
         - title: dartanalyzer
           permalink: /tools/dartanalyzer
+        - title: dartaotruntime
+          permalink: /tools/dartaotruntime
         - title: dartdevc (dev JS)
           permalink: /tools/dartdevc
         - title: dartdoc
@@ -220,6 +228,8 @@
       permalink: /resources
     - title: Books
       permalink: /resources/books
+    - title: DartPad in tutorials&#58; best practices
+      permalink: /resources/dartpad-best-practices
     - title: Code of conduct
       permalink: /code-of-conduct
     - title: FAQ

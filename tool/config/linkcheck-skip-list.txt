@@ -1,13 +1,8 @@
 # Enter regexp pattern, one per line.
 
+# Skip links used by example web apps
+localhost:(404\d|8080)
+
 # FIXME(Temporary): linkcheck seems to be intermittently failing when accessing main.css
 # https://github.com/dart-lang/site-www/issues/1107
 /assets/main(-[0-9a-f]+)?.css
-https://localhost:4040
-http://localhost:4040
-http://localhost:8080
-http://localhost:8080/make_a_guess.html
-http://localhost:4049/file.txt
-http://localhost:4044
-http://localhost:4046
-

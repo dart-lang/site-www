@@ -51,7 +51,7 @@ waits for events on the original stream and then
 outputs new events. Example:
 
 <?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Splits a stream of consecutive strings into lines.
 ///
 /// The input string is provided in smaller chunks through
@@ -82,7 +82,7 @@ that emits an increasing counter every second.
 Here's how it might be implemented:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var counterStream =
     Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
 {% endprettify %}
@@ -90,7 +90,7 @@ var counterStream =
 To quickly see the events, you can use code like this:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 counterStream.forEach(print); // Print an integer every second, 15 times.
 {% endprettify %}
 
@@ -99,7 +99,7 @@ such as `map()` on the stream before listening to it.
 The method returns a new stream.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Double the integer in each event.
 var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
@@ -109,7 +109,7 @@ Instead of `map()`, you could use any other transforming method,
 such as the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 .where((int x) => x.isEven) // Retain only even integer events.
 .expand((var x) => [x, x]) // Duplicate each event.
 .take(5) // Stop after the first five events.
@@ -125,7 +125,7 @@ For example, the following code uses the `utf8.decoder` and `LineSplitter`
 transformers provided by the dart:convert library.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<List<int>> content = File('someFile.txt').openRead();
 List<String> lines =
     await content.transform(utf8.decoder).transform(LineSplitter()).toList();
@@ -145,7 +145,7 @@ using `yield` or `yield*` statements.
 Here's a primitive example that emits numbers at regular intervals:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
   int i = 0;
   while (true) {
@@ -187,7 +187,7 @@ Another, more useful example is a function that converts
 a sequence of futures to a stream:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
     var result = await future;
@@ -235,9 +235,9 @@ This code creates a stream to return,
 and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
@@ -263,7 +263,7 @@ As before, you can use the stream returned by `timedCounter()` like this:
 {% endcomment %}
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // Print an integer every second, 15 times.
 {% endprettify %}
@@ -294,7 +294,7 @@ if the stream never gets a subscriber.
 Try changing the code that uses the stream to the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
@@ -340,7 +340,7 @@ To see what happens without pause support,
 try changing the code that uses the stream to the following:
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   StreamSubscription<int> subscription;
@@ -373,7 +373,7 @@ implements pause by using the
 on the `StreamController`.
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
   StreamController<int> controller;
   Timer timer;
@@ -449,7 +449,7 @@ keep these tips in mind:
   before the `subscription` variable
   has a valid value.
 
-  {% prettify dart %}
+  {% prettify dart tag=pre+code %}
 subscription = stream.listen(handler);
   {% endprettify %}
 

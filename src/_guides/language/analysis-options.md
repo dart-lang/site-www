@@ -35,9 +35,9 @@ void increment() {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Avoid empty statements at example.dart:11 • empty_statements
+lint • Avoid empty statements • example.dart:11 • empty_statements
 ```
 </blockquote>
 
@@ -51,9 +51,9 @@ var [!_controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Close instances of `dart.core.Sink` at example.dart:11 • close_sinks
+lint • Close instances of `dart.core.Sink` • example.dart:11 • close_sinks
 ```
 </blockquote>
 
@@ -69,7 +69,7 @@ You can also configure the linter, one of the analyzer's plugins,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines in
-[Effective Dart](/guides/language/effective-dart). Dart tools such as the
+[Effective Dart][]. Dart tools such as the
 [Dart dev compiler (dartdevc),](/tools/dartdevc)
 [`dartanalyzer`,](/tools/dartanalyzer)
 [`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
@@ -107,7 +107,7 @@ Here's a sample analysis options file:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- camel/" remove="http:"?>
 ```yaml
-include: package:pedantic/analysis_options.yaml
+include: package:pedantic/analysis_options.1.8.0.yaml
 
 analyzer:
   exclude: [build/**]
@@ -183,7 +183,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="lib/assignment.dart" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="lib/assignment.dart" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
 ```
@@ -223,7 +223,7 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
-<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
 ```yaml
 include: package:pedantic/analysis_options.yaml
 ```
@@ -234,12 +234,40 @@ include: package:pedantic/analysis_options.yaml
   We recommend updating your code to work with the new rules.
   Other options are to
   include a specific version of the pedantic analysis options file
-  (as described [in the pedantic README][]),
+  (as described [in the pedantic package page][]),
   explicitly enable individual linter rules,
   or [disable individual rules][].
 {{site.alert.end}}
 
-[disable individual rules]: #disabling-individual-rules
+### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
+
+To enable linter rules corresponding to the guidelines in [Effective Dart][],
+add a dev dependency on the [effective_dart package:][effective_dart]
+
+<?code-excerpt "analysis_effective_dart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
+```yaml
+dev_dependencies:
+  effective_dart: ^1.0.0
+```
+
+Run `pub get`, and then
+add the following line to your `analysis_options.yaml` file:
+
+<?code-excerpt "analysis_effective_dart/analysis_options.yaml" from="include" retain="include:"?>
+```yaml
+include: package:effective_dart/analysis_options.yaml
+```
+
+{{site.alert.important}}
+  When a **new version of `effective_dart`** is published,
+  code that previously passed analysis might **start failing analysis.**
+  We recommend updating your code to work with the new rules.
+  Other options are to
+  include a specific version of the effective_dart analysis options file
+  (as described [in the effective_dart package page][]),
+  explicitly enable individual linter rules,
+  or [disable individual rules][].
+{{site.alert.end}}
 
 ### Enabling individual rules {#individual-rules}
 
@@ -350,7 +378,7 @@ To suppress more than one rule, use a comma-separated list:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, omit_local_variable_types
 ```
 
 
@@ -452,7 +480,11 @@ Use the following resources to learn more about static analysis in Dart:
 [analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
 [change the severity of rules]: #changing-the-severity-of-rules
 [invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
-[linter rules]: http://dart-lang.github.io/linter/lints/
+[linter rules]: https://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
-[in the pedantic README]: {{site.pub-pkg}}/pedantic#using-the-lints
+[in the pedantic package page]: {{site.pub-pkg}}/pedantic#using-the-lints
+[disable individual rules]: #disabling-individual-rules
+[in the effective_dart package page]: {{site.pub-pkg}}/effective_dart#using-the-lints
+[effective_dart]: {{site.pub-pkg}}/effective_dart
+[Effective Dart]: /guides/language/effective-dart

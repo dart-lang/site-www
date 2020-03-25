@@ -1,4 +1,4 @@
-[Install Homebrew](http://brew.sh), and then run:
+[Install Homebrew](https://brew.sh), and then run:
 
 {% if site.data.pkg-vers.SDK.channel == 'dev' %}
 ```terminal

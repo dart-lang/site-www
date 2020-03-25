@@ -6,10 +6,10 @@ description: The tool that lets you interactively play with Dart in a browser.
 DartPad is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
-have embedded DartPads.
+have [embedded DartPads](#embedding).
 To get a DartPad as big as your browser window, go to the
-<a href="{{site.dartpad}}"
-target="_blank">DartPad site (dartpad.dev).</a>
+<a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad
+site (dartpad.dev).</a>
 
 {{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
@@ -44,7 +44,7 @@ try running some samples and then creating a simple command-line app.
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.dartpad}}" target="_blank">DartPad.</a>
+  Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
@@ -100,7 +100,7 @@ To create a simple command-line app, use **New Pad**.
   to contain this code:
 
 <!-- library-tour/string-tests/bin/main.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var char in 'hello'.split('')) {
   print(char);
 }
@@ -136,3 +136,22 @@ for (var char in 'hello'.split('')) {
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is based on.
 You can find the SDK version at the bottom right of DartPad.
+
+## Embedding DartPad in web pages {#embedding}
+
+You can embed DartPad inside of web pages,
+customizing it to suit your purpose.
+For example, the [futures codelab][]
+contains multiple embedded DartPads
+labeled as _examples_ and _exercises_.
+
+For more information about how to use embedded DartPads, see
+[best practices for using DartPad in tutorials][].
+
+For technical details on embedding DartPads, see the
+[DartPad embedding guide.][]
+
+[best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
+[DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[futures codelab]: /codelabs/async-await
+

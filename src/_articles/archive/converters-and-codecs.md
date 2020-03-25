@@ -44,7 +44,7 @@ they had been used separately.
 A codec is a combination of two converters where one encodes
 and the other one decodes:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class Codec<S, T> {
   const Codec();
 
@@ -76,7 +76,7 @@ arguments. For example, the
 adds named arguments to `encode()` and `decode()`
 to make these methods more useful:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 dynamic decode(String source, {reviver(var key, var value)}) { … }
 String encode(Object value, {toEncodable(var object)}) { … }
 {% endprettify %}
@@ -85,7 +85,7 @@ The codec can be instantiated with arguments that are used as default
 values, unless they are overridden by the named arguments during the
 `encode()`/`decode()` call.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const JsonCodec({reviver(var key, var value), toEncodable(var object)})
   ...
 {% endprettify %}
@@ -100,7 +100,7 @@ When possible, codec constructors should be `const` constructors.
 Converters, and in particular their `convert()` methods, are
 where the real conversions happen:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 T convert(S input);  // where T is the target and S the source type.
 {% endprettify %}
 
@@ -120,7 +120,7 @@ interface and can thus be given to the `Stream.transform()` method.
 Probably the most common use case is the decoding of UTF-8 with
 [utf8.decoder]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Utf8Codec-class.html):
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 File.openRead().transform(utf8.decoder).
 {% endprettify %}
 
@@ -181,7 +181,7 @@ has the same signature as
 HtmlEscape: String→String. In this case each individual output chunk
 represents one line.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:convert';
 import 'dart:async';
 
@@ -238,7 +238,7 @@ accepts a list (which may not be held onto), the sub-range that the converter
 operates on, and a boolean `isLast`, which can be set instead of calling
 `close()`.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:convert';
 
 main() {
@@ -281,7 +281,7 @@ converter and how a custom ChunkedConversionSink can improve performance.
 Let’s start with the simple synchronous converter,
 whose encryption routine simply rotates bytes by the given key:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:convert';
 
 /// A simple extension of Rot13 to bytes and a key.
@@ -302,7 +302,7 @@ class RotConverter extends Converter<List<int>, List<int>> {
 
 The corresponding Codec class is also simple:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Rot extends Codec<List<int>, List<int>> {
   final _key;
   const Rot(this._key);
@@ -327,7 +327,7 @@ allocate a new instance of RotConverter every time one is needed.
 
 This is how we use the Rot codec:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Rot ROT128 = const Rot(128);
 const Rot ROT1 = const Rot(1);
 main() {
@@ -345,7 +345,7 @@ We are on the right track. The codec works, but it is still missing the chunked
 encoding part. Because each byte is encoded separately we can fall back to
 the synchronous conversion method:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class RotConverter {
   ...
   RotSink startChunkedConversion(sink) {
@@ -372,7 +372,7 @@ class RotSink extends ChunkedConversionSink<List<int>> {
 Now, we can use the converter with chunked conversions or even for stream
 transformations:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Requires to import dart:io.
 main(args) {
   String inFile = args[0];
@@ -406,7 +406,7 @@ We can also avoid the allocation altogether if we overwrite the input. In
 the following version of RotSink, we add a new method `addModifiable()` that
 does exactly that:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class RotSink extends ChunkedConversionSink<List<int>> {
   final _key;
   final ChunkedConversionSink<List<int>> _outSink;
@@ -436,7 +436,7 @@ advanced method (for example `addModifiableSlice()`) would take range arguments
 This new method is not yet used by transformers, but we can already use it when
 invoking `startChunkedConversion()` explicitly.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 
 main() {
   var outSink = new ChunkedConversionSink.withCallback((chunks) {
@@ -465,7 +465,7 @@ such a converter would be the potential source of hard-to-track bugs. Instead,
 we write a converter that does the unmodifiable-to-modifiable conversion
 explicitly, and then fuse the two converters.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class ToModifiableConverter extends Converter<List<int>, List<int>> {
   List<int> convert(List<int> data) => data;
   ToModifiableSink startChunkedConversion(RotSink sink) {
@@ -486,7 +486,7 @@ class ToModifiableSink
 ToModifiableSink just signals the next sink that the incoming chunk
 is modifiable. We can use this to make our pipeline more efficient:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 main(args) {
   String inFile = args[0];
   String outFile = args[1];
@@ -509,7 +509,7 @@ converters and not just with our Rot cipher. We should therefore make an
 interface that generalizes the concept. For simplicity, we named it
 `CipherSink`, although it has, of course, uses outside the encryption world.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class CipherSink
     extends ChunkedConversionSink<List<int>, List<int>> {
   void addModifiable(List<int> data) { add(data); }
@@ -526,7 +526,7 @@ Although we won’t make the cipher faster anymore,
 we can improve the output side of our Rot converter.
 Take, for instance, the fusion of two encryptions:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 main(args) {
   String inFile = args[0];
   String outFile = args[1];
@@ -546,7 +546,7 @@ Since the first RotConverter invokes `outSink.add()`, the second RotConverter
 assumes that input cannot be modified and allocates a copy. We can work around
 this by sandwiching a ToModifiableConverter in between the two ciphers:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
   var transformer = new ToModifiableConverter()
        .fuse(new RotConverter(key))
        .fuse(new ToModifiableConverter())
@@ -560,7 +560,7 @@ whenever we want to add a new chunk,
 or at the beginning when we start a chunked
 conversion. We prefer the latter approach:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
   /// Works more efficiently if given a CipherSink as argument.
   CipherSink startChunkedConversion(
       ChunkedConversionSink<List<int>> sink) {
@@ -571,7 +571,7 @@ conversion. We prefer the latter approach:
 
 _CipherSinkAdapter is simply:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class _CipherSinkAdapter implements CipherSink {
   ChunkedConversionSink<List<int>, List<int>> sink;
   _CipherSinkAdapter(this.sink);
@@ -585,7 +585,7 @@ class _CipherSinkAdapter implements CipherSink {
 We now only need to change the _RotSink to take advantage of the fact that it
 always receives a CipherSink as an argument to its constructor:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class _RotSink extends CipherSink {
   final _key;
   final CipherSink _outSink;  // <= always a CipherSink.

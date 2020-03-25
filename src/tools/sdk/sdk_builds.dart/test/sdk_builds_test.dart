@@ -18,37 +18,37 @@ main() async {
     _dd = null;
   });
 
-  test('get version', () async {
+  test('fetch version', () async {
     var revision = '31822';
     var channel = 'stable';
 
-    var version = await _dd.getVersion(channel, revision);
+    var version = await _dd.fetchVersion(channel, revision);
 
     expect(version.version, new Version.parse('1.1.1'));
   });
 
-  test('get version paths', () async {
+  test('fetch version paths', () async {
     var channel = 'stable';
 
-    var paths = await _dd.getVersionPaths(channel).toList();
+    var paths = await _dd.fetchVersionPaths(channel).toList();
 
     expect(paths, contains('channels/stable/release/29803/'));
     expect(paths, contains('channels/stable/release/latest/'));
     expect(paths.length, greaterThanOrEqualTo(28));
   });
 
-  test('getVersions', () async {
-    var versions = await _dd.getVersions('stable');
+  test('fetchVersions', () async {
+    var versions = await _dd.fetchVersions('stable');
 
     expect(versions.length, greaterThanOrEqualTo(27));
   });
 
-  group('getVersion', () {
+  group('fetchVersion', () {
     test('recent git build', () async {
       var channel = 'dev';
       var revision = '1.11.0-dev.5.2';
 
-      var content = await _dd.getVersion(channel, revision) as GitVersionInfo;
+      var content = await _dd.fetchVersion(channel, revision) as GitVersionInfo;
 
       expect(content.ref, '23736d3630da614c655d0569e1ba5af2021b1c61');
       expect(content.version, new Version.parse('1.11.0-dev.5.2'));
@@ -59,7 +59,7 @@ main() async {
       var channel = 'stable';
       var revision = '44672';
 
-      var content = await _dd.getVersion(channel, revision) as SvnVersionInfo;
+      var content = await _dd.fetchVersion(channel, revision) as SvnVersionInfo;
 
       expect(content.revision, 44672);
       expect(content.version, new Version.parse('1.9.1'));
@@ -68,7 +68,7 @@ main() async {
 
     test('old revision with old date format', () async {
       // dev/release/30039 - 0.8.10.8_r30039
-      var content = await _dd.getVersion('dev', '30039') as SvnVersionInfo;
+      var content = await _dd.fetchVersion('dev', '30039') as SvnVersionInfo;
 
       expect(content.revision, 30039);
       expect(content.version, new Version.parse('0.8.10-rev.8.30039'));
@@ -76,11 +76,11 @@ main() async {
     });
   });
 
-  test('getLink', () async {
+  test('downloadLink', () async {
     var channel = 'stable';
     var revision = '44672';
 
-    var content = await _dd.getDownloadLink(
+    var content = await _dd.createDownloadUrl(
         channel, revision, 'api-docs/dart-api-docs.zip');
     expect(content.pathSegments, [
       'download',

@@ -10,7 +10,7 @@ the risk of introducing a vulnerability.
 ## Reporting vulnerabilities
 
 In the rare event that you find a vulnerability in Dart itself,
-contact us at [http://goo.gl/vulnz](http://goo.gl/vulnz).
+contact us at [https://goo.gl/vulnz](https://goo.gl/vulnz).
 For more information about how Google handles security issues, see
 [Google’s security philosophy.](https://www.google.com/about/appsecurity/)
 

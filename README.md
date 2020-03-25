@@ -10,7 +10,7 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 For simple changes (such as to CSS and text), you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 
-If you want/need to build, read on.
+If you want or need to build, follow the steps below.
 
 > **Help us improve these instructions!**
 > If you have any problems getting set up to build or performing the actual build,
@@ -24,6 +24,7 @@ If you want/need to build, read on.
 
 Install the following tools if you don't have them already.
 
+- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
@@ -56,7 +57,7 @@ submodule-cloning techniques:
 > NOTE: It is safe to (re-)run all of the commands and scripts given below even
 if you already have the required packages installed.
 
-**Open a terminal/command window** and execute the following commands:
+**Open a bash terminal/command window** and execute the following commands:
 
 1. <code>cd <i>\<path-to-this-repo></i></code> &nbsp;&nbsp;# change to
    **root of this repo**
@@ -150,7 +151,7 @@ as linkcheck.dart), run this from the top of the repo:
 ./deploy/html_proof.rb
 ```
 
-To check which old links (from the site version before this one) are broken,
+To find old links (from the site version before this one) that are broken,
 use these commands:
 
 ```
@@ -224,7 +225,7 @@ You can now navigate to the staged version at
 
 **Important:** Don't commit the `.firebaserc` file containing the name of your staged version.
 
-Navigate to the PR on GitHub and update the it with the location of the staged version,
+Navigate to the PR on GitHub and update it with the location of the staged version,
 the names of your reviewers, and so on.
 
 Before making any more changes, stash `.firebaserc`:

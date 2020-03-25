@@ -28,6 +28,12 @@ js:
     <div class="callout-title">
         Dart is a client-optimized language for fast apps on any platform
     </div>
+    <div class="callout-button">
+        <button class="btn btn-link btn-icon" type="button" data-toggle="modal" data-target="#videoModal" data-video="5F-6n_2XWR8">
+            <i class="material-icons">play_circle_filled</i> Watch video
+        </button>
+    </div>
+
     <img class="made-by" src="assets/dash/2x/made by google@2x.png"/>
 </section>
 
@@ -255,7 +261,7 @@ js:
                                 </div>
                             </div>
                         </li>
-                    
+
                         <li tabindex="0" data-banner="assets/dash/2x/1-2 language optimized@2x-80.jpg">
                             <div>
                                 <div class="bullet-container">
@@ -339,7 +345,7 @@ js:
                                     with your code editor of choice
                                 </div>
                             </div>
-                    
+
                         </li>
                     </ul>
                 </div>
@@ -364,7 +370,7 @@ js:
                                     machine code for instant startup
                                 </div>
                             </div>
-                    
+
                         </li>
                         <li tabindex="0" data-banner="assets/dash/2x/3-2 target web@2x-80.jpg">
                             <div>
@@ -376,7 +382,7 @@ js:
                                     <a href="/platforms#dart-web-javascript">compilers for JavaScript</a>
                                 </div>
                             </div>
-                    
+
                         </li>
                         <li tabindex="0" data-banner="assets/dash/2x/3-3 backend code@2x-80.jpg">
                             <div>
@@ -399,11 +405,27 @@ js:
     </section>
     <section class="row">
         <div class="dash-dartpad">
-            <a name="try-dart"></a>
+            <a name="try-dart" class="frontanchor"></a>
             <h2>Try Dart in your browser</h2>
             <select id="dartpad-select"></select>
             <div id="dartpad-host"></div>
             <h3>Want more practice? <a href="/codelabs">Try a codelab</a>. Or <a href="/get-dart">download Dart</a>.</h3>
+            {% capture md %}{% include_relative _try-dart-examples.md %}{% endcapture %}
+            {{ md | markdownify }}
         </div>
     </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" data-video-modal id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="embedded-video-wrapper">
+                    <div id="video-player"></div>
+<!--                    <iframe id="video-player-iframe" class="embedded-video-wrapper__frame" width="auto" height="auto" src="https://youtube.com/embed/5F-6n_2XWR8?cc_lang_pref=en&cc_load_policy=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

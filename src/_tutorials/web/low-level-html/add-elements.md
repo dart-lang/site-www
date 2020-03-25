@@ -67,7 +67,7 @@ The app adds an item to the list.
 Enter a few items into the input field.
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97"
+src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97&ga_id=running_the_todo_app"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -248,7 +248,7 @@ of type
 <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/EventListener.html" target="_blank" rel="noopener">EventListener</a>.
 EventListener is a typedef defined in the dart:html library as follows:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef void EventListener(Event event)
 {% endprettify %}
 
@@ -258,7 +258,7 @@ object as an argument.
 Any function with this signature is an EventListener.
 Based on its signature, the addToDoItem() function is an EventListener.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void addToDoItem(Event e) { ... }
 {% endprettify %}
 
@@ -402,7 +402,7 @@ generateNewLetters() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c"
+src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c&ga_id=moving_elements_within_the_dom_tree"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">

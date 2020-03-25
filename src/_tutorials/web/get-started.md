@@ -3,7 +3,11 @@ title: "Get started: web apps"
 description: A guide to get you quickly writing web apps in Dart.
 ---
 
-Follow these steps to start using Dart to develop web apps.
+Follow these steps to start using Dart to develop **web-only** apps.
+If you want to write a **multi-platform** app, then
+[try Flutter.]({{site.flutter}}/web)
+
+Still here?
 First you'll play with Dart in your browser, no download required.
 Then you'll install Dart and build a small web app.
 
@@ -21,14 +25,14 @@ Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. To get the full DartPad experience,
 which includes the web UI that the app produces,
 <a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
-   target="_blank">open the example at dartpad.dev.</a>
+  target="_blank" rel="noopener">open the example at dartpad.dev.</a>
 
 {{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
 <iframe
-    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"
+    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771&ga_id=play_with_a_web_app"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -117,7 +121,7 @@ Let's customize the app you just created.
  2. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     void main() {
       Element output = querySelector('#output');
       [!output.children.addAll(thingsTodo().map(newLI));!]
@@ -139,7 +143,7 @@ Let's customize the app you just created.
  5. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
-    {% prettify css %}
+    {% prettify css tag=pre+code %}
     #output {
       padding: 20px;
       [!text-align: left;!]
@@ -154,13 +158,11 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-<aside class="alert alert-info" markdown="1">
-  **Feeling lost? Don't worry!**
-  This was a whirlwind introduction to Dart and web programming
-  that left out many details.
-  For a gentler approach, try a
+{{site.alert.info}}
+  **Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
+  web programming that left out many details. For a gentler approach, try a
   [low-level HTML tutorial for Dart][].
-</aside>
+{{site.alert.end}}
 
 
 ## What next?
@@ -190,7 +192,7 @@ If you get stuck, find help at [Community and Support.](/community)
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
-[Homebrew,]: http://brew.sh/
+[Homebrew,]: https://brew.sh/
 [Install the SDK]: /get-dart
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [Overview of Dart web libraries]: /web/web-programming

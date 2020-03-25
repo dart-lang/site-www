@@ -35,7 +35,7 @@ UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versi
 
 You will see this message if you are not on the list of people
 authorized to publish new versions of a package.
-See [Uploaders](publishing#uploaders).
+See [Uploaders](/tools/pub/publishing#uploaders).
 
 ## Pub build fails with HttpException error {#pub-get-fails}
 
@@ -99,4 +99,27 @@ On Windows PowerShell:
 ```terminal
 $ $Env:https_proxy="username:password@hostname:port"
 ```
+## Localhost unreachable after sign-in
 
+When you run `pub publish` in a container or over an SSH session,
+the `localhost` that `pub` is listening to might be different from
+the `localhost` that's accessible in your browser.
+Although you can sign in using the browser,
+the browser then complains that `http://localhost:<port>?code=...`
+is not reachable.
+
+Try this workaround, which uses the command line to complete sign-in:
+
+1. In a terminal window, run `pub publish`.
+2. In the browser window that comes up, sign in. <br>
+   The browser is redirected to a _new localhost URL_
+   (`http://localhost:<port>?code=...`)
+   but complains that the URL isn't reachable.
+3. Copy the _new localhost URL_  from the browser.
+4. In another terminal window in the same container or on the same host
+   as the one where `pub publish` was called, use the `curl` command to
+   complete sign-in using the _new localhost URL_:
+
+   ```terminal
+$ curl 'http://localhost:<port>?code=...'
+```

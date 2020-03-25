@@ -12,16 +12,12 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{site.alert.warning}}
-The dart:ffi library is [in active development][ffi issue]
-and isn't complete yet.
-The API is likely to have breaking changes
-between now and its completion.
-To use dart:fii, you need a 2.6 prerelease of the Dart SDK.
-If you're developing a Flutter app, use the Flutter dev channel,
-as described in the [Flutter dart:ffi page.][binding]
-Otherwise, use the
-[Dart dev channel](/get-dart#about-release-channels-and-version-strings).
+{{site.alert.info}}
+  As of Dart 2.7, [dart:ffi is in beta,][ffi issue]
+  and breaking API changes might still happen.
+  If you're developing a Flutter app,
+  you can get access to dart:ffi by using the Flutter dev channel,
+  as described in the [Flutter dart:ffi page.][binding]
 {{site.alert.end}}
 
 API documentation is available from the dev channel:
@@ -50,39 +46,46 @@ The hello_world example has the following files:
 | **Source file** | **Description** |
 | [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
 | [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.5. |
-| [c/hello.h]({{ page.hw}}/c/hello.h) | Declares the `hello_world()` function. |
-| [c/hello.c]({{ page.hw}}/c/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
-| [c/Makefile]({{ page.hw}}/c/Makefile) | A macOS-specific build file that compiles the C code into a dynamic library. |
+| [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
+| [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 {:.table .table-striped }
 
 {% comment %}
-[PENDING: say something about setup.sh? It doesn't seem necessary for this example, but maybe it's needed by other examples?]
-
-<!--
-  | [setup.sh]({{ page.hw}}/setup.sh) | A macOS-specific script that sets an environment variable. [PENDING: Omit from this list? Why is it necessary? I didn't seem to need it.] |
--->
+[PENDING: say something about other files, like setup.sh?]
+[PENDING: clarify that the build instructions reflect Mac.]
+[TODO (https://github.com/dart-lang/site-www/issues/2219): Fix build instructions.]
 {% endcomment %}
 
-Building the C library creates two additional files:
+Building the C library creates several files,
+including a dynamic library file named
+`libhello.dylib` (macOS), `libhello.dll` (Windows), or
+`libhello.so` (Linux).
 
-| **Generated file** | **Description** |
-| hello_world.dylib | The dynamic library loaded by the Dart app. |
-| c/hello.o | An intermediate object file. |
-{:.table .table-striped }
 
 ### Building and running
 
 Here's an example of building the dynamic library and executing the Dart app:
 
 ```terminal
-$ cd c
-$ make dylib
-gcc -dynamiclib -undefined suppress -flat_namespace hello.o -o ../hello_world.dylib
+$ cd hello_library
+$ cmake .
+...
+$ make
+...
 $ cd ..
 $ dart hello.dart
 Hello World
-$
 ```
+
+{{site.alert.info}}
+  **On macOS,** the Dart VM (`dart`) can load only **signed libraries.**
+  For details and workarounds,
+  see [SDK issue #38314.][38314]
+{{site.alert.end}}
+
+[38314]: https://github.com/dart-lang/sdk/issues/38314
+  
 
 ### Using dart:ffi
 

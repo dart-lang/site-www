@@ -21,7 +21,7 @@ Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,
 which are fundamental to most Dart programs.
 
-<div class="card-grid">
+<div class="card-grid no_toc_section">
   <div class="card">
     <h3><a href="/tutorials/language/streams">Asynchronous programming:
        streams</a></h3>
@@ -45,6 +45,5 @@ which are fundamental to most Dart programs.
 
 ## More tutorials
 
-* [Flutter tutorials](https://flutter.dev/tutorials)
-* [Dart Academy](https://dart.academy)
-
+See the [Flutter tutorials.](https://flutter.dev/tutorials)
+<!-- * [Dart Academy](https://dart.academy) -->

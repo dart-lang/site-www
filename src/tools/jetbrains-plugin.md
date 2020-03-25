@@ -32,11 +32,11 @@ Then install the Dart plugin and tell it where to find the Dart SDK.
 Install a JetBrains IDE if you don't already have one.
 
 * <a href="https://www.jetbrains.com/idea/download/"
-  target="_blank">Download IntelliJ IDEA</a> or,
+  target="_blank" rel="noopener">Download IntelliJ IDEA</a> or,
   to try out the latest Dart language features,
   [install IntelliJ IDEA EAP.](https://confluence.jetbrains.com/display/IDEADEV/EAP)
 * Or <a href="https://www.jetbrains.com/products.html"
-  target="_blank">find another JetBrains product.</a>
+  target="_blank" rel="noopener">find another JetBrains product.</a>
 
 <aside class="alert alert-info" markdown="1">
   **Note:**

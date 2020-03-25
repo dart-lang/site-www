@@ -174,7 +174,7 @@ and modifying the non-script tags inside the \<body> section.
 
 2. Add the following HTML code:
 
-   {% prettify html %}
+   {% prettify html tag=pre+code %}
    <p id="RipVanWinkle">
      RipVanWinkle paragraph.
    </p>
@@ -214,7 +214,7 @@ to get the paragraph element.
 
 2. Change the Dart code to the following:
 
-   {% prettify dart %}
+   {% prettify dart tag=pre+code %}
    import 'dart:html';
 
    void main() {
@@ -398,7 +398,7 @@ Let's customize the CSS for the mini app.
 
 2. Add the following CSS code:
 
-   {% prettify none %}
+   {% prettify none tag=pre+code %}
    #RipVanWinkle {
      font-size: 20px;
      font-family: 'Open Sans', sans-serif;
