@@ -300,8 +300,7 @@ makes sense to use that.
 
 ### DON'T use `.length` to see if a collection is empty.
 
-{% include linter-rule.html rule="prefer_is_empty" %}
-{% include linter-rule.html rule="prefer_is_not_empty" %}
+{% include linter-rule.html rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
 
 The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
