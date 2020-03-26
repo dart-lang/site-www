@@ -44,5 +44,6 @@ Try [dartpad.cn.](https://dartpad.cn)
 If you have any other problems when using DartPad,
 [create an issue on GitHub.][new-issue]
 
+[browser]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
