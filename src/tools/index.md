@@ -67,7 +67,7 @@ thanks to the Dart community.
 <ul class="col2">
 <li>
 <img src="{% asset tools/emacs.png @path %}" alt="Emacs logo">
-<a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
+<a href="/tools/emacs"><b>Emacs</b></a>
 </li>
 <li>
 <img src="{% asset tools/vim.png @path %}" alt="Vim logo">
