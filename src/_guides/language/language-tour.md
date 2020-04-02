@@ -1705,7 +1705,7 @@ function instead.) Here’s how the `==` operator works:
     one is null.
 
 2.  Return the result of the method invocation
-    <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
+    <code><em>x</em>==(<em>y</em>)</code>. (That’s right,
     operators such as `==` are methods that are invoked on their first
     operand. You can even override many operators, including `==`, as
     you’ll see in
