@@ -31,6 +31,12 @@ After enabling dart module (and flags of your choice, see [flags in
 README][dart-flags]), refresh your Doom by `doom refresh`
 command.
 
+{% comment %}
+
+Add a Spacemacs config that has all above + hooks and stuff.
+
+{% endcomment %}
+
 [dart-mode]: https://github.com/bradyt/dart-mode
 [dart-snippets]: https://github.com/MYDavoodeh/dart-snippets
 [doom-emacs]: https://github.com/hlissner/doom-emacs
