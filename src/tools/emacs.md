@@ -24,6 +24,9 @@ Add a vanilla Emacs config that has all above + hooks and stuff.
 
 {% endcomment %}
   
+[Doom Emacs][doom-emacs] is a popular Doom configuration framework that has
+these modes pre-setup.
+
 To enable and configure all above in [Doom Emacs][doom-emacs], you 
 need to enable `:lang dart` in your `init.el` file in your `$DOOMDIR`
 directory, which by default is in `~/.doom.d`.
