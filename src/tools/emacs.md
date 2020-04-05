@@ -12,8 +12,11 @@ All the steps are identical for enabling Flutter since
 
 * [Dart-Mode][dart-mode] is the main mode for development.
 * [Dart-Snippets][dart-snippets] enables [Visual Studio Code](/tools/vs-code)
-  like snippets and more.
-* [LSP-Mode][lsp-mode] adds IDE-like features to Dart mode.
+  like snippets and more. Snippets like `if` that expand to structured code upon
+  pressing shift.
+* [LSP-Mode][lsp-mode] adds IDE-like features to Dart mode. Features like
+  helpers, auto-complete, error listing and other typical feature that you
+  expect from an IDE. (Requires SDK).
 
 {% comment %}
 
