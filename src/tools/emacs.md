@@ -21,11 +21,11 @@ Add a vanilla Emacs config that has all above + hooks and stuff.
 
 {% endcomment %}
   
-To enable and configure all above in [Doom Emacs][doom-emacs], you simply
+To enable and configure all above in [Doom Emacs][doom-emacs], you 
 need to enable `:lang dart` in your `init.el` file in your `$DOOMDIR`
 directory, which by default is in `~/.doom.d`.
 After enabling dart module (and flags of your choice, see [flags in
-README][dart-flags]), you simply need to refresh your Doom by `doom refresh`
+README][dart-flags]), refresh your Doom by `doom refresh`
 command.
 
 [dart-mode]: https://github.com/bradyt/dart-mode
