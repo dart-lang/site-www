@@ -490,7 +490,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   width="100%">
 </iframe>
 
-{{site.alert.info}}
+{{site.alert.note}}
   If your code passes the tests, you can ignore
   [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
 {{site.alert.end}}
