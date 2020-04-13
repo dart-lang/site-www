@@ -75,8 +75,8 @@ More information: [Get started: web apps](/tutorials/web/get-started)
 
 ### Lightning fast developer workflow (Dart dev compiler)
 
-The Dart dev compiler (dartdevc) is a Dart-to-JavaScript compiler
-that's optimized for quick turnaround. Instead of using dartdevc directly,
+The Dart dev compiler (`dartdevc`) is a Dart-to-JavaScript compiler
+that's optimized for quick turnaround. Instead of using `dartdevc` directly,
 you use it with `webdev`, a tool that supports core developer tasks such as
 running, debugging, and building.
 
