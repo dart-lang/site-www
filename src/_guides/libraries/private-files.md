@@ -25,7 +25,7 @@ created by pub:
 .dart_tool/
 .packages
 build/
-pubspec.lock  // Except for application packages
+pubspec.lock  # Except for application packages
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
@@ -48,11 +48,14 @@ any of the following files,
 consider putting them in a global ignore file:
 
 {% prettify none tag=pre+code %}
-*.iml         // IntelliJ
-*.ipr         // IntelliJ
-*.iws         // IntelliJ
-.idea/        // IntelliJ
-.DS_Store     // Mac
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Mac
+.DS_Store
 {% endprettify %}
 
 For more details, read on.
