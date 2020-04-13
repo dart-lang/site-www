@@ -1,6 +1,6 @@
 ---
 title: pub upgrade
-description: Use pub upgrade to get the latest versions of all dependencies used by your Dart application.
+description: Use pub upgrade to get the latest versions of all dependencies used by your Dart app.
 ---
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
