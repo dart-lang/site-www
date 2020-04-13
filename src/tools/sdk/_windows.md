@@ -1,13 +1,7 @@
-Choose one of these options:
-
-* [Install using Chocolatey](#install-using-chocolatey)
-* [Install using a setup wizard](#install-using-a-setup-wizard)
-
-#### Install using Chocolatey
+You can install the Dart SDK using [Chocolatey.][Chocolatey]
 
 {% if site.data.pkg-vers.SDK.channel == 'dev' %}
-To use [Chocolatey][] to install a **dev** release of the Dart SDK, run this
-command:
+To install a **dev** release of the Dart SDK, run this command:
 
 ```terminal
 C:\> choco install dart-sdk --pre
@@ -26,8 +20,7 @@ To **upgrade** the dev release of the Dart SDK, run this command:
 C:\> choco upgrade dart-sdk --pre
 ```
 {% else %}
-To use [Chocolatey][] to install a **stable** release of the Dart SDK, run this
-command:
+To install a **stable** release of the Dart SDK, run this command:
 
 ```terminal
 C:\> choco install dart-sdk
@@ -47,16 +40,5 @@ C:\> choco upgrade dart-sdk
 ```
 {% endif %}
 
-#### Install using a setup wizard
-
-Alternatively, use the community-supported
-<a href="https://www.gekorm.com/dart-windows"
-  target="_blank" rel="noopener">Dart SDK installer for Windows.</a>
-You can use the wizard to install **stable** or
-**dev** versions of the Dart SDK.
-
-![Windows Dart Setup Wizard][Windows installer img]{:.text-center width="250"}
-
 
 [Chocolatey]: https://chocolatey.org
-[Windows installer img]: {% asset shared/dart/installer-screenshot-no.png @path %}
