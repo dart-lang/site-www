@@ -56,11 +56,12 @@ $ dart --observe main.dart
 Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
 ```
 
-**Note the "listening" URL.**
-You'll need this URL in the next step.
+
 
 {{site.alert.important}}
-  This URL contains a security token and
+  Write down or note the "listening" URL.
+  You'll need this URL in the next step.
+  It contains a security token and
   is different for each run of your app.
   If you stop your app and rerun it,
   then you need to connect to DevTools with the new "listening" URL.
