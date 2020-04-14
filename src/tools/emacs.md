@@ -17,13 +17,8 @@ All the steps are identical for enabling Flutter since
 * [LSP-Mode][lsp-mode] adds IDE-like features to Dart mode. Features like
   helpers, auto-complete, error listing and other typical feature that you
   expect from an IDE. (Requires SDK).
-
-{% comment %}
-
-Add a vanilla Emacs config that has all above + hooks and stuff.
-
-{% endcomment %}
   
+## Doom Emacs
 [Doom Emacs][doom-emacs] is a popular Doom configuration framework that has
 these modes pre-setup.
 
@@ -36,9 +31,80 @@ command.
 
 {% comment %}
 
-Add a Spacemacs config that has all above + hooks and stuff.
+*Add more details on Vanilla Emacs. More specific.*
 
 {% endcomment %}
+
+## Vanilla Emacs
+
+Unless you want to build the packages from the source, you must use [MELPA][melpa] and
+GNU to install the packages.
+
+In detail instructions are addressed in each repository. A summary is as below.
+
+* Make or find your [Init File](https://www.emacswiki.org/emacs/InitFile)
+  (Default: `~/.emacs.d/init.el`).
+
+* Add and enable MELPA and GNU
+
+  To enable MELPA and GNU you just need to paste the code below in your init
+  file.
+
+  ```lisp
+  (require 'package)
+  (setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+  (package-initialize)
+  ```
+
+* Once MELPA is added you can append the code below to get all the packages installed.
+  Or you can (`Alt-x`) `M-x package-list-packages` to install your packages of choice manually.
+
+  ```lisp
+  (setq package-list
+      '(dart-mode
+        lsp-mode
+        yasnippet
+        flutter))
+
+  (unless package-archive-contents
+    (package-refresh-contents))
+
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (package-install package)))
+
+  (add-to-list 'load-path "~/.emacs.d/plugins/dart-snippets")
+  (require 'dart-snippets)
+  ```
+
+* At last just clone [Dart-Snippets][dart-snippets] to your
+  `~/.emacs/plugins/dart-snippets` folder.
+
+  ```shell
+  mkdir -p '~/.emacs.d/plugins'
+  cd '~/.emacs.d/plugins'
+  git clone https://github.com/MYDavoodeh/dart-snippets
+  ```
+
+{{site.alert.warning}} In order to get the Flutter.el to work correctly,
+you need `flutter` in your PATH and preferably have Flutter installed
+in `~/.flutter/` or have `~/.flutter/` linked to your installation folder.
+{{site.alert.end}}
+
+{% comment %}
+
+## Spacemacs
+
+Add a Spacemacs config that has all above + hooks and stuff.
+
+# Configuration
+
+Go thro common `def-cutoms` if ever needed.
+
+{% endcomment %}
+
 
 [dart-mode]: https://github.com/bradyt/dart-mode
 [dart-snippets]: https://github.com/MYDavoodeh/dart-snippets
@@ -46,3 +112,4 @@ Add a Spacemacs config that has all above + hooks and stuff.
 [dart-flags]: https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/dart/README.org#module-flags
 [lsp-mode]: https://github.com/emacs-lsp/lsp-mode
 [flutter-mode]: https://github.com/amake/flutter.el
+[melpa]: http://melpa.org/
