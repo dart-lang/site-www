@@ -18,6 +18,12 @@ All the steps are identical for enabling Flutter since
   helpers, auto-complete, error listing and other typical feature that you
   expect from an IDE. (Requires SDK).
   
+{{site.alert.note}} [Yasnippet-Snippets][yas-snippets] is a general snippet
+package containing a limited collection of the most common snippets.
+It is available on MELPA and can be an alternative to
+[Dart-Snippets][dart-snippets] if you prefer to have all your packages installed
+from MELPA. {{site.alert.end}}
+
 ## Doom Emacs
 [Doom Emacs][doom-emacs] is a popular Doom configuration framework that has
 these modes pre-setup.
@@ -66,6 +72,7 @@ In detail instructions are addressed in each repository. A summary is as below.
       '(dart-mode
         lsp-mode
         yasnippet
+        ;; yasnippet-snippets
         flutter))
 
   (unless package-archive-contents
@@ -113,3 +120,4 @@ Go thro common `def-cutoms` if ever needed.
 [lsp-mode]: https://github.com/emacs-lsp/lsp-mode
 [flutter-mode]: https://github.com/amake/flutter.el
 [melpa]: http://melpa.org/
+[yas-snippets]: https://github.com/AndreaCrotti/yasnippet-snippets
