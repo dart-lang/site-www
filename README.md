@@ -256,7 +256,7 @@ See the [Troubleshooting wiki page].
 [first-timers]: https://www.firsttimersonly.com/
 [GNU diffutils]: https://www.gnu.org/software/diffutils
 [Jekyll]: https://jekyllrb.com/
-[nvm]: https://github.com/creationix/nvm#installation
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
