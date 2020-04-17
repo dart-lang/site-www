@@ -16,7 +16,9 @@ All the steps are identical for enabling Flutter since
   pressing the tab key.
 * [LSP-Mode][lsp-mode] adds IDE-like features to Dart mode. Features like
   helpers, auto-complete, error listing and other typical feature that you
-  expect from an IDE. (Requires SDK).
+  expect from an IDE (Requires SDK).
+  In the setup below, this is replaced with a minimum [LSP-Dart][lsp-dart] which
+  only adds LSP support for Dart language.
   
 {{site.alert.note}} [Yasnippet-Snippets][yas-snippets] is a general snippet
 package containing a limited collection of the most common snippets.
@@ -70,7 +72,7 @@ In detail instructions are addressed in each repository. A summary is as below.
   ```lisp
   (setq package-list
       '(dart-mode
-        lsp-mode
+        lsp-dart
         yasnippet
         ;; yasnippet-snippets
         flutter))
@@ -118,6 +120,7 @@ Go thro common `def-cutoms` if ever needed.
 [doom-emacs]: https://github.com/hlissner/doom-emacs
 [dart-flags]: https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/dart/README.org#module-flags
 [lsp-mode]: https://github.com/emacs-lsp/lsp-mode
+[lsp-dart]: https://github.com/emacs-lsp/lsp-dart
 [flutter-mode]: https://github.com/amake/flutter.el
 [melpa]: http://melpa.org/
 [yas-snippets]: https://github.com/AndreaCrotti/yasnippet-snippets
