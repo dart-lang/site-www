@@ -26,6 +26,13 @@ It is available on MELPA and can be an alternative to
 [Dart-Snippets][dart-snippets] if you prefer to have all your packages installed
 from MELPA. {{site.alert.end}}
 
+There are additional packages to add more conventional functionality to LSP and
+Emacs. These packages (and more) come pre-installed in [Doom Emacs][doom-emacs]
+but in bare Emacs you must install them. Further instructions in:
+
+* [LSP-UI](https://github.com/emacs-lsp/lsp-ui)
+* [company-capf](https://github.com/company-mode/company-mode/blob/master/company-capf.el)
+
 ## Doom Emacs
 [Doom Emacs][doom-emacs] is a popular Doom configuration framework that has
 these modes pre-setup.
