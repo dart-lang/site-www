@@ -121,6 +121,21 @@ Go thro common `def-cutoms` if ever needed.
 
 {% endcomment %}
 
+# Known issues
+
+## Slow auto-completion
+
+This problem may happen due to large index of Company.
+The best temporary solution for this, is to disable Company and only wake it up
+when you require it.
+
+To do so, append the code below to your `init.el` or `doom.d/config.el` in case of
+Doom Emacs.
+
+```lisp
+(setq company-idle-delay nil) ; Disable Company-Auto-Completion
+```
+
 
 [dart-mode]: https://github.com/bradyt/dart-mode
 [dart-snippets]: https://github.com/MYDavoodeh/dart-snippets
