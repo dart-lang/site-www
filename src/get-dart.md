@@ -19,10 +19,11 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
 As the following instructions show,
 you can use a package manager
-to easily install and update the Dart SDK.
+to easily install and update a stable channel Dart SDK.
 Alternatively, you can
 [build the SDK from source][] or
-[download the SDK as a zip file](/tools/sdk/archive).
+[download the SDK as a zip file](/tools/sdk/archive)
+for [any release channel](#release-channels).
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
@@ -47,7 +48,7 @@ so it's easy to find (but not more tempting than package managers).
 {% include_relative tools/sdk/_mac.md %}
 </div>
 
-## About release channels and version strings
+## About release channels and version strings {#release-channels}
 
 The Dart SDK has three release channels:
 
@@ -79,9 +80,10 @@ the patch version.
 hyphen follows the stable version scheme, `a` and `b` after the hyphen is the
 pre-release and pre-release patch versions, and `beta` or `dev` is the channel.
 
-You can get stable, beta, and dev channel releases using
+You can get stable channel releases using
 the [instructions above](#install), or you can
-[download the SDK as a zip file](/tools/sdk/archive).
+get stable, beta, or dev channel releases by
+[downloading the SDK as a zip file](/tools/sdk/archive).
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [Dart 2]: /dart-2

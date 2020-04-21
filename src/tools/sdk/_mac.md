@@ -4,19 +4,6 @@
 $ brew tap dart-lang/dart
 $ brew install dart
 ```
-
-To install a **beta channel** release, use the `dart-beta` channel:
-
-```terminal
-$ brew install dart-beta
-```
-
-To install a **dev channel** release, use `--devel`:
-
-```terminal
-$ brew install dart -- --devel
-```
-
 {{site.alert.important}}
   Make sure the **Homebrew `bin` directory is in your `PATH`**. Setting up the
   path correctly makes it easier to use Dart SDK commands such as `dart` and
@@ -31,20 +18,6 @@ To upgrade when a new release of Dart is available run:
 ```terminal
 $ brew upgrade dart
 ```
-To install a stable channel release when a dev release is currently active,
-run:
-
-```terminal
-$ brew unlink dart
-$ brew install dart
-```
-
-To upgrade to a dev channel release when a stable release is
-currently active, run:
-
-```terminal
-$ brew upgrade --force dart -- --devel
-```
 
 ### Switch release
 
@@ -52,7 +25,7 @@ To switch between locally installed dart releases run
 `brew switch dart <version>`. Examples:
 
 ```terminal
-$ brew switch dart 1.24.3
+$ brew switch dart 2.
 $ brew switch dart 2.1.0
 ```
 

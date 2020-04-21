@@ -22,29 +22,10 @@ $ sudo apt-get update
 $ sudo apt-get install dart
 ```
 
-Or, to install the **beta** channel release of the Dart SDK, run the one-time
-setup commands followed by:
-
-```terminal
- sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_testing.list > /etc/apt/sources.list.d/dart_testing.list'
- sudo apt-get update
- sudo apt-get install dart
-```
-
-Or, to install the **dev** channel release of the Dart SDK, run the one-time
-setup commands followed by:
-
-```terminal
-$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
-$ sudo apt-get update
-$ sudo apt-get install dart
-```
 #### Install a Debian package
 
-Alternatively, download Dart SDK as Debian package in the `.deb` package format.
-
-- [Stable channel](#){:.debian-link-stable}
-- [Dev channel](#){:.debian-link-dev}
+Alternatively, download Dart SDK [as Debian package](#){:.debian-link-stable}
+in the `.deb` package format. 
 
 #### Modify PATH for access to all Dart binaries
 
