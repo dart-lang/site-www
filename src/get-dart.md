@@ -49,28 +49,37 @@ so it's easy to find (but not more tempting than package managers).
 
 ## About release channels and version strings
 
-The Dart SDK has two release channels:
+The Dart SDK has three release channels:
 
-* **stable** channel: **stable releases**,
-  updated no more frequently than every 6 weeks;
+* **stable** channel: **stable releases**, updated roughly every three months;
   currently `[calculating]`{:.editor-build-rev-stable}.
-* **dev** channel: **prereleases**, usually updated 1/week;
+  
+  Stable releases are suitable for production use.
+  
+* **beta** channel: **candidate releases**, usually updated every month;
+  currently `[calculating]`{:.editor-build-rev-beta}.
+  
+  Beta channel builds are candidate builds for the stable channel. We recommend
+  testing, but not releasing, your apps against beta to preview new features, or
+  test compatibility with future releases.
+  
+* **dev** channel: **pre-releases**, usually updated every;
   currently `[calculating]`{:.editor-build-rev-dev}.
+  
+  Dev channel releases are the most current with latest changes, may be broken,
+  are unsupported, and may contain unvetted breaking changes.
 
-{{site.alert.warning}}
-  To give you early access to new features and fixes,
-  dev channel releases are not as heavily tested as the stable release.
-{{site.alert.end}}
+**Stable** channel releases of the Dart SDK have `x.y.z` version strings like
+`1.24.3` and `2.1.0`. They consist of dot-separated integers, with no hyphens or
+letters, where `x` is the major version, `y` is the minor version, and `z` is
+the patch version.
 
-**Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
-They consist of dot-separated integers, with no hyphens or letters.
+**Beta** and **Dev** channel releases of the Dart SDK (non-stable releases) have
+`x.y.z-a.b.<beta|dev>` versions like `2.8.0-20.11.beta`. The part before the
+hyphen follows the stable version scheme, `a` and `b` after the hyphen is the
+pre-release and pre-release patch versions, and `beta` or `dev` is the channel.
 
-**Dev** channel releases of the Dart SDK (prereleases)
-have additional characters, starting with a hyphen (`-`).
-For example, Dart 2 prereleases have version numbers starting with
-`2.0.0-dev` such as `2.0.0-dev.69.5`.
-
-You can get stable and dev channel releases using
+You can get stable, beta, and dev channel releases using
 the [instructions above](#install), or you can
 [download the SDK as a zip file](/tools/sdk/archive).
 
