@@ -32,7 +32,8 @@ Stable channel builds are tested and approved for production use.
 
 Beta channel builds are preview builds for the stable channel.
 We recommend testing, but not releasing, your apps against beta
-to preview new features, or test compatibility with future releases.
+to preview new features or test compatibility with future releases.
+Beta channel builds are not suitable for production use.
 
 {% include_relative _archives_table.html channel="beta" %}
 
