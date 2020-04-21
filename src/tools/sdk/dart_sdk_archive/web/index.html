@@ -48,6 +48,39 @@
     </table>
     <form class="form-inline">
         <div class="form-group select">
+            <label for="beta-versions">Version:</label>
+            <select id="beta-versions"></select>
+        </div>
+        <div class="form-group select">
+            <label for="beta-os">OS:</label>
+            <select id="beta-os">
+                <option value="all">All</option>
+                <option value="macos" id="beta-macos" class="macos-option">Mac</option>
+                <option value="linux" id="beta-linux" class="linux-option">Linux</option>
+                <option value="windows" id="beta-windows" class="windows-option">Windows</option>
+            </select>
+        </div>
+    </form>
+    <table id="beta" class="table">
+        <thead>
+        <tr>
+            <th>Version</th>
+            <th>OS</th>
+            <th>Architecture</th>
+            <th>Downloads</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="template">
+            <td>0.0.0-0.0.beta (rev 00000)</td>
+            <td>Windows</td>
+            <td>64-width</td>
+            <td>JSON-formatted API documentation</td>
+        </tr>
+        </tbody>
+    </table>
+    <form class="form-inline">
+        <div class="form-group select">
             <label for="dev-versions">Version:</label>
             <select id="dev-versions"></select>
         </div>
@@ -72,7 +105,7 @@
         </thead>
         <tbody>
         <tr class="template">
-            <td>0.0.0-dev.0.0 (rev 00000)</td>
+            <td>0.0.0-0.0.dev (rev 00000)</td>
             <td>Windows</td>
             <td>64-width</td>
             <td>JSON-formatted API documentation</td>
