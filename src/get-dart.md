@@ -29,9 +29,8 @@ As the following instructions show,
 you can use a package manager
 to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][] or
-[download the SDK as a zip file](/tools/sdk/archive)
-for [any release channel](#release-channels).
+[build the SDK from source][] or install from [any release channel](#release-channels) by
+[downloading the SDK as a zip file](/tools/sdk/archive).
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
