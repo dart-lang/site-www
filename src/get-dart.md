@@ -8,13 +8,13 @@ js:
 
 The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
-**To use Flutter to develop apps for any platform** —
+**To develop Flutter apps for any platform** —
 including web and mobile apps —
 then **instead of installing the Dart SDK,
 [install Flutter.][flutter]**
 
 {{site.alert.tip}}
-  If you want to create both Flutter and command-line or server apps,
+  If you want to create _both_ Flutter and command-line or server apps,
   install both Flutter and the Dart SDK.
 {{site.alert.end}}
 
