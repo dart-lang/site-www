@@ -9,11 +9,12 @@ Future runApp() async {
   var client = DartDownloads(client: BrowserClient());
 
   var stableSelector = VersionSelector(
-      'stable',
-      client,
-      querySelector('#stable'),
-      querySelector('#stable-versions'),
-      querySelector('#stable-os'));
+    'stable',
+    client,
+    querySelector('#stable'),
+    querySelector('#stable-versions'),
+    querySelector('#stable-os'),
+  );
 
   var betaSelector = VersionSelector(
     'beta',

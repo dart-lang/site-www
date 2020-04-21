@@ -1,5 +1,6 @@
 var displayVersion = function() {
   fetchEditorVersion('stable');
+  fetchEditorVersion('beta');
   fetchEditorVersion('dev');
 };
 

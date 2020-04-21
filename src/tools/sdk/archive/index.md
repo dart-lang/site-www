@@ -50,7 +50,7 @@ You can find the zip files at predictable URLs using the
 following pattern:
 
 {% prettify none tag=pre+code %}
-https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/release/<[!release!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
+https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/release/<[!version!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 {% endprettify %}
 
 Examples:
