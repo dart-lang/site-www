@@ -83,10 +83,10 @@ The Dart SDK has three release channels:
 letters, where `x` is the major version, `y` is the minor version, and `z` is
 the patch version.
 
-**Beta** and **Dev** channel releases of the Dart SDK (non-stable releases) have
+**Beta** and **dev** channel releases of the Dart SDK (non-stable releases) have
 `x.y.z-a.b.<beta|dev>` versions like `2.8.0-20.11.beta`. The part before the
-hyphen follows the stable version scheme, `a` and `b` after the hyphen is the
-pre-release and pre-release patch versions, and `beta` or `dev` is the channel.
+hyphen follows the stable version scheme, `a` and `b` after the hyphen are the
+prerelease and prerelease patch versions, and `beta` or `dev` is the channel.
 
 You can get stable channel releases using
 the [instructions above](#install), or you can
