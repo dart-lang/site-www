@@ -10,6 +10,7 @@ class SvnVersionGenerator {
     var versionInfos = <String, VersionInfo>{};
     await Future.wait([
       _loadVersionInfo(versionInfos, 'stable'),
+      _loadVersionInfo(versionInfos, 'beta'),
       _loadVersionInfo(versionInfos, 'dev'),
     ]);
     var result = <String, String>{};

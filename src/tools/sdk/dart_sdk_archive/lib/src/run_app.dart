@@ -15,6 +15,14 @@ Future runApp() async {
       querySelector('#stable-versions'),
       querySelector('#stable-os'));
 
+  var betaSelector = VersionSelector(
+    'beta',
+    client,
+    querySelector('#beta'),
+    querySelector('#beta-versions'),
+    querySelector('#beta-os'),
+  );
+
   var devSelector = VersionSelector(
     'dev',
     client,
@@ -24,5 +32,6 @@ Future runApp() async {
   );
 
   unawaited(stableSelector.init());
+  unawaited(betaSelector.init());
   unawaited(devSelector.init());
 }
