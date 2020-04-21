@@ -1,21 +1,14 @@
 [Install Homebrew](https://brew.sh), and then run:
 
-{% if site.data.pkg-vers.SDK.channel == 'dev' %}
-```terminal
-$ brew tap dart-lang/dart
-$ brew install dart -- --devel
-```
-
-To install a **stable channel** release, don't use `--devel`:
-
-```terminal
-$ brew install dart
-```
-
-{% else %}
 ```terminal
 $ brew tap dart-lang/dart
 $ brew install dart
+```
+
+To install a **beta channel** release, use the `dart-beta` channel:
+
+```terminal
+$ brew install dart-beta
 ```
 
 To install a **dev channel** release, use `--devel`:
@@ -23,7 +16,6 @@ To install a **dev channel** release, use `--devel`:
 ```terminal
 $ brew install dart -- --devel
 ```
-{% endif %}
 
 {{site.alert.important}}
   Make sure the **Homebrew `bin` directory is in your `PATH`**. Setting up the
