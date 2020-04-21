@@ -9,11 +9,20 @@ Future runApp() async {
   var client = DartDownloads(client: BrowserClient());
 
   var stableSelector = VersionSelector(
-      'stable',
-      client,
-      querySelector('#stable'),
-      querySelector('#stable-versions'),
-      querySelector('#stable-os'));
+    'stable',
+    client,
+    querySelector('#stable'),
+    querySelector('#stable-versions'),
+    querySelector('#stable-os'),
+  );
+
+  var betaSelector = VersionSelector(
+    'beta',
+    client,
+    querySelector('#beta'),
+    querySelector('#beta-versions'),
+    querySelector('#beta-os'),
+  );
 
   var devSelector = VersionSelector(
     'dev',
@@ -24,5 +33,6 @@ Future runApp() async {
   );
 
   unawaited(stableSelector.init());
+  unawaited(betaSelector.init());
   unawaited(devSelector.init());
 }

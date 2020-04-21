@@ -143,21 +143,22 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
-| [abstract][]{{bii}}   | [dynamic][]{{bii}}    | [implements][]{{bii}} | [show][]{{ckw}}   |
-| [as][]{{bii}}         | [else][]              | [import][]{{bii}}     | [static][]{{bii}} |
-| [assert][]            | [enum][]              | [in][]                | [super][]         |
-| [async][]{{ckw}}      | [export][]{{bii}}     | [interface][]{{bii}}  | [switch][]        |
-| [await][]{{lrw}}      | [extends][]           | [is][]                | [sync][]{{ckw}}   |
-| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
-| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
-| [catch][]             | [false][]             | [new][]               | [true][]          |
-| [class][]             | [final][]             | [null][]              | [try][]           |
-| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
-| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
-| [default][]           | [get][]{{bii}}        | [rethrow][]           | [while][]         |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [return][]            | [with][]          |
-| [do][]                | [if][]                | [set][]{{bii}}        | [yield][]{{lrw}}  |
+| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
+| [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
+| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
+| [async][]{{ckw}}      | [extends][]           | [is][]                | [this][]          |
+| [await][]{{lrw}}      | [extension][]{{ckw}}  | [library][]{{bii}}    | [throw][]         |
+| [break][]             | [external][]{{bii}}   | [mixin][]{{bii}}      | [true][]          |
+| [case][]              | [factory][]{{bii}}    | [new][]               | [try][]           |
+| [catch][]             | [false][]             | [null][]              | [typedef][]{{bii}}|
+| [class][]             | [final][]             | [on][]{{ckw}}         | [var][]           |
+| [const][]             | [finally][]           | [operator][]{{bii}}   | [void][]          |
+| [continue][]          | [for][]               | [part][]{{bii}}       | [while][]         |
+| [covariant][]{{bii}}  | [Function][]{{bii}}   | [rethrow][]           | [with][]          |
+| [default][]           | [get][]{{bii}}        | [return][]            | [yield][]{{lrw}}  |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [set][]{{bii}}        |                   |
+| [do][]                | [if][]                | [show][]{{ckw}}       |                   |
+| [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
 {:.table .table-striped .nowrap}
 
 [abstract]: #abstract-classes
@@ -184,6 +185,7 @@ The following table lists the words that the Dart language treats specially.
 [enum]: #enumerated-types
 [export]: /guides/libraries/create-library-packages
 [extends]: #extending-a-class
+[extension]: #extension-methods
 [external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
 [factory]: #factory-constructors
 [false]: #booleans

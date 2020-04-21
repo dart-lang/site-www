@@ -26,8 +26,10 @@
     <tr class="template">
       {% if include.channel == 'stable' %}
       <td>0.0.0 (rev 00000)</td>
+      {% else if include.channel == 'beta' %}
+      <td>0.0.0-0.0.beta (rev 00000)</td>
       {% else %}
-      <td>0.0.0-dev.0.0 (rev 00000)</td>
+      <td>0.0.0-0.0.dev (rev 00000)</td>
       {% endif %}
       <td>Windows</td>
       <td>64-width</td>
