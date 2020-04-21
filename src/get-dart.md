@@ -56,14 +56,14 @@ The Dart SDK has three release channels:
   
   Stable releases are suitable for production use.
   
-* **beta** channel: **candidate releases**, usually updated every month;
+* **beta** channel: **preview releases**, usually updated every month;
   currently `[calculating]`{:.editor-build-rev-beta}.
   
-  Beta channel builds are candidate builds for the stable channel. We recommend
+  Beta channel builds are preview builds for the stable channel. We recommend
   testing, but not releasing, your apps against beta to preview new features, or
   test compatibility with future releases.
   
-* **dev** channel: **pre-releases**, usually updated every;
+* **dev** channel: **pre-releases**, usually updated twice a week;
   currently `[calculating]`{:.editor-build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
