@@ -104,16 +104,7 @@ and looks it up within the `.packages` file for
 your app.
 
 You can also use this style to import libraries from within your own package.
-Consider the following pubspec file, which declares a dependency on
-the (fictional) `transmogrify` package:
-
-{% prettify yaml tag=pre+code %}
-name: my_app
-dependencies:
-  transmogrify:
-{% endprettify %}
-
-Let's say that your package is laid out as follows:
+Let's say that the `transmogrify` package is laid out as follows:
 
 {% prettify none tag=pre+code %}
 transmogrify/
@@ -125,22 +116,12 @@ transmogrify/
       parser_test.dart
 {% endprettify %}
 
-The `parser_test` file *could* import `parser.dart` like this:
-
-{% prettify dart tag=pre+code %}
-import '../../lib/parser.dart';
-{% endprettify %}
-
-But that's a fragile relative path. If `parser_test.dart` ever moves
-up or down a directory, that path breaks.
-Instead, you can do as follows:
+The `parser_test.dart` file can import `parser.dart` like this:
 
 {% prettify dart tag=pre+code %}
 import 'package:transmogrify/parser.dart';
 {% endprettify %}
 
-This way, the import can always get to `parser.dart` regardless of where the
-importing file is.
 
 ## Upgrading a dependency
 
