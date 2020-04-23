@@ -32,7 +32,7 @@ update the dependencies of a package that you own
    the directory that contains your package's
   [`pubspec.yaml`](/tools/pub/pubspec) file.
 1. **Run `pub outdated`**
-   to identify which package dependencies are out of date.
+   to identify which package dependencies are out-of-date.
    Note the affected packages,
    so that later you can test the behavior of code that uses them.
 1. Follow the recommendations of `pub outdated` for updating the packages.
@@ -68,9 +68,9 @@ To update these dependencies, edit pubspec.yaml.
 Link to it so it's reproduceable.
 Update the text to match.]</span>
 
-The preceding output shows that all regular dependencies are up to date,
-but one [dev dependency][] (`build_web_compilers`) is out of date.
-Several [transitive dependencies][] are also out of date.
+The preceding output shows that all regular dependencies are up-to-date,
+but one [dev dependency][] (`build_web_compilers`) is out-of-date.
+Several [transitive dependencies][] are also out-of-date.
 For details on what each column shows, see the
 [output columns](#output-columns) section of this page.
 
@@ -116,14 +116,12 @@ googleapis  0.53.0   0.53.0      0.53.0      0.54.0
 $
 ```
 
-<span style="color:red">[PENDING: file bug about "up-to-date" (shouldn't be hyphenated unless it comes before a noun)]
-
 {{site.alert.important}}
   Test your code to verify that it still works as expected
   after updating the packages.
 {{site.alert.end}}
 
-If any transitive dependencies are out of date,
+If any transitive dependencies are out-of-date,
 ask the package maintainers to update their code.
 To find the cause of an out-of-date dependency,
 you can run [`pub deps`][] and
