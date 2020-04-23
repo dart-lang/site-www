@@ -7,7 +7,8 @@ description: Learn more about pub, Dart's tool for managing packages.
 The Dart ecosystem uses _packages_ to manage shared software
 such as libraries and tools.
 To get Dart packages, you use the **pub package manager**.
-You can find publicly available packages on the [**pub.dev site**,]({{site.pub}})
+You can find publicly available packages on the
+[**pub.dev site**,]({{site.pub}})
 or you can load packages from the local file system or elsewhere,
 such as Git repositories.
 Wherever your packages come from, pub manages version dependencies,
@@ -68,7 +69,7 @@ $ pub get
 
 This process is called _getting the dependencies_.
 
-The `pub get` command determines which packages your app depends on,
+The [`pub get`][] command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -161,13 +162,13 @@ Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
 When you're ready to upgrade your dependencies to the latest versions,
-use pub upgrade:
+use the [`pub upgrade`][] command:
 
 {% prettify sh tag=pre+code %}
 $ pub upgrade
 {% endprettify %}
 
-That command tells pub to regenerate the lockfile, using the newest
+The `pub upgrade` command tells pub to regenerate the lockfile, using the newest
 available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
@@ -178,6 +179,12 @@ $ pub upgrade transmogrify
 
 That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
+
+The [`pub upgrade`][] command can't always upgrade every package
+to its latest version,
+due to version constraints in the pubspec.
+To identify out-of-date packages that require editing the pubspec,
+use [`pub outdated`][].
 
 ## More information
 
@@ -203,15 +210,16 @@ the pub package manager.
 
 The `pub` tool provides the following commands:
 
-* [`pub cache`](/tools/pub/cmd/pub-cache)
-* [`pub deps`](/tools/pub/cmd/pub-deps)
-* [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
-* [`pub get`](/tools/pub/cmd/pub-get)
-* [`pub global`](/tools/pub/cmd/pub-global)
-* [`pub publish`](/tools/pub/cmd/pub-lish)
-* [`pub run`](/tools/pub/cmd/pub-run)
-* [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`pub uploader`](/tools/pub/cmd/pub-uploader)
+* [`pub cache`][]
+* [`pub deps`][]
+* [`pub downgrade`][]
+* [`pub get`][]
+* [`pub global`][]
+* [`pub outdated`][]
+* [`pub publish`][]
+* [`pub run`][]
+* [`pub upgrade`][]
+* [`pub uploader`][]
 
 For an overview of all the `pub` commands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -222,3 +230,13 @@ see the [pub tool documentation](/tools/pub/cmd).
 you might encounter when using pub.
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
+[`pub cache`]: /tools/pub/cmd/pub-cache
+[`pub deps`]: /tools/pub/cmd/pub-deps
+[`pub downgrade`]: /tools/pub/cmd/pub-downgrade
+[`pub get`]: /tools/pub/cmd/pub-get
+[`pub global`]: /tools/pub/cmd/pub-global
+[`pub outdated`]: /tools/pub/cmd/pub-outdated
+[`pub publish`]: /tools/pub/cmd/pub-lish
+[`pub run`]: /tools/pub/cmd/pub-run
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
+[`pub uploader`]: /tools/pub/cmd/pub-uploader

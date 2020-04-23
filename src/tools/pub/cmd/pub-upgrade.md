@@ -14,6 +14,8 @@ Like [`pub get`](/tools/pub/cmd/pub-get),
 The difference is that `pub upgrade` ignores any existing
 [lockfile](/tools/pub/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
+A related command is [`pub outdated`](/tools/pub/cmd/pub-outdated),
+which you can run to find out-of-date dependencies.
 
 Without any additional arguments, `pub upgrade` gets the latest
 versions of all the dependencies listed in the
