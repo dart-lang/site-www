@@ -4,17 +4,17 @@ description: Add other packages to your app. Specify package locations, version 
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].
-A dependency is another package that your package needs in order to work.
+A _dependency_ is another package that your package needs in order to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
-You list only
-[immediate dependencies](/tools/pub/glossary#immediate-dependency)&mdash;the
+You list only _immediate dependencies_ — the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
-<aside class="alert alert-info" markdown="1">
-To see all the dependencies used by a package, use
-[`pub deps`](/tools/pub/cmd/pub-deps).
-</aside>
+This page has detailed information on how to specify dependencies.
+At the end is a list of
+[best practices for package dependencies](#best-practices).
+
+## Overview
 
 For each dependency, you specify the *name* of the package you depend on
 and the *range of versions* of that package that you allow.
@@ -372,8 +372,9 @@ dependency_overrides:
     path: ../transmogrify_patch/
 {% endprettify %}
 
-When you run [`pub get`][], the pubspec's lockfile is updated to reflect the
-new path to your dependency and, whereever transmogrify is used, pub
+When you run [`pub get`][] or [`pub upgrade`][],
+the pubspec's lockfile is updated to reflect the
+new path to your dependency and, wherever transmogrify is used, pub
 uses the local version instead.
 
 You can also use `dependency_overrides` to specify a particular
@@ -431,7 +432,8 @@ Test whenever you update package dependencies
   the API should stay the same
   and your code should run as before — but test to make sure.
   If you modify the pubspec and update to a new major version,
-  then you might encounter breaking changes.
+  then you might encounter breaking changes,
+  so you need to test even more thoroughly.
 
 ---
 
@@ -447,9 +449,9 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 
 [GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
 [pub package manager]: /guides/packages
-[`pub get`]: /tools/pub/cmd/get
-[`pub outdated`]: /tools/pub/cmd/outdated
-[`pub upgrade`]: /tools/pub/cmd/upgrade
+[`pub get`]: /tools/pub/cmd/pub-get
+[`pub outdated`]: /tools/pub/cmd/pub-outdated
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [PubGrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
 [pubsite]: {{site.pub}}
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
