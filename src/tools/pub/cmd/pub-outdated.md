@@ -12,7 +12,8 @@ $ pub outdated [options]
 
 Use `pub outdated` to identify out-of-date [package dependencies][]
 and get advice on how to update them.
-[We recommend][best practices] using the most recent stable package versions,
+[Best practices for dependency management][best practices]
+include using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
 {{site.alert.version-note}}
@@ -73,13 +74,11 @@ Several [transitive dependencies][] are also out of date.
 For details on what each column shows, see the
 [output columns](#output-columns) section of this page.
 
-To fix the dev dependency version,
-the easiest solution is to the change
-[version constraints][constraints]
-of the `build_web_compilers` entry
-in `pubspec.yaml` from `^1.0.0` to `^2.10.0`.
-
-[constraints]: /tools/pub/dependencies#version-constraints
+To fix the dev dependency,
+the easiest solution is to change
+the pubspec's `build_web_compilers` entry to use
+the version in the **Resolvable** column: `2.10.0`.
+Here's the diff for `pubspec.yaml`:
 
 {% comment %}
   [TODO: Improve the formatting of the following diff]
@@ -241,6 +240,7 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 [best practices]: /tools/pub/dependencies#best-practices
 [build_web_compilers changelog.]: {{site.pub-pkg}}/build_web_compilers#changelog
+[constraints]: /tools/pub/dependencies#version-constraints
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [`dependency_overrides`]: /tools/pub/dependencies#dependency-overrides
 [package dependencies]: /tools/pub/dependencies

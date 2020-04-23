@@ -400,11 +400,10 @@ dependency_overrides:
 
 It’s important to actively manage your dependencies and
 ensure that your packages use the freshest versions possible.
-If any of your dependencies are stale,
-then you end up with not only a stale version of that single package,
-but potentially also with stale versions of
-any other package in your dependency graph that
-indirectly depends on that package.
+If any dependency is stale,
+then you might have not only a stale version of that package,
+but also stale versions of other packages in your dependency graph that
+depend on that package.
 These stale versions can have a negative impact on
 the stability, performance, and quality of apps.
 
@@ -463,4 +462,4 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
 [semantic versions]: /tools/pub/versioning#semantic-versions
-[What not to commit: https://dart.dev/guides/libraries/private-files
+[What not to commit]: /guides/libraries/private-files
