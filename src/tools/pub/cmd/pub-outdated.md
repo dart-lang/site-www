@@ -15,32 +15,36 @@ and get advice on how to update them.
 [We recommend][best practices] using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
-Here's an overview of using `pub outdated` to update the dependencies
-of a package (which might be an app):
-
-1. If the package doesn't have a `pubspec.lock` file
-   checked into source control,
-   **run `pub get`** in the top directory of the package.
-1. **Run `pub outdated`**
-   to identify which packages are out of date.
-   Make a note of these packages,
-   so that later you can test the behavior of code that depends on them.
-1. Follow the recommendations of `pub outdated` for updating the packages.
-   Some updates might require only running `pub upgrade`.
-   Others might require updating `pubspec.yaml` before running `pub upgrade`.
-1. **Run `pub outdated`** to confirm that you've updated all the dependencies.
-1. **Test** the package to confirm that it still works as expected.
-
 {{site.alert.version-note}}
   The `pub outdated` command was introduced in Dart 2.8.
 {{site.alert.end}}
 
+## Overview
+
+Here's how you can use `pub outdated` to help you
+update the dependencies of a package that you own
+(whether it's an app or library package):
+
+1. If your package doesn't have a `pubspec.lock` file
+   checked into source control,
+   **run `pub get`** in the top directory of the package —
+   the directory that contains your package's
+  [`pubspec.yaml`](/tools/pub/pubspec) file.
+1. **Run `pub outdated`**
+   to identify which package dependencies are out of date.
+   Note the affected packages,
+   so that later you can test the behavior of code that uses them.
+1. Follow the recommendations of `pub outdated` for updating the packages.
+   Some updates might require only running `pub upgrade`.
+   Others might require updating `pubspec.yaml` before running `pub upgrade`.
+1. **Run `pub outdated`** to confirm that you've updated all the dependencies.
+1. **Test** your package to confirm that it still works as expected.
+
+
 ## Example
 
-Run `pub outdated` in the top directory of your package —
-the directory that contains your package's
-[`pubspec.yaml`](/tools/pub/pubspec) and `pubspec.lock` files.
-Here's an example of running `pub outdated`:
+Here's an example of running `pub outdated` on
+[PENDING: link to source code]:
 
 ```terminal
 $ pub outdated
@@ -70,14 +74,16 @@ For details on what each column shows, see the
 [output columns](#output-columns) section of this page.
 
 To fix the dev dependency version,
-the easiest solution is to change
+the easiest solution is to the change
 [version constraints][constraints]
 of the `build_web_compilers` entry
 in `pubspec.yaml` from `^1.0.0` to `^2.10.0`.
 
 [constraints]: /tools/pub/dependencies#version-constraints
 
-<span style="color:red">[PENDING: Improve the formatting of the following diff]</span>
+{% comment %}
+  [TODO: Improve the formatting of the following diff]
+{% endcomment %}
 
 ```diff
 -  build_web_compilers: ^1.0.0
@@ -85,10 +91,9 @@ in `pubspec.yaml` from `^1.0.0` to `^2.10.0`.
 ```
 
 {{site.alert.tip}}
-  To see what changed in the new version,
-  you can look at the package's changelog,
-  which you can find in the package page on
-  [pub.dev.]({{site.pub}})
+  To see what changed in the new version of a package
+  that's published on [pub.dev,]({{site.pub}})
+  look at the changelog in the package page.
   For an example, see the
   [build_web_compilers changelog.][]
 {{site.alert.end}}
@@ -111,6 +116,7 @@ transitive dependencies
 googleapis  0.53.0   0.53.0      0.53.0      0.54.0  
 $
 ```
+
 <span style="color:red">[PENDING: file bug about "up-to-date" (shouldn't be hyphenated unless it comes before a noun)]
 
 {{site.alert.important}}
@@ -121,24 +127,11 @@ $
 If any transitive dependencies are out of date,
 ask the package maintainers to update their code.
 To find the cause of an out-of-date dependency,
-run [`pub deps`][] and
+you can run [`pub deps`][] and
 search the output for the name of the out-of-date package.
 Then make sure an issue exists for the out-of-date dependency.
-You can find the issue tracker for a package
-by looking at its pub page.
-
-<span style="color:red">
-  [PENDING: What exactly do we want to recommend?
-  Searching for `googleapis` in the `pub deps` output tells me that
-  `sdk_builds 0.2.0-dev` depends on `googleapis 0.53.0.`
-  But although https://pub.dev/packages/sdk_builds exists,
-  I think it's just referring to the Dart SDK.
-  So we can't say everything's a package, can we?]
-</span>
-
-[`pub deps`]: /tools/pub/cmd/pub-deps)
-[`pub get`]: /tools/pub/cmd/pub-get)
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade)
+You can often find the issue tracker for a package
+by looking at the package page on pub.dev.
 
 
 ## Output columns
@@ -189,7 +182,7 @@ Resolvable
   This version corresponds to what you get if
   you set all version constraints in `pubspec.yaml` to `any`
   and then run `pub upgrade`.
-  A value of `-` means that the package is no longer needed.
+  A value of `-` means that the package will no longer be needed.
 
   <span style="color:red">
     [PENDING: Correct?]
@@ -247,8 +240,11 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 
 [best practices]: /tools/pub/dependencies#best-practices
+[build_web_compilers changelog.]: {{site.pub-pkg}}/build_web_compilers#changelog
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [`dependency_overrides`]: /tools/pub/dependencies#dependency-overrides
 [package dependencies]: /tools/pub/dependencies
+[`pub deps`]: /tools/pub/cmd/pub-deps
+[`pub get`]: /tools/pub/cmd/pub-get
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [transitive dependencies]: /tools/pub/glossary#transitive-dependency
-[build_web_compilers changelog.]: {{site.pub-pkg}}/build_web_compilers#changelog
