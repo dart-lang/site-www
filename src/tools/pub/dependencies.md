@@ -435,8 +435,14 @@ Test whenever you update package dependencies
   then you might encounter breaking changes,
   so you need to test even more thoroughly.
 
----
+Don't check in the `pubspec.lock` file for library packages
+: Following the guidance in [What not to commit][],
+  don't check in `pubspec.lock` for library packages.
+  For app packages, you can commit the lock file if
+  it helps you track the dependencies that are used for
+  production or across a team.
 
+---
 
 <aside id="fn:semver" class="footnote" markdown="1">
 
@@ -457,3 +463,4 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
 [semantic versions]: /tools/pub/versioning#semantic-versions
+[What not to commit: https://dart.dev/guides/libraries/private-files

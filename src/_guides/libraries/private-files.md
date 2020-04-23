@@ -102,6 +102,7 @@ similar to Ruby's `Gemfile.lock`.
 
 **For library packages**, do **not** commit the `pubspec.lock` file.
 
-**For application packages**, **do** commit `pubspec.lock`.
-This file is the recommended way for non-shared resources
-such as applications to manage their dependencies.
+**For application packages**, it's up to you whether you
+commit the `pubspec.lock` file.
+Consider checking it in if you want to track the dependencies that
+are used for production or across a team.
