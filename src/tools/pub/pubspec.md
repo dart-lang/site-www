@@ -297,9 +297,9 @@ Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
 <aside class="alert alert-warning" markdown="1">
-  Caret syntax (^) is a compact way to represent version ranges, but **don't use
-  it for the SDK constraint**. **Do include an upper bound for the SDK**
-  (`<3.0.0`, usually) instead. For more information, see the
+  Caret syntax (`^`) is a compact way to represent version ranges, but **don't use
+  it for the SDK constraint.** Instead, **include an upper bound for the SDK**
+  (`<3.0.0`, usually). For more information, see the
   [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
 </aside>
 
