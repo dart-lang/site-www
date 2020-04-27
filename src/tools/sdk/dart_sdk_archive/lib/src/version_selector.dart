@@ -131,7 +131,6 @@ class VersionSelector {
     for (var name in platforms.keys) {
       var platformVariants = platforms[name];
       for (var platformVariant in platformVariants) {
-        print('$name, ${platformVariant.architecture}');
         // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
         if (archiveMap[name] == 'linux') {
           if (platformVariant.architecture == 'ARMv7' &&
@@ -162,7 +161,7 @@ class VersionSelector {
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        var possibleArchives = ['Dart SDK', 'Dartium', 'Debian package'];
+        var possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
         for (var pa in possibleArchives) {
@@ -171,27 +170,6 @@ class VersionSelector {
             // This skips the editor link in those cases
             if (versionInfo.revisionPath == null && pa == 'Dart Editor') {
               continue;
-            }
-
-            if (pa == 'Dartium') {
-              // Dropped all Dartium after 1.24.
-              if (versionInfo.version > Version(1, 24, 0)) {
-                continue;
-              }
-
-              // Dropped Dartium Mac 32-bit in 1.20.
-              if (name == 'Mac') {
-                var is120OrHigher = versionInfo.version > Version(1, 19, 0);
-                // no 32-bit build with >= 1.20
-                if (is120OrHigher && platformVariant.architecture == 'ia32') {
-                  continue;
-                }
-
-                // no 64-bit build with < 1.20
-                if (!is120OrHigher && platformVariant.architecture == 'x64') {
-                  continue;
-                }
-              }
             }
 
             String baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
