@@ -122,13 +122,8 @@ $
 {{site.alert.end}}
 
 If any transitive dependencies are out-of-date,
-ask the package maintainers to update their code.
-To find the cause of an out-of-date dependency,
-you can run [`pub deps`][] and
-search the output for the name of the out-of-date package.
-Then make sure an issue exists for the out-of-date dependency.
-You can often find the issue tracker for a package
-by looking at the package page on pub.dev.
+you can find the cause by running [`pub deps`][] and
+searching the output for the name of the out-of-date package.
 
 
 ## Output columns
@@ -169,25 +164,18 @@ Upgradable
   This is the version that `pub upgrade` resolves to.
   The value is `-` if the value in the **Current** column is `-`.
 
-  <span style="color:red">
-    [PENDING: Is the description of `-` correct?
-    Is there a more helpful way to state it?]
-  </span>
-
 Resolvable
-: The latest version that can be resolved.
+: The latest version that can be resolved,
+  when combined with all other dependencies.
   This version corresponds to what you get if
   you set all version constraints in `pubspec.yaml` to `any`
   and then run `pub upgrade`.
-  A value of `-` means that the package will no longer be needed.
-
-  <span style="color:red">
-    [PENDING: Correct?]
-  </span>
+  A value of `-` means that the package won't be needed.
 
 {{site.alert.important}}
-  We don't recommend using `any` as the constraint,
-  for performance reasons.
+  We don't recommend actually using `any` as the constraint,
+  because then running `pub upgrade` might surprise you by making
+  incompatible version changes.
 {{site.alert.end}}
 
 Latest

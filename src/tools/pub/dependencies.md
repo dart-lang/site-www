@@ -278,7 +278,7 @@ is a series of the following:
 `any`
 : The string `any` allows any version. This is equivalent to an empty
   version constraint, but is more explicit. **Although `any` is allowed,
-  we don't recommend it for performance reasons.**
+  we don't recommend it.**
 
 `1.2.3`
 : A concrete version number pins the dependency to only allow that
