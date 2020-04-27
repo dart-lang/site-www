@@ -42,14 +42,19 @@ Map<String, String> archiveMap = {
   'ARMv7': 'arm',
   'ARMv8 (ARM64)': 'arm64',
   'Dart SDK': 'dartsdk',
-  'Dartium': 'dartium'
+  'Dartium': 'dartium',
 };
 
-Map<String, String> directoryMap = {'Dart SDK': 'sdk', 'Dartium': 'dartium'};
+Map<String, String> directoryMap = {
+  'Dart SDK': 'sdk',
+  'Dartium': 'dartium',
+  'Debian package': 'linux_packages',
+};
 
 Map<String, String> suffixMap = {
   'Dart SDK': '-release.zip',
-  'Dartium': '-release.zip'
+  'Dartium': '-release.zip',
+  'Debian package': '-1_amd64.deb',
 };
 
 Map<String, List<PlatformVariant>> platforms = {
@@ -59,7 +64,7 @@ Map<String, List<PlatformVariant>> platforms = {
   ],
   'Linux': [
     PlatformVariant('ia32', ['Dart SDK', 'Dartium']),
-    PlatformVariant('x64', ['Dart SDK', 'Dartium']),
+    PlatformVariant('x64', ['Dart SDK', 'Dartium', 'Debian package']),
     PlatformVariant('ARMv7', ['Dart SDK']),
     PlatformVariant('ARMv8 (ARM64)', ['Dart SDK']),
   ],
