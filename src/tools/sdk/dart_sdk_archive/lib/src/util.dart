@@ -33,7 +33,7 @@ String svnRevisionForVersion(String svnVersion) {
   return null;
 }
 
-Map<String, String> archiveMap = {
+const Map<String, String> archiveMap = {
   'Mac': 'macos',
   'Linux': 'linux',
   'Windows': 'windows',
@@ -45,19 +45,19 @@ Map<String, String> archiveMap = {
   'Dartium': 'dartium',
 };
 
-Map<String, String> directoryMap = {
+const Map<String, String> directoryMap = {
   'Dart SDK': 'sdk',
   'Dartium': 'dartium',
   'Debian package': 'linux_packages',
 };
 
-Map<String, String> suffixMap = {
+const Map<String, String> suffixMap = {
   'Dart SDK': '-release.zip',
   'Dartium': '-release.zip',
   'Debian package': '-1_amd64.deb',
 };
 
-Map<String, List<PlatformVariant>> platforms = {
+const Map<String, List<PlatformVariant>> platforms = {
   'Mac': [
     PlatformVariant('ia32', ['Dart SDK', 'Dartium']),
     PlatformVariant('x64', ['Dart SDK', 'Dartium']),
