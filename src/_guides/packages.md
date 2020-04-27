@@ -163,7 +163,7 @@ but leaves everything else the same.
 
 The [`pub upgrade`][] command can't always upgrade every package
 to its latest version,
-due to version constraints in the pubspec.
+due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
 use [`pub outdated`][].
 
