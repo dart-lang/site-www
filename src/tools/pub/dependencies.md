@@ -427,19 +427,12 @@ Depend on the latest stable package versions
   use [`pub outdated`][].
 
 Test whenever you update package dependencies
-: If you don't update your pubspec and just run [`pub upgrade`][],
+: If you run [`pub upgrade`][] without updating your pubspec,
   the API should stay the same
   and your code should run as before — but test to make sure.
   If you modify the pubspec and update to a new major version,
   then you might encounter breaking changes,
   so you need to test even more thoroughly.
-
-Don't check in the `pubspec.lock` file for library packages
-: Following the guidance in [What not to commit][],
-  don't check in `pubspec.lock` for library packages.
-  For app packages, you can commit the lock file if
-  it helps you track the dependencies that are used for
-  production or across a team.
 
 ---
 
