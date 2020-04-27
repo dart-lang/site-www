@@ -1,4 +1,4 @@
-Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/tools/sdk/archive)
+Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/tools/sdk/archive).
 
 ## Developing
 
@@ -14,3 +14,7 @@ Serve:
 cd site-shared/src/tools/sdk/dart_sdk_archive/
 webdev serve
 ```
+
+## Publishing
+
+See `../archive/_README.md`
