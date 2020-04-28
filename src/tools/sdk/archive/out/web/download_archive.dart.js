@@ -6478,7 +6478,7 @@ f=H.f(g.insertCell(-1),"$ia5")
 f.textContent=h.l(i)
 h=document
 e=h.createElement("span")
-e.textContent="("+H.h(S.kp(b2))+")"
+e.textContent=" ("+H.h(S.kp(b2))+")"
 e.classList.add("muted")
 f.appendChild(e)
 H.f(g.insertCell(-1),"$ia5").textContent=p
@@ -6520,7 +6520,7 @@ r=J.A(u)
 g.setAttribute(a9,r.l(u))
 g.setAttribute("data-os","api")
 a7=document.createElement("span")
-a7.textContent="  ("+H.h(S.kp(b2))+")"
+a7.textContent=" ("+H.h(S.kp(b2))+")"
 a7.classList.add("muted")
 q=H.f(g.insertCell(-1),"$ia5")
 q.textContent=r.l(u)
