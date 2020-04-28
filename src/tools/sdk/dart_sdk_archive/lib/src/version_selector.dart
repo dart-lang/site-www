@@ -156,7 +156,7 @@ class VersionSelector {
           ..attributes['data-os'] = archiveMap[name];
         var versionCell = row.addCell()..text = versionInfo.version.toString();
         versionCell.append(SpanElement()
-          ..text = '(${_prettyRevRef(versionInfo)})'
+          ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
         row.addCell()..text = name;
         row.addCell()
@@ -234,7 +234,7 @@ class VersionSelector {
       ..attributes['data-version'] = versionInfo.version.toString()
       ..attributes['data-os'] = 'api';
     var rev = SpanElement()
-      ..text = '  (${_prettyRevRef(versionInfo)})'
+      ..text = ' (${_prettyRevRef(versionInfo)})'
       ..classes.add('muted');
     row.addCell()
       ..text = versionInfo.version.toString()
