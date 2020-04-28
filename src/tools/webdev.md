@@ -92,7 +92,7 @@ To launch a development server, which serves your app and watches for source
 code changes, use the following command:
 
 ```
-webdev serve [--release] [ [<directory>[:<port>]] ... ]
+webdev serve [--debug | --release] [ [<directory>[:<port>]] ... ]
 ```
 
 By default, `webdev serve` compiles your app using [dartdevc][] and 
@@ -111,6 +111,12 @@ and incremental builds are much faster.
   use the production compiler (dart2js).
   For a list of supported browsers, [see the FAQ][supported browsers].
 </aside>
+
+To enable [Dart DevTools][], add the `--debug` flag:
+
+```terminal
+$ webdev serve --debug  # enables Dart DevTools
+```
 
 To use [dart2js][] instead of dartdevc, add the `--release` flag:
 
@@ -203,6 +209,7 @@ Also see the following pages:
 [build_runner test]: #test
 [build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
 [component tests]: {{site.angulardart}}/guide/testing/component
+[Dart DevTools]: /tools/dart-devtools
 [dart2js]: /tools/dart2js
 [dart2js options.]: /tools/dart2js#options
 [dartdevc]: /tools/dartdevc

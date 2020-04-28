@@ -3,247 +3,172 @@ title: Debugging Dart web apps
 description: Learn how to debug your Dart web app.
 ---
 
-You can use [Chrome DevTools][] and the
-[Dart development compiler (dartdevc)][dartdevc]
-to debug your Dart web app.
+You can use a [Dart IDE][IDE], [Dart DevTools][], and browser tools
+such as [Chrome DevTools][] to debug your Dart web apps.
 
-This page walks you through using Dart with Chrome DevTools,
-with special attention for setup and Dart-specific considerations.
-For general information on debugging with Chrome DevTools,
-see the JavaScript debugging
-[get started guide][JavaScript get started guide] and
-[reference.][JavaScript debugging reference]
-
-<div class="mini-toc" markdown="1">
-  <h4>Overview</h4>
-  * To serve your app, use `webdev serve` (which uses dartdevc),
-    either at the command line or through your IDE.
-  * To see Dart types in Chrome DevTools,
-    [enable custom formatters](#enabling-custom-formatters).
-  * You can't use Dart code in the Chrome DevTools console (`someProperty`),
-    but sometimes you can use JavaScript code that's close (`this.someProperty`).
-  * If you have trouble setting a breakpoint in Dart code, try
-    [disabling and re-enabling source maps](#enabling-and-disabling-source-maps).
-</div>
-
-{% asset chrome-devtools-screenshot.png %}
-
-{% comment %}
-NOTE TO EDITORS:
-Be careful to match the text formatting and terminology of the Chrome DevTools
-docs (https://developers.google.com/web/tools/chrome-devtools/) — especially
-the JavaScript debugging reference and JavaScript get started guide,
-so readers can easily switch back and forth between these docs.
-{% endcomment %}
+* To debug your app's logic,
+  use your IDE, Dart DevTools, or browser tools.
+  Dart DevTools have better support than brower tools
+  for inspecting and automatically reloading Dart code.
+* To debug your app's appearance (HTML/CSS) and performance,
+  use your IDE or browser tools such as Chrome DevTools.
 
 
-## Getting started with Chrome DevTools {#using-chrome-devtools}
+## Overview
 
-The Dart development compiler ([dartdevc][])
-has built-in support for source maps
-and for custom formatting of Dart objects.
+To serve your app, use `webdev serve`
+(either at the command line or through your IDE)
+to start up the Dart development compiler ([dartdevc][]).
+To enable Dart DevTools, add the `--debug` or `--debug-extension` option
+(at the command line or through your IDE):
 
+```terminal
+$ webdev serve --debug
+```
 
-### Prerequisites {#prerequisites}
+When running your app using the `--debug` flag of `webdev`,
+you can open Dart DevTools by pressing
+<kbd>Alt</kbd>+<kbd>D</kbd>
+(or <kbd>Option</kbd>+<kbd>D</kbd> on Mac).
 
-To use the Chrome DevTools to debug with dartdevc, you need the following software:
+To open Chrome DevTools, press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+(or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac).
+If you want to debug your app using Chrome DevTools,
+you can use [source maps][] to display your Dart source files
+instead of the JavaScript that [dartdevc][] produces.
+For more information on using Chrome DevTools,
+see the [Chrome DevTools documentation.][Chrome DevTools]
+
+[source maps]: https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps
+
+To use the Dart DevTools or Chrome DevTools
+to debug a Dart web app, you need the following software:
 
 * [Google Chrome.][Google Chrome]
-* [Dart SDK][], version **2.0.0-dev.65.0** or higher.
+* [Dart SDK][], version 2.0.0 or higher.
 * One of the following development environments:
-  * Command-line: [webdev and (optionally) stagehand](#getting-webdev-and-stagehand)  <br>_or_
-  * A [Dart IDE or editor][] that supports web development with Dart 2.
-* A [Dart 2 compatible web app][] to debug.
-  The following walkthrough shows how to create a suitable app.
+  * Command-line: [Dart command-line tool packages][cl-tools]
+    such as webdev (required for both Dart and Chrome DevTools) and
+    devtools (required for Dart DevTools).
+    <br>_or_
+  * A [Dart IDE or editor][IDE] that supports web development.
+* A [Dart web app][] to debug.
+
+[cl-tools]: #getting-webdev-and-devtools
 
 
-### Walkthrough {#walkthrough}
+## Getting started with Dart DevTools {#using-dart-devtools}
+
+{% asset dart-devtools-screenshot.png %}
 
 This section leads you through the basics of
-using Chrome DevTools to debug a web app.
+using Dart DevTools to debug a web app.
 If you already have an app that's ready to debug,
 you can skip creating the test app (step 1),
 but you'll need to adjust the instructions to match your app.
 
-1. _Optional:_ Create an app named `test_app` that uses Stagehand's
-   [web-angular template.][web-angular template]
+1. _Optional:_ Clone the [webdev repo,][] so you can use its example app
+   to play with Dart DevTools.
 
-   * If you're using the command line, here's how to create the app
-     using [Stagehand:][stagehand]
+1. _Optional:_ Install the [Dart Debug Extension][]
+   so that you can run your app and open the Dart DevTools
+   in an already-running instance of Chrome.
 
-     ```terminal
-     $ mkdir test_app
-     $ cd test_app
-     $ stagehand web-angular
-     $ pub get
-     ```
+1. In your app's top directory, run `pub get` to get its dependencies.
 
-   * If you're using a Dart IDE or editor,
-    create an **AngularDart web app** and name it `test_app`.
-    You might see the description _A web app with material design components_.
+   ```terminal
+   $ cd example
+   $ pub get
+   ```
 
 1. Compile and serve the app with dartdevc,
    using either your IDE or `webdev` at the command line.
 
-   ```terminal
-   $ webdev serve
-   ```
-
-   <aside class="alert alert-info" markdown="1">
-    **Note:**
+   {{site.alert.note}}
     The first dartdevc compilation takes the longest,
     because the entire app must be compiled.
     After that, refreshes are much faster.
-   </aside>
+   {{site.alert.end}}
 
-1. Open the app in a Chrome browser window.
+   If you're using webdev at the command line,
+   the command to use depends on whether you want (or need) to
+   run the app and debugger in an already-running instance of Chrome.
+
+   * If you have [Dart Debug Extension][] installed and want to use
+     an existing instance of Chrome to debug:
+
+     ```terminal
+     $ webdev serve --debug-extension
+     ```
+
+   * Otherwise, use the following command, which launches a new instance of
+     Chrome and runs the app:
+
+     ```terminal
+     $ webdev serve --debug
+     ```
+
+1. If your app isn't already running, open it in a Chrome browser window.
    <br>
-   For example, if you use `webdev serve` with no arguments, open
-   [localhost:8080](http://localhost:8080){: .no-automatic-external}.
+   For example, if you use `webdev serve --debug-extension` with no arguments,
+   open [http://127.0.0.1:8080](http://http://127.0.0.1:8080){: .no-automatic-external}.
 
-1. Open DevTools: Press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-   (or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac).
+1. Open Dart DevTools to debug the app that's running in the current window.
 
-1. [Enable custom formatters](#enabling-custom-formatters),
-   so that you can see Dart types in Chrome DevTools.
-   {% comment %}
-   [**Using Dart DevTools?** You can skip this step,
-   since custom formatters are enabled by default.]
-   {% endcomment %}
+   * If Dart Debug Extension is installed and
+     you used the `--debug-extension` flag to `webdev`,
+     click the Dart logo at the top right of the browser window.
+     **[PENDING: screenshot of some sort.]**
 
-1. Select the **Sources** tab.
+   * If you used the `--debug` flag to `webdev`,
+     press <kbd>Alt</kbd>+<kbd>D</kbd>
+     (or <kbd>Option</kbd>+<kbd>D</kbd> on Mac).
+   
+   The Dart DevTools window comes up
+   and displays the source code for your app's main file.
 
-1. In the **File Navigator** pane, select **Page** and navigate to
-   the Dart file for a nontrivial component.
+1. Set a breakpoint inside a timer or event handler
+   by clicking to the left of one of its lines of code.
    <br>
-   For example, navigate to
-   [`packages/test_app/src/todo_list/todo_list_component.dart`.][todo_list_component.dart]
+   For example, click the line number for the first line inside
+   an event handler or timer callback.
 
-1. Set a line-of-code breakpoint in a method that's called
-   in response to a user event.
-   <br>
-   For example, break at the top of the `add()` method
-   by clicking the line number **36**.
-   {% comment %}
-   TODO: Add this page to
-   https://github.com/dart-lang/stagehand/wiki/Docs-that-depend-on-stagehand.
-   Periodically check that the line number hasn't changed,
-   due to template changes.
-   {% endcomment %}
-
-1. In the app's UI, trigger the event that causes the method call.
+1. Trigger the event that causes the function call.
    Execution stops at the breakpoint.
-   <br>
-   For example, type something into a text field and press <kbd>Enter</kbd>.
 
-1. In the **Code Editor** pane, mouse over the properties.
-   You can see their Dart runtime types and values.
-   <br>
-   For example, in the `add()` method,
-   `items` is a `List<String>` with a length of 0.
+1. In the **Variables** pane, inspect the values of variables.
 
-   <aside class="alert alert-info" markdown="1">
-   **Troubleshooting:**
-   If you see `Array` instead of `List`,
-   then custom formatters aren't on.
-   [Enable them](#enabling-custom-formatters).
-   </aside>
-
-1. Look at the **Call Stack** and **Scope** panes,
-   which are in the **JavaScript Debugging** pane.
-   Under **Scope**, look at the type and value of the local variable `this`.
-
-1. Resume script execution, and trigger the event again.
+1. Resume script execution, and trigger the event again or press **Pause**.
    Execution pauses again.
 
-1. If the console isn't visible, press <kbd>Esc</kbd>.
+1. Try stepping through code line-by-line using the
+   **Step in**, **Step over**, and **Step out** buttons.
 
-1. In the console, try viewing a property of the component.
-   <br>
+   {{site.alert.note}}
+     Dart DevTools doesn't step into SDK code.
+     For example, if you press **Step in** at a call to `print()`,
+     you go to the next line, not into the SDK code that implements `print()`.
+   {{site.alert.end}}
 
-   For example, try to view the `items` object:
+1. Change your source code and reload the Chrome window that's running the app.
+   The app quickly rebuilds and reloads.
+   **[PENDING: mention something about losing your breakpoints?]**
 
-   * Enter `items`.
-     It doesn't work because JavaScript requires a `this.` prefix.
+1. Click the **Logging** button to see stdout, stderr, and system logs.
 
-   * Enter `this.items`.
-     This works because the JavaScript object has the same name as
-     the Dart object.
-     Thanks to custom formatters, you can see the Dart type and value.
-
-   * Enter `this.items[0]`.
-     This works because Dart lists map to JavaScript arrays.
-
-   * Enter `this.items.first`.
-     This doesn't work, because unlike the [Dart List class,][List]
-     JavaScript arrays don't have a `first` property.
-
-{% comment %}
-Dart DevTools:
-items.first
-items.isEmpty
-items.length
-items.runtimeType
-[PENDING: once indexing works in DDT, tell them to try items[0])
-{% endcomment %}
-
-1. Try [other DevTools features.][JavaScript debugging reference]
+1. **[PENDING: Is there anything else they should try?]**
 
 
-## Changing DevTools settings
-
-This section covers settings that you might need to change
-as you debug your app.
-
-
-### Enabling custom formatters {#enabling-custom-formatters}
-
-To see Dart types in Chrome DevTools, you need to enable custom formatters.
-
-1. From the DevTools **Customize and control DevTools ⋮** menu,
-   choose **Settings**. Or press <kbd>F1</kbd>.
-1. Select **Enable custom formatters**,
-   which is under the **Console** heading in the **Preferences** settings.
-1. Close Settings: Press <kbd>Esc</kbd> or click the **x** at the upper right.
-
-{% comment %}
-The best description I found was https://www.mattzeunert.com/2016/02/19/custom-chrome-devtools-object-formatters.html.
-{% endcomment %}
-
-
-### Disabling and re-enabling source maps {#enabling-and-disabling-source-maps}
-
-Chrome DevTools <!-- and Dart DevTools --> enables source maps, by default.
-You might want to temporarily disable source maps so that you can see
-the generated JavaScript code.
-
-{% comment %}
-In Dart DevTools, use <kbd>Alt</kbd>+<kbd>S</kbd> to toggle source maps.
-{% endcomment %}
-
-1. From the DevTools **Customize and control DevTools ⋮** menu,
-   choose **Settings**.
-   Or press <kbd>F1</kbd>.
-1. Find the **Enable JavaScript source maps** checkbox,
-   which is under the **Sources** heading in the **Preferences** settings.
-   * To display _only JavaScript_ code,
-   _clear_ **Enable JavaScript source maps**.
-   * To display _Dart_ code (when available),
-     _select_ **Enable JavaScript source maps**.
-1. Close Settings: Press <kbd>Esc</kbd> or click the x at the upper right.
-
-
-## Getting webdev and stagehand {#getting-webdev-and-stagehand}
+## Getting command-line tool packages
 
 If you're using the command line instead of an IDE or Dart-enabled editor,
 then you need the [webdev tool][webdev].
-To use the command line to create apps from standard templates,
-you also need the [stagehand tool.][stagehand]
+To use Dart DevTools, you also need the [devtools package.][devtools-pkg]
 Use pub to get these tools:
 
 ```terminal
 $ pub global activate webdev
-$ pub global activate stagehand
+$ pub global activate devtools
 ```
 
 If your PATH environment variable is set up correctly,
@@ -258,27 +183,41 @@ A tool to develop Dart web projects.
 For information on setting PATH, see the
 [`pub global` documentation.][pub global documentation]
 
-Whenever you update the Dart SDK or
-want to get the latest Stagehand templates,
+Whenever you update the Dart SDK,
 update the tools by activating them again:
 
 ```terminal
 $ pub global activate webdev     # update webdev
-$ pub global activate stagehand  # update stagehand
+$ pub global activate devtools   # update devtools
 ```
 
+## Resources
+
+For more information, see the following:
+
+* Documentation for [your IDE][IDE]
+* [Dart DevTools documentation][Dart DevTools]
+* [devtools package documentation][devtools-pkg]
+* [dartdevc FAQ][]
+* [webdev tool documentation][webdev]
+* [webdev package documentation][webdev-pkg]
+
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
-[Dart 2 compatible web app]: /dart-2
+[Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
+[Dart DevTools]: /tools/dart-devtools
 [Dart fork of Chrome DevTools]: https://github.com/dart-lang/devtools-frontend
-[Dart IDE or editor]: /tools#ides-and-editors
+[IDE]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
+[Dart web app]: /web
 [dartdevc]: /tools/dartdevc
+[dartdevc FAQ]: /tools/dartdevc/faq
+[devtools-pkg]: {{site.pub-pkg}}/devtools
 [Google Chrome]: https://www.google.com/chrome
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[logging]: {{site.pub-pkg}}/logging
 [pub global documentation]: /tools/pub/cmd/pub-global
-[stagehand]: {{site.pub-pkg}}/stagehand
-[todo_list_component.dart]: https://github.com/dart-lang/stagehand/blob/master/templates/web-angular/lib/src/todo_list/todo_list_component.dart
-[web-angular template]: https://github.com/dart-lang/stagehand/tree/master/templates/web-angular
 [webdev]: /tools/webdev
+[webdev repo,]: https://github.com/dart-lang/webdev
+[webdev-pkg]: {{site.pub-pkg}}/webdev
