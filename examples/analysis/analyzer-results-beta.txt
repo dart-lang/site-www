@@ -1,0 +1,4 @@
+Analyzing analysis_options.yaml, lib...
+  lint • Avoid empty statements. • lib/lint.dart:9:19 • empty_statements
+  lint • Close instances of `dart.core.Sink`. • lib/lint.dart:16:7 • close_sinks
+2 lints found.
