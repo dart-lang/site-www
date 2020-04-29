@@ -15,7 +15,9 @@ source ./tool/shared/env-set-check.sh
 ANALYZE="dartanalyzer --no-implicit-casts "
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
 DART_CHAN=stable
-if [[ $DART_VERS == *-dev* ]]; then
+if [[ $DART_VERS == *beta* ]]; then
+  DART_CHAN=beta
+elif [[ $DART_VERS == *-dev* ]]; then
   DART_CHAN=dev
 fi
 EXAMPLES="$ROOT/examples"
