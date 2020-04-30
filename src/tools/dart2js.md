@@ -201,10 +201,9 @@ To debug in Chrome:
 
 To debug in Edge:
 
-1. Update to the latest version of Edge. (Source-map support
-   was added to IE in April 2014).
+1. Update to the latest version of Edge. 
 2. Load **Developer Tools** (**F12**). For more information, see
-   [Using the F12 developer tools.](https://msdn.microsoft.com/library/ie/bg182326(v=vs.85))
+   [Using the F12 developer tools.](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide)
 3. Reload the app. The **debugger** tab shows source-mapped files.
 4. Exception behavior can be controlled through **Ctrl+Shift+E**;
    the default is **Break on unhandled exceptions**.
