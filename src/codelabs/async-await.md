@@ -108,7 +108,8 @@ produces:
   order, the example fails to print "Large Latte" to the console, and instead
   prints "Your order is: Instance of '_Future<String>'".
 
-In the next sections you'll learn the about futures, `async`, and `await`
+In the next sections you'll learn about futures and about working with futures
+(using `async` and `await`)
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
