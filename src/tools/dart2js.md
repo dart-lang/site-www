@@ -197,11 +197,11 @@ To debug in Chrome:
    [How to set breakpoints.](https://developers.google.com/web/tools/chrome-devtools/debug/breakpoints/add-breakpoints)
 4. Reload your app.
 
-### Internet Explorer {#dart2js-debugging-ie}
+### Edge {#dart2js-debugging-ie}
 
-To debug in Internet Explorer:
+To debug in Edge:
 
-1. Update to the latest version of Internet Explorer. (Source-map support
+1. Update to the latest version of Edge. (Source-map support
    was added to IE in April 2014).
 2. Load **Developer Tools** (**F12**). For more information, see
    [Using the F12 developer tools.](https://msdn.microsoft.com/library/ie/bg182326(v=vs.85))
