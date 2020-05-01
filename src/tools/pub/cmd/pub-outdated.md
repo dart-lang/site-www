@@ -41,43 +41,56 @@ update the dependencies of a package that you own
 1. **Run `pub outdated`** to confirm that you've updated all the dependencies.
 1. **Test** your package to confirm that it still works as expected.
 
+You might still have [transitive dependencies][] that are out-of-date.
+If you want to determine the cause,
+try running [`pub deps`][] and searching the output for
+the name of the out-of-date package.
+
 
 ## Example
 
 Here's an example of running `pub outdated` on
-[PENDING: link to source code]:
+an example that depends on old versions of two packages:
+`args` and `pedantic`.
+As the following screenshot shows,
+`pub outdated` colorizes the output by default
+when you run it on the command line.
 
-```terminal
-$ pub outdated
-Package              Current   Upgradable  Resolvable  Latest    
-dependencies: all up-to-date
+![screenshot of pub outdated output; visible as text later in "Output columns" section](images/pub-outdated.png)
 
-dev_dependencies    
-build_web_compilers  1.2.3     1.2.3       2.10.0      2.10.0    
-
-transitive dependencies
-_fe_analyzer_shared  -         -           2.0.0       2.0.0     
-analyzer             0.35.4    0.35.4      0.39.5      0.39.5    
-...
-
-9  dependencies are constrained to versions that are older than a resolvable version.
-To update these dependencies, edit pubspec.yaml.
-```
-
-<span style="color:red">[PENDING: Use a different example.
-Link to it so it's reproduceable.
-Update the text to match.]</span>
-
-The preceding output shows that all regular dependencies are up-to-date,
-but one [dev dependency][] (`build_web_compilers`) is out-of-date.
-Several [transitive dependencies][] are also out-of-date.
+The preceding output shows that one regular dependency (`args`)
+and one [dev dependency][] (`pedantic`) are out-of-date.
 For details on what each column shows, see the
 [output columns](#output-columns) section of this page.
 
-To fix the dev dependency,
-the easiest solution is to change
-the pubspec's `build_web_compilers` entry to use
-the version in the **Resolvable** column: `2.10.0`.
+As a rule, you update the **dependencies** and **dev_dependencies** sections
+of your `pubspec.yaml` file
+so that each package uses the versions in the **Resolvable** column.
+In this example, the resolvable version of `args` is **1.6.0**,
+and the resolvable version of `pedantic` is **1.9.0**.
+
+{{site.alert.tip}}
+  To see what changed in the new version of a package
+  that's published on [pub.dev,]({{site.pub}})
+  look at the changelog in the package page.
+  For example, you can look at the **Changelog** tabs on the pages for the
+  [`args`][] and [`pedantic`][] packages.
+{{site.alert.end}}
+
+To fix the first dependency (`args`),
+all that's needed is to run `pub upgrade`:
+
+```terminal
+$ pub upgrade
+Resolving dependencies... 
+> args 1.6.0 (was 1.5.0)
+  pedantic 1.8.0 (1.9.0 available)
+Changed 1 dependency!
+```
+
+To fix the second dependency (`pedantic`),
+you can change the pubspec's `pedantic` entry to use [caret syntax][] (`^`)
+and the number in the **Resolvable** column: **`^1.9.0`**.
 Here's the diff for `pubspec.yaml`:
 
 {% comment %}
@@ -85,16 +98,16 @@ Here's the diff for `pubspec.yaml`:
 {% endcomment %}
 
 ```diff
--  build_web_compilers: ^1.0.0
-+  build_web_compilers: ^2.10.0
+-  pedantic: 1.8.0
++  pedantic: ^1.9.0
 ```
 
-{{site.alert.tip}}
-  To see what changed in the new version of a package
-  that's published on [pub.dev,]({{site.pub}})
-  look at the changelog in the package page.
-  For an example, see the
-  [build_web_compilers changelog.][]
+{{site.alert.note}}
+  Updating the `pedantic` package can cause code to start failing analysis,
+  depending on your code and how you include the analysis options file.
+  For details, see the section on
+  [enabling default Google rules][using pedantic]
+  in [Customizing static analysis][].
 {{site.alert.end}}
 
 After editing `pubspec.yaml`, run `pub upgrade` to
@@ -106,14 +119,7 @@ you've made all necessary changes.
 $ pub upgrade
 ...
 $ pub outdated
-Package     Current  Upgradable  Resolvable  Latest  
-dependencies: all up-to-date
-
-dev_dependencies: all up-to-date
-
-transitive dependencies
-googleapis  0.53.0   0.53.0      0.53.0      0.54.0  
-$
+Found no outdated packages.
 ```
 
 {{site.alert.important}}
@@ -121,38 +127,32 @@ $
   after updating the packages.
 {{site.alert.end}}
 
-If any transitive dependencies are out-of-date,
-you can find the cause by running [`pub deps`][] and
-searching the output for the name of the out-of-date package.
-
 
 ## Output columns
 
-As a reminder, here's what the output of `pub outdated` looks like:
-
+The output of `pub outdated` has four columns of version information
+for each out-of-date dependency:
 
 ```terminal
 $ pub outdated
-Package              Current   Upgradable  Resolvable  Latest    
-dependencies: all up-to-date
+Dependencies  Current  Upgradable  Resolvable  Latest  
+args          1.5.0    1.6.0       1.6.0       1.6.0   
 
-dev_dependencies    
-build_web_compilers  1.2.3     1.2.3       2.10.0      2.10.0    
+dev_dependencies
+pedantic      1.8.0    1.8.0       1.9.0       1.9.0   
 
-transitive dependencies
-_fe_analyzer_shared  -         -           2.0.0       2.0.0     
-analyzer             0.35.4    0.35.4      0.39.5      0.39.5    
-...
+transitive dependencies: all up-to-date
 
-9  dependencies are constrained to versions that are older than a resolvable version.
-To update these dependencies, edit pubspec.yaml.
+transitive dev_dependencies: all up-to-date
+
+1 upgradable dependency is locked (in pubspec.lock) to an older version.
+To update it, use `pub upgrade`.
+
+1 dependency is constrained to a version that is older than a resolvable version.
+To update it, edit pubspec.yaml.
 ```
 
-As a rule, update the **dependencies** and **dev_dependencies** sections
-of your `pubspec.yaml` file
-to depend on the **resolvable** versions of out-of-date packages.
-
-Here are the meanings of the version numbers in the output:
+Here are the meanings of each column:
 
 Current
 : The version used in your package, as recorded in `pubspec.lock`.
@@ -224,12 +224,16 @@ For options that apply to all pub commands, see
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
 </aside>
 
+[`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices
-[build_web_compilers changelog.]: {{site.pub-pkg}}/build_web_compilers#changelog
-[constraints]: /tools/pub/dependencies#version-constraints
+[caret syntax]: /tools/pub/dependencies#version-constraints
+[constraints]: /tools/pub/dependencies#caret-syntax
+[Customizing static analysis]: /guides/language/analysis-options
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [`dependency_overrides`]: /tools/pub/dependencies#dependency-overrides
 [package dependencies]: /tools/pub/dependencies
+[`pedantic`]: {{site.pub-pkg}}/pedantic
+[using pedantic]: /guides/language/analysis-options#default-google-rules-pedantic
 [`pub deps`]: /tools/pub/cmd/pub-deps
 [`pub get`]: /tools/pub/cmd/pub-get
 [`pub upgrade`]: /tools/pub/cmd/pub-upgrade
