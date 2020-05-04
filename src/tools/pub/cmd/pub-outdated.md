@@ -38,7 +38,8 @@ update the dependencies of a package that you own
 1. Follow the recommendations of `pub outdated` for updating the packages.
    Some updates might require only running `pub upgrade`.
    Others might require updating `pubspec.yaml` before running `pub upgrade`.
-1. **Run `pub outdated`** to confirm that you've updated all the dependencies.
+1. **Run `pub outdated`** to confirm that you're using
+   the latest compatible package versions.
 1. **Test** your package to confirm that it still works as expected.
 
 You might still have out-of-date dependencies due to
@@ -81,6 +82,7 @@ considering all the other dependencies.
 {{site.alert.end}}
 
 To fix the first dependency (`args`),
+which is listed as upgradable,
 you just need to run `pub upgrade`:
 
 ```terminal
@@ -93,8 +95,10 @@ $
 ```
 
 To fix the second dependency (`http`),
+which is listed as resolvable,
 you can change the pubspec's `http` entry to use
-the version in the **Resolvable** column, or a compatible higher version.
+the version in the **Resolvable** column
+(or a compatible higher version).
 In [caret syntax][], that's **`^0.12.1`**.
 Here's the diff for `pubspec.yaml`:
 
@@ -211,9 +215,8 @@ Upgradable
 Resolvable
 : The latest version that can be resolved,
   when combined with all other dependencies.
-  This version corresponds to what you get if
-  you set all version constraints in `pubspec.yaml` to `any`
-  and then run `pub upgrade`.
+  This version corresponds to what `pub upgrade` would give you
+  if all version constraints in `pubspec.yaml` were `any`.
   A value of `-` means that the package won't be needed.
 
 {{site.alert.important}}
@@ -227,7 +230,7 @@ Latest
   excluding prereleases unless you use the option `--prereleases`.
 
 For example, say your app depends on the `foo` and `bar` packages,
-but the latest version of `bar` depends on an old major version of `foo`.
+but the latest version of `bar` allows only older major versions of `foo`.
 The result is that the latest _resolvable_ version of `foo`
 is different from the _latest_ version of `foo`.
 
