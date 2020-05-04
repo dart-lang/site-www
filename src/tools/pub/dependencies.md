@@ -422,8 +422,8 @@ Use [caret syntax](#caret-syntax)
 Depend on the latest stable package versions
 : Use [`pub upgrade`][] to update to the latest package versions
   that your pubspec allows.
-  To identify dependencies in your pubspec that
-  prevent you from updating to the latest stable versions,
+  To identify dependencies in your app or package that
+  aren't on the latest stable versions,
   use [`pub outdated`][].
 
 Test whenever you update package dependencies
