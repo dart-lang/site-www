@@ -91,7 +91,7 @@ You can get stable channel releases using
 the [instructions above](#install), or you can
 get stable, beta, or dev channel releases by
 [downloading the SDK as a zip file](/tools/sdk/archive) or you can use
-[Homebrew, Chocolatey or `apt-get`](brew_choco_apt-get).
+[Homebrew, Chocolatey or `apt-get`][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [Dart 2]: /dart-2
@@ -99,4 +99,4 @@ get stable, beta, or dev channel releases by
 [Dart libraries]: /guides/libraries/library-tour
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
-[brew_choco_apt-get]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get
+[Homebrew, Chocolatey or `apt-get`]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get
