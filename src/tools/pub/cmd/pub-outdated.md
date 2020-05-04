@@ -67,9 +67,9 @@ The **Resolvable** column shows which versions you can upgrade to
 for each out-of-date dependency.
 You can get more information by looking for
 the **leftmost column** with a **non-red value**.
-For example, you can upgrade `args` to 1.6.0 by running `pub upgrade`.
-You can upgrade `http` to 0.12.1 if you edit your package's pubspec.
-The `path` and `meta` packages aren't the most current versions,
+For example, `args` is _upgradable_ to 1.6.0,
+and `http` is _resolvable_ to 0.12.1.
+The `path` and `meta` packages aren't the latest versions,
 but are the most current _resolvable_ versions,
 considering all the other dependencies.
 
@@ -115,24 +115,12 @@ After editing `pubspec.yaml`, you run `pub upgrade` to
 update the `pubspec.lock` file.
 You can then run `pub outdated` to confirm that
 you've made all necessary changes.
+In this example, the `path` and `meta` packages are still out-of-date,
+due to reasons that this package doesn't control:
 
 ```terminal
 $ pub upgrade
 ...
-$ pub outdated
-Found no outdated packages.
-$
-```
-
-{{site.alert.important}}
-  Test your code to verify that it still works as expected
-  after updating the packages.
-{{site.alert.end}}
-
-The `path` and `meta` packages are still out-of-date,
-due to reasons that this package doesn't control:
-
-```terminal
 $ pub outdated
 Dependencies  Current  Upgradable  Resolvable  Latest  
 path          1.6.2    1.6.2       1.6.2       1.7.0   
@@ -169,6 +157,11 @@ this package depends on the `terminal_tools` package,
 which depends on old versions of `path` and `meta`.
 Once the `terminal_tools` package is updated,
 it should be possible to update this package.
+
+{{site.alert.important}}
+  Test your code to verify that it still works as expected
+  after updating the packages.
+{{site.alert.end}}
 
 
 ## Output columns
