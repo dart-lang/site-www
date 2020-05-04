@@ -42,34 +42,31 @@ const Map<String, String> archiveMap = {
   'ARMv7': 'arm',
   'ARMv8 (ARM64)': 'arm64',
   'Dart SDK': 'dartsdk',
-  'Dartium': 'dartium',
 };
 
 const Map<String, String> directoryMap = {
   'Dart SDK': 'sdk',
-  'Dartium': 'dartium',
   'Debian package': 'linux_packages',
 };
 
 const Map<String, String> suffixMap = {
   'Dart SDK': '-release.zip',
-  'Dartium': '-release.zip',
   'Debian package': '-1_amd64.deb',
 };
 
 const Map<String, List<PlatformVariant>> platforms = {
   'Mac': [
-    PlatformVariant('ia32', ['Dart SDK', 'Dartium']),
-    PlatformVariant('x64', ['Dart SDK', 'Dartium']),
+    PlatformVariant('ia32', ['Dart SDK']),
+    PlatformVariant('x64', ['Dart SDK']),
   ],
   'Linux': [
-    PlatformVariant('ia32', ['Dart SDK', 'Dartium']),
-    PlatformVariant('x64', ['Dart SDK', 'Dartium', 'Debian package']),
+    PlatformVariant('ia32', ['Dart SDK']),
+    PlatformVariant('x64', ['Dart SDK', 'Debian package']),
     PlatformVariant('ARMv7', ['Dart SDK']),
     PlatformVariant('ARMv8 (ARM64)', ['Dart SDK']),
   ],
   'Windows': [
-    PlatformVariant('ia32', ['Dart SDK', 'Dartium']),
+    PlatformVariant('ia32', ['Dart SDK']),
     PlatformVariant('x64', ['Dart SDK']),
   ],
 };
