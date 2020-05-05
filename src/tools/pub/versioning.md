@@ -184,6 +184,7 @@ semantically as well. The interpretation of each number is just shifted down one
 slot: going from `0.1.2` to `0.2.0` indicates a breaking change, going to
 `0.1.3` indicates a new feature, and going to `0.1.2+1` indicates a change that
 doesn't affect the public API.
+For simplicity's sake, avoid using `+` after the version reaches `1.0.0`.
 
 We've got almost all of the pieces we need to deal with versioning and API
 evolution now. Let's see how they play together and what pub does.
