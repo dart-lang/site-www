@@ -55,13 +55,11 @@ Here's an example of running `pub outdated` on
 an example that has several out-of-date dependencies.
 Three of the dependencies (`args`, `http`, and `path`) are direct,
 and one is transitive (`meta`).
-As the following screenshot shows,
+As the following example shows,
 `pub outdated` colorizes the output by default
 when you run it on the command line.
-(For a text version of the screenshot, see the
-[Output columns section](#output-columns).)
 
-![screenshot of pub outdated output](images/pub-outdated.png)
+{% include_relative _pub-outdated-output.html %}
 
 The **Resolvable** column shows which versions you can upgrade to
 for each out-of-date dependency.
@@ -168,12 +166,11 @@ it should be possible to update this package.
 
 The output of `pub outdated` has four columns of version information
 for each out-of-date dependency.
-The following example
-(which has the same text as the screenshot in the [Example section](#example))
-shows the four columns:
+Here is the part of the [example](#example) output
+that shows the four version columns:
 Current, Upgradable, Resolvable, and Latest.
 
-{% include_relative _pub-outdated-output.html %}
+{% include_relative _pub-outdated-output-columns.html %}
 
 Current
 : The version used in your package, as recorded in `pubspec.lock`.
