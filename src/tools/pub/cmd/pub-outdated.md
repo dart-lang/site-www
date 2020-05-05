@@ -185,15 +185,9 @@ Upgradable
 Resolvable
 : The latest version that can be resolved,
   when combined with all other dependencies.
-  This version corresponds to what `pub upgrade` would give you
-  if all version constraints in `pubspec.yaml` were `any`.
+  This version corresponds to what `pub upgrade` gives you
+  if all version constraints in `pubspec.yaml` are unbounded.
   A value of `-` means that the package won't be needed.
-
-{{site.alert.important}}
-  We don't recommend actually using `any` as the constraint,
-  because then running `pub upgrade` might surprise you by making
-  incompatible version changes.
-{{site.alert.end}}
 
 Latest
 : The latest version of the package available,
