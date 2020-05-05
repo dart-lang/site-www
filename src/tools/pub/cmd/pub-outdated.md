@@ -89,7 +89,6 @@ Resolving dependencies...
 > args 1.6.0 (was 1.4.4)
   ...
 Changed 1 dependency!
-$
 ```
 
 To fix the second dependency (`http`),
@@ -132,7 +131,6 @@ transitive dev_dependencies: all up-to-date
 
 Dependencies are all on the latest resolvable versions.
 Newer versions, while available, are not mutually compatible.
-$
 ```
 
 To see why these packages are out-of-date, you can run `pub deps`
@@ -147,7 +145,6 @@ dependencies:
   - path 1.6.2
   - meta 1.1.6
 ...
-$ 
 ```
 
 As the preceding output shows,
