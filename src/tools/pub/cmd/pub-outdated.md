@@ -173,27 +173,7 @@ The following example
 shows the four columns:
 Current, Upgradable, Resolvable, and Latest.
 
-```terminal
-$ pub outdated
-Dependencies  Current    Upgradable  Resolvable  Latest  
-args          1.4.4      1.6.0       1.6.0       1.6.0   
-http          0.11.3+17  0.11.3+17   0.12.1      0.12.1  
-path          1.6.2      1.6.2       1.6.2       1.7.0   
-
-dev_dependencies: all up-to-date
-
-transitive dependencies
-meta          1.1.6      1.1.6       1.1.6       1.1.8   
-
-transitive dev_dependencies: all up-to-date
-
-1 upgradable dependency is locked (in pubspec.lock) to an older version.
-To update it, use `pub upgrade`.
-
-1 dependency is constrained to a version that is older than a resolvable version.
-To update it, edit pubspec.yaml.
-$
-```
+{% include_relative _pub-outdated-output.html %}
 
 Current
 : The version used in your package, as recorded in `pubspec.lock`.
