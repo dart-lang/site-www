@@ -2,10 +2,10 @@ Analyzing analysis_options.yaml, lib, test...
   error • 'HoneyBadger.parent' ('Root Function()') isn't a valid override of 'Animal.parent' ('Animal Function()'). • lib/animal_bad.dart:15:12 • invalid_override
   error • 'Cat.chase' ('void Function(Mouse)') isn't a valid override of 'Animal.chase' ('void Function(Animal)'). • lib/animal_bad.dart:26:8 • invalid_override
   error • A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<Cat>'. • lib/animal_bad.dart:48:19 • invalid_assignment
-  error • The method 'add' isn't defined for the class 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+  error • The method 'add' isn't defined for the type 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
   error • A value of type 'Element' can't be assigned to a variable of type 'CanvasElement'. • lib/common_fixes_analysis.dart:21:28 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'bool'. • lib/common_problems_analysis.dart:14:14 • invalid_assignment
-  error • The getter 'context2D' isn't defined for the class 'Element'. • lib/common_problems_analysis.dart:23:12 • undefined_getter
+  error • The getter 'context2D' isn't defined for the type 'Element'. • lib/common_problems_analysis.dart:23:12 • undefined_getter
   error • A value of type 'double' can't be assigned to a variable of type 'int'. • lib/common_problems_analysis.dart:38:16 • invalid_assignment
   error • A value of type 'List<int>' can't be assigned to a variable of type 'List<String>'. • lib/common_problems_analysis.dart:46:27 • invalid_assignment
   error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). • lib/common_problems_analysis.dart:61:7 • invalid_override

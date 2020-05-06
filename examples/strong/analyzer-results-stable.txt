@@ -1,11 +1,11 @@
 Analyzing analysis_options.yaml, lib, test...
   error • 'HoneyBadger.parent' ('Root Function()') isn't a valid override of 'Animal.parent' ('Animal Function()'). • lib/animal_bad.dart:15:12 • invalid_override
   error • 'Cat.chase' ('void Function(Mouse)') isn't a valid override of 'Animal.chase' ('void Function(Animal)'). • lib/animal_bad.dart:26:8 • invalid_override
-  error • A value of type 'List' can't be assigned to a variable of type 'List<Cat>'. • lib/animal_bad.dart:48:19 • invalid_assignment
-  error • The method 'add' isn't defined for the class 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+  error • A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<Cat>'. • lib/animal_bad.dart:48:19 • invalid_assignment
+  error • The method 'add' isn't defined for the type 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
   error • A value of type 'Element' can't be assigned to a variable of type 'CanvasElement'. • lib/common_fixes_analysis.dart:21:28 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'bool'. • lib/common_problems_analysis.dart:14:14 • invalid_assignment
-  error • The getter 'context2D' isn't defined for the class 'Element'. • lib/common_problems_analysis.dart:23:12 • undefined_getter
+  error • The getter 'context2D' isn't defined for the type 'Element'. • lib/common_problems_analysis.dart:23:12 • undefined_getter
   error • A value of type 'double' can't be assigned to a variable of type 'int'. • lib/common_problems_analysis.dart:38:16 • invalid_assignment
   error • A value of type 'List<int>' can't be assigned to a variable of type 'List<String>'. • lib/common_problems_analysis.dart:46:27 • invalid_assignment
   error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). • lib/common_problems_analysis.dart:61:7 • invalid_override
@@ -13,7 +13,7 @@ Analyzing analysis_options.yaml, lib, test...
   error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)'. • lib/common_problems_analysis.dart:92:9 • invalid_super_invocation
   error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s). • lib/common_problems_analysis.dart:102:17 • invalid_cast_function_expr
   error • A value of type 'bool Function(String)' can't be assigned to a variable of type 'bool Function(dynamic)'. • lib/common_problems_analysis.dart:102:17 • invalid_assignment
-  error • The argument type 'List' can't be assigned to the parameter type 'List<int>'. • lib/strong_analysis.dart:27:17 • argument_type_not_assignable
+  error • The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. • lib/strong_analysis.dart:27:17 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String'. • lib/strong_analysis.dart:38:15 • argument_type_not_assignable
   error • The argument type 'int' can't be assigned to the parameter type 'String'. • lib/strong_analysis.dart:54:15 • argument_type_not_assignable
   error • A value of type 'double' can't be assigned to a variable of type 'int'. • lib/strong_analysis.dart:82:9 • invalid_assignment
@@ -21,7 +21,7 @@ Analyzing analysis_options.yaml, lib, test...
   error • A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. • lib/strong_analysis.dart:118:19 • invalid_assignment
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. • lib/strong_analysis.dart:144:24 • invalid_assignment
   error • A value of type 'int' can't be assigned to a variable of type 'String'. • lib/strong_analysis.dart:157:21 • invalid_assignment
-  error • A value of type 'List' can't be assigned to a variable of type 'List<int>'. • test/strong_test.dart:42:27 • invalid_assignment
+  error • A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<int>'. • test/strong_test.dart:42:27 • invalid_assignment
   error • A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. • test/strong_test.dart:64:26 • invalid_assignment
   error • A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>'. • test/strong_test.dart:178:26 • invalid_assignment
 25 errors found.
