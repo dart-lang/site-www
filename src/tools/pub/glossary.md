@@ -4,32 +4,43 @@ description: A glossary of terms relating to Dart's package management tool, pub
 ---
 
 The following terms are used in the documentation for
-[packagement management](/guides/packages) and
-the [pub tool](/tools/pub/cmd).
+[packagement management][] and
+the [pub tool][].
+
+[packagement management]: /guides/packages
+[pub tool]: /tools/pub/cmd
 
 ## Application package
 
 A package that is not intended to be used as a library. Application packages may
-have [dependencies](#dependency) on other packages, but are never depended on
+have [dependencies][] on other packages, but are never depended on
 themselves. They are usually meant to be run directly, either on the command
-line or in a browser. The opposite of an application package is a [library
-package](#library-package).
+line or in a browser. The opposite of an application package is a
+[library package][].
 
-Application packages should check their [lockfiles](#lockfile) into source
+Application packages should check their [lockfiles][] into source
 control, so that everyone working on the application and every location the
 application is deployed has a consistent set of dependencies. Because their
 dependencies are constrained by the lockfile, application packages usually
-specify `any` for their dependencies' [version constraints](#version-constraint).
+specify `any` for their dependencies' [version constraints][].
 
+[dependencies]: #dependency
+[library package]: #library-package
+[lockfiles]: #lockfile
+[version constraints]: #version-constraint
 
 ## Dependency
 
 Another package that your package relies on. If your package wants to import
 code from some other package, that package must be a dependency. Dependencies
-are specified in your package's [pubspec](/tools/pub/pubspec) and described in
-[Pub Dependencies](/tools/pub/dependencies).
+are specified in your package's [pubspec][] and described in
+[Package dependencies][].
 
-To see the dependencies used by a package, use [`pub deps`](/tools/pub/cmd/pub-deps).
+To see the dependencies used by a package, use [`pub deps`][].
+
+[pubspec]: /tools/pub/pubspec
+[Package dependencies]: /tools/pub/dependencies
+[`pub deps`]: /tools/pub/cmd/pub-deps
 
 ## Entrypoint
 
@@ -89,7 +100,9 @@ incompatible changes, library packages will usually require their dependencies'
 versions to be greater than or equal to the versions that were tested and less
 than the next major version. So if your library depended on the (fictional)
 `transmogrify` package and you tested it at version 1.2.1, your version
-constraint would be [`^1.2.1`](/tools/pub/dependencies#caret-syntax).
+constraint would be [`^1.2.1`][].
+
+[`^1.2.1`]: /tools/pub/dependencies#caret-syntax
 
 ## Lockfile
 

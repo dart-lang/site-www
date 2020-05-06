@@ -773,7 +773,7 @@ import 'dart:io';
 File targetFile = File('web/index.html');
 
 Future main() async {
-  var server;
+  Stream<HttpRequest> server;
 
   try {
     server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4044);

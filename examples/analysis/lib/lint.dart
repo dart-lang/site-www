@@ -1,5 +1,5 @@
 // ignore_for_file: unused_element, unused_local_variable
-// ignore_for_file: stable, dev, close_sinks, empty_statements
+// ignore_for_file: stable, beta, dev, close_sinks, empty_statements
 
 import 'dart:async';
 

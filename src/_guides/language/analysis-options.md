@@ -378,7 +378,7 @@ To suppress more than one rule, use a comma-separated list:
 
 <?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
-// ignore_for_file: unused_import, unused_local_variable, omit_local_variable_types
+// ignore_for_file: unused_import, unused_local_variable
 ```
 
 

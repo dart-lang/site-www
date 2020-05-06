@@ -55,9 +55,9 @@ see [Runtime errors](#common-errors-and-warnings).
 
 ### Undefined member
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the class.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
+<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the type.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
 ```nocode
-error • The <member> '...' isn't defined for the class '...' • undefined_<member>
+error • The <member> '...' isn't defined for the type '...' • undefined_<member>
 ```
 
 These errors can appear under the following conditions:
@@ -78,9 +78,9 @@ canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/context2D.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/"?>
 ```nocode
-error • The getter 'context2D' isn't defined for the class 'Element' • undefined_getter
+error • The getter 'context2D' isn't defined for the type 'Element' • undefined_getter
 ```
 
 #### Fix: Replace the definition of the member with an explicit type declaration or a downcast
@@ -146,9 +146,9 @@ var c = C(Iterable.empty()).collection;
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/add.*isn't defined for the class/"?>
+<?code-excerpt "strong/analyzer-results-stable.txt" retain="/add.*isn't defined for the type/"?>
 ```nocode
-error • The method 'add' isn't defined for the class 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
+error • The method 'add' isn't defined for the type 'Iterable'. • lib/bounded/instantiate_to_bound.dart:7:5 • undefined_method
 ```
 
 While the [List][] type has an `add()` method, [Iterable][] does not.
