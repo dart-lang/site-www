@@ -177,6 +177,8 @@ the author(s) of your package and to provide contact information.
 Each author could be either a single name
 (`Natalie Weizenbaum`) or a name and an email address
 (`Natalie Weizenbaum <nweiz@google.com>`).
+name and an email address
+(`Edd04 <danyeed89@google.com>`).
 However, these values weren't verified.
 
 The pub.dev site no longer displays package authors, and
