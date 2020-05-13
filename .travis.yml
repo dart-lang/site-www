@@ -22,7 +22,9 @@ env:
 matrix:
   allow_failures:
     - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: [beta, dev]
+      dart: beta
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
     
 before_install:
   - source ./tool/env-set.sh
