@@ -342,23 +342,6 @@ import 'util.dart';
 {% endprettify %}
 
 
-### PREFER placing external "package:" imports before other imports. {#prefer-placing-third-party-package-imports-before-other-imports}
-
-{% include linter-rule.html rule="directives_ordering" %}
-
-If you have a number of "package:" imports for your own package along with other
-external packages, place yours in a separate section after the external ones.
-
-{:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
-{% prettify dart tag=pre+code %}
-import 'package:bar/bar.dart';
-import 'package:foo/foo.dart';
-
-import 'package:my_package/util.dart';
-{% endprettify %}
-
-
 ### DO specify exports in a separate section after all imports.
 
 {% include linter-rule.html rule="directives_ordering" %}
