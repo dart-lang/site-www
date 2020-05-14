@@ -120,11 +120,6 @@ Follow these two rules:
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
 
-In summary, there is no profound reason to prefer the former—it's just shorter-
-but using a single style of imports within `lib` is required to avoid unexpected
-type duplication.
-
-
 ## Booleans
 
 ### DO use `??` to convert `null` to a boolean value.
