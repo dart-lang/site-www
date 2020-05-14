@@ -72,13 +72,13 @@ change to the package.
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
-### PREFER relative paths when importing libraries within your own package's `lib` directory.
+### DO use relative paths when importing libraries within your own package's `lib` directory.
 
 {% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
 
 When referencing a library inside your package's `lib` directory from another
-library in that same package, either a relative URI or an explicit `package:`
-will work.
+library in that same package, use a relative URI, not an explicit `package:`
+URI.
 
 For example, say your directory structure looks like:
 
@@ -104,9 +104,6 @@ And not:
 import 'package:my_package/src/utils.dart';
 {% endprettify %}
 
-There is no profound reason to prefer the former—it's just shorter, and we want
-to be consistent.
-
 The "within your own package's `lib` directory" part is important. Libraries
 inside `lib` can import other libraries inside `lib` (or in subdirectories of
 it). Libraries outside of `lib` can use relative imports to reach other
@@ -116,10 +113,17 @@ under `test` that other libraries in `test` import.
 But you can't "cross the streams". A library outside of `lib` should never use a
 relative import to reach a library under `lib`, or vice versa. Doing so will
 break Dart's ability to correctly tell if two library URIs refer to the same
-library. Follow these two rules:
+library, which can lead to unexpected duplicated types.
+
+Follow these two rules:
 
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
+
+In summary, there is no profound reason to prefer the former—it's just shorter-
+but using a single style of imports within `lib` is required to avoid unexpected
+type duplication.
+
 
 ## Booleans
 
