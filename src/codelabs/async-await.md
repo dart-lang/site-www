@@ -336,7 +336,7 @@ Your order is: Instance of _Future<String>
   return 'Your order is: $order';
 }
 
-[!Future<String>!]  fetchUserOrder() =>
+Future<String>  fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
