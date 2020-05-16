@@ -329,14 +329,14 @@ Your order is: Instance of _Future<String>
 <div class="col-sm" markdown="1">
 #### Example: asynchronous functions
 
-<?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^g])/[!$1!] $2/g; /4/2/g"?>
+<?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
 {% prettify dart tag=pre+code %}
-[!Future<String>!]  createOrderMessage() [!async!] {
+[!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
   return 'Your order is: $order';
 }
 
-Future<String>  fetchUserOrder() =>
+Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
@@ -344,7 +344,7 @@ Future<String>  fetchUserOrder() =>
       () => 'Large Latte',
     );
 
-[!Future<void>!]  main() [!async!] {
+[!Future<void>!] main() [!async!] {
   print('Fetching user order...');
   print([!await!] createOrderMessage());
 }
