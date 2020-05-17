@@ -76,7 +76,7 @@ Iterable<int> iterable = [1, 2, 3];
 
 The difference with a `List` is that with the `Iterable`,
 you can't guarantee that reading elements by index will be efficient.
-`Iterable`, as opposed as `List`, doesn't have the `[]` operator.
+`Iterable`, as opposed to `List`, doesn't have the `[]` operator.
 
 For example, consider the following code, which is **invalid**:
 
