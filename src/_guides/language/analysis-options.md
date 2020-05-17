@@ -271,10 +271,10 @@ include: package:effective_dart/analysis_options.yaml
 
 ### Enabling individual rules {#individual-rules}
 
-To enable a single linter rule, add `linter:` to the analysis options file,
-followed by `rules:`.
-On subsequent lines, specify the rules that you want to apply,
-prefixed with dashes. For example:
+To enable a single linter rule, add `linter:` to the analysis options file as a
+top-level key, followed by `rules:` as a second-level key. On subsequent lines,
+specify the rules that you want to apply, prefixed with dashes (the syntax for
+a YAML list). For example:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
 ```yaml
@@ -301,13 +301,11 @@ for more information.
 
 ### Disabling individual rules
 
-If you include an analysis options file such as the one in `pedantic`,
-you might want to disable some of the included rules.
-Disabling individual rules is similar to enabling them,
-but with two differences:
-
-* Omit the dash (`-`) before the rule name.
-* Add `: false` _after_ the rule name.
+If you include an analysis options file such as the one in `pedantic`, you
+might want to disable some of the included rules. Disabling individual rules
+is similar to enabling them, but requires the use of a map rather than a list
+as the value for the `rules:` entry, so each line should contain the name of
+a rule followed by either `: false` or `: true`.
 
 Here's an example of an analysis options file
 that uses all pedantic rules except `avoid_shadowing_type_parameters`.
