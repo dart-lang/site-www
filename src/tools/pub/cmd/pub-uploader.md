@@ -47,10 +47,13 @@ We have sent an invitation to bob@example.com, they will be added as uploader af
 Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
 
-<aside class="alert alert-warning" markdown="1">
-  The `pub uploader add <email>` command will send an invite that the invited user has to accept.
-  For this to work, the `email` specified _must_ be the primary email of the associated Google account.
-</aside>
+{{site.alert.important}}
+  The `pub uploader add <email>` command sends an invitation that
+  the invited user must accept.
+  For the invitation to work,
+  `<email>` must be the **primary email address** of
+  the associated Google account.
+{{site.alert.end}}
 
 ## Options
 
