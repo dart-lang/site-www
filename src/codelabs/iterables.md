@@ -33,11 +33,10 @@ Estimated time to complete this codelab: 60 minutes.
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-## Why do you need collections?
+## What are collections?
 
-Iterables are a kind of collection.
 A collection is an object that
-represents a group of objects, which are called _elements_.
+represents a group of objects, which are called _elements_. Iterables are a kind of collection.
 
 A collection can be empty, or it can contain many elements.
 Depending on the purpose,
@@ -48,7 +47,16 @@ These are some of the most common collection types:
 * [Set:][set class] Used to contain elements that can occur only once.
 * [Map:][map class] Used to read elements using a key.
 
-In Dart, both `List` and `Set` are `Iterable`,
+
+## What is an Iterable?
+
+An `Iterable` is a collection of elements that can be accessed sequentially.
+
+In Dart, an `Iterable` is an abstract class,
+meaning that you can't instantiate it directly.
+However, you can create a new `Iterable` by creating a new `List` or `Set`.
+
+Both `List` and `Set` are `Iterable`,
 so they have the same methods and properties as the `Iterable` class.
 
 A `Map` uses a different data structure internally,
@@ -58,14 +66,6 @@ in which the elements (also called _values_) are obtained using a key.
 Elements of a `Map` can also be read as `Iterable` objects
 by using the map's `entries` or `values` property.
 
-## What is an Iterable?
-
-An `Iterable` is a collection of elements that can be accessed sequentially.
-
-In Dart, an `Iterable` is an abstract class,
-meaning that you can't instantiate it directly.
-However, you can create a new `Iterable` by creating a new `List` or `Set`.
- 
 This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
