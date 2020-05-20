@@ -67,7 +67,7 @@ void miscDeclAnalyzedButNotTested() {
   /// ```dart
   /// min(5, 3) == 3
   /// ```
-  double min(double a, double b) => ellipsis();
+  num min(num a, num b) => ellipsis();
   // #enddocregion code-sample
 
   () {

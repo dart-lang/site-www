@@ -2635,11 +2635,11 @@ All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
-  double x; // Declare instance variable x, initially null.
-  double y; // Declare y, initially null.
+  double x;
+  double y;
 }
 
 void main() {

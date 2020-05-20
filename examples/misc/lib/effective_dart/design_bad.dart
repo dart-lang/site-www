@@ -72,7 +72,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   // #docregion inferred-wrong
-  int highScore(List<int> scores) {
+  num highScore(List<num> scores) {
     var highest = 0;
     for (var score in scores) {
       // ignore: invalid_assignment

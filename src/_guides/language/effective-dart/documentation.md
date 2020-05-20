@@ -286,7 +286,7 @@ class Chunk { ... }
 /// ```dart
 /// min(5, 3) == 3
 /// ```
-double min(double a, double b) => ...
+num min(num a, num b) => ...
 {% endprettify %}
 
 Humans are great at generalizing from examples, so even a single code sample
