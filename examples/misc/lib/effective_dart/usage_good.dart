@@ -345,7 +345,8 @@ class C {
   // #docregion use-arrow
   num get area => (right - left) * (bottom - top);
 
-  bool isReady(double time) => minTime == null || minTime <= time;
+  bool isReady(double time) =>
+      minTime == null || minTime <= time;
 
   String capitalize(String name) =>
       '${name[0].toUpperCase()}${name.substring(1)}';
