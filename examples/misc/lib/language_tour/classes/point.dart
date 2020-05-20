@@ -22,7 +22,7 @@ class Point {
 
   // Initializer list sets instance variables before
   // the constructor body runs.
-  Point.fromJson(Map<String, num> json)
+  Point.fromJson(Map<String, double> json)
       : x = json['x'],
         y = json['y'];
   // #docregion class-with-distanceTo
