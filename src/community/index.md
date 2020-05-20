@@ -17,6 +17,8 @@ For details, see our [code of conduct](/code-of-conduct).
   and other important news. Recommended!
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
+* [Dart blog](https://medium.com/dartlang) - 
+  The latest news and insights from a diverse group of Dart users.
 
 ## Join the conversation
 
