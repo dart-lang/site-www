@@ -139,7 +139,7 @@ stored in a [Git][] repository.
 {% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
-    git: git://github.com/munificent/kittens.git
+    git: git@github.com/munificent/kittens.git
 {% endprettify %}
 
 The `git` here says this package is found using Git, and the URL after that is
@@ -162,7 +162,7 @@ add a `ref` argument:
 dependencies:
   kittens:
     git:
-      url: git://github.com/munificent/kittens.git
+      url: git@github.com/munificent/kittens.git
       ref: some-branch
 {% endprettify %}
 
@@ -177,7 +177,7 @@ To specify a different location in the repo, use the `path` argument:
 dependencies:
   kittens:
     git:
-      url: git://github.com/munificent/cats.git
+      url: git@github.com/munificent/cats.git
       path: path/to/kittens
 {% endprettify %}
 
