@@ -4,13 +4,13 @@ description: Watch this space for news about null safety
 toc: false
 ---
 
-Watch this page for updates about null safety,
-including a migration guide.
+Watch this page for updates about null safety.
 In the meantime, check out these resources:
 
-* Null-safe playground:
-  [nullsafety.dartpad.dev][]
+* [Null-safe playground: nullsafety.dartpad.dev][nullsafety.dartpad.dev]
 * [Null safety tracking issue][110]
+* [Dart announcements group][Dart announce]
+* [Dart blog][]
 
 Here's some background about null safety
 from the [Dart 2.8 announcement:][Announcing Dart 2.8]
@@ -34,6 +34,8 @@ from the [Dart 2.8 announcement:][Announcing Dart 2.8]
   the type system guarantees that a variable isn’t null.
 </blockquote>
 
-[nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [110]: https://github.com/dart-lang/language/issues/110
 [Announcing Dart 2.8]: https://medium.com/dartlang/announcing-dart-2-8-7750918db0a
+[Dart announce]: {{site.group}}/d/forum/announce
+[Dart blog]: https://medium.com/dartlang
+[nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
