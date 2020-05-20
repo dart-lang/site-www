@@ -31,7 +31,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (String name, num year, num birth) {
+  (String name, int year, int birth) {
     // #docregion string-interpolation
     'Hello, $name! You are ${year - birth} years old.';
     // #enddocregion string-interpolation
@@ -300,12 +300,12 @@ class LazyId {
 
 // #docregion cacl-vs-store
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store
 
@@ -345,15 +345,15 @@ class C {
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);
 
-  bool isReady(num time) => minTime == null || minTime <= time;
+  bool isReady(double time) => minTime == null || minTime <= time;
 
   String capitalize(String name) =>
       '${name[0].toUpperCase()}${name.substring(1)}';
   // #enddocregion use-arrow
 
   // #docregion arrow-setter
-  num get x => center.x;
-  set x(num value) => center = Point(value, center.y);
+  double get x => center.x;
+  set x(double value) => center = Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
@@ -433,7 +433,7 @@ class Folder {
 
 // #docregion field-init-as-param
 class Point0 {
-  num x, y;
+  double x, y;
   Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param

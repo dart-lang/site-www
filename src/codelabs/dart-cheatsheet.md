@@ -644,7 +644,7 @@ Dart supports named constructors:
 <?code-excerpt "misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
-  num x, y;
+  double x, y;
 
   Point(this.x, this.y);
 

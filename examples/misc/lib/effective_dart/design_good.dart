@@ -184,8 +184,8 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   // #docregion inferred-wrong
-  num highScore(List<num> scores) {
-    num highest = 0;
+  int highScore(List<int> scores) {
+    int highest = 0;
     for (var score in scores) {
       if (score > highest) highest = score;
     }

@@ -51,7 +51,7 @@ void main() {
     assert(p.y == 3);
 
     // Invoke distanceTo() on p.
-    num distance = p.distanceTo(Point(4, 4));
+    double distance = p.distanceTo(Point(4, 4));
     // #enddocregion object-members
 
     // #docregion safe-member-access

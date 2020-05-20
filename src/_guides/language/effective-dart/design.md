@@ -1272,8 +1272,8 @@ can later assign some other sibling type to the variable:
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
 {% prettify dart tag=pre+code %}
-num highScore(List<num> scores) {
-  num highest = 0;
+int highScore(List<int> scores) {
+  int highest = 0;
   for (var score in scores) {
     if (score > highest) highest = score;
   }
@@ -1284,7 +1284,7 @@ num highScore(List<num> scores) {
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
 {% prettify dart tag=pre+code %}
-num highScore(List<num> scores) {
+int highScore(List<int> scores) {
   var highest = 0;
   for (var score in scores) {
     if (score > highest) highest = score;

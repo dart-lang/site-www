@@ -16,7 +16,7 @@ void _samplesFromCommonProblemsPage() {
   }
 
   {
-    num x, y;
+    double x, y;
     // #docregion canvas-error
     var canvas = querySelector('canvas');
     // ignore_for_file: stable, dev, undefined_getter

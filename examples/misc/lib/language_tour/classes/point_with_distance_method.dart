@@ -2,10 +2,10 @@
 import 'dart:math';
 
 class Point {
-  num x, y;
+  double x, y;
   Point(this.x, this.y);
 
-  static num distanceBetween(Point a, Point b) {
+  static double distanceBetween(Point a, Point b) {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
     return sqrt(dx * dx + dy * dy);

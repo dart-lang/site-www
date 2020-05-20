@@ -2,7 +2,7 @@
 
 // #docregion
 class Point {
-  num x, y;
+  double x, y;
 
   Point(this.x, this.y);
 

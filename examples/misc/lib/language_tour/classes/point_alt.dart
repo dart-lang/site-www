@@ -6,9 +6,9 @@
 ///
 // #docregion constructor-long-way
 class Point {
-  num x, y;
+  double x, y;
 
-  Point(num x, num y) {
+  Point(double x, double y) {
     // There's a better way to do this, stay tuned.
     this.x = x;
     this.y = y;

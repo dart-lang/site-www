@@ -1475,8 +1475,8 @@ returned function goes, it remembers `addBy`.
 ```dart
 /// Returns a function that adds [addBy] to the
 /// function's argument.
-Function makeAdder(num addBy) {
-  return (num i) => addBy + i;
+Function makeAdder(int addBy) {
+  return (int i) => addBy + i;
 }
 
 void main() {
@@ -2496,7 +2496,7 @@ p.y = 3;
 assert(p.y == 3);
 
 // Invoke distanceTo() on p.
-num distance = p.distanceTo(Point(4, 4));
+double distance = p.distanceTo(Point(4, 4));
 ```
 
 Use `?.` instead of `.` to avoid an exception
@@ -2623,9 +2623,9 @@ Here’s how you declare instance variables:
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class)"?>
 ```dart
 class Point {
-  num x; // Declare instance variable x, initially null.
-  num y; // Declare y, initially null.
-  num z = 0; // Declare z, initially 0.
+  double x; // Declare instance variable x, initially null.
+  double y; // Declare y, initially null.
+  double z = 0; // Declare z, initially 0.
 }
 ```
 
@@ -2638,8 +2638,8 @@ see [Getters and setters](#getters-and-setters).
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
-  num x;
-  num y;
+  double x; // Declare instance variable x, initially null.
+  double y; // Declare y, initially null.
 }
 
 void main() {
@@ -2667,9 +2667,9 @@ a new instance of a class:
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 ```dart
 class Point {
-  num x, y;
+  double x, y;
 
-  Point(num x, num y) {
+  Point(double x, double y) {
     // There's a better way to do this, stay tuned.
     this.x = x;
     this.y = y;
@@ -2690,7 +2690,7 @@ is so common, Dart has syntactic sugar to make it easy:
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  num x, y;
+  double x, y;
 
   // Syntactic sugar for setting x and y
   // before the constructor body runs.
@@ -2718,7 +2718,7 @@ or to provide extra clarity:
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
+  double x, y;
 
   Point(this.x, this.y);
 
@@ -2869,11 +2869,11 @@ https://gist.github.com/Sfshaza/7a9764702c0608711e08
 import 'dart:math';
 
 class Point {
-  final num x;
-  final num y;
-  final num distanceFromOrigin;
+  final double x;
+  final double y;
+  final double distanceFromOrigin;
 
-  Point(num x, num y)
+  Point(double x, double y)
       : x = x,
         y = y,
         distanceFromOrigin = sqrt(x * x + y * y);
@@ -2903,13 +2903,13 @@ empty, with the constructor call appearing after a colon (:).
 <?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
 ```dart
 class Point {
-  num x, y;
+  double x, y;
 
   // The main constructor for this class.
   Point(this.x, this.y);
 
   // Delegates to the main constructor.
-  Point.alongXAxis(num x) : this(x, 0);
+  Point.alongXAxis(double x) : this(x, 0);
 }
 ```
 
@@ -2925,7 +2925,7 @@ class ImmutablePoint {
   static final ImmutablePoint origin =
       const ImmutablePoint(0, 0);
 
-  final num x, y;
+  final double x, y;
 
   const ImmutablePoint(this.x, this.y);
 }
@@ -2998,11 +2998,11 @@ instance method:
 import 'dart:math';
 
 class Point {
-  num x, y;
+  double x, y;
 
   Point(this.x, this.y);
 
-  num distanceTo(Point other) {
+  double distanceTo(Point other) {
     var dx = x - other.x;
     var dy = y - other.y;
     return sqrt(dx * dx + dy * dy);
@@ -3021,15 +3021,15 @@ additional properties by implementing getters and setters, using the
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 ```dart
 class Rectangle {
-  num left, top, width, height;
+  double left, top, width, height;
 
   Rectangle(this.left, this.top, this.width, this.height);
 
   // Define two calculated properties: right and bottom.
-  num get right => left + width;
-  set right(num value) => left = value - width;
-  num get bottom => top + height;
-  set bottom(num value) => top = value - height;
+  double get right => left + width;
+  set right(double value) => left = value - width;
+  double get bottom => top + height;
+  set bottom(double value) => top = value - height;
 }
 
 void main() {
@@ -3473,10 +3473,10 @@ do not have access to `this`. For example:
 import 'dart:math';
 
 class Point {
-  num x, y;
+  double x, y;
   Point(this.x, this.y);
 
-  static num distanceBetween(Point a, Point b) {
+  static double distanceBetween(Point a, Point b) {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
     return sqrt(dx * dx + dy * dy);
