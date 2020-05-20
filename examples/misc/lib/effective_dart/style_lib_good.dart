@@ -21,13 +21,11 @@ import 'package:js/js.dart' as js;
 import 'dart:async';
 import 'dart:html';
 
-// #docregion pkg-import-before-local, third-party, sorted
+// #docregion pkg-import-before-local, sorted
 import 'package:examples/effective_dart/bar/bar.dart';
 import 'package:examples/effective_dart/foo/foo.dart';
 // #enddocregion dart-import-first, pkg-import-before-local, sorted
 
-import 'package:examples/effective_dart/foo.dart';
-// #enddocregion third-party
 // #docregion pkg-import-before-local, sorted
 
 import 'foo.dart';

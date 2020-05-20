@@ -17,6 +17,7 @@ Quick links to the `pub` commands:
 * [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
 * [`pub get`](/tools/pub/cmd/pub-get)
 * [`pub global`](/tools/pub/cmd/pub-global)
+* [`pub outdated`](/tools/pub/cmd/pub-outdated)
 * [`pub publish`](/tools/pub/cmd/pub-lish)
 * [`pub run`](/tools/pub/cmd/pub-run)
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
@@ -66,6 +67,12 @@ or any modification of the pubspec.
   If a `pubspec.lock` file already exists, fetches the version
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
+
+[`pub outdated`](/tools/pub/cmd/pub-outdated)
+: Looks at every package that the current package depends on,
+  determines which package dependencies are out of date,
+  and gives you advice on how to update them.
+  Use this command when you want to update package dependencies.
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed

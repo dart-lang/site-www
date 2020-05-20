@@ -155,13 +155,13 @@ class VersionSelector {
           ..attributes['data-os'] = archiveMap[name];
         var versionCell = row.addCell()..text = versionInfo.version.toString();
         versionCell.append(SpanElement()
-          ..text = '(${_prettyRevRef(versionInfo)})'
+          ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
         row.addCell()..text = name;
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
-        var possibleArchives = ['Dart SDK', 'Dartium'];
+        var possibleArchives = ['Dart SDK', 'Debian package'];
         var c = row.addCell()..classes.add('archives');
 
         for (var pa in possibleArchives) {
@@ -172,36 +172,27 @@ class VersionSelector {
               continue;
             }
 
-            if (pa == 'Dartium') {
-              // Dropped all Dartium after 1.24.
-              if (versionInfo.version > Version(1, 24, 0)) {
+            String baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
+                '${archiveMap[platformVariant.architecture]}';
+
+            if (pa == 'Debian package') {
+              // Debian packages start with 2.0.0
+              if (versionInfo.version < Version(2, 0, 0)) {
                 continue;
-              }
-
-              // Dropped Dartium Mac 32-bit in 1.20.
-              if (name == 'Mac') {
-                var is120OrHigher = versionInfo.version > Version(1, 19, 0);
-                // no 32-bit build with >= 1.20
-                if (is120OrHigher && platformVariant.architecture == 'ia32') {
-                  continue;
-                }
-
-                // no 64-bit build with < 1.20
-                if (!is120OrHigher && platformVariant.architecture == 'x64') {
-                  continue;
-                }
+              } else {
+                baseFileName = 'dart_${_versionString(versionInfo)}';
               }
             }
 
             var uri =
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
-                '/${directoryMap[pa]}/${archiveMap[pa]}-${archiveMap[name]}-'
-                '${archiveMap[platformVariant.architecture]}${suffixMap[pa]}';
+                '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
 
             c.append(AnchorElement()
               ..text = pa
               ..attributes['href'] = uri);
             if (pa != 'Dart Editor' &&
+                pa != 'Debian package' &&
                 (_svnRevision(versionInfo) == null ||
                     _svnRevision(versionInfo) > 38976)) {
               c.appendText(' ');
@@ -216,11 +207,12 @@ class VersionSelector {
       }
     }
 
+    // Add DartDoc archive.
     var row = _table.tBodies.first.addRow()
       ..attributes['data-version'] = versionInfo.version.toString()
       ..attributes['data-os'] = 'api';
     var rev = SpanElement()
-      ..text = '  (${_prettyRevRef(versionInfo)})'
+      ..text = ' (${_prettyRevRef(versionInfo)})'
       ..classes.add('muted');
     row.addCell()
       ..text = versionInfo.version.toString()
@@ -228,9 +220,8 @@ class VersionSelector {
     row.addCell()..text = '---';
     row.addCell()..text = '---';
     var c = row.addCell()..classes.add('archives');
-    var uri =
-        '$_storageBase/channels/$channel/release/${versionInfo.version}/' +
-            'api-docs/dartdocs-gen-api.zip';
+    var uri = '$_storageBase/channels/$channel/release/' +
+        '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
     c.append(AnchorElement()
       ..text = 'API docs'
       ..attributes['href'] = uri);

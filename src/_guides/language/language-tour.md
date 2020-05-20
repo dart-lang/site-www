@@ -147,7 +147,7 @@ The following table lists the words that the Dart language treats specially.
 | [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
 | [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
 | [async][]{{ckw}}      | [extends][]           | [is][]                | [this][]          |
-| [await][]{{lrw}}      | [extension][]{{ckw}}  | [library][]{{bii}}    | [throw][]         |
+| [await][]{{lrw}}      | [extension][]{{bii}}  | [library][]{{bii}}    | [throw][]         |
 | [break][]             | [external][]{{bii}}   | [mixin][]{{bii}}      | [true][]          |
 | [case][]              | [factory][]{{bii}}    | [new][]               | [try][]           |
 | [catch][]             | [false][]             | [null][]              | [typedef][]{{bii}}|

@@ -1,5 +1,5 @@
 language: dart
-dart: [stable, dev]
+dart: [stable, beta, dev]
 
 cache:
   timeout: 300
@@ -21,6 +21,8 @@ env:
 
 matrix:
   allow_failures:
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: beta
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
     
