@@ -5,7 +5,7 @@ import 'dart:html';
 
 // Include in this file only excerpts used to illustrate fixes to common problems.
 void _samplesFromCommonProblemsPage() {
-  num x, y;
+  double x, y;
 
   {
     // #docregion canvas-as

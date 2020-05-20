@@ -4,7 +4,7 @@ import 'dart:math';
 
 // #docregion constructor-initializer, named-constructor
 class Point {
-  num x, y;
+  double x, y;
 
   // #enddocregion class-with-distanceTo, named-constructor
   // Syntactic sugar for setting x and y
@@ -22,12 +22,12 @@ class Point {
 
   // Initializer list sets instance variables before
   // the constructor body runs.
-  Point.fromJson(Map<String, num> json)
+  Point.fromJson(Map<String, double> json)
       : x = json['x'],
         y = json['y'];
   // #docregion class-with-distanceTo
 
-  num distanceTo(Point other) {
+  double distanceTo(Point other) {
     var dx = x - other.x;
     var dy = y - other.y;
     return sqrt(dx * dx + dy * dy);

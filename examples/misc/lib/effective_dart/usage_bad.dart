@@ -39,7 +39,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (String name, num year, num birth) {
+  (String name, int year, int birth) {
     // #docregion string-interpolation
     'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
     // #enddocregion string-interpolation
@@ -283,11 +283,11 @@ class LazyId {
 
 // #docregion cacl-vs-store1
 class Circle1 {
-  num radius;
-  num area;
-  num circumference;
+  double radius;
+  double area;
+  double circumference;
 
-  Circle1(num radius)
+  Circle1(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
@@ -298,18 +298,18 @@ class Circle1 {
 
 // #docregion cacl-vs-store2
 class Circle2 {
-  num _radius;
-  num get radius => _radius;
-  set radius(num value) {
+  double _radius;
+  double get radius => _radius;
+  set radius(double value) {
     _radius = value;
     _recalculate();
   }
 
-  num _area;
-  num get area => _area;
+  double _area;
+  double get area => _area;
 
-  num _circumference;
-  num get circumference => _circumference;
+  double _circumference;
+  double get circumference => _circumference;
 
   Circle2(this._radius) {
     _recalculate();
@@ -375,8 +375,8 @@ class Folder {
 
 // #docregion field-init-as-param
 class Point0 {
-  num x, y;
-  Point0(num x, num y) {
+  double x, y;
+  Point0(double x, double y) {
     this.x = x;
     this.y = y;
   }

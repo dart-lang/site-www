@@ -2,11 +2,11 @@
 import 'dart:math';
 
 class Point {
-  final num x;
-  final num y;
-  final num distanceFromOrigin;
+  final double x;
+  final double y;
+  final double distanceFromOrigin;
 
-  Point(num x, num y)
+  Point(double x, double y)
       : x = x,
         y = y,
         distanceFromOrigin = sqrt(x * x + y * y);

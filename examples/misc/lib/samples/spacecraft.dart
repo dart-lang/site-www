@@ -32,7 +32,7 @@ class Spacecraft {
 
 // #docregion extends
 class Orbiter extends Spacecraft {
-  num altitude;
+  double altitude;
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }

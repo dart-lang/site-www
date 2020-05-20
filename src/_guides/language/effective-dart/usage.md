@@ -786,11 +786,11 @@ constructor and then stores them:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
-  num area;
-  num circumference;
+  double radius;
+  double area;
+  double circumference;
 
-  Circle(num radius)
+  Circle(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
@@ -814,18 +814,18 @@ To correctly handle cache invalidation, we need to do this:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num _radius;
-  num get radius => _radius;
-  set radius(num value) {
+  double _radius;
+  double get radius => _radius;
+  set radius(double value) {
     _radius = value;
     _recalculate();
   }
 
-  num _area;
-  num get area => _area;
+  double _area;
+  double get area => _area;
 
-  num _circumference;
-  num get circumference => _circumference;
+  double _circumference;
+  double get circumference => _circumference;
 
   Circle(this._radius) {
     _recalculate();
@@ -845,12 +845,12 @@ first implementation should be:
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 {% endprettify %}
 
@@ -944,9 +944,10 @@ and return a value.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart tag=pre+code %}
-double get area => (right - left) * (bottom - top);
+num get area => (right - left) * (bottom - top);
 
-bool isReady(num time) => minTime == null || minTime <= time;
+bool isReady(double time) =>
+    minTime == null || minTime <= time;
 
 String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
@@ -1132,8 +1133,8 @@ Many fields are initialized directly from a constructor parameter, like:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
-  Point(num x, num y) {
+  double x, y;
+  Point(double x, double y) {
     this.x = x;
     this.y = y;
   }
@@ -1146,7 +1147,7 @@ We've got to type `x` _four_ times here to define a field. We can do better:
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -1167,7 +1168,7 @@ of the parameter is understood to be the same type as the field.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -1193,7 +1194,7 @@ semicolon. (In fact, it's required for const constructors.)
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
