@@ -944,7 +944,7 @@ and return a value.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart tag=pre+code %}
-double get area => (right - left) * (bottom - top);
+num get area => (right - left) * (bottom - top);
 
 bool isReady(double time) => minTime == null || minTime <= time;
 
@@ -985,8 +985,8 @@ when a setter is small and has a corresponding getter that uses `=>`.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
 {% prettify dart tag=pre+code %}
-double get x => center.x;
-set x(double value) => center = Point(value, center.y);
+num get x => center.x;
+set x(num value) => center = Point(value, center.y);
 {% endprettify %}
 
 
@@ -1167,7 +1167,7 @@ of the parameter is understood to be the same type as the field.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -1193,7 +1193,7 @@ semicolon. (In fact, it's required for const constructors.)
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}

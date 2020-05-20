@@ -338,12 +338,12 @@ class Treasure {
 }
 
 class C {
-  double left, right, top, bottom, minTime;
+  num left, right, top, bottom, minTime;
   Point center;
   Map<Chest, Treasure> _opened;
 
   // #docregion use-arrow
-  double get area => (right - left) * (bottom - top);
+  num get area => (right - left) * (bottom - top);
 
   bool isReady(double time) => minTime == null || minTime <= time;
 
@@ -352,8 +352,8 @@ class C {
   // #enddocregion use-arrow
 
   // #docregion arrow-setter
-  double get x => center.x;
-  set x(double value) => center = Point(value, center.y);
+  num get x => center.x;
+  set x(num value) => center = Point(value, center.y);
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
@@ -442,7 +442,7 @@ class Point0 {
 
 // #docregion dont-type-init-formals
 class Point1 {
-  int x, y;
+  double x, y;
   Point1(this.x, this.y);
 }
 // #enddocregion dont-type-init-formals
@@ -451,7 +451,7 @@ class Point1 {
 
 // #docregion semicolon-for-empty-body
 class Point2 {
-  int x, y;
+  double x, y;
   Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
