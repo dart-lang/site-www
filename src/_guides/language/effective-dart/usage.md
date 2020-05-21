@@ -944,7 +944,7 @@ and return a value.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart tag=pre+code %}
-num get area => (right - left) * (bottom - top);
+double get area => (right - left) * (bottom - top);
 
 bool isReady(double time) =>
     minTime == null || minTime <= time;
