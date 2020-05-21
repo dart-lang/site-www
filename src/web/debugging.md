@@ -121,9 +121,11 @@ but you'll need to adjust the instructions to match your app.
 
    * If Dart Debug Extension is installed and
      you used the `--debug-extension` flag to `webdev`,
-     click the Dart logo at the top right of the browser window.
-     **[PENDING: screenshot of some sort.]**
-
+     click the Dart logo
+     {% asset shared/dart/icon/64.png width="16px" alt="Dart logo"
+     class="align-baseline" %}
+     at the top right of the browser window.
+     
    * If you used the `--debug` flag to `webdev`,
      press <kbd>Alt</kbd>+<kbd>D</kbd>
      (or <kbd>Option</kbd>+<kbd>D</kbd> on Mac).
@@ -156,15 +158,10 @@ but you'll need to adjust the instructions to match your app.
 
 1. Change your source code and reload the Chrome window that's running the app.
    The app quickly rebuilds and reloads.
-   **[PENDING: mention something about losing your breakpoints?]**
+   Until [issue 1925][] is fixed,
+   you lose your breakpoints when reloading the app.
 
 1. Click the **Logging** button to see stdout, stderr, and system logs.
-
-1. **[PENDING: Is there anything else they should try?]**
-
-## Debugging with browser-specific tools
-
-
 
 
 ## Getting command-line tool packages
@@ -223,6 +220,7 @@ For more information, see the following:
 [dartdevc FAQ]: /tools/dartdevc/faq
 [devtools-pkg]: {{site.pub-pkg}}/devtools
 [Google Chrome]: https://www.google.com/chrome
+[issue 1925]: https://github.com/flutter/devtools/issues/1925
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
