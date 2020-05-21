@@ -184,6 +184,12 @@ uncaught exceptions, and perhaps on all exceptions. For frameworks such
 as dart:async that wrap user code in try-catch, we
 recommend pausing on all exceptions.
 
+For information on debugging dartdevc-produced code, see the documentation for
+[debugging web apps][].
+
+[debugging web apps]: /web/debugging
+
+
 ### Chrome {#dart2js-debugging-chrome}
 
 To debug in Chrome:

@@ -56,6 +56,10 @@ to debug a Dart web app, you need the following software:
 
 [cl-tools]: #getting-webdev-and-devtools
 
+If you need to debug dart2js-produced code
+or can't use the Chrome browser to debug, see the tips in the
+[dart2js debugging section][dart2js-debug].
+
 
 ## Getting started with Dart DevTools {#using-dart-devtools}
 
@@ -158,6 +162,10 @@ but you'll need to adjust the instructions to match your app.
 
 1. **[PENDING: Is there anything else they should try?]**
 
+## Debugging with browser-specific tools
+
+
+
 
 ## Getting command-line tool packages
 
@@ -201,6 +209,7 @@ For more information, see the following:
 * [dartdevc FAQ][]
 * [webdev tool documentation][webdev]
 * [webdev package documentation][webdev-pkg]
+* [Tips for debugging dart2js-produced code][dart2js-debug]
 
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
@@ -209,6 +218,7 @@ For more information, see the following:
 [IDE]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
 [Dart web app]: /web
+[dart2js-debug]: /tools/dart2js#debugging
 [dartdevc]: /tools/dartdevc
 [dartdevc FAQ]: /tools/dartdevc/faq
 [devtools-pkg]: {{site.pub-pkg}}/devtools

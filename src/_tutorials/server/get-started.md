@@ -116,8 +116,8 @@ $ dart bin/main.dart
 Hello world: 42!
 ```
 
-If you wish run the app with debugging support, see
-[DevTools](/tools/dart-devtools).
+If you want to run the app with debugging support, see
+[Dart DevTools](/tools/dart-devtools).
 
 ## 7. Modify the app
 
