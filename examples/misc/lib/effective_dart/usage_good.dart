@@ -338,12 +338,12 @@ class Treasure {
 }
 
 class C {
-  num left, right, top, bottom, minTime;
+  double left, right, top, bottom, minTime;
   Point center;
   Map<Chest, Treasure> _opened;
 
   // #docregion use-arrow
-  num get area => (right - left) * (bottom - top);
+  double get area => (right - left) * (bottom - top);
 
   bool isReady(double time) =>
       minTime == null || minTime <= time;
