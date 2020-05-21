@@ -124,8 +124,8 @@ void main() {
     // #docregion function-closure
     /// Returns a function that adds [addBy] to the
     /// function's argument.
-    Function makeAdder(num addBy) {
-      return (num i) => addBy + i;
+    Function makeAdder(int addBy) {
+      return (int i) => addBy + i;
     }
 
     void main() {

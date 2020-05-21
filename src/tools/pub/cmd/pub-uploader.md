@@ -18,17 +18,17 @@ $ pub uploader [options] {add/remove} <email>
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
-package on the [pub.dev site]({{site.pub}}) to add or remove
+package on the [pub.dev site]({{site.pub}}) to add (invite) or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:
 
 ```terminal
 ~/code/transmogrify$ pub uploader add bob@example.com
-'bob@example.com' added as an uploader for package 'transmogrify'.
+We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 
 ~/code/transmogrify$ pub uploader remove bob@example.com
-'bob@example.com' is no longer an uploader for package 'transmogrify'.
+Successfully removed uploader from package.
 ```
 
 If a package has only one uploader, that uploader can't be removed. You can
@@ -41,11 +41,19 @@ package by name. For example:
 
 ```terminal
 $ pub uploader --package=transmogrify add bob@example.com
-'bob@example.com' added as an uploader for package 'transmogrify'.
+We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 ```
 
 Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
+
+{{site.alert.important}}
+  The `pub uploader add <email>` command sends an invitation that
+  the invited user must accept.
+  For the invitation to work,
+  `<email>` must be the **primary email address** of
+  the associated Google account.
+{{site.alert.end}}
 
 ## Options
 

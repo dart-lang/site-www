@@ -31,7 +31,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (String name, num year, num birth) {
+  (String name, int year, int birth) {
     // #docregion string-interpolation
     'Hello, $name! You are ${year - birth} years old.';
     // #enddocregion string-interpolation
@@ -300,12 +300,12 @@ class LazyId {
 
 // #docregion cacl-vs-store
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store
 
@@ -345,7 +345,8 @@ class C {
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);
 
-  bool isReady(num time) => minTime == null || minTime <= time;
+  bool isReady(double time) =>
+      minTime == null || minTime <= time;
 
   String capitalize(String name) =>
       '${name[0].toUpperCase()}${name.substring(1)}';
@@ -433,7 +434,7 @@ class Folder {
 
 // #docregion field-init-as-param
 class Point0 {
-  num x, y;
+  double x, y;
   Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
@@ -442,7 +443,7 @@ class Point0 {
 
 // #docregion dont-type-init-formals
 class Point1 {
-  int x, y;
+  double x, y;
   Point1(this.x, this.y);
 }
 // #enddocregion dont-type-init-formals
@@ -451,7 +452,7 @@ class Point1 {
 
 // #docregion semicolon-for-empty-body
 class Point2 {
-  int x, y;
+  double x, y;
   Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body

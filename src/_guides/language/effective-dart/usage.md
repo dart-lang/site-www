@@ -72,13 +72,13 @@ change to the package.
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
-### PREFER relative paths when importing libraries within your own package's `lib` directory.
+### DO use relative paths when importing libraries within your own package's `lib` directory.
 
 {% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
 
 When referencing a library inside your package's `lib` directory from another
-library in that same package, either a relative URI or an explicit `package:`
-will work.
+library in that same package, use a relative URI, not an explicit `package:`
+URI.
 
 For example, say your directory structure looks like:
 
@@ -104,9 +104,6 @@ And not:
 import 'package:my_package/src/utils.dart';
 {% endprettify %}
 
-There is no profound reason to prefer the former—it's just shorter, and we want
-to be consistent.
-
 The "within your own package's `lib` directory" part is important. Libraries
 inside `lib` can import other libraries inside `lib` (or in subdirectories of
 it). Libraries outside of `lib` can use relative imports to reach other
@@ -116,7 +113,9 @@ under `test` that other libraries in `test` import.
 But you can't "cross the streams". A library outside of `lib` should never use a
 relative import to reach a library under `lib`, or vice versa. Doing so will
 break Dart's ability to correctly tell if two library URIs refer to the same
-library. Follow these two rules:
+library, which can lead to unexpected duplicated types.
+
+Follow these two rules:
 
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
@@ -787,11 +786,11 @@ constructor and then stores them:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
-  num area;
-  num circumference;
+  double radius;
+  double area;
+  double circumference;
 
-  Circle(num radius)
+  Circle(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
@@ -815,18 +814,18 @@ To correctly handle cache invalidation, we need to do this:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num _radius;
-  num get radius => _radius;
-  set radius(num value) {
+  double _radius;
+  double get radius => _radius;
+  set radius(double value) {
     _radius = value;
     _recalculate();
   }
 
-  num _area;
-  num get area => _area;
+  double _area;
+  double get area => _area;
 
-  num _circumference;
-  num get circumference => _circumference;
+  double _circumference;
+  double get circumference => _circumference;
 
   Circle(this._radius) {
     _recalculate();
@@ -846,12 +845,12 @@ first implementation should be:
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 {% endprettify %}
 
@@ -947,7 +946,8 @@ and return a value.
 {% prettify dart tag=pre+code %}
 double get area => (right - left) * (bottom - top);
 
-bool isReady(num time) => minTime == null || minTime <= time;
+bool isReady(double time) =>
+    minTime == null || minTime <= time;
 
 String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
@@ -1133,8 +1133,8 @@ Many fields are initialized directly from a constructor parameter, like:
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
-  Point(num x, num y) {
+  double x, y;
+  Point(double x, double y) {
     this.x = x;
     this.y = y;
   }
@@ -1147,7 +1147,7 @@ We've got to type `x` _four_ times here to define a field. We can do better:
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -1168,7 +1168,7 @@ of the parameter is understood to be the same type as the field.
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -1194,7 +1194,7 @@ semicolon. (In fact, it's required for const constructors.)
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
