@@ -12,8 +12,6 @@ prevpage:
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * Knowledge of asynchronous programming with futures and streams
-    is a prerequisite.
   * The HTTP protocol allows clients and servers to communicate.
   * The dart:io package has classes for writing HTTP programs.
   * Servers listen for requests on a host and port.
