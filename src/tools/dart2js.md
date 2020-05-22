@@ -30,15 +30,14 @@ This command produces a file that contains the JavaScript equivalent of your
 Dart code. It also produces a source map, which can help you debug the
 JavaScript version of the app more easily.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.note}}
   The <code>-O<em>n</em></code> argument specifies the optimization level.
   We recommend starting at `-O1` (the default) and then increasing to `-O2` or
   higher when you're ready to deploy.
   The `-O3` and `-O4` optimization levels are suitable only for
   **well tested code** ([see the <code>-O<em>n</em></code> descriptions,
   below](#basic-options)).
-</aside>
+{{site.alert.end}}
 
 
 ## Build config usage
@@ -75,25 +74,22 @@ Common command-line options for dart2js include:
   * `-O2`: Enables `-O1` optimizations, plus additional ones
     (such as minification) that respect the language semantics and
     are safe for all programs.
-    <aside class="alert alert-info" markdown="1">
-      **Note:**
+    {{site.alert.note}}
       With `-O2`, string representations of types are no longer the same as
       those in the Dart VM and [dartdevc][].
-    </aside>
+    {{site.alert.end}}
   * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
-    <aside class="alert alert-warning" markdown="1">
-      **Warning:**
+    {{site.alert.warning}}
       Omitting type checks can cause your app to crash due to type errors.
       Before using `-O3`, **test using `-O2`** to ensure that your app
       **never** throws a subtype of `Error` (such as `TypeError`).
-    </aside>
+    {{site.alert.end}}
   * `-O4`: Enables more aggressive optimizations than `-O3`,
     but with the same assumptions.
-    <aside class="alert alert-warning" markdown="1">
-      **Warning:**
+    {{site.alert.warning}}
       The `-O4` optimizations are susceptible to variations in input data.
       Before relying on `-O4`, **test for edge cases in user input**.
-    </aside>
+    {{site.alert.end}}
 
 `-h` or `--help`
 : Displays help. To get information about all options, use `-hv`.
@@ -164,13 +160,12 @@ Follow these practices to help dart2js do better type inference, so it can gener
 * Be consistent with the types of arguments you pass into each function or
   method.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.tip}}
   Don’t worry about the size of your app’s included libraries. The dart2js tool
   performs tree shaking to omit unused classes, functions, methods, and so on.
   Just import the libraries you need, and let dart2js get rid of what you don’t
   need.
-</aside>
+{{site.alert.end}}
 
 
 ## Debugging {#debugging}
@@ -179,10 +174,18 @@ This section gives tips for debugging dart2js-produced code in Chrome, Firefox,
 and Safari. Debugging the JavaScript produced by dart2js is easiest in
 browsers such as Chrome that support source maps.
 
+{{site.alert.tip}}
+  Whenever possible, instead of debugging dart2js-produced code,
+  [debug dartdevc-produced code][debugging web apps].
+{{site.alert.end}}
+
 Whichever browser you use, you should enable pausing on at least
 uncaught exceptions, and perhaps on all exceptions. For frameworks such
 as dart:async that wrap user code in try-catch, we
 recommend pausing on all exceptions.
+
+[debugging web apps]: /web/debugging
+
 
 ### Chrome {#dart2js-debugging-chrome}
 

@@ -5,13 +5,113 @@ description: A suite of debugging and performance tools.
 
 Dart DevTools is a suite of debugging and performance tools
 for Dart and Flutter.
+These tools are distributed in IDEs, the `flutter` tool, the `webdev` tool,
+and the [devtools package.][devtools package]
+
+The following table shows which tools
+you can use with common Dart app types.
+
+{% assign y = '<span class="material-icons" title="supported">done</span>' %}
+{% assign b = '&nbsp;' %}
+{% assign na = '&nbsp;' %}
+{% comment %}
+  Considered using this instead:
+  assign b = '<span class="material-icons" title="use browser tools instead">web</span>'
+{% endcomment %}
+
+<div class="table-wrapper" markdown="1">
+<table class="table table-striped" markdown="1">
+  <thead>
+    <tr markdown="1">
+      <th>&nbsp;</th>
+      <th scope="col" markdown="1">[Flutter mobile app][]</th>
+      <th scope="col" markdown="1">[Flutter web app][]</th>
+      <th scope="col" markdown="1">[Other web app][]</th>
+      <th scope="col" markdown="1">[Command-line app][]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" markdown="1">[Debugger][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{y}}</td> <!-- fwa -->
+      <td>{{y}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Logging view][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{y}}</td> <!-- fwa -->
+      <td>{{y}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Timeline view][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{b}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Memory view][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{b}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Performance view][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{b}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Flutter inspector][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{y}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{na}}</td> <!-- cla -->
+    </tr>
+  </tbody>
+</table>
+</div>
+
+For information about using Dart DevTools with each app type
+(for example, command-line apps),
+click the app type in the top row.
+For details about individual tools
+(for example, the debugger),
+click the tool name in the left column.
+
+As the table shows, the debugger and the logging view
+are the only parts of Dart DevTools that are available to all app types.
+Web apps can't use the timeline, memory, and performance views;
+instead, they can use browser tools such as the [Chrome DevTools.][]
+The Flutter inspector works only for Flutter apps;
+other web apps should use browser tools such as the Chrome DevTools.
+
 
 ## Using DevTools with a Flutter app
 
-For details on using DevTools with a Flutter app, see the [Flutter
-DevTools documentation.][flutter-devtools]
+For details on using DevTools with a Flutter app for any platform
+(including web) see the
+[DevTools documentation on flutter.dev.][flutter-devtools]
 
-[flutter-devtools]: https://flutter.dev/docs/development/tools/devtools/overview
+[flutter-devtools]: {{site.flutter}}/docs/development/tools/devtools/overview
+
+
+## Using DevTools with a non-Flutter web app
+
+To launch a web app so that you can use Dart DevTools,
+use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
+
+```terminal
+$ webdev serve --debug
+```
+
+For more information, see [Debugging Dart web apps][].
+
 
 ## Using DevTools with a command-line app
 
@@ -75,3 +175,22 @@ You'll need this URL in the next step.
 ![DevTools connection dialog]({% asset tools/devtools-connect.png @path %})
 
 
+## Resources
+
+* [Using DevTools for Flutter development][Flutter mobile app]
+* [devtools package page][devtools package]
+
+
+[Chrome DevTools.]: https://developers.google.com/web/tools/chrome-devtools
+[Command-line app]: #using-devtools-with-a-command-line-app
+[Debugger]: {{site.flutter}}/docs/development/tools/devtools/debugger
+[Debugging Dart web apps]: /web/debugging
+[devtools package]: {{site.pub-pkg}}/devtools
+[Flutter inspector]: {{site.flutter}}/docs/development/tools/devtools/inspector
+[Flutter mobile app]: {{site.flutter}}/docs/development/tools/devtools/overview
+[Flutter web app]: {{site.flutter}}/docs/development/tools/devtools/overview
+[Logging view]: {{site.flutter}}/docs/development/tools/devtools/logging
+[Memory view]: {{site.flutter}}/docs/development/tools/devtools/memory
+[Other web app]: #using-devtools-with-a-non-flutter-web-app
+[Performance view]: {{site.flutter}}/docs/development/tools/devtools/performance
+[Timeline view]: {{site.flutter}}/docs/development/tools/devtools/timeline

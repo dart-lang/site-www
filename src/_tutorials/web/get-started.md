@@ -151,9 +151,9 @@ Let's customize the app you just created.
     {% endprettify %}
 
 
-## 7. Use DevTools to inspect the app
+## 7. Use Dart DevTools to inspect the app
 
-Use Chrome DevTools to set breakpoints, view values and types,
+Use Dart DevTools to set breakpoints, view values and types,
 and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
