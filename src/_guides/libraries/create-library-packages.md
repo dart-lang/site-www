@@ -133,12 +133,10 @@ the `package:` directive to specify the URI of that file.
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
-You can import a library using a relative path when
-both files are inside of lib,
-or when both files are outside of lib.
-However, you must use `package:` when importing a file that reaches
-inside, or outside, of lib.
-When in doubt, use the `package:` directive; it works in all cases.
+Use `package:` when importing a file that reaches inside, or outside, of lib.
+
+Import a library using a relative path when both files are inside of lib,
+or when both files are outside of lib. 
 
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
