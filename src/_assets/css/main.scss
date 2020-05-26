@@ -1372,5 +1372,12 @@ body.obsolete {
   opacity: 0.5;
 }
 
+blockquote {
+  border: 1px solid #b3b3b3;
+  border-width: 1px 0px;
+  margin: 20px;
+  padding: 10px 20px 0 20px;
+}
+
 @import '_overwrites';
 @import '_dash';
