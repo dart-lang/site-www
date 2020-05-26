@@ -126,30 +126,22 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
 ## Importing library files
 
-When importing a library file, you can use the
+When importing a library file from another package, use the
 the `package:` directive to specify the URI of that file.
 
 {% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
-Use `package:` when importing a file that reaches inside, or outside, of lib.
-
-Import a library using a relative path when both files are inside of lib,
+When importing a library file from your own package,
+use a relative path when both files are inside of lib,
 or when both files are outside of lib. 
+Use `package:` when the imported file is in lib and the importer is outside.
 
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
 
 {% asset libraries/import-lib-rules.png alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import" %}
-
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Although the lib graphic shows `lib/bar/b.dart` using a relative import
-(`import '../foo/a.dart'`),
-it could instead use the `package:` directive
-(`import 'package:my_package/foo/a.dart'`).
-</aside>
 
 
 ## Conditionally importing and exporting library files
