@@ -444,16 +444,6 @@ data structure that contains key/value pairs.
 Use the square bracket syntax to retrieve a value by its key
 and the `length` property to get the number of pairs it contains.
 
-## Other resources
-
-<ul>
-  <li>
-    You can find more information about the DOM and CSS in the
-    <a href="/guides/language/language-tour">language tour</a>,
-    which also provides thorough coverage of the Dart language.
-  </li>
-</ul>
-
 ## What next?
 
 The next tutorial, [Remove DOM Elements](remove-elements),
