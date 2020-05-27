@@ -139,7 +139,7 @@ stored in a [Git][] repository.
 {% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
-    git: git@github.com:munificent/kittens.git
+    git: https://github.com/munificent/kittens.git
 {% endprettify %}
 
 The `git` here says this package is found using Git, and the URL after that is
