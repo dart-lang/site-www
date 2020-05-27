@@ -3,7 +3,7 @@ title: "Asynchronous programming: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-{% assign useIframe = true -%}
+{% assign useIframe = false -%}
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 <style>
@@ -72,7 +72,7 @@ output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px:ga_id-get_order_sync_bad
+```dart:run-dartpad:height-380px:ga_id-incorrect_usage
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -179,7 +179,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart"?>
-```dart:run-dartpad:height-300px:ga_id-futures_intro
+```dart:run-dartpad:height-300px:ga_id-introducting_futures
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
@@ -213,7 +213,7 @@ A bit later you'll learn how to handle the error.
 {% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px:ga_id-futures_intro_error
+```dart:run-dartpad:height-300px:ga_id-completing_with_error
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
   return Future.delayed(Duration(seconds: 2),
@@ -404,7 +404,7 @@ function body. What do you think the output will be?
 {% else -%}
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px:ga_id-async_example
+```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -484,12 +484,29 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark&ga_id=practice_using"
   frameborder="no"
   height="550"
   width="100%">
 </iframe>
+
+{% else -%}
+
+<?code-excerpt "async_await/..." remove="Fetching"?>
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
+// Part 1
+//You can call the provided async function fetchRole to return the user role
+Future<String> reportUserRole() async {
+  // your implementation here
+}
+
+// Part 2
+// Implement reportLogins here
+// You can call the provided async function fetchLoginAmount to return the number of times that the user has logged in.
+reportLogins(){}```
+{% endif -%}
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
@@ -577,12 +594,20 @@ that does the following:
     [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and
     [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark&ga_id=practice_errors"
   frameborder="no"
   height="525"
   width="100%">
 </iframe>
+
+{% else -%}
+
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
+// Implement changeUsername here
+```
+{% endif -%}
 
 {% comment %}
 TODO: Consider summary section before final exercise
@@ -631,6 +656,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the String value returned by calling `logoutUser()`.
 
+{% if useIframe -%}
 <iframe
   src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark&ga_id=putting_it_all_together"
   frameborder="no"
@@ -638,6 +664,13 @@ Write the following:
   width="100%">
 </iframe>
 
+{% else -%}
+
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
+// [PENDING: put included code here]
+```
+{% endif -%}
 
 ## What's next?
 
