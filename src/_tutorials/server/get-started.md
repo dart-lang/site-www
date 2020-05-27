@@ -155,12 +155,12 @@ it's time to AOT compile your Dart code to optimized native machine code.
 Use the `dart2native` tool to AOT compile the program to machine code:
 
 ```terminal
-$ dart2native bin/main.dart -o bin/my_app
+$ dart2native bin/main.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
 ```terminal
-$ time bin/my_app
+$ time bin/main.exe
 Hello world: 21!
 
 real	0m0.016s
