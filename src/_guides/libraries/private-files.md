@@ -100,9 +100,11 @@ using [pub get](/guides/packages#getting-packages).
 The `pubspec.lock` file is a special case,
 similar to Ruby's `Gemfile.lock`.
 
-**For library packages**, do **not** commit the `pubspec.lock` file.
+**For library packages**, **don't commit** the `pubspec.lock` file.
+Regenerating the `pubspec.lock` file lets you test your package
+against the latest compatible versions of its dependencies.
 
-**For application packages**, it's up to you whether you
-commit the `pubspec.lock` file.
-Consider checking it in if you want to track the dependencies that
-are used for production or across a team.
+**For application packages**, we recommend that you
+**commit** the `pubspec.lock` file.
+Saving `pubspec.lock` ensures that everyone working on the app
+uses the exact same versions.
