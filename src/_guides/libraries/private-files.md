@@ -101,7 +101,7 @@ The `pubspec.lock` file is a special case,
 similar to Ruby's `Gemfile.lock`.
 
 **For library packages**, **don't commit** the `pubspec.lock` file.
-Recreating the `pubspec.lock` file lets you test your package
+Regenerating the `pubspec.lock` file lets you test your package
 against the latest compatible versions of its dependencies.
 
 **For application packages**, we recommend that you
