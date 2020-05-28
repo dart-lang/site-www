@@ -494,7 +494,6 @@ Implement an `async` function `reportLogins()` so that it does the following:
 
 {% else -%}
 
-<?code-excerpt "async_await/..." remove="Fetching"?>
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
 {$ begin main.dart $}
 // Part 1
@@ -615,11 +614,11 @@ Future<String> asyncEquals({expected, actual, String typoKeyword}) async {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-Did you remember to add the async keyword to the reportUserRole function?
+Did you remember to add the async keyword to the reportUserRole() function?
 
-Did you remember to use the await keyword before invoking fetchRole?
+Did you remember to use the await keyword before invoking fetchRole()?
 
-Remember: reportUserRole needs to return a future!
+Remember: reportUserRole() needs to return a future!
 {$ end hint.txt $}
 ```
 {% endif -%}
@@ -720,9 +719,8 @@ that does the following:
 
 {% else -%}
 {% comment %}
-TODO: add hint.txt
+PENDING: Any way to auto-include this code?
 {% endcomment %}
-
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
 {$ begin main.dart $}
 // Implement changeUsername here
@@ -840,6 +838,11 @@ Future<String> asyncDidCatchException(Function fn) async {
   }
 }
 {$ end test.dart $}
+{$ begin hint.txt $}
+Implement changeUsername() to return the string from fetchNewUsername() or
+(if that fails) the string value of any error that occurs.
+You'll need a try-catch statement to catch and handle errors.
+{$ end hint.txt $}
 ```
 {% endif -%}
 
@@ -900,11 +903,10 @@ Write the following:
 
 {% else -%}
 
-<?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
 {% comment %}
-TODO: add hint.txt
+PENDING: Any way to auto-include this code?
 {% endcomment %}
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
 {$ begin main.dart $}
 // Part 1
 addHello(){}
@@ -996,7 +998,7 @@ main() async {
         testLabel: 'Part 3',
         testResult: await asyncDidCatchException(sayGoodbye),
         readableErrors: {
-          typoMessage: '$typoMessage. Did you add the text \'Thanks! See you next time!\'?',
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
           'null': '$didNotImplement sayGoodbye?',
           noCatch: 'Did you remember to call logoutUser within a try/catch block?',
           'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
@@ -1011,7 +1013,7 @@ main() async {
           typoKeyword: 'Success'
         ),
         readableErrors: {
-          typoMessage: '$typoMessage. Did you add the text \'Thanks! See you next time!\'?',
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
           'null': '$didNotImplement sayGoodbye?',
           noCatch: 'Did you remember to call logoutUser within a try/catch block?',
           'Instance of \'Future<String>\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
@@ -1097,6 +1099,8 @@ Future<String> asyncDidCatchException(Function fn) async {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
+The greetUser() and sayGoodbye() functions are asynchronous;
+addHello() isn't.
 {$ end hint.txt $}
 ```
 {% endif -%}
