@@ -4,10 +4,10 @@ description: Information about Dart's upcoming null safety feature
 ---
 
 Sound null safety is coming to the Dart language!
-Once you opt into null safety,
-types are non-nullable by default, meaning that
-values in your code can’t be null _unless you say they can be._
-With null safety, your **runtime** null-reference exceptions
+When you opt into null safety,
+types in your code are non-nullable by default, meaning that
+values can’t be null _unless you say they can be._
+With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 The compiler can optimize away internal null checks,
 enabling apps to be faster, smaller, and more reliable.
@@ -39,7 +39,7 @@ int aRealInt; // Can't be used until it's initialized to an integer.
 ```
 
 If the variable _can_ have the value `null`,
-**add  `?`** to its type declaration:
+**add `?`** to its type declaration:
 
 ```dart
 int? aNullableInt = null;
@@ -50,23 +50,25 @@ When using a value that you know isn’t null but that has a nullable type,
 
 ```dart
 int? a = 2;
-int b = a!; // The ! temporarily changes `a` from int? to int.
+int b = a!; // `a!` is an int (or throws if `a` is null).
 ```
 
-If you know that a non-nullable value will be
+If you know that a non-nullable variable will be
 initialized to a non-null value before it's used,
 but the Dart analyzer thinks otherwise,
-**add the `late` keyword** to the type:
+**insert `late`** before the variable's type:
 
 ```dart
 late int aRealInt;
 ```
 
 {% comment %}
+PENDING: Uncomment this once we're ready to offer more guidance.
+
 {{ site.alert.tip }}
   Avoid using `late final` unless you really need it.
-  For example, don't use `late final` in functions,
-  and in constructors prefer using an [initializer list][].
+  For example, prefer using an [initializer list][]
+  to initialize instance variables.
 {{ site.alert.end }}
 
 [initializer list]: /guides/language/language-tour#initializer-list
@@ -95,25 +97,28 @@ Here are some examples of how Dart code uses these collection types:
 
 ### List and set types {#list-and-set-types}
 
-When you’re declaring the type of a list or set, think about what can be null. The following table shows the possibilities for a list of strings
+When you’re declaring the type of a list or set,
+think about what can be null.
+The following table shows the possibilities for a list of strings
 if you opt into null safety.
 
 {% assign yes = '<b>Yes</b>' %}
 
 |------------------+----------------------------------+--------------------------+------------|
-|Type              | Can an item (string)<br>be null? | Can the list<br>be null? | Description|
+|Type              | Can the list<br>be null? | Can an item (string)<br>be null? | Description|
 |------------------|----------------------------------|--------------------------|------------|
-| `List<String>`   | No      | No      | A non-null list that contains<br> non-null strings       |
-| `List<String>?`  | No      | {{yes}} | A non-null list that contains<br> strings that **might be null** |
-| `List<String?>`  | {{yes}} | No      | A list that **might be null** and that<br> contains non-null strings |
-| `List<String?>?` | {{yes}} | {{yes}} | A list that **might be null** and that<br> contains strings that **might be null**<br> (same as `List<String>` if you <br>don't opt into null safety) |
+| `List<String>`   | No      | No      | A non-null list that contains<br> non-null strings |
+| `List<String>?`  | {{yes}} | No      | A list that **might be null** and that<br> contains non-null strings |
+| `List<String?>`  | No      | {{yes}} |  A non-null list that contains<br> strings that **might be null** |
+| `List<String?>?` | {{yes}} | {{yes}} | A list that **might be null** and that<br> contains strings that **might be null** |
 {:.table .table-striped}
 
-When literals initialize a list or set,
+When a literal creates a list or set,
 then instead of seeing a type like in the table above,
 you typically see a type annotation on the literal.
-For example, here’s what a `List<String?>` (called `nameList`) and
-a `Set<String?>` (called `nameSet`) might look like:
+For example, here’s the code you might use to create
+a variable (`nameList`) of type `List<String?>` and
+a variable (`nameSet`) of type `Set<String?>`:
 
 ```dart
 var nameList = <String?>['Andrew', 'Anjan', 'Anya'];
@@ -122,9 +127,12 @@ var nameSet = <String?>{'Andrew', 'Anjan', 'Anya'};
 
 ### Map types {#map-types}
 
-Map types behave mostly like you’d expect, with one exception: **the returned value can be null**. Null is the value for a key that isn't present in the map.
+Map types behave mostly like you’d expect, with one exception:
+**the returned value of a lookup can be null**.
+Null is the value for a key that isn't present in the map.
 
-As an example, look at the following code. What do you think the value and type of `uhOh` are?
+As an example, look at the following code.
+What do you think the value and type of `uhOh` are?
 
 ```dart
 var myMap = <String, int>{'one': 1};
@@ -133,14 +141,14 @@ var uhOh = myMap['two'];
 
 The answer is that `uhOh` is null and has type `int?`. 
 
-Like lists and sets, maps can have a variety of type permutations.
+Like lists and sets, maps can have a variety of types:
 
 |----------------------+-------------------------------+-------------------------|
-|Type                  | Can an item (int)<br>be null? | Can the map<br>be null? |
+|Type                  | Can the map<br>be null? | Can an item (int)<br>be null? |
 |----------------------|-------------------------------|-------------------------|
-| `Map<String, int>`   | No*                           | No                      |
-| `Map<String, int>?`  | No*                           | {{yes}}                 |
-| `Map<String, int?>`  | {{yes}}                       | No                      |
+| `Map<String, int>`   | No                            | No*                     |
+| `Map<String, int>?`  | {{yes}}                       | No*                     |
+| `Map<String, int?>`  | No                            | {{yes}}                 |
 | `Map<String, int?>?` | {{yes}}                       | {{yes}}                 |
 {:.table .table-striped}
 
@@ -156,7 +164,9 @@ you can't assign them to non-nullable variables:
 int value = <String, int>{'one': 1}['one']; // ERROR
 ```
 
+{% comment %}
 **[QUESTION: Will the analyzer ever be able to detect that is non-null?]**
+{% endcomment %}
 
 One workaround is to change the type of the variable to be nullable:
 
@@ -189,7 +199,7 @@ int value = aList['one'] ?? 0;
 
 ## Fixing analysis errors
 
-With sound null safety, the Dart analyzer generates errors when
+With null safety, the Dart analyzer generates errors when
 it finds a nullable value where a non-null value is required.
 That's not as bad as it sounds:
 the analyzer can often recognize when
@@ -202,10 +212,10 @@ If you know a value can't be null
 but it has a nullable type,
 consider using `!`, `late`, or `as`.
 Examples of using `!` and `late` are in the [first section of this page][].
-Here's an example of using `as` to convert an `int?` to a `int`:
+Here's an example of using `as` to convert a `num?` to a `int`:
 
 ```dart
-return maybeInt(3) as int;
+return maybeNum() as int;
 ```
 
 [first section of this page]: #creating-and-using-variables---late
