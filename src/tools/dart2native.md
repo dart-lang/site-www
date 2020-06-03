@@ -102,7 +102,7 @@ You can use the following options:
 `-D <key>=<value>` or `--define=<key>=<value>`
 : Defines an environment declaration,
   which can be read using the [`String.fromEnvironment()` constructor][].
-  To specify multiple variables, use multiple options or
+  To specify multiple declarations, use multiple options or
   use commas to separate key-value pairs.
 
 `--enable-asserts`
