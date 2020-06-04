@@ -127,12 +127,10 @@ The sample illustrates the most common top-level entries:
 - Use the `analyzer:` entry to customize static analysis —
   [enabling stricter type checks](#enabling-additional-type-checks),
   [excluding files](#excluding-files),
-  [ignoring specific rules](#ignoring-rules), or
-  [changing the severity of rules](#changing-the-severity-of-rules).
+  [ignoring specific rules](#ignoring-rules),
+  [changing the severity of rules](#changing-the-severity-of-rules), or
+  [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
 - Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
-
-Another tag you might see is `language:`,
-which is used for experimental language features.
 
 {{site.alert.warn}}
   **YAML is sensitive to whitespace.** Don't use tabs in a YAML file,
