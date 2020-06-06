@@ -100,8 +100,9 @@ dart2native <main-dart-file> [<options>]
 You can use the following options:
 
 `-D <key>=<value>` or `--define=<key>=<value>`
-: Defines an environment variable.
-  To specify multiple variables, use multiple options or
+: Defines an environment declaration,
+  which can be read using the [`String.fromEnvironment()` constructor][].
+  To specify multiple declarations, use multiple options or
   use commas to separate key-value pairs.
 
 `--enable-asserts`
@@ -140,3 +141,4 @@ has a superset of the `dart2aot` functionality.
 [assert statements]: /guides/language/language-tour#assert
 [`dartaotruntime` command]: /tools/dartaotruntime
 [static analysis]: /guides/language/analysis-options
+[`String.fromEnvironment()` constructor]: https://api.dart.dev/stable/dart-core/String/String.fromEnvironment.html
