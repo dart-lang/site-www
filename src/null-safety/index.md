@@ -9,7 +9,8 @@ types in your code are non-nullable by default, meaning that
 values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
-The compiler can optimize away internal null checks,
+Because null safety in Dart is sound,
+the compiler can optimize away internal null checks,
 enabling apps to be faster, smaller, and more reliable.
 
 You can practice using null safety in the web app
@@ -20,8 +21,6 @@ You can practice using null safety in the web app
   Do test the feature and [give us feedback.][]
 {{ site.alert.end }}
 
-[give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
-
 If you've used Kotlin, TypeScript, or C#,
 then some of the null-safety syntax might look familiar.
 That's by design: the Dart language aims to be unsurprising.
@@ -29,7 +28,7 @@ That's by design: the Dart language aims to be unsurprising.
 
 ## Creating and using variables (?, !, late)
 
-Use `?`, `!`, and `late` to tweak how the Dart analyzer treats your code.
+Use `?`, `!`, and `late` to specify the nullability of a variable.
 
 Here’s an example of declaring a **non-nullable integer variable**
 (assuming you’ve opted into null safety):
@@ -46,12 +45,21 @@ int? aNullableInt = null;
 ```
 
 When using a value that you know isn’t null but that has a nullable type,
-**add `!`** to tell the Dart analyzer that the value isn’t null:
+**add `!`** to tell Dart that the value isn’t null:
 
 ```dart
 int? a = 2;
 int b = a!; // `a!` is an int (or throws if `a` is null).
 ```
+
+{{site.alert.important}}
+  If you aren't sure that a value is non-null,
+  **don't use `!`**.
+  Instead, explicitly check for null using a conditional like
+  an [`if` statement][] or the [`??` operator][].
+  For example, if you want `b` to be 0 if `a` is null,
+  you can use the code `b = a ?? 0`.
+{{site.alert.end}}
 
 If you know that a non-nullable variable will be
 initialized to a non-null value before it's used,
@@ -59,11 +67,19 @@ but the Dart analyzer thinks otherwise,
 **insert `late`** before the variable's type:
 
 ```dart
-late int aRealInt;
+class IntProvider {
+  late int aRealInt;
+  
+  IntProvider() {
+    aRealInt = calculate();
+  }
+}
 ```
 
 {% comment %}
-PENDING: Uncomment this once we're ready to offer more guidance.
+PENDING: Say something about `late` variable initialization being lazy?
+
+PENDING: Uncomment the following once we're ready to offer more guidance.
 
 {{ site.alert.tip }}
   Avoid using `late final` unless you really need it.
@@ -114,7 +130,7 @@ if you opt into null safety.
 {:.table .table-striped}
 
 When a literal creates a list or set,
-then instead of seeing a type like in the table above,
+then instead of a type like in the table above,
 you typically see a type annotation on the literal.
 For example, here’s the code you might use to create
 a variable (`nameList`) of type `List<String?>` and
@@ -193,9 +209,6 @@ var aList = <String, int>{'one': 1};
 int value = aList['one'] ?? 0;
 ```
 
-[`if` statement]: /guides/language/language-tour#if-and-else
-[`??` operator]: /guides/language/language-tour#conditional-expressions
-
 
 ## Fixing analysis errors
 
@@ -224,7 +237,7 @@ If a value might indeed be null,
 then you can explicitly check for that.
 A common approach is to use an `if` statement or `??` expression
 to check for and handle a null value.
-The analyzer then considers the code for the non-null value to be null safe.
+Dart then considers the code for the non-null value to be null safe.
 Here's an example of using `??`:
 
 ```dart
@@ -242,6 +255,18 @@ int definitelyInt(int? aNullableInt) {
 }
 ```
 
+## Other common code changes
+
+Once you opt into null safety,
+you can't use the [member access operator (`.`)][other operators]
+if the operand might be null.
+Instead, you can use the null-aware version of that operator (`?.`):
+
+```dart
+double? d;  
+print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
+```
+
 
 ## Where to learn more
 
@@ -252,8 +277,12 @@ For more information about null safety, see the following resources:
 * [Dart announcements group][Dart announce]
 * [Dart blog][]
 
+[`??` operator]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
 [Announcing Dart 2.8]: https://medium.com/dartlang/announcing-dart-2-8-7750918db0a
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+[give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
+[`if` statement]: /guides/language/language-tour#if-and-else
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
+[other operators]: /guides/language/language-tour#other-operators
