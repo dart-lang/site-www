@@ -134,7 +134,7 @@ to run the local web server for DevTools:
 
 ```terminal
 $ pub global run devtools
-Serving DevTools at http://127.0.0.1.9100
+Serving DevTools at http://127.0.0.1:9100
 ```
 
 {{site.alert.note}}
