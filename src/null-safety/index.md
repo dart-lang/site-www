@@ -282,7 +282,7 @@ int value = <String, int>{'one': 1}['one']!; // OK
 
 A safer approach is to use the lookup value only if it's not null.
 You can test its value using
-an [`if` statement][`if`] or the [`??` operator][`??`].
+an `if` statement or the [`??` operator][`??`].
 Here's an example of using the value `0` if the lookup returns a null value:
 
 ```dart
@@ -310,6 +310,5 @@ For more information about null safety, see the following resources:
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
-[`if`]: /guides/language/language-tour#if-and-else
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
