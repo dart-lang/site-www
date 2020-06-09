@@ -1,5 +1,5 @@
 ---
-title: Null safety
+title: Sound null safety
 description: Information about Dart's upcoming null safety feature
 ---
 
@@ -49,11 +49,14 @@ When creating a variable,
 you can use `?` and `late`
 to inform Dart of the variable's nullability.
 
-Here’s an example of declaring a **non-nullable integer variable**
+Here are some examples of declaring **non-nullable variables**
 (assuming you’ve opted into null safety):
 
 ```dart
-int aRealInt; // Can't be used until it's initialized to an integer.
+// In null-safe Dart, none of these can ever be null.
+var i = 42; // Inferred to be an int.
+String name = getFileName();
+final b = Foo();
 ```
 
 If the variable _can_ have the value `null`,
@@ -65,7 +68,7 @@ int? aNullableInt = null;
 
 If you know that a non-nullable variable will be
 initialized to a non-null value before it's used,
-but the Dart analyzer thinks otherwise,
+but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
 ```dart
