@@ -9,26 +9,45 @@ types in your code are non-nullable by default, meaning that
 values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
-Because null safety in Dart is sound,
-the compiler can optimize away internal null checks,
-enabling apps to be faster, smaller, and more reliable.
 
-You can practice using null safety in the web app
-[DartPad with Null Safety.][nullsafety.dartpad.dev]
+With null safety,
+the Dart analyzer enforces good practices.
+For example, it makes sure you check for null before
+reading a nullable variable.
+And because Dart null safety is sound,
+Dart compilers and runtimes can optimize away internal null checks,
+so apps can be faster and smaller.
 
 {{ site.alert.important }}
-  **Don't start migrating large projects yet.**
-  Do test the feature and [give us feedback.][]
+  Because null safety is still in tech preview,
+  **don't use null safety in production code.**
+  But please do test the feature and [give us feedback.][]
 {{ site.alert.end }}
 
+New operators and keywords related to null safety
+include `?`, `!`, and `late`.
 If you've used Kotlin, TypeScript, or C#,
-then some of the null-safety syntax might look familiar.
+the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
 
+You can practice using null safety in the web app
+[DartPad with Null Safety,][nullsafety.dartpad.dev]
+shown in the following screenshot.
+Or try null safety in your normal development environment,
+using the instructions and configuration files in the
+[null safety sample.][calculate_lix]
 
-## Creating and using variables (?, !, late)
+![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
+{% comment %}
+[TODO: update that screenshot]
+{% endcomment %}
 
-Use `?`, `!`, and `late` to specify the nullability of a variable.
+
+## Creating variables
+
+When creating a variable,
+you can use `?` and `late`
+to inform Dart of the variable's nullability.
 
 Here’s an example of declaring a **non-nullable integer variable**
 (assuming you’ve opted into null safety):
@@ -43,23 +62,6 @@ If the variable _can_ have the value `null`,
 ```dart
 int? aNullableInt = null;
 ```
-
-When using a value that you know isn’t null but that has a nullable type,
-**add `!`** to tell Dart that the value isn’t null:
-
-```dart
-int? a = 2;
-int b = a!; // `a!` is an int (or throws if `a` is null).
-```
-
-{{site.alert.important}}
-  If you aren't sure that a value is non-null,
-  **don't use `!`**.
-  Instead, explicitly check for null using a conditional like
-  an [`if` statement][] or the [`??` operator][].
-  For example, if you want `b` to be 0 if `a` is null,
-  you can use the code `b = a ?? 0`.
-{{site.alert.end}}
 
 If you know that a non-nullable variable will be
 initialized to a non-null value before it's used,
@@ -76,6 +78,16 @@ class IntProvider {
 }
 ```
 
+The `late` keyword has two effects:
+
+* The analyzer doesn't require you to immediately initialize
+  a `late` variable to a non-null value.
+* The runtime lazily initializes the `late` variable.
+  For example, if a non-nullable instance variable
+  must be calculated,
+  adding the `late` modifier delays the calculation
+  until the first use of the instance variable.
+
 {% comment %}
 PENDING: Say something about `late` variable initialization being lazy?
 
@@ -90,6 +102,76 @@ PENDING: Uncomment the following once we're ready to offer more guidance.
 [initializer list]: /guides/language/language-tour#initializer-list
 {% endcomment %}
 
+
+## Using variables and expressions
+
+With null safety, the Dart analyzer generates errors when
+it finds a nullable value where a non-null value is required.
+That isn't as bad as it sounds:
+the analyzer can often recognize when
+a variable or expression inside a function has
+a nullable type but can't have a null value.
+
+{{site.alert.info}}
+  The analyzer can't model the flow of your whole application,
+  so it can't predict the values of global variables or class fields.
+{{site.alert.end}}
+
+When using a nullable variable or expression,
+be sure to handle null values.
+For example, you can use an `if` statement, the `??` operator,
+or the `?.` operator to handle possible null values.
+
+Here's an example of using the [`??` operator][`??`]
+to avoid setting a non-nullable variable to null:
+
+```dart
+int value = aNullableInt ?? 0; // 0 if it's null; otherwise, the integer
+```
+
+Here's similar code, but with an `if` statement that checks for null:
+
+```dart
+int definitelyInt(int? aNullableInt) {
+  if (aNullableInt == null) {
+    return 0;
+  }
+  return aNullableInt; // Can't be null!
+}
+```
+
+If you're sure that an expression with a nullable type isn’t null,
+you can add `!` to make Dart treat it as non-nullable:
+
+```dart
+int? aNullableInt = 2;
+int value = aNullableInt!; // `aNullableInt!` is an int.
+// This throws if aNullableInt is null.
+```
+
+{{site.alert.important}}
+  If you aren't positive that a value is non-null,
+  **don't use `!`**.
+{{site.alert.end}}
+
+If you need to change the type of a nullable variable —
+beyond what the `!` operator can do —
+you can use the [typecast operator (`as`)][`as`].
+The following example uses `as` to convert a `num?` to an `int`:
+
+```dart
+return maybeNum() as int;
+```
+
+Once you opt into null safety,
+you can't use the [member access operator (`.`)][other operators]
+if the operand might be null.
+Instead, you can use the null-aware version of that operator (`?.`):
+
+```dart
+double? d;  
+print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
+```
 
 ## Understanding list, set, and map types
 
@@ -200,7 +282,7 @@ int value = <String, int>{'one': 1}['one']!; // OK
 
 A safer approach is to use the lookup value only if it's not null.
 You can test its value using
-an [`if` statement][] or the [`??` operator][].
+an [`if` statement][`if`] or the [`??` operator][`??`].
 Here's an example of using the value `0` if the lookup returns a null value:
 
 ```dart
@@ -210,79 +292,24 @@ int value = aList['one'] ?? 0;
 ```
 
 
-## Fixing analysis errors
-
-With null safety, the Dart analyzer generates errors when
-it finds a nullable value where a non-null value is required.
-That's not as bad as it sounds:
-the analyzer can often recognize when
-a variable or expression inside a function has
-a nullable type but can't have a null value.
-However, the analyzer can't model the flow of your whole application,
-so it can't predict the value of a global variable or class field.
-
-If you know a value can't be null
-but it has a nullable type,
-consider using `!`, `late`, or `as`.
-Examples of using `!` and `late` are in the [first section of this page][].
-Here's an example of using `as` to convert a `num?` to a `int`:
-
-```dart
-return maybeNum() as int;
-```
-
-[first section of this page]: #creating-and-using-variables---late
-
-If a value might indeed be null,
-then you can explicitly check for that.
-A common approach is to use an `if` statement or `??` expression
-to check for and handle a null value.
-Dart then considers the code for the non-null value to be null safe.
-Here's an example of using `??`:
-
-```dart
-int value = aNullableInt ?? 0; // 0 if it's null; otherwise, the integer
-```
-
-Here's an example of using an `if` statement:
-
-```dart
-int definitelyInt(int? aNullableInt) {
-  if (aNullableInt == null) {
-    return 0;
-  }
-  return aNullableInt; // Can't be null!
-}
-```
-
-## Other common code changes
-
-Once you opt into null safety,
-you can't use the [member access operator (`.`)][other operators]
-if the operand might be null.
-Instead, you can use the null-aware version of that operator (`?.`):
-
-```dart
-double? d;  
-print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
-```
-
-
 ## Where to learn more
 
 For more information about null safety, see the following resources:
 
-* [DartPad with Null Safety][nullsafety.dartpad.dev]
-* [Null safety tracking issue][110]
 * [Dart announcements group][Dart announce]
 * [Dart blog][]
+* [DartPad with Null Safety][nullsafety.dartpad.dev]
+* [Null safety sample code][calculate_lix]
+* [Null safety tracking issue][110]
 
-[`??` operator]: /guides/language/language-tour#conditional-expressions
+[`??`]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
 [Announcing Dart 2.8]: https://medium.com/dartlang/announcing-dart-2-8-7750918db0a
+[`as`]: /guides/language/language-tour#type-test-operators
+[calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
-[`if` statement]: /guides/language/language-tour#if-and-else
+[`if`]: /guides/language/language-tour#if-and-else
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
