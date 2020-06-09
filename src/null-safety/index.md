@@ -301,7 +301,7 @@ For more information about null safety, see the following resources:
 
 * [Dart announcements group][Dart announce]
 * [Dart blog][]
-* [DartPad with Null Safety][nullsafety.dartpad.dev]
+* [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
 
