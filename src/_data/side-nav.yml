@@ -41,6 +41,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
+    - title: Sound null safety
+      permalink: /null-safety
     - title: Evolution
       permalink: /guides/language/evolution
     - title: Specification
