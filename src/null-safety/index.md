@@ -43,6 +43,13 @@ using the instructions and configuration files in the
 [TODO: update that screenshot]
 {% endcomment %}
 
+{{site.alert.note}}
+  This page uses embedded DartPads to display examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+  For the full null-safe DartPad experience,
+  copy the example code to [DartPad with null safety.][nullsafety.dartpad.dev]
+{{site.alert.end}}
+
 
 ## Creating variables
 
@@ -73,7 +80,7 @@ but they must be initialized before they're used.
 Often the Dart analyzer can determine whether the variable
 is initialized before it's used.
 
-```dart:run-dartpad:height-160px:ga_id-initializing_nnbd
+```dart:run-dartpad:ga_id-initializing_nnbd
 main() {
   int anInt; // Declared but not initialized... yet.
   anInt = 1; // TRY COMMENTING OUT THIS LINE.
@@ -86,14 +93,17 @@ initialized before it's used,
 but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
-```dart
+```dart:run-dartpad:ga_id-late
 class IntProvider {
-  late int aRealInt;
+  late int aRealInt; // TRY REMOVING `late`.
   
   IntProvider() {
     aRealInt = calculate();
   }
 }
+
+int calculate() => 1;
+void main() => print('The int is ${IntProvider().aRealInt}.');
 ```
 
 The `late` keyword has two effects:
