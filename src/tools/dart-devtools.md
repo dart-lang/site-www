@@ -134,7 +134,7 @@ to run the local web server for DevTools:
 
 ```terminal
 $ pub global run devtools
-Serving DevTools at http://127.0.0.1.9100
+Serving DevTools at http://127.0.0.1:9100
 ```
 
 {{site.alert.note}}
@@ -147,7 +147,9 @@ Serving DevTools at http://127.0.0.1.9100
 ### 3. Start the target app
 
 Use the `dart --observe` command to execute the main file
-for the Dart command-line app that you want to debug or observe:
+for the Dart command-line app that you want to debug or observe.
+Optionally add `--pause-isolates-on-start`,
+which automatically breaks execution at the start of the script.
 
 ```terminal
 $ cd path/to/dart/app
