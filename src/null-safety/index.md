@@ -1,6 +1,7 @@
 ---
 title: Sound null safety
 description: Information about Dart's upcoming null safety feature
+js: [{url: 'https://nullsafety.dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Sound null safety is coming to the Dart language!
@@ -31,7 +32,7 @@ the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
 
 You can practice using null safety in the web app
-[DartPad with Null Safety,][nullsafety.dartpad.dev]
+[DartPad with null safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
 Or try null safety in your normal development environment,
 using the instructions and configuration files in the
@@ -66,8 +67,22 @@ If the variable _can_ have the value `null`,
 int? aNullableInt = null;
 ```
 
+As the following null-safe DartPad shows,
+non-nullable variables don't need to be initialized where they're declared,
+but they must be initialized before they're used.
+Often the Dart analyzer can determine whether the variable
+is initialized before it's used.
+
+```dart:run-dartpad:height-160px:ga_id-initializing_nnbd
+main() {
+  int anInt; // Declared but not initialized... yet.
+  anInt = 1; // TRY COMMENTING OUT THIS LINE.
+  print('The value of anInt is $anInt.');
+}
+```
+
 If you know that a non-nullable variable will be
-initialized to a non-null value before it's used,
+initialized before it's used,
 but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
