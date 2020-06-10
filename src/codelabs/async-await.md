@@ -3,21 +3,8 @@ title: "Asynchronous programming: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-{% assign useIframe = false -%}
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 150px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 This codelab teaches you how to write asynchronous code using
 futures and the `async` and `await` keywords. Using embedded DartPad
@@ -61,16 +48,6 @@ The following example shows the wrong way to use an asynchronous function
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47&ga_id=incorrect_usage"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="420"
-  width="100%" >
-</iframe>
-{% else -%}
-
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
 ```dart:run-dartpad:height-380px:ga_id-incorrect_usage
 // This example shows how *not* to write asynchronous Dart code.
@@ -91,7 +68,6 @@ void main() {
   print(createOrderMessage());
 }
 ```
-{% endif -%}
 
 Here's why the example fails to print the value that `fetchUserOrder()` eventually
 produces:
@@ -168,16 +144,6 @@ printing to the console. Because it doesn't return a usable value,
 `fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce&ga_id=introducting_futures"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="300"
-  width="100%" >
-</iframe>
-{% else -%}
-
 <?code-excerpt "async_await/bin/futures_intro.dart"?>
 ```dart:run-dartpad:height-300px:ga_id-introducting_futures
 Future<void> fetchUserOrder() {
@@ -190,7 +156,6 @@ void main() {
   print('Fetching user order...');
 }
 ```
-{% endif -%}
 
 In the preceding example, even though `fetchUserOrder()` executes before
 the `print()` call on line 8, the console shows the output from line 8
@@ -201,16 +166,6 @@ This is because `fetchUserOrder()` delays before it prints "Large Latte".
 
 Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
-
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125&ga_id=completing_with_error"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="275"
-  width="100%" >
-</iframe>
-{% else -%}
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
 ```dart:run-dartpad:height-300px:ga_id-completing_with_error
@@ -225,7 +180,6 @@ void main() {
   print('Fetching user order...');
 }
 ```
-{% endif -%}
 
 In this example, `fetchUserOrder()` completes with an error indicating that the
 user ID is invalid.
@@ -393,16 +347,6 @@ synchronous code before the first `await` keyword executes immediately.
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba&ga_id=execution_within_async_function"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
-  frameborder="no"
-  height="600"
-  width="100%">
-</iframe>
-{% else -%}
-
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
 ```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
 Future<void> printOrderMessage() async {
@@ -428,7 +372,6 @@ void countSeconds(int s) {
   }
 }
 ```
-{% endif -%}
 
 After running the code in the preceding example, try reversing lines 2 and 3:
 
@@ -483,16 +426,6 @@ Implement an `async` function `reportLogins()` so that it does the following:
     and pasting the example return value won't make the test pass.
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
-
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark&ga_id=practice_using"
-  frameborder="no"
-  height="550"
-  width="100%">
-</iframe>
-
-{% else -%}
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
 {$ begin main.dart $}
@@ -621,7 +554,6 @@ Did you remember to use the await keyword before invoking fetchRole()?
 Remember: reportUserRole() needs to return a future!
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
@@ -649,16 +581,6 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2&ga_id=try_catch"
-  style="border: 1px solid lightgrey;"
-  frameborder="no"
-  height="525"
-  width="100%">
-</iframe>
-{% else -%}
-
 <?code-excerpt "async_await/bin/try_catch.dart"?>
 ```dart:run-dartpad:height-530px:ga_id-try_catch
 Future<void> printOrderMessage() async {
@@ -683,7 +605,6 @@ Future<void> main() async {
   await printOrderMessage();
 }
 ```
-{% endif -%}
 
 ### Exercise: Practice handling errors
 
@@ -709,18 +630,6 @@ that does the following:
     [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and
     [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark&ga_id=practice_errors"
-  frameborder="no"
-  height="525"
-  width="100%">
-</iframe>
-
-{% else -%}
-{% comment %}
-PENDING: Any way to auto-include this code?
-{% endcomment %}
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
 {$ begin main.dart $}
 // Implement changeUsername here
@@ -844,7 +753,6 @@ Implement changeUsername() to return the string from fetchNewUsername() or
 You'll need a try-catch statement to catch and handle errors.
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 {% comment %}
 TODO: Consider summary section before final exercise
@@ -893,19 +801,6 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the String value returned by calling `logoutUser()`.
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark&ga_id=putting_it_all_together"
-  frameborder="no"
-  height="550"
-  width="100%">
-</iframe>
-
-{% else -%}
-
-{% comment %}
-PENDING: Any way to auto-include this code?
-{% endcomment %}
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
 {$ begin main.dart $}
 // Part 1
@@ -1103,7 +998,6 @@ The greetUser() and sayGoodbye() functions are asynchronous;
 addHello() isn't.
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 ## What's next?
 
