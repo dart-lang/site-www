@@ -512,4 +512,4 @@ The following resources have further information on sound Dart:
 [analysis]: /guides/language/analysis-options
 [Dart VM]: /server/tools/dart-vm
 [dartdevc]: /tools/dartdevc
-[strong mode]: /guides/language/sound-dart#how-to-enable-strong-mode
+[strong mode]: /guides/language/type-system#how-to-enable-strong-mode

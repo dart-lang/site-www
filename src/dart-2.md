@@ -185,7 +185,7 @@ environment:
 [prerelease]: /get-dart#about-release-channels-and-version-strings
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[sound Dart]: /guides/language/sound-dart
+[sound Dart]: /guides/language/type-system
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors

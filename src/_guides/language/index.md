@@ -22,7 +22,7 @@ These two resources are popular with both beginning Dart developers and experts.
 
 ## Other resources
 
-* [Dart's type system](/guides/language/sound-dart)<br>
+* [Dart's type system](/guides/language/type-system)<br>
     Learn about Dart's sound type system.
   * [Fixing common type problems](/guides/language/sound-problems)<br>
     How to fix errors and warnings you may encounter.

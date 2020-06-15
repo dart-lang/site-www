@@ -155,7 +155,7 @@ and `my_other_other_package`, and file #2 to analyze the code in
 ## Enabling stricter type checks {#enabling-additional-type-checks}
 
 If you want stricter static checks than
-the [Dart type system][sound-dart] requires,
+the [Dart type system][type-system] requires,
 consider using the `implicit-casts` and `implicit-dynamic` flags:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
@@ -480,7 +480,7 @@ analyzer:
 
 Use the following resources to learn more about static analysis in Dart:
 
-* [Dart's type system][sound-dart]
+* [Dart's type system][type-system]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
 * [dartanalyzer](/tools/dartanalyzer)
@@ -492,7 +492,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
 [linter rules]: https://dart-lang.github.io/linter/lints/
-[sound-dart]: /guides/language/sound-dart
+[type-system]: /guides/language/type-system
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
 [in the pedantic package page]: {{site.pub-pkg}}/pedantic#using-the-lints
 [disable individual rules]: #disabling-individual-rules

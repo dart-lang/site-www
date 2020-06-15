@@ -146,7 +146,7 @@ It also contained a faster pub tool, and a new [pub outdated][] command.
 [language tour]: /guides/language/language-tour
 [migrated to Dart 2]: /dart-2
 [set literals]: /guides/language/language-tour#sets
-[sound type system]: /guides/language/sound-dart
+[sound type system]: /guides/language/type-system
 [spread operator]: /guides/language/language-tour#spread-operator
 [breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [pub outdated]: https://dart.dev/tools/pub/cmd/pub-outdated
