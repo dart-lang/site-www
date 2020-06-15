@@ -12,6 +12,8 @@
           permalink: /codelabs
         - title: Language cheatsheet
           permalink: /codelabs/dart-cheatsheet
+        - title: Null safety
+          permalink: /codelabs/null-safety
         - title: Iterable collections
           permalink: /codelabs/iterables
         - title: Asynchronous programming
@@ -48,7 +50,7 @@
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Type system
-      permalink: /guides/language/sound-dart
+      permalink: /guides/language/type-system
 
 - title: Core libraries
   expanded: false
