@@ -195,8 +195,8 @@ Inside or outside of Google, every Flutter app uses Dart.
 [DartPad]: {{site.dartpad}}
 [Flutter]: {{site.flutter}}
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
-[strong mode]: /guides/language/sound-dart
-[Dart's type system]: /guides/language/sound-dart
+[strong mode]: /guides/language/type-system
+[Dart's type system]: /guides/language/type-system
 [Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflectionmirrors-system
 
 ---

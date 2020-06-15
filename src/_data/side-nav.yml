@@ -50,7 +50,7 @@
     - title: Tour
       permalink: /guides/language/language-tour
     - title: Type system
-      permalink: /guides/language/sound-dart
+      permalink: /guides/language/type-system
 
 - title: Core libraries
   expanded: false

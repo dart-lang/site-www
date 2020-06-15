@@ -690,7 +690,7 @@ var list = [1, 2, 3];
   Dart infers that `list` has type `List<int>`. If you try to add non-integer
   objects to this list, the analyzer or runtime raises an error. For more
   information, read about
-  [type inference.](/guides/language/sound-dart#type-inference)
+  [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
 Lists use zero-based indexing, where 0 is the index of the first element
@@ -810,7 +810,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   Dart infers that `halogens` has the type `Set<String>`. If you try to add the
   wrong type of value to the set, the analyzer or runtime raises an error. For
   more information, read about
-  [type inference.](/guides/language/sound-dart#type-inference)
+  [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
 To create an empty set, use `{}` preceded by a type argument,
@@ -904,7 +904,7 @@ var nobleGases = {
   Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
   has the type `Map<int, String>`. If you try to add the wrong type of value to
   either map, the analyzer or runtime raises an error. For more information,
-  read about [type inference.](/guides/language/sound-dart#type-inference)
+  read about [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
 You can create the same objects using a Map constructor:
@@ -3192,7 +3192,7 @@ class SmartTelevision extends Television {
 {% endprettify %}
 
 To narrow the type of a method parameter or instance variable in code that is
-[type safe](/guides/language/sound-dart),
+[type safe](/guides/language/type-system),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
 

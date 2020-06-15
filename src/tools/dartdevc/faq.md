@@ -224,5 +224,5 @@ You can find source code and more documentation in the Dart SDK repo under
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [serve]: /tools/webdev#serve
 [test]: /tools/webdev#test
-[type safety checks]: /guides/language/sound-dart
+[type safety checks]: /guides/language/type-system
 [webdev]: /tools/webdev
