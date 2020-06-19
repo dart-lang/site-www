@@ -38,7 +38,7 @@ You might find the following tutorials helpful.
 [Get started](/tutorials/server/get-started)
 : Learn how to use the Dart SDK to develop command-line and server apps.
 
-[gRPC Quickstart](https://grpc.io/docs/quickstart/dart.html)
+[gRPC Quickstart](https://grpc.io/docs/languages/dart/quickstart/)
 : Walks you through running and modifying a client-server example that uses the gRPC framework.
 
 [Write command-line apps](/tutorials/server/cmdline)
