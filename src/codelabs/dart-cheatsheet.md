@@ -1856,8 +1856,9 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The signature for your constructor should be `factory IntegerHolder.fromList(List<int> list) {}`.
-Inside the braces, check the length of the list and create an IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
+Inside the factory constructor,
+check the length of the list and create an
+IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
 {$ end hint.txt $}
 ```
 
