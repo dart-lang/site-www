@@ -1,7 +1,22 @@
 ---
 title: Iterable collections
 description: An interactive guide to using Iterable objects such as lists and sets.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+<?code-excerpt plaster="none"?>
+<style>
+{% comment %}
+TODO(chalin): move this into one of our SCSS files
+{% endcomment -%}
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 220px;
+  resize: vertical;
+  width: 100%;
+}
+</style>
 
 This codelab teaches you how to use collections that
 implement the [Iterable][iterable class] class —
@@ -114,14 +129,15 @@ using a `for-in` loop.
 
 The following example shows you how to read elements using  a `for-in` loop.
 
-[//]: https://gist.github.com/c419f595f95e8317c54192491ae017cd
-<iframe
-  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd&ga_id=for_in_loop"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="200"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:ga_id-for_in_loop
+void main() {
+  var iterable = ['Salad', 'Popcorn', 'Toast'];
+  for (var element in iterable) {
+    print(element);
+  }
+}
+```
 
 {{site.alert.info}}
 Behind the scenes, the `for-in` loop uses an _iterator._
@@ -161,15 +177,14 @@ but you can use the `last` property.
   results in a [StateError.][StateError class]
 {{site.alert.end}}
 
-
-[//]: https://gist.github.com/786f67892848f93f71b1e7b9d3fc330c
-<iframe
-  src="{{site.dartpad-embed}}?id=786f67892848f93f71b1e7b9d3fc330c&ga_id=first_and_last"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="300"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:ga_id-first_and_last
+void main() {
+  Iterable iterable = ['Salad', 'Popcorn', 'Toast'];
+  print('The first element is ${iterable.first}');
+  print('The last element is ${iterable.last}');
+}
+```
 
 In this example you saw how to use `first` and `last` to
 get the first and last elements of an `Iterable`.
@@ -200,14 +215,37 @@ the element size is greater than 5.
 Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
-[//]: https://gist.github.com/03b4100365c1b871a36b9a1c5781dab1
-<iframe
-  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1&ga_id=using_firstwhere"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="500"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:height-565px:ga_id-using_firstwhere
+bool predicate(String element) {
+  return element.length > 5;
+}
+
+main() {
+  var items = ['Salad', 'Popcorn', 'Toast', 'Lasagne'];
+
+  // You can find with a simple expression:
+  var element1 = items.firstWhere((element) => element.length > 5);
+  print(element1);
+
+  // Or try using a function block:
+  var element2 = items.firstWhere((element) {
+    return element.length > 5;
+  });
+  print(element2);
+
+  // Or even pass in a function reference:
+  var element3 = items.firstWhere(predicate);
+  print(element3);
+
+  // You can also use an `orElse` function in case no value is found!
+  var element4 = items.firstWhere(
+    (element) => element.length > 10,
+    orElse: () => 'None!',
+  );
+  print(element4);
+}
+```
 
 In this example, you can see three different ways to write a predicate:
 
@@ -281,13 +319,67 @@ satisfies the following conditions:
 All the elements in the test data are [strings;][String class]
 you can check the class documentation for help.
 
-[//]: https://gist.github.com/241c6bc591f9436a9be0116724222953
-<iframe
-  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark&ga_id=practice_writing_a_test_predicate"
-  frameborder="no"
-  height="250"
-  width="100%">
-</iframe>
+```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
+{$ begin main.dart $}
+// Implement the predicate of singleWhere
+// with the following conditions
+// * The element contains the character `'a'`
+// * The element starts with the character `'M'`
+String singleWhere(Iterable<String> items) {
+  return items.singleWhere(/* Implement predicate */);
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String singleWhere(Iterable<String> items) {
+  return items.singleWhere((element) => element.startsWith('M') && element.contains('a'));
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+var items = [
+  'Salad',
+  'Popcorn',
+  'Milk',
+  'Toast',
+  'Sugar',
+  'Mozzarella',
+  'Tomato',
+  'Egg',
+  'Water',
+];
+
+void main() {
+  try {
+    final str = singleWhere(items);
+    if (str == 'Mozzarella') {
+      _result(true);
+    } else if (str == null) {
+      _result(false, [
+        'Tried calling singleWhere, but received a \'null\' value, the result '
+            'should be a non-null String'
+      ]);
+    } else {
+      _result(false, [
+        'Tried calling singleWhere, but received $str instead of the expected '
+            'value \'Mozzarella\''
+      ]);
+    }
+  } on StateError catch (stateError) {
+    _result(false, [
+      'Tried calling singleWhere, but received a StateError: ${stateError.message}. '
+          'singleWhere will fail if 0 or many elements match the '
+          'predicate'
+    ]);
+  } catch (e) {
+    _result(false, [
+      'Tried calling singleWhere, but received an exception: $e'
+    ]);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Use the methods `contains()` and `startWith()` from the `String` class.
+{$ end hint.txt $}
+```
 
 ## Checking conditions
 
@@ -327,14 +419,20 @@ you can use to verify conditions:
 
 Run this exercise to see them in action.
 
-[//]: https://gist.github.com/d56963729339cea951e16209e0a26e4c
-<iframe
-  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c&ga_id=using_any_and_every"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="375"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:height-255px:ga_id-using_any_and_every
+void main() {
+  var items = ['Salad', 'Popcorn', 'Toast'];
+  
+  if (items.any((element) => element.contains('a'))) {
+    print('At least one element contains "a"');
+  }
+  
+  if (items.every((element) => element.length >= 5)) {
+    print('All elements have length >= 5');
+  }
+}
+```
 
 In the example, `any()` verifies that
 at least one element contains the character `a`,
@@ -371,14 +469,133 @@ Use `any()` and `every()` to implement two functions:
 * Part 2: Implement `everyUserOver13()`.
   * Return `true` if all users are 14 or older.
 
-<!-- [//]: https://gist.github.com/76dc5c8644652adf4e2032912d974ac3 -->
+```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
+{$ begin main.dart $}
+bool anyUserUnder18(Iterable<User> users) {
+  // Implement this method
+}
 
-<iframe
-src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark&ga_id=verify_iterable"
-frameborder="no"
-height="325"
-width="100%" >
-</iframe>
+bool everyUserOver13(Iterable<User> users) {
+  // Implement this method
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+bool anyUserUnder18(Iterable<User> users) {
+  return users.any((user) => user.age < 18);
+}
+
+bool everyUserOver13(Iterable<User> users) {
+  return users.every((user) => user.age > 13);
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+var users = [
+  User('Alice', 21),
+  User('Bob', 17),
+  User('Claire', 52),
+  User('David', 14),
+];
+
+void main() {
+  try {
+    var out = anyUserUnder18(users);
+    if (out == null) {
+      _result(false, [
+        'Tried running `anyUserUnder18`, but received a null value. '
+            'Did you implement the method?'
+      ]);
+      return;
+    }
+    if (!out) {
+      _result(false, ['Looks like `anyUserUnder18` is wrong. Keep trying!']);
+      return;
+    }
+  } catch (e) {
+    _result(false,
+        ['Tried running `anyUserUnder18`, but received an exception: $e']);
+    return;
+  }
+
+  try {
+    // with only one user older than 18, should be false
+    var out = anyUserUnder18([User('Alice', 21)]);
+    if (out) {
+      _result(false, [
+        'Looks like `anyUserUnder18` is wrong. What if all users are over 18?'
+      ]);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `anyUserUnder18([User("Alice", 21)])`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  try {
+    var out = everyUserOver13(users);
+    if (out == null) {
+      _result(false, [
+        'Tried running `everyUserOver13`, but received a null value. '
+            'Did you implement the method?'
+      ]);
+      return;
+    }
+    if (!out) {
+      _result(false, [
+        'Looks like `everyUserOver13` is wrong. There are no users under 13!'
+      ]);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `everyUserOver13`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  try {
+    var out = everyUserOver13([User('Dan', 12)]);
+    if (out) {
+      _result(false, [
+        'Looks like `everyUserOver13` is wrong. There is at least one user under 13!'
+      ]);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `everyUserOver13([User(\'Dan\', 12)])`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  _result(true);
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Use the methods `any()` and `every()` to compare the user age.
+{$ end hint.txt $}
+```
 
 {{site.alert.secondary}}
   **Quick review:**
@@ -428,14 +645,26 @@ for (var number in evenNumbers) {
 Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
-[//]: https://gist.github.com/f96f2f630ee327bd69ee7737301d9628
-<iframe
-  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628&ga_id=using_where"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="375"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:height-380px:ga_id-using_where
+main() {
+  var evenNumbers = [1, -2, 3, 42].where((number) => number.isEven);
+
+  for (var number in evenNumbers) {
+    print('$number is even.');
+  }
+
+  if (evenNumbers.any((number) => number.isNegative)) {
+    print('evenNumbers contains negative numbers.');
+  }
+
+  // If no element satisfies the predicate, the output is empty.
+  var largeNumbers = evenNumbers.where((number) => number > 1000);
+  if (largeNumbers.isEmpty) {
+    print('largeNumbers is empty!');
+  }
+}
+```
 
 In this example, `where()` is used to find all numbers that are even, then
 `any()` is used to check if the results contain a negative number.
@@ -459,14 +688,18 @@ help you filter elements from an `Iterable`.
 Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
-[//]: https://gist.github.com/5e3582c858517f93baf160892d131ec9
-<iframe
-  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9&ga_id=using_takewhile"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="275"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:ga_id-using_takewhile
+main() {
+  var numbers = [1, 3, -2, 0, 4, 5];
+
+  var numbersUntilZero = numbers.takeWhile((number) => number != 0);
+  print('Numbers until 0: $numbersUntilZero');
+
+  var numbersAfterZero = numbers.skipWhile((number) => number != 0);
+  print('Numbers after 0: $numbersAfterZero');
+}
+```
 
 In this example, `takeWhile()` returns an `Iterable` that
 contains all the elements leading to the element that
@@ -499,14 +732,88 @@ Use `where()` to implement two functions:
 * Part 2: Implement `findShortNamed()`.
   * Return an `Iterable` containing all users with
     names of length 3 or less.
+
+```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
+{$ begin main.dart $}
+Iterable<User> filterUnder21(Iterable<User> users) {
+  // Implement this method
+}
+
+Iterable<User> findShortNamed(Iterable<User> users) {
+  // Implement this method
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+Iterable<User> filterUnder21(Iterable<User> users) {
+  return users.where((user) => user.age >= 21);
+}
+
+Iterable<User> findShortNamed(Iterable<User> users) {
+  return users.where((user) => user.name.length <= 3);
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+var users = [
+  User('Alice', 21),
+  User('Bob', 17),
+  User('Claire', 52),
+  User('Dan', 12),
+];
+
+void main() {
+  try {
+    var out = filterUnder21(users);
+    if (out.any((user) => user.age < 21) || out.length != 2) {
+      _result(false, ['Looks like `filterUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `filterUnder21`, but received an exception: ${e.runtimeType}'
+    ]);
+    return;
+  }
+
+  try {
+    var out = findShortNamed(users);
+    if (out.any((user) => user.name.length > 3) || out.length != 2) {
+      _result(false, ['Looks like `findShortNamed` is wrong, there are exactly two users with a three letter name. Keep trying!']);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `findShortNamed`, but received an exception: ${e.runtimeType}'
+    ]);
+    return;
+  }
   
-[//]: https://gist.github.com/8113e2880772456f9036ddf55c517e9e
-<iframe
-src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark&ga_id=filtering_elements_from_a_list"
-frameborder="no"
-height="325"
-width="100%" >
-</iframe>
+  _result(true);
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Use the `where()` method to implement the filters.
+{$ end hint.txt $}
+```
 
 {{site.alert.secondary}}
   **Quick review:**
@@ -550,14 +857,14 @@ Run this example to see how to use `map()` to
 multiply all the elements of an `Iterable` by 2.
 What do you think the output will be?
 
-[//]: https://gist.github.com/8c2f129d88c5ce166cca0f4bb9e2a906
-<iframe
-  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906&ga_id=using_map"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="200"
-  width="100%" >
-</iframe>
+{% comment %} TODO: use code-excerpt here {% endcomment %}
+```dart:run-dartpad:ga_id-using_map
+main() {
+  var numbersByTwo = [1, -2, 3, 42].map((number) => number * 2);
+  print('Numbers: $numbersByTwo.');
+}
+```
+
 
 ### Exercise: Mapping to a different type
 
@@ -571,13 +878,79 @@ contains strings containing user name and age.
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
-[//]: https://gist.github.com/5ce89481a3dc8b14800825c78bd547e2
-<iframe
-src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark&ga_id=mapping_to_a_different_type"
-frameborder="no"
-height="325"
-width="100%" >
-</iframe>
+```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
+{$ begin main.dart $}
+Iterable<String> getNameAndAges(Iterable<User> users) {
+  // implement this method
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+Iterable<String> getNameAndAges(Iterable<User> users) {
+  return users.map((user) => '${user.name} is ${user.age}');
+}
+
+class User {
+  String name;
+  int age;
+
+  User(
+    this.name,
+    this.age,
+  );
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+var users = [
+  User('Alice', 21),
+  User('Bob', 17),
+  User('Claire', 52),
+];
+
+void main() {
+  try {
+    final out = getNameAndAges(users).toList();
+    if (out == null) {
+      _result(false, [
+        'Tried running `getNameAndAges`, but received a null value. Did you implement the method?'
+      ]);
+      return;
+    }
+    if (!_listEquals(out, ['Alice is 21', 'Bob is 17', 'Claire is 52'])) {
+      _result(false, ['Looks like `getNameAndAges` is wrong. Keep trying! The output was $out']);
+      return;
+    }
+    _result(true);
+  } catch (e) {
+    _result(false, ['Tried running the method, but received an exception: $e']);
+  }
+}
+
+bool _listEquals<T>(List<T> a, List<T> b) {
+  if (a == null)
+    return b == null;
+  if (b == null || a.length != b.length)
+    return false;
+  for (int index = 0; index < a.length; index += 1) {
+    if (a[index] != b[index])
+      return false;
+  }
+  return true;
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Use `map()` to create a String with the values of `user.name` and `user.age`.
+{$ end hint.txt $}
+```
 
 {{site.alert.secondary}}
   **Quick review:**
@@ -628,13 +1001,182 @@ Part 3: Implement `validEmailAddresses()`.
 - Use the provided function `isValidEmailAddress()` to evaluate whether
   an `EmailAddress` is valid.
 
-[//]: https://gist.github.com/0be68487b124b4e55927c3e026094547
-<iframe
-src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark&ga_id=putting_it_all_together"
-frameborder="no"
-height="600"
-width="100%" >
-</iframe>
+```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
+{$ begin main.dart $}
+Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
+  // Implement this method
+}
+
+bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
+  // Implement this method
+}
+
+Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
+  // Implement this method
+}
+
+class EmailAddress {
+  String address;
+
+  EmailAddress(this.address);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is EmailAddress &&
+              runtimeType == other.runtimeType &&
+              address == other.address;
+
+  @override
+  int get hashCode => address.hashCode;
+
+  @override
+  String toString() {
+    return 'EmailAddress{address: $address}';
+  }
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
+  return strings.map((s) => EmailAddress(s));
+}
+
+bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
+  return emails.any((email) => !isValidEmailAddress(email));
+}
+
+Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
+  return emails.where((email) => isValidEmailAddress(email));
+}
+
+class EmailAddress {
+  String address;
+
+  EmailAddress(this.address);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is EmailAddress &&
+              runtimeType == other.runtimeType &&
+              address == other.address;
+
+  @override
+  int get hashCode => address.hashCode;
+
+  @override
+  String toString() {
+    return 'EmailAddress{address: $address}';
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+var input = [
+  'ali@gmail.com',
+  'bobgmail.com',
+  'cal@gmail.com',
+];
+
+bool isValidEmailAddress(EmailAddress email) {
+  return email.address.contains('@');
+}
+
+void main() {
+  Iterable<EmailAddress> emails;
+  try {
+    emails = parseEmailAddresses(input);
+    if (emails == null) {
+      _result(false, [
+        'Tried running `parseEmailAddresses`, but received a null value. Did you implement the method?'
+      ]);
+      return;
+    }
+    if (emails.isEmpty) {
+      _result(false, [
+        'Tried running `parseEmailAddresses`, but received an empty list.'
+      ]);
+      return;
+    }
+    if (!_listEquals(emails.toList(), [
+      EmailAddress('ali@gmail.com'),
+      EmailAddress('bobgmail.com'),
+      EmailAddress('cal@gmail.com'),
+    ])) {
+      _result(false, ['Looks like `parseEmailAddresses` is wrong. Keep trying!']);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `parseEmailAddresses`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  try {
+    final out = anyInvalidEmailAddress(emails);
+    if (out == null) {
+      _result(false, [
+        'Tried running `anyInvalidEmailAddress`, but received a null value. Did you implement the method?'
+      ]);
+      return;
+    }
+    if (!out) {
+      _result(false, [
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! There is at least one invalid address.'
+      ]);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running `anyInvalidEmailAddress`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  try {
+    final valid = validEmailAddresses(emails);
+    if (valid == null) {
+      _result(false, [
+        'Tried running `validEmailAddresses`, but received a null value. Did you implement the method?'
+      ]);
+      return;
+    }
+    if (emails.isEmpty) {
+      _result(false, [
+        'Tried running `validEmailAddresses`, but received an empty list.'
+      ]);
+      return;
+    }
+    if (!_listEquals(valid.toList(), [
+      EmailAddress('ali@gmail.com'),
+      EmailAddress('cal@gmail.com'),
+    ])) {
+      _result(false, ['Looks like `validEmailAddresses` is wrong. Keep trying!']);
+      return;
+    }
+  } catch (e) {
+    _result(false, [
+      'Tried running the `validEmailAddresses`, but received an exception: $e'
+    ]);
+    return;
+  }
+
+  _result(true);
+}
+
+bool _listEquals<T>(List<T> a, List<T> b) {
+  if (a == null) return b == null;
+  if (b == null || a.length != b.length) return false;
+  for (int index = 0; index < a.length; index += 1) {
+    if (a[index] != b[index]) return false;
+  }
+  return true;
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Use the methods `map()`, `any()`, and `where()` to solve the exercise.
+{$ end hint.txt $}
+```
 
 ## What's next
 
