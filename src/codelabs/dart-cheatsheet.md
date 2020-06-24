@@ -1,18 +1,20 @@
 ---
 title: Dart cheatsheet codelab
 description: Interactively learn (or relearn) some of Dart's unique features.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <style>
-  iframe {
-    border: 1px solid #ccc;
-    width: 100%;
-    height: 400px;
-  }
-
-  iframe[short] {
-    height: 220px;
-  }
+{% comment %}
+TODO(chalin): move this into one of our SCSS files
+{% endcomment -%}
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 220px;
+  resize: vertical;
+  width: 100%;
+}
 </style>
 
 The Dart language is designed to be easy to learn for
@@ -55,7 +57,44 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-<iframe src="{{site.dartpad-embed}}?id=43f3db47b0632c557200270807696687&ga_id=string_interpolation"></iframe>
+```dart:run-dartpad:ga_id-string_interpolation
+{$ begin main.dart $}
+String stringify(int x, int y) {
+  // Return a formatted string here
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String stringify(int x, int y) {
+  return '$x $y';
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  try {
+    final str = stringify(2, 3); 
+
+    if (str == '2 3') {
+      _result(true);
+    } else if (str == '23') {
+      _result(false, ['Test failed. It looks like you forgot the space!']);
+    } else if (str == null) {
+      _result(false, ['Test failed. Did you forget to return a value?']);
+    } else {
+      _result(false, ['That\'s not quite right. Keep trying!']);
+    }
+  } catch (e) {
+    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Both x and y are simple values,
+and Dart's string interpolation will handle
+converting them to string representations.
+All you need to do is use the $ operator to
+reference them inside single quotes, with a space in between.
+{$ end hint.txt $}
+```
 
 
 ## Null-aware operators
@@ -67,7 +106,6 @@ variable is currently null:
 
 {% comment %}
 TBD: Make this and all non-trivial snippets testable.
-I found an error in one of the getter/setter snippets.
 {% endcomment %}
 
 <?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
@@ -94,7 +132,63 @@ print(null ?? 12); // <-- Prints 12.
 
 Try putting the `??=` and `??` operators to work below.
 
-<iframe src="{{site.dartpad-embed}}?id=ee3d441f60acc95a07d73762a61b3b98&ga_id=null_aware"></iframe>
+```dart:run-dartpad:height-255px:ga_id-null_aware
+{$ begin main.dart $}
+String foo = 'a string';
+String bar; // Unassigned objects are null by default.
+
+// Substitute an operator that makes 'a string' be assigned to baz.
+String baz = foo /* TODO */ bar;
+
+void updateSomeVars() {
+  // Substitute an operator that makes 'a string' be assigned to bar.
+  bar /* TODO */ 'a string';
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String foo = 'a string';
+String bar; // Unassigned objects are null by default.
+
+// Substitute an operator that makes 'a string' be assigned to baz.
+String baz = foo ?? bar;
+
+void updateSomeVars() {
+  // Substitute an operator that makes 'a string' be assigned to bar.
+  bar ??= 'a string';
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+  
+  try {
+    updateSomeVars();
+    
+    if (foo != 'a string') {
+      errs.add('Looks like foo somehow ended up with the wrong value.');
+    } else if (bar != 'a string') {
+      errs.add('Looks like bar ended up with the wrong value.');
+    } else if (baz != 'a string') {
+      errs.add('Looks like baz ended up with the wrong value.');
+    }
+  } catch (e) {
+    errs.add('Tried calling updateSomeVars and received an exception: ${e.runtimeType}.');
+  }
+  
+  if (errs.isEmpty) {
+   _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+All you need to do in this exercise is
+replace the TODO comments with either ?? or ??=.
+Read the codelab text to make sure you understand both,
+and then give it a try.
+{$ end hint.txt $}
+```
 
 
 ## Conditional property access
@@ -127,7 +221,59 @@ null.
 
 Try using conditional property access to finish the code snippet below.
 
-<iframe src="{{site.dartpad-embed}}?id=58f14a3d943be6231ae611036fcfc80d&ga_id=conditional-property_access"></iframe>
+```dart:run-dartpad:ga_id-conditional-property_access
+{$ begin main.dart $}
+// This method should return the uppercase version of `str`
+// or null if `str` is null.
+String upperCaseIt(String str) {
+  // Try conditionally accessing the `toUpperCase` method here.
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+// This method should return the uppercase version of `str`
+// or null if `str` is null.
+String upperCaseIt(String str) {
+  return str?.toUpperCase();
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+  
+  try {
+    String one = upperCaseIt(null);
+
+    if (one != null) {
+      errs.add('Looks like you\'re not returning null for null inputs.');
+    }
+  } catch (e) {
+    errs.add('Tried calling upperCaseIt(null) and got an exception: ${e.runtimeType}.');
+  }
+  
+  try {
+    String two = upperCaseIt('asdf');
+
+    if (two == null) {
+      errs.add('Looks like you\'re returning null even when str has a value.');
+    } else if (two != 'ASDF') {
+      errs.add('Tried upperCaseIt(\'asdf\'), but didn\'t get \'ASDF\' in response.');
+    }
+  } catch (e) {
+    errs.add('Tried calling upperCaseIt(\'asdf\') and got an exception: ${e.runtimeType}.');
+  }
+  
+  if (errs.isEmpty) {
+   _result(true);
+  } else {
+   _result(false, errs);
+  }  
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+If this exercise wanted you to conditionally lowercase a string,
+you could do it like this: str?.toLowerCase()
+{$ end hint.txt $}
+```
 
 
 ## Collection literals
@@ -170,7 +316,102 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 Try setting the following variables to the indicated values.
 
-<iframe src="{{site.dartpad-embed}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff&ga_id=collection_literals"></iframe>
+```dart:run-dartpad:height-400px:ga_id-collection_literals
+{$ begin main.dart $}
+// Assign this a list containing 'a', 'b', and 'c' in that order:
+final aListOfStrings = 
+
+// Assign this a set containing 3, 4, and 5:
+final aSetOfInts = 
+
+// Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+final aMapOfStringsToInts = 
+
+// Assign this an empty List<double>:
+final anEmptyListOfDouble = 
+
+// Assign this an empty Set<String>:
+final anEmptySetOfString = 
+
+// Assign this an empty Map of double to int:
+final anEmptyMapOfDoublesToInts = 
+{$ end main.dart $}
+{$ begin solution.dart $}
+// Assign this a list containing 'a', 'b', and 'c' in that order:
+final aListOfStrings = ['a', 'b', 'c'];
+
+// Assign this a set containing 3, 4, and 5:
+final aSetOfInts = {3, 4, 5};
+
+// Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+final aMapOfStringsToInts = {'myKey': 12};
+
+// Assign this an empty List<double>:
+final anEmptyListOfDouble = <double>[];
+
+// Assign this an empty Set<String>:
+final anEmptySetOfString = <String>{};
+
+// Assign this an empty Map of double to int:
+final anEmptyMapOfDoublesToInts = <double, int>{};
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+  
+  if (aListOfStrings is! List<String>) {
+    errs.add('aListOfStrings should have the type List<String>.');
+  } else if (aListOfStrings.length != 3) {
+    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, rather than the expected 3.');
+  } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
+    errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
+  }
+
+  if (aSetOfInts is! Set<int>) {
+    errs.add('aSetOfInts should have the type Set<int>.');
+  } else if (aSetOfInts.length != 3) {
+    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, rather than the expected 3.');
+  } else if (!aSetOfInts.contains(3) || !aSetOfInts.contains(4) || !aSetOfInts.contains(5)) {
+    errs.add('aSetOfInts doesn\'t contain the correct values (3, 4, 5).');
+  }
+
+  if (aMapOfStringsToInts is! Map<String, int>) {
+    errs.add('aMapOfStringsToInts should have the type Map<String, int>.');
+  } else if (aMapOfStringsToInts['myKey'] != 12) {
+    errs.add('aMapOfStringsToInts doesn\'t contain the correct values (\'myKey\': 12).');
+  }
+
+  if (anEmptyListOfDouble is! List<double>) {
+    errs.add('anEmptyListOfDouble should have the type List<double>.');
+  } else if (anEmptyListOfDouble.isNotEmpty) {
+    errs.add('anEmptyListOfDouble should be empty.');
+  }
+
+  if (anEmptySetOfString is! Set<String>) {
+    errs.add('anEmptySetOfString should have the type Set<String>.');
+  } else if (anEmptySetOfString.isNotEmpty) {
+    errs.add('anEmptySetOfString should be empty.');
+  }
+
+  if (anEmptyMapOfDoublesToInts is! Map<double, int>) {
+    errs.add('anEmptyMapOfDoublesToInts should have the type Map<double, int>.');
+  } else if (anEmptyMapOfDoublesToInts.isNotEmpty) {
+    errs.add('anEmptyMapOfDoublesToInts should be empty.');
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise is fairly straightforward.
+Just add a list, set, or map literal after each equals sign.
+See the codelab text for the correct syntax to use.
+{$ end hint.txt $}
+```
 
 
 ## Arrow syntax
@@ -198,16 +439,93 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 Try finishing the following statements, which use arrow syntax.
 
-<iframe src="{{site.dartpad-embed}}?id=7c287c55dcc7f414a5dfa5837e3450e3&ga_id=arrow_syntax"></iframe>
+```dart:run-dartpad:height-345px:ga_id-arrow_syntax
+{$ begin main.dart $}
+class MyClass {
+  int _value1 = 2;
+  int _value2 = 3;
+  int _value3 = 5;
+  
+  // Returns the product of the above values:
+  int get product =>
+  
+  // Adds 1 to _value1:
+  void incrementValue1() => 
+  
+  // Returns a string containing each item in the
+  // list, separated by commas (e.g. 'a,b,c'): 
+  String joinWithCommas(List<String> strings) =>
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyClass {
+  int _value1 = 2;
+  int _value2 = 3;
+  int _value3 = 5;
 
-{% comment %}
-ISSUE: The analysis output kept getting in the way of my typing for the
-last part of this code. Also, how are they supposed to know to use the
-join() method?
+  // Returns the product of the above values:
+  int get product => _value1 * _value2 * _value3;
+  
+  // Adds one to _value1:
+  void incrementValue1() => _value1++; 
+  
+  // Returns a string containing each item in the
+  // list, separated by commas (e.g. 'a,b,c'): 
+  String joinWithCommas(List<String> strings) => strings.join(',');
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final obj = MyClass();
+  final errs = <String>[];
+  
+  try {
+    final product = obj.product;
+    
+    if (product != 30) {
+      errs.add('The product property returned $product instead of the expected value (30).'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
 
-TBD: The comments in "Your code" are in the form of doc comments,
-but they don't use `///`, and they end in `:`, not `.`.
-{% endcomment %}
+  try {
+    obj.incrementValue1();
+    
+    if (obj._value1 != 3) {
+      errs.add('After calling incrementValue, value1 was ${obj._value1} instead of the expected value (3).'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final joined = obj.joinWithCommas(['one', 'two', 'three']);
+    
+    if (joined != 'one,two,three') {
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+For the product, you can just multiply the three values together.
+For incrementValue1, you can use the increment operator (++).
+For joinWithCommas, try using the join method found in the List class.
+{$ end hint.txt $}
+```
+
 
 ## Cascades
 
@@ -257,7 +575,105 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-<iframe src="{{site.dartpad-embed}}?id=72bde0b4d5c8c6046b4853a3b4053c3a&ga_id=cascades"></iframe>
+```dart:run-dartpad:height-345px:ga_id-cascades
+{$ begin main.dart $}
+class BigObject {
+  int anInt = 0;
+  String aString = '';
+  List<double> aList = [];
+  bool _done = false;
+  
+  void allDone() {
+    _done = true;
+  }
+}
+
+BigObject fillBigObject(BigObject obj) {
+  // Create a single statement that will update and return obj:
+  return obj..
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class BigObject {
+  int anInt = 0;
+  String aString = '';
+  List<double> aList = [];
+  bool _done = false;
+  
+  void allDone() {
+    _done = true;
+  }
+}
+
+BigObject fillBigObject(BigObject obj) {
+  return obj
+    ..anInt = 1
+    ..aString = 'String!'
+    ..aList.add(3)
+    ..allDone();
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  BigObject obj;
+
+  try {
+    obj = fillBigObject(BigObject());
+  } catch (e) {
+    _result(false, [
+      'Caught an exception of type ${e.runtimeType} while running fillBigObject'
+    ]);
+    return;
+  }
+
+  if (obj == null) {
+    _result(false, ['It looks like fillBigObject returned a null!']);
+  } else {
+    final errs = <String>[];
+
+    if (obj.anInt != 1) {
+      errs.add(
+          'The value of anInt was ${obj.anInt} rather than the expected (1).');
+    }
+
+    if (obj.aString != 'String!') {
+      errs.add(
+          'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
+    }
+
+    if (obj.aList == null) {
+      errs.add('The value of aList was null.');
+    }
+
+    if (obj.aList.length != 1) {
+      errs.add(
+          'The length of aList was ${obj.aList.length} rather than the expected value (1).');
+    } else {
+      if (obj.aList[0] != 3.0) {
+        errs.add(
+            'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
+      }
+    }
+    
+    if (!obj._done) {
+      errs.add('It looks like allDone() wasn\'t called.');
+    }
+
+    if (errs.isEmpty) {
+      _result(true);
+    } else {
+      _result(false, errs);
+    }
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The best solution for this exercise starts with obj.. and
+has four assignment operations chained together.
+Try starting with `return obj..anInt = 1`,
+then add another cascade (..) and start the next assignment.
+{$ end hint.txt $}
+```
 
 
 ## Getters and setters
@@ -312,7 +728,105 @@ Add the following:
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).
 
-<iframe src="{{site.dartpad-embed}}?id=84561041d263cbd4c92f614eceec85e6&ga_id=getters_setters"></iframe>
+```dart:run-dartpad:height-240px:ga_id-getters_setters
+{$ begin main.dart $}
+class InvalidPriceException {}
+
+class ShoppingCart {
+  List<double> _prices = [];
+  
+  // Add a "total" getter here:
+
+  // Add a "prices" setter here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class InvalidPriceException {}
+
+class ShoppingCart {
+  List<double> _prices = [];
+  
+  double get total => _prices.fold(0, (e, t) => e + t);
+  
+  set prices(List<double> value) {
+    if (value.any((p) => p < 0)) {
+      throw InvalidPriceException();
+    }
+    
+    _prices = value;
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  var foundException = false;
+  
+  try {
+    final cart = ShoppingCart();
+    cart.prices = [12.0, 12.0, -23.0];
+  } on InvalidPriceException{
+    foundException = true;
+  } catch (e) {
+    _result(false, ['Tried setting a negative price and received a ${e.runtimeType} instead of an InvalidPriceException.']);
+    return;
+  }
+  
+  if (!foundException) {
+    _result(false, ['Tried setting a negative price and didn\'t get an InvalidPriceException.']);
+    return;
+  }
+  
+  final secondCart = ShoppingCart();
+  
+  try {
+    secondCart.prices = [1.0, 2.0, 3.0];
+  } catch(e) {
+    _result(false, ['Tried setting prices with a valid list, but received an exception: ${e.runtimeType}.']);
+    return;
+  }
+  
+  if (secondCart._prices == null) {
+    _result(false, ['Tried setting prices with a list of three values, but _prices ended up being null.']);
+    return;
+  }
+  
+  if (secondCart._prices.length != 3) {
+    _result(false, ['Tried setting prices with a list of three values, but _prices ended up having length ${secondCart._prices.length}.']);
+    return;
+  }
+
+  if (secondCart._prices[0] != 1.0 || secondCart._prices[1] != 2.0 || secondCart._prices[2] != 3.0) {
+    final vals = secondCart._prices.map((p) => p.toString()).join(', ');
+    _result(false, ['Tried setting prices with a list of three values (1, 2, 3), but incorrect ones ended up in the price list ($vals) .']);
+    return;
+  }
+  
+  var sum = 0.0;
+  
+  try {
+    sum = secondCart.total;
+  } catch (e) {
+    _result(false, ['Tried to get total, but received an exception: ${e.runtimeType}.']);
+    return;
+  }
+  
+  if (sum != 6.0) {
+    _result(false, ['After setting prices to (1, 2, 3), total returned $sum instead of 6.']);
+    return;
+  }
+  
+  _result(true);
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Two functions are handy for this exercise. 
+One is `fold`, which can reduce a list to a single value
+(try it to calculate the total).
+The other is `any`, which can check each item in a list
+with a function you give it
+(try using it to check if there are any negative prices in the prices setter).
+{$ end hint.txt $}
+```
 
 
 ## Optional positional parameters
@@ -374,7 +888,72 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-<iframe src="{{site.dartpad-embed}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1&ga_id=optional_positional_parameters"></iframe>
+```dart:run-dartpad:ga_id-optional_positional_parameters
+{$ begin main.dart $}
+String joinWithCommas(int a, [int b, int c, int d, int e]) {
+
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String joinWithCommas(int a, [int b, int c, int d, int e]) {
+  var total = '$a';
+  if (b != null) total = '$total,$b';
+  if (c != null) total = '$total,$c';
+  if (d != null) total = '$total,$d';
+  if (e != null) total = '$total,$e';
+  return total;
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+  
+  try {
+    final value = joinWithCommas(1);
+    
+    if (value != '1') {
+      errs.add('Tried calling joinWithCommas(1) and got $value instead of the expected (\'1\').'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried calling joinWithCommas(1), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final value = joinWithCommas(1, 2, 3);
+    
+    if (value != '1,2,3') {
+      errs.add('Tried calling joinWithCommas(1, 2, 3) and got $value instead of the expected (\'1,2,3\').'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried calling joinWithCommas(1, 2 ,3), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final value = joinWithCommas(1, 2, 3, 4, 5);
+    
+    if (value != '1,2,3,4,5') {
+      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) and got $value instead of the expected (\'1,2,3,4,5\').'); 
+    } 
+  } catch (e) {
+    _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The b, c, d, and e paramters are null if they aren't provided by caller.
+The important thing, then, is to check whether those arguments are null
+before you add them to the final string.
+{$ end hint.txt $}
+```
 
 
 ## Optional named parameters
@@ -420,7 +999,109 @@ copied into the object's properties.
 For example, if `newInt` is non-null,
 then copy its value into `anInt`.
 
-<iframe src="{{site.dartpad-embed}}?id=1dd9cc9654f9e6d080f99bfb9772dae4&ga_id=optional_named_parameters"></iframe>
+```dart:run-dartpad:height-310px:ga_id-optional_named_parameters
+{$ begin main.dart $}
+class MyDataObject {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+
+  MyDataObject({
+     this.anInt = 1,
+     this.aString = 'Old!',
+     this.aDouble = 2.0,
+  });
+
+  // Add your copyWith method here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyDataObject {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+
+  MyDataObject({
+     this.anInt = 1,
+     this.aString = 'Old!',
+     this.aDouble = 2.0,
+  });
+
+  MyDataObject copyWith({int newInt, String newString, double newDouble}) {
+    return MyDataObject(
+      anInt: newInt ?? this.anInt,
+      aString: newString ?? this.aString,
+      aDouble: newDouble ?? this.aDouble,
+    );
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final source = MyDataObject();
+  final errs = <String>[];
+  
+  try {
+    final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
+    
+    if (copy == null) {
+      errs.add('Tried copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and it returned null');
+    } else {
+      if (copy.anInt != 12) {
+        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
+      }
+      
+      if (copy.aString != 'New!') {
+        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
+      }
+      
+      if (copy.aDouble != 3) {
+        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and got an exception: ${e.runtimeType}']);
+  }
+  
+  try {
+    final copy = source.copyWith();
+    
+    if (copy == null) {
+      errs.add('Tried copyWith() and it returned null');
+    } else {
+      if (copy.anInt != 1) {
+        errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} rather than the expected value (1).');
+      }
+      
+      if (copy.aString != 'Old!') {
+        errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} rather than the expected value (\'Old!\').');
+      }
+      
+      if (copy.aDouble != 2) {
+        errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (2).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called copyWith() and got an exception: ${e.runtimeType}']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The copyWith method shows up in a lot of classes and libraries.
+Yours should do a few things:
+use optional named parameters,
+create a new instance of MyDataObject,
+and use the data from the parameters to fill it
+(or the data from the current instance if the parameters are null).
+This is a chance to get more practice with the ?? operator!
+{$ end hint.txt $}
+```
 
 
 ## Exceptions
@@ -500,27 +1181,155 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-<iframe src="{{site.dartpad-embed}}?id=e221e3fd667825e62aac79079b8b5c59&ga_id=exceptions"></iframe>
+```dart:run-dartpad:height-420px:ga_id-exceptions
+{$ begin main.dart $}
+typedef VoidFunction = void Function();
 
-{% comment %}
-I was confused about the text saying "call... with the exception type" but
-using only on for it (since how would you know the type without the exception
-object?). I used on catch at first, and that worked. Then I looked at the
-solution and changed to what it used, and it did NOT work! Here's what I saw:
+class ExceptionWithMessage {
+  final String message;
+  const ExceptionWithMessage(this.message);
+}
 
-Untrustworthy threw an Exception, but a different type was logged: Exception.
+// Call logException to log an exception, and doneLogging when finished.
+abstract class Logger {
+  void logException(Type t, [String msg]);
+  void doneLogging();
+}
 
-(Looking at the test code, I see the type it looks for is actually _Exception.)
+void tryFunction(VoidFunction untrustworthy, Logger logger) {
+  // Invoking this method might cause an exception. Catch and handle
+  // them using try-on-catch-finally.
+  untrustworthy();
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+typedef VoidFunction = void Function();
 
-Both the text & the test need to be changed.
+class ExceptionWithMessage {
+  final String message;
+  const ExceptionWithMessage(this.message);
+}
 
-ISSUE: Solution doesn't exactly match the comments in "Your code", so the
-line count is off.
+abstract class Logger {
+  void logException(Type t, [String msg]);
+  void doneLogging();
+}
 
-ISSUE: When I select all in the Solution and then switch to the Your code tab,
-everything in THAT tab looks selected, too. The same is NOT true of the
-Test code tab. After I reloaded, this behavior stopped.
-{% endcomment %}
+void tryFunction(VoidFunction untrustworthy, Logger logger) {
+  try {
+    untrustworthy();
+  } on ExceptionWithMessage catch (e) {
+    logger.logException(e.runtimeType, e.message);
+  } on Exception {
+    logger.logException(Exception);
+  } finally {
+    logger.doneLogging();
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+class MyLogger extends Logger {
+  Type lastType;
+  String lastMessage = '';
+  bool done = false;
+  
+  void logException(Type t, [String message]) {
+    lastType = t;
+    lastMessage = message ?? lastMessage;
+  }
+  
+  void doneLogging() => done = true;  
+}
+
+void main() {
+  final errs = <String>[];
+  var logger = MyLogger();
+  
+  try {
+    tryFunction(() => throw Exception(), logger);
+  
+    if ('${logger.lastType}' != 'Exception' && '${logger.lastType}' != '_Exception') {
+      errs.add('Untrustworthy threw an Exception, but a different type was logged: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != '') {
+      errs.add('Untrustworthy threw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy threw an Exception, and doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy threw an exception, and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+  }
+  
+  logger = MyLogger();
+  
+  try {
+    tryFunction(() => throw ExceptionWithMessage('Hey!'), logger);
+  
+    if (logger.lastType != ExceptionWithMessage) {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different type was logged: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != 'Hey!') {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different message was logged: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+  }
+  
+  logger = MyLogger();
+  bool caughtStringException = false;
+
+  try {
+    tryFunction(() => throw 'A String', logger);
+  } on String {
+    caughtStringException = true;
+  }
+
+  if (!caughtStringException) {
+    errs.add('Untrustworthy threw a string, and it was incorrectly handled inside tryFunction().');
+  }
+  
+  logger = MyLogger();
+  
+  try {
+    tryFunction(() {}, logger);
+  
+    if (logger.lastType != null) {
+      errs.add('Untrustworthy didn\'t throw an Exception, but one was logged anyway: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != '') {
+      errs.add('Untrustworthy didn\'t throw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy didn\'t throw an Exception, but doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy didn\'t throw an exception, but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise looks tricky, but it's really one big `try` statement.
+Just call `untrustworthy` inside the `try`, and
+then use `on`, `catch`, and `finally` to catch exceptions and
+call methods on the logger.
+{$ end hint.txt $}
+```
 
 
 ## Using `this` in a constructor
@@ -569,7 +1378,65 @@ Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
 all three properties of the class.
 
-<iframe src="{{site.dartpad-embed}}?id=2778e81ae2c5729d45c611829f3888c2&ga_id=this_constructor"></iframe>
+```dart:run-dartpad:ga_id-this_constructor
+{$ begin main.dart $}
+class MyClass {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+  
+  // Create a constructor here.
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyClass {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+  
+  MyClass(this.anInt, this.aString, this.aDouble);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+  
+  try {
+    final obj = MyClass(1, 'two', 3);
+    
+    if (obj == null) {
+      errs.add('Called MyClass(1, \'two\', 3) and got a null in response.');
+    } else {
+      if (obj.anInt != 1) {
+        errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} instead of the expected value (1).');
+      }
+
+      if (obj.anInt != 1) {
+        errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' instead of the expected value (\'two\').');
+      }
+
+      if (obj.anInt != 1) {
+        errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} instead of the expected value (3).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called MyClass(1, \'two\', 3) and got an exception of type ${e.runtimeType}.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise has a one-line solution.
+Just declare the constructor with
+`this.anInt`, `this.aString`, and `this.aDouble`
+as its parameters in that order.
+{$ end hint.txt $}
+```
 
 {% comment %}
 This one seems super easy compared to previous ones.
@@ -615,8 +1482,6 @@ the `letterOne` and `LetterTwo` properties.
 For extra credit, add an `assert` to catch words of less than two characters.
 
 {% comment %}
-ISSUE: The test was broken. I've fixed it in my gist.
-
 Is the assert even executed? I can't see any effect on the test,
 which makes me think asserts are ignored.
 Also, the test just checks for the presence of any exception, not for
@@ -625,9 +1490,78 @@ an AssertionError.
 Also, my print() wasn't visible in the Output until I fixed my code and/or
 the test. That was unexpected.
 It'd be cool if Output appeared only if you want it, like Solution does.
+
+FINALLY: Suggest using https://pub.dev/packages/characters
+if this is a user-entered string.
 {% endcomment %}
 
-<iframe src="{{site.dartpad-embed}}?id=df45dfc1af2e6af712930c331115eb78&ga_id=initializer_lists"></iframe>
+```dart:run-dartpad:ga_id-initializer_lists
+{$ begin main.dart $}
+class FirstTwoLetters {
+  final String letterOne;
+  final String letterTwo;
+
+  // Create a constructor with an initializer list here:
+  FirstTwoLetters(String word)
+    ...
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class FirstTwoLetters {
+  final String letterOne;
+  final String letterTwo;
+
+  FirstTwoLetters(String word)
+      : letterOne = word[0],
+        letterTwo = word[1];
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+
+  try {
+    final result = FirstTwoLetters('My String');
+    
+    if (result == null) {
+      errs.add('Called FirstTwoLetters(\'My String\') and got a null in response.');
+    } else {
+      if (result.letterOne != 'M') {
+        errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
+      }
+
+      if (result.letterTwo != 'y') {
+        errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
+      }
+    }
+  } catch (e) {
+    errs.add('Called FirstTwoLetters(\'My String\') and got an exception of type ${e.runtimeType}.');
+  }
+
+  bool caughtException = false;
+  
+  try {
+    FirstTwoLetters('');
+  } catch (e) {
+    caughtException = true;
+  }
+  
+  if (!caughtException) {
+    errs.add('Called FirstTwoLetters(\'\') and didn\'t get an exception from the failed assertion.');
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Two assignments need to happen:
+letterOne should be word[0], and letterTwo should be word[1].
+{$ end hint.txt $}
+```
 
 
 ## Named constructors
@@ -666,12 +1600,72 @@ final myPoint = Point.origin();
 Give the Color class a constructor named `Color.black`
 that sets all three properties to zero.
 
-{% comment %}
-ISSUE: comment says "a named constructor called "black"", which sounds
-wrong to me. I fixed it in the text but not in the example.
-{% endcomment %}
+```dart:run-dartpad:height-240px:ga_id-named_constructors
+{$ begin main.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
 
-<iframe src="{{site.dartpad-embed}}?id=e1a82c77547e659eb24f4e698abf1eca&ga_id=named_constructors"></iframe>
+  // Create a named constructor called "Color.black" here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  Color.black() {
+    red = 0;
+    green = 0;
+    blue = 0;
+  } 
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+
+  try {
+    final result = Color.black();
+    
+    if (result == null) {
+      errs.add('Called Color.black() and got a null in response.');
+    } else {
+      if (result.red != 0) {
+        errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+      }
+
+      if (result.green != 0) {
+        errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+      }
+
+      if (result.blue != 0) {
+    errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The declaration for your constructor should be `Color.black() {}`.
+Inside the braces, set red, green, and blue to zero.
+{$ end hint.txt $}
+```
 
 
 ## Factory constructors
@@ -712,11 +1706,160 @@ making it do the following:
   create an `IntegerTriple` with the values in order.
 * Otherwise, return null.
 
-{% comment %}
-TODO: Fix the comment to not say "named".
-ISSUE: The hint acts like you don't already have the signature for the constructor.
-{% endcomment %}
-<iframe src="{{site.dartpad-embed}}?id=727981a8ece1244b52a3c6dc377a8085&ga_id=factory_constructors"></iframe>
+```dart:run-dartpad:height-415px:ga_id-factory_constructors
+{$ begin main.dart $}
+class IntegerHolder {
+  IntegerHolder();
+  
+  // Implement this factory constructor.
+  factory IntegerHolder.fromList(List<int> list) {
+  }
+}
+
+class IntegerSingle extends IntegerHolder {
+  final int a;
+  IntegerSingle(this.a); 
+}
+
+class IntegerDouble extends IntegerHolder {
+  final int a;
+  final int b;
+  IntegerDouble(this.a, this.b); 
+}
+
+class IntegerTriple extends IntegerHolder {
+  final int a;
+  final int b;
+  final int c;
+  IntegerTriple(this.a, this.b, this.c); 
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class IntegerHolder {
+  IntegerHolder();
+  
+  factory IntegerHolder.fromList(List<int> list) {
+    if (list?.length == 1) {
+      return IntegerSingle(list[0]);
+    } else if (list?.length == 2) {
+      return IntegerDouble(list[0], list[1]);
+    } else if (list?.length == 3) {
+      return IntegerTriple(list[0], list[1], list[2]);
+    } else {
+      return null;
+    } 
+  }
+}
+
+class IntegerSingle extends IntegerHolder {
+  final int a;
+  IntegerSingle(this.a); 
+}
+
+class IntegerDouble extends IntegerHolder {
+  final int a;
+  final int b;
+  IntegerDouble(this.a, this.b); 
+}
+
+class IntegerTriple extends IntegerHolder {
+  final int a;
+  final int b;
+  final int c;
+  IntegerTriple(this.a, this.b, this.c); 
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+
+  try {
+    final obj = IntegerHolder.fromList([]);
+    
+    if (obj != null) {
+      errs.add('Called IntegerSingle.fromList([]) and didn\'t get a null.');
+    } 
+  } catch (e) {
+    _result(false, ['Called IntegerSingle.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final obj = IntegerHolder.fromList([1]);
+    
+    if (obj == null) {
+      errs.add('Called IntegerHolder.fromList([1]) and got a null.');
+    } else if (obj is! IntegerSingle) {
+      errs.add('Called IntegerHolder.fromList([1]) and got an object of type ${obj.runtimeType} instead of IntegerSingle.');
+    } else {
+      if ((obj as IntegerSingle).a != 1) {
+        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with an \'a\' value of ${(obj as IntegerSingle).a} instead of the expected (1).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final obj = IntegerHolder.fromList([1, 2]);
+    
+    if (obj == null) {
+      errs.add('Called IntegerHolder.fromList([1, 2]) and got a null.');
+    } else if (obj is! IntegerDouble) {
+      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type ${obj.runtimeType} instead of IntegerDouble.');
+    } else {
+      if ((obj as IntegerDouble).a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'a\' value of ${(obj as IntegerDouble).a} instead of the expected (1).');
+      }
+      
+      if ((obj as IntegerDouble).b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'b\' value of ${(obj as IntegerDouble).b} instead of the expected (2).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([1, 2]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final obj = IntegerHolder.fromList([1, 2, 3]);
+    
+    if (obj == null) {
+      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got a null.');
+    } else if (obj is! IntegerTriple) {
+      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type ${obj.runtimeType} instead of IntegerTriple.');
+    } else {
+      if ((obj as IntegerTriple).a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).a} instead of the expected (1).');
+      }
+      
+      if ((obj as IntegerTriple).b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).b} instead of the expected (2).');
+      }
+
+      if ((obj as IntegerTriple).c != 3) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).b} instead of the expected (2).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([1, 2, 3]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Inside the factory constructor,
+check the length of the list and create an
+IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
+{$ end hint.txt $}
+```
 
 
 ## Redirecting constructors
@@ -750,7 +1893,68 @@ Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
 default constructor with zeros as the arguments.
 
-<iframe src="{{site.dartpad-embed}}?id=94eb1d8be5b64163753c7350f1f09edf&ga_id=redirecting_constructors"></iframe>
+```dart:run-dartpad:height-255px:ga_id-redirecting_constructors
+{$ begin main.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  // Create a named constructor called "black" here and redirect it
+  // to call the existing constructor
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  Color.black() : this(0, 0, 0);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+
+  try {
+    final result = Color.black();
+    
+    if (result == null) {
+      errs.add('Called Color.black() and got a null in response.');
+    } else {
+      if (result.red != 0) {
+        errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+      }
+
+      if (result.green != 0) {
+        errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+      }
+
+      if (result.blue != 0) {
+    errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Your constructor should redirect to `this(0, 0, 0)`.
+{$ end hint.txt $}
+```
 
 
 ## Const constructors
@@ -783,11 +1987,60 @@ and create a constant constructor that does the following:
 * Is constant, with the `const` keyword just before
   `Recipe` in the constructor declaration.
 
-<iframe src="{{site.dartpad-embed}}?id=c400cb84fab309ddbbb436c1ced90dad&ga_id=const_constructors"></iframe>
+```dart:run-dartpad:ga_id-const_constructors
+{$ begin main.dart $}
+class Recipe {
+  List<String> ingredients;
+  int calories;
+  double milligramsOfSodium;
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Recipe {
+  final List<String> ingredients;
+  final int calories;
+  final double milligramsOfSodium;
 
-{% comment %}
-TODO: Copy edit the hint.
-{% endcomment %}
+  const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = <String>[];
+
+  try {
+    const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
+    
+    if (obj == null) {
+      errs.add('Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.');
+    } else {
+      if (obj.ingredients?.length != 3) {
+        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with ingredient list of length ${obj.ingredients?.length} rather than the expected length (3).');
+      }
+      
+      if (obj.calories != 120) {
+        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
+      }
+      
+      if (obj.milligramsOfSodium != 200) {
+        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+To make the constructor const, you'll need to make all the properties final.
+{$ end hint.txt $}
+```
 
 ## What next?
 
