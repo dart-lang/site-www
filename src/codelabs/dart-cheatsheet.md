@@ -4,7 +4,6 @@ description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
-<?code-excerpt plaster="none"?>
 <style>
 {% comment %}
 TODO(chalin): move this into one of our SCSS files
