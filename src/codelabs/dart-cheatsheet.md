@@ -89,9 +89,11 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-Both x and y are simple values, and Dart's string interpolation will handle converting them
-to string representations. All you need to do is use the $ operator to reference them inside
-single quotes, with a space in between.
+Both x and y are simple values,
+and Dart's string interpolation will handle
+converting them to string representations.
+All you need to do is use the $ operator to
+reference them inside single quotes, with a space in between.
 {$ end hint.txt $}
 ```
 
@@ -105,7 +107,6 @@ variable is currently null:
 
 {% comment %}
 TBD: Make this and all non-trivial snippets testable.
-I found an error in one of the getter/setter snippets.
 {% endcomment %}
 
 <?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
@@ -183,8 +184,10 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-All you need to do in this exercise is replace the TODO comments with either ?? or ??=.
-Read the codelab text to make sure you understand both, and then give it a try.
+All you need to do in this exercise is
+replace the TODO comments with either ?? or ??=.
+Read the codelab text to make sure you understand both,
+and then give it a try.
 {$ end hint.txt $}
 ```
 
@@ -268,8 +271,8 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-If this exercise wanted you to conditionally lowercase a string, you could do it
-like this: str?.toLowerCase()
+If this exercise wanted you to conditionally lowercase a string,
+you could do it like this: str?.toLowerCase()
 {$ end hint.txt $}
 ```
 
@@ -405,7 +408,8 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-This exercise is fairly straightforward. Just add a list, set, or map literal after each equals sign.
+This exercise is fairly straightforward.
+Just add a list, set, or map literal after each equals sign.
 See the codelab text for the correct syntax to use.
 {$ end hint.txt $}
 ```
@@ -517,20 +521,12 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-For the product, you can just multiply the three values together. For incrementValue1,
-you can use the increment operator (++). For joinWithCommas, try using the join method
-found in the List class.
+For the product, you can just multiply the three values together.
+For incrementValue1, you can use the increment operator (++).
+For joinWithCommas, try using the join method found in the List class.
 {$ end hint.txt $}
 ```
 
-{% comment %}
-ISSUE: The analysis output kept getting in the way of my typing for the
-last part of this code. Also, how are they supposed to know to use the
-join() method?
-
-TBD: The comments in "Your code" are in the form of doc comments,
-but they don't use `///`, and they end in `:`, not `.`.
-{% endcomment %}
 
 ## Cascades
 
@@ -673,8 +669,10 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The best solution for this exercise starts with obj.. and has four assignment operations chained together.
-Try starting with `return obj..anInt = 1`, then add another cascade (..) and start the next assignment.
+The best solution for this exercise starts with obj.. and
+has four assignment operations chained together.
+Try starting with `return obj..anInt = 1`,
+then add another cascade (..) and start the next assignment.
 {$ end hint.txt $}
 ```
 
@@ -822,9 +820,11 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-There are two functions that come in handy for this exercise. 
-One is `fold`, which can reduce a list to a single value (try it to calculate the total).
-The other is `any`, which can check each item in a list with a function you give it
+Two functions are handy for this exercise. 
+One is `fold`, which can reduce a list to a single value
+(try it to calculate the total).
+The other is `any`, which can check each item in a list
+with a function you give it
 (try using it to check if there are any negative prices in the prices setter).
 {$ end hint.txt $}
 ```
@@ -950,9 +950,9 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The b, c, d, and e paramters will be null if they aren't provided by caller.
-The important thing, then, is to check whether those arguments are null before you add them to
-the final string.
+The b, c, d, and e paramters are null if they aren't provided by caller.
+The important thing, then, is to check whether those arguments are null
+before you add them to the final string.
 {$ end hint.txt $}
 ```
 
@@ -1094,9 +1094,13 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The copyWith method shows up in a lot of classes and libraries. Yours should do a few things: use optional named parameters,
-create a new instance of MyDataObject, and use the data from the parameters to fill it (or the data from the current instance
-if the parameters are null. This is a chance to get more practice with the ?? operator!
+The copyWith method shows up in a lot of classes and libraries.
+Yours should do a few things:
+use optional named parameters,
+create a new instance of MyDataObject,
+and use the data from the parameters to fill it
+(or the data from the current instance if the parameters are null).
+This is a chance to get more practice with the ?? operator!
 {$ end hint.txt $}
 ```
 
@@ -1322,30 +1326,11 @@ void main() {
 {$ end test.dart $}
 {$ begin hint.txt $}
 This exercise looks tricky, but it's really one big `try` statement.
-Just call `untrustworthy` inside the `try`, and then use `on`, `catch`,
-and `finally` to catch exceptions and call methods on the logger.
+Just call `untrustworthy` inside the `try`, and
+then use `on`, `catch`, and `finally` to catch exceptions and
+call methods on the logger.
 {$ end hint.txt $}
 ```
-
-{% comment %}
-I was confused about the text saying "call... with the exception type" but
-using only on for it (since how would you know the type without the exception
-object?). I used on catch at first, and that worked. Then I looked at the
-solution and changed to what it used, and it did NOT work! Here's what I saw:
-
-Untrustworthy threw an Exception, but a different type was logged: Exception.
-
-(Looking at the test code, I see the type it looks for is actually _Exception.)
-
-Both the text & the test need to be changed.
-
-ISSUE: Solution doesn't exactly match the comments in "Your code", so the
-line count is off.
-
-ISSUE: When I select all in the Solution and then switch to the Your code tab,
-everything in THAT tab looks selected, too. The same is NOT true of the
-Test code tab. After I reloaded, this behavior stopped.
-{% endcomment %}
 
 
 ## Using `this` in a constructor
@@ -1447,8 +1432,10 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-This exercise has a one line solution. Just declare the constructor
-with `this.anInt`, `this.aString`, and `this.aDouble` as its parameters in that order.
+This exercise has a one-line solution.
+Just declare the constructor with
+`this.anInt`, `this.aString`, and `this.aDouble`
+as its parameters in that order.
 {$ end hint.txt $}
 ```
 
@@ -1496,8 +1483,6 @@ the `letterOne` and `LetterTwo` properties.
 For extra credit, add an `assert` to catch words of less than two characters.
 
 {% comment %}
-ISSUE: The test was broken. I've fixed it in my gist.
-
 Is the assert even executed? I can't see any effect on the test,
 which makes me think asserts are ignored.
 Also, the test just checks for the presence of any exception, not for
@@ -1574,7 +1559,8 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-Two assignments need to happen: letterOne should be word[0], and letterTwo should be word[1].
+Two assignments need to happen:
+letterOne should be word[0], and letterTwo should be word[1].
 {$ end hint.txt $}
 ```
 
@@ -1615,11 +1601,6 @@ final myPoint = Point.origin();
 Give the Color class a constructor named `Color.black`
 that sets all three properties to zero.
 
-{% comment %}
-ISSUE: comment says "a named constructor called "black"", which sounds
-wrong to me. I fixed it in the text but not in the example.
-{% endcomment %}
-
 ```dart:run-dartpad:height-240px:ga_id-named_constructors
 {$ begin main.dart $}
 class Color {
@@ -1629,7 +1610,7 @@ class Color {
   
   Color(this.red, this.green, this.blue);
 
-  // Create a named constructor called "black" here:
+  // Create a named constructor called "Color.black" here:
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
@@ -1682,7 +1663,8 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The declaration for your constructor should be `Color.black() {}`. Inside the braces, set red, green, and blue to zero.
+The declaration for your constructor should be `Color.black() {}`.
+Inside the braces, set red, green, and blue to zero.
 {$ end hint.txt $}
 ```
 
@@ -1725,17 +1707,12 @@ making it do the following:
   create an `IntegerTriple` with the values in order.
 * Otherwise, return null.
 
-{% comment %}
-TODO: Fix the comment to not say "named".
-ISSUE: The hint acts like you don't already have the signature for the constructor.
-{% endcomment %}
-
 ```dart:run-dartpad:height-415px:ga_id-factory_constructors
 {$ begin main.dart $}
 class IntegerHolder {
   IntegerHolder();
   
-  // Create your factory constructor called "fromList" here.
+  // Implement this factory constructor.
   factory IntegerHolder.fromList(List<int> list) {
   }
 }
