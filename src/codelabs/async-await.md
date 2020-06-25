@@ -851,6 +851,10 @@ TODO: Consider summary section before final exercise
 TODO: Consider adding new content to final section (not repeating same stuff)
 {% endcomment -%}
 
+![Someone's looking at you!](/codelabs/images/mortarboard.png)<br>
+_You've found [something special!](https://goo.gle/FlutterDay-Puzzle)_
+
+
 ## Exercise: Putting it all together
 
 It's time to practice what you've learned in one final exercise.
