@@ -8,7 +8,7 @@ such as [Chrome DevTools][] to debug your Dart web apps.
 
 * To debug your app's logic,
   use your IDE, Dart DevTools, or browser tools.
-  Dart DevTools have better support than brower tools
+  Dart DevTools have better support than browser tools
   for inspecting and automatically reloading Dart code.
 * To debug your app's appearance (HTML/CSS) and performance,
   use your IDE or browser tools such as Chrome DevTools.
