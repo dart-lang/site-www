@@ -46,7 +46,7 @@ contexts:
 
 * Annotations
 
-* The expression in a case clause. Example:
+* The expression in a `case` clause. Example:
 
   ```dart
   void f(int e) {
@@ -62,9 +62,9 @@ contexts:
 A type is _potentially non-nullable_ if it's either explicitly non-nullable or
 if it's a type parameter.
 
-A type is explicitly non-nullable if it is a type name that is not followed by a
+A type is explicitly non-nullable if it is a type name that isn't followed by a
 question mark. Note that there are a few types that are always nullable, such as
-`Null` and `dynamic`, and that `FutureOr` is only non-nullable if it is not
+`Null` and `dynamic`, and that `FutureOr` is only non-nullable if it isn't
 followed by a question mark _and_ the type argument is non-nullable (such as
 `FutureOr<String>`).
 
@@ -614,7 +614,7 @@ class C<T> {
 
 #### Common fixes
 
-If there's a reasonable value that can be returned, then add a return
+If there's a reasonable value that can be returned, then add a `return`
 statement at the end of the method:
 
 {% prettify dart tag=pre+code %}
@@ -626,7 +626,7 @@ class C<T> {
 }
 {% endprettify %}
 
-If the method won't reach the implicit return, then add a throw at the end
+If the method won't reach the implicit return, then add a `throw` at the end
 of the method:
 
 {% prettify dart tag=pre+code %}
@@ -704,13 +704,13 @@ _The last statement of the 'case' should be 'break', 'continue', 'rethrow',
 
 #### Description
 
-The analyzer produces this diagnostic when the last statement in a case
+The analyzer produces this diagnostic when the last statement in a `case`
 block isn't one of the required terminators: `break`, `continue`,
 `rethrow`, `return`, or `throw`.
 
 #### Examples
 
-The following code produces this diagnostic because the case block ends
+The following code produces this diagnostic because the `case` block ends
 with an assignment:
 
 {% prettify dart tag=pre+code %}
@@ -748,7 +748,7 @@ expression type '{1}'._
 #### Description
 
 The analyzer produces this diagnostic when the expression following `case`
-in a switch statement has a static type that isn't a subtype of the static
+in a `switch` statement has a static type that isn't a subtype of the static
 type of the expression following `switch`.
 
 #### Example
@@ -767,7 +767,7 @@ void f(String s) {
 
 #### Common fixes
 
-If the value of the case expression is wrong, then change the case
+If the value of the `case` expression is wrong, then change the `case`
 expression so that it has the required type:
 
 {% prettify dart tag=pre+code %}
@@ -779,7 +779,7 @@ void f(String s) {
 }
 {% endprettify %}
 
-If the value of the case expression is correct, then change the switch
+If the value of the `case` expression is correct, then change the `switch`
 expression to have the required type:
 
 {% prettify dart tag=pre+code %}
@@ -1478,7 +1478,7 @@ being assigned.
 
 #### Example
 
-The following code produces this diagnostic because `x` was not assigned a
+The following code produces this diagnostic because `x` wasn't assigned a
 value before being read:
 
 {% prettify dart tag=pre+code %}
@@ -2348,7 +2348,7 @@ cascade expression._
 
 The analyzer produces this diagnostic when an extension override is used as
 the target of a cascade expression. The value of a cascade expression
-`e..m` is the value of the target `e`, but extension overrides are not
+`e..m` is the value of the target `e`, but extension overrides aren't
 expressions and don't have a value.
 
 #### Examples
@@ -3391,7 +3391,7 @@ applied to anything other than a const constructor.
 
 #### Examples
 
-The following code produces this diagnostic because the constructor is not
+The following code produces this diagnostic because the constructor isn't
 a `const` constructor:
 
 {% prettify dart tag=pre+code %}
@@ -3467,8 +3467,8 @@ var b = [[!...?!]a];
 
 #### Common fixes
 
-Replace the null-aware operator with a non-null-aware equivalent, such as
-replacing '?.' with  '.':
+Replace the null-aware operator with a non-null-aware equivalent; for example,
+change `?.` to  `.`:
 
 {% prettify dart tag=pre+code %}
 int getLength(String s) {
@@ -4025,7 +4025,7 @@ _Missing case clause for '{0}'._
 
 #### Description
 
-The analyzer produces this diagnostic when a switch statement for an enum
+The analyzer produces this diagnostic when a `switch` statement for an enum
 doesn't include an option for one of the values in the enumeration.
 
 Note that `null` is always a possible value for an enum and therefore also
@@ -4049,7 +4049,7 @@ void f(E e) {
 
 #### Common fixes
 
-If there's special handling for the missing values, then add a case clause
+If there's special handling for the missing values, then add a `case` clause
 for each of the missing values:
 
 {% prettify dart tag=pre+code %}
@@ -4180,7 +4180,7 @@ int [!f!](int x) {
 
 #### Common fixes
 
-Add a return statement that makes the return value explicit, even if `null`
+Add a `return` statement that makes the return value explicit, even if `null`
 is the appropriate value.
 
 ### mixin_of_non_class
@@ -4670,7 +4670,7 @@ _Case expressions must be constant._
 
 #### Description
 
-The analyzer produces this diagnostic when the expression in a case clause
+The analyzer produces this diagnostic when the expression in a `case` clause
 isn't a constant expression.
 
 #### Examples
@@ -4689,7 +4689,7 @@ void f(int i, int j) {
 
 #### Common fixes
 
-Either make the expression a constant expression, or rewrite the switch
+Either make the expression a constant expression, or rewrite the `switch`
 statement as a sequence of if statements:
 
 {% prettify dart tag=pre+code %}
@@ -6017,13 +6017,13 @@ _Constructors can't return values._
 #### Description
 
 The analyzer produces this diagnostic when a generative constructor
-contains a return statement that specifies a value to be returned.
+contains a `return` statement that specifies a value to be returned.
 Generative constructors always return the object that was created, and
 therefore can't return a different object.
 
 #### Example
 
-The following code produces this diagnostic because the return statement
+The following code produces this diagnostic because the `return` statement
 has an expression:
 
 {% prettify dart tag=pre+code %}
@@ -6037,7 +6037,7 @@ class C {
 #### Common fixes
 
 If the constructor should create a new instance, then remove either the
-return statement or the expression:
+`return` statement or the expression:
 
 {% prettify dart tag=pre+code %}
 class C {
@@ -6135,7 +6135,7 @@ _The  return value is missing after 'return'._
 
 #### Description
 
-The analyzer produces this diagnostic when it finds a return statement
+The analyzer produces this diagnostic when it finds a `return` statement
 without an expression in a function that declares a return type.
 
 #### Examples
@@ -6251,8 +6251,8 @@ environment:
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
-code to not use an as expression, or change the code so that the as
-expression is not in a [constant context](#constant-context).:
+code to not use an `as` expression, or change the code so that the `as`
+expression isn't in a [constant context](#constant-context).:
 
 {% prettify dart tag=pre+code %}
 num x = 3;
@@ -6266,7 +6266,7 @@ supported until version 2.3.2, but this code is required to be able to run on ea
 
 #### Description
 
-The analyzer produces this diagnostic when any use of the `&`, `|` or `^`
+The analyzer produces this diagnostic when any use of the `&`, `|`, or `^`
 operators on the class `bool` inside a
 [constant context](#constant-context) is found in code that has an SDK
 constraint whose lower bound is less than 2.3.2. Using these operators in a
@@ -6304,7 +6304,7 @@ environment:
 
 If you need to support older versions of the SDK, then either rewrite the
 code to not use these operators, or change the code so that the expression
-is not in a [constant context](#constant-context).:
+isn't in a [constant context](#constant-context).:
 
 {% prettify dart tag=pre+code %}
 const bool a = true;
@@ -6358,7 +6358,7 @@ environment:
 
 If you need to support older versions of the SDK, then either rewrite the
 code to not use the `==` operator, or change the code so that the
-expression is not in a [constant context](#constant-context).:
+expression isn't in a [constant context](#constant-context).:
 
 {% prettify dart tag=pre+code %}
 class C {}
@@ -6465,8 +6465,8 @@ environment:
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
-code to not use the is operator, or, if that's not possible, change the
-code so that the is expression is not in a
+code to not use the `is` operator, or, if that isn't possible, change the
+code so that the `is` expression isn't in a
 [constant context](#constant-context).:
 
 {% prettify dart tag=pre+code %}
@@ -6625,7 +6625,7 @@ const a = [1, 2];
 const b = [1, 2];
 {% endprettify %}
 
-If that's not possible, change the code so that the element is not in a
+If that isn't possible, change the code so that the element isn't in a
 [constant context](#constant-context).:
 
 {% prettify dart tag=pre+code %}
@@ -6750,8 +6750,8 @@ expressions._
 #### Description
 
 The analyzer produces this diagnostic when the type of the expression in a
-switch statement isn't assignable to the type of the expressions in the
-case clauses.
+`switch` statement isn't assignable to the type of the expressions in the
+`case` clauses.
 
 #### Example
 
@@ -6769,8 +6769,8 @@ void f(String s) {
 
 #### Common fixes
 
-If the type of the case expressions is correct, then change the expression
-in the switch statement to have the correct type:
+If the type of the `case` expressions is correct, then change the expression
+in the `switch` statement to have the correct type:
 
 {% prettify dart tag=pre+code %}
 void f(String s) {
@@ -6781,7 +6781,7 @@ void f(String s) {
 }
 {% endprettify %}
 
-If the type of the switch expression is correct, then change the case
+If the type of the `switch` expression is correct, then change the `case`
 expressions to have the correct type:
 
 {% prettify dart tag=pre+code %}
@@ -6800,7 +6800,7 @@ _The type '{0}' of the thrown expression must be assignable to 'Object'._
 #### Description
 
 The analyzer produces this diagnostic when the type of the expression in a
-throw expression is not assignable to `Object`. It’s not valid to throw
+throw expression isn't assignable to `Object`. It isn't valid to throw
 `null`, so it isn't valid to use an expression that might evaluate to
 `null`.
 
