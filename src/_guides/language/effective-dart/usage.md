@@ -1469,7 +1469,7 @@ Future<void> usesAwait(Future<void> later) async {
   print(await later);
 }
 
-Future<void> asyncError() async {
+Future asyncError() async {
   throw 'Error!';
 }
 
