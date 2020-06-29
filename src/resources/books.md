@@ -1,24 +1,49 @@
 ---
-layout: default
-permalink: /resources/books
-title: Publications about Dart
-description: Read all about it! Here's a collection of publications about Dart.
-toc: false
+title: Books about Dart
+description: Read all about it! Here's a collection of books about Dart.
 ---
 
-Here's a collection of publications about Dart.
-If you find another resource that we should add,
-[let us know](https://github.com/dart-lang/site-www/issues).
+Here's a collection of books about the Dart language.
+Many [Flutter books](https://flutter.dev/docs/resources/books)
+also cover Dart.
+If you find another Dart book that might be helpful, please
+[let us know.](https://github.com/dart-lang/site-www/issues)
 
-{% for book in site.data.books %}
-<div class="item-with-pic">
-  <a href="{{ book.link }}" title="{{ book.title }}">
-    <img src="{% asset_path 'covers/{{ book.cover }}' %}" alt="Cover: {{ book.title }}"/>
-  </a>
-  <div class="details">
-    <h3 class="title"><a href="{{ book.link }}" title="{{ book.title }}">{{ book.title }}</a></h3>
-    <h4 class="authors">by {{ book.authors | array_to_sentence_string }}</h4>
-    <p>{{ book.desc }}</p>
-  </div>
+{% for book in site.data.books-dart2 %}
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+</div>
+</div>
+{% endfor %}
+
+
+## Early Dart books
+
+The following books cover pre-2.0 versions of Dart.
+
+{% for book in site.data.books-dart1 %}
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+</div>
 </div>
 {% endfor %}

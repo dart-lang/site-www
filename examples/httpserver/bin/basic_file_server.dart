@@ -2,24 +2,20 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Uses the http_server package.
-// Similar to mini_file_server.dart, which uses straight Dart APIs.
-// For all requests serves index.html in the same directory
-// as this script.
-// Also see static_file_server.dart.
-
+/// A server built using the http_server package that serves the same file for
+/// all requests.
+/// Visit http://localhost:4046 into your browser.
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'package:http_server/http_server.dart';
 
-File targetFile = new File('index.html');
+File targetFile = File('web/index.html');
 
 Future main() async {
-  VirtualDirectory staticFiles = new VirtualDirectory('.');
+  VirtualDirectory staticFiles = VirtualDirectory('.');
 
   var serverRequests =
-      await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046);
+      await HttpServer.bind(InternetAddress.loopbackIPv4, 4046);
   await for (var request in serverRequests) {
     staticFiles.serveFile(targetFile, request);
   }

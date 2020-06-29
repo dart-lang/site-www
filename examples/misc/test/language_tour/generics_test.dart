@@ -1,28 +1,22 @@
 // ignore_for_file: argument_type_not_assignable
-// #docplaster
-import 'package:examples/language_tour/generics/base_class.dart' as base_class;
+import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
 
-final Matcher throwsATypeError = throwsA(new isInstanceOf<TypeError>());
+final Matcher throwsATypeError = throwsA(TypeMatcher<TypeError>());
 
 void main() {
-  test('why-generics', () {
-    expect(() => assignIntToStringList(), throwsATypeError);
-  });
-
   test('constructor-1', () {
-    // #docregion constructor-1
-    var names = new List<String>();
+    var names = List<String>();
     names.addAll(['Seth', 'Kathy', 'Lars']);
-    var nameSet = new Set<String>.from(names);
+    // #docregion constructor-1
+    var nameSet = Set<String>.from(names);
     // #enddocregion constructor-1
     expect(nameSet.length, 3);
   });
 
   test('constructor-2', () {
     // #docregion constructor-2
-    var views = new Map<int, View>();
+    var views = Map<int, View>();
     // #enddocregion constructor-2
     expect(views.length, 0);
   });
@@ -30,13 +24,13 @@ void main() {
   test('generic-collections', () {
     _test() {
       // #docregion generic-collections
-      var names = new List<String>();
+      var names = List<String>();
       names.addAll(['Seth', 'Kathy', 'Lars']);
       print(names is List<String>); // true
       // #enddocregion generic-collections
     }
 
-    expect(_test, m.prints('true'));
+    expect(_test, prints('true\n'));
   });
 
   test('method', () {
@@ -49,23 +43,24 @@ void main() {
     }
     // #enddocregion method
 
-    void main() => print('first: ${first<int>([1,2,3])}');
+    void main() => print('first: ${first<int>([1, 2, 3])}');
     // #enddocregion method-with-main
-    expect(main, m.prints('first: 1'));
+    expect(main, prints('first: 1\n'));
   });
 
   test('base_class', () {
-    expect(base_class.main,
-        m.prints('Foo<SomeBaseClass>, Foo<Extender>, Foo<dynamic>'));
-  });
-}
+    // #docregion SomeBaseClass-ok
+    var someBaseClassFoo = Foo<SomeBaseClass>();
+    var extenderFoo = Foo<Extender>();
+    // #enddocregion SomeBaseClass-ok
+    expect(someBaseClassFoo.toString(), "Instance of 'Foo<SomeBaseClass>'");
+    expect(extenderFoo.toString(), "Instance of 'Foo<Extender>'");
 
-void assignIntToStringList() {
-  // #docregion why-generics
-  var names = new List<String>();
-  names.addAll(['Seth', 'Kathy', 'Lars']);
-  names.add(42); // Error
-  // #enddocregion why-generics
+    // #docregion no-generic-arg-ok
+    var foo = Foo();
+    expect(foo.toString(), "Instance of 'Foo<SomeBaseClass>'");
+    // #enddocregion no-generic-arg-ok
+  });
 }
 
 class View {}

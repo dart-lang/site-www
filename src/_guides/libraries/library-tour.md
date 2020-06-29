@@ -1,16 +1,16 @@
 ---
-layout: guide
-title: "A Tour of the Dart Libraries"
-description: "Learn about the major features in Dart's libraries."
-short-title: Library Tour
+title: A tour of the core libraries
+description: Learn about the major features in Dart's libraries.
+short-title: Library tour
 ---
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /\n? *\/\/\s+ignore:[^\n]+//g"?>
+<?code-excerpt plaster="none"?>
 
-This tour shows how to use the main features of the following libraries,
-which are included in all Dart platforms:
+This page shows you how to use the major features in Dart’s core libraries.
+It’s just an overview, and by no means comprehensive.
+Whenever you need more details about a class,
+consult the [Dart API reference.][Dart API]
 
-{% comment %}
-[CHECK: is "all" guaranteed to stay true?]
-{% endcomment %}
 
 [dart:core](#dartcore---numbers-collections-strings-and-more)
 : Built-in types, collections, and other core functionality.
@@ -19,69 +19,34 @@ which are included in all Dart platforms:
 [dart:async](#dartasync---asynchronous-programming)
 : Support for asynchronous programming, with classes such as Future and Stream.
 
-{% comment %}
-update-for-dart-2
-Q: When will Future move to dart:core?
-{% endcomment %}
-
 [dart:math](#dartmath---math-and-random)
 : Mathematical constants and functions, plus a random number generator.
 
 [dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
+[dart:html](#darthtml)
+: DOM and other APIs for browser-based apps.
+
+[dart:io](#dartio)
+: I/O for programs that can use the Dart VM,
+  including Flutter apps, servers, and command-line scripts.
+
 This page is just an overview;
 it covers only a few dart:* libraries
 and no third-party libraries.
-The platform-specific dart:io and dart:html libraries
-are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
 
-Other places to find library information are
-[pub.dartlang.org][pub.dartlang.org] and the
-[Dart web developer library guide.][webdev libraries]
+Other places to find library information are the
+[pub.dev site]({{site.pub}}) and the
+[Dart web developer library guide][webdev libraries].
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.][docs.flutter.io]
+the [Flutter API reference.][docs.flutter]
 
-<aside class="alert alert-info" markdown="1">
-**DartPad tip:**
-You can play with the code in this page
-by copying it into a [DartPad.][DartPad]
-Note, however, that [assert][] statements are no-ops in DartPad
-because DartPad executes in production mode, not checked mode.
-An easy workaround: **change `assert` to `print`.**
-<br>
-<br>
-
-{% comment %}
-update-for-dart-2
-[TODO: fix styling instead of using the <br><br> hack.]
-
-https://gist.github.com/2edc7174867be377021813ba4119ab8c
-https://dartpad.dartlang.org/2edc7174867be377021813ba4119ab8c
-
-{% prettify dart %}
-void main() {
-  assert(int.parse('42') == 42); // in checked mode: continues
-  print(int.parse('42') == 42); // true
-
-  assert(int.parse('43') == 42); // in checked mode: exception
-  print(int.parse('43') == 42); // false
-}
-{% endprettify %}
-{% endcomment %}
-
-<iframe
-src="{{site.custom.dartpad.embed-dart-prefix}}?id=2edc7174867be377021813ba4119ab8c&horizontalRatio=99&verticalRatio=70"
-    width="100%"
-    height="255px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
-{% comment %}
-https://github.com/dart-lang/dart-pad/issues/310
-{% endcomment %}
-</aside>
+{{site.alert.info}}
+  **DartPad tip:** You can play with the code in this page by copying it into a
+  [DartPad.]({{site.dartpad}})
+{{site.alert.end}}
 
 
 ## dart:core - numbers, collections, strings, and more
@@ -98,10 +63,10 @@ and displays that object's string value (as returned by `toString()`)
 in the console.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
-{% prettify dart %}
+```dart
 print(anObject);
 print('I drink $tea.');
-{% endprettify %}
+```
 
 For more information on basic strings and `toString()`, see
 [Strings](/guides/language/language-tour#strings) in the language tour.
@@ -116,28 +81,28 @@ You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
-{% prettify dart %}
+```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
 assert(double.parse('0.50') == 0.5);
-{% endprettify %}
+```
 
 Or use the parse() method of num, which creates an integer if possible
 and otherwise a double:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
-{% prettify dart %}
+```dart
 assert(num.parse('42') is int);
 assert(num.parse('0x42') is int);
 assert(num.parse('0.50') is double);
-{% endprettify %}
+```
 
 To specify the base of an integer, add a `radix` parameter:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
-{% prettify dart %}
+```dart
 assert(int.parse('42', radix: 16) == 66);
-{% endprettify %}
+```
 
 Use the `toString()` method to convert an
 int or double to a string. To specify the number of digits to the right
@@ -146,7 +111,7 @@ number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
-{% prettify dart %}
+```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
 
@@ -159,7 +124,7 @@ assert(123.456.toStringAsFixed(2) == '123.46');
 // Specify the number of significant figures.
 assert(123.456.toStringAsPrecision(2) == '1.2e+2');
 assert(double.parse('1.2e+2') == 120.0);
-{% endprettify %}
+```
 
 For more information, see the API documentation for
 [int,][int] [double,][double] and [num.][num] Also see
@@ -185,7 +150,7 @@ whether a string begins with or ends with a particular pattern. For
 example:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
-{% prettify dart %}
+```dart
 // Check whether a string contains another string.
 assert('Never odd or even'.contains('odd'));
 
@@ -197,7 +162,7 @@ assert('Never odd or even'.endsWith('even'));
 
 // Find the location of a string inside a string.
 assert('Never odd or even'.indexOf('odd') == 6);
-{% endprettify %}
+```
 
 #### Extracting data from a string
 
@@ -210,7 +175,7 @@ You can also extract a substring or split a string into a list of
 substrings:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
-{% prettify dart %}
+```dart
 // Grab a substring.
 assert('Never odd or even'.substring(6, 9) == 'odd');
 
@@ -233,7 +198,7 @@ for (var char in 'hello'.split('')) {
 var codeUnitList =
     'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
-{% endprettify %}
+```
 
 #### Converting to uppercase or lowercase
 
@@ -241,7 +206,7 @@ You can easily convert strings to their uppercase and lowercase
 variants:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
-{% prettify dart %}
+```dart
 // Convert to uppercase.
 assert('structured web apps'.toUpperCase() ==
     'STRUCTURED WEB APPS');
@@ -249,13 +214,12 @@ assert('structured web apps'.toUpperCase() ==
 // Convert to lowercase.
 assert('STRUCTURED WEB APPS'.toLowerCase() ==
     'structured web apps');
-{% endprettify %}
+```
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-These methods don't work for every language. For example, the Turkish
-alphabet's dotless *I* is converted incorrectly.
-</div>
+{{site.alert.note}}
+  These methods don't work for every language. For example, the Turkish
+  alphabet's dotless *I* is converted incorrectly.
+{{site.alert.end}}
 
 
 #### Trimming and empty strings
@@ -264,7 +228,7 @@ Remove all leading and trailing white space with `trim()`. To check
 whether a string is empty (length is zero), use `isEmpty`.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
-{% prettify dart %}
+```dart
 // Trim a string.
 assert('  hello  '.trim() == 'hello');
 
@@ -273,26 +237,26 @@ assert(''.isEmpty);
 
 // Strings with only white space are not empty.
 assert('  '.isNotEmpty);
-{% endprettify %}
+```
 
 #### Replacing part of a string
 
 Strings are immutable objects, which means you can create them but you
-can’t change them. If you look closely at the [String API docs,][String]
+can’t change them. If you look closely at the [String API reference,][String]
 you’ll notice that
 none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
 original String:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
-{% prettify dart %}
+```dart
 var greetingTemplate = 'Hello, NAME!';
 var greeting =
-    greetingTemplate.replaceAll(new RegExp('NAME'), 'Bob');
+    greetingTemplate.replaceAll(RegExp('NAME'), 'Bob');
 
 // greetingTemplate didn't change.
 assert(greeting != greetingTemplate);
-{% endprettify %}
+```
 
 #### Building a string
 
@@ -302,8 +266,8 @@ called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
-{% prettify dart %}
-var sb = new StringBuffer();
+```dart
+var sb = StringBuffer();
 sb
   ..write('Use a StringBuffer for ')
   ..writeAll(['efficient', 'string', 'creation'], ' ')
@@ -313,7 +277,7 @@ var fullString = sb.toString();
 
 assert(fullString ==
     'Use a StringBuffer for efficient string creation.');
-{% endprettify %}
+```
 
 #### Regular expressions
 
@@ -322,9 +286,9 @@ expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
-{% prettify dart %}
+```dart
 // Here's a regular expression for one or more digits.
-var numbers = new RegExp(r'\d+');
+var numbers = RegExp(r'\d+');
 
 var allCharacters = 'llamas live fifteen to twenty years';
 var someDigits = 'llamas live 15 to 20 years';
@@ -336,14 +300,14 @@ assert(someDigits.contains(numbers));
 // Replace every match with another string.
 var exedOut = someDigits.replaceAll(numbers, 'XX');
 assert(exedOut == 'llamas live XX to XX years');
-{% endprettify %}
+```
 
 You can work directly with the RegExp class, too. The Match class
 provides access to a regular expression match.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
-{% prettify dart %}
-var numbers = new RegExp(r'\d+');
+```dart
+var numbers = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
 
 // Check whether the reg exp has a match in a string.
@@ -353,12 +317,12 @@ assert(numbers.hasMatch(someDigits));
 for (var match in numbers.allMatches(someDigits)) {
   print(match.group(0)); // 15, then 20
 }
-{% endprettify %}
+```
 
 #### More information
 
-Refer to the [String API docs][String] for a full list of
-methods. Also see the API docs for [StringBuffer,][StringBuffer]
+Refer to the [String API reference][String] for a full list of
+methods. Also see the API reference for [StringBuffer,][StringBuffer]
 [Pattern,][Pattern] [RegExp,][RegExp] and [Match.][Match]
 
 ### Collections
@@ -374,9 +338,9 @@ constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
-{% prettify dart %}
+```dart
 // Use a List constructor.
-var vegetables = new List();
+var vegetables = List();
 
 // Or simply use a list literal.
 var fruits = ['apples', 'oranges'];
@@ -397,13 +361,13 @@ assert(fruits.length == 4);
 
 // Remove all elements from a list.
 fruits.clear();
-assert(fruits.length == 0);
-{% endprettify %}
+assert(fruits.isEmpty);
+```
 
 Use `indexOf()` to find the index of an object in a list:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
-{% prettify dart %}
+```dart
 var fruits = ['apples', 'oranges'];
 
 // Access a list item by index.
@@ -411,7 +375,7 @@ assert(fruits[0] == 'apples');
 
 // Find an item in a list.
 assert(fruits.indexOf('apples') == 0);
-{% endprettify %}
+```
 
 Sort a list using the `sort()` method. You can provide a sorting
 function that compares two objects. This sorting function must return \<
@@ -420,37 +384,34 @@ example uses `compareTo()`, which is defined by
 [Comparable][] and implemented by String.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
-{% prettify dart %}
+```dart
 var fruits = ['bananas', 'apples', 'oranges'];
 
 // Sort a list.
 fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
-{% endprettify %}
+```
 
 Lists are parameterized types, so you can specify the type that a list
 should contain:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (ListOfString)"?>
-{% prettify dart %}
+<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
+```dart
 // This list should contain only strings.
-var fruits = new List<String>();
+var fruits = List<String>();
 
 fruits.add('apples');
 var fruit = fruits[0];
 assert(fruit is String);
+```
 
-// Generates static analysis warning, num is not a string.
-fruits.add(5); // BAD: Throws exception in checked mode.
-{% endprettify %}
+{:.fails-sa}
+<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+```dart
+fruits.add(5); // Error: 'int' can't be assigned to 'String'
+```
 
-{% include checked-mode-2.0.html %}
-
-{% comment %}
-update-for-dart-2
-{% endcomment %}
-
-Refer to the [List API docs][List] for a full list of methods.
+Refer to the [List API reference][List] for a full list of methods.
 
 #### Sets
 
@@ -458,8 +419,8 @@ A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can’t get a set’s items by index (position).
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
-{% prettify dart %}
-var ingredients = new Set();
+```dart
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
@@ -470,14 +431,14 @@ assert(ingredients.length == 3);
 // Remove an item from a set.
 ingredients.remove('gold');
 assert(ingredients.length == 2);
-{% endprettify %}
+```
 
 Use `contains()` and `containsAll()` to check whether one or more
 objects are in a set:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
-{% prettify dart %}
-var ingredients = new Set();
+```dart
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Check whether an item is in the set.
@@ -485,23 +446,23 @@ assert(ingredients.contains('titanium'));
 
 // Check whether all the items are in the set.
 assert(ingredients.containsAll(['titanium', 'xenon']));
-{% endprettify %}
+```
 
 An intersection is a set whose items are in two other sets.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
-{% prettify dart %}
-var ingredients = new Set();
+```dart
+var ingredients = Set();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Create the intersection of two sets.
-var nobleGases = new Set.from(['xenon', 'argon']);
+var nobleGases = Set.from(['xenon', 'argon']);
 var intersection = ingredients.intersection(nobleGases);
 assert(intersection.length == 1);
 assert(intersection.contains('xenon'));
-{% endprettify %}
+```
 
-Refer to the [Set API docs][Set] for a full list of methods.
+Refer to the [Set API reference][Set] for a full list of methods.
 
 #### Maps
 
@@ -513,7 +474,7 @@ You can declare a map using a terse literal syntax, or you can use a
 traditional constructor:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
-{% prettify dart %}
+```dart
 // Maps often use strings as keys.
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -522,18 +483,18 @@ var hawaiianBeaches = {
 };
 
 // Maps can be built from a constructor.
-var searchTerms = new Map();
+var searchTerms = Map();
 
 // Maps are parameterized types; you can specify what
 // types the key and value should be.
-var nobleGases = new Map<int, String>();
-{% endprettify %}
+var nobleGases = Map<int, String>();
+```
 
 You add, get, and set map items using the bracket syntax. Use `remove()`
 to remove a key and its value from a map.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
-{% prettify dart %}
+```dart
 var nobleGases = {54: 'xenon'};
 
 // Retrieve a value with a key.
@@ -545,12 +506,12 @@ assert(nobleGases.containsKey(54));
 // Remove a key and its value.
 nobleGases.remove(54);
 assert(!nobleGases.containsKey(54));
-{% endprettify %}
+```
 
 You can retrieve all the values or all the keys from a map:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (keys)"?>
-{% prettify dart %}
+```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
@@ -562,21 +523,21 @@ var hawaiianBeaches = {
 var keys = hawaiianBeaches.keys;
 
 assert(keys.length == 3);
-assert(new Set.from(keys).contains('Oahu'));
+assert(Set.from(keys).contains('Oahu'));
 
 // Get all the values as an unordered collection
 // (an Iterable of Lists).
 var values = hawaiianBeaches.values;
 assert(values.length == 3);
 assert(values.any((v) => v.contains('Waikiki')));
-{% endprettify %}
+```
 
 To check whether a map contains a key, use `containsKey()`. Because map
 values can be null, you cannot rely on simply getting the value for the
 key and checking for null to determine the existence of a key.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
-{% prettify dart %}
+```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
   'Big Island': ['Wailea Bay', 'Pololu Beach'],
@@ -585,21 +546,21 @@ var hawaiianBeaches = {
 
 assert(hawaiianBeaches.containsKey('Oahu'));
 assert(!hawaiianBeaches.containsKey('Florida'));
-{% endprettify %}
+```
 
 Use the `putIfAbsent()` method when you want to assign a value to a key
 if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
-{% prettify dart %}
+```dart
 var teamAssignments = {};
 teamAssignments.putIfAbsent(
     'Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
-{% endprettify %}
+```
 
-Refer to the [Map API docs][Map] for a full list of methods.
+Refer to the [Map API reference][Map] for a full list of methods.
 
 #### Common collection methods
 
@@ -607,70 +568,67 @@ List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-Although Map doesn’t implement Iterable, you can get Iterables from it
-using the Map `keys` and `values` properties.
-</div>
+{{site.alert.note}}
+  Although Map doesn’t implement Iterable, you can get Iterables from it using
+  the Map `keys` and `values` properties.
+{{site.alert.end}}
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
-{% prettify dart %}
+```dart
 var coffees = [];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
-{% endprettify %}
+```
 
 To apply a function to each item in a list, set, or map, you can use
 `forEach()`:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
-{% prettify dart %}
+```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
 teas.forEach((tea) => print('I drink $tea'));
-{% endprettify %}
+```
 
 When you invoke `forEach()` on a map, your function must take two
 arguments (the key and value):
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
-{% prettify dart %}
+```dart
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
   // I want to visit Oahu and swim at
   // [Waikiki, Kailua, Waimanalo], etc.
 });
-{% endprettify %}
+```
 
 Iterables provide the `map()` method, which gives you all the results in
 a single object:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
-{% prettify dart %}
+```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
 var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
-{% endprettify %}
+```
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-The object returned by `map()` is an Iterable that’s *lazily
-evaluated*: your function isn’t called until you ask for an item from
-the returned object.
-</div>
+{{site.alert.note}}
+  The object returned by `map()` is an Iterable that’s *lazily evaluated*: your
+  function isn’t called until you ask for an item from the returned object.
+{{site.alert.end}}
 
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
-{% prettify dart %}
+```dart
 var loudTeas =
     teas.map((tea) => tea.toUpperCase()).toList();
-{% endprettify %}
+```
 
 Use Iterable’s `where()` method to get all the items that match a
 condition. Use Iterable’s `any()` and `every()` methods to check whether
@@ -682,7 +640,7 @@ cities instead of isDecaffeinated.
 
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (where-etc)"?>
-{% prettify dart %}
+```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
 // Chamomile is not caffeinated.
@@ -702,10 +660,10 @@ assert(teas.any(isDecaffeinated));
 // Use every() to check whether all the items in a
 // collection satisfy a condition.
 assert(!teas.every(isDecaffeinated));
-{% endprettify %}
+```
 
-For a full list of methods, refer to the [Iterable API docs,][Iterable] as well as those
-for [List,][List] [Set,][Set] and [Map.][Map]
+For a full list of methods, refer to the [Iterable API reference,][Iterable]
+as well as those for [List,][List] [Set,][Set] and [Map.][Map]
 
 
 ### URIs
@@ -728,16 +686,16 @@ URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
 a fully qualified URI, leaving intact special URI characters.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
-{% prettify dart %}
-var uri = 'http://example.org/api?foo=some message';
+```dart
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeFull(uri);
 assert(encoded ==
-    'http://example.org/api?foo=some%20message');
+    'https://example.org/api?foo=some%20message');
 
 var decoded = Uri.decodeFull(encoded);
 assert(uri == decoded);
-{% endprettify %}
+```
 
 Notice how only the space between `some` and `message` was encoded.
 
@@ -748,16 +706,16 @@ meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
-{% prettify dart %}
-var uri = 'http://example.org/api?foo=some message';
+```dart
+var uri = 'https://example.org/api?foo=some message';
 
 var encoded = Uri.encodeComponent(uri);
 assert(encoded ==
-    'http%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+    'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
 
 var decoded = Uri.decodeComponent(encoded);
 assert(uri == decoded);
-{% endprettify %}
+```
 
 Notice how every special character is encoded. For example, `/` is
 encoded to `%2F`.
@@ -769,18 +727,18 @@ Uri fields such as `path`. To create a Uri from a string, use the
 `parse()` static method:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
-{% prettify dart %}
+```dart
 var uri =
-    Uri.parse('http://example.org:8080/foo/bar#frag');
+    Uri.parse('https://example.org:8080/foo/bar#frag');
 
-assert(uri.scheme == 'http');
+assert(uri.scheme == 'https');
 assert(uri.host == 'example.org');
 assert(uri.path == '/foo/bar');
 assert(uri.fragment == 'frag');
-assert(uri.origin == 'http://example.org:8080');
-{% endprettify %}
+assert(uri.origin == 'https://example.org:8080');
+```
 
-See the [Uri API docs][Uri] for more URI components that you can get.
+See the [Uri API reference][Uri] for more URI components that you can get.
 
 #### Building URIs
 
@@ -788,15 +746,15 @@ You can build up a URI from individual parts using the `Uri()`
 constructor:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
-{% prettify dart %}
-var uri = new Uri(
-    scheme: 'http',
+```dart
+var uri = Uri(
+    scheme: 'https',
     host: 'example.org',
     path: '/foo/bar',
     fragment: 'frag');
 assert(
-    uri.toString() == 'http://example.org/foo/bar#frag');
-{% endprettify %}
+    uri.toString() == 'https://example.org/foo/bar#frag');
+```
 
 
 ### Dates and times
@@ -807,55 +765,54 @@ local time zone.
 You can create DateTime objects using several constructors:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
-{% prettify dart %}
+```dart
 // Get the current date and time.
-var now = new DateTime.now();
+var now = DateTime.now();
 
 // Create a new DateTime with the local time zone.
-var y2k = new DateTime(2000); // January 1, 2000
+var y2k = DateTime(2000); // January 1, 2000
 
 // Specify the month and day.
-y2k = new DateTime(2000, 1, 2); // January 2, 2000
+y2k = DateTime(2000, 1, 2); // January 2, 2000
 
 // Specify the date as a UTC time.
-y2k = new DateTime.utc(2000); // 1/1/2000, UTC
+y2k = DateTime.utc(2000); // 1/1/2000, UTC
 
 // Specify a date and time in ms since the Unix epoch.
-y2k = new DateTime.fromMillisecondsSinceEpoch(946684800000,
+y2k = DateTime.fromMillisecondsSinceEpoch(946684800000,
     isUtc: true);
 
 // Parse an ISO 8601 date.
 y2k = DateTime.parse('2000-01-01T00:00:00Z');
-{% endprettify %}
+```
 
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
-{% prettify dart %}
+```dart
 // 1/1/2000, UTC
-var y2k = new DateTime.utc(2000);
+var y2k = DateTime.utc(2000);
 assert(y2k.millisecondsSinceEpoch == 946684800000);
 
 // 1/1/1970, UTC
-var unixEpoch = new DateTime.utc(1970);
+var unixEpoch = DateTime.utc(1970);
 assert(unixEpoch.millisecondsSinceEpoch == 0);
-{% endprettify %}
+```
 
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
-{% prettify dart %}
-var y2k = new DateTime.utc(2000);
+```dart
+var y2k = DateTime.utc(2000);
 
 // Add one year.
-var y2001 = y2k.add(const Duration(days: 366));
+var y2001 = y2k.add(Duration(days: 366));
 assert(y2001.year == 2001);
 
 // Subtract 30 days.
-var december2000 =
-    y2001.subtract(const Duration(days: 30));
+var december2000 = y2001.subtract(Duration(days: 30));
 assert(december2000.year == 2000);
 assert(december2000.month == 12);
 
@@ -863,16 +820,16 @@ assert(december2000.month == 12);
 // Returns a Duration object.
 var duration = y2001.difference(y2k);
 assert(duration.inDays == 366); // y2k was a leap year.
-{% endprettify %}
+```
 
-<div class="alert alert-warning" markdown="1">
-**Warning:**
-Using a Duration to shift a DateTime by days can be problematic, due
-to clock shifts (to daylight saving time, for example). Use UTC dates
-if you must shift days.
-</div>
+{{site.alert.warning}}
+  Using a Duration to shift a DateTime by days can be problematic, due to clock
+  shifts (to daylight saving time, for example). Use UTC dates if you must shift
+  days.
+{{site.alert.end}}
 
-Refer to the API docs for [DateTime][] and [Duration][] for a full list of methods.
+For a full list of methods,
+refer to the API reference for [DateTime][] and [Duration.][Duration]
 
 
 ### Utility classes
@@ -888,7 +845,7 @@ usually for sorting. The `compareTo()` method returns \< 0 for
 *smaller*, 0 for the *same*, and \> 0 for *bigger*.
 
 <?code-excerpt "misc/lib/library_tour/core/comparable.dart"?>
-{% prettify dart %}
+```dart
 class Line implements Comparable<Line> {
   final int length;
   const Line(this.length);
@@ -902,7 +859,7 @@ void main() {
   var long = const Line(100);
   assert(short.compareTo(long) < 0);
 }
-{% endprettify %}
+```
 
 #### Implementing map keys
 
@@ -921,7 +878,7 @@ convention, NaN != NaN.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
-{% prettify dart %}
+```dart
 class Person {
   final String firstName, lastName;
 
@@ -949,14 +906,14 @@ class Person {
 }
 
 void main() {
-  var p1 = new Person('Bob', 'Smith');
-  var p2 = new Person('Bob', 'Smith');
+  var p1 = Person('Bob', 'Smith');
+  var p2 = Person('Bob', 'Smith');
   var p3 = 'not a person';
   assert(p1.hashCode == p2.hashCode);
   assert(p1 == p2);
   assert(p1 != p3);
 }
-{% endprettify %}
+```
 
 #### Iteration
 
@@ -966,7 +923,7 @@ whenever you create a class that can provide Iterators for use in for-in
 loops. Implement Iterator to define the actual iteration ability.
 
 <?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
-{% prettify dart %}
+```dart
 class Process {
   // Represents a process...
 }
@@ -982,16 +939,16 @@ class ProcessIterator implements Iterator<Process> {
 // processes. Extends a subclass of [Iterable].
 class Processes extends IterableBase<Process> {
   @override
-  final Iterator<Process> iterator = new ProcessIterator();
+  final Iterator<Process> iterator = ProcessIterator();
 }
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in new Processes()) {
+  for (var process in Processes()) {
     // Do something with the process.
   }
 }
-{% endprettify %}
+```
 
 
 ### Exceptions
@@ -1016,7 +973,7 @@ that an error has occurred. You can define a custom exception by
 implementing the Exception interface:
 
 <?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
-{% prettify dart %}
+```dart
 class FooException implements Exception {
   final String msg;
 
@@ -1025,9 +982,11 @@ class FooException implements Exception {
   @override
   String toString() => msg ?? 'FooException';
 }
-{% endprettify %}
+```
 
-For more information, see [Exceptions](#exceptions) and the [Exception API docs.][Exception]
+For more information, see
+[Exceptions](/guides/language/language-tour#exceptions)
+(in the language tour) and the [Exception API reference.][Exception]
 
 
 ## dart:async - asynchronous programming
@@ -1039,23 +998,25 @@ future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
 dart:async library ([API reference][dart:async]).
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-You don't always need to use the Future or Stream APIs directly.
-The Dart language supports asynchronous coding
-using keywords such as `async` and `await`.
-See [Asynchrony support](/guides/language/language-tour#asynchrony-support)
-in the language tour for details.
-</div>
+{{site.alert.note}}
+  You don't always need to use the Future or Stream APIs directly. The Dart
+  language supports asynchronous coding using keywords such as `async` and
+  `await`. See the [asynchronous programming codelab](/codelabs/async-await) for
+  details.
+{{site.alert.end}}
 
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
-{% prettify dart %}
+```dart
 import 'dart:async';
-{% endprettify %}
+```
 
+{{site.alert.version-note}}
+  As of Dart 2.1, you don't need to import dart:async to use the Future and
+  Stream APIs, because dart:core exports those classes.
+{{site.alert.end}}
 
 ### Future
 
@@ -1075,33 +1036,33 @@ to execute three asynchronous functions in a row,
 waiting for each one to complete before executing the next one.
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
-{% prettify dart %}
+```dart
 runUsingFuture() {
   // ...
   findEntryPoint().then((entryPoint) {
     return runExecutable(entryPoint, args);
   }).then(flushThenExit);
 }
-{% endprettify %}
+```
 
 The equivalent code with await expressions
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
-{% prettify dart %}
+```dart
 runUsingAsyncAwait() async {
   // ...
   var entryPoint = await findEntryPoint();
   var exitCode = await runExecutable(entryPoint, args);
   await flushThenExit(exitCode);
 }
-{% endprettify %}
+```
 
-An async function can catch exceptions from Futures.
+An `async` function can catch exceptions from Futures.
 For example:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (catch)"?>
-{% prettify dart %}
+```dart
 var entryPoint = await findEntryPoint();
 try {
   var exitCode = await runExecutable(entryPoint, args);
@@ -1109,18 +1070,16 @@ try {
 } catch (e) {
   // Handle the error...
 }
-{% endprettify %}
+```
 
-<div class="alert alert-warning" markdown="1">
-**Important:**
-Async functions return Futures.
-If you don't want your function to return a future,
-then use a different solution.
-For example, you might call an async function from your function.
-</div>
+{{site.alert.important}}
+  Async functions return Futures. If you don't want your function to return a
+  future, then use a different solution. For example, you might call an `async`
+  function from your function.
+{{site.alert.end}}
 
 For more information on using `await` and related Dart language features,
-see [Asynchrony support](/guides/language/language-tour#asynchrony-support).
+see the [asynchronous programming codelab](/codelabs/async-await).
 
 
 #### Basic usage
@@ -1135,34 +1094,33 @@ can take a while. Using `then()` lets you run some code when that Future
 has completed and the promised string value is available:
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
-{% prettify dart %}
+```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
 });
-{% endprettify %}
+```
 
 Use `catchError()` to handle any errors or exceptions that a Future
 object might throw.
 
 <?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
-{% prettify dart %}
+```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
 }).catchError((e) {
   // Handle or ignore the error.
 });
-{% endprettify %}
+```
 
 The `then().catchError()` pattern is the asynchronous version of
 `try`-`catch`.
 
-<div class="alert alert-warning" markdown="1">
-**Important:**
-Be sure to invoke `catchError()` on the result of `then()`—not on the
-result of the original Future. Otherwise, the `catchError()` can
-handle errors only from the original Future's computation, but not
-from the handler registered by `then()`.
-</div>
+{{site.alert.important}}
+  Be sure to invoke `catchError()` on the result of `then()`—not on the result
+  of the original Future. Otherwise, the `catchError()` can handle errors only
+  from the original Future's computation, but not from the handler registered by
+  `then()`.
+{{site.alert.end}}
 
 
 #### Chaining multiple asynchronous methods
@@ -1174,7 +1132,7 @@ equivalent Future. If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
-{% prettify dart %}
+```dart
 Future result = costlyQuery(url);
 result
     .then((value) => expensiveWork(value))
@@ -1183,7 +1141,7 @@ result
     .catchError((exception) {
   /* Handle exception... */
 });
-{% endprettify %}
+```
 
 In the preceding example, the methods run in the following order:
 
@@ -1194,7 +1152,7 @@ In the preceding example, the methods run in the following order:
 Here is the same code written using await:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
-{% prettify dart %}
+```dart
 try {
   final value = await costlyQuery(url);
   await expensiveWork(value);
@@ -1203,7 +1161,7 @@ try {
 } catch (e) {
   /* Handle exception... */
 }
-{% endprettify %}
+```
 
 
 #### Waiting for multiple futures
@@ -1213,7 +1171,7 @@ wait for them all to complete before continuing. Use the [Future.wait()][]
 static method to manage multiple Futures and wait for them to complete:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
-{% prettify dart %}
+```dart
 Future deleteLotsOfFiles() async =>  ...
 Future copyLotsOfFiles() async =>  ...
 Future checksumLotsOfOtherFiles() async =>  ...
@@ -1224,7 +1182,7 @@ await Future.wait([
   checksumLotsOfOtherFiles(),
 ]);
 print('Done with all the long steps!');
-{% endprettify %}
+```
 
 
 ### Stream
@@ -1246,12 +1204,12 @@ passing in a function literal that searches each file or directory.
 
 <!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
     if (isDir) {
-      final startingDir = new Directory(searchPath);
+      final startingDir = Directory(searchPath);
       startingDir
           .list(
               recursive: argResults[recursive],
@@ -1262,7 +1220,7 @@ void main(List<String> arguments) {
         }
       });
     } else {
-      searchFile(new File(searchPath), searchTerms);
+      searchFile(File(searchPath), searchTerms);
     }
   });
 }
@@ -1273,11 +1231,11 @@ including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
-    final startingDir = new Directory(searchPath);
+    final startingDir = Directory(searchPath);
     [!await for!] (var entity in startingDir.list(
         recursive: argResults[recursive],
         followLinks: argResults[followLinks])) {
@@ -1286,24 +1244,22 @@ Future main(List<String> arguments) async {
       }
     }
   } else {
-    searchFile(new File(searchPath), searchTerms);
+    searchFile(File(searchPath), searchTerms);
   }
 }
 {% endprettify %}
 
-<div class="alert alert-warning" markdown="1">
-**Important:**
-Before using `await for`, make sure that it makes the code clearer
-and that you really do want to wait for all of the stream's results.
-For example, you usually should **not** use `await for` for DOM event listeners,
-because the DOM sends endless streams of events.
-If you use `await for` to register two DOM event listeners in a row,
-then the second kind of event is never handled.
-</div>
+{{site.alert.important}}
+  Before using `await for`, make sure that it makes the code clearer and that
+  you really do want to wait for all of the stream's results. For example, you
+  usually should **not** use `await for` for DOM event listeners, because the
+  DOM sends endless streams of events. If you use `await for` to register two
+  DOM event listeners in a row, then the second kind of event is never handled.
+{{site.alert.end}}
 
 For more information on using `await` and related
-Dart language features, see
-[Asynchrony support](/guides/language/language-tour#asynchrony-support).
+Dart language features, see the
+[asynchronous programming codelab](/codelabs/async-await).
 
 
 #### Listening for stream data
@@ -1311,10 +1267,10 @@ Dart language features, see
 To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
-<?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/await for/[!$&!]/g"?>
-{% prettify dart %}
+<?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 // Find a button by ID and add an event handler.
-querySelector('#submitInfo').onClick.listen((e) {
+querySelector('#submitInfo').onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
@@ -1344,11 +1300,11 @@ use it. Use the `transform()` method to produce a stream with a
 different type of data:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
-{% prettify dart %}
+```dart
 var lines = inputStream
     .transform(utf8.decoder)
-    .transform(new LineSplitter());
-{% endprettify %}
+    .transform(LineSplitter());
+```
 
 This example uses two transformers. First it uses utf8.decoder to
 transform the stream of integers into a stream of strings. Then it uses
@@ -1372,14 +1328,14 @@ Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future readFileAwaitFor() async {
-  var config = new File('config.txt');
+  var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(new LineSplitter());
+      .transform(LineSplitter());
   [!try!] {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -1397,13 +1353,13 @@ Run code after the stream is closed by registering
 an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
-{% prettify dart %}
-var config = new File('config.txt');
+{% prettify dart tag=pre+code %}
+var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
 inputStream
     .transform(utf8.decoder)
-    .transform(new LineSplitter())
+    .transform(LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
@@ -1417,14 +1373,14 @@ inputStream
 ### More information
 
 For some examples of using Future and Stream in command-line apps,
-see the [dart:io tour.][dart:io tour]
-Also see these articles and tutorials:
+see the [dart:io tour][dart:io tour].
+Also see these articles, codelabs, and tutorials:
 
--   [Asynchronous Programming: Futures](/tutorials/language/futures)
--   [Futures and Error Handling](/guides/libraries/futures-error-handling)
--   [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
--   [Asynchronous Programming: Streams](/tutorials/language/streams)
--   [Creating Streams in Dart](/articles/libraries/creating-streams)
+-   [Asynchronous programming: futures, async, await](/codelabs/async-await)
+-   [Futures and error handling](/guides/libraries/futures-error-handling)
+-   [Asynchronous programming: streams](/tutorials/language/streams)
+-   [Creating streams in Dart](/articles/libraries/creating-streams)
+-   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
 
 
 ## dart:math - math and random
@@ -1434,14 +1390,12 @@ provides common functionality such as sine and cosine,
 maximum and minimum, and constants such as *pi* and *e*. Most of the
 functionality in the Math library is implemented as top-level functions.
 
-To use this library in your app, import dart:math. The following
-examples use the prefix `math` to make clear which top-level functions
-and constants are from the Math library:
+To use this library in your app, import dart:math.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
-{% prettify dart %}
+```dart
 import 'dart:math';
-{% endprettify %}
+```
 
 
 ### Trigonometry
@@ -1449,7 +1403,7 @@ import 'dart:math';
 The Math library provides basic trigonometric functions:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
-{% prettify dart %}
+```dart
 // Cosine
 assert(cos(pi) == -1.0);
 
@@ -1460,12 +1414,11 @@ var radians = degrees * (pi / 180);
 var sinOf30degrees = sin(radians);
 // sin 30° = 0.5
 assert((sinOf30degrees - 0.5).abs() < 0.01);
-{% endprettify %}
+```
 
-<div class="alert alert-info" markdown="1">
-**Note:**
-These functions use radians, not degrees!
-</div>
+{{site.alert.note}}
+  These functions use radians, not degrees!
+{{site.alert.end}}
 
 
 ### Maximum and minimum
@@ -1473,10 +1426,10 @@ These functions use radians, not degrees!
 The Math library provides `max()` and `min()` methods:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
-{% prettify dart %}
+```dart
 assert(max(1, 1000) == 1000);
 assert(min(1, -1000) == -1000);
-{% endprettify %}
+```
 
 
 ### Math constants
@@ -1484,12 +1437,12 @@ assert(min(1, -1000) == -1000);
 Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
-{% prettify dart %}
+```dart
 // See the Math library for additional constants.
 print(e); // 2.718281828459045
 print(pi); // 3.141592653589793
 print(sqrt2); // 1.4142135623730951
-{% endprettify %}
+```
 
 
 ### Random numbers
@@ -1498,25 +1451,25 @@ Generate random numbers with the [Random][] class. You can
 optionally provide a seed to the Random constructor.
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
-{% prettify dart %}
-var random = new Random();
+```dart
+var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
 random.nextInt(10); // Between 0 and 9.
-{% endprettify %}
+```
 
 You can even generate random booleans:
 
 <?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
-{% prettify dart %}
-var random = new Random();
+```dart
+var random = Random();
 random.nextBool(); // true or false
-{% endprettify %}
+```
 
 
 ### More information
 
-Refer to the [Math API docs][dart:math] for a full list of methods.
-Also see the API docs for [num,][num] [int,][int] and [double.][double]
+Refer to the [Math API reference][dart:math] for a full list of methods.
+Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
 
 ## dart:convert - decoding and encoding JSON, UTF-8, and more
@@ -1532,17 +1485,17 @@ The dart:convert library works in both web apps and command-line apps.
 To use it, import dart:convert.
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
-{% prettify dart %}
+```dart
 import 'dart:convert';
-{% endprettify %}
+```
 
 
 ### Decoding and encoding JSON
 
-Decode a JSON-encoded string into a Dart object with `json.decode()`:
+Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
-{% prettify dart %}
+```dart
 // NOTE: Be sure to use double quotes ("),
 // not single quotes ('), inside the JSON string.
 // This string is JSON, not Dart.
@@ -1553,31 +1506,31 @@ var jsonString = '''
   ]
 ''';
 
-var scores = json.decode(jsonString);
+var scores = jsonDecode(jsonString);
 assert(scores is List);
 
 var firstScore = scores[0];
 assert(firstScore is Map);
 assert(firstScore['score'] == 40);
-{% endprettify %}
+```
 
 Encode a supported Dart object into a JSON-formatted string with
-`json.encode()`:
+`jsonEncode()`:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
-{% prettify dart %}
+```dart
 var scores = [
   {'score': 40},
   {'score': 80},
   {'score': 100, 'overtime': true, 'special_guest': null}
 ];
 
-var jsonText = json.encode(scores);
+var jsonText = jsonEncode(scores);
 assert(jsonText ==
     '[{"score":40},{"score":80},'
-    '{"score":100,"overtime":true,'
-    '"special_guest":null}]');
-{% endprettify %}
+        '{"score":100,"overtime":true,'
+        '"special_guest":null}]');
+```
 
 Only objects of type int, double, String, bool, null, List, or Map (with
 string keys) are directly encodable into JSON. List and Map objects are
@@ -1589,13 +1542,16 @@ function that returns an object that is directly encodable. Your second
 option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
 
+For more examples and links to JSON-related packages, see
+[Using JSON](/guides/json).
+
 
 ### Decoding and encoding UTF-8 characters
 
 Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
-{% prettify dart %}
+```dart
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
   0x72, 0xc3, 0xb1, 0xc3, 0xa5, 0xc5, 0xa3, 0xc3,
@@ -1607,16 +1563,15 @@ List<int> utf8Bytes = [
 var funnyWord = utf8.decode(utf8Bytes);
 
 assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
-{% endprettify %}
+```
 
 To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
-{% prettify dart %}
-var lines = inputStream
-    .transform([!utf8.decoder!])
-    .transform(new LineSplitter());
+{% prettify dart tag=pre+code %}
+var lines =
+    [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
@@ -1631,20 +1586,30 @@ Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
-{% prettify dart %}
+```dart
 List<int> encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 
 assert(encoded.length == utf8Bytes.length);
 for (int i = 0; i < encoded.length; i++) {
   assert(encoded[i] == utf8Bytes[i]);
 }
-{% endprettify %}
+```
 
 
 ### Other functionality
 
 The dart:convert library also has converters for ASCII and ISO-8859-1
-(Latin1). For details, see the [API docs for the dart:convert library.][dart:convert]
+(Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
+
+
+## dart:html - browser-based apps {#darthtml}
+
+{% include_relative _dart-html-tour.md %}
+
+
+## dart:io - I/O for servers and command-line apps {#dartio}
+
+{% include_relative _dart-io-tour.md %}
 
 
 ## Summary
@@ -1655,24 +1620,21 @@ libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
 as well as platform-specific libaries like the
 [Dart web development libraries][webdev libraries]
-and the [Flutter libraries.][docs.flutter.io]
+and the [Flutter libraries.][docs.flutter]
 
-You can get yet more libraries by using the [pub tool](/tools/pub). The
-[collection,](https://pub.dartlang.org/packages/collection)
-[crypto,](https://pub.dartlang.org/packages/crypto)
-[http,](https://pub.dartlang.org/packages/http)
-[intl,](https://pub.dartlang.org/packages/intl) and
-[test](https://pub.dartlang.org/packages/test) libraries are just a
+You can get yet more libraries by using the [pub package manager](/guides/packages). The
+[collection,]({{site.pub}}/packages/collection)
+[crypto,]({{site.pub}}/packages/crypto)
+[http,]({{site.pub}}/packages/http)
+[intl,]({{site.pub}}/packages/intl) and
+[test]({{site.pub}}/packages/test) libraries are just a
 sampling of what you can install using pub.
 
 To learn more about the Dart language, see the
 [language tour][].
 
 [language tour]: /guides/language/language-tour
-[docs.flutter.io]: https://docs.flutter.io/
-[dartdocs.org]: https://www.dartdocs.org/
-[pub.dartlang.org]: https://pub.dartlang.org
-[DartPad]: https://dartpad.dartlang.org
+[docs.flutter]: {{site.flutter_api}}
 [Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
@@ -1680,8 +1642,7 @@ To learn more about the Dart language, see the
 [dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
 [dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:html tour]: {{site.webdev}}/guides/html-library-tour
-[dart:io tour]: /dart-vm/io-library-tour
+[dart:io tour]: #dartio
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
@@ -1715,4 +1676,4 @@ To learn more about the Dart language, see the
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[webdev libraries]: {{site.webdev}}/guides/web-programming
+[webdev libraries]: /web/libraries

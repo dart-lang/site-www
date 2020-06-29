@@ -1,6 +1,5 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
-// #docplaster
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
   // #docregion block-comments
@@ -16,7 +15,9 @@ void miscDeclAnalyzedButNotTested() {
     /// certain operations may or may not be possible. If there is no file at
     /// [path] or it can't be accessed, this function throws either [IOError]
     /// or [PermissionError], respectively. Otherwise, this deletes the file.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence
   }
 
@@ -25,7 +26,9 @@ void miscDeclAnalyzedButNotTested() {
     /// Deletes the file at [path]. Throws an [IOError] if the file could not
     /// be found. Throws a [PermissionError] if the file is present but could
     /// not be deleted.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence-a-paragraph
   }
 }
@@ -40,9 +43,11 @@ class Widget {}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
-  void tooltip(List<String> lines) => ellipsis();
+  void tooltip(List<String> lines) {
+    ellipsis();
+  }
 }
-// #enddocregion
+// #enddocregion redundant
 
 class C<ChunkBuilder, Flag, LineWriter> {
   // #docregion no-annotations

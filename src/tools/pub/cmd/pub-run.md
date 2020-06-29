@@ -1,21 +1,19 @@
 ---
 title: pub run
 description: Use pub run to run a Dart script in your package.
-permalink: /tools/pub/cmd/pub-run
 ---
 
-_Run_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode %}
-$ pub run [--mode=<mode>] [--checked] <executable> [args...]
+{% prettify nocode tag=pre+code %}
+$ pub run [--enable-asserts] <executable> [args...]
 {% endprettify %}
 
 Use this command to run a Dart script in your package,
 or in one of its dependencies, from the command line.
 
 To run an executable when you are not currently inside a package,
-see the [pub global](/tools/pub/cmd/pub-global) command.
+use the [pub global](/tools/pub/cmd/pub-global) command.
 
 ## Running a script in your package's bin directory
 
@@ -59,11 +57,6 @@ All other directories are private.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
-
-{% comment %}
-update-for-dart-2
-TODO: Add any run-specific options here.
-{% endcomment %}
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

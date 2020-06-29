@@ -1,5 +1,5 @@
 ---
-title: Dart SDK
+title: Dart SDK overview
 description: Dart libraries and command-line tools.
 js:
 - url: /tools/sdk/archive/assets/install.js
@@ -7,109 +7,66 @@ js:
 ---
 
 The Dart SDK has the libraries and command-line tools that you need to develop
-Dart apps. To learn about other tools you can use for Dart development, see
-[Dart Tools](/tools).
+Dart web, command-line, and server apps. To get the Dart SDK, see [Get Dart](/get-dart).
 
-This site's documentation and examples use the
-[{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
-release of the **Dart SDK**.
+If you're developing only mobile apps,
+then you don't need the Dart SDK; just [install Flutter.][flutter]
 
-## Install the SDK
+To learn about other tools you can use for Dart development, see
+the [Dart tools](/tools) page.
 
-A package manager can help you easily install and update the Dart SDK.
-Don’t want to use a package manager? Other options are
-[building the SDK from source][] and
-[downloading the SDK as a zip file](/tools/sdk/archive).
-If you use either of these options, remember to
-add the SDK's `bin` directory to your `PATH`.
-
-<ul class="tabs__top-bar">
-  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
-  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
-</ul>
-<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include_relative _windows.md %}
-</div>
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include_relative _linux.md %}
-</div>
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include_relative _mac.md %}
-</div>
-
-## What's in the SDK
-
-The Dart SDK includes a `lib` directory for the
-[Dart libraries](/guides/libraries/library-tour)
-and a `bin` directory that has these command-line tools:
-
-<div class="row"><div class="col-md-6" markdown="1">
-
-[dart](/dart-vm)
-: The standalone VM
-
-[dart2js]({{site.webdev}}/tools/dart2js)
-: The Dart-to-JavaScript compiler (used only for web development)
-
-[dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-: The static analyzer
-
-[dartdevc]({{site.webdev}}/tools/dartdevc)
-: The Dart development compiler
-(used only for web development)
-
-</div> <div class="col-md-6" markdown="1">
-
-[dartdoc](https://github.com/dart-lang/dartdoc#dartdoc)
-: The API documentation generator
-
-[dartfmt](https://github.com/dart-lang/dart_style#readme)
-: The Dart code formatter
-
-[pub](/tools/pub)
-: The Dart package manager
-
-</div></div>
-
-For more information about the SDK, see its
-[README file](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk).
-
-## About release channels and version strings
-
-The Dart SDK has two release channels:
-
-* **stable** channel: **stable releases**,
-  updated no more frequently than every 6 weeks;
-  currently `[calculating]`{:.editor-build-rev-stable}.
-* **dev** channel: **pre-releases**, usually updated 1/week;
-  currently `[calculating]`{:.editor-build-rev-dev}.
-
-<aside class="alert alert-warning" markdown="1">
-  **Warning:**
-  To give you early access to new features and fixes,
-  dev channel releases are not as heavily tested as the stable release.
+<aside class="alert alert-info" markdown="1">
+  **Note:** This site's documentation and examples use
+  {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
+  version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
+  of the **Dart SDK**.
 </aside>
 
-Most **alpha** releases of Flutter contain a **dev** channel release of Dart.
+## What's in the Dart SDK
 
-**Stable** channel releases of the Dart SDK have version strings like `1.24.2` and `2.0.0`.
-They consist of dot-separated integers, with no hyphens or letters.
+The Dart SDK includes a `lib` directory for the [Dart libraries][] and a `bin`
+directory that has these command-line tools:
 
-**Dev** channel releases of the Dart SDK (pre-releases)
-have additional characters, starting with a hyphen (`-`).
-Dart 2 pre-releases have version numbers starting with
-`2.0.0-dev`—for example, `2.0.0-dev.42.0`.
+<div class="row">
+  <div class="col-lg-6" markdown="1">
+  [dart](/server)
+  : The standalone VM
 
-For more information, see [Dart 2 Updates](/dart-2).
+  [dart2native](/tools/dart2native)
+  : A tool that AOT compiles Dart code to native x64 machine code,
+  producing either a standalone executable or a snapshot
 
-[SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[semantic versioning]: http://semver.org/
+  [dartaotruntime](/tools/dartaotruntime)
+  : A Dart runtime for AOT-compiled snapshots
+
+  [dart2js](/tools/dart2js)
+  : The Dart-to-JavaScript compiler (used only for web development)
+
+  [dartanalyzer](/tools/dartanalyzer)
+  : The static analyzer
+  </div><div class="col-lg-6" markdown="1">
+  [dartdevc](/tools/dartdevc)
+  : The Dart development compiler
+  (used only for web development)
+
+  [dartdoc](/tools/dartdoc)
+  : The API documentation generator
+
+  [dartfmt](/tools/dartfmt)
+  : The Dart code formatter
+
+  [pub](/tools/pub)
+  : The Dart package manager
+  </div>
+</div>
+
+For more information about the SDK, see its
+[README file.](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk)
 
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
-go to [dartbug.com](http://dartbug.com).
+go to [dartbug.com](https://dartbug.com).
 Here are some handy searches:
 
 * [dart (VM) issues](https://github.com/dart-lang/sdk/labels/Area-VM)
@@ -118,5 +75,8 @@ Here are some handy searches:
 * [pub issues](https://github.com/dart-lang/sdk/labels/Area-Pub)
 * [issues for the SDK as a whole](https://github.com/dart-lang/sdk/issues)
 
-[building the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}
+[Dart 2]: /dart-2
+[build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
+[Dart libraries]: /guides/libraries/library-tour
+[flutter]: https://flutter.dev/docs/get-started/install
+[site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html

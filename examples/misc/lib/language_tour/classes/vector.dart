@@ -1,29 +1,30 @@
+// ignore_for_file: sort_constructors_first
+// #docregion ''
 class Vector {
   final int x, y;
 
-  const Vector(this.x, this.y);
+  Vector(this.x, this.y);
 
-  /// Overrides + (a + b).
-  Vector operator +(Vector v) {
-    return new Vector(x + v.x, y + v.y);
-  }
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  /// Overrides - (a - b).
-  Vector operator -(Vector v) {
-    return new Vector(x - v.x, y - v.y);
-  }
+  // Operator == and hashCode not shown. For details, see note below.
+  // #enddocregion ''
+  @override
+  bool operator ==(Object o) => o is Vector && x == o.x && y == o.y;
+
+  @override
+  int get hashCode => 37 * (629 + x.hashCode) + y.hashCode;
+
+  @override
+  String toString() => '($x, $y)';
+  // #docregion ''
 }
 
 void main() {
-  final v = new Vector(2, 3);
-  final w = new Vector(2, 2);
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
 
-  // v == (2, 3)
-  assert(v.x == 2 && v.y == 3);
-
-  // v + w == (4, 5)
-  assert((v + w).x == 4 && (v + w).y == 5);
-
-  // v - w == (0, 1)
-  assert((v - w).x == 0 && (v - w).y == 1);
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
 }

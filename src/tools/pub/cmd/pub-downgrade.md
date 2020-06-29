@@ -1,14 +1,12 @@
 ---
 title: pub downgrade
 description: Use pub downgrade to get the lowest versions of all dependencies used by your Dart application.
-permalink: /tools/pub/cmd/pub-downgrade
 ---
 
-_Downgrade_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify sh %}
-$ pub downgrade [args] [dependencies]
+{% prettify sh tag=pre+code %}
+$ pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 {% endprettify %}
 
 Without any additional arguments, `pub downgrade` gets the lowest versions of
@@ -101,13 +99,19 @@ trying to find a set of versions that work with your package from what's already
 available.
 
 
-## Options {#options}
 
-The `pub downgrade` command supports the
-[`pub get` options](/tools/pub/cmd/pub-get#options).
+## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+`--[no-]offline`
+: By default, pub connects to the network to check for hosted 
+dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
+
+`--dry-run` or `-n`
+: Report what dependencies would change but don't change any.
+
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

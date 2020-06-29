@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: sort_constructors_first, unrelated_type_equality_checks
 // #docregion
 class Person {
   final String firstName, lastName;
@@ -20,17 +20,16 @@ class Person {
   @override
   bool operator ==(dynamic other) {
     if (other is! Person) return false;
-    // ignore_for_file: 1, invalid_assignment
-    // ignore_for_file: 2, invalid_assignment // https://github.com/dart-lang/sdk/issues/32236
-    Person person = other; //!analysis-issue in Dart 1
+    // ignore: stable, dev, invalid_assignment, // https://github.com/dart-lang/sdk/issues/32236
+    Person person = other;
     return (person.firstName == firstName &&
         person.lastName == lastName);
   }
 }
 
 void main() {
-  var p1 = new Person('Bob', 'Smith');
-  var p2 = new Person('Bob', 'Smith');
+  var p1 = Person('Bob', 'Smith');
+  var p2 = Person('Bob', 'Smith');
   var p3 = 'not a person';
   assert(p1.hashCode == p2.hashCode);
   assert(p1 == p2);

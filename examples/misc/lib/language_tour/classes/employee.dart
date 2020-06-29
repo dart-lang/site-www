@@ -1,7 +1,6 @@
-// ignore_for_file: unnecessary_cast
-// #docplaster
+// ignore_for_file: unnecessary_cast, sort_constructors_first
 
-Map getDefaultData() => {}; // stub
+Map get defaultData => {}; // stub
 
 // #docregion
 class Person {
@@ -14,9 +13,8 @@ class Person {
 
 // #docregion method-then-constructor
 class Employee extends Person {
-  // #enddocregion ,
-  Employee() : super.fromJson(getDefaultData());
-  // ···
+  // #enddocregion ''
+  Employee() : super.fromJson(defaultData);
   // #enddocregion method-then-constructor
   // #docregion
   // Person does not have a default constructor;
@@ -29,7 +27,7 @@ class Employee extends Person {
 // #enddocregion method-then-constructor
 
 void main() {
-  var emp = new Employee.fromJson({});
+  var emp = Employee.fromJson({});
   // Prints:
   // in Person
   // in Employee

@@ -1,6 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable _chunks) {
@@ -8,6 +8,7 @@ void miscDeclAnalyzedButNotTested() {
     // Not if there is nothing before it.
     if (_chunks.isEmpty) return false;
     // #enddocregion comments-like-sentences
+    return true;
   };
 
   // #docregion block-comments
@@ -30,7 +31,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion first-sentence
     /// Deletes the file at [path] from the file system.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence
   }
 
@@ -40,7 +43,9 @@ void miscDeclAnalyzedButNotTested() {
     ///
     /// Throws an [IOError] if the file could not be found. Throws a
     /// [PermissionError] if the file is present but could not be deleted.
-    void delete(String path) => ellipsis();
+    void delete(String path) {
+      ellipsis();
+    }
     // #enddocregion first-sentence-a-paragraph
   }
 
@@ -50,14 +55,18 @@ void miscDeclAnalyzedButNotTested() {
     bool all(bool predicate(T element)) => ellipsis();
 
     /// Starts the stopwatch if not already running.
-    void start() => ellipsis();
+    void start() {
+      ellipsis();
+    }
     // #enddocregion third-person
   };
 
   // #docregion code-sample
   /// Returns the lesser of two numbers.
   ///
-  ///     min(5, 3); // 3.
+  /// ```dart
+  /// min(5, 3) == 3
+  /// ```
   num min(num a, num b) => ellipsis();
   // #enddocregion code-sample
 
@@ -66,13 +75,18 @@ void miscDeclAnalyzedButNotTested() {
 
     // #docregion identifiers
     /// Throws a [StateError] if ...
-    /// similar to [anotherMethod], but ...
+    /// similar to [anotherMethod()], but ...
     // #enddocregion identifiers
 
-    // #docregion new
-    /// To create a point, call [new Point] or use [new Point.polar] to ...
-    // #enddocregion new
-    void someMethod() {}
+    // #docregion member
+    /// Similar to [Duration.inDays], but handles fractional days.
+    // #enddocregion member
+    void method1() {}
+
+    // #docregion ctor
+    /// To create a point, call [Point()] or use [Point.polar()] to ...
+    // #enddocregion ctor
+    void method2() {}
   };
 
   // #docregion markdown
@@ -113,11 +127,11 @@ void miscDeclAnalyzedButNotTested() {
   ///
   /// Links can be:
   ///
-  /// * http://www.just-a-bare-url.com
-  /// * [with the URL inline](http://google.com)
+  /// * https://www.just-a-bare-url.com
+  /// * [with the URL inline](https://google.com)
   /// * [or separated out][ref link]
   ///
-  /// [ref link]: http://google.com
+  /// [ref link]: https://google.com
   ///
   /// # A Header
   ///
@@ -139,9 +153,11 @@ class Widget {}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
-  void tooltip(List<String> lines) => ellipsis();
+  void tooltip(List<String> lines) {
+    ellipsis();
+  }
 }
-// #enddocregion
+// #enddocregion redundant
 
 //----------------------------------------------------------------------------
 

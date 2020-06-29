@@ -1,6 +1,4 @@
-// ignore_for_file: annotate_overrides
-// #docplaster
-// #docregion
+// ignore_for_file: sort_constructors_first, annotate_overrides
 // A person. The implicit interface contains greet().
 class Person {
   // In the interface, but visible only in this library.
@@ -23,6 +21,6 @@ class Impostor implements Person {
 String greetBob(Person person) => person.greet('Bob');
 
 void main() {
-  print(greetBob(new Person('Kathy')));
-  print(greetBob(new Impostor()));
+  print(greetBob(Person('Kathy')));
+  print(greetBob(Impostor()));
 }

@@ -1,4 +1,4 @@
-@Tags(const ['browser'])
+@Tags(['browser'])
 @TestOn('browser')
 // #docregion dart-html-import
 import 'dart:html';

@@ -1,38 +1,64 @@
-# Examples
+## Examples
 
-This folder (`examples`), contains the following packages:
+The example code in this folder is organized following the conventions
+documented in the [Examples][] page of the [site-shared docs][]. Consult that
+page for general information about project file organization, testing, [CI][],
+and more. Site-www specific information is given below.
 
-- `misc` contains code for effective dart, the language tour, the library tour, samples and possibly more.
-- `httpserver` is one of the larger samples.
-- `util` is a package of shared utilities used by `misc`, etc.
+## How do I run the analyzer on an example?
 
-## Original sources
+Change directory into the example's folder and run Dart commands there. For
+example:
 
-The original tour sources, taken from the Up-and-Running repo (but reworked to contain doc regions), are in these folders:
+```console
+$ cd examples/misc
+$ pub get
+$ dartanalyzer analysis_options.yaml .
+```
 
-- `/examples_archive/language_tour` (now obsolete, see below)
-- `/examples_archive/library_tour`
+## How do I run example tests?
 
-These original sources don't have tests, and practically each code excerpt is an independent
-package (with its own pubspec).
+Change directory into the example's folder and run Dart commands there. For
+example:
 
-The original sources for the (large) samples were copied from the
-[dart-tutorials-samples](https://github.com/dart-lang/dart-tutorials-samples) repo.
+```console
+$ cd examples/misc
+$ pub get
+$ pub run test  # Run VM tests
+$ pub run test -p chrome  # Run browser tests
+```
 
-## New sources
+## How do I run the analyzer and tests for all examples?
 
-Consolidated and reworked versions of the original sources have been developed,
-and are found under these folders:
+To run both the analyzer and tests for all examples use:
 
-- `examples/*/lib`
-- `examples/*/test`
+```
+./tool/analyze-and-test-examples.sh
+```
 
-As can be expected, Travis jobs run the
+If you get a warning about test failures or analysis errors, you might need to
+update one or more analyzer results files. For example, update
+`examples/misc/analyzer-results.txt`, if the change applies to both stable and
+dev Dart releases. Otherwise, update only the release specific file: either
+`examples/misc/analyzer-results-stable.txt` or
+`examples/misc/analyzer-results-dev.txt`.
 
-- Analyzer over both `lib` and `test`
-- Tests under `test`
+## How do I update the analyzer results files?
 
-### File organisation for the Tours
+To update the analyzer results files:
+
+1. Run `pub upgrade` to get the latest version of the pedantic package.
+1. Run `./tool/analyze-and-test-examples.sh --save-logs`.
+1. Look at the diffs for the results files.
+1. If the diffs look good but some comments are missing,
+   add back the comments that are still relevant.
+1. Run `./tool/analyze-and-test-examples.sh` to confirm that
+   your changes are good.
+
+**Pro tip:** You can embed in a doc page specific line(s) from an analyzer
+results file. (Link to example: To be completed)
+
+## File organization for the Tours
 
 The new Language Tour sources are under `lib/language_tour` and `test/language_tour`.
 Below each of these folders, you'll find either a file or a folder with a name
@@ -45,13 +71,13 @@ Under `lib` you might find a function defined as:
 void miscDeclAnalyzedButNotTested(bool c) {
   {
     // #docregion foo-1
-    var foo = 1
+    var foo = 1;
     // #enddocregion foo-1
   }
 
-  {
+  (int bar) {
     // #docregion foo-2
-    var foo = 2
+    var foo = 2 + bar;
     // #enddocregion foo-2
   }
 
@@ -59,49 +85,23 @@ void miscDeclAnalyzedButNotTested(bool c) {
 }
 ```
 
-That is, code regions are placed with a (headless) code block. This ensures
-that code region declarations (which sometimes re-declare the same entity)
-don't clash.
+That is, code regions are placed with a (headless) code block or an anonymous
+function. This ensures that code region declarations (which sometimes re-declare
+the same entity) don't clash.
 
-### Where to find a code excerpt
+## Where to find a code excerpt
 
 Generally speaking, a small code excerpt that is subject to testing is embedded
 directly in its test. Code regions that are subject to analysis only
 are in `lib`. Larger examples are in `lib`, and their tests (if any) under `test`.
 
-### Why not test all?
+## Why not test all the things?!?
 
-Not all code excerpts are tested because some are just fragments of anything
-useful, and others illustrate features that would required significant test
-scaffolding to be written and the effort isn't worth the small gain.
+Not all code excerpts are tested because some are just small fragments with
+little or no useful behavior, and others illustrate features that would required
+significant test scaffolding to be written and the effort isn't worth the small
+gain.
 
-### Code highlights
-
-Code segments enclosed in the special syntax [!...!] will be highlighted.
-For example, the code
-
-    ```
-      int [!foo!] = bar;
-    ```
-
-will display as
-
-  <code>int <mark>foo</mark> = bar;</code>
-
-## Code excerpt transformation
-
-The code excerpt extractor can apply regular-expression-based replace transformations.
-There are global transformations applied to all code excerpts. See
-`./scripts/refresh-code-excerpts.sh` for an annotated list of replace expressions passed
-along with the `--replace` command line argumet of the `code_excerpt_updater` command.
-
-File-scope global replace expressions are included at the top of some of site page markdown files.
-For example, `src/_guides/language/effective-dart/design.md` currently use the file-global replace argument:
-
-```html
-<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
-```
-
-This particular transformation strips the trailing version number off of class names. For
-example `String0` becomes `String`, and `Point1`, `Point2`, etc. all become `Point`. This
-allows the originating source file to contain multiple versions of the same class.
+[CI]: https://www.thoughtworks.com/continuous-integration
+[site-shared docs]: https://github.com/dart-lang/site-shared/tree/master/doc
+[Examples]: https://github.com/dart-lang/site-shared/blob/master/doc/examples.md

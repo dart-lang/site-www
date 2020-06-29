@@ -1,70 +1,44 @@
 ---
-layout: default
-permalink: /tools/pub/dependencies
-title: "Pub Dependencies"
-description: "Add other packages to your app. Specify package locations, version constraints, and more."
+title: Package dependencies
+description: Add other packages to your app. Specify package locations, version constraints, and more.
 ---
 
-Dependencies are one of [pub](/tools/pub)'s core concepts.
-A dependency is another package that your package needs in order to work.
-Dependencies are specified in your [pubspec](/tools/pub/pubspec.html).
-You only list
-[immediate dependencies](/tools/pub/glossary#immediate-dependency)&mdash;the
+Dependencies are one of the core concepts of the [pub package manager][].
+A _dependency_ is another package that your package needs in order to work.
+Dependencies are specified in your [pubspec](/tools/pub/pubspec).
+You list only _immediate dependencies_ — the
 software that your package uses directly. Pub handles
 [transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
 
-<aside class="alert alert-info" markdown="1">
-To see all the dependencies used by a package, use
-[`pub deps`](/tools/pub/cmd/pub-deps).
-</aside>
+This page has detailed information on how to specify dependencies.
+At the end is a list of
+[best practices for package dependencies](#best-practices).
 
-For each dependency, you specify the *name* of the package you depend on.
-For [library packages](/tools/pub/glossary#library-package),
-you specify the *range of versions* of that package that you allow.
-You may also specify the
-[*source*](/tools/pub/glossary#source) which tells pub how the package can be located,
+## Overview
+
+For each dependency, you specify the *name* of the package you depend on
+and the *range of versions* of that package that you allow.
+You can also specify the
+[*source*](/tools/pub/glossary#source),
+which tells pub how to locate the package,
 and any additional *description* that the source needs to find the package.
 
-Based on what data you want to provide, you can specify dependencies in two
-ways. The shortest way is to just specify a name:
+Here is an example of specifying a dependency:
 
-{% prettify yaml %}
-dependencies:
-  transmogrify:
-{% endprettify %}
-
-This creates a dependency on `transmogrify` that  allows any version, and looks
-it up using the default source, which is pub.dartlang.org. To limit the
-dependency to a range of versions, you can provide a *version constraint*:
-
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify: ^1.0.0
 {% endprettify %}
 
-This creates a dependency on `transmogrify` using the default source and
-allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`). See
-[Version constraints](#version-constraints) and [Caret syntax](#caret-syntax)
-for details on the version constraint syntax.
+This YAML code creates a dependency on the `transmogrify` package
+using the default source ([pub.dev]({{site.pub}})) and
+allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
+See the [version constraints](#version-constraints)
+section of this page for syntax details.
 
 If you want to specify a source, the syntax looks a bit different:
 
-{% prettify yaml %}
-dependencies:
-  transmogrify:
-    hosted:
-      name: transmogrify
-      url: http://some-package-server.com
-{% endprettify %}
-
-This depends on the `transmogrify` package using the `hosted` source.
-Everything under the source key (here, just a map with a `url:` key) is the
-description that gets passed to the source. Each source has its own description
-format, detailed below.
-
-You can also provide a version constraint:
-
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
@@ -73,15 +47,28 @@ dependencies:
     version: ^1.0.0
 {% endprettify %}
 
-This long form is used when you don't use the default source or when you have a
-complex description you need to specify.
+This YAML code creates a dependency on the `transmogrify` package
+using the `hosted` source.
+Everything under the source key (here, just a map with a `url:` key)
+is the description that gets passed to the source.
+Each source has its own description format,
+which is described in the [dependency sources](#dependency-sources) section
+of this page.
+The version constraint is optional but recommended.
+
+Use this long form when you don't use the default source or when you have a
+complex description that you need to specify.
 But in most cases, you'll just use the simple
-<code><em>packagename</em>: version</code> form.
+<code><em>packagename</em>: <em>version</em></code> form.
 
 ## Dependency sources
 
-Here are the different sources pub can use to locate packages, and the
-descriptions they allow:
+Pub can use the following sources to locate packages:
+
+* [SDK](#sdk)
+* [Hosted packages](#hosted-packages)
+* [Git packages](#git-packages)
+* [Path packages](#path-packages)
 
 ### SDK
 
@@ -91,7 +78,7 @@ Currently, Flutter is the only SDK that is supported.
 
 The syntax looks like this:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   flutter_driver:
     sdk: flutter
@@ -114,11 +101,11 @@ install packages that have `sdk` dependencies.
 
 ### Hosted packages
 
-A *hosted* package is one that can be downloaded from pub.dartlang.org
+A *hosted* package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
 of declaring a dependency on a hosted package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify: ^1.4.0
 {% endprettify %}
@@ -130,7 +117,7 @@ This example specifies that your package depends on a hosted package named
 If you want to use your own package server, you can use a description that
 specifies its URL:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
@@ -141,38 +128,60 @@ dependencies:
 
 ### Git packages
 
-Sometimes you live on the bleeding edge and you need to use packages that
+Sometimes you live on the bleeding edge and need to use packages that
 haven't been formally released yet. Maybe your package itself is still in
 development and is using other packages that are being developed at the
 same time. To make that easier, you can depend directly on a package
 stored in a [Git][] repository.
 
-[git]: http://git-scm.com/
+[git]: https://git-scm.com/
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
-    git: git://github.com/munificent/kittens.git
+    git: https://github.com/munificent/kittens.git
 {% endprettify %}
 
 The `git` here says this package is found using Git, and the URL after that is
-the Git URL that can be used to clone the package. Pub assumes that the package
-is in the root of the git repository.
+the Git URL that can be used to clone the package.
 
-If you want to depend on a specific commit, branch, or tag, you can also
-provide a `ref` argument:
+Even if the package repo is private, if you can
+[connect to the repo using SSH,][GitHub SSH]
+then you can depend on the package by using the repo's SSH URL:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
+dependencies:
+  kittens:
+    git: git@github.com:munificent/kittens.git
+{% endprettify %}
+
+If you want to depend on a specific commit, branch, or tag,
+add a `ref` argument:
+
+{% prettify yaml tag=pre+code %}
 dependencies:
   kittens:
     git:
-      url: git://github.com/munificent/kittens.git
+      url: git@github.com:munificent/kittens.git
       ref: some-branch
 {% endprettify %}
 
-The ref can be anything that Git allows to [identify a commit][commit].
+The ref can be anything that Git allows to [identify a commit.][commit]
 
-[commit]: http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
+[commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
+
+Pub assumes that the package is in the root of the Git repository.
+To specify a different location in the repo, use the `path` argument:
+
+{% prettify yaml tag=pre+code %}
+dependencies:
+  kittens:
+    git:
+      url: git@github.com:munificent/cats.git
+      path: path/to/kittens
+{% endprettify %}
+
+The path is relative to the Git repo's root.
 
 ### Path packages
 
@@ -184,7 +193,7 @@ package are instantly picked up by the one that depends on it.
 
 To handle that, pub supports *path dependencies*.
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     path: /Users/me/transmogrify
@@ -201,8 +210,8 @@ containing your pubspec.
 
 Path dependencies are useful for local development, but do not work when
 sharing code with the outside world&mdash;not everyone can get to
-your file system. Because of this, you cannot upload a package to
-[pub.dartlang.org][pubsite] if it has any path dependencies in its pubspec.
+your file system. Because of this, you cannot upload a package to the
+[pub.dev site][pubsite] if it has any path dependencies in its pubspec.
 
 Instead, the typical workflow is:
 
@@ -214,32 +223,62 @@ Instead, the typical workflow is:
 
 ## Version constraints
 
-If your package is an application, you don't usually need to specify [version
-constraints](/tools/pub/glossary#version-constraint) for your dependencies. You
-typically want to use the latest versions of the dependencies when you first
-create your app. Then you'll create and check in a
-[lockfile](/tools/pub/glossary#lockfile) that pins your dependencies to those specific
-versions. Specifying version constraints in your pubspec then is usually
-redundant (though you can do it if you want).
-
-For a [library package](/tools/pub/glossary#library-package) that you want users to
-reuse, though, it is important to specify version constraints. That lets people
+Specifying version constraints lets people
 using your package know which versions of its dependencies they can rely on to
 be compatible with your library. Your goal is to allow a range of versions as
 wide as possible to give your users flexibility. But it should be narrow enough
 to exclude versions that you know don't work or haven't been tested.
 
-The Dart community uses [semantic versioning][]<sup id="fnref:semver"><a
+The Dart community uses semantic versioning<sup id="fnref:semver"><a
 href="#fn:semver">1</a></sup>, which helps you know which versions should work.
 If you know that your package works fine with `1.2.3` of some dependency, then
-semantic versioning tells you that it should work (at least) up to `2.0.0`.
+semantic versioning tells you that it should work with any subsequent
+stable release before `2.0.0`.
+For details on pub's version system,
+see the [package versioning page](/tools/pub/versioning#semantic-versions).
 
-A version constraint is a series of:
+You can express version constraints using either
+_caret syntax_ (`^1.2.3`) or
+_traditional syntax_ (`'>=1.2.3 <2.0.0'`).
+
+### Caret syntax
+
+_Caret syntax_ is a compact way of expressing the most common
+sort of version constraint.
+`^version` means _the range of all versions guaranteed to be backwards
+compatible with the specified version_.
+
+For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
+`^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
+The following is an example of caret syntax:
+
+{% prettify yaml tag=pre+code %}
+dependencies:
+  path: ^1.3.0
+  collection: ^1.1.0
+  string_scanner: ^0.1.2
+{% endprettify %}
+
+Because caret syntax was introduced in Dart 1.8.3,
+it requires an [SDK constraint][]
+(using [traditional syntax](#traditional-syntax))
+to ensure that older versions of pub don't try to process it.
+For example:
+
+{% prettify yaml tag=pre+code %}
+environment:
+  sdk: '>=1.8.3 <3.0.0'
+{% endprettify %}
+
+### Traditional syntax
+
+A version constraint that uses _traditional syntax_
+is a series of the following:
 
 `any`
 : The string `any` allows any version. This is equivalent to an empty
-  version constraint, but is more explicit. **While `any` is allowed,
-  we do not recommend it for performance reasons.**
+  version constraint, but is more explicit. **Although `any` is allowed,
+  we don't recommend it.**
 
 `1.2.3`
 : A concrete version number pins the dependency to only allow that
@@ -277,34 +316,6 @@ For example, never use `>=1.2.3 <2.0.0`;
 instead, use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
 </aside>
 
-### Caret syntax
-
-_Caret syntax_ provides a more compact way of expressing the most common
-sort of version constraint.
-`^version` means "the range of all versions guaranteed to be backwards
-compatible with the specified version", and follows pub's convention for
-[semantic versioning](/tools/pub/versioning#semantic-versions).
-For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
-`^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
-The following is an example of caret syntax:
-
-{% prettify yaml %}
-dependencies:
-  path: ^1.3.0
-  collection: ^1.1.0
-  string_scanner: ^0.1.2
-{% endprettify %}
-
-Note that caret syntax was added in Dart 1.8.3. Older versions of Dart
-don't understand it, so you'll need to include an SDK constraint (using
-traditional syntax) to ensure that older versions of pub will not try
-to process it. For example:
-
-{% prettify yaml %}
-environment:
-  sdk: '>=1.8.3 <2.0.0'
-{% endprettify %}
-
 ## Dev dependencies
 
 Pub supports two flavors of dependencies: regular dependencies and *dev
@@ -316,7 +327,7 @@ in its tests. If someone just wants to use `transmogrify`&mdash;import its
 libraries&mdash;it doesn't actually need `test`. In this case, it specifies
 `test` as a dev dependency. Its pubspec will have something like:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dev_dependencies:
   test: '>=0.5.0 <0.12.0'
 {% endprettify %}
@@ -352,7 +363,7 @@ copy of the package.
 
 The pubspec would look something like the following:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify: ^1.2.0
@@ -361,14 +372,15 @@ dependency_overrides:
     path: ../transmogrify_patch/
 {% endprettify %}
 
-When you run `pub get`, the pubspec's lockfile is updated to reflect the
-new path to your dependency and, whereever transmogrify is used, pub
+When you run [`pub get`][] or [`pub upgrade`][],
+the pubspec's lockfile is updated to reflect the
+new path to your dependency and, wherever transmogrify is used, pub
 uses the local version instead.
 
 You can also use `dependency_overrides` to specify a particular
 version of a package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify: ^1.2.0
@@ -376,22 +388,71 @@ dependency_overrides:
   transmogrify: '3.2.1'
 {% endprettify %}
 
-*Caution:* Using a dependency override involves some risk. For example,
-using an override to specify a version outside the range that the
-package claims to support, or using an override to specify
-a local copy of a package that has unexpected behaviors,
-may break your application.
+{{site.alert.warning}}
+  Using a dependency override involves some risk. For example,
+  using an override to specify a version outside the range that the
+  package claims to support, or using an override to specify
+  a local copy of a package that has unexpected behaviors,
+  may break your application.
+{{site.alert.end}}
+
+## Best practices
+
+It’s important to actively manage your dependencies and
+ensure that your packages use the freshest versions possible.
+If any dependency is stale,
+then you might have not only a stale version of that package,
+but also stale versions of other packages in your dependency graph that
+depend on that package.
+These stale versions can have a negative impact on
+the stability, performance, and quality of apps.
+
+We recommend the following best practices for package dependencies:
+
+Use [caret syntax](#caret-syntax)
+: Specifying dependencies with version ranges is such as `^1.6.3`
+  is a good practice because it allows the pub tool to
+  select newer versions of the package when they become available.
+  Also, it places an upper limit on the allowed version,
+  based on an assumption that packages use [semantic versions][],
+  where any version of path versioned `1.x` is compatible,
+  but where a new version `2.x` would be a major upgrade
+  that isn't semantically compatible with `1.x` versions. 
+
+Depend on the latest stable package versions
+: Use [`pub upgrade`][] to update to the latest package versions
+  that your pubspec allows.
+  To identify dependencies in your app or package that
+  aren't on the latest stable versions,
+  use [`pub outdated`][].
+
+Test whenever you update package dependencies
+: If you run [`pub upgrade`][] without updating your pubspec,
+  the API should stay the same
+  and your code should run as before — but test to make sure.
+  If you modify the pubspec and update to a new major version,
+  then you might encounter breaking changes,
+  so you need to test even more thoroughly.
 
 ---
 
-
 <aside id="fn:semver" class="footnote" markdown="1">
 
-[1] Pub follows version `2.0.0-rc.1` of the semantic versioning spec,
+[1] Pub follows version `2.0.0-rc.1` of the
+[semantic versioning specification][]
 because that version allows packages to use build identifiers (`+12345`)
 to differentiate versions. <a href="#fnref:semver">↩</a>
 
 </aside>
 
-[pubsite]: https://pub.dartlang.org
-[semantic versioning]: http://semver.org/spec/v2.0.0-rc.1.html
+[GitHub SSH]: https://help.github.com/articles/connecting-to-github-with-ssh/
+[pub package manager]: /guides/packages
+[`pub get`]: /tools/pub/cmd/pub-get
+[`pub outdated`]: /tools/pub/cmd/pub-outdated
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
+[PubGrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
+[pubsite]: {{site.pub}}
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
+[semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
+[semantic versions]: /tools/pub/versioning#semantic-versions
+[What not to commit]: /guides/libraries/private-files

@@ -1,4 +1,4 @@
-@Tags(const ['browser'])
+@Tags(['browser'])
 @TestOn('browser')
 import 'dart:html';
 import 'package:test/test.dart';

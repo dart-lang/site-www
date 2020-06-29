@@ -1,31 +1,26 @@
 ---
-layout: default
-title: "Create Library Packages"
-description: "Learn how to create library packages in Dart."
+title: Creating packages
+description: Learn how to create library packages in Dart.
 ---
 
-Libraries are a great way to create modular code that can
-be easily shared. In the Dart ecosystem,
-libraries are created and distributed as packages.
-Dart has two kinds of packages:
-[_application_ packages](/tools/pub/glossary#application-package),
-which may include local libraries, and
+The Dart ecosystem uses [packages][]
+to share software such as libraries and tools.
+This page tells you how to create a package,
+with a focus on the most common kind of package,
 [_library_ packages](/tools/pub/glossary#library-package).
 
-This document explains how to create a library package
-and points you to further resources.
-For information on _using_ libraries, see
-[Install Shared Packages](/tutorials/libraries/shared-pkgs) or the
-language tour's
-[Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
-section.
+{% comment %}
+TODO: Add coverage of packages that contain tools.
+{% endcomment %}
+
+[packages]: /guides/packages
 
 ## What makes a library package
 
 The following diagram shows the layout of the simplest
 library package:
 
-{% img 'libraries/simple-lib2.png' %}
+{% asset libraries/simple-lib2.png alt="root directory contains pubspec.yaml and lib/file.dart" %}
 
 The minimal requirements for a library are:
 
@@ -97,12 +92,12 @@ package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart
 library packages:
 
-{% img 'libraries/shelf.png' %}
+{% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
 
 Directly under lib, the main library file,
 `shelf.dart`, exports several files from lib/src:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 export 'src/cascade.dart';
 export 'src/handler.dart';
 export 'src/handlers/logger.dart';
@@ -121,42 +116,109 @@ This adapter handles HttpRequest objects from dart:io.
 <aside class="alert alert-info" markdown="1">
 **Tip for web apps:**
 For the best performance when developing with
-[dartdevc,]({{site.webdev}}/tools/dartdevc)
+[dartdevc,](/tools/dartdevc)
 put [implementation
 files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 </aside>
 
+
 ## Importing library files
 
-When importing a library file, you can use the
+When importing a library file from another package, use the
 the `package:` directive to specify the URI of that file.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
-You can import a library using a relative path when
-both files are inside of lib,
-or when both files are outside of lib.
-However, you must use `package:` when importing a file that reaches
-inside, or outside, of lib.
-When in doubt, use the `package:` directive; it works in all cases.
+When importing a library file from your own package,
+use a relative path when both files are inside of lib,
+or when both files are outside of lib. 
+Use `package:` when the imported file is in lib and the importer is outside.
 
 The following graphic shows how
 to import `lib/foo/a.dart` from both lib and web.
 
-{% img 'libraries/import-lib-rules.png' %}
+{% asset libraries/import-lib-rules.png alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import" %}
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Although the lib graphic shows `lib/bar/b.dart` using a relative import
-(`import '../foo/a.dart'`),
-it could instead use the `package:` directive
-(`import 'package:my_package/foo/a.dart'`).
-</aside>
 
+## Conditionally importing and exporting library files
+
+If your library supports multiple platforms,
+then you might need to conditionally import or export library files.
+A common use case is a library that supports both web and native platforms.
+
+To conditionally import or export,
+you need to check for the presence of `dart:*` libraries.
+Here's an example of conditional export code that
+checks for the presence of `dart:io` and `dart:html`:
+
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
+```dart
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
+```
+<div class="prettify-filename">lib/hw_mp.dart</div>
+
+Here's what that code does:
+
+* In an app that can use `dart:io`
+  (for example, a command-line app),
+  export `src/hw_io.dart`.
+* In an app that can use `dart:html`
+  (a web app),
+  export `src/hw_html.dart`.
+* Otherwise, export `src/hw_none.dart`.
+
+To conditionally import a file, use the same code as above,
+but change `export` to `import`.
+
+{{site.alert.note}}
+  The conditional import or export checks only whether the library is
+  _available for use_ on the current platform,
+  not whether it's actually imported or used.
+{{site.alert.end}}
+
+All of the conditionally exported libraries must implement the same API.
+For example, here's the `dart:io` implementation:
+
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
+```dart
+import 'dart:io';
+
+void alarm([String text]) {
+  stderr.writeln(text ?? message);
+}
+
+String get message => 'Hello World from the VM!';
+```
+<div class="prettify-filename">lib/src/hw_io.dart</div>
+
+And here's the default implementation,
+which is a stub that throws UnsupportedErrors:
+
+<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
+```dart
+void alarm([String text]) => throw UnsupportedError('hw_none alarm');
+
+String get message => throw UnsupportedError('hw_none message');
+```
+<div class="prettify-filename">lib/src/hw_none.dart</div>
+
+On any platform,
+you can import the library that has the conditional export code:
+
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+```dart
+import 'package:hw_mp/hw_mp.dart';
+
+void main() {
+  print(message);
+}
+```
 
 ## Providing additional files
 
@@ -181,23 +243,21 @@ This goes into the `example` directory at the top of the package.
 Any tools or executables that you create during development that aren't for
 public use go into the `tool` directory.
 
-Other files that are required if you publish your library to
-pub.dartlang.com, such as a README and a CHANGELOG, are
-described in [Publishing a Package](/tools/pub/publishing).
-Also see
-[Pub Package Layout Conventions](/tools/pub/package-layout)
-for further information on how to organize a package directory
-structure.
+Other files that are required if you publish your library to the
+pub.dev site, such as `README.md` and `CHANGELOG.md`, are
+described in [Publishing a package](/tools/pub/publishing).
+For more information on how to organize a package directory,
+see the [pub package layout conventions](/tools/pub/package-layout).
 
 ## Documenting a library
 
 You can generate API docs for your library using
-the [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc) tool.
+the [dartdoc][] tool.
 Dartdoc parses the source looking for
 [documentation comments](/guides/language/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// The event handler responsible for updating the badge in the UI.
 void updateBadge() {
   ...
@@ -205,43 +265,43 @@ void updateBadge() {
 {% endprettify %}
 
 For an example of generated docs, see the
-[shelf documentation](https://www.dartdocs.org/documentation/shelf/latest/shelf/shelf-library.html).
+[shelf documentation.]({{site.pub-api}}/shelf/latest)
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
 To include any library-level documentation in the generated docs,
 you must specify the `library` directive.
-See [issue 1082](https://github.com/dart-lang/dartdoc/issues/1082).
+See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
 </aside>
 
-## Distributing a library
+## Distributing an open source library {#distributing-a-library}
 
-When checking your library into source code control, be aware
-that there are some files you should not commit.
-For example, don't commit `.packages` or `pubspec.lock` files.
-To learn more, see
-[What Not to Commit](private-files).
+If your library is open source,
+we recommend sharing it on the [pub.dev site.]({{site.pub}})
+To publish or update the library,
+use [pub publish](/tools/pub/cmd/pub-lish),
+which uploads your package and creates or updates its page.
+For example, see the page for the [shelf package.]({{site.pub}}/packages/shelf)
+See [Publishing a package](/tools/pub/publishing)
+for details on how to prepare your package for publishing.
 
-You can share your open source libraries with other developers on
-[pub.dartlang.org](https://pub.dartlang.org/) using
-[pub publish](/tools/pub/cmd/pub-lish).
-[Publishing a Package](/tools/pub/publishing)
-describes all the files that you should include.
+The pub.dev site not only hosts your package,
+but also generates and hosts your package's API reference docs.
+A link to the latest generated docs is in the package's **About** box;
+for example, see the shelf package's
+[API docs.]({{site.pub-api}}/shelf)
+Links to previous versions' docs are in the
+**Versions** tab of the package's page.
 
-The [dartdocs.org generator](https://github.com/astashov/dartdocs.org)
-provides a handy service for packages published on pub.dartlang.org.
-The service watches the site, generating new docs to
-[dartdocs.org](https://www.dartdocs.org/) when it detects changes.
-Before publishing your package, run the dartdoc tool manually to
-make sure that your docs generate successfully and look as expected.
-If your docs don't appear on dartdocs.org, check
-[dartdocs.org/failed](https://www.dartdocs.org/failed/index.html)
-to learn what went wrong.
+To ensure that your package's API docs look good on the pub.dev site,
+follow these steps:
 
-To minimize the possibility of broken links as version numbers change,
-specify "latest" rather than a specific version when linking to
-dartdocs.org. For example:
-[https://www.dartdocs.org/documentation/shelf/latest/](https://www.dartdocs.org/documentation/shelf/latest/).
+* Before publishing your package, run the [dartdoc][] tool
+  to make sure that your docs generate successfully and look as expected.
+* After publishing your package, check the **Versions** tab
+  to make sure that the docs generated successfully.
+* If the docs didn't generate at all,
+  click **failed** in the **Versions** tab to see the dartdoc output.
 
 ## Resources
 
@@ -250,15 +310,17 @@ Use the following resources to learn more about library packages:
 * [Libraries and visibility](/guides/language/language-tour#libraries-and-visibility)
   in the [language tour](/guides/language/language-tour) covers
   using library files.
-* The [pub](/tools/pub) documentation is useful, particularly
-  [Pub Package Layout Conventions](/tools/pub/package-layout).
-* [What Not to Commit](private-files)
+* The [package](/guides/packages) documentation is useful, particularly the
+  [package layout conventions](/tools/pub/package-layout).
+* [What not to commit](private-files)
   covers what should not be checked into a source code repository.
 * The newer library packages under the
   [dart-lang](https://github.com/dart-lang) organization tend
   to show best practices. Consider studying these examples:
-  [dart_style](https://github.com/dart-lang/dart_style),
-  [path](https://github.com/dart-lang/path),
-  [shelf](https://github.com/dart-lang/shelf),
-  [source_gen](https://github.com/dart-lang/source_gen), and
-  [test](https://github.com/dart-lang/test).
+  [dart_style,](https://github.com/dart-lang/dart_style)
+  [path,](https://github.com/dart-lang/path)
+  [shelf,](https://github.com/dart-lang/shelf)
+  [source_gen,](https://github.com/dart-lang/source_gen) and
+  [test.](https://github.com/dart-lang/test)
+
+[dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc

@@ -1,4 +1,5 @@
-typedef int Compare(Object a, Object b);
+// ignore_for_file: sort_constructors_first
+typedef Compare = int Function(Object a, Object b);
 
 class SortedCollection {
   Compare compare;
@@ -10,7 +11,7 @@ class SortedCollection {
 int sort(Object a, Object b) => 0;
 
 void main() {
-  SortedCollection coll = new SortedCollection(sort);
+  SortedCollection coll = SortedCollection(sort);
   assert(coll.compare is Function);
   assert(coll.compare is Compare);
 }

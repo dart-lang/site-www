@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('for', () {
     // #docregion for
-    var message = new StringBuffer('Dart is fun');
+    var message = StringBuffer('Dart is fun');
     for (var i = 0; i < 5; i++) {
       message.write('!');
     }

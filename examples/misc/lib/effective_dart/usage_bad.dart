@@ -1,11 +1,37 @@
-// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty, sort_constructors_first, type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps, unnecessary_getters_setters, unused_element, unused_local_variable
+// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty, sort_constructors_first, type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps, unnecessary_getters_setters, unused_element, unused_local_variable, prefer_equal_for_default_values, use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
 import 'usage_good.dart';
 
+class EnableableThing {
+  bool isEnabled;
+  EnableableThing(this.isEnabled);
+}
+
 void miscDeclAnalyzedButNotTested() {
+  {
+    // ignore_for_file: null_aware_in_condition
+    var optionalThing = EnableableThing(true);
+    // #docregion null-aware-condition
+    if (optionalThing?.isEnabled) {
+      print("Have enabled thing.");
+    }
+    // #enddocregion null-aware-condition
+  }
+
+  {
+    dynamic optionalThing;
+    // #docregion convert-null-equals
+    // If you want null to be false:
+    optionalThing?.isEnabled == true;
+
+    // If you want null to be true:
+    optionalThing?.isEnabled != false;
+    // #enddocregion convert-null-equals
+  }
+
   {
     // #docregion adjacent-strings-literals
     raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
@@ -13,7 +39,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (String name, num year, num birth) {
+  (String name, int year, int birth) {
     // #docregion string-interpolation
     'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
     // #enddocregion string-interpolation
@@ -23,22 +49,22 @@ void miscDeclAnalyzedButNotTested() {
     return
         // #docregion string-interpolation-avoid-curly
         'Hi, ${name}!'
-        "Wear your wildest ${decade}'s outfit."
+            "Wear your wildest ${decade}'s outfit."
         // #enddocregion string-interpolation-avoid-curly
         ;
   };
 
   {
     // #docregion collection-literals
-    var points = new List();
-    var addresses = new Map();
+    var points = List();
+    var addresses = Map();
     // #enddocregion collection-literals
   }
 
   {
     // #docregion generic-collection-literals
-    var points = new List<Point>();
-    var addresses = new Map<String, Address>();
+    var points = List<Point>();
+    var addresses = Map<String, Address>();
     // #enddocregion generic-collection-literals
   }
 
@@ -47,6 +73,7 @@ void miscDeclAnalyzedButNotTested() {
     if (lunchBox.length == 0) return 'so hungry...';
     if (!words.isEmpty) return words.join(' ');
     // #enddocregion dont-use-length
+    return 'foo';
   };
 
   (Iterable people) {
@@ -57,6 +84,60 @@ void miscDeclAnalyzedButNotTested() {
 
     // #enddocregion avoid-forEach
   };
+
+  {
+    // #docregion where-type
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.where((e) => e is int);
+    // #enddocregion where-type
+  }
+
+  {
+    // #docregion cast-list
+    var stuff = <dynamic>[1, 2];
+    var ints = stuff.toList().cast<int>();
+    // #enddocregion cast-list
+  }
+
+  {
+    // #docregion cast-map
+    var stuff = <dynamic>[1, 2];
+    var reciprocals = stuff.map((n) => 1 / (n as int)).cast<double>();
+    // #enddocregion cast-map
+  }
+
+  // #docregion cast-at-create
+  List<int> singletonList(int value) {
+    var list = []; // List<dynamic>.
+    list.add(value);
+    return list.cast<int>();
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  void printEvens(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    for (var n in objects.cast<int>()) {
+      if (n.isEven) print(n);
+    }
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = objects.cast<int>();
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
+
+  {
+    // #docregion where-type-2
+    var objects = [1, "a", 2, "b", 3];
+    var ints = objects.where((e) => e is int).cast<int>();
+    // #enddocregion where-type-2
+  }
 
   {
     // #docregion func-decl
@@ -91,19 +172,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion omit-types-on-locals
-    Map<int, List<Person>> groupByZip(Iterable<Person> people) {
-      Map<int, List<Person>> peopleByZip = <int, List<Person>>{};
-      for (Person person in people) {
-        peopleByZip.putIfAbsent(person.zip, () => <Person>[]);
-        peopleByZip[person.zip].add(person);
-      }
-      return peopleByZip;
-    }
-    // #enddocregion omit-types-on-locals
-  }
-
-  {
     // #docregion rethrow
     try {
       somethingRisky();
@@ -125,9 +193,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer
     Future<bool> fileContainsBear(String path) {
-      var completer = new Completer<bool>();
+      var completer = Completer<bool>();
 
-      new File(path).readAsString().then((contents) {
+      File(path).readAsString().then((contents) {
         completer.complete(contents.contains('bear'));
       });
 
@@ -135,7 +203,41 @@ void miscDeclAnalyzedButNotTested() {
     }
     // #enddocregion avoid-completer
   }
+
+  // #docregion test-future-or
+  Future<T> logValue<T>(FutureOr<T> value) async {
+    if (value is T) {
+      print(value);
+      return value;
+    } else {
+      var result = await value;
+      print(result);
+      return result;
+    }
+  }
+  // #enddocregion test-future-or
+
+  (Map<Chest, Treasure> _opened) {
+    // #docregion arrow-long
+    Treasure openChest(Chest chest, Point where) =>
+        _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
+          ..addAll(chest.contents);
+    // #enddocregion arrow-long
+  };
 }
+
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // This won't parse or compile!
+  // ShadeOfGray.alsoBlack() : black();
+}
+// #enddocregion this-dot-constructor
 
 //----------------------------------------------------------------------------
 
@@ -147,10 +249,10 @@ class BadTeam extends Team {
   // #docregion async-await
   Future<int> countActivePlayers(String teamName) {
     return downloadTeam(teamName).then((team) {
-      if (team == null) return new Future.value(0);
+      if (team == null) return Future.value(0);
 
       return team.roster.then((players) {
-        return players.map((player) => player.isActive).length;
+        return players.where((player) => player.isActive).length;
       });
     }).catchError((e) {
       log.error(e);
@@ -181,11 +283,11 @@ class LazyId {
 
 // #docregion cacl-vs-store1
 class Circle1 {
-  num radius;
-  num area;
-  num circumference;
+  double radius;
+  double area;
+  double circumference;
 
-  Circle1(num radius)
+  Circle1(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
@@ -196,18 +298,18 @@ class Circle1 {
 
 // #docregion cacl-vs-store2
 class Circle2 {
-  num _radius;
-  num get radius => _radius;
-  set radius(num value) {
+  double _radius;
+  double get radius => _radius;
+  set radius(double value) {
     _radius = value;
     _recalculate();
   }
 
-  num _area;
-  num get area => _area;
+  double _area;
+  double get area => _area;
 
-  num _circumference;
-  num get circumference => _circumference;
+  double _circumference;
+  double get circumference => _circumference;
 
   Circle2(this._radius) {
     _recalculate();
@@ -272,9 +374,9 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
-  num x, y;
-  Point(num x, num y) {
+class Point0 {
+  double x, y;
+  Point0(double x, double y) {
     this.x = x;
     this.y = y;
   }
@@ -300,14 +402,29 @@ class Point2 {
 // #enddocregion semicolon-for-empty-body
 
 //----------------------------------------------------------------------------
-// ignore_for_file: super_goes_last, strong_mode_invalid_super_invocation
+// ignore_for_file: unnecessary_const, unnecessary_new
 
-class View extends ViewBase {
-  var _children;
-  get children => _children;
-  // #docregion super-first
-  View(Style style, List children)
-      : super(style),
-        _children = children;
-  // #enddocregion super-first
+void unnecessaryNewOrConst() {
+  // #docregion no-new
+  Widget build(BuildContext context) {
+    return new Row(
+      children: [
+        new RaisedButton(
+          child: new Text('Increment'),
+        ),
+        new Text('Click!'),
+      ],
+    );
+  }
+  // #enddocregion no-new
+
+  {
+    // #docregion no-const
+    const primaryColors = const [
+      const Color("red", const [255, 0, 0]),
+      const Color("green", const [0, 255, 0]),
+      const Color("blue", const [0, 0, 255]),
+    ];
+    // #enddocregion no-const
+  }
 }

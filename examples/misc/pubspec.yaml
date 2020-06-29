@@ -1,12 +1,12 @@
 name: examples
-description: dartlang.org example code.
-version: 0.0.1
+description: dart.dev example code.
 
 environment:
-  sdk: '>=1.20.1 <2.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dev_dependencies:
-  browser: ^0.10.0 # dart-2.0: remove
-  test: ^0.12.30
-  dartlang_examples_util:
+  args: ^1.5.0
+  examples_util:
     path: ../util
+  pedantic: ^1.0.0
+  test: ^1.0.0

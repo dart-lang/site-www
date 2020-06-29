@@ -2,15 +2,17 @@
 import 'dart:io';
 // #docregion import
 // Importing core libraries
-import 'dart:async';
 import 'dart:math';
 
 // Importing libraries from external packages
 import 'package:test/test.dart';
+// #enddocregion import
+import 'package:examples_util/print_matcher.dart' as m;
+import 'package:examples/samples/spacecraft.dart';
+// #docregion import
 
 // Importing files
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
-import '../lib/samples/spacecraft.dart';
+import 'path/to/my_other_file.dart';
 // #enddocregion import
 
 Iterable flatten(Iterable it) => it.expand((e) => e is Iterable ? e : [e]);
@@ -18,8 +20,8 @@ Iterable flatten(Iterable it) => it.expand((e) => e is Iterable ? e : [e]);
 void main() {
   // oneSecond is shown in the code excerpts as 1 second, but we don't need
   // to delay the actual test execution, so we set the delay to 0.
-  const oneSecond = const Duration(seconds: 0);
-  final someDate = new DateTime(1999);
+  const oneSecond = Duration(seconds: 0);
+  final someDate = DateTime(1999);
 
   test('hello world', () {
     // #docregion hello-world
@@ -44,8 +46,8 @@ void main() {
     // #enddocregion var
 
     test('var', () {
-      expect(flybyObjects, new isInstanceOf<List>());
-      expect(image, new isInstanceOf<Map>());
+      expect(flybyObjects, TypeMatcher<List>());
+      expect(image, TypeMatcher<Map>());
       expect(
           name.length > antennaDiameter, isTrue); // avoid unused_local_variable
     });
@@ -82,11 +84,11 @@ void main() {
           ])));
     });
 
-    test('fat arrow', () {
+    test('arrow', () {
       _test() {
-        // #docregion fat-arrow
+        // #docregion arrow
         flybyObjects.where((name) => name.contains('turn')).forEach(print);
-        // #enddocregion fat-arrow
+        // #enddocregion arrow
       }
 
       expect(_test, m.prints('Saturn'));
@@ -106,54 +108,63 @@ void main() {
   });
 
   test('use class', () {
-    _test() {
+    _test1() {
       // #docregion use-class
-      var voyager = new Spacecraft('Voyager I', new DateTime(1977, 9, 5));
+      var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
       voyager.describe();
 
-      var voyager3 = new Spacecraft.unlaunched('Voyager III');
+      // #enddocregion use-class
+    }
+
+    _test2() {
+      // #docregion use-class
+      var voyager3 = Spacecraft.unlaunched('Voyager III');
       voyager3.describe();
       // #enddocregion use-class
     }
 
     expect(
-        _test,
+        _test1,
+        prints(allOf(
+          startsWith('Spacecraft: Voyager I'),
+          contains('Launched: 1977'),
+        )));
+    expect(
+        _test2,
         m.prints([
-          'Spacecraft: Voyager I',
-          'Launched: 1977 (40 years ago)',
           'Spacecraft: Voyager III',
-          'Unlaunched'
+          'Unlaunched',
         ]));
   });
 
   test('extends', () {
-    final o = new Orbiter('O', someDate, 42);
+    final o = Orbiter('O', someDate, 42);
     expect(o.launchYear, someDate.year);
   });
 
   test('mixin', () {
-    final o = new PilotedCraft('shuttle', someDate);
+    final o = PilotedCraft('shuttle', someDate);
     expect(o.launchYear, someDate.year);
     expect(o.astronauts, 1);
   });
 
   test('implements', () {
-    final o = new MockSpaceship('Enterprise');
+    final o = MockSpaceship('Enterprise');
     expect(o.describe, m.prints('Enterprise'));
   });
 
   {
     // Show declaration on first use.
     // #docregion async
-    const oneSecond = const Duration(seconds: 1);
+    const oneSecond = Duration(seconds: 1);
     // #enddocregion async
     assert(oneSecond.inSeconds == 1);
   }
 
   test('async', () {
     // #docregion async
-    Future<Null> printWithDelay(String message) async {
-      await new Future.delayed(oneSecond);
+    Future<void> printWithDelay(String message) async {
+      await Future.delayed(oneSecond);
       print(message);
     }
     // #enddocregion async
@@ -163,8 +174,8 @@ void main() {
 
   test('Future.then', () {
     // #docregion Future-then
-    Future<Null> printWithDelay(String message) {
-      return new Future.delayed(oneSecond).then((_) {
+    Future<void> printWithDelay(String message) {
+      return Future.delayed(oneSecond).then((_) {
         print(message);
       });
     }
@@ -175,7 +186,7 @@ void main() {
 
   group('await:', () {
     final testFileBase = 'test_data/fileCreationTest';
-    final testFile = new File('$testFileBase.txt');
+    final testFile = File('$testFileBase.txt');
 
     void safeDeleteTestFile() {
       if (testFile.existsSync()) testFile.deleteSync();
@@ -186,10 +197,10 @@ void main() {
 
     test('await', () {
       // #docregion await
-      Future<Null> createDescriptions(Iterable<String> objects) async {
+      Future<void> createDescriptions(Iterable<String> objects) async {
         for (var object in objects) {
           try {
-            var file = new File('$object.txt');
+            var file = File('$object.txt');
             if (await file.exists()) {
               var modified = await file.lastModified();
               print(
@@ -220,13 +231,13 @@ void main() {
   });
 
   test('async*', () async {
-    var voyager = new Spacecraft('Voyager I', new DateTime(1977, 9, 5));
+    var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
     var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 
     // #docregion async-
     Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
       for (var object in objects) {
-        await new Future.delayed(oneSecond);
+        await Future.delayed(oneSecond);
         yield '${craft.name} flies by $object';
       }
     }
@@ -239,7 +250,7 @@ void main() {
   void throwTest(int astronauts) {
     // #docregion throw
     if (astronauts == 0) {
-      throw new StateError('No astronauts.');
+      throw StateError('No astronauts.');
     }
     // #enddocregion throw
   }
@@ -254,7 +265,7 @@ void main() {
       // #docregion try
       try {
         for (var object in flybyObjects) {
-          var description = await new File('$object.txt').readAsString();
+          var description = await File('$object.txt').readAsString();
           print(description);
         }
       } on IOException catch (e) {

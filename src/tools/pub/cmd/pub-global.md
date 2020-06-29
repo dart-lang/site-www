@@ -1,11 +1,9 @@
 ---
 title: pub global
-description: Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line.
-permalink: /tools/pub/cmd/pub-global
+description: Use pub global to run Dart scripts hosted on the pub.dev site from the command line.
 ---
 
-_Global_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
@@ -15,7 +13,7 @@ After [activating a package](#activating-a-package), you can
 your list of globally available packages.
 
 For example, say you want to run
-[Stagehand](https://pub.dartlang.org/packages/stagehand)
+[Stagehand]({{site.pub}}/packages/stagehand)
 the Dart project generator, from the command line.
 
 ```terminal
@@ -23,7 +21,7 @@ $ pub global activate stagehand
 $ stagehand
 ```
 
-If this doesn't work, you may need to
+If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
@@ -35,23 +33,25 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
-You can activate packages that live on
-[pub.dartlang.org](https://pub.dartlang.org/), a Git repository,
+Activate a package when you want to be able to run
+one or more of its executable files from the command line.
+You can activate packages that live on the
+[pub.dev site]({{site.pub}}), a Git repository,
 or your local machine.
-Once you have activated a package, see [Running a
+Once you've activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
 `bin` directory.
 
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on pub.dartlang.org
+### Activating a package on the pub.dev site
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on pub.dartlang.org to activate it. For example:
+Specify a package on the pub.dev site to activate it. For example:
 
 ```terminal
 $ pub global activate markdown
@@ -101,10 +101,10 @@ you can also use `pub global run`.
 
 ### Running a script from your PATH
 
-To run a script directly from the command line, add the `bin` file
-for the [system cache](/tools/pub/glossary#system-cache) to your path.
+To run a script directly from the command line, add the [system cache][] `bin`
+directory to your `PATH` environment variable.
 
-For example, say you've activated the Stagehand script,
+For example, say you've activated the Stagehand package,
 but you still can't run the command:
 
 ```terminal
@@ -114,14 +114,14 @@ $ stagehand
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
-The following path, on macOS, includes the system cache.
+The following `PATH` variable, on macOS, includes the system cache:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
 
-If this directory is missing from your path,
+If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
 |-------------------+---------------------------|
@@ -136,7 +136,7 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ mkdir angular_project
 $ cd angular_project
 $ [!stagehand web-angular!]
@@ -168,12 +168,12 @@ If you are not a package developer, you can skip this section.
 A package can expose some of its scripts as executables
 that can be run directly from the command line. The script or scripts
 must be listed in the
-[`executables`](/tools/pub/pubspec.html#executables)
+[`executables`](/tools/pub/pubspec#executables)
 entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: helloworld
 
 executables:
@@ -254,5 +254,7 @@ For options that apply to all pub commands, see
   the new executable overwrites the previously activated executable.
 
 <aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>
+
+[system cache]: /tools/pub/glossary#system-cache

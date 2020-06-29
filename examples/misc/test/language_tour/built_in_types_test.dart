@@ -50,7 +50,7 @@ void main() {
         " works even over line breaks.";
     assert(s1 ==
         'String concatenation works even over '
-        'line breaks.');
+            'line breaks.');
 
     var s2 = 'The + operator ' + 'works, as well.';
     assert(s2 == 'The + operator works, as well.');
@@ -86,6 +86,63 @@ void main() {
     list[1] = 1;
     assert(list[1] == 1);
     // #enddocregion list-indexing
+  });
+
+  test('list-spread', () {
+    // #docregion list-spread
+    var list = [1, 2, 3];
+    var list2 = [0, ...list];
+    assert(list2.length == 4);
+    // #enddocregion list-spread
+  });
+
+  test('list-null-spread', () {
+    // #docregion list-null-spread
+    var list;
+    var list2 = [0, ...?list];
+    assert(list2.length == 1);
+    // #enddocregion list-null-spread
+  });
+
+  test('list-if', () {
+    var promoActive = false;
+    // #docregion list-if
+    var nav = [
+      'Home',
+      'Furniture',
+      'Plants',
+      if (promoActive) 'Outlet'
+    ];
+    // #enddocregion list-if
+    assert(nav.length == 3);
+  });
+
+  test('list-for', () {
+    // #docregion list-for
+    var listOfInts = [1, 2, 3];
+    var listOfStrings = [
+      '#0',
+      for (var i in listOfInts) '#$i'
+    ];
+    assert(listOfStrings[1] == '#1');
+    // #enddocregion list-for
+  });
+
+  test('set-length', () {
+    var halogens = {
+      'fluorine',
+      'chlorine',
+      'bromine',
+      'iodine',
+      'astatine'
+    };
+
+    // #docregion set-length
+    var elements = <String>{};
+    elements.add('fluorine');
+    elements.addAll(halogens);
+    assert(elements.length == 5);
+    // #enddocregion set-length
   });
 
   test('map-retrieve-item', () {

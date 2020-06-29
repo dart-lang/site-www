@@ -1,5 +1,3 @@
-// #docplaster
-
 typedef Pred0 = bool Function();
 typedef Void0 = void Function();
 
@@ -162,7 +160,9 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var text, number, urlString;
+    int number;
+    String urlString;
+    var text;
     // #docregion assert
     // Make sure the variable has a non-null value.
     assert(text != null);

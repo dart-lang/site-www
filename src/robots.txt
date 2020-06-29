@@ -1,1 +1,1 @@
-# All robots welcome!
+_shared/robots.txt

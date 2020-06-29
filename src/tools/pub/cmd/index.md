@@ -1,12 +1,12 @@
 ---
-layout: default
-permalink: /tools/pub/cmd
-title: "Pub Commands"
-description: "Pub, a package management tool for Dart, supports a variety of commands."
+title: The pub tool
+description: Pub, a package management tool for Dart, supports a variety of commands.
 ---
 
-The [pub tool](/tools/pub) has commands for managing packages
+The `pub` tool has commands for managing packages
 and for deploying packages and command-line apps.
+For general information about using the pub package manager, see
+[How to use packages](/guides/packages).
 
 {% include flutter-packages.md %}
 
@@ -17,6 +17,7 @@ Quick links to the `pub` commands:
 * [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
 * [`pub get`](/tools/pub/cmd/pub-get)
 * [`pub global`](/tools/pub/cmd/pub-global)
+* [`pub outdated`](/tools/pub/cmd/pub-outdated)
 * [`pub publish`](/tools/pub/cmd/pub-lish)
 * [`pub run`](/tools/pub/cmd/pub-run)
 * [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
@@ -67,6 +68,12 @@ or any modification of the pubspec.
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
+[`pub outdated`](/tools/pub/cmd/pub-outdated)
+: Looks at every package that the current package depends on,
+  determines which package dependencies are out of date,
+  and gives you advice on how to update them.
+  Use this command when you want to update package dependencies.
+
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
   as dependencies used by the current package. If a `pubspec.lock`
@@ -95,7 +102,7 @@ With pub you can publish packages and command-line apps.
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
-package to [pub.dartlang.org](https://pub.dartlang.org). The
+package to the [pub.dev site]({{site.pub}}). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
 users to modify and upload new versions of your package.
 

@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
-// #docplaster
 // #docregion read-from-stream
-import 'dart:async';
 // #docregion import
 import 'dart:io';
 // #enddocregion import
@@ -9,15 +7,15 @@ import 'dart:convert';
 
 // #enddocregion read-from-stream
 import 'package:test/test.dart';
-import '../../lib/library_tour/io/http_server.dart'
+import 'package:examples/library_tour/io/http_server.dart'
     as http_server;
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('readAsString, readAsLines', () async {
     // #docregion readAsString
     Future main() async {
-      var config = new File('test_data/config.txt');
+      var config = File('test_data/config.txt');
       var contents;
 
       // Put the whole file in a single string.
@@ -41,7 +39,7 @@ void main() {
   test('readAsBytes', () {
     // #docregion readAsBytes
     Future main() async {
-      var config = new File('test_data/config.txt');
+      var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
       print('The file is ${contents.length} bytes long.');
@@ -54,7 +52,7 @@ void main() {
   test('try-catch', () {
     // #docregion try-catch
     Future main() async {
-      var config = new File('does-not-exist.txt');
+      var config = File('does-not-exist.txt');
       try {
         var contents = await config.readAsString();
         print(contents);
@@ -71,17 +69,16 @@ void main() {
     expect(
         main_test_read_from_stream,
         prints(allOf([
-          contains(
-              new RegExp(r'Got \d+ characters from stream')),
+          contains(RegExp(r'Got \d+ characters from stream')),
           contains('file is now closed'),
         ])));
   });
 
   test('write-file', () async {
     // #docregion write-file
-    var logFile = new File('test_data/log.txt');
+    var logFile = File('test_data/log.txt');
     var sink = logFile.openWrite();
-    sink.write('FILE ACCESSED ${new DateTime.now()}\n');
+    sink.write('FILE ACCESSED ${DateTime.now()}\n');
     await sink.flush();
     await sink.close();
     // #enddocregion write-file
@@ -90,14 +87,14 @@ void main() {
       expect(logFile.readAsStringSync(),
           startsWith('FILE ACCESSED'));
     } finally {
-      logFile?.delete();
+      await logFile?.delete();
     }
   });
 
   test('list-dir', () {
     // #docregion list-dir
     Future main() async {
-      var dir = new Directory('test_data');
+      var dir = Directory('test_data');
 
       try {
         var dirList = dir.list();
@@ -121,10 +118,10 @@ void main() {
     // #docregion client
     Future main() async {
       var url = Uri.parse('http://localhost:8888/dart');
-      var httpClient = new HttpClient();
+      var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
       var response = await request.close();
-      var data = await response.transform(utf8.decoder).toList();
+      var data = await utf8.decoder.bind(response).toList();
       print('Response ${response.statusCode}: $data');
       httpClient.close();
     }
@@ -150,13 +147,12 @@ void main() {
 
 // #docregion read-from-stream
 Future main_test_read_from_stream() async {
-  var config = new File('test_data/config.txt');
+  var config = File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
-  var lines = inputStream
-      .transform(utf8.decoder)
-      .transform(new LineSplitter());
+  var lines =
+      utf8.decoder.bind(inputStream).transform(LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -172,9 +168,9 @@ Future main_test_read_from_stream() async {
 /// No tests below this point. Excerpts only illustrate declarations.
 void miscDeclAnalyzedButNotTested() {
   {
-    var logFile = new File('test_data/log.txt');
+    var logFile = File('test_data/log.txt');
     // #docregion append
-    var sink = logFile.openWrite(mode: FileMode.APPEND);
+    var sink = logFile.openWrite(mode: FileMode.append);
     // #enddocregion append
     sink.close();
   }

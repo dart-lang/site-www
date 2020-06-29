@@ -6,12 +6,11 @@
 // Use the URL localhost:4040 in your browser.
 // #docregion
 import 'dart:io';
-import 'dart:async';
 
 Future main() async {
   // #docregion bind
   var server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4040,
   );
   // #enddocregion bind
@@ -19,9 +18,8 @@ Future main() async {
 
   // #docregion listen
   await for (HttpRequest request in server) {
-    request.response
-      ..write('Hello, world!')
-      ..close();
+    request.response.write('Hello, world!');
+    await request.response.close();
   }
   // #enddocregion listen
 }

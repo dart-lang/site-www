@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -13,6 +13,17 @@ Func1<bool, dynamic> canHandle, verifyResult;
 
 void miscDeclAnalyzedButNotTested() {
   {
+    dynamic optionalThing;
+    // #docregion convert-null-aware
+    // If you want null to be false:
+    optionalThing?.isEnabled ?? false;
+
+    // If you want null to be true:
+    optionalThing?.isEnabled ?? true;
+    // #enddocregion convert-null-aware
+  }
+
+  {
     // #docregion adjacent-strings-literals
     raiseAlarm(
         'ERROR: Parts of the spaceship are on fire. Other '
@@ -20,7 +31,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion adjacent-strings-literals
   }
 
-  (String name, num year, num birth) {
+  (String name, int year, int birth) {
     // #docregion string-interpolation
     'Hello, $name! You are ${year - birth} years old.';
     // #enddocregion string-interpolation
@@ -30,8 +41,8 @@ void miscDeclAnalyzedButNotTested() {
     return
         // #docregion string-interpolation-avoid-curly
         'Hi, $name!'
-        "Wear your wildest $decade's outfit."
-        'Wear your wildest ${decade}s outfit.'
+            "Wear your wildest $decade's outfit."
+            'Wear your wildest ${decade}s outfit.'
         // #enddocregion string-interpolation-avoid-curly
         ;
   };
@@ -55,7 +66,48 @@ void miscDeclAnalyzedButNotTested() {
     if (lunchBox.isEmpty) return 'so hungry...';
     if (words.isNotEmpty) return words.join(' ');
     // #enddocregion dont-use-length
+    return 'foo';
   };
+
+  {
+    // #docregion cast-list
+    var stuff = <dynamic>[1, 2];
+    var ints = List<int>.from(stuff);
+    // #enddocregion cast-list
+  }
+
+  {
+    // #docregion cast-map
+    var stuff = <dynamic>[1, 2];
+    var reciprocals = stuff.map<double>((n) => 1 / (n as int));
+    // #enddocregion cast-map
+  }
+
+  // #docregion cast-at-create
+  List<int> singletonList(int value) {
+    var list = <int>[];
+    list.add(value);
+    return list;
+  }
+  // #enddocregion cast-at-create
+
+  // #docregion cast-iterate
+  void printEvens(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    for (var n in objects) {
+      if ((n as int).isEven) print(n);
+    }
+  }
+  // #enddocregion cast-iterate
+
+  // #docregion cast-from
+  int median(List<Object> objects) {
+    // We happen to know the list only contains ints.
+    var ints = List<int>.from(objects);
+    ints.sort();
+    return ints[ints.length ~/ 2];
+  }
+  // #enddocregion cast-from
 
   (Iterable<Animal> animals) {
     // #docregion use-higher-order-func
@@ -107,19 +159,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion omit-types-on-locals
-    Map<int, List<Person>> groupByZip(Iterable<Person> people) {
-      var peopleByZip = <int, List<Person>>{};
-      for (var person in people) {
-        peopleByZip.putIfAbsent(person.zip, () => <Person>[]);
-        peopleByZip[person.zip].add(person);
-      }
-      return peopleByZip;
-    }
-    // #enddocregion omit-types-on-locals
-  }
-
-  {
     // #docregion rethrow
     try {
       somethingRisky();
@@ -156,20 +195,43 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion avoid-completer
     Future<bool> fileContainsBear(String path) {
-      return new File(path).readAsString().then((contents) {
+      return File(path).readAsString().then((contents) {
         return contents.contains('bear');
       });
     }
     // #enddocregion avoid-completer
   }
 
+  // #docregion test-future-or
+  Future<T> logValue<T>(FutureOr<T> value) async {
+    if (value is Future<T>) {
+      var result = await value;
+      print(result);
+      return result;
+    } else {
+      print(value);
+      return value as T;
+    }
+  }
+  // #enddocregion test-future-or
+
   {
     // #docregion avoid-completer-alt
     Future<bool> fileContainsBear(String path) async {
-      var contents = await new File(path).readAsString();
+      var contents = await File(path).readAsString();
       return contents.contains('bear');
     }
     // #enddocregion avoid-completer-alt
+  }
+
+  {
+    // #docregion no-const
+    const primaryColors = [
+      Color("red", [255, 0, 0]),
+      Color("green", [0, 255, 0]),
+      Color("blue", [0, 0, 255]),
+    ];
+    // #enddocregion no-const
   }
 }
 
@@ -184,6 +246,10 @@ class Animal {
 
 class Person {
   int zip;
+}
+
+class Color {
+  const Color(String name, List<int> channels);
 }
 
 //----------------------------------------------------------------------------
@@ -204,7 +270,7 @@ class Team {
       if (team == null) return 0;
 
       var players = await team.roster;
-      return players.map((player) => player.isActive).length;
+      return players.where((player) => player.isActive).length;
     } catch (e) {
       log.error(e);
       return 0;
@@ -234,12 +300,12 @@ class LazyId {
 
 // #docregion cacl-vs-store
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 // #enddocregion cacl-vs-store
 
@@ -261,14 +327,46 @@ class Box1 {
 
 //----------------------------------------------------------------------------
 
+class Chest {
+  List<String> get contents => null;
+}
+
+class Treasure {
+  Treasure(Point where);
+
+  void addAll(List<String> what) {}
+}
+
 class C {
-  int left, right, minTime;
-  Iterable getValues() => [];
+  double left, right, top, bottom, minTime;
+  Point center;
+  Map<Chest, Treasure> _opened;
+
   // #docregion use-arrow
-  get width => right - left;
-  bool ready(num time) => minTime == null || minTime <= time;
-  containsValue(String value) => getValues().contains(value);
-// #enddocregion use-arrow
+  double get area => (right - left) * (bottom - top);
+
+  bool isReady(double time) =>
+      minTime == null || minTime <= time;
+
+  String capitalize(String name) =>
+      '${name[0].toUpperCase()}${name.substring(1)}';
+  // #enddocregion use-arrow
+
+  // #docregion arrow-setter
+  num get x => center.x;
+  set x(num value) => center = Point(value, center.y);
+  // #enddocregion arrow-setter
+
+  // #docregion arrow-long
+  Treasure openChest(Chest chest, Point where) {
+    if (_opened.containsKey(chest)) return null;
+
+    var treasure = Treasure(where);
+    treasure.addAll(chest.contents);
+    _opened[chest] = treasure;
+    return treasure;
+  }
+  // #enddocregion arrow-long
 }
 
 //----------------------------------------------------------------------------
@@ -286,6 +384,21 @@ class Box2 {
   }
 }
 // #enddocregion this-dot
+
+//----------------------------------------------------------------------------
+
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // But now it will!
+  ShadeOfGray.alsoBlack() : this.black();
+}
+// #enddocregion this-dot-constructor
 
 //----------------------------------------------------------------------------
 
@@ -320,9 +433,9 @@ class Folder {
 //----------------------------------------------------------------------------
 
 // #docregion field-init-as-param
-class Point {
-  num x, y;
-  Point(this.x, this.y);
+class Point0 {
+  double x, y;
+  Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
 
@@ -330,7 +443,7 @@ class Point {
 
 // #docregion dont-type-init-formals
 class Point1 {
-  int x, y;
+  double x, y;
   Point1(this.x, this.y);
 }
 // #enddocregion dont-type-init-formals
@@ -339,10 +452,39 @@ class Point1 {
 
 // #docregion semicolon-for-empty-body
 class Point2 {
-  int x, y;
+  double x, y;
   Point2(this.x, this.y);
 }
 // #enddocregion semicolon-for-empty-body
+
+class Widget {}
+
+class BuildContext {}
+
+class Row extends Widget {
+  Row({children});
+}
+
+class RaisedButton {
+  RaisedButton({child});
+}
+
+class Text {
+  Text(String text);
+}
+
+// #docregion no-new
+Widget build(BuildContext context) {
+  return Row(
+    children: [
+      RaisedButton(
+        child: Text('Increment'),
+      ),
+      Text('Click!'),
+    ],
+  );
+}
+// #enddocregion no-new
 
 //----------------------------------------------------------------------------
 

@@ -1,12 +1,10 @@
 ---
 title: pub cache
 description: Use pub cache to manage your system cache.
-permalink: /tools/pub/cmd/pub-cache
 toc: false
 ---
 
-_Cache_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 ```
 $ pub cache add <package> [--version <constraint>] [--all]
@@ -36,7 +34,7 @@ matching versions of a library.</dd>
 <dd>Optional. Use with <code>pub add</code> to install the best
 version matching the specified constraint. For example:
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub cache add barback --version "<=0.8.0 <0.110"
 {% endprettify %}
 
@@ -45,10 +43,10 @@ versions.</dd>
 
 <dt><code>repair</code></dt>
 <dd>It's possible for packages in your pub cache to change or break.
-For example, if you follow a symlink in the <code>packages</code> directory
-and modify a package, this affects the canonical copy of that package in
-the system cache. The <code>pub cache repair</code> command performs a clean
-reinstall of all hosted and git packages in the system cache.</dd>
+For example, some editors make it easy to find implementation files for
+packages in the pub cache, and you might accidentally edit one of those files.
+The <code>pub cache repair</code> command performs a clean reinstall of all
+hosted and git packages in the system cache.</dd>
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

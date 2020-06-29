@@ -8,8 +8,7 @@ prevpage:
   url: /guides/language/effective-dart
   title: Overview
 ---
-
-{% include effective-dart-banner.html %}
+<?code-excerpt plaster="none"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
@@ -17,9 +16,6 @@ advantage of the powerful pattern-matching hardware most of us have in our
 ocular systems.  If we use a consistent style across the entire Dart ecosystem,
 it makes it easier for all of us to learn from and contribute to each others'
 code.
-
-* TOC
-{:toc}
 
 ## Identifiers
 
@@ -37,24 +33,26 @@ Identifiers come in three flavors in Dart.
 
 ### DO name types using `UpperCamelCase`.
 
+{% include linter-rule.html rule="camel_case_types" %}
+
 Classes, enums, typedefs, and type parameters should capitalize the first letter
 of each word (including the first word), and use no separators.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class SliderMenu { ... }
 
 class HttpRequest { ... }
 
-typedef bool Predicate<T>(T value);
+typedef Predicate<T> = bool Function(T value);
 {% endprettify %}
 
 This even includes classes intended to be used in metadata annotations.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Foo {
   const Foo([arg]);
 }
@@ -69,17 +67,47 @@ class B { ... }
 If the annotation class's constructor takes no parameters, you might want to
 create a separate `lowerCamelCase` constant for it.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
-{% prettify dart %}
-const foo = const Foo();
+{% prettify dart tag=pre+code %}
+const foo = Foo();
 
 @foo
 class C { ... }
 {% endprettify %}
 
+[camel_case_types]: https://dart-lang.github.io/linter/lints/camel_case_types.html
+[Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
-### DO name libraries and source files using `lowercase_with_underscores`.
+### DO name extensions using `UpperCamelCase`.
+
+{% include linter-rule.html rule="camel_case_extensions" %}
+
+Like types, extensions should capitalize the first letter of each word
+(including the first word), 
+and use no separators.
+
+{:.good}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
+{% prettify dart tag=pre+code %}
+extension MyFancyList<T> on List<T> { ... }
+
+extension SmartIterable<T> on Iterable<T> { ... }
+{% endprettify %}
+
+{{site.alert.version-note}}
+  Extensions are a Dart 2.7 language feature.
+  For details, see the [extensions design document.][]
+{{site.alert.end}}
+
+[extensions design document.]: https://github.com/dart-lang/language/blob/master/accepted/2.6/static-extension-members/feature-specification.md#dart-static-extension-methods-design
+
+### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
+
+{% include linter-rule.html rule1="library_names" rule2="file_names" %}
+<!-- source for rules (update these if you update the guideline):
+https://github.com/dart-lang/linter/blob/master/lib/src/rules/library_names.dart
+https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -87,18 +115,18 @@ in that form. Using underscores as the separator ensures that the name is still
 a valid Dart identifier, which may be helpful if the language later supports
 symbolic imports.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library peg_parser.source_scanner;
 
 import 'file_system.dart';
 import 'slider_menu.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library pegparser.SourceScanner;
 
 import 'file-system.dart';
@@ -113,18 +141,20 @@ import 'SliderMenu.dart';
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
-{:.good-style}
+{% include linter-rule.html rule="library_prefixes" %}
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' as math;
 import 'package:angular_components/angular_components'
     as angular_components;
 import 'package:js/js.dart' as js;
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' as Math;
 import 'package:angular_components/angular_components'
     as angularComponents;
@@ -134,13 +164,15 @@ import 'package:js/js.dart' as JS;
 
 ### DO name other identifiers using `lowerCamelCase`.
 
+{% include linter-rule.html rule="non_constant_identifier_names" %}
+
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
 word, and use no separators.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (misc-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var item;
 
 HttpRequest httpRequest;
@@ -153,37 +185,44 @@ void align(bool clearItems) {
 
 ### PREFER using `lowerCamelCase` for constant names.
 
-In new code, use `lowerCamelCase` for constant variables, including enum values.
-In existing code that uses `SCREAMING_CAPS`, you may continue to use all caps to
-stay consistent.
+{% include linter-rule.html rule="constant_identifier_names" %}
 
-{:.good-style}
+In new code, use `lowerCamelCase` for constant variables, including enum values.
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const pi = 3.14;
 const defaultTimeout = 1000;
-final urlScheme = new RegExp('^([a-z]+):');
+final urlScheme = RegExp('^([a-z]+):');
 
 class Dice {
-  static final numberGenerator = new Random();
+  static final numberGenerator = Random();
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const PI = 3.14;
-const kDefaultTimeout = 1000;
-final URL_SCHEME = new RegExp('^([a-z]+):');
+const DefaultTimeout = 1000;
+final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
-  static final NUMBER_GENERATOR = new Random();
+  static final NUMBER_GENERATOR = Random();
 }
 {% endprettify %}
+
+You may use `SCREAMING_CAPS` for consistency with existing code,
+as in the following cases:
+
+* When adding code to a file or library that already uses `SCREAMING_CAPS`.
+* When generating Dart code that's parallel to Java code —
+  for example, in enumerated types generated from [protobufs.][]
 
 <aside class="alert alert-info" markdown="1">
   **Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
-  changed because:
+  changed for a few reasons:
 
   *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
       things like CSS colors.
@@ -192,6 +231,8 @@ class Dice {
   *   The `values` property automatically defined on an enum type is const and
       lowercase.
 </aside>
+
+[protobufs.]: {{site.pub-pkg}}/protobuf
 
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words.
@@ -205,9 +246,9 @@ To avoid this, acronyms and abbreviations are capitalized like regular words,
 except for two-letter acronyms. (Two-letter *abbreviations* like
 ID and Mr. are still capitalized like words.)
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 HttpConnectionInfo
 uiHandler
 IOStream
@@ -216,8 +257,8 @@ Id
 DB
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 HTTPConnection
 UiHandler
 IoStream
@@ -227,17 +268,58 @@ Db
 {% endprettify %}
 
 
+### DON'T use a leading underscore for identifiers that aren't private.
+
+Dart uses a leading underscore in an identifier to mark members and top-level
+declarations as private. This trains users to associate a leading underscore
+with one of those kinds of declarations. They see "_" and think "private".
+
+There is no concept of "private" for local variables, parameters, or library
+prefixes. When one of those has a name that starts with an underscore, it sends
+a confusing signal to the reader. To avoid that, don't use leading underscores
+in those names.
+
+**Exception:** An unused parameter can be named `_`, `__`, `___`, etc. This
+happens in things like callbacks where you are passed a value but you don't need
+to use it. Giving it a name that consists *solely* of underscores is the
+idiomatic way to indicate the value isn't used.
+
+
+### DON'T use prefix letters.
+
+[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation) and
+other schemes arose in the time of BCPL, when the compiler didn't do much to
+help you understand your code. Because Dart can tell you the type, scope,
+mutability, and other properties of your declarations, there's no reason to
+encode those properties in identifier names.
+
+{:.good}
+{% prettify dart tag=pre+code %}
+defaultTimeout
+{% endprettify %}
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+kDefaultTimeout
+{% endprettify %}
+
+
 ## Ordering
 
 To keep the preamble of your file tidy, we have a prescribed order that
 directives should appear in. Each "section" should be separated by a blank line.
 
+A single linter rule handles all the ordering guidelines:
+[directives_ordering.]({{ site.lints }}/directives_ordering.html)
+
 
 ### DO place "dart:" imports before other imports.
 
-{:.good-style}
+{% include linter-rule.html rule="directives_ordering" %}
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 import 'dart:html';
 
@@ -248,9 +330,11 @@ import 'package:foo/foo.dart';
 
 ### DO place "package:" imports before relative imports.
 
-{:.good-style}
+{% include linter-rule.html rule="directives_ordering" %}
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
@@ -258,35 +342,22 @@ import 'util.dart';
 {% endprettify %}
 
 
-### PREFER placing "third-party" "package:" imports before other imports.
-
-If you have a number of "package:" imports for your own package along with other
-third-party packages, place yours in a separate section after the external ones.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
-{% prettify dart %}
-import 'package:bar/bar.dart';
-import 'package:foo/foo.dart';
-
-import 'package:my_package/util.dart';
-{% endprettify %}
-
-
 ### DO specify exports in a separate section after all imports.
 
-{:.good-style}
+{% include linter-rule.html rule="directives_ordering" %}
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'src/error.dart';
 import 'src/foo_bar.dart';
 
 export 'src/error.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (export)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'src/error.dart';
 export 'src/error.dart';
 import 'src/foo_bar.dart';
@@ -295,9 +366,11 @@ import 'src/foo_bar.dart';
 
 ### DO sort sections alphabetically.
 
-{:.good-style}
+{% include linter-rule.html rule="directives_ordering" %}
+
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
@@ -305,9 +378,9 @@ import 'foo.dart';
 import 'foo/foo.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:foo/foo.dart';
 import 'package:bar/bar.dart';
 
@@ -327,15 +400,15 @@ way the compiler does.
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
-sophisticated automated code formatter called [dartfmt][] that does do it for
-you. The official whitespace-handling rules for Dart are *whatever
-[dartfmt][] produces*.
+sophisticated automated code formatter called [dartfmt][] that does it for
+you. We have [some documentation][dartfmt docs] on the rules it applies, but the
+official whitespace-handling rules for Dart are *whatever dartfmt produces*.
 
 The remaining formatting guidelines are for the few things dartfmt cannot fix
 for you.
 
 [dartfmt]: https://github.com/dart-lang/dart_style
-
+[dartfmt docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly.
 
@@ -354,6 +427,8 @@ produce beautiful code.
 
 ### AVOID lines longer than 80 characters.
 
+{% include linter-rule.html rule="lines_longer_than_80_chars" %}
+
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
 why newspapers and magazines use multiple columns of text.
@@ -368,21 +443,25 @@ Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
 split long string literals to fit in 80 columns, so you have to do that
 manually.
 
-We make an exception for URIs and file paths. When those occur in comments or
-strings (usually in imports and exports), they may remain on a single line even
-if they go over the line limit. This makes it easier to search source files for
-a given path.
+**Exception:** When a URI or file path occurs in a comment or string (usually in
+an import or export), it may remain whole even if it causes the line to go over
+80 characters. This makes it easier to search source files for a path.
 
+**Exception:** Multi-line strings can contain lines longer than 80 characters
+because newlines are significant inside the string and splitting the lines into
+shorter ones can alter the program.
 
-### DO use curly braces for all flow control structures.
+### DO use curly braces for all flow control statements. {#do-use-curly-braces-for-all-flow-control-structures}
+
+{% include linter-rule.html rule="curly_braces_in_flow_control_structures" %}
 
 Doing so avoids the [dangling else][] problem.
 
-[dangling else]: http://en.wikipedia.org/wiki/Dangling_else
+[dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (isWeekDay) {
   print('Bike to work!');
 } else {
@@ -390,29 +469,28 @@ if (isWeekDay) {
 }
 {% endprettify %}
 
-There is one exception to this: an `if` statement with no `else` clause where
-the entire `if` statement and the then body all fit in one line. In that case,
-you may leave off the braces if you prefer:
+**Exception:** When you have an `if` statement with no `else` clause and the
+whole `if` statement fits on one line, you can omit the braces if you prefer:
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (arg == null) return defaultValue;
 {% endprettify %}
 
 If the body wraps to the next line, though, use braces:
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-wrap)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars) {
   return overflowChars < other.overflowChars;
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (one-line-if-wrap)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars)
   return overflowChars < other.overflowChars;
 {% endprettify %}

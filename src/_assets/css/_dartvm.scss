@@ -1,0 +1,17 @@
+#stable,
+#beta,
+#dev {
+  tbody {
+    tr {
+      @include transition();
+      &.hidden {
+        display:none;
+      }
+      // &:not(.hidden):nth-child(even) {
+      //   td {
+      //     background-color: $gray-lighter;
+      //   }
+      // }
+    }
+  }
+}

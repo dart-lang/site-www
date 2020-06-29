@@ -1,16 +1,11 @@
 ---
-layout: guide
-title: "Effective Dart"
-description: "Best practices for building consistent, maintainable, efficient Dart libraries."
+title: Effective Dart
+description: Best practices for building consistent, maintainable, efficient Dart libraries.
 permalink: /guides/language/effective-dart
-toc: true
-
 nextpage:
   url: /guides/language/effective-dart/style
-  title: "Style"
+  title: Style
 ---
-
-{% include effective-dart-banner.html %}
 
 Over the past several years, we've written a ton of Dart code and learned a lot
 about what works well and what doesn't. We're sharing this with you so you can
@@ -38,13 +33,26 @@ write consistent, robust, fast code too. There are two overarching themes:
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
+The Dart analyzer has a linter to help you write good, consistent code.
+If a linter rule exists that can help you follow a guideline,
+then the guideline links to that rule. Here's an example:
+
+{% include linter-rule.html rule="prefer_collection_literals" %}
+
+For help on
+[enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
+see the documentation for
+[customizing static analysis](/guides/language/analysis-options).
+
+
 ## The guides
 
 We split the guidelines into a few separate pages for easy digestion:
 
-  * **[Style Guide][]** &ndash; This defines the rules we use to format our
-    code&mdash;the same rules [dartfmt] implements. It also specifies how
-    identifiers are formatted: `camelCase`, `using_underscores`, etc.
+  * **[Style Guide][]** &ndash; This defines the rules for laying out and
+    organizing code, or at least the parts that [dartfmt] doesn't handle for
+    you. The style guide also specifies how identifiers are formatted:
+    `camelCase`, `using_underscores`, etc.
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
     know about what goes inside comments. Both doc comments and regular,
@@ -67,8 +75,8 @@ For links to all the guidelines, see the
   **Have feedback on the guides?** <br>
   Please create a [new issue][] or comment on one of our [existing issues][].
 
-  [new issue]: {{site.repo}}/issues/new
-  [existing issues]: {{site.repo}}/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
+  [new issue]: {{site.repo.this}}/issues/new
+  [existing issues]: {{site.repo.this}}/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
 </aside>
 {% endcomment %}
 
@@ -99,6 +107,10 @@ Each guideline starts with one of these words:
 
 * **CONSIDER** guidelines are practices that you might or might not want to
   follow, depending on circumstances, precedents, and your own preference.
+
+Some guidelines describe an **exception** where the rule does *not* apply. When
+listed, the exceptions may not be exhaustive&mdash;you might still need to use
+your judgement on other cases.
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here

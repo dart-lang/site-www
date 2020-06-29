@@ -1,13 +1,13 @@
-// ignore_for_file: constant_identifier_names, non_constant_identifier_names, type_annotate_public_apis
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, type_annotate_public_apis, curly_braces_in_flow_control_structures
 import 'dart:math';
 
 // #docregion const-names
 const PI = 3.14;
-const kDefaultTimeout = 1000;
-final URL_SCHEME = new RegExp('^([a-z]+):');
+const DefaultTimeout = 1000;
+final URL_SCHEME = RegExp('^([a-z]+):');
 
 class Dice {
-  static final NUMBER_GENERATOR = new Random();
+  static final NUMBER_GENERATOR = Random();
 }
 // #enddocregion const-names
 

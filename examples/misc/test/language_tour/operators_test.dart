@@ -1,7 +1,6 @@
-// #docplaster
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
-import 'package:dartlang_examples_util/print_matcher.dart' as m;
+import 'package:examples_util/print_matcher.dart' as m;
 
 class T {}
 
@@ -41,7 +40,7 @@ void main() {
     assert(5 ~/ 2 == 2); // Result is an int
     assert(5 % 2 == 1); // Remainder
 
-    assert('5/2 = ${5~/2} r ${5%2}' == '5/2 = 2 r 1');
+    assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
     // #enddocregion arithmetic
   });
 
@@ -181,7 +180,7 @@ void main() {
 
     // #enddocregion if-null-alt
     final funcs = [playerName1, playerName2, playerName3];
-    expect(funcs.map((f) => f(null)), new List.filled(3, 'Guest'));
-    expect(funcs.map((f) => f('Alice')), new List.filled(3, 'Alice'));
+    expect(funcs.map((f) => f(null)), List.filled(3, 'Guest'));
+    expect(funcs.map((f) => f('Alice')), List.filled(3, 'Alice'));
   });
 }

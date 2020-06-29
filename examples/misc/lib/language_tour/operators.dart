@@ -1,5 +1,4 @@
 // ignore_for_file: unused_local_variable, one_member_abstracts
-// #docplaster
 
 void miscDeclAnalyzedButNotTested() {
   (bool done, int col) {
@@ -19,10 +18,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion nested-cascades
-    final addressBook = (new AddressBookBuilder()
+    final addressBook = (AddressBookBuilder()
           ..name = 'jenny'
           ..email = 'jenny@example.com'
-          ..phone = (new PhoneNumberBuilder()
+          ..phone = (PhoneNumberBuilder()
                 ..number = '415-555-0100'
                 ..label = 'home')
               .build())
@@ -32,7 +31,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion cannot-cascade-on-void
-    var sb = new StringBuffer();
+    var sb = StringBuffer();
     sb.write('foo')
         // #enddocregion cannot-cascade-on-void
         /*

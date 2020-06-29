@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 // #docregion class
 class Spacecraft {
   String name;
@@ -18,10 +19,9 @@ class Spacecraft {
   void describe() {
     print('Spacecraft: $name');
     if (launchDate != null) {
-      int years = new DateTime.now()
-              .difference(launchDate)
-              .inDays ~/
-          365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/
+              365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
@@ -32,7 +32,7 @@ class Spacecraft {
 
 // #docregion extends
 class Orbiter extends Spacecraft {
-  num altitude;
+  double altitude;
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }

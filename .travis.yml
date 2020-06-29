@@ -1,5 +1,5 @@
 language: dart
-dart: dev
+dart: [stable, beta, dev]
 
 cache:
   timeout: 300
@@ -15,43 +15,36 @@ env:
     - JEKYLL_ENV=production
     - TZ=US/Pacific # normalize build timestamp
   matrix:
-    - TASK="./scripts/check-code.sh"
-    - TASK="./scripts/analyze-and-test-examples.sh --get"
-    - TASK="bundle exec jekyll build"
+    - TASK="./tool/build.sh --check-links"
+    - TASK="./tool/check-code.sh"
+    - TASK="./tool/analyze-and-test-examples.sh"
 
 matrix:
-  # Once we start building under stable again, reactivate the following exclusion:
-  # exclude:
-  #   - env: TASK="bundle exec jekyll build"
-  #     dart: dev
-
+  allow_failures:
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: beta
+    - env: TASK="./tool/analyze-and-test-examples.sh"
+      dart: dev
+    
 before_install:
-  - source ./scripts/env-set.sh
-  - ./scripts/before-install.sh
+  - source ./tool/env-set.sh
+  - ./tool/before-install.sh
 
 install:
-  - ./scripts/install.sh
-  - ./scripts/write-ci-info.sh -v
+  - ./tool/install.sh
+  - ./tool/shared/write-ci-info.sh -v
 
-script:
-  - $TASK
-
-after_script:
-  # Just FYI test. Won't fail the build if it has errors.
-  - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
-  - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
-  # # Checks for bad HTML, broken links, and forces build to fail if it fails.
-  # # (By default, Travis doesn't fail builds after deployment.)
-  # - "./deploy/html_proof.rb || travis_terminate 1"
+script: $TASK
 
 deploy:
   - provider: script
-    script: ./deploy/deploy-firebase.sh dev
+    script: ./tool/shared/deploy.sh --robots ok default
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
       branch: master
-      condition: $TASK == *build*
+      condition: $TASK == *tool/build.sh* && $TRAVIS_DART_VERSION == stable && $TRAVIS_EVENT_TYPE == push
+
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
   only: [master, /^\d\.x$/, /^\d-dev$/, /travis-build/]

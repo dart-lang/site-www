@@ -1,19 +1,24 @@
 // ignore_for_file: unused_local_variable, type_annotate_public_apis
-// #docplaster
 
 void miscDeclAnalyzedButNotTested() {
   {
     // #docregion integer-literals
-    int x = 1;
-    int hex = 0xDEADBEEF;
+    var x = 1;
+    var hex = 0xDEADBEEF;
     // #enddocregion integer-literals
   }
 
   {
     // #docregion double-literals
-    double y = 1.1;
-    double exponents = 1.42e5;
+    var y = 1.1;
+    var exponents = 1.42e5;
     // #enddocregion double-literals
+  }
+
+  {
+    // #docregion int-to-double
+    double z = 1; // Equivalent to double z = 1.0.
+    // #enddocregion int-to-double
   }
 
   {
@@ -35,7 +40,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion raw-strings
-    var s = r"In a raw string, even \n isn't special.";
+    var s = r'In a raw string, not even \n gets special treatment.';
     // #enddocregion raw-strings
   }
 
@@ -50,7 +55,7 @@ void miscDeclAnalyzedButNotTested() {
     var aNum = 0;
     var aBool = true;
     var aString = 'a string';
-    const aConstList = const [1, 2, 3];
+    const aConstList = [1, 2, 3];
 
     const validConstString = '$aConstNum $aConstBool $aConstString';
     // const invalidConstString = '$aNum $aBool $aString $aConstList';
@@ -89,6 +94,37 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion set-literal
+    var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+    // #enddocregion set-literal
+
+    // #docregion set-vs-map
+    var names = <String>{};
+    // Set<String> names = {}; // This works, too.
+    // var names = {}; // Creates a map, not a set.
+    // #enddocregion set-vs-map
+
+    // #docregion set-add-items
+    var elements = <String>{};
+    elements.add('fluorine');
+    elements.addAll(halogens);
+    // #enddocregion set-add-items
+  }
+
+  {
+    // #docregion const-set
+    final constantSet = const {
+      'fluorine',
+      'chlorine',
+      'bromine',
+      'iodine',
+      'astatine',
+    };
+    // constantSet.add('helium'); // Uncommenting this causes an error.
+    // #enddocregion const-set
+  }
+
+  {
     // #docregion map-literal
     var gifts = {
       // Key:    Value
@@ -107,12 +143,12 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion map-constructor
-    var gifts = new Map();
+    var gifts = Map();
     gifts['first'] = 'partridge';
     gifts['second'] = 'turtledoves';
     gifts['fifth'] = 'golden rings';
 
-    var nobleGases = new Map();
+    var nobleGases = Map();
     nobleGases[2] = 'helium';
     nobleGases[10] = 'neon';
     nobleGases[18] = 'argon';
@@ -149,21 +185,6 @@ var s2 = """This is also a
 multi-line string.""";
 // #enddocregion triple-quotes
 
-class RunesExample {
-  // #docregion runes
-  void main() {
-    var clapping = '\u{1f44f}';
-    print(clapping);
-    print(clapping.codeUnits);
-    print(clapping.runes.toList());
-
-    Runes input = new Runes(
-        '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-    print(new String.fromCharCodes(input));
-  }
-// #enddocregion runes
-}
-
 class SymbolExampleNotUsedYet {
   // #docregion symbols
   // MOVE TO library tour?
@@ -172,8 +193,8 @@ class SymbolExampleNotUsedYet {
     print(Function.apply(int.parse, ['11']));
     print(Function.apply(int.parse, ['11'], {#radix: 16}));
     print(Function.apply(int.parse, ['11a'], {#onError: handleError}));
-    print(Function
-        .apply(int.parse, ['11a'], {#radix: 16, #onError: handleError}));
+    print(Function.apply(
+        int.parse, ['11a'], {#radix: 16, #onError: handleError}));
   }
 
   int handleError(String source) {

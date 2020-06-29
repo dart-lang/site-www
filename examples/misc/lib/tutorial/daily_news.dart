@@ -1,12 +1,8 @@
 // ignore_for_file: type_annotate_public_apis, unused_element
-// #docplaster
 // #docregion main-async, main-future-api
 // Copyright (c) 2013, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
-import 'dart:async';
-
 // #enddocregion main-async, main-future-api
 
 // The three versions of "print daily news" are next.
@@ -17,23 +13,25 @@ import 'dart:async';
 
 // #docregion sync
 // Synchronous code
-_printDailyNewsDigestSync() {
-  String news = _gatherNewsReportsSync(); // Can take a while.
-  print(news);
+void _printDailyNewsDigestSync() {
+  var newsDigest = _gatherNewsReportsSync(); // Can take a while.
+  print(newsDigest);
 }
 // #enddocregion sync
 
 // #docregion main-async
-Future _printDailyNewsDigestAsync() async {
-  String news = await _gatherNewsReportsAsync();
-  print(news);
+Future<void> _printDailyNewsDigestAsync() async {
+  var newsDigest = await _gatherNewsReportsAsync();
+  print(newsDigest);
 }
 // #enddocregion main-async
 
 // #docregion main-future-api
-_printDailyNewsDigestAsyncUsingFutureAPI() {
+Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
   final future = _gatherNewsReportsAsync();
-  future.then((news) => print(news));
+  return future.then(print);
+  // You don't *have* to return the future here.
+  // But if you don't, callers can't await it.
 }
 // #enddocregion main-future-api
 
@@ -78,24 +76,23 @@ _printBaseballScore() {
 }
 
 const news = '<gathered news goes here>';
-Duration oneSecond = const Duration(seconds: 1);
+Duration oneSecond = Duration(seconds: 1);
 
 // #enddocregion main-async, main-future-api
 String _gatherNewsReportsSync() => news;
 
 // #docregion main-async, main-future-api
-final newsStream = new Stream<String>.periodic(oneSecond, (_) => news);
-
 // Imagine that this function is more complex and slow. :)
-Future<String> _gatherNewsReportsAsync() => newsStream.first;
+Future<String> _gatherNewsReportsAsync() =>
+    Future.delayed(oneSecond, () => news);
 
 // Alternatively, you can get news from a server using features
 // from either dart:io or dart:html. For example:
 //
 // import 'dart:html';
 //
-// Future _gatherNewsReportsFromServer() => HttpRequest.getString(
-//      'https://www.dartlang.org/f/dailyNewsDigest.txt',
+// Future<String> _gatherNewsReportsFromServer() => HttpRequest.getString(
+//      'https://dart.dev/f/dailyNewsDigest.txt',
 //    );
 // #enddocregion main-async, main-future-api
 
@@ -103,36 +100,48 @@ Future<String> _gatherNewsReportsAsync() => newsStream.first;
 // Extra function variants below here
 
 // #docregion try-catch
-_printDailyNewsDigestAsyncWithTryCatch() async {
+Future<void> _printDailyNewsDigestAsyncWithTryCatch() async {
   try {
-    String news = await _gatherNewsReportsAsync();
-    print(news);
+    var newsDigest = await _gatherNewsReportsAsync();
+    print(newsDigest);
   } catch (e) {
     // Handle error...
   }
 }
 // #enddocregion try-catch
 
-// #docregion main-future-api-using-braces
-_printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
+Future<void> _printDailyNewsDigestAsyncUsingFutureApiPassPrint() {
   final future = _gatherNewsReportsAsync();
-  future.then((news) {
-    print(news);
+  // #docregion main-future-api-dont-pass-print
+  future.then((newsDigest) => print(newsDigest))
+      // #enddocregion main-future-api-dont-pass-print
+      ;
+  return future;
+}
+
+// #docregion main-future-api-using-braces
+Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
+  final future = _gatherNewsReportsAsync();
+  return future.then((newsDigest) {
+    print(newsDigest);
     // Do something else...
   });
 }
 // #enddocregion main-future-api-using-braces
 
-// #docregion main-future-api-pass-print
-_printDailyNewsDigestAsyncUsingFutureApiPassPrint() =>
-    _gatherNewsReportsAsync().then(print);
-// #enddocregion main-future-api-pass-print
+_noArgFuture() {
+  // #docregion main-future-api-then-no-arg
+  final future = _printDailyNewsDigestAsync();
+  return future.then((_) {
+    // Code that doesn't use the `_` parameter...
+    print('All reports printed.');
+  });
+  // #enddocregion main-future-api-then-no-arg
+}
 
 handleError(_) {}
 
 // #docregion future-api-try-catch
-_printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
-    _gatherNewsReportsAsync()
-        .then((news) => print(news))
-        .catchError((e) => handleError(e));
+Future<void> _printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>
+    _gatherNewsReportsAsync().then(print).catchError(handleError);
 // #enddocregion future-api-try-catch

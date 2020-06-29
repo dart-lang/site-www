@@ -1,5 +1,3 @@
-// #docplaster
-import 'dart:async';
 import 'dart:io';
 
 int stopAfter = 10;
@@ -19,13 +17,13 @@ void processRequest(HttpRequest request) {
   final response = request.response;
   if (request.uri.path == '/dart') {
     response
-      ..headers.contentType = new ContentType(
+      ..headers.contentType = ContentType(
         'text',
         'plain',
       )
       ..write('Hello from the server');
   } else {
-    response.statusCode = HttpStatus.NOT_FOUND;
+    response.statusCode = HttpStatus.notFound;
   }
   response.close();
 }

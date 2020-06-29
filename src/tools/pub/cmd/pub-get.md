@@ -3,10 +3,9 @@ title: pub get
 description: Use pub get to retrieve the dependencies used by your Dart application.
 ---
 
-_Get_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub get [--offline]
 {% endprettify %}
 
@@ -31,7 +30,7 @@ this command creates a `.packages` file.
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:test/test.dart';
 {% endprettify %}
 
@@ -51,8 +50,6 @@ constraints](/tools/pub/glossary#version-constraint).
 This is the primary difference between `pub get` and
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
-
-{% include pub-in-prereleases.html %}
 
 ## Package resolution
 
@@ -99,8 +96,8 @@ already-acquired dependencies.
 
 ## The system package cache
 
-Dependencies downloaded over the internet, such as those from Git and
-[pub.dartlang.org](https://pub.dartlang.org), are stored in a
+Dependencies downloaded over the internet, such as those from Git and the
+[pub.dev site]({{site.pub}}), are stored in a
 [system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be

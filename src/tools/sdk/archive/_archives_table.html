@@ -1,9 +1,7 @@
 <form class="form-inline">
   <div class="form-group select">
     <label for="{{ include.channel }}-versions">Version:</label>
-    <select id="{{ include.channel }}-versions">
-      <option value="all">All</option>
-    </select>
+    <select id="{{ include.channel }}-versions"></select>
   </div>
   <div class="form-group select">
     <label for="{{ include.channel }}-os">OS:</label>
@@ -20,7 +18,7 @@
     <tr>
       <th>Version</th>
       <th>OS</th>
-      <th>Bits</th>
+      <th>Architecture</th>
       <th>Downloads</th>
     </tr>
   </thead>
@@ -28,8 +26,10 @@
     <tr class="template">
       {% if include.channel == 'stable' %}
       <td>0.0.0 (rev 00000)</td>
+      {% else if include.channel == 'beta' %}
+      <td>0.0.0-0.0.beta (rev 00000)</td>
       {% else %}
-      <td>0.0.0-dev.0.0 (rev 00000)</td>
+      <td>0.0.0-0.0.dev (rev 00000)</td>
       {% endif %}
       <td>Windows</td>
       <td>64-width</td>

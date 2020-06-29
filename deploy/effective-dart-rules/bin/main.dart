@@ -1,3 +1,4 @@
+// ignore_for_file: sort_constructors_first
 import 'dart:async';
 import 'dart:io';
 
@@ -14,30 +15,37 @@ Future<Null> main() async {
     "design.md"
   ];
   List<Section> sections =
-      filenames.map((name) => new Section(dirPath, name)).toList();
+      filenames.map((name) => Section(dirPath, name)).toList();
 
   for (var section in sections) {
     var lines = section.file.readAsLinesSync();
     // Ignore the YAML front matter (can lead to false H3 elements.
     lines = lines.skip(1).skipWhile((line) => line.trim() != '---').toList();
-    var document = new md.Document();
-    document.parseRefLinks(lines);
+    var document = md.Document();
+
+    // Commented out the following line because the parseRefLinks has
+    // disappeared. Unfortunately, that means I had to hand-patch the TOC
+    // to fix the links to custom anchors. To find these, display
+    // localhost:4000/guides/language/effective-dart, and then search
+    // for "{#". Delete the excess text and fix the URL.
+    //document.parseRefLinks(lines);
+
     var nodes = document.parseLines(lines);
     for (md.Element element in nodes.where((node) => node is md.Element)) {
       if (element.tag == "h2") {
-        var subsection = new Subsection(element);
+        var subsection = Subsection(element);
         section.subsections.add(subsection);
         continue;
       }
 
       if (element.tag == "h3") {
-        var rule = new Rule(element);
+        var rule = Rule(element);
         section.subsections.last.rules.add(rule);
       }
     }
   }
 
-  var outFile = new File(path.join(dirPath, "toc.md"));
+  var outFile = File(path.join(dirPath, "toc.md"));
   IOSink out;
   try {
     out = outFile.openWrite();
@@ -98,12 +106,11 @@ class Section {
   final Uri uri;
   final File file;
   final String name;
-  List<Subsection> subsections = new List<Subsection>();
+  List<Subsection> subsections = List<Subsection>();
 
   Section(String dirPath, String filename)
-      : file = new File(path.join(dirPath, filename)),
-        uri = Uri
-            .parse("/guides/language/effective-dart/")
+      : file = File(path.join(dirPath, filename)),
+        uri = Uri.parse("/guides/language/effective-dart/")
             .resolve(filename.split('.').first),
         name = "${filename[0].toUpperCase()}"
             "${filename.substring(1).split('.').first}";
@@ -112,7 +119,7 @@ class Section {
 class Subsection {
   final String name;
   final String fragment;
-  List<Rule> rules = new List<Rule>();
+  List<Rule> rules = List<Rule>();
   Subsection(md.Element element)
       : name = _concatenatedText(element),
         fragment = generateAnchorHash(element);
@@ -122,9 +129,9 @@ class Subsection {
 String generateAnchorHash(md.Element element) => _concatenatedText(element)
     .toLowerCase()
     .trim()
-    .replaceFirst(new RegExp(r'^[^a-z]+'), '')
-    .replaceAll(new RegExp(r'[^a-z0-9 _-]'), '')
-    .replaceAll(new RegExp(r'\s'), '-');
+    .replaceFirst(RegExp(r'^[^a-z]+'), '')
+    .replaceAll(RegExp(r'[^a-z0-9 _-]'), '')
+    .replaceAll(RegExp(r'\s'), '-');
 
 /// Concatenates the text found in all the children of [element].
 String _concatenatedText(md.Element element) => element.children
@@ -132,5 +139,5 @@ String _concatenatedText(md.Element element) => element.children
         (child is md.Text) ? unescape(child.text) : _concatenatedText(child))
     .join('');
 
-final _unescape = new HtmlUnescape();
+final _unescape = HtmlUnescape();
 String unescape(String input) => _unescape.convert(input);

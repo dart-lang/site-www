@@ -1,15 +1,13 @@
 ---
 title: pub deps
 description: Use pub deps to print a dependency graph for a package.
-permalink: /tools/pub/cmd/pub-deps
 toc: false
 ---
 
-_Deps_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify none %}
-$ pub deps [--style=<style>]
+{% prettify none tag=pre+code %}
+$ pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
 {% endprettify %}
 
 This command prints the dependency graph for a package.
@@ -19,13 +17,12 @@ that the package uses (as specified in the pubspec), as well as the
 [transitive dependencies](/tools/pub/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
-The dependency information is printed as a tree, a list, or a compact
-list.
+The dependency information is printed as a tree by default.
 
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2
@@ -54,8 +51,28 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 `--style=<style>` or `-s <style>`
-: Optional. How the output should be displayed. The options are:
-`compact`, `tree`, or `list`. The default is tree.
+: The specified style determines the output format:
+
+* `tree`
+: Prints dependency information as a tree. This is the 
+default format.
+
+* `list`
+: Prints dependency information as a list.
+
+* `compact`
+: Prints dependency information as a compact list.
+
+
+`--dev`
+: Prints all package dependencies, including dev dependencies. Dev 
+dependencies are included by default.
+
+`--no-dev`
+: Prints all package dependencies, excluding dev dependencies. 
+
+`--executables`
+: Prints all available executables.
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

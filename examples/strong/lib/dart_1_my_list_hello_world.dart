@@ -1,7 +1,10 @@
-// ignore_for_file: annotate_overrides, inconsistent_method_inheritance
-// ignore_for_file: strong_mode_invalid_method_override_from_base
-// ignore_for_file: strong_mode_invalid_method_override, type_annotate_public_apis
+// ignore_for_file: annotate_overrides
+// ignore_for_file: inconsistent_method_inheritance # Prior to 2.1-dev
+// ignore_for_file: inconsistent_inheritance
+// ignore_for_file: invalid_override_from_base
+// ignore_for_file: invalid_override, type_annotate_public_apis
 // ignore_for_file: conflicting_generic_interfaces
+// ignore_for_file: sort_constructors_first
 // #docregion MyList-and-main
 import 'dart:collection';
 
@@ -15,7 +18,7 @@ class MyList extends ListBase<int> implements List {
 }
 
 void main() {
-  List<int> list = new MyList('hello');
+  List<int> list = MyList('hello');
   info(list);
 }
 // #enddocregion MyList-and-main

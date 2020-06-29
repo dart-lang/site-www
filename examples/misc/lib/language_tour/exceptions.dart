@@ -11,7 +11,7 @@ void cleanLlamaStalls() {}
 void miscDeclAnalyzedButNotTested(bool c) {
   if (c) {
     // #docregion throw-FormatException
-    throw new FormatException('Expected at least 1 section');
+    throw FormatException('Expected at least 1 section');
     // #enddocregion throw-FormatException
   }
 
@@ -23,8 +23,7 @@ void miscDeclAnalyzedButNotTested(bool c) {
 
   {
     // #docregion throw-is-an-expression
-    void distanceTo(Point other) =>
-        throw new UnimplementedError();
+    void distanceTo(Point other) => throw UnimplementedError();
     // #enddocregion throw-is-an-expression
   }
 
@@ -58,7 +57,8 @@ void miscDeclAnalyzedButNotTested(bool c) {
   {
     // #docregion try-catch-2
     try {
-      // ···
+      // #enddocregion try-catch-2
+      // #docregion try-catch-2
     } on Exception catch (e) {
       print('Exception details:\n $e');
     } catch (e, s) {

@@ -2,4 +2,4 @@
 set -e # halt script on error
 
 bundle exec jekyll build --incremental
-# bundle exec htmlproofer ./publish --assume-extension --directory-index-file
+# bundle exec htmlproofer ./_site --assume-extension --directory-index-file

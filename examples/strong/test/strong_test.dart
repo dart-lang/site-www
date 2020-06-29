@@ -1,8 +1,9 @@
 // ignore_for_file: unused_local_variable
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/dart_version.dart';
+import 'package:examples_util/dart_version.dart';
 
-import '../lib/animal.dart';
+import 'package:examples_strong/animal.dart';
+import 'package:examples_strong/bounded/my_collection.dart';
 
 //@nullable
 String runtimeChecksSkipStatus() => dartMajorVers == 1
@@ -11,7 +12,7 @@ String runtimeChecksSkipStatus() => dartMajorVers == 1
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
-          new isInstanceOf<T>(),
+          TypeMatcher<T>(),
           predicate(
             (e) => e.toString().contains(msg),
           )),
@@ -37,7 +38,7 @@ void main() {
     // #docregion what-is-soundness
     void main() {
       List<dynamic> strings = ["not", "ints"];
-      // ignore_for_file: 1, 2, invalid_assignment
+      // ignore_for_file: stable, dev, invalid_assignment
       List<int> numbers = strings; //!analysis-issue
       for (var number in numbers) {
         print(number - 10); // Classic Dart runtime exception
@@ -58,8 +59,8 @@ void main() {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
-        List<Animal> animals = [new Dog()];
-        // ignore_for_file: 1, 2, invalid_assignment
+        List<Animal> animals = [Dog()];
+        // ignore_for_file: stable, dev, invalid_assignment
         List<Cat> cats = animals;
       }
       // #enddocregion runtime-checks
@@ -109,16 +110,15 @@ void main() {
       expect(_test, prints(expectedOutput));
     });
 
-    Map<String, dynamic> getFromExternalSource() => {
+    Map<String, dynamic> fetchFromExternalSource() => {
           'names': ['a string']
         };
 
     test('downcast check ok: use cast()', () {
       _test() {
         // #docregion cast
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
-        // ignore_for_file: 1, argument_type_not_assignable, undefined_method
         assumeStrings(names.cast<String>());
         // #enddocregion cast
       }
@@ -137,7 +137,7 @@ void main() {
     test('downcast check ok: create new object', () {
       _test() {
         // #docregion create-new-object
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
         // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
         assumeStrings(names.map((name) => name as String).toList());
@@ -146,14 +146,35 @@ void main() {
 
       expect(_test, prints(expectedOutput));
     });
+
+    test('instantiate-to-bound sanity', () {
+      final b = B();
+      expect(b.typeOfS, 'int');
+      expect(b.typeOfT, 'dynamic');
+    });
+
+    test('instantiate-to-bound fix: add type arg', () {
+      // #docregion add-type-arg
+      var c = C<List>([]).collection;
+      c.add(2);
+      // #enddocregion add-type-arg
+      expect(c, [2]);
+    });
+
+    test('instantiate-to-bound fix 2', () {
+      // #docregion use-iterable
+      var c = C(Iterable.empty()).collection;
+      // Use c as an iterable...
+      // #enddocregion use-iterable
+      expect(c, TypeMatcher<Iterable>());
+    });
   });
 }
 
 // ignore_for_file: type_annotate_public_apis
-// #docplaster
 // #docregion downcast-check
 assumeStrings(List<Object> objects) {
-  // ignore_for_file: 1, 2, invalid_assignment
+  // ignore_for_file: stable, dev, invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
   // #enddocregion downcast-check
@@ -161,3 +182,8 @@ assumeStrings(List<Object> objects) {
   // #docregion downcast-check
 }
 // #enddocregion downcast-check
+
+class B<S extends int, T> {
+  String get typeOfS => '$S';
+  String get typeOfT => '$T';
+}

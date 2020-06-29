@@ -1,13 +1,14 @@
 ---
-title: Dart Plugin from JetBrains
+title: IntelliJ & Android Studio
 description: Use Dart with a variety of IDEs and editors from JetBrains.
 ---
 
 The Dart plugin adds Dart support to JetBrains IDEs such as
-WebStorm and IntelliJ IDEA.
-WebStorm is an IDE for client-side development.
+IntelliJ IDEA and Android Studio.
 IntelliJ IDEA is an intelligent Java IDE
 with support for many other languages and frameworks.
+Android Studio is an IDE based on IntelliJ IDEA
+that's used for Android and Flutter development.
 
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
@@ -15,10 +16,9 @@ and find more information when you need it.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  WebStorm comes with the Dart plugin pre-installed.
-  For details on using WebStorm,
-  read the [WebStorm page]({{site.webdev}}/tools/webstorm)
-  on [Dart webdev]({{site.webdev}}).
+  [WebStorm,](https://www.jetbrains.com/webstorm/)
+  a JetBrains IDE for client-side development,
+  comes with the Dart plugin pre-installed.
 </aside>
 
 ## Getting started
@@ -32,11 +32,11 @@ Then install the Dart plugin and tell it where to find the Dart SDK.
 Install a JetBrains IDE if you don't already have one.
 
 * <a href="https://www.jetbrains.com/idea/download/"
-  target="_blank">Download IntelliJ IDEA</a> or,
+  target="_blank" rel="noopener">Download IntelliJ IDEA</a> or,
   to try out the latest Dart language features,
   [install IntelliJ IDEA EAP.](https://confluence.jetbrains.com/display/IDEADEV/EAP)
 * Or <a href="https://www.jetbrains.com/products.html"
-  target="_blank">find another JetBrains product.</a>
+  target="_blank" rel="noopener">find another JetBrains product.</a>
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
@@ -51,7 +51,7 @@ Install a JetBrains IDE if you don't already have one.
 If you don't already have the Dart SDK,
 install it.
 
-* [Download the Dart SDK](/tools/sdk#install)
+* [Download the Dart SDK](/get-dart)
 
 
 ### Configuring Dart support

@@ -7,11 +7,10 @@
 // the file specified in the URI.
 
 // #docregion
-import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-String _host = InternetAddress.LOOPBACK_IP_V4.host;
+String _host = InternetAddress.loopbackIPv4.host;
 
 Future main() async {
   var server = await HttpServer.bind(_host, 4049);
@@ -23,24 +22,24 @@ Future main() async {
         contentType?.mimeType == 'application/json' /*1*/) {
       try {
         String content =
-            await req.transform(utf8.decoder).join(); /*2*/
-        var data = json.decode(content) as Map; /*3*/
+            await utf8.decoder.bind(req).join(); /*2*/
+        var data = jsonDecode(content) as Map; /*3*/
         var fileName = req.uri.pathSegments.last; /*4*/
-        await new File(fileName)
-            .writeAsString(content, mode: FileMode.WRITE);
+        await File(fileName)
+            .writeAsString(content, mode: FileMode.write);
         req.response
-          ..statusCode = HttpStatus.OK
+          ..statusCode = HttpStatus.ok
           ..write('Wrote data for ${data['name']}.');
       } catch (e) {
         response
-          ..statusCode = HttpStatus.INTERNAL_SERVER_ERROR
-          ..write("Exception during file I/O: $e.");
+          ..statusCode = HttpStatus.internalServerError
+          ..write('Exception during file I/O: $e.');
       }
     } else {
       response
-        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
-        ..write("Unsupported request: ${req.method}.");
+        ..statusCode = HttpStatus.methodNotAllowed
+        ..write('Unsupported request: ${req.method}.');
     }
-    response.close();
+    await response.close();
   }
 }

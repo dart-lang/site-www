@@ -1,7 +1,9 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names, sort_constructors_first, unused_field
 
-import 'dart:math';
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'dart:async';
+
+import 'package:examples_util/ellipsis.dart';
+
 import 'design_good.dart';
 
 void miscDeclAnalyzedButNotTested() {
@@ -25,42 +27,89 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion code-like-prose-overdone
   };
 
-  () {
+  (Socket socket, Database database) {
+    // #docregion positive
+    if (!socket.isDisconnected && !database.isEmpty) {
+      socket.write(database.read());
+    }
+    // #enddocregion positive
+  };
+
+  {
     // #docregion cascades
-    var buffer = new StringBuffer0() //!<br>
+    var buffer = StringBuffer0() //!<br>
         .write('one')
         .write('two')
         .write('three');
     // #enddocregion cascades
-  };
+  }
 
-  () {
+  {
     // #docregion type_annotate_public_apis
     install(id, destination) => ellipsis();
     // #enddocregion type_annotate_public_apis
-  };
+  }
 
-  () {
+  {
     // #docregion func-expr-no-param-type
-    var names = people.map((Person person) {
-      return person.name;
-    });
+    var names = people.map((Person person) => person.name);
     // #enddocregion func-expr-no-param-type
-  };
+  }
 
-  () {
-    // #docregion avoid-dynamic
-    dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
-      var value = map[name];
-      if (value != null) return value;
-      return defaultValue;
+  {
+    // #docregion omit-types-on-locals
+    List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
+      List<List<Ingredient>> desserts = <List<Ingredient>>[];
+      for (List<Ingredient> recipe in cookbook) {
+        if (pantry.containsAll(recipe)) {
+          desserts.add(recipe);
+        }
+      }
+
+      return desserts;
     }
-    // #enddocregion avoid-dynamic
-  };
+    // #enddocregion omit-types-on-locals
+  }
+
+  // #docregion inferred-wrong
+  num highScore(List<num> scores) {
+    var highest = 0;
+    for (var score in scores) {
+      // ignore: invalid_assignment
+      if (score > highest) highest = score;
+    }
+    return highest;
+  }
+  // #enddocregion inferred-wrong
+
+  {
+    // #docregion redundant
+    Set<String> things = Set<String>();
+    // #enddocregion redundant
+  }
+
+  {
+    // #docregion explicit
+    var things = Set();
+    // #enddocregion explicit
+  }
+
+  {
+    // #docregion prefer-dynamic
+    mergeJson(original, changes) => ellipsis();
+    // #enddocregion prefer-dynamic
+  }
 
   // #docregion avoid-Function
-  bool isValidString(String value, Function predicate) => ellipsis();
+  bool isValid(String value, Function test) => ellipsis();
   // #enddocregion avoid-Function
+
+  // #docregion future-or
+  FutureOr<int> triple(FutureOr<int> value) {
+    if (value is int) return value * 3;
+    return (value as Future<int>).then((v) => v * 3);
+  }
+  // #enddocregion future-or
 
   (int start) {
     // #docregion avoid-mandatory-param
@@ -68,6 +117,22 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion avoid-mandatory-param
   };
 }
+
+class MyIterable<T> {
+  // #docregion function-type-param
+  Iterable<T> where(bool predicate(T element)) => ellipsis();
+  // #enddocregion function-type-param
+}
+
+//----------------------------------------------------------------------------
+
+// #docregion old-typedef
+typedef int Comparison<T>(T a, T b);
+// #enddocregion old-typedef
+
+// #docregion typedef-param
+typedef bool TestNumber(num);
+// #enddocregion typedef-param
 
 //----------------------------------------------------------------------------
 
@@ -111,17 +176,6 @@ class Color {
 // #enddocregion class-only-static-exception
 
 //----------------------------------------------------------------------------
-
-// #docregion named-ctr
-class Point {
-  num x, y;
-  Point(this.x, this.y);
-  static Point polar(num theta, num radius) =>
-      new Point(radius * cos(theta), radius * sin(theta));
-}
-// #enddocregion named-ctr
-
-//----------------------------------------------------------------------------
 // ignore_for_file: avoid_return_types_on_setters
 
 class C<Foo> {
@@ -140,6 +194,6 @@ class Person1 {
   Person1(this.name);
   int get hashCode => ellipsis();
   // #docregion eq-dont-check-for-null
-  operator ==(other) => other != null && ellipsis<bool>();
+  bool operator ==(other) => other != null && ellipsis<bool>();
 }
 // #enddocregion eq-dont-check-for-null

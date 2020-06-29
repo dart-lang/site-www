@@ -1,6 +1,4 @@
-// ignore_for_file: type_annotate_public_apis
-import 'dart:async';
-
+// ignore_for_file: type_annotate_public_apis, curly_braces_in_flow_control_structures
 import 'package:test/test.dart';
 
 void main() {

@@ -22,7 +22,6 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion final
     final name = 'Bob'; // Without a type annotation
-    // name = 'Alice';  // Uncommenting this causes an error
     final String nickname = 'Bobby';
     // #enddocregion final
   }
@@ -36,19 +35,33 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion const-vs-final
-    // Note: [] creates an empty list.
-    // const [] creates an empty, immutable list (EIL).
-    var foo = const []; // foo is currently an EIL.
-    final bar = const []; // bar will always be an EIL.
-    const baz = const []; // baz is a compile-time constant EIL.
-
-    // You can change the value of a non-final, non-const variable,
-    // even if it used to have a const value.
-    foo = [];
-
-    // You can't change the value of a final or const variable.
-    // bar = []; // Unhandled exception.
-    // baz = []; // Unhandled exception.
+    var foo = const [];
+    final bar = const [];
+    const baz = []; // Equivalent to `const []`
     // #enddocregion const-vs-final
+
+    // #docregion reassign-to-non-final
+    foo = [1, 2, 3]; // Was const []
+    // #enddocregion reassign-to-non-final
+  }
+
+  {
+    var bar, baz, name;
+    // #docregion cant-assign-to-final
+    name = 'Alice'; // Error: a final variable can only be set once.
+    // #enddocregion cant-assign-to-final
+    // #docregion cant-assign-to-const
+    baz = [42]; // Error: Constant variables can't be assigned a value.
+    // #enddocregion cant-assign-to-const
+  }
+
+  {
+    // #docregion const-dart-25
+    // Valid compile-time constants as of Dart 2.5.
+    const Object i = 3; // Where i is a const Object with an int value...
+    const list = [i as int]; // Use a typecast.
+    const map = {if (i is int) i: "int"}; // Use is and collection if.
+    const set = {if (list is List<int>) ...list}; // ...and a spread.
+    // #enddocregion const-dart-25
   }
 }

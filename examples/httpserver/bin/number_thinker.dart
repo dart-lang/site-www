@@ -8,18 +8,17 @@
 // Or, you can use the make_a_guess.html UI.
 
 // #docregion main
-import 'dart:async';
 import 'dart:io';
 import 'dart:math' show Random;
 
-Random intGenerator = new Random();
+Random intGenerator = Random();
 int myNumber = intGenerator.nextInt(10);
 
 Future main() async {
   print("I'm thinking of a number: $myNumber");
 
   HttpServer server = await HttpServer.bind(
-    InternetAddress.LOOPBACK_IP_V4,
+    InternetAddress.loopbackIPv4,
     4041,
   );
   await for (var request in server) {
@@ -37,7 +36,7 @@ void handleRequest(HttpRequest request) {
     } else {
       // #enddocregion handleRequest
       request.response
-        ..statusCode = HttpStatus.METHOD_NOT_ALLOWED
+        ..statusCode = HttpStatus.methodNotAllowed
         ..write('Unsupported request: ${request.method}.')
         ..close();
       // #docregion handleRequest
@@ -56,7 +55,7 @@ void handleGet(HttpRequest request) {
   final guess = request.uri.queryParameters['q'];
   // #enddocregion uri
   final response = request.response;
-  response.statusCode = HttpStatus.OK;
+  response.statusCode = HttpStatus.ok;
   // #enddocregion statusCode
   // #docregion write
   if (guess == myNumber.toString()) {

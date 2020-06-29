@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable
+// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element, unused_local_variable, sdk_version_extension_methods
 import 'dart:io';
 import 'dart:math';
 
@@ -62,7 +62,7 @@ class SliderMenu {/* ... */}
 
 class HttpRequest {/* ... */}
 
-typedef bool Predicate<T>(T value);
+typedef Predicate<T> = bool Function(T value);
 // #enddocregion type-names
 
 //----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ class B {/* ... */}
 //----------------------------------------------------------------------------
 
 // #docregion annotation-const
-const foo = const Foo();
+const foo = Foo();
 
 @foo
 class C {/* ... */}
@@ -95,9 +95,17 @@ class C {/* ... */}
 // #docregion const-names
 const pi = 3.14;
 const defaultTimeout = 1000;
-final urlScheme = new RegExp('^([a-z]+):');
+final urlScheme = RegExp('^([a-z]+):');
 
 class Dice {
-  static final numberGenerator = new Random();
+  static final numberGenerator = Random();
 }
 // #enddocregion const-names
+
+//----------------------------------------------------------------------------
+
+// #docregion extension-names
+extension MyFancyList<T> on List<T> {/* ... */}
+
+extension SmartIterable<T> on Iterable<T> {/* ... */}
+// #enddocregion extension-names

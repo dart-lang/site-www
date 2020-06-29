@@ -1,72 +1,34 @@
 ---
-title: Futures and Error Handling
-description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code.
+title: Futures and error handling
+description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code. And then some.
 ---
 
-This guide describes how to handle errors when writing asynchronous code.
-You can write asynchronous code in two ways:
+In Dart SDK version 1.9,
+the Dart language added
+[asynchrony support](/guides/language/language-tour#asynchrony-support),
+making asynchronous Dart code much easier to read and write.
+However, some code — especially older code — might still use
+[Future methods]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
+such as `then()`, `catchError()`, and `whenComplete()`.
 
-* Using `async` functions and `await` expressions, which use Futures behind
-  the scenes.
-* Using the [Future API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html)
-  directly.
+This page can help you avoid some common pitfalls
+when using those Future methods.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-If you are unfamiliar with the general concepts behind Futures, first read
-[Asynchronous Programming: Futures.](/tutorials/language/futures)
+<aside class="alert alert-warning" markdown="1">
+  You don't need this page if your code uses
+  the language's asynchrony support — `async`, `await`,
+  and error handling using try-catch.
+  For more information, see the
+  [asynchronous programming codelab](/codelabs/async-await).
 </aside>
 
-Why would you use the Future API instead of `async` and `await`? When you
-need more control than you can get from `async` and `await`. For example,
-say you want something to happen when a Future completes, but you also want
-to immediately continue what you're doing. If you use `await`, activity
-suspends until the Future completes. With the Future API,
-you can register a callback and continue.
-
----
-
-## Async, await, and exceptions
-
-{% comment %}
-update-for-dart-2
-
-? The async/await behavior is changing slightly for Dart2.0.
-It might affect this section.
-{% endcomment %}
-
-Use  [exception
-handling](/guides/language/language-tour#exceptions)&mdash;`try`, `catch`,
-and `finally`&mdash;to handle errors in code that uses async functions
-and await expressions. For example:
-
-{% prettify dart %}
-Future main() async {
-  var dir = new Directory('/tmp');
-
-  [!try!] {
-    var dirList = dir.list();
-    await for (FileSystemEntity f in dirList) {
-      if (f is File) {
-        print('Found file ${f.path}');
-      } else if (f is Directory) {
-        print('Found dir ${f.path}');
-      }
-    }
-  } [!catch!] (e) {
-    print(e.toString());
-  }
-}
-{% endprettify %}
-
-The rest of this guide addresses handling errors when using the Future API.
 
 ## The Future API and callbacks
 
 Functions that use the Future API register callbacks that handle
 the value (or the error) that completes a Future. For example:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 myFunc().then(processValue)
         .catchError(handleError);
 
@@ -96,7 +58,7 @@ The next few sections give examples of this pattern.
 The following example deals with throwing an exception from within `then()`'s
 callback and demonstrates `catchError()`'s versatility as an error handler:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 myFunc()
   .then((value) {
     doSomethingWith(value);
@@ -123,7 +85,7 @@ For more granular error handling, you can register a second (`onError`)
 callback within `then()` to handle Futures completed with errors. Here is
 `then()`'s signature:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract Future then(onValue(T value), {onError(AsyncError asyncError)})
 {% endprettify %}
 
@@ -131,7 +93,7 @@ Register the optional onError callback only if you want to differentiate
 between an error forwarded _to_ `then()`, and an error generated _within_
 `then()`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 funcThatThrows()
   .then(successCallback, onError: (e) {
     handleError(e);          // Original error.
@@ -153,7 +115,7 @@ to catch the error within `then()`.
 It is common to have a succession of `then()` calls, and catch errors
 generated from any part of the chain using `catchError()`:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<String> one()   => new Future.value("from one");
 Future<String> two()   => new Future.error("error from two");
 Future<String> three() => new Future.value("from three");
@@ -194,7 +156,7 @@ What if we want to catch a specific error? Or catch more than one error?
 `catchError()` takes an optional named argument, `test`, that
 allows us to query the kind of error thrown.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract Future catchError(onError(AsyncError asyncError), {bool test(Object error)})
 {% endprettify %}
 
@@ -204,7 +166,7 @@ Given the complex workflow, `handleAuthResponse()` could generate various
 errors and exceptions, and you should handle them differently. Here's
 how you can use `test` to do that:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   handleAuthResponse({'username': 'johncage', 'age': 92})
     .then((_) => ...)
@@ -222,7 +184,7 @@ equivalent of 'finally'. The callback registered within `whenComplete()` is
 called when `whenComplete()`'s receiver completes, whether it does so with a
 value or with an error:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var server = connectToServer();
 server.post(myUrl, fields: {"name": "john", "profession": "juggler"})
       .then(handleResponse)
@@ -243,7 +205,7 @@ easiest to understand through examples.
 In the code below, `then()`'s Future completes with an error, so
 `whenComplete()`'s Future also completes with that error.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   funcThatThrows()
     .then((_) => print("won't reach here"))    // Future completes with an error.
@@ -257,7 +219,7 @@ In the code below, `then()`'s Future completes with an error, which is now
 handled by `catchError()`.  Because `catchError()`'s Future completes with
 `someObject`, `whenComplete()`'s Future completes with that same object.
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   funcThatThrows()
     .then((_) => ...)         // Future completes with an error.
@@ -274,7 +236,7 @@ void main() {
 If `whenComplete()`'s callback throws an error, then `whenComplete()`'s Future
 completes with that error:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   funcThatThrows()
     .catchError(handleError)               // Future completes with a value.
@@ -291,7 +253,7 @@ this avoids scenarios where a Future completes with an error, the error
 handler is not yet attached, and the error accidentally propagates. Consider
 this code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   Future future = funcThatThrows();
 
@@ -309,7 +271,7 @@ In the code above, `catchError()` is not registered until half a second after
 The problem goes away if `funcThatThrows()` is called within the
 `Future.delayed()` callback:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   new Future.delayed(const Duration(milliseconds: 500), () {
     funcThatThrows().then(processValue)
@@ -325,7 +287,7 @@ future. Since we do not want the caller of such functions to have to
 implement multiple error-handling scenarios, we want to prevent any synchronous
 errors from leaking out. Consider this code:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<int> parseAndRead(data) {
   var filename = obtainFileName(data);         // Could throw.
   File file = new File(filename);
@@ -346,7 +308,7 @@ But `obtainFileName()` is not called within a `then()` callback; if _it_
 throws, a synchronous error propagates:
 
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   parseAndRead(data).catchError((e) {
     print("inside catchError");
@@ -370,7 +332,7 @@ A common pattern for ensuring that no synchronous error is accidentally
 thrown from a function is to wrap the function body inside a `new Future.sync()`
 callback:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<int> parseAndRead(data) {
   return new Future.sync(() {
     var filename = obtainFileName(data);         // Could throw.
@@ -390,7 +352,7 @@ Future.
 
 With code wrapped within `Future.sync()`, `catchError()` can handle all errors:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   parseAndRead(data).catchError((e) {
     print("inside catchError");
@@ -407,7 +369,7 @@ void main() {
 function has a lot of code packed into it, chances are that you could be doing
 something dangerous without realizing it:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future fragileFunc() {
   return new Future.sync(() {
     var x = someFunc();     // Unexpectedly throws in some rare cases.
@@ -423,11 +385,8 @@ also prevents errors from *accidentally* leaking out of your function.
 
 ## More information
 
-The following docs have more information on Futures:
-
-* [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop),
-  an article that describes how to schedule tasks using Futures
-* [Future API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
+See the [Future API reference]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)
+for more information on Futures.
 
 {% comment %}
 The tests for this article are at /src/tests/site/articles/futures-and-error-handling.

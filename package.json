@@ -1,9 +1,14 @@
 {
-  "name": "dartlang.org",
+  "name": "dart.dev",
   "version": "0.0.0",
   "private": true,
-  "description": "Dart website",
+  "description": "Source code for https://dart.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dart-lang/site-www.git"
+  },
   "devDependencies": {
-    "code-excerpter": "git+https://github.com/chalin/code-excerpter.git"
+    "firebase-tools": "^7.7.0",
+    "superstatic": "^6.0.4"
   }
 }
