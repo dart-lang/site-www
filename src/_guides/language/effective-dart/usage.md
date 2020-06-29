@@ -1465,11 +1465,11 @@ Cases where `async` *is* useful include:
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
 {% prettify dart tag=pre+code %}
-Future<void> usesAwait(Future<void> later) async {
+Future<void> usesAwait(Future<Object> later) async {
   print(await later);
 }
 
-Future asyncError() async {
+Future<void> asyncError() async {
   throw 'Error!';
 }
 
