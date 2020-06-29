@@ -171,7 +171,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<void> afterTwoThings(Future<void> first, Future<void> second) {
+    Future<void> afterTwoThings(
+        Future<void> first, Future<void> second) {
       return Future.wait([first, second]);
     }
     // #enddocregion unnecessary-async

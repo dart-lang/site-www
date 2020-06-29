@@ -1438,7 +1438,8 @@ omit the `async` without changing the behavior of the function, do so.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future<void> afterTwoThings(Future<void> first, Future<void> second) {
+Future<void> afterTwoThings(
+    Future<void> first, Future<void> second) {
   return Future.wait([first, second]);
 }
 {% endprettify %}
