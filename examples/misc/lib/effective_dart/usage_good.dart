@@ -185,7 +185,7 @@ void miscDeclAnalyzedButNotTested() {
       print(await later);
     }
 
-    Future<void> asyncError() async {
+    Future asyncError() async {
       throw 'Error!';
     }
 
