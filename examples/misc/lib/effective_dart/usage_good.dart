@@ -171,7 +171,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<void> afterTwoThings(Future<void> first, Future<void> second) {
+    Future<void> afterTwoThings(
+        Future<void> first, Future<void> second) {
       return Future.wait([first, second]);
     }
     // #enddocregion unnecessary-async
@@ -180,7 +181,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // ignore_for_file: only_throw_errors
     // #docregion async
-    Future<void> usesAwait(Future<void> later) async {
+    Future<void> usesAwait(Future<Object> later) async {
       print(await later);
     }
 
