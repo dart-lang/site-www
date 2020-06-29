@@ -179,7 +179,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // ignore_for_file: only_throw_errors,
+    // ignore_for_file: only_throw_errors
     // #docregion async
     Future<void> usesAwait(Future<Object> later) async {
       print(await later);
