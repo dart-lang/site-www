@@ -31,7 +31,7 @@ dartpad-embed-inline: https://dartpad.dev/embed-inline.html
 news: https://news.dartlang.org
 group: https://groups.google.com/a/dartlang.org
 
-show_banner: true
+show_banner: false
 
 collections:
   articles:
