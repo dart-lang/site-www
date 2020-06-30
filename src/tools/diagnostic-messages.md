@@ -1252,11 +1252,11 @@ never reached._
 
 #### Description
 
-The analyzer produces this diagnostic when a catch clause is found that
-can't be executed because it’s after a catch clause of the form `catch (e)`
-or `on Object catch (e)`. The first catch clause that matches the thrown
+The analyzer produces this diagnostic when a `catch` clause is found that
+can't be executed because it’s after a `catch` clause of the form `catch (e)`
+or `on Object catch (e)`. The first `catch` clause that matches the thrown
 object is selected, and both of those forms will match any object, so no
-catch clauses that follow them will be selected.
+`catch` clauses that follow them will be selected.
 
 #### Examples
 
@@ -1302,10 +1302,10 @@ _Dead code: This on-catch block won’t be executed because '{0}' is a subtype o
 
 #### Description
 
-The analyzer produces this diagnostic when a catch clause is found that
-can't be executed because it is after a catch clause that catches either
-the same type or a supertype of the clause's type. The first catch clause
-that matches the thrown object is selected, and the earlier clause l always
+The analyzer produces this diagnostic when a `catch` clause is found that
+can't be executed because it is after a `catch` clause that catches either
+the same type or a supertype of the clause's type. The first `catch` clause
+that matches the thrown object is selected, and the earlier clause always
 matches anything matchable by the highlighted clause, so the highlighted
 clause will never be selected.
 
@@ -1780,7 +1780,7 @@ _Two elements in a set literal shouldn't be equal._
 
 The analyzer produces this diagnostic when an element in a non-constant set
 is the same as a previous element in the same set. If two elements are the
-same, then the second value is  ignored, which makes having both elements
+same, then the second value is ignored, which makes having both elements
 pointless and likely signals a bug.
 
 #### Example
@@ -1984,7 +1984,7 @@ _Classes can only extend other classes._
 
 #### Description
 
-The analyzer produces this diagnostic when an extends clause contains a
+The analyzer produces this diagnostic when an `extends` clause contains a
 name that is declared to be something other than a class.
 
 #### Examples
@@ -2001,7 +2001,7 @@ class C extends [!f!] {}
 #### Common fixes
 
 If you want the class to extend a class other than `Object`, then replace
-the name in the extends clause with the name of that class:
+the name in the `extends` clause with the name of that class:
 
 {% prettify dart tag=pre+code %}
 void f() {}
@@ -2011,7 +2011,7 @@ class C extends B {}
 class B {}
 {% endprettify %}
 
-If you want the class to extend `Object`, then remove the extends clause:
+If you want the class to extend `Object`, then remove the `extends` clause:
 
 {% prettify dart tag=pre+code %}
 void f() {}
@@ -2771,7 +2771,7 @@ _Classes and mixins can only implement other classes and mixins._
 
 #### Description
 
-The analyzer produces this diagnostic when a name used in the implements
+The analyzer produces this diagnostic when a name used in the `implements`
 clause of a class or mixin declaration is defined to be something other
 than a class or mixin.
 
@@ -2795,8 +2795,8 @@ If the name is the name of an existing class or mixin that isn't being
 imported, then add an import, with a prefix, for the library in which it’s
 declared.
 
-Otherwise, either replace the name in the implements clause with the name
-of an existing class or mixin, or remove the name from the implements
+Otherwise, either replace the name in the `implements` clause with the name
+of an existing class or mixin, or remove the name from the `implements`
 clause.
 
 ### implements_repeated
@@ -2806,7 +2806,7 @@ _'{0}' can only be implemented once._
 #### Description
 
 The analyzer produces this diagnostic when a single class is specified more
-than once in an implements clause.
+than once in an `implements` clause.
 
 #### Examples
 
@@ -4065,7 +4065,7 @@ void f(E e) {
 }
 {% endprettify %}
 
-If the missing values should be handled the same way, then add a default
+If the missing values should be handled the same way, then add a `default`
 clause:
 
 {% prettify dart tag=pre+code %}
@@ -4189,7 +4189,7 @@ _Classes can only mix in mixins and classes._
 
 #### Description
 
-The analyzer produces this diagnostic when a name in a mixin clause is
+The analyzer produces this diagnostic when a name in a `mixin` clause is
 defined to be something other than a mixin or a class.
 
 #### Examples
@@ -4276,7 +4276,7 @@ mixin M on [!F!] {}
 If the type was intended to be a class but was mistyped, then replace the
 name.
 
-Otherwise, remove the type from the on clause.
+Otherwise, remove the type from the `on` clause.
 
 ### must_be_immutable
 
@@ -4690,7 +4690,7 @@ void f(int i, int j) {
 #### Common fixes
 
 Either make the expression a constant expression, or rewrite the `switch`
-statement as a sequence of if statements:
+statement as a sequence of `if` statements:
 
 {% prettify dart tag=pre+code %}
 void f(int i, int j) {
@@ -4789,12 +4789,12 @@ _The elements in a const map literal must be constant._
 
 #### Description
 
-The analyzer produces this diagnostic when an if element or a spread
+The analyzer produces this diagnostic when an `if` element or a spread
 element in a constant map isn't a constant element.
 
 #### Examples
 
-The following code produces this diagnostic because it is attempting to
+The following code produces this diagnostic because it's attempting to
 spread a non-constant map:
 
 {% prettify dart tag=pre+code %}
@@ -4803,7 +4803,7 @@ var map = const <int, int>{...[!notConst!]};
 {% endprettify %}
 
 Similarly, the following code produces this diagnostic because the
-condition in the if element isn't a constant expression:
+condition in the `if` element isn't a constant expression:
 
 {% prettify dart tag=pre+code %}
 bool notConst = true;
@@ -4812,7 +4812,7 @@ var map = const <int, int>{if ([!notConst!]) 1 : 2};
 
 #### Common fixes
 
-If the map needs to be a constant map, then make the elements  constants.
+If the map needs to be a constant map, then make the elements constants.
 In the spread example, you might do that by making the collection being
 spread a constant:
 
@@ -5017,7 +5017,7 @@ _The name '{0}' isn't a type and can't be used in an on-catch clause._
 #### Description
 
 The analyzer produces this diagnostic when the identifier following the
-`on` in a catch clause is defined to be something other than a type.
+`on` in a `catch` clause is defined to be something other than a type.
 
 #### Examples
 
@@ -5456,7 +5456,7 @@ valid to throw a nullable expression._
 #### Description
 
 The analyzer produces this diagnostic when the type following `on` in a
-catch clause is a nullable type. It isn't valid to specify a nullable type
+`catch` clause is a nullable type. It isn't valid to specify a nullable type
 because it isn't possible to catch `null` (because it's a runtime error to
 throw `null`).
 
@@ -5494,12 +5494,12 @@ _A class can't extend a nullable type._
 #### Description
 
 The analyzer produces this diagnostic when a class declaration uses an
-extends clause to specify a superclass, and the superclass is followed by a
+`extends` clause to specify a superclass, and the superclass is followed by a
 `?`.
 
 It isn't valid to specify a nullable superclass because doing so would have
 no meaning; it wouldn't change either the interface or implementation being
-inherited by the class containing the extends clause.
+inherited by the class containing the `extends` clause.
 
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the superclass, such as `class A extends B<C?> {}`.
@@ -5507,7 +5507,7 @@ to the superclass, such as `class A extends B<C?> {}`.
 #### Example
 
 The following code produces this diagnostic because `A?` is a nullable
-type, and nullable types can't be used in an extends clause:
+type, and nullable types can't be used in an `extends` clause:
 
 {% prettify dart tag=pre+code %}
 class A {}
@@ -5530,11 +5530,11 @@ _A class or mixin can't implement a nullable type._
 #### Description
 
 The analyzer produces this diagnostic when a class or mixin declaration has
-an implements clause, and an interface is followed by a `?`.
+an `implements` clause, and an interface is followed by a `?`.
 
 It isn't valid to specify a nullable interface because doing so would have
 no meaning; it wouldn't change the interface being inherited by the class
-containing the implements clause.
+containing the `implements` clause.
 
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the interface, such as `class A implements B<C?> {}`.
@@ -5543,7 +5543,7 @@ to the interface, such as `class A implements B<C?> {}`.
 #### Example
 
 The following code produces this diagnostic because `A?` is a nullable
-type, and nullable types can't be used in an implements clause:
+type, and nullable types can't be used in an `implements` clause:
 
 {% prettify dart tag=pre+code %}
 class A {}
@@ -5565,13 +5565,13 @@ _A mixin can't have a nullable type as a superclass constraint._
 
 #### Description
 
-The analyzer produces this diagnostic when a mixin declaration uses an on
+The analyzer produces this diagnostic when a mixin declaration uses an `on`
 clause to specify a superclass constraint, and the class that's specified
 is followed by a `?`.
 
 It isn't valid to specify a nullable superclass constraint because doing so
 would have no meaning; it wouldn't change the interface being depended on
-by the mixin containing the on clause.
+by the mixin containing the `on` clause.
 
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the superclass constraint, such as `mixin A on B<C?> {}`.
@@ -5580,7 +5580,7 @@ to the superclass constraint, such as `mixin A on B<C?> {}`.
 #### Example
 
 The following code produces this diagnostic because `A?` is a nullable type
-and nullable types can't be used in an on clause:
+and nullable types can't be used in an `on` clause:
 
 {% prettify dart tag=pre+code %}
 class C {}
@@ -5603,11 +5603,11 @@ _A class or mixin can't mix in a nullable type._
 #### Description
 
 The analyzer produces this diagnostic when a class or mixin declaration has
-a with clause, and a mixin is followed by a `?`.
+a `with` clause, and a mixin is followed by a `?`.
 
 It isn't valid to specify a nullable mixin because doing so would have no
 meaning; it wouldn't change either the interface or implementation being
-inherited by the class containing the with clause.
+inherited by the class containing the `with` clause.
 
 Note, however, that it _is_ valid to use a nullable type as a type argument
 to the mixin, such as `class A with B<C?> {}`.
@@ -5615,7 +5615,7 @@ to the mixin, such as `class A with B<C?> {}`.
 #### Example
 
 The following code produces this diagnostic because `A?` is a nullable
-type, and nullable types can't be used in a with clause:
+type, and nullable types can't be used in a `with` clause:
 
 {% prettify dart tag=pre+code %}
 mixin M {}
@@ -6215,9 +6215,9 @@ version 2.3.2, but this code is required to be able to run on earlier versions._
 
 #### Description
 
-The analyzer produces this diagnostic when an as expression inside a
+The analyzer produces this diagnostic when an `as` expression inside a
 [constant context](#constant-context) is found in code that has an SDK
-constraint whose lower bound is less than 2.3.2. Using an as expression in
+constraint whose lower bound is less than 2.3.2. Using an `as` expression in
 a [constant context](#constant-context) wasn't supported in earlier
 versions, so this code won't be able to run against earlier versions of the
 SDK.
@@ -6429,9 +6429,9 @@ version 2.3.2, but this code is required to be able to run on earlier versions._
 
 #### Description
 
-The analyzer produces this diagnostic when an is expression inside a
+The analyzer produces this diagnostic when an `is` expression inside a
 [constant context](#constant-context) is found in code that has an SDK
-constraint whose lower bound is less than 2.3.2. Using an is expression in
+constraint whose lower bound is less than 2.3.2. Using an `is` expression in
 a [constant context](#constant-context) wasn't supported in earlier
 versions, so this code won't be able to run against earlier versions of the
 SDK.
@@ -8027,9 +8027,9 @@ _The exception variable '{0}' isn't used, so the 'catch' clause can be removed._
 
 #### Description
 
-The analyzer produces this diagnostic when a catch clause is found, and
+The analyzer produces this diagnostic when a `catch` clause is found, and
 neither the exception parameter nor the optional stack trace parameter are
-used in the catch block.
+used in the `catch` block.
 
 #### Examples
 
@@ -8047,7 +8047,7 @@ void f() {
 
 #### Common fixes
 
-Remove the unused catch clause:
+Remove the unused `catch` clause:
 
 {% prettify dart tag=pre+code %}
 void f() {
@@ -8066,7 +8066,7 @@ _The stack trace variable '{0}' isn't used and can be removed._
 #### Description
 
 The analyzer produces this diagnostic when the stack trace parameter in a
-catch clause isn't referenced within the body of the catch block.
+`catch` clause isn't referenced within the body of the `catch` block.
 
 #### Examples
 
