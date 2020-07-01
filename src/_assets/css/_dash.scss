@@ -328,12 +328,24 @@ $dash-dartpad-border: #293542;
 .banner {
   background-color: $dash_callout;
 
+  .bw_banner__text {
+    color: white;
+
+    a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+  }
+
   .banner__text {
     color: white;
+
+    a {
+      color: $site-color-card-link;
+    }
   }
-  a {
-    color: $site-color-card-link;
-  }
+
 }
 
 #page-content {
