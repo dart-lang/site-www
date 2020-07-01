@@ -1465,7 +1465,7 @@ Cases where `async` *is* useful include:
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
 {% prettify dart tag=pre+code %}
-Future<void> usesAwait(Future<Object> later) async {
+Future<void> usesAwait(Future<String> later) async {
   print(await later);
 }
 
