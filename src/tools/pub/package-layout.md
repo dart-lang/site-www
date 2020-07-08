@@ -128,12 +128,45 @@ enchilada/
   CHANGELOG.md
 {% endprettify %}
 
-To show users the latest changes to your package, you can include a changelog
-file where you can write a short note about the changes in your latest
-release. When you upload your package to the
-[pub.dev site,]({{site.pub}}) your package's `CHANGELOG.md` file (if any)
-appears in the changelog tab, rendered as [Markdown.][Markdown]
+To help users of your package upgrade between versions of your package, you
+should include a `CHANGELOG.md` file. This file should contain a section for
+each release with notes about changes.
 
+When you upload your package to the [pub.dev site,]({{site.pub}})
+your package's `CHANGELOG.md` file (if any)
+appears in the changelog tab, rendered as [Markdown.][Markdown]
+The file should use level-1 or level-2 sections for each version, the section
+title should contain a package version number (optionally prefixed `v`).
+As illustrated below additional subsections within a section is permitted.
+
+{% prettify markdown tag=pre+code %}
+# 1.0.1
+
+ * Fixed missing exclamation mark in `sayHi()` method.
+
+# 1.0.0
+
+ * **Breaking**, removed deprecated `sayHello()` method.
+ * Initial stable release.
+
+### Upgrading from 0.1.x
+Replace all calls for `sayHello()` with `sayHi()`.
+
+# 0.1.1
+
+ * Deprecated the `sayHello()` method, use `sayHi()` instead.
+
+# 0.1.0
+
+ * Initial development release.
+
+{% endprettify %}
+
+Following this changelog format allows tooling to parse your `CHANGELOG.md` and
+present relevant sections to package consumers.
+Consumers of your package will often review the `CHANGELOG.md` to discover
+bug fixes and new features, or determine how much effort it will take to upgrade
+to the latest version of your package.
 
 ## Public directories
 
