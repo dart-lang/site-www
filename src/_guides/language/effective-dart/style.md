@@ -100,7 +100,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
   For details, see the [extensions design document.][]
 {{site.alert.end}}
 
-[extensions design document.]: https://github.com/dart-lang/language/blob/master/accepted/2.6/static-extension-members/feature-specification.md#dart-static-extension-methods-design
+[extensions design document.]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 
 ### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
