@@ -156,7 +156,7 @@ int value = aNullableInt!; // `aNullableInt!` is an int.
 
 {{site.alert.important}}
   If you aren't positive that a value is non-null,
-  **don't use `!`**.
+  **don't use the `!` operator**.
 {{site.alert.end}}
 
 If you need to change the type of a nullable variable —
