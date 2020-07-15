@@ -4,10 +4,10 @@ description: A glossary of terms relating to Dart's package management tool, pub
 ---
 
 The following terms are used in the documentation for
-[packagement management][] and
+[package management][] and
 the [pub tool][].
 
-[packagement management]: /guides/packages
+[package management]: /guides/packages
 [pub tool]: /tools/pub/cmd
 
 ## Application package
