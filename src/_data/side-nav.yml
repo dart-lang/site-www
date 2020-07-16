@@ -177,8 +177,8 @@
       children:
         - title: Overview
           permalink: /tools/sdk
-        - title: dart (Dart VM)
-          permalink: /tools/dart-vm
+        - title: dart (new Dart tool)
+          permalink: /tools/dart-tool
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
         - title: dart2native
