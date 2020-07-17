@@ -4,10 +4,10 @@ description: A glossary of terms relating to Dart's package management tool, pub
 ---
 
 The following terms are used in the documentation for
-[packagement management][] and
+[package management][] and
 the [pub tool][].
 
-[packagement management]: /guides/packages
+[package management]: /guides/packages
 [pub tool]: /tools/pub/cmd
 
 ## Application package
@@ -141,7 +141,7 @@ different [supported sources](/tools/pub/dependencies#dependency-sources) are av
 When pub gets a remote package,
 it downloads it into a single _system cache_ directory maintained by
 pub. On Mac and Linux, this directory defaults to `~/.pub-cache`.
-On Windows, the file lives in `%APPDATA%\Pub\Cache\bin`,
+On Windows, the file lives in `%LOCALAPPDATA%\Pub\Cache\bin`,
 though its exact location may vary depending on the Windows version.
 You can specify a different location using the
 [PUB_CACHE](/tools/pub/environment-variables) environment variable.
