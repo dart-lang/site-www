@@ -1,5 +1,11 @@
 Once you’re ready to move beyond DartPad and develop real apps,
-you need the Dart SDK.
+you need an SDK.
+You can either download the Dart SDK directly
+(as described below)
+or [download the Flutter SDK,][]
+which (as of Flutter 1.20) includes the Dart SDK.
+
+[download the Flutter SDK,]: {{site.flutter}}/docs/get-started/install
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>

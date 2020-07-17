@@ -8,15 +8,15 @@ js:
 
 The Dart SDK has the libraries and command-line tools that you need to develop
 Dart web, command-line, and server apps. To get the Dart SDK, see [Get Dart](/get-dart).
-
-If you're developing only mobile apps,
+If you're developing Flutter apps,
 then you don't need the Dart SDK; just [install Flutter.][flutter]
 
 To learn about other tools you can use for Dart development, see
 the [Dart tools](/tools) page.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** This site's documentation and examples use
+{{site.alert.version-note}}
+  As of Flutter 1.20, the Flutter SDK includes the Dart SDK.
+  This site's documentation and examples use
   {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.

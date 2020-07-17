@@ -5,18 +5,24 @@ description: The tools that support the Dart language.
 
 When you're ready to create an app,
 get the SDK and tools for your app type.
+If you aren't sure which tools you need, **get the Flutter SDK.**
 
 <div class="table-wrapper" markdown="1">
 |------------+-----------------------------------+--------------------------|
 | App type   | Get started instructions          | Tool information         |
 |------------|-----------------------------------|--------------------------|
-| Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
-| Web    | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
+| Flutter (mobile and more) | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
+| Web app (non-Flutter) | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
 | Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
 {:.table .table-striped}
 </div>
 
 [General-purpose tools]: #general-purpose-tools
+
+{{site.alert.version-note}}
+  As of Flutter 1.20, the Flutter SDK includes the Dart SDK.
+{{site.alert.end}}
+
 
 ## General-purpose tools
 
