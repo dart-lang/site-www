@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "dart (Dart VM)"
 description: "The reference page for 'dart' at the command line."
 short-title: "dart"
