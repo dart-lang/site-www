@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Experiment flags
 description: Using experiment flags with Dart tools.
 ---
