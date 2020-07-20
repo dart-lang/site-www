@@ -15,14 +15,15 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion misc-names
   }
 
-  <DB, IOStream, Id>(uiHandler) => [
+  <IOStream, Id, DBIOPort, TVVcr>(uiHandler) => [
         // #docregion acronyms-and-abbreviations
         HttpConnectionInfo,
         uiHandler,
         IOStream,
         HttpRequest,
         Id,
-        DB,
+        DBIOPort,
+        TVVcr
         // #enddocregion acronyms-and-abbreviations
       ];
 
