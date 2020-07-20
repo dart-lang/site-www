@@ -1565,9 +1565,9 @@ bool convertToBool(Object arg) {
 
 The main exception to this rule is when working with existing APIs that use
 `dynamic`, especially inside a generic type. For example, JSON objects have type
-`Map<String, dynamic>` and your code will thus need to accept that same type.
-Even so, when using a value from one of these APIs, it's often a good idea to
-cast it to a more precise type before accessing members.
+`Map<String, dynamic>` and your code will need to accept that same type. Even
+so, when using a value from one of these APIs, it's often a good idea to cast it
+to a more precise type before accessing members.
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
