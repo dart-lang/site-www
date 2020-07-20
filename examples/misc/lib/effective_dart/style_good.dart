@@ -22,7 +22,7 @@ void miscDeclAnalyzedButNotTested() {
         IOStream,
         HttpRequest,
         Id,
-        DBIOPort
+        DBIOPort,
         TVVcr
         // #enddocregion acronyms-and-abbreviations
       ];
