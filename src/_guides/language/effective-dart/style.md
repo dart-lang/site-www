@@ -35,8 +35,8 @@ Identifiers come in three flavors in Dart.
 
 {% include linter-rule.html rule="camel_case_types" %}
 
-Classes, enums, typedefs, and type parameters should capitalize the first letter
-of each word (including the first word), and use no separators.
+Classes, enum types, typedefs, and type parameters should capitalize the first
+letter of each word (including the first word), and use no separators.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
