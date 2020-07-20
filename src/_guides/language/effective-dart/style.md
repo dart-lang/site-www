@@ -265,7 +265,7 @@ UiHandler
 IoStream
 HTTPRequest
 ID
-DbIOPort
+DbIoPort
 TvVcr
 {% endprettify %}
 
