@@ -1533,7 +1533,7 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### AVOID using `dynamic` unless you want dynamic dispatch.
+### AVOID using `dynamic` unless you want to disable static checking.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
