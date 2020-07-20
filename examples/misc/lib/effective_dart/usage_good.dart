@@ -49,16 +49,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection-literals
-    var points = [];
-    var addresses = {};
-    // #enddocregion collection-literals
-  }
-
-  {
-    // #docregion generic-collection-literals
     var points = <Point>[];
     var addresses = <String, Address>{};
-    // #enddocregion generic-collection-literals
+    var counts = <int>{};
+    // #enddocregion collection-literals
   }
 
   (Iterable lunchBox, Iterable words) {

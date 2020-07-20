@@ -253,49 +253,30 @@ The following best practices apply to collections.
 
 {% include linter-rule.html rule="prefer_collection_literals" %}
 
-There are two ways to make an empty growable list: `[]` and `List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`,
-`Map()`, and `LinkedHashMap()`.
-
-If you want to create a non-growable list, or some other custom collection type
-then, by all means, use a constructor. Otherwise, use the nice literal syntax.
-The core library exposes those constructors to ease adoption, but idiomatic Dart
-code does not use them.
+Dart has three core collection types: List, Map, and Set. These classes have
+unnamed constructors like most classes do. But because these collections are
+used so frequently, Dart has nicer built-in syntax for creating them:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
-var points = [];
-var addresses = {};
+var points = <Point>[];
+var addresses = <String, Address>{};
+var counts = <int>{};
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
-var points = List();
-var addresses = Map();
-{% endprettify %}
-
-You can even provide a type argument for them if that matters.
-
-{:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (generic-collection-literals)"?>
-{% prettify dart tag=pre+code %}
-var points = <Point>[];
-var addresses = <String, Address>{};
-{% endprettify %}
-
-{:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
-{% prettify dart tag=pre+code %}
 var points = List<Point>();
 var addresses = Map<String, Address>();
+var counts = Set<int>();
 {% endprettify %}
 
-Note that this doesn't apply to the *named* constructors for those classes.
-`List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `List()` to create a non-growable one, then it
-makes sense to use that.
+Note that this guideline doesn't apply to the *named* constructors for those
+classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
+Likewise, if you're passing a size to `List()` to create a non-growable one,
+then it makes sense to use that.
 
 ### DON'T use `.length` to see if a collection is empty.
 
