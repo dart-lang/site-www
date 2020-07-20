@@ -84,7 +84,7 @@ class C { ... }
 {% include linter-rule.html rule="camel_case_extensions" %}
 
 Like types, extensions should capitalize the first letter of each word
-(including the first word), 
+(including the first word),
 and use no separators.
 
 {:.good}
@@ -254,7 +254,8 @@ uiHandler
 IOStream
 HttpRequest
 Id
-DB
+DBIOPort
+TVVcr
 {% endprettify %}
 
 {:.bad}
@@ -264,7 +265,8 @@ UiHandler
 IoStream
 HTTPRequest
 ID
-Db
+DbIOPort
+TvVcr
 {% endprettify %}
 
 
