@@ -1533,7 +1533,7 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### DO annotate with `Object` instead of `dynamic` to indicate any object is allowed.
+### AVOID using `dynamic` unless you want dynamic dispatch.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
@@ -1541,27 +1541,33 @@ values: `Object` and `dynamic`. However, they convey different things. If you
 simply want to state that you allow all objects, use `Object`, as you would in
 Java or C#.
 
-Using `dynamic` sends a more complex signal. It may mean that Dart's type system
-isn't sophisticated enough to represent the set of types that are allowed, or
-that the values are coming from interop or otherwise outside of the purview of
-the static type system, or that you explicitly want runtime dynamism at that
-point in the program.
+The type `dynamic` not only accepts all objects, but it also permits all
+*operations*. Any member access on a value of type `dynamic` is allowed at
+compile time, but may fail and throw an exception at runtime. If you want
+exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
+type to use.
+
+Otherwise, prefer using `Object`. Rely on `is` checks and type promotion to
+ensure that the value's runtime type supports the member you want to access
+before you access it.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
 {% prettify dart tag=pre+code %}
-void log(Object object) {
-  print(object.toString());
-}
-
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.
-bool convertToBool(dynamic arg) {
+bool convertToBool(Object arg) {
   if (arg is bool) return arg;
-  if (arg is String) return arg == 'true';
+  if (arg is String) return arg.toLowerCase() == 'true';
   throw ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
+
+The main exception to this rule is when working with existing APIs that use
+`dynamic`, especially inside a generic type. For example, JSON objects have type
+`Map<String, dynamic>` and your code will thus need to accept that same type.
+Even so, when using a value from one of these APIs, it's often a good idea to
+cast it to a more precise type before accessing members.
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
