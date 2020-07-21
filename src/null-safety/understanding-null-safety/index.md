@@ -21,13 +21,13 @@ main() {
 }
 ```
 
-If you run this Dart program today, it will throw a `NoSuchMethodError`
-exception on the call to `.length`. The `null` value is an instance of the
-`Null` class, and `Null` has no "length" getter. Runtime failures suck. This is
-especially true in a language like Dart that is designed to run on an end-user's
-device. If a server application fails, you can often restart it before anyone
-notices. But when a Flutter app crashes on a user's phone, they are not happy.
-When you're users aren't happy, you aren't happy.
+If you run this Dart program today, it throws a `NoSuchMethodError` exception on
+the call to `.length`. The `null` value is an instance of the `Null` class, and
+`Null` has no "length" getter. Runtime failures suck. This is especially true in
+a language like Dart that is designed to run on an end-user's device. If a
+server application fails, you can often restart it before anyone notices. But
+when a Flutter app crashes on a user's phone, they are not happy. When your
+users aren't happy, you aren't happy.
 
 Developers like statically-typed languages like Dart because they enable the
 type checker to find mistakes in code at compile time, usually right in the IDE.
@@ -44,15 +44,15 @@ other changes and new language features to let you not only write null-safe code
 but hopefully to *enjoy* doing so.
 
 This document is long. If you want something shorter that covers just what you
-need to know to get up and running, start with the [overview][overview]. When
-you are ready to for a deeper understanding and have the time, come back here so
-you can understand deeply *how* the language handles `null`, *why* we designed
-it that way, and how to write idiomatic, modern, null-safe Dart. (Spoiler alert:
-it ends up being surprisingly close to how you write Dart today.)
+need to know to get up and running, start with the [overview][]. When you are
+ready for a deeper understanding and have the time, come back here so you can
+understand deeply *how* the language handles `null`, *why* we designed it that
+way, and how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends
+up being surprisingly close to how you write Dart today.)
 
 As we said before, there are several ways a language can tackle null reference
-errors, each of which have their pros and cons. We had a few principles that
-guided the choices we made:
+errors, each of which have their pros and cons. These principles guided the
+choices we made:
 
 *   **Code should be safe by default.** If you write new Dart code and don't use
     any explicitly unsafe features, it will never throw a null reference error
@@ -110,7 +110,7 @@ Thus with null safety, our goal is to give you *control* and *insight* into
 where `null` can flow through your program and certainty that it can't flow
 somewhere that would cause a crash.
 
-## Nullability in the Type System
+## Nullability in the type system
 
 We start in the static type system because everything else rests upon that. Your
 Dart program has a whole universe of types in it: primitive types like `int` and
@@ -264,7 +264,7 @@ List<int> filterEvens(List<int> ints) {
 ```
 
 Spot the bug? The `.where()` method is lazy, so it returns an `Iterable`, not a
-`List`. This program will compile but then throw an exception at runtime when it
+`List`. This program compiles but then throws an exception at runtime when it
 tries to cast that `Iterable` to the `List` type that `filterEvens` declares it
 returns. With the removal of implicit downcasts, this becomes a compile error.
 
@@ -281,8 +281,8 @@ to the nullable side because doing so is safe, but not the other direction.
 
 That seems like nullable types are basically useless. They have no methods and
 you can't get away from them. Don't worry, we have a whole suite of features to
-learn to help you move values from the nullable half over to the other side
-that we will get to soon.
+help you move values from the nullable half over to the other side that we will
+get to soon.
 
 ### Top and bottom
 
@@ -324,7 +324,7 @@ In practice, this means:
 *   On the rare times you need a bottom type, use `Never` instead of `Null`.
     If you don't know if you need it, you probably don't.
 
-## Ensuring Correctness
+## Ensuring correctness
 
 We bifurcated the universe of types into nullable and non-nullable halves. In
 order to maintain soundness and our principle that you can never get a null
@@ -340,8 +340,8 @@ you leave a function. So there are some additional compile errors:
 ### Invalid returns
 
 If a function has a non-nullable return type, then every path through the
-function must reach a `return` statement that returns a value. Dart before null
-safety was pretty lax about missing returns. For example:
+function must reach a `return` statement that returns a value. Before null
+safety, Dart was pretty lax about missing returns. For example:
 
 ```dart
 String missingReturn() {
@@ -461,7 +461,7 @@ Even so, the rules do cause friction. Fortunately, we have a suite of new
 language features to lubricate the most common patterns where these new
 limitations slow you down. First, though, it's time to talk about flow analysis.
 
-## Flow Analysis
+## Flow analysis
 
 [Control flow analysis][] has been around in compilers for years. It's mostly
 hidden from users and used during compiler optimization, but some newer
@@ -471,7 +471,7 @@ Dart already has a dash of flow analysis in the form of *type promotion*:
 ```dart
 bool isEmptyList(Object object) {
   if (object is List) {
-    return object.isEmpty;
+    return object.isEmpty; // <-- OK!
   } else {
     return false;
   }
@@ -487,7 +487,7 @@ body of some control flow construct only executes when a certain `is` expression
 on a variable is true, then inside that body the variable's type is "promoted"
 to the tested type.
 
-In the example here, the then block of the `if` statement only runs when
+In the example here, the then branch of the `if` statement only runs when
 `object` actually contains a list. Therefore, Dart promotes `object` to type
 `List` instead of its declared type `Object`. This is a handy feature, but it's
 pretty limited. The following functionally identical program does not work:
@@ -495,7 +495,7 @@ pretty limited. The following functionally identical program does not work:
 ```dart
 bool isEmptyList(Object object) {
   if (object is! List) return false;
-  return object.isEmpty;
+  return object.isEmpty; // <-- Error!
 }
 ```
 
