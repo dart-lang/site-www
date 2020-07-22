@@ -233,15 +233,11 @@ void miscDeclAnalyzedButNotTested() {
 
   () {
     // #docregion Object-vs-dynamic
-    void log(Object object) {
-      print(object.toString());
-    }
-
     /// Returns a Boolean representation for [arg], which must
     /// be a String or bool.
-    bool convertToBool(dynamic arg) {
+    bool convertToBool(Object arg) {
       if (arg is bool) return arg;
-      if (arg is String) return arg == 'true';
+      if (arg is String) return arg.toLowerCase() == 'true';
       throw ArgumentError('Cannot convert $arg to a bool.');
     }
     // #enddocregion Object-vs-dynamic
