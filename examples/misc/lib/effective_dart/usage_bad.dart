@@ -56,16 +56,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection-literals
-    var points = List();
-    var addresses = Map();
-    // #enddocregion collection-literals
-  }
-
-  {
-    // #docregion generic-collection-literals
     var points = List<Point>();
     var addresses = Map<String, Address>();
-    // #enddocregion generic-collection-literals
+    var counts = Set<int>();
+    // #enddocregion collection-literals
   }
 
   (Iterable lunchBox, Iterable words) {
