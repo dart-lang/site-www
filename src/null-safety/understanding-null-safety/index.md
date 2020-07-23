@@ -21,13 +21,13 @@ main() {
 }
 ```
 
-If you run this Dart program today, it throws a `NoSuchMethodError` exception on
-the call to `.length`. The `null` value is an instance of the `Null` class, and
-`Null` has no "length" getter. Runtime failures suck. This is especially true in
-a language like Dart that is designed to run on an end-user's device. If a
-server application fails, you can often restart it before anyone notices. But
-when a Flutter app crashes on a user's phone, they are not happy. When your
-users aren't happy, you aren't happy.
+If you run this Dart program without null safety, it throws a
+`NoSuchMethodError` exception on the call to `.length`. The `null` value is an
+instance of the `Null` class, and `Null` has no "length" getter. Runtime
+failures suck. This is especially true in a language like Dart that is designed
+to run on an end-user's device. If a server application fails, you can often
+restart it before anyone notices. But when a Flutter app crashes on a user's
+phone, they are not happy. When your users aren't happy, you aren't happy.
 
 Developers like statically-typed languages like Dart because they enable the
 type checker to find mistakes in code at compile time, usually right in the IDE.
@@ -38,33 +38,32 @@ checker so that the language can detect mistakes like the above attempt to call
 
 There is no one true solution to this problem. Rust and Kotlin both have their
 own approach that makes sense in the context of those languages. This doc walks
-through all the details of our answer for Dart, which we call "null safety". It
-includes a set of changes to the static type system and also a constellation of
-other changes and new language features to let you not only write null-safe code
-but hopefully to *enjoy* doing so.
+through all the details of our answer for Dart. It includes changes to the
+static type system and a suite of other modifications and new language features
+to let you not only write null-safe code but hopefully to *enjoy* doing so.
 
 This document is long. If you want something shorter that covers just what you
 need to know to get up and running, start with the [overview][]. When you are
 ready for a deeper understanding and have the time, come back here so you can
-understand deeply *how* the language handles `null`, *why* we designed it that
-way, and how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends
-up being surprisingly close to how you write Dart today.)
+understand *how* the language handles `null`, *why* we designed it that way, and
+how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends up
+surprisingly close to how you write Dart today.)
 
-As we said before, there are several ways a language can tackle null reference
-errors, each of which have their pros and cons. These principles guided the
-choices we made:
+[overview]: /null-safety
+
+The various ways a language can tackle null reference errors each have their
+pros and cons. These principles guided the choices we made:
 
 *   **Code should be safe by default.** If you write new Dart code and don't use
-    any explicitly unsafe features, it will never throw a null reference error
-    at runtime. All possible null reference errors are caught statically. If you
+    any explicitly unsafe features, it nevers throw a null reference error at
+    runtime. All possible null reference errors are caught statically. If you
     want to defer some of that checking to runtime to get greater flexibility,
     you can, but you have to choose that by using some feature that is textually
     visible in the code.
 
     In other words, we aren't giving you a life jacket and leaving it up to you
     to remember to put it on every time you go out on the water. Instead, we
-    give you a boat that doesn't sink. Unless you jump overboard, you'll stay
-    dry.
+    give you a boat that doesn't sink. You stay dry unless you jump overboard.
 
 *   **Null safe code should be easy to write.** Most existing Dart code is
     dynamically correct and does not throw null reference errors. You like your
@@ -93,18 +92,18 @@ choices we made:
 
     One caveat: We only guarantee soundness in Dart programs that are fully null
     safe. Dart supports programs that contain a mixture of newer null safe code
-    and older legacy code from before Dart supported null safety. In these
-    "mixed-mode" programs, null reference errors may still occur. During the
-    process of migrating your code to null safety, you get all of the static
-    safety benefits in the portions of your program that are migrated. But you
-    don't get the full runtime soundness until you're fully null safe.
+    and older legacy code. In these "mixed-mode" programs, null reference errors
+    may still occur. In a mixed-mode program, you get all of the *static* safety
+    benefits in the portions that are null safe, but you don't get full runtime
+    soundness until the entire application is null safe.
 
 Note that *eliminating* `null` is not a goal. There's nothing wrong with `null`.
 On the contrary, it's really useful to be able to represent the *absence* of a
 value. Building support for a special "absent" value directly into the language
-lets us making working with absence flexible and usable. It underpins optional
-parameters and the handy `?.` null-aware operator syntax. It is not `null` that
-is bad, it is having `null` go *where you don't expect it* that causes problems.
+makes working with absence flexible and usable. It underpins optional
+parameters, the handy `?.` null-aware operator, and default initialization. It
+is not `null` that is bad, it is having `null` go *where you don't expect it*
+that causes problems.
 
 Thus with null safety, our goal is to give you *control* and *insight* into
 where `null` can flow through your program and certainty that it can't flow
@@ -112,11 +111,12 @@ somewhere that would cause a crash.
 
 ## Nullability in the type system
 
-We start in the static type system because everything else rests upon that. Your
-Dart program has a whole universe of types in it: primitive types like `int` and
-`String`, collection types like `List`, and all of the classes and types you and
-the packages you use define. Before null safety, the static type system allowed
-the value `null` to flow into expressions of any of those types.
+Null safety begins in the static type system because everything else rests upon
+that. Your Dart program has a whole universe of types in it: primitive types
+like `int` and `String`, collection types like `List`, and all of the classes
+and types you and the packages you use define. Before null safety, the static
+type system allowed the value `null` to flow into expressions of any of those
+types.
 
 In type theory lingo, the `Null` type was treated as a subtype of all types:
 
@@ -214,9 +214,9 @@ main() {
 }
 ```
 
-This program is not safe and we shouldn't allow it. However, Dart has this thing
-called *implicit downcasts*. If you, for example, pass a value of type `Object`
-to a function expecting an `String`, the type checker allows it:
+This program is not safe and we shouldn't allow it. However, Dart has always had
+this thing called *implicit downcasts*. If you, for example, pass a value of
+type `Object` to a function expecting an `String`, the type checker allows it:
 
 ```dart
 requireStringNotObject(String definitelyString) {
@@ -317,19 +317,19 @@ would still be nullable. Instead, we've added a new bottom type named `Never`:
 In practice, this means:
 
 *   If you want to indicate that you allow a value of any type, use `Object?`
-    instead of `Object`. In fact, it becomes pretty rare to use `Object` since
-    that type means "could be any possible value except this one weirdly
-    prohibted value `null`".
+    instead of `Object`. In fact, it becomes pretty unusual to use `Object`
+    since that type means "could be any possible value except this one weirdly
+    prohibited value `null`".
 
-*   On the rare times you need a bottom type, use `Never` instead of `Null`.
-    If you don't know if you need it, you probably don't.
+*   On the rare occasion that you need a bottom type, use `Never` instead of
+    `Null`. If you don't know if you need a bottom type, you probably don't.
 
 ## Ensuring correctness
 
-We bifurcated the universe of types into nullable and non-nullable halves. In
-order to maintain soundness and our principle that you can never get a null
-reference error at runtime unless you ask for it, we need to guarantee that
-`null` never appears in any type on the non-nullable side.
+We divided the universe of types into nullable and non-nullable halves. In order
+to maintain soundness and our principle that you can never get a null reference
+error at runtime unless you ask for it, we need to guarantee that `null` never
+appears in any type on the non-nullable side.
 
 Getting rid of implicit downcasts and removing `Null` as a bottom type covers
 all of the main places that types flow through a program across assigments and
@@ -349,7 +349,7 @@ String missingReturn() {
 }
 ```
 
-If you analyze this, you get a gentle *hint* that *maybe* you forgot a return,
+If you analyzed this, you got a gentle *hint* that *maybe* you forgot a return,
 but if not, no big deal. That's because if execution reaches the end of a
 function body then Dart implicitly returns `null`. Since every type is nullable,
 *technically* this function is safe, even though it's probably not what you
@@ -388,11 +388,11 @@ totally unsafe if the variable's type is non-nullable. So we have to tighten
 things up for non-nullable variables:
 
 *   **Top level variable and static field declarations must have an
-    initializer.** Since these are lazy and can be accessed and assigned from
-    anywhere in the program, it's impossible for the compiler to guarantee that
-    the variable will be assigned a value before it gets read. So the only safe
-    option is to require the declaration itself to have an initializing
-    expression that produces a value of the right type:
+    initializer.** Since these can be accessed and assigned from anywhere in the
+    program, it's impossible for the compiler to guarantee that the variable has
+    been given a value before it gets used. The only safe option is to require
+    the declaration itself to have an initializing expression that produces a
+    value of the right type:
 
     ```dart
     int topLevel = 0;
@@ -417,11 +417,11 @@ things up for non-nullable variables:
     }
     ```
 
-    In other words, as long as the field has a value by the time you reach the
+    In other words, as long as the field has a value before you reach the
     constructor body, you're good.
 
-*   Local variables are the fun one. A non-nullable local variable *doesn't*
-    need to have an initializer. This is perfectly fine:
+*   Local variables are the most flexible case. A non-nullable local variable
+    *doesn't* need to have an initializer. This is perfectly fine:
 
     ```dart
     int tracingFibonacci(int n) {
@@ -451,11 +451,11 @@ things up for non-nullable variables:
     So, if you want a parameter to be optional, you need to either make it
     nullable or specify a valid non-`null` default value.
 
-These restrictions sound onerous, but in they aren't too bad in practice. They
-are very similar to the existing restrictions around `final` variables and
-you've likely been working with those for years without even really noticing.
-Also, remember that these only apply to *non-nullable* variables. You can always
-make the type nullable and then get the default initialization to `null`.
+These restrictions sound onerous, but they aren't too bad in practice. They are
+very similar to the existing restrictions around `final` variables and you've
+likely been working with those for years without even really noticing. Also,
+remember that these only apply to *non-nullable* variables. You can always make
+the type nullable and then get the default initialization to `null`.
 
 Even so, the rules do cause friction. Fortunately, we have a suite of new
 language features to lubricate the most common patterns where these new
@@ -490,7 +490,8 @@ to the tested type.
 In the example here, the then branch of the `if` statement only runs when
 `object` actually contains a list. Therefore, Dart promotes `object` to type
 `List` instead of its declared type `Object`. This is a handy feature, but it's
-pretty limited. The following functionally identical program does not work:
+pretty limited. Prior to null safety, the following functionally identical
+program did not work:
 
 ```dart
 bool isEmptyList(Object object) {
@@ -500,7 +501,7 @@ bool isEmptyList(Object object) {
 ```
 
 Again, you can only reach the `.isEmpty` call when `object` contains a list, so
-this program is dynamically correct. But the type promotion rules are not smart
+this program is dynamically correct. But the type promotion rules were not smart
 enough to see that the `return` statement means the second statement can only be
 reached when `object` is a list.
 
@@ -569,7 +570,7 @@ This program analyzes without error. Notice that the last line of the `==`
 method accesses `.x` and `.y` on `other`. It has been promoted to `Point` even
 though the function doesn't have any `return` or `throw`. The control flow
 analysis knows that the declared type of `wrongType()` is `Never` which means
-the then body of the `if` statement *must* abort somehow. Since the second
+the then branch of the `if` statement *must* abort somehow. Since the second
 statement can only be reached when `other` is a `Point`, Dart promotes it.
 
 In other words, using `Never` in your own APIs lets you extend Dart's
@@ -672,7 +673,7 @@ to do so.
 Having smarter reachability analysis and knowing where `null` can flow through
 your program helps ensure that you *add* code to handle `null`. But we can also
 use that same analysis to detect code that you *don't* need. Before null safety,
-if you write something like:
+if you wrote something like:
 
 ```dart
 String checkList(List list) {
@@ -683,7 +684,7 @@ String checkList(List list) {
 }
 ```
 
-Dart has no way of knowing if that null-aware `?.` operator is useful or not.
+Dart had no way of knowing if that null-aware `?.` operator is useful or not.
 For all it knows, you could pass `null` to the function. But in null safe Dart,
 if you have annotated that function with the now non-nullable `List` type, then
 it knows `list` will never be `null`. That implies the `?.` will never do
@@ -1220,41 +1221,57 @@ Other generic types have some bound that restricts the kinds of type arguments
 that can be applied:
 
 ```dart
-Rect<T extends num> {
-  final T left, top, right, bottom;
+class Interval<T extends num> {
+  T min, max;
 
-  Rect(this.left, this.top, this.right, this.bottom);
+  Interval(this.min, this.max);
 
-  T get area => (right - left) * (bottom - top);
+  bool get isEmpty => max <= min;
 }
 ```
 
 If the bound is non-nullable, then the type parameter is also non-nullable. This
 means you have the restrictions of non-nullable types&mdash;you can't leave
-fields and variables uninitialized. But you can call any methods on values of
-the type parameter type that are declared on its bound. Having a non-nullable
-bound does, however, prevent *users* of your generic class from instantiating it
-with a nullable type argument. That's probably a reasonable limitation for most
+fields and variables uninitialized. The example class here must have a
+constructor that initializes the fields.
+
+In return for that restriction, you can call any methods on values of the type
+parameter type that are declared on its bound. Having a non-nullable bound does,
+however, prevent *users* of your generic class from instantiating it with a
+nullable type argument. That's probably a reasonable limitation for most
 classes.
 
 You can also use a nullable *bound*:
 
 ```dart
-Rect<T extends num?> {
-  final T left, top, right, bottom;
+class Interval<T extends num?> {
+  T min, max;
 
-  T get area => (right - left) * (bottom - top);
+  bool get isEmpty {
+    var localMin = min;
+    var localMax = max;
+
+    // No min or max means an open-ended interval.
+    if (localMin == null || localMax == null) return false;
+    return localMax! <= localMin!;
+  }
 }
 ```
 
 This means that in the body of the class you get the flexibility of treating the
-type parameter as nullable. You can declare uninitialized variables of the type
-parameter's type. But you also have the limitations&mdash;you can't call anything
-on a variable of that type unless you deal with the nullability first.
+type parameter as nullable. Note we have no constructor this time, and that's
+OK. The fields will be implicitly initialized to `null`. You can declare
+uninitialized variables of the type parameter's type.
+
+But you also have the limitations of nullability&mdash;you can't call anything
+on a variable of that type unless you deal with the nullability first. In the
+example here, we copy the fields in local variables and check those locals for
+`null` so that flow analysis promotes them to non-nullable types before we use
+`<=`.
 
 Note that a nullable bound does not prevent users from instantiating the class
 with non-nullable types. A nullable bound means that the type argument *can* be
-nullable, not that it *must*. (In fact, the default bound on type arguments if
+nullable, not that it *must*. (In fact, the default bound on type parameters if
 you don't write an `extends` clause is the nullable type `Object?`.) There is no
 way to *require* a nullable type argument. If you want uses of the type
 parameter to reliably be nullable, you can use `T?` inside the body of the
@@ -1348,9 +1365,10 @@ fine to truncate lists of all types, and you can grow lists of nullable types.
 There is an important consequence of this if you define your own list types that
 extend `ListBase` or apply `ListMixin`. Both of those types provide an
 implementation of `insert()` that previously made room for the inserted element
-by setting the length. That would fail with null safety, so instead `insert()`
-now calls `add()`. Your custom list class should provide a definition of `add()`
-if you want to be able to use that inherited `insert()` method.
+by setting the length. That would fail with null safety, so instead we changed
+the implementation of `insert()` in `ListMixin` (which `ListBase` shares) to
+call `add()` instead. Your custom list class should provide a definition of
+`add()` if you want to be able to use that inherited `insert()` method.
 
 ### Cannot access Iterator.current before or after iteration
 
