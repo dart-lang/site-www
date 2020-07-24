@@ -55,7 +55,7 @@ The various ways a language can tackle null reference errors each have their
 pros and cons. These principles guided the choices we made:
 
 *   **Code should be safe by default.** If you write new Dart code and don't use
-    any explicitly unsafe features, it nevers throw a null reference error at
+    any explicitly unsafe features, it never throws a null reference error at
     runtime. All possible null reference errors are caught statically. If you
     want to defer some of that checking to runtime to get greater flexibility,
     you can, but you have to choose that by using some feature that is textually
