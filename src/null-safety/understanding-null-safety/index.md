@@ -513,7 +513,7 @@ powerful in several ways][flow analysis].
 ### Reachability analysis
 
 First off, we fixed the [long-standing complaint][18921] that type promotion
-isn't smart about early returns an other unreachable code paths. When analyzing
+isn't smart about early returns and other unreachable code paths. When analyzing
 a function, it now takes into account `return`, `break`, `throw`, and any other
 way execution might terminate early in a function. Under null safety, this function:
 
