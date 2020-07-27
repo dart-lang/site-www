@@ -513,7 +513,7 @@ powerful in several ways][flow analysis].
 ### Reachability analysis
 
 First off, we fixed the [long-standing complaint][18921] that type promotion
-isn't smart about early returns an other unreachable code paths. When analyzing
+isn't smart about early returns and other unreachable code paths. When analyzing
 a function, it now takes into account `return`, `break`, `throw`, and any other
 way execution might terminate early in a function. Under null safety, this function:
 
@@ -859,7 +859,7 @@ class HttpResponse {
 
 If you try to run this, you get a compile error on the call to `toUpperCase()`.
 The `error` field is nullable because it won't have a value in a successful
-reponse. We can see by inspecting the class that we never access the `error`
+response. We can see by inspecting the class that we never access the `error`
 message when it is `null`. But that requires understanding the relationship
 between the value of `code` and the nullability of `error`. The type checker
 can't see that connection.
