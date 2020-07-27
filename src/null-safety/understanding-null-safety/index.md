@@ -1083,7 +1083,7 @@ of null safety. It simply makes the language feel more complete to me.
 
 ### Working with nullable fields
 
-These new features covers many common patterns and make working with `null`
+These new features cover many common patterns and make working with `null`
 pretty painless most of the time. But even so, our experience is that nullable
 fields can still be difficult. In cases where you can make the field `late` and
 non-nullable, you're golden. But in many cases you need to *check* to see if the
@@ -1158,7 +1158,7 @@ main() {
 }
 ```
 
-In the definition of `Box`, is `T` a nullable type or a non-nullable type? As
+In the definition of `Box`, is `T` is a nullable type or a non-nullable type? As
 you can see, it can be instantiated with either kind. The answer is that `T` a
 *potentially nullable type*. Inside the body of a generic class or method, a
 potentially nullable type has all of the restrictions of both nullable types
@@ -1296,7 +1296,7 @@ There are a few important corners, though:
 
 ### The Map index operator is nullable
 
-This isn't really change, but more a thing to know. The index `[]` operator on
+This isn't really a change, but more a thing to know. The index `[]` operator on
 the Map class returns `null` if the key isn't present. This implies that the
 return type of that operator must be nullable: `V?` instead of `V`.
 
