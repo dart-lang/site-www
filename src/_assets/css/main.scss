@@ -1379,5 +1379,12 @@ blockquote {
   padding: 10px 20px 0 20px;
 }
 
+.searchbar {
+  > * {
+    max-width: 640px;
+    width:100%
+  }
+}
+
 @import '_overwrites';
 @import '_dash';
