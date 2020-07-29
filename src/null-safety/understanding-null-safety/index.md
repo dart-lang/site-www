@@ -1253,7 +1253,7 @@ class Interval<T extends num?> {
 
     // No min or max means an open-ended interval.
     if (localMin == null || localMax == null) return false;
-    return localMax! <= localMin!;
+    return localMax <= localMin;
   }
 }
 ```

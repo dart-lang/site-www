@@ -10,6 +10,20 @@ values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
+{{site.alert.note}}
+  This page provides an overview to how null safety
+  affects the Dart language. For a deep dive into how
+  null safety works, see [Understanding null safety][].
+{{site.alert.end}}
+
+{% comment %}
+  If it were my druthers, I'd move this page to a sub-page
+  called overview and make this page more of a landing page,
+  now that Bob's null-safety deep dive is available
+  (and the migration guide is coming).
+  But I'll leave that decision up to KW.
+{% endcomment %}
+
 With null safety,
 the Dart analyzer enforces good practices.
 For example, it makes sure you check for null before
@@ -317,3 +331,4 @@ For more information about null safety, see the following resources:
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
+[Understanding null safety: /null-safety/understanding-null-safety
