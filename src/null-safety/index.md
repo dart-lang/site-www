@@ -331,4 +331,4 @@ For more information about null safety, see the following resources:
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
-[Understanding null safety: /null-safety/understanding-null-safety
+[Understanding null safety]: /null-safety/understanding-null-safety
