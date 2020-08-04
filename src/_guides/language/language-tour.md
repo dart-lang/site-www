@@ -307,7 +307,7 @@ assert(lineCount == null);
 
 {{site.alert.note}}
   Production code ignores the `assert()` call. During development, on the other
-  hand, <code>assert(<em>condition</em>)</code> throws an exception if
+  hand, <code>assert(<em>condition</em>)</code> throws an error if
   _condition_ is false. For details, see [Assert](#assert).
 {{site.alert.end}}
 
@@ -2287,8 +2287,8 @@ assert(urlString.startsWith('https'),
 The first argument to `assert` can be any expression that
 resolves to a boolean value. If the expression’s value
 is true, the assertion succeeds and execution
-continues. If it's false, the assertion fails and an exception (an
-[AssertionError][]) is thrown.
+continues. If it's false, the assertion fails and an
+[AssertionError][] is thrown.
 
 When exactly do assertions work?
 That depends on the tools and framework you're using:
