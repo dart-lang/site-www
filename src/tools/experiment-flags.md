@@ -22,17 +22,60 @@ For example, to enable the experiments
 add those flags to the `dart` command:
 
 ```terminal
-$ dart --enable-experiment=super-mixins,no-slow-checks
+$ dart --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
 
 ## Using experiment flags with IDEs
 
 To enable experiments related to running or debugging apps in IDEs,
-edit the launch configuration:
+edit the launch configuration.
 
-* [Instructions for Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations)
-* [Instructions for Android Studio](https://developer.android.com/studio/run/rundebugconfig)
+### Visual Studio Code
+
+In `launch.json` under `configurations`,
+add a new `vmAdditionalArgs` key containing the desired flags.
+Example:
+
+```json
+ "configurations": [
+        {
+            "name": "Dart",
+            "program": "bin/main.dart",
+            "request": "launch",
+            "type": "dart",
+            "vmAdditionalArgs": [
+                "--enable-experiment=super-mixins,no-slow-checks",
+            ],
+        }
+    ]
+```
+
+For more information, consult the documentation for
+[VS Code launch configurations.][VSC instructions]
+
+[VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
+
+
+### Android Studio
+
+Under `VMOptions` add the desired flags.
+Example:
+
+```xml
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run main" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <option name="VMOptions" value="--enable-experiment=non-nullable" />
+    <option name="filePath" value="$PROJECT_DIR$/bin/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>
+```
+
+For more information, consult the instructions for
+[Android Studio run/debug configurations.][AS instructions]
+
+[AS instructions]: https://developer.android.com/studio/run/rundebugconfig
 
 
 ## Using experiment flags with the Dart analyzer (command-line and IDE)
