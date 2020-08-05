@@ -138,9 +138,7 @@ It also contained a faster pub tool, and a new [pub outdated][] command.
 
 ## Dart 2.9
 
-Dart 2.9 didn't add any features to the Dart language,
-but as of Dart 2.9 and Flutter 1.20, when you download the Flutter SDK
-you get the complete Dart SDK.
+Dart 2.9 didn't add any features to the Dart language.
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
