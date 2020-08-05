@@ -3,7 +3,7 @@ you need an SDK.
 You can either download the Dart SDK directly
 (as described below)
 or [download the Flutter SDK,][]
-which (as of Flutter 1.20) includes the Dart SDK.
+which (as of Flutter 1.21) includes the Dart SDK.
 
 [download the Flutter SDK,]: {{site.flutter}}/docs/get-started/install
 

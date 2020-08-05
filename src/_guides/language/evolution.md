@@ -130,12 +130,17 @@ void main() {
 ## Dart 2.8
 
 Dart 2.8 didn't add any features to the Dart language, but it did
-contain a number of preparatory [breaking changes][] to ensure great
+contain a number of preparatory [breaking changes][2.8 breaking changes] to ensure great
 nullability-related usability and performance in the upcoming
 null safety feature.
 
 It also contained a faster pub tool, and a new [pub outdated][] command.
 
+## Dart 2.9
+
+Dart 2.9 didn't add any features to the Dart language.
+
+[2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
 [collection for]: /guides/language/language-tour#collection-operators
 [collection if]: /guides/language/language-tour#collection-operators
@@ -148,5 +153,4 @@ It also contained a faster pub tool, and a new [pub outdated][] command.
 [set literals]: /guides/language/language-tour#sets
 [sound type system]: /guides/language/type-system
 [spread operator]: /guides/language/language-tour#spread-operator
-[breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [pub outdated]: https://dart.dev/tools/pub/cmd/pub-outdated
