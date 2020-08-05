@@ -14,6 +14,7 @@ problem][billion]. Here is an example:
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 
 ```dart
+// Without null safety:
 bool isEmpty(String string) => string.length == 0;
 
 main() {
@@ -148,6 +149,7 @@ useful, so we still need a way to handle it. Optional parameters are a good
 illustrative case. Consider this null safe Dart code:
 
 ```dart
+// Using null safety:
 makeCoffee(String coffee, [String? dairy]) {
   if (dairy != null) {
     print("$coffee with $dairy");
@@ -174,6 +176,7 @@ call methods of the underlying type on it because those might fail if the value
 is `null`:
 
 ```dart
+// Hypothetical unsound null safety:
 bad(String? maybeString) {
   print(maybeString.length);
 }
@@ -204,6 +207,7 @@ call `String` methods on the value. If you pass a `String?` to it, `null` could
 flow in and that could fail:
 
 ```dart
+// Hypothetical unsound null safety:
 requireStringNotNull(String definitelyString) {
   print(definitelyString.length);
 }
@@ -219,6 +223,7 @@ this thing called *implicit downcasts*. If you, for example, pass a value of
 type `Object` to a function expecting an `String`, the type checker allows it:
 
 ```dart
+// Without null safety:
 requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
@@ -243,6 +248,7 @@ errors, including the call to `requireStringNotObject()`. You'll have to add the
 explicit downcast yourself:
 
 ```dart
+// Using null safety:
 requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
@@ -258,6 +264,7 @@ liked implicit downcasts. In particular, you may have been burned by this
 before:
 
 ```dart
+// Without null safety:
 List<int> filterEvens(List<int> ints) {
   return ints.where((n) => n.isEven);
 }
@@ -344,6 +351,7 @@ function must reach a `return` statement that returns a value. Before null
 safety, Dart was pretty lax about missing returns. For example:
 
 ```dart
+// Without null safety:
 String missingReturn() {
   // No return.
 }
@@ -363,6 +371,7 @@ return something, it is satisfied. The analysis is pretty smart, so even this
 function is OK:
 
 ```dart
+// Using null safety:
 String alwaysReturns(int n) {
   if (n == 0) {
     return 'zero';
@@ -395,6 +404,7 @@ things up for non-nullable variables:
     value of the right type:
 
     ```dart
+    // Using null safety:
     int topLevel = 0;
 
     class SomeClass {
@@ -407,6 +417,7 @@ things up for non-nullable variables:
     list.** That's a lot of jargon. Here are the examples:
 
     ```dart
+    // Using null safety:
     class SomeClass {
       int atDeclaration = 0;
       int initializingFormal;
@@ -424,6 +435,7 @@ things up for non-nullable variables:
     *doesn't* need to have an initializer. This is perfectly fine:
 
     ```dart
+    // Using null safety:
     int tracingFibonacci(int n) {
       int result;
       if (n < 2) {
@@ -469,6 +481,7 @@ languages have started to use the same techniques for visible language features.
 Dart already has a dash of flow analysis in the form of *type promotion*:
 
 ```dart
+// With (or without) null safety:
 bool isEmptyList(Object object) {
   if (object is List) {
     return object.isEmpty; // <-- OK!
@@ -494,6 +507,7 @@ pretty limited. Prior to null safety, the following functionally identical
 program did not work:
 
 ```dart
+// Without null safety:
 bool isEmptyList(Object object) {
   if (object is! List) return false;
   return object.isEmpty; // <-- Error!
@@ -520,6 +534,7 @@ way execution might terminate early in a function. Under null safety, this funct
 [18921]: https://github.com/dart-lang/sdk/issues/18921
 
 ```dart
+// Using null safety:
 bool isEmptyList(Object object) {
   if (object is! List) return false;
   return object.isEmpty;
@@ -546,6 +561,7 @@ as a type annotation. Maybe you have a helper function to make it easier to
 throw a certain kind of exception:
 
 ```dart
+// Using null safety:
 Never wrongType(String type, Object value) {
   throw ArgumentError('Expected $type, but was ${value.runtimeType}.');
 }
@@ -554,6 +570,7 @@ Never wrongType(String type, Object value) {
 You might use it like so:
 
 ```dart
+// Using null safety:
 class Point {
   final double x, y;
 
@@ -593,6 +610,7 @@ flexible. Before null safety, it can be difficult to use `final` for local
 variables if you need to initialize them in any sort of interesting way:
 
 ```dart
+// Using null safety:
 int tracingFibonacci(int n) {
   final int result;
   if (n < 2) {
@@ -630,6 +648,7 @@ If you check a variable with nullable type to see if it is not `null`, Dart then
 promotes the variable to the underlying non-nullable type:
 
 ```dart
+// Using null safety:
 String makeCommand(String executable, [List<String>? arguments]) {
   var result = executable;
   if (arguments != null) {
@@ -654,6 +673,7 @@ It also, of course, works with the smarter analysis we do for reachability. The
 above function can be written just as well as:
 
 ```dart
+// Using null safety:
 String makeCommand(String executable, [List<String>? arguments]) {
   var result = executable;
   if (arguments == null) return result;
@@ -676,6 +696,7 @@ use that same analysis to detect code that you *don't* need. Before null safety,
 if you wrote something like:
 
 ```dart
+// Using null safety:
 String checkList(List list) {
   if (list?.isEmpty) {
     return 'Got nothing';
@@ -700,6 +721,7 @@ variable has been promoted to a non-nullable type, you get a warning if you
 redundantly check it again for `null`:
 
 ```dart
+// Using null safety:
 checkList(List? list) {
   if (list == null) return 'No list';
   if (list?.isEmpty) {
@@ -734,7 +756,7 @@ semantics state that if the receiver is `null` then the property access on the
 right-hand side is skipped and the expression evaluates to `null`:
 
 ```dart
-// Pre-null safety.
+// Without null safety:
 String notAString = null;
 print(notAString?.length);
 ```
@@ -745,7 +767,7 @@ call methods on nullable types, we can and do let you use null-aware operators
 on them. The post-null safety version of the program is:
 
 ```dart
-// With null safety.
+// Using null safety:
 String? notAString = null;
 print(notAString?.length);
 ```
@@ -758,6 +780,7 @@ see if the length of a potentially absent string is an even number (not a
 particularly realistic problem, I know, but work with me here):
 
 ```dart
+// Using null safety:
 String? notAString = null;
 print(notAString?.length.isEven);
 ```
@@ -778,6 +801,7 @@ print(notAString?.length?.isEven);
 This is annoying, but, worse, it obscures important information. Consider:
 
 ```dart
+// Using null safety:
 showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
@@ -795,6 +819,7 @@ skipped*. This means if `doohickey` has a non-nullable return type, then you
 can and should write:
 
 ```dart
+// Using null safety:
 showGizmo(Thing? thing) {
   print(thing?.doohickey.gizmo);
 }
@@ -804,6 +829,7 @@ In fact, you'll get an unnecessary code warning on the second `?.` if you
 don't. If you see code like:
 
 ```dart
+// Using null safety:
 showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
@@ -817,6 +843,8 @@ more terse and more precise.
 While we were at it, we added a couple of other null-aware operators:
 
 ```dart
+// Using null safety:
+
 // Null-aware cascade:
 receiver?..method();
 
@@ -827,6 +855,7 @@ receiver?[index];
 There isn't a null-aware function call operator, but you can write:
 
 ```dart
+// Allowed with or without null safety:
 function?.call(arg1, arg2);
 ```
 
@@ -841,6 +870,7 @@ But many valid uses of nullable types can't be *proven* to be safe in a way that
 pleases static analysis. For example:
 
 ```dart
+// Using null safety, incorrectly:
 class HttpResponse {
   final int code;
   final String? error;
@@ -869,10 +899,11 @@ In other words, we human maintainers of the code *know* that error won't be
 you assert types using an `as` cast, and you can do the same thing here:
 
 ```dart
-  String toString() {
-    if (code == 200) return "OK";
-    return "ERROR $code ${(error as String).toUpperCase()}";
-  }
+// Using null safety:
+String toString() {
+  if (code == 200) return "OK";
+  return "ERROR $code ${(error as String).toUpperCase()}";
+}
 ```
 
 Casting `error` to the non-nullable `String` type will throw a runtime exception
@@ -885,10 +916,11 @@ casts it to its underlying non-nullable type. So the above function is
 equivalent to:
 
 ```dart
-  String toString() {
-    if (code == 200) return "OK";
-    return "ERROR $code ${error!.toUpperCase()}";
-  }
+// Using null safety:
+String toString() {
+  if (code == 200) return "OK";
+  return "ERROR $code ${error!.toUpperCase()}";
+}
 ```
 
 This one-character "bang operator" is particularly handy when the underlying
@@ -907,6 +939,7 @@ The most common place where the type checker cannot prove the safety of code is
 around top-level variables and fields. Here is an example:
 
 ```dart
+// Using null safety, incorrectly:
 class Coffee {
   String _temperature;
 
@@ -938,6 +971,7 @@ You can fix the error by making the field nullable and then using null assertion
 operators on the uses:
 
 ```dart
+// Using null safety:
 class Coffee {
   String? _temperature;
 
@@ -957,6 +991,7 @@ To handle the common pattern of state with delayed initialization, we've added a
 new modifier, `late`. You can use it like this:
 
 ```dart
+// Using null safety:
 class Coffee {
   late String _temperature;
 
@@ -974,11 +1009,11 @@ this: The `late` modifier means "enforce this variable's constraints at runtime
 instead of at compile time". It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
-In this case, since the field has a non-nullable type, every time the field is
-read, a runtime check is inserted to make sure it is not `null`. If it is
-`null`, an exception is thrown. Giving the variable the type `String` means "you
-should never see me with a value other than a string" and the `late` modifier
-means "verify that at runtime".
+In this case, since the field is not definitely initialized, every time the
+field is read, a runtime check is inserted to make sure it has been assigned a
+value. If it hasn't, an exception is thrown. Giving the variable the type
+`String` means "you should never see me with a value other than a string" and
+the `late` modifier means "verify that at runtime".
 
 In some ways, the `late` modifier is more "magical" than using `?` because any
 use of the field could fail, and there isn't anything textually visible at the
@@ -998,6 +1033,7 @@ The `late` modifier has some other special powers too. It may seem paradoxical,
 but you can use `late` on a field that has an initializer:
 
 ```dart
+// Using null safety:
 class Weather {
   late int _temperature = _readThermometer();
 }
@@ -1020,6 +1056,7 @@ access `this`, call methods, or access fields on the instance.
 You can also combine `late` with `final`:
 
 ```dart
+// Using null safety:
 class Coffee {
   late final String _temperature;
 
@@ -1069,6 +1106,7 @@ in. You declare a required named parameter by placing `required` before the
 parameter:
 
 ```dart
+// Using null safety:
 function({int? a, required int? b, int? c, required int? d}) {}
 ```
 
@@ -1093,6 +1131,7 @@ field has a value, and that requires making it nullable so you can observe the
 You might expect this to work:
 
 ```dart
+// Using null safety, incorrectly:
 class Coffee {
   String? _temperature;
 
@@ -1126,12 +1165,13 @@ Another pattern that helps is to copy the field to a local variable first and
 then use that instead:
 
 ```dart
-  void checkTemp() {
-    var temperature = _temperature;
-    if (temperature != null) {
-      print('Ready to serve ' + temperature + '!');
-    }
+// Using null safety:
+void checkTemp() {
+  var temperature = _temperature;
+  if (temperature != null) {
+    print('Ready to serve ' + temperature + '!');
   }
+}
 ```
 
 Since the type promotion does apply to locals, this now works fine. If you need
@@ -1147,6 +1187,7 @@ is that "is this type nullable?" is no longer a simple yes or no question.
 Consider:
 
 ```dart
+// Using null safety:
 class Box<T> {
   final T object;
   Box(this.object);
@@ -1175,10 +1216,11 @@ have access to a value of the type argument's type whenever you need to work
 with one. Fortunately, collection-like classes rarely call methods on their
 elements.
 
-In places where you don't have access to a value, you can make the type
-parameter nullable:
+In places where you don't have access to a value, you can make the use of the
+type parameter nullable:
 
 ```dart
+// Using null safety:
 class Box<T> {
   final T? object;
   Box.empty();
@@ -1194,6 +1236,7 @@ cast the nullability away. The correct way to do that is using an explicit `as
 T` cast, *not* the `!` operator:
 
 ```dart
+// Using null safety:
 class Box<T> {
   final T? object;
   Box.empty();
@@ -1208,6 +1251,7 @@ parameter has been instantiated with a nullable type, then `null` is a perfectly
 valid value for `T`:
 
 ```dart
+// Using null safety:
 main() {
   var box = Box<int?>.full(null);
   print(box.unbox());
@@ -1221,6 +1265,7 @@ Other generic types have some bound that restricts the kinds of type arguments
 that can be applied:
 
 ```dart
+// Using null safety:
 class Interval<T extends num> {
   T min, max;
 
@@ -1244,6 +1289,7 @@ classes.
 You can also use a nullable *bound*:
 
 ```dart
+// Using null safety:
 class Interval<T extends num?> {
   T min, max;
 
@@ -1272,8 +1318,8 @@ example here, we copy the fields in local variables and check those locals for
 Note that a nullable bound does not prevent users from instantiating the class
 with non-nullable types. A nullable bound means that the type argument *can* be
 nullable, not that it *must*. (In fact, the default bound on type parameters if
-you don't write an `extends` clause is the nullable type `Object?`.) There is no
-way to *require* a nullable type argument. If you want uses of the type
+you don't write an `extends` clause is the nullable bound `Object?`.) There is
+no way to *require* a nullable type argument. If you want uses of the type
 parameter to reliably be nullable, you can use `T?` inside the body of the
 class.
 
@@ -1287,7 +1333,7 @@ the new flow analysis.
 The remaining changes that really matter to you are in the core libraries.
 Before we embarked on the Grand Null Safety Adventure, we worried that it would
 turn out there was no way to make our core libraries null safe without massively
-breaking the world. It turned not so dire. There *are* a few significant
+breaking the world. It turned out not so dire. There *are* a few significant
 changes, but for the most part, the migration went smoothly. Most core libraries
 either did not accept `null` and naturally move to non-nullable types, or do and
 gracefully accept it with a nullable type.
@@ -1311,6 +1357,7 @@ to be nullable. This means you generally cannot immediately use the result of
 a map lookup:
 
 ```dart
+// Using null safety, incorrectly:
 var map = {"key": "value"};
 print(map["key"].length); // Error.
 ```
@@ -1320,6 +1367,7 @@ string. In cases where you *know* the key is present you can teach the type
 checker by using `!`:
 
 ```dart
+// Using null safety:
 var map = {"key": "value"};
 print(map["key"]!.length); // OK.
 ```
