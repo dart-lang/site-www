@@ -29,14 +29,15 @@ $ dart --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ## Using experiment flags with IDEs
 
 To enable experiments related to running or debugging apps in IDEs,
-edit the launch configuration:
+edit the launch configuration.
 
 ### Visual Studio Code
 
-* Consult the general [instructions for Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) for editing launch configurations
-* In `launch.json`, under `configurations` add a new `vmAdditionalArgs` key containing the desired flags, e.g.:
+In `launch.json` under `configurations`,
+add a new `vmAdditionalArgs` key containing the desired flags.
+Example:
 
-```
+```json
  "configurations": [
         {
             "name": "Dart",
@@ -50,12 +51,18 @@ edit the launch configuration:
     ]
 ```
 
+For more information, consult the documentation for
+[VS Code launch configurations.][VSC instructions]
+
+[VSC instructions]: https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
+
+
 ### Android Studio
 
-* Consult the general [instructions for Android Studio](https://developer.android.com/studio/run/rundebugconfig) for editing launch configurations
-* Under `VMOptions` add the desired flags, e.g.:
+Under `VMOptions` add the desired flags.
+Example:
 
-```
+```xml
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run main" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
     <option name="VMOptions" value="--enable-experiment=non-nullable" />
@@ -64,6 +71,11 @@ edit the launch configuration:
   </configuration>
 </component>
 ```
+
+For more information, consult the instructions for
+[Android Studio run/debug configurations.][AS instructions]
+
+[AS instructions]: https://developer.android.com/studio/run/rundebugconfig
 
 
 ## Using experiment flags with the Dart analyzer (command-line and IDE)
