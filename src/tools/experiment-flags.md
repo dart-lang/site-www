@@ -22,7 +22,7 @@ For example, to enable the experiments
 add those flags to the `dart` command:
 
 ```terminal
-$ dart --enable-experiment=super-mixins,no-slow-checks
+$ dart --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 
 
