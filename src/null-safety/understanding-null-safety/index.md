@@ -1199,7 +1199,7 @@ main() {
 }
 ```
 
-In the definition of `Box`, is `T` is a nullable type or a non-nullable type? As
+In the definition of `Box`, is `T` a nullable type or a non-nullable type? As
 you can see, it can be instantiated with either kind. The answer is that `T` is a
 *potentially nullable type*. Inside the body of a generic class or method, a
 potentially nullable type has all of the restrictions of both nullable types
