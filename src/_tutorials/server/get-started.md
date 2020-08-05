@@ -89,10 +89,10 @@ $ stagehand console-full
 
 These commands create a small Dart app that has the following:
 
-* A main Dart source file, `bin/main.dart`, that contains a top-level
+* A main Dart source file, `bin/cli.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
 * An additional Dart file, `lib/cli.dart`, that contains the functionality of
-  the app and is imported by the `main.dart` file.
+  the app and is imported by the `cli.dart` file.
 * A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
@@ -112,7 +112,7 @@ To run the app from the command line, use the Dart VM by running the
 [`dart`](/tools/dart-vm) command:
 
 ```terminal
-$ dart bin/main.dart
+$ dart bin/cli.dart
 Hello world: 42!
 ```
 
@@ -138,7 +138,7 @@ Let's customize the app you just created.
  1. Rerun the main entrypoint of your app:
 
     ```terminal
-    $ dart bin/main.dart
+    $ dart bin/cli.dart
     Hello world: 21!
     ```
 
@@ -155,12 +155,12 @@ it's time to AOT compile your Dart code to optimized native machine code.
 Use the `dart2native` tool to AOT compile the program to machine code:
 
 ```terminal
-$ dart2native bin/main.dart
+$ dart2native bin/cli.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
 ```terminal
-$ time bin/main.exe
+$ time bin/cli.exe
 Hello world: 21!
 
 real	0m0.016s
