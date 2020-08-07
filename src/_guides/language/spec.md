@@ -12,7 +12,7 @@ For a gentler introduction to Dart, see the
 
 The Dart 2 language specification is available in PDF format:
 
-  * [Formal specification (version 2.2)][formal spec]
+  * [Formal specification (Dart 2.2)][formal spec]
   * [Latest, in-progress specification][latest draft]
     (produced from a [LaTeX file][])
 
