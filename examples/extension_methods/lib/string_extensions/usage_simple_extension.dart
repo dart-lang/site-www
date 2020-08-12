@@ -1,7 +1,7 @@
 // ignore_for_file: dead_code
 // #docregion import-and-use
 // Import a library that contains an extension on String.
-// #docregion basic, import-and-use
+// #docregion basic
 import 'string_apis.dart';
 // #enddocregion basic, import-and-use
 
