@@ -3527,7 +3527,6 @@ you, your fellow programmers, and your tools can detect that assigning a non-str
 the list is probably a mistake. Here’s an example:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 ```dart
 var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3673,7 +3672,6 @@ print(foo); // Instance of 'Foo<SomeBaseClass>'
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}
