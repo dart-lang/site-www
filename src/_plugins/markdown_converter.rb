@@ -1,4 +1,5 @@
 require_relative '../_shared/_plugins/markdown_with_code_excerpts'
+require_relative 'code_excerpt_framer'
 
 module Jekyll
   module Converters
@@ -13,7 +14,7 @@ module Jekyll
 
       def initialize(config = {})
         super(config)
-        @cec = MarkdownWithCodeExcerpts.new(config)
+        @cec = MarkdownWithCodeExcerpts.new(config, DartSite::CodeExcerptFramer.new)
       end
 
       def convert(content)
