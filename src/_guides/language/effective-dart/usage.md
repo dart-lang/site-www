@@ -1072,8 +1072,10 @@ If a field doesn't depend on any constructor parameters, it can and should be
 initialized at its declaration. It takes less code and makes sure you won't
 forget to initialize it if the class has multiple constructors.
 
+<!-- Q: As of 2.9, this code no longer works.
+  Should we change it or the recommendation? -->
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)"?>
+<!-- code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)" -->
 {% prettify dart tag=pre+code %}
 class Folder {
   final String name;
