@@ -18,7 +18,7 @@ Consider downloading the Dart SDK if
 any of the following are true:
 
 * You don't use Flutter.
-* You use a pre-1.21 version of Flutter.
+* You use a pre-1.2.1 version of Flutter.
 * You want to reduce disk space requirements or download time,
   and your use case doesn't require Flutter.
   For example, you might have a continuous integration (CI)
