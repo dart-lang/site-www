@@ -1281,8 +1281,10 @@ num highScore(List<num> scores) {
 }
 {% endprettify %}
 
+<!-- Q: As of 2.9, this code no longer works.
+  Should we change it or the recommendation? -->
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
+<!-- code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g" -->
 {% prettify dart tag=pre+code %}
 num highScore(List<num> scores) {
   var highest = 0;
