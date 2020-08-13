@@ -221,7 +221,7 @@ jekyll build
 Then deploy the docs:
 
 ```
-./tool/shared/deploy.sh --robots ok default
+./tool/shared/deploy.sh --local --robots ok default
 ```
 
 You can now navigate to the staged version at
