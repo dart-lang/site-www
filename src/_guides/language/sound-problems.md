@@ -36,7 +36,7 @@ bool b = [0][0];
 With type-safe Dart, the analyzer produces the following error:
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'.*common_problems/" -->
 ```nocode
 error • A value of type 'int' can't be assigned to a variable of type 'bool' • invalid_assignment
 ```
@@ -54,9 +54,9 @@ see [Runtime errors](#common-errors-and-warnings).
 
 ### Undefined member
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the type.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the type.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g" -->
 ```nocode
-error • The <member> '...' isn't defined for the type '...' • undefined_<member>
+-error • The <member> '...' isn't defined for the type '...' • undefined_<member>
 ```
 
 These errors can appear under the following conditions:
@@ -76,7 +76,7 @@ canvas.[!context2D!].lineTo(x, y);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/" -->
 ```nocode
 error • The getter 'context2D' isn't defined for the type 'Element' • undefined_getter
 ```
@@ -193,7 +193,7 @@ var c = C(Iterable.empty()).collection;
 
 ### Invalid method override
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g" -->
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -223,7 +223,7 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*add.*common_problems/" -->
 ```nocode
 error • 'MyAdder.add' ('int Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)') • invalid_override
 ```
@@ -269,7 +269,7 @@ For more information, see [Use proper input parameter types when overriding meth
 
 ### Missing type arguments
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/" replace="/'\S+'/'...'/g; /\('.*?'\)//g" -->
 ```nocode
 error • '...'  isn't a valid override of '...'  • invalid_override
 ```
@@ -292,7 +292,7 @@ class Subclass extends Superclass {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't a valid override of.*method.*common_problems/" -->
 ```nocode
 error • 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)') • invalid_override
 ```
@@ -322,7 +322,7 @@ class Subclass extends Superclass[!<int>!] {
 <a id ="assigning-mismatched-types"></a>
 ### Unexpected collection element type
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" replace="/'\S+'/'...'/g" -->
 ```nocode
 error • A value of type '...' can't be assigned to a variable of type '...' • invalid_assignment
 ```
@@ -348,7 +348,6 @@ map['d'] = [!1.5!]; // a double is not an int
 {:.console-output}
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
 ```nocode
-error • A value of type 'double' can't be assigned to a variable of type 'int' • invalid_assignment
 ```
 
 #### Fix: Specify the type explicitly
@@ -372,7 +371,6 @@ Alternatively, if you want this map to accept any value, specify the type as `<S
 
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
 ```nocode
-error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): '...' • invalid_super_invocation
 ```
 
 This error occurs when the `super()` call is not last in a constructor's
@@ -390,7 +388,6 @@ HoneyBadger(Eats food, String name)
 {:.console-output}
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/"?>
 ```nocode
-error • The super call must be last in an initializer list (see https://goo.gl/EY6hDP): 'super(food)' • invalid_super_invocation
 ```
 
 #### Fix: Put the `super()` call last
@@ -414,7 +411,6 @@ HoneyBadger(Eats food, String name)
 
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
 ```nocode
-error • The function expression type '...' isn't of type '...'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
 
 In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
@@ -438,7 +434,6 @@ Filter filter = ([!String!] x) => x.contains('Hello');
 {:.console-output}
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/"?>
 ```nocode
-error • The function expression type 'bool Function(String)' isn't of type 'bool Function(dynamic)'. This means its parameter or return type doesn't match what is expected. Consider changing parameter type(s) or the returned type(s) • invalid_cast_function_expr
 ```
 
 #### Fix: Add type parameters _or_ cast from dynamic explicitly
