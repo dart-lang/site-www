@@ -161,7 +161,6 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   void chase(Animal a) { ... }
@@ -208,7 +207,6 @@ The following code tightens the parameter on the `chase()` method
 from Animal to Mouse, a subclass of Animal.
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (chase-Mouse)" replace="/(\w+)(?= x)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Mouse extends Animal {...}
 
@@ -220,7 +218,6 @@ class Cat extends Animal {
 This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
-<?code-excerpt "strong/lib/animal_bad.dart (chase-Alligator)" replace="/Alligator/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe
@@ -238,7 +235,6 @@ The following code creates a dynamic list of Dog, and assigns it to
 a list of type Cat, which generates an error during static analysis.
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (dynamic-list)" replace="/.dynamic.(?!.*OK)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Cat extends Animal { ... }
 
