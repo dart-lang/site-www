@@ -29,7 +29,6 @@ make sure that you're using the latest version of Dart.
 Alternatively, try adding the following code to a file:
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (is-strong-mode-enabled)"?>
 {% prettify dart tag=pre+code %}
 bool b = [0][0];
 {% endprettify %}
@@ -71,7 +70,6 @@ These errors can appear under the following conditions:
 In the following code, the analyzer complains that `context2D` is undefined:
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (canvas-error)" replace="/context2D/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var canvas = querySelector('canvas');
 canvas.[!context2D!].lineTo(x, y);
@@ -139,7 +137,6 @@ The following code creates a new instance of this class (omitting the type
 argument) and accesses its `collection` member:
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/bounded/instantiate_to_bound.dart (undefined_method)" replace="/c\..*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var c = C(Iterable.empty()).collection;
 [!c.add(2);!]
@@ -215,7 +212,6 @@ In the following example, the parameters to the `add()` method are of type `int`
 a subtype of `num`, which is the parameter type used in the parent class.
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (invalid-method-override)" replace="/int(?= \w\b)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 abstract class NumberAdder {
   num add(num a, num b);
@@ -236,7 +232,6 @@ Consider the following scenario where floating
 point values are passed to an MyAdder:
 
 {:.runtime-fail}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (unsafe-method-call)" replace="/\d[\d\.]+/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 NumberAdder adder = MyAdder();
 adder.add([!1.2!], [!3.4!]);
@@ -286,7 +281,6 @@ specify a type argument. The analyzer infers `Subclass<dynamic>`,
 which results in an invalid override error on `method(int)`.
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (missing-type-arguments)" replace="/int(?= \w\b)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Superclass<T> {
   void method(T t) { ... }
@@ -345,7 +339,6 @@ The following code initializes a map with several
 When the code adds a (String, float) pair, the analyzer complains:
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (inferred-collection-types)" replace="/1.5/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 // Inferred as Map<String, int>
 var map = {'a': 1, 'b': 2, 'c': 3};
@@ -388,7 +381,6 @@ initialization list.
 #### Example
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (super-goes-last)" replace="/super/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 HoneyBadger(Eats food, String name)
     : [!super!](food),
@@ -438,7 +430,6 @@ in a compile-time error.
 #### Example
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (func-dynamic)" replace="/String/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 typedef Filter = bool Function(dynamic any);
 Filter filter = ([!String!] x) => x.contains('Hello');
@@ -485,7 +476,6 @@ For example, the following type error is detected at compile-time
 (when the [implicit casts][] option is disabled):
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/common_problems_analysis.dart (int-not-string)" replace="/string[^;]*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<int> numbers = [1, 2, 3];
 List<String> [!string = numbers!];
