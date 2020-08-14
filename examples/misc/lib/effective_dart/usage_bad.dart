@@ -355,18 +355,6 @@ class Box2 {
 
 //----------------------------------------------------------------------------
 
-// #docregion field-init-at-decl
-class Folder {
-  final String name;
-  final List<Document> contents;
-
-  Folder(this.name) : contents = [];
-  Folder.temp() : name = 'temporary'; // Oops! Forgot contents.
-}
-// #enddocregion field-init-at-decl
-
-//----------------------------------------------------------------------------
-
 // #docregion field-init-as-param
 class Point0 {
   double x, y;

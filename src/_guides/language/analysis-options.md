@@ -181,7 +181,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="lib/assignment.dart" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="/'Object' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
 ```

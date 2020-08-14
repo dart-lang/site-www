@@ -73,24 +73,6 @@ function analyze_and_test() {
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
   fi
   travis_fold start analyzeAndTest.analyze
-  if [[ -e $EXPECTED_FILE && -z $QUICK ]]; then
-    # Run the analyzer a first time to ensure that there are no errors.
-    #
-    # Note: catch non-zero exit codes to avoid aborting this script when the
-    # analyzer reports "foo.dart is a part and cannot be analyzed":
-    echo "$ $ANALYZE ${DIR[*]}"
-    $ANALYZE ${DIR[*]} > $LOG_FILE || {
-      echo "WARNING: Ignoring Analyzer exit code $?"
-    }
-    if grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
-      cat $LOG_FILE
-      echo "No analysis errors or warnings should be present in original source files."
-      echo "Ensure that these issues are disabled using appropriate markers like: "
-      echo "  // ignore_for_file: $DART_CHAN, some_analyzer_error_or_warning_id"
-      EXIT_STATUS=1
-      return 1;
-    fi
-  fi
   toggleInFileAnalyzerFlags disable ${DIR[*]}
   echo "$ $ANALYZE ${DIR[*]}"
   $ANALYZE ${DIR[*]} > $LOG_FILE || {
@@ -108,6 +90,10 @@ function analyze_and_test() {
     fi
   elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
     cat $LOG_FILE
+    echo "No analysis errors or warnings should be present in original source files."
+    echo "Ensure that these issues are disabled using appropriate markers like: "
+    echo "  // ignore_for_file: $DART_CHAN, some_analyzer_error_or_warning_id"
+    echo "Or if the errors are expected, create an analyzer-results.txt file."
     EXIT_STATUS=1
     if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
   else
