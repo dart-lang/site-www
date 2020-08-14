@@ -56,7 +56,7 @@ see [Runtime errors](#common-errors-and-warnings).
 
 <!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/isn't defined for the type.*common_problems/" replace="/getter/<member\x3E/g; /'\w+'/'...'/g" -->
 ```nocode
--error • The <member> '...' isn't defined for the type '...' • undefined_<member>
+error • The <member> '...' isn't defined for the type '...' • undefined_<member>
 ```
 
 These errors can appear under the following conditions:
