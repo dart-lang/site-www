@@ -2943,7 +2943,12 @@ always create a new instance of its class. For example, a factory
 constructor might return an instance from a cache, or it might return an
 instance of a subtype.
 
-The following example demonstrates a factory constructor returning
+The factory constructor can also be used to initialise final variables
+based on custom logic. The example constructor `fromJson` demonstrates
+one such example, where the variable is being initialised via a JSON
+object.
+
+The following example also demonstrates a factory constructor returning
 objects from a cache:
 
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
@@ -2960,6 +2965,12 @@ class Logger {
   factory Logger(String name) {
     return _cache.putIfAbsent(
         name, () => Logger._internal(name));
+  }
+  
+  factory Logger.fromJson(Map<dynamic, dynamic> json) {
+    return Logger(
+      name: json['name'],
+    );
   }
 
   Logger._internal(this.name);
@@ -2980,6 +2991,9 @@ Invoke a factory constructor just like you would any other constructor:
 ```dart
 var logger = Logger('UI');
 logger.log('Button clicked');
+
+Map logMap = jsonDecode(jsonString);
+var logger = Logger.fromJson(logMap);
 ```
 
 
