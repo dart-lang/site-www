@@ -13,6 +13,12 @@ class Logger {
     return _cache.putIfAbsent(
         name, () => Logger._internal(name));
   }
+  
+  factory Logger.fromJson(Map<dynamic, dynamic> json) {
+    return Logger(
+      name: json['name'],
+    );
+  }
 
   Logger._internal(this.name);
 
@@ -26,6 +32,9 @@ void main() {
   // #docregion logger
   var logger = Logger('UI');
   logger.log('Button clicked');
+  
+  Map logMap = jsonDecode(jsonString);
+  var logger = Logger.fromJson(logMap);
   // #enddocregion logger
 
   var l1 = Logger('log1');
