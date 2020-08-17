@@ -34,7 +34,7 @@ void main() {
   logger.log('Button clicked');
   
   Map logMap = jsonDecode(jsonString);
-  var logger = Logger.fromJson(logMap);
+  var loggerJson = Logger.fromJson(logMap);
   // #enddocregion logger
 
   var l1 = Logger('log1');
