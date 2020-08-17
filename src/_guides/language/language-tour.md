@@ -2943,11 +2943,11 @@ always create a new instance of its class. For example, a factory
 constructor might return an instance from a cache, or it might return an
 instance of a subtype.
 
-Another use case for factory constructors is initialising final variables
+Another use case for factory constructors is initializing final variables
 using custom logic. 
 
 The example constructor `fromJson` demonstrates one such method, where
-the final variable is initialised from a JSON object.
+the final variable is initialized from a JSON object.
 
 The following example demonstrates a factory constructor returning
 objects from a cache:
