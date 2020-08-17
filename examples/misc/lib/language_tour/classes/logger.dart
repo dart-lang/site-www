@@ -33,7 +33,7 @@ void main() {
   var logger = Logger('UI');
   logger.log('Button clicked');
   
-  Map logMap = jsonDecode(jsonString);
+  Map<dynamic, dynamic> logMap = {'name': 'UI'};
   var loggerJson = Logger.fromJson(logMap);
   // #enddocregion logger
 
