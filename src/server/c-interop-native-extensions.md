@@ -8,8 +8,9 @@ May 2012_
 
 {{site.alert.note}}
 The extension mechanism discussed in this page is for deep integration of the VM
-by custom Dart embedders. This extension mechanism is **deprecated**, and may be
-removed in a future release.
+by custom Dart embedders.
+This extension mechanism is **unsupported** for extension purposes,
+and may be removed in a future release.
 
 If you just need to call existing code written in C or C++, see
 [C & C++ interop using FFI](/server/c-interop).
