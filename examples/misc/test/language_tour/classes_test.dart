@@ -107,6 +107,8 @@ void main() {
           'log1: This is l1.',
           'log1: This is l1_2.',
           'log2: This is l2.',
+          'UI: This is logger.',
+          'UI: This is loggerJson.'
         ]));
   });
 
