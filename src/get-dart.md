@@ -11,7 +11,7 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
-**As of Flutter 1.21, the [Flutter SDK][flutter] includes the Dart SDK.**
+**As of Flutter 1.21, the [Flutter SDK][flutter] includes the full Dart SDK.**
 So if you have Flutter installed,
 you might not need to explicitly download the Dart SDK.
 Consider downloading the Dart SDK if

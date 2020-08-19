@@ -51,7 +51,7 @@ Install a JetBrains IDE if you don't already have one.
 If you don't already have the Dart SDK,
 install it.
 You can get it either by itself or by downloading the Flutter SDK,
-which (as of Flutter 1.21) includes the Dart SDK.
+which (as of Flutter 1.21) includes the full Dart SDK.
 
 Choose one:
 
