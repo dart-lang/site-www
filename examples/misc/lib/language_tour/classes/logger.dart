@@ -14,10 +14,8 @@ class Logger {
         name, () => Logger._internal(name));
   }
   
-  factory Logger.fromJson(Map<dynamic, dynamic> json) {
-    return Logger(
-      name: json['name'],
-    );
+  factory Logger.fromJson(Map<String, Object> json) {
+    return Logger(json['name'].toString());
   }
 
   Logger._internal(this.name);
@@ -33,7 +31,7 @@ void main() {
   var logger = Logger('UI');
   logger.log('Button clicked');
   
-  Map<dynamic, dynamic> logMap = {'name': 'UI'};
+  var logMap = {'name': 'UI'};
   var loggerJson = Logger.fromJson(logMap);
   // #enddocregion logger
 
@@ -47,4 +45,6 @@ void main() {
   l1.log('${l1.name}: This is l1.');
   l2.log('${l2.name}: This is l1_2.');
   l3.log('${l3.name}: This is l2.');
+  logger.log('${logger.name}: This is logger.');
+  loggerJson.log('${loggerJson.name}: This is loggerJson.');
 }
