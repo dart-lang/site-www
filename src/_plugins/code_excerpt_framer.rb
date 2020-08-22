@@ -4,7 +4,7 @@ module DartSite
   # some framing HTML: e.g., a div with possible excerpt title in a header.
   class CodeExcerptFramer
     def frame_code(title, classes, attrs, escaped_code, indent)
-      _unindented_template(title, classes, attrs, escaped_code)
+      _unindented_template(title, classes, attrs, escaped_code.gsub('\\','\\\\\\\\'))
     end
 
     private
