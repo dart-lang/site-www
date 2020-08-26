@@ -49,9 +49,9 @@ That's by design: the Dart language aims to be unsurprising.
 You can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
-Or try null safety in your normal development environment,
-using the instructions and configuration files in the
-[null safety sample.][calculate_lix]
+
+Or you can null safety in your normal development environment, by configuring
+your project to [use a tech preview SDK](#configure-null-safety).
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
@@ -310,6 +310,41 @@ var aList = <String, int>{'one': 1};
 int value = aList['one'] ?? 0;
 ```
 
+## Analyzing, compiling, and running code with null safety {#configure-null-safety}
+
+Whether you edit, compile, and run your Dart code from the terminal or an IDE,
+there are two required preconditions to use null safety:
+
+1. Use a project configured with an SDK version that includes null safety
+support
+
+2. While null safety is still experimental: Pass an experiment flag to all tools
+
+### Configure SDK version
+
+We recommend that you use the latest dev-channel Dart or Flutter SDK. You must
+set the [`pubspec.yaml` SDK constraint](/tools/pub/pubspec#sdk-constraints) to
+require an SDK version that includes null safety support, e.g.:
+
+{% prettify yaml tag=pre+code %} environment: sdk: '>=2.10.0-56.0.dev <3.0.0' {% endprettify %}
+
+Note that `2.10.0-56.0.dev` is used here as an example. We recommend that you
+set it to the version reported by the latest available dev-channel SDK.
+
+### Pass experimental flag
+
+While null safety is still experimental, you must pass an experimental flag to
+all Dart tools to opt-in to the null safety feature. This step will no longer be
+needed when the null safety feature launches in a beta or stable release.
+
+The experiment flag for null safety is called `non-nullable`. For details on how
+to pass an experiment flag to a terminal tool, or to configure your IDE to pass
+it, see [DArt experiment flags](/tools/experiment-flags).
+
+### Example
+
+For a full example of a Dart terminal app that uses null safety, and is
+configured to enable null safety, see the [null safety sample.][calculate_lix]
 
 ## Where to learn more
 
