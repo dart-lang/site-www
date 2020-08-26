@@ -50,7 +50,7 @@ You can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
 
-Or you can null safety in your normal development environment, by configuring
+Or you can try null safety in your normal development environment, by configuring
 your project to [use a tech preview SDK](#configure-null-safety).
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
