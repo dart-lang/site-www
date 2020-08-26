@@ -339,7 +339,7 @@ needed when the null safety feature launches in a beta or stable release.
 
 The experiment flag for null safety is called `non-nullable`. For details on how
 to pass an experiment flag to a terminal tool, or to configure your IDE to pass
-it, see [DArt experiment flags](/tools/experiment-flags).
+it, see [Dart experiment flags](/tools/experiment-flags).
 
 ### Example
 
