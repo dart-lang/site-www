@@ -47,7 +47,7 @@ the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
 
 You can
-[try null safety in your normal development environment](#enabling-null-safety)
+[try null safety in your normal development environment](#enable-null-safety)
 by configuring your project to use a tech preview SDK.
 Or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
@@ -310,7 +310,7 @@ var aList = <String, int>{'one': 1};
 int value = aList['one'] ?? 0;
 ```
 
-## Enabling null safety
+## Enabling null safety {#enable-null-safety}
 
 Dart tools have experimental support for
 analyzing, compiling, and running code with null safety.
