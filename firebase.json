@@ -126,7 +126,10 @@
       { "source": "/events/2016{,/**}", "destination": "https://events.dartlang.org/2016/summit", "type": 301 },
       { "source": "/events{,/**}", "destination": "https://events.dartlang.org", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.io", "type": 301 },
-      { "source": "/go/null-safety-migration", "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/nnbd_migration#providing-feedback", "type": 301 },
+
+      { "source": "/go/experiments", "destination": "/tools/experiment-flags", "type": 301 },
+      { "source": "/go/null-safety-migration", "destination": "https://github.com/dart-lang/sdk/tree/master/pkg/nnbd_migration", "type": 301 },
+
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
       { "source": "/guides/language/library-tour", "destination": "/guides/libraries/library-tour", "type": 301 },
