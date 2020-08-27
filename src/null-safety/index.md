@@ -46,12 +46,12 @@ If you've used Kotlin, TypeScript, or C#,
 the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
 
-You can practice using null safety in the web app
+You can
+[try null safety in your normal development environment](#enabling-null-safety)
+by configuring your project to use a tech preview SDK.
+Or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
-
-Or you can try null safety in your normal development environment, by configuring
-your project to [use a tech preview SDK](#configure-null-safety).
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
@@ -310,41 +310,61 @@ var aList = <String, int>{'one': 1};
 int value = aList['one'] ?? 0;
 ```
 
-## Analyzing, compiling, and running code with null safety {#configure-null-safety}
+## Enabling null safety
 
-Whether you edit, compile, and run your Dart code from the terminal or an IDE,
-there are two required preconditions to use null safety:
+Dart tools have experimental support for
+analyzing, compiling, and running code with null safety.
+To use null safety while it's in tech preview —
+whether you use the command line or an IDE —
+you need the following setup:
 
-1. Use a project configured with an SDK version that includes null safety
-support
+* A Dart project configured to use an SDK that
+  supports the tech preview of null safety
+* An experiment flag passed to all Dart tools
 
-2. While null safety is still experimental: Pass an experiment flag to all tools
 
-### Configure SDK version
+### Configure the SDK version
 
-We recommend that you use the latest dev-channel Dart or Flutter SDK. You must
-set the [`pubspec.yaml` SDK constraint](/tools/pub/pubspec#sdk-constraints) to
-require an SDK version that includes null safety support, e.g.:
+Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
+to require a version that has null safety support.
+For example, your `pubspec.yaml` file might have the following constraints:
 
-{% prettify yaml tag=pre+code %} environment: sdk: '>=2.10.0-56.0.dev <3.0.0' {% endprettify %}
+{% prettify yaml tag=pre+code %}
+environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
+{% endprettify %}
 
-Note that `2.10.0-56.0.dev` is used here as an example. We recommend that you
-set it to the version reported by the latest available dev-channel SDK.
+{{ site.alert.version-note }}
+  We recommend requiring and using the **most recent dev channel** release
+  of the Dart or Flutter SDK.
+  To find the most recent releases, see the
+  [Dev channel][dart-dev-channel] section of the
+  Dart SDK archive, or the **Dev channel** section of the
+  [Flutter SDK archive.][flutter-sdks]
+{{ site.alert.end }}
 
-### Pass experimental flag
 
-While null safety is still experimental, you must pass an experimental flag to
-all Dart tools to opt-in to the null safety feature. This step will no longer be
-needed when the null safety feature launches in a beta or stable release.
+### Pass the experiment flag
 
-The experiment flag for null safety is called `non-nullable`. For details on how
-to pass an experiment flag to a terminal tool, or to configure your IDE to pass
-it, see [Dart experiment flags](/tools/experiment-flags).
+To opt into null safety,
+pass the `non-nullable` experiment flag to all Dart tools.
+For example:
+
+```terminal
+$ ~/dev/dart-sdk/bin/dart --enable-experiment=non-nullable bin/main.dart
+```
+
+For details on how to use experiment flags with IDEs and command-line tools, see
+the Dart [experiment flags documentation][experiment-flags].
+
+{{ site.alert.version-note }}
+  After null safety launches in a beta or stable release,
+  you won't need to enable the null safety experiment.
+{{ site.alert.end }}
 
 ### Example
 
-For a full example of a Dart terminal app that uses null safety, and is
-configured to enable null safety, see the [null safety sample.][calculate_lix]
+For a full example of a Dart command-line app that enables and uses null safety,
+see the [null safety sample.][calculate_lix]
 
 ## Where to learn more
 
@@ -355,6 +375,7 @@ For more information about null safety, see the following resources:
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
+* [Understanding null safety][]
 
 [`??`]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
@@ -363,6 +384,9 @@ For more information about null safety, see the following resources:
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+[dart-dev-channel]: /tools/sdk/archive#dev-channel
+[experiment-flags]: /tools/experiment-flags
+[flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
