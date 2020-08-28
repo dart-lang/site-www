@@ -42,7 +42,16 @@
     - title: Extension methods
       permalink: /guides/language/extension-methods
     - title: Sound null safety
-      permalink: /null-safety
+      expanded: false
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety
+        - title: Understanding null safety
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/understanding-null-safety
     - title: Evolution
       permalink: /guides/language/evolution
     - title: Specification

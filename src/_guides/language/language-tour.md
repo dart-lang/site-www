@@ -2940,11 +2940,17 @@ For details, see the section on
 
 Use the `factory` keyword when implementing a constructor that doesn’t
 always create a new instance of its class. For example, a factory
-constructor might return an instance from a cache, or it might return an
-instance of a subtype.
+constructor might return an instance from a cache, or it might
+return an instance of a subtype.
+Another use case for factory constructors is
+initializing a final variable using
+logic that can't be handled in the initializer list. 
 
-The following example demonstrates a factory constructor returning
-objects from a cache:
+
+In the following example,
+the `Logger` factory constructor returns objects from a cache,
+and the `Logger.fromJson` factory constructor
+initializes a final variable from a JSON object.
 
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
 ```dart
@@ -2960,6 +2966,10 @@ class Logger {
   factory Logger(String name) {
     return _cache.putIfAbsent(
         name, () => Logger._internal(name));
+  }
+
+  factory Logger.fromJson(Map<String, Object> json) {
+    return Logger(json['name'].toString());
   }
 
   Logger._internal(this.name);
@@ -2980,6 +2990,9 @@ Invoke a factory constructor just like you would any other constructor:
 ```dart
 var logger = Logger('UI');
 logger.log('Button clicked');
+
+var logMap = {'name': 'UI'};
+var loggerJson = Logger.fromJson(logMap);
 ```
 
 
@@ -3527,7 +3540,6 @@ you, your fellow programmers, and your tools can detect that assigning a non-str
 the list is probably a mistake. Here’s an example:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 ```dart
 var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -3673,7 +3685,6 @@ print(foo); // Instance of 'Foo<SomeBaseClass>'
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}

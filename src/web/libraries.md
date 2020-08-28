@@ -47,6 +47,7 @@ are a few:
 | AngularDart     | angular*                        | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation,]({{site.angulardart}}) [AngularDart Components]({{site.angulardart}}/components) | 
 | JavaScript interop | [js][] | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
 | Material Design | [md_core,][] [m4d_components][] | Basic Material Design components. |
+| Mustache        | [mustache][]                    | Support for the Mustache templating language. |
 | React           | [react][]                       | Bindings for the ReactJS library. |
 | Vue             | [vue][]                         | Bindings for the Vue.js library. |
 {:.table .table-striped}
@@ -55,6 +56,7 @@ are a few:
 [JavaScript interoperability]: /web/js-interop
 [md_core,]: {{site.pub-pkg}}/m4d_core
 [m4d_components]: {{site.pub-pkg}}/m4d_components
+[mustache]: {{site.pub-pkg}}/mustache
 [vue]: {{site.pub-pkg}}/vue
 [react]: {{site.pub-pkg}}/react
 

@@ -10,23 +10,28 @@ For a gentler introduction to Dart, see the
 
 ## Dart 2
 
-A formal Dart 2 specification is available in PDF format:
+The Dart 2 language specification is available in PDF format:
 
-  * [Dart Programming Language Specification (Version 2.2)](/guides/language/specifications/DartLangSpec-v2.2.pdf)
+  * [Formal specification (Dart 2.2)][formal spec]
+  * [Latest, in-progress specification][latest draft]
+    (produced from a [LaTeX file][])
 
-Note: Dart 2 has changed the Dart language in many ways, some of which are not
-backward-compatible. For details, see the [Dart 2 page](/dart-2).
-
-### In-progress specification
-
-The in-progress formal Dart language specification is written as a
-[LaTeX file,](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
-and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
+[formal spec]: /guides/language/specifications/DartLangSpec-v2.2.pdf
+[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[LaTeX file]: https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex
 
 New language features are typically described using informal language feature specifications in the dart-lang/language repo:
-  * [Accepted informal proposals](https://github.com/dart-lang/language/tree/master/accepted)
-  * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
+  * [Accepted informal proposals][]
+  * [Drafts of potential features][]
 
+[Accepted informal proposals]: https://github.com/dart-lang/language/tree/master/accepted
+[Drafts of potential features]: https://github.com/dart-lang/language/tree/master/working
+
+{{site.alert.info}}
+  Dart 2 changed the Dart language in many ways, some of which are not
+  backward-compatible with Dart 1.x.
+  For details, see the [Dart 2 page](/dart-2).
+{{site.alert.end}}
 
 ## Dart 1.x
 

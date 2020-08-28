@@ -56,16 +56,10 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection-literals
-    var points = List();
-    var addresses = Map();
-    // #enddocregion collection-literals
-  }
-
-  {
-    // #docregion generic-collection-literals
     var points = List<Point>();
     var addresses = Map<String, Address>();
-    // #enddocregion generic-collection-literals
+    var counts = Set<int>();
+    // #enddocregion collection-literals
   }
 
   (Iterable lunchBox, Iterable words) {
@@ -358,18 +352,6 @@ class Box2 {
   }
 }
 // #enddocregion this-dot
-
-//----------------------------------------------------------------------------
-
-// #docregion field-init-at-decl
-class Folder {
-  final String name;
-  final List<Document> contents;
-
-  Folder(this.name) : contents = [];
-  Folder.temp() : name = 'temporary'; // Oops! Forgot contents.
-}
-// #enddocregion field-init-at-decl
 
 //----------------------------------------------------------------------------
 

@@ -22,7 +22,7 @@ void _miscDeclAnalyzedButNotTested() {
     void main() {
       var list = [];
       list.add(1);
-      list.add("2");
+      list.add('2');
       // ignore_for_file: stable, dev, argument_type_not_assignable
       printInts(list); //!analysis-issue
     }
@@ -77,7 +77,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion local-var-type-inference-error
-    var x = 3; // x is inferred as an int
+    var x = 3; // x is inferred as an int.
     // ignore_for_file: stable, dev, invalid_assignment
     x = 4.0; //!analysis-issue
     // #enddocregion local-var-type-inference-error
@@ -85,7 +85,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion local-var-type-inference-ok
-    num y = 3; // a num can be double or int
+    num y = 3; // A num can be double or int.
     y = 4.0;
     // #enddocregion local-var-type-inference-ok
   }
@@ -98,7 +98,7 @@ void _miscDeclAnalyzedButNotTested() {
     // Inferred as if you wrote <double>[3.0].
     var listOfDouble = [3.0];
 
-    // Inferred as Iterable<int>
+    // Inferred as Iterable<int>.
     var ints = listOfDouble.map((x) => x.toInt());
     // #enddocregion type-arg-inference
 

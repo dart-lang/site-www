@@ -233,7 +233,7 @@
 * <a href='/guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
 * <a href='/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
 * <a href='/guides/language/effective-dart/design#consider-using-function-type-syntax-for-parameters'>CONSIDER using function type syntax for parameters.</a>
-* <a href='/guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed'>DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is allowed.</a>
+* <a href='/guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking'>AVOID using <code>dynamic</code> unless you want to disable static checking.</a>
 * <a href='/guides/language/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values'>DO use <code>Future&lt;void&gt;</code> as the return type of asynchronous members that do not produce values.</a>
 * <a href='/guides/language/effective-dart/design#avoid-using-futureort-as-a-return-type'>AVOID using <code>FutureOr&lt;T&gt;</code> as a return type.</a>
 

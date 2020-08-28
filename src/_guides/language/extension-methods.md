@@ -262,6 +262,6 @@ For more information about extension methods, see the following:
 * Examples?
 {% endcomment %}
 
-[specification]: https://github.com/dart-lang/language/blob/master/accepted/2.6/static-extension-members/feature-specification.md#dart-static-extension-methods-design
+[specification]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
 
 [article]: https://medium.com/dartlang/extension-methods-2d466cd8b308

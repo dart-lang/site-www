@@ -466,7 +466,7 @@ class MyClass {
   // Returns the product of the above values:
   int get product => _value1 * _value2 * _value3;
   
-  // Adds one to _value1:
+  // Adds 1 to _value1:
   void incrementValue1() => _value1++; 
   
   // Returns a string containing each item in the

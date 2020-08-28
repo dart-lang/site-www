@@ -71,17 +71,6 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion omit-types-on-locals
   }
 
-  // #docregion inferred-wrong
-  num highScore(List<num> scores) {
-    var highest = 0;
-    for (var score in scores) {
-      // ignore: invalid_assignment
-      if (score > highest) highest = score;
-    }
-    return highest;
-  }
-  // #enddocregion inferred-wrong
-
   {
     // #docregion redundant
     Set<String> things = Set<String>();

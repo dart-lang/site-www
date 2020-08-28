@@ -1067,7 +1067,7 @@ h3.popover-header {
   border-radius: 0;
   color: $site-color-body;
   margin-top: 32px;
-  padding: 30px 40px;
+  padding: 30px 30px;
 
   pre, code {
     background-color: transparent;
@@ -1377,6 +1377,13 @@ blockquote {
   border-width: 1px 0px;
   margin: 20px;
   padding: 10px 20px 0 20px;
+}
+
+.searchbar {
+  > * {
+    max-width: 640px;
+    width:100%
+  }
 }
 
 @import '_overwrites';

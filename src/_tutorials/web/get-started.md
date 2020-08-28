@@ -185,17 +185,13 @@ Check out these resources:
 
 If you get stuck, find help at [Community and Support.](/community)
 
-[Chocolatey]: https://chocolatey.org
 [dartdevc]: /tools/dartdevc
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging
-[Homebrew,]: https://brew.sh/
-[Install the SDK]: /get-dart
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
-[Overview of Dart web libraries]: /web/web-programming
 [overview of editors & debuggers]: /tools#ides-and-editors
 [stagehand]: {{site.pub-pkg}}/stagehand
 [Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
