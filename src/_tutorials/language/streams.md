@@ -327,20 +327,8 @@ They involve error handling which an **await for** loop
 can't do&mdash;the first error reaching the loops will end
 the loop and its subscription on the stream.
 There is no recovering from that.
-You can use `handleError()` to remove errors from a stream
+The following code shows how to use `handleError()` to remove errors from a stream
 before using it in an **await for** loop.
-
-### The transform() function {#transform-function}
-
-The `transform()` function is not just for error handling;
-it is a more generalized "map" for streams.
-A normal map requires one value for each incoming event.
-However, especially for I/O streams,
-it might take several incoming events to produce an output event.
-A [StreamTransformer][] can work with that.
-For example, decoders like [Utf8Decoder][] are transformers.
-A transformer requires only one function, [bind()][], which can be
-easily implemented by an `async` function.
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
 ```dart
@@ -354,6 +342,18 @@ Stream<S> mapLogErrors<S, T>(
   }
 }
 ```
+
+### The transform() function {#transform-function}
+
+The `transform()` function is not just for error handling;
+it is a more generalized "map" for streams.
+A normal map requires one value for each incoming event.
+However, especially for I/O streams,
+it might take several incoming events to produce an output event.
+A [StreamTransformer][] can work with that.
+For example, decoders like [Utf8Decoder][] are transformers.
+A transformer requires only one function, [bind()][], which can be
+easily implemented by an `async` function.
 
 ### Reading and decoding a file {#reading-decoding-file}
 
