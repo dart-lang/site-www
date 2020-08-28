@@ -12,14 +12,20 @@ class Animal {
 
 // #docregion HoneyBadger
 class HoneyBadger extends Animal {
+  @override
   void chase(Animal a) {/* ... */}
+
+  @override
   HoneyBadger get parent => ellipsis();
 }
 // #enddocregion HoneyBadger
 
 // #docregion chase-Object
 class HoneyBadger1 extends Animal {
+  @override
   void chase(Object a) {/* ... */}
+
+  @override
   Animal get parent => ellipsis();
 }
 // #enddocregion chase-Object
