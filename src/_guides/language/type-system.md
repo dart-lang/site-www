@@ -157,7 +157,7 @@ of Animal), but an unrelated type is not allowed.
 class HoneyBadger extends Animal {
   @override
   void chase(Animal a) { ... }
-  
+
   @override
   [!HoneyBadger!] get parent => ...
 }
@@ -206,7 +206,7 @@ It's OK to override the `chase()` method to take anything (Object).
 class HoneyBadger extends Animal {
   @override
   void chase([!Object!] a) { ... }
-  
+
   @override
   Animal get parent => ...
 }
@@ -340,7 +340,7 @@ x = 4.0;
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-ok)"?>
 {% prettify dart tag=pre+code %}
-num y = 3; // a num can be double or int.
+num y = 3; // A num can be double or int.
 y = 4.0;
 {% endprettify %}
 
