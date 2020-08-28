@@ -32,7 +32,7 @@ void printInts(List<int> a) => print(a);
 void main() {
   var list = [];
   list.add(1);
-  list.add("2");
+  list.add('2');
   printInts([!list!]);
 }
 {% endprettify %}
@@ -155,7 +155,10 @@ of Animal), but an unrelated type is not allowed.
 <?code-excerpt "strong/lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
+  @override
   void chase(Animal a) { ... }
+
+  @override
   [!HoneyBadger!] get parent => ...
 }
 {% endprettify %}
@@ -163,7 +166,10 @@ class HoneyBadger extends Animal {
 {:.fails-sa}
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
+  @override
   void chase(Animal a) { ... }
+  
+  @override
   [!Root!] get parent => ...
 }
 {% endprettify %}
@@ -198,7 +204,10 @@ It's OK to override the `chase()` method to take anything (Object).
 <?code-excerpt "strong/lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
+  @override
   void chase([!Object!] a) { ... }
+
+  @override
   Animal get parent => ...
 }
 {% endprettify %}
@@ -211,6 +220,7 @@ from Animal to Mouse, a subclass of Animal.
 class Mouse extends Animal {...}
 
 class Cat extends Animal {
+  @override
   void chase([!Mouse!] x) { ... }
 }
 {% endprettify %}
@@ -220,7 +230,7 @@ a cat and send it after an alligator:
 
 {% prettify dart tag=pre+code %}
 Animal a = Cat();
-a.chase([!Alligator!]()); // Not type safe or feline safe
+a.chase([!Alligator!]()); // Not type safe or feline safe.
 {% endprettify %}
 
 ### Don't use a dynamic list as a typed list
@@ -323,14 +333,14 @@ If so, you can add a type annotation.
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-error)"?>
 {% prettify dart tag=pre+code %}
-var x = 3; // x is inferred as an int
+var x = 3; // x is inferred as an int.
 x = 4.0;
 {% endprettify %}
 
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-ok)"?>
 {% prettify dart tag=pre+code %}
-num y = 3; // a num can be double or int
+num y = 3; // A num can be double or int.
 y = 4.0;
 {% endprettify %}
 
@@ -352,7 +362,7 @@ List<int> listOfInt = [];
 // Inferred as if you wrote <double>[3.0].
 var listOfDouble = [3.0];
 
-// Inferred as Iterable<int>
+// Inferred as Iterable<int>.
 var ints = listOfDouble.map((x) => x.toInt());
 {% endprettify %}
 
