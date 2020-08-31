@@ -7,8 +7,20 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 
+## Getting started
+
+Start by looking for an [issue](https://github.com/dart-lang/site-www/) that catches your
+interest or generate one with your proposed change. Ask for it to be assigned to you.
+
+To update this site, fork the repo, make your changes, and generate a pull request.
 For simple changes (such as to CSS and text), you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
+
+> NOTE: If you clone this repo locally, see the instructions below on cloning
+> with its submodule.
+
+If your change involves code samples, adds/removes pages, or affects navigation,
+you'll need to build and test your work before submitting.
 
 If you want or need to build, follow the steps below.
 
