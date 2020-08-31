@@ -3426,16 +3426,24 @@ mixin Musical {
 }
 ```
 
-To specify that only certain types can use the mixin — for example,
-so your mixin can invoke a method that it doesn't define —
-use `on` to specify the required superclass:
+To restrict mixin's use to only classes which either extends or implements the class on which it is declared on - 
+we use the 'on' keyword.
+For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
 ```dart
+class Musician{
+  //...
+}
 mixin MusicalPerformer on Musician {
   // ···
 }
+class MusicBand extends Musician with MusicalPerformer{
+  //...
+}
 ```
+In the above code we are restricting mixin MusicalPerformer to be only used by the classes which either
+extend or implement the Musician class.
 
 {{site.alert.version-note}}
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
