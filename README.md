@@ -17,7 +17,7 @@ For simple changes (such as to CSS and text), you probably don't need to build t
 Often you can make changes using the GitHub UI.
 
 > NOTE: If you clone this repo locally, see the instructions below on cloning
-> with its submodle.
+> with its submodule.
 
 If your change involves code samples, adds/removes pages, or affects navigation,
 you'll need to build and test your work before submitting.
