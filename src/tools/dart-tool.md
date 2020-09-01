@@ -34,7 +34,8 @@ $ dart pub upgrade
 ```
 
 {{ site.alert.version-note }}
-  Before Dart 2.10, the `dart` command was used only to run the Dart VM.
+  Before Dart 2.10, the `dart` command was used only to run the
+  [Dart VM][dart-vm].
   You can still use it that way, but
   now the command has more functionality.
   Over time, we expect the `dart` command to replace
