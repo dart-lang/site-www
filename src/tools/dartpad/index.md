@@ -89,10 +89,10 @@ To create a simple command-line app, use **New Pad**.
   </li>
 
   <li markdown="1">
-  Clear the **Show web content** checkbox,
-  at the bottom right of DartPad.
-
+  Toggle off the **HTML** Tag,
+  underneath the Dart logo.
   The HTML and CSS tabs disappear.
+  
   </li>
 
   <li markdown="1">
