@@ -39,9 +39,8 @@ Common command-line options for dart include:
   checks a boolean condition, raising an exception if the condition is false.
 
 `--packages=<path>`
-: Specifies the path to the package resolution configuration file.
-  For more information, see
-  [Package Resolution Configuration File](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md).
+: Specifies the path to the
+  [package resolution configuration file.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md)
   _This option cannot be used with `--package-root`._
 
 `--version`
