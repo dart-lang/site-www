@@ -382,7 +382,7 @@ Let's say after
 putting all of the constraints on a shared dependency together, you're
 left with the narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
 If there was a version `1.2.4` of the dependency, you'd be golden. But maybe
-they never released that and instead when straight from `1.2.3` to `1.3.0`.
+they never released that and instead went straight from `1.2.3` to `1.3.0`.
 You've got a range but nothing exists inside it.
 
 ### You can have an unstable graph
