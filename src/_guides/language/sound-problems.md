@@ -176,7 +176,7 @@ c.add(2);
 {% endprettify %}
 
 {% comment %}
-TODO: remove this commentted out code once Kathy gives a thumbs up. Also remove the code excerpt from the original source.
+TODO: remove this commented out code once Kathy gives a thumbs up. Also remove the code excerpt from the original source.
 
 If you actually meant `collection` to be an `Iterable`, then subsequent uses of
 `c` are an error and need to be fixed:
@@ -345,10 +345,13 @@ var map = {'a': 1, 'b': 2, 'c': 3};
 map['d'] = [!1.5!]; // a double is not an int
 {% endprettify %}
 
+{% comment %}
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/'double' can't be assigned to a variable of type 'int'.*common_problems/" -->
 ```nocode
+[PENDING: fix this]
 ```
+{% endcomment %}
 
 #### Fix: Specify the type explicitly
 
@@ -369,9 +372,12 @@ Alternatively, if you want this map to accept any value, specify the type as `<S
 <a id="constructor-initialization-list"></a>
 ### Constructor initialization list super() call
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g"?>
+{% comment %}
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/" replace="/'\S+'/'...'/g" -->
 ```nocode
+[PENDING: fix this]
 ```
+{% endcomment %}
 
 This error occurs when the `super()` call is not last in a constructor's
 initialization list.
@@ -385,10 +391,13 @@ HoneyBadger(Eats food, String name)
       _name = name { ... }
 {% endprettify %}
 
+{% comment %}
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/super call must be last.*common_problems/" -->
 ```nocode
+[PENDING: fix this]
 ```
+{% endcomment %}
 
 #### Fix: Put the `super()` call last
 
@@ -409,9 +418,12 @@ HoneyBadger(Eats food, String name)
 <a name="uses-dynamic-as-bottom"></a>
 ### The function expression type ... isn't of type ...
 
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g"?>
+{% comment %}
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/" replace="/'bool.*?\)'/'...'/g" -->
 ```nocode
+[PENDING: fix this]
 ```
+{% endcomment %}
 
 In Dart 1.x `dynamic` was both a [top type][] (supertype of all types) and a
 [bottom type][]  (subtype of all types)
@@ -431,10 +443,13 @@ typedef Filter = bool Function(dynamic any);
 Filter filter = ([!String!] x) => x.contains('Hello');
 {% endprettify %}
 
+{% comment %}
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/"?>
+<!-- code-excerpt "strong/analyzer-results-stable.txt" retain="/The function expression type.*common_problems/" -->
 ```nocode
+[PENDING: fix this]
 ```
+{% endcomment %}
 
 #### Fix: Add type parameters _or_ cast from dynamic explicitly
 
