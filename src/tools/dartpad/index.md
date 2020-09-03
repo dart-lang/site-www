@@ -92,7 +92,6 @@ To create a simple command-line app, use **New Pad**.
   Turn off **HTML**, using the toggle
   underneath the Dart logo.
   The HTML and CSS tabs disappear.
-  
   </li>
 
   <li markdown="1">
