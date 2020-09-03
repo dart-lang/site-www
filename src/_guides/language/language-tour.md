@@ -1129,7 +1129,7 @@ is sometimes referred to as _arrow_ syntax.
 
 A function can have two types of parameters: _required_ and _optional_.
 The required parameters are listed first, followed by any optional parameters.
-Optional parameters can be _named_ or _positional_.
+Optional parameters can be either _named_ or _positional_.
 
 {{site.alert.note}}
   Some APIs — notably [Flutter][] widget constructors — use only named
@@ -1139,7 +1139,8 @@ Optional parameters can be _named_ or _positional_.
 
 ### Optional parameters
 
-Optional parameters can be either named or positional, but not both.
+A function can have optional positional parameters or optional named parameters,
+but not both.
 
 #### Named parameters
 
