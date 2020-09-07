@@ -9,8 +9,19 @@ cd `dirname $0`/..
 DARTFORMAT="dart format"
 EXAMPLES=examples
 
+# TODO: Remove this comment and down to TODO_END after the new dart cli ships to stable.
+DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
+if [[ $DART_VERS == *beta* ]]; then
+  DARTFORMAT="dart format"
+elif [[ $DART_VERS == *dev* ]]; then
+  DARTFORMAT="dart format"
+else # stable
+  DARTFORMAT="dartfmt -w"
+fi
+# TODO_END
+
 # Format all example source files, except the excluded paths:
-$DARTFORMAT -w $* `find $EXAMPLES -name "*.dart" \
+$DARTFORMAT $* `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
     ! -path "**/build/**"`
 
