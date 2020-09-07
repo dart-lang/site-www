@@ -11,14 +11,19 @@ ROOT=$(pwd)
 
 source ./tool/shared/env-set-check.sh
 
-# https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
-ANALYZE="dartanalyzer --no-implicit-casts "
+# TODO mit@: After dart CLI ships in stable, move ANALYZE var up here for all channels.
+
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
 DART_CHAN=stable
 if [[ $DART_VERS == *beta* ]]; then
   DART_CHAN=beta
+  ANALYZE="dart analyze"
 elif [[ $DART_VERS == *dev* ]]; then
   DART_CHAN=dev
+  ANALYZE="dart analyze"
+else # stable
+  # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
+  ANALYZE="dartanalyzer --no-implicit-casts "
 fi
 EXAMPLES="$ROOT/examples"
 PUB_ARGS="upgrade" # --no-precomiple
