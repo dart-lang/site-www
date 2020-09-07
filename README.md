@@ -127,7 +127,7 @@ script. Otherwise, you can push your changes.
 
 If you've made changes to the example code run the following commands:
 
-- `./tool/dartfmt.sh`
+- `./tool/dartformat.sh`
 - `./tool/refresh-code-excerpts.sh`
 - `./tool/analyze-and-test-examples.sh --quick`
 

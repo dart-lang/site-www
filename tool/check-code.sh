@@ -6,9 +6,9 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
 [[ -z "$DART_SITE_ENV_DEFS" ]] && . $rootDir/tool/env-set.sh
 
-travis_fold start dartfmt
-(set -x; $rootDir/tool/dartfmt.sh)
-travis_fold end dartfmt
+travis_fold start dart-format
+(set -x; $rootDir/tool/dartformat.sh)
+travis_fold end dart-format
 
 errorMessage="
 Error: some code excerpts need to be refreshed.

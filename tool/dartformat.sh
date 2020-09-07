@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 #
-# Run dartfmt over the examples.
+# Run `dart format` over the examples.
 
 set -e -o pipefail
 
 cd `dirname $0`/..
 
-DARTFMT="dartfmt -w"
+DARTFORMAT="dart format"
 EXAMPLES=examples
 
 # Format all example source files, except the excluded paths:
-$DARTFMT -w $* `find $EXAMPLES -name "*.dart" \
+$DARTFORMAT -w $* `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
     ! -path "**/build/**"`
 
-$DARTFMT -l 60 \
+$DARTFORMAT -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
   $EXAMPLES/misc/lib/language_tour/classes/logger.dart \
   $EXAMPLES/misc/lib/language_tour/classes/no_such_method.dart \
@@ -24,7 +24,7 @@ $DARTFMT -l 60 \
   $EXAMPLES/misc/test/library_tour/html_test.dart \
   $EXAMPLES/misc/lib/samples/spacecraft.dart
 
-$DARTFMT -l 65 \
+$DARTFORMAT -l 65 \
   $EXAMPLES/httpserver/bin/basic_writer_server.dart \
   $EXAMPLES/httpserver/bin/note_server.dart \
   $EXAMPLES/misc/bin/dcat.dart \
