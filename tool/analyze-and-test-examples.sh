@@ -62,7 +62,7 @@ function analyze_and_test() {
 
   # TODO: rename DIR since it now more generally contains analysis targets, not only directories
   DIR=()
-  for d in analysis_options.yaml bin lib test web; do
+  for d in bin lib test web; do
     if [[ -e $d ]]; then DIR+=($d); fi
   done
 
