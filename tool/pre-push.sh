@@ -12,7 +12,7 @@ fi
 STATUS=0
 set -x
 
-./tool/dartfmt.sh | grep -v Unchanged && \
+./tool/dartformat.sh | grep -v Unchanged && \
 ./tool/refresh-code-excerpts.sh && \
 ./tool/analyze-and-test-examples.sh $* && \
 pushd deploy/effective-dart-rules && pub get && \
