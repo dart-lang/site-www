@@ -1127,20 +1127,23 @@ is sometimes referred to as _arrow_ syntax.
   there, but you can use a [conditional expression](#conditional-expressions).
 {{site.alert.end}}
 
-A function can have two types of parameters: _required_ and _optional_.
-The required parameters are listed first, followed by any optional parameters.
-Optional parameters can be either _named_ or _positional_.
+### Parameters
+
+A function can have any number of *required positional* parameters. These may be
+followed either by *optional positional* parameters or by *optional named*
+parameters.  A function can have optional positional parameters or optional
+named parameters, but not both.
+{% comment %}
+NULLSAFE: Replace "optional named" above with just "named" and add:
+
+A named parameter can be either optional or `required`.
+{% endcomment %}
 
 {{site.alert.note}}
   Some APIs — notably [Flutter][] widget constructors — use only named
   parameters, even for parameters that are mandatory. See the next section for
   details.
 {{site.alert.end}}
-
-### Optional parameters
-
-A function can have optional positional parameters or optional named parameters,
-but not both.
 
 #### Named parameters
 
@@ -1180,7 +1183,11 @@ then the analyzer reports an issue.
 To use the [@required][] annotation,
 depend on the [meta][] package and import `package:meta/meta.dart`.
 
-#### Positional parameters
+{% comment %}
+NULLSAFE: Rewrite this section.
+{% endcomment %}
+
+#### Optional positional parameters
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
