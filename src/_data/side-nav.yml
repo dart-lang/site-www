@@ -52,6 +52,10 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
+        - title: Migrating to null safety
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/migrating-to-null-safety
     - title: Evolution
       permalink: /guides/language/evolution
     - title: Specification
@@ -154,7 +158,7 @@
           - title: Connect Dart & HTML
             permalink: /tutorials/web/low-level-html/connect-dart-html
           - title: Add elements to the DOM
-            permalink: /tutorials/web/low-level-html/add-elements 
+            permalink: /tutorials/web/low-level-html/add-elements
           - title: Remove DOM elements
             permalink: /tutorials/web/low-level-html/remove-elements
         - title: Deployment
@@ -173,7 +177,7 @@
     children:
       - title: IntelliJ & Android Studio
         permalink: /tools/jetbrains-plugin
-      - title: VS Code 
+      - title: VS Code
         permalink: /tools/vs-code
       - title: Dart DevTools
         permalink: /tools/dart-devtools

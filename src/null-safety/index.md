@@ -90,7 +90,7 @@ but the Dart analyzer doesn't agree,
 ```dart
 class IntProvider {
   late int aRealInt;
-  
+
   IntProvider() {
     aRealInt = calculate();
   }
@@ -188,7 +188,7 @@ if the operand might be null.
 Instead, you can use the null-aware version of that operator (`?.`):
 
 ```dart
-double? d;  
+double? d;
 print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
 ```
 
@@ -256,7 +256,7 @@ var myMap = <String, int>{'one': 1};
 var uhOh = myMap['two'];
 ```
 
-The answer is that `uhOh` is null and has type `int?`. 
+The answer is that `uhOh` is null and has type `int?`.
 
 Like lists and sets, maps can have a variety of types:
 
@@ -376,6 +376,7 @@ For more information about null safety, see the following resources:
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
 * [Understanding null safety][]
+* [Migrating to null safety][]
 
 [`??`]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
@@ -391,3 +392,4 @@ For more information about null safety, see the following resources:
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
 [Understanding null safety]: /null-safety/understanding-null-safety
+[Migrating to null safety]: /null-safety/migrating-to-null-safety
