@@ -7,7 +7,7 @@ toc: false
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub publish [--dry-run] [--force] [--server <url>]
+$ pub publish [--dry-run] [--force]
 {% endprettify %}
 
 This command publishes your package on the
