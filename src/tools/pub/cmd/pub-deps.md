@@ -1,5 +1,5 @@
 ---
-title: pub deps
+title: dart pub deps
 description: Use pub deps to print a dependency graph for a package.
 toc: false
 ---
@@ -7,7 +7,7 @@ toc: false
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify none tag=pre+code %}
-$ pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
+$ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
 {% endprettify %}
 
 This command prints the dependency graph for a package.
@@ -28,10 +28,10 @@ dependencies:
   markdown: ^0.7.2
 {% endprettify %}
 
-Here's an example of the `pub deps` output for markdown_converter:
+Here's an example of the `dart pub deps` output for markdown_converter:
 
 ```terminal
-$ pub deps
+$ datt pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6
 |   |-- collection 1.1.2
