@@ -2092,9 +2092,9 @@ Iterable classes such as List and Set also support the `for-in` form of
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (collection)"?>
 ```dart
-var collection = [0, 1, 2];
+var collection = [1, 2, 3];
 for (var x in collection) {
-  print(x); // 0 1 2
+  print(x); // 1 2 3
 }
 ```
 
