@@ -173,7 +173,7 @@ void main() {
 
 // ignore_for_file: type_annotate_public_apis
 // #docregion downcast-check
-assumeStrings(List<Object> objects) {
+void assumeStrings(List<Object> objects) {
   // ignore_for_file: stable, dev, invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
