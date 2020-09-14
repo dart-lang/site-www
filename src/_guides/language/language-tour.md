@@ -693,9 +693,9 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. You can get a
-list’s length and refer to list elements just as you would in
+Lists use zero-based indexing, where 0 is the index of the first value
+and `list.length - 1` is the index of the last value. You can get a
+list’s length and refer to list values just as you would in
 JavaScript:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
@@ -720,10 +720,10 @@ var constantList = const [1, 2, 3];
 <a id="spread-operator"> </a>
 Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
-which provide a concise way to insert multiple elements into a collection.
+which provide a concise way to insert multiple values into a collection.
 
 For example, you can use the spread operator (`...`) to insert
-all the elements of a list into another list:
+all the values of a list into another list:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
 ```dart
