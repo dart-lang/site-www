@@ -1129,15 +1129,9 @@ is sometimes referred to as _arrow_ syntax.
 
 ### Parameters
 
-A function can have any number of *required positional* parameters. These may be
-followed either by *optional positional* parameters or by *optional named*
-parameters.  A function can have optional positional parameters or optional
-named parameters, but not both.
-{% comment %}
-NULLSAFE: Replace "optional named" above with just "named" and add:
-
-A named parameter can be either optional or `required`.
-{% endcomment %}
+A function can have any number of *required positional* parameters. These can be
+followed either by *named* parameters or by *optional positional* parameters
+(but not both).
 
 {{site.alert.note}}
   Some APIs — notably [Flutter][] widget constructors — use only named
@@ -1146,6 +1140,8 @@ A named parameter can be either optional or `required`.
 {{site.alert.end}}
 
 #### Named parameters
+
+Named parameters are optional unless they're specifically marked as required.
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
