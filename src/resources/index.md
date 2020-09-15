@@ -25,7 +25,7 @@ Check out the following Dart language resources:
   
   <div class="card">
     <h3><a href="/faq">Dart FAQ</a></h3>
-    <p>Collection of top questions we’ve heard from the community.</p>
+    <p>Answers to questions from the Dart community.</p>
   </div> 
 
   <div class="card">
