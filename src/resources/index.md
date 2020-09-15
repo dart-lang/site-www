@@ -15,7 +15,7 @@ Check out the following Dart language resources:
   
   <div class="card">
     <h3><a href="/resources/dartpad-best-practices">DartPad in tutorials: best practices</a></h3>
-    <p>A guide introducing DartPad.</p>
+    <p>A guide to using embedded DartPads in educational content for Dart and Flutter users.</p>
   </div>
 
   <div class="card">
