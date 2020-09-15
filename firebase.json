@@ -115,6 +115,7 @@
       { "source": "/docs/tutorials/remove-elements", "destination": "/tutorials/web/low-level-html/remove-elements", "type": 301 },
       { "source": "/docs/tutorials/shared-pkgs", "destination": "/tutorials/libraries/shared-pkgs", "type": 301 },
       { "source": "/docs/tutorials/streams", "destination": "/tutorials/language/streams", "type": 301 },
+      { "source": "/docs/tutorials/fetchdata", "destination": "/tutorials/web/fetch-data", "type": 301 },
       { "source": "/docs/tutorials{,/**}", "destination": "/tutorials", "type": 301 },
       { "source": "/docs{,/**}", "destination": "/guides", "type": 301 },
       { "source": "/downloads{,.html,/**}", "destination": "/get-dart", "type": 301 },
