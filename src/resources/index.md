@@ -20,7 +20,7 @@ Check out the following Dart language resources:
 
   <div class="card">
     <h3><a href="/code-of-conduct">Code of conduct</a></h3>
-    <p>Dart community members' code of conduct.</p>
+    <p>Keeping community spaces safe and respectful.</p>
   </div>
   
   <div class="card">
