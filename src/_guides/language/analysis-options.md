@@ -181,7 +181,7 @@ String s2 = s.substring(1);
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="/'Object' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
+error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
 ```
 
 `implicit-dynamic: <bool>`
