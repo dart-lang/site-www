@@ -3,4 +3,6 @@ Analyzing analysis...
   error • A value of type 'String' can't be assigned to a variable of type 'int'. • lib/assignment.dart:19:11 • invalid_assignment
   error • A value of type 'String' can't be assigned to a variable of type 'int'. • lib/assignment.dart:26:11 • invalid_assignment
   error • Const variables must be initialized with a constant value. • lib/assignment.dart:34:13 • const_initialized_with_non_constant_value
-4 errors found.
+  lint • Avoid empty statements. • lib/lint.dart:9:19 • empty_statements
+  lint • Close instances of `dart.core.Sink`. • lib/lint.dart:16:7 • close_sinks
+4 errors and 2 lints found.
