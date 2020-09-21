@@ -1,8 +1,6 @@
 Analyzing analysis...
-
-  error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
-  error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:19:11 - (invalid_assignment)
-  error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:26:11 - (invalid_assignment)
-  error - Const variables must be initialized with a constant value at lib/assignment.dart:34:13 - (const_initialized_with_non_constant_value)
-
-4 issues found.
+  error • A value of type 'Object' can't be assigned to a variable of type 'String'. • lib/assignment.dart:11:14 • invalid_assignment
+  error • A value of type 'String' can't be assigned to a variable of type 'int'. • lib/assignment.dart:19:11 • invalid_assignment
+  error • A value of type 'String' can't be assigned to a variable of type 'int'. • lib/assignment.dart:26:11 • invalid_assignment
+  error • Const variables must be initialized with a constant value. • lib/assignment.dart:34:13 • const_initialized_with_non_constant_value
+4 errors found.
