@@ -15,9 +15,6 @@ and _language bindings._
 {{site.alert.info}}
   As of Dart 2.7, [dart:ffi is in beta,][ffi issue]
   and breaking API changes might still happen.
-  If you're developing a Flutter app,
-  you can get access to dart:ffi by using the Flutter dev channel,
-  as described in the [Flutter dart:ffi page.][binding]
 {{site.alert.end}}
 
 API documentation is available from the dev channel:
