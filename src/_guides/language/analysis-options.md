@@ -37,6 +37,7 @@ void increment() {
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
+lint • Avoid empty statements • example.dart:11 • empty_statements
 ```
 </blockquote>
 
@@ -52,6 +53,7 @@ var [!_controller = StreamController<String>()!];
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
+lint • Close instances of `dart.core.Sink` • example.dart:11 • close_sinks
 ```
 </blockquote>
 
