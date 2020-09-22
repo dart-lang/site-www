@@ -1,0 +1,4 @@
+name: dart_tools
+description: Dart-based tools for site-www
+dependencies:
+  path: any
