@@ -1,14 +1,17 @@
 ---
 title: Understanding null safety
-description: A deep dive into all of the changes related to null safety and how to use them.
+description: A deep dive into Dart language and library changes related to null safety.
 ---
+
+_Written by Bob Nystrom<br>
+July 2020_
 
 Null safety is the largest change we've made to Dart since we replaced the
 original unsound optional type system with [a sound static type system][strong]
 in Dart 2.0. When Dart first launched, compile-time null safety was a rare
 feature needing a long introduction. Today, Kotlin, Swift, Rust, and other
 languages all have their own answers to what has become a very [familiar
-problem][billion]. Here is an example:
+problem.][billion] Here is an example:
 
 [strong]: /guides/language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
@@ -152,9 +155,9 @@ illustrative case. Consider this null safe Dart code:
 // Using null safety:
 makeCoffee(String coffee, [String? dairy]) {
   if (dairy != null) {
-    print("$coffee with $dairy");
+    print('$coffee with $dairy');
   } else {
-    print("Black $coffee");
+    print('Black $coffee');
   }
 }
 ```
@@ -229,7 +232,7 @@ requireStringNotObject(String definitelyString) {
 }
 
 main() {
-  Object maybeString = "it is";
+  Object maybeString = 'it is';
   requireStringNotObject(maybeString);
 }
 ```
@@ -254,7 +257,7 @@ requireStringNotObject(String definitelyString) {
 }
 
 main() {
-  Object maybeString = "it is";
+  Object maybeString = 'it is';
   requireStringNotObject(maybeString as String);
 }
 ```
@@ -304,7 +307,7 @@ If that directed graph comes to a point at the top where there is a single type
 that is the supertype (directly or indirectly), that type is called the *top
 type*. Likewise, if there is a weird type at that bottom that is a subtype of
 every type, you have a *bottom type*. (In this case, your directed graph is a
-[lattice][].)
+[lattice.][lattice])
 
 [lattice]: https://en.wikipedia.org/wiki/Lattice_(order)
 
@@ -520,7 +523,7 @@ enough to see that the `return` statement means the second statement can only be
 reached when `object` is a list.
 
 For null safety, we've taken this limited analysis and made it [much more
-powerful in several ways][flow analysis].
+powerful in several ways.][flow analysis]
 
 [flow analysis]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
 
@@ -575,7 +578,7 @@ class Point {
   final double x, y;
 
   bool operator ==(Object other) {
-    if (other is! Point) wrongType("Point", other);
+    if (other is! Point) wrongType('Point', other);
     return x == other.x && y == other.y;
   }
 
@@ -878,11 +881,11 @@ class HttpResponse {
   HttpResponse.ok() : code = 200;
   HttpResponse.notFound()
       : code = 404,
-        error = "Not found";
+        error = 'Not found';
 
   String toString() {
-    if (code == 200) return "OK";
-    return "ERROR $code ${error.toUpperCase()}";
+    if (code == 200) return 'OK';
+    return 'ERROR $code ${error.toUpperCase()}';
   }
 }
 ```
@@ -901,8 +904,8 @@ you assert types using an `as` cast, and you can do the same thing here:
 ```dart
 // Using null safety:
 String toString() {
-  if (code == 200) return "OK";
-  return "ERROR $code ${(error as String).toUpperCase()}";
+  if (code == 200) return 'OK';
+  return 'ERROR $code ${(error as String).toUpperCase()}';
 }
 ```
 
@@ -918,8 +921,8 @@ equivalent to:
 ```dart
 // Using null safety:
 String toString() {
-  if (code == 200) return "OK";
-  return "ERROR $code ${error!.toUpperCase()}";
+  if (code == 200) return 'OK';
+  return 'ERROR $code ${error!.toUpperCase()}';
 }
 ```
 
@@ -1194,7 +1197,7 @@ class Box<T> {
 }
 
 main() {
-  Box<String>("a string");
+  Box<String>('a string');
   Box<int?>(null);
 }
 ```
@@ -1358,8 +1361,8 @@ a map lookup:
 
 ```dart
 // Using null safety, incorrectly:
-var map = {"key": "value"};
-print(map["key"].length); // Error.
+var map = {'key': 'value'};
+print(map['key'].length); // Error.
 ```
 
 This gives you a compile error on the attempt to call `.length` on a nullable
@@ -1368,8 +1371,8 @@ checker by using `!`:
 
 ```dart
 // Using null safety:
-var map = {"key": "value"};
-print(map["key"]!.length); // OK.
+var map = {'key': 'value'};
+print(map['key']!.length); // OK.
 ```
 
 We considered adding another method to Map that would do this for you: look up
@@ -1468,7 +1471,7 @@ The core points to take away are:
     you otherwise might not be able to, at the expense of runtime checking. It
     also gives you lazy-initialized fields.
 
-*   The List class is changed to prevent uninitialized elements.
+*   The `List` class is changed to prevent uninitialized elements.
 
 Finally, once you absorb all of that and get your code into the world of null
 safety, you get a sound program that the compilers can optimize and where every
