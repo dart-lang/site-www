@@ -15,11 +15,17 @@ For more information about the analyzer, see
 
 ## Glossary
 
-This page uses the following terms.
+This page uses the following terms:
+
+* [constant context][]
+* [override inference][]
+* [potentially non-nullable][]
+* [definite assignment][] **[PENDING: That linked-to page mentions definite assignment analysis but never defines that or definite assignment. Should we add a definition here? Or point instead to https://en.wikipedia.org/wiki/Definite_assignment_analysis?]**
 
 [constant context]: #constant-context
 [override inference]: #override-inference
 [potentially non-nullable]: #potentially-non-nullable
+[definite assignment]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
 
 ### Constant context
 
@@ -1697,9 +1703,8 @@ _The late local variable '{0}' is definitely unassigned at this point._
 #### Description
 
 The analyzer produces this diagnostic when
-[definite assignment](https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md)
-analysis shows that a local variable that's marked as `late` is read before
-being assigned.
+[definite assignment][] analysis shows that
+a local variable that's marked as `late` is read before being assigned.
 
 #### Example
 
@@ -3835,7 +3840,7 @@ operator following `s` short-circuits the evaluation of both `length` and
 `length` can't return a `null` value. Either way, `isEven` can't be invoked
 on a `null` value, so the null-aware operator is neither necessary nor
 allowed. See
-[Understanding null safety](https://dart.dev/null-safety/understanding-null-safety#smarter-null-aware-methods)
+[Understanding null safety](/null-safety/understanding-null-safety#smarter-null-aware-methods)
 for more details.
 
 #### Common fixes
@@ -5533,7 +5538,7 @@ and has all these characteristics:
 - Isn't marked as `late`.
 - The analyzer can't prove that the local variable will be assigned before
   the reference based on the specification of
-  [definite assignment](https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md).
+  [definite assignment.][definite assignment]
 
 #### Example
 
@@ -9240,4 +9245,4 @@ int f(C c) => c.m(2);
 
 ### undefined_super_method
 
-See [undefined_super_member](#undefined-super-member).
+See [undefined_super_member](#undefined_super_member).
