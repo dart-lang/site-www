@@ -102,6 +102,7 @@ og_image_vers: "?2"
 toc:
   min_level: 2
   max_level: 3
+  no_toc_section_class: exclude # ignore if in no_toc_section element
 
 ## Site-wide shorthands
 
