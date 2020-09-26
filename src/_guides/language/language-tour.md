@@ -3432,19 +3432,24 @@ that the mixin doesn't define.
 As the following example shows, you can restrict a mixin's use
 by using the `on` keyword to specify the required superclass:
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"
+  plaster="none" replace="/on Musician/[!$&!]/g" ?>
 ```dart
 class Musician {
   //...
 }
-mixin MusicalPerformer on Musician {
+
+mixin MusicalPerformer [!on Musician!] {
   // ···
 }
-class MusicBand extends Musician with MusicalPerformer {
+
+class SingerDancer extends Musician with MusicalPerformer {
   //...
 }
 ```
-In the preceding code, only classes that extend or implement the `Musician` class
+
+In the preceding code,
+only classes that extend or implement the `Musician` class
 can use the mixin `MusicalPerformer`.
 Because `MusicBand` extends `Musician`, it can mix in `MusicalPerformer`.
 
