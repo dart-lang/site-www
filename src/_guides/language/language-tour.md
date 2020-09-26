@@ -3438,7 +3438,7 @@ class Musician {
 mixin MusicalPerformer on Musician {
   // ···
 }
-class MusicBand extends Musician with MusicalPerformer{
+class MusicBand extends Musician with MusicalPerformer {
   //...
 }
 ```
