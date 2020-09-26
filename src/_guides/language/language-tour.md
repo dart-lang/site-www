@@ -3426,9 +3426,11 @@ mixin Musical {
 }
 ```
 
-To restrict mixin's use to only classes which either extends or implements the class on which it is declared on - 
-we use the 'on' keyword.
-For example:
+Sometimes you might want to restrict the types that can use a mixin.
+For example, the mixin might depend on being able to invoke a method
+that the mixin doesn't define.
+As the following example shows, you can restrict a mixin's use
+by using the `on` keyword to specify the required superclass:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
 ```dart
