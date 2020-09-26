@@ -3432,7 +3432,7 @@ For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
 ```dart
-class Musician{
+class Musician {
   //...
 }
 mixin MusicalPerformer on Musician {
