@@ -3444,8 +3444,9 @@ class MusicBand extends Musician with MusicalPerformer {
   //...
 }
 ```
-In the above code we are restricting mixin MusicalPerformer to be only used by the classes which either
-extend or implement the Musician class.
+In the preceding code, only classes that extend or implement the `Musician` class
+can use the mixin `MusicalPerformer`.
+Because `MusicBand` extends `Musician`, it can mix in `MusicalPerformer`.
 
 {{site.alert.version-note}}
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
