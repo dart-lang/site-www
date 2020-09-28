@@ -15,7 +15,7 @@ $site-color-codeblock-bg: #F8F9FA;
 $site-color-light-grey: #D8D8D8;
 $site-color-nav-links: #6E7274;
 $site-color-body: #4A4A4A;
-$site-color-body-light: rgba(74/255, 74/255, 74/255, .8);
+$site-color-body-light: $site-color-body;
 $site-color-footer: $site-color-dark-background;
 $site-color-primary: $flutter-color-blue-500;
 
@@ -66,11 +66,13 @@ $site-color-primary: $brand-primary;
 $site-color-sidebar-active: #1389FD;
 
 // Typography
-
-$font-size-base:            0.875rem; // 14px
+$font-size-base:            1.0rem; // 16px
 $font-family-base:          Roboto, sans-serif;
 $font-family-monospace:     "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 $google-font-family:        "Product Sans", $font-family-base;
+
+// Sidenav, toc, and footer
+$font-size-small:         14px;
 
 // TODO: use / override BS defaults named $hX-font-size.
 // Headings
