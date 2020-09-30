@@ -3,6 +3,8 @@
 [![Build Status SVG][]][Repo on Travis]
 [![first-timers SVG][]][first-timers]
 
+**Dart is a client-optimized programming language for apps on multiple platforms. It is developed by Google and is used to build mobile, desktop, server, and web applications.**
+
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
