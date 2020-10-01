@@ -3443,7 +3443,7 @@ mixin MusicalPerformer on Musician {
 
 {{site.alert.version-note}}
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
-  releases usually used `abstract class` instead. For more information on 2.1
+  releases usually used an `abstract class` instead. For more information on 2.1
   mixin changes, see the [Dart SDK changelog][] and [2.1 mixin specification.][]
 {{site.alert.end}}
 
@@ -3522,7 +3522,7 @@ can pass a static method as a parameter to a constant constructor.
 
 If you look at the API documentation for the basic array type,
 [List,][List] you’ll see that the
-type is actually `List<E>`. The \<...\> notation marks List as a
+type is `List<E>`. The \<...\> notation marks List as a
 *generic* (or *parameterized*) type—a type that has formal type
 parameters. [By convention][], most type variables have single-letter names,
 such as E, T, S, K, and V.
@@ -3535,7 +3535,7 @@ such as E, T, S, K, and V.
 Generics are often required for type safety, but they have more benefits
 than just allowing your code to run:
 
-* Properly specifying generic types results in better generated code.
+* Properly specifying generic types results in better-generated code.
 * You can use generics to reduce code duplication.
 
 If you intend for a list to contain only strings, you can
@@ -3615,7 +3615,7 @@ var pages = <String, String>{
 
 ### Using parameterized types with constructors
 
-To specify one or more types when using a constructor, put the types in
+To specify one or more types when using a constructor, but the types in
 angle brackets (`<...>`) just after the class name. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
@@ -3637,7 +3637,7 @@ var views = Map<int, View>();
 ### Generic collections and the types they contain
 
 Dart generic types are *reified*, which means that they carry their type
-information around at runtime. For example, you can test the type of a
+information around at runtime. For example, you can test the type of
 collection:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
@@ -3748,7 +3748,7 @@ import 'dart:html';
 
 The only required argument to `import` is a URI specifying the
 library.
-For built-in libraries, the URI has the special `dart:` scheme.
+For built-in libraries, the URI has a special `dart:` scheme.
 For other libraries, you can use a file system path or the `package:`
 scheme. The `package:` scheme specifies libraries provided by a package
 manager such as the pub tool. For example:
@@ -3842,7 +3842,7 @@ the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
 see [asynchrony support](#asynchrony-support).
 
-You can invoke `loadLibrary()` multiple times on a library without problems.
+You can invoke the `loadLibrary()` multiple times in a library without problems.
 The library is loaded only once.
 
 Keep in mind the following when you use deferred loading:
@@ -3853,7 +3853,7 @@ Keep in mind the following when you use deferred loading:
   Instead, consider moving interface types to a library imported by
   both the deferred library and the importing file.
 * Dart implicitly inserts `loadLibrary()` into the namespace that you define
-  using <code>deferred as <em>namespace</em></code>.
+  using <code>deferred as a <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
 
@@ -3897,7 +3897,7 @@ you have two options:
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
 
-Code that uses `async` and `await` is asynchronous,
+The code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
 For example, here's some code that uses `await`
 to wait for the result of an asynchronous function:
@@ -3934,7 +3934,7 @@ Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
 try {
   version = await lookUpVersion();
 } catch (e) {
-  // React to inability to look up the version
+  // React to the inability to look up the version
 }
 ```
 
@@ -3950,8 +3950,8 @@ await flushThenExit(exitCode);
 ```
 
 In <code>await <em>expression</em></code>,
-the value of <code><em>expression</em></code> is usually a Future;
-if it isn't, then the value is automatically wrapped in a Future.
+the value of the <code><em>expression</em></code> is usually a Future;
+if it isn't, then the value is automatically wrapped in the Future.
 This Future object indicates a promise to return an object.
 The value of <code>await <em>expression</em></code> is that returned object.
 The await expression makes execution pause until that object is available.
@@ -4019,7 +4019,7 @@ you have two options:
 
 {{site.alert.note}}
   Before using `await for`, be sure that it makes the code clearer and that you
-  really do want to wait for all of the stream's results. For example, you
+  do want to wait for all of the stream's results. For example, you
   usually should **not** use `await for` for UI event listeners, because UI
   frameworks send endless streams of events.
 {{site.alert.end}}
@@ -4154,10 +4154,10 @@ src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=cal
 Most computers, even on mobile platforms, have multi-core CPUs.
 To take advantage of all those cores, developers traditionally use
 shared-memory threads running concurrently. However, shared-state
-concurrency is error prone and can lead to complicated code.
+concurrency is error-prone and can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of *isolates*. Each
-isolate has its own memory heap, ensuring that no isolate’s state is
+isolate has its memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
 For more information, see the following:
@@ -4320,7 +4320,7 @@ documentation comments.
 ### Single-line comments
 
 A single-line comment begins with `//`. Everything between `//` and the
-end of line is ignored by the Dart compiler.
+end of the line is ignored by the Dart compiler.
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
 ```dart
@@ -4395,7 +4395,7 @@ class Llama {
 In the generated documentation, `[Food]` becomes a link to the API docs
 for the Food class.
 
-To parse Dart code and generate HTML documentation, you can use the SDK’s
+To parse the Dart code and generate HTML documentation, you can use the SDK’s
 [documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
 For an example of generated documentation, see the [Dart API
 documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice on how to structure
