@@ -140,11 +140,19 @@ It also contained a faster pub tool, and a new [pub outdated][] command.
 
 Dart 2.9 didn't add any features to the Dart language.
 
+## Dart 2.10
+
+Dart 2.10 didn't add any features to the Dart language,
+but it added an expanded [`dart` tool][dart-tool] that's 
+analogous to the Flutter SDK's `flutter` tool.
+
+
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
 [collection for]: /guides/language/language-tour#collection-operators
 [collection if]: /guides/language/language-tour#collection-operators
 [`dart2native`]: /tools/dart2native
+[dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
