@@ -11,7 +11,7 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
-First you’ll play with the Dart language in your browser, no download required.
+First, you’ll play with the Dart language in your browser, no download required.
 Then you’ll install the Dart SDK, write a small program, and run that program using the Dart VM.
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
@@ -90,7 +90,7 @@ $ stagehand console-full
 These commands create a small Dart app that has the following:
 
 * A main Dart source file, `bin/cli.dart`, that contains a top-level
-  `main()` function. This is the entrypoint for your app.
+  `main()` function. This is the entry point for your app.
 * An additional Dart file, `lib/cli.dart`, that contains the functionality of
   the app and is imported by the `cli.dart` file.
 * A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
@@ -135,7 +135,7 @@ Let's customize the app you just created.
 
  1. Save your changes.
 
- 1. Rerun the main entrypoint of your app:
+ 1. Rerun the main entry point of your app:
 
     ```terminal
     $ dart bin/cli.dart
