@@ -5,7 +5,7 @@ toc: false
 ---
 
 Introduced in Dart 2.10, the `dart` tool (`bin/dart`)
-is a technical preview of the new command-line interface to the Dart SDK.
+is a new command-line interface to the Dart SDK.
 The `dart` tool is available no matter how you get the Dart SDK —
 whether you explicitly download the Dart SDK or only download
 the [Flutter SDK.]({{site.flutter}})
