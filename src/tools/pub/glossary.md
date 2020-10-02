@@ -65,7 +65,7 @@ context, it *is* the entrypoint since your app isn't involved.
 A directory inside your package that is allowed to contain
 [Dart entrypoints](#entrypoint).
 
-Pub has a whitelist of these directories: `benchmark`, `bin`, `example`,
+Pub has a list of these directories: `benchmark`, `bin`, `example`,
 `test`, `tool`, and `web`. Any subdirectories of those (except `bin`) may also
 contain entrypoints.
 
