@@ -29,8 +29,11 @@ directory that has these command-line tools:
 
 <div class="row">
   <div class="col-lg-6" markdown="1">  
-    
-  [dart](/tools/dart-vm)
+
+  [dart](/tools/dart-tool)
+  : The Dart command line tool
+
+  [dart-vm](/tools/dart-vm)
   : The standalone VM
 
   [dart2native](/tools/dart2native)
