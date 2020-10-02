@@ -33,9 +33,6 @@ directory that has these command-line tools:
   [dart](/tools/dart-tool)
   : The Dart command-line tool
 
-  [dart-vm](/tools/dart-vm)
-  : The standalone VM
-
   [dart2native](/tools/dart2native)
   : A tool that AOT compiles Dart code to native x64 machine code,
   producing either a standalone executable or a snapshot
