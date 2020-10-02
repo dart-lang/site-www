@@ -22,7 +22,6 @@ the [Dart tools](/tools) page.
   of the **Dart SDK**.
 </aside>
 {% comment %}
-  IMPORTANT: After each release, update the SDK version number
   IMPORTANT: After each release, EDIT src/_data/pkg-vers.json
   to update the SDK version number.
   More info: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
