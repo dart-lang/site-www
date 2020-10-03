@@ -21,6 +21,11 @@ the [Dart tools](/tools) page.
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.
 </aside>
+{% comment %}
+  IMPORTANT: After each release, EDIT src/_data/pkg-vers.json
+  to update the SDK version number.
+  More info: https://github.com/dart-lang/site-www/wiki/Updating-to-new-SDK-releases
+{% endcomment %}
 
 ## What's in the Dart SDK
 
