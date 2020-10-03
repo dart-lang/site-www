@@ -84,7 +84,7 @@ a, button {
  &.external {
   &:after {
     content: $icon-external;
-    vertical-align: top;
+    vertical-align: baseline;
     margin-left: 2px;
     font-family: 'dart' !important;
     font-size: 11px;
