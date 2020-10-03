@@ -316,7 +316,7 @@ satisfies the following conditions:
 * The element contains the character `'a'`.
 * The element starts with the character `'M'`.
 
-All the elements in the test data are [strings;][String class]
+All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
 ```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
