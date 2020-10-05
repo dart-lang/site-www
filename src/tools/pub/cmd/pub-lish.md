@@ -16,6 +16,13 @@ on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing packages](/tools/pub/publishing).
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 ## Options
 
 For options that apply to all pub commands, see

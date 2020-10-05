@@ -24,6 +24,13 @@ An **AOT snapshot** doesn't include the Dart runtime.
 Consider using snapshots if you're distributing multiple programs
 and disk space is limited.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 
 ## Creating standalone executables
 

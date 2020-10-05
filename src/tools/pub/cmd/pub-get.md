@@ -51,6 +51,13 @@ This is the primary difference between `pub get` and
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 ## Package resolution
 
 By default, pub creates a `.packages` file

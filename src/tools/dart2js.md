@@ -18,6 +18,13 @@ which performs a similar analysis but has a different implementation.
 This page tells you how to use dart2js on the command line. It also give tips
 on debugging the JavaScript that dart2js generates.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 ## Basic usage
 
 Here’s an example of compiling a Dart file to JavaScript:

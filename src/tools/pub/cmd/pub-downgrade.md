@@ -34,6 +34,13 @@ versions of all dependencies.
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 
 ## Downgrading specific dependencies
 

@@ -8,6 +8,13 @@ and for deploying packages and command-line apps.
 For general information about using the pub package manager, see
 [How to use packages](/guides/packages).
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 {% include flutter-packages.md %}
 
 Quick links to the `pub` commands:

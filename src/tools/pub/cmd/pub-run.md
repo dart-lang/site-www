@@ -15,6 +15,13 @@ or in one of its dependencies, from the command line.
 To run an executable when you are not currently inside a package,
 use the [pub global](/tools/pub/cmd/pub-global) command.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 ## Running a script in your package's bin directory
 
 This is the simplest use case.

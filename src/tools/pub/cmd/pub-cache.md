@@ -17,6 +17,13 @@ To add new packages to your cache, use `pub cache add`.
 To perform a clean reinstall of the packages in your system cache,
 use `pub cache repair`.
 
+{{ site.alert.version-note }}
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
+
 ## Options
 
 For options that apply to all pub commands, see

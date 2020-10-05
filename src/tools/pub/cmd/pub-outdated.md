@@ -16,9 +16,15 @@ and get advice on how to update them.
 include using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
-{{site.alert.version-note}}
+
+{{ site.alert.version-note }}
   The `pub outdated` command was introduced in Dart 2.8.
-{{site.alert.end}}
+
+  According to the new Dart 2.10, is preferable to use the new `dart` unified command line tool over the standalone ones, such as `dartanalyzer`, `dartfmt`, `dart2js`, `dart2native` and `pub`.
+  For details, see [the `dart` tool page][dart-tool].
+{{ site.alert.end }}
+
+[dart-tool]: /tools/dart-tool
 
 ## Overview
 
