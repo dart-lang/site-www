@@ -326,8 +326,10 @@ you need the following setup:
 ### Configure the SDK version
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
-to require a version that has null safety support.
+to [require a version][language versioning] that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
+
+[language versioning]: migrating-to-null-safety/#language-versioning
 
 {% prettify yaml tag=pre+code %}
 environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
