@@ -922,12 +922,12 @@ li.card {
     position: relative;
     &:after {
       font-family: $font-family-monospace;
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 0.75rem;
+      font-weight: 500;
       content: $msg;
       position: absolute;
       top: 6px;
-      right: 8px;
+      left: 8px;
       color: $fg-color;
     }
   }
