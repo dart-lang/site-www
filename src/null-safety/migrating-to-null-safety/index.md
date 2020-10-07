@@ -3,7 +3,7 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
-When we decided to add [null safety] to Dart, we wanted to get as much value out
+When we decided to add [null safety][] to Dart, we wanted to get as much value out
 of it as possible. That meant designing a fully sound system that guarantees you
 will not see a null reference error. This lets our compilers optimize code
 knowing that `null` cannot flow into certain places. The challenge is that the
@@ -11,7 +11,7 @@ world's existing Dart code is not designed for that level of strictness. How do
 we give users sound null safety without breaking all of the existing Dart code
 in the world?
 
-[null safety]: ../
+[null safety]: /null-safety
 
 Our answer is that we let you *migrate* your code to null safety when *you* want
 to. This document explains how that works, and how to get your code into the new
