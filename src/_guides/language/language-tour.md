@@ -1559,9 +1559,9 @@ assert(foo() == null);
 
 ## Operators
 
-Dart defines the operators shown in the following table.
-You can override many of these operators, as described in
-[Overridable operators](#overridable-operators).
+Dart supports the operators shown in the following table.
+You can define your own operators, as described in the section on
+[class methods](#_operators).
 
 |--------------------------+------------------------------------------------|
 |Description               | Operator                                       |
@@ -1621,9 +1621,9 @@ if (n % i == 0 && d % i == 0) ...
 ```
 
 {{site.alert.warning}}
-  For operators that work on two operands, the leftmost operand determines which
-  version of the operator is used. For example, if you have a Vector object and
-  a Point object, `aVector + aPoint` uses the Vector version of +.
+  For operators that take two operands, the leftmost operand determines which
+  function is used. For example, if you have a `Vector` object and
+  a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 {{site.alert.end}}
 
 
@@ -1761,7 +1761,7 @@ you are sure that the object is of that type. Example:
 (emp as Person).firstName = 'Bob';
 ```
 
-If you aren't sure that the object is of type `T`, then use `is T` to check the 
+If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
@@ -2954,7 +2954,7 @@ constructor might return an instance from a cache, or it might
 return an instance of a subtype.
 Another use case for factory constructors is
 initializing a final variable using
-logic that can't be handled in the initializer list. 
+logic that can't be handled in the initializer list.
 
 
 In the following example,
@@ -3032,6 +3032,51 @@ class Point {
   }
 }
 ```
+
+#### Operators {#_operators}
+
+Operators are instance methods with special names.
+Dart allows you to define operators with the following names:
+
+`<`  | `+`  | `|`  | `[]`
+`>`  | `/`  | `^`  | `[]=`
+`<=` | `~/` | `&`  | `~`
+`>=` | `*`  | `<<` | `==`
+`–`  | `%`  | `>>`
+{:.table}
+
+{{site.alert.note}}
+  You may have noticed that some [operators](#operators), like `!=`, are not in
+  the list of names. That's because they're just syntactic sugar. For example,
+  the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+{{site.alert.end}}
+
+An operator declaration is identified using the built-in identifier `operator`.
+The following example defines vector addition (`+`) and subtraction (`-`):
+
+<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
+```dart
+class Vector {
+  final int x, y;
+
+  Vector(this.x, this.y);
+
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+
+  // Operator == and hashCode not shown.
+  // ···
+}
+
+void main() {
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
+
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
+}
+```
+
 
 #### Getters and setters
 
@@ -3197,11 +3242,11 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
-
+<a name="overridable-operators"></a>
 
 #### Overriding members
 
-Subclasses can override instance methods, getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
@@ -3218,57 +3263,11 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/type-system),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-
-#### Overridable operators
-
-You can override the operators shown in the following table.
-For example, if you define a
-Vector class, you might define a `+` method to add two vectors.
-
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
-{:.table}
-
-{{site.alert.note}}
-  You may have noticed that `!=` is not an overridable operator. The expression
-  `e1 != e2` is just syntactic sugar for `!(e1 == e2)`.
+{{site.alert.warning}}
+  If you override `==`, you should also override Object's `hashCode` getter.
+  For an example of overriding `==` and `hashCode`, see
+  [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
 {{site.alert.end}}
-
-Here’s an example of a class that overrides the `+` and `-` operators:
-
-<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
-```dart
-class Vector {
-  final int x, y;
-
-  Vector(this.x, this.y);
-
-  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
-  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
-
-  // Operator == and hashCode not shown. For details, see note below.
-  // ···
-}
-
-void main() {
-  final v = Vector(2, 3);
-  final w = Vector(2, 2);
-
-  assert(v + w == Vector(4, 5));
-  assert(v - w == Vector(0, 1));
-}
-```
-
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-
-For more information on overriding, in general, see
-[Extending a class](#extending-a-class).
-
 
 #### noSuchMethod()
 

@@ -8,7 +8,7 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown. For details, see note below.
+  // Operator == and hashCode not shown.
   // #enddocregion ''
   @override
   bool operator ==(Object o) => o is Vector && x == o.x && y == o.y;
