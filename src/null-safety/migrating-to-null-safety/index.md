@@ -341,7 +341,7 @@ dart migrate
 That spins up a local web server with an interactive UI where you can guide the
 process:
 
-<img src="migration-tool.png">
+![Screenshot of migration tool](/null-safety/migrating-to-null-safety/migration-tool.png)
 
 For every variable and type annotation, you can see what nullability the tool
 inferred. Clicking the type shows you a causality chain to see why it came to
