@@ -36,7 +36,7 @@ you don't just say "My app uses `widgets`." You say, "My app uses
 identifies an _immutable_ chunk of code. The people updating `widgets` can
 make all of the changes they want, but they promise to not touch any already
 released versions. They can put out `2.0.6` or `3.0.0` and it won't affect you
-one whit because the version you use is unchanged.
+one bit because the version you use is unchanged.
 
 When you _do_ want to get those changes, you can always point your app to a
 newer version of `widgets` and you don't have to coordinate with those

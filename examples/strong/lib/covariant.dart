@@ -6,5 +6,6 @@ class Animal {
 class Mouse extends Animal {/* ... */}
 
 class Cat extends Animal {
+  @override
   void chase(covariant Mouse x) {/* ... */}
 }

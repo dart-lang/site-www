@@ -98,7 +98,7 @@ are in `lib`. Larger examples are in `lib`, and their tests (if any) under `test
 ## Why not test all the things?!?
 
 Not all code excerpts are tested because some are just small fragments with
-little or no useful behavior, and others illustrate features that would required
+little or no useful behavior, and others illustrate features that would require
 significant test scaffolding to be written and the effort isn't worth the small
 gain.
 

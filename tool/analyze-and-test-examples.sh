@@ -11,14 +11,19 @@ ROOT=$(pwd)
 
 source ./tool/shared/env-set-check.sh
 
-# https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
-ANALYZE="dartanalyzer --no-implicit-casts "
+# TODO mit@: After dart CLI ships in stable, move ANALYZE var up here for all channels.
+
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
 DART_CHAN=stable
 if [[ $DART_VERS == *beta* ]]; then
   DART_CHAN=beta
+  ANALYZE="dart analyze"
 elif [[ $DART_VERS == *dev* ]]; then
   DART_CHAN=dev
+  ANALYZE="dart analyze"
+else # stable
+  # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
+  ANALYZE="dartanalyzer --no-implicit-casts . "
 fi
 EXAMPLES="$ROOT/examples"
 PUB_ARGS="upgrade" # --no-precomiple
@@ -55,27 +60,15 @@ function analyze_and_test() {
   pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
-  # TODO: rename DIR since it now more generally contains analysis targets, not only directories
-  DIR=()
-  for d in analysis_options.yaml bin lib test web; do
-    if [[ -e $d ]]; then DIR+=($d); fi
-  done
-
-  if [[ ${#DIR} -le 0 ]]; then
-    echo
-    echo "NOTHING TO ANALYZE in this project."
-    return
-  fi
-
   echo
   EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHAN.txt
   if [[ ! -e $EXPECTED_FILE ]]; then
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
   fi
   travis_fold start analyzeAndTest.analyze
-  toggleInFileAnalyzerFlags disable ${DIR[*]}
-  echo "$ $ANALYZE ${DIR[*]}"
-  $ANALYZE ${DIR[*]} > $LOG_FILE || {
+  toggleInFileAnalyzerFlags disable .
+  echo "$ $ANALYZE"
+  $ANALYZE > $LOG_FILE || {
     echo "WARNING: Ignoring analyzer exit code $?"
   }
   if [[ -e $EXPECTED_FILE ]]; then
@@ -99,7 +92,7 @@ function analyze_and_test() {
   else
     cat $LOG_FILE
   fi
-  toggleInFileAnalyzerFlags reenable ${DIR[*]}
+  toggleInFileAnalyzerFlags reenable .
   travis_fold end analyzeAndTest.analyze
 
   if [[ ! -d test ]]; then

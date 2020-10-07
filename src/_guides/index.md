@@ -5,7 +5,7 @@ toc: false
 ---
 
 Welcome to the Dart documentation!
-Here are some of the most visited pages:
+Here are some of this site's most visited pages:
 
 {% comment %}
 To update these cards, edit src/_data/docs_cards.yml.
@@ -22,43 +22,9 @@ To update these cards, edit src/_data/docs_cards.yml.
 {% endfor -%}
 </div>
 
-{% comment %}
-[PENDING: Give this page content similar to
-[flutter.dev/docs.](https://flutter.dev/docs)]
+<br>
+For a list of changes to this site —
+new pages, new guidelines, and more —
+see the [What's new page][].
 
-## What's new on the site
-
-**May 7, 2019**
-
-Everything. :)
-
-For a listing of new docs, see [what's new](/docs/whats-new-archive).
-
-## New to Dart?
-
-Once you've gone through [Get Started](/docs/get-started/install),
-including [Write Your First Flutter App,](/docs/get-started/codelab)
-here are some next steps.
-
-### Docs
-
-[Building layouts in Flutter](/docs/development/ui/layout)
-: Learn how to create layouts in Flutter, where everything is a widget.
-
-[Adding interactivity to your Flutter app](/docs/development/ui/interactive)
-: Learn how to add a stateful widget to your app.
-
-[A tour of the Flutter widget framework](/docs/development/ui/widgets-intro)
-: Learn more about Flutter's react-style framework.
-
-[FAQ](/docs/resources/faq)
-: Get the answers to frequently asked questions.
-
-You may also find these docs useful:
-
-* [Using packages](/docs/development/packages-and-plugins/using-packages)
-* [Adding assets and images](/docs/development/ui/assets-and-images)
-* [Navigation and routing](/docs/development/ui/navigation)
-* [State management](/docs/development/data-and-backend/state-mgmt/intro)
-* [Animations](/docs/development/ui/animations)
-{% endcomment %}
+[What's new page]: /guides/whats-new

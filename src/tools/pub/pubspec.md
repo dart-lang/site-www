@@ -247,13 +247,13 @@ For example, the following pubspec entry lists two scripts:
 
 {% prettify yaml tag=pre+code %}
 executables:
-  polymer-new-element: new_element
-  useful-script:
+  slidy: main
+  fvm:
 {% endprettify %}
 
 Once the package is activated using `pub global activate`,
-typing `polymer-new-element` executes `bin/new_element.dart`.
-Typing `useful-script` executes `bin/useful-script.dart`.
+typing `slidy` executes `bin/main.dart`.
+Typing `fvm` executes `bin/fvm.dart`.
 If you don't specify the value, it is inferred from the key.
 
 For more information, see

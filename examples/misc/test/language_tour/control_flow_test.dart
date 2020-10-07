@@ -29,14 +29,14 @@ void main() {
   test('collection', () {
     _test() {
       // #docregion collection
-      var collection = [0, 1, 2];
+      var collection = [1, 2, 3];
       for (var x in collection) {
-        print(x); // 0 1 2
+        print(x); // 1 2 3
       }
       // #enddocregion collection
     }
 
-    expect(_test, m.prints([0, 1, 2]));
+    expect(_test, m.prints([1, 2, 3]));
   });
 
   test('assert', () {

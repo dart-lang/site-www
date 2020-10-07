@@ -342,7 +342,7 @@ When the code adds a (String, float) pair, the analyzer complains:
 {% prettify dart tag=pre+code %}
 // Inferred as Map<String, int>
 var map = {'a': 1, 'b': 2, 'c': 3};
-map['d'] = [!1.5!]; // a double is not an int
+map['d'] = [!1.5!]; // A double is not an int.
 {% endprettify %}
 
 {% comment %}
@@ -505,7 +505,7 @@ To ensure type safety, Dart needs to insert _runtime_ checks in some cases. Cons
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (downcast-check)" replace="/string = objects/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-assumeStrings(List<Object> objects) {
+void assumeStrings(List<Object> objects) {
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
 }
@@ -619,6 +619,7 @@ class Animal {
 class Mouse extends Animal { ... }
 
 class Cat extends Animal {
+  @override
   void chase([!covariant!] Mouse x) { ... }
 }
 {% endprettify %}

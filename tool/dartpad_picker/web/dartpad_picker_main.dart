@@ -66,7 +66,7 @@ int timesTwo(int x) {
 // Arrow syntax is shorthand for `{ return expr; }`.
 int timesFour(int x) => timesTwo(timesTwo(x));
 // Functions are objects.
-int runTwice(int x, Function f) {
+int runTwice(int x, int Function(int) f) {
   for (var i = 0; i < 2; i++) {
     x = f(x);
   }

@@ -135,6 +135,12 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
+{{site.alert.note}}
+  If you're curious why Dart uses underscores instead of
+  access modifier keywords like `public` or `private`, see
+  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+{{site.alert.end}}
+
 
 ## Keywords
 
@@ -693,9 +699,9 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. You can get a
-list’s length and refer to list elements just as you would in
+Lists use zero-based indexing, where 0 is the index of the first value
+and `list.length - 1` is the index of the last value. You can get a
+list’s length and refer to list values just as you would in
 JavaScript:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
@@ -720,10 +726,10 @@ var constantList = const [1, 2, 3];
 <a id="spread-operator"> </a>
 Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
-which provide a concise way to insert multiple elements into a collection.
+which provide a concise way to insert multiple values into a collection.
 
 For example, you can use the spread operator (`...`) to insert
-all the elements of a list into another list:
+all the values of a list into another list:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
 ```dart
@@ -1127,9 +1133,11 @@ is sometimes referred to as _arrow_ syntax.
   there, but you can use a [conditional expression](#conditional-expressions).
 {{site.alert.end}}
 
-A function can have two types of parameters: _required_ and _optional_.
-The required parameters are listed first, followed by any optional parameters.
-Optional parameters can be _named_ or _positional_.
+### Parameters
+
+A function can have any number of *required positional* parameters. These can be
+followed either by *named* parameters or by *optional positional* parameters
+(but not both).
 
 {{site.alert.note}}
   Some APIs — notably [Flutter][] widget constructors — use only named
@@ -1137,11 +1145,9 @@ Optional parameters can be _named_ or _positional_.
   details.
 {{site.alert.end}}
 
-### Optional parameters
-
-Optional parameters can be either named or positional, but not both.
-
 #### Named parameters
+
+Named parameters are optional unless they're specifically marked as required.
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
@@ -1179,7 +1185,11 @@ then the analyzer reports an issue.
 To use the [@required][] annotation,
 depend on the [meta][] package and import `package:meta/meta.dart`.
 
-#### Positional parameters
+{% comment %}
+NULLSAFE: Rewrite this section.
+{% endcomment %}
+
+#### Optional positional parameters
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
@@ -2092,9 +2102,9 @@ Iterable classes such as List and Set also support the `for-in` form of
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (collection)"?>
 ```dart
-var collection = [0, 1, 2];
+var collection = [1, 2, 3];
 for (var x in collection) {
-  print(x); // 0 1 2
+  print(x); // 1 2 3
 }
 ```
 
@@ -3426,16 +3436,30 @@ mixin Musical {
 }
 ```
 
-To specify that only certain types can use the mixin — for example,
-so your mixin can invoke a method that it doesn't define —
-use `on` to specify the required superclass:
+Sometimes you might want to restrict the types that can use a mixin.
+For example, the mixin might depend on being able to invoke a method
+that the mixin doesn't define.
+As the following example shows, you can restrict a mixin's use
+by using the `on` keyword to specify the required superclass:
 
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)" plaster="none" replace="/on Musician2/[!on Musician!]/g" ?>
 ```dart
-mixin MusicalPerformer on Musician {
-  // ···
+class Musician {
+  // ...
+}
+mixin MusicalPerformer [!on Musician!] {
+  // ...
+}
+class SingerDancer extends Musician with MusicalPerformer {
+  // ...
 }
 ```
+
+In the preceding code,
+only classes that extend or implement the `Musician` class
+can use the mixin `MusicalPerformer`.
+Because `SingerDancer` extends `Musician`,
+`SingerDancer` can mix in `MusicalPerformer`.
 
 {{site.alert.version-note}}
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier

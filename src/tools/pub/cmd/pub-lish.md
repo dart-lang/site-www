@@ -7,7 +7,7 @@ toc: false
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub publish [--dry-run] [--force] [--server <url>]
+$ pub publish [--dry-run] [--force]
 {% endprettify %}
 
 This command publishes your package on the
@@ -36,18 +36,6 @@ If your package has errors, pub doesn't upload it and exits with an error.
 In the event of warnings, your package *is* uploaded.
 To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
-
-### `--server`
-
-If you pass `--server` followed by a URL, it attempts to publish the
-package to that server. It assumes the server supports the same HTTP API that
-the [pub.dev site][pubsite] uses.
-
-This can be useful if you're running your own local package server for testing.
-The main pub server is itself open source and available [here][pub repo].
-
-[pubsite]: {{site.pub}}
-[pub repo]: https://github.com/dart-lang/pub-dev
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).

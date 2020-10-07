@@ -34,7 +34,8 @@ $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
-  font-weight: 300;
+  font-weight: 400;
+  color: $site-color-body;
 }
 
 section {
@@ -84,7 +85,7 @@ a, button {
  &.external {
   &:after {
     content: $icon-external;
-    vertical-align: top;
+    vertical-align: baseline;
     margin-left: 2px;
     font-family: 'dart' !important;
     font-size: 11px;
@@ -222,7 +223,7 @@ img {
   background-color: $site-color-footer;
   color: $site-color-white;
   font-weight: 400;
-  font-size: 14px;
+  font-size: $font-size-small;
   z-index: 5;
   .brand {
     width: 120px;
@@ -429,9 +430,9 @@ img {
 
     .nav-link {
       font-family: $site-font-family-roboto;
-      font-weight: 300;
+      font-weight: 400;
       color: $site-color-body;
-      font-size: 13px;
+      font-size: $font-size-small;
 
       .open_menu & {
         padding-bottom: 21px;
@@ -475,7 +476,7 @@ img {
         &:not(.collapsable) {
           font-family: $site-font-family-gsans;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 18px;
         }
 
         &.active {
@@ -520,7 +521,7 @@ img {
   margin-bottom: 1rem;
 
   .site-toc__title {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   ul {
@@ -579,7 +580,7 @@ img {
   // Override BS defaults for .nav, etc.
   .site-toc__title {
     color: $site-color-body;
-    font-size: 16px;
+    font-size: 18px;
   }
   .toc-entry {
     padding-bottom: 0.5rem;
@@ -588,9 +589,9 @@ img {
     display: block;
     padding-top: 0.5rem;
     .nav-link {
-      color: rgba(74, 74, 74, 0.8);
-      font-size: $font-size-base;
-      font-weight: 300;
+      color: $site-color-body;
+      font-size: $font-size-small;
+      font-weight: 400;
       padding: 1px 0;
       &.active {
         color: $site-color-sidebar-active;
@@ -921,12 +922,12 @@ li.card {
     position: relative;
     &:after {
       font-family: $font-family-monospace;
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 0.75rem;
+      font-weight: 500;
       content: $msg;
       position: absolute;
       top: 6px;
-      right: 8px;
+      left: 8px;
       color: $fg-color;
     }
   }
