@@ -194,10 +194,15 @@ that was introduced after the version in the lower SDK constraint.
 On rare occasions, Dart introduces a
 backwards-incompatible feature like [null safety][].
 Previously valid code might not work with null safety,
-so you need to [migrate your code][ns migration] when you're ready.
+so to get the benefits of null safety you'll need to migrate your code.
 And because migrating to null safety can't be completely automated,
-you need to be able to migrate one library
+you'll need to be able to migrate one library
 (usually one Dart file) at a time.
+
+{% comment %}
+  Once /null-safety/migrating-to-null-safety exists,
+  the previous paragraph should link to it.
+{% endcomment %}
 
 To enable file-by-file migration,
 Dart 2.10 introduced **per-library language version selection**.
@@ -252,7 +257,6 @@ For more information, see the
 [language tour]: /guides/language/language-tour
 [language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /dart-2
-[ns migration]: /null-safety/migrating-to-null-safety
 [null safety]: /null-safety
 [set literals]: /guides/language/language-tour#sets
 [sound type system]: /guides/language/type-system
