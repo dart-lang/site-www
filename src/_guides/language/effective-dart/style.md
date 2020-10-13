@@ -249,7 +249,6 @@ capitalized: `IO`. (On the other hand, two-letter *abbreviations* like
 ID (identification) are still capitalized like regular words: `Id`.)
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart tag=pre+code %}
 class HttpConnection {}
 class DBIOPort {}
