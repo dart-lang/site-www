@@ -245,8 +245,8 @@ to tell if it's referring to HTTPS FTP or HTTP SFTP.
 To avoid this, acronyms and abbreviations are capitalized like regular words.
 
 **Exception:** Two-letter *acronyms* like IO (input/output) are fully 
-capitalized: `IO`. (On the other hand, two-letter *abbreviations* like 
-ID (identification) are still capitalized like regular words: `Id`.)
+capitalized: `IO`. On the other hand, two-letter *abbreviations* like 
+ID (identification) are still capitalized like regular words: `Id`.
 
 {:.good}
 {% prettify dart tag=pre+code %}
