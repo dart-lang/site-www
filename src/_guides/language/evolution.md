@@ -12,7 +12,6 @@ If you want details about the currently supported language, see the
 To use a language feature that was introduced after 2.0,
 specify [SDK constraints][] that are no lower than
 the release when the feature was first supported.
-(Details are in the [language versioning section][] of this page.)
 For example, to use extension methods, which were [supported starting in 2.7][],
 the `pubspec.yaml` file can have 2.7.0 as the lower constraint:
 
@@ -172,83 +171,113 @@ analogous to the Flutter SDK's `flutter` tool.
 
 ## Language versioning
 
-Before language versioning,
-Dart tools assumed that all Dart code could use all features
-that were supported by the tool's SDK version.
-This assumption causes problems when a package
-that uses a _newer_ language feature
-has [SDK constraints][] that are too low.
-For example, consider a package that uses set literals (2.2)
-but has the SDK constraints `">=2.0.0 <3.0.0"`.
-People using Dart 2.0.0 or 2.1.0 can download the package,
-but their tools can't understand the set literals.
+A single Dart SDK can simultaneously support
+multiple versions of the Dart language.
+The compiler determines what version the code is targeting,
+and it interprets the code according to that version.
 
-With language versioning,
-a single Dart SDK simultaneously supports
-multiple different versions of the Dart language.
-When you compile some Dart code,
-Dart figures out what version the code is targeting,
-and you're warned if the code uses a feature
-that was introduced after the version in the lower SDK constraint.
-
-On rare occasions, Dart introduces a
-backwards-incompatible feature like [null safety][].
-Previously valid code might not work with null safety,
-so to get the benefits of null safety you'll need to migrate your code.
-And because migrating to null safety can't be completely automated,
-you'll need to be able to migrate one library
-(usually one Dart file) at a time.
+Language versioning is important on the rare occasions
+when Dart introduces an incompatible feature like [null safety][].
+Code that used to compile cleanly before null safety
+(but perhaps crash at runtime)
+might no longer compile once null safety is enabled.
+Because migrating your apps and packages
+— and all the packages they depend on —
+to null safety might take a while,
+Dart uses language versioning to support
+using non-null-safe code alongside null-safe code.
 
 {% comment %}
   Once /null-safety/migrating-to-null-safety exists,
   the previous paragraph should link to it.
 {% endcomment %}
 
-To enable file-by-file migration,
-Dart 2.10 introduced **per-library language version selection**.
-**[PENDING: was it really a 2.10 feature?]**
-Here's how it works:
+Each package has a default language version,
+equal to the `<major>.<minor>` part of the
+**lower SDK constraint** in the pubspec.
+For example, the following entry in a `pubspec.yaml` file
+indicates that this package uses the Dart 2.7 language version.
 
-* Each package has a default language version,
-  which is specified as the **lower SDK constraint** in the pubspec.
+```yaml
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+```
 
-* Each Dart library can opt to have a different language version,
-  specified using a comment of the following form:
 
-  ```dart
-  // @dart = <major>.<minor>
-  ```
- 
-  For example:
+### Language version numbers
 
-  ```dart
-  // Description of what's in this file.
-  // @dart = 2.7
-  import 'dart:math';
-  ...
-  ```
+Dart language versions are identified by a major and minor number
+that match the first two components of the Dart SDK.
+For example, the latest language version supported by
+the 2.7.3 Dart SDK is Dart 2.7.
+Each Dart SDK supports all of the language versions covered
+by its major version number.
+That means that the 2.7.3 Dart SDK supports language
+versions 2.7, 2.6, 2.5, and so on, down to 2.0.
 
-  The `@dart` string must be in a `//` comment
-  (not `///` or `/*`),
-  and it must appear before any Dart code in the file.
-  Whitespace (tabs and spaces) doesn't matter,
-  except within the `@dart` and version strings.
-  As the example above shows,
-  other comments can appear before the `@dart` comment.
+Deriving the language version from the SDK version
+implies the following:
 
-  The library language version is usually lower than
-  the package default language version,
-  but it doesn't have to be:
-  the `@dart` string can use any version up to the
-  version of the Dart SDK that you're using.
- 
-For more information, see the
+* Whenever a minor version of the SDK ships,
+  a new language version appears.
+  In practice, many of these language versions are very similar to
+  and entirely compatible with previous versions.
+  For example, the Dart 2.9 language is essentially identical to
+  the Dart 2.8 language.
+
+* When a patch version of the SDK ships,
+  it cannot introduce any language features.
+  For example, because 2.7.2 is language version 2.7,
+  it must be completely compatible with 2.7.1 and 2.7.0.
+
+
+### Per-library language version selection
+
+By default, every Dart file
+in a package uses the same language version —
+the language version indicated by
+the lower SDK constraint in the pubspec.
+Sometimes, however, a Dart file
+might need to use an older language version.
+For example,
+you might not be able to migrate all the files in a package
+to null safety at the same time.
+
+The Dart 2.8 compiler introduced support for
+per-library language version selection.
+A [Dart library][] can opt to have a different language version
+by using a comment of the following form:
+
+```dart
+// @dart = <major>.<minor>
+```
+
+For example:
+
+```dart
+// Description of what's in this file.
+// @dart = 2.7
+import 'dart:math';
+...
+```
+
+The `@dart` string must be in a `//` comment
+(not `///` or `/*`),
+and it must appear before any Dart code in the file.
+Whitespace (tabs and spaces) doesn't matter,
+except within the `@dart` and version strings.
+As the example above shows,
+other comments can appear before the `@dart` comment.
+
+
+For more information about how language versioning works, see the
 [language versioning specification][language versioning feature].
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
 [collection for]: /guides/language/language-tour#collection-operators
 [collection if]: /guides/language/language-tour#collection-operators
+[Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart2native`]: /tools/dart2native
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
