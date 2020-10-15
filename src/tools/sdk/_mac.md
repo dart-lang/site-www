@@ -22,7 +22,7 @@ To switch between locally installed Dart releases, use
 `brew switch dart <version>`. Example:
 
 ```terminal
-$ brew switch dart 2.1.0
+$ brew switch dart 2.10.1
 ```
 
 To see which versions of Dart you've installed:
