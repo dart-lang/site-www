@@ -333,7 +333,7 @@ the first time it's used.
   or in the constructor's [initializer list](#initializer-list).
 {{site.alert.end}}
 
-Here's an example of creating and setting a final variable:
+Here's an example of creating and setting a `final` variable:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 ```dart
@@ -341,7 +341,7 @@ final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
 ```
 
-You can't change the value of a final variable:
+You can't change the value of a `final` variable:
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
@@ -377,14 +377,14 @@ You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON’T use const redundantly][].
 
 You can change the value of a non-final, non-const variable,
-even if it used to have a const value:
+even if it used to have a `const` value:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
 foo = [1, 2, 3]; // Was const []
 ```
 
-You can't change the value of a const variable:
+You can't change the value of a `const` variable:
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
@@ -405,6 +405,14 @@ const list = [i as int]; // Use a typecast.
 const map = {if (i is int) i: "int"}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
+
+{{site.alert.note}}
+  Although a `final` object cannot be modified,
+  its fields can be mutated. 
+  In comparison, both a `const` object and its properties
+  cannot be reassigned.
+{{site.alert.end}}
+
 For more information on using `const` to create constant values, see
 [Lists](#lists), [Maps](#maps), and [Classes](#classes).
 
