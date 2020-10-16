@@ -1560,8 +1560,7 @@ assert(foo() == null);
 ## Operators
 
 Dart supports the operators shown in the following table.
-You can define your own operators, as described in the section on
-[class methods](#_operators).
+You can implement many of these [operators as class members](#_operators).
 
 |--------------------------+------------------------------------------------|
 |Description               | Operator                                       |
@@ -1588,6 +1587,11 @@ You can define your own operators, as described in the section on
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
   [Dart language specification][].
+  {%- comment %}
+  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
+  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
+  - `!` is probably excluded for historical reasons
+  {% endcomment %}
 {{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
