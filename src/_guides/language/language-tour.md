@@ -1587,11 +1587,6 @@ You can implement many of these [operators as class members](#_operators).
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
   [Dart language specification][].
-  {%- comment %}
-  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
-  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
-  - `!` is probably excluded for historical reasons
-  {% endcomment %}
 {{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
@@ -3053,6 +3048,12 @@ Dart allows you to define operators with the following names:
   the list of names. That's because they're just syntactic sugar. For example,
   the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
 {{site.alert.end}}
+
+{%- comment %}
+  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
+  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
+  - `!` is probably excluded for historical reasons
+{% endcomment %}
 
 An operator declaration is identified using the built-in identifier `operator`.
 The following example defines vector addition (`+`) and subtraction (`-`):
