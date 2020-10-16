@@ -1626,7 +1626,7 @@ if (n % i == 0 && d % i == 0) ...
 
 {{site.alert.warning}}
   For operators that take two operands, the leftmost operand determines which
-  function is used. For example, if you have a `Vector` object and
+  method is used. For example, if you have a `Vector` object and
   a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 {{site.alert.end}}
 
