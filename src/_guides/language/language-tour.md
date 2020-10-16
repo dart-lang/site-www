@@ -212,7 +212,7 @@ The following table lists the words that the Dart language treats specially.
 [new]: #using-constructors
 [null]: #default-value
 [on]: #catch
-[operator]: #overridable-operators
+[operator]: #_operators
 [part]: /guides/libraries/create-library-packages#organizing-a-library-package
 [rethrow]: #catch
 [return]: #functions
@@ -1719,9 +1719,8 @@ function instead.) Here’s how the `==` operator works:
 2.  Return the result of the method invocation
     <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
     operators such as `==` are methods that are invoked on their first
-    operand. You can even override many operators, including `==`, as
-    you’ll see in
-    [Overridable operators](#overridable-operators).)
+    operand. For details, see
+    [Operators](#_operators).)
 
 Here’s an example of using each of the equality and relational
 operators:
