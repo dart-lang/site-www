@@ -71,6 +71,9 @@ apps:
     equivalent inside of a string literal. For more information, see
     [Strings](#strings).
 
+`void`
+:   A type(here, used as a return type of function). It can take anything as it's value, but it's value cannot be used anywhere. For more information, see [this article](https://medium.com/dartlang/future-void-vs-future-null-whats-the-difference-84a42d616e7d).
+
 `main()`
 :   The special, *required*, top-level function where app execution
     starts. For more information, see
