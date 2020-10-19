@@ -34,12 +34,12 @@ The following code uses many of Dart’s most basic features:
 <?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 ```dart
 // Define a function.
-printInteger(int aNumber) {
+void printInteger(int aNumber) {
   print('The number is $aNumber.'); // Print to console.
 }
 
 // This is where the app starts executing.
-main() {
+void main() {
   var number = 42; // Declare and initialize a variable.
   printInteger(number); // Call a function.
 }
@@ -149,6 +149,7 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+<div class="table-wrapper" markdown="1">
 | [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
 | [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
 | [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
@@ -166,6 +167,7 @@ The following table lists the words that the Dart language treats specially.
 | [do][]                | [if][]                | [show][]{{ckw}}       |                   |
 | [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
 {:.table .table-striped .nowrap}
+</div>
 
 [abstract]: #abstract-classes
 [as]: #type-test-operators
@@ -212,7 +214,7 @@ The following table lists the words that the Dart language treats specially.
 [new]: #using-constructors
 [null]: #default-value
 [on]: #catch
-[operator]: #overridable-operators
+[operator]: #_operators
 [part]: /guides/libraries/create-library-packages#organizing-a-library-package
 [rethrow]: #catch
 [return]: #functions
@@ -1259,14 +1261,8 @@ The next example shows how to set default values for positional parameters:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
 String say(String from, String msg,
-    [String device = 'carrier pigeon', String mood]) {
-  var result = '$from says $msg';
-  if (device != null) {
-    result = '$result with a $device';
-  }
-  if (mood != null) {
-    result = '$result (in a $mood mood)';
-  }
+    [String device = 'carrier pigeon']) {
+  var result = '$from says $msg with a $device';
   return result;
 }
 
@@ -1559,9 +1555,8 @@ assert(foo() == null);
 
 ## Operators
 
-Dart defines the operators shown in the following table.
-You can override many of these operators, as described in
-[Overridable operators](#overridable-operators).
+Dart supports the operators shown in the following table.
+You can implement many of these [operators as class members](#_operators).
 
 |--------------------------+------------------------------------------------|
 |Description               | Operator                                       |
@@ -1621,9 +1616,9 @@ if (n % i == 0 && d % i == 0) ...
 ```
 
 {{site.alert.warning}}
-  For operators that work on two operands, the leftmost operand determines which
-  version of the operator is used. For example, if you have a Vector object and
-  a Point object, `aVector + aPoint` uses the Vector version of +.
+  For operators that take two operands, the leftmost operand determines which
+  method is used. For example, if you have a `Vector` object and
+  a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 {{site.alert.end}}
 
 
@@ -1719,9 +1714,8 @@ function instead.) Here’s how the `==` operator works:
 2.  Return the result of the method invocation
     <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
     operators such as `==` are methods that are invoked on their first
-    operand. You can even override many operators, including `==`, as
-    you’ll see in
-    [Overridable operators](#overridable-operators).)
+    operand. For details, see
+    [Operators](#_operators).)
 
 Here’s an example of using each of the equality and relational
 operators:
@@ -1761,7 +1755,7 @@ you are sure that the object is of that type. Example:
 (emp as Person).firstName = 'Bob';
 ```
 
-If you aren't sure that the object is of type `T`, then use `is T` to check the 
+If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
@@ -2954,7 +2948,7 @@ constructor might return an instance from a cache, or it might
 return an instance of a subtype.
 Another use case for factory constructors is
 initializing a final variable using
-logic that can't be handled in the initializer list. 
+logic that can't be handled in the initializer list.
 
 
 In the following example,
@@ -3032,6 +3026,57 @@ class Point {
   }
 }
 ```
+
+#### Operators {#_operators}
+
+Operators are instance methods with special names.
+Dart allows you to define operators with the following names:
+
+`<`  | `+`  | `|`  | `[]`
+`>`  | `/`  | `^`  | `[]=`
+`<=` | `~/` | `&`  | `~`
+`>=` | `*`  | `<<` | `==`
+`–`  | `%`  | `>>`
+{:.table}
+
+{{site.alert.note}}
+  You may have noticed that some [operators](#operators), like `!=`, are not in
+  the list of names. That's because they're just syntactic sugar. For example,
+  the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+{{site.alert.end}}
+
+{%- comment %}
+  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
+  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
+  - `!` is probably excluded for historical reasons
+{% endcomment %}
+
+An operator declaration is identified using the built-in identifier `operator`.
+The following example defines vector addition (`+`) and subtraction (`-`):
+
+<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
+```dart
+class Vector {
+  final int x, y;
+
+  Vector(this.x, this.y);
+
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+
+  // Operator == and hashCode not shown.
+  // ···
+}
+
+void main() {
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
+
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
+}
+```
+
 
 #### Getters and setters
 
@@ -3197,11 +3242,11 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
-
+<a name="overridable-operators"></a>
 
 #### Overriding members
 
-Subclasses can override instance methods, getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
@@ -3218,57 +3263,11 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/type-system),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-
-#### Overridable operators
-
-You can override the operators shown in the following table.
-For example, if you define a
-Vector class, you might define a `+` method to add two vectors.
-
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
-{:.table}
-
-{{site.alert.note}}
-  You may have noticed that `!=` is not an overridable operator. The expression
-  `e1 != e2` is just syntactic sugar for `!(e1 == e2)`.
+{{site.alert.warning}}
+  If you override `==`, you should also override Object's `hashCode` getter.
+  For an example of overriding `==` and `hashCode`, see
+  [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
 {{site.alert.end}}
-
-Here’s an example of a class that overrides the `+` and `-` operators:
-
-<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
-```dart
-class Vector {
-  final int x, y;
-
-  Vector(this.x, this.y);
-
-  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
-  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
-
-  // Operator == and hashCode not shown. For details, see note below.
-  // ···
-}
-
-void main() {
-  final v = Vector(2, 3);
-  final w = Vector(2, 2);
-
-  assert(v + w == Vector(4, 5));
-  assert(v - w == Vector(0, 1));
-}
-```
-
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-
-For more information on overriding, in general, see
-[Extending a class](#extending-a-class).
-
 
 #### noSuchMethod()
 

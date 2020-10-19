@@ -242,31 +242,34 @@ multiple adjacent acronyms can lead to ambiguous names.
 For example, given a name that starts with `HTTPSFTP`, there's no way
 to tell if it's referring to HTTPS FTP or HTTP SFTP.
 
-To avoid this, acronyms and abbreviations are capitalized like regular words,
-except for two-letter acronyms. (Two-letter *abbreviations* like
-ID and Mr. are still capitalized like words.)
+To avoid this, acronyms and abbreviations are capitalized like regular words.
+
+**Exception:** Two-letter *acronyms* like IO (input/output) are fully 
+capitalized: `IO`. On the other hand, two-letter *abbreviations* like 
+ID (identification) are still capitalized like regular words: `Id`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart tag=pre+code %}
-HttpConnectionInfo
-uiHandler
-IOStream
-HttpRequest
-Id
-DBIOPort
-TVVcr
+class HttpConnection {}
+class DBIOPort {}
+class TVVcr {}
+class MrRogers {}
+
+var httpRequest = ...
+var uiHandler = ...
+Id id;
 {% endprettify %}
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-HTTPConnection
-UiHandler
-IoStream
-HTTPRequest
-ID
-DbIoPort
-TvVcr
+class HTTPConnection {}
+class DbIoPort {}
+class TvVcr {}
+class MRRogers {}
+
+var hTTPRequest = ...
+var uIHandler = ...
+ID iD;
 {% endprettify %}
 
 

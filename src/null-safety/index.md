@@ -332,7 +332,7 @@ For example, your `pubspec.yaml` file might have the following constraints:
 [language versioning]: /null-safety/migrating-to-null-safety/#language-versioning
 
 {% prettify yaml tag=pre+code %}
-environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
+environment: sdk: '>=2.11.0-213.0.dev <3.0.0'
 {% endprettify %}
 
 {{ site.alert.version-note }}

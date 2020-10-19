@@ -116,10 +116,10 @@ It is common to have a succession of `then()` calls, and catch errors
 generated from any part of the chain using `catchError()`:
 
 {% prettify dart tag=pre+code %}
-Future<String> one()   => new Future.value("from one");
-Future<String> two()   => new Future.error("error from two");
-Future<String> three() => new Future.value("from three");
-Future<String> four()  => new Future.value("from four");
+Future<String> one()   => Future.value("from one");
+Future<String> two()   => Future.error("error from two");
+Future<String> three() => Future.value("from three");
+Future<String> four()  => Future.value("from four");
 
 void main() {
   one()                                   // Future completes with "from one".
@@ -258,7 +258,7 @@ void main() {
   Future future = funcThatThrows();
 
   // BAD. Too late to handle funcThatThrows() exception.
-  new Future.delayed(const Duration(milliseconds: 500), () {
+  Future.delayed(const Duration(milliseconds: 500), () {
     future.then(...)
           .catchError(...);
   });
@@ -273,7 +273,7 @@ The problem goes away if `funcThatThrows()` is called within the
 
 {% prettify dart tag=pre+code %}
 void main() {
-  new Future.delayed(const Duration(milliseconds: 500), () {
+  Future.delayed(const Duration(milliseconds: 500), () {
     funcThatThrows().then(processValue)
                     .catchError(handleError)); // We get here.
   });
@@ -290,7 +290,7 @@ errors from leaking out. Consider this code:
 {% prettify dart tag=pre+code %}
 Future<int> parseAndRead(data) {
   var filename = obtainFileName(data);         // Could throw.
-  File file = new File(filename);
+  File file = File(filename);
   return file.readAsString().then((contents) {
     return parseFileData(contents);            // Could throw.
   });
@@ -329,14 +329,14 @@ error.
 ### Solution: Using Future.sync() to wrap your code
 
 A common pattern for ensuring that no synchronous error is accidentally
-thrown from a function is to wrap the function body inside a `new Future.sync()`
+thrown from a function is to wrap the function body inside a new `Future.sync()`
 callback:
 
 {% prettify dart tag=pre+code %}
 Future<int> parseAndRead(data) {
-  return new Future.sync(() {
+  return Future.sync(() {
     var filename = obtainFileName(data);         // Could throw.
-    File file = new File(filename);
+    File file = File(filename);
     return file.readAsString().then((contents) {
       return parseFileData(contents);            // Could throw.
     });
@@ -371,7 +371,7 @@ something dangerous without realizing it:
 
 {% prettify dart tag=pre+code %}
 Future fragileFunc() {
-  return new Future.sync(() {
+  return Future.sync(() {
     var x = someFunc();     // Unexpectedly throws in some rare cases.
     var y = 10 / x;         // x should not equal 0.
     ...
