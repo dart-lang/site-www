@@ -1258,7 +1258,7 @@ The next example shows how to set default values for positional parameters:
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
-String say(String from, String msg, 
+String say(String from, String msg,
     [String device = 'carrier pigeon']) {
   var result = '$from says $msg with a $device';
   return result;
