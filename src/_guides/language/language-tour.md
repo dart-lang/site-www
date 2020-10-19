@@ -149,6 +149,7 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+<div class="table-wrapper" markdown="1">
 | [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
 | [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
 | [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
@@ -166,6 +167,7 @@ The following table lists the words that the Dart language treats specially.
 | [do][]                | [if][]                | [show][]{{ckw}}       |                   |
 | [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
 {:.table .table-striped .nowrap}
+</div>
 
 [abstract]: #abstract-classes
 [as]: #type-test-operators
