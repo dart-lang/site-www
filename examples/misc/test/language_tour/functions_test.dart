@@ -28,14 +28,8 @@ void main() {
   test('optional-positional-param-default', () {
     // #docregion optional-positional-param-default
     String say(String from, String msg,
-        [String device = 'carrier pigeon', String mood]) {
-      var result = '$from says $msg';
-      if (device != null) {
-        result = '$result with a $device';
-      }
-      if (mood != null) {
-        result = '$result (in a $mood mood)';
-      }
+        [String device = 'carrier pigeon']) {
+      var result = '$from says $msg with a $device';
       return result;
     }
 
