@@ -1537,7 +1537,7 @@ string keys) are directly encodable into JSON. List and Map objects are
 encoded recursively.
 
 You have two options for encoding objects that aren't directly
-encodable. The first is to invoke `encode()` with a second argument: a
+encodable. The first is to invoke `jsonEncode()` with a second argument: a
 function that returns an object that is directly encodable. Your second
 option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
