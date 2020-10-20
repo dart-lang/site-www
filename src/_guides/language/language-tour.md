@@ -408,9 +408,9 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
 
 {{site.alert.note}}
   Although a `final` object cannot be modified,
-  its fields can be mutated. 
-  In comparison, both a `const` object and its properties
-  cannot be reassigned.
+  its fields can be changed. 
+  In comparison, a `const` object and its fields
+  cannot be changed: they're _immutable_.
 {{site.alert.end}}
 
 For more information on using `const` to create constant values, see
