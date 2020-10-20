@@ -330,7 +330,8 @@ to require a version that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 {% prettify yaml tag=pre+code %}
-environment: sdk: '>=2.11.0-213.0.dev <3.0.0'
+environment:
+  sdk: ">=2.11.0-213.0.dev <2.12.0"
 {% endprettify %}
 
 {{ site.alert.version-note }}
