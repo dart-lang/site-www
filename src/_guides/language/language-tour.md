@@ -53,8 +53,17 @@ apps:
     Dart also supports multi-line and document comments.
     For details, see [Comments](#comments).
 
+`void`
+:   A special type that indicates a value that's never used.
+    Functions like `printInteger()` and `main()` that don't explicitly return a value
+    have the `void` return type.
+    For more information, see [this article][void article].
+    
+[void article]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
+
 `int`
-:   A type. Some of the other [built-in types](#built-in-types)
+:   Another type, indicating an integer.
+    Some additional [built-in types](#built-in-types)
     are `String`, `List`, and `bool`.
 
 `42`
