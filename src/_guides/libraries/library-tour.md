@@ -1481,8 +1481,7 @@ structured objects and collections. [UTF-8][] is a common variable-width
 encoding that can represent every character in the Unicode character
 set.
 
-The dart:convert library works in both web apps and command-line apps.
-To use it, import dart:convert.
+To use this library, import dart:convert.
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
 ```dart
