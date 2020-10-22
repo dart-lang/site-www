@@ -35,8 +35,7 @@ so apps can be faster and smaller.
 {{ site.alert.important }}
   Because null safety is still in tech preview,
   **don't use null safety in production code.**
-  In particular, the Flutter framework doesn't yet support null safety.
-  Please test the feature using the Dart SDK,
+  Please test the feature
   and [give us feedback.][]
 {{ site.alert.end }}
 
