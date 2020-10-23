@@ -1481,8 +1481,7 @@ structured objects and collections. [UTF-8][] is a common variable-width
 encoding that can represent every character in the Unicode character
 set.
 
-The dart:convert library works in both web apps and command-line apps.
-To use it, import dart:convert.
+To use this library, import dart:convert.
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
 ```dart
@@ -1537,7 +1536,7 @@ string keys) are directly encodable into JSON. List and Map objects are
 encoded recursively.
 
 You have two options for encoding objects that aren't directly
-encodable. The first is to invoke `encode()` with a second argument: a
+encodable. The first is to invoke `jsonEncode()` with a second argument: a
 function that returns an object that is directly encodable. Your second
 option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
