@@ -718,6 +718,19 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
+Trailing commas are allowed in Dart collections. 
+They don't affect the collection, but having them can 
+prevent errors when copy-pasting code. 
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
+```dart
+var list = [
+  'Car',
+  'Boat',
+  'Plane',
+];
+```
+
 Lists use zero-based indexing, where 0 is the index of the first value
 and `list.length - 1` is the index of the last value. You can get a
 list’s length and refer to list values just as you would in
