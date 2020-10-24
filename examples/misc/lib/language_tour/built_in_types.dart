@@ -85,6 +85,16 @@ void miscDeclAnalyzedButNotTested() {
     var list = [1, 2, 3];
     // #enddocregion list-literal
   }
+  
+  {
+    // #docregion trailing-commas
+    var list = [
+    'Car',
+    'Boat',
+    'Plane',
+    ];
+    // #enddocregion trailing-commas
+  }
 
   {
     // #docregion const-list
