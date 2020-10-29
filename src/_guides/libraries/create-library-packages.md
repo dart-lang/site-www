@@ -126,8 +126,8 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
 ## Importing library files
 
-When importing a library file from another package, use the
-the `package:` directive to specify the URI of that file.
+When importing a library file from another package, use
+a `package:` URI to specify the location of that file.
 
 {% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
