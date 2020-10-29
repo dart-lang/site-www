@@ -89,9 +89,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion trailing-commas
     var list = [
-    'Car',
-    'Boat',
-    'Plane',
+      'Car',
+      'Boat',
+      'Plane',
     ];
     // #enddocregion trailing-commas
   }
