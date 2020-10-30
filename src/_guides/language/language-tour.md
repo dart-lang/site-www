@@ -718,6 +718,7 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
+<a name="trailing-comma"></a>
 You can add a comma after the last item in a Dart collection literal.
 This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.
@@ -1127,9 +1128,6 @@ This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
 
-Also note that you can use trailing commas when
-passing arguments to a function.
-
 Here’s an example of implementing a function:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
@@ -1180,6 +1178,10 @@ followed either by *named* parameters or by *optional positional* parameters
   details.
 {{site.alert.end}}
 
+You can use [trailing commas][] when you pass arguments to a function
+or when you define function parameters.
+
+
 #### Named parameters
 
 Named parameters are optional unless they're specifically marked as required.
@@ -1201,8 +1203,6 @@ to specify named parameters:
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold, bool hidden}) {...}
 ```
-
-You can also use trailing commas when declaring a function.
 
 Although named parameters are a kind of optional parameter,
 you can annotate them with [@required][] to indicate
@@ -2315,7 +2315,8 @@ assert(urlString.startsWith('https'));
 ```
 
 To attach a message to an assertion,
-add a string as the second argument to `assert`.
+add a string as the second argument to `assert`
+(optionally with a [trailing comma][trailing commas]):
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
@@ -2328,10 +2329,6 @@ resolves to a boolean value. If the expression’s value
 is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
 [AssertionError][]) is thrown.
-
-Like other functions, you can utilize trailing commas in assertions.
-This might be useful if you want to cut the message attached
-to an assertion, then paste it back in later.
 
 When exactly do assertions work?
 That depends on the tools and framework you're using:
@@ -3378,7 +3375,7 @@ Declare an enumerated type using the `enum` keyword:
 enum Color { red, green, blue }
 ```
 
-You can use trailing commas when declaring an enumerated type.
+You can use [trailing commas][] when declaring an enumerated type.
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
@@ -4514,4 +4511,5 @@ To learn more about Dart's core libraries, see
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[trailing commas]: #trailing-comma
 [Type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
