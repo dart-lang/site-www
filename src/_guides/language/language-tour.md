@@ -1127,6 +1127,9 @@ This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
 
+Also note that you can use trailing commas when
+passing arguments to a function.
+
 Here’s an example of implementing a function:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
@@ -1198,6 +1201,8 @@ to specify named parameters:
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold, bool hidden}) {...}
 ```
+
+You can also use trailing commas when declaring a function.
 
 Although named parameters are a kind of optional parameter,
 you can annotate them with [@required][] to indicate
@@ -2324,6 +2329,10 @@ is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
 [AssertionError][]) is thrown.
 
+Like other functions, you can utilize trailing commas in assertions.
+This might be useful if you want to cut the message attached
+to an assertion, then paste it back in later.
+
 When exactly do assertions work?
 That depends on the tools and framework you're using:
 
@@ -3368,6 +3377,8 @@ Declare an enumerated type using the `enum` keyword:
 ```dart
 enum Color { red, green, blue }
 ```
+
+You can use trailing commas when declaring an enumerated type.
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
