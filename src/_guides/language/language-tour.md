@@ -718,9 +718,9 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
-Trailing commas are allowed in Dart collections. 
-They don't affect the collection, but having them can 
-prevent errors when copy-pasting code. 
+You can add a comma after the last item in a Dart collection literal.
+This _trailing comma_ doesn't affect the collection,
+but it can help prevent copy-paste errors.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
