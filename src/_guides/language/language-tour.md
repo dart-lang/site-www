@@ -718,6 +718,20 @@ var list = [1, 2, 3];
   [type inference.](/guides/language/type-system#type-inference)
 {{site.alert.end}}
 
+<a name="trailing-comma"></a>
+You can add a comma after the last item in a Dart collection literal.
+This _trailing comma_ doesn't affect the collection,
+but it can help prevent copy-paste errors.
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
+```dart
+var list = [
+  'Car',
+  'Boat',
+  'Plane',
+];
+```
+
 Lists use zero-based indexing, where 0 is the index of the first value
 and `list.length - 1` is the index of the last value. You can get a
 list’s length and refer to list values just as you would in
@@ -1163,6 +1177,10 @@ followed either by *named* parameters or by *optional positional* parameters
   parameters, even for parameters that are mandatory. See the next section for
   details.
 {{site.alert.end}}
+
+You can use [trailing commas][] when you pass arguments to a function
+or when you define function parameters.
+
 
 #### Named parameters
 
@@ -2297,7 +2315,8 @@ assert(urlString.startsWith('https'));
 ```
 
 To attach a message to an assertion,
-add a string as the second argument to `assert`.
+add a string as the second argument to `assert`
+(optionally with a [trailing comma][trailing commas]):
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 ```dart
@@ -3355,6 +3374,8 @@ Declare an enumerated type using the `enum` keyword:
 ```dart
 enum Color { red, green, blue }
 ```
+
+You can use [trailing commas][] when declaring an enumerated type.
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
@@ -4490,4 +4511,5 @@ To learn more about Dart's core libraries, see
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[trailing commas]: #trailing-comma
 [Type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html

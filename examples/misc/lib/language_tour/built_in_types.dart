@@ -87,6 +87,16 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion trailing-commas
+    var list = [
+      'Car',
+      'Boat',
+      'Plane',
+    ];
+    // #enddocregion trailing-commas
+  }
+
+  {
     // #docregion const-list
     var constantList = const [1, 2, 3];
     // constantList[1] = 1; // Uncommenting this causes an error.
