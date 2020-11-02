@@ -56,7 +56,7 @@ The AOT-compiled code runs inside an efficient Dart runtime that enforces
 the sound Dart type system and manages memory using fast object allocation and a [generational garbage
 collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)
 
-More information: [`dart2native` tool](/tools/dart2native)
+More information: [`dart compile`](/tools/dart-compile)
 
 ## Dart Web (JavaScript)
 

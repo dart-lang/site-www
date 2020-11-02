@@ -99,22 +99,15 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 The Dart SDK includes the following general-purpose tools:
 
-[`dartanalyzer`](/tools/dartanalyzer)
-: A static analyzer that evaluates and reports any errors or warnings in your code.
-  The Dart plugin for your IDE should make use of Dart's analysis engine,
-  but you can also run the analyzer from the command line.
+[`dart`](/tools/dart-tool)
+: A command-line interface for creating, formatting, analyzing,
+  testing, compiling, and running Dart code.
 
 [`dartdoc`](/tools/dartdoc)
 : A documentation generator.
   For examples of dartdoc's output, see the API reference documentation
   published at [api.dart.dev]({{site.dart_api}}) and pub.dev
   (for example, the [`path` API reference]({{site.pub-api}}/path)).
-
-[`dartfmt`](/tools/dartfmt)
-: An opinionated code formatter that follows the recommendations of the
-  [Dart style guide](/guides/language/effective-dart/style).
-  IDEs that support Dart generally allow you to format the code within
-  the IDE. Or you can run the formatter from the command line.
 
 [`pub`](/tools/pub/cmd)
 : A package manager that
@@ -168,18 +161,8 @@ The following tools support developing or running
 command-line apps and servers:
 
 [`dart`](/tools/dart-vm)
-: The standalone Dart VM, which you can use to execute Dart code.
-  IDEs that support Dart,
-  and some of the pub commands, use this
-  command behind-the-scenes to execute Dart scripts.
-  Note that you must configure your IDE with the location of
-  the `dart` binary.
-
-[`dart2native`](/tools/dart2native)
-: An ahead-of-time (AOT) compiler that compiles
-  Dart code to native x64 machine code.
-  The output is either a standalone executable (the default)
-  or an AOT snapshot.
+: Use the `dart run` command to run uncompiled Dart command-line apps
+  and some kinds of snapshots.
 
 [`dartaotruntime`](/tools/dartaotruntime)
-: A Dart runtime that you can use to run AOT snapshots.
+: Use this Dart runtime to run AOT snapshots.

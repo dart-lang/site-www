@@ -217,11 +217,12 @@ to produce fast native apps.
 
 Yes. Dart programs can be compiled to native x64 machine code for running in a
 Terminal/Command Prompt on desktop operating systems such as Windows, macOS, and
-Linux. For more details, see the [dart2native][] documentation.
+Linux. For more details, see the [dart compile][] documentation.
 
 ### Q. Which is faster — AOT- or JIT-compiled code?
 
-Code that's compiled ahead-of-time (_AOT_) with a compiler such as [dart2native][]
+Code that's compiled ahead-of-time (_AOT_) with
+a tool such as [dart compile][]
 has different performance characteristics from
 code that's compiled just-in-time (_JIT_) in the Dart VM.
 AOT-compiled code is guaranteed to have fast startup and consistent runtime
@@ -463,8 +464,8 @@ modern JavaScript VMs.
 [AngularDart]: {{site.angulardart}}
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
-[dart2native]: /tools/dart2native
-[dartanalyzer]: /tools/dartanalyzer
+[dart compile]: /tools/dart-compile
+[dartanalyzer]: /tools/dart-analyze
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
 [fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html

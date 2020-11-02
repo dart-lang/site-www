@@ -12,7 +12,7 @@ to dart2js using the `--release` flag.
 
 The dart2js tool provides hints for improving your Dart code and removing
 unused code.
-Also see [dartanalyzer,](/tools/dartanalyzer)
+Also see [`dart analyze`](/tools/dart-analyze),
 which performs a similar analysis but has a different implementation.
 
 This page tells you how to use dart2js on the command line. It also give tips

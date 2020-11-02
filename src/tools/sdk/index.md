@@ -32,54 +32,33 @@ the [Dart tools](/tools) page.
 The Dart SDK includes a `lib` directory for the [Dart libraries][] and a `bin`
 directory that has these command-line tools:
 
-<div class="row">
-  <div class="col-lg-6" markdown="1">  
+[`dart`](/tools/dart-tool)
+: The command-line interface for creating, formatting, analyzing, testing,
+  compiling, and running Dart code.
+  
+[`dartaotruntime`](/tools/dartaotruntime)
+: A Dart runtime for AOT-compiled snapshots.
 
-  [dart](/tools/dart-tool)
-  : The Dart command-line tool
+[`dartdoc`](/tools/dartdoc)
+: The API documentation generator.
 
-  [dart2native](/tools/dart2native)
-  : A tool that AOT compiles Dart code to native x64 machine code,
-  producing either a standalone executable or a snapshot
-
-  [dartaotruntime](/tools/dartaotruntime)
-  : A Dart runtime for AOT-compiled snapshots
-
-  [dart2js](/tools/dart2js)
-  : The Dart-to-JavaScript compiler (used only for web development)
-
-  [dartanalyzer](/tools/dartanalyzer)
-  : The static analyzer
-  </div><div class="col-lg-6" markdown="1">
-  [dartdevc](/tools/dartdevc)
-  : The Dart development compiler
-  (used only for web development)
-
-  [dartdoc](/tools/dartdoc)
-  : The API documentation generator
-
-  [dartfmt](/tools/dartfmt)
-  : The Dart code formatter
-
-  [pub](/tools/pub)
-  : The Dart package manager
-  </div>
-</div>
+{{ site.alert.note }}
+  The 2.10 Dart SDK also contains `dart2js`, `dart2native`, `dartanalyzer`,
+  `dartdevc`, `dartfmt`, and `pub` commands.
+  However, as of 2.10 the `dart` tool provides a unified interface
+  to their functionality.
+  We recommend that you transition to using
+  [the `dart` tool](/tools/dart-tool).
+{{ site.alert.end }}
 
 For more information about the SDK, see its
 [README file.](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk)
 
+
 ## Filing bugs and feature requests
 
 To see existing issues or create a new one,
-go to [dartbug.com](https://dartbug.com).
-Here are some handy searches:
-
-* [dart (VM) issues](https://github.com/dart-lang/sdk/labels/Area-VM)
-* [dartanalyzer issues](https://github.com/dart-lang/sdk/labels/Area-Analyzer)
-* [dartdoc issues](https://github.com/dart-lang/dartdoc/issues)
-* [pub issues](https://github.com/dart-lang/sdk/labels/Area-Pub)
-* [issues for the SDK as a whole](https://github.com/dart-lang/sdk/issues)
+go to [the SDK issue tracker](https://github.com/dart-lang/sdk/issues).
 
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
