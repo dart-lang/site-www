@@ -1,5 +1,6 @@
 language: dart
-dart: [stable, beta, dev]
+dart: [stable, beta] # temporarily stop using dev builds
+# dart: [stable, beta, dev]
 
 cache:
   timeout: 300
