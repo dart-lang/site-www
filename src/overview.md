@@ -8,7 +8,7 @@ to offer the most productive programming language for multi-platform development
 paired with a flexible execution runtime platform for app frameworks across
 Google.
 
-<img src="{% asset Dart-logo_lockup_dart_horizontal.png @path %}" width="300px" alt="Dart product logo">
+<img src="{% asset logo_lockup_dart_horizontal.png @path %}" width="300px" alt="Dart product logo">
 
 Languages are defined by their technical envelope: the many choices that are
 made during development which shape their capabilities and strengths. Dart is
