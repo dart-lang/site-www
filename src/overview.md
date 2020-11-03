@@ -78,6 +78,9 @@ class Point {
 }
 ```
 
+For more on the language, take the [Dart language
+tour](https://dart.dev/guides/language/language-tour).
+
 ## Dart: The Libraries
 
 Dart has a rich set of core libraries that provide essentials for many everyday
@@ -137,9 +140,13 @@ We have lots of ways for you to learn Dart. You can:
 
 - [Explore Dart in the browser](https://dartpad.dev/) through DartPad, our
   web-based execution environment for Dart code.
-- [Complete a Dart tutorials](https://dart.dev/tutorials/server/cmdline) that covers the basics
-  of building for the command line with Dart.
+- [Take a tour of the Dart
+  language](https://dart.dev/guides/language/language-tour) that shows how to
+  use each major Dart feature.
+- [Complete a Dart tutorials](https://dart.dev/tutorials/server/cmdline) that
+  covers the basics of building for the command line with Dart.
 - Work through extensive [online
   training on Dart](https://www.udemy.com/course/complete-dart-guide/?couponCode=NOV-20)
   from experts.
-- Explore the [Dart API documentation](https://api.dart.dev/) that describes the Dart core libraries.
+- Explore the [Dart API documentation](https://api.dart.dev/) that describes the
+  Dart core libraries.
