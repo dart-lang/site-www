@@ -6,26 +6,23 @@ set -e -o pipefail
 
 cd `dirname $0`/..
 
-DARTFORMAT="dart format"
 EXAMPLES=examples
-
-# TODO: Remove this comment and down to TODO_END after the new dart cli ships to stable.
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
-if [[ $DART_VERS == *beta* ]]; then
-  DARTFORMAT="dart format"
-elif [[ $DART_VERS == *dev* ]]; then
-  DARTFORMAT="dart format"
-else # stable
-  DARTFORMAT="dartfmt -w"
+
+if [[ $DART_VERS == *dev* ]]; then
+  # Format all example source files:
+  dart format $* `find $EXAMPLES -name "*.dart" \
+      ! -path "**/.*" \
+      ! -path "**/build/**"`
+else
+  # Format all example source files, except null_safety:
+  dart format $* `find $EXAMPLES -name "*.dart" \
+      ! -path "**/.*" \
+      ! -path "**/build/**" \
+      ! -path "**/null_safety/**"`
 fi
-# TODO_END
 
-# Format all example source files, except the excluded paths:
-$DARTFORMAT $* `find $EXAMPLES -name "*.dart" \
-    ! -path "**/.*" \
-    ! -path "**/build/**"`
-
-$DARTFORMAT -l 60 \
+dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
   $EXAMPLES/misc/lib/language_tour/classes/logger.dart \
   $EXAMPLES/misc/lib/language_tour/classes/no_such_method.dart \
@@ -35,7 +32,7 @@ $DARTFORMAT -l 60 \
   $EXAMPLES/misc/test/library_tour/html_test.dart \
   $EXAMPLES/misc/lib/samples/spacecraft.dart
 
-$DARTFORMAT -l 65 \
+dart format -l 65 \
   $EXAMPLES/httpserver/bin/basic_writer_server.dart \
   $EXAMPLES/httpserver/bin/note_server.dart \
   $EXAMPLES/misc/bin/dcat.dart \
