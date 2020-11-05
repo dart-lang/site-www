@@ -311,6 +311,7 @@ and when omitted `pub get` will fail with an error:
 ```
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
+
 environment:
   sdk: '>=2.10.0 <3.0.0'
 ```
