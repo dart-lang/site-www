@@ -305,6 +305,16 @@ environment:
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
+As of Dart 2.12, it is an error to have a pubspec without an SDK constraint,
+and when omitted `pub get` will fail with an error:
+
+```
+pubspec.yaml has no lower-bound SDK constraint.
+You should edit pubspec.yaml to contain an SDK constraint:
+environment:
+  sdk: '>=2.10.0 <3.0.0'
+```
+
 <aside class="alert alert-warning" markdown="1">
   Caret syntax (`^`) is a compact way to represent version ranges, but **don't use
   it for the SDK constraint.** Instead, **include an upper bound for the SDK**
