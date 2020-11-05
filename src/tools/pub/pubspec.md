@@ -305,8 +305,9 @@ environment:
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
-As of Dart 2.12, it is an error to have a pubspec without an SDK constraint,
-and when omitted `pub get` will fail with an error:
+As of Dart 2.12, omitting the SDK constraint is an error.
+When the pubspec has no SDK constraint,
+`pub get` fails with a message like the following:
 
 ```
 pubspec.yaml has no lower-bound SDK constraint.
