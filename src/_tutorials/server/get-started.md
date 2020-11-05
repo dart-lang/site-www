@@ -79,11 +79,6 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-Using `dart create` automatically gets the packages that the app depends on. To do this manually:
-
-```terminal
-$ dart pub get
-```
 
 ## 4. Run the app
 
