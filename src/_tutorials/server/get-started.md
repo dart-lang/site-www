@@ -62,14 +62,14 @@ More information:
 
 ## 3. Create a small app
 
-`dart create` gives you templates for creating Dart apps. To create a command-line app:
+Use the `dart create` command and the `console-full` template
+to create a command-line app:
 
 ```terminal
 $ dart create -t console-full cli
-$ cd cli
 ```
 
-These commands create a small Dart app that has the following:
+This command creates a small Dart app that has the following:
 
 * A main Dart source file, `bin/cli.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
@@ -88,10 +88,11 @@ $ dart pub get
 ## 4. Run the app
 
 To run the app from the command line, use the Dart VM by running the
-[`dart`](/tools/dart-run) command:
+[`dart run`](/tools/dart-tool) command in the app's top directory:
 
 ```terminal
-$ dart bin/cli.dart
+$ cd cli
+$ dart run
 Hello world: 42!
 ```
 
