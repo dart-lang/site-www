@@ -14,9 +14,6 @@ dev_dependencies:
 
 dependency_overrides:
   code_excerpt_updater:
-    git: https://github.com/chalin/code_excerpt_updater.git
-    # path: ../code_excerpt_updater
+    git: https://github.com/RedBrogdon/code_excerpt_updater.git
   code_excerpter:
-    git: https://github.com/chalin/code_excerpter.git
-    # path: ../code_excerpter
-    
+    git: https://github.com/RedBrogdon/code_excerpter.git
