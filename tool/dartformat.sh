@@ -7,20 +7,22 @@ set -e -o pipefail
 cd `dirname $0`/..
 
 EXAMPLES=examples
+NULL_SAFETY_EXAMPLES=null_safety_examples
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
 
 if [[ $DART_VERS == *dev* ]]; then
-  # Format all example source files:
-  dart format $* `find $EXAMPLES -name "*.dart" \
+  echo "Formatting null safety example files..."
+  dart format $* `find $NULL_SAFETY_EXAMPLES -name "*.dart" \
       ! -path "**/.*" \
       ! -path "**/build/**"`
-else
-  # Format all example source files, except null_safety:
-  dart format $* `find $EXAMPLES -name "*.dart" \
-      ! -path "**/.*" \
-      ! -path "**/build/**" \
-      ! -path "**/null_safety/**"`
 fi
+
+# Format all example source files, except null_safety:
+  echo "Formatting example files..."
+dart format $* `find $EXAMPLES -name "*.dart" \
+    ! -path "**/.*" \
+    ! -path "**/build/**"` \
+    ! -path "**/null_safety/**"`
 
 dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
