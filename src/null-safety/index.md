@@ -3,52 +3,18 @@ title: Sound null safety
 description: Information about Dart's upcoming null safety feature
 ---
 
-Sound null safety is coming to the Dart language!
+Sound null safety -- currently in beta -- is coming to the Dart language!
+
 When you opt into null safety,
 types in your code are non-nullable by default, meaning that
 values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
-{{site.alert.note}}
-  This page provides an overview to how null safety
-  affects the Dart language. For a deep dive into how
-  null safety works, see [Understanding null safety][].
-{{site.alert.end}}
-
-{% comment %}
-  If it were my druthers, I'd move this page to a sub-page
-  called overview and make this page more of a landing page,
-  now that Bob's null-safety deep dive is available
-  (and the migration guide is coming).
-  But I'll leave that decision up to KW.
-{% endcomment %}
-
-With null safety,
-the Dart analyzer enforces good practices.
-For example, it makes sure you check for null before
-reading a nullable variable.
-And because Dart null safety is sound,
-Dart compilers and runtimes can optimize away internal null checks,
-so apps can be faster and smaller.
-
-{{ site.alert.important }}
-  Because null safety is still in tech preview,
-  **don't use null safety in production code.**
-  Please test the feature
-  and [give us feedback.][]
-{{ site.alert.end }}
-
-New operators and keywords related to null safety
-include `?`, `!`, and `late`.
-If you've used Kotlin, TypeScript, or C#,
-the syntax for null safety might look familiar.
-That's by design: the Dart language aims to be unsurprising.
 
 You can
 [try null safety in your normal development environment](#enable-null-safety)
-by configuring your project to use a tech preview SDK.
-Or you can practice using null safety in the web app
+or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
 
@@ -57,8 +23,36 @@ shown in the following screenshot.
 [TODO: update that screenshot]
 {% endcomment %}
 
+## Null safety principles
 
-## Creating variables
+Dart null safety support is based on the following three core design principles:
+
+*  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
+   can be null, it will be considered non-nullable. We chose this as the default
+   because we found that non-null was by far the most common choice in APIs.
+
+* **Incrementally adoptable**. There’s a lot of Dart code out there. It will be
+  possible to migrate to null safety at a time when you choose to, and then
+  incrementally, part by part. It will be possible to have null-safe and
+  non-null-safe code in the same project. We’ll also provide tools to help you
+  with the migration.
+
+* **Fully sound**. Dart’s null safety is sound. This means that we can trust the
+  type system: if it determines that something isn’t null, then it can never be
+  null. This enables compiler optimizations. Once you migrate your whole project
+  and your dependencies to null safety, you reap the full benefits of soundness
+  —- not only fewer bugs, but smaller binaries and faster execution.
+
+## A tour of the null safety feature
+
+New operators and keywords related to null safety
+include `?`, `!`, and `late`.
+If you've used Kotlin, TypeScript, or C#,
+the syntax for null safety might look familiar.
+That's by design: the Dart language aims to be unsurprising.
+
+
+### Creating variables
 
 When creating a variable,
 you can use `?` and `late`
@@ -121,7 +115,7 @@ PENDING: Uncomment the following once we're ready to offer more guidance.
 {% endcomment %}
 
 
-## Using variables and expressions
+### Using variables and expressions
 
 With null safety, the Dart analyzer generates errors when
 it finds a nullable value where a non-null value is required.
@@ -191,7 +185,7 @@ double? d;
 print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
 ```
 
-## Understanding list, set, and map types
+### Understanding list, set, and map types
 
 Lists, sets, and maps are commonly used collection types in Dart programs,
 so you need to know how they interact with null safety.
@@ -211,7 +205,7 @@ Here are some examples of how Dart code uses these collection types:
 [GitHub Dataviz]: https://github.com/flutter/samples/tree/master/web/github_dataviz
 
 
-### List and set types {#list-and-set-types}
+#### List and set types {#list-and-set-types}
 
 When you’re declaring the type of a list or set,
 think about what can be null.
@@ -241,7 +235,7 @@ var nameList = <String?>['Andrew', 'Anjan', 'Anya'];
 var nameSet = <String?>{'Andrew', 'Anjan', 'Anya'};
 ```
 
-### Map types {#map-types}
+#### Map types {#map-types}
 
 Map types behave mostly like you’d expect, with one exception:
 **the returned value of a lookup can be null**.
@@ -311,71 +305,38 @@ int value = aMap['one'] ?? 0;
 
 ## Enabling null safety {#enable-null-safety}
 
-Dart tools have experimental support for
-analyzing, compiling, and running code with null safety.
-To use null safety while it's in tech preview —
-whether you use the command line or an IDE —
-you need the following setup:
+{{ site.alert.version-note }}
+  Null safety is currently a beta feature. 
+  We recommend requiring and using the **most recent beta channel** release
+  of the Dart or Flutter SDK.
+  To find the most recent releases, see the
+  [beta channel][dart-beta-channel] section of the
+  Dart SDK archive, or the **Beta channel** section of the
+  [Flutter SDK archive.][flutter-sdks]
+{{ site.alert.end }}
 
-* A Dart project configured to use an SDK that
-  supports the tech preview of null safety
-* An experiment flag passed to all Dart tools
-
-
-### Configure the SDK version
+### Enable null safety via the SDK version
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
-to require a version that has null safety support.
+to require a language version that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: ">=2.11.0-213.0.dev <2.12.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 {% endprettify %}
 
-{{ site.alert.version-note }}
-  We recommend requiring and using the **most recent dev channel** release
-  of the Dart or Flutter SDK.
-  To find the most recent releases, see the
-  [Dev channel][dart-dev-channel] section of the
-  Dart SDK archive, or the **Dev channel** section of the
-  [Flutter SDK archive.][flutter-sdks]
-{{ site.alert.end }}
-
-
-### Pass the experiment flag
-
-To opt into null safety,
-pass the `non-nullable` experiment flag to all Dart tools.
-For example:
-
-```terminal
-$ ~/dev/dart-sdk/bin/dart --enable-experiment=non-nullable bin/main.dart
-```
-
-For details on how to use experiment flags with IDEs and command-line tools, see
-the Dart [experiment flags documentation][experiment-flags].
-
-{{ site.alert.version-note }}
-  After null safety launches in a beta or stable release,
-  you won't need to enable the null safety experiment.
-{{ site.alert.end }}
-
-### Example
-
-For a full example of a Dart command-line app that enables and uses null safety,
-see the [null safety sample.][calculate_lix]
+Should you find any issues with null safety please [give us feedback.][]
 
 ## Where to learn more
 
 For more information about null safety, see the following resources:
 
-* [Dart announcements group][Dart announce]
-* [Dart blog][]
+* [Understanding null safety][]
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
-* [Understanding null safety][]
+* [Dart blog][]
 
 [`??`]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
@@ -384,7 +345,7 @@ For more information about null safety, see the following resources:
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
-[dart-dev-channel]: /tools/sdk/archive#dev-channel
+[dart-beta-channel]: /tools/sdk/archive#beta-channel
 [experiment-flags]: /tools/experiment-flags
 [flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
