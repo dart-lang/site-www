@@ -90,7 +90,7 @@ Use the following resources to learn more about testing Flutter apps:
 * [flutter_driver]({{site.flutter_api}}/flutter/flutter_driver/flutter_driver-library.html)<br>
   A testing library for testing Flutter applications on real devices and
   emulators (in a separate process).
-* [flutter/examples/flutter_gallery](https://github.com/flutter/flutter/tree/master/examples/flutter_gallery)<br>
+* [flutter_gallery](https://github.com/flutter/gallery)<br>
   Tests for the Flutter gallery example.
 * [flutter/dev/manual_tests](https://github.com/flutter/flutter/tree/master/dev/manual_tests)<br>
   Many examples of tests in the Flutter SDK.
