@@ -22,8 +22,7 @@ elif [[ $DART_VERS == *dev* ]]; then
   DART_CHAN=dev
   ANALYZE="dart analyze"
 else # stable
-  # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
-  ANALYZE="dartanalyzer --no-implicit-casts . "
+  ANALYZE="dart analyze"
 fi
 EXAMPLES="$ROOT/examples"
 PUB_ARGS="upgrade" # --no-precomiple

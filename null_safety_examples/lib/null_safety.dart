@@ -1,6 +1,6 @@
 void main() {
   String a = 'Hey there, boo!';
-  String b? = null;
+  String? b = null;
   print(a);
   print(b);
 }
