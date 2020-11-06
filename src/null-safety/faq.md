@@ -4,6 +4,9 @@ description: FAQs to help you migrate your Dart code to null safety
 short-title: FAQ (null safety)
 ---
 
+This page collects some common questions we've heard about [null safety](/null-safety)
+based on the experience of migrating Google internal code.
+
 ## What runtime changes should I be aware of for users of migrated code?
 
 Most of the effects of migration do not immediately affect users of migrated
@@ -289,4 +292,4 @@ Change it to `List.filled(length, default)` instead.
 ## Resources
 
 *   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
-*   [Sound null safety](https://dart.dev/null-safety)
+*   [Sound null safety](/null-safety)
