@@ -1,7 +1,7 @@
 ---
 title: Null safety frequently asked questions
 description: FAQs for Dart's null safety migration
-toc: true
+short-title: FAQ (null safety)
 ---
 
 ## What runtime changes should I be aware of for users of migrated code?
