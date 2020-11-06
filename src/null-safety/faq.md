@@ -177,7 +177,7 @@ fully migrated and the code switches to running in sound mode, it will be
 possible for `arg` to be null.
 
 The simplest way to preserve behavior is change the check into
-[`ArgumentError.checkNotNull`](https://api.dart.dev/stable/2.9.3/dart-core/ArgumentError/checkNotNull.html).
+[`ArgumentError.checkNotNull`](https://api.dart.dev/stable/dart-core/ArgumentError/checkNotNull.html).
 
 The same applies to some runtime type checks. In legacy or mixed mode, if arg
 has static type `String`, then `if (arg is! String)` is actually checking
