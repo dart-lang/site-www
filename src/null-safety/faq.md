@@ -268,15 +268,6 @@ If you are setting the elements of the list via an index, you should instead use
 the `add` function to build the list. That is less error-prone and more
 readable.
 
-## Why aren't optional proto fields nullable?
-
-Optional proto fields return a default if not set, never `null`. For example,
-the default `String` is the empty string. Trying to set an optional proto field
-to `null` is a runtime error.
-
-You must use the generated `has` method to check if a field was set, and the
-generated `clear` method to clear it.
-
 ## What happened to the default List constructor?
 
 You may encounter this error:
