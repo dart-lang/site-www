@@ -17,12 +17,10 @@ if [[ $DART_VERS == *dev* ]]; then
       ! -path "**/build/**"`
 fi
 
-# Format all example source files, except null_safety:
-  echo "Formatting example files..."
+echo "Formatting example files..."
 dart format $* `find $EXAMPLES -name "*.dart" \
     ! -path "**/.*" \
-    ! -path "**/build/**"` \
-    ! -path "**/null_safety/**"`
+    ! -path "**/build/**"`
 
 dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
