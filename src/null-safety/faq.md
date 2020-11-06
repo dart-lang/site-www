@@ -288,5 +288,5 @@ Change it to `List.filled(length, default)` instead.
 
 ## Resources
 
-*   [Null safety DartPad](https://nullsafety.dartpad.dev/)
+*   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
 *   [Sound null safety](https://dart.dev/null-safety)
