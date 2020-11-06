@@ -18,7 +18,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ NULL_SAFETY == 1 ]]; then
+if [[ $NULL_SAFETY == 1 ]]; then
   echo "Formatting null safety example files..."
   dart format $* `find $NULL_SAFETY_EXAMPLES -name "*.dart" \
       ! -path "**/.*" \

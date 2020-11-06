@@ -15,7 +15,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 travis_fold start dart-format
-if [[ NULL_SAFETY == 1 ]]; then
+if [[ $NULL_SAFETY == 1 ]]; then
   # Pass null safety flag on to the format script so it will check the right
   # files.
   (set -x; $rootDir/tool/dartformat.sh --null-safety)
