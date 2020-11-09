@@ -3,7 +3,7 @@ title: Sound null safety
 description: Information about Dart's upcoming null safety feature
 ---
 
-Sound null safety -- currently in beta -- is coming to the Dart language!
+Sound null safety — currently in beta — is coming to the Dart language!
 
 When you opt into null safety,
 types in your code are non-nullable by default, meaning that
@@ -13,7 +13,7 @@ turn into **edit-time** analysis errors.
 
 
 You can
-[try null safety in your normal development environment](#enable-null-safety)
+[try null safety in your normal development environment](#enable-null-safety),
 or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
@@ -28,19 +28,19 @@ shown in the following screenshot.
 Dart null safety support is based on the following three core design principles:
 
 *  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
-   can be null, it will be considered non-nullable. We chose this as the default
-   because we found that non-null was by far the most common choice in APIs.
+   can be null, it's considered non-nullable. This default was chosen
+   after research found that non-null was by far the most common choice in APIs.
 
-* **Incrementally adoptable**. There’s a lot of Dart code out there. It will be
-  possible to migrate to null safety at a time when you choose to, and then
-  incrementally, part by part. It will be possible to have null-safe and
-  non-null-safe code in the same project. We’ll also provide tools to help you
+* **Incrementally adoptable**. You choose _what_ to migrate to null safety, and _when_.
+  You can migrate incrementally, mixing null-safe and
+  non-null-safe code in the same project. We provide tools to help you
   with the migration.
 
-* **Fully sound**. Dart’s null safety is sound. This means that we can trust the
-  type system: if it determines that something isn’t null, then it can never be
-  null. This enables compiler optimizations. Once you migrate your whole project
-  and your dependencies to null safety, you reap the full benefits of soundness
+```suggestion
+* **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
+  If the type system determines that something isn’t null, then that thing can _never_ be
+  null. Once you migrate your whole project
+  and its dependencies to null safety, you reap the full benefits of soundness
   —- not only fewer bugs, but smaller binaries and faster execution.
 
 ## A tour of the null safety feature
@@ -305,7 +305,6 @@ int value = aMap['one'] ?? 0;
 
 ## Enabling null safety {#enable-null-safety}
 
-{{ site.alert.version-note }}
   Null safety is currently a beta feature. 
   We recommend requiring and using the **most recent beta channel** release
   of the Dart or Flutter SDK.
@@ -313,9 +312,7 @@ int value = aMap['one'] ?? 0;
   [beta channel][dart-beta-channel] section of the
   Dart SDK archive, or the **Beta channel** section of the
   [Flutter SDK archive.][flutter-sdks]
-{{ site.alert.end }}
 
-### Enable null safety via the SDK version
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
 to require a language version that has null safety support.
@@ -326,7 +323,7 @@ environment:
   sdk: ">=2.12.0-0 <3.0.0"
 {% endprettify %}
 
-Should you find any issues with null safety please [give us feedback.][]
+If you find any issues with null safety please [give us feedback.][]
 
 ## Where to learn more
 
