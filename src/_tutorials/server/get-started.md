@@ -60,34 +60,16 @@ More information:
 
 {% include get-sdk.md %}
 
-## 3. Get more command-line developer tools
+## 3. Create a small app
 
-Install [`stagehand`,][stagehand] which gives you templates for creating Dart apps:
-
-```terminal
-$ pub global activate stagehand
-```
-
-Note that although these instructions feature the command line,
-many IDEs support Dart development.
-Those IDEs use Stagehand behind the scenes when you create new Dart projects.
-
-More information:
-
-* [Dart tools](/tools)
-* [Running a script from your path](/tools/pub/cmd/pub-global#running-a-script-from-your-path)
-
-## 4. Create a small app
-
-Create a command-line app:
+Use the `dart create` command and the `console-full` template
+to create a command-line app:
 
 ```terminal
-$ mkdir cli
-$ cd cli
-$ stagehand console-full
+$ dart create -t console-full cli
 ```
 
-These commands create a small Dart app that has the following:
+This command creates a small Dart app that has the following:
 
 * A main Dart source file, `bin/cli.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
@@ -97,29 +79,22 @@ These commands create a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-## 5. Get the app's dependencies
 
-Use the [`pub`](/tools/pub/cmd) command to get the packages
-that the app depends on:
-
-```terminal
-$ pub get
-```
-
-## 6. Run the app
+## 4. Run the app
 
 To run the app from the command line, use the Dart VM by running the
-[`dart`](/tools/dart-vm) command:
+[`dart run`](/tools/dart-tool) command in the app's top directory:
 
 ```terminal
-$ dart bin/cli.dart
+$ cd cli
+$ dart run
 Hello world: 42!
 ```
 
 If you want to run the app with debugging support, see
 [Dart DevTools](/tools/dart-devtools).
 
-## 7. Modify the app
+## 5. Modify the app
 
 Let's customize the app you just created.
 
@@ -138,24 +113,24 @@ Let's customize the app you just created.
  1. Rerun the main entrypoint of your app:
 
     ```terminal
-    $ dart bin/cli.dart
+    $ dart run
     Hello world: 21!
     ```
 
 More information:
 [Write command-line apps](/tutorials/server/cmdline)
 
-## 8. Compile for production
+## 6. Compile for production
 
 The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
 during development. Now that your small app is done,
 it's time to AOT compile your Dart code to optimized native machine code.
 
-Use the `dart2native` tool to AOT compile the program to machine code:
+Use the `dart compile` tool to AOT compile the program to machine code:
 
 ```terminal
-$ dart2native bin/cli.dart
+$ dart compile exe bin/cli.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
