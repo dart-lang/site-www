@@ -113,7 +113,7 @@ Let's customize the app you just created.
  1. Rerun the main entrypoint of your app:
 
     ```terminal
-    $ dart bin/cli.dart
+    $ dart run
     Hello world: 21!
     ```
 
