@@ -86,7 +86,7 @@ initialized to a non-null value before it's used,
 but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
-<?code-excerpt "null_safety_examples/basics/lib/late.dart (late_field)"?>
+<?code-excerpt "../null_safety_examples/basics/lib/late.dart (late_field)"?>
 ```dart
 class IntProvider {
   late int aRealInt;
