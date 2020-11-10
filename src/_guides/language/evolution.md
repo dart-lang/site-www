@@ -316,15 +316,15 @@ as soon as you start migrating some of your code to null safety.
 However, a mixed-mode program can't have the
 _runtime_ soundness guarantees that a fully null-safe app has.
 It's possible for `null` to leak out of the null-unsafe libraries
-into the null-safe code.
-Preventing that would break the existing behavior of the unmigrated code.
+into the null-safe code, because
+preventing that would break the existing behavior of the unmigrated code.
 
 To maintain runtime compatibility with legacy libraries
 while offering soundness to completely null-safe programs,
 Dart tools support two modes:
 
 * When you run a mixed-mode program,
-  it runs with **partial null-safety**.
+  it runs with **partial null safety**.
   It's possible for `null` reference errors to occur at runtime,
   but only because a `null` or nullable type escaped from
   some null-unsafe library and got into your null-safe code.
