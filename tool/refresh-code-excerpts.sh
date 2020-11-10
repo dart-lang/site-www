@@ -38,7 +38,7 @@ if [[ ! -e "$FRAG/examples" ]]; then
 fi
 
 if [[ ! -e "$FRAG/null_safety_examples" ]]; then
-  usage "ERROR: examples fragments folder was not generated: '$FRAG/examples'"
+  usage "ERROR: null_safety_examples fragments folder was not generated: '$FRAG/null_safety_examples'"
 fi
 
 SRC="$1"
