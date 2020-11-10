@@ -243,7 +243,7 @@ Because Dart supports [mixed-mode programs][],
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your app and its tests.
 
-[mixed-mode programs]: #move-to-another-page
+[mixed-mode programs]: /guides/language/evolution#mixed-mode-programs
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -393,89 +393,3 @@ If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
 
 From all of the Dart team, *thank you* for migrating your code.
-
-
---------------
-
-## MOVE TO ANOTHER PAGE
-
-Maybe to
-[Understanding null safety](https://dart.dev/null-safety/understanding-null-safety)?
-
-Other possibilities are the FAQ (though this doesn't really fit in there)
-or to its own page on dart.dev (though the scope of that seems questionable),
-a wiki page (better?), or blog post (best? but possibly a lot of effort.
-Or maybe this is already mostly covered somewhere?
-
-
-### Mixed-mode programs
-
-What if your null-safe app depends on a package that
-isn't null safe?
-More generally, what happens when your program contains
-some libraries at a null-safe language version and
-others that are using a null-unsafe language?
-Is this allowed?
-
-The answer is "yes".
-We called these **mixed-mode programs.**
-In the context of null safety,
-this means a program can contain some libraries that
-are null safe and some that aren't.
-
-A mixed-mode program is still get a perfectly meaningful Dart program that
-you can run and use.
-Except for esoteric edge cases
-(think `is` tests on instances of generic types from
-closures that cross the boundary between unsafe and safe libraries),
-it should do exactly what you expect.
-
-This is very valuable because it lets you
-*incrementally* migrate your program to null safety.
-Critically, it means that packages you depend on
-can migrate to null safety before you do.
-You can even upgrade to those migrated null-safe versions before you migrate.
-This frees package maintainers to migrate their code knowing that
-even legacy users will still be able to take any
-bug fixes or other improvements they ship.
-
-#### Unsound and sound null safety
-
-Dart provides sound null safety through a combination of
-static checks (compile-time errors) and
-runtime checks (exceptions thrown from code like the `!` or `as` operators).
-Each Dart library that opts in to null safety gets
-all the static checks and stricter compile errors.
-This is true even in a mixed-mode program containing
-other null-unsafe libraries.
-You immediately start getting static safety benefits
-as soon as you start migrating some of your code to null safety.
-
-However, we can't give you the same *runtime* soundness guarantees
-in a mixed-mode program that we can give you in a fully null-safe application.
-It is possible for `null` to leak out of the null-unsafe libraries
-into the null-safe code.
-Preventing that would break the existing behavior of the unmigrated code.
-To maintain runtime compatibility with legacy libraries
-while offering soundness to completely null-safe programs,
-our tools support two modes:
-
-*   When you run a mixed-mode program,
-    it runs with **partial null-safety**.
-    That means it is possible for `null` reference errors to occur at runtime,
-    but only because a `null` or nullable type escaped from
-    some null-unsafe library and got into your null-safe code.
-
-*   Once your program is fully migrated and *all* libraries are null safe
-    (in other words, you're no longer in mixed mode),
-    then your program automatically runs with **sound null safety**.
-    That mode gives you the full null safety experience with
-    all of the guarantees and compiler optimizations that soundness enables.
-
-The second mode is the mode you want if possible.
-Our tools will automatically run your program in sound mode if
-the main entrypoint library of your program has opted into null safety.
-If they see that you import a null-unsafe library,
-they'll print a warning to let you know that
-they can only run with partial null safety.
-
