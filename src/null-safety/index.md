@@ -330,8 +330,8 @@ If you find any issues with null safety please [give us feedback.][]
 For more information about null safety, see the following resources:
 
 * [Understanding null safety][]
-* [Migration guide for existing code][migration-guide],
-* [Null safety FAQ][],
+* [Migration guide for existing code][migration-guide]
+* [Null safety FAQ][]
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
