@@ -14,6 +14,7 @@ turn into **edit-time** analysis errors.
 
 You can
 [try null safety in your normal development environment](#enable-null-safety),
+[migrate your existing code][migration-guide] to use null safety,
 or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
@@ -329,6 +330,7 @@ If you find any issues with null safety please [give us feedback.][]
 For more information about null safety, see the following resources:
 
 * [Understanding null safety][]
+* [Migration guide for existing code][migration-guide],
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
@@ -348,3 +350,4 @@ For more information about null safety, see the following resources:
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
 [Understanding null safety]: /null-safety/understanding-null-safety
+[migration-guide]: /null-safety/migration-guide
