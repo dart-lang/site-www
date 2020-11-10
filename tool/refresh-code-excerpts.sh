@@ -6,7 +6,7 @@ readonly rootDir="$(cd "$(dirname "$0")/.." && pwd)"
 
 function usage() {
   echo $1; echo
-  echo "Usage: $(basename $0) [--help] [-k|--keep-dart-tool] [--legacy] [path-to-src-file-or-folder]"
+  echo "Usage: $(basename $0) [--help] [-k|--keep-dart-tool] [path-to-src-file-or-folder]"
   echo
   exit 1;
 }
@@ -15,10 +15,9 @@ ARGS=''
 
 while [[ "$1" == -* ]]; do
   case "$1" in
-    --log-fine) ARGS+='--log-fine '; shift;;
-    -k|--keep-dart-tool) KEEP_CACHE=1; shift;;
-    --legacy)   LEGACY=get; shift;;
-    -h|--help)  usage;;
+    --log-fine)           ARGS+='--log-fine '; shift;;
+    -k|--keep-dart-tool)  KEEP_CACHE=1; shift;;
+    -h|--help)            usage;;
   esac
 done
 
@@ -30,16 +29,17 @@ FRAG="$TMP/_fragments"
 
 if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
 
-if [[ -n "$LEGACY" ]]; then
-  npx code-excerpter examples "$FRAG"
-else
-  ARGS+='--yaml '
-  if [[ ! -e "pubspec.lock" ]]; then pub get; fi
-  pub run build_runner build --delete-conflicting-outputs --config excerpt --output="$FRAG"
-  FRAG+=/examples
+ARGS+='--yaml '
+if [[ ! -e "pubspec.lock" ]]; then pub get; fi
+pub run build_runner build --delete-conflicting-outputs --config excerpt --output="$FRAG"
+
+if [[ ! -e "$FRAG/examples" ]]; then
+  usage "ERROR: examples fragments folder was not generated: '$FRAG/examples'"
 fi
 
-[[ -e "$FRAG" ]] || usage "ERROR: fragments folder was not generated: '$FRAG'"
+if [[ ! -e "$FRAG/null_safety_examples" ]]; then
+  usage "ERROR: null_safety_examples fragments folder was not generated: '$FRAG/null_safety_examples'"
+fi
 
 SRC="$1"
 : ${SRC:="$rootDir/src"}
@@ -57,12 +57,12 @@ ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brack
 ARGS+='/\/\/!(analysis-issue|runtime-error)[^\n]*//g;' # Removed warning/error marker
 
 echo "Source:     $SRC"
-echo "Fragments:  $FRAG"
+echo "Fragments:  $FRAG/examples"
 echo "Other args: $ARGS"
 echo
 LOG_FILE="$TMP/refresh-code-excerpts-log.txt"
 pub run code_excerpt_updater \
-  --fragment-dir-path "$FRAG" \
+  --fragment-dir-path "$FRAG/examples" \
   --src-dir-path examples \
   $ARGS \
   --write-in-place \

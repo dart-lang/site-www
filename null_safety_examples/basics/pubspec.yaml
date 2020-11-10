@@ -1,0 +1,6 @@
+name: null_safety_examples_basics
+description: dart.dev null-safety examples.
+version: 0.0.1
+
+environment:
+  sdk: '>=2.12.0-13.0.dev <3.0.0'

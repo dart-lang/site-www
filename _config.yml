@@ -84,7 +84,6 @@ assets:
     - _shared/_assets
     - _shared/_assets/css
 
-exclude: [diagrams]
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 plugins: [jekyll-toc]
 source: src
