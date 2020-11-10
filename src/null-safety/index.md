@@ -331,6 +331,7 @@ For more information about null safety, see the following resources:
 
 * [Understanding null safety][]
 * [Migration guide for existing code][migration-guide],
+* [Null safety FAQ][],
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
 * [Null safety tracking issue][110]
@@ -351,3 +352,4 @@ For more information about null safety, see the following resources:
 [other operators]: /guides/language/language-tour#other-operators
 [Understanding null safety]: /null-safety/understanding-null-safety
 [migration-guide]: /null-safety/migration-guide
+[Null safety FAQ]: /null-safety/faq
