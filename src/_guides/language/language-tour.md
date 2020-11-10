@@ -753,7 +753,7 @@ add `const` before the list literal:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
 var constantList = const [1, 2, 3];
-// constantList[1] = 1; // Uncommenting this causes an error.
+// constantList[1] = 1; // This line will cause an error.
 ```
 
 <a id="spread-operator"> </a>
@@ -900,7 +900,7 @@ final constantSet = const {
   'iodine',
   'astatine',
 };
-// constantSet.add('helium'); // Uncommenting this causes an error.
+// constantSet.add('helium'); // This line will cause an error.
 ```
 
 As of Dart 2.3, sets support spread operators (`...` and `...?`)
@@ -1012,7 +1012,7 @@ final constantMap = const {
   18: 'argon',
 };
 
-// constantMap[2] = 'Helium'; // Uncommenting this causes an error.
+// constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
 As of Dart 2.3, maps support spread operators (`...` and `...?`)
