@@ -3,6 +3,12 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
+{{ site.alert.warning }}
+**This page is a DRAFT.**
+Please give us feedback at
+[PR 2739](https://github.com/dart-lang/site-www/pull/2739).
+{{ site.alert.end }}
+
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
