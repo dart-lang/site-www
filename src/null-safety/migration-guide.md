@@ -36,7 +36,7 @@ flutter run, flutter test flag order might be slightly different.
 pub run --enable-experiment=non-nullable test
 aka dart test --enable-experiment=non-nullable]_**
 
-## Wait to migrate
+## 1. Wait to migrate {#step1-wait}
 
 We strongly recommend migrating code in order, 
 with the leaves of the dependency graph being migrated first.
@@ -76,6 +76,7 @@ $ flutter upgrade
 After updating your release,
 update your pubspec to the version of Dart you're using.
 For example, say you're using 2.12.0-18.0.beta:
+**[PENDING: check. Is this really necessary? It caused me grief when I tried to run `dart migrate`.]**
 
 ```terminal
 $ dart --version
@@ -118,8 +119,17 @@ it also had prereleases 1.10.0-nullsafety.1, 1.10.0-nullsafety.2, and so on.
 
 [pedantic package]: {{site.pub-pkg}}/pedantic
 
-If you update your pubspec, remember to upgrade before
-checking for outdated packages:
+As an example, the following image shows that
+if you update your package's dev_dependencies to specify the latest preleases
+(as listed in the **Latest** column),
+you can upgrade to null-safe versions of the `pedantic` and `test` packages.
+
+![Output of dart pub outdated, showing PENDING](/null-safety/pub-outdated-output.png)
+
+**_[PENDING: show before & after for pubspec? a diff view would be great here]_**
+
+If you update your pubspec,
+upgrade before checking again for outdated packages:
 
 ```terminal
 $ dart pub upgrade
@@ -135,11 +145,11 @@ $ dart pub outdated --mode=null-safety
 
   **[QUESTION:
   Aren't there dev dependencies that have nothing to do with testing?
-  E.g. deps you might need for analyzing or building your app]**
+  E.g. deps you might need for analyzing or building your app?]**
 {{ site.alert.end }}
 
 
-## Migrate
+## 2. Migrate {#step2-migrate}
 
 Most of the changes that your code needs to be null safe
 are easily predictable.
@@ -163,10 +173,6 @@ Alternatively, you can
 
 ### Using the migration tool
 
-**_[PENDING: What should the minimum sdk version in the pubspec be?
-Should it be what the non-null-safe code currently is tested against,
-or a 2.12 beta version?]_**
-
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
 
@@ -178,7 +184,16 @@ $ dart --version
 Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: check!]
 ```
 
-Then, to start the tool, run the `dart migrate` command
+Then check your `pubspec.yaml` file:
+
+* **Keep any prerelease package versions** you chose when you
+  [checked dependency status](#check-dependency-status) in step 1.
+* If you updated the SDK constraints:
+  1. **Set the minimum SDK version** back to its previous value.
+  **_[PENDING: or is it safer to say a specific version, like 2.11?]_**
+  2. **Run `dart pub get`**.
+
+Next, start the tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
 ```terminal
@@ -197,7 +212,7 @@ View the migration suggestions by visiting:
   http://127.0.0.1:60278/Users/you/project/mypkg.console-simple?authToken=Xfz0jvpyeMI%3D
 ```
 
-Visit that URL in a Chrome browser **_[PENDING: check]_**
+Visit that URL in a Chrome browser
 to see an interactive UI
 where you can guide the migration process:
 
@@ -228,9 +243,9 @@ you can override its choice by inserting temporary `/*?*/` and `/*!*/` markers.
   Your code is still null-unsafe for now.
 {{ site.alert.end }}
 
-Once you like all of the changes
-that the migration tool proposes &mdash;all of the
-`?`, `required`, `!`, and other changes&mdash;click
+When you like all of the changes
+that the migration tool proposes &mdash; all of the
+`?`, `required`, `!`, and other changes &mdash; click
 **Apply migration** to tell the tool to save the changes.
 Congratulations, your package is migrated!
 
@@ -313,7 +328,7 @@ Should/do we cover this on dart.dev?]_**
 [package config]: https://pub.dev/packages/package_config
 
 
-## Test your code
+## 3. Test your code {#step3-test}
 
 If you already have tests, run them.
 You might need to update tests that expect null values.
@@ -324,7 +339,7 @@ for details (on testing and otherwise; it's sort of this doc, but for pre-beta.
 ]_**
 
 
-## Publish your code
+## 4. Publish your code {#step4-publish}
 
 We encourage you to publish non-app packages as prereleases
 as soon as you migrate.
