@@ -96,8 +96,8 @@ pros and cons. These principles guided the choices we made:
 
     One caveat: We only guarantee soundness in Dart programs that are fully null
     safe. Dart supports programs that contain a mixture of newer null safe code
-    and older legacy code. In these "mixed-mode" programs, null reference errors
-    may still occur. In a mixed-mode program, you get all of the *static* safety
+    and older legacy code. In these mixed-version programs, null reference errors
+    may still occur. In a mixed-version program, you get all of the *static* safety
     benefits in the portions that are null safe, but you don't get full runtime
     soundness until the entire application is null safe.
 
