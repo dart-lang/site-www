@@ -181,7 +181,7 @@ if the operand might be null.
 Instead, you can use the null-aware version of that operator (`?.`):
 
 ```dart
-double? d;  
+double? d;
 print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
 ```
 
@@ -249,7 +249,7 @@ var myMap = <String, int>{'one': 1};
 var uhOh = myMap['two'];
 ```
 
-The answer is that `uhOh` is null and has type `int?`. 
+The answer is that `uhOh` is null and has type `int?`.
 
 Like lists and sets, maps can have a variety of types:
 
@@ -315,7 +315,7 @@ Dart SDK archive, or the **Beta channel** section of the
 
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
-to require a language version that has null safety support.
+to require a [language version][] that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 {% prettify yaml tag=pre+code %}
@@ -324,6 +324,8 @@ environment:
 {% endprettify %}
 
 If you find any issues with null safety please [give us feedback.][]
+
+[language version]: /guides/language/evolution#language-versioning
 
 ## Where to learn more
 
