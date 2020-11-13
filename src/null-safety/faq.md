@@ -175,27 +175,18 @@ An explicit runtime null check, for example `if (arg == null) throw
 ArgumentError(...)`, will be flagged as an unnecessary comparison if you make
 `arg` non-nullable.
 
-But, the check *is* still needed when running in mixed mode. Until everything is
-fully migrated and the code switches to running in sound mode, it will be
-possible for `arg` to be null.
+But, the check *is* still needed if the program is a mixed-version one.  Until
+everything is fully migrated and the code switches to running with sound null
+safety, it will be possible for `arg` to be null.
 
 The simplest way to preserve behavior is change the check into
 [`ArgumentError.checkNotNull`](https://api.dart.dev/stable/dart-core/ArgumentError/checkNotNull.html).
 
-The same applies to some runtime type checks. In legacy or mixed mode, if arg
+The same applies to some runtime type checks. If `arg`
 has static type `String`, then `if (arg is! String)` is actually checking
 whether `arg` is `null`. It might look like migrating to null safety means `arg`
-can never be `null`, but it could be `null` in mixed mode. So, to preserve
+can never be `null`, but it could be `null` in unsound null safety. So, to preserve
 behavior, the null check should remain.
-
-## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
-
-Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
-`List<Object?>`. If you didn't change a list type explicitly in your migration,
-a type might still have changed because of changes to type inference that happen
-when you enable null safety.
-
-The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`.
 
@@ -279,6 +270,15 @@ The default 'List' constructor isn't available when null safety is enabled. #def
 The default list constructor fills the list with `null`, which is a problem.
 
 Change it to `List.filled(length, default)` instead.
+
+## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
+
+Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
+`List<Object?>`. If you didn't change a list type explicitly in your migration,
+a type might still have changed because of changes to type inference that happen
+when you enable null safety.
+
+The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## Resources
 
