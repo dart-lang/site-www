@@ -188,15 +188,6 @@ whether `arg` is `null`. It might look like migrating to null safety means `arg`
 can never be `null`, but it could be `null` in unsound null safety. So, to preserve
 behavior, the null check should remain.
 
-## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
-
-Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
-`List<Object?>`. If you didn't change a list type explicitly in your migration,
-a type might still have changed because of changes to type inference that happen
-when you enable null safety.
-
-The fix is to explicitly create such lists as `List<dynamic>`.
-
 ## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`.
 
 Import `package:collection` and use the extension method `firstWhereOrNull`
@@ -279,6 +270,15 @@ The default 'List' constructor isn't available when null safety is enabled. #def
 The default list constructor fills the list with `null`, which is a problem.
 
 Change it to `List.filled(length, default)` instead.
+
+## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
+
+Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
+`List<Object?>`. If you didn't change a list type explicitly in your migration,
+a type might still have changed because of changes to type inference that happen
+when you enable null safety.
+
+The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## Resources
 
