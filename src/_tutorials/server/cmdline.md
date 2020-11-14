@@ -47,8 +47,8 @@ command-line arguments, files and directories, and more.
 
 ## Running an app with the standalone Dart VM
 
-To run a command-line app, you need the Dart command (`dart run`),
-which comes when you [install the Dart SDK](/get-dart).
+To run a command-line app in the Dart VM, use `dart run`.
+The `dart` command is part of the [Dart SDK](/tools/sdk).
 
 {{site.alert.important}}
   The location of the SDK installation directory
@@ -95,7 +95,7 @@ brief description of key app features, click the highlighted code below.
 
 You might notice that dcat depends on a package named **args**.
 To get the args package, use the
-[dart pub package manager](/guides/packages).
+[pub package manager](/guides/packages).
 
 A real app has tests, license files, and so on, in a file hierarchy
 such as the one in the [Dart command-line app template.][]
