@@ -15,7 +15,7 @@ Here are the basic steps for migrating each package that you own:
 1. **Wait** for the packages
    that you depend on to migrate.
 2. **Migrate** your package's code,
-   preferably using the interactive migration tool (`dart migrate`).
+   preferably using the interactive migration tool.
 3. **Test** to make sure your changes work.
 4. If the package is already on pub.dev,
    **publish** the null-safe version as a **prerelease** version.
@@ -24,9 +24,9 @@ Here are the basic steps for migrating each package that you own:
   **Migrating an app is the same as migrating a package.**
   Before fully migrating an app,
   consider waiting until null safety is in a stable release.
-  In the meantime, you can add migration hints to your app
-  and take the opportunity to refactor your app code.
-  **_[PENDING: is that good/helpful advice?]_**
+  In the meantime, you can learn about null safety,
+  perhaps adding migration hints to your app
+  or refactoring your app code.
 {{ site.alert.end }}
 
 [null safety]: /null-safety
@@ -79,18 +79,17 @@ $ flutter upgrade
 
 [Dart SDK archive]: /tools/sdk/archive#beta-channel
 
-After updating your release,
-update your pubspec to the version of Dart you're using.
+Next, **update your pubspec** to the version of Dart you're using.
 For example, say you're using 2.12.0-18.0.beta:
-**[PENDING: check. Is this really necessary? It caused me grief when I tried to run `dart migrate`.]**
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: check!]
+Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: update version string!]
 ```
 
 Update the `pubspec.yaml` file to have that version as a lower constraint:
-**[PENDING: check!!!]**
+***[PENDING: Is it really necessary to match the release?
+Can we just use 2.12.0-0?]***
 
 ```yaml
 environment:
@@ -99,7 +98,7 @@ environment:
 
 
 {{ site.alert.warn }}
-  When you return to working on production code, remember to
+  If you return to working on production code, remember to
   **switch back to a stable release**
   (for example, by running `flutter channel stable`).
 {{ site.alert.end }}
@@ -107,8 +106,8 @@ environment:
 
 ### Check dependency status
 
-Get the migration state of your package's dependencies
-by using the following command:
+Get the migration state of your package's dependencies,
+using the following command:
 
 ```terminal
 $ dart pub outdated --mode=null-safety
@@ -116,31 +115,23 @@ $ dart pub outdated --mode=null-safety
 
 If the output says **all the packages fully support null safety**,
 then you can start migrating.
+Otherwise, use the **Resolvable** column to find
+null-safe releases, if they exist.
 
-Otherwise, check whether you can update to
-package versions that support null safety.
-Many packages have null-safe prerelease versions.
-For example, while the [pedantic package][] stable release was 1.9.2,
-it also had prereleases 1.10.0-nullsafety.1, 1.10.0-nullsafety.2, and so on.
-
-[pedantic package]: {{site.pub-pkg}}/pedantic
-
-As an example, the following image shows that
-if you update your package's dev_dependencies to specify the latest preleases
-(as listed in the **Latest** column),
-you can upgrade to null-safe versions of the `pedantic` and `test` packages.
+For example, in the following output for a simple package,
+the green, checkmarked versions support null safety:
 
 ![Output of dart pub outdated, showing PENDING](/null-safety/pub-outdated-output.png)
 
-**_[PENDING: show before & after for pubspec? a diff view would be great here]_**
+Here are the steps to take before migrating this package to sound null safety:
 
-If you update your pubspec,
-upgrade before checking again for outdated packages:
-
-```terminal
-$ dart pub upgrade
-$ dart pub outdated --mode=null-safety
-```
+1. Wait for `examples_util` to be migrated.
+2. Update `pubspec.yaml` to use the latest compatible releases of
+   `pedantic`, `test`, and `examples_util`
+   (as listed in the **Resolvable** column).
+3. Run `dart pub upgrade`.
+4. Run `dart pub outdated --mode=null-safety` once more,
+   to make sure that all dependencies are null safe.
 
 {{ site.alert.info }}
   **Why do all dependencies need to support null safety?**
@@ -148,10 +139,6 @@ $ dart pub outdated --mode=null-safety
   you can _run your app_ with sound null safety.
   When all dev dependencies support null safety,
   you can _run tests_ with sound null safety.
-
-  **[QUESTION:
-  Aren't there dev dependencies that have nothing to do with testing?
-  E.g. deps you might need for analyzing or building your app?]**
 {{ site.alert.end }}
 
 
@@ -187,27 +174,30 @@ make sure you're using a 2.12 beta release (or later):
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: check!]
+Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: check version #/string!]
 ```
 
-Then check your `pubspec.yaml` file:
+Then update your `pubspec.yaml` file:
 
-* **Keep any prerelease package versions** you chose when you
+* **Keep any null-safe package versions** you chose when you
   [checked dependency status](#check-dependency-status) in step 1.
-* If you updated the SDK constraints:
-  1. **Set the minimum SDK version** back to its previous value.
-  **_[PENDING: or is it safer to say a specific version, like 2.11?]_**
-  2. **Run `dart pub get`**.
+* If your package's SDK constraints have a minimum version of 2.12 or higher:
+  1. **Set the minimum SDK version** back to a version before null safety.
+     ```yaml
+environment:
+    sdk: '>=2.11.0 <3.0.0'
+```
+  2. **Update dependencies:**
+     ```terminal
+$ dart pub get
+```
 
-Next, start the tool by running the `dart migrate` command
+Next, start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
 ```terminal
 $ dart migrate
 ```
-
-**_[PENDING: what potential outputs should we cover here?
-Is there anywhere we should link to for more info?]_**
 
 If your package is ready to migrate,
 then the tool produces a line like the following:
@@ -260,11 +250,11 @@ Congratulations, your package is migrated!
 
 Manual migration can be the right choice if you
 want to migrate your package incrementally.
-Because Dart supports [mixed-mode programs][],
+Because Dart supports [mixed-version programs][],
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your app and its tests.
 
-[mixed-mode programs]: /guides/language/evolution#mixed-mode-programs
+[mixed-version programs]: /go/unsound-null-safety
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -280,7 +270,6 @@ and then migrating simple files that depend only on `util.dart`.
 If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
-**_[PENDING: is everyone OK with those recommendations and examples?]_**
 
 To migrate a package by hand, follow these steps:
 
@@ -288,10 +277,10 @@ To migrate a package by hand, follow these steps:
    setting the language version to 2.12 beta or later:
    ```yaml
 environment:
-  sdk: '>=2.12.0-18.0.beta <3.0.0'
+  sdk: '>=2.12.0-18.0.beta <3.0.0' [PENDING: check version; would 2.12.0-0 work?]
 ```
 
-2. Run `dart pub get`. <br>
+2. Update dependencies: <br>
    ```terminal
 $ dart pub get
 ```
@@ -313,8 +302,8 @@ $ dart pub get
 ```
 
    Using language version 2.9 for a library that's in a 2.12 package
-   enables mixed mode and can reduce analysis errors (red squiggles).
-   However, **mixed mode reduces the
+   can reduce analysis errors (red squiggles) if you disable sound null safety.
+   However, **unsound null safety reduces the
    information the analyzer can use.**
    For example, the analyzer might assume a
    parameter type is non-nullable,
@@ -326,11 +315,6 @@ $ dart pub get
    to improve your code and eliminate static errors.
 
 [language version comment]: /guides/language/evolution#per-library-language-version-selection
-
-**_[PENDING: Do we need to talk about `pub get` generating a [package config][]?
-That link isn't as helpful as it could be.
-Should/do we cover this on dart.dev?]_**
-
 [package config]: https://pub.dev/packages/package_config
 
 
@@ -339,15 +323,14 @@ Should/do we cover this on dart.dev?]_**
 If you already have tests, run them.
 You might need to update tests that expect null values.
 
-**_[PENDING:
-See [Experimenting with null safety in Flutter](https://github.com/flutter/flutter/wiki/Experimenting-with-null-safety-in-Flutter)
-for details (on testing and otherwise; it's sort of this doc, but for pre-beta.
-]_**
+If your package and its dependencies aren't completely null safe,
+then see [Unsound null safety](/go/unsound-null-safety)
+for help on running and testing mixed-version code.
 
 
 ## 4. Publish your code {#step4-publish}
 
-We encourage you to publish non-app packages as prereleases
+We encourage you to publish packages as prereleases
 as soon as you migrate.
 
 {{ site.alert.note }}
@@ -358,7 +341,7 @@ as soon as you migrate.
 
 If your package is already on pub.dev, publish it as a prerelease:
 
-* [Set the SDK constraints.](#sdk-constraints)
+* [Set the SDK constraints to the tested beta version.](#sdk-constraints)
 * [Set the package version to indicate a breaking change and
   include a `nullsafety` suffix.](#version)
 
