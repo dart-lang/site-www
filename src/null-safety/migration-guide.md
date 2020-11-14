@@ -185,7 +185,7 @@ Then update your `pubspec.yaml` file:
   1. **Set the minimum SDK version** back to a version before null safety.
      ```yaml
 environment:
-    sdk: '>=2.11.0 <3.0.0'
+    sdk: '>=2.9.0 <3.0.0'
 ```
   2. **Update dependencies:**
      ```terminal
