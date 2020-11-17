@@ -394,15 +394,6 @@ When you click the button,
 the app makes a GET request of the server
 and loads the file.
 
-{{site.alert.info}}
-  **Implementation note:** The original portmanteaux example loaded the
-  co-located file `portmanteaux.json`. When we moved the example into
-  [DartPad]({{site.dartpad}}), we couldn't co-locate the JSON file because
-  DartPad supports at most 3 files: one Dart file, one HTML file, and one CSS
-  file. A workaround was to move `portmanteaux.json` to dart.dev and configure
-  dart.dev's CORS headers to allow read-only access from everywhere.
-{{site.alert.end}}
-
 **Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
 {% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
