@@ -3,15 +3,16 @@ title: Dart overview
 description: A short introduction to Dart
 ---
 
+<img style="padding: 30px; float: right; width: 300px" src="{% asset
+logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
+
 Dart is a client-optimized language for fast apps on any platform. Our goal is
-to offer the most productive programming language for multi-platform development,
-paired with a flexible execution runtime platform for app frameworks across
-Google.
+to offer the most productive programming language for multi-platform
+development, paired with a [flexible execution runtime
+platform](https://dart.dev/platforms) for app frameworks across Google.
 
-<img src="{% asset logo_lockup_dart_horizontal.png @path %}" width="300px" alt="Dart product logo">
-
-Languages are defined by their technical envelope: the many choices that are
-made during development which shape their capabilities and strengths. Dart is
+Languages are defined by their "technical envelope": the many choices that are
+made during development that shape their capabilities and strengths. Dart is
 designed for a technical envelope that is particularly suited to client
 development, prioritizing both development (sub-second stateful hot reload) and
 high-quality production experiences across a wide variety of compilation targets
@@ -23,17 +24,24 @@ developer tasks like formatting, analyzing, and testing code.
 
 ## Dart: The Language
 
-The Dart language is type safe: it uses a combination of static type checking
-and runtime checks to ensure that a variable’s value always matches the
-variable’s static type, sometimes referred to as sound typing. Although types
-are mandatory, type annotations are optional because of type inference.
+The Dart language is type safe: it uses static type checking to ensure that a
+variable’s value always matches the variable’s static type, sometimes referred
+to as sound typing. Although types are mandatory, type annotations are optional
+because of type inference. The Dart typing system is also flexible, allowing the
+use of a 'dynamic' type combined with runtime checks, which can be useful during
+experimentation or for code that needs to be especially dynamic.
 
-Dart also offers sound null safety, meaning that values can’t be null unless you
-say they can be. With sound null safety, Dart can protect you from null
-exceptions at runtime through code analysis. Unlike many other null-safe
-languages, when Dart determines that a variable is non-nullable, that variable
-is always non-nullable: if you inspect your running code in the debugger, you’ll
-see that non-nullability is retained at runtime (hence "sound" null safety).
+Dart offers sound null safety, meaning that values can’t be null unless you say
+they can be. With sound null safety, Dart can protect you from null exceptions
+at runtime through static code analysis. Unlike many other null-safe languages,
+when Dart determines that a variable is non-nullable, that variable is always
+non-nullable: if you inspect your running code in the debugger, you’ll see that
+non-nullability is retained at runtime (hence "sound" null safety).
+
+This code sample showcases a number of Dart language features: libraries, async
+calls, nullable and non-nullable types, arrow syntax, generators, streams and
+getters. A more comprehensive set of annotated language examples can be found in
+[Dart by Example](http://jpryan.me/dartbyexample/) by @jryanio.
 
 ```dart
 import 'dart:async';
@@ -65,7 +73,7 @@ Stream<double> computePi({int batch: 100000}) async* {
     yield ratio * 4;
   }
 }
-Iterable<Point> generateRandom([int seed]) sync* {
+Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
@@ -78,13 +86,16 @@ class Point {
 }
 ```
 
-For more on the language, take the [Dart language
+[This sample can be run
+live](https://nullsafety.dartpad.dev/b2e3a914bd39d0408d0580c42ef2e58b) using
+[DartPad](https://dartpad.dev), our online execution environment for Dart. For
+more on the language, take the [Dart language
 tour](https://dart.dev/guides/language/language-tour).
 
 ## Dart: The Libraries
 
-Dart has a rich set of core libraries that provide essentials for many everyday
-programming tasks. This includes:
+Dart has [a rich set of core libraries](https://dart.dev/guides/libraries) that
+provide essentials for many everyday programming tasks. This includes:
 
 - Built-in types, collections, and other core functionality for every Dart
   program (`dart:core`)
@@ -107,8 +118,11 @@ programming tasks. This includes:
 - HTML elements and other resources for web-based applications that need to
   interact with the browser and the DOM (Document Object Model) (`dart:html`)
 
-Additional APIs are available through a comprehensive set of packages. Dart
-itself offers many useful supplementary packages including
+Our [library tour](https://dart.dev/guides/libraries/library-tour) demonstrates
+some of the classes provided in Dart through a series of worked examples.
+
+Beyond the core libraries, many APIs are provided through a comprehensive set of
+packages. Dart itself offers many useful supplementary packages including
 [characters](https://pub.dev/packages/characters),
 [intl](https://pub.dev/packages/intl), [http](https://pub.dev/packages/http),
 [crypto](https://pub.dev/packages/crypto) and
@@ -150,3 +164,4 @@ We have lots of ways for you to learn Dart. You can:
   from experts.
 - Explore the [Dart API documentation](https://api.dart.dev/) that describes the
   Dart core libraries.
+- [Read a book on Dart programming](https://dart.dev/resources/books).
