@@ -12,13 +12,14 @@ Please give us feedback at
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
-1. **Wait** for the packages
+1. [**Wait**](#step1-wait) for the packages
    that you depend on to migrate.
-2. **Migrate** your package's code,
+2. [**Migrate**](#step2-migrate) your package's code,
    preferably using the interactive migration tool.
-3. **Test** to make sure your changes work.
+3. [**Test**](#step3-test) to make sure your changes work.
 4. If the package is already on pub.dev,
-   **publish** the null-safe version as a **prerelease** version.
+   [**publish**](#step4-publish) the null-safe version
+   as a **prerelease** version.
 
 {{ site.alert.info }}
   **Migrating an app is the same as migrating a package.**
@@ -32,15 +33,8 @@ Here are the basic steps for migrating each package that you own:
 [null safety]: /null-safety
 
 ![Screenshot of migration tool](/null-safety/migration-tool.png)
-_This interactive tool (`dart migrate`) can simplify migration to null safety._
+_The interactive migration tool can simplify migration to null safety._
 
-**_[PENDING: flutter-specific stuff?
-Only things kevmoo's run into:
---[no-]sound-null-safety (probably applies to `dart` as well)
-IDE launch options
-flutter run, flutter test flag order might be slightly different.
-pub run --enable-experiment=non-nullable test
-aka dart test --enable-experiment=non-nullable]_**
 
 ## 1. Wait to migrate {#step1-wait}
 
@@ -57,13 +51,20 @@ For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
+This section tells you how to
+check your package's dependencies
+by temporarily opting into null safety
+and using the `dart pub outdated` command in null-safety mode.
 
-### Switch to a beta release
+{{ site.alert.warn }}
+  These instructions assume your code is under **source control**,
+  so that you can easily undo any changes.
+{{ site.alert.end }}
 
-Start the migration process by switching to the **latest beta release**
-of either the Dart SDK or the Flutter SDK,
-and then updating your pubspec to match.
+### Switch to a 2.12 beta release
 
+**Switch to the latest beta release**
+of either the Dart SDK or the Flutter SDK.
 How you get the latest beta release depends on whether
 you use the Flutter SDK:
 
@@ -79,29 +80,29 @@ $ flutter upgrade
 
 [Dart SDK archive]: /tools/sdk/archive#beta-channel
 
-Next, **update your pubspec** to the version of Dart you're using.
-For example, say you're using 2.12.0-18.0.beta:
-
-```terminal
-$ dart --version
-Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: update version string!]
-```
-
-Update the `pubspec.yaml` file to have that version as a lower constraint:
-***[PENDING: Is it really necessary to match the release?
-Can we just use 2.12.0-0?]***
-
-```yaml
-environment:
-  sdk: '>=2.12.0-18.0.beta <3.0.0'
-```
-
-
 {{ site.alert.warn }}
   If you return to working on production code, remember to
   **switch back to a stable release**
   (for example, by running `flutter channel stable`).
 {{ site.alert.end }}
+
+
+### Opt into null safety
+
+Setting the minimum SDK constraint to 2.12 (or a later version)
+opts the packaging into null safety by
+setting the [language version][] to at least 2.12.
+
+**Update `pubspec.yaml`** to use a 2.12 release as
+the minimum SDK constraint:
+
+```yaml
+environment:
+  sdk: '>=2.12.0-0 <3.0.0'
+```
+
+
+[language version]: /guides/language/evolution#language-versioning
 
 
 ### Check dependency status
@@ -119,9 +120,9 @@ Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
 
 For example, in the following output for a simple package,
-the green, checkmarked versions support null safety:
+the green checkmarked versions support null safety:
 
-![Output of dart pub outdated, showing PENDING](/null-safety/pub-outdated-output.png)
+![Output of dart pub outdated, showing that examples_util has no releases with null safety support, but pedantic and test do](/null-safety/pub-outdated-output.png)
 
 Here are the steps to take before migrating this package to sound null safety:
 
@@ -129,9 +130,16 @@ Here are the steps to take before migrating this package to sound null safety:
 2. Update `pubspec.yaml` to use the latest compatible releases of
    `pedantic`, `test`, and `examples_util`
    (as listed in the **Resolvable** column).
+   For example, the new dev dependencies might look like this:
+   ```dart
+dev_dependencies:
+  examples_util: ^0.0.3-nullsafety.0
+  pedantic: ^1.10.0-nullsafety.3
+  test: ^1.16.0-nullsafety.9
+```
 3. Run `dart pub upgrade`.
-4. Run `dart pub outdated --mode=null-safety` once more,
-   to make sure that all dependencies are null safe.
+4. Run `dart pub outdated --mode=null-safety` again,
+   to make sure that all dependencies are null safe and up-to-date.
 
 {{ site.alert.info }}
   **Why do all dependencies need to support null safety?**
@@ -170,14 +178,15 @@ The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
 
 Before running the tool,
-make sure you're using a 2.12 beta release (or later):
+make sure you're using the latest 2.12 beta release
+of the Dart SDK:
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.12.0-18.0.beta (beta)... [PENDING: check version #/string!]
+Dart SDK version: 2.12.0-XX.0.beta (beta)...
 ```
 
-Then update your `pubspec.yaml` file:
+Next, update your `pubspec.yaml` file:
 
 * **Keep any null-safe package versions** you chose when you
   [checked dependency status](#check-dependency-status) in step 1.
@@ -192,7 +201,7 @@ environment:
 $ dart pub get
 ```
 
-Next, start the migration tool by running the `dart migrate` command
+Now, start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
 ```terminal
@@ -217,33 +226,117 @@ where you can guide the migration process:
 For every variable and type annotation,
 you can see what nullability the tool infers.
 For example, in the preceding screenshot,
-the tool infers that the `bar2()` function returns a non-nullable type (`int`).
+the tool infers that the `ints` list (previously a list of `int`)
+in line 1 is nullable, and thus should be a list of `int?`.
 
-{{ site.alert.tip }}
-  To see the reason for each change (or non-change),
-  click the type.
-{{ site.alert.end }}
+
+#### Understanding migration results
+
+To see the reasons for each change (or non-change),
+click its line number in the **Proposed Edits** pane.
+The reasons appear in the **Edit Details** pane.
+
+For example, consider the following code,
+from before null safety:
+
+```dart
+var ints = const <int>[0, null];
+var zero = ints[0];
+var one = zero + 1;
+var zeroOne = <int>[zero, one];
+```
+
+The default migration is backward compatible but not ideal:
+
+```dart
+var ints = const <int?>[0, null];
+var zero = ints[0];
+var one = zero! + 1;
+var zeroOne = <int?>[zero, one];
+```
+
+By clicking line 3, you can see the migration tool's reasons for
+adding the `!`.
+But if you know that `zero` can't be null,
+then you can improve the migration result.
+
+
+#### Improving migration results
 
 When analysis infers the wrong nullability,
-you can override its choice by inserting temporary `/*?*/` and `/*!*/` markers.
+you can override its proposed edits by inserting temporary
+`/*?*/` and `/*!*/` markers:
 
-* In the tool UI, you can insert these markers using the
+* In the **Edit Details** pane of the migration tool,
+  you can insert these markers using the
   **Add `/*?*/` hint** and **Add `/*!*/` hint** buttons.
-* Alternatively, switch back to your editor and change the code yourself,
+
+  These buttons add comments to your file immediately,
+  and there's no **Undo**.
+  If you don't want a hint that the tool inserted,
+  you can use your usual code editor to remove it.
+
+* You can use an editor to add these markers,
   even while the tool is still running.
+  Because your code hasn't opted into null safety yet,
+  you can't use new null-safety features.
+  You can, however, make changes like refactoring
+  that don't depend on null-safety features.
+
   When you've finished editing your code,
   click **Rerun from sources** to pick up your changes.
 
-{{ site.alert.important }}
-  Don't use new null safety features yet.
-  Your code is still null-unsafe for now.
-{{ site.alert.end }}
+A single hint can have ripple effects elsewhere in the code.
+In the example from before,
+adding a `/*!*/` marker where `zero` is assigned its value (on line 2)
+makes the migration tool infer the type of `zero` as `int?` instead of `int`.
+This type change can affect code that directly or indirectly uses `zero`.
+
+```dart
+var zero = ints[0]/*!*/;
+```
+
+With the above hint, the migration tool changes its proposed edits,
+as the following table shows.
+Line 3 no longer has a `!` after `zero`,
+and in line 4 `zeroOne` is inferred to be
+a list of `int`, not `int?`.
+
+<table markdown="1">
+<tr>
+<th>First migration</th>
+<th>Migration with hint</th>
+</tr>
+<tr markdown="1">
+  <td markdown="1">
+```dart
+var ints = const <int?>[0, null];
+var zero = ints[0];
+var one = zero! + 1;
+var zeroOne = <int?>[zero, one];
+```
+  </td>
+  <td markdown="1">
+```dart
+var ints = const <int?>[0, null];
+var zero = ints[0]/*!*/;
+var one = zero + 1;
+var zeroOne = <int>[zero, one];
+```
+  </td>
+</tr>
+</table>
+
+#### Applying changes
 
 When you like all of the changes
-that the migration tool proposes &mdash; all of the
-`?`, `required`, `!`, and other changes &mdash; click
-**Apply migration** to tell the tool to save the changes.
-Congratulations, your package is migrated!
+that the migration tool proposes, click
+**Apply migration** to tell the tool to save the migrated code
+and to update the minimum SDK in your pubspec.
+
+The next step is to [test your code](#step3-test).
+Then, if you've published it on pub.dev,
+[publish a null-safe prerelease](#step4-publish).
 
 
 ### Migrating by hand
@@ -277,7 +370,7 @@ To migrate a package by hand, follow these steps:
    setting the language version to 2.12 beta or later:
    ```yaml
 environment:
-  sdk: '>=2.12.0-18.0.beta <3.0.0' [PENDING: check version; would 2.12.0-0 work?]
+  sdk: '>=2.12.0-0 <3.0.0'
 ```
 
 2. Update dependencies: <br>
