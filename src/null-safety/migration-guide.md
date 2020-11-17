@@ -125,7 +125,7 @@ null-safe releases, if they exist.
   When all the dev dependencies support null safety,
   you can _run tests_ with sound null safety.
   You might also need null-safe dev dependencies for other reasons,
-  such as building.
+  such as code generation.
 {{ site.alert.end }}
 
 Here's an example of the output for a simple package.
