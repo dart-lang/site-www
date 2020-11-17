@@ -23,12 +23,10 @@ Here are the basic steps for migrating each package that you own:
    as a **prerelease** version.
 
 {{ site.alert.info }}
-  **Migrating an app is the same as migrating a package.**
-  Before fully migrating an app,
-  consider waiting until null safety is in a stable release.
-  In the meantime, you can learn about null safety,
-  perhaps adding migration hints to your app
-  or refactoring your app code.
+  **Migrating an app is technically the same as migrating a package.**
+  Before migrating an app,
+  consider waiting until null safety is in a stable release
+  and all your dependencies are ready.
 {{ site.alert.end }}
 
 [null safety]: /null-safety
@@ -458,15 +456,7 @@ If so, revert your code changes before using the migration tool again.
 ## 5. Publish {#step5-publish}
 
 We encourage you to publish packages as prereleases
-as soon as you migrate.
-
-{{ site.alert.note }}
-  Although you can deploy apps at any time,
-  we generally recommend waiting for a stable SDK release that
-  supports null safety without flags.
-{{ site.alert.end }}
-
-If your package is already on pub.dev, publish it as a prerelease:
+as soon as you migrate:
 
 * [Set the SDK constraints to the tested beta version.](#sdk-constraints)
 * [Set the package version to indicate a breaking change and
