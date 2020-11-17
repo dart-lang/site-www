@@ -139,16 +139,20 @@ integration](https://pub.dev/packages/win32),
 
 Dart's compiler technology lets you run code in different ways:
 
-- Native: For apps targeting mobile and desktop devices, Dart includes both a
-  Dart VM with JIT (just-in-time) compilation and an AOT (ahead-of-time)
-  compiler for producing machine code.
+- **Native compilation**: For apps targeting mobile and desktop devices, Dart
+  includes both a Dart VM with JIT (just-in-time) compilation and an AOT
+  (ahead-of-time) compiler for producing machine code.
 
-- Web: For apps targeting the web, Dart also includes both a development time
-  compiler (dartdevc) and a production time compiler (dart2js), both of which
-  translate Dart into JavaScript that is supported on all browsers.
+- **Web compilation**: For apps targeting the web, Dart also includes both a
+  development time compiler (dartdevc) and a production time compiler (dart2js),
+  both of which translate Dart into JavaScript that is supported on all
+  browsers.
 
 <img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
 illustration of the targets supported by Dart">
+
+In addition, [Flutter](https://flutter.dev) provides tooling and UI libraries to
+build UI that runs on iOS, Android, macOS, Windows and Linux.
 
 ## Learning Dart
 
