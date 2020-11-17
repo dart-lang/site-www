@@ -413,10 +413,25 @@ $ dart pub get
 
 ## 3. Test your code {#step3-test}
 
-If you already have tests, run them.
+Run `dart pub get`.
+Then, if your code passes analysis, run your tests:
+
+```terminal
+$ dart pub get
+$ dart analyze
+$ dart test
+```
+
+***[PENDING: What are the commands for flutter?]***
+
 You might need to update tests that expect null values.
 
-If your package and its dependencies aren't completely null safe,
+If analysis or testing show the you need to make
+large changes to your code,
+you might need to remigrate your code.
+If so, revert your code changes before using the migration tool again.
+
+If you haven't migrated the entire package,
 then see [Unsound null safety](/go/unsound-null-safety)
 for help on running and testing mixed-version code.
 
