@@ -16,9 +16,10 @@ Here are the basic steps for migrating each package that you own:
    that you depend on to migrate.
 2. [**Migrate**](#step2-migrate) your package's code,
    preferably using the interactive migration tool.
-3. [**Test**](#step3-test) to make sure your changes work.
-4. If the package is already on pub.dev,
-   [**publish**](#step4-publish) the null-safe version
+3. [**Statically analyze**](#step3-analyze) your package's code.
+4. [**Test**](#step4-test) to make sure your changes work.
+5. If the package is already on pub.dev,
+   [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
 {{ site.alert.info }}
@@ -119,14 +120,25 @@ then you can start migrating.
 Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
 
-For example, in the following output for a simple package,
-the green checkmarked versions support null safety:
+{{ site.alert.info }}
+  **Why do all dependencies need to support null safety?**
+  When all of an app's direct dependencies support null safety,
+  you can _run the app_ with sound null safety.
+  When all the dev dependencies support null safety,
+  you can _run tests_ with sound null safety.
+  You might also need null-safe dev dependencies for other reasons,
+  such as building.
+{{ site.alert.end }}
+
+Here's an example of the output for a simple package.
+The green checkmarked version for each package supports null safety:
 
 ![Output of dart pub outdated, showing that examples_util has no releases with null safety support, but pedantic and test do](/null-safety/pub-outdated-output.png)
 
 Here are the steps to take before migrating this package to sound null safety:
 
 1. Wait for `examples_util` to be migrated.
+
 2. Update `pubspec.yaml` to use the latest compatible releases of
    `pedantic`, `test`, and `examples_util`
    (as listed in the **Resolvable** column).
@@ -137,17 +149,11 @@ dev_dependencies:
   pedantic: ^1.10.0-nullsafety.3
   test: ^1.16.0-nullsafety.9
 ```
+
 3. Run `dart pub upgrade`.
+
 4. Run `dart pub outdated --mode=null-safety` again,
    to make sure that all dependencies are null safe and up-to-date.
-
-{{ site.alert.info }}
-  **Why do all dependencies need to support null safety?**
-  When all direct dependencies support null safety,
-  you can _run your app_ with sound null safety.
-  When all dev dependencies support null safety,
-  you can _run tests_ with sound null safety.
-{{ site.alert.end }}
 
 
 ## 2. Migrate {#step2-migrate}
@@ -176,14 +182,13 @@ Alternatively, you can
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
-
 Before running the tool,
 make sure you're using the latest 2.12 beta release
 of the Dart SDK:
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.12.0-XX.0.beta (beta)...
+Dart SDK version: 2.12.0-49.0.beta (beta)...
 ```
 
 Next, update your `pubspec.yaml` file:
@@ -272,7 +277,7 @@ you can override its proposed edits by inserting temporary
   **Add `/*?*/` hint** and **Add `/*!*/` hint** buttons.
 
   These buttons add comments to your file immediately,
-  and there's no **Undo**.
+  and there's **no Undo**.
   If you don't want a hint that the tool inserted,
   you can use your usual code editor to remove it.
 
@@ -289,7 +294,7 @@ you can override its proposed edits by inserting temporary
 A single hint can have ripple effects elsewhere in the code.
 In the example from before,
 adding a `/*!*/` marker where `zero` is assigned its value (on line 2)
-makes the migration tool infer the type of `zero` as `int?` instead of `int`.
+makes the migration tool infer the type of `zero` as `int` instead of `int?`.
 This type change can affect code that directly or indirectly uses `zero`.
 
 ```dart
@@ -297,7 +302,7 @@ var zero = ints[0]/*!*/;
 ```
 
 With the above hint, the migration tool changes its proposed edits,
-as the following table shows.
+as the following code snippets show.
 Line 3 no longer has a `!` after `zero`,
 and in line 4 `zeroOne` is inferred to be
 a list of `int`, not `int?`.
@@ -334,20 +339,21 @@ that the migration tool proposes, click
 **Apply migration** to tell the tool to save the migrated code
 and to update the minimum SDK in your pubspec.
 
-The next step is to [test your code](#step3-test).
-Then, if you've published it on pub.dev,
-[publish a null-safe prerelease](#step4-publish).
+The next step is to [statically analyze your code](#step3-analyze).
+If it's valid, then [test your code](#step4-test).
+Then, if you've published your code on pub.dev,
+[publish a null-safe prerelease](#step5-publish).
 
 
 ### Migrating by hand
 
 Manual migration can be the right choice if you
 want to migrate your package incrementally.
-Because Dart supports [mixed-version programs][],
+Because Dart supports [mixed-version programs][Unsound null safety],
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your app and its tests.
 
-[mixed-version programs]: /go/unsound-null-safety
+[Unsound null safety]: /go/unsound-null-safety
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -402,6 +408,8 @@ $ dart pub get
    parameter type is non-nullable,
    even though a 2.9 file might pass in a null value.
 
+   See [Unsound null safety][] for more information.
+
 5. Migrate the code of each Dart file,
    using the analyzer to identify static errors. <br>
    Add `?`, `!`, `required`, `late` and refactoring as needed
@@ -411,32 +419,43 @@ $ dart pub get
 [package config]: https://pub.dev/packages/package_config
 
 
-## 3. Test your code {#step3-test}
+## 3. Analyze {#step3-analyze}
 
-Run `dart pub get`.
-Then, if your code passes analysis, run your tests:
+Update your packages
+(using `pub get` in your IDE or on the command line).
+Then use your IDE or the command line
+to perform [static analysis][] on your code:
 
 ```terminal
 $ dart pub get
-$ dart analyze
-$ dart test
+$ dart analyze     # or `flutter analyze`
 ```
 
-***[PENDING: What are the commands for flutter?]***
-
-You might need to update tests that expect null values.
-
-If analysis or testing show the you need to make
-large changes to your code,
-you might need to remigrate your code.
-If so, revert your code changes before using the migration tool again.
+[static analysis]: /guides/language/analysis-options
 
 If you haven't migrated the entire package,
-then see [Unsound null safety](/go/unsound-null-safety)
+see [Unsound null safety][]
+for help on analyzing mixed-version code.
+
+## 4. Test {#step4-test}
+
+If your code passes analysis, run tests:
+
+```terminal
+$ dart test       # or `flutter test`
+```
+
+You might need to update tests that expect null values.
+If you haven't migrated the entire package,
+see [Unsound null safety][]
 for help on running and testing mixed-version code.
 
+If you need to make large changes to your code,
+then you might need to remigrate your code.
+If so, revert your code changes before using the migration tool again.
 
-## 4. Publish your code {#step4-publish}
+
+## 5. Publish {#step5-publish}
 
 We encourage you to publish packages as prereleases
 as soon as you migrate.
@@ -458,12 +477,12 @@ If your package is already on pub.dev, publish it as a prerelease:
 Set the lower SDK constraint to the beta version of 2.12
 that you used to test the migration,
 and the upper SDK constraint to `<3.0.0`.
-For example, if you're using 2.12.0-18.0.beta,
+For example, if you're using 2.12.0-49.0.beta,
 then your constraints should look like this:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0-18.0.beta <3.0.0'
+  sdk: '>=2.12.0-49.0.beta <3.0.0'
 ```
 
 With these constraints,
