@@ -31,12 +31,13 @@ because of type inference. The Dart typing system is also flexible, allowing the
 use of a 'dynamic' type combined with runtime checks, which can be useful during
 experimentation or for code that needs to be especially dynamic.
 
-Dart offers sound null safety, meaning that values can’t be null unless you say
-they can be. With sound null safety, Dart can protect you from null exceptions
-at runtime through static code analysis. Unlike many other null-safe languages,
-when Dart determines that a variable is non-nullable, that variable is always
-non-nullable: if you inspect your running code in the debugger, you’ll see that
-non-nullability is retained at runtime (hence "sound" null safety).
+Dart offers [sound null safety](https://dart.dev/null-safety), meaning that
+values can’t be null unless you say they can be. With sound null safety, Dart
+can protect you from null exceptions at runtime through static code analysis.
+Unlike many other null-safe languages, when Dart determines that a variable is
+non-nullable, that variable is always non-nullable: if you inspect your running
+code in the debugger, you’ll see that non-nullability is retained at runtime
+(hence "sound" null safety).
 
 This code sample showcases a number of Dart language features: libraries, async
 calls, nullable and non-nullable types, arrow syntax, generators, streams and
