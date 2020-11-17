@@ -41,7 +41,8 @@ non-nullability is retained at runtime (hence "sound" null safety).
 This code sample showcases a number of Dart language features: libraries, async
 calls, nullable and non-nullable types, arrow syntax, generators, streams and
 getters. A more comprehensive set of annotated language examples can be found in
-[Dart by Example](http://jpryan.me/dartbyexample/) by @jryanio.
+[Dart by Example](http://jpryan.me/dartbyexample/) by
+[@jryanio](https://twitter.com/jryanio).
 
 ```dart
 import 'dart:async';
