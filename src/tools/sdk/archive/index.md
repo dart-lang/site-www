@@ -17,9 +17,9 @@ and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.cha
 Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warn}}
   {% include_relative _sdk-terms.md %}
-</aside>
+{{site.alert.end}}
 
 
 ## Stable channel
