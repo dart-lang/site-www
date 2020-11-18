@@ -5,17 +5,19 @@ description: Mixing language versions lets you migrate to null safety at your ow
 
 An app can use some libraries that
 are [null safe][] and some that aren't.
-These apps — called **mixed-version programs** —
-execute with **unsound null safety**.
+Such an app — called a **mixed-version program** —
+executes with **unsound null safety**.
 
 [null safe]: /null-safety
 
-Mixing language versions lets you migrate to null safety at your own pace.
+Mixing [language versions][] lets you migrate to null safety at your own pace.
 It also frees package maintainers to migrate their code,
 with the knowledge that even legacy users can get new
 bug fixes and other improvements.
 However, mixed-version programs don't get all the advantages
 that null safety can bring.
+
+[language versions]: /guides/language/evolution#language-versioning
 
 This page describes the differences between sound and unsound null safety,
 to help you decide whether to migrate before
@@ -71,27 +73,18 @@ If you import a null-unsafe library,
 the tools print a warning to let you know that
 they can only [run with unsound null safety](#analyzing-and-testing).
 
-{{ site.alert.info }}
-  Except for a few edge cases,
-  a mixed-version program should do exactly what you expect.
-  One example of an edge case is an `is` test
-  on an instance of a generic type from a closure
-  that crosses the boundary between null-safe and null-unsafe libraries.
-{{ site.alert.end }}
-
 
 ## Migrating incrementally
-
-The [migration tool][] is aimed at migrating a whole package at once.
-If you want to migrate your package piecemeal,
-the migration tool can still help,
-but you'll need to do more by hand.
-
-[migration tool]: /null-safety/migration-guide#step2-migrate
 
 Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your app and its tests.
+If you want to migrate your package file by file,
+the [migration tool][] can help,
+but you'll need to do more by hand.
+
+[migration tool]: /null-safety/migration-guide#step2-migrate
+
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -103,7 +96,7 @@ For example, say you have a `lib/src/util.dart` file
 that imports other (null-safe) packages and core libraries,
 but that doesn't have any `import '<local_path>'` directives.
 Consider migrating `util.dart` first,
-and then migrating simple files that depend only on `util.dart`.
+and then migrating files that depend only on `util.dart`.
 If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
@@ -122,7 +115,7 @@ environment:
 $ dart pub get
 ```
 
-   Running `dart pub get` with a lower constraint of 2.12.0
+   Running `dart pub get` with a lower constraint of 2.12.0-0
    sets the default language version of
    every library in your package to 2.12,
    opting them all in to null safety.
@@ -132,14 +125,14 @@ $ dart pub get
    You're likely to see a lot of analysis errors.
    That's OK.
 
-4. _Optional:_ Add a [language version comment][] to the top of
+4. Add a [language version comment][] to the top of
    any Dart files that you don't want to consider during your current migration:
    ```dart
 // @dart=2.9
 ```
 
    Using language version 2.9 for a library that's in a 2.12 package
-   can reduce analysis errors (red squiggles) if you disable sound null safety.
+   can reduce analysis errors (red squiggles).
    However, **unsound null safety reduces the
    information the analyzer can use.**
    For example, the analyzer might assume a
@@ -150,10 +143,9 @@ $ dart pub get
    using the analyzer to identify static errors. <br>
    Eliminate static errors by adding `?`, `!`, `required`, and `late`,
    as needed.
-   Consider refactoring your code, as needed.
 
 
-## Analyzing, testing, and running mixed-version code
+## Analyzing, testing, and running mixed-version programs
 
 To analyze, test, or run mixed-version code,
 you need to disable sound null safety.
@@ -163,7 +155,7 @@ You can do this in two ways:
   Example:
 
   ```terminal
-  $ dart run --no-sound-null-safety
+  $ dart --no-sound-null-safety run
   ```
 
 * Alternatively, set the language version in the entrypoint —
