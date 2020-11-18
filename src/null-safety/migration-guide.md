@@ -3,12 +3,6 @@ title: Migrating to null safety
 description: How to move your existing Dart code to the world of null safety
 ---
 
-{{ site.alert.warning }}
-**This page is a DRAFT.**
-Please give us feedback at
-[PR 2739](https://github.com/dart-lang/site-www/pull/2739).
-{{ site.alert.end }}
-
 This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
@@ -52,8 +46,7 @@ then passing a nullable argument becomes a compile error.
 
 This section tells you how to
 check your package's dependencies
-by temporarily opting into null safety
-and using the `dart pub outdated` command in null-safety mode.
+using the `dart pub outdated` command in null-safety mode.
 
 {{ site.alert.warn }}
   These instructions assume your code is under **source control**,
@@ -84,24 +77,6 @@ $ flutter upgrade
   **switch back to a stable release**
   (for example, by running `flutter channel stable`).
 {{ site.alert.end }}
-
-
-### Opt into null safety
-
-Setting the minimum SDK constraint to 2.12 (or a later version)
-opts the packaging into null safety by
-setting the [language version][] to at least 2.12.
-
-**Update `pubspec.yaml`** to use a 2.12 release as
-the minimum SDK constraint:
-
-```yaml
-environment:
-  sdk: '>=2.12.0-0 <3.0.0'
-```
-
-
-[language version]: /guides/language/evolution#language-versioning
 
 
 ### Check dependency status
@@ -180,31 +155,13 @@ Alternatively, you can
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
-Before running the tool,
-make sure you're using the latest 2.12 beta release
-of the Dart SDK:
+Before starting the tool, make sure you're ready:
 
-```terminal
-$ dart --version
-Dart SDK version: 2.12.0-49.0.beta (beta)...
-```
-
-Next, update your `pubspec.yaml` file:
-
-* **Keep any null-safe package versions** you chose when you
-  [checked dependency status](#check-dependency-status) in step 1.
-* If your package's SDK constraints have a minimum version of 2.12 or higher:
-  1. **Set the minimum SDK version** back to a version before null safety.
-     ```yaml
-environment:
-    sdk: '>=2.9.0 <3.0.0'
-```
-  2. **Update dependencies:**
-     ```terminal
-$ dart pub get
-```
-
-Now, start the migration tool by running the `dart migrate` command
+* Use the latest 2.12 beta release of the Dart SDK.
+* Use `dart pub outdated --mode=null-safety` to make sure that
+  all dependencies are null safe and up-to-date.
+  
+Start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
 ```terminal
@@ -345,8 +302,8 @@ Then, if you've published your code on pub.dev,
 
 ### Migrating by hand
 
-Manual migration can be the right choice if you
-want to migrate your package incrementally.
+If you prefer not to use the migration tool,
+you can migrate manually.
 Because Dart supports [mixed-version programs][Unsound null safety],
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your app and its tests.
@@ -382,7 +339,7 @@ environment:
 $ dart pub get
 ```
 
-   Running `dart pub get` with a lower constraint of 2.12.0
+   Running `dart pub get` with a lower constraint of 2.12.0-0
    sets the default language version of
    every library in your package to 2.12,
    opting them all in to null safety.
@@ -392,28 +349,14 @@ $ dart pub get
    You're likely to see a lot of analysis errors.
    That's OK.
 
-4. _Optional:_ Add a [language version comment][] to the top of
-   any Dart files that you don't want to consider during your current migration:
-   ```dart
-// @dart=2.9
-```
-
-   Using language version 2.9 for a library that's in a 2.12 package
-   can reduce analysis errors (red squiggles) if you disable sound null safety.
-   However, **unsound null safety reduces the
-   information the analyzer can use.**
-   For example, the analyzer might assume a
-   parameter type is non-nullable,
-   even though a 2.9 file might pass in a null value.
-
-   See [Unsound null safety][] for more information.
-
-5. Migrate the code of each Dart file,
+4. Migrate the code of each Dart file,
    using the analyzer to identify static errors. <br>
-   Add `?`, `!`, `required`, `late` and refactoring as needed
-   to improve your code and eliminate static errors.
+   Eliminate static errors by adding `?`, `!`, `required`, and `late`,
+   as needed.
 
-[language version comment]: /guides/language/evolution#per-library-language-version-selection
+See [Unsound null safety][]
+for more help on migrating code by hand.
+
 [package config]: https://pub.dev/packages/package_config
 
 
@@ -431,9 +374,6 @@ $ dart analyze     # or `flutter analyze`
 
 [static analysis]: /guides/language/analysis-options
 
-If you haven't migrated the entire package,
-see [Unsound null safety][]
-for help on analyzing mixed-version code.
 
 ## 4. Test {#step4-test}
 
@@ -444,12 +384,9 @@ $ dart test       # or `flutter test`
 ```
 
 You might need to update tests that expect null values.
-If you haven't migrated the entire package,
-see [Unsound null safety][]
-for help on running and testing mixed-version code.
 
 If you need to make large changes to your code,
-then you might need to remigrate your code.
+then you might need to remigrate it.
 If so, revert your code changes before using the migration tool again.
 
 
@@ -467,12 +404,12 @@ as soon as you migrate:
 Set the lower SDK constraint to the beta version of 2.12
 that you used to test the migration,
 and the upper SDK constraint to `<3.0.0`.
-For example, if you're using 2.12.0-49.0.beta,
+For example, if you're using 2.12.0-50.0.beta,
 then your constraints should look like this:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0-49.0.beta <3.0.0'
+  sdk: '>=2.12.0-50.0.beta <3.0.0'
 ```
 
 With these constraints,
