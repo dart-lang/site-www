@@ -2528,12 +2528,9 @@ Use a dot (`.`) to refer to an instance variable or method:
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-members)"?>
 ```dart
 var p = Point(2, 2);
-
-// Set the value of the instance variable y.
-p.y = 3;
-
+      
 // Get the value of y.
-assert(p.y == 3);
+assert(p.y == 2);
 
 // Invoke distanceTo() on p.
 double distance = p.distanceTo(Point(4, 4));
@@ -2549,8 +2546,8 @@ https://gist.github.com/0cb25997742ed5382e4a
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
-// If p is non-null, set its y value to 4.
-p?.y = 4;
+// If p is non-null, set a variable equal to its y value.
+var a = p?.y;
 ```
 
 
