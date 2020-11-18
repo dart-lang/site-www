@@ -323,6 +323,12 @@ environment:
   sdk: ">=2.12.0-0 <3.0.0"
 {% endprettify %}
 
+{{site.alert.note}}
+The 2.12 SDK constraint above ends in **`-0`**. This uses
+[semantic versioning notation](https://semver.org/)
+to allow 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+{{site.alert.end}}
+
 If you find any issues with null safety please [give us feedback.][]
 
 [language version]: /guides/language/evolution#language-versioning
