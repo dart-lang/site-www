@@ -137,24 +137,30 @@ For example, if a variable can be `null`,
 its type needs a `?` suffix.
 A named parameter that shouldn't be nullable
 needs to be marked `required`.
+You have two options for migrating:
 
-The migration tool can make most of these changes,
-and you can add hints to customize the changes.
-Alternatively, you can
-[migrate your code by hand](#migrating-by-hand).
+* Use the [migration tool][],
+  which can make most of the easily predictable changes for you.
+* Alternatively, [migrate your code by hand](#migrating-by-hand).
 
 {{ site.alert.tip }}
   For additional help while migrating code, check the
   [null safety FAQ][].
 {{ site.alert.end }}
 
+[migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 
 
-### Using the migration tool
+### Using the migration tool {#migration-tool}
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
+You can guide the tool's conversion by
+adding [hint markers][] to your Dart code.
+
+[hint markers]: #hint-markers
+
 Before starting the tool, make sure you're ready:
 
 * Use the latest 2.12 beta release of the Dart SDK.
@@ -221,14 +227,13 @@ But if you know that `zero` can't be null,
 then you can improve the migration result.
 
 
-#### Improving migration results
+#### Improving migration results {#hint-markers}
 
 When analysis infers the wrong nullability,
-you can override its proposed edits by inserting temporary
-`/*?*/` and `/*!*/` markers:
+you can override its proposed edits by inserting temporary hint markers:
 
 * In the **Edit Details** pane of the migration tool,
-  you can insert these markers using the
+  you can insert hint markers using the
   **Add `/*?*/` hint** and **Add `/*!*/` hint** buttons.
 
   These buttons add comments to your file immediately,
@@ -236,7 +241,7 @@ you can override its proposed edits by inserting temporary
   If you don't want a hint that the tool inserted,
   you can use your usual code editor to remove it.
 
-* You can use an editor to add these markers,
+* You can use an editor to add hint markers,
   even while the tool is still running.
   Because your code hasn't opted into null safety yet,
   you can't use new null-safety features.
@@ -245,6 +250,19 @@ you can override its proposed edits by inserting temporary
 
   When you've finished editing your code,
   click **Rerun from sources** to pick up your changes.
+
+The following table shows the hint markers that you can use
+to change the migration tool's proposed edits.
+
+|------------------+--------------------------------------------------------------------------|
+| Hint marker      | Effect on the migration tool                                             |
+|------------------|--------------------------------------------------------------------------|
+| `/*!*/`          | Mark the preceding expression or type as non-null or non-nullable.       |
+| `/*?*/`          | Mark the preceding expression or type as nullable.                       |
+| `/*late*/`       | Mark the variable declaration with as `late`, indicating that it has late initialization. |
+| `/*late final*/` | Mark the variable as `late final`, indicating that it has late, one-time initialization. |
+| `/*required*/`   | Mark the parameter as `required`.                                        |
+{:.table .table-striped}
 
 A single hint can have ripple effects elsewhere in the code.
 In the example from before,
@@ -286,6 +304,7 @@ var zeroOne = <int>[zero, one];
   </td>
 </tr>
 </table>
+
 
 #### Applying changes
 
