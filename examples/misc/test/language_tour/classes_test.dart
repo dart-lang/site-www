@@ -43,7 +43,7 @@ void main() {
   test('object-members', () {
     // #docregion object-members
     var p = Point(2, 2);
-      
+
     // Get the value of y.
     assert(p.y == 2);
 
