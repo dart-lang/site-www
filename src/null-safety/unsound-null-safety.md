@@ -3,15 +3,15 @@ title: Unsound null safety
 description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
 ---
 
-An app can use some libraries that
+A Dart program can contain some libraries that
 are [null safe][] and some that aren't.
-Such an app — called a **mixed-version program** —
-executes with **unsound null safety**.
+These **mixed-version programs**
+execute with **unsound null safety**.
 
 [null safe]: /null-safety
 
-Mixing [language versions][] lets you migrate to null safety at your own pace.
-It also frees package maintainers to migrate their code,
+The ability to mix [language versions][]
+frees package maintainers to migrate their code,
 with the knowledge that even legacy users can get new
 bug fixes and other improvements.
 However, mixed-version programs don't get all the advantages
@@ -20,14 +20,13 @@ that null safety can bring.
 [language versions]: /guides/language/evolution#language-versioning
 
 This page describes the differences between sound and unsound null safety,
-to help you decide whether to migrate before
-all your dependencies support null safety.
+with the goal of helping you decide when to migrate to null safety.
 After the conceptual discussion are instructions for migrating incrementally,
-followed by details on analyzing, testing, and running mixed-version programs.
+followed by details on testing and running mixed-version programs.
 
 {{ site.alert.note }}
   We recommend that, if possible, you wait for dependencies to migrate
-  before you migrate your app.
+  before you migrate your package.
   For details, see the [migration guide][].
 {{ site.alert.end }}
 
@@ -55,15 +54,13 @@ To maintain runtime compatibility with legacy libraries
 while offering soundness to completely null-safe programs,
 Dart tools support two modes:
 
-* When you run a mixed-version program,
-  it runs with **unsound null safety**.
+* Mixed-version programs run with **unsound null safety**.
   It's possible for `null` reference errors to occur at runtime,
   but only because a `null` or nullable type escaped from
-  some null-unsafe library and got into your null-safe code.
+  some null-unsafe library and got into null-safe code.
 
-* When your program is fully migrated and _all_ libraries are null safe,
-  then your program automatically runs with **sound null safety**.
-  That mode gives you the full null safety experience with
+* When a program is fully migrated and _all_ its libraries are null safe,
+  then it runs with **sound null safety**, with
   all of the guarantees and compiler optimizations that soundness enables.
 
 Sound null safety is what you want if possible.
@@ -78,7 +75,7 @@ they can only [run with unsound null safety](#analyzing-and-testing).
 
 Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
-while still being able to run your app and its tests.
+while still being able to run your program and its tests.
 If you want to migrate your package file by file,
 the [migration tool][] can help,
 but you'll need to do more by hand.
@@ -103,23 +100,25 @@ consider migrating those libraries together.
 
 To migrate a package by hand, follow these steps:
 
-1. Modify the SDK constraints in the package's `pubspec.yaml` file,
-   setting the language version to 2.12 beta or later:
+1. Edit the package's `pubspec.yaml` file,
+   setting the minimum SDK constraint to `2.12.0-0`:
    ```yaml
 environment:
   sdk: '>=2.12.0-0 <3.0.0'
 ```
 
-2. Update dependencies: <br>
+2. Regenerate the [package configuration file][]:
+
    ```terminal
-$ dart pub get
-```
+   $ dart pub get
+   ```
 
-   Running `dart pub get` with a lower constraint of 2.12.0-0
+   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
+
+   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
    sets the default language version of
-   every library in your package to 2.12,
+   every library in the package to 2.12,
    opting them all in to null safety.
-
 
 3. Open the package in your IDE. <br>
    You're likely to see a lot of analysis errors.
@@ -132,7 +131,7 @@ $ dart pub get
 ```
 
    Using language version 2.9 for a library that's in a 2.12 package
-   can reduce analysis errors (red squiggles).
+   can reduce analysis errors (red squiggles) coming from unmigrated code.
    However, **unsound null safety reduces the
    information the analyzer can use.**
    For example, the analyzer might assume a
@@ -145,9 +144,9 @@ $ dart pub get
    as needed.
 
 
-## Analyzing, testing, and running mixed-version programs
+## Testing or running mixed-version programs
 
-To analyze, test, or run mixed-version code,
+To test or run mixed-version code,
 you need to disable sound null safety.
 You can do this in two ways:
 
@@ -162,6 +161,8 @@ You can do this in two ways:
   the file that contains `main()` function — to 2.9.
   In Flutter apps, this file is often named `lib/main.dart`.
   In command-line apps, this file is often named `bin/<packageName>.dart`.
+  You can also opt out files under `test`,
+  because they are also entrypoints.
   Example:
 
   ```dart
