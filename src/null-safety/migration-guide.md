@@ -373,9 +373,8 @@ consider migrating those libraries together.
 
 To migrate a package by hand, follow these steps:
 
-1. Modify the SDK constraints in the package's `pubspec.yaml` file,
-   opting into null safety by
-   setting the language version to 2.12 beta or later:
+1. Edit the package's `pubspec.yaml` file,
+   setting the minimum SDK constraint to `2.12.0-0`:
    ```yaml
    environment:
      sdk: '>=2.12.0-0 <3.0.0'
@@ -387,16 +386,18 @@ To migrate a package by hand, follow these steps:
      allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
    {{ site.alert.end }}
 
-2. Update dependencies: <br>
+2. Regenerate the [package configuration file][]:
+
    ```terminal
-$ dart pub get
-```
+   $ dart pub get
+   ```
 
-   Running `dart pub get` with a lower constraint of 2.12.0-0
+   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
+
+   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
    sets the default language version of
-   every library in your package to 2.12,
+   every library in the package to 2.12,
    opting them all in to null safety.
-
 
 3. Open the package in your IDE. <br>
    You're likely to see a lot of analysis errors.
