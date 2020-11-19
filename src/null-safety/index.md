@@ -324,9 +324,9 @@ environment:
 {% endprettify %}
 
 {{site.alert.note}}
-The 2.12 SDK constraint above ends in **`-0`**.
-This use of [semantic versioning notation](https://semver.org/)
-allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+  The 2.12 SDK constraint above ends in **`-0`**.
+  This use of [semantic versioning notation](https://semver.org/)
+  allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
 {{site.alert.end}}
 
 If you find any issues with null safety please [give us feedback.][]
