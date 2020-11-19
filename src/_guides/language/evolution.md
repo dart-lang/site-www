@@ -269,9 +269,9 @@ except within the `@dart` and version strings.
 As the example above shows,
 other comments can appear before the `@dart` comment.
 
-
 For more information about how language versioning works, see the
 [language versioning specification][language versioning feature].
+
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
