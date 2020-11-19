@@ -134,7 +134,7 @@ update its dependencies to null-safe versions:
 1. Update `pubspec.yaml` to use null-safe releases
    (as listed in the **Resolvable** column)
    of its dependencies.
-   Omit `.x` suffixes to make version solving easier,
+   Omit `.x` suffixes to make version solving more flexible,
    and _don't_ update the SDK minimum constraint.
    For example, the `pubspec.yaml` file might look like this:
    ```yaml
