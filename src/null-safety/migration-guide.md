@@ -131,10 +131,11 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Update `pubspec.yaml` to use the latest null-safe releases
+1. Update `pubspec.yaml` to use null-safe releases
    (as listed in the **Resolvable** column)
    of its dependencies.
-   _Don't_ update the SDK minimum constraint.
+   Omit `.x` suffixes to make version solving more flexible,
+   and _don't_ update the SDK minimum constraint.
    For example, the `pubspec.yaml` file might look like this:
    ```yaml
    ...
@@ -142,11 +143,11 @@ update its dependencies to null-safe versions:
      sdk: '>=2.8.1 <3.0.0'
 
    dependencies:
-     path: ^1.8.0-nullsafety.3
-     process: ^4.0.0-nullsafety.4
+     path: ^1.8.0-nullsafety
+     process: ^4.0.0-nullsafety
 
    dev_dependencies:
-     pedantic: ^1.10.0-nullsafety.3
+     pedantic: ^1.10.0-nullsafety
    ```
 
 2. Run `dart pub upgrade`.
