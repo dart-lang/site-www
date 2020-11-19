@@ -38,7 +38,8 @@ then A should be migrated to null safety first, then B, then C.
 
 ![Illustration of C/B/A sentence](/null-safety/null-safety-migration-order.png){:width="454px"}<br>
 
-Although you _can_ migrate before your dependencies support null safety,
+Although you [_can_ migrate][Unsound null safety]
+before your dependencies support null safety,
 you might have to change your code when your dependencies migrate.
 For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
@@ -52,6 +53,7 @@ using the `dart pub outdated` command in null-safety mode.
   These instructions assume your code is under **source control**,
   so that you can easily undo any changes.
 {{ site.alert.end }}
+
 
 ### Switch to a 2.12 beta release
 
@@ -88,7 +90,7 @@ using the following command:
 $ dart pub outdated --mode=null-safety
 ```
 
-If the output says **all the packages fully support null safety**,
+If the output says that all the packages support null safety,
 then you can start migrating.
 Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
@@ -106,27 +108,41 @@ null-safe releases, if they exist.
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
 
-![Output of dart pub outdated, showing that examples_util has no releases with null safety support, but pedantic and test do](/null-safety/pub-outdated-output.png)
+![Output of dart pub outdated](/null-safety/pub-outdated-output.png)
 
-Here are the steps to take before migrating this package to sound null safety:
+The output shows that all of the package's dependencies
+have resolvable prereleases that support null safety.
 
-1. Wait for `examples_util` to be migrated.
+If any of your package's dependencies _don't_ yet support null safety,
+we encourage you to reach out to the package owner.
+You can find contact details on the package page on [pub.dev][].
 
-2. Update `pubspec.yaml` to use the latest compatible releases of
-   `pedantic`, `test`, and `examples_util`
-   (as listed in the **Resolvable** column).
-   For example, the new dev dependencies might look like this:
-   ```dart
-dev_dependencies:
-  examples_util: ^0.0.3-nullsafety.0
-  pedantic: ^1.10.0-nullsafety.3
-  test: ^1.16.0-nullsafety.9
-```
+[pub.dev]: {{ site.pub }}
 
-3. Run `dart pub upgrade`.
 
-4. Run `dart pub outdated --mode=null-safety` again,
-   to make sure that all dependencies are null safe and up-to-date.
+### Update dependencies
+
+Before migrating your package's code,
+update its dependencies to null-safe versions:
+
+1. Update `pubspec.yaml` to use the latest null-safe releases
+   (as listed in the **Resolvable** column)
+   of its dependencies.
+   For example, the `pubspec.yaml` file might look like this:
+   ```yaml
+   ...
+   environment:
+     sdk: '>=2.8.1 <3.0.0'
+
+   dependencies:
+     path: ^1.8.0-nullsafety.3
+     process: ^4.0.0-nullsafety.4
+
+   dev_dependencies:
+     pedantic: ^1.10.0-nullsafety.3
+   ```
+
+2. Run `dart pub upgrade`.
 
 
 ## 2. Migrate {#step2-migrate}
@@ -134,20 +150,23 @@ dev_dependencies:
 Most of the changes that your code needs to be null safe
 are easily predictable.
 For example, if a variable can be `null`,
-its type needs a `?` suffix.
+[its type needs a `?` suffix][nullable type].
 A named parameter that shouldn't be nullable
-needs to be marked `required`.
+needs to be [marked `required`][required].
+
 You have two options for migrating:
 
-* Use the [migration tool][],
+* [Use the migration tool][migration tool],
   which can make most of the easily predictable changes for you.
-* Alternatively, [migrate your code by hand](#migrating-by-hand).
+* [Migrate your code by hand.](#migrating-by-hand)
 
 {{ site.alert.tip }}
   For additional help while migrating code, check the
   [null safety FAQ][].
 {{ site.alert.end }}
 
+[nullable type]: /null-safety#creating-variables
+[required]: /null-safety/understanding-null-safety#required-named-parameters
 [migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 
@@ -212,7 +231,9 @@ var one = zero + 1;
 var zeroOne = <int>[zero, one];
 ```
 
-The default migration is backward compatible but not ideal:
+The default migration when this code is outside a function
+(it's different within a function)
+is backward compatible but not ideal:
 
 ```dart
 var ints = const <int?>[0, null];
@@ -257,16 +278,17 @@ to change the migration tool's proposed edits.
 |------------------+--------------------------------------------------------------------------|
 | Hint marker      | Effect on the migration tool                                             |
 |------------------|--------------------------------------------------------------------------|
-| `/*!*/`          | Mark the preceding expression or type as non-null or non-nullable.       |
-| `/*?*/`          | Mark the preceding expression or type as nullable.                       |
-| `/*late*/`       | Mark the variable declaration with as `late`, indicating that it has late initialization. |
-| `/*late final*/` | Mark the variable as `late final`, indicating that it has late, one-time initialization. |
-| `/*required*/`   | Mark the parameter as `required`.                                        |
+| <code><em>expression</em>&nbsp;/*!*/</code> | Adds a `!` to the migrated code, casting _expression_ to its underlying non-nullable type. |
+| <code><em>type</em> /*!*/</code> | Marks _type_ as non-nullable. |
+| `/*?*/`          | Marks the preceding type as nullable.                       |
+| `/*late*/`       | Marks the variable declaration as `late`, indicating that it has late initialization. |
+| `/*late final*/` | Marks the variable declaration as `late final`, indicating that it has late, one-time initialization. |
+| `/*required*/`   | Marks the parameter as `required`.                                        |
 {:.table .table-striped}
 
 A single hint can have ripple effects elsewhere in the code.
 In the example from before,
-adding a `/*!*/` marker where `zero` is assigned its value (on line 2)
+manually adding a `/*!*/` marker where `zero` is assigned its value (on line 2)
 makes the migration tool infer the type of `zero` as `int` instead of `int?`.
 This type change can affect code that directly or indirectly uses `zero`.
 
@@ -323,11 +345,6 @@ Then, if you've published your code on pub.dev,
 
 If you prefer not to use the migration tool,
 you can migrate manually.
-Because Dart supports [mixed-version programs][Unsound null safety],
-you can migrate one library (generally one Dart file) at a time,
-while still being able to run your app and its tests.
-
-[Unsound null safety]: /go/unsound-null-safety
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -349,9 +366,15 @@ To migrate a package by hand, follow these steps:
 1. Modify the SDK constraints in the package's `pubspec.yaml` file,
    setting the language version to 2.12 beta or later:
    ```yaml
-environment:
-  sdk: '>=2.12.0-0 <3.0.0'
-```
+   environment:
+     sdk: '>=2.12.0-0 <3.0.0'
+   ```
+
+   {{ site.alert.note }}
+     The 2.12 SDK constraint above ends in **`-0`**.
+     This use of [semantic versioning notation](https://semver.org/)
+     allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+   {{ site.alert.end }}
 
 2. Update dependencies: <br>
    ```terminal
@@ -376,7 +399,7 @@ $ dart pub get
 See [Unsound null safety][]
 for more help on migrating code by hand.
 
-[package config]: https://pub.dev/packages/package_config
+[Unsound null safety]: /go/unsound-null-safety
 
 
 ## 3. Analyze {#step3-analyze}
@@ -423,12 +446,12 @@ as soon as you migrate:
 Set the lower SDK constraint to the beta version of 2.12
 that you used to test the migration,
 and the upper SDK constraint to `<3.0.0`.
-For example, if you're using 2.12.0-50.0.beta,
+For example, if you're using 2.12.0-29.10.beta,
 then your constraints should look like this:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0-50.0.beta <3.0.0'
+  sdk: '>=2.12.0-29.10.beta <3.0.0'
 ```
 
 With these constraints,
