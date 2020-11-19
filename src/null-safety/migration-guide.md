@@ -45,14 +45,21 @@ For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
-This section tells you how to
-check your package's dependencies
-using the `dart pub outdated` command in null-safety mode.
-
-{{ site.alert.warn }}
-  These instructions assume your code is under **source control**,
-  so that you can easily undo any changes.
+{{ site.alert.info }}
+  **You can — and should — migrate your package before
+  packages that depend on it are migrated.**
+  Your null-safe package is usable by packages and apps that
+  don't use null safety yet.
+  For example, the Dart and Flutter core libraries are null safe,
+  and they're still usable by apps that haven't migrated to null safety.
+  For more information, see [Unsound null safety][].
 {{ site.alert.end }}
+
+This section tells you how to
+check and update your package's dependencies,
+with the help of the `dart pub outdated` command in null-safety mode.
+The instructions assume your code is under **source control**,
+so that you can easily undo any changes.
 
 
 ### Switch to a 2.12 beta release
@@ -128,6 +135,7 @@ update its dependencies to null-safe versions:
 1. Update `pubspec.yaml` to use the latest null-safe releases
    (as listed in the **Resolvable** column)
    of its dependencies.
+   _Don't_ update the SDK minimum constraint.
    For example, the `pubspec.yaml` file might look like this:
    ```yaml
    ...
@@ -242,10 +250,11 @@ var one = zero! + 1;
 var zeroOne = <int?>[zero, one];
 ```
 
-By clicking line 3, you can see the migration tool's reasons for
+By clicking the **line 3** link,
+you can see the migration tool's reasons for
 adding the `!`.
-But if you know that `zero` can't be null,
-then you can improve the migration result.
+Because you know that `zero` can't be null,
+you can improve the migration result.
 
 
 #### Improving migration results {#hint-markers}
@@ -331,9 +340,10 @@ var zeroOne = <int>[zero, one];
 #### Applying changes
 
 When you like all of the changes
-that the migration tool proposes, click
-**Apply migration** to tell the tool to save the migrated code
-and to update the minimum SDK in your pubspec.
+that the migration tool proposes, click **Apply migration**.
+The migration tool saves the migrated code
+and updates the minimum SDK constraint,
+opting the package into null safety.
 
 The next step is to [statically analyze your code](#step3-analyze).
 If it's valid, then [test your code](#step4-test).
@@ -364,6 +374,7 @@ consider migrating those libraries together.
 To migrate a package by hand, follow these steps:
 
 1. Modify the SDK constraints in the package's `pubspec.yaml` file,
+   opting into null safety by
    setting the language version to 2.12 beta or later:
    ```yaml
    environment:
