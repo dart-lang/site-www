@@ -142,11 +142,11 @@ update its dependencies to null-safe versions:
      sdk: '>=2.8.1 <3.0.0'
 
    dependencies:
-     path: ^1.8.0-nullsafety.3
-     process: ^4.0.0-nullsafety.4
+     path: ^1.8.0-nullsafety
+     process: ^4.0.0-nullsafety
 
    dev_dependencies:
-     pedantic: ^1.10.0-nullsafety.3
+     pedantic: ^1.10.0-nullsafety
    ```
 
 2. Run `dart pub upgrade`.
