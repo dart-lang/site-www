@@ -410,7 +410,7 @@ To migrate a package by hand, follow these steps:
 See [Unsound null safety][]
 for more help on migrating code by hand.
 
-[Unsound null safety]: /go/unsound-null-safety
+[Unsound null safety]: /null-safety/unsound-null-safety
 
 
 ## 3. Analyze {#step3-analyze}
