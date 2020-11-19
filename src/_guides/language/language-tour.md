@@ -2528,7 +2528,7 @@ Use a dot (`.`) to refer to an instance variable or method:
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-members)"?>
 ```dart
 var p = Point(2, 2);
-      
+
 // Get the value of y.
 assert(p.y == 2);
 
