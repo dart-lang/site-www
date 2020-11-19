@@ -174,11 +174,12 @@ You can do this in two ways:
   }
   ```
   
-Opting out tests using either of these mechanisms may be useful to
-allow you to run tests **during** your incremental migration process,
-but doing so means that you won't be testing your code with full null
-safety enabled. Therefore, it's important to opt your tests back in once
-you have finished the incremental migration of your libraries.
+Opting out tests using either of these mechanisms can be useful
+for testing **during** your incremental migration process,
+but doing so means that you aren't testing your code with
+full null safety enabled.
+It's important to opt your tests back _in_ to null safety
+when you've finished the incremental migration of your libraries.
 
 
 [language version comment]: /guides/language/evolution#per-library-language-version-selection
