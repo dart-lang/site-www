@@ -218,6 +218,8 @@
           permalink: /tools/dartfmt
         - title: pub
           permalink: /tools/pub/cmd
+        - title: Experiment flags
+          permalink: /tools/experiment-flags
     - title: Other command-line tools
       expanded: true
       children:
