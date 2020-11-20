@@ -41,10 +41,11 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
-    - title: Sound null safety
+
+    - title: Null safety
       expanded: false
       children:
-        - title: Overview
+        - title: "Overview: Sound null safety"
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
@@ -56,6 +57,10 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
+        - title: Unsound null safety
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/unsound-null-safety
         - title: FAQ
           urlExactMatch: true
           match-page-url-exactly: true
