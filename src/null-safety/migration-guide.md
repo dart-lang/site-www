@@ -341,9 +341,10 @@ var zeroOne = <int>[zero, one];
 
 When you like all of the changes
 that the migration tool proposes, click **Apply migration**.
-The migration tool saves the migrated code
-and updates the minimum SDK constraint,
-opting the package into null safety.
+The migration tool deletes the hint markers and
+saves the migrated code.
+The tool also updates the minimum SDK constraint in the pubspec,
+which opts the package into null safety.
 
 The next step is to [statically analyze your code](#step3-analyze).
 If it's valid, then [test your code](#step4-test).
