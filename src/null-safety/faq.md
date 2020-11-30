@@ -20,8 +20,9 @@ code:
 Two exceptions to be aware of are:
 
 -   The `!` operator is a runtime null check in all modes, for all users. So,
-    when migrating, ensure that you only add `!` where it's an error for all
-    users to pass a null.
+    when migrating, ensure that you only add `!` where it's an error for a
+    `null` to flow to that location, even if the calling code has not migrated
+    yet.
 -   Runtime checks associated with the `late` keyword apply in all modes, for
     all users. Only mark a field `late` if you are sure it is always initialized
     before it is used.
