@@ -13,7 +13,7 @@ Other terms for similar functionality include _native interface_
 and _language bindings._
 
 {{site.alert.info}}
-  As of Dart 2.7, [dart:ffi is in beta,][ffi issue]
+  As of Dart 2.10, [dart:ffi is in beta,][ffi issue]
   and breaking API changes might still happen.
 {{site.alert.end}}
 
