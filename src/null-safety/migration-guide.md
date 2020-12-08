@@ -494,6 +494,12 @@ increment the prerelease suffix.
 For example, if the first null-safe version is `3.0.0-nullsafety.0`,
 then the next one is `3.0.0-nullsafety.1`.
 
+You can maintain a stable release and null-safe prerelease at the same time.
+For example, if you have a stable release that's `1.0.0` and
+a prerelease that's `2.0.0-nullsafety.0`,
+you can still publish new versions of the stable release
+(`1.0.1`) and null-safe prerelease (`2.0.0-nullsafety.1`).
+
 Once null safety is available in a stable release of the Dart SDK,
 we encourage you to publish a stable version of your null-safe package.
 
