@@ -3570,6 +3570,8 @@ void main() {
 
 You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.
+static method can be invoked without the need for creating an instance of a class.
+static method can access static data member and can change the value of it.
 
 
 ## Generics
