@@ -9,7 +9,7 @@ logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
 Dart is a client-optimized language for fast apps on any platform. Our goal is
 to offer the most productive programming language for multi-platform
 development, paired with a [flexible execution runtime
-platform](https://dart.dev/platforms) for app frameworks across Google.
+platform](https://dart.dev/platforms) for app frameworks.
 
 Languages are defined by their "technical envelope": the many choices that are
 made during development that shape their capabilities and strengths. Dart is
@@ -25,7 +25,7 @@ developer tasks like formatting, analyzing, and testing code.
 ## Dart: The Language
 
 The Dart language is type safe: it uses static type checking to ensure that a
-variable’s value always matches the variable’s static type, sometimes referred
+variable’s value _always_ matches the variable’s static type, sometimes referred
 to as sound typing. Although types are mandatory, type annotations are optional
 because of type inference. The Dart typing system is also flexible, allowing the
 use of a 'dynamic' type combined with runtime checks, which can be useful during
@@ -40,7 +40,7 @@ code in the debugger, you’ll see that non-nullability is retained at runtime
 (hence "sound" null safety).
 
 This code sample showcases a number of Dart language features: libraries, async
-calls, nullable and non-nullable types, arrow syntax, generators, streams and
+calls, nullable and non-nullable types, arrow syntax, generators, streams, and
 getters. A more comprehensive set of annotated language examples can be found in
 [Dart by Example](http://jpryan.me/dartbyexample/) by
 [@jryanio](https://twitter.com/jryanio).
@@ -57,7 +57,7 @@ main() async {
 }
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch: 100000}) async* {
-  var total = 0;
+  var total = 0; // inferred to be of type int
   var count = 0;
   while (true) {
     final points = generateRandom().take(batch);
@@ -89,9 +89,9 @@ class Point {
 ```
 
 [This sample can be run
-live](https://nullsafety.dartpad.dev/b2e3a914bd39d0408d0580c42ef2e58b) using
-[DartPad](https://dartpad.dev), our online execution environment for Dart. For
-more on the language, take the [Dart language
+live](https://dartpad.dev/b2e3a914bd39d0408d0580c42ef2e58b?null_safety=true)
+using [DartPad](https://dartpad.dev), our online execution environment for Dart.
+For more on the language, take the [Dart language
 tour](https://dart.dev/guides/language/language-tour).
 
 ## Dart: The Libraries
@@ -152,7 +152,7 @@ Dart's compiler technology lets you run code in different ways:
 illustration of the targets supported by Dart">
 
 In addition, [Flutter](https://flutter.dev) provides tooling and UI libraries to
-build UI that runs on iOS, Android, macOS, Windows and Linux.
+build UI that runs on iOS, Android, macOS, Windows, and Linux.
 
 ## Learning Dart
 
