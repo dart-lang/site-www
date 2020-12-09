@@ -3537,7 +3537,8 @@ Static variables aren’t initialized until they’re used.
 #### Static methods
 
 Static methods (class methods) do not operate on an instance, and thus
-do not have access to `this`. For example:
+do not have access to `this`. Static method can be invoked directly on a class, and can access static data member.
+For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_method.dart"?>
 ```dart
@@ -3570,8 +3571,6 @@ void main() {
 
 You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.
-static method can be invoked without the need for creating an instance of a class.
-static method can access static data member and can change the value of it.
 
 
 ## Generics
