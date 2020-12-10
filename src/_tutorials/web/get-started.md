@@ -72,7 +72,6 @@ To create a web app from the command line, use these commands:
 
 ```terminal
 $ dart create -t web-simple quickstart
-$ cd quickstart
 ```
 
 <i class="material-icons">web</i>
@@ -86,6 +85,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 ```terminal
+$ cd quickstart
 $ webdev serve
 ```
 
