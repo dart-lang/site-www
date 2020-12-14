@@ -1,6 +1,6 @@
 ---
 title: Dart team packages
-description: The Dart team publishes package under the verified publishers dart.dev, tools.dart.dev, and labs.dart.dev.
+description: The Dart team publishes packages under the verified publishers dart.dev, tools.dart.dev, and labs.dart.dev.
 toc: false
 ---
 
