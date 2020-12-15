@@ -1,6 +1,6 @@
 ---
-title: pub run
-description: Use pub run to run a Dart script in your package.
+title: dart pub run
+description: Use dart pub run to run a Dart script in your package.
 ---
 
 _Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
