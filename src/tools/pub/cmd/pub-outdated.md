@@ -1,62 +1,62 @@
 ---
-title: pub outdated
-description: Use pub outdated to help you update your package dependencies.
+title: dart pub outdated
+description: Use dart pub outdated to help you update your package dependencies.
 diff2html: true
 ---
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub outdated [options]
+$ dart pub outdated [options]
 {% endprettify %}
 
-Use `pub outdated` to identify out-of-date [package dependencies][]
+Use `dart pub outdated` to identify out-of-date [package dependencies][]
 and get advice on how to update them.
 [Best practices for dependency management][best practices]
 include using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
 {{site.alert.version-note}}
-  The `pub outdated` command was introduced in Dart 2.8.
+  The `dart pub outdated` command was introduced in Dart 2.8.
 {{site.alert.end}}
 
 ## Overview
 
-Here's how you can use `pub outdated` to help you
+Here's how you can use `dart pub outdated` to help you
 update the dependencies of a package that you own
 (whether it's an app or library package):
 
 1. If your package doesn't have a `pubspec.lock` file
    checked into source control,
-   **run `pub get`** in the top directory of the package —
+   **run `dart pub get`** in the top directory of the package —
    the directory that contains your package's
   [`pubspec.yaml`](/tools/pub/pubspec) file.
-1. **Run `pub outdated`**
+2. **Run `dart pub outdated`**
    to identify which package dependencies are out-of-date.
    Note the affected packages,
    so that later you can test the behavior of code that uses them.
-1. Follow the recommendations of `pub outdated` for updating the packages.
-   Some updates might require only running `pub upgrade`.
-   Others might require updating `pubspec.yaml` before running `pub upgrade`.
-1. **Run `pub outdated`** to confirm that you're using
+3. Follow the recommendations of `dart pub outdated` for updating the packages.
+   Some updates might require only running `dart pub upgrade`.
+   Others might require updating `pubspec.yaml` before running `dart pub upgrade`.
+4. **Run `dart pub outdated`** to confirm that you're using
    the latest compatible package versions.
 1. **Test** your package to confirm that it still works as expected.
 
 You might still have out-of-date dependencies due to
 [transitive dependencies][].
 If you want to determine the cause,
-try running [`pub deps`][] and searching the output for
+try running [`dart pub deps`][] and searching the output for
 the name of each out-of-date package.
 
 
 ## Example
 
-Here's an example of running `pub outdated` on
+Here's an example of running `dart pub outdated` on
 an example that has several out-of-date dependencies.
 Three of the dependencies (`args`, `http`, and `path`) are direct,
 and one is transitive (`meta`).
 As the following example shows,
-`pub outdated` colorizes the output by default
+`dart pub outdated` colorizes the output by default
 when you run it on the command line.
 
 {% include_relative _pub-outdated-output.html %}
@@ -81,10 +81,10 @@ considering all the other dependencies.
 
 To fix the first dependency (`args`),
 which is listed as upgradable,
-you just need to run `pub upgrade`:
+you just need to run `dart pub upgrade`:
 
 ```terminal
-$ pub upgrade
+$ dart pub upgrade
 Resolving dependencies... 
 > args 1.6.0 (was 1.4.4)
   ...
@@ -108,17 +108,17 @@ Here's the diff for `pubspec.yaml`:
 +  http: ^0.12.1
 ```
 
-After editing `pubspec.yaml`, you run `pub upgrade` to
+After editing `pubspec.yaml`, you run `dart pub upgrade` to
 update the `pubspec.lock` file.
-You can then run `pub outdated` to confirm that
+You can then run `dart pub outdated` to confirm that
 you've made all necessary changes.
 In this example, the `path` and `meta` packages are still out-of-date,
 due to reasons that this package doesn't control:
 
 ```terminal
-$ pub upgrade
+$ dart pub upgrade
 ...
-$ pub outdated
+$ dart pub outdated
 Dependencies  Current  Upgradable  Resolvable  Latest  
 path          1.6.2    1.6.2       1.6.2       1.7.0   
 
@@ -133,11 +133,11 @@ Dependencies are all on the latest resolvable versions.
 Newer versions, while available, are not mutually compatible.
 ```
 
-To see why these packages are out-of-date, you can run `pub deps`
+To see why these packages are out-of-date, you can run `dart pub deps`
 and look for dependencies on these packages:
 
 ```terminal
-$ pub deps -s list
+$ dart pub deps -s list
 ...
 dependencies:
 ...
@@ -161,7 +161,7 @@ it should be possible to update this package.
 
 ## Output columns
 
-The output of `pub outdated` has four columns of version information
+The output of `dart pub outdated` has four columns of version information
 for each out-of-date dependency.
 Here is the part of the [example](#example) output
 that shows the four version columns:
@@ -176,13 +176,13 @@ Current
 
 Upgradable
 : The latest version allowed by your `pubspec.yaml` file.
-  This is the version that `pub upgrade` resolves to.
+  This is the version that `dart pub upgrade` resolves to.
   The value is `-` if the value in the **Current** column is `-`.
 
 Resolvable
 : The latest version that can be resolved,
   when combined with all other dependencies.
-  This version corresponds to what `pub upgrade` gives you
+  This version corresponds to what `dart pub upgrade` gives you
   if all version constraints in `pubspec.yaml` are unbounded.
   A value of `-` means that the package won't be needed.
 
@@ -246,7 +246,7 @@ See [Troubleshooting Pub](/tools/pub/troubleshoot).
 [package dependencies]: /tools/pub/dependencies
 [`http`]: {{site.pub-pkg}}/http
 [using http]: /guides/language/analysis-options#default-google-rules-http
-[`pub deps`]: /tools/pub/cmd/pub-deps
+[`dart pub deps`]: /tools/pub/cmd/pub-deps
 [`pub get`]: /tools/pub/cmd/pub-get
 [`pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [transitive dependencies]: /tools/pub/glossary#transitive-dependency

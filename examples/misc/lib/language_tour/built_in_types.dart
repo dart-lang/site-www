@@ -87,9 +87,19 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion trailing-commas
+    var list = [
+      'Car',
+      'Boat',
+      'Plane',
+    ];
+    // #enddocregion trailing-commas
+  }
+
+  {
     // #docregion const-list
     var constantList = const [1, 2, 3];
-    // constantList[1] = 1; // Uncommenting this causes an error.
+    // constantList[1] = 1; // This line will cause an error.
     // #enddocregion const-list
   }
 
@@ -120,7 +130,7 @@ void miscDeclAnalyzedButNotTested() {
       'iodine',
       'astatine',
     };
-    // constantSet.add('helium'); // Uncommenting this causes an error.
+    // constantSet.add('helium'); // This line will cause an error.
     // #enddocregion const-set
   }
 
@@ -170,7 +180,7 @@ void miscDeclAnalyzedButNotTested() {
       18: 'argon',
     };
 
-    // constantMap[2] = 'Helium'; // Uncommenting this causes an error.
+    // constantMap[2] = 'Helium'; // This line will cause an error.
     // #enddocregion const-map
   }
 }
