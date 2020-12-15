@@ -29,9 +29,6 @@ For an informal look at the experience of using the migration tool, watch this v
 
 [null safety]: /null-safety
 
-![Screenshot of migration tool](/null-safety/migration-tool.png)
-_The interactive migration tool can simplify migration to null safety._
-
 
 ## 1. Wait to migrate {#step1-wait}
 
