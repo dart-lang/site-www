@@ -150,11 +150,12 @@ To test or run mixed-version code,
 you need to disable sound null safety.
 You can do this in two ways:
 
-* Disable sound null safety using the `--no-sound-null-safety` flag.
-  Example:
+* Disable sound null safety using the `--no-sound-null-safety` flag
+  to the `dart` or `flutter` command:
 
   ```terminal
   $ dart --no-sound-null-safety run
+  $ flutter run --no-sound-null-safety
   ```
 
 * Alternatively, set the language version in the entrypoint —
