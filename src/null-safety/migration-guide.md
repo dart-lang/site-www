@@ -23,6 +23,10 @@ Here are the basic steps for migrating each package that you own:
   and all your dependencies are ready.
 {{ site.alert.end }}
 
+For an informal look at the experience of using the migration tool, watch this video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eBr5tlumwlg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 [null safety]: /null-safety
 
 ![Screenshot of migration tool](/null-safety/migration-tool.png)
