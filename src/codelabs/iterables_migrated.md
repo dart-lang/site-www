@@ -8,7 +8,8 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 <style>
 {% comment %}
 TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
+Code converted to null safety: https://github.com/dart-lang/site-www/pull/2805
+{% endcomment %}
 iframe[src^="https://dartpad"] {
   border: 1px solid #ccc;
   margin-bottom: 1rem;
@@ -84,7 +85,7 @@ by using the map's `entries` or `values` property.
 This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
-<?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
@@ -96,7 +97,7 @@ you can't guarantee that reading elements by index will be efficient.
 For example, consider the following code, which is **invalid**:
 
 {:.bad}
-<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
@@ -111,7 +112,7 @@ You can instead read elements with `elementAt()`,
 which steps through the elements of the iterable until
 it reaches that position.
 
-<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
@@ -130,7 +131,7 @@ using a `for-in` loop.
 The following example shows you how to read elements using  a `for-in` loop.
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:ga_id-for_in_loop
+```dart:run-dartpad:ga_id-for_in_loop:null_safety-true
 void main() {
   var iterable = ['Salad', 'Popcorn', 'Toast'];
   for (var element in iterable) {
@@ -178,7 +179,7 @@ but you can use the `last` property.
 {{site.alert.end}}
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:ga_id-first_and_last
+```dart:run-dartpad:ga_id-first_and_last:null_safety-true
 void main() {
   Iterable iterable = ['Salad', 'Popcorn', 'Toast'];
   print('The first element is ${iterable.first}');
@@ -202,7 +203,7 @@ This method requires you to pass a _predicate_,
 which is a function that returns true if
 the input satisfies a certain condition.
 
-<?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (firstwhere)"?>
 {% prettify dart tag=pre+code %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
@@ -216,7 +217,7 @@ Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:height-565px:ga_id-using_firstwhere
+```dart:run-dartpad:height-565px:ga_id-using_firstwhere:null_safety-true
 bool predicate(String element) {
   return element.length > 5;
 }
@@ -319,14 +320,14 @@ satisfies the following conditions:
 All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
-```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
+```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate:null_safety-true
 {$ begin main.dart $}
 // Implement the predicate of singleWhere
 // with the following conditions
 // * The element contains the character `'a'`
 // * The element starts with the character `'M'`
 String singleWhere(Iterable<String> items) {
-  return items.singleWhere(/* Implement predicate */);
+  return items.singleWhere(TODO('Implement predicate'));
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
@@ -352,11 +353,6 @@ void main() {
     final str = singleWhere(items);
     if (str == 'Mozzarella') {
       _result(true);
-    } else if (str == null) {
-      _result(false, [
-        'Tried calling singleWhere, but received a \'null\' value, the result '
-            'should be a non-null String'
-      ]);
     } else {
       _result(false, [
         'Tried calling singleWhere, but received $str instead of the expected '
@@ -369,6 +365,11 @@ void main() {
           'singleWhere will fail if 0 or many elements match the '
           'predicate'
     ]);
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `singleWhere`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried calling singleWhere, but received an exception: $e'
@@ -389,7 +390,7 @@ all of the elements of a collection satisfy some condition.
 You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
-<?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-bad)"?>
 {% prettify dart tag=pre+code %}
 for (var item in items) {
   if (item.length < 5) {
@@ -401,7 +402,7 @@ return true;
 
 However, you can accomplish the same using the `every()` method:
 
-<?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-good)"?>
 {% prettify dart tag=pre+code %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
@@ -420,7 +421,7 @@ you can use to verify conditions:
 Run this exercise to see them in action.
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:height-255px:ga_id-using_any_and_every
+```dart:run-dartpad:height-255px:ga_id-using_any_and_every:null_safety-true
 void main() {
   var items = ['Salad', 'Popcorn', 'Toast'];
   
@@ -442,7 +443,7 @@ have a length equal to or greater than 5.
 After running the code, try changing the predicate of `any()` so
 it returns false:
 
-<?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (any-false)"?>
 {% prettify dart tag=pre+code %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
@@ -469,14 +470,14 @@ Use `any()` and `every()` to implement two functions:
 * Part 2: Implement `everyUserOver13()`.
   * Return `true` if all users are 14 or older.
 
-```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
+```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable:null_safety-true
 {$ begin main.dart $}
 bool anyUserUnder18(Iterable<User> users) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 bool everyUserOver13(Iterable<User> users) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 class User {
@@ -519,17 +520,15 @@ var users = [
 void main() {
   try {
     var out = anyUserUnder18(users);
-    if (out == null) {
-      _result(false, [
-        'Tried running `anyUserUnder18`, but received a null value. '
-            'Did you implement the method?'
-      ]);
-      return;
-    }
     if (!out) {
       _result(false, ['Looks like `anyUserUnder18` is wrong. Keep trying!']);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `anyUserUnder18`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false,
         ['Tried running `anyUserUnder18`, but received an exception: $e']);
@@ -545,6 +544,11 @@ void main() {
       ]);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `anyUserUnder18`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `anyUserUnder18([User("Alice", 21)])`, but received an exception: $e'
@@ -554,19 +558,17 @@ void main() {
 
   try {
     var out = everyUserOver13(users);
-    if (out == null) {
-      _result(false, [
-        'Tried running `everyUserOver13`, but received a null value. '
-            'Did you implement the method?'
-      ]);
-      return;
-    }
     if (!out) {
       _result(false, [
         'Looks like `everyUserOver13` is wrong. There are no users under 13!'
       ]);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `everyUserOver13`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `everyUserOver13`, but received an exception: $e'
@@ -582,6 +584,11 @@ void main() {
       ]);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `everyUserOver13`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `everyUserOver13([User(\'Dan\', 12)])`, but received an exception: $e'
@@ -617,7 +624,7 @@ But what if you want to find all the elements that
 satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
-<?code-excerpt "iterables/test/iterables_test.dart (where)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
@@ -632,7 +639,7 @@ apply other `Iterable` methods.
 In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
-<?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
@@ -646,7 +653,7 @@ Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:height-380px:ga_id-using_where
+```dart:run-dartpad:height-380px:ga_id-using_where:null_safety-true
 main() {
   var evenNumbers = [1, -2, 3, 42].where((number) => number.isEven);
 
@@ -689,7 +696,7 @@ Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:ga_id-using_takewhile
+```dart:run-dartpad:ga_id-using_takewhile:null_safety-true
 main() {
   var numbers = [1, 3, -2, 0, 4, 5];
 
@@ -712,7 +719,7 @@ After running the example,
 change `takeWhile()` to take elements until
 it reaches the first negative number.
 
-<?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart tag=pre+code %}
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
@@ -733,14 +740,14 @@ Use `where()` to implement two functions:
   * Return an `Iterable` containing all users with
     names of length 3 or less.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
+```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list:null_safety-true
 {$ begin main.dart $}
 Iterable<User> filterUnder21(Iterable<User> users) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 Iterable<User> findShortNamed(Iterable<User> users) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 class User {
@@ -787,6 +794,11 @@ void main() {
       _result(false, ['Looks like `filterUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `filterUnder21`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `filterUnder21`, but received an exception: ${e.runtimeType}'
@@ -800,6 +812,11 @@ void main() {
       _result(false, ['Looks like `findShortNamed` is wrong, there are exactly two users with a three letter name. Keep trying!']);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `findShortNamed`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `findShortNamed`, but received an exception: ${e.runtimeType}'
@@ -830,7 +847,7 @@ Mapping `Iterables` with the method `map()` enables you to
 apply a function over each of the elements,
 replacing each element with a new one.
 
-<?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-int)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
@@ -841,7 +858,7 @@ You can also use `map()` to transform an element into a different object —
 for example, to convert all `int` to `String`,
 as you can see in the following example.
 
-<?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
+<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-string)"?>
 {% prettify dart tag=pre+code %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}
@@ -858,7 +875,7 @@ multiply all the elements of an `Iterable` by 2.
 What do you think the output will be?
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
-```dart:run-dartpad:ga_id-using_map
+```dart:run-dartpad:ga_id-using_map:null_safety-true
 main() {
   var numbersByTwo = [1, -2, 3, 42].map((number) => number * 2);
   print('Numbers: $numbersByTwo.');
@@ -878,10 +895,10 @@ contains strings containing user name and age.
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
-```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
+```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type:null_safety-true
 {$ begin main.dart $}
 Iterable<String> getNameAndAges(Iterable<User> users) {
-  // implement this method
+  TODO('Implement this method');
 }
 
 class User {
@@ -919,30 +936,26 @@ var users = [
 void main() {
   try {
     final out = getNameAndAges(users).toList();
-    if (out == null) {
-      _result(false, [
-        'Tried running `getNameAndAges`, but received a null value. Did you implement the method?'
-      ]);
-      return;
-    }
     if (!_listEquals(out, ['Alice is 21', 'Bob is 17', 'Claire is 52'])) {
       _result(false, ['Looks like `getNameAndAges` is wrong. Keep trying! The output was $out']);
       return;
     }
     _result(true);
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `getNameAndAges`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, ['Tried running the method, but received an exception: $e']);
   }
 }
 
-bool _listEquals<T>(List<T> a, List<T> b) {
-  if (a == null)
-    return b == null;
-  if (b == null || a.length != b.length)
-    return false;
+bool _listEquals<T>(List<T>? a, List<T>? b) {
+  if (a == null) return b == null;
+  if (b == null || a.length != b.length) return false;
   for (int index = 0; index < a.length; index += 1) {
-    if (a[index] != b[index])
-      return false;
+    if (a[index] != b[index]) return false;
   }
   return true;
 }
@@ -1001,18 +1014,18 @@ Part 3: Implement `validEmailAddresses()`.
 - Use the provided function `isValidEmailAddress()` to evaluate whether
   an `EmailAddress` is valid.
 
-```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
+```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together:null_safety-true
 {$ begin main.dart $}
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 bool anyInvalidEmailAddress(Iterable<EmailAddress> emails) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
-  // Implement this method
+  TODO('Implement this method');
 }
 
 class EmailAddress {
@@ -1084,12 +1097,6 @@ void main() {
   Iterable<EmailAddress> emails;
   try {
     emails = parseEmailAddresses(input);
-    if (emails == null) {
-      _result(false, [
-        'Tried running `parseEmailAddresses`, but received a null value. Did you implement the method?'
-      ]);
-      return;
-    }
     if (emails.isEmpty) {
       _result(false, [
         'Tried running `parseEmailAddresses`, but received an empty list.'
@@ -1104,6 +1111,11 @@ void main() {
       _result(false, ['Looks like `parseEmailAddresses` is wrong. Keep trying!']);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `parseEmailAddresses`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `parseEmailAddresses`, but received an exception: $e'
@@ -1113,18 +1125,17 @@ void main() {
 
   try {
     final out = anyInvalidEmailAddress(emails);
-    if (out == null) {
-      _result(false, [
-        'Tried running `anyInvalidEmailAddress`, but received a null value. Did you implement the method?'
-      ]);
-      return;
-    }
     if (!out) {
       _result(false, [
         'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! There is at least one invalid address.'
       ]);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `anyInvalidEmailAddress`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running `anyInvalidEmailAddress`, but received an exception: $e'
@@ -1134,12 +1145,6 @@ void main() {
 
   try {
     final valid = validEmailAddresses(emails);
-    if (valid == null) {
-      _result(false, [
-        'Tried running `validEmailAddresses`, but received a null value. Did you implement the method?'
-      ]);
-      return;
-    }
     if (emails.isEmpty) {
       _result(false, [
         'Tried running `validEmailAddresses`, but received an empty list.'
@@ -1153,6 +1158,11 @@ void main() {
       _result(false, ['Looks like `validEmailAddresses` is wrong. Keep trying!']);
       return;
     }
+  } on UnimplementedError {
+    _result(false, [
+      'Tried running `validEmailAddresses`, but received an error. Did you implement the method?'
+    ]);
+    return;
   } catch (e) {
     _result(false, [
       'Tried running the `validEmailAddresses`, but received an exception: $e'
@@ -1163,7 +1173,7 @@ void main() {
   _result(true);
 }
 
-bool _listEquals<T>(List<T> a, List<T> b) {
+bool _listEquals<T>(List<T>? a, List<T>? b) {
   if (a == null) return b == null;
   if (b == null || a.length != b.length) return false;
   for (int index = 0; index < a.length; index += 1) {
