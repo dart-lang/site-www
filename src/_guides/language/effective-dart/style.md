@@ -279,10 +279,10 @@ Dart uses a leading underscore in an identifier to mark members and top-level
 declarations as private. This trains users to associate a leading underscore
 with one of those kinds of declarations. They see "_" and think "private".
 
-There is no concept of "private" for local variables, parameters, or library
-prefixes. When one of those has a name that starts with an underscore, it sends
-a confusing signal to the reader. To avoid that, don't use leading underscores
-in those names.
+There is no concept of "private" for local variables, parameters, local
+functions, or library prefixes. When one of those has a name that starts with an
+underscore, it sends a confusing signal to the reader. To avoid that, don't use
+leading underscores in those names.
 
 **Exception:** An unused parameter can be named `_`, `__`, `___`, etc. This
 happens in things like callbacks where you are passed a value but you don't need
