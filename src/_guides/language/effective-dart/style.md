@@ -284,7 +284,7 @@ underscores to avoid name collisions: `__`, `___`, etc.
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (unused-callback-params)"?>
 {% prettify dart tag=pre+code %}
 futureOfVoid.then((_) {
-  print("Operation complete.");
+  print('Operation complete.');
 });
 {% endprettify %}
 
