@@ -275,9 +275,10 @@ ID iD;
 
 ### PREFER using `_`, `__`, etc. for unused callback parameters.
 
-Sometimes a callback you give to an API is passed an argument that you don't use
-in the body of the function. In that case, it is idiomatic to name the unused
-parameter `_`. If there are multiple unused parameters, use additional
+Sometimes the type signature of a callback function requires a parameter,
+but the callback implementation doesn't _use_ the parameter.
+In this case, it's idiomatic to name the unused parameter `_`.
+If the function has multiple unused parameters, use additional
 underscores to avoid name collisions: `__`, `___`, etc.
 
 {:.good}
