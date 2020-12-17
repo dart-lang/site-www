@@ -166,7 +166,7 @@ paragraph. If more than a single sentence of explanation is useful, put the
 rest in later paragraphs.
 
 This helps you write a tight first sentence that summarizes the documentation.
-Also, tools like Dartdoc use the first paragraph as a short summary in places
+Also, tools like dartdoc use the first paragraph as a short summary in places
 like lists of classes and members.
 
 {:.good}
@@ -257,8 +257,10 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-Avoid having a doc comment on both the setter and the getter, as DartDoc will show
-only one (the one on the getter.)
+If a property has both a getter and a setter, then create a doc comment for
+only one of them. Dartdoc treats the getter and setter like a single field,
+and if both the getter and the setter have doc comments, then
+dartdoc discards the setter's doc comment.
 
 ### PREFER starting library or type comments with noun phrases.
 
@@ -519,4 +521,3 @@ class Box {
   bool get hasValue => _value != null;
 }
 {% endprettify %}
-
