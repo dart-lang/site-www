@@ -288,12 +288,12 @@ futureOfVoid.then((_) {
 });
 {% endprettify %}
 
-This guideline is only for *anonymous and local functions* since those are
-usually immediately passed to some other API whose expected function type makes
-it clear what the unused parameter represents. Top-level functions and method
-declarations don't have that context, so should name their parameters. This way,
-someone reading the code knows what that parameter is for, even if not actually
-used.
+This guideline is only for functions that are both *anonymous and local*.
+These functions are usually used immediately in a context where it's
+clear what the unused parameter represents.
+In contrast, top-level functions and method declarations don't have that context,
+so their parameters must be named so that it's clear what each parameter is for,
+even if it isn't used.
 
 
 ### DON'T use a leading underscore for identifiers that aren't private.
