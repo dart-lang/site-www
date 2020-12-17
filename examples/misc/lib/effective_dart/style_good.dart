@@ -109,7 +109,7 @@ unusedCallbackParams() {
   var futureOfVoid = Future<void>.value();
   // #docregion unused-callback-params
   futureOfVoid.then((_) {
-    print("Operation complete.");
+    print('Operation complete.');
   });
   // #enddocregion unused-callback-params
 }
