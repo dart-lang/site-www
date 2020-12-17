@@ -63,7 +63,7 @@ class C<ChunkBuilder, Flag, LineWriter> {
 }
 
 class Component {
-  const Component({String selector});
+  const Component({String selector = ''});
 }
 
 // #docregion doc-before-meta
