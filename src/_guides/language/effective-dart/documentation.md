@@ -257,10 +257,10 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-When you have a corresponding getter and setter with the same name, document
-only one of them. Dartdoc will merge them together and document them as if they
-are a single field. When it does that, if both the getter and setter have doc
-comments, it discards the setter's.
+If a property has both a getter and a setter, then create a doc comment for
+only one of them. Dartdoc treats the getter and setter like a single field,
+and if both the getter and the setter have doc comments, then
+dartdoc discards the setter's doc comments.
 
 ### PREFER starting library or type comments with noun phrases.
 
@@ -521,4 +521,3 @@ class Box {
   bool get hasValue => _value != null;
 }
 {% endprettify %}
-
