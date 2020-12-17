@@ -260,7 +260,7 @@ int get checkedCount => ...
 If a property has both a getter and a setter, then create a doc comment for
 only one of them. Dartdoc treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
-dartdoc discards the setter's doc comments.
+dartdoc discards the setter's doc comment.
 
 ### PREFER starting library or type comments with noun phrases.
 
