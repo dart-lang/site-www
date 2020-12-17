@@ -9,7 +9,8 @@ typedef Func1<S, T> = S Function(T _);
 Func0<Future> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
-Func1<bool, dynamic> canHandle = (_) => false, verifyResult = (_) => false;
+Func1<bool, dynamic> canHandle = (_) => false,
+    verifyResult = (_) => false;
 
 void miscDeclAnalyzedButNotTested() {
   {
@@ -333,7 +334,11 @@ class Treasure {
 }
 
 class C {
-  double left = 0.0, right = 0.0, top = 0.0, bottom = 0.0, minTime = 0.0;
+  double left = 0.0,
+      right = 0.0,
+      top = 0.0,
+      bottom = 0.0,
+      minTime = 0.0;
   Point center = Point(0.0, 0.0);
   Map<Chest, Treasure> _opened = {};
 
