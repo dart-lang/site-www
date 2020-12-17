@@ -244,8 +244,8 @@ to tell if it's referring to HTTPS FTP or HTTP SFTP.
 
 To avoid this, acronyms and abbreviations are capitalized like regular words.
 
-**Exception:** Two-letter *acronyms* like IO (input/output) are fully 
-capitalized: `IO`. On the other hand, two-letter *abbreviations* like 
+**Exception:** Two-letter *acronyms* like IO (input/output) are fully
+capitalized: `IO`. On the other hand, two-letter *abbreviations* like
 ID (identification) are still capitalized like regular words: `Id`.
 
 {:.good}
@@ -273,6 +273,30 @@ ID iD;
 {% endprettify %}
 
 
+### PREFER using `_`, `__`, etc. for unused callback parameters.
+
+Sometimes the type signature of a callback function requires a parameter,
+but the callback implementation doesn't _use_ the parameter.
+In this case, it's idiomatic to name the unused parameter `_`.
+If the function has multiple unused parameters, use additional
+underscores to avoid name collisions: `__`, `___`, etc.
+
+{:.good}
+<?code-excerpt "misc/lib/effective_dart/style_good.dart (unused-callback-params)"?>
+{% prettify dart tag=pre+code %}
+futureOfVoid.then((_) {
+  print('Operation complete.');
+});
+{% endprettify %}
+
+This guideline is only for functions that are both *anonymous and local*.
+These functions are usually used immediately in a context where it's
+clear what the unused parameter represents.
+In contrast, top-level functions and method declarations don't have that context,
+so their parameters must be named so that it's clear what each parameter is for,
+even if it isn't used.
+
+
 ### DON'T use a leading underscore for identifiers that aren't private.
 
 Dart uses a leading underscore in an identifier to mark members and top-level
@@ -283,11 +307,6 @@ There is no concept of "private" for local variables, parameters, local
 functions, or library prefixes. When one of those has a name that starts with an
 underscore, it sends a confusing signal to the reader. To avoid that, don't use
 leading underscores in those names.
-
-**Exception:** An unused parameter can be named `_`, `__`, `___`, etc. This
-happens in things like callbacks where you are passed a value but you don't need
-to use it. Giving it a name that consists *solely* of underscores is the
-idiomatic way to indicate the value isn't used.
 
 
 ### DON'T use prefix letters.
