@@ -221,11 +221,15 @@ In this case, you should use the bang operator (`!`) to cast the value back to
 V:
 
 ```dart
-if (blockTypes.containsKey(key)) {
-  return blockTypes[key]!; // blockTypes[key] is non-nullable
-} else {
-  throw ArgumentError('Could not read block type.');
-}
+return blockTypes[key]!;
+```
+
+Which will throw if the map returns null. If you want explicit handling for that case:
+
+```dart
+var result = blockTypes[key];
+if (result != null) return result;
+// Handle the null case here, e.g. throw with explanation.
 ```
 
 ## Why is the generic type on my List/Map nullable?
