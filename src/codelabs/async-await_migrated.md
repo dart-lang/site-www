@@ -3,7 +3,6 @@ title: "Asynchronous programming: futures, async, await"
 description: Learn about and practice writing asynchronous code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-{% assign useIframe = false -%}
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 <style>
@@ -61,18 +60,8 @@ The following example shows the wrong way to use an asynchronous function
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=5c8c7716b6b4284842f15fe079f61e47&ga_id=incorrect_usage"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="420"
-  width="100%" >
-</iframe>
-{% else -%}
-
-<?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px:ga_id-incorrect_usage
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
+```dart:run-dartpad:height-380px:ga_id-incorrect_usage:null_safety-true
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -91,7 +80,6 @@ void main() {
   print(createOrderMessage());
 }
 ```
-{% endif -%}
 
 Here's why the example fails to print the value that `fetchUserOrder()` eventually
 produces:
@@ -168,18 +156,8 @@ printing to the console. Because it doesn't return a usable value,
 `fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=57e6085344cbd1719ed42b32f8ad1bce&ga_id=introducting_futures"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="300"
-  width="100%" >
-</iframe>
-{% else -%}
-
-<?code-excerpt "async_await/bin/futures_intro.dart"?>
-```dart:run-dartpad:height-300px:ga_id-introducting_futures
+<?code-excerpt "../null_safety_examples/async_await/bin/futures_intro.dart"?>
+```dart:run-dartpad:height-300px:ga_id-introducting_futures:null_safety-true
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
@@ -190,7 +168,6 @@ void main() {
   print('Fetching user order...');
 }
 ```
-{% endif -%}
 
 In the preceding example, even though `fetchUserOrder()` executes before
 the `print()` call on line 8, the console shows the output from line 8
@@ -202,18 +179,8 @@ This is because `fetchUserOrder()` delays before it prints "Large Latte".
 Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=d843061bbd9388b837c57613dc6d5125&ga_id=completing_with_error"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
-  frameborder="no"
-  height="275"
-  width="100%" >
-</iframe>
-{% else -%}
-
-<?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px:ga_id-completing_with_error
+<?code-excerpt "../null_safety_examples/async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
+```dart:run-dartpad:height-300px:ga_id-completing_with_error:null_safety-true
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
   return Future.delayed(Duration(seconds: 2),
@@ -225,7 +192,6 @@ void main() {
   print('Fetching user order...');
 }
 ```
-{% endif -%}
 
 In this example, `fetchUserOrder()` completes with an error indicating that the
 user ID is invalid.
@@ -266,7 +232,7 @@ function.
 
 First, add the `async` keyword before the function body:
 
-<?code-excerpt "async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
 {% prettify dart tag=pre+code %}
 void main() [!async!] { ··· }
 {% endprettify %}
@@ -276,7 +242,7 @@ If the function has a declared return type, then update the type to be
 If the function doesn't explicitly return a value, then the return type is
 `Future<void>`:
 
-<?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
 {% prettify dart tag=pre+code %}
 [!Future<void>!] main() async { ··· }
 {% endprettify %}
@@ -284,7 +250,7 @@ If the function doesn't explicitly return a value, then the return type is
 Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 
-<?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 print([!await!] createOrderMessage());
 {% endprettify %}
@@ -299,7 +265,7 @@ your window is wide enough — is to the right of the synchronous example.
 <div class="col-sm" markdown="1">
 #### Example: synchronous functions
 
-<?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
 ```dart
 String createOrderMessage() {
   var order = fetchUserOrder();
@@ -329,7 +295,7 @@ Your order is: Instance of _Future<String>
 <div class="col-sm" markdown="1">
 #### Example: asynchronous functions
 
-<?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
 {% prettify dart tag=pre+code %}
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
@@ -393,18 +359,8 @@ synchronous code before the first `await` keyword executes immediately.
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=d7abfdea1ae5596e96c7c0203d975dba&ga_id=execution_within_async_function"
-  style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
-  frameborder="no"
-  height="600"
-  width="100%">
-</iframe>
-{% else -%}
-
-<?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
+<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart" remove="/\/\/ print/"?>
+```dart:run-dartpad:height-530px:ga_id-execution_within_async_function:null_safety-true
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -428,11 +384,10 @@ void countSeconds(int s) {
   }
 }
 ```
-{% endif -%}
 
 After running the code in the preceding example, try reversing lines 2 and 3:
 
-<?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
 ```dart
 var order = await fetchUserOrder();
 print('Awaiting user order...');
@@ -484,23 +439,13 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark&ga_id=practice_using"
-  frameborder="no"
-  height="550"
-  width="100%">
-</iframe>
-
-{% else -%}
-
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using:null_safety-true
 {$ begin main.dart $}
 // Part 1
 // You can call the provided async function fetchRole()
 // to return the user role.
 Future<String> reportUserRole() async {
-  // TO DO: Your implementation goes here.
+  TODO('Your implementation goes here.');
 }
 
 // Part 2
@@ -554,7 +499,6 @@ main() async {
         }))
 
       ..add(makeReadable(
-
         testLabel: 'Part 2',
         testResult: await asyncEquals(
           expected: 'Total number of logins: 42',
@@ -578,6 +522,10 @@ main() async {
     } else {
       _result(false, messages);
     }
+  } on UnimplementedError {
+    _result(false, [
+      '$didNotImplement reportUserRole?',
+    ]);
   } catch (e) {
     _result(false, ['Tried to run solution, but received an exception: $e']);
   }
@@ -586,7 +534,11 @@ main() async {
 ////////////////////////////////////////
 ///////////// Test Helpers /////////////
 ////////////////////////////////////////
-String makeReadable({ String testResult, Map readableErrors, String testLabel }) {
+String makeReadable({
+  required String testResult,
+  required Map readableErrors,
+  required String testLabel,
+}) {
   if (readableErrors.containsKey(testResult)) {
     var readable = readableErrors[testResult];
     return '$testLabel $readable';
@@ -598,7 +550,11 @@ String makeReadable({ String testResult, Map readableErrors, String testLabel })
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
-Future<String> asyncEquals({expected, actual, String typoKeyword}) async {
+Future<String> asyncEquals({
+  expected,
+  actual,
+  required String typoKeyword,
+}) async {
   var strActual = actual is String ? actual : actual.toString();
   try {
     if (expected == actual) {
@@ -609,7 +565,7 @@ Future<String> asyncEquals({expected, actual, String typoKeyword}) async {
       return strActual;
     }
   } catch(e) {
-    return e;
+    return e.toString();
   }
 }
 {$ end test.dart $}
@@ -621,7 +577,6 @@ Did you remember to use the await keyword before invoking fetchRole()?
 Remember: reportUserRole() needs to return a future!
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
@@ -631,7 +586,7 @@ Remember: reportUserRole() needs to return a future!
 ## Handling errors
 To handle errors in an `async` function, use try-catch:
 
-<?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
+<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
   var order = await fetchUserOrder();
@@ -649,18 +604,8 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=25ade03f0632878a9169209e3cd7bef2&ga_id=try_catch"
-  style="border: 1px solid lightgrey;"
-  frameborder="no"
-  height="525"
-  width="100%">
-</iframe>
-{% else -%}
-
-<?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px:ga_id-try_catch
+<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart"?>
+```dart:run-dartpad:height-530px:ga_id-try_catch:null_safety-true
 Future<void> printOrderMessage() async {
   try {
     var order = await fetchUserOrder();
@@ -683,7 +628,6 @@ Future<void> main() async {
   await printOrderMessage();
 }
 ```
-{% endif -%}
 
 ### Exercise: Practice handling errors
 
@@ -709,21 +653,13 @@ that does the following:
     [Exceptions]({{site.dart_api}}/stable/dart-core/Exception-class.html) and
     [Errors.]({{site.dart_api}}/stable/dart-core/Error-class.html)
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=858f71f0ad0e70051999bcafa41806a3&theme=dark&ga_id=practice_errors"
-  frameborder="no"
-  height="525"
-  width="100%">
-</iframe>
-
-{% else -%}
 {% comment %}
 PENDING: Any way to auto-include this code?
 {% endcomment %}
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
+```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors:null_safety-true
 {$ begin main.dart $}
 // Implement changeUsername here
+changeUsername() {}
 {$ end main.dart $}
 {$ begin solution.dart $}
 Future<String> changeUsername () async {
@@ -787,7 +723,11 @@ main() async {
 ////////////////////////////////////////
 ///////////// Test Helpers /////////////
 ////////////////////////////////////////
-String makeReadable({ String testResult, Map readableErrors, String testLabel }) {
+String makeReadable({
+  required String testResult,
+  required Map readableErrors,
+  required String testLabel,
+}) {
   if (readableErrors.containsKey(testResult)) {
     var readable = readableErrors[testResult];
     return '$testLabel $readable';
@@ -804,7 +744,7 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable){
     // ignore: omit_local_variable_types
     List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
-        .map((message) => readable[message])
+        .map((message) => readable[message]!)
         .toList();
     print(messages);
 
@@ -844,7 +784,6 @@ Implement changeUsername() to return the string from fetchNewUsername() or
 You'll need a try-catch statement to catch and handle errors.
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 {% comment %}
 TODO: Consider summary section before final exercise
@@ -897,23 +836,13 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the String value returned by calling `logoutUser()`.
 
-{% if useIframe -%}
-<iframe
-  src="{{site.dartpad-embed}}?id=f601d25bc2833c957186e3c6bf71effc&theme=dark&ga_id=putting_it_all_together"
-  frameborder="no"
-  height="550"
-  width="100%">
-</iframe>
-
-{% else -%}
-
 {% comment %}
 PENDING: Any way to auto-include this code?
 {% endcomment %}
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
+```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together:null_safety-true
 {$ begin main.dart $}
 // Part 1
-addHello(){}
+addHello(user){}
 
 // Part 2
 // You can call the provided async function fetchUsername()
@@ -1041,8 +970,12 @@ main() async {
 ////////////////////////////////////////
 ///////////// Test Helpers /////////////
 ////////////////////////////////////////
-String makeReadable({ String testResult, Map readableErrors, String testLabel }) {
-  String readable;
+String makeReadable({
+  required String testResult,
+  required Map<String, String> readableErrors,
+  required String testLabel,
+}) {
+  String? readable;
   if (readableErrors.containsKey(testResult)) {
     readable = readableErrors[testResult];
     return '$testLabel $readable';
@@ -1062,7 +995,7 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable){
     // ignore: omit_local_variable_types
     List<String> userMessages = messages
         .where((message) => readable.containsKey(message))
-        .map((message) => readable[message])
+        .map((message) => readable[message]!)
         .toList();
     print(messages);
 
@@ -1072,7 +1005,11 @@ void passIfNoMessages(List<String> messages, Map<String, String> readable){
 ///////////////////////////////////////
 //////////// Assertions ///////////////
 ///////////////////////////////////////
-Future<String> asyncEquals({expected, actual, String typoKeyword}) async {
+Future<String> asyncEquals({
+  expected,
+  actual,
+  required String typoKeyword,
+}) async {
   var strActual = actual is String ? actual : actual.toString();
   try {
     if (expected == actual) {
@@ -1083,7 +1020,7 @@ Future<String> asyncEquals({expected, actual, String typoKeyword}) async {
       return strActual;
     }
   } catch(e) {
-    return e;
+    return e.toString();
   }
 }
 
@@ -1107,7 +1044,6 @@ The greetUser() and sayGoodbye() functions are asynchronous;
 addHello() isn't.
 {$ end hint.txt $}
 ```
-{% endif -%}
 
 ## What's next?
 
