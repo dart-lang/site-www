@@ -1,12 +1,12 @@
 ---
-title: pub get
-description: Use pub get to retrieve the dependencies used by your Dart application.
+title: dart pub get
+description: Use dart pub get to retrieve the dependencies used by your Dart application.
 ---
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub get [--offline]
+$ dart pub get [--offline]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
@@ -21,7 +21,7 @@ Got dependencies!
 ```
 
 If the [system cache](/tools/pub/glossary#system-cache)
-doesn't already contain the dependencies, `pub get`
+doesn't already contain the dependencies, `dart pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
@@ -34,7 +34,7 @@ For example, if a package depends on `test`:
 import 'package:test/test.dart';
 {% endprettify %}
 
-When `pub get` gets new dependencies, it writes a
+When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
 Application packages should check in the lockfile to source control;
@@ -43,12 +43,12 @@ of all dependencies for all developers and when deployed to production.
 Library packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
-If a lockfile already exists, `pub get` uses the versions of dependencies
+If a lockfile already exists, `dart pub get` uses the versions of dependencies
 locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
 constraints](/tools/pub/glossary#version-constraint).
-This is the primary difference between `pub get` and
-[`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
+This is the primary difference between `dart pub get` and
+[`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
 ## Package resolution
@@ -76,7 +76,7 @@ For more information, see the
 
 ## Getting a new dependency
 
-If a dependency is added to the pubspec and then `pub get` is run,
+If a dependency is added to the pubspec and then `dart pub get` is run,
 it gets the new dependency and any of its transitive dependencies and
 updates the mapping in the `.packages` file.
 However, pub won't change the versions of any already-acquired
@@ -85,7 +85,7 @@ dependencies unless that's necessary to get the new dependency.
 
 ## Removing a dependency
 
-If a dependency is removed from the pubspec and then `pub get` is run,
+If a dependency is removed from the pubspec and then `dart pub get` is run,
 it removes the dependency from the `.packages` file,
 making the dependency unavailable for importing.
 Any transitive dependencies of the removed dependency are also removed,
@@ -114,12 +114,12 @@ environment variable before running pub.
 
 ## Getting while offline
 
-If you don't have network access, you can still run `pub get`.
+If you don't have network access, you can still run `dart pub get`.
 Because pub downloads packages to a central cache shared by all packages
 on your system, it can often find previously downloaded packages
 without needing to use the network.
 
-However, by default, `pub get` tries to go online if you
+However, by default, `dart pub get` tries to go online if you
 have any hosted dependencies,
 so that pub can detect newer versions of dependencies.
 If you don't want pub to do that, pass it the `--offline` flag.
@@ -129,15 +129,15 @@ available.
 
 Keep in mind that pub generates a lockfile. If the
 only version of some dependency in your cache happens to be old,
-offline `pub get` locks your app to that old version.
+offline `dart pub get` locks your app to that old version.
 The next time you are online, you will likely want to
-run [`pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
+run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
 
 ## Options
 
-The `pub get` command supports the `--offline`
-command-line argument, as discussed above.
+The `dart pub get` command supports the `--offline`
+command-line argument, as mentioned above.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
