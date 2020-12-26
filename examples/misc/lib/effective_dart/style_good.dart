@@ -105,6 +105,17 @@ class Dice {
 
 //----------------------------------------------------------------------------
 
+unusedCallbackParams() {
+  var futureOfVoid = Future<void>.value();
+  // #docregion unused-callback-params
+  futureOfVoid.then((_) {
+    print('Operation complete.');
+  });
+  // #enddocregion unused-callback-params
+}
+
+//----------------------------------------------------------------------------
+
 // #docregion extension-names
 extension MyFancyList<T> on List<T> {/* ... */}
 

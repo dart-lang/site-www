@@ -3536,8 +3536,11 @@ Static variables aren’t initialized until they’re used.
 
 #### Static methods
 
-Static methods (class methods) do not operate on an instance, and thus
-do not have access to `this`. For example:
+Static methods (class methods) don't operate on an instance, and thus
+don't have access to `this`.
+They do, however, have access to static variables.
+As the following example shows,
+you invoke static methods directly on a class:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_method.dart"?>
 ```dart

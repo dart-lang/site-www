@@ -10,12 +10,12 @@ import 'package:examples_util/ellipsis.dart';
 typedef Func1<S, T> = S Function(T _);
 
 dynamic element, key, value;
-ByteBuffer bytes;
-DateTime dateTime;
-List list;
-Map map;
-String string;
-StreamSubscription subscription;
+ByteBuffer bytes = Int8List(0).buffer;
+DateTime dateTime = DateTime.now();
+List list = [];
+Map map = {};
+String string = '';
+StreamSubscription subscription = Stream.empty().listen((_) {});
 
 void miscDeclAnalyzedButNotTested() {
   (Iterable errors, Iterable<Monster> monsters) {
@@ -317,11 +317,11 @@ typedef Comparison2<T> = int Function(T a, T b);
 class AstNode {}
 
 class Constructor extends AstNode {
-  List<AstNode> get signature => null;
+  List<AstNode> get signature => [];
 }
 
 class Method extends AstNode {
-  List<AstNode> get parameters => null;
+  List<AstNode> get parameters => [];
 }
 
 class Socket {
@@ -333,14 +333,14 @@ class Socket {
 class Database {
   bool get hasData => false;
   bool get isEmpty => false;
-  String read() => null;
+  String read() => '';
 }
 
 class Monster {
-  bool hasClaws;
+  bool hasClaws = false;
 }
 
-List<Person> people;
+List<Person> people = [];
 
 class ListBox {
   ListBox({bool scroll, bool showScrollbars});
@@ -359,7 +359,7 @@ class Task {
 
 class Ingredient {}
 
-final List<List<Ingredient>> cookbook = null;
+final List<List<Ingredient>> cookbook = [];
 
 //----------------------------------------------------------------------------
 
