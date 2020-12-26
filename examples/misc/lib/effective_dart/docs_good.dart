@@ -178,6 +178,8 @@ class C0 {
 //----------------------------------------------------------------------------
 
 class C1 {
+  C1(this.weekday);
+
 // #docregion noun-phrases-for-var-etc
   /// The current day of the week, where `0` is Sunday.
   int weekday;
@@ -199,7 +201,7 @@ class Chunk {/* ... */}
 //----------------------------------------------------------------------------
 
 class Component {
-  const Component({String selector});
+  const Component({String selector = ''});
 }
 
 // #docregion doc-before-meta

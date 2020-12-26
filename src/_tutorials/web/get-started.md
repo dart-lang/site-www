@@ -52,12 +52,10 @@ More information:
 ## 3. Get CLI tools or an IDE (or both)
 
 <i class="fas fa-terminal dark"></i>
-If you like to use the command line, install [webdev][]
-and [stagehand:][stagehand]
+If you like to use the command line, install [webdev][]:
 
 ```terminal
-$ pub global activate webdev
-$ pub global activate stagehand
+$ dart pub global activate webdev
 ```
 
 <i class="material-icons">web</i>
@@ -73,10 +71,7 @@ For a list of available IDEs, see the
 To create a web app from the command line, use these commands:
 
 ```terminal
-$ mkdir quickstart
-$ cd quickstart
-$ stagehand web-simple
-$ pub get
+$ dart create -t web-simple quickstart
 ```
 
 <i class="material-icons">web</i>
@@ -90,6 +85,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 ```terminal
+$ cd quickstart
 $ webdev serve
 ```
 
