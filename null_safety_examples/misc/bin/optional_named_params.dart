@@ -1,5 +1,5 @@
 // #docregion
-void printName(String firstName, String lastName, {String suffix}) {
+void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
 // #enddocregion

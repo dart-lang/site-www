@@ -2,7 +2,7 @@
 
 void main() {
 // #docregion null-aware-operators
-  int a; // The initial value of a is null.
+  int? a; // The initial value of a is null.
   a ??= 3;
   print(a); // <-- Prints 3.
 
