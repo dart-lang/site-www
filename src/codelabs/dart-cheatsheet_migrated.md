@@ -108,9 +108,9 @@ variable is currently null:
 TBD: Make this and all non-trivial snippets testable.
 {% endcomment %}
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators)"?>
 ```dart
-int a; // The initial value of a is null.
+int? a; // The initial value of a is null.
 a ??= 3;
 print(a); // <-- Prints 3.
 
@@ -122,7 +122,7 @@ Another null-aware operator is `??`,
 which returns the expression on its left unless that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -281,7 +281,7 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -298,7 +298,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -684,7 +684,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/getters_setters.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -701,7 +701,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/getter_compute.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
   List<int> _values = [];
@@ -834,7 +834,7 @@ with a function you give it
 Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
 you're likely familiar with:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
@@ -845,9 +845,9 @@ int sumUp(int a, int b, int c) {
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
-int sumUpToFive(int a, [int b, int c, int d, int e]) {
+int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
   if (b != null) sum += b;
   if (c != null) sum += c;
@@ -864,7 +864,7 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 // ···
@@ -961,9 +961,9 @@ before you add them to the final string.
 Using a curly brace syntax,
 you can define optional parameters that have names.
 
-<?code-excerpt "misc/bin/optional_named_params.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_named_params.dart"?>
 ```dart
-void printName(String firstName, String lastName, {String suffix}) {
+void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
 // ···
@@ -1154,7 +1154,7 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/exceptions.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/exceptions.dart"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1338,7 +1338,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-<?code-excerpt "misc/bin/this_constructor.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/this_constructor.dart"?>
 ```dart
 class MyColor {
   int red;
@@ -1575,10 +1575,10 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
-  double x, y;
+  late double x, y;
 
   Point(this.x, this.y);
 
@@ -1674,7 +1674,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-<?code-excerpt "misc/bin/factory_constructors.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -1688,7 +1688,7 @@ class Shape {
     if (typeName == 'circle') return Circle();
 
     print('I don\'t recognize $typeName');
-    return null;
+    throw Error();
   }
 }
 ```
@@ -1869,7 +1869,7 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -1963,7 +1963,7 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
