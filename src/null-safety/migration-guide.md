@@ -53,6 +53,10 @@ then passing a nullable argument becomes a compile error.
   don't use null safety yet.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
+  
+  Note, however, that any package or app that uses a null safety-enabled
+  package needs to use an SDK version that understands null safety. Currently
+  this is Dart 2.12 beta or later.
 {{ site.alert.end }}
 
 This section tells you how to
