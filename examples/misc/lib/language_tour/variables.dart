@@ -57,7 +57,6 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion const-dart-25
-    // Some examples of valid compile-time constants
     const Object i = 3; // Where i is a const Object with an int value...
     const list = [i as int]; // Use a typecast.
     const map = {if (i is int) i: "int"}; // Use is and collection if.
