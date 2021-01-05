@@ -97,7 +97,7 @@ The usual advice for web apps applies to Dart web apps.
 Here are a few resources:
 
 * [Web Fundamentals](https://developers.google.com/web/fundamentals/) (especially [Optimizing Content Efficiency](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/))
-* [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/)
+* [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
 
@@ -149,12 +149,8 @@ For information on deploying with Firebase, see the following resources:
 * The [Firebase Hosting documentation](https://firebase.google.com/docs/hosting/)
   describes how to deploy web apps with Firebase.
 * In the Firebase Hosting documentation,
-  [Customize Hosting Behavior](https://firebase.google.com/docs/hosting/url-redirects-rewrites)
+  [Customize Hosting Behavior](https://firebase.google.com/docs/hosting/full-config)
   covers redirects, rewrites, and more.
-* The Google I/O 2017 codelab
-  [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app/)
-  walks through using Firebase for server-side communication,
-  but doesn't include instructions for serving the app.
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner
