@@ -2190,11 +2190,6 @@ same class (and not of any of its subtypes), and the class must not
 override `==`.
 [Enumerated types](#enumerated-types) work well in `switch` statements.
 
-{{site.alert.note}}
-  Switch statements in Dart are intended for limited circumstances,
-  such as in interpreters or scanners.
-{{site.alert.end}}
-
 Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
