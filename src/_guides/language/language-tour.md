@@ -3751,9 +3751,6 @@ allows you to use the type argument `T` in several places:
 * In the type of an argument (`List<T>`).
 * In the type of a local variable (`T tmp`).
 
-For more information about generics, see
-[Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
-
 
 ## Libraries and visibility
 
