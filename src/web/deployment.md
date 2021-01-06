@@ -149,7 +149,7 @@ For information on deploying with Firebase, see the following resources:
 * The [Firebase Hosting documentation](https://firebase.google.com/docs/hosting/)
   describes how to deploy web apps with Firebase.
 * In the Firebase Hosting documentation,
-  [Customize Hosting Behavior](https://firebase.google.com/docs/hosting/full-config)
+  [Configure Hosting Behavior](https://firebase.google.com/docs/hosting/full-config)
   covers redirects, rewrites, and more.
 
 [build]: /tools/webdev#build
