@@ -13,9 +13,9 @@ description: Packages are bundles of source code, tools, and resources that help
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
   * If you're developing a web or server-side app,
-    use Stagehand to generate starting files.
+    use `dart create` to generate starting files.
   * If you're developing a web or server-side app,
-    use `pub get` to download packages.
+    use `dart pub get` to download packages.
   * If you're developing a mobile app, use Flutter's tools.
 </div>
 
@@ -24,7 +24,7 @@ you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [pub.dev site]({{site.pub}}) repository.
 
-This tutorial shows how to use `pub`&mdash;a package manager
+This tutorial shows how to use `dart pub`&mdash;a package manager
 that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
@@ -51,35 +51,26 @@ your app must itself be a package.
 Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
-You can use the Stagehand tool to generate packages
+You can use the `dart create` command to generate packages
 with valid pubspec.yaml files and directory structures.
-Stagehand works either at the command line or (behind the scenes) in an IDE
+This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
-Install or update Stagehand using
-[pub global activate](/tools/pub/cmd/pub-global):
+
+Now run the `dart create` command to see what kinds of template files it can generate:
 
 ```terminal
-$ pub global activate stagehand
-```
-
-Now run the `stagehand` command to see what kinds of template files
-it can generate:
-
-```terminal
-$ stagehand
+$ dart create
 ```
 
 You'll see a list of generators, including various web and server-side apps.
 One of the generators is named **console-full**.
 
-In a new directory named `vector_victor`,
-use Stagehand to generate a command-line app:
+Use the `dart create` command to generate a command-line app named `vector_victor`:
 
 ```terminal
-$ mkdir vector_victor
+$ dart create -t console-full vector_victor 
 $ cd vector_victor
-$ stagehand console-full
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -92,13 +83,14 @@ name: vector_victor
 description: A sample command-line application.
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.8.1 <3.0.0'
 
 #dependencies:
-#  path: ^1.4.1
+#  path: ^1.7.0
 
 dev_dependencies:
-  test: ^1.0.0
+  pedantic: ^1.9.0
+  test: ^1.14.4
 ```
 
 ## Name the package dependencies
@@ -126,7 +118,7 @@ which is available at the [pub.dev site]({{site.pub}}).
 
         ```yaml
         dependencies:
-          vector_math: ^2.0.7
+          vector_math: ^2.0.8
         ```
 
  2. Edit `pubspec.yaml`.
@@ -137,13 +129,14 @@ which is available at the [pub.dev site]({{site.pub}}).
 
     ```yaml
     environment:
-      sdk: '>=2.1.0 <3.0.0'
+      sdk: '>=2.8.1 <3.0.0'
 
     dependencies:
-      vector_math: ^2.0.7
+      vector_math: ^2.0.8
 
     dev_dependencies:
-      test: ^1.0.0
+      pedantic: ^1.9.0
+      test: ^1.14.4
     ```
 
 For details of what version numbers mean
@@ -152,7 +145,7 @@ see [Pub versioning philosophy](/tools/pub/versioning).
 
 The [pub.dev site]({{site.pub}})
 is the primary public repository for Dart packages.
-`pub` automatically checks that
+`dart pub` automatically checks that
 website when resolving package dependencies.
 To use one of the packages from that site,
 you can specify it by its simple name,
@@ -164,18 +157,16 @@ If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
 If not, do it yourself by running
-[pub get](/tools/pub/cmd/pub-get):
+[dart pub get](/tools/pub/cmd/pub-get):
 
 ```terminal
-$ pub get
+$ dart pub get
 Resolving dependencies...
-+ vector_math 2.0.7
++ vector_math 2.0.8
 Changed 1 dependency!
-Precompiling executables...
-Precompiled vector_math:mesh_generator.
 ```
 
-The `pub get` command installs the
+The `dart pub get` command installs the
 packages in your app's dependencies list.
 Each package can contain libraries and other assets.
 Pub works recursively;
@@ -190,7 +181,7 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
-Later you can modify the version constraints and use `pub upgrade`
+Later you can modify the version constraints and use `dart pub upgrade`
 to update to new versions as needed.
 
 ## What did you get (and not get)?
