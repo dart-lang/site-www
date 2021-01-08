@@ -17,6 +17,11 @@ join the [Dart announcements Google group.][dart-announce]
 [flutter-whats-new]: {{site.flutter}}/docs/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 
+## Changes after 2.10
+
+Added [Dart team packages][dart-team-packages].
+
+[dart-team-packages]: https://dart.dev/dart-team-packages
 
 ## October 1, 2020: 2.10 release
 
