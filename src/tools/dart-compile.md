@@ -1,9 +1,9 @@
 ---
 title: dart compile
-description: Command-line tool for AOT-compiling Dart source code.
+description: Command-line tool for compiling Dart source code.
 ---
 
-Use the `dart compile` command to AOT (ahead-of-time) compile
+Use the `dart compile` command to compile
 a Dart program to a [target platform](/platforms).
 The output — which you specify using a subcommand —
 can either include a Dart runtime or be a _snapshot_.
@@ -47,10 +47,10 @@ The `dart compile` command replaces the
 `dart2native`, `dart2aot`, and `dart2js` commands.
 
 {{site.alert.note}}
-  You don't need to AOT compile Dart programs before running them.
+  You don't need to compile Dart programs before running them.
   The Dart VM has a JIT (just-in-time) compiler
   that's especially useful during development.
-  For more information on AOT and JIT compilation,
+  For more information on AOT (ahead-of-time) and JIT compilation,
   see the [Platforms page](/platforms).
 {{site.alert.end}}
 
@@ -121,7 +121,8 @@ $ dartaotruntime bin/myapp.aot
 ```
 
 For more information, see
-[`dartaotruntime`](/tools/dartaotruntime).
+[Known limitations](#known-limitations) and the
+[`dartaotruntime` documentation](/tools/dartaotruntime).
 
 
 ## Standalone executables (exe) {#exe}
@@ -143,15 +144,9 @@ $ cd /tmp
 $ ./myapp
 ```
 
-{{ site.alert.tip }}
-  If you’re distributing multiple programs and disk space is limited,
-  consider using [`aot-snapshot`](#aot-snapshot) instead of `exe`.
-{{ site.alert.end }}
-
-
 ### Known limitations
 
-The `exe` subcommand has some known limitations:
+The `exe` and `aot-snapshot` subcommands have some known limitations:
 
 No cross-compilation support ([issue 28617][])
 : The compiler supports creating machine code only for
