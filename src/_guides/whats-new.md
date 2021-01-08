@@ -1,7 +1,6 @@
 ---
 title: What’s new
 description: A list of what’s new on dart.dev and related sites.
-toc: false
 ---
 
 {% comment %}
