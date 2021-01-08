@@ -124,7 +124,7 @@ for a running command-line app.
 Use [pub](/tools/pub) to install or update DevTools:
 
 ```terminal
-$ pub global activate devtools
+$ dart pub global activate devtools
 ```
 
 ### 2. Launch the DevTools server
@@ -133,13 +133,13 @@ Once you have DevTools, use the `devtools` command
 to run the local web server for DevTools:
 
 ```terminal
-$ pub global run devtools
+$ dart pub global run devtools
 Serving DevTools at http://127.0.0.1:9100
 ```
 
 {{site.alert.note}}
   If the [system cache `bin` directory is in your path][cache-bin],
-  then you can just run `devtools`, without `pub global run`.
+  then you can just run `dart devtools`, without `dart pub global run`.
 {{site.alert.end}}
 [cache-bin]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
