@@ -259,9 +259,8 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   these keywords are valid identifiers in most places,
   but they can't be used as class or type names, or as import prefixes.
 
-* Words with the superscript **3** are newer, limited reserved words related to
-  the [asynchrony support](#asynchrony-support) that was added
-  after Dart's 1.0 release.
+* Words with the superscript **3** are limited reserved words related to
+  [asynchrony support](#asynchrony-support).
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
@@ -403,14 +402,13 @@ You can't change the value of a `const` variable:
 baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
 
-As of Dart 2.5, you can define constants that use
+You can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
 [collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
-// Valid compile-time constants as of Dart 2.5.
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
 const map = {if (i is int) i: "int"}; // Use is and collection if.
@@ -507,18 +505,12 @@ var y = 1.1;
 var exponents = 1.42e5;
 ```
 
-As of Dart 2.1, integer literals are automatically converted to doubles
-when necessary:
+Integer literals are automatically converted to doubles when necessary:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart
 double z = 1; // Equivalent to double z = 1.0.
 ```
-
-{{site.alert.version-note}}
-  Before Dart 2.1, it was an error to use an integer literal in a double
-  context.
-{{site.alert.end}}
 
 Here’s how you turn a string into a number, or vice versa:
 
@@ -785,7 +777,7 @@ For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
 <a id="collection-operators"> </a>
-Dart 2.3 also introduced **collection if** and **collection for**,
+Dart also offers **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
@@ -832,11 +824,6 @@ information about lists, see [Generics](#generics) and
 
 A set in Dart is an unordered collection of unique items.
 Dart support for sets is provided by set literals and the [Set][Set class] type.
-
-{{site.alert.version-note}}
-  Although the Set _type_ has always been a core part of Dart, set _literals_
-  were introduced in Dart 2.2.
-{{site.alert.end}}
 
 Here is a simple Dart set, created using a set literal:
 
@@ -903,7 +890,7 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-As of Dart 2.3, sets support spread operators (`...` and `...?`)
+Sets support spread operators (`...` and `...?`)
 and collection ifs and fors,
 just like lists do.
 For more information, see the
@@ -962,8 +949,8 @@ nobleGases[18] = 'argon';
 ```
 
 {{site.alert.note}}
-  You might expect to see `new Map()` instead of just `Map()`.
-  As of Dart 2, the `new` keyword is optional.
+  If you come from a language like C# or Java, you might expect to see `new Map()` 
+  instead of just `Map()`. In Dart, the `new` keyword is optional.
   For details, see [Using constructors](#using-constructors).
 {{site.alert.end}}
 
@@ -1015,7 +1002,7 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-As of Dart 2.3, maps support spread operators (`...` and `...?`)
+Maps support spread operators (`...` and `...?`)
 and collection if and for, just like lists do.
 For details and examples, see the
 [spread operator proposal][spread proposal] and the
@@ -1029,7 +1016,7 @@ For more information about maps, see
 ### Runes and grapheme clusters
 
 In Dart, [runes][] expose the Unicode code points of a string.
-As of Dart 2.6, use the [characters package][]
+You can use the [characters package][]
 to view or manipulate user-perceived characters,
 also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
@@ -2203,11 +2190,6 @@ same class (and not of any of its subtypes), and the class must not
 override `==`.
 [Enumerated types](#enumerated-types) work well in `switch` statements.
 
-{{site.alert.note}}
-  Switch statements in Dart are intended for limited circumstances,
-  such as in interpreters or scanners.
-{{site.alert.end}}
-
 Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
@@ -3336,8 +3318,7 @@ For more information, see the informal
 
 ### Extension methods
 
-Extension methods, introduced in Dart 2.7,
-are a way to add functionality to existing libraries.
+Extension methods are a way to add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
@@ -3494,16 +3475,6 @@ only classes that extend or implement the `Musician` class
 can use the mixin `MusicalPerformer`.
 Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
-
-{{site.alert.version-note}}
-  Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
-  releases usually used `abstract class` instead. For more information on 2.1
-  mixin changes, see the [Dart SDK changelog][] and [2.1 mixin specification.][]
-{{site.alert.end}}
-
-[Dart SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
-[2.1 mixin specification.]: https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md#dart-2-mixin-declarations
-
 
 ### Class variables and methods
 
@@ -3774,9 +3745,6 @@ allows you to use the type argument `T` in several places:
 * In the function's return type (`T`).
 * In the type of an argument (`List<T>`).
 * In the type of a local variable (`T tmp`).
-
-For more information about generics, see
-[Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
 
 ## Libraries and visibility
@@ -4473,7 +4441,7 @@ To learn more about Dart's core libraries, see
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
-[characters example]: {{site.pub-pkg}}/characters#-example-tab-
+[characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
 [dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
