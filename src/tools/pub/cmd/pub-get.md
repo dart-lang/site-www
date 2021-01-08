@@ -16,7 +16,8 @@ directory, as well as their
 For example:
 
 ```terminal
-$ pub get
+$ dart pub get
+Resolving dependencies...
 Got dependencies!
 ```
 
