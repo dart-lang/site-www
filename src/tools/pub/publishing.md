@@ -5,7 +5,7 @@ description: Learn how to publish a Dart package to pub.dev.
 
 [The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
-project and you want others to be able to use it, use the `pub publish`
+project and you want others to be able to use it, use the `dart pub publish`
 command.
 
 {{site.alert.note}}
@@ -120,16 +120,16 @@ To create a verified publisher, follow these steps:
 
 ## Publishing your package
 
-Use the [pub publish][] command to publish your package for the first time,
+Use the [dart pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
 
 ### Performing a dry run
 
-To test how `pub publish` will work, you can perform a dry run:
+To test how `dart pub publish` will work, you can perform a dry run:
 
 ```terminal
-$ pub publish --dry-run
+$ dart pub publish --dry-run
 ```
 
 Pub makes sure that your package follows the
@@ -162,7 +162,7 @@ Package has 0 warnings.
 When you're ready to publish your package, remove the `--dry-run` argument:
 
 ```terminal
-$ pub publish
+$ dart pub publish
 ```
 
 {{site.alert.note}}
@@ -171,7 +171,7 @@ $ pub publish
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
   Once a package has been transferred to a publisher,
-  you can update the package using `pub publish`.
+  you can update the package using `dart pub publish`.
 {{site.alert.end}}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
@@ -221,7 +221,7 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 {% endcomment %}
 
 Be sure to delete any files you don't want to include (or add them to
-`.gitignore`). `pub publish` lists all files that it's going to publish
+`.gitignore`). `dart pub publish` lists all files that it's going to publish
 before uploading your package,
 so examine the list carefully before completing your upload.
 
@@ -288,7 +288,7 @@ If you change your mind, you can remove the discontinued mark at any time.
 
 For more information, see the reference pages for the following `pub` commands:
 
-* [pub publish][]
+* [dart pub publish][]
 * [pub uploader][]
 
 [BSD license]: https://opensource.org/licenses/BSD-3-Clause
@@ -298,7 +298,7 @@ For more information, see the reference pages for the following `pub` commands:
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
 [pub]: /guides/packages
-[pub publish]: /tools/pub/cmd/pub-lish
+[dart pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html

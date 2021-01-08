@@ -1,13 +1,13 @@
 ---
-title: pub publish
-description: Use pub publish to publish your Dart package to the pub.dev site.
+title: dart pub publish
+description: Use dart pub publish to publish your Dart package to the pub.dev site.
 toc: false
 ---
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub publish [--dry-run] [--force]
+$ dart pub publish [--dry-run] [--force]
 {% endprettify %}
 
 This command publishes your package on the
