@@ -1,6 +1,6 @@
 ---
-title: pub global
-description: Use pub global to run Dart scripts hosted on the pub.dev site from the command line.
+title: dart pub global
+description: Use dart pub global to run Dart scripts hosted on the pub.dev site from the command line.
 ---
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -17,7 +17,7 @@ For example, say you want to run
 the Dart project generator, from the command line.
 
 ```terminal
-$ pub global activate stagehand
+$ dart pub global activate stagehand
 $ stagehand
 ```
 
@@ -25,12 +25,12 @@ If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
-package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
+package that your package depends on, see [dart run](/tools/pub/cmd/pub-run).
 
 ## Activating a package
 
 ```nocode
-pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -48,20 +48,20 @@ constraint.  See the [constraint](#options) flag for usage examples.
 ### Activating a package on the pub.dev site
 
 ```terminal
-$ pub global activate <pub.dartlang package>
+$ dart pub global activate <pub.dartlang package>
 ```
 
 Specify a package on the pub.dev site to activate it. For example:
 
 ```terminal
-$ pub global activate markdown
+$ dart pub global activate markdown
 ```
 
 ### Activating a package with Git
 
 ```terminal
-$ pub global activate --source git <Git URL>
-$ pub global activate -sgit <Git URL>
+$ dart pub global activate --source git <Git URL>
+$ dart pub global activate -sgit <Git URL>
 ```
 
 Use `--source git` (or `-sgit`, for short) to activate
@@ -70,14 +70,14 @@ which activate the `async_await` package on
 [GitHub](https://github.com/), are equivalent:
 
 ```terminal
-$ pub global activate --source git https://github.com/dart-lang/async_await.git
-$ pub global activate -sgit https://github.com/dart-lang/async_await.git
+$ dart pub global activate --source git https://github.com/dart-lang/async_await.git
+$ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
 ### Activating a package on your local machine
 
 ```terminal
-$ pub global activate --source path <path>
+$ dart pub global activate --source path <path>
 ```
 
 Use `activate --source path <path>` to activate a package on your local machine.
@@ -85,7 +85,7 @@ The following example activates the `stopwatch` package from the
 `~/dart` directory:
 
 ```terminal
-$ pub global activate --source path ~/dart/stopwatch
+$ dart pub global activate --source path ~/dart/stopwatch
 ```
 
 ### Updating an activated package
@@ -97,7 +97,7 @@ package again.
 
 You can directly run a script from an activated package from the
 command line. If you are unable to run the script directly,
-you can also use `pub global run`.
+you can also use `dart pub global run`.
 
 ### Running a script from your PATH
 
@@ -108,7 +108,7 @@ For example, say you've activated the Stagehand package,
 but you still can't run the command:
 
 ```terminal
-$ pub global activate stagehand
+$ dart pub global activate stagehand
 $ stagehand
 -bash: stagehand: command not found
 ```
@@ -144,21 +144,21 @@ $ [!stagehand web-angular!]
 
 If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for
-this feature. You can still run the script using `pub global run`.
+this feature. You can still run the script using `dart pub global run`.
 
-### Running a script using `pub global run`
+### Running a script using `dart pub global run`
 
 ```nocode
-$ pub global run <package>:<executable> [args...]
+$ dart pub global run <package>:<executable> [args...]
 ```
 
 Even if a script is not configured to be run from the command line,
-you can still use `pub global run`.
+you can still use `dart pub global run`.
 The following command runs the `bin/bar.dart` script from the
 `foo` package, passing in two arguments.
 
 ```terminal
-$ pub global run foo:bar arg1 arg2
+$ dart pub global run foo:bar arg1 arg2
 ```
 
 ### Configuring package executables
@@ -181,29 +181,29 @@ executables:
 {% endprettify %}
 
 Failing to list a script under the `executables` tag reduces the script's
-usability: unlisted scripts can be executed using `pub global run`, but not
+usability: unlisted scripts can be executed using `dart pub global run`, but not
 directly from the command line.
 
 ## Deactivating a package
 
 ```terminal
-$ pub global deactivate <package>
+$ dart pub global deactivate <package>
 ```
 
 Use `deactivate` to remove a package from the list of available
 global packages. For example:
 
 ```terminal
-$ pub global deactivate markdown
+$ dart pub global deactivate markdown
 ```
 
-You can no longer invoke the package's scripts using `pub global run`,
+You can no longer invoke the package's scripts using `dart pub global run`,
 or at the command line.
 
 ## Listing active packages
 
 ```terminal
-$ pub global list
+$ dart pub global list
 ```
 
 Use `list` to list all currently active packages.
@@ -214,41 +214,41 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 `<constraint>`
-: Optional for `pub global activate`. The constraint allows you to pull
+: Optional for `dart pub global activate`. The constraint allows you to pull
   in a specific version of the package. For example,
   the following command pulls the 0.6.0 version of the `markdown`
   package:
 
   ```terminal
-  $ pub global activate markdown 0.6.0
+  $ dart pub global activate markdown 0.6.0
   ```
 
   If you specify a range, pub picks the best version that meets that
   constraint. For example:
 
   ```terminal
-  $ pub global activate foo <3.0.0
+  $ dart pub global activate foo <3.0.0
   ```
 
 `--executable=<name>` or `-x<name>`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Adds the specified executable to your PATH.
   You can pass more than one of these flags.
   For example, the following command adds `bar` and `baz` (but not
   any other executables that `foo` might define) to your PATH.
 
   ```terminal
-  $ pub global activate foo -x bar -x baz
+  $ dart pub global activate foo -x bar -x baz
   ```
 
 `--no-executables`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Globally activates the package but doesn't put any
-  executables in `bin`. You have to use `pub global run` to
+  executables in `bin`. You have to use `dart pub global run` to
   run any executables.
 
 `--overwrite`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Normally, if executables from two global packages have a name
   collision, the preexisting executable wins. If you specify this flag,
   the new executable overwrites the previously activated executable.
