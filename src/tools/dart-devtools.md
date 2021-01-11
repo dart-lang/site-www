@@ -146,14 +146,14 @@ Serving DevTools at http://127.0.0.1:9100
 
 ### 3. Start the target app
 
-Use the `dart --observe` command to execute the main file
+Use the `dart run --observe` command to execute the main file
 for the Dart command-line app that you want to debug or observe.
 Optionally add `--pause-isolates-on-start`,
 which automatically breaks execution at the start of the script.
 
 ```terminal
 $ cd path/to/dart/app
-$ dart --observe main.dart
+$ dart run --observe main.dart
 
 Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
 ```
