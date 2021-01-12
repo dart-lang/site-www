@@ -29,7 +29,7 @@ To use a package, do the following:
 
 * Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
   other metadata, such as a version number).
-* Use dart pub to get your package's dependencies.
+* Use pub to get your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
 
 ## Creating a pubspec
