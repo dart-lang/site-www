@@ -25,7 +25,7 @@ If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
 To run a Dart script from within a package, or from a
-package that your package depends on, see [dart run](/tools/pub/cmd/pub-run).
+package that your package depends on, see [dart run](/tools/dart-tool).
 
 ## Activating a package
 
