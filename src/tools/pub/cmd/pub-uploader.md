@@ -1,5 +1,5 @@
 ---
-title: pub uploader
+title: dart pub uploader
 description: Use pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
 toc: false
 ---
@@ -10,10 +10,10 @@ toc: false
   [verified publisher](/tools/pub/verified-publishers).
 {{site.alert.end}}
 
-_Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
+_Uploader_ is one of the commands of the [dart pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ pub uploader [options] {add/remove} <email>
+$ dart pub uploader [options] {add/remove} <email>
 {% endprettify %}
 
 This command allows
@@ -24,10 +24,10 @@ other uploaders for that package. It has two sub-commands,
 add/remove as an uploader. For example:
 
 ```terminal
-~/code/transmogrify$ pub uploader add bob@example.com
+~/code/transmogrify$ dart pub uploader add bob@example.com
 We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 
-~/code/transmogrify$ pub uploader remove bob@example.com
+~/code/transmogrify$ dart pub uploader remove bob@example.com
 Successfully removed uploader from package.
 ```
 
@@ -40,7 +40,7 @@ uploaders modified. You can also pass the `--package` flag to choose a
 package by name. For example:
 
 ```terminal
-$ pub uploader --package=transmogrify add bob@example.com
+$ dart pub uploader --package=transmogrify add bob@example.com
 We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 ```
 
@@ -48,7 +48,7 @@ Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
 
 {{site.alert.important}}
-  The `pub uploader add <email>` command sends an invitation that
+  The `dart pub uploader add <email>` command sends an invitation that
   the invited user must accept.
   For the invitation to work,
   `<email>` must be the **primary email address** of
@@ -57,7 +57,7 @@ Google Apps email address for any new uploaders.
 
 ## Options
 
-For options that apply to all pub commands, see
+For options that apply to all dart pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 <aside class="alert alert-info" markdown="1">
