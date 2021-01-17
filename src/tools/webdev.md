@@ -16,7 +16,7 @@ The only time most web app developers run `build_runner` is for tests.
 
 <aside class="alert alert-info" markdown="1">
   **Dart 2 note:**
-  The `webdev` tool replaces the Dart 1.x `pub build` and `pub serve` commands.
+  The `webdev` tool replaces the Dart 1.x `dart pub build` and `dart pub serve` commands.
 </aside>
 
 ## Setup
@@ -33,7 +33,7 @@ build_runner and build_web_compilers packages.
 [Globally install][] `webdev` using pub:
 
 ```terminal
-$ pub global activate webdev
+$ dart pub global activate webdev
 ```
 
 Use the same command to update `webdev`.
@@ -64,10 +64,10 @@ to your app's `pubspec.yaml` file:
     build_web_compilers: ^0.4.0
 ```
 
-As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
 ```terminal
-$ pub get
+$ dart pub get
 ```
 ## Using webdev and build_runner commands
 
@@ -158,7 +158,7 @@ $ webdev build --output web:build
 Use the `build_runner test` command to run your app's [component tests][]:
 
 ```
-$ pub run build_runner test [build_runner options] -- -p <platform> [test options]
+$ dart pub run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
 <aside class="alert alert-info" markdown="1">
@@ -171,13 +171,13 @@ $ pub run build_runner test [build_runner options] -- -p <platform> [test option
 For example, here's how to run all Chrome platform tests:
 
 ```terminal
-$ pub run build_runner test -- -p chrome
+$ dart pub run build_runner test -- -p chrome
 ```
 
 To see all available build_runner options, use the `--help` or `-h` option:
 
 ```terminal
-$ pub run build_runner test -h
+$ dart pub run build_runner test -h
 ```
 
 Arguments after the empty `--` argument
@@ -186,7 +186,7 @@ To see all command-line options for the test package runner,
 use this command:
 
 ```terminal
-$ pub run test -h
+$ dart pub run test -h
 ```
 
 
