@@ -234,7 +234,6 @@ alphanumeric text, the `{}` should be omitted.
 {% prettify dart tag=pre+code %}
 'Hi, $name!'
     "Wear your wildest $decade's outfit."
-    'Wear your wildest ${decade}s outfit.'
 {% endprettify %}
 
 {:.bad}
