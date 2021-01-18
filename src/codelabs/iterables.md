@@ -704,9 +704,8 @@ main() {
 In this example, `takeWhile()` returns an `Iterable` that
 contains all the elements leading to the element that
 satisfies the predicate.
-On the other hand, `skipWhile()` returns an `Iterable` while
-skipping all the elements before the one that satisfies the predicate.
-Note that the element that satisfies the predicate is also included.
+On the other hand, `skipWhile()` returns an `Iterable` 
+of all the elements after the one that satisfies the predicate.
 
 After running the example,
 change `takeWhile()` to take elements until
