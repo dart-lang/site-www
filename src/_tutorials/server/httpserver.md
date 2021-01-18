@@ -977,8 +977,8 @@ for further details about the classes and libraries discussed in this tutorial.
 ## What next?
 
 * If you haven't yet tried the server-side codelab,
-  try [writing a server app](https://dart-lang.github.io/server/codelab/).
-* [Servers with Dart](https://dart-lang.github.io/server/)
+  try [writing a server app](https://pub.dev/packages/shelf).
+* [Servers with Dart](https://github.com/dart-lang/pub-dev)
   links to resources for writing standalone Dart applications,
   including servers.
 
