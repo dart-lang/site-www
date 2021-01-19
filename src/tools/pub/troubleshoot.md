@@ -120,6 +120,6 @@ Try this workaround, which uses the command line to complete sign-in:
    as the one where `dart pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
-```terminal
+   ```terminal
 $ curl 'http://localhost:<port>?code=...'
 ```
