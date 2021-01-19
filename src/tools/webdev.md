@@ -14,11 +14,6 @@ which wraps around the more general-purpose
 Usually you can use `webdev` instead of directly using `build_runner`.
 The only time most web app developers run `build_runner` is for tests.
 
-<aside class="alert alert-info" markdown="1">
-  **Dart 2 note:**
-  The `webdev` tool replaces the Dart 1.x `dart pub build` and `dart pub serve` commands.
-</aside>
-
 ## Setup
 
 The easiest way to get `webdev` is to globally install it,
