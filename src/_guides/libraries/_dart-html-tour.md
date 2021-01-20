@@ -103,7 +103,7 @@ Consider this example of specifying an anchor element in HTML:
 
 This \<a\> tag specifies an element with an `href` attribute and a text
 node (accessible via a `text` property) that contains the string
-“linktext”. To change the URL that the link goes to, you can use
+“link text”. To change the URL that the link goes to, you can use
 AnchorElement’s `href` property:
 
 <?code-excerpt "html/test/html_test.dart (href)" plaster="none"?>
