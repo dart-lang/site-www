@@ -45,10 +45,10 @@ to your app's pubspec:
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
 
-As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
 ```terminal
-$ pub get
+$ dart pub get
 ```
 
 ## Using built-in commands
@@ -59,7 +59,7 @@ Here are examples of using the build_runner **build** command:
 
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
-$ pub run build_runner build  # Dart SDK
+$ dart pub run build_runner build  # Dart SDK
 $ flutter pub run build_runner build  # Flutter SDK
 ```
 
