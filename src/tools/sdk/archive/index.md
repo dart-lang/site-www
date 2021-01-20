@@ -1,7 +1,7 @@
 ---
 title: Dart SDK archive
 short-title: Archive
-description: Download specific stable and dev channel versions of the Dart SDK and the Dart API documentation.
+description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
 js:
 - url: /tools/sdk/archive/out/web/download_archive.dart.js
   defer: true
@@ -47,20 +47,29 @@ Dev channel builds are not suitable for production use.
 
 ## Main channel
 
-Main channel builds are the latest raw builds from the main/master
-channel of the Dart SDK. These are the freshest builds, but they are
-also like to contains bugs.
-Dev channel builds are not suitable for production use, and only
-suitable for experimental development use.
+Main channel builds are the latest, raw builds from
+the main (`master`) branch of the Dart SDK repository.
+These are the freshest builds available,
+and they're likely to contain bugs.
+Main channel builds are suitable only for
+experimental development use, not for production use.
 
-**Note**: Main channel builds are unsigned.
+{{ site.alert.note }}
+  Main channel builds are unsigned.
+{{ site.alert.end }}
+
+To download a main channel build, use a
+[main channel URL](#main-channel-url-scheme).
+
 
 ## Download URLs
 
-### Stable, beta, and dev channels
+You can download zip files for any channel.
 
-You can find the zip files at predictable URLs using the
-following pattern for stable, beta, and dev channels:
+### Stable, beta, and dev channel URL scheme
+
+Stable, beta, and dev channel releases
+are available at URLs like the following:
 
 {% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/release/<[!version!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
@@ -75,18 +84,21 @@ https://storage.googleapis.com/dart-archive/channels/beta/release/2.8.0-20.11.be
 https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-1.0.dev/sdk/dartsdk-linux-x64-release.zip
 {% endprettify %}
 
-### Main channel
+### Main channel URL scheme
 
-Main channel builds use a different URL scheme:
+The latest main channel build
+is available at URLs like the following:
 
 {% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 {% endprettify %}
 
-Examples:
+Example:
 
 {% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
 {% endprettify %}
 
-**Note**: Main channel builds are unsigned.
+{{ site.alert.note }}
+  Main channel builds are unsigned.
+{{ site.alert.end }}
