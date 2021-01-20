@@ -9,6 +9,7 @@
     }],
     "redirects": [
       { "source": "/\\)", "destination": "/", "type": 301 },
+      { "source": "/get-dart/archive/:path*", "destination": "https://storage.googleapis.com/dart-archive/:path*", "type": 302 },
       { "source": "/+", "destination": "https://plus.sandbox.google.com/+dartlang", "type": 301 },
       { "source": "/+dart2js", "destination": "/tools/dart2js", "type": 301 },
       { "source": "/+isolates", "destination": "https://dart-lang.github.io/observatory/isolate.html", "type": 301 },
