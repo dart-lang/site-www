@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_in_if_null_operators
+// ignore_for_file: unnecessary_null_in_if_null_operators, dead_null_aware_expression
 
 void main() {
 // #docregion null-aware-operators
