@@ -949,7 +949,7 @@ Their default value is null unless you provide another default value:
 <?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-  // ···
+// ···
 }
 // ···
   int newTotal = sumUpToFive(1);
