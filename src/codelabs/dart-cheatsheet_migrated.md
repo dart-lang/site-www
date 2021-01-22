@@ -99,36 +99,47 @@ reference them inside single quotes, with a space in between.
 
 ## Nullable variables
 
-In Dart, types in your code are non-nullable by default, meaning that values can’t be null
-unless you say they can be.
+Dart 2.12 introduced sound null safety,
+meaning that (when you [enable null safety][])
+values can’t be null unless you say they can be.
+In other words, types are non-nullable by default.
 
-For example, consider the following code, which is **invalid**, because `null` cannot be assigned to `a`.
-
-{% prettify dart tag=pre+code %}
-int a = [!null!];
-{% endprettify %}
-
-When creating a variable, you can use ? to inform Dart of the variable’s nullability.
+For example, consider the following code,
+which is **invalid** because (with null safety)
+a variable of type `int` can't have the value `null`:
 
 {% prettify dart tag=pre+code %}
-int? a = null;
+int a = [!null!]; // INVALID in null-safe Dart.
 {% endprettify %}
 
-However, nullable variables are null by default, so it is not necessary to assign null to it.
+When creating a variable in Dart 2.12 or higher,
+you can add `?` to the type to indicate
+that the variable can be null:
 
 {% prettify dart tag=pre+code %}
-int? a; // The initial value of a is null
+[!int?!] a = null; // Valid in null-safe Dart.
 {% endprettify %}
 
-Read the [Sound null safety guide](/null-safety) for more information about null safety on Dart.
+You can simplify that code a bit because, in all versions of Dart,
+`null` is the default value for uninitialized variables:
+
+{% prettify dart tag=pre+code %}
+int? a; // The initial value of a is null.
+{% endprettify %}
+
+For more information about null safety in Dart,
+read the [sound null safety guide](/null-safety).
+
+[enable null safety]: https://dart.dev/null-safety#enable-null-safety
+
 
 ### Code example
 
 Try to declare two variables below:
-- A nullable `String` named `name` with the value `Jane`.
-- A nullable `String` named `address` with the value of null.
+- A nullable `String` named `name` with the value `'Jane'`.
+- A nullable `String` named `address` with the value `null`.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 {% comment %}
 TODO: Add new ga_id tag.
@@ -177,7 +188,7 @@ TBD: Make this and all non-trivial snippets testable.
 
 <?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators)"?>
 ```dart
-int? a; // The initial value of a is null.
+int? a; // = null
 a ??= 3;
 print(a); // <-- Prints 3.
 
@@ -186,7 +197,8 @@ print(a); // <-- Still prints 3.
 ```
 
 Another null-aware operator is `??`,
-which returns the expression on its left unless that expression's value is null,
+which returns the expression on its left unless
+that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
 <?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
@@ -199,12 +211,12 @@ print(null ?? 12); // <-- Prints 12.
 
 Try putting the `??=` and `??` operators to work below.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-255px:ga_id-null_aware:null_safety-true
 {$ begin main.dart $}
 String? foo = 'a string';
-String? bar; // Unassigned objects are null by default.
+String? bar; // = null
 
 // Substitute an operator that makes 'a string' be assigned to baz.
 String? baz = foo /* TODO */ bar;
@@ -216,7 +228,7 @@ void updateSomeVars() {
 {$ end main.dart $}
 {$ begin solution.dart $}
 String? foo = 'a string';
-String? bar; // Unassigned objects are null by default.
+String? bar; // = null
 
 // Substitute an operator that makes 'a string' be assigned to baz.
 String? baz = foo ?? bar;
@@ -801,7 +813,7 @@ Add the following:
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-240px:ga_id-getters_setters:null_safety-true
 {$ begin main.dart $}
@@ -937,7 +949,7 @@ Their default value is null unless you provide another default value:
 <?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-// ···
+  // ···
 }
 // ···
   int newTotal = sumUpToFive(1);
@@ -1050,14 +1062,22 @@ void printName(String firstName, String lastName, {String? suffix}) {
   printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
 ```
 
-As you might expect, the value of these parameters is null by default,
-but you can provide default values to make them not nullable:
+As you might expect,
+the default value of an optional named parameter is `null`,
+but you can provide a default value.
 
-```dart
-void printName(String firstName, String lastName, {String suffix = ''}) {
+If the type of a parameter is non-nullable,
+then you must either provide a default value
+(as shown in the following code)
+or mark the parameter as `required`
+(as shown in the
+[constructor section](#using-this-in-a-constructor)).
+
+{% prettify dart tag=pre+code %}
+void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
   print('$firstName $lastName $suffix');
 }
-```
+{% endprettify %}
 
 A function can't have both optional positional and optional named parameters.
 
@@ -1065,22 +1085,20 @@ A function can't have both optional positional and optional named parameters.
 ### Code example
 
 Add a `copyWith()` instance method to the `MyDataObject`
-class. It should take three named parameters:
+class. It should take three named, nullable parameters:
 
 * `int? newInt`
 * `String? newString`
 * `double? newDouble`
 
-Note that the parameters should be nullable.
-
-When called, `copyWith()` should return a new `MyDataObject`
+Your`copyWith()` method should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
 For example, if `newInt` is non-null,
 then copy its value into `anInt`.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-310px:ga_id-optional_named_parameters:null_safety-true
 {$ begin main.dart $}
@@ -1221,7 +1239,7 @@ to propagate the exception:
 try {
   breedMoreLlamas();
 } catch (e) {
-  print('I was just trying to breed llamas!.');
+  print('I was just trying to breed llamas!');
   rethrow;
 }
 ```
@@ -1439,9 +1457,9 @@ class MyColor {
 final color = MyColor(red: 80, green: 80, blue: 80);
 ```
 
-In this case,`red`, `green` and `blue` are marked as `required` because they are not nullable.
-
-For optional parameters, default values work as expected:
+In the preceding code, `red`, `green`, and `blue` are marked as `required`
+because these `int` values can't be null.
+If you add default values, you can omit `required`:
 
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
@@ -1449,15 +1467,13 @@ MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-With default values it is no longer necessary to mark the parameters as `required`.
-
 ### Code example
 
 Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
 all three properties of the class.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:ga_id-this_constructor:null_safety-true
 {$ begin main.dart $}
@@ -1558,7 +1574,7 @@ Use an initializer list to assign the first two characters in `word` to
 the `letterOne` and `LetterTwo` properties.
 For extra credit, add an `assert` to catch words of less than two characters.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 {% comment %}
 Is the assert even executed? I can't see any effect on the test,
@@ -1664,8 +1680,8 @@ class Point {
 }
 ```
 
-This example uses the `late` annotation to indicate that `x` and `y` will
-be initalized later in the named constructor.
+This example uses the `late` annotation to indicate that `x` and `y` are
+initialized before they're used.
 
 To use a named constructor, invoke it using its full name:
 
@@ -1675,10 +1691,10 @@ final myPoint = Point.origin();
 
 ### Code example
 
-Give the Color class a constructor named `Color.black`
+Give the `Color` class a constructor named `Color.black`
 that sets all three properties to zero.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-240px:ga_id-named_constructors:null_safety-true
 {$ begin main.dart $}
@@ -1783,7 +1799,7 @@ making it do the following:
   create an `IntegerDouble` with the values in order.
 * If the list has **three** values,
   create an `IntegerTriple` with the values in order.
-* Otherwise, throw Error.
+* Otherwise, throw an `Error`.
 
 ```dart:run-dartpad:height-415px:ga_id-factory_constructors:null_safety-true
 {$ begin main.dart $}
@@ -1973,7 +1989,7 @@ Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
 default constructor with zeros as the arguments.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:height-255px:ga_id-redirecting_constructors:null_safety-true
 {$ begin main.dart $}
@@ -2065,7 +2081,7 @@ and create a constant constructor that does the following:
 * Is constant, with the `const` keyword just before
   `Recipe` in the constructor declaration.
 
-Ignore all initial errors in the dartpad.
+Ignore all initial errors in the DartPad.
 
 ```dart:run-dartpad:ga_id-const_constructors:null_safety-true
 {$ begin main.dart $}
