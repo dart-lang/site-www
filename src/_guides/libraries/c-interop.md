@@ -13,7 +13,7 @@ Other terms for similar functionality include _native interface_
 and _language bindings._
 
 {{ site.alert.version-note }}
-  As of Dart 2.12 beta, FFi has been marked as 1.0,
+  As of Dart 2.12 beta, FFI has been marked as 1.0,
   and will be fully stable once a 2.12 stable SDK is
   released.
 {{ site.alert.end }}
