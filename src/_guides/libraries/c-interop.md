@@ -12,6 +12,12 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
+{{ site.alert.version-note }}
+  As of Dart 2.12 beta, FFi has been marked as 1.0,
+  and will be fully stable once a 2.12 stable SDK is
+  released.
+{{ site.alert.end }}
+
 API documentation is available in the
 [dart:ffi API reference.]({{site.dart_api}}/dart-ffi/dart-ffi-library.html)
 
