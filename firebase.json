@@ -129,6 +129,7 @@
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html", "type": 301 },
       { "source": "/go/flutter-upper-bound-deprecation", "destination": "https://github.com/flutter/flutter/issues/68143", "type": 301 },
+      { "source": "/go/dot-packages-deprecation", "destination": "https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md", "type": 301 },
       { "source": "/go/dart-fix", "destination": "https://github.com/dart-lang/sdk/blob/master/pkg/dartdev/doc/dart-fix.md", "type": 301 },
       { "source": "/go/experiments", "destination": "/tools/experiment-flags", "type": 301 },
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
