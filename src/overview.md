@@ -1,7 +1,20 @@
 ---
 title: Dart overview
 description: A short introduction to Dart
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
+<style>
+{% comment %}
+TODO: move this into one of our SCSS files
+{% endcomment -%}
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 400px;
+  resize: vertical;
+  width: 100%;
+}
+</style>
 
 <img style="padding: 30px; float: right; width: 300px" src="{% asset
 logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
@@ -57,7 +70,8 @@ A more comprehensive set of annotated language examples can be found in
 [Dart by Example](http://jpryan.me/dartbyexample/) by
 [@jryanio](https://twitter.com/jryanio).
 
-```dart
+<?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
+```dart:run-dartpad:ga_id-overview:null_safety-true
 import 'dart:async';
 import 'dart:math' show Random;
 
@@ -67,6 +81,7 @@ main() async {
     print('π ≅ $estimate');
   }
 }
+
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch: 100000}) async* {
   var total = 0; // inferred to be of type int
@@ -87,12 +102,14 @@ Stream<double> computePi({int batch: 100000}) async* {
     yield ratio * 4;
   }
 }
+
 Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
   }
 }
+
 class Point {
   final double x, y;
   const Point(this.x, this.y);
