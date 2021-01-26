@@ -72,7 +72,6 @@ A more comprehensive set of annotated language examples can be found in
 
 <?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
-import 'dart:async';
 import 'dart:math' show Random;
 
 main() async {
