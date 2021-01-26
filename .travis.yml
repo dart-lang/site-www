@@ -17,7 +17,9 @@ env:
   matrix:
     - TASK="./tool/build.sh --check-links"
     - TASK="./tool/check-code.sh"
+    - TASK="./tool/check-code.sh --null-safety"
     - TASK="./tool/analyze-and-test-examples.sh"
+    - TASK="./tool/analyze-and-test-examples.sh --null-safety"
 
 matrix:
   allow_failures:
@@ -25,7 +27,15 @@ matrix:
       dart: beta
     - env: TASK="./tool/analyze-and-test-examples.sh"
       dart: dev
-    
+    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
+      dart: stable
+    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
+      dart: beta
+    - env: TASK="./tool/check-code.sh --null-safety"
+      dart: stable
+    - env: TASK="./tool/check-code.sh --null-safety"
+      dart: beta
+
 before_install:
   - source ./tool/env-set.sh
   - ./tool/before-install.sh

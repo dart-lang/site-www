@@ -37,7 +37,7 @@ void increment() {
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Avoid empty statements • example.dart:11 • empty_statements
+info - Avoid empty statements at lib/lint.dart:9:19 - (empty_statements)
 ```
 </blockquote>
 
@@ -53,7 +53,7 @@ var [!_controller = StreamController<String>()!];
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
-lint • Close instances of `dart.core.Sink` • example.dart:11 • close_sinks
+info - Close instances of `dart.core.Sink` at lib/lint.dart:16:7 - (close_sinks)
 ```
 </blockquote>
 
@@ -183,7 +183,7 @@ String s2 = s.substring(1);
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results.txt" retain="/'Object' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
+error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
 ```
 
 `implicit-dynamic: <bool>`

@@ -11,30 +11,25 @@ ROOT=$(pwd)
 
 source ./tool/shared/env-set-check.sh
 
-# TODO mit@: After dart CLI ships in stable, move ANALYZE var up here for all channels.
-
 DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
 DART_CHAN=stable
 if [[ $DART_VERS == *beta* ]]; then
   DART_CHAN=beta
-  ANALYZE="dart analyze"
 elif [[ $DART_VERS == *dev* ]]; then
   DART_CHAN=dev
-  ANALYZE="dart analyze"
-else # stable
-  # https://github.com/dart-lang/sdk/issues/32235 explicitly add --no-implicit-casts even if option is set to false in config file.
-  ANALYZE="dartanalyzer --no-implicit-casts . "
 fi
 EXAMPLES="$ROOT/examples"
+ANALYZE="dart analyze"
 PUB_ARGS="upgrade" # --no-precomiple
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --get)        PUB_ARGS="get"; shift;;
-    --quick)      QUICK=1; shift;;
-    --save-logs)  SAVE_LOGS=1; shift;;
-    -h|--help)    echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"; exit 0;;
-    *)            echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
+    --get)          PUB_ARGS="get"; shift;;
+    --quick)        QUICK=1; shift;;
+    --save-logs)    SAVE_LOGS=1; shift;;
+    --null-safety)  EXAMPLES="$ROOT/null_safety_examples"; shift;;
+    -h|--help)      echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--null-safety] [--help]"; exit 0;;
+    *)              echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
   esac
 done
 
@@ -57,7 +52,7 @@ function analyze_and_test() {
   PROJECT_ROOT="$1"
   pushd "$PROJECT_ROOT" > /dev/null
   travis_fold start analyzeAndTest.get
-  pub $PUB_ARGS
+  dart pub $PUB_ARGS
   travis_fold end analyzeAndTest.get
 
   echo
