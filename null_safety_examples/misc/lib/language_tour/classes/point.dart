@@ -2,9 +2,10 @@
 // #docregion class-with-distanceTo
 import 'dart:math';
 
+// TODO(miquelbeltran) maybe default value to 0 is better here
 // #docregion constructor-initializer, named-constructor
 class Point {
-  double x, y;
+  late double x, y;
 
   // #enddocregion class-with-distanceTo, named-constructor
   // Syntactic sugar for setting x and y
@@ -23,8 +24,8 @@ class Point {
   // Initializer list sets instance variables before
   // the constructor body runs.
   Point.fromJson(Map<String, double> json)
-      : x = json['x'],
-        y = json['y'];
+      : x = json['x']!,
+        y = json['y']!;
   // #docregion class-with-distanceTo
 
   double distanceTo(Point other) {

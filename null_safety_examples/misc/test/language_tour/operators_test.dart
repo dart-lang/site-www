@@ -83,7 +83,7 @@ void main() {
 
   group('`=` vs `??=`:', () {
     // #docregion assignment-gist-main-body
-    void assignValues(int a, int b, int value) {
+    void assignValues(int? a, int? b, int value) {
       print('Initially: a == $a, b == $b');
       // #docregion assignment
       // Assign value to a
@@ -162,15 +162,15 @@ void main() {
 
   test('if-null', () {
     // #docregion if-null
-    String playerName1(String name) => name ?? 'Guest';
+    String playerName1(String? name) => name ?? 'Guest';
     // #enddocregion if-null
 
     // #docregion if-null-alt
     // Slightly longer version uses ?: operator.
-    String playerName2(String name) => name != null ? name : 'Guest';
+    String playerName2(String? name) => name != null ? name : 'Guest';
 
     // Very long version uses if-else statement.
-    String playerName3(String name) {
+    String playerName3(String? name) {
       if (name != null) {
         return name;
       } else {

@@ -7,7 +7,7 @@ import 'package:examples_util/print_matcher.dart' as m;
 void main() {
   test('optional-positional-parameters', () {
     // #docregion optional-positional-parameters
-    String say(String from, String msg, [String device]) {
+    String say(String from, String msg, [String? device]) {
       var result = '$from says $msg';
       if (device != null) {
         result = '$result with a $device';

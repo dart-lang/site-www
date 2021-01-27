@@ -2,7 +2,8 @@ typedef Pred0 = bool Function();
 typedef Void0 = void Function();
 
 class Candidate {
-  int yearsExperience;
+  int yearsExperience = 0;
+
   void interview() {}
 }
 
@@ -10,7 +11,8 @@ void miscDeclAnalyzedButNotTested() {
   final candidates = <Candidate>[];
 
   {
-    Pred0 isRaining, isSnowing;
+    Pred0 isRaining = () => true;
+    Pred0 isSnowing = () => true;
     dynamic car, you;
     // #docregion if-else
     if (isRaining()) {
@@ -30,7 +32,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 isDone, doSomething;
+    Pred0 isDone = () => true;
+    Pred0 doSomething = () => true;
     // #docregion while
     while (!isDone()) {
       doSomething();
@@ -39,7 +42,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 atEndOfPage, printLine;
+    Pred0 atEndOfPage = () => true;
+    Pred0 printLine = () => true;
     // #docregion do-while
     do {
       printLine();
@@ -48,7 +52,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 shutDownRequested, processIncomingRequests;
+    Pred0 shutDownRequested = () => true;
+    Pred0 processIncomingRequests = () => true;
     // #docregion while-break
     while (true) {
       if (shutDownRequested()) break;
@@ -77,13 +82,13 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion where
   }
 
-  Void0 executeClosed,
-      executePending,
-      executeApproved,
-      executeDenied,
-      executeOpen,
-      executeUnknown,
-      executeNowClosed;
+  Void0 executeClosed = () {},
+      executePending = () {},
+      executeApproved = () {},
+      executeDenied = () {},
+      executeOpen = () {},
+      executeUnknown = () {},
+      executeNowClosed = () {};
 
   {
     // #docregion switch
@@ -160,8 +165,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    int number;
-    String urlString;
+    int number = 0;
+    String urlString = '';
     var text;
     // #docregion assert
     // Make sure the variable has a non-null value.

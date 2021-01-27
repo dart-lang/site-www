@@ -2,9 +2,10 @@
 
 Map get defaultData => {}; // stub
 
+// TODO(miquelbeltran) what would be better here, null, default value or late?
 // #docregion
 class Person {
-  String firstName;
+  String? firstName;
 
   Person.fromJson(Map data) {
     print('in Person');

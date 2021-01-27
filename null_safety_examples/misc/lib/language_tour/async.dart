@@ -41,9 +41,9 @@ Future miscDeclAnalyzedButNotTested() async {
   }
 
   {
-    Async0 findEntrypoint;
-    Async1 flushThenExit;
-    Async2 runExecutable;
+    Async0 findEntrypoint = () async => Never;
+    Async1 flushThenExit = (_) async => Never;
+    Async2 runExecutable = (_, __) async => Never;
     var args;
     // #docregion repeated-await
     var entrypoint = await findEntrypoint();
@@ -64,8 +64,8 @@ Future miscDeclAnalyzedButNotTested() async {
 
   {
     // Excerpt from dart-tutorials-samples/httpserver/number_thinker.dart
-    Stream requestServer;
-    Async1 handleRequest;
+    Stream requestServer = Stream.empty();
+    Async1 handleRequest = (_) async => Never;
     // #docregion number_thinker
     Future main() async {
       // ...

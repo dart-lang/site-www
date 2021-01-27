@@ -28,9 +28,10 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // TODO(miquelbeltran) language-tour.md should explain that non-required params can be null
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
-    void enableFlags({bool bold, bool hidden}) {/*...*/}
+    void enableFlags({bool? bold, bool? hidden}) {/*...*/}
     // #enddocregion specify-named-parameters
 
     // #docregion use-named-parameters
@@ -80,12 +81,12 @@ void miscDeclAnalyzedButNotTested() {
 class Key {}
 
 abstract class Widget {
-  const Widget({Key key});
+  const Widget({Key? key});
 }
 
 class Scrollbar extends Widget {
   // #docregion required-named-parameters
-  const Scrollbar({Key key, @required Widget child})
+  const Scrollbar({Key? key, required Widget child})
       // #enddocregion required-named-parameters
       : super(key: key);
 }

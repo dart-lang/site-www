@@ -36,7 +36,7 @@ class Activity {}
 /// Andean cultures have used llamas as meat and pack
 /// animals since pre-Hispanic times.
 class Llama {
-  String name;
+  String? name;
 
   /// Feeds your llama [Food].
   ///

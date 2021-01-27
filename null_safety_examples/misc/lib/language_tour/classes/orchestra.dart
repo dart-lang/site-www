@@ -26,14 +26,14 @@ abstract class Demented {
 }
 
 class Person {
-  String name;
+  String? name;
   Person();
   Person.withName(this.name);
 }
 
 abstract class Performer {
   Performer(String name);
-  String name;
+  String? name;
 }
 
 // #docregion Musician-and-Maestro

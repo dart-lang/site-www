@@ -6,7 +6,7 @@ final Matcher throwsATypeError = throwsA(TypeMatcher<TypeError>());
 
 void main() {
   test('constructor-1', () {
-    var names = List<String>();
+    var names = <String>[];
     names.addAll(['Seth', 'Kathy', 'Lars']);
     // #docregion constructor-1
     var nameSet = Set<String>.from(names);
@@ -23,8 +23,9 @@ void main() {
 
   test('generic-collections', () {
     _test() {
+      // TODO(miquelbeltran) language-tour.md should be updated, List<String> cannot be used with null-safety
       // #docregion generic-collections
-      var names = List<String>();
+      var names = <String>[];
       names.addAll(['Seth', 'Kathy', 'Lars']);
       print(names is List<String>); // true
       // #enddocregion generic-collections

@@ -6,7 +6,7 @@
 ///
 // #docregion constructor-long-way
 class Point {
-  double x, y;
+  late double x, y;
 
   Point(double x, double y) {
     // There's a better way to do this, stay tuned.
@@ -19,8 +19,8 @@ class Point {
   // Initializer list sets instance variables before
   // the constructor body runs.
   Point.fromJson(Map<String, double> json)
-      : x = json['x'],
-        y = json['y'] {
+      : x = json['x']!,
+        y = json['y']! {
     print('In Point.fromJson(): ($x, $y)');
   }
   // #enddocregion initializer-list

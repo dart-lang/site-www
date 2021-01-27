@@ -2,9 +2,7 @@
 class SortedCollection {
   Function compare;
 
-  SortedCollection(int f(Object a, Object b)) {
-    compare = f;
-  }
+  SortedCollection(int f(Object a, Object b)) : compare = f;
 }
 
 // Initial, broken implementation.
