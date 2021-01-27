@@ -63,12 +63,13 @@ If you inspect your running code in the debugger,
 you’ll see that non-nullability is retained at runtime
 (hence _sound_ null safety).
 
-This code sample showcases a number of Dart language features:
-libraries, async calls, nullable and non-nullable types,
+This embedded code sample showcases several Dart language features,
+including libraries, async calls, nullable and non-nullable types,
 arrow syntax, generators, streams, and getters.
-A more comprehensive set of annotated language examples can be found in
-[Dart by Example](http://jpryan.me/dartbyexample/) by
-[@jryanio](https://twitter.com/jryanio).
+To find examples of using more Dart features,
+see the [samples page](/samples).
+To learn more about the language, take the [Dart language
+tour](/guides/language/language-tour).
 
 <?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
@@ -116,11 +117,12 @@ class Point {
 }
 ```
 
-[This sample can be run
-interactively](https://dartpad.dev/b2e3a914bd39d0408d0580c42ef2e58b?null_safety=true)
-using [DartPad](https://dartpad.dev), an online execution environment for Dart.
-To learn more about the language, take the [Dart language
-tour](/guides/language/language-tour).
+{{ site.alert.tip }}
+  This example is running in an embedded [DartPad](/tools/dartpad).
+  You can also
+  <a href="https://dartpad.dev/4d688b6e468fb4c53d312250f557ec5c"
+  target="_blank">open this example in its own window</a>.
+{{ site.alert.end }}
 
 
 ## Dart: The libraries
@@ -188,8 +190,7 @@ Dart's compiler technology lets you run code in different ways:
 * **Web compilation**: For apps targeting the web,
   Dart includes both a development time compiler (dartdevc) and
   a production time compiler (dart2js).
-  Both compilers translate Dart into JavaScript,
-  which is supported on all browsers.
+  Both compilers translate Dart into JavaScript.
 
 <img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
 illustration of the targets supported by Dart">
