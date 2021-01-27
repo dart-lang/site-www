@@ -33,7 +33,7 @@ prioritizing both development (sub-second stateful hot reload) and
 high-quality production experiences across
 a wide variety of compilation targets (web, mobile, and desktop).
 
-Dart also forms the foundation of [Flutter](https://flutter.dev).
+Dart also forms the foundation of [Flutter]({{site.flutter}}).
 Dart provides the language and runtimes that power Flutter apps,
 but Dart also supports many core developer tasks like
 formatting, analyzing, and testing code.
@@ -120,7 +120,7 @@ class Point {
 {{ site.alert.tip }}
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
-  <a href="https://dartpad.dev/4d688b6e468fb4c53d312250f557ec5c"
+  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
   target="_blank">open this example in its own window</a>.
 {{ site.alert.end }}
 
@@ -164,19 +164,19 @@ some of the classes provided in Dart through a series of working examples.
 Beyond the core libraries, many APIs are provided through
 a comprehensive set of packages.
 Dart also offers many useful supplementary packages, including the following:
-* [characters](https://pub.dev/packages/characters)
-* [intl](https://pub.dev/packages/intl) 
-* [http](https://pub.dev/packages/http)
-* [crypto](https://pub.dev/packages/crypto)
-* [markdown](https://pub.dev/packages/markdown)
+* [characters]({{site.pub-pkg}}/characters)
+* [intl]({{site.pub-pkg}}/intl) 
+* [http]({{site.pub-pkg}}/http)
+* [crypto]({{site.pub-pkg}}/crypto)
+* [markdown]({{site.pub-pkg}}/markdown)
 
 In addition, there are thousands of packages from
 third-party publishers and the broader community,
 including packages for the following:
-* [XML](https://pub.dev/packages/xml) 
-* [Windows integration](https://pub.dev/packages/win32)
-* [SQLite](https://pub.dev/packages/sqflite_common)
-* [compression](https://pub.dev/packages/archive)
+* [XML]({{site.pub-pkg}}/xml) 
+* [Windows integration]({{site.pub-pkg}}/win32)
+* [SQLite]({{site.pub-pkg}}/sqflite_common)
+* [compression]({{site.pub-pkg}}/archive)
 
 
 ## Dart: The platform
@@ -195,7 +195,7 @@ Dart's compiler technology lets you run code in different ways:
 <img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
 illustration of the targets supported by Dart">
 
-In addition, [Flutter](https://flutter.dev) provides tooling and UI libraries to
+In addition, [Flutter]({{site.flutter}}) provides tooling and UI libraries to
 build UIs that run on iOS, Android, macOS, Windows, and Linux.
 
 
@@ -203,7 +203,7 @@ build UIs that run on iOS, Android, macOS, Windows, and Linux.
 
 You have many choices for learning Dart. Here are a few that we recommend:
 
-* [Explore Dart in the browser](https://dartpad.dev/) through DartPad,
+* [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
 * [Take a tour of the Dart language](/guides/language/language-tour),
   which shows you how to use each major Dart feature.
@@ -211,7 +211,7 @@ You have many choices for learning Dart. Here are a few that we recommend:
   covers the basics of using Dart to build for the command line.
 * [Work through extensive online training][udemy]
   from Dart experts.
-* [Explore the API documentation](https://api.dart.dev/) that
+* [Explore the API documentation]({{site.dart_api}}) that
   describes the Dart core libraries.
 * [Read a book about Dart programming](/resources/books).
 
