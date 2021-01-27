@@ -21,6 +21,24 @@ Want to install Dart with your OS's package manager?
   {% include_relative _sdk-terms.md %}
 {{site.alert.end}}
 
+# System requirements
+
+We currently support the following combinations of operating system and system
+architecture:
+
+  * Windows
+    * Supported versions: TODO.
+    * Supported architectures: x64, is32.
+
+  * Linux
+    * Supported versions: TODO.
+    * Supported architectures: x64, ia32, arm, arm64.
+
+  * macOS
+    * Supported versions: TODO.
+    * Supported architectures: x64. Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
+
+# Release channels
 
 ## Stable channel
 
