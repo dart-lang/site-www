@@ -39,12 +39,16 @@ which (as of Flutter 1.21) includes the full Dart SDK.
 </div>
 
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-  With [Homebrew,](https://brew.sh/)
+  With [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/),
   installing Dart is easy.
 
   ```terminal
   $ brew tap dart-lang/dart
   $ brew install dart
+  ```
+  or
+  ```terminal
+  $ port install dart-sdk
   ```
 </div>
 
