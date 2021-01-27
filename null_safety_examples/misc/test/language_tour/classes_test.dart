@@ -50,7 +50,12 @@ void main() {
     // Invoke distanceTo() on p.
     double distance = p.distanceTo(Point(4, 4));
     // #enddocregion object-members
+  });
 
+  test('safe-member-access', () {
+    // Trick to make p nullable
+    Point? Function() f = () => Point(2, 2);
+    Point? p = f();
     // #docregion safe-member-access
     // If p is non-null, set a variable equal to its y value.
     var a = p?.y;
