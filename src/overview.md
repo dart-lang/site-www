@@ -24,8 +24,8 @@ Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
 [flexible execution runtime platform](/platforms) for app frameworks.
 
-Languages are defined by their _technical envelope_,
-the many choices that are made during development that
+Languages are defined by their _technical envelope_ —
+the choices made during development that
 shape the capabilities and strengths of a language.
 Dart is designed for a technical envelope that is
 particularly suited to client development,
@@ -48,7 +48,7 @@ Sometimes, this is referred to as sound typing.
 Although types are mandatory,
 type annotations are optional because of type inference.
 The Dart typing system is also flexible,
-allowing the use of a 'dynamic' type combined with runtime checks,
+allowing the use of a `dynamic` type combined with runtime checks,
 which can be useful during experimentation or
 for code that needs to be especially dynamic.
 
@@ -58,15 +58,15 @@ With sound null safety, Dart can protect you from
 null exceptions at runtime through static code analysis.
 Unlike many other null-safe languages,
 when Dart determines that a variable is non-nullable,
-that variable is always non-nullable.
+that variable is _always_ non-nullable.
 If you inspect your running code in the debugger,
 you’ll see that non-nullability is retained at runtime
 (hence _sound_ null safety).
 
-This embedded code sample showcases several Dart language features,
+The following code sample showcases several Dart language features,
 including libraries, async calls, nullable and non-nullable types,
 arrow syntax, generators, streams, and getters.
-To find examples of using more Dart features,
+To find examples of using additional Dart features,
 see the [samples page](/samples).
 To learn more about the language, take the [Dart language
 tour](/guides/language/language-tour).
@@ -117,7 +117,7 @@ class Point {
 }
 ```
 
-{{ site.alert.tip }}
+{{ site.alert.info }}
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
@@ -127,8 +127,8 @@ class Point {
 
 ## Dart: The libraries
 
-Dart has [a rich set of core libraries](/guides/libraries) that
-provides essentials for many everyday programming tasks. This includes:
+Dart has [a rich set of core libraries](/guides/libraries),
+providing essentials for many everyday programming tasks:
 
 * Built-in types, collections, and other core functionality for
   every Dart program
@@ -150,7 +150,7 @@ provides essentials for many everyday programming tasks. This includes:
 * Foreign function interfaces for interoperability with
   other code that presents a C-style interface
   (`dart:ffi`)
-* Concurrent programming using isolates:
+* Concurrent programming using _isolates_ —
   independent workers that are similar to threads but
   don't share memory, communicating only through messages
   (`dart:isolate`)
@@ -158,25 +158,29 @@ provides essentials for many everyday programming tasks. This includes:
   interact with the browser and the Document Object Model (DOM)
   (`dart:html`)
 
-The [library tour](/guides/libraries/library-tour) demonstrates
-some of the classes provided in Dart through a series of working examples.
-
 Beyond the core libraries, many APIs are provided through
 a comprehensive set of packages.
-Dart also offers many useful supplementary packages, including the following:
+The Dart team publishes many useful supplementary packages,
+such as these:
+
 * [characters]({{site.pub-pkg}}/characters)
 * [intl]({{site.pub-pkg}}/intl) 
 * [http]({{site.pub-pkg}}/http)
 * [crypto]({{site.pub-pkg}}/crypto)
 * [markdown]({{site.pub-pkg}}/markdown)
 
-In addition, there are thousands of packages from
-third-party publishers and the broader community,
-including packages for the following:
+Additionally, third-party publishers and the broader community
+publish thousands of packages, with support for features like these:
+
 * [XML]({{site.pub-pkg}}/xml) 
 * [Windows integration]({{site.pub-pkg}}/win32)
 * [SQLite]({{site.pub-pkg}}/sqflite_common)
 * [compression]({{site.pub-pkg}}/archive)
+
+To see a series of working examples featuring the Dart core libraries,
+take the [library tour](/guides/libraries/library-tour).
+To find additional APIs, see the
+[commonly used packages page](/guides/libraries/useful-libraries).
 
 
 ## Dart: The platform
