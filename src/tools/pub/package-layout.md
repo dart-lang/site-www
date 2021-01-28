@@ -279,9 +279,6 @@ for consumers of the package to use.
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
-You can reference another package's assets using the
-[resource package.](https://github.com/dart-lang/resource)
-
 <aside class="alert alert-warning" markdown="1">
 **Warning:**
 Old code might refer to assets using `/packages/<package>/<path>` URLs.
