@@ -40,7 +40,10 @@ void main() {
   });
 
   test('assert', () {
-    var text = '', number = 0, urlString = 'https';
+    // trick to make text nullable
+    String? Function() _text = () => '';
+    String? text = _text();
+    var number = 0, urlString = 'https';
     // #docregion assert
     // Make sure the variable has a non-null value.
     assert(text != null);
