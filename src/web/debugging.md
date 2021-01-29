@@ -78,11 +78,11 @@ but you'll need to adjust the instructions to match your app.
    so that you can run your app and open the Dart DevTools
    in an already-running instance of Chrome.
 
-1. In your app's top directory, run `pub get` to get its dependencies.
+1. In your app's top directory, run `dart pub get` to get its dependencies.
 
    ```terminal
    $ cd example
-   $ pub get
+   $ dart pub get
    ```
 
 1. Compile and serve the app with dartdevc,
@@ -172,8 +172,8 @@ To use Dart DevTools, you also need the [devtools package.][devtools-pkg]
 Use pub to get these tools:
 
 ```terminal
-$ pub global activate webdev
-$ pub global activate devtools
+$ dart pub global activate webdev
+$ dart pub global activate devtools
 ```
 
 If your PATH environment variable is set up correctly,
@@ -186,14 +186,14 @@ A tool to develop Dart web projects.
 ```
 
 For information on setting PATH, see the
-[`pub global` documentation.][pub global documentation]
+[`dart pub global` documentation.][dart pub global documentation]
 
 Whenever you update the Dart SDK,
 update the tools by activating them again:
 
 ```terminal
-$ pub global activate webdev     # update webdev
-$ pub global activate devtools   # update devtools
+$ dart pub global activate webdev     # update webdev
+$ dart pub global activate devtools   # update devtools
 ```
 
 ## Resources
@@ -225,7 +225,7 @@ For more information, see the following:
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [logging]: {{site.pub-pkg}}/logging
-[pub global documentation]: /tools/pub/cmd/pub-global
+[dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
 [webdev repo,]: https://github.com/dart-lang/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev
