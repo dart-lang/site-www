@@ -12,7 +12,9 @@ This page describes what's new on the Dart website and blog.
 To see what's new in Flutter, visit the
 [Flutter what's new page.][flutter-whats-new]
 
-To stay on top of Dart announcements, including breaking changes,
+For a list of Dart language changes in each Dart SDK, see the 
+[language evolution page](/guides/language/evolution).
+To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group.][dart-announce]
 
 [flutter-whats-new]: {{site.flutter}}/docs/whats-new
