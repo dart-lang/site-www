@@ -2941,8 +2941,7 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
-  static final ImmutablePoint origin =
-      const ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final double x, y;
 
