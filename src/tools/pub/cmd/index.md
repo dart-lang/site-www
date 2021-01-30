@@ -1,27 +1,27 @@
 ---
 title: The pub tool
-description: Pub, a package management tool for Dart, supports a variety of subcommands.
+description: The command-line interface for pub, a package management tool for Dart.
 ---
 
-The pub tool has subcommands for managing packages
-and for deploying packages and command-line apps.
-For general information about using the pub package manager, see
-[How to use packages](/guides/packages).
+This page describes the command-line interface to
+the [pub package manager](/guides/packages).
+To use the command-line interface,
+you use the [`flutter` tool][flutter-cli] or [`dart` tool][dart-cli]
+with the `pub` command,
+and then add a pub subcommand such as `get`:
 
-The Dart and Flutter SDKs have slightly different implementations of
-some pub subcommands, so choose the right tool for your work:
+```terminal
+$ flutter pub get # Gets dependencies for a Flutter-specific package
+$ dart pub get    # Gets dependencies for any other package
+```
 
-`flutter pub <subcommand>`
-: Use the [`flutter` tool][flutter-cli]
-  when you're working on **Flutter-specific code**.
-  Where this site uses `dart pub <subcommand>`,
-  you can instead use `flutter pub <subcommand>`.
-  For more information, see
-  [Using packages]({{site.flutter}}/using-packages)
-  on the [Flutter website.]({{site.flutter}}).
-
-`dart pub <subcommand>`
-: Use the [`dart` tool][dart-cli] when your code isn't specific to Flutter.
+This site uses `dart pub <subcommand>` for its examples,
+but if your current directory holds a Flutter app
+or other Flutter-specific code,
+use `flutter pub <subcommand>` instead.
+For more information, see
+[Using packages]({{site.flutter}}/using-packages)
+on the [Flutter website.]({{site.flutter}}).
 
 [flutter-cli]: {{site.flutter}}/docs/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
