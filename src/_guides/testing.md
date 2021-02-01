@@ -130,14 +130,11 @@ For details, see the
 
 Consider using continuous integration (CI) to build your project
 and run its tests after every commit. Two CI services for GitHub are
-[Travis CI](https://travis-ci.org/) (for OS X and Unix) and
+[Github Actions](https://github.com/features/actions) and
 [AppVeyor](https://www.appveyor.com/) (for Windows).
 
-Travis has built-in support for Dart projects.
-Learn more at the following links:
+Learn more abou GitHub Actions at the following link:
 
-* [Building a Dart Project](https://docs.travis-ci.com/user/languages/dart)
-  covers how to configure Travis for Dart projects
-* The [shelf](https://github.com/dart-lang/shelf/blob/master/.travis.yml)
-  example uses the `dart_task` tag (in `.travis.yml`) to configure
-  the build.
+* [Testing Dart packages with GitHub Actions](https://medium.com/flutter-community/testing-dart-packages-with-github-actions-4c2c671b1e34)
+  demonstrates simple workflow for a Flutter/Dart package using GitHub Actions.
+
