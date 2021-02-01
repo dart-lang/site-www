@@ -244,7 +244,7 @@ More information:
 * [Web deployment tips](/web/deployment)
 
 
-## Learning Dart
+## Learning Dart {#learning-dart}
 
 You have many choices for learning Dart. Here are a few that we recommend:
 
