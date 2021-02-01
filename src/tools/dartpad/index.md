@@ -25,14 +25,12 @@ Here's what DartPad looks like:
 
 ## Library support
 
-DartPad supports
-[dart:* libraries]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-that work with web apps; it doesn't support
-[dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io) or
-libraries from [packages.]({{site.pub}})
-If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
-If you want to use a package, get the SDK for a
-[platform](/platforms) that the package supports.
+DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
+multi-platform and web platform. It doesn't support those marked native
+platform.
+
+It also doesn't support using packages from the [pub.dev]({{site.pub}}) package
+repository.
 
 ## Getting started
 

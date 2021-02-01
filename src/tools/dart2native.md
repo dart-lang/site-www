@@ -4,7 +4,7 @@ description: Command-line tool for AOT-compiling Dart source code.
 ---
 
 Use the `dart2native` command to AOT (ahead-of-time) compile
-a Dart program to [native x64 machine code](/platforms).
+a Dart program to [native x64 machine code](/overview#native-platform).
 The `dart2native` command is supported on Windows, macOS, and Linux.
 
 {{site.alert.note}}

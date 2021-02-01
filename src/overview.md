@@ -204,7 +204,7 @@ that's powered by the Dart platform, and which provides tooling and UI libraries
 to build UI experiences that run on iOS, Android, macOS, Windows, Linux, and the
 Web.
 
-#### Dart Native (machine code JIT and AOT)
+#### Dart Native (machine code JIT and AOT) {#native-platform}
 
 During development, aa fast developer cycle is critical for iteration. The Dart
 VM offers a just-in-time compiler (JIT) that supports both pure interpretation
@@ -226,7 +226,7 @@ More information:
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP clients and servers](/tutorials/server/httpserver)
 
-#### Dart Web (JavaScript dev & prod)
+#### Dart Web (JavaScript dev & prod) {#web-platform}
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
