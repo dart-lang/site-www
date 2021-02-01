@@ -118,7 +118,7 @@ The following `PATH` variable, on macOS, includes the system cache:
 
 {% prettify none tag=pre+code %}
 $ echo $PATH
-[!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
 {% endprettify %}
 
 If this directory is missing from your `PATH`,
