@@ -130,11 +130,10 @@ For details, see the
 
 Consider using continuous integration (CI) to build your project
 and run its tests after every commit. Two CI services for GitHub are
-[Github Actions](https://github.com/features/actions) and
+[GitHub Actions](https://github.com/features/actions) and
 [AppVeyor](https://www.appveyor.com/) (for Windows).
 
 Learn more abou GitHub Actions at the following link:
 
 * [Testing Dart packages with GitHub Actions](https://medium.com/flutter-community/testing-dart-packages-with-github-actions-4c2c671b1e34)
   demonstrates simple workflow for a Flutter/Dart package using GitHub Actions.
-
