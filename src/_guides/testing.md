@@ -133,7 +133,7 @@ and run its tests after every commit. Two CI services for GitHub are
 [GitHub Actions](https://github.com/features/actions) and
 [AppVeyor](https://www.appveyor.com/).
 
-Learn more abou GitHub Actions at the following link:
+Learn more about GitHub Actions at the following links:
 
 * [Testing Dart packages with GitHub Actions](https://poetryincode.dev/testing-dart-packages-with-github-actions)
   demonstrates simple workflow for a Flutter/Dart package using GitHub Actions.
