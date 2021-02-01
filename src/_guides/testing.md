@@ -131,7 +131,7 @@ For details, see the
 Consider using continuous integration (CI) to build your project
 and run its tests after every commit. Two CI services for GitHub are
 [GitHub Actions](https://github.com/features/actions) and
-[AppVeyor](https://www.appveyor.com/) (for Windows).
+[AppVeyor](https://www.appveyor.com/).
 
 Learn more abou GitHub Actions at the following link:
 
