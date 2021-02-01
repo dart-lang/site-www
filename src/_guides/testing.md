@@ -137,3 +137,4 @@ Learn more abou GitHub Actions at the following link:
 
 * [Testing Dart packages with GitHub Actions](https://poetryincode.dev/testing-dart-packages-with-github-actions)
   demonstrates simple workflow for a Flutter/Dart package using GitHub Actions.
+* [Markdown](https://github.com/dart-lang/markdown/pull/353) integrates GitHub Actions in a dart project.
