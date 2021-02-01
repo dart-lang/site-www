@@ -133,8 +133,17 @@ and run its tests after every commit. Two CI services for GitHub are
 [GitHub Actions](https://github.com/features/actions) and
 [AppVeyor](https://www.appveyor.com/).
 
-Learn more about GitHub Actions at the following links:
+Learn more about GitHub Actions:
 
-* [Testing Dart packages with GitHub Actions](https://poetryincode.dev/testing-dart-packages-with-github-actions)
-  demonstrates simple workflow for a Flutter/Dart package using GitHub Actions.
-* [Markdown](https://github.com/dart-lang/markdown/pull/353) integrates GitHub Actions in a dart project.
+* [Testing Dart packages with GitHub Actions][gha-article]
+  demonstrates a simple workflow for using GitHub Actions to test
+  a Flutter app or Dart package.
+* Many packages provided by the Dart team use GitHub Actions.
+  For an example, see
+  [`test-package.yml`][markdown-ci] in the markdown package's repo.
+  To see how that repo migrated from Travis CI to GitHub Actions,
+  look at [PR #353](https://github.com/dart-lang/markdown/pull/353).
+
+[gha-article]: https://poetryincode.dev/testing-dart-packages-with-github-actions
+[markdown-ci]: https://github.com/dart-lang/markdown/blob/master/.github/workflows/test-package.yml
+
