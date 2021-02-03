@@ -94,7 +94,7 @@ At the command line, run the `hello_world_server.dart` script:
 
 ```terminal
 $ cd httpserver
-$ dart bin/hello_world_server.dart
+$ dart run bin/hello_world_server.dart
 listening on localhost, port 4040
 ```
 
@@ -229,7 +229,7 @@ that you can use to guess the number.
 
    ```terminal
    $ cd httpserver
-   $ dart bin/number_thinker.dart
+   $ dart run bin/number_thinker.dart
    I'm thinking of a number: 6
    ```
 
@@ -522,14 +522,14 @@ Run the server and client on the command line.
 
    ```terminal
    $ cd httpserver
-   $ dart bin/basic_writer_server.dart
+   $ dart run bin/basic_writer_server.dart
    ```
 
 2. In a new terminal, run the client:
 
    ```terminal
    $ cd httpserver
-   $ dart bin/basic_writer_client.dart
+   $ dart run bin/basic_writer_client.dart
    Wrote data for Han Solo.
    ```
 
@@ -754,7 +754,7 @@ It responds to all requests by returning the contents of the
 
    ```terminal
    $ cd httpserver
-   $ dart bin/mini_file_server.dart
+   $ dart run bin/mini_file_server.dart
    ```
 
 2. Type [localhost:4044](http://localhost:4044) into the browser.
@@ -814,7 +814,7 @@ uses the [http_server][] package.
 
    ```terminal
    $ cd httpserver
-   $ dart bin/basic_file_server.dart
+   $ dart run bin/basic_file_server.dart
    ```
 
 2. Type [localhost:4046](http://localhost:4046) into the browser.

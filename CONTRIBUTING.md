@@ -33,6 +33,9 @@ More info:
 * We follow the [Google Developer Documentation Style Guide][].
 * For more ways to contribute to Dart, see the
   [dart-lang/sdk Contributing page][].
+* NEW (1/21/2021): If you'd like to discuss dart.dev doc changes,
+  join us in the #hackers-devrel channel
+  [on Flutter's Discord server](https://github.com/flutter/flutter/wiki/Chat).
 
 [beginner]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
 [dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/wiki/Contributing

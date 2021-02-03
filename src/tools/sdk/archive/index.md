@@ -1,7 +1,7 @@
 ---
 title: Dart SDK archive
 short-title: Archive
-description: Download specific stable and dev channel versions of the Dart SDK and the Dart API documentation.
+description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
 js:
 - url: /tools/sdk/archive/out/web/download_archive.dart.js
   defer: true
@@ -45,10 +45,31 @@ Dev channel builds are not suitable for production use.
 
 {% include_relative _archives_table.html channel="dev" %}
 
+## Main channel
+
+Main channel builds are the latest, raw builds from
+the main (`master`) branch of the Dart SDK repository.
+These are the freshest builds available,
+and they're likely to contain bugs.
+Main channel builds are suitable only for
+experimental development use, not for production use.
+
+{{ site.alert.note }}
+  Main channel builds are unsigned.
+{{ site.alert.end }}
+
+To download a main channel build, use a
+[main channel URL](#main-channel-url-scheme).
+
+
 ## Download URLs
 
-You can find the zip files at predictable URLs using the
-following pattern:
+You can download zip files for any channel.
+
+### Stable, beta, and dev channel URL scheme
+
+Stable, beta, and dev channel releases
+are available at URLs like the following:
 
 {% prettify none tag=pre+code %}
 https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/release/<[!version!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
@@ -62,3 +83,22 @@ https://storage.googleapis.com/dart-archive/channels/stable/release/2.1.1/sdk/da
 https://storage.googleapis.com/dart-archive/channels/beta/release/2.8.0-20.11.beta/sdk/dartsdk-linux-x64-release.zip
 https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-1.0.dev/sdk/dartsdk-linux-x64-release.zip
 {% endprettify %}
+
+### Main channel URL scheme
+
+The latest main channel build
+is available at URLs like the following:
+
+{% prettify none tag=pre+code %}
+https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
+{% endprettify %}
+
+Example:
+
+{% prettify none tag=pre+code %}
+https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
+{% endprettify %}
+
+{{ site.alert.note }}
+  Main channel builds are unsigned.
+{{ site.alert.end }}
