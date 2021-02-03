@@ -30,7 +30,11 @@ More info:
   publicly, but we can also communicate other ways such as email and
   [Gitter][].
 * We use the usual [GitHub pull request][] process.
-* We follow the [Google Developer Documentation Style Guide][].
+* We follow the [Google Developer Documentation Style Guide][],
+  with some additional conventions that we try to document
+  [in the site-shared repo](https://github.com/dart-lang/site-shared/blob/master/doc).
+  In particular, we use
+  [semantic line breaks](https://github.com/dart-lang/site-shared/blob/master/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks).
 * For more ways to contribute to Dart, see the
   [dart-lang/sdk Contributing page][].
 * NEW (1/21/2021): If you'd like to discuss dart.dev doc changes,
