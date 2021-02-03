@@ -17,7 +17,7 @@ with your SDK version.
 
 Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, downloading, updating, and publishing packages.
-Or you can use [`pub` on the command line](/tools/pub/cmd).
+Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
@@ -64,12 +64,12 @@ get</code> from the top directory of your application:
 
 ```terminal
 $ cd <path-to-my_app>
-$ pub get
+$ dart pub get
 ```
 
 This process is called _getting the dependencies_.
 
-The [`pub get`][] command determines which packages your app depends on,
+The [`dart pub get`][] command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -143,29 +143,29 @@ Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`pub upgrade`][] command:
+use the [`dart pub upgrade`][] command:
 
 {% prettify sh tag=pre+code %}
-$ pub upgrade
+$ dart pub upgrade
 {% endprettify %}
 
-The `pub upgrade` command tells pub to regenerate the lockfile, using the newest
+The `dart pub upgrade` command tells pub to regenerate the lockfile, using the newest
 available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
 {% prettify sh tag=pre+code %}
-$ pub upgrade transmogrify
+$ dart pub upgrade transmogrify
 {% endprettify %}
 
 That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
 
-The [`pub upgrade`][] command can't always upgrade every package
+The [`dart pub upgrade`][] command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`pub outdated`][].
+use [`dart pub outdated`][].
 
 ## More information
 
