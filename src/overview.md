@@ -141,8 +141,10 @@ providing essentials for many everyday programming tasks:
   (`dart:convert`)
 * Mathematical constants and functions, and random number generation
   (`dart:math`)
-* File, socket, HTTP, and other I/O support for non-web applications (`dart:io`)
-* Support for asynchronous programming, with classes such as `Future` and `Stream`
+* File, socket, HTTP, and other I/O support for non-web applications
+  (`dart:io`)
+* Support for asynchronous programming,
+  with classes such as `Future` and `Stream`
   (`dart:async`)
 * Lists that efficiently handle fixed-sized data
   (for example, unsigned 8-byte integers) and SIMD numeric types
@@ -199,26 +201,29 @@ Dart's compiler technology lets you run code in different ways:
 <img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
 illustration of the targets supported by Dart">
 
-The [Flutter framework]({{site.flutter}}) is a popular multi-platform UI toolkit
-that's powered by the Dart platform, and which provides tooling and UI libraries
-to build UI experiences that run on iOS, Android, macOS, Windows, Linux, and the
-Web.
+The [Flutter framework]({{site.flutter}}) is a popular,
+multi-platform UI toolkit that's powered by the Dart platform,
+and that provides tooling and UI libraries to build UI experiences that run
+on iOS, Android, macOS, Windows, Linux, and the web.
 
 #### Dart Native (machine code JIT and AOT) {#native-platform}
 
-During development, aa fast developer cycle is critical for iteration. The Dart
-VM offers a just-in-time compiler (JIT) that supports both pure interpretation
-(as required on iOS devices, for example) and runtime optimization.
+During development, a fast developer cycle is critical for iteration.
+The Dart VM offers a just-in-time compiler (JIT) that
+supports both pure interpretation (as required on iOS devices, for example)
+and runtime optimization.
 
-When apps are ready to be deployed to production — whether you're publishing to
-an app store or deploying to a production backend — the Dart AOT compiler
-enables ahead-of-time compilation to native ARM or X64 code machine code. Your
-AOT-compiled app starts instantly and runs smoothly.
+When apps are ready to be deployed to production —
+whether you're publishing to an app store or
+deploying to a production backend —
+the Dart AOT compiler enables ahead-of-time compilation to
+native ARM or X64 code.
+Your AOT-compiled app starts instantly and runs smoothly.
 
-The AOT-compiled code runs inside an efficient Dart runtime that enforces the
-sound Dart type system and manages memory using fast object allocation and a
-[generational garbage collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)
-
+The AOT-compiled code runs inside an efficient Dart runtime that
+enforces the sound Dart type system and
+manages memory using fast object allocation and a
+[generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
 More information:
 * [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
