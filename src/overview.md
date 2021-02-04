@@ -185,7 +185,7 @@ To find additional APIs, see the
 [commonly used packages page](/guides/libraries/useful-libraries).
 
 
-## Dart: The platform {#platform}
+## Dart: The platforms {#platform}
 
 Dart's compiler technology lets you run code in different ways:
 
@@ -209,16 +209,16 @@ on iOS, Android, macOS, Windows, Linux, and the web.
 #### Dart Native (machine code JIT and AOT) {#native-platform}
 
 During development, a fast developer cycle is critical for iteration.
-The Dart VM offers a just-in-time compiler (JIT) that
-supports both pure interpretation (as required on iOS devices, for example)
-and runtime optimization.
+The Dart VM offers a just-in-time compiler (JIT) with
+incremental recompilation (enabling hot reload), live metrics collections
+(powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
 When apps are ready to be deployed to production —
 whether you're publishing to an app store or
 deploying to a production backend —
 the Dart AOT compiler enables ahead-of-time compilation to
-native ARM or X64 code.
-Your AOT-compiled app starts instantly and runs smoothly.
+native ARM or x64 machine code.
+Your AOT-compiled app launches with consistent, short startup time.
 
 The AOT-compiled code runs inside an efficient Dart runtime that
 enforces the sound Dart type system and
@@ -226,8 +226,8 @@ manages memory using fast object allocation and a
 [generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
 More information:
-* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
 * [Get started: command-line and server apps](/tutorials/server/get-started)
+* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP clients and servers](/tutorials/server/httpserver)
 
@@ -244,6 +244,7 @@ code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 More information:
+* [Get started: web apps](/tutorials/web/get-started)
 * [`dartdevc` compiler](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
