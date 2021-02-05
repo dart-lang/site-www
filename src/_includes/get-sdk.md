@@ -15,7 +15,7 @@ which (as of Flutter 1.21) includes the full Dart SDK.
 
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
   Use [Chocolatey](https://chocolatey.org) to install a stable release of
-  the Dart SDK
+  the Dart SDK.
 
 {{ site.alert.important }}
   These commands require administrator privileges.
