@@ -285,6 +285,22 @@ when you enable null safety.
 
 The fix is to explicitly create such lists as `List<dynamic>`.
 
+## Why does the migration tool add comments to my code? {#migration-comments}
+
+The migration tool adds `/* == false */` or `/* == true */` comments when it
+sees conditions that will always be false or true while running in sound mode.
+Comments like these might indicate that the automatic migration is incorrect and
+needs human intervention. For example:
+
+```dart
+if (registry.viewFactory(viewDescriptor.id) == null /* == false */)
+```
+
+In these cases, the migration tool can't distinguish defensive-coding situations
+and situations where a null value is really expected. So the tool tells you what
+it knows ("it looks like this condition will always be false!") and lets you
+decide what to do.
+
 ## Resources
 
 *   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
