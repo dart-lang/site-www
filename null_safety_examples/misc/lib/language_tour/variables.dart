@@ -9,7 +9,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion type-decl
-    dynamic name = 'Bob';
+    Object name = 'Bob';
     // #enddocregion type-decl
   }
 

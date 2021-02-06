@@ -2,10 +2,13 @@
 // #docregion class-with-distanceTo
 import 'dart:math';
 
-// TODO(miquelbeltran) maybe default value to 0 is better here
+const double xOrigin = 0;
+const double yOrigin = 0;
+
 // #docregion constructor-initializer, named-constructor
 class Point {
-  late double x, y;
+  double x = 0;
+  double y = 0;
 
   // #enddocregion class-with-distanceTo, named-constructor
   // Syntactic sugar for setting x and y
@@ -16,8 +19,8 @@ class Point {
 
   // Named constructor
   Point.origin() {
-    x = 0;
-    y = 0;
+    x = xOrigin;
+    y = yOrigin;
   }
   // #enddocregion named-constructor
 

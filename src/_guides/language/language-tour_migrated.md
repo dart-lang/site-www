@@ -2,8 +2,21 @@
 title: A tour of the Dart language
 description: A tour of all of the major Dart language features.
 short-title: Language tour
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+{% comment %}
+TODO #2951: move this into one of our SCSS files
+{% endcomment -%}
+<style>
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 150px;
+  resize: vertical;
+  width: 100%;
+}
+</style>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
@@ -26,6 +39,10 @@ consult the [Dart language specification][].
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
+{% comment %}
+[TODO #2950: Look for null, ?, !, late, optional. (Anything else?)
+Look for dynamic. Look for code that isn't auto-included (no code-excerpt.)]
+{% endcomment %}
 
 ## A basic Dart program
 
@@ -106,11 +123,24 @@ mind:
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
     is inferred to be of type `int`. When you want to explicitly say
-    that no type is expected,
-    [use the special type `dynamic`][ObjectVsDynamic].
+    that no type is expected, use the type `Object` or —
+    if you want to defer type checking until runtime —
+    the [special type `dynamic`][ObjectVsDynamic].
+
+    {% comment %}
+    [TODO #2950: Better link? Cover `dynamic` more in the language tour?]
+
+    Here's a nice example that illustrates what dynamic does:
+      dynamic a = 2;
+      String b = a; // no problem! until runtime
+      // Uncaught Error: TypeError: 2: type 'JSInt' is not a subtype of type 'String'
+  
+      Object c = 2;
+      String d = c;  // problem! A value of type 'Object' can't be assigned to a variable of type 'String'
+    {% endcomment %}
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
-    or `List<dynamic>` (a list of objects of any type).
+    or `List<Object>` (a list of objects of any type).
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
@@ -189,7 +219,7 @@ The following table lists the words that the Dart language treats specially.
 [class]: #instance-variables
 [const]: #final-and-const
 {% comment %}
-  [TODO: Make sure that points to a place that talks about const constructors,
+  [TODO #2950: Make sure that points to a place that talks about const constructors,
   as well as const literals and variables.]
 {% endcomment %}
 [continue]: #break-and-continue
@@ -241,7 +271,7 @@ The following table lists the words that the Dart language treats specially.
 [var]: #variables
 [void]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
 {% comment %}
-  TODO: Add coverage of void to the language tour.
+  TODO #2950: Add coverage of void to the language tour.
 {% endcomment %}
 [with]: #adding-features-to-a-class-mixins
 [while]: #while-and-do-while
@@ -283,16 +313,11 @@ reference to a `String` object with a value of “Bob”.
 The type of the `name` variable is inferred to be `String`,
 but you can change that type by specifying it.
 If an object isn't restricted to a single type,
-specify the `Object` or `dynamic` type, following
-[design guidelines][ObjectVsDynamic].
-
-{% comment %}
-**[PENDING: check on Object vs. dynamic guidance.]**
-{% endcomment %}
+specify the `Object` type (or `dynamic` if necessary).
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (type-decl)"?>
 ```dart
-dynamic name = 'Bob';
+Object name = 'Bob';
 ```
 
 Another option is to explicitly declare the type that would be inferred:
@@ -314,6 +339,12 @@ String name = 'Bob';
 Uninitialized variables have an initial value of `null`. Even variables
 with numeric types are initially null, because numbers—like everything
 else in Dart—are objects.
+
+{% comment %}
+TODO #2950: Cover `?` earlier.
+21 out of 958 excerpts were updated in the migration of examples to null safety.
+This is the first one, and the first occurrence of `?`.
+{% endcomment %}
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -444,7 +475,7 @@ literal. For example, `'this is a string'` is a string literal,
 and `true` is a boolean literal.
 
 {% comment %}
-PENDING: add info about support for Iterable, Future, Stream?
+[TODO #2950: add info about support for Iterable, Future, Stream?
 Those can't be initialized using literals, but they do have special support.
 {% endcomment %}
 
@@ -469,7 +500,7 @@ Dart numbers come in two flavors:
     allowing values from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
 {% comment %}
-[PENDING: What about values on Android & iOS?
+[TODO #2565: What about values on Android & iOS?
 The informal spec is at
 https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
 {% endcomment %}
@@ -1041,7 +1072,7 @@ a sequence of grapheme clusters.
 Here's an example of using the characters API:
 
 {% comment %}
-TODO: add test code
+TODO #2950: add test code
 {% endcomment %}
 
 ```dart
@@ -1171,7 +1202,7 @@ or when you define function parameters.
 
 #### Named parameters
 
-Named parameters are optional unless they're specifically marked as required.
+Named parameters are optional unless they're specifically marked as `required`.
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
@@ -1191,23 +1222,25 @@ to specify named parameters:
 void enableFlags({bool? bold, bool? hidden}) {...}
 ```
 
+{{ site.alert.tip }}
+  If a parameter is optional but can't be `null`,
+  provide a [default value](#default-parameter-values).
+{{ site.alert.end }}
+
 Although named parameters are a kind of optional parameter,
-you can annotate them with [@required][] to indicate
+you can annotate them with `required` to indicate
 that the parameter is mandatory —
 that users must provide a value for the parameter.
 For example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-const Scrollbar({Key? key, required Widget child})
+const Scrollbar({Key? key, [!required!] Widget child})
 {% endprettify %}
 
 If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
-
-To use the [@required][] annotation,
-depend on the [meta][] package and import `package:meta/meta.dart`.
 
 {% comment %}
 NULLSAFE: Rewrite this section.
@@ -1273,8 +1306,7 @@ enableFlags(bold: true);
 {{site.alert.end}}
 
 {% comment %}
-PENDING: I don't see evidence that we've dropped support for `:`.
-Update if/when we do. Issue #?
+TODO #2950: Update if/when we drop support for `:`.
 See `defaultNamedParameter` in the language spec.
 {% endcomment %}
 
@@ -1334,22 +1366,14 @@ Every app must have a top-level `main()` function, which serves as the
 entrypoint to the app. The `main()` function returns `void` and has an
 optional `List<String>` parameter for arguments.
 
-Here's an example of the `main()` function for a web app:
+Here's a simple `main()` function:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/browser_test.dart (simple-web-main-function)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
-  querySelector('#sample_text_id')
-    ?..text = 'Click me!'
-    ..onClick.listen(reverseText);
+  print('Hello, World!');
 }
 ```
-
-{{site.alert.note}}
-  The `..` syntax in the preceding code is called a
-  [cascade](#cascade-notation-). With cascades, you can perform multiple
-  operations on the members of a single object.
-{{site.alert.end}}
 
 Here's an example of the `main()` function for a command-line app that
 takes arguments:
@@ -1442,7 +1466,8 @@ src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using arrow
+If the function contains only a single expression or return statement,
+you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
@@ -1597,7 +1622,7 @@ You can implement many of these [operators as class members](#_operators).
 | logical OR               | `||`                                           |
 | if null                  | `??`                                           |
 | conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
-| cascade                  | `..`                                           |
+| cascade                  | `..` &nbsp;&nbsp; `?..`                        |
 | assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
 {:.table .table-striped}
 
@@ -1806,29 +1831,6 @@ a = value;
 b ??= value;
 ```
 
-{% comment %}
-<!-- embed a dartpad when we can hide code -->
-https://gist.github.com/9de887c4daf76d39e524
-{{site.dartpad}}/9de887c4daf76d39e524
-
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (assignment-gist-main-body)" plaster="none"?>
-```dart
-void assignValues(int? a, int? b, int value) {
-  print('Initially: a == $a, b == $b');
-  // Assign value to a
-  a = value;
-  // Assign value to b if b is null; otherwise, b stays the same
-  b ??= value;
-  print('After: a == $a, b == $b');
-}
-
-main() {
-  assignValues(0, 0, 1);
-  assignValues(null, null, 1);
-}
-```
-{% endcomment %}
-
 Compound assignment operators such as `+=` combine
 an operation with an assignment.
 
@@ -1960,15 +1962,48 @@ String playerName(String? name) {
 ```
 
 <a id="cascade"></a>
-### Cascade notation (..)
+### Cascade notation
 
-Cascades (`..`) allow you to make a sequence of operations
+Cascades (`..`, `?..`) allow you to make a sequence of operations
 on the same object. In addition to function calls,
 you can also access fields on that same object.
 This often saves you the step of creating a temporary variable and
 allows you to write more fluid code.
 
 Consider the following code:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/cascades.dart (cascade)"?>
+```dart
+var paint = Paint()
+  ..color = Colors.black
+  ..strokeCap = StrokeCap.round
+  ..strokeWidth = 5.0;
+```
+
+The constructor, `Paint()`,
+returns a `Paint` object.
+The code that follows the cascade notation operates
+on this object, ignoring any values that
+might be returned.
+
+The previous example is equivalent to this code:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/cascades.dart (cascade-expanded)"?>
+```dart
+var paint = Paint();
+paint.color = Colors.black;
+paint.strokeCap = StrokeCap.round;
+paint.strokeWidth = 5.0;
+```
+
+{% comment %}
+[TODO #2950: make sure `?..` is covered in /null-safety]
+{% endcomment %}
+
+If the object that the cascade operates on can be null,
+then use a _null-shorting_ cascade (`?..`) for the first operation.
+Starting with `?..` guarantees that none of the cascade operations
+are attempted on that null object.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
@@ -1978,12 +2013,11 @@ querySelector('#confirm') // Get an object.
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-The first method call, `querySelector()`, returns a selector object.
-The code that follows the cascade notation operates
-on this selector object, ignoring any subsequent values that
-might be returned.
+{{ site.alert.version-note }}
+  The `?..` syntax was introduced in 2.12.
+{{ site.alert.end }}
 
-The previous example is equivalent to:
+The previous code is equivalent to the following:
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
@@ -1993,7 +2027,7 @@ button?.classes.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-You can also nest your cascades. For example:
+You can also nest cascades. For example:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
@@ -2021,7 +2055,7 @@ The `sb.write()` call returns void,
 and you can't construct a cascade on `void`.
 
 {{site.alert.note}}
-  Strictly speaking, the "double dot" notation for cascades is not an operator.
+  Strictly speaking, the "double dot" notation for cascades isn't an operator.
   It's just part of the Dart syntax.
 {{site.alert.end}}
 
@@ -2686,7 +2720,8 @@ a new instance of a class:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 ```dart
 class Point {
-  late double x, y;
+  double x = 0;
+  double y = 0;
 
   Point(double x, double y) {
     // There's a better way to do this, stay tuned.
@@ -2709,7 +2744,8 @@ is so common, Dart has syntactic sugar to make it easy:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  late double x, y;
+  double x = 0;
+  double y = 0;
 
   // Syntactic sugar for setting x and y
   // before the constructor body runs.
@@ -2737,14 +2773,15 @@ or to provide extra clarity:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  late double x, y;
+  double x = 0;
+  double y = 0;
 
   Point(this.x, this.y);
 
   // Named constructor
   [!Point.origin()!] {
-    x = 0;
-    y = 0;
+    x = xOrigin;
+    y = yOrigin;
   }
 }
 {% endprettify %}
@@ -2775,12 +2812,8 @@ before the constructor body (if any).
 In the following example, the constructor for the Employee class calls the named
 constructor for its superclass, Person. Click **Run** to execute the code.
 
-{% comment %}
-https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
-{{site.dartpad}}/e57aa06401e6618d4eb8
-
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart" plaster="none"?>
-```dart
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (super)" plaster="none"?>
+```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor:null_safety-true
 class Person {
   String? firstName;
 
@@ -2799,25 +2832,13 @@ class Employee extends Person {
 
 void main() {
   var emp = Employee.fromJson({});
+  print(emp);
   // Prints:
   // in Person
   // in Employee
-
-  if (emp is Person) {
-    // Type check
-    emp.firstName = 'Bob';
-  }
-  (emp as Person).firstName = 'Bob';
+  // Instance of 'Employee'
 }
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90&ga_id=non_default_superclass_constructor"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
 
 Because the arguments to the superclass constructor are evaluated before
 invoking the constructor, an argument can be an expression such as a
@@ -2826,7 +2847,7 @@ function call:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
 ```dart
 class Employee extends Person {
-  Employee() : super.fromJson(defaultData);
+  Employee() : super.fromJson(fetchDefaultData());
   // ···
 }
 ```
@@ -2842,6 +2863,10 @@ Besides invoking a superclass constructor, you can also initialize
 instance variables before the constructor body runs. Separate
 initializers with commas.
 
+{% comment %}
+[TODO #2950: Maybe change example or point to discussion of ! (in map section?).]
+{% endcomment %}
+
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
 ```dart
 // Initializer list sets instance variables before
@@ -2854,7 +2879,7 @@ Point.fromJson(Map<String, double> json)
 ```
 
 {{site.alert.warning}}
-  The right-hand side of an initializer does not have access to `this`.
+  The right-hand side of an initializer doesn't have access to `this`.
 {{site.alert.end}}
 
 During development, you can validate inputs by using `assert` in the
@@ -2867,24 +2892,12 @@ Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
 }
 {% endprettify %}
 
-{% comment %}
-[PENDING: the example could be better.
-Note that DartPad doesn't support this yet?
-
-https://github.com/dart-lang/sdk/issues/30968
-https://github.com/dart-lang/sdk/blob/master/docs/language/informal/assert-in-initializer-list.md]
-{% endcomment %}
-
 Initializer lists are handy when setting up final fields. The following example
 initializes three final fields in an initializer list. Click **Run** to execute
 the code.
 
-{% comment %}
-https://gist.github.com/Sfshaza/7a9764702c0608711e08
-{{site.dartpad}}/a9764702c0608711e08
-
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point_with_distance_field.dart"?>
-```dart
+```dart:run-dartpad:height-340px:ga_id-initializer_list:null_safety-true
 import 'dart:math';
 
 class Point {
@@ -2903,14 +2916,6 @@ void main() {
   print(p.distanceFromOrigin);
 }
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90&ga_id=initializer_list"
-    width="100%"
-    height="420px"
-    style="border: 1px solid #ccc;">
-</iframe>
 
 
 #### Redirecting constructors
@@ -3028,9 +3033,12 @@ instance method:
 ```dart
 import 'dart:math';
 
-// TODO(miquelbeltran) maybe default value to 0 is better here
+const double xOrigin = 0;
+const double yOrigin = 0;
+
 class Point {
-  late double x, y;
+  double x = 0;
+  double y = 0;
 
   Point(this.x, this.y);
 
@@ -3573,7 +3581,7 @@ the list is probably a mistake. Here’s an example:
 
 {:.fails-sa}
 ```dart
-var names = List<String>();
+var names = <String>[];
 names.addAll(['Seth', 'Kathy', 'Lars']);
 names.add(42); // Error
 ```
@@ -3651,7 +3659,7 @@ angle brackets (`<...>`) just after the class name. For example:
 var nameSet = Set<String>.from(names);
 ```
 
-{% comment %}[PENDING: update this sample; it ]{% endcomment %}
+{% comment %}[TODO #2950: It isn't idiomatic to use a constructor for an empty Map. Change to a class that doesn't have literal support.]{% endcomment %}
 
 The following code creates a map that has integer keys and values of
 type View:
@@ -4028,7 +4036,7 @@ For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
 
 {% comment %}
-TODO: Where else should we cover generalized void?
+TODO #1117: Where else should we cover generalized void?
 {% endcomment %}
 
 
@@ -4467,9 +4475,8 @@ To learn more about Dart's core libraries, see
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
+[ObjectVsDynamic]: /guides/language/effective-dart/design#types
 [runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
 [Set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
