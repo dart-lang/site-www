@@ -25,6 +25,16 @@ To switch between locally installed Dart releases, use
 $ brew switch dart 2.10.1
 ```
 
+{{site.alert.version-note}}
+  The `brew switch` command was removed
+  after the 2.6 release of Homebrew.
+  To continue using `brew switch`,
+  downgrade Homebrew to a 2.6 version:
+  ```terminal
+  $ cd /usr/local/Homebrew && git checkout 2.6.2
+  ```
+{{site.alert.end}}
+
 To see which versions of Dart you've installed:
 
 ```terminal
