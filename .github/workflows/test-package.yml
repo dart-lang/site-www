@@ -1,0 +1,91 @@
+name: Dart CI
+
+on:
+  # Run on PRs and pushes to the default branch.
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: "0 0 * * 0"
+
+env:
+  PUB_ENVIRONMENT: bot.github
+  TZ: US/Pacific # normalize build timestamp
+  JEKYLL_ENV: production
+  SITE_LOCALHOST_PORT: 5000
+  SITE_JEKYLL_SRC: src
+  SITE_JEKYLL_DESTINATION: _site
+  _OS_NAME: linux
+  DART_SITE_ENV_DEFS: 1
+
+#TODO:
+#matrix:
+#  allow_failures:
+#    - env: TASK="./tool/analyze-and-test-examples.sh"
+#      dart: beta
+#    - env: TASK="./tool/analyze-and-test-examples.sh"
+#      dart: dev
+#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
+#      dart: stable
+#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
+#      dart: beta
+#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
+#      dart: dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [dev, beta, stable]
+        task:
+          - ./tool/build.sh --check-links
+          - ./tool/check-code.sh
+          - ./tool/check-code.sh --null-safety
+          - ./tool/analyze-and-test-examples.sh
+          - ./tool/analyze-and-test-examples.sh --null-safety
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # submodules param for checkout action to get site-shared, 'true' might be enough
+          submodules: "recursive"
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-      
+      - uses: actions/setup-ruby@v1
+        if: contains(matrix.task, "build")
+        with:
+          ruby-version: "2.6.5"
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: ${{ matrix.sdk }}
+      - name: Install node dependencies
+        # TOOD: caching requires a lockfile for node deps.
+        run: npm ci
+      - name: Install ruby dependencies
+        if: contains(matrix.task, "build")
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - id: install
+        name: Install dart dependencies
+        run: dart pub get
+      - run: ./tool/shared/write-ci-info.sh -v
+        env:
+          TRAVIS_BUILD_ID: GITHUB_RUN_ID
+          TRAVIS_BUILD_NUMBER: GITHUB_RUN_NUMBER
+          TRAVIS_COMMIT: GITHUB_SHA
+          TRAVIS_JOB_ID: GITHUB_ACTION
+          TRAVIS_REPO_SLUG: GITHUB_REPOSITORY
+      - run: ${{ matrix.task }}
+
+#TODO: deploy
