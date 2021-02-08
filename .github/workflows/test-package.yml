@@ -60,24 +60,18 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-      
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         if: contains(matrix.task, 'build')
         with:
-          ruby-version: ruby-2.6.5
+          bundler-cache: true
+          ruby-version: 2.6.5
       - uses: dart-lang/setup-dart@v0.3
         with:
           sdk: ${{ matrix.sdk }}
       - name: Install node dependencies
         # TOOD: caching requires a lockfile for node deps, so does npm ci.
         run: npm install
-      - name: Install ruby dependencies
-        if: contains(matrix.task, 'build')
-        run: |
-          gem install bundler
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - id: install
-        name: Install dart dependencies
+      - name: Install dart dependencies
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
         if: contains(matrix.task, 'build')
