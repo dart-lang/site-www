@@ -61,7 +61,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-      
       - uses: actions/setup-ruby@v1
-        if: contains(matrix.task, "build")
+        if: contains(matrix.task, 'build')
         with:
           ruby-version: "2.6.5"
       - uses: dart-lang/setup-dart@v0.3
@@ -71,7 +71,7 @@ jobs:
         # TOOD: caching requires a lockfile for node deps.
         run: npm ci
       - name: Install ruby dependencies
-        if: contains(matrix.task, "build")
+        if: contains(matrix.task, 'build')
         run: |
           gem install bundler
           bundle config path vendor/bundle
@@ -80,6 +80,7 @@ jobs:
         name: Install dart dependencies
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
+        if: contains(matrix.task, 'build')
         env:
           TRAVIS_BUILD_ID: GITHUB_RUN_ID
           TRAVIS_BUILD_NUMBER: GITHUB_RUN_NUMBER
