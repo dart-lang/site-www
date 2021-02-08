@@ -68,8 +68,8 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
       - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps.
-        run: npm ci
+        # TOOD: caching requires a lockfile for node deps, so does npm ci.
+        run: npm install
       - name: Install ruby dependencies
         if: contains(matrix.task, 'build')
         run: |
