@@ -26,7 +26,7 @@ echo "::endgroup::"
 
 [[ -z $CHECK_LINKS ]] && exit
 
-echo "::group::build_site"   
+echo "::group::check_links"   
 
 set -x;
 ./tool/shared/check-links.sh $*;
