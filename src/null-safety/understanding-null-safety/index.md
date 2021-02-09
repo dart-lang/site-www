@@ -460,7 +460,7 @@ things up for non-nullable variables:
 *   **Optional parameters must have a default value.** If you don't pass an
     argument for an optional positional or named parameter, then the language
     fills it in with the default value. If you don't specify a default value,
-    the default value is `null`, and that doesn't fly if the parameter's
+    the _default_ default value is `null`, and that doesn't fly if the parameter's
     type is non-nullable.
 
     So, if you want a parameter to be optional, you need to either make it
