@@ -22,7 +22,7 @@ logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
 Dart is a client-optimized language for developing fast apps on any platform.
 Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
-[flexible execution runtime platform](/platforms) for app frameworks.
+[flexible execution runtime platform](#platform) for app frameworks.
 
 Languages are defined by their _technical envelope_ —
 the choices made during development that
@@ -39,7 +39,7 @@ but Dart also supports many core developer tasks like
 formatting, analyzing, and testing code.
 
 
-## Dart: The language
+## Dart: The language {#language}
 
 The Dart language is type safe;
 it uses static type checking to ensure that
@@ -125,7 +125,7 @@ class Point {
 {{ site.alert.end }}
 
 
-## Dart: The libraries
+## Dart: The libraries {#libraries}
 
 Dart has [a rich set of core libraries](/guides/libraries),
 providing essentials for many everyday programming tasks:
@@ -141,8 +141,10 @@ providing essentials for many everyday programming tasks:
   (`dart:convert`)
 * Mathematical constants and functions, and random number generation
   (`dart:math`)
-* File, socket, HTTP, and other I/O support for non-web applications (`dart:io`)
-* Support for asynchronous programming, with classes such as `Future` and `Stream`
+* File, socket, HTTP, and other I/O support for non-web applications
+  (`dart:io`)
+* Support for asynchronous programming,
+  with classes such as `Future` and `Stream`
   (`dart:async`)
 * Lists that efficiently handle fixed-sized data
   (for example, unsigned 8-byte integers) and SIMD numeric types
@@ -183,15 +185,15 @@ To find additional APIs, see the
 [commonly used packages page](/guides/libraries/useful-libraries).
 
 
-## Dart: The platform
+## Dart: The platforms {#platform}
 
 Dart's compiler technology lets you run code in different ways:
 
-* **Native compilation**: For apps targeting mobile and desktop devices,
+* **Native platform**: For apps targeting mobile and desktop devices,
   Dart includes both a Dart VM with just-in-time (JIT) compilation and
   an ahead-of-time (AOT) compiler for producing machine code.
 
-* **Web compilation**: For apps targeting the web,
+* **Web platform**: For apps targeting the web,
   Dart includes both a development time compiler (dartdevc) and
   a production time compiler (dart2js).
   Both compilers translate Dart into JavaScript.
@@ -199,11 +201,56 @@ Dart's compiler technology lets you run code in different ways:
 <img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
 illustration of the targets supported by Dart">
 
-In addition, [Flutter]({{site.flutter}}) provides tooling and UI libraries to
-build UIs that run on iOS, Android, macOS, Windows, and Linux.
+The [Flutter framework]({{site.flutter}}) is a popular,
+multi-platform UI toolkit that's powered by the Dart platform,
+and that provides tooling and UI libraries to build UI experiences that run
+on iOS, Android, macOS, Windows, Linux, and the web.
+
+#### Dart Native (machine code JIT and AOT) {#native-platform}
+
+During development, a fast developer cycle is critical for iteration.
+The Dart VM offers a just-in-time compiler (JIT) with
+incremental recompilation (enabling hot reload), live metrics collections
+(powering [DevTools](/tools/dart-devtools)), and rich debugging support.
+
+When apps are ready to be deployed to production —
+whether you're publishing to an app store or
+deploying to a production backend —
+the Dart AOT compiler enables ahead-of-time compilation to
+native ARM or x64 machine code.
+Your AOT-compiled app launches with consistent, short startup time.
+
+The AOT-compiled code runs inside an efficient Dart runtime that
+enforces the sound Dart type system and
+manages memory using fast object allocation and a
+[generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
+
+More information:
+* [Get started: command-line and server apps](/tutorials/server/get-started)
+* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
+* [Write command-line apps](/tutorials/server/cmdline)
+* [Write HTTP clients and servers](/tutorials/server/httpserver)
+
+#### Dart Web (JavaScript dev & prod) {#web-platform}
+
+Dart Web enables running Dart code on web platforms powered by
+JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
+turn runs in a browser — for example, [V8](https://v8.dev/) inside
+[Chrome](https://www.google.com/chrome/).
+
+Dart web contains both an incremental dev compiler enabling a fast developer
+cycle, and an optimizing production compiler, `dart2js`, which compiles Dart
+code to fast, compact, deployable JavaScript using techniques such as dead-code
+elimination.
+
+More information:
+* [Get started: web apps](/tutorials/web/get-started)
+* [`dartdevc` compiler](/tools/dartdevc)
+* [`webdev` tool](/tools/webdev)
+* [Web deployment tips](/web/deployment)
 
 
-## Learning Dart
+## Learning Dart {#learning-dart}
 
 You have many choices for learning Dart. Here are a few that we recommend:
 

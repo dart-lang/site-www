@@ -27,26 +27,29 @@ More info:
 
 * To avoid wasting your time, talk with us before you make any nontrivial
   pull request. The [issue tracker][] is a good way to track your progress
-  publicly, but we can also communicate other ways such as email and
-  [Gitter][].
+  publicly, but we also use the #hackers-devrel channel
+  [on Flutter's Discord server][].
 * We use the usual [GitHub pull request][] process.
-* We follow the [Google Developer Documentation Style Guide][].
+* We follow the [Google Developer Documentation Style Guide][],
+  with some additional conventions that we try to document
+  [in the site-shared repo][].
+  In particular, we use [semantic line breaks][].
 * For more ways to contribute to Dart, see the
   [dart-lang/sdk Contributing page][].
-* NEW (1/21/2021): If you'd like to discuss dart.dev doc changes,
-  join us in the #hackers-devrel channel
-  [on Flutter's Discord server](https://github.com/flutter/flutter/wiki/Chat).
 
 [beginner]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
 [dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/wiki/Contributing
 [GitHub pull request]: https://help.github.com/articles/about-pull-requests/
-[Gitter]: https://gitter.im/dart-lang/home
 [Google Developer Documentation Style Guide]: https://developers.google.com/style/
 [help wanted]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
+[in the site-shared repo]: https://github.com/dart-lang/site-shared/blob/master/doc
 [issue tracker]: https://github.com/dart-lang/site-www/issues
+[on Flutter's Discord server]: https://github.com/flutter/flutter/wiki/Chat
 [Report issues]: https://github.com/dart-lang/site-www/issues/new
+[semantic line breaks]: https://github.com/dart-lang/site-shared/blob/master/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
 [sign the CLA]: https://developers.google.com/open-source/cla/individual
 [www]: https://dart.dev
+
 
 ## Updating code samples
 
