@@ -10,14 +10,16 @@ on:
     - cron: "0 0 * * 0"
 
 env:
-  PUB_ENVIRONMENT: bot.github
-  TZ: US/Pacific # normalize build timestamp
-  JEKYLL_ENV: production
-  SITE_LOCALHOST_PORT: 5000
-  SITE_JEKYLL_SRC: src
-  SITE_JEKYLL_DESTINATION: _site
   _OS_NAME: linux
   DART_SITE_ENV_DEFS: 1
+  JEKYLL_ENV: production
+  PUB_ENVIRONMENT: bot.github
+  SITE_LOCALHOST_PORT: 5000
+  SITE_JEKYLL_DESTINATION: _site
+  SITE_JEKYLL_SRC: src
+  TMP: ${{ github.workspace }}/tmp
+  TRAVIS: true
+  TZ: US/Pacific # normalize build timestamp
 
 #TODO:
 #matrix:
@@ -59,7 +61,7 @@ jobs:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-gems-      
+            ${{ runner.os }}-gems-
       - uses: ruby/setup-ruby@v1
         if: contains(matrix.task, 'build')
         with:
