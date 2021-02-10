@@ -76,12 +76,6 @@ jobs:
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
         if: contains(matrix.task, 'build')
-        env:
-          TRAVIS_BUILD_ID: GITHUB_RUN_ID
-          TRAVIS_BUILD_NUMBER: GITHUB_RUN_NUMBER
-          TRAVIS_COMMIT: GITHUB_SHA
-          TRAVIS_JOB_ID: GITHUB_ACTION
-          TRAVIS_REPO_SLUG: GITHUB_REPOSITORY
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
 
