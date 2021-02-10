@@ -16,7 +16,7 @@ while [[ "$1" == -* ]]; do
   esac
 done
 
-echo "::group::build_site"   
+echo "::group::build_site"
 
 bundle exec jekyll --version;
 set -x;
@@ -26,7 +26,7 @@ echo "::endgroup::"
 
 [[ -z $CHECK_LINKS ]] && exit
 
-echo "::group::check_links"   
+echo "::group::check_links"
 
 set -x;
 ./tool/shared/check-links.sh $*;
