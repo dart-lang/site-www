@@ -119,7 +119,6 @@ function analyze_and_test() {
     echo "::group::analyzeAndTest.tests.browser"
     echo Running browser tests ...
     PLATFORM=chrome
-    if [[ -n $TRAVIS ]]; then PLATFORM=travischrome; fi
     # Name the sole browser test file, otherwise all other files get compiled too:
     TEST="pub run test"
     echo "$ $TEST --tags browser --platform $PLATFORM $TEST_FILES"
