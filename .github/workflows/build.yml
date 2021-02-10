@@ -15,7 +15,7 @@ env:
   JEKYLL_ENV: production
   PUB_ENVIRONMENT: bot.github
   SITE_LOCALHOST_PORT: 5000
-  SITE_JEKYLL_DESTINATION: _site
+  SITE_JEKYLL_DEST: _site
   SITE_JEKYLL_SRC: src
   TMP: ${{ github.workspace }}/tmp
   TZ: US/Pacific # normalize build timestamp
