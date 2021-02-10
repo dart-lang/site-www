@@ -147,9 +147,6 @@ These include:
 `--help` or `-h`
 : Print usage information.
 
-`--version`
-: Print version of pub.
-
 `--trace`
 : Print debugging information when an error occurs.
 
