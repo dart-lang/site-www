@@ -18,7 +18,6 @@ env:
   SITE_JEKYLL_DESTINATION: _site
   SITE_JEKYLL_SRC: src
   TMP: ${{ github.workspace }}/tmp
-  TRAVIS: true
   TZ: US/Pacific # normalize build timestamp
 
 jobs:
