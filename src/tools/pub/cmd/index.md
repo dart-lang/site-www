@@ -114,7 +114,10 @@ or any modification of the pubspec.
 The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
 make a package globally available, 
 so you can run scripts from that package’s `bin` directory.
+To run globally available scripts, you must
+[add the system cache `bin` directory to your path][add-path].
 
+[add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
 ### Deploying packages and apps
 
