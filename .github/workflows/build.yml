@@ -62,7 +62,7 @@ jobs:
         with:
           node-version: 12
       - uses: ruby/setup-ruby@v1
-        if: contains(matrix.task, 'build')
+        if: contains(matrix.task, 'build.sh')
         with:
           bundler-cache: true
           ruby-version: 2.6.5
@@ -75,8 +75,15 @@ jobs:
       - name: Install dart dependencies
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
-        if: contains(matrix.task, 'build')
+        if: contains(matrix.task, 'build.sh')
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
-
-#TODO: deploy
+      - run: ./tool/shared/deploy.sh --robots ok default
+        if: |
+            contains(matrix.task, 'build.sh')
+            && matrix.sdk == 'stable'
+            && github.event == 'push'
+            && github.ref == 'refs/heads/master'
+            && github.repository == 'dart-lang/site-www'
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
