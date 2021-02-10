@@ -21,20 +21,6 @@ env:
   TRAVIS: true
   TZ: US/Pacific # normalize build timestamp
 
-#TODO:
-#matrix:
-#  allow_failures:
-#    - env: TASK="./tool/analyze-and-test-examples.sh"
-#      dart: beta
-#    - env: TASK="./tool/analyze-and-test-examples.sh"
-#      dart: dev
-#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
-#      dart: stable
-#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
-#      dart: beta
-#    - env: TASK="./tool/analyze-and-test-examples.sh --null-safety"
-#      dart: dev
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -46,8 +32,26 @@ jobs:
           - ./tool/build.sh --check-links
           - ./tool/check-code.sh
           - ./tool/check-code.sh --null-safety
-          - ./tool/analyze-and-test-examples.sh
-          - ./tool/analyze-and-test-examples.sh --null-safety
+        experimental: [false]
+        include:
+          - sdk: dev
+            task: ./tool/analyze-and-test-examples.sh
+            experimental: true
+          - sdk: beta
+            task: ./tool/analyze-and-test-examples.sh
+            experimental: true
+          - sdk: stable
+            task: ./tool/analyze-and-test-examples.sh
+            experimental: false
+          - sdk: dev
+            task: ./tool/analyze-and-test-examples.sh --null-safety
+            experimental: true
+          - sdk: beta
+            task: ./tool/analyze-and-test-examples.sh --null-safety
+            experimental: true
+          - sdk: stable
+            task: ./tool/analyze-and-test-examples.sh --null-safety
+            experimental: true
     steps:
       - uses: actions/checkout@v2
         with:
@@ -79,5 +83,6 @@ jobs:
           TRAVIS_JOB_ID: GITHUB_ACTION
           TRAVIS_REPO_SLUG: GITHUB_REPOSITORY
       - run: ${{ matrix.task }}
+        continue-on-error: ${{ matrix.experimental }}
 
 #TODO: deploy
