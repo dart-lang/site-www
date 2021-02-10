@@ -8,21 +8,21 @@ You can contribute in a few ways.
   at the upper right of the page. Then click the **pencil icon** to start
   editing the file. Once you've fixed the typo, commit your changes to a new
   branch and create a **pull request.**
-  
+
   Once we've reviewed and approved your change, we'll merge it. Normally, we'll
   review your fix within one working day, and your fix will appear online less
   than an hour after we merge your PR.
-  
+
   **Note:** If this is your first contribution to a Google project — _welcome!_
   — you'll need to [sign the CLA][].
-  
+
 * **[Report issues][].**
 
 * **Fix known issues** (especially ones with the label **[help wanted][]** or
   **[beginner][]**). These issues may or may not be easy to fix. Sometimes
   they're issues that we don't have the expertise to fix, and we'd love to
   work with a contributor who has the right skills.
-  
+
 More info:
 
 * To avoid wasting your time, talk with us before you make any nontrivial
@@ -75,11 +75,11 @@ you'll also need to edit the `var-decl` region of
 
 If you create a PR but forget to edit the Dart file,
 or if your changes don't analyze/test cleanly,
-the Travis CI build will fail.
-Just update the PR, and Travis will try again.
+the GitHub Actions CI build will fail.
+Just update the PR, and GitHub Actions will run again.
 
 
-## A word about conduct 
+## A word about conduct
 
 We pledge to maintain an open and welcoming environment.
 For details, see our [code of conduct](https://dart.dev/code-of-conduct).
