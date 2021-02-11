@@ -464,11 +464,12 @@ change. If your package is already at 1.0.0 or greater, increase the major
 version, for example from `2.3.2` to `3.0.0`. If your package hasn't reached
 1.0.0 yet, _either_ increase the minor version _or_ update the version to 1.0.0.
 
-As null safety is considered API stable as of **TODO: beta SDK version**, you
-can publish new stable versions of your package, even though null safety isn't
-yet released in a stable Dart SDK release. When published to pub.dev, the site
-will tag your new null safety version as a "Preview", as illustrated for version
-`2.0.0` of `package:args` here:
+Because null safety has a stable API as of **TODO: beta SDK version**, you
+can publish new stable versions of your package before null safety is
+in a stable Dart SDK release. The pub.dev site
+will tag your new null safety version as a **preview**,
+as the following screenshot shows for version
+`2.0.0` of `package:args`:
 
 ![Illustration of a preview version](/null-safety/preview-version.png){:width="800px"}<br>
 
