@@ -77,12 +77,37 @@ jobs:
         if: contains(matrix.task, 'build.sh')
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push'
+      && github.ref == 'refs/heads/master'
+      && github.repository == 'dart-lang/site-www'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # submodules param for checkout action to get site-shared, 'true' might be enough
+          submodules: "recursive"
+      - run: mkdir -p $TMP
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.6.5
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: stable
+      - name: Install node dependencies
+        # TOOD: caching requires a lockfile for node deps, so does npm ci.
+        run: npm install
+      - name: Install dart dependencies
+        run: dart pub get
+      - run: ./tool/shared/write-ci-info.sh -v
+      - run: ./tool/build.sh
       - run: ./tool/shared/deploy.sh --robots ok default
-        if: |
-            contains(matrix.task, 'build.sh')
-            && matrix.sdk == 'stable'
-            && github.event_name == 'push'
-            && github.ref == 'refs/heads/master'
-            && github.repository == 'dart-lang/site-www'
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
