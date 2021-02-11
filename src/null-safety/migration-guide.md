@@ -459,10 +459,18 @@ can still work with the next stable release of the Dart SDK.
 
 ### Package version
 
-Update the version of the package to a new major version to indicate a breaking
-change. If your package is already at 1.0.0 or greater, increase the major
-version, for example from `2.3.2` to `3.0.0`. If your package hasn't reached
-1.0.0 yet, _either_ increase the minor version _or_ update the version to 1.0.0.
+Update the version of the package
+to indicate a breaking change:
+
+* If your package is already at 1.0.0 or greater,
+  increase the major version.
+  For example, if the previous version is `2.3.2`,
+  the new version is `3.0.0`.
+
+* If your package hasn't reached 1.0.0 yet,
+  _either_ increase the minor version _or_ update the version to 1.0.0.
+  For example, if the previous version is `0.3.2`,
+  the new version is either `0.4.0` or `1.0.0`.
 
 Because null safety has a stable API as of **TODO: beta SDK version**, you
 can publish new stable versions of your package before null safety is
