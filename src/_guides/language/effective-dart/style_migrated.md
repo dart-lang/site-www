@@ -9,6 +9,7 @@ prevpage:
   title: Overview
 ---
 <?code-excerpt plaster="none"?>
+<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
@@ -39,7 +40,7 @@ Classes, enum types, typedefs, and type parameters should capitalize the first
 letter of each word (including the first word), and use no separators.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
+<?code-excerpt "style_good.dart (type-names)"?>
 {% prettify dart tag=pre+code %}
 class SliderMenu { ... }
 
@@ -51,7 +52,7 @@ typedef Predicate<T> = bool Function(T value);
 This even includes classes intended to be used in metadata annotations.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
+<?code-excerpt "style_good.dart (annotation-type-names)"?>
 {% prettify dart tag=pre+code %}
 class Foo {
   const Foo([arg]);
@@ -68,7 +69,7 @@ If the annotation class's constructor takes no parameters, you might want to
 create a separate `lowerCamelCase` constant for it.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
+<?code-excerpt "style_good.dart (annotation-const)"?>
 {% prettify dart tag=pre+code %}
 const foo = Foo();
 
@@ -88,7 +89,7 @@ Like types, extensions should capitalize the first letter of each word
 and use no separators.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
+<?code-excerpt "style_good.dart (extension-names)"?>
 {% prettify dart tag=pre+code %}
 extension MyFancyList<T> on List<T> { ... }
 
@@ -116,7 +117,7 @@ a valid Dart identifier, which may be helpful if the language later supports
 symbolic imports.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g"?>
+<?code-excerpt "style_lib_good.dart" replace="/foo\///g"?>
 {% prettify dart tag=pre+code %}
 library peg_parser.source_scanner;
 
@@ -125,7 +126,7 @@ import 'slider_menu.dart';
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
+<?code-excerpt "style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
 {% prettify dart tag=pre+code %}
 library pegparser.SourceScanner;
 
@@ -144,7 +145,7 @@ import 'SliderMenu.dart';
 {% include linter-rule.html rule="library_prefixes" %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as math;
 import 'package:angular_components/angular_components'
@@ -153,7 +154,7 @@ import 'package:js/js.dart' as js;
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:math' as Math;
 import 'package:angular_components/angular_components'
@@ -171,7 +172,7 @@ parameters should capitalize the first letter of each word *except* the first
 word, and use no separators.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (misc-names)"?>
+<?code-excerpt "style_good.dart (misc-names)"?>
 {% prettify dart tag=pre+code %}
 var item;
 
@@ -190,7 +191,7 @@ void align(bool clearItems) {
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
+<?code-excerpt "style_good.dart (const-names)"?>
 {% prettify dart tag=pre+code %}
 const pi = 3.14;
 const defaultTimeout = 1000;
@@ -202,7 +203,7 @@ class Dice {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
+<?code-excerpt "style_bad.dart (const-names)"?>
 {% prettify dart tag=pre+code %}
 const PI = 3.14;
 const DefaultTimeout = 1000;
@@ -282,7 +283,7 @@ If the function has multiple unused parameters, use additional
 underscores to avoid name collisions: `__`, `___`, etc.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (unused-callback-params)"?>
+<?code-excerpt "style_good.dart (unused-callback-params)"?>
 {% prettify dart tag=pre+code %}
 futureOfVoid.then((_) {
   print('Operation complete.');
@@ -342,7 +343,7 @@ A single linter rule handles all the ordering guidelines:
 {% include linter-rule.html rule="directives_ordering" %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
+<?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart tag=pre+code %}
 import 'dart:async';
 import 'dart:html';
@@ -357,7 +358,7 @@ import 'package:foo/foo.dart';
 {% include linter-rule.html rule="directives_ordering" %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
+<?code-excerpt "style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 {% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
@@ -371,7 +372,7 @@ import 'util.dart';
 {% include linter-rule.html rule="directives_ordering" %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
+<?code-excerpt "style_lib_good.dart (export)"?>
 {% prettify dart tag=pre+code %}
 import 'src/error.dart';
 import 'src/foo_bar.dart';
@@ -380,7 +381,7 @@ export 'src/error.dart';
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (export)"?>
+<?code-excerpt "style_lib_bad.dart (export)"?>
 {% prettify dart tag=pre+code %}
 import 'src/error.dart';
 export 'src/error.dart';
@@ -393,7 +394,7 @@ import 'src/foo_bar.dart';
 {% include linter-rule.html rule="directives_ordering" %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
+<?code-excerpt "style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
@@ -403,7 +404,7 @@ import 'foo/foo.dart';
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
+<?code-excerpt "style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart tag=pre+code %}
 import 'package:foo/foo.dart';
 import 'package:bar/bar.dart';
@@ -484,7 +485,7 @@ Doing so avoids the [dangling else][] problem.
 [dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>
+<?code-excerpt "style_good.dart (curly-braces)"?>
 {% prettify dart tag=pre+code %}
 if (isWeekDay) {
   print('Bike to work!');
@@ -497,7 +498,7 @@ if (isWeekDay) {
 whole `if` statement fits on one line, you can omit the braces if you prefer:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
+<?code-excerpt "style_good.dart (one-line-if)"?>
 {% prettify dart tag=pre+code %}
 if (arg == null) return defaultValue;
 {% endprettify %}
@@ -505,7 +506,7 @@ if (arg == null) return defaultValue;
 If the body wraps to the next line, though, use braces:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-wrap)"?>
+<?code-excerpt "style_good.dart (one-line-if-wrap)"?>
 {% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars) {
   return overflowChars < other.overflowChars;
@@ -513,7 +514,7 @@ if (overflowChars != other.overflowChars) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/style_bad.dart (one-line-if-wrap)"?>
+<?code-excerpt "style_bad.dart (one-line-if-wrap)"?>
 {% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars)
   return overflowChars < other.overflowChars;

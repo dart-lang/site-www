@@ -9,6 +9,7 @@ prevpage:
   title: Documentation
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
 
 You can use these guidelines every day in the bodies of your Dart code. *Users*
 of your library may not be able to tell that you've internalized the ideas here,
@@ -34,7 +35,7 @@ The preferred, modern syntax is to use a URI string that points directly to the
 library file, just like you use in other directives. If you have some library,
 `my_library.dart`, that contains:
 
-<?code-excerpt "misc/lib/effective_dart/my_library.dart"?>
+<?code-excerpt "my_library.dart"?>
 {% prettify dart tag=pre+code %}
 library my_library;
 
@@ -44,7 +45,7 @@ part "some/other/file.dart";
 Then the part file should look like:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/some/other/file.dart"?>
+<?code-excerpt "some/other/file.dart"?>
 {% prettify dart tag=pre+code %}
 part of "../../my_library.dart";
 {% endprettify %}
@@ -52,7 +53,7 @@ part of "../../my_library.dart";
 And not:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/some/other/file_2.dart"?>
+<?code-excerpt "some/other/file_2.dart"?>
 {% prettify dart tag=pre+code %}
 part of my_library;
 {% endprettify %}
@@ -129,7 +130,7 @@ and you need to pass the result to something that doesn't accept `null`. A
 common case is the result of a null-aware method call being used as a condition:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (null-aware-condition)"?>
+<?code-excerpt "usage_bad.dart (null-aware-condition)"?>
 {% prettify dart tag=pre+code %}
 if (optionalThing?.isEnabled) {
   print("Have enabled thing.");
@@ -141,7 +142,7 @@ need to "convert" the `null` value to either `true` or `false`. Although you
 could do this using `==`, we recommend using `??`:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (convert-null-aware)"?>
+<?code-excerpt "usage_good.dart (convert-null-aware)"?>
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 optionalThing?.isEnabled ?? false;
@@ -151,7 +152,7 @@ optionalThing?.isEnabled ?? true;
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (convert-null-equals)"?>
+<?code-excerpt "usage_bad.dart (convert-null-equals)"?>
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 optionalThing?.isEnabled == true;
@@ -188,7 +189,7 @@ C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
+<?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart tag=pre+code %}
 raiseAlarm(
     'ERROR: Parts of the spaceship are on fire. Other '
@@ -196,7 +197,7 @@ raiseAlarm(
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (adjacent-strings-literals)"?>
+<?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
 {% prettify dart tag=pre+code %}
 raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
     'parts are overrun by martians. Unclear which are which.');
@@ -211,13 +212,13 @@ to build a string out of literals and other values. That does work in Dart, but
 it's almost always cleaner and shorter to use interpolation:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation)"?>
+<?code-excerpt "usage_good.dart (string-interpolation)"?>
 {% prettify dart tag=pre+code %}
 'Hello, $name! You are ${year - birth} years old.';
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation)"?>
+<?code-excerpt "usage_bad.dart (string-interpolation)"?>
 {% prettify dart tag=pre+code %}
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 {% endprettify %}
@@ -230,7 +231,7 @@ If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation-avoid-curly)"?>
+<?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart tag=pre+code %}
 'Hi, $name!'
     "Wear your wildest $decade's outfit."
@@ -238,7 +239,7 @@ alphanumeric text, the `{}` should be omitted.
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation-avoid-curly)"?>
+<?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart tag=pre+code %}
 'Hi, ${name}!'
     "Wear your wildest ${decade}'s outfit."
@@ -258,7 +259,7 @@ unnamed constructors like most classes do. But because these collections are
 used so frequently, Dart has nicer built-in syntax for creating them:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
+<?code-excerpt "usage_good.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
 var points = <Point>[];
 var addresses = <String, Address>{};
@@ -266,7 +267,7 @@ var counts = <int>{};
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
+<?code-excerpt "usage_bad.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
 var points = List<Point>();
 var addresses = Map<String, Address>();
@@ -292,14 +293,14 @@ Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-use-length)"?>
+<?code-excerpt "usage_good.dart (dont-use-length)"?>
 {% prettify dart tag=pre+code %}
 if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-use-length)"?>
+<?code-excerpt "usage_bad.dart (dont-use-length)"?>
 {% prettify dart tag=pre+code %}
 if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
@@ -315,7 +316,7 @@ Using those instead of an imperative `for` loop makes it clear that your intent
 is to produce a new sequence and not to produce side effects.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-higher-order-func)"?>
+<?code-excerpt "usage_good.dart (use-higher-order-func)"?>
 {% prettify dart tag=pre+code %}
 var aquaticNames = animals
     .where((animal) => animal.isAquatic)
@@ -335,7 +336,7 @@ code.
 over a sequence, the idiomatic way to do that is using a loop.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-forEach)"?>
+<?code-excerpt "usage_good.dart (avoid-forEach)"?>
 {% prettify dart tag=pre+code %}
 for (var person in people) {
   ...
@@ -343,7 +344,7 @@ for (var person in people) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-forEach)"?>
+<?code-excerpt "usage_bad.dart (avoid-forEach)"?>
 {% prettify dart tag=pre+code %}
 people.forEach((person) {
   ...
@@ -354,7 +355,7 @@ Note that this guideline specifically says "function *literal*". If you want to
 invoke some *already existing* function on each element, `forEach()` is fine.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (forEach-over-func)"?>
+<?code-excerpt "usage_good.dart (forEach-over-func)"?>
 {% prettify dart tag=pre+code %}
 people.forEach(print);
 {% endprettify %}
@@ -419,7 +420,7 @@ Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type)"?>
+<?code-excerpt "usage_bad.dart (where-type)"?>
 {% prettify dart tag=pre+code %}
 var objects = [1, "a", 2, "b", 3];
 var ints = objects.where((e) => e is int);
@@ -432,7 +433,7 @@ you likely want an `Iterable<int>` since that's the type you're filtering it to.
 Sometimes you see code that "corrects" the above error by adding `cast()`:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type-2)"?>
+<?code-excerpt "usage_bad.dart (where-type-2)"?>
 {% prettify dart tag=pre+code %}
 var objects = [1, "a", 2, "b", 3];
 var ints = objects.where((e) => e is int).cast<int>();
@@ -468,14 +469,14 @@ If you're already calling `toList()`, replace that with a call to
 [list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
+<?code-excerpt "usage_good.dart (cast-list)"?>
 {% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var ints = List<int>.from(stuff);
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-list)"?>
+<?code-excerpt "usage_bad.dart (cast-list)"?>
 {% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var ints = stuff.toList().cast<int>();
@@ -487,14 +488,14 @@ type for you based on the function you pass to `map()`, but sometimes you need
 to be explicit.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+<?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 {% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map<double>((n) => 1 / n);
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+<?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 {% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map((n) => 1 / n).cast<double>();
@@ -527,7 +528,7 @@ Prefer any of these options instead:
 Here is an example of **creating it with the right type:**
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
+<?code-excerpt "usage_good.dart (cast-at-create)"?>
 {% prettify dart tag=pre+code %}
 List<int> singletonList(int value) {
   var list = <int>[];
@@ -537,7 +538,7 @@ List<int> singletonList(int value) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-at-create)"?>
+<?code-excerpt "usage_bad.dart (cast-at-create)"?>
 {% prettify dart tag=pre+code %}
 List<int> singletonList(int value) {
   var list = []; // List<dynamic>.
@@ -549,7 +550,7 @@ List<int> singletonList(int value) {
 Here is **casting each element on access:**
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
+<?code-excerpt "usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
@@ -560,7 +561,7 @@ void printEvens(List<Object> objects) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-iterate)"?>
+<?code-excerpt "usage_bad.dart (cast-iterate)"?>
 {% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
@@ -573,7 +574,7 @@ void printEvens(List<Object> objects) {
 Here is **casting eagerly using `List.from()`:**
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
+<?code-excerpt "usage_good.dart (cast-from)"?>
 {% prettify dart tag=pre+code %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
@@ -584,7 +585,7 @@ int median(List<Object> objects) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-from)"?>
+<?code-excerpt "usage_bad.dart (cast-from)"?>
 {% prettify dart tag=pre+code %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
@@ -618,7 +619,7 @@ But, if you do need to give it a name, use a function declaration statement
 instead of binding a lambda to a variable.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (func-decl)"?>
+<?code-excerpt "usage_good.dart (func-decl)"?>
 {% prettify dart tag=pre+code %}
 void main() {
   localFunction() {
@@ -628,7 +629,7 @@ void main() {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (func-decl)"?>
+<?code-excerpt "usage_bad.dart (func-decl)"?>
 {% prettify dart tag=pre+code %}
 void main() {
   var localFunction = () {
@@ -649,13 +650,13 @@ If you have a function that invokes a method with the same arguments as are
 passed to it, you don't need to manually wrap the call in a lambda.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-tear-off)"?>
+<?code-excerpt "usage_good.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
 names.forEach(print);
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (use-tear-off)"?>
+<?code-excerpt "usage_bad.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
 names.forEach((name) {
   print(name);
@@ -674,13 +675,13 @@ for named parameters. For consistency with optional positional parameters, use
 `=`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
+<?code-excerpt "usage_good.dart (default-separator)"?>
 {% prettify dart tag=pre+code %}
 void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
+<?code-excerpt "usage_bad.dart (default-separator)"?>
 {% prettify dart tag=pre+code %}
 void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
@@ -694,7 +695,7 @@ If you make a parameter optional but don't give it a default value, the language
 implicitly uses `null` as the default, so there's no need to write it.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-value-null)"?>
+<?code-excerpt "usage_good.dart (default-value-null)"?>
 {% prettify dart tag=pre+code %}
 void error([String message]) {
   stderr.write(message ?? '\n');
@@ -702,7 +703,7 @@ void error([String message]) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-value-null)"?>
+<?code-excerpt "usage_bad.dart (default-value-null)"?>
 {% prettify dart tag=pre+code %}
 void error([String message = null]) {
   stderr.write(message ?? '\n');
@@ -723,7 +724,7 @@ no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
 unneeded.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-null-init)"?>
+<?code-excerpt "usage_good.dart (no-null-init)"?>
 {% prettify dart tag=pre+code %}
 int _nextId;
 
@@ -740,7 +741,7 @@ class LazyId {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-null-init)"?>
+<?code-excerpt "usage_bad.dart (no-null-init)"?>
 {% prettify dart tag=pre+code %}
 int _nextId = null;
 
@@ -764,7 +765,7 @@ underlying state. Often you see code that calculates all of those views in the
 constructor and then stores them:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
+<?code-excerpt "usage_bad.dart (cacl-vs-store1)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double radius;
@@ -792,7 +793,7 @@ the `area` and `circumference` will retain their previous, now incorrect values.
 To correctly handle cache invalidation, we need to do this:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
+<?code-excerpt "usage_bad.dart (cacl-vs-store2)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double _radius;
@@ -823,7 +824,7 @@ That's an awful lot of code to write, maintain, debug, and read. Instead, your
 first implementation should be:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
+<?code-excerpt "usage_good.dart (cacl-vs-store)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double radius;
@@ -865,7 +866,7 @@ indistinguishable. You can expose a field in a class and later wrap it in a
 getter and setter without having to touch any code that uses that field.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-wrap-field)"?>
+<?code-excerpt "usage_good.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   var contents;
@@ -873,7 +874,7 @@ class Box {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-wrap-field)"?>
+<?code-excerpt "usage_bad.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   var _contents;
@@ -893,7 +894,7 @@ If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (final)"?>
+<?code-excerpt "usage_good.dart (final)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   final contents = [];
@@ -901,7 +902,7 @@ class Box {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (final)"?>
+<?code-excerpt "usage_bad.dart (final)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   var _contents;
@@ -923,7 +924,7 @@ members with it. That style is a good fit for simple members that just calculate
 and return a value.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
+<?code-excerpt "usage_good.dart (use-arrow)"?>
 {% prettify dart tag=pre+code %}
 double get area => (right - left) * (bottom - top);
 
@@ -941,7 +942,7 @@ operators are common offenders&mdash;do yourself and everyone who has to read
 your code a favor and use a block body and some statements.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-long)"?>
+<?code-excerpt "usage_good.dart (arrow-long)"?>
 {% prettify dart tag=pre+code %}
 Treasure openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
@@ -954,7 +955,7 @@ Treasure openChest(Chest chest, Point where) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
+<?code-excerpt "usage_bad.dart (arrow-long)"?>
 {% prettify dart tag=pre+code %}
 Treasure openChest(Chest chest, Point where) =>
     _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
@@ -965,7 +966,7 @@ You can also use `=>` on members that don't return a value. This is idiomatic
 when a setter is small and has a corresponding getter that uses `=>`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
+<?code-excerpt "usage_good.dart (arrow-setter)"?>
 {% prettify dart tag=pre+code %}
 num get x => center.x;
 set x(num value) => center = Point(value, center.y);
@@ -984,7 +985,7 @@ There are only two times you need to use `this.`. One is when a local variable
 with the same name shadows the member you want to access:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
+<?code-excerpt "usage_bad.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   var value;
@@ -1000,7 +1001,7 @@ class Box {
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
+<?code-excerpt "usage_good.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   var value;
@@ -1018,7 +1019,7 @@ class Box {
 The other time to use `this.` is when redirecting to a named constructor:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot-constructor)"?>
+<?code-excerpt "usage_bad.dart (this-dot-constructor)"?>
 {% prettify dart tag=pre+code %}
 class ShadeOfGray {
   final int brightness;
@@ -1033,7 +1034,7 @@ class ShadeOfGray {
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot-constructor)"?>
+<?code-excerpt "usage_good.dart (this-dot-constructor)"?>
 {% prettify dart tag=pre+code %}
 class ShadeOfGray {
   final int brightness;
@@ -1051,7 +1052,7 @@ Note that constructor parameters never shadow fields in constructor
 initialization lists:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (param-dont-shadow-field-ctr-init)"?>
+<?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 {% prettify dart tag=pre+code %}
 class Box extends BaseBox {
   var value;
@@ -1087,7 +1088,7 @@ class Folder {
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
+<?code-excerpt "usage_good.dart (field-init-at-decl)"?>
 {% prettify dart tag=pre+code %}
 class Folder {
   final String name;
@@ -1113,7 +1114,7 @@ The following best practices apply to declaring constructors for a class.
 Many fields are initialized directly from a constructor parameter, like:
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
+<?code-excerpt "usage_bad.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   double x, y;
@@ -1127,7 +1128,7 @@ class Point {
 We've got to type `x` _four_ times here to define a field. We can do better:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
+<?code-excerpt "usage_good.dart (field-init-as-param)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   double x, y;
@@ -1148,7 +1149,7 @@ If a constructor parameter is using `this.` to initialize a field, then the type
 of the parameter is understood to be the same type as the field.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
+<?code-excerpt "usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   double x, y;
@@ -1157,7 +1158,7 @@ class Point {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-type-init-formals)"?>
+<?code-excerpt "usage_bad.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   int x, y;
@@ -1174,7 +1175,7 @@ In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
+<?code-excerpt "usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   double x, y;
@@ -1183,7 +1184,7 @@ class Point {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (semicolon-for-empty-body)"?>
+<?code-excerpt "usage_bad.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
   int x, y;
@@ -1203,7 +1204,7 @@ The language still permits `new` in order to make migration less painful, but
 consider it deprecated and remove it from your code.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)"?>
+<?code-excerpt "usage_good.dart (no-new)"?>
 {% prettify dart tag=pre+code %}
 Widget build(BuildContext context) {
   return Row(
@@ -1218,7 +1219,7 @@ Widget build(BuildContext context) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
+<?code-excerpt "usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Widget build(BuildContext context) {
   return [!new!] Row(
@@ -1255,7 +1256,7 @@ Basically, any place where it would be an error to write `new` instead of
 `const`, Dart 2 allows you to omit the `const`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-const)"?>
+<?code-excerpt "usage_good.dart (no-const)"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [
   Color("red", [255, 0, 0]),
@@ -1265,7 +1266,7 @@ const primaryColors = [
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
+<?code-excerpt "usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [!const!] [
   [!const!] Color("red", [!const!] [255, 0, 0]),
@@ -1345,7 +1346,7 @@ instead of throwing the same exception object using `throw`.
 other hand resets the stack trace to the last thrown position.
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)"?>
+<?code-excerpt "usage_bad.dart (rethrow)"?>
 {% prettify dart tag=pre+code %}
 try {
   somethingRisky();
@@ -1356,7 +1357,7 @@ try {
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
+<?code-excerpt "usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 try {
   somethingRisky();
@@ -1379,7 +1380,7 @@ abstraction like futures. The `async`/`await` syntax improves readability and
 lets you use all of the Dart control flow structures within your async code.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
+<?code-excerpt "usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<int> countActivePlayers(String teamName) [!async!] {
   try {
@@ -1396,7 +1397,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (async-await)"?>
+<?code-excerpt "usage_bad.dart (async-await)"?>
 {% prettify dart tag=pre+code %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
@@ -1419,7 +1420,7 @@ anything related to asynchrony. But in some cases, it's extraneous. If you can
 omit the `async` without changing the behavior of the function, do so.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
+<?code-excerpt "usage_good.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
 Future<void> afterTwoThings(
     Future<void> first, Future<void> second) {
@@ -1428,7 +1429,7 @@ Future<void> afterTwoThings(
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (unnecessary-async)"?>
+<?code-excerpt "usage_bad.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
 Future<void> afterTwoThings(Future<void> first, Future<void> second) async {
   return Future.wait([first, second]);
@@ -1446,7 +1447,7 @@ Cases where `async` *is* useful include:
   `async` is shorter than `Future.value(...)`.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
+<?code-excerpt "usage_good.dart (async)"?>
 {% prettify dart tag=pre+code %}
 Future<void> usesAwait(Future<String> later) async {
   print(await later);
@@ -1472,7 +1473,7 @@ future. The constructors in Future don't seem to fit their need so they
 eventually find the Completer class and use that.
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
+<?code-excerpt "usage_bad.dart (avoid-completer)"?>
 {% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) {
   var completer = Completer<bool>();
@@ -1493,7 +1494,7 @@ they're clearer and make error handling easier.
 [then]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/then.html
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
+<?code-excerpt "usage_good.dart (avoid-completer)"?>
 {% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) {
   return File(path).readAsString().then((contents) {
@@ -1503,7 +1504,7 @@ Future<bool> fileContainsBear(String path) {
 {% endprettify %}
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
+<?code-excerpt "usage_good.dart (avoid-completer-alt)"?>
 {% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) async {
   var contents = await File(path).readAsString();
@@ -1527,7 +1528,7 @@ parameter that could be instantiated with `Object` returns true even when the
 object is a future. Instead, explicitly test for the `Future` case:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (test-future-or)"?>
+<?code-excerpt "usage_good.dart (test-future-or)"?>
 {% prettify dart tag=pre+code %}
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is Future<T>) {
@@ -1542,7 +1543,7 @@ Future<T> logValue<T>(FutureOr<T> value) async {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (test-future-or)"?>
+<?code-excerpt "usage_bad.dart (test-future-or)"?>
 {% prettify dart tag=pre+code %}
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is T) {
