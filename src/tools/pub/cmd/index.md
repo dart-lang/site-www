@@ -10,8 +10,8 @@ With either tool, add the `pub` command followed by
 a subcommand such as `get`:
 
 ```terminal
-$ flutter pub get # Gets dependencies for a Flutter-specific package
-$ dart pub get    # Gets dependencies for any other package
+$ dart pub get    # Gets dependencies for a non-Flutter package
+$ flutter pub get # Gets dependencies for a Flutter package
 ```
 
 This site uses `dart pub <subcommand>` for its examples,
