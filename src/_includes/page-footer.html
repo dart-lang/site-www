@@ -18,8 +18,8 @@
                title="File an issue about this site."
                class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
             &nbsp;
-            <a {% if site.data.ci.job-id %}
-               href="{{site.repo.this}}/runs/{{site.data.ci.job-id}}"
+            <a {% if site.data.ci.build-id %}
+               href="{{site.repo.this}}/actions/runs/{{site.data.ci.build-id}}"
                title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
                {% else %}
                title="Site built on {{site.now | default: site.time | date: dateFormat}}"
