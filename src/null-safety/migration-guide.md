@@ -476,7 +476,16 @@ Once a Dart 2.12 stable release of the Dart SDK is launched, the preview
 versions will automatically become the stable versions on pub.dev with no action
 needed for the package author.
 
-You can maintain a stable release and preview prerelease at the same time. For
+Before publishing a stable null safety version we strongly recommend that you:
+
+  * Set your Dart lower SDK constraint to **TODO: beta SDK version**
+  * Use stable versions of all direct dependencies in your pubspec.
+
+If these criteria are satisfied, you can ignore the following warning printed
+when running `pub publish`: __"Packages with an SDK constraint on a pre-release
+of the Dart SDK should themselves be published as a pre-release version."__
+
+You can maintain a stable release and preview release at the same time. For
 example, if you have a stable release that's `1.0.0` and a prerelease that's
 `2.0.0`, you can still publish new versions of the stable version (`1.0.1`) and
 preview version (`2.0.1`).
