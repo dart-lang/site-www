@@ -93,7 +93,7 @@ illustrates the steps for using dart:ffi to call a C function:
 2. Import the path library that you'll use to store the path of dynamic library.
 3. Create a typedef with the FFI type signature of the C function.
 4. Create a typedef for the variable that you'll use when calling the C function.
-5. Create a variable to store the path of the dynamic library depending upon your platform.
+5. Create a variable to store the path of the dynamic library.
 6. Open the dynamic library that contains the C function.
 7. Get a reference to the C function, and put it into a variable.
 8. Call the C function.
@@ -134,7 +134,7 @@ typedef HelloWorld = void Function();
     libraryPath = path.join(Directory.current.path, 'hello_library', 'Debug', 'hello.dll');
 ```
 
-6. Open the dynamic library that contains the C function using its path.
+6. Open the dynamic library that contains the C function.
 ```dart
   final dylib = ffi.DynamicLibrary.open(libraryPath);
 ```
