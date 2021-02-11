@@ -472,9 +472,8 @@ will tag your new null safety version as a "Preview", as illustrated for version
 
 ![Illustration of a preview version](/null-safety/preview-version.png){:width="800px"}<br>
 
-Once a Dart 2.12 stable release of the Dart SDK is launched, the preview
-versions will automatically become the stable versions on pub.dev with no action
-needed for the package author.
+Just after the first stable release of Dart 2.12, your package's latest preview
+version automatically becomes the stable version on pub.dev.
 
 Before publishing a stable null safety version we strongly recommend that you:
 
