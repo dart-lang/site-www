@@ -368,7 +368,7 @@ this guideline doesn't apply.
 Given an Iterable, there are two obvious ways to produce a new List that
 contains the same elements:
 
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-1)"?>
 {% prettify dart tag=pre+code %}
 var copy1 = iterable.toList();
 var copy2 = List.from(iterable);
@@ -379,7 +379,7 @@ difference is that the first one preserves the type argument of the original
 object:
 
 {:.good}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-good)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-good)"?>
 {% prettify dart tag=pre+code %}
 // Creates a List<int>:
 var iterable = [1, 2, 3];
@@ -389,7 +389,7 @@ print(iterable.toList().runtimeType);
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-bad)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-bad)"?>
 {% prettify dart tag=pre+code %}
 // Creates a List<int>:
 var iterable = [1, 2, 3];
@@ -401,7 +401,7 @@ print(List.from(iterable).runtimeType);
 If you *want* to change the type, then calling `List.from()` is useful:
 
 {:.good}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-3)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-3)"?>
 {% prettify dart tag=pre+code %}
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
@@ -446,7 +446,7 @@ the [`whereType()`][where-type] method for this exact use case:
 [where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
 
 {:.good}
-<?code-excerpt "misc/test/effective_dart_test.dart (whereType)"?>
+<?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
 {% prettify dart tag=pre+code %}
 var objects = [1, "a", 2, "b", 3];
 var ints = objects.whereType<int>();

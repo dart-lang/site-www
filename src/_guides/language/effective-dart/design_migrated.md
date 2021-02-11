@@ -1750,7 +1750,7 @@ than the index of the last item.
 This is consistent with core libraries that do the same thing.
 
 {:.good}
-<?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
+<?code-excerpt "../../test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
 {% prettify dart tag=pre+code %}
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
 'abcd'.substring(1, 3) // 'bc'
