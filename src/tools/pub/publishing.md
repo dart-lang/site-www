@@ -272,18 +272,19 @@ or replace the package `README.md` and documentation.
 
 Previews can be useful when **all** of the following are true:
 
-* Your next stable version of the package is complete.
+* The next stable version of the package is complete.
 
-* You depend on an API or feature from the Dart SDK which hasn't yet been
-  released in a stable Dart SDK.
+* That package version depends on an API or feature in the Dart SDK that
+  hasn't yet been released in a stable version of the Dart SDK.
 
-* You know that the API or feature you depend on is API stable, and will not be
-  changing prior to reaching stable.
+* You know that the API or feature that the package depends on is
+  API-stable and won't change before it reaches the stable SDK.
 
-A concrete example is a `package:args` which has a finished version `2.0.0` but
-which depends on a feature in Dart `2.12.0-259.8.beta`, and where Dart SDK
-version `2.12.0` stable hasn't released yet. The pubspec for such a package
-would look like this:
+As an example, consider a new version of `package:args` that has
+a finished version `2.0.0` but that 
+depends on a feature in Dart `2.12.0-259.8.beta`,
+where Dart SDK version `2.12.0` stable hasn't been released yet.
+The pubspec might look like this:
 
 ```
 name: args
@@ -292,17 +293,20 @@ environment:
   sdk: '>=2.12.0-259.8.beta <3.0.0'
 ```
 
-When publishing such a package to pub.dev, it will be tagged as a Preview
-version as illustated by this screenshow where the stable version is listed as
-`1.6.0` and the preview version is listed as `2.0.0.`.
+When this package is published to pub.dev,
+it's tagged as a preview version,
+as illustrated by the following screenshot,
+where the stable version is listed as
+`1.6.0` and the preview version is listed as `2.0.0`.
 
 ![Illustration of a preview version](/null-safety/preview-version.png){:width="600px"}<br>
 
-When a Dart `2.12.0` stable release is finished, and deployed to pub.dev, the
-package will automatically be listed to display `2.0.0` as the stable version.
+When Dart `2.12.0` stable is released,
+pub.dev updates the package listing to display
+`2.0.0` as the stable version of the package.
 
-Note that when running `pub publish` you will see this warning. You can ignore
-this if all the conditions stated at the beginning of this section are true.
+If all of the conditions at the beginning of this section are true,
+then you can ignore the following warning from `pub publish`: 
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
