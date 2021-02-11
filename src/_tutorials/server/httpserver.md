@@ -546,8 +546,8 @@ The client creates an HttpClient object and uses the
 Making a request involves two Futures:
 
 * The `post()` method establishes a network
-  connection to the server and completes with the first Future,
-  which returns an HttpClientRequest object.
+  connection to the server and returns the first Future,
+  which completes with an HttpClientRequest object.
 
 * The client composes the request object and closes it.
   The `close()` method sends the request to the server
