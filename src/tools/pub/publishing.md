@@ -306,7 +306,7 @@ pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
 If all of the conditions at the beginning of this section are true,
-then you can ignore the following warning from `pub publish`: 
+then you can ignore the following warning from `dart pub publish`: 
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
@@ -347,4 +347,3 @@ For more information, see the reference pages for the following `pub` commands:
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
-
