@@ -106,7 +106,7 @@ var result = fibonacci(20);
 {% endprettify %}
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
-contain a single statement.
+contain a single return statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
