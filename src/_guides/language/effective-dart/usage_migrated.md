@@ -125,51 +125,48 @@ Follow these two rules:
 
 ### DO use `??` to convert `null` to a boolean value.
 
-This rule applies when an expression can evaluate `true`, `false`, or `null`,
-and you need to pass the result to something that doesn't accept `null`. A
-common case is the result of a null-aware method call being used as a condition:
-
-{:.bad}
-<?code-excerpt "usage_bad.dart (null-aware-condition)"?>
-{% prettify dart tag=pre+code %}
-if (optionalThing?.isEnabled) {
-  print("Have enabled thing.");
-}
-{% endprettify %}
-
-This code throws an exception if `optionalThing` is `null`. To fix this, you
-need to "convert" the `null` value to either `true` or `false`. Although you
-could do this using `==`, we recommend using `??`:
+This rule applies when an expression can evaluate to `true`, `false`, or `null`,
+and you need to pass the result to something that expects a non-nullable boolean
+value. A common case is using the result of a null-aware method call as a
+condition. You can "convert" `null` to `true` or `false` using `==`, but we
+recommend using `??`:
 
 {:.good}
 <?code-excerpt "usage_good.dart (convert-null-aware)"?>
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
-optionalThing?.isEnabled ?? false;
+if (optionalThing?.isEnabled ?? false) {
+  print("Have enabled thing.");
+}
 
 // If you want null to be true:
-optionalThing?.isEnabled ?? true;
+if (optionalThing?.isEnabled ?? true) {
+  print("Have enabled thing or nothing.");
+}
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (convert-null-equals)"?>
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
-optionalThing?.isEnabled == true;
+if (optionalThing?.isEnabled == true) {
+  print("Have enabled thing.");
+}
 
 // If you want null to be true:
-optionalThing?.isEnabled != false;
+if (optionalThing?.isEnabled != false) {
+  print("Have enabled thing or nothing.");
+}
 {% endprettify %}
 
 Both operations produce the same result and do the right thing, but `??` is
 preferred for three main reasons:
 
-*   The `??` operator clearly signals that the code has something to do with a
-    `null` value.
+*   The `??` operator signals that the code has something to do with `null`.
 
-*   The `== true` looks like a common new programmer mistake where the equality
-    operator is redundant and can be removed. That's true when the boolean
-    expression on the left will not produce `null`, but not when it can.
+*   The `== true` looks like a common mistake where the equality operator is
+    redundant and can be removed. That's true when the boolean expression on the
+    left will not produce `null`, but not when it can.
 
 *   The `?? false` and `?? true` clearly show what value will be used when the
     expression is `null`. With `== true`, you have to think through the boolean
@@ -191,8 +188,7 @@ a single long string that doesn't fit on one line.
 {:.good}
 <?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart tag=pre+code %}
-raiseAlarm(
-    'ERROR: Parts of the spaceship are on fire. Other '
+raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
@@ -254,9 +250,10 @@ The following best practices apply to collections.
 
 {% include linter-rule.html rule="prefer_collection_literals" %}
 
-Dart has three core collection types: List, Map, and Set. These classes have
-unnamed constructors like most classes do. But because these collections are
-used so frequently, Dart has nicer built-in syntax for creating them:
+Dart has three core collection types: List, Map, and Set. The Map and Set
+classes have unnamed constructors like most classes do. But because these
+collections are used so frequently, Dart has nicer built-in syntax for creating
+them:
 
 {:.good}
 <?code-excerpt "usage_good.dart (collection-literals)"?>
@@ -269,7 +266,6 @@ var counts = <int>{};
 {:.bad}
 <?code-excerpt "usage_bad.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
-var points = List<Point>();
 var addresses = Map<String, Address>();
 var counts = Set<int>();
 {% endprettify %}
@@ -278,6 +274,9 @@ Note that this guideline doesn't apply to the *named* constructors for those
 classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
 Likewise, if you're passing a size to `List()` to create a non-growable one,
 then it makes sense to use that.
+
+(The List class also has an unnamed constructor, but it is prohibited in null
+safe Dart.)
 
 ### DON'T use `.length` to see if a collection is empty.
 
@@ -697,7 +696,7 @@ implicitly uses `null` as the default, so there's no need to write it.
 {:.good}
 <?code-excerpt "usage_good.dart (default-value-null)"?>
 {% prettify dart tag=pre+code %}
-void error([String message]) {
+void error([String? message]) {
   stderr.write(message ?? '\n');
 }
 {% endprettify %}
@@ -705,7 +704,7 @@ void error([String message]) {
 {:.bad}
 <?code-excerpt "usage_bad.dart (default-value-null)"?>
 {% prettify dart tag=pre+code %}
-void error([String message = null]) {
+void error([String? message = null]) {
   stderr.write(message ?? '\n');
 }
 {% endprettify %}
@@ -718,42 +717,41 @@ The following best practices describe how to best use variables in Dart.
 
 {% include linter-rule.html rule="avoid_init_to_null" %}
 
-In Dart, a variable or field that is not explicitly initialized automatically
-gets initialized to `null`. This is reliably specified by the language. There's
-no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
-unneeded.
+If a variable has a non-nullable type, Dart reports a compile error if you try
+to use it before it has been definitely initialized. If the variable is
+nullable, then it is implicitly initialized to `null` for you. There's no
+concept of "uninitialized memory" in Dart and no need to explicitly initialize a
+variable to `null` to be "safe".
 
 {:.good}
 <?code-excerpt "usage_good.dart (no-null-init)"?>
 {% prettify dart tag=pre+code %}
-int _nextId;
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem;
 
-class LazyId {
-  int _id;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
   }
+
+  return bestItem;
 }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (no-null-init)"?>
+<?code-excerpt "usage_bad.dart (no-null-init)" replace="/ = null/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-int _nextId = null;
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem[! = null!];
 
-class LazyId {
-  int _id = null;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
   }
+
+  return bestItem;
 }
 {% endprettify %}
 
@@ -765,7 +763,7 @@ underlying state. Often you see code that calculates all of those views in the
 constructor and then stores them:
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (cacl-vs-store1)"?>
+<?code-excerpt "usage_bad.dart (calc-vs-store1)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double radius;
@@ -790,10 +788,10 @@ do you know when the cache is out of date and needs to be recalculated? Here, we
 never do, even though `radius` is mutable. You can assign a different value and
 the `area` and `circumference` will retain their previous, now incorrect values.
 
-To correctly handle cache invalidation, we need to do this:
+To correctly handle cache invalidation, we would need to do this:
 
 {:.bad}
-<?code-excerpt "usage_bad.dart (cacl-vs-store2)"?>
+<?code-excerpt "usage_bad.dart (calc-vs-store2)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double _radius;
@@ -803,10 +801,10 @@ class Circle {
     _recalculate();
   }
 
-  double _area;
+  double _area = 0.0;
   double get area => _area;
 
-  double _circumference;
+  double _circumference = 0.0;
   double get circumference => _circumference;
 
   Circle(this._radius) {
@@ -824,7 +822,7 @@ That's an awful lot of code to write, maintain, debug, and read. Instead, your
 first implementation should be:
 
 {:.good}
-<?code-excerpt "usage_good.dart (cacl-vs-store)"?>
+<?code-excerpt "usage_good.dart (calc-vs-store)"?>
 {% prettify dart tag=pre+code %}
 class Circle {
   double radius;
@@ -928,9 +926,6 @@ and return a value.
 {% prettify dart tag=pre+code %}
 double get area => (right - left) * (bottom - top);
 
-bool isReady(double time) =>
-    minTime == null || minTime <= time;
-
 String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
 {% endprettify %}
@@ -944,7 +939,7 @@ your code a favor and use a block body and some statements.
 {:.good}
 <?code-excerpt "usage_good.dart (arrow-long)"?>
 {% prettify dart tag=pre+code %}
-Treasure openChest(Chest chest, Point where) {
+Treasure? openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
 
   var treasure = Treasure(where);
@@ -957,9 +952,9 @@ Treasure openChest(Chest chest, Point where) {
 {:.bad}
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
 {% prettify dart tag=pre+code %}
-Treasure openChest(Chest chest, Point where) =>
+Treasure? openChest(Chest chest, Point where) =>
     _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
-      ..addAll(chest.contents);
+      ?..addAll(chest.contents);
 {% endprettify %}
 
 You can also use `=>` on members that don't return a value. This is idiomatic
@@ -1118,10 +1113,9 @@ Many fields are initialized directly from a constructor parameter, like:
 {% prettify dart tag=pre+code %}
 class Point {
   double x, y;
-  Point(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
+  Point(double x, double y)
+      : x = x,
+        y = y;
 }
 {% endprettify %}
 
@@ -1161,8 +1155,8 @@ class Point {
 <?code-excerpt "usage_bad.dart (dont-type-init-formals)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
-  Point(int this.x, int this.y);
+  double x, y;
+  Point(double this.x, double this.y);
 }
 {% endprettify %}
 
@@ -1187,7 +1181,7 @@ class Point {
 <?code-excerpt "usage_bad.dart (semicolon-for-empty-body)"?>
 {% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y) {}
 }
 {% endprettify %}
@@ -1422,17 +1416,16 @@ omit the `async` without changing the behavior of the function, do so.
 {:.good}
 <?code-excerpt "usage_good.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future<void> afterTwoThings(
-    Future<void> first, Future<void> second) {
-  return Future.wait([first, second]);
+Future<int> fastestBranch(Future<int> left, Future<int> right) {
+  return Future.any([left, right]);
 }
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future<void> afterTwoThings(Future<void> first, Future<void> second) async {
-  return Future.wait([first, second]);
+Future<int> fastestBranch(Future<int> left, Future<int> right) async {
+  return Future.any([left, right]);
 }
 {% endprettify %}
 
@@ -1537,7 +1530,7 @@ Future<T> logValue<T>(FutureOr<T> value) async {
     return result;
   } else {
     print(value);
-    return value as T;
+    return value;
   }
 }
 {% endprettify %}

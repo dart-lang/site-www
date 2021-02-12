@@ -12,23 +12,17 @@ class EnableableThing {
 
 void miscDeclAnalyzedButNotTested() {
   {
-    // ignore_for_file: null_aware_in_condition
-    var optionalThing = EnableableThing(true);
-    // #docregion null-aware-condition
-    if (optionalThing?.isEnabled) {
-      print("Have enabled thing.");
-    }
-    // #enddocregion null-aware-condition
-  }
-
-  {
     dynamic optionalThing;
     // #docregion convert-null-equals
     // If you want null to be false:
-    optionalThing?.isEnabled == true;
+    if (optionalThing?.isEnabled == true) {
+      print("Have enabled thing.");
+    }
 
     // If you want null to be true:
-    optionalThing?.isEnabled != false;
+    if (optionalThing?.isEnabled != false) {
+      print("Have enabled thing or nothing.");
+    }
     // #enddocregion convert-null-equals
   }
 
@@ -56,7 +50,6 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection-literals
-    var points = List<Point>();
     var addresses = Map<String, Address>();
     var counts = Set<int>();
     // #enddocregion collection-literals
@@ -159,13 +152,14 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-value-null
-    void error([String message = null]) {
+    void error([String? message = null]) {
       stderr.write(message ?? '\n');
     }
     // #enddocregion default-value-null
   }
 
   {
+    // ignore_for_file: only_throw_errors
     // #docregion rethrow
     try {
       somethingRisky();
@@ -178,8 +172,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<void> afterTwoThings(Future<void> first, Future<void> second) async {
-      return Future.wait([first, second]);
+    Future<int> fastestBranch(Future<int> left, Future<int> right) async {
+      return Future.any([left, right]);
     }
     // #enddocregion unnecessary-async
   }
@@ -213,9 +207,9 @@ void miscDeclAnalyzedButNotTested() {
 
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
-    Treasure openChest(Chest chest, Point where) =>
+    Treasure? openChest(Chest chest, Point where) =>
         _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
-          ..addAll(chest.contents);
+          ?..addAll(chest.contents);
     // #enddocregion arrow-long
   };
 }
@@ -258,24 +252,27 @@ class BadTeam extends Team {
 
 //----------------------------------------------------------------------------
 
+class Item {
+  int get price => 0;
+}
+
 // #docregion no-null-init
-int _nextId = null;
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem = null;
 
-class LazyId {
-  int _id = null;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
   }
+
+  return bestItem;
 }
 // #enddocregion no-null-init
 
 //----------------------------------------------------------------------------
 
-// #docregion cacl-vs-store1
+// #docregion calc-vs-store1
 class Circle1 {
   double radius;
   double area;
@@ -286,11 +283,11 @@ class Circle1 {
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
 }
-// #enddocregion cacl-vs-store1
+// #enddocregion calc-vs-store1
 
 //----------------------------------------------------------------------------
 
-// #docregion cacl-vs-store2
+// #docregion calc-vs-store2
 class Circle2 {
   double _radius;
   double get radius => _radius;
@@ -299,10 +296,10 @@ class Circle2 {
     _recalculate();
   }
 
-  double _area;
+  double _area = 0.0;
   double get area => _area;
 
-  double _circumference;
+  double _circumference = 0.0;
   double get circumference => _circumference;
 
   Circle2(this._radius) {
@@ -314,7 +311,7 @@ class Circle2 {
     _circumference = pi * 2.0 * _radius;
   }
 }
-// #enddocregion cacl-vs-store2
+// #enddocregion calc-vs-store2
 
 //----------------------------------------------------------------------------
 
@@ -358,10 +355,9 @@ class Box2 {
 // #docregion field-init-as-param
 class Point0 {
   double x, y;
-  Point0(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
+  Point0(double x, double y)
+      : x = x,
+        y = y;
 }
 // #enddocregion field-init-as-param
 
@@ -369,8 +365,8 @@ class Point0 {
 
 // #docregion dont-type-init-formals
 class Point1 {
-  int x, y;
-  Point1(int this.x, int this.y);
+  double x, y;
+  Point1(double this.x, double this.y);
 }
 // #enddocregion dont-type-init-formals
 
@@ -378,7 +374,7 @@ class Point1 {
 
 // #docregion semicolon-for-empty-body
 class Point2 {
-  int x, y;
+  double x, y;
   Point2(this.x, this.y) {}
 }
 // #enddocregion semicolon-for-empty-body

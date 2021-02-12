@@ -9,25 +9,31 @@ typedef Func1<S, T> = S Function(T _);
 Func0<Future> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
-Func1<bool, dynamic> canHandle = (_) => false,
-    verifyResult = (_) => false;
+Func1<bool, dynamic> canHandle = (_) => false, verifyResult = (_) => false;
+
+class Thing {
+  bool get isEnabled => true;
+}
 
 void miscDeclAnalyzedButNotTested() {
   {
-    dynamic optionalThing;
+    Thing? optionalThing;
     // #docregion convert-null-aware
     // If you want null to be false:
-    optionalThing?.isEnabled ?? false;
+    if (optionalThing?.isEnabled ?? false) {
+      print("Have enabled thing.");
+    }
 
     // If you want null to be true:
-    optionalThing?.isEnabled ?? true;
+    if (optionalThing?.isEnabled ?? true) {
+      print("Have enabled thing or nothing.");
+    }
     // #enddocregion convert-null-aware
   }
 
   {
     // #docregion adjacent-strings-literals
-    raiseAlarm(
-        'ERROR: Parts of the spaceship are on fire. Other '
+    raiseAlarm('ERROR: Parts of the spaceship are on fire. Other '
         'parts are overrun by martians. Unclear which are which.');
     // #enddocregion adjacent-strings-literals
   }
@@ -147,7 +153,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-value-null
-    void error([String message]) {
+    void error([String? message]) {
       stderr.write(message ?? '\n');
     }
     // #enddocregion default-value-null
@@ -166,9 +172,8 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<void> afterTwoThings(
-        Future<void> first, Future<void> second) {
-      return Future.wait([first, second]);
+    Future<int> fastestBranch(Future<int> left, Future<int> right) {
+      return Future.any([left, right]);
     }
     // #enddocregion unnecessary-async
   }
@@ -206,7 +211,7 @@ void miscDeclAnalyzedButNotTested() {
       return result;
     } else {
       print(value);
-      return value as T;
+      return value;
     }
   }
   // #enddocregion test-future-or
@@ -256,7 +261,7 @@ class Player {
 
 class Team {
   Future<List<Player>> get roster => Future.value([]);
-  Future<Team> downloadTeam(String name) => Future.value(Team());
+  Future<Team?> downloadTeam(String name) => Future.value(Team());
   dynamic get log => null;
 
   // #docregion async-await
@@ -277,24 +282,27 @@ class Team {
 
 //----------------------------------------------------------------------------
 
+class Item {
+  int get price => 0;
+}
+
 // #docregion no-null-init
-int _nextId;
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem;
 
-class LazyId {
-  int _id;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
   }
+
+  return bestItem;
 }
 // #enddocregion no-null-init
 
 //----------------------------------------------------------------------------
 
-// #docregion cacl-vs-store
+// #docregion calc-vs-store
 class Circle {
   double radius;
 
@@ -303,7 +311,7 @@ class Circle {
   double get area => pi * radius * radius;
   double get circumference => pi * 2.0 * radius;
 }
-// #enddocregion cacl-vs-store
+// #enddocregion calc-vs-store
 
 //----------------------------------------------------------------------------
 
@@ -334,19 +342,12 @@ class Treasure {
 }
 
 class C {
-  double left = 0.0,
-      right = 0.0,
-      top = 0.0,
-      bottom = 0.0,
-      minTime = 0.0;
+  double left = 0.0, right = 0.0, top = 0.0, bottom = 0.0, minTime = 0.0;
   Point center = Point(0.0, 0.0);
   Map<Chest, Treasure> _opened = {};
 
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);
-
-  bool isReady(double time) =>
-      minTime == null || minTime <= time;
 
   String capitalize(String name) =>
       '${name[0].toUpperCase()}${name.substring(1)}';
@@ -358,7 +359,7 @@ class C {
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
-  Treasure openChest(Chest chest, Point where) {
+  Treasure? openChest(Chest chest, Point where) {
     if (_opened.containsKey(chest)) return null;
 
     var treasure = Treasure(where);

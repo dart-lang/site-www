@@ -287,10 +287,10 @@ class FilteredObservable {
 
   FilteredObservable(this._predicate, this._observers);
 
-  void Function(Event) notify(Event event) {
+  void Function(Event)? notify(Event event) {
     if (!_predicate(event)) return null;
 
-    void Function(Event) last;
+    void Function(Event)? last;
     for (var observer in _observers) {
       observer(event);
       last = observer;
@@ -343,7 +343,7 @@ class Monster {
 List<Person> people = [];
 
 class ListBox {
-  ListBox({bool scroll, bool showScrollbars});
+  ListBox({required bool scroll, required bool showScrollbars});
 }
 
 class Button {
@@ -452,7 +452,7 @@ class C<Foo> {
 
 class String0 {
   // #docregion omit-optional-positional
-  String0.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
+  String0.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
   // #enddocregion omit-optional-positional
 }

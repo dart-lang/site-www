@@ -96,7 +96,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion future-or
   FutureOr<int> triple(FutureOr<int> value) {
     if (value is int) return value * 3;
-    return (value as Future<int>).then((v) => v * 3);
+    return value.then((v) => v * 3);
   }
   // #enddocregion future-or
 
@@ -182,6 +182,7 @@ class Person1 {
   // #enddocregion eq-dont-check-for-null
   Person1(this.name);
   int get hashCode => ellipsis();
+  // ignore_for_file: unnecessary_null_comparison
   // #docregion eq-dont-check-for-null
   bool operator ==(other) => other != null && ellipsis();
 }

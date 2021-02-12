@@ -1488,10 +1488,10 @@ class FilteredObservable {
 
   FilteredObservable(this._predicate, this._observers);
 
-  [!void Function(Event)!] notify(Event event) {
+  [!void Function(Event)!]? notify(Event event) {
     if (!_predicate(event)) return null;
 
-    [!void Function(Event)!] last;
+    [!void Function(Event)!]? last;
     for (var observer in _observers) {
       observer(event);
       last = observer;
@@ -1617,7 +1617,7 @@ Future<int> triple(FutureOr<int> value) async => (await value) * 3;
 {% prettify dart tag=pre+code %}
 FutureOr<int> triple(FutureOr<int> value) {
   if (value is int) return value * 3;
-  return (value as Future<int>).then((v) => v * 3);
+  return value.then((v) => v * 3);
 }
 {% endprettify %}
 
@@ -1696,7 +1696,7 @@ pass later one. You're better off using named arguments for that.
 {:.good}
 <?code-excerpt "design_good.dart (omit-optional-positional)"?>
 {% prettify dart tag=pre+code %}
-String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
+String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
 DateTime(int year,
     [int month = 1,
