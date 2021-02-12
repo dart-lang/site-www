@@ -334,6 +334,18 @@ If you find any issues with null safety please [give us feedback.][]
 
 [language version]: /guides/language/evolution#language-versioning
 
+## Known issues
+
+Not all parts of the Dart SDK support null safety yet,
+as some parts still need additional work to
+[migrate to null safety](https://dart.dev/null-safety/migration-guide).
+
+We're currently aware of the following issues:
+
+  * Migration of the pub.dev packages owned by the Dart team
+    is nearly complete, but a few are still missing. See pub.dev for
+    [the current list](https://pub.dev/packages?q=publisher%3Adart.dev&null-safe=1).
+
 ## Where to learn more
 
 For more information about null safety, see the following resources:
