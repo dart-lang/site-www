@@ -51,16 +51,16 @@ function toggleInFileAnalyzerFlags() {
 function analyze_and_test() {
   PROJECT_ROOT="$1"
   pushd "$PROJECT_ROOT" > /dev/null
-  travis_fold start analyzeAndTest.get
+  echo "::group::analyzeAndTest.get"
   dart pub $PUB_ARGS
-  travis_fold end analyzeAndTest.get
+  echo "::endgroup::"
 
   echo
   EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHAN.txt
   if [[ ! -e $EXPECTED_FILE ]]; then
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
   fi
-  travis_fold start analyzeAndTest.analyze
+  echo "::group::analyzeAndTest.analyze"
   toggleInFileAnalyzerFlags disable .
   echo "$ $ANALYZE"
   $ANALYZE > $LOG_FILE || {
@@ -88,7 +88,7 @@ function analyze_and_test() {
     cat $LOG_FILE
   fi
   toggleInFileAnalyzerFlags reenable .
-  travis_fold end analyzeAndTest.analyze
+  echo "::endgroup::"
 
   if [[ ! -d test ]]; then
     echo
@@ -97,7 +97,7 @@ function analyze_and_test() {
   fi
 
   echo
-  travis_fold start analyzeAndTest.tests.vm
+  echo "::group::analyzeAndTest.tests.vm"
   echo Running VM tests ...
 
   TEST="pub run test"
@@ -107,7 +107,7 @@ function analyze_and_test() {
   $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
   LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
   if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
-  travis_fold end analyzeAndTest.tests.vm
+  echo "::endgroup::"
 
   # TODO(chalin): as of 2019/11/17, we don't need to select individual browser test files. Run browser tests over all files, since VM-only tests have been annotated as such.
   TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
@@ -116,10 +116,9 @@ function analyze_and_test() {
   if [[ -z $TEST_FILES ]]; then
     echo "No browser-only tests."
   else
-    travis_fold start analyzeAndTest.tests.browser
+    echo "::group::analyzeAndTest.tests.browser"
     echo Running browser tests ...
     PLATFORM=chrome
-    if [[ -n $TRAVIS ]]; then PLATFORM=travischrome; fi
     # Name the sole browser test file, otherwise all other files get compiled too:
     TEST="pub run test"
     echo "$ $TEST --tags browser --platform $PLATFORM $TEST_FILES"
@@ -127,7 +126,7 @@ function analyze_and_test() {
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
     if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
-    travis_fold end analyzeAndTest.tests.browser
+    echo "::endgroup::"
   fi
   popd > /dev/null
 }

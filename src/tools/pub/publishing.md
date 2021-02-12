@@ -242,7 +242,7 @@ the authorized uploaders for the package.
 ## Publishing prereleases
 
 As you work on a package, consider publishing it as a prerelease.
-Prereleases can be useful when any of the following are true:
+Prereleases can be useful when *any* of the following are true:
 
 * You're actively developing the next major version of the package.
 * You want beta testers for the next release candidate of the package.
@@ -268,6 +268,50 @@ the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package `README.md` and documentation.
 
+## Publishing previews
+
+Previews can be useful when **all** of the following are true:
+
+* The next stable version of the package is complete.
+
+* That package version depends on an API or feature in the Dart SDK that
+  hasn't yet been released in a stable version of the Dart SDK.
+
+* You know that the API or feature that the package depends on is
+  API-stable and won't change before it reaches the stable SDK.
+
+As an example, consider a new version of `package:args` that has
+a finished version `2.0.0` but that 
+depends on a feature in Dart `2.12.0-259.8.beta`,
+where Dart SDK version `2.12.0` stable hasn't been released yet.
+The pubspec might look like this:
+
+```
+name: args
+version: 2.0.0
+environment:
+  sdk: '>=2.12.0-259.8.beta <3.0.0'
+```
+
+When this package is published to pub.dev,
+it's tagged as a preview version,
+as illustrated by the following screenshot,
+where the stable version is listed as
+`1.6.0` and the preview version is listed as `2.0.0`.
+
+![Illustration of a preview version](/null-safety/preview-version.png){:width="600px"}<br>
+
+When Dart `2.12.0` stable is released,
+pub.dev updates the package listing to display
+`2.0.0` as the stable version of the package.
+
+If all of the conditions at the beginning of this section are true,
+then you can ignore the following warning from `dart pub publish`: 
+
+   *"Packages with an SDK constraint on a pre-release of the Dart SDK should
+   themselves be published as a pre-release version. If this package needs Dart
+   version 2.12.0-0, consider publishing the package as a pre-release
+   instead."*
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -303,4 +347,3 @@ For more information, see the reference pages for the following `pub` commands:
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
-

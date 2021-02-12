@@ -54,9 +54,9 @@ to your app's `pubspec.yaml` file:
 ```
   dev_dependencies:
     # ···
-    build_runner: ^1.0.0
-    build_test: ^0.10.2
-    build_web_compilers: ^0.4.0
+    build_runner: ^1.11.0
+    build_test: ^1.3.0
+    build_web_compilers: ^2.12.0
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:

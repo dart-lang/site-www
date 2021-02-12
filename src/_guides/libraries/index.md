@@ -18,7 +18,7 @@ data (`dart:convert`). Additional APIs are available in
 ## Multi-platform libraries
 
 The following table lists the Dart core libraries that work on all
-[Dart platforms](/platforms).
+[Dart platforms](/overview#platform).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
@@ -37,7 +37,7 @@ The following table lists the Dart core libraries that work on all
 ## Native platform libraries
 
 The following table lists the Dart core libraries that work on the
-[Dart native platform](/platforms) (AOT- and JIT-compiled code).
+[Dart native platform](/overview#platform) (AOT- and JIT-compiled code).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
@@ -52,7 +52,7 @@ The following table lists the Dart core libraries that work on the
 ## Web platform libraries
 
 The following table lists the Dart core libraries that work on the
-[Dart web platform](/platforms) (code compiled to JavaScript).
+[Dart web platform](/overview#platform) (code compiled to JavaScript).
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|

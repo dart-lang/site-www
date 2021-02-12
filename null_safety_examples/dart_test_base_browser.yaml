@@ -2,12 +2,3 @@ include: dart_test_base.yaml
 
 tags:
   browser:
-
-# Chrome option required because Travis is't running under sudo
-# https://docs.travis-ci.com/user/chrome#Sandboxing
-define_platforms:
-  travischrome:
-    name: Chrome for Travis w/o sudo
-    extends: chrome
-    settings:
-      arguments: --no-sandbox

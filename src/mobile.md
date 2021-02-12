@@ -6,9 +6,9 @@ toc: false
 ---
 
 We recommend the [Flutter framework][] for developing mobile apps.
-It's powered by the [Dart platform](/platforms), using the [Dart
-VM](/platforms) for its instant _hot reload_ developer cycle and the [Dart
-AOT](/platforms) native code compiler for creating fast production code.
+It's powered by the [Dart platform](/overview#platform), using the [Dart
+VM](/overview#platform) for its instant _hot reload_ developer cycle and the [Dart
+AOT](/overview#platform) native code compiler for creating fast production code.
 
 <p class="text-center"> 
   <a href="{{site.flutter}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
