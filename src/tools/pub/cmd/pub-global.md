@@ -12,13 +12,12 @@ After [activating a package](#activating-a-package), you can
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
 
-For example, say you want to run
-[Stagehand]({{site.pub}}/packages/stagehand)
-the Dart project generator, from the command line.
+For example, say you want to use [webdev][], to serve
+your Dart web application from the command line.
 
 ```terminal
-$ dart pub global activate stagehand
-$ stagehand
+$ dart pub global activate webdev
+$ webdev serve
 ```
 
 If this doesn't work, you might need to
@@ -104,13 +103,13 @@ you can also use `dart pub global run`.
 To run a script directly from the command line, add the [system cache][] `bin`
 directory to your `PATH` environment variable.
 
-For example, say you've activated the Stagehand package,
+For example, say you've activated the webdev package,
 but you still can't run the command:
 
 ```terminal
-$ dart pub global activate stagehand
-$ stagehand
--bash: stagehand: command not found
+$ dart pub global activate webdev
+$ webdev serve
+-bash: webdev: command not found
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
@@ -137,9 +136,9 @@ may vary for different versions of Windows.
 You can now directly invoke the command:
 
 {% prettify none tag=pre+code %}
-$ mkdir angular_project
-$ cd angular_project
-$ [!stagehand web-angular!]
+$ mkdir web_project
+$ cd web_project
+$ [!webdev serve!]
 {% endprettify %}
 
 If the script still fails to run from the command line, the
@@ -258,3 +257,4 @@ For options that apply to all pub commands, see
 </aside>
 
 [system cache]: /tools/pub/glossary#system-cache
+[webdev]: /tools/webdev
