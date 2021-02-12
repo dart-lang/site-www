@@ -12,7 +12,7 @@ After [activating a package](#activating-a-package), you can
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
 
-For example, say you want to use [webdev][], to serve
+For example, say you want to use [webdev][] to serve
 your Dart web application from the command line.
 
 ```terminal
@@ -136,7 +136,6 @@ may vary for different versions of Windows.
 You can now directly invoke the command:
 
 {% prettify none tag=pre+code %}
-$ mkdir web_project
 $ cd web_project
 $ [!webdev serve!]
 {% endprettify %}
