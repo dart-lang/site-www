@@ -16,19 +16,19 @@ while [[ "$1" == -* ]]; do
   esac
 done
 
-travis_fold start build_site
-  (
-    bundle exec jekyll --version;
-    set -x;
-    bundle exec jekyll build;
-  )
-travis_fold end build_site
+echo "::group::build_site"
+
+bundle exec jekyll --version;
+set -x;
+bundle exec jekyll build;
+
+echo "::endgroup::"
 
 [[ -z $CHECK_LINKS ]] && exit
 
-travis_fold start check_links
-  (
-    set -x;
-    ./tool/shared/check-links.sh $*;
-  )
-travis_fold end check_links
+echo "::group::check_links"
+
+set -x;
+./tool/shared/check-links.sh $*;
+
+echo "::endgroup::"

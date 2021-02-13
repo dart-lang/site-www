@@ -5,7 +5,7 @@ description: Resources for developing Dart web apps.
 toc: false
 ---
 
-Dart supports the web as one of its core [platforms](/platforms).
+Dart supports the web as one of its core [platforms](/overview#platform).
 Dart-to-JavaScript compilers are available both for development
 (with a quick edit-refresh cycle)
 and for production

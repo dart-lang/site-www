@@ -23,6 +23,29 @@ if [[ $NULL_SAFETY == 1 ]]; then
   dart format $* `find $NULL_SAFETY_EXAMPLES -name "*.dart" \
       ! -path "**/.*" \
       ! -path "**/build/**"`
+
+  dart format -l 60 \
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/classes/immutable_point.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/classes/logger.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/classes/no_such_method.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/classes/orchestra.dart \
+    $NULL_SAFETY_EXAMPLES/misc/test/language_tour/built_in_types_test.dart \
+    $NULL_SAFETY_EXAMPLES/misc/test/language_tour/functions_test.dart \
+    $NULL_SAFETY_EXAMPLES/misc/test/library_tour/html_test.dart
+    # $NULL_SAFETY_EXAMPLES/misc/lib/samples/spacecraft.dart
+
+  dart format -l 65 \
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/exceptions.dart
+    # $NULL_SAFETY_EXAMPLES/httpserver/bin/basic_writer_server.dart \
+    # $NULL_SAFETY_EXAMPLES/httpserver/bin/note_server.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/bin/dcat.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/core \
+    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/future.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/stream.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/test/library_tour/core_test.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/test/library_tour/io_test.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
+    # $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/usage_good.dart
 else
   echo "Formatting example files..."
   dart format $* `find $EXAMPLES -name "*.dart" \

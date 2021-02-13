@@ -7,7 +7,7 @@ sqllite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
-platform](/platforms/) can use the dart:ffi library to call native C APIs.
+platform](/overview#platform/) can use the dart:ffi library to call native C APIs.
 _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
@@ -42,7 +42,7 @@ The hello_world example has the following files:
 
 | **Source file** | **Description** |
 | [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
-| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.5. |
+| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
 | [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
 | [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
 | [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
@@ -71,7 +71,7 @@ $ cmake .
 $ make
 ...
 $ cd ..
-$ dart hello.dart
+$ dart run hello.dart
 Hello World
 ```
 

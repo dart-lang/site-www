@@ -1442,7 +1442,7 @@ src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using arrow
+If the function contains only one return statement, you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
@@ -2941,8 +2941,7 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
-  static final ImmutablePoint origin =
-      const ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final double x, y;
 

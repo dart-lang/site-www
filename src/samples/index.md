@@ -106,7 +106,7 @@ var result = fibonacci(20);
 {% endprettify %}
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
-contain a single statement.
+contain a single expression or return statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
@@ -237,11 +237,12 @@ class Orbiter extends Spacecraft {
 
 ## Mixins
 
-Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
+Mixins are a way of reusing code in multiple class hierarchies. The following is
+a mixin declaration:
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart tag=pre+code %}
-class Piloted {
+mixin Piloted {
   int astronauts = 1;
   void describeCrew() {
     print('Number of astronauts: $astronauts');
