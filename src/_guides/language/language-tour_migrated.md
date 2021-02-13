@@ -123,7 +123,8 @@ mind:
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
     is inferred to be of type `int`. When you want to explicitly say
-    that no type is expected, use the type `Object` or —
+    that no type is expected, use the type `Object`
+    (or `Object?` if the value can be `null`) or —
     if you want to defer type checking until runtime —
     the [special type `dynamic`][ObjectVsDynamic].
 
@@ -132,11 +133,10 @@ mind:
 
     Here's a nice example that illustrates what dynamic does:
       dynamic a = 2;
-      String b = a; // no problem! until runtime
-      // Uncaught Error: TypeError: 2: type 'JSInt' is not a subtype of type 'String'
+      String b = a; // No problem! Until runtime, when you get an uncaught error.
   
       Object c = 2;
-      String d = c;  // problem! A value of type 'Object' can't be assigned to a variable of type 'String'
+      String d = c;  // Problem!
     {% endcomment %}
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
@@ -1799,21 +1799,21 @@ you are sure that the object is of that type. Example:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
 ```dart
-(emp as Person).firstName = 'Bob';
+(employee as Person).firstName = 'Bob';
 ```
 
 If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
-if (emp is Person) {
+if (employee is Person) {
   // Type check
-  emp.firstName = 'Bob';
+  employee.firstName = 'Bob';
 }
 ```
 
 {{site.alert.note}}
-  The code isn’t equivalent. If `emp` is null or not a `Person`, the
+  The code isn’t equivalent. If `employee` is null or not a `Person`, the
   first example throws an exception; the second does nothing.
 {{site.alert.end}}
 
@@ -2831,8 +2831,8 @@ class Employee extends Person {
 }
 
 void main() {
-  var emp = Employee.fromJson({});
-  print(emp);
+  var employee = Employee.fromJson({});
+  print(employee);
   // Prints:
   // in Person
   // in Employee

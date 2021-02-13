@@ -27,21 +27,21 @@ class Employee extends Person {
 // #enddocregion method-then-constructor
 
 void main() {
-  var emp = Employee.fromJson({});
-  print(emp);
+  var employee = Employee.fromJson({});
+  print(employee);
   // Prints:
   // in Person
   // in Employee
   // Instance of 'Employee'
   // #enddocregion super
   // #docregion emp-is-Person
-  if (emp is Person) {
+  if (employee is Person) {
     // Type check
-    emp.firstName = 'Bob';
+    employee.firstName = 'Bob';
   }
   // #enddocregion emp-is-Person
   // #docregion emp-as-Person
-  (emp as Person).firstName = 'Bob';
+  (employee as Person).firstName = 'Bob';
   // #enddocregion emp-as-Person
 // #docregion super
 }
