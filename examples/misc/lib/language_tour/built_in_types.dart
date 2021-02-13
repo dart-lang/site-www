@@ -14,6 +14,11 @@ void miscDeclAnalyzedButNotTested() {
     var exponents = 1.42e5;
     // #enddocregion double-literals
   }
+  
+  {
+    // #docregion declare-num
+    num x = 1; // x can have both int and double values
+  }
 
   {
     // #docregion int-to-double
