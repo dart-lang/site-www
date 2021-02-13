@@ -50,7 +50,8 @@ then passing a nullable argument becomes a compile error.
   **You can — and should — migrate your package before
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
-  don't use null safety yet.
+  don't use null safety yet,
+  as long as they use Dart 2.12 beta or later.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 {{ site.alert.end }}

@@ -1,6 +1,6 @@
 # The Dart language site (dart.dev)
 
-[![Build Status SVG][]][Repo on Travis]
+[![Build Status SVG][]][Repo on GitHub Actions]
 [![first-timers SVG][]][first-timers]
 
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
@@ -259,7 +259,7 @@ using `git stash pop`.
 See the [Troubleshooting wiki page].
 
 
-[Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
+[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
 [Dart]: https://dart.dev/get-dart
 [Dart install]: https://dart.dev/get-dart
@@ -269,7 +269,7 @@ See the [Troubleshooting wiki page].
 [GNU diffutils]: https://www.gnu.org/software/diffutils
 [Jekyll]: https://jekyllrb.com/
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
-[Repo on Travis]: https://travis-ci.org/dart-lang/site-www
+[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amaster
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting

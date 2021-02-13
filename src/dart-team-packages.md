@@ -17,5 +17,5 @@ and the quality and support levels for packages under each publisher.
 {:.table .table-striped .nowrap}    
 
 [dart.dev]: {{site.pub}}/publishers/dart.dev/packages
-[tools.dart.dev]: {{site.pub}}/publishers/tools.dart.dev/packages)
-[labs.dart.dev]: {{site.pub}}/publishers/labs.dart.dev/packages)
+[tools.dart.dev]: {{site.pub}}/publishers/tools.dart.dev/packages
+[labs.dart.dev]: {{site.pub}}/publishers/labs.dart.dev/packages

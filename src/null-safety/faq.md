@@ -221,11 +221,15 @@ In this case, you should use the bang operator (`!`) to cast the value back to
 V:
 
 ```dart
-if (blockTypes.containsKey(key)) {
-  return blockTypes[key]!; // blockTypes[key] is non-nullable
-} else {
-  throw ArgumentError('Could not read block type.');
-}
+return blockTypes[key]!;
+```
+
+Which will throw if the map returns null. If you want explicit handling for that case:
+
+```dart
+var result = blockTypes[key];
+if (result != null) return result;
+// Handle the null case here, e.g. throw with explanation.
 ```
 
 ## Why is the generic type on my List/Map nullable?
@@ -280,6 +284,22 @@ a type might still have changed because of changes to type inference that happen
 when you enable null safety.
 
 The fix is to explicitly create such lists as `List<dynamic>`.
+
+## Why does the migration tool add comments to my code? {#migration-comments}
+
+The migration tool adds `/* == false */` or `/* == true */` comments when it
+sees conditions that will always be false or true while running in sound mode.
+Comments like these might indicate that the automatic migration is incorrect and
+needs human intervention. For example:
+
+```dart
+if (registry.viewFactory(viewDescriptor.id) == null /* == false */)
+```
+
+In these cases, the migration tool can't distinguish defensive-coding situations
+and situations where a null value is really expected. So the tool tells you what
+it knows ("it looks like this condition will always be false!") and lets you
+decide what to do.
 
 ## Resources
 

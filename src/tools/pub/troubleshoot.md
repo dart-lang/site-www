@@ -101,8 +101,8 @@ $ $Env:https_proxy="username:password@hostname:port"
 ```
 ## Localhost unreachable after sign-in
 
-When you run `pub publish` in a container or over an SSH session,
-the `localhost` that `pub` is listening to might be different from
+When you run `dart pub publish` in a container or over an SSH session,
+the `localhost` that `dart pub` is listening to might be different from
 the `localhost` that's accessible in your browser.
 Although you can sign in using the browser,
 the browser then complains that `http://localhost:<port>?code=...`
@@ -110,14 +110,14 @@ is not reachable.
 
 Try this workaround, which uses the command line to complete sign-in:
 
-1. In a terminal window, run `pub publish`.
+1. In a terminal window, run `dart pub publish`.
 2. In the browser window that comes up, sign in. <br>
    The browser is redirected to a _new localhost URL_
    (`http://localhost:<port>?code=...`)
    but complains that the URL isn't reachable.
 3. Copy the _new localhost URL_  from the browser.
 4. In another terminal window in the same container or on the same host
-   as the one where `pub publish` was called, use the `curl` command to
+   as the one where `dart pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
    ```terminal
