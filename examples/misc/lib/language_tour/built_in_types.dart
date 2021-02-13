@@ -18,6 +18,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion declare-num
     num x = 1; // x can have both int and double values
+    // #enddocregion declare-num
   }
 
   {
