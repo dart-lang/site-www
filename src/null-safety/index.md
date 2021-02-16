@@ -339,7 +339,7 @@ If you find any issues with null safety please [give us feedback.][]
 Some parts of the Dart ecosystem still need additional work to
 [migrate to null safety](/null-safety/migration-guide).
 
-We're currently aware of the following issues:
+The Dart team is currently aware of the following issues:
 
   * Migration of the pub.dev packages owned by the Dart team
     is nearly complete, but a few are still missing. See pub.dev for
