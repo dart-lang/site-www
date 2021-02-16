@@ -336,8 +336,7 @@ If you find any issues with null safety please [give us feedback.][]
 
 ## Known issues
 
-Not all parts of the Dart SDK support null safety yet,
-as some parts still need additional work to
+Some parts of the Dart ecosystem still need additional work to
 [migrate to null safety](/null-safety/migration-guide).
 
 We're currently aware of the following issues:
