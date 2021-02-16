@@ -63,9 +63,9 @@ The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
 
-### Switch to a 2.12 beta release
+### Switch to the latest beta release
 
-**Switch to the latest beta release**
+Switch to the **latest beta release**
 of either the Dart SDK or the Flutter SDK.
 How you get the latest beta release depends on whether
 you use the Flutter SDK:
@@ -133,26 +133,11 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Update `pubspec.yaml` to use null-safe releases
-   (as listed in the **Resolvable** column)
-   of its dependencies.
-   Omit `.x` suffixes to make version solving more flexible,
-   and _don't_ update the SDK minimum constraint.
-   For example, the `pubspec.yaml` file might look like this:
-   ```yaml
-   ...
-   environment:
-     sdk: '>=2.8.1 <3.0.0'
+1. Run `dart pub upgrade --null-safety` to upgrade to the latest versions
+   supporting null safety.
+   **Note:** This command changes your `pubspec.yaml` file.
 
-   dependencies:
-     path: ^1.8.0-nullsafety
-     process: ^4.0.0-nullsafety
-
-   dev_dependencies:
-     pedantic: ^1.10.0-nullsafety
-   ```
-
-2. Run `dart pub upgrade`.
+2. Run `dart pub get`.
 
 
 ## 2. Migrate {#step2-migrate}
@@ -453,8 +438,7 @@ We encourage you to publish packages as prereleases
 as soon as you migrate:
 
 * [Set the SDK constraints to the tested beta version.](#sdk-constraints)
-* [Set the package version to indicate a breaking change and
-  include a `nullsafety` suffix.](#version)
+* [Set the package version to indicate a breaking change.](#version)
 
 ### SDK constraints
 
@@ -473,38 +457,48 @@ With these constraints,
 packages that are published during null safety beta
 can still work with the next stable release of the Dart SDK.
 
-
 ### Package version
 
 Update the version of the package
-to indicate a breaking change and include a `nullsafety` suffix:
+to indicate a breaking change:
 
 * If your package is already at 1.0.0 or greater,
   increase the major version.
   For example, if the previous version is `2.3.2`,
-  the new version is **`3.0.0-nullsafety.0`**.
+  the new version is `3.0.0`.
 
 * If your package hasn't reached 1.0.0 yet,
   _either_ increase the minor version _or_ update the version to 1.0.0.
   For example, if the previous version is `0.3.2`,
-  the new version is one of the following:
-  * **`0.4.0-nullsafety.0`**
-  * **`1.0.0-nullsafety.0`**
+  the new version is either `0.4.0` or `1.0.0`.
 
-For subsequent updates to the null-safe prerelease of the package,
-increment the prerelease suffix.
-For example, if the first null-safe version is `3.0.0-nullsafety.0`,
-then the next one is `3.0.0-nullsafety.1`.
+Because null safety has a stable API as of Dart 2.12.0-259.9.beta and later, you
+can publish new stable versions of your package before null safety is
+in a stable Dart SDK release.
+The pub.dev site tags your new null safety version as a **preview**,
+as the following screenshot shows for version
+`2.0.0` of `package:args`:
 
-You can maintain a stable release and null-safe prerelease at the same time.
-For example, if you have a stable release that's `1.0.0` and
-a prerelease that's `2.0.0-nullsafety.0`,
-you can still publish new versions of the stable release
-(`1.0.1`) and null-safe prerelease (`2.0.0-nullsafety.1`).
+![Illustration of a preview version](/null-safety/preview-version.png){:width="800px"}<br>
 
-Once null safety is available in a stable release of the Dart SDK,
-we encourage you to publish a stable version of your null-safe package.
+Just after the first stable release of Dart 2.12, your package's latest preview
+version automatically becomes the stable version on pub.dev.
 
+Before you publish a stable null safety version of a package,
+we strongly recommend following these pubspec rules:
+
+  * Set the Dart lower SDK constraint to 2.12.0-259.9.beta.
+  * Use stable versions of all direct dependencies.
+
+If these criteria are satisfied, you can ignore the following warning,
+which appears when you run `pub publish`:
+
+> _Packages with an SDK constraint on a pre-release of the Dart SDK should themselves be published as a pre-release version._
+
+You can maintain a stable release and preview release at the same time. For
+example, if you have a stable release that's `1.0.0` and a preview version that's
+`2.0.0`, you can still publish new versions of the stable version (`1.0.1`) and
+preview version (`2.0.1`).
 
 ## Welcome to null safety
 
