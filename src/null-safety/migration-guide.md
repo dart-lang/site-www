@@ -472,7 +472,7 @@ to indicate a breaking change:
   For example, if the previous version is `0.3.2`,
   the new version is either `0.4.0` or `1.0.0`.
 
-Because null safety has a stable API as of **TODO: beta SDK version**, you
+Because null safety has a stable API as of Dart 2.12.0-259.9.beta and later, you
 can publish new stable versions of your package before null safety is
 in a stable Dart SDK release.
 The pub.dev site tags your new null safety version as a **preview**,
@@ -487,7 +487,7 @@ version automatically becomes the stable version on pub.dev.
 Before you publish a stable null safety version of a package,
 we strongly recommend following these pubspec rules:
 
-  * Set the Dart lower SDK constraint to **TODO: beta SDK version**.
+  * Set the Dart lower SDK constraint to 2.12.0-259.9.beta.
   * Use stable versions of all direct dependencies.
 
 If these criteria are satisfied, you can ignore the following warning,
