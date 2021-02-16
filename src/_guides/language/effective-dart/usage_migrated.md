@@ -953,9 +953,9 @@ Treasure? openChest(Chest chest, Point where) {
 {:.bad}
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
 {% prettify dart tag=pre+code %}
-Treasure? openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
-      ?..addAll(chest.contents);
+Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+    ? null
+    : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 {% endprettify %}
 
 You can also use `=>` on members that don't return a value. This is idiomatic
