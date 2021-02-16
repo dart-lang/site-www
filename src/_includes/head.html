@@ -15,7 +15,7 @@
   <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
 
   <!-- Favicon / Touch Icons -->
-  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link rel="icon" sizes="64x64" href="{% asset shared/dart/icon/64.png @path %}">
   <link href="{% asset touch-icon-iphone.png @path %}" rel="apple-touch-icon">
   <link href="{% asset touch-icon-ipad.png @path %}" rel="apple-touch-icon" sizes="76x76">
   <link href="{% asset touch-icon-iphone-retina.png @path %}" rel="apple-touch-icon" sizes="120x120">
