@@ -1271,10 +1271,10 @@ want a variable's type to be a supertype of the initializer's type so that you
 can later assign some other sibling type to the variable:
 
 {:.good}
-<?code-excerpt "design_good.dart (inferred-wrong)"?>
+<?code-excerpt "design_good.dart (inferred-wrong)" replace="/num highest/[!num!] highest/g"?>
 {% prettify dart tag=pre+code %}
 num highScore(List<num> scores) {
-  num highest = 0;
+  [!num!] highest = 0;
   for (var score in scores) {
     if (score > highest) highest = score;
   }
@@ -1282,23 +1282,10 @@ num highScore(List<num> scores) {
 }
 {% endprettify %}
 
-<!-- Q: As of 2.9, this code no longer works.
-  Should we change it or the recommendation? -->
-{:.bad}
-<!-- code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g" -->
-{% prettify dart tag=pre+code %}
-num highScore(List<num> scores) {
-  var highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
-}
-{% endprettify %}
-
-Here, if `scores` contains doubles, like `[1.2]`, then the assignment to
-`highest` will fail since its inferred type is `int`, not `num`. In these cases,
-explicit annotations make sense.
+Here, if we didn't annotate a type for `highest`, then Dart would infer `int`
+from the initialized value `0`. We need the type to be `num` since we may later
+assign double values from `scores` to it. In cases like this, explicit
+annotations make sense.
 
 
 ### PREFER annotating with `dynamic` instead of letting inference fail.
