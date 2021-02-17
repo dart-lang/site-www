@@ -430,12 +430,12 @@ class Box3 extends BaseBox {
 class Document {}
 
 // #docregion field-init-at-decl
-class Folder {
+class ProfileMark {
   final String name;
-  final List<Document> contents = [];
+  final DateTime start = DateTime.now();
 
-  Folder(this.name);
-  Folder.temp() : name = 'temporary';
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
 }
 // #enddocregion field-init-at-decl
 

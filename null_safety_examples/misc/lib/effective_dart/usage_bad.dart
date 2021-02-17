@@ -352,6 +352,20 @@ class Box2 {
 
 //----------------------------------------------------------------------------
 
+// #docregion field-init-at-decl
+class ProfileMark {
+  final String name;
+  final DateTime start;
+
+  ProfileMark(this.name) : start = DateTime.now();
+  ProfileMark.unnamed()
+      : name = '',
+        start = DateTime.now();
+}
+// #enddocregion field-init-at-decl
+
+//----------------------------------------------------------------------------
+
 // #docregion field-init-as-param
 class Point0 {
   double x, y;
