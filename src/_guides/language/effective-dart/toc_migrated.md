@@ -1,7 +1,4 @@
     {% comment %}
-    NOTE: The generator is broken.
-    See https://github.com/dart-lang/site-www/issues/1325.
-
     This file is generated from the other files in this directory.
     To re-generate it, please run the following command from root of
     the project:
@@ -9,7 +6,7 @@
       $ dart deploy/effective-dart-rules/bin/main.dart
 
     {% endcomment %}
-
+    
 <div class='effective_dart--summary_column' markdown='1'>
 
 ### Style
