@@ -40,12 +40,9 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (name, decade) {
-    return
-        // #docregion string-interpolation-avoid-curly
-        'Hi, ${name}!'
-            "Wear your wildest ${decade}'s outfit."
-        // #enddocregion string-interpolation-avoid-curly
-        ;
+    // #docregion string-interpolation-avoid-curly
+    var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
+    // #enddocregion string-interpolation-avoid-curly
   };
 
   {
