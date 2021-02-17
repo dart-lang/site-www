@@ -1066,32 +1066,32 @@ relatively rare thanks to initializing formals.
 ### DO initialize fields at their declaration when possible.
 
 If a field doesn't depend on any constructor parameters, it can and should be
-initialized at its declaration. It takes less code and makes sure you won't
-forget to initialize it if the class has multiple constructors.
+initialized at its declaration. It takes less code and avoids duplication when
+the class has multiple constructors.
 
-<!-- Q: As of 2.9, this code no longer works.
-  Should we change it or the recommendation? -->
 {:.bad}
-<!-- code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)" -->
+<?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
 {% prettify dart tag=pre+code %}
-class Folder {
+class ProfileMark {
   final String name;
-  final List<Document> contents;
+  final DateTime start;
 
-  Folder(this.name) : contents = [];
-  Folder.temp() : name = 'temporary'; // Oops! Forgot contents.
+  ProfileMark(this.name) : start = DateTime.now();
+  ProfileMark.unnamed()
+      : name = '',
+        start = DateTime.now();
 }
 {% endprettify %}
 
 {:.good}
 <?code-excerpt "usage_good.dart (field-init-at-decl)"?>
 {% prettify dart tag=pre+code %}
-class Folder {
+class ProfileMark {
   final String name;
-  final List<Document> contents = [];
+  final DateTime start = DateTime.now();
 
-  Folder(this.name);
-  Folder.temp() : name = 'temporary';
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
 }
 {% endprettify %}
 
