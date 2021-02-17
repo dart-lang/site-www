@@ -5,28 +5,31 @@
 
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
+[We welcome contributions](CONTRIBUTING.md), and we're
+[first-timer friendly][first-timers]!
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/) that catches your
-interest or generate one with your proposed change. Ask for it to be assigned to you.
+Start by looking for an [issue](https://github.com/dart-lang/site-www/)
+that catches your interest, or create an issue with your proposed change.
+Ask for the issue to be assigned to you.
 
-To update this site, fork the repo, make your changes, and generate a pull request.
-For simple changes (such as to CSS and text), you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
+To update this site, fork the repo, make your changes, and generate a pull
+request. For simple changes (such as to CSS and text), you probably don't need
+to build this site. Often you can make changes using the GitHub UI.
 
 > NOTE: If you clone this repo locally, see the instructions below on cloning
 > with its submodule.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-you'll need to build and test your work before submitting.
+If your change involves code samples, adds/removes pages, or affects
+navigation, you'll need to build and test your work before submitting.
 
 If you want or need to build, follow the steps below.
 
 > **Help us improve these instructions!**
-> If you have any problems getting set up to build or performing the actual build,
-> please [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> If you have any problems getting set up to build or performing the
+> actual build, please
+> [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
 > or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
 > (or both).
 
@@ -36,7 +39,9 @@ If you want or need to build, follow the steps below.
 
 Install the following tools if you don't have them already.
 
-- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
+- **bash**, the Bourne shell.
+  These instructions assume you're using `bash`;
+  setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
