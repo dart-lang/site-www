@@ -230,16 +230,13 @@ alphanumeric text, the `{}` should be omitted.
 {:.good}
 <?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart tag=pre+code %}
-'Hi, $name!'
-    "Wear your wildest $decade's outfit."
-    'Wear your wildest ${decade}s outfit.'
+var greeting = 'Hi, $name! I love your ${decade}s costume.';
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart tag=pre+code %}
-'Hi, ${name}!'
-    "Wear your wildest ${decade}'s outfit."
+var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
 {% endprettify %}
 
 ## Collections
