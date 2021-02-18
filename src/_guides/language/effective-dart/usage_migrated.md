@@ -711,6 +711,24 @@ void error([String? message = null]) {
 
 The following best practices describe how to best use variables in Dart.
 
+### DO follow a consistent rule for `var` and `final` on local variables.
+
+Most local variables should not have type annotations and should be declared
+using just `var` or `final`. There are two rules in wide use for when to use one
+or the other:
+
+*   Use `final` for local variables that are not re-assigned and `var` for those
+    that are.
+
+*   Use `var` for all local variables, even ones that are re-assigned. Never use
+    `final` for locals. (Using `final` for fields and top-level variables is
+    still encouraged, of course.)
+
+Either rule is acceptable, but pick *one* and apply it consistently throughout
+your code. That way when a reader sees `var`, they know whether it is sending a
+signal that the variable is assigned.
+
+
 ### DON'T explicitly initialize variables to `null`.
 
 {% include linter-rule.html rule="avoid_init_to_null" %}
