@@ -1669,19 +1669,15 @@ Dart supports named constructors:
 <?code-excerpt "../null_safety_examples/misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
-  late double x, y;
+  double x, y;
 
   Point(this.x, this.y);
 
-  Point.origin() {
-    x = 0;
-    y = 0;
-  }
+  Point.origin()
+      : x = 0,
+        y = 0;
 }
 ```
-
-This example uses the `late` annotation to indicate that `x` and `y` are
-initialized before they're used.
 
 To use a named constructor, invoke it using its full name:
 
@@ -1699,9 +1695,9 @@ Ignore all initial errors in the DartPad.
 ```dart:run-dartpad:height-240px:ga_id-named_constructors:null_safety-true
 {$ begin main.dart $}
 class Color {
-  late int red;
-  late int green;
-  late int blue;
+  int red;
+  int green;
+  int blue;
   
   Color(this.red, this.green, this.blue);
 
@@ -1710,17 +1706,16 @@ class Color {
 {$ end main.dart $}
 {$ begin solution.dart $}
 class Color {
-  late int red;
-  late int green;
-  late int blue;
+  int red;
+  int green;
+  int blue;
   
   Color(this.red, this.green, this.blue);
 
-  Color.black() {
-    red = 0;
-    green = 0;
-    blue = 0;
-  } 
+  Color.black()
+      : red = 0,
+        green = 0,
+        blue = 0;
 }
 {$ end solution.dart $}
 {$ begin test.dart $}
@@ -1741,9 +1736,6 @@ void main() {
     if (result.blue != 0) {
   errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
     }
-  } on LateInitializationError {
-     _result(false, ['Called Color.black() and got an error. Did you forget to initalize a property?']);
-    return;
   } catch (e) {
     _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
     return;
