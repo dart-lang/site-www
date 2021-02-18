@@ -720,7 +720,7 @@ or the other:
 *   Use `final` for local variables that are not reassigned and `var` for those
     that are.
 
-*   Use `var` for all local variables, even ones that are reassigned. Never use
+*   Use `var` for all local variables, even ones that aren't reassigned. Never use
     `final` for locals. (Using `final` for fields and top-level variables is
     still encouraged, of course.)
 
