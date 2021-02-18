@@ -725,8 +725,8 @@ or the other:
     still encouraged, of course.)
 
 Either rule is acceptable, but pick *one* and apply it consistently throughout
-your code. That way when a reader sees `var`, they know whether it is sending a
-signal that the variable is assigned.
+your code. That way when a reader sees `var`, they know whether it means that
+the variable is assigned later in the function.
 
 
 ### DON'T explicitly initialize variables to `null`.
