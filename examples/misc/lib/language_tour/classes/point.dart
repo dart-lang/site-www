@@ -14,10 +14,9 @@ class Point {
   // #enddocregion class-with-distanceTo, constructor-initializer
 
   // Named constructor
-  Point.origin() {
-    x = 0;
-    y = 0;
-  }
+  Point.origin()
+      : x = 0,
+        y = 0;
   // #enddocregion named-constructor
 
   // Initializer list sets instance variables before

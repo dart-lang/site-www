@@ -2779,10 +2779,9 @@ class Point {
   Point(this.x, this.y);
 
   // Named constructor
-  [!Point.origin()!] {
-    x = xOrigin;
-    y = yOrigin;
-  }
+  [!Point.origin()!]
+      : x = xOrigin,
+        y = yOrigin;
 }
 {% endprettify %}
 
