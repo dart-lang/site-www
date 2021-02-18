@@ -713,14 +713,14 @@ The following best practices describe how to best use variables in Dart.
 
 ### DO follow a consistent rule for `var` and `final` on local variables.
 
-Most local variables should not have type annotations and should be declared
+Most local variables shouldn't have type annotations and should be declared
 using just `var` or `final`. There are two rules in wide use for when to use one
 or the other:
 
-*   Use `final` for local variables that are not re-assigned and `var` for those
+*   Use `final` for local variables that are not reassigned and `var` for those
     that are.
 
-*   Use `var` for all local variables, even ones that are re-assigned. Never use
+*   Use `var` for all local variables, even ones that are reassigned. Never use
     `final` for locals. (Using `final` for fields and top-level variables is
     still encouraged, of course.)
 
