@@ -16,11 +16,12 @@ class DartPadPicker {
   final Element iFrameHost;
   final SelectElement selectElement;
   final List<Snippet> snippets;
+  final String /*?*/ frameId;
   IFrameElement _iFrameElement;
   int _selected = 0;
 
   DartPadPicker(this.iFrameHost, this.selectElement, this.snippets,
-      {this.dartPadUrl = 'https://dartpad.dev'}) {
+      {this.dartPadUrl = 'https://dartpad.dev', this.frameId}) {
     _initSelectElement();
     _initDartPad();
   }
@@ -49,6 +50,9 @@ class DartPadPicker {
   void _initDartPad() {
     _iFrameElement = IFrameElement()
       ..src = iFrameSrc(theme: 'dark', mode: 'dart');
+    if (frameId != null) {
+      _iFrameElement.id = frameId;
+    }
     iFrameHost.children.add(_iFrameElement);
     window.addEventListener('message', (Event _e) {
       final e = _e as MessageEvent;

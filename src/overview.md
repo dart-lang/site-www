@@ -3,18 +3,6 @@ title: Dart overview
 description: A short introduction to Dart
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-<style>
-{% comment %}
-TODO: move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 400px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 <img style="padding: 30px; float: right; width: 300px" src="{% asset
 logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
