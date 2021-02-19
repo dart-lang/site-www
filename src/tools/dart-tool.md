@@ -50,7 +50,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `analyze` | `dart analyze`     | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
 | `compile` | `dart compile exe <DART_FILE>` | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
 | `create`  | `dart create <DIRECTORY>`      | Creates a new project.<br>Use instead of [`stagehand`.][] | 
-| `fix`  | `dart fix <DIRECTORY|DART_FILE>` | Migrates Dart code to use newer syntax styles.<br>Use instead of [`dartfix`][]. | 
+| `fix`  | `dart fix <DIRECTORY|DART_FILE>` | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][]. | 
 | `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of [`dartfmt`][]. | 
 | `pub`     | `dart pub <PUB_COMMAND>`       | Works with packages.<br>Use instead of [`pub`][]. | 
 | `run`     | `dart run <DART_FILE>`         | Runs a Dart program. <br>Use instead of the pre-existing [Dart VM command][dart-vm]. | 
