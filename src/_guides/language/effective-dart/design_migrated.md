@@ -1468,7 +1468,7 @@ Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
 {:.good}
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
 {% prettify dart tag=pre+code %}
-Map<String, dynamic> readJson() { ... }
+Map<String, dynamic> readJson() => ...
 
 void printUsers() {
   var json = readJson();

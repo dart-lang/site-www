@@ -239,7 +239,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion infer-dynamic
-    Map<String, dynamic> readJson() { ellipsis(); }
+    Map<String, dynamic> readJson() => ellipsis();
 
     void printUsers() {
       var json = readJson();
