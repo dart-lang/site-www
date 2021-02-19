@@ -48,12 +48,14 @@ The `dart compile` command replaces the
 
 {{site.alert.note}}
   You don't need to compile Dart programs before running them.
-  The Dart VM has a JIT (just-in-time) compiler
-  that's especially useful during development.
+  Instead, you can use the [`dart run` command][dart-run],
+  which uses the Dart VM's JIT (just-in-time) compiler —
+  a feature that's especially useful during development.
   For more information on AOT (ahead-of-time) and JIT compilation,
-  see the [Platforms page](/platforms).
+  see the [platforms discussion](/overview#platform).
 {{site.alert.end}}
 
+[dart-run]: /tools/dart-tool
 
 ## Types of output
 
@@ -64,17 +66,17 @@ The following table shows the subcommands of `dart compile`.
     <th> Subcommand </th> <th> Output </th> <th> More information </th>
   </tr>
   <tr>
-    <td style="white-space: nowrap"> <code>aot-snapshot</code> </td>
-    <td style="white-space: nowrap"> AOT snapshot </td>
-    <td> An architecture-specific file with <b>no Dart runtime</b>.
-      <a href="#aot-snapshot">Learn more.</a>
-    </td>
-  </tr>
-  <tr>
     <td> <code>exe</code> </td>
     <td> <span style="white-space: nowrap">Self-contained</span> executable </td>
     <td> A standalone, architecture-specific executable file.
       <a href="#exe">Learn more.</a>
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap"> <code>aot-snapshot</code> </td>
+    <td style="white-space: nowrap"> AOT snapshot </td>
+    <td> An architecture-specific file with <b>no Dart runtime</b>.
+      <a href="#aot-snapshot">Learn more.</a>
     </td>
   </tr>
   <tr>
@@ -87,13 +89,6 @@ The following table shows the subcommands of `dart compile`.
     </td>
   </tr>
   <tr>
-    <td> <code>js</code> </td>
-    <td> JavaScript </td>
-    <td> A deployable JavaScript file. ***[PENDING: check]***
-      <a href="#js">Learn more.</a>
-    </td>
-  </tr>
-  <tr>
     <td> <code>kernel</code> </td>
     <td> Kernel snapshot </td>
     <td> A portable
@@ -101,31 +96,17 @@ The following table shows the subcommands of `dart compile`.
       <a href="#kernel">Learn more.</a>
     </td>
   </tr>
+  <tr>
+    <td> <code>js</code> </td>
+    <td> JavaScript </td>
+    <td> A deployable JavaScript file.
+      <a href="#js">Learn more.</a>
+    </td>
+  </tr>
 </table>
 
 
-## AOT snapshots (aot-snapshot) {#aot-snapshot}
-
-Use AOT snapshots to reduce disk space requirements
-when distributing multiple command-line apps.
-The `aot-snapshot` subcommand produces an output file
-that's specific to the current architecture.
-For example, if you use macOS to create a `.aot` file,
-then that file can run on macOS only.
-AOT snapshots are supported on Windows, macOS, and Linux.
-
-```terminal
-$ dart compile aot-snapshot bin/myapp.dart
-Generated: /Users/me/myapp/bin/myapp.aot
-$ dartaotruntime bin/myapp.aot
-```
-
-For more information, see
-[Known limitations](#known-limitations) and the
-[`dartaotruntime` documentation](/tools/dartaotruntime).
-
-
-## Standalone executables (exe) {#exe}
+## Self-contained executables (exe) {#exe}
 
 The `exe` subcommand produces a standalone executable for
 Windows, macOS, or Linux.
@@ -174,6 +155,28 @@ No support for dart:mirrors and dart:developer
   let the Dart team know by adding a "thumbs up" to the issue.
 {{site.alert.end}}
 
+
+## AOT snapshots (aot-snapshot) {#aot-snapshot}
+
+Use AOT snapshots to reduce disk space requirements
+when distributing multiple command-line apps.
+The `aot-snapshot` subcommand produces an output file
+that's specific to the current architecture.
+For example, if you use macOS to create a `.aot` file,
+then that file can run on macOS only.
+AOT snapshots are supported on Windows, macOS, and Linux.
+
+```terminal
+$ dart compile aot-snapshot bin/myapp.dart
+Generated: /Users/me/myapp/bin/myapp.aot
+$ dartaotruntime bin/myapp.aot
+```
+
+For more information, see
+[Known limitations](#known-limitations) and the
+[`dartaotruntime` documentation](/tools/dartaotruntime).
+
+
 {% comment %}
   TODO: Get info from https://github.com/dart-lang/sdk/wiki/Snapshots
 
@@ -209,32 +212,12 @@ These snapshots are architecture specific,
 unlike snapshots produced using the
 [`kernel` subcommand](#kernel).
 
-## JavaScript (js) {#js}
-
-The `js` subcommand compiles Dart code to deployable JavaScript.
-Another Dart-to-JavaScript compiler, [`dartdevc`][],
-is for development use only.
-
-You usually use the [`webdev` tool][webdev] instead of
-directly using a Dart-to-JavaScript compiler.
-The [`webdev build`][] command, by default,
-produces the same output as `dart compile js`.
-The [`webdev serve`][] command uses `dartdevc` by default, but you can switch
-to it to `dart compile js` by using the `--release` flag.
-
-The `js` subcommand replaces the `dart2js` command.
-For more information, see the [`dart2js` documentation](/tools/dart2js).
-
-[`dartdevc`]: /tools/dartdevc
-[webdev]: /tools/webdev
-[`webdev build`]: /tools/webdev#build
-[`webdev serve`]: /tools/webdev#serve
-
 
 ## Portable snapshots (kernel) {#kernel}
 
 Use the `kernel` subcommand to package up an app into a
-single, portable file.
+single, portable file that
+can be run on all operating systems and CPU architectures.
 A kernel snapshot contains a binary form of the abstract syntax tree
 ([Kernel AST][]) for a Dart program.
 
@@ -249,8 +232,35 @@ $ dart run bin/myapp.dill
 Although kernel snapshots have reduced startup time compared to Dart code,
 they can have much slower startup than architecture-specific AOT output formats.
 
-
 [Kernel AST]: https://github.com/dart-lang/sdk/blob/master/pkg/kernel/README.md
+
+
+## JavaScript (js) {#js}
+
+The `js` subcommand compiles Dart code to deployable JavaScript.
+Another Dart-to-JavaScript compiler, [`dartdevc`][],
+is for development use only.
+
+You usually use the [`webdev` tool][webdev] instead of
+directly using a Dart-to-JavaScript compiler.
+The [`webdev build`][] command, by default,
+produces deployable JavaScript.
+The [`webdev serve`][] command uses `dartdevc` by default, but you can switch
+to producing deployable JavaScript by using the `--release` flag.
+
+{{ site.alert.version-note }}
+  Although we expect the `js` subcommand to replace the `dart2js` command,
+  as of Dart 2.12 `js` is missing
+  some of the more advanced flags available in `dart2js`.
+{{ site.alert.end }}
+
+For more information, see the [`dart2js` documentation](/tools/dart2js).
+
+[`dartdevc`]: /tools/dartdevc
+[webdev]: /tools/webdev
+[`webdev build`]: /tools/webdev#build
+[`webdev serve`]: /tools/webdev#serve
+
 
 [assert statements]: /guides/language/language-tour#assert
 [static analysis]: /guides/language/analysis-options
