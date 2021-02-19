@@ -350,7 +350,7 @@ are pointing to a brighter future for web developers. You can read a
 
 Java and Dart are syntactically similar,
 so this might be easier than you think.
-You can rely on the [Dart analyzer][dartanalyzer]
+You can rely on the [Dart analyzer][dart analyze]
 to flag any syntax problems. Alternatively, you may
 consider porting one feature at a time to Dart and using the
 [JavaScript interoperability library][package:js] as the common middle
@@ -465,7 +465,7 @@ modern JavaScript VMs.
 [Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
 [dart compile]: /tools/dart-compile
-[dartanalyzer]: /tools/dart-analyze
+[dart analyze]: /tools/dart-analyze
 [dartdevc]: /tools/dartdevc
 [chrome.dart]: https://github.com/dart-gde/chrome.dart
 [fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
