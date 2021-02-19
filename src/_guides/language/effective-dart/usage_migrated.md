@@ -121,7 +121,75 @@ Follow these two rules:
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
 
-## Booleans
+## Null
+
+
+### DON'T explicitly initialize variables to `null`.
+
+{% include linter-rule.html rule="avoid_init_to_null" %}
+
+If a variable has a non-nullable type, Dart reports a compile error if you try
+to use it before it has been definitely initialized. If the variable is
+nullable, then it is implicitly initialized to `null` for you. There's no
+concept of "uninitialized memory" in Dart and no need to explicitly initialize a
+variable to `null` to be "safe".
+
+{:.good}
+<?code-excerpt "usage_good.dart (no-null-init)"?>
+{% prettify dart tag=pre+code %}
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem;
+
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
+  }
+
+  return bestItem;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (no-null-init)" replace="/ = null/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem[! = null!];
+
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
+  }
+
+  return bestItem;
+}
+{% endprettify %}
+
+
+### DON'T use an explicit default value of `null`.
+
+{% include linter-rule.html rule="avoid_init_to_null" %}
+
+If you make a nullable parameter optional but don't give it a default value, the
+language implicitly uses `null` as the default, so there's no need to write it.
+
+{:.good}
+<?code-excerpt "usage_good.dart (default-value-null)"?>
+{% prettify dart tag=pre+code %}
+void error([String? message]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (default-value-null)"?>
+{% prettify dart tag=pre+code %}
+void error([String? message = null]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
 
 ### DO use `??` to convert `null` to a boolean value.
 
@@ -171,6 +239,7 @@ preferred for three main reasons:
 *   The `?? false` and `?? true` clearly show what value will be used when the
     expression is `null`. With `== true`, you have to think through the boolean
     logic to realize that means that a `null` gets converted to *false*.
+
 
 ## Strings
 
@@ -661,8 +730,6 @@ names.forEach((name) {
 {% endprettify %}
 
 
-## Parameters
-
 ### DO use `=` to separate a named parameter from its default value.
 
 {% include linter-rule.html rule="prefer_equal_for_default_values" %}
@@ -684,29 +751,6 @@ void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
 
 
-### DON'T use an explicit default value of `null`.
-
-{% include linter-rule.html rule="avoid_init_to_null" %}
-
-If you make a parameter optional but don't give it a default value, the language
-implicitly uses `null` as the default, so there's no need to write it.
-
-{:.good}
-<?code-excerpt "usage_good.dart (default-value-null)"?>
-{% prettify dart tag=pre+code %}
-void error([String? message]) {
-  stderr.write(message ?? '\n');
-}
-{% endprettify %}
-
-{:.bad}
-<?code-excerpt "usage_bad.dart (default-value-null)"?>
-{% prettify dart tag=pre+code %}
-void error([String? message = null]) {
-  stderr.write(message ?? '\n');
-}
-{% endprettify %}
-
 ## Variables
 
 The following best practices describe how to best use variables in Dart.
@@ -727,49 +771,6 @@ or the other:
 Either rule is acceptable, but pick *one* and apply it consistently throughout
 your code. That way when a reader sees `var`, they know whether it means that
 the variable is assigned later in the function.
-
-
-### DON'T explicitly initialize variables to `null`.
-
-{% include linter-rule.html rule="avoid_init_to_null" %}
-
-If a variable has a non-nullable type, Dart reports a compile error if you try
-to use it before it has been definitely initialized. If the variable is
-nullable, then it is implicitly initialized to `null` for you. There's no
-concept of "uninitialized memory" in Dart and no need to explicitly initialize a
-variable to `null` to be "safe".
-
-{:.good}
-<?code-excerpt "usage_good.dart (no-null-init)"?>
-{% prettify dart tag=pre+code %}
-Item? bestDeal(List<Item> cart) {
-  Item? bestItem;
-
-  for (var item in cart) {
-    if (bestItem == null || item.price < bestItem.price) {
-      bestItem = item;
-    }
-  }
-
-  return bestItem;
-}
-{% endprettify %}
-
-{:.bad}
-<?code-excerpt "usage_bad.dart (no-null-init)" replace="/ = null/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
-Item? bestDeal(List<Item> cart) {
-  Item? bestItem[! = null!];
-
-  for (var item in cart) {
-    if (bestItem == null || item.price < bestItem.price) {
-      bestItem = item;
-    }
-  }
-
-  return bestItem;
-}
-{% endprettify %}
 
 
 ### AVOID storing what you can calculate.
