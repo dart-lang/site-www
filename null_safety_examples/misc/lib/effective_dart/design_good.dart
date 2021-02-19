@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
+// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
 
 import 'dart:async';
 import 'dart:collection';
@@ -158,6 +158,13 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion non-inferred-type-args
+    var playerScores = <String, int>{};
+    final events = StreamController<Event>();
+    // #enddocregion non-inferred-type-args
+  }
+
+  {
     // #docregion omit-types-on-locals
     List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
       var desserts = <List<Ingredient>>[];
@@ -170,6 +177,24 @@ void miscDeclAnalyzedButNotTested() {
       return desserts;
     }
     // #enddocregion omit-types-on-locals
+  }
+
+  {
+    // #docregion annotate-return-types
+    String makeGreeting(String who) {
+      return "Hello, $who!";
+    }
+    // #enddocregion annotate-return-types
+  }
+
+  {
+    // #docregion annotate-parameters
+    void sayRepeatedly(String message, {int count = 2}) {
+      for (var i = 0; i < count; i++) {
+        print(message);
+      }
+    }
+    // #enddocregion annotate-parameters
   }
 
   (AstNode node) {
@@ -194,21 +219,34 @@ void miscDeclAnalyzedButNotTested() {
   // #enddocregion inferred-wrong
 
   {
-    // #docregion redundant
-    Set<String> things = Set();
-    // #enddocregion redundant
+    // #docregion explicit
+    var items = Future.value([1, 2, 3]);
+    // #enddocregion explicit
   }
 
   {
-    // #docregion explicit
-    var things = Set<String>();
-    // #enddocregion explicit
+    // #docregion incomplete-generic
+    List<num> numbers = [1, 2, 3];
+    var completer = Completer<Map<String, int>>();
+    // #enddocregion incomplete-generic
   }
 
   {
     // #docregion prefer-dynamic
     dynamic mergeJson(dynamic original, dynamic changes) => ellipsis();
     // #enddocregion prefer-dynamic
+  }
+
+  {
+    // #docregion infer-dynamic
+    Map<String, dynamic> readJson() { ellipsis(); }
+
+    void printUsers() {
+      var json = readJson();
+      var users = json['users'];
+      print(users);
+    }
+    // #enddocregion infer-dynamic
   }
 
   // #docregion avoid-Function
@@ -271,6 +309,33 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion avoid-mandatory-param
   };
 }
+
+//----------------------------------------------------------------------------
+
+// #docregion dont-type-init-formals
+class Point1 {
+  double x, y;
+  Point1(this.x, this.y);
+}
+// #enddocregion dont-type-init-formals
+
+//----------------------------------------------------------------------------
+
+// #docregion inferred-type-args
+class Downloader {
+  final Completer<String> response = Completer();
+}
+// #enddocregion inferred-type-args
+
+//----------------------------------------------------------------------------
+
+// #docregion redundant
+class Downloader1 {
+  final Completer<String> response = Completer();
+}
+// #enddocregion redundant
+
+//----------------------------------------------------------------------------
 
 class MyIterable<T> {
   // #docregion function-type-param

@@ -1020,21 +1020,27 @@ generic invocation. You usually don't need to worry about this distinction, but
 in a couple of places, we have different guidance for when a type is used in a
 generic invocation as opposed to a type annotation.
 
-In most places, Dart allows you to omit a type annotation and infers a type for
-you based on the nearby context, or defaults to the `dynamic` type. The fact
-that Dart has both type inference and a `dynamic` type leads to some confusion
-about what it means to say code is "untyped". Does that mean the code is
-dynamically typed, or that you didn't *write* the type? To avoid that confusion,
-we avoid saying "untyped" and instead use the following terminology:
+#### Type inference
+
+Type annotations are optional in Dart. If you omit one, Dart can infer a type
+based on the nearby context. Sometimes it doesn't have enough information to
+infer a complete type. When that happens, Dart sometimes reports an error, but
+usually silently fills in any missing parts with `dynamic`. The implicit
+`dynamic` leads to code that *looks* inferred and safe, but actually disables
+type checking completely. The rules below avoid that by requiring types when
+inference fails.
+
+The fact that Dart has both type inference and a `dynamic` type leads to some
+confusion about what it means to say code is "untyped". Does that mean the code
+is dynamically typed, or that you didn't *write* the type? To avoid that
+confusion, we avoid saying "untyped" and instead use the following terminology:
 
 *   If the code is *type annotated*, the type was explicitly written in the
     code.
 
 *   If the code is *inferred*, no type annotation was written, and Dart
     successfully figured out the type on its own. Inference can fail, in which
-    case the guidelines don't consider that inferred. In some places, inference
-    failure is a static error. In others, Dart uses `dynamic` as the fallback
-    type.
+    case the guidelines don't consider that inferred.
 
 *   If the code is *dynamic*, then its static type is the special `dynamic`
     type. Code can be explicitly annotated `dynamic` or it can be inferred.
@@ -1043,39 +1049,63 @@ In other words, whether some code is annotated or inferred is orthogonal to
 whether it is `dynamic` or some other type.
 
 Inference is a powerful tool to spare you the effort of writing and reading
-types that are obvious or uninteresting. Omitting types in obvious cases also
-draws the reader's attention to explicit types when those types are important,
-for things like casts.
+types that are obvious or uninteresting. It keeps the reader's attention focused
+on the behavior of the code itself. Explicit types are also a key part of
+robust, maintainable code. They define the static shape of an API and create
+boundaries to document and enforce what kinds of values are allowed to reach
+different parts of the program.
 
-Explicit types are also a key part of robust, maintainable code. They define the
-static shape of an API. They document and enforce what kinds of values are
-allowed to reach different parts of the program.
+Of course, inference isn't magic. Sometimes inference succeeds and selects a
+type, but it's not the type you want. The common case is inferring an overly
+precise type from a variable's initializer when you intend to assign values of
+other types to the variable later. In those cases, you have to write the type
+explicitly.
 
 The guidelines here strike the best balance we've found between brevity and
-explicitness, flexibility and safety. When deciding which types to write, you
-need to answer two questions:
+control, flexibility and safety. There are specific guidelines to cover all the
+various cases, but the rough summary is:
 
-* Which types should I write because I think it's best for them to be visible in
-  the code?
-* Which types should I write because inference can't provide them for me?
+*   Do annotate when inference doesn't have enough context, even when `dynamic`
+    is the type you want.
 
-These guidelines help you answer the first question:
+*   Don't annotate locals and generic invocations unless you need to.
 
-* [PREFER type annotating public fields and top-level variables if the type isn't obvious.](#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)
-* [CONSIDER type annotating private fields and top-level variables if the type isn't obvious.](#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious)
-* [AVOID type annotating initialized local variables.](#avoid-type-annotating-initialized-local-variables)
-* [AVOID annotating inferred parameter types on function expressions.](#avoid-annotating-inferred-parameter-types-on-function-expressions)
-* [AVOID redundant type arguments on generic invocations.](#avoid-redundant-type-arguments-on-generic-invocations)
-
-These cover the second:
-
-* [DO annotate when Dart infers the wrong type.](#do-annotate-when-dart-infers-the-wrong-type)
-* [PREFER annotating with `dynamic` instead of letting inference fail.](#prefer-annotating-with-dynamic-instead-of-letting-inference-fail)
-
-The remaining guidelines cover other more specific questions around types.
+*   Prefer annotating top-level variables and fields unless the initializer
+    makes the type obvious.
 
 
-### PREFER type annotating public fields and top-level variables if the type isn't obvious.
+### DO type annotate variables without initializers.
+
+{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+
+The type of a variable&mdash;top-level, local, static field, or instance
+field&mdash;can often be inferred from its initializer. However, if there is no
+initializer, inference fails. In that case, write a type annotation.
+
+{:.good}
+<?code-excerpt "design_good.dart (uninitialized-local)"?>
+{% prettify dart tag=pre+code %}
+List<AstNode> parameters;
+if (node is Constructor) {
+  parameters = node.signature;
+} else if (node is Method) {
+  parameters = node.parameters;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (uninitialized-local)"?>
+{% prettify dart tag=pre+code %}
+var parameters;
+if (node is Constructor) {
+  parameters = node.signature;
+} else if (node is Method) {
+  parameters = node.parameters;
+}
+{% endprettify %}
+
+
+### DO type annotate fields and top-level variables if the type isn't obvious.
 
 {% include linter-rule.html rule="type_annotate_public_apis" %}
 
@@ -1115,30 +1145,22 @@ const screenWidth = 640; // Inferred as int.
 * Factory methods like `int.parse()`, `Future.wait()`, etc. that readers are
   expected to be familiar with.
 
+If you think the initializer expression&mdash;whatever it is&mdash;is
+sufficiently clear, then you may omit the annotation. But if you think
+annotating helps make the code clearer, then add one.
+
 When in doubt, add a type annotation. Even when a type is obvious, you may still
 wish to explicitly annotate. If the inferred type relies on values or
 declarations from other libraries, you may want to type annotate *your*
 declaration so that a change to that other library doesn't silently change the
 type of your own API without you realizing.
 
-
-### CONSIDER type annotating private fields and top-level variables if the type isn't obvious.
-
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
-
-Type annotations on your public declarations help *users* of your code. Types on
-private members help *maintainers*. The scope of a private declaration is
-smaller and those who need to know the type of that declaration are also more
-likely to be familiar with the surrounding code. That makes it reasonable to
-lean more heavily on inference and omit types for private declarations, which is
-why this guideline is softer than the previous one.
-
-If you think the initializer expression&mdash;whatever it is&mdash;is
-sufficiently clear, then you may omit the annotation. But if you think
-annotating helps make the code clearer, then add one.
+This rule applies to both public and private declarations. Just as type
+annotations on APIs help *users* of your code, types on private members help
+*maintainers*.
 
 
-### AVOID type annotating initialized local variables.
+### DON'T type annotate initialized local variables.
 
 {% include linter-rule.html rule="omit_local_variable_types" %}
 
@@ -1176,23 +1198,72 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 {% endprettify %}
 
-If the local variable doesn't have an initializer, then its type can't be
-inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
-`dynamic` and lose the benefits of static type checking.
+
+### DO annotate return types on function declarations.
+
+Dart does not generally infer the return type of a function declaration from its body,
+unlike some other languages. That means you should write a type annotation for
+the return type yourself.
 
 {:.good}
-<?code-excerpt "design_good.dart (uninitialized-local)"?>
+<?code-excerpt "design_good.dart (annotate-return-types)"?>
 {% prettify dart tag=pre+code %}
-List<AstNode> parameters;
-if (node is Constructor) {
-  parameters = node.signature;
-} else if (node is Method) {
-  parameters = node.parameters;
+String makeGreeting(String who) {
+  return "Hello, $who!";
 }
 {% endprettify %}
 
+{:.bad}
+<?code-excerpt "design_bad.dart (annotate-return-types)"?>
+{% prettify dart tag=pre+code %}
+makeGreeting(String who) {
+  return "Hello, $who!";
+}
+{% endprettify %}
 
-### AVOID annotating inferred parameter types on function expressions.
+There are two cases that seem like exceptions but aren't:
+
+*   Function *expressions* ("lambdas" or "anonymous functions") do infer a
+    return type from the body. In fact, the syntax doesn't even allow a return
+    type annotation. But these aren't what we consider function *declarations*.
+
+*   The return type of an overriding method can be inferred from the method it
+    overrides. However, this is a rarely-known feature and even in this case
+    it's better to still write the type explicitly.
+
+
+### DO annotate parameter types on function declarations.
+
+A function's parameter list determines its boundary to the outside world.
+Parameters should have their types annotated so that boundary is well defined.
+Note that even though they look like variable initializers, Dart does not infer
+an optional parameter's type from its default value.
+
+{:.good}
+<?code-excerpt "design_good.dart (annotate-parameters)"?>
+{% prettify dart tag=pre+code %}
+void sayRepeatedly(String message, {int count = 2}) {
+  for (var i = 0; i < count; i++) {
+    print(message);
+  }
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (annotate-parameters)" replace="/\(count as num\)/count/g"?>
+{% prettify dart tag=pre+code %}
+void sayRepeatedly(message, {count = 2}) {
+  for (var i = 0; i < count; i++) {
+    print(message);
+  }
+}
+{% endprettify %}
+
+**Exceptions:** Function expressions and initializing formals, which are covered
+by the next two guidelines.
+
+
+### DON'T annotate inferred parameter types on function expressions.
 
 {% include linter-rule.html rule="avoid_types_on_closure_parameters" %}
 
@@ -1218,90 +1289,167 @@ var names = people.map((person) => person.name);
 var names = people.map((Person person) => person.name);
 {% endprettify %}
 
-In rare cases, the surrounding context is not precise enough to provide a type
-for one or more of the function's parameters. In those cases, you may need to
-annotate.
+If the language is able to infer the type you want for a parameter in a function
+expression, then let it and don't annotate. In rare cases, the surrounding
+context is not precise enough to provide a type for one or more of the
+function's parameters. In those cases, you may need to annotate.
 
 
-### AVOID redundant type arguments on generic invocations.
+### DON'T type annotate initializing formals.
 
-A type argument is redundant if inference would fill in the same type. If the
-invocation is the initializer for a type-annotated variable, or is an argument
-to a function, then inference usually fills in the type for you:
+{% include linter-rule.html rule="type_init_formals" %}
+
+If a constructor parameter is using `this.` to initialize a field, then the type
+of the parameter is inferred to have the same type as the field.
+
+{:.good}
+<?code-excerpt "design_good.dart (dont-type-init-formals)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  double x, y;
+  Point(this.x, this.y);
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (dont-type-init-formals)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  double x, y;
+  Point(double this.x, double this.y);
+}
+{% endprettify %}
+
+
+### DO write type arguments on generic invocations that aren't inferred.
+
+Dart is pretty smart about inferring type arguments in generic invocations. It
+will look at the expected type where the expression occurs and the types of
+values being passed to the invocation. However, sometimes those aren't enough to
+fully determine a type argument. In that case, write the entire type argument
+list explicitly.
+
+{:.good}
+<?code-excerpt "design_good.dart (non-inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+var playerScores = <String, int>{};
+final events = StreamController<Event>();
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (non-inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+var playerScores = {};
+final events = StreamController();
+{% endprettify %}
+
+Sometimes the invocation occurs as the initializer to a variable declaration. If
+variable is *not* a local then instead of writing the type argument list on the
+invocation itself, you may put a type annotation on the declaration:
+
+{:.good}
+<?code-excerpt "design_good.dart (inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final Completer<String> response = Completer();
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final response = Completer();
+}
+{% endprettify %}
+
+Annotating the variable also addresses this guideline because now the type
+arguments *are* inferred.
+
+
+### DON'T write type arguments on generic invocations that are inferred.
+
+This is the converse of the previous rule. If an invocation's type argument list
+*is* correctly inferred with the types you want, then omit the types and let
+Dart do the work for you.
 
 {:.good}
 <?code-excerpt "design_good.dart (redundant)"?>
 {% prettify dart tag=pre+code %}
-Set<String> things = Set();
+class Downloader {
+  final Completer<String> response = Completer();
+}
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "design_bad.dart (redundant)"?>
 {% prettify dart tag=pre+code %}
-Set<String> things = Set<String>();
+class Downloader {
+  final Completer<String> response = Completer<String>();
+}
 {% endprettify %}
 
-Here, the type annotation on the variable is used to infer the type argument of
-constructor call in the initializer.
-
-In other contexts, there isn't enough information to infer the type and then you
-should write the type argument:
+Here, the type annotation on the field provides a surrounding context to infer
+the type argument of constructor call in the initializer.
 
 {:.good}
 <?code-excerpt "design_good.dart (explicit)"?>
 {% prettify dart tag=pre+code %}
-var things = Set<String>();
+var items = Future.value([1, 2, 3]);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "design_bad.dart (explicit)"?>
 {% prettify dart tag=pre+code %}
-var things = Set();
+var items = Future<List<int>>.value(<int>[1, 2, 3]);
 {% endprettify %}
 
-Here, since the variable has no type annotation, there isn't enough context to
-determine what kind of `Set` to create, so the type argument should be provided
-explicitly.
+Here, the types of the collection and instance can be inferred bottom-up from
+their elements and arguments.
 
 
-### DO annotate when Dart infers the wrong type.
+### AVOID writing incomplete generic types.
 
-Sometimes, Dart infers a type, but not the type you want. For example, you may
-want a variable's type to be a supertype of the initializer's type so that you
-can later assign some other sibling type to the variable:
+When writing a type annotation or type argument, it's still possible to not pin
+down a complete type by writing the name of a generic type but omitting its type
+arguments. In Java, these are called "raw types". For example:
+
+{:.bad}
+<?code-excerpt "design_bad.dart (incomplete-generic)"?>
+{% prettify dart tag=pre+code %}
+List numbers = [1, 2, 3];
+var completer = Completer<Map>();
+{% endprettify %}
+
+Here, `numbers` has a type annotation, but the annotation doesn't provide a type
+argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
+isn't fully specified. In cases like this, Dart will *not* try to "fill in" the
+rest of the type for you using the surrounding context. Instead, it silently
+fills in any missing type arguments with with `dynamic` (or the bound if the
+class has one). That's rarely what you want.
+
+Instead, if you are writing a generic type in a type annotation or as a type
+argument inside some invocation, make sure to write a complete type:
 
 {:.good}
-<?code-excerpt "design_good.dart (inferred-wrong)" replace="/num highest/[!num!] highest/g"?>
+<?code-excerpt "design_good.dart (incomplete-generic)"?>
 {% prettify dart tag=pre+code %}
-num highScore(List<num> scores) {
-  [!num!] highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
-}
+List<num> numbers = [1, 2, 3];
+var completer = Completer<Map<String, int>>();
 {% endprettify %}
 
-Here, if we didn't annotate a type for `highest`, then Dart would infer `int`
-from the initialized value `0`. We need the type to be `num` since we may later
-assign double values from `scores` to it. In cases like this, explicit
-annotations make sense.
 
+### DO annotate with `dynamic` instead of letting inference fail.
 
-### PREFER annotating with `dynamic` instead of letting inference fail.
+When inference doesn't fill in a type, it usually defaults to `dynamic`. If
+`dynamic` is the type you want, this is technically the most terse way to get
+it. However, it's not the most *clear* way. A casual reader of your code who
+sees an annotation is missing has no way of knowing if you intended it to be
+`dynamic`, expected inference to fill in some other type, or simply forgot to
+write the annotation.
 
-Dart allows you to omit type annotations in many places and will try to infer a
-type for you. In some cases, if inference fails, it silently gives you
-`dynamic`. If `dynamic` is the type you want, this is technically the most terse
-way to get it.
-
-However, it's not the most *clear* way. A casual reader of your code who sees an
-annotation is missing has no way of knowing if you intended it to be `dynamic`,
-expected inference to fill in some other type, or simply forgot to write the
-annotation.
-
-When `dynamic` is the type you want, writing it explicitly makes your intent
-clear.
+When `dynamic` is the type you want, write that explicitly to make your intent
+clear and highlight that this code has less static safety.
 
 {:.good}
 <?code-excerpt "design_good.dart (prefer-dynamic)"?>
@@ -1315,6 +1463,26 @@ dynamic mergeJson(dynamic original, dynamic changes) => ...
 mergeJson(original, changes) => ...
 {% endprettify %}
 
+Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
+
+{:.good}
+<?code-excerpt "design_good.dart (infer-dynamic)"?>
+{% prettify dart tag=pre+code %}
+Map<String, dynamic> readJson() { ... }
+
+void printUsers() {
+  var json = readJson();
+  var users = json['users'];
+  print(users);
+}
+{% endprettify %}
+
+Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
+`dynamic` for `users`. It's fine to leave `users` without a type annotation. The
+distinction is a little subtle. It's OK to allow inference to *propagate*
+`dynamic` through your code from a `dynamic` type annotation somewhere else, but
+you don't want it to summon `dynamic` *ex nihilo* when nothing in your code ever
+requested it.
 
 <aside class="alert alert-info" markdown="1">
 
@@ -1495,7 +1663,7 @@ type actually is right where it's used, and the function type syntax gives them
 that clarity.
 
 
-### CONSIDER using function type syntax for parameters.
+### PREFER using function type syntax for parameters.
 
 {% include linter-rule.html rule="use_function_type_syntax_for_parameters" %}
 
