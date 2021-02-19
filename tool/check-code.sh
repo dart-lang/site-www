@@ -14,7 +14,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-travis_fold start dart-format
+echo "::group::dart-format"
 if [[ $NULL_SAFETY == 1 ]]; then
   # Pass null safety flag on to the format script so it will check the right
   # files.
@@ -22,14 +22,14 @@ if [[ $NULL_SAFETY == 1 ]]; then
 else
   (set -x; $rootDir/tool/dartformat.sh)
 fi
-travis_fold end dart-format
+echo "::endgroup::"
 
 errorMessage="
 Error: some code excerpts need to be refreshed.
 Rerun '$rootDir/tool/refresh-code-excerpts.sh' locally.
 "
 
-travis_fold start refresh_code_excerpts
+echo "::group::refresh_code_excerpts"
   (
     set -x;
     $rootDir/tool/refresh-code-excerpts.sh --keep-dart-tool
@@ -37,4 +37,4 @@ travis_fold start refresh_code_excerpts
     printf "$errorMessage" && git diff &&
     exit 1
   )
-travis_fold end refresh_code_excerpts
+echo "::endgroup::"

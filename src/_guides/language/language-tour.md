@@ -1442,7 +1442,7 @@ src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using arrow
+If the function contains only one return statement, you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
@@ -1763,7 +1763,7 @@ runtime.
 |-----------+-------------------------------------------|
 | `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
 | `is`      | True if the object has the specified type
-| `is!`     | False if the object has the specified type
+| `is!`     | True if the object doesn't have the specified type
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
@@ -2742,10 +2742,9 @@ class Point {
   Point(this.x, this.y);
 
   // Named constructor
-  [!Point.origin()!] {
-    x = 0;
-    y = 0;
-  }
+  [!Point.origin()!]
+      : x = 0,
+        y = 0;
 }
 {% endprettify %}
 

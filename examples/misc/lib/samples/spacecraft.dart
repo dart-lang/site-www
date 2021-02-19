@@ -39,7 +39,7 @@ class Orbiter extends Spacecraft {
 // #enddocregion extends
 
 // #docregion mixin
-class Piloted {
+mixin Piloted {
   int astronauts = 1;
   void describeCrew() {
     print('Number of astronauts: $astronauts');

@@ -334,6 +334,19 @@ If you find any issues with null safety please [give us feedback.][]
 
 [language version]: /guides/language/evolution#language-versioning
 
+## Known issues
+
+Some parts of the Dart ecosystem still need additional work to
+[migrate to null safety](/null-safety/migration-guide).
+
+The Dart team is currently aware of the following issues:
+
+  * Migration of the pub.dev packages owned by the Dart team
+    is nearly complete, but a few are still missing. See pub.dev for
+    [null-safe packages from the Dart team][ns-dart-pkgs].
+
+[ns-dart-pkgs]: {{site.pub-pkg}}?q=publisher%3Adart.dev&null-safe=1
+
 ## Where to learn more
 
 For more information about null safety, see the following resources:

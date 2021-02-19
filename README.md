@@ -1,32 +1,35 @@
 # The Dart language site (dart.dev)
 
-[![Build Status SVG][]][Repo on Travis]
+[![Build Status SVG][]][Repo on GitHub Actions]
 [![first-timers SVG][]][first-timers]
 
 The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
-[We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
+[We welcome contributions](CONTRIBUTING.md), and we're
+[first-timer friendly][first-timers]!
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/) that catches your
-interest or generate one with your proposed change. Ask for it to be assigned to you.
+Start by looking for an [issue](https://github.com/dart-lang/site-www/)
+that catches your interest, or create an issue with your proposed change.
+Ask for the issue to be assigned to you.
 
-To update this site, fork the repo, make your changes, and generate a pull request.
-For simple changes (such as to CSS and text), you probably don't need to build this site.
-Often you can make changes using the GitHub UI.
+To update this site, fork the repo, make your changes, and generate a pull
+request. For simple changes (such as to CSS and text), you probably don't need
+to build this site. Often you can make changes using the GitHub UI.
 
 > NOTE: If you clone this repo locally, see the instructions below on cloning
 > with its submodule.
 
-If your change involves code samples, adds/removes pages, or affects navigation,
-you'll need to build and test your work before submitting.
+If your change involves code samples, adds/removes pages, or affects
+navigation, you'll need to build and test your work before submitting.
 
 If you want or need to build, follow the steps below.
 
 > **Help us improve these instructions!**
-> If you have any problems getting set up to build or performing the actual build,
-> please [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
+> If you have any problems getting set up to build or performing the
+> actual build, please
+> [edit this README](https://github.com/dart-lang/site-www/edit/master/README.md)
 > or [file an issue](https://github.com/dart-lang/site-www/issues/new?title=README%20issue)
 > (or both).
 
@@ -36,7 +39,9 @@ If you want or need to build, follow the steps below.
 
 Install the following tools if you don't have them already.
 
-- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
+- **bash**, the Bourne shell.
+  These instructions assume you're using `bash`;
+  setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
@@ -259,7 +264,7 @@ using `git stash pop`.
 See the [Troubleshooting wiki page].
 
 
-[Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
+[Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
 [Dart]: https://dart.dev/get-dart
 [Dart install]: https://dart.dev/get-dart
@@ -269,7 +274,7 @@ See the [Troubleshooting wiki page].
 [GNU diffutils]: https://www.gnu.org/software/diffutils
 [Jekyll]: https://jekyllrb.com/
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
-[Repo on Travis]: https://travis-ci.org/dart-lang/site-www
+[Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amaster
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
 [Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting

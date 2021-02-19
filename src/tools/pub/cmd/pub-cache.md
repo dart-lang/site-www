@@ -27,11 +27,11 @@ For options that apply to all pub commands, see
 <dd>Installs a library in your cache.</dd>
 
 <dt><code>--all</code></dt>
-<dd>Optional. Use with <code>dart pub add</code> to install all
+<dd>Optional. Use with <code>dart pub cache add</code> to install all
 matching versions of a library.</dd>
 
 <dt><code>--version &lt;constraint&gt;</code></dt>
-<dd>Optional. Use with <code>dart pub add</code> to install the best
+<dd>Optional. Use with <code>dart pub cache add</code> to install the best
 version matching the specified constraint. For example:
 
 {% prettify nocode tag=pre+code %}

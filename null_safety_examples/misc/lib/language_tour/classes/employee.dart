@@ -1,9 +1,8 @@
 // ignore_for_file: unnecessary_cast, sort_constructors_first
 
-Map get defaultData => {}; // stub
+Map fetchDefaultData() => {}; // stub
 
-// TODO(miquelbeltran) what would be better here, null, default value or late?
-// #docregion
+// #docregion super
 class Person {
   String? firstName;
 
@@ -14,10 +13,10 @@ class Person {
 
 // #docregion method-then-constructor
 class Employee extends Person {
-  // #enddocregion ''
-  Employee() : super.fromJson(defaultData);
+  // #enddocregion super
+  Employee() : super.fromJson(fetchDefaultData());
   // #enddocregion method-then-constructor
-  // #docregion
+  // #docregion super
   // Person does not have a default constructor;
   // you must call super.fromJson(data).
   Employee.fromJson(Map data) : super.fromJson(data) {
@@ -28,18 +27,22 @@ class Employee extends Person {
 // #enddocregion method-then-constructor
 
 void main() {
-  var emp = Employee.fromJson({});
+  var employee = Employee.fromJson({});
+  print(employee);
   // Prints:
   // in Person
   // in Employee
-
+  // Instance of 'Employee'
+  // #enddocregion super
   // #docregion emp-is-Person
-  if (emp is Person) {
+  if (employee is Person) {
     // Type check
-    emp.firstName = 'Bob';
+    employee.firstName = 'Bob';
   }
   // #enddocregion emp-is-Person
   // #docregion emp-as-Person
-  (emp as Person).firstName = 'Bob';
+  (employee as Person).firstName = 'Bob';
   // #enddocregion emp-as-Person
+// #docregion super
 }
+// #enddocregion super

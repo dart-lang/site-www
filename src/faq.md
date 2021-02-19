@@ -206,7 +206,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 ### Q. Can I compile Dart code to native code?
 
 Yes. For programs targeting devices (mobile, desktop, server, and more), [Dart
-Native](/platforms#dart-native-vm-jit-and-aot) includes both a Dart VM with JIT
+Native](/overview#native-platform) includes both a Dart VM with JIT
 (just-in-time) compilation and an AOT (ahead-of-time) compiler for producing
 machine code.
 
