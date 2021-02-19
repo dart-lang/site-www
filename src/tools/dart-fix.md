@@ -7,6 +7,7 @@ toc: false
 The `dart fix` command finds and fixes two types of issues:
 
 * Analysis issues that have associated automated fixes
+  (sometimes called _quick fixes_)
 * Issues that have associated package API migration information
 
 {{site.alert.info}}
