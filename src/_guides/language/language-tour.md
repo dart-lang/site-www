@@ -1763,7 +1763,7 @@ runtime.
 |-----------+-------------------------------------------|
 | `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
 | `is`      | True if the object has the specified type
-| `is!`     | False if the object has the specified type
+| `is!`     | True if the object doesn't have the specified type
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
