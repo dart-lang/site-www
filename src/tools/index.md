@@ -96,8 +96,9 @@ A [Language Server Protocol implementation][LSP] is also available for
 The Dart SDK includes the following general-purpose tools:
 
 [`dart`](/tools/dart-tool)
-: A command-line interface for creating, formatting, analyzing,
-  testing, compiling, and running Dart code.
+: A command-line interface (CLI) for creating, formatting, analyzing,
+  testing, compiling, and running Dart code,
+  as well as working with the [pub package manager](/guides/packages).
 
 [`dartdoc`](/tools/dartdoc)
 : A documentation generator.
@@ -105,29 +106,6 @@ The Dart SDK includes the following general-purpose tools:
   published at [api.dart.dev]({{site.dart_api}}) and pub.dev
   (for example, the [`path` API reference]({{site.pub-api}}/path)).
 
-[`pub`](/tools/pub/cmd)
-: A package manager that
-  makes it easy for you to install, use, and share Dart libraries,
-  command-line tools, and other assets.
-  Some Dart technologies, such as Flutter, may not support
-  all of the pub commands.
-  IDEs that support Dart generally have special support for pub,
-  but you can also use it from the command line.
-
-Some additional tools are available in [packages](/guides/packages).
-To install these tools, use the `pub` command, as described in each tool's
-installation instructions.
-Here are the general-purpose tools you might want to install:
-
-[`build_runner`][build_runner]
-: A build package that's used behind-the-scenes by the `webdev` command.
-
-[`dartfix`][dartfix]
-: A tool for migrating Dart source code and fixing common issues.
-
-[build_runner]: /tools/build_runner
-[dart_style]: {{site.pub-pkg}}/dart_style
-[dartfix]: {{site.pub-pkg}}/dartfix
 
 ### Debugging
 
@@ -139,17 +117,18 @@ Here are the general-purpose tools you might want to install:
 
 The following tools support developing web apps:
 
+[`webdev`](/tools/webdev)
+: A CLI for Dart web app development,
+  including building and serving web apps.
+
 [`dart2js`](/tools/dart2js)
 : The original Dart-to-JavaScript compiler, with tree shaking.
-  IDEs and the webdev CLI use dart2js when building web apps for deployment.
+  IDEs and the `webdev` CLI use `dart2js` when building web apps for deployment.
 
 [`dartdevc`](/tools/dartdevc)
 : The Dart dev compiler, a modular Dart-to-JavaScript compiler.
-  IDEs and the webdev CLI use dartdevc when running a development server.
+  IDEs and the `webdev` CLI use `dartdevc` when running a development server.
 
-[`webdev`](/tools/webdev)
-: A command-line interface (CLI) for Dart web app development,
-  including building and serving web apps.
 
 ## Tools for developing command-line apps and servers {#server}
 
