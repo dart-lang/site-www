@@ -18,6 +18,15 @@ pre {
   }
 }
 
+// Border and resizability for dartpad
+iframe[src^="https://dartpad"]:not(#try-dart-pad) {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 400px;
+  resize: vertical;
+  width: 100%;
+}
+
 @media screen {
   .com { color: #6E6E70; }
   // TODO(chalin): dropping the following overrides would allow us to be consistent with Flutter
