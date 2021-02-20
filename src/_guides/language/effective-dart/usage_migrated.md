@@ -191,7 +191,7 @@ void error([String? message = null]) {
 {% endprettify %}
 
 
-### DO use `??` to convert `null` to a boolean value.
+### PREFER using `??` to convert `null` to a boolean value.
 
 This rule applies when an expression can evaluate to `true`, `false`, or `null`,
 and you need to pass the result to something that expects a non-nullable boolean
@@ -239,6 +239,92 @@ preferred for three main reasons:
 *   The `?? false` and `?? true` clearly show what value will be used when the
     expression is `null`. With `== true`, you have to think through the boolean
     logic to realize that means that a `null` gets converted to *false*.
+
+**Exception:** Using a null-aware operator on a variable inside a condition does
+not promote the variable to a non-nullable type. If you want the variable to be
+promoted inside the body of the if statement, it may be better to use an
+explicit `!= null` check instead of `?.` followed by `??`:
+
+{:.good}
+<?code-excerpt "usage_good.dart (null-aware-promote)"?>
+{% prettify dart tag=pre+code %}
+int measureMessage(String? message) {
+  if (message != null && message.isNotEmpty) {
+    // message is promoted to String.
+    return message.length;
+  }
+
+  return 0;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (null-aware-promote)"?>
+{% prettify dart tag=pre+code %}
+int measureMessage(String? message) {
+  if (message?.isNotEmpty ?? false) {
+    // message is not promoted to String.
+    return message!.length;
+  }
+
+  return 0;
+}
+{% endprettify %}
+
+
+### CONSIDER copying a nullable field to a local variable to enable type promotion.
+
+Checking that a nullable variable is not `null` promotes it to a non-nullable type so that you can then call methods on the variable. Unfortunately, that is only sound for local variables and parameters, so fields and top-level variables are not promoted.
+
+One pattern to work around this is to copy the field's value to a local variable. Null checks on that variable do promote and then you can safely treat it as non-nullable.
+
+{:.good}
+<?code-excerpt "usage_good.dart (copy-nullable-field)"?>
+{% prettify dart tag=pre+code %}
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    var response = this.response;
+    if (response != null) {
+      return "Could not complete upload to ${response.url} "
+          "(error code ${response.errorCode}): ${response.reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+{% endprettify %}
+
+This can be cleaner and safer than using `!` every place the field or top level variable is used.
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
+{% prettify dart tag=pre+code %}
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    if (response != null) {
+      return "Could not complete upload to ${response[!!!].url} "
+          "(error code ${response[!!!].errorCode}): ${response[!!!].reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+{% endprettify %}
+
+This pattern must be applied with some care. If you need to write back to the
+field make sure you do so, and not just to the local variable. Also, if there
+may be other changes to the field while the local is still in scope, it may end
+up having a stale value. Sometimes it is best to simply use `!` on the field.
 
 
 ## Strings
