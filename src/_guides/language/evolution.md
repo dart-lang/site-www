@@ -121,8 +121,9 @@ using a new **core library, `dart:ffi`.**
 ### Dart 2.6
 
 Dart 2.6 didn't add any features to the Dart language, but it did add a
-**new tool, [`dart2native`][],** for compiling Dart code to
+**new tool, `dart2native`,** for compiling Dart code to
 native executables.
+This functionality has since been folded into the [`dart compile`][] command.
 
 ### Dart 2.7
 
@@ -167,7 +168,7 @@ Dart 2.9 didn't add any features to the Dart language.
 
 Dart 2.10 didn't add any features to the Dart language,
 but it added an expanded [`dart` tool][dart-tool] that's 
-analogous to the Flutter SDK's `flutter` tool.
+analogous to the Flutter SDK's [`flutter` tool][].
 
 ## Language versioning
 
@@ -278,9 +279,10 @@ For more information about how language versioning works, see the
 [collection for]: /guides/language/language-tour#collection-operators
 [collection if]: /guides/language/language-tour#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
-[`dart2native`]: /tools/dart2native
+[`dart compile`]: /tools/dart-compile
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
+[`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language tour]: /guides/language/language-tour
@@ -290,4 +292,4 @@ For more information about how language versioning works, see the
 [set literals]: /guides/language/language-tour#sets
 [sound type system]: /guides/language/type-system
 [spread operator]: /guides/language/language-tour#spread-operator
-[pub outdated]: https://dart.dev/tools/pub/cmd/pub-outdated
+[pub outdated]: /tools/pub/cmd/pub-outdated

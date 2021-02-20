@@ -200,16 +200,17 @@
       children:
         - title: Overview
           permalink: /tools/sdk
-        - title: dart (new Dart tool)
+        - title: dart
           permalink: /tools/dart-tool
+          urlExactMatch: true
+        - title: dart analyze
+          permalink: /tools/dart-analyze
+        - title: dart compile
+          permalink: /tools/dart-compile
         - title: dart fix 
           permalink: /tools/dart-fix
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
-        - title: dart2native
-          permalink: /tools/dart2native
-        - title: dartanalyzer
-          permalink: /tools/dartanalyzer
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdevc (dev JS)

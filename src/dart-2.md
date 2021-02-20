@@ -163,7 +163,7 @@ environment:
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
-[dartanalyzer]: /tools/dartanalyzer
+[dartanalyzer]: /tools/dart-analyze
 [flutter pub upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
 [pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
