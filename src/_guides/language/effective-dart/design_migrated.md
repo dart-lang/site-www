@@ -1209,7 +1209,7 @@ the return type yourself.
 <?code-excerpt "design_good.dart (annotate-return-types)"?>
 {% prettify dart tag=pre+code %}
 String makeGreeting(String who) {
-  return "Hello, $who!";
+  return 'Hello, $who!';
 }
 {% endprettify %}
 
@@ -1217,7 +1217,7 @@ String makeGreeting(String who) {
 <?code-excerpt "design_bad.dart (annotate-return-types)"?>
 {% prettify dart tag=pre+code %}
 makeGreeting(String who) {
-  return "Hello, $who!";
+  return 'Hello, $who!';
 }
 {% endprettify %}
 
@@ -1228,7 +1228,7 @@ There are two cases that seem like exceptions but aren't:
     type annotation. But these aren't what we consider function *declarations*.
 
 *   The return type of an overriding method can be inferred from the method it
-    overrides. However, this is a rarely-known feature and even in this case
+    overrides. However, this is a little-known feature and even in this case
     it's better to still write the type explicitly.
 
 
@@ -1409,9 +1409,10 @@ their elements and arguments.
 
 ### AVOID writing incomplete generic types.
 
-When writing a type annotation or type argument, it's still possible to not pin
-down a complete type by writing the name of a generic type but omitting its type
-arguments. In Java, these are called "raw types". For example:
+The goal of writing a type annotation or type argument is to pin down a complete
+type. However, if you write the name of a generic type but omit its type
+arguments, you haven't fully specified the type. In Java, these are called "raw
+types". For example:
 
 {:.bad}
 <?code-excerpt "design_bad.dart (incomplete-generic)"?>

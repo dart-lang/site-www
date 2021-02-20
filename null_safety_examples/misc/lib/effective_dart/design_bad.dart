@@ -74,7 +74,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion annotate-return-types
     makeGreeting(String who) {
-      return "Hello, $who!";
+      return 'Hello, $who!';
     }
     // #enddocregion annotate-return-types
   }
