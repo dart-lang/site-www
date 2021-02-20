@@ -1,5 +1,5 @@
 ---
-title: The dart fix command
+title: dart fix
 description: Help for bringing your code up-to-date.
 toc: false
 ---
@@ -10,10 +10,7 @@ The `dart fix` command finds and fixes two types of issues:
   (sometimes called _quick-fixes_ or _code actions_)
 * Issues that have associated package API migration information
 
-{{site.alert.info}}
-  For more information about this and other `dart` commands,
-  see the [Dart command-line tool page](/tools/dart-tool).
-{{site.alert.end}}
+{% include tools/dart-tool-note.md %}
 
 To preview proposed changes, use the `--dry-run` flag:
 
@@ -30,3 +27,6 @@ $ dart fix --apply
 For information about how automated package API changes work,
 see [dart.dev/go/dart-fix](/go/dart-fix).
 
+The `dart fix` command replaces [`dartfix`][].
+
+[`dartfix`]: {{site.pub-pkg}}/dartfix
