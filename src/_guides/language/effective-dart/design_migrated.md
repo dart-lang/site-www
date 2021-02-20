@@ -1201,7 +1201,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
 ### DO annotate return types on function declarations.
 
-Dart does not generally infer the return type of a function declaration from its body,
+Dart doesn't generally infer the return type of a function declaration from its body,
 unlike some other languages. That means you should write a type annotation for
 the return type yourself.
 
@@ -1223,7 +1223,7 @@ makeGreeting(String who) {
 
 There are two cases that seem like exceptions but aren't:
 
-*   Function *expressions* ("lambdas" or "anonymous functions") do infer a
+*   _Function expressions_ (_lambdas_ or _anonymous functions_) do infer a
     return type from the body. In fact, the syntax doesn't even allow a return
     type annotation. But these aren't what we consider function *declarations*.
 
@@ -1235,9 +1235,9 @@ There are two cases that seem like exceptions but aren't:
 ### DO annotate parameter types on function declarations.
 
 A function's parameter list determines its boundary to the outside world.
-Parameters should have their types annotated so that boundary is well defined.
-Note that even though they look like variable initializers, Dart does not infer
-an optional parameter's type from its default value.
+Annotating parameter types makes that boundary well defined.
+Note that even though default parameter values look like variable initializers,
+Dart doesn't infer an optional parameter's type from its default value.
 
 {:.good}
 <?code-excerpt "design_good.dart (annotate-parameters)"?>
@@ -1259,8 +1259,7 @@ void sayRepeatedly(message, {count = 2}) {
 }
 {% endprettify %}
 
-**Exceptions:** Function expressions and initializing formals, which are covered
-by the next two guidelines.
+**Exception:** Function expressions and initializing formals have different type annotation conventions, as described in the next two guidelines.
 
 
 ### DON'T annotate inferred parameter types on function expressions.
@@ -1290,8 +1289,8 @@ var names = people.map((Person person) => person.name);
 {% endprettify %}
 
 If the language is able to infer the type you want for a parameter in a function
-expression, then let it and don't annotate. In rare cases, the surrounding
-context is not precise enough to provide a type for one or more of the
+expression, then don't annotate. In rare cases, the surrounding
+context isn't precise enough to provide a type for one or more of the
 function's parameters. In those cases, you may need to annotate.
 
 
@@ -1324,7 +1323,7 @@ class Point {
 ### DO write type arguments on generic invocations that aren't inferred.
 
 Dart is pretty smart about inferring type arguments in generic invocations. It
-will look at the expected type where the expression occurs and the types of
+looks at the expected type where the expression occurs and the types of
 values being passed to the invocation. However, sometimes those aren't enough to
 fully determine a type argument. In that case, write the entire type argument
 list explicitly.
@@ -1344,7 +1343,7 @@ final events = StreamController();
 {% endprettify %}
 
 Sometimes the invocation occurs as the initializer to a variable declaration. If
-variable is *not* a local then instead of writing the type argument list on the
+the variable is *not* local, then instead of writing the type argument list on the
 invocation itself, you may put a type annotation on the declaration:
 
 {:.good}
@@ -1428,7 +1427,7 @@ rest of the type for you using the surrounding context. Instead, it silently
 fills in any missing type arguments with with `dynamic` (or the bound if the
 class has one). That's rarely what you want.
 
-Instead, if you are writing a generic type in a type annotation or as a type
+Instead, if you're writing a generic type either in a type annotation or as a type
 argument inside some invocation, make sure to write a complete type:
 
 {:.good}
@@ -1444,7 +1443,7 @@ var completer = Completer<Map<String, int>>();
 When inference doesn't fill in a type, it usually defaults to `dynamic`. If
 `dynamic` is the type you want, this is technically the most terse way to get
 it. However, it's not the most *clear* way. A casual reader of your code who
-sees an annotation is missing has no way of knowing if you intended it to be
+sees that an annotation is missing has no way of knowing if you intended it to be
 `dynamic`, expected inference to fill in some other type, or simply forgot to
 write the annotation.
 
@@ -1991,4 +1990,3 @@ class Person {
   bool operator ==(other) => [!other != null!] && ...
 }
 {% endprettify %}
-
