@@ -902,7 +902,7 @@ class Box {
 
 ### PREFER using a `final` field to make a read-only property.
 
-{% include linter-rule.html rule="unnecessary_getters" %}
+{% include linter-rule.html rule="unnecessary_getters_setters" %}
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
@@ -1150,31 +1150,6 @@ This `this.` syntax before a constructor parameter is called an "initializing
 formal". You can't always take advantage of it. Sometimes you want to have a
 named parameter whose name doesn't match the name of the field you are
 initializing. But when you *can* use initializing formals, you *should*.
-
-### DON'T type annotate initializing formals.
-
-{% include linter-rule.html rule="type_init_formals" %}
-
-If a constructor parameter is using `this.` to initialize a field, then the type
-of the parameter is understood to be the same type as the field.
-
-{:.good}
-<?code-excerpt "usage_good.dart (dont-type-init-formals)"?>
-{% prettify dart tag=pre+code %}
-class Point {
-  double x, y;
-  Point(this.x, this.y);
-}
-{% endprettify %}
-
-{:.bad}
-<?code-excerpt "usage_bad.dart (dont-type-init-formals)"?>
-{% prettify dart tag=pre+code %}
-class Point {
-  double x, y;
-  Point(double this.x, double this.y);
-}
-{% endprettify %}
 
 
 ### DO use `;` instead of `{}` for empty constructor bodies.

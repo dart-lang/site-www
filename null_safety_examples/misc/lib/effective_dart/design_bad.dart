@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names, sort_constructors_first, unused_field
+// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, avoid_types_as_parameter_names, sort_constructors_first, type_init_formals, unused_field
 
 import 'dart:async';
 
@@ -72,15 +72,54 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion redundant
-    Set<String> things = Set<String>();
-    // #enddocregion redundant
+    // #docregion annotate-return-types
+    makeGreeting(String who) {
+      return 'Hello, $who!';
+    }
+    // #enddocregion annotate-return-types
+  }
+
+  {
+    // Hack. The `(count as num)` is replaced with `count` when the excerpt is
+    // included to workaround no implicit casts in the examples.
+    // #docregion annotate-parameters
+    void sayRepeatedly(message, {count = 2}) {
+      for (var i = 0; i < (count as num); i++) {
+        print(message);
+      }
+    }
+    // #enddocregion annotate-parameters
+  }
+
+  (AstNode node) {
+    // #docregion uninitialized-local
+    var parameters;
+    if (node is Constructor) {
+      parameters = node.signature;
+    } else if (node is Method) {
+      parameters = node.parameters;
+    }
+    // #enddocregion uninitialized-local
+  };
+
+  {
+    // #docregion non-inferred-type-args
+    var playerScores = {};
+    final events = StreamController();
+    // #enddocregion non-inferred-type-args
   }
 
   {
     // #docregion explicit
-    var things = Set();
+    var items = Future<List<int>>.value(<int>[1, 2, 3]);
     // #enddocregion explicit
+  }
+
+  {
+    // #docregion incomplete-generic
+    List numbers = [1, 2, 3];
+    var completer = Completer<Map>();
+    // #enddocregion incomplete-generic
   }
 
   {
@@ -112,6 +151,31 @@ class MyIterable<T> {
   Iterable<T> where(bool predicate(T element)) => ellipsis();
   // #enddocregion function-type-param
 }
+
+//----------------------------------------------------------------------------
+
+// #docregion dont-type-init-formals
+class Point1 {
+  double x, y;
+  Point1(double this.x, double this.y);
+}
+// #enddocregion dont-type-init-formals
+
+//----------------------------------------------------------------------------
+
+// #docregion inferred-type-args
+class Downloader {
+  final response = Completer();
+}
+// #enddocregion inferred-type-args
+
+//----------------------------------------------------------------------------
+
+// #docregion redundant
+class Downloader1 {
+  final Completer<String> response = Completer<String>();
+}
+// #enddocregion redundant
 
 //----------------------------------------------------------------------------
 

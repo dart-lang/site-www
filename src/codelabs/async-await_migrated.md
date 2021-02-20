@@ -5,18 +5,6 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 150px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 This codelab teaches you how to write asynchronous code using
 futures and the `async` and `await` keywords. Using embedded DartPad
