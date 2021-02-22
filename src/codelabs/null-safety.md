@@ -70,7 +70,7 @@ assignment to 3 or 145. Anything but null!
 ```dart
 void main() {
   int a;
-  a = 145;
+  a = null;
   print('a is $a.');
 }
 ```
@@ -83,7 +83,7 @@ type of `a` so that `a` can be either null or an int:
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
 ```dart
 void main() {
-  int? a;
+  int a;
   a = null;
   print('a is $a.');
 }
@@ -99,8 +99,8 @@ question marks to correct the type declarations of `aNullableListOfStrings` and
 ```dart
 void main() {
   List<String> aListofStrings = ['one', 'two', 'three'];
-  List<String?> aNullableListOfStrings = [];
-  List<String?> aListofNullableStrings = ['one', null, 'three'];
+  List<String> aNullableListOfStrings = [];
+  List<String> aListofNullableStrings = ['one', null, 'three'];
 
   print('aListofStrings is $aListofStrings.');
   print('aNullableListOfStrings is $aNullableListOfStrings.');
@@ -122,12 +122,12 @@ analyzer errors disappear:
 ```dart
 void main() {
   String text;
-  
-  if (DateTime.now().hour < 12) {
-    text = "It's morning! Let's make aloo paratha!";
-  } else {
-    text = "It's afternoon! Let's make biryani!";
-  }
+
+//   if (DateTime.now().hour < 12) {
+//     text = "It's morning! Let's make aloo paratha!";
+//   } else {
+//     text = "It's afternoon! Let's make biryani!";
+//   }
 
   print(text);
   print(text.length);
@@ -221,7 +221,7 @@ returns zero if `str` is null:
 int getLength(String? str) {
   // Add null check here
 
-  return str.length;  
+  return str.length;
 }
 
 void main() {
@@ -239,7 +239,7 @@ that throws an `Exception` instead of returning zero.
 int getLength(String? str) {
   // Try throwing here if `str` is null.
 
-  return str.length;  
+  return str.length;
 }
 
 void main() {
@@ -290,7 +290,7 @@ to each other. Try using the `late` keyword to fix this code. Note that you
 don't have to remove `final`. `late` fields can also be `final`: you set `late
 final` values once, and after that they're read-only.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart"?>
 ```dart
 class Team {
   final Coach coach;
