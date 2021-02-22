@@ -66,11 +66,11 @@ it can be null.
 The variable `a` below is declared as an `int`. Try changing the value in the
 assignment to 3 or 145. Anything but null!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/non_nullable_types.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/non_nullable_types.dart" replace="/145/null/g"?>
 ```dart
 void main() {
   int a;
-  a = null;
+  a = 145;
   print('a is $a.');
 }
 ```
@@ -80,7 +80,7 @@ void main() {
 What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart">
 ```dart
 void main() {
   int a;
@@ -95,7 +95,7 @@ Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
 `aListOfNullableStrings`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart">
 ```dart
 void main() {
   List<String> aListofStrings = ['one', 'two', 'three'];
@@ -118,7 +118,7 @@ assignment."
 Try uncommenting the if-else statement in the code below, and watch the
 analyzer errors disappear:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart">
 ```dart
 void main() {
   String text;
@@ -160,7 +160,7 @@ following code to work: one after `big` and one after `little`. With null
 safety, conditional access can short-circuit, so this expression only requires a
 single `?`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/conditional_access.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/conditional_access.dart">
 ```dart
 class BigThing {
   LittleThing little = LittleThing();
@@ -189,7 +189,7 @@ wrong, Dart throws an exception.
 In the example below, try adding exclamation points to correct the\
 three broken assignments:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart">
 ```dart
 int? couldReturnNullButDoesnt() => -3;
 
@@ -216,7 +216,7 @@ behavior is called "promotion."
 In the example below, add an if statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart">
 ```dart
 int getLength(String? str) {
   // Add null check here
@@ -234,7 +234,7 @@ void main() {
 Promotion works with exceptions as well as return statements. Try a null check
 that throws an `Exception` instead of returning zero.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart">
 ```dart
 int getLength(String? str) {
   // Try throwing here if `str` is null.
@@ -265,7 +265,7 @@ value, a `LateInitializationError` is thrown to tell you what went wrong.
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart">
 ```dart
 class Meal {
   String description;
@@ -290,7 +290,7 @@ to each other. Try using the `late` keyword to fix this code. Note that you
 don't have to remove `final`. `late` fields can also be `final`: you set `late
 final` values once, and after that they're read-only.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart>
 ```dart
 class Team {
   final Coach coach;
@@ -316,7 +316,7 @@ Here's another pattern that `late` can help with: lazy initialization for
 expensive non-nullable fields. Try running this code without changing it. What
 do you think will change if you make `_cache` a `late` field?
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart" remove="Fetching"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart">
 ```dart
 int _computeValue() {
   print('Computing value...');
