@@ -118,16 +118,16 @@ assignment."
 Try uncommenting the if-else statement in the code below, and watch the
 analyzer errors disappear:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart"? replace="/(if\ \(DateTime.now\(\).hour\ \<\ 12\)\ \{)/(\/\/\ if\ \(DateTime.now\(\).hour\ \<\ 12\)\ \{)/g; /(\ \ \ \ \ text)/(\/\/\ \ \ \ \ text/g; /(\ \ \ \})/(\/\/\ \ \ \})/g"?>
 ```dart
 void main() {
   String text;
 
-//   if (DateTime.now().hour < 12) {
-//     text = "It's morning! Let's make aloo paratha!";
-//   } else {
-//     text = "It's afternoon! Let's make biryani!";
-//   }
+   if (DateTime.now().hour < 12) {
+     text = "It's morning! Let's make aloo paratha!";
+   } else {
+     text = "It's afternoon! Let's make biryani!";
+   }
 
   print(text);
   print(text.length);
