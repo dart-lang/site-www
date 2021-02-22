@@ -80,10 +80,10 @@ void main() {
 What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart">
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
 ```dart
 void main() {
-  int a;
+  int? a;
   a = null;
   print('a is $a.');
 }
@@ -95,12 +95,12 @@ Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
 `aListOfNullableStrings`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart">
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g"?>
 ```dart
 void main() {
   List<String> aListofStrings = ['one', 'two', 'three'];
-  List<String> aNullableListOfStrings;
-  List<String> aListofNullableStrings = ['one', null, 'three'];
+  List<String?> aNullableListOfStrings = [];
+  List<String?> aListofNullableStrings = ['one', null, 'three'];
 
   print('aListofStrings is $aListofStrings.');
   print('aNullableListOfStrings is $aNullableListOfStrings.');
@@ -122,12 +122,12 @@ analyzer errors disappear:
 ```dart
 void main() {
   String text;
-
-//   if (DateTime.now().hour < 12) {
-//     text = "It's morning! Let's make aloo paratha!";
-//   } else {
-//     text = "It's afternoon! Let's make biryani!";
-//   }
+  
+  if (DateTime.now().hour < 12) {
+    text = "It's morning! Let's make aloo paratha!";
+  } else {
+    text = "It's afternoon! Let's make biryani!";
+  }
 
   print(text);
   print(text.length);
