@@ -70,7 +70,7 @@ assignment to 3 or 145. Anything but null!
 ```dart
 void main() {
   int a;
-  a = 145;
+  a = null;
   print('a is $a.');
 }
 ```
@@ -83,7 +83,7 @@ type of `a` so that `a` can be either null or an int:
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
 ```dart
 void main() {
-  int? a;
+  int a;
   a = null;
   print('a is $a.');
 }
@@ -99,8 +99,8 @@ question marks to correct the type declarations of `aNullableListOfStrings` and
 ```dart
 void main() {
   List<String> aListofStrings = ['one', 'two', 'three'];
-  List<String?> aNullableListOfStrings = [];
-  List<String?> aListofNullableStrings = ['one', null, 'three'];
+  List<String> aNullableListOfStrings = [];
+  List<String> aListofNullableStrings = ['one', null, 'three'];
 
   print('aListofStrings is $aListofStrings.');
   print('aNullableListOfStrings is $aNullableListOfStrings.');
