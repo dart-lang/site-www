@@ -35,7 +35,7 @@ This codelab covers the following material:
 {{site.alert.end}}
 
 
-# What is null safety?
+## What is null safety?
 
 Dart's null safe type system makes types in your code non-nullable by default,
 meaning that values can't be null unless you say they can be. Null safety helps
@@ -61,7 +61,7 @@ but nothing else, you give the variable a nullable type by adding a `?` after
 the type name. For example, a variable of type String? can contain a string, or
 it can be null.
 
-## Example: Introducing non-nullable types
+### Example: Introducing non-nullable types
 
 The variable `a` below is declared as an `int`. Try changing the value in the
 assignment to 3 or 145. Anything but null!
@@ -75,7 +75,7 @@ void main() {
 }
 ```
 
-## Example: Nullable types
+### Example: Nullable types
 
 What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
@@ -89,7 +89,7 @@ void main() {
 }
 ```
 
-## Example: More nullable types!
+### Example: More nullable types!
 
 Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
@@ -108,7 +108,7 @@ void main() {
 }
 ```
 
-## Example: Definite assignment
+### Example: Definite assignment
 
 Dart's type system is crafty enough to track where variables are assigned and
 where their values are read, and to verify that non-nullable fields are given
@@ -134,7 +134,7 @@ void main() {
 }
 ```
 
-# New null-aware operators: ? and !
+## New null-aware operators: ? and !
 
 Null safety introduces two operators, ? and !. Here's how you use them:
 
@@ -146,7 +146,7 @@ Null safety introduces two operators, ? and !. Here's how you use them:
 -   If you're sure that an expression with a nullable type isn't null, you
     can add a postfix exclamation mark (!) to make Dart treat it as non-nullable.
 
-## Example: Conditional access
+### Example: Conditional access
 
 Conditional access is a handy way to tighten up code that needs to read
 properties that could be null. For example, the following expression evaluates
@@ -178,7 +178,7 @@ void main() {
 }
 ```
 
-## Example: The assertion operator `!`
+### Example: The assertion operator `!`
 
 If you'd like to assign a nullable expression to a variable that's
 non-nullable, you can use the assertion operator (the exclamation point: `!`).
@@ -207,7 +207,7 @@ void main() {
 }
 ```
 
-## Exercise: Type promotion
+### Exercise: Type promotion
 
 With null safety, Dart takes null checks into account. Nullable variables that
 can't possibly contain null are treated like non-nullable variables. This
@@ -229,7 +229,7 @@ void main() {
 }
 ```
 
-## Exercise: Promotion with exceptions
+### Exercise: Promotion with exceptions
 
 Promotion works with exceptions as well as return statements. Try a null check
 that throws an `Exception` instead of returning zero.
@@ -247,7 +247,7 @@ void main() {
 }
 ```
 
-# Late keyword
+## Late keyword
 
 Sometimes fields in a class *should* be non-nullable, but those fields can't be
 assigned a value immediately. For cases like that, use the `late` keyword.
@@ -260,7 +260,7 @@ assigned a value immediately. For cases like that, use the `late` keyword.
 If you declare a field `late` and the field is read before it is assigned a
 value, a `LateInitializationError` is thrown to tell you what went wrong.
 
-## Example: The `late` keyword
+### Example: The `late` keyword
 
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
@@ -282,7 +282,7 @@ void main() {
 }
 ```
 
-## Example: Late circular references
+### Example: Late circular references
 
 The `late` keyword is really helpful for tricky patterns like circular
 references. Here are two objects that need to maintain non-nullable references
@@ -310,7 +310,7 @@ void main() {
 }
 ```
 
-## Example: Late and lazy
+### Example: Late and lazy
 
 Here's another pattern that `late` can help with: lazy initialization for
 expensive non-nullable fields. Try running this code without changing it. What
@@ -341,7 +341,7 @@ Fun fact: After you add `late` to the declaration of `_cache`, you can move the
 still work! Initialization expressions for `late` fields can use instance
 methods in their initializers.
 
-# What's next?
+## What's next?
 
 Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
