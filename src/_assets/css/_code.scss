@@ -1,10 +1,10 @@
-$pre-bg: #F5F5F5; // TODO(chalin): use $site-color-codeblock-bg? #2859
+$pre-bg: #F5F5F5;  // #2859 TODO(chalin): use $site-color-codeblock-bg?
 
 @mixin pre-defaults {
   background-color: $pre-bg;
   font-size: 0.875rem; // 14px
   font-weight: $font-weight-normal;
-  padding: 30px; // TODO(chalin): 1.5rem; #2859
+  padding: 30px; // #2859 TODO(chalin): 1.5rem;
 }
 
 @import 'code_shared';
@@ -20,7 +20,7 @@ pre {
 
 @media screen {
   .com { color: #6E6E70; }
-  // TODO(chalin): dropping the following overrides would allow us to be consistent with Flutter #2859
+  // #2859 TODO(chalin): dropping the following overrides would allow us to be consistent with Flutter
   .kwd { color: #BC0056; }
   .pln { color: #7500A0; }
   .lit,
