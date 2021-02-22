@@ -4,7 +4,8 @@ description: Help for bringing your code up-to-date.
 toc: false
 ---
 
-The `dart fix` command finds and fixes two types of issues:
+The `dart fix` command (added in Dart 2.12)
+finds and fixes two types of issues:
 
 * Analysis issues that have associated automated fixes
   (sometimes called _quick-fixes_ or _code actions_)
