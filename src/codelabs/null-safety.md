@@ -58,7 +58,7 @@ Here are some core principles of sound null safety in the Dart language:
 
 When you opt into null safety, all types are non-nullable by default.
 For example, if you have a variable of
-type String, it will always contain a string.
+type `String`, it will always contain a string.
 
 
 If you want a variable of type `String` to accept any string
