@@ -31,7 +31,7 @@ if [[ $NULL_SAFETY == 1 ]]; then
     $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/classes/orchestra.dart \
     $NULL_SAFETY_EXAMPLES/misc/test/language_tour/built_in_types_test.dart \
     $NULL_SAFETY_EXAMPLES/misc/test/language_tour/functions_test.dart \
-    $NULL_SAFETY_EXAMPLES/misc/test/library_tour/html_test.dart
+    # $NULL_SAFETY_EXAMPLES/misc/test/library_tour/html_test.dart
     # $NULL_SAFETY_EXAMPLES/misc/lib/samples/spacecraft.dart
 
   dart format -l 65 \
