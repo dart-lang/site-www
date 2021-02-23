@@ -274,9 +274,15 @@ int measureMessage(String? message) {
 
 ### CONSIDER copying a nullable field to a local variable to enable type promotion.
 
-Checking that a nullable variable is not `null` promotes it to a non-nullable type so that you can then call methods on the variable. Unfortunately, that is only sound for local variables and parameters, so fields and top-level variables are not promoted.
+Checking that a nullable variable is not equal to `null` promotes the variable
+to a non-nullable type. That lets you access members on the variable and pass it
+to functions expecting a non-nullable type. Unfortunately, promotion is only
+sound for local variables and parameters, so fields and top-level variables are
+not promoted.
 
-One pattern to work around this is to copy the field's value to a local variable. Null checks on that variable do promote and then you can safely treat it as non-nullable.
+One pattern to work around this is to copy the field's value to a local
+variable. Null checks on that variable do promote and then you can safely treat
+it as non-nullable.
 
 {:.good}
 <?code-excerpt "usage_good.dart (copy-nullable-field)"?>
@@ -299,7 +305,8 @@ class UploadException {
 }
 {% endprettify %}
 
-This can be cleaner and safer than using `!` every place the field or top level variable is used.
+This can be cleaner and safer than using `!` every place the field or top level
+variable is used.
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
