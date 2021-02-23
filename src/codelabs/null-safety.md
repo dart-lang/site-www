@@ -27,7 +27,7 @@ This codelab covers the following material:
 
 * Nullable and non-nullable types.
 * How and when to use the null-aware operators: `?` and `!`
-* How the late keyword affects variables and initialization.
+* How the `late` keyword affects variables and initialization.
 
 {{site.alert.note}}
   This page uses embedded DartPads to display examples and exercises.
