@@ -4,7 +4,7 @@ description: Learn about and practice writing null safe code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 {% assign useIframe = false -%}
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n)*\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 <style>
 {% comment %}
@@ -19,9 +19,14 @@ iframe[src^="https://dartpad"] {
 }
 </style>
 
-This codelab teaches you about Dart’s null safe type system, which was introduced in Dart SDK 2.12. When you opt into null safety, types in your code are non-nullable by default, meaning that values can’t be `null` unless you say they can be.
+This codelab teaches you about Dart’s null safe type system,
+which was introduced in Dart SDK 2.12. When you opt into null safety,
+types in your code are non-nullable by default,
+meaning that values can’t be `null` unless you say they can be.
 
-Using embedded DartPad editors, you can test your knowledge by running example code and completing exercises. To get the most out of this codelab, you should have some knowledge of [basic Dart syntax](/samples).
+Using embedded DartPad editors, you can test your knowledge by
+running example code and completing exercises. To get the most out of
+this codelab, you should have some knowledge of [basic Dart syntax](/samples).
 
 This codelab covers the following material:
 
@@ -37,12 +42,10 @@ This codelab covers the following material:
 
 ## What is null safety?
 
-Dart's null safe type system makes types in your code non-nullable by default,
-meaning that values can't be null unless you say they can be. Null safety helps
+Dart's null safe type system makes types in your code non-nullable by default, meaning that values can't be null unless you say they can be. Null safety helps
 prevent null reference errors. 
 
-Here are some core principles
-of sound null safety in the Dart language:
+Here are some core principles of sound null safety in the Dart language:
 
 -   All types are non-nullable by default.
 -   Values can't be null unless you say they can be.
@@ -56,10 +59,7 @@ type String, it will always contain a string.
 
 ## Nullable types
 
-If you want a variable of type `String` to accept any string, or the value null
-but nothing else, you give the variable a nullable type by adding a `?` after
-the type name. For example, a variable of type String? can contain a string, or
-it can be null.
+If you want a variable of type `String` to accept any string, or the value null, but nothing else, you give the variable a nullable type by adding a `?` after the type name. For example, a variable of type `String?` can contain a string, or it can be null.
 
 ### Example: Introducing non-nullable types
 
@@ -112,11 +112,10 @@ void main() {
 
 Dart's type system is crafty enough to track where variables are assigned and
 where their values are read, and to verify that non-nullable fields are given
-values before any code tries to read from them. This process is called "definite
-assignment."
+values before any code tries to read from them. This process is called "definite assignment."
 
-Try uncommenting the if-else statement in the code below, and watch the
-analyzer errors disappear:
+Try uncommenting the if-else statement in the code below, and
+watch the analyzer errors disappear:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
 ```dart
@@ -143,8 +142,8 @@ Null safety introduces two operators, ? and !. Here's how you use them:
     non-nullable by default and made nullable by adding ?.
 -   If you're accessing a property and the operand might be null, use the
     null-aware version member access operator (?.).
--   If you're sure that an expression with a nullable type isn't null, you
-    can add a postfix exclamation mark (!) to make Dart treat it as non-nullable.
+-   If you're sure that an expression with a nullable type isn't null, you can 
+    add a postfix exclamation mark (!) to make Dart treat it as non-nullable.
 
 ### Example: Conditional access
 
@@ -348,7 +347,7 @@ are some suggestions for where to go next:
 -   [Play with DartPad](https://nullsafety.dartpad.dev/).
 -   Try another [codelab](https://dart.dev/codelabs).
 -   Learn more about null safety:
-    -   Overview: [Sound null safety](https://dart.dev/null-safety)
+    -   Overview: [Sound null safety](https://dart.dev/null-safety).
     -   Deep dive:
         [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety).
 -   [Get the Dart SDK](https://dart.dev/get-dart).
