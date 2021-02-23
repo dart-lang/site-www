@@ -118,7 +118,7 @@ assignment."
 Try uncommenting the if-else statement in the code below, and watch the
 analyzer errors disappear:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /text\ =/\/\/text\ =/g; /\ \ \}/\/\/\ \ \}/g"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
 ```dart
 void main() {
   String text;
