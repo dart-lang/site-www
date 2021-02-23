@@ -1799,7 +1799,7 @@ true.
 
 {% include linter-rule.html rule="avoid_null_checks_in_equality_operators" %}
 
-The language specifies that only `null` is equal only to itself and your `==`
+The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
 
 {:.good}
@@ -1824,4 +1824,3 @@ class Person {
       other != null && other is Person && name == other.name;
 }
 {% endprettify %}
-
