@@ -1221,15 +1221,10 @@ makeGreeting(String who) {
 }
 {% endprettify %}
 
-There are two cases that seem like exceptions but aren't:
-
-*   _Function expressions_ (_lambdas_ or _anonymous functions_) do infer a
-    return type from the body. In fact, the syntax doesn't even allow a return
-    type annotation. But these aren't what we consider function *declarations*.
-
-*   The return type of an overriding method can be inferred from the method it
-    overrides. However, this is a little-known feature and even in this case
-    it's better to still write the type explicitly.
+Note that this guideline only applies to *named* function declarations:
+top-level functions, methods, and local functions. Anonymous function
+expressions infer a return type from their body. In fact, the syntax doesn't
+even allow a return type annotation.
 
 
 ### DO annotate parameter types on function declarations.
