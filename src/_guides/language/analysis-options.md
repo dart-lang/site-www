@@ -70,9 +70,9 @@ to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines in
 [Effective Dart][]. Dart tools such as the
-[Dart dev compiler (dartdevc),](/tools/dartdevc)
-[`dartanalyzer`,](/tools/dartanalyzer)
-[`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
+[Dart compiler (`dart compile`)](/tools/dart-compile),
+[`dart analyze`](/tools/dart-analyze),
+[`flutter analyze`]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer),
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
@@ -481,7 +481,6 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart's type system][type-system]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
-* [dartanalyzer](/tools/dartanalyzer)
 * [dartdevc](/tools/dartdevc)
 * [analyzer package]({{site.pub}}/packages/analyzer)
 

@@ -446,15 +446,6 @@ class Point0 {
 
 //----------------------------------------------------------------------------
 
-// #docregion dont-type-init-formals
-class Point1 {
-  double x, y;
-  Point1(this.x, this.y);
-}
-// #enddocregion dont-type-init-formals
-
-//----------------------------------------------------------------------------
-
 // #docregion semicolon-for-empty-body
 class Point2 {
   double x, y;
