@@ -123,11 +123,11 @@ analyzer errors disappear:
 void main() {
   String text;
 
-   //if (DateTime.now().hour < 12) {
-   //  text = "It's morning! Let's make aloo paratha!";
-   //} else {
-   //  text = "It's afternoon! Let's make biryani!";
-   //}
+  //if (DateTime.now().hour < 12) {
+  //  text = "It's morning! Let's make aloo paratha!";
+  //} else {
+  //  text = "It's afternoon! Let's make biryani!";
+  //}
 
   print(text);
   print(text.length);
@@ -215,7 +215,7 @@ behavior is called "promotion."
 In the example below, add an if statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart
 int getLength(String? str) {
   // Add null check here
@@ -233,10 +233,10 @@ void main() {
 Promotion works with exceptions as well as return statements. Try a null check
 that throws an `Exception` instead of returning zero.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart
 int getLength(String? str) {
-  // Try throwing here if `str` is null.
+  // Try throwing exception here if `str` is null.
 
   return str.length;
 }
