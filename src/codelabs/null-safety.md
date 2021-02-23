@@ -42,7 +42,8 @@ This codelab covers the following material:
 
 ## What is null safety?
 
-Dart's null safe type system makes types in your code non-nullable by default, meaning that values can't be null unless you say they can be. Null safety helps
+Dart's null safe type system makes types in your code non-nullable by default,
+meaning that values can't be null unless you say they can be. Null safety helps
 prevent null reference errors. 
 
 Here are some core principles of sound null safety in the Dart language:
@@ -59,7 +60,10 @@ type String, it will always contain a string.
 
 ## Nullable types
 
-If you want a variable of type `String` to accept any string, or the value null, but nothing else, you give the variable a nullable type by adding a `?` after the type name. For example, a variable of type `String?` can contain a string, or it can be null.
+If you want a variable of type `String` to accept any string, or the value null,
+but nothing else, you give the variable a nullable type by adding a `?` after the
+type name. For example, a variable of type `String?` can contain a string, or
+it can be null.
 
 ### Example: Introducing non-nullable types
 
@@ -112,7 +116,8 @@ void main() {
 
 Dart's type system is crafty enough to track where variables are assigned and
 where their values are read, and to verify that non-nullable fields are given
-values before any code tries to read from them. This process is called "definite assignment."
+values before any code tries to read from them. This process is called
+"definite assignment."
 
 Try uncommenting the if-else statement in the code below, and
 watch the analyzer errors disappear:
@@ -185,7 +190,8 @@ By adding `!` just after the expression, you tell Dart that the value won't be
 null, and that it's safe to assign it to a non-nullable variable. If you're
 wrong, Dart throws an exception.
 
-In the example below, try adding exclamation points to correct the three broken assignments:
+In the example below, try adding exclamation points to correct the
+three broken assignments:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart
@@ -208,8 +214,8 @@ void main() {
 ### Exercise: Type promotion
 
 With null safety, Dart takes null checks into account. Nullable variables that
-can't possibly contain null are treated like non-nullable variables. This
-behavior is called "promotion."
+can't possibly contain null are treated like non-nullable variables.
+This behavior is called "promotion."
 
 In the example below, add an if statement to the beginning of `getLength` that
 returns zero if `str` is null:
