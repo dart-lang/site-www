@@ -785,6 +785,11 @@ Of course, it is often useful to have mutable data. But, if you don't need it,
 your default should be to make fields and top-level variables `final` when you
 can.
 
+Sometimes an instance field doesn't change after it has been initialized, but
+can't be initialized until after the instance is constructed. For example, it
+may need to reference `this` or some other field on the instance. In cases like,
+that, consider making the field `late final`.
+
 
 ### DO use getters for operations that conceptually access properties.
 
@@ -933,20 +938,31 @@ not intended to be invoked from Dart code and don't need a corresponding getter.
 [angular]: {{site.angulardart}}
 
 
-### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
+### AVOID public `late final` fields.
 
-{% include linter-rule.html rule="avoid_returning_null" %}
+Unlike other final fields, a late final field *does* define a setter. If
+that field is public, then the setter is public. This is rarely what you want.
+Fields are usually marked late so that they can be initialized *internally* at
+some point in the instance's lifetime, often inside the constructor body.
 
-Even though all types are nullable in Dart, users assume those types almost
-never contain `null`, and the lowercase names encourage a "Java primitive"
-mindset.
+Unless you do intend to expose the setter publicly and allow users to invoke it,
+it's better to either not use `late`, or make the late field private with a
+public getter.
 
-It can be occasionally useful to have a "nullable primitive" type in your API,
-for example to indicate the absence of a value for some key in a map, but these
-should be rare.
 
-If you do have a member of this type that may return `null`, document it very
-clearly, including the conditions under which `null` will be returned.
+### AVOID returning nullable `Future`, `Stream`, and collection types.
+
+When an API returns a container type, it has two ways to indicate the absence of
+data: It can return an empty container or it can return `null`. Users generally
+assume and prefer that you use an empty container to indicate "no data". That
+way, they have a real object that they can call methods on like `isEmpty`.
+
+Prefer returning an empty collection, a future that doesn't complete, or a
+stream that doesn't emit any values to indicate that your API has no data to
+provide.
+
+**Exception:** If returning `null` *means something different* from yielding an
+empty container, it may make sense to use a nullable type.
 
 
 ### AVOID returning `this` from methods just to enable a fluent interface.

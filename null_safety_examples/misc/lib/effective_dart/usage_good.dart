@@ -446,6 +446,17 @@ class Point0 {
 
 //----------------------------------------------------------------------------
 
+// #docregion late-init-list
+class Point1 {
+  double x, y;
+  Point1.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
+}
+// #enddocregion late-init-list
+
+//----------------------------------------------------------------------------
+
 // #docregion semicolon-for-empty-body
 class Point2 {
   double x, y;
