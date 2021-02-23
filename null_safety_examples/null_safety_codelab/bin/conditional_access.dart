@@ -10,5 +10,5 @@ void main() {
   final BigThing? big = BigThing();
   
   print('The value is:');
-  print(big.little.fetchInt());
+  print(big?.little.fetchInt());
 }

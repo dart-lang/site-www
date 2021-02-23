@@ -1,5 +1,5 @@
 class Meal {
-  String description;
+  late String description;
   
   void setDescription(String str) {
     description = str;

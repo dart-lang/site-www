@@ -1,9 +1,9 @@
 class Team {
-  final Coach coach;
+  late final Coach coach;
 }
 
 class Coach {
-  final Team team;
+  late final Team team;
 }
 
 void main() {

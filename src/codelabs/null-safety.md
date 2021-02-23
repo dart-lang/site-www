@@ -123,11 +123,11 @@ analyzer errors disappear:
 void main() {
   String text;
 
-   if (DateTime.now().hour < 12) {
-     text = "It's morning! Let's make aloo paratha!";
-   } else {
-     text = "It's afternoon! Let's make biryani!";
-   }
+   //if (DateTime.now().hour < 12) {
+   //  text = "It's morning! Let's make aloo paratha!";
+   //} else {
+   //  text = "It's afternoon! Let's make biryani!";
+   //}
 
   print(text);
   print(text.length);
@@ -160,7 +160,7 @@ following code to work: one after `big` and one after `little`. With null
 safety, conditional access can short-circuit, so this expression only requires a
 single `?`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/conditional_access.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/conditional_access.dart" replace="/big\?.little/big.little/g"?>
 ```dart
 class BigThing {
   LittleThing little = LittleThing();
@@ -186,10 +186,9 @@ By adding `!` just after the expression, you tell Dart that the value won't be
 null, and that it's safe to assign it to a non-nullable variable. If you're
 wrong, Dart throws an exception.
 
-In the example below, try adding exclamation points to correct the\
-three broken assignments:
+In the example below, try adding exclamation points to correct the three broken assignments:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart
 int? couldReturnNullButDoesnt() => -3;
 
@@ -198,8 +197,8 @@ void main() {
   List<int?> listThatCouldHoldNulls = [2, null, 4];
 
   int a = couldBeNullButIsnt;
-  int b = listThatCouldHoldNulls.first;
-  int c = couldReturnNullButDoesnt().abs();
+  int b = listThatCouldHoldNulls.first; // first item in the list
+  int c = couldReturnNullButDoesnt().abs(); // absolute value
 
   print('a is $a.');
   print('b is $b.');
@@ -265,7 +264,7 @@ value, a `LateInitializationError` is thrown to tell you what went wrong.
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
 ```dart
 class Meal {
   String description;
@@ -290,7 +289,7 @@ to each other. Try using the `late` keyword to fix this code. Note that you
 don't have to remove `final`. `late` fields can also be `final`: you set `late
 final` values once, and after that they're read-only.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
 ```dart
 class Team {
   final Coach coach;
@@ -310,7 +309,7 @@ void main() {
 }
 ```
 
-### Example: Late and lazy
+### Exercise: Late and lazy
 
 Here's another pattern that `late` can help with: lazy initialization for
 expensive non-nullable fields. Try running this code without changing it. What
