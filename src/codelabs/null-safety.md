@@ -56,7 +56,8 @@ Here are some core principles of sound null safety in the Dart language:
 
 ## Nullable and non-nullable types
 
-All types are non-nullable by default. For example, if you have a variable of
+When you opt into null safety, all types are non-nullable by default.
+For example, if you have a variable of
 type String, it will always contain a string.
 
 ## Nullable types
