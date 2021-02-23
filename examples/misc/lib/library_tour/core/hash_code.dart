@@ -19,11 +19,9 @@ class Person {
   // override hashCode.
   @override
   bool operator ==(dynamic other) {
-    if (other is! Person) return false;
-    // ignore: stable, dev, invalid_assignment, // https://github.com/dart-lang/sdk/issues/32236
-    Person person = other;
-    return (person.firstName == firstName &&
-        person.lastName == lastName);
+    return other is Person &&
+        other.firstName == firstName &&
+        other.lastName == lastName;
   }
 }
 
