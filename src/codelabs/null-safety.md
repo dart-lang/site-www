@@ -26,7 +26,7 @@ Using embedded DartPad editors, you can test your knowledge by running example c
 This codelab covers the following material:
 
 * Nullable and non-nullable types.
-* How and when to use the null-aware operators: ? and !
+* How and when to use the null-aware operators: `?` and `!`
 * How the late keyword affects variables and initialization.
 
 {{site.alert.note}}
