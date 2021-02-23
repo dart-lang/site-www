@@ -60,7 +60,6 @@ When you opt into null safety, all types are non-nullable by default.
 For example, if you have a variable of
 type String, it will always contain a string.
 
-## Nullable types
 
 If you want a variable of type `String` to accept any string
 or the value `null`, but nothing else,
