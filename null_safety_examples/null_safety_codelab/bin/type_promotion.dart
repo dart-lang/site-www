@@ -1,9 +1,9 @@
 int getLength(String? str) {
   // Add null check here
   if (str == null) {
-  	return 0;
+    return 0;
   }
-  return str.length;  
+  return str.length;
 }
 
 void main() {

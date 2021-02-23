@@ -8,7 +8,7 @@ class LittleThing {
 
 void main() {
   BigThing? big = BigThing();
-  
+
   print('The value is:');
   print(big?.little.fetchInt());
 }
