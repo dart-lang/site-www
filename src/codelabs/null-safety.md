@@ -171,7 +171,7 @@ class LittleThing {
 }
 
 void main() {
-  final BigThing? big = BigThing();
+  BigThing? big = BigThing();
 
   print('The value is:');
   print(big.little.fetchInt());
@@ -236,7 +236,7 @@ that throws an `Exception` instead of returning zero.
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart
 int getLength(String? str) {
-  // Try throwing exception here if `str` is null.
+  // Try throwing an exception here if `str` is null.
 
   return str.length;
 }
