@@ -4,18 +4,6 @@ description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 220px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
@@ -1582,10 +1570,9 @@ class Point {
 
   Point(this.x, this.y);
 
-  Point.origin() {
-    x = 0;
-    y = 0;
-  }
+  Point.origin()
+      : x = 0,
+        y = 0;
 }
 ```
 

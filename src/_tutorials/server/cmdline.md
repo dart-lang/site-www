@@ -47,8 +47,8 @@ command-line arguments, files and directories, and more.
 
 ## Running an app with the standalone Dart VM
 
-To run a command-line app, you need the Dart VM (`dart`),
-which comes when you [install the Dart SDK](/get-dart).
+To run a command-line app in the Dart VM, use `dart run`.
+The `dart` command is part of the [Dart SDK](/tools/sdk).
 
 {{site.alert.important}}
   The location of the SDK installation directory
@@ -56,8 +56,7 @@ which comes when you [install the Dart SDK](/get-dart).
   and how you installed the SDK.
   You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
   By putting this directory in your PATH
-  you can refer to the `dart` command and other commands, such as
-  [dartanalyzer](/tools/dartanalyzer), by name.
+  you can refer to the `dart` command by name.
 {{site.alert.end}}
 
 Let's run a small program.
@@ -74,7 +73,7 @@ Let's run a small program.
  2. In the directory that contains the file you just created, run the program:
 
     ```terminal
-    $ dart helloworld.dart
+    $ dart run helloworld.dart
     Hello, World!
     ```
 
@@ -119,10 +118,10 @@ But for this first app, let's do the minimum necessary to get the code to run:
    dependencies:
      args: ^1.5.0
    ```
-4. Still in the `dcat` directory, run `pub get` to get the args package:
+4. Still in the `dcat` directory, run `dart pub get` to get the args package:
 
    ```terminal
-   $ pub get
+   $ dart pub get
    Resolving dependencies... 
    + args 1.5.2
    Changed 1 dependency!
@@ -142,7 +141,7 @@ like `pubspec.yaml` or `quote.txt`
 ([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
-$ dart dcat.dart -n quote.txt
+$ dart run dcat.dart -n quote.txt
 1 Be yourself. Everyone else is taken. -Oscar Wilde
 2 Don't cry because it's over, smile because it happened. -Dr. Seuss
 3 You only live once, but if you do it right, once is enough. -Mae West
@@ -328,7 +327,7 @@ the user types in lines of text and the program copies them to stdout.
 The user signals the end of input by pressing `Control`+`D`.
 
 ```terminal
-$ dart dcat.dart
+$ dart run dcat.dart
 The quick brown fox jumps over the lazy dog.
 The quick brown fox jumps over the lazy dog.
 ```

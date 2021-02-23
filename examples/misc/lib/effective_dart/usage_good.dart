@@ -6,10 +6,11 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0<Future> longRunningCalculation;
-Func0 somethingRisky;
-Func1 raiseAlarm, handle;
-Func1<bool, dynamic> canHandle, verifyResult;
+Func0<Future> longRunningCalculation = () => Future.value();
+Func0 somethingRisky = () {};
+Func1 raiseAlarm = (_) {}, handle = (_) {};
+Func1<bool, dynamic> canHandle = (_) => false,
+    verifyResult = (_) => false;
 
 void miscDeclAnalyzedButNotTested() {
   {
@@ -235,12 +236,12 @@ void miscDeclAnalyzedButNotTested() {
 class Address {}
 
 class Animal {
-  String name;
-  bool isAquatic;
+  String name = '';
+  bool isAquatic = false;
 }
 
 class Person {
-  int zip;
+  int zip = 12345;
 }
 
 class Color {
@@ -254,8 +255,8 @@ class Player {
 }
 
 class Team {
-  Future<List<Player>> get roster => null;
-  Future<Team> downloadTeam(String name) => null;
+  Future<List<Player>> get roster => Future.value([]);
+  Future<Team> downloadTeam(String name) => Future.value(Team());
   dynamic get log => null;
 
   // #docregion async-await
@@ -323,7 +324,7 @@ class Box1 {
 //----------------------------------------------------------------------------
 
 class Chest {
-  List<String> get contents => null;
+  List<String> get contents => [];
 }
 
 class Treasure {
@@ -333,9 +334,13 @@ class Treasure {
 }
 
 class C {
-  double left, right, top, bottom, minTime;
-  Point center;
-  Map<Chest, Treasure> _opened;
+  double left = 0.0,
+      right = 0.0,
+      top = 0.0,
+      bottom = 0.0,
+      minTime = 0.0;
+  Point center = Point(0.0, 0.0);
+  Map<Chest, Treasure> _opened = {};
 
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);

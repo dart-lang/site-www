@@ -25,7 +25,7 @@ void main() {
     Snippet('Compute Pi', piMonteCarlo),
   ];
 
-  DartPadPicker(dartPadHost, select, snippets);
+  DartPadPicker(dartPadHost, select, snippets, frameId: 'try-dart-pad');
 }
 
 Snippet _createSnippet(HtmlElement root, String name) => Snippet(

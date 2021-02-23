@@ -5,7 +5,7 @@ description: Learn how to publish a Dart package to pub.dev.
 
 [The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
-project and you want others to be able to use it, use the `pub publish`
+project and you want others to be able to use it, use the `dart pub publish`
 command.
 
 {{site.alert.note}}
@@ -120,16 +120,16 @@ To create a verified publisher, follow these steps:
 
 ## Publishing your package
 
-Use the [pub publish][] command to publish your package for the first time,
+Use the [dart pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
 
 ### Performing a dry run
 
-To test how `pub publish` will work, you can perform a dry run:
+To test how `dart pub publish` will work, you can perform a dry run:
 
 ```terminal
-$ pub publish --dry-run
+$ dart pub publish --dry-run
 ```
 
 Pub makes sure that your package follows the
@@ -162,7 +162,7 @@ Package has 0 warnings.
 When you're ready to publish your package, remove the `--dry-run` argument:
 
 ```terminal
-$ pub publish
+$ dart pub publish
 ```
 
 {{site.alert.note}}
@@ -171,7 +171,7 @@ $ pub publish
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
   Once a package has been transferred to a publisher,
-  you can update the package using `pub publish`.
+  you can update the package using `dart pub publish`.
 {{site.alert.end}}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
@@ -221,7 +221,7 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 {% endcomment %}
 
 Be sure to delete any files you don't want to include (or add them to
-`.gitignore`). `pub publish` lists all files that it's going to publish
+`.gitignore`). `dart pub publish` lists all files that it's going to publish
 before uploading your package,
 so examine the list carefully before completing your upload.
 
@@ -242,7 +242,7 @@ the authorized uploaders for the package.
 ## Publishing prereleases
 
 As you work on a package, consider publishing it as a prerelease.
-Prereleases can be useful when any of the following are true:
+Prereleases can be useful when *any* of the following are true:
 
 * You're actively developing the next major version of the package.
 * You want beta testers for the next release candidate of the package.
@@ -268,6 +268,50 @@ the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package `README.md` and documentation.
 
+## Publishing previews
+
+Previews can be useful when **all** of the following are true:
+
+* The next stable version of the package is complete.
+
+* That package version depends on an API or feature in the Dart SDK that
+  hasn't yet been released in a stable version of the Dart SDK.
+
+* You know that the API or feature that the package depends on is
+  API-stable and won't change before it reaches the stable SDK.
+
+As an example, consider a new version of `package:args` that has
+a finished version `2.0.0` but that 
+depends on a feature in Dart `2.12.0-259.8.beta`,
+where Dart SDK version `2.12.0` stable hasn't been released yet.
+The pubspec might look like this:
+
+```
+name: args
+version: 2.0.0
+environment:
+  sdk: '>=2.12.0-259.8.beta <3.0.0'
+```
+
+When this package is published to pub.dev,
+it's tagged as a preview version,
+as illustrated by the following screenshot,
+where the stable version is listed as
+`1.6.0` and the preview version is listed as `2.0.0`.
+
+![Illustration of a preview version](/null-safety/preview-version.png){:width="600px"}<br>
+
+When Dart `2.12.0` stable is released,
+pub.dev updates the package listing to display
+`2.0.0` as the stable version of the package.
+
+If all of the conditions at the beginning of this section are true,
+then you can ignore the following warning from `dart pub publish`: 
+
+   *"Packages with an SDK constraint on a pre-release of the Dart SDK should
+   themselves be published as a pre-release version. If this package needs Dart
+   version 2.12.0-0, consider publishing the package as a pre-release
+   instead."*
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -280,14 +324,15 @@ doesn't appear in pub.dev search results.
 
 To mark a package as discontinued, sign in to pub.dev using a Google Account
 that's an uploader or verified publisher admin for the package.
-Then use the **Admin** tab of the individual package to mark the package as
-discontinued.
+Then use the **Admin** tab of the individual package to
+mark the package as discontinued.
+If you change your mind, you can remove the discontinued mark at any time.
 
 ## Resources
 
 For more information, see the reference pages for the following `pub` commands:
 
-* [pub publish][]
+* [dart pub publish][]
 * [pub uploader][]
 
 [BSD license]: https://opensource.org/licenses/BSD-3-Clause
@@ -297,9 +342,8 @@ For more information, see the reference pages for the following `pub` commands:
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
 [pub]: /guides/packages
-[pub publish]: /tools/pub/cmd/pub-lish
+[dart pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
-

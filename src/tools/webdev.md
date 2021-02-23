@@ -14,11 +14,6 @@ which wraps around the more general-purpose
 Usually you can use `webdev` instead of directly using `build_runner`.
 The only time most web app developers run `build_runner` is for tests.
 
-<aside class="alert alert-info" markdown="1">
-  **Dart 2 note:**
-  The `webdev` tool replaces the Dart 1.x `pub build` and `pub serve` commands.
-</aside>
-
 ## Setup
 
 The easiest way to get `webdev` is to globally install it,
@@ -33,7 +28,7 @@ build_runner and build_web_compilers packages.
 [Globally install][] `webdev` using pub:
 
 ```terminal
-$ pub global activate webdev
+$ dart pub global activate webdev
 ```
 
 Use the same command to update `webdev`.
@@ -59,15 +54,15 @@ to your app's `pubspec.yaml` file:
 ```
   dev_dependencies:
     # ···
-    build_runner: ^1.0.0
-    build_test: ^0.10.2
-    build_web_compilers: ^0.4.0
+    build_runner: ^1.11.0
+    build_test: ^1.3.0
+    build_web_compilers: ^2.12.0
 ```
 
-As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
 ```terminal
-$ pub get
+$ dart pub get
 ```
 ## Using webdev and build_runner commands
 
@@ -158,7 +153,7 @@ $ webdev build --output web:build
 Use the `build_runner test` command to run your app's [component tests][]:
 
 ```
-$ pub run build_runner test [build_runner options] -- -p <platform> [test options]
+$ dart pub run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
 <aside class="alert alert-info" markdown="1">
@@ -171,13 +166,13 @@ $ pub run build_runner test [build_runner options] -- -p <platform> [test option
 For example, here's how to run all Chrome platform tests:
 
 ```terminal
-$ pub run build_runner test -- -p chrome
+$ dart pub run build_runner test -- -p chrome
 ```
 
 To see all available build_runner options, use the `--help` or `-h` option:
 
 ```terminal
-$ pub run build_runner test -h
+$ dart pub run build_runner test -h
 ```
 
 Arguments after the empty `--` argument
@@ -186,7 +181,7 @@ To see all command-line options for the test package runner,
 use this command:
 
 ```terminal
-$ pub run test -h
+$ dart pub run test -h
 ```
 
 

@@ -124,7 +124,7 @@ for a running command-line app.
 Use [pub](/tools/pub) to install or update DevTools:
 
 ```terminal
-$ pub global activate devtools
+$ dart pub global activate devtools
 ```
 
 ### 2. Launch the DevTools server
@@ -133,27 +133,27 @@ Once you have DevTools, use the `devtools` command
 to run the local web server for DevTools:
 
 ```terminal
-$ pub global run devtools
+$ dart pub global run devtools
 Serving DevTools at http://127.0.0.1:9100
 ```
 
 {{site.alert.note}}
   If the [system cache `bin` directory is in your path][cache-bin],
-  then you can just run `devtools`, without `pub global run`.
+  then you can just run `dart devtools`, without `dart pub global run`.
 {{site.alert.end}}
 [cache-bin]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
 
 ### 3. Start the target app
 
-Use the `dart --observe` command to execute the main file
+Use the `dart run --observe` command to execute the main file
 for the Dart command-line app that you want to debug or observe.
 Optionally add `--pause-isolates-on-start`,
 which automatically breaks execution at the start of the script.
 
 ```terminal
 $ cd path/to/dart/app
-$ dart --observe main.dart
+$ dart run --observe main.dart
 
 Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
 ```

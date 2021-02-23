@@ -30,19 +30,6 @@ greeting to use another language.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 150px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
-
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {

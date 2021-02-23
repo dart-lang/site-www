@@ -20,8 +20,9 @@ code:
 Two exceptions to be aware of are:
 
 -   The `!` operator is a runtime null check in all modes, for all users. So,
-    when migrating, ensure that you only add `!` where it's an error for all
-    users to pass a null.
+    when migrating, ensure that you only add `!` where it's an error for a
+    `null` to flow to that location, even if the calling code has not migrated
+    yet.
 -   Runtime checks associated with the `late` keyword apply in all modes, for
     all users. Only mark a field `late` if you are sure it is always initialized
     before it is used.
@@ -175,27 +176,18 @@ An explicit runtime null check, for example `if (arg == null) throw
 ArgumentError(...)`, will be flagged as an unnecessary comparison if you make
 `arg` non-nullable.
 
-But, the check *is* still needed when running in mixed mode. Until everything is
-fully migrated and the code switches to running in sound mode, it will be
-possible for `arg` to be null.
+But, the check *is* still needed if the program is a mixed-version one.  Until
+everything is fully migrated and the code switches to running with sound null
+safety, it will be possible for `arg` to be null.
 
 The simplest way to preserve behavior is change the check into
 [`ArgumentError.checkNotNull`](https://api.dart.dev/stable/dart-core/ArgumentError/checkNotNull.html).
 
-The same applies to some runtime type checks. In legacy or mixed mode, if arg
+The same applies to some runtime type checks. If `arg`
 has static type `String`, then `if (arg is! String)` is actually checking
 whether `arg` is `null`. It might look like migrating to null safety means `arg`
-can never be `null`, but it could be `null` in mixed mode. So, to preserve
+can never be `null`, but it could be `null` in unsound null safety. So, to preserve
 behavior, the null check should remain.
-
-## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
-
-Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
-`List<Object?>`. If you didn't change a list type explicitly in your migration,
-a type might still have changed because of changes to type inference that happen
-when you enable null safety.
-
-The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## The `Iterable.firstWhere` method no longer accepts `orElse: () => null`.
 
@@ -229,11 +221,15 @@ In this case, you should use the bang operator (`!`) to cast the value back to
 V:
 
 ```dart
-if (blockTypes.containsKey(key)) {
-  return blockTypes[key]!; // blockTypes[key] is non-nullable
-} else {
-  throw ArgumentError('Could not read block type.');
-}
+return blockTypes[key]!;
+```
+
+Which will throw if the map returns null. If you want explicit handling for that case:
+
+```dart
+var result = blockTypes[key];
+if (result != null) return result;
+// Handle the null case here, e.g. throw with explanation.
 ```
 
 ## Why is the generic type on my List/Map nullable?
@@ -279,6 +275,31 @@ The default 'List' constructor isn't available when null safety is enabled. #def
 The default list constructor fills the list with `null`, which is a problem.
 
 Change it to `List.filled(length, default)` instead.
+
+## I'm using `package:ffi` and get a failure with `Dart_CObject_kUnsupported` when I migrate. What happened?
+
+Lists sent via ffi can only be `List<dynamic>`, not `List<Object>` or
+`List<Object?>`. If you didn't change a list type explicitly in your migration,
+a type might still have changed because of changes to type inference that happen
+when you enable null safety.
+
+The fix is to explicitly create such lists as `List<dynamic>`.
+
+## Why does the migration tool add comments to my code? {#migration-comments}
+
+The migration tool adds `/* == false */` or `/* == true */` comments when it
+sees conditions that will always be false or true while running in sound mode.
+Comments like these might indicate that the automatic migration is incorrect and
+needs human intervention. For example:
+
+```dart
+if (registry.viewFactory(viewDescriptor.id) == null /* == false */)
+```
+
+In these cases, the migration tool can't distinguish defensive-coding situations
+and situations where a null value is really expected. So the tool tells you what
+it knows ("it looks like this condition will always be false!") and lets you
+decide what to do.
 
 ## Resources
 

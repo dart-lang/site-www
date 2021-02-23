@@ -96,8 +96,8 @@ pros and cons. These principles guided the choices we made:
 
     One caveat: We only guarantee soundness in Dart programs that are fully null
     safe. Dart supports programs that contain a mixture of newer null safe code
-    and older legacy code. In these "mixed-mode" programs, null reference errors
-    may still occur. In a mixed-mode program, you get all of the *static* safety
+    and older legacy code. In these mixed-version programs, null reference errors
+    may still occur. In a mixed-version program, you get all of the *static* safety
     benefits in the portions that are null safe, but you don't get full runtime
     soundness until the entire application is null safe.
 
@@ -460,7 +460,7 @@ things up for non-nullable variables:
 *   **Optional parameters must have a default value.** If you don't pass an
     argument for an optional positional or named parameter, then the language
     fills it in with the default value. If you don't specify a default value,
-    the default default value is `null`, and that doesn't fly if the parameter's
+    the _default_ default value is `null`, and that doesn't fly if the parameter's
     type is non-nullable.
 
     So, if you want a parameter to be optional, you need to either make it

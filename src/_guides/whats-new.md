@@ -12,12 +12,15 @@ This page describes what's new on the Dart website and blog.
 To see what's new in Flutter, visit the
 [Flutter what's new page.][flutter-whats-new]
 
-To stay on top of Dart announcements, including breaking changes,
-join the [Dart announcements Google group.][dart-announce]
+For a list of Dart language changes in each Dart SDK, see the 
+[language evolution page](/guides/language/evolution).
+To stay on top of announcements, including breaking changes,
+join the [Dart announcements Google group][dart-announce]
+and follow the [Dart blog][].
 
 [flutter-whats-new]: {{site.flutter}}/docs/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
-
+[Dart blog]: https://medium.com/dartlang
 
 ## October 1, 2020: 2.10 release
 

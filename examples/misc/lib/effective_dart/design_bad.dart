@@ -19,7 +19,7 @@ void miscDeclAnalyzedButNotTested() {
     monsters.filter((monster) => monster.hasClaws);
     // #enddocregion code-like-prose
 
-    Iterable theCollectionOfErrors;
+    Iterable theCollectionOfErrors = [];
     // #docregion code-like-prose-overdone
     if (theCollectionOfErrors.isEmpty) {/*-...-*/}
 
@@ -126,7 +126,7 @@ typedef bool TestNumber(num);
 //----------------------------------------------------------------------------
 
 class StringBuffer0 {
-  StringBuffer0 write(dynamic _) => null;
+  StringBuffer0 write(dynamic _) => this;
 }
 
 //----------------------------------------------------------------------------

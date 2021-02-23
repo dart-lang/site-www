@@ -17,7 +17,7 @@ with your SDK version.
 
 Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, downloading, updating, and publishing packages.
-Or you can use [`pub` on the command line](/tools/pub/cmd).
+Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
@@ -27,7 +27,8 @@ Dart libraries, apps, resources, tests, images, and examples.
 
 To use a package, do the following:
 
-* Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
+* Create a pubspec (a file named `pubspec.yaml` that
+  lists package dependencies and includes
   other metadata, such as a version number).
 * Use pub to get your package's dependencies.
 * If your Dart code depends on a library in the package, import the library.
@@ -59,17 +60,18 @@ and the documentation for the packages that you want to use.
 
 ## Getting packages
 
-Once you have a pubspec, you can run <code class="literal">pub
+Once you have a pubspec, you can run <code class="literal">dart pub
 get</code> from the top directory of your application:
 
 ```terminal
 $ cd <path-to-my_app>
-$ pub get
+$ dart pub get
 ```
 
 This process is called _getting the dependencies_.
 
-The [`pub get`][] command determines which packages your app depends on,
+The [`dart pub get`][`get`] command
+determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -143,29 +145,29 @@ Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`pub upgrade`][] command:
+use the [`dart pub upgrade`][`upgrade`] command:
 
-{% prettify sh tag=pre+code %}
-$ pub upgrade
-{% endprettify %}
+```terminal
+$ dart pub upgrade
+```
 
-The `pub upgrade` command tells pub to regenerate the lockfile, using the newest
-available versions of your package's dependencies.
+The `dart pub upgrade` command tells pub to regenerate the lockfile,
+using the newest available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-{% prettify sh tag=pre+code %}
-$ pub upgrade transmogrify
-{% endprettify %}
+```terminal
+$ dart pub upgrade transmogrify
+```
 
 That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
 
-The [`pub upgrade`][] command can't always upgrade every package
+The `dart pub upgrade` command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`pub outdated`][].
+use [`dart pub outdated`][`outdated`].
 
 ## More information
 
@@ -187,22 +189,22 @@ the pub package manager.
 * [Pub versioning philosophy](/tools/pub/versioning)
 * [Pubspec format](/tools/pub/pubspec)
 
-### Pub commands
+### Pub subcommands
 
-The `pub` tool provides the following commands:
+The `dart pub` tool provides the following subcommands:
 
-* [`pub cache`][]
-* [`pub deps`][]
-* [`pub downgrade`][]
-* [`pub get`][]
-* [`pub global`][]
-* [`pub outdated`][]
-* [`pub publish`][]
-* [`pub run`][]
-* [`pub upgrade`][]
-* [`pub uploader`][]
+* [`cache`][]
+* [`deps`][]
+* [`downgrade`][]
+* [`get`][]
+* [`global`][]
+* [`outdated`][]
+* [`publish`][]
+* [`run`][]
+* [`upgrade`][]
+* [`uploader`][]
 
-For an overview of all the `pub` commands,
+For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
 
 ### Troubleshooting
@@ -211,13 +213,13 @@ see the [pub tool documentation](/tools/pub/cmd).
 you might encounter when using pub.
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
-[`pub cache`]: /tools/pub/cmd/pub-cache
-[`pub deps`]: /tools/pub/cmd/pub-deps
-[`pub downgrade`]: /tools/pub/cmd/pub-downgrade
-[`pub get`]: /tools/pub/cmd/pub-get
-[`pub global`]: /tools/pub/cmd/pub-global
-[`pub outdated`]: /tools/pub/cmd/pub-outdated
-[`pub publish`]: /tools/pub/cmd/pub-lish
-[`pub run`]: /tools/pub/cmd/pub-run
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
-[`pub uploader`]: /tools/pub/cmd/pub-uploader
+[`cache`]: /tools/pub/cmd/pub-cache
+[`deps`]: /tools/pub/cmd/pub-deps
+[`downgrade`]: /tools/pub/cmd/pub-downgrade
+[`get`]: /tools/pub/cmd/pub-get
+[`global`]: /tools/pub/cmd/pub-global
+[`outdated`]: /tools/pub/cmd/pub-outdated
+[`publish`]: /tools/pub/cmd/pub-lish
+[`run`]: /tools/pub/cmd/pub-run
+[`upgrade`]: /tools/pub/cmd/pub-upgrade
+[`uploader`]: /tools/pub/cmd/pub-uploader

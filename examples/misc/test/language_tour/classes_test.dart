@@ -44,21 +44,18 @@ void main() {
     // #docregion object-members
     var p = Point(2, 2);
 
-    // Set the value of the instance variable y.
-    p.y = 3;
-
     // Get the value of y.
-    assert(p.y == 3);
+    assert(p.y == 2);
 
     // Invoke distanceTo() on p.
     double distance = p.distanceTo(Point(4, 4));
     // #enddocregion object-members
 
     // #docregion safe-member-access
-    // If p is non-null, set its y value to 4.
-    p?.y = 4;
+    // If p is non-null, set a variable equal to its y value.
+    var a = p?.y;
     // #enddocregion safe-member-access
-    expect(p.y, 4);
+    expect(a, 2);
   });
 
   test('const, identical, runtimeType', () {

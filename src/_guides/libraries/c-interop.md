@@ -7,18 +7,19 @@ sqllite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
-platform](/platforms/) can use the dart:ffi library to call native C APIs.
+platform](/overview#platform/) can use the dart:ffi library to call native C APIs.
 _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{site.alert.info}}
-  As of Dart 2.7, [dart:ffi is in beta,][ffi issue]
-  and breaking API changes might still happen.
-{{site.alert.end}}
+{{ site.alert.version-note }}
+  As of Dart 2.12 beta, FFI has been marked as 1.0,
+  and will be fully stable once a 2.12 stable SDK is
+  released.
+{{ site.alert.end }}
 
-API documentation is available from the dev channel:
-[dart:ffi API reference.]({{site.dart_api}}/dev/dart-ffi/dart-ffi-library.html)
+API documentation is available in the
+[dart:ffi API reference.]({{site.dart_api}}/dart-ffi/dart-ffi-library.html)
 
 ## Examples
 
@@ -42,7 +43,7 @@ The hello_world example has the following files:
 
 | **Source file** | **Description** |
 | [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
-| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.5. |
+| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
 | [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
 | [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
 | [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
@@ -71,7 +72,7 @@ $ cmake .
 $ make
 ...
 $ cd ..
-$ dart hello.dart
+$ dart run hello.dart
 Hello World
 ```
 
@@ -148,6 +149,14 @@ For details, see the following:
 * [Flutter dart:ffi page][binding]
 * [dart:ffi examples]({{ page.samples }})
 
+## Generating FFI bindings with `package:ffigen`
+
+For large API surfaces it can be time consuming to write the Dart bindings
+that integrate with the C code. To reduce this burden, you can use the
+[`package:ffigen`][ffigen]
+binding generator to automatically create FFI wrappers from C header files.
+
+
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
@@ -156,3 +165,4 @@ For details, see the following:
 [structs]: {{ page.samples }}/structs
 [sqllite]: {{ page.sqllite }}
 [mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
+[ffigen]: {{ site.pub }}/packages/ffigen
