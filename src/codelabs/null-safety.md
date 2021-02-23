@@ -19,7 +19,7 @@ iframe[src^="https://dartpad"] {
 }
 </style>
 
-This codelab teaches you about Dart’s null safe type system, which was introduced in Dart SDK 2.12. When you opt into null safety, types in your code are non-nullable by default, meaning that values can’t be null unless you say they can be.
+This codelab teaches you about Dart’s null safe type system, which was introduced in Dart SDK 2.12. When you opt into null safety, types in your code are non-nullable by default, meaning that values can’t be `null` unless you say they can be.
 
 Using embedded DartPad editors, you can test your knowledge by running example code and completing exercises. To get the most out of this codelab, you should have some knowledge of [basic Dart syntax](/samples).
 
