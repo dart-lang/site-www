@@ -121,6 +121,8 @@ submodule-cloning techniques:
     $ ./tool/install.sh
     ```
 
+You _may_ need to run `gem install bundler` to upgrade it to the latest version if you get errors such as `require: cannot load such file` later. Another command that seems to be useful when the usual installation process doesn't work is `bundle install --force`.
+
 > IMPORTANT:
 > - Any time you create a **new terminal/command window** to work on
 >   this repo, **repeat steps 1 and 2** above.
