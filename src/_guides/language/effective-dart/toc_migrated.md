@@ -94,9 +94,12 @@
 * <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>DO use relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
 
-**Booleans**
+**Null**
 
-* <a href='/guides/language/effective-dart/usage#do-use--to-convert-null-to-a-boolean-value'>DO use <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#consider-copying-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER copying a nullable field to a local variable to enable type promotion.</a>
 
 **Strings**
 
@@ -119,16 +122,11 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/guides/language/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-
-**Parameters**
-
 * <a href='/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
 
 **Variables**
 
 * <a href='/guides/language/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables'>DO follow a consistent rule for <code>var</code> and <code>final</code> on local variables.</a>
-* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-storing-what-you-can-calculate'>AVOID storing what you can calculate.</a>
 
 **Members**

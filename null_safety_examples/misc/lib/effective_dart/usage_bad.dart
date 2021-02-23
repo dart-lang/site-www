@@ -156,6 +156,20 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    var message = "hello" as String?;
+    // #docregion null-aware-promote
+    int measureMessage(String? message) {
+      if (message?.isNotEmpty ?? false) {
+        // message is not promoted to String.
+        return message!.length;
+      }
+
+      return 0;
+    }
+    // #enddocregion null-aware-promote
+  }
+
+  {
     // ignore_for_file: only_throw_errors
     // #docregion rethrow
     try {
@@ -266,6 +280,26 @@ Item? bestDeal(List<Item> cart) {
   return bestItem;
 }
 // #enddocregion no-null-init
+
+//----------------------------------------------------------------------------
+
+// #docregion copy-nullable-field
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    if (response != null) {
+      return "Could not complete upload to ${response!.url} "
+          "(error code ${response!.errorCode}): ${response!.reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+// #enddocregion copy-nullable-field
 
 //----------------------------------------------------------------------------
 
