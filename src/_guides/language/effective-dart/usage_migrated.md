@@ -240,10 +240,10 @@ preferred for three main reasons:
     expression is `null`. With `== true`, you have to think through the boolean
     logic to realize that means that a `null` gets converted to *false*.
 
-**Exception:** Using a null-aware operator on a variable inside a condition does
-not promote the variable to a non-nullable type. If you want the variable to be
-promoted inside the body of the if statement, it may be better to use an
-explicit `!= null` check instead of `?.` followed by `??`:
+**Exception:** Using a null-aware operator on a variable inside a condition
+doesn't promote the variable to a non-nullable type. If you want the variable
+to be promoted inside the body of the `if` statement, it might be better to use
+an explicit `!= null` check instead of `?.` followed by `??`:
 
 {:.good}
 <?code-excerpt "usage_good.dart (null-aware-promote)"?>
@@ -277,11 +277,11 @@ int measureMessage(String? message) {
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
 to functions expecting a non-nullable type. Unfortunately, promotion is only
-sound for local variables and parameters, so fields and top-level variables are
-not promoted.
+sound for local variables and parameters, so fields and top-level variables
+aren't promoted.
 
 One pattern to work around this is to copy the field's value to a local
-variable. Null checks on that variable do promote and then you can safely treat
+variable. Null checks on that variable do promote, so you can safely treat
 it as non-nullable.
 
 {:.good}
@@ -305,8 +305,8 @@ class UploadException {
 }
 {% endprettify %}
 
-This can be cleaner and safer than using `!` every place the field or top level
-variable is used.
+Copying to a local variable can be cleaner and safer than using `!` every place
+the field or top-level variable is used:
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
@@ -328,10 +328,10 @@ class UploadException {
 }
 {% endprettify %}
 
-This pattern must be applied with some care. If you need to write back to the
-field make sure you do so, and not just to the local variable. Also, if there
-may be other changes to the field while the local is still in scope, it may end
-up having a stale value. Sometimes it is best to simply use `!` on the field.
+Be careful when using a local copy. If you need to write back to the field,
+then make sure you do so, and don't just write to the local variable. Also, if
+the field might change while the local is still in scope, then the local might
+have a stale value. Sometimes it's best to simply use `!` on the field.
 
 
 ## Strings
