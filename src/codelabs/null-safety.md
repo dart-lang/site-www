@@ -56,7 +56,7 @@ type String, it will always contain a string.
 
 ## Nullable types
 
-If you want a variable of type String to accept any string, or the value null
+If you want a variable of type `String` to accept any string, or the value null
 but nothing else, you give the variable a nullable type by adding a `?` after
 the type name. For example, a variable of type String? can contain a string, or
 it can be null.
