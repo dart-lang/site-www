@@ -1824,3 +1824,10 @@ class Person {
       other != null && other is Person && name == other.name;
 }
 {% endprettify %}
+
+{{ site.alert.version-note }}
+In code that has not been migrated to null safety yet, the `Object` type
+annotation permits `null`. Even so, Dart will never call your `==` method and
+pass `null` to it, so you don't need to handle `null` inside the body of the
+method.
+{{ site.alert.end }}
