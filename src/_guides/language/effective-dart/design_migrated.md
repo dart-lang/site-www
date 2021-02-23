@@ -787,8 +787,9 @@ can.
 
 Sometimes an instance field doesn't change after it has been initialized, but
 can't be initialized until after the instance is constructed. For example, it
-may need to reference `this` or some other field on the instance. In cases like,
-that, consider making the field `late final`.
+may need to reference `this` or some other field on the instance. In cases like
+that, consider making the field `late final`. When you do, you may also be able
+to initialize the field at its declaration.
 
 
 ### DO use getters for operations that conceptually access properties.
@@ -938,16 +939,17 @@ not intended to be invoked from Dart code and don't need a corresponding getter.
 [angular]: {{site.angulardart}}
 
 
-### AVOID public `late final` fields.
+### AVOID public `late final` fields without initializers.
 
-Unlike other final fields, a late final field *does* define a setter. If
-that field is public, then the setter is public. This is rarely what you want.
-Fields are usually marked late so that they can be initialized *internally* at
-some point in the instance's lifetime, often inside the constructor body.
+Unlike other `final` fields, a `late final` field without an initializer *does*
+define a setter. If that field is public, then the setter is public. This is
+rarely what you want. Fields are usually marked late so that they can be
+initialized *internally* at some point in the instance's lifetime, often inside
+the constructor body.
 
 Unless you do intend to expose the setter publicly and allow users to invoke it,
-it's better to either not use `late`, or make the late field private with a
-public getter.
+it's better to not use `late`, ensure the `late` field is initialized at its
+declaration, or make the `late` field private with a public getter.
 
 
 ### AVOID returning nullable `Future`, `Stream`, and collection types.
@@ -957,9 +959,9 @@ data: It can return an empty container or it can return `null`. Users generally
 assume and prefer that you use an empty container to indicate "no data". That
 way, they have a real object that they can call methods on like `isEmpty`.
 
-Prefer returning an empty collection, a future that doesn't complete, or a
-stream that doesn't emit any values to indicate that your API has no data to
-provide.
+Prefer returning an empty collection, a non-nullable future of a nullable type,
+or a stream that doesn't emit any values to indicate that your API has no data
+to provide.
 
 **Exception:** If returning `null` *means something different* from yielding an
 empty container, it may make sense to use a nullable type.

@@ -215,7 +215,7 @@
 * <a href='/guides/language/effective-dart/design#do-use-getters-for-operations-that-conceptually-access-properties'>DO use getters for operations that conceptually access properties.</a>
 * <a href='/guides/language/effective-dart/design#do-use-setters-for-operations-that-conceptually-change-properties'>DO use setters for operations that conceptually change properties.</a>
 * <a href='/guides/language/effective-dart/design#dont-define-a-setter-without-a-corresponding-getter'>DON'T define a setter without a corresponding getter.</a>
-* <a href='/guides/language/effective-dart/design#avoid-public-late-final-fields'>AVOID public <code>late final</code> fields.</a>
+* <a href='/guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers'>AVOID public <code>late final</code> fields without initializers.</a>
 * <a href='/guides/language/effective-dart/design#avoid-returning-nullable-future-stream-and-collection-types'>AVOID returning nullable <code>Future</code>, <code>Stream</code>, and collection types.</a>
 * <a href='/guides/language/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface'>AVOID returning <code>this</code> from methods just to enable a fluent interface.</a>
 

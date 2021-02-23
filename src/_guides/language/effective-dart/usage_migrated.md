@@ -1113,11 +1113,7 @@ class ProfileMark {
 One common reason that fields are *not* initialized at the declaration is
 because they need to reference `this` or call methods on the containing
 instance. However, if the field is marked `late`, then the initializer *can*
-access `this`. In cases where the initialization doesn't depend on constructor
-parameters, you may be able to move the initialization to the field's
-declaration. That doesn't necessarily mean you *should* use `late` just to be
-able to initialize at the declaration. But if you want the field to be `late`,
-it gives you additional flexibility.
+access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
@@ -1197,7 +1193,10 @@ class Point {
 {% endprettify %}
 
 
-The initialization list gives you access to constructor parameters and lets you initialize fields before they can be read. So, if it's possible to use that, that's better than making the field `late` and losing some static safety and performance.
+The initialization list gives you access to constructor parameters and lets you
+initialize fields before they can be read. So, if it's possible to use that,
+that's better than making the field `late` and losing some static safety and
+performance.
 
 
 ### DO use `;` instead of `{}` for empty constructor bodies.
