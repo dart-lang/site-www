@@ -1963,31 +1963,39 @@ Most hash-based collections don't anticipate that&mdash;they assume an object's
 hash code will be the same forever and may behave unpredictably if that isn't
 true.
 
-### DON'T check for `null` in custom `==` operators.
+### DON'T make the parameter to `==` nullable.
 
 {% include linter-rule.html rule="avoid_null_checks_in_equality_operators" %}
 
-The language specifies that this check is done automatically and your `==`
+The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
 
 {:.good}
-<?code-excerpt "design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g" plaster?>
+<?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster?>
 {% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···
-  bool [!operator ==!](other) => other is Person && name == other.name;
 
-  int get hashCode => name.hashCode;
+  bool operator ==(Object other) => other is Person && name == other.name;
 }
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g" plaster?>
+<?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster?>
 {% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···
-  bool operator ==(other) => [!other != null!] && ...
+
+  bool operator ==([!Object?!] other) =>
+      other != null && other is Person && name == other.name;
 }
 {% endprettify %}
+
+{{ site.alert.version-note }}
+In code that has not been migrated to null safety yet, the `Object` type
+annotation permits `null`. Even so, Dart will never call your `==` method and
+pass `null` to it, so you don't need to handle `null` inside the body of the
+method.
+{{ site.alert.end }}
