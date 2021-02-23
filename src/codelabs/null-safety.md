@@ -44,7 +44,7 @@ This codelab covers the following material:
 
 Dart's null-safe type system makes types in your code non-nullable by default.
 That means values in your Dart programs can't be `null` unless you say they can be.
-With null safety, you can fix `null` reference errors at edit-type, before you even
+With null safety, you can find null reference errors before you even
 run your program.
 
 Here are some core principles of sound null safety in the Dart language:
