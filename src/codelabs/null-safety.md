@@ -61,7 +61,7 @@ type `String`, it will always contain a string.
 
 If you want a variable of type `String` to accept any string
 or the value `null`, but nothing else,
-give the variable a nullable type by adding a `?` after the
+give the variable a nullable type by adding a question mark (`?`) after the
 type name. For example, a variable of type `String?` can contain a string, or
 it can be null.
 
@@ -138,47 +138,18 @@ void main() {
 }
 ```
 
-## Using ?. and !
+## Using ?, !, and late
 
-Null safety introduces two operators, ? and !. Here's how you use them:
+Null safety introduces new operators and keywords for dealing with null values,
+`?`, `!`, and `late`. Here's how you use them:
 
--   If you're accessing a property and the operand might be null, use the
-    conditional member access operator (`?.`).
+-   If you're creating a variable that can hold a null value, you can use a
+    `?` to inform Dart of the variable’s nullability.
 -   If you're sure that an expression with a nullable type isn't null, you can 
     add a postfix exclamation mark (`!`) to make Dart treat it as non-nullable.
-
-### Example: Conditional access
-
-Conditional access is a handy way to tighten up code that needs to read
-properties that could be null. For example, the following expression evaluates
-to the value of `b` as long as `a` isn't null. If `a` is null, then the
-expression evaluates to null:
-
-```dart
-a?.b
-
-Without null safety, *two* conditional access operators are needed for the
-following code to work: one after `big` and one after `little`. With null
-safety, conditional access can short-circuit, so this expression only requires a
-single `?`:
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/conditional_access.dart" replace="/big\?.little/big.little/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-class BigThing {
-  LittleThing little = LittleThing();
-}
-
-class LittleThing {
-  int fetchInt() => 12;
-}
-
-void main() {
-  BigThing? big = BigThing();
-
-  print('The value is:');
-  print(big.little.fetchInt());
-}
-```
+-   If you want to initalize a non-nullable variable to a
+    non-null value before it’s used, insert `late` before the
+    variable’s type.
 
 ### Example: The assertion operator (!)
 
@@ -206,46 +177,6 @@ void main() {
   print('a is $a.');
   print('b is $b.');
   print('c is $c.');
-}
-```
-
-### Exercise: Type promotion
-
-With null safety, Dart takes null checks into account. Nullable variables that
-can't possibly contain null are treated like non-nullable variables.
-This behavior is called "promotion."
-
-In the example below, add an if statement to the beginning of `getLength` that
-returns zero if `str` is null:
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-int getLength(String? str) {
-  // Add null check here
-
-  return str.length;
-}
-
-void main() {
-  print(getLength('This is a string!'));
-}
-```
-
-### Exercise: Promotion with exceptions
-
-Promotion works with exceptions as well as return statements. Try a null check
-that throws an `Exception` instead of returning zero.
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-int getLength(String? str) {
-  // Try throwing an exception here if `str` is null.
-
-  return str.length;
-}
-
-void main() {
-  print(getLength(null));
 }
 ```
 
@@ -342,6 +273,48 @@ Fun fact: After you add `late` to the declaration of `_cache`, you can move the
 `_computeValue` function into the `CachedValueProvider` class and the code will
 still work! Initialization expressions for `late` fields can use instance
 methods in their initializers.
+
+## Type promotion
+
+With null safety, Dart takes null checks into account. Nullable variables that
+can't possibly contain null are treated like non-nullable variables.
+This behavior is called "promotion."
+
+### Exercise: Null checking
+
+In the example below, add an if statement to the beginning of `getLength` that
+returns zero if `str` is null:
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+int getLength(String? str) {
+  // Add null check here
+
+  return str.length;
+}
+
+void main() {
+  print(getLength('This is a string!'));
+}
+```
+
+### Exercise: Promotion with exceptions
+
+Promotion works with exceptions as well as return statements. Try a null check
+that throws an `Exception` instead of returning zero.
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+int getLength(String? str) {
+  // Try throwing an exception here if `str` is null.
+
+  return str.length;
+}
+
+void main() {
+  print(getLength(null));
+}
+```
 
 ## What's next?
 
