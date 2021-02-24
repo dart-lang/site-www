@@ -209,7 +209,7 @@ assert(codeUnitList[0] == 78);
   user-perceived character but several
   UTF-16 code units).
   For this, the Dart team provides the
-  [`characters` package.](https://pub.dev/packages/characters)
+  [`characters` package.]({{site.pub-pkg}}/characters)
 {{site.alert.end}}
 
 #### Converting to uppercase or lowercase
