@@ -15,9 +15,7 @@ void miscDeclAnalyzedButNotTested() {
       FileSystemEntity.isDirectory(searchPath).then((isDir) {
         if (isDir) {
           final startingDir = Directory(searchPath);
-          startingDir
-              .list()
-              .listen((entity) {
+          startingDir.list().listen((entity) {
             if (entity is File) {
               searchFile(entity, searchTerms);
             }
