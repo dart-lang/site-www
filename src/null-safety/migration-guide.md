@@ -19,8 +19,9 @@ Here are the basic steps for migrating each package that you own:
 {{ site.alert.info }}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider waiting until null safety is in a stable release
-  and all your dependencies are ready.
+  consider waiting for a stable release of the Dart SDK that
+  contains null safety. 
+  Also, make sure all your dependencies are ready.
 {{ site.alert.end }}
 
 For an informal look at the experience of using the migration tool, watch this video:
@@ -177,7 +178,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest 2.12 beta release of the Dart SDK.
+* Use the latest beta release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
@@ -475,14 +476,10 @@ to indicate a breaking change:
 Because null safety has a stable API as of Dart 2.12.0-259.9.beta and later, you
 can publish new stable versions of your package before null safety is
 in a stable Dart SDK release.
-The pub.dev site tags your new null safety version as a **preview**,
-as the following screenshot shows for version
-`2.0.0` of `package:args`:
+The pub.dev site tags your new null safety version as a [preview][]
+until the first stable release of Dart 2.12.
 
-![Illustration of a preview version](/null-safety/preview-version.png){:width="800px"}<br>
-
-Just after the first stable release of Dart 2.12, your package's latest preview
-version automatically becomes the stable version on pub.dev.
+[preview]: /tools/pub/publishing#publishing-previews
 
 Before you publish a stable null safety version of a package,
 we strongly recommend following these pubspec rules:
@@ -496,9 +493,9 @@ which appears when you run `pub publish`:
 > _Packages with an SDK constraint on a pre-release of the Dart SDK should themselves be published as a pre-release version._
 
 You can maintain a stable release and preview release at the same time. For
-example, if you have a stable release that's `1.0.0` and a preview version that's
-`2.0.0`, you can still publish new versions of the stable version (`1.0.1`) and
-preview version (`2.0.1`).
+example, if you have a stable release that's `1.0.0` and a preview release that's
+`2.0.0`, you can still publish new versions of the stable release (`1.0.1`) and
+preview release (`2.0.1`).
 
 ## Welcome to null safety
 
