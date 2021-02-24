@@ -1153,8 +1153,8 @@ class ShadeOfGray {
 }
 {% endprettify %}
 
-Note that constructor parameters never shadow fields in constructor
-initialization lists:
+Note that constructor parameters never shadow fields in constructor initializer
+lists:
 
 {:.good}
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
@@ -1204,6 +1204,10 @@ class ProfileMark {
 }
 {% endprettify %}
 
+Some fields can't be initialized at their declarations because they need to reference
+`this` — to use other fields or call methods, for example. However, if the
+field is marked `late`, then the initializer *can* access `this`.
+
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
 
@@ -1244,6 +1248,48 @@ This `this.` syntax before a constructor parameter is called an "initializing
 formal". You can't always take advantage of it. Sometimes you want to have a
 named parameter whose name doesn't match the name of the field you are
 initializing. But when you *can* use initializing formals, you *should*.
+
+
+### DON'T use `late` when a constructor initializer list will do.
+
+Sound null safety requires Dart to ensure that a non-nullable field is
+initialized before it can be read. Since fields can be read inside the
+constructor body, this means you get an error if you don't initialize a
+non-nullable field before the body runs.
+
+You can make this error go away by marking the field `late`. That turns the
+compile-time error into a *runtime* error if you access the field before it is
+initialized. That's what you need in some cases, but often the right fix is to
+initialize the field in the constructor initializer list:
+
+{:.good}
+<?code-excerpt "usage_good.dart (late-init-list)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  double x, y;
+  Point.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (late-init-list)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  late double x, y;
+  Point.polar(double theta, double radius) {
+    x = cos(theta) * radius;
+    y = sin(theta) * radius;
+  }
+}
+{% endprettify %}
+
+
+The initializer list gives you access to constructor parameters and lets you
+initialize fields before they can be read. So, if it's possible to use an initializer list,
+that's better than making the field `late` and losing some static safety and
+performance.
 
 
 ### DO use `;` instead of `{}` for empty constructor bodies.
