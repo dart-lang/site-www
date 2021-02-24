@@ -100,32 +100,6 @@ void main() {
 }
 ```
 
-### Example: Definite assignment
-
-Dart's type system is crafty enough to track where variables are assigned and
-where their values are read, and to verify that non-nullable fields are given
-values before any code tries to read from them. This process is called
-"definite assignment."
-
-Try uncommenting the if-else statement in the code below, and
-watch the analyzer errors disappear:
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-void main() {
-  String text;
-
-  //if (DateTime.now().hour < 12) {
-  //  text = "It's morning! Let's make aloo paratha!";
-  //} else {
-  //  text = "It's afternoon! Let's make biryani!";
-  //}
-
-  print(text);
-  print(text.length);
-}
-```
-
 ## Using ?, !, and late
 
 Null safety introduces new operators and keywords for dealing with null values,
@@ -267,6 +241,32 @@ methods in their initializers.
 With null safety, Dart takes null checks into account. Nullable variables that
 can't possibly contain null are treated like non-nullable variables.
 This behavior is called "promotion."
+
+### Example: Definite assignment
+
+Dart's type system can track where variables are assigned and
+where their values are read, and to verify that non-nullable fields are given
+values before any code tries to read from them. This process is called
+"definite assignment."
+
+Try uncommenting the if-else statement in the code below, and
+watch the analyzer errors disappear:
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+void main() {
+  String text;
+
+  //if (DateTime.now().hour < 12) {
+  //  text = "It's morning! Let's make aloo paratha!";
+  //} else {
+  //  text = "It's afternoon! Let's make biryani!";
+  //}
+
+  print(text);
+  print(text.length);
+}
+```
 
 ### Exercise: Null checking
 
