@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, one_member_abstracts
+// ignore_for_file: unused_local_variable, one_member_abstracts, dead_code
 
 void miscDeclAnalyzedButNotTested() {
   (bool done, int col) {
