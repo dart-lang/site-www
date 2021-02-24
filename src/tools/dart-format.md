@@ -1,44 +1,47 @@
 ---
-title: dartfmt
+title: dart format
 description: Command-line tool for formatting Dart source code.
 toc: false
 ---
 
-Use the `dartfmt` command to replace the whitespace in your program
+Use the `dart format` command to replace the whitespace in your program
 with formatting that follows
 [Dart guidelines](/guides/language/effective-dart/style#formatting).
 This is the same formatting that you can get
 when using an IDE or editor that has Dart support.
 
-Provide a list of files or directories to the `dartfmt` command.
+{% include tools/dart-tool-note.md %}
+
+Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 
 ```terminal
-$ dartfmt -w bin lib test
+$ dart format bin lib test
 ```
 
+{{ site.alert.warn }}
+  By default, `dart format` **overwrites** the Dart files.
+{{ site.alert.end }}
+
 If you don't want to overwrite the files,
-omit the `-w` option.
-The resulting source code is displayed to standard output.
+add the `-o` flag.
+Use `-o show` or `-o json` to get the contents of the formatted files,
+or `-o none` to see only which files would change.
 
 ```terminal
-$ dartfmt bin/main.dart
-import 'package:my_app/my_app.dart' as my_app;
-
-main(List<String> arguments) {
-  print('Hello world: ${my_app.calculate()}!');
-}
-$
+$ dart format -o show bin/my_app.dart
 ```
 
 For information on additional command-line options,
-use the `--help` flag or see the documentation for the
+use the `dart help` command or see the documentation for the
 [dart_style package.]({{site.pub-pkg}}/dart_style)
 
 ```terminal
-$ dartfmt --help
+$ dart help format
 ```
+
+The `dart format` command replaces `dartfmt`.
 
 {% comment %}
 [PENDING: Add info on commonly used options.]

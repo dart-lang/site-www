@@ -51,7 +51,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `compile` | `dart compile exe <DART_FILE>` | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
 | `create`  | `dart create <DIRECTORY>`      | Creates a new project.<br>Use instead of [`stagehand`.][] | 
 | `fix`  | `dart fix <DIRECTORY|DART_FILE>` | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
-| `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of [`dartfmt`][]. | 
+| `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of [`dartfmt`][].<br>[Learn more.][format] | 
 | `pub`     | `dart pub <PUB_COMMAND>`       | Works with packages.<br>Use instead of [`pub`][]. | 
 | `run`     | `dart run <DART_FILE>`         | Runs a Dart program. <br>Use instead of the pre-existing [Dart VM command][dart-vm]. | 
 | `test`    | `dart test [<DIRECTORY|DART_FILE>]` | Runs tests in this package.<br>Use instead of [`pub run test`][`pub`]. |
@@ -61,6 +61,7 @@ The following table shows which commands you can use with the `dart` tool.
 [analyze]: /tools/dart-analyze
 [compile]: /tools/dart-compile
 [fix]: /tools/dart-fix
+[format]: /tools/dart-format
 
 For additional help on any of the commands, enter `dart help <command>`
 or follow the links in the **More information** column.
