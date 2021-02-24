@@ -351,7 +351,10 @@ items to and removing items from lists.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
 ```dart
-// Use a list literal.
+// Use a List constructor.
+var vegetables = List();
+
+// Or simply use a list literal.
 var fruits = ['apples', 'oranges'];
 
 // Add to a list.
@@ -371,9 +374,6 @@ assert(fruits.length == 4);
 // Remove all elements from a list.
 fruits.clear();
 assert(fruits.isEmpty);
-
-// You can also create a List using one of the constructors.
-var vegetables = List.filled(99, 'broccoli');
 ```
 
 Use `indexOf()` to find the index of an object in a list:
@@ -410,7 +410,7 @@ should contain:
 <?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
 ```dart
 // This list should contain only strings.
-var fruits = <String>[];
+var fruits = List<String>();
 
 fruits.add('apples');
 var fruit = fruits[0];
@@ -443,9 +443,6 @@ assert(ingredients.length == 3);
 // Remove an item from a set.
 ingredients.remove('gold');
 assert(ingredients.length == 2);
-
-// You can also create sets using a literal.
-var atomicNumbers = {79, 22, 54};
 ```
 
 Use `contains()` and `containsAll()` to check whether one or more
@@ -913,10 +910,9 @@ class Person {
   // override hashCode.
   @override
   bool operator ==(dynamic other) {
-    if (other is! Person) return false;
-    Person person = other;
-    return (person.firstName == firstName &&
-        person.lastName == lastName);
+    return other is Person &&
+        other.firstName == firstName &&
+        other.lastName == lastName;
   }
 }
 
@@ -990,7 +986,7 @@ implementing the Exception interface:
 <?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
 ```dart
 class FooException implements Exception {
-  final String? msg;
+  final String msg;
 
   const FooException([this.msg]);
 
@@ -1226,7 +1222,9 @@ void main(List<String> arguments) {
     if (isDir) {
       final startingDir = Directory(searchPath);
       startingDir
-          .list()
+          .list(
+              recursive: argResults[recursive],
+              followLinks: argResults[followLinks])
           .[!listen!]((entity) {
         if (entity is File) {
           searchFile(entity, searchTerms);
@@ -1249,7 +1247,9 @@ Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list()) {
+    [!await for!] (var entity in startingDir.list(
+        recursive: argResults[recursive],
+        followLinks: argResults[followLinks])) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1281,7 +1281,7 @@ subscribe to the stream using the `listen()` method:
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 // Find a button by ID and add an event handler.
-querySelector('#submitInfo')!.onClick.[!listen!]((e) {
+querySelector('#submitInfo').onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
