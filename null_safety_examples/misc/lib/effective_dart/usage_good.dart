@@ -158,7 +158,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var message = "hello" as String?;
     // #docregion null-aware-promote
     int measureMessage(String? message) {
       if (message != null && message.isNotEmpty) {

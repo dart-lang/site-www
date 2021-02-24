@@ -16,9 +16,7 @@ void miscDeclAnalyzedButNotTested() {
         if (isDir) {
           final startingDir = Directory(searchPath);
           startingDir
-              .list(
-                  recursive: argResults[recursive],
-                  followLinks: argResults[followLinks])
+              .list()
               .listen((entity) {
             if (entity is File) {
               searchFile(entity, searchTerms);
@@ -38,9 +36,7 @@ void miscDeclAnalyzedButNotTested() {
       // ...
       if (await FileSystemEntity.isDirectory(searchPath)) {
         final startingDir = Directory(searchPath);
-        await for (var entity in startingDir.list(
-            recursive: argResults[recursive],
-            followLinks: argResults[followLinks])) {
+        await for (var entity in startingDir.list()) {
           if (entity is File) {
             searchFile(entity, searchTerms);
           }

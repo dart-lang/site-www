@@ -64,7 +64,7 @@ void miscDeclAnalyzedButNotTested() {
         /* Handle exception... */
       });
       // #enddocregion then-chain
-      return null;
+      return Future.value();
     }
   }
 

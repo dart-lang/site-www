@@ -200,6 +200,18 @@ var codeUnitList =
 assert(codeUnitList[0] == 78);
 ```
 
+{{site.alert.note}}
+  In many cases, you want to work with
+  Unicode grapheme clusters
+  as opposed to pure code units.
+  These are characters as they are perceived
+  by the user (for example, "🇬🇧" is one
+  user-perceived character but several
+  UTF-16 code units).
+  For this, the Dart team provides the
+  [`characters` package.](https://pub.dev/packages/characters)
+{{site.alert.end}}
+
 #### Converting to uppercase or lowercase
 
 You can easily convert strings to their uppercase and lowercase
@@ -339,10 +351,7 @@ items to and removing items from lists.
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
 ```dart
-// Use a List constructor.
-var vegetables = List();
-
-// Or simply use a list literal.
+// Use a list literal.
 var fruits = ['apples', 'oranges'];
 
 // Add to a list.
@@ -362,6 +371,9 @@ assert(fruits.length == 4);
 // Remove all elements from a list.
 fruits.clear();
 assert(fruits.isEmpty);
+
+// You can also create a List using one of the constructors.
+var vegetables = List.filled(99, 'broccoli');
 ```
 
 Use `indexOf()` to find the index of an object in a list:
@@ -398,7 +410,7 @@ should contain:
 <?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
 ```dart
 // This list should contain only strings.
-var fruits = List<String>();
+var fruits = <String>[];
 
 fruits.add('apples');
 var fruit = fruits[0];
@@ -431,6 +443,9 @@ assert(ingredients.length == 3);
 // Remove an item from a set.
 ingredients.remove('gold');
 assert(ingredients.length == 2);
+
+// You can also create sets using a literal.
+var atomicNumbers = {79, 22, 54};
 ```
 
 Use `contains()` and `containsAll()` to check whether one or more
@@ -975,7 +990,7 @@ implementing the Exception interface:
 <?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
 ```dart
 class FooException implements Exception {
-  final String msg;
+  final String? msg;
 
   const FooException([this.msg]);
 
@@ -1211,9 +1226,7 @@ void main(List<String> arguments) {
     if (isDir) {
       final startingDir = Directory(searchPath);
       startingDir
-          .list(
-              recursive: argResults[recursive],
-              followLinks: argResults[followLinks])
+          .list()
           .[!listen!]((entity) {
         if (entity is File) {
           searchFile(entity, searchTerms);
@@ -1236,9 +1249,7 @@ Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list(
-        recursive: argResults[recursive],
-        followLinks: argResults[followLinks])) {
+    [!await for!] (var entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1270,7 +1281,7 @@ subscribe to the stream using the `listen()` method:
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 // Find a button by ID and add an event handler.
-querySelector('#submitInfo').onClick.[!listen!]((e) {
+querySelector('#submitInfo')!.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });

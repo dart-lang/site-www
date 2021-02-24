@@ -212,10 +212,7 @@ void main() {
   group('Collections: List:', () {
     test('constructor', () {
       // #docregion List
-      // Use a List constructor.
-      var vegetables = List();
-
-      // Or simply use a list literal.
+      // Use a list literal.
       var fruits = ['apples', 'oranges'];
 
       // Add to a list.
@@ -235,6 +232,9 @@ void main() {
       // Remove all elements from a list.
       fruits.clear();
       assert(fruits.isEmpty);
+
+      // You can also create a List using one of the constructors.
+      var vegetables = List.filled(99, 'broccoli');
       // #enddocregion List
       assert(vegetables.isEmpty);
     });
@@ -264,7 +264,7 @@ void main() {
     test('List-of-String', () {
       // #docregion List-of-String
       // This list should contain only strings.
-      var fruits = List<String>();
+      var fruits = <String>[];
 
       fruits.add('apples');
       var fruit = fruits[0];
@@ -287,7 +287,12 @@ void main() {
       // Remove an item from a set.
       ingredients.remove('gold');
       assert(ingredients.length == 2);
+
+      // You can also create sets using a literal.
+      var atomicNumbers = {79, 22, 54};
       // #enddocregion Set
+      expect(ingredients, isNot(contains('gold')));
+      expect(atomicNumbers, isNotEmpty);
     });
 
     test('contains', () {
@@ -467,7 +472,7 @@ void main() {
     });
 
     test('toList()', () {
-      var teas = [];
+      var teas = <String>[];
       // #docregion toList
       var loudTeas =
           teas.map((tea) => tea.toUpperCase()).toList();
@@ -576,7 +581,7 @@ void main() {
       // Parse an ISO 8601 date.
       y2k = DateTime.parse('2000-01-01T00:00:00Z');
       // #enddocregion DateTime
-      assert(2016 < now.year);
+      assert(2016 < now.year, 'Time travel is verboten!');
       expect(y2k.year, 2000);
     });
 
