@@ -142,9 +142,6 @@ void main() {
 
 Null safety introduces two operators, ? and !. Here's how you use them:
 
--   If you're creating a variable that can have the value null, add a
-    question mark (?) to the variable's type declaration. Types are
-    non-nullable by default and made nullable by adding ?.
 -   If you're accessing a property and the operand might be null, use the
     conditional member access operator (`?.`).
 -   If you're sure that an expression with a nullable type isn't null, you can 
