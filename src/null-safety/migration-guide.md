@@ -476,9 +476,10 @@ to indicate a breaking change:
 Because null safety has a stable API as of Dart 2.12.0-259.9.beta and later, you
 can publish new stable versions of your package before null safety is
 in a stable Dart SDK release.
-The pub.dev site tags your new null safety version as a **preview**.
-Please see the [publishing](/tools/pub/publishing#publishing-previews)
-page for more information about previews.
+The pub.dev site tags your new null safety version as a [preview][]
+until the first stable release of Dart 2.12.
+
+[preview]: /tools/pub/publishing#publishing-previews
 
 Before you publish a stable null safety version of a package,
 we strongly recommend following these pubspec rules:
