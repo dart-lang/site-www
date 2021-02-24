@@ -146,7 +146,7 @@ Null safety introduces two operators, ? and !. Here's how you use them:
     question mark (?) to the variable's type declaration. Types are
     non-nullable by default and made nullable by adding ?.
 -   If you're accessing a property and the operand might be null, use the
-    null-aware version member access operator (?.).
+    conditional member access operator (`?.`).
 -   If you're sure that an expression with a nullable type isn't null, you can 
     add a postfix exclamation mark (!) to make Dart treat it as non-nullable.
 
