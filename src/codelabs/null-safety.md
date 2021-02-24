@@ -138,7 +138,7 @@ void main() {
 }
 ```
 
-## New null-aware operators: ? and !
+## Using ?. and !
 
 Null safety introduces two operators, ? and !. Here's how you use them:
 
