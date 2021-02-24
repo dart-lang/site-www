@@ -947,10 +947,11 @@ rarely what you want. Fields are usually marked late so that they can be
 initialized *internally* at some point in the instance's lifetime, often inside
 the constructor body.
 
-Unless you do intend to expose the setter publicly and allow users to invoke it,
-it's better to not use `late`, ensure the `late` field is initialized at its
-declaration, or make the `late` field private with a public getter.
+Unless you do want users to call the setter, it's better to either:
 
+* not use `late`,
+* ensure the `late` field is initialized at its declaration,
+* or make the `late` field private and define a public getter to access it.
 
 ### AVOID returning nullable `Future`, `Stream`, and collection types.
 

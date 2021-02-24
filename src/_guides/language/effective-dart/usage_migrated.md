@@ -1059,8 +1059,8 @@ class ShadeOfGray {
 }
 {% endprettify %}
 
-Note that constructor parameters never shadow fields in constructor
-initialization lists:
+Note that constructor parameters never shadow fields in constructor initializer
+lists:
 
 {:.good}
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
@@ -1110,7 +1110,7 @@ class ProfileMark {
 }
 {% endprettify %}
 
-Some fields can't be initialized at declaration because they need to reference
+Some fields can't be initialized at their declarations because they need to reference
 `this` — to use other fields or call methods, for example. However, if the
 field is marked `late`, then the initializer *can* access `this`.
 
@@ -1156,7 +1156,7 @@ named parameter whose name doesn't match the name of the field you are
 initializing. But when you *can* use initializing formals, you *should*.
 
 
-### DON'T use `late` when a constructor initialization list will do.
+### DON'T use `late` when a constructor initializer list will do.
 
 Sound null safety requires Dart to ensure that a non-nullable field is
 initialized before it can be read. Since fields can be read inside the
@@ -1166,7 +1166,7 @@ non-nullable field before the body runs.
 You can make this error go away by marking the field `late`. That turns the
 compile-time error into a *runtime* error if you access the field before it is
 initialized. That's what you need in some cases, but often the right fix is to
-initialize the field in the constructor initialization list:
+initialize the field in the constructor initializer list:
 
 {:.good}
 <?code-excerpt "usage_good.dart (late-init-list)"?>
@@ -1192,8 +1192,8 @@ class Point {
 {% endprettify %}
 
 
-The initialization list gives you access to constructor parameters and lets you
-initialize fields before they can be read. So, if it's possible to use an initialization list,
+The initializer list gives you access to constructor parameters and lets you
+initialize fields before they can be read. So, if it's possible to use an initializer list,
 that's better than making the field `late` and losing some static safety and
 performance.
 
