@@ -19,7 +19,8 @@ Here are the basic steps for migrating each package that you own:
 {{ site.alert.info }}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider using a stable release of null safety. 
+  consider waiting for a stable release of the Dart SDK that
+  contains null safety. 
   Also, make sure all your dependencies are ready.
 {{ site.alert.end }}
 
