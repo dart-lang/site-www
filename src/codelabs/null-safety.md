@@ -39,7 +39,6 @@ this codelab, you should have some knowledge of [basic Dart syntax](/samples).
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-
 ## What is null safety?
 
 Dart's null-safe type system makes types in your code non-nullable by default.
