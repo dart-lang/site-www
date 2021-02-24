@@ -183,7 +183,7 @@ void main() {
 }
 ```
 
-### Example: The assertion operator `!`
+### Example: The assertion operator (!)
 
 If you'd like to assign a nullable expression to a variable that's
 non-nullable, you can use the assertion operator (the exclamation point: `!`).
