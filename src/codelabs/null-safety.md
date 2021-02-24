@@ -157,7 +157,8 @@ properties that could be null. For example, the following expression evaluates
 to the value of `b` as long as `a` isn't null. If `a` is null, then the
 expression evaluates to null:
 
-  a?.b
+```dart
+a?.b
 
 Without null safety, *two* conditional access operators are needed for the
 following code to work: one after `big` and one after `little`. With null
