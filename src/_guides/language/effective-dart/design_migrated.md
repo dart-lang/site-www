@@ -959,12 +959,12 @@ data: It can return an empty container or it can return `null`. Users generally
 assume and prefer that you use an empty container to indicate "no data". That
 way, they have a real object that they can call methods on like `isEmpty`.
 
-Prefer returning an empty collection, a non-nullable future of a nullable type,
-or a stream that doesn't emit any values to indicate that your API has no data
-to provide.
+To indicate that your API has no data to provide, prefer returning an empty
+collection, a non-nullable future of a nullable type, or a stream that doesn't
+emit any values.
 
 **Exception:** If returning `null` *means something different* from yielding an
-empty container, it may make sense to use a nullable type.
+empty container, it might make sense to use a nullable type.
 
 
 ### AVOID returning `this` from methods just to enable a fluent interface.

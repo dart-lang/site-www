@@ -1110,10 +1110,9 @@ class ProfileMark {
 }
 {% endprettify %}
 
-One common reason that fields are *not* initialized at the declaration is
-because they need to reference `this` or call methods on the containing
-instance. However, if the field is marked `late`, then the initializer *can*
-access `this`.
+Some fields can't be initialized at declaration because they need to reference
+`this` — to use other fields or call methods, for example. However, if the
+field is marked `late`, then the initializer *can* access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
@@ -1159,7 +1158,7 @@ initializing. But when you *can* use initializing formals, you *should*.
 
 ### DON'T use `late` when a constructor initialization list will do.
 
-Sound null safety requires Dart to ensure that a non-nullable field must be
+Sound null safety requires Dart to ensure that a non-nullable field is
 initialized before it can be read. Since fields can be read inside the
 constructor body, this means you get an error if you don't initialize a
 non-nullable field before the body runs.
@@ -1194,7 +1193,7 @@ class Point {
 
 
 The initialization list gives you access to constructor parameters and lets you
-initialize fields before they can be read. So, if it's possible to use that,
+initialize fields before they can be read. So, if it's possible to use an initialization list,
 that's better than making the field `late` and losing some static safety and
 performance.
 
