@@ -14,7 +14,7 @@ turn into **edit-time** analysis errors.
 
 You can
 [use null safety](#enable-null-safety) in your normal development environment,
-[migrate existing code][migration-guide] to use null safety,
+[migrate existing code][migration guide] to use null safety,
 or practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
@@ -60,7 +60,13 @@ To find the most recent releases, see the
 Dart SDK archive, or the **Beta channel** section of the
 [Flutter SDK archive.][flutter-sdks]
 
-### Creating a null-safe package or app
+### Migrating an existing package or app {#migrate}
+
+For instructions on how to migrate your code to null safety,
+see the [migration guide][].
+
+
+### Creating a null-safe package or app {#create}
 
 The templates used by the [`dart create` command][`dart create`] and IDEs
 aren't null safe yet, so you need to migrate the code they create.
@@ -72,7 +78,7 @@ $ cd my_cli
 $ dart migrate --apply-changes
 ```
 
-### Behind the scenes: SDK constraints
+### Behind the scenes: SDK constraints {#constraints}
 
 To make Dart treat your code as null safe,
 the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
@@ -87,7 +93,7 @@ environment:
 {{site.alert.note}}
   The 2.12 SDK constraint above ends in **`-0`**.
   This use of [semantic versioning notation](https://semver.org/)
-  allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+  allows 2.12.0 prereleases, such as the beta prerelease `2.12.0-259.12.beta`.
 {{site.alert.end}}
 
 [language version]: /guides/language/evolution#language-versioning
@@ -95,7 +101,7 @@ environment:
 ## Known issues
 
 Some parts of the Dart ecosystem still need additional work to
-[migrate to null safety][migration-guide].
+[migrate to null safety][migration guide].
 
 The Dart team is currently aware of the following issues:
 
@@ -111,7 +117,7 @@ For more information about null safety, see the following resources:
 
 * [Null safety tour][]
 * [Understanding null safety][]
-* [Migration guide for existing code][migration-guide]
+* [Migration guide for existing code][migration guide]
 * [Null safety FAQ][]
 * [DartPad with null safety][nullsafety.dartpad.dev]
 * [Null safety sample code][calculate_lix]
@@ -124,7 +130,7 @@ For more information about null safety, see the following resources:
 [dart-beta-channel]: /tools/sdk/archive#beta-channel
 [Dart blog]: https://medium.com/dartlang
 [flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
-[migration-guide]: /null-safety/migration-guide
+[migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety tour]: /null-safety/tour
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
