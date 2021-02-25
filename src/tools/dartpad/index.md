@@ -57,7 +57,7 @@ try running some samples and then creating a simple command-line app.
 
   <li markdown="1">
   Choose a Flutter sample like **Sunflower**,
-  using the **Samples** list in the upper right.
+  using the **Samples** list at the upper right.
 
   Again, the rendered output appears to the right.
   </li>
@@ -116,7 +116,7 @@ for (var char in 'hello'.split('')) {
   try introducing a bug.
 
   For example, if you change `split` to `spit`,
-  you get warnings in the bottom right of the window.
+  you get warnings at the bottom right of the window.
   If you run the app, a compilation error appears in the console.
   </li>
 </ol>
