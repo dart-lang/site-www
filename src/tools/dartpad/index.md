@@ -117,7 +117,7 @@ for (var char in 'hello'.split('')) {
 
   For example, if you change `split` to `spit`,
   you get warnings in the bottom right of the window.
-  If you run the app, you'll see a compilation error in the console.
+  If you run the app, a compilation error appears in the console.
   </li>
 </ol>
 
