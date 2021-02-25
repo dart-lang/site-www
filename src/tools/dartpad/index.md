@@ -27,7 +27,7 @@ Here's what DartPad looks like:
 
 DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. It doesn't support those marked native
-platform nor does it support [deferred loading][].
+platform, and it doesn't support [deferred loading][].
 
 It also doesn't support using packages from the [pub.dev]({{site.pub}}) package
 repository.
