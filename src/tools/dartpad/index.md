@@ -44,7 +44,8 @@ try running some samples and then creating a simple command-line app.
   <li markdown="1">
   Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 
-  A sample appears on the left and the output appears on the right.
+  Dart code appears on the left, and
+  a place for the output appears on the right.
   If you've used DartPad before,
   you can click **New Pad** to get back to the original sample.
   </li>
@@ -59,12 +60,9 @@ try running some samples and then creating a simple command-line app.
   Choose a Flutter sample like **Sunflower**,
   using the **Samples** list at the upper right.
 
-  Again, the rendered output appears to the right.
+  The rendered output appears to the right.
   </li>
 
-  <li markdown="1">
-  Click **CONSOLE** to view the sample's console output.
-  </li>
 </ol>
 
 
@@ -77,13 +75,11 @@ To create a simple command-line app, use **New Pad**.
   Click the **New Pad** button,
   and confirm that you want to discard changes to the current pad.
 
-  Click on the Dart logo to access the source code for
-  the Hello World app.
   </li>
 
   <li markdown="1">
-  Using the toggle underneath the logo,
-  verify **HTML** support is disabled.
+  Click the Dart logo, make sure that **HTML** support is disabled,
+  and then click **Create**.
   </li>
 
   <li markdown="1">
