@@ -27,7 +27,7 @@ Here's what DartPad looks like:
 
 DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. It doesn't support those marked native
-platform.
+platform nor does it support [deferred loading][].
 
 It also doesn't support using packages from the [pub.dev]({{site.pub}}) package
 repository.
@@ -132,4 +132,5 @@ For technical details on embedding DartPads, see the
 
 [best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await
