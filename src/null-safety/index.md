@@ -356,7 +356,7 @@ The Dart team is currently aware of the following issues:
     then you can ignore this warning and safely publish your package.
 
 [`export_legacy_symbol`]: /tools/diagnostic-messages#export_legacy_symbol
-[`test`]: {{site.pub-pkg/test}}
+[`test`]: {{site.pub-pkg}}/test
 
 [ns-dart-pkgs]: {{site.pub-pkg}}?q=publisher%3Adart.dev&null-safe=1
 
