@@ -94,9 +94,12 @@
 * <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>DO use relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
 
-**Booleans**
+**Null**
 
-* <a href='/guides/language/effective-dart/usage#do-use--to-convert-null-to-a-boolean-value'>DO use <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#consider-copying-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER copying a nullable field to a local variable to enable type promotion.</a>
 
 **Strings**
 
@@ -119,16 +122,11 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/guides/language/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-
-**Parameters**
-
 * <a href='/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
 
 **Variables**
 
 * <a href='/guides/language/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables'>DO follow a consistent rule for <code>var</code> and <code>final</code> on local variables.</a>
-* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-storing-what-you-can-calculate'>AVOID storing what you can calculate.</a>
 
 **Members**
@@ -142,6 +140,7 @@
 **Constructors**
 
 * <a href='/guides/language/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-late-when-a-constructor-initializer-list-will-do'>DON'T use <code>late</code> when a constructor initializer list will do.</a>
 * <a href='/guides/language/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-const-redundantly'>DON'T use <code>const</code> redundantly.</a>
@@ -214,7 +213,8 @@
 * <a href='/guides/language/effective-dart/design#do-use-getters-for-operations-that-conceptually-access-properties'>DO use getters for operations that conceptually access properties.</a>
 * <a href='/guides/language/effective-dart/design#do-use-setters-for-operations-that-conceptually-change-properties'>DO use setters for operations that conceptually change properties.</a>
 * <a href='/guides/language/effective-dart/design#dont-define-a-setter-without-a-corresponding-getter'>DON'T define a setter without a corresponding getter.</a>
-* <a href='/guides/language/effective-dart/design#avoid-returning-null-from-members-whose-return-type-is-bool-double-int-or-num'>AVOID returning <code>null</code> from members whose return type is <code>bool</code>, <code>double</code>, <code>int</code>, or <code>num</code>.</a>
+* <a href='/guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers'>AVOID public <code>late final</code> fields without initializers.</a>
+* <a href='/guides/language/effective-dart/design#avoid-returning-nullable-future-stream-and-collection-types'>AVOID returning nullable <code>Future</code>, <code>Stream</code>, and collection types.</a>
 * <a href='/guides/language/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface'>AVOID returning <code>this</code> from methods just to enable a fluent interface.</a>
 
 **Types**

@@ -149,6 +149,14 @@ For details, see the following:
 * [Flutter dart:ffi page][binding]
 * [dart:ffi examples]({{ page.samples }})
 
+## Generating FFI bindings with `package:ffigen`
+
+For large API surfaces it can be time consuming to write the Dart bindings
+that integrate with the C code. To reduce this burden, you can use the
+[`package:ffigen`][ffigen]
+binding generator to automatically create FFI wrappers from C header files.
+
+
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
@@ -157,3 +165,4 @@ For details, see the following:
 [structs]: {{ page.samples }}/structs
 [sqllite]: {{ page.sqllite }}
 [mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
+[ffigen]: {{ site.pub }}/packages/ffigen

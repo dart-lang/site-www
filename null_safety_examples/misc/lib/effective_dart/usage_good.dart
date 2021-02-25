@@ -158,6 +158,19 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion null-aware-promote
+    int measureMessage(String? message) {
+      if (message != null && message.isNotEmpty) {
+        // message is promoted to String.
+        return message.length;
+      }
+
+      return 0;
+    }
+    // #enddocregion null-aware-promote
+  }
+
+  {
     // #docregion rethrow
     try {
       somethingRisky();
@@ -302,6 +315,33 @@ Item? bestDeal(List<Item> cart) {
 
 //----------------------------------------------------------------------------
 
+class Response {
+  String get url => "";
+  String get errorCode => "";
+  String get reason => "";
+}
+
+// #docregion copy-nullable-field
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    var response = this.response;
+    if (response != null) {
+      return "Could not complete upload to ${response.url} "
+          "(error code ${response.errorCode}): ${response.reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+// #enddocregion copy-nullable-field
+
+//----------------------------------------------------------------------------
+
 // #docregion calc-vs-store
 class Circle {
   double radius;
@@ -443,6 +483,17 @@ class Point0 {
   Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
+
+//----------------------------------------------------------------------------
+
+// #docregion late-init-list
+class Point1 {
+  double x, y;
+  Point1.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
+}
+// #enddocregion late-init-list
 
 //----------------------------------------------------------------------------
 
