@@ -11,18 +11,32 @@ values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
+With null safety,
+all of the variables in the following code are non-nullable:
+
+```dart
+// In null-safe Dart, none of these can ever be null.
+var i = 42; // Inferred to be an int.
+String name = getFileName();
+final b = Foo();
+```
+
+To indicate that a variable might have the value `null`,
+just add `?` to its type declaration:
+
+```dart
+int? aNullableInt = null;
+```
 
 You can
 [use null safety](#enable-null-safety) in your normal development environment,
 [migrate existing code][migration guide] to use null safety,
-or practice using null safety in the web app
-[DartPad with Null Safety,][nullsafety.dartpad.dev]
-shown in the following screenshot.
+enable null safety in [DartPad]({{site.dartpad}}),
+or learn about null safety using
+[DartPad with Null Safety][nullsafety.dartpad.dev]
+(shown in the following screenshot).
 
-![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
-{% comment %}
-[TODO: update that screenshot]
-{% endcomment %}
+![Screenshot of DartPad in null-safe mode](/null-safety/dartpad-snippet.png)
 
 For an example-driven summary of null safety language features,
 see the [null safety feature tour](/null-safety/tour).
@@ -68,7 +82,7 @@ see the [migration guide][].
 
 ### Creating a null-safe package or app {#create}
 
-The templates used by the [`dart create` command][`dart create`] and IDEs
+The templates used by the [`dart create`][] command and IDEs
 aren't null safe yet, so you need to migrate the code they create.
 For example:
 
