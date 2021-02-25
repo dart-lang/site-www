@@ -38,7 +38,7 @@ To get familiar with DartPad,
 try running some samples and then creating a simple command-line app.
 
 
-### Open DartPad, and run some samples {#step-1-open-and-run}
+### Open DartPad, and run a sample {#step-1-open-and-run}
 
 <ol markdown="1">
   <li markdown="1">
@@ -46,18 +46,10 @@ try running some samples and then creating a simple command-line app.
 
   Dart code appears on the left, and
   a place for the output appears on the right.
-  If you've used DartPad before,
-  you can click **New Pad** to get back to the original sample.
   </li>
 
   <li markdown="1">
-  Click **Run**.
-
-  The sample runs again, updating the output.
-  </li>
-
-  <li markdown="1">
-  Choose a Flutter sample like **Sunflower**,
+  Choose a Flutter sample such as **Sunflower**,
   using the **Samples** list at the upper right.
 
   The rendered output appears to the right.
