@@ -344,13 +344,18 @@ The Dart team is currently aware of the following issues:
   * Migration of the pub.dev packages owned by the Dart team
     is nearly complete, but a few are still missing. See pub.dev for
     [null-safe packages from the Dart team][ns-dart-pkgs].
-  * Packages which have unit tests typically have a dev dependency on
-    package:test. A few packages extend the framework in package:test, and may
-    have a direct dependency on it. When publishing these packages you may get
-    pub warnings about it not being fully migrated. As long as you are not
-    ignoring any of the `import_of_legacy_library_into_null_safe` or
-    `export_legacy_symbol` analyzer warnings in your package then you can
-    ignore this warning and safely publish your package.
+  * Packages that have unit tests typically have
+    a dev dependency on the [`test` package][`test`].
+    A few packages extend the framework in package:test,
+    and might have a direct dependency on it.
+    When publishing these packages you might get pub warnings about
+    the `test` package not being fully migrated.
+    As long as your package doesn't ignore any of the
+    `import_of_legacy_library_into_null_safe` or
+    `export_legacy_symbol` analyzer warnings,
+    then you can ignore this warning and safely publish your package.
+
+[`test`]: {{site.pub-pkg/test}}
 
 [ns-dart-pkgs]: {{site.pub-pkg}}?q=publisher%3Adart.dev&null-safe=1
 
