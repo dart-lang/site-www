@@ -792,7 +792,7 @@ may need to reference `this` or some other field on the instance. In cases like
 that, consider making the field `late final`. When you do, you may also be able
 to [initialize the field at its declaration][init at decl].
 
-[init at decl]: usage#do-initialize-fields-at-their-declaration-when-possible
+[init at decl]: /guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
 ### DO use getters for operations that conceptually access properties.
 
