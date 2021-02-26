@@ -20,6 +20,34 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion var-late-top-level
+    late String description;
+
+    void main() {
+      description = 'Feijoada!';
+      print(description);
+    }
+    // #enddocregion var-late-top-level
+    
+    main();
+  }
+
+  {
+    String _readThermometer() {
+      print('in _readThermometer()');
+      return '37.0';
+    }
+
+    {
+      // #docregion var-late-lazy
+      // This is the program's only call to _readThermometer().
+      late String temperature = _readThermometer(); // Lazily initialized.
+      // #enddocregion var-late-lazy
+      print('$temperature degrees');
+    }
+  }
+
+  {
     // #docregion final
     final name = 'Bob'; // Without a type annotation
     final String nickname = 'Bobby';
