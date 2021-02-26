@@ -116,10 +116,10 @@ mind:
     because Dart can infer types. In the code above, `number`
     is inferred to be of type `int`.
 
--   If you opt into [sound null safety][ns],
+-   If you enable [sound null safety][ns],
     values can’t be null unless you say they can be.
     You can make a variable nullable by
-    putting a question mark at the end of its type.
+    putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
     or it might be `null`.
 
