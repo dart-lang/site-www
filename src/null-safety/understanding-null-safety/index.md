@@ -1157,7 +1157,7 @@ It sees that `contents` declaration as a real field.
 And, unfortunately, that field is non-nullable and has no initializer,
 so you get a compile error.
 
-One fix is to use the explicit abstract getter/setter declarations
+One fix is to use explicit abstract getter/setter declarations
 like in the second example.
 But that's a little verbose,
 so with null safety
