@@ -92,7 +92,8 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
 * <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
-* <a href='/guides/language/effective-dart/usage#do-use-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>DO use relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
+* <a href='/guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib'>DON'T allow an import path to reach into or out of <code>lib</code>.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-relative-import-paths'>PREFER relative import paths.</a>
 
 **Null**
 

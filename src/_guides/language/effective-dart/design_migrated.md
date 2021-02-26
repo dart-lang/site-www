@@ -265,10 +265,12 @@ been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
 that is less likely to be negated by users or has the shorter name.
 
-**Exceptions:** With some properties, the negative form is what users
+**Exception:** With some properties, the negative form is what users
 overwhelmingly need to use. Choosing the positive case would force them to
 negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property. Also, properties accessed in [Angular][]
+negative case for that property.
+
+**Exception:** Properties accessed in [Angular][]
 templates are often better in the negative form because the property is used to
 *hide* or *disable* content.
 

@@ -73,53 +73,98 @@ change to the package.
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
-### DO use relative paths when importing libraries within your own package's `lib` directory.
 
-{% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
+### DON'T allow an import path to reach into or out of `lib`.
 
-When referencing a library inside your package's `lib` directory from another
-library in that same package, use a relative URI, not an explicit `package:`
-URI.
+{% include linter-rule.html rule="avoid_relative_lib_imports" %}
+
+Dart supports `package:` imports to let you access
+the libraries inside a package's `lib` directory
+regardless of whether the package is physically stored on your computer.
+This can lead to a very confusing situation
+if you have a `package:` import of a library and another import
+that physically traverses into that same package's `lib` directory.
 
 For example, say your directory structure looks like:
 
 ```text
 my_package
 └─ lib
-   ├─ src
-   │  └─ utils.dart
    └─ api.dart
+   test
+   └─ api_test.dart
 ```
 
-If `api.dart` wants to import `utils.dart`, it should do so using:
-
-{:.good}
-{% prettify dart tag=pre+code %}
-import 'src/utils.dart';
-{% endprettify %}
-
-And not:
+If `api_test.dart` contains:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-import 'package:my_package/src/utils.dart';
+import 'package:my_package/api.dart';
+import '../lib/api.dart';
 {% endprettify %}
 
-The "within your own package's `lib` directory" part is important. Libraries
-inside `lib` can import other libraries inside `lib` (or in subdirectories of
-it). Libraries outside of `lib` can use relative imports to reach other
-libraries outside of `lib`. For example, you may have a test utility library
-under `test` that other libraries in `test` import.
-
-But you can't "cross the streams". A library outside of `lib` should never use a
-relative import to reach a library under `lib`, or vice versa. Doing so will
-break Dart's ability to correctly tell if two library URIs refer to the same
-library, which can lead to unexpected duplicated types.
-
-Follow these two rules:
+Then Dart thinks those are imports of two completely unrelated libraries.
+This causes all sorts of errors and confusion.
+To avoid that, follow these two rules:
 
 * An import path should never contain `/lib/`.
 * A library under `lib` should never use `../` to escape the `lib` directory.
+
+Instead, when you need to reach into a package's `lib` directory
+(even from the same package's `test` or other top-level directories),
+use a `package:` import.
+A package should never reach *out* of its `lib` directory and
+import libraries from other places in the package.
+
+
+### PREFER relative import paths.
+
+{% include linter-rule.html rule="prefer_relative_imports" %}
+
+Whenever the previous rule doesn't come into play, follow this one.
+When an import does *not* reach across `lib`, prefer using relative imports.
+They're shorter.
+For example, say your directory structure looks like this:
+
+```text
+my_package
+└─ lib
+   ├─ src
+   │  └─ stuff.dart
+   │  └─ utils.dart
+   └─ api.dart
+   test
+   │─ api_test.dart
+   └─ test_utils.dart
+```
+
+Here is how the various libraries should import each other:
+
+**lib/api.dart:**
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'src/stuff.dart';
+import 'src/utils.dart';
+{% endprettify %}
+
+**lib/src/utils.dart:**
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import '../api.dart';
+import 'stuff.dart';
+{% endprettify %}
+
+**test/api_test.dart:**
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart'; // Don't reach into 'lib'.
+
+import 'test_utils.dart'; // Relative within 'test' is fine.
+{% endprettify %}
+
 
 ## Null
 
