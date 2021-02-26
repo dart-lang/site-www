@@ -117,7 +117,7 @@ mind:
     is inferred to be of type `int`.
 
 -   If you enable [sound null safety][ns],
-    values can’t be null unless you say they can be.
+    variables can’t contain `null` unless you say they can.
     You can make a variable nullable by
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
@@ -128,7 +128,7 @@ mind:
     {{site.alert.end}}
 
 -   When you want to explicitly say
-    that no type is expected, use the type `Object?`
+    that any type is allowed, use the type `Object?`
     (if you've [enabled null safety][ns-enable]), `Object`, or —
     if you must defer type checking until runtime —
     the [special type `dynamic`][ObjectVsDynamic].
