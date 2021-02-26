@@ -351,7 +351,7 @@ items to and removing items from lists.
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List)"?>
 ```dart
-// Use a list literal.
+// Create a list using a list literal.
 var fruits = ['apples', 'oranges'];
 
 // Add to a list.
@@ -404,7 +404,7 @@ fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
 ```
 
-Lists are parameterized types, so you can specify the type that a list
+Lists are parameterized types ([generics]({{site.www}}/guides/language/language-tour#generics)), so you can specify the type that a list
 should contain:
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List-of-String)"?>
@@ -423,6 +423,23 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
+{{site.alert.note}}
+  In many cases, you don't
+  need to explicitly specify generic
+  types, because Dart will
+  [infer]({{site.www}}/guides/language/type-system#type-inference)
+  them for you.
+  A list like `['Dash', 'Dart']` is understood
+  to be a `List<String>` (read: list of strings).
+
+  But there are times when you _should_ specify
+  the generic type. Like, for example, when Dart doesn't have
+  anything to infer from: `[]` could be a list of any
+  combination of things.
+  That's often not what you want, so you write `<String>[]`
+  or `<Person>[]` or something similar.
+{{site.alert.end}}
+
 Refer to the [List API reference][List] for a full list of methods.
 
 #### Sets
@@ -432,7 +449,10 @@ is unordered, you can’t get a set’s items by index (position).
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Set)"?>
 ```dart
-var ingredients = Set();
+// Create an empty set of strings.
+var ingredients = <String>{};
+
+// Add new items to it.
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
@@ -444,8 +464,9 @@ assert(ingredients.length == 3);
 ingredients.remove('gold');
 assert(ingredients.length == 2);
 
-// You can also create sets using a literal.
-var atomicNumbers = {79, 22, 54};
+// You can also create sets using
+// one of the constructors.
+var atomicNumbers = Set.from([79, 22, 54]);
 ```
 
 Use `contains()` and `containsAll()` to check whether one or more
@@ -453,7 +474,7 @@ objects are in a set:
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Check whether an item is in the set.
@@ -467,7 +488,7 @@ An intersection is a set whose items are in two other sets.
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (intersection)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Create the intersection of two sets.
@@ -569,7 +590,7 @@ a function that returns the value.
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (putIfAbsent)"?>
 ```dart
-var teamAssignments = {};
+var teamAssignments = <String, String>{};
 teamAssignments.putIfAbsent(
     'Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
@@ -592,7 +613,7 @@ Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (isEmpty)"?>
 ```dart
-var coffees = [];
+var coffees = <String>[];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
@@ -1277,8 +1298,8 @@ subscribe to the stream using the `listen()` method:
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-// Find a button by ID and add an event handler.
-querySelector('#submitInfo')!.onClick.[!listen!]((e) {
+// Add an event handler to a button.
+submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
