@@ -1748,7 +1748,7 @@ so, when using a value from one of these APIs, it's often a good idea to cast it
 to a more precise type before accessing members.
 
 {{ site.alert.version-note }}
-In code that has not been migrated to null safety yet, use `Object` to accept
+In code that hasn't been migrated to null safety yet, use `Object` to accept
 values of all types, including `null`.
 {{ site.alert.end }}
 
