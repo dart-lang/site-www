@@ -8,14 +8,15 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 <?code-excerpt plaster="none"?>
 
 This codelab teaches you about Dart’s null-safe type system,
-which was introduced in Dart SDK 2.12. When you opt into null safety,
+which was introduced in Dart 2.12. When you opt into null safety,
 types in your code are non-nullable by default,
 meaning that values can’t be `null` unless you say they can be.
 
 This codelab covers the following material:
 
-* Nullable and non-nullable types.
+* [Nullable and non-nullable types](/null-safety/understanding-null-safety#non-nullable-and-nullable-types).
 * How and when to use the null-aware operators: `?` and `!`
+* Flow analysis and type promotion.
 * How the `late` keyword affects variables and initialization.
 
 Using embedded DartPad editors, you can test your knowledge by
@@ -29,12 +30,12 @@ this codelab, you should have some knowledge of [basic Dart syntax](/samples).
 
 ## What is null safety?
 
-Dart's null-safe type system makes types in your code non-nullable by default.
-That means values in your Dart programs can't be `null` unless you say they can be.
-With null safety, you can find null reference errors before you even
+With sound null safety, types are non-nullable by default.
+That means values in your Dart programs can't be `null` unless you say they
+can be. With null safety, you can find null reference errors before you even
 run your program.
 
-Here are some core principles of sound null safety in the Dart language:
+The core traits of sound null safety in Dart are:
 
 -   All types are non-nullable by default.
 -   Values can't be null unless you say they can be.
@@ -43,15 +44,14 @@ Here are some core principles of sound null safety in the Dart language:
 
 ## Nullable and non-nullable types
 
-When you opt into null safety, all types are non-nullable by default.
-For example, if you have a variable of
+When you [opt in to null safety](/null-safety#enable-null-safety), all types are
+non-nullable by default. For example, if you have a variable of
 type `String`, it will always contain a string.
 
 If you want a variable of type `String` to accept any string
-or the value `null`, but nothing else,
-give the variable a nullable type by adding a question mark (`?`) after the
-type name. For example, a variable of type `String?` can contain a string, or
-it can be null.
+or the value `null`, give the variable a nullable type by adding a
+question mark (`?`) after the type name. For example, a variable of
+type `String?` can contain a string, or it can be null.
 
 ### Example: Introducing non-nullable types
 
@@ -105,21 +105,27 @@ void main() {
 Null safety introduces new operators and keywords for dealing with null values,
 `?`, `!`, and `late`. Here's how you use them:
 
--   If you're creating a variable that can hold a null value, you can use a
-    `?` to inform Dart of the variable’s nullability.
--   If you're sure that an expression with a nullable type isn't null, you can 
-    add a postfix exclamation mark (`!`) to make Dart treat it as non-nullable.
+-   If you're creating a variable that can hold a null value, use a
+    question mark (`?`) to inform Dart of the variable’s nullability.
+-   If you're sure that an expression with a nullable type isn't null, use a
+    postfix exclamation mark (`!`, or "bang operator") to
+    make Dart treat it as non-nullable.
 -   If you want to initalize a non-nullable variable to a
-    non-null value before it’s used, insert `late` before the
+    non-null value before it’s used, use the `late` keyboard before the
     variable’s type.
 
 ### Example: The assertion operator (!)
 
 If you'd like to assign a nullable expression to a variable that's
-non-nullable, you can use the assertion operator (the exclamation point: `!`).
-By adding `!` just after the expression, you tell Dart that the value won't be
-null, and that it's safe to assign it to a non-nullable variable. If you're
-wrong, Dart throws an exception.
+non-nullable, you can use the
+[null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+(the exclamation point: `!`). By adding `!` just after the expression,
+you tell Dart that the value won't be null, and that it's safe to assign it to a
+non-nullable variable.
+
+But if you're wrong, Dart throws an exception at run-time. This makes the
+`!` operator unsafe, and you should only use it when you are very sure that the
+expression isn't null.
 
 In the example below, try adding exclamation points to correct the
 three broken assignments:
@@ -142,112 +148,21 @@ void main() {
 }
 ```
 
-## Late keyword
-
-Sometimes fields in a class *should* be non-nullable, but those fields can't be
-assigned a value immediately. For cases like that, use the `late` keyword.
-`late` is how you tell Dart that:
-
--   You aren't going to assign that field a value right away.
--   But you *are* going to assign it a value later.
--   And you'll make sure it's assigned a value *before* it's accessed.
-
-If you declare a field `late` and the field is read before it is assigned a
-value, a `LateInitializationError` is thrown to tell you what went wrong.
-
-### Example: The `late` keyword
-
-Try using the `late` keyword to correct the following code. For a little extra
-fun afterward, try commenting out the line that sets `description`!
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-class Meal {
-  String description;
-
-  void setDescription(String str) {
-    description = str;
-  }
-}
-
-void main() {
-  final myMeal = Meal();
-  myMeal.setDescription('Feijoada!');
-  print(myMeal.description);
-}
-```
-
-### Example: Late circular references
-
-The `late` keyword is really helpful for tricky patterns like circular
-references. Here are two objects that need to maintain non-nullable references
-to each other. Try using the `late` keyword to fix this code. Note that you
-don't have to remove `final`. `late` fields can also be `final`: you set `late
-final` values once, and after that they're read-only.
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-class Team {
-  final Coach coach;
-}
-
-class Coach {
-  final Team team;
-}
-
-void main() {
-  final myTeam = Team();
-  final myCoach = Coach();
-  myTeam.coach = myCoach;
-  myCoach.team = myTeam;
-
-  print('All done!');
-}
-```
-
-### Exercise: Late and lazy
-
-Here's another pattern that `late` can help with: lazy initialization for
-expensive non-nullable fields. Try running this code without changing it. What
-do you think will change if you make `_cache` a `late` field?
-
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
-int _computeValue() {
-  print('Computing value...');
-  return 3;
-}
-
-class CachedValueProvider {
-  final _cache = _computeValue();
-  int get value => _cache;
-}
-
-void main() {
-  print('Calling constructor...');
-  var provider = CachedValueProvider();
-  print('Getting value...');
-  print('The value is ${provider.value}!');
-}
-```
-
-Fun fact: After you add `late` to the declaration of `_cache`, you can move the
-`_computeValue` function into the `CachedValueProvider` class and the code will
-still work! Initialization expressions for `late` fields can use instance
-methods in their initializers.
-
 ## Type promotion
 
-With null safety, Dart takes null checks into account. Nullable variables that
-can't possibly contain null are treated like non-nullable variables.
-This behavior is called "promotion."
+With sound null safety, Dart's
+[flow analysis](/null-safety/understanding-null-safety#flow-analysis) has
+been extended to take nullability into account. Nullable variables that
+can't possibly contain null values are treated like non-nullable variables.
+This behavior is called
+[type promotion](/null-safety/understanding-null-safety#type-promotion-on-null-checks).
 
 ### Example: Definite assignment
 
 Dart's type system can track where variables are assigned and
 where their values are read, and to verify that non-nullable fields are given
 values before any code tries to read from them. This process is called
-"definite assignment."
+[definite assignment](/null-safety/understanding-null-safety#definite-assignment-analysis).
 
 Try uncommenting the if-else statement in the code below, and
 watch the analyzer errors disappear:
@@ -303,6 +218,106 @@ void main() {
   print(getLength(null));
 }
 ```
+
+## Late keyword
+
+Sometimes fields in a class *should* be non-nullable, but those fields can't be
+assigned a value immediately. For cases like that, use the
+[`late` keyword]( /null-safety/understanding-null-safety#late-variables).
+
+`late` is how you tell Dart that:
+
+-   You aren't going to assign that field a value right away.
+-   But you *are* going to assign it a value later.
+-   And you'll make sure it's assigned a value *before* it's accessed.
+
+If you declare a field `late` and the field is read before it is assigned a
+value, a `LateInitializationError` is thrown to tell you what went wrong.
+
+### Example: The `late` keyword
+
+Try using the `late` keyword to correct the following code. For a little extra
+fun afterward, try commenting out the line that sets `description`!
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+class Meal {
+  String description;
+
+  void setDescription(String str) {
+    description = str;
+  }
+}
+
+void main() {
+  final myMeal = Meal();
+  myMeal.setDescription('Feijoada!');
+  print(myMeal.description);
+}
+```
+
+### Example: Late circular references
+
+The `late` keyword is really helpful for tricky patterns like circular
+references. Here are two objects that need to maintain non-nullable references
+to each other. Try using the `late` keyword to fix this code.
+
+Note that you don't need to remove `final`. You can create
+[`late final` variables](/null-safety/understanding-null-safety#late-final-variables):
+you set their values once, and after that they're read-only.
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+class Team {
+  final Coach coach;
+}
+
+class Coach {
+  final Team team;
+}
+
+void main() {
+  final myTeam = Team();
+  final myCoach = Coach();
+  myTeam.coach = myCoach;
+  myCoach.team = myTeam;
+
+  print('All done!');
+}
+```
+
+### Exercise: Late and lazy
+
+Here's another pattern that `late` can help with:
+[lazy initialization](/null-safety/understanding-null-safety#lazy-initialization)
+for expensive non-nullable fields. Try running this code without changing it.
+What do you think will change if you make `_cache` a `late` field?
+
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
+```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+int _computeValue() {
+  print('Computing value...');
+  return 3;
+}
+
+class CachedValueProvider {
+  final _cache = _computeValue();
+  int get value => _cache;
+}
+
+void main() {
+  print('Calling constructor...');
+  var provider = CachedValueProvider();
+  print('Getting value...');
+  print('The value is ${provider.value}!');
+}
+```
+
+Fun fact: After you add `late` to the declaration of `_cache`, you can move the
+`_computeValue` function into the `CachedValueProvider` class and the code will
+still work! Initialization expressions for `late` fields can use instance
+methods in their initializers.
+
 
 ## What's next?
 
