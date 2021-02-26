@@ -26,6 +26,24 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    bool weLikeToCount = false;
+    int countLines() => 1;
+    {
+      // #docregion var-ns-flow
+      int lineCount;
+
+      if (weLikeToCount) {
+        lineCount = countLines();
+      } else {
+        lineCount = 0;
+      }
+
+      print(lineCount);
+      // #enddocregion var-ns-flow
+    }
+  }
+
+  {
     // #docregion final
     final name = 'Bob'; // Without a type annotation
     final String nickname = 'Bobby';

@@ -366,6 +366,27 @@ of non-nullable variables before you use them:
 int lineCount = 0;
 ```
 
+You don't have to initialize a local variable where it's declared,
+but you do need to assign it a value before it's used.
+For example, the following code is valid because
+Dart can detect that `lineCount` is non-null by the time
+it's passed to `print()`:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-flow)"?>
+```dart
+int lineCount;
+
+if (weLikeToCount) {
+  lineCount = countLines();
+} else {
+  lineCount = 0;
+}
+
+print(lineCount);
+```
+
+<!-- TODO: Point to coverage of ! and late -->
+
 
 ### Final and const
 
