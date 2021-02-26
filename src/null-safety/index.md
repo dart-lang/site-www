@@ -7,7 +7,7 @@ Sound null safety — currently in beta — is coming to the Dart language!
 
 When you opt into null safety,
 types in your code are non-nullable by default, meaning that
-values can’t be null _unless you say they can be._
+variables can’t contain `null` _unless you say they can._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
