@@ -92,6 +92,9 @@ apps:
 
 `var`
 :   A way to declare a variable without specifying its type.
+    The type of this variable (`int`)
+    is determined by its initial value (`42`).
+
 
 {{site.alert.note}}
   This site's code follows the conventions in the
@@ -106,14 +109,28 @@ mind:
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
-    `null` are objects. All objects inherit from the [Object][] class.
+    `null` are objects.
+    All objects except `null` inherit from the [Object][] class.
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
-    is inferred to be of type `int`. When you want to explicitly say
-    that no type is expected, use the type `Object`
-    (or `Object?` if the value can be `null`) or —
-    if you want to defer type checking until runtime —
+    is inferred to be of type `int`.
+
+-   If you enable [sound null safety][ns],
+    variables can’t contain `null` unless you say they can.
+    You can make a variable nullable by
+    putting a question mark (`?`) at the end of its type.
+    For example, a variable of type `int?` might be an integer,
+    or it might be `null`.
+
+    {{site.alert.version-note}}
+      [Null safety][ns] was introduced in Dart 2.12.
+    {{site.alert.end}}
+
+-   When you want to explicitly say
+    that any type is allowed, use the type `Object?`
+    (if you've [enabled null safety][ns-enable]), `Object`, or —
+    if you must defer type checking until runtime —
     the [special type `dynamic`][ObjectVsDynamic].
 
     {% comment %}
@@ -140,11 +157,11 @@ mind:
     variables are sometimes known as fields or properties.
 
 -   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
-    and `private`. If an identifier starts with an underscore (\_), it’s
+    and `private`. If an identifier starts with an underscore (`_`), it’s
     private to its library. For details, see
     [Libraries and visibility](#libraries-and-visibility).
 
--   *Identifiers* can start with a letter or underscore (\_), followed by any
+-   *Identifiers* can start with a letter or underscore (`_`), followed by any
     combination of those characters plus digits.
 
 -   Dart has both *expressions* (which have runtime values) and
@@ -3746,7 +3763,7 @@ allows you to use the type argument `T` in several places:
 
 The `import` and `library` directives can help you create a
 modular and shareable code base. Libraries not only provide APIs, but
-are a unit of privacy: identifiers that start with an underscore (\_)
+are a unit of privacy: identifiers that start with an underscore (`_`)
 are visible only inside the library. *Every Dart app is a library*, even
 if it doesn’t use a `library` directive.
 
@@ -4461,9 +4478,11 @@ To learn more about Dart's core libraries, see
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
+[ns]: /null-safety
+[ns-enable]: /null-safety#enable-null-safety
 [num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[ObjectVsDynamic]: /guides/language/effective-dart/design#types
+[ObjectVsDynamic]: /guides/language/effective-dart/design_migrated#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
 [Set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
