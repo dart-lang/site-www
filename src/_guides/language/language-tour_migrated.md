@@ -324,15 +324,10 @@ String name = 'Bob';
 
 ### Default value
 
-Uninitialized variables have an initial value of `null`. Even variables
-with numeric types are initially null, because numbers—like everything
-else in Dart—are objects.
-
-{% comment %}
-TODO #2950: Cover `?` earlier.
-21 out of 958 excerpts were updated in the migration of examples to null safety.
-This is the first one, and the first occurrence of `?`.
-{% endcomment %}
+Uninitialized variables have an initial value of `null`,
+whether or not you've enabled [null safety][ns].
+Even variables with numeric types are initially null,
+because numbers—like everything else in Dart—are objects.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -345,6 +340,15 @@ assert(lineCount == null);
   hand, <code>assert(<em>condition</em>)</code> throws an exception if
   _condition_ is false. For details, see [Assert](#assert).
 {{site.alert.end}}
+
+If you enable null safety, then you must initialize the values
+of non-nullable variables before you use them:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-init)"?>
+```dart
+int lineCount = 0;
+```
+
 
 ### Final and const
 

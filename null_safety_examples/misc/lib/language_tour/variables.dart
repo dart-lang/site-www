@@ -20,6 +20,12 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // #docregion var-ns-init
+    int lineCount = 0;
+    // #enddocregion var-ns-init
+  }
+
+  {
     // #docregion final
     final name = 'Bob'; // Without a type annotation
     final String nickname = 'Bobby';
