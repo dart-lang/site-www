@@ -28,7 +28,7 @@ void miscDeclAnalyzedButNotTested() {
       print(description);
     }
     // #enddocregion var-late-top-level
-    
+
     main();
   }
 
