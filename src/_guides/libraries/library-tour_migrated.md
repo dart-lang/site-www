@@ -404,7 +404,9 @@ fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
 ```
 
-Lists are parameterized types ([generics]({{site.www}}/guides/language/language-tour#generics)), so you can specify the type that a list
+Lists are parameterized types
+([generics](/guides/language/language-tour#generics)),
+so you can specify the type that a list
 should contain:
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List-of-String)"?>
@@ -427,7 +429,7 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
   In many cases, you don't
   need to explicitly specify generic
   types, because Dart will
-  [infer]({{site.www}}/guides/language/type-system#type-inference)
+  [infer](/guides/language/type-system#type-inference)
   them for you.
   A list like `['Dash', 'Dart']` is understood
   to be a `List<String>` (read: list of strings).
@@ -1305,8 +1307,8 @@ submitButton.onClick.[!listen!]((e) {
 });
 {% endprettify %}
 
-In this example, the `onClick` property is a Stream object provided by
-the "submitInfo" button.
+In this example, the `onClick` property is a `Stream` object provided by
+the submit button.
 
 If you care about only one event, you can get it using a property such
 as `first`, `last`, or `single`. To test the event before handling it,
