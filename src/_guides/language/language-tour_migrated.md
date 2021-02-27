@@ -2717,7 +2717,7 @@ at declaration,
 using a constructor parameter, or
 using a constructor's [initializer list](#initializer-list):
 
-<?code-excerpt "usage_good.dart (field-init-at-decl)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
 ```dart
 class ProfileMark {
   final String name;
