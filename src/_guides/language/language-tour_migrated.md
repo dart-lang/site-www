@@ -28,7 +28,8 @@ consult the [Dart language specification][].
 {{site.alert.end}}
 
 {% comment %}
-[TODO #2950: Look for null, ?, !, late, optional. (Anything else?)
+[TODO #2950: Look for null, ?, !, late, optional, Map, List, Set.
+(Anything else?)
 Look for dynamic. Look for code that isn't auto-included (no code-excerpt.)]
 {% endcomment %}
 
@@ -372,11 +373,7 @@ are implicitly final.) A final top-level or class variable is initialized
 the first time it's used.
 
 {{site.alert.note}}
-  Instance variables can be `final` but not `const`.
-  Final instance variables must be initialized before
-  the constructor body starts —
-  at the variable declaration, by a constructor parameter,
-  or in the constructor's [initializer list](#initializer-list).
+  [Instance variables](#instance-variables) can be `final` but not `const`.
 {{site.alert.end}}
 
 Here's an example of creating and setting a `final` variable:
@@ -440,7 +437,7 @@ baz = [42]; // Error: Constant variables can't be assigned a value.
 
 You can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
-[collection if](#collection-operators),
+[collection `if`](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (const-dart-25)"?>
@@ -844,7 +841,7 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 ```
 
-For more details and examples of using collection if and for, see the
+For more details and examples of using collection `if` and `for`, see the
 [control flow collections proposal.][collections proposal]
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
@@ -927,7 +924,7 @@ final constantSet = const {
 ```
 
 Sets support spread operators (`...` and `...?`)
-and collection ifs and fors,
+and collection `if` and `for`,
 just like lists do.
 For more information, see the
 [list spread operator](#spread-operator) and
@@ -1039,7 +1036,7 @@ final constantMap = const {
 ```
 
 Maps support spread operators (`...` and `...?`)
-and collection if and for, just like lists do.
+and collection `if` and `for`, just like lists do.
 For details and examples, see the
 [spread operator proposal][spread proposal] and the
 [control flow collections proposal.][collections proposal]
@@ -1933,7 +1930,7 @@ that might otherwise require [if-else](#if-and-else) statements:
 
 When you need to assign a value
 based on a boolean expression,
-consider using `?:`.
+consider using `?` and `:`.
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 ```dart
@@ -2372,8 +2369,8 @@ caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
-Methods do not declare which exceptions they might throw, and you are
-not required to catch any exceptions.
+Methods don't declare which exceptions they might throw, and you aren't
+required to catch any exceptions.
 
 Dart provides [Exception][] and [Error][]
 types, as well as numerous predefined subtypes. You can, of course,
@@ -2690,8 +2687,13 @@ class Point {
 All uninitialized instance variables have the value `null`.
 
 All instance variables generate an implicit *getter* method. Non-final
-instance variables also generate an implicit *setter* method. For details,
+and `late final` instance variables also generate
+an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
+
+If you initialize a non-`late` instance variable where it's declared,
+the value is set when the instance is created,
+which is before the constructor and its initializer list execute.
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
@@ -2708,10 +2710,29 @@ void main() {
 }
 ```
 
-If you initialize an instance variable where it is declared (instead of
-in a constructor or method), the value is set when the instance is
-created, which is before the constructor and its initializer list
-execute.
+Instance variables can be `final`,
+in which case they must be set exactly once.
+Initialize `final`, non-`late` instance variables
+at declaration,
+using a constructor parameter, or
+using a constructor's [initializer list](#initializer-list):
+
+<?code-excerpt "usage_good.dart (field-init-at-decl)"?>
+```dart
+class ProfileMark {
+  final String name;
+  final DateTime start = DateTime.now();
+
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
+}
+```
+
+If you want to assign the value of a `final` instance variable
+after the constructor body starts, you can use `late final`,
+[but _be careful_][late-final-ivar].
+
+[late-final-ivar]: /guides/language/effective-dart/design_migrated#avoid-public-late-final-fields-without-initializers
 
 
 ### Constructors
@@ -2857,7 +2878,7 @@ class Employee extends Person {
 ```
 
 {{site.alert.warning}}
-  Arguments to the superclass constructor do not have access to `this`. For
+  Arguments to the superclass constructor don't have access to `this`. For
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
 
@@ -3067,7 +3088,7 @@ Dart allows you to define operators with the following names:
 {:.table}
 
 {{site.alert.note}}
-  You may have noticed that some [operators](#operators), like `!=`, are not in
+  You may have noticed that some [operators](#operators), like `!=`, aren't in
   the list of names. That's because they're just syntactic sugar. For example,
   the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
 {{site.alert.end}}
