@@ -402,6 +402,7 @@ then the initializer runs the first time the variable is used.
 This lazy initialization is handy in a couple of cases:
 
 * The variable might not be needed,
+  and initializing it is costly.
 * You're initializing an instance variable,
   and its initializer needs access to `this`.
 
