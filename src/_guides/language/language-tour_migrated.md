@@ -368,13 +368,13 @@ assert(lineCount == null);
 
 Dart 2.12 added the `late` modifier, which has two use cases:
 
-* To tell Dart that a non-nullable variable is set before it's used.
-* To lazily initialize a variable.
+* Declaring a non-nullable variable that's initialized after its declaration.
+* Lazily initializing a variable.
 
 Often Dart's control flow analysis can detect when a non-nullable variable
 is set to a non-null value before it's used,
 but sometimes analysis fails.
-One common case is top-level variables:
+Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
@@ -392,10 +392,18 @@ void main() {
 }
 ```
 
-Use `late` for lazy initialization when a variable might not be needed,
-and initializing it is costly.
+{{ site.alert.warn }}
+  If you fail to initialize a `late` variable,
+  a runtime error occurs when the variable is used.
+{{ site.alert.end }}
+
 When you mark a variable as `late` but initialize it at its declaration,
-then the initializer doesn't run until the first time the variable is used.
+then the initializer runs the first time the variable is used.
+This lazy initialization is handy in a couple of cases:
+
+* The variable might not be needed,
+* You're initializing an instance variable,
+  and its initializer needs access to `this`.
 
 In the following example,
 if the `temperature` variable is never used,
