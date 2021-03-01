@@ -226,6 +226,12 @@ class RadioButtonWidget extends Widget {
 }
 {% endprettify %}
 
+If you really don't have anything interesting to say
+that can't be inferred from the declaration itself,
+then omit the doc comment.
+It's better to say nothing
+than waste a reader's time telling them something they already know.
+
 
 ### PREFER starting function or method comments with third-person verbs.
 
