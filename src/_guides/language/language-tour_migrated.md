@@ -2686,8 +2686,9 @@ class Point {
 
 All uninitialized instance variables have the value `null`.
 
-All instance variables generate an implicit *getter* method. Non-final
-and `late final` instance variables also generate
+All instance variables generate an implicit *getter* method.
+Non-final instance variables and
+`late final` instance variables without initializers also generate
 an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
