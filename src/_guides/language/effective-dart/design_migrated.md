@@ -63,7 +63,7 @@ HttpRequest
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-numPages    // "num" is an abbreviation of number(of)
+numPages    // "Num" is an abbreviation of "number (of)".
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
@@ -265,10 +265,12 @@ been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
 that is less likely to be negated by users or has the shorter name.
 
-**Exception:** With some properties, the negative form is what users
+**Exceptions:** With some properties, the negative form is what users
 overwhelmingly need to use. Choosing the positive case would force them to
 negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property.
+negative case for that property. Also, properties accessed in [Angular][]
+templates are often better in the negative form because the property is used to
+*hide* or *disable* content.
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -296,7 +298,7 @@ This way, an invocation reads like a command to do that work.
 
 Other callable members have few side effects but return a useful result to the
 caller. If the member needs no parameters to do that, it should generally be a
-getter. But, sometimes a logical "property" needs some parameters. For example,
+getter. But sometimes a logical "property" needs some parameters. For example,
 `elementAt()` returns a piece of data from a collection, but it needs a
 parameter to know *which* piece of data to return.
 
@@ -766,7 +768,7 @@ Note, however, that a `const` constructor is a commitment in your public API. If
 you later change the constructor to non-`const`, it will break users that are
 calling it in constant expressions. If you don't want to commit to that, don't
 make it `const`. In practice, `const` constructors are most useful for simple,
-immutable data record sorts of classes.
+immutable value-like types.
 
 
 ## Members
@@ -780,7 +782,6 @@ A member belongs to an object and can be either methods or instance variables.
 State that is not *mutable*&mdash;that does not change over time&mdash;is
 easier for programmers to reason about. Classes and libraries that minimize the
 amount of mutable state they work with tend to be easier to maintain.
-
 Of course, it is often useful to have mutable data. But, if you don't need it,
 your default should be to make fields and top-level variables `final` when you
 can.
@@ -789,13 +790,14 @@ Sometimes an instance field doesn't change after it has been initialized, but
 can't be initialized until after the instance is constructed. For example, it
 may need to reference `this` or some other field on the instance. In cases like
 that, consider making the field `late final`. When you do, you may also be able
-to initialize the field at its declaration.
+to [initialize the field at its declaration][init at decl].
 
+[init at decl]: /guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
 ### DO use getters for operations that conceptually access properties.
 
-Deciding when a member should be a getter versus a method is a challenging,
-subtle, but important part of good API design, hence this very long guideline.
+Deciding when a member should be a getter versus a method is a subtle but
+important part of good API design, hence this very long guideline.
 Some other language's cultures shy away from getters. They only use them when
 the operation is almost exactly like a field&mdash;it does a miniscule amount of
 calculation on state that lives entirely on the object. Anything more complex or
@@ -943,7 +945,7 @@ not intended to be invoked from Dart code and don't need a corresponding getter.
 
 Unlike other `final` fields, a `late final` field without an initializer *does*
 define a setter. If that field is public, then the setter is public. This is
-rarely what you want. Fields are usually marked late so that they can be
+rarely what you want. Fields are usually marked `late` so that they can be
 initialized *internally* at some point in the instance's lifetime, often inside
 the constructor body.
 
@@ -1042,7 +1044,8 @@ generic invocation as opposed to a type annotation.
 
 #### Type inference
 
-Type annotations are optional in Dart. If you omit one, Dart can infer a type
+Type annotations are optional in Dart.
+If you omit one, Dart tries to infer a type
 based on the nearby context. Sometimes it doesn't have enough information to
 infer a complete type. When that happens, Dart sometimes reports an error, but
 usually silently fills in any missing parts with `dynamic`. The implicit
@@ -1100,7 +1103,7 @@ various cases, but the rough summary is:
 
 The type of a variable&mdash;top-level, local, static field, or instance
 field&mdash;can often be inferred from its initializer. However, if there is no
-initializer, inference fails. In that case, write a type annotation.
+initializer, inference fails.
 
 {:.good}
 <?code-excerpt "design_good.dart (uninitialized-local)"?>
@@ -1282,11 +1285,9 @@ void sayRepeatedly(message, {count = 2}) {
 {% include linter-rule.html rule="avoid_types_on_closure_parameters" %}
 
 Anonymous functions are almost always immediately passed to a method taking a
-callback of some type. (If the function isn't used immediately, it's usually
-worth making it a named declaration.) When a function expression is created in a
-typed context, Dart tries to infer the function's parameter types based on the
-expected type.
-
+callback of some type.
+When a function expression is created in a typed context,
+Dart tries to infer the function's parameter types based on the expected type.
 For example, when you pass a function expression to `Iterable.map()`, your
 function's parameter type is inferred based on the type of callback that `map()`
 expects:
@@ -1307,7 +1308,10 @@ If the language is able to infer the type you want for a parameter in a function
 expression, then don't annotate. In rare cases, the surrounding
 context isn't precise enough to provide a type for one or more of the
 function's parameters. In those cases, you may need to annotate.
+(If the function isn't used immediately, it's usually better to
+[make it a named declaration][named local].)
 
+[named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
 ### DON'T type annotate initializing formals.
 
@@ -1430,10 +1434,10 @@ arguments, you haven't fully specified the type. In Java, these are called "raw
 types". For example:
 
 {:.bad}
-<?code-excerpt "design_bad.dart (incomplete-generic)"?>
+<?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List numbers = [1, 2, 3];
-var completer = Completer<Map>();
+[!List!] numbers = [1, 2, 3];
+var completer = Completer<[!Map!]>();
 {% endprettify %}
 
 Here, `numbers` has a type annotation, but the annotation doesn't provide a type
@@ -1710,9 +1714,9 @@ where you must use the new syntax.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
-values: `Object` and `dynamic`. However, they convey different things. If you
-simply want to state that you allow all objects, use `Object`, as you would in
-Java or C#.
+values: `Object?` and `dynamic`. However, they convey different things. If you
+simply want to state that you allow all objects, use `Object?`. If you want to
+allow all objects *except* `null`, then use `Object`.
 
 The type `dynamic` not only accepts all objects, but it also permits all
 *operations*. Any member access on a value of type `dynamic` is allowed at
@@ -1720,7 +1724,8 @@ compile time, but may fail and throw an exception at runtime. If you want
 exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
 type to use.
 
-Otherwise, prefer using `Object`. Rely on `is` checks and type promotion to
+Otherwise, prefer using `Object?` or `Object`. Rely on `is` checks and type
+promotion to
 ensure that the value's runtime type supports the member you want to access
 before you access it.
 
@@ -1741,6 +1746,11 @@ The main exception to this rule is when working with existing APIs that use
 `Map<String, dynamic>` and your code will need to accept that same type. Even
 so, when using a value from one of these APIs, it's often a good idea to cast it
 to a more precise type before accessing members.
+
+{{ site.alert.version-note }}
+In code that hasn't been migrated to null safety yet, use `Object` to accept
+values of all types, including `null`.
+{{ site.alert.end }}
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
@@ -1821,8 +1831,8 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 {% include linter-rule.html rule="avoid_positional_boolean_parameters" %}
 
-Unlike other types, booleans are usually used in literal form. Things like
-numbers are usually wrapped in named constants, but we usually just pass around
+Unlike other types, booleans are usually used in literal form. Values like
+numbers are usually wrapped in named constants, but we typically pass around
 `true` and `false` directly. That can make callsites unreadable if it isn't
 clear what the boolean represents:
 
@@ -1834,7 +1844,7 @@ new ListBox(false, true, true);
 new Button(false);
 {% endprettify %}
 
-Instead, consider using named arguments, named constructors, or named constants
+Instead, prefer using named arguments, named constructors, or named constants
 to clarify what the call is doing.
 
 {:.good}

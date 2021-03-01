@@ -226,6 +226,12 @@ class RadioButtonWidget extends Widget {
 }
 {% endprettify %}
 
+If you really don't have anything interesting to say
+that can't be inferred from the declaration itself,
+then omit the doc comment.
+It's better to say nothing
+than waste a reader's time telling them something they already know.
+
 
 ### PREFER starting function or method comments with third-person verbs.
 
@@ -321,13 +327,12 @@ separated by a dot:
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
-The dot syntax can also be used to refer to named constructors. For the unnamed
-constructor, put parentheses after the class name:
+The dot syntax can also be used to refer to named constructors:
 
 {:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>
 {% prettify dart tag=pre+code %}
-/// To create a point, call [Point()] or use [Point.polar()] to ...
+/// To create a point from polar coordinates, use [Point.polar()].
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
