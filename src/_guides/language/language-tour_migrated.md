@@ -450,7 +450,7 @@ For more information on using `const` to create constant values, see
 
 ## Built-in types
 
-The Dart language has special support for the following types:
+The Dart language has special support for the following:
 
 - [Numbers](#numbers) (`int`, `double`)
 - [Strings](#strings) (`String`)
@@ -460,6 +460,7 @@ The Dart language has special support for the following types:
 - [Maps](#maps) (`Map`)
 - [Runes](#characters) (`Runes`; often replaced by the `characters` API)
 - [Symbols](#symbols) (`Symbol`)
+- The value `null` (`Null`)
 
 This support includes the ability to create objects using literals.
 For example, `'this is a string'` is a string literal,
@@ -473,9 +474,9 @@ use the `Map()` constructor to create a map.
 Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
-* `Null`: The type of `null` objects.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
-* `Iterable`: Used in [for-in loops](#iteration).
+* `Iterable`: Used in [for-in loops](#iteration) and
+  in synchronous [generator functions](#generator).
 * `Never`: Indicates that an expression can never
   successfully finish evaluating.
   Most often used for functions that always throw an exception.
@@ -4129,8 +4130,8 @@ When you need to lazily produce a sequence of values,
 consider using a _generator function_.
 Dart has built-in support for two kinds of generator functions:
 
-* **Synchronous** generator: Returns an **[`Iterable`]** object.
-* **Asynchronous** generator: Returns a **[`Stream`]** object.
+* **Synchronous** generator: Returns an [`Iterable`] object.
+* **Asynchronous** generator: Returns a [`Stream`] object.
 
 To implement a **synchronous** generator function,
 mark the function body as `sync*`,
