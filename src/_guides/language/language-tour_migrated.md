@@ -342,8 +342,10 @@ String name = 'Bob';
 
 ### Default value
 
-Uninitialized variables have an initial value of `null`,
-whether or not you've enabled [null safety][ns].
+Uninitialized variables that have a nullable type
+have an initial value of `null`.
+(If you haven't opted into [null safety][ns],
+then every variable has a nullable type.)
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
