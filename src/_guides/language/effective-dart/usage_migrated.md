@@ -481,11 +481,43 @@ var counts = Set<int>();
 
 Note that this guideline doesn't apply to the *named* constructors for those
 classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
-Likewise, if you're passing a size to `List()` to create a non-growable one,
-then it makes sense to use that.
-
 (The List class also has an unnamed constructor, but it is prohibited in null
 safe Dart.)
+
+Collection literals are particularly powerful in Dart
+because they give you access to the [spread operator][spread]
+for including the contents of other collections,
+and [`if` and `for`][control] for performing control flow while
+building the contents:
+
+[spread]: /guides/language/language-tour#spread-operator
+[control]: /guides/language/language-tour#collection-operators
+
+{:.good}
+<?code-excerpt "usage_good.dart (spread-etc)"?>
+{% prettify dart tag=pre+code %}
+var arguments = [
+  ...options,
+  command,
+  ...?modeFlags,
+  for (var path in filePaths)
+    if (path.endsWith('.dart'))
+      path.replaceAll('.dart', '.js')
+];
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (spread-etc)"?>
+{% prettify dart tag=pre+code %}
+var arguments = <String>[];
+arguments.addAll(options);
+arguments.add(command);
+if (modeFlags != null) arguments.addAll(modeFlags);
+arguments.addAll(filePaths
+    .where((path) => path.endsWith('.dart'))
+    .map((path) => path.replaceAll('.dart', '.js')));
+{% endprettify %}
+
 
 ### DON'T use `.length` to see if a collection is empty.
 
@@ -514,26 +546,6 @@ if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
 {% endprettify %}
 
-### CONSIDER using higher-order methods to transform a sequence.
-
-If you have a collection and want to produce a new modified collection from it,
-it's often shorter and more declarative to use `.map()`, `.where()`, and the
-other handy methods on `Iterable`.
-
-Using those instead of an imperative `for` loop makes it clear that your intent
-is to produce a new sequence and not to produce side effects.
-
-{:.good}
-<?code-excerpt "usage_good.dart (use-higher-order-func)"?>
-{% prettify dart tag=pre+code %}
-var aquaticNames = animals
-    .where((animal) => animal.isAquatic)
-    .map((animal) => animal.name);
-{% endprettify %}
-
-At the same time, this can be taken too far. If you are chaining or nesting
-many higher-order methods, it may be clearer to write a chunk of imperative
-code.
 
 ### AVOID using `Iterable.forEach()` with a function literal.
 
