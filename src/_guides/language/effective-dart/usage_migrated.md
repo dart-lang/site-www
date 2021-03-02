@@ -73,53 +73,102 @@ change to the package.
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
-### DO use relative paths when importing libraries within your own package's `lib` directory.
 
-{% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
+### DON'T allow an import path to reach into or out of `lib`.
 
-When referencing a library inside your package's `lib` directory from another
-library in that same package, use a relative URI, not an explicit `package:`
-URI.
+{% include linter-rule.html rule="avoid_relative_lib_imports" %}
 
-For example, say your directory structure looks like:
+A `package:` import lets you access
+a library inside a package's `lib` directory
+without having to worry about where the package is stored on your computer.
+For this to work, you cannot have imports that require the `lib`
+to be in some location on disk relative to other files.
+In other words, a relative import path in a file inside `lib`
+can't reach out and access a file outside of the `lib` directory,
+and a library outside of `lib` can't use a relative path
+to reach into the `lib` directory.
+Doing either leads to confusing errors and broken programs.
+
+For example, say your directory structure looks like this:
+
+```text
+my_package
+└─ lib
+   └─ api.dart
+   test
+   └─ api_test.dart
+```
+
+And say `api_test.dart` imports `api.dart` in two ways:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+import '../lib/api.dart';
+{% endprettify %}
+
+Dart thinks those are imports of two completely unrelated libraries.
+To avoid confusing Dart and yourself, follow these two rules:
+
+* Don't use `/lib/` in import paths.
+* Don't use `../` to escape the `lib` directory.
+
+Instead, when you need to reach into a package's `lib` directory
+(even from the same package's `test` directory
+or any other top-level directory),
+use a `package:` import.
+A package should never reach *out* of its `lib` directory and
+import libraries from other places in the package.
+
+
+### PREFER relative import paths.
+
+{% include linter-rule.html rule="prefer_relative_imports" %}
+
+Whenever the previous rule doesn't come into play, follow this one.
+When an import does *not* reach across `lib`, prefer using relative imports.
+They're shorter.
+For example, say your directory structure looks like this:
 
 ```text
 my_package
 └─ lib
    ├─ src
+   │  └─ stuff.dart
    │  └─ utils.dart
    └─ api.dart
+   test
+   │─ api_test.dart
+   └─ test_utils.dart
 ```
 
-If `api.dart` wants to import `utils.dart`, it should do so using:
+Here is how the various libraries should import each other:
+
+**lib/api.dart:**
 
 {:.good}
 {% prettify dart tag=pre+code %}
+import 'src/stuff.dart';
 import 'src/utils.dart';
 {% endprettify %}
 
-And not:
+**lib/src/utils.dart:**
 
-{:.bad}
+{:.good}
 {% prettify dart tag=pre+code %}
-import 'package:my_package/src/utils.dart';
+import '../api.dart';
+import 'stuff.dart';
 {% endprettify %}
 
-The "within your own package's `lib` directory" part is important. Libraries
-inside `lib` can import other libraries inside `lib` (or in subdirectories of
-it). Libraries outside of `lib` can use relative imports to reach other
-libraries outside of `lib`. For example, you may have a test utility library
-under `test` that other libraries in `test` import.
+**test/api_test.dart:**
 
-But you can't "cross the streams". A library outside of `lib` should never use a
-relative import to reach a library under `lib`, or vice versa. Doing so will
-break Dart's ability to correctly tell if two library URIs refer to the same
-library, which can lead to unexpected duplicated types.
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart'; // Don't reach into 'lib'.
 
-Follow these two rules:
+import 'test_utils.dart'; // Relative within 'test' is fine.
+{% endprettify %}
 
-* An import path should never contain `/lib/`.
-* A library under `lib` should never use `../` to escape the `lib` directory.
 
 ## Null
 
