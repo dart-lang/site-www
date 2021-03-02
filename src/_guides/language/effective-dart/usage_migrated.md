@@ -78,12 +78,16 @@ theoretically non-breaking point release of that package could break your code.
 
 {% include linter-rule.html rule="avoid_relative_lib_imports" %}
 
-Dart supports `package:` imports to let you access
-the libraries inside a package's `lib` directory
-regardless of whether the package is physically stored on your computer.
-This can lead to a very confusing situation
-if you have a `package:` import of a library and another import
-that physically traverses into that same package's `lib` directory.
+A `package:` import lets you access
+a library inside a package's `lib` directory
+without having to worry about where the package is stored on your computer.
+For this to work, you cannot have imports that require the `lib`
+to be in some location on disc relative to other files.
+In other words, a relative import path in a file inside `lib`
+can't reach out and access a file outside of the `lib` directory,
+and a library outside of `lib` can't use a relative path
+to reach into the `lib` directory.
+Doing either leads to confusing errors and broken programs.
 
 For example, say your directory structure looks like this:
 
@@ -95,7 +99,7 @@ my_package
    └─ api_test.dart
 ```
 
-Say `api_test.dart` imports `api.dart` in two ways:
+And say `api_test.dart` imports `api.dart` in two ways:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
