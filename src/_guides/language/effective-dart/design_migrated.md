@@ -943,6 +943,38 @@ not intended to be invoked from Dart code and don't need a corresponding getter.
 [angular]: {{site.angulardart}}
 
 
+### AVOID using runtime type tests to fake overloading.
+
+It's common for an API to support similar operations
+on different types of parameters.
+To emphasize the similarity, some languages support *overloading*
+which lets you define multiple methods
+that have the same name but different parameter lists.
+At compile time, the compiler looks at the actual argument types to determine
+which method to call.
+Dart does not have overloading.
+You can define an API that looks like overloading
+by defining a single method and then using `is` type tests
+inside the body to look at the runtime types of the arguments and perform the
+appropriate behavior.
+However, faking overloading this way turns a *compile time* method selection
+into a choice that happens at *runtime*.
+
+If callers usually know which type they have
+and which specific operation they want,
+it's better to define separate methods with different names
+to let them select the right one directly.
+This gives better static type checking and faster performance
+since it avoids any runtime type tests.
+However, if users may have an object of an unknown type
+and *want* the API to interally use `is` to pick the right operation,
+then a single method with whose parameter is a supertype
+of all of the supported types might be reasonable.
+In other words, if they would have wanted the API to use runtime type tests
+even if Dart *did* have overloading, then that's a good place
+to use a single method.
+
+
 ### AVOID public `late final` fields without initializers.
 
 Unlike other `final` fields, a `late final` field without an initializer *does*
@@ -957,6 +989,7 @@ following solutions:
 * Don't use `late`.
 * Use `late`, but initialize the `late` field at its declaration.
 * Use `late`, but make the `late` field private and define a public getter for it.
+
 
 ### AVOID returning nullable `Future`, `Stream`, and collection types.
 
