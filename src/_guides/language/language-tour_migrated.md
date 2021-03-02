@@ -108,22 +108,28 @@ mind:
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects.
-    All objects except `null` inherit from the [`Object`][] class.
+    With the exception of `null` (if you enable [sound null safety][ns]),
+    all objects inherit from the [`Object`][] class.
+
+    {{site.alert.version-note}}
+      [Null safety][ns] was introduced in Dart 2.12.
+    {{site.alert.end}}
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
     is inferred to be of type `int`.
 
--   If you enable [sound null safety][ns],
+-   If you enable [null safety][ns],
     variables can’t contain `null` unless you say they can.
     You can make a variable nullable by
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
     or it might be `null`.
-
-    {{site.alert.version-note}}
-      [Null safety][ns] was introduced in Dart 2.12.
-    {{site.alert.end}}
+    If you _know_ that an expression never evaluates to `null`
+    but Dart disagrees,
+    you can add `!` to assert that it isn't null
+    (and to throw an exception if it is).
+    An example: `int x = nullableButNotNullInt!`
 
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
@@ -141,7 +147,7 @@ mind:
 
 -   Similarly, Dart supports top-level *variables*, as well as variables
     tied to a class or object (static and instance variables). Instance
-    variables are sometimes known as fields or properties.
+    variables are sometimes known as *fields* or *properties*.
 
 -   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (`_`), it’s
@@ -165,12 +171,6 @@ mind:
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
-
-{{site.alert.note}}
-  If you're curious why Dart uses underscores instead of
-  access modifier keywords like `public` or `private`, see
-  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
-{{site.alert.end}}
 
 
 ## Keywords
@@ -3836,6 +3836,12 @@ are visible only inside the library. *Every Dart app is a library*, even
 if it doesn’t use a `library` directive.
 
 Libraries can be distributed using [packages](/guides/packages).
+
+{{site.alert.info}}
+  If you're curious why Dart uses underscores instead of
+  access modifier keywords like `public` or `private`, see
+  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+{{site.alert.end}}
 
 
 ### Using libraries
