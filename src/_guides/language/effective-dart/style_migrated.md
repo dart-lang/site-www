@@ -28,7 +28,8 @@ Identifiers come in three flavors in Dart.
 *   `lowerCamelCase` names capitalize the first letter of each word, *except*
     the first which is always lowercase, even if it's an acronym.
 
-*   `lowercase_with_underscores` use only lowercase letters, even for acronyms,
+*   `lowercase_with_underscores` names use only lowercase letters,
+    even for acronyms,
     and separate words with `_`.
 
 
@@ -174,7 +175,7 @@ word, and use no separators.
 {:.good}
 <?code-excerpt "style_good.dart (misc-names)"?>
 {% prettify dart tag=pre+code %}
-var item;
+var count = 3;
 
 HttpRequest httpRequest;
 

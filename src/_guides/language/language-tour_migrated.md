@@ -28,7 +28,8 @@ consult the [Dart language specification][].
 {{site.alert.end}}
 
 {% comment %}
-[TODO #2950: Look for null, ?, !, late, optional. (Anything else?)
+[TODO #2950: Look for null, ?, !, late, optional, Map, List, Set.
+(Anything else?)
 Look for dynamic. Look for code that isn't auto-included (no code-excerpt.)]
 {% endcomment %}
 
@@ -62,10 +63,7 @@ apps:
 :   A special type that indicates a value that's never used.
     Functions like `printInteger()` and `main()` that don't explicitly return a value
     have the `void` return type.
-    For more information, see [this article][void article].
     
-[void article]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
-
 `int`
 :   Another type, indicating an integer.
     Some additional [built-in types](#built-in-types)
@@ -110,7 +108,7 @@ mind:
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects.
-    All objects except `null` inherit from the [Object][] class.
+    All objects except `null` inherit from the [`Object`][] class.
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
@@ -132,17 +130,6 @@ mind:
     (if you've [enabled null safety][ns-enable]), `Object`, or —
     if you must defer type checking until runtime —
     the [special type `dynamic`][ObjectVsDynamic].
-
-    {% comment %}
-    [TODO #2950: Better link? Cover `dynamic` more in the language tour?]
-
-    Here's a nice example that illustrates what dynamic does:
-      dynamic a = 2;
-      String b = a; // No problem! Until runtime, when you get an uncaught error.
-  
-      Object c = 2;
-      String d = c;  // Problem!
-    {% endcomment %}
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<Object>` (a list of objects of any type).
@@ -274,7 +261,7 @@ The following table lists the words that the Dart language treats specially.
 [try]: #catch
 [typedef]: #typedefs
 [var]: #variables
-[void]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
+[void]: #built-in-types
 {% comment %}
   TODO #2950: Add coverage of void to the language tour.
 {% endcomment %}
@@ -341,15 +328,12 @@ String name = 'Bob';
 
 ### Default value
 
-Uninitialized variables have an initial value of `null`. Even variables
-with numeric types are initially null, because numbers—like everything
-else in Dart—are objects.
-
-{% comment %}
-TODO #2950: Cover `?` earlier.
-21 out of 958 excerpts were updated in the migration of examples to null safety.
-This is the first one, and the first occurrence of `?`.
-{% endcomment %}
+Uninitialized variables that have a nullable type
+have an initial value of `null`.
+(If you haven't opted into [null safety][ns],
+then every variable has a nullable type.)
+Even variables with numeric types are initially null,
+because numbers—like everything else in Dart—are objects.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -363,6 +347,36 @@ assert(lineCount == null);
   _condition_ is false. For details, see [Assert](#assert).
 {{site.alert.end}}
 
+If you enable null safety, then you must initialize the values
+of non-nullable variables before you use them:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-init)"?>
+```dart
+int lineCount = 0;
+```
+
+You don't have to initialize a local variable where it's declared,
+but you do need to assign it a value before it's used.
+For example, the following code is valid because
+Dart can detect that `lineCount` is non-null by the time
+it's passed to `print()`:
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-flow)"?>
+```dart
+int lineCount;
+
+if (weLikeToCount) {
+  lineCount = countLines();
+} else {
+  lineCount = 0;
+}
+
+print(lineCount);
+```
+
+<!-- TODO: Point to coverage of ! and late -->
+
+
 ### Final and const
 
 If you never intend to change a variable, use `final` or `const`, either
@@ -372,11 +386,7 @@ are implicitly final.) A final top-level or class variable is initialized
 the first time it's used.
 
 {{site.alert.note}}
-  Instance variables can be `final` but not `const`.
-  Final instance variables must be initialized before
-  the constructor body starts —
-  at the variable declaration, by a constructor parameter,
-  or in the constructor's [initializer list](#initializer-list).
+  [Instance variables](#instance-variables) can be `final` but not `const`.
 {{site.alert.end}}
 
 Here's an example of creating and setting a `final` variable:
@@ -440,7 +450,7 @@ baz = [42]; // Error: Constant variables can't be assigned a value.
 
 You can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
-[collection if](#collection-operators),
+[collection `if`](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (const-dart-25)"?>
@@ -464,37 +474,66 @@ For more information on using `const` to create constant values, see
 
 ## Built-in types
 
-The Dart language has special support for the following types:
+The Dart language has special support for the following:
 
-- numbers
-- strings
-- booleans
-- lists (also known as *arrays*)
-- sets
-- maps
-- runes (for expressing Unicode characters in a string)
-- symbols
+- [Numbers](#numbers) (`int`, `double`)
+- [Strings](#strings) (`String`)
+- [Booleans](#booleans) (`bool`)
+- [Lists](#lists) (`List`, also known as *arrays*)
+- [Sets](#sets) (`Set`)
+- [Maps](#maps) (`Map`)
+- [Runes](#characters) (`Runes`; often replaced by the `characters` API)
+- [Symbols](#symbols) (`Symbol`)
+- The value `null` (`Null`)
 
-You can initialize an object of any of these special types using a
-literal. For example, `'this is a string'` is a string literal,
+This support includes the ability to create objects using literals.
+For example, `'this is a string'` is a string literal,
 and `true` is a boolean literal.
-
-{% comment %}
-[TODO #2950: add info about support for Iterable, Future, Stream?
-Those can't be initialized using literals, but they do have special support.
-{% endcomment %}
 
 Because every variable in Dart refers to an object—an instance of a
 *class*—you can usually use *constructors* to initialize variables. Some
 of the built-in types have their own constructors. For example, you can
 use the `Map()` constructor to create a map.
 
+Some other types also have special roles in the Dart language:
+
+* `Object`: The superclass of all Dart classes except `Null`.
+* `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
+* `Iterable`: Used in [for-in loops](#iteration) and
+  in synchronous [generator functions](#generator).
+* `Never`: Indicates that an expression can never
+  successfully finish evaluating.
+  Most often used for functions that always throw an exception.
+* `dynamic`: Indicates that you want to disable static checking.
+  Usually you should use `Object` or `Object?` instead.
+* `void`: Indicates that a value is never used.
+  Often used as a return type.
+
+{% comment %}
+[TODO: move/add for-in coverage to language tour?]
+{% endcomment %}
+
+The `Object`, `Object?`, `Null`, and `Never` classes
+have special roles in the class hierarchy,
+as described in the [top-and-bottom][] section of
+[Understanding null safety][].
+
+{% comment %}
+If we decide to cover `dynamic` more,
+here's a nice example that illustrates what dynamic does:
+  dynamic a = 2;
+  String b = a; // No problem! Until runtime, when you get an uncaught error.
+
+  Object c = 2;
+  String d = c;  // Problem!
+{% endcomment %}
+
 
 ### Numbers
 
 Dart numbers come in two flavors:
 
-[int][]
+[`int`][]
 
 :   Integer values no larger than 64 bits,
     depending on the platform.
@@ -510,12 +549,12 @@ The informal spec is at
 https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
 {% endcomment %}
 
-[double][]
+[`double`][]
 
 :   64-bit (double-precision) floating-point numbers, as specified by
     the IEEE 754 standard.
 
-Both `int` and `double` are subtypes of [`num`.][num]
+Both `int` and `double` are subtypes of [`num`][].
 The num type includes basic operators such as +, -, /, and \*,
 and is also where you’ll find `abs()`,` ceil()`,
 and `floor()`, among other methods.
@@ -594,7 +633,8 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 ### Strings
 
-A Dart string is a sequence of UTF-16 code units. You can use either
+A Dart string (`String` object) holds a sequence of UTF-16 code units.
+You can use either
 single or double quotes to create a string:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (quoting)"?>
@@ -729,7 +769,7 @@ assert(iMeantToDoThis.isNaN);
 
 Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
-[List][] objects, so most people just call them *lists*.
+[`List`][] objects, so most people just call them *lists*.
 
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
@@ -844,7 +884,7 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 ```
 
-For more details and examples of using collection if and for, see the
+For more details and examples of using collection `if` and `for`, see the
 [control flow collections proposal.][collections proposal]
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
@@ -859,7 +899,8 @@ information about lists, see [Generics](#generics) and
 ### Sets
 
 A set in Dart is an unordered collection of unique items.
-Dart support for sets is provided by set literals and the [Set][Set class] type.
+Dart support for sets is provided by set literals and the
+[`Set`][] type.
 
 Here is a simple Dart set, created using a set literal:
 
@@ -927,7 +968,7 @@ final constantSet = const {
 ```
 
 Sets support spread operators (`...` and `...?`)
-and collection ifs and fors,
+and collection `if` and `for`,
 just like lists do.
 For more information, see the
 [list spread operator](#spread-operator) and
@@ -942,7 +983,7 @@ For more information about sets, see
 In general, a map is an object that associates keys and values. Both
 keys and values can be any type of object. Each *key* occurs only once,
 but you can use the same *value* multiple times. Dart support for maps
-is provided by map literals and the [Map][] type.
+is provided by map literals and the [`Map`][] type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
@@ -1039,14 +1080,15 @@ final constantMap = const {
 ```
 
 Maps support spread operators (`...` and `...?`)
-and collection if and for, just like lists do.
+and collection `if` and `for`, just like lists do.
 For details and examples, see the
 [spread operator proposal][spread proposal] and the
 [control flow collections proposal.][collections proposal]
 
-For more information about maps, see
-[Generics](#generics) and
-[Maps](/guides/libraries/library-tour#maps).
+For more information about maps, see the
+[generics](#generics) section and
+the library tour's coverage of
+the [`Maps` API](/guides/libraries/library-tour#maps).
 
 <a id="characters"></a>
 ### Runes and grapheme clusters
@@ -1105,7 +1147,7 @@ for the characters package.
 
 ### Symbols
 
-A [Symbol][] object
+A [`Symbol`][] object
 represents an operator or identifier declared in a Dart program. You
 might never need to use symbols, but they're invaluable for APIs that
 refer to identifiers by name, because minification changes identifier
@@ -1933,7 +1975,7 @@ that might otherwise require [if-else](#if-and-else) statements:
 
 When you need to assign a value
 based on a boolean expression,
-consider using `?:`.
+consider using `?` and `:`.
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 ```dart
@@ -2211,7 +2253,7 @@ for (int i = 0; i < candidates.length; i++) {
 ```
 
 You might write that example differently if you’re using an
-[Iterable][] such as a list or set:
+[`Iterable`][] such as a list or set:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (where)"?>
 ```dart
@@ -2349,7 +2391,7 @@ The first argument to `assert` can be any expression that
 resolves to a boolean value. If the expression’s value
 is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
-[AssertionError][]) is thrown.
+[`AssertionError`][]) is thrown.
 
 When exactly do assertions work?
 That depends on the tools and framework you're using:
@@ -2372,10 +2414,10 @@ caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
-Methods do not declare which exceptions they might throw, and you are
-not required to catch any exceptions.
+Methods don't declare which exceptions they might throw, and you aren't
+required to catch any exceptions.
 
-Dart provides [Exception][] and [Error][]
+Dart provides [`Exception`][] and [`Error`][]
 types, as well as numerous predefined subtypes. You can, of course,
 define your own exceptions. However, Dart programs can throw any
 non-null object—not just Exception and Error objects—as an exception.
@@ -2397,8 +2439,8 @@ throw 'Out of llamas!';
 ```
 
 {{site.alert.note}}
-  Production-quality code usually throws types that implement [Error][] or
-  [Exception][].
+  Production-quality code usually throws types that implement [`Error`][] or
+  [`Exception`][].
 {{site.alert.end}}
 
 Because throwing an exception is an expression, you can throw exceptions
@@ -2452,7 +2494,7 @@ your exception handler needs the exception object.
 
 You can specify one or two parameters to `catch()`.
 The first is the exception that was thrown,
-and the second is the stack trace (a [StackTrace][] object).
+and the second is the stack trace (a [`StackTrace`][] object).
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -2529,9 +2571,10 @@ section of the library tour.
 
 Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
-descend from [Object.][Object]
-*Mixin-based inheritance* means that although every class (except for
-Object) has exactly one superclass, a class body can be reused in
+except `Null` descend from [`Object`][].
+*Mixin-based inheritance* means that although every class
+(except for the [top class][top-and-bottom],`Object?`)
+has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods](#extension-methods) are a way to
 add functionality to a class without changing the class or creating a subclass.
@@ -2662,8 +2705,8 @@ assert(!identical(a, b)); // NOT the same instance!
 ### Getting an object's type
 
 To get an object's type at runtime,
-you can use Object's `runtimeType` property,
-which returns a [Type][] object.
+you can use the `Object` property `runtimeType`,
+which returns a [`Type`][] object.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/classes_test.dart (runtimeType)"?>
 ```dart
@@ -2689,9 +2732,15 @@ class Point {
 
 All uninitialized instance variables have the value `null`.
 
-All instance variables generate an implicit *getter* method. Non-final
-instance variables also generate an implicit *setter* method. For details,
+All instance variables generate an implicit *getter* method.
+Non-final instance variables and
+`late final` instance variables without initializers also generate
+an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
+
+If you initialize a non-`late` instance variable where it's declared,
+the value is set when the instance is created,
+which is before the constructor and its initializer list execute.
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
@@ -2708,10 +2757,29 @@ void main() {
 }
 ```
 
-If you initialize an instance variable where it is declared (instead of
-in a constructor or method), the value is set when the instance is
-created, which is before the constructor and its initializer list
-execute.
+Instance variables can be `final`,
+in which case they must be set exactly once.
+Initialize `final`, non-`late` instance variables
+at declaration,
+using a constructor parameter, or
+using a constructor's [initializer list](#initializer-list):
+
+<?code-excerpt "../null_safety_examples/misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
+```dart
+class ProfileMark {
+  final String name;
+  final DateTime start = DateTime.now();
+
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
+}
+```
+
+If you want to assign the value of a `final` instance variable
+after the constructor body starts, you can use `late final`,
+[but _be careful_][late-final-ivar].
+
+[late-final-ivar]: /guides/language/effective-dart/design_migrated#avoid-public-late-final-fields-without-initializers
 
 
 ### Constructors
@@ -2857,7 +2925,7 @@ class Employee extends Person {
 ```
 
 {{site.alert.warning}}
-  Arguments to the superclass constructor do not have access to `this`. For
+  Arguments to the superclass constructor don't have access to `this`. For
   example, arguments can call static methods but not instance methods.
 {{site.alert.end}}
 
@@ -3067,7 +3135,7 @@ Dart allows you to define operators with the following names:
 {:.table}
 
 {{site.alert.note}}
-  You may have noticed that some [operators](#operators), like `!=`, are not in
+  You may have noticed that some [operators](#operators), like `!=`, aren't in
   the list of names. That's because they're just syntactic sugar. For example,
   the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
 {{site.alert.end}}
@@ -3561,7 +3629,7 @@ can pass a static method as a parameter to a constant constructor.
 ## Generics
 
 If you look at the API documentation for the basic array type,
-[List,][List] you’ll see that the
+[`List`][], you’ll see that the
 type is actually `List<E>`. The \<...\> notation marks List as a
 *generic* (or *parameterized*) type—a type that has formal type
 parameters. [By convention][], most type variables have single-letter names,
@@ -3891,7 +3959,7 @@ Keep in mind the following when you use deferred loading:
   both the deferred library and the importing file.
 * Dart implicitly inserts `loadLibrary()` into the namespace that you define
   using <code>deferred as <em>namespace</em></code>.
-  The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
+  The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
 
 
 ### Implementing libraries
@@ -3912,7 +3980,7 @@ for advice on how to implement a library package, including:
 ## Asynchrony support
 
 Dart libraries are full of functions that
-return [Future][] or [Stream][] objects.
+return [`Future`][] or [`Stream`][] objects.
 These functions are _asynchronous_:
 they return after setting up
 a possibly time-consuming operation
@@ -4111,8 +4179,8 @@ When you need to lazily produce a sequence of values,
 consider using a _generator function_.
 Dart has built-in support for two kinds of generator functions:
 
-* **Synchronous** generator: Returns an **[Iterable]** object.
-* **Asynchronous** generator: Returns a **[Stream]** object.
+* **Synchronous** generator: Returns an [`Iterable`] object.
+* **Asynchronous** generator: Returns a [`Stream`] object.
 
 To implement a **synchronous** generator function,
 mark the function body as `sync*`,
@@ -4448,7 +4516,7 @@ existing code. For more information, see the [Dart language specification][] and
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
-[AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
+[`AssertionError`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
@@ -4461,34 +4529,36 @@ To learn more about Dart's core libraries, see
 [Dart language specification]: /guides/language/spec
 [dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
-[double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
-[Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
-[Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
+[`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
-[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
-[int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[`int`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
+[`Iterable`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
-[List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
 [ns]: /null-safety
 [ns-enable]: /null-safety#enable-null-safety
-[num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[`num`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
+[`Object`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design_migrated#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
-[Set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
-[StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
-[Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
-[Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[`Set`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[`StackTrace`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
+[`Stream`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`String`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
+[`Symbol`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
-[Type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
+[`Type`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
+[Understanding null safety]: /null-safety/understanding-null-safety
