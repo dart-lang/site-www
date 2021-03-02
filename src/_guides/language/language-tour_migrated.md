@@ -125,8 +125,10 @@ mind:
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
     or it might be `null`.
-    If you _know_ an expression is non-null but Dart disagrees,
-    you can add `!` to make it be treated as non-null.
+    If you _know_ that an expression never evaluates to `null`
+    but Dart disagrees,
+    you can add `!` to assert that it isn't null
+    (and to throw an exception if it is).
     An example: `int x = nullableButNotNullInt!`
 
 -   When you want to explicitly say
