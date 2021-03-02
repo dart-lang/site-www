@@ -44,71 +44,72 @@ void miscDeclAnalyzedButNotTested() {
       late String temperature = _readThermometer(); // Lazily initialized.
       // #enddocregion var-late-lazy
       print('$temperature degrees');
-    // #docregion var-ns-init
-    int lineCount = 0;
-    // #enddocregion var-ns-init
-  }
-
-  {
-    bool weLikeToCount = false;
-    int countLines() => 1;
-    {
-      // #docregion var-ns-flow
-      int lineCount;
-
-      if (weLikeToCount) {
-        lineCount = countLines();
-      } else {
-        lineCount = 0;
-      }
-
-      print(lineCount);
-      // #enddocregion var-ns-flow
+      // #docregion var-ns-init
+      int lineCount = 0;
+      // #enddocregion var-ns-init
     }
-  }
 
-  {
-    // #docregion final
-    final name = 'Bob'; // Without a type annotation
-    final String nickname = 'Bobby';
-    // #enddocregion final
-  }
+    {
+      bool weLikeToCount = false;
+      int countLines() => 1;
+      {
+        // #docregion var-ns-flow
+        int lineCount;
 
-  {
-    // #docregion const
-    const bar = 1000000; // Unit of pressure (dynes/cm2)
-    const double atm = 1.01325 * bar; // Standard atmosphere
-    // #enddocregion const
-  }
+        if (weLikeToCount) {
+          lineCount = countLines();
+        } else {
+          lineCount = 0;
+        }
 
-  {
-    // #docregion const-vs-final
-    var foo = const [];
-    final bar = const [];
-    const baz = []; // Equivalent to `const []`
-    // #enddocregion const-vs-final
+        print(lineCount);
+        // #enddocregion var-ns-flow
+      }
+    }
 
-    // #docregion reassign-to-non-final
-    foo = [1, 2, 3]; // Was const []
-    // #enddocregion reassign-to-non-final
-  }
+    {
+      // #docregion final
+      final name = 'Bob'; // Without a type annotation
+      final String nickname = 'Bobby';
+      // #enddocregion final
+    }
 
-  {
-    var bar, baz, name;
-    // #docregion cant-assign-to-final
-    name = 'Alice'; // Error: a final variable can only be set once.
-    // #enddocregion cant-assign-to-final
-    // #docregion cant-assign-to-const
-    baz = [42]; // Error: Constant variables can't be assigned a value.
-    // #enddocregion cant-assign-to-const
-  }
+    {
+      // #docregion const
+      const bar = 1000000; // Unit of pressure (dynes/cm2)
+      const double atm = 1.01325 * bar; // Standard atmosphere
+      // #enddocregion const
+    }
 
-  {
-    // #docregion const-dart-25
-    const Object i = 3; // Where i is a const Object with an int value...
-    const list = [i as int]; // Use a typecast.
-    const map = {if (i is int) i: "int"}; // Use is and collection if.
-    const set = {if (list is List<int>) ...list}; // ...and a spread.
-    // #enddocregion const-dart-25
+    {
+      // #docregion const-vs-final
+      var foo = const [];
+      final bar = const [];
+      const baz = []; // Equivalent to `const []`
+      // #enddocregion const-vs-final
+
+      // #docregion reassign-to-non-final
+      foo = [1, 2, 3]; // Was const []
+      // #enddocregion reassign-to-non-final
+    }
+
+    {
+      var bar, baz, name;
+      // #docregion cant-assign-to-final
+      name = 'Alice'; // Error: a final variable can only be set once.
+      // #enddocregion cant-assign-to-final
+      // #docregion cant-assign-to-const
+      baz = [42]; // Error: Constant variables can't be assigned a value.
+      // #enddocregion cant-assign-to-const
+    }
+
+    {
+      // #docregion const-dart-25
+      const Object i = 3; // Where i is a const Object with an int value...
+      const list = [i as int]; // Use a typecast.
+      const map = {if (i is int) i: "int"}; // Use is and collection if.
+      const set = {if (list is List<int>) ...list}; // ...and a spread.
+      // #enddocregion const-dart-25
+    }
   }
 }
