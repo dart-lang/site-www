@@ -82,7 +82,7 @@ A `package:` import lets you access
 a library inside a package's `lib` directory
 without having to worry about where the package is stored on your computer.
 For this to work, you cannot have imports that require the `lib`
-to be in some location on disc relative to other files.
+to be in some location on disk relative to other files.
 In other words, a relative import path in a file inside `lib`
 can't reach out and access a file outside of the `lib` directory,
 and a library outside of `lib` can't use a relative path
