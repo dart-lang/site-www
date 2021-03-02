@@ -212,6 +212,10 @@ void main() {
   group('Collections: List:', () {
     test('constructor', () {
       // #docregion List
+      // Create an empty list of strings.
+      var grains = <String>[];
+      assert(grains.isEmpty);
+
       // Create a list using a list literal.
       var fruits = ['apples', 'oranges'];
 

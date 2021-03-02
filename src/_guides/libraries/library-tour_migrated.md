@@ -351,6 +351,10 @@ items to and removing items from lists.
 
 <?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List)"?>
 ```dart
+// Create an empty list of strings.
+var grains = <String>[];
+assert(grains.isEmpty);
+
 // Create a list using a list literal.
 var fruits = ['apples', 'oranges'];
 
