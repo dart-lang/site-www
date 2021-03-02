@@ -85,7 +85,7 @@ This can lead to a very confusing situation
 if you have a `package:` import of a library and another import
 that physically traverses into that same package's `lib` directory.
 
-For example, say your directory structure looks like:
+For example, say your directory structure looks like this:
 
 ```text
 my_package
@@ -95,7 +95,7 @@ my_package
    └─ api_test.dart
 ```
 
-If `api_test.dart` contains:
+Say `api_test.dart` imports `api.dart` in two ways:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
@@ -103,15 +103,15 @@ import 'package:my_package/api.dart';
 import '../lib/api.dart';
 {% endprettify %}
 
-Then Dart thinks those are imports of two completely unrelated libraries.
-This causes all sorts of errors and confusion.
-To avoid that, follow these two rules:
+Dart thinks those are imports of two completely unrelated libraries.
+To avoid confusing Dart and yourself, follow these two rules:
 
-* An import path should never contain `/lib/`.
-* A library under `lib` should never use `../` to escape the `lib` directory.
+* Don't use `/lib/` in import paths.
+* Don't use `../` to escape the `lib` directory.
 
 Instead, when you need to reach into a package's `lib` directory
-(even from the same package's `test` or other top-level directories),
+(even from the same package's `test` directory
+or any other top-level directory),
 use a `package:` import.
 A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
