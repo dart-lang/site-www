@@ -44,6 +44,26 @@ void miscDeclAnalyzedButNotTested() {
       late String temperature = _readThermometer(); // Lazily initialized.
       // #enddocregion var-late-lazy
       print('$temperature degrees');
+    // #docregion var-ns-init
+    int lineCount = 0;
+    // #enddocregion var-ns-init
+  }
+
+  {
+    bool weLikeToCount = false;
+    int countLines() => 1;
+    {
+      // #docregion var-ns-flow
+      int lineCount;
+
+      if (weLikeToCount) {
+        lineCount = countLines();
+      } else {
+        lineCount = 0;
+      }
+
+      print(lineCount);
+      // #enddocregion var-ns-flow
     }
   }
 

@@ -212,7 +212,11 @@ void main() {
   group('Collections: List:', () {
     test('constructor', () {
       // #docregion List
-      // Use a list literal.
+      // Create an empty list of strings.
+      var grains = <String>[];
+      assert(grains.isEmpty);
+
+      // Create a list using a list literal.
       var fruits = ['apples', 'oranges'];
 
       // Add to a list.
@@ -276,7 +280,10 @@ void main() {
   group('Collections: Set', () {
     test('constructor', () {
       // #docregion Set
-      var ingredients = Set();
+      // Create an empty set of strings.
+      var ingredients = <String>{};
+
+      // Add new items to it.
       ingredients.addAll(['gold', 'titanium', 'xenon']);
       assert(ingredients.length == 3);
 
@@ -288,8 +295,9 @@ void main() {
       ingredients.remove('gold');
       assert(ingredients.length == 2);
 
-      // You can also create sets using a literal.
-      var atomicNumbers = {79, 22, 54};
+      // You can also create sets using
+      // one of the constructors.
+      var atomicNumbers = Set.from([79, 22, 54]);
       // #enddocregion Set
       expect(ingredients, isNot(contains('gold')));
       expect(atomicNumbers, isNotEmpty);
@@ -297,7 +305,7 @@ void main() {
 
     test('contains', () {
       // #docregion contains
-      var ingredients = Set();
+      var ingredients = Set<String>();
       ingredients.addAll(['gold', 'titanium', 'xenon']);
 
       // Check whether an item is in the set.
@@ -310,7 +318,7 @@ void main() {
 
     test('intersection', () {
       // #docregion intersection
-      var ingredients = Set();
+      var ingredients = Set<String>();
       ingredients.addAll(['gold', 'titanium', 'xenon']);
 
       // Create the intersection of two sets.
@@ -399,7 +407,7 @@ void main() {
     test('putIfAbsent', () {
       pickToughestKid() => 'Rock';
       // #docregion putIfAbsent
-      var teamAssignments = {};
+      var teamAssignments = <String, String>{};
       teamAssignments.putIfAbsent(
           'Catcher', () => pickToughestKid());
       assert(teamAssignments['Catcher'] != null);
@@ -416,7 +424,7 @@ void main() {
 
     test('isEmpty', () {
       // #docregion isEmpty
-      var coffees = [];
+      var coffees = <String>[];
       var teas = ['green', 'black', 'chamomile', 'earl grey'];
       assert(coffees.isEmpty);
       assert(teas.isNotEmpty);
