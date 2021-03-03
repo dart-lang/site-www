@@ -60,6 +60,25 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion collection-literals
   }
 
+  {
+    var command = 'c';
+    var options = ['a'];
+    var modeFlags = ['b'] as List<String>?;
+    var filePaths = ['p'];
+    String removeExtension(String path) => path;
+
+    // #docregion spread-etc
+    var arguments = [
+      ...options,
+      command,
+      ...?modeFlags,
+      for (var path in filePaths)
+        if (path.endsWith('.dart'))
+          path.replaceAll('.dart', '.js')
+    ];
+    // #enddocregion spread-etc
+  }
+
   (Iterable lunchBox, Iterable words) {
     // #docregion dont-use-length
     if (lunchBox.isEmpty) return 'so hungry...';
