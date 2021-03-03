@@ -115,10 +115,10 @@ you cannot un-migrate a file once it has been migrated.
 If you want to incrementally migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0-0`:
+   setting the minimum SDK constraint to `2.12.0`:
    ```yaml
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 2. Regenerate the [package configuration file][]:
@@ -129,7 +129,7 @@ environment:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
+   Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
    every library in the package to 2.12,
    opting them all in to null safety.
