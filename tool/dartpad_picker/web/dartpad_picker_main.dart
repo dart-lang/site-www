@@ -154,12 +154,12 @@ class Chest<T> implements Item {
   void use() => print("$this has ${contents.length} items.");
 }
 class Sword implements Item {
-  int damage = 5;
+  final int damage = 5;
   void use() => print("$this dealt $damage damage.");
 }
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  void int damage = 50;
+  final int damage = 50;
 }
 void main() {
   // The 'new' keyword is optional.
