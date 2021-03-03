@@ -71,9 +71,7 @@ else
     $EXAMPLES/misc/lib/library_tour/async/future.dart \
     $EXAMPLES/misc/lib/library_tour/async/stream.dart \
     $EXAMPLES/misc/test/library_tour/core_test.dart \
-    $EXAMPLES/misc/test/library_tour/io_test.dart \
-    $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
-    $EXAMPLES/misc/lib/effective_dart/usage_good.dart
+    $EXAMPLES/misc/test/library_tour/io_test.dart
 fi
 
 # If any files were changed, then exit 1:
