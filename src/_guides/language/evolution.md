@@ -289,7 +289,7 @@ In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 [collection if]: /guides/language/language-tour#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart compile`]: /tools/dart-compile
-[DArt FFI]: /guides/libraries/c-interop
+[Dart FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
 [`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
