@@ -262,10 +262,9 @@ has some tips for specific browsers.
 ### Q. What web frameworks can I use with Dart?
 
 You can use the low-level HTML API defined by core libraries such as dart:html,
-or you can use a framework such as [AngularDart][].
-During Google I/O 2019 we [announced][fwebannounce] a technical preview of
-[Flutter for web][] that lets you take Flutter UI code and business logic
-and run it directly in the browser.
+or you can use a framework such as [AngularDart][]. You can also use
+[Flutter for web][] to bring your existing Flutter applications or new ones
+to the browser.
 
 ### Q. Will the Dart VM get into Chrome?
 
@@ -471,5 +470,4 @@ modern JavaScript VMs.
 [fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
-[fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0
 [Flutter for web]: {{site.flutter}}/web
