@@ -324,6 +324,22 @@ var zeroOne = <int>[zero, one];
 </tr>
 </table>
 
+#### Opting out files
+
+Although we recommend migrating all at once,
+sometimes that isn't practical,
+especially in a large app or package.
+To opt out a file or directory,
+click its green checkbox.
+Later, when you apply changes,
+each opted out file will be unchanged
+except for a 2.9 [version comment][].
+
+For more information about incremental migration, see
+[Unsound null safety][].
+
+[version comment]: /guides/language/evolution#per-library-language-version-selection
+
 
 #### Applying changes
 
