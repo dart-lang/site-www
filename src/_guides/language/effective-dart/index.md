@@ -1,13 +1,11 @@
 ---
 title: Effective Dart
 description: Best practices for building consistent, maintainable, efficient Dart libraries.
-permalink: /guides/language/effective-dart-migrated
+permalink: /guides/language/effective-dart
 nextpage:
   url: /guides/language/effective-dart/style
   title: Style
 ---
-
-**TODO: permalink should be "/guides/language/effective-dart-migrated"**
 
 Over the past several years, we've written a ton of Dart code and learned a lot
 about what works well and what doesn't. We're sharing this with you so you can
@@ -144,4 +142,4 @@ Dart constructs.
 
 ## Summary of all rules
 
-{% include_relative toc_migrated.md %}
+{% include_relative toc.md %}
