@@ -1,9 +1,9 @@
 ---
 title: Sound null safety
-description: Information about Dart's upcoming null safety feature
+description: Information about Dart's null safety feature
 ---
 
-Sound null safety — currently in beta — is coming to the Dart language!
+The Dart language now supports sound null safety!
 
 When you opt into null safety,
 types in your code are non-nullable by default, meaning that
@@ -66,13 +66,8 @@ Dart null safety support is based on the following three core design principles:
 
 ## Enabling null safety {#enable-null-safety}
 
-Null safety is currently a beta feature. 
-We recommend requiring and using the **most recent beta channel** release
-of the Dart or Flutter SDK.
-To find the most recent releases, see the
-[beta channel][dart-beta-channel] section of the
-Dart SDK archive, or the **Beta channel** section of the
-[Flutter SDK archive.][flutter-sdks]
+Sound null safety is available in Dart 2.12 and Flutter 2.
+
 
 ### Migrating an existing package or app {#migrate}
 
@@ -101,14 +96,8 @@ For example, your `pubspec.yaml` file might have the following constraints:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 {% endprettify %}
-
-{{site.alert.note}}
-  The 2.12 SDK constraint above ends in **`-0`**.
-  This use of [semantic versioning notation](https://semver.org/)
-  allows 2.12.0 prereleases, such as the beta prerelease `2.12.0-259.12.beta`.
-{{site.alert.end}}
 
 [language version]: /guides/language/evolution#language-versioning
 
@@ -154,9 +143,7 @@ For more information about null safety, see the following resources:
 [110]: https://github.com/dart-lang/language/issues/110
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [`dart create`]: /tools/dart-tool
-[dart-beta-channel]: /tools/sdk/archive#beta-channel
 [Dart blog]: https://medium.com/dartlang
-[flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety tour]: /null-safety/tour
