@@ -170,6 +170,16 @@ Dart 2.10 didn't add any features to the Dart language,
 but it added an expanded [`dart` tool][dart-tool] that's 
 analogous to the Flutter SDK's [`flutter` tool][].
 
+### Dart 2.12
+
+Dart 2.12 added support for **[sound null safety][]**.
+When you opt into null safety, types in your code are non-nullable by default,
+meaning that variables can’t contain null unless you say they can.
+With null safety, your runtime null-dereference errors
+turn into edit-time analysis errors.
+
+In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
@@ -272,16 +282,6 @@ other comments can appear before the `@dart` comment.
 
 For more information about how language versioning works, see the
 [language versioning specification][language versioning feature].
-
-### Dart 2.12
-
-Dart 2.12 added support for **[sound null safety][]**.
-When you opt into null safety, types in your code are non-nullable by default,
-meaning that variables can’t contain null unless you say they can.
-With null safety, your runtime null-dereference errors
-turn into edit-time analysis errors.
-
-In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
