@@ -12,7 +12,9 @@ If you find another Dart book that might be helpful, please
 
 ## Dart books preceding null safety
 
-The following books cover Dart versions preceding the release of null safety.
+The following books cover Dart versions preceding the release of [null safety][].
+
+[null safety]: /null-safety
 
 {% for book in site.data.books-dart2 %}
 <div class="book-img-with-details row">
