@@ -326,20 +326,22 @@ int measureMessage(String? message) {
 Dart offers no way to tell if a `late` variable
 has been initialized or assigned to.
 If you access it, it either immediately runs the initializer
-if it has one or throws an exception.
-Sometimes you have some state that is lazily initialized
-where `late` would be a good fit,
+(if it has one) or throws an exception.
+Sometimes you have some state that's lazily initialized
+where `late` might be a good fit,
 but you also need to be able to *tell* if the initialization has happened yet.
 
-You could do that by storing the state in a `late` variable
-and then have a separate boolean field
-to track whether the variable has been set.
-This works, but is redundant since Dart *internally*
-still needs to maintain the initialized status of the `late` variable.
+Although you could detect initialization by storing the state in a `late` variable
+and having a separate boolean field
+that tracks whether the variable has been set,
+that's redundant because Dart *internally*
+maintains the initialized status of the `late` variable.
 Instead, it's usually clearer to make the variable non-`late` and nullable.
-Then you can check the variable for `null` to see if it has been initialized.
-(Of course, if `null` is a valid initialized value for the variable,
-then it does make sense to have a separate boolean field.)
+Then you can see if the variable has been initialized
+by checking for `null`.
+
+Of course, if `null` is a valid initialized value for the variable,
+then it probably does make sense to have a separate boolean field.
 
 
 ### CONSIDER copying a nullable field to a local variable to enable type promotion.
