@@ -9,14 +9,7 @@ import 'package:path/path.dart' as path;
 final _unescape = HtmlUnescape();
 final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
-/// Whether to use the original files or the temporary null safety migrated
-/// files.
-// TODO(rnystrom): Remove this after the null safety files are unforked.
-bool migrated = false;
-
 Future<Null> main(List<String> arguments) async {
-  migrated = arguments.contains("--migrated");
-
   var dirPath = "src/_guides/language/effective-dart";
   var filenames = const [
     "style.md",
@@ -48,8 +41,7 @@ Future<Null> main(List<String> arguments) async {
     }
   }
 
-  var outFile =
-      File(path.join(dirPath, migrated ? "toc_migrated.md" : "toc.md"));
+  var outFile = File(path.join(dirPath, "toc.md"));
   IOSink out;
   try {
     out = outFile.openWrite();
@@ -130,8 +122,7 @@ class Section {
   final List<Subsection> subsections = [];
 
   Section(String dirPath, String filename)
-      : file = File(path.join(dirPath,
-            migrated ? filename.replaceAll(".md", "_migrated.md") : filename)),
+      : file = File(path.join(dirPath, filename)),
         uri = Uri.parse("/guides/language/effective-dart/")
             .resolve(filename.split('.').first),
         name = "${filename[0].toUpperCase()}"
