@@ -9,6 +9,11 @@ also cover Dart.
 If you find another Dart book that might be helpful, please
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
+
+## Dart books preceding null safety
+
+The following books cover Dart versions preceding the release of null safety.
+
 {% for book in site.data.books-dart2 %}
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
