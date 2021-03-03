@@ -273,6 +273,15 @@ other comments can appear before the `@dart` comment.
 For more information about how language versioning works, see the
 [language versioning specification][language versioning feature].
 
+### Dart 2.12
+
+Dart 2.12 added support for **[sound null safety][]**.
+When you opt into null safety, types in your code are non-nullable by default,
+meaning that variables can’t contain null unless you say they can.
+With null safety, your runtime null-dereference errors
+turn into edit-time analysis errors.
+
+In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 
 [2.8 breaking changes]: https://github.com/dart-lang/sdk/issues/40686
 [calling native C code]: /guides/libraries/c-interop
@@ -280,6 +289,7 @@ For more information about how language versioning works, see the
 [collection if]: /guides/language/language-tour#collection-operators
 [Dart library]: /guides/libraries/create-library-packages#organizing-a-library-package
 [`dart compile`]: /tools/dart-compile
+[DArt FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
 [`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
@@ -290,6 +300,7 @@ For more information about how language versioning works, see the
 [migrated to Dart 2]: /dart-2
 [null safety]: /null-safety
 [set literals]: /guides/language/language-tour#sets
+[sound null safety]: /null-safety
 [sound type system]: /guides/language/type-system
 [spread operator]: /guides/language/language-tour#spread-operator
 [pub outdated]: /tools/pub/cmd/pub-outdated
