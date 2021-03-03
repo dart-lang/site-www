@@ -6,8 +6,8 @@ DEST_DIR=../../src/assets/dash/js
 
 set -x
 
-pub get
+dart pub get
 rm $DEST_DIR/dartpad_picker*.*
-pub run build_runner build --output $OUT_DIR --define "build_web_compilers|entrypoint=compiler=dart2js"
+dart run build_runner build --output $OUT_DIR --define "build_web_compilers|entrypoint=compiler=dart2js"
 cp $OUT_DIR/web/*  $DEST_DIR
 rm -rf $OUT_DIR

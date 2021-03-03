@@ -1,8 +1,8 @@
 name: dartpad_picker
 environment:
-  sdk: '>=2.4.0 <3.0.0'
+  sdk: '>=2.10.4 <3.0.0'
 
 dev_dependencies:
-  build_runner: ^1.5.0
-  build_web_compilers: ^2.1.0
-  pedantic: ^1.7.0
+  build_runner: ^1.11.5
+  build_web_compilers: ^2.16.4
+  pedantic: ^1.10.0
