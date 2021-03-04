@@ -13,9 +13,9 @@ void main() {
     return;
   }
 
-  var dartPadHost = querySelector('#dartpad-host');
-  var select = querySelector('#dartpad-select');
-  final snippets = [
+  final dartPadHost = querySelector('#dartpad-host');
+  final select = querySelector('#dartpad-select');
+  const snippets = [
     Snippet('Hello world', helloWorld),
     Snippet('Functions', functions),
     Snippet('Control flow', controlFlow),
@@ -52,13 +52,12 @@ bool isMobile() {
 
 // Snippets
 
-var helloWorld = r'''
-main() {
+const helloWorld = r'''
+void main() {
   print("Hello, World!");
-}
-'''
-    .trim();
-var functions = r'''
+}''';
+
+const functions = r'''
 // A function declaration.
 int timesTwo(int x) {
   return x * 2;
@@ -72,16 +71,14 @@ int runTwice(int x, int Function(int) f) {
   }
   return x;
 }
-main() {
+void main() {
   print("4 times two is ${timesTwo(4)}");
   print("4 times four is ${timesFour(4)}");
   print("2 x 2 x 2 is ${runTwice(2, timesTwo)}");
-}
-'''
-    .trim();
+}''';
 
-var controlFlow = r'''
-isEven(int x) {
+const controlFlow = r'''
+bool isEven(int x) {
   // An if-else statement.
   if (x % 2 == 0) {
     return true;
@@ -98,15 +95,13 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
   }
   return evenNumbers;
 }
-main() {
+void main() {
   var numbers = List.generate(10, (i) => i);
   print(getEvenNumbers(numbers));
-}
-'''
-    .trim();
+}''';
 
-var strings = '''
-main() {
+const strings = '''
+void main() {
   print('a single quoted string');
   print("a double quoted string");
   // Strings can be combined with the + operator.
@@ -118,11 +113,9 @@ are for multiple lines\''');
   var pi = 3.14;
   print('pi is \$pi');
   print('tau is \${2 * pi}');
-}
-'''
-    .trim();
+}''';
 
-var collectionLiterals = r'''
+const collectionLiterals = r'''
 // A list literal.
 var lostNumbers = [4, 8, 15, 16, 23, 42];
 // A map literal.
@@ -137,35 +130,33 @@ var frogs = {
   'Poison dart',
   'Glass',
 };
-main() {
+void main() {
   print(lostNumbers.last);
   print(nobleGases['Ne']);
   print(frogs.difference({'Poison dart'}));
-}
-'''
-    .trim();
+}''';
 
-var classes = r'''
+const classes = r'''
 // Abstract classes can't be instantiated.
 abstract class Item {
-  use();
+  void use();
 }
 // Classes can implement other classes.
 class Chest<T> implements Item {
-  List<T> contents;
+  final List<T> contents;
   // Constructors can assign arguments to instance variables using `this`.
   Chest(this.contents);
-  use() => print("$this has ${contents.length} items.");
+  void use() => print("$this has ${contents.length} items.");
 }
 class Sword implements Item {
-  int damage = 5;
-  use() => print("$this dealt $damage damage.");
+  final int damage = 5;
+  void use() => print("$this dealt $damage damage.");
 }
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  int damage = 50;
+  final int damage = 50;
 }
-main() {
+void main() {
   // The 'new' keyword is optional.
   var chest = Chest<Item>([
     DiamondSword(),
@@ -175,14 +166,12 @@ main() {
   for (var item in chest.contents) {
     item.use();
   }
-}
-'''
-    .trim();
+}''';
 
-var piMonteCarlo = r'''
+const piMonteCarlo = r'''
 import 'dart:async';
 import 'dart:math' show Random;
-main() async {
+void main() async {
   print('Compute π using the Monte Carlo method.');
   await for (var estimate in computePi().take(100)) {
     print('π ≅ $estimate');
@@ -206,7 +195,7 @@ Stream<double> computePi({int batch: 100000}) async* {
     yield ratio * 4;
   }
 }
-Iterable<Point> generateRandom([int seed]) sync* {
+Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
@@ -216,6 +205,4 @@ class Point {
   final double x, y;
   const Point(this.x, this.y);
   bool get isInsideUnitCircle => x * x + y * y <= 1;
-}
-'''
-    .trim();
+}''';
