@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk: [dev, beta, 2.10.5]
+        sdk: [dev, beta, stable]
         task:
           - ./tool/build.sh --check-links
           - ./tool/check-code.sh
@@ -39,7 +39,7 @@ jobs:
           - sdk: beta
             task: ./tool/analyze-and-test-examples.sh
             experimental: true
-          - sdk: 2.10.5
+          - sdk: stable
             task: ./tool/analyze-and-test-examples.sh
             experimental: false
           - sdk: dev
@@ -100,7 +100,7 @@ jobs:
           ruby-version: 2.6.5
       - uses: dart-lang/setup-dart@v0.3
         with:
-          sdk: 2.10.5
+          sdk: stable
       - name: Install node dependencies
         # TOOD: caching requires a lockfile for node deps, so does npm ci.
         run: npm install
