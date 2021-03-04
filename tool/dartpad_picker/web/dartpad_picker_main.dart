@@ -55,8 +55,7 @@ bool isMobile() {
 const helloWorld = r'''
 void main() {
   print("Hello, World!");
-}
-''';
+}''';
 
 const functions = r'''
 // A function declaration.
@@ -76,8 +75,7 @@ void main() {
   print("4 times two is ${timesTwo(4)}");
   print("4 times four is ${timesFour(4)}");
   print("2 x 2 x 2 is ${runTwice(2, timesTwo)}");
-}
-''';
+}''';
 
 const controlFlow = r'''
 bool isEven(int x) {
@@ -100,8 +98,7 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
 void main() {
   var numbers = List.generate(10, (i) => i);
   print(getEvenNumbers(numbers));
-}
-''';
+}''';
 
 const strings = '''
 void main() {
@@ -116,8 +113,7 @@ are for multiple lines\''');
   var pi = 3.14;
   print('pi is \$pi');
   print('tau is \${2 * pi}');
-}
-''';
+}''';
 
 const collectionLiterals = r'''
 // A list literal.
@@ -138,8 +134,7 @@ void main() {
   print(lostNumbers.last);
   print(nobleGases['Ne']);
   print(frogs.difference({'Poison dart'}));
-}
-''';
+}''';
 
 const classes = r'''
 // Abstract classes can't be instantiated.
@@ -171,8 +166,7 @@ void main() {
   for (var item in chest.contents) {
     item.use();
   }
-}
-''';
+}''';
 
 const piMonteCarlo = r'''
 import 'dart:async';
@@ -211,5 +205,4 @@ class Point {
   final double x, y;
   const Point(this.x, this.y);
   bool get isInsideUnitCircle => x * x + y * y <= 1;
-}
-''';
+}''';
