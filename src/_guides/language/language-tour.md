@@ -2831,7 +2831,7 @@ If you want to assign the value of a `final` instance variable
 after the constructor body starts, you can use `late final`,
 [but _be careful_][late-final-ivar].
 
-[late-final-ivar]: /guides/language/effective-dart/design_migrated#avoid-public-late-final-fields-without-initializers
+[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
 
 
 ### Constructors
@@ -4608,7 +4608,7 @@ To learn more about Dart's core libraries, see
 [ns-enable]: /null-safety#enable-null-safety
 [`num`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [`Object`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[ObjectVsDynamic]: /guides/language/effective-dart/design_migrated#avoid-using-dynamic-unless-you-want-to-disable-static-checking
+[ObjectVsDynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
 [`Set`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [`StackTrace`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
