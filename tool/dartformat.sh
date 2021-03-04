@@ -53,12 +53,18 @@ else
       ! -path "**/build/**"`
 
   dart format -l 60 \
+    $EXAMPLES/misc/test/library_tour/html_test.dart \
     $EXAMPLES/misc/lib/samples/spacecraft.dart
 
   dart format -l 65 \
     $EXAMPLES/httpserver/bin/basic_writer_server.dart \
     $EXAMPLES/httpserver/bin/note_server.dart \
-    $EXAMPLES/misc/bin/dcat.dart
+    $EXAMPLES/misc/bin/dcat.dart \
+    $EXAMPLES/misc/lib/library_tour/core \
+    $EXAMPLES/misc/lib/library_tour/async/future.dart \
+    $EXAMPLES/misc/lib/library_tour/async/stream.dart \
+    $EXAMPLES/misc/test/library_tour/core_test.dart \
+    $EXAMPLES/misc/test/library_tour/io_test.dart
 fi
 
 # If any files were changed, then exit 1:
