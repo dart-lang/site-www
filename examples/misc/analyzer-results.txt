@@ -1,15 +1,2 @@
 Analyzing misc...
-
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at lib/library_tour/core/collections.dart:2:16 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-  error - The argument type 'int' can't be assigned to the parameter type 'String' at lib/library_tour/core/collections.dart:5:14 - (argument_type_not_assignable)
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at test/language_tour/generics_test.dart:9:17 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at test/language_tour/generics_test.dart:27:19 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at test/library_tour/core_test.dart:216:24 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at test/library_tour/core_test.dart:267:20 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-
-6 issues found.
+No issues found!
