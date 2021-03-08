@@ -109,6 +109,38 @@ The `dart pub upgrade` command supports the
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+### `--dry-run` or `-n`
+
+With this, pub reports the dependencies that would
+but does not make the changes. This is useful if you
+want to analyze the updates before making them.
+
+### `--precompile`
+
+This option makes pub compile executables in its dependencies
+before running the get process.
+
+### `--major-versions`
+
+When pub upgrades with this option, it will do so
+ignoring any upper-bound constraint in the
+`pubspec.yaml` file. It will also update `pubspec.yaml`
+with the newly defined constraints.
+The packages it gets are those
+listed as "Resolvable" with `dart pub outdated`.
+
+It is recommended to commit your `pubspec.yaml` file
+before running this, as this cannot be undone otherwise.
+You can use `dart pub upgrade --major-versions --dry-run`
+to quickly check which dependencies would be upgraded. 
+
+### `--null-safety`
+
+This is similar to `--major-versions`, except that pub will
+force dependencies to use null-safety versions. The packages
+it gets are those listed in `dart pub outdated --mode=null-safety`.
+This option will also guide you to do a partial null-safety migration.
+
 <aside class="alert alert-info" markdown="1">
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
