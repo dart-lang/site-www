@@ -147,8 +147,7 @@ For options that apply to all pub commands, see
 
 With this, pub reports the dependencies that would
 but does not make the changes. This is useful if you
-want to analyze the updates before making them,
-as you cannot undo the changes afterwards.
+want to analyze updates before making them.
 
 ### `--precompile`
 
