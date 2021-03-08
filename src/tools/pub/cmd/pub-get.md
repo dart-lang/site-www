@@ -6,7 +6,7 @@ description: Use dart pub get to retrieve the dependencies used by your Dart app
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ dart pub get [--offline] [--dry-run] [--precompile]
+$ dart pub get [args]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
