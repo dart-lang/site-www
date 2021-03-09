@@ -82,7 +82,7 @@ produces:
   done: an uncompleted future. You'll learn more about futures in the next section.
 * Because `createOrderMessage()` fails to get the value describing the user's
   order, the example fails to print "Large Latte" to the console, and instead
-  prints "Your order is: Instance of '_Future<String>'".
+  prints "Your order is: Instance of '_Future\<String\>'".
 
 In the next sections you'll learn about futures and about working with futures
 (using `async` and `await`)
