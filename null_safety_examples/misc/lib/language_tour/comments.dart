@@ -38,7 +38,7 @@ class Activity {}
 class Llama {
   String? name;
 
-  /// Feeds your llama [Food].
+  /// Feeds your llama [food].
   ///
   /// The typical llama eats one bale of hay per week.
   void feed(Food food) {
