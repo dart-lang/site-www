@@ -112,7 +112,7 @@ void miscDeclAnalyzedButNotTested() {
   ///
   /// Code blocks are fenced in triple backticks:
   ///
-  /// ```
+  /// ```dart
   /// this.code
   ///     .will
   ///     .retain(its, formatting);
