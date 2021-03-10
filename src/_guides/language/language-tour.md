@@ -4556,8 +4556,9 @@ class Llama {
 }
 ```
 
-In the class's generated documentation, `[feed]` becomes a link to the `feed` method,
-and `[Food]` becomes a link to the API docs for the `Food` class.
+In the class's generated documentation, `[feed]` becomes a link
+to the docs for the `feed` method,
+and `[Food]` becomes a link to the docs for the `Food` class.
 
 To parse Dart code and generate HTML documentation, you can use Dart's
 [documentation generation tool, dartdoc.](https://github.com/dart-lang/dartdoc#dartdoc)
