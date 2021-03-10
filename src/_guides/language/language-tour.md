@@ -4538,7 +4538,7 @@ classes and arguments:
 class Llama {
   String? name;
 
-  /// Feeds your llama [Food].
+  /// Feeds your llama [food].
   ///
   /// The typical llama eats one bale of hay per week.
   void feed(Food food) {
@@ -4553,7 +4553,7 @@ class Llama {
 }
 ```
 
-In the generated documentation, `[Food]` becomes a link to the API docs
+In the generated documentation, `[food]` becomes a link to the API docs
 for the `Food` class.
 
 To parse Dart code and generate HTML documentation, you can use Dart's
