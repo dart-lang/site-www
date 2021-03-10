@@ -4535,6 +4535,9 @@ classes and arguments:
 ///
 /// Andean cultures have used llamas as meat and pack
 /// animals since pre-Hispanic times.
+/// 
+/// Just like any other animal, they need to eat,
+/// so don't forget to [feed] them some [Food].
 class Llama {
   String? name;
 
@@ -4553,8 +4556,8 @@ class Llama {
 }
 ```
 
-In the generated documentation, `[food]` becomes a link to the API docs
-for the `Food` class.
+In the class's generated documentation, `[feed]` becomes a link to the `feed` method,
+and `[Food]` becomes a link to the API docs for the `Food` class.
 
 To parse Dart code and generate HTML documentation, you can use Dart's
 [documentation generation tool, dartdoc.](https://github.com/dart-lang/dartdoc#dartdoc)
