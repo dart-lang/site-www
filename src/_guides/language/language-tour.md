@@ -4520,7 +4520,7 @@ Documentation comments are multi-line or single-line comments that begin
 with `///` or `/**`. Using `///` on consecutive lines has the same
 effect as a multi-line doc comment.
 
-Inside a documentation comment, the Dart compiler ignores all text
+Inside a documentation comment, Dart progam analysis ignores all text
 unless it is enclosed in brackets. Using brackets, you can refer to
 classes, methods, fields, top-level variables, functions, and
 parameters. The names in brackets are resolved in the lexical scope of
@@ -4554,10 +4554,10 @@ class Llama {
 ```
 
 In the generated documentation, `[Food]` becomes a link to the API docs
-for the Food class.
+for the `Food` class.
 
-To parse Dart code and generate HTML documentation, you can use the SDK’s
-[documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
+To parse Dart code and generate HTML documentation, you can use Dart's
+[documentation generation tool, dartdoc.](https://github.com/dart-lang/dartdoc#dartdoc)
 For an example of generated documentation, see the [Dart API
 documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice on how to structure
 your comments, see
