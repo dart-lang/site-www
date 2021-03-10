@@ -61,7 +61,7 @@ Dart null safety support is based on the following three core design principles:
   If the type system determines that something isn’t null, then that thing can _never_ be
   null. Once you migrate your whole project
   and its dependencies to null safety, you reap the full benefits of soundness
-  —- not only fewer bugs, but smaller binaries and faster execution.
+  — not only fewer bugs, but smaller binaries and faster execution.
 
 
 ## Enabling null safety {#enable-null-safety}
