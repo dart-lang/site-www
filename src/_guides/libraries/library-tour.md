@@ -378,6 +378,7 @@ assert(fruits.isEmpty);
 
 // You can also create a List using one of the constructors.
 var vegetables = List.filled(99, 'broccoli');
+assert(vegetables.every((v) => v == 'broccoli'));
 ```
 
 Use `indexOf()` to find the index of an object in a list:

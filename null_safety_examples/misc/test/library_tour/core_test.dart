@@ -239,8 +239,8 @@ void main() {
 
       // You can also create a List using one of the constructors.
       var vegetables = List.filled(99, 'broccoli');
+      assert(vegetables.every((v) => v == 'broccoli'));
       // #enddocregion List
-      assert(vegetables.isEmpty);
     });
 
     test('indexOf', () {
