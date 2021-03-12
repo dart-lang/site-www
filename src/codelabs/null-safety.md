@@ -7,7 +7,7 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n)*\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-This codelab teaches you about Dart’s null-safe type system,
+This codelab teaches you about Dart’s [null-safe type system](/null-safety),
 which was introduced in Dart 2.12. When you opt into null safety,
 types in your code are non-nullable by default,
 meaning that values can’t be `null` unless you say they can be.
