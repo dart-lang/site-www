@@ -62,7 +62,7 @@ The top-level `print()` method takes a single argument (any Object)
 and displays that object's string value (as returned by `toString()`)
 in the console.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (print)"?>
 ```dart
 print(anObject);
 print('I drink $tea.');
@@ -80,7 +80,7 @@ have some basic utilities for working with numbers.
 You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (int|double.parse)"?>
 ```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -90,7 +90,7 @@ assert(double.parse('0.50') == 0.5);
 Or use the parse() method of num, which creates an integer if possible
 and otherwise a double:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (num-parse)"?>
 ```dart
 assert(num.parse('42') is int);
 assert(num.parse('0x42') is int);
@@ -99,7 +99,7 @@ assert(num.parse('0.50') is double);
 
 To specify the base of an integer, add a `radix` parameter:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (radix)"?>
 ```dart
 assert(int.parse('42', radix: 16) == 66);
 ```
@@ -110,7 +110,7 @@ of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
 number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toString())"?>
 ```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -149,7 +149,7 @@ You can find particular locations within a string, as well as check
 whether a string begins with or ends with a particular pattern. For
 example:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains-etc)"?>
 ```dart
 // Check whether a string contains another string.
 assert('Never odd or even'.contains('odd'));
@@ -174,7 +174,7 @@ units; high-numbered characters such as the treble clef symbol
 You can also extract a substring or split a string into a list of
 substrings:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (substring-etc)"?>
 ```dart
 // Grab a substring.
 assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -217,7 +217,7 @@ assert(codeUnitList[0] == 78);
 You can easily convert strings to their uppercase and lowercase
 variants:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
 ```dart
 // Convert to uppercase.
 assert('structured web apps'.toUpperCase() ==
@@ -239,7 +239,7 @@ assert('STRUCTURED WEB APPS'.toLowerCase() ==
 Remove all leading and trailing white space with `trim()`. To check
 whether a string is empty (length is zero), use `isEmpty`.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (trim-etc)"?>
 ```dart
 // Trim a string.
 assert('  hello  '.trim() == 'hello');
@@ -260,7 +260,7 @@ none of the methods actually changes the state of a String. For example,
 the method `replaceAll()` returns a new String without changing the
 original String:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (replace)"?>
 ```dart
 var greetingTemplate = 'Hello, NAME!';
 var greeting =
@@ -277,7 +277,7 @@ StringBuffer doesn’t generate a new String object until `toString()` is
 called. The `writeAll()` method has an optional second parameter that
 lets you specify a separator—in this case, a space.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (StringBuffer)"?>
 ```dart
 var sb = StringBuffer();
 sb
@@ -297,7 +297,7 @@ The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (RegExp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
 var numbers = RegExp(r'\d+');
@@ -317,7 +317,7 @@ assert(exedOut == 'llamas live XX to XX years');
 You can work directly with the RegExp class, too. The Match class
 provides access to a regular expression match.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (match)"?>
 ```dart
 var numbers = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
@@ -349,12 +349,13 @@ initialize [lists](#lists). Alternatively, use one of the List
 constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List)"?>
 ```dart
-// Use a List constructor.
-var vegetables = List();
+// Create an empty list of strings.
+var grains = <String>[];
+assert(grains.isEmpty);
 
-// Or simply use a list literal.
+// Create a list using a list literal.
 var fruits = ['apples', 'oranges'];
 
 // Add to a list.
@@ -374,11 +375,15 @@ assert(fruits.length == 4);
 // Remove all elements from a list.
 fruits.clear();
 assert(fruits.isEmpty);
+
+// You can also create a List using one of the constructors.
+var vegetables = List.filled(99, 'broccoli');
+assert(vegetables.every((v) => v == 'broccoli'));
 ```
 
 Use `indexOf()` to find the index of an object in a list:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (indexOf)"?>
 ```dart
 var fruits = ['apples', 'oranges'];
 
@@ -395,7 +400,7 @@ function that compares two objects. This sorting function must return \<
 example uses `compareTo()`, which is defined by
 [Comparable][] and implemented by String.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (compareTo)"?>
 ```dart
 var fruits = ['bananas', 'apples', 'oranges'];
 
@@ -404,13 +409,15 @@ fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
 ```
 
-Lists are parameterized types, so you can specify the type that a list
+Lists are parameterized types
+([generics](/guides/language/language-tour#generics)),
+so you can specify the type that a list
 should contain:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List-of-String)"?>
 ```dart
 // This list should contain only strings.
-var fruits = List<String>();
+var fruits = <String>[];
 
 fruits.add('apples');
 var fruit = fruits[0];
@@ -418,10 +425,27 @@ assert(fruit is String);
 ```
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/collections.dart (List-of-String)"?>
 ```dart
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
+
+{{site.alert.note}}
+  In many cases, you don't
+  need to explicitly specify generic
+  types, because Dart will
+  [infer](/guides/language/type-system#type-inference)
+  them for you.
+  A list like `['Dash', 'Dart']` is understood
+  to be a `List<String>` (read: list of strings).
+
+  But there are times when you _should_ specify
+  the generic type. Like, for example, when Dart doesn't have
+  anything to infer from: `[]` could be a list of any
+  combination of things.
+  That's often not what you want, so you write `<String>[]`
+  or `<Person>[]` or something similar.
+{{site.alert.end}}
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -430,9 +454,12 @@ Refer to the [List API reference][List] for a full list of methods.
 A set in Dart is an unordered collection of unique items. Because a set
 is unordered, you can’t get a set’s items by index (position).
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Set)"?>
 ```dart
-var ingredients = Set();
+// Create an empty set of strings.
+var ingredients = <String>{};
+
+// Add new items to it.
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
@@ -443,14 +470,18 @@ assert(ingredients.length == 3);
 // Remove an item from a set.
 ingredients.remove('gold');
 assert(ingredients.length == 2);
+
+// You can also create sets using
+// one of the constructors.
+var atomicNumbers = Set.from([79, 22, 54]);
 ```
 
 Use `contains()` and `containsAll()` to check whether one or more
 objects are in a set:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Check whether an item is in the set.
@@ -462,9 +493,9 @@ assert(ingredients.containsAll(['titanium', 'xenon']));
 
 An intersection is a set whose items are in two other sets.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (intersection)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Create the intersection of two sets.
@@ -485,7 +516,7 @@ easy retrieval. Unlike in JavaScript, Dart objects are not maps.
 You can declare a map using a terse literal syntax, or you can use a
 traditional constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Map)"?>
 ```dart
 // Maps often use strings as keys.
 var hawaiianBeaches = {
@@ -505,7 +536,7 @@ var nobleGases = Map<int, String>();
 You add, get, and set map items using the bracket syntax. Use `remove()`
 to remove a key and its value from a map.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (remove)"?>
 ```dart
 var nobleGases = {54: 'xenon'};
 
@@ -522,7 +553,7 @@ assert(!nobleGases.containsKey(54));
 
 You can retrieve all the values or all the keys from a map:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (keys)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (keys)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -548,7 +579,7 @@ To check whether a map contains a key, use `containsKey()`. Because map
 values can be null, you cannot rely on simply getting the value for the
 key and checking for null to determine the existence of a key.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (containsKey)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -564,9 +595,9 @@ Use the `putIfAbsent()` method when you want to assign a value to a key
 if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (putIfAbsent)"?>
 ```dart
-var teamAssignments = {};
+var teamAssignments = <String, String>{};
 teamAssignments.putIfAbsent(
     'Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
@@ -587,9 +618,9 @@ which List and Set implement.
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (isEmpty)"?>
 ```dart
-var coffees = [];
+var coffees = <String>[];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
@@ -598,7 +629,7 @@ assert(teas.isNotEmpty);
 To apply a function to each item in a list, set, or map, you can use
 `forEach()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List.forEach)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -608,7 +639,7 @@ teas.forEach((tea) => print('I drink $tea'));
 When you invoke `forEach()` on a map, your function must take two
 arguments (the key and value):
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Map.forEach)"?>
 ```dart
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
@@ -620,7 +651,7 @@ hawaiianBeaches.forEach((k, v) {
 Iterables provide the `map()` method, which gives you all the results in
 a single object:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List.map)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -636,7 +667,7 @@ loudTeas.forEach(print);
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toList)"?>
 ```dart
 var loudTeas =
     teas.map((tea) => tea.toUpperCase()).toList();
@@ -651,7 +682,7 @@ cities instead of isDecaffeinated.
 {% endcomment %}
 
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (where-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (where-etc)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -697,7 +728,7 @@ URI (such as `/`, `:`, `&`, `#`), use the `encodeFull()` and
 `decodeFull()` methods. These methods are good for encoding or decoding
 a fully qualified URI, leaving intact special URI characters.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (encodeFull)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -717,7 +748,7 @@ To encode and decode all of a string’s characters that have special
 meaning in a URI, including (but not limited to) `/`, `&`, and `:`, use
 the `encodeComponent()` and `decodeComponent()` methods.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (encodeComponent)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -738,7 +769,7 @@ If you have a Uri object or a URI string, you can get its parts using
 Uri fields such as `path`. To create a Uri from a string, use the
 `parse()` static method:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Uri.parse)"?>
 ```dart
 var uri =
     Uri.parse('https://example.org:8080/foo/bar#frag');
@@ -757,7 +788,7 @@ See the [Uri API reference][Uri] for more URI components that you can get.
 You can build up a URI from individual parts using the `Uri()`
 constructor:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Uri)"?>
 ```dart
 var uri = Uri(
     scheme: 'https',
@@ -776,7 +807,7 @@ local time zone.
 
 You can create DateTime objects using several constructors:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (DateTime)"?>
 ```dart
 // Get the current date and time.
 var now = DateTime.now();
@@ -801,7 +832,7 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
 ```dart
 // 1/1/2000, UTC
 var y2k = DateTime.utc(2000);
@@ -815,7 +846,7 @@ assert(unixEpoch.millisecondsSinceEpoch == 0);
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Duration)"?>
 ```dart
 var y2k = DateTime.utc(2000);
 
@@ -856,7 +887,7 @@ interface to indicate that an object can be compared to another object,
 usually for sorting. The `compareTo()` method returns \< 0 for
 *smaller*, 0 for the *same*, and \> 0 for *bigger*.
 
-<?code-excerpt "misc/lib/library_tour/core/comparable.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/comparable.dart"?>
 ```dart
 class Line implements Comparable<Line> {
   final int length;
@@ -889,7 +920,7 @@ compare many fields. They don’t do identical() automatically because, by
 convention, NaN != NaN.
 {% endcomment %}
 
-<?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/hash_code.dart"?>
 ```dart
 class Person {
   final String firstName, lastName;
@@ -933,7 +964,7 @@ support for-in loops. Extend (if possible) or implement Iterable
 whenever you create a class that can provide Iterators for use in for-in
 loops. Implement Iterator to define the actual iteration ability.
 
-<?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/iterator.dart"?>
 ```dart
 class Process {
   // Represents a process...
@@ -983,10 +1014,10 @@ Throwing an application-specific exception is a common way to indicate
 that an error has occurred. You can define a custom exception by
 implementing the Exception interface:
 
-<?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/exception.dart"?>
 ```dart
 class FooException implements Exception {
-  final String msg;
+  final String? msg;
 
   const FooException([this.msg]);
 
@@ -1019,7 +1050,7 @@ dart:async library ([API reference][dart:async]).
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (import)"?>
 ```dart
 import 'dart:async';
 ```
@@ -1046,7 +1077,7 @@ Consider the following function.  It uses Future's `then()` method
 to execute three asynchronous functions in a row,
 waiting for each one to complete before executing the next one.
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
 ```dart
 runUsingFuture() {
   // ...
@@ -1059,7 +1090,7 @@ runUsingFuture() {
 The equivalent code with await expressions
 looks more like synchronous code:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
 ```dart
 runUsingAsyncAwait() async {
   // ...
@@ -1072,7 +1103,7 @@ runUsingAsyncAwait() async {
 An `async` function can catch exceptions from Futures.
 For example:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (catch)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (catch)"?>
 ```dart
 var entryPoint = await findEntryPoint();
 try {
@@ -1104,7 +1135,7 @@ example, `HttpRequest.getString()` returns a Future, since HTTP requests
 can take a while. Using `then()` lets you run some code when that Future
 has completed and the promised string value is available:
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/basic.dart (then)"?>
 ```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1114,7 +1145,7 @@ HttpRequest.getString(url).then((String result) {
 Use `catchError()` to handle any errors or exceptions that a Future
 object might throw.
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/basic.dart (catchError)"?>
 ```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1142,7 +1173,7 @@ registered with `then()` returns a Future, `then()` returns an
 equivalent Future. If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (then-chain)"?>
 ```dart
 Future result = costlyQuery(url);
 result
@@ -1162,7 +1193,7 @@ In the preceding example, the methods run in the following order:
 
 Here is the same code written using await:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
 ```dart
 try {
   final value = await costlyQuery(url);
@@ -1181,7 +1212,7 @@ Sometimes your algorithm needs to invoke many asynchronous functions and
 wait for them all to complete before continuing. Use the [Future.wait()][]
 static method to manage multiple Futures and wait for them to complete:
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 ```dart
 Future deleteLotsOfFiles() async =>  ...
 Future copyLotsOfFiles() async =>  ...
@@ -1214,18 +1245,14 @@ to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
 <!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
     if (isDir) {
       final startingDir = Directory(searchPath);
-      startingDir
-          .list(
-              recursive: argResults[recursive],
-              followLinks: argResults[followLinks])
-          .[!listen!]((entity) {
+      startingDir.list().[!listen!]((entity) {
         if (entity is File) {
           searchFile(entity, searchTerms);
         }
@@ -1241,15 +1268,13 @@ The equivalent code with await expressions,
 including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list(
-        recursive: argResults[recursive],
-        followLinks: argResults[followLinks])) {
+    [!await for!] (var entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1278,17 +1303,17 @@ Dart language features, see the
 To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
-<?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-// Find a button by ID and add an event handler.
-querySelector('#submitInfo').onClick.[!listen!]((e) {
+// Add an event handler to a button.
+submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
 {% endprettify %}
 
-In this example, the `onClick` property is a Stream object provided by
-the "submitInfo" button.
+In this example, the `onClick` property is a `Stream` object provided by
+the submit button.
 
 If you care about only one event, you can get it using a property such
 as `first`, `last`, or `single`. To test the event before handling it,
@@ -1310,7 +1335,7 @@ Often, you need to change the format of a stream's data before you can
 use it. Use the `transform()` method to produce a stream with a
 different type of data:
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (transform)"?>
 ```dart
 var lines = inputStream
     .transform(utf8.decoder)
@@ -1338,7 +1363,7 @@ then use try-catch to handle errors.
 Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future readFileAwaitFor() async {
   var config = File('config.txt');
@@ -1363,7 +1388,7 @@ then handle errors by registering an `onError` listener.
 Run code after the stream is closed by registering
 an `onDone` listener.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
@@ -1403,7 +1428,7 @@ functionality in the Math library is implemented as top-level functions.
 
 To use this library in your app, import dart:math.
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (import)"?>
 ```dart
 import 'dart:math';
 ```
@@ -1413,7 +1438,7 @@ import 'dart:math';
 
 The Math library provides basic trigonometric functions:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (trig)"?>
 ```dart
 // Cosine
 assert(cos(pi) == -1.0);
@@ -1436,7 +1461,7 @@ assert((sinOf30degrees - 0.5).abs() < 0.01);
 
 The Math library provides `max()` and `min()` methods:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (min-max)"?>
 ```dart
 assert(max(1, 1000) == 1000);
 assert(min(1, -1000) == -1000);
@@ -1447,7 +1472,7 @@ assert(min(1, -1000) == -1000);
 
 Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (constants)"?>
 ```dart
 // See the Math library for additional constants.
 print(e); // 2.718281828459045
@@ -1461,7 +1486,7 @@ print(sqrt2); // 1.4142135623730951
 Generate random numbers with the [Random][] class. You can
 optionally provide a seed to the Random constructor.
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (Random)"?>
 ```dart
 var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
@@ -1470,7 +1495,7 @@ random.nextInt(10); // Between 0 and 9.
 
 You can even generate random booleans:
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (Random-bool)"?>
 ```dart
 var random = Random();
 random.nextBool(); // true or false
@@ -1494,7 +1519,7 @@ set.
 
 To use this library, import dart:convert.
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (import)"?>
 ```dart
 import 'dart:convert';
 ```
@@ -1504,7 +1529,7 @@ import 'dart:convert';
 
 Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (json-decode)"?>
 ```dart
 // NOTE: Be sure to use double quotes ("),
 // not single quotes ('), inside the JSON string.
@@ -1527,7 +1552,7 @@ assert(firstScore['score'] == 40);
 Encode a supported Dart object into a JSON-formatted string with
 `jsonEncode()`:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (json-encode)"?>
 ```dart
 var scores = [
   {'score': 40},
@@ -1560,7 +1585,7 @@ For more examples and links to JSON-related packages, see
 
 Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
 ```dart
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
@@ -1578,7 +1603,7 @@ assert(funnyWord == 'Îñţérñåţîöñåļîžåţîờñ');
 To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var lines =
     [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
@@ -1595,7 +1620,7 @@ try {
 Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
 ```dart
 List<int> encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 

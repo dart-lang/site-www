@@ -52,6 +52,24 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion collection-literals
   }
 
+  {
+    var command = 'c';
+    var options = ['a'];
+    var modeFlags = ['b'];
+    var filePaths = ['p'];
+    String removeExtension(String path) => path;
+
+    // #docregion spread-etc
+    var arguments = <String>[];
+    arguments.addAll(options);
+    arguments.add(command);
+    if (modeFlags != null) arguments.addAll(modeFlags);
+    arguments.addAll(filePaths
+        .where((path) => path.endsWith('.dart'))
+        .map((path) => path.replaceAll('.dart', '.js')));
+    // #enddocregion spread-etc
+  }
+
   (Iterable lunchBox, Iterable words) {
     // #docregion dont-use-length
     if (lunchBox.length == 0) return 'so hungry...';

@@ -83,8 +83,8 @@ add static analysis to your tool, see the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
 {{site.alert.note}}
-  The analyzer error codes are listed in the [Dart SDK
-  repo.][analyzer error codes]
+  To view various analyzer diagnostics with explanations and common fixes,
+  see [Diagnostic messages][diagnostics].
 {{site.alert.end}}
 
 ## The analysis options file
@@ -487,6 +487,7 @@ Use the following resources to learn more about static analysis in Dart:
 [analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html
 [analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
 [change the severity of rules]: #changing-the-severity-of-rules
+[diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [type-system]: /guides/language/type-system

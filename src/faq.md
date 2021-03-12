@@ -262,10 +262,9 @@ has some tips for specific browsers.
 ### Q. What web frameworks can I use with Dart?
 
 You can use the low-level HTML API defined by core libraries such as dart:html,
-or you can use a framework such as [AngularDart][].
-During Google I/O 2019 we [announced][fwebannounce] a technical preview of
-[Flutter for web][] that lets you take Flutter UI code and business logic
-and run it directly in the browser.
+or you can use a framework such as [AngularDart][]. You can also use
+[Flutter for web][] to bring your existing Flutter applications or new ones
+to the browser.
 
 ### Q. Will the Dart VM get into Chrome?
 
@@ -441,22 +440,6 @@ and thus does not support Int64List or Uint64List.
 Dart code compiled via dart2js results in a runtime exception
 if either of those lists is used.
 
-### Q. Why not compile Dart to asm.js instead of JavaScript?
-
-Asm.js is a very restricted subset of JavaScript best suited as a compilation
-target for C compilers. It does not include JavaScript objects or direct
-access to the DOM. Essentially, it allows only arithmetic operations and
-manipulations on typed arrays.
-
-While it is possible to implement the features that Dart requires,
-they would incur a large overhead in both speed and size, compared to
-relying on the already existing features provided by the underlying
-JavaScript engine.
-For example, any JavaScript machine comes with a garbage collector;
-implementing another one in asm.js would increase the output size, and be
-noticeably slower than the well-tuned garbage collectors of
-modern JavaScript VMs.
-
 
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
 [sourcemaps]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
@@ -471,5 +454,4 @@ modern JavaScript VMs.
 [fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
-[fwebannounce]: https://medium.com/flutter-io/bringing-flutter-to-the-web-904de05f0df0
 [Flutter for web]: {{site.flutter}}/web

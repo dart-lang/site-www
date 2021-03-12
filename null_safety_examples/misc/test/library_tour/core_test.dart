@@ -212,6 +212,10 @@ void main() {
   group('Collections: List:', () {
     test('constructor', () {
       // #docregion List
+      // Create an empty list of strings.
+      var grains = <String>[];
+      assert(grains.isEmpty);
+
       // Create a list using a list literal.
       var fruits = ['apples', 'oranges'];
 
@@ -235,8 +239,8 @@ void main() {
 
       // You can also create a List using one of the constructors.
       var vegetables = List.filled(99, 'broccoli');
+      assert(vegetables.every((v) => v == 'broccoli'));
       // #enddocregion List
-      assert(vegetables.isEmpty);
     });
 
     test('indexOf', () {
