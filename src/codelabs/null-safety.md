@@ -327,7 +327,7 @@ are some suggestions for where to go next:
 -   [Play with DartPad](https://nullsafety.dartpad.dev/).
 -   Try another [codelab](/codelabs).
 -   Learn more about null safety:
-    -   Overview: [Sound null safety](https://dart.dev/null-safety).
+    -   Overview: [Sound null safety](/null-safety).
     -   Deep dive:
         [Understanding null safety](/null-safety/understanding-null-safety).
 -   [Get the Dart SDK](/get-dart).
