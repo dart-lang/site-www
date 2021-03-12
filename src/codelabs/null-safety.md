@@ -1,6 +1,6 @@
 ---
 title: Null safety codelab
-description: Learn about and practice writing null safe code in DartPad!
+description: Learn about and practice writing null-safe code in DartPad!
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 {% assign useIframe = false -%}
