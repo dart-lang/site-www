@@ -330,7 +330,7 @@ are some suggestions for where to go next:
     -   Overview: [Sound null safety](https://dart.dev/null-safety).
     -   Deep dive:
         [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety).
--   [Get the Dart SDK](https://dart.dev/get-dart).
+-   [Get the Dart SDK](/get-dart).
 
 If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials](/resources/dartpad-best-practices).
