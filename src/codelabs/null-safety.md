@@ -325,7 +325,7 @@ Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
 
 -   [Play with DartPad](https://nullsafety.dartpad.dev/).
--   Try another [codelab](https://dart.dev/codelabs).
+-   Try another [codelab](/codelabs).
 -   Learn more about null safety:
     -   Overview: [Sound null safety](https://dart.dev/null-safety).
     -   Deep dive:
