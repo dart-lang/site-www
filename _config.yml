@@ -13,7 +13,7 @@ port: 4000
 # use case:
 #   {{site.flutter}}/docs
 
-dart-site: https://dart.dev
+dart-site: '' 
 prev-url: https://v1-dartlang-org.firebaseapp.com
 angulardart: https://angulardart.dev
 dart_vm:  /server
