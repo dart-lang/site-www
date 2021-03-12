@@ -219,7 +219,7 @@ void main() {
 }
 ```
 
-## Late keyword
+## The late keyword
 
 Sometimes fields in a class *should* be non-nullable, but those fields can't be
 assigned a value immediately. For cases like that, use the
