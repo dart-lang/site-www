@@ -143,16 +143,22 @@ command-line argument, as mentioned above.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+### `--offline`
+
+Uses cached packages rather than downloading
+from the network. See above for a more detailed
+explanation.
+
 ### `--dry-run` or `-n`
 
-With this, pub reports the dependencies that would
-but does not make the changes. This is useful if you
+Reports the dependencies that would be changed,
+but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
 ### `--precompile`
 
-This option makes pub compile executables in its dependencies
-before running the get process.
+Creates snapshots of the
+project's executables in direct dependencies.
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
