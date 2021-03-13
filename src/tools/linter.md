@@ -16,7 +16,7 @@ These rules identify possible errors and other problems in your code.
 
 {% for lint in site.data.linter_rules %}
 
-{% if lint.group == "error" %}
+{% if lint.group == "errors" %}
 
 ### {{ lint.name }}
 
