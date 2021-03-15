@@ -109,22 +109,11 @@ The `dart pub upgrade` command supports the
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--offline`
-
-Uses cached packages rather than downloading
-from the network. See above for a more detailed
-explanation.
-
 ### `--dry-run` or `-n`
 
 Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
-
-### `--precompile`
-
-Creates snapshots of the
-project's executables in direct dependencies.
 
 ### `--major-versions`
 
@@ -146,6 +135,17 @@ This is similar to `--major-versions`, except that pub will
 force dependencies to use null-safety versions. The packages
 it gets are those listed in `dart pub outdated --mode=null-safety`.
 This option will also guide you to do a partial null-safety migration.
+
+### `--offline`
+
+Uses cached packages rather than downloading
+from the network. See above for a more detailed
+explanation.
+
+### `--precompile`
+
+Creates snapshots of the
+project's executables in direct dependencies.
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*
