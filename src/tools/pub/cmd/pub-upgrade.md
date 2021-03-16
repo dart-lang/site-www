@@ -125,8 +125,8 @@ Also updates `pubspec.yaml` with the new constraints.
 
 It is recommended to commit your `pubspec.yaml` file
 before running this, as this cannot be undone otherwise.
-You can use `dart pub upgrade --major-versions --dry-run`
-to quickly check which dependencies would be upgraded. 
+To check which dependencies will be upgraded,
+you can use `dart pub upgrade --major-versions --dry-run`.
 
 ### `--null-safety`
 
