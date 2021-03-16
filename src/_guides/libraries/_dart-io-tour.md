@@ -267,9 +267,6 @@ provides APIs for [processes,][Process] [sockets,][Socket] and
 For more information about server-side and command-line app development, see the
 [server-side Dart overview.](/server)
 
-For information on other dart:* libraries, see the
-[library tour.][library tour]
-
 
 [library tour]: /guides/libraries/library-tour
 [dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
