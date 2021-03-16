@@ -147,8 +147,8 @@ This command is similar to `--major-versions`.
 ### `--offline`
 
 Uses cached packages rather than downloading
-from the network. See above for a more detailed
-explanation.
+from the network.
+For details, see [Upgrading while offline](#upgrading-while-offline).
 
 ### `--precompile`
 
