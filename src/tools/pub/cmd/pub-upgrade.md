@@ -132,10 +132,17 @@ you can use `dart pub upgrade --major-versions --dry-run`.
 
 ### `--null-safety`
 
-This is similar to `--major-versions`, except that pub will
-force dependencies to use null-safety versions. The packages
-it gets are those listed in `dart pub outdated --mode=null-safety`.
-This option will also guide you to do a partial null-safety migration.
+Gets the packages that
+[`dart pub outdated --mode=null-safety`][`dart pub outdated`]
+lists as _resolvable_,
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+This command is similar to `--major-versions`.
+
+{{ site.alert.tip }}
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
+{{ site.alert.end }}
 
 ### `--offline`
 
