@@ -38,8 +38,8 @@ and how to pick the best container for your data.
 **Note:**
 This article does not cover the SIMD types available in Dart,
 which enable operating on four floating-point numbers in parallel.
-To learn more, read
-[Using SIMD in Dart](simd).
+To learn more, refer to the 
+[`dart:typed_data` documentation][dart-typed_data].
 </aside>
 
 ## Overview
@@ -548,3 +548,4 @@ Flatten multiple-dimension lists into a single list,
 and compute the flattened index at runtime.
 This way you avoid the expense of dealing with a list of lists.
 
+[dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
