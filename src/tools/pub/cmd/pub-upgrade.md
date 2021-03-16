@@ -117,12 +117,11 @@ want to analyze updates before making them.
 
 ### `--major-versions`
 
-When pub upgrades with this option, it will do so
-ignoring any upper-bound constraint in the
-`pubspec.yaml` file. It will also update `pubspec.yaml`
-with the newly defined constraints.
-The packages it gets are those
-listed as "Resolvable" with `dart pub outdated`.
+Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
+ignoring any upper-bound constraint in the`pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+
+[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 
 It is recommended to commit your `pubspec.yaml` file
 before running this, as this cannot be undone otherwise.
