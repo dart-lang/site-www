@@ -105,7 +105,6 @@ run `dart pub upgrade` again to upgrade to a later version.
 
 The `dart pub upgrade` command supports the
 [`dart pub get` options](/tools/pub/cmd/pub-get#options).
-
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
@@ -118,7 +117,7 @@ want to analyze updates before making them.
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
-ignoring any upper-bound constraint in the`pubspec.yaml` file.
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
 Also updates `pubspec.yaml` with the new constraints.
 
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
