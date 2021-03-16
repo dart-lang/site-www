@@ -65,6 +65,14 @@ This command creates a small Dart app that has the following:
 * A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
+  
+A quick note about `dart create`:
+
+`dart create` also runs `dart pub get` under the hood. This second command
+scans the generated pubspec file (mentioned in the list above) and
+downloads any dependencies captured in that file. If you add other
+dependencies to your pubspec file, you'll need to run `dart pub get`
+to make sure that they're downloaded and available to use!
 
 
 ## 4. Run the app
