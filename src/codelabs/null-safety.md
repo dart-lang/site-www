@@ -87,7 +87,7 @@ void main() {
 }
 ```
 
-## Using ? and !
+## Using the null assertion operator (!)
 
 Null safety introduces new operators and keywords for dealing with null values,
 `?`, `!`, and `late`. Here's how you use them:
