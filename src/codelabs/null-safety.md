@@ -92,9 +92,6 @@ void main() {
 -   If you're sure that an expression with a nullable type isn't null, use a
     postfix exclamation mark (`!`, or "bang operator") to
     make Dart treat it as non-nullable.
--   If you want to initalize a non-nullable variable to a
-    non-null value before it’s used, use the `late` keyboard before the
-    variable’s type.
 
 ### Example: The assertion operator (!)
 
