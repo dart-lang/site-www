@@ -210,7 +210,7 @@ that tells Dart that all of the following are true:
 If you declare a variable `late` and the variable is read before it's assigned a
 value, a `LateInitializationError` is thrown to tell you what went wrong.
 
-### Example: Practice with late
+### Example: Practice using late
 
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
