@@ -207,9 +207,9 @@ assigned a value immediately. For cases like that, use the
 When you put `late` in front of a variable declaration,
 that tells Dart that all of the following are true:
 
--   You aren't going to assign that field a value right away.
--   But you *are* going to assign it a value later.
--   And you'll make sure it's assigned a value *before* it's accessed.
+-   Don't assign that variable a value yet.
+-   You *will* assign it a value later.
+-   You'll make sure that the variable has a value *before* the variable is used.
 
 If you declare a field `late` and the field is read before it is assigned a
 value, a `LateInitializationError` is thrown to tell you what went wrong.
