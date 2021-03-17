@@ -110,7 +110,7 @@ But if you're wrong, Dart throws an exception at run-time. This makes the
 expression isn't null.
 
 In the example below, try adding exclamation points to correct the
-three broken assignments:
+broken assignments:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
