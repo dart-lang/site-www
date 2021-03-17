@@ -212,7 +212,7 @@ that tells Dart that all of the following are true:
 -   You *will* assign it a value later.
 -   You'll make sure that the variable has a value *before* the variable is used.
 
-If you declare a field `late` and the field is read before it is assigned a
+If you declare a variable `late` and the variable is read before it's assigned a
 value, a `LateInitializationError` is thrown to tell you what went wrong.
 
 ### Example: The `late` keyword
