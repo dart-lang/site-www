@@ -200,7 +200,8 @@ void main() {
 
 ## The late keyword
 
-Sometimes fields in a class *should* be non-nullable, but those fields can't be
+Sometimes variables — fields in a class, or top-level variables — 
+should be non-nullable, but they can't be
 assigned a value immediately. For cases like that, use the
 [`late` keyword]( /null-safety/understanding-null-safety#late-variables).
 
