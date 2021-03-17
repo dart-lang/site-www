@@ -89,11 +89,6 @@ void main() {
 
 ## Using the null assertion operator (!)
 
-Null safety introduces new operators and keywords for dealing with null values,
-`?`, `!`, and `late`. Here's how you use them:
-
--   If you're creating a variable that can hold a null value, use a
-    question mark (`?`) to inform Dart of the variable’s nullability.
 -   If you're sure that an expression with a nullable type isn't null, use a
     postfix exclamation mark (`!`, or "bang operator") to
     make Dart treat it as non-nullable.
