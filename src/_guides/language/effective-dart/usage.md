@@ -101,13 +101,8 @@ my_package
 
 And say `api_test.dart` imports `api.dart` in two ways:
 
-{:.good}
 {% prettify dart tag=pre+code %}
 import 'package:my_package/api.dart';
-{% endprettify %}
-
-{:.bad}
-{% prettify dart tag=pre+code %}
 import '../lib/api.dart';
 {% endprettify %}
 
@@ -121,6 +116,13 @@ Instead, when you need to reach into a package's `lib` directory
 (even from the same package's `test` directory
 or any other top-level directory),
 use a `package:` import.
+
+{:.good}
+<?code-excerpt "test/api_test.dart"?>
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+{% endprettify %}
+
 A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
 
