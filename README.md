@@ -39,17 +39,20 @@ If you want or need to build, follow the steps below.
 
 Install the following tools if you don't have them already.
 
-- **bash**, the Bourne shell. These instructions assume you're using `bash` -- setup might not work if you use another shell.
+- **bash**, the Bourne shell. These instructions assume you're using `bash`;
+setup might not work if you use another shell.
 - **[nvm][]**, the Node Version Manager.
 
-  > NOTE: To make `nvm` immediately available in your current shell, run `source <PATH_TO_INSTALLATION>`. For example:
+  > NOTE: To make `nvm` immediately available in your current shell,
+  > run `source <PATH_TO_INSTALLATION>`. For example:
   > ```console
   > $ source ~/.nvm/nvm.sh
   > ```
 
 - **[rvm][]**, the Ruby Version Manager.
 
-  > NOTE: To make `rvm` immediately available in your current shell, run `source <PATH_TO_INSTALLATION>`. For example:
+  > NOTE: To make `rvm` immediately available in your current shell,
+  > run `source <PATH_TO_INSTALLATION>`. For example:
   > ```console
   > $ source ~/.rvm/bin/rvm
   > ```
@@ -105,7 +108,8 @@ submodule-cloning techniques:
    ```console
    $ cd <PATH_TO_REPO>
    ```
-1.  Run the `env-set.sh` script to initialize environment variables, and to install/use required Node & Ruby version:
+1.  Run the `env-set.sh` script to initialize environment variables,
+    and to install/use required Node & Ruby version:
 
     ```console
     $ source ./tool/env-set.sh
@@ -121,7 +125,11 @@ submodule-cloning techniques:
     $ ./tool/install.sh
     ```
 
-You _may_ need to run `gem install bundler` to upgrade it to the latest version if you get errors such as `require: cannot load such file` later. Another command that seems to be useful when the usual installation process doesn't work is `bundle install --force`.
+You _may_ need to run `gem install bundler` to upgrade it to the latest version
+if you get errors such as `require: cannot load such file` later.
+Another command that seems to be useful
+when the usual installation process doesn't work is
+`bundle install --force`.
 
 > IMPORTANT:
 > - Any time you create a **new terminal/command window** to work on
@@ -132,7 +140,7 @@ You _may_ need to run `gem install bundler` to upgrade it to the latest version 
 Once everything is installed, you need to do a full site build at least once:
 
 ```console
-$ `jekyll build # full site build
+$ jekyll build # full site build
 ```
 
 The generated site is placed in the `_site` folder. To serve this folder use:
@@ -148,9 +156,10 @@ autorefreshing your browser after edits):
 $ jekyll serve --livereload
 ```
 
-To view the generated site open [localhost:4000](http://localhost:4000) in a browser.
+To view the generated site open [localhost:4000](http://localhost:4000).
 
-You can build, serve, and have a watcher for changes by running the following command:
+You can build, serve, and have a watcher for changes by
+running the following command:
 
 ```console
 $ ./tool/serve.sh
@@ -241,65 +250,43 @@ test failed, then rerun the command without the `-q` flag.
 1. Navigate to the Firebase console,
 [console.firebase.google.com](https://console.firebase.google.com/).
 
-  If you don't already have a project to stage to,
-  create it:
+1. If you don't already have a project to stage to,
+   create it:
 
-  1. Select **Create New Project**.
-  1. Enter a project name in the dialog, such as `staging-1`.
-  1. Click **Create Project**. This takes you to the
-    page for your new project.
+   1. Select **Create New Project**.
+   1. Enter a project name in the dialog, such as `staging-1`.
+   1. Click **Create Project**. This takes you to the
+      page for your new project.
 
-  > **Note:** To keep the number of projects under control,
-  > we reuse them. Our naming convention is
-  > `<first initial><last initial>-dart-dev-<number>`. For example,
-  > `sz-dart-dev-1` and `kw-dart-dev-1`.
+    > **Note:** To keep the number of projects under control,
+    > we reuse them. Our naming convention is
+    > `<first initial><last initial>-dart-dev-<number>`. For example,
+    > `sz-dart-dev-1` and `kw-dart-dev-1`.
 
-1. Return to the [Firebase console](https://console.firebase.google.com).
-   You should now see your project in the list.
-
-1.  Copy the name of your project (e.g. `sz-dart-dev-2`) to your clipboard.
-
-1. On the command line, from the top of GitHub repo, edit the `.firebaserc` file.
-
-1. Change `dart-dev` to the name of your project. For example:
-
-    ```json
-    {
-      "projects": {
-        "default": "sz-dart-dev-2"
-      }
-    }
-    ```
-
-1. Build the docs, to get the latest changes and set the new project name:
+1. Build the docs, to get the latest changes:
 
     ```console
     $ jekyll build
     ```
 
-1. Deploy the docs:
+1. Return to the [Firebase console](https://console.firebase.google.com),
+   and get the name of your project (e.g. `sz-dart-dev-2`),
+   which the following step calls FB-NAME.
+
+1. Deploy the docs, substituting the name of your project for FB-NAME:
 
     ```console
-    $ ./tool/shared/deploy.sh --local --robots ok default
+    $ ./tool/shared/deploy.sh --local FB-NAME
     ```
 
     You can now navigate to the staged version at
     `https://<your-instance>.firebaseapp.com` -— for example,
     `https://sz-dart-dev-2.firebaseapp.com`.
 
-    **Important:** Don't commit the `.firebaserc` file containing the name of your staged version.
+1. Navigate to the PR on GitHub and update it with
+   the location of the staged version,
+   the names of your reviewers, and so on.
 
-1. Navigate to the PR on GitHub and update it with the location of the staged version,
-the names of your reviewers, and so on.
-
-1. Before making any more changes, stash `.firebaserc`:
-
-    ```console
-    $ git stash
-    ```
-
-    You can later retrieve the stashed file, if you need to stage again,
-    using `git stash pop`.
 
 ## Troubleshooting the build
 
