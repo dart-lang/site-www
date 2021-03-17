@@ -204,7 +204,8 @@ Sometimes fields in a class *should* be non-nullable, but those fields can't be
 assigned a value immediately. For cases like that, use the
 [`late` keyword]( /null-safety/understanding-null-safety#late-variables).
 
-`late` is how you tell Dart that:
+When you put `late` in front of a variable declaration,
+that tells Dart that all of the following are true:
 
 -   You aren't going to assign that field a value right away.
 -   But you *are* going to assign it a value later.
