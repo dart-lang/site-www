@@ -185,7 +185,7 @@ void main() {
 
 ### Exercise: Null checking
 
-In the example below, add an if statement to the beginning of `getLength` that
+In the example below, add an `if` statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
