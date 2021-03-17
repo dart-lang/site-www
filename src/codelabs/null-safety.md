@@ -89,22 +89,17 @@ void main() {
 
 ## Using the null assertion operator (!)
 
--   If you're sure that an expression with a nullable type isn't null, use a
-    postfix exclamation mark (`!`, or "bang operator") to
-    make Dart treat it as non-nullable.
-
-### Example: The assertion operator (!)
-
-If you'd like to assign a nullable expression to a variable that's
-non-nullable, you can use the
-[null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
-(the exclamation point: `!`). By adding `!` just after the expression,
-you tell Dart that the value won't be null, and that it's safe to assign it to a
-non-nullable variable.
+If you're sure that an expression with a nullable type isn't null, use a
+[null asseration operator][null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+(`!`) to make Dart treat it as non-nullable. By adding `!` just after the
+expression, you tell Dart that the value won't be null, and
+that it's safe to assign it to a non-nullable variable.
 
 But if you're wrong, Dart throws an exception at run-time. This makes the
 `!` operator unsafe, and you should only use it when you are very sure that the
 expression isn't null.
+
+### Example: Practice using assertion operator
 
 In the example below, try adding exclamation points to correct the
 broken assignments:
@@ -215,7 +210,7 @@ that tells Dart that all of the following are true:
 If you declare a variable `late` and the variable is read before it's assigned a
 value, a `LateInitializationError` is thrown to tell you what went wrong.
 
-### Example: The `late` keyword
+### Example: Practice with late
 
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
