@@ -305,7 +305,7 @@ methods in their initializers.
 Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
 
--   [Play with DartPad](https://nullsafety.dartpad.dev/).
+-   [Play with DartPad]({{site.dartpad}}).
 -   Try another [codelab](/codelabs).
 -   Learn more about null safety:
     -   Overview: [Sound null safety](/null-safety).
