@@ -28,19 +28,6 @@ this codelab, you should have some knowledge of [basic Dart syntax](/samples).
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-## What is null safety?
-
-With sound null safety, types are non-nullable by default.
-That means values in your Dart programs can't be `null` unless you say they
-can be. With null safety, you can find null reference errors before you even
-run your program.
-
-The core traits of sound null safety in Dart are:
-
--   All types are non-nullable by default.
--   Values can't be null unless you say they can be.
--   Finding null errors at edit time is much better than finding them at run
-    time.
 
 ## Nullable and non-nullable types
 
