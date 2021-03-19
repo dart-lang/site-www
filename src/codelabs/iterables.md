@@ -369,7 +369,7 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-Use the methods `contains()` and `startWith()` from the `String` class.
+Use the methods `contains()` and `startsWith()` from the `String` class.
 {$ end hint.txt $}
 ```
 
