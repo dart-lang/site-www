@@ -60,7 +60,7 @@ What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-nullable_type:null_safety-true
 void main() {
   int a;
   a = null;
@@ -75,7 +75,7 @@ question marks to correct the type declarations of `aNullableListOfStrings` and
 `aListOfNullableStrings`:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-nullable_type_generics:null_safety-true
 void main() {
   List<String> aListofStrings = ['one', 'two', 'three'];
   List<String> aNullableListOfStrings = [];
@@ -105,7 +105,7 @@ In the example below, try adding exclamation points to correct the
 broken assignments:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-null_assertion:null_safety-true
 int? couldReturnNullButDoesnt() => -3;
 
 void main() {
@@ -142,7 +142,7 @@ Try uncommenting the if-else statement in the code below, and
 watch the analyzer errors disappear:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-definite_assignment:null_safety-true
 void main() {
   String text;
 
@@ -163,7 +163,7 @@ In the example below, add an `if` statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-null_checking:null_safety-true
 int getLength(String? str) {
   // Add null check here
 
@@ -181,7 +181,7 @@ Promotion works with exceptions as well as return statements. Try a null check
 that throws an `Exception` instead of returning zero.
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-promotion_exceptions:null_safety-true
 int getLength(String? str) {
   // Try throwing an exception here if `str` is null.
 
@@ -216,7 +216,7 @@ Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-late_keyword:null_safety-true
 class Meal {
   String description;
 
@@ -243,7 +243,7 @@ Note that you don't need to remove `final`. You can create
 you set their values once, and after that they're read-only.
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-late_circular:null_safety-true
 class Team {
   final Coach coach;
 }
@@ -270,7 +270,7 @@ for expensive non-nullable fields. Try running this code without changing it.
 What do you think will change if you make `_cache` a `late` field?
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
-```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
+```dart:run-dartpad:ga_id-lazy_late:null_safety-true
 int _computeValue() {
   print('Computing value...');
   return 3;
