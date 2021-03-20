@@ -90,7 +90,7 @@ void main() {
 ## Using the null assertion operator (!)
 
 If you're sure that an expression with a nullable type isn't null, use a
-[null asseration operator][null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
+[null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
 (`!`) to make Dart treat it as non-nullable. By adding `!` just after the
 expression, you tell Dart that the value won't be null, and
 that it's safe to assign it to a non-nullable variable.
@@ -99,7 +99,7 @@ But if you're wrong, Dart throws an exception at run-time. This makes the
 `!` operator unsafe, and you should only use it when you are very sure that the
 expression isn't null.
 
-### Example: Practice using assertion operator
+### Example: Practice using the assertion operator
 
 In the example below, try adding exclamation points to correct the
 broken assignments:
