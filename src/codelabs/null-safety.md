@@ -40,7 +40,7 @@ or the value `null`, give the variable a nullable type by adding a
 question mark (`?`) after the type name. For example, a variable of
 type `String?` can contain a string, or it can be null.
 
-### Example: Introducing non-nullable types
+### Exercise: Non-nullable types
 
 The variable `a` below is declared as an `int`. Try changing the value in the
 assignment to 3 or 145. Anything but null!
@@ -54,7 +54,7 @@ void main() {
 }
 ```
 
-### Example: Nullable types
+### Exercise: Nullable types
 
 What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
@@ -68,7 +68,7 @@ void main() {
 }
 ```
 
-### Example: Nullable type parameters for generics
+### Exercise: Nullable type parameters for generics
 
 Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
@@ -87,19 +87,21 @@ void main() {
 }
 ```
 
-## Using the null assertion operator (!)
+## The null assertion operator (!)
 
-If you're sure that an expression with a nullable type isn't null, use a
+If you're sure that an expression with a nullable type isn't null, you can use a
 [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator)
 (`!`) to make Dart treat it as non-nullable. By adding `!` just after the
 expression, you tell Dart that the value won't be null, and
 that it's safe to assign it to a non-nullable variable.
 
-But if you're wrong, Dart throws an exception at run-time. This makes the
-`!` operator unsafe, and you should only use it when you are very sure that the
-expression isn't null.
+{{ site.alert.warn }}
+  If you're wrong, **Dart throws an exception at run-time**. This makes the
+  `!` operator unsafe, so don't use it unless you're very sure that the
+  expression isn't null.
+{{ site.alert.end }}
 
-### Example: Practice using the assertion operator
+### Exercise: Null assertion
 
 In the example below, try adding exclamation points to correct the
 broken assignments:
@@ -131,14 +133,14 @@ can't possibly contain null values are treated like non-nullable variables.
 This behavior is called
 [type promotion](/null-safety/understanding-null-safety#type-promotion-on-null-checks).
 
-### Example: Definite assignment
+### Exercise: Definite assignment
 
 Dart's type system can track where variables are assigned and
-where their values are read, and to verify that non-nullable fields are given
+read, and can verify that non-nullable fields are given
 values before any code tries to read from them. This process is called
 [definite assignment](/null-safety/understanding-null-safety#definite-assignment-analysis).
 
-Try uncommenting the if-else statement in the code below, and
+Try uncommenting the `if`-`else` statement in the code below, and
 watch the analyzer errors disappear:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
@@ -201,16 +203,16 @@ assigned a value immediately. For cases like that, use the
 [`late` keyword]( /null-safety/understanding-null-safety#late-variables).
 
 When you put `late` in front of a variable declaration,
-that tells Dart that all of the following are true:
+that tells Dart the following:
 
 -   Don't assign that variable a value yet.
 -   You *will* assign it a value later.
 -   You'll make sure that the variable has a value *before* the variable is used.
 
 If you declare a variable `late` and the variable is read before it's assigned a
-value, a `LateInitializationError` is thrown to tell you what went wrong.
+value, a `LateInitializationError` is thrown.
 
-### Example: Practice using late
+### Exercise: Using late
 
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
@@ -232,10 +234,10 @@ void main() {
 }
 ```
 
-### Example: Late circular references
+### Exercise: Late circular references
 
-The `late` keyword is really helpful for tricky patterns like circular
-references. Here are two objects that need to maintain non-nullable references
+The `late` keyword is helpful for tricky patterns like circular references.
+The following code has two objects that need to maintain non-nullable references
 to each other. Try using the `late` keyword to fix this code.
 
 Note that you don't need to remove `final`. You can create
@@ -266,13 +268,21 @@ void main() {
 
 Here's another pattern that `late` can help with:
 [lazy initialization](/null-safety/understanding-null-safety#lazy-initialization)
-for expensive non-nullable fields. Try running this code without changing it.
-What do you think will change if you make `_cache` a `late` field?
+for expensive non-nullable fields.
+Try this:
+
+<ol>
+<li>Run this code without changing it, and note the output.</li>
+<li>Think: What will change if
+  you make <code>_cache</code> a <code>late</code> field?</li>
+<li>Make <code>_cache</code> a <code>late</code> field, and run the code.
+  Was your prediction correct?</li>
+</ol>
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
 ```dart:run-dartpad:ga_id-lazy_late:null_safety-true
 int _computeValue() {
-  print('Computing value...');
+  print('In _computeValue...');
   return 3;
 }
 
@@ -289,10 +299,13 @@ void main() {
 }
 ```
 
-Fun fact: After you add `late` to the declaration of `_cache`, you can move the
-`_computeValue` function into the `CachedValueProvider` class and the code will
-still work! Initialization expressions for `late` fields can use instance
-methods in their initializers.
+{{ site.alert.info }}
+  **Fun fact:**
+  After you add `late` to the declaration of `_cache`, if you move the
+  `_computeValue` function into the `CachedValueProvider` class the code
+  still works! Initialization expressions for `late` fields can use instance
+  methods in their initializers.
+{{ site.alert.end }}
 
 
 ## What's next?
@@ -300,12 +313,11 @@ methods in their initializers.
 Congratulations, you've finished the codelab! If you'd like to learn more, here
 are some suggestions for where to go next:
 
--   [Play with DartPad]({{site.dartpad}}).
--   Try another [codelab](/codelabs).
 -   Learn more about null safety:
     -   Overview: [Sound null safety](/null-safety).
     -   Deep dive:
         [Understanding null safety](/null-safety/understanding-null-safety).
+-   Try another [codelab](/codelabs).
 -   [Get the Dart SDK](/get-dart).
 
 If you're interested in using embedded DartPads, like this codelab does, see
