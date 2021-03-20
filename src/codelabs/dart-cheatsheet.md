@@ -1595,7 +1595,8 @@ class FirstTwoLetters {
   final String letterTwo;
 
   FirstTwoLetters(String word)
-      : letterOne = word[0],
+      : assert(word.length >= 2),
+        letterOne = word[0],
         letterTwo = word[1];
 }
 {$ end solution.dart $}
