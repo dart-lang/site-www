@@ -5,7 +5,7 @@ import 'dart:math';
 void miscDeclAnalyzedButNotTested() {
   {
     // #docregion misc-names
-    var item;
+    var count = 3;
 
     HttpRequest httpRequest;
 

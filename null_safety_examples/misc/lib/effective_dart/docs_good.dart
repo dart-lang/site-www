@@ -84,7 +84,7 @@ void miscDeclAnalyzedButNotTested() {
     void method1() {}
 
     // #docregion ctor
-    /// To create a point, call [Point()] or use [Point.polar()] to ...
+    /// To create a point from polar coordinates, use [Point.polar()].
     // #enddocregion ctor
     void method2() {}
   };
@@ -112,7 +112,7 @@ void miscDeclAnalyzedButNotTested() {
   ///
   /// Code blocks are fenced in triple backticks:
   ///
-  /// ```
+  /// ```dart
   /// this.code
   ///     .will
   ///     .retain(its, formatting);

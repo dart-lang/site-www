@@ -76,12 +76,6 @@ they can only [run with unsound null safety](#analyzing-and-testing).
 Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your program and its tests.
-If you want to migrate your package file by file,
-the [migration tool][] can help,
-but you'll need to do more by hand.
-
-[migration tool]: /null-safety/migration-guide#step2-migrate
-
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -98,13 +92,33 @@ If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
 
-To migrate a package by hand, follow these steps:
+### Using the migration tool
+
+You can migrate incrementally using the
+[migration tool][].
+To opt out files or directories, click the green checkbox.
+In the following screenshot,
+all files in the `bin` directory are opted out.
+
+![Screenshot of file viewer in migration tool](/null-safety/migration-tool-incremental.png)
+
+[migration tool]: /null-safety/migration-guide#step2-migrate
+
+Each opted out file will be unchanged
+except for a 2.9 [language version comment][].
+You can later run `dart migrate` again to continue the migration.
+Any files that are already migrated feature a disabled checkbox:
+you cannot un-migrate a file once it has been migrated.
+
+### Migrating by hand
+
+If you want to incrementally migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0-0`:
+   setting the minimum SDK constraint to `2.12.0`:
    ```yaml
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 2. Regenerate the [package configuration file][]:
@@ -115,7 +129,7 @@ environment:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
+   Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
    every library in the package to 2.12,
    opting them all in to null safety.

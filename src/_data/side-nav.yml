@@ -211,6 +211,8 @@
           permalink: /tools/dart-compile
         - title: dart fix 
           permalink: /tools/dart-fix
+        - title: dart format 
+          permalink: /tools/dart-format
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
         - title: dartaotruntime

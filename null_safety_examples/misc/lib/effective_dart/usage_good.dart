@@ -60,6 +60,25 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion collection-literals
   }
 
+  {
+    var command = 'c';
+    var options = ['a'];
+    var modeFlags = ['b'] as List<String>?;
+    var filePaths = ['p'];
+    String removeExtension(String path) => path;
+
+    // #docregion spread-etc
+    var arguments = [
+      ...options,
+      command,
+      ...?modeFlags,
+      for (var path in filePaths)
+        if (path.endsWith('.dart'))
+          path.replaceAll('.dart', '.js')
+    ];
+    // #enddocregion spread-etc
+  }
+
   (Iterable lunchBox, Iterable words) {
     // #docregion dont-use-length
     if (lunchBox.isEmpty) return 'so hungry...';
@@ -155,6 +174,19 @@ void miscDeclAnalyzedButNotTested() {
       stderr.write(message ?? '\n');
     }
     // #enddocregion default-value-null
+  }
+
+  {
+    // #docregion null-aware-promote
+    int measureMessage(String? message) {
+      if (message != null && message.isNotEmpty) {
+        // message is promoted to String.
+        return message.length;
+      }
+
+      return 0;
+    }
+    // #enddocregion null-aware-promote
   }
 
   {
@@ -302,6 +334,33 @@ Item? bestDeal(List<Item> cart) {
 
 //----------------------------------------------------------------------------
 
+class Response {
+  String get url => "";
+  String get errorCode => "";
+  String get reason => "";
+}
+
+// #docregion copy-nullable-field
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    var response = this.response;
+    if (response != null) {
+      return "Could not complete upload to ${response.url} "
+          "(error code ${response.errorCode}): ${response.reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+// #enddocregion copy-nullable-field
+
+//----------------------------------------------------------------------------
+
 // #docregion calc-vs-store
 class Circle {
   double radius;
@@ -443,6 +502,17 @@ class Point0 {
   Point0(this.x, this.y);
 }
 // #enddocregion field-init-as-param
+
+//----------------------------------------------------------------------------
+
+// #docregion late-init-list
+class Point1 {
+  double x, y;
+  Point1.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
+}
+// #enddocregion late-init-list
 
 //----------------------------------------------------------------------------
 

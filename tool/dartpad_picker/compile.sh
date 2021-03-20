@@ -6,8 +6,8 @@ DEST_DIR=../../src/assets/dash/js
 
 set -x
 
-pub get
+dart pub get
 rm $DEST_DIR/dartpad_picker*.*
-pub run build_runner build --release --output $OUT_DIR
+dart run build_runner build --release --output $OUT_DIR
 cp $OUT_DIR/web/dartpad_picker_main.dart.js $DEST_DIR
 rm -rf $OUT_DIR

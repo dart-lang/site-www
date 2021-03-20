@@ -12,13 +12,8 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{site.alert.info}}
-  As of Dart 2.10, [dart:ffi is in beta,][ffi issue]
-  and breaking API changes might still happen.
-{{site.alert.end}}
-
-API documentation is available from the dev channel:
-[dart:ffi API reference.]({{site.dart_api}}/dev/dart-ffi/dart-ffi-library.html)
+API documentation is available in the
+[dart:ffi API reference.]({{site.dart_api}}/dart-ffi/dart-ffi-library.html)
 
 ## Examples
 
@@ -71,6 +66,7 @@ $ cmake .
 $ make
 ...
 $ cd ..
+$ dart pub get
 $ dart run hello.dart
 Hello World
 ```
@@ -148,6 +144,14 @@ For details, see the following:
 * [Flutter dart:ffi page][binding]
 * [dart:ffi examples]({{ page.samples }})
 
+## Generating FFI bindings with `package:ffigen`
+
+For large API surfaces it can be time consuming to write the Dart bindings
+that integrate with the C code. To reduce this burden, you can use the
+[`package:ffigen`][ffigen]
+binding generator to automatically create FFI wrappers from C header files.
+
+
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
@@ -156,3 +160,4 @@ For details, see the following:
 [structs]: {{ page.samples }}/structs
 [sqllite]: {{ page.sqllite }}
 [mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
+[ffigen]: {{ site.pub }}/packages/ffigen

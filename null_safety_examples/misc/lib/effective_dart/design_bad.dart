@@ -248,6 +248,8 @@ class Person1 {
   int get hashCode => ellipsis();
   // ignore_for_file: unnecessary_null_comparison
   // #docregion eq-dont-check-for-null
-  bool operator ==(other) => other != null && ellipsis();
+
+  bool operator ==(Object? other) =>
+      other != null && other is Person && name == other.name;
 }
 // #enddocregion eq-dont-check-for-null

@@ -35,10 +35,13 @@ class Activity {}
 ///
 /// Andean cultures have used llamas as meat and pack
 /// animals since pre-Hispanic times.
+///
+/// Just like any other animal, llamas need to eat,
+/// so don't forget to [feed] them some [Food].
 class Llama {
   String? name;
 
-  /// Feeds your llama [Food].
+  /// Feeds your llama [food].
   ///
   /// The typical llama eats one bale of hay per week.
   void feed(Food food) {

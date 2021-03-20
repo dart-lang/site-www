@@ -555,10 +555,10 @@ class Duration0 {
 class Person {
   final String name;
   // #enddocregion eq-dont-check-for-null
+  int get hashCode => name.hashCode;
   Person(this.name);
   // #docregion eq-dont-check-for-null
-  bool operator ==(other) => other is Person && name == other.name;
 
-  int get hashCode => name.hashCode;
+  bool operator ==(Object other) => other is Person && name == other.name;
 }
 // #enddocregion eq-dont-check-for-null
