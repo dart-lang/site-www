@@ -20,11 +20,11 @@ This codelab covers the following material:
 * How the `late` keyword affects variables and initialization.
 
 Using embedded DartPad editors, you can test your knowledge by
-running example code and completing exercises. To get the most out of
+completing and running exercises. To get the most out of
 this codelab, you should have some knowledge of [basic Dart syntax](/samples).
 
 {{site.alert.note}}
-  This page uses embedded DartPads to display examples and exercises.
+  This page uses embedded DartPads to display exercises.
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
@@ -103,7 +103,7 @@ that it's safe to assign it to a non-nullable variable.
 
 ### Exercise: Null assertion
 
-In the example below, try adding exclamation points to correct the
+In the code below, try adding exclamation points to correct the
 broken assignments:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
@@ -161,7 +161,7 @@ void main() {
 
 ### Exercise: Null checking
 
-In the example below, add an `if` statement to the beginning of `getLength` that
+In the code below, add an `if` statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
