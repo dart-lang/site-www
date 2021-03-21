@@ -1,6 +1,6 @@
 ---
-title: "Get started: command-line and server apps"
-description: Get Dart, run and compile a small app
+title: "Get started: Command-line and server apps"
+description: Get Dart, run and compile a small app.
 nextpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps

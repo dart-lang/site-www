@@ -1,5 +1,5 @@
 ---
-title: "Dart tutorials: language"
+title: "Dart tutorials: The language"
 description: Tutorials pertaining to the Dart language, such as asynchronous programming.
 toc: false
 ---

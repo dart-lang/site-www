@@ -1,9 +1,9 @@
 ---
-title: "Connect Dart &amp; HTML"
-description: "Shows basic scaffolding of a Dart web app."
+title: Connect Dart and HTML
+description: Shows basic scaffolding of a Dart web app.
 nextpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add elements to the DOM"
+  title: Add elements to the DOM
 ---
 
 This tutorial is the first of a series on

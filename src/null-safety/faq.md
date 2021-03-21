@@ -1,5 +1,5 @@
 ---
-title: "Null safety: frequently asked questions"
+title: "Null safety: Frequently asked questions"
 description: FAQs to help you migrate your Dart code to null safety
 short-title: FAQ (null safety)
 ---

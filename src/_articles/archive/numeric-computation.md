@@ -1,5 +1,5 @@
 ---
-title: Numeric Computation
+title: Numeric computation
 description: How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM.
 original-date: 2013-05-22
 date: 2018-07-26
