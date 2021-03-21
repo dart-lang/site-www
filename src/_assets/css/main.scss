@@ -306,7 +306,7 @@ img {
   background-color: $site-color-header;
   color: $site-color-header-text;
   display: flex;
-  $mainnav-entry-spacing: 15px;
+  $mainnav-entry-spacing: 12px;
   ul {
     margin: auto;
     margin-right: 0;
@@ -316,24 +316,22 @@ img {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
     }
     li {
       padding: 0 $mainnav-entry-spacing;
       a {
         color: $site-color-header-text;
         display: inline-block;
-        padding: 0;
+        padding: 0 6px;
         font-size: $site-font-size-header;
         font-weight: 400;
-        line-height: 50px;
-        &:hover, &:focus, &:active {
-          color: $gray-lighter;
+        &:hover, &:active {
+          color: $site-color-card-link;
         }
       }
       &.searchfield {
         position: relative;
-        top: -2px;
       }
     }
   }
