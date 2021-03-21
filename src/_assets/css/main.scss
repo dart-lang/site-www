@@ -563,11 +563,13 @@ img {
   @include sidenav-top-position;
 
   position: fixed;
-  bottom: 0px;
-  width: 226px;
-  right: 0px;
+  bottom: 0;
+  min-width: 226px;
+  max-width: 256px;
+  right: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overflow-wrap: break-word;
   z-index: 999;
 
   // override shared/_toc.scss
