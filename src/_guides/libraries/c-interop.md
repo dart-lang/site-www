@@ -3,7 +3,7 @@ title: "C interop using dart:ffi"
 description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
 hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/master/ffi"
-sqllite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
+sqlite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
@@ -23,7 +23,7 @@ The following examples show how to use the dart:ffi library:
 | [hello_world][] | How to call a C function with no arguments and no return value. |
 | [primitives][] | How to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates **varargs**.
 | [structs][] | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
-| [sqllite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
+| [sqlite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
 
 
 ## Walkthrough of hello_world
@@ -158,6 +158,6 @@ binding generator to automatically create FFI wrappers from C header files.
 [hello_world]: {{ page.hw }}
 [primitives]: {{ page.samples }}/primitives
 [structs]: {{ page.samples }}/structs
-[sqllite]: {{ page.sqllite }}
-[mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
+[sqlite]: {{ page.sqlite }}
+[mini tutorial.]: {{ page.sqlite }}/docs/sqlite-tutorial.md
 [ffigen]: {{ site.pub }}/packages/ffigen
