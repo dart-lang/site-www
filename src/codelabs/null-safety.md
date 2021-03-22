@@ -210,7 +210,7 @@ that tells Dart the following:
 -   You'll make sure that the variable has a value *before* the variable is used.
 
 If you declare a variable `late` and the variable is read before it's assigned a
-value, a `LateInitializationError` is thrown.
+value, an error is thrown.
 
 ### Exercise: Using late
 
