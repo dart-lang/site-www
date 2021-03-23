@@ -1478,7 +1478,7 @@ Here, `numbers` has a type annotation, but the annotation doesn't provide a type
 argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
 isn't fully specified. In cases like this, Dart will *not* try to "fill in" the
 rest of the type for you using the surrounding context. Instead, it silently
-fills in any missing type arguments with with `dynamic` (or the bound if the
+fills in any missing type arguments with `dynamic` (or the bound if the
 class has one). That's rarely what you want.
 
 Instead, if you're writing a generic type either in a type annotation or as a type
