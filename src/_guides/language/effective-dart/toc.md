@@ -113,7 +113,6 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-collection-literals-when-possible'>DO use collection literals when possible.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>DON'T use <code>.length</code> to see if a collection is empty.</a>
-* <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-sequence'>CONSIDER using higher-order methods to transform a sequence.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
@@ -224,7 +223,7 @@
 
 * <a href='/guides/language/effective-dart/design#do-type-annotate-variables-without-initializers'>DO type annotate variables without initializers.</a>
 * <a href='/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious'>DO type annotate fields and top-level variables if the type isn't obvious.</a>
-* <a href='/guides/language/effective-dart/design#dont-type-annotate-initialized-local-variables'>DON'T type annotate initialized local variables.</a>
+* <a href='/guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables'>DON'T redundantly type annotate initialized local variables.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-return-types-on-function-declarations'>DO annotate return types on function declarations.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-parameter-types-on-function-declarations'>DO annotate parameter types on function declarations.</a>
 * <a href='/guides/language/effective-dart/design#dont-annotate-inferred-parameter-types-on-function-expressions'>DON'T annotate inferred parameter types on function expressions.</a>
