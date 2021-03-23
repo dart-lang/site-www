@@ -223,7 +223,7 @@
 
 * <a href='/guides/language/effective-dart/design#do-type-annotate-variables-without-initializers'>DO type annotate variables without initializers.</a>
 * <a href='/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious'>DO type annotate fields and top-level variables if the type isn't obvious.</a>
-* <a href='/guides/language/effective-dart/design#dont-type-redundantly-annotate-initialized-local-variables'>DON'T type redundantly annotate initialized local variables.</a>
+* <a href='/guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables'>DON'T redundantly type annotate initialized local variables.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-return-types-on-function-declarations'>DO annotate return types on function declarations.</a>
 * <a href='/guides/language/effective-dart/design#do-annotate-parameter-types-on-function-declarations'>DO annotate parameter types on function declarations.</a>
 * <a href='/guides/language/effective-dart/design#dont-annotate-inferred-parameter-types-on-function-expressions'>DON'T annotate inferred parameter types on function expressions.</a>

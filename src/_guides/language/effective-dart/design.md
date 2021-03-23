@@ -1257,8 +1257,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
 Sometimes the inferred type is not the type you want the variable to have. For
 example, you may intend to assign values of other types later. In that case,
-annotate the variable with the type you want. This guideline only applies when
-the inferred type is the *same* as the type you would annotate.
+annotate the variable with the type you want.
 
 {:.good}
 <?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
