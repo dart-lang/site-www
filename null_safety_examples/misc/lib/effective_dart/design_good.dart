@@ -17,6 +17,22 @@ Map map = {};
 String string = '';
 StreamSubscription subscription = Stream.empty().listen((_) {});
 
+class BuildContext {}
+
+class Widget {}
+
+class Text extends Widget {
+  Text(String label);
+}
+
+class EdgeInsets {
+  static double all(double value) => value;
+}
+
+class Padding extends Widget {
+  Padding({required double padding, required Widget child});
+}
+
 void miscDeclAnalyzedButNotTested() {
   (Iterable errors, Iterable<Monster> monsters) {
     // #docregion code-like-prose
@@ -177,6 +193,20 @@ void miscDeclAnalyzedButNotTested() {
       return desserts;
     }
     // #enddocregion omit-types-on-locals
+  }
+
+  {
+    var applyPadding = false;
+
+    // #docregion upcast-local
+    Widget build(BuildContext context) {
+      Widget result = Text('You won!');
+      if (applyPadding) {
+        result = Padding(padding: EdgeInsets.all(8.0), child: result);
+      }
+      return result;
+    }
+    // #enddocregion upcast-local
   }
 
   {
