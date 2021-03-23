@@ -15,7 +15,7 @@ meaning that values can’t be `null` unless you say they can be.
 This codelab covers the following material:
 
 * Nullable and non-nullable types.
-* When to add `?` or `!` to indicate nullability or non-nullability
+* When to add `?` or `!` to indicate nullability or non-nullability.
 * Flow analysis and type promotion.
 * How the `late` keyword affects variables and initialization.
 
