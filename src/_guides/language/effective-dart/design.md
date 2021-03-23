@@ -1217,7 +1217,7 @@ annotations on APIs help *users* of your code, types on private members help
 *maintainers*.
 
 
-### DON'T type redundantly annotate initialized local variables.
+### DON'T redundantly type annotate initialized local variables.
 
 {% include linter-rule.html rule="omit_local_variable_types" %}
 
