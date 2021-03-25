@@ -15,8 +15,7 @@ May 2013 (note added July 2018)_
   signed, wrapping integers. The smi and mint representations still exist,
   but overflow now results in wrapping instead of automatic conversion to
   bigint (`BigInt` objects). The
-  [`BigInt` class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core
-  /BigInt-class.html)
+  [`BigInt` class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html)
   is now available as a separate type that doesn't implement `int`.
 
   Continue to avoid `BigInt` when possible. The VM has optimized code for
