@@ -18,7 +18,7 @@ For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 
 ```terminal
-$ dart format -w bin lib test
+$ dart format bin lib test
 ```
 
 However, dart format can't do it all.
