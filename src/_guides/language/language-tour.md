@@ -2237,9 +2237,9 @@ callbacks.forEach((c) => c());
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-If the object that you are iterating over is an Iterable (such as List or Set),
-you can use the `for-in` form of [iteration](/guides/libraries/library-tour#iteration)
-if you don't need to know the current iteration counter:
+If the object that you are iterating over is an Iterable (such as List or Set)
+and if you don't need to know the current iteration counter, 
+you can use the `for-in` form of [iteration](/guides/libraries/library-tour#iteration):
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
