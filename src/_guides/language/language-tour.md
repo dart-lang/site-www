@@ -2237,24 +2237,23 @@ callbacks.forEach((c) => c());
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-If the object that you are iterating over is an Iterable, you can use the
-[forEach()][] method. Using `forEach()` is a good option if you don’t need to
-know the current iteration counter:
+If the object that you are iterating over is an Iterable (such as List or Set)
+and if you don't need to know the current iteration counter, 
+you can use the `for-in` form of [iteration](/guides/libraries/library-tour#iteration):
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-candidates.forEach((candidate) => candidate.interview());
+for (var candidate in candidates) {
+  candidate.interview();
+}
 ```
 
-Iterable classes such as List and Set also support the `for-in` form of
-[iteration](/guides/libraries/library-tour#iteration):
+Iterable classes also have a [forEach()][] method as another option:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/control_flow_test.dart (collection)"?>
+<?code-excerpt "../null_safety_examples/misc/test/language_tour/control_flow_test.dart (forEach)"?>
 ```dart
 var collection = [1, 2, 3];
-for (var x in collection) {
-  print(x); // 1 2 3
-}
+collection.forEach(print); // 1 2 3
 ```
 
 
