@@ -431,7 +431,7 @@ We encourage you to publish packages as prereleases
 as soon as you migrate:
 
 * [Set the SDK constraints to the tested beta version.](#sdk-constraints)
-* [Set the package version to indicate a breaking change.](#version)
+* [Set the package version to indicate a breaking change.](#package-version)
 
 ### SDK constraints
 
