@@ -49,42 +49,31 @@ In particular, Dart has two very different types of targets it compiles to:
 (1) native, represented typically by 64-bit mobile and desktop processor, and
 (2) web, where JavaScript is the primary execution engine.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Representation
-   </td>
-   <td>Native <code>int</code>
-   </td>
-   <td>Native <code>double</code>
-   </td>
-   <td>Web <code>int</code>
-   </td>
-   <td>Web <code>double</code>
-   </td>
+   <th>Representation</th>
+   <th>Native <code>int</code></th>
+   <th>Native <code>double</code></th>
+   <th>Web <code>int</code></th>
+   <th>Web <code>double</code></th>
   </tr>
   <tr>
-   <td><a href="https://en.wikipedia.org/wiki/Two%27s_complement">64-bit signed two’s complement</a>
+   <td><a href="https://en.wikipedia.org/wiki/Two%27s_complement">
+     64-bit signed two’s complement</a>
    </td>
-   <td>✅
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
+   <td>✅</td>
+   <td></td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
-   <td><a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">64-bit floating point</a>
-   </td>
    <td>
+     <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">64-bit floating point</a>
    </td>
-   <td>✅
-   </td>
-   <td>✅
-   </td>
-   <td>✅
-   </td>
+   <td></td>
+   <td>✅</td>
+   <td>✅</td>
+   <td>✅</td>
   </tr>
 </table>
 
@@ -170,70 +159,46 @@ The latter overflows to -2<sup>63</sup> as expected for two's-complement arithme
 On the web, these values do not overflow as they are represented differently,
 but they are only approximations due to the loss of precision.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Expression
-   </td>
-   <td>Native
-   </td>
-   <td>Web
-   </td>
+   <th>Expression</th>
+   <th>Native</th>
+   <th>Web</th>
   </tr>
   <tr>
-   <td><code>math.pow(2, 53) - 1</code>
-   </td>
-   <td><code>9007199254740991</code>
-   </td>
-   <td><code>9007199254740991</code>
-   </td>
+   <td><code>math.pow(2, 53) - 1</code></td>
+   <td><code>9007199254740991</code></td>
+   <td><code>9007199254740991</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 53)</code>
-   </td>
-   <td><code>9007199254740992</code>
-   </td>
-   <td><code>9007199254740992</code>
-   </td>
+   <td><code>math.pow(2, 53)</code></td>
+   <td><code>9007199254740992</code></td>
+   <td><code>9007199254740992</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 53) + 1</code>
-   </td>
-   <td><code>9007199254740993</code>
-   </td>
-   <td><code>9007199254740992</code>
-   </td>
+   <td><code>math.pow(2, 53) + 1</code></td>
+   <td><code>9007199254740993</code></td>
+   <td><code>9007199254740992</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 62)</code>
-   </td>
-   <td><code>4611686018427387904</code>
-   </td>
-   <td><code>4611686018427388000</code>
-   </td>
+   <td><code>math.pow(2, 62)</code></td>
+   <td><code>4611686018427387904</code></td>
+   <td><code>4611686018427388000</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 63) - 1</code>
-   </td>
-   <td><code>9223372036854775807</code>
-   </td>
-   <td><code>9223372036854776000</code>
-   </td>
+   <td><code>math.pow(2, 63) - 1</code></td>
+   <td><code>9223372036854775807</code></td>
+   <td><code>9223372036854776000</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 63)</code>
-   </td>
-   <td><code>-9223372036854775808</code>
-   </td>
-   <td><code>9223372036854776000</code>
-   </td>
+   <td><code>math.pow(2, 63)</code></td>
+   <td><code>-9223372036854775808</code></td>
+   <td><code>9223372036854776000</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 64)</code>
-   </td>
-   <td><code>0</code>
-   </td>
-   <td><code>18446744073709552000</code>
-   </td>
+   <td><code>math.pow(2, 64)</code></td>
+   <td><code>0</code></td>
+   <td><code>18446744073709552000</code></td>
   </tr>
 </table>
 
@@ -245,78 +210,51 @@ no value can be both a `double` and an `int` at the same time.
 On the web, that is not true.
 Because of this, identity may differ though equality (`==`) should not.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Expression
-   </td>
-   <td>Native
-   </td>
-   <td>Web
-   </td>
+   <th>Expression</th>
+   <th>Native</th>
+   <th>Web</th>
   </tr>
   <tr>
-   <td><code>1.0 == 1</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>1.0 == 1</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>identical(1.0, 1)</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>identical(1.0, 1)</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>0.0 == -0.0</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>0.0 == -0.0</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>identical(0.0, -0.0)</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>identical(0.0, -0.0)</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>double.nan == double.nan</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>false</code>
-   </td>
+   <td><code>double.nan == double.nan</code></td>
+   <td><code>false</code></td>
+   <td><code>false</code></td>
   </tr>
   <tr>
-   <td><code>identical(double.nan, double.nan)</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>false</code>
-   </td>
+   <td><code>identical(double.nan, double.nan)</code></td>
+   <td><code>true</code></td>
+   <td><code>false</code></td>
   </tr>
   <tr>
-   <td><code>double.infinity == double.infinity</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>double.infinity == double.infinity</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>identical(double.infinity, double.infinity)</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>identical(double.infinity, double.infinity)</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
 </table>
 
@@ -336,118 +274,76 @@ Note that an odd quirk of the way we currently check for `int`
 leads `double.infinity` to be interpreted as an `int`.
 As mentioned above, we may change this in the future.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Expression
-   </td>
-   <td>Native
-   </td>
-   <td>Web
-   </td>
+   <th>Expression</th>
+   <th>Native</th>
+   <th>Web</th>
   </tr>
   <tr>
-   <td><code>1 is int</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>1 is int</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>1 is double</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>1 is double</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>1.0 is int</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>1.0 is int</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>1.0 is double</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>1.0 is double</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>(0.5 + 0.5) is int</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>(0.5 + 0.5) is int</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>(0.5 + 0.5) is double</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>(0.5 + 0.5) is double</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>3.14 is int</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>false</code>
-   </td>
+   <td><code>3.14 is int</code></td>
+   <td><code>false</code></td>
+   <td><code>false</code></td>
   </tr>
   <tr>
-   <td><code>3.14 is double</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>3.14 is double</code></td>
+   <td><code>true</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>double.infinity is int</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>true</code>
-   </td>
+   <td><code>double.infinity is int</code></td>
+   <td><code>false</code></td>
+   <td><code>true</code></td>
   </tr>
   <tr>
-   <td><code>double.nan is int</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td><code>false</code>
-   </td>
+   <td><code>double.nan is int</code></td>
+   <td><code>false</code></td>
+   <td><code>false</code></td>
   </tr>
   <tr>
-   <td><code>1.0.runtimeType</code>
-   </td>
-   <td><code>double</code>
-   </td>
-   <td><code>int</code>
-   </td>
+   <td><code>1.0.runtimeType</code></td>
+   <td><code>double</code></td>
+   <td><code>int</code></td>
   </tr>
   <tr>
-   <td><code>1.runtimeType</code>
-   </td>
-   <td><code>int</code>
-   </td>
-   <td><code>int</code>
-   </td>
+   <td><code>1.runtimeType</code></td>
+   <td><code>int</code></td>
+   <td><code>int</code></td>
   </tr>
   <tr>
-   <td><code>1.5.runtimeType</code>
-   </td>
-   <td><code>double</code>
-   </td>
-   <td><code>double</code>
-   </td>
+   <td><code>1.5.runtimeType</code></td>
+   <td><code>double</code></td>
+   <td><code>double</code></td>
   </tr>
 </table>
 
@@ -463,54 +359,36 @@ This can lead to surprising results on larger numbers.
 In particular, if operands are negative or don't fit into 32 bits,
 they will likely produce different results between native and web.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Expression
-   </td>
-   <td>Native
-   </td>
-   <td>Web
-   </td>
+   <th>Expression</th>
+   <th>Native</th>
+   <th>Web</th>
   </tr>
   <tr>
-   <td><code>-1 >> 0</code>
-   </td>
-   <td><code>-1</code>
-   </td>
-   <td><code>4294967295</code>
-   </td>
+   <td><code>-1 >> 0</code></td>
+   <td><code>-1</code></td>
+   <td><code>4294967295</code></td>
   </tr>
   <tr>
-   <td><code>-1 ^ 2</code>
-   </td>
-   <td><code>-3</code>
-   </td>
-   <td><code>4294967293</code>
-   </td>
+   <td><code>-1 ^ 2</code></td>
+   <td><code>-3</code></td>
+   <td><code>4294967293</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 32).toInt()</code>
-   </td>
-   <td><code>4294967296</code>
-   </td>
-   <td><code>4294967296</code>
-   </td>
+   <td><code>math.pow(2, 32).toInt()</code></td>
+   <td><code>4294967296</code></td>
+   <td><code>4294967296</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 32).toInt() >> 1</code>
-   </td>
-   <td><code>2147483648</code>
-   </td>
-   <td><code>0</code>
-   </td>
+   <td><code>math.pow(2, 32).toInt() >> 1</code></td>
+   <td><code>2147483648</code></td>
+   <td><code>0</code></td>
   </tr>
   <tr>
-   <td><code>(math.pow(2, 32).toInt()-1) >> 1</code>
-   </td>
-   <td><code>2147483647</code>
-   </td>
-   <td><code>2147483647</code>
-   </td>
+   <td><code>(math.pow(2, 32).toInt()-1) >> 1</code></td>
+   <td><code>2147483647</code></td>
+   <td><code>2147483647</code></td>
   </tr>
 </table>
 
@@ -522,70 +400,46 @@ On the web, Dart generally defers to JavaScript to convert a number to a string
 The following table demonstrates how
 converting the expressions in the first column can lead to different results.
 
-<table>
+<table class="table table-striped nowrap">
   <tr>
-   <td>Expression
-   </td>
-   <td>Native <code>toString()</code>
-   </td>
-   <td>Web <code>toString()</code>
-   </td>
+   <td>Expression</td>
+   <td>Native <code>toString()</code></td>
+   <td>Web <code>toString()</code></td>
   </tr>
   <tr>
-   <td><code>1</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
+   <td><code>1</code></td>
+   <td><code>"1"</code></td>
+   <td><code>"1"</code></td>
   </tr>
   <tr>
-   <td><code>1.0</code>
-   </td>
-   <td><code>"1.0"</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
+   <td><code>1.0</code></td>
+   <td><code>"1.0"</code></td>
+   <td><code>"1"</code></td>
   </tr>
   <tr>
-   <td><code>(0.5 + 0.5)</code>
-   </td>
-   <td><code>"1.0"</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
+   <td><code>(0.5 + 0.5)</code></td>
+   <td><code>"1.0"</code></td>
+   <td><code>"1"</code></td>
   </tr>
   <tr>
-   <td><code>1.5</code>
-   </td>
-   <td><code>"1.5"</code>
-   </td>
-   <td><code>"1.5"</code>
-   </td>
+   <td><code>1.5</code></td>
+   <td><code>"1.5"</code></td>
+   <td><code>"1.5"</code></td>
   </tr>
   <tr>
-   <td><code>-0</code>
-   </td>
-   <td><code>"0"</code>
-   </td>
-   <td><code>"-0.0"</code>
-   </td>
+   <td><code>-0</code></td>
+   <td><code>"0"</code></td>
+   <td><code>"-0.0"</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 0)</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
-   <td><code>"1"</code>
-   </td>
+   <td><code>math.pow(2, 0)</code></td>
+   <td><code>"1"</code></td>
+   <td><code>"1"</code></td>
   </tr>
   <tr>
-   <td><code>math.pow(2, 80)</code>
-   </td>
-   <td><code>"0"</code>
-   </td>
-   <td><code>"1.2089258196146292e+24"</code>
-   </td>
+   <td><code>math.pow(2, 80)</code></td>
+   <td><code>"0"</code></td>
+   <td><code>"1.2089258196146292e+24"</code></td>
   </tr>
 </table>
 
