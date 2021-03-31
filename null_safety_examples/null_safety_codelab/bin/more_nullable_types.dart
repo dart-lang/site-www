@@ -1,9 +1,9 @@
 void main() {
-  List<String> aListofStrings = ['one', 'two', 'three'];
+  List<String> aListOfStrings = ['one', 'two', 'three'];
   List<String?> aNullableListOfStrings = [];
-  List<String?> aListofNullableStrings = ['one', null, 'three'];
+  List<String?> aListOfNullableStrings = ['one', null, 'three'];
 
-  print('aListofStrings is $aListofStrings.');
+  print('aListOfStrings is $aListOfStrings.');
   print('aNullableListOfStrings is $aNullableListOfStrings.');
-  print('aListofNullableStrings is $aListofNullableStrings.');
+  print('aListOfNullableStrings is $aListOfNullableStrings.');
 }
