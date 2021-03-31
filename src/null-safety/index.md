@@ -38,9 +38,9 @@ or learn about null safety using
 
 ![Screenshot of DartPad in null-safe mode](/null-safety/dartpad-snippet.png)
 
-For an example-driven summary of null safety language features,
-see the [null safety feature tour](/null-safety/tour).
-For a more in-depth discussion, see
+For an interactive, example-driven introduction to null safety language features,
+see the [null safety codelab][Null safety codelab].
+For an in-depth discussion, see
 [Understanding null safety](/null-safety/understanding-null-safety).
 
 
@@ -131,7 +131,7 @@ The Dart team is currently aware of the following issues:
 
 For more information about null safety, see the following resources:
 
-* [Null safety tour][]
+* [Null safety codelab][]
 * [Understanding null safety][]
 * [Migration guide for existing code][migration guide]
 * [Null safety FAQ][]
@@ -146,7 +146,7 @@ For more information about null safety, see the following resources:
 [Dart blog]: https://medium.com/dartlang
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
-[Null safety tour]: /null-safety/tour
+[Null safety codelab]: /codelabs/null-safety
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [Understanding null safety]: /null-safety/understanding-null-safety
 

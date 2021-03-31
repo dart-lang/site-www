@@ -77,13 +77,13 @@ question marks to correct the type declarations of `aNullableListOfStrings` and
 <?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g"?>
 ```dart:run-dartpad:ga_id-nullable_type_generics:null_safety-true
 void main() {
-  List<String> aListofStrings = ['one', 'two', 'three'];
+  List<String> aListOfStrings = ['one', 'two', 'three'];
   List<String> aNullableListOfStrings = [];
-  List<String> aListofNullableStrings = ['one', null, 'three'];
+  List<String> aListOfNullableStrings = ['one', null, 'three'];
 
-  print('aListofStrings is $aListofStrings.');
+  print('aListOfStrings is $aListOfStrings.');
   print('aNullableListOfStrings is $aNullableListOfStrings.');
-  print('aListofNullableStrings is $aListofNullableStrings.');
+  print('aListOfNullableStrings is $aListOfNullableStrings.');
 }
 ```
 
@@ -322,3 +322,7 @@ are some suggestions for where to go next:
 
 If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials](/resources/dartpad-best-practices).
+If you're interested in improving this codelab, see
+[issue #3093][].
+
+[issue #3093]: https://github.com/dart-lang/site-www/issues/3093
