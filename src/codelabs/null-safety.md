@@ -322,3 +322,7 @@ are some suggestions for where to go next:
 
 If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials](/resources/dartpad-best-practices).
+If you're interested in improving this codelab, see
+[issue #3093][].
+
+[issue #3093]: https://github.com/dart-lang/site-www/issues/3093
