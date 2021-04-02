@@ -47,7 +47,7 @@ markdown_converter 0.0.0
 
 ## Options
 
-For options that apply to all dart pub commands, see
+For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 `--style=<style>` or `-s <style>`
