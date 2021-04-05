@@ -24,6 +24,7 @@ any of the following are true:
   For example, you might have a continuous integration (CI)
   setup that requires Dart but not Flutter.
 
+**Flutter is built with a particular Dart SDK, and can only be used with a given version of that SDK.**
 
 ## Installing the Dart SDK {#install}
 
