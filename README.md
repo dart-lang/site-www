@@ -212,7 +212,7 @@ test failed, then rerun the command without the `-q` flag.
     With this tool you can check any URL by simply specifying it as a parameter:
 
     ```console
-    $ pub global activate linkcheck
+    $ dart pub global activate linkcheck
     $ linkcheck https://dart.dev
     ```
 
