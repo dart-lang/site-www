@@ -123,3 +123,23 @@ Try this workaround, which uses the command line to complete sign-in:
    ```terminal
 $ curl 'http://localhost:<port>?code=...'
 ```
+
+## Getting a socket error trying to find package {#pub-get-socket-error}
+
+If you have no internet access, your ISP is blocking `pub.dev` or security software
+is blocking internet access from `dart` you are likely to get an error like this:
+
+{:.console-output}
+```nocode
+Got socket error trying to find package ... at https://pub.dartlang.org.
+pub get failed (server unavailable) -- attempting retry 1 in 1 second...
+```
+
+This can happen for many reasons, check your internet connection, and verify that
+you do not have firewalls or other security software that block internet access from `dart`.
+
+Users have reported issues using `dart pub` along with:
+ * `Kaspersky Internet Security`
+
+It might be possible that `dart pub` can be used along side such firewalls,
+if firewalls are correctly configured.
