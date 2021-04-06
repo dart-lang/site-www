@@ -3,18 +3,15 @@ title: Numbers in Dart
 description: Learn how Dart numbers are slightly different on the web, when that might matter, and how you might adjust your code.
 ---
 
-A Flutter app written for iOS or Android
-should just work on the web,
-as long as the app doesn't rely on platform-specific libraries.
-Sometimes, though,
-you might see differences between platforms because
-the Dart implementation of numbers is slightly different on the web.
+Dart apps often target multiple platforms.
+For example, a Flutter app might target iOS, Android, and the web.
+The code can be the same,
+as long as the app doesn't rely on platform-specific libraries
+or use numbers in a way that's platform dependent.
 
-Although you don't usually need to think about
-these number implementation differences,
-it's good to know that they exist.
 This page has details about the differences
-and how to deal with them.
+between native and web number implementations,
+and how to write code so that those differences don't matter.
 
 {{ site.alert.secondary }}
   **Number implementations in Dart and other languages**
@@ -39,14 +36,7 @@ In Dart, all numbers are part of the common `Object` type hierarchy,
 and there are two concrete, user-visible numeric types:
 `int`, representing integer values, and `double`, representing fractional values.
 
-```
-  Object
-    |
-   num
-  /    \
-int   double
-```
-***[TODO: Make this a real figure]***
+<img src="{% asset number-class-hierarchy.svg @path %}" alt="Object is the parent of num, which is the parent of int and double">
 
 Depending on the platform,
 those numeric types have different, hidden implementations.
@@ -85,71 +75,42 @@ The following table shows how Dart numbers are usually implemented:
   </tr>
 </table>
 
-***[QUESTION: Could we simplify this section? The \* classes are confusing.
-Maybe we could have a single figure for the platform-specific types
-that shows the native & web class hierarchies side by side?
-Then we could just point out, hey look, int & double can be the same type
-in a web program. It might be easier for me to explain if I could see
-examples of the underlying types you're talking about.]***
-
 For native targets, you can assume that
 `int` maps to a signed 64-bit integer representation and
 `double` maps to a 64-bit, IEEE floating-point representation
-that matches the underlying processor:
+that matches the underlying processor.
 
-```
-  Object
-     |
-    num
-   /    \
- int   double 
-  |       |
-native* native*
-  int   double
-```
-***[TODO: Make this a real figure]***
-
-In general, you can ignore the platform-specific types,
-and think of `int` and `double` as concrete implementation types.
-
-{{ site.alert.info }}
-  **Implementation note:**
-  Dart represents `int` and `double` in
-  a few different ways for efficiency,
-  but these are hidden (marked `*` above) and
-  beyond the scope of this discussion.
-  ***[QUESTION: Can we explain this differently?
-  Drop this note?
-  I don't understand what the \* really means.
-  An example might help.]***
-{{ site.alert.end }}
-
-The web, where Dart compiles to and interoperates with JavaScript,
-has a single numeric representation:
+But on the web, where Dart compiles to and interoperates with JavaScript,
+there is a single numeric representation:
 a 64-bit, double-precision floating point value.
 For efficiency, Dart maps both `int` and `double` to this single representation.
 The visible type hierarchy remains the same,
-but the underlying hidden implementation types (marked `*`) are
-different and intertwined:
+but the underlying hidden implementation types are
+different and intertwined.
 
-```
-   Object
-     |
-    num
-   /    \
- int   double 
-  |   /   |
-  |  /    |
-  js*     js*
-  int   double
-```
-***[TODO: Make this a real figure]***
+The following figure illustrates the platform-specific types (in blue)
+for native and web targets.
+As the figure shows,
+the concrete type for `int` on native implements only the `int` interface.
+However, the concrete type for `int` on the web implements
+both `int` and `double`.
 
-Specifically, an `int` is represented as
+<img src="{% asset number-platform-specific.svg @path %}" alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
+
+
+{{ site.alert.note }}
+  Dart represents `int` and `double` in
+  a few different ways for efficiency,
+  but these implementation classes (in blue, above) are hidden.
+  In general, you can ignore the platform-specific types,
+  and think of `int` and `double` as concrete types. 
+{{ site.alert.end }}
+
+An `int` on the web is represented as
 a double-precision floating point value with no fractional part.
-In practice, this works pretty well.
-Double-precision floating point provides 53 bits of integer precision.
-However, it means that `int` values are always also `double` values,
+In practice, this works pretty well:
+double-precision floating point provides 53 bits of integer precision.
+However, `int` values are always also `double` values,
 which can lead to some surprises.
 
 
@@ -166,7 +127,7 @@ the behavior is **platform specific**
 and **subject to change**.
 
 {{ site.alert.note }}
-  The platform-specific behavior might change to be
+  Any platform-specific behavior that this page describes might change to be
   less surprising, more consistent, or more performant.
 {{ site.alert.end }}
 
@@ -181,9 +142,6 @@ and `math.pow(2, 53)` is 2<sup>53</sup>.
 On the web, integers lose precision past 53 bits.
 In particular, 2<sup>53</sup> and 2<sup>53</sup>+1
 map to the same value due to truncation.
-***[QUESTION: The language tour's
-[numbers section](https://dart.dev/guides/language/language-tour#numbers)
-says 2<sup>53</sup> - 1, not 2<sup>53</sup>. Should I update it?]***
 On native, these values can still be differentiated
 because native numbers have 64 bits — 63 bits for the value and 1 for the sign.
 
@@ -247,11 +205,6 @@ On the web, that isn't true.
 Because of this difference,
 identity can differ between platforms,
 although equality (`==`) doesn't.
-***[QUESTION: I changed "shouldn't" to "doesn't", because
-"should" is a red flag for imprecise/incorrect text.
-I considered adding "(for numbers between -2<sup>53</sup> and 2<sup>53</sup>)",
-but that doesn't seem to be true. Did I get it right?
-If not, how can we be as precise as possible without being wordy/confusing?]***
 
 The following table shows some expressions that use equality and identity.
 The equality expressions are the same on native and web;
@@ -500,7 +453,7 @@ converting the expressions in the first column can lead to different results.
 
 ## What should you do?
 
-Usually, you don't need to do anything.
+Usually, you don't need to change your numeric code.
 Dart code has been running on both native and web platforms for years,
 and number implementation differences are rarely a problem.
 Common, typical code —
@@ -543,5 +496,5 @@ provides strict 64-bit signed numbers, even on the web.
 Use these types with care, though:
 they often result in significantly bigger and slower code.
 
-[`BigInt`]: https://api.dart.dev/dev/2.12.0-281.0.dev/dart-core/BigInt-class.html
-[`fixnum`]: https://pub.dev/packages/fixnum
+[`BigInt`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html
+[`fixnum`]: {{site.pub-pkg}}/fixnum
