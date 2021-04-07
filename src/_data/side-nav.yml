@@ -230,10 +230,6 @@
           permalink: /tools/build_runner
         - title: webdev
           permalink: /tools/webdev
-        - title: dart2js (prod JS)
-          permalink: /tools/dart2js
-        - title: dartdevc (dev JS)
-          permalink: /tools/dartdevc
   - title: Managing source code
     children:
       - title: Formatting code
