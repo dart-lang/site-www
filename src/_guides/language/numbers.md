@@ -77,12 +77,12 @@ The following table shows how Dart numbers are usually implemented:
 
 For native targets, you can assume that
 `int` maps to a signed 64-bit integer representation and
-`double` maps to a 64-bit, IEEE floating-point representation
+`double` maps to a 64-bit IEEE floating-point representation
 that matches the underlying processor.
 
 But on the web, where Dart compiles to and interoperates with JavaScript,
 there is a single numeric representation:
-a 64-bit, double-precision floating point value.
+a 64-bit double-precision floating-point value.
 For efficiency, Dart maps both `int` and `double` to this single representation.
 The visible type hierarchy remains the same,
 but the underlying hidden implementation types are
@@ -107,7 +107,7 @@ both `int` and `double`.
 {{ site.alert.end }}
 
 An `int` on the web is represented as
-a double-precision floating point value with no fractional part.
+a double-precision floating-point value with no fractional part.
 In practice, this works pretty well:
 double-precision floating point provides 53 bits of integer precision.
 However, `int` values are always also `double` values,
