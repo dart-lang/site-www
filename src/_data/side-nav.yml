@@ -43,7 +43,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
-
+    - title: Numbers
+      permalink: /guides/language/numbers
     - title: Null safety
       expanded: false
       children:
@@ -213,14 +214,12 @@
           permalink: /tools/dart-fix
         - title: dart format 
           permalink: /tools/dart-format
+        - title: dart pub
+          permalink: /tools/pub/cmd
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdoc
           permalink: /tools/dartdoc
-        - title: dartfmt
-          permalink: /tools/dartfmt
-        - title: pub
-          permalink: /tools/pub/cmd
         - title: Experiment flags
           permalink: /tools/experiment-flags
     - title: Other command-line tools

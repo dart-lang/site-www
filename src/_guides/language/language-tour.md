@@ -588,18 +588,12 @@ Dart numbers come in two flavors:
 [`int`][]
 
 :   Integer values no larger than 64 bits,
-    depending on the platform.
-    On the Dart VM, values can be from
+    [depending on the platform][dart-numbers].
+    On native platforms, values can be from
     -2<sup>63</sup> to 2<sup>63</sup> - 1.
-    Dart that's compiled to JavaScript uses
-    [JavaScript numbers,][js numbers]
-    allowing values from -2<sup>53</sup> to 2<sup>53</sup> - 1.
-
-{% comment %}
-[TODO #2565: What about values on Android & iOS?
-The informal spec is at
-https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
-{% endcomment %}
+    On the web, integer values are represented as JavaScript numbers
+    (64-bit floating-point values with no fractional part)
+    and can be from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
 [`double`][]
 
@@ -681,6 +675,10 @@ const msPerSecond = 1000;
 const secondsUntilRetry = 5;
 const msUntilRetry = secondsUntilRetry * msPerSecond;
 ```
+
+For more information, see [Numbers in Dart][dart-numbers].
+
+[dart-numbers]: /guides/language/numbers
 
 
 ### Strings
