@@ -216,12 +216,8 @@
           permalink: /tools/dart-format
         - title: dart pub
           permalink: /tools/pub/cmd
-        - title: dart2js (prod JS)
-          permalink: /tools/dart2js
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
-        - title: dartdevc (dev JS)
-          permalink: /tools/dartdevc
         - title: dartdoc
           permalink: /tools/dartdoc
         - title: Experiment flags
