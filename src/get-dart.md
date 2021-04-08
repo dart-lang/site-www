@@ -59,23 +59,30 @@ so it's easy to find (but not more tempting than package managers).
 
 ## System requirements
 
-The Dart SDK is supported on the following operating systems:
+The Dart SDK is supported on Windows, Linux, and macOS.
 
-#### Windows
-* _Supported versions_: Windows 10.
-* _Supported architectures_: x64, ia32.
+### Support for Windows
+* **Supported versions:** Windows 10.
+* **Supported architectures:** x64, ia32.
 
-#### Linux
-* _Supported versions_: Most recent Linux versions; we however only test with Ubuntu 16.04.
-* _Supported architectures_: x64, ia32, arm, arm64.
-* _Notes_: On arm, we require Glibc 2.23 or newer due to [a bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341) in the dynamic linker.
+### Support for Linux
+* **Supported versions:** Most recent Linux versions.
+  However, only Ubuntu 16.04 is tested.
+* **Supported architectures:** x64, ia32, arm, arm64.
 
-#### macOS
-* _Supported versions_: Latest three major versions, currently:
-  - macOS 10.14 ("Mojave")
-  - macOS 10.15 ("Catalina")
-  - macOS 11 ("Big Sur")
-* _Supported architectures_: x64. Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
+{{ site.alert.note }}
+  The arm support requires glibc 2.23 or newer due to a
+  [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
+{{ site.alert.end }}
+
+### Support for macOS
+* **Supported versions:** Latest three major versions.
+  As of April 2021, the following versions are supported:
+  - macOS 10.14 (Mojave)
+  - macOS 10.15 (Catalina)
+  - macOS 11 (Big Sur)
+* **Supported architectures:** x64.
+  Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
 
 ## About release channels and version strings {#release-channels}
 
