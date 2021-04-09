@@ -5,7 +5,7 @@ Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/tools/sd
 Install webdev if you haven't already:
 
 ```
-pub global activate webdev
+dart pub global activate webdev
 ```
 
 Serve:

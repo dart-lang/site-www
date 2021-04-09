@@ -1,12 +1,10 @@
 library sdk_builds.dart_downloads;
 
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:googleapis/storage/v1.dart' as storage;
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
-import 'package:quiver/async.dart' as qa;
 
 import 'version_info.dart';
 
@@ -14,66 +12,60 @@ const _dartChannel = 'dart-archive';
 const _flavor = 'release';
 
 String _revisionPath(String channel, String revision,
-        [List<String> extra = const []]) =>
-    p.joinAll([
-      ['channels', channel, _flavor, revision],
-      extra
-    ].expand(((e) => e)));
+    [List<String> extra = const []]) =>
+    p.joinAll(['channels', channel, _flavor, revision, ...extra]);
 
 class DartDownloads {
   final storage.StorageApi _api;
   final http.Client _client;
 
   DartDownloads._(http.Client client)
-      : this._client = client,
-        this._api = new storage.StorageApi(client);
+      : _client = client,
+        _api = storage.StorageApi(client);
 
   /// If [client] is provided, it will be closed with the call to [close].
-  factory DartDownloads({http.Client client}) {
-    if (client == null) {
-      client = new http.Client();
-    }
-    return new DartDownloads._(client);
-  }
+  factory DartDownloads({http.Client? client}) =>
+      DartDownloads._(client ?? http.Client());
 
-  Future<Uri> createDownloadUrl(
+  Future<Uri> createDownloadLink(
       String channel, String revision, String path) async {
-    var prefix = _revisionPath(channel, revision, [path]);
+    final prefix = _revisionPath(channel, revision, [path]);
+    final results = await _api.objects.list(_dartChannel, prefix: prefix);
+    final items = results.items;
 
-    storage.Objects results =
-        await _api.objects.list(_dartChannel, prefix: prefix);
-
-    if (results.items == null || results.items.isEmpty) {
+    if (items == null || items.isEmpty) {
       throw 'no items found for path $path';
-    } else if (results.items.length > 1) {
+    } else if (items.length > 1) {
       throw 'too many items for path $path';
     }
 
-    storage.Object obj = results.items.single;
+    final mediaLink = items.single.mediaLink;
 
-    return Uri.parse(obj.mediaLink);
+    if (mediaLink == null) {
+      throw 'no media link present for path $path';
+    } else {
+      return Uri.parse(mediaLink);
+    }
   }
 
   Future<List<VersionInfo>> fetchVersions(String channel) async {
-    var versions = await fetchVersionPaths(channel).toList();
+    final versions = await fetchVersionPaths(channel)
+        .where((event) => !event.contains('latest'))
+        .toList();
 
-    versions.removeWhere((e) => e.contains('latest'));
+    final versionMaps = <VersionInfo>[];
 
-    var versionMaps = <VersionInfo>[];
-
-    await qa.forEachAsync(versions, (path) async {
+    await Future.forEach<String>(versions, (path) async {
       try {
-        var revisionString = p.basename(path);
-
-        var ver = await fetchVersion(channel, revisionString);
+        final revisionString = p.basename(path);
+        final ver = await fetchVersion(channel, revisionString);
 
         versionMaps.add(ver);
       } catch (e) {
         // TODO: some kind of log?
-        print("Error with $path - $e");
-        return;
+        print('Error with $path - $e');
       }
-    }, maxTasks: 6);
+    });
 
     versionMaps.sort();
 
@@ -81,29 +73,34 @@ class DartDownloads {
   }
 
   Stream<String> fetchVersionPaths(String channel) async* {
-    var prefix = p.join('channels', channel, _flavor) + '/';
+    final prefix = p.join('channels', channel, _flavor) + '/';
 
-    var nextToken = null;
+    String? nextToken;
 
     do {
-      storage.Objects objects = await _api.objects.list(_dartChannel,
+      final objects = await _api.objects.list(_dartChannel,
           prefix: prefix, pageToken: nextToken, delimiter: '/');
       nextToken = objects.nextPageToken;
 
-      if (objects.prefixes == null) {
+      final prefixes = objects.prefixes;
+
+      if (prefixes == null) {
         continue;
       }
 
-      for (var item in objects.prefixes) {
+      for (var item in prefixes) {
         yield item;
       }
     } while (nextToken != null);
   }
 
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
-    var media = await _fetchFile(channel, revision, 'VERSION');
+    final media = await _fetchFile(channel, revision, 'VERSION');
 
-    var json = await _jsonAsciiDecoder.bind(media.stream).first;
+    final json = await _jsonAsciiDecoder
+        .bind(media.stream)
+        .cast<Map<String, dynamic>>()
+        .first;
 
     return VersionInfo.parse(channel, revision, json);
   }
@@ -114,8 +111,8 @@ class DartDownloads {
       String channel, String revision, String path) async {
     return await _api.objects.get(
         _dartChannel, _revisionPath(channel, revision, [path]),
-        downloadOptions: storage.DownloadOptions.FullMedia);
+        downloadOptions: storage.DownloadOptions.fullMedia) as storage.Media;
   }
 }
 
-final _jsonAsciiDecoder = json.fuse(ascii).decoder;
+late final _jsonAsciiDecoder = json.fuse(ascii).decoder;
