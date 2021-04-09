@@ -50,7 +50,7 @@ see the documentation for
 We split the guidelines into a few separate pages for easy digestion:
 
   * **[Style Guide][]** &ndash; This defines the rules for laying out and
-    organizing code, or at least the parts that [dartfmt] doesn't handle for
+    organizing code, or at least the parts that [dart format] doesn't handle for
     you. The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
@@ -80,7 +80,7 @@ For links to all the guidelines, see the
 </aside>
 {% endcomment %}
 
-[dartfmt]: https://github.com/dart-lang/dart_style#readme
+[dart format]: /tools/dart-format
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
 [usage guide]: /guides/language/effective-dart/usage

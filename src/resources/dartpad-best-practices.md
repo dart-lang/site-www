@@ -46,7 +46,7 @@ The following screenshot shows DartPad.
 
 **1. Tabs:** Dart, Solution, and Tests (hidden) <br>
 **2. Hint:** Offers help <br>
-**3. Format:** Runs the code formatter (dartfmt) <br>
+**3. Format:** Runs the code formatter (dart format) <br>
 **4. Reset:** Erases your work and restores the editor to its original state <br>
 **5. Run**
 
