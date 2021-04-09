@@ -51,7 +51,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `compile` | `dart compile exe <DART_FILE>` | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
 | `create`  | `dart create <DIRECTORY>`      | Creates a new project.<br>Use instead of [`stagehand`.][] | 
 | `fix`  | `dart fix <DIRECTORY|DART_FILE>` | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
-| `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of [`dartfmt`][].<br>[Learn more.][format] | 
+| `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] | 
 | `pub`     | `dart pub <PUB_COMMAND>`       | Works with packages.<br>Use instead of [`pub`][]. | 
 | `run`     | `dart run <DART_FILE>`         | Runs a Dart program. <br>Use instead of the pre-existing [Dart VM command][dart-vm]. | 
 | `test`    | `dart test [<DIRECTORY|DART_FILE>]` | Runs tests in this package.<br>Use instead of [`pub run test`][`pub`]. |
@@ -70,7 +70,6 @@ You can also get details on `pub` commands — for example,
 
 [`dartaotruntime`]: /tools/dartaotruntime
 [`dartdoc`]: https://github.com/dart-lang/dartdoc#dartdoc
-[`dartfmt`]: /tools/dartfmt
 [`dartfix`]: {{site.pub-pkg}}/dartfix
 [dart-vm]: /tools/dart-vm
 [null safety]: /null-safety

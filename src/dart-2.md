@@ -80,7 +80,7 @@ from either Dart 1.x or an earlier version of Dart 2.
    Consider adding automated tests to catch issues that you find.
 7. **Fix issues until your code works.**
 8. _Optional:_ **Remove `new` and unnecessary `const`.**
-   * You can remove these by hand or use a tool such as `dartfmt --fix`.
+   * You can remove these by hand or use a tool such as `dart format --fix`.
    * To find occurrences of `new` and unnecessary `const`, add the rules
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
