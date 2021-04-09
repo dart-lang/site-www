@@ -30,9 +30,7 @@ class DartDownloads {
   Future<Uri> createDownloadLink(
       String channel, String revision, String path) async {
     final prefix = _revisionPath(channel, revision, [path]);
-
     final results = await _api.objects.list(_dartChannel, prefix: prefix);
-
     final items = results.items;
 
     if (items == null || items.isEmpty) {
@@ -60,7 +58,6 @@ class DartDownloads {
     await Future.forEach<String>(versions, (path) async {
       try {
         final revisionString = p.basename(path);
-
         final ver = await fetchVersion(channel, revisionString);
 
         versionMaps.add(ver);
