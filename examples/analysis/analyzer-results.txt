@@ -1,9 +1,13 @@
 Analyzing analysis...
 
   error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
+          Try changing the type of the variable, or casting the right-hand type to 'String'.
   error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:19:11 - (invalid_assignment)
+          Try changing the type of the variable, or casting the right-hand type to 'int'.
   error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:26:11 - (invalid_assignment)
+          Try changing the type of the variable, or casting the right-hand type to 'int'.
   error - Const variables must be initialized with a constant value at lib/assignment.dart:34:13 - (const_initialized_with_non_constant_value)
+          Try changing the initializer to be a constant expression.
    info - Avoid empty statements at lib/lint.dart:9:19 - (empty_statements)
    info - Close instances of `dart.core.Sink` at lib/lint.dart:16:7 - (close_sinks)
 

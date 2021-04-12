@@ -26,14 +26,12 @@ void main() {
     expect(_test, m.prints(['0', '1']));
   });
 
-  test('collection', () {
+  test('forEach', () {
     _test() {
-      // #docregion collection
+      // #docregion forEach
       var collection = [1, 2, 3];
-      for (var x in collection) {
-        print(x); // 1 2 3
-      }
-      // #enddocregion collection
+      collection.forEach(print); // 1 2 3
+      // #enddocregion forEach
     }
 
     expect(_test, m.prints([1, 2, 3]));

@@ -3,18 +3,6 @@ title: Dart overview
 description: A short introduction to Dart
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
-<style>
-{% comment %}
-TODO: move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 400px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 <img style="padding: 30px; float: right; width: 300px" src="{% asset
 logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
@@ -75,7 +63,7 @@ tour](/guides/language/language-tour).
 ```dart:run-dartpad:ga_id-overview:null_safety-true
 import 'dart:math' show Random;
 
-main() async {
+void main() async {
   print('Compute π using the Monte Carlo method.');
   await for (final estimate in computePi().take(100)) {
     print('π ≅ $estimate');
@@ -83,7 +71,7 @@ main() async {
 }
 
 /// Generates a stream of increasingly accurate estimates of π.
-Stream<double> computePi({int batch: 100000}) async* {
+Stream<double> computePi({int batch = 100000}) async* {
   var total = 0; // inferred to be of type int
   var count = 0;
   while (true) {
@@ -111,8 +99,8 @@ Iterable<Point> generateRandom([int? seed]) sync* {
 }
 
 class Point {
-  final double x, y;
   const Point(this.x, this.y);
+  final double x, y;
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }
 ```

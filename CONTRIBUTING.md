@@ -53,12 +53,14 @@ More info:
 
 ## Updating code samples
 
-If your PR changes Dart code within a page, you'll probably need to change the code in two places:
+If your PR changes Dart code within a page, you'll probably need to change
+the code in two places:
 
 1. In a `.md` file for the page.
 2. In a `.dart` file under the `/examples` directory.
 
-For example, say  you want to change the following code in the [language tour](https://dart.dev/guides/language/language-tour):
+For example, say  you want to change the following code in the
+[language tour](https://dart.dev/guides/language/language-tour):
 
 ```
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>

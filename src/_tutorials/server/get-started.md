@@ -30,19 +30,6 @@ greeting to use another language.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 150px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
-
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
@@ -79,6 +66,14 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
+{{ site.alert.note }}
+  Under the hood, `dart create` runs [`dart pub get`][], which
+  scans the generated pubspec file and downloads dependencies.
+  If you add other dependencies to your pubspec file,
+  then run `dart pub get` to download them.
+{{ site.alert.end }}
+
+[`dart pub get`]: /tools/pub/cmd/pub-get
 
 ## 4. Run the app
 
@@ -168,3 +163,4 @@ If you get stuck, find help at [Community and support.](/community)
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors
+

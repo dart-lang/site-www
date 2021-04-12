@@ -55,7 +55,6 @@ Dart is open source. Learn how to
 Our wonderful community has provided these resources.
 
 * [Chinese version of this site (此网站的中文版)](https://dart.cn)
-* [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
 
 
 Also see the [Flutter community page.]({{site.flutter}}/community)

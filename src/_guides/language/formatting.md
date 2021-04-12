@@ -11,14 +11,14 @@ If two pieces of code look different it should be because
 they _are_ different in some meaningful way.
 When a bit of code stands out and catches your eye, it should do so for a useful reason.
 
-Fortunately, you can use the [`dart format` tool][dartfmt] —
+Fortunately, you can use the [`dart format` tool][dart format] —
 from the command line or in your favorite [Dart-savvy IDE][ide] —
 to perform most of the drudge work of formatting your code.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 
 ```terminal
-$ dart format -w bin lib test
+$ dart format bin lib test
 ```
 
 However, dart format can't do it all.
@@ -28,10 +28,10 @@ For additional guidance, see the Effective Dart
 
 More information:
 
-* [`dart format`][dartfmt]
+* [`dart format`][dart format]
 * [Effective Dart: Style][style guidelines]
 
-[dartfmt]: /tools/dartfmt
+[dart format]: /tools/dart-format
 [Effective Dart]: /guides/language/effective-dart
 [formatting guidelines]: /guides/language/effective-dart/style#formatting
 [ide]: /tools/#ides-and-editors

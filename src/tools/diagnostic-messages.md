@@ -8809,9 +8809,6 @@ class C {
 
 ### return_of_invalid_type
 
-_A value of type '{0}' can't be returned by the 'onError' handler because it
-must be assignable to '{1}'._
-
 _A value of type '{0}' can't be returned from the constructor '{2}' because it
 has a return type of '{1}'._
 
@@ -9758,7 +9755,7 @@ void f(String? s) {
 
 ### type_argument_not_matching_bounds
 
-_'{0}' doesn't extend '{1}'._
+_'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._
 
 #### Description
 

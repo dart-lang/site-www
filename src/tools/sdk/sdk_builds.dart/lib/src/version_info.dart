@@ -2,7 +2,7 @@ library sdk_builds.version_info;
 
 import 'package:pub_semver/pub_semver.dart';
 
-final _oldRevisionPostfix = new RegExp(r'(\d+\.\d+\.\d+)\.(\d+)_r(\d+)');
+final _oldRevisionPostfix = RegExp(r'(\d+\.\d+\.\d+)\.(\d+)_r(\d+)');
 
 abstract class VersionInfo implements Comparable<VersionInfo> {
   final Version version;
@@ -14,7 +14,6 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
 
   static VersionInfo parse(
       String channel, String revisionPath, Map<String, dynamic> json) {
-
     // Date parse magic
     var dateJson = json['date'];
     DateTime date;
@@ -22,37 +21,38 @@ abstract class VersionInfo implements Comparable<VersionInfo> {
       date = DateTime.parse(dateJson);
     } on FormatException {
       // dealing with weird format: 201401150424
-      dateJson = '${dateJson.substring(0, 8)}T${dateJson.substring(8,12)}Z';
+      dateJson = '${dateJson.substring(0, 8)}T${dateJson.substring(8, 12)}Z';
       date = DateTime.parse(dateJson);
     }
 
     // Version logic
     var jsonVersion = json['version'];
 
-    var oldMatch = _oldRevisionPostfix.firstMatch(jsonVersion);
+    final oldMatch = _oldRevisionPostfix.firstMatch(jsonVersion);
     if (oldMatch != null) {
-      jsonVersion = "${oldMatch[1]}-rev.${oldMatch[2]}.${oldMatch[3]}";
+      jsonVersion = '${oldMatch[1]}-rev.${oldMatch[2]}.${oldMatch[3]}';
     }
 
-    var version = new Version.parse(jsonVersion);
+    final version = Version.parse(jsonVersion);
 
-    var revision = json['revision'];
-    var svnRevision = int.tryParse(revision);
+    final revision = json['revision'];
+    final svnRevision = int.tryParse(revision);
     if (svnRevision == null) {
       // assume git!
       assert(revision is String);
       assert(revision.length == 40);
 
-      return new GitVersionInfo(version, date, channel, revisionPath, revision);
+      return GitVersionInfo(version, date, channel, revisionPath, revision);
     }
 
-    return new SvnVersionInfo(
-        version, date, channel, revisionPath, svnRevision);
+    return SvnVersionInfo(version, date, channel, revisionPath, svnRevision);
   }
 
+  @override
   String toString() => version.toString();
 
-  int compareTo(VersionInfo vi) => this.version.compareTo(vi.version);
+  @override
+  int compareTo(VersionInfo vi) => version.compareTo(vi.version);
 }
 
 class SvnVersionInfo extends VersionInfo {

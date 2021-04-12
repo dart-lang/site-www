@@ -1,0 +1,5 @@
+Analyzing misc...
+
+  error - The argument type 'int' can't be assigned to the parameter type 'String' at lib/library_tour/core/collections.dart:5:14 - (argument_type_not_assignable)
+
+1 issue found.

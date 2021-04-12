@@ -19,8 +19,7 @@ Here are the basic steps for migrating each package that you own:
 {{ site.alert.info }}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider waiting until null safety is in a stable release
-  and all your dependencies are ready.
+  make sure that all of your dependencies are ready.
 {{ site.alert.end }}
 
 For an informal look at the experience of using the migration tool, watch this video:
@@ -51,7 +50,7 @@ then passing a nullable argument becomes a compile error.
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
   don't use null safety yet,
-  as long as they use Dart 2.12 beta or later.
+  as long as they use Dart 2.12 or later.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 {{ site.alert.end }}
@@ -63,31 +62,15 @@ The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
 
-### Switch to a 2.12 beta release
+### Switch to the Dart 2.12 release
 
-**Switch to the latest beta release**
+Switch to the **latest stable release**
 of either the Dart SDK or the Flutter SDK.
-How you get the latest beta release depends on whether
-you use the Flutter SDK:
 
-* If you use the Flutter SDK,
-  switch to the beta channel:
-
+Check that you have Dart 2.12 or later:
   ```terminal
-$ flutter channel beta
-$ flutter upgrade
+$ dart --version
 ```
-* Otherwise, download a beta release
-  from the [Dart SDK archive][].
-
-[Dart SDK archive]: /tools/sdk/archive#beta-channel
-
-{{ site.alert.warn }}
-  If you return to working on production code, remember to
-  **switch back to a stable release**
-  (for example, by running `flutter channel stable`).
-{{ site.alert.end }}
-
 
 ### Check dependency status
 
@@ -133,26 +116,11 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-1. Update `pubspec.yaml` to use null-safe releases
-   (as listed in the **Resolvable** column)
-   of its dependencies.
-   Omit `.x` suffixes to make version solving more flexible,
-   and _don't_ update the SDK minimum constraint.
-   For example, the `pubspec.yaml` file might look like this:
-   ```yaml
-   ...
-   environment:
-     sdk: '>=2.8.1 <3.0.0'
+1. Run `dart pub upgrade --null-safety` to upgrade to the latest versions
+   supporting null safety.
+   **Note:** This command changes your `pubspec.yaml` file.
 
-   dependencies:
-     path: ^1.8.0-nullsafety
-     process: ^4.0.0-nullsafety
-
-   dev_dependencies:
-     pedantic: ^1.10.0-nullsafety
-   ```
-
-2. Run `dart pub upgrade`.
+2. Run `dart pub get`.
 
 
 ## 2. Migrate {#step2-migrate}
@@ -192,7 +160,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest 2.12 beta release of the Dart SDK.
+* Use the latest beta release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
@@ -338,6 +306,22 @@ var zeroOne = <int>[zero, one];
 </tr>
 </table>
 
+#### Opting out files
+
+Although we recommend migrating all at once,
+sometimes that isn't practical,
+especially in a large app or package.
+To opt out a file or directory,
+click its green checkbox.
+Later, when you apply changes,
+each opted out file will be unchanged
+except for a 2.9 [version comment][].
+
+For more information about incremental migration, see
+[Unsound null safety][].
+
+[version comment]: /guides/language/evolution#per-library-language-version-selection
+
 
 #### Applying changes
 
@@ -377,17 +361,11 @@ consider migrating those libraries together.
 To migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0-0`:
+   setting the minimum SDK constraint to `2.12.0`:
    ```yaml
    environment:
-     sdk: '>=2.12.0-0 <3.0.0'
+     sdk: '>=2.12.0 <3.0.0'
    ```
-
-   {{ site.alert.note }}
-     The 2.12 SDK constraint above ends in **`-0`**.
-     This use of [semantic versioning notation](https://semver.org/)
-     allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
-   {{ site.alert.end }}
 
 2. Regenerate the [package configuration file][]:
 
@@ -397,7 +375,7 @@ To migrate a package by hand, follow these steps:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
+   Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
    every library in the package to 2.12,
    opting them all in to null safety.
@@ -453,58 +431,41 @@ We encourage you to publish packages as prereleases
 as soon as you migrate:
 
 * [Set the SDK constraints to the tested beta version.](#sdk-constraints)
-* [Set the package version to indicate a breaking change and
-  include a `nullsafety` suffix.](#version)
+* [Set the package version to indicate a breaking change.](#package-version)
 
 ### SDK constraints
 
-Set the lower SDK constraint to the beta version of 2.12
-that you used to test the migration,
-and the upper SDK constraint to `<3.0.0`.
-For example, if you're using 2.12.0-29.10.beta,
-then your constraints should look like this:
+Set the lower SDK constraint to 2.12.0:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0-29.10.beta <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 With these constraints,
 packages that are published during null safety beta
 can still work with the next stable release of the Dart SDK.
 
-
 ### Package version
 
 Update the version of the package
-to indicate a breaking change and include a `nullsafety` suffix:
+to indicate a breaking change:
 
 * If your package is already at 1.0.0 or greater,
   increase the major version.
   For example, if the previous version is `2.3.2`,
-  the new version is **`3.0.0-nullsafety.0`**.
+  the new version is `3.0.0`.
 
 * If your package hasn't reached 1.0.0 yet,
   _either_ increase the minor version _or_ update the version to 1.0.0.
   For example, if the previous version is `0.3.2`,
-  the new version is one of the following:
-  * **`0.4.0-nullsafety.0`**
-  * **`1.0.0-nullsafety.0`**
+  the new version is either `0.4.0` or `1.0.0`.
 
-For subsequent updates to the null-safe prerelease of the package,
-increment the prerelease suffix.
-For example, if the first null-safe version is `3.0.0-nullsafety.0`,
-then the next one is `3.0.0-nullsafety.1`.
+Before you publish a stable null safety version of a package,
+we strongly recommend following these pubspec rules:
 
-You can maintain a stable release and null-safe prerelease at the same time.
-For example, if you have a stable release that's `1.0.0` and
-a prerelease that's `2.0.0-nullsafety.0`,
-you can still publish new versions of the stable release
-(`1.0.1`) and null-safe prerelease (`2.0.0-nullsafety.1`).
-
-Once null safety is available in a stable release of the Dart SDK,
-we encourage you to publish a stable version of your null-safe package.
-
+  * Set the Dart lower SDK constraint to `2.12.0`.
+  * Use stable versions of all direct dependencies.
 
 ## Welcome to null safety
 

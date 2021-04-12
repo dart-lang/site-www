@@ -5,31 +5,31 @@ import 'package:http/browser_client.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
-Future runApp() async {
+Future<void> runApp() async {
   var client = DartDownloads(client: BrowserClient());
 
   var stableSelector = VersionSelector(
     'stable',
     client,
-    querySelector('#stable'),
-    querySelector('#stable-versions'),
-    querySelector('#stable-os'),
+    querySelector('#stable') as TableElement,
+    querySelector('#stable-versions') as SelectElement,
+    querySelector('#stable-os') as SelectElement,
   );
 
   var betaSelector = VersionSelector(
     'beta',
     client,
-    querySelector('#beta'),
-    querySelector('#beta-versions'),
-    querySelector('#beta-os'),
+    querySelector('#beta') as TableElement,
+    querySelector('#beta-versions') as SelectElement,
+    querySelector('#beta-os') as SelectElement,
   );
 
   var devSelector = VersionSelector(
     'dev',
     client,
-    querySelector('#dev'),
-    querySelector('#dev-versions'),
-    querySelector('#dev-os'),
+    querySelector('#dev') as TableElement,
+    querySelector('#dev-versions') as SelectElement,
+    querySelector('#dev-os') as SelectElement,
   );
 
   unawaited(stableSelector.init());

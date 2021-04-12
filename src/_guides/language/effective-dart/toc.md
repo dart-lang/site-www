@@ -1,7 +1,4 @@
     {% comment %}
-    NOTE: The generator is broken.
-    See https://github.com/dart-lang/site-www/issues/1325.
-
     This file is generated from the other files in this directory.
     To re-generate it, please run the following command from root of
     the project:
@@ -37,7 +34,7 @@
 
 **Formatting**
 
-* <a href='/guides/language/effective-dart/style#do-format-your-code-using-dartfmt'>DO format your code using <code>dartfmt</code>.</a>
+* <a href='/guides/language/effective-dart/style#do-format-your-code-using-dart-format'>DO format your code using <code>dart format</code>.</a>
 * <a href='/guides/language/effective-dart/style#consider-changing-your-code-to-make-it-more-formatter-friendly'>CONSIDER changing your code to make it more formatter-friendly.</a>
 * <a href='/guides/language/effective-dart/style#avoid-lines-longer-than-80-characters'>AVOID lines longer than 80 characters.</a>
 * <a href='/guides/language/effective-dart/style#do-use-curly-braces-for-all-flow-control-structures'>DO use curly braces for all flow control statements.</a>
@@ -95,11 +92,16 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-strings-in-part-of-directives'>DO use strings in <code>part of</code> directives.</a>
 * <a href='/guides/language/effective-dart/usage#dont-import-libraries-that-are-inside-the-src-directory-of-another-package'>DON'T import libraries that are inside the <code>src</code> directory of another package.</a>
-* <a href='/guides/language/effective-dart/usage#do-use-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory'>DO use relative paths when importing libraries within your own package's <code>lib</code> directory.</a>
+* <a href='/guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib'>DON'T allow an import path to reach into or out of <code>lib</code>.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-relative-import-paths'>PREFER relative import paths.</a>
 
-**Booleans**
+**Null**
 
-* <a href='/guides/language/effective-dart/usage#do-use--to-convert-null-to-a-boolean-value'>DO use <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#avoid-late-variables-if-you-need-to-check-whether-they-are-initialized'>AVOID <code>late</code> variables if you need to check whether they are initialized.</a>
+* <a href='/guides/language/effective-dart/usage#consider-copying-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER copying a nullable field to a local variable to enable type promotion.</a>
 
 **Strings**
 
@@ -111,7 +113,6 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-collection-literals-when-possible'>DO use collection literals when possible.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-length-to-see-if-a-collection-is-empty'>DON'T use <code>.length</code> to see if a collection is empty.</a>
-* <a href='/guides/language/effective-dart/usage#consider-using-higher-order-methods-to-transform-a-sequence'>CONSIDER using higher-order methods to transform a sequence.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-using-iterableforeach-with-a-function-literal'>AVOID using <code>Iterable.forEach()</code> with a function literal.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-listfrom-unless-you-intend-to-change-the-type-of-the-result'>DON'T use <code>List.from()</code> unless you intend to change the type of the result.</a>
 * <a href='/guides/language/effective-dart/usage#do-use-wheretype-to-filter-a-collection-by-type'>DO use <code>whereType()</code> to filter a collection by type.</a>
@@ -122,15 +123,11 @@
 
 * <a href='/guides/language/effective-dart/usage#do-use-a-function-declaration-to-bind-a-function-to-a-name'>DO use a function declaration to bind a function to a name.</a>
 * <a href='/guides/language/effective-dart/usage#dont-create-a-lambda-when-a-tear-off-will-do'>DON'T create a lambda when a tear-off will do.</a>
-
-**Parameters**
-
 * <a href='/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value'>DO use <code>=</code> to separate a named parameter from its default value.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
 
 **Variables**
 
-* <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
+* <a href='/guides/language/effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables'>DO follow a consistent rule for <code>var</code> and <code>final</code> on local variables.</a>
 * <a href='/guides/language/effective-dart/usage#avoid-storing-what-you-can-calculate'>AVOID storing what you can calculate.</a>
 
 **Members**
@@ -144,7 +141,7 @@
 **Constructors**
 
 * <a href='/guides/language/effective-dart/usage#do-use-initializing-formals-when-possible'>DO use initializing formals when possible.</a>
-* <a href='/guides/language/effective-dart/usage#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-late-when-a-constructor-initializer-list-will-do'>DON'T use <code>late</code> when a constructor initializer list will do.</a>
 * <a href='/guides/language/effective-dart/usage#do-use--instead-of--for-empty-constructor-bodies'>DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-new'>DON'T use <code>new</code>.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-const-redundantly'>DON'T use <code>const</code> redundantly.</a>
@@ -217,23 +214,29 @@
 * <a href='/guides/language/effective-dart/design#do-use-getters-for-operations-that-conceptually-access-properties'>DO use getters for operations that conceptually access properties.</a>
 * <a href='/guides/language/effective-dart/design#do-use-setters-for-operations-that-conceptually-change-properties'>DO use setters for operations that conceptually change properties.</a>
 * <a href='/guides/language/effective-dart/design#dont-define-a-setter-without-a-corresponding-getter'>DON'T define a setter without a corresponding getter.</a>
-* <a href='/guides/language/effective-dart/design#avoid-returning-null-from-members-whose-return-type-is-bool-double-int-or-num'>AVOID returning <code>null</code> from members whose return type is <code>bool</code>, <code>double</code>, <code>int</code>, or <code>num</code>.</a>
+* <a href='/guides/language/effective-dart/design#avoid-using-runtime-type-tests-to-fake-overloading'>AVOID using runtime type tests to fake overloading.</a>
+* <a href='/guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers'>AVOID public <code>late final</code> fields without initializers.</a>
+* <a href='/guides/language/effective-dart/design#avoid-returning-nullable-future-stream-and-collection-types'>AVOID returning nullable <code>Future</code>, <code>Stream</code>, and collection types.</a>
 * <a href='/guides/language/effective-dart/design#avoid-returning-this-from-methods-just-to-enable-a-fluent-interface'>AVOID returning <code>this</code> from methods just to enable a fluent interface.</a>
 
 **Types**
 
-* <a href='/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious'>PREFER type annotating public fields and top-level variables if the type isn't obvious.</a>
-* <a href='/guides/language/effective-dart/design#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious'>CONSIDER type annotating private fields and top-level variables if the type isn't obvious.</a>
-* <a href='/guides/language/effective-dart/design#avoid-type-annotating-initialized-local-variables'>AVOID type annotating initialized local variables.</a>
-* <a href='/guides/language/effective-dart/design#avoid-annotating-inferred-parameter-types-on-function-expressions'>AVOID annotating inferred parameter types on function expressions.</a>
-* <a href='/guides/language/effective-dart/design#avoid-redundant-type-arguments-on-generic-invocations'>AVOID redundant type arguments on generic invocations.</a>
-* <a href='/guides/language/effective-dart/design#do-annotate-when-dart-infers-the-wrong-type'>DO annotate when Dart infers the wrong type.</a>
-* <a href='/guides/language/effective-dart/design#prefer-annotating-with-dynamic-instead-of-letting-inference-fail'>PREFER annotating with <code>dynamic</code> instead of letting inference fail.</a>
+* <a href='/guides/language/effective-dart/design#do-type-annotate-variables-without-initializers'>DO type annotate variables without initializers.</a>
+* <a href='/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious'>DO type annotate fields and top-level variables if the type isn't obvious.</a>
+* <a href='/guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables'>DON'T redundantly type annotate initialized local variables.</a>
+* <a href='/guides/language/effective-dart/design#do-annotate-return-types-on-function-declarations'>DO annotate return types on function declarations.</a>
+* <a href='/guides/language/effective-dart/design#do-annotate-parameter-types-on-function-declarations'>DO annotate parameter types on function declarations.</a>
+* <a href='/guides/language/effective-dart/design#dont-annotate-inferred-parameter-types-on-function-expressions'>DON'T annotate inferred parameter types on function expressions.</a>
+* <a href='/guides/language/effective-dart/design#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
+* <a href='/guides/language/effective-dart/design#do-write-type-arguments-on-generic-invocations-that-arent-inferred'>DO write type arguments on generic invocations that aren't inferred.</a>
+* <a href='/guides/language/effective-dart/design#dont-write-type-arguments-on-generic-invocations-that-are-inferred'>DON'T write type arguments on generic invocations that are inferred.</a>
+* <a href='/guides/language/effective-dart/design#avoid-writing-incomplete-generic-types'>AVOID writing incomplete generic types.</a>
+* <a href='/guides/language/effective-dart/design#do-annotate-with-dynamic-instead-of-letting-inference-fail'>DO annotate with <code>dynamic</code> instead of letting inference fail.</a>
 * <a href='/guides/language/effective-dart/design#prefer-signatures-in-function-type-annotations'>PREFER signatures in function type annotations.</a>
 * <a href='/guides/language/effective-dart/design#dont-specify-a-return-type-for-a-setter'>DON'T specify a return type for a setter.</a>
 * <a href='/guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax'>DON'T use the legacy typedef syntax.</a>
 * <a href='/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs'>PREFER inline function types over typedefs.</a>
-* <a href='/guides/language/effective-dart/design#consider-using-function-type-syntax-for-parameters'>CONSIDER using function type syntax for parameters.</a>
+* <a href='/guides/language/effective-dart/design#prefer-using-function-type-syntax-for-parameters'>PREFER using function type syntax for parameters.</a>
 * <a href='/guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking'>AVOID using <code>dynamic</code> unless you want to disable static checking.</a>
 * <a href='/guides/language/effective-dart/design#do-use-futurevoid-as-the-return-type-of-asynchronous-members-that-do-not-produce-values'>DO use <code>Future&lt;void&gt;</code> as the return type of asynchronous members that do not produce values.</a>
 * <a href='/guides/language/effective-dart/design#avoid-using-futureort-as-a-return-type'>AVOID using <code>FutureOr&lt;T&gt;</code> as a return type.</a>
@@ -250,7 +253,7 @@
 * <a href='/guides/language/effective-dart/design#do-override-hashcode-if-you-override-'>DO override <code>hashCode</code> if you override <code>==</code>.</a>
 * <a href='/guides/language/effective-dart/design#do-make-your--operator-obey-the-mathematical-rules-of-equality'>DO make your <code>==</code> operator obey the mathematical rules of equality.</a>
 * <a href='/guides/language/effective-dart/design#avoid-defining-custom-equality-for-mutable-classes'>AVOID defining custom equality for mutable classes.</a>
-* <a href='/guides/language/effective-dart/design#dont-check-for-null-in-custom--operators'>DON'T check for <code>null</code> in custom <code>==</code> operators.</a>
+* <a href='/guides/language/effective-dart/design#dont-make-the-parameter-to--nullable'>DON'T make the parameter to <code>==</code> nullable.</a>
 
 </div>
 <div style='clear:both'></div>

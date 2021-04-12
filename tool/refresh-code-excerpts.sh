@@ -49,7 +49,7 @@ ARGS+='--no-escape-ng-interpolation '
 # ARGS+='--plaster=none '
 ARGS+='--replace='
 # The replace expressions that follow must not contain (unencode/unescaped) spaces:
-ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dartfmt)
+ARGS+='/\/\/!<br>//g;' # Use //!<br> to force a line break (against dart format)
 ARGS+='/ellipsis(<\w+>)?(\(\))?;?/.../g;' # ellipses; --> ...
 ARGS+='/\/\*(\s*\.\.\.\s*)\*\//$1/g;' # /*...*/ --> ...
 ARGS+='/\{\/\*-(\s*\.\.\.\s*)-\*\/\}/$1/g;' # {/*-...-*/} --> ... (removed brackets too)
