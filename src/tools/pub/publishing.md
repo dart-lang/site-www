@@ -39,8 +39,9 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-* You must include a `LICENSE` file
-  that contains an [open-source license.][open-source license]
+* You must include a `LICENSE` file.
+  Using an existing [open-source license][open-source license] makes it easy
+  for others to use your package.
   We recommend the [BSD license,][BSD license]
   which is used by Dart itself. You must also have the legal right to
   redistribute anything that you upload as part of your package.
