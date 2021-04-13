@@ -155,6 +155,8 @@
           permalink: /tutorials/server/httpserver
         - title: Libraries and packages
           permalink: /server/libraries
+        - title: Cloud Services
+          permalink: /server/services
     - title: Web apps
       children:
         - title: Overview
