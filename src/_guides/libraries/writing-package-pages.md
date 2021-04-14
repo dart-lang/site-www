@@ -133,7 +133,7 @@ Remember that not all users speak English, but they all speak Dart! Good code sa
 
 ### 5. Use Dart code formatting
 
-When adding code examples, use three backticks + dart (```dart) instead of three backticks (```). It will do the correct Dart syntax highlighting for your code examples.
+When adding code examples, use three backticks + dart (\`\`\`dart) instead of three backticks (\`\`\`). It will do the correct Dart syntax highlighting for your code examples.
 
 ```
 final like = "this";
