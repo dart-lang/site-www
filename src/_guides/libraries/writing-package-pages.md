@@ -30,8 +30,9 @@ There are seven tips that you can follow to write a good README.
 
 Throughout this document, we’ll use the README of the package [in\_app\_purchase](https://pub.dev/packages/in_app_purchase) as a “full” example. Depending on the complexity of your package, you can choose to go as simple as the README of the [yaml](https://pub.dev/packages/yaml) package. 
 
-Note that your README be used in multiple places and contexts, such as API references, in addition to the package page on pub.dev. 
-
+<aside class="alert alert-info" markdown="1">
+Note: Your README will be used in multiple places and contexts, such as API references, in addition to the package page on pub.dev. 
+</aside>
 
 ## Seven tips for good README
 
@@ -65,9 +66,10 @@ See the example below to see how the visual contents made the README look better
 
 {% asset libraries/images/package-page-example-iap-after.png alt="in_app_purchase readme with images" %}
 
-```
-ⓘNote: When adding visual contents, make sure that you use absolute URLs for the files, so that they'll work no matter where the README is published. One place to host your images is in the repository itself. For example, here's where in_app_purchases hosts its animated gifs.
-```
+<aside class="alert alert-info" markdown="1">
+Note: When adding visual contents, make sure that you use absolute URLs for the files, so that they'll work no matter where the README is published. One place to host your images is in the repository itself. For example, here's where in_app_purchases hosts its animated gifs.
+</aside>
+
 
 If your package supports complex concepts, utilize diagrams that explain the package, so that your users can quickly understand the package and feel confident about using it. 
 
