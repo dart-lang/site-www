@@ -41,7 +41,7 @@ are a few additional requirements for uploading a package:
 
 * You must include a `LICENSE` file.
   We recommend the [BSD 3-clause license][],
-  which the Dart and Flutter teams use.
+  which the Dart and Flutter teams typically use.
   However, you can use any license that's appropriate for your package.
   You must also have the legal right to
   redistribute anything that you upload as part of your package.
