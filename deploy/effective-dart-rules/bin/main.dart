@@ -6,32 +6,28 @@ import 'package:html_unescape/html_unescape_small.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart' as path;
 
-Future<Null> main() async {
+final _unescape = HtmlUnescape();
+final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
+
+Future<Null> main(List<String> arguments) async {
   var dirPath = "src/_guides/language/effective-dart";
-  var filenames = const <String>[
+  var filenames = const [
     "style.md",
     "documentation.md",
     "usage.md",
     "design.md"
   ];
-  List<Section> sections =
-      filenames.map((name) => Section(dirPath, name)).toList();
+
+  var sections = filenames.map((name) => Section(dirPath, name)).toList();
 
   for (var section in sections) {
     var lines = section.file.readAsLinesSync();
-    // Ignore the YAML front matter (can lead to false H3 elements.
+    // Ignore the YAML frontmatter (can lead to false H3 elements).
     lines = lines.skip(1).skipWhile((line) => line.trim() != '---').toList();
     var document = md.Document();
 
-    // Commented out the following line because the parseRefLinks has
-    // disappeared. Unfortunately, that means I had to hand-patch the TOC
-    // to fix the links to custom anchors. To find these, display
-    // localhost:4000/guides/language/effective-dart, and then search
-    // for "{#". Delete the excess text and fix the URL.
-    //document.parseRefLinks(lines);
-
     var nodes = document.parseLines(lines);
-    for (md.Element element in nodes.where((node) => node is md.Element)) {
+    for (var element in nodes.whereType<md.Element>()) {
       if (element.tag == "h2") {
         var subsection = Subsection(element);
         section.subsections.add(subsection);
@@ -62,10 +58,10 @@ Future<Null> main() async {
     """);
 
     out.writeln(r"<div class='effective_dart--summary_column' markdown='1'>");
-    for (int i = 0; i < sections.length; i++) {
+    for (var i = 0; i < sections.length; i++) {
       var section = sections[i];
       if (i > 0) {
-        if (i % 2 == 0) {
+        if (i.isEven) {
           out.writeln("<div style='clear:both'></div>");
         }
         out.writeln(
@@ -93,20 +89,37 @@ void write(IOSink out, Section section) {
 
 class Rule {
   final String name;
-  String html;
+  final String html;
   final String fragment;
 
-  Rule(md.Element element)
-      : name = _concatenatedText(element),
-        html = md.renderToHtml(element.children),
-        fragment = generateAnchorHash(element);
+  factory Rule(md.Element element) {
+    var name = _concatenatedText(element);
+    var html = md.renderToHtml(element.children);
+    var fragment = _generateAnchorHash(name);
+
+    // Handle headers with an explicit "{#anchor-text}" anchor.
+    var match = _anchorPattern.firstMatch(name);
+    if (match != null) {
+      // Pull the anchor from the name.
+      name = match[1].trim();
+      fragment = match[2];
+
+      // Strip it from the HTML too.
+      match = _anchorPattern.firstMatch(html);
+      html = match[1].trim();
+    }
+
+    return Rule._(name, html, fragment);
+  }
+
+  Rule._(this.name, this.html, this.fragment);
 }
 
 class Section {
   final Uri uri;
   final File file;
   final String name;
-  List<Subsection> subsections = List<Subsection>();
+  final List<Subsection> subsections = [];
 
   Section(String dirPath, String filename)
       : file = File(path.join(dirPath, filename)),
@@ -119,14 +132,14 @@ class Section {
 class Subsection {
   final String name;
   final String fragment;
-  List<Rule> rules = List<Rule>();
+  final List<Rule> rules = [];
   Subsection(md.Element element)
       : name = _concatenatedText(element),
-        fragment = generateAnchorHash(element);
+        fragment = _generateAnchorHash(_concatenatedText(element));
 }
 
-/// Generates a valid HTML anchor from the inner text of [element].
-String generateAnchorHash(md.Element element) => _concatenatedText(element)
+/// Generates a valid HTML anchor from [text].
+String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
     .replaceFirst(RegExp(r'^[^a-z]+'), '')
@@ -135,9 +148,7 @@ String generateAnchorHash(md.Element element) => _concatenatedText(element)
 
 /// Concatenates the text found in all the children of [element].
 String _concatenatedText(md.Element element) => element.children
-    .map((child) =>
-        (child is md.Text) ? unescape(child.text) : _concatenatedText(child))
+    .map((child) => (child is md.Text)
+        ? _unescape.convert(child.text)
+        : _concatenatedText(child))
     .join('');
-
-final _unescape = HtmlUnescape();
-String unescape(String input) => _unescape.convert(input);

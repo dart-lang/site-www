@@ -6,7 +6,7 @@ description: Use dart pub get to retrieve the dependencies used by your Dart app
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode tag=pre+code %}
-$ dart pub get [--offline]
+$ dart pub get [args]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
@@ -137,11 +137,25 @@ run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later versi
 
 ## Options
 
-The `dart pub get` command supports the `--offline`
-command-line argument, as mentioned above.
-
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+### `--dry-run` or `-n`
+
+Reports the dependencies that would be changed,
+but doesn't make the changes. This is useful if you
+want to analyze updates before making them.
+
+### `--offline`
+
+Uses cached packages rather than downloading
+from the network.
+For details, see [Getting while offline](#getting-while-offline).
+
+### `--precompile`
+
+Creates snapshots of the
+project's executables in direct dependencies.
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

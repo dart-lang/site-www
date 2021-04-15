@@ -1,5 +1,5 @@
 ---
-title: Numeric Computation
+title: Numeric computation
 description: How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM.
 original-date: 2013-05-22
 date: 2018-07-26
@@ -15,8 +15,7 @@ May 2013 (note added July 2018)_
   signed, wrapping integers. The smi and mint representations still exist,
   but overflow now results in wrapping instead of automatic conversion to
   bigint (`BigInt` objects). The
-  [`BigInt` class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core
-  /BigInt-class.html)
+  [`BigInt` class]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/BigInt-class.html)
   is now available as a separate type that doesn't implement `int`.
 
   Continue to avoid `BigInt` when possible. The VM has optimized code for
@@ -38,8 +37,8 @@ and how to pick the best container for your data.
 **Note:**
 This article does not cover the SIMD types available in Dart,
 which enable operating on four floating-point numbers in parallel.
-To learn more, read
-[Using SIMD in Dart](simd).
+To learn more, refer to the 
+[`dart:typed_data` documentation][dart-typed_data].
 </aside>
 
 ## Overview
@@ -366,7 +365,7 @@ and better CPU cache performance:
   using much less memory and making better use of your CPU’s cache.
 
 In general and specifically because of the above caveats,
-it is always a good idea to [benchmark](benchmarking)
+it is always a good idea to benchmark 
 your algorithm using both object and typed lists.
 
 **Performance tip:**
@@ -421,8 +420,7 @@ Unlike the case with smis,
 using an object list with doubles is always slower.
 
 **Performance tip:**
-[Benchmark](benchmarking)
-your application using both Float32List and Float64List
+Benchmark your application using both Float32List and Float64List
 to determine which performs best.
 
 ### Boxing
@@ -548,3 +546,4 @@ Flatten multiple-dimension lists into a single list,
 and compute the flattened index at runtime.
 This way you avoid the expense of dealing with a list of lists.
 
+[dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html

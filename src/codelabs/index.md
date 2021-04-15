@@ -31,6 +31,11 @@ with special attention to filtering and mapping values.
 Use DartPad to learn or remind yourself of how to write 
 asynchronous code using futures and the `async` and `await` keywords.
 
+### [Null safety](/codelabs/null-safety)
+
+Use DartPad to learn about Dart's null-safe type system,
+which was introduced in Dart 2.12.
+
 ## Flutter
 
 To learn about Flutter, try one of the

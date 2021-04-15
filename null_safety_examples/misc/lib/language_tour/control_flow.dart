@@ -26,9 +26,11 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // #docregion forEach
-    candidates.forEach((candidate) => candidate.interview());
-    // #enddocregion forEach
+    // #docregion collection
+    for (var candidate in candidates) {
+      candidate.interview();
+    }
+    // #enddocregion collection
   }
 
   {

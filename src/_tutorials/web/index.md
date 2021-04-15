@@ -1,5 +1,5 @@
 ---
-title: 'Tutorials: web apps'
+title: "Tutorials: web apps"
 description: Tutorials for writing Dart web apps.
 ---
 

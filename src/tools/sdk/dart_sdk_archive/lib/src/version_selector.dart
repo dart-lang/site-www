@@ -1,11 +1,11 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
-import 'package:platform_detect/platform_detect.dart';
+import 'package:platform_detect2/platform_detect2.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
-String _storageBase = "https://storage.googleapis.com/dart-archive";
+const _storageBase = 'https://storage.googleapis.com/dart-archive';
 
 class VersionSelector {
   final String channel;
@@ -18,7 +18,7 @@ class VersionSelector {
   VersionSelector(this.channel, this._client, this._table,
       this._versionSelector, this._osSelector);
 
-  Future init() async {
+  Future<void> init() async {
     _versionSelector.onChange.listen((Event event) {
       populateTable();
     });
@@ -34,7 +34,7 @@ class VersionSelector {
     }
 
     _versionSelector.options.first.selected = true;
-    _versionSelector.dispatchEvent(Event("change"));
+    _versionSelector.dispatchEvent(Event('change'));
   }
 
   void _selectOsDropdown() {
@@ -45,13 +45,14 @@ class VersionSelector {
     } else if (operatingSystem.isWindows) {
       _osSelector.options[3].selected = true;
     }
-    _osSelector.dispatchEvent(Event("change"));
+    _osSelector.dispatchEvent(Event('change'));
   }
 
-  Future populateTable() async {
-    clearTable();
+  Future<void> populateTable() async {
     var selectedVersion =
         _versionSelector.selectedOptions.first.attributes['value'];
+    if (selectedVersion == null) return;
+    clearTable();
     var svnRevision = svnRevisionForVersion(selectedVersion);
     var versionInfo =
         await _client.fetchVersion(channel, svnRevision ?? selectedVersion);
@@ -95,7 +96,7 @@ class VersionSelector {
     }
   }
 
-  static int _svnRevision(VersionInfo versionInfo) {
+  static int? _svnRevision(VersionInfo versionInfo) {
     if (versionInfo is SvnVersionInfo) {
       return versionInfo.revision;
     }
@@ -111,7 +112,7 @@ class VersionSelector {
     return versionInfo.version.toString();
   }
 
-  static String _prettyRevRef(VersionInfo versionInfo) {
+  static String? _prettyRevRef(VersionInfo versionInfo) {
     if (versionInfo is SvnVersionInfo) {
       return 'r${versionInfo.revision}';
     } else if (versionInfo is GitVersionInfo) {
@@ -129,13 +130,13 @@ class VersionSelector {
 
   void updateTable(VersionInfo versionInfo) {
     for (var name in platforms.keys) {
-      var platformVariants = platforms[name];
+      var platformVariants = platforms[name] ?? const [];
       for (var platformVariant in platformVariants) {
         // ARMv7 builds only available later in 2015, ARMv8 in 03-2017
         if (archiveMap[name] == 'linux') {
           if (platformVariant.architecture == 'ARMv7' &&
               versionInfo.date.isBefore(DateTime.parse(
-                  (channel == "dev") ? '2015-10-21' : '2015-08-31'))) {
+                  (channel == 'dev') ? '2015-10-21' : '2015-08-31'))) {
             continue;
           } else if (platformVariant.architecture == 'ARMv8 (ARM64)' &&
               versionInfo.date.isBefore(DateTime.parse('2017-03-09'))) {
@@ -152,12 +153,12 @@ class VersionSelector {
 
         var row = _table.tBodies.first.addRow()
           ..attributes['data-version'] = versionInfo.version.toString()
-          ..attributes['data-os'] = archiveMap[name];
+          ..attributes['data-os'] = archiveMap[name] ?? '';
         var versionCell = row.addCell()..text = versionInfo.version.toString();
         versionCell.append(SpanElement()
           ..text = ' (${_prettyRevRef(versionInfo)})'
           ..classes.add('muted'));
-        row.addCell()..text = name;
+        row.addCell().text = name;
         row.addCell()
           ..classes.add('nowrap')
           ..text = platformVariant.architecture;
@@ -168,11 +169,11 @@ class VersionSelector {
           if (platformVariant.archives.contains(pa)) {
             // We had no editor downloads after the move to GitHub.
             // This skips the editor link in those cases
-            if (versionInfo.revisionPath == null && pa == 'Dart Editor') {
+            if (pa == 'Dart Editor') {
               continue;
             }
 
-            String baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
+            var baseFileName = '${archiveMap[pa]}-${archiveMap[name]}-'
                 '${archiveMap[platformVariant.architecture]}';
 
             if (pa == 'Debian package') {
@@ -184,20 +185,20 @@ class VersionSelector {
               }
             }
 
-            var uri =
+            final uri =
                 '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
 
             c.append(AnchorElement()
               ..text = pa
               ..attributes['href'] = uri);
+            final svnRevisionInfo = _svnRevision(versionInfo);
             if (pa != 'Dart Editor' &&
                 pa != 'Debian package' &&
-                (_svnRevision(versionInfo) == null ||
-                    _svnRevision(versionInfo) > 38976)) {
+                (svnRevisionInfo == null || svnRevisionInfo > 38976)) {
               c.appendText(' ');
               c.append(AnchorElement()
-                ..text = "(SHA-256)"
+                ..text = '(SHA-256)'
                 ..attributes['href'] = '$uri.sha256sum'
                 ..classes.add('sha'));
             }
@@ -217,20 +218,18 @@ class VersionSelector {
     row.addCell()
       ..text = versionInfo.version.toString()
       ..append(rev);
-    row.addCell()..text = '---';
-    row.addCell()..text = '---';
+    row.addCell().text = '---';
+    row.addCell().text = '---';
     var c = row.addCell()..classes.add('archives');
-    var uri = '$_storageBase/channels/$channel/release/' +
+    var uri = '$_storageBase/channels/$channel/release/'
         '${versionInfo.version}/api-docs/dartdocs-gen-api.zip';
     c.append(AnchorElement()
       ..text = 'API docs'
       ..attributes['href'] = uri);
 
     var templateRows = _table.querySelectorAll('.template');
-    if (templateRows != null) {
-      for (var row in templateRows) {
-        row.remove();
-      }
+    for (var row in templateRows) {
+      row.remove();
     }
   }
 }

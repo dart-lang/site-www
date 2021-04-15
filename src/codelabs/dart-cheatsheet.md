@@ -4,18 +4,6 @@ description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 220px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
@@ -29,7 +17,7 @@ The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
 If you need help, click the **Hint** button.
-To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
+To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
@@ -57,10 +45,10 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-```dart:run-dartpad:ga_id-string_interpolation
+```dart:run-dartpad:ga_id-string_interpolation:null_safety-true
 {$ begin main.dart $}
 String stringify(int x, int y) {
-  // Return a formatted string here
+  TODO('Return a formatted string here');
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
@@ -69,6 +57,7 @@ String stringify(int x, int y) {
 }
 {$ end solution.dart $}
 {$ begin test.dart $}
+
 void main() {
   try {
     final str = stringify(2, 3); 
@@ -77,11 +66,11 @@ void main() {
       _result(true);
     } else if (str == '23') {
       _result(false, ['Test failed. It looks like you forgot the space!']);
-    } else if (str == null) {
-      _result(false, ['Test failed. Did you forget to return a value?']);
     } else {
       _result(false, ['That\'s not quite right. Keep trying!']);
     }
+  } on UnimplementedError {
+    _result(false, ['Test failed. Did you implement the method?']);
   } catch (e) {
     _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
   }
@@ -96,9 +85,86 @@ reference them inside single quotes, with a space in between.
 {$ end hint.txt $}
 ```
 
+## Nullable variables
+
+Dart 2.12 introduced sound null safety,
+meaning that (when you [enable null safety][])
+values can’t be null unless you say they can be.
+In other words, types are non-nullable by default.
+
+For example, consider the following code,
+which is **invalid** because (with null safety)
+a variable of type `int` can't have the value `null`:
+
+{% prettify dart tag=pre+code %}
+int a = [!null!]; // INVALID in null-safe Dart.
+{% endprettify %}
+
+When creating a variable in Dart 2.12 or higher,
+you can add `?` to the type to indicate
+that the variable can be null:
+
+{% prettify dart tag=pre+code %}
+[!int?!] a = null; // Valid in null-safe Dart.
+{% endprettify %}
+
+You can simplify that code a bit because, in all versions of Dart,
+`null` is the default value for uninitialized variables:
+
+{% prettify dart tag=pre+code %}
+int? a; // The initial value of a is null.
+{% endprettify %}
+
+For more information about null safety in Dart,
+read the [sound null safety guide](/null-safety).
+
+[enable null safety]: https://dart.dev/null-safety#enable-null-safety
+
+
+### Code example
+
+Try to declare two variables below:
+- A nullable `String` named `name` with the value `'Jane'`.
+- A nullable `String` named `address` with the value `null`.
+
+Ignore all initial errors in the DartPad.
+
+{% comment %}
+TODO: Add new ga_id tag.
+{% endcomment -%}
+```dart:run-dartpad:null_safety-true
+{$ begin main.dart $}
+// Declare the two variables here
+{$ end main.dart $}
+{$ begin solution.dart $}
+String? name = 'Jane';
+String? address;
+{$ end solution.dart $}
+{$ begin test.dart $}
+
+void main() {
+  try {
+    if (name == 'Jane' && address == null) {
+      // verify that "name" is nullable
+      name = null;
+      _result(true);
+    } else {
+      _result(false, ['That\'s not quite right. Keep trying!']);
+    }
+  } catch (e) {
+    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Declare the two variables as "String" followed by "?".
+Then, assign "Jane" to "name"
+and leave "address" uninitalized.
+{$ end hint.txt $}
+```
+
 
 ## Null-aware operators
-
 
 Dart offers some handy operators for dealing with values that might be null. One is the
 `??=` assignment operator, which assigns a value to a variable only if that
@@ -108,9 +174,9 @@ variable is currently null:
 TBD: Make this and all non-trivial snippets testable.
 {% endcomment %}
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators)"?>
 ```dart
-int a; // The initial value of a is null.
+int? a; // = null
 a ??= 3;
 print(a); // <-- Prints 3.
 
@@ -119,10 +185,11 @@ print(a); // <-- Still prints 3.
 ```
 
 Another null-aware operator is `??`,
-which returns the expression on its left unless that expression's value is null,
+which returns the expression on its left unless
+that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -132,13 +199,15 @@ print(null ?? 12); // <-- Prints 12.
 
 Try putting the `??=` and `??` operators to work below.
 
-```dart:run-dartpad:height-255px:ga_id-null_aware
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:height-255px:ga_id-null_aware:null_safety-true
 {$ begin main.dart $}
-String foo = 'a string';
-String bar; // Unassigned objects are null by default.
+String? foo = 'a string';
+String? bar; // = null
 
 // Substitute an operator that makes 'a string' be assigned to baz.
-String baz = foo /* TODO */ bar;
+String? baz = foo /* TODO */ bar;
 
 void updateSomeVars() {
   // Substitute an operator that makes 'a string' be assigned to bar.
@@ -146,11 +215,11 @@ void updateSomeVars() {
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
-String foo = 'a string';
-String bar; // Unassigned objects are null by default.
+String? foo = 'a string';
+String? bar; // = null
 
 // Substitute an operator that makes 'a string' be assigned to baz.
-String baz = foo ?? bar;
+String? baz = foo ?? bar;
 
 void updateSomeVars() {
   // Substitute an operator that makes 'a string' be assigned to bar.
@@ -221,18 +290,18 @@ null.
 
 Try using conditional property access to finish the code snippet below.
 
-```dart:run-dartpad:ga_id-conditional-property_access
+```dart:run-dartpad:ga_id-conditional-property_access:null_safety-true
 {$ begin main.dart $}
 // This method should return the uppercase version of `str`
 // or null if `str` is null.
-String upperCaseIt(String str) {
+String? upperCaseIt(String? str) {
   // Try conditionally accessing the `toUpperCase` method here.
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
 // This method should return the uppercase version of `str`
 // or null if `str` is null.
-String upperCaseIt(String str) {
+String? upperCaseIt(String? str) {
   return str?.toUpperCase();
 }
 {$ end solution.dart $}
@@ -241,7 +310,7 @@ void main() {
   final errs = <String>[];
   
   try {
-    String one = upperCaseIt(null);
+    String? one = upperCaseIt(null);
 
     if (one != null) {
       errs.add('Looks like you\'re not returning null for null inputs.');
@@ -251,7 +320,7 @@ void main() {
   }
   
   try {
-    String two = upperCaseIt('asdf');
+    String? two = upperCaseIt('asdf');
 
     if (two == null) {
       errs.add('Looks like you\'re returning null even when str has a value.');
@@ -281,7 +350,7 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -298,7 +367,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -314,27 +383,27 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 
 ### Code example
 
-Try setting the following variables to the indicated values.
+Try setting the following variables to the indicated values. Replace the existing null values.
 
-```dart:run-dartpad:height-400px:ga_id-collection_literals
+```dart:run-dartpad:height-400px:ga_id-collection_literals:null_safety-true
 {$ begin main.dart $}
 // Assign this a list containing 'a', 'b', and 'c' in that order:
-final aListOfStrings = 
+final aListOfStrings = null;
 
 // Assign this a set containing 3, 4, and 5:
-final aSetOfInts = 
+final aSetOfInts = null;
 
 // Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
-final aMapOfStringsToInts = 
+final aMapOfStringsToInts = null;
 
 // Assign this an empty List<double>:
-final anEmptyListOfDouble = 
+final anEmptyListOfDouble = null;
 
 // Assign this an empty Set<String>:
-final anEmptySetOfString = 
+final anEmptySetOfString = null;
 
 // Assign this an empty Map of double to int:
-final anEmptyMapOfDoublesToInts = 
+final anEmptyMapOfDoublesToInts = null;
 {$ end main.dart $}
 {$ begin solution.dart $}
 // Assign this a list containing 'a', 'b', and 'c' in that order:
@@ -439,35 +508,35 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 
 Try finishing the following statements, which use arrow syntax.
 
-```dart:run-dartpad:height-345px:ga_id-arrow_syntax
+```dart:run-dartpad:height-345px:ga_id-arrow_syntax:null_safety-true
 {$ begin main.dart $}
 class MyClass {
-  int _value1 = 2;
-  int _value2 = 3;
-  int _value3 = 5;
+  int value1 = 2;
+  int value2 = 3;
+  int value3 = 5;
   
   // Returns the product of the above values:
-  int get product =>
+  int get product => TODO();
   
-  // Adds 1 to _value1:
-  void incrementValue1() => 
+  // Adds 1 to value1:
+  void incrementValue1() => TODO();
   
   // Returns a string containing each item in the
   // list, separated by commas (e.g. 'a,b,c'): 
-  String joinWithCommas(List<String> strings) =>
+  String joinWithCommas(List<String> strings) => TODO();
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
 class MyClass {
-  int _value1 = 2;
-  int _value2 = 3;
-  int _value3 = 5;
+  int value1 = 2;
+  int value2 = 3;
+  int value3 = 5;
 
   // Returns the product of the above values:
-  int get product => _value1 * _value2 * _value3;
+  int get product => value1 * value2 * value3;
   
-  // Adds 1 to _value1:
-  void incrementValue1() => _value1++; 
+  // Adds 1 to value1:
+  void incrementValue1() => value1++; 
   
   // Returns a string containing each item in the
   // list, separated by commas (e.g. 'a,b,c'): 
@@ -485,6 +554,9 @@ void main() {
     if (product != 30) {
       errs.add('The product property returned $product instead of the expected value (30).'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.product but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -493,9 +565,12 @@ void main() {
   try {
     obj.incrementValue1();
     
-    if (obj._value1 != 3) {
-      errs.add('After calling incrementValue, value1 was ${obj._value1} instead of the expected value (3).'); 
+    if (obj.value1 != 3) {
+      errs.add('After calling incrementValue, value1 was ${obj.value1} instead of the expected value (3).'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.incrementValue1 but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -507,6 +582,9 @@ void main() {
     if (joined != 'one,two,three') {
       errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.joinWithCommas but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -575,7 +653,7 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-```dart:run-dartpad:height-345px:ga_id-cascades
+```dart:run-dartpad:height-345px:ga_id-cascades:null_safety-true
 {$ begin main.dart $}
 class BigObject {
   int anInt = 0;
@@ -590,7 +668,7 @@ class BigObject {
 
 BigObject fillBigObject(BigObject obj) {
   // Create a single statement that will update and return obj:
-  return obj..
+  return TODO('obj..');
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
@@ -619,6 +697,9 @@ void main() {
 
   try {
     obj = fillBigObject(BigObject());
+  } on UnimplementedError {
+    _result(false, ['Tried to call fillBigObject but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, [
       'Caught an exception of type ${e.runtimeType} while running fillBigObject'
@@ -626,44 +707,36 @@ void main() {
     return;
   }
 
-  if (obj == null) {
-    _result(false, ['It looks like fillBigObject returned a null!']);
+  final errs = <String>[];
+
+  if (obj.anInt != 1) {
+    errs.add(
+        'The value of anInt was ${obj.anInt} rather than the expected (1).');
+  }
+
+  if (obj.aString != 'String!') {
+    errs.add(
+        'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
+  }
+
+  if (obj.aList.length != 1) {
+    errs.add(
+        'The length of aList was ${obj.aList.length} rather than the expected value (1).');
   } else {
-    final errs = <String>[];
-
-    if (obj.anInt != 1) {
+    if (obj.aList[0] != 3.0) {
       errs.add(
-          'The value of anInt was ${obj.anInt} rather than the expected (1).');
+          'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
     }
+  }
+  
+  if (!obj._done) {
+    errs.add('It looks like allDone() wasn\'t called.');
+  }
 
-    if (obj.aString != 'String!') {
-      errs.add(
-          'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
-    }
-
-    if (obj.aList == null) {
-      errs.add('The value of aList was null.');
-    }
-
-    if (obj.aList.length != 1) {
-      errs.add(
-          'The length of aList was ${obj.aList.length} rather than the expected value (1).');
-    } else {
-      if (obj.aList[0] != 3.0) {
-        errs.add(
-            'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
-      }
-    }
-    
-    if (!obj._done) {
-      errs.add('It looks like allDone() wasn\'t called.');
-    }
-
-    if (errs.isEmpty) {
-      _result(true);
-    } else {
-      _result(false, errs);
-    }
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
   }
 }
 {$ end test.dart $}
@@ -684,7 +757,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/getters_setters.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -701,7 +774,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/getter_compute.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
   List<int> _values = [];
@@ -728,7 +801,9 @@ Add the following:
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).
 
-```dart:run-dartpad:height-240px:ga_id-getters_setters
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:height-240px:ga_id-getters_setters:null_safety-true
 {$ begin main.dart $}
 class InvalidPriceException {}
 
@@ -764,7 +839,7 @@ void main() {
   try {
     final cart = ShoppingCart();
     cart.prices = [12.0, 12.0, -23.0];
-  } on InvalidPriceException{
+  } on InvalidPriceException {
     foundException = true;
   } catch (e) {
     _result(false, ['Tried setting a negative price and received a ${e.runtimeType} instead of an InvalidPriceException.']);
@@ -782,11 +857,6 @@ void main() {
     secondCart.prices = [1.0, 2.0, 3.0];
   } catch(e) {
     _result(false, ['Tried setting prices with a valid list, but received an exception: ${e.runtimeType}.']);
-    return;
-  }
-  
-  if (secondCart._prices == null) {
-    _result(false, ['Tried setting prices with a list of three values, but _prices ended up being null.']);
     return;
   }
   
@@ -834,7 +904,7 @@ with a function you give it
 Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
 you're likely familiar with:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
@@ -845,9 +915,9 @@ int sumUp(int a, int b, int c) {
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
-int sumUpToFive(int a, [int b, int c, int d, int e]) {
+int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
   if (b != null) sum += b;
   if (c != null) sum += c;
@@ -864,7 +934,7 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 // ···
@@ -888,14 +958,14 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-```dart:run-dartpad:ga_id-optional_positional_parameters
+```dart:run-dartpad:ga_id-optional_positional_parameters:null_safety-true
 {$ begin main.dart $}
-String joinWithCommas(int a, [int b, int c, int d, int e]) {
-
+String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
+  return TODO();
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
-String joinWithCommas(int a, [int b, int c, int d, int e]) {
+String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   var total = '$a';
   if (b != null) total = '$total,$b';
   if (c != null) total = '$total,$c';
@@ -914,6 +984,9 @@ void main() {
     if (value != '1') {
       errs.add('Tried calling joinWithCommas(1) and got $value instead of the expected (\'1\').'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried calling joinWithCommas(1), but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -925,6 +998,9 @@ void main() {
     if (value != '1,2,3') {
       errs.add('Tried calling joinWithCommas(1, 2, 3) and got $value instead of the expected (\'1,2,3\').'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried calling joinWithCommas(1, 2 ,3), but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -936,6 +1012,9 @@ void main() {
     if (value != '1,2,3,4,5') {
       errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) and got $value instead of the expected (\'1,2,3,4,5\').'); 
     } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
   } catch (e) {
     _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), but encountered an exception: ${e.runtimeType}.']);
     return;
@@ -961,9 +1040,9 @@ before you add them to the final string.
 Using a curly brace syntax,
 you can define optional parameters that have names.
 
-<?code-excerpt "misc/bin/optional_named_params.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/optional_named_params.dart"?>
 ```dart
-void printName(String firstName, String lastName, {String suffix}) {
+void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
 // ···
@@ -971,14 +1050,22 @@ void printName(String firstName, String lastName, {String suffix}) {
   printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
 ```
 
-As you might expect, the value of these parameters is null by default,
-but you can provide default values:
+As you might expect,
+the default value of an optional named parameter is `null`,
+but you can provide a default value.
 
-```dart
-void printName(String firstName, String lastName, {String suffix = ''}) {
+If the type of a parameter is non-nullable,
+then you must either provide a default value
+(as shown in the following code)
+or mark the parameter as `required`
+(as shown in the
+[constructor section](#using-this-in-a-constructor)).
+
+{% prettify dart tag=pre+code %}
+void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
   print('$firstName $lastName $suffix');
 }
-```
+{% endprettify %}
 
 A function can't have both optional positional and optional named parameters.
 
@@ -986,20 +1073,22 @@ A function can't have both optional positional and optional named parameters.
 ### Code example
 
 Add a `copyWith()` instance method to the `MyDataObject`
-class. It should take three named parameters:
+class. It should take three named, nullable parameters:
 
-* `int newInt`
-* `String newString`
-* `double newDouble`
+* `int? newInt`
+* `String? newString`
+* `double? newDouble`
 
-When called, `copyWith()` should return a new `MyDataObject`
+Your`copyWith()` method should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
 For example, if `newInt` is non-null,
 then copy its value into `anInt`.
 
-```dart:run-dartpad:height-310px:ga_id-optional_named_parameters
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:height-310px:ga_id-optional_named_parameters:null_safety-true
 {$ begin main.dart $}
 class MyDataObject {
   final int anInt;
@@ -1027,7 +1116,7 @@ class MyDataObject {
      this.aDouble = 2.0,
   });
 
-  MyDataObject copyWith({int newInt, String newString, double newDouble}) {
+  MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
     return MyDataObject(
       anInt: newInt ?? this.anInt,
       aString: newString ?? this.aString,
@@ -1044,20 +1133,16 @@ void main() {
   try {
     final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
     
-    if (copy == null) {
-      errs.add('Tried copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and it returned null');
-    } else {
-      if (copy.anInt != 12) {
-        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
-      }
-      
-      if (copy.aString != 'New!') {
-        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
-      }
-      
-      if (copy.aDouble != 3) {
-        errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
-      }
+    if (copy.anInt != 12) {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
+    }
+    
+    if (copy.aString != 'New!') {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
+    }
+    
+    if (copy.aDouble != 3) {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
     }
   } catch (e) {
     _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and got an exception: ${e.runtimeType}']);
@@ -1066,20 +1151,16 @@ void main() {
   try {
     final copy = source.copyWith();
     
-    if (copy == null) {
-      errs.add('Tried copyWith() and it returned null');
-    } else {
-      if (copy.anInt != 1) {
-        errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} rather than the expected value (1).');
-      }
-      
-      if (copy.aString != 'Old!') {
-        errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} rather than the expected value (\'Old!\').');
-      }
-      
-      if (copy.aDouble != 2) {
-        errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (2).');
-      }
+    if (copy.anInt != 1) {
+      errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} rather than the expected value (1).');
+    }
+    
+    if (copy.aString != 'Old!') {
+      errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} rather than the expected value (\'Old!\').');
+    }
+    
+    if (copy.aDouble != 2) {
+      errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (2).');
     }
   } catch (e) {
     _result(false, ['Called copyWith() and got an exception: ${e.runtimeType}']);
@@ -1146,7 +1227,7 @@ to propagate the exception:
 try {
   breedMoreLlamas();
 } catch (e) {
-  print('I was just trying to breed llamas!.');
+  print('I was just trying to breed llamas!');
   rethrow;
 }
 ```
@@ -1154,7 +1235,7 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/exceptions.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/exceptions.dart"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1181,7 +1262,7 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-```dart:run-dartpad:height-420px:ga_id-exceptions
+```dart:run-dartpad:height-420px:ga_id-exceptions:null_safety-true
 {$ begin main.dart $}
 typedef VoidFunction = void Function();
 
@@ -1192,7 +1273,7 @@ class ExceptionWithMessage {
 
 // Call logException to log an exception, and doneLogging when finished.
 abstract class Logger {
-  void logException(Type t, [String msg]);
+  void logException(Type t, [String? msg]);
   void doneLogging();
 }
 
@@ -1211,7 +1292,7 @@ class ExceptionWithMessage {
 }
 
 abstract class Logger {
-  void logException(Type t, [String msg]);
+  void logException(Type t, [String? msg]);
   void doneLogging();
 }
 
@@ -1229,11 +1310,11 @@ void tryFunction(VoidFunction untrustworthy, Logger logger) {
 {$ end solution.dart $}
 {$ begin test.dart $}
 class MyLogger extends Logger {
-  Type lastType;
+  Type? lastType;
   String lastMessage = '';
   bool done = false;
   
-  void logException(Type t, [String message]) {
+  void logException(Type t, [String? message]) {
     lastType = t;
     lastMessage = message ?? lastMessage;
   }
@@ -1338,7 +1419,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-<?code-excerpt "misc/bin/this_constructor.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/this_constructor.dart"?>
 ```dart
 class MyColor {
   int red;
@@ -1358,13 +1439,15 @@ Property names become the names of the parameters:
 class MyColor {
   ...
 
-  MyColor({this.red, this.green, this.blue});
+  MyColor({required this.red, required this.green, required this.blue});
 }
 
 final color = MyColor(red: 80, green: 80, blue: 80);
 ```
 
-For optional parameters, default values work as expected:
+In the preceding code, `red`, `green`, and `blue` are marked as `required`
+because these `int` values can't be null.
+If you add default values, you can omit `required`:
 
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
@@ -1378,7 +1461,9 @@ Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
 all three properties of the class.
 
-```dart:run-dartpad:ga_id-this_constructor
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:ga_id-this_constructor:null_safety-true
 {$ begin main.dart $}
 class MyClass {
   final int anInt;
@@ -1404,20 +1489,16 @@ void main() {
   try {
     final obj = MyClass(1, 'two', 3);
     
-    if (obj == null) {
-      errs.add('Called MyClass(1, \'two\', 3) and got a null in response.');
-    } else {
-      if (obj.anInt != 1) {
-        errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} instead of the expected value (1).');
-      }
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} instead of the expected value (1).');
+    }
 
-      if (obj.anInt != 1) {
-        errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' instead of the expected value (\'two\').');
-      }
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' instead of the expected value (\'two\').');
+    }
 
-      if (obj.anInt != 1) {
-        errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} instead of the expected value (3).');
-      }
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} instead of the expected value (3).');
     }
   } catch (e) {
     _result(false, ['Called MyClass(1, \'two\', 3) and got an exception of type ${e.runtimeType}.']);
@@ -1481,6 +1562,8 @@ Use an initializer list to assign the first two characters in `word` to
 the `letterOne` and `LetterTwo` properties.
 For extra credit, add an `assert` to catch words of less than two characters.
 
+Ignore all initial errors in the DartPad.
+
 {% comment %}
 Is the assert even executed? I can't see any effect on the test,
 which makes me think asserts are ignored.
@@ -1495,7 +1578,7 @@ FINALLY: Suggest using https://pub.dev/packages/characters
 if this is a user-entered string.
 {% endcomment %}
 
-```dart:run-dartpad:ga_id-initializer_lists
+```dart:run-dartpad:ga_id-initializer_lists:null_safety-true
 {$ begin main.dart $}
 class FirstTwoLetters {
   final String letterOne;
@@ -1523,16 +1606,12 @@ void main() {
   try {
     final result = FirstTwoLetters('My String');
     
-    if (result == null) {
-      errs.add('Called FirstTwoLetters(\'My String\') and got a null in response.');
-    } else {
-      if (result.letterOne != 'M') {
-        errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
-      }
+    if (result.letterOne != 'M') {
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
+    }
 
-      if (result.letterTwo != 'y') {
-        errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
-      }
+    if (result.letterTwo != 'y') {
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
     }
   } catch (e) {
     errs.add('Called FirstTwoLetters(\'My String\') and got an exception of type ${e.runtimeType}.');
@@ -1575,17 +1654,16 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
   double x, y;
 
   Point(this.x, this.y);
 
-  Point.origin() {
-    x = 0;
-    y = 0;
-  }
+  Point.origin()
+      : x = 0,
+        y = 0;
 }
 ```
 
@@ -1597,10 +1675,12 @@ final myPoint = Point.origin();
 
 ### Code example
 
-Give the Color class a constructor named `Color.black`
+Give the `Color` class a constructor named `Color.black`
 that sets all three properties to zero.
 
-```dart:run-dartpad:height-240px:ga_id-named_constructors
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:height-240px:ga_id-named_constructors:null_safety-true
 {$ begin main.dart $}
 class Color {
   int red;
@@ -1620,11 +1700,10 @@ class Color {
   
   Color(this.red, this.green, this.blue);
 
-  Color.black() {
-    red = 0;
-    green = 0;
-    blue = 0;
-  } 
+  Color.black()
+      : red = 0,
+        green = 0,
+        blue = 0;
 }
 {$ end solution.dart $}
 {$ begin test.dart $}
@@ -1634,20 +1713,16 @@ void main() {
   try {
     final result = Color.black();
     
-    if (result == null) {
-      errs.add('Called Color.black() and got a null in response.');
-    } else {
-      if (result.red != 0) {
-        errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
-      }
+    if (result.red != 0) {
+      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+    }
 
-      if (result.green != 0) {
-        errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
-      }
+    if (result.green != 0) {
+      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+    }
 
-      if (result.blue != 0) {
-    errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
-      }
+    if (result.blue != 0) {
+  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
     _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
@@ -1674,7 +1749,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-<?code-excerpt "misc/bin/factory_constructors.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -1688,7 +1763,7 @@ class Shape {
     if (typeName == 'circle') return Circle();
 
     print('I don\'t recognize $typeName');
-    return null;
+    throw Error();
   }
 }
 ```
@@ -1704,15 +1779,16 @@ making it do the following:
   create an `IntegerDouble` with the values in order.
 * If the list has **three** values,
   create an `IntegerTriple` with the values in order.
-* Otherwise, return null.
+* Otherwise, throw an `Error`.
 
-```dart:run-dartpad:height-415px:ga_id-factory_constructors
+```dart:run-dartpad:height-415px:ga_id-factory_constructors:null_safety-true
 {$ begin main.dart $}
 class IntegerHolder {
   IntegerHolder();
   
   // Implement this factory constructor.
   factory IntegerHolder.fromList(List<int> list) {
+    TODO();
   }
 }
 
@@ -1739,14 +1815,14 @@ class IntegerHolder {
   IntegerHolder();
   
   factory IntegerHolder.fromList(List<int> list) {
-    if (list?.length == 1) {
+    if (list.length == 1) {
       return IntegerSingle(list[0]);
-    } else if (list?.length == 2) {
+    } else if (list.length == 2) {
       return IntegerDouble(list[0], list[1]);
-    } else if (list?.length == 3) {
+    } else if (list.length == 3) {
       return IntegerTriple(list[0], list[1], list[2]);
     } else {
-      return null;
+      throw Error();
     } 
   }
 }
@@ -1773,27 +1849,31 @@ class IntegerTriple extends IntegerHolder {
 void main() {
   final errs = <String>[];
 
+  bool _throwed = false;
   try {
-    final obj = IntegerHolder.fromList([]);
-    
-    if (obj != null) {
-      errs.add('Called IntegerSingle.fromList([]) and didn\'t get a null.');
-    } 
+    IntegerHolder.fromList([]);
+  } on UnimplementedError {
+    _result(false, ['Test failed. Did you implement the method?']);
+    return;
+  } on Error {
+    _throwed = true;
   } catch (e) {
     _result(false, ['Called IntegerSingle.fromList([]) and got an exception of type ${e.runtimeType}.']);
     return;
   }
+  
+  if (!_throwed) {
+    errs.add('Called IntegerSingle.fromList([]) and didn\'t throw Error.');
+  } 
 
   try {
     final obj = IntegerHolder.fromList([1]);
     
-    if (obj == null) {
-      errs.add('Called IntegerHolder.fromList([1]) and got a null.');
-    } else if (obj is! IntegerSingle) {
+    if (obj is! IntegerSingle) {
       errs.add('Called IntegerHolder.fromList([1]) and got an object of type ${obj.runtimeType} instead of IntegerSingle.');
     } else {
-      if ((obj as IntegerSingle).a != 1) {
-        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with an \'a\' value of ${(obj as IntegerSingle).a} instead of the expected (1).');
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with an \'a\' value of ${obj.a} instead of the expected (1).');
       }
     }
   } catch (e) {
@@ -1804,17 +1884,15 @@ void main() {
   try {
     final obj = IntegerHolder.fromList([1, 2]);
     
-    if (obj == null) {
-      errs.add('Called IntegerHolder.fromList([1, 2]) and got a null.');
-    } else if (obj is! IntegerDouble) {
+    if (obj is! IntegerDouble) {
       errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type ${obj.runtimeType} instead of IntegerDouble.');
     } else {
-      if ((obj as IntegerDouble).a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'a\' value of ${(obj as IntegerDouble).a} instead of the expected (1).');
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'a\' value of ${obj.a} instead of the expected (1).');
       }
       
-      if ((obj as IntegerDouble).b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'b\' value of ${(obj as IntegerDouble).b} instead of the expected (2).');
+      if (obj.b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'b\' value of ${obj.b} instead of the expected (2).');
       }
     }
   } catch (e) {
@@ -1825,21 +1903,19 @@ void main() {
   try {
     final obj = IntegerHolder.fromList([1, 2, 3]);
     
-    if (obj == null) {
-      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got a null.');
-    } else if (obj is! IntegerTriple) {
+    if (obj is! IntegerTriple) {
       errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type ${obj.runtimeType} instead of IntegerTriple.');
     } else {
-      if ((obj as IntegerTriple).a != 1) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).a} instead of the expected (1).');
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.a} instead of the expected (1).');
       }
       
-      if ((obj as IntegerTriple).b != 2) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).b} instead of the expected (2).');
+      if (obj.b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
       }
 
-      if ((obj as IntegerTriple).c != 3) {
-        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${(obj as IntegerTriple).b} instead of the expected (2).');
+      if (obj.c != 3) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
       }
     }
   } catch (e) {
@@ -1869,7 +1945,7 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -1893,7 +1969,9 @@ Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
 default constructor with zeros as the arguments.
 
-```dart:run-dartpad:height-255px:ga_id-redirecting_constructors
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:height-255px:ga_id-redirecting_constructors:null_safety-true
 {$ begin main.dart $}
 class Color {
   int red;
@@ -1924,20 +2002,16 @@ void main() {
   try {
     final result = Color.black();
     
-    if (result == null) {
-      errs.add('Called Color.black() and got a null in response.');
-    } else {
-      if (result.red != 0) {
-        errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
-      }
+    if (result.red != 0) {
+      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+    }
 
-      if (result.green != 0) {
-        errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
-      }
+    if (result.green != 0) {
+      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+    }
 
-      if (result.blue != 0) {
-    errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
-      }
+    if (result.blue != 0) {
+  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
     }
   } catch (e) {
     _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
@@ -1963,7 +2037,7 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
@@ -1987,7 +2061,9 @@ and create a constant constructor that does the following:
 * Is constant, with the `const` keyword just before
   `Recipe` in the constructor declaration.
 
-```dart:run-dartpad:ga_id-const_constructors
+Ignore all initial errors in the DartPad.
+
+```dart:run-dartpad:ga_id-const_constructors:null_safety-true
 {$ begin main.dart $}
 class Recipe {
   List<String> ingredients;
@@ -2011,20 +2087,16 @@ void main() {
   try {
     const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
     
-    if (obj == null) {
-      errs.add('Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.');
-    } else {
-      if (obj.ingredients?.length != 3) {
-        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with ingredient list of length ${obj.ingredients?.length} rather than the expected length (3).');
-      }
-      
-      if (obj.calories != 120) {
-        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
-      }
-      
-      if (obj.milligramsOfSodium != 200) {
-        errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
-      }
+    if (obj.ingredients.length != 3) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with ingredient list of length ${obj.ingredients.length} rather than the expected length (3).');
+    }
+    
+    if (obj.calories != 120) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
+    }
+    
+    if (obj.milligramsOfSodium != 200) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
     }
   } catch (e) {
     _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.']);

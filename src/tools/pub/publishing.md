@@ -39,10 +39,11 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-* You must include a `LICENSE` file
-  that contains an [open-source license.][open-source license]
-  We recommend the [BSD license,][BSD license]
-  which is used by Dart itself. You must also have the legal right to
+* You must include a `LICENSE` file.
+  We recommend the [BSD 3-clause license][],
+  which the Dart and Flutter teams typically use.
+  However, you can use any license that's appropriate for your package.
+  You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
 * Your package must be less than 10 MB large after gzip compression. If
@@ -54,7 +55,7 @@ are a few additional requirements for uploading a package:
   ensure that dependencies of your packages cannot become unavailable in the
   future.
 
-* You must have a [Google Account,][Google Account]
+* You must have a [Google Account][],
   which pub uses to manage package upload permissions.
   Your Google Account can be associated with a Gmail address or
   with any other email address.
@@ -120,7 +121,7 @@ To create a verified publisher, follow these steps:
 
 ## Publishing your package
 
-Use the [dart pub publish][] command to publish your package for the first time,
+Use the [`dart pub publish`][] command to publish your package for the first time,
 or to update it to a new version.
 
 
@@ -166,7 +167,7 @@ $ dart pub publish
 ```
 
 {{site.alert.note}}
-  The `pub` command currently doesn't support publishing a new package directly to a
+  The pub command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
@@ -230,7 +231,7 @@ so examine the list carefully before completing your upload.
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
 To allow or disallow other people to upload versions,
-use the [pub uploader][] command
+use the [`dart pub uploader`][] command
 or transfer the package to a [verified publisher][].
 
 If a package has a verified publisher,
@@ -248,7 +249,7 @@ Prereleases can be useful when *any* of the following are true:
 * You want beta testers for the next release candidate of the package.
 * The package depends on an unstable version of the Dart or Flutter SDK.
 
-As described in [semantic versioning,][semver] to make a prerelease of a version
+As described in [semantic versioning][semver], to make a prerelease of a version
 you append a suffix to the version. For example, to make a prerelease of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
 release version `2.0.0`, it will take precedence over all `2.0.0-XXX` prereleases.
@@ -299,7 +300,7 @@ as illustrated by the following screenshot,
 where the stable version is listed as
 `1.6.0` and the preview version is listed as `2.0.0`.
 
-![Illustration of a preview version](/null-safety/preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](preview-version.png){:width="600px"}<br>
 
 When Dart `2.12.0` stable is released,
 pub.dev updates the package listing to display
@@ -332,18 +333,17 @@ If you change your mind, you can remove the discontinued mark at any time.
 
 For more information, see the reference pages for the following `pub` commands:
 
-* [dart pub publish][]
-* [pub uploader][]
+* [`dart pub publish`][]
+* [`dart pub uploader`][]
 
-[BSD license]: https://opensource.org/licenses/BSD-3-Clause
+[BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
-[open-source license]: https://opensource.org/
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
 [pub]: /guides/packages
-[dart pub publish]: /tools/pub/cmd/pub-lish
-[pub uploader]: /tools/pub/cmd/pub-uploader
+[`dart pub publish`]: /tools/pub/cmd/pub-lish
+[`dart pub uploader`]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers

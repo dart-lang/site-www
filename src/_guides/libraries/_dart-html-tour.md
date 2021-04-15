@@ -409,7 +409,7 @@ Submitting data to a form handler requires you to provide name-value
 pairs as URI-encoded strings. (Information about the URI class is in
 the [URIs section][URIs] of the [Dart Library Tour.][Dart Library Tour])
 You must also set the `Content-type` header to
-`application/x-www-form-urlencode` if you wish to send data to a form
+`application/x-www-form-urlencoded` if you wish to send data to a form
 handler.
 
 <?code-excerpt "html/test/html_test.dart (POST)"?>

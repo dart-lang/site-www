@@ -9,6 +9,8 @@ prevpage:
   title: Style
 ---
 
+<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+
 It's easy to think your code is obvious today without realizing how much you
 rely on context already in your head. People new to your code, and
 even your forgetful future self won't have that context. A concise, accurate
@@ -28,7 +30,7 @@ generated documentation.
 ### DO format comments like sentences.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (comments-like-sentences)"?>
+<?code-excerpt "docs_good.dart (comments-like-sentences)"?>
 {% prettify dart tag=pre+code %}
 // Not if there is nothing before it.
 if (_chunks.isEmpty) return false;
@@ -41,7 +43,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 ### DON'T use block comments for documentation.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (block-comments)"?>
+<?code-excerpt "docs_good.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
 greet(name) {
   // Assume we have a valid name.
@@ -50,7 +52,7 @@ greet(name) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (block-comments)"?>
+<?code-excerpt "docs_bad.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
 greet(name) {
   /* Assume we have a valid name. */
@@ -78,14 +80,14 @@ Using a doc comment instead of a regular comment enables [dartdoc][] to find it
 and generate documentation for it.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)"?>
+<?code-excerpt "docs_good.dart (use-doc-comments)"?>
 {% prettify dart tag=pre+code %}
 /// The number of characters in this chunk when unsplit.
 int get length => ...
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)" replace="/^\///g"?>
+<?code-excerpt "docs_good.dart (use-doc-comments)" replace="/^\///g"?>
 {% prettify dart tag=pre+code %}
 // The number of characters in this chunk when unsplit.
 int get length => ...
@@ -139,7 +141,7 @@ the reader to orient themselves and decide if they should keep reading or look
 elsewhere for the solution to their problem.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence)"?>
+<?code-excerpt "docs_good.dart (first-sentence)"?>
 {% prettify dart tag=pre+code %}
 /// Deletes the file at [path] from the file system.
 void delete(String path) {
@@ -148,7 +150,7 @@ void delete(String path) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence)"?>
+<?code-excerpt "docs_bad.dart (first-sentence)"?>
 {% prettify dart tag=pre+code %}
 /// Depending on the state of the file system and the user's permissions,
 /// certain operations may or may not be possible. If there is no file at
@@ -170,7 +172,7 @@ Also, tools like dartdoc use the first paragraph as a short summary in places
 like lists of classes and members.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence-a-paragraph)"?>
+<?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
 {% prettify dart tag=pre+code %}
 /// Deletes the file at [path].
 ///
@@ -182,7 +184,7 @@ void delete(String path) {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence-a-paragraph)"?>
+<?code-excerpt "docs_bad.dart (first-sentence-a-paragraph)"?>
 {% prettify dart tag=pre+code %}
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
 /// be found. Throws a [PermissionError] if the file is present but could
@@ -201,7 +203,7 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 *doesn't* already know.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (redundant)"?>
+<?code-excerpt "docs_good.dart (redundant)"?>
 {% prettify dart tag=pre+code %}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
@@ -213,7 +215,7 @@ class RadioButtonWidget extends Widget {
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (redundant)"?>
+<?code-excerpt "docs_bad.dart (redundant)"?>
 {% prettify dart tag=pre+code %}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
@@ -224,13 +226,19 @@ class RadioButtonWidget extends Widget {
 }
 {% endprettify %}
 
+If you really don't have anything interesting to say
+that can't be inferred from the declaration itself,
+then omit the doc comment.
+It's better to say nothing
+than waste a reader's time telling them something they already know.
+
 
 ### PREFER starting function or method comments with third-person verbs.
 
 The doc comment should focus on what the code *does*.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (third-person)"?>
+<?code-excerpt "docs_good.dart (third-person)"?>
 {% prettify dart tag=pre+code %}
 /// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) => ...
@@ -248,7 +256,7 @@ getters which may do calculation or other work. What the caller cares about is
 the *result* of that work, not the work itself.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-var-etc)"?>
+<?code-excerpt "docs_good.dart (noun-phrases-for-var-etc)"?>
 {% prettify dart tag=pre+code %}
 /// The current day of the week, where `0` is Sunday.
 int weekday;
@@ -270,7 +278,7 @@ and provide context to the other doc comments for the class's members. A little
 extra effort here can make all of the other members simpler to document.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-type-or-lib)"?>
+<?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 {% prettify dart tag=pre+code %}
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
@@ -281,7 +289,7 @@ class Chunk { ... }
 ### CONSIDER including code samples in doc comments.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (code-sample)"?>
+<?code-excerpt "docs_good.dart (code-sample)"?>
 {% prettify dart tag=pre+code %}
 /// Returns the lesser of two numbers.
 ///
@@ -304,7 +312,7 @@ are optional, but can make it clearer when you're referring to a method or
 constructor.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
+<?code-excerpt "docs_good.dart (identifiers)"?>
 {% prettify dart tag=pre+code %}
 /// Throws a [StateError] if ...
 /// similar to [anotherMethod()], but ...
@@ -314,18 +322,17 @@ To link to a member of a specific class, use the class name and member name,
 separated by a dot:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
+<?code-excerpt "docs_good.dart (member)"?>
 {% prettify dart tag=pre+code %}
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
-The dot syntax can also be used to refer to named constructors. For the unnamed
-constructor, put parentheses after the class name:
+The dot syntax can also be used to refer to named constructors:
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
+<?code-excerpt "docs_good.dart (ctor)"?>
 {% prettify dart tag=pre+code %}
-/// To create a point, call [Point()] or use [Point.polar()] to ...
+/// To create a point from polar coordinates, use [Point.polar()].
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.
@@ -334,7 +341,7 @@ Other languages use verbose tags and sections to describe what the parameters
 and returns of a method are.
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (no-annotations)"?>
+<?code-excerpt "docs_bad.dart (no-annotations)"?>
 {% prettify dart tag=pre+code %}
 /// Defines a flag with the given name and abbreviation.
 ///
@@ -350,7 +357,7 @@ The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (no-annotations)"?>
+<?code-excerpt "docs_good.dart (no-annotations)"?>
 {% prettify dart tag=pre+code %}
 /// Defines a flag.
 ///
@@ -362,7 +369,7 @@ Flag addFlag(String name, String abbr) => ...
 ### DO put doc comments before metadata annotations.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (doc-before-meta)"?>
+<?code-excerpt "docs_good.dart (doc-before-meta)"?>
 {% prettify dart tag=pre+code %}
 /// A button that can be flipped on and off.
 @Component(selector: 'toggle')
@@ -370,7 +377,7 @@ class ToggleComponent {}
 {% endprettify %}
 
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
+<?code-excerpt "docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
 {% prettify dart tag=pre+code %}
 @Component(selector: 'toggle')
 /// A button that can be flipped on and off.
@@ -390,7 +397,7 @@ There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (markdown)"?>
+<?code-excerpt "docs_good.dart (markdown)"?>
 {% prettify dart tag=pre+code %}
 /// This is a paragraph of regular text.
 ///
@@ -414,7 +421,7 @@ a flavor of what's supported:
 ///
 /// Code blocks are fenced in triple backticks:
 ///
-/// ```
+/// ```dart
 /// this.code
 ///     .will
 ///     .retain(its, formatting);
@@ -470,7 +477,7 @@ language, and is consistent with using backticks for inline code.
 {% prettify dart tag=pre+code %}
 /// You can use [CodeBlockExample] like this:
 ///
-/// ```
+/// ```dart
 /// var example = CodeBlockExample();
 /// print(example.isItGreat); // "Yes."
 /// ```
@@ -511,7 +518,7 @@ When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/docs_good.dart (this)"?>
+<?code-excerpt "docs_good.dart (this)"?>
 {% prettify dart tag=pre+code %}
 class Box {
   /// The value this wraps.

@@ -1,12 +1,7 @@
 ---
 title: What’s new
 description: A list of what’s new on dart.dev and related sites.
-toc: false
 ---
-
-{% comment %}
-  TODO: Next time we update this page, remove the `toc` line above.
-{% endcomment %}
 
 This page describes what's new on the Dart website and blog.
 To see what's new in Flutter, visit the
@@ -22,19 +17,99 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+
+## March 3, 2021: 2.12 release
+
+This section lists notable changes made from October 2, 2020,
+through March 3, 2021.
+For details about the 2.12 release, see [Announcing Dart 2.12][].
+
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements, we made the following changes to this site:
+
+* Updated and fleshed out null safety docs. Notably:
+  * Provided a [migration guide][].
+  * Added a [FAQ][ns-faq].
+  * Created [Unsound null safety][].
+  * Simplified the [null safety homepage][].
+* Refreshed [Effective Dart][], updating code to be null safe and
+  changing rules to reflect new guidance.
+* Refreshed the [language tour][], updating code to be null safe and
+  adding information about new features such as
+  [`late` variables][].
+* Updated the [evolution page][] to add information about language versioning
+  and to reflect Dart 2.12.
+* Updated the [library tour][], [samples][], and [codelabs][]
+  to reflect sound null safety.
+* Updated pages across the site to use [the `dart` tool][]
+  instead of deprecated commands.
+  Started adding pages for various `dart` commands, including
+  [`dart analyze`][], [`dart compile`][], [`dart fix`][],
+  and [`dart format`][].
+* Created a page documenting the quality and support of [Dart team packages][].
+* Replaced the Platforms page with a new [Overview page][].
+* Created this page ("What’s new").
+
+We also switched from Travis CI to GitHub Actions, and we made multiple CSS changes to improve site legibility.
+
+[Announcing Dart 2.12]: https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87
+[migration guide]: /null-safety/migration-guide
+[ns-faq]: /null-safety/faq
+[Unsound null safety]: /null-safety/unsound-null-safety
+[null safety homepage]: /null-safety
+[Overview page]: /overview
+[Effective Dart]: /guides/language/effective-dart
+[language tour]: /guides/language/language-tour
+[`late` variables]: /guides/language/language-tour#late-variables
+[library tour]: /guides/libraries/library-tour
+[samples]: /samples
+[codelabs]: /codelabs
+[evolution page]: /guides/language/evolution
+[the `dart` tool]: /tools/dart-tool
+[`dart analyze`]: /tools/dart-analyze
+[`dart compile`]: /tools/dart-compile
+[`dart fix`]: /tools/dart-fix
+[`dart format`]: /tools/dart-format
+[Dart team packages]: /dart-team-packages
+
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following articles on the Dart blog:
+
+* [Preparing the Dart and Flutter ecosystem for null safety][blog-2-16-21]
+  announced null safety API stability and
+  invited developers to publish stable, null-safe versions of their packages.
+* [Dart and the performance benefits of sound types][blog-1-19-21]
+  demonstrated how soundness and null safety enable Dart compilers to
+  generate faster, smaller code.
+* [Why nullable types?][blog-12-7-20]
+  expanded on a discussion on the /r/dart_lang subreddit,
+  answering the question “Why not get rid of null completely?”
+* [Announcing Dart null safety beta][blog-11-19-20]
+  invited developers to start planning their migration to null safety.
+
+[blog-2-16-21]: https://medium.com/dartlang/preparing-the-dart-and-flutter-ecosystem-for-null-safety-e550ce72c010
+[blog-1-19-21]: https://medium.com/dartlang/dart-and-the-performance-benefits-of-sound-types-6ceedd5b6cdc
+[blog-12-7-20]: https://medium.com/dartlang/why-nullable-types-7dd93c28c87a
+[blog-11-19-20]: https://medium.com/dartlang/announcing-dart-null-safety-beta-87610fee6730
+
 ## October 1, 2020: 2.10 release
 
 This section lists notable changes made from
 July 1 through October 1, 2020.
-
-Dart 2.10 went live October 1!
-For details, see [Announcing Dart 2.10.][210-ann]
+For details about the 2.10 release, see [Announcing Dart 2.10.][210-ann]
 
 [210-ann]: https://medium.com/dartlang/announcing-dart-2-10-350823952bd5
 
 <div class="no_toc_section" markdown="1">
 
 ### Docs updated or added to dart.dev
+{: .no_toc}
 
 In addition to bug fixes and small improvements,
 we made the following changes to this site:
@@ -85,6 +160,7 @@ we made the following changes to this site:
 [spec]: /guides/language/spec
 
 ### Articles added to the Dart blog
+{: .no_toc}
 
 We published the following articles on the [Dart blog:][Dart blog]
 

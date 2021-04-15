@@ -27,7 +27,7 @@ Here's what DartPad looks like:
 
 DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. It doesn't support those marked native
-platform.
+platform, and it doesn't support [deferred loading][].
 
 It also doesn't support using packages from the [pub.dev]({{site.pub}}) package
 repository.
@@ -38,38 +38,23 @@ To get familiar with DartPad,
 try running some samples and then creating a simple command-line app.
 
 
-### Open DartPad, and run some samples {#step-1-open-and-run}
+### Open DartPad, and run a sample {#step-1-open-and-run}
 
 <ol markdown="1">
   <li markdown="1">
   Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 
-  A sample appears on the left and the output appears on the right.
-  If you've played with DartPad before,
-  you can click **New Pad** to get back to the original sample.
+  Dart code appears on the left, and
+  a place for the output appears on the right.
   </li>
 
   <li markdown="1">
-  Click **Run**.
-
-  The sample runs again, updating the output.
-  </li>
-
-  <li markdown="1">
-  Choose an HTML sample like **Sunflower**,
+  Choose a Flutter sample such as **Sunflower**,
   using the **Samples** list at the upper right.
 
-  Again, the output appears to the right.
-  By default, you see the HTML output—what you'd see in a browser.
+  The rendered output appears to the right.
   </li>
 
-  <li markdown="1">
-  Click **CONSOLE** to view the sample's console output.
-  </li>
-
-  <li markdown="1">
-  On the left, click the **HTML** tab to view the sample's HTML markup.
-  </li>
 </ol>
 
 
@@ -82,14 +67,11 @@ To create a simple command-line app, use **New Pad**.
   Click the **New Pad** button,
   and confirm that you want to discard changes to the current pad.
 
-  The source code for the Hello World app appears
-  under the DART tab.
   </li>
 
   <li markdown="1">
-  Turn off **HTML**, using the toggle
-  underneath the Dart logo.
-  The HTML and CSS tabs disappear.
+  Click the Dart logo, make sure that **HTML** support is disabled,
+  and then click **Create**.
   </li>
 
   <li markdown="1">
@@ -122,8 +104,8 @@ for (var char in 'hello'.split('')) {
   try introducing a bug.
 
   For example, if you change `split` to `spit`,
-  you get warnings at the bottom of the window and in the Run button.
-  If you run the app, you'll see output from an uncaught exception.
+  you get warnings at the bottom right of the window.
+  If you run the app, a compilation error appears in the console.
   </li>
 </ol>
 
@@ -137,7 +119,7 @@ You can find the SDK version at the bottom right of DartPad.
 ## Embedding DartPad in web pages {#embedding}
 
 You can embed DartPad inside of web pages,
-customizing it to suit your purpose.
+customizing it to suit your use case.
 For example, the [futures codelab][]
 contains multiple embedded DartPads
 labeled as _examples_ and _exercises_.
@@ -150,4 +132,5 @@ For technical details on embedding DartPads, see the
 
 [best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await

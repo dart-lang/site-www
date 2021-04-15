@@ -1,9 +1,9 @@
 ---
 title: "C interop using dart:ffi"
-description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
+description: "To use C code in your Dart program, use the dart:ffi library."
 hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/master/ffi"
-sqllite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
+sqlite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
@@ -12,13 +12,8 @@ _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
 
-{{site.alert.info}}
-  As of Dart 2.10, [dart:ffi is in beta,][ffi issue]
-  and breaking API changes might still happen.
-{{site.alert.end}}
-
-API documentation is available from the dev channel:
-[dart:ffi API reference.]({{site.dart_api}}/dev/dart-ffi/dart-ffi-library.html)
+API documentation is available in the
+[dart:ffi API reference.]({{site.dart_api}}/dart-ffi/dart-ffi-library.html)
 
 ## Examples
 
@@ -28,7 +23,7 @@ The following examples show how to use the dart:ffi library:
 | [hello_world][] | How to call a C function with no arguments and no return value. |
 | [primitives][] | How to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates **varargs**.
 | [structs][] | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
-| [sqllite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
+| [sqlite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
 
 
 ## Walkthrough of hello_world
@@ -71,6 +66,7 @@ $ cmake .
 $ make
 ...
 $ cd ..
+$ dart pub get
 $ dart run hello.dart
 Hello World
 ```
@@ -148,11 +144,20 @@ For details, see the following:
 * [Flutter dart:ffi page][binding]
 * [dart:ffi examples]({{ page.samples }})
 
+## Generating FFI bindings with `package:ffigen`
+
+For large API surfaces it can be time consuming to write the Dart bindings
+that integrate with the C code. To reduce this burden, you can use the
+[`package:ffigen`][ffigen]
+binding generator to automatically create FFI wrappers from C header files.
+
+
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
 [hello_world]: {{ page.hw }}
 [primitives]: {{ page.samples }}/primitives
 [structs]: {{ page.samples }}/structs
-[sqllite]: {{ page.sqllite }}
-[mini tutorial.]: {{ page.sqllite }}/docs/sqlite-tutorial.md
+[sqlite]: {{ page.sqlite }}
+[mini tutorial.]: {{ page.sqlite }}/docs/sqlite-tutorial.md
+[ffigen]: {{ site.pub }}/packages/ffigen

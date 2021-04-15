@@ -8,7 +8,7 @@ $ brew install dart
 {{site.alert.important}}
   Make sure the **Homebrew `bin` directory is in your `PATH`**. Setting up the
   path correctly makes it easier to use Dart SDK commands such as `dart` and
-  `dartfmt`. For help setting up your path, consult the [Homebrew
+  `dart format`. For help setting up your path, consult the [Homebrew
   FAQ.](https://docs.brew.sh/FAQ)
 {{site.alert.end}}
 

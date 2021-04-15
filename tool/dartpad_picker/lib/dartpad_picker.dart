@@ -8,7 +8,7 @@ class Snippet {
   final String name;
   final String sourceCode;
 
-  Snippet(this.name, this.sourceCode);
+  const Snippet(this.name, this.sourceCode);
 }
 
 class DartPadPicker {
@@ -16,11 +16,12 @@ class DartPadPicker {
   final Element iFrameHost;
   final SelectElement selectElement;
   final List<Snippet> snippets;
+  final String /*?*/ frameId;
   IFrameElement _iFrameElement;
   int _selected = 0;
 
   DartPadPicker(this.iFrameHost, this.selectElement, this.snippets,
-      {this.dartPadUrl = 'https://dartpad.dev'}) {
+      {this.dartPadUrl = 'https://dartpad.dev', this.frameId}) {
     _initSelectElement();
     _initDartPad();
   }
@@ -48,7 +49,10 @@ class DartPadPicker {
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
-      ..src = iFrameSrc(theme: 'dark', mode: 'dart');
+      ..src = iFrameSrc(theme: 'dark', mode: 'dart', nullSafety: true);
+    if (frameId != null) {
+      _iFrameElement.id = frameId;
+    }
     iFrameHost.children.add(_iFrameElement);
     window.addEventListener('message', (Event _e) {
       final e = _e as MessageEvent;
@@ -66,7 +70,8 @@ class DartPadPicker {
     _iFrameElement.contentWindow.postMessage(_sourceCodeMessage, '*');
   }
 
-  String iFrameSrc({String theme, String mode}) {
-    return '${dartPadUrl}/embed-$mode.html?theme=$theme';
+  String iFrameSrc(
+      {String theme = 'dark', String mode = 'dart', bool nullSafety = true}) {
+    return '$dartPadUrl/embed-$mode.html?theme=$theme&null_safety=$nullSafety';
   }
 }

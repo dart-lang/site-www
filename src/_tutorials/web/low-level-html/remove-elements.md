@@ -1,10 +1,10 @@
 ---
-title: "Remove DOM elements"
-description: "Remove a child element from the DOM"
+title: Remove DOM elements
+description: Remove a child element from the DOM.
 
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add elements to the DOM"
+  title: Add elements to the DOM
 ---
 
 <div class="panel" markdown="1">

@@ -73,9 +73,9 @@ A pubspec can have the following fields:
 Pub ignores all other fields,
 
 <aside class="alert alert-info" markdown="1">
-**Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
-[a few additional fields]({{site.flutter}}/assets-and-images)
-for managing assets.
+  **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
+  [additional fields]({{site.flutter}}/docs/development/tools/pubspec)
+  for configuring the environment and managing assets.
 </aside>
 
 If you add a custom field, give it a unique name

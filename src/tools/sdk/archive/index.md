@@ -21,7 +21,6 @@ Want to install Dart with your OS's package manager?
   {% include_relative _sdk-terms.md %}
 {{site.alert.end}}
 
-
 ## Stable channel
 
 Stable channel builds are tested and approved for production use.

@@ -54,10 +54,10 @@ PR['registerLangHandler'](
       [PR['PR_KEYWORD'], /^\b(?:assert|async|await|break|case|catch|continue|default|do|else|finally|for|if|in|is|new|on|rethrow|return|super|switch|sync|this|throw|try|while|yield)\b/i],
 
       // Declaration keywords.
-      [PR['PR_KEYWORD'], /^\b(?:abstract|const|covariant|extends|external|factory|final|get|implements|native|operator|set|static|typedef|var|with)\b/i],
+      [PR['PR_KEYWORD'], /^\b(?:abstract|const|covariant|extends|external|factory|final|get|implements|late|native|operator|required|set|static|typedef|var|with)\b/i],
 
       // Keywords for types.
-      [PR['PR_TYPE'], /^\b(?:bool|double|dynamic|Function|int|num|Object|String|void)\b/i],
+      [PR['PR_TYPE'], /^\b(?:bool|double|dynamic|Function|int|Never|Null|num|Object|String|Symbol|Type|void)\b/i],
 
       // Keywords for constants.
       [PR['PR_KEYWORD'], /^\b(?:false|null|true)\b/i],
@@ -87,6 +87,6 @@ PR['registerLangHandler'](
       [PR['PR_LITERAL'], /^\b\.\d+(?:e[+-]?\d+)?/i],
 
       // Punctuation.
-      [PR['PR_PUNCTUATION'], /^[(){}\[\],.;]/]
+      [PR['PR_PUNCTUATION'], /^[(){}\[\],.;?!]/]
     ]),
   ['dart']);
