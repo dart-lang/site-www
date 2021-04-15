@@ -494,6 +494,7 @@ defining integer literals:
 ```dart
 var x = 1;
 var hex = 0xDEADBEEF;
+var exponent = 8e5;
 ```
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -511,6 +512,7 @@ can have both integer and double values.
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (declare-num)"?>
 ```dart
 num x = 1; // x can have both int and double values
+x += 2.5;
 ```
 
 Integer literals are automatically converted to doubles when necessary:
