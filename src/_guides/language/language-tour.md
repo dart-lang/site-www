@@ -1,6 +1,6 @@
 ---
 title: A tour of the Dart language
-description: A tour of all of the major Dart language features.
+description: A tour of all the major Dart language features.
 short-title: Language tour
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---

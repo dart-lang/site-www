@@ -1,5 +1,6 @@
 ---
-title: Command-line & server apps
+title: Command-line and server apps
+short-title: CLI & server apps
 description: All things relating to command-line and server apps.
 toc: false
 ---

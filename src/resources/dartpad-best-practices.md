@@ -1,5 +1,5 @@
 ---
-title: "DartPad in tutorials: best practices"
+title: "DartPad in tutorials: Best practices"
 description: Research-tested advice for creating effective and engaging educational content for Dart and Flutter users.
 ---
 <style>
