@@ -5,6 +5,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     var x = 1;
     var hex = 0xDEADBEEF;
+    var exponent = 8e5;
     // #enddocregion integer-literals
   }
 
@@ -18,6 +19,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion declare-num
     num x = 1; // x can have both int and double values
+    x += 2.5;
     // #enddocregion declare-num
   }
 
