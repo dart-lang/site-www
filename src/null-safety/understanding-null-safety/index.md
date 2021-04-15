@@ -657,6 +657,7 @@ String makeCommand(String executable, [List<String>? arguments]) {
   if (arguments != null) {
     result += ' ' + arguments.join(' ');
   }
+  return result;
 }
 ```
 
