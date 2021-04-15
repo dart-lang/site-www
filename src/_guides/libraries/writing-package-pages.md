@@ -5,7 +5,7 @@ description: Learn how to write a good package page.
 
 This document describes what you can do to construct a good package page on pub.dev. More specifically, this document provides several tips on how to write a better README.md file, as marked in the following image. If you need more information about other parts of the package page, refer to the links below. 
 
-{% asset libraries/images/package-page-sections.png alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" %}
+{% asset libraries/package-page-sections.png alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" %}
 
 1. About the [package layout ](https://dart.dev/tools/pub/package-layout)
 2. About the [Flutter Favorite program](https://flutter.dev/docs/development/packages-and-plugins/favorites)
@@ -53,7 +53,7 @@ If you have any badges, put them under the description or anywhere high on the p
 
 The package [in\_app\_purchase](https://pub.dev/packages/in_app_purchase) starts its README with a brief explanation of the package and a caution.
 
-{% asset libraries/images/package-page-description.png alt="description of the package in_app_purchase" %}
+{% asset libraries/package-page-description.png alt="description of the package in_app_purchase" %}
 
 
 ### 2. Include visual content to explain things
@@ -62,9 +62,9 @@ UI is difficult to explain in text. If your package page is just a “wall of te
 
 See the example below to see how the visual contents made the README look better (right) than before (left). 
 
-{% asset libraries/images/package-page-example-iap-before.png alt="in_app_purchase readme without images" %}
+{% asset libraries/package-page-example-iap-before.png alt="in_app_purchase readme without images" %}
 
-{% asset libraries/images/package-page-example-iap-after.png alt="in_app_purchase readme with images" %}
+{% asset libraries/package-page-example-iap-after.png alt="in_app_purchase readme with images" %}
 
 <aside class="alert alert-info" markdown="1">
 Note: When adding visual contents, make sure that you use absolute URLs for the files, so that they'll work no matter where the README is published. One place to host your images is in the repository itself. For example, here's where in_app_purchases hosts its animated gifs.
@@ -88,16 +88,16 @@ Use lists to draw attention to important information on your README. This sectio
 
 First of all, clearly list what your package can do. Some users might be looking for a very specific feature in your package. Help those users find out whether your package supports their needs or not. You may use tables, too.
 
-{% asset libraries/images/package-page-features-list.png alt="list of features of the package in_app_purchase" %}
+{% asset libraries/package-page-features-list.png alt="list of features of the package in_app_purchase" %}
 
-{% asset libraries/images/package-page-features-table.png alt="list of features of the package just_audio in a table format" %}
+{% asset libraries/package-page-features-table.png alt="list of features of the package just_audio in a table format" %}
 
 
 #### List parameters, attributes, or properties
 
 You can also consider listing parameters, attributes, or properties for their quick reference. See the example below.
 
-{% asset libraries/images/package-page-list-property.png alt="list of supported schemes of the package url_launcher" %}
+{% asset libraries/package-page-list-property.png alt="list of supported schemes of the package url_launcher" %}
 
 
 Linking specific functions or classes to those in dartdoc can be useful too. See [async](https://pub.dev/packages/async) package for an example of linking dartdocs.
@@ -107,7 +107,7 @@ Linking specific functions or classes to those in dartdoc can be useful too. See
 
 Listing requirements that are out of the scope of ordinary instructions is a good idea, too.
 
-{% asset libraries/images/package-page-list-requirements.png alt="additional instructions to use google_maps_flutter" %}
+{% asset libraries/package-page-list-requirements.png alt="additional instructions to use google_maps_flutter" %}
 
 
 
@@ -120,7 +120,7 @@ Listing things that are out of scope for your package is another good idea. For 
 
 Users will find it easier to navigate a section, when there’s a table of content. If a section in your README is very long, consider listing the subsections clearly at the beginning of the section. 
 
-{% asset libraries/images/package-page-list-subsections.png alt="content of the usage section of the package in_app_purchase" %}
+{% asset libraries/package-page-list-subsections.png alt="content of the usage section of the package in_app_purchase" %}
 
 
 ### 4. Include at least one usage example
@@ -129,7 +129,7 @@ If your package looks promising, users will want to test your package. Include a
 
 Remember that not all users speak English, but they all speak Dart! Good code samples can go a long way. Consider adding more complete examples in example/example.dart as well. 
 
-{% asset libraries/images/package-page-usage-example.png alt="sample code of the package in_app_purchase" %}
+{% asset libraries/package-page-usage-example.png alt="sample code of the package in_app_purchase" %}
 
 ### 5. Use Dart code formatting
 
@@ -150,14 +150,14 @@ In the recent UX study, we found that many users use the within-page search feat
 
 For instance, users might want to know whether the in\_app\_purchase package supports in app subscription. Users may search for the keyword “subscription”, and they might abandon the page if there’s no “subscription” highlighted.
 
-{% asset libraries/images/package-page-terms.png alt="the keyword will be highlighted when users search for it within the page" %}
+{% asset libraries/package-page-terms.png alt="the keyword will be highlighted when users search for it within the page" %}
 
 
 After that, be consistent with using such terms. If needed, clearly define them. In the package [in\_app\_purchase](https://pub.dev/packages/in_app_purchase), the meaning of “underlying store” is presented at the beginning, and the term is used consistently in the page.
 
-{% asset libraries/images/package-page-terms-definition.png alt="the meaning of underlying store" %}
+{% asset libraries/package-page-terms-definition.png alt="the meaning of underlying store" %}
 
-{% asset libraries/images/package-page-terms-consistent.png alt="The term underlying store is used consistently across the page" %}
+{% asset libraries/package-page-terms-consistent.png alt="The term underlying store is used consistently across the page" %}
 
 
 ### 7. Tell users where they can go next
@@ -170,7 +170,7 @@ Tell users where they can find more about the package. You many link to your art
 
 Tell users about your roadmap, or where they can find a roadmap. Users might want to know if the feature they need is coming soon or not.   \
 
-{% asset libraries/images/package-page-contribute.png alt="how to contribute to in_app_purchase" %}
+{% asset libraries/package-page-contribute.png alt="how to contribute to in_app_purchase" %}
 
 
 ## Learn more about good README authoring
