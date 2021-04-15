@@ -422,19 +422,19 @@ consistent whitespace style helps ensure that human readers see code the same
 way the compiler does.
 
 
-### DO format your code using `dartfmt`.
+### DO format your code using `dart format`.
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
-sophisticated automated code formatter called [dartfmt][] that does it for
-you. We have [some documentation][dartfmt docs] on the rules it applies, but the
-official whitespace-handling rules for Dart are *whatever dartfmt produces*.
+sophisticated automated code formatter called [`dart format`][] that does it for
+you. We have [some documentation][dart format docs] on the rules it applies, but the
+official whitespace-handling rules for Dart are *whatever `dart format` produces*.
 
-The remaining formatting guidelines are for the few things dartfmt cannot fix
+The remaining formatting guidelines are for the few things `dart format` cannot fix
 for you.
 
-[dartfmt]: https://github.com/dart-lang/dart_style
-[dartfmt docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
+[`dart format`]: /tools/dart-format
+[dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly.
 
@@ -447,8 +447,8 @@ When that happens, reorganize or simplify your code. Consider shortening a local
 variable name or hoisting out an expression into a new local variable. In other
 words, make the same kinds of modifications that you'd make if you were
 formatting the code by hand and trying to make it more readable. Think of
-dartfmt as a partnership where you work together, sometimes iteratively, to
-produce beautiful code.
+`dart format` as a partnership where you work together, sometimes iteratively, 
+to produce beautiful code.
 
 
 ### AVOID lines longer than 80 characters.
@@ -465,9 +465,9 @@ compact. The main offender is usually `VeryLongCamelCaseClassNames`. Ask
 yourself, "Does each word in that type name tell me something critical or
 prevent a name collision?" If not, consider omitting it.
 
-Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
-split long string literals to fit in 80 columns, so you have to do that
-manually.
+Note that `dart format` does 99% of this for you, but the last 1% is you. 
+It does not split long string literals to fit in 80 columns, 
+so you have to do that manually.
 
 **Exception:** When a URI or file path occurs in a comment or string (usually in
 an import or export), it may remain whole even if it causes the line to go over

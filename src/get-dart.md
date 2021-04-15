@@ -24,7 +24,6 @@ any of the following are true:
   For example, you might have a continuous integration (CI)
   setup that requires Dart but not Flutter.
 
-
 ## Installing the Dart SDK {#install}
 
 As the following instructions show,
@@ -46,7 +45,7 @@ so it's easy to find (but not more tempting than package managers).
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
   <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
+  <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
 {% include_relative tools/sdk/_windows.md %}
@@ -57,6 +56,35 @@ so it's easy to find (but not more tempting than package managers).
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
 {% include_relative tools/sdk/_mac.md %}
 </div>
+
+## System requirements
+
+The Dart SDK is supported on Windows, Linux, and macOS.
+
+### Windows
+
+* **Supported versions:** Windows 10.
+* **Supported architectures:** x64, ia32.
+
+### Linux
+
+* **Supported versions:** Recent Linux versions, but only Ubuntu 16.04 is tested.
+* **Supported architectures:** x64, ia32, arm, arm64.
+
+{{ site.alert.note }}
+  The arm support requires glibc 2.23 or newer due to a
+  [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
+{{ site.alert.end }}
+
+### macOS
+
+* **Supported versions:** Latest three major versions.
+  As of April 2021, the following versions are supported:
+  - macOS 10.14 (Mojave)
+  - macOS 10.15 (Catalina)
+  - macOS 11 (Big Sur)
+* **Supported architectures:** x64.
+  Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
 
 ## About release channels and version strings {#release-channels}
 

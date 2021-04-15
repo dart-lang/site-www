@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Run dartfmt over the examples.
+# Run dart format over the examples.
 
 # `find` exit code reflects whether it encountered errors during the search.
 # We ignore such errors, so don't exit on a pipefail.

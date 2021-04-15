@@ -1,5 +1,5 @@
 ---
-title: "Asynchronous programming: streams"
+title: "Asynchronous programming: Streams"
 description: Learn how to consume single-subscriber and broadcast streams.
 ---
 
