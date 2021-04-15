@@ -1,5 +1,5 @@
 ---
-title: Command-line & server libraries and packages
+title: Command-line and server libraries and packages
 short-title: CLI & server libraries
 description: Libraries and packages that can help you write Dart command-line & server apps.
 ---

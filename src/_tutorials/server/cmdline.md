@@ -3,7 +3,7 @@ title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
   url: /tutorials/server/httpserver
-  title: Write HTTP clients & servers
+  title: Write HTTP clients and servers
 prevpage:
   url: /tutorials/server/get-started
   title: "Get started: Command-line and server apps"
