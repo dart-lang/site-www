@@ -16,6 +16,8 @@
           permalink: /codelabs/iterables
         - title: Asynchronous programming
           permalink: /codelabs/async-await
+        - title: Null safety
+          permalink: /codelabs/null-safety
     - title: Tutorials
       urlExactMatch: true
       match-page-url-exactly: true
@@ -41,7 +43,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension methods
       permalink: /guides/language/extension-methods
-
+    - title: Numbers
+      permalink: /guides/language/numbers
     - title: Null safety
       expanded: false
       children:
@@ -211,18 +214,12 @@
           permalink: /tools/dart-fix
         - title: dart format 
           permalink: /tools/dart-format
-        - title: dart2js (prod JS)
-          permalink: /tools/dart2js
+        - title: dart pub
+          permalink: /tools/pub/cmd
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
-        - title: dartdevc (dev JS)
-          permalink: /tools/dartdevc
         - title: dartdoc
           permalink: /tools/dartdoc
-        - title: dartfmt
-          permalink: /tools/dartfmt
-        - title: pub
-          permalink: /tools/pub/cmd
         - title: Experiment flags
           permalink: /tools/experiment-flags
     - title: Other command-line tools
@@ -260,7 +257,7 @@
       permalink: /resources
     - title: Books
       permalink: /resources/books
-    - title: DartPad in tutorials&#58; best practices
+    - title: "DartPad in tutorials: Best practices"
       permalink: /resources/dartpad-best-practices
     - title: Code of conduct
       permalink: /code-of-conduct

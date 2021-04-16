@@ -481,7 +481,6 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart's type system][type-system]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
-* [dartdevc](/tools/dartdevc)
 * [analyzer package]({{site.pub}}/packages/analyzer)
 
 [analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html

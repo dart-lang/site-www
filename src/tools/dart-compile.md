@@ -202,7 +202,6 @@ Compiling bin/myapp.dart to jit-snapshot file bin/myapp.jit.
 Hello world!
 $ dart run bin/myapp.jit
 Hello world!
-$
 ```
 
 When running from an application snapshot,

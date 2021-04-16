@@ -2,7 +2,7 @@ import 'package:dart_sdk_archive/src/util.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:test/test.dart';
 
-main() {
+void main() {
   group('dart_sdk_archive', () {
     test('can get all SDK versions', () async {
       var versions = await fetchSdkVersions('stable');

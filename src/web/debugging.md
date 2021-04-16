@@ -8,7 +8,7 @@ such as [Chrome DevTools][] to debug your Dart web apps.
 
 * To debug your app's logic,
   use your IDE, Dart DevTools, or browser tools.
-  Dart DevTools have better support than brower tools
+  Dart DevTools has better support than browser tools
   for inspecting and automatically reloading Dart code.
 * To debug your app's appearance (HTML/CSS) and performance,
   use your IDE or browser tools such as Chrome DevTools.
@@ -54,7 +54,7 @@ to debug a Dart web app, you need the following software:
   * A [Dart IDE or editor][IDE] that supports web development.
 * A [Dart web app][] to debug.
 
-[cl-tools]: #getting-webdev-and-devtools
+[cl-tools]: #getting-command-line-tool-packages
 
 If you need to debug dart2js-produced code
 or can't use the Chrome browser to debug, see the tips in the
@@ -148,11 +148,11 @@ but you'll need to adjust the instructions to match your app.
    Execution pauses again.
 
 1. Try stepping through code line-by-line using the
-   **Step in**, **Step over**, and **Step out** buttons.
+   **Step In**, **Step Over**, and **Step Out** buttons.
 
    {{site.alert.note}}
      Dart DevTools doesn't step into SDK code.
-     For example, if you press **Step in** at a call to `print()`,
+     For example, if you press **Step In** at a call to `print()`,
      you go to the next line, not into the SDK code that implements `print()`.
    {{site.alert.end}}
 
@@ -211,7 +211,6 @@ For more information, see the following:
 [Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
-[Dart fork of Chrome DevTools]: https://github.com/dart-lang/devtools-frontend
 [IDE]: /tools#ides-and-editors
 [Dart SDK]: /get-dart
 [Dart web app]: /web
@@ -222,9 +221,6 @@ For more information, see the following:
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
-[JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
-[List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[logging]: {{site.pub-pkg}}/logging
 [dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
 [webdev repo,]: https://github.com/dart-lang/webdev

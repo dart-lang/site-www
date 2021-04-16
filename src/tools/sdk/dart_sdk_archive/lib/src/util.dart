@@ -14,7 +14,7 @@ Future<List<Version>> fetchSdkVersions(String channel) async {
       continue;
     }
     if (isSvnRevision(basename)) {
-      versions.add(Version.parse(svnVersions[basename]));
+      versions.add(Version.parse(svnVersions[basename] ?? basename));
     } else {
       versions.add(Version.parse(basename));
     }
@@ -24,7 +24,7 @@ Future<List<Version>> fetchSdkVersions(String channel) async {
 
 bool isSvnRevision(String s) => int.tryParse(s) != null;
 
-String svnRevisionForVersion(String svnVersion) {
+String? svnRevisionForVersion(String svnVersion) {
   for (var key in svnVersions.keys) {
     if (svnVersions[key] == svnVersion) {
       return key;
@@ -72,8 +72,8 @@ const Map<String, List<PlatformVariant>> platforms = {
 };
 
 class PlatformVariant {
-  const PlatformVariant(this.architecture, this.archives);
-
   final String architecture;
   final List<String> archives;
+
+  const PlatformVariant(this.architecture, this.archives);
 }

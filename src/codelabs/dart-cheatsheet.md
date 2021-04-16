@@ -17,7 +17,7 @@ The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
 If you need help, click the **Hint** button.
-To run the code formatter ([dartfmt](/tools/dartfmt)), click **Format**.
+To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 

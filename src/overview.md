@@ -214,7 +214,7 @@ manages memory using fast object allocation and a
 [generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
 More information:
-* [Get started: command-line and server apps](/tutorials/server/get-started)
+* [Get started: Command-line and server apps](/tutorials/server/get-started)
 * [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
 * [Write command-line apps](/tutorials/server/cmdline)
 * [Write HTTP clients and servers](/tutorials/server/httpserver)
@@ -232,7 +232,7 @@ code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 More information:
-* [Get started: web apps](/tutorials/web/get-started)
+* [Get started: Web apps](/tutorials/web/get-started)
 * [`dartdevc` compiler](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)

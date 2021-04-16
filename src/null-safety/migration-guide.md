@@ -19,9 +19,7 @@ Here are the basic steps for migrating each package that you own:
 {{ site.alert.info }}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider waiting for a stable release of the Dart SDK that
-  contains null safety. 
-  Also, make sure all your dependencies are ready.
+  make sure that all of your dependencies are ready.
 {{ site.alert.end }}
 
 For an informal look at the experience of using the migration tool, watch this video:
@@ -433,7 +431,7 @@ We encourage you to publish packages as prereleases
 as soon as you migrate:
 
 * [Set the SDK constraints to the tested beta version.](#sdk-constraints)
-* [Set the package version to indicate a breaking change.](#version)
+* [Set the package version to indicate a breaking change.](#package-version)
 
 ### SDK constraints
 

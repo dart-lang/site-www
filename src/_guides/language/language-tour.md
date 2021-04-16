@@ -1,6 +1,6 @@
 ---
 title: A tour of the Dart language
-description: A tour of all of the major Dart language features.
+description: A tour of all the major Dart language features.
 short-title: Language tour
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
@@ -588,18 +588,12 @@ Dart numbers come in two flavors:
 [`int`][]
 
 :   Integer values no larger than 64 bits,
-    depending on the platform.
-    On the Dart VM, values can be from
+    [depending on the platform][dart-numbers].
+    On native platforms, values can be from
     -2<sup>63</sup> to 2<sup>63</sup> - 1.
-    Dart that's compiled to JavaScript uses
-    [JavaScript numbers,][js numbers]
-    allowing values from -2<sup>53</sup> to 2<sup>53</sup> - 1.
-
-{% comment %}
-[TODO #2565: What about values on Android & iOS?
-The informal spec is at
-https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
-{% endcomment %}
+    On the web, integer values are represented as JavaScript numbers
+    (64-bit floating-point values with no fractional part)
+    and can be from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
 [`double`][]
 
@@ -621,6 +615,7 @@ defining integer literals:
 ```dart
 var x = 1;
 var hex = 0xDEADBEEF;
+var exponent = 8e5;
 ```
 
 If a number includes a decimal, it is a double. Here are some examples
@@ -630,6 +625,15 @@ of defining double literals:
 ```dart
 var y = 1.1;
 var exponents = 1.42e5;
+```
+
+You can also declare a variable as a num. If you do this, the variable
+can have both integer and double values.
+
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (declare-num)"?>
+```dart
+num x = 1; // x can have both int and double values
+x += 2.5;
 ```
 
 Integer literals are automatically converted to doubles when necessary:
@@ -681,6 +685,10 @@ const msPerSecond = 1000;
 const secondsUntilRetry = 5;
 const msUntilRetry = secondsUntilRetry * msPerSecond;
 ```
+
+For more information, see [Numbers in Dart][dart-numbers].
+
+[dart-numbers]: /guides/language/numbers
 
 
 ### Strings
@@ -2237,24 +2245,23 @@ callbacks.forEach((c) => c());
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-If the object that you are iterating over is an Iterable, you can use the
-[forEach()][] method. Using `forEach()` is a good option if you don’t need to
-know the current iteration counter:
+If the object that you are iterating over is an Iterable (such as List or Set)
+and if you don't need to know the current iteration counter, 
+you can use the `for-in` form of [iteration](/guides/libraries/library-tour#iteration):
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-candidates.forEach((candidate) => candidate.interview());
+for (var candidate in candidates) {
+  candidate.interview();
+}
 ```
 
-Iterable classes such as List and Set also support the `for-in` form of
-[iteration](/guides/libraries/library-tour#iteration):
+Iterable classes also have a [forEach()][] method as another option:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/control_flow_test.dart (collection)"?>
+<?code-excerpt "../null_safety_examples/misc/test/language_tour/control_flow_test.dart (forEach)"?>
 ```dart
 var collection = [1, 2, 3];
-for (var x in collection) {
-  print(x); // 1 2 3
-}
+collection.forEach(print); // 1 2 3
 ```
 
 
