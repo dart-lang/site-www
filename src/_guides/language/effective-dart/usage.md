@@ -117,6 +117,12 @@ Instead, when you need to reach into a package's `lib` directory
 (even from the same package's `test` directory
 or any other top-level directory),
 use a `package:` import.
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+{% endprettify %}
+
 A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
 
