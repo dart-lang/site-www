@@ -19,8 +19,13 @@ You can use Cloud Run's flexible container support,
 combined with Dart's Docker images,
 to run server-side Dart code.
 
-For more information, see the Cloud Run documentation for
+One example of a Dart server that uses Cloud Run is dartbug.com,
+the redirect service for Dart issues and bugs.
+You can find its source code in the [dart-lang/dartbug.com repo][].
+
+For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
+
 
 ## Compute Engine
 
@@ -43,12 +48,13 @@ For more information, see the [GKE overview][].
 The App Engine support for Dart is incomplete and experimental,
 so we recommend that you **use Cloud Run** instead of App Engine
 to run new server-side Dart code.
-However, many older Dart servers use App Engine
-with the help of the [`appengine` package][].
+If you _do_ use App Engine,
+you might also want to use the [`appengine` package][].
 
 
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
+[dart-lang/dartbug.com repo]: https://github.com/dart-lang/dartbug.com
 [Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
