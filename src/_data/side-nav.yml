@@ -140,8 +140,8 @@
           permalink: /guides/libraries/c-interop
         - title: JavaScript interop
           permalink: /web/js-interop
-    - title: Google services & APIs
-      permalink: /guides/services
+    - title: Google APIs
+      permalink: /guides/google-apis
     - title: Mobile apps
       permalink: /mobile
     - title: Command-line & server apps

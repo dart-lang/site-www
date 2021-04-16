@@ -11,11 +11,7 @@ that the Dart team maintains.
 
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
-see the [Google APIs page](/guides/services).
-
-***[PENDING: I'd love to see examples of using each product.
-Source code would be great, but just a list of who uses each
-solution would also be cool.]***
+see the [Google APIs page](/guides/google-apis).
 
 ## Cloud Run
 
