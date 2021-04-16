@@ -101,6 +101,7 @@ my_package
 
 And say `api_test.dart` imports `api.dart` in two ways:
 
+{:.bad}
 {% prettify dart tag=pre+code %}
 import 'package:my_package/api.dart';
 import '../lib/api.dart';
@@ -118,7 +119,6 @@ or any other top-level directory),
 use a `package:` import.
 
 {:.good}
-<?code-excerpt "test/api_test.dart"?>
 {% prettify dart tag=pre+code %}
 import 'package:my_package/api.dart';
 {% endprettify %}
