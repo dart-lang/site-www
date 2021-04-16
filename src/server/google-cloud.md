@@ -40,13 +40,11 @@ For more information, see the [GKE overview][].
 
 ## App Engine
 
-To run Dart code on App Engine, use
-the [`appengine` package][].
-
-{{ site.alert.warn}}
-  The App Engine support for Dart is incomplete and experimental.
-  For new apps, we recommend using Google Cloud Run.
-{{ site.alert.end}}
+The App Engine support for Dart is incomplete and experimental,
+so we recommend that you **use Cloud Run** instead of App Engine
+to run new server-side Dart code.
+However, many older Dart servers use App Engine
+with the help of the [`appengine` package][].
 
 
 [`appengine` package]: {{site.pub-pkg}}/appengine
