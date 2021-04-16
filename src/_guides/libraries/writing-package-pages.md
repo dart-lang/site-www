@@ -62,9 +62,7 @@ UI is difficult to explain in text. If your package page is just a “wall of te
 
 See the example below to see how the visual contents made the README look better (right) than before (left). 
 
-{% asset libraries/package-page-example-iap-before.png alt="in_app_purchase readme without images" %}
-
-{% asset libraries/package-page-example-iap-after.png alt="in_app_purchase readme with images" %}
+{% asset libraries/package-page-example-iap.png alt="in_app_purchase readme without and with images" %}
 
 <aside class="alert alert-info" markdown="1">
 Note: When adding visual contents, make sure that you use absolute URLs for the files, so that they'll work no matter where the README is published. One place to host your images is in the repository itself. For example, here's where in_app_purchases hosts its animated gifs.
