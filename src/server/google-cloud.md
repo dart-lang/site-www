@@ -1,53 +1,60 @@
 ---
-title: "Google Cloud"
-short-title: Dart & Google Cloud services
-description: Leveraging Cloud services (Firebase, GCP, etc.) for your Dart apps.
+title: Using Google Cloud
+short-title: Google Cloud
+description: Your Dart app can use many Google Cloud services — Firebase, Google Cloud Platform, and more.
 ---
 
-[Google Cloud](https://cloud.google.com/) offers a rich selection of
-[products](https://cloud.google.com/products), many of which can be leveraged
-from your app built in Dart.
+Dart servers can use many
+[Google Cloud products](https://cloud.google.com/products),
+often with the help of pre-packaged [Docker images][]
+that the Dart team maintains.
 
-Many of these are based on pre-packaged [Dart Docker images][] maintained by the
-Dart team.
+For information about other Google APIs (including Firebase)
+that you might want to use from Dart code,
+see the [Google APIs page](/guides/services).
 
-You may also be interested in using [Firebase](/guides/services).
+***[PENDING: I'd love to see examples of using each product.
+Source code would be great, but just a list of who uses each
+solution would also be cool.]***
 
-### Cloud Run
+## Cloud Run
 
-Dart can be run on Google Cloud Run using it's flexible container support
+You can use Cloud Run's flexible container support,
+combined with Dart's Docker images,
+to run server-side Dart code.
+
+For more information, see the Cloud Run documentation for
+[building and deploying a service in other languages][cr].
+
+## Compute Engine
+
+To run Dart code on Compute Engine,
+use Compute Engine's support for running containers,
 combined with Dart's Docker images.
 
-See [Build and deploy a service][] for more  information.
+For more information, see the Compute Engine documentation for
+[using software containers][ce].
 
-### Compute Engine
+## Kubernetes
 
-Dart can be run on Google Compute Engine using it's support for running
-Containers combined with Dart's Docker images.
+To run Dart on clusters of Compute Engine instances,
+use Google Kubernetes Engine (GKE).
 
-See [Containers on Compute Engine][] for more information.
+For more information, see the [GKE overview][].
 
-### Kubernetes Engine (GKE)
+## App Engine
 
-You can run Dart on clusters of Compute Engine instances using Google Kubernetes
-Engine (GKE).
+To run Dart code on App Engine, use
+the [`appengine` package][].
 
-See [GKE overview][] for more information.
-
-### App Engine
-
-Dart can be run on Google App Engine using it's _Custom Runtimes for the Flex
-Environment_ support.
-
-See the documentation in [`package:appengine`][] for more information.
-
-**Note:**: Dart's AppEngine support is incomplete and experimental. For new
-apps, we recommend using Cloud Run.
+{{ site.alert.warn}}
+  The App Engine support for Dart is incomplete and experimental.
+  For new apps, we recommend using Google Cloud Run.
+{{ site.alert.end}}
 
 
-[Dart Docker images]: https://hub.docker.com/r/google/dart
-[`package:appengine`]: https://pub.dev/packages/appengine
-[`package:googleapis`]: https://pub.dev/packages/googleapis
-[Build and deploy a service]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[Containers on Compute Engine]: https://cloud.google.com/compute/docs/containers
+[`appengine` package]: {{site.pub-pkg}}/appengine
+[ce]: https://cloud.google.com/compute/docs/containers
+[cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
+[Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
