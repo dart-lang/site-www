@@ -126,11 +126,15 @@ typedef HelloWorld = void Function();
 
 5. Create a variable to store the path of the dynamic library.
 ```dart
-  var libraryPath = path.join(Directory.current.path, 'hello_library', 'libhello.so');
-  if (Platform.isMacOS)
-    libraryPath = path.join(Directory.current.path, 'hello_library', 'libhello.dylib');
-  if (Platform.isWindows)
-    libraryPath = path.join(Directory.current.path, 'hello_library', 'Debug', 'hello.dll');
+var libraryPath = path.join(Directory.current.path, 'hello_library',
+    'libhello.so');
+if (Platform.isMacOS) { 
+  libraryPath = path.join(Directory.current.path, 'hello_library', 
+      'libhello.dylib');
+} else if (Platform.isWindows) { 
+  libraryPath = path.join(Directory.current.path, 'hello_library', 
+      'Debug', 'hello.dll');
+} 
 ```
 
 6. Open the dynamic library that contains the C function.
