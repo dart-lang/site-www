@@ -7,7 +7,7 @@ class SortedCollection {
   SortedCollection(this.compare);
 }
 
-// Initial, broken implementation.
+// Now matching the defined function type.
 int sort(Object a, Object b) => 0;
 
 void main() {
