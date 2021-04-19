@@ -130,16 +130,18 @@
   children:
     - title: Futures, async, await
       permalink: /codelabs/async-await
+    - title: Streams
+      permalink: /tutorials/language/streams
+    - title: JSON
+      permalink: /guides/json
     - title: Interoperability
       children:
         - title: C interop
           permalink: /guides/libraries/c-interop
         - title: JavaScript interop
           permalink: /web/js-interop
-    - title: JSON
-      permalink: /guides/json
-    - title: Streams
-      permalink: /tutorials/language/streams
+    - title: Google APIs
+      permalink: /guides/google-apis
     - title: Mobile apps
       permalink: /mobile
     - title: Command-line & server apps
@@ -156,6 +158,8 @@
           permalink: /tutorials/server/httpserver
         - title: Libraries and packages
           permalink: /server/libraries
+        - title: Google Cloud
+          permalink: /server/google-cloud
     - title: Web apps
       children:
         - title: Overview
