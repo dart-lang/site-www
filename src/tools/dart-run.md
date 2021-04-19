@@ -1,19 +1,26 @@
 ---
-title: pub run
-description: Use pub run to run a Dart script in your package.
+title: dart run
+description: Use dart run to run a Dart script in your package.
 ---
 
-_Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
-
-{% prettify nocode tag=pre+code %}
-$ pub run [--enable-asserts] <executable> [args...]
-{% endprettify %}
-
-Use this command to run a Dart script in your package,
-or in one of its dependencies, from the command line.
+The `dart run` command supports running a Dart script located in a file,
+or a package, or in one of its dependencies, from the command line.
 
 To run an executable when you are not currently inside a package,
 use the [pub global](/tools/pub/cmd/pub-global) command.
+
+The `dart run` command combines what was previously exposed as `pub run`
+and as the [Dart VM](/tools/dart-vm).
+
+{% include tools/dart-tool-note.md %}
+
+Here's an example of creating a new app and running it:
+
+```terminal
+$ dart create myapp
+$ cd myapp
+$ dart run
+```
 
 ## Running a script in your package's bin directory
 
@@ -23,7 +30,7 @@ From the root of a package that contains `foo.dart`
 in the `bin` directory, run the app using the following command:
 
 ```terminal
-$ pub run foo arg1 arg2
+$ dart run foo arg1 arg2
 ```
 
 This command looks in your package's `bin` directory for the
@@ -37,7 +44,7 @@ to the name of the script.
 For example, to run `foo.dart` in the `example/sub` directory:
 
 ```terminal
-$ pub run example/sub/foo arg1 arg2
+$ dart run example/sub/foo arg1 arg2
 ```
 
 ## Running a script in a dependency
@@ -47,17 +54,13 @@ in the pubspec, specify the package name.
 For example, to run `bar.dart` in the foo package:
 
 ```terminal
-$ pub run foo:bar arg
+$ dart run foo:bar arg
 ```
 
 You can only run scripts out of another package's `bin` directory.
 All other directories are private.
 
-## Options
+## Running with debugging
 
-For options that apply to all pub commands, see
-[Global options](/tools/pub/cmd#global-options).
-
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+To run with various debugging, pass a debugging flag.
+See `dart run --help` for details.
