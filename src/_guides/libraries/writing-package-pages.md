@@ -18,21 +18,22 @@ description: Learn how to write a good package page.
   }
 </style>
 
-This document describes what you can do to
-construct a good package page on pub.dev.
-More specifically, this document provides several tips on
-how to write a better README.md file,
-as marked in the following image.
-If you need more information about other parts of the package page,
-refer to the links below. 
+The guidelines on this page can help you create good package pages on pub.dev.
+Specifically, this page has tips for
+writing a better package README,
+which provides the content marked **README (this document)**
+in the following screenshot:
 
 {% asset libraries/package-page-sections.png alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" class="screenshot" %}
 
-1. About the [package layout ](https://dart.dev/tools/pub/package-layout)
-2. About the [Flutter Favorite program](https://flutter.dev/docs/development/packages-and-plugins/favorites)
-3. About the [package scoring system](https://pub.dev/help/scoring)
-4. About [verified publishers](https://dart.dev/tools/pub/verified-publishers)
-5. About the [pubspec file](https://dart.dev/tools/pub/pubspec)
+For details about other parts of the package page,
+follow these links:
+
+1. [Package layout ](https://dart.dev/tools/pub/package-layout)
+2. [Flutter Favorite](https://flutter.dev/docs/development/packages-and-plugins/favorites)
+3. [Package scoring](https://pub.dev/help/scoring)
+4. [Verified publishers](https://dart.dev/tools/pub/verified-publishers)
+5. [Pubspec file](https://dart.dev/tools/pub/pubspec)
 
 
 ## Writing a good README is important
