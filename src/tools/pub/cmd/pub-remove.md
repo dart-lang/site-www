@@ -1,6 +1,6 @@
 ---
 title: dart pub remove
-description: Use dart pub remove to remove a dependecy.
+description: Use dart pub remove to remove a dependency.
 toc: false
 ---
 
@@ -13,10 +13,8 @@ $ dart pub remove <package> [options]
 This command removes the specified package from the pubspec as a dependency.
 
 For example, the following command is equivalent to
-editing `pubspec.yaml` (removing `http: ^0.12.1` under `dependencies`)
+editing `pubspec.yaml` (removing `http` from `dependencies` or `dev_dependencies`)
 and then calling `dart pub get`:
-
-Example:
 
 ```
 $ dart pub remove http
