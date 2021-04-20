@@ -41,7 +41,9 @@ see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Detailed documentation exists for each of the following pub subcommands:
 
-* [`add`](/tools/pub/cmd/pub-add)
+{% include pub-subcommands.md %}
+
+<!-- * [`add`](/tools/pub/cmd/pub-add)
 * [`cache`](/tools/pub/cmd/pub-cache)
 * [`deps`](/tools/pub/cmd/pub-deps)
 * [`downgrade`](/tools/pub/cmd/pub-downgrade)
@@ -51,9 +53,7 @@ Detailed documentation exists for each of the following pub subcommands:
 * [`publish`](/tools/pub/cmd/pub-lish)
 * [`remove`](/tools/pub/cmd/pub-remove)
 * [`upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`uploader`](/tools/pub/cmd/pub-uploader)
-
-
+* [`uploader`](/tools/pub/cmd/pub-uploader) -->
 ## Overview of subcommands
 
 Pub's subcommands fall into the following categories:

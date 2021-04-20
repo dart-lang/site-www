@@ -193,7 +193,8 @@ the pub package manager.
 
 The `dart pub` tool provides the following subcommands:
 
-* [`cache`][]
+{% include pub-subcommands.md %}
+<!-- * [`cache`][]
 * [`deps`][]
 * [`downgrade`][]
 * [`get`][]
@@ -202,7 +203,7 @@ The `dart pub` tool provides the following subcommands:
 * [`publish`][]
 * [`run`][]
 * [`upgrade`][]
-* [`uploader`][]
+* [`uploader`][] -->
 
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -213,7 +214,7 @@ see the [pub tool documentation](/tools/pub/cmd).
 you might encounter when using pub.
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
-[`cache`]: /tools/pub/cmd/pub-cache
+<!-- [`cache`]: /tools/pub/cmd/pub-cache
 [`deps`]: /tools/pub/cmd/pub-deps
 [`downgrade`]: /tools/pub/cmd/pub-downgrade
 [`get`]: /tools/pub/cmd/pub-get
@@ -222,4 +223,4 @@ you might encounter when using pub.
 [`publish`]: /tools/pub/cmd/pub-lish
 [`run`]: /tools/pub/cmd/pub-run
 [`upgrade`]: /tools/pub/cmd/pub-upgrade
-[`uploader`]: /tools/pub/cmd/pub-uploader
+[`uploader`]: /tools/pub/cmd/pub-uploader -->
