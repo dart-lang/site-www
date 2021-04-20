@@ -1,6 +1,6 @@
 ---
 title: dart pub remove
-description: Use dart pub remove to remove dependecies from pubspec.yaml.
+description: Use dart pub remove to remove a dependecy.
 toc: false
 ---
 
@@ -9,6 +9,12 @@ _Remove_ is one of the commands of the [pub tool](/tools/pub/cmd).
 ```
 $ dart pub remove <package> [options]
 ```
+
+This command removes the specified package from the pubspec as a dependency.
+
+For example, the following command is equivalent to
+editing `pubspec.yaml` (removing `http: ^0.12.1` under `dependencies`)
+and then calling `dart pub get`:
 
 Example:
 
@@ -22,13 +28,10 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 <dl>
-    <dt><code>-h, --help</code></dt>
-        <dd>Print this usage information.</dd>
     <dt><code>--[no-]offline</code></dt>
-    <dd>Use cached packages instead of accessing the network.</dd>
+    <dd>Uses cached packages instead of the network.</dd>
     <dt><code>-n, --dry-run</code></dt>
-    <dd>Report what dependencies would change but don't change any.</dd>
+    <dd>Reports which dependencies would change, but doesn't change any.</dd>
     <dt><code>--[no-]precompile</code></dt>
-    <dd>Precompile executables in immediate dependencies.</dd>
-
+    <dd>Precompiles executables in immediate dependencies (true by default).</dd>
 </dl>
