@@ -78,7 +78,7 @@ question marks to correct the type declarations of `aNullableListOfStrings` and
 ```dart:run-dartpad:ga_id-nullable_type_generics:null_safety-true
 void main() {
   List<String> aListOfStrings = ['one', 'two', 'three'];
-  List<String> aNullableListOfStrings = [];
+  List<String> aNullableListOfStrings;
   List<String> aListOfNullableStrings = ['one', null, 'three'];
 
   print('aListOfStrings is $aListOfStrings.');
