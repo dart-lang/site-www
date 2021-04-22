@@ -12,21 +12,27 @@ $ dart pub add <package>[:<constraint>] [options]
 
 This command adds the specified package to the pubspec as a dependency,
 and then gets the dependency.
-
 For example, the following command is equivalent to
-editing `pubspec.yaml` (adding `http: ^0.12.1` under `dependencies`)
+editing `pubspec.yaml` to add the `http` package,
 and then calling `dart pub get`:
 
 ```terminal
-$ dart pub add http:^0.12.1
+$ dart pub add http
 ```
 
-By default, `dart pub add` gets the package from pub.dev.
-You can use options to specify other
-[dependency sources](/tools/pub/dependencies#dependency-sources) —
-Git repos, the Flutter SDK, alternate package servers, or
-a path within your local file system.
+By default, `dart pub add` uses the
+latest stable version of the package from pub.dev.
+For example, if 0.13.1 is the latest stable version of the `http` package,
+then `dart pub add http` adds
+`http: ^0.13.1` under `dependencies` in the pubspec.
 
+To add a [dev dependency][], use the `--dev` option:
+
+[dev dependency]: /tools/pub/dependencies#dev-dependencies
+
+```terminal
+$ dart pub add --dev test
+```
 
 ## Options
 
