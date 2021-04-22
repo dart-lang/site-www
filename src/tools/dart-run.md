@@ -26,35 +26,43 @@ $ dart run
 
 This is the simplest use case.
 
-From the root of a package that contains `foo.dart`
-in the `bin` directory, run the app using the following command:
+To run a script in a package named `foo`,
+which contains `bar.dart` in the `bin` directory,
+run the following command from the root of the package,
+optionally passing zero or more arguments:
 
 ```terminal
-$ dart run foo arg1 arg2
+$ dart run foo:bar [arg1 arg2 ...]
 ```
 
-This command looks in your package's `bin` directory for the
-specified script and invokes it, passing in any arguments.
+If your package and script file in `bin` have the same name
+(e.g. `/foo/bin/foo.dart`),
+then you can use the following shorthand:
+
+```terminal
+$ dart run foo [arg1 arg2]
+```
 
 ## Running a script in another directory in your package
 
 To run a script inside a directory other than the top-level
-bin directory (but within the package), prepend the path
-to the name of the script.
+bin directory (but within the package),
+prepend the relative path to the name of the script.
+
 For example, to run `foo.dart` in the `example/sub` directory:
 
 ```terminal
-$ dart run example/sub/foo arg1 arg2
+$ dart run example/sub/foo.dart [arg1 arg2 ...]
 ```
 
 ## Running a script in a dependency
 
 To run a script from the `bin` directory of a package that you depend on
 in the pubspec, specify the package name.
-For example, to run `bar.dart` in the foo package:
+For example, to run `bar.dart` in the `baz` package:
 
 ```terminal
-$ dart run foo:bar arg
+$ dart run baz:bar [arg1 arg2 ...]
 ```
 
 You can only run scripts out of another package's `bin` directory.
@@ -62,5 +70,5 @@ All other directories are private.
 
 ## Running with debugging
 
-To run with various debugging, pass a debugging flag.
+To run with various debugging options, pass a debugging flag.
 See `dart run --help` for details.
