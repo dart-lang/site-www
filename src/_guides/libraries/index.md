@@ -63,8 +63,7 @@ The following table lists the Dart core libraries that work on the
 | [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
 | [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
-| [`dart:js_util`][dart-js_util]          <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
-| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL. | *DEPRECATED* |
+| [`dart:js_util`][dart-js_util]          <br> APIs to supplement missing functionality in `dart:html` or the `js` package. | |
 {:.table .table-striped}
 
 </div>
@@ -88,5 +87,4 @@ The following table lists the Dart core libraries that work on the
 [dart-svg]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
 [dart-web_audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [dart-web_gl]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
-[dart-web_sql]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_sql/dart-web_sql-library.html
 [JavaScript interoperability]: /web/js-interop
