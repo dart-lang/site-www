@@ -26,11 +26,11 @@ $ dart run
 
 This is the simplest form, where you pass a relative path to a `.dart` file.
 
-To run a program in the file `internal/debug.dart`,
-optionally passing zero or more arguments, use:
+To run a program in the file `tool/debug.dart`,
+optionally passing one or more arguments, use:
 
 ```terminal
-$ dart run internal/debug.dart [arg1 arg2 ...]
+$ dart run tool/debug.dart [arg1 arg2 ...]
 ```
 
 ## Running a program located in a package
@@ -43,8 +43,9 @@ and library packages containing just a `lib/` folder.
 
 ### Running a program from a package dependency
 
-To run a program from the `bin` directory of a package that you depend on
-in the pubspec, specify the package name and the program name.
+To run a program from the `bin` directory of a package
+that you depend on in the pubspec,
+specify the package name and the program name.
 For example, to run `bin/bar.dart` in the `bar` package:
 
 ```terminal
@@ -64,18 +65,18 @@ All other directories are private.
 
 ### Running a program in the current package
 
-When the current directory is the root folder of a package,
+When the current directory matches the package name
+(i.e. the `name:` property in the pubspec),
 you can use the following short form,
-which omits the package name and just specifies the program name,
-to run `bin/baz.dart`:
+which just specifies the program name:
 
 ```terminal
 $ dart run :baz [arg1 arg2 ...]
 ```
 
-To run the main program -- the one which has the same name as the package --
-you can use these short forms,
-which will run `<current directory>/bin/<current directory>.dart`:
+To run the main program
+-- the one which has the same name as the package --
+use these short forms:
 
 ```terminal
 $ dart run
@@ -86,7 +87,7 @@ To run a program in the current package but not in the `bin` directory,
 pass a relative path as discussed earlier:
 
 ```terminal
-$ dart run internal/debug.dart [arg1 arg2 ...]
+$ dart run tool/debug.dart [arg1 arg2 ...]
 ```
 
 ## Running with debugging
