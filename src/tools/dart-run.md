@@ -1,9 +1,9 @@
 ---
 title: dart run
-description: Use dart run to run a Dart script in your package.
+deprogramion: Use dart run to run a Dart program in your package.
 ---
 
-The `dart run` command supports running a Dart script located in a file,
+The `dart run` command supports running a Dart program located in a file,
 or a package, or in one of its dependencies, from the command line.
 
 To run an executable when you are not currently inside a package,
@@ -22,51 +22,72 @@ $ cd myapp
 $ dart run
 ```
 
-## Running a script in your package's bin directory
+## Running a program in a Dart file
 
-This is the simplest use case.
+This is the simplest form, where you pass a relative path to a `.dart` file.
 
-To run a script in a package named `foo`,
-which contains `bar.dart` in the `bin` directory,
-run the following command from the root of the package,
-optionally passing zero or more arguments:
+To run a program in the file `internal/debug.dart`,
+optionally passing zero or more arguments, use:
 
 ```terminal
-$ dart run foo:bar [arg1 arg2 ...]
+$ dart run internal/debug.dart [arg1 arg2 ...]
 ```
 
-If your package and script file in `bin` have the same name
-(e.g. `/foo/bin/foo.dart`),
-then you can use the following shorthand:
+## Running a program located in a package
+
+In Dart, any folder that follows the Dart
+[package layout conventions](/guides/libraries/create-library-packages)
+is considered a package. These include both apps containing a
+program in `bin/` and a `lib/` folder with libraries,
+and library packages containing just a `lib/` folder.
+
+### Running a program from a package dependency
+
+To run a program from the `bin` directory of a package that you depend on
+in the pubspec, specify the package name and the program name.
+For example, to run `bin/bar.dart` in the `bar` package:
 
 ```terminal
-$ dart run foo [arg1 arg2]
+$ dart run bar [arg1 arg2 ...]
 ```
 
-## Running a script in another directory in your package
-
-To run a script inside a directory other than the top-level
-bin directory (but within the package),
-prepend the relative path to the name of the script.
-
-For example, to run `foo.dart` in the `example/sub` directory:
+If the program name doesn't match the package name,
+use the form `<package name>:<program name>`. For example,
+to run the program `bin/baz.dart` in `package:bar` use:
 
 ```terminal
-$ dart run example/sub/foo.dart [arg1 arg2 ...]
+$ dart run bar:baz [arg1 arg2 ...]
 ```
 
-## Running a script in a dependency
-
-To run a script from the `bin` directory of a package that you depend on
-in the pubspec, specify the package name.
-For example, to run `bar.dart` in the `baz` package:
-
-```terminal
-$ dart run baz:bar [arg1 arg2 ...]
-```
-
-You can only run scripts out of another package's `bin` directory.
+You can only run programs out of another package's `bin` directory.
 All other directories are private.
+
+### Running a program in the current package
+
+When the current directory is the root folder of a package,
+you can use the following short form,
+which omits the package name and just specifies the program name,
+to run `bin/baz.dart`:
+
+```terminal
+$ dart run :baz [arg1 arg2 ...]
+```
+
+To run the main program -- the one which has the same name as the package --
+you can use these short forms,
+which will run `<current directory>/bin/<current directory>.dart`:
+
+```terminal
+$ dart run
+$ dart run [-- arg1 arg2 ...]
+```
+
+To run a program in the current package but not in the `bin` directory,
+pass a relative path as discussed earlier:
+
+```terminal
+$ dart run internal/debug.dart [arg1 arg2 ...]
+```
 
 ## Running with debugging
 
