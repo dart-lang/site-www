@@ -14,12 +14,24 @@ their use cases, as well as possible fixes.
 The rules are organized into familiar rule groups:
 
 * [Errors](#error-rules)
-    - Possible errors or mistakes in your code.
+  - Possible errors or mistakes in your code.
 * [Style](#style-rules)
-    - Matters of style, largely derived from the [Dart style guide][].
+  - Matters of style, largely derived from the [Dart style guide][].
 * [Pub](#pub-rules)
-    - Possible issues with [Pub](/guides/packages) setup.
+  - Possible issues with [Pub](/guides/packages) setup.
 
+Rules are also assigned a maturity level. Rules without one specified
+are considered stable, while other maturity levels are marked with the rule.
+
+* Stable
+  - These rules are safe to use and are verified as functional
+  with the latest versions of the Dart language.
+* Experimental
+  - The rules are still under evaluation and may never be stabilized.
+  Use these with caution and report any issues you come across.
+* Deprecated
+  - These rules are no longer suggested for use
+  and are subject for removal in future Linter releases.
 
 For more information about using the linter and configure default
 sets of rules, see [Enabling and disabling linter rules][].
