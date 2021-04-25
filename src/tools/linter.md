@@ -6,30 +6,31 @@ description: Details about the Dart Linter and the lint rules it provides.
 The Dart Linter uses the analyzer to identify and report
 on "lints" found within Dart code. Linting is performed
 by the Dart analysis server through your IDE
-or with the `dart analyze` command.
+or with the [`dart analyze`](/tools/dart-analyze) command.
 
-This page outlines all currently existing rules, 
-their use cases, as well as possible fixes.
+This page outlines all currently existing rules,
+their use cases, what triggers them, as well as potential fixes.
 
-The rules are organized into familiar rule groups:
+The rules are organized into rule groups
+which identify their type of functionality.
 
-* [Errors](#error-rules)
+- **[Errors](#error-rules)**
   - Possible errors or mistakes in your code.
-* [Style](#style-rules)
+- **[Style](#style-rules)**
   - Matters of style, largely derived from the [Dart style guide][].
-* [Pub](#pub-rules)
+- **[Pub](#pub-rules)**
   - Possible issues with [Pub](/guides/packages) setup.
 
 Rules are also assigned a maturity level. Rules without one specified
 are considered stable, while other maturity levels are marked with the rule.
 
-* Stable
+- **Stable**
   - These rules are safe to use and are verified as functional
   with the latest versions of the Dart language.
-* Experimental
+- **Experimental**
   - The rules are still under evaluation and may never be stabilized.
   Use these with caution and report any issues you come across.
-* Deprecated
+- **Deprecated**
   - These rules are no longer suggested for use
   and are subject for removal in future Linter releases.
 
