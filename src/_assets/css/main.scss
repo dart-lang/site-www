@@ -584,7 +584,16 @@ img {
   }
   .toc-entry {
     padding-bottom: 0.5rem;
+
+    // Indent subsequent lines
+    margin-left: 1rem;
+    text-indent: -1rem;
+
+    & .toc-entry {
+      margin-left: 0;
+    }
   }
+
   .nav {
     display: block;
     padding-top: 0.5rem;
