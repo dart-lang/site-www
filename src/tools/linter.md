@@ -3,16 +3,30 @@ title: Linter rules
 description: Details about the Dart Linter and the lint rules it provides.
 ---
 
-The Dart linter uses the analyzer to identify and report
-on "lints" found within Dart code. This page outlines
-all currently existing rules, their use cases, and possible fixes.
+The Dart Linter uses the analyzer to identify and report
+on "lints" found within Dart code. Linting is performed
+by the Dart analysis server through your IDE
+or with the `dart analyze` command.
+
+This page outlines all currently existing rules, 
+their use cases, as well as possible fixes.
+
+The rules are organized into familiar rule groups:
+
+* [Errors](#error-rules)
+    - Possible errors or mistakes in your code.
+* [Style](#style-rules)
+    - Matters of style, largely derived from the [Dart style guide][].
+* [Pub](#pub-rules)
+    - Possible issues with [Pub](/guides/packages) setup.
+
 
 For more information about using the linter and configure default
 sets of rules, see [Enabling and disabling linter rules][].
 
 ## Error rules
 
-These rules identify possible errors and other problems in your code.
+These rules identify possible errors and other mistakes in your code.
 
 {% for lint in site.data.linter_rules %}
 
@@ -22,7 +36,9 @@ These rules identify possible errors and other problems in your code.
 
 {{ lint.description }}
 
+{% if lint.maturity != "stable" %}
 _This rule is currently **{{ lint.maturity }}**._
+{% endif %}
 
 #### Details
 
@@ -35,8 +51,7 @@ _This rule is currently **{{ lint.maturity }}**._
 ## Style rules
 
 These rules identify opportunities for style improvements, 
-largely derived from the 
-official [Dart style guide](/guides/language/effective-dart/style).
+largely derived from the official [Dart style guide][].
 
 {% for lint in site.data.linter_rules %}
 
@@ -46,7 +61,9 @@ official [Dart style guide](/guides/language/effective-dart/style).
 
 {{ lint.description }}
 
+{% if lint.maturity != "stable" %}
 _This rule is currently **{{ lint.maturity }}**._
+{% endif %}
 
 #### Details
 
@@ -69,7 +86,9 @@ These rules identify possible issues around
 
 {{ lint.description }}
 
+{% if lint.maturity != "stable" %}
 _This rule is currently **{{ lint.maturity }}**._
+{% endif %}
 
 #### Details
 
@@ -79,4 +98,5 @@ _This rule is currently **{{ lint.maturity }}**._
 
 {% endfor %}
 
-[Enabling and disabling linter rules]: (/guides/language/analysis-options#enabling-linter-rules)
+[Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[Dart style guide]: /guides/language/effective-dart/style
