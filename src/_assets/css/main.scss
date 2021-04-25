@@ -565,7 +565,7 @@ img {
   position: fixed;
   bottom: 0;
   min-width: 226px;
-  max-width: 256px;
+  max-width: 246px;
   right: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -574,7 +574,7 @@ img {
 
   // override shared/_toc.scss
   &.site-toc {
-    padding: $top-content-padding 30px $content-padding;
+    padding: $top-content-padding 20px $content-padding 30px;
   }
 
   // Override BS defaults for .nav, etc.
