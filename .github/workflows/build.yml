@@ -57,7 +57,7 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 12
       - uses: ruby/setup-ruby@v1
@@ -65,7 +65,7 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v0.3
+      - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: ${{ matrix.sdk }}
       - name: Install node dependencies
@@ -91,14 +91,14 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 12
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v0.3
+      - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: stable
       - name: Install node dependencies
