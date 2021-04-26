@@ -217,7 +217,7 @@ value, an error is thrown.
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ _description/String _description/g"?>
 ```dart:run-dartpad:ga_id-late_keyword:null_safety-true
 class Meal {
   String _description;
