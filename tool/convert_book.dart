@@ -3,7 +3,7 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
 
-Directory outputDir;
+late final Directory outputDir;
 
 String frontMatter(title) {
   final yaml = """
@@ -22,7 +22,7 @@ convertFile(String fileName) {
   print(fileName);
   var file = new File(fileName);
   var contents = file.readAsStringSync();
-  var title = new RegExp(r'<title>(.*)</title>').firstMatch(contents)[1];
+  var title = new RegExp(r'<title>(.*)</title>').firstMatch(contents)?[1];
   var start = contents.indexOf(r'<div class="navheader">');
   var end = contents.lastIndexOf(r'</body></html>');
   var body = contents.substring(start, end);
@@ -31,7 +31,7 @@ convertFile(String fileName) {
   writeFile(filenameOnly, title, body);
 }
 
-writeFile(String fileName, String title, String body) {
+writeFile(String fileName, String? title, String body) {
   var out = new File('${outputDir.path}/${fileName}');
   out.writeAsStringSync(frontMatter(title));
   out.writeAsStringSync(body, mode: FileMode.append);
