@@ -29,12 +29,10 @@ Future<bool> checkAsset(final String url, final String path) async {
   final remote = await http.get(Uri.parse(url));
   if (remote.statusCode == 200) {
     final local = File(path);
-    final remoteBytes = remote.bodyBytes;
-    final localBytes = local.readAsBytesSync();
-    if (remoteBytes.length == localBytes.length) {
-      final remoteHash = crypto.sha256.convert(remoteBytes).toString();
-      final localHash = crypto.sha256.convert(localBytes).toString();
-      return remoteHash == localHash;
+    final remoteContent = remote.body;
+    final localContent = local.readAsStringSync();
+    if (remoteContent.length == localContent.length) {
+      return remoteContent == localContent;
     }
   }
   return false;

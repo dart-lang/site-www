@@ -199,8 +199,6 @@ Iterable<List<String>> _tooltips(String toolTipDataPath) sync* {
     while (liClosingTag == null && lines.moveNext()) {
       final line = lines.current;
       final match = _tooltipLineEndRE.firstMatch(line);
-      _log.info(
-          '  ${match == null ? "Skipping data:" : "Processing data:"}: $line.');
       if (match == null) {
         _log.info('Skipping data: $line');
       } else {
