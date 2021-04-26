@@ -563,16 +563,18 @@ img {
   @include sidenav-top-position;
 
   position: fixed;
-  bottom: 0px;
-  width: 226px;
-  right: 0px;
+  bottom: 0;
+  min-width: 226px;
+  max-width: 246px;
+  right: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overflow-wrap: break-word;
   z-index: 999;
 
   // override shared/_toc.scss
   &.site-toc {
-    padding: $top-content-padding 30px $content-padding;
+    padding: $top-content-padding 20px $content-padding 30px;
   }
 
   // Override BS defaults for .nav, etc.
@@ -582,7 +584,16 @@ img {
   }
   .toc-entry {
     padding-bottom: 0.5rem;
+
+    // Indent subsequent lines
+    margin-left: 1rem;
+    text-indent: -1rem;
+
+    & .toc-entry {
+      margin-left: 0;
+    }
   }
+
   .nav {
     display: block;
     padding-top: 0.5rem;
