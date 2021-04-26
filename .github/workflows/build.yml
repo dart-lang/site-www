@@ -51,6 +51,9 @@ jobs:
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh --null-safety
             experimental: true
+          - sdk: stable
+            task: ./tool/check-diagnostics.sh
+            continue-on-error: true
     steps:
       - uses: actions/checkout@v2
         with:

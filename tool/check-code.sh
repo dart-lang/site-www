@@ -38,7 +38,3 @@ echo "::group::refresh_code_excerpts"
     exit 1
   )
 echo "::endgroup::"
-
-echo "::group::check-diagnostics"
-(set -x; $rootDir/tool/check-diagnostics.sh)
-echo "::endgroup::"
