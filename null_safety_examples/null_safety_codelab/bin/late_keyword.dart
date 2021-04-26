@@ -1,13 +1,15 @@
 class Meal {
-  late String description;
+  late String _description;
 
-  void setDescription(String str) {
-    description = str;
+  void set description(String str) {
+    _description = str;
   }
+
+  String get description => _description;
 }
 
 void main() {
   final myMeal = Meal();
-  myMeal.setDescription('Feijoada!');
+  myMeal.description = 'Feijoada!';
   print(myMeal.description);
 }
