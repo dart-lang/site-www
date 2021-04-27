@@ -51,9 +51,6 @@ jobs:
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh --null-safety
             experimental: true
-          - sdk: stable
-            task: ./tool/check-diagnostics.sh
-            continue-on-error: true
     steps:
       - uses: actions/checkout@v2
         with:
@@ -80,6 +77,19 @@ jobs:
         if: contains(matrix.task, 'build.sh')
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
+
+  check:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push'
+      && github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p $TMP
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: stable
+      - run: ./tool/check-diagnostics.sh
 
   deploy:
     needs: test
