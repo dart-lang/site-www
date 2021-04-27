@@ -5,7 +5,7 @@ import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 void main() async {
-  print('Verifying that diagnostic messages file is up to date...');
+  print('Verifying that the diagnostic messages file is up to date...');
 
   // Uncomment once linter rules are added to website
   // if (!await checkAsset(
