@@ -241,6 +241,14 @@ You can express version constraints using either
 _caret syntax_ (`^1.2.3`) or
 _traditional syntax_ (`'>=1.2.3 <2.0.0'`).
 
+{% prettify yaml tag=pre+code %}
+dependencies:
+  kittens:
+    git:
+      url: git@github.com:munificent/cats.git
+      version: 1.2.3
+{% endprettify %}
+
 ### Caret syntax
 
 _Caret syntax_ is a compact way of expressing the most common
