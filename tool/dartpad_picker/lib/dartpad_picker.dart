@@ -16,8 +16,8 @@ class DartPadPicker {
   final Element iFrameHost;
   final SelectElement selectElement;
   final List<Snippet> snippets;
-  final String /*?*/ frameId;
-  IFrameElement _iFrameElement;
+  final String? frameId;
+  late final IFrameElement _iFrameElement;
   int _selected = 0;
 
   DartPadPicker(this.iFrameHost, this.selectElement, this.snippets,
@@ -37,37 +37,40 @@ class DartPadPicker {
 
   void _initSelectElement() {
     for (var i = 0; i < snippets.length; i++) {
-      var snippet = snippets[i];
-      var option = OptionElement(value: '$i')..text = snippet.name;
+      final snippet = snippets[i];
+      final option = OptionElement(value: '$i')..text = snippet.name;
       selectElement.children.add(option);
     }
     selectElement.onChange.listen((Event _) {
-      _selected = selectElement.selectedIndex;
+      _selected = selectElement.selectedIndex ?? 0;
       _sendSourceCode();
     });
   }
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
+      // ignore: unsafe_html
       ..src = iFrameSrc(theme: 'dark', mode: 'dart', nullSafety: true);
-    if (frameId != null) {
-      _iFrameElement.id = frameId;
+    final id = frameId;
+    if (id != null) {
+      _iFrameElement.id = id;
     }
     iFrameHost.children.add(_iFrameElement);
     window.addEventListener('message', (Event _e) {
       final e = _e as MessageEvent;
       // Don't handle events from other iframe elements
-      if (e.data is Map &&
-          e.data.containsKey('type') &&
-          e.data['type'] is String &&
-          e.data['type'] == 'ready') {
+      final data = e.data;
+      if (data is Map &&
+          data.containsKey('type') &&
+          data['type'] is String &&
+          data['type'] == 'ready') {
         _sendSourceCode();
       }
     });
   }
 
   void _sendSourceCode() {
-    _iFrameElement.contentWindow.postMessage(_sourceCodeMessage, '*');
+    _iFrameElement.contentWindow?.postMessage(_sourceCodeMessage, '*');
   }
 
   String iFrameSrc(
