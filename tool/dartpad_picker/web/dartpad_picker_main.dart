@@ -9,12 +9,17 @@ const tryDartIdPrefix = 'try-dart';
 
 void main() {
   if (isMobile()) {
-    querySelector('.dash-dartpad').style.display = 'none';
+    querySelector('.dash-dartpad')?.style.display = 'none';
     return;
   }
 
   final dartPadHost = querySelector('#dartpad-host');
   final select = querySelector('#dartpad-select');
+
+  if (dartPadHost == null || select is! SelectElement) {
+    return;
+  }
+
   const snippets = [
     Snippet('Hello world', helloWorld),
     Snippet('Functions', functions),
@@ -36,10 +41,10 @@ Snippet _createSnippet(HtmlElement root, String name) => Snippet(
       ),
     );
 
-String _src(HtmlElement root, String id, [String fallback]) =>
-    root.querySelector(id)?.innerText ??
-    fallback ??
-    "/* Can't load example sources. Please refresh the page. */";
+String _src(HtmlElement root, String id,
+        [String fallback =
+            "/* Can't load example sources. Please refresh the page. */"]) =>
+    root.querySelector(id)?.innerText ?? fallback;
 
 // Mobile browser detection
 
