@@ -44,7 +44,7 @@ void _processSrc(_SrcAndTipPaths paths) {
     '<code>\n',
     srcAsHtmlWithTips.join('\n'),
     '</code>\n'
-    '</pre>\n',
+        '</pre>\n',
   ].join('');
   File(paths.htmlPath).writeAsStringSync(html);
 }
@@ -66,9 +66,8 @@ class _SrcWithTips {
 
   int indexOfNextTooltip = 0;
 
-  _SrcWithTips(this.srcPath, this.toolTipDataPath) {
-    tooltips = _tooltips(toolTipDataPath).toList();
-  }
+  _SrcWithTips(this.srcPath, this.toolTipDataPath)
+      : tooltips = _tooltips(toolTipDataPath).toList();
 
   // Side-effect: updates lineNum
   List<String> srcHtmlWithTips() {
@@ -150,9 +149,12 @@ class _SrcWithTips {
     while (line.contains('//!tip(')) {
       var match = tipRegExp.firstMatch(line);
       if (match == null) return line;
-      final lineWithoutTipInstruction = match[1], tooltipAnchorText = match[2];
-      tooltipAnchors.add(tooltipAnchorText);
-      line = lineWithoutTipInstruction;
+      final lineWithoutTipInstruction = match[1];
+      final tooltipAnchorText = match[2];
+      if (tooltipAnchorText != null) {
+        tooltipAnchors.add(tooltipAnchorText);
+      }
+      line = lineWithoutTipInstruction ?? '';
     }
     return line;
   }
@@ -188,19 +190,22 @@ Iterable<List<String>> _tooltips(String toolTipDataPath) sync* {
     _log.info('  ${match == null ? "Skipping" : "Processing"}: $line.');
     if (match == null) continue;
 
-    String name = match[1],
-        optionalTitle = match[3] ?? '',
-        tooltip = match[4],
-        liClosingTag = match[5];
+    String name = match[1] ?? '';
+    String optionalTitle = match[3] ?? '';
+    String tooltip = match[4] ?? '';
+    String? liClosingTag = match[5];
     _log.fine('  >> $name | $optionalTitle | $tooltip | $liClosingTag');
 
     while (liClosingTag == null && lines.moveNext()) {
       final line = lines.current;
       final match = _tooltipLineEndRE.firstMatch(line);
-      _log.info(
-          '  ${match == null ? "Skipping data:" : "Processing data:"}: $line.');
-      tooltip = _join(tooltip, match[1]);
-      liClosingTag = match[2];
+      if (match == null) {
+        _log.info('Skipping data: $line');
+      } else {
+        _log.info('Processing data: $line');
+        tooltip = _join(tooltip, match[1] ?? '');
+        liClosingTag = match[2];
+      }
     }
 
     if (liClosingTag == null)
@@ -212,8 +217,11 @@ Iterable<List<String>> _tooltips(String toolTipDataPath) sync* {
 
 /// Return the concatentation of s1 and s2, separated by a space if both are
 /// nonempty.
-String _join(String s1, String s2) =>
-    s1.isEmpty ? s2 : s2.isEmpty ? s1 : '$s1 $s2';
+String _join(String s1, String s2) => s1.isEmpty
+    ? s2
+    : s2.isEmpty
+        ? s1
+        : '$s1 $s2';
 
 class _SrcAndTipPaths {
   final String srcPath;

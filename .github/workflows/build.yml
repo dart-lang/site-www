@@ -69,7 +69,7 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
       - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
+        # TODO: caching requires a lockfile for node deps, so does npm ci.
         run: npm install
       - name: Install dart dependencies
         run: dart pub get
@@ -77,6 +77,19 @@ jobs:
         if: contains(matrix.task, 'build.sh')
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
+
+  sdk-files-up-to-date:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push'
+      && github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p $TMP
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: stable
+      - run: ./tool/check-diagnostics.sh
 
   deploy:
     needs: test
