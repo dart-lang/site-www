@@ -1,18 +1,19 @@
 ---
 title: dart run
-deprogramion: Use dart run to run a Dart program in your package.
+description: Command-line tool for running a Dart program.
 ---
 
-The `dart run` command supports running a Dart program located in a file,
-or a package, or in one of its dependencies, from the command line.
-
-To run an executable when you are not currently inside a package,
+The `dart run` command supports running a Dart program —
+located in a file, in the current package, or in one of
+the dependencies of the current package — from the command line.
+This command provides functionality that was previously in `pub run`
+and the [Dart VM tool](/tools/dart-vm).
+To run an executable from an arbitrary location,
 use the [pub global](/tools/pub/cmd/pub-global) command.
 
-The `dart run` command combines what was previously exposed as `pub run`
-and as the [Dart VM](/tools/dart-vm).
-
-{% include tools/dart-tool-note.md %}
+```
+dart run [args] [<DART_FILE> | <PACKAGE_TARGET>]
+```
 
 Here's an example of creating a new app and running it:
 
@@ -22,75 +23,95 @@ $ cd myapp
 $ dart run
 ```
 
-## Running a program in a Dart file
+{% include tools/dart-tool-note.md %}
 
-This is the simplest form, where you pass a relative path to a `.dart` file.
+## Running a Dart file
 
-To run a program in the file `tool/debug.dart`,
-optionally passing one or more arguments, use:
+You can run a Dart file by passing its relative path:
 
 ```terminal
-$ dart run tool/debug.dart [arg1 arg2 ...]
+$ dart run tool/debug.dart
 ```
 
-## Running a program located in a package
+## Running a program that's in a package
 
-In Dart, any folder that follows the Dart
-[package layout conventions](/guides/libraries/create-library-packages)
-is considered a package. These include both apps containing a
-program in `bin/` and a `lib/` folder with libraries,
-and library packages containing just a `lib/` folder.
+The instructions in this section assume that
+you're executing the `dart run` command
+from the directory that's at the top of a Dart package
+(the _current package_).
+For information on the directory structure of Dart packages, see
+[package layout conventions](/guides/libraries/create-library-packages).
 
-### Running a program from a package dependency
+### In a depended-on package
 
-To run a program from the `bin` directory of a package
-that you depend on in the pubspec,
-specify the package name and the program name.
-For example, to run `bin/bar.dart` in the `bar` package:
+You can run programs that are
+distributed in the `bin` directory of any package
+that the current package depends on.
+To run such a program,
+specify the depended-on package name and the program name.
+You can omit the program name if it's the same as the package name.
+
+For example, say you're in the top directory of a package
+that depends on the `bar` package.
+To run the main program that's in the `bar` package (`bin/bar.dart`),
+you can use this command:
 
 ```terminal
-$ dart run bar [arg1 arg2 ...]
+$ dart run bar
 ```
 
 If the program name doesn't match the package name,
 use the form `<package name>:<program name>`. For example,
-to run the program `bin/baz.dart` in `package:bar` use:
+to run the program `bin/baz.dart` that's in the `bar` package,
+use this command:
 
 ```terminal
-$ dart run bar:baz [arg1 arg2 ...]
+$ dart run bar:baz
 ```
 
-You can only run programs out of another package's `bin` directory.
-All other directories are private.
+The `bin` directory is the only place with visible executables.
+All other directories in the depended-on package are private.
 
-### Running a program in the current package
+### In the current package
 
 When the current directory matches the package name
-(i.e. the `name:` property in the pubspec),
-you can use the following short form,
-which just specifies the program name:
+(that is, you're in the directory that matches
+the `name` property in the pubspec),
+then you can omit the package name.
+If the program name matches the package name
+(that is, it's the main program),
+then you can also omit the program name.
 
-```terminal
-$ dart run :baz [arg1 arg2 ...]
-```
-
-To run the main program
--- the one which has the same name as the package --
-use these short forms:
+Here's the shortest form of `dart run`,
+which runs the main program for the current package.
+For example, if you're in the top directory of the `foo` package,
+this command runs `bin/foo.dart`:
 
 ```terminal
 $ dart run
-$ dart run [-- arg1 arg2 ...]
 ```
 
-To run a program in the current package but not in the `bin` directory,
-pass a relative path as discussed earlier:
+If the program name doesn't match the package name,
+then add a colon and the program name.
+For example, this command runs `bin/baz.dart` in the current package:
 
 ```terminal
-$ dart run tool/debug.dart [arg1 arg2 ...]
+$ dart run :baz
 ```
 
-## Running with debugging
+To run a program that's in the current package but not in the `bin` directory,
+pass a relative path (as shown before):
 
-To run with various debugging options, pass a debugging flag.
+```terminal
+$ dart run tool/debug.dart
+```
+
+## Running with debugging 
+
+To enable debugging, pass one or more debugging arguments.
 See `dart run --help` for details.
+
+## Running with experimental features
+
+To enable new features and enhancements that are currently in development,
+use [experiment flags](/tools/experiment-flags).
