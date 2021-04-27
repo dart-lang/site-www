@@ -217,19 +217,21 @@ value, an error is thrown.
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ description/String description/g"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ _description/String _description/g"?>
 ```dart:run-dartpad:ga_id-late_keyword:null_safety-true
 class Meal {
-  String description;
+  String _description;
 
-  void setDescription(String str) {
-    description = str;
+  void set description(String str) {
+    _description = str;
   }
+
+  String get description => _description;
 }
 
 void main() {
   final myMeal = Meal();
-  myMeal.setDescription('Feijoada!');
+  myMeal.description = 'Feijoada!';
   print(myMeal.description);
 }
 ```
