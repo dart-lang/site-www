@@ -5,12 +5,12 @@ description: Learn how to write a good package page.
 
 <style>
   .screenshot, .screenshot-narrow {
-    width: 90%;
-    align-content: center;
     border-style: solid;
     border-width: 1px;
     border-color: lightgray;
-    padding: 10px
+    margin: 0px 20px;
+    padding: 10px;
+    width: 90%;
   }
 
   .screenshot-narrow {
@@ -38,130 +38,152 @@ follow these links:
 
 ## Writing a good README is important
 
-Most package users who landed on your package on pub.dev will
-quickly scan your README to decide whether to try your package or not.
-A nice README will catch users’ attention and
-show that your package is worth trying.
-
-There are seven tips that you can follow to write a good README. 
-
-1. Write a short description at the top of the README
-2. Include visual content to explain things
-3. Utilize lists to present key information
-4. Include at least one usage example
-5. Use Dart code formatting
-6. Mention terms that people might use to search for
-7. Tell users where they can go next
-
-Throughout this document, we’ll use the README of the package
-[`in_app_purchase`][] as a “full” example.
-Depending on the complexity of your package,
-you can choose to go as simple as the README of the [`yaml`][] package. 
+People who find your package on pub.dev are likely to
+quickly scan the README when deciding whether to try your package.
+A good README catches the reader's attention and
+shows that your package is worth trying.
 
 {{ site.alert.note }}
-  Your README will be used in multiple places and contexts,
-  such as API references, in addition to the package page on pub.dev. 
+  The package README is used in multiple ways.
+  For example, its content appears not only in the package page on pub.dev,
+  but also in [dartdoc][]-produced API reference documentation.
 {{ site.alert.end }}
+
+Although this page features the [`in_app_purchase`][] package README,
+yours might not need to be as large or detailed.
+If your package is simple and has no associated UI,
+its README might look more like the one for the [`yaml`][] package. 
+
 
 ## Seven tips for good README
 
-### 1. Write a short description at the top of the README
+Here are some suggestions for creating a README
+that works well on pub.dev:
+
+1. [Put a short description at the top](#tip1)
+2. [Include visual content](#tip2)
+3. [Use lists to present key information](#tip3)
+4. [Include usage examples](#tip4)
+5. [Use Dart code formatting](#tip5)
+6. [Mention related terms](#tip6)
+7. [Tell users where to go next](#tip7)
+
+
+### 1. Put a short description at the top {#tip1}
 
 According to our user research,
 package users spend only a few seconds to
-read the package description and make a decision whether to
-read the rest of the README or not.
+read the package description and decide whether to
+read the rest of the README.
 Thus, you should concisely describe what the package does or achieves,
 at a glance.
 Spend some time to craft a short and sweet description and
 help the user to make decisions.
-There’s no need to write the package name again on the top. 
 
-See examples of good descriptions below.
+{{site.alert.tip}}
+  Don't write the package name again at the top.
+  It's already visible in the pub.dev UI.
+{{site.alert.end}}
 
-*   A Flutter plugin for showing rainbows.
-*   This plugin allows Flutter apps to categorize bird sounds using machine learning.
+Here are some examples of good descriptions:
 
-If there is important information users should know about,
-such as project status or constraints, note that at the top too. 
+*   `A Flutter plugin for showing rainbows.`
+*   `Use machine learning to categorize bird sounds.`
 
-*   Does not work on iOS versions below 10.3.
+Important information such as project status or constraints
+should also be near the top.
+For example:
 
-If you have any badges, put them under the description or
-anywhere high on the page as well. 
+*   `Does not work on iOS versions below 10.3.`
 
-The package [`in_app_purchase`][]
-starts its README with a brief explanation of the package and a caution.
+Here's a screenshot of the [`in_app_purchase`][] package page,
+which starts with a brief explanation of the package and a caution.
 
 {% asset libraries/package-page-description.png alt="description of the package in_app_purchase" class="screenshot" %}
 
+[Badges][] are often near the top of the README,
+either above or under the short description. 
 
-### 2. Include visual content to explain things
 
-UI is difficult to explain in text.
-If your package page is just a “wall of text” with no visual content,
-users may find it intimidating.
-In that case, it is very likely that
-package searchers skip your package without reading the README.
-Place visual content such as images, gifs, movs
+### 2. Include visual content {#tip2}
+
+If your package page is a wall of text with no visual content,
+users might find it intimidating and stop reading.
+Images are especially important if your package supports UI,
+but they're also useful for explaining important concepts.
+Either way, visual content can help users
+feel confident about using the package.
+
+Place visual content such as static images, animated GIFs, and
+videos (such as MOV or MP4 files)
 close to the beginning of the README,
-so that users can easily find them and use them.
-(Movs or gifs are even better than static images!) 
+where users are likely to see them.
 
-See the example below to see how
-the visual contents made the README look better (right) than before (left). 
+{{site.alert.tip}}
+  Prefer animated GIFs and videos for UI-related content,
+  because most UIs aren't static,
+  and animation conveys more information about the UI's behavior.
+{{site.alert.end}}
+
+The screenshots below show how
+adding visual content made the `in_app_purchase` package page look better.
+(The _before_ picture is on the left; _after_ is on the right.)
 
 {% asset libraries/package-page-example-iap.png alt="in_app_purchase readme without and with images" class="screenshot" %}
 
 {{ site.alert.tip }}
-  When adding visual contents,
-  make sure that you use absolute URLs for the files,
-  so that they'll work no matter where the README is published.
-  One place to host your images is in the repository itself.
-  For example, here's where in_app_purchases hosts its animated gifs.
+  When adding visual content,
+  use absolute URLs for the files,
+  so that the images reliably appear, no matter where the README is published.
+  One place to host your images is in the repository itself,
+  like `in_app_purchase` does.
 {{ site.alert.end }}
 
-If your package supports complex concepts,
-utilize diagrams that explain the package,
-so that your users can quickly understand the package and
-feel confident about using it. 
 
-### 3. Use lists to present key information
+### 3. Use lists to present key information {#tip3}
 
-Use lists to draw attention to important information on your README.
-This section suggests to utilize lists for the followings:
+Lists can draw attention to important information on your README.
+You might use lists for the following:
 
 *   Key features of the package
 *   Parameters, attributes, or properties
 *   Unusual requirements 
-*   Things that are out of scope of your package
-*   Content of longer pages or sections (just like this list)
+*   Functionality that's out of scope of your package
+*   Summarizing the contents of a long page or a section within a page
+    (like this list does)
 
 
-#### List key features of the package 
+#### List key features of the package {#tip4}
 
-First of all, clearly list what your package can do.
-Some users might be looking for a very specific feature in your package.
+First, clearly list what your package can do.
+Some users might be looking for a very specific feature.
 Help those users find out whether your package supports their needs or not.
-You may use tables, too.
+Sometimes a table can be more informative than a list.
+
+The following screenshot shows how the `in_app_purchase` README
+presents the package's features:
 
 {% asset libraries/package-page-features-list.png alt="list of features of the package in_app_purchase" class="screenshot" %}
+
+The following screenshot shows a table from the `just_audio` README
+that lists the package's features and platform support:
 
 {% asset libraries/package-page-features-table.png alt="list of features of the package just_audio in a table format" class="screenshot-narrow" %}
 
 
-#### List parameters, attributes, or properties
+#### List parameters, attributes, or properties {#tip5}
 
-You can also consider listing parameters, attributes, or properties
-for their quick reference.
-See the example below.
+Consider listing parameters, attributes, or properties, for quick reference.
+(Remember, the content of the package README appears in the
+API reference documentation, as well as in the package page.)
+
+For example, the `url_launcher` package has a table of supported URL schemes:
 
 {% asset libraries/package-page-list-property.png alt="list of supported schemes of the package url_launcher" class="screenshot" %}
 
-
-Linking specific functions or classes to those in dartdoc can be useful too.
-See [async](https://pub.dev/packages/async) package for
-an example of linking dartdocs.
+Linking to specific functions or classes
+in the API reference documentation can also be useful.
+See the [async]({{site.pub-pkg}}/async) package for an example.
 
 
 #### List unusual requirements 
@@ -173,7 +195,7 @@ is a good idea, too.
 
 
 
-#### List things out of scope of your package
+#### List functionality that's out of scope of your package
 
 Listing things that are out of scope for your package is another good idea.
 For example, if you decide that your button package is only focused on
@@ -183,19 +205,19 @@ If your package only supports Android from a certain version,
 make sure the readers know about it.
 
 
-#### List content if necessary for longer pages or sections
+#### Summarize contents
 
-Users will find it easier to navigate a section
-when there’s a table of content.
+Users find it easier to navigate a section
+when there’s a table of contents.
 If a section in your README is very long,
 consider listing the subsections clearly at the beginning of the section. 
 
 {% asset libraries/package-page-list-subsections.png alt="content of the usage section of the package in_app_purchase" class="screenshot" %}
 
 
-### 4. Include at least one usage example
+### 4. Include usage examples {#tip4}
 
-If your package looks promising, users will want to test your package.
+If your package looks promising, users might want to test your package.
 Include a “Get started” or “Usage” section and
 include at least one code sample that users can easily understand,
 and ideally, copy and paste into their project.
@@ -208,11 +230,11 @@ Consider adding more complete examples in example/example.dart as well.
 
 {% asset libraries/package-page-usage-example.png alt="sample code of the package in_app_purchase" class="screenshot" %}
 
-### 5. Use Dart code formatting
+### 5. Use Dart code formatting {#tip5}
 
 When adding code examples,
-use three backticks + dart (\`\`\`dart) instead of three backticks (\`\`\`).
-It will do the correct Dart syntax highlighting for your code examples.
+use three backticks + `dart` (\`\`\`dart) instead of three backticks (\`\`\`).
+This formatting tells pub.dev to use Dart syntax highlighting.
 
 ```
 final like = "this";
@@ -223,7 +245,7 @@ final like = "this";
 ```
 
 
-### 6. Mention terms that people might use to search for
+### 6. Mention related terms {#tip6}
 
 In the recent UX study, we found that
 many users use the within-page search feature (ctrl+F or cmd+F) to
@@ -231,16 +253,15 @@ search for the feature they are looking for.
 Thus, be sure to mention the key terms in the README,
 so that users can find them. 
 
-For instance, users might want to know whether the `in_app_purchase` package
-supports in app subscription.
-Users may search for the keyword “subscription”,
-and they might abandon the page if there’s no “subscription” highlighted.
+For example, users might want to know whether the `in_app_purchase` package
+supports in-app subscription.
+A user who searches for the keyword _subscription_
+might abandon the page if the page doesn't mention _subscription_.
 
-{% asset libraries/package-page-terms.png alt="the keyword will be highlighted when users search for it within the page" class="screenshot" %}
+{% asset libraries/package-page-terms.png alt="the keyword is highlighted when users search for it within the page" class="screenshot" %}
 
-
-After that, be consistent with using such terms.
-If needed, clearly define them. In the package [`in_app_purchase`][],
+After that, be consistent when using terms.
+If needed, clearly define them. In the [`in_app_purchase`][] package,
 the meaning of “underlying store” is presented at the beginning, and
 the term is used consistently in the page.
 
@@ -249,10 +270,12 @@ the term is used consistently in the page.
 {% asset libraries/package-page-terms-consistent.png alt="The term underlying store is used consistently across the page" class="screenshot" %}
 
 
-### 7. Tell users where they can go next
+### 7. Tell users where to go next {#tip7}
+
+[PENDING: format better]
 
 Tell users where they can go next to seek help.
-It may be an issue tracker, a chat room, or an email address.
+It might be an issue tracker, a chat room, or an email address.
 
 Tell users how they can contribute code to the package.
 
@@ -274,21 +297,39 @@ Some additional tips include:
 
 *   Supply alt text for images.
 *   Be succinct. Don't say please.
-*   Keep line length &lt; 80 chars.
-*   Format code correctly (as dartfmt or flutter format would format it).
+*   Keep line length &lt;= 80 chars.
+*   Format code correctly (as `dartfmt` or `flutter format` would).
 
-You may also use the following resources to learn more about good README:
+To learn more about good README practices,
+see these resources:
 
-*   https://github.com/ddbeck/readme-checklist/blob/main/checklist.md (Checklist for a good readme)
-*   https://github.com/matiassingers/awesome-readme (Examples of a good readme)
-*   https://www.makeareadme.com/ (Suggestions for a good readme)
-*   https://dbader.org/blog/write-a-great-readme-for-your-github-project (With a link to a template)
+[README Checklist][]
+: A checklist for writing a README that
+helps readers feel confident about your project.
 
-The suggestions here may not work for all the packages. Be creative!
+[Awesome README][]
+: A curated, annotated list of great READMEs.
+
+[Make a README][]
+: An introduction to READMEs,
+with a template and suggestions for a good README.
+
+[How to write a great README for your GitHub project][]
+: Key elements of a good README, and a template.
+
+The suggestions in this page and others might not work for all packages.
+Be creative!
 Put yourself into users’ shoes and
-imagine what the readers will want to read and know.
-You’re the only person who can provide information the readers need.
+imagine what the reader might want to read and know.
+You’re the only person who can provide the information that the reader needs.
 
+[Awesome README]: https://github.com/matiassingers/awesome-readme
+[Badges]: https://github.com/badges/shields#readme
+[dartdoc]: /tools/dartdoc
+[How to write a great README for your GitHub project]: https://dbader.org/blog/write-a-great-readme-for-your-github-project
 [`in_app_purchase`]: {{site.pub-pkg}}/in_app_purchase
+[in its repo]: https://github.com/flutter/plugins/tree/master/packages/in_app_purchase/in_app_purchase/doc
+[Make a README]: https://www.makeareadme.com
+[README Checklist]: https://github.com/ddbeck/readme-checklist/blob/main/checklist.md
 [style-guide]: https://developers.google.com/style/highlights
 [`yaml`]: https://pub.dev/packages/yaml 
