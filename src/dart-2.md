@@ -28,10 +28,9 @@ The Dart language, libraries, build system, and web development tools have chang
   * [Assert statements][] are still supported, but you enable them differently.
 * Functions marked `async` now run synchronously
   until the first `await` statement. 
-  * Previously, they would return to the event loop once
-    at the top of the function body before any code runs.
-  * Visit [the Dart newsletter][sync async start] describing
-    the original motivation behind this change.
+  * Previously, execution returned immediately to the caller, and
+    the function body was scheduled to run later.
+  * To learn more, read [the September 2017 Dart newsletter][sync async start].
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
   * [Dev channel API reference documentation][apiref]
