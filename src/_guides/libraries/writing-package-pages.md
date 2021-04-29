@@ -62,7 +62,7 @@ that works well on pub.dev:
 
 1. [Put a short description at the top](#tip1)
 2. [Include visual content](#tip2)
-3. [Use lists to present key information](#tip3)
+3. [Use lists to present important information](#tip3)
 4. [Include usage examples](#tip4)
 5. [Use Dart code formatting](#tip5)
 6. [Mention related terms](#tip6)
@@ -97,7 +97,7 @@ For example:
 *   `Does not work on iOS versions below 10.3.`
 
 Here's a screenshot of the [`in_app_purchase`][] package page,
-which starts with a brief explanation of the package and a caution.
+which starts with a brief explanation of the package and a caution:
 
 {% asset libraries/package-page-description.png alt="description of the package in_app_purchase" class="screenshot" %}
 
@@ -133,47 +133,51 @@ adding visual content made the `in_app_purchase` package page look better.
 
 {{ site.alert.tip }}
   When adding visual content,
-  use absolute URLs for the files,
-  so that the images reliably appear, no matter where the README is published.
+  use absolute URLs for the files
+  to make the images reliably appear,
+  no matter where the README is published.
   One place to host your images is in the repository itself,
   like `in_app_purchase` does.
 {{ site.alert.end }}
 
 
-### 3. Use lists to present key information {#tip3}
+### 3. Use lists to present important information {#tip3}
 
 Lists can draw attention to important information on your README.
 You might use lists for the following:
 
-*   Key features of the package
-*   Parameters, attributes, or properties
-*   Unusual requirements 
-*   Functionality that's out of scope of your package
-*   Summarizing the contents of a long page or a section within a page
-    (like this list does)
+*   [Key features of the package](#list1)
+*   [Parameters, attributes, or properties](#list2)
+*   [Unusual requirements](#list3)
+*   [Functionality that's out of scope of your package](#list4)
+*   [A summary of the contents of a page or a section within a page
+    (like this list)](#list5)
+
+Usually, lists are bulleted, like the list above.
+Another option is using a table,
+like the table of platform support in the next section.
 
 
-#### List key features of the package {#tip4}
+#### Key features of the package {#list1}
 
 First, clearly list what your package can do.
 Some users might be looking for a very specific feature.
-Help those users find out whether your package supports their needs or not.
-Sometimes a table can be more informative than a list.
+Help those users find out whether your package supports their needs.
 
 The following screenshot shows how the `in_app_purchase` README
 presents the package's features:
 
 {% asset libraries/package-page-features-list.png alt="list of features of the package in_app_purchase" class="screenshot" %}
 
-The following screenshot shows a table from the `just_audio` README
+The next screenshot shows a table from the `just_audio` README
 that lists the package's features and platform support:
 
 {% asset libraries/package-page-features-table.png alt="list of features of the package just_audio in a table format" class="screenshot-narrow" %}
 
 
-#### List parameters, attributes, or properties {#tip5}
+#### Parameters, attributes, or properties {#list2}
 
-Consider listing parameters, attributes, or properties, for quick reference.
+Consider listing parameters, attributes, or properties for quick reference.
 (Remember, the content of the package README appears in the
 API reference documentation, as well as in the package page.)
 
@@ -184,33 +188,48 @@ For example, the `url_launcher` package has a table of supported URL schemes:
 Linking to specific functions or classes
 in the API reference documentation can also be useful.
 See the [async]({{site.pub-pkg}}/async) package for an example.
+***[PENDING: Waiting for https://github.com/dart-lang/async/issues/168
+to be fixed]***
 
 
-#### List unusual requirements 
+#### Unusual requirements {#list3}
 
-Listing requirements that are out of the scope of ordinary instructions
-is a good idea, too.
+If your package needs a specific setup, beyond what all packages require,
+list setup instructions in the README.
+
+For example, the following screenshot for the `google_maps_flutter` package
+shows instructions on getting started with Google Maps Platform:
 
 {% asset libraries/package-page-list-requirements.png alt="additional instructions to use google_maps_flutter" class="screenshot" %}
 
 
+#### Functionality that's out of scope of your package {#list4}
 
-#### List functionality that's out of scope of your package
+To help users know whether your package can help them,
+list the features that users might expect,
+but that your package _doesn't_ support.
 
-Listing things that are out of scope for your package is another good idea.
-For example, if you decide that your button package is only focused on
-text buttons and not on icon buttons,
-make it clear in the README.
-If your package only supports Android from a certain version,
-make sure the readers know about it.
+Here are some examples of when
+you might want to list out-of-scope functionality:
+
+* If your button package is focused only on text buttons
+  and not on icon buttons,
+  make that clear in the README.
+* If your package supports only certain versions of Android,
+  say that in the README.
 
 
-#### Summarize contents
+#### Contents {#list5}
 
-Users find it easier to navigate a section
-when there’s a table of contents.
+Users find it easier to navigate a page or section
+when it has a table of contents.
 If a section in your README is very long,
 consider listing the subsections clearly at the beginning of the section. 
+
+For example, the "Usage" section of the `in_app_purchase` README
+has a lot of examples.
+The following table of contents helps users understand which examples exist,
+and go to the code that interests them:
 
 {% asset libraries/package-page-list-subsections.png alt="content of the usage section of the package in_app_purchase" class="screenshot" %}
 
@@ -218,72 +237,102 @@ consider listing the subsections clearly at the beginning of the section.
 ### 4. Include usage examples {#tip4}
 
 If your package looks promising, users might want to test your package.
-Include a “Get started” or “Usage” section and
-include at least one code sample that users can easily understand,
-and ideally, copy and paste into their project.
+Include a "Get started" or "Usage" section that has
+at least one code sample that users can easily understand —
+and, ideally, that they can copy and paste into their project.
 It’s even better if you can provide more examples with more details
 to help users to understand your package. 
 
 Remember that not all users speak English, but they all speak Dart!
 Good code samples can go a long way.
-Consider adding more complete examples in example/example.dart as well. 
+Consider adding more complete examples
+under your package's `example` directory,
+which pub.dev can use to populate an **Examples** tab.
+For details, see [Examples][] in
+the [package layout conventions][].
+
+[Examples]: /tools/pub/package-layout#examples
+[package layout conventions]: /tools/pub/package-layout
+
+The following screenshot shows one of several examples in the README for
+the `in_app_purchase` package:
 
 {% asset libraries/package-page-usage-example.png alt="sample code of the package in_app_purchase" class="screenshot" %}
 
 ### 5. Use Dart code formatting {#tip5}
 
 When adding code examples,
-use three backticks + `dart` (\`\`\`dart) instead of three backticks (\`\`\`).
-This formatting tells pub.dev to use Dart syntax highlighting.
+use three backticks plus `dart` (<code>```dart</code>) instead of
+three backticks (<code>```</code>).
+As the following examples show,
+adding `dart` tells pub.dev to use Dart syntax highlighting:
 
+<table width="100%">
+<tr>
+<th> <b>Formatted with just <code>```</code></b> </th>
+<th> <b>Formatted with <code>```dart</code></b> </th>
+</tr>
+<tr markdown="1">
+<td markdown="1">
 ```
-final like = "this";
+final like = 'this';
 ```
-
+</td>
+<td markdown="1">
 ```dart
-final like = "this";
+final like = 'this';
 ```
+</td>
+</tr>
+</table>
 
 
 ### 6. Mention related terms {#tip6}
 
-In the recent UX study, we found that
-many users use the within-page search feature (ctrl+F or cmd+F) to
-search for the feature they are looking for.
-Thus, be sure to mention the key terms in the README,
+A recent UX study found that
+many users use the within-page search feature
+(`Control+F` or `Command+F`)
+to search for the feature they are looking for.
+Thus, be sure to mention important terms in the README,
 so that users can find them. 
 
 For example, users might want to know whether the `in_app_purchase` package
 supports in-app subscription.
 A user who searches for the keyword _subscription_
-might abandon the page if the page doesn't mention _subscription_.
+might abandon the page if the page doesn't use that term.
 
 {% asset libraries/package-page-terms.png alt="the keyword is highlighted when users search for it within the page" class="screenshot" %}
 
-After that, be consistent when using terms.
-If needed, clearly define them. In the [`in_app_purchase`][] package,
-the meaning of “underlying store” is presented at the beginning, and
-the term is used consistently in the page.
+After mentioning all the terms that people might search for,
+be consistent about the terms you use.
+If needed, clearly define the terms.
+
+For example, the [`in_app_purchase`][] package defines
+_underlying store_ at the beginning:
 
 {% asset libraries/package-page-terms-definition.png alt="the meaning of underlying store" class="screenshot" %}
+
+The rest of the page consistently uses that term:
 
 {% asset libraries/package-page-terms-consistent.png alt="The term underlying store is used consistently across the page" class="screenshot" %}
 
 
 ### 7. Tell users where to go next {#tip7}
 
-[PENDING: format better]
+Help your users find out more about the package.
+Here are some suggestions for what to tell potential users:
 
-Tell users where they can go next to seek help.
-It might be an issue tracker, a chat room, or an email address.
+* Where to learn more about the package.
+  You might link to an article on Medium, or to a video on YouTube.
+* Where to get help on using the package.
+  Possibilities include an issue tracker, a chat room, or an email address.
+* What you're planning to do with the package.
+  A roadmap — either in the README or in an external page —
+  can help users know whether the feature they need is coming soon.
+* How to contribute code to the package.
 
-Tell users how they can contribute code to the package.
-
-Tell users where they can find more about the package.
-You many link to your article on Medium, video on YouTube, etc.
-
-Tell users about your roadmap, or where they can find a roadmap.
-Users might want to know if the feature they need is coming soon or not.
+The following screenshot shows the part of the `in_app_purchase` README
+that has information for potential contributors:
 
 {% asset libraries/package-page-contribute.png alt="how to contribute to in_app_purchase" class="screenshot" %}
 
@@ -291,13 +340,13 @@ Users might want to know if the feature they need is coming soon or not.
 ## Learn more about good README authoring
 
 We’ve suggested seven tips for good README in this documentation.
-You can learn more about common recommendations for developer docs from the
-[Google Developer Documentation Style Guide][style-guide].
+You can learn more about common recommendations for developer documentation
+from the [Google Developer Documentation Style Guide][style-guide].
 Some additional tips include:  
 
 *   Supply alt text for images.
 *   Be succinct. Don't say please.
-*   Keep line length &lt;= 80 chars.
+*   Keep the line length &lt;= 80 chars.
 *   Format code correctly (as `dartfmt` or `flutter format` would).
 
 To learn more about good README practices,
