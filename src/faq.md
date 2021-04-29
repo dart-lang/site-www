@@ -77,7 +77,7 @@ For servers and command-line scripts, we have reflection support from the
 There is no support for mirrors when using Dart to write web or
 Flutter apps ([more info][Flutter no mirrors]).
 
-### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
+### Q. Can Dart add tuples, pattern matching, partial evaluation, optional semicolons, ...?
 
 Future releases might be able to include (some of) those features, although
 we can't include everything. Some features don't fit the basic nature of the
