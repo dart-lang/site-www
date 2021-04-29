@@ -126,7 +126,7 @@ where users are likely to see them.
 {{site.alert.end}}
 
 The screenshots below show how
-adding visual content made the `in_app_purchase` package page look better.
+adding visual content made the `in_app_purchase` package page look informative at first glance.
 (The _before_ picture is on the left; _after_ is on the right.)
 
 {% asset libraries/package-page-example-iap.png alt="in_app_purchase readme without and with images" class="screenshot" %}
