@@ -188,8 +188,6 @@ For example, the `url_launcher` package has a table of supported URL schemes:
 Linking to specific functions or classes
 in the API reference documentation can also be useful.
 See the [async]({{site.pub-pkg}}/async) package for an example.
-***[PENDING: Waiting for https://github.com/dart-lang/async/issues/168
-to be fixed]***
 
 
 #### Unusual requirements {#list3}
