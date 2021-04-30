@@ -34,7 +34,7 @@ String? svnRevisionForVersion(String svnVersion) {
 }
 
 const Map<String, String> archiveMap = {
-  'Mac': 'macos',
+  'macOS': 'macos',
   'Linux': 'linux',
   'Windows': 'windows',
   'ia32': 'ia32',
@@ -55,19 +55,19 @@ const Map<String, String> suffixMap = {
 };
 
 const Map<String, List<PlatformVariant>> platforms = {
-  'Mac': [
-    PlatformVariant('ia32', ['Dart SDK']),
+  'macOS': [
     PlatformVariant('x64', ['Dart SDK']),
+    PlatformVariant('ia32', ['Dart SDK']),
   ],
   'Linux': [
-    PlatformVariant('ia32', ['Dart SDK']),
     PlatformVariant('x64', ['Dart SDK', 'Debian package']),
-    PlatformVariant('ARMv7', ['Dart SDK']),
+    PlatformVariant('ia32', ['Dart SDK']),
     PlatformVariant('ARMv8 (ARM64)', ['Dart SDK']),
+    PlatformVariant('ARMv7', ['Dart SDK']),
   ],
   'Windows': [
-    PlatformVariant('ia32', ['Dart SDK']),
     PlatformVariant('x64', ['Dart SDK']),
+    PlatformVariant('ia32', ['Dart SDK']),
   ],
 };
 
