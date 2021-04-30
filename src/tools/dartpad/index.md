@@ -8,7 +8,7 @@ that lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
 To open DartPad as a standalone web page, 
-visit the [DartPad][]{:target="_blank"} site.
+visit the [DartPad][]{:target="_blank" rel="noopener"} site.
 
 {{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
@@ -42,7 +42,7 @@ try running some samples and creating a simple command-line app.
 
 ### Open DartPad and run a sample {#step-1-open-and-run}
 
-1. Go to [DartPad][]{:target="_blank"}.  
+1. Go to [DartPad][]{:target="_blank" rel="noopener"}.  
    
    Dart code appears on the left, and 
    a place for the output appears on the right.
