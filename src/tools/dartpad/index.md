@@ -3,13 +3,12 @@ title: DartPad
 description: The tool that lets you interactively play with Dart in a browser.
 ---
 
-DartPad is an open-source tool that
-lets you play with the Dart language in any modern browser.
+DartPad is an [open source](https://github.com/dart-lang/dart-pad) tool
+that lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
-To get a DartPad as big as your browser window, go to the
-<a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad
-site (dartpad.dev).</a>
+To open DartPad as a standalone web page, 
+visit the [DartPad][] site.
 
 {{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
@@ -18,7 +17,7 @@ site (dartpad.dev).</a>
   tips](/tools/dartpad/troubleshoot).
 {{site.alert.end}}
 
-Here's what DartPad looks like:
+Here's what DartPad looks like when configured to run Dart:
 
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
@@ -29,92 +28,81 @@ DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. It doesn't support those marked native
 platform, and it doesn't support [deferred loading][].
 
-It also doesn't support using packages from the [pub.dev]({{site.pub}}) package
-repository.
+If you are using Flutter, DartPad also supports the `package:flutter` libraries
+which are supported on the web platform.
+
+It doesn't currently support using packages from the [pub.dev]({{site.pub}}) 
+package repository. This request is being tracked in [issue 901][].
 
 ## Getting started
 
 To get familiar with DartPad,
-try running some samples and then creating a simple command-line app.
+try running some samples and creating a simple command-line app.
 
 
-### Open DartPad, and run a sample {#step-1-open-and-run}
+### Open DartPad and run a sample {#step-1-open-and-run}
 
-<ol markdown="1">
-  <li markdown="1">
-  Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
+1. Go to [DartPad][].  
+   
+   Dart code appears on the left, and 
+   a place for the output appears on the right.
+  
 
-  Dart code appears on the left, and
-  a place for the output appears on the right.
-  </li>
-
-  <li markdown="1">
-  Choose a Flutter sample such as **Sunflower**,
-  using the **Samples** list at the upper right.
-
-  The rendered output appears to the right.
-  </li>
-
-</ol>
+2. Choose a Flutter sample such as **Sunflower**, 
+   using the **Samples** list at the upper right.  
+   
+   The rendered output appears to the right.
 
 
 ### Create a command-line app {#step-2-server}
 
 To create a simple command-line app, use **New Pad**.
 
-<ol markdown="1">
-  <li markdown="1">
-  Click the **New Pad** button,
-  and confirm that you want to discard changes to the current pad.
+1. Click the **New Pad** button,
+   and confirm that you want to discard changes to the current pad.
+   
 
-  </li>
+2. Click the Dart logo, make sure that **HTML** support is disabled,
+   and then click **Create**.
+   
 
-  <li markdown="1">
-  Click the Dart logo, make sure that **HTML** support is disabled,
-  and then click **Create**.
-  </li>
+3. Change the code. For example, change the `main()` function
+   to contain this code:  
+   
+   <!-- library-tour/string-tests/bin/main.dart -->
+   {% prettify dart tag=pre+code %}
+   for (var char in 'hello'.split('')) {
+     print(char);
+   }
+   {% endprettify %}  
+   
+   As you type, DartPad shows hints, documentation,
+   and autocomplete suggestions.
+   
 
-  <li markdown="1">
-  Change the code. For example, change the `main()` function
-  to contain this code:
+4. Click the **Format** button.  
+   
+   DartPad uses the [Dart formatter](/tools/dart-format)
+   to ensure that your code has proper indentation, white space,
+   and line wrapping.
+   
 
-<!-- library-tour/string-tests/bin/main.dart -->
-{% prettify dart tag=pre+code %}
-for (var char in 'hello'.split('')) {
-  print(char);
-}
-{% endprettify %}
+5. Run your app.
+   
 
-  As you type, DartPad shows hints, documentation,
-  and autocomplete suggestions.
-  </li>
+6. If you didn't happen to have any bugs while you were entering the code,
+   try introducing a bug.  
 
-  <li markdown="1">
-  Click the **Format** button.
-  DartPad uses the [Dart formatter](https://github.com/dart-lang/dart_style#readme)
-  to ensure that your code has proper indentation, white space, and line wrapping.
-  </li>
-
-  <li markdown="1">
-  Run your app.
-  </li>
-
-  <li markdown="1">
-  If you didn't happen to have any bugs while you were entering the code,
-  try introducing a bug.
-
-  For example, if you change `split` to `spit`,
-  you get warnings at the bottom right of the window.
-  If you run the app, a compilation error appears in the console.
-  </li>
-</ol>
+   For example, if you change `split` to `spit`,
+   you get warnings at the bottom right of the window.
+   If you run the app, a compilation error appears in the console.
 
 
 ## Checking Dart version info
 
 The language features and APIs that DartPad supports depend on the
-**Dart SDK** version that DartPad is based on.
-You can find the SDK version at the bottom right of DartPad.
+**Dart SDK** version that DartPad is currently using.
+You can find the active SDK's version at the bottom right of DartPad.
 
 ## Embedding DartPad in web pages {#embedding}
 
@@ -130,7 +118,9 @@ For more information about how to use embedded DartPads, see
 For technical details on embedding DartPads, see the
 [DartPad embedding guide.][]
 
+[DartPad]: {{site.dartpad}}
 [best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await
+[issue 901]: https://github.com/dart-lang/dart-pad/issues/901
