@@ -105,7 +105,7 @@ same dependency, it only needs to be
 downloaded and stored locally once.
 
 By default, the system package cache is located in the `.pub-cache`
-subdirectory of your home directory (on Mac and Linux),
+subdirectory of your home directory (on macOS and Linux),
 or in `%LOCALAPPDATA%\Pub\Cache` (on Windows;
 the location might vary depending on the Windows version).
 You can configure the location of the cache by setting the
