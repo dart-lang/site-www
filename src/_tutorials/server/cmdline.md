@@ -48,7 +48,7 @@ command-line arguments, files and directories, and more.
 ## Running an app with the standalone Dart VM
 
 To run a command-line app in the Dart VM, use `dart run`.
-The `dart` command is part of the [Dart SDK](/tools/sdk).
+The `dart` commands are included with the [Dart SDK](/tools/sdk).
 
 {{site.alert.important}}
   The location of the SDK installation directory
@@ -61,7 +61,7 @@ The `dart` command is part of the [Dart SDK](/tools/sdk).
 
 Let's run a small program.
 
- 1. Create a file called `helloworld.dart` that contains this code:
+ 1. Create a file called `hello_world.dart` that contains this code:
 
     <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
     ```dart
@@ -73,12 +73,12 @@ Let's run a small program.
  2. In the directory that contains the file you just created, run the program:
 
     ```terminal
-    $ dart run helloworld.dart
+    $ dart run hello_world.dart
     Hello, World!
     ```
 
-The Dart VM supports many options.
-Use `dart --help` to see commonly used options.
+The Dart tool supports many commands and options.
+Use `dart --help` to see commonly used commands and options.
 Use `dart --verbose` to see all options.
 
 ## Overview of the dcat app code
@@ -97,35 +97,41 @@ You might notice that dcat depends on a package named **args**.
 To get the args package, use the
 [pub package manager](/guides/packages).
 
-A real app has tests, license files, and so on, in a file hierarchy
-such as the one in the [Dart command-line app template.][]
-But for this first app, let's do the minimum necessary to get the code to run:
+A real app has tests, license files, dependency files, examples, and so on.
+For the first app though, we can easily create only what is necessary
+with the [`dart create`](/tools/dart-tool) command.
 
-[Dart command-line app template.]: https://github.com/dart-lang/stagehand/tree/master/templates/console-full
+1. Inside a directory, create the dcat app with the dart tool.
+   
+   ```terminal
+   $ dart create dcat
+   ```
+   
+2. Change to the created directory.
 
-1. Create a directory named `dcat`, and change to that directory.
-2. Inside `dcat`, create a file named `dcat.dart`
-   and copy the preceding code into it.
-3. Inside `dcat`, create a file named `pubspec.yaml`
-   with the following code:
+   ```terminal
+   $ cd dcat
+   ```
+   
+3. Inside `dcat`, open the file named `pubspec.yaml`, 
+   uncomment the `dependencies` entry, 
+   and add the args package to the list of dependencies.
 
    ```yaml
-   name: dcat
-
-   environment:
-     sdk: '>=2.6.0 <3.0.0'
-
    dependencies:
-     args: ^1.5.0
+     args: ^2.1.0
    ```
+   
 4. Still in the `dcat` directory, run `dart pub get` to get the args package:
 
    ```terminal
    $ dart pub get
    Resolving dependencies... 
-   + args 1.5.2
+   + args 2.1.0
    Changed 1 dependency!
    ```
+
+5. Open the `bin/dcat.dart` file and copy the preceding code into it.
 
 {{site.alert.note}}
   To learn more about using packages and organizing your code, see the
@@ -138,7 +144,7 @@ But for this first app, let's do the minimum necessary to get the code to run:
 Once you have your app's dependencies,
 you can run the app from the command line over any text file,
 like `pubspec.yaml` or `quote.txt`
-([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
+([downloadable file]({{site.repo.this}}/blob/master/null_safety_examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
 $ dart run dcat.dart -n quote.txt
@@ -160,7 +166,7 @@ Import the package's
 [args library]({{argsAPI}}/args-library.html)
 as follows:
 
-<?code-excerpt "misc/bin/dcat.dart" retain="package:args"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="package:args"?>
 ```dart
 import 'package:args/args.dart';
 ```
@@ -176,17 +182,15 @@ The `args` library contains these classes, among others:
 Here is the `dcat` code that uses these classes to parse and store command-line
 arguments:
 
-<?code-excerpt "misc/bin/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-[!ArgResults argResults;!]
-
 void main([!List<String> arguments!]) {
   exitCode = 0; // presume success
   final [!parser = ArgParser()!]
     [!..addFlag(lineNumber, negatable: false, abbr: 'n');!]
 
 
-  argResults = [!parser.parse(arguments);!]
+  ArgResults argResults = [!parser.parse(arguments);!]
   final paths = [!argResults.rest!];
 
   dcat(paths, [!argResults[lineNumber] as bool!]);
@@ -225,7 +229,7 @@ The standard I/O streams are defined at the top level of the dart:io library:
 
 Import the dart:io library as follows:
 
-<?code-excerpt "misc/bin/dcat.dart" retain="dart:io"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="dart:io"?>
 ```dart
 import 'dart:io';
 ```
@@ -237,9 +241,9 @@ import 'dart:io';
 ### stdout
 
 Here's the code from the `dcat` program that writes the line number to
-the `stdout` (if the -n flag is set) followed by the line from the file.
+the `stdout` (if the `-n` flag is set) followed by the line from the file.
 
-<?code-excerpt "misc/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
@@ -251,15 +255,15 @@ The `write()` and `writeln()` methods take an object of any type,
 convert it to a string, and print it. The `writeln()` method
 also prints a newline character.
 `dcat` uses the `write()` method to print the line number so the
-line number and the text appear on the same line.
+line number and text appear on the same line.
 
 You can also use the `writeAll()` method to print a list of objects,
-or use `addStream()` to asynchronously print all of the elements from a stream.
+or use `addStream()` to asynchronously print all the elements from a stream.
 
 `stdout` provides more functionality than the `print()` function.
 For example, you can display the contents of a stream with `stdout`.
 However, you must use `print()` instead of `stdout`
-for programs that are converted to and run in JavaScript.
+for programs that will run on the web.
 
 ### stderr
 
@@ -274,7 +278,7 @@ or programmatically to different destinations.
 This code from `dcat` prints an error message if the user
 tries to list a directory.
 
-<?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
@@ -288,18 +292,17 @@ if (await FileSystemEntity.isDirectory(path)) {
 The standard input stream typically
 reads data synchronously from the keyboard,
 although it can read asynchronously
-and it can get input piped in from the standard
-output of another program.
+and get input piped in from the standard output of another program.
 
 Here's a small program that reads a single line from `stdin`:
 
-<?code-excerpt "misc/bin/dcat1.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat1.dart"?>
 ```dart
 import 'dart:io';
 
 void main() {
   stdout.writeln('Type something');
-  String input = stdin.readLineSync();
+  final input = stdin.readLineSync();
   stdout.writeln('You typed: $input');
 }
 ```
@@ -316,14 +319,14 @@ Because `pipe()` is asynchronous
 (returning a future, even though this code doesn't use that return value),
 the code that calls it uses `await`.
 
-<?code-excerpt "misc/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 
 await stdin.[!pipe!](stdout);
 {% endprettify %}
 
-In this case,
-the user types in lines of text and the program copies them to stdout.
+In this case, the user types in lines of text,
+and the program copies them to stdout.
 The user signals the end of input by pressing `Control`+`D`.
 
 ```terminal
@@ -351,7 +354,7 @@ The future returns a boolean that indicates if the path is a directory or not.
 Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
-<?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
@@ -374,7 +377,7 @@ The `await for` block waits for the file to be read
 asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
-<?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
 {% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
@@ -399,7 +402,7 @@ transform the data before making it available in the `await for` block.
 The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
-<?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
@@ -423,7 +426,7 @@ The dart:convert library contains these and other data converters,
 including one for JSON.
 To use these converters you need to import the dart:convert library:
 
-<?code-excerpt "misc/bin/dcat.dart" retain="dart:convert"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="dart:convert"?>
 ```dart
 import 'dart:convert';
 ```
@@ -474,7 +477,7 @@ to get information about the machine and OS that the program is running on.
 [Platform.environment]({{PlatformAPI}}/environment.html)
 provides a copy of the environment
 variables in an immutable map. If you need a mutable map (modifiable copy) you
-can use `Map.from(Platform.environment)`.
+can use `Map.of(Platform.environment)`.
 
 <?code-excerpt "misc/lib/tutorial/cmdline.dart (env)"?>
 ```dart
@@ -507,9 +510,9 @@ The `dcat` program sets the exit code
 in the `_handleError()` function to indicate that an error
 occcurred during execution.
 
-<?code-excerpt "misc/bin/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future _handleError(String path) async {
+Future<void> _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
     stderr.writeln('error: $path is a directory');
   } else {

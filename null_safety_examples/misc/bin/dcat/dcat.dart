@@ -7,7 +7,7 @@
 //    valid (*_tooltips.html).
 // 2. Regenerate the HTML version of this sample, by running
 //    tool/create_code_with_tooltips.dart
-// 3. To generate the DartPad version: (1) delete lines containly only tip
+// 3. To generate the DartPad version: (1) delete lines containing only tip
 //    instructions. (2) Trim //!foo markers from the end of the remaining lines,
 //    e.g., using this Perl regexp: / ?\/\/!.*//g
 
@@ -18,13 +18,9 @@ import 'package:args/args.dart';
 
 const lineNumber = 'line-number';
 
-// #docregion arg-processing
-ArgResults argResults;
-// #enddocregion arg-processing
-
 /// Simple implementation of the *nix cat utility. //!web-only
 /// //!web-only
-/// Usage: dart dcat.dart [-n] patterns files //!web-only
+/// Usage: dart run dcat.dart [-n] patterns files //!web-only
 /// //!web-only
 /// `dcat` reads `files` sequentially, writing them to standard output. The //!web-only
 /// file operands are processed in command-line order. //!web-only
@@ -38,16 +34,16 @@ void main(List<String> arguments) {
   final parser = ArgParser()
     ..addFlag(lineNumber, negatable: false, abbr: 'n');
 
-  //!tip("argResults = parser.parse(arguments)")
-  argResults = parser.parse(arguments);
+  //!tip("parser.parse(arguments)")
+  ArgResults argResults = parser.parse(arguments);
   final paths = argResults.rest;
 
-  dcat(paths, argResults[lineNumber] as bool);
+  dcat(paths, showLineNumbers: argResults[lineNumber] as bool);
 }
 // #enddocregion arg-processing
 
 //!tip("async")
-Future dcat(List<String> paths, bool showLineNumbers) async {
+Future<void> dcat(List<String> paths, {bool showLineNumbers = false}) async {
   if (paths.isEmpty) {
     // No files provided as arguments. Read from stdin and print each line.
     // #docregion pipe
@@ -56,7 +52,7 @@ Future dcat(List<String> paths, bool showLineNumbers) async {
     // #enddocregion pipe
   } else {
     // #docregion for-path
-    for (var path in paths) {
+    for (final path in paths) {
       var lineNumber = 1;
       final lines = utf8.decoder
           //!tip("openRead()") //!tip("File(path)")
@@ -65,8 +61,8 @@ Future dcat(List<String> paths, bool showLineNumbers) async {
           .transform(const LineSplitter());
       //!tip("try")
       try {
-        //!tip("await for (var line in lines)")
-        await for (var line in lines) {
+        //!tip("await for (final line in lines)")
+        await for (final line in lines) {
           // #docregion showLineNumbers
           if (showLineNumbers) {
             stdout.write('${lineNumber++} ');
@@ -84,7 +80,7 @@ Future dcat(List<String> paths, bool showLineNumbers) async {
 }
 
 // #docregion _handleError
-Future _handleError(String path) async {
+Future<void> _handleError(String path) async {
   //!tip("await FileSystemEntity.isDirectory(path)")
   // #docregion await-FileSystemEntity
   if (await FileSystemEntity.isDirectory(path)) {
