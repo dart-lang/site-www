@@ -31,8 +31,7 @@ const lineNumber = 'line-number';
 //!tip("List<String> arguments")
 void main(List<String> arguments) {
   exitCode = 0; // presume success
-  final parser = ArgParser()
-    ..addFlag(lineNumber, negatable: false, abbr: 'n');
+  final parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');
 
   //!tip("parser.parse(arguments)")
   ArgResults argResults = parser.parse(arguments);

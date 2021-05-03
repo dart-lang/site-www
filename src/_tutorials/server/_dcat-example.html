@@ -14,8 +14,7 @@ const lineNumber = 'line-number';
 
 void main(<a tabindex="0" role="button" data-toggle="popover" title="Command-line arguments" data-content="Command-line arguments are passed in by the system when the program starts.">List&lt;String&gt; arguments</a>) {
   exitCode = 0; // presume success
-  final parser = ArgParser()
-    ..addFlag(lineNumber, negatable: false, abbr: 'n');
+  final parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');
 
   ArgResults argResults = <a tabindex="0" role="button" data-toggle="popover" title="Arguments parser" data-content="The <code>ArgParser</code> class provides help with parsing command-line arguments.">parser.parse(arguments)</a>;
   final paths = argResults.rest;
