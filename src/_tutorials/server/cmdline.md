@@ -379,13 +379,13 @@ becomes available on the stream.
 
 <?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
 {% prettify dart tag=pre+code %}
-for (var path in paths) {
+for (final path in paths) {
   var lineNumber = 1;
   final lines = utf8.decoder
       .bind(File(path).openRead())
       .transform(const LineSplitter());
   try {
-    [!await for (var line in lines) {!]
+    [!await for (final line in lines) {!]
     [!  if (showLineNumbers) {!]
     [!    stdout.write('${lineNumber++} ');!]
     [!  }!]
@@ -404,13 +404,13 @@ The UTF8 decoder converts the data into Dart strings.
 
 <?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-for (var path in paths) {
+for (final path in paths) {
   var lineNumber = 1;
   final lines = [!utf8.decoder!]
       .bind(File(path).openRead())
       .transform(const [!LineSplitter!]());
   try {
-    await for (var line in lines) {
+    await for (final line in lines) {
       if (showLineNumbers) {
         stdout.write('${lineNumber++} ');
       }
