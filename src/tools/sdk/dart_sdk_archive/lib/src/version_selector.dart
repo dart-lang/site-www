@@ -144,7 +144,7 @@ class VersionSelector {
           }
         }
 
-        if (name == 'Mac' && platformVariant.architecture == 'ia32') {
+        if (name == 'macOS' && platformVariant.architecture == 'ia32') {
           // No Mac 32-bit SDK builds >= 2.80
           if (versionInfo.version > Version(2, 7, 0)) {
             continue;
