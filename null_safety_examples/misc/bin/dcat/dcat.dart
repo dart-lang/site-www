@@ -27,8 +27,8 @@ const lineNumber = 'line-number';
 /// If `files` is absent, `dcat` reads from the standard input until `EOF`. //!web-only
 /// //!web-only
 /// Unlike the *nix `cat`, `dcat` does not support single dash ('-') arguments. //!web-only
-// #docregion arg-processing
 //!tip("List<String> arguments")
+// #docregion arg-processing
 void main(List<String> arguments) {
   exitCode = 0; // presume success
   final parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');
