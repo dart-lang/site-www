@@ -186,14 +186,13 @@ arguments:
 {% prettify dart tag=pre+code %}
 void main([!List<String> arguments!]) {
   exitCode = 0; // presume success
-  final [!parser = ArgParser()!]
-    [!..addFlag(lineNumber, negatable: false, abbr: 'n');!]
+  final [!parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');!]
 
 
-  ArgResults argResults = [!parser.parse(arguments);!]
+  [!ArgResults argResults = parser.parse(arguments);!]
   final paths = [!argResults.rest!];
 
-  dcat(paths, [!argResults[lineNumber] as bool!]);
+  dcat(paths, showLineNumbers: [!argResults[lineNumber] as bool!]);
 }
 {% endprettify %}
 
