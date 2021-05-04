@@ -326,7 +326,8 @@ await stdin.[!pipe!](stdout);
 
 In this case, the user types in lines of text,
 and the program copies them to stdout.
-The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>.
+The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>
+(or <kbd>Option</kbd>+<kbd>Z</kbd> on Windows).
 
 ```terminal
 $ dart run dcat.dart
