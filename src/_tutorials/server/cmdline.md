@@ -551,7 +551,7 @@ This tutorial described some basic API found in these classes from the dart:io l
 
 | API | Description |
 |---|---|
-| [IOSink]({{ioAPI}}/IOSink-class.html) | Helper class for objects that consume data from streams. |
+| [IOSink]({{ioAPI}}/IOSink-class.html) | Helper class for objects that consume data from streams |
 | [File]({{ioAPI}}/File-class.html) | Represents a file on the native file system |
 | [Directory]({{ioAPI}}/Directory-class.html) | Represents a directory on the native file system |
 | [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html) | Superclass for File and Directory |
