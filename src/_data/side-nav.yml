@@ -220,6 +220,8 @@
           permalink: /tools/dart-format
         - title: dart pub
           permalink: /tools/pub/cmd
+        - title: dart run
+          permalink: /tools/dart-run
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdoc
