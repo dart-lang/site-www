@@ -7,8 +7,8 @@ DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
 that lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
-To open DartPad as a standalone web page, 
-visit the [DartPad][]{:target="_blank" rel="noopener"} site.
+To open DartPad as a standalone web page, visit 
+the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 {{site.alert.tip}}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
@@ -19,20 +19,19 @@ visit the [DartPad][]{:target="_blank" rel="noopener"} site.
 
 Here's what DartPad looks like when configured to run Dart:
 
-<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
+<img src="{% asset dartpad-hello.png @path %}" alt="Showcases what a Hello World application looks like in DartPad" />
 
 
 ## Library support
 
 DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
-multi-platform and web platform. It doesn't support those marked native
-platform, and it doesn't support [deferred loading][].
+multi-platform and web platform. When using Flutter,
+DartPad also supports the `package:flutter` libraries that are supported
+on the web.
 
-In Flutter mode, you can also use the `package:flutter` libraries
-that are supported on the web platform.
-
-DartPad doesn't currently support using packages from the [pub.dev]({{site.pub}}) 
-package repository.
+DartPad doesn't support [deferred loading][] or any other libraries. 
+For example, DartPad doesn't support using packages from 
+the [pub.dev]({{site.pub}}) package repository. 
 (To find the status of package support, see [issue 901][].)
 
 ## Getting started
