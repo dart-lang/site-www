@@ -105,6 +105,8 @@
       permalink: /guides/libraries/create-library-packages
     - title: Publishing packages
       permalink: /tools/pub/publishing
+    - title: Writing package pages
+      permalink: /guides/libraries/writing-package-pages
     - title: Package reference
       expanded: false
       children:
