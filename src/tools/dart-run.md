@@ -8,11 +8,11 @@ located in a file, in the current package, or in one of
 the dependencies of the current package — from the command line.
 This command provides functionality that was previously in `pub run`
 and the [Dart VM tool](/tools/dart-vm).
-To run an executable from an arbitrary location,
+To run a program from an arbitrary location,
 use the [pub global](/tools/pub/cmd/pub-global) command.
 
 ```
-dart run [args] [<DART_FILE> | <PACKAGE_TARGET>]
+dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 ```
 
 Here's an example of creating a new app and running it:
@@ -69,7 +69,7 @@ use this command:
 $ dart run bar:baz
 ```
 
-The `bin` directory is the only place with visible executables.
+The `bin` directory is the only place with visible programs.
 All other directories in the depended-on package are private.
 
 ### In the current package
@@ -106,12 +106,40 @@ pass a relative path (as shown before):
 $ dart run tool/debug.dart
 ```
 
-## Running with debugging 
+## Supplying arguments to main()
 
-To enable debugging, pass one or more debugging arguments.
+To supply [arguments to the `main()` function][args],
+put them at the end of the command:
+
+```terminal
+$ dart run tool/debug.dart arg1 arg2
+```
+
+When you're running the main program for the current package,
+add the package name.
+Here's an example of running `bin/foo.dart` with arguments
+while you're in the top directory of the `foo` package:
+
+```terminal
+$ dart run foo arg1 arg2
+```
+
+[args]: /guides/language/language-tour#the-main-function
+
+## Debugging
+
+To enable debugging, pass one or more debugging options.
+Here's an example of enabling [`assert` statements][assert]:
+
+```terminal
+$ dart run --enable-asserts tool/debug.dart
+```
+
 See `dart run --help` for details.
 
-## Running with experimental features
+[assert]: /guides/language/language-tour#assert
+
+## Enabling experimental features
 
 To enable new features and enhancements that are currently in development,
 use [experiment flags](/tools/experiment-flags).
