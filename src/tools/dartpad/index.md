@@ -3,7 +3,7 @@ title: DartPad
 description: The tool that lets you interactively play with Dart in a browser.
 ---
 
-DartPad is an [open source](https://github.com/dart-lang/dart-pad) tool
+DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
 that lets you play with the Dart language in any modern browser.
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
@@ -28,11 +28,12 @@ DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. It doesn't support those marked native
 platform, and it doesn't support [deferred loading][].
 
-If you are using Flutter, DartPad also supports the `package:flutter` libraries
-which are supported on the web platform.
+In Flutter mode, you can also use the `package:flutter` libraries
+that are supported on the web platform.
 
-It doesn't currently support using packages from the [pub.dev]({{site.pub}}) 
-package repository. This request is being tracked in [issue 901][].
+DartPad doesn't currently support using packages from the [pub.dev]({{site.pub}}) 
+package repository.
+(To find the status of package support, see [issue 901][].)
 
 ## Getting started
 
@@ -102,7 +103,7 @@ To create a simple command-line app, use **New Pad**.
 
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is currently using.
-You can find the active SDK's version at the bottom right of DartPad.
+You can find this SDK version at the bottom right of DartPad.
 
 ## Embedding DartPad in web pages {#embedding}
 

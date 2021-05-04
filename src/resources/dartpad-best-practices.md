@@ -585,7 +585,7 @@ think through the entire process versus just being handed the solution.*”
 As long as you get the return correct,
 being able to write how you write it is nice.*”
 
-[DartPad]: https://dartpad.dev
+[DartPad]: {{site.dartpad}}
 [new dp issue]: https://github.com/dart-lang/dart-pad/issues/new
 [dart.dev DP docs]:/tools/dartpad
 [dart-lang/dart-pad]: https://github.com/dart-lang/dart-pad
