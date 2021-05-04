@@ -30,8 +30,8 @@ prevpage:
 </div>
 
 {{site.alert.note}}
-  This tutorial uses the `async` and `await` language features, which rely on the
-  [Future]({{_api}}/dart-async/Future-class.html) and
+  This tutorial uses the `async` and `await` language features, which rely on
+  the [Future]({{_api}}/dart-async/Future-class.html) and
   [Stream]({{_api}}/dart-async/Stream-class.html)
   classes for asynchronous support.
   To learn more about these features, see the
@@ -327,7 +327,7 @@ await stdin.[!pipe!](stdout);
 In this case, the user types in lines of text,
 and the program copies them to stdout.
 The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>
-(or <kbd>Option</kbd>+<kbd>Z</kbd> on Windows).
+(or <kbd>Control</kbd>+<kbd>Z</kbd> on Windows).
 
 ```terminal
 $ dart run dcat.dart
@@ -337,8 +337,7 @@ The quick brown fox jumps over the lazy dog.
 
 ## Getting info about a file
 
-The
-[FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html)
+The [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html)
 class in the dart:io library provides properties and static methods
 that help you inspect and manipulate the file system.
 
@@ -508,7 +507,7 @@ execution of the program.
 
 The `dcat` program sets the exit code
 in the `_handleError()` function to indicate that an error
-occcurred during execution.
+occurred during execution.
 
 <?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -557,10 +556,10 @@ This tutorial described some basic API found in these classes from the dart:io l
 | [Directory]({{ioAPI}}/Directory-class.html) | Represents a directory on the native file system |
 | [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html) | Superclass for File and Directory |
 | [Platform]({{ioAPI}}/Platform-class.html) | Provides information about the machine and operating system |
-| [stdout]({{ioAPI}}/stdout.html) | The standard output |
-| [stderr]({{ioAPI}}/stderr.html) | The standard error |
-| [stdin]({{ioAPI}}/stdin.html) | The standard input |
-| [exitCode]({{ioAPI}}/exitCode.html) | Sets the exit code |
+| [stdout]({{ioAPI}}/stdout.html) | The standard output stream |
+| [stderr]({{ioAPI}}/stderr.html) | The standard error stream |
+| [stdin]({{ioAPI}}/stdin.html) | The standard input stream |
+| [exitCode]({{ioAPI}}/exitCode.html) | Access and set the exit code |
 | [exit()]({{ioAPI}}/exit.html) | Sets the exit code and quits |
 {: .table }
 
