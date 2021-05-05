@@ -74,11 +74,11 @@ Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
 `aListOfNullableStrings`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g"?>
+<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g;/String>\?/String>/g"?>
 ```dart:run-dartpad:ga_id-nullable_type_generics:null_safety-true
 void main() {
   List<String> aListOfStrings = ['one', 'two', 'three'];
-  List<String> aNullableListOfStrings = [];
+  List<String> aNullableListOfStrings;
   List<String> aListOfNullableStrings = ['one', null, 'three'];
 
   print('aListOfStrings is $aListOfStrings.');
