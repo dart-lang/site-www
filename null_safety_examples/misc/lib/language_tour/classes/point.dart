@@ -2,10 +2,12 @@
 // #docregion class-with-distanceTo
 import 'dart:math';
 
+// #enddocregion class-with-distanceTo
+// #docregion named-constructor
 const double xOrigin = 0;
 const double yOrigin = 0;
 
-// #docregion constructor-initializer, named-constructor
+// #docregion class-with-distanceTo, constructor-initializer
 class Point {
   double x = 0;
   double y = 0;

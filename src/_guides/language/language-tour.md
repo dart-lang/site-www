@@ -2904,6 +2904,9 @@ or to provide extra clarity:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart tag=pre+code %}
+const double xOrigin = 0;
+const double yOrigin = 0;
+
 class Point {
   double x = 0;
   double y = 0;
@@ -3163,9 +3166,6 @@ instance method:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (class-with-distanceTo)" plaster="none"?>
 ```dart
 import 'dart:math';
-
-const double xOrigin = 0;
-const double yOrigin = 0;
 
 class Point {
   double x = 0;
