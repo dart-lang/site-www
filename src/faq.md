@@ -169,7 +169,7 @@ using [Flutter][Flutter], which is powered by the Dart platform.
 
 ### Q. What are some real-world production deployments of Dart?
 
-Google AdWords, AdSense, AdMob, and the Google Assistant all use Dart.
+Google Ads, AdSense, AdMob, and the Google Assistant all use Dart.
 A significant portion of Google's revenue flows through these apps.
 Inside or outside of Google, every Flutter app uses Dart.
 
