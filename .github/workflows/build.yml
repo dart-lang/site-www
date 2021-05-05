@@ -78,18 +78,18 @@ jobs:
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
 
-  sdk-files-up-to-date:
-    runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push'
-      && github.ref == 'refs/heads/master'
-    steps:
-      - uses: actions/checkout@v2
-      - run: mkdir -p $TMP
-      - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - run: ./tool/check-diagnostics.sh
+#  sdk-files-up-to-date:
+#    runs-on: ubuntu-latest
+#    if: |
+#      github.event_name == 'push'
+#      && github.ref == 'refs/heads/master'
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: mkdir -p $TMP
+#      - uses: dart-lang/setup-dart@v1.0
+#        with:
+#          sdk: stable
+#      - run: ./tool/check-diagnostics.sh
 
   deploy:
     needs: test
