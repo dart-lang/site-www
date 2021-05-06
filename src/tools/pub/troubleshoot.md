@@ -138,8 +138,22 @@ pub get failed (server unavailable) -- attempting retry 1 in 1 second...
 This can happen for many reasons, check your internet connection, and verify that
 you do not have firewalls or other security software that block internet access from `dart`.
 
-Users have reported issues using `dart pub` along with:
- * `Kaspersky Internet Security`
+Users have reported firewall configuration instructions for using `dart pub` along with:
 
-It might be possible that `dart pub` can be used along side such firewalls,
-if firewalls are correctly configured.
+* <details><summary><b>Kaspersky Internet Security</b></summary>
+
+   Even with _Kaspersky Internet Security_ protection turned off in the menu bar, the VPN application filter `sysextctrld` will still run in 
+   the background causing one not to be able to connect to `https://pub.dartlang.org`.
+   The URL must be added to the _"Trusted Zone"_. Here's how:
+
+   - Open Kaspersky Internet Security and click on the "Privacy" icon.
+   - Under the "Block website tracking" section click on the "Preferences" button.
+   - On the top icon bar select "Threats".
+   - Under "Threats" click on "Trusted Zone".
+   - Select the "Trusted web addresses" tab.
+   - Click on the "+" button and add the pub.dev url `https://pub.dartlang.org`.
+   - Click "OK".
+
+   The adding of this URL to the _"Trusted Zone"_ will allow the command
+   `flutter pub get` to run without  any blocking to the needed socket.
+   </details>
