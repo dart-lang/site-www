@@ -10,6 +10,24 @@ If you find another Dart book that might be helpful, please
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
 
+{% for book in site.data.books-dart3 %}
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+</div>
+</div>
+{% endfor %}
+
+
 ## Dart books preceding null safety
 
 The following books cover Dart versions preceding the release of [null safety][].
