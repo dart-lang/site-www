@@ -120,6 +120,8 @@ rendered as [Markdown][] — on
 the page for your package. This is the perfect place to introduce people to
 your code.
 
+For guidance on how to write a great README, see
+[Writing package pages](/guides/libraries/writing-package-pages).
 
 ## CHANGELOG.md
 

@@ -74,6 +74,8 @@ affect how your package's page looks:
 * **README.md:** The `README.md` file
   is the main content featured in your package's page.
   The file's contents are rendered as [Markdown.][Markdown]
+  For guidance on how to write a great README, see
+  [Writing package pages](/guides/libraries/writing-package-pages).
 * **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
   is also featured in a tab on your package's page,
   so that developers can read it right from pub.dev.
