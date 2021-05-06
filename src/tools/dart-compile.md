@@ -249,11 +249,11 @@ produces deployable JavaScript.
 The [`webdev serve`][] command uses `dartdevc` by default, but you can switch
 to producing deployable JavaScript by using the `--release` flag.
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   Although we expect the `js` subcommand to replace the `dart2js` command,
   as of Dart 2.12 `js` is missing
   some of the more advanced flags available in `dart2js`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 For more information, see the [`dart2js` documentation](/tools/dart2js).
 

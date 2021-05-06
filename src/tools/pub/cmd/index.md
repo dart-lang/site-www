@@ -25,13 +25,13 @@ on the [Flutter website]({{site.flutter}}).
 [flutter-cli]: {{site.flutter}}/docs/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   The `dart pub` command debuted in Dart 2.10.
   Although you might still find examples of
   using the standalone `pub` command instead of
   `dart pub` or `flutter pub`,
   the standalone `pub` command is deprecated.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 If you encounter problems using the pub tool,
 see [Troubleshooting Pub](/tools/pub/troubleshoot).

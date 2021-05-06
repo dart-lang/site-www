@@ -1,11 +1,11 @@
 <form class="form-inline">
   <div class="form-group select">
-    <label for="{{ include.channel }}-versions">Version:</label>
-    <select id="{{ include.channel }}-versions"></select>
+    <label for="{{include.channel}}-versions">Version:</label>
+    <select id="{{include.channel}}-versions"></select>
   </div>
   <div class="form-group select">
-    <label for="{{ include.channel }}-os">OS:</label>
-    <select id="{{ include.channel }}-os">
+    <label for="{{include.channel}}-os">OS:</label>
+    <select id="{{include.channel}}-os">
       <option value="all">All</option>
       <option value="macos" id="{{include.channel}}-macos" class="macos-option">macOS</option>
       <option value="linux" id="{{include.channel}}-linux" class="linux-option">Linux</option>
@@ -13,7 +13,7 @@
     </select>
   </div>
 </form>
-<table id="{{ include.channel }}" class="table">
+<table id="{{include.channel}}" class="table">
   <thead>
     <tr>
       <th>Version</th>

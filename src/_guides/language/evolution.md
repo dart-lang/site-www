@@ -24,11 +24,11 @@ environment:
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [language versioning section]: #language-versioning
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   For a peek into current features being
   discussed, investigated, and added to the Dart language,
   see the [language funnel][] tracker in the Dart language GitHub repo.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ## Changes in each release

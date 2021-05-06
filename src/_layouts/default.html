@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body class="{{ page.layout }}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
+  <body class="{{page.layout}}{% if page.toc == false %} hide_toc{% endif %}{% if page.obsolete == true %} obsolete{% endif %}{% if site.show_banner == true %} show_banner{% endif %}">
     {% include gtags.html %}
     {% include page-header.html %}
     {% include navigation-side.html %}
@@ -15,7 +15,7 @@
           {% endif -%}
           <div>
             {% include shared/page-github-links.html %}
-            <h1>{{ page.title }}</h1>
+            <h1>{{page.title}}</h1>
           </div>
           {% include navigation-toc.html id='site-toc--inline' collapsible=true %}
           {{ content | inject_anchors }}
