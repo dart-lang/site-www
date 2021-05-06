@@ -177,7 +177,7 @@ binding generator to automatically create FFI wrappers from C header files.
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
-[hello_world]: {{ page.hw }}
+[hello_world]: {{page.hw}}
 [primitives]: {{ page.samples }}/primitives
 [structs]: {{ page.samples }}/structs
 [sqlite]: {{ page.sqlite }}
