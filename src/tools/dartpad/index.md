@@ -19,20 +19,20 @@ the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 Here's what DartPad looks like when configured to run Dart:
 
-<img src="{% asset dartpad-hello.png @path %}" alt="Showcases what a Hello World application looks like in DartPad" />
+<img src="{% asset dartpad-hello.png @path %}" alt="Showcases what a Hello World app looks like in DartPad" />
 
 
 ## Library support
 
 DartPad supports `dart:*` [core libraries](/guides/libraries) marked as
 multi-platform and web platform. When writing Flutter apps,
-DartPad supports the `package:flutter`
+DartPad also supports the `package:flutter`
 and `dart:ui` libraries.
 
 DartPad doesn't support [deferred loading][] or any other libraries. 
 For example, DartPad doesn't support using packages from 
 the [pub.dev]({{site.pub}}) package repository. 
-(To find the status of package support, see [issue 901][].)
+(Package support might change; for details, see [issue 901][].)
 
 ## Getting started
 
