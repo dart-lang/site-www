@@ -4347,66 +4347,34 @@ For more information, see the following:
 
 ## Typedefs
 
-In Dart, functions are objects, just like strings and numbers are
-objects. A *typedef*, or *function-type alias*, gives a function type a
-name that you can use when declaring fields and return types. A typedef
-retains type information when a function type is assigned to a variable.
+A type alias — often called a _typedef_ because
+it's declared with the keyword `typedef` — is
+a concise way to refer to a type.
+Here's an example of declaring and using a type alias named `IntList`:
+***[PENDING: Use a JsonMap example instead?]***
 
-Consider the following code, which doesn't use a typedef:
-
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_1.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
-class SortedCollection {
-  Function compare;
-
-  SortedCollection(int f(Object a, Object b)) : compare = f;
-}
-
-// Initial, broken implementation.
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-
-  // All we know is that compare is a function,
-  // but what type of function?
-  assert(coll.compare is Function);
-}
+typedef IntList = List<int>;
+IntList il = [1,2,3];
 ```
 
-Type information is lost when assigning `f` to `compare`. The type of
-`f` is `(Object, ``Object)` → `int` (where → means returns), yet the
-type of `compare` is Function. If we change the code to use explicit
-names and retain type information, both developers and tools can use
-that information.
+A type alias can have type parameters:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_2.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
-typedef Compare = int Function(Object a, Object b);
-
-class SortedCollection {
-  Compare compare;
-
-  SortedCollection(this.compare);
-}
-
-// Initial, broken implementation.
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-  assert(coll.compare is Function);
-  assert(coll.compare is Compare);
-}
+typedef ListMapper<X> = Map<X, List<X>>;
+Map<String, List<String>> m1; // Verbose.
+ListMapper<String> m2; // Same thing but less verbose, less redundant.
 ```
 
-{{site.alert.note}}
-  Currently, typedefs are restricted to function types. We expect this to
-  change.
+{{site.alert.version-note}}
+  Before 2.13, typedefs were restricted to function types.
 {{site.alert.end}}
 
-Because typedefs are simply aliases, they offer a way to check the type
-of any function. For example:
+We recommend using [inline function types][] instead of typedefs for functions,
+whenever possible.
+However, function typedefs can still be useful:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
@@ -4418,6 +4386,10 @@ void main() {
   assert(sort is Compare<int>); // True!
 }
 ```
+
+[typedef-functions]: /guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax
+[inline function types]: /guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs
+
 
 ## Metadata
 
