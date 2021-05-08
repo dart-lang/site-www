@@ -113,22 +113,12 @@ with the [`dart create`](/tools/dart-tool) command.
    $ cd dcat
    ```
    
-3. Inside `dcat`, open the file named `pubspec.yaml`, 
-   uncomment the `dependencies` entry, 
-   and add the args package to the list of dependencies.
-
-   ```yaml
-   dependencies:
-     args: ^2.1.0
-   ```
-   
-4. Still in the `dcat` directory, run `dart pub get` to get the args package:
+3. Inside the `dcat` directory, use [pub](/tools/pub) 
+   to add the `args` package as a dependency. This adds `args` to 
+   the list of your dependencies found in the `pubspec.yaml` file.
 
    ```terminal
-   $ dart pub get
-   Resolving dependencies... 
-   + args 2.1.0
-   Changed 1 dependency!
+   $ dart pub add args
    ```
 
 5. Open the `bin/dcat.dart` file and copy the preceding code into it.
@@ -147,7 +137,7 @@ like `pubspec.yaml` or `quote.txt`
 ([downloadable file]({{site.repo.this}}/blob/master/null_safety_examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
-$ dart run dcat.dart -n quote.txt
+$ dart run bin/dcat.dart -n quote.txt
 1 Be yourself. Everyone else is taken. -Oscar Wilde
 2 Don't cry because it's over, smile because it happened. -Dr. Seuss
 3 You only live once, but if you do it right, once is enough. -Mae West
@@ -262,7 +252,7 @@ or use `addStream()` to asynchronously print all the elements from a stream.
 `stdout` provides more functionality than the `print()` function.
 For example, you can display the contents of a stream with `stdout`.
 However, you must use `print()` instead of `stdout`
-for programs that will run on the web.
+for programs that run on the web.
 
 ### stderr
 
@@ -330,7 +320,7 @@ The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>
 (or <kbd>Control</kbd>+<kbd>Z</kbd> on Windows).
 
 ```terminal
-$ dart run dcat.dart
+$ dart run bin/dcat.dart
 The quick brown fox jumps over the lazy dog.
 The quick brown fox jumps over the lazy dog.
 ```
