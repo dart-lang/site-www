@@ -10,7 +10,7 @@ If you find another Dart book that might be helpful, please
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
 
-{% for book in site.data.books-dart3 %}
+{% for book in site.data.books-dart-null-safe %}
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
   <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
