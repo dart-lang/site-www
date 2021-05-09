@@ -1,6 +1,6 @@
 ---
 title: Linter rules
-description: Details about the Dart linter and the style rules you can choose.
+description: Details about the Dart linter and its style rules you can choose.
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -30,25 +30,30 @@ how you might fix your code.
 
 Each rule is in one of the following groups:
 
-- **[Errors](#error-rules)**
-  - Possible errors or mistakes in your code.
-- **[Style](#style-rules)**
-  - Matters of style, largely derived from the [Dart style guide][].
-- **[Pub](#pub-rules)**
-  - Possible issues with [Pub](/guides/packages) setup.
+Errors
+: Possible errors or mistakes in your code.
+
+Style
+: Matters of style, largely derived from the [Dart style guide][].
+
+Pub
+: Possible issues with [pub package setup](/guides/packages).
 
 Each rule also has a maturity level:
 
-- **Stable**
-  - These rules are safe to use and are verified as functional
+Stable
+: These rules are safe to use and are verified as functional
   with the latest versions of the Dart language.
-  All rules are considered stable unless they're marked as experimental or deprecated.
-- **Experimental**
-  - The rules are still under evaluation and might never be stabilized.
+  All rules are considered stable
+  unless they're marked as experimental or deprecated.
+
+Experimental
+: The rules are still under evaluation and might never be stabilized.
   Use these with caution and report any issues you come across.
-- **Deprecated**
-  - These rules are no longer suggested for use
-  and are subject for removal in future Linter releases.
+
+Deprecated
+: These rules are no longer suggested for use
+  and are subject for removal in future linter releases.
 
 ## Error rules
 
