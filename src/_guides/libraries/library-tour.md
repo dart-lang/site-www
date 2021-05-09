@@ -1658,11 +1658,11 @@ as well as platform-specific libaries like the
 and the [Flutter libraries.][docs.flutter]
 
 You can get yet more libraries by using the [pub package manager](/guides/packages). The
-[collection,]({{site.pub-pkg}}/collection)
-[crypto,]({{site.pub-pkg}}/crypto)
-[http,]({{site.pub-pkg}}/http)
-[intl,]({{site.pub-pkg}}/intl) and
-[test]({{site.pub-pkg}}/test) libraries are just a
+[collection,]({{site.pub}}/packages/collection)
+[crypto,]({{site.pub}}/packages/crypto)
+[http,]({{site.pub}}/packages/http)
+[intl,]({{site.pub}}/packages/intl) and
+[test]({{site.pub}}/packages/test) libraries are just a
 sampling of what you can install using pub.
 
 To learn more about the Dart language, see the

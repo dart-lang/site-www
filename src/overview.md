@@ -105,12 +105,12 @@ class Point {
 }
 ```
 
-{{site.alert.info}}
+{{ site.alert.info }}
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
   target="_blank">open this example in its own window</a>.
-{{site.alert.end}}
+{{ site.alert.end }}
 
 
 ## Dart: The libraries {#libraries}

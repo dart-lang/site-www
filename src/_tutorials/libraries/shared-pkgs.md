@@ -111,7 +111,7 @@ which is available at the [pub.dev site]({{site.pub}}).
 
     {: type="a"}
      1. Go to [vector_math's entry on the Package
-        site.]({{site.pub-pkg}}/vector_math)
+        site.]({{site.pub}}/packages/vector_math)
      2. Click the **Installing** tab.
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
@@ -269,7 +269,7 @@ use the `package:` prefix.
 
    {: type="a"}
    1. Go to [vector_math's entry on the Package
-      site.]({{site.pub-pkg}}/vector_math)
+      site.]({{site.pub}}/packages/vector_math)
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
 

@@ -6,13 +6,13 @@ description: "The reference page for using 'dart' to run command-line apps."
 You can use the _dart_ tool (`bin/dart`) to run Dart command-line apps such as
 server-side scripts, programs, and servers.
 
-{{site.alert.version-note}}
+{{ site.alert.version-note }}
   As of Dart 2.10, the `dart` command has more functionality
   than just running the Dart VM.
   Instead of using `dart` as described on this page,
   we recommend using `dart run`.
   For details, see [the `dart` tool page][dart-tool].
-{{site.alert.end}}
+{{ site.alert.end }}
 
 [dart-tool]: /tools/dart-tool
 

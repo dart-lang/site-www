@@ -53,7 +53,7 @@ Although your tests partly depend on the platform your code is intended
 for&mdash;Flutter, the web, or server-side, for example&mdash;the
 following packages are useful across Dart platforms:
 
-* [package:test]({{site.pub-pkg}}/test)<br>
+* [package:test]({{site.pub}}/packages/test)<br>
   Provides a standard way of writing tests in Dart. You can use the test
   package to:
     * Write single tests, or groups of tests.
@@ -68,7 +68,7 @@ following packages are useful across Dart platforms:
       multiple files or an entire package.
 
 
-* [package:mockito]({{site.pub-pkg}}/mockito)<br>
+* [package:mockito]({{site.pub}}/packages/mockito)<br>
   Provides a way to create
   [mock objects,](https://en.wikipedia.org/wiki/Mock_object)
   easily configured for use in fixed scenarios, and to verify
@@ -102,10 +102,10 @@ applications:
 
 * [Testing]({{site.angulardart}}/guide/testing)(a page
   in the AngularDart guide)<br>
-  How to use the [angular_test]({{site.pub-pkg}}/angular_test)
+  How to use the [angular_test]({{site.pub}}/packages/angular_test)
   package to test AngularDart components and subsystems.
   <!-- More pages are coming! -->
-* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
+* [package:webdriver]({{site.pub}}/packages/webdriver)<br>
   A Dart package for interfacing with
   [WebDriver](https://www.w3.org/TR/webdriver/) servers.
 
