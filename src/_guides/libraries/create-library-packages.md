@@ -281,7 +281,7 @@ we recommend sharing it on the [pub.dev site.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
-For example, see the page for the [shelf package.]({{site.pub}}/packages/shelf)
+For example, see the page for the [shelf package.]({{site.pub-pkg}}/shelf)
 See [Publishing a package](/tools/pub/publishing)
 for details on how to prepare your package for publishing.
 

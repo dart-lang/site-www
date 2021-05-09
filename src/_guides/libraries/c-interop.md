@@ -182,4 +182,4 @@ binding generator to automatically create FFI wrappers from C header files.
 [structs]: {{ page.samples }}/structs
 [sqlite]: {{ page.sqlite }}
 [mini tutorial.]: {{ page.sqlite }}/docs/sqlite-tutorial.md
-[ffigen]: {{ site.pub }}/packages/ffigen
+[ffigen]: {{ site.pub-pkg }}/ffigen

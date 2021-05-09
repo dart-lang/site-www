@@ -153,7 +153,7 @@ is present, a line number is displayed before each line.
 
 ## Parsing command-line arguments
 
-The [args package]({{site.pub}}/packages/args) provides
+The [args package]({{site.pub-pkg}}/args) provides
 parser support for transforming command-line arguments
 into a set of options, flags, and additional values.
 Import the package's

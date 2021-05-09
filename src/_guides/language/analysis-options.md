@@ -59,7 +59,7 @@ info - Close instances of `dart.core.Sink` at lib/lint.dart:16:7 - (close_sinks)
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
-[analyzer package]({{site.pub}}/packages/analyzer)
+[analyzer package]({{site.pub-pkg}}/analyzer)
 to perform static analysis.
 
 You can customize static analysis to look for a variety of potential
@@ -79,7 +79,7 @@ use the analyzer package to evaluate your code.
 This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
-[analyzer package]({{site.pub}}/packages/analyzer) docs and the
+[analyzer package]({{site.pub-pkg}}/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
 {{site.alert.note}}
@@ -356,7 +356,7 @@ for all files or
 ### Excluding files
 
 To exclude files from static analysis, use the `exclude:` analyzer option. You
-can list individual files, or use [glob]({{site.pub}}/packages/glob) syntax:
+can list individual files, or use [glob]({{site.pub-pkg}}/glob) syntax:
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml
@@ -481,7 +481,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart's type system][type-system]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
 * [Dart linter rules][linter rules]
-* [analyzer package]({{site.pub}}/packages/analyzer)
+* [analyzer package]({{site.pub-pkg}}/analyzer)
 
 [analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html
 [analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
