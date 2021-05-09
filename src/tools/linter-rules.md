@@ -30,13 +30,13 @@ how you might fix your code.
 
 Each rule is in one of the following groups:
 
-Errors
+[Errors](#error-rules)
 : Possible errors or mistakes in your code.
 
-Style
+[Style](#style-rules)
 : Matters of style, largely derived from the [Dart style guide][].
 
-Pub
+[Pub](#pub-rules)
 : Possible issues with [pub package setup](/guides/packages).
 
 Each rule also has a maturity level:
