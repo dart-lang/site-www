@@ -1,18 +1,34 @@
 ---
 title: Linter rules
-description: Details about the Dart Linter and the lint rules it provides.
+description: Details about the Dart linter and the style rules you can choose.
 ---
 
-The Dart Linter uses the analyzer to identify and report
-on "lints" found within Dart code. Linting is performed
-by the Dart analysis server through your IDE
+Use the Dart linter to identify possible problems in your Dart code.
+You can use the linter through your IDE
 or with the [`dart analyze`](/tools/dart-analyze) command.
+For information on how to enable and disable linter rules, see the
+[linter section](/guides/language/analysis-options#enabling-linter-rules)
+of the [analyzer documentation][].
 
-This page outlines all currently existing rules,
-their use cases, what triggers them, as well as potential fixes.
+[analyzer documentation]: /guides/language/analysis-options
 
-The rules are organized into rule groups
-which identify their type of functionality.
+{{site.alert.tip}}
+  Linter rules (sometimes called _lints_) can have false positives,
+  and they don’t all agree with each other.
+  For example, some rules are more appropriate for library packages,
+  and others are designed for Flutter apps.
+  **Consider starting with pre-packaged linter rules**,
+  such as those in the [`effective_dart` package][].
+{{site.alert.end}}
+
+[`effective_dart` package]: {{site.pub-pkg}}/effective_dart
+
+This page lists all the linter rules,
+with details such as when you might want to use each rule,
+what code patterns trigger it, and
+how you might fix your code.
+
+Each rule is in one of the following groups:
 
 - **[Errors](#error-rules)**
   - Possible errors or mistakes in your code.
@@ -21,21 +37,18 @@ which identify their type of functionality.
 - **[Pub](#pub-rules)**
   - Possible issues with [Pub](/guides/packages) setup.
 
-Rules are also assigned a maturity level. Rules without one specified
-are considered stable, while other maturity levels are marked with the rule.
+Each rule also has a maturity level:
 
 - **Stable**
   - These rules are safe to use and are verified as functional
   with the latest versions of the Dart language.
+  All rules are considered stable unless they're marked as experimental or deprecated.
 - **Experimental**
-  - The rules are still under evaluation and may never be stabilized.
+  - The rules are still under evaluation and might never be stabilized.
   Use these with caution and report any issues you come across.
 - **Deprecated**
   - These rules are no longer suggested for use
   and are subject for removal in future Linter releases.
-
-For more information about using the linter and configure default
-sets of rules, see [Enabling and disabling linter rules][].
 
 ## Error rules
 
@@ -64,7 +77,7 @@ _This rule is currently **{{ lint.maturity }}**._
 ## Style rules
 
 These rules identify opportunities for style improvements, 
-largely derived from the official [Dart style guide][].
+largely derived from the [Dart style guide][].
 
 {% for lint in site.data.linter_rules %}
 
@@ -89,7 +102,7 @@ _This rule is currently **{{ lint.maturity }}**._
 ## Pub rules
 
 These rules identify possible issues around 
-[pub](/guides/packages) package setup and declarations.
+[pub package](/guides/packages) setup.
 
 {% for lint in site.data.linter_rules %}
 
