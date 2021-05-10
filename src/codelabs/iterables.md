@@ -725,7 +725,7 @@ the class `User` from the previous exercise.
 
 Use `where()` to implement two functions:
 
-* Part 1: Implement `filterUnder21()`.
+* Part 1: Implement `filterOutUnder21()`.
   * Return an `Iterable` containing all users of age 21 or more.
 * Part 2: Implement `findShortNamed()`.
   * Return an `Iterable` containing all users with
@@ -733,7 +733,7 @@ Use `where()` to implement two functions:
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list:null_safety-true
 {$ begin main.dart $}
-Iterable<User> filterUnder21(Iterable<User> users) {
+Iterable<User> filterOutUnder21(Iterable<User> users) {
   TODO('Implement this method');
 }
 
@@ -752,7 +752,7 @@ class User {
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
-Iterable<User> filterUnder21(Iterable<User> users) {
+Iterable<User> filterOutUnder21(Iterable<User> users) {
   return users.where((user) => user.age >= 21);
 }
 
@@ -780,19 +780,19 @@ var users = [
 
 void main() {
   try {
-    var out = filterUnder21(users);
+    var out = filterOutUnder21(users);
     if (out.any((user) => user.age < 21) || out.length != 2) {
-      _result(false, ['Looks like `filterUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
+      _result(false, ['Looks like `filterOutUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
       return;
     }
   } on UnimplementedError {
     _result(false, [
-      'Tried running `filterUnder21`, but received an error. Did you implement the method?'
+      'Tried running `filterOutUnder21`, but received an error. Did you implement the method?'
     ]);
     return;
   } catch (e) {
     _result(false, [
-      'Tried running `filterUnder21`, but received an exception: ${e.runtimeType}'
+      'Tried running `filterOutUnder21`, but received an exception: ${e.runtimeType}'
     ]);
     return;
   }
