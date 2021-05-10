@@ -371,7 +371,7 @@ Every package should have tests. With pub, the convention is
 that these go in a `test` directory (or some directory inside it if you like)
 and have `_test` at the end of their file names.
 
-Typically, these use the [test]({{site.pub}}/packages/test)
+Typically, these use the [test]({{site.pub-pkg}}/test)
 package.
 
 {% prettify none tag=pre+code %}

@@ -750,7 +750,7 @@ stack_trace
 : With the stack_trace library's
   [Chain class]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
   you can get better stack traces for asynchronously executed code.
-  See the [stack_trace package]({{site.pub}}/packages/stack_trace)
+  See the [stack_trace package]({{site.pub-pkg}}/stack_trace)
   at the pub.dev site for more information.
 
 
@@ -766,7 +766,7 @@ The task_interceptor example
   without yielding to the event loop.
 
 The source code for the stack_trace package
-: The [stack_trace package]({{site.pub}}/packages/stack_trace)
+: The [stack_trace package]({{site.pub-pkg}}/stack_trace)
   uses zones to form chains of stack traces
   for debugging asynchronous code.
   Zone features used include error handling, zone-local values, and callbacks.

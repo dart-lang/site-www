@@ -132,7 +132,7 @@ doesn't start with digits and isn't a
 
 Try to pick a name that is clear, terse, and not already in use.
 A quick search of packages on the
-[pub.dev site]({{site.pub}}/packages)
+[pub.dev site]({{site.pub-pkg}})
 to make sure that nothing else is using your name is recommended.
 
 ### Version
@@ -162,7 +162,7 @@ The description should be relatively short&mdash;60 to 180 characters&mdash;and
 tell a casual reader what they might want to know about your package.
 
 Think of the description as the sales pitch for your package. Users see it
-when they [browse for packages.]({{site.pub}}/packages)
+when they [browse for packages.]({{site.pub-pkg}})
 The description is plain text: no markdown or HTML.
 
 ### Author/authors
