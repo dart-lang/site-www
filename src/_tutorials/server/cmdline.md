@@ -193,7 +193,7 @@ result of parsing command-line arguments is stored in `argResults`.
 The following diagram shows how the `dcat` command line used above
 is parsed into an `ArgResults` object.
 
-![Run dcat from the command-line](images/commandlineargs.png){:width="350"}
+![Run dcat from the command-line](images/dcat-dart-run.png){:width="350"}
 
 You can access flags and options by name,
 treating an `ArgResults` like a `Map`.
