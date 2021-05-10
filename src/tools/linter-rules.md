@@ -48,12 +48,12 @@ Stable
   unless they're marked as experimental or deprecated.
 
 Experimental
-: The rules are still under evaluation and might never be stabilized.
+: These rules are still under evaluation and might never be stabilized.
   Use these with caution and report any issues you come across.
 
 Deprecated
 : These rules are no longer suggested for use
-  and are subject for removal in future linter releases.
+  and might be removed in a future linter release.
 
 ## Error rules
 
