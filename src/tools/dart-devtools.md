@@ -24,10 +24,10 @@ you can use with common Dart app types.
   <thead>
     <tr markdown="1">
       <th>&nbsp;</th>
-      <th scope="col" markdown="1">[Flutter mobile app][]</th>
-      <th scope="col" markdown="1">[Flutter web app][]</th>
-      <th scope="col" markdown="1">[Other web app][]</th>
-      <th scope="col" markdown="1">[Command-line app][]</th>
+      <th scope="col" markdown="1">[Flutter mobile or desktop][]</th>
+      <th scope="col" markdown="1">[Flutter web][]</th>
+      <th scope="col" markdown="1">[Other web][]</th>
+      <th scope="col" markdown="1">[Command-line][]</th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +46,14 @@ you can use with common Dart app types.
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Timeline view][]</th>
+      <th scope="row" markdown="1">[App size tool][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{b}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[CPU profiler][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
@@ -54,6 +61,13 @@ you can use with common Dart app types.
     </tr>
     <tr>
       <th scope="row" markdown="1">[Memory view][]</th>
+      <td>{{y}}</td> <!-- fma -->
+      <td>{{b}}</td> <!-- fwa -->
+      <td>{{b}}</td> <!-- owa -->
+      <td>{{y}}</td> <!-- cla -->
+    </tr>
+    <tr>
+      <th scope="row" markdown="1">[Network view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
@@ -179,20 +193,23 @@ You'll need this URL in the next step.
 
 ## Resources
 
-* [Using DevTools for Flutter development][Flutter mobile app]
+* [Using DevTools for Flutter development][Flutter mobile or desktop]
 * [devtools package page][devtools package]
 
 
+[App size tool]: {{site.flutter}}/docs/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developers.google.com/web/tools/chrome-devtools
-[Command-line app]: #using-devtools-with-a-command-line-app
+[Command-line]: #using-devtools-with-a-command-line-app
+[CPU profiler]: https://flutter.dev/docs/development/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter}}/docs/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
 [devtools package]: {{site.pub-pkg}}/devtools
 [Flutter inspector]: {{site.flutter}}/docs/development/tools/devtools/inspector
-[Flutter mobile app]: {{site.flutter}}/docs/development/tools/devtools/overview
-[Flutter web app]: {{site.flutter}}/docs/development/tools/devtools/overview
+[Flutter mobile or desktop]: {{site.flutter}}/docs/development/tools/devtools/overview
+[Flutter web]: {{site.flutter}}/docs/development/tools/devtools/overview
 [Logging view]: {{site.flutter}}/docs/development/tools/devtools/logging
 [Memory view]: {{site.flutter}}/docs/development/tools/devtools/memory
-[Other web app]: #using-devtools-with-a-non-flutter-web-app
+[Network view]: {{site.flutter}}/docs/development/tools/devtools/network
+[Other web]: #using-devtools-with-a-non-flutter-web-app
 [Performance view]: {{site.flutter}}/docs/development/tools/devtools/performance
 [Timeline view]: {{site.flutter}}/docs/development/tools/devtools/timeline
