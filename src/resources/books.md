@@ -9,8 +9,10 @@ also cover Dart.
 If you find another Dart book that might be helpful, please
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
+## Dart books with null safety
 
 {% for book in site.data.books-dart-null-safe %}
+
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
   <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
@@ -23,18 +25,17 @@ by {{book.authors | array_to_sentence_string}}
 {:.authors.h4}
 
 {{book.desc}}
+
 </div>
 </div>
 {% endfor %}
 
+## Dart 2 books preceding null safety
 
-## Dart books preceding null safety
-
-The following books cover Dart versions preceding the release of [null safety][].
-
-[null safety]: /null-safety
+The following books cover [Dart 2](/dart-2), but not [null safety](/null-safety):
 
 {% for book in site.data.books-dart2 %}
+
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
   <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
@@ -47,16 +48,17 @@ by {{book.authors | array_to_sentence_string}}
 {:.authors.h4}
 
 {{book.desc}}
+
 </div>
 </div>
 {% endfor %}
-
 
 ## Early Dart books
 
 The following books cover pre-2.0 versions of Dart.
 
 {% for book in site.data.books-dart1 %}
+
 <div class="book-img-with-details row">
 <a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
   <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
@@ -69,6 +71,7 @@ by {{book.authors | array_to_sentence_string}}
 {:.authors.h4}
 
 {{book.desc}}
+
 </div>
 </div>
 {% endfor %}
