@@ -38,7 +38,7 @@ To avoid the need to individually select compatible linter rules,
 [effective_dart]({{site.pub-pkg}}/effective_dart)
 : A set of lints corresponding to the guidelines in [Effective Dart][].
 
-[pedantic]({site.pub-pkg}/pedantic)
+[pedantic]({{site.pub-pkg}}/pedantic)
 : The selective set of lints used internally at Google
   to enforce best practices.
 
