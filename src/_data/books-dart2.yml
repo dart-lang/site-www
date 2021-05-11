@@ -5,12 +5,3 @@
   cover: quick-start-guide.jpg
   link: "https://www.apress.com/gp/book/9781484255612"
   desc: "Get started with Dart and learn to program. You'll gain the basics and be ready to move to the next level: web and mobile apps."
-- title: 'Dart Apprentice'
-  authors:
-    - Jonathan Sande
-    - Matt Galloway
-  publisher: raywenderlich
-  cover: dart-apprentice.png
-  link: "https://www.raywenderlich.com/books/dart-apprentice"
-  desc: "Dart Apprentice will teach you all the basic concepts you need to master this language. Follow along the easily and thoroughly explained concepts and you will be building Dart applications in a breeze."
-
