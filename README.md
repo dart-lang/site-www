@@ -273,7 +273,7 @@ test failed, then rerun the command without the `-q` flag.
    and get the name of your project (e.g. `sz-dart-dev-2`),
    which the following step calls FB-NAME.
 
-1. Deploy the docs, substituting the name of your project for FB-NAME:````````
+1. Deploy the docs, substituting the name of your project for FB-NAME:
 
     ```console
     $ ./tool/shared/deploy.sh --local FB-NAME
