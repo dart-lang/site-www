@@ -6,27 +6,49 @@ description: Details about the Dart linter and its style rules you can choose.
 Use the Dart linter to identify possible problems in your Dart code.
 You can use the linter through your IDE
 or with the [`dart analyze`](/tools/dart-analyze) command.
-For information on how to enable and disable linter rules, see the
-[linter section](/guides/language/analysis-options#enabling-linter-rules)
-of the [analyzer documentation][].
+For information on how to enable and disable individual linter rules, see
+[Enabling individual rules][] in the [analyzer documentation][].
 
+[Enabling individual rules]: guides/language/analysis-options#individual-rules
 [analyzer documentation]: /guides/language/analysis-options
-
-{{site.alert.tip}}
-  Linter rules (sometimes called _lints_) can have false positives,
-  and they don’t all agree with each other.
-  For example, some rules are more appropriate for library packages,
-  and others are designed for Flutter apps.
-  **Consider starting with pre-packaged linter rules**,
-  such as those in the [`effective_dart` package][].
-{{site.alert.end}}
-
-[`effective_dart` package]: {{site.pub-pkg}}/effective_dart
 
 This page lists all the linter rules,
 with details such as when you might want to use each rule,
 what code patterns trigger it, and
 how you might fix your code.
+
+## Predefined rule sets
+
+{{site.alert.tip}}
+Linter rules (sometimes called _lints_) can have false positives,
+and they don’t all agree with each other.
+For example, some rules are more appropriate for library packages,
+and others are designed for Flutter apps.
+{{site.alert.end}}
+
+To avoid the need to individually select compatible linter rules,
+**consider starting with one of many pre-packaged linter rule sets:**
+
+[lints]({{site.pub-pkg}}/lints)
+: The official selections of lints that the Dart team encourages using.
+
+[flutter_lints]({{site.pub-pkg}}/flutter_lints)
+: The recommended set of lints for Flutter apps, packages, and plugins.
+
+[effective_dart]({{site.pub-pkg}}/effective_dart)
+: A set of lints corresponding to the guidelines in [Effective Dart][].
+
+[pedantic]({site.pub-pkg}/pedantic)
+: The selective set of lints used internally at Google
+  to enforce best practices.
+
+To learn how to utilize a specific rule set,
+see [Enabling and disabling linter rules][].
+
+[Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[Effective Dart]: /guides/language/effective-dart
+
+## Rule types
 
 Each rule is in one of the following groups:
 
@@ -38,6 +60,8 @@ Each rule is in one of the following groups:
 
 [Pub](#pub-rules)
 : Possible issues with [pub package setup](/guides/packages).
+
+## Maturity levels
 
 Each rule also has a maturity level:
 
