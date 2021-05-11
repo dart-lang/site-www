@@ -68,7 +68,7 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 
 ### Linux
 
-* **Supported versions:** [Debian stable] and [Ubuntu LTS] under standard support.
+* **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
 * **Supported architectures:** x64, ia32, arm, arm64.
 
 {{ site.alert.note }}
