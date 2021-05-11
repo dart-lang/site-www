@@ -206,9 +206,9 @@ Note that linter rules can have false positives, unlike static analysis.
 
 ### Enabling Dart team recommended rules: lints {#lints}
 
-The Dart team provides sets of recommended lint rules.
+The Dart team provides two sets of recommended linter rules.
 
-Two sets of lints are available:
+Two sets of lints are provided by the package:
 
 Core lints
 : Lints that help identify critical issues that are likely to lead to problems
