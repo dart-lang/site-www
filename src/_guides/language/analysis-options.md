@@ -204,6 +204,50 @@ For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
+### Enabling Dart team recommended rules: lints {#lints}
+
+The Dart team provides sets of recommended lint rules.
+
+Two sets of lints are available:
+
+Core lints
+: Lints that help identify critical issues that are likely to lead to problems
+when running or consuming Dart code. All code should pass these lints.
+
+Recommended lints
+: Lints that help identify additional issues
+that may lead to problems when running or consuming Dart code,
+and lints that enforce writing Dart using a single, idiomatic style and format.
+All code is encouraged to pass these lints.
+The recommended lints include all the core lints.
+
+To enable one the Dart team's recommended sets of lints,
+add the [lints package]({{site.pub-pkg}}/lints) as a dev dependency:
+
+```terminal
+$ dart pub add --dev lints
+```
+
+Then include the `analysis_options.yaml` file
+corresponding to your preferred set
+in your `analysis_options.yaml` file:
+
+```yaml
+include: package:lints/core.yaml
+```
+
+```yaml
+include: package:lints/recommended.yaml
+```
+
+{{site.alert.important}}
+When a **new version of `lints`** is published,
+code that previously passed analysis might **start failing analysis.**
+We recommend updating your code to work with the new rules.
+Other options are to explicitly enable individual linter rules 
+or [disable individual rules][].
+{{site.alert.end}}
+
 ### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
 
 To enable the list of linter rules that Google uses in its own Dart code,
