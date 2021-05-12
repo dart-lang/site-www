@@ -156,7 +156,7 @@
           permalink: /tutorials/server/get-started
         - title: Write command-line apps
           permalink: /tutorials/server/cmdline
-        - title: Write HTTP clients & servers
+        - title: Write HTTP servers
           permalink: /tutorials/server/httpserver
         - title: Libraries and packages
           permalink: /server/libraries

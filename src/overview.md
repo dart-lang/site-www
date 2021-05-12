@@ -217,7 +217,7 @@ More information:
 * [Get started: Command-line and server apps](/tutorials/server/get-started)
 * [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
 * [Write command-line apps](/tutorials/server/cmdline)
-* [Write HTTP clients and servers](/tutorials/server/httpserver)
+* [Write HTTP servers](/tutorials/server/httpserver)
 
 #### Dart Web (JavaScript dev & prod) {#web-platform}
 
