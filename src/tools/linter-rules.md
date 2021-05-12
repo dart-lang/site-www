@@ -37,7 +37,7 @@ which the following packages provide:
 
 [flutter_lints]({{site.pub-pkg}}/flutter_lints)
 : The official selection of rules for Flutter apps, packages, and plugins 
-  that the Flutter team encourages using. These are built on the `reccomended`
+  that the Flutter team encourages using. These are built on the `recommended`
   set from the [lints package]({{site.pub-pkg}}/lints) and 
   Flutter packages uploaded to [pub.dev]({{site.pub}})
   are [scored][] with this set of rules.
