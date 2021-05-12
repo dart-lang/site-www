@@ -251,19 +251,15 @@ or [disable individual rules][].
 ### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
 
 To enable the list of linter rules that Google uses in its own Dart code,
-depend on the [pedantic package]({{site.pub-pkg}}/pedantic)
-and include its `analysis_options.yaml` file.
-Unless you need to use the `pedantic` API, declare a dev dependency on `pedantic`
-in your `pubspec.yaml` file:
+add the [pedantic package]({{site.pub-pkg}}/pedantic) as a dependency.
+Unless you need to use the `pedantic` API, include the `--dev` flag to declare
+it as a dev dependency.
 
-<?code-excerpt "analysis/pubspec.yaml" retain="/dev_dep|pedantic/"?>
-```yaml
-dev_dependencies:
-  pedantic: ^1.0.0
+```terminal
+$ dart pub add [--dev] lints
 ```
 
-Run `pub get`, and then
-add the following line to your `analysis_options.yaml` file:
+Then edit your `analysis_options.yaml` file to include the rule set:
 
 <?code-excerpt "analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
 ```yaml
@@ -284,16 +280,13 @@ include: package:pedantic/analysis_options.yaml
 ### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
 
 To enable linter rules corresponding to the guidelines in [Effective Dart][],
-add a dev dependency on the [effective_dart package:][effective_dart]
+add the [effective_dart package][effective_dart] as a dev dependency:
 
-<?code-excerpt "analysis_effective_dart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
-```yaml
-dev_dependencies:
-  effective_dart: ^1.0.0
+```terminal
+$ dart pub add --dev effective_dart
 ```
 
-Run `pub get`, and then
-add the following line to your `analysis_options.yaml` file:
+Then edit your `analysis_options.yaml` file to include the rule set:
 
 <?code-excerpt "analysis_effective_dart/analysis_options.yaml" from="include" retain="include:"?>
 ```yaml
