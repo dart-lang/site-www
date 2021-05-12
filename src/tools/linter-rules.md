@@ -31,11 +31,16 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 [lints]({{site.pub-pkg}}/lints)
-: The official selections of rules that the Dart team encourages using.
+: The official selections of rules that the Dart team encourages using. 
+  Dart packages uploaded to [pub.dev]({{site.pub}}) 
+  are [scored][] with the `core` set of these rules.
 
 [flutter_lints]({{site.pub-pkg}}/flutter_lints)
 : The official selection of rules for Flutter apps, packages, and plugins 
-  that the Flutter team encourages using.
+  that the Flutter team encourages using. These are built on the `reccomended`
+  set from the [lints package]({{site.pub-pkg}}/lints) and 
+  Flutter packages uploaded to [pub.dev]({{site.pub}})
+  are [scored][] with this set of rules.
 
 [effective_dart]({{site.pub-pkg}}/effective_dart)
 : A set of linter rules corresponding to the guidelines in [Effective Dart][].
@@ -48,6 +53,7 @@ see [Enabling and disabling linter rules][].
 
 [Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Effective Dart]: /guides/language/effective-dart
+[scored]: {{site.pub}}/help/scoring
 
 ## Rule types
 
