@@ -3,7 +3,7 @@ title: Write command-line apps
 description: Basics for command-line apps.
 nextpage:
   url: /tutorials/server/httpserver
-  title: Write HTTP clients and servers
+  title: Write HTTP servers
 prevpage:
   url: /tutorials/server/get-started
   title: "Get started: Command-line and server apps"
@@ -566,5 +566,4 @@ and the [args]({{argsAPI}}/args-library.html) package.
 ## What next?
 
 If you're interested in server-side programming,
-check out the next tutorial, which covers
-[HTTP clients and servers](/tutorials/server/httpserver).
+check out the [next tutorial](/tutorials/server/httpserver).

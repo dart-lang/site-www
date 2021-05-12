@@ -45,13 +45,12 @@ The following libraries and packages are useful across Dart platforms:
   Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
 
+{% comment %}
 ## VM resources
 
-[Write HTTP Clients & Servers](/tutorials/server/httpserver)
+[Write HTTP servers](/tutorials/server/httpserver)
 : Walks through how to implement command-line clients and servers
   that exchange JSON data.
 
-
-{% comment %}
 ## Other tools and resources
 {% endcomment %}
