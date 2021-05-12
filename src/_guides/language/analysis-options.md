@@ -227,13 +227,14 @@ add the [lints package]({{site.pub-pkg}}/lints) as a dev dependency:
 $ dart pub add --dev lints
 ```
 
-Then include the `analysis_options.yaml` file
-corresponding to your preferred set
-in your `analysis_options.yaml` file:
+Then edit your `analysis_options.yaml` file to include
+your preferred rule set:
 
 ```yaml
-include: package:lints/core.yaml
+include: package:lints/<RULE_SET>.yaml
 ```
+
+For example, you can include the recommended rule set like this:
 
 ```yaml
 include: package:lints/recommended.yaml
