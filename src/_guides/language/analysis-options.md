@@ -211,7 +211,9 @@ The Dart team provides two sets of recommended linter rules in the [lints packag
 Core rules
 : Help identify critical issues that are likely to lead to problems
   when running or consuming Dart code.
-  All code should pass these linter rules.
+  All code should pass these linter rules 
+  as Dart packages uploaded to [pub.dev]({{site.pub}})
+  are [scored]({{site.pub}}/help/scoring) with the these.
 
 Recommended rules
 : Help identify additional issues
