@@ -17,14 +17,14 @@ with details such as when you might want to use each rule,
 what code patterns trigger it, and
 how you might fix your code.
 
-## Predefined rule sets
-
 {{site.alert.tip}}
 Linter rules (sometimes called _lints_) can have false positives,
 and they don’t all agree with each other.
 For example, some rules are more appropriate for library packages,
 and others are designed for Flutter apps.
 {{site.alert.end}}
+
+## Predefined rule sets
 
 To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
