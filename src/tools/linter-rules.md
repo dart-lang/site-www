@@ -31,19 +31,19 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 [lints]({{site.pub-pkg}}/lints)
-: The official selections of lints that the Dart team encourages using.
+: The official selections of rules that the Dart team encourages using.
 
 [flutter_lints]({{site.pub-pkg}}/flutter_lints)
-: The recommended set of lints for Flutter apps, packages, and plugins.
+: The official selection of rules for Flutter apps, packages, and plugins 
+  that the Flutter team encourages using.
 
 [effective_dart]({{site.pub-pkg}}/effective_dart)
-: A set of lints corresponding to the guidelines in [Effective Dart][].
+: A set of linter rules corresponding to the guidelines in [Effective Dart][].
 
 [pedantic]({{site.pub-pkg}}/pedantic)
-: The selective set of lints used internally at Google
-  to enforce best practices.
+: The set of rules used for all Google-internal Dart code
 
-To learn how to utilize a specific rule set,
+To learn how to use a specific rule set,
 see [Enabling and disabling linter rules][].
 
 [Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
