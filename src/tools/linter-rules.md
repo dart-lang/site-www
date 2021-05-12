@@ -27,7 +27,8 @@ and others are designed for Flutter apps.
 {{site.alert.end}}
 
 To avoid the need to individually select compatible linter rules,
-**consider starting with one of many pre-packaged linter rule sets:**
+consider starting with a linter rule set,
+which the following packages provide:
 
 [lints]({{site.pub-pkg}}/lints)
 : The official selections of lints that the Dart team encourages using.

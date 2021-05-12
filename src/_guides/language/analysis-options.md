@@ -206,20 +206,19 @@ Note that linter rules can have false positives, unlike static analysis.
 
 ### Enabling Dart team recommended rules: lints {#lints}
 
-The Dart team provides two sets of recommended linter rules.
+The Dart team provides two sets of recommended linter rules in the [lints package][]:
 
-Two sets of lints are provided by the package:
+Core rules
+: Help identify critical issues that are likely to lead to problems
+  when running or consuming Dart code.
+  All code should pass these linter rules.
 
-Core lints
-: Lints that help identify critical issues that are likely to lead to problems
-when running or consuming Dart code. All code should pass these lints.
-
-Recommended lints
-: Lints that help identify additional issues
-that may lead to problems when running or consuming Dart code,
-and lints that enforce writing Dart using a single, idiomatic style and format.
-All code is encouraged to pass these lints.
-The recommended lints include all the core lints.
+Recommended rules
+: Help identify additional issues
+  that may lead to problems when running or consuming Dart code,
+  and enforce a single, idiomatic style and format.
+  We recommend that all Dart code use these rules,
+  which are a superset of the core rules.
 
 To enable one the Dart team's recommended sets of lints,
 add the [lints package]({{site.pub-pkg}}/lints) as a dev dependency:
