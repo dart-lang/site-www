@@ -211,9 +211,10 @@ The Dart team provides two sets of recommended linter rules in the [lints packag
 Core rules
 : Help identify critical issues that are likely to lead to problems
   when running or consuming Dart code.
-  All code should pass these linter rules 
-  as Dart packages uploaded to [pub.dev]({{site.pub}})
-  are [scored]({{site.pub}}/help/scoring) with the these.
+  All code should pass these linter rules.
+  Packages that are uploaded to [pub.dev]({{site.pub}})
+  have a [package score]({{site.pub}}/help/scoring)
+  that's based in part on passing these rules.
 
 Recommended rules
 : Help identify additional issues
@@ -221,6 +222,12 @@ Recommended rules
   and enforce a single, idiomatic style and format.
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.
+
+{{site.alert.tip}}
+  If you're working on Flutter code,
+  then instead of using the `lints` package, use [`flutter_lints`][],
+  which provides a superset of the recommended rules.
+{{site.alert.end}}
 
 To enable one the Dart team's recommended sets of lints,
 add the [lints package]({{site.pub-pkg}}/lints) as a dev dependency:
@@ -258,7 +265,7 @@ Unless you need to use the `pedantic` API, include the `--dev` flag to declare
 it as a dev dependency.
 
 ```terminal
-$ dart pub add [--dev] lints
+$ dart pub add [--dev] pedantic
 ```
 
 Then edit your `analysis_options.yaml` file to include the rule set:

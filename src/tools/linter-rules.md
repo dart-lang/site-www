@@ -33,7 +33,7 @@ which the following packages provide:
 [lints]({{site.pub-pkg}}/lints)
 : The official selections of rules that the Dart team encourages using. 
   Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
-  are always [scored]({{site.pub}}/help/scoring) 
+  are [scored]({{site.pub}}/help/scoring) 
   with the `core` set of these rules.
 
 [flutter_lints]({{site.pub-pkg}}/flutter_lints)
