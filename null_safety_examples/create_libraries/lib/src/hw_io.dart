@@ -1,6 +1,6 @@
 import 'dart:io';
 
-void alarm([String text]) {
+void alarm([String? text]) {
   stderr.writeln(text ?? message);
 }
 
