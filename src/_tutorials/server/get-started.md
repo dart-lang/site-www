@@ -158,7 +158,6 @@ Check out these resources:
 If you get stuck, find help at [Community and support.](/community)
 
 [Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
-[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
