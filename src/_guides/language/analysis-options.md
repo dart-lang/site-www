@@ -206,7 +206,8 @@ Note that linter rules can have false positives, unlike static analysis.
 
 ### Enabling Dart team recommended rules: lints {#lints}
 
-The Dart team provides two sets of recommended linter rules in the [lints package][]:
+The Dart team provides two sets of recommended linter rules
+in the [lints package][]:
 
 Core rules
 : Help identify critical issues that are likely to lead to problems
@@ -224,13 +225,13 @@ Recommended rules
   which are a superset of the core rules.
 
 {{site.alert.tip}}
-  If you're working on Flutter code,
-  then instead of using the `lints` package, use [`flutter_lints`][],
+  If you're working on Flutter code, then instead of using the `lints` package, 
+  use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
   which provides a superset of the recommended rules.
 {{site.alert.end}}
 
 To enable one the Dart team's recommended sets of lints,
-add the [lints package]({{site.pub-pkg}}/lints) as a dev dependency:
+add the [lints package][] as a dev dependency:
 
 ```terminal
 $ dart pub add --dev lints
@@ -256,6 +257,8 @@ We recommend updating your code to work with the new rules.
 Other options are to explicitly enable individual linter rules 
 or [disable individual rules][].
 {{site.alert.end}}
+
+[lints package]: {{site.pub-pkg}}/lints
 
 ### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
 
