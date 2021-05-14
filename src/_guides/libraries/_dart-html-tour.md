@@ -20,7 +20,7 @@ To use the HTML library in your web app, import dart:html:
   TODO: Consider helping users run these examples in DartPad.
 {% endcomment -%}
 
-<?code-excerpt "html/lib/html.dart (import)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (import)"?>
 ```dart
 import 'dart:html';
 ```
@@ -127,7 +127,7 @@ has the same effect as adding `display: none` to the CSS.
 </p>
 ```
 
-<?code-excerpt "html/test/html_test.dart (os)"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (os)"?>
 ```dart
 // In Dart:
 const osList = ['macos', 'windows', 'linux'];
@@ -254,7 +254,7 @@ message.text = 'Please subscribe to the Dart mailing list.';
 You can reduce the redundant text in this example by using method
 cascades:
 
-<?code-excerpt "html/lib/html.dart (elem-set-cascade)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (elem-set-cascade)"?>
 ```dart
 var message = DivElement()
   ..id = 'message2'
