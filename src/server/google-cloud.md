@@ -9,6 +9,9 @@ Dart servers can use many
 often with the help of pre-packaged [Docker images][]
 that the Dart team maintains.
 
+For information about creating HTTP servers with Dart, see the
+[Write HTTP servers page](/tutorials/server/httpserver).
+
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
 see the [Google APIs page](/guides/google-apis).
@@ -19,9 +22,8 @@ You can use Cloud Run's flexible container support,
 combined with Dart's Docker images,
 to run server-side Dart code.
 
-One example of a Dart server that uses Cloud Run is dartbug.com,
-the redirect service for Dart issues and bugs.
-You can find its source code in the [dart-lang/dartbug.com repo][].
+For examples of Dart servers implemented to run on Cloud Run, see the
+[dart-lang/samples repo][].
 
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
@@ -45,16 +47,16 @@ For more information, see the [GKE overview][].
 
 ## App Engine
 
-The App Engine support for Dart is incomplete and experimental,
-so we recommend that you **use Cloud Run** instead of App Engine
-to run new server-side Dart code.
-If you _do_ use App Engine,
-you might also want to use the [`appengine` package][].
+[App Engine][] support for Dart is incomplete,
+so we recommend that you **use Cloud Run** instead of App Engine for new
+server-side Dart code.
+If you _want_ to use App Engine, consider using the [`appengine` package][].
 
 
+[App Engine]: https://cloud.google.com/appengine
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[dart-lang/dartbug.com repo]: https://github.com/dart-lang/dartbug.com
+[dart-lang/samples repo]: https://github.com/dart-lang/samples/tree/master/server
 [Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
