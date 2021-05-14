@@ -22,8 +22,8 @@ You can use Cloud Run's flexible container support,
 combined with Dart's Docker images,
 to run server-side Dart code.
 
-For examples of Dart servers implemented to run on Cloud Run, see the
-[dart-lang/samples repo][].
+Examples of Dart servers implemented to run on Cloud Run are
+[in the dart-lang/samples/repo][server examples].
 
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
