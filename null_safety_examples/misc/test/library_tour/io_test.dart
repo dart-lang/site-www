@@ -19,7 +19,8 @@ void main() {
 
       // Put the whole file in a single string.
       var stringContents = await config.readAsString();
-      print('The file is ${stringContents.length} characters long.');
+      print(
+          'The file is ${stringContents.length} characters long.');
 
       // Put each line of the file into its own string.
       var lines = await config.readAsLines();
