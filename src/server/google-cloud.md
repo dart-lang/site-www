@@ -56,7 +56,7 @@ The Dart Functions Framework is a Google-sponsored open source
 FaaS (Function as a Service) project that makes it easy to write Dart functions
 instead of server applications for handling web requests.
 Using the framework, you can create functions that will handle HTTP requests
-and [CloudEvents] and deploy them to Google Cloud.
+and [CloudEvents][] and deploy them to Google Cloud.
 
 [Read the documentation][functions docs] to get started.
 
