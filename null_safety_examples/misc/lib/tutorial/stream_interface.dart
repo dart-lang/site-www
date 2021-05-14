@@ -43,7 +43,7 @@ abstract class MyStream<T> implements Stream<T> {
 
   Stream<T> asBroadcastStream(
       {void onListen(StreamSubscription<T> subscription)?,
-        void onCancel(StreamSubscription<T> subscription)?});
+      void onCancel(StreamSubscription<T> subscription)?});
 
   // #docregion special-stream-members
   Stream<T> handleError(Function onError, {bool test(error)?});
