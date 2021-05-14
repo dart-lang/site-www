@@ -28,8 +28,8 @@ over 180 Google client APIs,
 such as the Google Docs API, YouTube Data API,
 Cloud Translation API, and Cloud Storage API.
 
-If you're building a Flutter application, see the corresponding
-[Google APIs guide][flutter-google-apis].
+If you're building a Flutter application, see the
+[Flutter guide for Google APIs][flutter-google-apis].
 
 If you'd like to access Google APIs as part of a server application,
 [see this sample][server-sample].
