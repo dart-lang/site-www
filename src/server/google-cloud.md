@@ -20,7 +20,6 @@ see the [Google APIs page](/guides/google-apis).
 You can use Cloud Run's flexible container support,
 combined with Dart's Docker images,
 to run server-side Dart code.
-
 Examples of Dart servers implemented to run on Cloud Run are
 [in the dart-lang/samples/repo][server examples].
 
