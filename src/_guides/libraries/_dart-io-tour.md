@@ -243,7 +243,7 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (client)"?>
 ```dart
 Future<void> main() async {
   var url = Uri.parse('http://localhost:8888/dart');
