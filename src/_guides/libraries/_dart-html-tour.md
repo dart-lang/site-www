@@ -414,9 +414,9 @@ handler.
 <?code-excerpt "../null_safety_examples/html/test/html_test.dart (POST)"?>
 ```dart
 String encodeMap(Map<String, String> data) => data.entries
-        .map((e) =>
-            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-        .join('&');
+    .map((e) =>
+        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+    .join('&');
 
 Future<void> main() async {
   const data = {'dart': 'fun', 'angular': 'productive'};
