@@ -3,7 +3,7 @@
 
 void futuresTutorial() {
   final expensiveA = () async {};
-  final  expensiveB = () async {};
+  final expensiveB = () async {};
   final expensiveC = () async {};
   final doSomethingWith = (dynamic) {};
   // #docregion multiple-await
