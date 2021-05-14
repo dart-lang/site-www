@@ -1,7 +1,7 @@
 // ignore_for_file: type_annotate_public_apis
 import 'package:test/test.dart';
-import '../../lib/tutorial/sum_stream.dart' as sum_stream;
-import '../../lib/tutorial/sum_stream_with_catch.dart'
+import 'package:examples/tutorial/sum_stream.dart' as sum_stream;
+import 'package:examples/tutorial/sum_stream_with_catch.dart'
     as sum_stream_with_catch;
 
 void main() {

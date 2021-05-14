@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 // #docregion
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
