@@ -59,7 +59,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion replaceWith
 
     // #docregion remove
-    // Find a node by ID, and remove it from the DOM.
+    // Find a node by ID, and remove it from the DOM if it is found.
     querySelector('#expendable')?.remove();
     // #enddocregion remove
   }
@@ -107,7 +107,7 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion target
   }
 
-  Future tryGetString() async {
+  Future<void> tryGetString() async {
     String jsonUri = 'data.json';
     // #docregion try-getString
     try {

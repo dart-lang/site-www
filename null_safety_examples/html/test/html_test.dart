@@ -80,7 +80,7 @@ void main() {
   test('request', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
-    Future main() async {
+    Future<void> main() async {
       HttpRequest req = await HttpRequest.request(
         url,
         method: 'HEAD',

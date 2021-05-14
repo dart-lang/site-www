@@ -221,7 +221,7 @@ To remove a node, use the Node `remove()` method:
 
 <?code-excerpt "../null_safety_examples/html/lib/html.dart (remove)"?>
 ```dart
-// Find a node by ID, and remove it from the DOM if is found.
+// Find a node by ID, and remove it from the DOM if it is found.
 querySelector('#expendable')?.remove();
 ```
 
@@ -237,7 +237,7 @@ example, the following sample adds the `warning` class to an element:
 
 <?code-excerpt "../null_safety_examples/html/lib/html.dart (classes-add)"?>
 ```dart
-var elem = querySelector('#message');
+var elem = querySelector('#message')!;
 elem.classes.add('warning');
 ```
 
