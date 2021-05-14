@@ -180,7 +180,7 @@ String get message => 'Hello World from the VM!';
 <div class="prettify-filename">lib/src/hw_io.dart</div>
 
 And here's the default implementation,
-which are stubs that throw `UnsupportedError`:
+which uses stubs that throw `UnsupportedError`:
 
 <?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_none.dart"?>
 ```dart
