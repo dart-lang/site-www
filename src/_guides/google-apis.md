@@ -31,8 +31,8 @@ Cloud Translation API, and Cloud Storage API.
 If you're building a Flutter application, see the
 [Flutter guide for Google APIs][flutter-google-apis].
 
-If you'd like to access Google APIs as part of a server application,
-[see this sample][server-sample].
+If you'd like to use Google APIs as part of a server application, see the
+[google_apis server sample][server-sample].
 
 Some packages provide idiomatic Dart wrappers for
 the APIs provided by `googleapis`.
