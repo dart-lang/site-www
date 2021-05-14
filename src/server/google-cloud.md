@@ -52,7 +52,7 @@ If you _want_ to use App Engine, consider using the [`appengine` package][].
 
 ## Functions Framework for Dart
 
-The Dart Functions Framework is a Google-sponsored open source 
+The [Dart Functions Framework][] is a Google-sponsored open source 
 FaaS (Function as a Service) project that makes it easy to write Dart functions
 instead of server applications for handling web requests.
 Using the framework, you can create functions that will handle HTTP requests
@@ -67,5 +67,6 @@ and [CloudEvents][] and deploy them to Google Cloud.
 [server examples]: https://github.com/dart-lang/samples/tree/master/server
 [Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
+[Dart Functions Framework]: https://pub.dev/packages/functions_framework
 [CloudEvents]: https://cloudevents.io/
 [functions docs]: https://github.com/GoogleCloudPlatform/functions-framework-dart/tree/main/docs
