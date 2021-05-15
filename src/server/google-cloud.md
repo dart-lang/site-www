@@ -42,14 +42,6 @@ To run Dart on clusters of Compute Engine instances,
 use Google Kubernetes Engine (GKE).
 
 For more information, see the [GKE overview][].
-
-## App Engine
-
-[App Engine][] support for Dart is incomplete,
-so we recommend that you **use Cloud Run** instead of App Engine for new
-server-side Dart code.
-If you _want_ to use App Engine, consider using the [`appengine` package][].
-
 ## Functions Framework for Dart
 
 The [Dart Functions Framework][] is a Google-sponsored open source 
@@ -60,8 +52,6 @@ and [CloudEvents][] and deploy them to Google Cloud.
 
 [Read the documentation][functions docs] to get started.
 
-[App Engine]: https://cloud.google.com/appengine
-[`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
 [server examples]: https://github.com/dart-lang/samples/tree/master/server
