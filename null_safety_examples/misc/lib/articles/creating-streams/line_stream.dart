@@ -4,13 +4,13 @@ import 'dart:async';
 /// Combines incoming strings into a single stream and outputs its lines.
 class LineStream extends Stream<String> {
   /// Input stream.
-  Stream<String> _source;
+  final Stream<String> _source;
 
   /// Subscription on [_source] while subscribed.
-  StreamSubscription<String> _subscription;
+  late StreamSubscription<String>? _subscription;
 
   /// Controller for output stream.
-  StreamController<String> _controller;
+  late final StreamController<String> _controller;
 
   /// Count of lines sent out so far.
   int _lineCount = 0;
@@ -31,8 +31,8 @@ class LineStream extends Stream<String> {
   int get lineCount => _lineCount;
 
   @override
-  StreamSubscription<String> listen(void onData(String line),
-      {Function onError, void onDone(), bool cancelOnError}) {
+  StreamSubscription<String> listen(void onData(String line)?,
+      {Function? onError, void onDone()?, bool? cancelOnError}) {
     return _controller.stream.listen(onData,
         onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
@@ -43,22 +43,22 @@ class LineStream extends Stream<String> {
   }
 
   void _onCancel() {
-    _subscription.cancel();
+    _subscription?.cancel();
     _subscription = null;
   }
 
   void _onPause() {
-    _subscription.pause();
+    _subscription?.pause();
   }
 
   void _onResume() {
-    _subscription.resume();
+    _subscription?.resume();
   }
 
   void _onData(String input) {
     // Split the input, combine it with a leftover line prefix from
     // the last input, and put all the complete lines into the pending queue.
-    List<String> splits = input.split('\n');
+    var splits = input.split('\n');
     splits[0] = _remainder + splits[0];
     _remainder = splits.removeLast();
     // While adding each individual line the stream could become paused. If
@@ -76,25 +76,25 @@ class LineStream extends Stream<String> {
 }
 
 void main() {
-  var part1 = '''
+  const part1 = '''
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
 doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
 veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
 ipsam voluptatem quia voluptas sit ''';
-  var part2 = '''
+  const part2 = '''
 aspernatur aut odit aut fugit, sed quia
 consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
 adipisci velit, sed quia non numquam eius modi tempora ''';
-  var part3 = '''
+  const part3 = '''
 incidunt ut labore et
 dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
 nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
 ex ea commodi consequatur?
 ''';
 
-  StreamController<String> text = StreamController<String>();
-  LineStream lines = LineStream(text.stream);
+  var text = StreamController<String>();
+  var lines = LineStream(text.stream);
   int lineCount = 0;
   // StreamSubscription<String> sub;
   /* sub = */ lines.listen((String line) {

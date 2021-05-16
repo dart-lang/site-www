@@ -2,7 +2,7 @@
 title: Creating streams in Dart
 description: A stream is a sequence of results; learn how to create your own.
 original-date: 2013-04-08
-date: 2018-09-26
+date: 2021-05-16
 category: libraries
 ---
 
@@ -11,7 +11,7 @@ category: libraries
 </style>
 
 _Written by Lasse Nielsen <br>
-April 2013 (updated October 2018)_
+April 2013 (updated May 2021)_
 
 The dart:async library contains two types
 that are important for many Dart APIs:
@@ -50,8 +50,8 @@ The most general approach is to create a new stream that
 waits for events on the original stream and then
 outputs new events. Example:
 
-<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
+```dart
 /// Splits a stream of consecutive strings into lines.
 ///
 /// The input string is provided in smaller chunks through
@@ -71,7 +71,7 @@ Stream<String> lines(Stream<String> source) async* {
   // Add final partial line to output stream, if any.
   if (partial.isNotEmpty) yield partial;
 }
-{% endprettify %}
+```
 
 For many common transformations,
 you can use `Stream`-supplied transforming methods
@@ -81,39 +81,39 @@ For example, assume you have a stream, `counterStream`,
 that emits an increasing counter every second.
 Here's how it might be implemented:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
+```dart
 var counterStream =
     Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
-{% endprettify %}
+```
 
 To quickly see the events, you can use code like this:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
+```dart
 counterStream.forEach(print); // Print an integer every second, 15 times.
-{% endprettify %}
+```
 
 To transform the stream events, you can invoke a transforming method
 such as `map()` on the stream before listening to it.
 The method returns a new stream.
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
+```dart
 // Double the integer in each event.
 var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
-{% endprettify %}
+```
 
 Instead of `map()`, you could use any other transforming method,
 such as the following:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
+```dart
 .where((int x) => x.isEven) // Retain only even integer events.
 .expand((var x) => [x, x]) // Duplicate each event.
 .take(5) // Stop after the first five events.
-{% endprettify %}
+```
 
 Often, a transforming method is all you need.
 However, if you need even more control over the transformation,
@@ -124,12 +124,12 @@ The platform libraries provide stream transformers for many common tasks.
 For example, the following code uses the `utf8.decoder` and `LineSplitter`
 transformers provided by the dart:convert library.
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
+```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
 List<String> lines =
     await content.transform(utf8.decoder).transform(LineSplitter()).toList();
-{% endprettify %}
+```
 
 
 ## Creating a stream from scratch
@@ -144,9 +144,9 @@ using `yield` or `yield*` statements.
 
 Here's a primitive example that emits numbers at regular intervals:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
-{% prettify dart tag=pre+code %}
-Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
+```dart
+Stream<int> timedCounter(Duration interval, [int? maxCount]) async* {
   int i = 0;
   while (true) {
     await Future.delayed(interval);
@@ -154,7 +154,7 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
     if (i == maxCount) break;
   }
 }
-{% endprettify %}
+```
 
 {% comment %}
 [PENDING: show code that uses it, so we have some context for
@@ -186,15 +186,15 @@ otherwise, it completes with `null`.
 Another, more useful example is a function that converts
 a sequence of futures to a stream:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
+```dart
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
     var result = await future;
     yield result;
   }
 }
-{% endprettify %}
+```
 
 This function asks the `futures` iterable for a new future,
 waits for that future, emits the resulting value, and then loops.
@@ -224,23 +224,21 @@ The stream has all the logic necessary to handle listeners and pausing.
 You return the stream and keep the controller to yourself.
 
 The following example
-(from [stream_controller_bad.dart](code/stream_controller_bad.dart))
-{%- comment -%}
-TODO: update that link to point to examples directory on GitHub,
-and then delete the old file.
-{% endcomment %}
+(from [stream_controller_bad.dart][])
 shows a basic, though flawed, usage of `StreamController`
 to implement the `timedCounter()` function from the previous examples.
 This code creates a stream to return,
 and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
+[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
+
 {:.bad}
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart tag=pre+code %}
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
-Stream<int> timedCounter(Duration interval, [int maxCount]) {
+Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   var controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
@@ -262,11 +260,11 @@ As before, you can use the stream returned by `timedCounter()` like this:
 **[PENDING: Did we show this before?]**
 {% endcomment %}
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
+```dart
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // Print an integer every second, 15 times.
-{% endprettify %}
+```
 
 This implementation of `timedCounter()` has
 a couple of problems:
@@ -293,8 +291,8 @@ if the stream never gets a subscriber.
 
 Try changing the code that uses the stream to the following:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
+```dart
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
@@ -304,7 +302,7 @@ void listenAfterDelay() async {
     print(n); // Print an integer every second, 15 times.
   }
 }
-{% endprettify %}
+```
 
 When this code runs,
 nothing is printed for the first 5 seconds,
@@ -339,11 +337,11 @@ then the work spent creating the buffer is wasted.
 To see what happens without pause support,
 try changing the code that uses the stream to the following:
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
+```dart
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
-  StreamSubscription<int> subscription;
+  late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
     print(counter); // Print an integer every second.
@@ -353,7 +351,7 @@ void listenWithPause() {
     }
   });
 }
-{% endprettify %}
+```
 
 When the five seconds of pause are up,
 the events fired during that time are all received at once.
@@ -363,27 +361,25 @@ So the stream buffers the events,
 and it then empties its buffer when the stream becomes unpaused.
 
 The following version of `timedCounter()`
-(from [stream_controller.dart](code/stream_controller.dart))
-{%- comment -%}
-TODO: update that link to point to examples directory on GitHub,
-and then delete the old file.
-{% endcomment %}
+(from [stream_controller.dart][])
 implements pause by using the
 `onListen`, `onPause`, `onResume`, and `onCancel` callbacks
 on the `StreamController`.
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
-{% prettify dart tag=pre+code %}
-Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller;
-  Timer timer;
+[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart
+
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
+```dart
+Stream<int> timedCounter(Duration interval, [int? maxCount]) {
+  late StreamController<int> controller;
+  Timer? timer;
   int counter = 0;
 
   void tick(_) {
     counter++;
     controller.add(counter); // Ask stream to send counter values as event.
     if (counter == maxCount) {
-      timer.cancel();
+      timer?.cancel();
       controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
@@ -394,7 +390,7 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
 
   void stopTimer() {
     if (timer != null) {
-      timer.cancel();
+      timer?.cancel();
       timer = null;
     }
   }
@@ -407,7 +403,7 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
 
   return controller.stream;
 }
-{% endprettify %}
+```
 
 Run this code with the `listenWithPause()` function above.
 You'll see that it stops counting while paused,
@@ -449,9 +445,9 @@ keep these tips in mind:
   before the `subscription` variable
   has a valid value.
 
-  {% prettify dart tag=pre+code %}
+  ```dart
 subscription = stream.listen(handler);
-  {% endprettify %}
+  ```
 
 * The `onListen`, `onPause`, `onResume`, and `onCancel`
   callbacks defined by `StreamController` are
@@ -472,7 +468,7 @@ subscription = stream.listen(handler);
   implementing the `listen` method and the extra functionality on top,
   that is generally not recommended because
   it introduces a new type that users have to consider.
-  Instead you can often make a class that _has_ a `Stream` (and more) —
+  Instead, you can often make a class that _has_ a `Stream` (and more) —
   instead of one that _is_ a Stream (and more).
 
 {% comment %}
