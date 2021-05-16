@@ -389,10 +389,8 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   }
 
   void stopTimer() {
-    if (timer != null) {
-      timer?.cancel();
-      timer = null;
-    }
+    timer?.cancel();
+    timer = null;
   }
 
   controller = StreamController<int>(
