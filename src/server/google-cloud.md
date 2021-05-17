@@ -17,7 +17,7 @@ see the [Google APIs page](/guides/google-apis).
 
 ## Recommended solutions
 
-To run Dart in the Cloud, we recommand using serverless computing solutions.
+To run Dart in the Cloud, we recommend using serverless computing solutions.
 
 ### Cloud Run
 
