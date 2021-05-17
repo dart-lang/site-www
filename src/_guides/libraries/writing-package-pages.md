@@ -43,11 +43,11 @@ quickly scan the README when deciding whether to try your package.
 A good README catches the reader's attention and
 shows that your package is worth trying.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   The package README is used in multiple ways.
   For example, its content appears not only in the package page on pub.dev,
   but also in [dartdoc][]-produced API reference documentation.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Although this page features the [`in_app_purchase`][] package README,
 yours might not need to be as large or detailed.
@@ -131,14 +131,14 @@ adding visual content made the `in_app_purchase` package page look informative a
 
 {% asset libraries/package-page-example-iap.png alt="in_app_purchase readme without and with images" class="screenshot" %}
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   When adding visual content,
   use absolute URLs for the files
   to make the images reliably appear,
   no matter where the README is published.
   One place to host your images is in the repository itself,
   like `in_app_purchase` does.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ### 3. Use lists to present important information {#tip3}

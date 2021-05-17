@@ -24,11 +24,11 @@ with the goal of helping you decide when to migrate to null safety.
 After the conceptual discussion are instructions for migrating incrementally,
 followed by details on testing and running mixed-version programs.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   We recommend that, if possible, you wait for dependencies to migrate
   before you migrate your package.
   For details, see the [migration guide][].
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [migration guide]: /null-safety/migration-guide
 

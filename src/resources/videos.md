@@ -21,9 +21,9 @@ A playlist of Google-produced videos,
 ranging from 5-minute talks on Dart asynchrony support
 to the Dart session from Google I/O 2019.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{ page.dart-playlist-id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{page.dart-playlist-id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Playlist: Dart videos](https://www.youtube.com/playlist?list={{ page.dart-playlist-id }})
+[Playlist: Dart videos](https://www.youtube.com/playlist?list={{page.dart-playlist-id}})
 
 
 <!-- Smartherd playlist -->
@@ -31,6 +31,6 @@ to the Dart session from Google I/O 2019.
 
 A community-provided series of tutorial videos about the Dart language.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{ page.smartherd-playlist-id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list={{page.smartherd-playlist-id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Playlist: Dart tutorial for beginners](https://www.youtube.com/playlist?list={{ page.smartherd-playlist-id }})
+[Playlist: Dart tutorial for beginners](https://www.youtube.com/playlist?list={{page.smartherd-playlist-id}})

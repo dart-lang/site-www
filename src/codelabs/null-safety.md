@@ -95,11 +95,11 @@ If you're sure that an expression with a nullable type isn't null, you can use a
 expression, you tell Dart that the value won't be null, and
 that it's safe to assign it to a non-nullable variable.
 
-{{ site.alert.warn }}
+{{site.alert.warn}}
   If you're wrong, **Dart throws an exception at run-time**. This makes the
   `!` operator unsafe, so don't use it unless you're very sure that the
   expression isn't null.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### Exercise: Null assertion
 
@@ -301,13 +301,13 @@ void main() {
 }
 ```
 
-{{ site.alert.info }}
+{{site.alert.info}}
   **Fun fact:**
   After you add `late` to the declaration of `_cache`, if you move the
   `_computeValue` function into the `CachedValueProvider` class the code
   still works! Initialization expressions for `late` fields can use instance
   methods in their initializers.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ## What's next?
