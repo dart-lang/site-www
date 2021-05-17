@@ -14,17 +14,17 @@ import 'package:examples_util/print_matcher.dart' as m;
 void main() {
   test('readAsString, readAsLines', () async {
     // #docregion readAsString
-    Future main() async {
+    Future<void> main() async {
       var config = File('test_data/config.txt');
-      var contents;
 
       // Put the whole file in a single string.
-      contents = await config.readAsString();
-      print('The file is ${contents.length} characters long.');
+      var stringContents = await config.readAsString();
+      print(
+          'The file is ${stringContents.length} characters long.');
 
       // Put each line of the file into its own string.
-      contents = await config.readAsLines();
-      print('The file is ${contents.length} lines long.');
+      var lines = await config.readAsLines();
+      print('The file is ${lines.length} lines long.');
     }
     // #enddocregion readAsString
 
@@ -38,7 +38,7 @@ void main() {
 
   test('readAsBytes', () {
     // #docregion readAsBytes
-    Future main() async {
+    Future<void> main() async {
       var config = File('test_data/config.txt');
 
       var contents = await config.readAsBytes();
@@ -51,7 +51,7 @@ void main() {
 
   test('try-catch', () {
     // #docregion try-catch
-    Future main() async {
+    Future<void> main() async {
       var config = File('does-not-exist.txt');
       try {
         var contents = await config.readAsString();
@@ -93,7 +93,7 @@ void main() {
 
   test('list-dir', () {
     // #docregion list-dir
-    Future main() async {
+    Future<void> main() async {
       var dir = Directory('test_data');
 
       try {
@@ -116,7 +116,7 @@ void main() {
 
   test('client-server', () async {
     // #docregion client
-    Future main() async {
+    Future<void> main() async {
       var url = Uri.parse('http://localhost:8888/dart');
       var httpClient = HttpClient();
       var request = await httpClient.getUrl(url);
@@ -146,7 +146,7 @@ void main() {
 // included in the excerpt.
 
 // #docregion read-from-stream
-Future main_test_read_from_stream() async {
+Future<void> main_test_read_from_stream() async {
   var config = File('test_data/config.txt');
   Stream<List<int>> inputStream = config.openRead();
 

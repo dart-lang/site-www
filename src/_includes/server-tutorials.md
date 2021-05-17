@@ -12,7 +12,7 @@ and server apps that can run in the standalone Dart VM.
     <p>Learn about features that command-line apps need.</p>
   </div>
   <div class="card">
-    <h3><a href="/tutorials/server/httpserver">Write HTTP clients and servers</a></h3>
-    <p>Use dart:io APIs to communicate over the internet.</p>
+    <h3><a href="/tutorials/server/httpserver">Write HTTP servers</a></h3>
+    <p>Implement a web server written in Dart.</p>
   </div>
 </div>

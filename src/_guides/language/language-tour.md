@@ -1497,7 +1497,7 @@ void main(List<String> arguments) {
 }
 ```
 
-You can use the [args library]({{site.pub}}/packages/args) to
+You can use the [args library]({{site.pub-pkg}}/args) to
 define and parse command-line arguments.
 
 ### Functions as first-class objects

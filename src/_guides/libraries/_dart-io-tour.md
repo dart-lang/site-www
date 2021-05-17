@@ -5,8 +5,8 @@ files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
 {{site.alert.important}}
-  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, and servers
-  can import and use `dart:io`, not web apps.
+  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, 
+  and servers can import and use `dart:io`, not web apps.
 {{site.alert.end}}
 
 In general, the dart:io library implements and promotes an asynchronous
@@ -20,7 +20,7 @@ with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
 To use the dart:io library you must import it:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (import)"?>
 ```dart
 import 'dart:io';
 ```
@@ -43,19 +43,19 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
-  var contents;
 
   // Put the whole file in a single string.
-  contents = await config.readAsString();
-  print('The file is ${contents.length} characters long.');
+  var stringContents = await config.readAsString();
+  print(
+      'The file is ${stringContents.length} characters long.');
 
   // Put each line of the file into its own string.
-  contents = await config.readAsLines();
-  print('The file is ${contents.length} lines long.');
+  var lines = await config.readAsLines();
+  print('The file is ${lines.length} lines long.');
 }
 ```
 
@@ -66,9 +66,9 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
 
   var contents = await config.readAsBytes();
@@ -82,9 +82,9 @@ To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
 or (in an `async` function) use try-catch:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
   try {
     var contents = await config.readAsString();
@@ -102,12 +102,12 @@ You can use either the [Stream API](/guides/libraries/library-tour#stream)
 or `await for`, part of Dart's
 [asynchrony support.](/guides/language/language-tour#asynchrony-support)
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 ```dart
 import 'dart:io';
 import 'dart:convert';
 
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
@@ -131,7 +131,7 @@ write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.write`, completely
 overwrites existing data in the file.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 ```dart
 var logFile = File('log.txt');
 var sink = logFile.openWrite();
@@ -143,7 +143,7 @@ await sink.close();
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.append`:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 ```dart
 var sink = logFile.openWrite(mode: FileMode.append);
 ```
@@ -157,9 +157,9 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var dir = Directory('tmp');
 
   try {
@@ -208,9 +208,9 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   final requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
     processRequest(request);
@@ -244,9 +244,9 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (client)"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = HttpClient();
   var request = await httpClient.getUrl(url);

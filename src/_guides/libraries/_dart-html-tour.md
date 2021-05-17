@@ -10,8 +10,8 @@ additional APIs that this section doesn’t cover. Only web apps can use
 dart:html, not command-line apps.
 
 {{site.alert.note}}
-  For a higher level approach to web app UIs, use a web framework such as
-  [AngularDart.]({{site.angulardart}})
+  For larger applications or if you already have a Flutter application,
+  consider using [Flutter for web.]({{site.flutter}}/web)
 {{site.alert.end}}
 
 To use the HTML library in your web app, import dart:html:
@@ -20,7 +20,7 @@ To use the HTML library in your web app, import dart:html:
   TODO: Consider helping users run these examples in DartPad.
 {% endcomment -%}
 
-<?code-excerpt "html/lib/html.dart (import)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (import)"?>
 ```dart
 import 'dart:html';
 ```
@@ -53,36 +53,36 @@ To manipulate an element, you first need an object that represents it.
 You can get this object using a query.
 
 Find one or more elements using the top-level functions
-`querySelector()` and `querySelectorAll()`. You can query by ID, class, tag, name, or
-any combination of these. The [CSS Selector Specification
-guide](https://www.w3.org/TR/css3-selectors/) defines the formats of the
-selectors such as using a \# prefix to specify IDs and a period (.) for
-classes.
+`querySelector()` and `querySelectorAll()`. 
+You can query by ID, class, tag, name, or any combination of these. 
+The [CSS Selector Specification guide](https://www.w3.org/TR/css3-selectors/) 
+defines the formats of the selectors such as using a \# prefix to specify IDs 
+and a period (.) for classes.
 
 The `querySelector()` function returns the first element that matches
 the selector, while `querySelectorAll()`returns a collection of elements
 that match the selector.
 
-<?code-excerpt "html/lib/html.dart (querySelector)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (querySelector)"?>
 ```dart
 // Find an element by id (an-id).
-Element elem1 = querySelector('#an-id');
+Element idElement = querySelector('#an-id')!;
 
 // Find an element by class (a-class).
-Element elem2 = querySelector('.a-class');
+Element classElement = querySelector('.a-class')!;
 
 // Find all elements by tag (<div>).
-List<Element> elems1 = querySelectorAll('div');
+List<Element> divElements = querySelectorAll('div');
 
 // Find all text inputs.
-List<Element> elems2 = querySelectorAll(
+List<Element> textInputElements = querySelectorAll(
   'input[type="text"]',
 );
 
 // Find all elements with the CSS class 'class'
 // inside of a <p> that is inside an element with
 // the ID 'id'.
-List<Element> elems3 = querySelectorAll('#id p.class');
+List<Element> specialParagraphElements = querySelectorAll('#id p.class');
 ```
 
 #### Manipulating elements
@@ -96,17 +96,17 @@ define additional properties, such as the `href` property of
 
 Consider this example of specifying an anchor element in HTML:
 
-<?code-excerpt "html/test/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (anchor-html)" replace="/.*'(.*?)'.*/$1/g"?>
 ```html
 <a id="example" href="/another/example">link text</a>
 ```
 
-This \<a\> tag specifies an element with an `href` attribute and a text
+This `<a>` tag specifies an element with an `href` attribute and a text
 node (accessible via a `text` property) that contains the string
 “link text”. To change the URL that the link goes to, you can use
 AnchorElement’s `href` property:
 
-<?code-excerpt "html/test/html_test.dart (href)" plaster="none"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (href)" plaster="none"?>
 ```dart
 var anchor = querySelector('#example') as AnchorElement;
 anchor.href = 'https://dart.dev';
@@ -115,9 +115,9 @@ anchor.href = 'https://dart.dev';
 Often you need to set properties on multiple elements. For example, the
 following code sets the `hidden` property of all elements that have a
 class of “mac”, “win”, or “linux”. Setting the `hidden` property to true
-has the same effect as adding `display:none` to the CSS.
+has the same effect as adding `display: none` to the CSS.
 
-<?code-excerpt "html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
 ```dart
 <!-- In HTML: -->
 <p>
@@ -127,10 +127,10 @@ has the same effect as adding `display:none` to the CSS.
 </p>
 ```
 
-<?code-excerpt "html/test/html_test.dart (os)"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (os)"?>
 ```dart
 // In Dart:
-final osList = ['macos', 'windows', 'linux'];
+const osList = ['macos', 'windows', 'linux'];
 final userOs = determineUserOs();
 
 // For each possible OS...
@@ -152,10 +152,10 @@ When the right property isn’t available or convenient, you can use
 Element’s `attributes` property. This property is a
 `Map<String, String>`, where the keys are attribute names. For a list of
 attribute names and their meanings, see the [MDN Attributes
-page.](https://developer.mozilla.org/en/HTML/Attributes) Here’s an
+page.](https://developer.mozilla.org/docs/Web/HTML/Attributes) Here’s an
 example of setting an attribute’s value:
 
-<?code-excerpt "html/lib/html.dart (attributes)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (attributes)"?>
 ```dart
 elem.attributes['someAttribute'] = 'someValue';
 ```
@@ -166,7 +166,7 @@ You can add to existing HTML pages by creating new elements and
 attaching them to the DOM. Here’s an example of creating a paragraph
 (\<p\>) element:
 
-<?code-excerpt "html/lib/html.dart (creating-elements)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (creating-elements)"?>
 ```dart
 var elem = ParagraphElement();
 elem.text = 'Creating is easy!';
@@ -175,7 +175,7 @@ elem.text = 'Creating is easy!';
 You can also create an element by parsing HTML text. Any child elements
 are also parsed and created.
 
-<?code-excerpt "html/lib/html.dart (creating-from-html)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (creating-from-html)"?>
 ```dart
 var elem2 = Element.html(
   '<p>Creating <em>is</em> easy!</p>',
@@ -187,43 +187,42 @@ Note that `elem2` is a `ParagraphElement` in the preceding example.
 Attach the newly created element to the document by assigning a parent
 to the element. You can add an element to any existing element’s
 children. In the following example, `body` is an element, and its child
-elements are accessible (as a List\<Element\>) from the `children`
-property.
+elements are accessible (as a `List<Element>`) from the `children` property.
 
-<?code-excerpt "html/lib/html.dart (body-children-add)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (body-children-add)"?>
 ```dart
-document.body.children.add(elem2);
+document.body!.children.add(elem2);
 ```
 
 #### Adding, replacing, and removing nodes
 
 Recall that elements are just a kind of node. You can find all the
 children of a node using the `nodes` property of Node, which returns a
-List\<Node\> (as opposed to `children`, which omits non-Element nodes).
+`List<Node>` (as opposed to `children`, which omits non-Element nodes).
 Once you have this list, you can use the usual List methods and
 operators to manipulate the children of the node.
 
 To add a node as the last child of its parent, use the List `add()`
 method:
 
-<?code-excerpt "html/lib/html.dart (nodes-add)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (nodes-add)"?>
 ```dart
-querySelector('#inputs').nodes.add(elem);
+querySelector('#inputs')!.nodes.add(elem);
 ```
 
 To replace a node, use the Node `replaceWith()` method:
 
-<?code-excerpt "html/lib/html.dart (replaceWith)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (replaceWith)"?>
 ```dart
-querySelector('#status').replaceWith(elem);
+querySelector('#status')!.replaceWith(elem);
 ```
 
 To remove a node, use the Node `remove()` method:
 
-<?code-excerpt "html/lib/html.dart (remove)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (remove)"?>
 ```dart
-// Find a node by ID, and remove it from the DOM.
-querySelector('#expendable').remove();
+// Find a node by ID, and remove it from the DOM if it is found.
+querySelector('#expendable')?.remove();
 ```
 
 #### Manipulating CSS styles
@@ -236,16 +235,16 @@ Each element has a `classes` field, which is a list. Add and remove CSS
 classes simply by adding and removing strings from this collection. For
 example, the following sample adds the `warning` class to an element:
 
-<?code-excerpt "html/lib/html.dart (classes-add)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (classes-add)"?>
 ```dart
-var elem = querySelector('#message');
+var elem = querySelector('#message')!;
 elem.classes.add('warning');
 ```
 
 It’s often very efficient to find an element by ID. You can dynamically
 set an element ID with the `id` property:
 
-<?code-excerpt "html/lib/html.dart (set-id)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (set-id)"?>
 ```dart
 var message = DivElement();
 message.id = 'message2';
@@ -255,7 +254,7 @@ message.text = 'Please subscribe to the Dart mailing list.';
 You can reduce the redundant text in this example by using method
 cascades:
 
-<?code-excerpt "html/lib/html.dart (elem-set-cascade)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (elem-set-cascade)"?>
 ```dart
 var message = DivElement()
   ..id = 'message2'
@@ -266,7 +265,7 @@ While using IDs and classes to associate an element with a set of styles
 is best practice, sometimes you want to attach a specific style directly
 to the element:
 
-<?code-excerpt "html/lib/html.dart (set-style)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (set-style)"?>
 ```dart
 message.style
   ..fontWeight = 'bold'
@@ -289,10 +288,10 @@ name and <code><em>function</em></code> is the event handler.
 
 For example, here’s how you can handle clicks on a button:
 
-<?code-excerpt "html/lib/html.dart (onClick)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (onClick)"?>
 ```dart
 // Find a button by ID and add an event handler.
-querySelector('#submitInfo').onClick.listen((e) {
+querySelector('#submitInfo')!.onClick.listen((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
@@ -301,9 +300,9 @@ querySelector('#submitInfo').onClick.listen((e) {
 Events can propagate up and down through the DOM tree. To discover which
 element originally fired the event, use `e.target`:
 
-<?code-excerpt "html/lib/html.dart (target)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (target)"?>
 ```dart
-document.body.onClick.listen((e) {
+document.body!.onClick.listen((e) {
   final clickedElem = e.target;
   // ...
 });
@@ -336,9 +335,9 @@ The HttpRequest static method `getString()` is an easy way to get data
 from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
-<?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() async {
+Future<void> main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
   // Do something with pageHtml...
 }
@@ -346,7 +345,7 @@ Future main() async {
 
 Use try-catch to specify an error handler:
 
-<?code-excerpt "html/lib/html.dart (try-getString)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (try-getString)"?>
 ```dart
 try {
   var data = await HttpRequest.getString(jsonUri);
@@ -360,9 +359,9 @@ If you need access to the HttpRequest, not just the text data it
 retrieves, you can use the `request()` static method instead of
 `getString()`. Here’s an example of reading XML data:
 
-<?code-excerpt "html/test/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (request)" replace="/await.*;/[!$&!]/g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   HttpRequest req = await HttpRequest.request(
     url,
     method: 'HEAD',
@@ -390,7 +389,7 @@ For example:
 TODO: use original source from dart-tutorials-samples/web/portmanteaux/portmanteaux.dart
 {% endcomment %}
 
-<?code-excerpt "html/lib/html.dart (new-HttpRequest)"?>
+<?code-excerpt "../null_safety_examples/html/lib/html.dart (new-HttpRequest)"?>
 ```dart
 var request = HttpRequest();
 request
@@ -412,14 +411,15 @@ You must also set the `Content-type` header to
 `application/x-www-form-urlencoded` if you wish to send data to a form
 handler.
 
-<?code-excerpt "html/test/html_test.dart (POST)"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (POST)"?>
 ```dart
-String encodeMap(Map<String, String> data) => data.keys
-    .map((k) => '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
+String encodeMap(Map<String, String> data) => data.entries
+    .map((e) =>
+        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
     .join('&');
 
-Future main() async {
-  var data = {'dart': 'fun', 'angular': 'productive'};
+Future<void> main() async {
+  const data = {'dart': 'fun', 'angular': 'productive'};
 
   var request = HttpRequest();
   request
@@ -459,7 +459,7 @@ Once tests are written for the samples, consider getting code excerpts from
 the websocket sample app.
 {% endcomment %}
 
-<?code-excerpt "html/test/html_test.dart (WebSocket)"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (WebSocket)"?>
 ```dart
 var ws = WebSocket('ws://echo.websocket.org');
 ```
@@ -468,7 +468,7 @@ var ws = WebSocket('ws://echo.websocket.org');
 
 To send string data on the WebSocket, use the `send()` method:
 
-<?code-excerpt "html/test/html_test.dart (send)"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (send)"?>
 ```dart
 ws.send('Hello from Dart!');
 ```
@@ -478,7 +478,7 @@ ws.send('Hello from Dart!');
 To receive data on the WebSocket, register a listener for message
 events:
 
-<?code-excerpt "html/test/html_test.dart (onMessage)" plaster="none"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (onMessage)" plaster="none"?>
 ```dart
 ws.onMessage.listen((MessageEvent e) {
   print('Received message: ${e.data}');
@@ -495,7 +495,7 @@ and (as shown earlier) message. Here’s an example of a method that
 creates a WebSocket object and registers handlers for open, close,
 error, and message events:
 
-<?code-excerpt "html/test/html_test.dart (initWebSocket)" plaster="none"?>
+<?code-excerpt "../null_safety_examples/html/test/html_test.dart (initWebSocket)" plaster="none"?>
 ```dart
 void initWebSocket([int retrySeconds = 1]) {
   var reconnectScheduled = false;

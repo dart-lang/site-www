@@ -8,6 +8,8 @@ Dart servers can use many
 [Google Cloud products](https://cloud.google.com/products),
 often with the help of pre-packaged [Docker images][]
 that the Dart team maintains.
+For information about creating HTTP servers with Dart, see the
+[Write HTTP servers page](/tutorials/server/httpserver).
 
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
@@ -18,14 +20,23 @@ see the [Google APIs page](/guides/google-apis).
 You can use Cloud Run's flexible container support,
 combined with Dart's Docker images,
 to run server-side Dart code.
-
-One example of a Dart server that uses Cloud Run is dartbug.com,
-the redirect service for Dart issues and bugs.
-You can find its source code in the [dart-lang/dartbug.com repo][].
+Examples of Dart servers implemented to run on Cloud Run are
+[in the dart-lang/samples/repo][server examples].
 
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
 
+## Functions Framework for Dart
+
+The Functions Framework is a FaaS (Function as a Service) framework
+that makes it easy to write Dart functions
+instead of server applications for handling web requests.
+Using the framework, you can create functions that handle HTTP requests
+and [CloudEvents][] and deploy them to Google Cloud.
+
+The [Dart Functions Framework][] is a community-supported project. 
+
+For more information, see [the README][functions docs].
 
 ## Compute Engine
 
@@ -45,16 +56,19 @@ For more information, see the [GKE overview][].
 
 ## App Engine
 
-The App Engine support for Dart is incomplete and experimental,
-so we recommend that you **use Cloud Run** instead of App Engine
-to run new server-side Dart code.
-If you _do_ use App Engine,
-you might also want to use the [`appengine` package][].
+[App Engine][] support for Dart is incomplete,
+so we recommend that you **use Cloud Run** instead of App Engine for new
+server-side Dart code.
+If you _want_ to use App Engine, consider using the [`appengine` package][].
 
 
+[App Engine]: https://cloud.google.com/appengine
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
-[dart-lang/dartbug.com repo]: https://github.com/dart-lang/dartbug.com
+[server examples]: https://github.com/dart-lang/samples/tree/master/server
 [Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
+[Dart Functions Framework]: {{site.pub-pkg}}/functions_framework
+[CloudEvents]: https://cloudevents.io/
+[functions docs]: https://github.com/GoogleCloudPlatform/functions-framework-dart/blob/main/docs/README.md

@@ -50,7 +50,7 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/android_studio.png @path %}"
+<img src="{% asset tools/android_studio.svg @path %}"
      width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
