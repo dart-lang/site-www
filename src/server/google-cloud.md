@@ -66,7 +66,7 @@ For more information, see the [GKE overview][].
 ### App Engine
 
 [App Engine][] support for Dart is incomplete and requires the
-[App Engine Flexible Environment][] which does not
+[App Engine flexible environment][], which does not
 ["scale to zero"][scale to zero], so we recommend **Cloud Run** for new
 server-side Dart code.
 If you _want_ to use App Engine, consider using the [`appengine` package][].
