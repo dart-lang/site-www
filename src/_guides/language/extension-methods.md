@@ -8,10 +8,10 @@ You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   To use extension methods in a package,
   the pubspec must have a [minimum SDK constraint][] of at least 2.7.0.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [minimum SDK constraint]: /tools/pub/pubspec#sdk-constraints
 

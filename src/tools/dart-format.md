@@ -20,9 +20,9 @@ under the current directory's `bin`, `lib`, and `test` directories:
 $ dart format bin lib test
 ```
 
-{{ site.alert.warn }}
+{{site.alert.warn}}
   By default, `dart format` **overwrites** the Dart files.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 If you don't want to overwrite the files,
 add the `-o` flag.

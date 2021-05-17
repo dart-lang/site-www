@@ -404,10 +404,10 @@ void main() {
 }
 ```
 
-{{ site.alert.warn }}
+{{site.alert.warn}}
   If you fail to initialize a `late` variable,
   a runtime error occurs when the variable is used.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
@@ -1329,10 +1329,10 @@ to specify named parameters:
 void enableFlags({bool? bold, bool? hidden}) {...}
 ```
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   If a parameter is optional but can't be `null`,
   provide a [default value](#default-parameter-values).
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Although named parameters are a kind of optional parameter,
 you can annotate them with `required` to indicate
@@ -2120,9 +2120,9 @@ querySelector('#confirm') // Get an object.
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   The `?..` syntax was introduced in 2.12.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 The previous code is equivalent to the following:
 
