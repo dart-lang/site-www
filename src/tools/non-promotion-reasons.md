@@ -1,45 +1,380 @@
 ---
 title: Fixing type promotion failures
 description: Solutions for cases where you know more about a field's type than Dart can determine.
-toc: false
 ---
 
-{{ site.alert.warn}}
-  **This page is under construction**
-  ([issue #2940][]).
-{{ site.alert.end}}
-
-This page will have information to help you understand
+This page has information to help you understand
 why type promotion failures occur,
-and give tips on how to fix them.
-For example, consider the following code:
+with tips on how to fix them.
+For background information,
+see [Working with nullable fields][ns-fields],
+a section in [Understanding null safety][].
 
-```dart
+[issue #2940]: https://github.com/dart-lang/site-www/issues/2940
+[ns-fields]: /null-safety/understanding-null-safety#working-with-nullable-fields
+[Understanding null safety]: /null-safety/understanding-null-safety
+
+
+## Only local variables can be promoted {#property-or-this}
+
+**The cause:**
+You're trying to promote a property or `this`,
+but only local variables can be promoted.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
 class C {
   int? i;                  // (1)
-  f() {
+  void f() {
     if (i == null) return;
-    i.isEven;              // (2)
+    i.isEven;              // (2) ERROR
   }
 }
-```
+{% endprettify %}
 
 The Dart compiler produces an error message for (2)
 that points to (1) and explains that
 `i` can't be promoted to a non-nullable type
 because it's a field.
-The usual fix is to either use `i!`
-or create a local variable
+
+The usual fix is either to use `i!`
+or to create a local variable
 of type `int` that holds the value of `i`.
 
-Until this page is complete, see the following resources:
+Here's an example of using `i!`:
 
-* [Working with nullable fields][ns-fields]:
-  A section in [Understanding null safety][].
-* [Discussion in SDK issue #44900][sdk-44900-comment]:
-  A detailed list of reasons why type promotion might fail.
+{:.good}
+{% prettify dart tag=pre+code %}
+...
+i!.isEven;
+...
+{% endprettify %}
 
-[issue #2940]: https://github.com/dart-lang/site-www/issues/2940
-[sdk-44900-comment]: https://github.com/dart-lang/sdk/issues/44900#issuecomment-807117343
-[ns-fields]: /null-safety/understanding-null-safety#working-with-nullable-fields
-[Understanding null safety]: /null-safety/understanding-null-safety
+And here's an example of creating a local variable
+(which can be named `i`)
+that holds the value of `i`:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+class C {
+  int? i;
+  void f() {
+    int i = this.i ?? 0;
+    i.isEven;
+  }
+}
+{% endprettify %}
+
+Although this example features an instance field,
+it could instead use an instance getter, a static field or getter,
+a top-level variable or getter, or `this`.
+(Although promoting `this` would be sound,
+implementing that would be difficult and not very useful.)
+
+
+## Other causes and workarounds
+
+***[PENDING: make all good samples be tested]***
+
+***[PENDING: Check all uses of "you".]***
+
+This section covers all known causes
+of type promotion failure.
+***[PENDING: rephrase to something more true/accurate/helpful?]***
+The workarounds for many of these are
+similar to the workarounds shown in the previous section:
+either use `!` or create a local variable that has the type you need.
+***[PENDING: true?]***
+
+
+### Possibly written after promotion {#write}
+
+**The cause:**
+You're trying to promote a variable that might have been
+written to since it was promoted.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(bool b, int? i, int? j) {
+  if (i != null) return;
+  if (b) {
+    i = j;           // (1)
+  }
+  if (!b) {
+    print(i.isEven); // (2) ERROR
+  }
+}
+{% endprettify %}
+
+In this example, when flow analysis hits (1),
+it demotes `i` from non-nullable `int` back to nullable `int?`.
+A human can tell that the access at (2) is safe
+because there's no code path that includes both (1) and (2), but
+flow analysis isn't smart enough to see that,
+because it doesn't track correlations between
+conditions in separate `if` statements.
+
+You might fix the problem by combining the two `if` statements:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+f(bool b, int? i, int? j) {
+  if (i != null) return;
+  if (b) {
+    i = j;
+  } else {
+    print(i.isEven);
+  }
+}
+{% endprettify %}
+
+Note that in straight-line control flow cases like these (no loops),
+flow analysis takes into account the right hand side of the assignment
+in order to decide whether to demote.
+That means you could also fix this by changing the type of `j` to `int`.
+
+
+### Possibly written in a previous loop iteration {#loop-or-switch}
+
+**The cause:**
+You're trying to promote something that
+might have been written to in a previous iteration of a loop,
+and so the promotion was invalidated.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(Link? p) {
+  if (p != null) return;
+  while (true) {    // (1)
+    print(p.value); // (2) ERROR
+    var next = p.next;
+    if (next == null) break;
+    p = next;       // (3)
+  }
+}
+{% endprettify %}
+
+When flow analysis reaches (1),
+it looks ahead and sees the write to `p` at (3).
+But because it's looking ahead,
+it hasn't yet figured out the type of the right-hand side of the assignment,
+so it doesn't know whether it's safe to retain the promotion.
+To be safe, it invalidates the promotion.
+
+You might fix this problem by moving the null check to the top of the loop:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+f(Link? p) {
+  while (p != null) {
+    print(p.value);
+    p = p.next;
+  }
+}
+{% endprettify %}
+
+This situation can also arise in `switch` statements if
+there's a `case` block that has a label,
+because you can use labeled `switch` statements to construct loops:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int i, int? j, int? k) {
+  if (j == null) return;
+  switch (i) {
+    label:
+    case 0:
+      print(j.isEven);
+      j = k;
+      continue label;
+  }
+}
+{% endprettify %}
+
+
+### In catch after possible write in try
+
+**The cause:**
+The variable might have been written to in a `try` block,
+and execution is now in a `catch` block.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int? i, int? j) {
+  if (i == null) return;
+  try {
+    i = j;                 // (1)
+    if (i == null) return; // (2)
+  } catch (...) {
+    print(i.isEven);       // ERROR
+  }
+}
+{% endprettify %}
+
+In this case, flow analysis doesn't consider `i.isEven` safe,
+because it has no way of knowing when in the `try` block
+the exception might have occurred,
+so it conservatively assumes that it might have happened between (1) and (2),
+when `i` was potentially `null`.
+
+Similar situations can occur between `try` and `finally` blocks, and
+between `catch` and `finally` blocks.
+
+Because of a historical artifact of how the implementation was done,
+these try/catch/finally situations don't take into account
+the right-hand side of the assignment,
+similar to what happens in loops.
+
+***[PENDING: show fix?]***
+
+
+### Subtype mismatch
+
+**The cause:**
+The type you're trying to promote to isn't a subtype of
+the variable's current promoted type
+(or wasn't a subtype at the time of the promotion attempt).
+
+Example:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+f(Object o) {
+  if (o is Comparable) {             // (1)
+    if (o is Pattern) {              // (2)
+      print(o.matchAsPrefix('foo')); // (3) ERROR
+    }
+  }
+}
+{% endprettify %}
+
+In this example, `o` is promoted to `Comparable` at (1), but
+it's not promoted to `Pattern` at (2),
+because `Pattern` is not a subtype of `Comparable`.
+(The rationale is that if we did promote,
+then you wouldn't be able to access methods on `Comparable` anymore).
+Note that just because `Pattern` isn't a subtype of `Comparable`
+doesn't mean the code at (3) is dead;
+if you define a class that
+implements both `Comparable` and `Pattern`,
+then (3) is reachable.
+
+***[PENDING: show fix?]***
+
+
+### Write captured by a local function
+
+**The cause:**
+The variable has been write captured by
+a local function or function expression.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int? i, int? j) {
+  if (i == null) return;
+  var foo = () {
+    i = j;
+  };
+  print(i.isEven); // ERROR
+}
+{% endprettify %}
+
+Flow analysis reasons that as soon as the definition of `foo` is reached,
+it might get called at any time,
+therefore it's no longer safe to promote `i` at all.
+As with loops, this demotion happens regardless of
+the type of the right hand side of the assignment.
+
+***[PENDING: show fix?]***
+
+
+### Written outside of the current closure or function expression {#write-outer}
+
+**The cause:**
+The variable is written to outside of a closure or function expression,
+and the type promotion location is
+inside the closure or function expression.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int? i, int? j) {
+  if (i == null) return;
+  var foo = () {
+    print(i.isEven); // ERROR
+  };
+  i = j;             // (1)
+}
+{% endprettify %}
+
+Flow analysis reasons that there's no way to determine
+when `foo` might get called,
+so it might get called after the assignment at (1),
+and thus the promotion might no longer be valid.
+As with loops, this demotion happens regardless of the type of
+the right hand side of the assignment.
+
+A particularly nasty case looks like this:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int? i) {
+  i ??= 0;
+  var foo = () {
+    print(i.isEven); // ERROR
+  };
+}
+{% endprettify %}
+
+In this case, a human can see that the promotion is safe because
+the only write to `i` uses a non-null value and
+happens before `foo` is ever created.
+But [flow analysis is not that smart][1536].
+
+[1536]: https://github.com/dart-lang/language/issues/1536
+
+***[PENDING: show fix?]***
+
+
+### Write captured outside of the current closure or function expression {#captured-outer}
+
+**The cause:**
+The variable you're trying to promote is write captured
+outside of a closure or function expression,
+but this use of the variable is inside of the closure or function expression
+that's trying to promote it.
+
+Example:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+f(int? i, int? j) {
+  var foo = () {
+    if (i == null) return;
+    print(i.isEven); // ERROR
+  };
+  var bar = () {
+    i = j;
+  };
+}
+{% endprettify %}
+
+Flow analysis reasons that there's no way of telling
+what order `foo` and `bar` might be executed in;
+in fact, `bar` might even get executed halfway through executing `foo`
+(due to `foo` calling something that calls `bar`).
+So it's not safe to promote `i` at all inside `foo`.
+
+***[PENDING: show fix?]***
+
