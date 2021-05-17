@@ -36,7 +36,7 @@ and [CloudEvents][] and deploy them to Google Cloud.
 
 The [Dart Functions Framework][] is a community-supported project. 
 
-For more inforanmtion, see [the README][functions docs].
+For more information, see [the README][functions docs].
 
 ## Compute Engine
 
