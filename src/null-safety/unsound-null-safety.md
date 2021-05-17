@@ -198,5 +198,3 @@ when you've finished the incremental migration of your libraries.
 
 
 [language version comment]: /guides/language/evolution#per-library-language-version-selection
-[package config]: https://pub.dev/packages/package_config
-
