@@ -33,14 +33,14 @@ $ dart pub outdated
 $ dart pub upgrade
 ```
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   Before Dart 2.10, the `dart` command was used only to run the
   [Dart VM][dart-vm].
   You can still use it that way, but
   now the command has more functionality.
   Over time, we expect the `dart` command to replace
   most existing commands in the Dart SDK.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 The following table shows which commands you can use with the `dart` tool.
 

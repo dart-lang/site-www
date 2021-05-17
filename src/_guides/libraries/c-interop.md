@@ -36,11 +36,11 @@ calling a C library.
 The hello_world example has the following files:
 
 | **Source file** | **Description** |
-| [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
-| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
-| [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
-| [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
-| [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
+| [hello.dart]({{page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 {:.table .table-striped }
 
 {% comment %}
@@ -82,7 +82,7 @@ Hello World
 
 ### Using dart:ffi
 
-The [`hello.dart` file]({{ page.hw}}/hello.dart)
+The [`hello.dart` file]({{page.hw}}/hello.dart)
 illustrates the steps for using dart:ffi to call a C function:
 
 1. Import dart:ffi.
@@ -164,7 +164,7 @@ depends on your platform and the type of library.
 For details, see the following:
 
 * [Flutter dart:ffi page][binding]
-* [dart:ffi examples]({{ page.samples }})
+* [dart:ffi examples]({{page.samples}})
 
 ## Generating FFI bindings with `package:ffigen`
 
@@ -178,8 +178,8 @@ binding generator to automatically create FFI wrappers from C header files.
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
 [hello_world]: {{page.hw}}
-[primitives]: {{ page.samples }}/primitives
-[structs]: {{ page.samples }}/structs
-[sqlite]: {{ page.sqlite }}
-[mini tutorial.]: {{ page.sqlite }}/docs/sqlite-tutorial.md
-[ffigen]: {{ site.pub-pkg }}/ffigen
+[primitives]: {{page.samples}}/primitives
+[structs]: {{page.samples}}/structs
+[sqlite]: {{page.sqlite}}
+[mini tutorial.]: {{page.sqlite}}/docs/sqlite-tutorial.md
+[ffigen]: {{site.pub-pkg}}/ffigen
