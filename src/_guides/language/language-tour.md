@@ -4352,7 +4352,6 @@ A type alias — often called a _typedef_ because
 it's declared with the keyword `typedef` — is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
-***[PENDING: Use a JsonMap example instead?]***
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
