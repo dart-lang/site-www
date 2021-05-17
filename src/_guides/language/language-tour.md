@@ -113,6 +113,7 @@ mind:
 
     {{site.alert.version-note}}
       [Null safety][ns] was introduced in Dart 2.12.
+      Using null safety requires a [language version][] of at least 2.12.
     {{site.alert.end}}
 
 -   Although Dart is strongly typed, type annotations are optional
@@ -2121,7 +2122,7 @@ querySelector('#confirm') // Get an object.
 ```
 
 {{ site.alert.version-note }}
-  The `?..` syntax was introduced in 2.12.
+  The `?..` syntax requires a [language version][] of at least 2.12.
 {{ site.alert.end }}
 
 The previous code is equivalent to the following:
@@ -4365,15 +4366,16 @@ A type alias can have type parameters:
 ```dart
 typedef ListMapper<X> = Map<X, List<X>>;
 Map<String, List<String>> m1; // Verbose.
-ListMapper<String> m2; // Same thing but less verbose, less redundant.
+ListMapper<String> m2; // Same thing but shorter and clearer.
 ```
 
 {{site.alert.version-note}}
   Before 2.13, typedefs were restricted to function types.
+  Using the new typedefs requires a [language version][] of at least 2.13.
 {{site.alert.end}}
 
 We recommend using [inline function types][] instead of typedefs for functions,
-whenever possible.
+in most situations.
 However, function typedefs can still be useful:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
@@ -4584,6 +4586,7 @@ To learn more about Dart's core libraries, see
 [`int`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [`Iterable`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
+[language version]: /guides/language/evolution#language-versioning
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
