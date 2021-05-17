@@ -16,11 +16,11 @@ Here are the basic steps for migrating each package that you own:
    [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
-{{ site.alert.info }}
+{{site.alert.info}}
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
   make sure that all of your dependencies are ready.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 For an informal look at the experience of using the migration tool, watch this video:
 
@@ -45,7 +45,7 @@ For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
-{{ site.alert.info }}
+{{site.alert.info}}
   **You can — and should — migrate your package before
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
@@ -53,7 +53,7 @@ then passing a nullable argument becomes a compile error.
   as long as they use Dart 2.12 or later.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 This section tells you how to
 check and update your package's dependencies,
@@ -86,7 +86,7 @@ then you can start migrating.
 Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
 
-{{ site.alert.info }}
+{{site.alert.info}}
   **Why do all dependencies need to support null safety?**
   When all of an app's direct dependencies support null safety,
   you can _run the app_ with sound null safety.
@@ -94,7 +94,7 @@ null-safe releases, if they exist.
   you can _run tests_ with sound null safety.
   You might also need null-safe dev dependencies for other reasons,
   such as code generation.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
@@ -108,7 +108,7 @@ If any of your package's dependencies _don't_ yet support null safety,
 we encourage you to reach out to the package owner.
 You can find contact details on the package page on [pub.dev][].
 
-[pub.dev]: {{ site.pub }}
+[pub.dev]: {{site.pub}}
 
 
 ### Update dependencies
@@ -138,10 +138,10 @@ You have two options for migrating:
   which can make most of the easily predictable changes for you.
 * [Migrate your code by hand.](#migrating-by-hand)
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   For additional help while migrating code, check the
   [null safety FAQ][].
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters

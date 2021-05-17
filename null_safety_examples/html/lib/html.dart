@@ -7,28 +7,28 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion querySelector
     // Find an element by id (an-id).
-    Element elem1 = querySelector('#an-id');
+    Element idElement = querySelector('#an-id')!;
 
     // Find an element by class (a-class).
-    Element elem2 = querySelector('.a-class');
+    Element classElement = querySelector('.a-class')!;
 
     // Find all elements by tag (<div>).
-    List<Element> elems1 = querySelectorAll('div');
+    List<Element> divElements = querySelectorAll('div');
 
     // Find all text inputs.
-    List<Element> elems2 = querySelectorAll(
+    List<Element> textInputElements = querySelectorAll(
       'input[type="text"]',
     );
 
     // Find all elements with the CSS class 'class'
     // inside of a <p> that is inside an element with
     // the ID 'id'.
-    List<Element> elems3 = querySelectorAll('#id p.class');
+    List<Element> specialParagraphElements = querySelectorAll('#id p.class');
     // #enddocregion querySelector
   }
 
   {
-    Element elem;
+    Element elem = querySelector('#an-id')!;
     // #docregion attributes
     elem.attributes['someAttribute'] = 'someValue';
     // #enddocregion attributes
@@ -47,26 +47,26 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion creating-from-html
 
     // #docregion body-children-add
-    document.body.children.add(elem2);
+    document.body!.children.add(elem2);
     // #enddocregion body-children-add
 
     // #docregion nodes-add
-    querySelector('#inputs').nodes.add(elem);
+    querySelector('#inputs')!.nodes.add(elem);
     // #enddocregion nodes-add
 
     // #docregion replaceWith
-    querySelector('#status').replaceWith(elem);
+    querySelector('#status')!.replaceWith(elem);
     // #enddocregion replaceWith
 
     // #docregion remove
-    // Find a node by ID, and remove it from the DOM.
-    querySelector('#expendable').remove();
+    // Find a node by ID, and remove it from the DOM if it is found.
+    querySelector('#expendable')?.remove();
     // #enddocregion remove
   }
 
   {
     // #docregion classes-add
-    var elem = querySelector('#message');
+    var elem = querySelector('#message')!;
     elem.classes.add('warning');
     // #enddocregion classes-add
 
@@ -93,21 +93,21 @@ void miscDeclAnalyzedButNotTested() {
     void submitData() {}
     // #docregion onClick
     // Find a button by ID and add an event handler.
-    querySelector('#submitInfo').onClick.listen((e) {
+    querySelector('#submitInfo')!.onClick.listen((e) {
       // When the button is clicked, it runs this code.
       submitData();
     });
     // #enddocregion onClick
 
     // #docregion target
-    document.body.onClick.listen((e) {
+    document.body!.onClick.listen((e) {
       final clickedElem = e.target;
       // ...
     });
     // #enddocregion target
   }
 
-  Future tryGetString() async {
+  Future<void> tryGetString() async {
     String jsonUri = 'data.json';
     // #docregion try-getString
     try {
@@ -121,7 +121,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     var encodedData;
-    String url;
+    var url = 'random-url';
     void requestComplete(HttpRequest req) {}
     // #docregion new-HttpRequest
     var request = HttpRequest();

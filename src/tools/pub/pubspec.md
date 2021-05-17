@@ -285,12 +285,12 @@ and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies.
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   For a package to use a feature introduced after 2.0,
   its pubspec must have a lower constraint that's at least
   the version when the feature was introduced.
   For details, see the [language evolution page][].
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [language evolution page]: /guides/language/evolution
 

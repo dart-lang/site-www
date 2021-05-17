@@ -3,7 +3,7 @@ title: Creating packages
 description: Learn how to create library packages in Dart.
 ---
 
-The Dart ecosystem uses [packages][]
+The Dart ecosystem uses [packages](/guides/packages)
 to share software such as libraries and tools.
 This page tells you how to create a package,
 with a focus on the most common kind of package,
@@ -12,8 +12,6 @@ with a focus on the most common kind of package,
 {% comment %}
 TODO: Add coverage of packages that contain tools.
 {% endcomment %}
-
-[packages]: /guides/packages
 
 ## What makes a library package
 
@@ -24,41 +22,28 @@ library package:
 
 The minimal requirements for a library are:
 
-<dl markdown="1">
-
-<dt markdown="1">
 pubspec file
-</dt>
-<dd markdown="1">
-The `pubspec.yaml` file for a library is the same
-as for an application package&mdash;there is no special
-designation to indicate that the package is a library.
-</dd>
+: The `pubspec.yaml` file for a library is the same
+  as for an application package&mdash;there is no special
+  designation to indicate that the package is a library.
 
-<dt markdown="1">
 lib directory
-</dt>
-<dd markdown="1">
-As you might expect, the library code lives under the _lib_
-directory and is public to other packages.
-You can create any hierarchy under lib, as needed.
-By convention, implementation code is placed under _lib/src_.
-Code under lib/src is considered private;
-other packages should never need to import `src/...`.
-To make APIs under lib/src public, you can export lib/src files
-from a file that's directly under lib.
-</dd>
+: As you might expect, the library code lives under the _lib_
+  directory and is public to other packages.
+  You can create any hierarchy under lib, as needed.
+  By convention, implementation code is placed under _lib/src_.
+  Code under lib/src is considered private;
+  other packages should never need to import `src/...`.
+  To make APIs under lib/src public, you can export lib/src files
+  from a file that's directly under lib.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-When the `library` directive isn't specified, a unique
-tag is generated for each library based on its path and filename.
-Therefore, we suggest that you omit the `library` directive from
-your code unless you plan to
-[generate library-level documentation](#documenting-a-library).
-</aside>
-
-</dl>
+{{site.alert.note}}
+  When the `library` directive isn't specified, a unique
+  tag is generated for each library based on its path and filename.
+  Therefore, we suggest that you omit the `library` directive from
+  your code unless you plan to
+  [generate library-level documentation](#documenting-a-library).
+{{site.alert.end}}
 
 ## Organizing a library package
 
@@ -68,11 +53,11 @@ _mini libraries_.
 In most cases, each class should be in its own mini library, unless
 you have a situation where two classes are tightly coupled.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** You may have heard of the `part` directive, which allows
-you to split a library into multiple Dart files. We recommend
-that you avoid using `part` and create mini libraries instead.
-</aside>
+{{site.alert.note}}
+  You may have heard of the `part` directive, which allows
+  you to split a library into multiple Dart files. We recommend
+  that you avoid using `part` and create mini libraries instead.
+{{site.alert.end}}
 
 Create a "main" library file directly under lib,
 lib/_&lt;package-name&gt;_.dart, that
@@ -82,7 +67,7 @@ by importing a single file.
 
 The lib directory might also include other importable, non-src, libraries.
 For example, perhaps your main library works across platforms, but
-you create separate libraries that rely on dart:io or dart:html.
+you create separate libraries that rely on `dart:io` or `dart:html`.
 Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
@@ -97,7 +82,7 @@ library packages:
 Directly under lib, the main library file,
 `shelf.dart`, exports several files from lib/src:
 
-{% prettify dart tag=pre+code %}
+```dart
 export 'src/cascade.dart';
 export 'src/handler.dart';
 export 'src/handlers/logger.dart';
@@ -108,20 +93,17 @@ export 'src/request.dart';
 export 'src/response.dart';
 export 'src/server.dart';
 export 'src/server_handler.dart';
-{% endprettify %}
+```
 
 The shelf package also contains a mini library: shelf_io.
-This adapter handles HttpRequest objects from dart:io.
+This adapter handles HttpRequest objects from `dart:io`.
 
-<aside class="alert alert-info" markdown="1">
-**Tip for web apps:**
-For the best performance when developing with
-[dartdevc,](/tools/dartdevc)
-put [implementation
-files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
-instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-</aside>
+{{site.alert.tip}}
+  For the best performance when developing with [dartdevc,](/tools/dartdevc)
+  put [implementation files](/tools/pub/package-layout#implementation-files) 
+  under `/lib/src`, instead of elsewhere under `/lib`.
+  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+{{site.alert.end}}
 
 
 ## Importing library files
@@ -129,9 +111,9 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 When importing a library file from another package, use the
 the `package:` directive to specify the URI of that file.
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:utilities/utilities.dart';
-{% endprettify %}
+```
 
 When importing a library file from your own package,
 use a relative path when both files are inside of lib,
@@ -155,7 +137,7 @@ you need to check for the presence of `dart:*` libraries.
 Here's an example of conditional export code that
 checks for the presence of `dart:io` and `dart:html`:
 
-<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
@@ -185,11 +167,11 @@ but change `export` to `import`.
 All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:
 
-<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_io.dart"?>
 ```dart
 import 'dart:io';
 
-void alarm([String text]) {
+void alarm([String? text]) {
   stderr.writeln(text ?? message);
 }
 
@@ -198,11 +180,11 @@ String get message => 'Hello World from the VM!';
 <div class="prettify-filename">lib/src/hw_io.dart</div>
 
 And here's the default implementation,
-which is a stub that throws UnsupportedErrors:
+which uses stubs that throw `UnsupportedError`:
 
-<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_none.dart"?>
 ```dart
-void alarm([String text]) => throw UnsupportedError('hw_none alarm');
+void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
 String get message => throw UnsupportedError('hw_none message');
 ```
@@ -211,7 +193,7 @@ String get message => throw UnsupportedError('hw_none message');
 On any platform,
 you can import the library that has the conditional export code:
 
-<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+<?code-excerpt "../null_safety_examples/create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
@@ -222,7 +204,7 @@ void main() {
 
 ## Providing additional files
 
-A well designed library package is easy to test.
+A well-designed library package is easy to test.
 We recommend that you write tests using the
 [test](https://github.com/dart-lang/test) package,
 placing the test code in the `test` directory at the
@@ -231,11 +213,11 @@ top of the package.
 If you create any command-line tools intended for public consumption,
 place those in the `bin` directory, which is public.
 Enable running a tool from the command line, using
-[`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
+[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
 Listing the tool in the
 [`executables` section](/tools/pub/pubspec#executables)
 of the pubspec allows a user to run it directly without calling
-[`pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.
@@ -244,7 +226,7 @@ Any tools or executables that you create during development that aren't for
 public use go into the `tool` directory.
 
 Other files that are required if you publish your library to the
-pub.dev site, such as `README.md` and `CHANGELOG.md`, are
+[pub.dev]({{site.pub}}) site, such as `README.md` and `CHANGELOG.md`, are
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
@@ -267,12 +249,11 @@ void updateBadge() {
 For an example of generated docs, see the
 [shelf documentation.]({{site.pub-api}}/shelf/latest)
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-To include any library-level documentation in the generated docs,
-you must specify the `library` directive.
-See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
-</aside>
+{{site.alert.note}}
+  To include any library-level documentation in the generated docs,
+  you must specify the `library` directive.
+  See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
+{{site.alert.end}}
 
 ## Distributing an open source library {#distributing-a-library}
 

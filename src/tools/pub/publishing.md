@@ -342,7 +342,7 @@ For more information, see the reference pages for the following `pub` commands:
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
 [package layout conventions]: /tools/pub/package-layout
-[policy]: https://pub.dev/policy
+[policy]: {{site.pub}}/policy
 [pub]: /guides/packages
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
 [`dart pub uploader`]: /tools/pub/cmd/pub-uploader

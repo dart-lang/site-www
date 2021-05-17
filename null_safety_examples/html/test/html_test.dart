@@ -11,7 +11,7 @@ void main() {
         // #docregion anchor-html
         '<a id="example" href="/another/example">link text</a>';
     // #enddocregion anchor-html
-    document.body.appendHtml(html);
+    document.body!.appendHtml(html);
 
     // #docregion href
     var anchor = querySelector('#example') as AnchorElement;
@@ -25,19 +25,19 @@ void main() {
 
   test('querySelectorAll', () {
     // #docregion os-html
-    final html = '''<!-- In HTML: -->
+    const html = '''<!-- In HTML: -->
     <p>
       <span class="linux">Words for Linux</span>
       <span class="macos">Words for Mac</span>
       <span class="windows">Words for Windows</span>
     </p>''';
     // #enddocregion os-html
-    document.body.appendHtml(html);
+    document.body!.appendHtml(html);
 
     String determineUserOs() => 'linux';
     // #docregion os
     // In Dart:
-    final osList = ['macos', 'windows', 'linux'];
+    const osList = ['macos', 'windows', 'linux'];
     final userOs = determineUserOs();
 
     // For each possible OS...
@@ -54,15 +54,15 @@ void main() {
       }
     }
     // #enddocregion os
-    expect(querySelector('.linux').hidden, isFalse);
-    expect(querySelector('.macos').hidden, isTrue);
-    expect(querySelector('.windows').hidden, isTrue);
+    expect(querySelector('.linux')!.hidden, isFalse);
+    expect(querySelector('.macos')!.hidden, isTrue);
+    expect(querySelector('.windows')!.hidden, isTrue);
   });
 
   test('getString', () async {
     final url = 'https://httpbin.org';
     // #docregion getString
-    Future main() async {
+    Future<void> main() async {
       String pageHtml = await HttpRequest.getString(url);
       // Do something with pageHtml...
       // #enddocregion getString
@@ -80,7 +80,7 @@ void main() {
   test('request', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
-    Future main() async {
+    Future<void> main() async {
       HttpRequest req = await HttpRequest.request(
         url,
         method: 'HEAD',
@@ -100,12 +100,13 @@ void main() {
   test('POST', () async {
     final url = 'https://httpbin.org/post';
     // #docregion POST
-    String encodeMap(Map<String, String> data) => data.keys
-        .map((k) => '${Uri.encodeComponent(k)}=${Uri.encodeComponent(data[k])}')
+    String encodeMap(Map<String, String> data) => data.entries
+        .map((e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
 
-    Future main() async {
-      var data = {'dart': 'fun', 'angular': 'productive'};
+    Future<void> main() async {
+      const data = {'dart': 'fun', 'angular': 'productive'};
 
       var request = HttpRequest();
       request

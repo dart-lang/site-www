@@ -12,7 +12,7 @@
   <!-- End Google Tag Manager -->
   {% assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
   <meta name="description" content="{{desc}}">
-  <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
+  <title>{% if page.short-title %}{{page.short-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
@@ -24,11 +24,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@dart_lang" />
-  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:title" content="{{page.title}}" />
   <meta name="twitter:description" content="{{desc}}" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:title" content="{{page.title}}" />
   <meta property="og:description" content="{{desc}}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   {% assign og_image_path = page.og_image | default: layout.og_image | default: '/assets/shared/dart-logo-for-shares.png' -%}

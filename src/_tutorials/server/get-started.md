@@ -66,12 +66,12 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   Under the hood, `dart create` runs [`dart pub get`][], which
   scans the generated pubspec file and downloads dependencies.
   If you add other dependencies to your pubspec file,
   then run `dart pub get` to download them.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
@@ -158,7 +158,6 @@ Check out these resources:
 If you get stuck, find help at [Community and support.](/community)
 
 [Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
-[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
