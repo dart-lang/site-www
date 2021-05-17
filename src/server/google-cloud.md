@@ -73,7 +73,7 @@ If you _want_ to use App Engine, consider using the [`appengine` package][].
 
 
 [App Engine]: https://cloud.google.com/appengine
-[App Engine Flexible Environment]: https://cloud.google.com/appengine/docs/flexible
+[App Engine flexible environment]: https://cloud.google.com/appengine/docs/flexible
 [scale to zero]: https://cloud.google.com/run/docs/about-instance-autoscaling
 [`appengine` package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
