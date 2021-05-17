@@ -866,7 +866,7 @@ function?.call(arg1, arg2);
 ### Null assertion operator
 
 The great thing about using flow analysis to move a nullable variable to the
-non-nullable side of the world is that doing so is provably safe. You get to
+non-nullable side of the world is that doing so is probably safe. You get to
 call methods on the previously-nullable variable without giving up any of the
 safety or performance of non-nullable types.
 
