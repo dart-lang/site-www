@@ -1,6 +1,6 @@
 // #docregion int-list
 typedef IntList = List<int>;
-IntList il = [1,2,3];
+IntList il = [1, 2, 3];
 // #enddocregion int-list
 
 // #docregion list-mapper

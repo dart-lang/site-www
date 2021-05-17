@@ -4356,7 +4356,7 @@ Here's an example of declaring and using a type alias named `IntList`:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
 typedef IntList = List<int>;
-IntList il = [1,2,3];
+IntList il = [1, 2, 3];
 ```
 
 A type alias can have type parameters:
