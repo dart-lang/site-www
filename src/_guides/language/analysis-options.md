@@ -291,7 +291,6 @@ linter:
     - package_api_docs
     - prefer_single_quotes
     - sort_child_properties_last
-    - sort_constructors_first
 ```
 
 {% comment %}
