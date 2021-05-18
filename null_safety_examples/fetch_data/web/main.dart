@@ -6,22 +6,22 @@ import 'dart:html';
 import 'dart:convert';
 
 // Input fields
-InputElement favoriteNumber;
-InputElement valueOfPi;
-InputElement horoscope;
-InputElement favOne;
-InputElement favTwo;
-InputElement favThree;
-RadioButtonInputElement loveChocolate;
-RadioButtonInputElement noLoveForChocolate;
+late final InputElement favoriteNumber;
+late final InputElement valueOfPi;
+late final InputElement horoscope;
+late final InputElement favOne;
+late final InputElement favTwo;
+late final InputElement favThree;
+late final RadioButtonInputElement loveChocolate;
+late final RadioButtonInputElement noLoveForChocolate;
 
 // Result fields
-TextAreaElement intAsJson;
-TextAreaElement doubleAsJson;
-TextAreaElement stringAsJson;
-TextAreaElement listAsJson;
-TextAreaElement boolAsJson;
-TextAreaElement mapAsJson;
+late final TextAreaElement intAsJson;
+late final TextAreaElement doubleAsJson;
+late final TextAreaElement stringAsJson;
+late final TextAreaElement listAsJson;
+late final TextAreaElement boolAsJson;
+late final TextAreaElement mapAsJson;
 
 void main() {
   // Set up the input text areas.
@@ -45,23 +45,23 @@ void main() {
   mapAsJson = querySelector('#mapAsJson') as TextAreaElement;
 
   // Set up the listeners.
-  favoriteNumber.onKeyUp.listen(showJson);
-  valueOfPi.onKeyUp.listen(showJson);
-  loveChocolate.onClick.listen(showJson);
-  noLoveForChocolate.onClick.listen(showJson);
-  horoscope.onKeyUp.listen(showJson);
-  favOne.onKeyUp.listen(showJson);
-  favTwo.onKeyUp.listen(showJson);
-  favThree.onKeyUp.listen(showJson);
+  favoriteNumber.onKeyUp.listen(_showJson);
+  valueOfPi.onKeyUp.listen(_showJson);
+  loveChocolate.onClick.listen(_showJson);
+  noLoveForChocolate.onClick.listen(_showJson);
+  horoscope.onKeyUp.listen(_showJson);
+  favOne.onKeyUp.listen(_showJson);
+  favTwo.onKeyUp.listen(_showJson);
+  favThree.onKeyUp.listen(_showJson);
 
   _populateFromJson();
-  showJson(null);
+  _showJson();
 }
 
 // Pre-fill the form with some default values.
 void _populateFromJson() {
   // #docregion jsonDataAsString
-  final jsonDataAsString = '''{
+  const jsonDataAsString = '''{
     "favoriteNumber": 73,
     "valueOfPi": 3.141592,
     "chocolate": true,
@@ -75,29 +75,28 @@ void _populateFromJson() {
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  final favoriteThings = jsonData['favoriteThings'] as List;
-  favOne.value = favoriteThings[0] as String;
-  favTwo.value = favoriteThings[1] as String;
-  favThree.value = favoriteThings[2] as String;
+  final favoriteThings = jsonData['favoriteThings'] as List<String>;
+  favOne.value = favoriteThings[0];
+  favTwo.value = favoriteThings[1];
+  favThree.value = favoriteThings[2];
 
   final chocolateRadioButton =
       jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
   chocolateRadioButton.checked = true;
 }
 
-// TODO(chalin): I'm currently minimizing changes, but make showJson private.
 /// Display all values as JSON.
 // #docregion showJson
-void showJson(Event _) {
+void _showJson([Event? _]) {
   // Grab the data that will be converted to JSON.
-  final favNum = int.tryParse(favoriteNumber.value);
-  final pi = double.tryParse(valueOfPi.value);
+  final favNum = int.tryParse(favoriteNumber.value ?? '');
+  final pi = double.tryParse(valueOfPi.value ?? '');
   final chocolate = loveChocolate.checked;
   final sign = horoscope.value;
   final favoriteThings = <String>[
-    favOne.value,
-    favTwo.value,
-    favThree.value,
+    favOne.value ?? '',
+    favTwo.value ?? '',
+    favThree.value ?? '',
   ];
 
   final formData = {

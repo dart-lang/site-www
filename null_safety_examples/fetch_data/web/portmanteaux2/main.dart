@@ -6,10 +6,10 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:convert';
 
-UListElement wordList = querySelector('#wordList') as UListElement;
+late final UListElement wordList = querySelector('#wordList') as UListElement;
 
 void main() {
-  querySelector('#getWords').onClick.listen(makeRequest);
+  querySelector('#getWords')!.onClick.listen(makeRequest);
 }
 
 // #docregion makeRequest
@@ -25,17 +25,19 @@ Future<void> makeRequest(Event _) async {
 
 // #docregion requestComplete
 void requestComplete(HttpRequest request) {
-  switch (request.status) {
-    case 200:
-      processResponse(request.responseText);
+  if (request.status == 200) {
+    final response = request.responseText;
+    if (response != null) {
+      processResponse(response);
       return;
-    default:
-      // The GET request failed. Handle the error.
-      // #enddocregion requestComplete
-      final li = LIElement()..text = 'Request failed, status=${request.status}';
-      wordList.children.add(li);
-    // #docregion requestComplete
+    }
   }
+
+  // The GET request failed. Handle the error.
+  // #enddocregion requestComplete
+  final li = LIElement()..text = 'Request failed, status=${request.status}';
+  wordList.children.add(li);
+  // #docregion requestComplete
 }
 // #enddocregion requestComplete
 
