@@ -1,0 +1,8 @@
+Analyzing null_safety_codelab...
+
+warning - bin/conditional_access.dart:13:12 - The receiver can't be null, so the null-aware operator '?.' is unnecessary. Try replacing the operator '?.' with '.'. - invalid_null_aware_operator
+   info - bin/late_keyword.dart:4:3 - Avoid return types on setters. - avoid_return_types_on_setters
+   info - bin/late_keyword.dart:4:12 - Avoid wrapping fields in getters and setters just to be "safe". - unnecessary_getters_setters
+   info - bin/late_keyword.dart:8:14 - Avoid wrapping fields in getters and setters just to be "safe". - unnecessary_getters_setters
+
+4 issues found.

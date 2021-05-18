@@ -1,14 +1,9 @@
 Analyzing analysis...
 
-  error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'String'.
-  error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:19:11 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'int'.
-  error - A value of type 'String' can't be assigned to a variable of type 'int' at lib/assignment.dart:26:11 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'int'.
-  error - Const variables must be initialized with a constant value at lib/assignment.dart:34:13 - (const_initialized_with_non_constant_value)
-          Try changing the initializer to be a constant expression.
-   info - Avoid empty statements at lib/lint.dart:9:19 - (empty_statements)
-   info - Close instances of `dart.core.Sink` at lib/lint.dart:16:7 - (close_sinks)
+  error - lib/assignment.dart:10:14 - Missing type arguments for generic function 'ellipsis<T>'. Try adding an explicit type, or remove implicit-dynamic from your analysis options file. - implicit_dynamic_function
+   info - lib/assignment.dart:11:3 - Dead code. Try removing the code, or fixing the code before it so that it can be reached. - dead_code
+  error - lib/assignment.dart:11:14 - A value of type 'Object' can't be assigned to a variable of type 'String'. Try changing the type of the variable, or casting the right-hand type to 'String'. - invalid_assignment
+   info - lib/lint.dart:9:19 - Avoid empty statements. - empty_statements
+   info - lib/lint.dart:16:7 - Close instances of `dart.core.Sink`. - close_sinks
 
-6 issues found.
+5 issues found.
