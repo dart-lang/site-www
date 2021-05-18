@@ -509,7 +509,7 @@ and [spread operators](#spread-operator) (`...` and `...?`):
 ```dart
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
-const map = {if (i is int) i: "int"}; // Use is and collection if.
+const map = {if (i is int) i: 'int'}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
@@ -3435,7 +3435,7 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: ' +
+    print('You tried to use a non-existent member: '
         '${invocation.memberName}');
   }
 }
@@ -4001,7 +4001,7 @@ When you need the library, invoke
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
 ```dart
-Future greet() async {
+Future<void> greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
@@ -4082,7 +4082,7 @@ function marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future checkVersion() [!async!] {
+Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
@@ -4133,7 +4133,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
@@ -4223,7 +4223,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
     handleRequest(request);
@@ -4359,7 +4359,7 @@ Consider the following code, which doesn't use a typedef:
 class SortedCollection {
   Function compare;
 
-  SortedCollection(int f(Object a, Object b)) : compare = f;
+  SortedCollection(int Function(Object a, Object b) this.compare);
 }
 
 // Initial, broken implementation.

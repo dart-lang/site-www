@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_cast, strict_raw_type
 
 Map fetchDefaultData() => {}; // stub
 
