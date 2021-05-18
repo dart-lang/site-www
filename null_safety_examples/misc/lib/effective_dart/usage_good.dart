@@ -7,7 +7,8 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0<Future<void>> longRunningCalculation = () => Future.value();
+Func0<Future<void>> longRunningCalculation =
+    () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
 Func1<bool, dynamic> canHandle = (_) => false,

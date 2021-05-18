@@ -7,7 +7,8 @@ import 'dart:convert';
 
 // #enddocregion read-from-stream
 import 'package:test/test.dart';
-import 'package:examples/library_tour/io/http_server.dart' as http_server;
+import 'package:examples/library_tour/io/http_server.dart'
+    as http_server;
 import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
@@ -29,8 +30,10 @@ void main() {
 
     expect(
         main,
-        m.prints(
-            ['The file is 58 characters long.', 'The file is 4 lines long.']));
+        m.prints([
+          'The file is 58 characters long.',
+          'The file is 4 lines long.'
+        ]));
   });
 
   test('readAsBytes', () {
@@ -81,7 +84,8 @@ void main() {
     // #enddocregion write-file
     try {
       expect(logFile.existsSync(), isTrue);
-      expect(logFile.readAsStringSync(), startsWith('FILE ACCESSED'));
+      expect(logFile.readAsStringSync(),
+          startsWith('FILE ACCESSED'));
     } finally {
       await logFile.delete();
     }

@@ -88,8 +88,8 @@ void miscDeclAnalyzedButNotTested() {
     Future<void> f() async {
       // #docregion wait
       Future<void> deleteLotsOfFiles() async => elideBody;
-      Future<bool> copyLotsOfFiles() async => elideBody;
-      Future<dynamic> checksumLotsOfOtherFiles() async => elideBody;
+      Future<void> copyLotsOfFiles() async => elideBody;
+      Future<void> checksumLotsOfOtherFiles() async => elideBody;
 
       await Future.wait([
         deleteLotsOfFiles(),
