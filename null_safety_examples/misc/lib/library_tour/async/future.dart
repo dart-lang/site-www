@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis
+// ignore_for_file: unused_element, type_annotate_public_apis, strict_raw_type
 // #docregion import
 import 'dart:async';
 // #enddocregion import
@@ -55,7 +55,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     Future<void> f() {
       // #docregion then-chain
-      Future<dynamic> result = costlyQuery(url);
+      Future result = costlyQuery(url);
       result
           .then((value) => expensiveWork(value))
           .then((_) => lengthyComputation())

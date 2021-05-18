@@ -105,18 +105,20 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- camel/" remove="http:"?>
+<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
 ```yaml
-include: package:pedantic/analysis_options.1.8.0.yaml
+include: package:lints/recommended.yaml
 
 analyzer:
   exclude: [build/**]
+  language:
+    strict-raw-types: true
   strong-mode:
     implicit-casts: false
 
 linter:
   rules:
-    - camel_case_types
+    - cancel_subscriptions
 ```
 
 The sample illustrates the most common top-level entries:
@@ -212,10 +214,10 @@ and include its `analysis_options.yaml` file.
 Unless you need to use the `pedantic` API, declare a dev dependency on `pedantic`
 in your `pubspec.yaml` file:
 
-<?code-excerpt "../null_safety_examples/analysis/pubspec.yaml" retain="/dev_dep|pedantic/"?>
+<?code-excerpt "../null_safety_examples/analysis_alt/pubspec.yaml" retain="/dev_dep|pedantic/"?>
 ```yaml
 dev_dependencies:
-  pedantic: ^1.10.0
+  pedantic: ^1.11.0
 ```
 
 Run `pub get`, and then

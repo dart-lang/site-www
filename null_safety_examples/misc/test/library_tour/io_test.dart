@@ -18,7 +18,8 @@ void main() {
 
       // Put the whole file in a single string.
       var stringContents = await config.readAsString();
-      print('The file is ${stringContents.length} characters long.');
+      print(
+          'The file is ${stringContents.length} characters long.');
 
       // Put each line of the file into its own string.
       var lines = await config.readAsLines();
@@ -146,7 +147,8 @@ Future<void> main_test_read_from_stream() async {
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
-  var lines = utf8.decoder.bind(inputStream).transform(LineSplitter());
+  var lines =
+      utf8.decoder.bind(inputStream).transform(LineSplitter());
   try {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');

@@ -261,9 +261,9 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion no-const
     const primaryColors = [
-      Color("red", [255, 0, 0]),
-      Color("green", [0, 255, 0]),
-      Color("blue", [0, 0, 255]),
+      Color('red', [255, 0, 0]),
+      Color('green', [0, 255, 0]),
+      Color('blue', [0, 0, 255]),
     ];
     // #enddocregion no-const
   }

@@ -397,7 +397,7 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return 'Could not complete upload to ${response[!!!].url} ''
+      return 'Could not complete upload to ${response[!!!].url} '
           '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
     }
 
