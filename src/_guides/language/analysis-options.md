@@ -278,19 +278,20 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes (the syntax for a YAML list).
 For example:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
+<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
 ```yaml
 linter:
   rules:
-    - annotate_overrides
-    - await_only_futures
-    - camel_case_types
+    - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
     - comment_references
-    - constant_identifier_names
-    - control_flow_in_finally
-    - empty_statements
+    - one_member_abstracts
+    - only_throw_errors
+    - package_api_docs
+    - prefer_single_quotes
+    - sort_child_properties_last
+    - sort_constructors_first
 ```
 
 {% comment %}
