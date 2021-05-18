@@ -1,4 +1,5 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
+// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type, prefer_typing_uninitialized_variables
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -6,7 +7,7 @@ import 'dart:math';
 typedef Func0<T> = T Function();
 typedef Func1<S, T> = S Function(T _);
 
-Func0<Future> longRunningCalculation = () => Future.value();
+Func0<Future<void>> longRunningCalculation = () => Future.value();
 Func0 somethingRisky = () {};
 Func1 raiseAlarm = (_) {}, handle = (_) {};
 Func1<bool, dynamic> canHandle = (_) => false,
@@ -22,12 +23,12 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion convert-null-aware
     // If you want null to be false:
     if (optionalThing?.isEnabled ?? false) {
-      print("Have enabled thing.");
+      print('Have enabled thing.');
     }
 
     // If you want null to be true:
     if (optionalThing?.isEnabled ?? true) {
-      print("Have enabled thing or nothing.");
+      print('Have enabled thing or nothing.');
     }
     // #enddocregion convert-null-aware
   }
@@ -63,6 +64,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     var command = 'c';
     var options = ['a'];
+    // ignore: unnecessary_cast
     var modeFlags = ['b'] as List<String>?;
     var filePaths = ['p'];
     String removeExtension(String path) => path;
@@ -149,7 +151,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion func-decl
     void main() {
-      localFunction() {
+      void localFunction() {
         /*...*/
       }
     }
@@ -350,11 +352,11 @@ class UploadException {
   String toString() {
     var response = this.response;
     if (response != null) {
-      return "Could not complete upload to ${response.url} "
-          "(error code ${response.errorCode}): ${response.reason}.";
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 // #enddocregion copy-nullable-field
@@ -561,11 +563,11 @@ class ViewBase {
 }
 
 class View extends ViewBase {
-  var _children;
+  final List _children;
   // #docregion super-first
   View(Style style, List children)
       : _children = children,
         super(style);
   // #enddocregion super-first
-  get children => _children;
+  List get children => _children;
 }

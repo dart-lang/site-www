@@ -105,7 +105,7 @@ class Dice {
 
 //----------------------------------------------------------------------------
 
-unusedCallbackParams() {
+void unusedCallbackParams() {
   var futureOfVoid = Future<void>.value();
   // #docregion unused-callback-params
   futureOfVoid.then((_) {

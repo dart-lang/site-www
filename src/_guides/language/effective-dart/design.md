@@ -288,7 +288,7 @@ clarifies the work the member performs.
 {:.good}
 <?code-excerpt "design_good.dart (verb-for-func-with-side-effect)"?>
 {% prettify dart tag=pre+code %}
-list.add("element");
+list.add('element');
 queue.removeFirst();
 window.refresh();
 {% endprettify %}
@@ -1607,7 +1607,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
     } else if (errorHandler is [!Function(Object, StackTrace)!]) {
       errorHandler(err, stack);
     } else {
-      throw ArgumentError("errorHandler has wrong signature.");
+      throw ArgumentError('errorHandler has wrong signature.');
     }
   }
 }

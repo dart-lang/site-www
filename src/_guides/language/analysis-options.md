@@ -221,7 +221,7 @@ dev_dependencies:
 Run `pub get`, and then
 add the following line to your `analysis_options.yaml` file:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
+<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml" from="include" retain="include:"?>
 ```yaml
 include: package:pedantic/analysis_options.yaml
 ```

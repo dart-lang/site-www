@@ -777,7 +777,7 @@ You can also use a getter to define a computed property:
 <?code-excerpt "../null_safety_examples/misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
-  List<int> _values = [];
+  final List<int> _values = [];
 
   void addValue(int value) {
     _values.add(value);

@@ -39,7 +39,7 @@ library file, just like you use in other directives. If you have some library,
 {% prettify dart tag=pre+code %}
 library my_library;
 
-part "some/other/file.dart";
+part 'some/other/file.dart';
 {% endprettify %}
 
 Then the part file should look like:
@@ -47,7 +47,7 @@ Then the part file should look like:
 {:.good}
 <?code-excerpt "some/other/file.dart"?>
 {% prettify dart tag=pre+code %}
-part of "../../my_library.dart";
+part of '../../my_library.dart';
 {% endprettify %}
 
 And not:
@@ -259,12 +259,12 @@ recommend using `??`:
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 if (optionalThing?.isEnabled ?? false) {
-  print("Have enabled thing.");
+  print('Have enabled thing.');
 }
 
 // If you want null to be true:
 if (optionalThing?.isEnabled ?? true) {
-  print("Have enabled thing or nothing.");
+  print('Have enabled thing or nothing.');
 }
 {% endprettify %}
 
@@ -273,12 +273,12 @@ if (optionalThing?.isEnabled ?? true) {
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 if (optionalThing?.isEnabled == true) {
-  print("Have enabled thing.");
+  print('Have enabled thing.');
 }
 
 // If you want null to be true:
 if (optionalThing?.isEnabled != false) {
-  print("Have enabled thing or nothing.");
+  print('Have enabled thing or nothing.');
 }
 {% endprettify %}
 
@@ -374,11 +374,11 @@ class UploadException {
   String toString() {
     var response = this.response;
     if (response != null) {
-      return "Could not complete upload to ${response.url} "
-          "(error code ${response.errorCode}): ${response.reason}.";
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 {% endprettify %}
@@ -397,11 +397,11 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return "Could not complete upload to ${response[!!!].url} "
-          "(error code ${response[!!!].errorCode}): ${response[!!!].reason}.";
+      return 'Could not complete upload to ${response[!!!].url} ''
+          '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 {% endprettify %}
@@ -671,7 +671,7 @@ just the integers out of it. You could use `where()` like this:
 {:.bad}
 <?code-excerpt "usage_bad.dart (where-type)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int);
 {% endprettify %}
 
@@ -684,7 +684,7 @@ Sometimes you see code that "corrects" the above error by adding `cast()`:
 {:.bad}
 <?code-excerpt "usage_bad.dart (where-type-2)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int).cast<int>();
 {% endprettify %}
 
@@ -697,7 +697,7 @@ the [`whereType()`][where-type] method for this exact use case:
 {:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 {% endprettify %}
 
@@ -871,7 +871,7 @@ instead of binding a lambda to a variable.
 <?code-excerpt "usage_good.dart (func-decl)"?>
 {% prettify dart tag=pre+code %}
 void main() {
-  localFunction() {
+  void localFunction() {
     ...
   }
 }
@@ -1474,9 +1474,9 @@ Basically, any place where it would be an error to write `new` instead of
 <?code-excerpt "usage_good.dart (no-const)"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [
-  Color("red", [255, 0, 0]),
-  Color("green", [0, 255, 0]),
-  Color("blue", [0, 0, 255]),
+  Color('red', [255, 0, 0]),
+  Color('green', [0, 255, 0]),
+  Color('blue', [0, 0, 255]),
 ];
 {% endprettify %}
 
@@ -1484,9 +1484,9 @@ const primaryColors = [
 <?code-excerpt "usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [!const!] [
-  [!const!] Color("red", [!const!] [255, 0, 0]),
-  [!const!] Color("green", [!const!] [0, 255, 0]),
-  [!const!] Color("blue", [!const!] [0, 0, 255]),
+  [!const!] Color('red', [!const!] [255, 0, 0]),
+  [!const!] Color('green', [!const!] [0, 255, 0]),
+  [!const!] Color('blue', [!const!] [0, 0, 255]),
 ];
 {% endprettify %}
 

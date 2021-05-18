@@ -120,7 +120,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var encodedData;
+    var encodedData = 'encoded data';
     var url = 'random-url';
     void requestComplete(HttpRequest req) {}
     // #docregion new-HttpRequest
