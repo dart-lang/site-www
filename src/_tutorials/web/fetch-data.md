@@ -95,7 +95,7 @@ void main() {
   favThree = querySelector('#favThree') as InputElement;
   loveChocolate = querySelector('#loveChocolate') as RadioButtonInputElement;
   noLoveForChocolate =
-  querySelector('#noLoveForChocolate') as RadioButtonInputElement;
+      querySelector('#noLoveForChocolate') as RadioButtonInputElement;
 
   // Set up the results text areas
   // to display the values as JSON.
@@ -141,7 +141,7 @@ void _populateFromJson() {
   favThree.value = favoriteThings[2];
 
   final chocolateRadioButton =
-  jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
+      jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
   chocolateRadioButton.checked = true;
 }
 
@@ -516,13 +516,13 @@ either successfully or unsuccessfully.
 The `requestComplete()` function
 checks the status code for the request.
 
-<?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?>
+<?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void requestComplete(HttpRequest request) {
   if ([!request.status!] == 200) {
-    final response = request.responseText;
+    final response = [!request.responseText!];
     if (response != null) {
-      processResponse([!request.responseText!]);
+      processResponse(response);
       return;
     }
   }
