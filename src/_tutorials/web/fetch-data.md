@@ -1,7 +1,6 @@
 ---
 title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt path-base="../null_safety_examples/fetch_data"?>
 
