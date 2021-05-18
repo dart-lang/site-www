@@ -62,19 +62,24 @@ void main() {
     // #enddocregion function-as-var
   });
 
-  final indexedFruit = '''0: apples
+  const indexedFruit = '''0: apples
 1: bananas
 2: oranges
 ''';
 
   test('anonymous-function', () {
     void _test() {
-      // #docregion anonymous-function
-      const list = ['apples', 'bananas', 'oranges'];
-      list.forEach((item) {
-        print('${list.indexOf(item)}: $item');
-      });
-      // #enddocregion anonymous-function
+      // #docregion anonymous-function-main
+      void main() {
+        // #docregion anonymous-function
+        const list = ['apples', 'bananas', 'oranges'];
+        list.forEach((item) {
+          print('${list.indexOf(item)}: $item');
+        });
+        // #enddocregion anonymous-function
+      }
+      // #enddocregion anonymous-function-main
+      main();
     }
 
     expect(_test, prints(indexedFruit));
