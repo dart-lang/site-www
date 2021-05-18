@@ -1,8 +1,5 @@
 Analyzing misc...
 
-   info - lib/effective_dart/usage_bad.dart:66:19 - The operand can't be null, so the condition is always true. Remove the condition. - unnecessary_null_comparison
-   info - lib/effective_dart/usage_good.dart:66:21 - Unnecessary cast. Try removing the cast. - unnecessary_cast
-   info - lib/language_tour/variables.dart:59:28 - Dead code. Try removing the code, or fixing the code before it so that it can be reached. - dead_code
-  error - lib/library_tour/core/collections.dart:5:14 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - The argument type 'int' can't be assigned to the parameter type 'String' at lib/library_tour/core/collections.dart:5:14 - (argument_type_not_assignable)
 
-4 issues found.
+1 issue found.
