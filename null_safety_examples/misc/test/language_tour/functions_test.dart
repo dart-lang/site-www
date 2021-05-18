@@ -70,7 +70,7 @@ void main() {
   test('anonymous-function', () {
     void _test() {
       // #docregion anonymous-function
-      var list = ['apples', 'bananas', 'oranges'];
+      const list = ['apples', 'bananas', 'oranges'];
       list.forEach((item) {
         print('${list.indexOf(item)}: $item');
       });
