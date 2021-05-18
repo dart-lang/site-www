@@ -1,13 +1,13 @@
 <article class="author">
   {% if page.rel.me or page.author.twitter %}
     <section class="author-follow">
-      <h2>Follow {{ page.author.fname }}</h2>
+      <h2>Follow {{page.author.fname}}</h2>
       <ul>
         {% if page.rel.me %}
-          <li><a rel="me" href="{{ page.rel.me }}">+{{ page.author.fname }} {{ page.author.lname }}</a></li>
+          <li><a rel="me" href="{{page.rel.me}}">+{{page.author.fname}} {{page.author.lname}}</a></li>
         {% endif %}
         {% if page.author.twitter %}
-          <li><a href="http://twitter.com/{{ page.author.twitter }}">@{{ page.author.twitter }}</a></li>
+          <li><a href="http://twitter.com/{{page.author.twitter}}">@{{page.author.twitter}}</a></li>
         {% endif %}
       </ul>
     </section>
@@ -15,7 +15,7 @@
 
   <section class="author-bio">
     <h2>Bio</h2>
-    {{ bio }}
+    {{bio}}
   </section>
 
   {% assign empty_list = true %}
@@ -28,7 +28,7 @@
     <h2>On this site</h2>
     <ul>
       {% endif %}
-      <li><a href="{{ article_url }}">{{ article.title }}</a></li>
+      <li><a href="{{article_url}}">{{article.title}}</a></li>
     {% endif %}
   {% endfor %}
   {% if empty_list == false %}

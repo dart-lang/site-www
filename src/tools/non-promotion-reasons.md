@@ -4,10 +4,10 @@ description: Solutions for cases where you know more about a field's type than D
 toc: false
 ---
 
-{{ site.alert.warn}}
+{{site.alert.warn}}
   **This page is under construction**
   ([issue #2940][]).
-{{ site.alert.end}}
+{{site.alert.end}}
 
 This page will have information to help you understand
 why type promotion failures occur,

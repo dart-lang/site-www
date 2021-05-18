@@ -94,17 +94,17 @@ These rules identify possible errors and other mistakes in your code.
 
 {% if lint.group == "errors" %}
 
-### {{ lint.name }}
+### {{lint.name}}
 
-{{ lint.description }}
+{{lint.description}}
 
 {% if lint.maturity != "stable" %}
-_This rule is currently **{{ lint.maturity }}**._
+_This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
 #### Details
 
-{{ lint.details }}
+{{lint.details}}
 
 {% endif %}
 
@@ -119,17 +119,17 @@ largely derived from the [Dart style guide][].
 
 {% if lint.group == "style" %}
 
-### {{ lint.name }}
+### {{lint.name}}
 
-{{ lint.description }}
+{{lint.description}}
 
 {% if lint.maturity != "stable" %}
-_This rule is currently **{{ lint.maturity }}**._
+_This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
 #### Details
 
-{{ lint.details }}
+{{lint.details}}
 
 {% endif %}
 
@@ -144,17 +144,17 @@ These rules identify possible issues around
 
 {% if lint.group == "pub" %}
 
-### {{ lint.name }}
+### {{lint.name}}
 
-{{ lint.description }}
+{{lint.description}}
 
 {% if lint.maturity != "stable" %}
-_This rule is currently **{{ lint.maturity }}**._
+_This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
 #### Details
 
-{{ lint.details }}
+{{lint.details}}
 
 {% endif %}
 

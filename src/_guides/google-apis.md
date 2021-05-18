@@ -28,6 +28,12 @@ over 180 Google client APIs,
 such as the Google Docs API, YouTube Data API,
 Cloud Translation API, and Cloud Storage API.
 
+If you're building a Flutter application, see the
+[Flutter guide for Google APIs][flutter-google-apis].
+
+If you'd like to use Google APIs as part of a server application, see the
+[google_apis server sample][server-sample].
+
 Some packages provide idiomatic Dart wrappers for
 the APIs provided by `googleapis`.
 For example, if you want to use the Google Sheets API,
@@ -48,3 +54,5 @@ To find wrapper packages for Google client APIs, search for
 [`gsheets` package]: {{site.pub-pkg}}/gsheets
 [gsheets-api-docs]: {{site.pub-api}}/gsheets/latest/gsheets/gsheets-library.html
 [gsheets-api-docs-gapi]: {{site.pub-api}}/googleapis/latest/sheets.v4/sheets.v4-library.html
+[flutter-google-apis]: https://flutter.dev/docs/development/data-and-backend/google-apis
+[server-sample]: https://github.com/dart-lang/samples/tree/master/server/google_apis

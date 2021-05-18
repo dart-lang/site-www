@@ -6,12 +6,12 @@ layout: default
     <h4>What's the point?</h4>
     <ul>
       {% for point in page.points %}
-      <li>{{ point }}</li>
+      <li>{{point}}</li>
       {% endfor %}
     </ul>
   </div>
 {% endif %}
-{{ content }}
+{{content}}
 
 {% comment %}
   {% if page.examples %}
@@ -21,10 +21,10 @@ layout: default
         {% for example in page.examples %}
         <li>
           {% if example.url %}
-            <a href="{{ example.url }}"
-              target="_blank" rel="noopener">{{ example.title }}</a>
+            <a href="{{example.url}}"
+              target="_blank" rel="noopener">{{example.title}}</a>
           {% else %}
-            {{ example.title }}
+            {{example.title}}
           {% endif %}
         </li>
         {% endfor %}

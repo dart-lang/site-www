@@ -176,9 +176,9 @@ We published the following articles on the [Dart blog:][Dart blog]
 We also improved the blog navigation,
 adding **announcement** and **archive** tabs, plus a link to dart.dev.
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   All articles in the Dart blog are free to read.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 </div>
 

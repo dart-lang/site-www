@@ -39,8 +39,8 @@ to your app's pubspec:
 ```
   dev_dependencies:
     # ···
-    build_runner: ^1.0.0
-    build_test: ^0.10.3
+    build_runner: ^2.0.0
+    build_test: ^2.1.0
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -59,7 +59,7 @@ Here are examples of using the build_runner **build** command:
 
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
-$ dart pub run build_runner build  # Dart SDK
+$ dart run build_runner build  # Dart SDK
 $ flutter pub run build_runner build  # Flutter SDK
 ```
 
