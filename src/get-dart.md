@@ -30,10 +30,10 @@ As the following instructions show,
 you can use a package manager
 to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][], install from
-[any release channel](#release-channels) by
-[downloading the SDK as a zip file][], or
-grab a Dart [Docker image][].
+[build the SDK from source][],
+grab a [Dart Docker image][], or
+install from [any release channel](#release-channels) by
+[downloading the SDK as a zip file][].
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
@@ -122,14 +122,14 @@ prerelease and prerelease patch versions, and `beta` or `dev` is the channel.
 You can get stable channel releases using
 the [instructions above](#install), or you can
 get stable, beta, or dev channel releases
-using [a package manager][]
-or by [downloading the SDK as a zip file][].
+using [a package manager][] or [Dart Docker image][], or
+by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
-[Docker image]: https://hub.docker.com/_/dart
+[Dart Docker image]: https://hub.docker.com/_/dart
 [downloading the SDK as a zip file]: /tools/sdk/archive
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
