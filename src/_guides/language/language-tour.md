@@ -4114,7 +4114,7 @@ for the results of functions:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
-var entrypoint = await findEntrypoint();
+var entrypoint = await findEntryPoint();
 var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
