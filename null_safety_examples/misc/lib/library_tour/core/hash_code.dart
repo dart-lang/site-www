@@ -1,4 +1,4 @@
-// ignore_for_file: sort_constructors_first, unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks
 // #docregion
 class Person {
   final String firstName, lastName;

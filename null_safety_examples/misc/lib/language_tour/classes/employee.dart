@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_cast, sort_constructors_first
+// ignore_for_file: unnecessary_cast
 
 Map fetchDefaultData() => {}; // stub
 

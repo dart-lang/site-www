@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
+// ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
 // ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type, prefer_typing_uninitialized_variables
 import 'dart:async';
 import 'dart:io';

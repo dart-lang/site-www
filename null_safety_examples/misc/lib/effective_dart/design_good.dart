@@ -1,4 +1,4 @@
-// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, strict_raw_type, use_function_type_syntax_for_parameters
 
 import 'dart:async';
 import 'dart:collection';
