@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis
+// ignore_for_file: annotate_overrides, type_annotate_public_apis, strict_raw_type, use_function_type_syntax_for_parameters
 import 'dart:async';
 
 // TODO(chalin): I believe that handleError's test argument should be declared
@@ -24,7 +24,7 @@ abstract class MyStream<T> implements Stream<T> {
   Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});
   Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);
   Future forEach(void Function(T element) action);
-  Future<String> join([String separator = ""]);
+  Future<String> join([String separator = '']);
   Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});
   Stream<S> map<S>(S Function(T event) convert);
   Future pipe(StreamConsumer<T> streamConsumer);

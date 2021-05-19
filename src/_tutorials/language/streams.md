@@ -214,7 +214,7 @@ Future<bool> every(bool Function(T element) test);
 Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});
 Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);
 Future forEach(void Function(T element) action);
-Future<String> join([String separator = ""]);
+Future<String> join([String separator = '']);
 Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});
 Future pipe(StreamConsumer<T> streamConsumer);
 Future<T> reduce(T Function(T previous, T element) combine);
@@ -246,12 +246,12 @@ Future forEach(void Function(T element) action) async {
 
 Future<List<T>> toList() async {
   final result = <T>[];
-  await this.forEach(result.add);
+  await forEach(result.add);
   return result;
 }
 
-Future<String> join([String separator = ""]) async =>
-    (await this.toList()).join(separator);
+Future<String> join([String separator = '']) async =>
+    (await toList()).join(separator);
 ```
 
 (The actual implementations are slightly more complex,
