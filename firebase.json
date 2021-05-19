@@ -93,6 +93,8 @@
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
       { "source": "/guides/platforms", "destination": "/overview#platform", "type": 301 },
       { "source": "/platforms", "destination": "/overview#platform", "type": 301 },
+      { "source": "/diagnostics", "destination": "/tools/diagnostic-messages", "type": 301 },
+      { "source": "/diagnostics/:code*", "destination": "/tools/diagnostic-messages#:code", "type": 301 },
       { "source": "/docs/language-tour", "destination": "/guides/language/language-tour", "type": 301 },
       { "source": "/docs/library-tour", "destination": "/guides/libraries/library-tour", "type": 301 },
       { "source": "/docs/pub-package-manager", "destination": "/tools/pub", "type": 301 },
