@@ -1,14 +1,14 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element
+// ignore_for_file: annotate_overrides, unused_element
 // NOTE: Declarations in this file are analyzed but not tested.
-typedef Void1 = void Function(dynamic);
-typedef Async0 = Future Function();
 
 void futuresTutorial() {
-  Async0 expensiveA, expensiveB, expensiveC;
-  Void1 doSomethingWith;
+  final expensiveA = () async {};
+  final expensiveB = () async {};
+  final expensiveC = () async {};
+  final doSomethingWith = (dynamic) {};
   // #docregion multiple-await
   // Sequential processing using async and await.
-  main() async {
+  Future<void> main() async {
     await expensiveA();
     await expensiveB();
     doSomethingWith(await expensiveC());
@@ -22,7 +22,7 @@ void futuresTutorial() {
       .then((cValue) => doSomethingWith(cValue));
   // #enddocregion chaining
 
-  Void1 handleError;
+  final handleError = (dynamic) {};
   void chooseBestResponse(List responses, bool anotherArg) => responses[0];
   bool moreInfo = true;
 
@@ -56,7 +56,7 @@ void streamsTutorial() {
 
 abstract class MyStream<T> extends Stream<T> {
   // #docregion mock-stream-method-implementations
-  Future<bool> contains(Object needle) async {
+  Future<bool> contains(Object? needle) async {
     await for (var event in this) {
       if (event == needle) return true;
     }
