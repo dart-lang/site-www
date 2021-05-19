@@ -1,4 +1,4 @@
-// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, sort_constructors_first
+// ignore_for_file: close_sinks, type_annotate_public_apis, unused_element, unused_local_variable, strict_raw_type, use_function_type_syntax_for_parameters
 
 import 'dart:async';
 import 'dart:collection';
@@ -57,7 +57,7 @@ void miscDeclAnalyzedButNotTested() {
 
   (Queue queue, window, connection) {
     // #docregion verb-for-func-with-side-effect
-    list.add("element");
+    list.add('element');
     queue.removeFirst();
     window.refresh();
     // #enddocregion verb-for-func-with-side-effect
@@ -293,7 +293,7 @@ void miscDeclAnalyzedButNotTested() {
       } else if (errorHandler is Function(Object, StackTrace)) {
         errorHandler(err, stack);
       } else {
-        throw ArgumentError("errorHandler has wrong signature.");
+        throw ArgumentError('errorHandler has wrong signature.');
       }
     }
   }

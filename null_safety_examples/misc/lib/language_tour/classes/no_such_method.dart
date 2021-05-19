@@ -9,7 +9,7 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void noSuchMethod(Invocation invocation) {
-    print('You tried to use a non-existent member: ' +
+    print('You tried to use a non-existent member: '
         '${invocation.memberName}');
   }
 }

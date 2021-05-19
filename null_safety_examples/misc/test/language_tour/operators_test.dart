@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators
+
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
 import 'package:examples_util/print_matcher.dart' as m;
@@ -101,13 +103,13 @@ void main() {
     // #enddocregion assignment-gist-main-body
     */
 
-    _test001() {
+    void _test001() {
       // #docregion assignment-gist-main-body
       assignValues(0, 0, 1);
       // #enddocregion assignment-gist-main-body
     }
 
-    _testNull() {
+    void _testNull() {
       // #docregion assignment-gist-main-body
       assignValues(null, null, 1);
       // #enddocregion assignment-gist-main-body

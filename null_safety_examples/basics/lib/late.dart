@@ -1,5 +1,3 @@
-// ignore_for_file: sort_constructors_first
-
 int calculate() => 3;
 
 // #docregion late_field

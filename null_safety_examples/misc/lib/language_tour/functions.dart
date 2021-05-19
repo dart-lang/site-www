@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, type_annotate_public_apis
+// ignore_for_file: unused_element, type_annotate_public_apis, always_declare_return_types
 
 void miscDeclAnalyzedButNotTested() {
   var _nobleGases = {};

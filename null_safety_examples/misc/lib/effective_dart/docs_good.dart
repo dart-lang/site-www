@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, unused_element
+// ignore_for_file: type_annotate_public_apis, unused_element, strict_raw_type, use_function_type_syntax_for_parameters
 
 import 'package:examples_util/ellipsis.dart';
 
@@ -12,7 +12,7 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   // #docregion block-comments
-  greet(name) {
+  void greet(name) {
     // Assume we have a valid name.
     print('Hi, $name!');
   }
@@ -215,7 +215,7 @@ class ToggleComponent {}
 // #docregion this
 class Box {
   /// The value this wraps.
-  var _value;
+  Object? _value;
 
   /// True if this box contains a value.
   bool get hasValue => _value != null;

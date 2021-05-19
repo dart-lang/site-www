@@ -30,7 +30,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion await-for
-    Future main(List<String> arguments) async {
+    Future<void> main(List<String> arguments) async {
       // ...
       if (await FileSystemEntity.isDirectory(searchPath)) {
         final startingDir = Directory(searchPath);
@@ -48,7 +48,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion readFileAwaitFor
-    Future readFileAwaitFor() async {
+    Future<void> readFileAwaitFor() async {
       var config = File('config.txt');
       Stream<List<int>> inputStream = config.openRead();
 

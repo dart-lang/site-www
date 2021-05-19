@@ -1,4 +1,5 @@
-// ignore_for_file: unused_element, type_annotate_public_apis
+// ignore_for_file: unused_element, type_annotate_public_apis, prefer_function_declarations_over_variables
+// ignore_for_file: avoid_function_literals_in_foreach_calls, always_declare_return_types
 import 'package:examples/language_tour/function_equality.dart'
     as function_equality;
 import 'package:test/test.dart';
@@ -67,7 +68,7 @@ void main() {
 ''';
 
   test('anonymous-function', () {
-    _test() {
+    void _test() {
       // #docregion anonymous-function
       var list = ['apples', 'bananas', 'oranges'];
       list.forEach((item) {
@@ -80,7 +81,7 @@ void main() {
   });
 
   test('anon-func', () {
-    _test() {
+    void _test() {
       var list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
       list.forEach(

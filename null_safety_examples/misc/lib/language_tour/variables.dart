@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, dead_code
 
 void miscDeclAnalyzedButNotTested() {
   {
@@ -94,7 +94,7 @@ void miscDeclAnalyzedButNotTested() {
     }
 
     {
-      var bar, baz, name;
+      dynamic bar, baz, name;
       // #docregion cant-assign-to-final
       name = 'Alice'; // Error: a final variable can only be set once.
       // #enddocregion cant-assign-to-final
@@ -107,7 +107,7 @@ void miscDeclAnalyzedButNotTested() {
       // #docregion const-dart-25
       const Object i = 3; // Where i is a const Object with an int value...
       const list = [i as int]; // Use a typecast.
-      const map = {if (i is int) i: "int"}; // Use is and collection if.
+      const map = {if (i is int) i: 'int'}; // Use is and collection if.
       const set = {if (list is List<int>) ...list}; // ...and a spread.
       // #enddocregion const-dart-25
     }

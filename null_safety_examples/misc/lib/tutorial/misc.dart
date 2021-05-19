@@ -1,11 +1,11 @@
-// ignore_for_file: annotate_overrides, unused_element
+// ignore_for_file: annotate_overrides, unused_element, strict_raw_type
 // NOTE: Declarations in this file are analyzed but not tested.
 
 void futuresTutorial() {
-  final expensiveA = () async {};
-  final expensiveB = () async {};
-  final expensiveC = () async {};
-  final doSomethingWith = (dynamic) {};
+  Future<void> expensiveA() async {}
+  Future<void> expensiveB() async {}
+  Future<dynamic> expensiveC() async {}
+  void doSomethingWith(_) {}
   // #docregion multiple-await
   // Sequential processing using async and await.
   Future<void> main() async {
@@ -22,7 +22,7 @@ void futuresTutorial() {
       .then((cValue) => doSomethingWith(cValue));
   // #enddocregion chaining
 
-  final handleError = (dynamic) {};
+  void handleError(dynamic) {}
   void chooseBestResponse(List responses, bool anotherArg) => responses[0];
   bool moreInfo = true;
 
@@ -71,11 +71,11 @@ abstract class MyStream<T> extends Stream<T> {
 
   Future<List<T>> toList() async {
     final result = <T>[];
-    await this.forEach(result.add);
+    await forEach(result.add);
     return result;
   }
 
-  Future<String> join([String separator = ""]) async =>
-      (await this.toList()).join(separator);
+  Future<String> join([String separator = '']) async =>
+      (await toList()).join(separator);
   // #enddocregion mock-stream-method-implementations
 }

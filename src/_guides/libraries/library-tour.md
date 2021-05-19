@@ -1079,7 +1079,7 @@ waiting for each one to complete before executing the next one.
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
 ```dart
-runUsingFuture() {
+void runUsingFuture() {
   // ...
   findEntryPoint().then((entryPoint) {
     return runExecutable(entryPoint, args);
@@ -1092,7 +1092,7 @@ looks more like synchronous code:
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
 ```dart
-runUsingAsyncAwait() async {
+Future<void> runUsingAsyncAwait() async {
   // ...
   var entryPoint = await findEntryPoint();
   var exitCode = await runExecutable(entryPoint, args);
@@ -1214,9 +1214,9 @@ static method to manage multiple Futures and wait for them to complete:
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 ```dart
-Future deleteLotsOfFiles() async =>  ...
-Future copyLotsOfFiles() async =>  ...
-Future checksumLotsOfOtherFiles() async =>  ...
+Future<void> deleteLotsOfFiles() async =>  ...
+Future<void> copyLotsOfFiles() async =>  ...
+Future<void> checksumLotsOfOtherFiles() async =>  ...
 
 await Future.wait([
   deleteLotsOfFiles(),
@@ -1270,7 +1270,7 @@ looks more like synchronous code:
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main(List<String> arguments) async {
+Future<void> main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
@@ -1365,7 +1365,7 @@ goes after the asynchronous for loop.
 
 <?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future readFileAwaitFor() async {
+Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 

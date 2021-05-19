@@ -11,7 +11,7 @@ class Dice {
 }
 // #enddocregion const-names
 
-oneLineIf(dynamic overflowChars, dynamic other) {
+dynamic oneLineIf(dynamic overflowChars, dynamic other) {
   // #docregion one-line-if-wrap
   if (overflowChars != other.overflowChars)
     return overflowChars < other.overflowChars;

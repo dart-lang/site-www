@@ -1,4 +1,3 @@
-// ignore_for_file: sort_constructors_first
 typedef Compare = int Function(Object a, Object b);
 
 class SortedCollection {

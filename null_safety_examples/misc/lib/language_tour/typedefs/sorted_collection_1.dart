@@ -1,8 +1,7 @@
-// ignore_for_file: sort_constructors_first
 class SortedCollection {
   Function compare;
 
-  SortedCollection(int f(Object a, Object b)) : compare = f;
+  SortedCollection(int Function(Object a, Object b) this.compare);
 }
 
 // Initial, broken implementation.

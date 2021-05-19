@@ -6,4 +6,4 @@ environment:
 
 dev_dependencies:
   examples_util: {path: ../util}
-  pedantic: ^1.10.0
+  lints: ^1.0.0
