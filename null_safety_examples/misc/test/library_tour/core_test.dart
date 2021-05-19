@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis
+// ignore_for_file: type_annotate_public_apis, prefer_collection_literals
 import 'package:test/test.dart';
 
 import 'package:examples/library_tour/core/comparable.dart'
@@ -90,7 +90,7 @@ void main() {
     });
 
     test('substring-etc', () {
-      _test() {
+      void _test() {
         // #docregion substring-etc
         // Grab a substring.
         assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -190,7 +190,7 @@ void main() {
     });
 
     test('match', () {
-      _test() {
+      void _test() {
         // #docregion match
         var numbers = RegExp(r'\d+');
         var someDigits = 'llamas live 15 to 20 years';
@@ -405,7 +405,7 @@ void main() {
     });
 
     test('putIfAbsent', () {
-      pickToughestKid() => 'Rock';
+      String pickToughestKid() => 'Rock';
       // #docregion putIfAbsent
       var teamAssignments = <String, String>{};
       teamAssignments.putIfAbsent(
@@ -433,7 +433,7 @@ void main() {
     });
 
     test('List.forEach()', () {
-      _test() {
+      void _test() {
         // #docregion List-forEach
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -447,7 +447,7 @@ void main() {
     });
 
     test('Map.forEach()', () {
-      _test() {
+      void _test() {
         final hawaiianBeaches = {'Honolulu': 'Hanauma Bay'};
         // #docregion Map-forEach
         hawaiianBeaches.forEach((k, v) {
@@ -465,7 +465,7 @@ void main() {
     });
 
     test('List.map()', () {
-      _test() {
+      void _test() {
         // #docregion List-map
         var teas = ['green', 'black', 'chamomile', 'earl grey'];
 

@@ -6,7 +6,7 @@ class A {
 }
 
 void main() {
-  var x;
+  Function x;
 
   // Comparing top-level functions.
   x = foo;

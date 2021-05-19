@@ -510,7 +510,7 @@ and [spread operators](#spread-operator) (`...` and `...?`):
 ```dart
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
-const map = {if (i is int) i: "int"}; // Use is and collection if.
+const map = {if (i is int) i: 'int'}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
@@ -1668,7 +1668,7 @@ class A {
 }
 
 void main() {
-  var x;
+  Function x;
 
   // Comparing top-level functions.
   x = foo;
@@ -3337,7 +3337,7 @@ interfaces. For example:
 // A person. The implicit interface contains greet().
 class Person {
   // In the interface, but visible only in this library.
-  final _name;
+  final String _name;
 
   // Not in the interface, since this is a constructor.
   Person(this._name);
@@ -3348,7 +3348,7 @@ class Person {
 
 // An implementation of the Person interface.
 class Impostor implements Person {
-  get _name => '';
+  String get _name => '';
 
   String greet(String who) => 'Hi $who. Do you know who I am?';
 }
@@ -3436,7 +3436,7 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: ' +
+    print('You tried to use a non-existent member: '
         '${invocation.memberName}');
   }
 }
@@ -4002,7 +4002,7 @@ When you need the library, invoke
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
 ```dart
-Future greet() async {
+Future<void> greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
@@ -4083,7 +4083,7 @@ function marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future checkVersion() [!async!] {
+Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
@@ -4115,7 +4115,7 @@ for the results of functions:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
-var entrypoint = await findEntrypoint();
+var entrypoint = await findEntryPoint();
 var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
@@ -4134,7 +4134,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
@@ -4224,7 +4224,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
     handleRequest(request);

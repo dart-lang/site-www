@@ -22,8 +22,11 @@ To run Dart in the Cloud, we recommend using serverless computing solutions.
 ### Cloud Run
 
 You can use Cloud Run's flexible container support,
-combined with Dart's Docker images,
-to run server-side Dart code.
+combined with Dart's Docker images, to run server-side Dart code.
+Creating scalable, high performance APIs and event-driven apps
+are good use cases for Cloud Run's serverless platform,
+which frees developers from managing infrastructure.
+
 Examples of Dart servers implemented to run on Cloud Run are
 [in the dart-lang/samples/repo][server examples].
 

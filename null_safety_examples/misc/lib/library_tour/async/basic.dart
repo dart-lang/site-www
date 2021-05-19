@@ -1,7 +1,7 @@
 import 'dart:html';
 
 void miscDeclAnalyzedButNotTested() {
-  final url = 'humans.txt';
+  const url = 'humans.txt';
 
   {
     // #docregion then

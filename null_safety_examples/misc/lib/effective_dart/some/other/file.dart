@@ -1,1 +1,1 @@
-part of "../../my_library.dart";
+part of '../../my_library.dart';

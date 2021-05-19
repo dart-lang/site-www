@@ -1,6 +1,3 @@
-typedef Pred0 = bool Function();
-typedef Void0 = void Function();
-
 class Candidate {
   int yearsExperience = 0;
 
@@ -11,8 +8,8 @@ void miscDeclAnalyzedButNotTested() {
   final candidates = <Candidate>[];
 
   {
-    Pred0 isRaining = () => true;
-    Pred0 isSnowing = () => true;
+    bool isRaining() => true;
+    bool isSnowing() => true;
     dynamic car, you;
     // #docregion if-else
     if (isRaining()) {
@@ -34,8 +31,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 isDone = () => true;
-    Pred0 doSomething = () => true;
+    bool isDone() => true;
+    bool doSomething() => true;
     // #docregion while
     while (!isDone()) {
       doSomething();
@@ -44,8 +41,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 atEndOfPage = () => true;
-    Pred0 printLine = () => true;
+    bool atEndOfPage() => true;
+    bool printLine() => true;
     // #docregion do-while
     do {
       printLine();
@@ -54,8 +51,8 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    Pred0 shutDownRequested = () => true;
-    Pred0 processIncomingRequests = () => true;
+    bool shutDownRequested() => true;
+    bool processIncomingRequests() => true;
     // #docregion while-break
     while (true) {
       if (shutDownRequested()) break;
@@ -84,13 +81,13 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion where
   }
 
-  Void0 executeClosed = () {},
-      executePending = () {},
-      executeApproved = () {},
-      executeDenied = () {},
-      executeOpen = () {},
-      executeUnknown = () {},
-      executeNowClosed = () {};
+  void executeClosed() {}
+  void executePending() {}
+  void executeApproved() {}
+  void executeDenied() {}
+  void executeOpen() {}
+  void executeUnknown() {}
+  void executeNowClosed() {}
 
   {
     // #docregion switch
@@ -169,7 +166,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     int number = 0;
     String urlString = '';
-    var text;
+    String? text;
     // #docregion assert
     // Make sure the variable has a non-null value.
     assert(text != null);

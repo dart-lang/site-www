@@ -1,5 +1,3 @@
-// ignore_for_file: sort_constructors_first
-
 // #docregion
 class Point {
   double x, y;
