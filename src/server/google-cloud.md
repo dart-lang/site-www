@@ -72,13 +72,13 @@ For more information, see the [GKE overview][].
 [App Engine flexible environment][], which does not
 [autoscale to zero instances][scale to zero], so we recommend **Cloud Run** for new
 server-side Dart code.
-If you _want_ to use App Engine, consider using the [`appengine` package][].
+If you _want_ to use App Engine, consider using the [appengine package][].
 
 
 [App Engine]: https://cloud.google.com/appengine
 [App Engine flexible environment]: https://cloud.google.com/appengine/docs/flexible
 [scale to zero]: https://cloud.google.com/run/docs/about-instance-autoscaling
-[`appengine` package]: {{site.pub-pkg}}/appengine
+[appengine package]: {{site.pub-pkg}}/appengine
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
 [server examples]: https://github.com/dart-lang/samples/tree/master/server
