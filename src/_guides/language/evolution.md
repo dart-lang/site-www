@@ -182,8 +182,7 @@ In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 
 ### Dart 2.13
 
-Dart 2.13 added support for **[type aliases][]**,
-expanding the scope of the `typedef` keyword,
+Dart 2.13 expanded support for **[type aliases][]** (`typedef`),
 which used to work only for function types
 but now work for any type.
 You can use the new name created with a type alias
