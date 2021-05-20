@@ -33,17 +33,17 @@ $ dart analyze --fatal-infos
 You can add a directory or a single file argument:
 
 ```terminal
-$ dart analyze [<DIRECTORY> | <DART FILE>]
+$ dart analyze [<DIRECTORY> | <DART_FILE>]
 ```
 
-For example, to analyze the `bin` directory:
+For example, here's the command to analyze the `bin` directory:
 
 ```terminal
 $ dart analyze bin
 ```
 
 {{site.alert.version-note}}
-  Before Dart 2.13, only directory arguments were supported by the command.
+  Before Dart 2.13, `dart analyze` supported only directory arguments.
 {{site.alert.end}}
 
 To customize the analysis, use an analysis options file
