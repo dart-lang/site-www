@@ -131,7 +131,7 @@ void useTransform() async {
   print(lines);
 }
 
-late StreamSubscription subscription;
+late StreamSubscription<int> subscription;
 
 void handleInt(int number) {
   if (number == 3) {
