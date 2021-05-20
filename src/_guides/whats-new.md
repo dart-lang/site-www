@@ -53,7 +53,7 @@ we made the following changes to this site:
     writing a package README that works well on pub.dev.
   * [Fixing type promotion failures][]
     has information to help you understand
-    why type promotion failures occur, and give tips on how to fix them.
+    why type promotion failures occur, and gives tips on how to fix them.
   * The new [`dart run` page][]
     describes how to run a Dart program from the command line.
 * Continued work on migrating code to null safety, in particular the
