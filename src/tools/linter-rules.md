@@ -7,9 +7,9 @@ Use the Dart linter to identify possible problems in your Dart code.
 You can use the linter through your IDE
 or with the [`dart analyze`](/tools/dart-analyze) command.
 For information on how to enable and disable individual linter rules, see
-[Enabling individual rules][] in the [analyzer documentation][].
+[individual rules sections][] of the [analyzer documentation][].
 
-[Enabling individual rules]: guides/language/analysis-options#individual-rules
+[individual rules sections]: /guides/language/analysis-options#individual-rules
 [analyzer documentation]: /guides/language/analysis-options
 
 This page lists all the linter rules,
@@ -31,28 +31,30 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 [lints]({{site.pub-pkg}}/lints)
-: The official selections of rules that the Dart team encourages using. 
+: The rule sets that the Dart team encourages using. 
   Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
   are [scored]({{site.pub}}/help/scoring) 
   with the `core` set of these rules.
 
 [flutter_lints]({{site.pub-pkg}}/flutter_lints)
-: The official selection of rules for Flutter apps, packages, and plugins 
-  that the Flutter team encourages using. These are built on the `recommended`
-  set from the [lints package]({{site.pub-pkg}}/lints) which also include the
-  `core` set used to [score]({{site.pub}}/help/scoring) 
+: The set of rules that the Flutter team encourages you to use
+  in Flutter apps, packages, and plugins.
+  This rule set is a superset of the `recommended`
+  set from the [lints package]({{site.pub-pkg}}/lints),
+  which is itself a superset of the `core` set that
+  partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
 [effective_dart]({{site.pub-pkg}}/effective_dart)
-: A set of linter rules corresponding to the guidelines in [Effective Dart][].
+: A set of rules corresponding to the guidelines in [Effective Dart][].
 
 [pedantic]({{site.pub-pkg}}/pedantic)
 : The set of rules used for all Google-internal Dart code
 
 To learn how to use a specific rule set,
-see [Enabling and disabling linter rules][].
+see the documentation for [enabling and disabling linter rules][].
 
-[Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Effective Dart]: /guides/language/effective-dart
 
 ## Rule types

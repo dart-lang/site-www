@@ -230,7 +230,7 @@ Recommended rules
   which provides a superset of the recommended rules.
 {{site.alert.end}}
 
-To enable one the Dart team's recommended sets of lints,
+To enable either set of lints,
 add the [lints package][] as a dev dependency:
 
 ```terminal
