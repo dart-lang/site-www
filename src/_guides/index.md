@@ -5,6 +5,12 @@ toc: false
 ---
 
 Welcome to the Dart documentation!
+For a list of changes to this site —
+new pages, new guidelines, and more —
+see the [What's new page][].
+
+[What's new page]: /guides/whats-new
+
 Here are some of this site's most visited pages:
 
 {% comment %}
@@ -21,10 +27,3 @@ To update these cards, edit src/_data/docs_cards.yml.
   </div>
 {% endfor -%}
 </div>
-
-<br>
-For a list of changes to this site —
-new pages, new guidelines, and more —
-see the [What's new page][].
-
-[What's new page]: /guides/whats-new
