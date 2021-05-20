@@ -6,10 +6,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
-UListElement wordList = querySelector('#wordList') as UListElement;
+late final UListElement wordList = querySelector('#wordList') as UListElement;
 
 void main() {
-  querySelector('#getWords').onClick.listen(makeRequest);
+  querySelector('#getWords')!.onClick.listen(makeRequest);
 }
 
 // #docregion makeRequest
@@ -23,7 +23,7 @@ Future<void> makeRequest(Event _) async {
   } catch (e) {
     // The GET request failed. Handle the error.
     // #enddocregion makeRequest
-    print('Couldn\'t open $path');
+    print("Couldn't open $path");
     wordList.children.add(LIElement()..text = 'Request failed.');
     // #docregion makeRequest
   }

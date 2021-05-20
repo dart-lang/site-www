@@ -2,7 +2,7 @@
 title: Fetch data dynamically
 description: Use HttpRequest to fetch data from a file or a server.
 ---
-<?code-excerpt path-base="fetch_data"?>
+<?code-excerpt path-base="../null_safety_examples/fetch_data"?>
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -51,11 +51,11 @@ Click **Run** to start the app.
 Then change the values of the input elements,
 and check out the JSON format for each data type.
 You might prefer to
-[open the app in DartPad]({{site.dartpad}}/1d42e4eadb75bcc1ffbc079e299b862e){: target="_blank" rel="noopener"}
+[open the app in DartPad]({{site.dartpad}}/ddebf4ee5ba6757aafe07f7779d7b0c1){: target="_blank" rel="noopener"}
 to have more space for the app's code and UI.
 
 {% comment %}
-https://gist.github.com/chalin/1d42e4eadb75bcc1ffbc079e299b862e
+https://gist.github.com/parlough/ddebf4ee5ba6757aafe07f7779d7b0c1
 
 <?code-excerpt "web/main.dart"?>
 ```dart
@@ -67,22 +67,22 @@ import 'dart:html';
 import 'dart:convert';
 
 // Input fields
-InputElement favoriteNumber;
-InputElement valueOfPi;
-InputElement horoscope;
-InputElement favOne;
-InputElement favTwo;
-InputElement favThree;
-RadioButtonInputElement loveChocolate;
-RadioButtonInputElement noLoveForChocolate;
+late final InputElement favoriteNumber;
+late final InputElement valueOfPi;
+late final InputElement horoscope;
+late final InputElement favOne;
+late final InputElement favTwo;
+late final InputElement favThree;
+late final RadioButtonInputElement loveChocolate;
+late final RadioButtonInputElement noLoveForChocolate;
 
 // Result fields
-TextAreaElement intAsJson;
-TextAreaElement doubleAsJson;
-TextAreaElement stringAsJson;
-TextAreaElement listAsJson;
-TextAreaElement boolAsJson;
-TextAreaElement mapAsJson;
+late final TextAreaElement intAsJson;
+late final TextAreaElement doubleAsJson;
+late final TextAreaElement stringAsJson;
+late final TextAreaElement listAsJson;
+late final TextAreaElement boolAsJson;
+late final TextAreaElement mapAsJson;
 
 void main() {
   // Set up the input text areas.
@@ -106,22 +106,22 @@ void main() {
   mapAsJson = querySelector('#mapAsJson') as TextAreaElement;
 
   // Set up the listeners.
-  favoriteNumber.onKeyUp.listen(showJson);
-  valueOfPi.onKeyUp.listen(showJson);
-  loveChocolate.onClick.listen(showJson);
-  noLoveForChocolate.onClick.listen(showJson);
-  horoscope.onKeyUp.listen(showJson);
-  favOne.onKeyUp.listen(showJson);
-  favTwo.onKeyUp.listen(showJson);
-  favThree.onKeyUp.listen(showJson);
+  favoriteNumber.onKeyUp.listen(_showJson);
+  valueOfPi.onKeyUp.listen(_showJson);
+  loveChocolate.onClick.listen(_showJson);
+  noLoveForChocolate.onClick.listen(_showJson);
+  horoscope.onKeyUp.listen(_showJson);
+  favOne.onKeyUp.listen(_showJson);
+  favTwo.onKeyUp.listen(_showJson);
+  favThree.onKeyUp.listen(_showJson);
 
   _populateFromJson();
-  showJson(null);
+  _showJson();
 }
 
 // Pre-fill the form with some default values.
 void _populateFromJson() {
-  final jsonDataAsString = '''{
+  const jsonDataAsString = '''{
     "favoriteNumber": 73,
     "valueOfPi": 3.141592,
     "chocolate": true,
@@ -134,28 +134,27 @@ void _populateFromJson() {
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  final favoriteThings = jsonData['favoriteThings'] as List;
-  favOne.value = favoriteThings[0] as String;
-  favTwo.value = favoriteThings[1] as String;
-  favThree.value = favoriteThings[2] as String;
+  final favoriteThings = jsonData['favoriteThings'] as List<String>;
+  favOne.value = favoriteThings[0];
+  favTwo.value = favoriteThings[1];
+  favThree.value = favoriteThings[2];
 
   final chocolateRadioButton =
       jsonData['chocolate'] == false ? noLoveForChocolate : loveChocolate;
   chocolateRadioButton.checked = true;
 }
 
-// TODO(chalin): I'm currently minimizing changes, but make showJson private.
 /// Display all values as JSON.
-void showJson(Event _) {
+void _showJson([Event? _]) {
   // Grab the data that will be converted to JSON.
-  final favNum = int.tryParse(favoriteNumber.value);
-  final pi = double.tryParse(valueOfPi.value);
+  final favNum = int.tryParse(favoriteNumber.value ?? '');
+  final pi = double.tryParse(valueOfPi.value ?? '');
   final chocolate = loveChocolate.checked;
   final sign = horoscope.value;
   final favoriteThings = <String>[
-    favOne.value,
-    favTwo.value,
-    favThree.value,
+    favOne.value ?? '',
+    favTwo.value ?? '',
+    favThree.value ?? '',
   ];
 
   final formData = {
@@ -178,7 +177,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e&ga_id=about_json"
+src="{{site.dartpad-embed-html}}?id=ddebf4ee5ba6757aafe07f7779d7b0c1&null_safety=true&ga_id=about_json"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -214,21 +213,21 @@ automatically:
 ## Serializing data into JSON
 
 Use the [json.encode()][] function to serialize an object that supports JSON.
-The `showJson()` function, from the example,
+The `_showJson()` function, from the example,
 converts all of the data to JSON strings.
 
-<?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
+<?code-excerpt "web/main.dart (showJson)" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
 {% prettify dart tag=pre+code %}
-void showJson(Event _) {
+void _showJson([Event? _]) {
   // Grab the data that will be converted to JSON.
-  final favNum = int.tryParse(favoriteNumber.value);
-  final pi = double.tryParse(valueOfPi.value);
+  final favNum = int.tryParse(favoriteNumber.value ?? '');
+  final pi = double.tryParse(valueOfPi.value ?? '');
   final chocolate = loveChocolate.checked;
   final sign = horoscope.value;
   final favoriteThings = <String>[
-    favOne.value,
-    favTwo.value,
-    favThree.value,
+    favOne.value ?? '',
+    favTwo.value ?? '',
+    favThree.value ?? '',
   ];
 
   final formData = {
@@ -281,7 +280,7 @@ from this JSON string:
 
 <?code-excerpt "web/main.dart (jsonDataAsString)"?>
 ```dart
-final jsonDataAsString = '''{
+const jsonDataAsString = '''{
   "favoriteNumber": 73,
   "valueOfPi": 3.141592,
   "chocolate": true,
@@ -396,9 +395,9 @@ and loads the file.
 
 **Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
-{% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
+{% comment %} https://gist.github.com/parlough/c637fbedc6aa0d2a8ffcd44562648197 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2&ga_id=using_getstring"
+src="{{site.dartpad-embed-html}}?id=c637fbedc6aa0d2a8ffcd44562648197&null_safety=true&ga_id=using_getstring"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -407,7 +406,7 @@ src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2&ga_id=using
 This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
 
-<?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
+<?code-excerpt "web/portmanteaux/main.dart (makeRequest)" replace="/\/\/ \w.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -452,9 +451,9 @@ and use the [send()][] method to make the request.
 This section rewrites the portmanteaux code to explicitly construct
 an HttpRequest object.
 
-{% comment %} https://gist.github.com/kwalrath/f8aa7310e96d359c5f68343c9ccba8ed {% endcomment %}
+{% comment %} https://gist.github.com/parlough/2211d1ee6e16a6fc76cee04fc8fb5df2 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed&ga_id=using_http_request"
+src="{{site.dartpad-embed-html}}?id=2211d1ee6e16a6fc76cee04fc8fb5df2&null_safety=true&ga_id=using_http_request"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -468,7 +467,7 @@ configures it with a URI and callback function,
 and then sends the request.
 Let's take a look at the Dart code:
 
-<?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
+<?code-excerpt "web/portmanteaux2/main.dart (makeRequest)" replace="/\/\/ \w.*/[!$&!]/g"?>
 ```dart
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
@@ -516,17 +515,19 @@ either successfully or unsuccessfully.
 The `requestComplete()` function
 checks the status code for the request.
 
-<?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?>
+<?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void requestComplete(HttpRequest request) {
-  switch ([!request.status!]) {
-    case 200:
-      processResponse([!request.responseText!]);
+  if ([!request.status!] == 200) {
+    final response = [!request.responseText!];
+    if (response != null) {
+      processResponse(response);
       return;
-    default:
-      // The GET request failed. Handle the error.
-      // ···
+    }
   }
+
+  // The GET request failed. Handle the error.
+  // ···
 }
 {% endprettify %}
 
