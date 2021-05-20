@@ -79,6 +79,7 @@ void main() {
         // #enddocregion anonymous-function
       }
       // #enddocregion anonymous-function-main
+
       main();
     }
 
