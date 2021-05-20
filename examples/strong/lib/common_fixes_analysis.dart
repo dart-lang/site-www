@@ -71,7 +71,7 @@ abstract class Animal {
 
 // ignore_for_file: unused_field
 class HoneyBadger extends Animal {
-  String _name;
+  final String _name;
   // #docregion super-goes-last
   HoneyBadger(Eats food, String name)
       : _name = name,

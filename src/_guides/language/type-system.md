@@ -456,7 +456,7 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<[!MaineCoon!]>();
+List<Cat> myCats = <[!MaineCoon!]>[];
 {% endprettify %}
 
 {% comment %}
@@ -471,7 +471,7 @@ What about going in the other direction? Can you assign an `Animal` list to a `L
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<[!Animal!]>();
+List<Cat> myCats = <[!Animal!]>[];
 {% endprettify %}
 
 This assignment passes static analysis,
@@ -479,7 +479,7 @@ but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<Animal>() [!as List<Cat>!];
+List<Cat> myCats = <Animal>[] [!as List<Cat>!];
 {% endprettify %}
 
 The code may fail at runtime. You can disallow implicit casts
