@@ -7,4 +7,4 @@ class WannabeFunction {
 var wf = WannabeFunction();
 var out = wf('Hi', 'there,', 'gang');
 
-main() => print(out);
+void main() => print(out);

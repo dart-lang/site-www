@@ -1455,19 +1455,6 @@ void doStuff(
 }
 ```
 
-{% comment %}
-https://gist.github.com/d988cfce0a54c6853799
-{{site.dartpad}}/d988cfce0a54c6853799
-(The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
-<iframe
-src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799&ga_id=default_parameter_values"
-    width="100%"
-    height="450px"
-    style="border: 1px solid #ccc;">
-</iframe>
-{% endcomment %}
-
-
 ### The main() function
 
 Every app must have a top-level `main()` function, which serves as the
@@ -1554,7 +1541,7 @@ prints a string that includes the value at the specified index.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
-var list = ['apples', 'bananas', 'oranges'];
+const list = ['apples', 'bananas', 'oranges'];
 list.forEach((item) {
   print('${list.indexOf(item)}: $item');
 });
@@ -1562,17 +1549,15 @@ list.forEach((item) {
 
 Click **Run** to execute the code.
 
-{% comment %}
-https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
-{{site.dartpad}}/5d70bc1889d055c7a18d35d77874af88
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&ga_id=anonymous_functions"
-    width="100%"
-    height="400px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
+```dart:run-dartpad:height-400px:ga_id-anonymous_functions:null_safety-true
+void main() {
+  const list = ['apples', 'bananas', 'oranges'];
+  list.forEach((item) {
+    print('${list.indexOf(item)}: $item');
+  });
+}
+```
 
 If the function contains only a single expression or return statement,
 you can shorten it using arrow
@@ -4295,12 +4280,8 @@ In the following example, the `WannabeFunction` class defines a call() function
 that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
-{% comment %}
-https://gist.github.com/405379bacf30335f3aed
-{{site.dartpad}}/405379bacf30335f3aed
-
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/callable_classes.dart"?>
-```dart
+```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }
@@ -4308,17 +4289,8 @@ class WannabeFunction {
 var wf = WannabeFunction();
 var out = wf('Hi', 'there,', 'gang');
 
-main() => print(out);
+void main() => print(out);
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=callable_classes"
-    width="100%"
-    height="350px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
 
 ## Isolates
 
