@@ -1,60 +1,17 @@
 Analyzing strong...
 
-  error - The method 'add' isn't defined for the type 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 - (undefined_method)
-          Try correcting the name to the name of an existing method, or defining a method named 'add'.
-  error - A value of type 'Element' can't be assigned to a variable of type 'CanvasElement' at lib/common_fixes_analysis.dart:21:28 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'CanvasElement'.
-  error - The class 'MyList' cannot implement both 'EfficientLengthIterable<int*>*' and 'EfficientLengthIterable<dynamic>*' because the type arguments are different at lib/dart_1_my_list_hello_world.dart:11:1 - (conflicting_generic_interfaces)
-  error - The class 'MyList' cannot implement both 'Iterable<int*>*' and 'Iterable<dynamic>*' because the type arguments are different at lib/dart_1_my_list_hello_world.dart:11:1 - (conflicting_generic_interfaces)
-  error - The class 'MyList' cannot implement both 'List<int*>*' and 'List<dynamic>*' because the type arguments are different at lib/dart_1_my_list_hello_world.dart:11:1 - (conflicting_generic_interfaces)
-  error - 'ListMixin.add' ('void Function(int)') isn't a valid concrete implementation of 'List.add' ('void Function(dynamic)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.addAll' ('void Function(Iterable<int>)') isn't a valid concrete implementation of 'List.addAll' ('void Function(Iterable<dynamic>)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.fillRange' ('void Function(int, int, [int])') isn't a valid concrete implementation of 'List.fillRange' ('void Function(int, int, [dynamic])') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.first=' ('void Function(int)') isn't a valid concrete implementation of 'List.first=' ('void Function(dynamic)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.insert' ('void Function(int, int)') isn't a valid concrete implementation of 'List.insert' ('void Function(int, dynamic)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.insertAll' ('void Function(int, Iterable<int>)') isn't a valid concrete implementation of 'List.insertAll' ('void Function(int, Iterable<dynamic>)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.last=' ('void Function(int)') isn't a valid concrete implementation of 'List.last=' ('void Function(dynamic)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.replaceRange' ('void Function(int, int, Iterable<int>)') isn't a valid concrete implementation of 'List.replaceRange' ('void Function(int, int, Iterable<dynamic>)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.setAll' ('void Function(int, Iterable<int>)') isn't a valid concrete implementation of 'List.setAll' ('void Function(int, Iterable<dynamic>)') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - 'ListMixin.setRange' ('void Function(int, int, Iterable<int>, [int])') isn't a valid concrete implementation of 'List.setRange' ('void Function(int, int, Iterable<dynamic>, [int])') at lib/dart_1_my_list_hello_world.dart:11:7 - (invalid_implementation_override)
-  error - Superinterfaces don't have a valid override for '+': ListMixin.+ (List<int> Function(List<int>)), List.+ (List<dynamic> Function(List<dynamic>)) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - Superinterfaces don't have a valid override for 'firstWhere': ListMixin.firstWhere (int Function(bool Function(int), {int Function() orElse})), Iterable.firstWhere (dynamic Function(bool Function(dynamic), {dynamic Function() orElse})) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - Superinterfaces don't have a valid override for 'followedBy': ListMixin.followedBy (Iterable<int> Function(Iterable<int>)), Iterable.followedBy (Iterable<dynamic> Function(Iterable<dynamic>)) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - Superinterfaces don't have a valid override for 'lastWhere': ListMixin.lastWhere (int Function(bool Function(int), {int Function() orElse})), Iterable.lastWhere (dynamic Function(bool Function(dynamic), {dynamic Function() orElse})) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - Superinterfaces don't have a valid override for 'reduce': ListMixin.reduce (int Function(int Function(int, int))), Iterable.reduce (dynamic Function(dynamic Function(dynamic, dynamic))) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - Superinterfaces don't have a valid override for 'singleWhere': ListMixin.singleWhere (int Function(bool Function(int), {int Function() orElse})), Iterable.singleWhere (dynamic Function(bool Function(dynamic), {dynamic Function() orElse})) at lib/dart_1_my_list_hello_world.dart:11:7 - (inconsistent_inheritance)
-          Try adding an explicit override that is consistent with all of the inherited members.
-  error - 'MyList.length' ('Object Function()') isn't a valid override of 'List.length' ('int Function()') at lib/dart_1_my_list_hello_world.dart:12:10 - (invalid_override)
-  error - A value of type 'String' can't be returned from the method '[]' because it has a return type of 'int' at lib/dart_1_my_list_hello_world.dart:16:25 - (return_of_invalid_type)
-  error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>' at lib/strong_analysis.dart:27:17 - (argument_type_not_assignable)
-  error - The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:38:15 - (argument_type_not_assignable)
-  error - The argument type 'int' can't be assigned to the parameter type 'String' at lib/strong_analysis.dart:54:15 - (argument_type_not_assignable)
-  error - A value of type 'double' can't be assigned to a variable of type 'int' at lib/strong_analysis.dart:82:9 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'int'.
-  error - A value of type 'String' can't be assigned to a variable of type 'double' at lib/strong_analysis.dart:106:23 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'double'.
-  error - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon' at lib/strong_analysis.dart:118:19 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at lib/strong_analysis.dart:136:24 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at lib/strong_analysis.dart:144:24 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-  error - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at lib/strong_analysis.dart:144:24 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'.
-   info - 'List' is deprecated and shouldn't be used. Use a list literal, [], or the List.filled constructor instead at lib/strong_analysis.dart:150:24 - (deprecated_member_use)
-          Try replacing the use of the deprecated member with the replacement.
-  error - A value of type 'int' can't be assigned to a variable of type 'String' at lib/strong_analysis.dart:157:21 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'String'.
-  error - A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<int>' at test/strong_test.dart:42:27 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'List<int>'.
-  error - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>' at test/strong_test.dart:64:26 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'.
-  error - A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>' at test/strong_test.dart:178:26 - (invalid_assignment)
-          Try changing the type of the variable, or casting the right-hand type to 'List<String>'.
+  error - lib/bounded/instantiate_to_bound.dart:7:5 - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
+  error - lib/common_fixes_analysis.dart:21:28 - A value of type 'Element' can't be assigned to a variable of type 'CanvasElement'. Try changing the type of the variable, or casting the right-hand type to 'CanvasElement'. - invalid_assignment
+  error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:38:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:54:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:82:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
+  error - lib/strong_analysis.dart:106:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
+  error - lib/strong_analysis.dart:118:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
+  error - lib/strong_analysis.dart:144:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
+  error - lib/strong_analysis.dart:157:21 - A value of type 'int' can't be assigned to a variable of type 'String'. Try changing the type of the variable, or casting the right-hand type to 'String'. - invalid_assignment
+  error - test/strong_test.dart:36:27 - A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<int>'. Try changing the type of the variable, or casting the right-hand type to 'List<int>'. - invalid_assignment
+  error - test/strong_test.dart:53:26 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
+  error - test/strong_test.dart:159:26 - A value of type 'List<Object>' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
 
-37 issues found.
+13 issues found.

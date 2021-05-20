@@ -7,7 +7,7 @@ import 'package:examples_util/ellipsis.dart';
 
 String downcastExample() {
   // #docregion implicit-downcast
-  Object o = ellipsis();
+  Object o = ellipsis<String>();
   String s = o; // Implicit downcast
   String s2 = s.substring(1);
   // #enddocregion implicit-downcast

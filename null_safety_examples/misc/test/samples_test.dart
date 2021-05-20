@@ -17,6 +17,7 @@ import 'package:examples/samples/spacecraft.dart';
 import 'path/to/my_other_file.dart';
 // #enddocregion import
 
+// ignore: strict_raw_type
 Iterable flatten(Iterable it) => it.expand((e) => e is Iterable ? e : [e]);
 
 void main() {
@@ -48,8 +49,8 @@ void main() {
     // #enddocregion var
 
     test('var', () {
-      expect(flybyObjects, TypeMatcher<List>());
-      expect(image, TypeMatcher<Map>());
+      expect(flybyObjects, TypeMatcher<List<String>>());
+      expect(image, TypeMatcher<Map<String, dynamic>>());
       expect(
           name.length > antennaDiameter, isTrue); // avoid unused_local_variable
     });
@@ -87,7 +88,7 @@ void main() {
     });
 
     test('arrow', () {
-      _test() {
+      void _test() {
         // #docregion arrow
         flybyObjects.where((name) => name.contains('turn')).forEach(print);
         // #enddocregion arrow
@@ -110,7 +111,7 @@ void main() {
   });
 
   test('use class', () {
-    _test1() {
+    void _test1() {
       // #docregion use-class
       var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
       voyager.describe();
@@ -118,7 +119,7 @@ void main() {
       // #enddocregion use-class
     }
 
-    _test2() {
+    void _test2() {
       // #docregion use-class
       var voyager3 = Spacecraft.unlaunched('Voyager III');
       voyager3.describe();
@@ -218,7 +219,7 @@ void main() {
       }
       // #enddocregion await
 
-      _test() async {
+      void _test() async {
         final objects = ['test_data/config', testFileBase];
         await createDescriptions(objects);
         expect(testFile.existsSync(), isTrue);
@@ -262,7 +263,7 @@ void main() {
   });
 
   test('try', () {
-    _test() async {
+    void _test() async {
       final flybyObjects = ['Moon'];
       // #docregion try
       try {

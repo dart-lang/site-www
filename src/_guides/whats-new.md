@@ -8,7 +8,7 @@ To see what's new in Flutter, visit the
 [Flutter what's new page.][flutter-whats-new]
 
 For a list of Dart language changes in each Dart SDK, see the 
-[language evolution page](/guides/language/evolution).
+[language evolution page][evolution].
 To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group][dart-announce]
 and follow the [Dart blog][].
@@ -16,6 +16,84 @@ and follow the [Dart blog][].
 [flutter-whats-new]: {{site.flutter}}/docs/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+
+## May 19, 2021: 2.13 release
+
+This section lists notable changes made from March 4, 2021,
+through May 19, 2021.
+For details about the 2.13 release, see [Announcing Dart 2.13][].
+
+[Announcing Dart 2.13]: https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Updated the [typedef section][] of the language tour to reflect
+  non-function type aliases,
+  which were introduced in Dart 2.13.
+* Published or updated documentation related to the command line and servers:
+  * [Using Google Cloud][] describes Google Cloud products that
+    Dart servers can use,
+    often with the help of pre-packaged Docker images.
+  * The [HTTP server tutorial][],
+    which featured the discontinued `http_server` package,
+    has been temporarily replaced by
+    an "under construction" page that
+    links to helpful documentation and samples.
+  * The [command-line tutorial][] has been completely updated.
+* Published some other new pages:
+  * [Null safety codelab][] teaches you about Dart’s null-safe type system,
+    which was introduced in Dart 2.12.
+  * [Numbers in Dart][] has
+    details about differences between native and web number implementations.
+  * [Using Google APIs][] points to resources to
+    help you use Firebase and Google client APIs from a Dart app.
+  * [Writing package pages][] gives tips for
+    writing a package README that works well on pub.dev.
+  * [Fixing type promotion failures][]
+    has information to help you understand
+    why type promotion failures occur, and gives tips on how to fix them.
+  * The new [`dart run` page][]
+    describes how to run a Dart program from the command line.
+* Continued work on migrating code to null safety, in particular the
+  [streams tutorial][].
+* Made miscellaneous other updates:
+  * Removed references to Stagehand, in favor of `dart create`.
+  * Changed analytics options for dart.dev example code from
+    using `pedantic` to using the recommended rules in [`lints`][].
+  * Added Docker as a way to [get Dart][].
+  * Updated the [language evolution page][evolution] to reflect Dart 2.13.
+
+[command-line tutorial]: /tutorials/server/cmdline
+[`dart run` page]: /tools/dart-run
+[Fixing type promotion failures]: /tools/non-promotion-reasons
+[get Dart]: /get-dart
+[HTTP server tutorial]: /tutorials/server/httpserver
+[`lints`]: {{site.pub-pkg}}/lints
+[Null safety codelab]: /codelabs/null-safety
+[Numbers in Dart]: /guides/language/numbers
+[streams tutorial]: /tutorials/language/streams
+[typedef section]: /guides/language/language-tour#typedefs
+[Using Google APIs]: /guides/google-apis
+[Using Google Cloud]: /server/google-cloud
+[Writing package pages]: /guides/libraries/writing-package-pages
+
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following articles on the Dart blog:
+
+* [AngularDart, Flutter, and the web: Spring update][blog-5-12-21]
+* [Announcing Dart support for GitHub Actions][blog-3-24-21]
+* [Dart in Google Summer of Code 2021][blog-3-13-21]
+
+[blog-5-12-21]: https://medium.com/dartlang/angulardart-flutter-and-the-web-spring-update-f7f5b8b10001
+[blog-3-24-21]: https://medium.com/dartlang/announcing-dart-support-for-github-actions-3d892642104
+[blog-3-13-21]: https://medium.com/dartlang/dart-in-google-summer-of-code-2021-e89eaf1d177a
 
 
 ## March 3, 2021: 2.12 release
@@ -40,7 +118,8 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Refreshed the [language tour][], updating code to be null safe and
   adding information about new features such as
   [`late` variables][].
-* Updated the [evolution page][] to add information about language versioning
+* Updated the [language evolution page][evolution]
+  to add information about language versioning
   and to reflect Dart 2.12.
 * Updated the [library tour][], [samples][], and [codelabs][]
   to reflect sound null safety.
@@ -67,7 +146,6 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [library tour]: /guides/libraries/library-tour
 [samples]: /samples
 [codelabs]: /codelabs
-[evolution page]: /guides/language/evolution
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze
 [`dart compile`]: /tools/dart-compile
@@ -131,7 +209,7 @@ we made the following changes to this site:
   [AVOID using `dynamic` unless you want to disable static checking.][dynamic]
 * Updated the [diagnostic messages page][diagnostics] to
   include more messages produced by the Dart analyzer.
-* Updated the [language evolution page][evolution]
+* Updated the [evolution page][evolution]
   to include 2.9 and 2.10.
 * Reorganized the [language specification page][spec]
   to make it easier to find the PDF version of

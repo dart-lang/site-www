@@ -10,4 +10,5 @@ dependencies:
 
 dev_dependencies:
   test: ^1.17.0
+  lints: ^1.0.0
   examples_util: {path: ../util}

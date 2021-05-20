@@ -1,8 +1,8 @@
 class Meal {
   late String _description;
 
-  void set description(String str) {
-    _description = str;
+  set description(String desc) {
+    _description = 'Meal description: $desc';
   }
 
   String get description => _description;

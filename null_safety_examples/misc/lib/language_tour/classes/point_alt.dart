@@ -1,4 +1,4 @@
-// ignore_for_file: sort_constructors_first
+// ignore_for_file: prefer_initializing_formals
 /// Example of:
 ///
 /// - A constructor initializing fields in the body "the long way"

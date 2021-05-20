@@ -128,7 +128,7 @@ void main() {
     // #enddocregion client
 
     http_server.stopAfter = 1;
-    final clientAndServer = () => Future.wait([
+    void clientAndServer() => Future.wait([
           http_server.main(),
           main(),
         ]);

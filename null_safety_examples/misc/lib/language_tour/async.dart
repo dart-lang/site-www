@@ -1,9 +1,6 @@
 // ignore_for_file: unused_element, unused_local_variable, unawaited_futures
-typedef Async0 = Future Function();
-typedef Async1 = Future Function(dynamic);
-typedef Async2 = Future Function(dynamic, dynamic);
 
-Future miscDeclAnalyzedButNotTested() async {
+Future<void> miscDeclAnalyzedButNotTested() async {
   // #docregion async-lookUpVersion
   Future<String> lookUpVersion() async => '1.0.0';
   // #enddocregion async-lookUpVersion
@@ -16,7 +13,7 @@ Future miscDeclAnalyzedButNotTested() async {
 
   {
     // #docregion checkVersion
-    Future checkVersion() async {
+    Future<void> checkVersion() async {
       var version = await lookUpVersion();
       // Do something with version
     }
@@ -24,7 +21,7 @@ Future miscDeclAnalyzedButNotTested() async {
   }
 
   {
-    var version;
+    String version;
     // #docregion try-catch
     try {
       version = await lookUpVersion();
@@ -41,21 +38,21 @@ Future miscDeclAnalyzedButNotTested() async {
   }
 
   {
-    Async0 findEntrypoint = () async => Never;
-    Async1 flushThenExit = (_) async => Never;
-    Async2 runExecutable = (_, __) async => Never;
-    var args;
+    Future<dynamic> findEntryPoint() async => Never;
+    Future<dynamic> flushThenExit(_) async => Never;
+    Future<dynamic> runExecutable(_, dynamic) async => Never;
+    dynamic args;
     // #docregion repeated-await
-    var entrypoint = await findEntrypoint();
+    var entrypoint = await findEntryPoint();
     var exitCode = await runExecutable(entrypoint, args);
     await flushThenExit(exitCode);
     // #enddocregion repeated-await
   }
 
   {
-    Future checkVersion() async {}
+    Future<void> checkVersion() async {}
     // #docregion main
-    Future main() async {
+    Future<void> main() async {
       checkVersion();
       print('In main: version is ${await lookUpVersion()}');
     }
@@ -63,11 +60,10 @@ Future miscDeclAnalyzedButNotTested() async {
   }
 
   {
-    // Excerpt from dart-tutorials-samples/httpserver/number_thinker.dart
-    Stream requestServer = Stream.empty();
-    Async1 handleRequest = (_) async => Never;
+    Stream<dynamic> requestServer = Stream.empty();
+    Future<dynamic> handleRequest(_) async => Never;
     // #docregion number_thinker
-    Future main() async {
+    Future<void> main() async {
       // ...
       await for (var request in requestServer) {
         handleRequest(request);

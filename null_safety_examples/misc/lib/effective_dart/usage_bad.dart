@@ -1,4 +1,9 @@
-// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty, sort_constructors_first, type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps, unnecessary_getters_setters, unused_element, unused_local_variable, prefer_equal_for_default_values, use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype
+// ignore_for_file: avoid_init_to_null, empty_constructor_bodies, final_not_initialized_constructor_1, prefer_is_not_empty,
+// ignore_for_file: type_annotate_public_apis, type_init_formals, unnecessary_brace_in_string_interps,
+// ignore_for_file: unnecessary_getters_setters, unused_element, unused_local_variable, prefer_equal_for_default_values,
+// ignore_for_file: use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype, prefer_initializing_formals, unnecessary_this
+// ignore_for_file: prefer_typing_uninitialized_variables, prefer_collection_literals, unnecessary_cast, strict_raw_type
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_function_declarations_over_variables, always_declare_return_types
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -16,12 +21,12 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion convert-null-equals
     // If you want null to be false:
     if (optionalThing?.isEnabled == true) {
-      print("Have enabled thing.");
+      print('Have enabled thing.');
     }
 
     // If you want null to be true:
     if (optionalThing?.isEnabled != false) {
-      print("Have enabled thing or nothing.");
+      print('Have enabled thing or nothing.');
     }
     // #enddocregion convert-null-equals
   }
@@ -55,7 +60,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     var command = 'c';
     var options = ['a'];
-    var modeFlags = ['b'];
+    var modeFlags = ['b'] as List<String>?;
     var filePaths = ['p'];
     String removeExtension(String path) => path;
 
@@ -89,7 +94,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion where-type
-    var objects = [1, "a", 2, "b", 3];
+    var objects = [1, 'a', 2, 'b', 3];
     var ints = objects.where((e) => e is int);
     // #enddocregion where-type
   }
@@ -136,7 +141,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion where-type-2
-    var objects = [1, "a", 2, "b", 3];
+    var objects = [1, 'a', 2, 'b', 3];
     var ints = objects.where((e) => e is int).cast<int>();
     // #enddocregion where-type-2
   }
@@ -309,11 +314,11 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return "Could not complete upload to ${response!.url} "
-          "(error code ${response!.errorCode}): ${response!.reason}.";
+      return 'Could not complete upload to ${response!.url} '
+          '(error code ${response!.errorCode}): ${response!.reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 // #enddocregion copy-nullable-field
@@ -464,9 +469,9 @@ void unnecessaryNewOrConst() {
   {
     // #docregion no-const
     const primaryColors = const [
-      const Color("red", const [255, 0, 0]),
-      const Color("green", const [0, 255, 0]),
-      const Color("blue", const [0, 0, 255]),
+      const Color('red', const [255, 0, 0]),
+      const Color('green', const [0, 255, 0]),
+      const Color('blue', const [0, 0, 255]),
     ];
     // #enddocregion no-const
   }

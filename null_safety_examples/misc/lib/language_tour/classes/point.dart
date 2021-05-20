@@ -1,4 +1,3 @@
-// ignore_for_file: sort_constructors_first
 // #docregion class-with-distanceTo
 import 'dart:math';
 

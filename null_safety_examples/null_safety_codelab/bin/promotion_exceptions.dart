@@ -1,7 +1,7 @@
 int getLength(String? str) {
   // Try throwing an exception here if `str` is null.
   if (str == null) {
-    throw Exception("String is null");
+    throw Exception('String is null');
   }
   return str.length;
 }

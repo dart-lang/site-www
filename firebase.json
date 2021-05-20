@@ -93,6 +93,8 @@
       { "source": "/guides/get-started", "destination": "/overview", "type": 301 },
       { "source": "/guides/platforms", "destination": "/overview#platform", "type": 301 },
       { "source": "/platforms", "destination": "/overview#platform", "type": 301 },
+      { "source": "/diagnostics", "destination": "/tools/diagnostic-messages", "type": 301 },
+      { "source": "/diagnostics/:code*", "destination": "/tools/diagnostic-messages#:code", "type": 301 },
       { "source": "/docs/language-tour", "destination": "/guides/language/language-tour", "type": 301 },
       { "source": "/docs/library-tour", "destination": "/guides/libraries/library-tour", "type": 301 },
       { "source": "/docs/pub-package-manager", "destination": "/tools/pub", "type": 301 },
@@ -129,7 +131,7 @@
       { "source": "/flutter", "destination": "https://flutter.io", "type": 301 },
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html", "type": 301 },
-      { "source": "/go/cloud", "destination": "/server/google-cloud", "type": 301 },
+      { "source": "/go/cloud", "destination": "/server/google-cloud?utm_source=go-link&utm_medium=referral&utm_campaign=go-cloud", "type": 301 },
       { "source": "/go/core-lints", "destination": "https://github.com/dart-lang/lints", "type": 301 },
       { "source": "/go/dart-fix", "destination": "https://github.com/dart-lang/sdk/blob/master/pkg/dartdev/doc/dart-fix.md", "type": 301 },
       { "source": "/go/data-driven-fixes", "destination": "https://github.com/flutter/flutter/wiki/Data-driven-Fixes", "type": 301 },

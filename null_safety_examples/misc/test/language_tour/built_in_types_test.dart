@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables
+
 import 'package:test/test.dart';
 
 void main() {
