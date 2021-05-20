@@ -145,7 +145,7 @@ var c = C(Iterable.empty()).collection;
 {:.console-output}
 <?code-excerpt "strong/analyzer-results-stable.txt" retain="/add.*isn't defined for the type/"?>
 ```nocode
-error - The method 'add' isn't defined for the type 'Iterable' at lib/bounded/instantiate_to_bound.dart:7:5 - (undefined_method)
+error - lib/bounded/instantiate_to_bound.dart:7:5 - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
 ```
 
 While the [List][] type has an `add()` method, [Iterable][] does not.

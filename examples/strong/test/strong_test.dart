@@ -1,14 +1,8 @@
 // ignore_for_file: unused_local_variable
 import 'package:test/test.dart';
-import 'package:examples_util/dart_version.dart';
 
 import 'package:examples_strong/animal.dart';
 import 'package:examples_strong/bounded/my_collection.dart';
-
-//@nullable
-String runtimeChecksSkipStatus() => dartMajorVers == 1
-    ? "Dart 1 doesn't support strong mode runtime checks"
-    : null; // don't skip tests in Dart 2
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
@@ -47,12 +41,7 @@ void main() {
     // #enddocregion what-is-soundness
 
     final msg = "type 'List<dynamic>' is not a subtype of type 'List<int>'";
-    expect(
-      main,
-      dartMajorVers == 1
-          ? _throwsA<NoSuchMethodError>("'String' has no instance method '-'")
-          : _throwsA<TypeError>(msg),
-    );
+    expect(main, _throwsA<TypeError>(msg));
   });
 
   group('runtime checks:', () {
@@ -67,10 +56,10 @@ void main() {
 
       const msg = "type 'List<Animal>' is not a subtype of type 'List<Cat>'";
       expect(main, _throwsA<TypeError>(msg));
-    }, skip: runtimeChecksSkipStatus());
+    });
 
     test('downcast check fails', () {
-      _test() {
+      void _test() {
         // #docregion fail-downcast-check
         assumeStrings(<int>[1, 2, 3]);
         // #enddocregion fail-downcast-check
@@ -85,7 +74,7 @@ void main() {
     final expectedOutput = 'a string\n';
 
     test('downcast check ok for <String>[]', () {
-      _test() {
+      void _test() {
         // #docregion typed-list-lit
         var list = <String>[];
         list.add('a string');
@@ -98,7 +87,7 @@ void main() {
     });
 
     test('downcast check ok for List<String>', () {
-      _test() {
+      void _test() {
         // #docregion typed-list
         List<String> list = [];
         list.add('a string');
@@ -115,7 +104,7 @@ void main() {
         };
 
     test('downcast check ok: use cast()', () {
-      _test() {
+      void _test() {
         // #docregion cast
         Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
@@ -123,19 +112,11 @@ void main() {
         // #enddocregion cast
       }
 
-      if (dartMajorVers == 1) {
-        expect(
-          _test,
-          _throwsA<NoSuchMethodError>(
-              "Class 'List' has no instance method 'cast'"),
-        );
-      } else {
-        expect(_test, prints(expectedOutput));
-      }
+      expect(_test, prints(expectedOutput));
     });
 
     test('downcast check ok: create new object', () {
-      _test() {
+      void _test() {
         // #docregion create-new-object
         Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;

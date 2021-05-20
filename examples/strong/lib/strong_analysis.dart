@@ -133,7 +133,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion generic-type-assignment-MaineCoon
-    List<Cat> myCats = List<MaineCoon>();
+    List<Cat> myCats = <MaineCoon>[];
     // #enddocregion generic-type-assignment-MaineCoon
   }
 
@@ -141,13 +141,13 @@ void _miscDeclAnalyzedButNotTested() {
     // Since we're using --no-implicit-casts, the following causes a static error.
     // #docregion generic-type-assignment-Animal
     // ignore_for_file: stable, dev, invalid_assignment
-    List<Cat> myCats = List<Animal>();
+    List<Cat> myCats = <Animal>[];
     // #enddocregion generic-type-assignment-Animal
   }
 
   {
     // #docregion generic-type-assignment-implied-cast
-    List<Cat> myCats = List<Animal>() as List<Cat>;
+    List<Cat> myCats = <Animal>[] as List<Cat>;
     // #enddocregion generic-type-assignment-implied-cast
   }
 
