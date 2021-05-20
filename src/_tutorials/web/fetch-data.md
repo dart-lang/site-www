@@ -213,7 +213,7 @@ automatically:
 ## Serializing data into JSON
 
 Use the [json.encode()][] function to serialize an object that supports JSON.
-The `showJson()` function, from the example,
+The `_showJson()` function, from the example,
 converts all of the data to JSON strings.
 
 <?code-excerpt "web/main.dart (showJson)" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
