@@ -45,6 +45,8 @@ we made the following changes to this site:
     links to helpful documentation and samples.
   * The [command-line tutorial][] has been completely updated.
 * Published some other new pages:
+  * [Null safety codelab][] teaches you about Dart’s null-safe type system,
+    which was introduced in Dart 2.12.
   * [Numbers in Dart][] has
     details about differences between native and web number implementations.
   * [Using Google APIs][] points to resources to
@@ -61,7 +63,7 @@ we made the following changes to this site:
 * Made miscellaneous other updates:
   * Removed references to Stagehand, in favor of `dart create`.
   * Changed analytics options for dart.dev example code from
-    using `pedantic` to using the recommended rules in `lints`.
+    using `pedantic` to using the recommended rules in [`lints`][].
   * Added Docker as a way to [get Dart][].
   * Updated the [language evolution page][evolution] to reflect Dart 2.13.
 
@@ -70,9 +72,11 @@ we made the following changes to this site:
 [Fixing type promotion failures]: /tools/non-promotion-reasons
 [get Dart]: /get-dart
 [HTTP server tutorial]: /tutorials/server/httpserver
+[`lints`]: {{site.pub-pkg}}/lints
+[Null safety codelab]: /codelabs/null-safety
 [Numbers in Dart]: /guides/language/numbers
-[typedef section]: /guides/language/language-tour#typedefs
 [streams tutorial]: /tutorials/language/streams
+[typedef section]: /guides/language/language-tour#typedefs
 [Using Google APIs]: /guides/google-apis
 [Using Google Cloud]: /server/google-cloud
 [Writing package pages]: /guides/libraries/writing-package-pages
