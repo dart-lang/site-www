@@ -7,7 +7,7 @@ class LineStream extends Stream<String> {
   final Stream<String> _source;
 
   /// Subscription on [_source] while subscribed.
-  late StreamSubscription<String>? _subscription;
+  StreamSubscription<String>? _subscription;
 
   /// Controller for output stream.
   late final StreamController<String> _controller;
