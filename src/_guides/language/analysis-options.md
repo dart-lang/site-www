@@ -206,22 +206,74 @@ For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
+### Enabling Dart team recommended rules: lints {#lints}
+
+The Dart team provides two sets of recommended linter rules
+in the [lints package][]:
+
+Core rules
+: Help identify critical issues that are likely to lead to problems
+  when running or consuming Dart code.
+  All code should pass these linter rules.
+  Packages that are uploaded to [pub.dev]({{site.pub}})
+  have a [package score]({{site.pub}}/help/scoring)
+  that's based in part on passing these rules.
+
+Recommended rules
+: Help identify additional issues
+  that may lead to problems when running or consuming Dart code,
+  and enforce a single, idiomatic style and format.
+  We recommend that all Dart code use these rules,
+  which are a superset of the core rules.
+
+{{site.alert.tip}}
+  If you're working on Flutter code, then instead of using the `lints` package, 
+  use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
+  which provides a superset of the recommended rules.
+{{site.alert.end}}
+
+To enable either set of lints,
+add the [lints package][] as a dev dependency:
+
+```terminal
+$ dart pub add --dev lints
+```
+
+Then edit your `analysis_options.yaml` file to include
+your preferred rule set:
+
+```yaml
+include: package:lints/<RULE_SET>.yaml
+```
+
+For example, you can include the recommended rule set like this:
+
+```yaml
+include: package:lints/recommended.yaml
+```
+
+{{site.alert.important}}
+When a **new version of `lints`** is published,
+code that previously passed analysis might **start failing analysis.**
+We recommend updating your code to work with the new rules.
+Other options are to explicitly enable individual linter rules 
+or [disable individual rules][].
+{{site.alert.end}}
+
+[lints package]: {{site.pub-pkg}}/lints
+
 ### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
 
 To enable the list of linter rules that Google uses in its own Dart code,
-depend on the [pedantic package]({{site.pub-pkg}}/pedantic)
-and include its `analysis_options.yaml` file.
-Unless you need to use the `pedantic` API, declare a dev dependency on `pedantic`
-in your `pubspec.yaml` file:
+add the [pedantic package]({{site.pub-pkg}}/pedantic) as a dependency.
+Unless you need to use the `pedantic` API, include the `--dev` flag to declare
+it as a dev dependency.
 
-<?code-excerpt "../null_safety_examples/analysis_alt/pubspec.yaml" retain="/dev_dep|pedantic/"?>
-```yaml
-dev_dependencies:
-  pedantic: ^1.11.0
+```terminal
+$ dart pub add [--dev] pedantic
 ```
 
-Run `pub get`, and then
-add the following line to your `analysis_options.yaml` file:
+Then edit your `analysis_options.yaml` file to include the rule set:
 
 <?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml" from="include" retain="include:"?>
 ```yaml
@@ -242,16 +294,13 @@ include: package:pedantic/analysis_options.yaml
 ### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
 
 To enable linter rules corresponding to the guidelines in [Effective Dart][],
-add a dev dependency on the [effective_dart package:][effective_dart]
+add the [effective_dart package][effective_dart] as a dev dependency:
 
-<?code-excerpt "../null_safety_examples/analysis_effective_dart/pubspec.yaml" retain="/dev_dep|effective_dart/"?>
-```yaml
-dev_dependencies:
-  effective_dart: ^1.3.0
+```terminal
+$ dart pub add --dev effective_dart
 ```
 
-Run `pub get`, and then
-add the following line to your `analysis_options.yaml` file:
+Then edit your `analysis_options.yaml` file to include the rule set:
 
 <?code-excerpt "../null_safety_examples/analysis_effective_dart/analysis_options.yaml" from="include" retain="include:"?>
 ```yaml
