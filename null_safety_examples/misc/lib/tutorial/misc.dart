@@ -1,14 +1,14 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, unused_element
+// ignore_for_file: annotate_overrides, unused_element, strict_raw_type
 // NOTE: Declarations in this file are analyzed but not tested.
-typedef Void1 = void Function(dynamic);
-typedef Async0 = Future Function();
 
 void futuresTutorial() {
-  Async0 expensiveA, expensiveB, expensiveC;
-  Void1 doSomethingWith;
+  Future<void> expensiveA() async {}
+  Future<void> expensiveB() async {}
+  Future<dynamic> expensiveC() async {}
+  void doSomethingWith(_) {}
   // #docregion multiple-await
   // Sequential processing using async and await.
-  main() async {
+  Future<void> main() async {
     await expensiveA();
     await expensiveB();
     doSomethingWith(await expensiveC());
@@ -22,7 +22,7 @@ void futuresTutorial() {
       .then((cValue) => doSomethingWith(cValue));
   // #enddocregion chaining
 
-  Void1 handleError;
+  void handleError(dynamic) {}
   void chooseBestResponse(List responses, bool anotherArg) => responses[0];
   bool moreInfo = true;
 
@@ -56,7 +56,7 @@ void streamsTutorial() {
 
 abstract class MyStream<T> extends Stream<T> {
   // #docregion mock-stream-method-implementations
-  Future<bool> contains(Object needle) async {
+  Future<bool> contains(Object? needle) async {
     await for (var event in this) {
       if (event == needle) return true;
     }
@@ -71,11 +71,11 @@ abstract class MyStream<T> extends Stream<T> {
 
   Future<List<T>> toList() async {
     final result = <T>[];
-    await this.forEach(result.add);
+    await forEach(result.add);
     return result;
   }
 
-  Future<String> join([String separator = ""]) async =>
-      (await this.toList()).join(separator);
+  Future<String> join([String separator = '']) async =>
+      (await toList()).join(separator);
   // #enddocregion mock-stream-method-implementations
 }

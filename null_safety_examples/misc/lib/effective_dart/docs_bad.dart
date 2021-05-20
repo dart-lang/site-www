@@ -3,7 +3,7 @@ import 'package:examples_util/ellipsis.dart';
 
 void miscDeclAnalyzedButNotTested() {
   // #docregion block-comments
-  greet(name) {
+  void greet(name) {
     /* Assume we have a valid name. */
     print('Hi, $name!');
   }

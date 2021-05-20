@@ -45,7 +45,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 {:.good}
 <?code-excerpt "docs_good.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
-greet(name) {
+void greet(name) {
   // Assume we have a valid name.
   print('Hi, $name!');
 }
@@ -54,7 +54,7 @@ greet(name) {
 {:.bad}
 <?code-excerpt "docs_bad.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
-greet(name) {
+void greet(name) {
   /* Assume we have a valid name. */
   print('Hi, $name!');
 }
@@ -522,7 +522,7 @@ object the member is being called on. Using "the" can be ambiguous.
 {% prettify dart tag=pre+code %}
 class Box {
   /// The value this wraps.
-  var _value;
+  Object? _value;
 
   /// True if this box contains a value.
   bool get hasValue => _value != null;

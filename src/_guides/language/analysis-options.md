@@ -105,18 +105,20 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- camel/" remove="http:"?>
+<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
 ```yaml
-include: package:pedantic/analysis_options.1.8.0.yaml
+include: package:lints/recommended.yaml
 
 analyzer:
   exclude: [build/**]
+  language:
+    strict-raw-types: true
   strong-mode:
     implicit-casts: false
 
 linter:
   rules:
-    - camel_case_types
+    - cancel_subscriptions
 ```
 
 The sample illustrates the most common top-level entries:
@@ -273,7 +275,7 @@ $ dart pub add [--dev] pedantic
 
 Then edit your `analysis_options.yaml` file to include the rule set:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="include" retain="include:" replace="/1\.8\.0\.//g"?>
+<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml" from="include" retain="include:"?>
 ```yaml
 include: package:pedantic/analysis_options.yaml
 ```
@@ -325,19 +327,19 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes (the syntax for a YAML list).
 For example:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
+<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
 ```yaml
 linter:
   rules:
-    - annotate_overrides
-    - await_only_futures
-    - camel_case_types
+    - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
     - comment_references
-    - constant_identifier_names
-    - control_flow_in_finally
-    - empty_statements
+    - one_member_abstracts
+    - only_throw_errors
+    - package_api_docs
+    - prefer_single_quotes
+    - sort_child_properties_last
 ```
 
 {% comment %}

@@ -1,6 +1,6 @@
 // #docregion
 class MyClass {
-  List<int> _values = [];
+  final List<int> _values = [];
 
   void addValue(int value) {
     _values.add(value);

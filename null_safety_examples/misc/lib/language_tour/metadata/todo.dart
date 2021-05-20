@@ -1,4 +1,3 @@
-// ignore_for_file: sort_constructors_first
 library todo;
 
 class Todo {

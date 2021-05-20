@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:test/test.dart';
 import 'package:examples_util/print_matcher.dart' as m;
 
@@ -13,7 +15,7 @@ void main() {
   });
 
   test('for-and-closures', () {
-    _test() {
+    void _test() {
       // #docregion for-and-closures
       var callbacks = [];
       for (var i = 0; i < 2; i++) {
@@ -27,7 +29,7 @@ void main() {
   });
 
   test('forEach', () {
-    _test() {
+    void _test() {
       // #docregion forEach
       var collection = [1, 2, 3];
       collection.forEach(print); // 1 2 3
@@ -39,7 +41,7 @@ void main() {
 
   test('assert', () {
     // trick to make text nullable
-    String? Function() _text = () => '';
+    String? _text() => '';
     String? text = _text();
     var number = 0, urlString = 'https';
     // #docregion assert

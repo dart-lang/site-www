@@ -1,4 +1,4 @@
-// ignore_for_file: argument_type_not_assignable
+// ignore_for_file: argument_type_not_assignable, prefer_collection_literals
 import 'package:examples/language_tour/generics/base_class.dart';
 import 'package:test/test.dart';
 
@@ -22,7 +22,7 @@ void main() {
   });
 
   test('generic-collections', () {
-    _test() {
+    void _test() {
       // TODO(miquelbeltran) language-tour.md should be updated, List<String> cannot be used with null-safety
       // #docregion generic-collections
       var names = <String>[];

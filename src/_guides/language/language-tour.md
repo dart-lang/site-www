@@ -113,6 +113,7 @@ mind:
 
     {{site.alert.version-note}}
       [Null safety][ns] was introduced in Dart 2.12.
+      Using null safety requires a [language version][] of at least 2.12.
     {{site.alert.end}}
 
 -   Although Dart is strongly typed, type annotations are optional
@@ -509,7 +510,7 @@ and [spread operators](#spread-operator) (`...` and `...?`):
 ```dart
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
-const map = {if (i is int) i: "int"}; // Use is and collection if.
+const map = {if (i is int) i: 'int'}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
@@ -1667,7 +1668,7 @@ class A {
 }
 
 void main() {
-  var x;
+  Function x;
 
   // Comparing top-level functions.
   x = foo;
@@ -2121,7 +2122,7 @@ querySelector('#confirm') // Get an object.
 ```
 
 {{site.alert.version-note}}
-  The `?..` syntax was introduced in 2.12.
+  The `?..` syntax requires a [language version][] of at least 2.12.
 {{site.alert.end}}
 
 The previous code is equivalent to the following:
@@ -3336,7 +3337,7 @@ interfaces. For example:
 // A person. The implicit interface contains greet().
 class Person {
   // In the interface, but visible only in this library.
-  final _name;
+  final String _name;
 
   // Not in the interface, since this is a constructor.
   Person(this._name);
@@ -3347,7 +3348,7 @@ class Person {
 
 // An implementation of the Person interface.
 class Impostor implements Person {
-  get _name => '';
+  String get _name => '';
 
   String greet(String who) => 'Hi $who. Do you know who I am?';
 }
@@ -3435,7 +3436,7 @@ class A {
   // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: ' +
+    print('You tried to use a non-existent member: '
         '${invocation.memberName}');
   }
 }
@@ -4001,7 +4002,7 @@ When you need the library, invoke
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
 ```dart
-Future greet() async {
+Future<void> greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
@@ -4082,7 +4083,7 @@ function marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future checkVersion() [!async!] {
+Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
@@ -4114,7 +4115,7 @@ for the results of functions:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
-var entrypoint = await findEntrypoint();
+var entrypoint = await findEntryPoint();
 var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
@@ -4133,7 +4134,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
@@ -4223,7 +4224,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
     handleRequest(request);
@@ -4347,66 +4348,34 @@ For more information, see the following:
 
 ## Typedefs
 
-In Dart, functions are objects, just like strings and numbers are
-objects. A *typedef*, or *function-type alias*, gives a function type a
-name that you can use when declaring fields and return types. A typedef
-retains type information when a function type is assigned to a variable.
+A type alias — often called a _typedef_ because
+it's declared with the keyword `typedef` — is
+a concise way to refer to a type.
+Here's an example of declaring and using a type alias named `IntList`:
 
-Consider the following code, which doesn't use a typedef:
-
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_1.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
-class SortedCollection {
-  Function compare;
-
-  SortedCollection(int f(Object a, Object b)) : compare = f;
-}
-
-// Initial, broken implementation.
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-
-  // All we know is that compare is a function,
-  // but what type of function?
-  assert(coll.compare is Function);
-}
+typedef IntList = List<int>;
+IntList il = [1, 2, 3];
 ```
 
-Type information is lost when assigning `f` to `compare`. The type of
-`f` is `(Object, ``Object)` → `int` (where → means returns), yet the
-type of `compare` is Function. If we change the code to use explicit
-names and retain type information, both developers and tools can use
-that information.
+A type alias can have type parameters:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_2.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
-typedef Compare = int Function(Object a, Object b);
-
-class SortedCollection {
-  Compare compare;
-
-  SortedCollection(this.compare);
-}
-
-// Initial, broken implementation.
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-  assert(coll.compare is Function);
-  assert(coll.compare is Compare);
-}
+typedef ListMapper<X> = Map<X, List<X>>;
+Map<String, List<String>> m1; // Verbose.
+ListMapper<String> m2; // Same thing but shorter and clearer.
 ```
 
-{{site.alert.note}}
-  Currently, typedefs are restricted to function types. We expect this to
-  change.
+{{site.alert.version-note}}
+  Before 2.13, typedefs were restricted to function types.
+  Using the new typedefs requires a [language version][] of at least 2.13.
 {{site.alert.end}}
 
-Because typedefs are simply aliases, they offer a way to check the type
-of any function. For example:
+We recommend using [inline function types][] instead of typedefs for functions,
+in most situations.
+However, function typedefs can still be useful:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
@@ -4418,6 +4387,10 @@ void main() {
   assert(sort is Compare<int>); // True!
 }
 ```
+
+[typedef-functions]: /guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax
+[inline function types]: /guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs
+
 
 ## Metadata
 
@@ -4612,6 +4585,7 @@ To learn more about Dart's core libraries, see
 [`int`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [`Iterable`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
+[language version]: /guides/language/evolution#language-versioning
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta

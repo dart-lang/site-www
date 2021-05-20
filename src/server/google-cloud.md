@@ -6,8 +6,8 @@ description: Your Dart app can use many Google Cloud services — Firebase, Goog
 
 Dart servers can use many
 [Google Cloud products](https://cloud.google.com/products),
-often with the help of pre-packaged [Docker images][]
-that the Dart team maintains.
+often with the help of the pre-packaged Docker
+[Official Images for Dart](https://hub.docker.com/_/dart).
 For information about creating HTTP servers with Dart, see the
 [Write HTTP servers page](/tutorials/server/httpserver).
 
@@ -82,7 +82,6 @@ If you _want_ to use App Engine, consider using the [`appengine` package][].
 [ce]: https://cloud.google.com/compute/docs/containers
 [cr]: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/other
 [server examples]: https://github.com/dart-lang/samples/tree/master/server
-[Docker images]: https://hub.docker.com/r/google/dart
 [GKE overview]: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
 [Dart Functions Framework]: {{site.pub-pkg}}/functions_framework
 [CloudEvents]: https://cloudevents.io/

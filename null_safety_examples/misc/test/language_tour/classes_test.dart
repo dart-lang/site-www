@@ -54,7 +54,7 @@ void main() {
 
   test('safe-member-access', () {
     // Trick to make p nullable
-    Point? Function() f = () => Point(2, 2);
+    Point? f() => Point(2, 2);
     Point? p = f();
     // #docregion safe-member-access
     // If p is non-null, set a variable equal to its y value.
@@ -64,7 +64,7 @@ void main() {
   });
 
   test('const, identical, runtimeType', () {
-    _test() {
+    void _test() {
       // #docregion const
       var p = const ImmutablePoint(2, 2);
       // #enddocregion const
