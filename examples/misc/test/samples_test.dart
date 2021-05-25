@@ -23,16 +23,6 @@ void main() {
   const oneSecond = Duration(seconds: 0);
   final someDate = DateTime(1999);
 
-  test('hello world', () {
-    // #docregion hello-world
-    void main() {
-      print('Hello, World!');
-    }
-
-    // #enddocregion hello-world
-    expect(main, prints('Hello, World!\n'));
-  });
-
   group('Voyager I', () {
     // #docregion var
     var name = 'Voyager I';

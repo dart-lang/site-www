@@ -63,7 +63,7 @@ Let's run a small program.
 
  1. Create a file called `hello_world.dart` that contains this code:
 
-    <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+    <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
     ```dart
     void main() {
       print('Hello, World!');
@@ -426,7 +426,7 @@ The easiest way to write text to a file is to create a
 [File]({{ioAPI}}/File-class.html)
 object and use the `writeAsString()` method:
 
-<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quote)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (write quote)"?>
 ```dart
 final quotes = File('quotes.txt');
 const stronger = 'That which does not kill us makes us stronger. -Nietzsche';
@@ -447,12 +447,12 @@ You can continue to write to the file until done,
 at which time, you must close the file.
 The `close()` method is asynchronous and returns a future.
 
-<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quotes)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (write quotes)"?>
 ```dart
 final quotes = File('quotes.txt').openWrite(mode: FileMode.append);
 
 quotes.write("Don't cry because it's over, ");
-quotes.writeln("smile because it happened. -Dr. Seuss");
+quotes.writeln('smile because it happened. -Dr. Seuss');
 await quotes.close();
 ```
 
@@ -468,13 +468,13 @@ provides a copy of the environment
 variables in an immutable map. If you need a mutable map (modifiable copy) you
 can use `Map.of(Platform.environment)`.
 
-<?code-excerpt "misc/lib/tutorial/cmdline.dart (env)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (env)"?>
 ```dart
 final envVarMap = Platform.environment;
 
-print('PWD = ${envVarMap["PWD"]}');
-print('LOGNAME = ${envVarMap["LOGNAME"]}');
-print('PATH = ${envVarMap["PATH"]}');
+print('PWD = ${envVarMap['PWD']}');
+print('LOGNAME = ${envVarMap['LOGNAME']}');
+print('PATH = ${envVarMap['PATH']}');
 ```
 
 `Platform` provides other useful properties that give

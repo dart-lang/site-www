@@ -30,7 +30,7 @@ greeting to use another language.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
