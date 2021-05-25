@@ -8,7 +8,6 @@ import 'dart:math';
 import 'package:test/test.dart';
 // #enddocregion import
 import 'package:examples_util/print_matcher.dart' as m;
-import 'package:examples/samples/spacecraft.dart';
 // #docregion import
 
 // Importing files
@@ -107,52 +106,6 @@ void main() {
     expect(result, 6765);
   });
 
-  test('use class', () {
-    _test1() {
-      // #docregion use-class
-      var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
-      voyager.describe();
-
-      // #enddocregion use-class
-    }
-
-    _test2() {
-      // #docregion use-class
-      var voyager3 = Spacecraft.unlaunched('Voyager III');
-      voyager3.describe();
-      // #enddocregion use-class
-    }
-
-    expect(
-        _test1,
-        prints(allOf(
-          startsWith('Spacecraft: Voyager I'),
-          contains('Launched: 1977'),
-        )));
-    expect(
-        _test2,
-        m.prints([
-          'Spacecraft: Voyager III',
-          'Unlaunched',
-        ]));
-  });
-
-  test('extends', () {
-    final o = Orbiter('O', someDate, 42);
-    expect(o.launchYear, someDate.year);
-  });
-
-  test('mixin', () {
-    final o = PilotedCraft('shuttle', someDate);
-    expect(o.launchYear, someDate.year);
-    expect(o.astronauts, 1);
-  });
-
-  test('implements', () {
-    final o = MockSpaceship('Enterprise');
-    expect(o.describe, m.prints('Enterprise'));
-  });
-
   {
     // Show declaration on first use.
     // #docregion async
@@ -228,23 +181,6 @@ void main() {
             contains('File for test_data/config already exists.'),
           ));
     });
-  });
-
-  test('async*', () async {
-    var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
-    var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
-
-    // #docregion async-
-    Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
-      for (var object in objects) {
-        await Future.delayed(oneSecond);
-        yield '${craft.name} flies by $object';
-      }
-    }
-    // #enddocregion async-
-
-    final messages = flybyObjects.map((o) => 'Voyager I flies by $o');
-    expect(await report(voyager, flybyObjects).toList(), messages);
   });
 
   void throwTest(int astronauts) {
