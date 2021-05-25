@@ -20,7 +20,6 @@ void main() {
   // oneSecond is shown in the code excerpts as 1 second, but we don't need
   // to delay the actual test execution, so we set the delay to 0.
   const oneSecond = Duration(seconds: 0);
-  final someDate = DateTime(1999);
 
   test('hello world', () {
     // #docregion hello-world
