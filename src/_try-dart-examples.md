@@ -180,29 +180,27 @@ void main() {
 ### Compute π
 
 {:#try-dart-compute-pi}
-<?code-excerpt "../null_safety_examples/misc/lib/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
+<?code-excerpt "misc/lib/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
 ```dart
 import 'dart:math' show Random;
 
-void main() async {
+main() async {
   print('Compute π using the Monte Carlo method.');
-  await for (final estimate in computePi().take(100)) {
+  await for (var estimate in computePi().take(100)) {
     print('π ≅ $estimate');
   }
 }
 
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch = 100000}) async* {
-  var total = 0; // Inferred to be of type int
+  var total = 0;
   var count = 0;
   while (true) {
-    final points = generateRandom().take(batch);
-    final inside = points.where((p) => p.isInsideUnitCircle);
-
+    var points = generateRandom().take(batch);
+    var inside = points.where((p) => p.isInsideUnitCircle);
     total += batch;
     count += inside.length;
-    final ratio = count / total;
-
+    var ratio = count / total;
     // Area of a circle is A = π⋅r², therefore π = A/r².
     // So, when given random points with x ∈ <0,1>,
     // y ∈ <0,1>, the ratio of those inside a unit circle
@@ -212,7 +210,7 @@ Stream<double> computePi({int batch = 100000}) async* {
   }
 }
 
-Iterable<Point> generateRandom([int? seed]) sync* {
+Iterable<Point> generateRandom([int seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
@@ -220,11 +218,8 @@ Iterable<Point> generateRandom([int? seed]) sync* {
 }
 
 class Point {
-  final double x;
-  final double y;
-
+  final double x, y;
   const Point(this.x, this.y);
-
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }
 ```
