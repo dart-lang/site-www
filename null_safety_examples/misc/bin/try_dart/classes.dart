@@ -1,5 +1,4 @@
 // ignore_for_file: one_member_abstracts
-
 // Abstract classes can't be instantiated.
 abstract class Item {
   void use();

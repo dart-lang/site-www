@@ -5,7 +5,7 @@
 ### Hello, World!
 
 {:#try-dart-hello-world}
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)" replace="/void //g"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
   print('Hello, World!');
