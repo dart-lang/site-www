@@ -101,9 +101,9 @@ Iterable<Point> generateRandom([int? seed]) sync* {
 class Point {
   final double x;
   final double y;
-  
+
   const Point(this.x, this.y);
-  
+
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }
 ```
