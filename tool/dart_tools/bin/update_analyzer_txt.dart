@@ -35,7 +35,7 @@ Future<void> writeAnalyzerResultsFile(
     return;
   }
   if (output.exitCode != 3) {
-    throw ('Unexpected exit code: ${output.exitCode}\n${output.stderr}');
+    throw 'Unexpected exit code: ${output.exitCode}\n${output.stderr}';
   }
 
   var analyzerFile =
