@@ -4,7 +4,7 @@ author: Dart Team <misc@dartlang.org>
 homepage: https://dart.dev
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.13.0 <3.0.0'
 
 dev_dependencies:
   build_runner: ^2.0.2
