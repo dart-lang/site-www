@@ -14,9 +14,8 @@ int runTwice(int x, int Function(int) f) {
   return x;
 }
 
-// ignore: type_annotate_public_apis
-main() {
-  print("4 times two is ${timesTwo(4)}");
-  print("4 times four is ${timesFour(4)}");
-  print("2 x 2 x 2 is ${runTwice(2, timesTwo)}");
+void main() {
+  print('4 times two is ${timesTwo(4)}');
+  print('4 times four is ${timesFour(4)}');
+  print('2 x 2 x 2 is ${runTwice(2, timesTwo)}');
 }

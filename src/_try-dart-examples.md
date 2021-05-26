@@ -5,9 +5,9 @@
 ### Hello, World!
 
 {:#try-dart-hello-world}
-<?code-excerpt "misc/test/samples_test.dart (hello-world)" replace="/void //g"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)" replace="/void //g"?>
 ```dart
-main() {
+void main() {
   print('Hello, World!');
 }
 ```
@@ -15,7 +15,7 @@ main() {
 ### Functions
 
 {:#try-dart-functions}
-<?code-excerpt "misc/bin/try_dart/functions.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/try_dart/functions.dart"?>
 ```dart
 // A function declaration.
 int timesTwo(int x) {
@@ -33,17 +33,17 @@ int runTwice(int x, int Function(int) f) {
   return x;
 }
 
-main() {
-  print("4 times two is ${timesTwo(4)}");
-  print("4 times four is ${timesFour(4)}");
-  print("2 x 2 x 2 is ${runTwice(2, timesTwo)}");
+void main() {
+  print('4 times two is ${timesTwo(4)}');
+  print('4 times four is ${timesFour(4)}');
+  print('2 x 2 x 2 is ${runTwice(2, timesTwo)}');
 }
 ```
 
 ### Control flow
 
 {:#try-dart-control-flow}
-<?code-excerpt "misc/bin/try_dart/control_flow.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/try_dart/control_flow.dart"?>
 ```dart
 bool isEven(int x) {
   // An if-else statement.
@@ -59,14 +59,16 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
 
   // A for-in loop.
   for (var i in numbers) {
-    // A single-line if statement.
-    if (isEven(i)) evenNumbers.add(i);
+    // A single line if statement.
+    if (isEven(i)) {
+      evenNumbers.add(i);
+    }
   }
 
   return evenNumbers;
 }
 
-main() {
+void main() {
   var numbers = List.generate(10, (i) => i);
   print(getEvenNumbers(numbers));
 }
@@ -75,21 +77,23 @@ main() {
 ### Strings
 
 {:#try-dart-strings}
-<?code-excerpt "misc/bin/try_dart/strings.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/try_dart/strings.dart"?>
 ```dart
-main() {
+import 'dart:math' as math;
+
+void main() {
   print('a single quoted string');
   print("a double quoted string");
 
-  // Strings can be combined with the + operator.
-  print('cat' + 'dog');
+  // Strings can be combined by placing them adjacent to each other.
+  print('cat' 'dog');
 
   // Triple quotes define a multi-line string.
   print('''triple quoted strings
 are for multiple lines''');
 
   // Dart supports string interpolation.
-  const pi = 3.14;
+  final pi = math.pi;
   print('pi is $pi');
   print('tau is ${2 * pi}');
 }
@@ -98,26 +102,26 @@ are for multiple lines''');
 ### Collection literals
 
 {:#try-dart-collection-literals}
-<?code-excerpt "misc/bin/try_dart/collection_literals.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/try_dart/collection_literals.dart"?>
 ```dart
 // A list literal.
-var lostNumbers = [4, 8, 15, 16, 23, 42];
+const lostNumbers = [4, 8, 15, 16, 23, 42];
 
 // A map literal.
-var nobleGases = {
+const nobleGases = {
   'He': 'Helium',
   'Ne': 'Neon',
   'Ar': 'Argon',
 };
 
 // A set literal.
-var frogs = {
+const frogs = {
   'Tree',
   'Poison dart',
   'Glass',
 };
 
-main() {
+void main() {
   print(lostNumbers.last);
   print(nobleGases['Ne']);
   print(frogs.difference({'Poison dart'}));
@@ -127,35 +131,38 @@ main() {
 ### Classes
 
 {:#try-dart-classes}
-<?code-excerpt "misc/bin/try_dart/classes.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/try_dart/classes.dart"?>
 ```dart
 // Abstract classes can't be instantiated.
 abstract class Item {
-  use();
+  void use();
 }
 
 // Classes can implement other classes.
 class Chest<T> implements Item {
-  List<T> contents;
+  final List<T> contents;
 
   // Constructors can assign arguments to instance variables using `this`.
   Chest(this.contents);
 
-  use() => print("$this has ${contents.length} items.");
+  @override
+  void use() => print('$this has ${contents.length} items.');
 }
 
 class Sword implements Item {
-  int damage = 5;
+  int get damage => 5;
 
-  use() => print("$this dealt $damage damage.");
+  @override
+  void use() => print('$this dealt $damage damage.');
 }
 
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  int damage = 50;
+  @override
+  final int damage = 50;
 }
 
-main() {
+void main() {
   // The 'new' keyword is optional.
   var chest = Chest<Item>([
     DiamondSword(),
@@ -164,7 +171,7 @@ main() {
 
   chest.use();
 
-  for (var item in chest.contents) {
+  for (final item in chest.contents) {
     item.use();
   }
 }
@@ -173,27 +180,29 @@ main() {
 ### Compute π
 
 {:#try-dart-compute-pi}
-<?code-excerpt "misc/lib/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
 ```dart
 import 'dart:math' show Random;
 
-main() async {
+void main() async {
   print('Compute π using the Monte Carlo method.');
-  await for (var estimate in computePi().take(100)) {
+  await for (final estimate in computePi().take(100)) {
     print('π ≅ $estimate');
   }
 }
 
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch = 100000}) async* {
-  var total = 0;
+  var total = 0; // Inferred to be of type int
   var count = 0;
   while (true) {
-    var points = generateRandom().take(batch);
-    var inside = points.where((p) => p.isInsideUnitCircle);
+    final points = generateRandom().take(batch);
+    final inside = points.where((p) => p.isInsideUnitCircle);
+
     total += batch;
     count += inside.length;
-    var ratio = count / total;
+    final ratio = count / total;
+
     // Area of a circle is A = π⋅r², therefore π = A/r².
     // So, when given random points with x ∈ <0,1>,
     // y ∈ <0,1>, the ratio of those inside a unit circle
@@ -203,7 +212,7 @@ Stream<double> computePi({int batch = 100000}) async* {
   }
 }
 
-Iterable<Point> generateRandom([int seed]) sync* {
+Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
@@ -211,11 +220,14 @@ Iterable<Point> generateRandom([int seed]) sync* {
 }
 
 class Point {
-  final double x, y;
+  final double x;
+  final double y;
+
   const Point(this.x, this.y);
+
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }
 ```
 
 
-<div>
+</div>
