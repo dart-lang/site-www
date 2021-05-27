@@ -178,7 +178,7 @@ class Spacecraft {
   DateTime? launchDate;
 
   int? get launchYear => launchDate?.year; // read-only non-final property
-  
+
   // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
     // Initialization code goes here.
@@ -228,6 +228,7 @@ class Orbiter extends Spacecraft {
 
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
+}
 ```
 
 [Read more](/guides/language/language-tour#extending-a-class) 
