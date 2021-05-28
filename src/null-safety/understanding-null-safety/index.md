@@ -726,9 +726,9 @@ redundantly check it again for `null`:
 
 ```dart
 // Using null safety:
-checkList(List? list) {
+String checkList(List? list) {
   if (list == null) return 'No list';
-  if (list?.isEmpty) {
+  if (list?.isEmpty ?? false) {
     return 'Empty list';
   }
   return 'Got something';
