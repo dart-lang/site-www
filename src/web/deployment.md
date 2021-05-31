@@ -96,6 +96,7 @@ For details, see the language tour's coverage of
 The usual advice for web apps applies to Dart web apps.
 Here are a few resources:
 
+* [Fast load times](https://web.dev/fast/)
 * [Web Fundamentals](https://developers.google.com/web/fundamentals/) (especially [Optimizing Content Efficiency](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/))
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
