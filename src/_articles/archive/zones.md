@@ -2,9 +2,22 @@
 title: Zones
 description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
 date: 2014-03-03
-css: [/articles/styles.css]
 obsolete: true
 ---
+
+<style>
+.zone1 {
+  background-color: rgb(208, 211, 255);
+}
+
+.zone2 {
+  background-color: rgb(195, 255, 231);
+}
+
+.zone3 {
+  background-color: rgb(255, 240, 164);
+}
+</style>
 
 ### Asynchronous dynamic extents
 
