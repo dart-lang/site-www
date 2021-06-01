@@ -33,19 +33,6 @@ void main() {
   DartPadPicker(dartPadHost, select, snippets, frameId: 'try-dart-pad');
 }
 
-// Snippet _createSnippet(HtmlElement root, String name) => Snippet(
-//       name,
-//       _src(
-//         root,
-//         '#try-dart-${name.toLowerCase().replaceAll(' ', '-')}',
-//       ),
-//     );
-//
-// String _src(HtmlElement root, String id,
-//         [String fallback =
-//             "/* Can't load example sources. Please refresh the page. */"]) =>
-//     root.querySelector(id)?.innerText ?? fallback;
-
 // Mobile browser detection
 
 final RegExp _mobileRegex =
