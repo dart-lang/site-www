@@ -39,14 +39,14 @@ Future<void> _printDailyNewsDigestAsyncUsingFutureAPI() {
 
 // #docregion sync, main-async, main-future-api
 
-main() {
+void main() {
   // #enddocregion main-async, main-future-api, sync
   mainAsync();
 }
 
-mainSync() => printNewsAndMore(_printDailyNewsDigestSync);
+void mainSync() => printNewsAndMore(_printDailyNewsDigestSync);
 
-Future mainAsync() {
+Future<void> mainAsync() {
   // Return the daily news future so that the
   // test harness has something to wait on.
   final future = _printDailyNewsDigestAsync();
@@ -54,7 +54,7 @@ Future mainAsync() {
   return future;
 }
 
-printNewsAndMore(Function _printDailyNewsDigest) {
+void printNewsAndMore(Function _printDailyNewsDigest) {
   // #docregion main-async, main-future-api, sync
   _printDailyNewsDigest();
   _printWinningLotteryNumbers();
@@ -63,15 +63,15 @@ printNewsAndMore(Function _printDailyNewsDigest) {
 }
 // #enddocregion sync
 
-_printWinningLotteryNumbers() {
+void _printWinningLotteryNumbers() {
   print('Winning lotto numbers: [23, 63, 87, 26, 2]');
 }
 
-_printWeatherForecast() {
+void _printWeatherForecast() {
   print("Tomorrow's forecast: 70F, sunny.");
 }
 
-_printBaseballScore() {
+void _printBaseballScore() {
   print('Baseball score: Red Sox 10, Yankees 0');
 }
 
@@ -129,7 +129,7 @@ Future<void> _printDailyNewsDigestAsyncUsingFutureApiAndBraces() {
 }
 // #enddocregion main-future-api-using-braces
 
-_noArgFuture() {
+Future<void> _noArgFuture() {
   // #docregion main-future-api-then-no-arg
   final future = _printDailyNewsDigestAsync();
   return future.then((_) {
@@ -139,7 +139,7 @@ _noArgFuture() {
   // #enddocregion main-future-api-then-no-arg
 }
 
-handleError(_) {}
+void handleError(_) {}
 
 // #docregion future-api-try-catch
 Future<void> _printDailyNewsDigestAsyncFutureApiWithTryCatch() => //!<br>

@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 import 'package:test/test.dart';
 import 'package:examples_util/print_matcher.dart' as m;
 import 'package:examples/tutorial/daily_news.dart' as daily_news;
@@ -24,7 +23,7 @@ void futures() {
   });
 
   test('async', () {
-    _test() {
+    Future<void> _test() {
       daily_news.oneSecond = Duration.zero;
       return daily_news.mainAsync();
     }
