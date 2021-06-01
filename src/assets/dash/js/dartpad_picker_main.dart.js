@@ -2964,7 +2964,7 @@ C.e=function(hooks) { return hooks; }
 
 C.b=new P.bZ()
 C.p=new P.c_()
-C.w=new Y.J("Hello world",'void main() {\n  print("Hello, World!");\n}')
+C.w=new Y.J("Hello world","void main() {\n  print('Hello, World!');\n}")
 C.B=new Y.J("Functions","// A function declaration.\nint timesTwo(int x) {\n  return x * 2;\n}\n\n// Arrow syntax is shorthand for `{ return expr; }`.\nint timesFour(int x) => timesTwo(timesTwo(x));\n\n// Functions are objects.\nint runTwice(int x, int Function(int) f) {\n  for (var i = 0; i < 2; i++) {\n    x = f(x);\n  }\n  return x;\n}\n\nvoid main() {\n  print('4 times two is ${timesTwo(4)}');\n  print('4 times four is ${timesFour(4)}');\n  print('2 x 2 x 2 is ${runTwice(2, timesTwo)}');\n}")
 C.C=new Y.J("Control flow","bool isEven(int x) {\n  // An if-else statement.\n  if (x % 2 == 0) {\n    return true;\n  } else {\n    return false;\n  }\n}\n\nList<int> getEvenNumbers(Iterable<int> numbers) {\n  var evenNumbers = <int>[];\n\n  // A for-in loop.\n  for (var i in numbers) {\n    // A single line if statement.\n    if (isEven(i)) {\n      evenNumbers.add(i);\n    }\n  }\n\n  return evenNumbers;\n}\n\nvoid main() {\n  var numbers = List.generate(10, (i) => i);\n  print(getEvenNumbers(numbers));\n}")
 C.y=new Y.J("Strings","import 'dart:math' as math;\n\nvoid main() {\n  print('a single quoted string');\n  print(\"a double quoted string\");\n\n  // Strings can be combined by placing them adjacent to each other.\n  print('cat' 'dog');\n\n  // Triple quotes define a multi-line string.\n  print('''triple quoted strings\nare for multiple lines''');\n\n  // Dart supports string interpolation.\n  final pi = math.pi;\n  print('pi is $pi');\n  print('tau is ${2 * pi}');\n}")
