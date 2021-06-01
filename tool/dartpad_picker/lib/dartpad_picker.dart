@@ -49,7 +49,6 @@ class DartPadPicker {
 
   void _initDartPad() {
     _iFrameElement = IFrameElement()
-      // ignore: unsafe_html
       ..src = iFrameSrc(theme: 'dark', mode: 'dart', nullSafety: true);
     final id = frameId;
     if (id != null) {
@@ -62,7 +61,6 @@ class DartPadPicker {
       final data = e.data;
       if (data is Map &&
           data.containsKey('type') &&
-          data['type'] is String &&
           data['type'] == 'ready') {
         _sendSourceCode();
       }
