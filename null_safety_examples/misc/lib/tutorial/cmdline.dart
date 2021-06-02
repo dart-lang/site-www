@@ -4,9 +4,9 @@ void printEnvVar() {
   // #docregion env
   final envVarMap = Platform.environment;
 
-  print('PWD = ${envVarMap["PWD"]}');
-  print('LOGNAME = ${envVarMap["LOGNAME"]}');
-  print('PATH = ${envVarMap["PATH"]}');
+  print('PWD = ${envVarMap['PWD']}');
+  print('LOGNAME = ${envVarMap['LOGNAME']}');
+  print('PATH = ${envVarMap['PATH']}');
   // #enddocregion env
 }
 
@@ -25,7 +25,7 @@ Future<void> writeQuotes() async {
   final quotes = File('quotes.txt').openWrite(mode: FileMode.append);
 
   quotes.write("Don't cry because it's over, ");
-  quotes.writeln("smile because it happened. -Dr. Seuss");
+  quotes.writeln('smile because it happened. -Dr. Seuss');
   await quotes.close();
   // #enddocregion write-quotes
   print('Done!');

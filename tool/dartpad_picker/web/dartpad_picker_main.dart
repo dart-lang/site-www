@@ -46,7 +46,7 @@ bool isMobile() {
 
 const helloWorld = r'''
 void main() {
-  print("Hello, World!");
+  print('Hello, World!');
 }''';
 
 const functions = r'''
