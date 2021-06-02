@@ -121,7 +121,7 @@ with the [`dart create`](/tools/dart-tool) command.
    $ dart pub add args
    ```
 
-5. Open the `bin/dcat.dart` file and copy the preceding code into it.
+4. Open the `bin/dcat.dart` file and copy the preceding code into it.
 
 {{site.alert.note}}
   To learn more about using packages and organizing your code, see the
