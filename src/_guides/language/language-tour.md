@@ -4336,8 +4336,8 @@ A type alias can have type parameters:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
 typedef ListMapper<X> = Map<X, List<X>>;
-Map<String, List<String>> m1; // Verbose.
-ListMapper<String> m2; // Same thing but shorter and clearer.
+Map<String, List<String>> m1 = {}; // Verbose.
+ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 ```
 
 {{site.alert.version-note}}
