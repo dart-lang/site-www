@@ -1,7 +1,7 @@
 // ignore_for_file: annotate_overrides, type_annotate_public_apis, strict_raw_type, use_function_type_syntax_for_parameters
 import 'dart:async';
 
-// TODO(chalin): I believe that handleError's test argument should be declared
+// TODO(chalin): I believe that handleError's test argument should be declared (#3298)
 // as follows, but it isn't: {bool Function(dynamic error) test}.
 
 abstract class MyStream<T> implements Stream<T> {
