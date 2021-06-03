@@ -3,7 +3,7 @@ import 'dart:io';
 
 Future<void> main() async {
   final semicolon = ';'.codeUnitAt(0);
-  var result = <int>[];
+  final result = <int>[];
 
   final script = File(Platform.script.toFilePath());
   RandomAccessFile file = await script.open(mode: FileMode.read);
