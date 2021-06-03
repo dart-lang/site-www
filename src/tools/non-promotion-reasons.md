@@ -29,7 +29,7 @@ class C {
   int? i;                  // (1)
   void f() {
     if (i == null) return;
-    i.isEven;              // (2) ERROR
+    print(i.isEven);       // (2) ERROR
   }
 }
 {% endprettify %}
@@ -48,7 +48,7 @@ Here's an example of using `i!`:
 {:.good}
 {% prettify dart tag=pre+code %}
 ...
-i!.isEven;
+print(i[!!!].isEven);
 ...
 {% endprettify %}
 
@@ -61,46 +61,50 @@ that holds the value of `i`:
 class C {
   int? i;
   void f() {
-    int i = this.i ?? 0;
-    i.isEven;
+    [!final i = this.i;!]
+    if (i == null) return;
+    print(i.isEven);
   }
 }
 {% endprettify %}
 
-Although this example features an instance field,
-it could instead use an instance getter, a static field or getter,
+This example features an instance field,
+but it could instead use an instance getter, a static field or getter,
 a top-level variable or getter, or `this`.
 (Although promoting `this` would be sound,
-implementing that would be difficult and not very useful.)
+implementing it would be difficult and not very useful.)
+
+{{site.alert.tip}}
+  When creating a local variable to hold a field's value,
+  **make the variable `final`**.
+  That way, you can't accidentally update the local variable
+  when you intend to update the field.
+{{site.alert.end}}
 
 
 ## Other causes and workarounds
 
 ***[PENDING: make all good samples be tested]***
 
-***[PENDING: Check all uses of "you".]***
-
-This section covers all known causes
+This section covers other common causes
 of type promotion failure.
-***[PENDING: rephrase to something more true/accurate/helpful?]***
 The workarounds for many of these are
 similar to the workarounds shown in the previous section:
 either use `!` or create a local variable that has the type you need.
-***[PENDING: true?]***
 
 
 ### Possibly written after promotion {#write}
 
 **The cause:**
-You're trying to promote a variable that might have been
+Trying to promote a variable that might have been
 written to since it was promoted.
 
 Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(bool b, int? i, int? j) {
-  if (i != null) return;
+void f(bool b, int? i, int? j) {
+  if (i == null) return;
   if (b) {
     i = j;           // (1)
   }
@@ -122,20 +126,34 @@ You might fix the problem by combining the two `if` statements:
 
 {:.good}
 {% prettify dart tag=pre+code %}
-f(bool b, int? i, int? j) {
-  if (i != null) return;
+void f(bool b, int? i, int? j) {
+  if (i == null) return;
   if (b) {
     i = j;
-  } else {
+  } [!else!] {
     print(i.isEven);
   }
 }
 {% endprettify %}
 
-Note that in straight-line control flow cases like these (no loops),
+In straight-line control flow cases like these (no loops),
 flow analysis takes into account the right hand side of the assignment
-in order to decide whether to demote.
-That means you could also fix this by changing the type of `j` to `int`.
+when deciding whether to demote.
+As a result, another way to fix this code is
+to change the type of `j` to `int`.
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(bool b, int? i, [!int j!]) {
+  if (i == null) return;
+  if (b) {
+    i = j;
+  }
+  if (!b) {
+    print(i.isEven);
+  }
+}
+{% endprettify %}
 
 
 ### Possibly written in a previous loop iteration {#loop-or-switch}
@@ -149,7 +167,7 @@ Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(Link? p) {
+void f(Link? p) {
   if (p != null) return;
   while (true) {    // (1)
     print(p.value); // (2) ERROR
@@ -171,8 +189,8 @@ You might fix this problem by moving the null check to the top of the loop:
 
 {:.good}
 {% prettify dart tag=pre+code %}
-f(Link? p) {
-  while (p != null) {
+void f(Link? p) {
+  while ([!p != null!]) {
     print(p.value);
     p = p.next;
   }
@@ -180,12 +198,12 @@ f(Link? p) {
 {% endprettify %}
 
 This situation can also arise in `switch` statements if
-there's a `case` block that has a label,
+a `case` block has a label,
 because you can use labeled `switch` statements to construct loops:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int i, int? j, int? k) {
+void f(int i, int? j, int? k) {
   if (j == null) return;
   switch (i) {
     label:
@@ -208,18 +226,20 @@ Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int? i, int? j) {
+void f(int? i, int? j) {
   if (i == null) return;
   try {
     i = j;                 // (1)
+    // ... Additional code ...
     if (i == null) return; // (2)
+    // ... Additional code ...
   } catch (...) {
-    print(i.isEven);       // ERROR
+    print(i.isEven);       // (3) ERROR
   }
 }
 {% endprettify %}
 
-In this case, flow analysis doesn't consider `i.isEven` safe,
+In this case, flow analysis doesn't consider `i.isEven` (3) safe,
 because it has no way of knowing when in the `try` block
 the exception might have occurred,
 so it conservatively assumes that it might have happened between (1) and (2),
@@ -233,7 +253,7 @@ these try/catch/finally situations don't take into account
 the right-hand side of the assignment,
 similar to what happens in loops.
 
-***[PENDING: show fix?]***
+***[PENDING: what's the fix?]***
 
 
 ### Subtype mismatch
@@ -245,9 +265,9 @@ the variable's current promoted type
 
 Example:
 
-{:.good}
+{:.bad}
 {% prettify dart tag=pre+code %}
-f(Object o) {
+void f(Object o) {
   if (o is Comparable) {             // (1)
     if (o is Pattern) {              // (2)
       print(o.matchAsPrefix('foo')); // (3) ERROR
@@ -257,17 +277,16 @@ f(Object o) {
 {% endprettify %}
 
 In this example, `o` is promoted to `Comparable` at (1), but
-it's not promoted to `Pattern` at (2),
-because `Pattern` is not a subtype of `Comparable`.
-(The rationale is that if we did promote,
-then you wouldn't be able to access methods on `Comparable` anymore).
+it isn't promoted to `Pattern` at (2),
+because `Pattern` isn't a subtype of `Comparable`.
+(The rationale is that if it did promote,
+then you wouldn't be able to use methods on `Comparable`.)
 Note that just because `Pattern` isn't a subtype of `Comparable`
 doesn't mean the code at (3) is dead;
-if you define a class that
-implements both `Comparable` and `Pattern`,
-then (3) is reachable.
+`o` might have a type — like `String` —
+that implements both `Comparable` and `Pattern`.
 
-***[PENDING: show fix?]***
+***[PENDING: what's the fix?]***
 
 
 ### Write captured by a local function
@@ -280,7 +299,7 @@ Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int? i, int? j) {
+void f(int? i, int? j) {
   if (i == null) return;
   var foo = () {
     i = j;
@@ -295,7 +314,7 @@ therefore it's no longer safe to promote `i` at all.
 As with loops, this demotion happens regardless of
 the type of the right hand side of the assignment.
 
-***[PENDING: show fix?]***
+***[PENDING: what's the fix?]***
 
 
 ### Written outside of the current closure or function expression {#write-outer}
@@ -309,18 +328,18 @@ Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int? i, int? j) {
+void f(int? i, int? j) {
   if (i == null) return;
   var foo = () {
-    print(i.isEven); // ERROR
+    print(i.isEven); // (1) ERROR
   };
-  i = j;             // (1)
+  i = j;             // (2)
 }
 {% endprettify %}
 
 Flow analysis reasons that there's no way to determine
 when `foo` might get called,
-so it might get called after the assignment at (1),
+so it might get called after the assignment at (2),
 and thus the promotion might no longer be valid.
 As with loops, this demotion happens regardless of the type of
 the right hand side of the assignment.
@@ -329,7 +348,7 @@ A particularly nasty case looks like this:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int? i) {
+void f(int? i) {
   i ??= 0;
   var foo = () {
     print(i.isEven); // ERROR
@@ -340,11 +359,11 @@ f(int? i) {
 In this case, a human can see that the promotion is safe because
 the only write to `i` uses a non-null value and
 happens before `foo` is ever created.
-But [flow analysis is not that smart][1536].
+But [flow analysis isn't that smart][1536].
 
 [1536]: https://github.com/dart-lang/language/issues/1536
 
-***[PENDING: show fix?]***
+***[PENDING: what's the fix?]***
 
 
 ### Write captured outside of the current closure or function expression {#captured-outer}
@@ -359,7 +378,7 @@ Example:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-f(int? i, int? j) {
+void f(int? i, int? j) {
   var foo = () {
     if (i == null) return;
     print(i.isEven); // ERROR
@@ -374,7 +393,7 @@ Flow analysis reasons that there's no way of telling
 what order `foo` and `bar` might be executed in;
 in fact, `bar` might even get executed halfway through executing `foo`
 (due to `foo` calling something that calls `bar`).
-So it's not safe to promote `i` at all inside `foo`.
+So it isn't safe to promote `i` at all inside `foo`.
 
-***[PENDING: show fix?]***
+***[PENDING: what's the fix?]***
 
