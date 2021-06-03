@@ -248,7 +248,7 @@ Future<void> main() async {
   final lineStream = process.stdout
       .transform(const Utf8Decoder())
       .transform(const LineSplitter());
-  
+
   await for (final line in lineStream) {
     print(line);
   }
