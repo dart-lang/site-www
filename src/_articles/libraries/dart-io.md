@@ -74,7 +74,7 @@ void main() {
 Running this example at the command line, we get:
 
 ```terminal
-$ dart timer.dart
+$ dart run timer.dart
 end of main
 timer
 ```
