@@ -26,8 +26,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    // TODO(miquelbeltran) language-tour.md should explain that 
-    // non-required params can be null (#3297)
     
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
