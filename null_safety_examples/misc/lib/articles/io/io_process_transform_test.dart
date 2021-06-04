@@ -4,9 +4,11 @@ import 'dart:io';
 
 Future<void> main() async {
   final process = await Process.start('ls', ['-l']);
-  var lineStream =
-      process.stdout.transform(Utf8Decoder()).transform(LineSplitter());
-  await for (var line in lineStream) {
+  final lineStream = process.stdout
+      .transform(const Utf8Decoder())
+      .transform(const LineSplitter());
+
+  await for (final line in lineStream) {
     print(line);
   }
 

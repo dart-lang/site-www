@@ -2,7 +2,7 @@
 import 'dart:io';
 
 Future<void> main() async {
-  var result = <int>[];
+  final result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
   final semicolon = ';'.codeUnitAt(0);
