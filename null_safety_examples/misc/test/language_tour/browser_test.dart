@@ -15,7 +15,6 @@ void main() {
 
     // TODO(miquelbeltran) Maybe ! would be better here
     // (https://github.com/dart-lang/site-www/issues/3295)
-    
     // #docregion simple-web-main-function
     void main() {
       querySelector('#sample_text_id')

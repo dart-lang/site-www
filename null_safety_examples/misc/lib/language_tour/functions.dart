@@ -26,7 +26,6 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    
     // #docregion specify-named-parameters
     /// Sets the [bold] and [hidden] flags ...
     void enableFlags({bool? bold, bool? hidden}) {/*...*/}
