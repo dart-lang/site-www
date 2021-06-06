@@ -180,11 +180,11 @@ void main() {
 ### Compute π
 
 {:#try-dart-compute-pi}
-<?code-excerpt "misc/lib/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/pi/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
 ```dart
 import 'dart:math' show Random;
 
-main() async {
+Future<void> main() async {
   print('Compute π using the Monte Carlo method.');
   await for (var estimate in computePi().take(100)) {
     print('π ≅ $estimate');
@@ -210,7 +210,7 @@ Stream<double> computePi({int batch = 100000}) async* {
   }
 }
 
-Iterable<Point> generateRandom([int seed]) sync* {
+Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed);
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble());
