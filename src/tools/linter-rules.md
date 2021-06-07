@@ -108,6 +108,18 @@ _This rule is currently **{{lint.maturity}}**._
 
 {{lint.details}}
 
+{% if lint.incompatible != empty %}
+
+#### Incompatible rules
+
+{% for incompatible in lint.incompatible %}
+
+* [`{{incompatible}}`](#{{incompatible}})
+
+{% endfor %}
+
+{% endif %}
+
 {% endif %}
 
 {% endfor %}
@@ -133,6 +145,18 @@ _This rule is currently **{{lint.maturity}}**._
 
 {{lint.details}}
 
+{% if lint.incompatible != empty %}
+
+#### Incompatible rules
+
+{% for incompatible in lint.incompatible %}
+
+* [`{{incompatible}}`](#{{incompatible}})
+
+{% endfor %}
+
+{% endif %}
+
 {% endif %}
 
 {% endfor %}
@@ -157,6 +181,18 @@ _This rule is currently **{{lint.maturity}}**._
 #### Details
 
 {{lint.details}}
+
+{% if lint.incompatible != empty %}
+
+#### Incompatible rules
+
+{% for incompatible in lint.incompatible %}
+
+* [`{{incompatible}}`](#{{incompatible}})
+
+{% endfor %}
+
+{% endif %}
 
 {% endif %}
 
