@@ -47,8 +47,8 @@ PR['registerLangHandler'](
       // Multiline comments.
       [PR['PR_COMMENT'], /^\/\*[^*]*\*+(?:[^\/*][^*]*\*+)*\//], // */
 
-      // `class`, `enum`, `interface`, and `mixin` keywords.
-      [PR['PR_KEYWORD'], /^\b(?:class|enum|interface|mixin)\b/i],
+      // `class`, `enum`, `extension`, `interface`, and `mixin` keywords.
+      [PR['PR_KEYWORD'], /^\b(?:class|enum|extension|interface|mixin)\b/i],
 
       // General keywords.
       [PR['PR_KEYWORD'], /^\b(?:assert|async|await|break|case|catch|continue|default|do|else|finally|for|if|in|is|new|on|rethrow|return|super|switch|sync|this|throw|try|while|yield)\b/i],
