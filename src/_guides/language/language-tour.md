@@ -1682,7 +1682,7 @@ void main() {
 
 ### Return values
 
-All functions return a value(except those declared as [void](https://dart.dev/guides/language/language-tour#built-in-types)). If no return value is specified, the
+All functions return a value. If no return value is specified, the
 statement `return null;` is implicitly appended to the function body.
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
@@ -1691,8 +1691,13 @@ foo() {}
 
 assert(foo() == null);
 ```
+{{site.alert.note}}
+Functions are generally declared as type `void` when they do not explicitly return any value.([Learn more](https://dart.dev/guides/language/language-tour#built-in-types))
+{{site.alert.end}}
 
-
+{{site.alert.note}}
+If no return value is specified, the function type should be nullable.([Learn More](https://dart.dev/tools/diagnostic-messages#body_might_complete_normally))
+{{site.alert.end}}
 ## Operators
 
 Dart supports the operators shown in the following table.
