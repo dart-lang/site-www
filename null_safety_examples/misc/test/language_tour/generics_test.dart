@@ -23,7 +23,6 @@ void main() {
 
   test('generic-collections', () {
     void _test() {
-      // TODO(miquelbeltran) language-tour.md should be updated, List<String> cannot be used with null-safety
       // #docregion generic-collections
       var names = <String>[];
       names.addAll(['Seth', 'Kathy', 'Lars']);

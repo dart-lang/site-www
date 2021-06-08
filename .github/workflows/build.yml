@@ -59,7 +59,7 @@ jobs:
       - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - uses: ruby/setup-ruby@v1
         if: contains(matrix.task, 'build.sh')
         with:
@@ -106,7 +106,7 @@ jobs:
       - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true

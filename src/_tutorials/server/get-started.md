@@ -30,7 +30,7 @@ greeting to use another language.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
@@ -96,7 +96,7 @@ Let's customize the app you just created.
  1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
-    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    <?code-excerpt "../null_safety_examples/misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];

@@ -9,7 +9,7 @@ void main() async {
 
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch = 100000}) async* {
-  var total = 0; // inferred to be of type int
+  var total = 0; // Inferred to be of type int
   var count = 0;
   while (true) {
     final points = generateRandom().take(batch);
@@ -36,7 +36,10 @@ Iterable<Point> generateRandom([int? seed]) sync* {
 }
 
 class Point {
+  final double x;
+  final double y;
+
   const Point(this.x, this.y);
-  final double x, y;
+
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }

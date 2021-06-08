@@ -5,9 +5,16 @@ dd {
   margin-bottom: 15px;
 }
 
-/* Make code-font links look like links. Should also change the hover color. */
-a code {
-  color: $default-link
+a {
+  code {
+    color: $default-link;
+  }
+
+  &:hover, &:focus, &:active {
+    code {
+      color: lighten($default-link, 25%);
+    }
+  }
 }
 
 /* Make links in page footer white, not blue. */

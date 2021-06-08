@@ -3,6 +3,8 @@ class Spacecraft {
   String name;
   DateTime? launchDate;
 
+  int? get launchYear => launchDate?.year; // read-only non-final property
+
   // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
     // Initialization code goes here.
@@ -10,8 +12,6 @@ class Spacecraft {
 
   // Named constructor that forwards to the default one.
   Spacecraft.unlaunched(String name) : this(name, null);
-
-  int? get launchYear => launchDate?.year; // read-only non-final property
 
   // Method.
   void describe() {

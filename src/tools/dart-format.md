@@ -14,10 +14,19 @@ when using an IDE or editor that has Dart support.
 
 Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files
-under the current directory's `bin`, `lib`, and `test` directories:
+in or under the current directory:
 
 ```terminal
-$ dart format bin lib test
+$ dart format .
+```
+
+To specify multiple files or directories,
+use a space-delimited list.
+The following command formats all Dart files under the `lib` directory,
+plus one Dart file under the `bin` directory:
+
+```terminal
+$ dart format lib bin/updater.dart 
 ```
 
 {{site.alert.warn}}

@@ -295,7 +295,7 @@ The `distinct()` function doesn't exist on `Iterable`, but it could have.
 
 <?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
-Stream<T> handleError(Function onError, {bool test(error)?});
+Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
 Stream<T> timeout(Duration timeLimit,
     {void Function(EventSink<T> sink)? onTimeout});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
