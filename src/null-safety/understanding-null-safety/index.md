@@ -701,8 +701,8 @@ if you wrote something like:
 
 ```dart
 // Using null safety:
-String checkList(List list) {
-  if (list?.isEmpty) {
+String checkList(List<Object> list) {
+  if (list?.isEmpty ?? false) {
     return 'Got nothing';
   }
   return 'Got something';
@@ -726,9 +726,9 @@ redundantly check it again for `null`:
 
 ```dart
 // Using null safety:
-checkList(List? list) {
+String checkList(List<Object>? list) {
   if (list == null) return 'No list';
-  if (list?.isEmpty) {
+  if (list?.isEmpty ?? false) {
     return 'Empty list';
   }
   return 'Got something';
