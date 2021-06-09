@@ -54,7 +54,6 @@ else
 
   dart format -l 60 \
     $EXAMPLES/misc/test/library_tour/html_test.dart \
-    $EXAMPLES/misc/lib/samples/spacecraft.dart
 
   dart format -l 65 \
     $EXAMPLES/httpserver/bin/basic_writer_server.dart \

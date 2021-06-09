@@ -1,8 +1,5 @@
-// ignore_for_file: annotate_overrides, type_annotate_public_apis, strict_raw_type, use_function_type_syntax_for_parameters
+// ignore_for_file: annotate_overrides, type_annotate_public_apis, strict_raw_type
 import 'dart:async';
-
-// TODO(chalin): I believe that handleError's test argument should be declared
-// as follows, but it isn't: {bool Function(dynamic error) test}.
 
 abstract class MyStream<T> implements Stream<T> {
   // #docregion main-stream-members
@@ -42,11 +39,11 @@ abstract class MyStream<T> implements Stream<T> {
   bool get isBroadcast;
 
   Stream<T> asBroadcastStream(
-      {void onListen(StreamSubscription<T> subscription)?,
-      void onCancel(StreamSubscription<T> subscription)?});
+      {void Function(StreamSubscription<T> subscription)? onListen,
+      void Function(StreamSubscription<T> subscription)? onCancel});
 
   // #docregion special-stream-members
-  Stream<T> handleError(Function onError, {bool test(error)?});
+  Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
   Stream<T> timeout(Duration timeLimit,
       {void Function(EventSink<T> sink)? onTimeout});
   Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);

@@ -6,7 +6,7 @@ from sources in the example folder.
 <pre class="prettyprint lang-dart">
 <code><a tabindex="0" role="button" data-toggle="popover" data-content="Dart has one canonical way to import libraries, and one canonical (and easy) way to install library packages.">import</a> '<a tabindex="0" role="button" data-toggle="popover" data-content="The whole standard library is meticulously maintained. It has been called “well-crafted” by none other than Erik Meijer.">dart:math</a>' show Random;
 
-<a tabindex="0" role="button" data-toggle="popover" data-content="The <code>main()</code> function is the single point of entry.">main()</a> async {
+Future&lt;void&gt; <a tabindex="0" role="button" data-toggle="popover" data-content="The <code>main()</code> function is the single point of entry.">main()</a> async {
   print('Compute <a tabindex="0" role="button" data-toggle="popover" data-content="Unicode support is baked in.">π</a> using the Monte Carlo method.');
   <a tabindex="0" role="button" data-toggle="popover" data-content="Language-level asynchrony support makes you more productive when dealing with deeply asynchronous code (like most UI code, for example).">await</a> for (var estimate in computePi().take(500)) {
     print('π ≅ <a tabindex="0" role="button" data-toggle="popover" data-content="String interpolation is easy. Just put <code>${expression}</code> or <code>$variable</code> in your string literal.">$estimate</a>');
@@ -32,7 +32,7 @@ Stream<a tabindex="0" role="button" data-toggle="popover" data-content="Generics
   }
 }
 
-<a tabindex="0" role="button" data-toggle="popover" data-content="<code>Iterable</code> is a core type extended by all iterable collections, which makes for some elegant Dart code.">Iterable</a>&lt;Point&gt; generateRandom(<a tabindex="0" role="button" data-toggle="popover" data-content="Optional parameters make call sites cleaner.">[int seed]</a>) <a tabindex="0" role="button" data-toggle="popover" data-content="Dart has language-level support for synchronous generators, too.">sync*</a> {
+<a tabindex="0" role="button" data-toggle="popover" data-content="<code>Iterable</code> is a core type extended by all iterable collections, which makes for some elegant Dart code.">Iterable</a>&lt;Point&gt; generateRandom(<a tabindex="0" role="button" data-toggle="popover" data-content="Optional parameters make call sites cleaner.">[int? seed]</a>) <a tabindex="0" role="button" data-toggle="popover" data-content="Dart has language-level support for synchronous generators, too.">sync*</a> {
   <a tabindex="0" role="button" data-toggle="popover" data-content="Variables and fields can be final. Any attempt to change them later in the code will produce a static error.">final</a> random = Random(seed);
   while (true) {
     <a tabindex="0" role="button" data-toggle="popover" data-content="Producing lazy Iterables through yield is readable and corresponds nicely with the same concept in asynchronous generators.">yield</a> Point(random.nextDouble(), random.nextDouble());

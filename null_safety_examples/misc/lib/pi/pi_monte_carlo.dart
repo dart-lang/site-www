@@ -5,7 +5,7 @@
 //    valid (*_tooltips.html).
 // 2. Regenerate the HTML version of this sample, by running
 //    tool/create_code_with_tooltips.dart
-// 3. To generate the DartPad version: (1) delete lines containly only tip
+// 3. To generate the DartPad version: (1) delete lines containing only tip
 //    instructions. (2) Trim //!foo markers from the end of the remaining lines,
 //    e.g., using this Perl regexp: / ?\/\/!.*//g
 
@@ -23,9 +23,9 @@ int numIterations = 500; //!web-only
 //!web-only
 //!tip("main()")
 // #docregion try-dart
-main() async {
+Future<void> main() async {
   print('Compute π using the Monte Carlo method.'); //!tip("π")
-  var output = querySelector("#value-of-pi"); //!web-only
+  var output = querySelector('#value-of-pi')!; //!web-only
   //!tip("await")
   await for (var estimate in computePi().take(numIterations)) {
     print('π ≅ $estimate'); //!tip("$estimate")
@@ -55,8 +55,8 @@ Stream<double> computePi({int batch = 100000}) async* {
   }
 }
 
-//!tip("sync*") //!tip("[int seed]") //!tip("Iterable")
-Iterable<Point> generateRandom([int seed]) sync* {
+//!tip("sync*") //!tip("[int? seed]") //!tip("Iterable")
+Iterable<Point> generateRandom([int? seed]) sync* {
   final random = Random(seed); //!tip("final")
   while (true) {
     yield Point(random.nextDouble(), random.nextDouble()); //!tip("yield")
