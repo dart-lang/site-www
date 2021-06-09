@@ -182,22 +182,22 @@ The following table lists the words that the Dart language treats specially.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 <div class="table-wrapper" markdown="1">
-| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
-| [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
-| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
-| [async][]{{ckw}}      | [extends][]           | [is][]                | [this][]          |
-| [await][]{{lrw}}      | [extension][]{{bii}}  | [library][]{{bii}}    | [throw][]         |
-| [break][]             | [external][]{{bii}}   | [mixin][]{{bii}}      | [true][]          |
-| [case][]              | [factory][]{{bii}}    | [new][]               | [try][]           |
-| [catch][]             | [false][]             | [null][]              | [typedef][]{{bii}}|
-| [class][]             | [final][]             | [on][]{{ckw}}         | [var][]           |
-| [const][]             | [finally][]           | [operator][]{{bii}}   | [void][]          |
-| [continue][]          | [for][]               | [part][]{{bii}}       | [while][]         |
-| [covariant][]{{bii}}  | [Function][]{{bii}}   | [rethrow][]           | [with][]          |
-| [default][]           | [get][]{{bii}}        | [return][]            | [yield][]{{lrw}}  |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [set][]{{bii}}        |                   |
-| [do][]                | [if][]                | [show][]{{ckw}}       |                   |
-| [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
+| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [show][]{{ckw}}   |
+| [as][]{{bii}}         | [enum][]              | [in][]                | [static][]{{bii}} |
+| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [super][]         |
+| [async][]{{ckw}}      | [extends][]           | [is][]                | [switch][]        |
+| [await][]{{lrw}}      | [extension][]{{bii}}  | [late][]{{bii}}       | [sync][]{{ckw}}   |
+| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
+| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
+| [catch][]             | [false][]             | [new][]               | [true][]          |
+| [class][]             | [final][]             | [null][]              | [try][]           |
+| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
+| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
+| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
+| [default][]           | [get][]{{bii}}        | [required][]{{bii}}   | [while][]         |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [rethrow][]           | [with][]          |
+| [do][]                | [if][]                | [return][]            | [yield][]{{lrw}}  |
+| [dynamic][]{{bii}}    | [implements][]{{bii}} | [set][]{{bii}}        |                   |
 {:.table .table-striped .nowrap}
 </div>
 
@@ -241,6 +241,7 @@ The following table lists the words that the Dart language treats specially.
 [in]: #for-loops
 [interface]: https://stackoverflow.com/questions/28595501/was-the-interface-keyword-removed-from-dart
 [is]: #type-test-operators
+[late]: #late-variables
 [library]: #libraries-and-visibility
 [mixin]: #adding-features-to-a-class-mixins
 [new]: #using-constructors
@@ -248,6 +249,7 @@ The following table lists the words that the Dart language treats specially.
 [on]: #catch
 [operator]: #_operators
 [part]: /guides/libraries/create-library-packages#organizing-a-library-package
+[required]: #named-parameters
 [rethrow]: #catch
 [return]: #functions
 [set]: #getters-and-setters
