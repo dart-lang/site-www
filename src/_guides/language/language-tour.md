@@ -249,7 +249,7 @@ The following table lists the words that the Dart language treats specially.
 [on]: #catch
 [operator]: #_operators
 [part]: /guides/libraries/create-library-packages#organizing-a-library-package
-[required]: /null-safety/understanding-null-safety#required-named-parameters
+[required]: #named-parameters
 [rethrow]: #catch
 [return]: #functions
 [set]: #getters-and-setters
