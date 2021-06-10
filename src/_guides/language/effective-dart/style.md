@@ -56,7 +56,7 @@ This even includes classes intended to be used in metadata annotations.
 <?code-excerpt "style_good.dart (annotation-type-names)"?>
 {% prettify dart tag=pre+code %}
 class Foo {
-  const Foo([arg]);
+  const Foo([Object? arg]);
 }
 
 @Foo(anArg)

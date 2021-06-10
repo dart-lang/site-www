@@ -12,7 +12,7 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   // #docregion block-comments
-  void greet(name) {
+  void greet(String name) {
     // Assume we have a valid name.
     print('Hi, $name!');
   }
