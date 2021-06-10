@@ -89,8 +89,30 @@ implementing it would be difficult and not very useful.)
 This section covers other common causes
 of type promotion failure.
 The workarounds for many of these are
-similar to the workarounds shown in the previous section:
-either use `!` or create a local variable that has the type you need.
+one or more of the following:
+
+* Create a local variable that has the type you need.
+* Add an explicit null check.
+* Use `!` or `as` if you're sure an expression can't be null.
+  <br>***[Q: Your note (which follows) refers to "redundant" `!` and `as`. What makes them redundant? Are they ever NOT redundant?]***
+
+{{site.alert.note}}
+  You can work around all of these non-promotion examples by adding either
+  a redundant `!` or a redundant `as` check,
+  depending whether the promotion that's failing is
+  a null check or a type check.
+
+  Redundant checks are an easy but error-prone solution
+  to type promotion failures.
+  Because they overrule the compiler,
+  they can lead to mistakes in a way that other solutions don't.
+
+  It's up to you whether to do the extra work to get types to promote 
+  (with the benefit of being confident that the code is correct)
+  or to do a redundant type check
+  (at the risk of introducing a bug if your reasoning is wrong).
+{{site.alert.end}}
+
 
 
 ### Possibly written after promotion {#write}
@@ -247,13 +269,39 @@ when `i` was potentially `null`.
 
 Similar situations can occur between `try` and `finally` blocks, and
 between `catch` and `finally` blocks.
-
 Because of a historical artifact of how the implementation was done,
-these try/catch/finally situations don't take into account
+these `try`/`catch`/`finally` situations don't take into account
 the right-hand side of the assignment,
 similar to what happens in loops.
 
-***[PENDING: what's the fix?]***
+To fix the problem, make sure that the `catch` block doesn't rely on assumptions
+about the state of variables that get changed inside the `try` block.
+Remember, the exception might occur at any time during the `try` block,
+possibly when `i` is null.
+
+The safest solution is to add a null check inside the `catch` block:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+...
+} catch (...) {
+  [!if (i != null)!] {
+    print(i.isEven);     // (3) OK due to the null check in the line above.
+  } else {
+    // Do something else to handle the case where i is null.
+  }
+}
+{% endprettify %}
+
+Or, if you're sure that an exception can't occur while `i` is null,
+just use the `!` operator:
+
+{% prettify dart tag=pre+code %}
+...
+} catch (...) {
+  print(i[!!!].isEven);     // (3) OK because of the `!`.
+}
+{% endprettify %}
 
 
 ### Subtype mismatch
@@ -286,7 +334,52 @@ doesn't mean the code at (3) is dead;
 `o` might have a type — like `String` —
 that implements both `Comparable` and `Pattern`.
 
-***[PENDING: what's the fix?]***
+One possible solution is to use an additional variable so that
+one variable is promoted to `Comparable`, and
+the other is promoted to `Pattern`:
+
+{% prettify dart tag=pre+code %}
+void f(Object o) {
+  if (o is Comparable) {              // (1)
+    [!Object o2 = o;!]
+    if ([!o2!] is Pattern) {              // (2)
+      print([!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
+    }
+  }
+}
+{% endprettify %}
+
+However, a developer might later be tempted to change
+`Object o2` to `var o2`,
+which would give `o2` a type of `Comparable`,
+which brings back the problem of the object not being promotable to `Pattern`.
+
+A redundant type check might be a better solution:
+
+{% prettify dart tag=pre+code %}
+void f(Object o) {
+  if (o is Comparable) {                           // (1)
+    if (o is Pattern) {                            // (2)
+      print([!(o as Pattern)!].matchAsPrefix('foo')); // (3) OK
+    }
+  }
+}
+{% endprettify %}
+
+Another solution that sometimes works is when you can use a more precise type.
+If line 3 cares only about strings,
+then you can use `String` in yout type check.
+Because `String` is a subtype of `Comparable`, the promotion works:
+
+{% prettify dart tag=pre+code %}
+void f(Object o) {
+  if (o is Comparable) {              // (1)
+    if (o is [!String!]) {               // (2)
+      print(o.matchAsPrefix('foo')); // (3) OK; String is a subtype of Comparable.
+    }
+  }
+}
+{% endprettify %}
 
 
 ### Write captured by a local function
@@ -300,11 +393,13 @@ Example:
 {:.bad}
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
-  if (i == null) return;
   var foo = () {
     i = j;
   };
-  print(i.isEven); // ERROR
+  // ... Use foo ... 
+  if (i == null) return; // (1)
+  // ... Additional code ...
+  print(i.isEven);       // (2) ERROR
 }
 {% endprettify %}
 
@@ -314,7 +409,51 @@ therefore it's no longer safe to promote `i` at all.
 As with loops, this demotion happens regardless of
 the type of the right hand side of the assignment.
 
-***[PENDING: what's the fix?]***
+Sometimes it's possible to restructure the logic so that
+the promotion is before the write capture:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int? i, int? j) {
+  if (i == null) return; // (1)
+  // ... Additional code ...
+  print(i.isEven);       // (2) OK
+[!  var foo = () {
+    i = j;
+  };
+  // ... Use foo ...!] 
+}
+{% endprettify %}
+
+Another option is to use a separate variable that isn't write captured:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int? i, int? j) {
+  var foo = () {
+    i = j;
+  };
+  // ... Use foo ... 
+  [!var i2 = i;!]
+  if ([!i2!] == null) return; // (1)
+  // ... Additional code ...
+  print([!i2!].isEven);       // (2) OK because `i2` isn't write captured.
+}
+{% endprettify %}
+
+Or you can do a redundant check:
+
+{% prettify dart tag=pre+code %}
+void f(int? i, int? j) {
+  var foo = () {
+    i = j;
+  };
+  // ... Use foo ... 
+  if (i == null) return; // (1)
+  // ... Additional code ...
+  print(i[!!!].isEven);     // (2) OK due to `!` check.
+}
+{% endprettify %}
 
 
 ### Written outside of the current closure or function expression {#write-outer}
@@ -344,6 +483,20 @@ and thus the promotion might no longer be valid.
 As with loops, this demotion happens regardless of the type of
 the right hand side of the assignment.
 
+A solution is to use a fresh variable:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int? i, int? j) {
+  if (i == null) return;
+  [!var i2 = i;!]
+  var foo = () {
+    print([!i2!].isEven); // (1) OK because `i2` isn't changed later.
+  };
+  i = j;              // (2)
+}
+{% endprettify %}
+
 A particularly nasty case looks like this:
 
 {:.bad}
@@ -363,7 +516,23 @@ But [flow analysis isn't that smart][1536].
 
 [1536]: https://github.com/dart-lang/language/issues/1536
 
-***[PENDING: what's the fix?]***
+Again, a solution is to make a fresh variable:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int? i) {
+  [!var j = i ?? 0;!]
+  var foo = () {
+    print([!j!].isEven); // OK
+  };
+}
+{% endprettify %}
+
+This solution works because `j` is inferred to have a non-nullable type (`int`)
+due to its initial value (`i ?? 0`).
+Because `j` has a non-nullable type,
+whether or not it's assigned later,
+`j` can never have a non-null value.
 
 
 ### Write captured outside of the current closure or function expression {#captured-outer}
@@ -395,5 +564,19 @@ in fact, `bar` might even get executed halfway through executing `foo`
 (due to `foo` calling something that calls `bar`).
 So it isn't safe to promote `i` at all inside `foo`.
 
-***[PENDING: what's the fix?]***
+The best solution is probably to create a separate variable:
+<br>***[PENDING: What's a good, consistent name we can use for "separate variable" / "fresh variable" / ???]***
 
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int? i, int? j) {
+  var foo = () {
+    [!var i2 = i;!]
+    if ([!i2!] == null) return;
+    print([!i2!].isEven); // OK because i2 is local to this closure.
+  };
+  var bar = () {
+    i = j;
+  };
+}
+{% endprettify %}
