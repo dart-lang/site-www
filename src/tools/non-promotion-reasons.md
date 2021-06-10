@@ -230,12 +230,29 @@ void f(int i, int? j, int? k) {
   switch (i) {
     label:
     case 0:
+      print(j.isEven); // ERROR
+      j = k;
+      continue label;
+  }
+}
+{% endprettify %}
+
+Again, you can fix the problem by moving the null check to the top of the loop:
+
+{:.good}
+{% prettify dart tag=pre+code %}
+void f(int i, int? j, int? k) {
+  switch (i) {
+    label:
+    case 0:
+      [!if (j == null) return;!]
       print(j.isEven);
       j = k;
       continue label;
   }
 }
 {% endprettify %}
+
 
 
 ### In catch after possible write in try
@@ -287,9 +304,9 @@ The safest solution is to add a null check inside the `catch` block:
 } catch (...) {
   [!if (i != null)!] {
     print(i.isEven);     // (3) OK due to the null check in the line above.
-  } else {
+  } [!else {
     // Do something else to handle the case where i is null.
-  }
+  }!]
 }
 {% endprettify %}
 
@@ -349,13 +366,14 @@ void f(Object o) {
 }
 {% endprettify %}
 
-However, a developer might later be tempted to change
-`Object o2` to `var o2`,
-which would give `o2` a type of `Comparable`,
+However, someone who edits the code later might be tempted to change
+`Object o2` to `var o2`.
+That change gives `o2` a type of `Comparable`,
 which brings back the problem of the object not being promotable to `Pattern`.
 
 A redundant type check might be a better solution:
 
+{:.good}
 {% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is Comparable) {                           // (1)
@@ -371,6 +389,7 @@ If line 3 cares only about strings,
 then you can use `String` in yout type check.
 Because `String` is a subtype of `Comparable`, the promotion works:
 
+{:.good}
 {% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is Comparable) {              // (1)
