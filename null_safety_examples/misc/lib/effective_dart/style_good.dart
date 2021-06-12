@@ -72,7 +72,7 @@ const anArg = null;
 
 // #docregion annotation-type-names
 class Foo {
-  const Foo([arg]);
+  const Foo([Object? arg]);
 }
 
 @Foo(anArg)

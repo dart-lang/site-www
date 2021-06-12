@@ -45,7 +45,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 {:.good}
 <?code-excerpt "docs_good.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
-void greet(name) {
+void greet(String name) {
   // Assume we have a valid name.
   print('Hi, $name!');
 }
@@ -54,7 +54,7 @@ void greet(name) {
 {:.bad}
 <?code-excerpt "docs_bad.dart (block-comments)"?>
 {% prettify dart tag=pre+code %}
-void greet(name) {
+void greet(String name) {
   /* Assume we have a valid name. */
   print('Hi, $name!');
 }
