@@ -78,7 +78,7 @@ see the [migration guide][].
 ### Creating a null-safe package or app {#create}
 
 The templates used by the [`dart create`][] command and IDEs
-aren't null safe yet, so you need to migrate the code they create.
+aren't null safe before Dart 2.13, so you need to migrate the code they create.
 For example:
 
 ```terminal
