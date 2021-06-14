@@ -74,18 +74,17 @@ Sound null safety is available in Dart 2.12 and Flutter 2.
 For instructions on how to migrate your code to null safety,
 see the [migration guide][].
 
+{{site.alert.version-note}}
+  Before Dart 2.13, the templates used by the [`dart create`][] command
+  and IDEs aren't null safe, so you need to migrate the code they create.
+  For example:
 
-### Creating a null-safe package or app {#create}
-
-The templates used by the [`dart create`][] command and IDEs
-aren't null safe before Dart 2.13, so you need to migrate the code they create.
-For example:
-
-```terminal
-$ dart create -t console-full my_cli
-$ cd my_cli
-$ dart migrate --apply-changes
-```
+  ```terminal
+  $ dart create -t console-full my_cli
+  $ cd my_cli
+  $ dart migrate --apply-changes
+  ```
+{{site.alert.end}}
 
 ### Behind the scenes: SDK constraints {#constraints}
 
