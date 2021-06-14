@@ -104,21 +104,11 @@ These rules identify possible errors and other mistakes in your code.
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
+{% include incompatible-rules.md incompatible=lint.incompatible %}
+
 #### Details
 
 {{lint.details}}
-
-{% if lint.incompatible != empty %}
-
-#### Incompatible rules
-
-{% for incompatible in lint.incompatible %}
-
-* [`{{incompatible}}`](#{{incompatible}})
-
-{% endfor %}
-
-{% endif %}
 
 {% endif %}
 
@@ -141,21 +131,11 @@ largely derived from the [Dart style guide][].
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
+{% include incompatible-rules.md incompatible=lint.incompatible %}
+
 #### Details
 
 {{lint.details}}
-
-{% if lint.incompatible != empty %}
-
-#### Incompatible rules
-
-{% for incompatible in lint.incompatible %}
-
-* [`{{incompatible}}`](#{{incompatible}})
-
-{% endfor %}
-
-{% endif %}
 
 {% endif %}
 
@@ -178,21 +158,11 @@ These rules identify possible issues around
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
+{% include incompatible-rules.md incompatible=lint.incompatible %}
+
 #### Details
 
 {{lint.details}}
-
-{% if lint.incompatible != empty %}
-
-#### Incompatible rules
-
-{% for incompatible in lint.incompatible %}
-
-* [`{{incompatible}}`](#{{incompatible}})
-
-{% endfor %}
-
-{% endif %}
 
 {% endif %}
 
