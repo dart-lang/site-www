@@ -104,6 +104,8 @@ These rules identify possible errors and other mistakes in your code.
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
+{% include incompatible-rules.md incompatible=lint.incompatible %}
+
 #### Details
 
 {{lint.details}}
@@ -129,6 +131,8 @@ largely derived from the [Dart style guide][].
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
 
+{% include incompatible-rules.md incompatible=lint.incompatible %}
+
 #### Details
 
 {{lint.details}}
@@ -153,6 +157,8 @@ These rules identify possible issues around
 {% if lint.maturity != "stable" %}
 _This rule is currently **{{lint.maturity}}**._
 {% endif %}
+
+{% include incompatible-rules.md incompatible=lint.incompatible %}
 
 #### Details
 
