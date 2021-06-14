@@ -447,6 +447,7 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [
+      "avoid_types_on_closure_parameters",
       "omit_local_variable_types"
     ],
     "sets": [],
@@ -765,7 +766,9 @@
     "description": "Avoid annotating types for function expression parameters.",
     "group": "style",
     "maturity": "stable",
-    "incompatible": [],
+    "incompatible": [
+      "always_specify_types"
+    ],
     "sets": [
       "effective_dart"
     ],
@@ -1481,7 +1484,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "When building collections, it is preferable to use `if` elements rather than\nconditionals.\n\n**BAD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      isAndroid ? IconButton(icon: Icon(Icons.search)) : null,\n    ].where((child) => child != null).toList(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      if (isAndroid) IconButton(icon: Icon(Icons.search)),\n    ]\n  );\n}\n"
+    "details": "When building collections, it is preferable to use `if` elements rather than\nconditionals.\n\n**BAD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      isAndroid ? IconButton(icon: Icon(Icons.search)) : null,\n    ].where((child) => child != null).toList(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  return Row(\n    children: [\n      IconButton(icon: Icon(Icons.menu)),\n      Expanded(child: title),\n      if (isAndroid) IconButton(icon: Icon(Icons.search)),\n    ]\n  );\n}\n```\n"
   },
   {
     "name": "prefer_if_null_operators",
@@ -1750,7 +1753,7 @@
     "sets": [
       "pedantic"
     ],
-    "details": "Sort child properties last in widget instance creations.  This improves\nreadability and plays nicest with UI as Code visualization in IDEs with UI as\nCode Guides in editors (such as IntelliJ) where Properties in the correct order\nappear clearly associated with the constructor call and separated from the\nchildren.\n\n**BAD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    child: Column(\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n      mainAxisAlignment: MainAxisAlignment.center,\n    ),\n    widthFactor: 0.5,\n  ),\n  floatingActionButton: FloatingActionButton(\n    child: Icon(Icons.add),\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n  ),\n);\n```\n\n**GOOD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    widthFactor: 0.5,\n    child: Column(\n      mainAxisAlignment: MainAxisAlignment.center,\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n    ),\n  ),\n  floatingActionButton: FloatingActionButton(\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n    child: Icon(Icons.add),\n  ),\n);\n```\n\nException: It's allowed to have parameter with a function expression after the\n`child` property.\n\n"
+    "details": "Sort arguments to end with a Widget in widget instance creations.  This improves\nreadability and plays nicest with UI as Code visualization in IDEs with UI as\nCode Guides in editors (such as IntelliJ) where Properties in the correct order\nappear clearly associated with the constructor call and separated from the\nchildren.\n\n**BAD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    child: Column(\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n      mainAxisAlignment: MainAxisAlignment.center,\n    ),\n    widthFactor: 0.5,\n  ),\n  floatingActionButton: FloatingActionButton(\n    child: Icon(Icons.add),\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n  ),\n);\n```\n\n**GOOD:**\n```dart\nreturn Scaffold(\n  appBar: AppBar(\n    title: Text(widget.title),\n  ),\n  body: Center(\n    widthFactor: 0.5,\n    child: Column(\n      mainAxisAlignment: MainAxisAlignment.center,\n      children: <Widget>[\n        Text(\n          'You have pushed the button this many times:',\n         ),\n        Text(\n          '$_counter',\n          style: Theme.of(context).textTheme.display1,\n         ),\n      ],\n    ),\n  ),\n  floatingActionButton: FloatingActionButton(\n    onPressed: _incrementCounter,\n    tooltip: 'Increment',\n    child: Icon(Icons.add),\n  ),\n);\n```\n\nException: It's allowed to have function expression arguments after the last\nWidget argument.\n"
   },
   {
     "name": "sort_constructors_first",
