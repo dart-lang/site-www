@@ -166,14 +166,14 @@ You can use the flags together or separately; both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
-  implicitly casts to a more specific type.
+  implicitly casts from `dynamic` to a more specific type.
   The following valid Dart code
   includes an implicit downcast that would be caught by this flag:
 
 {:.fails-sa}
 <?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
 {% prettify dart class="analyzer" %}
-Object o = ...
+dynamic o = ...
 String s = [!o!]; // Implicit downcast
 String s2 = s.substring(1);
 {% endprettify %}
@@ -183,6 +183,11 @@ String s2 = s.substring(1);
 ```nocode
 error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
 ```
+
+{{site.alert.version-note}}
+Before Dart 2.12, this flag also caught implicit downcasts from others types,
+but support for those was removed from the language.
+{{site.alert.end}}
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
