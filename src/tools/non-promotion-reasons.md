@@ -256,7 +256,7 @@ void f(int i, int? j, int? k) {
 
 
 
-### In catch after possible write in try
+### In catch after possible write in try {#catch}
 
 **The cause:**
 The variable might have been written to in a `try` block,
@@ -410,7 +410,7 @@ void f(Object o) {
 {% endprettify %}
 
 
-### Write captured by a local function
+### Write captured by a local function {#captured-local}
 
 **The cause:**
 The variable has been write captured by
