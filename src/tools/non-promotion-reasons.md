@@ -84,8 +84,6 @@ implementing it would be difficult and not very useful.)
 
 ## Other causes and workarounds
 
-***[PENDING: make all good samples be tested]***
-
 This section covers other common causes
 of type promotion failure.
 The workarounds for many of these are
@@ -338,8 +336,8 @@ Example:
 {:.bad}
 {% prettify dart tag=pre+code %}
 void f(Object o) {
-  if (o is Comparable) {             // (1)
-    if (o is Pattern) {              // (2)
+  if (o is Comparable /* (1) */) {
+    if (o is Pattern /* (2) */) {
       print(o.matchAsPrefix('foo')); // (3) ERROR
     }
   }
@@ -365,10 +363,11 @@ the new variable is promoted to `Pattern`:
 <?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
-  if (o is Comparable) {              // (1)
+  if (o is Comparable /* (1) */) {
     [!Object o2 = o;!]
-    if ([!o2!] is Pattern) {              // (2)
-      print([!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
+    if ([!o2!] is Pattern /* (2) */) {
+      print(
+          [!o2!].matchAsPrefix('foo')); // (3) OK; o2 was promoted to `Pattern`.
     }
   }
 }
@@ -385,8 +384,8 @@ A redundant type check might be a better solution:
 <?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
-  if (o is Comparable) {                           // (1)
-    if (o is Pattern) {                            // (2)
+  if (o is Comparable /* (1) */) {
+    if (o is Pattern /* (2) */) {
       print([!(o as Pattern)!].matchAsPrefix('foo')); // (3) OK
     }
   }
@@ -402,16 +401,14 @@ Because `String` is a subtype of `Comparable`, the promotion works:
 <?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-String)" replace="/is String/is [!String!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
-  if (o is Comparable) {              // (1)
-    if (o is [!String!]) {               // (2)
+  if (o is Comparable /* (1) */) {
+    if (o is [!String!] /* (2) */) {
       print(o.matchAsPrefix('foo')); // (3) OK
     }
   }
 }
 {% endprettify %}
 
-***[PENDING: make sure all good code is actually analyzed.
-It looks like code inside of {} isn't!]***
 
 ### Write captured by a local function
 
@@ -449,11 +446,11 @@ the promotion is before the write capture:
 void f(int? i, int? j) {
   if (i == null) return; // (1)
   // ... Additional code ...
-  print(i.isEven);       // (2) OK
+  print(i.isEven); // (2) OK
   [!var foo = () {!]
   [!  i = j;!]
   [!};!]
-  [!// ... Use foo ... !]
+  [!// ... Use foo ...!]
 }
 {% endprettify %}
 
@@ -470,7 +467,7 @@ void f(int? i, int? j) {
   [!var i2 = i;!]
   if ([!i2!] == null) return; // (1)
   // ... Additional code ...
-  print([!i2!].isEven);       // (2) OK because `i2` isn't write captured.
+  print([!i2!].isEven); // (2) OK because `i2` isn't write captured.
 }
 {% endprettify %}
 
@@ -485,7 +482,7 @@ void f(int? i, int? j) {
   // ... Use foo ...
   if (i == null) return; // (1)
   // ... Additional code ...
-  print(i[!!!].isEven);     // (2) OK due to `!` check.
+  print(i[!!!].isEven); // (2) OK due to `!` check.
 }
 {% endprettify %}
 
@@ -528,7 +525,7 @@ void f(int? i, int? j) {
   var foo = () {
     print([!i2!].isEven); // (1) OK because `i2` isn't changed later.
   };
-  i = j;              // (2)
+  i = j; // (2)
 }
 {% endprettify %}
 
