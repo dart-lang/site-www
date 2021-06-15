@@ -185,10 +185,14 @@ error - A value of type 'dynamic' can't be assigned to a variable of type 'Strin
 ```
 
 {{site.alert.version-note}}
-With a [language version][] before Dart 2.12, 
-this flag also catches implicit downcasts from others types,
-but support for those was removed from the language.
+  In packages that use a [language version][] before 2.12
+  (when support for [null safety][] was introduced),
+  code can implicitly downcast from non-`dynamic` types such as `Object`.
+  The `implicit-casts` flag can catch those non-`dynamic` downcasts,
+  even if you're using a more recent Dart SDK.
 {{site.alert.end}}
+
+[null safety]: /null-safety
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
