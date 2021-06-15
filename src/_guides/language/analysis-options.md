@@ -166,23 +166,33 @@ You can use the flags together or separately; both default to `true`.
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
-  implicitly casts to a more specific type.
+  implicitly casts from `dynamic` to a more specific type.
   The following valid Dart code
   includes an implicit downcast that would be caught by this flag:
 
 {:.fails-sa}
 <?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
 {% prettify dart class="analyzer" %}
-Object o = ...
+dynamic o = ...
 String s = [!o!]; // Implicit downcast
 String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'Object' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-error - A value of type 'Object' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
+error - A value of type 'dynamic' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
 ```
+
+{{site.alert.version-note}}
+  In packages that use a [language version][] before 2.12
+  (when support for [null safety][] was introduced),
+  code can implicitly downcast from non-`dynamic` types such as `Object`.
+  The `implicit-casts` flag can catch those non-`dynamic` downcasts,
+  even if you're using a more recent Dart SDK.
+{{site.alert.end}}
+
+[null safety]: /null-safety
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
@@ -535,6 +545,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
+[language version]: /guides/language/evolution#language-versioning
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [type-system]: /guides/language/type-system
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
