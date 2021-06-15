@@ -185,7 +185,8 @@ error - A value of type 'dynamic' can't be assigned to a variable of type 'Strin
 ```
 
 {{site.alert.version-note}}
-Before Dart 2.12, this flag also caught implicit downcasts from others types,
+With a [language version][] before Dart 2.12, 
+this flag also catches implicit downcasts from others types,
 but support for those was removed from the language.
 {{site.alert.end}}
 
@@ -540,6 +541,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
+[language version]: /guides/language/evolution#language-versioning
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [type-system]: /guides/language/type-system
 [todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
