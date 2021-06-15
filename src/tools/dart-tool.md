@@ -25,7 +25,7 @@ $ dart test
 $ dart run bin/my_app.dart
 ```
 
-You can also run [`pub` commands](/tools/pub/cmd) using the `dart` tool:
+You can also run [`pub` commands][pub] using the `dart` tool:
 
 ```terminal
 $ dart pub get
@@ -47,21 +47,25 @@ The following table shows which commands you can use with the `dart` tool.
 |---------+--------------------------------+-----------------------------------|
 | Command | Example of use                 | More information                  |
 |---------|--------------------------------|-----------------------------------|
-| `analyze` | `dart analyze`     | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
-| `compile` | `dart compile exe <DART_FILE>` | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
-| `create`  | `dart create <DIRECTORY>`      | Creates a new project.<br>Use instead of [`stagehand`.][] | 
-| `fix`  | `dart fix <DIRECTORY|DART_FILE>` | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
-| `format`  | `dart format <DIRECTORY|DART_FILE>` | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] | 
-| `pub`     | `dart pub <PUB_COMMAND>`       | Works with packages.<br>Use instead of [`pub`][]. | 
-| `run`     | `dart run <DART_FILE>`         | Runs a Dart program. <br>Use instead of the pre-existing [Dart VM command][dart-vm]. | 
-| `test`    | `dart test [<DIRECTORY|DART_FILE>]` | Runs tests in this package.<br>Use instead of [`pub run test`][`pub`]. |
-| _(none)_| `dart <DART_FILE>`             | Runs a Dart program, just like `dart run`. <br>Identical to the pre-existing [Dart VM command][dart-vm]. |
+| `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
+| `compile` | `dart compile exe <DART_FILE>`          | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
+| `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>Use instead of [`stagehand`.][] | 
+| `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
+| `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] |
+| `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
+| `pub`     | `dart pub <PUB_COMMAND>`                | Works with packages.<br>Use instead of `pub`.<br>[Learn more.][pub] | 
+| `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Use instead of the pre-existing [Dart VM command][dart-vm].<br>[Learn more.][run] | 
+| `test`    | `dart test [<DIRECTORY|DART_FILE>]`     | Runs tests in this package.<br>Use instead of [`pub run test`][pub]. |
+| _(none)_  | `dart <DART_FILE>`                      | Runs a Dart program, just like `dart run`. <br>Identical to the pre-existing [Dart VM command][dart-vm]. |
 {:.table .table-striped .nowrap}
 
 [analyze]: /tools/dart-analyze
 [compile]: /tools/dart-compile
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
+[pub]: /tools/pub/cmd
+[run]: /tools/dart-run
+[migrate]: /null-safety/migration-guide#migration-tool
 
 For additional help on any of the commands, enter `dart help <command>`
 or follow the links in the **More information** column.
@@ -73,15 +77,4 @@ You can also get details on `pub` commands — for example,
 [`dartfix`]: {{site.pub-pkg}}/dartfix
 [dart-vm]: /tools/dart-vm
 [null safety]: /null-safety
-[`pub`]: /tools/pub/cmd
 [`stagehand`.]: {{site.pub-pkg}}/stagehand
-
-{% comment %}
-PENDING: Add `fix` & `migrate` to the table once we expect to ship
-them on the stable channel.
-
-| migrate | `dart migrate`                 | Supports migration to [null safety][].<br> | 
-
-PENDING: Watch https://github.com/dart-lang/sdk/issues/43271 for signs
-that `dart analyze` will work on a lone file (like dartanalyzer did).
-{% endcomment %}
