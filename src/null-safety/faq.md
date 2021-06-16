@@ -262,7 +262,8 @@ _jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with fille
 
 If you are setting the elements of the list via an index, or you are populating
 each element of the list with a distinct value, you should instead use the
-[`generate`](https://api.dart.dev/stable/dart-core/List/List.generate.html) constructor to build the list.
+[`generate`](https://api.dart.dev/stable/dart-core/List/List.generate.html)
+constructor to build the list.
 
 {:.bad}
 {% prettify dart tag=pre+code %}
