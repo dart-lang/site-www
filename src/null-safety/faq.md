@@ -238,7 +238,7 @@ It is typically a code smell to end up with nullable code like this:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-List?<Foo?> fooList; // fooList can contain null values
+List<Foo?> fooList; // fooList can contain null values
 {% endprettify %}
 
 This implies `fooList` might contain null values. This might happen if you are
@@ -249,20 +249,33 @@ use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) 
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>(jellyMax + 1);
+_jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyPoints[i] = Vec2D(); // List initalized with the same value
+  _jellyCounts[i] = 0; // List initalized with the same value
 }
 {% endprettify %}
 
 {:.good}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>.filled(jellyMax + 1, Vec2D()); // List initialized with filled constructor
+_jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
 {% endprettify %}
 
-If you are setting the elements of the list via an index, you should instead use
-the `add` function to build the list. That is less error-prone and more
-readable.
+If you are setting the elements of the list via an index, or you are populating
+each element of the list with a distinct value, you should instead use the
+[`generate`](https://api.dart.dev/stable/dart-core/List/List.generate.html) constructor to build the list.
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+_jellyPoints = List<Vec2D?>(jellyMax + 1);
+for (var i = 0; i <= jellyMax; i++) {
+  _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
+}
+{% endprettify %}
+
+{:.good}
+{% prettify dart tag=pre+code %}
+_jellyPoints = List<Vec2D>.generate(jellyMax + 1, (i) => Vec2D()); // List initialized with generate constructor
+{% endprettify %}
 
 ## What happened to the default List constructor?
 
