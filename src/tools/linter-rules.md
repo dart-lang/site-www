@@ -30,13 +30,16 @@ To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
 which the following packages provide:
 
-[lints]({{site.pub-pkg}}/lints)
-: The rule sets that the Dart team encourages using. 
+[lints][]
+: The rule sets that the Dart team encourages using.
+  If you're writing Flutter code,
+  use the `flutter_lints` rule set,
+  which builds on `lints`.
   Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
   are [scored]({{site.pub}}/help/scoring) 
   with the `core` set of these rules.
 
-[flutter_lints]({{site.pub-pkg}}/flutter_lints)
+[flutter_lints][]
 : The set of rules that the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
   This rule set is a superset of the `recommended`
@@ -45,11 +48,21 @@ which the following packages provide:
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
-[effective_dart]({{site.pub-pkg}}/effective_dart)
+[effective_dart][]
 : A set of rules corresponding to the guidelines in [Effective Dart][].
 
-[pedantic]({{site.pub-pkg}}/pedantic)
-: The set of rules used for all Google-internal Dart code
+[pedantic][] (_deprecated_)
+: The deprecated set of rules previously used to match
+  the rules used for all Google-internal Dart code.
+  Consider migrating to one of the rule sets in
+  the [lints][] or [flutter_lints][] package.
+  See [Migrating from pedantic][] for more information on switching.
+   
+[Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
+[lints]: {{site.pub-pkg}}/lints
+[flutter_lints]: {{site.pub-pkg}}/flutter_lints
+[effective_dart]: {{site.pub-pkg}}/effective_dart
+[pedantic]: {{site.pub-pkg}}/pedantic
 
 To learn how to use a specific rule set,
 see the documentation for [enabling and disabling linter rules][].
