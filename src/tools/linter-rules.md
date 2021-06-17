@@ -31,7 +31,9 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 [lints][]
-: The rule sets that the Dart team encourages using. 
+: The rule sets that the Dart team encourages using
+  for command line and server applications. 
+  For Flutter programs, see [flutter_lints][].
   Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
   are [scored]({{site.pub}}/help/scoring) 
   with the `core` set of these rules.
