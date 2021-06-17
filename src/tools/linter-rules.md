@@ -31,9 +31,10 @@ consider starting with a linter rule set,
 which the following packages provide:
 
 [lints][]
-: The rule sets that the Dart team encourages using
-  for command line and server applications. 
-  For Flutter programs, see [flutter_lints][].
+: The rule sets that the Dart team encourages using.
+  If you're writing Flutter code,
+  use the `flutter_lints` rule set,
+  which builds on `lints`.
   Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
   are [scored]({{site.pub}}/help/scoring) 
   with the `core` set of these rules.
@@ -53,8 +54,8 @@ which the following packages provide:
 [pedantic][] (_deprecated_)
 : The deprecated set of rules previously used to match
   the rules used for all Google-internal Dart code.
-  Consider migrating to one of the [package:lints][lints] rule sets 
-  or [package:flutter_lints][flutter_lints] if you use Flutter.
+  Consider migrating to one of the rule sets in
+  the [lints][] or [flutter_lints][] package.
   See [Migrating from pedantic][] for more information on switching.
    
 [Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
