@@ -6,6 +6,6 @@ environment:
 
 dependencies:
   crypto: ^3.0.1
-  http: ^0.13.2
+  http: ^0.13.3
   logging: ^1.0.1
   path: ^1.8.0

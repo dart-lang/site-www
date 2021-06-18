@@ -2,7 +2,7 @@ name: examples
 description: dart.dev example code.
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.13.0 <3.0.0'
 
 dev_dependencies:
   effective_dart: ^1.3.0
