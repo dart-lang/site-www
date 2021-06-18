@@ -486,12 +486,12 @@ The analyzer supports three severity levels:
 
 `info`
 : An informational message that doesn't cause analysis to fail.
-  Example: [`todo`][todo]
+  Example: [`dead_code`][dead_code]
 
 `warning`
 : A warning that doesn't cause analysis to fail unless
   the analyzer is configured to treat warnings as errors.
-  Example: [`analysis_option_deprecated`][analysis_option_deprecated]
+  Example: [`invalid_null_aware_operator`][invalid_null_aware_operator]
 
 `error`
 : An error that causes analysis to fail.
@@ -540,15 +540,15 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart linter rules][linter rules]
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 
-[analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html
+[invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
 [analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
-[invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
+[invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
 [language version]: /guides/language/evolution#language-versioning
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [type-system]: /guides/language/type-system
-[todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
+[dead_code]: /tools/diagnostic-messages#dead_code
 [in the pedantic package page]: {{site.pub-pkg}}/pedantic#using-the-lints
 [disable individual rules]: #disabling-individual-rules
 [in the effective_dart package page]: {{site.pub-pkg}}/effective_dart#using-the-lints
