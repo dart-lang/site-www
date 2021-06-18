@@ -251,7 +251,7 @@ use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) 
 {% prettify dart tag=pre+code %}
 _jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyCounts[i] = 0; // List initalized with the same value
+  _jellyCounts[i] = 0; // List initialized with the same value
 }
 {% endprettify %}
 
