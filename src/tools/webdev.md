@@ -54,9 +54,9 @@ to your app's `pubspec.yaml` file:
 ```
   dev_dependencies:
     # ···
-    build_runner: ^1.11.0
-    build_test: ^1.3.0
-    build_web_compilers: ^2.12.0
+    build_runner: ^2.0.0
+    build_test: ^2.1.0
+    build_web_compilers: ^3.0.0
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
@@ -100,12 +100,12 @@ $ webdev serve  # uses dartdevc
 The first dartdevc build is the slowest. After that, assets are cached on disk,
 and incremental builds are much faster.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** The development compiler (dartdevc) supports **only Chrome.**
+{{site.alert.note}}
+  The development compiler (dartdevc) supports **only Chrome.**
   To view your app in another browser,
   use the production compiler (dart2js).
   For a list of supported browsers, [see the FAQ][supported browsers].
-</aside>
+{{site.alert.end}}
 
 To enable [Dart DevTools][], add the `--debug` flag:
 
@@ -156,12 +156,10 @@ Use the `build_runner test` command to run your app's [component tests][]:
 $ dart pub run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
-<aside class="alert alert-info" markdown="1">
-  **Tip:**
+{{site.alert.tip}}
   If the command fails to load the test file,
-  make sure that your app's pubspec has a dev dependency on
-  **build_test**.
-</aside>
+  make sure that your app's pubspec has a dev dependency on `build_test`.
+{{site.alert.end}}
 
 For example, here's how to run all Chrome platform tests:
 
