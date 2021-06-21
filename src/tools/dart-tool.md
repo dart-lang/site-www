@@ -44,12 +44,12 @@ $ dart pub upgrade
 
 The following table shows which commands you can use with the `dart` tool.
 
-|---------+--------------------------------+-----------------------------------|
-| Command | Example of use                 | More information                  |
-|---------|--------------------------------|-----------------------------------|
+|-----------+-----------------------------------------+-----------------------------------|
+| Command   | Example of use                          | More information                  |
+|-----------|-----------------------------------------|-----------------------------------|
 | `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>Use instead of `dartanalyzer`.<br>[Learn more.][analyze] |
 | `compile` | `dart compile exe <DART_FILE>`          | Compiles Dart to various formats.<br>Use instead of `dart2js` and `dart2native`.<br>[Learn more.][compile] | 
-| `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>Use instead of [`stagehand`.][] | 
+| `create`  | `dart create <DIRECTORY>`               | Creates a new project.<br>Use instead of [`stagehand`.][].<br>[Learn more.][create] | 
 | `fix`     | `dart fix <DIRECTORY|DART_FILE>`        | Applies automated fixes to Dart source code.<br>Use instead of [`dartfix`][].<br>[Learn more.][fix] | 
 | `format`  | `dart format <DIRECTORY|DART_FILE>`     | Formats Dart source code.<br>Use instead of `dartfmt`.<br>[Learn more.][format] |
 | `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
@@ -61,6 +61,7 @@ The following table shows which commands you can use with the `dart` tool.
 
 [analyze]: /tools/dart-analyze
 [compile]: /tools/dart-compile
+[create]: /tools/dart-create
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
 [pub]: /tools/pub/cmd
