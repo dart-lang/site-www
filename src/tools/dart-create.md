@@ -43,7 +43,7 @@ $ dart create my_cli
 
 This results in a package structure similar to the following:
 
-```terminal
+```bash
 my_cli/                  # The projects parent directory
   bin/                   # The bin directory for the CLI tools
   .gitignore             # Prevents various Dart files from being added to Git staging
