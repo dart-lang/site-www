@@ -19,8 +19,9 @@ $ dart create [ARGUMENTS] <DIRECTORY>
 ```
 
 {{site.alert.note}}
-  Keep in mind, the command will attempt to run
-  [`dart pub get`](/tools/pub/cmd/pub-get) after the project is created.
+  The command will attempt to run [`dart pub get`](/tools/pub/cmd/pub-get) 
+  after the project is created.
+
   To avoid this you can specify the `--no-pub` flag:
 
   ```terminal
@@ -28,12 +29,13 @@ $ dart create [ARGUMENTS] <DIRECTORY>
   ```
 {{site.alert.end}}
 
-The structure and files created and the dependencies specified
-are configured through a choice of templates. By default, the `console-simple`
-template is used, creating a simple command-line application.
+The file structure created and the dependencies specified
+are configured through a choice of templates. By default, 
+the `console-simple` template is used, 
+creating a simple command-line application.
 
-For example, to create a simple command-line application with the
-package and directory name `my_cli`:
+To use that default template and create an application with
+the package and directory name `my_cli`, run the following command:
 
 ```terminal
 $ dart create my_cli
@@ -41,7 +43,7 @@ $ dart create my_cli
 
 This results in a package structure similar to the following:
 
-```nocode
+```terminal
 my_cli/                  # The projects parent directory
   bin/                   # The bin directory for the CLI tools
   .gitignore             # Prevents various Dart files from being added to Git staging
@@ -58,7 +60,7 @@ my_cli/                  # The projects parent directory
 {{site.alert.end}}
 
 To instead utilize one of the other templates, 
-you specify it with the `-t` flag:
+specify its id with the `-t` flag:
 
 ```terminal
 $ dart create -t <TEMPLATE> <DIRECTORY>
