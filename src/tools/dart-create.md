@@ -4,9 +4,9 @@ description: Command-line tool for creating Dart projects.
 toc: false
 ---
 
-The `dart create` command allows creating Dart projects
-from varying available templates through a command line
-or many IDE project creation workflows.
+The `dart create` command creates a Dart project,
+using one of several supported template.
+The same functionality is available in IDEs.
 
 {% include tools/dart-tool-note.md %}
 
@@ -75,7 +75,7 @@ you can run the following command:
 $ dart create -t web-simple my_web_app
 ```
 
-If the specified directory already exists, the command will fail. 
+If the specified directory already exists, the command fails. 
 You can force project generation with the `--force` flag:
 
 ```terminal
