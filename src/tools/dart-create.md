@@ -5,7 +5,7 @@ toc: false
 ---
 
 The `dart create` command creates a Dart project,
-using one of several supported template.
+using one of several supported templates.
 The same functionality is available in IDEs.
 
 {% include tools/dart-tool-note.md %}
@@ -17,17 +17,6 @@ and retrieves any necessary dependencies.
 ```terminal
 $ dart create [ARGUMENTS] <DIRECTORY>
 ```
-
-{{site.alert.note}}
-  The command will attempt to run [`dart pub get`](/tools/pub/cmd/pub-get) 
-  after the project is created.
-
-  To avoid this you can specify the `--no-pub` flag:
-
-  ```terminal
-  $ dart create --no-pub <DIRECTORY>
-  ```
-{{site.alert.end}}
 
 The file structure created and the dependencies specified
 are configured through a choice of templates. By default, 
