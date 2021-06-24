@@ -41,23 +41,9 @@ the package and directory name `my_cli`, run the following command:
 $ dart create my_cli
 ```
 
-This results in a package structure similar to the following:
-
-```bash
-my_cli/                  # The projects parent directory
-  bin/                   # The bin directory for the CLI tools
-  .gitignore             # Prevents various Dart files from being added to Git staging
-  analysis_options.yaml  # Configures static analysis for the project
-  CHANGELOG.md           # Allows you to specify changes between releases
-  pubspec.lock           # Pins down the dependency information for your package
-  pubspec.yaml           # Configures package information and dependencies
-  README.md              # Provides a description for your application
-```
-
-{{site.alert.info}}
-  To learn more about this and the other templates' generated structures,
-  see [Package layout conventions](/tools/pub/package-layout).
-{{site.alert.end}}
+This and the other templates, result in a file structure being created
+which follows the guidelines and suggestions
+outlined in [Package layout conventions](/tools/pub/package-layout).
 
 To instead utilize one of the other templates, 
 specify its id with the `-t` flag:
