@@ -14,35 +14,23 @@ The command creates a directory with the specified name,
 creates necessary files, configures static analysis, 
 and retrieves any necessary dependencies.
 
-```terminal
-$ dart create [ARGUMENTS] <DIRECTORY>
-```
+When you run `dart create`, it first creates a directory with the project files. 
+Then it gets package dependencies (unless you specify the `--no-pub` flag.) 
 
-The file structure created and the dependencies specified
-are configured through a choice of templates. By default, 
-the `console-simple` template is used, 
-creating a simple command-line application.
-
-To use that default template and create an application with
-the package and directory name `my_cli`, run the following command:
+Here's an example of using `dart create` to create a directory named `my_cli` 
+that contains a simple console app (the default template):
 
 ```terminal
 $ dart create my_cli
 ```
 
-This and the other templates, result in a file structure being created
-which follows the guidelines and suggestions
-outlined in [Package layout conventions](/tools/pub/package-layout).
-
-To instead utilize one of the other templates, 
-specify its id with the `-t` flag:
+To use a different template, such as `web-simple`, add a template argument:
 
 ```terminal
-$ dart create -t <TEMPLATE> <DIRECTORY>
+$ dart create -t web-simple my_web_app
 ```
 
-Beyond the `console-simple` template, these are the currently available
-templates:
+The following table shows the templates you can use:
 
 |------------------+------------------------------------------------------|
 | Template         | Description                                          |
@@ -56,13 +44,9 @@ templates:
 
 [shelf]: {{site.pub-pkg}}/shelf
 
-As an example, to create a simple web application
-with the directory and name `my_web_app`,
-you can run the following command:
-
-```terminal
-$ dart create -t web-simple my_web_app
-```
+These templates result in a file structure being created
+which follows the guidelines and suggestions
+outlined in [Package layout conventions](/tools/pub/package-layout).
 
 If the specified directory already exists, the command fails. 
 You can force project generation with the `--force` flag:
