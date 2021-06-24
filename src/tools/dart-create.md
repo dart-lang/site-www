@@ -55,14 +55,14 @@ $ dart create -t <TEMPLATE> <DIRECTORY>
 Beyond the `console-simple` template, these are the currently available
 templates:
 
-|------------------+---------------------------------------------+------------------------------------------------------|
-| Template         | Example of use                              | More information                                     |
-|------------------|---------------------------------------------|------------------------------------------------------|
-| `console-simple` | `dart create -t console-simple <DIRECTORY>` | A simple command-line application.                   |
-| `console-full`   | `dart create -t console-full <DIRECTORY>`   | A complete command-line application.                 |
-| `package-simple` | `dart create -t package-simple <DIRECTORY>` | A starting point for Dart libraries or applications. |
-| `server-shelf`   | `dart create -t server-shelf <DIRECTORY>`   | A server application built using [shelf][].          |
-| `web-simple`     | `dart create -t web-simple <DIRECTORY>`     | A web application built using core Dart libraries.   |
+|------------------+------------------------------------------------------|
+| Template         | Description                                          |
+|------------------|------------------------------------------------------|
+| `console-simple` | A simple command-line application.                   |
+| `console-full`   | A complete command-line application.                 |
+| `package-simple` | A starting point for Dart libraries or applications. |
+| `server-shelf`   | A server application built using [shelf][].          |
+| `web-simple`     | A web application built using core Dart libraries.   |
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
