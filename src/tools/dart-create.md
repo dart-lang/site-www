@@ -10,10 +10,6 @@ The same functionality is available in IDEs.
 
 {% include tools/dart-tool-note.md %}
 
-The command creates a directory with the specified name, 
-creates necessary files, configures static analysis, 
-and retrieves any necessary dependencies.
-
 When you run `dart create`, it first creates a directory with the project files. 
 Then it gets package dependencies (unless you specify the `--no-pub` flag.) 
 
@@ -48,7 +44,7 @@ These templates result in a file structure being created
 which follows the guidelines and suggestions
 outlined in [Package layout conventions](/tools/pub/package-layout).
 
-If the specified directory already exists, the command fails. 
+If the specified directory already exists, `dart create` fails. 
 You can force project generation with the `--force` flag:
 
 ```terminal
