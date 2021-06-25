@@ -11,7 +11,7 @@ The same functionality is available in IDEs.
 {% include tools/dart-tool-note.md %}
 
 When you run `dart create`, it first creates a directory with the project files. 
-Then it gets package dependencies (unless you specify the `--no-pub` flag.) 
+Then it gets package dependencies (unless you specify the `--no-pub` flag).
 
 Here's an example of using `dart create` to create a directory named `my_cli` 
 that contains a simple console app (the default template):
@@ -31,18 +31,17 @@ The following table shows the templates you can use:
 |------------------+------------------------------------------------------|
 | Template         | Description                                          |
 |------------------|------------------------------------------------------|
-| `console-simple` | A simple command-line application.                   |
-| `console-full`   | A complete command-line application.                 |
-| `package-simple` | A starting point for Dart libraries or applications. |
-| `server-shelf`   | A server application built using [shelf][].          |
-| `web-simple`     | A web application built using core Dart libraries.   |
+| `console-simple` | A simple command-line app (the default template).                   |
+| `console-full`   | A complete command-line app.                 |
+| `package-simple` | A starting point for Dart libraries or apps. |
+| `server-shelf`   | A server built using [shelf][].          |
+| `web-simple`     | A web app built using core Dart libraries.   |
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
 
-These templates result in a file structure being created
-which follows the guidelines and suggestions
-outlined in [Package layout conventions](/tools/pub/package-layout).
+These templates result in a file structure that follows
+[package layout conventions](/tools/pub/package-layout).
 
 If the specified directory already exists, `dart create` fails. 
 You can force project generation with the `--force` flag:
