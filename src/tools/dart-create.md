@@ -31,11 +31,11 @@ The following table shows the templates you can use:
 |------------------+------------------------------------------------------|
 | Template         | Description                                          |
 |------------------|------------------------------------------------------|
-| `console-simple` | A simple command-line app (the default template).                   |
-| `console-full`   | A complete command-line app.                 |
-| `package-simple` | A starting point for Dart libraries or apps. |
-| `server-shelf`   | A server built using [shelf][].          |
-| `web-simple`     | A web app built using core Dart libraries.   |
+| `console-simple` | A simple command-line app (the default template).    |
+| `console-full`   | A complete command-line app.                         |
+| `package-simple` | A starting point for Dart libraries or apps.         |
+| `server-shelf`   | A server built using [shelf][].                      |
+| `web-simple`     | A web app built using core Dart libraries.           |
 {:.table .table-striped .nowrap}
 
 [shelf]: {{site.pub-pkg}}/shelf
