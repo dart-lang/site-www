@@ -554,7 +554,7 @@ Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
-* `Iterable`: Used in [for-in loops](#iteration) and
+* `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions](#generator).
 * `Never`: Indicates that an expression can never
   successfully finish evaluating.
@@ -1266,7 +1266,7 @@ bool isNoble(int atomicNumber) {
 ```
 
 Although Effective Dart recommends
-[type annotations for public APIs](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious),
+[type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious),
 the function still works if you omit the types:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (function-omitting-types)"?>
@@ -2235,7 +2235,7 @@ would print `2` and then `2` in JavaScript.
 
 If the object that you are iterating over is an Iterable (such as List or Set)
 and if you don't need to know the current iteration counter, 
-you can use the `for-in` form of [iteration](/guides/libraries/library-tour#iteration):
+you can use the `for-in` form of [iteration][]:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
@@ -4558,6 +4558,7 @@ To learn more about Dart's core libraries, see
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [`int`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [`Iterable`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[iteration]: /guides/libraries/library-tour#iteration
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [language version]: /guides/language/evolution#language-versioning
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html

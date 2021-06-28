@@ -21,6 +21,7 @@ String name = getFileName();
 final b = Foo();
 ```
 
+<a id="creating-variables"></a>
 To indicate that a variable might have the value `null`,
 just add `?` to its type declaration:
 
