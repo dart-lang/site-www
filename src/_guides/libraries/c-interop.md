@@ -7,7 +7,7 @@ sqlite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
-platform](/overview#platform/) can use the dart:ffi library to call native C APIs.
+platform](/overview#platform) can use the dart:ffi library to call native C APIs.
 _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._

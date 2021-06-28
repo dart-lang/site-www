@@ -187,7 +187,7 @@ environment:
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[prerelease]: /get-dart#about-release-channels-and-version-strings
+[prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/type-system

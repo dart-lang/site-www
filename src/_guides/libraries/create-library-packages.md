@@ -217,7 +217,7 @@ Enable running a tool from the command line, using
 Listing the tool in the
 [`executables` section](/tools/pub/pubspec#executables)
 of the pubspec allows a user to run it directly without calling
-[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.

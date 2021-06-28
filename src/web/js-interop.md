@@ -5,7 +5,7 @@ description: "Use package:js to integrate JavaScript code into your Dart web app
 toc: false
 ---
 
-The [Dart web platform](/overview#web-platform/) supports calling
+The [Dart web platform](/overview#web-platform) supports calling
 JavaScript using the `js` package,
 also known as _package:js_.
 
