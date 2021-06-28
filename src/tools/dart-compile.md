@@ -57,8 +57,8 @@ The `dart compile` command replaces the
   see the [platforms discussion](/overview#platform).
 {{site.alert.end}}
 
-Refer to the [native_app] sample for a simple example of using `dart create`
-to compile and run a native app.
+Refer to the [native_app][] sample for a simple example of using `dart compile`
+to compile a native app, followed by examples of running the app.
 
 [native_app]: https://github.com/dart-lang/samples/tree/master/native_app
 [dart-run]: /tools/dart-tool
