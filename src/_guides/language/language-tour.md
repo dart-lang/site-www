@@ -554,7 +554,7 @@ Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
-* `Iterable`: Used in [for-in loops][] and
+* `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions](#generator).
 * `Never`: Indicates that an expression can never
   successfully finish evaluating.
