@@ -138,11 +138,6 @@ user	0m0.008s
 sys	0m0.006s
 ```
 
-As another example of a creating a natively compiled app, 
-see the [native_app][] sample.
-
-[native_app]: https://github.com/dart-lang/samples/tree/master/native_app
-
 ## What next?
 
 Check out these resources:
@@ -159,6 +154,8 @@ Check out these resources:
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs](/tools#ides-and-editors)
+* Examples of creating natively compiled apps:
+  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 
