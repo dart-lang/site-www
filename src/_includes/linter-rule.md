@@ -1,8 +1,18 @@
-{% if include.incompatible != empty %}
+{% assign lint = include.lint %}
+
+### {{lint.name}}
+
+{{lint.description}}
+
+{% if lint.maturity != "stable" %}
+_This rule is currently **{{lint.maturity}}**._
+{% endif %}
+
+{% if lint.incompatible != empty %}
 
 {% assign incompatible_rules = "" | split: ',' %}
 
-{% for incompatible in include.incompatible %}
+{% for incompatible in lint.incompatible %}
 
 {%- capture incompatible_rule -%}
 [{{incompatible}}](#{{incompatible}})
@@ -15,3 +25,7 @@
 <em>Incompatible rules: {{ incompatible_rules | join: ", " }}</em>
 
 {% endif %}
+
+#### Details
+
+{{lint.details}}
