@@ -186,13 +186,11 @@ error - A value of type 'dynamic' can't be assigned to a variable of type 'Strin
 
 {{site.alert.version-note}}
   In packages that use a [language version][] before 2.12
-  (when support for [null safety][] was introduced),
+  (when support for [null safety](/null-safety) was introduced),
   code can implicitly downcast from non-`dynamic` types such as `Object`.
   The `implicit-casts` flag can catch those non-`dynamic` downcasts,
   even if you're using a more recent Dart SDK.
 {{site.alert.end}}
-
-[null safety]: /null-safety
 
 `implicit-dynamic: <bool>`
 : A value of `false` ensures that the type inference engine never chooses
@@ -212,7 +210,7 @@ For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-### Enabling Dart team recommended rules: lints {#lints}
+### Enabling Dart team recommended linter rules {#lints}
 
 The Dart team provides two sets of recommended linter rules
 in the [lints package][]:
@@ -268,62 +266,6 @@ or [disable individual rules][].
 
 [lints package]: {{site.pub-pkg}}/lints
 
-### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
-
-To enable the list of linter rules that Google uses in its own Dart code,
-add the [pedantic package]({{site.pub-pkg}}/pedantic) as a dependency.
-Unless you need to use the `pedantic` API, include the `--dev` flag to declare
-it as a dev dependency.
-
-```terminal
-$ dart pub add [--dev] pedantic
-```
-
-Then edit your `analysis_options.yaml` file to include the rule set:
-
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml" from="include" retain="include:"?>
-```yaml
-include: package:pedantic/analysis_options.yaml
-```
-
-{{site.alert.important}}
-  When a **new version of `pedantic`** is published,
-  code that previously passed analysis might **start failing analysis.**
-  We recommend updating your code to work with the new rules.
-  Other options are to
-  include a specific version of the pedantic analysis options file
-  (as described [in the pedantic package page][]),
-  explicitly enable individual linter rules,
-  or [disable individual rules][].
-{{site.alert.end}}
-
-### Enabling Effective Dart rules: effective_dart {#effective-dart-rules}
-
-To enable linter rules corresponding to the guidelines in [Effective Dart][],
-add the [effective_dart package][effective_dart] as a dev dependency:
-
-```terminal
-$ dart pub add --dev effective_dart
-```
-
-Then edit your `analysis_options.yaml` file to include the rule set:
-
-<?code-excerpt "../null_safety_examples/analysis_effective_dart/analysis_options.yaml" from="include" retain="include:"?>
-```yaml
-include: package:effective_dart/analysis_options.yaml
-```
-
-{{site.alert.important}}
-  When a **new version of `effective_dart`** is published,
-  code that previously passed analysis might **start failing analysis.**
-  We recommend updating your code to work with the new rules.
-  Other options are to
-  include a specific version of the effective_dart analysis options file
-  (as described [in the effective_dart package page][]),
-  explicitly enable individual linter rules,
-  or [disable individual rules][].
-{{site.alert.end}}
-
 ### Enabling individual rules {#individual-rules}
 
 To enable a single linter rule, add `linter:` to the analysis options file
@@ -358,7 +300,7 @@ for more information.
 
 ### Disabling individual rules
 
-If you include an analysis options file such as the one in `pedantic`,
+If you include an analysis options file such as the one in `lints`,
 you might want to disable some of the included rules.
 Disabling individual rules is similar to enabling them,
 but requires the use of a map rather than a list
@@ -367,12 +309,13 @@ so each line should contain the name of a rule followed by
 either `: false` or `: true`.
 
 Here's an example of an analysis options file
-that uses all pedantic rules except `avoid_shadowing_type_parameters`.
+that uses all the recommended rules from `lints`
+except `avoid_shadowing_type_parameters`.
 It also enables the lint `await_only_futures`:
 
 <?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml"?>
 ```yaml
-include: package:pedantic/analysis_options.yaml
+include: package:lints/recommended.yaml
 
 linter:
   rules:
@@ -381,7 +324,8 @@ linter:
 ```
 
 {{site.alert.note}}
-  Due to YAML restrictions, **you can't mix list and key-value syntax in the same `rules` entry.**
+  Due to YAML restrictions, 
+  **you can't mix list and key-value syntax in the same `rules` entry.**
   You can, however, use the other syntax for rules in an included file.
 {{site.alert.end}}
 
@@ -549,8 +493,5 @@ Use the following resources to learn more about static analysis in Dart:
 [linter rules]: https://dart-lang.github.io/linter/lints/
 [type-system]: /guides/language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code
-[in the pedantic package page]: {{site.pub-pkg}}/pedantic#using-the-lints
 [disable individual rules]: #disabling-individual-rules
-[in the effective_dart package page]: {{site.pub-pkg}}/effective_dart#using-the-lints
-[effective_dart]: {{site.pub-pkg}}/effective_dart
 [Effective Dart]: /guides/language/effective-dart

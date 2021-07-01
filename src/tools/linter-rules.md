@@ -48,14 +48,17 @@ which the following packages provide:
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
-[effective_dart][]
-: A set of rules corresponding to the guidelines in [Effective Dart][].
+[effective_dart][] (_deprecated_)
+: The deprecated set of rules previously used to
+  conform to the guidelines in [Effective Dart][].
+  Consider migrating to one of the rule sets in
+  the [lints][] or [flutter_lints][] packages.
 
 [pedantic][] (_deprecated_)
 : The deprecated set of rules previously used to match
   the rules used for all Google-internal Dart code.
   Consider migrating to one of the rule sets in
-  the [lints][] or [flutter_lints][] package.
+  the [lints][] or [flutter_lints][] packages.
   See [Migrating from pedantic][] for more information on switching.
    
 [Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
