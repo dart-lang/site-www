@@ -17,7 +17,7 @@ and find more information when you need it.
 {{site.alert.note}}
   [WebStorm,](https://www.jetbrains.com/webstorm/)
   a JetBrains IDE for client-side development,
-  comes with the Dart plugin pre-installed.  
+  comes with the Dart plugin pre-installed.
 {{site.alert.end}}
 
 ## Getting started
@@ -28,12 +28,12 @@ Then install the Dart plugin and tell it where to find the Dart SDK.
 
 ### Downloading the IDE
 
-Install a JetBrains IDE if you don't already have one.
+Install a JetBrains IDE if you don't already have one. Choose one:
 
-* [Download IntelliJ IDEA.][IDEA]{:target="_blank" rel="noopener"}
-* To try out the latest Dart language features and IntelliJ functionality,
-  [install IntelliJ IDEA EAP.][IDEA EAP]{:target="_blank" rel="noopener"}
-* [Find another Jetbrains product.][Other]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA][IDEA]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA EAP][IDEA EAP]{:target="_blank" rel="noopener"}
+  (for early access to the latest Dart language features and IntelliJ functionality)
+* [Another JetBrains product][Other]{:target="_blank" rel="noopener"}
 
 [IDEA]: https://www.jetbrains.com/idea/download/
 [IDEA EAP]: https://www.jetbrains.com/idea/nextversion/
