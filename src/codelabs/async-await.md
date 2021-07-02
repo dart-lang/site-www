@@ -60,7 +60,7 @@ String createOrderMessage() {
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -148,7 +148,7 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
 ```dart:run-dartpad:height-300px:ga_id-introducting_futures:null_safety-true
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
-  return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
+  return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
 }
 
 void main() {
@@ -171,7 +171,7 @@ A bit later you'll learn how to handle the error.
 ```dart:run-dartpad:height-300px:ga_id-completing_with_error:null_safety-true
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
-  return Future.delayed(Duration(seconds: 2),
+  return Future.delayed(const Duration(seconds: 2),
       () => throw Exception('Logout failed: user ID is invalid'));
 }
 
@@ -264,7 +264,7 @@ Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -277,7 +277,7 @@ void main() {
 {:.console-output}
 ```nocode
 Fetching user order...
-Your order is: Instance of _Future<String>
+Your order is: Instance of '_Future<String>'
 ```
 </div>
 <div class="col-sm" markdown="1">
@@ -294,7 +294,7 @@ Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -357,7 +357,7 @@ Future<void> printOrderMessage() async {
 
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex and slow.
-  return Future.delayed(Duration(seconds: 4), () => 'Large Latte');
+  return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
 Future<void> main() async {
@@ -607,7 +607,7 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () => throw 'Cannot locate user order');
   return str;
 }

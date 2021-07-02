@@ -27,7 +27,7 @@ void main() {
     ''';
     expect(
         () => Future.wait([
-              Future.delayed(Duration(seconds: 4)),
+              Future.delayed(const Duration(seconds: 4)),
               Future.sync(futures_intro.main),
             ]),
         m.printsLines(output));

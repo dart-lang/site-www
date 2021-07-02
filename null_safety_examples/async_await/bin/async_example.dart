@@ -9,7 +9,7 @@ Future<void> printOrderMessage() async {
 
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex and slow.
-  return Future.delayed(Duration(seconds: 4), () => 'Large Latte');
+  return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
 Future<void> main() async {
