@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, strict_raw_type
 import 'package:test/test.dart';
 
 import 'package:examples_strong/animal.dart';
@@ -28,29 +28,12 @@ void main() {
     expect(main, prints('[1, 2]\n'));
   });
 
-  test("String isn't a number", () {
-    // #docregion what-is-soundness
-    void main() {
-      List<dynamic> strings = ["not", "ints"];
-      // ignore_for_file: stable, dev, invalid_assignment
-      List<int> numbers = strings; //!analysis-issue
-      for (var number in numbers) {
-        print(number - 10); // Classic Dart runtime exception
-      }
-    }
-    // #enddocregion what-is-soundness
-
-    final msg = "type 'List<dynamic>' is not a subtype of type 'List<int>'";
-    expect(main, _throwsA<TypeError>(msg));
-  });
-
   group('runtime checks:', () {
     test('introductory example', () {
       // #docregion runtime-checks
       void main() {
         List<Animal> animals = [Dog()];
-        // ignore_for_file: stable, dev, invalid_assignment
-        List<Cat> cats = animals;
+        List<Cat> cats = animals as List<Cat>;
       }
       // #enddocregion runtime-checks
 
@@ -66,7 +49,7 @@ void main() {
       }
 
       // #docregion downcast-check-msg
-      final msg = "type 'List<int>' is not a subtype of type 'List<String>'";
+      const msg = "type 'List<int>' is not a subtype of type 'List<String>'";
       // #enddocregion downcast-check-msg
       expect(_test, _throwsA<TypeError>(msg));
     });
@@ -115,19 +98,6 @@ void main() {
       expect(_test, prints(expectedOutput));
     });
 
-    test('downcast check ok: create new object', () {
-      void _test() {
-        // #docregion create-new-object
-        Map<String, dynamic> json = fetchFromExternalSource();
-        var names = json['names'] as List;
-        // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
-        assumeStrings(names.map((name) => name as String).toList());
-        // #enddocregion create-new-object
-      }
-
-      expect(_test, prints(expectedOutput));
-    });
-
     test('instantiate-to-bound sanity', () {
       final b = B();
       expect(b.typeOfS, 'int');
@@ -141,21 +111,12 @@ void main() {
       // #enddocregion add-type-arg
       expect(c, [2]);
     });
-
-    test('instantiate-to-bound fix 2', () {
-      // #docregion use-iterable
-      var c = C(Iterable.empty()).collection;
-      // Use c as an iterable...
-      // #enddocregion use-iterable
-      expect(c, TypeMatcher<Iterable>());
-    });
   });
 }
 
-// ignore_for_file: type_annotate_public_apis
 // #docregion downcast-check
-void assumeStrings(List<Object> objects) {
-  // ignore_for_file: stable, dev, invalid_assignment
+void assumeStrings(dynamic objects) {
+  // ignore_for_file: invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
   // #enddocregion downcast-check

@@ -1,4 +1,4 @@
-// ignore_for_file: sort_constructors_first
+// ignore_for_file: strict_raw_type
 class C<T extends Iterable> {
   final T collection;
   C(this.collection);
