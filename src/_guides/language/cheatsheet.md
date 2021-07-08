@@ -34,7 +34,7 @@ Equivalent: `new Map<>();`
 
 | `var` | Generic `var` with type inference |
 | `final` | Same as `var` but cannot be reassigned |
-| `const` | Compile time constant |
+| `const` | Compile-time constant |
 {:.table}
 
 
