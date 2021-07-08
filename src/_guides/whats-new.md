@@ -61,7 +61,7 @@ we made the following changes to this site:
 * Continued work on migrating code to null safety, in particular the
   [streams tutorial][].
 * Made miscellaneous other updates:
-  * Removed references to Stagehand, in favor of `dart create`.
+  * Removed references to Stagehand, in favor of [`dart create`][].
   * Changed analytics options for dart.dev example code from
     using `pedantic` to using the recommended rules in [`lints`][].
   * Added Docker as a way to [get Dart][].
@@ -69,6 +69,7 @@ we made the following changes to this site:
 
 [command-line tutorial]: /tutorials/server/cmdline
 [`dart run` page]: /tools/dart-run
+[`dart create`]: /tools/dart-create
 [Fixing type promotion failures]: /tools/non-promotion-reasons
 [get Dart]: /get-dart
 [HTTP server tutorial]: /tutorials/server/httpserver

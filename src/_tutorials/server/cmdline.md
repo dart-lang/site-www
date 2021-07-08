@@ -99,7 +99,7 @@ To get the args package, use the
 
 A real app has tests, license files, dependency files, examples, and so on.
 For the first app though, we can easily create only what is necessary
-with the [`dart create`](/tools/dart-tool) command.
+with the [`dart create`](/tools/dart-create) command.
 
 1. Inside a directory, create the dcat app with the dart tool.
    

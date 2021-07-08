@@ -49,8 +49,8 @@ More information:
 
 ## 3. Create a small app
 
-Use the `dart create` command and the `console-full` template
-to create a command-line app:
+Use the [`dart create`](/tools/dart-create) command
+and the `console-full` template to create a command-line app:
 
 ```terminal
 $ dart create -t console-full cli

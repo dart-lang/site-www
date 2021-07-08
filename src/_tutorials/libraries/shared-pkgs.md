@@ -51,22 +51,24 @@ your app must itself be a package.
 Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
-You can use the `dart create` command to generate packages
+You can use the [`dart create`](/tools/dart-create) command to generate packages
 with valid pubspec.yaml files and directory structures.
 This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
 
-Now run the `dart create` command to see what kinds of template files it can generate:
+Run the `dart create` command with the `--help` flag
+to see what kinds of template files it can generate:
 
 ```terminal
-$ dart create
+$ dart create --help
 ```
 
-You'll see a list of generators, including various web and server-side apps.
-One of the generators is named **console-full**.
+You'll see a list of templates, including various web and server-side apps.
+One of the templates is named **console-full**.
 
-Use the `dart create` command to generate a command-line app named `vector_victor`:
+Use the `dart create` command to
+generate a command-line app named `vector_victor`:
 
 ```terminal
 $ dart create -t console-full vector_victor 
@@ -81,16 +83,18 @@ The contents of your pubspec.yaml file should look something like this:
 ```yaml
 name: vector_victor
 description: A sample command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.8.1 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.7.0
+# dependencies:
+#   path: ^1.8.0
 
 dev_dependencies:
-  pedantic: ^1.9.0
-  test: ^1.14.4
+  lints: ^1.0.0
+  test: ^1.16.0
 ```
 
 ## Name the package dependencies
@@ -297,4 +301,3 @@ use the `package:` prefix.
   or share your own Dart packages.
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
-
