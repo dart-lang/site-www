@@ -65,7 +65,7 @@ $ dart create --help
 ```
 
 You'll see a list of templates, including various web and server-side apps.
-One of the generators is named **console-full**.
+One of the templates is named **console-full**.
 
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
@@ -301,4 +301,3 @@ use the `package:` prefix.
   or share your own Dart packages.
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
-
