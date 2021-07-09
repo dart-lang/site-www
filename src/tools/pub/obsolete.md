@@ -1,6 +1,7 @@
 ---
 title: Obsolete pub features
 description: As of Dart 2, pub no longer supports pub build/serve or transformers.
+toc: false
 ---
 
 As of Dart 2, pub no longer supports `pub build`, `pub serve`, or transformers.
