@@ -103,7 +103,7 @@ And say `api_test.dart` imports `api.dart` in two ways:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-import 'package:my_package/api.dart';
+import 'package:my_package/lib/api.dart';
 import '../lib/api.dart';
 {% endprettify %}
 
