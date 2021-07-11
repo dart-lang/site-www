@@ -1,0 +1,11 @@
+include: package:lints/recommended.yaml
+
+# For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
+# Uncomment to specify additional rules.
+# linter:
+#   rules:
+#     - camel_case_types
+
+analyzer:
+#   exclude:
+#     - path/to/excluded/files/**

@@ -1,9 +1,7 @@
 ---
-title: "Asynchronous Programming: Streams"
+title: "Asynchronous programming: Streams"
 description: Learn how to consume single-subscriber and broadcast streams.
-prevpage:
-  url: /tutorials/language/futures
-  title: "Asynchronous Programming: Futures"
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 <div class="mini-toc" markdown="1">
@@ -35,10 +33,10 @@ Streams can be created in many ways, which is a topic for another
 article, but they can all be used in the same way: the _asynchronous
 for loop_ (commonly just called **await for**)
 iterates over the events of a stream like the **for loop** iterates
-over an Iterable. For example:
+over an [Iterable][]. For example:
 
-<?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
   [!await for!] (var value in stream) {
@@ -59,11 +57,13 @@ when using the **await for** loop.
 The following example tests the previous code by
 generating a simple stream of integers using an `async*` function:
 
-{% comment %}
-https://gist.github.com/Sfshaza/15d5ef986238c97dbc14
+{{site.alert.note}}
+  This page uses embedded DartPads to display runnable examples.
+  {% include dartpads-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
-<?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart"?>
+```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (var value in stream) {
@@ -78,26 +78,16 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-main() async {
+Future<void> main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // 55
 }
-{% endprettify %}
-{% endcomment %}
+```
 
-<iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=15d5ef986238c97dbc14&verticalRatio=85"
-    width="100%"
-    height="490px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
-</aside>
+{{site.alert.note}}
+  Click **Run** to see the result in the **Console**.
+{{site.alert.end}}
 
 ## Error events
 
@@ -123,11 +113,8 @@ loop statement. This ends the loop, as well. You can catch the
 error using **try-catch**.  The following example throws an
 error when the loop iterator equals 4:
 
-{% comment %}
-https://gist.github.com/chalin/df7c1168a5c6b20fda2a76d6ff33a1da
-
-<?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream_with_catch.dart"?>
+```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
@@ -150,26 +137,16 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-main() async {
+Future<void> main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // -1
 }
-{% endprettify %}
-{% endcomment %}
+```
 
-<iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&verticalRatio=80"
-    width="100%"
-    height="450px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
-</aside>
+{{site.alert.note}}
+  Click **Run** to see the result in the **Console**.
+{{site.alert.end}}
 
 
 ## Working with streams
@@ -180,11 +157,11 @@ similar to the methods on an [Iterable.][Iterable]
 For example, you can find the last positive integer in a stream using
 `lastWhere()` from the Stream API.
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (lastPositive)"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (lastPositive)"?>
+```dart
 Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
-{% endprettify %}
+```
 
 ## Two kinds of streams {#two-kinds-of-streams}
 
@@ -222,39 +199,39 @@ subscription.
 The following methods on [Stream\<T>][Stream] process the stream and return a
 result:
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
+```dart
 Future<T> get first;
 Future<bool> get isEmpty;
 Future<T> get last;
 Future<int> get length;
 Future<T> get single;
 Future<bool> any(bool Function(T element) test);
-Future<bool> contains(Object needle);
-Future<E> drain<E>([E futureValue]);
+Future<bool> contains(Object? needle);
+Future<E> drain<E>([E? futureValue]);
 Future<T> elementAt(int index);
 Future<bool> every(bool Function(T element) test);
-Future<T> firstWhere(bool Function(T element) test, {T Function() orElse});
+Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});
 Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);
 Future forEach(void Function(T element) action);
-Future<String> join([String separator = ""]);
-Future<T> lastWhere(bool Function(T element) test, {T Function() orElse});
+Future<String> join([String separator = '']);
+Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});
 Future pipe(StreamConsumer<T> streamConsumer);
 Future<T> reduce(T Function(T previous, T element) combine);
-Future<T> singleWhere(bool Function(T element) test, {T Function() orElse});
+Future<T> singleWhere(bool Function(T element) test, {T Function()? orElse});
 Future<List<T>> toList();
 Future<Set<T>> toSet();
-{% endprettify %}
+```
 
 All of these functions, except `drain()` and `pipe()`,
 correspond to a similar function on [Iterable.][Iterable]
-Each one can be written easily by using an async function
+Each one can be written easily by using an `async` function
 with an **await for** loop (or just using one of the other methods).
 For example, some implementations could be:
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
-{% prettify dart %}
-Future<bool> contains(Object needle) async {
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
+```dart
+Future<bool> contains(Object? needle) async {
   await for (var event in this) {
     if (event == needle) return true;
   }
@@ -269,13 +246,13 @@ Future forEach(void Function(T element) action) async {
 
 Future<List<T>> toList() async {
   final result = <T>[];
-  await this.forEach(result.add);
+  await forEach(result.add);
   return result;
 }
 
-Future<String> join([String separator = ""]) async =>
-    (await this.toList()).join(separator);
-{% endprettify %}
+Future<String> join([String separator = '']) async =>
+    (await toList()).join(separator);
+```
 
 (The actual implementations are slightly more complex,
 but mainly for historical reasons.)
@@ -287,51 +264,63 @@ on the original stream.
 Each one waits until someone listens on the new stream before
 listening on the original.
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
+```dart
 Stream<R> cast<R>();
 Stream<S> expand<S>(Iterable<S> Function(T element) convert);
 Stream<S> map<S>(S Function(T event) convert);
-Stream<R> retype<R>();
 Stream<T> skip(int count);
 Stream<T> skipWhile(bool Function(T element) test);
 Stream<T> take(int count);
 Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
-{% endprettify %}
+```
 
 The preceding methods correspond to similar methods on [Iterable][]
 which transform an iterable into another iterable.
-All of these can be written easily using an async function
+All of these can be written easily using an `async` function
 with an **await for** loop.
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
-{% prettify dart %}
-Stream<E> asyncExpand<E>(Stream<E> Function(T event) convert);
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
+```dart
+Stream<E> asyncExpand<E>(Stream<E>? Function(T event) convert);
 Stream<E> asyncMap<E>(FutureOr<E> Function(T event) convert);
-Stream<T> distinct([bool Function(T previous, T next) equals]);
-{% endprettify %}
+Stream<T> distinct([bool Function(T previous, T next)? equals]);
+```
 
 The `asyncExpand()` and `asyncMap()` functions are similar to
 `expand()` and `map()`,
 but allow their function argument to be an asynchronous function.
 The `distinct()` function doesn't exist on `Iterable`, but it could have.
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
-{% prettify dart %}
-Stream<T> handleError(Function onError, {bool test(error)});
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
+```dart
+Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
 Stream<T> timeout(Duration timeLimit,
-    {void Function(EventSink<T> sink) onTimeout});
+    {void Function(EventSink<T> sink)? onTimeout});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
-{% endprettify %}
+```
 
 The final three functions are more special.
 They involve error handling which an **await for** loop
 can't do&mdash;the first error reaching the loops will end
 the loop and its subscription on the stream.
 There is no recovering from that.
-You can use `handleError()` to remove errors from a stream
-before using it in an **await for** loop.
+The following code shows how to use `handleError()` to remove errors
+from a stream before using it in an **await for** loop.
+
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mapLogErrors)"?>
+```dart
+Stream<S> mapLogErrors<S, T>(
+  Stream<T> stream,
+  S Function(T event) convert,
+) async* {
+  var streamWithoutErrors = stream.handleError((e) => log(e));
+  await for (var event in streamWithoutErrors) {
+    yield convert(event);
+  }
+}
+```
 
 ### The transform() function {#transform-function}
 
@@ -343,20 +332,7 @@ it might take several incoming events to produce an output event.
 A [StreamTransformer][] can work with that.
 For example, decoders like [Utf8Decoder][] are transformers.
 A transformer requires only one function, [bind()][], which can be
-easily implemented by an async function.
-
-<?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
-{% prettify dart %}
-Stream<S> mapLogErrors<S, T>(
-  Stream<T> stream,
-  S Function(T event) convert,
-) async* {
-  var streamWithoutErrors = stream.handleError((e) => log(e));
-  await for (var event in streamWithoutErrors) {
-    yield convert(event);
-  }
-}
-{% endprettify %}
+easily implemented by an `async` function.
 
 ### Reading and decoding a file {#reading-decoding-file}
 
@@ -365,33 +341,32 @@ It first converts the data from UTF8 and then runs it through
 a [LineSplitter.][LineSplitter]
 All lines are printed, except any that begin with a hashtag, `#`.
 
-<?code-excerpt "misc/lib/tutorial/cat_no_hash.dart"?>
-{% prettify dart %}
+<?code-excerpt "../null_safety_examples/misc/bin/cat_no_hash.dart"?>
+```dart
 import 'dart:convert';
 import 'dart:io';
 
 Future<void> main(List<String> args) async {
   var file = File(args[0]);
-  var lines = file
-      .openRead()
-      .transform(utf8.decoder)
+  var lines = utf8.decoder
+      .bind(file.openRead())
       .transform(LineSplitter());
   await for (var line in lines) {
     if (!line.startsWith('#')) print(line);
   }
 }
-{% endprettify %}
+```
 
 ## The listen() method {#listen-method}
 
 The final method on Stream is `listen()`. This is a "low-level"
 method&mdash;all other stream functions are defined in terms of `listen()`.
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
-{% prettify dart %}
-StreamSubscription<T> listen(void Function(T event) onData,
-    {Function onError, void Function() onDone, bool cancelOnError});
-{% endprettify %}
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (listen)"?>
+```dart
+StreamSubscription<T> listen(void Function(T event)? onData,
+    {Function? onError, void Function()? onDone, bool? cancelOnError});
+```
 
 To create a new `Stream` type, you can just extend the `Stream`
 class and implement the `listen()` method&mdash;all other methods
@@ -417,8 +392,6 @@ error event, and when the stream is closed.
 Read the following documentation for more details on using streams
 and asynchronous programming in Dart.
 
-* [Single-Subscription vs Broadcast Streams](/articles/libraries/broadcast-streams),
-  an article about the two different types of streams
 * [Creating Streams in Dart](/articles/libraries/creating-streams),
   an article about creating your own streams
 * [Futures and Error Handling](/guides/libraries/futures-error-handling),

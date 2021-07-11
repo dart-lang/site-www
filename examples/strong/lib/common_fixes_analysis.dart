@@ -1,11 +1,11 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: unused_element, unused_local_variable
+// ignore_for_file: sort_constructors_first, unused_element, unused_local_variable
 
 import 'dart:html';
 
 // Include in this file only excerpts used to illustrate fixes to common problems.
 void _samplesFromCommonProblemsPage() {
-  num x, y;
+  double x, y;
 
   {
     // #docregion canvas-as
@@ -17,7 +17,7 @@ void _samplesFromCommonProblemsPage() {
   {
     // We need to ignore invalid_assignment because we use --no-implicit-casts.
     // #docregion canvas-ok
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     CanvasElement canvas = querySelector('canvas');
     canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-ok
@@ -71,7 +71,7 @@ abstract class Animal {
 
 // ignore_for_file: unused_field
 class HoneyBadger extends Animal {
-  String _name;
+  final String _name;
   // #docregion super-goes-last
   HoneyBadger(Eats food, String name)
       : _name = name,

@@ -1,0 +1,6 @@
+include: package:lints/recommended.yaml
+
+linter:
+  rules:
+    avoid_shadowing_type_parameters: false
+    await_only_futures: true

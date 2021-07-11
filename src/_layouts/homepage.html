@@ -2,10 +2,11 @@
 <html>
   {% include head.html %}
   <body class="homepage">
+    {% include gtags.html %}
     {% include page-header.html %}
+    {% include navigation-side.html %}
     <main id="page-content">
-      {% include navigation-side.html %}
-      {{ content }}
+      {{content}}
     </main>
     {% include page-footer.html %}
   </body>

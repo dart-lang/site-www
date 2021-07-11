@@ -1,0 +1,5 @@
+This directory contains unoptimized PNGs for diagrams that live under
+/src/null-safety.
+
+Do NOT optimize any PNGs that are in this directory. They contain information used by
+diagrams.net (née draw.io) to enable editing the image.

@@ -1,4 +1,0 @@
-name: async_await_web
-description: A sample web application
-dependencies:
-  browser: any

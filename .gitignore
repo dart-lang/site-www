@@ -10,6 +10,7 @@
 .pub
 .*-cache/
 .vscode
+.spelling
 _asset_bundler_cache
 _bookhtml
 _cache/

@@ -1,8 +1,7 @@
 ---
-layout: default
 permalink: /community
-title: "Community and Support"
-description: "Communities, mailing lists, and bug databases for the Dart project."
+title: Community and support
+description: Communities, mailing lists, and bug databases for the Dart project.
 ---
 
 Track the Dart project, get help, and talk with other Dart developers.
@@ -13,15 +12,13 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## Stay informed
 
-* [Dart news]({{site.news}}) -
-  Official news feed for the Dart project.
 * [Dart announce]({{site.group}}/d/forum/announce) -
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
-* [Dart Language & Library Newsletters](https://github.com/dart-lang/sdk/blob/master/docs/newsletter/README.md#dart-language-and-library-newsletters) -
-  Information about existing features and planned changes.
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
+* [Dart blog](https://medium.com/dartlang) - 
+  The latest news and insights from a diverse group of Dart users.
 
 ## Join the conversation
 
@@ -29,7 +26,7 @@ Get answers and connect with Dart developers.
 
 #### Communities
 
-* [StackOverflow](http://stackoverflow.com/tags/dart) -
+* [StackOverflow](https://stackoverflow.com/tags/dart) -
   The best place for how-to questions.
 * [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
@@ -38,15 +35,12 @@ Get answers and connect with Dart developers.
 #### Google Groups
 
 * [General discussions]({{site.group}}/d/forum/misc)
-* [Dart plugin for JetBrains editors]({{site.group}}/d/forum/jetbrains-dart-plugin-discuss) (WebStorm, IntelliJ)
-* [Dart VM developers]({{site.group}}/d/forum/vm-dev)
 * [Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
-* [Server-side Dart]({{site.group}}/d/forum/cloud)
 
 ## Contribute
 
 Dart is open source. Learn how to
-[contribute to the core SDK.](https://github.com/dart-lang/sdk/wiki/Contributing)
+[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)
 
 * [Dart GitHub repositories](https://github.com/dart-lang/)
   * [Core SDK](https://github.com/dart-lang/sdk/)
@@ -60,10 +54,8 @@ Dart is open source. Learn how to
 
 Our wonderful community has provided these resources.
 
-* [Dart Academy](https://dart.academy/) - Tutorials
-  and articles written by the Dart community
-* [Smartherd videos](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - A series of tutorial videos about the Dart language
-* [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
+* [Chinese version of this site (此网站的中文版)](https://dart.cn)
 
-Also see [Community and Support]({{site.webdev}}/community) on Dart webdev.
+
+Also see the [Flutter community page.]({{site.flutter}}/community)
 

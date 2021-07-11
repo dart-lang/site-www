@@ -3,25 +3,32 @@
   <meta http-equiv="Content-Language" content="en_US" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
+  <!-- End Google Tag Manager -->
   {% assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
   <meta name="description" content="{{desc}}">
-  <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
+  <title>{% if page.short-title %}{{page.short-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
   <link href="{% asset touch-icon-iphone.png @path %}" rel="apple-touch-icon">
-  <link href="{% asset touch-icon-ipad.png @path %}" rel="apple-touch-icon" sizes="76x76">
-  <link href="{% asset touch-icon-iphone-retina.png @path %}" rel="apple-touch-icon" sizes="120x120">
-  <link href="{% asset touch-icon-ipad-retina.png @path %}" rel="apple-touch-icon" sizes="152x152">
+  <link href="{% asset touch-icon-ipad.png @path %}" rel="apple-touch-icon" sizes="152x152">
+  <link href="{% asset touch-icon-iphone-retina.png @path %}" rel="apple-touch-icon" sizes="180x180">
+  <link href="{% asset touch-icon-ipad-retina.png @path %}" rel="apple-touch-icon" sizes="167x167">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@dart_lang" />
-  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:title" content="{{page.title}}" />
   <meta name="twitter:description" content="{{desc}}" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:title" content="{{page.title}}" />
   <meta property="og:description" content="{{desc}}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   {% assign og_image_path = page.og_image | default: layout.og_image | default: '/assets/shared/dart-logo-for-shares.png' -%}
@@ -34,8 +41,7 @@
   <meta property="og:type" content="{{og_type}}" />
   {% endif -%}
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:300,400,500|Google+Sans+Display:400|Roboto:300,400,500,700|Roboto+Mono:300,400,700|Material+Icons" rel="stylesheet">
   {% asset main.css %}
   {% for css in page.css -%}
     <link href="{{css}}" rel="stylesheet" type="text/css">
@@ -45,4 +51,4 @@
     <script {% if js.defer %}defer{% endif %} src="{{js.url | default: js}}"></script>
   {% endfor -%}
   {% include analytics.html %}
-</head>
+ </head>

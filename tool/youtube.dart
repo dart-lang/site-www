@@ -5,7 +5,7 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 
-final String YT_PLAYLIST_URL = 'http://gdata.youtube.com/feeds/api/playlists/';
+const String YT_PLAYLIST_URL = 'http://gdata.youtube.com/feeds/api/playlists/';
 
 Future<Map> fetchPlaylist(String playlistId) {
   var uri = Uri.parse('$YT_PLAYLIST_URL$playlistId?alt=json');

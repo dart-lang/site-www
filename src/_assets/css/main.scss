@@ -2,7 +2,9 @@
 
 @import 'variables';
 @import 'colors';
+@import 'bootstrap_config';
 @import 'bootstrap';
+@import 'bootstrap_config_shared'; // FIXME(chalin): this should be before the bootstrap import; move to site file.
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';
@@ -10,13 +12,17 @@
 
 @import 'mixins';
 
+@import 'code';
 @import 'icons';
-@import 'code_pre';
 @import 'animations';
+@import 'header_shared';
 
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
+@import 'sidebar_shared';
+@import 'toc_shared';
+@import 'site_overrides';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
@@ -25,9 +31,15 @@ $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 /* -----------------------------------------
   Global
   ----------------------------------------- */
+html {
+  background-color: $site-color-header;
+}
+
 body {
- font-family: $font-family-base;
- font-size: $font-size-base;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: 400;
+  color: $site-color-body;
 }
 
 section {
@@ -35,13 +47,18 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
- font-family: $font-family-base;
+ font-family: $site-font-family-gsans;
  font-weight: 400;
  margin-top: 1.5em;
- color: $gray-dark;
+ color: $site-color-body;
 }
 
-h1, .h1 { font-size: $font-size-h1; margin-top: 0; margin-bottom: 0.67em;}
+h1, .h1 {
+  font-family: $site-font-family-gsans-display;
+  font-size: $font-size-h1;
+  margin-top: 0;
+  margin-bottom: 0.67em;
+}
 h2, .h2 { font-size: $font-size-h2;}
 h3, .h3 { font-size: $font-size-h3;}
 h4, .h4 { font-size: $font-size-h4;}
@@ -50,9 +67,17 @@ h6, .h6 { font-size: $font-size-h6;}
 
 p {}
 
+dt {
+  a {
+    font-weight: $font-weight-bold
+  }
+}
+
 a, button {
  text-decoration: none;
  color: $brand-primary;
+ font-family: $site-font-family-roboto;
+ font-weight: 400;
  &:visited {
    color: $brand-primary;
  }
@@ -64,7 +89,7 @@ a, button {
  &.external {
   &:after {
     content: $icon-external;
-    vertical-align: top;
+    vertical-align: baseline;
     margin-left: 2px;
     font-family: 'dart' !important;
     font-size: 11px;
@@ -72,6 +97,15 @@ a, button {
     opacity: 0.5;
   }
  }
+}
+// Disable template-generated external links.
+i.fa-external-link-alt {
+  a.external & {
+    display: none;
+  }
+  #sidenav & {
+    display: none;
+  }
 }
 
 form {
@@ -129,41 +163,6 @@ input, select {
   }
 }
 
-pre, pre.prettyprint {
-  padding: $content-padding;
-  background-color: $gray-light;
-  color: $blue;
-  position: relative;
-  border: none;
-  border-radius: 0;
-  &.dartpad {
-    // &:after {
-    //   content: 'Run';
-    //   position: absolute;
-    //   top: 10px;
-    //   right: 10px;
-    //   display: block;
-    //   z-index: 10;
-    //   background-color: $white-base;
-    //   background-image: asset_url('shared/dart/logo/default.svg');
-    //   background-size: 18px;
-    //   background-position: 7px center;
-    //   background-repeat: no-repeat;
-    //   padding: 5px 10px 5px 30px;
-    //   border-radius: 8px;
-    //   font-family: $font-family-base;
-    // }
-  }
-  .highlight {
-    background: #fffde7;
-    padding: 2px;
-  }
-}
-code {
-  background-color: transparent;
-  padding: 0;
-  color: darken($brand-primary, 20%);
-}
 img {
   max-width: 100%;
   height: auto;
@@ -176,38 +175,65 @@ img {
 // Structure
 
 #page-header {
-  position: fixed;
-  width: 100%;
-  height: 50px;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $gray-light;
   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-  z-index: 1030;
-}
-#page-content {
-  position: relative;
-  margin-top: 50px;
-  padding: 20px;
-  min-height: calc(100vh);
-  > article {
-    width: calc(100vw - 525px);
-    margin-left: 250px;
+
+  // override of shared/_header.scss
+  .site-header {
+    box-shadow: none;
+    .navbar {
+      .nav-link {
+        &.active {
+          &:after {
+            background-color: $site-color-card-link;
+          }
+        }
+      }
+    }
   }
 }
+#page-content {
+  min-height: calc(100vh);
+
+  body.homepage & {
+    padding: 0;
+    padding-bottom: 60px;
+  }
+
+  body.obsolete & {
+    border: 10px solid $alert-warning-bg;
+    border-top: none;
+  }
+
+  > article {
+    > .content {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: $top-content-padding;
+    }
+
+    @media(min-width: 1024px) {
+      margin-left: 226px;
+    }
+
+    @media(min-width: 1200px) {
+      margin-right: 226px;
+    }
+  }
+}
+
 #page-footer {
   position: relative;
-  color: $white-base;
-  font-weight: 300;
-  background-color: $brand-primary;
+  background-color: $site-color-footer;
+  color: $site-color-white;
+  font-weight: 400;
+  font-size: $font-size-small;
   z-index: 5;
   .brand {
     width: 120px;
   }
-  small {
-    display: block;
-    padding-right: 25px;
+  .licenses {
+    font-size: 10px;
   }
   h4 {
     color: #fff;
@@ -223,27 +249,36 @@ img {
   ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 0;
     li {
+      display: inline;
+      border-right: 1px solid $site-color-white;
+      padding: 0 1rem;
       a {
         color: #ffffff;
-        line-height: 16px;
+        font-family: $site-font-family-gsans;
+
         &:hover, &:focus, &:active {
           color: $gray-lighter;
         }
       }
+    }
+    li:last-child {
+      border: none;
     }
   }
 }
 
 // Banner
 .banner {
-  background-color: $blue-light;
+  background-color: #e7f8ff;
+  padding: 12px 0;
   text-align: center;
-  padding: .5em 0;
-  margin-bottom: 40px;
 }
 
 .banner__text {
+  font-family: $site-font-family-roboto;
+  font-size: 16px;
   font-weight: 300;
   margin-bottom: 0;
   padding-left: 1em;
@@ -272,9 +307,10 @@ img {
   z-index: 9999;
 }
 #mainnav {
+  background-color: $site-color-header;
+  color: $site-color-header-text;
   display: flex;
-  color: $gray-base;
-  $mainnav-entry-spacing: 15px;
+  $mainnav-entry-spacing: 12px;
   ul {
     margin: auto;
     margin-right: 0;
@@ -284,68 +320,29 @@ img {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
     }
     li {
       padding: 0 $mainnav-entry-spacing;
       a {
+        color: $site-color-header-text;
         display: inline-block;
-        padding: 0;
-        font-size: 16px;
-        line-height: 50px;
-        color: $gray-dark;
-        &:hover {
-          color: $brand-primary;
-        }
-      }
-      &.active {
-        a {
-          color: darken($gray-light, 15%);
-          cursor: default;
-          &:hover {
-            color: darken($gray-light, 15%);
-          }
+        padding: 0 6px;
+        font-size: $site-font-size-header;
+        font-weight: 400;
+        &:hover, &:active {
+          color: $site-color-card-link;
         }
       }
       &.searchfield {
-        line-height: 50px;
-        button {
-          position: absolute;
-          top: 1px;
-          right: 16px;
-          line-height: 50px;
-          height: 50px;
-          padding: 0;
-          border: none;
-          background: transparent;
-          i {
-            display: block;
-            height: 32px;
-            width: 40px;
-            line-height: 32px;
-            margin-top: 2px;
-            font-size: 24px;
-            background-color: transparent;
-            color: $gray-light;
-          }
-        }
-        &.active {
-          button {
-            i {
-              background-color: $gray-dark;
-              color: #ffffff;
-            }
-          }
-        }
+        position: relative;
       }
     }
   }
   .dropdown-menu {
-    background-color: $gray-light;
-    border-top-color: transparent;
-    color: $gray-base;
+    background-color: $site-color-header;
     margin-left: -$mainnav-entry-spacing;
-    a:hover, a:focus { background-color: transparent; }
+    a:hover, a:focus { background-color: rgba(255, 255, 255, 0.05); }
     a.active:after {
       font-family: 'Font Awesome 5 Free';
       content: '\f00c'; // fas fa-check
@@ -361,6 +358,8 @@ img {
     margin: 0 20px;
     overflow: hidden;
     line-height: 50px;
+    position: relative;
+    top: -1px;
   }
 }
 #subnav {
@@ -388,145 +387,240 @@ img {
 }
 // #footernav {}
 
-#sidenav {
-  position: relative;
-  width: 230px;
-  margin-right: 20px;
-  float: left;
-  overflow-x: hidden;
-  overflow-y: auto;
-  .content {
-    h4 {
-      margin-top: 0;
-      font-size: 18px;
-      font-weight: normal;
-      text-transform: uppercase;
-      &.active { font-weight: bold; }
-      a {
-        color: $default-link;
-        &:hover { color: $brand-secondary; }
-        &:active { color: darken($brand-secondary, 15%); }
-      }
-    }
-    ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      li {
-        position: relative;
-        margin-top: 10px;
-        line-height: 110%;
-        a:visited {
-          color: $brand-primary;
-        }
-        i {
-          display: inline-block;
-          margin-left: 4px;
-          font-size: 10px;
-          cursor: pointer;
-          transform-origin: center;
-          @include transition();
-          &:hover {
-            transform: rotate(90deg);
-          }
-        }
-        ul {
-          display: none;
-          height: 0;
-          opacity: 0;
-          @include transition(0.5s);
-          li {
-            padding-left: 15px;
-            a {
-              font-weight: 300;
-            }
-          }
-        }
-        &.active {
-          > a {
-            color: $gray-dark;
-            font-weight: bold;
-          }
-          i {
-            cursor: pointer;
-            transform: rotate(-90deg);
-          }
-          > ul {
-            display: block;
-            height: auto;
-            opacity: 1;
-          }
-        }
-      }
-    }
-    & > ul {
-      margin-bottom: 25px;
-    }
+// The left and right sidebar is dynamically repositioned as the user scrolls,
+// to follow both the header's bottom and the banner's bottom position.
+//
+// On page load this repositioning happens with a delay, which causes a "flash"
+// as it finally happens. The below rulesmatch the expected initial positions
+// to minimize the "flash".
+@mixin sidenav-top-position() {
+  top: $site-header-height;
+
+  body.show_banner & {
+    top: $site-header-with-banner-height;
   }
-  .brand {
-    display: none;
-    border-bottom: 1px solid $gray-light;
-    margin-top: -5px;
-    margin-bottom: 20px;
-    img {
-      width: 100px;
-      margin-bottom: 10px;
-    }
+
+  body.obsolete & {
+    top: $site-header-with-obsolete-height;
   }
-  &::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.26);
+
+  body.obsolete.show_banner & {
+    top: $site-header-with-banner-obsolete-height;
   }
 }
-#toc {
+
+#sidenav {
+  @include sidenav-top-position;
   position: fixed;
-  width: 225px;
-  right: 20px;
+  bottom: 0px;
+  left: 0px;
+  width: 226px;
+  border-right: 1px solid #d8d8d8;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 999;
-  .content {
-    padding-top: 20px;
-    padding-left: 0.75rem;
-    padding-bottom: 0;
-    padding-right: 0;
-  }
-  $border-width: 3px;
-  $padding: $font-size-base * .5;
-  ul.section-nav {
-    @include list-unstyled;
-    line-height: normal;
-    > li { padding-bottom: $padding; } // Extra space for top-level entries
-  }
-  // Nested toc entries:
-  li.toc-entry ul {
-    @include list-unstyled;
-    padding-top: $padding;
-    li {
-      font-size: $font-size-sm;
-      padding-left: $font-size-base;
-      // &:not(:last-child) { padding-bottom: $padding; } // Don't add extra space between top-level entries, or
-      padding-bottom: $padding;
+  z-index: 1;
+
+  .site-sidebar {
+    // override shared/_sidebar.scss
+    padding: $top-content-padding 30px $content-padding;
+
+    // override shared/_sidebar.scss
+    // the first-level nav block is indented on the same level as the headers
+    > .nav > .nav-item > .nav {
+      padding-left: 0;
     }
-  }
-  // Override BS defaults for .nav, etc.
-  .nav {
-    display: block;
+
     .nav-link {
-      padding: 0 !important;
+      font-family: $site-font-family-roboto;
+      font-weight: 400;
+      color: $site-color-body;
+      font-size: $font-size-small;
+
+      .open_menu & {
+        padding-bottom: 21px;
+      }
+
+      // center text and arrow button
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      // copy of shared/_sidebar.scss
+      // @mixin collapsable() is not reachable from here, this is a copy of that
+      &.collapsable {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &::after {
+          content: 'keyboard_arrow_down';
+          font: $site-font-icon;
+          transition: transform .25s ease-in-out;
+        }
+
+        &:not(.collapsed) {
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      // override shared/_sidebar.scss
+      &.collapsable::before {
+        display: none;
+      }
+
+      &.external::after {
+        display:none;
+      }
+
+      &[data-toggle] {
+        &:not(.collapsable) {
+          font-family: $site-font-family-gsans;
+          font-weight: 400;
+          font-size: 18px;
+        }
+
+        &.active {
+          color: #555555;
+        }
+      }
+
       &.active {
-        color: $gray-dark;
-        &:before {
-          @include md-icon-content('chevron_right'); // alt: '〉 '; // '▷ '; // '◾ '; // '▸ '; // '● ';
-          margin-left: -0.9rem; // We tune the margin for top-level entries below.
+        color: $site-color-sidebar-active;
+        font-weight: 400;
+      }
+    }
+
+    .navbar-nav {
+      display: none;
+
+      @media(max-width: 1024px) {
+        display: block;
+        margin-bottom: 1rem;
+
+        a.nav-link {
+          font-family: $site-font-family-gsans;
+          font-weight: 400;
+          font-size: 20px;
+
+          &.active {
+            color: $site-color-body
+          }
         }
       }
     }
   }
-  ul.section-nav.nav > li > .nav-link:before { margin-left: -1rem; }
+}
+
+.site-toc--button__toggle {
+  display: none;
+}
+
+#site-toc--inline {
+  background: #f5f5f7;
+  padding: 15px 30px;
+  margin-bottom: 1rem;
+
+  .site-toc__title {
+    font-size: 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+
+  &.toc-collapsible {
+    > .section-nav {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    .site-toc--inline__toggle {
+      float: right;
+    }
+
+    .toc-toggle-down {
+      display: none;
+    }
+
+    &.toc-collapsed {
+      .section-nav {
+        max-height: 72px;
+        overflow: hidden;
+      }
+
+      .toc-toggle-up {
+        display: none;
+      }
+
+      .toc-toggle-down {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// The table-of-content section on the right side of the screen.
+#site-toc--side {
+  @include sidenav-top-position;
+
+  position: fixed;
+  bottom: 0;
+  min-width: 226px;
+  max-width: 246px;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  z-index: 999;
+
+  // override shared/_toc.scss
+  &.site-toc {
+    padding: $top-content-padding 20px $content-padding 30px;
+  }
+
+  // Override BS defaults for .nav, etc.
+  .site-toc__title {
+    color: $site-color-body;
+    font-size: 18px;
+  }
+  .toc-entry {
+    padding-bottom: 0.5rem;
+
+    // Indent subsequent lines
+    margin-left: 1rem;
+    text-indent: -1rem;
+
+    & .toc-entry {
+      margin-left: 0;
+    }
+  }
+
+  .nav {
+    display: block;
+    padding-top: 0.5rem;
+    .nav-link {
+      color: $site-color-body;
+      font-size: $font-size-small;
+      font-weight: 400;
+      padding: 1px 0;
+      &.active {
+        color: $site-color-sidebar-active;
+
+        // removing the '>' before the menu item
+        // override shared/_toc.scss
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  body.hide_toc & {
+    display: none;
+  }
 }
 
 #site-search-results {
@@ -548,26 +642,73 @@ img {
   }
 }
 
-
-/* -----------------------------------------
- Dartpad
- ----------------------------------------- */
-
-#run-dartpad {
-  position: relative;
-  padding: 15px 0;
-  background: $gray-light;
-  border-top: 1px solid $gray;
-  z-index: 5;
-}
-
 /* -----------------------------------------
  Search
  ----------------------------------------- */
-#q {
-  position: relative;
-  width: 225px;
-  background-color: #ffffff;
+.site-header__search {
+  &::before {
+    color: $gray;
+    z-index: 1;
+  }
+
+  #mainnav & {
+    // Override of _header.scss
+    border: 0;
+
+    .open_menu & {
+      visibility: hidden;
+    }
+  }
+
+  #sidenav & {
+    display: none;
+    border-bottom: 1px solid $site-color-light-grey;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 $site-nav-mobile-side-padding;
+    order: -1;
+
+    // Override of _header.scss
+    &::before {
+      left: 1.5rem;
+    }
+  }
+}
+
+.site-header__searchfield {
+  border: 0;
+  box-shadow: none;
+
+  #mainnav & {
+    background-color: $site-color-header;
+    color: $site-color-header-text;
+    font-size: $site-font-size-header;
+
+    // Override of _header.scss
+    @include media-breakpoint-down(sm) {
+      font-size: inherit;
+      height: inherit;
+
+      width: 24px !important;
+      &:focus {
+        width: 220px !important;
+      }
+    }
+  }
+
+  #sidenav & {
+    font-size: $font-size-lg;
+    height: 66px;
+    width: 100%;
+
+    // Override of _header.scss
+    @include media-breakpoint-up(md) {
+      width: 100% !important;
+      &:focus {
+        width: 100% !important;
+      }
+    }
+  }
 }
 
 input.gsc-search-button {
@@ -603,12 +744,6 @@ input.gsc-search-button {
 $icon-size: 24px;
 $anchor-padding: 4px;
 
-// Push # link targets clear of page header.
-@mixin header-clearance {
-  margin-top: -60px;
-  padding-top: 60px;
-}
-
 main .content {
   h1,
   h2,
@@ -617,8 +752,6 @@ main .content {
   h5,
   h6 {
     .anchor {
-      @include header-clearance;
-
       box-sizing: border-box;
       float: left;
       margin-left: -($icon-size + $anchor-padding);
@@ -643,13 +776,15 @@ main .content {
       }
     }
 
-    // Invisible pre-element to avoid modifying styles on headings.
-    &[id]::before {
-      @include header-clearance;
-
-      content: "";
-      display: block;
+    // Push # link targets clear of page header.
+    &[id] {
+      scroll-margin: 60px;
     }
+  }
+
+  // Push # link targets clear of page header.
+  a[id] {
+    scroll-margin: 60px;
   }
 }
 
@@ -666,51 +801,6 @@ main .content {
   padding: 5px 10px;
   color: $blue;
   border-radius: 8px;
-}
-
-.codesample__open-in-dartpad {
-  display: block;
-  position: absolute;
-  width: auto;
-  z-index: 10;
-  padding: 5px 10px 5px 35px;
-  top: 35px;
-  right: 38px;
-  background-color: $gray;
-  color: $gray-base;
-
-  font-weight: normal;
-  font-size: $font-size-base * 0.8;
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-base * 0.7;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $font-size-base * 0.8;
-  }
-
-  &.top {
-    top: 0;
-  }
-  &:visited, &:active {
-    color: $gray-base;
-  }
-  &:hover {
-    background-color: darken($gray, 10%);
-    color: $white-base;
-  }
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 18px;
-    height: 18px;
-    background-image: asset_url('shared/dart/logo/default.svg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
 }
 
 // Columns
@@ -769,12 +859,31 @@ main .content {
   margin: 15px;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $gray-light;
+  background-color: #294058;
+  border-radius: 0;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
-  text-align: center;
+  color: $site-color-card-text;
+
   h1, h2, h3, h4, h5, h6 {
+    font-family: $site-font-family-gsans;
     margin-top: 0;
+    a {
+      color: $site-color-card-text;
+      font-family: $site-font-family-gsans;
+    }
+    .octicon-link {
+      display: none !important;
+    }
   }
+
+  h3 {
+    font-size: $font-size-h2;
+  }
+
+  a {
+    color: $site-color-card-link;
+  }
+
   &.narrow { width: 250px; }
 }
 
@@ -783,11 +892,17 @@ ul.card-grid { padding-left: 0; }
 
 // Platform logos
 li.card {
+  color: inherit;
   background-color: transparent;
   box-shadow: none;
   .logo {
     display: block;
     padding-bottom: $font-size-base;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      color: inherit;
+    }
   }
 }
 
@@ -814,69 +929,31 @@ li.card {
  }
 }
 
-@mixin dart-style-for($kind, $bg-color, $msg) {
+@mixin dart-style-for($kind, $bg-color, $fg-color, $msg) {
   .#{$kind} {
     background-color: $bg-color !important;
+    position: relative;
     &:after {
-      font-family: $font-family-base;
+      font-family: $font-family-monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
       content: $msg;
       position: absolute;
-      top: 0;
-      right: $font-size-base / 4;
-      color: darken($bg-color, 25%);
+      top: 6px;
+      left: 8px;
+      color: $fg-color;
     }
   }
 }
 
-// TODO: reclaim and use the class names good and bad (rather than good-style and bad-style):
-@include dart-style-for(good-style, $alert-success-bg, 'good');
-@include dart-style-for(bad-style, $alert-danger-bg, 'bad');
+@include dart-style-for(good, $alert-success-bg, $alert-success-fg, 'good');
+@include dart-style-for(bad, $alert-danger-bg, $alert-danger-fg, 'bad');
 
-@include dart-style-for(passes-sa, $alert-success-bg, '\2714  static analysis: success');
-@include dart-style-for(fails-sa, $alert-danger-bg, '\2717  static analysis: error/warning');
+@include dart-style-for(passes-sa, $alert-success-bg, $alert-success-fg, '\2714  static analysis: success');
+@include dart-style-for(fails-sa, $alert-danger-bg, $alert-danger-fg, '\2717  static analysis: error/warning');
 
-@include dart-style-for(runtime-success, $alert-success-bg, '\2714  runtime: success');
-@include dart-style-for(runtime-fail, $alert-danger-bg, '\2717  runtime: error');
-
-// Deprecated, use good-style
-.good {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-success;
-  &:after {
-    content: 'good';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-success-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
-
-// Deprecated, use bad-style
-.bad {
-  position: relative;
-  padding:10px;
-  margin-bottom: 11px;
-  @extend .alert-danger;
-  &:after {
-    content: 'bad';
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: darken($alert-danger-bg, 25%);
-  }
-  pre {
-    margin-bottom: 0;
-    background-color: transparent;
-  }
-}
+@include dart-style-for(runtime-success, $alert-success-bg, $alert-success-fg, '\2714  runtime: success');
+@include dart-style-for(runtime-fail, $alert-danger-bg, $alert-danger-fg, '\2717  runtime: error');
 
 .muted {
   color: $gray;
@@ -990,7 +1067,9 @@ h3.popover-header {
 .table {
   width: 100%;
   @extend .table-striped;
-  @extend .table-bordered;
+
+  // override .table-striped macro, remove top border
+  td { border-top: none; }
 }
 
 .table-wrapper {
@@ -998,12 +1077,16 @@ h3.popover-header {
 }
 
 .alert {
-  padding: $content-padding;
   border: none;
+  border-radius: 0;
+  color: $site-color-body;
+  margin-top: 32px;
+  padding: 30px 30px;
+
   pre, code {
     background-color: transparent;
   }
-  p {
+  p:last-child {
     margin-bottom: 0;
   }
   &.alert-success {
@@ -1085,9 +1168,13 @@ ul.nav-list {
 #page-github-links {
   float: right;
   .btn {
+    color: $site-color-body;
     $padding-x: $btn-padding-x / 2;
     padding-left: $padding-x;
     padding-right: $padding-x;
+  }
+  .fa-sm {
+    font-size: 14px;
   }
 }
 
@@ -1099,10 +1186,6 @@ ul.nav-list {
 body.homepage {
   #sidenav {
     display: none;
-  }
-  #page-content {
-    padding: 0;
-    padding-bottom: 60px;
   }
   #code-sample-section {
     padding-top: 30px;
@@ -1128,99 +1211,107 @@ body.error {
   #sidenav {
     display: none;
   }
-}
 
-// Page States
-body.hide_toc {
-  #page-content {
-    > article {
-      width: calc(100vw - 300px);
+  .banner {
+    display: none;
+  }
+
+  background-color: #132030;
+  background-image: asset_url('404-bg-pattern.jpg');
+  color: #8d9399;
+
+  @media(min-width: 1600px) {
+    background-size: cover;
+  }
+
+  h1 {
+    color: white;
+    font-family: $site-font-family-gsans-display;
+    font-size: 100px;
+    margin: 0px auto;
+  }
+
+  h2 {
+    color: white;
+    font-family: $site-font-family-gsans;
+    font-size: 24px;
+    margin: 8px auto 16px;
+  }
+
+  #in-content-search {
+    input[type="search"] {
+      display: inline-block;
+      background: #35404d;
+      color: white;
+      font-size: 20px;
+      padding: 10px 40px;
+      border-radius: 30px;
+      height: 70px;
+      line-height: 70px;
+      width: 100%;
+      max-width: 880px;
+      margin: 0px auto 88px;
     }
   }
-  #toc {
-    display: none;
-    right: -250px;
+
+  .content {
+    a {
+      color: $site-color-card-link;
+    }
   }
 }
-body.fixed_nav {
+
+// Top-level Page
+body.top {
   #sidenav {
-    top: 40px;
-    position: fixed;
-    left: 20px;
+    display: none;
   }
+  #site-toc--inline { display: block; }
+  #site-toc--side { display: none; }
 }
 
 body.obsolete {
   #page-header {
     .alert {
-      position: relative;
-      top: 5px;
       margin: 0;
-      h4 { margin-bottom: 0; }
+      h4 {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
     }
-  }
-  #page-content {
-    margin-top: 120px;
-    border: 10px solid $alert-warning-bg;
   }
 }
 /* -----------------------------------------
   Media Queries
  ----------------------------------------- */
 
-@media(max-width: 1200px) {
-  #toc {
-    display: none;
-  }
-  #page-content {
-    > article {
-      width: calc(100vw - 270px);
-    }
-  }
-}
-
 @media(max-width: 1024px) {
 
   #menu-toggle {
     display: inline-block;
   }
-  #page-content {
-    > article {
-      width: calc(100vw - 40px);
-      margin: 0 auto;
-    }
-  }
 
   #sidenav {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: calc(100vw - 64px);
-    max-width: 290px;
-    height: 100%;
-    max-height: none !important;
+    top: 0 !important;
+    max-height: 100vh !important;
+    bottom: 0;
+    left: -100vw;
+    min-width: 300px;
+    max-width: calc(100vw - 60px);
     background: #fff;
     z-index: 9999;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
     @include transition(left, .5s);
-    .brand {
-      display: block;
+
+    .site-header__search {
+      display: flex;
+    }
+
+    .nav-link {
+      white-space: nowrap;
     }
   }
 
-  body.hide_toc {
-    #page-content {
-      > article {
-        width: 100%;
-      }
-    }
-  }
-  body.fixed_nav {
-    #sidenav {
-      left: -300px;
-      top: 0;
-    }
-  }
   body.open_menu {
     &:before {
       content: '';
@@ -1263,7 +1354,7 @@ body.obsolete {
   .break-60,
   .break-70,
   .break-80,
-  .break-90, {
+  .break-90 {
     width: 100% !important;
   }
 }
@@ -1285,4 +1376,29 @@ body.obsolete {
   }
 }
 
+// FIXME: move into _code.scss once #2008 is merged
+.prettify-filename {
+  position: relative;
+  text-align: right;
+  margin-right: $font-size-base;
+  margin-top: -$font-size-base * 2.5;
+  margin-bottom: $font-size-base;
+  opacity: 0.5;
+}
+
+blockquote {
+  border: 1px solid #b3b3b3;
+  border-width: 1px 0px;
+  margin: 20px;
+  padding: 10px 20px 0 20px;
+}
+
+.searchbar {
+  > * {
+    max-width: 640px;
+    width:100%
+  }
+}
+
 @import '_overwrites';
+@import '_dash';

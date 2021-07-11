@@ -5,14 +5,30 @@ documented in the [Examples][] page of the [site-shared docs][]. Consult that
 page for general information about project file organization, testing, [CI][],
 and more. Site-www specific information is given below.
 
-## How do I run the analyzer on all examples
+## How do I run the analyzer on an example?
 
-```
-cd examples
-dartanalyzer .
+Change directory into the example's folder and run Dart commands there. For
+example:
+
+```console
+$ cd examples/misc
+$ pub get
+$ dartanalyzer analysis_options.yaml .
 ```
 
 ## How do I run example tests?
+
+Change directory into the example's folder and run Dart commands there. For
+example:
+
+```console
+$ cd examples/misc
+$ pub get
+$ pub run test  # Run VM tests
+$ pub run test -p chrome  # Run browser tests
+```
+
+## How do I run the analyzer and tests for all examples?
 
 To run both the analyzer and tests for all examples use:
 
@@ -20,19 +36,23 @@ To run both the analyzer and tests for all examples use:
 ./tool/analyze-and-test-examples.sh
 ```
 
-If you get a warning about test failures or analysis errors,
-you might need to update one or more analyzer results files
-(for example, `examples/misc/analyzer-2-results.txt`).
+If you get a warning about test failures or analysis errors, you might need to
+update one or more analyzer results files. For example, update
+`examples/misc/analyzer-results.txt`, if the change applies to both stable and
+dev Dart releases. Otherwise, update only the release specific file: either
+`examples/misc/analyzer-results-stable.txt` or
+`examples/misc/analyzer-results-dev.txt`.
 
 ## How do I update the analyzer results files?
 
-To update an analyzer results files:
+To update the analyzer results files:
 
-1. Run `./tool/analyze-and-test-examples.sh  --save-logs`.
-2. Look at the diffs for the results files.
-3. If the diffs look good but some comments are missing,
+1. Run `pub upgrade` to get the latest version of the pedantic package.
+1. Run `./tool/analyze-and-test-examples.sh --save-logs`.
+1. Look at the diffs for the results files.
+1. If the diffs look good but some comments are missing,
    add back the comments that are still relevant.
-4. Run `./tool/analyze-and-test-examples.sh` to confirm that
+1. Run `./tool/analyze-and-test-examples.sh` to confirm that
    your changes are good.
 
 **Pro tip:** You can embed in a doc page specific line(s) from an analyzer
@@ -78,7 +98,7 @@ are in `lib`. Larger examples are in `lib`, and their tests (if any) under `test
 ## Why not test all the things?!?
 
 Not all code excerpts are tested because some are just small fragments with
-little or no useful behavior, and others illustrate features that would required
+little or no useful behavior, and others illustrate features that would require
 significant test scaffolding to be written and the effort isn't worth the small
 gain.
 

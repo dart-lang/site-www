@@ -1,6 +1,5 @@
 exclude:
   # These are copied from the main _config.yml.
-  - diagrams
   - appengine
   - tests
   - site

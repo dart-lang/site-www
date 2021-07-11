@@ -1,6 +1,0 @@
-name: optional_types_article
-version: 0.0.1
-description: Example showing a warning from the static checker
-
-gist: https://gist.github.com/Sfshaza/f046152d323ca12aadfa
-dartpad: https://dartpad.dartlang.org/f046152d323ca12aadfa

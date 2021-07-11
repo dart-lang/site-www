@@ -1,6 +1,0 @@
-name:  json_object_code
-description:  A sample application
-
-dependencies:
-  json_object: ">=1.0.11 <2.0.0"
-  js: any

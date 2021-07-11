@@ -1,7 +1,6 @@
 // NOTE: Declarations in this file are analyzed but not tested.
-// ignore_for_file: annotate_overrides
 
-import 'package:dartlang_examples_util/ellipsis.dart';
+import 'package:examples_util/ellipsis.dart';
 
 // #docregion Animal
 class Animal {
@@ -12,14 +11,20 @@ class Animal {
 
 // #docregion HoneyBadger
 class HoneyBadger extends Animal {
+  @override
   void chase(Animal a) {/* ... */}
+
+  @override
   HoneyBadger get parent => ellipsis();
 }
 // #enddocregion HoneyBadger
 
 // #docregion chase-Object
 class HoneyBadger1 extends Animal {
+  @override
   void chase(Object a) {/* ... */}
+
+  @override
   Animal get parent => ellipsis();
 }
 // #enddocregion chase-Object

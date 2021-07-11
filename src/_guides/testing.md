@@ -1,14 +1,13 @@
 ---
-layout: default
-title: "Dart Testing"
-description: "How to test Flutter, Web, and VM Applications."
+title: Dart testing
+description: How to test Flutter, web, and VM applications.
 ---
 
 Software testing, an important part of app development, helps verify that
 your app is working correctly before you release it.
 This Dart testing guide outlines several types of testing, and points
 you to where you can learn how to test your
-[mobile]({{site.flutter}}), [web]({{site.webdev}}),
+[mobile,]({{site.flutter}}) [web](/web),
 and [server-side apps and scripts](/server).
 
 <aside class="alert alert-info" markdown="1">
@@ -54,7 +53,7 @@ Although your tests partly depend on the platform your code is intended
 for&mdash;Flutter, the web, or server-side, for example&mdash;the
 following packages are useful across Dart platforms:
 
-* [package:test]({{site.pub}}/packages/test)<br>
+* [package:test]({{site.pub-pkg}}/test)<br>
   Provides a standard way of writing tests in Dart. You can use the test
   package to:
     * Write single tests, or groups of tests.
@@ -69,7 +68,7 @@ following packages are useful across Dart platforms:
       multiple files or an entire package.
 
 
-* [package:mockito]({{site.pub}}/packages/mockito)<br>
+* [package:mockito]({{site.pub-pkg}}/mockito)<br>
   Provides a way to create
   [mock objects,](https://en.wikipedia.org/wiki/Mock_object)
   easily configured for use in fixed scenarios, and to verify
@@ -77,7 +76,7 @@ following packages are useful across Dart platforms:
   expected ways.
   For an example that uses both package:test and package:mockito,
   see the [International Space Station API library and its unit
-  tests](https://github.com/dart-lang/mockito/tree/master/test/example/iss)
+  tests](https://github.com/dart-lang/mockito/tree/master/example/iss)
   in the [mockito package](https://github.com/dart-lang/mockito).
 
 ## Flutter testing
@@ -91,8 +90,8 @@ Use the following resources to learn more about testing Flutter apps:
 * [flutter_driver]({{site.flutter_api}}/flutter/flutter_driver/flutter_driver-library.html)<br>
   A testing library for testing Flutter applications on real devices and
   emulators (in a separate process).
-* [flutter/examples/flutter_gallery](https://github.com/flutter/flutter/tree/master/examples/flutter_gallery)<br>
-  Tests for the Flutter gallery example.
+* [flutter_gallery](https://github.com/flutter/gallery)<br>
+  Source code and tests for the Flutter gallery example.
 * [flutter/dev/manual_tests](https://github.com/flutter/flutter/tree/master/dev/manual_tests)<br>
   Many examples of tests in the Flutter SDK.
 
@@ -101,12 +100,12 @@ Use the following resources to learn more about testing Flutter apps:
 Use the following resources to learn more about testing Dart web
 applications:
 
-* [Testing]({{site.webdev}}/angular/guide/testing)(a page
+* [Testing]({{site.angulardart}}/guide/testing)(a page
   in the AngularDart guide)<br>
-  How to use the [angular_test]({{site.pub}}/packages/angular_test)
+  How to use the [angular_test]({{site.pub-pkg}}/angular_test)
   package to test AngularDart components and subsystems.
   <!-- More pages are coming! -->
-* [package:webdriver]({{site.pub}}/packages/webdriver)<br>
+* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
   A Dart package for interfacing with
   [WebDriver](https://www.w3.org/TR/webdriver/) servers.
 
@@ -118,40 +117,33 @@ debugging Dart applications.
 ### IDE
 
 When it comes to debugging, your first line of defense is your IDE.
-Dart plugins exist for many commonly used IDEs.
+Dart plugins exist for many [commonly used IDEs](/tools/#ides-and-editors).
 
-If you don't have a preferred IDE, try
-[WebStorm]({{site.webdev}}/tools/webstorm) for web apps, or
-[IntelliJ](/tools/jetbrains-plugin) for Flutter.
-The JetBrains products have a full-featured Dart debugger, and WebStorm and
-IntelliJ Ultimate include additional built-in support for running test suites.
+### Dart DevTools
 
-### Observatory
+Dart DevTools is a suite of performance tools for Dart and Flutter.
+For details, see the
+[Dart DevTools documentation.](/tools/dart-devtools/)
 
-Observatory is a browser-based tool for profiling and debugging your
-Dart applications. You can learn more using the following resources:
-
-* [Observatory: A Profiler for Dart
-  Apps](https://dart-lang.github.io/observatory/)
-* [Dart
-  Observatory]({{site.flutter}}/testing/debugging#dart-observatory-statement-level-single-stepping-debugger-and-profiler),
-  a section in [Debugging Flutter Apps]({{site.flutter}}/testing//debugging)
-* [Dart VM
-  Observatory]({{site.group}}/forum/#!forum/observatory-discuss)
-  discussion group
 
 ### Continuous integration
 
 Consider using continuous integration (CI) to build your project
 and run its tests after every commit. Two CI services for GitHub are
-[Travis CI](https://travis-ci.org/) (for OS X and Unix) and
-[AppVeyor](https://www.appveyor.com/) (for Windows).
+[GitHub Actions](https://github.com/features/actions) and
+[AppVeyor](https://www.appveyor.com/).
 
-Travis has built-in support for Dart projects.
-Learn more at the following links:
+Learn more about GitHub Actions:
 
-* [Building a Dart Project](https://docs.travis-ci.com/user/languages/dart)
-  covers how to configure Travis for Dart projects
-* The [shelf](https://github.com/dart-lang/shelf/blob/master/.travis.yml)
-  example uses the `dart_task` tag (in `.travis.yml`) to configure
-  the build.
+* [Testing Dart packages with GitHub Actions][gha-article]
+  demonstrates a simple workflow for using GitHub Actions to test
+  a Flutter app or Dart package.
+* Many packages provided by the Dart team use GitHub Actions.
+  For an example, see
+  [`test-package.yml`][markdown-ci] in the markdown package's repo.
+  To see how that repo migrated from Travis CI to GitHub Actions,
+  look at [PR #353](https://github.com/dart-lang/markdown/pull/353).
+
+[gha-article]: https://poetryincode.dev/testing-dart-packages-with-github-actions
+[markdown-ci]: https://github.com/dart-lang/markdown/blob/master/.github/workflows/test-package.yml
+

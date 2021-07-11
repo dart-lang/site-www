@@ -1,0 +1,41 @@
+// FIXME(chalin): remove the corresponding import from main.scss before uncommenting the following line:
+// @import 'bootstrap_config_shared';
+
+$enable-shadows: true;
+
+//== Breadcrumbs
+
+$breadcrumb-divider: 'chevron_right';
+$breadcrumb-item-padding: .25rem;
+
+//== Card
+
+$card-border-width: 0;
+// $card-border-color: rgba(0,0,0,0);
+
+//== Code
+
+$code-color: #247777;
+$code-font-size: 100%;
+$kbd-font-size: 0.75rem;
+
+//== Dropdown
+
+$dropdown-divider-bg: #bbbbbb;
+$dropdown-link-active-color: transparent;
+$dropdown-link-active-bg: transparent;
+
+//== Headings
+
+// The following are needed only because _bootstrap_config_shared is not imported in the right order:
+// https://github.com/dart-lang/site-www/issues/2007
+$headings-font-family: $site-font-family-gsans;
+$headings-font-weight: 400;
+
+// Move to _bootstrap_config_shared once #2007 is fixed:
+$headings-color: $site-color-body;
+
+//== Popovers
+
+$popover-font-size: $font-size-base;
+$popover-border-color: rgba(0,0,0,0);

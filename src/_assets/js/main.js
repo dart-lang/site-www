@@ -1,26 +1,26 @@
-//= require vendor/jquery-3.3.1
+//= require vendor/jquery-3.6.0
 //= require popper
 //= require bootstrap
 //= require _utilities
-//= require _search
 //= require _os-tabs
 //= require vendor/code-prettify/prettify
 //= require vendor/code-prettify/lang-css
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
-var condensedHeaderHeight = 50;
-var tocToSidenavDiff = 50;
-
 function fixNav() {
   var t = $(document).scrollTop(),
     f = $("#page-footer").offset().top,
+    hh = $("#page-header").height(),
+    banner = $(".banner"),
+    bb = banner.length > 0 ? banner[0].getBoundingClientRect().bottom : hh,
+    headerHeight = Math.max(hh, bb),
     h = window.innerHeight,
     // space between scroll position and top of the footer
     whenAtBottom = f - t,
-    mh = Math.min(h, whenAtBottom) - condensedHeaderHeight;
-  $("#sidenav").css({ maxHeight: mh });
-  $("#toc").css({ maxHeight: mh - tocToSidenavDiff });
+    mh = Math.min(h, whenAtBottom) - hh;
+  $("#sidenav").css({ top: headerHeight, maxHeight: mh });
+  $("#site-toc--side").css({ top: headerHeight, maxHeight: mh });
 }
 
 // When a user scrolls to 50px add class condensed-header to body
@@ -36,24 +36,12 @@ $(window).scroll(function () {
 
 function adjustToc() {
   // Adjustments to the jekyll-toc TOC.
-  var tocWrapper = $('#toc');
+  var tocWrapper = $('#site-toc--side');
   $(tocWrapper).find('header').click(function() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   })
 
-  // TODO: consider doing most of the HTML TOC manipulation statically (maybe requiring a jekyll-toc adaptor plugin)
-  // Bootstrap 4's ScrollSpy works only for .nav or .list-group,
-  // with items and link classes set too. Add the classes.
-  var toc = $(tocWrapper).find('ul.section-nav');
-  $(toc).addClass('nav');
-
-  var ul = $(toc).find('ul');
-  $(ul).addClass('nav');
-  var li = $(toc).find('.toc-entry');
-  $(li).addClass('nav-item');
-  $(li).find('a').addClass('nav-link');
-
-  $('body').scrollspy({ offset: 100, target: '#toc' });
+  $('body').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 $(function () {
@@ -127,15 +115,97 @@ $(function () {
     $("body").toggleClass('open_menu');
   });
 
-  $("#page-content").on('click', function () {
-    if ($('body').hasClass('open_menu')) {
-      $('body').removeClass("open_menu");
-    }
-  });
+  var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
+  for (var i = 0; i < topLevelMenuTogglers.length; i++) {
+    $(topLevelMenuTogglers[i]).on('click', function (e) {
+      if ($('body').hasClass('open_menu')) {
+        e.preventDefault();
+        $('body').removeClass("open_menu");
+      }
+    });
+  }
 
   $(window).smartresize(fixNav());
 
   // Add external link indicators
   $('a[href^="http"], a[target="_blank"]').not('.no-automatic-external').addClass('external');
 
+  // Collapsible inline TOC expand/collapse
+  $(".site-toc--inline__toggle").on('click', function () {
+    var root = $("#site-toc--inline");
+    root.toggleClass('toc-collapsed');
+  });
+
+  // Initialize the video on the homepage, if it exists.
+  initVideoModal();
 });
+
+
+function switchBanner(galleryName) {
+    $('#' + galleryName + ' .selector li').removeClass('highlight');
+    $(this).addClass('highlight');
+    $('.' + galleryName).attr('src', $(this).data('banner'));
+}
+
+function initVideoModal() {
+    let videoModalObject = $('[data-video-modal]');
+    var player;
+
+    function onPlayerReady() {
+        videoModalObject.on('shown.bs.modal', function (event) {
+            if (player) {
+                let videoId = event.relatedTarget.dataset.video;
+                player.loadVideoById(videoId);
+                player.playVideo();
+            }
+        });
+
+        videoModalObject.on('hide.bs.modal', function (event) {
+            if (player) {
+                player.stopVideo();
+            }
+        });
+    }
+
+    if (videoModalObject.length > 0) {
+        // there is a video modal in the DOM, load the YouTube API
+        let tag = document.createElement('script');
+        tag.src = 'https://youtube.com/iframe_api';
+        let firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = function () {
+            player = new YT.Player('video-player', {
+                videoId: '5F-6n_2XWR8',
+                events: {
+                    "onReady": onPlayerReady,
+                },
+            });
+        };
+    }
+}
+
+$(document).ready(function () {
+        function createGallery() {
+            for (var i = 0; i < arguments.length; i++) {
+                const galleryName = arguments[i];
+                const selector = $('#' + galleryName + ' .selector li');
+                selector.hover(function () {
+                    switchBanner.call(this, galleryName);
+                });
+
+                selector.focus(function () {
+                    switchBanner.call(this, galleryName);
+                });
+            }
+        }
+
+        createGallery(
+            'galleryOne',
+            'galleryTwo',
+            'galleryThree',
+            'galleryFour',
+            'galleryFive',
+            'gallerySix');
+    }
+);

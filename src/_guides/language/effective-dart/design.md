@@ -7,11 +7,9 @@ prevpage:
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
+<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
-
-* TOC
-{:toc}
 
 ## Names
 
@@ -24,8 +22,8 @@ Use the same name for the same thing, throughout your code. If a precedent
 already exists outside your API that users are likely to know, follow that
 precedent.
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
 toSomething()     // Consistent with Iterable's toList().
@@ -33,8 +31,8 @@ asSomething()     // Consistent with List's asMap().
 Point             // A familiar concept.
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
 wrappedAsSomething() // Inconsistent with asX() precedent.
@@ -55,17 +53,17 @@ abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 
 [caps]: /guides/language/effective-dart/style#identifiers
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 pageCount
 buildRectangles
 IOStream
 HttpRequest
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
-numPages    // "num" is an abbreviation of number(of)
+{:.bad}
+{% prettify dart tag=pre+code %}
+numPages    // "Num" is an abbreviation of "number (of)".
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
@@ -77,16 +75,16 @@ HypertextTransferProtocolRequest
 The last word should be the most descriptive of what the thing is. You can
 prefix it with other words, such as adjectives, to further describe the thing.
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
 ChunkedConversionSink // A ConversionSink that's chunked.
 CssFontFaceRule       // A rule for font faces in CSS.
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
 RuleFontFaceCss           // Not a CSS.
@@ -98,9 +96,9 @@ RuleFontFaceCss           // Not a CSS.
 When in doubt about naming, write some code that uses your API, and try to read
 it like a sentence.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (code-like-prose)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (code-like-prose)"?>
+{% prettify dart tag=pre+code %}
 // "If errors is empty..."
 if (errors.isEmpty) ...
 
@@ -111,9 +109,9 @@ subscription.cancel();
 monsters.where((monster) => monster.hasClaws);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
+{% prettify dart tag=pre+code %}
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
 
@@ -128,9 +126,9 @@ It's helpful to try out your API and see how it "reads" when used in code, but
 you can go too far. It's not helpful to add articles and other parts of speech
 to force your names to *literally* read like a grammatically correct sentence.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose-overdone)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
+{% prettify dart tag=pre+code %}
 if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
@@ -143,15 +141,15 @@ The reader's focus is on *what* the property is. If the user cares more about
 *how* a property is determined, then it should probably be a method with a
 verb phrase name.
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 list.deleteItems
 {% endprettify %}
 
@@ -161,7 +159,7 @@ list.deleteItems
 Boolean names are often used as conditions in control flow, so you want a name
 that reads well there. Compare:
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (window.closeable) ...  // Adjective.
 if (window.canClose) ...   // Verb.
 {% endprettify %}
@@ -189,8 +187,8 @@ object to do something, because accessing a property doesn't change the object.
 (If the property *does* modify the object in a meaningful way, it should be a
 method.)
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 isEmpty
 hasElements
 canClose
@@ -199,8 +197,8 @@ canShowPopup
 hasShownPopup
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
 closeable     // Sounds like an interface.
@@ -209,13 +207,11 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. Input properties in [Angular][]
-components sometimes use imperative verbs for boolean setters because these
-setters are invoked in templates, not from other Dart code.
+**Exception:** Input properties in [Angular][] components sometimes use
+imperative verbs for boolean setters because these setters are invoked in
+templates, not from other Dart code.
 
-[angular]: {{site.webdev}}/angular
-</aside>
+[angular]: {{site.angulardart}}
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
@@ -224,9 +220,9 @@ This refines the previous rule. For named parameters that are boolean, the name
 is often just as clear without the verb, and the code reads better at the call
 site.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (omit-verb-for-bool-param)"?>
+{% prettify dart tag=pre+code %}
 Isolate.spawn(entryPoint, message, paused: false);
 var copy = List.from(elements, growable: true);
 var regExp = RegExp(pattern, caseSensitive: false);
@@ -248,31 +244,35 @@ including negation operators. If your property itself reads like a negation,
 it's harder for the reader to mentally perform the double negation and
 understand what the code means.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (positive)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (positive)"?>
+{% prettify dart tag=pre+code %}
 if (socket.isConnected && database.hasData) {
   socket.write(database.read());
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (positive)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (positive)"?>
+{% prettify dart tag=pre+code %}
 if (!socket.isDisconnected && !database.isEmpty) {
   socket.write(database.read());
 }
 {% endprettify %}
 
-An exception to this rule is properties where the negative form is what users
-overwhelmingly need to use. Choosing the positive case would force them to
-negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property.
-
 For some properties, there is no obvious positive form. Is a document that has
 been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
 that is less likely to be negated by users or has the shorter name.
+
+**Exception:** With some properties, the negative form is what users
+overwhelmingly need to use. Choosing the positive case would force them to
+negate the property with `!` everywhere. Instead, it may be better to use the
+negative case for that property.
+
+**Exception:** Properties accessed in [Angular][]
+templates are often better in the negative form because the property is used to
+*hide* or *disable* content.
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -285,10 +285,10 @@ produce some output, or talk to the outside world.
 Those kinds of members should be named using an imperative verb phrase that
 clarifies the work the member performs.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)"?>
-{% prettify dart %}
-list.add("element");
+{:.good}
+<?code-excerpt "design_good.dart (verb-for-func-with-side-effect)"?>
+{% prettify dart tag=pre+code %}
+list.add('element');
 queue.removeFirst();
 window.refresh();
 {% endprettify %}
@@ -300,7 +300,7 @@ This way, an invocation reads like a command to do that work.
 
 Other callable members have few side effects but return a useful result to the
 caller. If the member needs no parameters to do that, it should generally be a
-getter. But, sometimes a logical "property" needs some parameters. For example,
+getter. But sometimes a logical "property" needs some parameters. For example,
 `elementAt()` returns a piece of data from a collection, but it needs a
 parameter to know *which* piece of data to return.
 
@@ -308,9 +308,9 @@ This means the member is *syntactically* a method, but *conceptually* it is a
 property, and should be named as such using a phrase that describes *what* the
 member returns.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (noun-for-func-returning-value)"?>
+{% prettify dart tag=pre+code %}
 var element = list.elementAt(3);
 var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
@@ -331,9 +331,9 @@ file I/O. In cases like this, where you want the caller to think about the work
 the member is doing, give the member a verb phrase name that describes that
 work.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-work)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (verb-for-func-with-work)"?>
+{% prettify dart tag=pre+code %}
 var table = database.downloadData();
 var packageVersions = packageGraph.solveConstraints();
 {% endprettify %}
@@ -369,7 +369,7 @@ previous guidelines state, either:
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
 
-{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
 
 A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
@@ -378,9 +378,9 @@ named starting with `to` followed by the kind of result.
 
 If you define a conversion method, it's helpful to follow that convention.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (to___)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (to___)"?>
+{% prettify dart tag=pre+code %}
 list.toSet();
 stackTrace.toString();
 dateTime.toLocal();
@@ -389,7 +389,7 @@ dateTime.toLocal();
 
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object.
 
-{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
@@ -398,9 +398,9 @@ original. Later changes to the original object are reflected in the view.
 
 The core library convention for you to follow is `as___()`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (as___)"?>
+{% prettify dart tag=pre+code %}
 var map = table.asMap();
 var list = bytes.asFloat32List();
 var future = subscription.asFuture();
@@ -412,15 +412,15 @@ var future = subscription.asFuture();
 The user will see the argument at the callsite, so it usually doesn't help
 readability to also refer to it in the name itself.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-desc-param-in-func)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (avoid-desc-param-in-func)"?>
+{% prettify dart tag=pre+code %}
 list.add(element);
 map.remove(key);
 {% endprettify %}
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 list.addElement(element)
 map.removeKey(key)
 {% endprettify %}
@@ -428,9 +428,9 @@ map.removeKey(key)
 However, it can be useful to mention a parameter to disambiguate it from other
 similarly-named methods that take different types:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (desc-param-in-func-ok)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (desc-param-in-func-ok)"?>
+{% prettify dart tag=pre+code %}
 map.containsKey(key);
 map.containsValue(value);
 {% endprettify %}
@@ -444,9 +444,9 @@ The conventions are:
 
 *   `E` for the **element** type in a collection:
 
-    {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
-    {% prettify dart %}
+    {:.good}
+    <?code-excerpt "design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
+    {% prettify dart tag=pre+code %}
     class IterableBase<E> {}
     class List<E> {}
     class HashSet<E> {}
@@ -456,9 +456,9 @@ The conventions are:
 *   `K` and `V` for the **key** and **value** types in an associative
     collection:
 
-    {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
-    {% prettify dart %}
+    {:.good}
+    <?code-excerpt "design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
+    {% prettify dart tag=pre+code %}
     class Map<K, V> {}
     class Multimap<K, V> {}
     class MapEntry<K, V> {}
@@ -468,9 +468,9 @@ The conventions are:
     methods. This isn't common, but appears in typedefs sometimes and in classes
     that implement the visitor pattern:
 
-    {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-r)"?>
-    {% prettify dart %}
+    {:.good}
+    <?code-excerpt "design_good.dart (type-parameter-r)"?>
+    {% prettify dart tag=pre+code %}
     abstract class ExpressionVisitor<R> {
       R visitBinary(BinaryExpression node);
       R visitLiteral(LiteralExpression node);
@@ -483,9 +483,9 @@ The conventions are:
     are multiple letters here to allow nesting without shadowing a surrounding
     name. For example:
 
-    {:.good-style}
-    <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-t)"?>
-    {% prettify dart %}
+    {:.good}
+    <?code-excerpt "design_good.dart (type-parameter-t)"?>
+    {% prettify dart tag=pre+code %}
     class Future<T> {
       Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
     }
@@ -497,9 +497,9 @@ The conventions are:
 If none of the above cases are a good fit, then either another single-letter
 mnemonic name or a descriptive name is fine:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-graph)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (type-parameter-graph)"?>
+{% prettify dart tag=pre+code %}
 class Graph<N, E> {
   final List<N> nodes = [];
   final List<E> edges = [];
@@ -551,7 +551,7 @@ a huge monolithic library, just that you are allowed to place more than one
 class in a single library.
 
 
-## Classes
+## Classes and mixins
 
 Dart is a "pure" object-oriented language in that all objects are instances of
 classes. But Dart does not require all code to be defined inside a
@@ -560,7 +560,7 @@ you can in a procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
 
-{% include linter-rule.html rule="one_member_abstracts" %}
+{% include linter-rule-mention.html rule="one_member_abstracts" %}
 
 Unlike Java, Dart has first-class functions, closures, and a nice light syntax
 for using them. If all you need is something like a callback, just use a
@@ -568,15 +568,15 @@ function. If you're defining a class and it only has a single abstract member
 with a meaningless name like `call` or `invoke`, there is a good chance you
 just want a function.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (one-member-abstract-class)"?>
+{% prettify dart tag=pre+code %}
 typedef Predicate<E> = bool Function(E element);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (one-member-abstract-class)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (one-member-abstract-class)"?>
+{% prettify dart tag=pre+code %}
 abstract class Predicate<E> {
   bool test(E element);
 }
@@ -585,7 +585,7 @@ abstract class Predicate<E> {
 
 ### AVOID defining a class that contains only static members.
 
-{% include linter-rule.html rule="avoid_classes_with_only_static_members" %}
+{% include linter-rule-mention.html rule="avoid_classes_with_only_static_members" %}
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
@@ -602,9 +602,9 @@ If a function or variable isn't logically tied to a class, put it at the top
 level. If you're worried about name collisions, give it a more precise name or
 move it to a separate library that can be imported with a prefix.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (class-only-static)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (class-only-static)"?>
+{% prettify dart tag=pre+code %}
 DateTime mostRecent(List<DateTime> dates) {
   return dates.reduce((a, b) => a.isAfter(b) ? a : b);
 }
@@ -612,9 +612,9 @@ DateTime mostRecent(List<DateTime> dates) {
 const _favoriteMammal = 'weasel';
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (class-only-static)"?>
+{% prettify dart tag=pre+code %}
 class DateUtils {
   static DateTime mostRecent(List<DateTime> dates) {
     return dates.reduce((a, b) => a.isAfter(b) ? a : b);
@@ -632,9 +632,9 @@ instantiated is a code smell.
 However, this isn't a hard rule. With constants and enum-like types, it may be
 natural to group them in a class.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static-exception)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_bad.dart (class-only-static-exception)"?>
+{% prettify dart tag=pre+code %}
 class Color {
   static const red = '#f00';
   static const green = '#0f0';
@@ -682,9 +682,9 @@ of that new method.
 
 Library maintainers need the ability to evolve existing classes without breaking
 users. If you treat every class like it exposes an interface that users are free
-implement, then changing those classes becomes very difficult. That difficulty
-in turn means the libraries you rely on are slower to grow and adapt to new
-needs.
+to implement, then changing those classes becomes very difficult. That
+difficulty in turn means the libraries you rely on are slower to grow and adapt
+to new needs.
 
 To give the authors of the classes you use more leeway, avoid implementing
 implicit interfaces except for classes that are clearly intended to be
@@ -697,25 +697,56 @@ If your class can be used as an interface, mention that in the class's doc
 comment.
 
 
-### AVOID mixing in a class that isn't intended to be a mixin.
+### DO use `mixin` to define a mixin type.
 
-If a constructor is added to a class that previously did not define any, that
-breaks any other classes that are mixing it in. This is a seemingly innocuous
-change in the class, and the restrictions around mixins aren't widely known.
-It's likely an author may add a constructor without realizing it will break your
-class that's mixing it in.
+{% include linter-rule-mention.html rule="prefer_mixin" %}
 
-Like with subclassing, this means a class needs to be deliberate about whether
-or not it wants to allow being used as a mixin. If the class doesn't have a doc
-comment or an obvious name like `IterableMixin`, you should assume you cannot
-mix in the class.
+Dart originally didn't have a separate syntax for declaring a class intended to
+be mixed in to other classes. Instead, any class that met certain restrictions
+(no non-default constructor, no superclass, etc.) could be used as a mixin. This
+was confusing because the author of the class might not have intended it to be
+mixed in.
+
+Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
+created using that can *only* be used as mixins, and the language also ensures
+that your mixin stays within the restrictions. When defining a new type that you
+intend to be used as a mixin, use this syntax.
+
+{:.good}
+<?code-excerpt "design_good.dart (mixin)"?>
+{% prettify dart tag=pre+code %}
+mixin ClickableMixin implements Control {
+  bool _isDown = false;
+
+  void click();
+
+  void mouseDown() {
+    _isDown = true;
+  }
+
+  void mouseUp() {
+    if (_isDown) click();
+    _isDown = false;
+  }
+}
+{% endprettify %}
+
+You might still encounter older code using `class` to define mixins, but the new
+syntax is preferred.
 
 
-### DO document if your class supports being used as a mixin.
+### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
-Mention in the class's doc comment whether the class can or must be used as a
-mixin. If your class is designed for use only as a mixin, then consider adding
-`Mixin` to the end of the class name.
+{% include linter-rule-mention.html rule="prefer_mixin" %}
+
+For compatibility, Dart still allows you to mix in classes that aren't defined
+using `mixin`. However, that's risky. If the author of the class doesn't intend
+the class to be used as a mixin, they might change the class in a way that
+breaks the mixin restrictions. For example, if they add a constructor, your
+class will break.
+
+If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
+assume you cannot mix in the class if it isn't declared using `mixin`.
 
 
 ## Constructors
@@ -739,7 +770,7 @@ Note, however, that a `const` constructor is a commitment in your public API. If
 you later change the constructor to non-`const`, it will break users that are
 calling it in constant expressions. If you don't want to commit to that, don't
 make it `const`. In practice, `const` constructors are most useful for simple,
-immutable data record sorts of classes.
+immutable value-like types.
 
 
 ## Members
@@ -748,21 +779,27 @@ A member belongs to an object and can be either methods or instance variables.
 
 ### PREFER making fields and top-level variables `final`.
 
-{% include linter-rule.html rule="prefer_final_fields" %}
+{% include linter-rule-mention.html rule="prefer_final_fields" %}
 
 State that is not *mutable*&mdash;that does not change over time&mdash;is
 easier for programmers to reason about. Classes and libraries that minimize the
 amount of mutable state they work with tend to be easier to maintain.
-
 Of course, it is often useful to have mutable data. But, if you don't need it,
 your default should be to make fields and top-level variables `final` when you
 can.
 
+Sometimes an instance field doesn't change after it has been initialized, but
+can't be initialized until after the instance is constructed. For example, it
+may need to reference `this` or some other field on the instance. In cases like
+that, consider making the field `late final`. When you do, you may also be able
+to [initialize the field at its declaration][init at decl].
+
+[init at decl]: /guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
 ### DO use getters for operations that conceptually access properties.
 
-Deciding when a member should be a getter versus a method is a challenging,
-subtle, but important part of good API design, hence this very long guideline.
+Deciding when a member should be a getter versus a method is a subtle but
+important part of good API design, hence this very long guideline.
 Some other language's cultures shy away from getters. They only use them when
 the operation is almost exactly like a field&mdash;it does a miniscule amount of
 calculation on state that lives entirely on the object. Anything more complex or
@@ -792,8 +829,8 @@ as the caller knows. That implies:
     of work, you may want to draw their attention to that by making it a method
     whose name is a verb describing what it does.
 
-    {:.bad-style}
-    {% prettify dart %}
+    {:.bad}
+    {% prettify dart tag=pre+code %}
     connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
     {% endprettify %}
@@ -808,8 +845,8 @@ as the caller knows. That implies:
     store their result, write to a cache, log stuff, etc. As long as the caller
     doesn't *care* about the side effect, it's probably fine.
 
-    {:.bad-style}
-    {% prettify dart %}
+    {:.bad}
+    {% prettify dart tag=pre+code %}
     stdout.newline; // Produces output.
     list.clear; // Modifies object.
     {% endprettify %}
@@ -830,8 +867,8 @@ as the caller knows. That implies:
     In other words, the result value should be the same *in the aspects that the
     caller cares about.*
 
-    {:.bad-style}
-    {% prettify dart %}
+    {:.bad}
+    {% prettify dart tag=pre+code %}
     DateTime.now; // New result each time.
     {% endprettify %}
 
@@ -848,8 +885,8 @@ like few members would survive that gauntlet, but surprisingly many do. Many
 operations just do some computation on some state and most of those can and
 should be getters.
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 rectangle.area;
 collection.isEmpty;
 button.canShow;
@@ -859,7 +896,7 @@ dataSet.minimumValue;
 
 ### DO use setters for operations that conceptually change properties.
 
-{% include linter-rule.html rule="use_setters_to_change_properties" %}
+{% include linter-rule-mention.html rule="use_setters_to_change_properties" %}
 
 Deciding between a setter versus a method is similar to deciding between a
 getter versus a method. In both cases, the operation should be "field-like".
@@ -877,8 +914,8 @@ For a setter, "field-like" means:
     That's fine. But from the caller's perspective, it appears that the second
     call does nothing.
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 rectangle.width = 3;
 button.visible = false;
 {% endprettify %}
@@ -886,7 +923,7 @@ button.visible = false;
 
 ### DON'T define a setter without a corresponding getter.
 
-{% include linter-rule.html rule="avoid_setters_without_getters" %}
+{% include linter-rule-mention.html rule="avoid_setters_without_getters" %}
 
 Users think of getters and setters as visible properties of an object. A
 "dropbox" property that can be written to but not seen is confusing and
@@ -894,54 +931,98 @@ confounds their intuition about how properties work. For example, a setter
 without a getter means you can use `=` to modify it, but not `+=`.
 
 This guideline does *not* mean you should add a getter just to permit the setter
-you want to add. Object's shouldn't generally expose more state than they need
+you want to add. Objects shouldn't generally expose more state than they need
 to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. An [Angular][] component class may expose
-setters that are invoked from a template to initialize the component. Often,
-these setters are not intended to be invoked from Dart code and don't need a
-corresponding getter. (If they are used from Dart code, they *should* have a
-getter.)
+**Exception:** An [Angular][] component class may expose setters that are
+invoked from a template to initialize the component. Often, these setters are
+not intended to be invoked from Dart code and don't need a corresponding getter.
+(If they are used from Dart code, they *should* have a getter.)
 
-[angular]: {{site.webdev}}/angular
-</aside>
+[angular]: {{site.angulardart}}
 
-### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
 
-{% include linter-rule.html rule="avoid_returning_null" %}
+### AVOID using runtime type tests to fake overloading.
 
-Even though all types are nullable in Dart, users assume those types almost
-never contain `null`, and the lowercase names encourage a "Java primitive"
-mindset.
+It's common for an API to support similar operations
+on different types of parameters.
+To emphasize the similarity, some languages support *overloading*,
+which lets you define multiple methods
+that have the same name but different parameter lists.
+At compile time, the compiler looks at the actual argument types to determine
+which method to call.
 
-It can be occasionally useful to have a "nullable primitive" type in your API,
-for example to indicate the absence of a value for some key in a map, but these
-should be rare.
+Dart doesn't have overloading.
+You can define an API that looks like overloading
+by defining a single method and then using `is` type tests
+inside the body to look at the runtime types of the arguments and perform the
+appropriate behavior.
+However, faking overloading this way turns a *compile time* method selection
+into a choice that happens at *runtime*.
 
-If you do have a member of this type that may return `null`, document it very
-clearly, including the conditions under which `null` will be returned.
+If callers usually know which type they have
+and which specific operation they want,
+it's better to define separate methods with different names
+to let callers select the right operation.
+This gives better static type checking and faster performance
+since it avoids any runtime type tests.
+
+However, if users might have an object of an unknown type
+and *want* the API to internally use `is` to pick the right operation,
+then a single method where the parameter is a supertype
+of all of the supported types might be reasonable.
+
+
+### AVOID public `late final` fields without initializers.
+
+Unlike other `final` fields, a `late final` field without an initializer *does*
+define a setter. If that field is public, then the setter is public. This is
+rarely what you want. Fields are usually marked `late` so that they can be
+initialized *internally* at some point in the instance's lifetime, often inside
+the constructor body.
+
+Unless you *do* want users to call the setter, it's better to pick one of the
+following solutions:
+
+* Don't use `late`.
+* Use `late`, but initialize the `late` field at its declaration.
+* Use `late`, but make the `late` field private and define a public getter for it.
+
+
+### AVOID returning nullable `Future`, `Stream`, and collection types.
+
+When an API returns a container type, it has two ways to indicate the absence of
+data: It can return an empty container or it can return `null`. Users generally
+assume and prefer that you use an empty container to indicate "no data". That
+way, they have a real object that they can call methods on like `isEmpty`.
+
+To indicate that your API has no data to provide, prefer returning an empty
+collection, a non-nullable future of a nullable type, or a stream that doesn't
+emit any values.
+
+**Exception:** If returning `null` *means something different* from yielding an
+empty container, it might make sense to use a nullable type.
 
 
 ### AVOID returning `this` from methods just to enable a fluent interface.
 
-{% include linter-rule.html rule="avoid_returning_this" %}
+{% include linter-rule-mention.html rule="avoid_returning_this" %}
 
 Method cascades are a better solution for chaining method calls.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (cascades)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (cascades)"?>
+{% prettify dart tag=pre+code %}
 var buffer = StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (cascades)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (cascades)"?>
+{% prettify dart tag=pre+code %}
 var buffer = StringBuffer()
     .write('one')
     .write('two')
@@ -961,10 +1042,10 @@ types". You can type annotate a variable, parameter, field, or return type. In
 the following example, `bool` and `String` are type annotations. They hang off
 the static declarative structure of the code and aren't "executed" at runtime.
 
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-declaration)"?>
-{% prettify dart %}
+<?code-excerpt "design_good.dart (annotate-declaration)"?>
+{% prettify dart tag=pre+code %}
 bool isEmpty(String parameter) {
-  bool result = parameter.length == 0;
+  bool result = parameter.isEmpty;
   return result;
 }
 {% endprettify %}
@@ -975,8 +1056,8 @@ and `int` are type arguments on generic invocations. Even though they are types,
 they are first-class entities that get reified and passed to the invocation at
 runtime.
 
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-invocation)"?>
-{% prettify dart %}
+<?code-excerpt "design_good.dart (annotate-invocation)"?>
+{% prettify dart tag=pre+code %}
 var lists = <num>[1, 2];
 lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
@@ -985,8 +1066,8 @@ lists.cast<int>();
 We stress the "generic invocation" part here, because type arguments can *also*
 appear in type annotations:
 
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-type-arg)"?>
-{% prettify dart %}
+<?code-excerpt "design_good.dart (annotate-type-arg)"?>
+{% prettify dart tag=pre+code %}
 List<int> ints = [1, 2];
 {% endprettify %}
 
@@ -995,21 +1076,28 @@ generic invocation. You usually don't need to worry about this distinction, but
 in a couple of places, we have different guidance for when a type is used in a
 generic invocation as opposed to a type annotation.
 
-In most places, Dart allows you to omit a type annotation and infers a type for
-you based on the nearby context, or defaults to the `dynamic` type. The fact
-that Dart has both type inference and a `dynamic` type leads to some confusion
-about what it means to say code is "untyped". Does that mean the code is
-dynamically typed, or that you didn't *write* the type? To avoid that confusion,
-we avoid saying "untyped" and instead use the following terminology:
+#### Type inference
+
+Type annotations are optional in Dart.
+If you omit one, Dart tries to infer a type
+based on the nearby context. Sometimes it doesn't have enough information to
+infer a complete type. When that happens, Dart sometimes reports an error, but
+usually silently fills in any missing parts with `dynamic`. The implicit
+`dynamic` leads to code that *looks* inferred and safe, but actually disables
+type checking completely. The rules below avoid that by requiring types when
+inference fails.
+
+The fact that Dart has both type inference and a `dynamic` type leads to some
+confusion about what it means to say code is "untyped". Does that mean the code
+is dynamically typed, or that you didn't *write* the type? To avoid that
+confusion, we avoid saying "untyped" and instead use the following terminology:
 
 *   If the code is *type annotated*, the type was explicitly written in the
     code.
 
 *   If the code is *inferred*, no type annotation was written, and Dart
     successfully figured out the type on its own. Inference can fail, in which
-    case the guidelines don't consider that inferred. In some places, inference
-    failure is a static error. In others, Dart uses `dynamic` as the fallback
-    type.
+    case the guidelines don't consider that inferred.
 
 *   If the code is *dynamic*, then its static type is the special `dynamic`
     type. Code can be explicitly annotated `dynamic` or it can be inferred.
@@ -1018,66 +1106,90 @@ In other words, whether some code is annotated or inferred is orthogonal to
 whether it is `dynamic` or some other type.
 
 Inference is a powerful tool to spare you the effort of writing and reading
-types that are obvious or uninteresting. Omitting types in obvious cases also
-draws the reader's attention to explicit types when those types are important,
-for things like casts.
+types that are obvious or uninteresting. It keeps the reader's attention focused
+on the behavior of the code itself. Explicit types are also a key part of
+robust, maintainable code. They define the static shape of an API and create
+boundaries to document and enforce what kinds of values are allowed to reach
+different parts of the program.
 
-Explicit types are also a key part of robust, maintainable code. They define the
-static shape of an API. They document and enforce what kinds of values are
-allowed to reach different parts of the program.
+Of course, inference isn't magic. Sometimes inference succeeds and selects a
+type, but it's not the type you want. The common case is inferring an overly
+precise type from a variable's initializer when you intend to assign values of
+other types to the variable later. In those cases, you have to write the type
+explicitly.
 
 The guidelines here strike the best balance we've found between brevity and
-explicitness, flexibility and safety. When deciding which types to write, you
-need to answer two questions:
+control, flexibility and safety. There are specific guidelines to cover all the
+various cases, but the rough summary is:
 
-* Which types should I write because I think it's best for them to be visible in
-  the code?
-* Which types should I write because inference can't provide them for me?
+*   Do annotate when inference doesn't have enough context, even when `dynamic`
+    is the type you want.
 
-These guidelines help you answer the first question:
+*   Don't annotate locals and generic invocations unless you need to.
 
-* [PREFER type annotating public fields and top-level variables if the type isn't obvious.](#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)
-* [CONSIDER type annotating private fields and top-level variables if the type isn't obvious.](#consider-type-annotating-private-fields-and-top-level-variables-if-the-type-isnt-obvious)
-* [AVOID type annotating initialized local variables.](#avoid-type-annotating-initialized-local-variables)
-* [AVOID annotating inferred parameter types on function expressions.](#avoid-annotating-inferred-parameter-types-on-function-expressions)
-* [AVOID redundant type arguments on generic invocations.](#avoid-redundant-type-arguments-on-generic-invocations)
-
-These cover the second:
-
-* [DO annotate when Dart infers the wrong type.](#do-annotate-when-dart-infers-the-wrong-type)
-* [PREFER annotating with `dynamic` instead of letting inference fail.](#prefer-annotating-with-dynamic-instead-of-letting-inference-fail)
-
-The remaining guidelines cover other more specific questions around types.
+*   Prefer annotating top-level variables and fields unless the initializer
+    makes the type obvious.
 
 
-### PREFER type annotating public fields and top-level variables if the type isn't obvious.
+### DO type annotate variables without initializers.
 
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+{% include linter-rule-mention.html rule="prefer_typing_uninitialized_variables" %}
+
+The type of a variable&mdash;top-level, local, static field, or instance
+field&mdash;can often be inferred from its initializer. However, if there is no
+initializer, inference fails.
+
+{:.good}
+<?code-excerpt "design_good.dart (uninitialized-local)"?>
+{% prettify dart tag=pre+code %}
+List<AstNode> parameters;
+if (node is Constructor) {
+  parameters = node.signature;
+} else if (node is Method) {
+  parameters = node.parameters;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (uninitialized-local)"?>
+{% prettify dart tag=pre+code %}
+var parameters;
+if (node is Constructor) {
+  parameters = node.signature;
+} else if (node is Method) {
+  parameters = node.parameters;
+}
+{% endprettify %}
+
+
+### DO type annotate fields and top-level variables if the type isn't obvious.
+
+{% include linter-rule-mention.html rule="type_annotate_public_apis" %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
 type error. Consider:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (type_annotate_public_apis)"?>
+{% prettify dart tag=pre+code %}
 install(id, destination) => ...
 {% endprettify %}
 
 Here, it's unclear what `id` is. A string? And what is `destination`? A string
 or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (type_annotate_public_apis)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (type_annotate_public_apis)"?>
+{% prettify dart tag=pre+code %}
 Future<bool> install(PackageId id, String destination) => ...
 {% endprettify %}
 
 In some cases, though, the type is so obvious that writing it is pointless:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (inferred)"?>
+{% prettify dart tag=pre+code %}
 const screenWidth = 640; // Inferred as int.
 {% endprettify %}
 
@@ -1090,40 +1202,32 @@ const screenWidth = 640; // Inferred as int.
 * Factory methods like `int.parse()`, `Future.wait()`, etc. that readers are
   expected to be familiar with.
 
+If you think the initializer expression&mdash;whatever it is&mdash;is
+sufficiently clear, then you may omit the annotation. But if you think
+annotating helps make the code clearer, then add one.
+
 When in doubt, add a type annotation. Even when a type is obvious, you may still
 wish to explicitly annotate. If the inferred type relies on values or
 declarations from other libraries, you may want to type annotate *your*
 declaration so that a change to that other library doesn't silently change the
 type of your own API without you realizing.
 
-
-### CONSIDER type annotating private fields and top-level variables if the type isn't obvious.
-
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
-
-Type annotations on your public declarations help *users* of your code. Types on
-private members help *maintainers*. The scope of a private declaration is
-smaller and those who need to know the type of that declaration are also more
-likely to be familiar with the surrounding code. That makes it reasonable to
-lean more heavily on inference and omit types for private declarations, which is
-why this guideline is softer than the previous one.
-
-If you think the initializer expression&mdash;whatever it is&mdash;is
-sufficiently clear, then you may omit the annotation. But if you think
-annotating helps make the code clearer, then add one.
+This rule applies to both public and private declarations. Just as type
+annotations on APIs help *users* of your code, types on private members help
+*maintainers*.
 
 
-### AVOID type annotating initialized local variables.
+### DON'T redundantly type annotate initialized local variables.
 
-{% include linter-rule.html rule="omit_local_variable_types" %}
+{% include linter-rule-mention.html rule="omit_local_variable_types" %}
 
 Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
 more important *name* of the variable and its initialized value.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-types-on-locals)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (omit-types-on-locals)"?>
+{% prettify dart tag=pre+code %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   var desserts = <List<Ingredient>>[];
   for (var recipe in cookbook) {
@@ -1136,9 +1240,9 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (omit-types-on-locals)"?>
+{% prettify dart tag=pre+code %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   List<List<Ingredient>> desserts = <List<Ingredient>>[];
   for (List<Ingredient> recipe in cookbook) {
@@ -1151,154 +1255,303 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 {% endprettify %}
 
-If the local variable doesn't have an initializer, then its type can't be
-inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
-`dynamic` and lose the benefits of static type checking.
+Sometimes the inferred type is not the type you want the variable to have. For
+example, you may intend to assign values of other types later. In that case,
+annotate the variable with the type you want.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
-{% prettify dart %}
-List<AstNode> parameters;
-if (node is Constructor) {
-  parameters = node.signature;
-} else if (node is Method) {
-  parameters = node.parameters;
+{:.good}
+<?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
+{% prettify dart tag=pre+code %}
+Widget build(BuildContext context) {
+  [!Widget!] result = Text('You won!');
+  if (applyPadding) {
+    result = Padding(padding: EdgeInsets.all(8.0), child: result);
+  }
+  return result;
 }
 {% endprettify %}
 
 
-### AVOID annotating inferred parameter types on function expressions.
+### DO annotate return types on function declarations.
+
+Dart doesn't generally infer the return type of a function declaration from its body,
+unlike some other languages. That means you should write a type annotation for
+the return type yourself.
+
+{:.good}
+<?code-excerpt "design_good.dart (annotate-return-types)"?>
+{% prettify dart tag=pre+code %}
+String makeGreeting(String who) {
+  return 'Hello, $who!';
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (annotate-return-types)"?>
+{% prettify dart tag=pre+code %}
+makeGreeting(String who) {
+  return 'Hello, $who!';
+}
+{% endprettify %}
+
+Note that this guideline only applies to *named* function declarations:
+top-level functions, methods, and local functions. Anonymous function
+expressions infer a return type from their body. In fact, the syntax doesn't
+even allow a return type annotation.
+
+
+### DO annotate parameter types on function declarations.
+
+A function's parameter list determines its boundary to the outside world.
+Annotating parameter types makes that boundary well defined.
+Note that even though default parameter values look like variable initializers,
+Dart doesn't infer an optional parameter's type from its default value.
+
+{:.good}
+<?code-excerpt "design_good.dart (annotate-parameters)"?>
+{% prettify dart tag=pre+code %}
+void sayRepeatedly(String message, {int count = 2}) {
+  for (var i = 0; i < count; i++) {
+    print(message);
+  }
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (annotate-parameters)" replace="/\(count as num\)/count/g"?>
+{% prettify dart tag=pre+code %}
+void sayRepeatedly(message, {count = 2}) {
+  for (var i = 0; i < count; i++) {
+    print(message);
+  }
+}
+{% endprettify %}
+
+**Exception:** Function expressions and initializing formals have different type annotation conventions, as described in the next two guidelines.
+
+
+### DON'T annotate inferred parameter types on function expressions.
+
+{% include linter-rule-mention.html rule="avoid_types_on_closure_parameters" %}
 
 Anonymous functions are almost always immediately passed to a method taking a
-callback of some type. (If the function isn't used immediately, it's usually
-worth making it a named declaration.) When a function expression is created in a
-typed context, Dart tries to infer the function's parameter types based on the
-expected type.
-
+callback of some type.
+When a function expression is created in a typed context,
+Dart tries to infer the function's parameter types based on the expected type.
 For example, when you pass a function expression to `Iterable.map()`, your
 function's parameter type is inferred based on the type of callback that `map()`
 expects:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (func-expr-no-param-type)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (func-expr-no-param-type)"?>
+{% prettify dart tag=pre+code %}
 var names = people.map((person) => person.name);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (func-expr-no-param-type)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (func-expr-no-param-type)"?>
+{% prettify dart tag=pre+code %}
 var names = people.map((Person person) => person.name);
 {% endprettify %}
 
-In rare cases, the surrounding context is not precise enough to provide a type
-for one or more of the function's parameters. In those cases, you may need to
-annotate.
+If the language is able to infer the type you want for a parameter in a function
+expression, then don't annotate. In rare cases, the surrounding
+context isn't precise enough to provide a type for one or more of the
+function's parameters. In those cases, you may need to annotate.
+(If the function isn't used immediately, it's usually better to
+[make it a named declaration][named local].)
 
+[named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
-### AVOID redundant type arguments on generic invocations.
+### DON'T type annotate initializing formals.
 
-A type argument is redundant if inference would fill in the same type. If the
-invocation is the initializer for a type-annotated variable, or is an argument
-to a function, then inference usually fills in the type for you:
+{% include linter-rule-mention.html rule="type_init_formals" %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
-{% prettify dart %}
-Set<String> things = Set();
-{% endprettify %}
+If a constructor parameter is using `this.` to initialize a field, then the type
+of the parameter is inferred to have the same type as the field.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
-{% prettify dart %}
-Set<String> things = Set<String>();
-{% endprettify %}
-
-Here, the type annotation on the variable is used to infer the type argument of
-constructor call in the initializer.
-
-In other contexts, there isn't enough information to infer the type and then you
-should write the type argument:
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
-{% prettify dart %}
-var things = Set<String>();
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
-{% prettify dart %}
-var things = Set();
-{% endprettify %}
-
-Here, since the variable has no type annotation, there isn't enough context to
-determine what kind of `Set` to create, so the type argument should be provided
-explicitly.
-
-
-### DO annotate when Dart infers the wrong type.
-
-Sometimes, Dart infers a type, but not the type you want. For example, you may
-want a variable's type to be a supertype of the initializer's type so that you
-can later assign some other sibling type to the variable:
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
-{% prettify dart %}
-num highScore(List<num> scores) {
-  num highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
+{:.good}
+<?code-excerpt "design_good.dart (dont-type-init-formals)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  double x, y;
+  Point(this.x, this.y);
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
-{% prettify dart %}
-num highScore(List<num> scores) {
-  var highest = 0;
-  for (var score in scores) {
-    if (score > highest) highest = score;
-  }
-  return highest;
+{:.bad}
+<?code-excerpt "design_bad.dart (dont-type-init-formals)"?>
+{% prettify dart tag=pre+code %}
+class Point {
+  double x, y;
+  Point(double this.x, double this.y);
 }
 {% endprettify %}
 
-Here, if `scores` contains doubles, like `[1.2]`, then the assignment to
-`highest` will fail since its inferred type is `int`, not `num`. In these cases,
-explicit annotations make sense.
+
+### DO write type arguments on generic invocations that aren't inferred.
+
+Dart is pretty smart about inferring type arguments in generic invocations. It
+looks at the expected type where the expression occurs and the types of
+values being passed to the invocation. However, sometimes those aren't enough to
+fully determine a type argument. In that case, write the entire type argument
+list explicitly.
+
+{:.good}
+<?code-excerpt "design_good.dart (non-inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+var playerScores = <String, int>{};
+final events = StreamController<Event>();
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (non-inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+var playerScores = {};
+final events = StreamController();
+{% endprettify %}
+
+Sometimes the invocation occurs as the initializer to a variable declaration. If
+the variable is *not* local, then instead of writing the type argument list on the
+invocation itself, you may put a type annotation on the declaration:
+
+{:.good}
+<?code-excerpt "design_good.dart (inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final Completer<String> response = Completer();
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (inferred-type-args)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final response = Completer();
+}
+{% endprettify %}
+
+Annotating the variable also addresses this guideline because now the type
+arguments *are* inferred.
 
 
-### PREFER annotating with `dynamic` instead of letting inference fail.
+### DON'T write type arguments on generic invocations that are inferred.
 
-Dart allows you to omit type annotations in many places and will try to infer a
-type for you. In some cases, if inference fails, it silently gives you
-`dynamic`. If `dynamic` is the type you want, this is technically the most terse
-way to get it.
+This is the converse of the previous rule. If an invocation's type argument list
+*is* correctly inferred with the types you want, then omit the types and let
+Dart do the work for you.
 
-However, it's not the most *clear* way. A casual reader of your code who sees an
-annotation is missing has no way of knowing if you intended it to be `dynamic`,
-expected inference to fill in some other type, or simply forgot to write the
-annotation.
+{:.good}
+<?code-excerpt "design_good.dart (redundant)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final Completer<String> response = Completer();
+}
+{% endprettify %}
 
-When `dynamic` is the type you want, writing it explicitly makes your intent
-clear.
+{:.bad}
+<?code-excerpt "design_bad.dart (redundant)"?>
+{% prettify dart tag=pre+code %}
+class Downloader {
+  final Completer<String> response = Completer<String>();
+}
+{% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (prefer-dynamic)"?>
-{% prettify dart %}
+Here, the type annotation on the field provides a surrounding context to infer
+the type argument of constructor call in the initializer.
+
+{:.good}
+<?code-excerpt "design_good.dart (explicit)"?>
+{% prettify dart tag=pre+code %}
+var items = Future.value([1, 2, 3]);
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "design_bad.dart (explicit)"?>
+{% prettify dart tag=pre+code %}
+var items = Future<List<int>>.value(<int>[1, 2, 3]);
+{% endprettify %}
+
+Here, the types of the collection and instance can be inferred bottom-up from
+their elements and arguments.
+
+
+### AVOID writing incomplete generic types.
+
+The goal of writing a type annotation or type argument is to pin down a complete
+type. However, if you write the name of a generic type but omit its type
+arguments, you haven't fully specified the type. In Java, these are called "raw
+types". For example:
+
+{:.bad}
+<?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
+[!List!] numbers = [1, 2, 3];
+var completer = Completer<[!Map!]>();
+{% endprettify %}
+
+Here, `numbers` has a type annotation, but the annotation doesn't provide a type
+argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
+isn't fully specified. In cases like this, Dart will *not* try to "fill in" the
+rest of the type for you using the surrounding context. Instead, it silently
+fills in any missing type arguments with `dynamic` (or the bound if the
+class has one). That's rarely what you want.
+
+Instead, if you're writing a generic type either in a type annotation or as a type
+argument inside some invocation, make sure to write a complete type:
+
+{:.good}
+<?code-excerpt "design_good.dart (incomplete-generic)"?>
+{% prettify dart tag=pre+code %}
+List<num> numbers = [1, 2, 3];
+var completer = Completer<Map<String, int>>();
+{% endprettify %}
+
+
+### DO annotate with `dynamic` instead of letting inference fail.
+
+When inference doesn't fill in a type, it usually defaults to `dynamic`. If
+`dynamic` is the type you want, this is technically the most terse way to get
+it. However, it's not the most *clear* way. A casual reader of your code who
+sees that an annotation is missing has no way of knowing if you intended it to be
+`dynamic`, expected inference to fill in some other type, or simply forgot to
+write the annotation.
+
+When `dynamic` is the type you want, write that explicitly to make your intent
+clear and highlight that this code has less static safety.
+
+{:.good}
+<?code-excerpt "design_good.dart (prefer-dynamic)"?>
+{% prettify dart tag=pre+code %}
 dynamic mergeJson(dynamic original, dynamic changes) => ...
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (prefer-dynamic)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (prefer-dynamic)"?>
+{% prettify dart tag=pre+code %}
 mergeJson(original, changes) => ...
 {% endprettify %}
 
+Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
+
+{:.good}
+<?code-excerpt "design_good.dart (infer-dynamic)"?>
+{% prettify dart tag=pre+code %}
+Map<String, dynamic> readJson() => ...
+
+void printUsers() {
+  var json = readJson();
+  var users = json['users'];
+  print(users);
+}
+{% endprettify %}
+
+Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
+`dynamic` for `users`. It's fine to leave `users` without a type annotation. The
+distinction is a little subtle. It's OK to allow inference to *propagate*
+`dynamic` through your code from a `dynamic` type annotation somewhere else, but
+you don't want it to summon `dynamic` *ex nihilo* when nothing in your code ever
+requested it.
 
 <aside class="alert alert-info" markdown="1">
 
@@ -1322,29 +1575,29 @@ function.
 
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart %}
-bool isValid(String value, bool [!Function(String)!] test) => ...
+{:.good}
+<?code-excerpt "design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
+bool isValid(String value, [!bool Function(String)!] test) => ...
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 bool isValid(String value, [!Function!] test) => ...
 {% endprettify %}
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
-One exception to this guideline is if you want a type that represents the union
-of multiple different function types. For example, you may accept a function
-that takes one parameter or a function that takes two. Since we don't have union
-types, there's no way to precisely type that and you'd normally have to use
-`dynamic`. `Function` is at least a little more helpful than that:
+**Exception:** Sometimes, you want a type that represents the union of multiple
+different function types. For example, you may accept a function that takes one
+parameter or a function that takes two. Since we don't have union types, there's
+no way to precisely type that and you'd normally have to use `dynamic`.
+`Function` is at least a little more helpful than that:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 void handleError([!void Function()!] operation, [!Function!] errorHandler) {
   try {
     operation();
@@ -1354,7 +1607,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
     } else if (errorHandler is [!Function(Object, StackTrace)!]) {
       errorHandler(err, stack);
     } else {
-      throw ArgumentError("errorHandler has wrong signature.");
+      throw ArgumentError('errorHandler has wrong signature.');
     }
   }
 }
@@ -1363,33 +1616,33 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 ### DON'T specify a return type for a setter.
 
-{% include linter-rule.html rule="avoid_return_types_on_setters" %}
+{% include linter-rule-mention.html rule="avoid_return_types_on_setters" %}
 
 Setters always return `void` in Dart. Writing the word is pointless.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
+{% prettify dart tag=pre+code %}
 void set foo(Foo value) { ... }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid_return_types_on_setters)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
+{% prettify dart tag=pre+code %}
 set foo(Foo value) { ... }
 {% endprettify %}
 
 
 ### DON'T use the legacy typedef syntax.
 
-{% include linter-rule.html rule="prefer_generic_function_type_aliases" %}
+{% include linter-rule-mention.html rule="prefer_generic_function_type_aliases" %}
 
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (old-typedef)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (old-typedef)"?>
+{% prettify dart tag=pre+code %}
 typedef int Comparison<T>(T a, T b);
 {% endprettify %}
 
@@ -1404,9 +1657,9 @@ That syntax has a couple of problems:
 *   A single identifier in a parameter is interpreted as the parameter's *name*,
     not its *type*. Given:
 
-    {:.bad-style}
-    <?code-excerpt "misc/lib/effective_dart/design_bad.dart (typedef-param)"?>
-    {% prettify dart %}
+    {:.bad}
+    <?code-excerpt "design_bad.dart (typedef-param)"?>
+    {% prettify dart tag=pre+code %}
     typedef bool TestNumber(num);
     {% endprettify %}
 
@@ -1418,17 +1671,17 @@ That syntax has a couple of problems:
 
 The new syntax looks like this:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (new-typedef)"?>
+{% prettify dart tag=pre+code %}
 typedef Comparison<T> = int Function(T, T);
 {% endprettify %}
 
 If you want to include a parameter's name, you can do that too:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef-param-name)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (new-typedef-param-name)"?>
+{% prettify dart tag=pre+code %}
 typedef Comparison<T> = int Function(T a, T b);
 {% endprettify %}
 
@@ -1444,25 +1697,25 @@ it's deprecated.
 
 ### PREFER inline function types over typedefs.
 
-{% include linter-rule.html rule="avoid_private_typedef_functions" %}
+{% include linter-rule-mention.html rule="avoid_private_typedef_functions" %}
 
 In Dart 1, if you wanted to use a function type for a field, variable, or
 generic type argument, you had to first define a typedef for it. Dart 2 supports
 a function type syntax that can be used anywhere a type annotation is allowed:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 class FilteredObservable {
   final [!bool Function(Event)!] _predicate;
   final List<[!void Function(Event)!]> _observers;
 
   FilteredObservable(this._predicate, this._observers);
 
-  [!void Function(Event)!] notify(Event event) {
+  [!void Function(Event)!]? notify(Event event) {
     if (!_predicate(event)) return null;
 
-    [!void Function(Event)!] last;
+    [!void Function(Event)!]? last;
     for (var observer in _observers) {
       observer(event);
       last = observer;
@@ -1479,16 +1732,16 @@ type actually is right where it's used, and the function type syntax gives them
 that clarity.
 
 
-### CONSIDER using function type syntax for parameters.
+### PREFER using function type syntax for parameters.
 
-{% include linter-rule.html rule="use_function_type_syntax_for_parameters" %}
+{% include linter-rule-mention.html rule="use_function_type_syntax_for_parameters" %}
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
 type and parameter signature:
 
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (function-type-param)"?>
-{% prettify dart %}
+<?code-excerpt "design_bad.dart (function-type-param)"?>
+{% prettify dart tag=pre+code %}
 Iterable<T> where(bool predicate(T element)) => ...
 {% endprettify %}
 
@@ -1497,9 +1750,9 @@ parameter a function type without defining a typedef. Now that Dart has a
 general notation for function types, you can use it for function-typed
 parameters as well:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type-param)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (function-type-param)"?>
+{% prettify dart tag=pre+code %}
 Iterable<T> where(bool Function(T) predicate) => ...
 {% endprettify %}
 
@@ -1507,35 +1760,47 @@ The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
 
 
-### DO annotate with `Object` instead of `dynamic` to indicate any object is allowed.
+### AVOID using `dynamic` unless you want to disable static checking.
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
-values: `Object` and `dynamic`. However, they convey different things. If you
-simply want to state that you allow all objects, use `Object`, as you would in
-Java or C#.
+values: `Object?` and `dynamic`. However, they convey different things. If you
+simply want to state that you allow all objects, use `Object?`. If you want to
+allow all objects *except* `null`, then use `Object`.
 
-Using `dynamic` sends a more complex signal. It may mean that Dart's type system
-isn't sophisticated enough to represent the set of types that are allowed, or
-that the values are coming from interop or otherwise outside of the purview of
-the static type system, or that you explicitly want runtime dynamism at that
-point in the program.
+The type `dynamic` not only accepts all objects, but it also permits all
+*operations*. Any member access on a value of type `dynamic` is allowed at
+compile time, but may fail and throw an exception at runtime. If you want
+exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
+type to use.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
-{% prettify dart %}
-void log(Object object) {
-  print(object.toString());
-}
+Otherwise, prefer using `Object?` or `Object`. Rely on `is` checks and type
+promotion to
+ensure that the value's runtime type supports the member you want to access
+before you access it.
 
+{:.good}
+<?code-excerpt "design_good.dart (Object-vs-dynamic)"?>
+{% prettify dart tag=pre+code %}
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.
-bool convertToBool(dynamic arg) {
+bool convertToBool(Object arg) {
   if (arg is bool) return arg;
-  if (arg is String) return arg == 'true';
+  if (arg is String) return arg.toLowerCase() == 'true';
   throw ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
+
+The main exception to this rule is when working with existing APIs that use
+`dynamic`, especially inside a generic type. For example, JSON objects have type
+`Map<String, dynamic>` and your code will need to accept that same type. Even
+so, when using a value from one of these APIs, it's often a good idea to cast it
+to a more precise type before accessing members.
+
+{{site.alert.version-note}}
+In code that hasn't been migrated to null safety yet, use `Object` to accept
+values of all types, including `null`.
+{{site.alert.end}}
 
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
@@ -1571,18 +1836,18 @@ the value, effectively always treating it as a `Future`.) Just return a
 is either always asynchronous or always synchronous, but a function that can be
 either is hard to use correctly.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (future-or)"?>
+{% prettify dart tag=pre+code %}
 Future<int> triple(FutureOr<int> value) async => (await value) * 3;
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (future-or)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (future-or)"?>
+{% prettify dart tag=pre+code %}
 FutureOr<int> triple(FutureOr<int> value) {
   if (value is int) return value * 3;
-  return (value as Future<int>).then((v) => v * 3);
+  return value.then((v) => v * 3);
 }
 {% endprettify %}
 
@@ -1595,9 +1860,9 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 [contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 Stream<S> asyncMap<T, S>(
     Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
   for (var element in iterable) {
@@ -1614,27 +1879,27 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 ### AVOID positional boolean parameters.
 
-{% include linter-rule.html rule="avoid_positional_boolean_parameters" %}
+{% include linter-rule-mention.html rule="avoid_positional_boolean_parameters" %}
 
-Unlike other types, booleans are usually used in literal form. Things like
-numbers are usually wrapped in named constants, but we usually just pass around
+Unlike other types, booleans are usually used in literal form. Values like
+numbers are usually wrapped in named constants, but we typically pass around
 `true` and `false` directly. That can make callsites unreadable if it isn't
 clear what the boolean represents:
 
-{:.bad-style}
-{% prettify dart %}
+{:.bad}
+{% prettify dart tag=pre+code %}
 new Task(true);
 new Task(false);
 new ListBox(false, true, true);
 new Button(false);
 {% endprettify %}
 
-Instead, consider using named arguments, named constructors, or named constants
+Instead, prefer using named arguments, named constructors, or named constants
 to clarify what the call is doing.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-positional-bool-param)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (avoid-positional-bool-param)"?>
+{% prettify dart tag=pre+code %}
 Task.oneShot();
 Task.repeating();
 ListBox(scroll: true, showScrollbars: true);
@@ -1644,8 +1909,8 @@ Button(ButtonState.enabled);
 Note that this doesn't apply to setters, where the name makes it clear what the
 value represents:
 
-{:.good-style}
-{% prettify dart %}
+{:.good}
+{% prettify dart tag=pre+code %}
 listBox.canScroll = true;
 button.isEnabled = false;
 {% endprettify %}
@@ -1658,10 +1923,10 @@ earlier parameters are passed more often than later ones. Users should almost
 never need to explicitly pass a "hole" to omit an earlier positional argument to
 pass later one. You're better off using named arguments for that.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-optional-positional)"?>
-{% prettify dart %}
-String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
+{:.good}
+<?code-excerpt "design_good.dart (omit-optional-positional)"?>
+{% prettify dart tag=pre+code %}
+String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
 DateTime(int year,
     [int month = 1,
@@ -1692,15 +1957,15 @@ Omitting the parameter is more terse and helps prevent bugs where a sentinel
 value like `null` is accidentally passed when the user thought they were
 providing a real value.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-mandatory-param)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (avoid-mandatory-param)"?>
+{% prettify dart tag=pre+code %}
 var rest = string.substring(start);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-mandatory-param)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (avoid-mandatory-param)"?>
+{% prettify dart tag=pre+code %}
 var rest = string.substring(start, null);
 {% endprettify %}
 
@@ -1714,9 +1979,9 @@ than the index of the last item.
 
 This is consistent with core libraries that do the same thing.
 
-{:.good-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "../../test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
+{% prettify dart tag=pre+code %}
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
 'abcd'.substring(1, 3) // 'bc'
 {% endprettify %}
@@ -1735,7 +2000,7 @@ elements to follow.
 
 ### DO override `hashCode` if you override `==`.
 
-{% include linter-rule.html rule="hash_and_equals" %}
+{% include linter-rule-mention.html rule="hash_and_equals" %}
 
 The default hash code implementation provides an *identity* hash&mdash;two
 objects generally only have the same hash code if they are the exact same
@@ -1763,6 +2028,8 @@ you're trying to express.
 
 ### AVOID defining custom equality for mutable classes.
 
+{% include linter-rule-mention.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
+
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
 implies the object's hash code can change.
@@ -1771,32 +2038,39 @@ Most hash-based collections don't anticipate that&mdash;they assume an object's
 hash code will be the same forever and may behave unpredictably if that isn't
 true.
 
-### DON'T check for `null` in custom `==` operators.
+### DON'T make the parameter to `==` nullable.
 
-{% include linter-rule.html rule="avoid_null_checks_in_equality_operators" %}
+{% include linter-rule-mention.html rule="avoid_null_checks_in_equality_operators" %}
 
-The language specifies that this check is done automatically and your `==`
+The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g" plaster?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster?>
+{% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···
-  bool [!operator ==!](other) => other is Person && name == other.name;
 
-  int get hashCode => name.hashCode;
+  bool operator ==(Object other) => other is Person && name == other.name;
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g" plaster?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster?>
+{% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···
-  bool operator ==(other) => [!other != null!] && ...
+
+  bool operator ==([!Object?!] other) =>
+      other != null && other is Person && name == other.name;
 }
 {% endprettify %}
 
+{{site.alert.version-note}}
+In code that has not been migrated to null safety yet, the `Object` type
+annotation permits `null`. Even so, Dart will never call your `==` method and
+pass `null` to it, so you don't need to handle `null` inside the body of the
+method.
+{{site.alert.end}}

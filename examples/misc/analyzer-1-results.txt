@@ -1,3 +1,0 @@
-Analyzing lib, test...
-  error • A value of type 'dynamic' can't be assigned to a variable of type 'Person' at lib/library_tour/core/hash_code.dart:25:21 • invalid_assignment
-1 error found.

@@ -2,7 +2,6 @@
 title: Effective Dart
 description: Best practices for building consistent, maintainable, efficient Dart libraries.
 permalink: /guides/language/effective-dart
-toc: true
 nextpage:
   url: /guides/language/effective-dart/style
   title: Style
@@ -38,7 +37,7 @@ The Dart analyzer has a linter to help you write good, consistent code.
 If a linter rule exists that can help you follow a guideline,
 then the guideline links to that rule. Here's an example:
 
-{% include linter-rule.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.html rule="prefer_collection_literals" %}
 
 For help on
 [enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
@@ -51,7 +50,7 @@ see the documentation for
 We split the guidelines into a few separate pages for easy digestion:
 
   * **[Style Guide][]** &ndash; This defines the rules for laying out and
-    organizing code, or at least the parts that [dartfmt] doesn't handle for
+    organizing code, or at least the parts that [dart format] doesn't handle for
     you. The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
@@ -81,7 +80,7 @@ For links to all the guidelines, see the
 </aside>
 {% endcomment %}
 
-[dartfmt]: https://github.com/dart-lang/dart_style#readme
+[dart format]: /tools/dart-format
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
 [usage guide]: /guides/language/effective-dart/usage
@@ -108,6 +107,10 @@ Each guideline starts with one of these words:
 
 * **CONSIDER** guidelines are practices that you might or might not want to
   follow, depending on circumstances, precedents, and your own preference.
+
+Some guidelines describe an **exception** where the rule does *not* apply. When
+listed, the exceptions may not be exhaustive&mdash;you might still need to use
+your judgement on other cases.
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here

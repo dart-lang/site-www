@@ -1,29 +1,29 @@
 ---
-title: Guides
-description: Read about the Dart language and libraries with this collection of guides.
-permalink: /guides
+title: Dart documentation
+description: Learn to use the Dart language and libraries.
 toc: false
 ---
 
-Read these guides to learn about the Dart language and its libraries.
+Welcome to the Dart documentation!
+For a list of changes to this site —
+new pages, new guidelines, and more —
+see the [What's new page][].
 
-Also see:
+[What's new page]: /guides/whats-new
 
-* [Flutter guides]({{site.flutter}})
-* [Web development guides]({{site.webdev}}/guides)
-* [Server-side get started tutorial](/tutorials/server/get-started)
+Here are some of this site's most visited pages:
 
-The getting started guide helps you get up and running with Dart as quickly as possible.
+{% comment %}
+To update these cards, edit src/_data/docs_cards.yml.
+{% endcomment %}
 
-* [Get Started](/guides/get-started)
-
-The following guides teach you about the Dart language.
-
-* [Language Tour](/guides/language/language-tour) (for more detail, see the [language specification](/guides/language/spec))
-* [Effective Dart](/guides/language/effective-dart)
-
-The following guides teach you about Dart's core libraries.
-
-* [Library Tour](/guides/libraries/library-tour)
-* [Create Library Packages](/guides/libraries/create-library-packages)
-* [What Not to Commit](/guides/libraries/private-files)
+<div class="card-grid">
+{% for card in site.data.docs_cards -%}
+  {% capture index0Modulo3 %}{{ forloop.index0 | modulo:3 }}{% endcapture %}
+  {% capture indexModulo3 %}{{ forloop.index | modulo:3 }}{% endcapture %}
+  <div class="card">
+    <h3><a href="{{card.url}}">{{card.name}}</a></h3>
+    <p>{{card.description}}</p>
+  </div>
+{% endfor -%}
+</div>

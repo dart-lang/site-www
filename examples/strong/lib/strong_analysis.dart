@@ -5,14 +5,14 @@ import 'animal.dart';
 
 void _miscDeclAnalyzedButNotTested() {
   {
-    // #docregion dart-2-note
+    // #docregion dart-2-note-unused-but-necessary
     var i = 1;
     // i is dynamic in Dart 1.x
     // i is inferred as int in Dart 2
 
     dynamic x = 1;
     x = "Hello";
-    // #enddocregion dart-2-note
+    // #enddocregion dart-2-note-unused-but-necessary
   }
 
   {
@@ -22,8 +22,8 @@ void _miscDeclAnalyzedButNotTested() {
     void main() {
       var list = [];
       list.add(1);
-      list.add("2");
-      // ignore_for_file: 1, 2, argument_type_not_assignable
+      list.add('2');
+      // ignore_for_file: stable, dev, argument_type_not_assignable
       printInts(list); //!analysis-issue
     }
     // #enddocregion opening-example
@@ -34,7 +34,7 @@ void _miscDeclAnalyzedButNotTested() {
     Map<String, dynamic> arguments = {'argA': 'hello', 'argB': 42};
     // #enddocregion type-inference-1-orig
 
-    // ignore_for_file: 1, 2, argument_type_not_assignable
+    // ignore_for_file: stable, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2-orig
@@ -50,7 +50,7 @@ void _miscDeclAnalyzedButNotTested() {
     var arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
     // #enddocregion type-inference-1
 
-    // ignore_for_file: 1, 2, argument_type_not_assignable
+    // ignore_for_file: stable, dev, argument_type_not_assignable
     arguments[1] = null;
 
     // #docregion type-inference-2
@@ -77,15 +77,15 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion local-var-type-inference-error
-    var x = 3; // x is inferred as an int
-    // ignore_for_file: 1, 2, invalid_assignment
+    var x = 3; // x is inferred as an int.
+    // ignore_for_file: stable, dev, invalid_assignment
     x = 4.0; //!analysis-issue
     // #enddocregion local-var-type-inference-error
   }
 
   {
     // #docregion local-var-type-inference-ok
-    num y = 3; // a num can be double or int
+    num y = 3; // A num can be double or int.
     y = 4.0;
     // #enddocregion local-var-type-inference-ok
   }
@@ -98,11 +98,11 @@ void _miscDeclAnalyzedButNotTested() {
     // Inferred as if you wrote <double>[3.0].
     var listOfDouble = [3.0];
 
-    // Inferred as Iterable<int>
+    // Inferred as Iterable<int>.
     var ints = listOfDouble.map((x) => x.toInt());
     // #enddocregion type-arg-inference
 
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     listOfDouble[0] = '';
   }
 
@@ -114,8 +114,7 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion MaineCoon-Cat-err
-    // ignore_for_file: 1, invalid_assignment
-    // ignore_for_file: 2, strong_mode_invalid_cast_new_expr
+    // ignore_for_file: stable, dev, invalid_cast_new_expr
     MaineCoon c = Cat();
     // #enddocregion MaineCoon-Cat-err
   }
@@ -134,27 +133,27 @@ void _miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion generic-type-assignment-MaineCoon
-    List<Cat> myCats = List<MaineCoon>();
+    List<Cat> myCats = <MaineCoon>[];
     // #enddocregion generic-type-assignment-MaineCoon
   }
 
   {
     // Since we're using --no-implicit-casts, the following causes a static error.
     // #docregion generic-type-assignment-Animal
-    // ignore_for_file: 2, invalid_assignment
-    List<Cat> myCats = List<Animal>();
+    // ignore_for_file: stable, dev, invalid_assignment
+    List<Cat> myCats = <Animal>[];
     // #enddocregion generic-type-assignment-Animal
   }
 
   {
     // #docregion generic-type-assignment-implied-cast
-    List<Cat> myCats = List<Animal>() as List<Cat>;
+    List<Cat> myCats = <Animal>[] as List<Cat>;
     // #enddocregion generic-type-assignment-implied-cast
   }
 
   {
     // #docregion dart-1-checked-mode-permissiveness
-    // ignore_for_file: 1, 2, invalid_assignment
+    // ignore_for_file: stable, dev, invalid_assignment
     String result = 1 + 2;
     // #enddocregion dart-1-checked-mode-permissiveness
   }

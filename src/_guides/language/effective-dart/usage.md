@@ -9,14 +9,11 @@ prevpage:
   title: Documentation
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
 
-This is the most "blue-collar" guide in Effective Dart. You'll apply the
-guidelines here every day in the bodies of your Dart code. *Users* of your
-library may not be able to tell that you've internalized the ideas here, but
-*maintainers* of it sure will.
-
-* TOC
-{:toc}
+You can use these guidelines every day in the bodies of your Dart code. *Users*
+of your library may not be able to tell that you've internalized the ideas here,
+but *maintainers* of it sure will.
 
 ## Libraries
 
@@ -38,30 +35,32 @@ The preferred, modern syntax is to use a URI string that points directly to the
 library file, just like you use in other directives. If you have some library,
 `my_library.dart`, that contains:
 
-<?code-excerpt "misc/lib/effective_dart/my_library.dart"?>
-{% prettify dart %}
+<?code-excerpt "my_library.dart"?>
+{% prettify dart tag=pre+code %}
 library my_library;
 
-part "some/other/file.dart";
+part 'some/other/file.dart';
 {% endprettify %}
 
 Then the part file should look like:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/some/other/file.dart"?>
-{% prettify dart %}
-part of "../../my_library.dart";
+{:.good}
+<?code-excerpt "some/other/file.dart"?>
+{% prettify dart tag=pre+code %}
+part of '../../my_library.dart';
 {% endprettify %}
 
 And not:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/some/other/file_2.dart"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "some/other/file_2.dart"?>
+{% prettify dart tag=pre+code %}
 part of my_library;
 {% endprettify %}
 
 ### DON'T import libraries that are inside the `src` directory of another package.
+
+{% include linter-rule-mention.html rule="implementation_imports" %}
 
 The `src` directory under `lib` [is specified][package guide] to contain
 libraries private to the package's own implementation. The way package
@@ -74,54 +73,344 @@ change to the package.
 That means that if you import some other package's private library, a minor,
 theoretically non-breaking point release of that package could break your code.
 
-### PREFER relative paths when importing libraries within your own package's `lib` directory.
 
-{% include linter-rule.html rule="avoid_relative_lib_imports" %}
+### DON'T allow an import path to reach into or out of `lib`.
 
-When referencing a library inside your package's `lib` directory from another
-library in that same package, either a relative URI or an explicit `package:`
-will work.
+{% include linter-rule-mention.html rule="avoid_relative_lib_imports" %}
 
-For example, say your directory structure looks like:
+A `package:` import lets you access
+a library inside a package's `lib` directory
+without having to worry about where the package is stored on your computer.
+For this to work, you cannot have imports that require the `lib`
+to be in some location on disk relative to other files.
+In other words, a relative import path in a file inside `lib`
+can't reach out and access a file outside of the `lib` directory,
+and a library outside of `lib` can't use a relative path
+to reach into the `lib` directory.
+Doing either leads to confusing errors and broken programs.
+
+For example, say your directory structure looks like this:
+
+```text
+my_package
+└─ lib
+   └─ api.dart
+   test
+   └─ api_test.dart
+```
+
+And say `api_test.dart` imports `api.dart` in two ways:
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+import '../lib/api.dart';
+{% endprettify %}
+
+Dart thinks those are imports of two completely unrelated libraries.
+To avoid confusing Dart and yourself, follow these two rules:
+
+* Don't use `/lib/` in import paths.
+* Don't use `../` to escape the `lib` directory.
+
+Instead, when you need to reach into a package's `lib` directory
+(even from the same package's `test` directory
+or any other top-level directory),
+use a `package:` import.
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+{% endprettify %}
+
+A package should never reach *out* of its `lib` directory and
+import libraries from other places in the package.
+
+
+### PREFER relative import paths.
+
+{% include linter-rule-mention.html rule="prefer_relative_imports" %}
+
+Whenever the previous rule doesn't come into play, follow this one.
+When an import does *not* reach across `lib`, prefer using relative imports.
+They're shorter.
+For example, say your directory structure looks like this:
 
 ```text
 my_package
 └─ lib
    ├─ src
+   │  └─ stuff.dart
    │  └─ utils.dart
    └─ api.dart
+   test
+   │─ api_test.dart
+   └─ test_utils.dart
 ```
 
-If `api.dart` wants to import `utils.dart`, it should do so using:
+Here is how the various libraries should import each other:
 
-{:.good-style}
-{% prettify dart %}
+**lib/api.dart:**
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'src/stuff.dart';
 import 'src/utils.dart';
 {% endprettify %}
 
-And not:
+**lib/src/utils.dart:**
 
-{:.bad-style}
-{% prettify dart %}
-import 'package:my_package/src/utils.dart';
+{:.good}
+{% prettify dart tag=pre+code %}
+import '../api.dart';
+import 'stuff.dart';
 {% endprettify %}
 
-There is no profound reason to prefer the former—it's just shorter, and we want
-to be consistent.
+**test/api_test.dart:**
 
-The "within your own package's `lib` directory" part is important. Libraries
-inside `lib` can import other libraries inside `lib` (or in subdirectories of
-it). Libraries outside of `lib` can use relative imports to reach other
-libraries outside of `lib`. For example, you may have a test utility library
-under `test` that other libraries in `test` import.
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart'; // Don't reach into 'lib'.
 
-But you can't "cross the streams". A library outside of `lib` should never use a
-relative import to reach a library under `lib`, or vice versa. Doing so will
-break Dart's ability to correctly tell if two library URIs refer to the same
-library. Follow these two rules:
+import 'test_utils.dart'; // Relative within 'test' is fine.
+{% endprettify %}
 
-* An import path should never contain `/lib/`.
-* A library under `lib` should never use `../` to escape the `lib` directory.
+
+## Null
+
+
+### DON'T explicitly initialize variables to `null`.
+
+{% include linter-rule-mention.html rule="avoid_init_to_null" %}
+
+If a variable has a non-nullable type, Dart reports a compile error if you try
+to use it before it has been definitely initialized. If the variable is
+nullable, then it is implicitly initialized to `null` for you. There's no
+concept of "uninitialized memory" in Dart and no need to explicitly initialize a
+variable to `null` to be "safe".
+
+{:.good}
+<?code-excerpt "usage_good.dart (no-null-init)"?>
+{% prettify dart tag=pre+code %}
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem;
+
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
+  }
+
+  return bestItem;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (no-null-init)" replace="/ = null/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem[! = null!];
+
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
+  }
+
+  return bestItem;
+}
+{% endprettify %}
+
+
+### DON'T use an explicit default value of `null`.
+
+{% include linter-rule-mention.html rule="avoid_init_to_null" %}
+
+If you make a nullable parameter optional but don't give it a default value, the
+language implicitly uses `null` as the default, so there's no need to write it.
+
+{:.good}
+<?code-excerpt "usage_good.dart (default-value-null)"?>
+{% prettify dart tag=pre+code %}
+void error([String? message]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (default-value-null)"?>
+{% prettify dart tag=pre+code %}
+void error([String? message = null]) {
+  stderr.write(message ?? '\n');
+}
+{% endprettify %}
+
+
+### PREFER using `??` to convert `null` to a boolean value.
+
+This rule applies when an expression can evaluate to `true`, `false`, or `null`,
+and you need to pass the result to something that expects a non-nullable boolean
+value. A common case is using the result of a null-aware method call as a
+condition. You can "convert" `null` to `true` or `false` using `==`, but we
+recommend using `??`:
+
+{:.good}
+<?code-excerpt "usage_good.dart (convert-null-aware)"?>
+{% prettify dart tag=pre+code %}
+// If you want null to be false:
+if (optionalThing?.isEnabled ?? false) {
+  print('Have enabled thing.');
+}
+
+// If you want null to be true:
+if (optionalThing?.isEnabled ?? true) {
+  print('Have enabled thing or nothing.');
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (convert-null-equals)"?>
+{% prettify dart tag=pre+code %}
+// If you want null to be false:
+if (optionalThing?.isEnabled == true) {
+  print('Have enabled thing.');
+}
+
+// If you want null to be true:
+if (optionalThing?.isEnabled != false) {
+  print('Have enabled thing or nothing.');
+}
+{% endprettify %}
+
+Both operations produce the same result and do the right thing, but `??` is
+preferred for three main reasons:
+
+*   The `??` operator signals that the code has something to do with `null`.
+
+*   The `== true` looks like a common mistake where the equality operator is
+    redundant and can be removed. That's true when the boolean expression on the
+    left will not produce `null`, but not when it can.
+
+*   The `?? false` and `?? true` clearly show what value will be used when the
+    expression is `null`. With `== true`, you have to think through the boolean
+    logic to realize that means that a `null` gets converted to *false*.
+
+**Exception:** Using a null-aware operator on a variable inside a condition
+doesn't promote the variable to a non-nullable type. If you want the variable
+to be promoted inside the body of the `if` statement, it might be better to use
+an explicit `!= null` check instead of `?.` followed by `??`:
+
+{:.good}
+<?code-excerpt "usage_good.dart (null-aware-promote)"?>
+{% prettify dart tag=pre+code %}
+int measureMessage(String? message) {
+  if (message != null && message.isNotEmpty) {
+    // message is promoted to String.
+    return message.length;
+  }
+
+  return 0;
+}
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (null-aware-promote)"?>
+{% prettify dart tag=pre+code %}
+int measureMessage(String? message) {
+  if (message?.isNotEmpty ?? false) {
+    // message is not promoted to String.
+    return message!.length;
+  }
+
+  return 0;
+}
+{% endprettify %}
+
+
+### AVOID `late` variables if you need to check whether they are initialized.
+
+Dart offers no way to tell if a `late` variable
+has been initialized or assigned to.
+If you access it, it either immediately runs the initializer
+(if it has one) or throws an exception.
+Sometimes you have some state that's lazily initialized
+where `late` might be a good fit,
+but you also need to be able to *tell* if the initialization has happened yet.
+
+Although you could detect initialization by storing the state in a `late` variable
+and having a separate boolean field
+that tracks whether the variable has been set,
+that's redundant because Dart *internally*
+maintains the initialized status of the `late` variable.
+Instead, it's usually clearer to make the variable non-`late` and nullable.
+Then you can see if the variable has been initialized
+by checking for `null`.
+
+Of course, if `null` is a valid initialized value for the variable,
+then it probably does make sense to have a separate boolean field.
+
+
+### CONSIDER copying a nullable field to a local variable to enable type promotion.
+
+Checking that a nullable variable is not equal to `null` promotes the variable
+to a non-nullable type. That lets you access members on the variable and pass it
+to functions expecting a non-nullable type. Unfortunately, promotion is only
+sound for local variables and parameters, so fields and top-level variables
+aren't promoted.
+
+One pattern to work around this is to copy the field's value to a local
+variable. Null checks on that variable do promote, so you can safely treat
+it as non-nullable.
+
+{:.good}
+<?code-excerpt "usage_good.dart (copy-nullable-field)"?>
+{% prettify dart tag=pre+code %}
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    var response = this.response;
+    if (response != null) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+
+    return 'Could not upload (no response).';
+  }
+}
+{% endprettify %}
+
+Copying to a local variable can be cleaner and safer than using `!` every place
+the field or top-level variable is used:
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (copy-nullable-field)" replace="/!\./[!!!]./g"?>
+{% prettify dart tag=pre+code %}
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    if (response != null) {
+      return 'Could not complete upload to ${response[!!!].url} '
+          '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
+    }
+
+    return 'Could not upload (no response).';
+  }
+}
+{% endprettify %}
+
+Be careful when using a local copy. If you need to write back to the field,
+then make sure you do so, and don't just write to the local variable. Also, if
+the field might change while the local is still in scope, then the local might
+have a stale value. Sometimes it's best to simply use `!` on the field.
+
 
 ## Strings
 
@@ -129,68 +418,65 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 ### DO use adjacent strings to concatenate string literals.
 
-{% include linter-rule.html rule="prefer_adjacent_string_concatenation" %}
+{% include linter-rule-mention.html rule="prefer_adjacent_string_concatenation" %}
 
 If you have two string literals&mdash;not values, but the actual quoted literal
 form&mdash;you do not need to use `+` to concatenate them. Just like in C and
 C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (adjacent-strings-literals)"?>
+{% prettify dart tag=pre+code %}
 raiseAlarm(
     'ERROR: Parts of the spaceship are on fire. Other '
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (adjacent-strings-literals)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (adjacent-strings-literals)"?>
+{% prettify dart tag=pre+code %}
 raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
 ### PREFER using interpolation to compose strings and values.
 
-{% include linter-rule.html rule="prefer_interpolation_to_compose_strings" %}
+{% include linter-rule-mention.html rule="prefer_interpolation_to_compose_strings" %}
 
 If you're coming from other languages, you're used to using long chains of `+`
 to build a string out of literals and other values. That does work in Dart, but
 it's almost always cleaner and shorter to use interpolation:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (string-interpolation)"?>
+{% prettify dart tag=pre+code %}
 'Hello, $name! You are ${year - birth} years old.';
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (string-interpolation)"?>
+{% prettify dart tag=pre+code %}
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 {% endprettify %}
 
 ### AVOID using curly braces in interpolation when not needed.
 
-{% include linter-rule.html rule="unnecessary_brace_in_string_interps" %}
+{% include linter-rule-mention.html rule="unnecessary_brace_in_string_interps" %}
 
 If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation-avoid-curly)"?>
-{% prettify dart %}
-'Hi, $name!'
-    "Wear your wildest $decade's outfit."
-    'Wear your wildest ${decade}s outfit.'
+{:.good}
+<?code-excerpt "usage_good.dart (string-interpolation-avoid-curly)"?>
+{% prettify dart tag=pre+code %}
+var greeting = 'Hi, $name! I love your ${decade}s costume.';
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation-avoid-curly)"?>
-{% prettify dart %}
-'Hi, ${name}!'
-    "Wear your wildest ${decade}'s outfit."
+{:.bad}
+<?code-excerpt "usage_bad.dart (string-interpolation-avoid-curly)"?>
+{% prettify dart tag=pre+code %}
+var greeting = 'Hi, ${name}! I love your ${decade}s costume.';
 {% endprettify %}
 
 ## Collections
@@ -200,53 +486,71 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible.
 
-{% include linter-rule.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.html rule="prefer_collection_literals" %}
 
-There are two ways to make an empty growable list: `[]` and `List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`,
-`Map()`, and `LinkedHashMap()`.
+Dart has three core collection types: List, Map, and Set. The Map and Set
+classes have unnamed constructors like most classes do. But because these
+collections are used so frequently, Dart has nicer built-in syntax for creating
+them:
 
-If you want to create a non-growable list, or some other custom collection type
-then, by all means, use a constructor. Otherwise, use the nice literal syntax.
-The core library exposes those constructors to ease adoption, but idiomatic Dart
-code does not use them.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
-{% prettify dart %}
-var points = [];
-var addresses = {};
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
-{% prettify dart %}
-var points = List();
-var addresses = Map();
-{% endprettify %}
-
-You can even provide a type argument for them if that matters.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (generic-collection-literals)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (collection-literals)"?>
+{% prettify dart tag=pre+code %}
 var points = <Point>[];
 var addresses = <String, Address>{};
+var counts = <int>{};
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
-{% prettify dart %}
-var points = List<Point>();
+{:.bad}
+<?code-excerpt "usage_bad.dart (collection-literals)"?>
+{% prettify dart tag=pre+code %}
 var addresses = Map<String, Address>();
+var counts = Set<int>();
 {% endprettify %}
 
-Note that this doesn't apply to the *named* constructors for those classes.
-`List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `List()` to create a non-growable one, then it
-makes sense to use that.
+Note that this guideline doesn't apply to the *named* constructors for those
+classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
+(The List class also has an unnamed constructor, but it is prohibited in null
+safe Dart.)
+
+Collection literals are particularly powerful in Dart
+because they give you access to the [spread operator][spread]
+for including the contents of other collections,
+and [`if` and `for`][control] for performing control flow while
+building the contents:
+
+[spread]: /guides/language/language-tour#spread-operator
+[control]: /guides/language/language-tour#collection-operators
+
+{:.good}
+<?code-excerpt "usage_good.dart (spread-etc)"?>
+{% prettify dart tag=pre+code %}
+var arguments = [
+  ...options,
+  command,
+  ...?modeFlags,
+  for (var path in filePaths)
+    if (path.endsWith('.dart'))
+      path.replaceAll('.dart', '.js')
+];
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (spread-etc)"?>
+{% prettify dart tag=pre+code %}
+var arguments = <String>[];
+arguments.addAll(options);
+arguments.add(command);
+if (modeFlags != null) arguments.addAll(modeFlags);
+arguments.addAll(filePaths
+    .where((path) => path.endsWith('.dart'))
+    .map((path) => path.replaceAll('.dart', '.js')));
+{% endprettify %}
+
 
 ### DON'T use `.length` to see if a collection is empty.
+
+{% include linter-rule-mention.html rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
 
 The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
@@ -257,87 +561,64 @@ collection contains *anything* can be painfully slow.
 Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-use-length)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (dont-use-length)"?>
+{% prettify dart tag=pre+code %}
 if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-use-length)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (dont-use-length)"?>
+{% prettify dart tag=pre+code %}
 if (lunchBox.length == 0) return 'so hungry...';
 if (!words.isEmpty) return words.join(' ');
 {% endprettify %}
 
-### CONSIDER using higher-order methods to transform a sequence.
-
-If you have a collection and want to produce a new modified collection from it,
-it's often shorter and more declarative to use `.map()`, `.where()`, and the
-other handy methods on `Iterable`.
-
-Using those instead of an imperative `for` loop makes it clear that your intent
-is to produce a new sequence and not to produce side effects.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-higher-order-func)"?>
-{% prettify dart %}
-var aquaticNames = animals
-    .where((animal) => animal.isAquatic)
-    .map((animal) => animal.name);
-{% endprettify %}
-
-At the same time, this can be taken too far. If you are chaining or nesting
-many higher-order methods, it may be clearer to write a chunk of imperative
-code.
 
 ### AVOID using `Iterable.forEach()` with a function literal.
 
-{% include linter-rule.html rule="avoid_function_literals_in_foreach_calls" %}
+{% include linter-rule-mention.html rule="avoid_function_literals_in_foreach_calls" %}
 
 `forEach()` functions are widely used in JavaScript because the built in
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
 over a sequence, the idiomatic way to do that is using a loop.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-forEach)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (avoid-forEach)"?>
+{% prettify dart tag=pre+code %}
 for (var person in people) {
   ...
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-forEach)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (avoid-forEach)"?>
+{% prettify dart tag=pre+code %}
 people.forEach((person) {
   ...
 });
 {% endprettify %}
 
-The exception is if all you want to do is invoke some already existing function
-with each element as the argument. In that case, `forEach()` is handy.
+Note that this guideline specifically says "function *literal*". If you want to
+invoke some *already existing* function on each element, `forEach()` is fine.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (forEach-over-func)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (forEach-over-func)"?>
+{% prettify dart tag=pre+code %}
 people.forEach(print);
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  It's OK to call `Map.forEach()`.
-  Maps aren't iterable, so they aren't covered by this guideline.
-</aside>
+Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
+this guideline doesn't apply.
 
 ### DON'T use `List.from()` unless you intend to change the type of the result.
 
 Given an Iterable, there are two obvious ways to produce a new List that
 contains the same elements:
 
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-1)"?>
-{% prettify dart %}
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-1)"?>
+{% prettify dart tag=pre+code %}
 var copy1 = iterable.toList();
 var copy2 = List.from(iterable);
 {% endprettify %}
@@ -346,9 +627,9 @@ The obvious difference is that the first one is shorter. The *important*
 difference is that the first one preserves the type argument of the original
 object:
 
-{:.good-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-good)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-good)"?>
+{% prettify dart tag=pre+code %}
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
@@ -356,9 +637,9 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-bad)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-bad)"?>
+{% prettify dart tag=pre+code %}
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
@@ -368,9 +649,9 @@ print(List.from(iterable).runtimeType);
 
 If you *want* to change the type, then calling `List.from()` is useful:
 
-{:.good-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (list-from-3)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "../../test/effective_dart_test.dart (list-from-3)"?>
+{% prettify dart tag=pre+code %}
 var numbers = [1, 2.3, 4]; // List<num>.
 numbers.removeAt(1); // Now it only contains integers.
 var ints = List<int>.from(numbers);
@@ -382,15 +663,15 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type.
 
-{% include linter-rule.html rule="prefer_iterable_whereType" %}
+{% include linter-rule-mention.html rule="prefer_iterable_whereType" %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type)"?>
-{% prettify dart %}
-var objects = [1, "a", 2, "b", 3];
+{:.bad}
+<?code-excerpt "usage_bad.dart (where-type)"?>
+{% prettify dart tag=pre+code %}
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int);
 {% endprettify %}
 
@@ -400,10 +681,10 @@ you likely want an `Iterable<int>` since that's the type you're filtering it to.
 
 Sometimes you see code that "corrects" the above error by adding `cast()`:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type-2)"?>
-{% prettify dart %}
-var objects = [1, "a", 2, "b", 3];
+{:.bad}
+<?code-excerpt "usage_bad.dart (where-type-2)"?>
+{% prettify dart tag=pre+code %}
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int).cast<int>();
 {% endprettify %}
 
@@ -413,10 +694,10 @@ the [`whereType()`][where-type] method for this exact use case:
 
 [where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
 
-{:.good-style}
-<?code-excerpt "misc/test/effective_dart_test.dart (whereType)"?>
-{% prettify dart %}
-var objects = [1, "a", 2, "b", 3];
+{:.good}
+<?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
+{% prettify dart tag=pre+code %}
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 {% endprettify %}
 
@@ -436,16 +717,16 @@ If you're already calling `toList()`, replace that with a call to
 
 [list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (cast-list)"?>
+{% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var ints = List<int>.from(stuff);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-list)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (cast-list)"?>
+{% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var ints = stuff.toList().cast<int>();
 {% endprettify %}
@@ -455,16 +736,16 @@ produces an iterable of the desired type. Type inference often picks the correct
 type for you based on the function you pass to `map()`, but sometimes you need
 to be explicit.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+{% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map<double>((n) => 1 / n);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
+{% prettify dart tag=pre+code %}
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map((n) => 1 / n).cast<double>();
 {% endprettify %}
@@ -495,9 +776,9 @@ Prefer any of these options instead:
 
 Here is an example of **creating it with the right type:**
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (cast-at-create)"?>
+{% prettify dart tag=pre+code %}
 List<int> singletonList(int value) {
   var list = <int>[];
   list.add(value);
@@ -505,9 +786,9 @@ List<int> singletonList(int value) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-at-create)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (cast-at-create)"?>
+{% prettify dart tag=pre+code %}
 List<int> singletonList(int value) {
   var list = []; // List<dynamic>.
   list.add(value);
@@ -517,9 +798,9 @@ List<int> singletonList(int value) {
 
 Here is **casting each element on access:**
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
   for (var n in objects) {
@@ -528,9 +809,9 @@ void printEvens(List<Object> objects) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-iterate)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (cast-iterate)"?>
+{% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
   for (var n in objects.cast<int>()) {
@@ -541,9 +822,9 @@ void printEvens(List<Object> objects) {
 
 Here is **casting eagerly using `List.from()`:**
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (cast-from)"?>
+{% prettify dart tag=pre+code %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
   var ints = List<int>.from(objects);
@@ -552,9 +833,9 @@ int median(List<Object> objects) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-from)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (cast-from)"?>
+{% prettify dart tag=pre+code %}
 int median(List<Object> objects) {
   // We happen to know the list only contains ints.
   var ints = objects.cast<int>();
@@ -576,7 +857,7 @@ involving functions.
 
 ### DO use a function declaration to bind a function to a name.
 
-{% include linter-rule.html rule="prefer_function_declarations_over_variables" %}
+{% include linter-rule-mention.html rule="prefer_function_declarations_over_variables" %}
 
 Modern languages have realized how useful local nested functions and closures
 are. It's common to have a function defined inside another one. In many cases,
@@ -586,19 +867,19 @@ function expression is great for that.
 But, if you do need to give it a name, use a function declaration statement
 instead of binding a lambda to a variable.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (func-decl)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (func-decl)"?>
+{% prettify dart tag=pre+code %}
 void main() {
-  localFunction() {
+  void localFunction() {
     ...
   }
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (func-decl)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (func-decl)"?>
+{% prettify dart tag=pre+code %}
 void main() {
   var localFunction = () {
     ...
@@ -608,7 +889,7 @@ void main() {
 
 ### DON'T create a lambda when a tear-off will do.
 
-{% include linter-rule.html rule="unnecessary_lambdas" %}
+{% include linter-rule-mention.html rule="unnecessary_lambdas" %}
 
 If you refer to a method on an object but omit the parentheses, Dart gives you
 a "tear-off"&mdash;a closure that takes the same parameters as the method and
@@ -617,111 +898,62 @@ invokes it when you call it.
 If you have a function that invokes a method with the same arguments as are
 passed to it, you don't need to manually wrap the call in a lambda.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-tear-off)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (use-tear-off)"?>
+{% prettify dart tag=pre+code %}
 names.forEach(print);
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (use-tear-off)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (use-tear-off)"?>
+{% prettify dart tag=pre+code %}
 names.forEach((name) {
   print(name);
 });
 {% endprettify %}
 
 
-## Parameters
-
 ### DO use `=` to separate a named parameter from its default value.
 
-{% include linter-rule.html rule="prefer_equal_for_default_values" %}
+{% include linter-rule-mention.html rule="prefer_equal_for_default_values" %}
 
 For legacy reasons, Dart allows both `:` and `=` as the default value separator
 for named parameters. For consistency with optional positional parameters, use
 `=`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (default-separator)"?>
+{% prettify dart tag=pre+code %}
 void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (default-separator)"?>
+{% prettify dart tag=pre+code %}
 void insert(Object item, {int at: 0}) { ... }
 {% endprettify %}
 
-
-### DON'T use an explicit default value of `null`.
-
-{% include linter-rule.html rule="avoid_init_to_null" %}
-
-If you make a parameter optional but don't give it a default value, the language
-implicitly uses `null` as the default, so there's no need to write it.
-
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-value-null)"?>
-{% prettify dart %}
-void error([String message]) {
-  stderr.write(message ?? '\n');
-}
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-value-null)"?>
-{% prettify dart %}
-void error([String message = null]) {
-  stderr.write(message ?? '\n');
-}
-{% endprettify %}
 
 ## Variables
 
 The following best practices describe how to best use variables in Dart.
 
-### DON'T explicitly initialize variables to `null`.
+### DO follow a consistent rule for `var` and `final` on local variables.
 
-In Dart, a variable or field that is not explicitly initialized automatically
-gets initialized to `null`. This is reliably specified by the language. There's
-no concept of "uninitialized memory" in Dart. Adding `= null` is redundant and
-unneeded.
+Most local variables shouldn't have type annotations and should be declared
+using just `var` or `final`. There are two rules in wide use for when to use one
+or the other:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-null-init)"?>
-{% prettify dart %}
-int _nextId;
+*   Use `final` for local variables that are not reassigned and `var` for those
+    that are.
 
-class LazyId {
-  int _id;
+*   Use `var` for all local variables, even ones that aren't reassigned. Never use
+    `final` for locals. (Using `final` for fields and top-level variables is
+    still encouraged, of course.)
 
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
-  }
-}
-{% endprettify %}
-
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-null-init)"?>
-{% prettify dart %}
-int _nextId = null;
-
-class LazyId {
-  int _id = null;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
-  }
-}
-{% endprettify %}
+Either rule is acceptable, but pick *one* and apply it consistently throughout
+your code. That way when a reader sees `var`, they know whether it means that
+the variable is assigned later in the function.
 
 
 ### AVOID storing what you can calculate.
@@ -730,15 +962,15 @@ When designing a class, you often want to expose multiple views into the same
 underlying state. Often you see code that calculates all of those views in the
 constructor and then stores them:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (calc-vs-store1)"?>
+{% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
-  num area;
-  num circumference;
+  double radius;
+  double area;
+  double circumference;
 
-  Circle(num radius)
+  Circle(double radius)
       : radius = radius,
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
@@ -756,24 +988,24 @@ do you know when the cache is out of date and needs to be recalculated? Here, we
 never do, even though `radius` is mutable. You can assign a different value and
 the `area` and `circumference` will retain their previous, now incorrect values.
 
-To correctly handle cache invalidation, we need to do this:
+To correctly handle cache invalidation, we would need to do this:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (calc-vs-store2)"?>
+{% prettify dart tag=pre+code %}
 class Circle {
-  num _radius;
-  num get radius => _radius;
-  set radius(num value) {
+  double _radius;
+  double get radius => _radius;
+  set radius(double value) {
     _radius = value;
     _recalculate();
   }
 
-  num _area;
-  num get area => _area;
+  double _area = 0.0;
+  double get area => _area;
 
-  num _circumference;
-  num get circumference => _circumference;
+  double _circumference = 0.0;
+  double get circumference => _circumference;
 
   Circle(this._radius) {
     _recalculate();
@@ -789,16 +1021,16 @@ class Circle {
 That's an awful lot of code to write, maintain, debug, and read. Instead, your
 first implementation should be:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (calc-vs-store)"?>
+{% prettify dart tag=pre+code %}
 class Circle {
-  num radius;
+  double radius;
 
   Circle(this.radius);
 
-  num get area => pi * radius * radius;
-  num get circumference => pi * 2.0 * radius;
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
 }
 {% endprettify %}
 
@@ -818,7 +1050,7 @@ variables). The following best practices apply to an object's members.
 
 ### DON'T wrap a field in a getter and setter unnecessarily.
 
-{% include linter-rule.html rule="unnecessary_getters_setters" %}
+{% include linter-rule-mention.html rule="unnecessary_getters_setters" %}
 
 In Java and C#, it's common to hide all fields behind getters and setters (or
 properties in C#), even if the implementation just forwards to the field. That
@@ -831,17 +1063,17 @@ Dart doesn't have this limitation. Fields and getters/setters are completely
 indistinguishable. You can expose a field in a class and later wrap it in a
 getter and setter without having to touch any code that uses that field.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-wrap-field)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (dont-wrap-field)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   var contents;
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-wrap-field)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (dont-wrap-field)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   var _contents;
   get contents => _contents;
@@ -854,22 +1086,22 @@ class Box {
 
 ### PREFER using a `final` field to make a read-only property.
 
-{% include linter-rule.html rule="unnecessary_getters" %}
+{% include linter-rule-mention.html rule="unnecessary_getters_setters" %}
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (final)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (final)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   final contents = [];
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (final)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (final)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   var _contents;
   get contents => _contents;
@@ -883,18 +1115,16 @@ don't reach for that until you need to.
 
 ### CONSIDER using `=>` for simple members.
 
-{% include linter-rule.html rule="prefer_expression_function_bodies" %}
+{% include linter-rule-mention.html rule="prefer_expression_function_bodies" %}
 
 In addition to using `=>` for function expressions, Dart also lets you define
 members with it. That style is a good fit for simple members that just calculate
 and return a value.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (use-arrow)"?>
+{% prettify dart tag=pre+code %}
 double get area => (right - left) * (bottom - top);
-
-bool isReady(num time) => minTime == null || minTime <= time;
 
 String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
@@ -906,10 +1136,10 @@ lines or contains deeply nested expressions&mdash;cascades and conditional
 operators are common offenders&mdash;do yourself and everyone who has to read
 your code a favor and use a block body and some statements.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-long)"?>
-{% prettify dart %}
-Treasure openChest(Chest chest, Point where) {
+{:.good}
+<?code-excerpt "usage_good.dart (arrow-long)"?>
+{% prettify dart tag=pre+code %}
+Treasure? openChest(Chest chest, Point where) {
   if (_opened.containsKey(chest)) return null;
 
   var treasure = Treasure(where);
@@ -919,20 +1149,20 @@ Treasure openChest(Chest chest, Point where) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
-{% prettify dart %}
-Treasure openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest) ? null : _opened[chest] = Treasure(where)
-      ..addAll(chest.contents);
+{:.bad}
+<?code-excerpt "usage_bad.dart (arrow-long)"?>
+{% prettify dart tag=pre+code %}
+Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+    ? null
+    : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 {% endprettify %}
 
 You can also use `=>` on members that don't return a value. This is idiomatic
 when a setter is small and has a corresponding getter that uses `=>`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (arrow-setter)"?>
+{% prettify dart tag=pre+code %}
 num get x => center.x;
 set x(num value) => center = Point(value, center.y);
 {% endprettify %}
@@ -940,7 +1170,7 @@ set x(num value) => center = Point(value, center.y);
 
 ### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing. {#dont-use-this-when-not-needed-to-avoid-shadowing}
 
-{% include linter-rule.html rule="unnecessary_this" %}
+{% include linter-rule-mention.html rule="unnecessary_this" %}
 
 JavaScript requires an explicit `this.` to refer to members on the object whose
 method is currently being executed, but Dart&mdash;like C++, Java, and
@@ -949,9 +1179,9 @@ C#&mdash;doesn't have that limitation.
 There are only two times you need to use `this.`. One is when a local variable
 with the same name shadows the member you want to access:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (this-dot)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   var value;
 
@@ -965,9 +1195,9 @@ class Box {
 }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (this-dot)"?>
+{% prettify dart tag=pre+code %}
 class Box {
   var value;
 
@@ -983,9 +1213,9 @@ class Box {
 
 The other time to use `this.` is when redirecting to a named constructor:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot-constructor)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (this-dot-constructor)"?>
+{% prettify dart tag=pre+code %}
 class ShadeOfGray {
   final int brightness;
 
@@ -998,9 +1228,9 @@ class ShadeOfGray {
 }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot-constructor)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (this-dot-constructor)"?>
+{% prettify dart tag=pre+code %}
 class ShadeOfGray {
   final int brightness;
 
@@ -1013,12 +1243,12 @@ class ShadeOfGray {
 }
 {% endprettify %}
 
-Note that constructor parameters never shadow fields in constructor
-initialization lists:
+Note that constructor parameters never shadow fields in constructor initializer
+lists:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (param-dont-shadow-field-ctr-init)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
+{% prettify dart tag=pre+code %}
 class Box extends BaseBox {
   var value;
 
@@ -1035,32 +1265,38 @@ relatively rare thanks to initializing formals.
 ### DO initialize fields at their declaration when possible.
 
 If a field doesn't depend on any constructor parameters, it can and should be
-initialized at its declaration. It takes less code and makes sure you won't
-forget to initialize it if the class has multiple constructors.
+initialized at its declaration. It takes less code and avoids duplication when
+the class has multiple constructors.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)"?>
-{% prettify dart %}
-class Folder {
+{:.bad}
+<?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
+{% prettify dart tag=pre+code %}
+class ProfileMark {
   final String name;
-  final List<Document> contents;
+  final DateTime start;
 
-  Folder(this.name) : contents = [];
-  Folder.temp() : name = 'temporary'; // Oops! Forgot contents.
+  ProfileMark(this.name) : start = DateTime.now();
+  ProfileMark.unnamed()
+      : name = '',
+        start = DateTime.now();
 }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
-{% prettify dart %}
-class Folder {
+{:.good}
+<?code-excerpt "usage_good.dart (field-init-at-decl)"?>
+{% prettify dart tag=pre+code %}
+class ProfileMark {
   final String name;
-  final List<Document> contents = [];
+  final DateTime start = DateTime.now();
 
-  Folder(this.name);
-  Folder.temp() : name = 'temporary';
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
 }
 {% endprettify %}
+
+Some fields can't be initialized at their declarations because they need to reference
+`this` — to use other fields or call methods, for example. However, if the
+field is marked `late`, then the initializer *can* access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
@@ -1072,93 +1308,108 @@ The following best practices apply to declaring constructors for a class.
 
 ### DO use initializing formals when possible.
 
-{% include linter-rule.html rule="prefer_initializing_formals" %}
+{% include linter-rule-mention.html rule="prefer_initializing_formals" %}
 
 Many fields are initialized directly from a constructor parameter, like:
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (field-init-as-param)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
-  Point(num x, num y) {
-    this.x = x;
-    this.y = y;
-  }
+  double x, y;
+  Point(double x, double y)
+      : x = x,
+        y = y;
 }
 {% endprettify %}
 
-We've got to type `x` _four_ times here define a field. We can do better:
+We've got to type `x` _four_ times here to define a field. We can do better:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (field-init-as-param)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  num x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
 
 This `this.` syntax before a constructor parameter is called an "initializing
-formal". You can't always take advantage of it. In particular, using it means
-the parameter is not visible in the initialization list. But, when you can, you
-should.
+formal". You can't always take advantage of it. Sometimes you want to have a
+named parameter whose name doesn't match the name of the field you are
+initializing. But when you *can* use initializing formals, you *should*.
 
 
-### DON'T type annotate initializing formals.
+### DON'T use `late` when a constructor initializer list will do.
 
-{% include linter-rule.html rule="type_init_formals" %}
+Sound null safety requires Dart to ensure that a non-nullable field is
+initialized before it can be read. Since fields can be read inside the
+constructor body, this means you get an error if you don't initialize a
+non-nullable field before the body runs.
 
-If a constructor parameter is using `this.` to initialize a field, then the type
-of the parameter is understood to be the same type as the field.
+You can make this error go away by marking the field `late`. That turns the
+compile-time error into a *runtime* error if you access the field before it is
+initialized. That's what you need in some cases, but often the right fix is to
+initialize the field in the constructor initializer list:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (late-init-list)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
-  Point(this.x, this.y);
+  double x, y;
+  Point.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-type-init-formals)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (late-init-list)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
-  Point(int this.x, int this.y);
+  late double x, y;
+  Point.polar(double theta, double radius) {
+    x = cos(theta) * radius;
+    y = sin(theta) * radius;
+  }
 }
 {% endprettify %}
+
+
+The initializer list gives you access to constructor parameters and lets you
+initialize fields before they can be read. So, if it's possible to use an initializer list,
+that's better than making the field `late` and losing some static safety and
+performance.
 
 
 ### DO use `;` instead of `{}` for empty constructor bodies.
 
-{% include linter-rule.html rule="empty_constructor_bodies" %}
+{% include linter-rule-mention.html rule="empty_constructor_bodies" %}
 
 In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (semicolon-for-empty-body)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y);
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (semicolon-for-empty-body)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (semicolon-for-empty-body)"?>
+{% prettify dart tag=pre+code %}
 class Point {
-  int x, y;
+  double x, y;
   Point(this.x, this.y) {}
 }
 {% endprettify %}
 
 ### DON'T use `new`.
 
-{% include linter-rule.html rule="unnecessary_new" %}
+{% include linter-rule-mention.html rule="unnecessary_new" %}
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
@@ -1167,9 +1418,9 @@ actually return a new object.
 The language still permits `new` in order to make migration less painful, but
 consider it deprecated and remove it from your code.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (no-new)"?>
+{% prettify dart tag=pre+code %}
 Widget build(BuildContext context) {
   return Row(
     children: [
@@ -1182,9 +1433,9 @@ Widget build(BuildContext context) {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 Widget build(BuildContext context) {
   return [!new!] Row(
     children: [
@@ -1200,7 +1451,7 @@ Widget build(BuildContext context) {
 
 ### DON'T use `const` redundantly.
 
-{% include linter-rule.html rule="unnecessary_const" %}
+{% include linter-rule-mention.html rule="unnecessary_const" %}
 
 In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
@@ -1219,23 +1470,23 @@ may support non-const default values.)
 Basically, any place where it would be an error to write `new` instead of
 `const`, Dart 2 allows you to omit the `const`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-const)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (no-const)"?>
+{% prettify dart tag=pre+code %}
 const primaryColors = [
-  Color("red", [255, 0, 0]),
-  Color("green", [0, 255, 0]),
-  Color("blue", [0, 0, 255]),
+  Color('red', [255, 0, 0]),
+  Color('green', [0, 255, 0]),
+  Color('blue', [0, 0, 255]),
 ];
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
+{% prettify dart tag=pre+code %}
 const primaryColors = [!const!] [
-  [!const!] Color("red", [!const!] [255, 0, 0]),
-  [!const!] Color("green", [!const!] [0, 255, 0]),
-  [!const!] Color("blue", [!const!] [0, 0, 255]),
+  [!const!] Color('red', [!const!] [255, 0, 0]),
+  [!const!] Color('green', [!const!] [0, 255, 0]),
+  [!const!] Color('blue', [!const!] [0, 0, 255]),
 ];
 {% endprettify %}
 
@@ -1246,7 +1497,7 @@ best practices apply to catching and throwing exceptions.
 
 ### AVOID catches without `on` clauses.
 
-{% include linter-rule.html rule="avoid_catches_without_on_clauses" %}
+{% include linter-rule-mention.html rule="avoid_catches_without_on_clauses" %}
 
 A catch clause with no `on` qualifier catches *anything* thrown by the code in
 the try block. [Pokémon exception handling][pokemon] is very likely not what you
@@ -1289,11 +1540,11 @@ one of the core Exception classes or some other type.
 
 ### DON'T explicitly catch `Error` or types that implement it.
 
+{% include linter-rule-mention.html rule="avoid_catching_errors" %}
+
 This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
 you can locate and fix the bug.
-
-[error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/Error-class.html
 
 Catching errors of these types breaks that process and masks the bug. Instead of
 *adding* error-handling code to deal with this exception after the fact, go back
@@ -1302,16 +1553,16 @@ and fix the code that is causing it to be thrown in the first place.
 
 ### DO use `rethrow` to rethrow a caught exception.
 
-{% include linter-rule.html rule="use_rethrow_when_possible" %}
+{% include linter-rule-mention.html rule="use_rethrow_when_possible" %}
 
 If you decide to rethrow an exception, prefer using the `rethrow` statement
 instead of throwing the same exception object using `throw`.
 `rethrow` preserves the original stack trace of the exception. `throw` on the
 other hand resets the stack trace to the last thrown position.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (rethrow)"?>
+{% prettify dart tag=pre+code %}
 try {
   somethingRisky();
 } catch (e) {
@@ -1320,9 +1571,9 @@ try {
 }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 try {
   somethingRisky();
 } catch (e) {
@@ -1343,9 +1594,9 @@ Asynchronous code is notoriously hard to read and debug, even when using a nice
 abstraction like futures. The `async`/`await` syntax improves readability and
 lets you use all of the Dart control flow structures within your async code.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
+{% prettify dart tag=pre+code %}
 Future<int> countActivePlayers(String teamName) [!async!] {
   try {
     var team = [!await!] downloadTeam(teamName);
@@ -1360,9 +1611,9 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (async-await)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (async-await)"?>
+{% prettify dart tag=pre+code %}
 Future<int> countActivePlayers(String teamName) {
   return downloadTeam(teamName).then((team) {
     if (team == null) return Future.value(0);
@@ -1383,19 +1634,20 @@ It's easy to get in the habit of using `async` on any function that does
 anything related to asynchrony. But in some cases, it's extraneous. If you can
 omit the `async` without changing the behavior of the function, do so.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
-{% prettify dart %}
-Future afterTwoThings(Future first, Future second) {
-  return Future.wait([first, second]);
+{:.good}
+<?code-excerpt "usage_good.dart (unnecessary-async)"?>
+{% prettify dart tag=pre+code %}
+Future<int> fastestBranch(
+    Future<int> left, Future<int> right) {
+  return Future.any([left, right]);
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (unnecessary-async)"?>
-{% prettify dart %}
-Future afterTwoThings(Future first, Future second) async {
-  return Future.wait([first, second]);
+{:.bad}
+<?code-excerpt "usage_bad.dart (unnecessary-async)"?>
+{% prettify dart tag=pre+code %}
+Future<int> fastestBranch(Future<int> left, Future<int> right) async {
+  return Future.any([left, right]);
 }
 {% endprettify %}
 
@@ -1409,18 +1661,18 @@ Cases where `async` *is* useful include:
 * You are returning a value and you want it implicitly wrapped in a future.
   `async` is shorter than `Future.value(...)`.
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
-{% prettify dart %}
-Future usesAwait(Future later) async {
+{:.good}
+<?code-excerpt "usage_good.dart (async)"?>
+{% prettify dart tag=pre+code %}
+Future<void> usesAwait(Future<String> later) async {
   print(await later);
 }
 
-Future asyncError() async {
+Future<void> asyncError() async {
   throw 'Error!';
 }
 
-Future asyncValue() async => 'value';
+Future<void> asyncValue() async => 'value';
 {% endprettify %}
 
 ### CONSIDER using higher-order methods to transform a stream.
@@ -1435,9 +1687,9 @@ Many people new to asynchronous programming want to write code that produces a
 future. The constructors in Future don't seem to fit their need so they
 eventually find the Completer class and use that.
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (avoid-completer)"?>
+{% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) {
   var completer = Completer<bool>();
 
@@ -1456,9 +1708,9 @@ they're clearer and make error handling easier.
 
 [then]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/then.html
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (avoid-completer)"?>
+{% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) {
   return File(path).readAsString().then((contents) {
     return contents.contains('bear');
@@ -1466,9 +1718,9 @@ Future<bool> fileContainsBear(String path) {
 }
 {% endprettify %}
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (avoid-completer-alt)"?>
+{% prettify dart tag=pre+code %}
 Future<bool> fileContainsBear(String path) async {
   var contents = await File(path).readAsString();
   return contents.contains('bear');
@@ -1490,9 +1742,9 @@ itself implements `Object`, so `is Object` or `is T` where `T` is some type
 parameter that could be instantiated with `Object` returns true even when the
 object is a future. Instead, explicitly test for the `Future` case:
 
-{:.good-style}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (test-future-or)"?>
-{% prettify dart %}
+{:.good}
+<?code-excerpt "usage_good.dart (test-future-or)"?>
+{% prettify dart tag=pre+code %}
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is Future<T>) {
     var result = await value;
@@ -1500,14 +1752,14 @@ Future<T> logValue<T>(FutureOr<T> value) async {
     return result;
   } else {
     print(value);
-    return value as T;
+    return value;
   }
 }
 {% endprettify %}
 
-{:.bad-style}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (test-future-or)"?>
-{% prettify dart %}
+{:.bad}
+<?code-excerpt "usage_bad.dart (test-future-or)"?>
+{% prettify dart tag=pre+code %}
 Future<T> logValue<T>(FutureOr<T> value) async {
   if (value is T) {
     print(value);
@@ -1524,6 +1776,7 @@ In the bad example, if you pass it a `Future<Object>`, it incorrectly treats it
 like a bare, synchronous value.
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
+[Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
 [OutOfMemoryError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/OutOfMemoryError-class.html
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html

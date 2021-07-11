@@ -1,25 +1,42 @@
 ---
-layout: default
-title: "Dart Codelabs"
-description: "Links to Dart codelabs."
-permalink: /codelabs
+title: Codelabs
+description: Links to Dart codelabs.
 toc: false
 ---
 
-For a guided, hands-on coding experience,
-go through one of the Dart codelabs.
+The Dart codelabs provide a guided, hands-on coding experience —
+no download required!
 
-<img src="{{site.webdev}}/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
-#### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
+## General
 
+<img src="/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
+### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
-Use DartPad (no download required!) to explore how
-Dart makes writing modern apps easy and fun.
+Use DartPad to explore how
+Dart makes writing apps easy and fun.
 
-#### Other codelabs
+### [Dart cheatsheet](/codelabs/dart-cheatsheet)
 
-If you're ready to download an SDK, try one of the platform-specific codelabs:
+Use DartPad to learn or remind yourself of
+some of the most commonly used, yet unique features of the Dart language.
 
-* [Flutter codelabs]({{site.flutter}}/codelabs)
-* [AngularDart codelabs]({{site.webdev}}/codelabs)
+### [Iterable collections](/codelabs/iterables)
 
+Use DartPad to learn or remind yourself of how to use
+lists, sets, and other iterable collections in Dart,
+with special attention to filtering and mapping values.
+
+### [Asynchronous programming: futures, async, await](/codelabs/async-await)
+
+Use DartPad to learn or remind yourself of how to write 
+asynchronous code using futures and the `async` and `await` keywords.
+
+### [Null safety](/codelabs/null-safety)
+
+Use DartPad to learn about Dart's null-safe type system,
+which was introduced in Dart 2.12.
+
+## Flutter
+
+To learn about Flutter, try one of the
+[Flutter codelabs.]({{site.flutter}}/codelabs)

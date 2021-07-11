@@ -1,5 +1,5 @@
 ---
-title: Install Shared Packages
+title: Install shared packages
 description: Packages are bundles of source code, tools, and resources that help you to organize and share code
 ---
 
@@ -8,28 +8,28 @@ description: Packages are bundles of source code, tools, and resources that help
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
-  * The [Pub site]({{site.pub}}) is the primary public repository for Dart
+  * The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
     packages.
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
   * If you're developing a web or server-side app,
-    use Stagehand to generate starting files.
+    use `dart create` to generate starting files.
   * If you're developing a web or server-side app,
-    use `pub get` to download packages.
+    use `dart pub get` to download packages.
   * If you're developing a mobile app, use Flutter's tools.
 </div>
 
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
-are available at the [Pub site]({{site.pub}}) repository.
+are available at the [pub.dev site]({{site.pub}}) repository.
 
-This tutorial shows how to use `pub`&mdash;a package manager
+This tutorial shows how to use `dart pub`&mdash;a package manager
 that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
-the [Pub site]({{site.pub}};
+the [pub.dev site]({{site.pub}});
 just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
@@ -51,35 +51,28 @@ your app must itself be a package.
 Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
-You can use the Stagehand tool to generate packages
+You can use the [`dart create`](/tools/dart-create) command to generate packages
 with valid pubspec.yaml files and directory structures.
-Stagehand works either at the command line or (behind the scenes) in an IDE
+This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
-Install or update Stagehand using
-[pub global activate](/tools/pub/cmd/pub-global):
+
+Run the `dart create` command with the `--help` flag
+to see what kinds of template files it can generate:
 
 ```terminal
-> pub global activate stagehand
+$ dart create --help
 ```
 
-Now run the `stagehand` command to see what kinds of template files
-it can generate:
+You'll see a list of templates, including various web and server-side apps.
+One of the templates is named **console-full**.
+
+Use the `dart create` command to
+generate a command-line app named `vector_victor`:
 
 ```terminal
-> stagehand
-```
-
-You'll see a list of generators, including various web and server-side apps.
-One of the generators is named **console-full**.
-
-In a new directory named `vector_victor`,
-use Stagehand to generate a command-line app:
-
-```terminal
-> mkdir vector_victor
-> cd vector_victor
-> stagehand console-full
+$ dart create -t console-full vector_victor 
+$ cd vector_victor
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -90,15 +83,18 @@ The contents of your pubspec.yaml file should look something like this:
 ```yaml
 name: vector_victor
 description: A sample command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.4.1
+# dependencies:
+#   path: ^1.8.0
 
 dev_dependencies:
-  test: ^1.0.0
+  lints: ^1.0.0
+  test: ^1.16.0
 ```
 
 ## Name the package dependencies
@@ -113,46 +109,47 @@ of a package that your app uses.
 
 Let's make the vector_victor app have a dependency
 on the vector_math package,
-which is available at the [Pub site]({{site.pub}}).
+which is available at the [pub.dev site]({{site.pub}}).
 
  1. Get the current installation details for the package:
 
     {: type="a"}
      1. Go to [vector_math's entry on the Package
-        site.]({{site.pub}}/packages/vector_math)
+        site.]({{site.pub-pkg}}/vector_math)
      2. Click the **Installing** tab.
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
 
         ```yaml
         dependencies:
-          vector_math: ^2.0.7
+          vector_math: ^2.0.8
         ```
 
  2. Edit `pubspec.yaml`.
 
  3. In the dependencies section, add the string you copied from the
-    Pub site. Be careful to keep the indentation the same; YAML is
+    pub.dev site. Be careful to keep the indentation the same; YAML is
     picky! For example:
 
     ```yaml
     environment:
-      sdk: '>=2.1.0 <3.0.0'
+      sdk: '>=2.8.1 <3.0.0'
 
     dependencies:
-      vector_math: ^2.0.7
+      vector_math: ^2.0.8
 
     dev_dependencies:
-      test: ^1.0.0
+      pedantic: ^1.9.0
+      test: ^1.14.4
     ```
 
-See [Pub Versioning Philosophy](/tools/pub/versioning)
-for details of what version numbers mean,
-and how you can format them.
+For details of what version numbers mean
+and how you can format them,
+see [Pub versioning philosophy](/tools/pub/versioning).
 
-The [Pub site]({{site.pub}})
+The [pub.dev site]({{site.pub}})
 is the primary public repository for Dart packages.
-`pub` automatically checks that
+`dart pub` automatically checks that
 website when resolving package dependencies.
 To use one of the packages from that site,
 you can specify it by its simple name,
@@ -164,18 +161,16 @@ If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
 If not, do it yourself by running
-[pub get](/tools/pub/cmd/pub-get):
+[dart pub get](/tools/pub/cmd/pub-get):
 
 ```terminal
-> pub get
+$ dart pub get
 Resolving dependencies...
-+ vector_math 2.0.7
++ vector_math 2.0.8
 Changed 1 dependency!
-Precompiling executables...
-Precompiled vector_math:mesh_generator.
 ```
 
-The `pub get` command installs the
+The `dart pub get` command installs the
 packages in your app's dependencies list.
 Each package can contain libraries and other assets.
 Pub works recursively;
@@ -190,7 +185,7 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
-Later you can modify the version constraints and use `pub upgrade`
+Later you can modify the version constraints and use `dart pub upgrade`
 to update to new versions as needed.
 
 ## What did you get (and not get)?
@@ -203,9 +198,8 @@ you got and where it came from.
 
 To see the contents of the vector_math package,
 visit the
-<a href="https://github.com/johnmccutchan/vector_math" target="_blank">
-Dart vector math repository
-</a>
+<a href="https://github.com/johnmccutchan/vector_math"
+target="_blank" rel="noopener">Dart vector math repository</a>
 at GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
@@ -232,12 +226,16 @@ only one, `lib`, was installed when you ran pub get.
     <div class="col-lg-7">
       <em>Housekeeping files:</em>
       When using a package written by someone else,
-      the README file is a good place to start.
+      the <code>README.md</code> file is a good place to start.
       It should contain important information about the package,
       such as its intent, contents, samples, and instructions.
-      The LICENSE file provides copyright and rules-of-use information.
-      These files can be found at the package repository.
-      They are not installed when you install a package.
+      The <code>LICENSE</code> file provides
+      copyright and rules-of-use information.
+      All of these files are in the package repository;
+      the contents of some,
+      such as <code>README.md</code>,
+      are also displayed in pub.dev.
+      These files aren't installed when you install a package.
     </div>
   </div>
   <hr>
@@ -275,7 +273,7 @@ use the `package:` prefix.
 
    {: type="a"}
    1. Go to [vector_math's entry on the Package
-      site.]({{site.pub}}/packages/vector_math)
+      site.]({{site.pub-pkg}}/vector_math)
    2. Click the **Installing** tab.
    3. Copy the **import** line. It should look something like this:
 
@@ -288,7 +286,7 @@ use the `package:` prefix.
    For inspiration, look at the
    [vector_math API
    docs]({{site.pub}}/documentation/vector_math/latest),
-   which you can find from the Pub site entry.
+   which you can find from the pub.dev site entry.
 
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
@@ -298,9 +296,8 @@ use the `package:` prefix.
 
 ## Other resources
 
-* Dart developers share packages at the [Pub site]({{site.pub}}).
+* Dart developers share packages at the [pub.dev site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
-* See the [pub documentation](/tools/pub)
+* See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
-

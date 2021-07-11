@@ -1,0 +1,11 @@
+name: dart_tools
+description: Dart-based tools for site-www
+
+environment:
+  sdk: '>=2.13.0 <3.0.0'
+
+dependencies:
+  path: ^1.8.0
+
+dev_dependencies:
+  lints: ^1.0.0

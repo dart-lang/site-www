@@ -1,33 +1,51 @@
 ---
-layout: default
-permalink: /tools/pub/cmd
-title: "Pub Commands"
-description: "Pub, a package management tool for Dart, supports a variety of commands."
+title: dart pub
+description: The command-line interface for pub, a package management tool for Dart.
 ---
 
-The [pub tool](/tools/pub) has commands for managing packages
-and for deploying packages and command-line apps.
+The [pub package manager](/guides/packages) has a command-line interface
+that works with either the
+[`flutter` tool][flutter-cli] or the [`dart` tool][dart-cli].
+With either tool, add the `pub` command followed by
+a subcommand such as `get`:
 
-{% include flutter-packages.md %}
+```terminal
+$ dart pub get    # Gets dependencies for a non-Flutter package
+$ flutter pub get # Gets dependencies for a Flutter package
+```
 
-Quick links to the `pub` commands:
+This site uses `dart pub <subcommand>` for its examples,
+but if your current directory holds a Flutter app
+or other Flutter-specific code,
+use `flutter pub <subcommand>` instead.
+For more information, see
+[Using packages]({{site.flutter}}/using-packages)
+on the [Flutter website]({{site.flutter}}).
 
-* [`pub cache`](/tools/pub/cmd/pub-cache)
-* [`pub deps`](/tools/pub/cmd/pub-deps)
-* [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
-* [`pub get`](/tools/pub/cmd/pub-get)
-* [`pub global`](/tools/pub/cmd/pub-global)
-* [`pub publish`](/tools/pub/cmd/pub-lish)
-* [`pub run`](/tools/pub/cmd/pub-run)
-* [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`pub uploader`](/tools/pub/cmd/pub-uploader)
+[flutter-cli]: {{site.flutter}}/docs/reference/flutter-cli
+[dart-cli]: /tools/dart-tool
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.version-note}}
+  The `dart pub` command debuted in Dart 2.10.
+  Although you might still find examples of
+  using the standalone `pub` command instead of
+  `dart pub` or `flutter pub`,
+  the standalone `pub` command is deprecated.
+{{site.alert.end}}
 
-Pub's commands fall into the following categories:
+If you encounter problems using the pub tool,
+see [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+
+## List of subcommands
+
+Detailed documentation exists for each of the following pub subcommands:
+
+{% include pub-subcommands.md %}
+
+## Overview of subcommands
+
+Pub's subcommands fall into the following categories:
 
 * [Managing package dependencies](#managing-apps)
 * [Running command-line apps](#running-command-line-apps)
@@ -35,39 +53,46 @@ Pub's commands fall into the following categories:
 
 
 <a id="managing-apps"></a>
-## Managing package dependencies
+### Managing package dependencies
 
-Pub provides a number of commands for managing the
+Pub provides a number of subcommands for managing the
 [packages your code depends on](/tools/pub/dependencies).
 
-In this group, the most commonly used commands are `pub get` and
-`pub upgrade`, which retrieve or upgrade dependencies used by a package.
-Every time you modify a pubspec file, run `pub get`
+In this group, the most commonly used subcommands are `get` and
+`upgrade`, which retrieve or upgrade dependencies used by a package.
+Every time you modify a pubspec file,
+run `dart pub get` or `flutter pub get`
 to make sure the dependencies are up to date. Some IDEs
 perform this step automatically on the creation of a project,
 or any modification of the pubspec.
 
-[`pub cache`](/tools/pub/cmd/pub-cache)
-: Manages pub's local package cache. Use this command to add packages
+[`cache`](/tools/pub/cmd/pub-cache)
+: Manages pub's local package cache. Use this subcommand to add packages
   to your cache, or to perform a clean reinstall of all packages in
   your cache.
 
-[`pub deps`](/tools/pub/cmd/pub-deps)
+[`deps`](/tools/pub/cmd/pub-deps)
 : Lists all dependencies used by the current package.
 
-[`pub downgrade`](/tools/pub/cmd/pub-downgrade)
+[`downgrade`](/tools/pub/cmd/pub-downgrade)
 : Retrieves the lowest versions of all the packages that are
   listed as dependencies used by the current package. Used for testing
   the lower range of your package's dependencies.
 
-[`pub get`](/tools/pub/cmd/pub-get)
+[`get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
   the current package.
   If a `pubspec.lock` file already exists, fetches the version
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
-[`pub upgrade`](/tools/pub/cmd/pub-upgrade)
+[`outdated`](/tools/pub/cmd/pub-outdated)
+: Looks at every package that the current package depends on,
+  determines which package dependencies are out of date,
+  and gives you advice on how to update them.
+  Use this subcommand when you want to update package dependencies.
+
+[`upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
   as dependencies used by the current package. If a `pubspec.lock`
   file exists, ignores the versions listed in the lock file and fetches
@@ -75,50 +100,46 @@ or any modification of the pubspec.
   Creates or updates the lock file, as needed.
 
 
-## Running command-line apps
+### Running command-line apps
 
-Two commands let you run Dart scripts from the command line:
+The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
+make a package globally available, 
+so you can run scripts from that package’s `bin` directory.
+To run globally available scripts, you must
+[add the system cache `bin` directory to your path][add-path].
 
-* The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
-  package, or in one of its dependencies.
+[add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
-* The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
-  globally available packages.
-
-## Deploying packages and apps
+### Deploying packages and apps
 
 With pub you can publish packages and command-line apps.
 
 {% include tools/pub-was-a-builder.md %}
 
-### Packages
+#### Packages
 
 To share your Dart packages with the world, you can
-use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
-package to the [Pub site]({{site.pub}}). The
-[`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
+use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the
+package to the [pub.dev site]({{site.pub}}). The
+[`uploader`](/tools/pub/cmd/pub-uploader) subcommand enables specific
 users to modify and upload new versions of your package.
 
-### Command-line apps
+#### Command-line apps
 
 For any package that contains scripts (anything under the `bin/`
 directory), consider adding the `executables` tag to the pubspec file.
 When a script is listed under `executables`, users can run
-[`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
+[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
 to make it directly available from the command line.
 
----
 
 ## Global options
 
-Several command-line options work with all of the pub commands.
+Several command-line options work with all of the pub subcommands.
 These include:
 
 `--help` or `-h`
 : Print usage information.
-
-`--version`
-: Print version of pub.
 
 `--trace`
 : Print debugging information when an error occurs.

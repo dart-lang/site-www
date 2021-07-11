@@ -1,5 +1,5 @@
 ---
-title: Dart 2
+title: Dart 2 migration guide
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
 ---
 
@@ -26,6 +26,11 @@ The Dart language, libraries, build system, and web development tools have chang
   * `const` is optional inside of a constant context.
 * Dart no longer has checked mode.
   * [Assert statements][] are still supported, but you enable them differently.
+* Functions marked `async` now run synchronously
+  until the first `await` statement. 
+  * Previously, execution returned immediately to the caller, and
+    the function body was scheduled to run later.
+  * To learn more, read [the September 2017 Dart newsletter][sync async start].
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
   * [Dev channel API reference documentation][apiref]
@@ -47,7 +52,7 @@ and what platforms it runs on.
 For help with migrating web apps,
 see the [web app migration guide.][webdev dart2]
 If you're migrating a Flutter app,
-consult the [breaking change notification.][Flutter breaking changes]
+consult the [breaking change notification.][Leaf's email]
 If you publish packages,
 then in addition to making platform-specific changes,
 follow the [package migration instructions below](#migrating-packages).
@@ -63,7 +68,7 @@ from either Dart 1.x or an earlier version of Dart 2.
    * [Flutter SDK upgrade instructions][Flutter SDK upgrade]
    * [Dart SDK instructions][Dart SDK install] (server-side or web)
 2. **Upgrade the packages your app depends on.**
-   * Flutter: [`flutter packages upgrade`][flutter package upgrade]
+   * Flutter: [`flutter pub upgrade`][flutter pub upgrade]
    * Server-side or web: [`pub upgrade`][pub upgrade]
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
@@ -80,7 +85,7 @@ from either Dart 1.x or an earlier version of Dart 2.
    Consider adding automated tests to catch issues that you find.
 7. **Fix issues until your code works.**
 8. _Optional:_ **Remove `new` and unnecessary `const`.**
-   * You can remove these by hand or use a tool such as `dartfmt --fix`.
+   * You can remove these by hand or use a tool such as `dart format --fix`.
    * To find occurrences of `new` and unnecessary `const`, add the rules
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
@@ -130,7 +135,7 @@ environment:
   sdk: '>=1.20.1 <3.0.0'
 ```
 
-If you use [features introduced after 2.0,][CHANGELOG]
+If you use [features introduced after 2.0,][dart-lang/sdk CHANGELOG]
 be sure to specify the correct lower SDK constraint:
 
 ```yaml
@@ -138,8 +143,6 @@ environment:
   # Works in 2.1 but not 2.0.
   sdk: '>=2.1.0 <3.0.0'
 ```
-
-[CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 
 <aside class="alert alert-warning" markdown="1">
   **Packages must have an upper constraint of `<3.0.0`** to work in
@@ -153,26 +156,26 @@ environment:
 
 * [DartPad](/tools/dartpad)
 * [Dart Language Specification][]
-* [About Dart SDK release channels and version strings][pre-release]
+* [About Dart SDK release channels and version strings][prerelease]
 * [SDK constraints][]
 * [Updating your pub package to Dart 2,][]
   an article that includes tips for updating your code and
   using Travis to perform continuous integration (CI) testing
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
-[dartdevc]: {{site.webdev}}/tools/dartdevc
+[dartdevc]: /tools/dartdevc
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
-[dartanalyzer]: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer
-[flutter package upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
-[pub upgrade]: /tools/pub/get-started#upgrading-a-dependency
+[dartanalyzer]: /tools/dart-analyze
+[flutter pub upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
+[pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev
 [assert statements]: /guides/language/language-tour#assert
-[build_runner web]: {{site.webdev}}/tools/build_runner
+[build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
@@ -180,16 +183,16 @@ environment:
 [dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
 [Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter breaking changes]: https://groups.google.com/forum/#!topic/flutter-dev/H8dDhWg_c8I
 [Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
-[Dart SDK install]: /tools/sdk#install
+[Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /tools/sdk#about-release-channels-and-version-strings
+[prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[sound Dart]: /guides/language/sound-dart
+[sound Dart]: /guides/language/type-system
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
-[webdev dart2]: {{site.webdev}}/dart-2
+[webdev dart2]: /web/dart-2
+[sync async start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start

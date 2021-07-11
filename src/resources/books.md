@@ -1,36 +1,77 @@
 ---
-layout: default
-permalink: /resources/books
-title: Publications about Dart
-description: Read all about it! Here's a collection of publications about Dart.
-toc: false
+title: Books about Dart
+description: Read all about it! Here's a collection of books about Dart.
 ---
 
-Here's a collection of publications about Dart.
-If you find another resource that we should add,
-[let us know](https://github.com/dart-lang/site-www/issues).
+Here's a collection of books about the Dart language.
+Many [Flutter books](https://flutter.dev/docs/resources/books)
+also cover Dart.
+If you find another Dart book that might be helpful, please
+[let us know.](https://github.com/dart-lang/site-www/issues)
 
-## Dart 2
+## Dart books with null safety
 
-No Dart 2 publications exist yet.
-Check back later to see the latest updates.
-For information on converting Dart 1.x code to Dart 2, see the
-[Dart 2 page](/dart-2).
+{% for book in site.data.books-dart-null-safe %}
 
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
 
-## Dart 1.x
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
 
-The following publications cover Dart 1.x.
+{{book.desc}}
 
-{% for book in site.data.books %}
-<div class="item-with-pic">
-  <a href="{{ book.link }}" title="{{ book.title }}">
-    <img src="{% asset 'cover/{{ book.cover }}' @path %}" alt="Cover: {{ book.title }}"/>
-  </a>
-  <div class="details">
-    <h3 class="title"><a href="{{ book.link }}" title="{{ book.title }}">{{ book.title }}</a></h3>
-    <h4 class="authors">by {{ book.authors | array_to_sentence_string }}</h4>
-    <p>{{ book.desc }}</p>
-  </div>
+</div>
+</div>
+{% endfor %}
+
+## Dart 2 books preceding null safety
+
+The following books cover [Dart 2](/dart-2), but not [null safety](/null-safety):
+
+{% for book in site.data.books-dart2 %}
+
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+
+</div>
+</div>
+{% endfor %}
+
+## Early Dart books
+
+The following books cover pre-2.0 versions of Dart.
+
+{% for book in site.data.books-dart1 %}
+
+<div class="book-img-with-details row">
+<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
+  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
+</a>
+<div class="details col-sm-9" markdown="1">
+### [{{book.title}}]({{book.link}})
+{:.title}
+
+by {{book.authors | array_to_sentence_string}}
+{:.authors.h4}
+
+{{book.desc}}
+
+</div>
 </div>
 {% endfor %}

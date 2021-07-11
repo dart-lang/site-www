@@ -1,7 +1,7 @@
 # Site settings
 title: Dart
 description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
-url: https://www.dartlang.org
+url: https://dart.dev
 dev-url: https://dartlang-org-dev.firebaseapp.com
 repo:
   this: https://github.com/dart-lang/site-www
@@ -11,22 +11,23 @@ port: 4000
 
 # Global variables
 # use case:
-#   {{site.webdev}}/downloads
+#   {{site.flutter}}/docs
 
-www: https://www.dartlang.org
+dart-site: '' 
 prev-url: https://v1-dartlang-org.firebaseapp.com
-webdev: https://webdev.dartlang.org
-dev-webdev: https://webdev-dartlang-org-dev.firebaseapp.com
+angulardart: https://angulardart.xyz
 dart_vm:  /server
-flutter:  https://flutter.io
-dart_api: https://api.dartlang.org
-flutter_api: https://docs.flutter.io
-pub: https://pub.dartlang.org
-pub-api: https://pub.dartlang.org/documentation
-pub-pkg: https://pub.dartlang.org/packages
+flutter:  https://flutter.dev
+dart_api: https://api.dart.dev
+flutter_api: https://api.flutter.dev
+pub: https://pub.dev
+pub-api: https://pub.dev/documentation
+pub-pkg: https://pub.dev/packages
 lints: https://dart-lang.github.io/linter/lints
-dartpad: https://dartpad.dartlang.org
-dartpadx: https://dartpad.dartlang.org/experimental/embed-new.html
+dartpad: https://dartpad.dev
+dartpad-embed: https://dartpad.dev/embed-dart.html
+dartpad-embed-html: https://dartpad.dev/embed-html.html
+dartpad-embed-inline: https://dartpad.dev/embed-inline.html
 news: https://news.dartlang.org
 group: https://groups.google.com/a/dartlang.org
 
@@ -55,21 +56,8 @@ defaults:
     type: tutorials
   values:
     layout: tutorial
-- scope:
-    path: tools
-  values:
-    show_breadcrumbs: true
-- scope:
-    path: tools/sdk
-  values:
-    repo: *repo-shared
 
 custom:
-  dartpad:
-    embed-dart-prefix: https://dartpad.dartlang.org/embed-dart.html
-    embed-html-prefix: https://dartpad.dartlang.org/embed-html.html
-    embed-inline-prefix: https://dartpad.dartlang.org/embed-inline.html
-    direct-link: https://dartpad.dartlang.org
   downloads:
     dartarchive-be-url-prefix: https://storage.googleapis.com/dart-archive/channels/be/raw
     dartarchive-dev-url-prefix: https://storage.googleapis.com/dart-archive/channels/dev/release
@@ -97,11 +85,9 @@ assets:
     - _shared/_assets/css
 
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
-
-# bundler_args: --without production
-exclude: [diagrams]
 plugins: [jekyll-toc]
 source: src
+strict_front_matter: true
 # `symlinked-sources` can refer to individual files or directories
 # under `src` that are symlinked to somewhere outside `src`, or it can
 # refer to the root folder of the symlinked content (like `site-shared/src`):
@@ -115,3 +101,34 @@ og_image_vers: "?2"
 toc:
   min_level: 2
   max_level: 3
+  no_toc_section_class: exclude # ignore if in no_toc_section element
+
+## Site-wide shorthands
+
+os-list: [Windows, macOS, Linux]
+
+alert:
+  important: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-circle"></i> **Important:**
+  info: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i>
+  note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-info-circle"></i> **Note:**
+  version-note: >-
+    <aside class="alert alert-info" role="alert" markdown="1">
+    <i class="fas fa-code-branch"></i> **Version note:**
+  secondary: >-
+    <aside class="alert alert-secondary" role="alert" markdown="1">
+  tip: >-
+    <aside class="alert alert-success" role="alert" markdown="1">
+    <i class="far fa-lightbulb"></i> **Tip:**
+  warn: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-triangle"></i>
+  warning: >-
+    <aside class="alert alert-warning" role="alert" markdown="1">
+    <i class="fas fa-exclamation-triangle"></i> **Warning:**
+  end: </aside>

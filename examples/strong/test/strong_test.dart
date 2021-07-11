@@ -1,14 +1,8 @@
 // ignore_for_file: unused_local_variable
 import 'package:test/test.dart';
-import 'package:dartlang_examples_util/dart_version.dart';
 
-import 'package:dartlang_strong/animal.dart';
-import 'package:dartlang_strong/bounded/my_collection.dart';
-
-//@nullable
-String runtimeChecksSkipStatus() => dartMajorVers == 1
-    ? "Dart 1 doesn't support strong mode runtime checks"
-    : null; // don't skip tests in Dart 2
+import 'package:examples_strong/animal.dart';
+import 'package:examples_strong/bounded/my_collection.dart';
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
@@ -38,7 +32,7 @@ void main() {
     // #docregion what-is-soundness
     void main() {
       List<dynamic> strings = ["not", "ints"];
-      // ignore_for_file: 1, 2, invalid_assignment
+      // ignore_for_file: stable, dev, invalid_assignment
       List<int> numbers = strings; //!analysis-issue
       for (var number in numbers) {
         print(number - 10); // Classic Dart runtime exception
@@ -47,12 +41,7 @@ void main() {
     // #enddocregion what-is-soundness
 
     final msg = "type 'List<dynamic>' is not a subtype of type 'List<int>'";
-    expect(
-      main,
-      dartMajorVers == 1
-          ? _throwsA<NoSuchMethodError>("'String' has no instance method '-'")
-          : _throwsA<TypeError>(msg),
-    );
+    expect(main, _throwsA<TypeError>(msg));
   });
 
   group('runtime checks:', () {
@@ -60,17 +49,17 @@ void main() {
       // #docregion runtime-checks
       void main() {
         List<Animal> animals = [Dog()];
-        // ignore_for_file: 1, 2, invalid_assignment
+        // ignore_for_file: stable, dev, invalid_assignment
         List<Cat> cats = animals;
       }
       // #enddocregion runtime-checks
 
       const msg = "type 'List<Animal>' is not a subtype of type 'List<Cat>'";
       expect(main, _throwsA<TypeError>(msg));
-    }, skip: runtimeChecksSkipStatus());
+    });
 
     test('downcast check fails', () {
-      _test() {
+      void _test() {
         // #docregion fail-downcast-check
         assumeStrings(<int>[1, 2, 3]);
         // #enddocregion fail-downcast-check
@@ -85,7 +74,7 @@ void main() {
     final expectedOutput = 'a string\n';
 
     test('downcast check ok for <String>[]', () {
-      _test() {
+      void _test() {
         // #docregion typed-list-lit
         var list = <String>[];
         list.add('a string');
@@ -98,7 +87,7 @@ void main() {
     });
 
     test('downcast check ok for List<String>', () {
-      _test() {
+      void _test() {
         // #docregion typed-list
         List<String> list = [];
         list.add('a string');
@@ -110,35 +99,26 @@ void main() {
       expect(_test, prints(expectedOutput));
     });
 
-    Map<String, dynamic> getFromExternalSource() => {
+    Map<String, dynamic> fetchFromExternalSource() => {
           'names': ['a string']
         };
 
     test('downcast check ok: use cast()', () {
-      _test() {
+      void _test() {
         // #docregion cast
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
-        // ignore_for_file: 1, argument_type_not_assignable, undefined_method
         assumeStrings(names.cast<String>());
         // #enddocregion cast
       }
 
-      if (dartMajorVers == 1) {
-        expect(
-          _test,
-          _throwsA<NoSuchMethodError>(
-              "Class 'List' has no instance method 'cast'"),
-        );
-      } else {
-        expect(_test, prints(expectedOutput));
-      }
+      expect(_test, prints(expectedOutput));
     });
 
     test('downcast check ok: create new object', () {
-      _test() {
+      void _test() {
         // #docregion create-new-object
-        Map<String, dynamic> json = getFromExternalSource();
+        Map<String, dynamic> json = fetchFromExternalSource();
         var names = json['names'] as List;
         // Use `as` and `toList` until 2.0.0-dev.22.0, when `cast` is available:
         assumeStrings(names.map((name) => name as String).toList());
@@ -174,8 +154,8 @@ void main() {
 
 // ignore_for_file: type_annotate_public_apis
 // #docregion downcast-check
-assumeStrings(List<Object> objects) {
-  // ignore_for_file: 1, 2, invalid_assignment
+void assumeStrings(List<Object> objects) {
+  // ignore_for_file: stable, dev, invalid_assignment
   List<String> strings = objects; // Runtime downcast check
   String string = strings[0]; // Expect a String value
   // #enddocregion downcast-check
