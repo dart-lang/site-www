@@ -1019,6 +1019,10 @@ Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
   TODO('Implement this method');
 }
 
+bool isValidEmailAddress(EmailAddress email) {
+  return email.address.contains('@');
+}
+
 class EmailAddress {
   String address;
 
@@ -1052,6 +1056,10 @@ Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
   return emails.where((email) => isValidEmailAddress(email));
 }
 
+bool isValidEmailAddress(EmailAddress email) {
+  return email.address.contains('@');
+}
+
 class EmailAddress {
   String address;
 
@@ -1079,10 +1087,6 @@ var input = [
   'bobgmail.com',
   'cal@gmail.com',
 ];
-
-bool isValidEmailAddress(EmailAddress email) {
-  return email.address.contains('@');
-}
 
 void main() {
   Iterable<EmailAddress> emails;
