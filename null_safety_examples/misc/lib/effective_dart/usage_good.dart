@@ -338,9 +338,9 @@ Item? bestDeal(List<Item> cart) {
 //----------------------------------------------------------------------------
 
 class Response {
-  String get url => "";
-  String get errorCode => "";
-  String get reason => "";
+  String get url => '';
+  String get errorCode => '';
+  String get reason => '';
 }
 
 // #docregion copy-nullable-field
@@ -410,7 +410,7 @@ class C {
       bottom = 0.0,
       minTime = 0.0;
   Point center = Point(0.0, 0.0);
-  Map<Chest, Treasure> _opened = {};
+  final Map<Chest, Treasure> _opened = {};
 
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);

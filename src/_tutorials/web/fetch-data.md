@@ -129,7 +129,8 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString) as Map;
+  Map<String, dynamic> jsonData = 
+      json.decode(jsonDataAsString) as Map<String, dynamic>;
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
@@ -288,7 +289,8 @@ const jsonDataAsString = '''{
   "favoriteThings": ["monkeys", "parrots", "lattes"]
 }''';
 
-Map jsonData = json.decode(jsonDataAsString) as Map;
+Map<dynamic, dynamic> jsonData =
+    json.decode(jsonDataAsString) as Map<String, dynamic>;
 ```
 
 This code calls [json.decode()][] with a properly formatted JSON
@@ -308,7 +310,7 @@ JSON data from a file that is co-located with the code for the app.
 The `json.decode()` function reads the string and
 builds Dart objects from it.
 In this example,
-the `json.decode()` function creates a `Map` object based on
+the `json.decode()` function creates a `Map<String, dynamic>` object based on
 the information in the JSON string.
 The `Map` contains objects of various types
 including an integer, a double, a boolean value, a regular string,

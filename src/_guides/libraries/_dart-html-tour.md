@@ -500,7 +500,7 @@ error, and message events:
 void initWebSocket([int retrySeconds = 1]) {
   var reconnectScheduled = false;
 
-  print("Connecting to websocket");
+  print('Connecting to websocket');
 
   void scheduleReconnect() {
     if (!reconnectScheduled) {
@@ -521,7 +521,7 @@ void initWebSocket([int retrySeconds = 1]) {
   });
 
   ws.onError.listen((e) {
-    print("Error connecting to ws");
+    print('Error connecting to ws');
     scheduleReconnect();
   });
 

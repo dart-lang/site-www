@@ -1810,7 +1810,8 @@ Example:
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (increment-decrement)"?>
 ```dart
-var a, b;
+int a;
+int b;
 
 a = 0;
 b = ++a; // Increment a before b gets its value.
