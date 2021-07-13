@@ -370,9 +370,9 @@ class Circle2 {
 
 // #docregion dont-wrap-field
 class Box {
-  var _contents;
-  get contents => _contents;
-  set contents(value) {
+  Object? _contents;
+  Object? get contents => _contents;
+  set contents(Object? value) {
     _contents = value;
   }
 }
@@ -382,8 +382,8 @@ class Box {
 
 // #docregion final
 class Box1 {
-  var _contents;
-  get contents => _contents;
+  Object? _contents;
+  Object? get contents => _contents;
 }
 // #enddocregion final
 
@@ -391,13 +391,13 @@ class Box1 {
 
 // #docregion this-dot
 class Box2 {
-  var value;
+  Object? value;
 
   void clear() {
     this.update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
