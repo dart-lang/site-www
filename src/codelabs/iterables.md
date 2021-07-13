@@ -969,7 +969,8 @@ It’s time to practice what you learned, in one final exercise.
 
 This exercise provides the class `EmailAddress`,
 which has a constructor that takes a string.
-Another provided function is `isValidEmailAddress()`,
+Another provided function is `
+    EmailAddress()`,
 which tests whether an email address is valid.
 
 |----------------------+-------------------+----------------------------------|
@@ -1087,6 +1088,10 @@ var input = [
   'bobgmail.com',
   'cal@gmail.com',
 ];
+
+bool isValidEmailAddress(EmailAddress email) {
+  return email.address.contains('@');
+}
 
 void main() {
   Iterable<EmailAddress> emails;
