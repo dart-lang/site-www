@@ -27,17 +27,20 @@ made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
-{% prettify dart class="linenums:10 analyzer"%}
+{% prettify dart class="linenums:8 analyzer"%}
 void increment() {
   if (count < 10) [!;!]
   count++;
 }
 {% endprettify %}
 
+If properly configured, the analyzer points to the semicolon and
+produces the following warning:
+
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="empty_statements" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
-info - Avoid empty statements at lib/lint.dart:9:19 - (empty_statements)
+info - lib/lint.dart:9:19 - Avoid empty statements. - empty_statements
 ```
 </blockquote>
 
@@ -45,15 +48,15 @@ The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (close_sinks)" replace="/(_c.*?)(;)/[!$1!]$2/g"?>
-{% prettify dart class="linenums:11 analyzer"%}
-var [!_controller = StreamController<String>()!];
+<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
+{% prettify dart class="analyzer"%}
+var [!controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="close_sinks" replace="/.( • )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-info - Close instances of `dart.core.Sink` at lib/lint.dart:16:7 - (close_sinks)
+info - Close instances of `dart.core.Sink`. - close_sinks
 ```
 </blockquote>
 
@@ -179,9 +182,9 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
-error - A value of type 'dynamic' can't be assigned to a variable of type 'String' at lib/assignment.dart:11:14 - (invalid_assignment)
+error - A value of type 'dynamic' can't be assigned to a variable of type 'String' - invalid_assignment
 ```
 
 {{site.alert.version-note}}
@@ -289,13 +292,6 @@ linter:
     - prefer_single_quotes
     - sort_child_properties_last
 ```
-
-{% comment %}
-Brian expressed concern about including this:
-In future, related lint rules may be coalesced into meta rules. See
-[Issue 99: Meta linter rules](https://github.com/dart-lang/linter/issues/288)
-for more information.
-{% endcomment %}
 
 
 ### Disabling individual rules
