@@ -1,13 +1,13 @@
 // #docregion ignore_for_file
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, duplicate_ignore
 // #enddocregion ignore_for_file
-// ignore_for_file: stable, beta, dev, invalid_assignment
 
 import 'package:examples_util/ellipsis.dart';
 
 String downcastExample() {
   // #docregion implicit-downcast
   dynamic o = ellipsis<String>();
+  // ignore_for_file: stable, beta, dev, invalid_assignment
   String s = o; // Implicit downcast
   String s2 = s.substring(1);
   // #enddocregion implicit-downcast

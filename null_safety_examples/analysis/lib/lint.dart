@@ -13,6 +13,6 @@ void increment() {
 
 void controller() {
   // #docregion close_sinks
-  var _controller = StreamController<String>();
+  var controller = StreamController<String>();
   // #enddocregion close_sinks
 }
