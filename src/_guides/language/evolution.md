@@ -8,6 +8,7 @@ This page lists notable changes and additions to the Dart programming language.
 If you want details about the currently supported language, see the
 [language tour][] or the
 [language specification][].
+For a full history of changes to the Dart SDK, see the [SDK changelog][].
 
 To use a language feature that was introduced after 2.0,
 specify [SDK constraints][] that are no lower than
@@ -311,6 +312,7 @@ For more information about how language versioning works, see the
 [migrated to Dart 2]: /dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 [set literals]: /guides/language/language-tour#sets
 [sound null safety]: /null-safety
 [sound type system]: /guides/language/type-system

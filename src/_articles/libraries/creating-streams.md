@@ -84,7 +84,7 @@ Here's how it might be implemented:
 <?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
 ```dart
 var counterStream =
-    Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+    Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 ```
 
 To quickly see the events, you can use code like this:

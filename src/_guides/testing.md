@@ -7,23 +7,24 @@ Software testing, an important part of app development, helps verify that
 your app is working correctly before you release it.
 This Dart testing guide outlines several types of testing, and points
 you to where you can learn how to test your
-[mobile,]({{site.flutter}}) [web](/web),
+[Flutter]({{site.flutter}}), [web](/web),
 and [server-side apps and scripts](/server).
 
-***[PENDING: This page needs an update to reflect the fact that Flutter
-isn't just for mobile, and that it supports the web.]***
-
-***[Q: Is the best non-flutter testing doc currently in the
-[test package page]({{site.pub-pkg}}/test)?]***
-
-[`dart test`]: /tools/dart-test
-
+<aside class="alert alert-info" markdown="1">
+**Terminology: widget vs. component**<br>
+Flutter, a UI toolkit for building apps for any device,
+defines its GUI elements as _widgets_.
+Some frameworks, such as AngularDart,
+define GUI elements as _components_.
+This doc uses **component** (except when explicitly discussing Flutter),
+but both terms refer to the same concept.
+</aside>
 
 ## Kinds of testing
 
 The Dart testing docs focus on three kinds of testing, out of the
 [many kinds of testing](https://en.wikipedia.org/wiki/Software_testing)
-that you may be familiar with: unit, component (or _widget_), and end-to-end
+that you may be familiar with: unit, component, and end-to-end
 (a form of integration testing). Testing terminology varies,
 but these are the terms and concepts that you are likely to
 encounter when using Dart technologies:
@@ -32,16 +33,15 @@ encounter when using Dart technologies:
   software, such as a function, method, or class. Your test suites
   should have more unit tests than other kinds of tests.
 
-* _Component_ tests (called _widget_ tests in Flutter)
-  verify that a component (which usually consists of multiple classes)
-  behaves as expected.
+* _Component_ tests verify that a component (which
+  usually consists of multiple classes) behaves as expected.
   A component test often requires the use of mock objects
   that can mimic user actions, events, perform layout,
   and instantiate child components.
 
 * _Integration_ and _end-to-end_ tests verify the behavior of
   an entire app, or a large chunk of an app. An integration test
-  generally runs on a real device or OS simulator (for mobile)
+  generally runs on a simulated or real device
   or on a browser (for the web) and consists of two pieces:
   the app itself, and the test app that puts
   the app through its paces. An integration test often measures performance,
@@ -101,10 +101,13 @@ Use the following resources to learn more about testing Flutter apps:
 Use the following resources to learn more about testing Dart web
 applications:
 
-* ***[PENDING: anything for Flutter?]***
 * [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
   A Dart package for interfacing with
   [WebDriver](https://www.w3.org/TR/webdriver/) servers.
+* [Testing]({{site.angulardart}}/guide/testing)(a page
+  in the AngularDart guide)<br>
+  How to use the [angular_test]({{site.pub-pkg}}/angular_test)
+  package to test AngularDart components and subsystems.
 
 ## Other tools and resources
 

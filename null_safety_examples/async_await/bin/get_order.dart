@@ -6,7 +6,7 @@ Future<String> createOrderMessage() async {
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 

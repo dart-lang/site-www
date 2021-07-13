@@ -17,13 +17,9 @@ access to the [DOM (Document Object Model)][DOM],
 and [interoperability for calling JavaScript][interop] from Dart.
 
 You have the option of using Dart web with a higher-level web app framework.
-Several web apps at Google
-(including the [Google Ads front end formerly known as AdWords][AdWords])
-are built using [AngularDart.][]
-Many apps that support both web and mobile are built
+Many apps that support web plus mobile or desktop are built
 using [Flutter][] and [Flutter web][] support.
-AngularDart,
-Flutter web support,
+Flutter web support
 and other web app frameworks for Dart are powered by the Dart web platform.
 
 <p class="text-center">
@@ -38,8 +34,6 @@ and other web app frameworks for Dart are powered by the Dart web platform.
   <em>Flutter Gallery, running in a web browser</em>
 </p>
 
-[AdWords]: {{site.news}}/2016/03/the-new-adwords-ui-uses-dart-we-asked.html
-[AngularDart.]: {{site.angulardart}}
 [core libraries]: /guides/libraries#web-platform-libraries
 [DOM]: /tutorials/web/low-level-html/connect-dart-html
 [Flutter]: {{site.flutter}}

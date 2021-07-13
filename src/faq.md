@@ -262,9 +262,9 @@ has some tips for specific browsers.
 ### Q. What web frameworks can I use with Dart?
 
 You can use the low-level HTML API defined by core libraries such as dart:html,
-or you can use a framework such as [AngularDart][]. You can also use
-[Flutter for web][] to bring your existing Flutter applications or new ones
-to the browser.
+or you can choose from many [web packages](/web/libraries#web-packages).
+You can also use the [Flutter framework]({{site.flutter}}),
+which has [web support]({{site.flutter}}/web)
 
 ### Q. Will the Dart VM get into Chrome?
 
@@ -442,16 +442,10 @@ if either of those lists is used.
 
 
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
-[sourcemaps]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [package:js]: {{site.pub-pkg}}/js
-[AngularDart]: {{site.angulardart}}
-[Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
 [dartdevc]: /tools/dartdevc
-[chrome.dart]: https://github.com/dart-gde/chrome.dart
-[fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
-[Flutter for web]: {{site.flutter}}/web

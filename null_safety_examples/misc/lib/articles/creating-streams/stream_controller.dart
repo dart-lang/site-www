@@ -71,7 +71,7 @@ void main() {
 void showBasicUsage() {
   // #docregion basic-usage
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
   // #enddocregion basic-usage
 
   // #docregion basic-for-each
@@ -81,7 +81,7 @@ void showBasicUsage() {
 
 void demoPause() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
   late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
@@ -97,7 +97,7 @@ void demoPause() {
 
 void useMap() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 
   // #docregion use-map
   // Double the integer in each event.
@@ -108,7 +108,7 @@ void useMap() {
 
 void useWhere() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 
   var mappedStream = counterStream
           // #docregion use-where

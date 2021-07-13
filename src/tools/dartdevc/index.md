@@ -2,6 +2,7 @@
 title: "dartdevc: The Dart dev compiler"
 short-title: dartdevc
 description: Fast, modular compilation of Dart code to JavaScript.
+toc: false
 ---
 
 The Dart development compiler _(dartdevc_, also known as _DDC)_
@@ -11,7 +12,7 @@ lets you run and debug your Dart web app in the Chrome browser.
   **Note:**
   The dartdevc compiler is for _development_ only.
   Continue to use [dart2js](/tools/dart2js)
-  to compile for [deployment]({{site.angulardart}}/guide/deployment).
+  to compile for deployment.
 </aside>
 
 Unlike dart2js,

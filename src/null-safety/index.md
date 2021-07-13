@@ -142,7 +142,7 @@ For more information about null safety, see the following resources:
 
 [110]: https://github.com/dart-lang/language/issues/110
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
-[`dart create`]: /tools/dart-tool
+[`dart create`]: /tools/dart-create
 [Dart blog]: https://medium.com/dartlang
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq

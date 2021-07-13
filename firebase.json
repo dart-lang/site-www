@@ -128,7 +128,8 @@
       { "source": "/events/2015{,/**}", "destination": "https://www.youtube.com/watch?list=PLOU2XLYxmsIIQorIS8gagUiMau9S84vZV&v=FiXiI2Atexc", "type": 301 },
       { "source": "/events/2016{,/**}", "destination": "https://events.dartlang.org/2016/summit", "type": 301 },
       { "source": "/events{,/**}", "destination": "https://events.dartlang.org", "type": 301 },
-      { "source": "/flutter", "destination": "https://flutter.io", "type": 301 },
+      { "source": "/flutter", "destination": "https://flutter.dev", "type": 301 },
+      { "source": "/jobs", "destination": "https://flutter.dev/jobs", "type": 301 },
 
       { "source": "/go/analysis-server-protocol", "destination": "https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html", "type": 301 },
       { "source": "/go/cloud", "destination": "/server/google-cloud?utm_source=go-link&utm_medium=referral&utm_campaign=go-cloud", "type": 301 },
@@ -227,6 +228,7 @@
       { "source": "/tools/pub/transformers{,/**}", "destination": "/tools/pub/obsolete", "type": 301 },
       { "source": "/tools/pub/get-started?(.html)", "destination": "/guides/packages", "type": 301 },
       { "source": "/tools/pub", "destination": "/tools/pub/cmd", "type": 301 },
+      { "source": "/tools/dart-pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "/tools", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },

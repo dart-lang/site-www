@@ -183,7 +183,7 @@ void main() {
     // #enddocregion initWebSocket
 
     final t = wsStream.stream.timeout(
-      Duration(seconds: 5),
+      const Duration(seconds: 5),
       onTimeout: (s) => s.add('Timeout!'),
     );
 

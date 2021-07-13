@@ -207,11 +207,9 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-**Exception:** Input properties in [Angular][] components sometimes use
+**Exception:** Input properties in [AngularDart][] components sometimes use
 imperative verbs for boolean setters because these setters are invoked in
 templates, not from other Dart code.
-
-[angular]: {{site.angulardart}}
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
@@ -270,7 +268,7 @@ overwhelmingly need to use. Choosing the positive case would force them to
 negate the property with `!` everywhere. Instead, it may be better to use the
 negative case for that property.
 
-**Exception:** Properties accessed in [Angular][]
+**Exception:** Properties accessed in [AngularDart][]
 templates are often better in the negative form because the property is used to
 *hide* or *disable* content.
 
@@ -935,12 +933,10 @@ you want to add. Objects shouldn't generally expose more state than they need
 to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
-**Exception:** An [Angular][] component class may expose setters that are
+**Exception:** An [AngularDart][] component class may expose setters that are
 invoked from a template to initialize the component. Often, these setters are
 not intended to be invoked from Dart code and don't need a corresponding getter.
 (If they are used from Dart code, they *should* have a getter.)
-
-[angular]: {{site.angulardart}}
 
 
 ### AVOID using runtime type tests to fake overloading.
@@ -2074,3 +2070,6 @@ annotation permits `null`. Even so, Dart will never call your `==` method and
 pass `null` to it, so you don't need to handle `null` inside the body of the
 method.
 {{site.alert.end}}
+
+
+[AngularDart]: {{site.angulardart}}
