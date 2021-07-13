@@ -7,14 +7,15 @@ Software testing, an important part of app development, helps verify that
 your app is working correctly before you release it.
 This Dart testing guide outlines several types of testing, and points
 you to where you can learn how to test your
-[mobile,]({{site.flutter}}) [web](/web),
+[Flutter]({{site.flutter}}), [web](/web),
 and [server-side apps and scripts](/server).
 
 <aside class="alert alert-info" markdown="1">
 **Terminology: widget vs. component**<br>
-Flutter, an SDK for building apps for iOS and Android, defines its
-GUI elements as _widgets_. AngularDart, a web app framework,
-defines its GUI elements as _components_.
+Flutter, a UI toolkit for building apps for any device,
+defines its GUI elements as _widgets_.
+Some frameworks, such as AngularDart,
+define GUI elements as _components_.
 This doc uses **component** (except when explicitly discussing Flutter),
 but both terms refer to the same concept.
 </aside>
@@ -40,7 +41,7 @@ encounter when using Dart technologies:
 
 * _Integration_ and _end-to-end_ tests verify the behavior of
   an entire app, or a large chunk of an app. An integration test
-  generally runs on a real device or OS simulator (for mobile)
+  generally runs on a simulated or real device
   or on a browser (for the web) and consists of two pieces:
   the app itself, and the test app that puts
   the app through its paces. An integration test often measures performance,
@@ -100,14 +101,13 @@ Use the following resources to learn more about testing Flutter apps:
 Use the following resources to learn more about testing Dart web
 applications:
 
+* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
+  A Dart package for interfacing with
+  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
 * [Testing]({{site.angulardart}}/guide/testing)(a page
   in the AngularDart guide)<br>
   How to use the [angular_test]({{site.pub-pkg}}/angular_test)
   package to test AngularDart components and subsystems.
-  <!-- More pages are coming! -->
-* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
-  A Dart package for interfacing with
-  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
 
 ## Other tools and resources
 

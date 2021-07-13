@@ -6,16 +6,18 @@ toc: false
 
 {% comment %} [PENDING: improve this intro. reuse text in other tutorial index pages.] {% endcomment %}
 
-Web pages are programmed in HTML and represented within the browser as a tree structure
-called the DOM (Document Object Model). Dart apps can modify the DOM programatically,
-thus dynamically changing the web page. First, learn now to connect Dart and HTML.
+Web pages are programmed in HTML and represented within the browser
+as a tree structure called the DOM (Document Object Model).
+Dart apps can modify the DOM programatically,
+thus dynamically changing the web page.
+First, learn now to connect Dart and HTML.
 Then learn how to add, move, and remove DOM elements.
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
   These tutorials cover basic, low-level web programming
   with the dart:html library.
-  If you use a web framework like [AngularDart,]({{site.angulardart}})
+  If you use a web framework,
   the concepts in these tutorials might be useful,
   but you might not need to use the dart:html library at all.
   For information about frameworks for Dart web apps,
