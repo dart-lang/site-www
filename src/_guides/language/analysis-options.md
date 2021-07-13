@@ -3,6 +3,8 @@ title: Customizing static analysis
 description: Use an analysis options file and code comments to customize static analysis.
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+
 <style>
 li.L0, li.L1, li.L2, li.L3,
 li.L5, li.L6, li.L7, li.L8, li.L9 {
@@ -40,7 +42,7 @@ produces the following warning:
 {:.console-output}
 <?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
-info - lib/lint.dart:9:19 - Avoid empty statements. - empty_statements
+info - example.dart:9:19 - Avoid empty statements. - empty_statements
 ```
 </blockquote>
 
@@ -382,7 +384,7 @@ To suppress more than one rule, use a comma-separated list:
 
 <?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
-// ignore_for_file: unused_import, unused_local_variable
+// ignore_for_file: unused_import, unused_local_variable, duplicate_ignore
 ```
 
 
