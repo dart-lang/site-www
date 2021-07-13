@@ -150,7 +150,7 @@ $ webdev build --output web:build
 
 ### build_runner test {#test}
 
-Use the `build_runner test` command to run your app's [component tests][]:
+Use the `build_runner test` command to run your app's component tests:
 
 ```
 $ dart pub run build_runner test [build_runner options] -- -p <platform> [test options]
@@ -201,7 +201,6 @@ Also see the following pages:
 [build_runner]: /tools/build_runner
 [build_runner test]: #test
 [build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
-[component tests]: {{site.angulardart}}/guide/testing/component
 [Dart DevTools]: /tools/dart-devtools
 [dart2js]: /tools/dart2js
 [dart2js options.]: /tools/dart2js#options
