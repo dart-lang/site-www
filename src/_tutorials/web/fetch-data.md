@@ -129,7 +129,7 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map<String, dynamic> jsonData = 
+  Map<String, dynamic> jsonData =
       json.decode(jsonDataAsString) as Map<String, dynamic>;
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
@@ -289,7 +289,7 @@ const jsonDataAsString = '''{
   "favoriteThings": ["monkeys", "parrots", "lattes"]
 }''';
 
-Map<dynamic, dynamic> jsonData =
+Map<String, dynamic> jsonData =
     json.decode(jsonDataAsString) as Map<String, dynamic>;
 ```
 

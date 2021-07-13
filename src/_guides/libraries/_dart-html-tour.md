@@ -516,7 +516,7 @@ void initWebSocket([int retrySeconds = 1]) {
   });
 
   ws.onClose.listen((e) {
-    print('Websocket closed, retrying in ' + '$retrySeconds seconds');
+    print('Websocket closed, retrying in $retrySeconds seconds');
     scheduleReconnect();
   });
 
