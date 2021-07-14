@@ -6,7 +6,7 @@ toc: false
 
 The `dart test` command runs tests that
 rely on the [`test` package][] and
-are under the `test` directory of the current Dart project. ***[PENDING: check]***
+are under the `test` directory of the current Dart project.
 For information on writing tests, see the 
 [testing documentation][].
 If you're working on Flutter code, then use the `flutter test` command instead,
@@ -26,33 +26,45 @@ $ cd my_app
 $ dart test
 ```
 
-To run a subset of tests, use the `--name` (`-n`),
+To control which tests run, you can add the paths to
+directories or files under the `test` directory:
+
+{% comment %}
+  I ran these commands in site-www/null_safety_examples/misc
+{% endcomment %}
+
+```terminal
+$ dart test test/library_tour/io_test.dart
+00:00 +0: readAsString, readAsLines
+00:00 +1: readAsBytes
+...
+```
+
+Another way to run a subset of tests is to use the `--name` (`-n`),
 `--tags` (`-t`), or `--exclude-tags` (`-x`) flag,
 adding part or all of the string to match:
 
 ```terminal
-$ cd misc
-$ dart test --name list-
-00:00 +0: test/language_tour/built_in_types_test.dart: list-indexing
+$ dart test --name String
+00:00 +0: test/library_tour/io_test.dart: readAsString, readAsLines
+00:00 +1: test/library_tour/core_test.dart: print: print(nonString)
+00:00 +2: test/library_tour/core_test.dart: print: print(String)
+00:00 +3: test/library_tour/core_test.dart: numbers: toString()
 ...
-00:00 +1: test/language_tour/built_in_types_test.dart: list-spread
-...
-00:00 +2: test/language_tour/built_in_types_test.dart: list-null-spread
 ```
 
 When you use these flags more than once in the same command line,
-only tests that match _all_ the conditions run:
+only the tests that match _all_ the conditions run:
 
 ```terminal
-$ dart test --name list- --name spread
-00:00 +0: test/language_tour/built_in_types_test.dart: list-spread
-...
-00:00 +1: test/language_tour/built_in_types_test.dart: list-null-spread
-...
+$ dart test --name String --name print
+00:00 +0: test/library_tour/core_test.dart: print: print(nonString)
+00:00 +1: test/library_tour/core_test.dart: print: print(String)
+00:00 +2: All tests passed!
 ```
 
 The `dart test` command has many more flags to control
-which tests you run,
+which tests run,
 how they run (for example, concurrency and timeout), and
 where and how the output appears.
 For further information on command-line options,
