@@ -135,7 +135,7 @@ The following tools support developing web apps:
 The following tools support developing or running
 command-line apps and servers:
 
-[`dart`](/tools/dart-vm)
+[`dart run`](/tools/dart-run)
 : Use the `dart run` command to run uncompiled Dart command-line apps
   and some kinds of snapshots.
 

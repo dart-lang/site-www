@@ -260,7 +260,7 @@ void main() {
 
 ## Runtime checks
 
-Runtime checks in tools like the [Dart VM][] and [dartdevc][]
+Runtime checks in the Dart VM and [dartdevc][]
 deal with type safety issues that the analyzer can't catch.
 
 For example, the following code throws an exception at runtime because it is an error
@@ -518,6 +518,5 @@ The following resources have further information on sound Dart:
 
 [analysis_options.yaml]: /guides/language/analysis-options
 [analysis]: /guides/language/analysis-options
-[Dart VM]: /server/tools/dart-vm
 [dartdevc]: /tools/dartdevc
 [strong mode]: /guides/language/type-system#how-to-enable-strong-mode
