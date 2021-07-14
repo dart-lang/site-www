@@ -48,7 +48,8 @@ void main() {
 
   test('increment-decrement', () {
     // #docregion increment-decrement
-    var a, b;
+    int a;
+    int b;
 
     a = 0;
     b = ++a; // Increment a before b gets its value.
