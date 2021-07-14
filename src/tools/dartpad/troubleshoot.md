@@ -25,7 +25,12 @@ then try the following:
 * Check whether you've disabled third-party
   tracking cookies ([Chrome instructions][chrome-cookies]).
   If you've disabled cookies, change your settings to
-  **allow cookies for dartpad.dev.**
+  **allow cookies for dartpad.dev**.
+  If you're using embedded DartPads,
+  such as in the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet) or the
+  [implicit animations codelab]({{site.flutter}}/docs/codelabs/implicit-animations),
+  you might need to allow cookies for the embedding site domain, as well
+  (in these cases, **dart.dev** and **flutter.dev**, respectively).
 
 * If you repeatedly reload a page that contains embedded DartPads, 
   then you might run into [GitHub rate limiting.](https://developer.github.com/v3/#rate-limiting)
