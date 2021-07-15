@@ -1,5 +1,5 @@
 // #docregion ignore_for_file
-// ignore_for_file: unused_import, unused_local_variable, duplicate_ignore
+// ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 // #enddocregion ignore_for_file
 
 import 'package:examples_util/ellipsis.dart';
