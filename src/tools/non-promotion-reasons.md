@@ -46,7 +46,7 @@ of type `int` that holds the value of `i`.
 Here's an example of using `i!`:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
 {% prettify dart tag=pre+code %}
 print(i[!!!].isEven);
 {% endprettify %}
@@ -56,7 +56,7 @@ And here's an example of creating a local variable
 that holds the value of `i`:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class C {
   int? i;
@@ -144,7 +144,7 @@ conditions in separate `if` statements.
 You might fix the problem by combining the two `if` statements:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(bool b, int? i, int? j) {
   if (i == null) return;
@@ -163,7 +163,7 @@ As a result, another way to fix this code is
 to change the type of `j` to `int`.
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(bool b, int? i, [!int j!]) {
   if (i == null) return;
@@ -209,7 +209,7 @@ To be safe, it invalidates the promotion.
 You might fix this problem by moving the null check to the top of the loop:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Link? p) {
   while ([!p != null!]) {
@@ -240,7 +240,7 @@ void f(int i, int? j, int? k) {
 Again, you can fix the problem by moving the null check to the top of the loop:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(int i, int? j, int? k) {
   switch (i) {
@@ -300,7 +300,7 @@ possibly when `i` is null.
 The safest solution is to add a null check inside the `catch` block:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
 {% prettify dart tag=pre+code %}
 // ···
 } catch (e) {

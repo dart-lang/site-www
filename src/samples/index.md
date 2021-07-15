@@ -33,7 +33,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
   print('Hello, World!');
@@ -46,7 +46,7 @@ void main() {
 Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (var)"?>
+<?code-excerpt "misc/test/samples_test.dart (var)"?>
 ```dart
 var name = 'Voyager I';
 var year = 1977;
@@ -66,7 +66,7 @@ including default values, the `final` and `const` keywords, and static types.
 
 Dart supports the usual control flow statements:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (control-flow)"?>
+<?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 ```dart
 if (year >= 2001) {
   print('21st century');
@@ -97,7 +97,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 [We recommend](/guides/language/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (functions)"?>
+<?code-excerpt "misc/test/samples_test.dart (functions)"?>
 ```dart
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
@@ -111,7 +111,7 @@ A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (arrow)"?>
+<?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 ```dart
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 ```
@@ -146,7 +146,7 @@ including how the documentation tooling works.
 
 To access APIs defined in other libraries, use `import`.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (import)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 ```
 // Importing core libraries
 import 'dart:math';
@@ -171,7 +171,7 @@ Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 ```dart
 class Spacecraft {
   String name;
@@ -203,7 +203,7 @@ class Spacecraft {
 
 You might use the `Spacecraft` class like this:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (use class)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
 ```dart
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
@@ -221,7 +221,7 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 
 Dart has single inheritance.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 ```dart
 class Orbiter extends Spacecraft {
   double altitude;
@@ -240,7 +240,7 @@ about extending classes, the optional `@override` annotation, and more.
 Mixins are a way of reusing code in multiple class hierarchies. The following is
 a mixin declaration:
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 ```dart
 mixin Piloted {
   int astronauts = 1;
@@ -253,7 +253,7 @@ mixin Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -271,7 +271,7 @@ Dart has no `interface` keyword.
 Instead, all classes implicitly define an interface. 
 Therefore, you can implement any class.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 ```dart
 class MockSpaceship implements Spacecraft {
   // ···
@@ -284,7 +284,7 @@ You can create an abstract class
 to be extended (or implemented) by a concrete class. 
 Abstract classes can contain abstract methods (with empty bodies).
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
@@ -309,7 +309,7 @@ about abstract classes and methods.
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
+<?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
@@ -321,7 +321,7 @@ Future<void> printWithDelay(String message) [!async!] {
 
 The method above is equivalent to:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (Future.then)"?>
+<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 ```dart
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
@@ -333,7 +333,7 @@ Future<void> printWithDelay(String message) {
 As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (await)"?>
+<?code-excerpt "misc/test/samples_test.dart (await)"?>
 ```dart
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
@@ -356,7 +356,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async*)"?>
+<?code-excerpt "misc/test/samples_test.dart (async*)"?>
 ```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
@@ -375,7 +375,7 @@ and the asynchronous loop (`await for`).
 
 To raise an exception, use `throw`:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (throw)"?>
+<?code-excerpt "misc/test/samples_test.dart (throw)"?>
 ```dart
 if (astronauts == 0) {
   throw StateError('No astronauts.');
@@ -384,7 +384,7 @@ if (astronauts == 0) {
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (try)"?>
+<?code-excerpt "misc/test/samples_test.dart (try)"?>
 ```
 try {
   for (var object in flybyObjects) {

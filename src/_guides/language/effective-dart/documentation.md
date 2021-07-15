@@ -9,7 +9,7 @@ prevpage:
   title: Style
 ---
 
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 It's easy to think your code is obvious today without realizing how much you
 rely on context already in your head. People new to your code, and

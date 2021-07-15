@@ -28,7 +28,7 @@ simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 {% prettify dart class="linenums:8 analyzer"%}
 void increment() {
   if (count < 10) [!;!]
@@ -40,7 +40,7 @@ If properly configured, the analyzer points to the semicolon and
 produces the following warning:
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
 info - example.dart:9:19 - Avoid empty statements. - empty_statements
 ```
@@ -50,13 +50,13 @@ The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
+<?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 {% prettify dart class="analyzer"%}
 var [!controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - Close instances of `dart.core.Sink`. - close_sinks
 ```
@@ -106,7 +106,7 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
+<?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
 ```yaml
 include: package:lints/recommended.yaml
 
@@ -159,7 +159,7 @@ If you want stricter static checks than
 the [Dart type system][type-system] requires,
 consider using the `implicit-casts` and `implicit-dynamic` flags:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
 ```yaml
 analyzer:
   strong-mode:
@@ -176,7 +176,7 @@ You can use the flags together or separately; both default to `true`.
   includes an implicit downcast that would be caught by this flag:
 
 {:.fails-sa}
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
 {% prettify dart class="analyzer" %}
 dynamic o = ...
 String s = [!o!]; // Implicit downcast
@@ -184,7 +184,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 error - A value of type 'dynamic' can't be assigned to a variable of type 'String' - invalid_assignment
 ```
@@ -280,7 +280,7 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes (the syntax for a YAML list).
 For example:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
+<?code-excerpt "analysis_options.yaml" from="linter:" take="12" remove="http:"?>
 ```yaml
 linter:
   rules:

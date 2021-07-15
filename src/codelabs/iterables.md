@@ -76,7 +76,7 @@ by using the map's `entries` or `values` property.
 This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
@@ -88,7 +88,7 @@ you can't guarantee that reading elements by index will be efficient.
 For example, consider the following code, which is **invalid**:
 
 {:.bad}
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
@@ -103,7 +103,7 @@ You can instead read elements with `elementAt()`,
 which steps through the elements of the iterable until
 it reaches that position.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
@@ -194,7 +194,7 @@ This method requires you to pass a _predicate_,
 which is a function that returns true if
 the input satisfies a certain condition.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (firstwhere)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
 {% prettify dart tag=pre+code %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
@@ -381,7 +381,7 @@ all of the elements of a collection satisfy some condition.
 You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-bad)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
 {% prettify dart tag=pre+code %}
 for (var item in items) {
   if (item.length < 5) {
@@ -393,7 +393,7 @@ return true;
 
 However, you can accomplish the same using the `every()` method:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-good)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
 {% prettify dart tag=pre+code %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
@@ -434,7 +434,7 @@ have a length equal to or greater than 5.
 After running the code, try changing the predicate of `any()` so
 it returns false:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (any-false)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
 {% prettify dart tag=pre+code %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
