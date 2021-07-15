@@ -2,10 +2,9 @@
 title: Fixing common type problems
 description: Common type issues you may have and how to fix them.
 ---
-{% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 <?code-excerpt plaster="none"?>
-<?code-excerpt path-base="../null_safety_examples/strong"?>
+<?code-excerpt path-base="../null_safety_examples/type_system"?>
 
 If you're having problems with type checks,
 this page can help. To learn more, read about

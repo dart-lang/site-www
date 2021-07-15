@@ -1,5 +1,5 @@
 name: examples_strong
-description: dart.dev strong mode examples
+description: dart.dev type system examples.
 
 environment:
   sdk: '>=2.13.0 <3.0.0'
