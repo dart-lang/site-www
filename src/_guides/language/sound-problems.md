@@ -303,21 +303,19 @@ class Subclass extends Superclass[!<int>!] {
 }
 {% endprettify %}
 
-{{site.alert.tip}}
-  Consider using the analyzer in _strict raw types_ mode,
-  which ensures that your code uses generic type arguments.
-  Here's an example of specifying strict raw types in
-  your project's `analysis_options.yaml` file:
+Consider using the analyzer in _strict raw types_ mode,
+which ensures that your code specifies generic type arguments.
+Here's an example of enabling strict raw types in
+your project's `analysis_options.yaml` file:
 
-  ```yaml
-  analyzer:
-    language:
-      strict-raw-types: true
-  ```
+```yaml
+analyzer:
+  language:
+    strict-raw-types: true
+```
 
-  To learn more about customizing the analyzer's behavior,
-  see [Customizing static analysis](/guides/language/analysis-options).
-{{site.alert.end}}
+To learn more about customizing the analyzer's behavior,
+see [Customizing static analysis](/guides/language/analysis-options).
 
 <hr>
 
