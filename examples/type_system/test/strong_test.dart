@@ -1,8 +1,8 @@
 // ignore_for_file: unused_local_variable, strict_raw_type
 import 'package:test/test.dart';
 
-import 'package:examples_strong/animal.dart';
-import 'package:examples_strong/bounded/my_collection.dart';
+import 'package:type_system_examples/animal.dart';
+import 'package:type_system_examples/bounded/my_collection.dart';
 
 Matcher _throwsA<T>(String msg) => throwsA(
       allOf(
