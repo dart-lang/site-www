@@ -29,11 +29,9 @@ dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/no_such_method.dart \
   $EXAMPLES/misc/lib/language_tour/classes/orchestra.dart \
   $EXAMPLES/misc/test/language_tour/built_in_types_test.dart \
-  $EXAMPLES/misc/test/language_tour/functions_test.dart \
-  $EXAMPLES/misc/test/library_tour/html_test.dart
+  $EXAMPLES/misc/test/language_tour/functions_test.dart
 
 dart format -l 65 \
-  $EXAMPLES/misc/bin/dcat/dcat.dart \
   $EXAMPLES/misc/lib/language_tour/exceptions.dart \
   $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
   $EXAMPLES/misc/lib/effective_dart/usage_good.dart \
