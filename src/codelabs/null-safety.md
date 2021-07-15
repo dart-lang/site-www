@@ -281,7 +281,7 @@ Try this:
   Was your prediction correct?</li>
 </ol>
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
+<?code-excerpt "null_safety_codelab/bin/late_lazy.dart"?>
 ```dart:run-dartpad:ga_id-lazy_late:null_safety-true
 int _computeValue() {
   print('In _computeValue...');

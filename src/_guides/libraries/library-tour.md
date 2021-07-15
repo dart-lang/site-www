@@ -62,7 +62,7 @@ The top-level `print()` method takes a single argument (any Object)
 and displays that object's string value (as returned by `toString()`)
 in the console.
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (print)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
 ```dart
 print(anObject);
 print('I drink $tea.');
@@ -80,7 +80,7 @@ have some basic utilities for working with numbers.
 You can convert a string into an integer or double with the `parse()`
 methods of int and double, respectively:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
 ```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -90,7 +90,7 @@ assert(double.parse('0.50') == 0.5);
 Or use the parse() method of num, which creates an integer if possible
 and otherwise a double:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (num-parse)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
 ```dart
 assert(num.parse('42') is int);
 assert(num.parse('0x42') is int);
@@ -99,7 +99,7 @@ assert(num.parse('0.50') is double);
 
 To specify the base of an integer, add a `radix` parameter:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (radix)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
 ```dart
 assert(int.parse('42', radix: 16) == 66);
 ```
@@ -110,7 +110,7 @@ of the decimal, use [toStringAsFixed().][toStringAsFixed()] To specify the
 number of significant digits in the string, use
 [toStringAsPrecision():][toStringAsPrecision()]
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
 ```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -149,7 +149,7 @@ You can find particular locations within a string, as well as check
 whether a string begins with or ends with a particular pattern. For
 example:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
 ```dart
 // Check whether a string contains another string.
 assert('Never odd or even'.contains('odd'));
@@ -174,7 +174,7 @@ units; high-numbered characters such as the treble clef symbol
 You can also extract a substring or split a string into a list of
 substrings:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (substring-etc)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
 ```dart
 // Grab a substring.
 assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -217,7 +217,7 @@ assert(codeUnitList[0] == 78);
 You can easily convert strings to their uppercase and lowercase
 variants:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
 ```dart
 // Convert to uppercase.
 assert('structured web apps'.toUpperCase() ==

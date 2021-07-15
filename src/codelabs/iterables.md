@@ -615,7 +615,7 @@ But what if you want to find all the elements that
 satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
@@ -630,7 +630,7 @@ apply other `Iterable` methods.
 In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where-for)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
@@ -710,7 +710,7 @@ After running the example,
 change `takeWhile()` to take elements until
 it reaches the first negative number.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (takewhile)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart tag=pre+code %}
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
@@ -838,7 +838,7 @@ Mapping `Iterables` with the method `map()` enables you to
 apply a function over each of the elements,
 replacing each element with a new one.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-int)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
@@ -849,7 +849,7 @@ You can also use `map()` to transform an element into a different object —
 for example, to convert all `int` to `String`,
 as you can see in the following example.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-string)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
 {% prettify dart tag=pre+code %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}

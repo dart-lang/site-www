@@ -7,7 +7,7 @@ prevpage:
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
 

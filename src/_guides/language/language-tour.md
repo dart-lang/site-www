@@ -37,7 +37,7 @@ Look for dynamic. Look for code that isn't auto-included (no code-excerpt.)]
 
 The following code uses many of Dart’s most basic features:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/basic_test.dart"?>
+<?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 ```dart
 // Define a function.
 void printInteger(int aNumber) {
@@ -297,7 +297,7 @@ which can't be identifiers.
 
 Here’s an example of creating a variable and initializing it:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-decl)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 ```dart
 var name = 'Bob';
 ```
@@ -310,14 +310,14 @@ but you can change that type by specifying it.
 If an object isn't restricted to a single type,
 specify the `Object` type (or `dynamic` if necessary).
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (type-decl)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
 ```dart
 Object name = 'Bob';
 ```
 
 Another option is to explicitly declare the type that would be inferred:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (static-types)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (static-types)"?>
 ```dart
 String name = 'Bob';
 ```
@@ -338,7 +338,7 @@ then every variable has a nullable type.)
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/variables_test.dart (var-null-init)"?>
+<?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
 int? lineCount;
 assert(lineCount == null);
@@ -353,7 +353,7 @@ assert(lineCount == null);
 If you enable null safety, then you must initialize the values
 of non-nullable variables before you use them:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-init)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart
 int lineCount = 0;
 ```
@@ -364,7 +364,7 @@ For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-ns-flow)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
 int lineCount;
 
@@ -397,7 +397,7 @@ If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
 [!late!] String description;
 
@@ -425,7 +425,7 @@ In the following example,
 if the `temperature` variable is never used,
 then the expensive `_readThermometer()` function is never called:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
 // This is the program's only call to _readThermometer().
 [!late!] String temperature = _readThermometer(); // Lazily initialized.
@@ -446,7 +446,7 @@ the first time it's used.
 
 Here's an example of creating and setting a `final` variable:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (final)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 ```dart
 final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
@@ -455,7 +455,7 @@ final String nickname = 'Bobby';
 You can't change the value of a `final` variable:
 
 {:.fails-sa}
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
 ```dart
 name = 'Alice'; // Error: a final variable can only be set once.
 ```
@@ -466,7 +466,7 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (const)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
 const bar = 1000000; // Unit of pressure (dynes/cm2)
 const double atm = 1.01325 * bar; // Standard atmosphere
@@ -477,7 +477,7 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (const-vs-final)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
 var foo = const [];
 final bar = const [];
@@ -490,7 +490,7 @@ like for `baz` above. For details, see [DON’T use const redundantly][].
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
 foo = [1, 2, 3]; // Was const []
 ```
@@ -498,7 +498,7 @@ foo = [1, 2, 3]; // Was const []
 You can't change the value of a `const` variable:
 
 {:.fails-sa}
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
 ```dart
 baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
@@ -508,7 +508,7 @@ You can define constants that use
 [collection `if`](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/variables.dart (const-dart-25)"?>
+<?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
@@ -614,7 +614,7 @@ If num and its subtypes don’t have what you’re looking for, the
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
 ```dart
 var x = 1;
 var hex = 0xDEADBEEF;
@@ -624,7 +624,7 @@ var exponent = 8e5;
 If a number includes a decimal, it is a double. Here are some examples
 of defining double literals:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (double-literals)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
 ```dart
 var y = 1.1;
 var exponents = 1.42e5;
@@ -633,7 +633,7 @@ var exponents = 1.42e5;
 You can also declare a variable as a num. If you do this, the variable
 can have both integer and double values.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (declare-num)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (declare-num)"?>
 ```dart
 num x = 1; // x can have both int and double values
 x += 2.5;
@@ -641,14 +641,14 @@ x += 2.5;
 
 Integer literals are automatically converted to doubles when necessary:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart
 double z = 1; // Equivalent to double z = 1.0.
 ```
 
 Here’s how you turn a string into a number, or vice versa:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (number-conversion)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (number-conversion)"?>
 ```dart
 // String -> int
 var one = int.parse('1');
@@ -670,7 +670,7 @@ assert(piAsString == '3.14');
 The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
 (&), and OR (|) operators. For example:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
 ```dart
 assert((3 << 1) == 6); // 0011 << 1 == 0110
 assert((3 >> 1) == 1); // 0011 >> 1 == 0001
@@ -682,7 +682,7 @@ Many arithmetic expressions are also compile-time constants,
 as long as their operands are
 compile-time constants that evaluate to numbers.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (const-num)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-num)"?>
 ```dart
 const msPerSecond = 1000;
 const secondsUntilRetry = 5;
@@ -700,7 +700,7 @@ A Dart string (`String` object) holds a sequence of UTF-16 code units.
 You can use either
 single or double quotes to create a string:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (quoting)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
 ```dart
 var s1 = 'Single quotes work well for string literals.';
 var s2 = "Double quotes work just as well.";
@@ -713,7 +713,7 @@ You can put the value of an expression inside a string by using
 the {}. To get the string corresponding to an object, Dart calls the
 object’s `toString()` method.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
 ```dart
 var s = 'string interpolation';
 
@@ -735,7 +735,7 @@ assert('That deserves all caps. '
 You can concatenate strings using adjacent string literals or the `+`
 operator:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 ```dart
 var s1 = 'String '
     'concatenation'
@@ -751,7 +751,7 @@ assert(s2 == 'The + operator works, as well.');
 Another way to create a multi-line string: use a triple quote with
 either single or double quotation marks:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
 ```dart
 var s1 = '''
 You can create
@@ -764,7 +764,7 @@ multi-line string.""";
 
 You can create a “raw” string by prefixing it with `r`:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 ```dart
 var s = r'In a raw string, not even \n gets special treatment.';
 ```
@@ -776,7 +776,7 @@ Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (string-literals)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (string-literals)"?>
 ```dart
 // These work in a const string.
 const aConstNum = 0;
@@ -808,7 +808,7 @@ Dart's type safety means that you can't use code like
 <code>assert (<em>nonbooleanValue</em>)</code>.
 Instead, explicitly check for values, like this:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 ```dart
 // Check for an empty string.
 var fullName = '';
@@ -837,7 +837,7 @@ is the *array*, or ordered group of objects. In Dart, arrays are
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (list-literal)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
 var list = [1, 2, 3];
 ```
@@ -854,7 +854,7 @@ You can add a comma after the last item in a Dart collection literal.
 This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
 var list = [
   'Car',
@@ -868,7 +868,7 @@ and `list.length - 1` is the index of the last value. You can get a
 list’s length and refer to list values just as you would in
 JavaScript:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 ```dart
 var list = [1, 2, 3];
 assert(list.length == 3);
@@ -881,7 +881,7 @@ assert(list[1] == 1);
 To create a list that's a compile-time constant,
 add `const` before the list literal:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (const-list)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
 var constantList = const [1, 2, 3];
 // constantList[1] = 1; // This line will cause an error.
@@ -895,7 +895,7 @@ which provide a concise way to insert multiple values into a collection.
 For example, you can use the spread operator (`...`) to insert
 all the values of a list into another list:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
 ```dart
 var list = [1, 2, 3];
 var list2 = [0, ...list];
@@ -905,7 +905,7 @@ assert(list2.length == 4);
 If the expression to the right of the spread operator might be null,
 you can avoid exceptions by using a null-aware spread operator (`...?`):
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
 ```dart
 var list;
 var list2 = [0, ...?list];
@@ -923,7 +923,7 @@ and repetition (`for`).
 Here's an example of using **collection if**
 to create a list with three or four items in it:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (list-if)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
 var nav = [
   'Home',
@@ -937,7 +937,7 @@ Here's an example of using **collection for**
 to manipulate the items of a list before
 adding them to another list:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (list-for)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 ```dart
 var listOfInts = [1, 2, 3];
 var listOfStrings = [
@@ -967,7 +967,7 @@ Dart support for sets is provided by set literals and the
 
 Here is a simple Dart set, created using a set literal:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (set-literal)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
 ```dart
 var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 ```
@@ -982,7 +982,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 To create an empty set, use `{}` preceded by a type argument,
 or assign `{}` to a variable of type `Set`:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 ```dart
 var names = <String>{};
 // Set<String> names = {}; // This works, too.
@@ -998,7 +998,7 @@ var names = <String>{};
 
 Add items to an existing set using the `add()` or `addAll()` methods:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
 ```dart
 var elements = <String>{};
 elements.add('fluorine');
@@ -1007,7 +1007,7 @@ elements.addAll(halogens);
 
 Use `.length` to get the number of items in the set:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (set-length)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
 ```dart
 var elements = <String>{};
 elements.add('fluorine');
@@ -1018,7 +1018,7 @@ assert(elements.length == 5);
 To create a set that's a compile-time constant,
 add `const` before the set literal:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (const-set)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 ```dart
 final constantSet = const {
   'fluorine',
@@ -1050,7 +1050,7 @@ is provided by map literals and the [`Map`][] type.
 
 Here are a couple of simple Dart maps, created using map literals:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (map-literal)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-literal)"?>
 ```dart
 var gifts = {
   // Key:    Value
@@ -1075,7 +1075,7 @@ var nobleGases = {
 
 You can create the same objects using a Map constructor:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 ```dart
 var gifts = Map<String, String>();
 gifts['first'] = 'partridge';
@@ -1097,7 +1097,7 @@ nobleGases[18] = 'argon';
 Add a new key-value pair to an existing map just as you would in
 JavaScript:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 ```dart
 var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
@@ -1105,7 +1105,7 @@ gifts['fourth'] = 'calling birds'; // Add a key-value pair
 
 Retrieve a value from a map the same way you would in JavaScript:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 ```dart
 var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
@@ -1113,7 +1113,7 @@ assert(gifts['first'] == 'partridge');
 
 If you look for a key that isn’t in a map, you get a null in return:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 ```dart
 var gifts = {'first': 'partridge'};
 assert(gifts['fifth'] == null);
@@ -1121,7 +1121,7 @@ assert(gifts['fifth'] == null);
 
 Use `.length` to get the number of key-value pairs in the map:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/built_in_types_test.dart (map-length)"?>
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-length)"?>
 ```dart
 var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds';
@@ -1131,7 +1131,7 @@ assert(gifts.length == 2);
 To create a map that's a compile-time constant,
 add `const` before the map literal:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (const-map)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 ```dart
 final constantMap = const {
   2: 'helium',
@@ -1227,7 +1227,7 @@ To get the symbol for an identifier, use a symbol literal, which is just
 {% comment %}
 The code from the following excerpt isn't actually what is being shown in the page
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/built_in_types.dart (symbols)"?>
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (symbols)"?>
 ```dart
 // MOVE TO library tour?
 
@@ -1258,7 +1258,7 @@ it were a function. For details, see [Callable classes](#callable-classes).
 
 Here’s an example of implementing a function:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (function)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
 ```dart
 bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
@@ -1269,7 +1269,7 @@ Although Effective Dart recommends
 [type annotations for public APIs](/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious),
 the function still works if you omit the types:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (function-omitting-types)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
 ```dart
 isNoble(atomicNumber) {
   return _nobleGases[atomicNumber] != null;
@@ -1279,7 +1279,7 @@ isNoble(atomicNumber) {
 For functions that contain just one expression, you can use a shorthand
 syntax:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (function-shorthand)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-shorthand)"?>
 ```dart
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 ```
@@ -1317,7 +1317,7 @@ Named parameters are optional unless they're specifically marked as `required`.
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (use-named-parameters)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 ```dart
 enableFlags(bold: true, hidden: false);
 ```
@@ -1326,7 +1326,7 @@ When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
 to specify named parameters:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool? bold, bool? hidden}) {...}
@@ -1343,7 +1343,7 @@ that the parameter is mandatory —
 that users must provide a value for the parameter.
 For example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 const Scrollbar({Key? key, [!required!] Widget child})
 {% endprettify %}
@@ -1361,7 +1361,7 @@ NULLSAFE: Rewrite this section.
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
 String say(String from, String msg, [String? device]) {
   var result = '$from says $msg';
@@ -1375,14 +1375,14 @@ String say(String from, String msg, [String? device]) {
 Here’s an example of calling this function without the optional
 parameter:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 ```dart
 assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 ```
 
 And here’s an example of calling this function with the third parameter:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 ```dart
 assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
@@ -1397,7 +1397,7 @@ If no default value is provided, the default value is `null`.
 
 Here's an example of setting default values for named parameters:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold = false, bool hidden = false}) {...}
@@ -1422,7 +1422,7 @@ See `defaultNamedParameter` in the language spec.
 
 The next example shows how to set default values for positional parameters:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
 String say(String from, String msg,
     [String device = 'carrier pigeon']) {
@@ -1443,7 +1443,7 @@ The function is called three times with different values. Click **Run** to see
 list and map default values in action.
 {% endcomment %}
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
 ```dart
 void doStuff(
     {List<int> list = const [1, 2, 3],
@@ -1465,7 +1465,7 @@ optional `List<String>` parameter for arguments.
 
 Here's a simple `main()` function:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
   print('Hello, World!');
@@ -1475,7 +1475,7 @@ void main() {
 Here's an example of the `main()` function for a command-line app that
 takes arguments:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (main-args)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 ```dart
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
@@ -1494,7 +1494,7 @@ define and parse command-line arguments.
 
 You can pass a function as a parameter to another function. For example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/functions.dart (function-as-param)"?>
+<?code-excerpt "misc/lib/language_tour/functions.dart (function-as-param)"?>
 ```dart
 void printElement(int element) {
   print(element);
@@ -1508,7 +1508,7 @@ list.forEach(printElement);
 
 You can also assign a function to a variable, such as:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (function-as-var)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (function-as-var)"?>
 ```dart
 var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
 assert(loudify('hello') == '!!! HELLO !!!');
@@ -1541,7 +1541,7 @@ The following example defines an anonymous function with an untyped parameter, `
 The function, invoked for each item in the list,
 prints a string that includes the value at the specified index.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
 list.forEach((item) {
@@ -1551,7 +1551,7 @@ list.forEach((item) {
 
 Click **Run** to execute the code.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
 ```dart:run-dartpad:height-400px:ga_id-anonymous_functions:null_safety-true
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
@@ -1566,7 +1566,7 @@ you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anon-func)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
 list.forEach(
     (item) => print('${list.indexOf(item)}: $item'));
@@ -1583,7 +1583,7 @@ scope.
 Here is an example of nested functions with variables at each scope
 level:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (nested-functions)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (nested-functions)"?>
 ```dart
 bool topLevel = true;
 
@@ -1619,7 +1619,7 @@ Functions can close over variables defined in surrounding scopes. In the
 following example, `makeAdder()` captures the variable `addBy`. Wherever the
 returned function goes, it remembers `addBy`.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (function-closure)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
 ```dart
 /// Returns a function that adds [addBy] to the
 /// function's argument.
@@ -1645,7 +1645,7 @@ void main() {
 Here's an example of testing top-level functions, static methods, and
 instance methods for equality:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/function_equality.dart"?>
+<?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
 void foo() {} // A top-level function
 
@@ -1687,7 +1687,7 @@ void main() {
 All functions return a value. If no return value is specified, the
 statement `return null;` is implicitly appended to the function body.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
+<?code-excerpt "misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
 ```dart
 foo() {}
 
@@ -1730,7 +1730,7 @@ You can implement many of these [operators as class members](#_operators).
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (expressions)" replace="/,//g"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (expressions)" replace="/,//g"?>
 ```dart
 a++
 a + b
@@ -1748,7 +1748,7 @@ which has higher precedence than the logical AND operator `&&`. That
 precedence means that the following two lines of code execute the same
 way:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (precedence)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
 // Parentheses improve readability.
 if ((n % i == 0) && (d % i == 0)) ...
@@ -1782,7 +1782,7 @@ Dart supports the usual arithmetic operators, as shown in the following table.
 
 Example:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (arithmetic)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (arithmetic)"?>
 ```dart
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
@@ -1808,7 +1808,7 @@ operators.
 
 Example:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (increment-decrement)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (increment-decrement)"?>
 ```dart
 int a;
 int b;
@@ -1863,7 +1863,7 @@ function instead.) Here’s how the `==` operator works:
 Here’s an example of using each of the equality and relational
 operators:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (relational)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (relational)"?>
 ```dart
 assert(2 == 2);
 assert(2 != 3);
@@ -1893,14 +1893,14 @@ specified by `T`. For example, `obj is Object?` is always true.
 Use the `as` operator to cast an object to a particular type if and only if
 you are sure that the object is of that type. Example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
 ```dart
 (employee as Person).firstName = 'Bob';
 ```
 
 If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
 if (employee is Person) {
   // Type check
@@ -1919,7 +1919,7 @@ As you’ve already seen, you can assign values using the `=` operator.
 To assign only if the assigned-to variable is null,
 use the `??=` operator.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (assignment)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (assignment)"?>
 ```dart
 // Assign value to a
 a = value;
@@ -1946,7 +1946,7 @@ Here’s how compound assignment operators work:
 The following example uses assignment and compound assignment
 operators:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (op-assign)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 ```dart
 var a = 2; // Assign using =
 a *= 3; // Assign and multiply: a = a * 3
@@ -1969,7 +1969,7 @@ operators.
 
 Here’s an example of using the logical operators:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (op-logical)"?>
+<?code-excerpt "misc/lib/language_tour/operators.dart (op-logical)"?>
 ```dart
 if (!done && (col == 0 || col == 3)) {
   // ...Do something...
@@ -1995,7 +1995,7 @@ you’d use these bitwise and shift operators with integers.
 
 Here’s an example of using bitwise and shift operators:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (op-bitwise)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (op-bitwise)"?>
 ```dart
 final value = 0x22;
 final bitmask = 0x0f;
@@ -2026,7 +2026,7 @@ When you need to assign a value
 based on a boolean expression,
 consider using `?` and `:`.
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
+<?code-excerpt "misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 ```dart
 var visibility = isPublic ? 'public' : 'private';
 ```
@@ -2034,7 +2034,7 @@ var visibility = isPublic ? 'public' : 'private';
 If the boolean expression tests for null,
 consider using `??`.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (if-null)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)"?>
 ```dart
 String playerName(String? name) => name ?? 'Guest';
 ```
@@ -2042,7 +2042,7 @@ String playerName(String? name) => name ?? 'Guest';
 The previous example could have been written at least two other ways,
 but not as succinctly:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (if-null-alt)"?>
+<?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 ```dart
 // Slightly longer version uses ?: operator.
 String playerName(String? name) => name != null ? name : 'Guest';
@@ -2068,7 +2068,7 @@ allows you to write more fluid code.
 
 Consider the following code:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/cascades.dart (cascade)"?>
+<?code-excerpt "misc/lib/language_tour/cascades.dart (cascade)"?>
 ```dart
 var paint = Paint()
   ..color = Colors.black
@@ -2084,7 +2084,7 @@ might be returned.
 
 The previous example is equivalent to this code:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/cascades.dart (cascade-expanded)"?>
+<?code-excerpt "misc/lib/language_tour/cascades.dart (cascade-expanded)"?>
 ```dart
 var paint = Paint();
 paint.color = Colors.black;
@@ -2101,7 +2101,7 @@ then use a _null-shorting_ cascade (`?..`) for the first operation.
 Starting with `?..` guarantees that none of the cascade operations
 are attempted on that null object.
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/browser_test.dart (cascade-operator)"?>
+<?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
 querySelector('#confirm') // Get an object.
   ?..text = 'Confirm' // Use its members.
@@ -2115,7 +2115,7 @@ querySelector('#confirm') // Get an object.
 
 The previous code is equivalent to the following:
 
-<?code-excerpt "../null_safety_examples/misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
+<?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 ```dart
 var button = querySelector('#confirm');
 button?.text = 'Confirm';
@@ -2125,7 +2125,7 @@ button?.onClick.listen((e) => window.alert('Confirmed!'));
 
 You can also nest cascades. For example:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (nested-cascades)"?>
+<?code-excerpt "misc/lib/language_tour/operators.dart (nested-cascades)"?>
 ```dart
 final addressBook = (AddressBookBuilder()
       ..name = 'jenny'
@@ -2140,7 +2140,7 @@ final addressBook = (AddressBookBuilder()
 Be careful to construct your cascade on a function that returns
 an actual object. For example, the following code fails:
 
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
+<?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 ```dart
 var sb = StringBuffer();
 sb.write('foo')

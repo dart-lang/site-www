@@ -9,7 +9,7 @@ prevpage:
   title: Documentation
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 You can use these guidelines every day in the bodies of your Dart code. *Users*
 of your library may not be able to tell that you've internalized the ideas here,

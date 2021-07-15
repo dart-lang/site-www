@@ -347,7 +347,7 @@ synchronous code before the first `await` keyword executes immediately.
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
-<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart" remove="/\/\/ print/"?>
+<?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
 ```dart:run-dartpad:height-530px:ga_id-execution_within_async_function:null_safety-true
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
@@ -375,7 +375,7 @@ void countSeconds(int s) {
 
 After running the code in the preceding example, try reversing lines 2 and 3:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
+<?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
 ```dart
 var order = await fetchUserOrder();
 print('Awaiting user order...');
@@ -574,7 +574,7 @@ Remember: reportUserRole() needs to return a future!
 ## Handling errors
 To handle errors in an `async` function, use try-catch:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
+<?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
   var order = await fetchUserOrder();
@@ -592,7 +592,7 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
-<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart"?>
+<?code-excerpt "async_await/bin/try_catch.dart"?>
 ```dart:run-dartpad:height-530px:ga_id-try_catch:null_safety-true
 Future<void> printOrderMessage() async {
   try {

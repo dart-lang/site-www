@@ -311,7 +311,7 @@ that uses all the recommended rules from `lints`
 except `avoid_shadowing_type_parameters`.
 It also enables the lint `await_only_futures`:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml"?>
+<?code-excerpt "analysis_alt/analysis_options_linter.yaml"?>
 ```yaml
 include: package:lints/recommended.yaml
 
@@ -357,7 +357,7 @@ for all files or
 To exclude files from static analysis, use the `exclude:` analyzer option. You
 can list individual files, or use [glob]({{site.pub-pkg}}/glob) syntax:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml
 analyzer:
   exclude:
@@ -372,7 +372,7 @@ analyzer:
 To ignore a specific non-error rule for a specific file,
 add an `ignore_for_file` comment to the file:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
 ```dart
 // ignore_for_file: unused_local_variable
 ```
@@ -382,7 +382,7 @@ particularly useful for generated code.
 
 To suppress more than one rule, use a comma-separated list:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
 // ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
@@ -395,7 +395,7 @@ put an `ignore` comment
 above the line of code. Here's an example of ignoring code that causes a runtime
 error, as you might do in a language test:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (invalid_assignment)"?>
+<?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart
 // ignore: invalid_assignment
 int x = '';
@@ -403,7 +403,7 @@ int x = '';
 
 To suppress more than one rule, supply a comma-separated list:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore more)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
 ```dart
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;
@@ -411,7 +411,7 @@ const x = y;
 
 Alternatively, append the ignore rule to the line that it applies to:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (single-line)"?>
+<?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
 ```dart
 int x = ''; // ignore: invalid_assignment
 ```
@@ -447,7 +447,7 @@ by using the `errors:` field.
 List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
 analysis options file instructs the analysis tools to ignore the TODO rule:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
 ```yaml
 analyzer:
   errors:
@@ -463,7 +463,7 @@ For example, the following analysis options file instructs the analysis tools to
 treat invalid assignments as warnings and missing returns as errors,
 and to provide information (but not a warning or error) about dead code:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
 ```yaml
 analyzer:
   errors:
