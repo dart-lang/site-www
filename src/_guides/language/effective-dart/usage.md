@@ -1067,7 +1067,7 @@ getter and setter without having to touch any code that uses that field.
 <?code-excerpt "usage_good.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var contents;
+  Object? contents;
 }
 {% endprettify %}
 
@@ -1075,9 +1075,9 @@ class Box {
 <?code-excerpt "usage_bad.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var _contents;
-  get contents => _contents;
-  set contents(value) {
+  Object? _contents;
+  Object? get contents => _contents;
+  set contents(Object? value) {
     _contents = value;
   }
 }
@@ -1103,8 +1103,8 @@ class Box {
 <?code-excerpt "usage_bad.dart (final)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var _contents;
-  get contents => _contents;
+  Object? _contents;
+  Object? get contents => _contents;
 }
 {% endprettify %}
 
@@ -1183,13 +1183,13 @@ with the same name shadows the member you want to access:
 <?code-excerpt "usage_bad.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var value;
+  Object? value;
 
   void clear() {
     this.update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
@@ -1199,13 +1199,13 @@ class Box {
 <?code-excerpt "usage_good.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var value;
+  Object? value;
 
   void clear() {
     update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
@@ -1250,9 +1250,9 @@ lists:
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 {% prettify dart tag=pre+code %}
 class Box extends BaseBox {
-  var value;
+  Object? value;
 
-  Box(value)
+  Box(Object? value)
       : value = value,
         super(value);
 }

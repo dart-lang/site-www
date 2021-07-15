@@ -379,7 +379,7 @@ class Circle {
 
 // #docregion dont-wrap-field
 class Box {
-  var contents;
+  Object? contents;
 }
 // #enddocregion dont-wrap-field
 
@@ -440,13 +440,13 @@ class C {
 
 // #docregion this-dot
 class Box2 {
-  var value;
+  Object? value;
 
   void clear() {
     update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
@@ -475,9 +475,9 @@ class BaseBox {
 
 // #docregion param-dont-shadow-field-ctr-init
 class Box3 extends BaseBox {
-  var value;
+  Object? value;
 
-  Box3(value)
+  Box3(Object? value)
       : value = value,
         super(value);
 }
