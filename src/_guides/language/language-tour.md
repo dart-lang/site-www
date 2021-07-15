@@ -2724,7 +2724,7 @@ const pointAndLine = const {
 
 You can omit all but the first use of the `const` keyword:
 
-<?code-excerpt "fety_examples/misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
+<?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 ```dart
 // Only one const, which establishes the constant context.
 const pointAndLine = {
@@ -3784,7 +3784,7 @@ var nameSet = Set<String>.from(names);
 The following code creates a map that has integer keys and values of
 type View:
 
-<?code-excerpt ".misc/test/language_tour/generics_test.dart (constructor-2)"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 ```dart
 var views = Map<int, View>();
 ```
@@ -3796,7 +3796,7 @@ Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
 collection:
 
-<?code-excerpt ".misc/test/language_tour/generics_test.dart (generic-collections)"?>
+<?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 ```dart
 var names = <String>[];
 names.addAll(['Seth', 'Kathy', 'Lars']);

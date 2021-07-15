@@ -1439,7 +1439,7 @@ import 'dart:math';
 
 The Math library provides basic trigonometric functions:
 
-<?code-excerpt ".misc/test/library_tour/math_test.dart (trig)"?>
+<?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
 ```dart
 // Cosine
 assert(cos(pi) == -1.0);
@@ -1553,7 +1553,7 @@ assert(firstScore['score'] == 40);
 Encode a supported Dart object into a JSON-formatted string with
 `jsonEncode()`:
 
-<?code-excerpt ".misc/test/library_tour/convert_test.dart (json-encode)"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
 ```dart
 var scores = [
   {'score': 40},
@@ -1586,7 +1586,7 @@ For more examples and links to JSON-related packages, see
 
 Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
-<?code-excerpt "../misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
 ```dart
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,

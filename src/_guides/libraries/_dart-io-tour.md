@@ -157,7 +157,7 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<?code-excerpt ".misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
 Future<void> main() async {
   var dir = Directory('tmp');
