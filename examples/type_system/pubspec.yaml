@@ -1,4 +1,4 @@
-name: examples_strong
+name: type_system_examples
 description: dart.dev type system examples.
 
 environment:

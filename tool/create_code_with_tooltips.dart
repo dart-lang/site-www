@@ -15,13 +15,13 @@ from sources in the example folder.
 const sources = [
   // Entry format: [ src_path, tip_data_path, target_HTML_file_path ]
   _SrcAndTipPaths(
-    '$repoBase/null_safety_examples/misc/lib/pi/pi_monte_carlo.dart',
-    '$repoBase/null_safety_examples/misc/lib/pi/pi_monte_carlo_tooltips.html',
+    '$repoBase/examples/misc/lib/pi/pi_monte_carlo.dart',
+    '$repoBase/examples/misc/lib/pi/pi_monte_carlo_tooltips.html',
     '$repoBase/src/_main-example.html',
   ),
   _SrcAndTipPaths(
-    '$repoBase/null_safety_examples/misc/bin/dcat/dcat.dart',
-    '$repoBase/null_safety_examples/misc/bin/dcat/dcat_tooltips.html',
+    '$repoBase/examples/misc/bin/dcat/dcat.dart',
+    '$repoBase/examples/misc/bin/dcat/dcat_tooltips.html',
     '$repoBase/src/_tutorials/server/_dcat-example.html',
   ),
 ];

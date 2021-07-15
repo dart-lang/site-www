@@ -1,5 +1,5 @@
-name: non_promotion
-description: dart.dev non-promotion examples.
+name: basics_examples
+description: dart.dev null-safety examples.
 version: 0.0.1
 
 environment:
