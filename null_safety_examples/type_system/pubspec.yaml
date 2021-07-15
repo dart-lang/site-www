@@ -1,0 +1,10 @@
+name: examples_strong
+description: dart.dev type system examples.
+
+environment:
+  sdk: '>=2.13.0 <3.0.0'
+
+dev_dependencies:
+  examples_util: {path: ../util}
+  lints: ^1.0.0
+  test: ^1.17.0

@@ -1,4 +1,3 @@
-// ignore_for_file: annotate_overrides
 class Animal {
   void chase(Animal x) {/* ... */}
 }
