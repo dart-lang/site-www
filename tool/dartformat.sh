@@ -30,8 +30,7 @@ dart format -l 60 \
   $EXAMPLES/misc/lib/language_tour/classes/orchestra.dart \
   $EXAMPLES/misc/test/language_tour/built_in_types_test.dart \
   $EXAMPLES/misc/test/language_tour/functions_test.dart \
-  $EXAMPLES/misc/test/library_tour/html_test.dart \
-  $EXAMPLES/misc/lib/samples/spacecraft.dart
+  $EXAMPLES/misc/test/library_tour/html_test.dart
 
 dart format -l 65 \
   $EXAMPLES/misc/bin/dcat/dcat.dart \
@@ -41,6 +40,7 @@ dart format -l 65 \
   $EXAMPLES/misc/lib/library_tour/core \
   $EXAMPLES/misc/lib/library_tour/async/future.dart \
   $EXAMPLES/misc/lib/library_tour/async/stream.dart \
+  $EXAMPLES/misc/lib/samples/spacecraft.dart \
   $EXAMPLES/misc/test/library_tour/core_test.dart \
   $EXAMPLES/misc/test/library_tour/io_test.dart
 

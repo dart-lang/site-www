@@ -3,7 +3,8 @@ class Spacecraft {
   String name;
   DateTime? launchDate;
 
-  int? get launchYear => launchDate?.year; // read-only non-final property
+  // Read-only non-final property
+  int? get launchYear => launchDate?.year;
 
   // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
@@ -16,9 +17,11 @@ class Spacecraft {
   // Method.
   void describe() {
     print('Spacecraft: $name');
-    var launchDate = this.launchDate; // Type promotion doesn't work on getters.
+    // Type promotion doesn't work on getters.
+    var launchDate = this.launchDate;
     if (launchDate != null) {
-      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/ 365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
@@ -49,8 +52,9 @@ mixin Piloted {
 // #docregion mixin-use
 class PilotedCraft extends Spacecraft with Piloted {
   // #enddocregion mixin-use
-  PilotedCraft(String name, DateTime launchDate) : super(name, launchDate);
-// #docregion mixin-use
+  PilotedCraft(String name, DateTime launchDate)
+      : super(name, launchDate);
+  // #docregion mixin-use
 }
 // #enddocregion mixin-use
 
@@ -70,7 +74,7 @@ class MockSpaceship implements Spacecraft {
 
   @override
   void describe() => print(name);
-// #docregion implements
+  // #docregion implements
 }
 // #enddocregion implements
 

@@ -177,7 +177,8 @@ class Spacecraft {
   String name;
   DateTime? launchDate;
 
-  int? get launchYear => launchDate?.year; // read-only non-final property
+  // Read-only non-final property
+  int? get launchYear => launchDate?.year;
 
   // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
@@ -190,9 +191,11 @@ class Spacecraft {
   // Method.
   void describe() {
     print('Spacecraft: $name');
-    var launchDate = this.launchDate; // Type promotion doesn't work on getters.
+    // Type promotion doesn't work on getters.
+    var launchDate = this.launchDate;
     if (launchDate != null) {
-      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/ 365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
@@ -253,7 +256,7 @@ mixin Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
