@@ -374,7 +374,7 @@ add an `ignore_for_file` comment to the file:
 
 <?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
 ```dart
-// ignore_for_file: unused_import
+// ignore_for_file: unused_local_variable
 ```
 
 This acts for the whole file, before or after the comment, and is
@@ -384,7 +384,7 @@ To suppress more than one rule, use a comma-separated list:
 
 <?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
-// ignore_for_file: unused_import, unused_local_variable, duplicate_ignore
+// ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
 
 
