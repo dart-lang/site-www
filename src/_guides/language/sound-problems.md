@@ -27,11 +27,11 @@ If you're not seeing expected errors or warnings,
 make sure that you're using the latest version of Dart
 and you have properly configured your [IDE or editor](/tools#ides-and-editors).
 
-You can also run analysis on your program through the command-line
+You can also run analysis on your program using the command line
 with the [`dart analyze`](/tools/dart-analyze) command.
 
-To verify analysis is working as expected, try adding the following code
-to a Dart file.
+To verify that analysis is working as expected,
+try adding the following code to a Dart file.
 
 {:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (static-analysis-enabled)"?>
@@ -89,10 +89,11 @@ error - The getter 'context2D' isn't defined for the type 'Element'. Try importi
 
 #### Fix: Replace the definition of the member with an explicit type declaration or a downcast
 
-The `querySelector()` with null assertion method statically returns an `Element`,
-but the code assumes it returns the subtype `CanvasElement`
-where `context2D` is defined.
-The `canvas` field is declared as `var` which,
+The return type of `querySelector()` is `Element?`
+(which the `!` converts to `Element`),
+but the code assumes that it's the subtype `CanvasElement`
+(which defines `context2D`).
+The `canvas` field is declared as `var`,
 which allows Dart to infer `canvas` to be an `Element`.
 
 You can fix this error with an explicit downcast:
@@ -303,9 +304,10 @@ class Subclass extends Superclass[!<int>!] {
 {% endprettify %}
 
 {{site.alert.tip}}
-  Consider enforcing with the analyzer that generic type arguments
-  must be specified. This can be done by enabling the 
-  `strict-raw-types` language warning within your `analysis_options.yaml`:
+  Consider using the analyzer in _strict raw types_ mode,
+  which ensures that your code uses generic type arguments.
+  Here's an example of specifying strict raw types in
+  your project's `analysis_options.yaml` file:
 
   ```yaml
   analyzer:
@@ -313,8 +315,8 @@ class Subclass extends Superclass[!<int>!] {
       strict-raw-types: true
   ```
 
-  See [Customizing static analysis](/guides/language/analysis-options) to learn
-  more about customizing the analyzer's behavior.
+  To learn more about customizing the analyzer's behavior,
+  see [Customizing static analysis](/guides/language/analysis-options).
 {{site.alert.end}}
 
 <hr>

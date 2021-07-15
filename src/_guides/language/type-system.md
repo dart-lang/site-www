@@ -469,21 +469,21 @@ Can you assign an `Animal` list to a `List<Cat>`?
 List<Cat> myCats = <[!Animal!]>[];
 {% endprettify %}
 
-This assignment does not pass static analysis 
-as it creates an implicit downcast, 
-which are disallowed from non-`dynamic` types such as `Animal`.
+This assignment doesn't pass static analysis 
+because it creates an implicit downcast, 
+which is disallowed from non-`dynamic` types such as `Animal`.
 
 {{site.alert.version-note}}
   In packages that use a [language version][] before 2.12
   (when support for [null safety][] was introduced),
   code can implicitly downcast from these non-`dynamic` types.
-  You can disallow these non-`dynamic` downcasts
+  You can disallow non-`dynamic` downcasts in a pre-2.12 project
   by specifying `implicit-casts: false` in the [analysis options file.][analysis]
 {{site.alert.end}}
 
-For this code to pass static analysis, 
-you will instead need to use an explicit cast, 
-which may fail at runtime.
+To make this code pass static analysis, 
+use an explicit cast, 
+which might fail at runtime.
 
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -520,7 +520,7 @@ The following resources have further information on sound Dart:
 * [Customizing static analysis][analysis] - 
   How to set up and customize the analyzer and linter
   using an analysis options file.
-* [Dart 2](/dart-2) - 
+* [Dart 2 migration guide](/dart-2) - 
   How to update Dart 1.x code to Dart 2.
 
 
