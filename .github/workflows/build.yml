@@ -34,10 +34,10 @@ jobs:
         include:
           - sdk: dev
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: beta
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh
             experimental: false
