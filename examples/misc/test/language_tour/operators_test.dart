@@ -81,7 +81,7 @@ void main() {
   });
 
   test('is-vs-as', () {
-    expect(employee.main, m.prints(['in Person', 'in Employee']));
+    expect(employee.main, m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]));
   });
 
   group('`=` vs `??=`:', () {

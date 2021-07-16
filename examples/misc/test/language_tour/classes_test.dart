@@ -89,7 +89,7 @@ void main() {
   });
 
   test('employee', () {
-    expect(employee.main, m.prints(['in Person', 'in Employee']));
+    expect(employee.main, m.prints(['in Person', 'in Employee', "Instance of 'Employee'"]));
   });
 
   test('point_with_distance', () {

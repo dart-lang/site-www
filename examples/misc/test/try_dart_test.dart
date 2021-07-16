@@ -16,7 +16,7 @@ void main() {
   });
 
   test('strings', () {
-    expect(strings.main, prints(endsWith('tau is 6.28\n')));
+    expect(strings.main, prints(contains('tau is 6.28')));
   });
 
   test('collection_literals', () {
