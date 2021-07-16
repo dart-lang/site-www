@@ -17,6 +17,6 @@ Analyzing strong...
   error - lib/strong_analysis.dart:144:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
   error - test/strong_test.dart:36:27 - A value of type 'List<dynamic>' can't be assigned to a variable of type 'List<int>'. Try changing the type of the variable, or casting the right-hand type to 'List<int>'. - invalid_assignment
   error - test/strong_test.dart:53:26 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
-  error - test/strong_test.dart:158:26 - A value of type 'dynamic' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
+  error - test/strong_test.dart:120:26 - A value of type 'dynamic' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
 
 18 issues found.
