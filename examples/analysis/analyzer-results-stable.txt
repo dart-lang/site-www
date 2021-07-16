@@ -1,0 +1,7 @@
+Analyzing analysis...
+
+  error - lib/assignment.dart:11:14 - A value of type 'dynamic' can't be assigned to a variable of type 'String'. Try changing the type of the variable, or casting the right-hand type to 'String'. - invalid_assignment
+   info - lib/lint.dart:9:19 - Avoid empty statements. - empty_statements
+   info - lib/lint.dart:17:7 - Close instances of `dart.core.Sink`. - close_sinks
+
+3 issues found.

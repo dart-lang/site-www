@@ -40,7 +40,7 @@ If properly configured, the analyzer points to the semicolon and
 produces the following warning:
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
 info - example.dart:9:19 - Avoid empty statements. - empty_statements
 ```
@@ -56,7 +56,7 @@ var [!controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - Close instances of `dart.core.Sink`. - close_sinks
 ```
@@ -184,7 +184,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 error - A value of type 'dynamic' can't be assigned to a variable of type 'String' - invalid_assignment
 ```
