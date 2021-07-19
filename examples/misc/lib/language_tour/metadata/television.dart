@@ -1,7 +1,7 @@
 // #docregion deprecated
 class Television {
-  /// _Deprecated: Use [turnOn] instead._
-  @deprecated
+  /// Use [turnOn] to turn the power on instead.
+  @Deprecated('Use turnOn instead')
   void activate() {
     turnOn();
   }
