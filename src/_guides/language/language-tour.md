@@ -4395,7 +4395,7 @@ class Television {
 {% endprettify %}
 
 You can define your own metadata annotations. Here’s an example of
-defining a @todo annotation that takes two arguments:
+defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 ```dart
