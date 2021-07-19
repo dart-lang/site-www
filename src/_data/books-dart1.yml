@@ -42,7 +42,7 @@
     - Patricia Juberias
   publisher: Apress
   cover: web-programming-with-dart.jpg
-  link: "http://www.apress.com/9781484205570"
+  link: "https://www.apress.com/9781484205570"
   desc: "Web Programming with Dart is for programmers who want to master the new Dart programming language from Google, and also web developers who want to understand how Dart can integrate perfectly with HTML5 and CSS3. With this book you will understand the ins and outs of the language, how the tools work, and how to get the most from the core functions and libraries. Web Programming with Dart is a practical, example-led book, with case studies involving developing UI animations for the web, working with web services such as JSON, server side Dart applications, and the new Polymer.dart library for advanced HTML UI web components generation."
 - title: Mastering Dart
   authors:
@@ -63,28 +63,28 @@
     - Patricia Juberias
   publisher: "Moises Belchin & Patricia Juberias"
   cover: aprende-dart.jpg
-  link: "http://libroaprendedart.appspot.com/"
+  link: "https://libroaprendedart.appspot.com/"
   desc: "Aprende Dart is the first Spanish-language book about Dart. Aprende Dart es el primer libro en Español para programadores y diseñadores web que quieran conocer el lenguaje, aprender a manejar las herramientas y trabajar con las principales funciones y librerías. Conocerás la historia que hay tras el lenguaje y cómo surge, crearemos animaciones para interfaces gráficas web y trabajaremos con servicios web, veremos el potencial que nos brinda Dart en el lado servidor y comenzaremos a trabajar con Polymer.dart."
 - title: Dart for Absolute Beginners
   authors:
     - David Kopec
   publisher: Springer (Apress)
   cover: dart-for-absolute-beginners.jpg
-  link: "http://www.springer.com/us/book/9781430264811"
+  link: "https://www.springer.com/us/book/9781430264811"
   desc: "Dart for Absolute Beginners enables individuals with no background in programming to create their own web apps while learning the fundamentals of software development in a cutting edge language. Easily digested chapters, while comprehensive enough to explore the whole domain, are aimed at both hobbyists and professionals alike. The reader will not only gain an insight into Dart, but also the technologies behind the web. A firm foundation is laid for further programming studies."
 - title: Dart for Hipsters
   authors:
     - Chris Strom
   publisher: Pragmatic Publishers
   cover: dart-for-hipsters.png
-  link: "http://pragprog.com/book/csdart/dart-for-hipsters"
+  link: "https://www.google.com/books/edition/_/LoazngEACAAJ"
   desc: "Psst! You’re not stuck with JavaScript anymore. Dart for Hipsters teaches you the fastest way possible: with real code and real projects starting on page 1. The unabashed goal of Dart is to make programming for the Web simpler, faster, and more powerful. And Dart for Hipsters is the fast-paced, most thorough way to learn it. You’ll explore the ins and outs of Dart by writing a simple application that grows in complexity from modest beginnings to a separate library that fully leverages the power of Dart. Caution: after reading you may develop an intense attachment to structured code and skinny jeans."
 - title: Dart in Action
   authors:
     - Chris Buckett
   publisher: Manning
   cover: dart-in-action.jpg
-  link: "http://www.manning.com/buckett/"
+  link: "https://www.manning.com/books/dart-in-action"
   desc: "Dart in Action introduces the Dart language and provides techniques and examples showing how to use it as a viable replacement for Java and JavaScript in browser-based desktop and mobile applications. It begins with a rapid overview of the Dart language and tools including features like interacting with the browser, optional typing, classes, libraries, and concurrency with isolates. After you master the core concepts, you move on to running Dart on the server and creating 'single page' HTML5 web applications."
 - title: 'Dart: Up and Running'
   authors:
@@ -92,5 +92,5 @@
     - Seth Ladd
   publisher: O'Reilly
   cover: dart-up-and-running.gif
-  link: "http://shop.oreilly.com/product/0636920025719.do"
+  link: "https://www.oreilly.com/library/view/dart-up-and/9781449330880/"
   desc: "An early book about the Dart language, libraries, and tools. Parts of this book are available (in updated form) in this site's language and library tours."
