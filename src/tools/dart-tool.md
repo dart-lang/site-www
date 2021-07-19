@@ -35,7 +35,7 @@ $ dart pub upgrade
   In 2.10, new `dart` commands such as `analyze` and `test` were added
   to replace functionality that was
   previously provided by standalone command-line tools.
-  Those standalone tools—for example
+  Those standalone tools—for example,
   `dartanalyzer` and `pub`—are
   now being [discontinued gradually][].
 {{site.alert.end}}
