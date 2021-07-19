@@ -63,7 +63,7 @@ Make these changes to your `pubspec.yaml` file:
   - <del>`dart_to_js_script_rewriter`</del>
   - <del>`test/pub_serve`</del>
 
-For example, look at the the differences in
+For example, look at the differences in
 the [Quickstart example's pubspec][angular-examples/quickstart/pubspec.yaml]
 with these changes applied.
 
@@ -77,7 +77,7 @@ You'll need to make these changes:
 - Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
   `<script defer src="foo.dart.js"></script>`
 
-For example, look at the the differences in the [Quickstart example's
+For example, look at the differences in the [Quickstart example's
 web/index.html page][angular-examples/quickstart/web/index.html]
 with these changes applied.
 

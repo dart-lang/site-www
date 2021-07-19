@@ -373,7 +373,7 @@ Now, we can use the converter with chunked conversions or even for stream
 transformations:
 
 {% prettify dart tag=pre+code %}
-// Requires to import dart:io.
+// Requires importing dart:io.
 main(args) {
   String inFile = args[0];
   String outFile = args[1];

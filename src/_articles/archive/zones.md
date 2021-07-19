@@ -414,7 +414,7 @@ main() {
 This program works,
 but let’s assume that you now want to know
 which file each line comes from,
-and that you can't just add an filename argument to `splitLinesStream()`.
+and that you can't just add a filename argument to `splitLinesStream()`.
 With zone-local values you can add the filename to the returned string
 (new lines are highlighted):
 

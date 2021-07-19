@@ -1654,7 +1654,7 @@ This page introduced you to the most commonly used functionality in
 Dart’s built-in libraries. It didn’t cover all the built-in
 libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
-as well as platform-specific libaries like the
+as well as platform-specific libraries like the
 [Dart web development libraries][webdev libraries]
 and the [Flutter libraries.][docs.flutter]
 

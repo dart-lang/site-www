@@ -60,7 +60,7 @@ Some computations can be moved to the static initializer. Instead of:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-// Initalized without values
+// Initialized without values
 ListQueue _context;
 Float32List _buffer;
 dynamic _readObject;
