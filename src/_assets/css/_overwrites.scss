@@ -294,7 +294,8 @@ body.homepage .get-started-section {
 
 @media print {
   /* Don't display navigation aids when printing */
-  #page-header, #sidenav, #subnav, #page-footer, .banner, #toc, #site-toc--inline, #site-toc--side {
+  #page-header, #sidenav, #subnav, #page-footer, .banner,
+  #toc, #site-toc--inline, #site-toc--side, #page-github-links {
     display:none !important;
   }
 
