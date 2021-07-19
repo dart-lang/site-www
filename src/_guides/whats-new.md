@@ -197,7 +197,7 @@ we made the following changes to this site:
   to document the new command-line interface to the Dart SDK.
   The new `dart` tool is analogous to the `flutter` tool in the Flutter SDK.
   Previously, the `dart` command only ran command-line apps.
-  We updated [the previous `dart` page][dart-vm] accordingly
+  We updated the previous `dart` page accordingly
   and plan to update references to other tools over time.
 * Updated the [package changelog documentation][changelog-docs]
   to recommend a standard format for `CHANGELOG.md` files.
@@ -225,7 +225,6 @@ we made the following changes to this site:
     written by Dart engineer Bob Nystrom.
 
 [dart-tool]: /tools/dart-tool
-[dart-vm]: /tools/dart-vm
 [diagnostics]: /tools/diagnostic-messages
 [dynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Effective Dart]: /guides/language/effective-dart
