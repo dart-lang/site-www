@@ -4,6 +4,7 @@
 // ignore_for_file: use_rethrow_when_possible, prefer_is_empty, prefer_iterable_wheretype, prefer_initializing_formals, unnecessary_this
 // ignore_for_file: prefer_typing_uninitialized_variables, prefer_collection_literals, unnecessary_cast, strict_raw_type
 // ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_function_declarations_over_variables, always_declare_return_types
+// ignore_for_file: prefer_adjacent_string_concatenation
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -11,7 +12,7 @@ import 'dart:math';
 import 'usage_good.dart';
 
 class EnableableThing {
-  bool isEnabled;
+  final bool isEnabled;
   EnableableThing(this.isEnabled);
 }
 
@@ -370,9 +371,9 @@ class Circle2 {
 
 // #docregion dont-wrap-field
 class Box {
-  var _contents;
-  get contents => _contents;
-  set contents(value) {
+  Object? _contents;
+  Object? get contents => _contents;
+  set contents(Object? value) {
     _contents = value;
   }
 }
@@ -382,8 +383,8 @@ class Box {
 
 // #docregion final
 class Box1 {
-  var _contents;
-  get contents => _contents;
+  Object? _contents;
+  Object? get contents => _contents;
 }
 // #enddocregion final
 
@@ -391,13 +392,13 @@ class Box1 {
 
 // #docregion this-dot
 class Box2 {
-  var value;
+  Object? value;
 
   void clear() {
     this.update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }

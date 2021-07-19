@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis, prefer_collection_literals
+// ignore_for_file: type_annotate_public_apis, prefer_collection_literals, avoid_function_literals_in_foreach_calls
 import 'package:test/test.dart';
 
 import 'package:examples/library_tour/core/comparable.dart'

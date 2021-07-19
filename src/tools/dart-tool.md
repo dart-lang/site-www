@@ -4,15 +4,11 @@ description: "The reference page for using 'dart' in a terminal window."
 toc: false
 ---
 
-Introduced in Dart 2.10, the `dart` tool (`bin/dart`)
-is a new command-line interface to the Dart SDK.
-The `dart` tool is available no matter how you get the Dart SDK —
-whether you explicitly download the Dart SDK or only download
+The `dart` tool (`bin/dart`)
+is a command-line interface to the [Dart SDK](/tools/sdk).
+The tool is available no matter how you get the Dart SDK —
+whether you download the Dart SDK explicitly or download only
 the [Flutter SDK.]({{site.flutter}})
-{% comment %}
-  If we add a flutter tool page, add a link to it.
-  https://github.com/flutter/website/issues/4560
-{% endcomment %}
 
 Here's how you might use the `dart` tool
 to create, analyze, test, and run an app:
@@ -34,15 +30,19 @@ $ dart pub upgrade
 ```
 
 {{site.alert.version-note}}
-  Before Dart 2.10, the `dart` command was used only to run the
+  Before Dart 2.10, the `dart` tool was used only to run the
   Dart VM.
-  You can still use it that way, but
-  now the command has more functionality.
-  Over time, we expect the `dart` command to replace
-  most existing commands in the Dart SDK.
+  In 2.10, new `dart` commands such as `analyze` and `test` were added
+  to replace functionality that was
+  previously provided by other command-line tools,
+  such as `dartanalyzer` and `pub run test`.
 {{site.alert.end}}
 
 The following table shows which commands you can use with the `dart` tool.
+If you're developing for Flutter,
+you might use the [`flutter` tool][] instead.
+
+[`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
 
 |-----------+-----------------------------------------+-----------------------------------|
 | Command   | Example of use                          | More information                  |
@@ -55,7 +55,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `migrate` | `dart migrate`                          | Supports migration to [null safety][].<br>[Learn more.][migrate] |
 | `pub`     | `dart pub <PUB_COMMAND>`                | Works with packages.<br>Use instead of `pub`.<br>[Learn more.][pub] | 
 | `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Use instead of the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
-| `test`    | `dart test [<DIRECTORY|DART_FILE>]`     | Runs tests in this package.<br>Use instead of [`pub run test`][pub]. |
+| `test`    | `dart test [<DIRECTORY|DART_FILE>]`     | Runs tests in this package.<br>Use instead of `pub run test`.<br>[Learn more.][test] |
 | _(none)_  | `dart <DART_FILE>`                      | Runs a Dart program; identical to the pre-existing Dart VM command.<br>Prefer [`dart run`][run]. |
 {:.table .table-striped .nowrap}
 
@@ -66,6 +66,7 @@ The following table shows which commands you can use with the `dart` tool.
 [format]: /tools/dart-format
 [pub]: /tools/pub/cmd
 [run]: /tools/dart-run
+[test]: /tools/dart-test
 [migrate]: /null-safety/migration-guide#migration-tool
 
 For additional help on any of the commands, enter `dart help <command>`

@@ -10,6 +10,13 @@ you to where you can learn how to test your
 [Flutter]({{site.flutter}}), [web](/web),
 and [server-side apps and scripts](/server).
 
+You can run tests on the command line
+using the [`dart test`][] command
+(or, for Flutter apps, [`flutter test`][]).
+
+[`dart test`]: /tools/dart-test
+[`flutter test`]: {{site.flutter}}/docs/reference/flutter-cli
+
 <aside class="alert alert-info" markdown="1">
 **Terminology: widget vs. component**<br>
 Flutter, a UI toolkit for building apps for any device,
@@ -33,8 +40,9 @@ encounter when using Dart technologies:
   software, such as a function, method, or class. Your test suites
   should have more unit tests than other kinds of tests.
 
-* _Component_ tests verify that a component (which
-  usually consists of multiple classes) behaves as expected.
+* _Component_ tests (called _widget_ tests in Flutter)
+  verify that a component (which usually consists of multiple classes)
+  behaves as expected.
   A component test often requires the use of mock objects
   that can mimic user actions, events, perform layout,
   and instantiate child components.

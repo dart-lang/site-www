@@ -718,11 +718,11 @@ object’s `toString()` method.
 var s = 'string interpolation';
 
 assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, ' +
+    'Dart has string interpolation, '
         'which is very handy.');
-assert('That deserves all caps. ' +
+assert('That deserves all caps. '
         '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. ' +
+    'That deserves all caps. '
         'STRING INTERPOLATION is very handy!');
 ```
 
@@ -1810,7 +1810,8 @@ Example:
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/operators_test.dart (increment-decrement)"?>
 ```dart
-var a, b;
+int a;
+int b;
 
 a = 0;
 b = ++a; // Increment a before b gets its value.

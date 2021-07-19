@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_single_quotes, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation
 
 import 'package:test/test.dart';
 
@@ -36,11 +36,11 @@ void main() {
     var s = 'string interpolation';
 
     assert('Dart has $s, which is very handy.' ==
-        'Dart has string interpolation, ' +
+        'Dart has string interpolation, '
             'which is very handy.');
-    assert('That deserves all caps. ' +
+    assert('That deserves all caps. '
             '${s.toUpperCase()} is very handy!' ==
-        'That deserves all caps. ' +
+        'That deserves all caps. '
             'STRING INTERPOLATION is very handy!');
     // #enddocregion string-interpolation
   });
