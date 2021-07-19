@@ -48,7 +48,7 @@ have that functionality be on `String` instead:
 To enable that code,
 you can import a library that contains an extension of the `String` class:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (basic)" replace="/  print/print/g"?>
 ```dart
 import 'string_apis.dart';
 // ···
@@ -61,7 +61,7 @@ Also, extensions have names, which can be helpful if an API conflict arises.
 Here's how you might implement the extension method `parseInt()`,
 using an extension (named `NumberParsing`) that operates on strings:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
+<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
 ```dart
 extension NumberParsing on String {
   int parseInt() {
@@ -82,7 +82,7 @@ Like all Dart code, extension methods are in libraries.
 You've already seen how to use an extension method —
 just import the library it's in, and use it like an ordinary method:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (import-and-use)" replace="/  print/print/g"?>
 ```dart
 // Import a library that contains an extension on String.
 import 'string_apis.dart';
@@ -101,7 +101,7 @@ how to resolve [API conflicts](#api-conflicts).
 You can't invoke extension methods on variables of type `dynamic`.
 For example, the following code results in a runtime exception:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_simple_extension.dart (dynamic)" plaster="none" replace="/  \/\/ print/print/g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (dynamic)" plaster="none" replace="/  \/\/ print/print/g"?>
 ```dart
 dynamic d = '2';
 print(d.parseInt()); // Runtime exception: NoSuchMethodError
@@ -111,7 +111,7 @@ Extension methods _do_ work with Dart's type inference.
 The following code is fine because
 the variable `v` is inferred to have type `String`:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_simple_extension.dart (var)"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_simple_extension.dart (var)"?>
 ```dart
 var v = '2';
 print(v.parseInt()); // Output: 2
@@ -134,7 +134,7 @@ then you have a few options.
 One option is changing how you import the conflicting extension,
 using `show` or `hide` to limit the exposed API:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_import.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_import.dart" replace="/  //g"?>
 ```dart
 // Defines the String extension method parseInt().
 import 'string_apis.dart';
@@ -151,7 +151,7 @@ print('42'.parseInt());
 Another option is applying the extension explicitly,
 which results in code that looks as if the extension is a wrapper class:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_explicit.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_explicit.dart" replace="/  //g"?>
 ```dart
 // Both libraries define extensions on String that contain parseInt(),
 // and the extensions have different names.
@@ -167,7 +167,7 @@ print(NumberParsing2('42').parseInt());
 If both extensions have the same name,
 then you might need to import using a prefix:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/usage_prefix.dart" replace="/  //g"?>
+<?code-excerpt "extension_methods/lib/string_extensions/usage_prefix.dart" replace="/  //g"?>
 ```dart
 // Both libraries define extensions named NumberParsing
 // that contain the extension method parseInt(). One NumberParsing
@@ -206,7 +206,7 @@ extension <extension name> on <type> {
 
 For example, here's how you might implement an extension on the `String` class:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/string_extensions/string_apis.dart"?>
+<?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart"?>
 ```dart
 extension NumberParsing on String {
   int parseInt() {
@@ -234,7 +234,7 @@ Extensions can have generic type parameters.
 For example, here's some code that extends the built-in `List<T>` type
 with a getter, an operator, and a method:
 
-<?code-excerpt "../null_safety_examples/extension_methods/lib/fancylist.dart"?>
+<?code-excerpt "extension_methods/lib/fancylist.dart"?>
 ```dart
 extension MyFancyList<T> on List<T> {
   int get doubleLength => length * 2;

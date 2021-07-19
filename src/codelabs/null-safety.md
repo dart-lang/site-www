@@ -45,7 +45,7 @@ type `String?` can contain a string, or it can be null.
 The variable `a` below is declared as an `int`. Try changing the value in the
 assignment to 3 or 145. Anything but null!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/non_nullable_types.dart" replace="/145/null/g"?>
+<?code-excerpt "null_safety_codelab/bin/non_nullable_types.dart" replace="/145/null/g"?>
 ```dart:run-dartpad:ga_id-nonnullable_type:null_safety-true
 void main() {
   int a;
@@ -59,7 +59,7 @@ void main() {
 What if you need a variable that *can* hold a null value?  Try changing the
 type of `a` so that `a` can be either null or an int:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
+<?code-excerpt "null_safety_codelab/bin/nullable_types.dart" replace="/int\?/int/g"?>
 ```dart:run-dartpad:ga_id-nullable_type:null_safety-true
 void main() {
   int a;
@@ -74,7 +74,7 @@ Type parameters for generics can also be nullable or non-nullable. Try using
 question marks to correct the type declarations of `aNullableListOfStrings` and
 `aListOfNullableStrings`:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g; /\?\ aNull/ aNull/g"?>
+<?code-excerpt "null_safety_codelab/bin/more_nullable_types.dart" replace="/String\?/String/g; /\?\ aNull/ aNull/g"?>
 ```dart:run-dartpad:ga_id-nullable_type_generics:null_safety-true
 void main() {
   List<String> aListOfStrings = ['one', 'two', 'three'];
@@ -106,7 +106,7 @@ that it's safe to assign it to a non-nullable variable.
 In the code below, try adding exclamation points to correct the
 broken assignments:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
+<?code-excerpt "null_safety_codelab/bin/assertion_operator.dart" replace="/first!/first/g; /!.abs/.abs/g"?>
 ```dart:run-dartpad:ga_id-null_assertion:null_safety-true
 int? couldReturnNullButDoesnt() => -3;
 
@@ -143,7 +143,7 @@ values before any code tries to read from them. This process is called
 Try uncommenting the `if`-`else` statement in the code below, and
 watch the analyzer errors disappear:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
+<?code-excerpt "null_safety_codelab/bin/definite_assignment.dart" replace="/if/\/\/if/g; /\ \ text\ =/\/\/  text =/g; /\ \ \}/  \/\/}/g"?>
 ```dart:run-dartpad:ga_id-definite_assignment:null_safety-true
 void main() {
   String text;
@@ -164,7 +164,7 @@ void main() {
 In the code below, add an `if` statement to the beginning of `getLength` that
 returns zero if `str` is null:
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
+<?code-excerpt "null_safety_codelab/bin/type_promotion.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart:run-dartpad:ga_id-null_checking:null_safety-true
 int getLength(String? str) {
   // Add null check here
@@ -182,7 +182,7 @@ void main() {
 Promotion works with exceptions as well as return statements. Try a null check
 that throws an `Exception` instead of returning zero.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
+<?code-excerpt "null_safety_codelab/bin/promotion_exceptions.dart" replace="/.*if\ \(.*\n.*\n.*//g"?>
 ```dart:run-dartpad:ga_id-promotion_exceptions:null_safety-true
 int getLength(String? str) {
   // Try throwing an exception here if `str` is null.
@@ -217,7 +217,7 @@ value, an error is thrown.
 Try using the `late` keyword to correct the following code. For a little extra
 fun afterward, try commenting out the line that sets `description`!
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ _description/String _description/g"?>
+<?code-excerpt "null_safety_codelab/bin/late_keyword.dart" replace="/late\ String\ _description/String _description/g"?>
 ```dart:run-dartpad:ga_id-late_keyword:null_safety-true
 class Meal {
   String _description;
@@ -246,7 +246,7 @@ Note that you don't need to remove `final`. You can create
 [`late final` variables](/null-safety/understanding-null-safety#late-final-variables):
 you set their values once, and after that they're read-only.
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
+<?code-excerpt "null_safety_codelab/bin/late_circular_references.dart" replace="/late\ final\ Team/final Team/g; /late\ final\ Coach/final Coach/g"?>
 ```dart:run-dartpad:ga_id-late_circular:null_safety-true
 class Team {
   final Coach coach;
@@ -281,7 +281,7 @@ Try this:
   Was your prediction correct?</li>
 </ol>
 
-<?code-excerpt "../null_safety_examples/null_safety_codelab/bin/late_lazy.dart"?>
+<?code-excerpt "null_safety_codelab/bin/late_lazy.dart"?>
 ```dart:run-dartpad:ga_id-lazy_late:null_safety-true
 int _computeValue() {
   print('In _computeValue...');

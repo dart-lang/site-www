@@ -46,7 +46,7 @@ of type `int` that holds the value of `i`.
 Here's an example of using `i!`:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property_bang)" replace="/!/[!!!]/g"?>
 {% prettify dart tag=pre+code %}
 print(i[!!!].isEven);
 {% endprettify %}
@@ -56,7 +56,7 @@ And here's an example of creating a local variable
 that holds the value of `i`:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (property_copy)" replace="/final.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class C {
   int? i;
@@ -144,7 +144,7 @@ conditions in separate `if` statements.
 You might fix the problem by combining the two `if` statements:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write_combine_ifs)" replace="/else/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(bool b, int? i, int? j) {
   if (i == null) return;
@@ -163,7 +163,7 @@ As a result, another way to fix this code is
 to change the type of `j` to `int`.
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (write_change_type)" replace="/int j/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(bool b, int? i, [!int j!]) {
   if (i == null) return;
@@ -209,7 +209,7 @@ To be safe, it invalidates the promotion.
 You might fix this problem by moving the null check to the top of the loop:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (loop)" replace="/p != null/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Link? p) {
   while ([!p != null!]) {
@@ -240,7 +240,7 @@ void f(int i, int? j, int? k) {
 Again, you can fix the problem by moving the null check to the top of the loop:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (switch-loop)" replace="/if .*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(int i, int? j, int? k) {
   switch (i) {
@@ -300,7 +300,7 @@ possibly when `i` is null.
 The safest solution is to add a null check inside the `catch` block:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (catch-null-check)" replace="/if.*/[!$&!]/g;/(} else {|  \/\/ H.*)/[!$&!]/g;/  }/  [!}!]/g"?>
 {% prettify dart tag=pre+code %}
 // ···
 } catch (e) {
@@ -315,7 +315,7 @@ The safest solution is to add a null check inside the `catch` block:
 Or, if you're sure that an exception can't occur while `i` is null,
 just use the `!` operator:
 
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (catch-bang)" replace="/i!/i[!!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (catch-bang)" replace="/i!/i[!!!]/g"?>
 {% prettify dart tag=pre+code %}
 // ···
 } catch (e) {
@@ -358,9 +358,9 @@ One possible solution is to create a new local variable so that
 the original variable is promoted to `Comparable`, and
 the new variable is promoted to `Pattern`:
 
-<!-- code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var o2.*/[!$&!]/g;/o2\./[!o2!]./g"?>-->
+<!-- code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var o2.*/[!$&!]/g;/o2\./[!o2!]./g"?>-->
 
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-variable)" replace="/Object o2.*/[!$&!]/g;/(o2)(\.| is)/[!$1!]$2/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is Comparable /* (1) */) {
@@ -381,7 +381,7 @@ which brings back the problem of the object not being promotable to `Pattern`.
 A redundant type check might be a better solution:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-redundant)" replace="/\(o as Pattern\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is Comparable /* (1) */) {
@@ -398,7 +398,7 @@ then you can use `String` in your type check.
 Because `String` is a subtype of `Comparable`, the promotion works:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (subtype-String)" replace="/is String/is [!String!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (subtype-String)" replace="/is String/is [!String!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(Object o) {
   if (o is Comparable /* (1) */) {
@@ -441,7 +441,7 @@ Sometimes it's possible to restructure the logic so that
 the promotion is before the write capture:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (local-write-capture-reorder)" replace="/(  )((var foo|  i = j|\}\;|\/\/ ... Use foo).*)/$1[!$2!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-reorder)" replace="/(  )((var foo|  i = j|\}\;|\/\/ ... Use foo).*)/$1[!$2!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
   if (i == null) return; // (1)
@@ -457,7 +457,7 @@ void f(int? i, int? j) {
 Another option is to create a local variable, so it isn't write captured:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (local-write-capture-copy)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!$1!]$2/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-copy)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!$1!]$2/g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
   var foo = () {
@@ -473,7 +473,7 @@ void f(int? i, int? j) {
 
 Or you can do a redundant check:
 
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (local-write-capture-bang)" replace="/i!/i[!!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (local-write-capture-bang)" replace="/i!/i[!!!]/g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
   var foo = () {
@@ -517,7 +517,7 @@ the right hand side of the assignment.
 A solution is to create a local variable:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var i2.*/[!$&!]/g;/i2\./[!i2!]./g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var)" replace="/var i2.*/[!$&!]/g;/i2\./[!i2!]./g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
   if (i == null) return;
@@ -551,7 +551,7 @@ But [flow analysis isn't that smart][1536].
 Again, a solution is to create a local variable:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (closure-new-var2)" replace="/var j.*/[!$&!]/g;/j\./[!j!]./g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (closure-new-var2)" replace="/var j.*/[!$&!]/g;/j\./[!j!]./g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i) {
   [!var j = i ?? 0;!]
@@ -600,7 +600,7 @@ So it isn't safe to promote `i` at all inside `foo`.
 The best solution is probably to create a local variable:
 
 {:.good}
-<?code-excerpt "../null_safety_examples/non_promotion/lib/non_promotion.dart (closure-write-capture)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!i2!]$2/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (closure-write-capture)" replace="/var i2.*/[!$&!]/g;/(i2)( ==|\.)/[!i2!]$2/g"?>
 {% prettify dart tag=pre+code %}
 void f(int? i, int? j) {
   var foo = () {

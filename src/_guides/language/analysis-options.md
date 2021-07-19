@@ -28,7 +28,7 @@ simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 {% prettify dart class="linenums:8 analyzer"%}
 void increment() {
   if (count < 10) [!;!]
@@ -40,7 +40,7 @@ If properly configured, the analyzer points to the semicolon and
 produces the following warning:
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
 info - example.dart:9:19 - Avoid empty statements. - empty_statements
 ```
@@ -50,13 +50,13 @@ The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
-<?code-excerpt "../null_safety_examples/analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
+<?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 {% prettify dart class="analyzer"%}
 var [!controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - Close instances of `dart.core.Sink`. - close_sinks
 ```
@@ -106,7 +106,7 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
+<?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="http:"?>
 ```yaml
 include: package:lints/recommended.yaml
 
@@ -159,7 +159,7 @@ If you want stricter static checks than
 the [Dart type system][type-system] requires,
 consider using the `implicit-casts` and `implicit-dynamic` flags:
 
-<?code-excerpt "../null_safety_examples/analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
+<?code-excerpt "analysis/analysis_options.yaml" from="analyzer" to="implicit-dynamic" remove="exclude"?>
 ```yaml
 analyzer:
   strong-mode:
@@ -176,7 +176,7 @@ You can use the flags together or separately; both default to `true`.
   includes an implicit downcast that would be caught by this flag:
 
 {:.fails-sa}
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
+<?code-excerpt "analysis/lib/assignment.dart (implicit-downcast)" replace="/(s = )(o)/$1[!$2!]/g"?>
 {% prettify dart class="analyzer" %}
 dynamic o = ...
 String s = [!o!]; // Implicit downcast
@@ -184,7 +184,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "../null_safety_examples/analysis/analyzer-results.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="/'dynamic' can't be assigned to a variable of type 'String'/"  replace="/. Try.*'String'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 error - A value of type 'dynamic' can't be assigned to a variable of type 'String' - invalid_assignment
 ```
@@ -280,7 +280,7 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes (the syntax for a YAML list).
 For example:
 
-<?code-excerpt "../null_safety_examples/analysis_options.yaml" from="linter:" take="12" remove="http:"?>
+<?code-excerpt "analysis_options.yaml" from="linter:" take="12" remove="http:"?>
 ```yaml
 linter:
   rules:
@@ -311,7 +311,7 @@ that uses all the recommended rules from `lints`
 except `avoid_shadowing_type_parameters`.
 It also enables the lint `await_only_futures`:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options_linter.yaml"?>
+<?code-excerpt "analysis_alt/analysis_options_linter.yaml"?>
 ```yaml
 include: package:lints/recommended.yaml
 
@@ -357,7 +357,7 @@ for all files or
 To exclude files from static analysis, use the `exclude:` analyzer option. You
 can list individual files, or use [glob]({{site.pub-pkg}}/glob) syntax:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (exclude)" plaster="none"?>
 ```yaml
 analyzer:
   exclude:
@@ -372,7 +372,7 @@ analyzer:
 To ignore a specific non-error rule for a specific file,
 add an `ignore_for_file` comment to the file:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)" replace="/, \w+//g"?>
 ```dart
 // ignore_for_file: unused_local_variable
 ```
@@ -382,7 +382,7 @@ particularly useful for generated code.
 
 To suppress more than one rule, use a comma-separated list:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore_for_file)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore_for_file)"?>
 ```dart
 // ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
@@ -395,7 +395,7 @@ put an `ignore` comment
 above the line of code. Here's an example of ignoring code that causes a runtime
 error, as you might do in a language test:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (invalid_assignment)"?>
+<?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart
 // ignore: invalid_assignment
 int x = '';
@@ -403,7 +403,7 @@ int x = '';
 
 To suppress more than one rule, supply a comma-separated list:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (ignore more)"?>
+<?code-excerpt "analysis/lib/assignment.dart (ignore more)"?>
 ```dart
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;
@@ -411,7 +411,7 @@ const x = y;
 
 Alternatively, append the ignore rule to the line that it applies to:
 
-<?code-excerpt "../null_safety_examples/analysis/lib/assignment.dart (single-line)"?>
+<?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
 ```dart
 int x = ''; // ignore: invalid_assignment
 ```
@@ -447,7 +447,7 @@ by using the `errors:` field.
 List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
 analysis options file instructs the analysis tools to ignore the TODO rule:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
 ```yaml
 analyzer:
   errors:
@@ -463,7 +463,7 @@ For example, the following analysis options file instructs the analysis tools to
 treat invalid assignments as warnings and missing returns as errors,
 and to provide information (but not a warning or error) about dead code:
 
-<?code-excerpt "../null_safety_examples/analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
+<?code-excerpt "analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
 ```yaml
 analyzer:
   errors:

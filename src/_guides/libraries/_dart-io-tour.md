@@ -20,7 +20,7 @@ with a Sync suffix on the method name. Synchronous methods aren't covered here.
 
 To use the dart:io library you must import it:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (import)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (import)"?>
 ```dart
 import 'dart:io';
 ```
@@ -43,7 +43,7 @@ important, you can use `readAsLines()`. In both cases, a Future object
 is returned that provides the contents of the file as one or more
 strings.
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 ```dart
 Future<void> main() async {
   var config = File('config.txt');
@@ -66,7 +66,7 @@ The following code reads an entire file as bytes into a list of ints.
 The call to `readAsBytes()` returns a Future, which provides the result
 when it’s available.
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 ```dart
 Future<void> main() async {
   var config = File('config.txt');
@@ -82,7 +82,7 @@ To capture errors so they don't result in uncaught exceptions, you can
 register a `catchError` handler on the Future,
 or (in an `async` function) use try-catch:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 ```dart
 Future<void> main() async {
   var config = File('config.txt');
@@ -102,7 +102,7 @@ You can use either the [Stream API](/guides/libraries/library-tour#stream)
 or `await for`, part of Dart's
 [asynchrony support.](/guides/language/language-tour#asynchrony-support)
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (read-from-stream)" replace="/_?test_\w*\/?//g"?>
 ```dart
 import 'dart:io';
 import 'dart:convert';
@@ -131,7 +131,7 @@ write data to a file. Use the File `openWrite()` method to get an IOSink
 that you can write to. The default mode, `FileMode.write`, completely
 overwrites existing data in the file.
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (write-file)" replace="/\btest_data\///g"?>
 ```dart
 var logFile = File('log.txt');
 var sink = logFile.openWrite();
@@ -143,7 +143,7 @@ await sink.close();
 To add to the end of the file, use the optional `mode` parameter to
 specify `FileMode.append`:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (append)" replace="/_?test_\w*\/?//g"?>
 ```dart
 var sink = logFile.openWrite(mode: FileMode.append);
 ```
@@ -157,7 +157,7 @@ Finding all files and subdirectories for a directory is an asynchronous
 operation. The `list()` method returns a Stream that emits an object
 when a file or directory is encountered.
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
 Future<void> main() async {
   var dir = Directory('tmp');
@@ -208,7 +208,7 @@ This server listens on port 8888 and address 127.0.0.1 (localhost),
 responding to requests for the path `/dart`. For any other path,
 the response is status code 404 (page not found).
 
-<?code-excerpt "../null_safety_examples/misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
+<?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
 ```dart
 Future<void> main() async {
   final requests = await HttpServer.bind('localhost', 8888);
@@ -244,7 +244,7 @@ apps. When programming in the browser, use the
 [dart:html HttpRequest class.][HttpRequest]
 Here’s an example of using HttpClient:
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (client)"?>
+<?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
 ```dart
 Future<void> main() async {
   var url = Uri.parse('http://localhost:8888/dart');
