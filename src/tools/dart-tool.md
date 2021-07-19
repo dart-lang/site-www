@@ -34,9 +34,13 @@ $ dart pub upgrade
   Dart VM.
   In 2.10, new `dart` commands such as `analyze` and `test` were added
   to replace functionality that was
-  previously provided by other command-line tools,
-  such as `dartanalyzer` and `pub run test`.
+  previously provided by standalone command-line tools.
+  Those standalone tools—for example,
+  `dartanalyzer` and `pub`—are
+  now being [discontinued gradually][].
 {{site.alert.end}}
+
+[discontinued gradually]: https://github.com/dart-lang/sdk/issues/46100
 
 The following table shows which commands you can use with the `dart` tool.
 If you're developing for Flutter,
