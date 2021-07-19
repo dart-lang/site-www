@@ -8,7 +8,7 @@ toc: false
 
 Web pages are programmed in HTML and represented within the browser
 as a tree structure called the DOM (Document Object Model).
-Dart apps can modify the DOM programatically,
+Dart apps can modify the DOM programmatically,
 thus dynamically changing the web page.
 First, learn now to connect Dart and HTML.
 Then learn how to add, move, and remove DOM elements.

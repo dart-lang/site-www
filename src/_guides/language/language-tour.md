@@ -3437,7 +3437,7 @@ You **can't invoke** an unimplemented method unless
 
 * The receiver has a static type that
 defines the unimplemented method (abstract is OK),
-and the dynamic type of the receiver has an implemention of `noSuchMethod()`
+and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal

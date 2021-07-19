@@ -243,7 +243,7 @@ we made the following changes to this site:
 We published the following articles on the [Dart blog:][Dart blog]
 
 * [Exploring collections in Dart][] helps you use collections
-  (lists, maps, sets, and more), with specal attention to
+  (lists, maps, sets, and more), with special attention to
   2.3 language features like collection if, collection for, and spreads.
 * [Google Summer of Code 2020 results][] describes the results of
   five projects that the Dart team mentored.
