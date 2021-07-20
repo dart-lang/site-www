@@ -144,13 +144,30 @@ class VersionSelector {
           }
         }
 
+        // No Mac 32-bit SDK builds after 2.80
         if (name == 'macOS' && platformVariant.architecture == 'ia32') {
-          // No Mac 32-bit SDK builds >= 2.80
           if (versionInfo.version > Version(2, 7, 0)) {
             continue;
           }
         }
 
+        // No Mac arm64 SDK builds before 2.14.0, after July 1st 2021, and not in stable yet.
+        // TODO: After 2.14 simply change these tests to versionInfo.version >= Version(2,14,0).
+        if (name == 'macOS' && platformVariant.architecture == 'arm64') {
+          if (versionInfo.version.major < 2 || versionInfo.version.minor < 14) {
+            continue;
+          }
+
+          if (versionInfo.date.isBefore(DateTime.parse('2021-07-01'))) {
+            continue;
+          }
+
+          if (versionInfo.channel == 'stable') {
+            continue;
+          }
+        }
+
+        // Build rows for all supported builds.
         var row = _table.tBodies.first.addRow()
           ..attributes['data-version'] = versionInfo.version.toString()
           ..attributes['data-os'] = archiveMap[name] ?? '';
