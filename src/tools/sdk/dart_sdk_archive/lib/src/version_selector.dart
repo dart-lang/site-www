@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import 'package:dart_sdk_archive/src/util.dart';
-import 'package:platform_detect2/platform_detect2.dart';
+import 'package:platform_detect/platform_detect.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 

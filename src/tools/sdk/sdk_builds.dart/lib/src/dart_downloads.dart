@@ -12,20 +12,20 @@ const _dartChannel = 'dart-archive';
 const _flavor = 'release';
 
 String _revisionPath(String channel, String revision,
-    [List<String> extra = const []]) =>
+        [List<String> extra = const []]) =>
     p.joinAll(['channels', channel, _flavor, revision, ...extra]);
 
 class DartDownloads {
   final storage.StorageApi _api;
   final http.Client _client;
 
-  DartDownloads._(http.Client client)
-      : _client = client,
-        _api = storage.StorageApi(client);
-
   /// If [client] is provided, it will be closed with the call to [close].
   factory DartDownloads({http.Client? client}) =>
       DartDownloads._(client ?? http.Client());
+
+  DartDownloads._(http.Client client)
+      : _client = client,
+        _api = storage.StorageApi(client);
 
   Future<Uri> createDownloadLink(
       String channel, String revision, String path) async {
@@ -34,15 +34,15 @@ class DartDownloads {
     final items = results.items;
 
     if (items == null || items.isEmpty) {
-      throw 'no items found for path $path';
+      throw Exception('No items found for path $path.');
     } else if (items.length > 1) {
-      throw 'too many items for path $path';
+      throw Exception('Too many items for path $path.');
     }
 
     final mediaLink = items.single.mediaLink;
 
     if (mediaLink == null) {
-      throw 'no media link present for path $path';
+      throw Exception('No media link present for path $path.');
     } else {
       return Uri.parse(mediaLink);
     }
