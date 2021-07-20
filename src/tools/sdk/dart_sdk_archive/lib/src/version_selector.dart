@@ -151,14 +151,10 @@ class VersionSelector {
           }
         }
 
-        // No Mac arm64 SDK builds before 2.14.0, after July 1st 2021, and not in stable yet.
-        // TODO: After 2.14 simply change these tests to versionInfo.version >= Version(2,14,0).
+        // No Mac arm64 SDK builds before 2.14.0-281.0.dev, and not in stable yet.
+        // TODO: After 2.14 simply change these tests to versionInfo.version < Version(2,14,0).
         if (name == 'macOS' && platformVariant.architecture == 'arm64') {
-          if (versionInfo.version.major < 2 || versionInfo.version.minor < 14) {
-            continue;
-          }
-
-          if (versionInfo.date.isBefore(DateTime.parse('2021-07-01'))) {
+          if (versionInfo.version < Version(2, 14, 0, pre: '281.0.dev')) {
             continue;
           }
 
