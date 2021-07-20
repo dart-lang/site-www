@@ -152,7 +152,8 @@ class VersionSelector {
         }
 
         // No Mac arm64 SDK builds before 2.14.0-281.0.dev, and not in stable yet.
-        // TODO: After 2.14 simply change these tests to versionInfo.version < Version(2,14,0).
+        // TODO: After this ships in stable 2.x, remove the stable check,
+        // and just test for versionInfo.version < Version(2,x,0).
         if (name == 'macOS' && platformVariant.architecture == 'arm64') {
           if (versionInfo.version < Version(2, 14, 0, pre: '281.0.dev')) {
             continue;
