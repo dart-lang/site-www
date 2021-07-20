@@ -4374,17 +4374,17 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Two annotations are available to all Dart code: `@deprecated` and
-`@override`. For examples of using `@override`,
+Three annotations are available to all Dart code: 
+`@Deprecated`, `@deprecated`, and `@override`. 
+For examples of using `@override`,
 see [Extending a class](#extending-a-class).
-Here’s an example of using the `@deprecated`
-annotation:
+Here’s an example of using the `@Deprecated` annotation:
 
-<?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
+<?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Television {
-  /// _Deprecated: Use [turnOn] instead._
-  [!@deprecated!]
+  /// Use [turnOn] to turn the power on instead.
+  [!@Deprecated('Use turnOn instead')!]
   void activate() {
     turnOn();
   }
@@ -4395,7 +4395,7 @@ class Television {
 {% endprettify %}
 
 You can define your own metadata annotations. Here’s an example of
-defining a @todo annotation that takes two arguments:
+defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 ```dart
@@ -4409,7 +4409,7 @@ class Todo {
 }
 ```
 
-And here’s an example of using that @todo annotation:
+And here’s an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart"?>
 ```dart
