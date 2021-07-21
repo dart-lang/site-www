@@ -70,6 +70,11 @@ A pubspec can have the following fields:
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
 
+`false_leaks`
+: Optional. Specify git-ignore style patterns for files to ignore when warning
+  against potential leak of secrets before publishing.
+  [_Learn more._](#false_leaks)
+
 Pub ignores all other fields,
 
 <aside class="alert alert-info" markdown="1">
@@ -272,6 +277,38 @@ publish_to: none
 {% endprettify %}
 
 
+### False_leaks
+
+When publishing leak detection on the client will abort publishing if it finds
+potential leaks of secret credentials, API keys and cryptographic keys in files
+to be published.
+While detection of possible secrets relies on advanced heuristics using regular
+expressions and entropy thresholds, the detection is not perfect.
+If the leak detection reports a _false positive_ you can specify a list of
+[git-ignore patterns][git-ignore-format] under `false_leaks` in `pubspec.yaml`.
+
+The leak detection will ignore any files matching a pattern in `false_leaks`.
+The example below ignores the file `lib/src/file_with_hardcoded_api_key.dart`
+and all `.pem` files in the `test/localhost_certificates/` folder. Starting a
+[git-ignore pattern][git-ignore-format] with slash `/` ensures that is it only
+considered relative to the root folder.
+
+{% prettify yaml tag=pre+code %}
+false_leaks:
+ - /lib/src/file_with_hardcoded_api_key.dart
+ - /test/localhost_certificates/*.pem
+{% endprettify %}
+
+{{site.alert.version-note}}
+  Leak detection will never prevent all leaks. It's your responsibility to
+  manage your credentials, prevent accidental leaks, and revoke credentials
+  that are accidentally leaked.
+
+  You cannot rely on leak detection prevent leaks, it will only detect a
+  limited set of common patterns, and is only intended to mitigate common
+  mistakes.
+{{site.alert.end}}
+
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
@@ -348,3 +385,4 @@ accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
 [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
+[git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
