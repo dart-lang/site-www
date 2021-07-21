@@ -39,7 +39,7 @@ const Map<String, String> archiveMap = {
   'Windows': 'windows',
   'ia32': 'ia32',
   'x64': 'x64',
-  'arm64': 'arm64',
+  'ARM64': 'arm64',
   'ARMv7': 'arm',
   'ARMv8 (ARM64)': 'arm64',
   'Dart SDK': 'dartsdk',
@@ -58,7 +58,7 @@ const Map<String, String> suffixMap = {
 const Map<String, List<PlatformVariant>> platforms = {
   'macOS': [
     PlatformVariant('x64', ['Dart SDK']),
-    PlatformVariant('arm64', ['Dart SDK']),
+    PlatformVariant('ARM64', ['Dart SDK']),
     PlatformVariant('ia32', ['Dart SDK']),
   ],
   'Linux': [
