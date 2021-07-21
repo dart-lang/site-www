@@ -7629,7 +7629,7 @@ if(b==="ARMv7")a=j<P.b4(k?"2015-10-21":"2015-08-31").a
 else a=!1
 if(a)continue
 else if(b==="ARMv8 (ARM64)"&&j<P.b4("2017-03-09").a)continue}if(e&&c.a==="ia32")if(q.I(0,T.kQ(2,7,0,null))>0)continue
-if(e&&c.a==="arm64"){if(q.I(0,T.kQ(2,14,0,"281.0.dev"))<0)continue
+if(e&&c.a==="ARM64"){if(q.I(0,T.kQ(2,14,0,"281.0.dev"))<0)continue
 if(i)continue}b=m.tBodies
 b.toString
 b=new W.bM(b,l)
