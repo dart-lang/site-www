@@ -463,7 +463,7 @@ DartPad: {{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0
 What about going in the other direction? 
 Can you assign an `Animal` list to a `List<Cat>`?
 
-{:.passes-sa}
+{:.fails-sa}
 <?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<Cat> myCats = <[!Animal!]>[];
@@ -478,7 +478,8 @@ which is disallowed from non-`dynamic` types such as `Animal`.
   (when support for [null safety][] was introduced),
   code can implicitly downcast from these non-`dynamic` types.
   You can disallow non-`dynamic` downcasts in a pre-2.12 project
-  by specifying `implicit-casts: false` in the [analysis options file.][analysis]
+  by specifying `implicit-casts: false` 
+  in the [analysis options file.][analysis]
 {{site.alert.end}}
 
 To make this code pass static analysis, 
@@ -526,3 +527,5 @@ The following resources have further information on sound Dart:
 
 [analysis]: /guides/language/analysis-options
 [dartdevc]: /tools/dartdevc
+[language version]: /guides/language/evolution#language-versioning
+[null safety]: /null-safety
