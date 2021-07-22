@@ -1,0 +1,10 @@
+name: build_runner_usage
+description: dart.dev build_runner example code.
+
+environment:
+  sdk: '>=2.13.0 <3.0.0'
+
+dev_dependencies:
+  args: ^2.1.0
+  build_runner: ^2.0.0
+  build_test: ^2.1.0
