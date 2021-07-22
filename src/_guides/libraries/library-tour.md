@@ -961,9 +961,13 @@ void main() {
 #### Iteration
 
 The [Iterable][] and [Iterator][] classes
-support for-in loops. Extend (if possible) or implement Iterable
-whenever you create a class that can provide Iterators for use in for-in
-loops. Implement Iterator to define the actual iteration ability.
+support sequential access to a collection of values.
+To practice using these collections,
+follow the [Iterable collections codelab](/codelabs/iterables).
+
+If you create a class that can provide Iterators for use in for-in loops,
+extend (if possible) or implement Iterable.
+Implement Iterator to define the actual iteration ability.
 
 <?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
 ```dart
@@ -992,7 +996,6 @@ void main() {
   }
 }
 ```
-
 
 ### Exceptions
 
