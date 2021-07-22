@@ -342,6 +342,11 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
+{{site.alert.tip}}
+  To practice using APIs that are available to both lists and sets,
+  follow the [Iterable collections codelab](/codelabs/iterables).
+{{site.alert.end}}
+
 #### Lists
 
 As the language tour shows, you can use literals to create and
