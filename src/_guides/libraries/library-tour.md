@@ -342,6 +342,11 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
+{{site.alert.tip}}
+  To practice using APIs that are available to both lists and sets,
+  follow the [Iterable collections codelab](/codelabs/iterables).
+{{site.alert.end}}
+
 #### Lists
 
 As the language tour shows, you can use literals to create and
@@ -961,9 +966,13 @@ void main() {
 #### Iteration
 
 The [Iterable][] and [Iterator][] classes
-support for-in loops. Extend (if possible) or implement Iterable
-whenever you create a class that can provide Iterators for use in for-in
-loops. Implement Iterator to define the actual iteration ability.
+support sequential access to a collection of values.
+To practice using these collections,
+follow the [Iterable collections codelab](/codelabs/iterables).
+
+If you create a class that can provide Iterators for use in for-in loops,
+extend (if possible) or implement Iterable.
+Implement Iterator to define the actual iteration ability.
 
 <?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
 ```dart
@@ -992,7 +1001,6 @@ void main() {
   }
 }
 ```
-
 
 ### Exceptions
 

@@ -2245,6 +2245,11 @@ for (var candidate in candidates) {
 }
 ```
 
+{{site.alert.tip}}
+  To practice using `for-in`, follow the
+  [Iterable collections codelab](/codelabs/iterables).
+{{site.alert.end}}
+
 Iterable classes also have a [forEach()][] method as another option:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (forEach)"?>
