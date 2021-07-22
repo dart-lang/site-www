@@ -29,10 +29,10 @@ $ webdev serve --debug
 When running your app using the `--debug` flag of `webdev`,
 you can open Dart DevTools by pressing
 <kbd>Alt</kbd>+<kbd>D</kbd>
-(or <kbd>Option</kbd>+<kbd>D</kbd> on Mac).
+(or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
 
 To open Chrome DevTools, press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-(or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac).
+(or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on macOS).
 If you want to debug your app using Chrome DevTools,
 you can use [source maps][] to display your Dart source files
 instead of the JavaScript that [dartdevc][] produces.
@@ -128,7 +128,7 @@ but you'll need to adjust the instructions to match your app.
      
    * If you used the `--debug` flag to `webdev`,
      press <kbd>Alt</kbd>+<kbd>D</kbd>
-     (or <kbd>Option</kbd>+<kbd>D</kbd> on Mac).
+     (or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
    
    The Dart DevTools window comes up
    and displays the source code for your app's main file.

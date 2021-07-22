@@ -9,7 +9,7 @@ prevpage:
   title: Documentation
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 You can use these guidelines every day in the bodies of your Dart code. *Users*
 of your library may not be able to tell that you've internalized the ideas here,
@@ -39,7 +39,7 @@ library file, just like you use in other directives. If you have some library,
 {% prettify dart tag=pre+code %}
 library my_library;
 
-part "some/other/file.dart";
+part 'some/other/file.dart';
 {% endprettify %}
 
 Then the part file should look like:
@@ -47,7 +47,7 @@ Then the part file should look like:
 {:.good}
 <?code-excerpt "some/other/file.dart"?>
 {% prettify dart tag=pre+code %}
-part of "../../my_library.dart";
+part of '../../my_library.dart';
 {% endprettify %}
 
 And not:
@@ -60,7 +60,7 @@ part of my_library;
 
 ### DON'T import libraries that are inside the `src` directory of another package.
 
-{% include linter-rule.html rule="implementation_imports" %}
+{% include linter-rule-mention.html rule="implementation_imports" %}
 
 The `src` directory under `lib` [is specified][package guide] to contain
 libraries private to the package's own implementation. The way package
@@ -76,7 +76,7 @@ theoretically non-breaking point release of that package could break your code.
 
 ### DON'T allow an import path to reach into or out of `lib`.
 
-{% include linter-rule.html rule="avoid_relative_lib_imports" %}
+{% include linter-rule-mention.html rule="avoid_relative_lib_imports" %}
 
 A `package:` import lets you access
 a library inside a package's `lib` directory
@@ -117,13 +117,19 @@ Instead, when you need to reach into a package's `lib` directory
 (even from the same package's `test` directory
 or any other top-level directory),
 use a `package:` import.
+
+{:.good}
+{% prettify dart tag=pre+code %}
+import 'package:my_package/api.dart';
+{% endprettify %}
+
 A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
 
 
 ### PREFER relative import paths.
 
-{% include linter-rule.html rule="prefer_relative_imports" %}
+{% include linter-rule-mention.html rule="prefer_relative_imports" %}
 
 Whenever the previous rule doesn't come into play, follow this one.
 When an import does *not* reach across `lib`, prefer using relative imports.
@@ -175,7 +181,7 @@ import 'test_utils.dart'; // Relative within 'test' is fine.
 
 ### DON'T explicitly initialize variables to `null`.
 
-{% include linter-rule.html rule="avoid_init_to_null" %}
+{% include linter-rule-mention.html rule="avoid_init_to_null" %}
 
 If a variable has a non-nullable type, Dart reports a compile error if you try
 to use it before it has been definitely initialized. If the variable is
@@ -218,7 +224,7 @@ Item? bestDeal(List<Item> cart) {
 
 ### DON'T use an explicit default value of `null`.
 
-{% include linter-rule.html rule="avoid_init_to_null" %}
+{% include linter-rule-mention.html rule="avoid_init_to_null" %}
 
 If you make a nullable parameter optional but don't give it a default value, the
 language implicitly uses `null` as the default, so there's no need to write it.
@@ -253,12 +259,12 @@ recommend using `??`:
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 if (optionalThing?.isEnabled ?? false) {
-  print("Have enabled thing.");
+  print('Have enabled thing.');
 }
 
 // If you want null to be true:
 if (optionalThing?.isEnabled ?? true) {
-  print("Have enabled thing or nothing.");
+  print('Have enabled thing or nothing.');
 }
 {% endprettify %}
 
@@ -267,12 +273,12 @@ if (optionalThing?.isEnabled ?? true) {
 {% prettify dart tag=pre+code %}
 // If you want null to be false:
 if (optionalThing?.isEnabled == true) {
-  print("Have enabled thing.");
+  print('Have enabled thing.');
 }
 
 // If you want null to be true:
 if (optionalThing?.isEnabled != false) {
-  print("Have enabled thing or nothing.");
+  print('Have enabled thing or nothing.');
 }
 {% endprettify %}
 
@@ -368,11 +374,11 @@ class UploadException {
   String toString() {
     var response = this.response;
     if (response != null) {
-      return "Could not complete upload to ${response.url} "
-          "(error code ${response.errorCode}): ${response.reason}.";
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 {% endprettify %}
@@ -391,11 +397,11 @@ class UploadException {
   @override
   String toString() {
     if (response != null) {
-      return "Could not complete upload to ${response[!!!].url} "
-          "(error code ${response[!!!].errorCode}): ${response[!!!].reason}.";
+      return 'Could not complete upload to ${response[!!!].url} '
+          '(error code ${response[!!!].errorCode}): ${response[!!!].reason}.';
     }
 
-    return "Could not upload (no response).";
+    return 'Could not upload (no response).';
   }
 }
 {% endprettify %}
@@ -412,7 +418,7 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 ### DO use adjacent strings to concatenate string literals.
 
-{% include linter-rule.html rule="prefer_adjacent_string_concatenation" %}
+{% include linter-rule-mention.html rule="prefer_adjacent_string_concatenation" %}
 
 If you have two string literals&mdash;not values, but the actual quoted literal
 form&mdash;you do not need to use `+` to concatenate them. Just like in C and
@@ -436,7 +442,7 @@ raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
 
 ### PREFER using interpolation to compose strings and values.
 
-{% include linter-rule.html rule="prefer_interpolation_to_compose_strings" %}
+{% include linter-rule-mention.html rule="prefer_interpolation_to_compose_strings" %}
 
 If you're coming from other languages, you're used to using long chains of `+`
 to build a string out of literals and other values. That does work in Dart, but
@@ -456,7 +462,7 @@ it's almost always cleaner and shorter to use interpolation:
 
 ### AVOID using curly braces in interpolation when not needed.
 
-{% include linter-rule.html rule="unnecessary_brace_in_string_interps" %}
+{% include linter-rule-mention.html rule="unnecessary_brace_in_string_interps" %}
 
 If you're interpolating a simple identifier not immediately followed by more
 alphanumeric text, the `{}` should be omitted.
@@ -480,7 +486,7 @@ The following best practices apply to collections.
 
 ### DO use collection literals when possible.
 
-{% include linter-rule.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.html rule="prefer_collection_literals" %}
 
 Dart has three core collection types: List, Map, and Set. The Map and Set
 classes have unnamed constructors like most classes do. But because these
@@ -544,7 +550,7 @@ arguments.addAll(filePaths
 
 ### DON'T use `.length` to see if a collection is empty.
 
-{% include linter-rule.html rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
+{% include linter-rule-mention.html rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
 
 The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
@@ -572,7 +578,7 @@ if (!words.isEmpty) return words.join(' ');
 
 ### AVOID using `Iterable.forEach()` with a function literal.
 
-{% include linter-rule.html rule="avoid_function_literals_in_foreach_calls" %}
+{% include linter-rule-mention.html rule="avoid_function_literals_in_foreach_calls" %}
 
 `forEach()` functions are widely used in JavaScript because the built in
 `for-in` loop doesn't do what you usually want. In Dart, if you want to iterate
@@ -657,7 +663,7 @@ you don't care about the type, then use `toList()`.
 
 ### DO use `whereType()` to filter a collection by type.
 
-{% include linter-rule.html rule="prefer_iterable_whereType" %}
+{% include linter-rule-mention.html rule="prefer_iterable_whereType" %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
@@ -665,7 +671,7 @@ just the integers out of it. You could use `where()` like this:
 {:.bad}
 <?code-excerpt "usage_bad.dart (where-type)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int);
 {% endprettify %}
 
@@ -678,7 +684,7 @@ Sometimes you see code that "corrects" the above error by adding `cast()`:
 {:.bad}
 <?code-excerpt "usage_bad.dart (where-type-2)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.where((e) => e is int).cast<int>();
 {% endprettify %}
 
@@ -691,7 +697,7 @@ the [`whereType()`][where-type] method for this exact use case:
 {:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (whereType)"?>
 {% prettify dart tag=pre+code %}
-var objects = [1, "a", 2, "b", 3];
+var objects = [1, 'a', 2, 'b', 3];
 var ints = objects.whereType<int>();
 {% endprettify %}
 
@@ -851,7 +857,7 @@ involving functions.
 
 ### DO use a function declaration to bind a function to a name.
 
-{% include linter-rule.html rule="prefer_function_declarations_over_variables" %}
+{% include linter-rule-mention.html rule="prefer_function_declarations_over_variables" %}
 
 Modern languages have realized how useful local nested functions and closures
 are. It's common to have a function defined inside another one. In many cases,
@@ -865,7 +871,7 @@ instead of binding a lambda to a variable.
 <?code-excerpt "usage_good.dart (func-decl)"?>
 {% prettify dart tag=pre+code %}
 void main() {
-  localFunction() {
+  void localFunction() {
     ...
   }
 }
@@ -883,7 +889,7 @@ void main() {
 
 ### DON'T create a lambda when a tear-off will do.
 
-{% include linter-rule.html rule="unnecessary_lambdas" %}
+{% include linter-rule-mention.html rule="unnecessary_lambdas" %}
 
 If you refer to a method on an object but omit the parentheses, Dart gives you
 a "tear-off"&mdash;a closure that takes the same parameters as the method and
@@ -909,7 +915,7 @@ names.forEach((name) {
 
 ### DO use `=` to separate a named parameter from its default value.
 
-{% include linter-rule.html rule="prefer_equal_for_default_values" %}
+{% include linter-rule-mention.html rule="prefer_equal_for_default_values" %}
 
 For legacy reasons, Dart allows both `:` and `=` as the default value separator
 for named parameters. For consistency with optional positional parameters, use
@@ -1044,7 +1050,7 @@ variables). The following best practices apply to an object's members.
 
 ### DON'T wrap a field in a getter and setter unnecessarily.
 
-{% include linter-rule.html rule="unnecessary_getters_setters" %}
+{% include linter-rule-mention.html rule="unnecessary_getters_setters" %}
 
 In Java and C#, it's common to hide all fields behind getters and setters (or
 properties in C#), even if the implementation just forwards to the field. That
@@ -1061,7 +1067,7 @@ getter and setter without having to touch any code that uses that field.
 <?code-excerpt "usage_good.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var contents;
+  Object? contents;
 }
 {% endprettify %}
 
@@ -1069,9 +1075,9 @@ class Box {
 <?code-excerpt "usage_bad.dart (dont-wrap-field)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var _contents;
-  get contents => _contents;
-  set contents(value) {
+  Object? _contents;
+  Object? get contents => _contents;
+  set contents(Object? value) {
     _contents = value;
   }
 }
@@ -1080,7 +1086,7 @@ class Box {
 
 ### PREFER using a `final` field to make a read-only property.
 
-{% include linter-rule.html rule="unnecessary_getters_setters" %}
+{% include linter-rule-mention.html rule="unnecessary_getters_setters" %}
 
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
@@ -1097,8 +1103,8 @@ class Box {
 <?code-excerpt "usage_bad.dart (final)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var _contents;
-  get contents => _contents;
+  Object? _contents;
+  Object? get contents => _contents;
 }
 {% endprettify %}
 
@@ -1109,7 +1115,7 @@ don't reach for that until you need to.
 
 ### CONSIDER using `=>` for simple members.
 
-{% include linter-rule.html rule="prefer_expression_function_bodies" %}
+{% include linter-rule-mention.html rule="prefer_expression_function_bodies" %}
 
 In addition to using `=>` for function expressions, Dart also lets you define
 members with it. That style is a good fit for simple members that just calculate
@@ -1164,7 +1170,7 @@ set x(num value) => center = Point(value, center.y);
 
 ### DON'T use `this.` except to redirect to a named constructor or to avoid shadowing. {#dont-use-this-when-not-needed-to-avoid-shadowing}
 
-{% include linter-rule.html rule="unnecessary_this" %}
+{% include linter-rule-mention.html rule="unnecessary_this" %}
 
 JavaScript requires an explicit `this.` to refer to members on the object whose
 method is currently being executed, but Dart&mdash;like C++, Java, and
@@ -1177,13 +1183,13 @@ with the same name shadows the member you want to access:
 <?code-excerpt "usage_bad.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var value;
+  Object? value;
 
   void clear() {
     this.update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
@@ -1193,13 +1199,13 @@ class Box {
 <?code-excerpt "usage_good.dart (this-dot)"?>
 {% prettify dart tag=pre+code %}
 class Box {
-  var value;
+  Object? value;
 
   void clear() {
     update(null);
   }
 
-  void update(value) {
+  void update(Object? value) {
     this.value = value;
   }
 }
@@ -1244,9 +1250,9 @@ lists:
 <?code-excerpt "usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 {% prettify dart tag=pre+code %}
 class Box extends BaseBox {
-  var value;
+  Object? value;
 
-  Box(value)
+  Box(Object? value)
       : value = value,
         super(value);
 }
@@ -1302,7 +1308,7 @@ The following best practices apply to declaring constructors for a class.
 
 ### DO use initializing formals when possible.
 
-{% include linter-rule.html rule="prefer_initializing_formals" %}
+{% include linter-rule-mention.html rule="prefer_initializing_formals" %}
 
 Many fields are initialized directly from a constructor parameter, like:
 
@@ -1378,7 +1384,7 @@ performance.
 
 ### DO use `;` instead of `{}` for empty constructor bodies.
 
-{% include linter-rule.html rule="empty_constructor_bodies" %}
+{% include linter-rule-mention.html rule="empty_constructor_bodies" %}
 
 In Dart, a constructor with an empty body can be terminated with just a
 semicolon. (In fact, it's required for const constructors.)
@@ -1403,7 +1409,7 @@ class Point {
 
 ### DON'T use `new`.
 
-{% include linter-rule.html rule="unnecessary_new" %}
+{% include linter-rule-mention.html rule="unnecessary_new" %}
 
 Dart 2 makes the `new` keyword optional. Even in Dart 1, its meaning was never
 clear because factory constructors mean a `new` invocation may still not
@@ -1445,7 +1451,7 @@ Widget build(BuildContext context) {
 
 ### DON'T use `const` redundantly.
 
-{% include linter-rule.html rule="unnecessary_const" %}
+{% include linter-rule-mention.html rule="unnecessary_const" %}
 
 In contexts where an expression *must* be constant, the `const` keyword is
 implicit, doesn't need to be written, and shouldn't. Those contexts are any
@@ -1468,9 +1474,9 @@ Basically, any place where it would be an error to write `new` instead of
 <?code-excerpt "usage_good.dart (no-const)"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [
-  Color("red", [255, 0, 0]),
-  Color("green", [0, 255, 0]),
-  Color("blue", [0, 0, 255]),
+  Color('red', [255, 0, 0]),
+  Color('green', [0, 255, 0]),
+  Color('blue', [0, 0, 255]),
 ];
 {% endprettify %}
 
@@ -1478,9 +1484,9 @@ const primaryColors = [
 <?code-excerpt "usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart tag=pre+code %}
 const primaryColors = [!const!] [
-  [!const!] Color("red", [!const!] [255, 0, 0]),
-  [!const!] Color("green", [!const!] [0, 255, 0]),
-  [!const!] Color("blue", [!const!] [0, 0, 255]),
+  [!const!] Color('red', [!const!] [255, 0, 0]),
+  [!const!] Color('green', [!const!] [0, 255, 0]),
+  [!const!] Color('blue', [!const!] [0, 0, 255]),
 ];
 {% endprettify %}
 
@@ -1491,7 +1497,7 @@ best practices apply to catching and throwing exceptions.
 
 ### AVOID catches without `on` clauses.
 
-{% include linter-rule.html rule="avoid_catches_without_on_clauses" %}
+{% include linter-rule-mention.html rule="avoid_catches_without_on_clauses" %}
 
 A catch clause with no `on` qualifier catches *anything* thrown by the code in
 the try block. [Pokémon exception handling][pokemon] is very likely not what you
@@ -1534,7 +1540,7 @@ one of the core Exception classes or some other type.
 
 ### DON'T explicitly catch `Error` or types that implement it.
 
-{% include linter-rule.html rule="avoid_catching_errors" %}
+{% include linter-rule-mention.html rule="avoid_catching_errors" %}
 
 This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
@@ -1547,7 +1553,7 @@ and fix the code that is causing it to be thrown in the first place.
 
 ### DO use `rethrow` to rethrow a caught exception.
 
-{% include linter-rule.html rule="use_rethrow_when_possible" %}
+{% include linter-rule-mention.html rule="use_rethrow_when_possible" %}
 
 If you decide to rethrow an exception, prefer using the `rethrow` statement
 instead of throwing the same exception object using `throw`.

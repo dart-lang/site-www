@@ -50,7 +50,7 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/android_studio.png @path %}"
+<img src="{% asset tools/android_studio.svg @path %}"
      width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
@@ -135,7 +135,7 @@ The following tools support developing web apps:
 The following tools support developing or running
 command-line apps and servers:
 
-[`dart`](/tools/dart-vm)
+[`dart run`](/tools/dart-run)
 : Use the `dart run` command to run uncompiled Dart command-line apps
   and some kinds of snapshots.
 

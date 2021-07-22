@@ -38,28 +38,24 @@ For more information, see the [documentation for webdev][webdev].
 
 Google's apps often use the following [dart2js options](/tools/dart2js#options):
 
-- `--fast-startup`
 - `--minify`
 - `--trust-primitives`
 - `--trust-type-annotations`
 
 **Test your apps before deploying with these options!**
 
-- Build your app both with and without `--fast-startup`,
-  so you can judge whether the speedup is worth the increase in JavaScript size.
 - The `--trust-primitives` option can have unexpected results
   (even in well-typed code) if your data isn't always valid.
 
 For more information, see the [documentation for dart2js][dart2js].
 
-<aside class="alert alert-warning" markdown="1">
-  **Important:**
+{{site.alert.important}}
   Make sure your app has good test coverage
   before you use either of the `--trust-*` options.
   If some code paths aren't tested,
   your app might run in dartdevc but
   misbehave when compiled using dart2js.
-</aside>
+{{site.alert.end}}
 
 You can specify dart2js options in a build config file,
 as described in the [build_web_compilers page.][build_web_compilers]
@@ -96,6 +92,7 @@ For details, see the language tour's coverage of
 The usual advice for web apps applies to Dart web apps.
 Here are a few resources:
 
+* [Fast load times](https://web.dev/fast/)
 * [Web Fundamentals](https://developers.google.com/web/fundamentals/) (especially [Optimizing Content Efficiency](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/))
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)

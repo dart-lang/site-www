@@ -1,8 +1,9 @@
 @Tags(['browser'])
 @TestOn('browser')
 import 'dart:html';
+
+import 'package:examples/pi/pi_monte_carlo.dart' as mc_pi;
 import 'package:test/test.dart';
-import 'package:examples/pi_monte_carlo.dart' as mc_pi;
 
 void main() {
   test('pi', () async {
@@ -15,7 +16,7 @@ void main() {
     final html = '''
       <h1>π ≅ <span id="value-of-pi">?</span></h1>
     ''';
-    document.body.appendHtml(html);
+    document.body!.appendHtml(html);
 
     // Run as async function to capture printed output.
     expect(() async {
@@ -32,8 +33,5 @@ void main() {
             return lines.length == expectedNumOutputLines;
           }, 'output $expectedNumOutputLines lines'),
         ])));
-//  },
-//      skip: 'Awaiting web compiler support for optional new. '
-//          'https://github.com/dart-lang/site-www/issues/668');
   });
 }

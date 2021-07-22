@@ -12,15 +12,16 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
 
   // A for-in loop.
   for (var i in numbers) {
-    // A single-line if statement.
-    if (isEven(i)) evenNumbers.add(i);
+    // A single line if statement.
+    if (isEven(i)) {
+      evenNumbers.add(i);
+    }
   }
 
   return evenNumbers;
 }
 
-// ignore: type_annotate_public_apis
-main() {
+void main() {
   var numbers = List.generate(10, (i) => i);
   print(getEvenNumbers(numbers));
 }

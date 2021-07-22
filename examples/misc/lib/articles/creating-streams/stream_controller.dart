@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 // #docregion async-generator
-Stream<int> timedCounterGenerator(Duration interval, [int maxCount]) async* {
+Stream<int> timedCounterGenerator(Duration interval, [int? maxCount]) async* {
   int i = 0;
   while (true) {
     await Future.delayed(interval);
@@ -23,16 +23,16 @@ Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
 // #enddocregion stream-from-futures
 
 // #docregion better-stream
-Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller;
-  Timer timer;
+Stream<int> timedCounter(Duration interval, [int? maxCount]) {
+  late StreamController<int> controller;
+  Timer? timer;
   int counter = 0;
 
   void tick(_) {
     counter++;
     controller.add(counter); // Ask stream to send counter values as event.
     if (counter == maxCount) {
-      timer.cancel();
+      timer?.cancel();
       controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
@@ -42,10 +42,8 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
   }
 
   void stopTimer() {
-    if (timer != null) {
-      timer.cancel();
-      timer = null;
-    }
+    timer?.cancel();
+    timer = null;
   }
 
   controller = StreamController<int>(
@@ -73,7 +71,7 @@ void main() {
 void showBasicUsage() {
   // #docregion basic-usage
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
   // #enddocregion basic-usage
 
   // #docregion basic-for-each
@@ -83,8 +81,8 @@ void showBasicUsage() {
 
 void demoPause() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
-  StreamSubscription<int> subscription;
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
+  late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
     print(counter); // Print an integer every second.
@@ -99,7 +97,7 @@ void demoPause() {
 
 void useMap() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 
   // #docregion use-map
   // Double the integer in each event.
@@ -110,7 +108,7 @@ void useMap() {
 
 void useWhere() {
   var counterStream =
-      Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+      Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 
   var mappedStream = counterStream
           // #docregion use-where
@@ -133,7 +131,7 @@ void useTransform() async {
   print(lines);
 }
 
-StreamSubscription subscription;
+late StreamSubscription<int> subscription;
 
 void handleInt(int number) {
   if (number == 3) {

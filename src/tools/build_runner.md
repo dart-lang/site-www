@@ -11,11 +11,11 @@ where you can find more information.
 For details of using build_runner with a specific package,
 see the documentation for that package.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **If you're a web developer:**
   You can use the [`webdev` tool][webdev] instead of directly using
   build_runner to build and serve web apps.
-</aside>
+{{site.alert.end}}
 
 The build_runner commands work with _builders_—packages
 that use the [Dart build system][build]
@@ -36,11 +36,12 @@ generates `.css` files from `.scss` and `.sass` files.
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
 
-```
-  dev_dependencies:
-    # ···
-    build_runner: ^1.0.0
-    build_test: ^0.10.3
+<?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" replace="/args.*/# ···/g"?>
+```yaml
+dev_dependencies:
+  # ···
+  build_runner: ^2.0.0
+  build_test: ^2.1.0
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -59,7 +60,7 @@ Here are examples of using the build_runner **build** command:
 
 ```terminal
 $ # From a directory that contains a pubspec.yaml file:
-$ dart pub run build_runner build  # Dart SDK
+$ dart run build_runner build  # Dart SDK
 $ flutter pub run build_runner build  # Flutter SDK
 ```
 

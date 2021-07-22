@@ -57,6 +57,10 @@ The `dart compile` command replaces the
   see the [platforms discussion](/overview#platform).
 {{site.alert.end}}
 
+Refer to the [native_app][] sample for a simple example of using `dart compile`
+to compile a native app, followed by examples of running the app.
+
+[native_app]: https://github.com/dart-lang/samples/tree/master/native_app
 [dart-run]: /tools/dart-tool
 
 ## Types of output
@@ -249,11 +253,11 @@ produces deployable JavaScript.
 The [`webdev serve`][] command uses `dartdevc` by default, but you can switch
 to producing deployable JavaScript by using the `--release` flag.
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   Although we expect the `js` subcommand to replace the `dart2js` command,
   as of Dart 2.12 `js` is missing
   some of the more advanced flags available in `dart2js`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 For more information, see the [`dart2js` documentation](/tools/dart2js).
 

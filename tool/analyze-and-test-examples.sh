@@ -27,8 +27,7 @@ while [[ $# -gt 0 ]]; do
     --get)          PUB_ARGS="get"; shift;;
     --quick)        QUICK=1; shift;;
     --save-logs)    SAVE_LOGS=1; shift;;
-    --null-safety)  EXAMPLES="$ROOT/null_safety_examples"; shift;;
-    -h|--help)      echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--null-safety] [--help]"; exit 0;;
+    -h|--help)      echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"; exit 0;;
     *)              echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
   esac
 done
@@ -45,7 +44,7 @@ function toggleInFileAnalyzerFlags() {
   fi
 
   find $* -name "*.dart" ! -path "**/.*" \
-    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|dev)\b)}{//$toggle\$1}g" {} \;
+    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$1}g" {} \;
 }
 
 function analyze_and_test() {

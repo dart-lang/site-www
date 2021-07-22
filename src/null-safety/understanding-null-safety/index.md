@@ -342,7 +342,7 @@ error at runtime unless you ask for it, we need to guarantee that `null` never
 appears in any type on the non-nullable side.
 
 Getting rid of implicit downcasts and removing `Null` as a bottom type covers
-all of the main places that types flow through a program across assigments and
+all of the main places that types flow through a program across assignments and
 from arguments into parameters on function calls. The main remaining places
 where `null` can sneak in are when a variable first comes into being and when
 you leave a function. So there are some additional compile errors:
@@ -657,6 +657,7 @@ String makeCommand(String executable, [List<String>? arguments]) {
   if (arguments != null) {
     result += ' ' + arguments.join(' ');
   }
+  return result;
 }
 ```
 
@@ -700,8 +701,8 @@ if you wrote something like:
 
 ```dart
 // Using null safety:
-String checkList(List list) {
-  if (list?.isEmpty) {
+String checkList(List<Object> list) {
+  if (list?.isEmpty ?? false) {
     return 'Got nothing';
   }
   return 'Got something';
@@ -725,9 +726,9 @@ redundantly check it again for `null`:
 
 ```dart
 // Using null safety:
-checkList(List? list) {
+String checkList(List<Object>? list) {
   if (list == null) return 'No list';
-  if (list?.isEmpty) {
+  if (list?.isEmpty ?? false) {
     return 'Empty list';
   }
   return 'Got something';
@@ -878,11 +879,14 @@ class HttpResponse {
   final int code;
   final String? error;
 
-  HttpResponse.ok() : code = 200;
+  HttpResponse.ok()
+      : code = 200,
+        error = null;
   HttpResponse.notFound()
       : code = 404,
         error = 'Not found';
 
+  @override
   String toString() {
     if (code == 200) return 'OK';
     return 'ERROR $code ${error.toUpperCase()}';
@@ -1087,10 +1091,10 @@ local lazy evaluation.
 
 To guarantee that you never see a `null` parameter with a non-nullable type, the
 type checker requires all optional parameters to either have a nullable type or
-a default value. What if you want to have a named parameter with a nullable type
-and no default value? That would imply that you want to require the caller to
-*always* pass it. In other words, you want a parameter that is *named* but not
-optional.
+a default value. What if you want to have a named parameter with a non-nullable
+type and no default value? That would imply that you want to require the caller
+to *always* pass it. In other words, you want a parameter that is *named*
+but not optional.
 
 I visualize the various kinds of Dart parameters with this table:
 

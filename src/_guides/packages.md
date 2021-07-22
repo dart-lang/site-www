@@ -60,8 +60,8 @@ and the documentation for the packages that you want to use.
 
 ## Getting packages
 
-Once you have a pubspec, you can run <code class="literal">dart pub
-get</code> from the top directory of your application:
+Once you have a pubspec, you can run [`dart pub get`][get] from the top 
+directory of your application:
 
 ```terminal
 $ cd <path-to-my_app>
@@ -70,7 +70,7 @@ $ dart pub get
 
 This process is called _getting the dependencies_.
 
-The [`dart pub get`][`get`] command
+The `dart pub get` command
 determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
@@ -145,7 +145,7 @@ Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`dart pub upgrade`][`upgrade`] command:
+use the [`dart pub upgrade`][upgrade] command:
 
 ```terminal
 $ dart pub upgrade
@@ -167,7 +167,7 @@ The `dart pub upgrade` command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`dart pub outdated`][`outdated`].
+use [`dart pub outdated`][outdated].
 
 ## More information
 
@@ -193,16 +193,7 @@ the pub package manager.
 
 The `dart pub` tool provides the following subcommands:
 
-* [`cache`][]
-* [`deps`][]
-* [`downgrade`][]
-* [`get`][]
-* [`global`][]
-* [`outdated`][]
-* [`publish`][]
-* [`run`][]
-* [`upgrade`][]
-* [`uploader`][]
+{% include pub-subcommands.md %}
 
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -213,13 +204,6 @@ see the [pub tool documentation](/tools/pub/cmd).
 you might encounter when using pub.
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
-[`cache`]: /tools/pub/cmd/pub-cache
-[`deps`]: /tools/pub/cmd/pub-deps
-[`downgrade`]: /tools/pub/cmd/pub-downgrade
-[`get`]: /tools/pub/cmd/pub-get
-[`global`]: /tools/pub/cmd/pub-global
-[`outdated`]: /tools/pub/cmd/pub-outdated
-[`publish`]: /tools/pub/cmd/pub-lish
-[`run`]: /tools/pub/cmd/pub-run
-[`upgrade`]: /tools/pub/cmd/pub-upgrade
-[`uploader`]: /tools/pub/cmd/pub-uploader
+[get]: /tools/pub/cmd/pub-get
+[upgrade]: /tools/pub/cmd/pub-upgrade
+[outdated]: /tools/pub/cmd/pub-outdated

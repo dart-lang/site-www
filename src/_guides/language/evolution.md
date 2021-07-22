@@ -8,27 +8,28 @@ This page lists notable changes and additions to the Dart programming language.
 If you want details about the currently supported language, see the
 [language tour][] or the
 [language specification][].
+For a full history of changes to the Dart SDK, see the [SDK changelog][].
 
 To use a language feature that was introduced after 2.0,
 specify [SDK constraints][] that are no lower than
 the release when the feature was first supported.
-For example, to use extension methods, which were [supported starting in 2.7][],
-the `pubspec.yaml` file can have 2.7.0 as the lower constraint:
+For example, to use null safety, which was [supported starting in 2.12][],
+the `pubspec.yaml` file can have 2.12.0 as the lower constraint:
 
 ```yaml
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 ```
 
-[supported starting in 2.7]: #dart-27
+[supported starting in 2.12]: #dart-212
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [language versioning section]: #language-versioning
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
   For a peek into current features being
   discussed, investigated, and added to the Dart language,
   see the [language funnel][] tracker in the Dart language GitHub repo.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ## Changes in each release
@@ -180,6 +181,17 @@ turn into edit-time analysis errors.
 
 In Dart 2.12, **[Dart FFI][]** graduated from beta to the stable channel.
 
+### Dart 2.13
+
+Dart 2.13 expanded support for **[type aliases][]** (`typedef`),
+which used to work only for function types
+but now work for any type.
+You can use the new name created with a type alias
+anywhere the original type could be used.
+
+Dart 2.13 also improved the struct support in **[Dart FFI][]**,
+adding support for inline arrays and packed structs.
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
@@ -299,8 +311,10 @@ For more information about how language versioning works, see the
 [language versioning feature]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/feature-specification.md#dart-language-versioning
 [migrated to Dart 2]: /dart-2
 [null safety]: /null-safety
+[pub outdated]: /tools/pub/cmd/pub-outdated
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 [set literals]: /guides/language/language-tour#sets
 [sound null safety]: /null-safety
 [sound type system]: /guides/language/type-system
 [spread operator]: /guides/language/language-tour#spread-operator
-[pub outdated]: /tools/pub/cmd/pub-outdated
+[type aliases]: /guides/language/language-tour#typedefs

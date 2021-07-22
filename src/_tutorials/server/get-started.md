@@ -1,6 +1,6 @@
 ---
-title: "Get started: command-line and server apps"
-description: Get Dart, run and compile a small app
+title: "Get started: Command-line and server apps"
+description: Get Dart, run and compile a small app.
 nextpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
@@ -49,8 +49,8 @@ More information:
 
 ## 3. Create a small app
 
-Use the `dart create` command and the `console-full` template
-to create a command-line app:
+Use the [`dart create`](/tools/dart-create) command
+and the `console-full` template to create a command-line app:
 
 ```terminal
 $ dart create -t console-full cli
@@ -66,12 +66,12 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   Under the hood, `dart create` runs [`dart pub get`][], which
   scans the generated pubspec file and downloads dependencies.
   If you add other dependencies to your pubspec file,
   then run `dart pub get` to download them.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
@@ -154,11 +154,12 @@ Check out these resources:
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs](/tools#ides-and-editors)
+* Other examples of natively compiled apps
+  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 
 [Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
-[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour

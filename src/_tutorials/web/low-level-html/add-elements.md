@@ -1,13 +1,13 @@
 ---
-title: "Add elements to the DOM"
-description: "You have an Element object, now what?"
+title: Add elements to the DOM
+description: You have an Element object, now what?
 
 nextpage:
   url: /tutorials/web/low-level-html/remove-elements
-  title: "Remove DOM elements"
+  title: Remove DOM elements
 prevpage:
   url: /tutorials/web/low-level-html/connect-dart-html
-  title: "Connect Dart & HTML"
+  title: Connect Dart and HTML
 ---
 
 <div class="panel" markdown="1">

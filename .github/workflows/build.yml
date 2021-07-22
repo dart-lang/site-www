@@ -30,46 +30,36 @@ jobs:
         task:
           - ./tool/build.sh --check-links
           - ./tool/check-code.sh
-          - ./tool/check-code.sh --null-safety
         experimental: [false]
         include:
           - sdk: dev
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: beta
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh
             experimental: false
-          - sdk: dev
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
-          - sdk: beta
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
-          - sdk: stable
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
     steps:
       - uses: actions/checkout@v2
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - uses: ruby/setup-ruby@v1
         if: contains(matrix.task, 'build.sh')
         with:
           bundler-cache: true
           ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v0.3
+      - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: ${{ matrix.sdk }}
       - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
+        # TODO: caching requires a lockfile for node deps, so does npm ci.
         run: npm install
       - name: Install dart dependencies
         run: dart pub get
@@ -77,6 +67,19 @@ jobs:
         if: contains(matrix.task, 'build.sh')
       - run: ${{ matrix.task }}
         continue-on-error: ${{ matrix.experimental }}
+
+#  sdk-files-up-to-date:
+#    runs-on: ubuntu-latest
+#    if: |
+#      github.event_name == 'push'
+#      && github.ref == 'refs/heads/master'
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: mkdir -p $TMP
+#      - uses: dart-lang/setup-dart@v1.0
+#        with:
+#          sdk: stable
+#      - run: ./tool/check-diagnostics.sh
 
   deploy:
     needs: test
@@ -91,14 +94,14 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v0.3
+      - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: stable
       - name: Install node dependencies

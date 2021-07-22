@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:dart_sdk_archive/src/version_selector.dart';
 import 'package:http/browser_client.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
 Future<void> runApp() async {
@@ -32,7 +31,10 @@ Future<void> runApp() async {
     querySelector('#dev-os') as SelectElement,
   );
 
-  unawaited(stableSelector.init());
-  unawaited(betaSelector.init());
-  unawaited(devSelector.init());
+  // ignore: unawaited_futures
+  stableSelector.init();
+  // ignore: unawaited_futures
+  betaSelector.init();
+  // ignore: unawaited_futures
+  devSelector.init();
 }

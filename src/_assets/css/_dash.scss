@@ -68,6 +68,25 @@ $dash-dartpad-border: #293542;
     }
   }
 
+  .callout-oss {
+    font-size: 20px;
+    color: $dash-dark-grey;
+    margin-top: 16px;
+
+    @include media-breakpoint-down(md) {
+      font-size: 14px;
+      margin-left:30px;
+      margin-right:30px;
+    }
+
+    a {
+      color: $dash-dark-grey;
+      &:hover, &:focus, &:active {
+        color: $white-base;
+      }
+    }
+  }
+
   .made-by {
     width: 180px;
     margin-top:27px;

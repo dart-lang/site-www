@@ -1,6 +1,6 @@
 import 'dart:html';
 
-void alarm([String text]) {
+void alarm([String? text]) {
   window.alert(text ?? message);
 }
 

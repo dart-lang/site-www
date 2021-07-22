@@ -30,8 +30,9 @@ As the following instructions show,
 you can use a package manager
 to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][] or install from
-[any release channel](#release-channels) by
+[build the SDK from source][],
+grab a [Dart Docker image][], or
+install from [any release channel](#release-channels) by
 [downloading the SDK as a zip file][].
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
@@ -68,13 +69,13 @@ The Dart SDK is supported on Windows, Linux, and macOS.
 
 ### Linux
 
-* **Supported versions:** Recent Linux versions, but only Ubuntu 16.04 is tested.
+* **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
 * **Supported architectures:** x64, ia32, arm, arm64.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   The arm support requires glibc 2.23 or newer due to a
   [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### macOS
 
@@ -83,8 +84,8 @@ The Dart SDK is supported on Windows, Linux, and macOS.
   - macOS 10.14 (Mojave)
   - macOS 10.15 (Catalina)
   - macOS 11 (Big Sur)
-* **Supported architectures:** x64.
-  Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
+* **Supported architectures:** x64, arm64.
+  Support for arm64 is in preview, and is available only in the dev and beta channels.
 
 ## About release channels and version strings {#release-channels}
 
@@ -121,14 +122,17 @@ prerelease and prerelease patch versions, and `beta` or `dev` is the channel.
 You can get stable channel releases using
 the [instructions above](#install), or you can
 get stable, beta, or dev channel releases
-using [a package manager][]
-or by [downloading the SDK as a zip file][].
+using [a package manager][] or [Dart Docker image][], or
+by [downloading the SDK as a zip file][].
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
+[Dart Docker image]: https://hub.docker.com/_/dart
 [downloading the SDK as a zip file]: /tools/sdk/archive
+[Debian stable]: https://www.debian.org/releases
+[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
 [a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get

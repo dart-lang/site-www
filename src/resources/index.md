@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: Landing page for dartlang's resources.
+description: Landing page for Dart language resources.
 toc: false
 ---
 
@@ -14,7 +14,7 @@ Check out the following Dart language resources:
   </div>
   
   <div class="card">
-    <h3><a href="/resources/dartpad-best-practices">DartPad in tutorials: best practices</a></h3>
+    <h3><a href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a></h3>
     <p>A guide to using embedded DartPads in educational content for Dart and Flutter users.</p>
   </div>
 

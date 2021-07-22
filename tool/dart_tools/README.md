@@ -10,7 +10,7 @@ in the examples/ directories
 
 ```
 cd tool/dart_tools
-pub get
-dart bin/update_analyzer_txt.dart
+dart pub get
+dart run bin/update_analyzer_txt.dart
 ```
 

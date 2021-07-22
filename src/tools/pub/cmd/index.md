@@ -25,13 +25,13 @@ on the [Flutter website]({{site.flutter}}).
 [flutter-cli]: {{site.flutter}}/docs/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
   The `dart pub` command debuted in Dart 2.10.
   Although you might still find examples of
   using the standalone `pub` command instead of
   `dart pub` or `flutter pub`,
   the standalone `pub` command is deprecated.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 If you encounter problems using the pub tool,
 see [Troubleshooting Pub](/tools/pub/troubleshoot).
@@ -41,16 +41,7 @@ see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Detailed documentation exists for each of the following pub subcommands:
 
-* [`cache`](/tools/pub/cmd/pub-cache)
-* [`deps`](/tools/pub/cmd/pub-deps)
-* [`downgrade`](/tools/pub/cmd/pub-downgrade)
-* [`get`](/tools/pub/cmd/pub-get)
-* [`global`](/tools/pub/cmd/pub-global)
-* [`outdated`](/tools/pub/cmd/pub-outdated)
-* [`publish`](/tools/pub/cmd/pub-lish)
-* [`upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`uploader`](/tools/pub/cmd/pub-uploader)
-
+{% include pub-subcommands.md %}
 
 ## Overview of subcommands
 

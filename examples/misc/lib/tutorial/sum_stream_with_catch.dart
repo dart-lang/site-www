@@ -1,4 +1,3 @@
-// ignore_for_file: type_annotate_public_apis
 // #docregion
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
@@ -22,7 +21,7 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-main() async {
+Future<void> main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // -1

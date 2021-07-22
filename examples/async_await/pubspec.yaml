@@ -1,0 +1,10 @@
+name: async_await
+description: dart.dev example code.
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dev_dependencies:
+  examples_util: {path: ../util}
+  lints: ^1.0.0
+  test: ^1.17.8

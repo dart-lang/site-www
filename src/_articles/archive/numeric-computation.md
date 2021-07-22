@@ -1,5 +1,5 @@
 ---
-title: Numeric Computation
+title: Numeric computation
 description: How you store and use numbers can have a big impact on your app's performance. This article focuses on the Dart VM.
 original-date: 2013-05-22
 date: 2018-07-26
@@ -509,7 +509,7 @@ because they don’t have to be scanned for object pointers.
 Loading a double-precision number from a typed data list works like this:
 
 1. The base address of the backing store for the list is calculated.
-   (For transferrable lists,
+   (For transferable lists,
    this includes a dependent load.)
 2. The value is loaded from the list backing store.
 
@@ -518,7 +518,7 @@ Loading a double-precision number from a typed data list works like this:
 Storing a double-precision number into a typed data list works like this:
 
 1. The base address of the backing store for the list is calculated.
-   (For transferrable lists,
+   (For transferable lists,
    this includes a dependent load.)
 2. The double number is stored into the list backing store.
 

@@ -77,7 +77,7 @@ For servers and command-line scripts, we have reflection support from the
 There is no support for mirrors when using Dart to write web or
 Flutter apps ([more info][Flutter no mirrors]).
 
-### Q. Can Dart add tuples, pattern matching, non-nullable types, partial evaluation, optional semicolons, ...?
+### Q. Can Dart add tuples, pattern matching, partial evaluation, optional semicolons, ...?
 
 Future releases might be able to include (some of) those features, although
 we can't include everything. Some features don't fit the basic nature of the
@@ -169,7 +169,7 @@ using [Flutter][Flutter], which is powered by the Dart platform.
 
 ### Q. What are some real-world production deployments of Dart?
 
-Google AdWords, AdSense, AdMob, and the Google Assistant all use Dart.
+Google Ads, AdSense, AdMob, and the Google Assistant all use Dart.
 A significant portion of Google's revenue flows through these apps.
 Inside or outside of Google, every Flutter app uses Dart.
 
@@ -197,7 +197,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [DDC]: https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler#dev_compiler
 [strong mode]: /guides/language/type-system
 [Dart's type system]: /guides/language/type-system
-[Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflectionmirrors-system
+[Flutter no mirrors]: {{site.flutter}}/faq/#does-flutter-come-with-a-reflection--mirrors-system
 
 ---
 
@@ -262,9 +262,9 @@ has some tips for specific browsers.
 ### Q. What web frameworks can I use with Dart?
 
 You can use the low-level HTML API defined by core libraries such as dart:html,
-or you can use a framework such as [AngularDart][]. You can also use
-[Flutter for web][] to bring your existing Flutter applications or new ones
-to the browser.
+or you can choose from many [web packages](/web/libraries#web-packages).
+You can also use the [Flutter framework]({{site.flutter}}),
+which has [web support]({{site.flutter}}/web)
 
 ### Q. Will the Dart VM get into Chrome?
 
@@ -442,16 +442,10 @@ if either of those lists is used.
 
 
 [ppwsize]: https://work.j832.com/2012/11/excited-to-see-dart2js-minified-output.html
-[sourcemaps]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [package:js]: {{site.pub-pkg}}/js
-[AngularDart]: {{site.angulardart}}
-[Polymer Dart]: https://github.com/dart-archive/polymer-dart/wiki
 [dart2js]: /tools/dart2js
 [dart compile]: /tools/dart-compile
 [dart analyze]: /tools/dart-analyze
 [dartdevc]: /tools/dartdevc
-[chrome.dart]: https://github.com/dart-gde/chrome.dart
-[fixallthethings]: https://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html
 [typescript]: {{site.news}}/2012/10/the-dart-team-welcomes-typescript.html
 [webdev]: /tools/webdev
-[Flutter for web]: {{site.flutter}}/web

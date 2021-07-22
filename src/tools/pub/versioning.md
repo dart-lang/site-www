@@ -104,7 +104,7 @@ to that works with that version?
 
 In many cases, the answer will be "no". Look at it from the perspective of the
 people developing `widgets`. They want to put out a new version with new changes
-to _their_ code, and they want as many people to be able to upgrade to it it as
+to _their_ code, and they want as many people to be able to upgrade to it as
 possible. If they stick to their _current_ version of `collection` then anyone
 who is using the current version `widgets` will be able to drop in this new one
 too.

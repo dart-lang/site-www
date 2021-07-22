@@ -26,6 +26,11 @@ The Dart language, libraries, build system, and web development tools have chang
   * `const` is optional inside of a constant context.
 * Dart no longer has checked mode.
   * [Assert statements][] are still supported, but you enable them differently.
+* Functions marked `async` now run synchronously
+  until the first `await` statement. 
+  * Previously, execution returned immediately to the caller, and
+    the function body was scheduled to run later.
+  * To learn more, read [the September 2017 Dart newsletter][sync async start].
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
   * [Dev channel API reference documentation][apiref]
@@ -182,7 +187,7 @@ environment:
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[prerelease]: /get-dart#about-release-channels-and-version-strings
+[prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/type-system
@@ -190,3 +195,4 @@ environment:
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: /web/dart-2
+[sync async start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start

@@ -13,7 +13,7 @@ class Shape {
     if (typeName == 'circle') return Circle();
 
     print('I don\'t recognize $typeName');
-    return null;
+    throw Error();
   }
 }
 // #enddocregion

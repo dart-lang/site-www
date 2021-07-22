@@ -1,5 +1,6 @@
 ---
-title: Command-line & server apps
+title: Command-line and server apps
+short-title: CLI & server apps
 description: All things relating to command-line and server apps.
 toc: false
 ---
@@ -44,8 +45,8 @@ You might find the following tutorials helpful.
 [Write command-line apps](/tutorials/server/cmdline)
 : Introduces dart:io and the args package.
 
-[Write HTTP clients & servers](/tutorials/server/httpserver)
-: Features dart:io and the http_server package.
+[Write HTTP servers](/tutorials/server/httpserver)
+: Features the shelf package.
 
 ## More resources
 

@@ -1,13 +1,13 @@
 ---
 title: "C interop using dart:ffi"
-description: "To use C code in your Dart program, use the dart:ffi library (currently in preview)."
+description: "To use C code in your Dart program, use the dart:ffi library."
 hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/master/ffi"
 sqlite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native
-platform](/overview#platform/) can use the dart:ffi library to call native C APIs.
+platform](/overview#platform) can use the dart:ffi library to call native C APIs.
 _FFI_ stands for [_foreign function interface._][FFI]
 Other terms for similar functionality include _native interface_
 and _language bindings._
@@ -36,11 +36,11 @@ calling a C library.
 The hello_world example has the following files:
 
 | **Source file** | **Description** |
-| [hello.dart]({{ page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
-| [pubspec.yaml]({{ page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
-| [hello_library/hello.h]({{ page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
-| [hello_library/hello.c]({{ page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
-| [hello_library/CMakeLists.txt]({{ page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
+| [hello.dart]({{page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 {:.table .table-striped }
 
 {% comment %}
@@ -82,15 +82,17 @@ Hello World
 
 ### Using dart:ffi
 
-The [`hello.dart` file]({{ page.hw}}/hello.dart)
+The [`hello.dart` file]({{page.hw}}/hello.dart)
 illustrates the steps for using dart:ffi to call a C function:
 
 1. Import dart:ffi.
-2. Create a typedef with the FFI type signature of the C function.
-3. Create a typedef for the variable that you'll use when calling the C function.
-4. Open the dynamic library that contains the C function.
-5. Get a reference to the C function, and put it into a variable.
-6. Call the C function.
+2. Import the path library that you'll use to store the path of dynamic library.
+3. Create a typedef with the FFI type signature of the C function.
+4. Create a typedef for the variable that you'll use when calling the C function.
+5. Create a variable to store the path of the dynamic library.
+6. Open the dynamic library that contains the C function.
+7. Get a reference to the C function, and put it into a variable.
+8. Call the C function.
 
 Here's the code for each step.
 
@@ -99,24 +101,44 @@ Here's the code for each step.
 import 'dart:ffi' as ffi;
 ```
 
-2. Create a typedef with the FFI type signature of the C function. <br>
+2. Import the path library that you'll use to store the path of dynamic library.
+```dart
+import 'dart:io' show Platform, Directory;
+import 'package:path/path.dart' as path;
+```
+
+3. Create a typedef with the FFI type signature of the C function. <br>
    Commonly used types defined by dart:ffi library include
    `Double`, `Int32`, `NativeFunction`, `Pointer`, `Struct`, `Uint8`, and `Void`.
 ```dart
 typedef hello_world_func = ffi.Void Function();
 ```
 
-3. Create a typedef for the variable that you'll use when calling the C function.
+4. Create a typedef for the variable that you'll use when calling
+   the C function.
 ```dart
 typedef HelloWorld = void Function();
 ```
 
-4. Open the dynamic library that contains the C function.
+5. Create a variable to store the path of the dynamic library.
 ```dart
-  final dylib = ffi.DynamicLibrary.open('hello_world.dylib');
+var libraryPath = path.join(Directory.current.path, 'hello_library',
+    'libhello.so');
+if (Platform.isMacOS) { 
+  libraryPath = path.join(Directory.current.path, 'hello_library', 
+      'libhello.dylib');
+} else if (Platform.isWindows) { 
+  libraryPath = path.join(Directory.current.path, 'hello_library', 
+      'Debug', 'hello.dll');
+} 
 ```
 
-5. Get a reference to the C function, and put it into a variable.
+6. Open the dynamic library that contains the C function.
+```dart
+  final dylib = ffi.DynamicLibrary.open(libraryPath);
+```
+
+7. Get a reference to the C function, and put it into a variable.
    This code uses the typedefs defined in steps 2 and 3, along with
    the dynamic library variable from step 4.
 ```dart
@@ -125,7 +147,7 @@ typedef HelloWorld = void Function();
       .asFunction();
 ```
 
-6. Call the C function.
+8. Call the C function.
 ```dart
   hello();
 ```
@@ -142,7 +164,7 @@ depends on your platform and the type of library.
 For details, see the following:
 
 * [Flutter dart:ffi page][binding]
-* [dart:ffi examples]({{ page.samples }})
+* [dart:ffi examples]({{page.samples}})
 
 ## Generating FFI bindings with `package:ffigen`
 
@@ -155,9 +177,9 @@ binding generator to automatically create FFI wrappers from C header files.
 [binding]: https://flutter.dev/docs/development/platform-integration/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [ffi issue]: https://github.com/dart-lang/sdk/issues/34452
-[hello_world]: {{ page.hw }}
-[primitives]: {{ page.samples }}/primitives
-[structs]: {{ page.samples }}/structs
-[sqlite]: {{ page.sqlite }}
-[mini tutorial.]: {{ page.sqlite }}/docs/sqlite-tutorial.md
-[ffigen]: {{ site.pub }}/packages/ffigen
+[hello_world]: {{page.hw}}
+[primitives]: {{page.samples}}/primitives
+[structs]: {{page.samples}}/structs
+[sqlite]: {{page.sqlite}}
+[mini tutorial.]: {{page.sqlite}}/docs/sqlite-tutorial.md
+[ffigen]: {{site.pub-pkg}}/ffigen

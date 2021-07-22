@@ -5,8 +5,8 @@ files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
 {{site.alert.important}}
-  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, and servers
-  can import and use `dart:io`, not web apps.
+  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, 
+  and servers can import and use `dart:io`, not web apps.
 {{site.alert.end}}
 
 In general, the dart:io library implements and promotes an asynchronous
@@ -45,17 +45,17 @@ strings.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsString)" replace="/\btest_data\///g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
-  var contents;
 
   // Put the whole file in a single string.
-  contents = await config.readAsString();
-  print('The file is ${contents.length} characters long.');
+  var stringContents = await config.readAsString();
+  print(
+      'The file is ${stringContents.length} characters long.');
 
   // Put each line of the file into its own string.
-  contents = await config.readAsLines();
-  print('The file is ${contents.length} lines long.');
+  var lines = await config.readAsLines();
+  print('The file is ${lines.length} lines long.');
 }
 ```
 
@@ -68,7 +68,7 @@ when it’s available.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (readAsBytes)" replace="/\btest_data\///g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
 
   var contents = await config.readAsBytes();
@@ -84,7 +84,7 @@ or (in an `async` function) use try-catch:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (try-catch)" replace="/does-not-exist/config/g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
   try {
     var contents = await config.readAsString();
@@ -107,7 +107,7 @@ or `await for`, part of Dart's
 import 'dart:io';
 import 'dart:convert';
 
-Future main() async {
+Future<void> main() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
@@ -159,7 +159,7 @@ when a file or directory is encountered.
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (list-dir)" replace="/\btest_data\b/tmp/g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var dir = Directory('tmp');
 
   try {
@@ -210,7 +210,7 @@ the response is status code 404 (page not found).
 
 <?code-excerpt "misc/lib/library_tour/io/http_server.dart" replace="/\b_//g"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   final requests = await HttpServer.bind('localhost', 8888);
   await for (var request in requests) {
     processRequest(request);
@@ -246,7 +246,7 @@ Here’s an example of using HttpClient:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (client)"?>
 ```dart
-Future main() async {
+Future<void> main() async {
   var url = Uri.parse('http://localhost:8888/dart');
   var httpClient = HttpClient();
   var request = await httpClient.getUrl(url);

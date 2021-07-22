@@ -1,7 +1,7 @@
 ---
 permalink: /tools/pub/troubleshoot
-title: "Troubleshooting pub"
-description: "Common gotchas you might run into when using pub."
+title: Troubleshooting pub
+description: Common gotchas you might run into when using pub.
 ---
 
 ## Getting a "403" error when publishing a package {#pub-publish-403}
@@ -123,3 +123,37 @@ Try this workaround, which uses the command line to complete sign-in:
    ```terminal
 $ curl 'http://localhost:<port>?code=...'
 ```
+
+## Getting a socket error trying to find a package {#pub-get-socket-error}
+
+The following error might occur if
+you have no internet access, your ISP is blocking `pub.dev`,
+or security software is blocking internet access from `dart`.
+
+{:.console-output}
+```nocode
+Got socket error trying to find package ... at https://pub.dartlang.org.
+pub get failed (server unavailable) -- attempting retry 1 in 1 second...
+```
+
+Check your internet connection, and
+verify that you don't have a firewall or other security software
+that blocks internet access from `dart`.
+
+<details markdown="1">
+ <summary>
+   <b>Detailed instructions for Kaspersky Internet Security</b>
+  </summary>
+   Even if _Kaspersky Internet Security_ protection is turned off in the menu bar,
+   the VPN application filter `sysextctrld` still runs in the background,
+   causing a failure to connect to the pub.dev server.
+   The solution is to add `https://pub.dartlang.org` to the trusted zone:
+
+   1. Open Kaspersky Internet Security, and click the **Privacy** icon.
+   1. Under the **Block website tracking** section, click the **Preferences** button.
+   1. In the top icon bar, select **Threats**.
+   1. Under **Threats**, click **Trusted Zone**.
+   1. Select the **Trusted web addresses** tab.
+   1. Click the **+** button, and add the URL `https://pub.dartlang.org`.
+   1. Click **OK**.
+</details>

@@ -1,32 +1,34 @@
-// ignore_for_file: annotate_overrides, sort_constructors_first, type_annotate_public_apis
+// ignore_for_file: one_member_abstracts
 // Abstract classes can't be instantiated.
-// ignore: one_member_abstracts
 abstract class Item {
-  use();
+  void use();
 }
 
 // Classes can implement other classes.
 class Chest<T> implements Item {
-  List<T> contents;
+  final List<T> contents;
 
   // Constructors can assign arguments to instance variables using `this`.
   Chest(this.contents);
 
-  use() => print("$this has ${contents.length} items.");
+  @override
+  void use() => print('$this has ${contents.length} items.');
 }
 
 class Sword implements Item {
-  int damage = 5;
+  int get damage => 5;
 
-  use() => print("$this dealt $damage damage.");
+  @override
+  void use() => print('$this dealt $damage damage.');
 }
 
 // Classes can extend other classes.
 class DiamondSword extends Sword {
-  int damage = 50; // ignore: overridden_fields
+  @override
+  final int damage = 50;
 }
 
-main() {
+void main() {
   // The 'new' keyword is optional.
   var chest = Chest<Item>([
     DiamondSword(),
@@ -35,7 +37,7 @@ main() {
 
   chest.use();
 
-  for (var item in chest.contents) {
+  for (final item in chest.contents) {
     item.use();
   }
 }

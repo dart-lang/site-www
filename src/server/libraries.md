@@ -1,5 +1,5 @@
 ---
-title: "Command-line & server libraries and packages"
+title: Command-line and server libraries and packages
 short-title: CLI & server libraries
 description: Libraries and packages that can help you write Dart command-line & server apps.
 ---
@@ -50,18 +50,10 @@ the packages listed in the previous table
 and [general-purpose packages][] such as `logging`:
 
 | **Package**                   | **Description** |
-| [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
-| [aqueduct]({{site.pub-pkg}}/aqueduct) | Supports building scalable REST APIs that run on the Dart VM. |
-| [angel_framework]({{site.pub-pkg}}/angel_framework) | A high-powered HTTP server with support for dependency injection & sophisticated routing. |
 | [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
-| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC,][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
-| [http_multi_server]({{site.pub-pkg}}/http_multi_server) | Extends the [dart:io HttpServer][HttpServer] class with support for multiple servers. |
-| [http_server]({{site.pub-pkg}}/http_server) | Provides utility classes that work with [HttpServer][] to serve web content. |
+| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC][], a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
 | [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
 {:.table .table-striped .nowrap}
 
-[Google App Engine]: https://cloud.google.com/appengine/
-[Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
-[gRPC,]: https://grpc.io/
-[HttpServer]: https://api.dart.dev/stable/dart-io/HttpServer-class.html
+[gRPC]: https://grpc.io/

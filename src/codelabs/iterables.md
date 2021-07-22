@@ -76,7 +76,7 @@ by using the map's `entries` or `values` property.
 This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
@@ -88,7 +88,7 @@ you can't guarantee that reading elements by index will be efficient.
 For example, consider the following code, which is **invalid**:
 
 {:.bad}
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
@@ -103,7 +103,7 @@ You can instead read elements with `elementAt()`,
 which steps through the elements of the iterable until
 it reaches that position.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (iterable-elementat)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
@@ -194,7 +194,7 @@ This method requires you to pass a _predicate_,
 which is a function that returns true if
 the input satisfies a certain condition.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (firstwhere)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
 {% prettify dart tag=pre+code %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
@@ -381,7 +381,7 @@ all of the elements of a collection satisfy some condition.
 You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-bad)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
 {% prettify dart tag=pre+code %}
 for (var item in items) {
   if (item.length < 5) {
@@ -393,7 +393,7 @@ return true;
 
 However, you can accomplish the same using the `every()` method:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (every-good)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
 {% prettify dart tag=pre+code %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
@@ -434,7 +434,7 @@ have a length equal to or greater than 5.
 After running the code, try changing the predicate of `any()` so
 it returns false:
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (any-false)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
 {% prettify dart tag=pre+code %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
@@ -615,7 +615,7 @@ But what if you want to find all the elements that
 satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
@@ -630,7 +630,7 @@ apply other `Iterable` methods.
 In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (where-for)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 {% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
@@ -710,7 +710,7 @@ After running the example,
 change `takeWhile()` to take elements until
 it reaches the first negative number.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (takewhile)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
 {% prettify dart tag=pre+code %}
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
@@ -725,7 +725,7 @@ the class `User` from the previous exercise.
 
 Use `where()` to implement two functions:
 
-* Part 1: Implement `filterUnder21()`.
+* Part 1: Implement `filterOutUnder21()`.
   * Return an `Iterable` containing all users of age 21 or more.
 * Part 2: Implement `findShortNamed()`.
   * Return an `Iterable` containing all users with
@@ -733,7 +733,7 @@ Use `where()` to implement two functions:
 
 ```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list:null_safety-true
 {$ begin main.dart $}
-Iterable<User> filterUnder21(Iterable<User> users) {
+Iterable<User> filterOutUnder21(Iterable<User> users) {
   TODO('Implement this method');
 }
 
@@ -752,7 +752,7 @@ class User {
 }
 {$ end main.dart $}
 {$ begin solution.dart $}
-Iterable<User> filterUnder21(Iterable<User> users) {
+Iterable<User> filterOutUnder21(Iterable<User> users) {
   return users.where((user) => user.age >= 21);
 }
 
@@ -780,19 +780,19 @@ var users = [
 
 void main() {
   try {
-    var out = filterUnder21(users);
+    var out = filterOutUnder21(users);
     if (out.any((user) => user.age < 21) || out.length != 2) {
-      _result(false, ['Looks like `filterUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
+      _result(false, ['Looks like `filterOutUnder21` is wrong, there are exactly two users with age under 21. Keep trying!']);
       return;
     }
   } on UnimplementedError {
     _result(false, [
-      'Tried running `filterUnder21`, but received an error. Did you implement the method?'
+      'Tried running `filterOutUnder21`, but received an error. Did you implement the method?'
     ]);
     return;
   } catch (e) {
     _result(false, [
-      'Tried running `filterUnder21`, but received an exception: ${e.runtimeType}'
+      'Tried running `filterOutUnder21`, but received an exception: ${e.runtimeType}'
     ]);
     return;
   }
@@ -838,7 +838,7 @@ Mapping `Iterables` with the method `map()` enables you to
 apply a function over each of the elements,
 replacing each element with a new one.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-int)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
 {% prettify dart tag=pre+code %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
@@ -849,7 +849,7 @@ You can also use `map()` to transform an element into a different object —
 for example, to convert all `int` to `String`,
 as you can see in the following example.
 
-<?code-excerpt "../null_safety_examples/iterables/test/iterables_test.dart (map-string)"?>
+<?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
 {% prettify dart tag=pre+code %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}

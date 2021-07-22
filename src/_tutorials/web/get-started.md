@@ -1,5 +1,5 @@
 ---
-title: "Get started: web apps"
+title: "Get started: Web apps"
 description: A guide to get you quickly writing web apps in Dart.
 ---
 
@@ -189,7 +189,6 @@ If you get stuck, find help at [Community and Support.](/community)
 [Debugging Dart Web Apps]: /web/debugging
 [low-level HTML tutorial for Dart]: /tutorials/web/low-level-html
 [overview of editors & debuggers]: /tools#ides-and-editors
-[stagehand]: {{site.pub-pkg}}/stagehand
 [Tutorial introduction to using Dart for basic web programming]: /tutorials/web/low-level-html/connect-dart-html
 [webdev]: /tools/webdev
 [webdev serve]: /tools/webdev#serve

@@ -6,7 +6,7 @@ These tutorials cover topics relevant to Dart web apps.
     <p> Load data from a static file or from a server. </p>
   </div>
   <div class="card">
-    <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a></h3>
+    <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart and HTML</a></h3>
     <p> Include a Dart script in an HTML page. </p>
   </div>
   <div class="card">

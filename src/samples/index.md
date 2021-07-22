@@ -33,12 +33,12 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+```dart
 void main() {
   print('Hello, World!');
 }
-{% endprettify %}
+```
 
 
 ## Variables
@@ -46,8 +46,8 @@ void main() {
 Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (var)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (var)"?>
+```dart
 var name = 'Voyager I';
 var year = 1977;
 var antennaDiameter = 3.7;
@@ -56,17 +56,18 @@ var image = {
   'tags': ['saturn'],
   'url': '//path/to/saturn.jpg'
 };
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#variables) about variables in Dart, including default values, the `final` and `const` keywords, and static types.
+[Read more](/guides/language/language-tour#variables) about variables in Dart, 
+including default values, the `final` and `const` keywords, and static types.
 
 
 ## Control flow statements
 
 Dart supports the usual control flow statements:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (control-flow)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
+```dart
 if (year >= 2001) {
   print('21st century');
 } else if (year >= 1901) {
@@ -84,9 +85,10 @@ for (int month = 1; month <= 12; month++) {
 while (year < 2016) {
   year += 1;
 }
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#control-flow-statements) about control flow statements in Dart,
+[Read more](/guides/language/language-tour#control-flow-statements) 
+about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
 
@@ -95,24 +97,24 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 [We recommend](/guides/language/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (functions)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (functions)"?>
+```dart
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 var result = fibonacci(20);
-{% endprettify %}
+```
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (arrow)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (arrow)"?>
+```dart
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
-{% endprettify %}
+```
 
 Besides showing an anonymous function (the argument to `where()`),
 this code shows that you can use a function as an argument:
@@ -126,7 +128,7 @@ including optional parameters, default parameter values, and lexical scope.
 
 Dart comments usually start with `//`.
 
-{% prettify dart tag=pre+code %}
+```dart
 // This is a normal, one-line comment.
 
 /// This is a documentation comment, used to document libraries,
@@ -134,7 +136,7 @@ Dart comments usually start with `//`.
 /// doc comments specially.
 
 /* Comments like these are also supported. */
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
 including how the documentation tooling works.
@@ -144,8 +146,8 @@ including how the documentation tooling works.
 
 To access APIs defined in other libraries, use `import`.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (import)" plaster="none"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
+```
 // Importing core libraries
 import 'dart:math';
 
@@ -155,10 +157,12 @@ import 'package:test/test.dart';
 
 // Importing files
 import 'path/to/my_other_file.dart';
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,
-including library prefixes, `show` and `hide`, and lazy loading through the `deferred` keyword.
+[Read more](/guides/language/language-tour#libraries-and-visibility) 
+about libraries and visibility in Dart,
+including library prefixes, `show` and `hide`, 
+and lazy loading through the `deferred` keyword.
 
 
 ## Classes
@@ -167,16 +171,14 @@ Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
 
-{% comment %}
-The linter rule sort_constructors_first made us put the getter below
-the constructors: https://github.com/dart-lang/linter/issues/859.
-{% endcomment %}
-
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (class)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
+```dart
 class Spacecraft {
   String name;
   DateTime? launchDate;
+
+  // Read-only non-final property
+  int? get launchYear => launchDate?.year;
 
   // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
@@ -186,32 +188,32 @@ class Spacecraft {
   // Named constructor that forwards to the default one.
   Spacecraft.unlaunched(String name) : this(name, null);
 
-  int? get launchYear => launchDate?.year; // read-only non-final property
-
   // Method.
   void describe() {
     print('Spacecraft: $name');
-    var launchDate = this.launchDate; // Type promotion doesn't work on getters.
+    // Type promotion doesn't work on getters.
+    var launchDate = this.launchDate;
     if (launchDate != null) {
-      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/ 365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
     }
   }
 }
-{% endprettify %}
+```
 
 You might use the `Spacecraft` class like this:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (use class)" plaster="none"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
+```dart
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
 
 var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#classes) about classes in Dart,
 including initializer lists, optional `new` and `const`, redirecting constructors,
@@ -222,17 +224,18 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 
 Dart has single inheritance.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (extends)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
+```dart
 class Orbiter extends Spacecraft {
   double altitude;
 
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#extending-a-class) about extending classes, the optional `@override` annotation, and more.
+[Read more](/guides/language/language-tour#extending-a-class) 
+about extending classes, the optional `@override` annotation, and more.
 
 
 ## Mixins
@@ -240,8 +243,8 @@ class Orbiter extends Spacecraft {
 Mixins are a way of reusing code in multiple class hierarchies. The following is
 a mixin declaration:
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
+```dart
 mixin Piloted {
   int astronauts = 1;
 
@@ -249,11 +252,11 @@ mixin Piloted {
     print('Number of astronauts: $astronauts');
   }
 }
-{% endprettify %}
+```
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -267,20 +270,24 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 ## Interfaces and abstract classes
 
-Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
+Dart has no `interface` keyword. 
+Instead, all classes implicitly define an interface. 
+Therefore, you can implement any class.
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (implements)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
+```dart
 class MockSpaceship implements Spacecraft {
   // ···
 }
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
 
-You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
+You can create an abstract class
+to be extended (or implemented) by a concrete class. 
+Abstract classes can contain abstract methods (with empty bodies).
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
@@ -293,9 +300,11 @@ You can create an abstract class to be extended (or implemented) by a concrete c
 }
 {% endprettify %}
 
-Any class extending `Describable` has the `describeWithEmphasis()` method, which calls the extender's implementation of `describe()`.
+Any class extending `Describable` has the `describeWithEmphasis()` method, 
+which calls the extender's implementation of `describe()`.
 
-[Read more](/guides/language/language-tour#abstract-classes) about abstract classes and methods.
+[Read more](/guides/language/language-tour#abstract-classes) 
+about abstract classes and methods.
 
 
 ## Async
@@ -303,7 +312,7 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
+<?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
@@ -315,20 +324,20 @@ Future<void> printWithDelay(String message) [!async!] {
 
 The method above is equivalent to:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (Future.then)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
+```dart
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
     print(message);
   });
 }
-{% endprettify %}
+```
 
 As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (await)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (await)"?>
+```dart
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
@@ -346,19 +355,19 @@ Future<void> createDescriptions(Iterable<String> objects) async {
     }
   }
 }
-{% endprettify %}
+```
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async*)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (async*)"?>
+```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
     yield '${craft.name} flies by $object';
   }
 }
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#asynchrony-support) about
 asynchrony support, including `async` functions, `Future`, `Stream`,
@@ -369,17 +378,17 @@ and the asynchronous loop (`await for`).
 
 To raise an exception, use `throw`:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (throw)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (throw)"?>
+```dart
 if (astronauts == 0) {
   throw StateError('No astronauts.');
 }
-{% endprettify %}
+```
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (try)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/samples_test.dart (try)"?>
+```
 try {
   for (var object in flybyObjects) {
     var description = await File('$object.txt').readAsString();
@@ -390,13 +399,14 @@ try {
 } finally {
   flybyObjects.clear();
 }
-{% endprettify %}
+```
 
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
-[Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
-Error and Exception.
+[Read more](/guides/language/language-tour#exceptions) about exceptions, 
+including stack traces, `rethrow`, 
+and the difference between `Error` and `Exception`.
 
 
 ## Other topics

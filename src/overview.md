@@ -59,7 +59,7 @@ see the [samples page](/samples).
 To learn more about the language, take the [Dart language
 tour](/guides/language/language-tour).
 
-<?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
+<?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
 import 'dart:math' show Random;
 
@@ -72,7 +72,7 @@ void main() async {
 
 /// Generates a stream of increasingly accurate estimates of π.
 Stream<double> computePi({int batch = 100000}) async* {
-  var total = 0; // inferred to be of type int
+  var total = 0; // Inferred to be of type int
   var count = 0;
   while (true) {
     final points = generateRandom().take(batch);
@@ -99,18 +99,21 @@ Iterable<Point> generateRandom([int? seed]) sync* {
 }
 
 class Point {
+  final double x;
+  final double y;
+
   const Point(this.x, this.y);
-  final double x, y;
+
   bool get isInsideUnitCircle => x * x + y * y <= 1;
 }
 ```
 
-{{ site.alert.info }}
+{{site.alert.info}}
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
   target="_blank">open this example in its own window</a>.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 
 ## Dart: The libraries {#libraries}
@@ -214,10 +217,10 @@ manages memory using fast object allocation and a
 [generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
 More information:
-* [Get started: command-line and server apps](/tutorials/server/get-started)
+* [Get started: Command-line and server apps](/tutorials/server/get-started)
 * [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
 * [Write command-line apps](/tutorials/server/cmdline)
-* [Write HTTP clients and servers](/tutorials/server/httpserver)
+* [Write HTTP servers](/tutorials/server/httpserver)
 
 #### Dart Web (JavaScript dev & prod) {#web-platform}
 
@@ -232,7 +235,7 @@ code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 More information:
-* [Get started: web apps](/tutorials/web/get-started)
+* [Get started: Web apps](/tutorials/web/get-started)
 * [`dartdevc` compiler](/tools/dartdevc)
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)

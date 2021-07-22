@@ -1,5 +1,5 @@
 ---
-title: "DartPad in tutorials: best practices"
+title: "DartPad in tutorials: Best practices"
 description: Research-tested advice for creating effective and engaging educational content for Dart and Flutter users.
 ---
 <style>
@@ -585,7 +585,7 @@ think through the entire process versus just being handed the solution.*”
 As long as you get the return correct,
 being able to write how you write it is nice.*”
 
-[DartPad]: http://dartpad.dev
+[DartPad]: {{site.dartpad}}
 [new dp issue]: https://github.com/dart-lang/dart-pad/issues/new
 [dart.dev DP docs]:/tools/dartpad
 [dart-lang/dart-pad]: https://github.com/dart-lang/dart-pad
@@ -595,7 +595,7 @@ being able to write how you write it is nice.*”
 [Content guidelines: Content handbook for web.dev]: https://web.dev/handbook#content-guidelines
 [Other editorial resources]: https://developers.google.com/style/resources
 [guided discovery learning]: https://thinkeracademy.com/guided-discovery-learning/
-[Mayer, Richard E., 2004]: http://www.csun.edu/learningnet/TeachScience/UPimages/1/12/MayerThreeStrikesAP04.pdf
+[Mayer, Richard E., 2004]: https://www.csun.edu/learningnet/TeachScience/UPimages/1/12/MayerThreeStrikesAP04.pdf
 [Kim, Ada S., and Amy J. Ko., 2017]: https://faculty.washington.edu/ajko/papers/Kim2017CodingTutorialEvaluation.pdf
 [transfer of learning]: https://en.wikipedia.org/wiki/Transfer_of_learning
 [Asynchronous programming: futures, async, await]: /codelabs/async-await

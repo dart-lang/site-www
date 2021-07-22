@@ -89,12 +89,12 @@ submodule-cloning techniques:
   this command from the repo root:<br>
 
   ```console
-  $ git submodule update --init --remote
+  $ git submodule update --init --recursive
   ```
 
 > IMPORTANT:
 > Whenever you update your repo, update the submodule as well:<br>
-> `git pull; git submodule update --init --remote`
+> `git pull; git submodule update --init --recursive`
 
 ### 3. Run installation scripts
 

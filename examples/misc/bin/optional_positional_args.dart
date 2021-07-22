@@ -1,5 +1,5 @@
 // #docregion optional-positional-args-2
-int sumUpToFive(int a, [int b, int c, int d, int e]) {
+int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
   if (b != null) sum += b;
   if (c != null) sum += c;

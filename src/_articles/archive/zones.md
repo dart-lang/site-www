@@ -2,9 +2,22 @@
 title: Zones
 description: "Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more."
 date: 2014-03-03
-css: [/articles/styles.css]
 obsolete: true
 ---
+
+<style>
+.zone1 {
+  background-color: rgb(208, 211, 255);
+}
+
+.zone2 {
+  background-color: rgb(195, 255, 231);
+}
+
+.zone3 {
+  background-color: rgb(255, 240, 164);
+}
+</style>
 
 ### Asynchronous dynamic extents
 
@@ -401,7 +414,7 @@ main() {
 This program works,
 but let’s assume that you now want to know
 which file each line comes from,
-and that you can't just add an filename argument to `splitLinesStream()`.
+and that you can't just add a filename argument to `splitLinesStream()`.
 With zone-local values you can add the filename to the returned string
 (new lines are highlighted):
 
@@ -750,7 +763,7 @@ stack_trace
 : With the stack_trace library's
   [Chain class]({{site.pub-api}}/stack_trace/latest/stack_trace/Chain-class.html)
   you can get better stack traces for asynchronously executed code.
-  See the [stack_trace package]({{site.pub}}/packages/stack_trace)
+  See the [stack_trace package]({{site.pub-pkg}}/stack_trace)
   at the pub.dev site for more information.
 
 
@@ -766,7 +779,7 @@ The task_interceptor example
   without yielding to the event loop.
 
 The source code for the stack_trace package
-: The [stack_trace package]({{site.pub}}/packages/stack_trace)
+: The [stack_trace package]({{site.pub-pkg}}/stack_trace)
   uses zones to form chains of stack traces
   for debugging asynchronous code.
   Zone features used include error handling, zone-local values, and callbacks.

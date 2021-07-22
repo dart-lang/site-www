@@ -30,15 +30,11 @@ FRAG="$TMP/_fragments"
 if [[ -e "$FRAG" ]]; then echo Deleting old "$FRAG"; rm -Rf "$FRAG"; fi
 
 ARGS+='--yaml '
-if [[ ! -e "pubspec.lock" ]]; then pub get; fi
-pub run build_runner build --delete-conflicting-outputs --config excerpt --output="$FRAG"
+if [[ ! -e "pubspec.lock" ]]; then dart pub get; fi
+dart run build_runner build --delete-conflicting-outputs --config excerpt --output="$FRAG"
 
 if [[ ! -e "$FRAG/examples" ]]; then
   usage "ERROR: examples fragments folder was not generated: '$FRAG/examples'"
-fi
-
-if [[ ! -e "$FRAG/null_safety_examples" ]]; then
-  usage "ERROR: null_safety_examples fragments folder was not generated: '$FRAG/null_safety_examples'"
 fi
 
 SRC="$1"
@@ -61,7 +57,7 @@ echo "Fragments:  $FRAG/examples"
 echo "Other args: $ARGS"
 echo
 LOG_FILE="$TMP/refresh-code-excerpts-log.txt"
-pub run code_excerpt_updater \
+dart run code_excerpt_updater \
   --fragment-dir-path "$FRAG/examples" \
   --src-dir-path examples \
   $ARGS \
