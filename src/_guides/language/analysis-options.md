@@ -126,8 +126,9 @@ The sample illustrates the most common top-level entries:
 
 - Use <code>include: <em>url</em></code> to
   bring in options from the specified URL — in this case,
-  from a file in the `lints` package. Because YAML doesn't allow duplicate
-  keys, only one file or package may be included.
+  from a file in the `lints` package.
+  Because YAML doesn't allow duplicate keys,
+  you can include at most one file.
 - Use the `analyzer:` entry to customize static analysis —
   [enabling stricter type checks](#enabling-additional-type-checks),
   [excluding files](#excluding-files),
