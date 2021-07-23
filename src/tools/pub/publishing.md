@@ -210,22 +210,27 @@ Here's how to transfer a package to a verified publisher:
 
 ## What files are published?
 
-**All files** in your package are included in the published package, with
-the following exceptions:
+**All files** in your local package root folder are included in the published
+package, with the following exceptions:
 
-* Any `packages` directories.
-* Your package's [lockfile](/tools/pub/glossary#lockfile).
-* If you aren't using Git, all _hidden_ files (that is,
-  files whose names begin with `.`).
-* If you're using Git, any files ignored by your `.gitignore` file.
+ * Any _hidden_ files or folders (that is, files whose names begin with `.`).
+ * Any `packages/` directories.
+ * Files and folders ignored by `.pubignore` (or `.gitignore`).
 
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
+`.gitignore` can be used to ignore additional files. If you want different
+ignore rules for `git` and `dart pub publish`, you may overrule the `.gitignore`
+file in a given folder by creating a `.pubignore` file.
 
-Be sure to delete any files you don't want to include (or add them to
-`.gitignore`). `dart pub publish` lists all files that it's going to publish
-before uploading your package,
+{{site.alert.note}}
+  The `.pubignore` files uses the [`.gitignore` format][git-ignore-format], and
+  multiple `.gitignore` and `.pubignore` files may exist across sub-folders of a
+  package. `dart pub publish` only reads the `.gitignore` file from a folder if
+  the folder does not contain a `.pubignore` file.
+{{site.alert.end}}
+
+Be sure to delete any files you don't want to include (or add them to a
+`.gitignore` or `.pubignore` file). `dart pub publish` lists all files that
+it's going to publish before uploading your package,
 so examine the list carefully before completing your upload.
 
 ## Uploaders
@@ -349,3 +354,4 @@ For more information, see the reference pages for the following `pub` commands:
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
+[git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
