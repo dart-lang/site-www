@@ -686,35 +686,35 @@ help you filter elements from an `Iterable`.
 Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/bin/take_while.dart"?>
 ```dart:run-dartpad:ga_id-using_takewhile:null_safety-true
-main() {
+void main() {
   var numbers = [1, 3, -2, 0, 4, 5];
 
   var numbersUntilZero = numbers.takeWhile((number) => number != 0);
   print('Numbers until 0: $numbersUntilZero');
 
-  var numbersAfterZero = numbers.skipWhile((number) => number != 0);
-  print('Numbers after 0: $numbersAfterZero');
+  var numbersStartingAtZero = numbers.skipWhile((number) => number != 0);
+  print('Numbers starting at 0: $numbersStartingAtZero');
 }
 ```
 
 In this example, `takeWhile()` returns an `Iterable` that
 contains all the elements leading to the element that
 satisfies the predicate.
-On the other hand, `skipWhile()` returns an `Iterable` while
-skipping all the elements before the one that satisfies the predicate.
-Note that the element that satisfies the predicate is also included.
+On the other hand, `skipWhile()` returns an `Iterable` 
+that contains all elements after and including the first one
+which doesn't satisfy the predicate.
 
 After running the example,
 change `takeWhile()` to take elements until
 it reaches the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
-{% endprettify %}
+```
 
 Notice that the condition `number.isNegative` is negated with `!`.
 
