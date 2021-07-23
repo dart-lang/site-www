@@ -9,7 +9,7 @@ prevpage:
   title: Overview
 ---
 <?code-excerpt plaster="none"?>
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 A surprisingly important part of good code is good style. Consistent naming,
 ordering, and formatting helps code that *is* the same *look* the same. It takes
@@ -35,7 +35,7 @@ Identifiers come in three flavors in Dart.
 
 ### DO name types using `UpperCamelCase`.
 
-{% include linter-rule.html rule="camel_case_types" %}
+{% include linter-rule-mention.html rule="camel_case_types" %}
 
 Classes, enum types, typedefs, and type parameters should capitalize the first
 letter of each word (including the first word), and use no separators.
@@ -83,7 +83,7 @@ class C { ... }
 
 ### DO name extensions using `UpperCamelCase`.
 
-{% include linter-rule.html rule="camel_case_extensions" %}
+{% include linter-rule-mention.html rule="camel_case_extensions" %}
 
 Like types, extensions should capitalize the first letter of each word
 (including the first word),
@@ -106,7 +106,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 ### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 
-{% include linter-rule.html rule1="library_names" rule2="file_names" %}
+{% include linter-rule-mention.html rule1="library_names" rule2="file_names" %}
 <!-- source for rules (update these if you update the guideline):
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/library_names.dart
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
@@ -143,7 +143,7 @@ import 'SliderMenu.dart';
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
-{% include linter-rule.html rule="library_prefixes" %}
+{% include linter-rule-mention.html rule="library_prefixes" %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
@@ -166,7 +166,7 @@ import 'package:js/js.dart' as JS;
 
 ### DO name other identifiers using `lowerCamelCase`.
 
-{% include linter-rule.html rule="non_constant_identifier_names" %}
+{% include linter-rule-mention.html rule="non_constant_identifier_names" %}
 
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
@@ -187,7 +187,7 @@ void align(bool clearItems) {
 
 ### PREFER using `lowerCamelCase` for constant names.
 
-{% include linter-rule.html rule="constant_identifier_names" %}
+{% include linter-rule-mention.html rule="constant_identifier_names" %}
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 
@@ -341,7 +341,7 @@ A single linter rule handles all the ordering guidelines:
 
 ### DO place "dart:" imports before other imports.
 
-{% include linter-rule.html rule="directives_ordering" %}
+{% include linter-rule-mention.html rule="directives_ordering" %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
@@ -356,7 +356,7 @@ import 'package:foo/foo.dart';
 
 ### DO place "package:" imports before relative imports.
 
-{% include linter-rule.html rule="directives_ordering" %}
+{% include linter-rule-mention.html rule="directives_ordering" %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
@@ -370,7 +370,7 @@ import 'util.dart';
 
 ### DO specify exports in a separate section after all imports.
 
-{% include linter-rule.html rule="directives_ordering" %}
+{% include linter-rule-mention.html rule="directives_ordering" %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (export)"?>
@@ -392,7 +392,7 @@ import 'src/foo_bar.dart';
 
 ### DO sort sections alphabetically.
 
-{% include linter-rule.html rule="directives_ordering" %}
+{% include linter-rule-mention.html rule="directives_ordering" %}
 
 {:.good}
 <?code-excerpt "style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
@@ -453,7 +453,7 @@ to produce beautiful code.
 
 ### AVOID lines longer than 80 characters.
 
-{% include linter-rule.html rule="lines_longer_than_80_chars" %}
+{% include linter-rule-mention.html rule="lines_longer_than_80_chars" %}
 
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
@@ -479,7 +479,7 @@ shorter ones can alter the program.
 
 ### DO use curly braces for all flow control statements. {#do-use-curly-braces-for-all-flow-control-structures}
 
-{% include linter-rule.html rule="curly_braces_in_flow_control_structures" %}
+{% include linter-rule-mention.html rule="curly_braces_in_flow_control_structures" %}
 
 Doing so avoids the [dangling else][] problem.
 

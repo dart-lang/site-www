@@ -37,10 +37,6 @@ if [[ ! -e "$FRAG/examples" ]]; then
   usage "ERROR: examples fragments folder was not generated: '$FRAG/examples'"
 fi
 
-if [[ ! -e "$FRAG/null_safety_examples" ]]; then
-  usage "ERROR: null_safety_examples fragments folder was not generated: '$FRAG/null_safety_examples'"
-fi
-
 SRC="$1"
 : ${SRC:="$rootDir/src"}
 [[ -e $SRC ]] || usage "ERROR: source file/folder does not exist: '$SRC'"

@@ -1,0 +1,10 @@
+name: null_safety_codelab_examples
+description: dart.dev example code for null safety codelab
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dev_dependencies:
+  examples_util: {path: ../util}
+  lints: ^1.0.0
+  test: ^1.17.8

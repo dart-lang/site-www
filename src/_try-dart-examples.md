@@ -5,7 +5,7 @@
 ### Hello, World!
 
 {:#try-dart-hello-world}
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
   print('Hello, World!');
@@ -15,7 +15,7 @@ void main() {
 ### Functions
 
 {:#try-dart-functions}
-<?code-excerpt "../null_safety_examples/misc/bin/try_dart/functions.dart"?>
+<?code-excerpt "misc/bin/try_dart/functions.dart"?>
 ```dart
 // A function declaration.
 int timesTwo(int x) {
@@ -43,7 +43,7 @@ void main() {
 ### Control flow
 
 {:#try-dart-control-flow}
-<?code-excerpt "../null_safety_examples/misc/bin/try_dart/control_flow.dart"?>
+<?code-excerpt "misc/bin/try_dart/control_flow.dart"?>
 ```dart
 bool isEven(int x) {
   // An if-else statement.
@@ -77,7 +77,7 @@ void main() {
 ### Strings
 
 {:#try-dart-strings}
-<?code-excerpt "../null_safety_examples/misc/bin/try_dart/strings.dart"?>
+<?code-excerpt "misc/bin/try_dart/strings.dart"?>
 ```dart
 import 'dart:math' as math;
 
@@ -102,7 +102,7 @@ are for multiple lines''');
 ### Collection literals
 
 {:#try-dart-collection-literals}
-<?code-excerpt "../null_safety_examples/misc/bin/try_dart/collection_literals.dart"?>
+<?code-excerpt "misc/bin/try_dart/collection_literals.dart"?>
 ```dart
 // A list literal.
 const lostNumbers = [4, 8, 15, 16, 23, 42];
@@ -131,7 +131,7 @@ void main() {
 ### Classes
 
 {:#try-dart-classes}
-<?code-excerpt "../null_safety_examples/misc/bin/try_dart/classes.dart"?>
+<?code-excerpt "misc/bin/try_dart/classes.dart"?>
 ```dart
 // Abstract classes can't be instantiated.
 abstract class Item {
@@ -180,7 +180,7 @@ void main() {
 ### Compute π
 
 {:#try-dart-compute-pi}
-<?code-excerpt "../null_safety_examples/misc/lib/pi/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
+<?code-excerpt "misc/lib/pi/pi_monte_carlo.dart (try-dart)" plaster="none" remove="/output|window/" replace="/numIterations/100/g; /\n *\/\/!.*\n/\n/g; / *\/\/!.*\n/\n/g"?>
 ```dart
 import 'dart:math' show Random;
 

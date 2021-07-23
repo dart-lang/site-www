@@ -59,7 +59,7 @@ see the [samples page](/samples).
 To learn more about the language, take the [Dart language
 tour](/guides/language/language-tour).
 
-<?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
+<?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
 import 'dart:math' show Random;
 

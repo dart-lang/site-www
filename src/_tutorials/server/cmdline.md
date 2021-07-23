@@ -63,7 +63,7 @@ Let's run a small program.
 
  1. Create a file called `hello_world.dart` that contains this code:
 
-    <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+    <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
     ```dart
     void main() {
       print('Hello, World!');
@@ -99,7 +99,7 @@ To get the args package, use the
 
 A real app has tests, license files, dependency files, examples, and so on.
 For the first app though, we can easily create only what is necessary
-with the [`dart create`](/tools/dart-tool) command.
+with the [`dart create`](/tools/dart-create) command.
 
 1. Inside a directory, create the dcat app with the dart tool.
    
@@ -134,7 +134,7 @@ with the [`dart create`](/tools/dart-tool) command.
 Once you have your app's dependencies,
 you can run the app from the command line over any text file,
 like `pubspec.yaml` or `quote.txt`
-([downloadable file]({{site.repo.this}}/blob/master/null_safety_examples/misc/test_data/quote.txt?raw=1)):
+([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
 $ dart run bin/dcat.dart -n quote.txt
@@ -156,7 +156,7 @@ Import the package's
 [args library]({{argsAPI}}/args-library.html)
 as follows:
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="package:args"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart" retain="package:args"?>
 ```dart
 import 'package:args/args.dart';
 ```
@@ -172,7 +172,7 @@ The `args` library contains these classes, among others:
 Here is the `dcat` code that uses these classes to parse and store command-line
 arguments:
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main([!List<String> arguments!]) {
   exitCode = 0; // presume success
@@ -218,7 +218,7 @@ The standard I/O streams are defined at the top level of the dart:io library:
 
 Import the dart:io library as follows:
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="dart:io"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart" retain="dart:io"?>
 ```dart
 import 'dart:io';
 ```
@@ -232,7 +232,7 @@ import 'dart:io';
 Here's the code from the `dcat` program that writes the line number to
 the `stdout` (if the `-n` flag is set) followed by the line from the file.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
@@ -267,7 +267,7 @@ or programmatically to different destinations.
 This code from `dcat` prints an error message if the user
 tries to list a directory.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
@@ -285,7 +285,7 @@ and get input piped in from the standard output of another program.
 
 Here's a small program that reads a single line from `stdin`:
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat1.dart"?>
+<?code-excerpt "misc/bin/dcat/dcat1.dart"?>
 ```dart
 import 'dart:io';
 
@@ -308,7 +308,7 @@ Because `pipe()` is asynchronous
 (returning a future, even though this code doesn't use that return value),
 the code that calls it uses `await`.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 
 await stdin.[!pipe!](stdout);
@@ -343,7 +343,7 @@ The future returns a boolean that indicates if the path is a directory or not.
 Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
@@ -366,7 +366,7 @@ The `await for` block waits for the file to be read
 asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
 {% prettify dart tag=pre+code %}
 for (final path in paths) {
   var lineNumber = 1;
@@ -391,7 +391,7 @@ transform the data before making it available in the `await for` block.
 The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 for (final path in paths) {
   var lineNumber = 1;
@@ -415,7 +415,7 @@ The dart:convert library contains these and other data converters,
 including one for JSON.
 To use these converters you need to import the dart:convert library:
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart" retain="dart:convert"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart" retain="dart:convert"?>
 ```dart
 import 'dart:convert';
 ```
@@ -426,7 +426,7 @@ The easiest way to write text to a file is to create a
 [File]({{ioAPI}}/File-class.html)
 object and use the `writeAsString()` method:
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (write quote)"?>
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quote)"?>
 ```dart
 final quotes = File('quotes.txt');
 const stronger = 'That which does not kill us makes us stronger. -Nietzsche';
@@ -447,7 +447,7 @@ You can continue to write to the file until done,
 at which time, you must close the file.
 The `close()` method is asynchronous and returns a future.
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (write quotes)"?>
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (write quotes)"?>
 ```dart
 final quotes = File('quotes.txt').openWrite(mode: FileMode.append);
 
@@ -468,7 +468,7 @@ provides a copy of the environment
 variables in an immutable map. If you need a mutable map (modifiable copy) you
 can use `Map.of(Platform.environment)`.
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/cmdline.dart (env)"?>
+<?code-excerpt "misc/lib/tutorial/cmdline.dart (env)"?>
 ```dart
 final envVarMap = Platform.environment;
 
@@ -499,7 +499,7 @@ The `dcat` program sets the exit code
 in the `_handleError()` function to indicate that an error
 occurred during execution.
 
-<?code-excerpt "../null_safety_examples/misc/bin/dcat/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
+<?code-excerpt "misc/bin/dcat/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<void> _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {

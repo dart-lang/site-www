@@ -1,4 +1,0 @@
-include: dart_test_base.yaml
-
-tags:
-  browser:

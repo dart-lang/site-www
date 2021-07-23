@@ -342,7 +342,7 @@ error at runtime unless you ask for it, we need to guarantee that `null` never
 appears in any type on the non-nullable side.
 
 Getting rid of implicit downcasts and removing `Null` as a bottom type covers
-all of the main places that types flow through a program across assigments and
+all of the main places that types flow through a program across assignments and
 from arguments into parameters on function calls. The main remaining places
 where `null` can sneak in are when a variable first comes into being and when
 you leave a function. So there are some additional compile errors:
@@ -879,11 +879,14 @@ class HttpResponse {
   final int code;
   final String? error;
 
-  HttpResponse.ok() : code = 200;
+  HttpResponse.ok()
+      : code = 200,
+        error = null;
   HttpResponse.notFound()
       : code = 404,
         error = 'Not found';
 
+  @override
   String toString() {
     if (code == 200) return 'OK';
     return 'ERROR $code ${error.toUpperCase()}';

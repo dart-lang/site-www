@@ -61,7 +61,7 @@ we made the following changes to this site:
 * Continued work on migrating code to null safety, in particular the
   [streams tutorial][].
 * Made miscellaneous other updates:
-  * Removed references to Stagehand, in favor of `dart create`.
+  * Removed references to Stagehand, in favor of [`dart create`][].
   * Changed analytics options for dart.dev example code from
     using `pedantic` to using the recommended rules in [`lints`][].
   * Added Docker as a way to [get Dart][].
@@ -69,6 +69,7 @@ we made the following changes to this site:
 
 [command-line tutorial]: /tutorials/server/cmdline
 [`dart run` page]: /tools/dart-run
+[`dart create`]: /tools/dart-create
 [Fixing type promotion failures]: /tools/non-promotion-reasons
 [get Dart]: /get-dart
 [HTTP server tutorial]: /tutorials/server/httpserver
@@ -196,7 +197,7 @@ we made the following changes to this site:
   to document the new command-line interface to the Dart SDK.
   The new `dart` tool is analogous to the `flutter` tool in the Flutter SDK.
   Previously, the `dart` command only ran command-line apps.
-  We updated [the previous `dart` page][dart-vm] accordingly
+  We updated the previous `dart` page accordingly
   and plan to update references to other tools over time.
 * Updated the [package changelog documentation][changelog-docs]
   to recommend a standard format for `CHANGELOG.md` files.
@@ -224,7 +225,6 @@ we made the following changes to this site:
     written by Dart engineer Bob Nystrom.
 
 [dart-tool]: /tools/dart-tool
-[dart-vm]: /tools/dart-vm
 [diagnostics]: /tools/diagnostic-messages
 [dynamic]: /guides/language/effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Effective Dart]: /guides/language/effective-dart
@@ -243,7 +243,7 @@ we made the following changes to this site:
 We published the following articles on the [Dart blog:][Dart blog]
 
 * [Exploring collections in Dart][] helps you use collections
-  (lists, maps, sets, and more), with specal attention to
+  (lists, maps, sets, and more), with special attention to
   2.3 language features like collection if, collection for, and spreads.
 * [Google Summer of Code 2020 results][] describes the results of
   five projects that the Dart team mentored.

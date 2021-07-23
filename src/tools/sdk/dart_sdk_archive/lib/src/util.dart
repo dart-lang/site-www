@@ -1,7 +1,7 @@
 import 'package:dart_sdk_archive/src/svn_versions.dart';
+import 'package:path/path.dart' as path;
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
-import 'package:path/path.dart' as path;
 
 final _downloader = DartDownloads();
 
@@ -39,6 +39,7 @@ const Map<String, String> archiveMap = {
   'Windows': 'windows',
   'ia32': 'ia32',
   'x64': 'x64',
+  'ARM64': 'arm64',
   'ARMv7': 'arm',
   'ARMv8 (ARM64)': 'arm64',
   'Dart SDK': 'dartsdk',
@@ -57,6 +58,7 @@ const Map<String, String> suffixMap = {
 const Map<String, List<PlatformVariant>> platforms = {
   'macOS': [
     PlatformVariant('x64', ['Dart SDK']),
+    PlatformVariant('ARM64', ['Dart SDK']),
     PlatformVariant('ia32', ['Dart SDK']),
   ],
   'Linux': [

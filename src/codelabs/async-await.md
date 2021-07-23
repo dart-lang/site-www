@@ -48,7 +48,7 @@ The following example shows the wrong way to use an asynchronous function
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
 ```dart:run-dartpad:height-380px:ga_id-incorrect_usage:null_safety-true
 // This example shows how *not* to write asynchronous Dart code.
 
@@ -60,7 +60,7 @@ String createOrderMessage() {
 Future<String> fetchUserOrder() =>
     // Imagine that this function is more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -144,11 +144,11 @@ printing to the console. Because it doesn't return a usable value,
 `fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
-<?code-excerpt "../null_safety_examples/async_await/bin/futures_intro.dart"?>
+<?code-excerpt "async_await/bin/futures_intro.dart"?>
 ```dart:run-dartpad:height-300px:ga_id-introducting_futures:null_safety-true
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
-  return Future.delayed(Duration(seconds: 2), () => print('Large Latte'));
+  return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
 }
 
 void main() {
@@ -167,11 +167,11 @@ This is because `fetchUserOrder()` delays before it prints "Large Latte".
 Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
-<?code-excerpt "../null_safety_examples/async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
+<?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
 ```dart:run-dartpad:height-300px:ga_id-completing_with_error:null_safety-true
 Future<void> fetchUserOrder() {
 // Imagine that this function is fetching user info but encounters a bug
-  return Future.delayed(Duration(seconds: 2),
+  return Future.delayed(const Duration(seconds: 2),
       () => throw Exception('Logout failed: user ID is invalid'));
 }
 
@@ -220,7 +220,7 @@ function.
 
 First, add the `async` keyword before the function body:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart (main-sig)" replace="/main\(\)/$& async/g; /async/[!$&!]/g; /$/ ··· }/g"?>
 {% prettify dart tag=pre+code %}
 void main() [!async!] { ··· }
 {% endprettify %}
@@ -230,7 +230,7 @@ If the function has a declared return type, then update the type to be
 If the function doesn't explicitly return a value, then the return type is
 `Future<void>`:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
+<?code-excerpt "async_await/bin/get_order.dart (main-sig)" replace="/Future<\w+\W/[!$&!]/g;  /$/ ··· }/g"?>
 {% prettify dart tag=pre+code %}
 [!Future<void>!] main() async { ··· }
 {% endprettify %}
@@ -238,7 +238,7 @@ If the function doesn't explicitly return a value, then the return type is
 Now that you have an `async` function, you can use the `await` keyword to wait
 for a future to complete:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
+<?code-excerpt "async_await/bin/get_order.dart (print-order)" replace="/await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 print([!await!] createOrderMessage());
 {% endprettify %}
@@ -253,7 +253,7 @@ your window is wide enough — is to the right of the synchronous example.
 <div class="col-sm" markdown="1">
 #### Example: synchronous functions
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
+<?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
 ```dart
 String createOrderMessage() {
   var order = fetchUserOrder();
@@ -264,7 +264,7 @@ Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -277,13 +277,13 @@ void main() {
 {:.console-output}
 ```nocode
 Fetching user order...
-Your order is: Instance of _Future<String>
+Your order is: Instance of '_Future<String>'
 ```
 </div>
 <div class="col-sm" markdown="1">
 #### Example: asynchronous functions
 
-<?code-excerpt "../null_safety_examples/async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
+<?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>
 {% prettify dart tag=pre+code %}
 [!Future<String>!] createOrderMessage() [!async!] {
   var order = [!await!] fetchUserOrder();
@@ -294,7 +294,7 @@ Future<String> fetchUserOrder() =>
     // Imagine that this function is
     // more complex and slow.
     Future.delayed(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => 'Large Latte',
     );
 
@@ -347,7 +347,7 @@ synchronous code before the first `await` keyword executes immediately.
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
-<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart" remove="/\/\/ print/"?>
+<?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
 ```dart:run-dartpad:height-530px:ga_id-execution_within_async_function:null_safety-true
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
@@ -357,7 +357,7 @@ Future<void> printOrderMessage() async {
 
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex and slow.
-  return Future.delayed(Duration(seconds: 4), () => 'Large Latte');
+  return Future.delayed(const Duration(seconds: 4), () => 'Large Latte');
 }
 
 Future<void> main() async {
@@ -375,7 +375,7 @@ void countSeconds(int s) {
 
 After running the code in the preceding example, try reversing lines 2 and 3:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
+<?code-excerpt "async_await/bin/async_example.dart (swap-stmts)" replace="/\/\/ (print)/$1/g"?>
 ```dart
 var order = await fetchUserOrder();
 print('Awaiting user order...');
@@ -574,7 +574,7 @@ Remember: reportUserRole() needs to return a future!
 ## Handling errors
 To handle errors in an `async` function, use try-catch:
 
-<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
+<?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
   var order = await fetchUserOrder();
@@ -592,7 +592,7 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an
 asynchronous function. What do you think the output will be?
 
-<?code-excerpt "../null_safety_examples/async_await/bin/try_catch.dart"?>
+<?code-excerpt "async_await/bin/try_catch.dart"?>
 ```dart:run-dartpad:height-530px:ga_id-try_catch:null_safety-true
 Future<void> printOrderMessage() async {
   try {
@@ -607,7 +607,7 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () => throw 'Cannot locate user order');
   return str;
 }

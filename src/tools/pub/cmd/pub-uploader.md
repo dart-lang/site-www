@@ -25,10 +25,11 @@ add/remove as an uploader. For example:
 
 ```terminal
 ~/code/transmogrify$ dart pub uploader add bob@example.com
-We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
+We've sent an invitation email to bob@example.com.
+They'll be added as an uploader after they accept the invitation.
 
 ~/code/transmogrify$ dart pub uploader remove bob@example.com
-Successfully removed uploader from package.
+bob@example.com has been removed as an uploader for this package.
 ```
 
 If a package has only one uploader, that uploader can't be removed. You can
@@ -41,7 +42,8 @@ package by name. For example:
 
 ```terminal
 $ dart pub uploader --package=transmogrify add bob@example.com
-We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
+We've sent an invitation email to bob@example.com.
+They'll be added as an uploader after they accept the invitation.
 ```
 
 Note that uploaders are identified by their Google accounts, so use a Gmail or

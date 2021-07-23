@@ -60,7 +60,7 @@ Some computations can be moved to the static initializer. Instead of:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-// Initalized without values
+// Initialized without values
 ListQueue _context;
 Float32List _buffer;
 dynamic _readObject;
@@ -238,7 +238,7 @@ It is typically a code smell to end up with nullable code like this:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-List?<Foo?> fooList; // fooList can contain null values
+List<Foo?> fooList; // fooList can contain null values
 {% endprettify %}
 
 This implies `fooList` might contain null values. This might happen if you are
@@ -249,20 +249,36 @@ use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) 
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>(jellyMax + 1);
+_jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyPoints[i] = Vec2D(); // List initalized with the same value
+  _jellyCounts[i] = 0; // List initialized with the same value
 }
 {% endprettify %}
 
 {:.good}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>.filled(jellyMax + 1, Vec2D()); // List initialized with filled constructor
+_jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
 {% endprettify %}
 
-If you are setting the elements of the list via an index, you should instead use
-the `add` function to build the list. That is less error-prone and more
-readable.
+If you are setting the elements of the list via an index, or you are populating
+each element of the list with a distinct value, you should instead use the
+list literal syntax to build the list.
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+_jellyPoints = List<Vec2D?>(jellyMax + 1);
+for (var i = 0; i <= jellyMax; i++) {
+  _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
+}
+{% endprettify %}
+
+{:.good}
+{% prettify dart tag=pre+code %}
+_jellyPoints = [
+  for (var i = 0; i <= jellyMax; i++)
+    Vec2D() // Each list element is a distinct Vec2D
+];
+{% endprettify %}
 
 ## What happened to the default List constructor?
 
@@ -301,6 +317,77 @@ and situations where a null value is really expected. So the tool tells you what
 it knows ("it looks like this condition will always be false!") and lets you
 decide what to do.
 
+## What should I know about dart2js and null safety?
+
+For a long time, the dart2js compiler has had optimizations specifically
+targeting null values and null checks. Because of that, null safety is not
+expected to affect much the output of the compiler.
+
+A few notes that are worth highlighting:
+
+* dart2js emits `!` null assertions, but you may not notice them.
+  That's because pre null-safety dart2js already emitted null checks
+  (so they are already in the existing programs).
+
+* dart2js emits these null assertions regardless of sound/unsound null safety
+  and regardless of optimization level. In fact, dart2js doesn't remove
+  `!` when using `-O3` or `--omit-implicit-checks`.
+
+* dart2js may optimize away unnecessary null checks. This is because the same
+  optimizations done by dart2js in the past will be able to eliminate
+  unnecessary null checks when it knows the value is not null.
+
+* By default dart2js would generate parameter subtype checks (runtime checks
+  used to ensure covariant virtual calls are given appropriate arguments).
+  These are elided with the `--omit-implicit-checks` flag just as before.
+  Recall that this flag can make programs have unexpected behavior if types
+  are invalid, so we continue to recommend that the code has strong test
+  coverage to avoid any surprises. In particular, dart2js optimizes code based
+  on the fact that inputs should comply with the type declaration. If
+  the code provides arguments of an invalid type, those optimizations would
+  be wrong and the program could misbehave. This was true for inconsistent
+  types before, and is true with inconsistent nullabilities now with sound
+  null-safety.
+
+* You may notice that DDC and the Dart VM have special error
+  messages for null checks, but to keep applications small dart2js does not.
+
+* You may see errors indicating that `.toString` is not found on `null`.
+  This is not a bug, it is how dart2js has always encoded some null checks.
+  That is, dart2js represents some null checks compactly by making an unguarded
+  access of a property of the
+  receiver. So instead of `if (a == null) throw`, it generates `a.toString`.
+  The `toString` method is defined in JavaScript Object and is a fast
+  way to verify that an object is not null.
+
+  If the very first action after a null check is an action that
+  will crash when the value is null, dart2js can remove the null check and
+  let the action cause the error.
+
+  For example, a Dart expression `print(a!.foo());` could turn directly into:
+
+  ```js
+    P.print(a.foo$0());
+  ```
+
+  This is because the call `a.foo$()` will crash if `a` is null.
+  If dart2js inlines `foo`, it will preserve the null check.
+  So for example, if `foo` was `int foo() => 1;`  the compiler might generate:
+
+  ```js
+    a.toString;
+    P.print(1);
+  ```
+
+  If by chance the first thing the inlined method did was a field access on the
+  receiver, for example  `int foo() => this.x + 1;`, then again dart2js
+  can remove the redundant `a.toString` null check, just like
+  non-inlined calls, and generate:
+
+  ```js
+    P.print(a.x + 1);
+  ```
+    
 ## Resources
 
 *   [DartPad with Null Safety](https://nullsafety.dartpad.dev)

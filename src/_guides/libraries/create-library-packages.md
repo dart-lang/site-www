@@ -137,7 +137,7 @@ you need to check for the presence of `dart:*` libraries.
 Here's an example of conditional export code that
 checks for the presence of `dart:io` and `dart:html`:
 
-<?code-excerpt "../null_safety_examples/create_libraries/lib/hw_mp.dart (export)"?>
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
@@ -167,7 +167,7 @@ but change `export` to `import`.
 All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:
 
-<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_io.dart"?>
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
 ```dart
 import 'dart:io';
 
@@ -182,7 +182,7 @@ String get message => 'Hello World from the VM!';
 And here's the default implementation,
 which uses stubs that throw `UnsupportedError`:
 
-<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_none.dart"?>
+<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
 ```dart
 void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
@@ -193,7 +193,7 @@ String get message => throw UnsupportedError('hw_none message');
 On any platform,
 you can import the library that has the conditional export code:
 
-<?code-excerpt "../null_safety_examples/create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
@@ -217,7 +217,7 @@ Enable running a tool from the command line, using
 Listing the tool in the
 [`executables` section](/tools/pub/pubspec#executables)
 of the pubspec allows a user to run it directly without calling
-[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.

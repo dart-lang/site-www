@@ -6,8 +6,6 @@ date: 2021-06-03
 category: libraries
 ---
 
-<?code-excerpt path-base="../null_safety_examples"?>
-
 _Written by Mads Ager<br>
 March 2012 (updated June 2021)_
 
@@ -66,7 +64,7 @@ and the VM terminates.
 import 'dart:async';
 
 void main() {
-  Timer(Duration(seconds: 1), () => print('timer'));
+  Timer(const Duration(seconds: 1), () => print('timer'));
   print('end of main');
 }
 ```

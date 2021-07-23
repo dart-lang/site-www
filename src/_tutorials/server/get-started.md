@@ -30,7 +30,7 @@ greeting to use another language.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
@@ -49,8 +49,8 @@ More information:
 
 ## 3. Create a small app
 
-Use the `dart create` command and the `console-full` template
-to create a command-line app:
+Use the [`dart create`](/tools/dart-create) command
+and the `console-full` template to create a command-line app:
 
 ```terminal
 $ dart create -t console-full cli
@@ -96,7 +96,7 @@ Let's customize the app you just created.
  1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
-    <?code-excerpt "../null_safety_examples/misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];
@@ -154,6 +154,8 @@ Check out these resources:
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
   * [IDEs](/tools#ides-and-editors)
+* Other examples of natively compiled apps
+  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 

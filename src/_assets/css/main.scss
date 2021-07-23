@@ -31,6 +31,10 @@ $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 /* -----------------------------------------
   Global
   ----------------------------------------- */
+html {
+  background-color: $site-color-header;
+}
+
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;

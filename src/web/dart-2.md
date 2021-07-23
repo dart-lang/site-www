@@ -16,8 +16,6 @@ These changes are necessary because of the following:
   - A **new build system** replaces `pub build`, `pub serve`, pub transformers.
 - Dart 2 [language and library changes.][dart-2]
 
-See also: [Angular Migration Guide v4 to v5]({{site.angulardart}}/note/migrating-to-v5)
-
 
 ## Tools
 
@@ -36,13 +34,14 @@ Here are the highlights:
 
 To migrate to Dart 2, you'll need to edit your web app's project files:
 
-- `pubspec.yaml`, [see details below.](#pubspec)
+- `pubspec.yaml`. [See details below.](#pubspec)
 - HTML files with `<script src="foo.dart"...>` elements,
   such as `web/index.html`. [See details below.](#web-index-html)
 - Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
-For complete examples of migrated apps, compare the `4.x` and `master` branches
-of any one of the [angular-examples][] apps, such as these:
+For complete examples of migrating apps,
+look at the files changed between the `4.x` and `master` branches
+of the following apps:
 
 - [Quickstart][angular-examples/quickstart]
 - [Tour of Heroes, part 5][angular-examples/toh-5]
@@ -64,8 +63,8 @@ Make these changes to your `pubspec.yaml` file:
   - <del>`dart_to_js_script_rewriter`</del>
   - <del>`test/pub_serve`</del>
 
-For example, here is a diff of
-[angular-examples/quickstart/pubspec.yaml][]
+For example, look at the differences in
+the [Quickstart example's pubspec][angular-examples/quickstart/pubspec.yaml]
 with these changes applied.
 
 <a id="web-index-html"></a>
@@ -78,22 +77,19 @@ You'll need to make these changes:
 - Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
   `<script defer src="foo.dart.js"></script>`
 
-Here is a diff of
-[angular-examples/quickstart/web/index.html][]
+For example, look at the differences in the [Quickstart example's
+web/index.html page][angular-examples/quickstart/web/index.html]
 with these changes applied.
 
 ## Additional resources
 
-- [Dart 2 Updates:][dart-2]
-  Information about changes in Dart 2, and how to migrate your code from Dart 1.x.
-- [Changelog][Documentation changelog]:
-  Lists changes made to this site's documentation and examples.
+The [Dart 2 migration guide][dart-2] has
+information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 
-[angular-examples]: https://github.com/angular-examples
-[angular-examples/quickstart]: https://github.com/angular-examples/quickstart/compare/4.x...master
-[angular-examples/quickstart/pubspec.yaml]: https://github.com/angular-examples/quickstart/compare/4.x...master#diff-4
-[angular-examples/quickstart/web/index.html]: https://github.com/angular-examples/quickstart/compare/4.x...master#diff-6
-[angular-examples/toh-5]: https://github.com/angular-examples/toh-5/compare/4.x...master
+[angular-examples/quickstart]: https://github.com/googlearchive/quickstart/compare/4.x...master
+[angular-examples/quickstart/pubspec.yaml]: https://github.com/googlearchive/quickstart/compare/4.x...master#diff-8b7e9df87668ffa6a04b32e1769a33434999e54ae081c52e5d943c541d4c0d25
+[angular-examples/quickstart/web/index.html]: https://github.com/googlearchive/quickstart/compare/4.x...master#diff-8f62b6ced28d3396b501d2e89a2e7cb761d16cd7dc977aebece03d4a5da5c24e
+[angular-examples/toh-5]: https://github.com/googlearchive/toh-5/compare/4.x...master
 [build]: https://github.com/dart-lang/build
 [dart-2]: /dart-2
 [dartdevc]: /tools/dartdevc

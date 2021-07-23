@@ -216,6 +216,8 @@
           permalink: /tools/dart-analyze
         - title: dart compile
           permalink: /tools/dart-compile
+        - title: dart create
+          permalink: /tools/dart-create
         - title: dart fix 
           permalink: /tools/dart-fix
         - title: dart format 
@@ -224,6 +226,8 @@
           permalink: /tools/pub/cmd
         - title: dart run
           permalink: /tools/dart-run
+        - title: dart test
+          permalink: /tools/dart-test
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdoc

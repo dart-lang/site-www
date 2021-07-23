@@ -1,0 +1,20 @@
+Analyzing type_system...
+
+  error - lib/bounded/instantiate_to_bound.dart:7:5 - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
+  error - lib/common_fixes_analysis.dart:16:12 - The getter 'context2D' isn't defined for the type 'Element'. Try importing the library that defines 'context2D', correcting the name to the name of an existing getter, or defining a getter or field named 'context2D'. - undefined_getter
+  error - lib/common_fixes_analysis.dart:39:16 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
+  error - lib/common_fixes_analysis.dart:61:7 - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
+  error - lib/common_fixes_analysis.dart:80:8 - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
+  error - lib/common_fixes_analysis.dart:97:9 - The superclass call must be last in an initializer list: 'super(food)'. - invalid_super_invocation
+  error - lib/common_fixes_analysis.dart:117:16 - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:34:16 - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
+  error - lib/strong_analysis.dart:45:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:61:15 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
+  error - lib/strong_analysis.dart:83:9 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
+  error - lib/strong_analysis.dart:107:23 - A value of type 'String' can't be assigned to a variable of type 'double'. Try changing the type of the variable, or casting the right-hand type to 'double'. - invalid_assignment
+  error - lib/strong_analysis.dart:119:19 - A value of type 'Cat' can't be assigned to a variable of type 'MaineCoon'. Try changing the type of the variable, or casting the right-hand type to 'MaineCoon'. - invalid_assignment
+  error - lib/strong_analysis.dart:144:24 - A value of type 'List<Animal>' can't be assigned to a variable of type 'List<Cat>'. Try changing the type of the variable, or casting the right-hand type to 'List<Cat>'. - invalid_assignment
+  error - test/strong_test.dart:120:26 - A value of type 'dynamic' can't be assigned to a variable of type 'List<String>'. Try changing the type of the variable, or casting the right-hand type to 'List<String>'. - invalid_assignment
+
+16 issues found.
