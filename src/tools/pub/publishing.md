@@ -210,28 +210,37 @@ Here's how to transfer a package to a verified publisher:
 
 ## What files are published?
 
-**All files** in your local package root folder are included in the published
-package, with the following exceptions:
+**All files** under the package root directory are
+included in the published package,
+with the following exceptions:
 
- * Any _hidden_ files or folders (that is, files whose names begin with `.`).
- * Any `packages/` directories.
- * Files and folders ignored by `.pubignore` (or `.gitignore`).
+ * Any _hidden_ files or directories —
+   that is, files with names that begin with dot (`.`)
+ * Any directories with the name `packages`
+ * Files and directories ignored by a `.pubignore` or `.gitignore` file
 
-`.gitignore` can be used to ignore additional files. If you want different
-ignore rules for `git` and `dart pub publish`, you may overrule the `.gitignore`
-file in a given folder by creating a `.pubignore` file.
-
-{{site.alert.note}}
-  The `.pubignore` files uses the [`.gitignore` format][git-ignore-format], and
-  multiple `.gitignore` and `.pubignore` files may exist across sub-folders of a
-  package. `dart pub publish` only reads the `.gitignore` file from a folder if
-  the folder does not contain a `.pubignore` file.
+{{site.alert.version-note}}
+  Support for `.pubignore` files was added in Dart 2.14.
 {{site.alert.end}}
 
-Be sure to delete any files you don't want to include (or add them to a
-`.gitignore` or `.pubignore` file). `dart pub publish` lists all files that
-it's going to publish before uploading your package,
-so examine the list carefully before completing your upload.
+If you want different ignore rules for `git` and `dart pub publish`,
+then overrule the `.gitignore` file in a given directory by
+creating a `.pubignore` file.
+(If a directory contains both a `.pubignore` file and a `.gitignore` file,
+then  `dart pub publish` doesn't read that directory's `.gitignore` file.)
+The format of `.pubignore` files is the same as the
+[`.gitignore` file format][git-ignore-format].
+
+To avoid publishing unwanted files,
+follow these practices:
+
+* Either delete any files that you don't want to include,
+  or add them to a `.pubignore`  or `.gitignore` file.
+* When uploading your package,
+  carefully examine the list of files that
+  `dart pub publish` says it's going to publish.
+  Cancel the upload if any undesired files appear in that list.
+
 
 ## Uploaders
 
