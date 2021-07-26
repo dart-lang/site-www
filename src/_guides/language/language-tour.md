@@ -3050,7 +3050,9 @@ void main() {
 
 Sometimes a constructor’s only purpose is to redirect to another
 constructor in the same class. A redirecting constructor’s body is
-empty, with the constructor call appearing after a colon (:).
+empty, with the constructor call appearing after a colon (:). The
+constructor being redirected to must be accessed using the `this`
+keyword.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
 ```dart
