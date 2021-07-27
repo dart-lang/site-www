@@ -70,10 +70,10 @@ A pubspec can have the following fields:
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
 
-`false_leaks`
+`false_secrets`
 : Optional. Specify git-ignore style patterns for files to ignore when warning
   against potential leak of secrets before publishing.
-  [_Learn more._](#false_leaks)
+  [_Learn more._](#false_secrets)
 
 Pub ignores all other fields,
 
@@ -277,7 +277,7 @@ publish_to: none
 {% endprettify %}
 
 
-### False_leaks
+### False_secrets
 
 When publishing leak detection on the client will abort publishing if it finds
 potential leaks of secret credentials, API keys and cryptographic keys in files
@@ -285,16 +285,17 @@ to be published.
 While detection of possible secrets relies on advanced heuristics using regular
 expressions and entropy thresholds, the detection is not perfect.
 If the leak detection reports a _false positive_ you can specify a list of
-[git-ignore patterns][git-ignore-format] under `false_leaks` in `pubspec.yaml`.
+[git-ignore patterns][git-ignore-format] under `false_secrets` i
+`pubspec.yaml`.
 
-The leak detection will ignore any files matching a pattern in `false_leaks`.
+The leak detection will ignore any files matching a pattern in `false_secrets`.
 The example below ignores the file `lib/src/file_with_hardcoded_api_key.dart`
 and all `.pem` files in the `test/localhost_certificates/` folder. Starting a
 [git-ignore pattern][git-ignore-format] with slash `/` ensures that is it only
 considered relative to the root folder.
 
 {% prettify yaml tag=pre+code %}
-false_leaks:
+false_secrets:
  - /lib/src/file_with_hardcoded_api_key.dart
  - /test/localhost_certificates/*.pem
 {% endprettify %}
