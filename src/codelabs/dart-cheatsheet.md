@@ -613,7 +613,7 @@ For joinWithCommas, try using the join method found in the List class.
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
 
-<?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)"?>
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
 myObject.someMethod()
 ```
@@ -623,7 +623,7 @@ the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
-<?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)"?>
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
 myObject..someMethod()
 ```
