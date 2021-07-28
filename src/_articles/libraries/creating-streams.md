@@ -443,8 +443,9 @@ keep these tips in mind:
   before the `subscription` variable
   has a valid value.
 
+  <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-listen-hint)"?>
   ```dart
-subscription = stream.listen(handler);
+  subscription = stream.listen(handler);
   ```
 
 * The `onListen`, `onPause`, `onResume`, and `onCancel`
