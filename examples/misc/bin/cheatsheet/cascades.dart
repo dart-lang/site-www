@@ -18,7 +18,7 @@ void main() {
   button.text = 'Confirm';
   button.classes.add('important');
   button.onClick.listen((e) => window.alert('Confirmed!'));
-  // #enddocregion query-with-cascades
+  // #enddocregion query-without-cascades
 
   // #docregion query-with-cascades
   querySelector('#confirm')!
