@@ -700,11 +700,11 @@ void main() {
 ```
 
 In this example, `takeWhile()` returns an `Iterable` that
-contains all the elements leading to the element that
+contains all the elements before the one that
 satisfies the predicate.
 On the other hand, `skipWhile()` returns an `Iterable` 
 that contains all elements after and including the first one
-which doesn't satisfy the predicate.
+that _doesn't_ satisfy the predicate.
 
 After running the example,
 change `takeWhile()` to take elements until
