@@ -255,7 +255,7 @@ Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use
 [`dart run`](/tools/dart-run) to run scripts from the `bin`
 directories of any other package the package depends on. From _any_
-directory, you can directly [run scripts][]
+directory, you can [run scripts][]
 from packages that you have activated using
 [`dart pub global activate`][activate].
 
@@ -353,14 +353,13 @@ enchilada/
 {% endprettify %}
 
 Some packages define programs that can be run directly from the command
-line.  These can be shell scripts or any other scripting language,
-including Dart.  The `pub` application itself is one example: it's
-a simple shell script that invokes `pub.dart`.
+line. These can be shell scripts or any other scripting language,
+including Dart.
 
 If your package defines code like this, put it in a directory named `bin`.
 You can run that script from anywhere on the command line, if you set it up
 using
-[pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+[`dart pub global`](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
 
 ## Tests and benchmarks
 
