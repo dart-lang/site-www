@@ -630,11 +630,12 @@ myObject..someMethod()
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
+
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
-For example, consider this code
-that uses the conditional member access operator 
-to only access the properties of `button` if it's not `null:
+For example, consider the following code,
+which uses the conditional member access operator (`?.`)
+to read properties of `button` if it isn't `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
@@ -648,8 +649,8 @@ To instead use cascades,
 you can start with the _null-shorting_ cascade (`?..`), 
 which guarantees that none of the cascade operations
 are attempted on a `null` object.
-As a result, the code becomes much shorter,
-and you don't need the `button` variable.
+Using cascades shortens the code
+and makes the `button` variable unnecessary:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
