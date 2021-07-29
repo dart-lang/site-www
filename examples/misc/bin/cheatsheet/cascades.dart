@@ -14,15 +14,15 @@ void main() {
   // #enddocregion uses-cascade
 
   // #docregion query-without-cascades
-  var button = querySelector('#confirm')!;
-  button.text = 'Confirm';
-  button.classes.add('important');
-  button.onClick.listen((e) => window.alert('Confirmed!'));
+  var button = querySelector('#confirm');
+  button?.text = 'Confirm';
+  button?.classes.add('important');
+  button?.onClick.listen((e) => window.alert('Confirmed!'));
   // #enddocregion query-without-cascades
 
   // #docregion query-with-cascades
-  querySelector('#confirm')!
-    ..text = 'Confirm'
+  querySelector('#confirm')
+    ?..text = 'Confirm'
     ..classes.add('important')
     ..onClick.listen((e) => window.alert('Confirmed!'));
   // #enddocregion query-with-cascades

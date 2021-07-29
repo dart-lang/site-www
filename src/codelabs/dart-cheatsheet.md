@@ -632,23 +632,29 @@ Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
-For example, consider this code:
+For example, consider this code
+that uses the conditional member access operator 
+to only access the properties of `button` if it's not `null:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
-var button = querySelector('#confirm')!;
-button.text = 'Confirm';
-button.classes.add('important');
-button.onClick.listen((e) => window.alert('Confirmed!'));
+var button = querySelector('#confirm');
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-With cascades, the code becomes much shorter,
-and you don’t need the `button` variable:
+To instead use cascades, 
+you can start with the _null-shorting_ cascade (`?..`), 
+which guarantees that none of the cascade operations
+are attempted on a `null` object.
+As a result, the code becomes much shorter,
+and you don't need the `button` variable.
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
-querySelector('#confirm')!
-  ..text = 'Confirm'
+querySelector('#confirm')
+  ?..text = 'Confirm'
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
