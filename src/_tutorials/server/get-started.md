@@ -78,7 +78,7 @@ This command creates a small Dart app that has the following:
 ## 4. Run the app
 
 To run the app from the command line, use the Dart VM by running the
-[`dart run`](/tools/dart-tool) command in the app's top directory:
+[`dart run`](/tools/dart-run) command in the app's top directory:
 
 ```terminal
 $ cd cli

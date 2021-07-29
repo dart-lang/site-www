@@ -253,15 +253,19 @@ For more information on library packages, see
 
 Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use
-[`pub run`](/tools/pub/cmd/pub-run) to run scripts from the `bin`
+[`dart run`](/tools/dart-run) to run scripts from the `bin`
 directories of any other package the package depends on. From _any_
-directory, you can use [`pub global run`](/tools/pub/cmd/pub-global) to run
-scripts from packages you have activated using `pub global activate`.
+directory, you can directly [run scripts][]
+from packages that you have activated using
+[`dart pub global activate`][activate].
+
+[run scripts]: /tools/pub/cmd/pub-global#running-a-script
+[activate]: /tools/pub/cmd/pub-global#activating-a-package
 
 If you intend for your package to be depended on,
 and you want your scripts to be private to your package, place them
 in the top-level `tool` directory.
-If you do not intend for your package to be depended on, you can leave your
+If you don't intend for your package to be depended on, you can leave your
 scripts in `bin`.
 
 
