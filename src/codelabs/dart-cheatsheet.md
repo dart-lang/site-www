@@ -350,7 +350,7 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -367,7 +367,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -377,6 +377,7 @@ final aMapOfIntToDouble = <int, double>{};
 Specifying types is handy when you initialize a list with contents of a subtype,
 but still want the list to be `List<BaseType>`:
 
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-3)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
@@ -492,6 +493,7 @@ expression to its right and returns its value.
 For example, consider this call to the `List` class's
 `any()` method:
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-long)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
@@ -500,6 +502,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 
 Here’s a simpler way to write that code:
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
@@ -610,6 +613,7 @@ For joinWithCommas, try using the join method found in the List class.
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
 myObject.someMethod()
 ```
@@ -619,31 +623,41 @@ the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
 myObject..someMethod()
 ```
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
+
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
-For example, consider this code:
+For example, consider the following code,
+which uses the conditional member access operator (`?.`)
+to read properties of `button` if it isn't `null`:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
 var button = querySelector('#confirm');
-button.text = 'Confirm';
-button.classes.add('important');
-button.onClick.listen((e) => window.alert('Confirmed!'));
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-With cascades, the code becomes much shorter,
-and you don’t need the `button` variable:
+To instead use cascades, 
+you can start with the _null-shorting_ cascade (`?..`), 
+which guarantees that none of the cascade operations
+are attempted on a `null` object.
+Using cascades shortens the code
+and makes the `button` variable unnecessary:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
 querySelector('#confirm')
-..text = 'Confirm'
-..classes.add('important')
-..onClick.listen((e) => window.alert('Confirmed!'));
+  ?..text = 'Confirm'
+  ..classes.add('important')
+  ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
 ### Code example
@@ -757,7 +771,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/getters_setters.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -774,7 +788,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/getter_compute.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -1194,6 +1208,7 @@ any exceptions.
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (simple-throws)"?>
 ```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
@@ -1201,6 +1216,7 @@ throw 'Waaaaaaah!';
 
 Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1223,6 +1239,7 @@ and the `catch` keyword to get a reference to the exception object.
 If you can't completely handle the exception, use the `rethrow` keyword
 to propagate the exception:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1235,7 +1252,7 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/exceptions.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch-finally)"?>
 ```dart
 try {
   breedMoreLlamas();
