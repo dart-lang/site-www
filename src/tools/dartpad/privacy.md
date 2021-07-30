@@ -14,6 +14,9 @@ order to improve the user experience of DartPad and other Dart tools. For
 example, we may use the source code to help offer better code completion
 suggestions. The raw source code is deleted after no more than 60 days.
 
+DartPad uses Google Analytics to report feature usage statistics.
+This data is used to help improve Dart and Flutter tools over time.
+
 Learn more about Google's [privacy
 policy.](https://policies.google.com/privacy) We look forward to your
 [feedback.](https://github.com/dart-lang/dart-pad/issues)
