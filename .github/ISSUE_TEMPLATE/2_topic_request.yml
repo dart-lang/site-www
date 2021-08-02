@@ -1,0 +1,26 @@
+name: Topic request
+description: Let us know what information is missing from dart.dev
+labels: [new page/topic request]
+body:
+  - type: input
+  - type: textarea
+    id: problem
+    attributes:
+      label: Describe what's missing
+      placeholder: A clear and concise description of what you expected to find on dart.dev, but didn't.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Expected fix
+      placeholder: A clear and concise description of how you think we should fix the problem.
+    validations:
+      required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional context
+      placeholder: Anything else we should know about the problem?
+    validations:
+      required: false
