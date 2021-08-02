@@ -4,9 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-          _Found a typo? You can fix it yourself by
-          going to the page source and clicking the pencil icon.
-          Or finish creating this issue._
+          _Found a typo? You can fix it yourself by going to the page source and clicking the pencil icon. Or finish creating this issue._
   - type: input
     id: page-url
     attributes:
