@@ -11,7 +11,7 @@ body:
       label: Page URL
       placeholder: "Example: https://dart.dev/guides"
     validations:
-      required: false
+      required: true
   - type: input
     id: page-source
     attributes:
