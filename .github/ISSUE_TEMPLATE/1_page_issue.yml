@@ -1,5 +1,5 @@
 name: Page issue
-description: Help us improve a dart.dev page
+description: Help improve a dart.dev page
 body:
   - type: markdown
     attributes:
