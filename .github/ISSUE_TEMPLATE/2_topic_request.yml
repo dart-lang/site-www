@@ -1,5 +1,5 @@
 name: Topic request
-description: Let us know what information is missing from dart.dev
+description: What information should be on dart.dev but isn't covered well (or at all)?
 labels: [new page/topic request]
 body:
   - type: textarea
