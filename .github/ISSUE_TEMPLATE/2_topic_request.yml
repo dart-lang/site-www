@@ -1,7 +1,7 @@
 name: Topic request
 description: Let us know what information is missing from dart.dev
+labels: [new page/topic request]
 body:
-  - type: input
   - type: textarea
     id: problem
     attributes:
