@@ -1,6 +1,6 @@
 name: Site infrastructure issue
 description: |
-    Report a problem with the build, repo, or something else that's a problem for people who work on dart.dev.
+    Report a problem with the build, repo, or something else that's a problem for people who work on dart.dev
 labels: [infrastructure]
 body:
   - type: textarea
