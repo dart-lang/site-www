@@ -88,6 +88,9 @@ void main() {
       }
       // #enddocregion first-where-long
 
+      expect(predicate('Popcorn'), isTrue);
+      expect(predicate('Soda'), isFalse);
+
       expect(
           main,
           prints(allOf(
@@ -146,7 +149,10 @@ void main() {
       }
       // #enddocregion take-while-long
 
-      expect(main, [1, 2, 3]);
+      expect(
+          main,
+          prints(allOf(contains('Numbers until 0: (1, 3, -2)'),
+              contains('Numbers starting at 0: (0, 4, 5)'))));
     });
 
     test('where_example', () {
