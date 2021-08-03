@@ -118,7 +118,7 @@ using a `for-in` loop.
 
 The following example shows you how to read elements using  a `for-in` loop.
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (for-in)"?>
 ```dart:run-dartpad:ga_id-for_in_loop:null_safety-true
 void main() {
   const iterable = ['Salad', 'Popcorn', 'Toast'];
@@ -166,10 +166,10 @@ but you can use the `last` property.
   results in a [StateError.][StateError class]
 {{site.alert.end}}
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
 ```dart:run-dartpad:ga_id-first_and_last:null_safety-true
 void main() {
-  Iterable<String> iterable = ['Salad', 'Popcorn', 'Toast'];
+  Iterable<String> iterable = const ['Salad', 'Popcorn', 'Toast'];
   print('The first element is ${iterable.first}');
   print('The last element is ${iterable.last}');
 }
@@ -204,35 +204,35 @@ the element size is greater than 5.
 Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (first-where-long)"?>
 ```dart:run-dartpad:height-565px:ga_id-using_firstwhere:null_safety-true
-bool predicate(String element) {
-  return element.length > 5;
+bool predicate(String item) {
+  return item.length > 5;
 }
 
 void main() {
   const items = ['Salad', 'Popcorn', 'Toast', 'Lasagne'];
 
   // You can find with a simple expression:
-  var element1 = items.firstWhere((element) => element.length > 5);
-  print(element1);
+  var foundItem1 = items.firstWhere((item) => item.length > 5);
+  print(foundItem1);
 
   // Or try using a function block:
-  var element2 = items.firstWhere((element) {
-    return element.length > 5;
+  var foundItem2 = items.firstWhere((item) {
+    return item.length > 5;
   });
-  print(element2);
+  print(foundItem2);
 
   // Or even pass in a function reference:
-  var element3 = items.firstWhere(predicate);
-  print(element3);
+  var foundItem3 = items.firstWhere(predicate);
+  print(foundItem3);
 
   // You can also use an `orElse` function in case no value is found!
-  var element4 = items.firstWhere(
-    (element) => element.length > 10,
+  var foundItem4 = items.firstWhere(
+    (item) => item.length > 10,
     orElse: () => 'None!',
   );
-  print(element4);
+  print(foundItem4);
 }
 ```
 
@@ -641,7 +641,7 @@ for (var number in evenNumbers) {
 Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (numbers-where)"?>
 ```dart:run-dartpad:height-380px:ga_id-using_where:null_safety-true
 void main() {
   var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
@@ -684,7 +684,7 @@ help you filter elements from an `Iterable`.
 Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
-<?code-excerpt "iterables/bin/take_while.dart"?>
+<?code-excerpt "iterables/test/iterables_test.dart (take-while-long)"?>
 ```dart:run-dartpad:ga_id-using_takewhile:null_safety-true
 void main() {
   const numbers = [1, 3, -2, 0, 4, 5];
@@ -863,7 +863,7 @@ Run this example to see how to use `map()` to
 multiply all the elements of an `Iterable` by 2.
 What do you think the output will be?
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (numbers-by-two)"?>
 ```dart:run-dartpad:ga_id-using_map:null_safety-true
 void main() {
   var numbersByTwo = const [1, -2, 3, 42].map((number) => number * 2);
