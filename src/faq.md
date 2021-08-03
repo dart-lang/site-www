@@ -294,7 +294,7 @@ Dart's are nicer syntactically.
 
 Compare the following Closure compiler code:
 
-{% prettify dart tag=pre+code %}
+```js
 // Closure compiler code
 
 /**
@@ -306,18 +306,18 @@ makeGreeting = function(name) {
   var greeting = 'hello ' + name;
   return greeting;
 }
-{% endprettify %}
+```
 
 With the following Dart code:
 
-{% prettify dart tag=pre+code %}
+```dart
 // Dart code
 
 String makeGreeting(String name) {
   var greeting = 'hello $name';
   return greeting;
 }
-{% endprettify %}
+```
 
 ### Q. How does Dart compare with CoffeeScript?
 
