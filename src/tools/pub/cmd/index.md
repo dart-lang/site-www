@@ -114,7 +114,12 @@ To run globally available scripts, you must
 
 With pub you can publish packages and command-line apps.
 
-{% include tools/pub-was-a-builder.md %}
+{{site.alert.note}}
+  Pub used to support building apps
+  through commands like `pub build` and `pub serve`.
+  That functionality is now in other tools such as the build system.
+  For details, see [Obsolete Pub Features](/tools/pub/obsolete).
+{{site.alert.end}}
 
 #### Packages
 
