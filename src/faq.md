@@ -303,18 +303,19 @@ Compare the following Closure compiler code:
  */
 makeGreeting = function(name) {
   /** @type {String} */
-  var greeting = 'hello ' + name;
+  var greeting = 'Hello ' + name;
   return greeting;
 }
 ```
 
 With the following Dart code:
 
+<?code-excerpt "misc/test/faq.dart (make-greeting)"?>
 ```dart
 // Dart code
 
 String makeGreeting(String name) {
-  var greeting = 'hello $name';
+  var greeting = 'Hello $name';
   return greeting;
 }
 ```
