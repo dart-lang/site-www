@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_init_to_null
+// ignore_for_file: avoid_init_to_null, unused_local_variable
 
 void main() {
   {
