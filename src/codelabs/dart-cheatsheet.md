@@ -105,7 +105,7 @@ When creating a variable in Dart 2.12 or higher,
 you can add `?` to the type to indicate
 that the variable can be null:
 
-<?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int\?!]/g"?>
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
 {% prettify dart tag=pre+code %}
 [!int?!] a = null; // Valid in null-safe Dart.
 {% endprettify %}
