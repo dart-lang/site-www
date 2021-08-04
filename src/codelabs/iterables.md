@@ -74,9 +74,9 @@ This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<int> iterable = [1, 2, 3];
-{% endprettify %}
+```
 
 The difference with a `List` is that with the `Iterable`,
 you can't guarantee that reading elements by index will be efficient.
@@ -101,10 +101,10 @@ which steps through the elements of the iterable until
 it reaches that position.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
-{% endprettify %}
+```
 
 Continue to the next section to learn more about
 how to access elements of an `Iterable`.
@@ -129,19 +129,19 @@ void main() {
 ```
 
 {{site.alert.info}}
-Behind the scenes, the `for-in` loop uses an _iterator._
-You rarely see the [Iterator API][iterator class] used directly, however,
-because `for-in` is easier to read and understand,
-and is less prone to errors.
+  Behind the scenes, the `for-in` loop uses an _iterator._
+  You rarely see the [Iterator API][iterator class] used directly, however,
+  because `for-in` is easier to read and understand,
+  and is less prone to errors.
 {{site.alert.end}}
 
 {{site.alert.secondary}}
-**Key terms:**
-* **Iterable**: The Dart [Iterable][iterable class] class.
-* **Iterator**: An object used by `for-in` to read elements from
-  an `Iterable` object.
-* **`for-in` loop**: An easy way to sequentially read elements from
-  an `Iterable`.
+  **Key terms:**
+  * **Iterable**: The Dart [Iterable][iterable class] class.
+  * **Iterator**: An object used by `for-in` to read elements from
+    an `Iterable` object.
+  * **`for-in` loop**: An easy way to sequentially read elements from
+    an `Iterable`.
 {{site.alert.end}}
 
 ### Example: Using first and last
@@ -159,7 +159,7 @@ you can't use the operator `[]` to access the last element,
 but you can use the `last` property.
 
 {{site.alert.warn}}
-  Because accessing the last element of an Iterable requires
+  Because accessing the last element of an `Iterable` requires
   stepping through all the other elements,
   **`last` can be slow.**
   Using `first` or `last` on an **empty `Iterable`**
@@ -192,9 +192,9 @@ which is a function that returns true if
 the input satisfies a certain condition.
 
 <?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
-{% prettify dart tag=pre+code %}
+```dart
 String element = iterable.firstWhere((element) => element.length > 5);
-{% endprettify %}
+```
 
 For example, if you want to find the first `String` that has
 more than 5 characters,
@@ -273,9 +273,9 @@ no element satisfies the provided condition.
     satisfies a condition with `firstWhere()`.
   * You can write test predicates as expressions, blocks, or functions.
 
-**Key terms:**
-* **Predicate:**
-  A function that returns `true` when a certain condition is satisfied.
+  **Key terms:**
+  * **Predicate:**
+    A function that returns `true` when a certain condition is satisfied.
 {{site.alert.end}}
 
 ### Exercise: Practice writing a test predicate
@@ -380,21 +380,21 @@ You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
-{% prettify dart tag=pre+code %}
+```dart
 for (var item in items) {
   if (item.length < 5) {
     return false;
   }
 }
 return true;
-{% endprettify %}
+```
 
 However, you can accomplish the same using the `every()` method:
 
 <?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
-{% prettify dart tag=pre+code %}
-return items.every((element) => element.length >= 5);
-{% endprettify %}
+```dart
+return items.every((item) => item.length >= 5);
+```
 
 Using the `every()` method results in code that is more
 readable, compact, and less error-prone.
@@ -409,17 +409,17 @@ you can use to verify conditions:
 
 Run this exercise to see them in action.
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/test/iterables_test.dart (any-every)"?>
 ```dart:run-dartpad:height-255px:ga_id-using_any_and_every:null_safety-true
 void main() {
   const items = ['Salad', 'Popcorn', 'Toast'];
-  
-  if (items.any((element) => element.contains('a'))) {
-    print('At least one element contains "a"');
+
+  if (items.any((item) => item.contains('a'))) {
+    print('At least one item contains "a"');
   }
-  
-  if (items.every((element) => element.length >= 5)) {
-    print('All elements have length >= 5');
+
+  if (items.every((item) => item.length >= 5)) {
+    print('All items have length >= 5');
   }
 }
 ```
@@ -433,13 +433,13 @@ After running the code, try changing the predicate of `any()` so
 it returns false:
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
-{% prettify dart tag=pre+code %}
-if (items.any((element) => element.contains('Z'))) {
-  print('At least one element contains "Z"');
+```dart
+if (items.any((item) => item.contains('Z'))) {
+  print('At least one item contains "Z"');
 } else {
-  print('No element contains "Z"');
+  print('No items contains "Z"');
 }
-{% endprettify %}
+```
 
 You can also use `any()` to verify that no element of an `Iterable`
 satisfies a certain condition.
@@ -614,9 +614,9 @@ satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var evenNumbers = numbers.where((number) => number.isEven);
-{% endprettify %}
+```
 
 In this example,
 `numbers` contains an `Iterable` with multiple `int` values, and
@@ -629,12 +629,12 @@ In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
   print('$number is even');
 }
-{% endprettify %}
+```
 
 ### Example: Using where()
 
@@ -837,9 +837,9 @@ apply a function over each of the elements,
 replacing each element with a new one.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<int> output = numbers.map((number) => number * 10);
-{% endprettify %}
+```
 
 In this example, each element of the `Iterable` numbers is multiplied by 10.
 
@@ -848,9 +848,9 @@ for example, to convert all `int` to `String`,
 as you can see in the following example.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<String> output = numbers.map((number) => number.toString());
-{% endprettify %}
+```
 
 {{site.alert.note}}
   `map()` returns a _lazy_ `Iterable`, meaning that the supplied function
