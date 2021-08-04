@@ -2766,6 +2766,12 @@ which returns a [`Type`][] object.
 print('The type of a is ${a.runtimeType}');
 ```
 
+{{site.alert.warn}}
+  Use a [type test operator][] rather than `runtimeType` to test an object's type.
+  In production environments, the test `object is string` is more stable
+  than the test `object.runtimeType == string`.
+{{site.alert.end}}
+
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
@@ -4586,5 +4592,6 @@ To learn more about Dart's core libraries, see
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
+[type test operator]: #type-test-operators
 [`Type`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
 [Understanding null safety]: /null-safety/understanding-null-safety
