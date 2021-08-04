@@ -15,12 +15,12 @@ void main() {
 
       var items = ['Zoo', 'Home'];
       any(items, (output) {
-        expect(output, 'At least one element contains "Z"');
+        expect(output, 'At least one item contains "Z"');
       });
 
       items = ['Home'];
       any(items, (output) {
-        expect(output, 'No element contains "Z"');
+        expect(output, 'No item contains "Z"');
       });
     });
 
