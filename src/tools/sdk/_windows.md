@@ -1,41 +1,48 @@
-###How to install?
+How to install?
 
 You can install the Dart SDK using [Chocolatey.][Chocolatey]
 
-> **_NOTE:_** These commands require administrative privileges. To start command prompt as an administrator following these steps:
-> 
-> - Press Windows+R to open the “Run” box. 
-> - Type “cmd” into the box 
-> - Press Ctrl+Shift+Enter to run the command as an administrator.
+{{site.alert.important}} These commands require administrative privileges. 
+To start command prompt as an administrator following these steps:
+1. Press <kbd>Windows+R</kbd> to open the **Run** window. 
+2. Type “cmd” into the box. 
+3. Press <kbd>Ctrl+Shift+Enter</kbd> to run the command as an administrator.
 
-####To install the Dart SDK:
+{{site.alert.end}}
+
+To install the Dart SDK:
 
 ```terminal
 C:\> choco install dart-sdk
 ```
 
-#####To upgrade the Dart SDK:
+To upgrade the Dart SDK:
 
 ```terminal
 C:\> choco upgrade dart-sdk
 ```
 
-####Default installation directory:
+Default installation directory:
 
 ```terminal
 C:\tools\dart-sdk
 ```
 
-###How to change installation directory?
+How to change installation directory?
 
-This package uses the help Get-BinRoot, which means that you can set an environment variable called ChocolateyToolsLocation, which controls where this package is extracted to. For more information click <a ahref=https://docs.chocolatey.org/en-us/create/functions/get-toolslocation>here</a>.
+This package uses the help Get-BinRoot, which means that 
+you can set an environment variable called ChocolateyToolsLocation, which 
+controls where this package is extracted to. 
+For more information check out [get-toolslocation].
 
-###How to set path?
+How to set path?
 
-- In the Windows search bar type env, you will see "edit the system environment variables" option, open it
-- Click on "Environment Variables...".
-- Under user variables, select "Path" and click edit.
-- Click new and add the path to your dart-sdk folder.
-- Press ok and apply.
+1. In the Windows search bar type "env". 
+2. Click on **edit the system environment variables**.
+3. Click on **Environment Variables...**.
+4. Under user variables, select **Path** and click edit.
+5. Click **New..** and add the path to your dart-sdk folder.
+6. Press **OK** and **Apply**.
 
 [Chocolatey]: https://chocolatey.org
+[get-toolslocation]: https://docs.chocolatey.org/en-us/create/functions/get-toolslocation
