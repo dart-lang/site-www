@@ -5,22 +5,22 @@ void main() {
     test('any_example', () {
       void any(Iterable<String> items, Function(String) print) {
         // #docregion any-false
-        if (items.any((element) => element.contains('Z'))) {
-          print('At least one element contains "Z"');
+        if (items.any((item) => item.contains('Z'))) {
+          print('At least one item contains "Z"');
         } else {
-          print('No element contains "Z"');
+          print('No item contains "Z"');
         }
         // #enddocregion any-false
       }
 
       var items = ['Zoo', 'Home'];
       any(items, (output) {
-        expect(output, 'At least one element contains "Z"');
+        expect(output, 'At least one item contains "Z"');
       });
 
       items = ['Home'];
       any(items, (output) {
-        expect(output, 'No element contains "Z"');
+        expect(output, 'No item contains "Z"');
       });
     });
 
@@ -38,7 +38,7 @@ void main() {
 
       bool good(Iterable<String> items) {
         // #docregion every-good
-        return items.every((element) => element.length >= 5);
+        return items.every((item) => item.length >= 5);
         // #enddocregion every-good
       }
 
@@ -48,8 +48,29 @@ void main() {
       expect(good(['1234']), false);
     });
 
+    test('any_every_example', () {
+      // #docregion any-every
+      void main() {
+        const items = ['Salad', 'Popcorn', 'Toast'];
+
+        if (items.any((item) => item.contains('a'))) {
+          print('At least one item contains "a"');
+        }
+
+        if (items.every((item) => item.length >= 5)) {
+          print('All items have length >= 5');
+        }
+      }
+      // #enddocregion any-every
+
+      expect(
+          main,
+          prints(
+              'At least one item contains "a"\nAll items have length >= 5\n'));
+    });
+
     test('firstWhere_example', () {
-      final iterable = ['a', '123456', 'abcdef'];
+      const iterable = ['a', '123456', 'abcdef'];
       // #docregion firstwhere
       String element = iterable.firstWhere((element) => element.length > 5);
       // #enddocregion firstwhere
