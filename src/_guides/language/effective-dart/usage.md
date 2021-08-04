@@ -633,8 +633,8 @@ object:
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
-// Prints "List<int>":
-print(iterable.toList().runtimeType);
+// Prints true
+print(iterable.toList() is List<int>);
 {% endprettify %}
 
 {:.bad}
@@ -643,8 +643,8 @@ print(iterable.toList().runtimeType);
 // Creates a List<int>:
 var iterable = [1, 2, 3];
 
-// Prints "List<dynamic>":
-print(List.from(iterable).runtimeType);
+// Prints false because the type is a List<dynamic> instead
+print(List.from(iterable) is List<int>);
 {% endprettify %}
 
 If you *want* to change the type, then calling `List.from()` is useful:
