@@ -437,7 +437,7 @@ it returns false:
 if (items.any((item) => item.contains('Z'))) {
   print('At least one item contains "Z"');
 } else {
-  print('No items contains "Z"');
+  print('No item contains "Z"');
 }
 ```
 
