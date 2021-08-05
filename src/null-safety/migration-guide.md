@@ -62,7 +62,7 @@ The instructions assume your code is under **source control**,
 so that you can easily undo any changes.
 
 
-### Switch to the Dart 2.12 release
+### Switch to the latest stable Dart elease
 
 Switch to the **latest stable release**
 of either the Dart SDK or the Flutter SDK.
