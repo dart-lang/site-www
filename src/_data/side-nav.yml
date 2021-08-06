@@ -174,12 +174,12 @@
           permalink: /tutorials/web/fetch-data
         - title: Low-level web programming
           children:
-            - title: Connect Dart & HTML
-              permalink: /tutorials/web/low-level-html/connect-dart-html
-            - title: Add elements to the DOM
-              permalink: /tutorials/web/low-level-html/add-elements
-            - title: Remove DOM elements
-              permalink: /tutorials/web/low-level-html/remove-elements
+          - title: Connect Dart & HTML
+            permalink: /tutorials/web/low-level-html/connect-dart-html
+          - title: Add elements to the DOM
+            permalink: /tutorials/web/low-level-html/add-elements
+          - title: Remove DOM elements
+            permalink: /tutorials/web/low-level-html/remove-elements
         - title: Deployment
           permalink: /web/deployment
         - title: Libraries and packages
@@ -188,77 +188,77 @@
 - title: Tools & techniques
   expanded: false
   children:
-    - title: Overview
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /tools
-    - title: Editors & debuggers
+  - title: Overview
+    urlExactMatch: true
+    match-page-url-exactly: true
+    permalink: /tools
+  - title: Editors & debuggers
+    children:
+      - title: IntelliJ & Android Studio
+        permalink: /tools/jetbrains-plugin
+      - title: VS Code
+        permalink: /tools/vs-code
+      - title: Dart DevTools
+        permalink: /tools/dart-devtools
+      - title: DartPad
+        permalink: /tools/dartpad
+  - title: Command-line tools
+    children:
+    - title: Dart SDK
+      expanded: true
       children:
-        - title: IntelliJ & Android Studio
-          permalink: /tools/jetbrains-plugin
-        - title: VS Code
-          permalink: /tools/vs-code
-        - title: Dart DevTools
-          permalink: /tools/dart-devtools
-        - title: DartPad
-          permalink: /tools/dartpad
-    - title: Command-line tools
+        - title: Overview
+          permalink: /tools/sdk
+        - title: dart
+          permalink: /tools/dart-tool
+          urlExactMatch: true
+        - title: dart analyze
+          permalink: /tools/dart-analyze
+        - title: dart compile
+          permalink: /tools/dart-compile
+        - title: dart create
+          permalink: /tools/dart-create
+        - title: dart fix 
+          permalink: /tools/dart-fix
+        - title: dart format 
+          permalink: /tools/dart-format
+        - title: dart pub
+          permalink: /tools/pub/cmd
+        - title: dart run
+          permalink: /tools/dart-run
+        - title: dart test
+          permalink: /tools/dart-test
+        - title: dartaotruntime
+          permalink: /tools/dartaotruntime
+        - title: dartdoc
+          permalink: /tools/dartdoc
+        - title: Experiment flags
+          permalink: /tools/experiment-flags
+    - title: Other command-line tools
+      expanded: true
       children:
-        - title: Dart SDK
-          expanded: true
-          children:
-            - title: Overview
-              permalink: /tools/sdk
-            - title: dart
-              permalink: /tools/dart-tool
-              urlExactMatch: true
-            - title: dart analyze
-              permalink: /tools/dart-analyze
-            - title: dart compile
-              permalink: /tools/dart-compile
-            - title: dart create
-              permalink: /tools/dart-create
-            - title: dart fix
-              permalink: /tools/dart-fix
-            - title: dart format
-              permalink: /tools/dart-format
-            - title: dart pub
-              permalink: /tools/pub/cmd
-            - title: dart run
-              permalink: /tools/dart-run
-            - title: dart test
-              permalink: /tools/dart-test
-            - title: dartaotruntime
-              permalink: /tools/dartaotruntime
-            - title: dartdoc
-              permalink: /tools/dartdoc
-            - title: Experiment flags
-              permalink: /tools/experiment-flags
-        - title: Other command-line tools
-          expanded: true
-          children:
-            - title: build_runner
-              permalink: /tools/build_runner
-            - title: webdev
-              permalink: /tools/webdev
-    - title: Managing source code
-      children:
-        - title: Formatting code
-          permalink: /guides/language/formatting
-        - title: What not to commit
-          permalink: /guides/libraries/private-files
-    - title: Static analysis
-      children:
-        - title: Customizing static analysis
-          permalink: /guides/language/analysis-options
-        - title: Fixing common type problems
-          permalink: /guides/language/sound-problems
-    - title: Testing & optimization
-      children:
-        - title: Testing
-          permalink: /guides/testing
-        - title: Debugging web apps
-          permalink: /web/debugging
+        - title: build_runner
+          permalink: /tools/build_runner
+        - title: webdev
+          permalink: /tools/webdev
+  - title: Managing source code
+    children:
+      - title: Formatting code
+        permalink: /guides/language/formatting
+      - title: What not to commit
+        permalink: /guides/libraries/private-files
+  - title: Static analysis
+    children:
+      - title: Customizing static analysis
+        permalink: /guides/language/analysis-options
+      - title: Fixing common type problems
+        permalink: /guides/language/sound-problems
+  - title: Testing & optimization
+    children:
+      - title: Testing
+        permalink: /guides/testing
+      - title: Debugging web apps
+        permalink: /web/debugging
 
 - title: Resources
   expanded: false
@@ -301,6 +301,7 @@
       permalink: https://flutter.dev
     - title: Package site
       permalink: https://pub.dev
+
 # - title: Books
 #   permalink: /resources/books
 # - title: Videos
