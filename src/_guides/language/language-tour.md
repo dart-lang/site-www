@@ -2767,9 +2767,10 @@ print('The type of a is ${a.runtimeType}');
 ```
 
 {{site.alert.warn}}
-  Use a [type test operator][] rather than `runtimeType` to test an object's type.
-  In production environments, the test `object is string` is more stable
-  than the test `object.runtimeType == string`.
+  Use a [type test operator][] rather than `runtimeType`
+  to test an object's type.
+  In production environments, the test `object is Type` is more stable
+  than the test `object.runtimeType == Type`.
 {{site.alert.end}}
 
 Up to here, you've seen how to _use_ classes.
