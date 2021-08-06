@@ -1,5 +1,3 @@
-How to install?
-
 You can install the Dart SDK using [Chocolatey.][Chocolatey]
 
 {{site.alert.important}} 
