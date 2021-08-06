@@ -88,7 +88,7 @@ reference them inside single quotes, with a space in between.
 ## Nullable variables
 
 Dart 2.12 introduced sound null safety,
-meaning that (when you [enable null safety][])
+meaning that (when you [enable null safety](/null-safety#enable-null-safety))
 values can’t be null unless you say they can be.
 In other words, types are non-nullable by default.
 
@@ -97,31 +97,29 @@ which is **invalid** because (with null safety)
 a variable of type `int` can't have the value `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 int a = [!null!]; // INVALID in null-safe Dart.
-{% endprettify %}
+```
 
 When creating a variable in Dart 2.12 or higher,
 you can add `?` to the type to indicate
-that the variable can be null:
+that the variable can be `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!int?!] a = null; // Valid in null-safe Dart.
-{% endprettify %}
+```
 
 You can simplify that code a bit because, in all versions of Dart,
 `null` is the default value for uninitialized variables:
 
 <?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
-{% prettify dart tag=pre+code %}
+```dart
 int? a; // The initial value of a is null.
-{% endprettify %}
+```
 
 For more information about null safety in Dart,
 read the [sound null safety guide](/null-safety).
-
-[enable null safety]: https://dart.dev/null-safety#enable-null-safety
 
 
 ### Code example
