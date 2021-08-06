@@ -30,8 +30,8 @@ void main() {
         // Creates a List<int>:
         var iterable = [1, 2, 3];
 
-        // Prints true
-        print(iterable.toList() is List<int>);
+        // Prints "List<int>":
+        print(iterable.toList().runtimeType);
         // #enddocregion list-from-good
       }, prints('List<int>\n'));
 
@@ -40,8 +40,8 @@ void main() {
         // Creates a List<int>:
         var iterable = [1, 2, 3];
 
-        // Prints false because the type is a List<dynamic> instead
-        print(List.from(iterable) is List<int>);
+        // Prints "List<dynamic>":
+        print(List.from(iterable).runtimeType);
         // #enddocregion list-from-bad
       }, prints('List<dynamic>\n'));
     });
