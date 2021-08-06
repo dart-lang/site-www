@@ -2,12 +2,18 @@ How to install?
 
 You can install the Dart SDK using [Chocolatey.][Chocolatey]
 
-{{site.alert.important}} These commands require administrative privileges. 
-To start command prompt as an administrator following these steps:
-1. Press <kbd>Windows+R</kbd> to open the **Run** window. 
-2. Type “cmd” into the box. 
-3. Press <kbd>Ctrl+Shift+Enter</kbd> to run the command as an administrator.
+{{site.alert.important}} 
+  These commands require administrative privileges. 
 
+  For example, to start command prompt as an administrator,
+  follow these steps:
+  
+  1. Press <kbd>Windows+R</kbd> to open the **Run** window. 
+  
+  2. Type `cmd` into the box. 
+  
+  3. Press <kbd>Ctrl+Shift+Enter</kbd> to run the command as an administrator.
+  
 {{site.alert.end}}
 
 To install the Dart SDK:
