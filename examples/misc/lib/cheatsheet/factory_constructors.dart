@@ -1,5 +1,3 @@
-// ignore_for_file: unused_local_variable
-
 // #docregion
 class Square extends Shape {}
 
@@ -12,12 +10,7 @@ class Shape {
     if (typeName == 'square') return Square();
     if (typeName == 'circle') return Circle();
 
-    print('I don\'t recognize $typeName');
-    throw Error();
+    throw ArgumentError('Unrecognized $typeName');
   }
 }
 // #enddocregion
-
-void main() {
-  final shape = Shape();
-}
