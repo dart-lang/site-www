@@ -26,18 +26,14 @@ To upgrade the Dart SDK:
 C:\> choco upgrade dart-sdk
 ```
 
-Default installation directory:
+By default, the SDK is installed at `C:\tools\dart-sdk`.
 
-```terminal
-C:\tools\dart-sdk
-```
+To change the default installation location:
 
-How to change installation directory?
-
-This package uses the help Get-BinRoot, which means that 
-you can set an environment variable called ChocolateyToolsLocation, which 
-controls where this package is extracted to. 
-For more information check out [get-toolslocation].
+Set the `ChocolateyToolsLocation` environment variable
+to the desired extraction location.
+To read more about how the installer uses this configuration, 
+see [Chocolatey's Get-ToolsLocation reference][get-toolslocation].
 
 How to set path?
 
