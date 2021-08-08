@@ -132,10 +132,7 @@ Try to declare two variables below:
 
 Ignore all initial errors in the DartPad.
 
-{% comment %}
-TODO: Add new ga_id tag.
-{% endcomment -%}
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad:ga_id-nullable_variables:null_safety-true
 {$ begin main.dart $}
 // Declare the two variables here
 {$ end main.dart $}
