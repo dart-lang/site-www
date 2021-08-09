@@ -1437,7 +1437,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-<?code-excerpt "misc/bin/this_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-positional)"?>
 ```dart
 class MyColor {
   int red;
@@ -1453,6 +1453,7 @@ final color = MyColor(80, 80, 128);
 This technique works for named parameters, too.
 Property names become the names of the parameters:
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/.../g; /olorRN/olor/g;"?>
 ```dart
 class MyColor {
   ...
@@ -1467,6 +1468,7 @@ In the preceding code, `red`, `green`, and `blue` are marked as `required`
 because these `int` values can't be null.
 If you add default values, you can omit `required`:
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 // or
@@ -1554,10 +1556,11 @@ before the constructor body executes.
 Do this work in an initializer list,
 which goes between the constructor's signature and its body:
 
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, num> json)
-    : x = json['x'],
-      y = json['y'] {
+Point.fromJson(Map<String, double> json)
+    : x = json['x']!,
+      y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1565,6 +1568,7 @@ Point.fromJson(Map<String, num> json)
 The initializer list is also a handy place to put asserts,
 which run only during development:
 
+<?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
@@ -1673,7 +1677,7 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/named_constructor.dart (point-class)"?>
 ```dart
 class Point {
   double x, y;
@@ -1688,6 +1692,7 @@ class Point {
 
 To use a named constructor, invoke it using its full name:
 
+<?code-excerpt "misc/test/cheatsheet/constructor_test.dart (origin-point)"?>
 ```dart
 final myPoint = Point.origin();
 ```
@@ -1768,7 +1773,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-<?code-excerpt "misc/bin/factory_constructors.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -1781,8 +1786,7 @@ class Shape {
     if (typeName == 'square') return Square();
     if (typeName == 'circle') return Circle();
 
-    print('I don\'t recognize $typeName');
-    throw Error();
+    throw ArgumentError('Unrecognized $typeName');
   }
 }
 ```
@@ -1964,7 +1968,7 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -2056,15 +2060,15 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
-  const ImmutablePoint(this.x, this.y);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final int x;
   final int y;
 
-  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+  const ImmutablePoint(this.x, this.y);
 }
 ```
 
