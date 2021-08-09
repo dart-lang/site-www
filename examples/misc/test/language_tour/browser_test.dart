@@ -8,25 +8,6 @@ import 'package:test/test.dart';
 // #enddocregion package-import
 
 void main() {
-  test('simple-web-main-function', () {
-    final div = '<div id="sample_text_id"></div>';
-    document.body?.appendHtml(div);
-    void reverseText(MouseEvent e) {}
-
-    // TODO(miquelbeltran) Maybe ! would be better here
-    // (https://github.com/dart-lang/site-www/issues/3295)
-    // #docregion simple-web-main-function
-    void main() {
-      querySelector('#sample_text_id')
-        ?..text = 'Click me!'
-        ..onClick.listen(reverseText);
-    }
-    // #enddocregion simple-web-main-function
-
-    main();
-    expect(document.querySelector('#sample_text_id')?.text, 'Click me!');
-  });
-
   test('cascade-operator', () {
     final div = '<button id="confirm"></button>';
     document.body?.appendHtml(div);
