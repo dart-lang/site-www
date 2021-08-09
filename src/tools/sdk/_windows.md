@@ -35,7 +35,8 @@ to the desired extraction location.
 To read more about how the installer uses this configuration, 
 see [Chocolatey's Get-ToolsLocation reference][get-toolslocation].
 
-How to set path?
+If you can't use the Dart executables,
+add the extraction location to your PATH:
 
 1. In the Windows search bar type "env". 
 2. Click on **edit the system environment variables**.
