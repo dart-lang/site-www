@@ -1,17 +1,13 @@
 You can install the Dart SDK using [Chocolatey.][Chocolatey]
 
-{{site.alert.important}} 
-  These commands require administrative privileges. 
+{{site.alert.important}}
+  These commands require administrator rights.
+  Here's one way to open a Command Prompt window
+  that has admin rights:
 
-  For example, to start command prompt as an administrator,
-  follow these steps:
-  
-  1. Press <kbd>Windows+R</kbd> to open the **Run** window. 
-  
-  2. Type `cmd` into the box. 
-  
-  3. Press <kbd>Ctrl+Shift+Enter</kbd> to run the command as an administrator.
-  
+  1. Press <kbd>Windows+R</kbd> to open the **Run** window.
+  2. Type `cmd` into the box.
+  3. Press <kbd>Ctrl+Shift+Enter</kbd>.
 {{site.alert.end}}
 
 To install the Dart SDK:
@@ -27,23 +23,20 @@ C:\> choco upgrade dart-sdk
 ```
 
 By default, the SDK is installed at `C:\tools\dart-sdk`.
+You can change that location by setting
+the [`ChocolateyToolsLocation`][] environment variable
+to your chosen installation directory.
 
-To change the default installation location:
+If you can't use the Dart SDK executables,
+add the SDK location to your PATH:
 
-Set the `ChocolateyToolsLocation` environment variable
-to the desired extraction location.
-To read more about how the installer uses this configuration, 
-see [Chocolatey's Get-ToolsLocation reference][get-toolslocation].
-
-If you can't use the Dart executables,
-add the extraction location to your PATH:
-
-1. In the Windows search bar type "env". 
-2. Click on **edit the system environment variables**.
-3. Click on **Environment Variables...**.
-4. Under user variables, select **Path** and click edit.
-5. Click **New..** and add the path to your dart-sdk folder.
-6. Press **OK** and **Apply**.
+1. In the Windows search box, type `env`.
+2. Click **Edit the system environment variables**.
+3. Click **Environment Variables...**.
+4. In the user variable section, select **Path** and click **Edit...**.
+5. Click **New**, and enter the path to the `dart-sdk` directory.
+6. In each window that you just opened,
+   click **Apply** or **OK** to dismiss it and apply the path change.
 
 [Chocolatey]: https://chocolatey.org
-[get-toolslocation]: https://docs.chocolatey.org/en-us/create/functions/get-toolslocation
+[`ChocolateyToolsLocation`]: https://stackoverflow.com/questions/19752533/how-do-i-set-chocolatey-to-install-applications-onto-another-drive/68314437#68314437
