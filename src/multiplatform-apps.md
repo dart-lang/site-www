@@ -5,7 +5,8 @@ description: Use the Flutter framework to build beautiful native apps for many p
 toc: false
 ---
 
-We recommend the [Flutter framework][] for developing multi-platform native apps for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
+We recommend the [Flutter framework][] for developing multi-platform native apps
+for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
 
 Flutter is powered by the [Dart platform](/overview#platform), using the
 [Dart VM](/overview#platform) for its instant _hot reload_ developer cycle and
