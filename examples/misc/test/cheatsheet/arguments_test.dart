@@ -1,6 +1,8 @@
 import 'package:examples/cheatsheet/optional_named_params.dart';
-import 'package:examples/cheatsheet/optional_positional_args.dart' as optionalArgs;
-import 'package:examples/cheatsheet/optional_positional_args2.dart' as defaultedArgs;
+import 'package:examples/cheatsheet/optional_positional_args.dart'
+    as optional_args;
+import 'package:examples/cheatsheet/optional_positional_args2.dart'
+    as defaulted_args;
 import 'package:test/test.dart';
 
 void main() {
@@ -28,17 +30,17 @@ void main() {
 
   test('optional_positional_args', () {
     expect(() {
-      optionalArgs.mainTest();
+      optional_args.mainTest();
     }, prints('6\n3\n15\n'));
 
-    expect(optionalArgs.sumUpToFive(1, 4, 7), equals(12));
+    expect(optional_args.sumUpToFive(1, 4, 7), equals(12));
   });
 
   test('optional_positional_args_defaulted', () {
     expect(() {
-      defaultedArgs.mainTest();
+      defaulted_args.mainTest();
     }, prints('15\n'));
-    
-    expect(defaultedArgs.sumUpToFive(1, 1), equals(14));
+
+    expect(defaulted_args.sumUpToFive(1, 1), equals(14));
   });
 }

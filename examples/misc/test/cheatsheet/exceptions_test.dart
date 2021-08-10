@@ -1,4 +1,4 @@
-// ignore_for_file: dead_code
+// ignore_for_file: dead_code, only_throw_errors
 
 import 'package:test/test.dart';
 
@@ -77,10 +77,3 @@ void buyMoreLlamas() {
 }
 
 class OutOfLlamasException implements Exception {}
-
-void throwErrors() {
-  // #docregion simple-throws
-  throw Exception('Something bad happened.');
-  throw 'Waaaaaaah!';
-  // #enddocregion simple-throws
-}
