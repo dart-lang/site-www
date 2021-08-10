@@ -273,7 +273,7 @@ The preceding code is equivalent to the following:
 
 You can chain multiple uses of `?.` together in a single expression:
 
-<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-multiple)" replace="/result = //g; /;//g;"?>
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-multiple)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty?.someMethod()
 ```
