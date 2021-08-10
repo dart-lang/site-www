@@ -168,11 +168,7 @@ Dart offers some handy operators for dealing with values that might be null. One
 `??=` assignment operator, which assigns a value to a variable only if that
 variable is currently null:
 
-{% comment %}
-TBD: Make this and all non-trivial snippets testable.
-{% endcomment %}
-
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators)"?>
 ```dart
 int? a; // = null
 a ??= 3;
@@ -187,7 +183,7 @@ which returns the expression on its left unless
 that expression's value is null,
 in which case it evaluates and returns the expression on its right:
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -263,18 +259,21 @@ and then give it a try.
 To guard access to a property or method of an object that might be null,
 put a question mark (`?`) before the dot (`.`):
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty
 ```
 
 The preceding code is equivalent to the following:
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-equivalent)" replace="/result = //g; /;//g;"?>
 ```dart
 (myObject != null) ? myObject.someProperty : null
 ```
 
 You can chain multiple uses of `?.` together in a single expression:
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-multiple)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty?.someMethod()
 ```
@@ -348,7 +347,7 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-inferred)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -365,7 +364,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-specified)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -375,7 +374,7 @@ final aMapOfIntToDouble = <int, double>{};
 Specifying types is handy when you initialize a list with contents of a subtype,
 but still want the list to be `List<BaseType>`:
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-3)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-subtypes)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
@@ -491,7 +490,7 @@ expression to its right and returns its value.
 For example, consider this call to the `List` class's
 `any()` method:
 
-<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-long)"?>
+<?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-long)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
@@ -500,7 +499,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 
 Here’s a simpler way to write that code:
 
-<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-short)"?>
+<?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
@@ -769,7 +768,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -786,7 +785,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/cheatsheet/getter_compute.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -916,7 +915,7 @@ with a function you give it
 Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
 you're likely familiar with:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
@@ -927,7 +926,7 @@ int sumUp(int a, int b, int c) {
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
 int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
@@ -946,7 +945,7 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 // ···
@@ -1052,7 +1051,7 @@ before you add them to the final string.
 Using a curly brace syntax,
 you can define optional parameters that have names.
 
-<?code-excerpt "misc/bin/optional_named_params.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_named_params.dart"?>
 ```dart
 void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
@@ -1073,11 +1072,12 @@ or mark the parameter as `required`
 (as shown in the
 [constructor section](#using-this-in-a-constructor)).
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/cheatsheet/arguments_test.dart" replace="/ = ''/[! = ''!]/g;"?>
+```dart
 void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
   print('$firstName $lastName $suffix');
 }
-{% endprettify %}
+```
 
 A function can't have both optional positional and optional named parameters.
 
@@ -1206,7 +1206,7 @@ any exceptions.
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (simple-throws)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (simple-throws)"?>
 ```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
@@ -1214,7 +1214,7 @@ throw 'Waaaaaaah!';
 
 Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-on-catch)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1237,7 +1237,7 @@ and the `catch` keyword to get a reference to the exception object.
 If you can't completely handle the exception, use the `rethrow` keyword
 to propagate the exception:
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1250,7 +1250,7 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch-finally)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch-finally)"?>
 ```dart
 try {
   breedMoreLlamas();

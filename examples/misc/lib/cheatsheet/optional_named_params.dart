@@ -4,7 +4,7 @@ void printName(String firstName, String lastName, {String? suffix}) {
 }
 // #enddocregion
 
-void main() {
+void printNameTest() {
   // #docregion
   printName('Avinash', 'Gupta');
   printName('Poshmeister', 'Moneybuckets', suffix: 'IV');

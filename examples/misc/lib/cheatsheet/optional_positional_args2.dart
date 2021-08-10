@@ -6,7 +6,7 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 }
 // #enddocregion
 
-void main() {
+void mainTest() {
   // #docregion
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
