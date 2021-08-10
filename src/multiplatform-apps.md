@@ -1,6 +1,5 @@
 ---
-title: Multi-platform app development
-short-title: Multi-platform apps
+title: Multi-platform apps
 description: Use the Flutter framework to build beautiful native apps for many platforms and operating systems from a single codebase.
 toc: false
 ---
