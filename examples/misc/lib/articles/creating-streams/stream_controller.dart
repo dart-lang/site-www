@@ -68,6 +68,18 @@ void main() {
   // demoPause();
 }
 
+void onListenHint() {
+  var stream = Stream.empty();
+  void handler(dynamic) {}
+  StreamSubscription<dynamic> subscription;
+
+  // #docregion stream-listen-hint
+  subscription = stream.listen(handler);
+  // #enddocregion stream-listen-hint
+
+  subscription.cancel();
+}
+
 void showBasicUsage() {
   // #docregion basic-usage
   var counterStream =

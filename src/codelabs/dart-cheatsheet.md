@@ -88,7 +88,7 @@ reference them inside single quotes, with a space in between.
 ## Nullable variables
 
 Dart 2.12 introduced sound null safety,
-meaning that (when you [enable null safety][])
+meaning that (when you [enable null safety](/null-safety#enable-null-safety))
 values can’t be null unless you say they can be.
 In other words, types are non-nullable by default.
 
@@ -96,29 +96,30 @@ For example, consider the following code,
 which is **invalid** because (with null safety)
 a variable of type `int` can't have the value `null`:
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
+```dart
 int a = [!null!]; // INVALID in null-safe Dart.
-{% endprettify %}
+```
 
 When creating a variable in Dart 2.12 or higher,
 you can add `?` to the type to indicate
-that the variable can be null:
+that the variable can be `null`:
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
+```dart
 [!int?!] a = null; // Valid in null-safe Dart.
-{% endprettify %}
+```
 
 You can simplify that code a bit because, in all versions of Dart,
 `null` is the default value for uninitialized variables:
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
+```dart
 int? a; // The initial value of a is null.
-{% endprettify %}
+```
 
 For more information about null safety in Dart,
 read the [sound null safety guide](/null-safety).
-
-[enable null safety]: https://dart.dev/null-safety#enable-null-safety
 
 
 ### Code example
@@ -129,10 +130,7 @@ Try to declare two variables below:
 
 Ignore all initial errors in the DartPad.
 
-{% comment %}
-TODO: Add new ga_id tag.
-{% endcomment -%}
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad:ga_id-nullable_variables:null_safety-true
 {$ begin main.dart $}
 // Declare the two variables here
 {$ end main.dart $}
@@ -350,7 +348,7 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -367,7 +365,7 @@ In this case, the inferred types are `List<String>`,
 
 Or you can specify the type yourself:
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -377,6 +375,7 @@ final aMapOfIntToDouble = <int, double>{};
 Specifying types is handy when you initialize a list with contents of a subtype,
 but still want the list to be `List<BaseType>`:
 
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-3)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
@@ -492,6 +491,7 @@ expression to its right and returns its value.
 For example, consider this call to the `List` class's
 `any()` method:
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-long)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
@@ -500,6 +500,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 
 Here’s a simpler way to write that code:
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
@@ -610,6 +611,7 @@ For joinWithCommas, try using the join method found in the List class.
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
 myObject.someMethod()
 ```
@@ -619,31 +621,41 @@ the expression is the return value of `someMethod()`.
 
 Here's the same expression with a cascade:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
 myObject..someMethod()
 ```
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
+
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
-For example, consider this code:
+For example, consider the following code,
+which uses the conditional member access operator (`?.`)
+to read properties of `button` if it isn't `null`:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
 var button = querySelector('#confirm');
-button.text = 'Confirm';
-button.classes.add('important');
-button.onClick.listen((e) => window.alert('Confirmed!'));
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-With cascades, the code becomes much shorter,
-and you don’t need the `button` variable:
+To instead use cascades, 
+you can start with the _null-shorting_ cascade (`?..`), 
+which guarantees that none of the cascade operations
+are attempted on a `null` object.
+Using cascades shortens the code
+and makes the `button` variable unnecessary:
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
 querySelector('#confirm')
-..text = 'Confirm'
-..classes.add('important')
-..onClick.listen((e) => window.alert('Confirmed!'));
+  ?..text = 'Confirm'
+  ..classes.add('important')
+  ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
 ### Code example
@@ -757,7 +769,7 @@ than a simple field allows.
 
 For example, you can make sure a property's value is valid:
 
-<?code-excerpt "misc/bin/getters_setters.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -774,7 +786,7 @@ class MyClass {
 
 You can also use a getter to define a computed property:
 
-<?code-excerpt "misc/bin/getter_compute.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -1194,6 +1206,7 @@ any exceptions.
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (simple-throws)"?>
 ```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
@@ -1201,6 +1214,7 @@ throw 'Waaaaaaah!';
 
 Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1223,6 +1237,7 @@ and the `catch` keyword to get a reference to the exception object.
 If you can't completely handle the exception, use the `rethrow` keyword
 to propagate the exception:
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1235,7 +1250,7 @@ try {
 To execute code whether or not an exception is thrown,
 use `finally`:
 
-<?code-excerpt "misc/bin/exceptions.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch-finally)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1419,7 +1434,7 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-<?code-excerpt "misc/bin/this_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-positional)"?>
 ```dart
 class MyColor {
   int red;
@@ -1435,6 +1450,7 @@ final color = MyColor(80, 80, 128);
 This technique works for named parameters, too.
 Property names become the names of the parameters:
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/.../g; /olorRN/olor/g;"?>
 ```dart
 class MyColor {
   ...
@@ -1449,6 +1465,7 @@ In the preceding code, `red`, `green`, and `blue` are marked as `required`
 because these `int` values can't be null.
 If you add default values, you can omit `required`:
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 // or
@@ -1536,10 +1553,11 @@ before the constructor body executes.
 Do this work in an initializer list,
 which goes between the constructor's signature and its body:
 
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, num> json)
-    : x = json['x'],
-      y = json['y'] {
+Point.fromJson(Map<String, double> json)
+    : x = json['x']!,
+      y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1547,6 +1565,7 @@ Point.fromJson(Map<String, num> json)
 The initializer list is also a handy place to put asserts,
 which run only during development:
 
+<?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
@@ -1655,7 +1674,7 @@ so I deleted that. We can add it back if we can word it better.]
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/named_constructor.dart (point-class)"?>
 ```dart
 class Point {
   double x, y;
@@ -1670,6 +1689,7 @@ class Point {
 
 To use a named constructor, invoke it using its full name:
 
+<?code-excerpt "misc/test/cheatsheet/constructor_test.dart (origin-point)"?>
 ```dart
 final myPoint = Point.origin();
 ```
@@ -1750,7 +1770,7 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-<?code-excerpt "misc/bin/factory_constructors.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -1763,8 +1783,7 @@ class Shape {
     if (typeName == 'square') return Square();
     if (typeName == 'circle') return Circle();
 
-    print('I don\'t recognize $typeName');
-    throw Error();
+    throw ArgumentError('Unrecognized $typeName');
   }
 }
 ```
@@ -1946,7 +1965,7 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -2038,15 +2057,15 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
-  const ImmutablePoint(this.x, this.y);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final int x;
   final int y;
 
-  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+  const ImmutablePoint(this.x, this.y);
 }
 ```
 

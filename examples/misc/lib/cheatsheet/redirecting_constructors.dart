@@ -17,11 +17,11 @@ class Automobile {
 
 // #docregion const-constructors
 class ImmutablePoint {
-  const ImmutablePoint(this.x, this.y);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final int x;
   final int y;
 
-  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+  const ImmutablePoint(this.x, this.y);
 }
 // #enddocregion const-constructors
