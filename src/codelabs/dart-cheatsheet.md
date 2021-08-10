@@ -1072,7 +1072,7 @@ or mark the parameter as `required`
 (as shown in the
 [constructor section](#using-this-in-a-constructor)).
 
-<?code-excerpt "misc/test/cheatsheet/arguments_test.dart" replace="/ = ''/[! = ''!]/g;"?>
+<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-suffix)" replace="/ = ''/[! = ''!]/g;"?>
 ```dart
 void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
   print('$firstName $lastName $suffix');
