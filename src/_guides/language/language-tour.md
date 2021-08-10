@@ -2691,10 +2691,6 @@ var p1 = new Point(2, 2);
 var p2 = new Point.fromJson({'x': 1, 'y': 2});
 ```
 
-{{site.alert.version-note}}
-  The `new` keyword became optional in Dart 2.
-{{site.alert.end}}
-
 Some classes provide [constant constructors](#constant-constructors).
 To create a compile-time constant using a constant constructor,
 put the `const` keyword before the constructor name:
@@ -2749,10 +2745,6 @@ var b = ImmutablePoint(1, 1); // Does NOT create a constant
 
 assert(!identical(a, b)); // NOT the same instance!
 ```
-
-{{site.alert.version-note}}
-  The `const` keyword became optional within a constant context in Dart 2.
-{{site.alert.end}}
 
 
 ### Getting an object's type

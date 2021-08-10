@@ -15,12 +15,12 @@ To learn about other tools you can use for Dart development, see
 the [Dart tools](/tools) page.
 
 {{site.alert.version-note}}
-  As of Flutter 1.21, the Flutter SDK includes the full Dart SDK.
   This site's documentation and examples use
   {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.
-</aside>
+{{site.alert.end}}
+
 {% comment %}
   IMPORTANT: After each release, EDIT src/_data/pkg-vers.json
   to update the SDK version number.

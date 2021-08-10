@@ -348,11 +348,6 @@ You can also [disable specific rules][disable individual rules]
 for all files or
 [change the severity of rules][].
 
-{{site.alert.version-note}}
-  As of Dart 2.8, you can't stop error rules from being applied to
-  individual files or lines of code.
-{{site.alert.end}}
-
 
 ### Excluding files
 
