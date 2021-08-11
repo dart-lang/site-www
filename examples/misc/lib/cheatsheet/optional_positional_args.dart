@@ -15,7 +15,7 @@ int sumUp(int a, int b, int c) {
 }
 // #enddocregion optional-positional-args
 
-void main() {
+void mainTest() {
   // #docregion optional-positional-args
   int total = sumUp(1, 2, 3);
   // #enddocregion optional-positional-args

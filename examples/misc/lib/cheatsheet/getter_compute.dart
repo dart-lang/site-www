@@ -12,10 +12,3 @@ class MyClass {
   }
 }
 // #enddocregion
-
-void main() {
-  MyClass _class = MyClass();
-  _class.addValue(5);
-  _class.addValue(7);
-  print(_class.count.toString());
-}

@@ -11,9 +11,3 @@ class MyClass {
   }
 }
 // #enddocregion
-
-void main() {
-  MyClass _class = MyClass();
-  _class.aProperty = 5;
-  print(_class.aProperty);
-}
