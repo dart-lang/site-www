@@ -85,7 +85,7 @@ class C { ... }
 
 {% include linter-rule-mention.html rule="camel_case_extensions" %}
 
-Like types, extensions should capitalize the first letter of each word
+Like types, [extensions][] should capitalize the first letter of each word
 (including the first word),
 and use no separators.
 
@@ -97,12 +97,7 @@ extension MyFancyList<T> on List<T> { ... }
 extension SmartIterable<T> on Iterable<T> { ... }
 {% endprettify %}
 
-{{site.alert.version-note}}
-  Extensions are a Dart 2.7 language feature.
-  For details, see the [extensions design document.][]
-{{site.alert.end}}
-
-[extensions design document.]: https://github.com/dart-lang/language/blob/master/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
+[extensions]: /guides/language/extension-methods
 
 ### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
 

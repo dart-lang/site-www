@@ -19,10 +19,9 @@ If you aren't sure which tools you need, **get the Flutter SDK.**
 
 [General-purpose tools]: #general-purpose-tools
 
-{{site.alert.version-note}}
-  As of Flutter 1.21, the Flutter SDK includes the full Dart SDK.
+{{site.alert.note}}
+  The Flutter SDK includes the full Dart SDK.
 {{site.alert.end}}
-
 
 ## General-purpose tools
 

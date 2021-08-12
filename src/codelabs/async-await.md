@@ -338,11 +338,6 @@ An `async` function runs synchronously until the first
 `await` keyword. This means that within an `async` function body, all
 synchronous code before the first `await` keyword executes immediately.
 
-{{site.alert.version-note}}
-  Before Dart 2.0, an `async` function returned immediately, without executing
-  any code within the `async` function body.
-{{site.alert.end}}
-
 ### Example: Execution within async functions
 Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?

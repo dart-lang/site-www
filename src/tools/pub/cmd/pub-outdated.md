@@ -16,10 +16,6 @@ and get advice on how to update them.
 include using the most recent stable package versions,
 so you can get the latest bug fixes and improvements.
 
-{{site.alert.version-note}}
-  The `dart pub outdated` command was introduced in Dart 2.8.
-{{site.alert.end}}
-
 ## Overview
 
 Here's how you can use `dart pub outdated` to help you
