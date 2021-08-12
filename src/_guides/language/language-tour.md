@@ -1197,7 +1197,7 @@ print('The last character: ${hi.characters.last}\n');
 The output, depending on your environment, looks something like this:
 
 ```terminal
-$ dart bin/main.dart
+$ dart run bin/main.dart
 Hi 🇩🇰
 The end of the string: ???
 The last character: 🇩🇰
