@@ -56,4 +56,4 @@ You might find the following tutorials helpful.
 [dart:io section of the library tour](/guides/libraries/library-tour/#dartio)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
-  [Flutter mobile apps.]({{site.flutter}})
+  non-web [Flutter apps.]({{site.flutter}})

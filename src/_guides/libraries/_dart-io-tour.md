@@ -5,7 +5,7 @@ files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
 {{site.alert.important}}
-  Only [Flutter mobile apps,]({{site.flutter}}) command-line scripts, 
+  Only non-web [Flutter apps,]({{site.flutter}}) command-line scripts, 
   and servers can import and use `dart:io`, not web apps.
 {{site.alert.end}}
 

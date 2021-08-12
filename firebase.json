@@ -163,6 +163,7 @@
       { "source": "/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules#:lint", "type": 301 },
       { "source": "/mailing-list", "destination": "https://groups.google.com/a/dartlang.org/forum/#!forum/misc", "type": 301 },
+      { "source": "/mobile", "destination": "/multiplatform-apps", "type": 301 },
       { "source": "/news{,/**}", "destination": "https://news.dartlang.org/", "type": 301 },
       { "source": "/null-safety/tour", "destination": "/codelabs/null-safety", "type": 301 },
       { "source": "/observatory{,/**}", "destination": "https://dart-lang.github.io/observatory", "type": 301 },

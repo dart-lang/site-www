@@ -144,8 +144,8 @@
           permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
-    - title: Mobile apps
-      permalink: /mobile
+    - title: Multi-platform apps
+      permalink: /multiplatform-apps
     - title: Command-line & server apps
       children:
         - title: Overview
