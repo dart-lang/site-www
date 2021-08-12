@@ -4,9 +4,10 @@ description: Use the Flutter framework to build beautiful native apps for many p
 toc: false
 ---
 
-<img style="padding: 30px; float: right; width: 400px" src="{% asset
-multiplat.png @path %}" alt="Multi-platform apps illustration">
+<div class="container">
+<div class="row">
 
+<div class="col-sm-6" markdown="1">
 We recommend the [Flutter framework][] for developing multi-platform native apps
 for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
 
@@ -23,5 +24,14 @@ create fast production code for any platform.
     Get started
   </a>
 </p>
+</div>
+
+<div class="col-sm-6" markdown="1">
+<img style="padding: 30px; float: right; width: 400px" src="{% asset
+multiplat.png @path %}" alt="Multi-platform apps illustration">
+</div>
+
+</div>
+</div>
 
 [Flutter framework]: {{site.flutter}}
