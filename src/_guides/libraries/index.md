@@ -61,10 +61,10 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------|-------------------------------|
 | [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | |
 | [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | |
-| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
-| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
 | [`dart:js_util`][dart-js_util]          <br> APIs to supplement missing functionality in `dart:html` or the `js` package. | |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
+| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
 {:.table .table-striped}
 
 </div>
