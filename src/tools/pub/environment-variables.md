@@ -21,9 +21,9 @@ Environment variables allow you to customize pub to suit your needs.
   To specify the location of a particular mirror server,
   use the `PUB_HOSTED_URL` environment variable. For example:
 
-{% prettify sh tag=pre+code %}
+```nocode
 PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
-{% endprettify %}
+```
 
 <aside class="alert alert-info" markdown="1">
   **Note:**

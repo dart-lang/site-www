@@ -12,9 +12,9 @@ toc: false
 
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```terminal
 $ dart pub uploader [options] {add/remove} <email>
-{% endprettify %}
+```
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a

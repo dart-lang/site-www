@@ -5,9 +5,9 @@ description: Use dart pub upgrade to get the latest versions of all dependencies
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```terminal
 $ dart pub upgrade [args] [dependencies]
-{% endprettify %}
+```
 
 Like [`dart pub get`](/tools/pub/cmd/pub-get),
 `dart pub upgrade` gets dependencies.

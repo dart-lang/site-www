@@ -6,9 +6,9 @@ toc: false
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify none tag=pre+code %}
+```terminal
 $ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
-{% endprettify %}
+```
 
 This command prints the dependency graph for a package.
 The graph includes both the

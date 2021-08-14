@@ -28,8 +28,8 @@ package that your package depends on, see [dart run](/tools/dart-run).
 
 ## Activating a package
 
-```nocode
-dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+```terminal
+$ dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -115,10 +115,10 @@ $ webdev serve
 Verify that the `bin` directory for the system cache is in your path.
 The following `PATH` variable, on macOS, includes the system cache:
 
-{% prettify none tag=pre+code %}
+```terminal
 $ echo $PATH
 /Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
-{% endprettify %}
+```
 
 If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
@@ -146,7 +146,7 @@ this feature. You can still run the script using `dart pub global run`.
 
 ### Running a script using `dart pub global run`
 
-```nocode
+```terminal
 $ dart pub global run <package>:<executable> [args...]
 ```
 

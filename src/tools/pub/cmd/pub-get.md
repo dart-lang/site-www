@@ -5,9 +5,9 @@ description: Use dart pub get to retrieve the dependencies used by your Dart app
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```terminal
 $ dart pub get [args]
-{% endprettify %}
+```
 
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working

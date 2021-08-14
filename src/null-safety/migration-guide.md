@@ -68,7 +68,7 @@ Switch to the **latest stable release**
 of either the Dart SDK or the Flutter SDK.
 
 Check that you have Dart 2.12 or later:
-  ```terminal
+```terminal
 $ dart --version
 ```
 

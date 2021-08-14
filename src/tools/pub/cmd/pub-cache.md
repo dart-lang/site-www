@@ -34,9 +34,9 @@ matching versions of a library.</dd>
 <dd>Optional. Use with <code>dart pub cache add</code> to install the best
 version matching the specified constraint. For example:
 
-{% prettify nocode tag=pre+code %}
+```terminal
 $ dart pub cache add http --version "0.12.2"
-{% endprettify %}
+```
 
 If <code>--version</code> is omitted, pub installs the best of all known
 versions.</dd>

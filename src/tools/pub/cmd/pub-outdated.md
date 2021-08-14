@@ -6,9 +6,9 @@ diff2html: true
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```terminal
 $ dart pub outdated [options]
-{% endprettify %}
+```
 
 Use `dart pub outdated` to identify out-of-date [package dependencies][]
 and get advice on how to update them.
