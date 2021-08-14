@@ -31,9 +31,9 @@ this command creates a `.packages` file.
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:test/test.dart';
-{% endprettify %}
+```
 
 When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
@@ -157,7 +157,7 @@ For details, see [Getting while offline](#getting-while-offline).
 Creates snapshots of the
 project's executables in direct dependencies.
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

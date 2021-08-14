@@ -105,14 +105,17 @@ available.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--[no-]offline`
-: By default, pub connects to the network to check for hosted 
+### `--[no-]offline`
+
+By default, pub connects to the network to check for hosted 
 dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
 
-`--dry-run` or `-n`
-: Report what dependencies would change but don't change any.
+### `--dry-run` or `-n`
+
+Reports what dependencies would change but doesn't change any.
 
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

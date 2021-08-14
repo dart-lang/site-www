@@ -1,7 +1,6 @@
 ---
 title: dart pub publish
 description: Use dart pub publish to publish your Dart package to the pub.dev site.
-toc: false
 ---
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -37,7 +36,8 @@ In the event of warnings, your package *is* uploaded.
 To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}
 

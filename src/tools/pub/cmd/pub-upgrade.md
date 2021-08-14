@@ -154,7 +154,7 @@ For details, see [Upgrading while offline](#upgrading-while-offline).
 Creates snapshots of the
 project's executables in direct dependencies.
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

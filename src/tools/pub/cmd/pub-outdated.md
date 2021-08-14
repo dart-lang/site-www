@@ -201,36 +201,55 @@ so that each package uses the versions in the **Resolvable** column.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--json`
-: Use this option to generate output in JSON format.
+### `--json`
 
-`--[no-]color`
-: Use this option to change whether the output uses color for emphasis.
-  The default depends on whether you're using this command at a terminal.
-  At a terminal, `--color` is the default;
-  otherwise, `--no-color` is the default.
+Generates output in JSON format.
 
-`--[no-]up-to-date`
-: Use `--up-to-date` to make the output include dependencies that
-  are already at the latest version.
-  The default is `--no-up-to-date`, which saves space.
+### `--[no-]color`
 
-`--[no-]prereleases`
-: Use `--prereleases` to include prereleases when determining
-  the latest package versions.
-  By default, prerelease versions aren't considered.
+Controls whether the output uses color for emphasis.
+The default depends on whether you're using this command at a terminal.
 
-`--[no-]dev-dependencies`
-: Use `--no-dev-dependencies` to ignore [dev dependencies][dev dependency].
+At a terminal, `--color` is the default;
+otherwise, `--no-color` is the default.
 
-`--[no-]dependency-overrides`
-: Use `--no-dependency-overrides` to ignore [`dependency_overrides`][]
-  when resolving package constraints.
+### `--[no-]up-to-date`
 
-<aside class="alert alert-info" markdown="1">
-**Problems?**
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+Makes the output include dependencies that 
+are already at the latest version.
+
+The default is `--no-up-to-date`, which saves space.
+
+### `--[no-]prereleases`
+
+Includes prereleases when determining the latest package versions.
+
+By default, prerelease versions aren't considered.
+
+### `--[no-]dev-dependencies`
+
+Accounts for [dev dependencies][dev dependency] 
+when resolving package constraints.
+
+By default, dev dependencies are accounted for.
+
+### `--[no-]dependency-overrides`
+
+Accounts for [`dependency_overrides`][] 
+when resolving package constraints.
+
+By default, dependency overrides are accounted for.
+
+### `--[no-]transitive`
+
+Shows [transitive dependencies][] as part of the output.
+
+By default, transitive dependencies are not included.
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices
