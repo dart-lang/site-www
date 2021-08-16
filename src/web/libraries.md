@@ -41,15 +41,14 @@ in addition to mobile, desktop, and embedded device support.
 
 Here are a few packages that are web-specific:
 
-|-----------------+---------------------------------+--------------------------|
-| Library         | Packages                        | Notes                    |
-|-----------------|---------------------------------|--------------------------|
-| AngularDart     | angular*                        | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation,]({{site.angulardart}}) [AngularDart Components]({{site.angulardart}}/components) | 
-| JavaScript interop | [js][] | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
-| Material Design | [md_core,][] [m4d_components][] | Basic Material Design components. |
-| Mustache        | [mustache][]                    | Support for the Mustache templating language. |
-| React           | [react][]                       | Bindings for the ReactJS library. |
-| Vue             | [vue][]                         | Bindings for the Vue.js library. |
+|--------------------+---------------------------------+--------------------------|
+| Library            | Packages                        | Notes                    |
+|--------------------|---------------------------------|--------------------------|
+| AngularDart        | angular*                        | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation,]({{site.angulardart}}) [AngularDart Components]({{site.angulardart}}/components) | 
+| JavaScript interop | [js][]                          | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
+| Material Design    | [mdc_web][]                     | Bindings for Material Components for the web. |
+| Mustache templates | [mustache_template][]           | Support for the Mustache templating language. |
+| React              | [react][]                       | Bindings for the ReactJS library. |
 {:.table .table-striped}
 
 
@@ -58,10 +57,8 @@ Here are a few packages that are web-specific:
 [AngularDart]: {{site.angulardart}}
 [js]: {{site.pub-pkg}}/js
 [JavaScript interoperability]: /web/js-interop
-[md_core,]: {{site.pub-pkg}}/m4d_core
-[m4d_components]: {{site.pub-pkg}}/m4d_components
-[mustache]: {{site.pub-pkg}}/mustache
-[vue]: {{site.pub-pkg}}/vue
+[mdc_web]: {{site.pub-pkg}}/mdc_web
+[mustache_template]: {{site.pub-pkg}}/mustache_template
 [react]: {{site.pub-pkg}}/react
 
 To find more libraries that support writing web apps, search pub.dev for
