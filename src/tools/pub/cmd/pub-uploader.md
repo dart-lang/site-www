@@ -1,7 +1,6 @@
 ---
 title: dart pub uploader
 description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
-toc: false
 ---
 
 {{site.alert.tip}}
@@ -61,6 +60,11 @@ Google Apps email address for any new uploaders.
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+### `--package=`_`<package name>`_
+
+Specifies which package to modify the uploaders for. 
+Defaults to the package in the current directory.
 
 {{site.alert.info}}
   *Problems?*
