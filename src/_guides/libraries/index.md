@@ -43,6 +43,7 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------+-------------------------------|
 | Library                                       | Notes   |
 |-----------------------------------------------|-------------------------------|
+| [`dart:ffi`][dart-ffi]                  <br> Foreign Function Interface for interoperability with the C programming language. | |
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | |
 | [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | Experimental<br>JIT only (_not_&nbsp;Flutter) |
@@ -60,10 +61,11 @@ The following table lists the Dart core libraries that work on the
 |-----------------------------------------------|-------------------------------|
 | [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | |
 | [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | |
-| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
-| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
 | [`dart:js_util`][dart-js_util]          <br> APIs to supplement missing functionality in `dart:html` or the `js` package. | |
+| [`dart:svg`][dart-svg]                  <br> Scalable Vector Graphics. | |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
+| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
 {:.table .table-striped}
 
 </div>
@@ -73,6 +75,7 @@ The following table lists the Dart core libraries that work on the
 [dart-convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart-core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
 [dart-developer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
+[dart-ffi]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
 [dart-math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart-collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
