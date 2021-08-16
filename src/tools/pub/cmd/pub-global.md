@@ -135,7 +135,7 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify none tag=pre+code %}
+{% prettify nocode tag=pre+code %}
 $ cd web_project
 $ [!webdev serve!]
 {% endprettify %}

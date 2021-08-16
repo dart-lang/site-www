@@ -5,9 +5,9 @@ description: Use dart pub downgrade to get the lowest versions of all dependenci
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify sh tag=pre+code %}
+```nocode
 $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
-{% endprettify %}
+```
 
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file

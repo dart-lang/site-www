@@ -5,7 +5,7 @@ description: Use dart pub add to add a dependency.
 
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub add <package>[:<constraint>] [options]
 ```
 

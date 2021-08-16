@@ -5,9 +5,9 @@ description: Use dart pub publish to publish your Dart package to the pub.dev si
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub publish [options]
-{% endprettify %}
+```
 
 This command publishes your package on the
 [pub.dev site]({{site.pub}}) for anyone to download and depend

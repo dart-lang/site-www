@@ -5,7 +5,7 @@ description: Use dart pub remove to remove a dependency.
 
 _Remove_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub remove <package> [options]
 ```
 
@@ -15,7 +15,7 @@ For example, the following command is equivalent to
 editing `pubspec.yaml` (removing `http` from `dependencies` or `dev_dependencies`)
 and then calling `dart pub get`:
 
-```
+```terminal
 $ dart pub remove http
 ```
 

@@ -5,9 +5,9 @@ description: Use dart pub deps to print a dependency graph for a package.
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify none tag=pre+code %}
-$ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
-{% endprettify %}
+```nocode
+$ dart pub deps [--style=<style>] [--[no-]-dev] [--executables]
+```
 
 This command prints the dependency graph for a package.
 The graph includes both the

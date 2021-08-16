@@ -5,7 +5,7 @@ description: Use dart pub cache to manage your system cache.
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub cache add <package> [--version <constraint>] [--all]
 $ dart pub cache repair
 ```
