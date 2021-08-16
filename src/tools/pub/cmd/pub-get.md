@@ -58,18 +58,14 @@ By default, pub creates a `.packages` file
 that maps from package names to location URIs.
 Before the `.packages` file, pub used to create `packages` directories.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** Don't check the generated `.packages` file,
-`packages` directories (if present), or
-`.dart_tool` directory into your repo;
-add them to your repo's `.gitignore` file.
-For more information, see
-[What Not to Commit](/guides/libraries/private-files).
-{% comment %}
-PENDING: here just to make it easy to find discussions of `packages`...
-{% include packages-dir.html %}
-{% endcomment %}
-</aside>
+{{site.alert.note}}
+  Don't check the generated `.packages` file,
+  `packages` directories (if present), or
+  `.dart_tool` directory into your repo;
+  add them to your repo's `.gitignore` file.
+  For more information, 
+  see [What not to commit](/guides/libraries/private-files).
+{{site.alert.end}}
 
 For more information, see the
 [package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
