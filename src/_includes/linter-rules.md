@@ -1,4 +1,6 @@
-{% assign lint = include.lint %}
+{% for lint in site.data.linter_rules %}
+
+{% if lint.group == include.type %}
 
 ### {{lint.name}}
 
@@ -6,6 +8,24 @@
 
 {% if lint.maturity != "stable" %}
 _This rule is currently **{{lint.maturity}}**._
+{% endif %}
+
+{% if lint.sets != empty %}
+
+{% assign rule_sets = "" | split: ',' %}
+
+{% for set in lint.sets %}
+
+{%- capture rule_set -%}
+[{{set}}](#{{set}})
+{% endcapture %}
+
+{% assign rule_sets = rule_sets | push: rule_set %}
+
+{% endfor %}
+
+<em>Rule sets: {{ rule_sets | join: ", " }}</em>
+
 {% endif %}
 
 {% if lint.incompatible != empty %}
@@ -29,3 +49,7 @@ _This rule is currently **{{lint.maturity}}**._
 #### Details
 
 {{lint.details}}
+
+{% endif %}
+
+{% endfor %}

@@ -18,10 +18,10 @@ what code patterns trigger it, and
 how you might fix your code.
 
 {{site.alert.tip}}
-Linter rules (sometimes called _lints_) can have false positives,
-and they don’t all agree with each other.
-For example, some rules are more appropriate for library packages,
-and others are designed for Flutter apps.
+  Linter rules (sometimes called _lints_) can have false positives,
+  and they don’t all agree with each other.
+  For example, some rules are more appropriate for library packages,
+  and others are designed for Flutter apps.
 {{site.alert.end}}
 
 ## Predefined rule sets
@@ -30,15 +30,22 @@ To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
 which the following packages provide:
 
-[lints][]
-: The rule sets that the Dart team encourages using.
-  If you're writing Flutter code,
-  use the `flutter_lints` rule set,
-  which builds on `lints`.
-  Dart and Flutter packages uploaded to [pub.dev]({{site.pub}}) 
-  are [scored]({{site.pub}}/help/scoring) 
-  with the `core` set of these rules.
+<a id="core"></a>
+[core][lints]
+: A set of rules, curated by the Dart team, 
+  that identify critical issues
+  that are likely to lead to problems with Dart code.
+  Dart and Flutter packages uploaded to [pub.dev]({{site.pub}})
+  are partially [scored]({{site.pub}}/help/scoring) with these set of rules.
 
+<a id="recommended"></a>
+[recommended][lints]
+: The Dart team's recommended set of rules,
+  that help identify additional issues  that may lead to problems with Dart code
+  while enforcing writing Dart using a single, idiomatic style and format. 
+  This set includes all those in the `core` rule set.
+
+<a id="flutter"></a>
 [flutter_lints][]
 : The set of rules that the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
@@ -48,12 +55,14 @@ which the following packages provide:
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
+<a id="effective_dart"></a>
 [effective_dart][] (_deprecated_)
 : The deprecated set of rules previously used to
   conform to the guidelines in [Effective Dart][].
   Consider migrating to one of the rule sets in
   the [lints][] or [flutter_lints][] packages.
 
+<a id="pedantic"></a>
 [pedantic][] (_deprecated_)
 : The deprecated set of rules previously used to match
   the rules used for all Google-internal Dart code.
@@ -108,45 +117,21 @@ Deprecated
 
 These rules identify possible errors and other mistakes in your code.
 
-{% for lint in site.data.linter_rules %}
-
-{% if lint.group == "errors" %}
-
-{% include linter-rule.md lint=lint %}
-
-{% endif %}
-
-{% endfor %}
+{% include linter-rules.md type="errors" %}
 
 ## Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
-{% for lint in site.data.linter_rules %}
-
-{% if lint.group == "style" %}
-
-{% include linter-rule.md lint=lint %}
-
-{% endif %}
-
-{% endfor %}
+{% include linter-rules.md type="style" %}
 
 ## Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
 
-{% for lint in site.data.linter_rules %}
-
-{% if lint.group == "pub" %}
-
-{% include linter-rule.md lint=lint %}
-
-{% endif %}
-
-{% endfor %}
+{% include linter-rules.md type="pub" %}
 
 [Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Dart style guide]: /guides/language/effective-dart/style
