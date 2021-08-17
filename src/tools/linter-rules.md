@@ -43,15 +43,17 @@ which the following packages provide:
 : The Dart team's recommended set of rules,
   that help identify additional issues  that may lead to problems with Dart code
   while enforcing writing Dart using a single, idiomatic style and format. 
-  This set includes all those in the `core` rule set.
+  This set includes all those in the [`core`](#core) rule set.
+  If you're writing Flutter code,
+  use the [`flutter_lints`](#flutter) rule set,
+  which builds on this set.
 
 <a id="flutter"></a>
 [flutter_lints][]
 : The set of rules that the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
-  This rule set is a superset of the `recommended`
-  set from the [lints package]({{site.pub-pkg}}/lints),
-  which is itself a superset of the `core` set that
+  This rule set is a superset of the [`recommended`](#recommended) set,
+  which is itself a superset of the [`core`](#core) set that
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
