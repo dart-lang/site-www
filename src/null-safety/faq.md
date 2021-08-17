@@ -76,7 +76,7 @@ you can do:
 
 {:.good}
 {% prettify dart tag=pre+code %}
-// Initalized with values
+// Initialized with values
 final ListQueue _context = ListQueue<dynamic>();
 final Float32List _buffer = Float32List.fromList([0.0, 0.0]);
 final dynamic _readObject;

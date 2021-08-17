@@ -157,7 +157,7 @@ void main() {
 {$ begin hint.txt $}
 Declare the two variables as "String" followed by "?".
 Then, assign "Jane" to "name"
-and leave "address" uninitalized.
+and leave "address" uninitialized.
 {$ end hint.txt $}
 ```
 
@@ -1039,7 +1039,7 @@ void main() {
 }
 {$ end test.dart $}
 {$ begin hint.txt $}
-The b, c, d, and e paramters are null if they aren't provided by caller.
+The b, c, d, and e parameters are null if they aren't provided by caller.
 The important thing, then, is to check whether those arguments are null
 before you add them to the final string.
 {$ end hint.txt $}
