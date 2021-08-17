@@ -12,37 +12,37 @@ _This rule is currently **{{lint.maturity}}**._
 
 {% if lint.sets != empty %}
 
-{% assign rule_sets = "" | split: ',' %}
+{% assign rule_sets = "" %}
 
 {% for set in lint.sets %}
 
 {%- capture rule_set -%}
-[{{set}}](#{{set}})
+[{{set}}](#{{set}}){% if forloop.last == false %},{% endif %}
 {% endcapture %}
 
-{% assign rule_sets = rule_sets | push: rule_set %}
+{%- assign rule_sets = rule_sets | append: rule_set -%}
 
 {% endfor %}
 
-<em>Rule sets: {{ rule_sets | join: ", " }}</em>
+<em>Rule sets: {{ rule_sets }}</em>
 
 {% endif %}
 
 {% if lint.incompatible != empty %}
 
-{% assign incompatible_rules = "" | split: ',' %}
+{% assign incompatible_rules = "" %}
 
 {% for incompatible in lint.incompatible %}
 
 {%- capture incompatible_rule -%}
-[{{incompatible}}](#{{incompatible}})
+[{{incompatible}}](#{{incompatible}}){% if forloop.last == false %},{% endif %}
 {% endcapture %}
 
-{% assign incompatible_rules = incompatible_rules | push: incompatible_rule %}
+{% assign incompatible_rules = incompatible_rules | append: incompatible_rule %}
 
 {% endfor %}
 
-<em>Incompatible rules: {{ incompatible_rules | join: ", " }}</em>
+<em>Incompatible rules: {{ incompatible_rules }}</em>
 
 {% endif %}
 
