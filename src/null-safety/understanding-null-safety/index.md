@@ -1350,6 +1350,8 @@ You can also use a nullable *bound*:
 class Interval<T extends num?> {
   T min, max;
 
+  Interval(this.min, this.max);
+
   bool get isEmpty {
     var localMin = min;
     var localMax = max;
@@ -1362,23 +1364,19 @@ class Interval<T extends num?> {
 ```
 
 This means that in the body of the class you get the flexibility of treating the
-type parameter as nullable. Note we have no constructor this time, and that's
-OK. The fields will be implicitly initialized to `null`. You can declare
-uninitialized variables of the type parameter's type.
-
-But you also have the limitations of nullability&mdash;you can't call anything
-on a variable of that type unless you deal with the nullability first. In the
-example here, we copy the fields in local variables and check those locals for
-`null` so that flow analysis promotes them to non-nullable types before we use
-`<=`.
+type parameter as nullable, but you also have the limitations of nullability. 
+You can't call anything on a variable of that type
+unless you deal with the nullability first. In the example here, 
+we copy the fields in local variables and check those locals for `null` 
+so that flow analysis promotes them to non-nullable types before we use `<=`.
 
 Note that a nullable bound does not prevent users from instantiating the class
 with non-nullable types. A nullable bound means that the type argument *can* be
 nullable, not that it *must*. (In fact, the default bound on type parameters if
 you don't write an `extends` clause is the nullable bound `Object?`.) There is
 no way to *require* a nullable type argument. If you want uses of the type
-parameter to reliably be nullable, you can use `T?` inside the body of the
-class.
+parameter to reliably be nullable and be implicitly initialized to `null`, 
+you can use `T?` inside the body of the class.
 
 ## Core library changes
 
