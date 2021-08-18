@@ -119,21 +119,21 @@ Deprecated
 
 These rules identify possible errors and other mistakes in your code.
 
-{% include linter-rules.md type="errors" %}
+{% include linter-rules-section.md type="errors" %}
 
 ## Style rules
 
 These rules identify opportunities for style improvements, 
 largely derived from the [Dart style guide][].
 
-{% include linter-rules.md type="style" %}
+{% include linter-rules-section.md type="style" %}
 
 ## Pub rules
 
 These rules identify possible issues around 
 [pub package](/guides/packages) setup.
 
-{% include linter-rules.md type="pub" %}
+{% include linter-rules-section.md type="pub" %}
 
 [Enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
 [Dart style guide]: /guides/language/effective-dart/style
