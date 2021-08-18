@@ -30,27 +30,23 @@ To avoid the need to individually select compatible linter rules,
 consider starting with a linter rule set,
 which the following packages provide:
 
-<a id="core"></a>
-[core][lints]
-: A set of rules, curated by the Dart team, 
-  that identify critical issues
-  that are likely to lead to problems with Dart code.
-  Dart and Flutter packages uploaded to [pub.dev]({{site.pub}})
-  are partially [scored]({{site.pub}}/help/scoring) with these set of rules.
+<a id="lints"></a>
+[lints][]
+: Contains two rule sets curated by the Dart team. 
+  We recommend using at least the `core` rule set, 
+  which is used when [scoring]({{site.pub}}/help/scoring) 
+  packages uploaded to [pub.dev]({{site.pub}}). 
+  Or, better yet, use the `recommended` rule set, 
+  a superset of `core` that identifies additional issues
+  and enforces style and format. 
+  If you’re writing Flutter code, 
+  use the rule set in the [`flutter_lints`](#flutter_lints) package,
+  which builds on `lints`.
 
-<a id="recommended"></a>
-[recommended][lints]
-: The Dart team's recommended set of rules,
-  that help identify additional issues  that may lead to problems with Dart code
-  while enforcing writing Dart using a single, idiomatic style and format. 
-  This set includes all those in the [`core`](#core) rule set.
-  If you're writing Flutter code,
-  use the [`flutter_lints`](#flutter) rule set,
-  which builds on this set.
-
-<a id="flutter"></a>
+<a id="flutter_lints"></a>
 [flutter_lints][]
-: The set of rules that the Flutter team encourages you to use
+: Contains the `flutter` set of rules
+  that the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
   This rule set is a superset of the [`recommended`](#recommended) set,
   which is itself a superset of the [`core`](#core) set that
@@ -62,14 +58,14 @@ which the following packages provide:
 : The deprecated set of rules previously used to
   conform to the guidelines in [Effective Dart][].
   Consider migrating to one of the rule sets in
-  the [lints][] or [flutter_lints][] packages.
+  the [`lints`](#lints) or [`flutter_lints`](#flutter_lints) packages.
 
 <a id="pedantic"></a>
 [pedantic][] (_deprecated_)
 : The deprecated set of rules previously used to match
   the rules used for all Google-internal Dart code.
   Consider migrating to one of the rule sets in
-  the [lints][] or [flutter_lints][] packages.
+  the [`lints`](#lints) or [`flutter_lints`](#flutter_lints) packages.
   See [Migrating from pedantic][] for more information on switching.
    
 [Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic

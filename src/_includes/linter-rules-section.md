@@ -16,8 +16,16 @@ _This rule is currently **{{lint.maturity}}**._
 
 {% for set in lint.sets %}
 
+{% if set == "core" or set == "recommended" %}
+  {% assign set_link = "lints" %}
+{% elsif set == "flutter" %} 
+  {% assign set_link = "flutter_lints" %}
+{% else %}
+  {% assign set_link = set %}
+{% endif %}
+
 {%- capture rule_set -%}
-[{{set}}](#{{set}}){% if forloop.last == false %},{% endif %}
+[{{set}}](#{{set_link}}){% if forloop.last == false %},{% endif %}
 {% endcapture %}
 
 {%- assign rule_sets = rule_sets | append: rule_set -%}
