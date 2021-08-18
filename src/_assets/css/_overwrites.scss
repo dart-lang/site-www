@@ -322,6 +322,18 @@ body.homepage .get-started-section {
   }
 }
 
+code:not(pre code) {
+  &:not(a code) {
+    color: #254960;
+  }
+
+  font-size: 90%;
+  font-weight: 500;
+
+  background-color: $pre-bg;
+  padding: 1px 3px;
+}
+
 /* Overwrite bootstrap: don't wrap code */
 pre code {
   white-space: pre;
