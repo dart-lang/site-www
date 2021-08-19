@@ -60,11 +60,6 @@ are a few additional requirements for uploading a package:
   Your Google Account can be associated with a Gmail address or
   with any other email address.
 
-{{site.alert.note}}
-  Unless you publish using a [verified publisher][],
-  **pub.dev displays the email address associated with your Google Account.**
-{{site.alert.end}}
-
 ### Important files
 
 Pub uses the contents of a few files to create a page for your
