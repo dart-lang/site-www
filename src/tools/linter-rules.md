@@ -45,8 +45,8 @@ which the following packages provide:
 
 <a id="flutter_lints"></a>
 [flutter_lints][]
-: Contains the `flutter` set of rules
-  that the Flutter team encourages you to use
+: Contains the `flutter` rule set,
+  which the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
   This rule set is a superset of the [`recommended`](#recommended) set,
   which is itself a superset of the [`core`](#core) set that
