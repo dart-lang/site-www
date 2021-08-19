@@ -1,5 +1,8 @@
-# Below is a list of people and organizations that have contributed
-# to the Dart www site. Names should be added to the list like so:
+# This is a list of some of the Dart website's contributors.
+# To see the full list of contributors, see the revision history in
+# source control with a command like: git shortlog -sne
+#
+# Names should be added to the list like so:
 #
 #   Name/Organization <email address>
 
