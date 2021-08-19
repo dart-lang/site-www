@@ -367,7 +367,7 @@ previous guidelines state, either:
 
 ### PREFER naming a method `to___()` if it copies the object's state to a new object.
 
-{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.md rule="use_to_and_as_if_applicable" %}
 
 A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
@@ -387,7 +387,7 @@ dateTime.toLocal();
 
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object.
 
-{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.md rule="use_to_and_as_if_applicable" %}
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
@@ -558,7 +558,7 @@ you can in a procedural or functional language.
 
 ### AVOID defining a one-member abstract class when a simple function will do.
 
-{% include linter-rule-mention.html rule="one_member_abstracts" %}
+{% include linter-rule-mention.md rule="one_member_abstracts" %}
 
 Unlike Java, Dart has first-class functions, closures, and a nice light syntax
 for using them. If all you need is something like a callback, just use a
@@ -583,7 +583,7 @@ abstract class Predicate<E> {
 
 ### AVOID defining a class that contains only static members.
 
-{% include linter-rule-mention.html rule="avoid_classes_with_only_static_members" %}
+{% include linter-rule-mention.md rule="avoid_classes_with_only_static_members" %}
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
@@ -697,7 +697,7 @@ comment.
 
 ### DO use `mixin` to define a mixin type.
 
-{% include linter-rule-mention.html rule="prefer_mixin" %}
+{% include linter-rule-mention.md rule="prefer_mixin" %}
 
 Dart originally didn't have a separate syntax for declaring a class intended to
 be mixed in to other classes. Instead, any class that met certain restrictions
@@ -735,7 +735,7 @@ syntax is preferred.
 
 ### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
-{% include linter-rule-mention.html rule="prefer_mixin" %}
+{% include linter-rule-mention.md rule="prefer_mixin" %}
 
 For compatibility, Dart still allows you to mix in classes that aren't defined
 using `mixin`. However, that's risky. If the author of the class doesn't intend
@@ -777,7 +777,7 @@ A member belongs to an object and can be either methods or instance variables.
 
 ### PREFER making fields and top-level variables `final`.
 
-{% include linter-rule-mention.html rule="prefer_final_fields" %}
+{% include linter-rule-mention.md rule="prefer_final_fields" %}
 
 State that is not *mutable*&mdash;that does not change over time&mdash;is
 easier for programmers to reason about. Classes and libraries that minimize the
@@ -894,7 +894,7 @@ dataSet.minimumValue;
 
 ### DO use setters for operations that conceptually change properties.
 
-{% include linter-rule-mention.html rule="use_setters_to_change_properties" %}
+{% include linter-rule-mention.md rule="use_setters_to_change_properties" %}
 
 Deciding between a setter versus a method is similar to deciding between a
 getter versus a method. In both cases, the operation should be "field-like".
@@ -921,7 +921,7 @@ button.visible = false;
 
 ### DON'T define a setter without a corresponding getter.
 
-{% include linter-rule-mention.html rule="avoid_setters_without_getters" %}
+{% include linter-rule-mention.md rule="avoid_setters_without_getters" %}
 
 Users think of getters and setters as visible properties of an object. A
 "dropbox" property that can be written to but not seen is confusing and
@@ -1003,7 +1003,7 @@ empty container, it might make sense to use a nullable type.
 
 ### AVOID returning `this` from methods just to enable a fluent interface.
 
-{% include linter-rule-mention.html rule="avoid_returning_this" %}
+{% include linter-rule-mention.md rule="avoid_returning_this" %}
 
 Method cascades are a better solution for chaining method calls.
 
@@ -1129,7 +1129,7 @@ various cases, but the rough summary is:
 
 ### DO type annotate variables without initializers.
 
-{% include linter-rule-mention.html rule="prefer_typing_uninitialized_variables" %}
+{% include linter-rule-mention.md rule="prefer_typing_uninitialized_variables" %}
 
 The type of a variable&mdash;top-level, local, static field, or instance
 field&mdash;can often be inferred from its initializer. However, if there is no
@@ -1160,7 +1160,7 @@ if (node is Constructor) {
 
 ### DO type annotate fields and top-level variables if the type isn't obvious.
 
-{% include linter-rule-mention.html rule="type_annotate_public_apis" %}
+{% include linter-rule-mention.md rule="type_annotate_public_apis" %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
@@ -1215,7 +1215,7 @@ annotations on APIs help *users* of your code, types on private members help
 
 ### DON'T redundantly type annotate initialized local variables.
 
-{% include linter-rule-mention.html rule="omit_local_variable_types" %}
+{% include linter-rule-mention.md rule="omit_local_variable_types" %}
 
 Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
@@ -1328,7 +1328,7 @@ void sayRepeatedly(message, {count = 2}) {
 
 ### DON'T annotate inferred parameter types on function expressions.
 
-{% include linter-rule-mention.html rule="avoid_types_on_closure_parameters" %}
+{% include linter-rule-mention.md rule="avoid_types_on_closure_parameters" %}
 
 Anonymous functions are almost always immediately passed to a method taking a
 callback of some type.
@@ -1361,7 +1361,7 @@ function's parameters. In those cases, you may need to annotate.
 
 ### DON'T type annotate initializing formals.
 
-{% include linter-rule-mention.html rule="type_init_formals" %}
+{% include linter-rule-mention.md rule="type_init_formals" %}
 
 If a constructor parameter is using `this.` to initialize a field, then the type
 of the parameter is inferred to have the same type as the field.
@@ -1612,7 +1612,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 ### DON'T specify a return type for a setter.
 
-{% include linter-rule-mention.html rule="avoid_return_types_on_setters" %}
+{% include linter-rule-mention.md rule="avoid_return_types_on_setters" %}
 
 Setters always return `void` in Dart. Writing the word is pointless.
 
@@ -1631,7 +1631,7 @@ set foo(Foo value) { ... }
 
 ### DON'T use the legacy typedef syntax.
 
-{% include linter-rule-mention.html rule="prefer_generic_function_type_aliases" %}
+{% include linter-rule-mention.md rule="prefer_generic_function_type_aliases" %}
 
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
@@ -1693,7 +1693,7 @@ it's deprecated.
 
 ### PREFER inline function types over typedefs.
 
-{% include linter-rule-mention.html rule="avoid_private_typedef_functions" %}
+{% include linter-rule-mention.md rule="avoid_private_typedef_functions" %}
 
 In Dart 1, if you wanted to use a function type for a field, variable, or
 generic type argument, you had to first define a typedef for it. Dart 2 supports
@@ -1730,7 +1730,7 @@ that clarity.
 
 ### PREFER using function type syntax for parameters.
 
-{% include linter-rule-mention.html rule="use_function_type_syntax_for_parameters" %}
+{% include linter-rule-mention.md rule="use_function_type_syntax_for_parameters" %}
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
@@ -1875,7 +1875,7 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 ### AVOID positional boolean parameters.
 
-{% include linter-rule-mention.html rule="avoid_positional_boolean_parameters" %}
+{% include linter-rule-mention.md rule="avoid_positional_boolean_parameters" %}
 
 Unlike other types, booleans are usually used in literal form. Values like
 numbers are usually wrapped in named constants, but we typically pass around
@@ -1996,7 +1996,7 @@ elements to follow.
 
 ### DO override `hashCode` if you override `==`.
 
-{% include linter-rule-mention.html rule="hash_and_equals" %}
+{% include linter-rule-mention.md rule="hash_and_equals" %}
 
 The default hash code implementation provides an *identity* hash&mdash;two
 objects generally only have the same hash code if they are the exact same
@@ -2024,7 +2024,7 @@ you're trying to express.
 
 ### AVOID defining custom equality for mutable classes.
 
-{% include linter-rule-mention.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
+{% include linter-rule-mention.md rule="avoid_equals_and_hash_code_on_mutable_classes" %}
 
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
@@ -2036,7 +2036,7 @@ true.
 
 ### DON'T make the parameter to `==` nullable.
 
-{% include linter-rule-mention.html rule="avoid_null_checks_in_equality_operators" %}
+{% include linter-rule-mention.md rule="avoid_null_checks_in_equality_operators" %}
 
 The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
