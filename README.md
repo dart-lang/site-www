@@ -77,7 +77,7 @@ To **clone this repo** ([site-www][]), follow the instructions given in the
 GitHub help on [Cloning a repository][], and _choose one_ of the following
 submodule-cloning techniques:
 
-- Clone this repo and its submodule _at the same_, use the
+- Clone this repo and its submodule _at the same time_, use the
   `--recurse-submodules` option:<br>
 
   ```console
