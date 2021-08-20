@@ -3,7 +3,7 @@
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart deploy/effective-dart-rules/bin/main.dart
+      $ dart run deploy/effective-dart-rules/bin/main.dart
 
     {% endcomment %}
     
