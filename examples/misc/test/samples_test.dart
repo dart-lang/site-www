@@ -11,8 +11,8 @@ import 'package:test/test.dart';
 // #enddocregion import
 import 'package:examples_util/print_matcher.dart' as m;
 import 'package:examples/samples/spacecraft.dart';
-// #docregion import
 
+// #docregion import
 // Importing files
 import 'path/to/my_other_file.dart';
 // #enddocregion import
