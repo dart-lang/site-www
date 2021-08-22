@@ -88,11 +88,10 @@ a, button {
  }
  &.external {
   &:after {
-    content: $icon-external;
-    vertical-align: baseline;
+    @include md-icon-content("launch");
+    vertical-align: middle;
     margin-left: 2px;
-    font-family: 'dart' !important;
-    font-size: 11px;
+    font-size: 10px;
     color: inherit;
     opacity: 0.5;
   }
@@ -128,21 +127,19 @@ form {
     }
   }
   &:after {
-    font-family: 'dart' !important;
-    content: $icon-arrow;
+    @include md-icon-content("chevron_left");
     display: block;
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 12px;
+    top: 12px;
     speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    font-size: 9px;
+    font-size: 16px;
     color: $gray-dark;
-    transform: rotate(180deg);
     pointer-events: none;
     @include transition();
   }
@@ -299,12 +296,16 @@ img {
 // Navigation
 #menu-toggle {
   display: none;
+  align-items: center;
   line-height: 50px;
   margin-left: 20px;
   padding-right: 10px;
-  font-size: 16px;
   cursor: pointer;
   z-index: 9999;
+
+  i {
+    font-size: 32px;
+  }
 }
 #mainnav {
   background-color: $site-color-header;
@@ -1288,7 +1289,7 @@ body.obsolete {
 @media(max-width: 1024px) {
 
   #menu-toggle {
-    display: inline-block;
+    display: flex;
   }
 
   #sidenav {
@@ -1361,9 +1362,7 @@ body.obsolete {
 
 @media(max-width: 479px) {
   #menu-toggle {
-    position: absolute;
-    right: 10px;
-    top: 0px;
+    order: 2;
   }
   #mainnav {
     ul {
