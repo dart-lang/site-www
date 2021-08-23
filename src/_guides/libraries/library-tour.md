@@ -1179,7 +1179,7 @@ The `then().catchError()` pattern is the asynchronous version of
 The `then()` method returns a Future, providing a useful way to run
 multiple asynchronous functions in a certain order. 
 If the callback registered with `then()` returns a Future, 
-`then()` returns a Future that will be completed
+`then()` returns a Future that will complete
 with the same result as the Future returned from the callback. 
 If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
