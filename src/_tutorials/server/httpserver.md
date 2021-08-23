@@ -18,8 +18,7 @@ Here are some resources for writing servers using Dart:
 
 * Documentation
   * [Using Google Cloud][] has information on Google Cloud products
-    that Dart servers can use.
-    Featured products include Cloud Run, Compute Engine, and Kubernetes.
+    that Dart servers can use, such as Cloud Run.
   * [Using Google APIs][] points to resources to help you
     use Firebase and Google client APIs from a Dart app.
 * Samples
