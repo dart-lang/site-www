@@ -1177,9 +1177,11 @@ The `then().catchError()` pattern is the asynchronous version of
 #### Chaining multiple asynchronous methods
 
 The `then()` method returns a Future, providing a useful way to run
-multiple asynchronous functions in a certain order. If the callback
-registered with `then()` returns a Future, `then()` returns an
-equivalent Future. If the callback returns a value of any other type,
+multiple asynchronous functions in a certain order. 
+If the callback registered with `then()` returns a Future, 
+`then()` returns a Future that will complete
+with the same result as the Future returned from the callback. 
+If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
@@ -1253,7 +1255,6 @@ It uses Stream's `listen()` method
 to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
-<!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main(List<String> arguments) {
