@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-set -e # halt script on error
-
-bundle exec jekyll build --incremental
-# bundle exec htmlproofer ./_site --assume-extension --directory-index-file
