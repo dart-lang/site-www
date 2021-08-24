@@ -37,7 +37,7 @@ The Dart analyzer has a linter to help you write good, consistent code.
 If a linter rule exists that can help you follow a guideline,
 then the guideline links to that rule. Here's an example:
 
-{% include linter-rule-mention.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.md rule="prefer_collection_literals" %}
 
 For help on
 [enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
