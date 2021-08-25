@@ -766,7 +766,7 @@ main .content {
         opacity: 0;
 
         &:hover {
-          color: lighten($site-color-body, 25%);
+          color: lighten($brand-primary, 25%);
         }
       }
 
