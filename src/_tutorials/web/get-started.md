@@ -22,7 +22,7 @@ no download necessary.
 For example, here's an embedded DartPad that lets you play with
 the code for a todo-list generator.
 Click **Run** to run the app;
-the console output appears beneath the code.
+the UI output appears to the right of the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. 
 
@@ -142,10 +142,10 @@ Once your app has compiled, the browser should display
 Let's customize the app you just created.
 
  1. Copy the `thingsTodo()` function from the DartPad above
-    to the `web/main.dart` file
+    to the `web/main.dart` file.
 
- 2. Add the `newLI` function as included below to create a new
-    `LIElement` containing the specified `String`.
+ 2. Add the `newLI()` function (as shown below).
+    It creates a new `LIElement` containing the specified `String`.
 
     {% prettify dart tag=pre+code %}
     Iterable<String> thingsTodo() sync* { ... }
