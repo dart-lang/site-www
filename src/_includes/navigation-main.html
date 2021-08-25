@@ -1,7 +1,7 @@
 {% assign page_url_path = page.url | regex_replace: '/index$|/index\.html$|\.html$|/$' | prepend: '/*' | append: '/' -%}
 
 <nav id="mainnav" class="site-header">
-  <div id="menu-toggle"><i class="icon icon-menu"></i></div>
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
   <a href="/" class="brand" title="{{site.title}}">
     <img src="{% asset shared/dart/logo+text/horizontal/white.svg @path %}" alt="{{site.title}}">
   </a>
