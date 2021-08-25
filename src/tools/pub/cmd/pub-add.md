@@ -79,7 +79,9 @@ Depends on a package that's shipped with the specified SDK
 
 ### `--[no-]offline`
 
-Uses cached packages instead of the network.
+By default, pub connects to the network
+to add hosted packages (`--no-offline`).
+To use cached packages instead, use `--offline`.
 
 ### `-n, --dry-run`
 
@@ -88,7 +90,9 @@ but doesn't change any.
 
 ### `--[no-]precompile`
 
-Precompiles executables in immediate dependencies (`true` by default).
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
 {{site.alert.info}}
   *Problems?*
