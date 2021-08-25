@@ -145,11 +145,11 @@ These include:
 
 ### `--help` or `-h`
 
-Print usage information.
+Prints usage information.
 
 ### `--trace`
 
-Print debugging information when an error occurs.
+Prints debugging information when an error occurs.
 
 ### `--verbosity=`_`<level>`_
 
