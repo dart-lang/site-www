@@ -1,6 +1,7 @@
 ---
 title: "Get started: Web apps"
 description: A guide to get you quickly writing web apps in Dart.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using Dart to develop **web-only** apps.
@@ -14,29 +15,59 @@ Then you'll install Dart and build a small web app.
 
 ## 1. Play with a web app in DartPad
 
-With DartPad you can experiment with the Dart language and APIs,
+With [DartPad][DartPad documentation]
+you can experiment with the Dart language and APIs,
 no download necessary.
 
 For example, here's an embedded DartPad that lets you play with
 the code for a todo-list generator.
 Click **Run** to run the app;
-the console output appears beneath the code.
+the UI output appears to the right of the code.
 Try editing the source code—perhaps you'd like to add "horses"
-to the list of pets. To get the full DartPad experience,
-which includes the web UI that the app produces,
-<a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
-  target="_blank" rel="noopener">open the example at dartpad.dev.</a>
+to the list of pets. 
 
 {{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-<iframe
-    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771&ga_id=play_with_a_web_app"
-    width="100%"
-    height="450px"
-    style="border: 1px solid #ccc;">
-</iframe>
+```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app:null_safety-true
+{$ begin main.dart $}
+import 'dart:html';
+
+Iterable<String> thingsTodo() sync* {
+  const actions = ['Walk', 'Wash', 'Feed'];
+  const pets = ['cats', 'dogs'];
+
+  for (final action in actions) {
+    for (final pet in pets) {
+      if (pet != 'cats' || action == 'Feed') {
+        yield '$action the $pet';
+      }
+    }
+  }
+}
+
+void addTodoItem(String item) {
+  final listElement = LIElement()..text = item;
+  todoList.children.add(listElement);
+}
+
+late final UListElement todoList = querySelector('#todolist') as UListElement;
+
+void main() {
+  thingsTodo().forEach(addTodoItem);
+}
+
+{$ end main.dart $}
+{$ begin index.html $}
+<h2>A Simple To-Do List</h2>
+
+<p>Things to do:</p>
+
+<ul id="todolist">
+</ul>
+{$ end index.html $}
+```
 
 More information:
 
@@ -62,7 +93,6 @@ $ dart pub global activate webdev
 Although using an IDE is optional, we highly recommend using one.
 For a list of available IDEs, see the
 [overview of editors & debuggers][].
-
 
 
 ## 4. Create a web app
@@ -114,29 +144,39 @@ Let's customize the app you just created.
  1. Copy the `thingsTodo()` function from the DartPad above
     to the `web/main.dart` file.
 
- 2. In the `main()` function, initialize the `output` element using
-    `thingsTodo()`:
+ 2. Add the `newLI()` function (as shown below).
+    It creates a new `LIElement` containing the specified `String`.
 
     {% prettify dart tag=pre+code %}
-    void main() {
-      Element output = querySelector('#output');
-      [!output.children.addAll(thingsTodo().map(newLI));!]
-    }
+    Iterable<String> thingsTodo() sync* { ... }
 
     [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
 
-    [!Iterable<String> thingsTodo() sync* { ... }!]
+    void main() { ... }
     {% endprettify %}
 
- 3. Save your changes.
+ 3. In the `main()` function, initialize the `output` element using
+    `thingsTodo()`:
 
- 4. The webdev tool automatically rebuilds your app.
+    {% prettify dart tag=pre+code %}
+    Iterable<String> thingsTodo() sync* { ... }
+
+    LIElement newLI(String itemText) => LIElement()..text = itemText;
+
+    void main() {
+      querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
+    }
+    {% endprettify %}
+
+ 4. Save your changes.
+
+ 5. The webdev tool automatically rebuilds your app.
     Refresh the app's browser window.
     Now your simple Dart app has a todo list!
     It should look something like this:<br>
     ![Running the revised app]({% asset bare-bones-todo.png @path %}){:width="500"}
 
- 5. Optionally, improve the formatting by editing `web/styles.css`,
+ 6. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
     {% prettify css tag=pre+code %}
