@@ -233,13 +233,13 @@ To not consider dev dependencies, use `--no-dev-dependencies`.
 
 By default, accounts for [`dependency_overrides`][] 
 when resolving package constraints (`--dependency-overrides`).
-To not consider overrides, use `dependency_overrides`.
+To not consider overrides, use `--no-dependency_overrides`.
 
 ### `--[no-]transitive`
 
 By default, doesn't include [transitive dependencies][] 
 as part of the output (`--no-transitive`).
-To include transitive dependencies, use `--no-transitive`.
+To include transitive dependencies, use `--transitive`.
 
 {{site.alert.info}}
   *Problems?*

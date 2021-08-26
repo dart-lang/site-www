@@ -156,16 +156,16 @@ Prints debugging information when an error occurs.
 The specified level determines the amount of information that is displayed:
 
 * `all`
-: Show all output, including internal tracing messages.
+: Shows all output, including internal tracing messages.
 
 * `io`
-: Show I/O operations.
+: Shows I/O operations.
 
 * `normal`
-: Show errors, warnings, and user messages.
+: Shows errors, warnings, and user messages.
 
 * `solver`
-: Show steps during version resolution.
+: Shows steps during version resolution.
 
 ### `-verbose` or `-v`
 

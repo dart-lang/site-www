@@ -104,7 +104,7 @@ run `dart pub upgrade` again to upgrade to a later version.
 ## Options
 
 The `dart pub upgrade` command supports the
-[`dart pub get` options](/tools/pub/cmd/pub-get#options).
+[`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
