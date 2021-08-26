@@ -207,9 +207,11 @@ Generates output in JSON format.
 
 ### `--[no-]color`
 
-By default, uses color when printing to a terminal (`--color`),
-otherwise doesn't use color (`--no-color`).
-To not include color when printing to a terminal, use `--no-color`.
+Adds color to the output for emphasis (`--color`). 
+The default depends on whether you're using this command at a terminal.
+At a terminal, `--color` is the default, 
+otherwise, `--no-color` is the default. 
+Use `--no-color` to disable color in all environments.
 
 ### `--[no-]up-to-date`
 
