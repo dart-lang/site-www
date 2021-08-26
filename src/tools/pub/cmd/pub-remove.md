@@ -26,9 +26,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-By default, pub connects to the network
-to retrieve hosted packages (`--no-offline`).
-To use cached packages instead, use `--offline`.
+{% include tools/pub-option-no-offline.md %}
 
 ### `-n, --dry-run`
 

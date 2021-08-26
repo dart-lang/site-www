@@ -145,10 +145,7 @@ This command is similar to `--major-versions`.
 
 ### `--[no-]offline`
 
-By default, pub connects to the network
-to retrieve hosted packages (`--no-offline`).
-To use cached packages instead, use `--offline`.
-For details, see [Getting while offline](#getting-while-offline).
+{% include tools/pub-option-no-offline.md %}
 
 ### `--[no-]precompile`
 

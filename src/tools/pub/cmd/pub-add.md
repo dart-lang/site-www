@@ -79,9 +79,7 @@ Depends on a package that's shipped with the specified SDK
 
 ### `--[no-]offline`
 
-By default, pub connects to the network
-to retrieve hosted packages (`--no-offline`).
-To use cached packages instead, use `--offline`.
+{% include tools/pub-option-no-offline.md %}
 
 ### `-n, --dry-run`
 
