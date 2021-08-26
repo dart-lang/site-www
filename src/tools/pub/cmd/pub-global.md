@@ -213,10 +213,8 @@ For options that apply to all pub commands, see
 
 ### `<constraint>`
 
-Optional for `dart pub global activate`. 
-
-The constraint allows you to pull in a specific version of the package. 
-
+Use `dart pub global activate <package> <constraint>` 
+to specify a specific version of the package. 
 For example, the following command pulls
 the 0.6.0 version of the `markdown` package:
 
