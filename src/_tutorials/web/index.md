@@ -1,6 +1,7 @@
 ---
 title: "Tutorials: web apps"
 description: Tutorials for writing Dart web apps.
+toc: false
 ---
 
 {% include web-tutorials.md %}
