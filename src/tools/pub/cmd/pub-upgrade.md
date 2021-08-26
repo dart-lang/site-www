@@ -143,16 +143,18 @@ This command is similar to `--major-versions`.
   so that you can undo the changes if necessary.
 {{site.alert.end}}
 
-### `--offline`
+### `--[no-]offline`
 
-Uses cached packages rather than downloading
-from the network.
-For details, see [Upgrading while offline](#upgrading-while-offline).
+By default, pub connects to the network
+to retrieve hosted packages (`--no-offline`).
+To use cached packages instead, use `--offline`.
+For details, see [Getting while offline](#getting-while-offline).
 
-### `--precompile`
+### `--[no-]precompile`
 
-Creates snapshots of the
-project's executables in direct dependencies.
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
 {{site.alert.info}}
   *Problems?*

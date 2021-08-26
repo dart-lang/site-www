@@ -142,16 +142,18 @@ Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
-### `--offline`
+### `--[no-]offline`
 
-Uses cached packages rather than downloading
-from the network.
+By default, pub connects to the network
+to retrieve hosted packages (`--no-offline`).
+To use cached packages instead, use `--offline`.
 For details, see [Getting while offline](#getting-while-offline).
 
-### `--precompile`
+### `--[no-]precompile`
 
-Creates snapshots of the
-project's executables in direct dependencies.
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
 {{site.alert.info}}
   *Problems?*

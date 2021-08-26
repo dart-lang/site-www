@@ -65,8 +65,9 @@ default format.
 
 ### `--[no-]dev`
 
-Prints all package dependencies, including dev dependencies. 
-Dev dependencies are included by default.
+By default, prints all dependencies, 
+including dev dependencies (`--dev`).
+To remove dev dependencies, use `--no-dev`.
 
 ### `--executables`
 

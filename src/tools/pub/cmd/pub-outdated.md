@@ -207,44 +207,39 @@ Generates output in JSON format.
 
 ### `--[no-]color`
 
-Controls whether the output uses color for emphasis.
-The default depends on whether you're using this command at a terminal.
-
-At a terminal, `--color` is the default;
-otherwise, `--no-color` is the default.
+By default, uses color when printing to a terminal (`--color`),
+otherwise doesn't use color (`--no-color`).
+To not include color when printing to a terminal, use `--no-color`.
 
 ### `--[no-]up-to-date`
 
-Makes the output include dependencies that 
-are already at the latest version.
-
-The default is `--no-up-to-date`, which saves space.
+By default, doesn't include dependencies that
+are at the latest version (`--no-up-to-date`).
+To include up-to-date dependencies, use `--up-to-date`.
 
 ### `--[no-]prereleases`
 
-Includes prereleases when determining the latest package versions.
-
-By default, prerelease versions aren't considered.
+By default, includes prereleases
+when determining the last package versions (`--prereleases`).
+To not consider preleases, use `--no-prereleases`.
 
 ### `--[no-]dev-dependencies`
 
-Accounts for [dev dependencies][dev dependency] 
-when resolving package constraints.
-
-By default, dev dependencies are accounted for.
+By default, accounts for [dev dependencies][dev dependency] 
+when resolving package constraints (`--dev-dependencies`).
+To not consider dev dependencies, use `--no-dev-dependencies`.
 
 ### `--[no-]dependency-overrides`
 
-Accounts for [`dependency_overrides`][] 
-when resolving package constraints.
-
-By default, dependency overrides are accounted for.
+By default, accounts for [`dependency_overrides`][] 
+when resolving package constraints (`--dependency-overrides`).
+To not consider overrides, use `dependency_overrides`.
 
 ### `--[no-]transitive`
 
-Shows [transitive dependencies][] as part of the output.
-
-By default, transitive dependencies are not included.
+By default, doesn't include [transitive dependencies][] 
+as part of the output (`--no-transitive`).
+To include transitive dependencies, use `--no-transitive`.
 
 {{site.alert.info}}
   *Problems?*
