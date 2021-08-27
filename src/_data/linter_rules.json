@@ -180,7 +180,7 @@
       "flutter",
       "effective_dart"
     ],
-    "details": "\n**DO** override `hashCode` if overriding `==` and prefer overriding `==` if\noverriding `hashCode`.\n\nEvery object in Dart has a `hashCode`.  Both the `==` operator and the\n`hashCode` property of objects must be consistent in order for a common hash\nmap implementation to function properly.  Thus, when overriding `==`, the\n`hashCode` should also be overridden to maintain consistency. Similarly, if\n`hashCode` is overridden, `==` should be also.\n\n**BAD:**\n```dart\nclass Bad {\n  final int value;\n  Bad(this.value);\n\n  @override\n  bool operator ==(Object other) => other is Bad && other.value == value;\n}\n```\n\n**GOOD:**\n```dart\nclass Better {\n  final int value;\n  Better(this.value);\n\n  @override\n  bool operator ==(Object other) => other is Better && other.value == value;\n\n  @override\n  int get hashCode => value.hashCode;\n}\n```\n"
+    "details": "\n**DO** override `hashCode` if overriding `==` and prefer overriding `==` if\noverriding `hashCode`.\n\nEvery object in Dart has a `hashCode`.  Both the `==` operator and the\n`hashCode` property of objects must be consistent in order for a common hash\nmap implementation to function properly.  Thus, when overriding `==`, the\n`hashCode` should also be overridden to maintain consistency. Similarly, if\n`hashCode` is overridden, `==` should be also.\n\n**BAD:**\n```dart\nclass Bad {\n  final int value;\n  Bad(this.value);\n\n  @override\n  bool operator ==(Object other) => other is Bad && other.value == value;\n}\n```\n\n**GOOD:**\n```dart\nclass Better {\n  final int value;\n  Better(this.value);\n\n  @override\n  bool operator ==(Object other) =>\n      other is Better &&\n      other.runtimeType == runtimeType &&\n      other.value == value;\n\n  @override\n  int get hashCode => value.hashCode;\n}\n```\n"
   },
   {
     "name": "invariant_booleans",
@@ -1300,7 +1300,7 @@
     "sets": [
       "flutter"
     ],
-    "details": "\n**PREFER** using `const` for instantiating constant constructors.\n\nIf a const constructor is available, it is preferable to use it.\n\n**GOOD:**\n```dart\nclass A {\n  const A();\n}\n\nvoid accessA() {\n  A a = const A();\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  final int x;\n\n  const A(this.x);\n}\n\nA foo(int x) => new A(x);\n```\n\n**BAD:**\n```dart\nclass A {\n  const A();\n}\n\nvoid accessA() {\n  A a = new A();\n}\n```\n\n"
+    "details": "\n**PREFER** using `const` for instantiating constant constructors.\n\nIf a constructor can be invoked as const to produce a canonicalized instance,\nit's preferable to do so.\n\n**GOOD:**\n```dart\nclass A {\n  const A();\n}\n\nvoid accessA() {\n  A a = const A();\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  final int x;\n\n  const A(this.x);\n}\n\nA foo(int x) => new A(x);\n```\n\n**BAD:**\n```dart\nclass A {\n  const A();\n}\n\nvoid accessA() {\n  A a = new A();\n}\n```\n\n"
   },
   {
     "name": "prefer_const_constructors_in_immutables",
