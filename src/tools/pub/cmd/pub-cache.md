@@ -51,15 +51,14 @@ For options that apply to all pub commands, see
 
 ### `--all`
 
-Optional for `dart pub cache add`.
-
-Installs all matching versions of a library.
+Use `dart pub cache add --all` 
+to install all matching versions of a library.
 
 ### `--version `_`<constraint>`_
 
-Optional for `dart pub cache add`.
-
-Installs the best version matching the specified constraint. For example:
+Use with `dart pub cache add`
+to install the version best matching the specified constraint. 
+For example:
 
 ```terminal
 $ dart pub cache add http --version "0.12.2"

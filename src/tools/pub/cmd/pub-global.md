@@ -29,7 +29,7 @@ package that your package depends on, see [dart run](/tools/dart-run).
 ## Activating a package
 
 ```nocode
-dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -211,9 +211,9 @@ Use `list` to list all currently active packages.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `<constraint>`
+### `[version-constraint]`
 
-Use `dart pub global activate <package> <constraint>` 
+Use `dart pub global activate <package> [version-constraint]` 
 to specify a specific version of the package. 
 For example, the following command pulls
 the 0.6.0 version of the `markdown` package:
@@ -229,15 +229,15 @@ constraint. For example:
 $ dart pub global activate foo <3.0.0
 ```
 
-### `--executable=<name>` or `-x<name>`
+### `--executable=<name>` or `-x <name>`
 
-Optional for `dart pub global activate`.
-
-Adds the specified executable to your PATH.
+Use with `dart pub global activate`
+to add the specified executable to your PATH.
 You can pass more than one of these flags.
 
-For example, the following command adds `bar` and `baz` (but not
-any other executables that `foo` might define) to your PATH.
+For example, the following command adds `bar` and `baz`,
+(but not any other executables that `foo` might define) 
+to your PATH.
 
 ```terminal
 $ dart pub global activate foo -x bar -x baz
@@ -245,19 +245,18 @@ $ dart pub global activate foo -x bar -x baz
 
 ### `--no-executables`
 
-Optional for `dart pub global activate`.
-
-Globally activates the package
-but doesn't put any executables in `bin`. 
+Use `dart pub global activate <package> --no-executables`
+to globally activate the specified package,
+but not put any executables in `bin`. 
 You have to use `dart pub global run` to run any executables.
 
 ### `--overwrite`
 
-Optional for `dart pub global activate`.
+Use `dart pub global activate <package> --overwrite`
+to overwrite any previously activated global executables
+with the same name. If you don't specify this flag,
+the preexisting executable will not be replaced.
 
-Normally, if executables from two global packages have a name collision, 
-the preexisting executable wins. If you specify this flag,
-the new executable overwrites the previously activated executable.
 
 {{site.alert.info}}
   *Problems?*
