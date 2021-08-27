@@ -170,3 +170,8 @@ The specified level determines the amount of information that is displayed:
 ### `-verbose` or `-v`
 
 Equivalent to `--verbosity=all`.
+
+### `--directory=<dir>` or `-C <dir>`
+
+Runs the command in the specified directory.
+

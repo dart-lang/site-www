@@ -229,6 +229,13 @@ constraint. For example:
 $ dart pub global activate foo <3.0.0
 ```
 
+### `--no-executables`
+
+Use `dart pub global activate <package> --no-executables`
+to globally activate the specified package,
+but not put any executables in `bin`.
+You have to use `dart pub global run` to run any executables.
+
 ### `--executable=<name>` or `-x <name>`
 
 Use with `dart pub global activate`
@@ -242,13 +249,6 @@ to your PATH.
 ```terminal
 $ dart pub global activate foo -x bar -x baz
 ```
-
-### `--no-executables`
-
-Use `dart pub global activate <package> --no-executables`
-to globally activate the specified package,
-but not put any executables in `bin`. 
-You have to use `dart pub global run` to run any executables.
 
 ### `--overwrite`
 

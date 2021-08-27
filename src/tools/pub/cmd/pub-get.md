@@ -136,15 +136,15 @@ run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later versi
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
+
 ### `--dry-run` or `-n`
 
 Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
-
-### `--[no-]offline`
-
-{% include tools/pub-option-no-offline.md %}
 
 ### `--[no-]precompile`
 

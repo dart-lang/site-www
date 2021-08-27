@@ -201,10 +201,6 @@ so that each package uses the versions in the **Resolvable** column.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-### `--json`
-
-Generates output in JSON format.
-
 ### `--[no-]color`
 
 Adds color to the output for emphasis (`--color`). 
@@ -213,11 +209,21 @@ At a terminal, `--color` is the default,
 otherwise, `--no-color` is the default. 
 Use `--no-color` to disable color in all environments.
 
-### `--[no-]up-to-date`
+### `--[no-]dependency-overrides`
 
-By default, doesn't include dependencies that
-are at the latest version (`--no-up-to-date`).
-To include up-to-date dependencies, use `--up-to-date`.
+By default, accounts for [`dependency_overrides`][]
+when resolving package constraints (`--dependency-overrides`).
+To not consider overrides, use `--no-dependency_overrides`.
+
+### `--[no-]dev-dependencies`
+
+By default, accounts for [dev dependencies][dev dependency]
+when resolving package constraints (`--dev-dependencies`).
+To not consider dev dependencies, use `--no-dev-dependencies`.
+
+### `--json`
+
+Generates output in JSON format.
 
 ### `--[no-]prereleases`
 
@@ -225,23 +231,18 @@ By default, includes prereleases
 when determining the last package versions (`--prereleases`).
 To not consider preleases, use `--no-prereleases`.
 
-### `--[no-]dev-dependencies`
-
-By default, accounts for [dev dependencies][dev dependency] 
-when resolving package constraints (`--dev-dependencies`).
-To not consider dev dependencies, use `--no-dev-dependencies`.
-
-### `--[no-]dependency-overrides`
-
-By default, accounts for [`dependency_overrides`][] 
-when resolving package constraints (`--dependency-overrides`).
-To not consider overrides, use `--no-dependency_overrides`.
-
 ### `--[no-]transitive`
 
-By default, doesn't include [transitive dependencies][] 
+By default, doesn't include [transitive dependencies][]
 as part of the output (`--no-transitive`).
 To include transitive dependencies, use `--transitive`.
+
+### `--[no-]up-to-date`
+
+By default, doesn't include dependencies that
+are at the latest version (`--no-up-to-date`).
+To include up-to-date dependencies, use `--up-to-date`.
+
 
 {{site.alert.info}}
   *Problems?*
