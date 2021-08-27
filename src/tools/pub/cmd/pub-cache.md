@@ -29,16 +29,16 @@ You can perform a clean reinstallation of all packages in your system cache:
 $ dart pub cache repair
 ```
 
-This is useful if the packages in your system cache
-were somehow changed or broken.
+This command can be useful when packages in your system cache
+are somehow changed or broken.
 
 For example, some editors make it easy to find implementation files
 for packages in the system cache,
 and you might accidentally edit one of those files.
 
-## Clear the global system cache
+## Clearing the global system cache
 
-You can clear the entire system cache:
+You can empty the entire system cache:
 
 ```terminal
 $ dart pub cache clear
