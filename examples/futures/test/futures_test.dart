@@ -2,7 +2,7 @@ import 'package:futures_examples/long_chain.dart' as long_chain;
 import 'package:test/test.dart';
 
 void main() {
-  test('long chain full', () {
+  test('long future chain prints', () {
     expect(() async {
       long_chain.main();
       await Future.delayed(Duration(milliseconds: 500));
