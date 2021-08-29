@@ -383,7 +383,7 @@ void main() {
 function has a lot of code packed into it, chances are that you could be doing
 something dangerous without realizing it:
 
-<?code-excerpt "futures/bin/mixing_errors_problematic.dart (fragile) replace="/ellipsis\(\);/.../g;"?>
+<?code-excerpt "futures/bin/mixing_errors_problematic.dart (fragile)" replace="/ellipsis\(\);/.../g;"?>
 ```dart
 Future fragileFunc() {
   return Future.sync(() {
