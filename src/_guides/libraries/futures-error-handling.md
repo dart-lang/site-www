@@ -229,7 +229,7 @@ handled by `catchError()`.  Because `catchError()`'s Future completes with
 void main() {
   funcThatThrows()
       // Future completes with an error.
-      .then((_) => ellipsis())
+      .then((_) => ...)
       .catchError((e) {
     handleError(e);
     printErrorMessage();
@@ -268,7 +268,7 @@ this code:
 ```dart
 void main() {
   Future<Object> future = funcThatThrows();
-  
+
   // BAD: Too late to handle funcThatThrows() exception.
   Future.delayed(const Duration(milliseconds: 500), () {
     future.then(...).catchError(...);
@@ -286,7 +286,7 @@ The problem goes away if `funcThatThrows()` is called within the
 ```dart
 void main() {
   Future.delayed(const Duration(milliseconds: 500), () {
-    funcThatThrows().then(...).catchError(..)); // We get here.
+    funcThatThrows().then(...).catchError(...); // We get here.
   });
 }
 ```
