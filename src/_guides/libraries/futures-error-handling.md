@@ -56,15 +56,13 @@ The next few sections give examples of this pattern.
 The following example deals with throwing an exception from within `then()`'s
 callback and demonstrates `catchError()`'s versatility as an error handler:
 
-<?code-excerpt "futures/lib/simple.dart (comprehensive-errors)" replace="/ellipsis()/.../g;"?>
+<?code-excerpt "futures/lib/simple.dart (comprehensive-errors)" replace="/ellipsis\(\);/.../g;"?>
 ```dart
-myFunc()
-  .then((value) {
-    doSomethingWith(value);
-    ...
-    throw Exception('Some arbitrary error');
-  })
-  .catchError(handleError);
+myFunc().then((value) {
+  doSomethingWith(value);
+  ...
+  throw Exception('Some arbitrary error');
+}).catchError(handleError);
 ```
 
 If `myFunc()`'s Future completes with a value, `then()`'s callback fires. If
@@ -166,14 +164,14 @@ Given the complex workflow, `handleAuthResponse()` could generate various
 errors and exceptions, and you should handle them differently. Here's
 how you can use `test` to do that:
 
-<?code-excerpt "futures/lib/simple.dart (auth-response)" replace="/ellipsis()/.../g;"?>
+<?code-excerpt "futures/lib/simple.dart (auth-response)" replace="/ellipsis\(\)/.../g;"?>
 ```dart
 void main() {
   handleAuthResponse(const {'username': 'dash', 'age': 3})
-          .then((_) => ...)
-          .catchError(handleFormatException, test: (e) => e is FormatException)
-          .catchError(handleAuthorizationException,
-              test: (e) => e is AuthorizationException);
+      .then((_) => ...)
+      .catchError(handleFormatException, test: (e) => e is FormatException)
+      .catchError(handleAuthorizationException,
+          test: (e) => e is AuthorizationException);
 }
 ```
 
@@ -207,7 +205,7 @@ easiest to understand through examples.
 In the code below, `then()`'s Future completes with an error, so
 `whenComplete()`'s Future also completes with that error.
 
-<?code-excerpt "futures/lib/simple.dart (auth-response)" replace="/withErrorMain/main/g; "?>
+<?code-excerpt "futures/lib/when_complete.dart (with-error)" replace="/withErrorMain/main/g; "?>
 ```dart
 void main() {
   funcThatThrows()
@@ -226,7 +224,7 @@ In the code below, `then()`'s Future completes with an error, which is now
 handled by `catchError()`.  Because `catchError()`'s Future completes with
 `someObject`, `whenComplete()`'s Future completes with that same object.
 
-<?code-excerpt "futures/lib/simple.dart (with-object)" replace="/ellipsis()/.../g; /withObjectMain/main/g; "?>
+<?code-excerpt "futures/lib/when_complete.dart (with-object)" replace="/ellipsis()/.../g; /withObjectMain/main/g; "?>
 ```dart
 void main() {
   funcThatThrows()
@@ -245,7 +243,7 @@ void main() {
 If `whenComplete()`'s callback throws an error, then `whenComplete()`'s Future
 completes with that error:
 
-<?code-excerpt "futures/lib/simple.dart (when-complete-error)" replace="/whenCompleteError/main/g; "?>
+<?code-excerpt "futures/lib/when_complete.dart (when-complete-error)" replace="/whenCompleteError/main/g; "?>
 ```dart
 void main() {
   funcThatThrows()
@@ -325,7 +323,7 @@ throws, a synchronous error propagates:
 ```dart
 void main() {
   parseAndRead(data).catchError((e) {
-    print("Inside catchError");
+    print('Inside catchError');
     print(e);
   });
 }
@@ -371,7 +369,7 @@ With code wrapped within `Future.sync()`, `catchError()` can handle all errors:
 ```dart
 void main() {
   parseAndRead(data).catchError((e) {
-    print("Inside catchError");
+    print('Inside catchError');
     print(e);
   });
 }
@@ -385,7 +383,7 @@ void main() {
 function has a lot of code packed into it, chances are that you could be doing
 something dangerous without realizing it:
 
-<?code-excerpt "futures/bin/mixing_errors_problematic.dart (fragile) replace="/ellipsis();/.../g;"?>
+<?code-excerpt "futures/bin/mixing_errors_problematic.dart (fragile) replace="/ellipsis\(\);/.../g;"?>
 ```dart
 Future fragileFunc() {
   return Future.sync(() {

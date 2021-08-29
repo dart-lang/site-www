@@ -3,7 +3,7 @@
 import 'package:examples_util/ellipsis.dart';
 import 'package:futures_examples/util.dart';
 
-// #docregion (bad)
+// #docregion bad
 void mainBad() {
   Future<Object> future = funcThatThrows();
 
@@ -12,12 +12,12 @@ void mainBad() {
     future.then(ellipsis()).catchError(ellipsis());
   });
 }
-// #enddocregion (bad)
+// #enddocregion bad
 
-// #docregion (good)
+// #docregion good
 void mainGood() {
   Future.delayed(const Duration(milliseconds: 500), () {
     funcThatThrows().then(ellipsis()).catchError(ellipsis()); // We get here.
   });
 }
-// #enddocregion (good)
+// #enddocregion good
