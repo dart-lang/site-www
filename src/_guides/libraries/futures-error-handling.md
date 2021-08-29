@@ -224,7 +224,7 @@ In the code below, `then()`'s Future completes with an error, which is now
 handled by `catchError()`.  Because `catchError()`'s Future completes with
 `someObject`, `whenComplete()`'s Future completes with that same object.
 
-<?code-excerpt "futures/lib/when_complete.dart (with-object)" replace="/ellipsis()/.../g; /withObjectMain/main/g; "?>
+<?code-excerpt "futures/lib/when_complete.dart (with-object)" replace="/ellipsis\(\)/.../g; /withObjectMain/main/g; "?>
 ```dart
 void main() {
   funcThatThrows()
@@ -264,7 +264,7 @@ this avoids scenarios where a Future completes with an error, the error
 handler is not yet attached, and the error accidentally propagates. Consider
 this code:
 
-<?code-excerpt "futures/lib/early_error_handlers.dart (bad)" replace="/ellipsis()/.../g; /mainBad/main/g;"?>
+<?code-excerpt "futures/lib/early_error_handlers.dart (bad)" replace="/ellipsis\(\)/.../g; /mainBad/main/g;"?>
 ```dart
 void main() {
   Future<Object> future = funcThatThrows();
@@ -282,7 +282,7 @@ In the code above, `catchError()` is not registered until half a second after
 The problem goes away if `funcThatThrows()` is called within the
 `Future.delayed()` callback:
 
-<?code-excerpt "futures/lib/early_error_handlers.dart (good)" replace="/ellipsis()/.../g; /mainGood/main/g;"?>
+<?code-excerpt "futures/lib/early_error_handlers.dart (good)" replace="/ellipsis\(\)/.../g; /mainGood/main/g;"?>
 ```dart
 void main() {
   Future.delayed(const Duration(milliseconds: 500), () {
