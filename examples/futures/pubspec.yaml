@@ -1,6 +1,7 @@
 name: futures_examples
 description: dart.dev futures and error handling examples.
 version: 0.0.1
+publish_to: none
 
 environment:
   sdk: '>=2.13.0 <3.0.0'
