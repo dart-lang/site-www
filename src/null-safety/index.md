@@ -2,7 +2,7 @@
 title: Sound null safety
 description: Information about Dart's null safety feature
 ---
-
+ 
 The Dart language now supports sound null safety!
 
 When you opt into null safety,
