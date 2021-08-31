@@ -84,4 +84,4 @@ If you have any other problems when using DartPad,
 [browser]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
-[HTML and Dart connections]: /tutorials/web/low-level-html/connect-dart-html/connections
+[HTML and Dart connections]: /tutorials/web/low-level-html/connect-dart-html#connections
