@@ -2,6 +2,7 @@
 title: Dart SDK archive
 short-title: Archive
 description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
+permalink: /get-dart/archive
 js:
 - url: /tools/sdk/archive/out/web/download_archive.dart.js
   defer: true
