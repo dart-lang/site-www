@@ -1348,7 +1348,7 @@ You can also use a nullable *bound*:
 ```dart
 // Using null safety:
 class Interval<T extends num?> {
-  T min, max;
+  T? min, max;
 
   bool get isEmpty {
     var localMin = min;
