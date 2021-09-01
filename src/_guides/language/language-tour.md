@@ -667,15 +667,20 @@ String piAsString = 3.14159.toStringAsFixed(2);
 assert(piAsString == '3.14');
 ```
 
-The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
-(&), and OR (|) operators. For example:
+The `int` type specifies the traditional bitwise shift (`<<`, `>>`, `>>>`),
+complement (`~`), AND (`&`), OR (`|`), and XOR (`^`) operators,
+which are useful for manipulating and masking flags in bit fields.
+For example:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
 ```dart
 assert((3 << 1) == 6); // 0011 << 1 == 0110
-assert((3 >> 1) == 1); // 0011 >> 1 == 0001
 assert((3 | 4) == 7); // 0011 | 0100 == 0111
+assert((3 & 4) == 0); // 0011 & 0100 == 0000
 ```
+
+For more examples, see the
+[bitwise and shift operator](#bitwise-and-shift-operators) section.
 
 Literal numbers are compile-time constants.
 Many arithmetic expressions are also compile-time constants,
@@ -1991,6 +1996,7 @@ you’d use these bitwise and shift operators with integers.
 | <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
 | `<<`                        | Shift left
 | `>>`                        | Shift right
+| `>>>`                       | Unsigned shift right
 {:.table .table-striped}
 
 Here’s an example of using bitwise and shift operators:
@@ -2006,7 +2012,15 @@ assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
 assert((value << 4) == 0x220); // Shift left
 assert((value >> 4) == 0x02); // Shift right
+assert((value >>> 4) == 0x02); // Unsigned shift right
+assert((-value >> 4) == -0x03); // Shift right
+assert((-value >>> 4) > 0); // Unsigned shift right
 ```
+
+{{site.alert.version-note}}
+  The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
+  requires a [language version][] of at least 2.14.
+{{site.alert.end}}
 
 
 ### Conditional expressions
@@ -3181,11 +3195,11 @@ class Point {
 Operators are instance methods with special names.
 Dart allows you to define operators with the following names:
 
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
+`<`  | `+`  | `|`  | `>>>`
+`>`  | `/`  | `^`  | `[]`
+`<=` | `~/` | `&`  | `[]=`
+`>=` | `*`  | `<<` | `~`
+`–`  | `%`  | `>>` | `==`
 {:.table}
 
 {{site.alert.note}}
