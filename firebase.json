@@ -5,7 +5,12 @@
     "trailingSlash": false,
     "headers": [{
         "source": "**/*.@(txt|json)",
-        "headers": [ { "key": "Access-Control-Allow-Origin", "value": "*" } ]
+        "headers": [
+          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Referrer-Policy", "value":  "strict-origin-when-cross-origin"},
+          { "key": "X-Frame-Options", "value":  "SAMEORIGIN"},
+          { "key": "X-Content-Type-Options", "value":  "nosniff"}
+        ]
     }],
     "redirects": [
       { "source": "/\\)", "destination": "/", "type": 301 },
