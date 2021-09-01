@@ -160,7 +160,7 @@ adding [hint markers][] to your Dart code.
 
 Before starting the tool, make sure you're ready:
 
-* Use the latest beta release of the Dart SDK.
+* Use the latest stable release of the Dart SDK.
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
   
@@ -361,7 +361,7 @@ consider migrating those libraries together.
 To migrate a package by hand, follow these steps:
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0`:
+   setting the minimum SDK constraint to at least `2.12.0`:
    ```yaml
    environment:
      sdk: '>=2.12.0 <3.0.0'
@@ -375,9 +375,9 @@ To migrate a package by hand, follow these steps:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0`
+   Running `dart pub get` with a lower SDK constraint of at least `2.12.0`
    sets the default language version of
-   every library in the package to 2.12,
+   every library in the package to a minimum of 2.12,
    opting them all in to null safety.
 
 3. Open the package in your IDE. <br>
@@ -398,7 +398,7 @@ for more help on migrating code by hand.
 ## 3. Analyze {#step3-analyze}
 
 Update your packages
-(using `pub get` in your IDE or on the command line).
+(using `dart pub get` in your IDE or on the command line).
 Then use your IDE or the command line
 to perform [static analysis][] on your code:
 
@@ -430,34 +430,23 @@ If so, revert your code changes before using the migration tool again.
 We encourage you to publish packages as prereleases
 as soon as you migrate:
 
-* [Set the SDK constraints to the tested beta version.](#sdk-constraints)
 * [Set the package version to indicate a breaking change.](#package-version)
+* [Publish the package as a prerelease if development is still in progress.][]
 
-### SDK constraints
-
-Set the lower SDK constraint to 2.12.0:
-
-```yaml
-environment:
-  sdk: '>=2.12.0 <3.0.0'
-```
-
-With these constraints,
-packages that are published during null safety beta
-can still work with the next stable release of the Dart SDK.
+[Publish the package as a prerelease if development is still in progress.]: /tools/pub/publishing#publishing-prereleases
 
 ### Package version
 
 Update the version of the package
 to indicate a breaking change:
 
-* If your package is already at 1.0.0 or greater,
+* If your package is already at `1.0.0` or greater,
   increase the major version.
   For example, if the previous version is `2.3.2`,
   the new version is `3.0.0`.
 
-* If your package hasn't reached 1.0.0 yet,
-  _either_ increase the minor version _or_ update the version to 1.0.0.
+* If your package hasn't reached `1.0.0` yet,
+  _either_ increase the minor version _or_ update the version to `1.0.0`.
   For example, if the previous version is `0.3.2`,
   the new version is either `0.4.0` or `1.0.0`.
 
