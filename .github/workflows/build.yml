@@ -120,7 +120,6 @@ jobs:
     runs-on: ubuntu-latest
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     steps:
-    steps:
       - uses: actions/checkout@v2
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
