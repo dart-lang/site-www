@@ -1,53 +1,72 @@
 ---
 title: dart pub cache
 description: Use dart pub cache to manage your system cache.
-toc: false
 ---
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub cache add <package> [--version <constraint>] [--all]
 $ dart pub cache repair
 ```
 
 The `dart pub cache` command works with the
 [system cache](/tools/pub/glossary#system-cache).
-To add new packages to your cache, use `dart pub cache add`.
-To perform a clean reinstall of the packages in your system cache,
-use `dart pub cache repair`.
+
+## Adding a package to the system cache
+
+You can manually add a package to your system cache:
+
+```terminal
+$ dart pub cache add <package>
+```
+
+## Reinstalling all packages in the system cache
+
+You can perform a clean reinstallation of all packages in your system cache:
+
+```terminal
+$ dart pub cache repair
+```
+
+This command can be useful when packages in your system cache
+are somehow changed or broken.
+
+For example, some editors make it easy to find implementation files
+for packages in the system cache,
+and you might accidentally edit one of those files.
+
+## Clearing the global system cache
+
+You can empty the entire system cache:
+
+```terminal
+$ dart pub cache clear
+```
 
 ## Options
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl>
-<dt><code>add &lt;package&gt;</code></dt>
-<dd>Installs a library in your cache.</dd>
+### `--all`
 
-<dt><code>--all</code></dt>
-<dd>Optional. Use with <code>dart pub cache add</code> to install all
-matching versions of a library.</dd>
+Use `dart pub cache add --all` 
+to install all matching versions of a library.
 
-<dt><code>--version &lt;constraint&gt;</code></dt>
-<dd>Optional. Use with <code>dart pub cache add</code> to install the best
-version matching the specified constraint. For example:
+### `--version `_`<constraint>`_
 
-{% prettify nocode tag=pre+code %}
+Use with `dart pub cache add`
+to install the version best matching the specified constraint. 
+For example:
+
+```terminal
 $ dart pub cache add http --version "0.12.2"
-{% endprettify %}
+```
 
-If <code>--version</code> is omitted, pub installs the best of all known
-versions.</dd>
+If `--version` is omitted, pub installs the best of all known versions.
 
-<dt><code>repair</code></dt>
-<dd>It's possible for packages in your pub cache to change or break.
-For example, some editors make it easy to find implementation files for
-packages in the pub cache, and you might accidentally edit one of those files.
-The <code>dart pub cache repair</code> command performs a clean reinstall of all
-hosted and git packages in the system cache.</dd>
-
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

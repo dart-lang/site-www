@@ -1,12 +1,11 @@
 ---
 title: dart pub remove
 description: Use dart pub remove to remove a dependency.
-toc: false
 ---
 
 _Remove_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub remove <package> [options]
 ```
 
@@ -16,7 +15,7 @@ For example, the following command is equivalent to
 editing `pubspec.yaml` (removing `http` from `dependencies` or `dev_dependencies`)
 and then calling `dart pub get`:
 
-```
+```terminal
 $ dart pub remove http
 ```
 
@@ -25,11 +24,22 @@ $ dart pub remove http
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl>
-    <dt><code>--[no-]offline</code></dt>
-    <dd>Uses cached packages instead of the network.</dd>
-    <dt><code>-n, --dry-run</code></dt>
-    <dd>Reports which dependencies would change, but doesn't change any.</dd>
-    <dt><code>--[no-]precompile</code></dt>
-    <dd>Precompiles executables in immediate dependencies (true by default).</dd>
-</dl>
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
+
+### `-n, --dry-run`
+
+Reports which dependencies would change, 
+but doesn't change any.
+
+### `--[no-]precompile`
+
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

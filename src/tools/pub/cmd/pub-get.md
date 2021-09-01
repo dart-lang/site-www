@@ -5,9 +5,9 @@ description: Use dart pub get to retrieve the dependencies used by your Dart app
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
-$ dart pub get [args]
-{% endprettify %}
+```
+$ dart pub get [options]
+```
 
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
@@ -31,9 +31,9 @@ this command creates a `.packages` file.
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:test/test.dart';
-{% endprettify %}
+```
 
 When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
@@ -58,18 +58,14 @@ By default, pub creates a `.packages` file
 that maps from package names to location URIs.
 Before the `.packages` file, pub used to create `packages` directories.
 
-<aside class="alert alert-info" markdown="1">
-**Note:** Don't check the generated `.packages` file,
-`packages` directories (if present), or
-`.dart_tool` directory into your repo;
-add them to your repo's `.gitignore` file.
-For more information, see
-[What Not to Commit](/guides/libraries/private-files).
-{% comment %}
-PENDING: here just to make it easy to find discussions of `packages`...
-{% include packages-dir.html %}
-{% endcomment %}
-</aside>
+{{site.alert.note}}
+  Don't check the generated `.packages` file,
+  `packages` directories (if present), or
+  `.dart_tool` directory into your repo;
+  add them to your repo's `.gitignore` file.
+  For more information, 
+  see [What not to commit](/guides/libraries/private-files).
+{{site.alert.end}}
 
 For more information, see the
 [package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
@@ -140,24 +136,23 @@ run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later versi
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
+
 ### `--dry-run` or `-n`
 
 Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
-### `--offline`
+### `--[no-]precompile`
 
-Uses cached packages rather than downloading
-from the network.
-For details, see [Getting while offline](#getting-while-offline).
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
-### `--precompile`
-
-Creates snapshots of the
-project's executables in direct dependencies.
-
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

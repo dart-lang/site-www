@@ -143,26 +143,35 @@ to make it directly available from the command line.
 Several command-line options work with all of the pub subcommands.
 These include:
 
-`--help` or `-h`
-: Print usage information.
+### `--help` or `-h`
 
-`--trace`
-: Print debugging information when an error occurs.
+Prints usage information.
 
-`--verbosity=<level>`
-: The specified level determines the amount of information that is displayed:
+### `--trace`
+
+Prints debugging information when an error occurs.
+
+### `--verbosity=`_`<level>`_
+
+The specified level determines the amount of information that is displayed:
 
 * `all`
-: Show all output, including internal tracing messages.
+: Shows all output, including internal tracing messages.
 
 * `io`
-: Show I/O operations.
+: Shows I/O operations.
 
 * `normal`
-: Show errors, warnings, and user messages.
+: Shows errors, warnings, and user messages.
 
 * `solver`
-: Show steps during version resolution.
+: Shows steps during version resolution.
 
-`-verbose` or `-v`
-: Equivalent to `--verbosity=all`.
+### `-verbose` or `-v`
+
+Equivalent to `--verbosity=all`.
+
+### `--directory=<dir>` or `-C <dir>`
+
+Runs the command in the specified directory.
+

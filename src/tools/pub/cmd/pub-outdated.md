@@ -6,9 +6,9 @@ diff2html: true
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub outdated [options]
-{% endprettify %}
+```
 
 Use `dart pub outdated` to identify out-of-date [package dependencies][]
 and get advice on how to update them.
@@ -201,36 +201,53 @@ so that each package uses the versions in the **Resolvable** column.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--json`
-: Use this option to generate output in JSON format.
+### `--[no-]color`
 
-`--[no-]color`
-: Use this option to change whether the output uses color for emphasis.
-  The default depends on whether you're using this command at a terminal.
-  At a terminal, `--color` is the default;
-  otherwise, `--no-color` is the default.
+Adds color to the output for emphasis (`--color`). 
+The default depends on whether you're using this command at a terminal.
+At a terminal, `--color` is the default, 
+otherwise, `--no-color` is the default. 
+Use `--no-color` to disable color in all environments.
 
-`--[no-]up-to-date`
-: Use `--up-to-date` to make the output include dependencies that
-  are already at the latest version.
-  The default is `--no-up-to-date`, which saves space.
+### `--[no-]dependency-overrides`
 
-`--[no-]prereleases`
-: Use `--prereleases` to include prereleases when determining
-  the latest package versions.
-  By default, prerelease versions aren't considered.
+By default, accounts for [`dependency_overrides`][]
+when resolving package constraints (`--dependency-overrides`).
+To not consider overrides, use `--no-dependency_overrides`.
 
-`--[no-]dev-dependencies`
-: Use `--no-dev-dependencies` to ignore [dev dependencies][dev dependency].
+### `--[no-]dev-dependencies`
 
-`--[no-]dependency-overrides`
-: Use `--no-dependency-overrides` to ignore [`dependency_overrides`][]
-  when resolving package constraints.
+By default, accounts for [dev dependencies][dev dependency]
+when resolving package constraints (`--dev-dependencies`).
+To not consider dev dependencies, use `--no-dev-dependencies`.
 
-<aside class="alert alert-info" markdown="1">
-**Problems?**
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+### `--json`
+
+Generates output in JSON format.
+
+### `--[no-]prereleases`
+
+By default, includes prereleases
+when determining the last package versions (`--prereleases`).
+To not consider preleases, use `--no-prereleases`.
+
+### `--[no-]transitive`
+
+By default, doesn't include [transitive dependencies][]
+as part of the output (`--no-transitive`).
+To include transitive dependencies, use `--transitive`.
+
+### `--[no-]up-to-date`
+
+By default, doesn't include dependencies that
+are at the latest version (`--no-up-to-date`).
+To include up-to-date dependencies, use `--up-to-date`.
+
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

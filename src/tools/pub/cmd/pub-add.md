@@ -1,12 +1,11 @@
 ---
 title: dart pub add
 description: Use dart pub add to add a dependency.
-toc: false
 ---
 
 _Add_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```nocode
 $ dart pub add <package>[:<constraint>] [options]
 ```
 
@@ -21,10 +20,10 @@ $ dart pub add http
 ```
 
 By default, `dart pub add` uses the
-latest stable version of the package from pub.dev.
-For example, if 0.13.1 is the latest stable version of the `http` package,
+latest stable version of the package from the [pub.dev site]({{site.pub}}).
+For example, if 0.13.3 is the latest stable version of the `http` package,
 then `dart pub add http` adds
-`http: ^0.13.1` under `dependencies` in the pubspec.
+`http: ^0.13.3` under `dependencies` in the pubspec.
 
 To add a [dev dependency][], use the `--dev` option:
 
@@ -39,38 +38,61 @@ $ dart pub add --dev test
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<dl>
-    <dt><code>-d, --dev</code></dt>
-        <dd>Adds the package as a dev dependency,
-        instead of as a regular dependency.</dd>
-    <dt><code>--git-url=<var>git_repo_url</var></code></dt>
-        <dd>Depends on the package in the
-        <a href="/tools/pub/dependencies#git-packages">specified Git repo</a>.
-        </dd>
-        {% prettify nocode tag=pre+code %}
-        $ dart pub add http --git-url=https://github.com/my/http.git
-        {% endprettify %}
-    <dt><code>--git-ref=<var>branch_or_commit</var></code></dt>
-        <dd>With <code>--git-url</code>,
-        depends on the specified branch or commit of a Git repo.</dd>
-        {% prettify nocode tag=pre+code %}
-        $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
-        {% endprettify %}
-    <dt><code>--git-path=<var>directory_path</var></code></dt>
-    <dd>With <code>--git-url</code>,
-    specifies the location of a package within a Git repo.</dd>
-    <dt><code>--hosted-url=<var>package_server_url</var></code></dt>
-    <dd>Depends on the package server at the specified URL.</dd>
-    <dt><code>--path=<var>directory_path</var></code></dt>
-    <dd>Depends on a locally stored package.</dd>
-    <dt><code>--sdk=<var>sdk_name</var></code></dt>
-    <dd>Depends on a package that's shipped with the specified SDK
-    (example: <code>--sdk=flutter</code>).</dd>
-    <dt><code>--[no-]offline</code></dt>
-    <dd>Uses cached packages instead of the network.</dd>
-    <dt><code>-n, --dry-run</code></dt>
-    <dd>Reports which dependencies would change, but doesn't change any.</dd>
-    <dt><code>--[no-]precompile</code></dt>
-    <dd>Precompiles executables in immediate dependencies (true by default).</dd>
+### `-d, --dev`
 
-</dl>
+Adds the package as a dev dependency,
+instead of as a regular dependency.
+
+### `--git-url=`_`<git_repo_url>`_
+
+Depends on the package in the
+[specified Git repository](/tools/pub/dependencies#git-packages).
+
+```terminal
+$ dart pub add http --git-url=https://github.com/my/http.git
+```
+
+### `--git-ref=`_`<branch_or_commit>`_
+
+With `--git-url`, depends on the specified branch or commit of a Git repo.
+
+```terminal
+$ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
+```
+
+### `--git-path=`_`<directory_path>`_
+
+With `--git-url`, specifies the location of a package within a Git repo.
+
+### `--hosted-url=`_`<package_server_url>`_
+
+Depends on the package server at the specified URL.
+
+### `--path=`_`<directory_path>`_
+
+Depends on a locally stored package.
+
+### `--sdk=`_`<sdk_name>`_
+
+Depends on a package that's shipped with the specified SDK
+(example: `--sdk=flutter`).
+
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
+
+### `-n, --dry-run`
+
+Reports which dependencies would change,
+but doesn't change any.
+
+### `--[no-]precompile`
+
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

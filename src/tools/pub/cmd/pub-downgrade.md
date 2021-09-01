@@ -5,9 +5,9 @@ description: Use dart pub downgrade to get the lowest versions of all dependenci
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify sh tag=pre+code %}
+```nocode
 $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
-{% endprettify %}
+```
 
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
@@ -105,14 +105,16 @@ available.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--[no-]offline`
-: By default, pub connects to the network to check for hosted 
-dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
+### `--[no-]offline`
 
-`--dry-run` or `-n`
-: Report what dependencies would change but don't change any.
+{% include tools/pub-option-no-offline.md %}
+
+### `--dry-run` or `-n`
+
+Reports what dependencies would change but doesn't change any.
 
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

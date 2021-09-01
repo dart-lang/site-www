@@ -1,7 +1,6 @@
 ---
 title: dart pub uploader
 description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
-toc: false
 ---
 
 {{site.alert.tip}}
@@ -12,9 +11,9 @@ toc: false
 
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub uploader [options] {add/remove} <email>
-{% endprettify %}
+```
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
@@ -62,6 +61,12 @@ Google Apps email address for any new uploaders.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+### `--package=`_`<package name>`_
+
+Specifies which package to modify the uploaders for. 
+Defaults to the package in the current directory.
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

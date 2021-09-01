@@ -29,7 +29,7 @@ package that your package depends on, see [dart run](/tools/dart-run).
 ## Activating a package
 
 ```nocode
-dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -47,7 +47,7 @@ constraint.  See the [constraint](#options) flag for usage examples.
 ### Activating a package on the pub.dev site
 
 ```terminal
-$ dart pub global activate <pub.dartlang package>
+$ dart pub global activate <pub.dev package>
 ```
 
 Specify a package on the pub.dev site to activate it. For example:
@@ -115,10 +115,10 @@ $ webdev serve
 Verify that the `bin` directory for the system cache is in your path.
 The following `PATH` variable, on macOS, includes the system cache:
 
-{% prettify none tag=pre+code %}
+```terminal
 $ echo $PATH
 /Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
-{% endprettify %}
+```
 
 If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
@@ -135,7 +135,7 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify none tag=pre+code %}
+{% prettify nocode tag=pre+code %}
 $ cd web_project
 $ [!webdev serve!]
 {% endprettify %}
@@ -171,12 +171,12 @@ entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: helloworld
 
 executables:
   helloworld:
-{% endprettify %}
+```
 
 Failing to list a script under the `executables` tag reduces the script's
 usability: unlisted scripts can be executed using `dart pub global run`, but not
@@ -211,49 +211,57 @@ Use `list` to list all currently active packages.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`<constraint>`
-: Optional for `dart pub global activate`. The constraint allows you to pull
-  in a specific version of the package. For example,
-  the following command pulls the 0.6.0 version of the `markdown`
-  package:
+### `[version-constraint]`
 
-  ```terminal
-  $ dart pub global activate markdown 0.6.0
-  ```
+Use `dart pub global activate <package> [version-constraint]` 
+to specify a specific version of the package. 
+For example, the following command pulls
+the 0.6.0 version of the `markdown` package:
 
-  If you specify a range, pub picks the best version that meets that
-  constraint. For example:
+```terminal
+$ dart pub global activate markdown 0.6.0
+```
 
-  ```terminal
-  $ dart pub global activate foo <3.0.0
-  ```
+If you specify a range, pub picks the best version that meets that
+constraint. For example:
 
-`--executable=<name>` or `-x<name>`
-: Optional for `dart pub global activate`.
-  Adds the specified executable to your PATH.
-  You can pass more than one of these flags.
-  For example, the following command adds `bar` and `baz` (but not
-  any other executables that `foo` might define) to your PATH.
+```terminal
+$ dart pub global activate foo <3.0.0
+```
 
-  ```terminal
-  $ dart pub global activate foo -x bar -x baz
-  ```
+### `--no-executables`
 
-`--no-executables`
-: Optional for `dart pub global activate`.
-  Globally activates the package but doesn't put any
-  executables in `bin`. You have to use `dart pub global run` to
-  run any executables.
+Use `dart pub global activate <package> --no-executables`
+to globally activate the specified package,
+but not put any executables in `bin`.
+You have to use `dart pub global run` to run any executables.
 
-`--overwrite`
-: Optional for `dart pub global activate`.
-  Normally, if executables from two global packages have a name
-  collision, the preexisting executable wins. If you specify this flag,
-  the new executable overwrites the previously activated executable.
+### `--executable=<name>` or `-x <name>`
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
-</aside>
+Use with `dart pub global activate`
+to add the specified executable to your PATH.
+You can pass more than one of these flags.
+
+For example, the following command adds `bar` and `baz`,
+(but not any other executables that `foo` might define) 
+to your PATH.
+
+```terminal
+$ dart pub global activate foo -x bar -x baz
+```
+
+### `--overwrite`
+
+Use `dart pub global activate <package> --overwrite`
+to overwrite any previously activated global executables
+with the same name. If you don't specify this flag,
+the preexisting executable will not be replaced.
+
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

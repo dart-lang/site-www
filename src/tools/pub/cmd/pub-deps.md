@@ -1,14 +1,13 @@
 ---
 title: dart pub deps
 description: Use dart pub deps to print a dependency graph for a package.
-toc: false
 ---
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify none tag=pre+code %}
-$ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
-{% endprettify %}
+```nocode
+$ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
+```
 
 This command prints the dependency graph for a package.
 The graph includes both the
@@ -22,11 +21,11 @@ The dependency information is printed as a tree by default.
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2
-{% endprettify %}
+```
 
 Here's an example of the `dart pub deps` output for markdown_converter:
 
@@ -50,8 +49,9 @@ markdown_converter 0.0.0
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-`--style=<style>` or `-s <style>`
-: The specified style determines the output format:
+### `--style=<style>` or `-s <style>`
+
+The specified style determines the output format:
 
 * `tree`
 : Prints dependency information as a tree. This is the 
@@ -63,18 +63,21 @@ default format.
 * `compact`
 : Prints dependency information as a compact list.
 
+### `--[no-]dev`
 
-`--dev`
-: Prints all package dependencies, including dev dependencies. Dev 
-dependencies are included by default.
+By default, prints all dependencies, 
+including dev dependencies (`--dev`).
+To remove dev dependencies, use `--no-dev`.
 
-`--no-dev`
-: Prints all package dependencies, excluding dev dependencies. 
+### `--executables`
 
-`--executables`
-: Prints all available executables.
+Prints all available executables.
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+### `--json`
+
+Generates output in JSON format.
+
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}

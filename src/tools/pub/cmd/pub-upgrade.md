@@ -5,9 +5,9 @@ description: Use dart pub upgrade to get the latest versions of all dependencies
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-{% prettify nocode tag=pre+code %}
-$ dart pub upgrade [args] [dependencies]
-{% endprettify %}
+```nocode
+$ dart pub upgrade [options] [dependencies]
+```
 
 Like [`dart pub get`](/tools/pub/cmd/pub-get),
 `dart pub upgrade` gets dependencies.
@@ -104,9 +104,13 @@ run `dart pub upgrade` again to upgrade to a later version.
 ## Options
 
 The `dart pub upgrade` command supports the
-[`dart pub get` options](/tools/pub/cmd/pub-get#options).
+[`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
 
 ### `--dry-run` or `-n`
 
@@ -114,20 +118,11 @@ Reports the dependencies that would be changed,
 but doesn't make the changes. This is useful if you
 want to analyze updates before making them.
 
-### `--major-versions`
+### `--[no-]precompile`
 
-Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
-ignoring any upper-bound constraint in the `pubspec.yaml` file.
-Also updates `pubspec.yaml` with the new constraints.
-
-[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
-
-{{site.alert.tip}}
-  Commit the `pubspec.yaml` file before running this command,
-  so that you can undo the changes if necessary.
-{{site.alert.end}}
-To check which dependencies will be upgraded,
-you can use `dart pub upgrade --major-versions --dry-run`.
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
 ### `--null-safety`
 
@@ -138,23 +133,29 @@ ignoring any upper-bound constraint in the `pubspec.yaml` file.
 Also updates `pubspec.yaml` with the new constraints.
 This command is similar to `--major-versions`.
 
+### `--major-versions`
+
+Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+
+[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
+
+{{site.alert.tip}}
+Commit the `pubspec.yaml` file before running this command,
+so that you can undo the changes if necessary.
+{{site.alert.end}}
+
+To check which dependencies will be upgraded,
+you can use `dart pub upgrade --major-versions --dry-run`.
+
 {{site.alert.tip}}
   Commit the `pubspec.yaml` file before running this command,
   so that you can undo the changes if necessary.
 {{site.alert.end}}
 
-### `--offline`
 
-Uses cached packages rather than downloading
-from the network.
-For details, see [Upgrading while offline](#upgrading-while-offline).
-
-### `--precompile`
-
-Creates snapshots of the
-project's executables in direct dependencies.
-
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-</aside>
+{{site.alert.info}}
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+{{site.alert.end}}
