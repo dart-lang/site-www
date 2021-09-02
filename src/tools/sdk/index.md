@@ -43,7 +43,7 @@ directory that has these command-line tools:
 : The API documentation generator.
 
 {{site.alert.note}}
-  The 2.10 Dart SDK also contains `dart2js`, `dart2native`, `dartanalyzer`,
+  The 2.13 Dart SDK also contains `dart2js`, `dart2native`, `dartanalyzer`,
   `dartdevc`, `dartfmt`, and `pub` commands.
   However, as of 2.10 the `dart` tool provides a unified interface
   to their functionality.
