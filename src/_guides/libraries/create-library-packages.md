@@ -80,7 +80,10 @@ library packages:
 {% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
 
 Directly under lib, the main library file,
-`shelf.dart`, exports several files from lib/src:
+`shelf.dart`, exports API from several files in lib/src.
+To avoid exposing more API than intended —
+and to give developers an overview of the entire public API of the package —
+`shelf.dart` uses `show` to specify exactly which symbols to export:
 
 ```dart
 export 'src/cascade.dart' show Cascade;
