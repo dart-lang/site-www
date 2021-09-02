@@ -1,4 +1,3 @@
-// ignore_for_file: sort_constructors_first
 import 'dart:async';
 import 'dart:io';
 
@@ -9,53 +8,45 @@ import 'package:path/path.dart' as path;
 final _unescape = HtmlUnescape();
 final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
-Future<Null> main(List<String> arguments) async {
-  var dirPath = "src/_guides/language/effective-dart";
-  var filenames = const [
-    "style.md",
-    "documentation.md",
-    "usage.md",
-    "design.md"
-  ];
+Future<void> main(List<String> arguments) async {
+  const dirPath = 'src/_guides/language/effective-dart';
+  const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
   var sections = filenames.map((name) => Section(dirPath, name)).toList();
 
-  for (var section in sections) {
+  for (final section in sections) {
     var lines = section.file.readAsLinesSync();
     // Ignore the YAML frontmatter (can lead to false H3 elements).
     lines = lines.skip(1).skipWhile((line) => line.trim() != '---').toList();
     var document = md.Document();
 
     var nodes = document.parseLines(lines);
-    for (var element in nodes.whereType<md.Element>()) {
-      if (element.tag == "h2") {
+    for (final element in nodes.whereType<md.Element>()) {
+      if (element.tag == 'h2') {
         var subsection = Subsection(element);
         section.subsections.add(subsection);
-        continue;
-      }
-
-      if (element.tag == "h3") {
+      } else if (element.tag == 'h3') {
         var rule = Rule(element);
         section.subsections.last.rules.add(rule);
       }
     }
   }
 
-  var outFile = File(path.join(dirPath, "toc.md"));
-  IOSink out;
+  var outFile = File(path.join(dirPath, 'toc.md'));
+  IOSink? out;
   try {
     out = outFile.openWrite();
 
-    out.writeln(r"""
+    out.writeln(r'''
     {% comment %}
     This file is generated from the other files in this directory.
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart deploy/effective-dart-rules/bin/main.dart
+      $ dart run deploy/effective-dart-rules/bin/main.dart
 
     {% endcomment %}
-    """);
+    ''');
 
     out.writeln(r"<div class='effective_dart--summary_column' markdown='1'>");
     for (var i = 0; i < sections.length; i++) {
@@ -68,19 +59,19 @@ Future<Null> main(List<String> arguments) async {
             "<div class='effective_dart--summary_column' markdown='1'>\n");
       }
       write(out, section);
-      out.writeln("\n</div>");
+      out.writeln('\n</div>');
     }
     out.writeln("<div style='clear:both'></div>");
   } finally {
-    out.close();
+    await out?.close();
   }
 }
 
 void write(IOSink out, Section section) {
-  out.writeln("\n### ${section.name}\n");
-  for (var subsection in section.subsections) {
-    out.writeln("\n**${subsection.name}**\n");
-    for (var rule in subsection.rules) {
+  out.writeln('\n### ${section.name}\n');
+  for (final subsection in section.subsections) {
+    out.writeln('\n**${subsection.name}**\n');
+    for (final rule in subsection.rules) {
       var link = section.uri.resolve('#' + rule.fragment);
       out.writeln("* <a href='$link'>${rule.html}</a>");
     }
@@ -94,19 +85,21 @@ class Rule {
 
   factory Rule(md.Element element) {
     var name = _concatenatedText(element);
-    var html = md.renderToHtml(element.children);
+    var html = md.renderToHtml(element.children ?? const []);
     var fragment = _generateAnchorHash(name);
 
     // Handle headers with an explicit "{#anchor-text}" anchor.
     var match = _anchorPattern.firstMatch(name);
     if (match != null) {
       // Pull the anchor from the name.
-      name = match[1].trim();
-      fragment = match[2];
+      name = (match[1] ?? '').trim();
+      fragment = match[2] ?? '';
 
       // Strip it from the HTML too.
       match = _anchorPattern.firstMatch(html);
-      html = match[1].trim();
+      if (match != null) {
+        html = (match[1] ?? '').trim();
+      }
     }
 
     return Rule._(name, html, fragment);
@@ -123,9 +116,9 @@ class Section {
 
   Section(String dirPath, String filename)
       : file = File(path.join(dirPath, filename)),
-        uri = Uri.parse("/guides/language/effective-dart/")
+        uri = Uri.parse('/guides/language/effective-dart/')
             .resolve(filename.split('.').first),
-        name = "${filename[0].toUpperCase()}"
+        name = '${filename[0].toUpperCase()}'
             "${filename.substring(1).split('.').first}";
 }
 
@@ -133,6 +126,7 @@ class Subsection {
   final String name;
   final String fragment;
   final List<Rule> rules = [];
+
   Subsection(md.Element element)
       : name = _concatenatedText(element),
         fragment = _generateAnchorHash(_concatenatedText(element));
@@ -147,8 +141,18 @@ String _generateAnchorHash(String text) => text
     .replaceAll(RegExp(r'\s'), '-');
 
 /// Concatenates the text found in all the children of [element].
-String _concatenatedText(md.Element element) => element.children
-    .map((child) => (child is md.Text)
-        ? _unescape.convert(child.text)
-        : _concatenatedText(child))
-    .join('');
+String _concatenatedText(md.Element element) {
+  final children = element.children;
+
+  if (children == null) {
+    return '';
+  }
+
+  return children
+      .map((child) => (child is md.Text)
+          ? _unescape.convert(child.text)
+          : (child is md.Element)
+              ? _concatenatedText(child)
+              : _unescape.convert(child.textContent))
+      .join('');
+}
