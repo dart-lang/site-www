@@ -10,9 +10,9 @@ final _anchorPattern = RegExp(r'(.+)\{#([^#]+)\}');
 
 Future<void> main(List<String> arguments) async {
   const dirPath = 'src/_guides/language/effective-dart';
-  const fileNames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
+  const filenames = ['style.md', 'documentation.md', 'usage.md', 'design.md'];
 
-  var sections = fileNames.map((name) => Section(dirPath, name)).toList();
+  var sections = filenames.map((name) => Section(dirPath, name)).toList();
 
   for (final section in sections) {
     var lines = section.file.readAsLinesSync();

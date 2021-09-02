@@ -2,7 +2,7 @@ name: effective_dart_rules
 version: 0.0.3
 description: Builds a file with all the rules in the different sections of Effective Dart.
 environment:
-  sdk: '>=2.13.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   html_unescape: ^2.0.0
