@@ -12,6 +12,7 @@
       {
         "source": "**",
         "headers": [
+          { "key": "Content-Security-Policy", "value":  "default-src https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://fonts.gstatic.com https://dartpad.dev https://*.dartpad.dev https://youtube.com https://fonts.googleapis.com https://doubleclick.net https://*.doubleclick.net https://www.google.com https://www.gstatic.com https://cse.google.com https://apis.google.com/ https://storage.googleapis.com; object-src 'none'; base-uri 'none'"},
           { "key": "Referrer-Policy", "value":  "strict-origin-when-cross-origin"},
           { "key": "X-Frame-Options", "value":  "SAMEORIGIN"},
           { "key": "X-Content-Type-Options", "value":  "nosniff"}
