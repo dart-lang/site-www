@@ -80,19 +80,24 @@ library packages:
 {% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
 
 Directly under lib, the main library file,
-`shelf.dart`, exports several files from lib/src:
+`shelf.dart`, exports API from several files in lib/src.
+To avoid exposing more API than intended —
+and to give developers an overview of the entire public API of the package —
+`shelf.dart` uses `show` to specify exactly which symbols to export:
 
 ```dart
-export 'src/cascade.dart';
-export 'src/handler.dart';
-export 'src/handlers/logger.dart';
-export 'src/hijack_exception.dart';
-export 'src/middleware.dart';
-export 'src/pipeline.dart';
-export 'src/request.dart';
-export 'src/response.dart';
-export 'src/server.dart';
-export 'src/server_handler.dart';
+export 'src/cascade.dart' show Cascade;
+export 'src/handler.dart' show Handler;
+export 'src/hijack_exception.dart' show HijackException;
+export 'src/middleware.dart' show Middleware, createMiddleware;
+export 'src/middleware/add_chunked_encoding.dart' show addChunkedEncoding;
+export 'src/middleware/logger.dart' show logRequests;
+export 'src/middleware_extensions.dart' show MiddlewareExtensions;
+export 'src/pipeline.dart' show Pipeline;
+export 'src/request.dart' show Request;
+export 'src/response.dart' show Response;
+export 'src/server.dart' show Server;
+export 'src/server_handler.dart' show ServerHandler;
 ```
 
 The shelf package also contains a mini library: shelf_io.
