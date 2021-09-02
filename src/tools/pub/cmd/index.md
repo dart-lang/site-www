@@ -167,7 +167,7 @@ The specified level determines the amount of information that is displayed:
 * `solver`
 : Shows steps during version resolution.
 
-### `-verbose` or `-v`
+### `--verbose` or `-v`
 
 Equivalent to `--verbosity=all`.
 
