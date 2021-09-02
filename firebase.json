@@ -6,7 +6,7 @@
     "headers": [{
         "source": "**/*.@(txt|json)",
         "headers": [
-          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
     },
       {
