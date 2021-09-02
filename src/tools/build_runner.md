@@ -40,7 +40,7 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.0.0
+  build_runner: ^2.1.0
   build_test: ^2.1.0
 ```
 
