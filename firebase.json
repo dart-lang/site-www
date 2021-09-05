@@ -12,7 +12,7 @@
       {
         "source": "**",
         "headers": [
-          { "key": "Content-Security-Policy", "value":  "default-src https:; script-src 'self' 'unsafe-eval' 'sha256-cTJIwsgB4Xj1loi9AdzTWk3GZ5Kx0NremLhkGfw9zWc=' 'sha256-acZJdbnwXvMNQmfri3ENcArTn+GH3sY664c1uY0xxpg=' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://gstatic.com https://*.gstatic.com https://dartpad.dev https://*.dartpad.dev https://youtube.com https://fonts.googleapis.com https://doubleclick.net https://*.doubleclick.net https://google.com https://*.google.com https://storage.googleapis.com; object-src 'none'; base-uri 'none'; style-src https: 'unsafe-inline'"},
+          { "key": "Content-Security-Policy", "value":  "default-src https:; script-src 'self' 'unsafe-eval' 'sha256-cTJIwsgB4Xj1loi9AdzTWk3GZ5Kx0NremLhkGfw9zWc=' 'sha256-acZJdbnwXvMNQmfri3ENcArTn+GH3sY664c1uY0xxpg=' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://gstatic.com https://*.gstatic.com https://dartpad.dev https://*.dartpad.dev https://youtube.com https://*.youtube.com https://fonts.googleapis.com https://doubleclick.net https://*.doubleclick.net https://google.com https://*.google.com https://storage.googleapis.com; object-src 'none'; base-uri 'none'; style-src https: 'unsafe-inline'"},
           { "key": "Referrer-Policy", "value":  "strict-origin-when-cross-origin"},
           { "key": "X-Frame-Options", "value":  "SAMEORIGIN"},
           { "key": "X-Content-Type-Options", "value":  "nosniff"},
