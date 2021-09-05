@@ -8,8 +8,8 @@ import 'mixing_errors_util.dart';
 
 // #docregion parse
 Future<int> parseAndRead(Map<String, dynamic> data) {
-  final fileName = obtainFileName(data); // Could throw.
-  final file = File(fileName);
+  final filename = obtainFilename(data); // Could throw.
+  final file = File(filename);
   return file.readAsString().then((contents) {
     return parseFileData(contents); // Could throw.
   });
@@ -26,7 +26,7 @@ void main() {
 
 // Program Output:
 //   Unhandled exception:
-//   <error from obtainFileName>
+//   <error from obtainFilename>
 //   ...
 // #enddocregion main
 

@@ -1,6 +1,6 @@
 int parseFileData(String contents) => 42;
 
-String obtainFileName(Map<String, dynamic> data) => 'file name';
+String obtainFilename(Map<String, dynamic> data) => 'file name';
 
 final Map<String, dynamic> data = {};
 

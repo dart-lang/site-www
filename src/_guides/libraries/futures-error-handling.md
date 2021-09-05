@@ -209,13 +209,13 @@ In the code below, `then()`'s Future completes with an error, so
 ```dart
 void main() {
   funcThatThrows()
-      // Future completes with an error
+      // Future completes with an error:
       .then((_) => print("Won't reach here"))
-      // Future completes with the same error
+      // Future completes with the same error:
       .whenComplete(() => print('Reaches here'))
-      // Future completes with the same error
+      // Future completes with the same error:
       .then((_) => print("Won't reach here"))
-      // Error is handled here
+      // Error is handled here:
       .catchError(handleError);
 }
 ```
@@ -228,7 +228,7 @@ handled by `catchError()`.  Because `catchError()`'s Future completes with
 ```dart
 void main() {
   funcThatThrows()
-      // Future completes with an error.
+      // Future completes with an error:
       .then((_) => ...)
       .catchError((e) {
     handleError(e);
@@ -247,11 +247,11 @@ completes with that error:
 ```dart
 void main() {
   funcThatThrows()
-      // Future completes with a value.
+      // Future completes with a value:
       .catchError(handleError)
-      // Future completes with an error.
+      // Future completes with an error:
       .whenComplete(() => throw Exception('New error'))
-      // Error is handled.
+      // Error is handled:
       .catchError(handleError);
 }
 ```
@@ -301,8 +301,8 @@ errors from leaking out. Consider this code:
 <?code-excerpt "futures/bin/mixing_errors_problematic.dart (parse)"?>
 ```dart
 Future<int> parseAndRead(Map<String, dynamic> data) {
-  final fileName = obtainFileName(data); // Could throw.
-  final file = File(fileName);
+  final filename = obtainFilename(data); // Could throw.
+  final file = File(filename);
   return file.readAsString().then((contents) {
     return parseFileData(contents); // Could throw.
   });
@@ -310,13 +310,13 @@ Future<int> parseAndRead(Map<String, dynamic> data) {
 ```
 
 Two functions in that code could potentially throw synchronously:
-`obtainFileName()` and `parseFileData()`. Because `parseFileData()` executes
+`obtainFilename()` and `parseFileData()`. Because `parseFileData()` executes
 inside a `then()` callback, its error does not leak out of the function.
 Instead, `then()`'s Future completes with `parseFileData()`'s error, the error
 eventually completes `parseAndRead()`'s Future, and the error can be
 successfully handled by `catchError()`.
 
-But `obtainFileName()` is not called within a `then()` callback; if _it_
+But `obtainFilename()` is not called within a `then()` callback; if _it_
 throws, a synchronous error propagates:
 
 <?code-excerpt "futures/bin/mixing_errors_problematic.dart (main)"?>
@@ -330,7 +330,7 @@ void main() {
 
 // Program Output:
 //   Unhandled exception:
-//   <error from obtainFileName>
+//   <error from obtainFilename>
 //   ...
 ```
 
@@ -348,8 +348,8 @@ callback:
 ```dart
 Future<int> parseAndRead(Map<String, dynamic> data) {
   return Future.sync(() {
-    final fileName = obtainFileName(data); // Could throw.
-    final file = File(fileName);
+    final filename = obtainFilename(data); // Could throw.
+    final file = File(filename);
     return file.readAsString().then((contents) {
       return parseFileData(contents); // Could throw.
     });
@@ -376,7 +376,7 @@ void main() {
 
 // Program Output:
 //   Inside catchError
-//   <error from obtainFileName>
+//   <error from obtainFilename>
 ```
 
 `Future.sync()` makes your code resilient against uncaught exceptions. If your
