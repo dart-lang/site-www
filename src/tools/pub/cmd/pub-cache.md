@@ -8,6 +8,7 @@ _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 ```nocode
 $ dart pub cache add <package> [--version <constraint>] [--all]
 $ dart pub cache repair
+$ dart pub cache clean
 ```
 
 The `dart pub cache` command works with the
@@ -38,11 +39,20 @@ and you might accidentally edit one of those files.
 
 ## Clearing the global system cache
 
-You can empty the entire system cache:
+You can empty the entire system cache
+to reclaim extra disk space or remove problematic packages:
 
 ```terminal
-$ dart pub cache clear
+$ dart pub cache clean
 ```
+
+{{site.alert.version-note}}
+  The `clean` subcommand was introduced in Dart 2.14.
+  To clear your system cache with an older SDK,
+  you can manually delete the [`PUB_CACHE`][] folder.
+{{site.alert.end}}
+
+[`PUB_CACHE`]: /tools/pub/environment-variables
 
 ## Options
 
