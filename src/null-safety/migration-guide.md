@@ -433,7 +433,7 @@ as soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
 * [Update the SDK constraints and package dependencies.](#check-your-pubspec)
-* [Publish the package][publish].
+* [Publish the package](/tools/pub/publishing).
   If you don't consider this version to be a stable release, 
   then [publish the package as a prerelease][].
 
