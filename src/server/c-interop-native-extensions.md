@@ -11,12 +11,14 @@ Dart 2.15.
 If you need to call existing code written in C or C++, see
 [C & C++ interop using FFI](/server/c-interop).
 
-This deprecation does not affect use-cases where Dart VM is embedded as library
-into another application. The Dart Embedding API (as defined in
-[`include/dart_api.h`] header) remains supported for such use cases. The Dart
-team currently does not provide any guides on how to embed the Dart VM into your
-application, however there are [examples] maintained by the community which
-demonstrate the necessary glue code.
+This deprecation does not affect use-cases where the Dart VM 
+is embedded as a library into another application. 
+The Dart Embedding API (as defined in the [`include/dart_api.h`][] header) 
+remains supported for such use cases. 
+The Dart team currently does not provide any guidelines
+on how to embed the Dart VM into your application, 
+however there are [examples][] maintained by the community
+which demonstrate the necessary glue code.
 {{site.alert.end}}
 
 [`include/dart_api.h`]:  https://github.com/dart-lang/sdk/blob/master/runtime/include/dart_api.h
