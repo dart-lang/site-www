@@ -427,11 +427,14 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. Publish {#step5-publish}
 
-We encourage you to publish packages as prereleases
-as soon as you migrate:
+We encourage you to publish packages —
+possibly as prereleases —
+as soon as you migrate.
 
 * [Set the package version to indicate a breaking change.](#package-version)
-* [Publish the package as a prerelease if development is still in progress.][]
+* [Publish the package][publish].
+  If you don't consider the migrated package to be final quality, then
+  [publish it as a prerelease][publish-prerelease].
 
 [Publish the package as a prerelease if development is still in progress.]: /tools/pub/publishing#publishing-prereleases
 
