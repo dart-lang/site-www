@@ -4,7 +4,6 @@ description: The original way for command-line Dart apps to call C/C++ functions
 ---
 
 {{site.alert.note}}
-previously discussed on this page  has been
 The extension mechanism which was previously discussed on this page --
 native extensions -- has been deprecated in Dart 2.14 and will be removed in
 Dart 2.15.
