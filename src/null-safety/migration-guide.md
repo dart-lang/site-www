@@ -427,18 +427,19 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. Publish {#step5-publish}
 
-We encourage you to publish packages —
-possibly as prereleases —
-as soon as you migrate.
+We encourage you to publish packages — 
+possibly as prereleases — 
+as soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
+* [Update the SDK constraints and package dependencies.](#check-your-pubspec)
 * [Publish the package][publish].
-  If you don't consider the migrated package to be final quality, then
-  [publish it as a prerelease][publish-prerelease].
+  If you don't consider this version to be a stable release, 
+  then [publish the package as a prerelease][].
 
-[Publish the package as a prerelease if development is still in progress.]: /tools/pub/publishing#publishing-prereleases
+[publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
-### Package version
+### Update the package version {#package-version}
 
 Update the version of the package
 to indicate a breaking change:
@@ -453,11 +454,14 @@ to indicate a breaking change:
   For example, if the previous version is `0.3.2`,
   the new version is either `0.4.0` or `1.0.0`.
 
-Before you publish a stable null safety version of a package,
+### Check your pubspec
+
+Before you publish a stable null safety version of a package, 
 we strongly recommend following these pubspec rules:
 
-  * Set the Dart lower SDK constraint to `2.12.0`.
-  * Use stable versions of all direct dependencies.
+* Set the Dart lower SDK constraint to the lowest stable version
+  that you've tested against (at least `2.12.0`).
+* Use stable versions of all direct dependencies.
 
 ## Welcome to null safety
 
