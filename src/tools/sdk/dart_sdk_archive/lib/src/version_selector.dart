@@ -153,7 +153,7 @@ class VersionSelector {
 
         // No Mac arm64 SDK builds before 2.14.1 (earlier builds did not have trained snapshots).
         if (name == 'macOS' && platformVariant.architecture == 'ARM64') {
-          if (versionInfo.version < Version(2, 14, 1) {
+          if (versionInfo.version < Version(2, 14, 1)) {
             continue;
           }
         }
