@@ -47,7 +47,8 @@ are a few additional requirements for uploading a package:
   redistribute anything that you upload as part of your package.
 
 * Your package must be less than 100 MB large after gzip compression. If
-  it's too large, consider splitting it into multiple packages, or cutting down
+  it's too large, consider splitting it into multiple packages, using a 
+  `.pubignore` file to remove unnecessary content, or cutting down
   on the number of included resources or examples.
 
 * Your package should depend only on hosted dependencies (from the default pub
