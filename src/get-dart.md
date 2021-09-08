@@ -85,7 +85,6 @@ The Dart SDK is supported on Windows, Linux, and macOS.
   - macOS 10.15 (Catalina)
   - macOS 11 (Big Sur)
 * **Supported architectures:** x64, arm64.
-  Support for arm64 is in preview, and is available only in the dev and beta channels.
 
 ## About release channels and version strings {#release-channels}
 
