@@ -1874,6 +1874,15 @@
     "details": "\n**AVOID** repeating const keyword in a const context.\n\n**BAD:**\n```dart\nclass A { const A(); }\nm(){\n  const a = const A();\n  final b = const [const A()];\n}\n```\n\n**GOOD:**\n```dart\nclass A { const A(); }\nm(){\n  const a = A();\n  final b = const [A()];\n}\n```\n\n"
   },
   {
+    "name": "unnecessary_constructor_name",
+    "description": "Unnecessary `.new` constructor name.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "**PREFER** using the default unnamed Constructor over `.new`.\n\nGiven a class `C`, the named unnamed constructor `C.new` refers to the same\nconstructor as the unnamed `C`. As such it adds nothing but visual noise to\ninvocations and should be avoided (unless being used to identify a constructor\ntear-off).\n\n**BAD:**\n```dart\nclass A {\n  A.new(); // LINT\n}\n\nvar a = A.new(); // LINT\n```\n\n**GOOD:**\n```dart\nclass A {\n  A.ok();\n}\n\nvar a = A();\nvar aa = A.ok();\nvar makeA = A.new;\n```\n"
+  },
+  {
     "name": "unnecessary_final",
     "description": "Don't use `final` for local variables.",
     "group": "style",
