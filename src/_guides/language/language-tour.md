@@ -1935,8 +1935,9 @@ b ??= value;
 Compound assignment operators such as `+=` combine
 an operation with an assignment.
 
-| `=`  | `–=` | `/=`  | `%=`  | `>>=` | `^=`
-| `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
+| `=`  | `*=`  | `%=`  | `>>>=` | `^=`
+| `+=` | `/=`  | `<<=` | `&=`   | `|=`
+| `-=` | `~/=` | `>>=`
 {:.table}
 
 Here’s how compound assignment operators work:
