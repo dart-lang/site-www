@@ -204,16 +204,16 @@ For more information, see the
 [bitwise and shift operator]: /guides/language/language-tour#bitwise-and-shift-operators
 
 Dart 2.14 also removed some restrictions on type arguments.
-You can now use a generic function type as a type argument,
-and you can pass type arguments to annotations.
+You can now pass type arguments to annotations,
+and you can use a generic function type as a type argument.
 All of the following code was invalid before 2.14,
 but is now allowed:
 
 ```dart
+@TypeHelper<int>(42, "The meaning")
 late List<T Function<T>(T)> idFunctions;
 var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
-@TypeHelper<int>(42, "The meaning")
 ```
 
 ## Language versioning
