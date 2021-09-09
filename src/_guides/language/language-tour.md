@@ -4073,7 +4073,8 @@ looks similar to synchronous code.
 When you need the result of a completed Future,
 you have two options:
 
-* Use `async` and `await`.
+* Use `async` and `await`, as described here and in the
+  [asynchronous programming codelab](/codelabs/async-await).
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
 
@@ -4148,6 +4149,20 @@ Future<void> main() [!async!] {
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
+
+{{site.alert.note}}
+  The preceding example uses an `async` function (`checkVersion()`)
+  without waiting for a result —
+  a practice that can cause problems
+  if the code assumes that the function has finished executing.
+  To avoid this problem,
+  use the [unawaited_futures linter rule][].
+{{site.alert.end}}
+
+[unawaited_futures linter rule]: /tools/linter-rules#unawaited_futures
+
+For an interactive introduction to using futures, `async`, and `await`,
+see the [asynchronous programming codelab](/codelabs/async-await).
 
 
 <a id="async"></a>
