@@ -17,6 +17,68 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
+## September 8, 2021: 2.14 release
+
+This section lists notable changes made from May 20, 2021,
+through September 8, 2021.
+For details about the 2.14 release, see [Announcing Dart 2.14][].
+
+[Announcing Dart 2.14]: https://medium.com/dartlang/announcing-dart-2-14-b48b9bb2fb67
+
+### Docs updated or added to dart.dev
+{: .no_toc}
+
+In addition to bug fixes and incremental improvements,
+we made the following changes to this site:
+
+* Fleshed out the page on [fixing type promotion failures][no-promo].
+* Documented how to use the [`.pubignore` file][],
+  a feature that was introduced in Dart 2.14.
+* Added coverage of the [unsigned shift operator][] (`>>>`),
+  which was introduced in Dart 2.14.
+* Built out the [linter rule page][];
+  updated Effective Dart to link to it.
+* Added pages for the
+  [`dart create`][] and [`dart test`][] commands.
+* Finished converting examples from using old command-line tools
+  (for example, `dartfmt`) to using the [unified `dart` tool][dart-tool]
+  (for example, `dart format`).
+* Updated site code to use the [recommended linter rules][],
+  instead of pedantic.
+* Updated the lists of [core libraries][] and [commonly used packages][].
+* Added a redirect from [dart.dev/jobs][] to flutter.dev/jobs,
+  to make it easier to find open positions on
+  the Dart and Flutter teams.
+* Finished migrating all analyzed or tested code to null safety,
+  updating text to match.
+  Found more site code that hadn't been analyzed; fixed that.
+
+[unsigned shift operator]: /guides/language/language-tour#bitwise-and-shift-operators
+[`.pubignore` file]: /tools/pub/publishing#what-files-are-published
+[linter rule page]: /tools/linter-rules
+[dart-tool]: /tools/dart-tool
+[recommended linter rules]: /guides/language/analysis-options#lints
+[core libraries]: /guides/libraries
+[commonly used packages]: /guides/libraries/useful-libraries
+[dart.dev/jobs]: /jobs
+[no-promo]: /tools/non-promotion-reasons
+[`dart create`]: /tools/dart-create
+[`dart test`]: /tools/dart-test
+
+### Articles added to the Dart blog
+{: .no_toc}
+
+We published the following articles on the Dart blog:
+
+* [Experimenting with Dart and Wasm][blog-7-27-21]
+* [How Dart’s null safety helped me augment my projects][blog-6-23-21]
+* [Implementing structs by value in Dart FFI][blog-6/8-21]
+
+[blog-7-27-21]: https://medium.com/dartlang/experimenting-with-dart-and-wasm-ef7f1c065577
+[blog-6-23-21]: https://medium.com/dartlang/how-darts-null-safety-helped-me-augment-my-projects-af58f8129cf
+[blog-6/8-21]: https://medium.com/dartlang/implementing-structs-by-value-in-dart-ffi-1cb1829d11a9
+
+
 ## May 19, 2021: 2.13 release
 
 This section lists notable changes made from March 4, 2021,

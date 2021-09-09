@@ -192,6 +192,30 @@ anywhere the original type could be used.
 Dart 2.13 also improved the struct support in **[Dart FFI][]**,
 adding support for inline arrays and packed structs.
 
+### Dart 2.14
+
+Dart 2.14 added the unsigned shift operator (`>>>`),
+also known as _triple-shift_.
+This new operator is similar to `>>`,
+except that it always fills the most significant bits with zeros.
+For more information, see the
+[bitwise and shift operator][] section of the language tour.
+
+[bitwise and shift operator]: /guides/language/language-tour#bitwise-and-shift-operators
+
+Dart 2.14 also removed some restrictions on type arguments.
+You can now pass type arguments to annotations,
+and you can use a generic function type as a type argument.
+All of the following code was invalid before 2.14,
+but is now allowed:
+
+```dart
+@TypeHelper<int>(42, "The meaning")
+late List<T Function<T>(T)> idFunctions;
+var callback = [<T>(T value) => value];
+late S Function<S extends T Function<T>(T)>(S) f;
+```
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
