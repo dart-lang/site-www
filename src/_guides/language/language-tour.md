@@ -3462,7 +3462,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
 
 
 ### Extension methods
@@ -4612,7 +4612,7 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators

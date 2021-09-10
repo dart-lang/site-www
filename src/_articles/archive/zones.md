@@ -790,7 +790,7 @@ The source code for dart:html and dart:async
 : These two SDK libraries implement APIs featuring asynchronous callbacks,
   and thus they deal with zones.
   You can browse or download their source code under the
-  [sdk/lib directory](https://github.com/dart-lang/sdk/tree/master/sdk/lib)
+  [sdk/lib directory](https://github.com/dart-lang/sdk/tree/main/sdk/lib)
   of the
   [Dart GitHub project](https://github.com/dart-lang/sdk).
 

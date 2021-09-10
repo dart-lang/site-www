@@ -180,13 +180,13 @@ environment:
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
-[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
+[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200
 [Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
 [Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
-[newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
+[newsletters]: https://github.com/dart-lang/sdk/tree/main/docs/newsletter#dart-language-and-library-newsletters
 [prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
@@ -195,4 +195,4 @@ environment:
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: /web/dart-2
-[sync async start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[sync async start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
