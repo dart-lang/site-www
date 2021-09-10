@@ -3433,7 +3433,7 @@ An overriding method declaration must match
 the method (or methods) that it overrides in several ways:
 
 * The return type must be the same type as (or a subtype of)
-  the overridden method's return types.
+  the overridden method's return type.
 * Argument types must be the same type as (or a supertype of)
   the overridden method's argument types.
   In the preceding example, the `contrast` setter of `SmartTelevision`
@@ -3448,7 +3448,7 @@ a method parameter or an instance variable.
 This violates the normal rules, and
 it's similar to a downcast in that it can cause a type error at runtime.
 Still, narrowing the type is possible
-if the code can guarantee that the type error won't occur.
+if the code can guarantee that a type error won't occur.
 In this case, you can use the 
 [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
 in a parameter declaration.
