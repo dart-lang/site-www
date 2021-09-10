@@ -53,25 +53,11 @@ by {{book.authors | array_to_sentence_string}}
 </div>
 {% endfor %}
 
-## Early Dart books
+## Other Dart books
 
-The following books cover pre-2.0 versions of Dart.
-
-{% for book in site.data.books-dart1 %}
-
-<div class="book-img-with-details row">
-<a href="{{book.link}}" title="{{book.title}}" class="col-sm-3 no-automatic-external">
-  <img src="{% asset 'cover/{{book.cover}}' @path %}" alt="{{book.title}}"/>
-</a>
-<div class="details col-sm-9" markdown="1">
-### [{{book.title}}]({{book.link}})
-{:.title}
-
-by {{book.authors | array_to_sentence_string}}
-{:.authors.h4}
-
-{{book.desc}}
-
-</div>
-</div>
-{% endfor %}
+Beware! You may find other books published on the Dart programming 
+language. We recommend that you check the date of publication, since 
+Dart has evolved a great deal, and older books lack coverage of many 
+important topics that are relevant to the modern Dart 2 language, 
+including strong typing, null safety, FFI, the `dart` command line
+utility, and our current developer tool support. 
