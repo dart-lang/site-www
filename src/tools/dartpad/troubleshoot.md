@@ -46,15 +46,6 @@ If you copy code from DartPad into another environment,
 the code might not run.
 Here are some possible causes and fixes:
 
-* If you're creating a web app,
-  make sure you have the proper project setup.
-  For example, the `HTML` tab doesn't show
-  all the necessary markup to run Dart code.
-  To learn about connecting Dart code to the web,
-  see [HTML and Dart connections][].
-  To get started creating web apps with Dart,
-  see [Get started: Web apps](/tutorials/web/get-started).
-
 * If Dart can't find an imported library,
   make sure you've added all necessary package dependencies.
   DartPad includes many built-in packages by default,
@@ -69,7 +60,16 @@ Here are some possible causes and fixes:
   and older versions might be missing necessary language or library features.
   To learn how to update the Dart SDK,
   see [Get the Dart SDK](/get-dart).
-  
+
+* If you're creating a web app,
+  make sure you have the proper project setup.
+  For example, the `HTML` tab doesn't show
+  all the necessary markup to run Dart code.
+  To learn about connecting Dart code to the web,
+  see [HTML and Dart connections][].
+  To get started creating web apps with Dart,
+  see [Get started: Web apps](/tutorials/web/get-started).
+
 
 ## DartPad doesn't work in China
   
