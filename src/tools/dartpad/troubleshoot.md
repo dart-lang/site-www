@@ -43,7 +43,7 @@ which browsers usually disable when cookies are disabled.
 ## Code doesn't work outside DartPad
 
 If you copy code from DartPad into another environment,
-the code might not run.
+the code might not run successfully.
 Here are some possible causes and fixes:
 
 * If Dart can't find an imported library,
