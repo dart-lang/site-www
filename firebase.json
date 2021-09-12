@@ -243,6 +243,7 @@
       { "source": "/tools/pub/get-started?(.html)", "destination": "/guides/packages", "type": 301 },
       { "source": "/tools/pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/tools/dart-pub", "destination": "/tools/pub/cmd", "type": 301 },
+      { "source": "/tools/sdk/archive", "destination": "/get-dart/archive", "type": 301 },
       { "source": "/{docs,tools}/{pub-package-manager,pub/cmd,pub/tools/pub}/glossary?(.html)", "destination": "/tools/pub/glossary", "type": 301 },
       { "source": "/tools/webstorm?(.html)", "destination": "/tools", "type": 301 },
       { "source": "/tos@(|.htm|.html)", "destination": "/terms", "type": 301 },

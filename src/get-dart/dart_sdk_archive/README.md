@@ -1,4 +1,4 @@
-Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/tools/sdk/archive).
+Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/get-dart/archive).
 
 ## Developing
 
@@ -11,7 +11,7 @@ dart pub global activate webdev
 Serve:
 
 ```
-cd site-shared/src/tools/sdk/dart_sdk_archive/
+cd src/get-dart/dart_sdk_archive/
 webdev serve
 ```
 
