@@ -42,30 +42,31 @@ which browsers usually disable when cookies are disabled.
 
 ## Code doesn't work outside DartPad
 
-If code from DartPad does not run as expected in other environments,
-check the following:
+If you copy code from DartPad into another environment,
+the code might not run.
+Here are some possible causes and fixes:
 
 * If you're creating a web app,
   make sure you have the proper project setup.
   For example, the `HTML` tab doesn't show
   all the necessary markup to run Dart code.
   To learn about connecting Dart code to the web,
-  see [HTML and Dart connections][]
-  or to get started creating web apps with Dart,
+  see [HTML and Dart connections][].
+  To get started creating web apps with Dart,
   see [Get started: Web apps](/tutorials/web/get-started).
 
-* If Dart cannot find an imported library,
-  make sure you have added all necessary package dependencies.
+* If Dart can't find an imported library,
+  make sure you've added all necessary package dependencies.
   DartPad includes many built-in packages by default,
-  but your own projects must explicitly specify used dependencies.
+  but your own project must explicitly list the packages that it depends on.
   To learn more about adding package dependencies,
   see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
 
 * If the code has other compilation errors,
-  check to see you are using the latest stable version of the Dart SDK.
+  make sure you're using the latest stable version of the Dart SDK.
   DartPad and embedded samples 
   generally use the latest stable release of the SDK,
-  and older versions may be missing necessary language or library features.
+  and older versions might be missing necessary language or library features.
   To learn how to update the Dart SDK,
   see [Get the Dart SDK](/get-dart).
   
