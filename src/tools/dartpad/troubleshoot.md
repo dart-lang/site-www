@@ -50,6 +50,9 @@ Here are some possible causes and fixes:
   make sure you've added all necessary package dependencies.
   DartPad includes many built-in packages by default,
   but your own project must explicitly list the packages that it depends on.
+  To see the packages that DartPad includes, 
+  go to [dartpad.dev]({{site.dartpad}}) 
+  and click the **i** icon at the bottom right of the window.
   To learn more about adding package dependencies,
   see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
 
