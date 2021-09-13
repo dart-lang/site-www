@@ -9,6 +9,15 @@ also cover Dart.
 If you find another Dart book that might be helpful, please
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
+{{site.alert.warning}}
+  You may find other books published on the Dart programming 
+  language. We recommend that you check the date of publication, since 
+  Dart has evolved a great deal, and older books lack coverage of many 
+  important topics that are relevant to the modern Dart 2 language, 
+  including strong typing, null safety, FFI, the `dart` command line
+  utility, and our new developer tools. 
+{{site.alert.end}}
+
 ## Dart books with null safety
 
 {% for book in site.data.books-dart-null-safe %}
@@ -52,12 +61,3 @@ by {{book.authors | array_to_sentence_string}}
 </div>
 </div>
 {% endfor %}
-
-## Other Dart books
-
-Beware! You may find other books published on the Dart programming 
-language. We recommend that you check the date of publication, since 
-Dart has evolved a great deal, and older books lack coverage of many 
-important topics that are relevant to the modern Dart 2 language, 
-including strong typing, null safety, FFI, the `dart` command line
-utility, and our current developer tool support. 
