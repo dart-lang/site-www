@@ -22,6 +22,7 @@ Documenting my_app...
 Success! Docs generated into /Users/me/projects/my_app/doc/api
 ```
 
+To work correctly, your package must [analyze][] without errors.
 By default, the documentation files are static HTML files,
 placed in the `doc/api` directory.
 To view the rendered documentation, you need an HTTP server.
@@ -40,6 +41,7 @@ $ dartdoc --help
 
 [documentation comments]: /guides/language/language-tour#documentation-comments
 [effective doc]: /guides/language/effective-dart/documentation
+[analyze]: /tools/dart-analyze
 [dartdoc package.]: {{site.pub-pkg}}/dartdoc
 
 {% comment %}
