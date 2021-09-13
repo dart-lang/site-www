@@ -357,6 +357,7 @@ $dash-dartpad-border: #293542;
 
     a {
       color: $site-color-card-link;
+      font-family: $site-font-family-gsans;
 
       &:hover, &:focus, &:active {
         color: darken($site-color-card-link, 20%);
