@@ -47,7 +47,7 @@ Dev channel builds are not suitable for production use.
 ## Main channel
 
 Main channel builds are the latest, raw builds from
-the main (`master`) branch of the Dart SDK repository.
+the `main` branch of the Dart SDK repository.
 These are the freshest builds available,
 and they're likely to contain bugs.
 Main channel builds are suitable only for

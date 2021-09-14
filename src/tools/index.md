@@ -87,7 +87,7 @@ thanks to the Dart community.
 A [Language Server Protocol implementation][LSP] is also available for
 [LSP-capable editors][] that don't have specific Dart extensions.
 
-[LSP]: https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md
+[LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ### Command-line tools {#cli}

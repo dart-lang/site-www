@@ -336,7 +336,7 @@ For more information about how language versioning works, see the
 [migrated to Dart 2]: /dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [set literals]: /guides/language/language-tour#sets
 [sound null safety]: /null-safety
 [sound type system]: /guides/language/type-system

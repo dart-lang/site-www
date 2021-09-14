@@ -3,7 +3,7 @@ title: "C interop using dart:ffi"
 description: "To use C code in your Dart program, use the dart:ffi library."
 hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
 samples: "https://github.com/dart-lang/samples/tree/master/ffi"
-sqlite: "https://github.com/dart-lang/sdk/tree/master/samples/ffi/sqlite"
+sqlite: "https://github.com/dart-lang/sdk/tree/main/samples/ffi/sqlite"
 ---
 
 Dart mobile, command-line, and server apps running on the [Dart Native

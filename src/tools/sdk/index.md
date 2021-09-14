@@ -52,7 +52,7 @@ directory that has these command-line tools:
 {{site.alert.end}}
 
 For more information about the SDK, see its
-[README file.](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk)
+[README file.](https://github.com/dart-lang/sdk/blob/main/README.dart-sdk)
 
 
 ## Filing bugs and feature requests
