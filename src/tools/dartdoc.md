@@ -11,6 +11,10 @@ by using [documentation comments][],
 which can contain markdown formatting.
 For guidance on writing doc comments,
 see the [documentation part of Effective Dart][effective doc].
+{{site.alert.note}}
+To generate documentation, your package must pass [dart analyze][]
+without errors.
+{{site.alert.end}}
 
 Run `dartdoc` from the root directory of your package. For example:
 
@@ -22,7 +26,6 @@ Documenting my_app...
 Success! Docs generated into /Users/me/projects/my_app/doc/api
 ```
 
-To work correctly, your package must [analyze][] without errors.
 By default, the documentation files are static HTML files,
 placed in the `doc/api` directory.
 To view the rendered documentation, you need an HTTP server.
@@ -41,7 +44,7 @@ $ dartdoc --help
 
 [documentation comments]: /guides/language/language-tour#documentation-comments
 [effective doc]: /guides/language/effective-dart/documentation
-[analyze]: /tools/dart-analyze
+[dart analyze]: /tools/dart-analyze
 [dartdoc package.]: {{site.pub-pkg}}/dartdoc
 
 {% comment %}
