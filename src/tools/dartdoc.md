@@ -12,8 +12,8 @@ which can contain markdown formatting.
 For guidance on writing doc comments,
 see the [documentation part of Effective Dart][effective doc].
 {{site.alert.note}}
-To generate documentation, your package must pass [dart analyze][]
-without errors.
+  To generate documentation, your package must pass [dart analyze][]
+  without errors.
 {{site.alert.end}}
 
 Run `dartdoc` from the root directory of your package. For example:
