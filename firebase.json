@@ -158,6 +158,7 @@
       { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
       { "source": "/go/test-docs/:page*", "destination": "https://github.com/dart-lang/test/blob/master/pkgs/test/doc/:page*", "type": 301 },
       { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 },
+      { "source": "/go/pubignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/language/common-prob", "destination": "/guides/language/sound-problems", "type": 301 },
