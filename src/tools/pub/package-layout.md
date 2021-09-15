@@ -313,10 +313,25 @@ tests) but you should never import from another package's `lib/src` directory.
 Those files are not part of the package's public API, and they might change in
 ways that could break your code.
 
-When you use libraries from within your own package, even code in `src`, you
-can (and should) still use `package:` to import them. For example:
+How you import libraries from within your own package
+depends on the locations of the libraries:
+
+ * When [reaching inside or outside `lib/`][]
+   (lint: [_avoid_relative_lib_imports_][]),
+   use `package:`.
+ * Otherwise, [prefer relative imports][].
+ 
+ [reaching inside or outside `lib/`]: /guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
+ [_avoid_relative_lib_imports_]: /tools/linter-rules#avoid_relative_lib_imports
+ [prefer relative imports]: /guides/language/effective-dart/usage#prefer-relative-import-paths
+
+For example:
 
 {% prettify dart tag=pre+code %}
+// When importing from lib/beans.dart
+import 'src/beans.dart';
+
+// When importing from test/beans_test.dart
 import 'package:enchilada/src/beans.dart';
 {% endprettify %}
 
