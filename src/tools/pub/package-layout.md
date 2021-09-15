@@ -316,7 +316,9 @@ ways that could break your code.
 How you import libraries from within your own package
 depends on the locations of the libraries:
 
- * When [reaching inside or outside `lib/`][] (lint: [_avoid_relative_lib_imports_][]), use `package:`.
+ * When [reaching inside or outside `lib/`][]
+   (lint: [_avoid_relative_lib_imports_][]),
+   use `package:`.
  * Otherwise, [prefer relative imports][].
  
  [reaching inside or outside `lib/`]: /guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
