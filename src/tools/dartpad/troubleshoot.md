@@ -40,9 +40,44 @@ Although DartPad doesn't use cookies, it does rely on local storage,
 which browsers usually disable when cookies are disabled.
 
 
+## Code doesn't work outside DartPad
+
+If you copy code from DartPad into another environment,
+the code might not run successfully.
+Here are some possible causes and fixes:
+
+* If Dart can't find an imported library,
+  make sure you've added all necessary package dependencies.
+  DartPad includes many built-in packages by default,
+  but your own project must explicitly list the packages that it depends on.
+  To see the packages that DartPad includes, 
+  go to [dartpad.dev]({{site.dartpad}}) 
+  and click the **i** icon at the bottom right of the window.
+  To learn more about adding package dependencies,
+  see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
+
+* If the code has other compilation errors,
+  make sure you're using the latest stable version of the Dart SDK.
+  DartPad and embedded samples 
+  generally use the latest stable release of the SDK,
+  and older versions might be missing necessary language or library features.
+  To learn how to update the Dart SDK,
+  see [Get the Dart SDK](/get-dart).
+
+* If you're creating a web app,
+  make sure you have the proper project setup.
+  For example, the `HTML` tab doesn't show
+  all the necessary markup to run Dart code.
+  To learn about connecting Dart code to the web,
+  see [HTML and Dart connections][].
+  To get started creating web apps with Dart,
+  see [Get started: Web apps](/tutorials/web/get-started).
+
+
 ## DartPad doesn't work in China
   
 Try [dartpad.cn.](https://dartpad.cn)
+
 
 ## Other issues
 
@@ -53,3 +88,4 @@ If you have any other problems when using DartPad,
 [browser]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: https://github.com/dart-lang/dart-pad/issues/new
+[HTML and Dart connections]: /tutorials/web/low-level-html/connect-dart-html#connections

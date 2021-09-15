@@ -214,7 +214,7 @@ for more information.
 ### Where can I learn the gory details of dartdevc?
 
 You can find source code and more documentation in the Dart SDK repo under
-[`/pkg/dev_compiler`.](https://github.com/dart-lang/sdk/tree/master/pkg/dev_compiler)
+[`/pkg/dev_compiler`.](https://github.com/dart-lang/sdk/tree/main/pkg/dev_compiler)
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner

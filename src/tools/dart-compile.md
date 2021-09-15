@@ -98,7 +98,7 @@ The following table shows the subcommands of `dart compile`.
     <td> <code>kernel</code> </td>
     <td> Kernel snapshot </td>
     <td> A portable
-      <a href="https://github.com/dart-lang/sdk/blob/master/pkg/kernel/binary.md">binary snapshot</a>.
+      <a href="https://github.com/dart-lang/sdk/blob/main/pkg/kernel/binary.md">binary snapshot</a>.
       <a href="#kernel">Learn more.</a>
     </td>
   </tr>
@@ -237,7 +237,7 @@ $ dart run bin/myapp.dill
 Although kernel snapshots have reduced startup time compared to Dart code,
 they can have much slower startup than architecture-specific AOT output formats.
 
-[Kernel AST]: https://github.com/dart-lang/sdk/blob/master/pkg/kernel/README.md
+[Kernel AST]: https://github.com/dart-lang/sdk/blob/main/pkg/kernel/README.md
 
 
 ## JavaScript (js) {#js}

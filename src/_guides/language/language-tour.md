@@ -3410,22 +3410,50 @@ class SmartTelevision [!extends!] Television {
 
 #### Overriding members
 
-Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)),
+getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
+class Television {
+  // ···
+  set contrast(int value) {...}
+}
+
 class SmartTelevision extends Television {
   [!@override!]
-  void turnOn() {...}
+  set contrast(num value) {...}
   // ···
 }
 {% endprettify %}
 
-To narrow the type of a method parameter or instance variable in code that is
-[type safe](/guides/language/type-system),
-you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+An overriding method declaration must match
+the method (or methods) that it overrides in several ways:
+
+* The return type must be the same type as (or a subtype of)
+  the overridden method's return type.
+* Argument types must be the same type as (or a supertype of)
+  the overridden method's argument types.
+  In the preceding example, the `contrast` setter of `SmartTelevision`
+  changes the argument type from `int` to a supertype, `num`.
+* If the overridden method accepts _n_ positional parameters,
+  then the overriding method must also accept _n_ positional parameters.
+* A [generic method](#using-generic-methods) can't override a non-generic one,
+  and a non-generic method can't override a generic one.
+
+Sometimes you might want to narrow the type of
+a method parameter or an instance variable.
+This violates the normal rules, and
+it's similar to a downcast in that it can cause a type error at runtime.
+Still, narrowing the type is possible
+if the code can guarantee that a type error won't occur.
+In this case, you can use the 
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
+in a parameter declaration.
+For details, see the 
+[Dart language specification][].
 
 {{site.alert.warning}}
   If you override `==`, you should also override Object's `hashCode` getter.
@@ -3462,7 +3490,7 @@ and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
 
 
 ### Extension methods
@@ -4427,6 +4455,7 @@ class Television {
 
   /// Turns the TV's power on.
   void turnOn() {...}
+  // ···
 }
 {% endprettify %}
 
@@ -4612,7 +4641,7 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators

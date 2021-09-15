@@ -4,7 +4,6 @@
 @import 'colors';
 @import 'bootstrap_config';
 @import 'bootstrap';
-@import 'bootstrap_config_shared'; // FIXME(chalin): this should be before the bootstrap import; move to site file.
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';

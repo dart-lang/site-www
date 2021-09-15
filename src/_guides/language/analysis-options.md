@@ -85,7 +85,7 @@ This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
+[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
 
 {{site.alert.note}}
   To view various analyzer diagnostics with explanations and common fixes,
@@ -480,7 +480,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
-[analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
+[analyzer error codes]: https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment

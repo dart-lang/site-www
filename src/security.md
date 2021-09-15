@@ -19,7 +19,7 @@ For more information about how Google handles security issues, see
 * **Keep current with the latest Dart SDK releases.**
   We regularly update Dart, and these updates may fix security
   defects discovered in previous versions. Check the Dart
-  [change log](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md)
+  [change log](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md)
   for security-related updates.
 
 * **Keep your application’s dependencies up to date.**
