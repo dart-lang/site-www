@@ -12,3 +12,9 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion collection-literals
   }
 }
+
+// #docregion non-nullable
+class Foo<T extends Object> {
+  // Foo works on objects with the non-nullable type T.
+}
+// #enddocregion non-nullable
