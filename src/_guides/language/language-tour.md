@@ -377,7 +377,10 @@ if (weLikeToCount) {
 print(lineCount);
 ```
 
-<!-- TODO: Point to coverage of ! and late -->
+Top-level and class variables are lazily initialized;
+the initialization code runs
+the first time the variable is used.
+
 
 ### Late variables
 
@@ -437,8 +440,7 @@ then the expensive `_readThermometer()` function is never called:
 If you never intend to change a variable, use `final` or `const`, either
 instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
-are implicitly final.) A final top-level or class variable is initialized
-the first time it's used.
+are implicitly final.)
 
 {{site.alert.note}}
   [Instance variables](#instance-variables) can be `final` but not `const`.
