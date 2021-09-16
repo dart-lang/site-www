@@ -15,6 +15,6 @@ void miscDeclAnalyzedButNotTested() {
 
 // #docregion non-nullable
 class Foo<T extends Object> {
-  // Foo works on objects with the non-nullable type T.
+  // Any type provided to Foo for T must be non-nullable.
 }
 // #enddocregion non-nullable

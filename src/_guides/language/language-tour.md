@@ -182,22 +182,22 @@ The following table lists the words that the Dart language treats specially.
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
 <div class="table-wrapper" markdown="1">
-| [abstract][]{{bii}}   | [else][]                      | [import][]{{bii}}     | [show][]{{ckw}}   |
-| [as][]{{bii}}         | [enum][]                      | [in][]                | [static][]{{bii}} |
-| [assert][]            | [export][]{{bii}}             | [interface][]{{bii}}  | [super][]         |
-| [async][]{{ckw}}      | extends ([a][ex-a], [b][ex-b])| [is][]                | [switch][]        |
-| [await][]{{lrw}}      | [extension][]{{bii}}          | [late][]{{bii}}       | [sync][]{{ckw}}   |
-| [break][]             | [external][]{{bii}}           | [library][]{{bii}}    | [this][]          |
-| [case][]              | [factory][]{{bii}}            | [mixin][]{{bii}}      | [throw][]         |
-| [catch][]             | [false][]                     | [new][]               | [true][]          |
-| [class][]             | [final][]                     | [null][]              | [try][]           |
-| [const][]             | [finally][]                   | [on][]{{ckw}}         | [typedef][]{{bii}}|
-| [continue][]          | [for][]                       | [operator][]{{bii}}   | [var][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}           | [part][]{{bii}}       | [void][]          |
-| [default][]           | [get][]{{bii}}                | [required][]{{bii}}   | [while][]         |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}               | [rethrow][]           | [with][]          |
-| [do][]                | [if][]                        | [return][]            | [yield][]{{lrw}}  |
-| [dynamic][]{{bii}}    | [implements][]{{bii}}         | [set][]{{bii}}        |                   |
+| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [show][]{{ckw}}   |
+| [as][]{{bii}}         | [enum][]              | [in][]                | [static][]{{bii}} |
+| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [super][]         |
+| [async][]{{ckw}}      | [extends][]           | [is][]                | [switch][]        |
+| [await][]{{lrw}}      | [extension][]{{bii}}  | [late][]{{bii}}       | [sync][]{{ckw}}   |
+| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
+| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
+| [catch][]             | [false][]             | [new][]               | [true][]          |
+| [class][]             | [final][]             | [null][]              | [try][]           |
+| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
+| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
+| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
+| [default][]           | [get][]{{bii}}        | [required][]{{bii}}   | [while][]         |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [rethrow][]           | [with][]          |
+| [do][]                | [if][]                | [return][]            | [yield][]{{lrw}}  |
+| [dynamic][]{{bii}}    | [implements][]{{bii}} | [set][]{{bii}}        |                   |
 {:.table .table-striped .nowrap}
 </div>
 
@@ -224,8 +224,7 @@ The following table lists the words that the Dart language treats specially.
 [else]: #if-and-else
 [enum]: #enumerated-types
 [export]: /guides/libraries/create-library-packages
-[ex-a]: #extending-a-class
-[ex-b]: #restricting-the-parameterized-type
+[extends]: #extending-a-class
 [extension]: #extension-methods
 [external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
 [factory]: #factory-constructors
@@ -3406,6 +3405,9 @@ class SmartTelevision [!extends!] Television {
 }
 {% endprettify %}
 
+For another usage of `extends`, see the discussion of
+[parameterized types](#restricting-the-parameterized-type)
+in [generics](#generics).
 
 <a name="overridable-operators"></a>
 
@@ -3863,8 +3865,8 @@ print(names is List<String>); // true
 ### Restricting the parameterized type
 
 When implementing a generic type,
-you might want to limit the types of its parameters
-to be a subtype of a particular type.
+you might want to limit the types that can be provided as arguments,
+so that the argument must be a subtype of a particular type.
 You can do this using `extends`.
 
 A common use case is ensuring that a type is non-nullable
@@ -3874,18 +3876,13 @@ by making it a subtype of `Object`
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
 ```dart
 class Foo<T extends Object> {
-  // Foo works on objects with the non-nullable type T.
+  // Any type provided to Foo for T must be non-nullable.
 }
 ```
 
-How does `Foo<T extends Object>` differ from `Foo<Object>`?
-If you use `<Object>`, then objects used in
-`Foo` members can have _any_ subtype of `Object`.
-Adding `T extends` lets you restrict the type
-to subtypes of `T`.
-
 You can use `extends` with other types besides `Object`.
-Here's an example of extending `SomeBaseClass`:
+Here's an example of extending `SomeBaseClass`,
+so that members of `SomeBaseClass` can be called on objects of type `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -3897,7 +3894,7 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
-It's OK to use `SomeBaseClass` or any of its subclasses as the generic argument:
+It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -3919,6 +3916,14 @@ Specifying any non-`SomeBaseClass` type results in an error:
 {% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}
+
+{{site.alert.info}}
+  How does `Foo<T extends SomeBaseClass>` differ from `Foo<SomeBaseClass>`?
+  If you use `<SomeBaseClass>`,
+  then `Foo` can be provided objects of _any_ `SomeBaseClass` subtype.
+  Adding `T extends` not only lets members of `Foo` use the type argument `T`,
+  but lets you restrict the argument's type to subtypes of `T`.
+{{site.alert.end}}
 
 
 ### Using generic methods
