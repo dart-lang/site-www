@@ -2844,7 +2844,7 @@ class ProfileMark {
 }
 ```
 
-If you want to assign the value of a `final` instance variable
+If you need to assign the value of a `final` instance variable
 after the constructor body starts, you can use one of the following:
 
 * Use `late final`, but [_be careful_][late-final-ivar].
