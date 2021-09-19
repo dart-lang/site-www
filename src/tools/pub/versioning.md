@@ -159,13 +159,13 @@ dependencies:
   collection: ^2.3.5
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-This example uses _caret syntax_ to express a range of versions.
-The string `^2.3.5` means "the range of all versions from 2.3.5
-to 3.0.0, not including 3.0.0." For more information, see
-[Caret syntax](/tools/pub/dependencies#caret-syntax).
-</aside>
+{{site.alert.note}}
+  This example uses _caret syntax_ to express a range of versions.
+  The string `^2.3.5` means 
+  "the range of all versions from 2.3.5  to 3.0.0, not including 3.0.0." 
+  For more information, 
+  see [Caret syntax](/tools/pub/dependencies#caret-syntax).
+{{site.alert.end}}
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and

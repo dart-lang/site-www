@@ -237,14 +237,14 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-<aside class="alert alert-info" markdown="1">
-**Tip for web apps:**
-For the best performance when developing with
-[dartdevc,](/tools/dartdevc)
-put [implementation files](#implementation-files) under `/lib/src`,
-instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-</aside>
+{{site.alert.info}}
+  **Tip for web apps:**
+  For the best performance when developing with
+  [dartdevc,](/tools/dartdevc)
+  put [implementation files](#implementation-files) under `/lib/src`,
+  instead of elsewhere under `/lib`.
+  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+{{site.alert.info}}
 
 For more information on library packages, see
 [Creating packages](/guides/libraries/create-library-packages).
@@ -285,10 +285,9 @@ for consumers of the package to use.
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
-<aside class="alert alert-warning" markdown="1">
-**Warning:**
-Old code might refer to assets using `/packages/<package>/<path>` URLs.
-</aside>
+{{site.alert.warning}}
+  Old code might refer to assets using `/packages/<package>/<path>` URLs.
+{{site.alert.end}}
 
 
 ## Implementation files

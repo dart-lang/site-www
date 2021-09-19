@@ -72,11 +72,11 @@ A pubspec can have the following fields:
 
 Pub ignores all other fields,
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
   [additional fields]({{site.flutter}}/docs/development/tools/pubspec)
   for configuring the environment and managing assets.
-</aside>
+{{site.alert.end}}
 
 If you add a custom field, give it a unique name
 that won't clash with future pubspec fields.
@@ -317,12 +317,13 @@ environment:
   sdk: '>=2.10.0 <3.0.0'
 ```
 
-<aside class="alert alert-warning" markdown="1">
-  Caret syntax (`^`) is a compact way to represent version ranges, but **don't use
-  it for the SDK constraint.** Instead, **include an upper bound for the SDK**
-  (`<3.0.0`, usually). For more information, see the
-  [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
-</aside>
+{{site.alert.warning}}
+  Caret syntax (`^`) is a compact way to represent version ranges, 
+  but **don't use it for the SDK constraint.** 
+  Instead, **include an upper bound for the SDK** (`<3.0.0`, usually). 
+  For more information, 
+  see the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+{{site.alert.end}}
 
 
 #### Flutter SDK constraints

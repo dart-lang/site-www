@@ -142,8 +142,8 @@ Also updates `pubspec.yaml` with the new constraints.
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 
 {{site.alert.tip}}
-Commit the `pubspec.yaml` file before running this command,
-so that you can undo the changes if necessary.
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
 {{site.alert.end}}
 
 To check which dependencies will be upgraded,

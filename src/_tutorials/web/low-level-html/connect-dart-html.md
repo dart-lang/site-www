@@ -160,15 +160,14 @@ or even insert an entire subtree of nodes.
 4. Select **HTML** (below **Dart**),
    so you can edit HTML and CSS in DartPad.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-These instructions feature DartPad,
-which hides some of the HTML boilerplate code.
-If you want to use any other editor,
-then we recommend starting with a small Dart web app sample
-and modifying the non-script tags inside the \<body> section.
-[HTML and Dart connections](#connections) shows the full HTML code.
-</aside>
+{{site.alert.note}}
+  These instructions feature DartPad,
+  which hides some of the HTML boilerplate code.
+  If you want to use any other editor,
+  then we recommend starting with a small Dart web app sample
+  and modifying the non-script tags inside the \<body> section.
+  [HTML and Dart connections](#connections) shows the full HTML code.
+{{site.alert.end}}
 
 ## Edit the HTML source code {#create-html}
 
@@ -199,11 +198,10 @@ You don't need surrounding tags such as
 Because DartPad knows where your Dart code is,
 you don't need a \<script> tag.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-[HTML and Dart connections](#connections) shows the full HTML code
-that you need to run your web app outside of DartPad.
-</aside>
+{{site.alert.info}}
+  [HTML and Dart connections](#connections) shows the full HTML code
+  that you need to run your web app outside of DartPad.
+{{site.alert.end}}
 
 The paragraph tag has the identifier "RipVanWinkle".
 The Dart code you create in the next step uses this ID
@@ -450,18 +448,17 @@ Here are some examples of CSS selectors:
 | Attribute | input[type="button"] | Matches all button input elements |
 {: .table}
 
-<aside class="alert alert-info">
-<strong>Tip:</strong>
-As you saw,
-the mini app used a CSS selector,
-the ID #RipVanWinkle,
-even when there was no CSS file.
-You do not need a CSS file for a Dart program.
-Nor do you need a CSS file to use CSS selectors.
-CSS selectors are established in the HTML file
-and used by the Dart program
-to select matching elements.
-</aside>
+{{site.alert.tip}}
+  As you saw,
+  the mini app used a CSS selector,
+  the ID `#RipVanWinkle`,
+  even when there was no CSS file.
+  You do not need a CSS file for a Dart program.
+  Nor do you need a CSS file to use CSS selectors.
+  CSS selectors are established in the HTML file
+  and used by the Dart program
+  to select matching elements.
+{{site.alert.end}}
 
 Let's look at the CSS code for the mini app.
 The CSS file for the mini app has one CSS rule in it.

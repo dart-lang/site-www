@@ -49,12 +49,12 @@ Running the HTTP server in a zone
 enables the app to continue running despite uncaught (but non-fatal)
 errors in the server's asynchronous code.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **API note:**
   This use case won't always require zones.
   We expect that isolates will have an API enabling you to
   listen for uncaught errors.
-</aside>
+{{site.alert.end}}
 
 Zones make the following tasks possible:
 
@@ -200,10 +200,9 @@ A simple rule determines where
 errors are handled in a sequence of future transformations
 (using `then()` or `catchError()`):
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Errors on Future chains never cross the boundaries of error zones.
-</aside>
+{{site.alert.note}}
+  Errors on Future chains never cross the boundaries of error zones.
+{{site.alert.end}}
 
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
@@ -293,11 +292,10 @@ with a value, nor with an error.
 The rule for zones and streams
 is simpler than for futures:
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Transformations and other callbacks execute in the zone
-where the stream is listened to.
-</aside>
+{{site.alert.note}}
+  Transformations and other callbacks execute in the zone
+  where the stream is listened to.
+{{site.alert.end}}
 
 This rule follows from the guideline that
 streams should have no side effect until listened to.
@@ -375,11 +373,10 @@ A zone inherits zone-local values from its parent zone,
 so adding nested zones doesn’t accidentally drop existing values.
 Nested zones can, however, shadow parent values.
 
-<aside class="alert alert-warning" markdown="1">
-  **Important:**
+{{site.alert.important}}
   Try to use unique objects for keys,
   so they're less likely to conflict with other libraries.
-</aside>
+{{site.alert.end}}
 
 
 ### Example: Using a zone-local value for debug logs
@@ -579,14 +576,14 @@ and stopping the timer whenever the zone is left.
 Providing `run*` parameters to the ZoneSpecification
 lets you specify the code that the zone executes.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **API note:**
   In the future, zones might provide a simpler alternative
   for the common case of sandwiching zone code:
   an onEnter/onLeave API.
   See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
   for details.
-</aside>
+{{site.alert.end}}
 
 The `run*` parameters—`run`, `runUnary`, and `runBinary`—specify
 code to execute every time the zone is asked to execute code.

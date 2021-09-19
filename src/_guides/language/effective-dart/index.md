@@ -70,16 +70,6 @@ We split the guidelines into a few separate pages for easy digestion:
 For links to all the guidelines, see the
 [summary](#summary-of-all-rules).
 
-{% comment %}
-<aside class="alert alert-info" markdown="1">
-  **Have feedback on the guides?** <br>
-  Please create a [new issue][] or comment on one of our [existing issues][].
-
-  [new issue]: {{site.repo.this}}/issues/new
-  [existing issues]: {{site.repo.this}}/issues?q=is%3Aopen+is%3Aissue+label%3AEffectiveDart
-</aside>
-{% endcomment %}
-
 [dart format]: /tools/dart-format
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
