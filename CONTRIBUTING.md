@@ -38,7 +38,7 @@ More info:
   [dart-lang/sdk Contributing page][].
 
 [beginner]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
-[dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md
+[dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md
 [GitHub pull request]: https://docs.github.com/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [Google Developer Documentation Style Guide]: https://developers.google.com/style/
 [help wanted]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
