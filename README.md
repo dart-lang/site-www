@@ -10,7 +10,7 @@ The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 ## Getting started
 
-Start by looking for an [issue](https://github.com/dart-lang/site-www/)
+Start by looking for an [issue](https://github.com/dart-lang/site-www/issues)
 that catches your interest, or create an issue with your proposed change.
 Ask for the issue to be assigned to you.
 
@@ -290,11 +290,11 @@ test failed, then rerun the command without the `-q` flag.
 
 ## Troubleshooting the build
 
-See the [Troubleshooting wiki page].
+See the [Troubleshooting wiki page][].
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
-[Cloning a repository]: https://help.github.com/articles/cloning-a-repository
+[Cloning a repository]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [Dart]: https://dart.dev/get-dart
 [Dart install]: https://dart.dev/get-dart
 [Firebase]: https://firebase.google.com/
