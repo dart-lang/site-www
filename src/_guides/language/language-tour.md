@@ -1861,11 +1861,10 @@ function instead.) Here’s how the `==` operator works:
 1.  If *x* or *y* is null, return true if both are null, and false if only
     one is null.
 
-2.  Return the result of the method invocation
-    <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
-    operators such as `==` are methods that are invoked on their first
-    operand. For details, see
-    [Operators](#_operators).)
+2.  Return the result of invoking the `==` method on *x* with the argument *y*.
+    (That’s right, operators such as `==` are methods that
+    are invoked on their first operand.
+    For details, see [Operators](#_operators).)
 
 Here’s an example of using each of the equality and relational
 operators:
