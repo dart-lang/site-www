@@ -27,7 +27,7 @@ More info:
 
 * To avoid wasting your time, talk with us before you make any nontrivial
   pull request. The [issue tracker][] is a good way to track your progress
-  publicly, but we also use the #hackers-devrel channel
+  publicly, but we also use the `#hackers-devrel` channel
   [on Flutter's Discord server][].
 * We use the usual [GitHub pull request][] process.
 * We follow the [Google Developer Documentation Style Guide][],
@@ -38,14 +38,14 @@ More info:
   [dart-lang/sdk Contributing page][].
 
 [beginner]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22%20label%3Abeginner%20
-[dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/wiki/Contributing
-[GitHub pull request]: https://help.github.com/articles/about-pull-requests/
+[dart-lang/sdk Contributing page]: https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md
+[GitHub pull request]: https://docs.github.com/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [Google Developer Documentation Style Guide]: https://developers.google.com/style/
 [help wanted]: https://github.com/dart-lang/site-www/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22help%20wanted%22%20
 [in the site-shared repo]: https://github.com/dart-lang/site-shared/blob/master/doc
 [issue tracker]: https://github.com/dart-lang/site-www/issues
 [on Flutter's Discord server]: https://github.com/flutter/flutter/wiki/Chat
-[Report issues]: https://github.com/dart-lang/site-www/issues/new
+[Report issues]: https://github.com/dart-lang/site-www/issues/new/choose
 [semantic line breaks]: https://github.com/dart-lang/site-shared/blob/master/doc/writing-for-dart-and-flutter-websites.md#semantic-line-breaks
 [sign the CLA]: https://developers.google.com/open-source/cla/individual
 [www]: https://dart.dev
@@ -53,8 +53,8 @@ More info:
 
 ## Updating code samples
 
-If your PR changes Dart code within a page, you'll probably need to change
-the code in two places:
+If your PR changes Dart code within a page, 
+you'll probably need to change the code in two places:
 
 1. In a `.md` file for the page.
 2. In a `.dart` file under the `/examples` directory.
@@ -70,16 +70,19 @@ var name = 'Bob';
 ```
 
 Besides editing
-[/src/_guides/language/language-tour.md](https://github.com/dart-lang/site-www/blob/master/src/_guides/language/language-tour.md)
+[/src/_guides/language/language-tour.md][]
 (which you can find by clicking the GitHub icon at the top right of the page),
 you'll also need to edit the `var-decl` region of
-[/examples/misc/lib/language_tour/variables.dart](https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/language_tour/variables.dart).
+[/examples/misc/lib/language_tour/variables.dart][].
 
 If you create a PR but forget to edit the Dart file,
 or if your changes don't analyze/test cleanly,
-the GitHub Actions CI build will fail.
+the [GitHub Actions][] CI build will fail.
 Just update the PR, and GitHub Actions will run again.
 
+[GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
+[/src/_guides/language/language-tour.md]: https://github.com/dart-lang/site-www/blob/master/src/_guides/language/language-tour.md
+[/examples/misc/lib/language_tour/variables.dart]: https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/language_tour/variables.dart
 
 ## A word about conduct
 
