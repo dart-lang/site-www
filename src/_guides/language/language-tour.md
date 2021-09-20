@@ -2843,11 +2843,12 @@ class ProfileMark {
 }
 ```
 
-If you want to assign the value of a `final` instance variable
-after the constructor body starts, you can use `late final`,
-[but _be careful_][late-final-ivar].
+If you need to assign the value of a `final` instance variable
+after the constructor body starts, you can use one of the following:
 
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+* Use a [factory constructor](#factory-constructors).
+* Use `late final`, but [_be careful:_][late-final-ivar]
+  a `late final` without an initializer adds a setter to the API.
 
 
 ### Constructors
@@ -3114,6 +3115,10 @@ Another use case for factory constructors is
 initializing a final variable using
 logic that can't be handled in the initializer list.
 
+{{site.alert.tip}}
+  Another way to handle late initialization of a final variable
+  is to [use `late final` (carefully!)][late-final-ivar].
+{{site.alert.end}}
 
 In the following example,
 the `Logger` factory constructor returns objects from a cache,
@@ -4647,6 +4652,7 @@ To learn more about Dart's core libraries, see
 [iteration]: /guides/libraries/library-tour#iteration
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [language version]: /guides/language/evolution#language-versioning
+[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
