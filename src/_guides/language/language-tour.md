@@ -2847,7 +2847,7 @@ If you need to assign the value of a `final` instance variable
 after the constructor body starts, you can use one of the following:
 
 * Use a [factory constructor](#factory-constructors).
-* Use `late final`, but [_be careful_][late-final-ivar];
+* Use `late final`, but [_be careful:_][late-final-ivar]
   a `late final` without an initializer adds a setter to the API.
 
 
