@@ -130,10 +130,11 @@ import 'file-system.dart';
 import 'SliderMenu.dart';
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** This guideline specifies *how* to name a library *if you choose to
-  name it*. It is fine to _omit_ the library directive in a file if you want.
-</aside>
+{{site.alert.note}}
+  **Note:** This guideline specifies *how* to name a library
+  *if you choose to name it*. 
+  It is fine to _omit_ the library directive in a file if you want.
+{{site.alert.end}}
 
 
 ### DO name import prefixes using `lowercase_with_underscores`.
@@ -217,8 +218,8 @@ as in the following cases:
 * When generating Dart code that's parallel to Java code —
   for example, in enumerated types generated from [protobufs.][]
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
+{{site.alert.note}}
+  We initially used Java's `SCREAMING_CAPS` style for constants. We
   changed for a few reasons:
 
   *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
@@ -227,7 +228,7 @@ as in the following cases:
       necessitate a name change.
   *   The `values` property automatically defined on an enum type is const and
       lowercase.
-</aside>
+{{site.alert.end}}
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 

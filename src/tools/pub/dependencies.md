@@ -308,13 +308,13 @@ together. For example, `'>=1.2.3 <2.0.0'` allows any version from `1.2.3` to
 `2.0.0` excluding `2.0.0` itself. An easier way to express this range is
 by using [caret syntax](#caret-syntax), or `^1.2.3`.
 
-<aside class="alert alert-warning" markdown="1">
-If the **`>`** character is in the version constraint,
-be sure to **quote the constraint string**,
-so the character isn't interpreted as YAML syntax.
-For example, never use `>=1.2.3 <2.0.0`;
-instead, use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
-</aside>
+{{site.alert.warning}}
+  If the **`>`** character is in the version constraint,
+  be sure to **quote the constraint string**,
+  so the character isn't interpreted as YAML syntax.
+  For example, never use `>=1.2.3 <2.0.0`;
+  instead, use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
+{{site.alert.end}}
 
 ## Dev dependencies
 

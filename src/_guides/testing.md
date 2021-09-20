@@ -17,15 +17,15 @@ using the [`dart test`][] command
 [`dart test`]: /tools/dart-test
 [`flutter test`]: {{site.flutter}}/docs/reference/flutter-cli
 
-<aside class="alert alert-info" markdown="1">
-**Terminology: widget vs. component**<br>
-Flutter, a UI toolkit for building apps for any device,
-defines its GUI elements as _widgets_.
-Some frameworks, such as AngularDart,
-define GUI elements as _components_.
-This doc uses **component** (except when explicitly discussing Flutter),
-but both terms refer to the same concept.
-</aside>
+{{site.alert.info}}
+  **Terminology: widget vs. component**<br>
+  Flutter, a UI toolkit for building apps for any device,
+  defines its GUI elements as _widgets_.
+  Some frameworks, such as AngularDart,
+  define GUI elements as _components_.
+  This doc uses **component** (except when explicitly discussing Flutter),
+  but both terms refer to the same concept.
+{{site.alert.end}}
 
 ## Kinds of testing
 

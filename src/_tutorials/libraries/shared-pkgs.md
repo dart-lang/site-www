@@ -34,14 +34,14 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **Flutter note:**
   This page doesn't describe the tools you use with Flutter, but the
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
   [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
-</aside>
+{{site.alert.end}}
 
 
 ## About the pubspec.yaml file
@@ -288,10 +288,10 @@ use the `package:` prefix.
    docs]({{site.pub}}/documentation/vector_math/latest),
    which you can find from the pub.dev site entry.
 
-   <aside class="alert alert-info" markdown="1">
-     **Note:** You specify a filename, not a library name,
+   {{site.alert.note}}
+     You specify a filename, not a library name,
      when you import a library from a package.
-   </aside>
+   {{site.alert.end}}
 
 
 ## Other resources

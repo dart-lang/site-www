@@ -8,13 +8,12 @@ When you put Dart source code in a repository—using the
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Except where noted, this page discusses only source code repositories,
-_not_ app deployment.
-Some files that you wouldn't normally put in a repository
-are useful or essential when you deploy an app.
-</aside>
+{{site.alert.note}}
+  Except where noted, this page discusses only source code repositories,
+  _not_ app deployment.
+  Some files that you wouldn't normally put in a repository
+  are useful or essential when you deploy an app.
+{{site.alert.end}}
 
 ## The rules
 
@@ -28,12 +27,14 @@ build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-**Note:** The `.dart_tool` directory, which is new in Dart 2,
-is used by pub and other tools. It replaces the `.pub` directory as of
-the 2.0.0-dev.32.0 SDK release. The `.packages` file replaces the
-`packages` directories that early Dart versions produced.
-</aside>
+{{site.alert.version-note}}
+  The `.dart_tool` directory, 
+  which was new in Dart 2,
+  is used by pub and other tools. 
+  It replaces the `.pub` directory as of the 2.0.0-dev.32.0 SDK release. 
+  The `.packages` file replaces the `packages` directories
+  that early Dart versions produced.
+{{site.alert.end}}
 
 **Don't commit** the API documentation directory created by dartdoc:
 

@@ -25,11 +25,12 @@ Environment variables allow you to customize pub to suit your needs.
 PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.note}}
   If you are attempting to use `pub get` behind a corporate firewall
-  and it fails, please see
-  [`pub get` fails from behind a corporate firewall](/tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall)
-  for information on how to set up the proxy environment variables for
-  your platform.
-</aside>
+  and it fails, 
+  please see [`pub get` fails from behind a corporate firewall][]
+  for information on how to set up the proxy environment variables
+  for your platform.
+{{site.alert.end}}
+
+[`pub get` fails from behind a corporate firewall]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall

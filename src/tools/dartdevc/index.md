@@ -8,12 +8,11 @@ toc: false
 The Dart development compiler _(dartdevc_, also known as _DDC)_
 lets you run and debug your Dart web app in the Chrome browser.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.note}}
   The dartdevc compiler is for _development_ only.
   Continue to use [dart2js](/tools/dart2js)
   to compile for deployment.
-</aside>
+{{site.alert.end}}
 
 Unlike dart2js,
 dartdevc supports incremental compilation and emits modular JavaScript.

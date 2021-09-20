@@ -1549,16 +1549,16 @@ distinction is a little subtle. It's OK to allow inference to *propagate*
 you don't want it to summon `dynamic` *ex nihilo* when nothing in your code ever
 requested it.
 
-<aside class="alert alert-info" markdown="1">
-
-Before Dart 2, this guideline stated the exact opposite: *don't* annotate with
-`dynamic` when it is implicit. With the new stronger type system and type
-inference, users now expect Dart to behave like an inferred statically-typed
-language. With that mental model, it is an unpleasant surprise to discover that
-a region of code has silently lost all of the safety and performance of static
-types.
-
-</aside>
+{{site.alert.info}}
+  Before Dart 2, this guideline stated the exact opposite: 
+  *don't* annotate with `dynamic` when it is implicit. 
+  With the new stronger type system and type inference, 
+  users now expect Dart to behave like an inferred statically-typed language. 
+  With that mental model, 
+  it is an unpleasant surprise to discover that
+  a region of code has silently lost all of the
+  safety and performance of static types.
+{{site.alert.end}}
 
 
 ### PREFER signatures in function type annotations.

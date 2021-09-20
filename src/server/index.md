@@ -19,10 +19,10 @@ that can help you develop command-line and server apps.
 : Handy for both beginners and experts,
   DartPad lets you try out language features and dart:* APIs.
 
-  <aside class="alert alert-info" markdown="1">
-    **Note:** DartPad does **not** support using dart:io APIs or
+  {{site.alert.note}}
+    DartPad does **not** support using dart:io APIs or
     importing libraries from packages.
-  </aside>
+  {{site.alert.end}}
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/get-dart) to get the core Dart

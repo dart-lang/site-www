@@ -138,7 +138,8 @@ The sample illustrates the most common top-level entries:
 - Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
 
 {{site.alert.warn}}
-  **YAML is sensitive to whitespace.** Don't use tabs in a YAML file,
+  **YAML is sensitive to whitespace.** 
+  Don't use tabs in a YAML file,
   and use 2 spaces to denote each level of indentation.
 {{site.alert.end}}
 
@@ -264,11 +265,11 @@ include: package:lints/recommended.yaml
 ```
 
 {{site.alert.important}}
-When a **new version of `lints`** is published,
-code that previously passed analysis might **start failing analysis.**
-We recommend updating your code to work with the new rules.
-Other options are to explicitly enable individual linter rules 
-or [disable individual rules][].
+  When a **new version of `lints`** is published,
+  code that previously passed analysis might **start failing analysis.**
+  We recommend updating your code to work with the new rules.
+  Other options are to explicitly enable individual linter rules 
+  or [disable individual rules][].
 {{site.alert.end}}
 
 [lints package]: {{site.pub-pkg}}/lints
