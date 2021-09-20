@@ -3917,14 +3917,6 @@ Specifying any non-`SomeBaseClass` type results in an error:
 var foo = [!Foo<Object>!]();
 {% endprettify %}
 
-{{site.alert.info}}
-  How does `Foo<T extends SomeBaseClass>` differ from `Foo<SomeBaseClass>`?
-  If you use `<SomeBaseClass>`,
-  then `Foo` can be provided objects of _any_ `SomeBaseClass` subtype.
-  Adding `T extends` not only lets members of `Foo` use the type argument `T`,
-  but lets you restrict the argument's type to subtypes of `T`.
-{{site.alert.end}}
-
 
 ### Using generic methods
 
