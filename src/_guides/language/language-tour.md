@@ -3411,6 +3411,9 @@ class SmartTelevision [!extends!] Television {
 }
 {% endprettify %}
 
+For another usage of `extends`, see the discussion of
+[parameterized types](#restricting-the-parameterized-type)
+in [generics](#generics).
 
 <a name="overridable-operators"></a>
 
@@ -3868,8 +3871,24 @@ print(names is List<String>); // true
 ### Restricting the parameterized type
 
 When implementing a generic type,
-you might want to limit the types of its parameters.
+you might want to limit the types that can be provided as arguments,
+so that the argument must be a subtype of a particular type.
 You can do this using `extends`.
+
+A common use case is ensuring that a type is non-nullable
+by making it a subtype of `Object`
+(instead of the default, [`Object?`][top-and-bottom]).
+
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
+```dart
+class Foo<T extends Object> {
+  // Any type provided to Foo for T must be non-nullable.
+}
+```
+
+You can use `extends` with other types besides `Object`.
+Here's an example of extending `SomeBaseClass`,
+so that members of `SomeBaseClass` can be called on objects of type `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -3881,7 +3900,7 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
-It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
+It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
