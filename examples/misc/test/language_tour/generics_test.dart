@@ -26,6 +26,7 @@ void main() {
       // #docregion generic-collections
       var names = <String>[];
       names.addAll(['Seth', 'Kathy', 'Lars']);
+      // ignore_for_file: stable, beta, dev, unnecessary_type_check
       print(names is List<String>); // true
       // #enddocregion generic-collections
     }

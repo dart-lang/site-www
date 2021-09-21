@@ -272,6 +272,7 @@ void main() {
 
       fruits.add('apples');
       var fruit = fruits[0];
+      // ignore_for_file: stable, beta, dev, unnecessary_type_check
       assert(fruit is String);
       // #enddocregion List-of-String
     });
@@ -485,6 +486,7 @@ void main() {
       var loudTeas =
           teas.map((tea) => tea.toUpperCase()).toList();
       // #enddocregion toList
+      // ignore_for_file: stable, beta, dev, unnecessary_type_check
       expect(loudTeas is List, isTrue);
     });
 
