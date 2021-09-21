@@ -244,7 +244,7 @@ resolve. Instead, your entrypoints should go in the appropriate
   put [implementation files](#implementation-files) under `/lib/src`,
   instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{{site.alert.info}}
+{{site.alert.end}}
 
 For more information on library packages, see
 [Creating packages](/guides/libraries/create-library-packages).
