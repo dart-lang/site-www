@@ -14,7 +14,6 @@ port: 4000
 #   {{site.flutter}}/docs
 
 dart-site: '' 
-prev-url: https://v1-dartlang-org.firebaseapp.com
 dart_vm:  /server
 flutter:  https://flutter.dev
 dart_api: https://api.dart.dev
