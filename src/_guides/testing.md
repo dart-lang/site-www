@@ -94,15 +94,6 @@ Use the following resources to learn more about testing Flutter apps:
 * [flutter/dev/manual_tests](https://github.com/flutter/flutter/tree/master/dev/manual_tests)<br>
   Many examples of tests in the Flutter SDK.
 
-## Web testing
-
-Use the following resources to learn more about testing Dart web
-applications:
-
-* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
-  A Dart package for interfacing with
-  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
-
 ## Other tools and resources
 
 You may also find the following resources useful for developing and
