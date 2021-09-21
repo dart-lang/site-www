@@ -27,7 +27,7 @@ Here are the highlights:
 | Dartium, content shell | Chrome and [dartdevc][] |
 | `pub build` | [`webdev build`](/tools/webdev#build) |
 | `pub serve` | [`webdev serve`](/tools/webdev#serve) |
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
+| `pub run angular_test` | `pub run build_runner test -- -p chrome`. |
 | pub transformers | [build][] package transformers. See: [Transforming code][] |
 
 ## Code
