@@ -94,5 +94,4 @@ information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 [dart-2]: /dart-2
 [dartdevc]: /tools/dartdevc
 [Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
-[Running tests]: {{site.angulardart}}/guide/testing/component/running-tests
 [Transforming code]: https://github.com/dart-lang/build/blob/master/docs/transforming_code.md
