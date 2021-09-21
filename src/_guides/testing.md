@@ -17,16 +17,6 @@ using the [`dart test`][] command
 [`dart test`]: /tools/dart-test
 [`flutter test`]: {{site.flutter}}/docs/reference/flutter-cli
 
-{{site.alert.info}}
-  **Terminology: widget vs. component**<br>
-  Flutter, a UI toolkit for building apps for any device,
-  defines its GUI elements as _widgets_.
-  Some frameworks, such as AngularDart,
-  define GUI elements as _components_.
-  This doc uses **component** (except when explicitly discussing Flutter),
-  but both terms refer to the same concept.
-{{site.alert.end}}
-
 ## Kinds of testing
 
 The Dart testing docs focus on three kinds of testing, out of the
@@ -103,19 +93,6 @@ Use the following resources to learn more about testing Flutter apps:
   Source code and tests for the Flutter gallery example.
 * [flutter/dev/manual_tests](https://github.com/flutter/flutter/tree/master/dev/manual_tests)<br>
   Many examples of tests in the Flutter SDK.
-
-## Web testing
-
-Use the following resources to learn more about testing Dart web
-applications:
-
-* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
-  A Dart package for interfacing with
-  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
-* [Testing]({{site.angulardart}}/guide/testing)(a page
-  in the AngularDart guide)<br>
-  How to use the [angular_test]({{site.pub-pkg}}/angular_test)
-  package to test AngularDart components and subsystems.
 
 ## Other tools and resources
 

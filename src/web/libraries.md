@@ -44,7 +44,6 @@ Here are a few packages that are web-specific:
 |--------------------+---------------------------------+--------------------------|
 | Library            | Package                         | Notes                    |
 |--------------------|---------------------------------|--------------------------|
-| AngularDart        | [angular][]                     | Useful for complex apps that support features such as event handling and dependency injection. More info: [AngularDart documentation]({{site.angulardart}}) | 
 | JavaScript interop | [js][]                          | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
 | Material Design    | [mdc_web][]                     | Bindings for Material Components for the web. |
 | Mustache templates | [mustache_template][]           | Support for the Mustache templating language. |
@@ -55,7 +54,6 @@ Here are a few packages that are web-specific:
 [angular]: {{site.pub-pkg}}/angular
 [flutter]: {{site.flutter}}
 [flutter-web]: {{site.flutter}}/web
-[AngularDart]: {{site.angulardart}}
 [js]: {{site.pub-pkg}}/js
 [JavaScript interoperability]: /web/js-interop
 [mdc_web]: {{site.pub-pkg}}/mdc_web
