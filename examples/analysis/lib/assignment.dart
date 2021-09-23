@@ -7,7 +7,7 @@ import 'package:examples_util/ellipsis.dart';
 String downcastExample() {
   // #docregion implicit-downcast
   dynamic o = ellipsis<String>();
-  // ignore_for_file: stable, beta, dev, invalid_assignment
+  // ignore: stable, beta, dev, invalid_assignment
   String s = o; // Implicit downcast
   String s2 = s.substring(1);
   // #enddocregion implicit-downcast
