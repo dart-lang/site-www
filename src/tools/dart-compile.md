@@ -20,7 +20,8 @@ Generated: /Users/me/myapp/bin/myapp.exe
 
 The next example uses the `aot-snapshot` subcommand to
 produce a snapshot (`myapp.aot`).
-It then uses the [`dartaotruntime` command][] (which provides a Dart runtime)
+It then uses the [`dartaotruntime` command][]
+(which provides a [Dart runtime](/overview#runtime))
 to run the snapshot:
 
 ```terminal
@@ -74,31 +75,35 @@ The following table shows the subcommands of `dart compile`.
   <tr>
     <td> <code>exe</code> </td>
     <td> <span style="white-space: nowrap">Self-contained</span> executable </td>
-    <td> A standalone, architecture-specific executable file.
+    <td> A standalone, architecture-specific executable file containing the source code
+      compiled to machine code and a small <a href="/overview#runtime">Dart runtime</a>.
       <a href="#exe">Learn more.</a>
     </td>
   </tr>
   <tr>
     <td style="white-space: nowrap"> <code>aot-snapshot</code> </td>
-    <td style="white-space: nowrap"> AOT snapshot </td>
-    <td> An architecture-specific file with <b>no Dart runtime</b>.
+    <td style="white-space: nowrap"> AOT module </td>
+    <td> An architecture-specific file, containing the source code
+      compiled to machine code, and <b>no Dart runtime</b>.
       <a href="#aot-snapshot">Learn more.</a>
     </td>
   </tr>
   <tr>
     <td> <code>jit-snapshot</code> </td>
-    <td> JIT snapshot </td>
+    <td> JIT module </td>
     <td> An architecture-specific file with
-      parsed classes and compiled code that's generated during
-      a training run of the program.
+      an intermediate representation of all source code,
+      and an optimized representation of the source code
+      exercised during a training run of the program.
       <a href="#jit-snapshot">Learn more.</a>
     </td>
   </tr>
   <tr>
     <td> <code>kernel</code> </td>
-    <td> Kernel snapshot </td>
-    <td> A portable
-      <a href="https://github.com/dart-lang/sdk/blob/main/pkg/kernel/binary.md">binary snapshot</a>.
+    <td> Kernel module </td>
+    <td> A portable,
+      <a href="https://github.com/dart-lang/sdk/blob/main/pkg/kernel/binary.md">intermediate representation</a>
+      of the source code.
       <a href="#kernel">Learn more.</a>
     </td>
   </tr>
