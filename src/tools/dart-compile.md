@@ -77,7 +77,7 @@ The following table shows the subcommands of `dart compile`.
     <td> <span style="white-space: nowrap">Self-contained</span> executable </td>
     <td> A standalone, architecture-specific executable file containing the source code
       compiled to machine code and a small <a href="/overview#runtime">Dart runtime</a>.
-      <a href="#exe">Learn more.</a>
+      <br><i><a href="#exe">Learn more.</a></i>
     </td>
   </tr>
   <tr>
@@ -85,7 +85,7 @@ The following table shows the subcommands of `dart compile`.
     <td style="white-space: nowrap"> AOT module </td>
     <td> An architecture-specific file, containing the source code
       compiled to machine code, and <b>no Dart runtime</b>.
-      <a href="#aot-snapshot">Learn more.</a>
+      <br><i><a href="#aot-snapshot">Learn more.</a></i>
     </td>
   </tr>
   <tr>
@@ -95,7 +95,7 @@ The following table shows the subcommands of `dart compile`.
       an intermediate representation of all source code,
       and an optimized representation of the source code
       exercised during a training run of the program.
-      <a href="#jit-snapshot">Learn more.</a>
+      <br><i><a href="#jit-snapshot">Learn more.</a></i>
     </td>
   </tr>
   <tr>
@@ -104,14 +104,14 @@ The following table shows the subcommands of `dart compile`.
     <td> A portable,
       <a href="https://github.com/dart-lang/sdk/blob/main/pkg/kernel/binary.md">intermediate representation</a>
       of the source code.
-      <a href="#kernel">Learn more.</a>
+      <br><i><a href="#kernel">Learn more.</a></i>
     </td>
   </tr>
   <tr>
     <td> <code>js</code> </td>
     <td> JavaScript </td>
     <td> A deployable JavaScript file.
-      <a href="#js">Learn more.</a>
+      <br><i><a href="#js">Learn more.</a></i>
     </td>
   </tr>
 </table>
