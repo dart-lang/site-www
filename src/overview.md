@@ -252,6 +252,8 @@ execute the code. This runtime is responsible for a number of critical tasks:
   time), some type checks are dynamic (run time), e.g. the Dart
   [type check and cast operators](/guides/language/language-tour#type-test-operators).
 
+* Managing [isolates](/guides/language/language-tour#isolates) running concurrently.
+
 On the native platforms, the Dart runtime is automatically included inside
 self-contained executables, and is part of the Dart VM invoked with [`dart
 run`](https://dart.dev/tools/dart-run). On the web platforms, the runtime is
