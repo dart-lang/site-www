@@ -256,8 +256,7 @@ execute the code. This runtime is responsible for a number of critical tasks:
 
 On the native platforms, the Dart runtime is automatically included inside
 self-contained executables, and is part of the Dart VM invoked with [`dart
-run`](https://dart.dev/tools/dart-run). On the web platforms, the runtime is
-included automatically when compiling Dart to JS.
+run`](https://dart.dev/tools/dart-run).
 
 ## Learning Dart {#learning-dart}
 
