@@ -35,7 +35,7 @@ void main() {
   // Instance of 'Employee'
   // #enddocregion super
   // #docregion emp-is-Person
-  // ignore_for_file: stable, beta, dev, unnecessary_type_check
+  // ignore: stable, beta, dev, unnecessary_type_check
   if (employee is Person) {
     // Type check
     employee.firstName = 'Bob';

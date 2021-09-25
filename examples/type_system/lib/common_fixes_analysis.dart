@@ -12,7 +12,7 @@ void _samplesFromCommonProblemsPage() {
   {
     // #docregion canvas-undefined
     var canvas = querySelector('canvas')!;
-    // ignore_for_file: stable, beta, dev, undefined_getter
+    // ignore: stable, beta, dev, undefined_getter
     canvas.context2D.lineTo(x, y); //!analysis-issue
     // #enddocregion canvas-undefined
   }
@@ -35,7 +35,7 @@ void _samplesFromCommonProblemsPage() {
     // #docregion inferred-collection-types
     // Inferred as Map<String, int>
     var map = {'a': 1, 'b': 2, 'c': 3};
-    // ignore_for_file: stable, beta, dev, invalid_assignment
+    // ignore: stable, beta, dev, invalid_assignment
     map['d'] = 1.5; //!analysis-issue
     // #enddocregion inferred-collection-types
   }
@@ -56,7 +56,7 @@ abstract class NumberAdder {
 }
 
 class MyAdder extends NumberAdder {
-  // ignore_for_file: stable, beta, dev, invalid_override
+  // ignore: stable, beta, dev, invalid_override
   @override
   num add(int a, int b) => a + b;
 }
@@ -76,7 +76,7 @@ class Superclass<T> {
 
 class Subclass extends Superclass {
   @override
-  // ignore_for_file: stable, beta, dev, invalid_override
+  // ignore: stable, beta, dev, invalid_override
   void method(int param) {/* ... */}
 }
 // #enddocregion type-arguments
@@ -93,7 +93,7 @@ class _HoneyBadger extends Animal {
   final String _name;
   // #docregion super-goes-last
   _HoneyBadger(Eats food, String name)
-      // ignore_for_file: stable, beta, dev, invalid_super_invocation
+      // ignore: stable, beta, dev, invalid_super_invocation
       : super(food),
         _name = name {/* ... */}
 // #enddocregion super-goes-last
@@ -113,7 +113,7 @@ class HoneyBadger extends Animal {
 void funcFail() {
   // #docregion func-fail
   void filterValues(bool Function(dynamic) filter) {}
-  // ignore_for_file: stable, beta, dev, argument_type_not_assignable
+  // ignore: stable, beta, dev, argument_type_not_assignable
   filterValues((String x) => x.contains('Hello'));
   // #enddocregion func-fail
 }

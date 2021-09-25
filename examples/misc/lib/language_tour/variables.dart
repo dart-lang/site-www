@@ -107,9 +107,9 @@ void miscDeclAnalyzedButNotTested() {
       // #docregion const-dart-25
       const Object i = 3; // Where i is a const Object with an int value...
       const list = [i as int]; // Use a typecast.
-      // ignore_for_file: stable, beta, dev, unnecessary_type_check
+      // ignore: stable, beta, dev, unnecessary_type_check
       const map = {if (i is int) i: 'int'}; // Use is and collection if.
-      // ignore_for_file: stable, beta, dev, unnecessary_type_check
+      // ignore: stable, beta, dev, unnecessary_type_check
       const set = {if (list is List<int>) ...list}; // ...and a spread.
       // #enddocregion const-dart-25
     }
