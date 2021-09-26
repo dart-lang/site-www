@@ -1,6 +1,7 @@
 ---
 title: Add elements to the DOM
 description: You have an Element object, now what?
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 
 nextpage:
   url: /tutorials/web/low-level-html/remove-elements
@@ -16,11 +17,11 @@ prevpage:
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
 
-* In Dart, page elements are of type Element.
-* An Element knows its parent.
-* An Element keeps its children in a List &lt;Element&gt;.
+* In Dart, page elements are of type `Element`.
+* An `Element` knows its parent.
+* An `Element` keeps its children in a `List<Element>`.
 * Change the DOM by adding or removing children of elements.
-* Respond to user input with an EventListener.
+* Respond to user input with an `EventListener`.
 
 </div>
 
@@ -36,7 +37,7 @@ Each node in the tree represents an item on the page.
 Each node in the tree keeps track of both
 its parent and its children.
 In Dart, the
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>
+[`Node`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html){:target="_blank" rel="noopener"}
 class contains the methods and properties
 that implement a node's tree functionality.
 
@@ -48,11 +49,11 @@ button elements, and so on.
 
 In Dart,
 elements are implemented by the
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>
-class, which is a subclass of Node.
+[`Element`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html){:target="_blank" rel="noopener"}
+class, which is a subclass of `Node`.
 Because the nodes you care about most are usually elements,
-this tutorial focuses on Element,
-rather than on Node.
+this tutorial focuses on `Element`,
+rather than on `Node`.
 
 ## Running the Todo app {#try-app}
 
@@ -63,17 +64,89 @@ and therefore the web page,
 by adding elements to the DOM tree.
 
 **Try it!**
+
 Click **Run** to start the web app.
 Then type in the app's text field, and press return.
 The app adds an item to the list.
 Enter a few items into the input field.
 
-<iframe
-src="{{site.dartpad-embed-html}}?id=aab6ad8c04d161458d32161ea6e87a97&ga_id=running_the_todo_app"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
+```dart:run-dartpad:mode-html:ga_id-running_the_todo_app:null_safety-true
+{$ begin main.dart $}
+import 'dart:html';
+
+late final InputElement toDoInput;
+late final UListElement toDoList;
+late final ButtonElement deleteAll;
+
+void main() {
+  toDoInput = querySelector('#to-do-input') as InputElement;
+  toDoList = querySelector('#to-do-list') as UListElement;
+  toDoInput.onChange.listen(addToDoItem);
+}
+
+void addToDoItem(Event e) {
+  final newToDo = LIElement()..text = toDoInput.value;
+  toDoInput.value = '';
+  toDoList.children.add(newToDo);
+}
+{$ end main.dart $}
+{$ begin index.html $}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <script async type="application/dart" src="main.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h2>Procrastinator's Todo</h2>
+        
+    <div>
+      <input id="to-do-input" type="text" placeholder="What needs to be done?">
+    </div>
+       
+    <div>
+      <ul id="to-do-list">
+      </ul>
+    </div>
+  </body>
+</html>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: WhiteSmoke;
+  margin: 15px;
+  color: black;
+}
+
+#to-do-input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 0px 5px 5px;
+  width: 100%;
+  border: 1px solid Silver;
+  background-color: White;
+}
+
+#to-do-list {
+  padding: 0;
+  margin: 0;
+  list-style-position: inside;
+}
+
+#to-do-list li {
+  padding: 5px 0px 5px 5px;
+  border-bottom: 1px dotted Silver;
+}
+{$ end styles.css $}
+```
 
 This is the beginning of an app to manage a list of things to do.
 Right now, this app is for procrastinators only
