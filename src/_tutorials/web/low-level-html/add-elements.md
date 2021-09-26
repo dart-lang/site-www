@@ -91,31 +91,16 @@ void addToDoItem(Event e) {
 }
 {$ end main.dart $}
 {$ begin index.html $}
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo</title>
-    <script async type="application/dart" src="main.dart"></script>
-    <script async src="packages/browser/dart.js"></script>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-
-  <body>
-    <h2>Procrastinator's Todo</h2>
+<h2>Procrastinator's Todo</h2>
         
-    <div>
-      <input id="to-do-input" type="text" placeholder="What needs to be done?">
-    </div>
-       
-    <div>
-      <ul id="to-do-list">
-      </ul>
-    </div>
-  </body>
-</html>
+<div>
+  <input id="to-do-input" type="text" placeholder="What needs to be done?">
+</div>
+   
+<div>
+  <ul id="to-do-list">
+  </ul>
+</div>
 {$ end index.html $}
 {$ begin styles.css $}
 body {
@@ -391,96 +376,143 @@ The Anagram app shows how to move an element within the DOM.
 **Try it!**
 Click **Run** to start the web app.
 Then form a word by clicking the app's letter tiles.
-You might prefer to 
-[open the app in DartPad]({{site.dartpad}}){:target="_blank" rel="noopener"}
-to have more space for the app's code and UI.
 
-{% comment %}
-https://gist.github.com/Sfshaza/0532bfcb70bf5e4a900c
-
-main.dart:
-// Copyright (c) 2012, the Dart project authors.  Please see the
-// AUTHORS file for details. All rights reserved. Use of this
-// source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
+```dart:run-dartpad:mode-html:ga_id-moving_elements_within_the_dom_tree:null_safety-true
+{$ begin main.dart $}
 import 'dart:html';
 import 'dart:math';
 
-// Should remove tiles from here when they are selected otherwise
-// the ratio is off.
+// Should remove tiles from here when they are selected
+// otherwise the ratio is off.
 
-String scrabbleLetters = 'aaaaaaaaabbccddddeeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnnooooooooppqrrrrrrssssttttttuuuuvvwwxyyz**';
+const String scrabbleLetters =
+    'aaaaaaaaabbccddddeeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnnooooooooppqrrrrrrssssttttttuuuuvvwwxyyz**';
 
-List<ButtonElement> buttons = new List();
-Element letterpile;
-Element result;
-ButtonElement clearButton;
-Element value;
-int wordvalue = 0;
+final List<ButtonElement> buttons = [];
+late final Element letterpile;
+late final Element result;
+late final ButtonElement clearButton;
+late final Element value;
+int wordValue = 0;
 
-Map scrabbleValues = { 'a':1, 'e':1, 'i':1, 'l':1, 'n':1,
-                       'o':1, 'r':1, 's':1, 't':1, 'u':1,
-                       'd':2, 'g':2, 'b':3, 'c':3, 'm':3,
-                       'p':3, 'f':4, 'h':4, 'v':4, 'w':4,
-                       'y':4, 'k':5, 'j':8, 'x':8, 'q':10,
-                       'z':10, '*':0 };
+const Map<String, int> scrabbleValues = {
+  'a': 1,
+  'e': 1,
+  'i': 1,
+  'l': 1,
+  'n': 1,
+  'o': 1,
+  'r': 1,
+  's': 1,
+  't': 1,
+  'u': 1,
+  'd': 2,
+  'g': 2,
+  'b': 3,
+  'c': 3,
+  'm': 3,
+  'p': 3,
+  'f': 4,
+  'h': 4,
+  'v': 4,
+  'w': 4,
+  'y': 4,
+  'k': 5,
+  'j': 8,
+  'x': 8,
+  'q': 10,
+  'z': 10,
+  '*': 0
+};
 
 void main() {
-  letterpile = querySelector("#letterpile");
-  result = querySelector("#result");
-  value = querySelector("#value");
+  letterpile = querySelector('#letterpile') as Element;
+  result = querySelector('#result') as Element;
+  value = querySelector('#value') as Element;
 
-  clearButton = querySelector("#clearButton");
-  clearButton.onClick.listen(newletters);
+  clearButton = querySelector('#clearButton') as ButtonElement;
+  clearButton.onClick.listen(newLetters);
 
   generateNewLetters();
 }
 
-void moveLetter(Event e) {
-  Element letter = e.target;
+void moveLetter(MouseEvent e) {
+  final letter = e.target;
+  if (letter == null || letter is! Element) {
+    return;
+  }
   if (letter.parent == letterpile) {
     result.children.add(letter);
-    wordvalue += scrabbleValues[letter.text];
-    value.text = "$wordvalue";
+    wordValue += scrabbleValues[letter.text] ?? 0;
+    value.text = '$wordValue';
   } else {
     letterpile.children.add(letter);
-    wordvalue -= scrabbleValues[letter.text];
-    value.text = "$wordvalue";
+    wordValue -= scrabbleValues[letter.text] ?? 0;
+    value.text = '$wordValue';
   }
 }
 
-void newletters(Event e) {
+void newLetters(Event e) {
   letterpile.children.clear();
   result.children.clear();
   generateNewLetters();
 }
 
-generateNewLetters() {
-  Random indexGenerator = new Random();
-  wordvalue = 0;
+void generateNewLetters() {
+  final indexGenerator = Random();
+  wordValue = 0;
   value.text = '';
   buttons.clear();
   for (var i = 0; i < 7; i++) {
-    int letterIndex =
-        indexGenerator.nextInt(scrabbleLetters.length);
+    final letterIndex = indexGenerator.nextInt(scrabbleLetters.length);
     // Should remove the letter from scrabbleLetters to keep the
     // ratio correct.
-    buttons.add(new ButtonElement());
-    buttons[i].classes.add("letter");
-    buttons[i].onClick.listen(moveLetter);
-    buttons[i].text = scrabbleLetters[letterIndex];
-    letterpile.children.add(buttons[i]);
+    final button = ButtonElement();
+    button.classes.add('letter');
+    button.onClick.listen(moveLetter);
+    button.text = scrabbleLetters[letterIndex];
+    buttons.add(button);
+    letterpile.children.add(button);
   }
 }
-{% endcomment %}
+{$ end main.dart $}
+{$ begin index.html $}
+<h1>Anagram</h1>
+    
+<h3>Pile:</h3>
+<div id="letterpile">
+</div>
 
-<iframe
-src="{{site.dartpad-embed-html}}?id=0532bfcb70bf5e4a900c&ga_id=moving_elements_within_the_dom_tree"
-    width="100%"
-    height="600px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<h3>Word:</h3>
+<div id="result">
+</div>
+
+<h3>Scrabble Value:</h3>
+<p id="value"></p>
+
+<button id="clearButton"> new letters </button>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  background-color: #F8F8F8;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+.letter {
+  width: 48px;
+  height: 48px;
+  font-size: 32px;
+  background-color: Lavender;
+  color: purple;
+  border: 1px solid black;
+  margin: 2px 2px 2px 2px;
+}
+{$ end styles.css $}
+```
 
 When the program starts,
 it creates one button element for each of seven
