@@ -412,7 +412,7 @@ assuming that the Dart code is in a file named `main.dart`:
     </p>
   </body>
 </html>
-{% prettify html tag=pre+code %}
+{% endprettify %}
 
 The `<script>` element specifies the location of the compiled Dart code.
 
