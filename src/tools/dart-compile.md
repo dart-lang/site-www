@@ -77,7 +77,7 @@ The following table shows the subcommands of `dart compile`.
     <td> <span style="white-space: nowrap">Self-contained</span> executable </td>
     <td> A standalone, architecture-specific executable file containing the source code
       compiled to machine code and a small <a href="/overview#runtime">Dart runtime</a>.
-      <br><i><a href="#exe">Learn more.</a></i>
+      <br><em><a href="#exe">Learn more.</a></em>
     </td>
   </tr>
   <tr>
