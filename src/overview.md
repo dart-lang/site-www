@@ -248,9 +248,10 @@ execute the code. This runtime is responsible for a number of critical tasks:
 * Managing memory: Dart uses a managed memory model, where unused memory is
   reclaimed by a garbage collector (GC). 
 
-* Enforcing the Dart type system: While most type checks are static (compile
-  time), some type checks are dynamic (run time), e.g. the Dart
-  [type check and cast operators](/guides/language/language-tour#type-test-operators).
+* Enforcing the Dart type system: While most type checks in Dart are static (compile
+  time), some type checks are dynamic (run time). These dynamic checks -- for example
+  [type check and cast operators](/guides/language/language-tour#type-test-operators) --
+  are enforced by the runtime system.
 
 * Managing [isolates](/guides/language/language-tour#isolates) running concurrently.
 
