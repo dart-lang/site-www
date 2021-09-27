@@ -254,9 +254,9 @@ execute the code. This runtime is responsible for a number of critical tasks:
 
 * Managing [isolates](/guides/language/language-tour#isolates) running concurrently.
 
-On the native platforms, the Dart runtime is automatically included inside
-self-contained executables, and is part of the Dart VM invoked with [`dart
-run`](https://dart.dev/tools/dart-run).
+On the native platforms, the Dart runtime is automatically
+included inside self-contained executables, 
+and is part of the Dart VM invoked with [`dart run`](/tools/dart-run).
 
 ## Learning Dart {#learning-dart}
 
