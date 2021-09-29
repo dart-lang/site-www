@@ -7,8 +7,6 @@ prevpage:
   title: Add elements to the DOM
 ---
 
-{% include not-null-safe.md %}
-
 <div class="panel" markdown="1">
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
