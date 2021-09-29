@@ -214,7 +214,7 @@ that implements the **Delete All** button.
     ```
 
 2. The Dart code gets the button element from the DOM
-   using querySelector() and the button's ID, `delete-all`.
+   using `querySelector()` and the button's ID, `delete-all`.
    The code registers a mouse click handler on the button;
    the handler removes all of the child elements from the to do list.
    Here is all of the Dart code related to the **Delete All** button.
@@ -262,9 +262,9 @@ Function expressions are often used
 when registering event handlers on an element
 and can extend over multiple lines.
 When registering event handlers,
-the function must be an EventListener.
+the function must be an `EventListener`.
 That is,
-it returns no value and takes an Event object as a parameter.
+it returns no value and takes an `Event` object as a parameter.
 
 
 ## What next?
