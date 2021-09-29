@@ -1,6 +1,6 @@
 ---
 title: Add elements to the DOM
-description: You have an Element object, now what?
+description: Learn how to add created elements to the DOM.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 
 nextpage:
