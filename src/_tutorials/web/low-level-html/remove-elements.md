@@ -1,6 +1,6 @@
 ---
 title: Remove DOM elements
-description: Remove a child element from the DOM.
+description: Learn how to remove children elements from the DOM.
 
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
