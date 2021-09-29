@@ -13,10 +13,10 @@ prevpage:
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
 
-* Use `element_.remove()` to remove an element from the DOM.
-* Remove all children from an element with _element_.children.clear().
+* Use `element.remove()` to remove an element from the DOM.
+* Remove all children from an element with `element.children.clear()`.
 * Function expressions are a convenient way to define single-use functions.
-* => is a shorthand syntax for defining functions that contain just one expression.
+* `=>` is a shorthand syntax for defining functions that contain just one expression.
 
 {{site.alert.note}}
 {% include dartpad-embedded-troubleshooting.md %}
@@ -172,9 +172,9 @@ The
 class provides functions for finding an item in the list
 and removing it.
 But, in this case,
-using the element's remove() function
+using the element's `remove()` function
 is shorter and more concise than
-using functions from the List class.
+using functions from the `List` class.
 
 <img class="scale-img-max" src="/tutorials/web/images/remove-element.png"
      alt="Use element.remove() to remove an element from the DOM">
@@ -186,7 +186,7 @@ When a new to do item is created,
 the code registers a mouse click handler on the new element.
 When the user clicks that new element,
 its event handler causes the element to remove itself from the DOM
-with remove().
+with `remove()`.
 
 <img class="scale-img-max" src="/tutorials/web/images/remove-element-code.png"
      alt="Registering an event handler to delete an item">
@@ -203,44 +203,36 @@ all elements are removed from the list.
 <img class="scale-img-max" src="/tutorials/web/images/remove-all-elements.png"
      alt="Use element.children.clear() to remove all of an element's children">
 
-In this case, using the List class's clear() function
+In this case, using the `List` class's `clear()` function
 yields the most concise code.
 Here's the code from the todo_with_delete app
 that implements the **Delete All** button.
 
-<ol>
-<li markdown="1">
-The HTML code creates a button with the ID delete-all.
-(The CSS styles it.)
+1. The HTML code creates a button with the ID `delete-all`.
+   (The CSS styles it.)
 
-```html
-<button id="delete-all" type="button" style="float:right"> Delete All </button>
-```
+    ```html
+    <button id="delete-all" type="button" style="float:right"> Delete All </button>
+    ```
 
-</li>
+2. The Dart code gets the button element from the DOM
+   using querySelector() and the button's ID, `delete-all`.
+   The code registers a mouse click handler on the button;
+   the handler removes all of the child elements from the to do list.
+   Here is all of the Dart code related to the **Delete All** button.
 
-<li markdown="1">
-The Dart code gets the button element from the DOM
-using querySelector() and the button's ID, #delete-all.
-The code registers a mouse click handler on the button;
-the handler removes all of the child elements from the to do list.
-Here is all of the Dart code related to the **Delete All** button.
-
-<img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
+   <img class="scale-img-max" src="/tutorials/web/images/remove-all-code.png"
      alt="Remove all child elements from an Element">
-
-</li>
-</ol>
 
 ## About function expressions and =>
 
 The todo_with_delete app uses
 some interesting Dart syntax
 when adding an event listener to the **Delete All** button.
-The argument passed into the listen() function
+The argument passed into the `listen()` function
 is an example of a _function expression_,
 which is a shorthand way of defining functions
-and it uses the => syntax to define the function concisely.
+and it uses the `=>` syntax to define the function concisely.
 
 <img class="scale-img-max" src="/tutorials/web/images/event-listener-exp.png"
      alt="A one-line function definition">
