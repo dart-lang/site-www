@@ -13,10 +13,14 @@ prevpage:
 
 #### <a id="whats-the-point" class="anchor" href="#whats-the-point" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the point?
 
-* Use _element_.remove() to remove an element from the DOM.
+* Use `element_.remove()` to remove an element from the DOM.
 * Remove all children from an element with _element_.children.clear().
 * Function expressions are a convenient way to define single-use functions.
 * => is a shorthand syntax for defining functions that contain just one expression.
+
+{{site.alert.note}}
+{% include dartpad-embedded-troubleshooting.md %}
+{{site.alert.end}}
 
 </div>
 
@@ -33,42 +37,90 @@ of the todo app from the previous tutorial
 that allows you to delete items.
 Stop procrastinating and remove items from your to do list.
 
-{% comment %}
-https://gist.github.com/Sfshaza/582b9a8d36786566ba08
-
-------------------------------------------------------------------
-main.dart:
-------------------------------------------------------------------
-
-// Copyright (c) 2012, the Dart project authors.
-// Please see the AUTHORS file for details.
-// All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
+```dart:run-dartpad:mode-html:ga_id-try_the_app:null_safety-true
+{$ begin main.dart $}
 import 'dart:html';
 
-InputElement toDoInput;
-UListElement toDoList;
-ButtonElement deleteAll;
+late final InputElement toDoInput;
+late final UListElement toDoList;
+late final ButtonElement deleteAll;
 
 void main() {
-  toDoInput = querySelector('#to-do-input');
-  toDoList = querySelector('#to-do-list');
+  toDoInput = querySelector('#to-do-input') as InputElement;
+  toDoList = querySelector('#to-do-list') as UListElement;
   toDoInput.onChange.listen(addToDoItem);
-  deleteAll = querySelector('#delete-all');
-  deleteAll.onClick.listen((e) =>
-      toDoList.children.clear());
+  deleteAll = querySelector('#delete-all') as ButtonElement;
+  deleteAll.onClick.listen((_) => toDoList.children.clear());
 }
 
 void addToDoItem(Event e) {
-  var newToDo = new LIElement();
-  newToDo.text = toDoInput.value;
-  newToDo.onClick.listen((e) => newToDo.remove());
+  final newToDo = LIElement()..text = toDoInput.value;
+  newToDo.onClick.listen((_) => newToDo.remove());
   toDoInput.value = '';
   toDoList.children.add(newToDo);
 }
-{% endcomment %}
+{$ end main.dart $}
+{$ begin index.html $}
+<h2>Todo</h2>
+        
+<div>
+  <input id="to-do-input" type="text" placeholder="What needs to be done?">
+</div>
+   
+<div>
+  <ul id="to-do-list">
+  </ul>
+</div>
+
+<button id="delete-all" type="button" style="float:right"> Delete All </button>
+{$ end index.html $}
+{$ begin styles.css $}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: WhiteSmoke;
+  margin: 15px;
+  color: black;
+}
+
+#to-do-input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 0px 5px 5px;
+  width: 100%;
+  border: 1px solid Silver;
+  background-color: White;
+}
+
+#to-do-list {
+  padding: 0;
+  margin: 0;
+  list-style-position: inside;
+}
+
+#to-do-list li {
+  padding: 5px 0px 5px 5px;
+  border-bottom: 1px dotted Silver;
+}
+
+#to-do-list li:hover {
+  color: red;
+  cursor: pointer;
+}
+
+#delete-all {
+  margin-top: 8px;
+  background-color: #F8F8F8;
+  border: 1px dotted #ccc;
+  border-radius: 1em;
+  float: right;
+}
+
+#delete-all:hover {
+  background-color: #ddd;
+}
+{$ end styles.css $}
+```
 
 **Try it!**
 Click **Run** to start the web app.
@@ -80,17 +132,6 @@ the item turns red and gets slightly larger.
 Click it and it disappears from the list.
 Use the **Delete All** button
 to remove all of the items in the list at once.
-
-{{site.alert.note}}
-  {% include dartpad-embedded-troubleshooting.md %}
-{{site.alert.end}}
-
-<iframe
-src="{{site.dartpad-embed-html}}?id=582b9a8d36786566ba08&ga_id=try_the_app"
-    width="100%"
-    height="500px"
-    style="border: 1px solid #ccc;">
-</iframe>
 
 The remaining sections describe
 key aspects of the code
@@ -110,13 +151,12 @@ that something will happen when the item is clicked.
 
 This behavior is coded in the todo_with_delete app's CSS file with this rule:
 
-{% prettify dart tag=pre+code %}
+```css
 #to-do-list li:hover {
   color: red;
-  font-size: 18px;
-  cursor:pointer;
+  cursor: pointer;
 }
-{% endprettify %}
+```
 
 We've used this CSS trick
 instead of providing a familiar user interface,
@@ -128,7 +168,7 @@ to keep the code simpler.
 An element is removed from
 the DOM when it is removed from its parent's list of children.
 The
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html" target="_blank" rel="noopener">List</a>
+[`List`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"}
 class provides functions for finding an item in the list
 and removing it.
 But, in this case,
@@ -173,9 +213,9 @@ that implements the **Delete All** button.
 The HTML code creates a button with the ID delete-all.
 (The CSS styles it.)
 
-{% prettify dart tag=pre+code %}
+```html
 <button id="delete-all" type="button" style="float:right"> Delete All </button>
-{% endprettify %}
+```
 
 </li>
 
@@ -207,15 +247,15 @@ and it uses the => syntax to define the function concisely.
 
 It is equivalent to writing this:
 
-{% prettify dart tag=pre+code %}
-deleteAll.onClick.listen((e) {
+```dart
+deleteAll.onClick.listen((_) {
   toDoList.children.clear();
 });
-{% endprettify %}
+```
 
 or even this:
 
-{% prettify dart tag=pre+code %}
+```dart
 ...
 void main() {
   ...
@@ -226,7 +266,7 @@ void deleteAllElements(Event e) {
   toDoList.children.clear();
 }
 ...
-{% endprettify %}
+```
 
 Function expressions are often used
 when registering event handlers on an element
