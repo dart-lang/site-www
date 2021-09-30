@@ -94,7 +94,9 @@ The following table shows the subcommands of `dart compile`.
     <td> An architecture-specific file with
       an intermediate representation of all source code,
       and an optimized representation of the source code
-      exercised during a training run of the program.
+      that ran during a training run of the program.
+      JIT-compiled code can have faster peak performance than AOT code
+      in some cases, when the training data is good.
       <br><em><a href="#jit-snapshot">Learn more.</a></em>
     </td>
   </tr>
