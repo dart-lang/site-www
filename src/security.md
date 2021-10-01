@@ -9,8 +9,11 @@ the risk of introducing a vulnerability.
 
 ## Reporting vulnerabilities
 
-In the rare event that you find a vulnerability in Dart itself,
-contact us at [https://goo.gl/vulnz](https://goo.gl/vulnz).
+To report a security issue, please use https://g.co/vulnz. We use
+https://g.co/vulnz for our intake, and do coordination and disclosure here on
+GitHub (including using GitHub Security Advisory). The Google Security Team will
+respond within 5 working days of your report on g.co/vulnz.
+
 For more information about how Google handles security issues, see
 [Google’s security philosophy.](https://www.google.com/about/appsecurity/)
 
