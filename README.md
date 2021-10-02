@@ -92,6 +92,8 @@ submodule-cloning techniques:
   $ git submodule update --init --recursive
   ```
 
+- should explain submodule more here
+
 > IMPORTANT:
 > Whenever you update your repo, update the submodule as well:<br>
 > `git pull; git submodule update --init --recursive`
