@@ -26,6 +26,10 @@
 - title: Language
   expanded: false
   children:
+    - title: Tour
+      permalink: /guides/language/language-tour
+    - title: Type system
+      permalink: /guides/language/type-system
     - title: Effective Dart
       expanded: false
       children:
@@ -73,10 +77,6 @@
       permalink: /guides/language/evolution
     - title: Specification
       permalink: /guides/language/spec
-    - title: Tour
-      permalink: /guides/language/language-tour
-    - title: Type system
-      permalink: /guides/language/type-system
 
 - title: Core libraries
   expanded: false
