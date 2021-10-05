@@ -1,8 +1,8 @@
 Future<void> printOrderMessage() async {
   // #docregion try-catch
   try {
-    var order = await fetchUserOrder();
     print('Awaiting user order...');
+    var order = await fetchUserOrder();
     print(order);
   } catch (err) {
     print('Caught error: $err');
