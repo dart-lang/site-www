@@ -11,7 +11,7 @@ and lists best practices to minimize the risk of introducing a vulnerability.
 
 To report a security issue, use [https://g.co/vulnz][].
 Coordination and disclosure happen in the [dart-lang GitHub repos][repos]
-and the [GitHub Advisory Database][].
+(including [GitHub security advisories][]).
 The Google Security Team will respond within 5 working days of
 your report on g.co/vulnz.
 
@@ -35,7 +35,7 @@ For more information about how Google handles security issues, see
   and update the version pin accordingly.
 
 [Dart changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-[GitHub Advisory Database]: https://github.com/advisories
+[GitHub security advisories]: https://docs.github.com/en/code-security/security-advisories
 [Google’s security philosophy]: https://www.google.com/about/appsecurity/
 [https://g.co/vulnz]: https://g.co/vulnz
 [repos]: https://github.com/dart-lang/
