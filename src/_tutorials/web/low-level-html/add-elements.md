@@ -544,8 +544,8 @@ The `+=` operator is a compound assignment operator,
 which combines an operation (`+`) with an assignment.
 
 The `scrabbleValues` variable is a
-<a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html" target="_blank" rel="noopener">Map</a>&mdash;a
-data structure that contains key/value pairs.
+[`Map`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html){:target="_blank" rel="noopener"}&mdash;
+a data structure that contains key/value pairs.
 Use the square bracket syntax to retrieve a value by its key
 and the `length` property to get the number of pairs it contains.
 
