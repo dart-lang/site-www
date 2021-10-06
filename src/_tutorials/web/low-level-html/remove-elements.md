@@ -33,21 +33,17 @@ either one at a time, or all at once.
 Below is a revised version
 of the todo app from the previous tutorial
 that allows you to delete items.
-Stop procrastinating and remove items from your to do list.
 
 ```dart:run-dartpad:mode-html:ga_id-try_the_app:null_safety-true
 {$ begin main.dart $}
 import 'dart:html';
 
-late final InputElement toDoInput;
-late final UListElement toDoList;
-late final ButtonElement deleteAll;
+final InputElement toDoInput = querySelector('#to-do-input') as InputElement;
+final UListElement toDoList = querySelector('#to-do-list') as UListElement;
+final ButtonElement deleteAll = querySelector('#delete-all') as ButtonElement;
 
 void main() {
-  toDoInput = querySelector('#to-do-input') as InputElement;
-  toDoList = querySelector('#to-do-list') as UListElement;
   toDoInput.onChange.listen(addToDoItem);
-  deleteAll = querySelector('#delete-all') as ButtonElement;
   deleteAll.onClick.listen((_) => toDoList.children.clear());
 }
 
@@ -70,13 +66,17 @@ void addToDoItem(Event e) {
   </ul>
 </div>
 
-<button id="delete-all" type="button" style="float:right"> Delete All </button>
+<button id="delete-all" type="button" style="float:right">Delete All</button>
 {$ end index.html $}
 {$ begin styles.css $}
 body {
   font-family: 'Roboto', sans-serif;
   background-color: WhiteSmoke;
   margin: 15px;
+  color: black;
+}
+
+h2 {
   color: black;
 }
 
@@ -102,7 +102,7 @@ body {
 }
 
 #to-do-list li:hover {
-  color: red;
+  color: blue;
   cursor: pointer;
 }
 
@@ -136,11 +136,11 @@ key aspects of the code
 added to the todo app for this tutorial.
 Specifically, they look at
 the Dart code that removes one or more elements from the DOM
-and the CSS code that makes the text red and larger.
+and the CSS code that makes the text blue and larger.
 
 ## Changing the appearance when cursor is over an element
 
-As you saw, an item in the list turns red and gets bigger
+As you saw, an item in the list turns blue and gets bigger
 when the user points at it.
 The mouse cursor also changes shape.
 These visual clues are an important part of the user interface
@@ -151,7 +151,7 @@ This behavior is coded in the todo_with_delete app's CSS file with this rule:
 
 ```css
 #to-do-list li:hover {
-  color: red;
+  color: blue;
   cursor: pointer;
 }
 ```
@@ -210,7 +210,7 @@ that implements the **Delete All** button.
    (The CSS styles it.)
 
     ```html
-    <button id="delete-all" type="button" style="float:right"> Delete All </button>
+    <button id="delete-all" type="button" style="float:right">Delete All</button>
     ```
 
 2. The Dart code gets the button element from the DOM

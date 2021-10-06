@@ -72,13 +72,10 @@ Enter a few items into the input field.
 {$ begin main.dart $}
 import 'dart:html';
 
-late final InputElement toDoInput;
-late final UListElement toDoList;
-late final ButtonElement deleteAll;
+final InputElement toDoInput = querySelector('#to-do-input') as InputElement;
+final UListElement toDoList = querySelector('#to-do-list') as UListElement;
 
 void main() {
-  toDoInput = querySelector('#to-do-input') as InputElement;
-  toDoList = querySelector('#to-do-list') as UListElement;
   toDoInput.onChange.listen(addToDoItem);
 }
 
@@ -105,6 +102,10 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: WhiteSmoke;
   margin: 15px;
+  color: black;
+}
+
+h2 {
   color: black;
 }
 
@@ -387,10 +388,11 @@ const String scrabbleLetters =
     'aaaaaaaaabbccddddeeeeeeeeeeeeffggghhiiiiiiiiijkllllmmnnnnnnooooooooppqrrrrrrssssttttttuuuuvvwwxyyz**';
 
 final List<ButtonElement> buttons = [];
-late final Element letterpile;
-late final Element result;
-late final ButtonElement clearButton;
-late final Element value;
+final Element letterpile = querySelector('#letterpile') as Element;
+final Element result = querySelector('#result') as Element;
+final Element value = querySelector('#value') as Element;
+final ButtonElement clearButton =
+    querySelector('#clear-button') as ButtonElement;
 int wordValue = 0;
 
 const Map<String, int> scrabbleValues = {
@@ -424,11 +426,6 @@ const Map<String, int> scrabbleValues = {
 };
 
 void main() {
-  letterpile = querySelector('#letterpile') as Element;
-  result = querySelector('#result') as Element;
-  value = querySelector('#value') as Element;
-
-  clearButton = querySelector('#clearButton') as ButtonElement;
   clearButton.onClick.listen(newLetters);
 
   generateNewLetters();
@@ -436,7 +433,7 @@ void main() {
 
 void moveLetter(MouseEvent e) {
   final letter = e.target;
-  if (letter == null || letter is! Element) {
+  if (letter is! Element) {
     return;
   }
   if (letter.parent == letterpile) {
@@ -488,7 +485,7 @@ void generateNewLetters() {
 <h3>Scrabble Value:</h3>
 <p id="value"></p>
 
-<button id="clearButton"> new letters </button>
+<button id="clear-button">New Letters</button>
 {$ end index.html $}
 {$ begin styles.css $}
 body {
@@ -498,6 +495,10 @@ body {
   font-weight: normal;
   line-height: 1.2em;
   margin: 15px;
+}
+
+h1, h3, p {
+  color: black;
 }
 
 .letter {
