@@ -53,7 +53,7 @@ void main() {
     final output = '''
       Awaiting user order...
       Caught error: Cannot locate user order
-    '''
+    ''';
     expect(try_catch.main, m.printsLines(output));
   });
 }
