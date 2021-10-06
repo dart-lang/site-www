@@ -240,10 +240,11 @@ More information:
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 
-#### The Dart Runtime {#runtime}
+#### The Dart runtime {#runtime}
 
-Regardless of how you compile your Dart code, a Dart runtime is needed to
-execute the code. This runtime is responsible for a number of critical tasks:
+Regardless of which platform you use or how you compile your code,
+executing the code requires a Dart runtime.
+This runtime is responsible for a number of critical tasks:
 
 * Managing memory: Dart uses a managed memory model, where unused memory is
   reclaimed by a garbage collector (GC). 
