@@ -251,11 +251,12 @@ the Dart code for the todo app.
 <img class="scale-img-max" src="/tutorials/web/images/todo-dart.png"
      alt="todo app and its corresponding Dart code">
 
-The `main()` function uses dart:html's top-level `querySelector()`
-function to get the interesting elements from the DOM.
+The top-level variables are initialized using
+dart:html's top-level `querySelector()` function 
+to get the interesting elements from the DOM.
 Because calling `querySelector()` isn't free,
 if a program refers to an element more than once
-it should stash a reference to the element.
+it should stash a reference to the element if possible.
 
 This program stashes a reference
 to the input element
@@ -311,7 +312,7 @@ of type
 typedef void EventListener(Event event)
 {% endprettify %}
 
-As you can see, an EventListener returns no value (void) and takes an
+As you can see, an EventListener returns no value (`void`) and takes an
 [`Event`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}
 object as an argument.
 Any function with this signature is an `EventListener`.
@@ -359,13 +360,13 @@ and sets some basic style attributes,
 such as the background color,
 for the entire page.
 Next in the file are two ID selectors:
-`#to-do-input controls the appearance of the input field`
+`#to-do-input` controls the appearance of the input field
 and `#to-do-list` sets the appearance of the unordered list element
 in general.
 The elements in the list are controlled by the final rule,
 which uses both an ID selector and an HTML selector.
 This rule matches all `<li>` elements in the
-element with the ID to-do-list, thus styling
+element with the ID `to-do-list`, thus styling
 each item in the to do list.
 
 ## Moving elements within the DOM tree {#moving-elements}
@@ -525,7 +526,7 @@ a call to `letterpile.children.add()`.
 
 Each button element in the letter pile
 has a mouse click handler called `moveLetter()`.
-If the button is in the letterpile,
+If the button is in the letter pile,
 the mouse click handler moves the button to the end of the word.
 If the button is in the word,
 the mouse click handler moves the button back to the letter pile.
