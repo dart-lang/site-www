@@ -16,11 +16,11 @@ prevpage:
 * Function expressions are a convenient way to define single-use functions.
 * `=>` is a shorthand syntax for defining functions that contain just one expression.
 
+</div>
+
 {{site.alert.note}}
 {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
-
-</div>
 
 This tutorial shows you how to delete elements from the DOM.
 A new and improved version of the todo app from
