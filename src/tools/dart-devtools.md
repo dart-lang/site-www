@@ -169,17 +169,17 @@ which automatically breaks execution at the start of the script.
 $ cd path/to/dart/app
 $ dart run --observe main.dart
 
-Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
+Connecting to VM Service at http://127.0.0.1:8181/wYDP3x9mvbw=/
 ```
 
-**Note the "listening" URL.**
+**Note the "Connecting" URL.**
 You'll need this URL in the next step.
 
 {{site.alert.important}}
   This URL contains a security token and
   is different for each run of your app.
   If you stop your app and rerun it,
-  then you need to connect to DevTools with the new "listening" URL.
+  then you need to connect to DevTools with the new "Connecting" URL.
 {{site.alert.end}}
 
 ### 4. Open DevTools and connect to the target app
