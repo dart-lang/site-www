@@ -231,6 +231,9 @@ The argument passed into the `listen()` function
 is an example of a _function expression_,
 which is a shorthand way of defining functions
 and it uses the `=>` syntax to define the function concisely.
+For more details, 
+see the language tour's coverage of
+[functions](/guides/language/language-tour#functions).
 
 <img class="scale-img-max" src="/tutorials/web/images/event-listener-exp.png"
      alt="A one-line function definition">
