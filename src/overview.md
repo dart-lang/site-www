@@ -240,6 +240,30 @@ More information:
 * [`webdev` tool](/tools/webdev)
 * [Web deployment tips](/web/deployment)
 
+#### The Dart runtime {#runtime}
+
+Regardless of which platform you use or how you compile your code,
+executing the code requires a Dart runtime.
+This runtime is responsible for the following critical tasks:
+
+* Managing memory:
+  Dart uses a managed memory model,
+  where unused memory is reclaimed by a garbage collector (GC). 
+
+* Enforcing the Dart type system:
+  Although most type checks in Dart are static (compile-time),
+  some type checks are dynamic (runtime).
+  For example, the Dart runtime enforces dynamic checks by
+  [type check and cast operators](/guides/language/language-tour#type-test-operators).
+
+* Managing [isolates](/guides/language/language-tour#isolates):
+  The Dart runtime controls the main isolate (where code normally runs)
+  and any other isolates that the app creates.
+
+On native platforms, the Dart runtime is automatically
+included inside self-contained executables, 
+and is part of the Dart VM provided by
+the [`dart run`](/tools/dart-run) command.
 
 ## Learning Dart {#learning-dart}
 
