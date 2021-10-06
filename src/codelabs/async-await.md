@@ -572,8 +572,8 @@ To handle errors in an `async` function, use try-catch:
 <?code-excerpt "async_await/bin/try_catch.dart (try-catch)" remove="print(order)"?>
 ```dart
 try {
-  var order = await fetchUserOrder();
   print('Awaiting user order...');
+  var order = await fetchUserOrder();
 } catch (err) {
   print('Caught error: $err');
 }
@@ -591,8 +591,8 @@ asynchronous function. What do you think the output will be?
 ```dart:run-dartpad:height-530px:ga_id-try_catch:null_safety-true
 Future<void> printOrderMessage() async {
   try {
-    var order = await fetchUserOrder();
     print('Awaiting user order...');
+    var order = await fetchUserOrder();
     print(order);
   } catch (err) {
     print('Caught error: $err');

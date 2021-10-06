@@ -50,6 +50,10 @@ void main() {
   });
 
   test('try_catch', () {
-    expect(try_catch.main, m.prints('Caught error: Cannot locate user order'));
+    final output = '''
+      Awaiting user order...
+      Caught error: Cannot locate user order
+    ''';
+    expect(try_catch.main, m.printsLines(output));
   });
 }
