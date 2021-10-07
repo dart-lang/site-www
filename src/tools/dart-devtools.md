@@ -167,7 +167,7 @@ and paste it into the address bar of a Chrome browser window.
 When you visit that URL in Chrome,
 the Dart DevTools UI appears,
 displaying information about the target app.
-Click **Debugger** to debug the app.
+Click **Debugger** to start debugging the app.
 
 
 ## Resources
