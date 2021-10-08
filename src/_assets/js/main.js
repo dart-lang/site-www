@@ -28,9 +28,9 @@ $(window).scroll(function () {
   fixNav();
   var currentScreenPosition = $(document).scrollTop();
   if (currentScreenPosition > 50) {
-    $('body').addClass('fixed_nav');
+    $('document.body').addClass('fixed_nav');
   } else {
-    $('body').removeClass('fixed_nav');
+    $('document.body').removeClass('fixed_nav');
   }
 });
 
@@ -41,7 +41,7 @@ function adjustToc() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   })
 
-  $('body').scrollspy({ offset: 100, target: '#site-toc--side' });
+  $('document.body').scrollspy({ offset: 100, target: '#site-toc--side' });
 }
 
 $(function () {
@@ -106,21 +106,21 @@ $(function () {
   // Frontpage popovers inside the #code-sample should scroll with the enclosing <pre>.
   setPopovers($('body.homepage #code-sample'), 'pre');
   // All other popovers should scroll with the page.
-  setPopovers($('body'), 'body');
+  setPopovers($('document.body'), 'body');
 
 
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {
     e.stopPropagation();
-    $("body").toggleClass('open_menu');
+    $("document.body").toggleClass('open_menu');
   });
 
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
   for (var i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
-      if ($('body').hasClass('open_menu')) {
+      if ($('document.body').hasClass('open_menu')) {
         e.preventDefault();
-        $('body').removeClass("open_menu");
+        $('document.body').removeClass("open_menu");
       }
     });
   }
