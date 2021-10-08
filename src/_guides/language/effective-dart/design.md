@@ -335,7 +335,7 @@ time, name your members based on *what* they do for the caller, not *how* they
 do it.
 
 
-### AVOID starting a method or function name with `get`.
+### AVOID starting a method and function name with `get`.
 
 In most cases, the method should be a getter with `get` removed from the name.
 For example, instead of a method named `getBreakfastOrder()`, define a getter
