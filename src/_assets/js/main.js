@@ -112,7 +112,7 @@ $(function () {
   // open - close mobile navigation
   $('#menu-toggle').on('click', function (e) {
     e.stopPropagation();
-    $("document.body").toggleClass('open_menu');
+    $(document.body).toggleClass('open_menu');
   });
 
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
