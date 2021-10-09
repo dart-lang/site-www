@@ -84,7 +84,7 @@ $(function () {
 
   const openPopClass = 'popover-open';
   const popSelector = '[data-toggle="popover"]';
-  const openPopSelector = popSelector + '.' + openPopClass;
+  
 
   function setPopovers(root, viewport) {
     const popovers = root.find(popSelector);
