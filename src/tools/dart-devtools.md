@@ -133,32 +133,8 @@ You can use DevTools to perform source-level debugging
 or to view general log and diagnostics information
 for a running command-line app.
 
-### 1. Install DevTools
 
-Use [pub](/tools/pub) to install or update DevTools:
-
-```terminal
-$ dart pub global activate devtools
-```
-
-### 2. Launch the DevTools server
-
-Once you have DevTools, use the `devtools` command
-to run the local web server for DevTools:
-
-```terminal
-$ dart pub global run devtools
-Serving DevTools at http://127.0.0.1:9100
-```
-
-{{site.alert.note}}
-  If the [system cache `bin` directory is in your path][cache-bin],
-  then you can just run `dart devtools`, without `dart pub global run`.
-{{site.alert.end}}
-[cache-bin]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
-
-
-### 3. Start the target app
+### 1. Start the target app
 
 Use the `dart run --observe` command to execute the main file
 for the Dart command-line app that you want to debug or observe.
@@ -167,28 +143,31 @@ which automatically breaks execution at the start of the script.
 
 ```terminal
 $ cd path/to/dart/app
-$ dart run --observe main.dart
+$ dart run --pause-isolates-on-start --observe main.dart
 
-Observatory listening on http://127.0.0.1:8181/wYDP3x9mvbw=/
+Observatory listening on http://127.0.0.1:8181/SzEylE7vt7w=/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/SzEylE7vt7w=/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2FSzEylE7vt7w%3D%2Fws
 ```
 
-**Note the "listening" URL.**
-You'll need this URL in the next step.
+Note the **Dart DevTools debugger and profiler** URL.
+You'll need it in the next step.
 
 {{site.alert.important}}
   This URL contains a security token and
   is different for each run of your app.
   If you stop your app and rerun it,
-  then you need to connect to DevTools with the new "listening" URL.
+  then you need to connect to DevTools with the new URL.
 {{site.alert.end}}
 
-### 4. Open DevTools and connect to the target app
+### 2. Open DevTools and connect to the target app
 
-1. Open Chrome browser window and navigate to `http://localhost:9100`.
-2. Paste the "listening" URL into the text field
-   under **Connect to a running app**, and click the **Connect** button.
+Copy the **Dart DevTools debugger and profiler** URL,
+and paste it into the address bar of a Chrome browser window.
 
-![DevTools connection dialog]({% asset tools/devtools-connect.png @path %})
+When you visit that URL in Chrome,
+the Dart DevTools UI appears,
+displaying information about the target app.
+Click **Debugger** to start debugging the app.
 
 
 ## Resources
