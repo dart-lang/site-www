@@ -206,7 +206,7 @@ configuring DartPad to show demos, exercises, and quizzes.
 
 **II. Exercise**
 
-{% asset dartpad-best-practices/m_exericise.png alt="An illustration of an exericise" %}
+{% asset dartpad-best-practices/m_exercise.png alt="An illustration of an exercise" %}
 {: .img-xs-wrapper}
 
 </div>
