@@ -2642,7 +2642,7 @@ Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
 except `Null` descend from [`Object`][].
 *Mixin-based inheritance* means that although every class
-(except for the [top class][top-and-bottom],`Object?`)
+(except for the [top class][top-and-bottom], `Object?`)
 has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods](#extension-methods) are a way to
