@@ -1284,7 +1284,7 @@ Future<void> main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list()) {
+    [!await for!] (final entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }

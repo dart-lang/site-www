@@ -39,7 +39,7 @@ over an [Iterable][]. For example:
 {% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
-  [!await for!] (var value in stream) {
+  [!await for!] (final value in stream) {
     sum += value;
   }
   return sum;

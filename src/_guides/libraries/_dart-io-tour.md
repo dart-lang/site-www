@@ -212,7 +212,7 @@ the response is status code 404 (page not found).
 ```dart
 Future<void> main() async {
   final requests = await HttpServer.bind('localhost', 8888);
-  await for (var request in requests) {
+  await for (final request in requests) {
     processRequest(request);
   }
 }

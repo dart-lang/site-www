@@ -4303,7 +4303,7 @@ the body of `main()` must be marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> main() [!async!] {
   // ...
-  [!await for!] (var request in requestServer) {
+  [!await for!] (final request in requestServer) {
     handleRequest(request);
   }
   // ...
