@@ -296,7 +296,6 @@ linter:
     - package_api_docs
     - prefer_final_in_for_each
     - prefer_single_quotes
-    - sort_child_properties_last
 ```
 
 
