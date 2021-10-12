@@ -41,7 +41,7 @@ void main() {
     final userOs = determineUserOs();
 
     // For each possible OS...
-    for (var os in osList) {
+    for (final os in osList) {
       // Matches user OS?
       bool shouldShow = (os == userOs);
 
@@ -49,7 +49,7 @@ void main() {
       // os == 'windows', call querySelectorAll('.windows')
       // to find all elements with the class "windows".
       // Note that '.$os' uses string interpolation.
-      for (var elem in querySelectorAll('.$os')) {
+      for (final elem in querySelectorAll('.$os')) {
         elem.hidden = !shouldShow; // Show or hide.
       }
     }

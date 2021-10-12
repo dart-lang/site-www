@@ -106,7 +106,7 @@ void main() {
         // Use split() with an empty string parameter to get
         // a list of all characters (as Strings); good for
         // iterating.
-        for (var char in 'hello'.split('')) {
+        for (final char in 'hello'.split('')) {
           print(char);
         }
 
@@ -199,7 +199,7 @@ void main() {
         assert(numbers.hasMatch(someDigits));
 
         // Loop through all matches.
-        for (var match in numbers.allMatches(someDigits)) {
+        for (final match in numbers.allMatches(someDigits)) {
           print(match.group(0)); // 15, then 20
         }
         // #enddocregion match

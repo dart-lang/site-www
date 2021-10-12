@@ -122,7 +122,7 @@ The following example shows you how to read elements using  a `for-in` loop.
 ```dart:run-dartpad:ga_id-for_in_loop:null_safety-true
 void main() {
   const iterable = ['Salad', 'Popcorn', 'Toast'];
-  for (var element in iterable) {
+  for (final element in iterable) {
     print(element);
   }
 }
@@ -381,7 +381,7 @@ You might be tempted to write a solution using a `for-in` loop like this one:
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
 ```dart
-for (var item in items) {
+for (final item in items) {
   if (item.length < 5) {
     return false;
   }
@@ -631,7 +631,7 @@ is used directly inside the `for-in` loop.
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
 ```dart
 var evenNumbers = numbers.where((number) => number.isEven);
-for (var number in evenNumbers) {
+for (final number in evenNumbers) {
   print('$number is even');
 }
 ```
@@ -646,7 +646,7 @@ methods like `any()`.
 void main() {
   var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
-  for (var number in evenNumbers) {
+  for (final number in evenNumbers) {
     print('$number is even.');
   }
 

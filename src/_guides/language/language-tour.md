@@ -2256,7 +2256,7 @@ you can use the `for-in` form of [iteration][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-for (var candidate in candidates) {
+for (final candidate in candidates) {
   candidate.interview();
 }
 ```

@@ -27,7 +27,7 @@ Future<void> main() async {
   print('Compute π using the Monte Carlo method.'); //!tip("π")
   var output = querySelector('#value-of-pi')!; //!web-only
   //!tip("await")
-  await for (var estimate in computePi().take(numIterations)) {
+  await for (final estimate in computePi().take(numIterations)) {
     print('π ≅ $estimate'); //!tip("$estimate")
     output.text = estimate.toStringAsFixed(5); //!web-only
     await window.animationFrame; //!web-only

@@ -64,7 +64,7 @@ void main() {
           print('20th century');
         }
 
-        for (var object in flybyObjects) {
+        for (final object in flybyObjects) {
           print(object);
         }
 
@@ -201,7 +201,7 @@ void main() {
     test('await', () {
       // #docregion await
       Future<void> createDescriptions(Iterable<String> objects) async {
-        for (var object in objects) {
+        for (final object in objects) {
           try {
             var file = File('$object.txt');
             if (await file.exists()) {
@@ -239,7 +239,7 @@ void main() {
 
     // #docregion async-
     Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
-      for (var object in objects) {
+      for (final object in objects) {
         await Future.delayed(oneSecond);
         yield '${craft.name} flies by $object';
       }
@@ -267,7 +267,7 @@ void main() {
       final flybyObjects = ['Moon'];
       // #docregion try
       try {
-        for (var object in flybyObjects) {
+        for (final object in flybyObjects) {
           var description = await File('$object.txt').readAsString();
           print(description);
         }

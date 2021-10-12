@@ -114,7 +114,7 @@ Future<void> main() async {
   var lines =
       utf8.decoder.bind(inputStream).transform(LineSplitter());
   try {
-    await for (var line in lines) {
+    await for (final line in lines) {
       print('Got ${line.length} characters from stream');
     }
     print('file is now closed');
@@ -164,7 +164,7 @@ Future<void> main() async {
 
   try {
     var dirList = dir.list();
-    await for (FileSystemEntity f in dirList) {
+    await for (final FileSystemEntity f in dirList) {
       if (f is File) {
         print('Found file ${f.path}');
       } else if (f is Directory) {
