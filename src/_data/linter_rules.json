@@ -222,7 +222,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DON'T** test for conditions composed only by literals, since the value can be\ninferred at compile time.\n\nConditional statements using a condition which cannot be anything but FALSE have\nthe effect of making blocks of code non-functional.  If the condition cannot\nevaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false`.\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 < 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && false) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0 || 3 < 4) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 || 3 < 4 && true) {} // LINT\n}\n```\n\n"
+    "details": "\n**DON'T** test for conditions composed only by literals, since the value can be\ninferred at compile time.\n\nConditional statements using a condition which cannot be anything but FALSE have\nthe effect of making blocks of code non-functional.  If the condition cannot\nevaluate to anything but `true`, the conditional statement is completely\nredundant, and makes the code less readable.\nIt is quite likely that the code does not match the programmer's intent.\nEither the condition should be removed or it should be updated so that it does\nnot always evaluate to `true` or `false`.\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 < 0 && true) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && false) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (true && 1 != 0 || 3 < 4) {} // LINT\n}\n```\n\n**BAD:**\n```dart\nvoid bad() {\n  if (1 != 0 || 3 < 4 && true) {} // LINT\n}\n```\n\n**NOTE:** that an exception is made for the common `while (true) { }` idiom,\nwhich is often reasonably prefered to the equivalent `for (;;)`.\n\n**GOOD:**\n```dart\nvoid good() {\n  while (true) {\n    // Do stuff.\n  }\n}\n```\n"
   },
   {
     "name": "no_adjacent_strings_in_list",
@@ -1663,7 +1663,7 @@
     "maturity": "experimental",
     "incompatible": [],
     "sets": [],
-    "details": "\n**DO** use trailing commas for all function calls and declarations unless the\nfunction call or definition, from the start of the function name up to the\nclosing parenthesis, fits in a single line.\n\n**GOOD:**\n```dart\nvoid run() {\n  method(\n    'does not fit on one line',\n    'test test test test test test test test test test test',\n  );\n}\n```\n\n**BAD:**\n```dart\nvoid run() {\n  method('does not fit on one line',\n      'test test test test test test test test test test test');\n}\n```\n\n**Exception:** If the final parameter/argument is positional (vs named) and is\neither a function literal implemented using curly braces, a literal map, a\nliteral set or a literal array. This exception only applies if the final\nparameter does not fit entirely on one line.\n\n**Note:** This lint rule assumes `dartfmt` has been run over the code and may\nproduce false positives until that has happened.\n\n"
+    "details": "\n**DO** use trailing commas for all function calls and declarations unless the\nfunction call or definition, from the start of the function name up to the\nclosing parenthesis, fits in a single line.\n\n**GOOD:**\n```dart\nvoid run() {\n  method(\n    'does not fit on one line',\n    'test test test test test test test test test test test',\n  );\n}\n```\n\n**BAD:**\n```dart\nvoid run() {\n  method('does not fit on one line',\n      'test test test test test test test test test test test');\n}\n```\n\n**Exception:** If the final parameter/argument is positional (vs named) and is\neither a function literal implemented using curly braces, a literal map, a\nliteral set or a literal array. This exception only applies if the final\nparameter does not fit entirely on one line.\n\n**Note:** This lint rule assumes `dart format` has been run over the code and\nmay produce false positives until that has happened.\n\n"
   },
   {
     "name": "sized_box_for_whitespace",
@@ -1760,14 +1760,14 @@
   },
   {
     "name": "unawaited_futures",
-    "description": "`Future` results in `async` function bodies must be `await`ed or marked `unawaited` using `package:pedantic`.",
+    "description": "`Future` results in `async` function bodies must be `await`ed or marked `unawaited` using `dart:async`.",
     "group": "style",
     "maturity": "stable",
     "incompatible": [],
     "sets": [
       "pedantic"
     ],
-    "details": "\n**DO** await functions that return a `Future` inside of an async function body.\n\nIt's easy to forget await in async methods as naming conventions usually don't\ntell us if a method is sync or async (except for some in `dart:io`).\n\nWhen you really _do_ want to start a fire-and-forget `Future`, the recommended\nway is to use `unawaited` from `package:pedantic`. The `// ignore` and\n`// ignore_for_file` comments also work.\n\n**GOOD:**\n```dart\nFuture doSomething() => ...;\n\nvoid main() async {\n  await doSomething();\n\n  unawaited(doSomething()); // Explicitly-ignored fire-and-forget.\n}\n```\n\n**BAD:**\n```dart\nvoid main() async {\n  doSomething(); // Likely a bug.\n}\n```\n\n"
+    "details": "\n**DO** await functions that return a `Future` inside of an async function body.\n\nIt's easy to forget await in async methods as naming conventions usually don't\ntell us if a method is sync or async (except for some in `dart:io`).\n\nWhen you really _do_ want to start a fire-and-forget `Future`, the recommended\nway is to use `unawaited` from `dart:async`. The `// ignore` and\n`// ignore_for_file` comments also work.\n\n**GOOD:**\n```dart\nFuture doSomething() => ...;\n\nvoid main() async {\n  await doSomething();\n\n  unawaited(doSomething()); // Explicitly-ignored fire-and-forget.\n}\n```\n\n**BAD:**\n```dart\nvoid main() async {\n  doSomething(); // Likely a bug.\n}\n```\n\n"
   },
   {
     "name": "unnecessary_await_in_return",
