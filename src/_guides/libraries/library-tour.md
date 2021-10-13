@@ -1349,7 +1349,7 @@ different type of data:
 ```dart
 var lines = inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter());
+    .transform(const LineSplitter());
 ```
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -1381,7 +1381,7 @@ Future<void> readFileAwaitFor() async {
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(LineSplitter());
+      .transform(const LineSplitter());
   [!try!] {
     await for (var line in lines) {
       print('Got ${line.length} characters from stream');
@@ -1405,7 +1405,7 @@ Stream<List<int>> inputStream = config.openRead();
 
 inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter())
+    .transform(const LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
@@ -1615,8 +1615,9 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-var lines =
-    [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
+var lines = [!utf8.decoder!]
+    .bind(inputStream)
+    .transform(const LineSplitter());
 try {
   await for (var line in lines) {
     print('Got ${line.length} characters from stream');
