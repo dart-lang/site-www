@@ -40,7 +40,7 @@ void listenAfterDelay() async {
   await Future.delayed(const Duration(seconds: 5));
 
   // After 5 seconds, add a listener.
-  await for (int n in counterStream) {
+  await for (final n in counterStream) {
     print(n); // Print an integer every second, 15 times.
   }
 }

@@ -7,7 +7,7 @@ Future<void> main() async {
   // #enddocregion
   final _requests = requests.take(stopAfter);
   // #docregion
-  await for (var request in _requests) {
+  await for (final request in _requests) {
     processRequest(request);
   }
 }

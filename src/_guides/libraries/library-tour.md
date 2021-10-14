@@ -190,7 +190,7 @@ assert('Never odd or even'[0] == 'N');
 // Use split() with an empty string parameter to get
 // a list of all characters (as Strings); good for
 // iterating.
-for (var char in 'hello'.split('')) {
+for (final char in 'hello'.split('')) {
   print(char);
 }
 
@@ -326,7 +326,7 @@ var someDigits = 'llamas live 15 to 20 years';
 assert(numbers.hasMatch(someDigits));
 
 // Loop through all matches.
-for (var match in numbers.allMatches(someDigits)) {
+for (final match in numbers.allMatches(someDigits)) {
   print(match.group(0)); // 15, then 20
 }
 ```
@@ -996,7 +996,7 @@ class Processes extends IterableBase<Process> {
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in Processes()) {
+  for (final process in Processes()) {
     // Do something with the process.
   }
 }
@@ -1284,7 +1284,7 @@ Future<void> main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list()) {
+    [!await for!] (final entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1383,7 +1383,7 @@ Future<void> readFileAwaitFor() async {
       .transform(utf8.decoder)
       .transform(LineSplitter());
   [!try!] {
-    await for (var line in lines) {
+    await for (final line in lines) {
       print('Got ${line.length} characters from stream');
     }
     print('file is now closed');
@@ -1618,7 +1618,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 var lines =
     [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
 try {
-  await for (var line in lines) {
+  await for (final line in lines) {
     print('Got ${line.length} characters from stream');
   }
   print('file is now closed');

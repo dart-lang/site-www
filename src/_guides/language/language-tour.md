@@ -2256,7 +2256,7 @@ you can use the `for-in` form of [iteration][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-for (var candidate in candidates) {
+for (final candidate in candidates) {
   candidate.interview();
 }
 ```
@@ -4303,7 +4303,7 @@ the body of `main()` must be marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> main() [!async!] {
   // ...
-  [!await for!] (var request in requestServer) {
+  [!await for!] (final request in requestServer) {
     handleRequest(request);
   }
   // ...

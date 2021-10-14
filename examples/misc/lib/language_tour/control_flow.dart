@@ -24,7 +24,7 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion collection
-    for (var candidate in candidates) {
+    for (final candidate in candidates) {
       candidate.interview();
     }
     // #enddocregion collection

@@ -184,7 +184,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion omit-types-on-locals
     List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
       var desserts = <List<Ingredient>>[];
-      for (var recipe in cookbook) {
+      for (final recipe in cookbook) {
         if (pantry.containsAll(recipe)) {
           desserts.add(recipe);
         }
@@ -241,7 +241,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion inferred-wrong
   num highScore(List<num> scores) {
     num highest = 0;
-    for (var score in scores) {
+    for (final score in scores) {
       if (score > highest) highest = score;
     }
     return highest;
@@ -318,7 +318,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion future-or-contra
   Stream<S> asyncMap<T, S>(
       Iterable<T> iterable, FutureOr<S> Function(T) callback) async* {
-    for (var element in iterable) {
+    for (final element in iterable) {
       yield await callback(element);
     }
   }
@@ -386,7 +386,7 @@ class FilteredObservable {
     if (!_predicate(event)) return null;
 
     void Function(Event)? last;
-    for (var observer in _observers) {
+    for (final observer in _observers) {
       observer(event);
       last = observer;
     }

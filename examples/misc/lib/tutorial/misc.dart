@@ -47,7 +47,7 @@ void streamsTutorial() {
     S Function(T event) convert,
   ) async* {
     var streamWithoutErrors = stream.handleError((e) => log(e));
-    await for (var event in streamWithoutErrors) {
+    await for (final event in streamWithoutErrors) {
       yield convert(event);
     }
   }
@@ -57,14 +57,14 @@ void streamsTutorial() {
 abstract class MyStream<T> extends Stream<T> {
   // #docregion mock-stream-method-implementations
   Future<bool> contains(Object? needle) async {
-    await for (var event in this) {
+    await for (final event in this) {
       if (event == needle) return true;
     }
     return false;
   }
 
   Future forEach(void Function(T element) action) async {
-    await for (var event in this) {
+    await for (final event in this) {
       action(event);
     }
   }

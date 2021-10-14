@@ -9,11 +9,11 @@ Stream<String> lines(Stream<String> source) async* {
   // Stores any partial line from the previous chunk.
   var partial = '';
   // Wait until a new chunk is available, then process it.
-  await for (var chunk in source) {
+  await for (final chunk in source) {
     var lines = chunk.split('\n');
     lines[0] = partial + lines[0]; // Prepend partial line.
     partial = lines.removeLast(); // Remove new partial line.
-    for (var line in lines) {
+    for (final line in lines) {
       yield line; // Add lines to output stream.
     }
   }

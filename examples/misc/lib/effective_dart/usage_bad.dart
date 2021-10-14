@@ -125,7 +125,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion cast-iterate
   void printEvens(List<Object> objects) {
     // We happen to know the list only contains ints.
-    for (var n in objects.cast<int>()) {
+    for (final n in objects.cast<int>()) {
       if (n.isEven) print(n);
     }
   }
@@ -294,7 +294,7 @@ class Item {
 Item? bestDeal(List<Item> cart) {
   Item? bestItem = null;
 
-  for (var item in cart) {
+  for (final item in cart) {
     if (bestItem == null || item.price < bestItem.price) {
       bestItem = item;
     }
