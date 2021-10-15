@@ -351,7 +351,7 @@ Future<void> main(List<String> args) async {
   var lines = utf8.decoder
       .bind(file.openRead())
       .transform(const LineSplitter());
-  await for (var line in lines) {
+  await for (final line in lines) {
     if (!line.startsWith('#')) print(line);
   }
 }
