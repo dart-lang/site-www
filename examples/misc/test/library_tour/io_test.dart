@@ -151,8 +151,9 @@ Future<void> main_test_read_from_stream() async {
   Stream<List<int>> inputStream = config.openRead();
 
   // #docregion utf8-decoder
-  var lines =
-      utf8.decoder.bind(inputStream).transform(LineSplitter());
+  var lines = utf8.decoder
+      .bind(inputStream)
+      .transform(const LineSplitter());
   try {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');

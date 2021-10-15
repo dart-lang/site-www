@@ -55,7 +55,7 @@ void miscDeclAnalyzedButNotTested() {
       // #docregion transform
       var lines = inputStream
           .transform(utf8.decoder)
-          .transform(LineSplitter());
+          .transform(const LineSplitter());
       // #enddocregion transform
       try {
         await for (final line in lines) {
@@ -76,7 +76,7 @@ void miscDeclAnalyzedButNotTested() {
 
     inputStream
         .transform(utf8.decoder)
-        .transform(LineSplitter())
+        .transform(const LineSplitter())
         .listen((String line) {
       print('Got ${line.length} characters from stream');
     }, onDone: () {

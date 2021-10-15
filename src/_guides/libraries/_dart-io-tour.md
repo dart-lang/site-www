@@ -111,8 +111,9 @@ Future<void> main() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
 
-  var lines =
-      utf8.decoder.bind(inputStream).transform(LineSplitter());
+  var lines = utf8.decoder
+      .bind(inputStream)
+      .transform(const LineSplitter());
   try {
     await for (final line in lines) {
       print('Got ${line.length} characters from stream');
