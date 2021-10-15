@@ -3,7 +3,7 @@ import 'dart:io';
 
 Future<void> runServer(String basePath) async {
   final server = await HttpServer.bind('127.0.0.1', 8082);
-  await for (HttpRequest request in server) {
+  await for (final request in server) {
     await handleRequest(basePath, request);
   }
 }

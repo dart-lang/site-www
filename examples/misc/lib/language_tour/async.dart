@@ -65,7 +65,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
     // #docregion number_thinker
     Future<void> main() async {
       // ...
-      await for (var request in requestServer) {
+      await for (final request in requestServer) {
         handleRequest(request);
       }
       // ...
@@ -75,6 +75,7 @@ Future<void> miscDeclAnalyzedButNotTested() async {
 
   <varOrType>(Stream<varOrType> expression) async {
     // #docregion await-for
+    // ignore: prefer_final_in_for_each
     await for (varOrType identifier in expression) {
       // Executes each time the stream emits a value.
     }

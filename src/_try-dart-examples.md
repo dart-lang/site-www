@@ -58,7 +58,7 @@ List<int> getEvenNumbers(Iterable<int> numbers) {
   var evenNumbers = <int>[];
 
   // A for-in loop.
-  for (var i in numbers) {
+  for (final i in numbers) {
     // A single line if statement.
     if (isEven(i)) {
       evenNumbers.add(i);
@@ -186,7 +186,7 @@ import 'dart:math' show Random;
 
 Future<void> main() async {
   print('Compute π using the Monte Carlo method.');
-  await for (var estimate in computePi().take(100)) {
+  await for (final estimate in computePi().take(100)) {
     print('π ≅ $estimate');
   }
 }

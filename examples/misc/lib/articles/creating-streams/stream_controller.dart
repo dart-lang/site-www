@@ -15,7 +15,7 @@ Stream<int> timedCounterGenerator(Duration interval, [int? maxCount]) async* {
 
 // #docregion stream-from-futures
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
-  for (var future in futures) {
+  for (final future in futures) {
     var result = await future;
     yield result;
   }

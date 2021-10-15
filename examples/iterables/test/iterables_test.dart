@@ -27,7 +27,7 @@ void main() {
     test('every_example', () {
       bool bad(Iterable<String> items) {
         // #docregion every-bad
-        for (var item in items) {
+        for (final item in items) {
           if (item.length < 5) {
             return false;
           }
@@ -182,7 +182,7 @@ void main() {
       // #docregion where-for
       var evenNumbers = numbers.where((number) => number.isEven);
       // #enddocregion where
-      for (var number in evenNumbers) {
+      for (final number in evenNumbers) {
         print('$number is even');
       }
       // #enddocregion where-for
@@ -193,7 +193,7 @@ void main() {
       // #docregion for-in
       void main() {
         const iterable = ['Salad', 'Popcorn', 'Toast'];
-        for (var element in iterable) {
+        for (final element in iterable) {
           print(element);
         }
       }
@@ -222,7 +222,7 @@ void main() {
       void main() {
         var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
-        for (var number in evenNumbers) {
+        for (final number in evenNumbers) {
           print('$number is even.');
         }
 

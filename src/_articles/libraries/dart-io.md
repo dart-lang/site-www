@@ -173,7 +173,7 @@ Future<void> main() async {
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
   final semicolon = ';'.codeUnitAt(0);
 
-  await for (var data in stream) {
+  await for (final data in stream) {
     for (int i = 0; i < data.length; i++) {
       result.add(data[i]);
       if (data[i] == semicolon) {
@@ -304,7 +304,7 @@ import 'dart:io';
 
 Future<void> main() async {
   final server = await HttpServer.bind('127.0.0.1', 8082);
-  await for (HttpRequest request in server) {
+  await for (final request in server) {
     request.response.write('Hello, world');
     await request.response.close();
   }
@@ -330,7 +330,7 @@ import 'dart:io';
 
 Future<void> runServer(String basePath) async {
   final server = await HttpServer.bind('127.0.0.1', 8082);
-  await for (HttpRequest request in server) {
+  await for (final request in server) {
     await handleRequest(basePath, request);
   }
 }

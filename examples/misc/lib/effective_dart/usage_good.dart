@@ -115,7 +115,7 @@ void miscDeclAnalyzedButNotTested() {
   // #docregion cast-iterate
   void printEvens(List<Object> objects) {
     // We happen to know the list only contains ints.
-    for (var n in objects) {
+    for (final n in objects) {
       if ((n as int).isEven) print(n);
     }
   }
@@ -135,12 +135,11 @@ void miscDeclAnalyzedButNotTested() {
     var aquaticNames = animals
         .where((animal) => animal.isAquatic)
         .map((animal) => animal.name);
-    // #enddocregion use-higher-order-func
   };
 
   (Iterable people) {
     // #docregion avoid-forEach
-    for (var person in people) {
+    for (final person in people) {
       /*...*/
     }
     // #enddocregion avoid-forEach
@@ -325,7 +324,7 @@ class Item {
 Item? bestDeal(List<Item> cart) {
   Item? bestItem;
 
-  for (var item in cart) {
+  for (final item in cart) {
     if (bestItem == null || item.price < bestItem.price) {
       bestItem = item;
     }

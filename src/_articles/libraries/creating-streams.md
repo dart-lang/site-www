@@ -60,11 +60,11 @@ Stream<String> lines(Stream<String> source) async* {
   // Stores any partial line from the previous chunk.
   var partial = '';
   // Wait until a new chunk is available, then process it.
-  await for (var chunk in source) {
+  await for (final chunk in source) {
     var lines = chunk.split('\n');
     lines[0] = partial + lines[0]; // Prepend partial line.
     partial = lines.removeLast(); // Remove new partial line.
-    for (var line in lines) {
+    for (final line in lines) {
       yield line; // Add lines to output stream.
     }
   }
@@ -191,7 +191,7 @@ a sequence of futures to a stream:
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
 ```dart
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
-  for (var future in futures) {
+  for (final future in futures) {
     var result = await future;
     yield result;
   }
@@ -300,7 +300,7 @@ void listenAfterDelay() async {
   await Future.delayed(const Duration(seconds: 5));
 
   // After 5 seconds, add a listener.
-  await for (int n in counterStream) {
+  await for (final n in counterStream) {
     print(n); // Print an integer every second, 15 times.
   }
 }

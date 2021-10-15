@@ -34,7 +34,7 @@ void miscDeclAnalyzedButNotTested() {
       // ...
       if (await FileSystemEntity.isDirectory(searchPath)) {
         final startingDir = Directory(searchPath);
-        await for (var entity in startingDir.list()) {
+        await for (final entity in startingDir.list()) {
           if (entity is File) {
             searchFile(entity, searchTerms);
           }
@@ -58,7 +58,7 @@ void miscDeclAnalyzedButNotTested() {
           .transform(const LineSplitter());
       // #enddocregion transform
       try {
-        await for (var line in lines) {
+        await for (final line in lines) {
           print('Got ${line.length} characters from stream');
         }
         print('file is now closed');

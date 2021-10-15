@@ -2,6 +2,6 @@ Analyzing misc...
 
   error - bin/cheatsheet/nullable.dart:7:13 - A value of type 'Null' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
   error - lib/library_tour/core/collections.dart:5:14 - The argument type 'int' can't be assigned to the parameter type 'String'. - argument_type_not_assignable
-   info - lib/effective_dart/usage_good.dart:481:9 - Use initializing formals when possible. - prefer_initializing_formals
+   info - lib/effective_dart/usage_good.dart:480:9 - Use initializing formals when possible. - prefer_initializing_formals
 
 3 issues found.
