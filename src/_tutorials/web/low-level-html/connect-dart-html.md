@@ -328,7 +328,7 @@ the node containing the string
 "RipVanWinkle paragraph."
 is a text node.
 
-<img class="scale-img-max" src="/tutorials/web/images/paragraph-dom.png"
+<img class="scale-img-max" src="/tutorials/web/images/paragraph-dom.svg"
      alt="DOM tree for a paragraph element">
 
 More complex text,
