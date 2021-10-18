@@ -136,7 +136,7 @@ you can run the app from the command line over any text file,
 like `pubspec.yaml`:
 
 ```terminal
-$ dart bin/dcat.dart -n pubspec.yaml
+$ dart run bin/dcat.dart -n pubspec.yaml
 1 name: dcat
 2 description: A simple command-line application.
 3 version: 1.0.0
