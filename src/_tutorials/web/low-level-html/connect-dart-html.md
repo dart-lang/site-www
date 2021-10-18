@@ -492,7 +492,7 @@ Let's look at the CSS code for the mini app.
 The CSS file for the mini app has one CSS rule in it.
 A CSS rule has two main parts: a selector and a set of declarations.
 
-<img class="scale-img-max" src="/tutorials/web/images/css-rule-explained.png"
+<img class="scale-img-max" src="/tutorials/web/images/css-rule-explained.svg"
      alt="The parts of a CSS rule">
 
 In the mini app, the selector `#RipVanWinkle` is an ID selector,
@@ -514,7 +514,7 @@ for all matching elements.
 The style sheet is used to set the appearance
 of the matching element(s) on the web page.
 
-<img class="scale-img-max" src="/tutorials/web/images/css-property-value.png"
+<img class="scale-img-max" src="/tutorials/web/images/css-property-value.svg"
      alt="A declaration specifies an attribute and its value">
 
 The CSS rule for the RipVanWinkle paragraph
