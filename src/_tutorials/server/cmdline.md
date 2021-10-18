@@ -137,6 +137,7 @@ like `pubspec.yaml` or `quote.txt`
 ([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
+$ curl -L -o quote.txt {{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt\?raw\=1
 $ dart run bin/dcat.dart -n quote.txt
 1 Be yourself. Everyone else is taken. -Oscar Wilde
 2 Don't cry because it's over, smile because it happened. -Dr. Seuss
