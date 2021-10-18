@@ -527,7 +527,7 @@ for example, it sets the text color to Yellow.
   provides thorough coverage of the Dart language.
 * The Dart [tools page](/tools)
   lists IDEs and editors that have Dart plugins.
-* The [DartPad documentation]
+* The [DartPad documentation](/tools/dartpad)
   walks through the basics of using the DartPad web editor.
 
 ## What next?
