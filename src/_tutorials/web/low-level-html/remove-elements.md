@@ -1,6 +1,7 @@
 ---
 title: Remove DOM elements
 description: Learn how to remove children elements from the DOM.
+js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
