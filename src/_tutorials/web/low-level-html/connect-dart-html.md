@@ -138,8 +138,8 @@ by adding, deleting, and modifying the nodes in the DOM tree.
 When the DOM is changed,
 the browser immediately re-renders the window.
 
-<img class="scale-img-max" src="/tutorials/web/images/dynamic-dart.png"
-     alt="A Dart program can dynamically change the DOM">
+<img class="scale-img-max" src="/tutorials/web/images/dynamic-dart.svg"
+     alt="A Dart dynamically changing the DOM">
 
 The diagram shows a small Dart program that makes
 a modest change to the DOM by dynamically
@@ -378,7 +378,7 @@ In DartPad, the only visible connection between
 the Dart code and the HTML code
 is the `RipVanWinkle` ID.
 
-<img class="scale-img-max" src="/tutorials/web/images/dart-html-connect.png"
+<img class="scale-img-max" src="/tutorials/web/images/dart-html-connect.svg"
      alt="The RipVanWinkle ID is used by both Dart and HTML">
 
 To run your app outside of DartPad, 
