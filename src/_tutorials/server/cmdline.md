@@ -138,6 +138,11 @@ like `pubspec.yaml` or `quote.txt`
 
 ```terminal
 $ curl -L -o quote.txt {{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt\?raw\=1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   148  100   148    0     0    319      0 --:--:-- --:--:-- --:--:--   325
+100   159  100   159    0     0    209      0 --:--:-- --:--:-- --:--:--   209
+100   271  100   271    0     0    228      0  0:00:01  0:00:01 --:--:--     0
 $ dart run bin/dcat.dart -n quote.txt
 1 Be yourself. Everyone else is taken. -Oscar Wilde
 2 Don't cry because it's over, smile because it happened. -Dr. Seuss
