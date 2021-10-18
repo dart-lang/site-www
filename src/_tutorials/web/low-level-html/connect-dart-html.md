@@ -97,7 +97,7 @@ and displays the document in a window.
 The following diagram shows a simple HTML file and
 the resulting web browser page in Chrome.
 
-<img class="scale-img-max" src="/tutorials/web/images/simple-html.png"
+<img class="scale-img-max" src="/tutorials/web/images/simple-html.svg"
      alt="A simple HTML file and its resulting web page">
 
 HTML uses tags to describe the document.
@@ -119,7 +119,7 @@ For example, the tree has page elements,
 text nodes, and attribute nodes.
 Here is the DOM tree for the simple HTML file above.
 
-<img class="scale-img-max" src="/tutorials/web/images/simple-dom-tree.png"
+<img class="scale-img-max" src="/tutorials/web/images/simple-dom-tree.svg"
      alt="The DOM tree for a simple HTML file">
 
 Notice that some tags, such as the `<p>` paragraph tag,
