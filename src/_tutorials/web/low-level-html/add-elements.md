@@ -436,7 +436,7 @@ void newLetters(Event e) {
 void generateNewLetters() {
   final indexGenerator = Random();
   wordValue = 0;
-  value.text = '';
+  value.text = '0';
   buttons.clear();
   for (var i = 0; i < 7; i++) {
     final letterIndex = indexGenerator.nextInt(scrabbleLetters.length);
@@ -497,7 +497,7 @@ When the program starts,
 it creates one button element for each of seven
 randomly selected letters.
 The program adds each button to a DOM element&mdash;a simple
-&lt;div&gt; element identified by the CSS selector `letterpile`&mdash;with
+`<div>` element identified by the CSS selector `letterpile`&mdash;with
 a call to `letterpile.children.add()`.
 
 <img class="scale-img-max" src="/tutorials/web/images/anagram-newletters.png"
