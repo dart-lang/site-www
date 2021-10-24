@@ -28,12 +28,9 @@ pubspec.lock  # Except for application packages
 {% endprettify %}
 
 {{site.alert.version-note}}
-  The `.dart_tool` directory, 
-  which was new in Dart 2,
-  is used by pub and other tools. 
-  It replaces the `.pub` directory as of the 2.0.0-dev.32.0 SDK release. 
-  The `.packages` file replaces the `packages` directories
-  that early Dart versions produced.
+  The `.dart_tool/` directory is used by pub and other tools.
+  The contained `package_config.json` file replaces the `.packages` 
+  file that earlier Dart versions used.
 {{site.alert.end}}
 
 **Don't commit** the API documentation directory created by dartdoc:
@@ -87,6 +84,14 @@ For more information on `.gitignore` files,
 see the GitHub help page
 [Ignoring files.](https://help.github.com/articles/ignoring-files)
 
+### .dart_tool/
+
+The `.dart_tool/` directory contains files used by 
+various Dart tools.
+
+The contained `package_config.json` file is used to track
+the dependencies used by your application. 
+This replaces the previously used `.packages` top-level file.
 
 ### .packages
 

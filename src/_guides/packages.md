@@ -82,7 +82,7 @@ For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
 Pub creates a
-`.packages` file (under your app’s top directory)
+`package_config.json` file (under the `.dart_tool/` directory)
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
@@ -102,7 +102,7 @@ import 'package:intl/intl.dart';
 ```
 
 The Dart runtime takes everything after `package:`
-and looks it up within the `.packages` file for
+and looks it up within the `package_config.json` file for
 your app.
 
 You can also use this style to import libraries from within your own package.
