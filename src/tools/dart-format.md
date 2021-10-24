@@ -34,12 +34,22 @@ $ dart format lib bin/updater.dart
 {{site.alert.end}}
 
 If you don't want to overwrite the files,
-add the `-o` flag.
+add the `--output` or `-o` flag.
 Use `-o show` or `-o json` to get the contents of the formatted files,
 or `-o none` to see only which files would change.
 
 ```terminal
 $ dart format -o show bin/my_app.dart
+```
+
+If you want the command to return an exit code of `1`
+if there are any formatting changes,
+add the `--set-exit-if-changed` flag.
+This is commonly used to indicate to continuous integration
+that there are issues and a check should fail.
+
+```terminal
+$ dart format -o none --set-exit-if-changed
 ```
 
 For information on additional command-line options,
