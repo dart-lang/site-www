@@ -27,12 +27,6 @@ build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
 
-{{site.alert.version-note}}
-  The `.dart_tool/` directory is used by pub and other tools.
-  The contained `package_config.json` file replaces the `.packages` 
-  file that earlier Dart versions used.
-{{site.alert.end}}
-
 **Don't commit** the API documentation directory created by dartdoc:
 
 {% prettify none tag=pre+code %}
