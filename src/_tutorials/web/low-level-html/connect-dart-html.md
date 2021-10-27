@@ -53,16 +53,16 @@ for more interesting and useful web apps.
 
 If you've used
 <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad,</a>
-you've already seen the DART, HTML, and CSS tabs
+you've already seen the Dart, HTML, and CSS tabs
 that let you write the code for a web app.
 Each of these three languages
 is responsible for a different aspect of the web app.
 
-| Language | Purpose |
-|---|---|
-| Dart | Implements the interactivity and dynamic behavior of the web app |
-| HTML | Describes the content of the web app's page (the elements in the document and the structure) |
-| CSS | Governs the appearance of page elements |
+| Language | Purpose                                                                                      |
+|----------|----------------------------------------------------------------------------------------------|
+| Dart     | Implements the interactivity and dynamic behavior of the web app                             |
+| HTML     | Describes the content of the web app's page (the elements in the document and the structure) |
+| CSS      | Governs the appearance of page elements                                                      |
 {: .table}
 
 A Dart program can
@@ -169,7 +169,7 @@ or even insert an entire subtree of nodes.
 ## Edit the HTML source code {#create-html}
 
 1. Click **HTML**, at the upper left of DartPad.
-   The view switches from Dart code to the (non-existent) HTML code.
+   The view switches from Dart code to the (currently non-existent) HTML code.
 
 2. Add the following HTML code:
 
@@ -245,10 +245,10 @@ import 'dart:html';
 
 Some key classes imported include:
 
-| Dart class | Description |
-|---|---|
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a> | Implements a DOM node. |
-| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a> | A subclass of Node; implements a web page element. |
+| Dart class                                                                                                                               | Description                                               |
+|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>         | Implements a DOM node.                                    |
+| <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>   | A subclass of Node; implements a web page element.        |
 | <a href="{{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Document-class.html" target="_blank" rel="noopener">Document</a> | Another subclass of Node; implements the document object. |
 {: .table}
 
@@ -383,7 +383,7 @@ is the `RipVanWinkle` ID.
 
 To run your app outside of DartPad, 
 you need to compile your Dart code to JavaScript. 
-[Use the **webdev build** command][build]
+Use the [`webdev build`][build] command
 to compile your app to deployable JavaScript.
 Then you need to make another connection between the HTML and
 generated JavaScript: 

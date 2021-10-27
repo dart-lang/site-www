@@ -188,11 +188,11 @@ This means that a list can be declared
 to contain only objects of a particular type.
 For example:
 
-| List declaration | List description|
-|---|---|
-| `List<String>` | list of strings |
-| `List<int>` | list of integers |
-| `List<Element>` | list of elements|
+| List declaration | List description |
+|------------------|------------------|
+| `List<String>`   | List of strings  |
+| `List<int>`      | List of integers |
+| `List<Element>`  | List of elements |
 {: .table}
 
 An `Element` maintains references to its child element in a `List<Element>`,
