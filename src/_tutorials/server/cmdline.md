@@ -133,15 +133,26 @@ with the [`dart create`](/tools/dart-create) command.
 
 Once you have your app's dependencies,
 you can run the app from the command line over any text file,
-like `pubspec.yaml` or `quote.txt`
-([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
+like `pubspec.yaml`:
 
 ```terminal
-$ dart run bin/dcat.dart -n quote.txt
-1 Be yourself. Everyone else is taken. -Oscar Wilde
-2 Don't cry because it's over, smile because it happened. -Dr. Seuss
-3 You only live once, but if you do it right, once is enough. -Mae West
-...
+$ dart run bin/dcat.dart -n pubspec.yaml
+1 name: dcat
+2 description: A simple command-line application.
+3 version: 1.0.0
+4 # homepage: https://www.example.com
+5
+6 environment:
+7   sdk: '>=2.14.3 <3.0.0'
+8
+9
+10 # dependencies:
+11 #   path: ^1.8.0
+12
+13 dev_dependencies:
+14   lints: ^1.0.0
+15 dependencies:
+16   args: ^2.3.0
 ```
 
 This command displays each line of the specified file. Because the `-n` argument
