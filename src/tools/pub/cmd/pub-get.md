@@ -58,26 +58,21 @@ get the latest versions of all dependencies.
 By default, pub creates a `package_config.json` file
 in the `.dart_tool/` directory that maps from package names to location URIs.
 Before the `package_config.json` file, 
-pub used to create a '.packages' file in the base directory.
+pub used to create a `.packages` file in the base directory.
 
 {{site.alert.note}}
-  Don't check the generated `.packages` file (if present),
-  `packages` directories (if present), or
-  `.dart_tool/` directory into your repo;
+  Don't check the generated `.packages` file
+  or the `.dart_tool/` directory into your repo;
   add them to your repo's `.gitignore` file.
   For more information, 
   see [What not to commit](/guides/libraries/private-files).
 {{site.alert.end}}
 
-For more information, see the
-[package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
-
 
 ## Getting a new dependency
 
 If a dependency is added to the pubspec and then `dart pub get` is run,
-it gets the new dependency and any of its transitive dependencies and
-updates the mapping in the `.dart_tool/package_config.json` file.
+it gets the new dependency and any of its transitive dependencies.
 However, pub won't change the versions of any already-acquired
 dependencies unless that's necessary to get the new dependency.
 
@@ -85,8 +80,7 @@ dependencies unless that's necessary to get the new dependency.
 ## Removing a dependency
 
 If a dependency is removed from the pubspec and then `dart pub get` is run,
-it removes the dependency from the `.dart_tool/package_config.json` file,
-making the dependency unavailable for importing.
+the dependency is no longer available for importing.
 Any transitive dependencies of the removed dependency are also removed,
 as long as no remaining immediate dependencies also depend on them.
 Removing a dependency never changes the versions of any
