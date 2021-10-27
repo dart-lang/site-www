@@ -152,7 +152,8 @@ used by your application to the corresponding package in the cache.
 
 You only have to download a given version of a package once
 and can then reuse it in as many packages as you would like.
-You can delete and regenerate your `package_config.json`
+If you specify the `--offline` flag to use cached packages,
+you can delete and regenerate your `package_config.json`
 files without having to access the network.
 
 
