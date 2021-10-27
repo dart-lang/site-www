@@ -148,7 +148,7 @@ These visual clues are an important part of the user interface
 in this example because they are the only indication to the user
 that something will happen when the item is clicked.
 
-This behavior is coded in the todo_with_delete app's CSS file with this rule:
+This behavior is coded in the app's CSS file with this rule:
 
 {% prettify css tag=pre+code %}
 #to-do-list li:hover {
@@ -178,7 +178,7 @@ using functions from the `List` class.
 <img class="scale-img-max" src="/tutorials/web/images/remove-element.png"
      alt="Use element.remove() to remove an element from the DOM">
 
-In the todo_with_delete app,
+In the app,
 the user clicks an item to delete it.
 This is achieved with one line of Dart code.
 When a new to do item is created,
@@ -204,7 +204,7 @@ all elements are removed from the list.
 
 In this case, using the `List` class's `clear()` function
 yields the most concise code.
-Here's the code from the todo_with_delete app
+Here's the code from the app
 that implements the **Delete All** button.
 
 1. The HTML code creates a button with the ID `delete-all`.
@@ -225,7 +225,7 @@ that implements the **Delete All** button.
 
 ## About function expressions and =>
 
-The todo_with_delete app uses
+The app uses
 some interesting Dart syntax
 when adding an event listener to the **Delete All** button.
 The argument passed into the `listen()` function
