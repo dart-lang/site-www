@@ -83,15 +83,7 @@ see the GitHub help page
 The `.dart_tool/` directory contains files used by 
 various Dart tools.
 
-The contained `package_config.json` file is used to track
-the dependencies used by your application. 
-This replaces the previously used `.packages` top-level file.
-
 ### .packages
-
-The `.packages` file contains a list of dependencies used by your application.
-Users of your code should generate their own packages information
-using [pub get](/guides/packages#getting-packages).
 
 {% include packages-dir.html %}
 
