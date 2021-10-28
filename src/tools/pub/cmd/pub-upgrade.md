@@ -64,20 +64,17 @@ unlocked until a compatible set of versions is found.
 ## Getting a new dependency
 
 If a dependency is added to the pubspec before `dart pub upgrade` is run,
-it gets the new dependency and any of its transitive dependencies,
-placing them in the `.packages` file. This
-is the same behavior as `dart pub get`.
+it gets the new dependency and any of its transitive dependencies.
+This shares the same behavior as `dart pub get`.
 
 
 ## Removing a dependency
 
-If a dependency is removed from the pubspec before `dart pub upgrade` is
-run, it removes the dependency from the `.packages` file,
-thus making the dependency unavailable for
-importing. Any transitive dependencies of the removed dependency are
-also removed, as long as no remaining immediate dependencies also
-depend on them. This is the same behavior as `dart pub get`.
-
+If a dependency is removed from the pubspec before `dart pub upgrade` is run,
+the dependency is no longer available for importing.
+Any transitive dependencies of the removed dependency are also removed,
+as long as no remaining immediate dependencies also depend on them.
+This is the same behavior as `dart pub get`.
 
 ## Upgrading while offline
 

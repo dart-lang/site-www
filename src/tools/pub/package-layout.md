@@ -59,7 +59,7 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool` directory and `.packages` file exist after you've run
+\* The `.dart_tool/` directory and `.packages` file exist after you've run
    `pub get`. Don't check them into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.

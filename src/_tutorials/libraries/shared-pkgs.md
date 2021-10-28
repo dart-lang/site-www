@@ -176,7 +176,7 @@ Each package can contain libraries and other assets.
 Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
-pointing to them from a file named `.packages`.
+pointing to them from the `.dart_tool/package_config.json` file.
 
 {% comment %}
 PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
