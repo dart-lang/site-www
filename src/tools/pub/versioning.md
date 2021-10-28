@@ -343,7 +343,7 @@ your app's constraints.
 
 Pub takes that and writes it out to a **lockfile** in your app's directory
 called `pubspec.lock`. 
-When pub builds the `package_config.json` file for your app, 
+When pub builds the `.dart_tool/package_config.json` file for your app, 
 it uses the lockfile to know what versions of each package to refer to. 
 (And if you're curious to see what versions it selected, 
 you can read the lockfile to find out.)
