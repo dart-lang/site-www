@@ -7,7 +7,8 @@ Future<void> main() async {
   final firebaseFile = File('../firebase.json');
 
   if (!(await firebaseFile.exists())) {
-    stderr.writeln('Error: Cannot find the firebase.json file in the root directory.');
+    stderr.writeln(
+        'Error: Cannot find the firebase.json file in the root directory.');
     exit(1);
   }
 
@@ -26,12 +27,14 @@ Future<void> main() async {
     final redirects = hostingConfig['redirects'];
 
     if (redirects == null) {
-      stdout.writeln('There are no redirects specified within the firebase.json file.');
+      stdout.writeln(
+          'There are no redirects specified within the firebase.json file.');
       return;
     }
 
     if (redirects is! List<dynamic>) {
-      stderr.writeln("Error: The firebase.json file's 'redirect' entry is not a list.");
+      stderr.writeln(
+          "Error: The firebase.json file's 'redirect' entry is not a list.");
       exit(1);
     }
 
@@ -66,7 +69,8 @@ Future<void> main() async {
     }
 
     if (duplicatesFound > 0) {
-      stderr.writeln('Error: $duplicatesFound duplicate sources found in the firebase.json redirects.');
+      stderr.writeln(
+          'Error: $duplicatesFound duplicate sources found in the firebase.json redirects.');
     }
 
     final sourcesCopy = List.of(sources, growable: false);
@@ -79,8 +83,7 @@ Future<void> main() async {
       if (source != otherSource) {
         stderr.writeln(
             "Error: The firebase.json file's redirects are not sorted by source:");
-        stderr.writeln(
-            "Starting with: ${redirects[index]}");
+        stderr.writeln("Starting with: ${redirects[index]}");
         exit(1);
       }
 
@@ -91,7 +94,8 @@ Future<void> main() async {
       exit(1);
     }
   } catch (e) {
-    stderr.writeln('Error: Encountered an error when loading the firebase.json file:');
+    stderr.writeln(
+        'Error: Encountered an error when loading the firebase.json file:');
     print(e.toString());
     exit(1);
   }
