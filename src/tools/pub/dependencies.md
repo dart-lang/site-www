@@ -31,12 +31,12 @@ dependencies:
 {% endprettify %}
 
 This YAML code creates a dependency on the `transmogrify` package
-using the default source ([pub.dev]({{site.pub}})) and
+using the default package repository ([pub.dev]({{site.pub}})) and
 allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
 See the [version constraints](#version-constraints)
 section of this page for syntax details.
 
-If you want to specify a source, the syntax looks a bit different:
+If you want to specify a custom package repository, write:
 
 {% prettify yaml tag=pre+code %}
 dependencies:
@@ -49,7 +49,7 @@ dependencies:
 
 This YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
-Everything under the source key (here, just a map with a `url:` key)
+Everything under the source key (here, just string with the host url)
 is the description that gets passed to the source.
 Each source has its own description format,
 which is described in the [dependency sources](#dependency-sources) section
@@ -114,15 +114,30 @@ This example specifies that your package depends on a hosted package named
 `transmogrify` and will work with any version from 1.4.0 to 2.0.0
 (but not 2.0.0 itself).
 
-If you want to use your own package server, you can use a description that
+If you want to use your own package repository, you can use a description that
 specifies its URL:
 
 {% prettify yaml tag=pre+code %}
+# This syntax requires language version 2.15 or higher
+environment: 
+  sdk: >=2.15.0 < 3.0.0
+
+dependencies:
+  transmogrify:
+    hosted: http://some-package-server.com
+    version: ^1.4.0
+{% endprettify %}
+
+Before Dart language version 2.15 the format is different, you have to write:
+{% prettify yaml tag=pre+code %}
+environment:
+  sdk: >=2.14.0 < 3.0.0
+
 dependencies:
   transmogrify:
     hosted:
       name: transmogrify
-      url: http://your-package-server.com
+      url: http://some-package-server.com
     version: ^1.4.0
 {% endprettify %}
 
