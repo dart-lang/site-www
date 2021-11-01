@@ -36,7 +36,8 @@ allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
 See the [version constraints](#version-constraints)
 section of this page for syntax details.
 
-If you want to specify a custom package repository, write:
+If you want to specify a custom package repository,
+use the following syntax:
 
 {% prettify yaml tag=pre+code %}
 dependencies:
@@ -47,7 +48,7 @@ dependencies:
 
 This YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
-Everything under the source key (here, just a string with the host url)
+Everything under the source key (here, just a string with the host URL)
 is the description that gets passed to the source.
 Each source has its own description format,
 which is described in the [dependency sources](#dependency-sources) section
@@ -126,7 +127,8 @@ dependencies:
     version: ^1.4.0
 {% endprettify %}
 
-Before Dart language version 2.15 the format is different, you have to write:
+Before Dart language version 2.15, the format is different:
+
 {% prettify yaml tag=pre+code %}
 environment:
   sdk: >=2.14.0 < 3.0.0
