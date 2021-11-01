@@ -41,15 +41,13 @@ If you want to specify a custom package repository, write:
 {% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
-    hosted:
-      name: transmogrify
-      url: http://some-package-server.com
+    hosted: 'http://some-package-server.com'
     version: ^1.0.0
 {% endprettify %}
 
 This YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
-Everything under the source key (here, just string with the host url)
+Everything under the source key (here, just a string with the host url)
 is the description that gets passed to the source.
 Each source has its own description format,
 which is described in the [dependency sources](#dependency-sources) section
