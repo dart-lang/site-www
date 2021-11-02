@@ -892,7 +892,7 @@ void main() {
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
 When you refer to a function, method, or named constructor but omit the
-parentheses, Dart creates a "tear-off"&mdash;a closure that takes the same
+parentheses, Dart creates a _tear-off_&mdash;a closure that takes the same
 parameters as the function and invokes the underlying function when you call it.
 If all you need is a closure that invokes a named function with the same
 parameters as the closure accepts, don't manually wrap the call in a lambda.
