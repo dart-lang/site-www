@@ -44,6 +44,8 @@ dependencies:
   transmogrify:
     hosted: 'http://some-package-server.com'
     version: ^1.0.0
+environment:
+  sdk: >= 2.15.0 <3.0.0
 {% endprettify %}
 
 This YAML code creates a dependency on the `transmogrify` package
