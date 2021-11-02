@@ -48,7 +48,7 @@ dependencies:
 
 This YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
-Everything under the source key (here, just a string with the host URL)
+Everything under the source key (here, just a string with the hosted URL)
 is the description that gets passed to the source.
 Each source has its own description format,
 which is described in the [dependency sources](#dependency-sources) section
