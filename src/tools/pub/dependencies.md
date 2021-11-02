@@ -119,7 +119,7 @@ specifies its URL:
 {% prettify yaml tag=pre+code %}
 # This syntax requires language version 2.15 or higher
 environment: 
-  sdk: >=2.15.0 < 3.0.0
+  sdk: >=2.15.0 <3.0.0
 
 dependencies:
   transmogrify:
