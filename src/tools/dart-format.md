@@ -42,11 +42,11 @@ or `-o none` to see only which files would change.
 $ dart format -o show bin/my_app.dart
 ```
 
-If you want the command to return an exit code of `1`
-if there are any formatting changes,
+To make the command have an exit code of `1`
+if any formatting changes occur,
 add the `--set-exit-if-changed` flag.
-This is commonly used to indicate to continuous integration
-that there are issues and a check should fail.
+This exit code is often used with continuous integration (CI)
+to indicate that a check should fail.
 
 ```terminal
 $ dart format -o none --set-exit-if-changed
