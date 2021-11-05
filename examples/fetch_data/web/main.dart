@@ -76,7 +76,7 @@ void _populateFromJson() {
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
   horoscope.value = jsonData['horoscope'].toString();
-  final favoriteThings = jsonData['favoriteThings'] as List<String>;
+  final favoriteThings = List<String>.from(jsonData['favoriteThings'] as List);
   favOne.value = favoriteThings[0];
   favTwo.value = favoriteThings[1];
   favThree.value = favoriteThings[2];
