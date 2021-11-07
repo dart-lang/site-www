@@ -10,7 +10,7 @@ no download required!
 ## General
 
 <img src="/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
-### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
+### [Intro to Dart for Java Developers](https://developers.google.com/codelabs/from-java-to-dart)
 
 Use DartPad to explore how
 Dart makes writing apps easy and fun.
