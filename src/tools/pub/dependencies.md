@@ -396,6 +396,9 @@ dependency_overrides:
   may break your application.
 {{site.alert.end}}
 
+Only dependency overrides from he root pubspec are taken into account
+when doing package resolution. 
+
 ## Best practices
 
 It’s important to actively manage your dependencies and
