@@ -931,7 +931,7 @@ unique, but it should be well distributed.
 
 [`Object.hash`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
 [`Object.hashAll`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
-[`Object.hashAllUnordered`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/Object/hashAllUnordered.html
+[`Object.hashAllUnordered`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
 Note: There’s disagreement over whether to include identical() in the ==
