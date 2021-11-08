@@ -5,15 +5,9 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Override hashCode using strategy from Effective Java,
-  // Chapter 11.
+  // Override hashCode using Object's static hashing functions.
   @override
-  int get hashCode {
-    int result = 17;
-    result = 37 * result + firstName.hashCode;
-    result = 37 * result + lastName.hashCode;
-    return result;
-  }
+  int get hashCode => Object.hash(firstName, lastName);
 
   // You should generally implement operator == if you
   // override hashCode.
