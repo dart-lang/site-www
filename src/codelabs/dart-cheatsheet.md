@@ -191,7 +191,8 @@ print(null ?? 12); // <-- Prints 12.
 
 ### Code example
 
-Try putting the `??=` and `??` operators to work below.
+Try substituting in the `??=` and `??` operators
+to implement the described behavior in the following snippet.
 
 Ignore all initial errors in the DartPad.
 
