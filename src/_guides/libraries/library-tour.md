@@ -923,7 +923,7 @@ unique, but it should be well distributed.
   To consistently and easily implement the `hashCode` getter,
   consider using the static hashing methods provided by the `Object` class.
 
-  To generate a single hash code for multiple objects,
+  To generate a single hash code for multiple properties of an object,
   you can use [`Object.hash()`][].
   To generate a hash code for a collection,
   you can use either [`Object.hashAll()`][] (if element order matters)
@@ -948,12 +948,13 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Override hashCode using Object's static hashing functions.
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
   @override
   int get hashCode => Object.hash(firstName, lastName);
 
-  // You should generally implement operator == if you
-  // override hashCode.
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
   @override
   bool operator ==(dynamic other) {
     return other is Person &&
