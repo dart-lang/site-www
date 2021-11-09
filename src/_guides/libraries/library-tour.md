@@ -1511,6 +1511,12 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
+{{site.alert.warning}}
+  The default implementation of `Random` supplies a stream of pseudorandom bits
+  that are unsuitable for cryptographic purposes.
+  To create a cryptographically secure random number generator,
+  use the [`Random.secure()`][] constructor.
+{{site.alert.end}}
 
 ### More information
 
@@ -1711,6 +1717,7 @@ To learn more about the Dart language, see the
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [Pattern]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
 [Random]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
+[`Random.secure()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
 [RegExp]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
