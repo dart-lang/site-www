@@ -923,10 +923,11 @@ unique, but it should be well distributed.
   To consistently and easily implement the `hashCode` getter,
   consider using the static hashing methods provided by the `Object` class.
 
-  For multiple objects, consider using [`Object.hash`][], 
-  while for collections
-  consider [`Object.hashAll`][] or [`Object.hashAllUnordered`][] 
-  according to your object's definition of equality. 
+  To generate a single hash code for multiple objects,
+  you can use [`Object.hash()`][].
+  To generate a hash code for a collection,
+  you can use either [`Object.hashAll()`][] (if element order matters)
+  or [`Object.hashAllUnordered()`][].
 {{site.alert.end}}
 
 [`Object.hash`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
