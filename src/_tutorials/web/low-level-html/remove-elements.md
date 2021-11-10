@@ -20,7 +20,7 @@ prevpage:
 </div>
 
 {{site.alert.note}}
-{% include dartpad-embedded-troubleshooting.md %}
+  {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
 This tutorial shows you how to delete elements from the DOM.
