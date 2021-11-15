@@ -56,6 +56,12 @@ Here are some possible causes and fixes:
   To learn more about adding package dependencies,
   see the documentation for [`dart pub add`](/tools/pub/cmd/pub-add).
 
+* If Dart can't find certain methods or properties,
+  check the code included with the tests.
+  For instructional and brevity purposes, 
+  some code is not included in the primary code editing window,
+  but instead implemented separately alongside the tests.
+
 * If the code has other compilation errors,
   make sure you're using the latest stable version of the Dart SDK.
   DartPad and embedded samples 
@@ -73,6 +79,15 @@ Here are some possible causes and fixes:
   To get started creating web apps with Dart,
   see [Get started: Web apps](/tutorials/web/get-started).
 
+
+## Analysis issues and compilation results don't match displayed code
+
+DartPad only compiles and analyzes code in the primary **Dart** tab.
+
+If the listed analysis issues and compilation results
+don't match the code being displayed, 
+verify you are editing the code in the **Dart** tab,
+not **Solution** or **Tests**.
 
 ## DartPad doesn't work in China
   
