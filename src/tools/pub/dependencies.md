@@ -25,10 +25,10 @@ and any additional *description* that the source needs to find the package.
 
 Here is an example of specifying a dependency:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   transmogrify: ^1.0.0
-{% endprettify %}
+```
 
 This YAML code creates a dependency on the `transmogrify` package
 using the default package repository ([pub.dev]({{site.pub}})) and
@@ -39,18 +39,16 @@ section of this page for syntax details.
 If you want to specify a custom package repository,
 use the following syntax:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   transmogrify:
     hosted: 'http://some-package-server.com'
     version: ^1.0.0
-environment:
-  sdk: >= 2.15.0 <3.0.0
-{% endprettify %}
+```
 
 This YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
-Everything under the source key (here, just a string with the hosted URL)
+Everything under the source key (here, just a string with the host URL)
 is the description that gets passed to the source.
 Each source has its own description format,
 which is described in the [dependency sources](#dependency-sources) section
@@ -121,7 +119,7 @@ specifies its URL:
 {% prettify yaml tag=pre+code %}
 # This syntax requires language version 2.15 or higher
 environment: 
-  sdk: >=2.15.0 <3.0.0
+  sdk: >=2.15.0 < 3.0.0
 
 dependencies:
   transmogrify:
@@ -473,3 +471,4 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
 [semantic versions]: /tools/pub/versioning#semantic-versions
 [What not to commit]: /guides/libraries/private-files
+
