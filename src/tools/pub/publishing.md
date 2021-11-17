@@ -359,7 +359,11 @@ needed. On the other hand, if you accidentally published a major version or
 published a version with wrong or missing dependency constraints, then retration 
 might be the right solution. 
 
-This feature is available from *Dart 2.15*.
+{{site.alert.version-note}}
+  The `retracted` feature debuted in Dart 2.15. Prior to Dart 2.15, pub 
+  will disregard any retracted status, i.e. the version solver will consider
+  a retracted version as any other version.
+{{site.alert.end}}
 
 ## Marking packages as discontinued {#discontinue}
 
