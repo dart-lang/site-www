@@ -19,7 +19,7 @@ and a [Dart-to-JavaScript compiler](/overview#web-platform) for web code —
 create fast production code for any platform.
 
 <p class="text-center"> 
-  <a href="{{site.flutter}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
+  <a href="{{site.flutter_docs}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
     <img src="{% asset shared/flutter/icon/64.png @path %}" width="32px" alt=""/>
     Get started
   </a>

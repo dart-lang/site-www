@@ -6,7 +6,7 @@ smartherd-playlist-id: PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q
 ---
 
 Here are some videos about the Dart language and core libraries.
-For more videos, see the [Flutter video page.]({{site.flutter}}/docs/resources/videos)
+For more videos, see the [Flutter video page.]({{site.flutter_docs}}/resources/videos)
 If you'd like other videos to be listed on this page,
 [let us know.](https://github.com/dart-lang/site-www/issues)
 

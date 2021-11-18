@@ -39,4 +39,4 @@ which was introduced in Dart 2.12.
 ## Flutter
 
 To learn about Flutter, try one of the
-[Flutter codelabs.]({{site.flutter}}/codelabs)
+[Flutter codelabs.]({{site.flutter_docs}}/codelabs)

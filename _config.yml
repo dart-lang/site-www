@@ -14,8 +14,9 @@ port: 4000
 #   {{site.flutter}}/docs
 
 dart-site: '' 
-dart_vm:  /server
-flutter:  https://flutter.dev
+dart_vm: /server
+flutter: https://flutter.dev
+flutter_docs: https://docs.flutter.dev
 dart_api: https://api.dart.dev
 flutter_api: https://api.flutter.dev
 pub: https://pub.dev

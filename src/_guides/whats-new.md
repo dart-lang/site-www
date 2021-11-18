@@ -13,7 +13,7 @@ To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group][dart-announce]
 and follow the [Dart blog][].
 
-[flutter-whats-new]: {{site.flutter}}/docs/whats-new
+[flutter-whats-new]: {{site.flutter_docs}}/whats-new
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
 
