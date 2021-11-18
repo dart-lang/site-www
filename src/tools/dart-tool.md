@@ -46,7 +46,7 @@ The following table shows which commands you can use with the `dart` tool.
 If you're developing for Flutter,
 you might use the [`flutter` tool][] instead.
 
-[`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
+[`flutter` tool]: {{site.flutter_docs}}/reference/flutter-cli
 
 |-----------+-----------------------------------------+-----------------------------------|
 | Command   | Example of use                          | More information                  |

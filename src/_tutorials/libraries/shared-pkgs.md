@@ -40,7 +40,7 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
 {{site.alert.end}}
 
 

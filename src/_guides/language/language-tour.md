@@ -4406,7 +4406,7 @@ For more information, see the following:
 [isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
-[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+[background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 [Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 
@@ -4641,7 +4641,7 @@ To learn more about Dart's core libraries, see
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
-[Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
+[Flutter debug mode]: {{site.flutter_docs}}/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

@@ -18,7 +18,7 @@ These tutorials cover topics relevant to Dart web apps.
     <p> Delete elements from the web page. </p>
   </div>
   <div class="card">
-    <h3><a href="{{site.flutter}}/docs/get-started/codelab-web">Use Flutter Web</a></h3>
+    <h3><a href="{{site.flutter_docs}}/get-started/codelab-web">Use Flutter Web</a></h3>
     <p>Write your first Flutter app on the web.</p>
   </div>
 </div>
