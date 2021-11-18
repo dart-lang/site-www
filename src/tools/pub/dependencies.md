@@ -20,10 +20,9 @@ For each dependency, you specify the *name* of the package you depend on
 and the *range of versions* of that package that you allow.
 You can also specify the
 [*source*](/tools/pub/glossary#source),
-which tells pub how to locate the package,
-and any additional *description* that the source needs to find the package.
+which tells pub how to locate the package.
 
-Here is an example of specifying a dependency:
+Here's an example of specifying a dependency:
 
 ```yaml
 dependencies:
@@ -36,29 +35,19 @@ allowing any version from `1.0.0` to `2.0.0` (but not including `2.0.0`).
 See the [version constraints](#version-constraints)
 section of this page for syntax details.
 
-If you want to specify a custom package repository,
-use the following syntax:
+To specify a source that isn't pub.dev,
+use `sdk`, `hosted`, `git`, or `path`.
+For example, the following YAML code uses `path`
+to tell pub to get `transmogrify` from a local directory:
 
 ```yaml
 dependencies:
   transmogrify:
-    hosted: 'http://some-package-server.com'
-    version: ^1.0.0
+    path: /Users/me/transmogrify
 ```
 
-This YAML code creates a dependency on the `transmogrify` package
-using the `hosted` source.
-Everything under the source key (here, just a string with the host URL)
-is the description that gets passed to the source.
-Each source has its own description format,
-which is described in the [dependency sources](#dependency-sources) section
-of this page.
-The version constraint is optional but recommended.
+The next section describes the format for each dependency source.
 
-Use this long form when you don't use the default source or when you have a
-complex description that you need to specify.
-But in most cases, you'll just use the simple
-<code><em>packagename</em>: <em>version</em></code> form.
 
 ## Dependency sources
 
@@ -77,26 +66,27 @@ Currently, Flutter is the only SDK that is supported.
 
 The syntax looks like this:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   flutter_driver:
     sdk: flutter
-    version: ^0.0.1
-{% endprettify %}
+```
 
 The identifier after `sdk:` indicates which SDK the package comes from.
 If it's `flutter`, the dependency is satisfiable as long as:
 
 * Pub is running in the context of the `flutter` executable
 * The Flutter SDK contains a package with the given name
-* That package's version matches the version constraint
 
 If it's an unknown identifier, the dependency is always considered unsatisfied.
 
 A package with an `sdk` dependency
-must have a Dart SDK constraint with a minimum version of at least 1.19.0.
+must have [language version][] of at least 1.19.
 This constraint ensures that older versions of pub won't
 install packages that have `sdk` dependencies.
+
+[language version]: /guides/language/evolution#language-versioning
+
 
 ### Hosted packages
 
@@ -104,42 +94,48 @@ A *hosted* package is one that can be downloaded from the pub.dev site
 (or another HTTP server that speaks the same API). Here's an example
 of declaring a dependency on a hosted package:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   transmogrify: ^1.4.0
-{% endprettify %}
+```
 
 This example specifies that your package depends on a hosted package named
-`transmogrify` and will work with any version from 1.4.0 to 2.0.0
+`transmogrify` and works with any version from 1.4.0 to 2.0.0
 (but not 2.0.0 itself).
 
-If you want to use your own package repository, you can use a description that
-specifies its URL:
+If you want to use your own package repository,
+you can use `hosted` to specify its URL.
+The following YAML code creates a dependency on the `transmogrify` package
+using the `hosted` source.
 
 {% prettify yaml tag=pre+code %}
 # This syntax requires language version 2.15 or higher
 environment: 
-  sdk: >=2.15.0 < 3.0.0
+  sdk: >=[!2.15.0!] < 3.0.0
 
 dependencies:
   transmogrify:
-    hosted: http://some-package-server.com
+    [!hosted: http://some-package-server.com!]
     version: ^1.4.0
 {% endprettify %}
 
-Before Dart language version 2.15, the format is different:
+The version constraint is optional but recommended.
+
+If your package has a [language version][] before 2.15,
+you must use a more verbose `hosted` format:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: >=2.14.0 < 3.0.0
+  sdk: >=[!2.14.0!] < 3.0.0
 
 dependencies:
   transmogrify:
-    hosted:
-      name: transmogrify
-      url: http://some-package-server.com
+    [!hosted:!]
+      [!name: transmogrify!]
+      [!url: http://some-package-server.com!]
     version: ^1.4.0
 {% endprettify %}
+
 
 ### Git packages
 
@@ -151,11 +147,11 @@ stored in a [Git][] repository.
 
 [git]: https://git-scm.com/
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   kittens:
     git: https://github.com/munificent/kittens.git
-{% endprettify %}
+```
 
 The `git` here says this package is found using Git, and the URL after that is
 the Git URL that can be used to clone the package.
@@ -164,22 +160,22 @@ Even if the package repo is private, if you can
 [connect to the repo using SSH,][GitHub SSH]
 then you can depend on the package by using the repo's SSH URL:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   kittens:
     git: git@github.com:munificent/kittens.git
-{% endprettify %}
+```
 
 If you want to depend on a specific commit, branch, or tag,
 add a `ref` argument:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   kittens:
     git:
       url: git@github.com:munificent/kittens.git
       ref: some-branch
-{% endprettify %}
+```
 
 The ref can be anything that Git allows to [identify a commit.][commit]
 
@@ -188,13 +184,13 @@ The ref can be anything that Git allows to [identify a commit.][commit]
 Pub assumes that the package is in the root of the Git repository.
 To specify a different location in the repo, use the `path` argument:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   kittens:
     git:
       url: git@github.com:munificent/cats.git
       path: path/to/kittens
-{% endprettify %}
+```
 
 The path is relative to the Git repo's root.
 
@@ -208,11 +204,11 @@ package are instantly picked up by the one that depends on it.
 
 To handle that, pub supports *path dependencies*.
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   transmogrify:
     path: /Users/me/transmogrify
-{% endprettify %}
+```
 
 This says the root directory for `transmogrify` is `/Users/me/transmogrify`.
 For this dependency, pub generates a symlink directly to the `lib` directory
@@ -267,12 +263,12 @@ For example, `^1.2.3` is equivalent to `'>=1.2.3 <2.0.0'`, and
 `^0.1.2` is equivalent to `'>=0.1.2 <0.2.0'`.
 The following is an example of caret syntax:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   path: ^1.3.0
   collection: ^1.1.0
   string_scanner: ^0.1.2
-{% endprettify %}
+```
 
 Because caret syntax was introduced in Dart 1.8.3,
 it requires an [SDK constraint][]
@@ -280,10 +276,10 @@ it requires an [SDK constraint][]
 to ensure that older versions of pub don't try to process it.
 For example:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=1.8.3 <3.0.0'
-{% endprettify %}
+```
 
 ### Traditional syntax
 
@@ -342,10 +338,10 @@ in its tests. If someone just wants to use `transmogrify`&mdash;import its
 libraries&mdash;it doesn't actually need `test`. In this case, it specifies
 `test` as a dev dependency. Its pubspec will have something like:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dev_dependencies:
   test: '>=0.5.0 <0.12.0'
-{% endprettify %}
+```
 
 Pub gets every package that your package depends on, and everything *those*
 packages depend on, transitively. It also gets your package's dev dependencies,
@@ -378,14 +374,14 @@ copy of the package.
 
 The pubspec would look something like the following:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
 dependencies:
   transmogrify: ^1.2.0
 dependency_overrides:
   transmogrify:
     path: ../transmogrify_patch/
-{% endprettify %}
+```
 
 When you run [`pub get`][] or [`pub upgrade`][],
 the pubspec's lockfile is updated to reflect the
@@ -395,13 +391,13 @@ uses the local version instead.
 You can also use `dependency_overrides` to specify a particular
 version of a package:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
 dependencies:
   transmogrify: ^1.2.0
 dependency_overrides:
   transmogrify: '3.2.1'
-{% endprettify %}
+```
 
 {{site.alert.warning}}
   Using a dependency override involves some risk. For example,
