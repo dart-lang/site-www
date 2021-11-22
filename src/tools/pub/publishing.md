@@ -333,7 +333,7 @@ If you wish to prevent new package consumers from adopting a recently
 published version of your package, you may **retract** that package version.   
 
 A retracted package version is not deleted, it will still show up in the version 
-list of the package on pub.dev, in the "Retracted versions" section. Also, the 
+listing of the package on pub.dev, in the "Retracted versions" section. Also, the 
 detailed view of that package version will have a clear **RETRACTED** badge.
 
 A package version can only be retracted within 7 days of publication. 
@@ -351,18 +351,19 @@ the version solver.
 
 ### When does it make sense to retract a package version?
 
-Retracting a package causes churn and has a somewhat negativ impact on consumers. 
-Hence, before retracting a version you should consider whether it is in fact the 
-right course of action instead of just publishing a new version. For instance, 
-if your package version contains a minor bug then retraction is probably not 
-needed. On the other hand, if you accidentally published a major version or 
-published a version with wrong or missing dependency constraints, then retration 
-might be the right solution. 
+Retracting a package causes churn and has a somewhat negative impact on consumers. 
+Hence, before retracting a version you should consider whether it would be better to 
+just publish a new version.
+
+For instance, if your package version contains a minor bug then retraction is 
+probably not needed. On the other hand, if you accidentally published a major 
+version or published a version with wrong or missing dependency constraints, 
+then retraction might be the right solution. 
 
 {{site.alert.version-note}}
   The `retracted` feature debuted in Dart 2.15. Prior to Dart 2.15, pub 
-  will disregard any retracted status, i.e. the version solver will consider
-  a retracted version as any other version.
+  will disregard the retracted status, i.e. the version solver will consider
+  a retracted version on par with any other version.
 {{site.alert.end}}
 
 ## Marking packages as discontinued {#discontinue}
