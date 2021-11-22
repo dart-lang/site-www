@@ -313,7 +313,7 @@ you can instead use the conditional member access operator (`?.`)
 to set `text` only if the returned element is not `null`:
 
 {% prettify dart tag=pre+code %}
-querySelector('#RipVanWinkle')[!!!].text = 'Wake up, sleepy head!';
+querySelector('#RipVanWinkle')[!?!].text = 'Wake up, sleepy head!';
 {% endprettify %}
 
 To learn more about nullable types and null safety in general,
@@ -466,14 +466,14 @@ and class selectors with `querySelectorAll()`.
 
 Here are some examples of CSS selectors:
 
-| Selector type | Example | Description |
-|---|---|
-| ID selector | `#RipVanWinkle` | Matches a single, unique element |
-| HTML element | `p` | Matches all paragraphs |
-| HTML element | `h1` | Matches all level-one headers |
-| Class | `_.classname_` | Matches all items with the class _classname_  |
-| Asterisk | `*` | Matches all elements |
-| Attribute | `input[type="button"]` | Matches all button input elements |
+| Selector type | Example                          | Description                                  |
+|---------------|----------------------------------|----------------------------------------------|
+| ID selector   | `#RipVanWinkle`                  | Matches a single, unique element             |
+| HTML element  | `p`                              | Matches all paragraphs                       |
+| HTML element  | `h1`                             | Matches all level-one headers                |
+| Class         | <code>.<em>classname</em></code> | Matches all items with the class _classname_ |
+| Asterisk      | `*`                              | Matches all elements                         |
+| Attribute     | `input[type="button"]`           | Matches all button input elements            |
 {: .table}
 
 {{site.alert.tip}}
