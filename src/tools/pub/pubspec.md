@@ -74,7 +74,7 @@ Pub ignores all other fields,
 
 {{site.alert.info}}
   **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
-  [additional fields]({{site.flutter}}/docs/development/tools/pubspec)
+  [additional fields]({{site.flutter_docs}}/development/tools/pubspec)
   for configuring the environment and managing assets.
 {{site.alert.end}}
 

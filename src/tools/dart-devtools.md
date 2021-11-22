@@ -112,7 +112,7 @@ For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][flutter-devtools]
 
-[flutter-devtools]: {{site.flutter}}/docs/development/tools/devtools/overview
+[flutter-devtools]: {{site.flutter_docs}}/development/tools/devtools/overview
 
 
 ## Using DevTools with a non-Flutter web app
@@ -176,19 +176,19 @@ Click **Debugger** to start debugging the app.
 * [devtools package page][devtools package]
 
 
-[App size tool]: {{site.flutter}}/docs/development/tools/devtools/app-size
+[App size tool]: {{site.flutter_docs}}/development/tools/devtools/app-size
 [Chrome DevTools.]: https://developers.google.com/web/tools/chrome-devtools
 [Command-line]: #using-devtools-with-a-command-line-app
-[CPU profiler]: https://flutter.dev/docs/development/tools/devtools/cpu-profiler
-[Debugger]: {{site.flutter}}/docs/development/tools/devtools/debugger
+[CPU profiler]: {{site.flutter_docs}}/development/tools/devtools/cpu-profiler
+[Debugger]: {{site.flutter_docs}}/development/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
 [devtools package]: {{site.pub-pkg}}/devtools
-[Flutter inspector]: {{site.flutter}}/docs/development/tools/devtools/inspector
-[Flutter mobile or desktop]: {{site.flutter}}/docs/development/tools/devtools/overview
-[Flutter web]: {{site.flutter}}/docs/development/tools/devtools/overview
-[Logging view]: {{site.flutter}}/docs/development/tools/devtools/logging
-[Memory view]: {{site.flutter}}/docs/development/tools/devtools/memory
-[Network view]: {{site.flutter}}/docs/development/tools/devtools/network
+[Flutter inspector]: {{site.flutter_docs}}/development/tools/devtools/inspector
+[Flutter mobile or desktop]: {{site.flutter_docs}}/development/tools/devtools/overview
+[Flutter web]: {{site.flutter_docs}}/development/tools/devtools/overview
+[Logging view]: {{site.flutter_docs}}/development/tools/devtools/logging
+[Memory view]: {{site.flutter_docs}}/development/tools/devtools/memory
+[Network view]: {{site.flutter_docs}}/development/tools/devtools/network
 [Other web]: #using-devtools-with-a-non-flutter-web-app
-[Performance view]: {{site.flutter}}/docs/development/tools/devtools/performance
-[Timeline view]: {{site.flutter}}/docs/development/tools/devtools/timeline
+[Performance view]: {{site.flutter_docs}}/development/tools/devtools/performance
+[Timeline view]: {{site.flutter_docs}}/development/tools/devtools/timeline

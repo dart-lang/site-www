@@ -14,7 +14,7 @@ package, and how to name things.
   **Note:**
   Flutter apps can use custom directories for their assets.
   For details, see
-  [Adding assets and images]({{site.flutter}}/assets-and-images/)
+  [Adding assets and images]({{site.flutter_docs}}/development/ui/assets-and-images)
   on the [Flutter website.]({{site.flutter}})
   </div>
 </div></aside>
@@ -59,7 +59,7 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool` directory and `.packages` file exist after you've run
+\* The `.dart_tool/` directory and `.packages` file exist after you've run
    `pub get`. Don't check them into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.

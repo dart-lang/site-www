@@ -15,7 +15,7 @@ using the [`dart test`][] command
 (or, for Flutter apps, [`flutter test`][]).
 
 [`dart test`]: /tools/dart-test
-[`flutter test`]: {{site.flutter}}/docs/reference/flutter-cli
+[`flutter test`]: {{site.flutter_docs}}/reference/flutter-cli
 
 ## Kinds of testing
 
@@ -82,7 +82,7 @@ following packages are useful across Dart platforms:
 
 Use the following resources to learn more about testing Flutter apps:
 
-* [Testing Flutter Apps]({{site.flutter}}/docs/testing)<br>
+* [Testing Flutter Apps]({{site.flutter_docs}}/testing)<br>
   How to perform unit, widget, or integration tests on a Flutter app.
 * [flutter_test]({{site.flutter_api}}/flutter/flutter_test/flutter_test-library.html)<br>
   A testing library for Flutter built on top of package:test.

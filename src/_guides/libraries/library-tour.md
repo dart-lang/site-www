@@ -919,6 +919,21 @@ also want to override the `==` operator. Objects that are equal (via
 `==`) must have identical hash codes. A hash code doesn’t have to be
 unique, but it should be well distributed.
 
+{{site.alert.tip}}
+  To consistently and easily implement the `hashCode` getter,
+  consider using the static hashing methods provided by the `Object` class.
+
+  To generate a single hash code for multiple properties of an object,
+  you can use [`Object.hash()`][].
+  To generate a hash code for a collection,
+  you can use either [`Object.hashAll()`][] (if element order matters)
+  or [`Object.hashAllUnordered()`][].
+{{site.alert.end}}
+
+[`Object.hash()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
+
 {% comment %}
 Note: There’s disagreement over whether to include identical() in the ==
 implementation. It might improve speed, at least when you need to
@@ -933,18 +948,13 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Override hashCode using strategy from Effective Java,
-  // Chapter 11.
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
   @override
-  int get hashCode {
-    int result = 17;
-    result = 37 * result + firstName.hashCode;
-    result = 37 * result + lastName.hashCode;
-    return result;
-  }
+  int get hashCode => Object.hash(firstName, lastName);
 
-  // You should generally implement operator == if you
-  // override hashCode.
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
   @override
   bool operator ==(dynamic other) {
     return other is Person &&
@@ -1511,6 +1521,12 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
+{{site.alert.warning}}
+  The default implementation of `Random` supplies a stream of pseudorandom bits
+  that are unsuitable for cryptographic purposes.
+  To create a cryptographically secure random number generator,
+  use the [`Random.secure()`][] constructor.
+{{site.alert.end}}
 
 ### More information
 
@@ -1711,6 +1727,7 @@ To learn more about the Dart language, see the
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [Pattern]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
 [Random]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
+[`Random.secure()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
 [RegExp]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
