@@ -12039,7 +12039,7 @@ increase the SDK constraint to allow the operators to be used:
 
 ```yaml
 environment:
- sdk: '>=2.3.2 <2.4.0'
+  sdk: '>=2.3.2 <2.4.0'
 ```
 
 If you need to support older versions of the SDK, then either rewrite the
@@ -12172,7 +12172,7 @@ bound of less than 2.6.0:
 
 ```yaml
 environment:
- sdk: '>=2.4.0 <2.7.0'
+  sdk: '>=2.4.0 <2.7.0'
 ```
 
 In the package that has that pubspec, code like the following produces
@@ -12226,7 +12226,7 @@ bound of less than 2.14.0:
 
 ```yaml
 environment:
- sdk: '>=2.0.0 <2.15.0'
+  sdk: '>=2.0.0 <2.15.0'
 ```
 
 In the package that has that pubspec, code like the following produces this
