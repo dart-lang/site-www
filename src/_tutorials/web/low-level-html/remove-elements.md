@@ -155,7 +155,7 @@ This behavior is coded in the app's CSS file with this rule:
   color: blue;
   cursor: pointer;
 }
-  {% endprettify %}
+{% endprettify %}
 
 We've used this CSS trick
 instead of providing a familiar user interface,

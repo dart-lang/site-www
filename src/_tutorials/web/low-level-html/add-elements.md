@@ -156,7 +156,7 @@ for interacting with
 a subset of the DOM that includes
 only the nodes that are `Element` objects.
 You can work with a virtual tree of elements
-rather than the more complex tree of Nodes.
+rather than the more complex tree of `Node` objects.
 This tutorial shows you how to manipulate the
 DOM through the `Element` class.
 
@@ -167,7 +167,7 @@ and maintains references to its children `Element` objects in a list.
      alt="An element with multiple child elements and a parent element">
 
 An Element has at most one parent `Element`.
-An `Element`'s parent is final and cannot be changed.
+An `Element` object's parent is final and cannot be changed.
 So you cannot move an `Element` by changing its parent.
 Get an `Element`'s parent with the getter `parent`.
 For example, if you have an `Element` with the name `anElement`
@@ -270,11 +270,11 @@ The dart:html library has dozens of `Element` subclasses,
 many of which correspond to certain HTML tags.
 This program uses three:
 
-| HTML tag | Dart class |
-|---|---|
+| HTML tag  | Dart class                                                                                                                                |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | `<input>` | [`InputElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
-| `<ul>` | [`UListElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
-| `<li>` | [`LIElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"} |
+| `<ul>`    | [`UListElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
+| `<li>`    | [`LIElement`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
 {: .table}
 
 ## Registering an event handler {#event-handler}
@@ -308,9 +308,9 @@ of type
 [`EventListener`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/EventListener.html){:target="_blank" rel="noopener"}.
 `EventListener` is a typedef defined in the dart:html library as follows:
 
-{% prettify dart tag=pre+code %}
+```dart
 typedef void EventListener(Event event)
-{% endprettify %}
+```
 
 As you can see, an EventListener returns no value (`void`) and takes an
 [`Event`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/Event-class.html){:target="_blank" rel="noopener"}
@@ -318,9 +318,9 @@ object as an argument.
 Any function with this signature is an `EventListener`.
 Based on its signature, the `addToDoItem()` function is an `EventListener`.
 
-{% prettify dart tag=pre+code %}
+```dart
 void addToDoItem(Event e) { ... }
-{% endprettify %}
+```
 
 The `Event` object passed into an `EventListener` function
 carries information about the `Event` that occurred.
