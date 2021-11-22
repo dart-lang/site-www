@@ -154,14 +154,14 @@ So for convenience and code simplicity,
 the `Element` class implements API
 for interacting with
 a subset of the DOM that includes
-only the nodes that are `Element`s.
+only the nodes that are `Element` objects.
 You can work with a virtual tree of elements
 rather than the more complex tree of Nodes.
 This tutorial shows you how to manipulate the
 DOM through the `Element` class.
 
 An `Element` has a parent `Element`
-and maintains references to its child `Element`s in a list.
+and maintains references to its children `Element` objects in a list.
 
 <img class="scale-img-max" src="/tutorials/web/images/relationships.png"
      alt="An element with multiple child elements and a parent element">
