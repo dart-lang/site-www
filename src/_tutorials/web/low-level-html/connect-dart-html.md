@@ -267,14 +267,14 @@ with multiple things happening one after another.
 Let's deconstruct it.
 
 `querySelector()` is a top-level function provided by the Dart HTML library
-that gets an `Element?` object from the DOM matching the passed in specifier.
+that gets an `Element?` object from the DOM.
 
 {% prettify dart tag=pre+code %}
 [!querySelector!]('#RipVanWinkle')!.text = 'Wake up, sleepy head!';
 {% endprettify %}
 
-In this example, the argument passed to the function, `'#RipVanWinkle'`,
-is a string literal containing the CSS selector that identifies the object.
+The argument to `querySelector()` is a string
+containing a CSS selector that identifies the object.
 Most commonly CSS selectors specify classes, identifiers, or attributes.
 We'll look at these in more detail later,
 when we add a CSS file to the mini app.
@@ -288,29 +288,29 @@ which returns multiple `Element` objects via
 a list of elements&mdash;`List<Element>`&mdash;all
 of which match the provided selector.
 
-### Accessing nullable properties
+### Using nullable properties
 
-Since DOM elements may not be present on the page at a given time,
+Because DOM elements might be missing,
 the `querySelector()` function returns a nullable result,
-indicated by `Element?` being suffixed with a `?`.
-If the result is `null`, 
-that indicates there is no element
-which matches the specified CSS selector.
+as indicated by the `?` in the function's return type (`Element?`).
+A `null` return value means that
+no element matches the specified CSS selector.
 
-To access the `text` property on a returned `Element?`,
+To use the `text` property of a returned `Element?`,
 the type must be promoted to `Element`.
-Since we manually wrote our HTML, and it is unchanging, you can use the 
+Because we wrote the HTML and know that the element is always present,
+we can use the
 [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator) (`!`)
-to access properties on the `Element` type.
+when referring to the element's properties:
 
 {% prettify dart tag=pre+code %}
 querySelector('#RipVanWinkle')[!!!].text = 'Wake up, sleepy head!';
 {% endprettify %}
 
 If the element with the `#RipVanWinkle` ID
-is not guaranteed to be present in the DOM,
+isn't guaranteed to be present in the DOM,
 you can instead use the conditional member access operator (`?.`)
-to only set `text` if the returned element is not `null`.
+to set `text` only if the returned element is not `null`:
 
 {% prettify dart tag=pre+code %}
 querySelector('#RipVanWinkle')[!!!].text = 'Wake up, sleepy head!';
@@ -339,7 +339,7 @@ would be represented with a subtree of text nodes and other objects.
 In Dart,
 you can simply use the Element `text` property,
 which has a getter and setter
-that walks the subtree of nodes for you and extracts or sets their text:
+that walk the subtree of nodes for you and extract or set their text:
 
 {% prettify dart tag=pre+code %}
 querySelector('#RipVanWinkle')![!.text!] = 'Wake up, sleepy head!';
