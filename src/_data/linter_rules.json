@@ -393,7 +393,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "**DO** Use secure urls in `pubspec.yaml`.\n\nUse `https` instead of `http` an `git:`.\n\n**GOOD:**\n```yaml\nrepository: 'https://github.com/dart-lang/example'\n```\n\n**BAD:**\n```dart\nrepository: 'http://github.com/dart-lang/example'\n"
+    "details": "**DO** Use secure urls in `pubspec.yaml`.\n\nUse `https` instead of `http` an `git:`.\n\n**GOOD:**\n```yaml\nrepository: 'https://github.com/dart-lang/example'\n```\n\n**BAD:**\n```yaml\nrepository: 'http://github.com/dart-lang/example'\n```\n"
   },
   {
     "name": "sort_pub_dependencies",
@@ -1722,7 +1722,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "Use `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors appropriately.\n\nThe `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors should be used\ninstead of the more general `SizedBox(...)` constructor when the named constructors\ncapture the intent of the code more succinctly. \n\n**Examples**\n\n**BAD:**\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: 0,\n    width: 0,\n    child:const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: double.infinity,\n    width: double.infinity,\n    child:const MyLogo(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildLogo() {\n  return SizedBox.shrink(\n    child:const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox.expand(\n    child:const MyLogo(),\n  );\n}\n```\n"
+    "details": "Use `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors appropriately.\n\nThe `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors should be used\ninstead of the more general `SizedBox(...)` constructor when the named constructors\ncapture the intent of the code more succinctly. \n\n**Examples**\n\n**BAD:**\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: 0,\n    width: 0,\n    child: const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: double.infinity,\n    width: double.infinity,\n    child: const MyLogo(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildLogo() {\n  return SizedBox.shrink(\n    child: const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox.expand(\n    child: const MyLogo(),\n  );\n}\n```\n"
   },
   {
     "name": "slash_for_doc_comments",
