@@ -387,6 +387,15 @@
     "details": "\nFrom the [Pubspec format description](https://dart.dev/tools/pub/pubspec):\n\n**DO** use `lowercase_with_underscores` for package names.\n\nPackage names should be all lowercase, with underscores to separate words,\n`just_like_this`.  Use only basic Latin letters and Arabic digits: [a-z0-9_].\nAlso, make sure the name is a valid Dart identifier -- that it doesn't start\nwith digits and isn't a reserved word.\n\n"
   },
   {
+    "name": "secure_pubspec_urls",
+    "description": "Use secure urls in `pubspec.yaml`.",
+    "group": "pub",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "**DO** Use secure urls in `pubspec.yaml`.\n\nUse `https` instead of `http` an `git:`.\n\n**GOOD:**\n```yaml\nrepository: 'https://github.com/dart-lang/example'\n```\n\n**BAD:**\n```yaml\nrepository: 'http://github.com/dart-lang/example'\n```\n"
+  },
+  {
     "name": "sort_pub_dependencies",
     "description": "Sort pub dependencies.",
     "group": "pub",
@@ -553,6 +562,17 @@
     "details": "\n**AVOID** field initializers in const classes.\n\nInstead of `final x = const expr;`, you should write `get x => const expr;` and\nnot allocate a useless field. As of April 2018 this is true for the VM, but not\nfor code that will be compiled to JS.\n\n**BAD:**\n```dart\nclass A {\n  final a = const [];\n  const A();\n}\n```\n\n**GOOD:**\n```dart\nclass A {\n  get a => const [];\n  const A();\n}\n```\n\n"
   },
   {
+    "name": "avoid_final_parameters",
+    "description": "Avoid final for parameter declarations",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [
+      "prefer_final_parameters"
+    ],
+    "sets": [],
+    "details": "\n**AVOID** declaring parameters as final.\n\nDeclaring parameters as final can lead to unecessarily verbose code, especially\nwhen using the \"parameter_assignments\" rule.\n\n**GOOD:**\n```dart\nvoid badParameter(String label) { // OK\n  print(label);\n}\n```\n\n**BAD:**\n```dart\nvoid goodParameter(final String label) { // LINT\n  print(label);\n}\n```\n\n**GOOD:**\n```dart\nvoid badExpression(int value) => print(value); // OK\n```\n\n**BAD:**\n```dart\nvoid goodExpression(final int value) => print(value); // LINT\n```\n\n**GOOD:**\n```dart\n[1, 4, 6, 8].forEach((value) => print(value + 2)); // OK\n```\n\n**BAD:**\n```dart\n[1, 4, 6, 8].forEach((final value) => print(value + 2)); // LINT\n```\n\n"
+  },
+  {
     "name": "avoid_function_literals_in_foreach_calls",
     "description": "Avoid using `forEach` with a function literal.",
     "group": "style",
@@ -642,7 +662,7 @@
     "maturity": "stable",
     "incompatible": [],
     "sets": [],
-    "details": "Avoid redundant argument values.\n\n**DON'T** declare arguments with values that match the defaults for the\ncorresponding parameter.\n\n**BAD:**\n```dart\nvoid f({bool valWithDefault = true, bool val}) {\n  ...\n}\n\nvoid main() {\n  f(valWithDefault: true);\n}\n```\n\n**GOOD:**\n```dart\nvoid f({bool valWithDefault = true, bool val}) {\n  ...\n}\n\nvoid main() {\n  f(valWithDefault: false);\n  f();\n}\n```\n"
+    "details": "Avoid redundant argument values.\n\n**DON'T** declare arguments with values that match the defaults for the\ncorresponding parameter.\n\n**BAD:**\n```dart\nvoid f({bool valWithDefault = true, bool? val}) {\n  ...\n}\n\nvoid main() {\n  f(valWithDefault: true);\n}\n```\n\n**GOOD:**\n```dart\nvoid f({bool valWithDefault = true, bool? val}) {\n  ...\n}\n\nvoid main() {\n  f(valWithDefault: false);\n  f();\n}\n```\n"
   },
   {
     "name": "avoid_renaming_method_parameters",
@@ -1050,6 +1070,24 @@
     "details": "Switches on enums and enum-like classes should not use a `default` clause.\n\nEnum-like classes are defined as concrete (non-abstract) classes that have:\n  * only private non-factory constructors\n  * two or more static const fields whose type is the enclosing class and\n  * no subclasses of the class in the defining library\n\n**DO** define default behavior outside switch statements.\n\n**GOOD:**\n```dart\n  switch (testEnum) {\n    case TestEnum.A:\n      return '123';\n    case TestEnum.B:\n      return 'abc';\n  }\n  // Default here.\n  return null;\n```\n\n**BAD:**\n```dart\n  switch (testEnum) {\n    case TestEnum.A:\n      return '123';\n    case TestEnum.B:\n      return 'abc';\n    default:\n      return null;\n  }\n```\n"
   },
   {
+    "name": "no_leading_underscores_for_library_prefixes",
+    "description": "Avoid leading underscores for library prefixes.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "**DON’T** use a leading underscore for library prefixes.\nThere is no concept of \"private\" for library prefixes. When one of those has a\nname that starts with an underscore, it sends a confusing signal to the reader. \nTo avoid that, don't use leading underscores in those names.\n\n**BAD**\n```dart\nimport 'dart:core' as _core;\n```\n\n**GOOD:**\n```dart\nimport 'dart:core' as core;\n```\n"
+  },
+  {
+    "name": "no_leading_underscores_for_local_identifiers",
+    "description": "Avoid leading underscores for local identifiers.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "**DON’T** use a leading underscore for identifiers that aren't private. Dart\nuses a leading underscore in an identifier to mark members and top-level\ndeclarations as private. This trains users to associate a leading underscore\nwith one of those kinds of declarations. They see `_` and  think \"private\".\nThere is no concept of \"private\" for local variables or parameters.  When one of \nthose has a name that starts with an underscore, it sends a confusing signal to\nthe reader. To avoid that, don't use leading underscores in those names.\n\n**Exception**: An unused parameter can be named `_`, `__`, `___`, etc.  This is\ncommon practice in callbacks where you are passed a value but you don't need\nto use it. Giving it a name that consists solely of underscores is the idiomatic\nway to indicate that the value isn't used.\n\n**BAD**\n```dart\nvoid print(String _name) {\n  var _size = _name.length;\n  ...\n}\n```\n**GOOD:**\n\n```dart\nvoid print(String name) {\n  var size = name.length;\n  ...\n}\n```\n\n**OK:**\n\n```dart\n[1,2,3].map((_) => print('Hello'));\n```\n"
+  },
+  {
     "name": "no_runtimeType_toString",
     "description": "Avoid calling toString() on runtimeType.",
     "group": "style",
@@ -1113,7 +1151,7 @@
     "sets": [
       "pedantic"
     ],
-    "details": "\n**CONSIDER** omitting type annotations for local variables.\n\nUsually, the types of local variables can be easily inferred, so it isn't\nnecessary to annotate them.\n\n**BAD:**\n```dart\nMap<int, List<Person>> groupByZip(Iterable<Person> people) {\n  Map<int, List<Person>> peopleByZip = <int, List<Person>>{};\n  for (Person person in people) {\n    peopleByZip.putIfAbsent(person.zip, () => <Person>[]);\n    peopleByZip[person.zip].add(person);\n  }\n  return peopleByZip;\n}\n```\n\n**GOOD:**\n```dart\nMap<int, List<Person>> groupByZip(Iterable<Person> people) {\n  var peopleByZip = <int, List<Person>>{};\n  for (var person in people) {\n    peopleByZip.putIfAbsent(person.zip, () => <Person>[]);\n    peopleByZip[person.zip].add(person);\n  }\n  return peopleByZip;\n}\n```\n\n"
+    "details": "\n**DON’T** redundantly type annotate initialized local variables.\n\nLocal variables, especially in modern code where functions tend to be small,\nhave very little scope. Omitting the type focuses the reader's attention on the\nmore important *name* of the variable and its initialized value.\n\n**BAD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  List<List<Ingredient>> desserts = <List<Ingredient>>[];\n  for (final List<Ingredient> recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\n**GOOD:**\n```dart\nList<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {\n  var desserts = <List<Ingredient>>[];\n  for (final recipe in cookbook) {\n    if (pantry.containsAll(recipe)) {\n      desserts.add(recipe);\n    }\n  }\n\n  return desserts;\n}\n```\n\nSometimes the inferred type is not the type you want the variable to have. For\nexample, you may intend to assign values of other types later. In that case,\nannotate the variable with the type you want.\n\n**GOOD:**\n```dart\nWidget build(BuildContext context) {\n  [!Widget!] result = Text('You won!');\n  if (applyPadding) {\n    result = Padding(padding: EdgeInsets.all(8.0), child: result);\n  }\n  return result;\n}\n```\n"
   },
   {
     "name": "one_member_abstracts",
@@ -1380,7 +1418,8 @@
     "group": "style",
     "maturity": "stable",
     "incompatible": [
-      "unnecessary_final"
+      "unnecessary_final",
+      "avoid_final_parameters"
     ],
     "sets": [],
     "details": "\n**DO** prefer declaring parameters as final if they are not reassigned in\nthe function body.\n\nDeclaring parameters as final when possible is a good practice because it helps\navoid accidental reassignments.\n\n**BAD:**\n```dart\nvoid badParameter(String label) { // LINT\n  print(label);\n}\n```\n\n**GOOD:**\n```dart\nvoid goodParameter(final String label) { // OK\n  print(label);\n}\n```\n\n**BAD:**\n```dart\nvoid badExpression(int value) => print(value); // LINT\n```\n\n**GOOD:**\n```dart\nvoid goodExpression(final int value) => print(value); // OK\n```\n\n**BAD:**\n```dart\n[1, 4, 6, 8].forEach((value) => print(value + 2)); // LINT\n```\n\n**GOOD:**\n```dart\n[1, 4, 6, 8].forEach((final value) => print(value + 2)); // OK\n```\n\n**GOOD:**\n```dart\nvoid mutableParameter(String label) { // OK\n  print(label);\n  label = 'Hello Linter!';\n  print(label);\n}\n```\n\n"
@@ -1677,6 +1716,15 @@
     "details": "Use SizedBox to add whitespace to a layout.\n\nA `Container` is a heavier Widget than a `SizedBox`, and as bonus, `SizedBox`\nhas a `const` constructor.\n\n**BAD:**\n```dart\nWidget buildRow() {\n  return Row(\n    children: <Widget>[\n      const MyLogo(),\n      Container(width: 4),\n      const Expanded(\n        child: Text('...'),\n      ),\n    ],\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildRow() {\n  return Row(\n    children: const <Widget>[\n      MyLogo(),\n      SizedBox(width: 4),\n      Expanded(\n        child: Text('...'),\n      ),\n    ],\n  );\n}\n```\n"
   },
   {
+    "name": "sized_box_shrink_expand",
+    "description": "Use SizedBox shrink and expand named constructors.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "Use `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors appropriately.\n\nThe `SizedBox.shrink(...)` and `SizedBox.expand(...)` constructors should be used\ninstead of the more general `SizedBox(...)` constructor when the named constructors\ncapture the intent of the code more succinctly. \n\n**Examples**\n\n**BAD:**\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: 0,\n    width: 0,\n    child: const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox(\n    height: double.infinity,\n    width: double.infinity,\n    child: const MyLogo(),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildLogo() {\n  return SizedBox.shrink(\n    child: const MyLogo(),\n  );\n}\n```\n\n```dart\nWidget buildLogo() {\n  return SizedBox.expand(\n    child: const MyLogo(),\n  );\n}\n```\n"
+  },
+  {
     "name": "slash_for_doc_comments",
     "description": "Prefer using /// for doc comments.",
     "group": "style",
@@ -1967,6 +2015,15 @@
       "pedantic"
     ],
     "details": "\nFrom the [style guide](https://dart.dev/guides/language/effective-dart/style/):\n\n**DON'T** use `this` when not needed to avoid shadowing.\n\n**BAD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    this.value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(new_value) {\n    value = new_value;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Box {\n  var value;\n  void update(value) {\n    this.value = value;\n  }\n}\n```\n\n"
+  },
+  {
+    "name": "use_decorated_box",
+    "description": "Use `DecoratedBox`.",
+    "group": "style",
+    "maturity": "stable",
+    "incompatible": [],
+    "sets": [],
+    "details": "\n**DO** use `DecoratedBox` when `Container` has only a `Decoration`.\n\nA `Container` is a heavier Widget than a `DecoratedBox`, and as bonus,\n`DecoratedBox` has a `const` constructor.\n\n**BAD:**\n```dart\nWidget buildArea() {\n  return Container(\n    decoration: const BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: const Text('...'),\n  );\n}\n```\n\n**GOOD:**\n```dart\nWidget buildArea() {\n  return const DecoratedBox(\n    decoration: BoxDecoration(\n      color: Colors.blue,\n      borderRadius: BorderRadius.all(\n        Radius.circular(5),\n      ),\n    ),\n    child: Text('...'),\n  );\n}\n```\n"
   },
   {
     "name": "use_full_hex_values_for_flutter_colors",
