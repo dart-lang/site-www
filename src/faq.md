@@ -198,7 +198,7 @@ Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 [strong mode]: /guides/language/type-system
 [Dart's type system]: /guides/language/type-system
 [Flutter no mirrors]: {{site.flutter_docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
-[FlutterShowcase]: https://flutter.dev/showcase
+[FlutterShowcase]: {{site.flutter}}/showcase
 
 ---
 
