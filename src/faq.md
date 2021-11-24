@@ -171,7 +171,7 @@ using [Flutter][Flutter], which is powered by the Dart platform.
 
 Google Ads, AdSense, AdMob, and the Google Assistant all use Dart.
 A significant portion of Google's revenue flows through these apps.
-Inside or outside of Google, every Flutter app uses Dart.
+Inside or outside of Google, [every Flutter app][FlutterShowcase] uses Dart.
 
 
 [dartisnotjava]: http://programming.oreilly.com/2013/05/dart-is-not-the-language-you-think-it-is.html
@@ -198,6 +198,7 @@ Inside or outside of Google, every Flutter app uses Dart.
 [strong mode]: /guides/language/type-system
 [Dart's type system]: /guides/language/type-system
 [Flutter no mirrors]: {{site.flutter_docs}}/resources/faq#does-flutter-come-with-a-reflection--mirrors-system
+[FlutterShowcase]: https://flutter.dev/showcase
 
 ---
 
