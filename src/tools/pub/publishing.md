@@ -46,8 +46,8 @@ are a few additional requirements for uploading a package:
   You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
-* Your package must be smaller than 100 MB after gzip compression. If 
-  it's too large, consider splitting it into multiple packages, using a 
+* Your package must be smaller than 100 MB after gzip compression. If
+  it's too large, consider splitting it into multiple packages, using a
   `.pubignore` file to remove unnecessary content, or cutting down
   on the number of included resources or examples.
 
@@ -294,7 +294,7 @@ Previews can be useful when **all** of the following are true:
   API-stable and won't change before it reaches the stable SDK.
 
 As an example, consider a new version of `package:args` that has
-a finished version `2.0.0` but that 
+a finished version `2.0.0` but that
 depends on a feature in Dart `2.12.0-259.8.beta`,
 where Dart SDK version `2.12.0` stable hasn't been released yet.
 The pubspec might look like this:
@@ -319,7 +319,7 @@ pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
 If all of the conditions at the beginning of this section are true,
-then you can ignore the following warning from `dart pub publish`: 
+then you can ignore the following warning from `dart pub publish`:
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
@@ -327,44 +327,50 @@ then you can ignore the following warning from `dart pub publish`:
    instead."*
 
 
-## Rectracting a package version {#retract}
+## Retracting a package version {#retract}
 
-If you wish to prevent new package consumers from adopting a recently
-published version of your package, you may **retract** that package version.   
-
-A retracted package version is not deleted, it will still show up in the version 
-listing of the package on pub.dev, in the "Retracted versions" section. Also, the 
-detailed view of that package version will have a clear **RETRACTED** badge.
-
-A package version can only be retracted within 7 days of publication. 
+To prevent new package consumers from adopting a recently
+published version of your package, you can retract that package version
+within 7 days of publication.
 The retracted version can be restored again within 7 days of retraction.
-To retract or restore a package version, sign in to pub.dev using a Google Account
-that's an uploader or verified publisher admin for the package. Then use the 
-**Admin** tab of the individual package to select a version to retract or restore.  
 
-If you are a package consumer and depend on a version that later gets retracted,
-you can still use it as long as it is present in your `pubspec.lock` file. 
-If you want to depend on a specific version that is already retracted you need 
-to pin the version in the `dependency_overrides` section in the `pubspec.yaml` file. 
-In any other case the retracted package version will not be taken into account by 
-the version solver.
+A retracted package version isn't deleted. It appears in the version
+listing of the package on pub.dev in the **Retracted versions** section. Also, the
+detailed view of that package version has a **RETRACTED** badge.
 
-### When does it make sense to retract a package version?
+Before retracting a package,
+consider publishing a new version instead.
+Retracting a package causes churn and can have a negative impact on package users.
 
-Retracting a package causes churn and has a somewhat negative impact on consumers. 
-Hence, before retracting a version you should consider whether it would be better to 
-just publish a new version.
-
-For instance, if your package version contains a minor bug then retraction is 
-probably not needed. On the other hand, if you accidentally published a major 
-version or published a version with wrong or missing dependency constraints, 
-then retraction might be the right solution. 
+For example, if your package version contains a minor bug, then retraction is
+probably not needed. On the other hand, if you accidentally publish a major
+version or a version with wrong or missing dependency constraints,
+then retraction might be the right solution.
 
 {{site.alert.version-note}}
-  The `retracted` feature debuted in Dart 2.15. Prior to Dart 2.15, pub 
-  will disregard the retracted status, i.e. the version solver will consider
-  a retracted version on par with any other version.
+  Package retraction was introduced in Dart 2.15.
+  In pre-2.15 SDKs, the pub version solver ignores the retracted status.
 {{site.alert.end}}
+
+
+### How to use a retracted package version
+
+If a package depends on a package version that later is retracted,
+it can still use that version as long as that version is in
+the dependent package's `pubspec.lock` file.
+To depend on a specific version that's already retracted,
+the dependent package must pin the version in the
+`dependency_overrides` section of the `pubspec.yaml` file.
+
+
+### How to retract or restore a package version
+
+To retract or restore a package version,
+first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can retract or restore recent package versions.
+
 
 ## Marking packages as discontinued {#discontinue}
 
