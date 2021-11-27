@@ -49,12 +49,12 @@ jobs:
       - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - uses: ruby/setup-ruby@v1
         if: contains(matrix.task, 'build.sh')
         with:
           bundler-cache: true
-          ruby-version: 2.6.5
+          ruby-version: 2.7.4
       - uses: dart-lang/setup-dart@v1.3
         with:
           sdk: ${{ matrix.sdk }}
@@ -106,11 +106,11 @@ jobs:
       - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: 2.6.5
+          ruby-version: 2.7.4
       - uses: dart-lang/setup-dart@v1.3
         with:
           sdk: stable
@@ -137,11 +137,11 @@ jobs:
       - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: 2.6.5
+          ruby-version: 2.7.4
       - uses: dart-lang/setup-dart@v1.3
         with:
           sdk: stable
