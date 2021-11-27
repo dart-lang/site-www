@@ -302,6 +302,7 @@ The pubspec might look like this:
 ```
 name: args
 version: 2.0.0
+
 environment:
   sdk: '>=2.12.0-259.8.beta <3.0.0'
 ```

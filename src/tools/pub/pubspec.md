@@ -88,24 +88,27 @@ you might add a field named `my_pkg_bugs`.
 
 A simple but complete pubspec looks something like the following:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: newtify
-version: 1.2.3
 description: >-
   Have you been turned into a newt?  Would you like to be?
   This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
+version: 1.2.3
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
+
 environment:
   sdk: '>=2.10.0 <3.0.0'
+  
 dependencies:
   efts: ^2.0.4
   transmogrify: ^0.4.0
+  
 dev_dependencies:
   test: '>=1.15.0 <2.0.0'
-{% endprettify %}
+```
 
 
 ## Details
@@ -297,10 +300,10 @@ dependencies.
 For example, the following constraint says that this package
 works with any Dart SDK that's version 2.10.0 or higher:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=2.10.0 <3.0.0'
-{% endprettify %}
+```
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
@@ -331,11 +334,11 @@ environment:
 As of Dart 1.19.0,
 pub supports Flutter SDK constraints under the `environment:` field:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=1.19.0 <3.0.0'
   flutter: ^0.1.2
-{% endprettify %}
+```
 
 A Flutter SDK constraint is satisfied only if pub is running in the
 context of the `flutter` executable, and the Flutter SDK's

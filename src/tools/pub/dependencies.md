@@ -265,10 +265,10 @@ it requires an [SDK constraint][]
 to ensure that older versions of pub don't try to process it.
 For example:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=1.8.3 <3.0.0'
-{% endprettify %}
+```
 
 ### Traditional syntax
 
