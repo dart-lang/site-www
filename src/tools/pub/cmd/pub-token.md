@@ -1,6 +1,6 @@
 ---
 title: dart pub token
-description: Manage authentication tokens for hosted pub repositories.
+description: Manage authentication tokens for package repositories.
 ---
 
 _pub_ _token_ is one of the subcommands of the [pub command](/tools/pub/cmd).
@@ -16,10 +16,10 @@ on a private repository you will be asked to provide credentials:
 ```terminal
 $ dart pub get
 Resolving dependencies... 
-https://some-package-server.com/my-org/my-repo package repository requested authentication! You can provide credential using:
-    pub token add https://some-package-server.com/my-org/my-repo
+https://some-package-repo.com/my-org/my-repo package repository requested authentication! You can provide credential using:
+    pub token add https://some-package-repo.com/my-org/my-repo
 
-Go to https://some-package-server.com and log in to obtain your token. 
+Go to https://some-package-repo.com and log in to obtain your token. 
 ```
 
 The last line is a message the server can provide to help you obtaining a token.
@@ -28,9 +28,9 @@ To enter the credentials use the `add` command, and type the credential on
 stdin.
 
 ```terminal
-$ dart pub token add https://some-package-server.com/my-org/my-repo
+$ dart pub token add https://some-package-repo.com/my-org/my-repo
 Enter secret token: <Type token on stdin>
- Requests to "https://some-package-server.com/my-org/my-repo" will now be 
+ Requests to "https://some-package-repo.com/my-org/my-repo" will now be 
  authenticated using the secret token.
 ```
 
@@ -38,7 +38,7 @@ In a scripting situation you can pipe the credential to `add`. This might leave
 a trace in the command history if you are not careful.
 
 ```terminal
-$ echo <credential> | dart pub token add https://other-package-server.com/
+$ echo <credential> | dart pub token add https://other-package-repo.com/
 ```
 
 To see a list of all active credentials use `list`:
@@ -46,15 +46,15 @@ To see a list of all active credentials use `list`:
 ```terminal
 $ dart pub token list
 You have secret tokens for 2 package repositories:
-https://some-package-server.com/my-org/my-repo
-https://other-package-server.com/
+https://some-package-repo.com/my-org/my-repo
+https://other-package-repo.com/
 ```
 
 You can remove a single token with `remove`:
 
 ```terminal
-$ dart pub token remove https://other-package-server.com
-Removed secret token for package repository: https://other-package-server.com
+$ dart pub token remove https://other-package-repo.com
+Removed secret token for package repository: https://other-package-repo.com
 ```
 
 Or remove all with `remove --all`:
