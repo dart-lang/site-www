@@ -267,7 +267,7 @@ For more information, see
 
 The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
-[custom pub package server](https://github.com/dart-lang/pub-dev)
+[custom pub package server](/tools/pub/custom-package-repository)
 to publish.
 
 {% prettify yaml tag=pre+code %}
