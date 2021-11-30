@@ -43,7 +43,7 @@ dependencies:
   transmogrify:
     hosted:
       name: transmogrify
-      url: http://some-package-server.com
+      url: https://some-package-server.com
     version: ^1.0.0
 {% endprettify %}
 
@@ -122,7 +122,7 @@ dependencies:
   transmogrify:
     hosted:
       name: transmogrify
-      url: http://your-package-server.com
+      url: https://your-package-server.com
     version: ^1.4.0
 {% endprettify %}
 
