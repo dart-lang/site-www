@@ -11,7 +11,7 @@ against third-party servers when [publishing](pub-lish) a package and when
 
 It has three subcommands: `add`, `list` and `remove`.
 
-If you try to `pub get` and have a [dependency](/tools/pub/dependencies) hosted
+If you try to `dart pub get` and have a [dependency](/tools/pub/dependencies) hosted
 on a private repository you will be asked to provide credentials:
 ```terminal
 $ dart pub get
