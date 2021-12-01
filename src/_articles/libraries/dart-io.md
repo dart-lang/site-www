@@ -16,7 +16,6 @@ what is currently possible with dart:io
 by going through a couple of examples.
 
 {{site.alert.note}}
-  **Note:**
   When writing a Flutter app, use
   [Flutter-specific APIs]({{site.flutter_api}})
   instead of dart:io whenever possible. For example, use the

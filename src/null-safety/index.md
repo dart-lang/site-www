@@ -94,10 +94,10 @@ the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
 must require a [language version][] that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-{% endprettify %}
+  sdk: '>=2.12.0 <3.0.0'
+```
 
 [language version]: /guides/language/evolution#language-versioning
 
