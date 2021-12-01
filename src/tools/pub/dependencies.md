@@ -397,11 +397,12 @@ dependency_overrides:
 {{site.alert.end}}
 
 Only dependency overrides from the root pubspec are considered
-when doing package resolution. This means that dependency overrides
+when doing package resolution.
+This means that dependency overrides
 inside a package that you depend on will be ignored.
 
-Therefore when you publish a package to pub.dev, dependency overrides 
-will be ignored by anyone depending on that package.
+Therefore, when you publish a package to pub.dev,
+dependency overrides will be ignored by anyone depending on that package.
 
 ## Best practices
 
