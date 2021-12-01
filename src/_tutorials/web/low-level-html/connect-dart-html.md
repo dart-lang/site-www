@@ -173,11 +173,11 @@ or even insert an entire subtree of nodes.
 
 2. Add the following HTML code:
 
-   {% prettify html tag=pre+code %}
+   ```html
    <p id="RipVanWinkle">
      RipVanWinkle paragraph.
    </p>
-   {% endprettify %}
+   ```
 
 3. Expand the output pane to see how a browser would render your HTML.
 
@@ -398,7 +398,7 @@ on how to convert a DartPad app into one you can run in the browser.
 Here's the full HTML code for this app,
 assuming that the Dart code is in a file named `main.dart`:
 
-{% prettify html tag=pre+code %}
+```html
 <!DOCTYPE html>
 
 <html>
@@ -412,7 +412,7 @@ assuming that the Dart code is in a file named `main.dart`:
     </p>
   </body>
 </html>
-{% endprettify %}
+```
 
 The `<script>` element specifies the location of the compiled Dart code.
 
@@ -427,7 +427,7 @@ Let's customize the CSS for the mini app.
 
 2. Add the following CSS code:
 
-   {% prettify css tag=pre+code %}
+   ```css
    #RipVanWinkle {
      font-size: 20px;
      font-family: 'Roboto', sans-serif;
@@ -436,7 +436,7 @@ Let's customize the CSS for the mini app.
      background-color: SlateBlue;
      color: Yellow;
    }
-   {% endprettify %}
+   ```
 
 The display in the output pane immediately changes
 to reflect the new styles,

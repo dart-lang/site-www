@@ -150,12 +150,12 @@ that something will happen when the item is clicked.
 
 This behavior is coded in the app's CSS file with this rule:
 
-{% prettify css tag=pre+code %}
+```css
 #to-do-list li:hover {
   color: blue;
   cursor: pointer;
 }
-{% endprettify %}
+```
 
 We've used this CSS trick
 instead of providing a familiar user interface,
@@ -210,9 +210,9 @@ that implements the **Delete All** button.
 1. The HTML code creates a button with the ID `delete-all`.
    (The CSS styles it.)
 
-    {% prettify html tag=pre+code %}
+    ```html
     <button id="delete-all" type="button" style="float:right">Delete All</button>
-    {% endprettify %}
+    ```
 
 2. The Dart code gets the button element from the DOM
    using `querySelector()` and the button's ID, `delete-all`.
