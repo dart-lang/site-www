@@ -396,7 +396,7 @@ dependency_overrides:
   may break your application.
 {{site.alert.end}}
 
-Only dependency overrides from he root pubspec are considered
+Only dependency overrides from the root pubspec are considered
 when doing package resolution. This means that dependency overrides
 inside a package that you depend on will be ignored.
 
