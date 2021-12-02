@@ -1,14 +1,10 @@
 {
   "name": "dart.dev",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "description": "Source code for https://dart.dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/dart-lang/site-www.git"
-  },
-  "devDependencies": {
-    "firebase-tools": "^9.12.1",
-    "superstatic": "^7.1.0"
   }
 }
