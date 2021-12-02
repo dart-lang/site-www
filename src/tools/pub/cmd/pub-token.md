@@ -9,6 +9,9 @@ It is used to update a store of credential tokens used for authenticating
 against third-party servers when [publishing](pub-lish) a package and when
 [retrieving](pub-get) dependencies.
 
+The token store is stored in a
+[user-wide config dir](https://github.com/dart-lang/cli_util/blob/71ba36e2554f7b7717f3f12b5ddd33751a4e3ddd/lib/cli_util.dart#L88-L118). 
+
 It has three subcommands: `add`, `list` and `remove`.
 
 If you try to `dart pub get` and have a [dependency](/tools/pub/dependencies) hosted
