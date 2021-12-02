@@ -58,34 +58,6 @@ Pub can use the following sources to locate packages:
 * [Git packages](#git-packages)
 * [Path packages](#path-packages)
 
-### SDK
-
-The SDK source is used for any SDKs that are shipped along with packages,
-which may themselves be dependencies.
-Currently, Flutter is the only SDK that is supported.
-
-The syntax looks like this:
-
-```yaml
-dependencies:
-  flutter_driver:
-    sdk: flutter
-```
-
-The identifier after `sdk:` indicates which SDK the package comes from.
-If it's `flutter`, the dependency is satisfiable as long as:
-
-* Pub is running in the context of the `flutter` executable
-* The Flutter SDK contains a package with the given name
-
-If it's an unknown identifier, the dependency is always considered unsatisfied.
-
-A package with an `sdk` dependency
-must have [language version][] of at least 1.19.
-This constraint ensures that older versions of pub won't
-install packages that have `sdk` dependencies.
-
-[language version]: /guides/language/evolution#language-versioning
 
 
 ### Hosted packages
@@ -119,7 +91,8 @@ dependencies:
     version: ^1.4.0
 {% endprettify %}
 
-The version constraint is optional but recommended.
+The version constraint is optional but recommended. If no version constraint is
+given, `any` is assumed.
 
 If your package has a [language version][] before 2.15,
 you must use a more verbose `hosted` format:
@@ -167,7 +140,7 @@ dependencies:
 ```
 
 If you want to depend on a specific commit, branch, or tag,
-add a `ref` argument:
+add a `ref` key to the description:
 
 ```yaml
 dependencies:
@@ -181,8 +154,9 @@ The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
 
-Pub assumes that the package is in the root of the Git repository.
-To specify a different location in the repo, use the `path` argument:
+Pub assumes that the package is in the root of the Git repository. To specify a
+different location in the repo, specify a `path` relative to the repository
+root:
 
 ```yaml
 dependencies:
@@ -193,6 +167,8 @@ dependencies:
 ```
 
 The path is relative to the Git repo's root.
+
+Git dependencies are not allowed on [pub.dev][pubsite].
 
 ### Path packages
 
@@ -231,6 +207,28 @@ Instead, the typical workflow is:
 3. Once they're both working, publish the dependent package.
 4. Change your pubspec to point to the now hosted version of its dependent.
 5. Publish your main package too, if you want.
+
+### SDK
+
+The SDK source is used for any SDKs that are shipped along with packages,
+which may themselves be dependencies.
+Currently, Flutter is the only SDK that is supported.
+
+The syntax looks like this:
+
+```yaml
+dependencies:
+  flutter_driver:
+    sdk: flutter
+```
+
+The identifier after `sdk:` indicates which SDK the package comes from.
+If it's `flutter`, the dependency is satisfiable as long as:
+
+* Pub is running in the context of the `flutter` executable
+* The Flutter SDK contains a package with the given name
+
+If it's an unknown identifier, the dependency is always considered unsatisfied.
 
 ## Version constraints
 
@@ -467,4 +465,3 @@ to differentiate versions. <a href="#fnref:semver">↩</a>
 [semantic versioning specification]: https://semver.org/spec/v2.0.0-rc.1.html
 [semantic versions]: /tools/pub/versioning#semantic-versions
 [What not to commit]: /guides/libraries/private-files
-
