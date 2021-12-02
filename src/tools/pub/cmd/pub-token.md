@@ -26,8 +26,8 @@ Go to https://some-package-repo.com and log in to obtain your token.
 The last line is a message the server can provide to help you obtaining a token.
 Some servers might not provide such a message.
 
-To enter the credentials use the `add` command, and type the credential on
-stdin.
+To enter the credentials use the `add` subcommand, 
+and type the credential on stdin.
 
 ```terminal
 $ dart pub token add https://some-package-repo.com/my-org/my-repo
