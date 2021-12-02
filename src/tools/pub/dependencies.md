@@ -81,7 +81,6 @@ The following YAML code creates a dependency on the `transmogrify` package
 using the `hosted` source.
 
 {% prettify yaml tag=pre+code %}
-# This syntax requires language version 2.15 or higher
 environment: 
   sdk: >=[!2.15.0!] < 3.0.0
 
@@ -94,6 +93,7 @@ dependencies:
 The version constraint is optional but recommended. If no version constraint is
 given, `any` is assumed.
 
+{{site.alert.version-note}}
 If your package has a [language version][] before 2.15,
 you must use a more verbose `hosted` format:
 
@@ -108,7 +108,7 @@ dependencies:
       [!url: http://some-package-server.com!]
     version: ^1.4.0
 {% endprettify %}
-
+{{site.alert.end}}
 
 ### Git packages
 
