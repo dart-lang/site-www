@@ -26,6 +26,8 @@ Go to https://some-package-repo.com and log in to obtain your token.
 The last line is a message the server can provide to help you obtaining a token.
 Some servers might not provide such a message.
 
+## Adding credentials `dart pub token add`
+
 To enter the credentials use the `add` subcommand, 
 and type the credential on stdin.
 
@@ -43,6 +45,8 @@ a trace in the command history if you are not careful.
 $ echo <credential> | dart pub token add https://other-package-repo.com/
 ```
 
+## Listing credentials `dart pub token list`
+
 To see a list of all active credentials use `list`:
 
 ```terminal
@@ -51,6 +55,8 @@ You have secret tokens for 2 package repositories:
 https://some-package-repo.com/my-org/my-repo
 https://other-package-repo.com/
 ```
+
+## Removing credentials `dart pub token remove`
 
 You can remove a single token with `remove`:
 
