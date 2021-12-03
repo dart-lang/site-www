@@ -57,6 +57,10 @@ Requests to "https://other-package-repo.com/" will now be authenticated using th
 This will cause `dart pub get` to read whatever is stored in `$TOKEN_VAR` and
 use that as the authentication token.
 
+In for example Github Actions you can set up the secret in an environment
+variable in your
+[workflow](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
+
 ## Listing credentials `dart pub token list`
 
 To see a list of all active credentials use `dart pub token list`:
