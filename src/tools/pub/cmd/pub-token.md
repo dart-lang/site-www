@@ -31,7 +31,7 @@ Some servers might not provide such a message.
 
 ## Adding credentials `dart pub token add`
 
-To enter the credentials use the `add` subcommand, 
+To enter the credentials use `dart pub token add`, 
 and type the credential on stdin.
 
 ```terminal
@@ -41,16 +41,25 @@ Enter secret token: <Type token on stdin>
  authenticated using the secret token.
 ```
 
-In a scripting situation you can pipe the credential to `add`. This might leave
-a trace in the command history if you are not careful.
+{{site.alert.note}}
+  The token is input on stdin rather than as a command line option to avoid it
+  ending up in the shell history such as `~/.bash_history`.
+{{site.alert.end}}
+
+In a scripting situation you can store the secret in an environment variable and
+ use `dart pub token add --env-var`.
 
 ```terminal
-$ echo <credential> | dart pub token add https://other-package-repo.com/
+$ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
+Requests to "https://other-package-repo.com/" will now be authenticated using the secret token stored in the environment variable "TOKEN_VAR".
 ```
+
+This will cause `dart pub get` to read whatever is stored in `$TOKEN_VAR` and
+use that as the authentication token.
 
 ## Listing credentials `dart pub token list`
 
-To see a list of all active credentials use `list`:
+To see a list of all active credentials use `dart pub token list`:
 
 ```terminal
 $ dart pub token list
@@ -61,7 +70,7 @@ https://other-package-repo.com/
 
 ## Removing credentials `dart pub token remove`
 
-You can remove a single token with `remove`:
+You can remove a single token with `dart pub token remove`:
 
 ```terminal
 $ dart pub token remove https://other-package-repo.com
