@@ -5,8 +5,8 @@ description: Manage authentication tokens for package repositories.
 
 _pub_ _token_ is one of the subcommands of the [pub command](/tools/pub/cmd).
 
-It is used to update a store of credential tokens used for authenticating
-against third-party servers when [publishing](pub-lish) a package and when
+It is used to manage a store of secret tokens for authenticating
+against third-party servers when [publishing](pub-lish) packages and
 [retrieving](pub-get) dependencies.
 
 The token store is stored in a
