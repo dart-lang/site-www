@@ -47,7 +47,7 @@ Enter secret token: <Type token on stdin>
 {{site.alert.end}}
 
 In a scripting situation you can store the secret in an environment variable and
- use `dart pub token add --env-var`.
+ use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
 
 ```terminal
 $ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
