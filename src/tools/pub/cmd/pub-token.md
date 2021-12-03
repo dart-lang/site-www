@@ -57,9 +57,14 @@ Requests to "https://other-package-repo.com/" will now be authenticated using th
 This will cause `dart pub get` to read whatever is stored in `$TOKEN_VAR` and
 use that as the authentication token.
 
-In for example Github Actions you can set up the secret in an environment
-variable in your
-[workflow](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
+You can set the environment variable in Bash with `export TOKEN_VAR=...` but
+that still doesn't prevent the command being logged.
+
+Most CI environments has is a way to inject secrets into an environment
+variable:
+
+* [Github Actions](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
+* [GitLab](https://docs.gitlab.com/13.12/ee/ci/secrets/index.html).
 
 ## Listing credentials `dart pub token list`
 
