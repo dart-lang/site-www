@@ -9,7 +9,7 @@ It is used to manage a store of secret tokens for authenticating
 against third-party servers when [publishing](pub-lish) packages and
 [retrieving](pub-get) dependencies.
 
-The token store is stored in a
+The tokens are stored in a
 [user-wide config dir](https://github.com/dart-lang/cli_util/blob/71ba36e2554f7b7717f3f12b5ddd33751a4e3ddd/lib/cli_util.dart#L88-L118). 
 
 It has three subcommands: `add`, `list` and `remove`.
