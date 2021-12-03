@@ -15,7 +15,7 @@ The tokens are stored in a
 It has three subcommands: `add`, `list` and `remove`.
 
 If you try to `dart pub get` and have a [dependency](/tools/pub/dependencies) hosted
-on a private repository you will be asked to provide credentials:
+on a private repository you _may_ be asked to provide credentials:
 
 ```terminal
 $ dart pub get
