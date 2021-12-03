@@ -381,10 +381,10 @@ A discontinued package remains published and viewable on pub.dev,
 but it has a clear **DISCONTINUED** badge and
 doesn't appear in pub.dev search results.
 
-To mark a package as discontinued, sign in to pub.dev using a Google Account
-that's an uploader or verified publisher admin for the package.
-Then use the **Admin** tab of the individual package to
-mark the package as discontinued.
+To mark a package as discontinued, first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
 ## Resources
