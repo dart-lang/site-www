@@ -168,7 +168,8 @@ dependencies:
 
 The path is relative to the Git repo's root.
 
-Git dependencies are not allowed on [pub.dev][pubsite].
+Git dependencies are not allowed as dependencies
+for packages uploaded to [pub.dev][pubsite].
 
 ### Path packages
 
