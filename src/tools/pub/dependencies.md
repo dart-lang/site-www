@@ -86,7 +86,7 @@ environment:
 
 dependencies:
   transmogrify:
-    [!hosted: http://some-package-server.com!]
+    [!hosted: https://some-package-server.com!]
     version: ^1.4.0
 {% endprettify %}
 
