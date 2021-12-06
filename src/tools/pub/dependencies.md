@@ -105,7 +105,7 @@ dependencies:
   transmogrify:
     [!hosted:!]
       [!name: transmogrify!]
-      [!url: http://some-package-server.com!]
+      [!url: https://some-package-server.com!]
     version: ^1.4.0
 {% endprettify %}
 {{site.alert.end}}
