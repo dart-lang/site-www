@@ -396,13 +396,13 @@ dependency_overrides:
   may break your application.
 {{site.alert.end}}
 
-Only dependency overrides from the root pubspec are considered
-when doing package resolution.
-This means that dependency overrides
-inside a package that you depend on will be ignored.
+Only the dependency overrides in a **package's own pubspec**
+are considered during package resolution. 
+Dependency overrides inside any depended-on packages are ignored.
 
-Therefore, when you publish a package to pub.dev,
-dependency overrides will be ignored by anyone depending on that package.
+As a result, if you publish a package to pub.dev,
+keep in mind that your package's dependency overrides
+are ignored by all users of your package.
 
 ## Best practices
 
