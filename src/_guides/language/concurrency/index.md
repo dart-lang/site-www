@@ -89,7 +89,8 @@ void main() {
 
 String _readFileSync() {
   final file = File(filename);
-  return file.readAsStringSync();
+  final contents = file.readAsStringSync();
+  return contents.trim();
 }
 ```
 
@@ -107,7 +108,8 @@ Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 [!Future<String>!] _readFileAsync() [!async!] {
   final file = File(filename);
-  return [!await!] file.[!readAsString()!];
+  final contents = [!await!] file.[!readAsString()!];
+  return contents.trim();
 }
 {% endprettify %}
 
@@ -116,7 +118,7 @@ to let other Dart code (such as event handlers) use the CPU
 while native code (file I/O) executes.
 Using `await` also has the effect of
 converting the `Future<String>` returned by `_readFileAsync()` into a `String`.
-As a result, the `fileData` variable has the implicit type `String`.
+As a result, the `contents` variable has the implicit type `String`.
 
 {{site.alert.note}}
   The `await` keyword works only in functions that
