@@ -396,6 +396,14 @@ dependency_overrides:
   may break your application.
 {{site.alert.end}}
 
+Only the dependency overrides in a **package's own pubspec**
+are considered during package resolution. 
+Dependency overrides inside any depended-on packages are ignored.
+
+As a result, if you publish a package to pub.dev,
+keep in mind that your package's dependency overrides
+are ignored by all users of your package.
+
 ## Best practices
 
 It’s important to actively manage your dependencies and
