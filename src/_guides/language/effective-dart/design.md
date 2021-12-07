@@ -1866,7 +1866,7 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 Unlike other types, booleans are usually used in literal form. Values like
 numbers are usually wrapped in named constants, but we typically pass around
-`true` and `false` directly. That can make callsites unreadable if it isn't
+`true` and `false` directly. That can make call sites unreadable if it isn't
 clear what the boolean represents:
 
 {:.bad}
