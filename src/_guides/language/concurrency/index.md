@@ -1,6 +1,6 @@
 ---
 title: Concurrency in Dart
-description: [PENDING.]
+description: Use isolates to enable parallel code execution on multiple processor cores.
 ---
 
 <style>
@@ -34,7 +34,7 @@ enabling parallel code execution on multiple processor cores.
 
 
 
-## Background: asynchrony types and syntax
+## Asynchrony types and syntax
 
 If you’re already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
@@ -159,6 +159,9 @@ using additional processor cores if they’re available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
+
+### The main isolate
+
 You often don’t need to think about isolates at all.
 A typical Dart app executes all its code in a single isolate
 called the main isolate, as shown in the following figure:
@@ -173,6 +176,9 @@ getting to the event loop as soon as possible.
 The app then responds to each queued event promptly,
 using asynchronous operations as necessary.
 
+
+### The isolate life cycle
+
 As the following figure shows,
 every isolate starts by running some Dart code,
 such as the `main()` function.
@@ -183,6 +189,9 @@ the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
 
 ![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/guides/language/concurrency/images/basics-isolate.png)
+
+
+### Event handling
 
 In a client app, the main isolate’s event queue might contain
 repaint requests and notifications of tap and other UI events, like this:
@@ -210,52 +219,22 @@ Worse, the UI might become completely unresponsive.
 [jank]: https://docs.flutter.dev/perf/rendering
 
 
-### Using a single-task worker isolate
+### Background workers
 
 If your app’s UI becomes unresponsive due to a time-consuming computation —
 [parsing a large JSON file][json], for example —
 consider offloading that computation to a worker isolate,
 often called a _background worker._
-A common case, which is supported by the [Flutter `compute()` function][],
-is spawning an isolate that performs a computation and then exits:
-***[PENDING: describe the figure in a little more detail.]***
+A common case, shown in the following figure,
+is spawning a simple worker isolate that
+performs a computation and then exits.
+The worker isolate returns its result in a message when the worker exits.
 
 [json]: https://docs.flutter.dev/cookbook/networking/background-parsing)
- [Flutter `compute()` function]: https://docs.flutter.dev/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 ![PENDING: alt text here](/guides/language/concurrency/images/isolate-bg-worker.png)
 <br>
-***[PENDING: Background worker -> Worker isolate]***
-
-A worker isolate can perform I/O
-(reading and writing files, for example), set timers, and more.
-It has its own memory (including its own copy of code) and
-doesn’t share any state with the main isolate.
-The worker isolate can block without affecting other isolates.
-
-
-### Using the Isolate API
-
-You might need to use the `Isolate` API directly.
-For example, you might use the `Isolate` API if
-your Dart Native app needs any of the following:
-
-* A worker isolate like what `compute()` supports,
-  but that might not be running in a Flutter app
-* A worker isolate that can
-  handle multiple requests or send multiple replies,
-  as shown in the following figure
-* Some other custom isolate behavior
-
-As the following figure shows,
-to use the `Isolate` API you start with the `Isolate.spawn()` method.
-Isolates then communicate by passing messages.
-
-![PENDING: alt text here](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
-<br>
-***[PENDING: The top arrow should be labeled "Create isolate: Isolate.spawn()"]***
-<br>
-***[PENDING: Custom background worker -> Worker isolate]***
+***[PENDING: Inside the figure, Background worker -> Worker isolate]***
 
 Each isolate message can deliver one object,
 which includes anything that’s transitively reachable from that object.
@@ -269,67 +248,89 @@ the send fails because sockets are unsendable.
 For information on the kinds of objects that you can send in messages,
 see the API reference documentation for the [`send()` method][].
 
+A worker isolate can perform I/O
+(reading and writing files, for example), set timers, and more.
+It has its own memory and
+doesn’t share any state with the main isolate.
+The worker isolate can block without affecting other isolates.
+
 [`send()` method]: https://api.dart.dev/stable/dart-isolate/SendPort/send.html
 
+
+## Code examples
+
+This section discusses some examples
+that use the `Isolate` API
+to implement isolates.
+
 {{site.alert.tip}}
-  The `send()` method can be slow.
-  When possible,
-  avoid using `send()` to send large amounts of data.
-  Instead, send the data when the worker isolate exits,
-  as described in the next section.
+  If you're using Flutter on a non-web platform,
+  then instead of using the `Isolate` API directly,
+  consider using the [Flutter `compute()` function][].
 {{site.alert.end}}
 
+ [Flutter `compute()` function]: https://docs.flutter.dev/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
-#### Spawning a simple worker isolate
+
+### Implementing a simple worker isolate
 
 This section shows the implementation for a
 main isolate and the simple worker isolate that it spawns.
-The result is similar to what the Flutter `compute()` function provides.
+The worker isolate executes a function and then exits,
+sending the main isolate a single message as it exits.
+(The [Flutter `compute()` function][] works in a similar way.)
+
+This example uses the following isolate-related API:
+
+* [`Isolate.spawn()`][] and [`Isolate.exit()`][]
+* [`ReceivePort`][] and [`SendPort`][]
+
+[`Isolate.exit()`]: https://api.dart.dev/stable/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: https://api.dart.dev/stable/dart-isolate/ReceivePort-class.html
+[`SendPort`]: https://api.dart.dev/stable/dart-isolate/SendPort-class.html
 
 Here’s the code for the main isolate:
 
 ```dart
 Future<void> main() async {
   // Read some data.
-  final jsonData = await _spawnIsolate();
+  final jsonData = await _parseInBackground();
 
   // Use that data
   print('number of JSON keys = ${jsonData.length}');
 }
 
 // Spawns an isolate and waits for the first message
-Future<Map<String, dynamic>> _spawnIsolate() async {
+Future<Map<String, dynamic>> _parseInBackground() async {
   final p = ReceivePort();
   await Isolate.spawn(_readAndParseJson, p.sendPort);
   return await p.first;
 }
 ```
 
-The `_spawnIsolate()` function contains the code that
+The `_parseInBackground()` function contains the code that
 _spawns_ (creates and starts) the isolate for the background worker,
 and then returns the result:
 
-1. Before spawning the isolate, the code creates a [`ReceivePort`][],
+1. Before spawning the isolate, the code creates a `ReceivePort`,
    which enables the worker isolate
    to send messages to the main isolate.
 
-2. Next is the call to [`Isolate.spawn()`][],
+2. Next is the call to `Isolate.spawn()`,
    which creates and starts the isolate for the background worker.
    The first argument to `Isolate.spawn()` is the function that
    the worker isolate executes: `_readAndParseJson`.
-   The second argument is the [`SendPort`][]
+   The second argument is the `SendPort`
    that the worker isolate can use to send messages to the main isolate.
    The code doesn't _create_ a `SendPort`;
    it uses the `sendPort` property of the `ReceivePort`.
 
-3. Once the isolate is spawned, the code waits for the result.
-   The `ReceivePort` class implements `Stream`,
-   so this code can use the [`first`][] property to get
+3. Once the isolate is spawned, the main isolate waits for the result.
+   Because the `ReceivePort` class implements `Stream`,
+   the [`first`][] property is an easy way to get
    the single message that the worker isolate sends.
 
-[`ReceivePort`]: https://api.dart.dev/stable/dart-isolate/ReceivePort-class.html
-[`Isolate.spawn()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawn.html
-[`SendPort`]: https://api.dart.dev/stable/dart-isolate/SendPort-class.html
 [`first`]: https://api.dart.dev/stable/dart-async/Stream/first.html
 
 The spawned isolate executes the following code:
@@ -342,22 +343,20 @@ Future _readAndParseJson(SendPort p) async {
 }
 ```
 
-The interesting line is the last one, which exits the isolate,
-sending `jsonData` to the `SendPort`.
+The relevant statement is the last one, which exits the isolate,
+sending `jsonData` to the passed-in `SendPort`.
 Message passing between isolates normally involves data copying,
 and thus can be slow and increases with the size of the message —
 O(n) in big O notation.
-However, when you send the data using [`Isolate.exit()`][],
+However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
 That transfer is quick and completes in constant time — O(1).
 
-[`Isolate.exit()`]: https://api.dart.dev/stable/dart-isolate/Isolate/exit.html
-
 {{site.alert.version-note}}
   `Isolate.exit()` was added in 2.15.
   Previous releases support only explicit message passing,
-  using `Isolate.send()`.
+  using `Isolate.send()` as shown in the next section's example.
 {{site.alert.end}}
 
 The following figure summarizes the communication between
@@ -365,24 +364,25 @@ the main isolate and the second isolate:
 
 ![PENDING: alt text here](/guides/language/concurrency/images/isolate-api.png)
 <br>
-***[PENDING: Background worker -> Worker isolate]***
-
-{{site.alert.info}}
-  **API note:**
-  When an isolate calls [`Isolate.spawn()`][],
-  it sets up the new isolate with a copy of the calling isolate’s code.
-  In some special cases —
-  for example, when implementing tools like `dart pub run` —
-  you might need to use the much slower [`Isolate.spawnUri()`][],
-  which sets up the new isolate with a copy of the code at the specified URI.
-{{site.alert.end}}
-
-[`Isolate.spawnUri()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawnUri.html
+***[PENDING: Inside the figure, Background worker -> Worker isolate]***
 
 
-#### Other examples
+### Sending multiple messages between isolates
 
-For more examples of using the Isolate API, see the following:
+If you need more communication between isolates,
+then you need to use the [`send()` method][] of `SendPort`.
+One common pattern, which the following figure shows,
+is for the main isolate to send a request message to the worker isolate,
+which then sends one or more reply messages.
+
+![PENDING: alt text here](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
+<br>
+***[PENDING: The top arrow should be labeled "Create isolate: Isolate.spawn()"]***
+<br>
+***[PENDING: Inside the figure, Custom background worker -> Worker isolate]***
+
+
+For examples of sending multiple messages, see the following:
 
 * ***[PENDING: link to example 4 in Isolate snippets][]***,
   which shows how to send a message from
@@ -391,6 +391,36 @@ For more examples of using the Isolate API, see the following:
 * ***[PENDING: link to example 5 in Isolate snippets][]***,
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
+
+{{site.alert.tip}}
+  The `send()` method can be slow.
+  When possible,
+  avoid using `send()` to send large amounts of data.
+  Instead, send the data when the worker isolate exits,
+  as described in the previous section.
+{{site.alert.end}}
+
+## Performance and isolate groups
+
+When an isolate calls [`Isolate.spawn()`][],
+the two isolates have the same executable code
+and are in the same _isolate group_.
+Isolate groups enable performance optimizations such as sharing code;
+a new isolate immediately runs the code owned by the isolate group.
+Also, `Isolate.exit()` works only when the isolates
+are in the same isolate group.
+
+In some special cases —
+for example, when implementing tools like `dart pub run` —
+you might need to use [`Isolate.spawnUri()`][].
+That method sets up the new isolate with a copy of the code
+that's at the specified URI.
+However, `spawnUri()` is much slower than `spawn()`,
+and the new isolate isn't in its spawner's isolate group.
+
+[`Isolate.spawnUri()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawnUri.html
+
+
 
 -------------------
 
@@ -403,7 +433,6 @@ TODO:
     link to them.
     (If they aren't up by the time this page is published,
     either remove the **Other examples** section or link to the PR.)
-  * Add a description in the yaml section.
   * Search for and resolve all PENDING items.
   * Delete this section.
 * Before or soon after publishing:
@@ -421,7 +450,6 @@ TODO:
   * Add a figure up high in the doc? (if so, what?)
 
 Qs:
-* We say that Isolate.spawn() sets up the new isolate with a "copy of [the calling isolate's] code". Is that accurate? Should it instead be something like "with read access to the calling isolate's code"?
 * The figures are by the index file, under images. Should we instead use the asset system? E.g., see the source for the following figure:
 
 <img src="{% asset number-class-hierarchy.svg @path %}" alt="Object is the parent of num, which is the parent of int and double">
