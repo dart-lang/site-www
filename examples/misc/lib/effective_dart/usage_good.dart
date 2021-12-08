@@ -160,7 +160,20 @@ void miscDeclAnalyzedButNotTested() {
 
   (Iterable names) {
     // #docregion use-tear-off
-    names.forEach(print);
+    var charCodes = [68, 97, 114, 116];
+    var buffer = StringBuffer();
+
+    // Function:
+    charCodes.forEach(print);
+
+    // Method:
+    charCodes.forEach(buffer.write);
+
+    // Named constructor:
+    var strings = charCodes.map(String.fromCharCode);
+
+    // Unnamed constructor:
+    var buffers = charCodes.map(StringBuffer.new);
     // #enddocregion use-tear-off
   };
 

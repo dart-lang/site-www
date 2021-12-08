@@ -43,7 +43,7 @@ dependencies:
   transmogrify:
     hosted:
       name: transmogrify
-      url: http://some-package-server.com
+      url: https://some-package-server.com
     version: ^1.0.0
 {% endprettify %}
 
@@ -114,15 +114,15 @@ This example specifies that your package depends on a hosted package named
 `transmogrify` and will work with any version from 1.4.0 to 2.0.0
 (but not 2.0.0 itself).
 
-If you want to use your own package server, you can use a description that
-specifies its URL:
+If you want to use your [own package server](/tools/pub/custom-package-repositories),
+you can use a description that specifies its URL:
 
 {% prettify yaml tag=pre+code %}
 dependencies:
   transmogrify:
     hosted:
       name: transmogrify
-      url: http://your-package-server.com
+      url: https://your-package-server.com
     version: ^1.4.0
 {% endprettify %}
 
@@ -395,6 +395,14 @@ dependency_overrides:
   a local copy of a package that has unexpected behaviors,
   may break your application.
 {{site.alert.end}}
+
+Only the dependency overrides in a **package's own pubspec**
+are considered during package resolution. 
+Dependency overrides inside any depended-on packages are ignored.
+
+As a result, if you publish a package to pub.dev,
+keep in mind that your package's dependency overrides
+are ignored by all users of your package.
 
 ## Best practices
 
