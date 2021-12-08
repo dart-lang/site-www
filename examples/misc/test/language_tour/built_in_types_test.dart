@@ -107,7 +107,7 @@ void main() {
   });
 
   test('list-if', () {
-    var promoActive = false;
+    var promoActive = true;
     // #docregion list-if
     var nav = [
       'Home',
@@ -116,7 +116,7 @@ void main() {
       if (promoActive) 'Outlet'
     ];
     // #enddocregion list-if
-    assert(nav.length == 3);
+    assert(nav.length == 4);
   });
 
   test('list-for', () {
