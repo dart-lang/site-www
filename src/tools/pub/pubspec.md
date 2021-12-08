@@ -306,7 +306,7 @@ false_secrets:
  - /test/localhost_certificates/*.pem
 {% endprettify %}
 
-Starting a `gitgnore` pattern with slash (`/`) ensures that
+Starting a `gitignore` pattern with slash (`/`) ensures that
 the pattern is considered relative to the package's root directory.
 
 {{site.alert.warn}}
