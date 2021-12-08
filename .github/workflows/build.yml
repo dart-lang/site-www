@@ -34,13 +34,13 @@ jobs:
         include:
           - sdk: dev
             task: ./tool/analyze-and-test-examples.sh
-            experimental: false
+            experimental: true
           - sdk: beta
             task: ./tool/analyze-and-test-examples.sh
-            experimental: false
+            experimental: true
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh
-            experimental: false
+            experimental: true
     steps:
       - uses: actions/checkout@v2
         with:
