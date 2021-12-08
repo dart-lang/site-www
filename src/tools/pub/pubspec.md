@@ -1,5 +1,6 @@
 ---
 title: The pubspec file
+description: Reference guide for the fields in pubspec.yaml.
 ---
 
 Every [pub package](/guides/packages) needs some metadata so it can specify its
@@ -71,8 +72,8 @@ A pubspec can have the following fields:
   [_Learn more._](#publish_to)
 
 `false_secrets`
-: Optional. Specify git-ignore style patterns for files to ignore when warning
-  against potential leak of secrets before publishing.
+: Optional. Specify files to ignore when conducting a pre-publishing search
+  for potential leaks of secrets.
   [_Learn more._](#false_secrets)
 
 Pub ignores all other fields,
@@ -279,35 +280,46 @@ publish_to: none
 
 ### False_secrets
 
-When publishing leak detection on the client will abort publishing if it finds
-potential leaks of secret credentials, API keys and cryptographic keys in files
-to be published.
-While detection of possible secrets relies on advanced heuristics using regular
-expressions and entropy thresholds, the detection is not perfect.
-If the leak detection reports a _false positive_ you can specify a list of
-[git-ignore patterns][git-ignore-format] under `false_secrets` i
-`pubspec.yaml`.
+When you try to [publish a package][],
+pub conducts a search for potential leaks of
+secret credentials, API keys, or cryptographic keys.
+If pub detects a potential leak in a file that would be published,
+then pub warns you and refuses to publish the package.
 
-The leak detection will ignore any files matching a pattern in `false_secrets`.
-The example below ignores the file `lib/src/file_with_hardcoded_api_key.dart`
-and all `.pem` files in the `test/localhost_certificates/` folder. Starting a
-[git-ignore pattern][git-ignore-format] with slash `/` ensures that is it only
-considered relative to the root folder.
+Leak detection isn't perfect.
+To avoid false positives,
+you can tell pub not to search for leaks in certain files,
+using [`gitignore` patterns][] under
+`false_secrets` in the pubspec.
+
+[`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
+
+For example, the following entry causes pub not to look for leaks in
+the file `lib/src/hardcoded_api_key.dart`
+and in all `.pem` files in the `test/localhost_certificates/` directory:
+
+[publish a package]: /tools/pub/publishing
 
 {% prettify yaml tag=pre+code %}
 false_secrets:
- - /lib/src/file_with_hardcoded_api_key.dart
+ - /lib/src/hardcoded_api_key.dart
  - /test/localhost_certificates/*.pem
 {% endprettify %}
 
-{{site.alert.version-note}}
-  Leak detection will never prevent all leaks. It's your responsibility to
-  manage your credentials, prevent accidental leaks, and revoke credentials
-  that are accidentally leaked.
+Starting a `gitgnore` pattern with slash (`/`) ensures that
+the pattern is considered relative to the package's root directory.
 
-  You cannot rely on leak detection prevent leaks, it will only detect a
-  limited set of common patterns, and is only intended to mitigate common
-  mistakes.
+{{site.alert.warn}}
+  **Don't rely on leak detection.**
+  It uses a limited set of patterns
+  to detect common mistakes.
+  You're responsible for managing your credentials,
+  preventing accidental leaks, and
+  revoking credentials that are accidentally leaked.
+{{site.alert.end}}
+
+{{site.alert.version-note}}
+  Support for the `false_secrets` field was added in Dart 2.15.
 {{site.alert.end}}
 
 ### SDK constraints
@@ -386,4 +398,3 @@ accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
 [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
-[git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
