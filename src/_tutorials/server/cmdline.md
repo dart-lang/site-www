@@ -143,7 +143,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # homepage: https://www.example.com
 5
 6 environment:
-7   sdk: '>=2.14.3 <3.0.0'
+7   sdk: '>=2.15.0 <3.0.0'
 8
 9
 10 # dependencies:
