@@ -1,0 +1,7 @@
+{
+	"name": "Dart.dev",
+	"dockerComposeFile": "../docker-compose.yml",
+	"extensions": [
+		"dart-code.dart-code"
+	]
+}

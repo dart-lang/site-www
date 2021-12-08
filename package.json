@@ -6,5 +6,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dart-lang/site-www.git"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0"
   }
 }

@@ -3,128 +3,86 @@ name: build
 on:
   # Run on PRs and pushes to the default branch.
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - rearch
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
   schedule:
     - cron: "0 0 * * 0"
 
 env:
-  _OS_NAME: linux
-  DART_SITE_ENV_DEFS: 1
-  JEKYLL_ENV: production
+  # Keep for SDK reporting
   PUB_ENVIRONMENT: bot.github
-  SITE_LOCALHOST_PORT: 5000
-  SITE_JEKYLL_DEST: _site
-  SITE_JEKYLL_SRC: src
   TMP: ${{ github.workspace }}/tmp
-  TZ: US/Pacific # normalize build timestamp
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        sdk: [dev, beta, stable]
-        task:
-          - ./tool/build.sh --check-links
-          - ./tool/check-code.sh
-        experimental: [false]
         include:
-          - sdk: dev
-            task: ./tool/analyze-and-test-examples.sh
+          - channel: dev
             experimental: false
-          - sdk: beta
-            task: ./tool/analyze-and-test-examples.sh
+            task: |
+              tool/check-code.sh
+              tool/analyze-and-test-examples.sh
+          - channel: beta
             experimental: false
-          - sdk: stable
-            task: ./tool/analyze-and-test-examples.sh
+            task: |
+              tool/check-code.sh
+              tool/analyze-and-test-examples.sh
+          - channel: stable
             experimental: false
+            task: |
+              tool/check-code.sh
+              tool/analyze-and-test-examples.sh
+            
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - uses: ruby/setup-ruby@v1
-        if: contains(matrix.task, 'build.sh')
-        with:
-          bundler-cache: true
-          ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: ${{ matrix.sdk }}
-      - name: Install node dependencies
-        # TODO: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-        if: contains(matrix.task, 'build.sh')
-      - run: ${{ matrix.task }}
+          submodules: recursive
+      # - run: mkdir -p $TMP
+      - name: Test examples against channel
+        run: DART_CHANNEL=${{ matrix.channel }} make test
         continue-on-error: ${{ matrix.experimental }}
 
-#  sdk-files-up-to-date:
-#    runs-on: ubuntu-latest
-#    if: |
-#      github.event_name == 'push'
-#      && github.ref == 'refs/heads/master'
-#    steps:
-#      - uses: actions/checkout@v2
-#      - run: mkdir -p $TMP
-#      - uses: dart-lang/setup-dart@v1.3
-#        with:
-#          sdk: stable
-#      - run: ./tool/check-diagnostics.sh
-
-  firebase-checks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: mkdir -p $TMP
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - run: ./tool/firebase-checks.sh
+  # firebase-checks:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: mkdir -p $TMP
+  #     - uses: dart-lang/setup-dart@v1.3
+  #       with:
+  #         sdk: stable
+  #     - run: dart pub get
+  #     - name: Validate redirects
+  #       run: dart tool/validate_firebase_redirects.dart
 
   deploy:
-    needs: [test, firebase-checks]
+    needs:
+      - test
+      # - firebase-checks
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'push'
-      && github.ref == 'refs/heads/master'
-      && github.repository == 'dart-lang/site-www'
+      github.event_name == 'push' && 
+      github.ref == 'refs/heads/master' && 
+      github.repository == 'dart-lang/site-www'
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
+          submodules: recursive
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/build.sh
-      - run: ./tool/shared/deploy.sh --robots ok default
+      - name: Build site
+        run: make deploy-ci
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
+  # Not fully understanding what this is for
+  # I think this should be replaced by staging locally for someone
   deploy_preview:
     needs: test
     runs-on: ubuntu-latest
@@ -132,26 +90,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
+          submodules: recursive
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.6.5
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/build.sh
+      
       - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

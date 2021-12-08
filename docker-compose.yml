@@ -1,0 +1,38 @@
+version: "3"
+services:
+
+  site:
+    image: dart-dev:local
+    build:
+      context: .
+      target: dev
+    command: ["make", "serve"]
+    env_file: .env
+    environment:
+      - JEKYLL_ENV=development
+      - JEKYLL_SITE_HOST=0.0.0.0
+      - JEKYLL_SITE_PORT=4002
+      - NODE_ENV=development
+    ports:
+      - "4002:4002"
+      # - "35729:35729"
+      - "5500:5500"
+    volumes:
+      - ./analysis_options.yaml:/app/analysis_options.yaml
+      - ./build.excerpt.yaml:/app/build.excerpt.yaml
+      - ./pubspec.yaml:/app/pubspec.yaml
+      - ./examples:/app/examples
+      - ./diagrams:/app/diagrams
+      - ./tool:/app/tool
+      - ./src:/app/src
+      - ./site-shared:/app/site-shared
+      - ./Makefile:/app/Makefile
+      - ./_config.yml:/app/_config.yml
+      - ./_config_dev.yml:/app/_config._dev.yml
+      - ./.firebaserc:/app/.firebaserc
+      - ./firebase.json:/app/firebase.json
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./node_modules:/app/node_modules
+      - ./Gemfile:/app/Gemfile
+      - ./Gemfile.lock:/app/Gemfile.lock

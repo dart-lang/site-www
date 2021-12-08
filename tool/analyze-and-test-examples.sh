@@ -6,18 +6,22 @@
 # We ignore such errors, so don't exit on a pipefail.
 # set -e -o pipefail
 
-cd `dirname $0`/..
-ROOT=$(pwd)
+set -eou pipefail
 
-source ./tool/shared/env-set-check.sh
+ROOT=${ROOT_DIR:-/app}
 
-DART_VERS=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
-DART_CHAN=stable
-if [[ $DART_VERS == *beta* ]]; then
-  DART_CHAN=beta
-elif [[ $DART_VERS == *dev* ]]; then
-  DART_CHAN=dev
-fi
+# TODO Not sure we need any of this
+# DART_VERSION=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
+# DART_CHANNEL=stable
+# if [[ $DART_VERSION == *beta* ]]; then
+#   DART_CHANNEL=beta
+# elif [[ $DART_VERSION == *dev* ]]; then
+#   DART_CHANNEL=dev
+# fi
+
+echo "DART_VERSION: $DART_VERSION"
+echo "DART_CHANNEL: $DART_CHANNEL"
+
 EXAMPLES="$ROOT/examples"
 ANALYZE="dart analyze"
 PUB_ARGS="upgrade" # --no-precomiple
@@ -32,19 +36,18 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-echo DART_VERS: $DART_VERS
-echo DART_CHAN: $DART_CHAN
-
 function toggleInFileAnalyzerFlags() {
   # Arguments: [disable|reenable] path path...
   local action=$1; shift;
-  local mark='!'; local toggle=' '
-  if [[ $action == 'disable' ]]; then
-    mark=' '; toggle='!'
-  fi
+  local mark='!'; 
+  local toggle=' '
 
-  find $* -name "*.dart" ! -path "**/.*" \
-    -exec perl -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$1}g" {} \;
+  if [[ $action == 'disable' ]]; then
+    mark=' '; 
+    toggle='!';
+  fi
+  find $* -name "*.dart" ! -path "**/.*" -exec perl \
+    -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$1}g" {} \;
 }
 
 function analyze_and_test() {
@@ -53,18 +56,20 @@ function analyze_and_test() {
   echo "::group::analyzeAndTest.get"
   dart pub $PUB_ARGS
   echo "::endgroup::"
-
   echo
-  EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHAN.txt
+
+  EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHANNEL.txt
   if [[ ! -e $EXPECTED_FILE ]]; then
     EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
   fi
+
   echo "::group::analyzeAndTest.analyze"
   toggleInFileAnalyzerFlags disable .
   echo "$ $ANALYZE"
   $ANALYZE > $LOG_FILE || {
     echo "WARNING: Ignoring analyzer exit code $?"
   }
+
   if [[ -e $EXPECTED_FILE ]]; then
     if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
       echo "Analyzer output is as expected ($EXPECTED_FILE)."
@@ -79,13 +84,14 @@ function analyze_and_test() {
     cat $LOG_FILE
     echo "No analysis errors or warnings should be present in original source files."
     echo "Ensure that these issues are disabled using appropriate markers like: "
-    echo "  // ignore_for_file: $DART_CHAN, some_analyzer_error_or_warning_id"
+    echo "  // ignore_for_file: $DART_CHANNEL, some_analyzer_error_or_warning_id"
     echo "Or if the errors are expected, create an analyzer-results.txt file."
     EXIT_STATUS=1
     if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
   else
     cat $LOG_FILE
   fi
+
   toggleInFileAnalyzerFlags reenable .
   echo "::endgroup::"
 
@@ -105,31 +111,38 @@ function analyze_and_test() {
   echo "$ $TEST $TEST_ARGS"
   $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
   LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
-  if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
+  if [[ -z "$LOG" ]]; then 
+    EXIT_STATUS=1; 
+  fi
   echo "::endgroup::"
 
-  # TODO(chalin): as of 2019/11/17, we don't need to select individual browser test files. Run browser tests over all files, since VM-only tests have been annotated as such.
+  # TODO(chalin): as of 2019/11/17, we don't need to select individual browser 
+  # test files. Run browser tests over all files, since VM-only tests have 
+  # been annotated as such.
   TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
-  # Use the following to selectively remove some tests:
-  # TEST_FILES=`find . -name "*_test.dart" -exec grep -l "@TestOn('browser')" {} + | grep -v pi_test`
+
   if [[ -z $TEST_FILES ]]; then
     echo "No browser-only tests."
   else
     echo "::group::analyzeAndTest.tests.browser"
     echo Running browser tests ...
     PLATFORM=chrome
-    # Name the sole browser test file, otherwise all other files get compiled too:
+    # Name the sole browser test file, otherwise all other 
+    # files get compiled too:
     TEST="pub run test"
     echo "$ $TEST --tags browser --platform $PLATFORM $TEST_FILES"
     $TEST --tags browser --platform $PLATFORM $TEST_FILES \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
     LOG=$(grep 'All tests passed!' $LOG_FILE)
-    if [[ -z "$LOG" ]]; then EXIT_STATUS=1; fi
+    if [[ -z "$LOG" ]]; then 
+      EXIT_STATUS=1; 
+    fi
     echo "::endgroup::"
   fi
   popd > /dev/null
 }
 
+# Reset?
 EXIT_STATUS=0
 
 FILTER1="cat -"
@@ -142,7 +155,9 @@ if [[ "$1" == "-q" ]]; then
   shift;
 fi
 
-if [[ ! -e $TMP ]]; then mkdir $TMP; fi
+if [[ ! -e $TMP ]]; then 
+  mkdir $TMP; 
+fi
 LOG_FILE=$TMP/analyzer-output.txt
 
 pushd $EXAMPLES > /dev/null
@@ -150,9 +165,10 @@ pushd $EXAMPLES > /dev/null
 export PUB_ALLOW_PRERELEASE_SDK=quiet
 
 for d in $EXAMPLES/??*; do
-  if [[ ! -d $d || $d == *util ]]; then continue; fi
-  echo
-  echo "PROCESSING $d"
+  if [[ ! -d $d || $d == *util ]]; then 
+    continue; 
+  fi
+  printf "\nProcessing directory: $d"
   echo
   analyze_and_test $d;
 done

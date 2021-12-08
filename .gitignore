@@ -17,6 +17,7 @@ _site/
 *.cache
 *.iml
 *.js.deps
+*.log
 *.pyc
 *.swp
 *.zip
