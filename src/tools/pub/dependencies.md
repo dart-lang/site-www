@@ -110,6 +110,8 @@ dependencies:
 {% endprettify %}
 {{site.alert.end}}
 
+[language version]: /guides/language/evolution#language-versioning
+
 ### Git packages
 
 Sometimes you live on the bleeding edge and need to use packages that
