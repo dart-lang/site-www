@@ -312,7 +312,7 @@ This example uses the following isolate-related API:
 Here’s the code for the main isolate:
 
 ```dart
-Future<void> main() async {
+void main() async {
   // Read some data.
   final jsonData = await _parseInBackground();
 
