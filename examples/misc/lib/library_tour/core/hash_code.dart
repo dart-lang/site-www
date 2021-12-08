@@ -5,18 +5,13 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Override hashCode using strategy from Effective Java,
-  // Chapter 11.
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
   @override
-  int get hashCode {
-    int result = 17;
-    result = 37 * result + firstName.hashCode;
-    result = 37 * result + lastName.hashCode;
-    return result;
-  }
+  int get hashCode => Object.hash(firstName, lastName);
 
-  // You should generally implement operator == if you
-  // override hashCode.
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
   @override
   bool operator ==(dynamic other) {
     return other is Person &&

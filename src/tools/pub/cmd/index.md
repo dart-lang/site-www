@@ -19,10 +19,10 @@ but if your current directory holds a Flutter app
 or other Flutter-specific code,
 use `flutter pub <subcommand>` instead.
 For more information, see
-[Using packages]({{site.flutter}}/using-packages)
+[Using packages]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
 on the [Flutter website]({{site.flutter}}).
 
-[flutter-cli]: {{site.flutter}}/docs/reference/flutter-cli
+[flutter-cli]: {{site.flutter_docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
 {{site.alert.version-note}}

@@ -1,5 +1,6 @@
 ---
 title: The pubspec file
+description: Reference guide for the fields in pubspec.yaml.
 ---
 
 Every [pub package](/guides/packages) needs some metadata so it can specify its
@@ -70,11 +71,16 @@ A pubspec can have the following fields:
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
 
+`false_secrets`
+: Optional. Specify files to ignore when conducting a pre-publishing search
+  for potential leaks of secrets.
+  [_Learn more._](#false_secrets)
+
 Pub ignores all other fields,
 
 {{site.alert.info}}
   **Flutter note:** Pubspecs for [Flutter apps]({{site.flutter}}) can have
-  [additional fields]({{site.flutter}}/docs/development/tools/pubspec)
+  [additional fields]({{site.flutter_docs}}/development/tools/pubspec)
   for configuring the environment and managing assets.
 {{site.alert.end}}
 
@@ -88,24 +94,27 @@ you might add a field named `my_pkg_bugs`.
 
 A simple but complete pubspec looks something like the following:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: newtify
-version: 1.2.3
 description: >-
   Have you been turned into a newt?  Would you like to be?
   This package can help. It has all of the
   newt-transmogrification functionality you have been looking
   for.
+version: 1.2.3
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
+
 environment:
   sdk: '>=2.10.0 <3.0.0'
+  
 dependencies:
   efts: ^2.0.4
   transmogrify: ^0.4.0
+  
 dev_dependencies:
   test: '>=1.15.0 <2.0.0'
-{% endprettify %}
+```
 
 
 ## Details
@@ -264,13 +273,58 @@ For more information, see
 
 The default uses the [pub.dev site.]({{site.pub}}) Specify `none` to prevent
 a package from being published. This setting can be used to specify a
-[custom pub package server](https://github.com/dart-lang/pub-dev)
+[custom pub package server](/tools/pub/custom-package-repositories)
 to publish.
 
 {% prettify yaml tag=pre+code %}
 publish_to: none
 {% endprettify %}
 
+
+### False_secrets
+
+When you try to [publish a package][],
+pub conducts a search for potential leaks of
+secret credentials, API keys, or cryptographic keys.
+If pub detects a potential leak in a file that would be published,
+then pub warns you and refuses to publish the package.
+
+Leak detection isn't perfect.
+To avoid false positives,
+you can tell pub not to search for leaks in certain files,
+by creating an allowlist
+using [`gitignore` patterns][] under
+`false_secrets` in the pubspec.
+
+[`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
+
+For example, the following entry causes pub not to look for leaks in
+the file `lib/src/hardcoded_api_key.dart`
+and in all `.pem` files in the `test/localhost_certificates/` directory:
+
+[publish a package]: /tools/pub/publishing
+
+{% prettify yaml tag=pre+code %}
+false_secrets:
+ - /lib/src/hardcoded_api_key.dart
+ - /test/localhost_certificates/*.pem
+{% endprettify %}
+
+Starting a `gitignore` pattern with slash (`/`) ensures that
+the pattern is considered relative to the package's root directory.
+
+{{site.alert.warn}}
+  **Don't rely on leak detection.**
+  It uses a limited set of patterns
+  to detect common mistakes.
+  You're responsible for managing your credentials,
+  preventing accidental leaks, and
+  revoking credentials that are accidentally leaked.
+{{site.alert.end}}
+
+{{site.alert.version-note}}
+  Support for the `false_secrets` field was added in Dart 2.15.
+{{site.alert.end}}
 
 ### SDK constraints
 
@@ -297,10 +351,10 @@ dependencies.
 For example, the following constraint says that this package
 works with any Dart SDK that's version 2.10.0 or higher:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=2.10.0 <3.0.0'
-{% endprettify %}
+```
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
@@ -331,11 +385,11 @@ environment:
 As of Dart 1.19.0,
 pub supports Flutter SDK constraints under the `environment:` field:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=1.19.0 <3.0.0'
   flutter: ^0.1.2
-{% endprettify %}
+```
 
 A Flutter SDK constraint is satisfied only if pub is running in the
 context of the `flutter` executable, and the Flutter SDK's

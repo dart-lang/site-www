@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
-late final UListElement wordList = querySelector('#wordList') as UListElement;
+final UListElement wordList = querySelector('#wordList') as UListElement;
 
 void main() {
   querySelector('#getWords')!.onClick.listen(makeRequest);

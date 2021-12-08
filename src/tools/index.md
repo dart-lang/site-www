@@ -11,7 +11,7 @@ If you aren't sure which tools you need, **get the Flutter SDK.**
 |------------+-----------------------------------+--------------------------|
 | App type   | Get started instructions          | Tool information         |
 |------------|-----------------------------------|--------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
+| Flutter (mobile and more) | [Install Flutter]({{site.flutter_docs}}/get-started/install) | [Flutter tools]({{site.flutter_docs}}/using-ide) |
 | Web app (non-Flutter) | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
 | Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
 {:.table .table-striped}

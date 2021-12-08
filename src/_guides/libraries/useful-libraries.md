@@ -56,7 +56,7 @@ such as packages for mobile (Flutter) and web development.
 
 ### Flutter packages
 
-See [Using packages]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+See [Using packages]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
 on the Flutter site.
 Or use the pub.dev site to [search for Flutter packages.]({{site.pub}}/flutter)
 

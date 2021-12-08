@@ -46,8 +46,8 @@ are a few additional requirements for uploading a package:
   You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
-* Your package must be smaller than 100 MB after gzip compression. If 
-  it's too large, consider splitting it into multiple packages, using a 
+* Your package must be smaller than 100 MB after gzip compression. If
+  it's too large, consider splitting it into multiple packages, using a
   `.pubignore` file to remove unnecessary content, or cutting down
   on the number of included resources or examples.
 
@@ -294,7 +294,7 @@ Previews can be useful when **all** of the following are true:
   API-stable and won't change before it reaches the stable SDK.
 
 As an example, consider a new version of `package:args` that has
-a finished version `2.0.0` but that 
+a finished version `2.0.0` but that
 depends on a feature in Dart `2.12.0-259.8.beta`,
 where Dart SDK version `2.12.0` stable hasn't been released yet.
 The pubspec might look like this:
@@ -302,6 +302,7 @@ The pubspec might look like this:
 ```
 name: args
 version: 2.0.0
+
 environment:
   sdk: '>=2.12.0-259.8.beta <3.0.0'
 ```
@@ -319,12 +320,58 @@ pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
 If all of the conditions at the beginning of this section are true,
-then you can ignore the following warning from `dart pub publish`: 
+then you can ignore the following warning from `dart pub publish`:
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
    version 2.12.0-0, consider publishing the package as a pre-release
    instead."*
+
+
+## Retracting a package version {#retract}
+
+To prevent new package consumers from adopting a recently
+published version of your package, you can retract that package version
+within 7 days of publication.
+The retracted version can be restored again within 7 days of retraction.
+
+A retracted package version isn't deleted. It appears in the version
+listing of the package on pub.dev in the **Retracted versions** section. Also, the
+detailed view of that package version has a **RETRACTED** badge.
+
+Before retracting a package,
+consider publishing a new version instead.
+Retracting a package causes churn and can have a negative impact on package users.
+
+For example, if your package version contains a minor bug, then retraction is
+probably not needed. On the other hand, if you accidentally publish a major
+version or a version with wrong or missing dependency constraints,
+then retraction might be the right solution.
+
+{{site.alert.version-note}}
+  Package retraction was introduced in Dart 2.15.
+  In pre-2.15 SDKs, the pub version solver ignores the retracted status.
+{{site.alert.end}}
+
+
+### How to use a retracted package version
+
+If a package depends on a package version that later is retracted,
+it can still use that version as long as that version is in
+the dependent package's `pubspec.lock` file.
+To depend on a specific version that's already retracted,
+the dependent package must pin the version in the
+`dependency_overrides` section of the `pubspec.yaml` file.
+
+
+### How to retract or restore a package version
+
+To retract or restore a package version,
+first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can retract or restore recent package versions.
+
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -335,10 +382,10 @@ A discontinued package remains published and viewable on pub.dev,
 but it has a clear **DISCONTINUED** badge and
 doesn't appear in pub.dev search results.
 
-To mark a package as discontinued, sign in to pub.dev using a Google Account
-that's an uploader or verified publisher admin for the package.
-Then use the **Admin** tab of the individual package to
-mark the package as discontinued.
+To mark a package as discontinued, first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
 ## Resources

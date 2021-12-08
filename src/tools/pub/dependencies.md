@@ -75,10 +75,12 @@ This example specifies that your package depends on a hosted package named
 `transmogrify` and works with any version from 1.4.0 to 2.0.0
 (but not 2.0.0 itself).
 
-If you want to use your own package repository,
+If you want to use your [own package repository][],
 you can use `hosted` to specify its URL.
 The following YAML code creates a dependency on the `transmogrify` package
-using the `hosted` source.
+using the `hosted` source:
+
+[own package repository]: /tools/pub/custom-package-repositories
 
 {% prettify yaml tag=pre+code %}
 environment: 
@@ -407,6 +409,14 @@ dependency_overrides:
   a local copy of a package that has unexpected behaviors,
   may break your application.
 {{site.alert.end}}
+
+Only the dependency overrides in a **package's own pubspec**
+are considered during package resolution. 
+Dependency overrides inside any depended-on packages are ignored.
+
+As a result, if you publish a package to pub.dev,
+keep in mind that your package's dependency overrides
+are ignored by all users of your package.
 
 ## Best practices
 

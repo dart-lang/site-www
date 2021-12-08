@@ -16,11 +16,10 @@ what is currently possible with dart:io
 by going through a couple of examples.
 
 {{site.alert.note}}
-  **Note:**
   When writing a Flutter app, use
   [Flutter-specific APIs]({{site.flutter_api}})
   instead of dart:io whenever possible. For example, use the
-  [Flutter asset support]({{site.flutter}}/assets-and-images) to load
+  [Flutter asset support]({{site.flutter_docs}}/development/ui/assets-and-images) to load
   images and other assets into your app.
 {{site.alert.end}}
 

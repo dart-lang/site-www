@@ -48,8 +48,8 @@ which the following packages provide:
 : Contains the `flutter` rule set,
   which the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
-  This rule set is a superset of the [`recommended`](#recommended) set,
-  which is itself a superset of the [`core`](#core) set that
+  This rule set is a superset of the [`recommended`](#lints) set,
+  which is itself a superset of the [`core`](#lints) set that
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 

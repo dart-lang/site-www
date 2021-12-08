@@ -1,13 +1,14 @@
 name: dart_sdk_archive
 description: An absolute bare-bones web app.
+
 environment:
   sdk: '>=2.13.0 <3.0.0'
 
 dependencies:
   http: ^0.13.1
   path: ^1.8.0
-  quiver: ^3.0.1
   platform_detect: ^2.0.0
+  quiver: ^3.0.1
   sdk_builds:
     path: ../sdk_builds.dart
 

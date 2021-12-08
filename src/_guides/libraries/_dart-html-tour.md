@@ -118,7 +118,7 @@ class of “mac”, “win”, or “linux”. Setting the `hidden` property to 
 has the same effect as adding `display: none` to the CSS.
 
 <?code-excerpt "html/test/html_test.dart (os-html)" replace="/.*? = '''|''';$//g"?>
-```dart
+```html
 <!-- In HTML: -->
 <p>
   <span class="linux">Words for Linux</span>

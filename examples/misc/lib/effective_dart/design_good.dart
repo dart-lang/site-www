@@ -196,7 +196,7 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
-    var applyPadding = false;
+    var applyPadding = true;
 
     // #docregion upcast-local
     Widget build(BuildContext context) {

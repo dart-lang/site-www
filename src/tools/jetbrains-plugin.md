@@ -56,7 +56,7 @@ which (as of Flutter 1.21) includes the full Dart SDK.
 Choose one:
 
 * [Download the Dart SDK](/get-dart)
-* [Download the Flutter SDK]({{site.flutter}}/docs/get-started/install)
+* [Download the Flutter SDK]({{site.flutter_docs}}/get-started/install)
 
 
 ### Configuring Dart support
