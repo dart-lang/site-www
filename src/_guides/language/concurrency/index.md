@@ -109,7 +109,7 @@ String _readFileSync() {
 Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 {% prettify dart tag=pre+code %}
-[!Future<void>!] main() [!async!] {
+void main() [!async!] {
   // Read some data.
   final fileData = [!await!] _readFileAsync();
   final jsonData = jsonDecode(fileData);
