@@ -198,23 +198,29 @@ After handling the events, the isolate exits.
 ### Event handling
 
 In a client app, the main isolate’s event queue might contain
-repaint requests and notifications of tap and other UI events, like this:
-***[PENDING: describe the figure in more detail.]***
+repaint requests and notifications of tap and other UI events.
+For example, the following figure shows a repaint event,
+followed by a tap event, followed by two repaint events.
+The event loop takes events from the queue in first in, first out order.
 
-![PENDING: alt text here](/guides/language/concurrency/images/event-loop.png)
+![A figure showing events being fed, one by one, into the event loop](/guides/language/concurrency/images/event-loop.png)
 
-The event handling happens on the main isolate after `main()` exits:
-***[PENDING: describe the figure in more detail.]***
+Event handling happens on the main isolate after `main()` exits.
+In the following figure, after `main()` exits,
+the main isolate handles the first repaint event.
+After that, the main isolate handles the tap event,
+followed by a repaint event.
 
-![PENDING: alt text here](/guides/language/concurrency/images/event-handling.png)
+![A figure showing the main isolate executing event handlers, one by one](/guides/language/concurrency/images/event-handling.png)
 
 If a synchronous operation takes too much processing time,
 the app can become unresponsive.
 In the following figure, the tap-handling code takes too long,
-so subsequent events are handled too late:
-***[PENDING: describe the figure in more detail.]***
+so subsequent events are handled too late.
+The app might appear to freeze,
+and any animation it performs might be jerky.
 
-![PENDING: alt text here](/guides/language/concurrency/images/event-jank.png)
+![A figure showing a tap handler with a too-long execution time](/guides/language/concurrency/images/event-jank.png)
 
 In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
@@ -236,9 +242,7 @@ The worker isolate returns its result in a message when the worker exits.
 
 [json]: https://docs.flutter.dev/cookbook/networking/background-parsing)
 
-![PENDING: alt text here](/guides/language/concurrency/images/isolate-bg-worker.png)
-<br>
-***[PENDING: Inside the figure, Background worker -> Worker isolate]***
+![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
 Each isolate message can deliver one object,
 which includes anything that’s transitively reachable from that object.
@@ -367,12 +371,10 @@ That transfer is quick and completes in constant time — O(1).
   using `Isolate.send()` as shown in the next section's example.
 {{site.alert.end}}
 
-The following figure summarizes the communication between
-the main isolate and the second isolate:
+The following figure illustrates the communication between
+the main isolate and the worker isolate:
 
-![PENDING: alt text here](/guides/language/concurrency/images/isolate-api.png)
-<br>
-***[PENDING: Inside the figure, Background worker -> Worker isolate]***
+![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
 
 
 ### Sending multiple messages between isolates
@@ -383,12 +385,7 @@ One common pattern, which the following figure shows,
 is for the main isolate to send a request message to the worker isolate,
 which then sends one or more reply messages.
 
-![PENDING: alt text here](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
-<br>
-***[PENDING: The top arrow should be labeled "Create isolate: Isolate.spawn()"]***
-<br>
-***[PENDING: Inside the figure, Custom background worker -> Worker isolate]***
-
+![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
 
 For examples of sending multiple messages,
 see the following [isolate samples][]:
