@@ -17,7 +17,11 @@ This page gives an overview of async-await, `Future`, and `Stream`,
 but it's mostly about isolates.
 
 Within an app, all Dart code runs in an _isolate,_
-which has a single thread of execution and its own, unshared memory.
+which is conceptually similar to a process.
+Each Dart isolate has a single thread of execution and
+shares no mutable memory with other isolates.
+Instead of using shared memory,
+isolates communicate by passing messages.
 Although many Dart apps use only one isolate (the _main isolate_),
 you can create additional isolates,
 enabling parallel code execution on multiple processor cores.
@@ -144,7 +148,7 @@ Most modern devices have multi-core CPUs.
 To take advantage of all those cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
-[error prone](https://en.wikipedia.org/wiki/Deadlock) and
+[error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
 can lead to complicated code.
 
 Instead of threads, all Dart code runs inside of isolates.
@@ -163,8 +167,8 @@ but each isolate has its own memory and a single thread running an event loop.
 ### The main isolate
 
 You often don’t need to think about isolates at all.
-A typical Dart app executes all its code in a single isolate
-called the main isolate, as shown in the following figure:
+A typical Dart app executes all its code in the app's main isolate,
+as shown in the following figure:
 
 ![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/guides/language/concurrency/images/basics-main-isolate.png)
 
@@ -267,6 +271,8 @@ to implement isolates.
   If you're using Flutter on a non-web platform,
   then instead of using the `Isolate` API directly,
   consider using the [Flutter `compute()` function][].
+  The `compute()` function is a simple way to
+  move a single function call to a worker isolate.
 {{site.alert.end}}
 
  [Flutter `compute()` function]: https://docs.flutter.dev/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
@@ -347,11 +353,13 @@ The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
 Message passing between isolates normally involves data copying,
 and thus can be slow and increases with the size of the message —
-O(n) in big O notation.
+O(n) in [big O notation][].
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
 That transfer is quick and completes in constant time — O(1).
+
+[big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 
 {{site.alert.version-note}}
   `Isolate.exit()` was added in 2.15.
@@ -382,15 +390,22 @@ which then sends one or more reply messages.
 ***[PENDING: Inside the figure, Custom background worker -> Worker isolate]***
 
 
-For examples of sending multiple messages, see the following:
+For examples of sending multiple messages,
+see the following [isolate samples][]:
 
-* ***[PENDING: link to example 4 in Isolate snippets][]***,
+* [send_and_receive.dart][],
   which shows how to send a message from
   the main isolate to the spawned isolate.
   It’s otherwise similar to the preceding example.
-* ***[PENDING: link to example 5 in Isolate snippets][]***,
+* [long_running_isolate.dart][],
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
+
+{% assign samples = "https://github.com/dart-lang/samples/tree/master/isolates" %}
+
+[isolate samples]: {{ samples }}
+[send_and_receive.dart]: {{ samples }}/bin/send_and_receive.dart
+[long_running_isolate.dart]: {{ samples }}/bin/long_running_isolate.dart
 
 {{site.alert.tip}}
   The `send()` method can be slow.
@@ -410,10 +425,9 @@ a new isolate immediately runs the code owned by the isolate group.
 Also, `Isolate.exit()` works only when the isolates
 are in the same isolate group.
 
-In some special cases —
-for example, when implementing tools like `dart pub run` —
-you might need to use [`Isolate.spawnUri()`][].
-That method sets up the new isolate with a copy of the code
+In some special cases,
+you might need to use [`Isolate.spawnUri()`][],
+which sets up the new isolate with a copy of the code
 that's at the specified URI.
 However, `spawnUri()` is much slower than `spawn()`,
 and the new isolate isn't in its spawner's isolate group.
@@ -421,25 +435,15 @@ and the new isolate isn't in its spawner's isolate group.
 [`Isolate.spawnUri()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawnUri.html
 
 
-
--------------------
-
-## NOTES/QUESTIONS/TODOs (TO BE DELETED)
-
+{% comment %}
 TODO:
 * Before publishing for the first time:
-  * When examples 4 & 5 are published in dart-lang/samples
-    ([PR #128](https://github.com/dart-lang/samples/pull/128)),
-    link to them.
-    (If they aren't up by the time this page is published,
-    either remove the **Other examples** section or link to the PR.)
   * Search for and resolve all PENDING items.
   * Delete this section.
 * Before or soon after publishing:
-  * Decide whether to keep figure captions or delete them. Whatever we decide, format & use them consistently.
   * Use macros in links to API & Flutter docs.
   * Add alt text to figures.
-  * Use code excerpts.
+  * Use code excerpts. [parlough will do!]
   * In text before figures, describe the figure content well enough to help people who translate the page or have accessibility issues.
   * Add this page to the sidenav. Link to it appropriately.
   * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
@@ -448,9 +452,4 @@ TODO:
     * Sometimes Dart is called a _single-threaded language._
     * Dart code executes in a predictable sequence that can’t be interrupted by other Dart code.
   * Add a figure up high in the doc? (if so, what?)
-
-Qs:
-* The figures are by the index file, under images. Should we instead use the asset system? E.g., see the source for the following figure:
-
-<img src="{% asset number-class-hierarchy.svg @path %}" alt="Object is the parent of num, which is the parent of int and double">
-
+{% endcomment %}
