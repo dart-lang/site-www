@@ -114,8 +114,8 @@ This example specifies that your package depends on a hosted package named
 `transmogrify` and will work with any version from 1.4.0 to 2.0.0
 (but not 2.0.0 itself).
 
-If you want to use your own package server, you can use a description that
-specifies its URL:
+If you want to use your [own package server](/tools/pub/custom-package-repositories),
+you can use a description that specifies its URL:
 
 {% prettify yaml tag=pre+code %}
 dependencies:
