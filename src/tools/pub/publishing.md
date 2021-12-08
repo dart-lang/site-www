@@ -343,10 +343,19 @@ Before retracting a package,
 consider publishing a new version instead.
 Retracting a package causes churn and can have a negative impact on package users.
 
-For example, if your package version contains a minor bug, then retraction is
-probably not needed. On the other hand, if you accidentally publish a major
-version or a version with wrong or missing dependency constraints,
-then retraction might be the right solution.
+If you accidentally publish a new version with a _missing dependency constraint_,
+or a _dependency constraint that is too lax_, retracting the package version is
+often the only solution. As publishing a newer version of your package is
+insufficient to stop the _version solver_ from picking the old version, which may
+in some cases be the only solution. Thus, by retracting the package version with
+incorrect dependency constraints you force users to _upgrade other dependencies_
+or get a _dependency conflict_.
+
+However, if your package merely contains a minor bug, then retraction is
+probably not necessary. Publishing a newer version with the bug fixed and an
+description of the fixed bug in `CHANGELOG.md` makes it easy for users to
+understand what happened. And publishing a newer version is less disruptive to
+package users.
 
 {{site.alert.version-note}}
   Package retraction was introduced in Dart 2.15.
