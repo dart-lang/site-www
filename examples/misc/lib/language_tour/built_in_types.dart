@@ -1,4 +1,5 @@
-// ignore_for_file: unused_local_variable, type_annotate_public_apis, prefer_single_quotes, prefer_collection_literals
+// ignore_for_file: dead_code, unused_local_variable, type_annotate_public_apis
+// ignore_for_file: prefer_single_quotes, prefer_collection_literals
 
 void miscDeclAnalyzedButNotTested() {
   {
