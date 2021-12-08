@@ -66,8 +66,8 @@ immediately returns an object of type `Future<String>`.
 At some point in the future,
 the `Future<String>` completes with either a string value or an error.
 
-[`readAsStringSync()`]: https://api.dart.dev/stable/dart-io/File/readAsStringSync.html
-[`readAsString()`]: https://api.dart.dev/stable/dart-io/File/readAsString.html
+[`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
+[`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
 Why does it matter whether a method is synchronous or asynchronous?
 It matters because most apps need to do more than one thing at a time.
@@ -226,7 +226,7 @@ In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
 Worse, the UI might become completely unresponsive.
 
-[jank]: https://docs.flutter.dev/perf/rendering
+[jank]: {{site.flutter_docs}}/perf/rendering
 
 
 ### Background workers
@@ -240,7 +240,7 @@ is spawning a simple worker isolate that
 performs a computation and then exits.
 The worker isolate returns its result in a message when the worker exits.
 
-[json]: https://docs.flutter.dev/cookbook/networking/background-parsing)
+[json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 
 ![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
@@ -262,7 +262,7 @@ It has its own memory and
 doesn’t share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
-[`send()` method]: https://api.dart.dev/stable/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
 
 ## Code examples
@@ -279,7 +279,7 @@ to implement isolates.
   move a single function call to a worker isolate.
 {{site.alert.end}}
 
- [Flutter `compute()` function]: https://docs.flutter.dev/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+ [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 
 ### Implementing a simple worker isolate
@@ -295,10 +295,10 @@ This example uses the following isolate-related API:
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
 
-[`Isolate.exit()`]: https://api.dart.dev/stable/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: https://api.dart.dev/stable/dart-isolate/ReceivePort-class.html
-[`SendPort`]: https://api.dart.dev/stable/dart-isolate/SendPort-class.html
+[`Isolate.exit()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
 Here’s the code for the main isolate:
 
@@ -341,7 +341,7 @@ and then returns the result:
    the [`first`][] property is an easy way to get
    the single message that the worker isolate sends.
 
-[`first`]: https://api.dart.dev/stable/dart-async/Stream/first.html
+[`first`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
 
 The spawned isolate executes the following code:
 
@@ -429,19 +429,13 @@ that's at the specified URI.
 However, `spawnUri()` is much slower than `spawn()`,
 and the new isolate isn't in its spawner's isolate group.
 
-[`Isolate.spawnUri()`]: https://api.dart.dev/stable/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
 
 {% comment %}
 TODO:
-* Before publishing for the first time:
-  * Search for and resolve all PENDING items.
-  * Delete this section.
-* Before or soon after publishing:
-  * Use macros in links to API & Flutter docs.
-  * Add alt text to figures.
+* After publishing:
   * Use code excerpts. [parlough will do!]
-  * In text before figures, describe the figure content well enough to help people who translate the page or have accessibility issues.
   * Add this page to the sidenav. Link to it appropriately.
   * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
 * Maybe:
