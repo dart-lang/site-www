@@ -82,7 +82,10 @@ before the HTTP request completes.
 Asynchronous code helps apps stay responsive.
 
 ### The async-await syntax
-The `async` and `await` keywords provide a declarative way to define asynchronous functions and use their results.
+
+The `async` and `await` keywords provide
+a declarative way to define asynchronous functions
+and use their results.
 
 Here’s an example of some synchronous code that blocks while waiting for file I/O:
 
