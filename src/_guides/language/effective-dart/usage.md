@@ -891,25 +891,52 @@ void main() {
 
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
-If you refer to a method on an object but omit the parentheses, Dart gives you
-a "tear-off"&mdash;a closure that takes the same parameters as the method and
-invokes it when you call it.
-
-If you have a function that invokes a method with the same arguments as are
-passed to it, you don't need to manually wrap the call in a lambda.
+When you refer to a function, method, or named constructor but omit the
+parentheses, Dart creates a _tear-off_&mdash;a closure that takes the same
+parameters as the function and invokes the underlying function when you call it.
+If all you need is a closure that invokes a named function with the same
+parameters as the closure accepts, don't manually wrap the call in a lambda.
 
 {:.good}
 <?code-excerpt "usage_good.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
-names.forEach(print);
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+
+// Function:
+charCodes.forEach(print);
+
+// Method:
+charCodes.forEach(buffer.write);
+
+// Named constructor:
+var strings = charCodes.map(String.fromCharCode);
+
+// Unnamed constructor:
+var buffers = charCodes.map(StringBuffer.new);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
-names.forEach((name) {
-  print(name);
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+
+// Function:
+charCodes.forEach((code) {
+  print(code);
 });
+
+// Method:
+charCodes.forEach((code) {
+  buffer.write(code);
+});
+
+// Named constructor:
+var strings = charCodes.map((code) => String.fromCharCode(code));
+
+// Unnamed constructor:
+var buffers = charCodes.map((code) => StringBuffer(code));
 {% endprettify %}
 
 

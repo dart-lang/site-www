@@ -2,7 +2,7 @@ name: examples
 description: dart.dev example code.
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.15.0 <3.0.0"
 
 dev_dependencies:
   args: ^2.2.0
