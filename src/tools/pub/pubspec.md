@@ -292,6 +292,7 @@ then pub warns you and refuses to publish the package.
 Leak detection isn't perfect.
 To avoid false positives,
 you can tell pub not to search for leaks in certain files,
+by creating an allowlist
 using [`gitignore` patterns][] under
 `false_secrets` in the pubspec.
 
