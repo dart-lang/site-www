@@ -2,7 +2,7 @@ name: type_system_examples
 description: dart.dev type system examples.
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
 
 dev_dependencies:
   examples_util: {path: ../util}
