@@ -19,16 +19,16 @@ but it's mostly about isolates.
 Within an app, all Dart code runs in an _isolate._
 Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.
-Instead of using shared memory,
-isolates communicate by passing messages.
-Dart's isolate model is built with underlying primitives,
-such as processes and threads,
-that the operating system provides;
+To communicate with each other,
+isolates use message passing.
+Although Dart's isolate model is built with underlying primitives
+such as processes and threads
+that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
 
-Although many Dart apps use only one isolate (the _main isolate_),
-you can create additional isolates,
+Many Dart apps use only one isolate (the _main isolate_),
+but you can create additional isolates,
 enabling parallel code execution on multiple processor cores.
 
 {{site.alert.info}}
