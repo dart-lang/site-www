@@ -1,5 +1,6 @@
 ---
 title: The pubspec file
+description: Reference guide for the fields in pubspec.yaml.
 ---
 
 Every [pub package](/guides/packages) needs some metadata so it can specify its
@@ -69,6 +70,11 @@ A pubspec can have the following fields:
 `publish_to`
 : Optional. Specify where to publish a package.
   [_Learn more._](#publish_to)
+
+`false_secrets`
+: Optional. Specify files to ignore when conducting a pre-publishing search
+  for potential leaks of secrets.
+  [_Learn more._](#false_secrets)
 
 Pub ignores all other fields,
 
@@ -274,6 +280,50 @@ to publish.
 publish_to: none
 {% endprettify %}
 
+
+### False_secrets
+
+When you try to [publish a package][],
+pub conducts a search for potential leaks of
+secret credentials, API keys, or cryptographic keys.
+If pub detects a potential leak in a file that would be published,
+then pub warns you and refuses to publish the package.
+
+Leak detection isn't perfect.
+To avoid false positives,
+you can tell pub not to search for leaks in certain files,
+using [`gitignore` patterns][] under
+`false_secrets` in the pubspec.
+
+[`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
+
+For example, the following entry causes pub not to look for leaks in
+the file `lib/src/hardcoded_api_key.dart`
+and in all `.pem` files in the `test/localhost_certificates/` directory:
+
+[publish a package]: /tools/pub/publishing
+
+{% prettify yaml tag=pre+code %}
+false_secrets:
+ - /lib/src/hardcoded_api_key.dart
+ - /test/localhost_certificates/*.pem
+{% endprettify %}
+
+Starting a `gitignore` pattern with slash (`/`) ensures that
+the pattern is considered relative to the package's root directory.
+
+{{site.alert.warn}}
+  **Don't rely on leak detection.**
+  It uses a limited set of patterns
+  to detect common mistakes.
+  You're responsible for managing your credentials,
+  preventing accidental leaks, and
+  revoking credentials that are accidentally leaked.
+{{site.alert.end}}
+
+{{site.alert.version-note}}
+  Support for the `false_secrets` field was added in Dart 2.15.
+{{site.alert.end}}
 
 ### SDK constraints
 
