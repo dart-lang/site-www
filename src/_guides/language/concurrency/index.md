@@ -279,7 +279,8 @@ This section discusses some examples
 that use the `Isolate` API
 to implement isolates.
 
-{{site.alert.tip}}
+{{site.alert.info}}
+  **Flutter note:**
   If you're using Flutter on a non-web platform,
   then instead of using the `Isolate` API directly,
   consider using the [Flutter `compute()` function][].
@@ -412,13 +413,6 @@ see the following [isolate samples][]:
 [send_and_receive.dart]: {{ samples }}/bin/send_and_receive.dart
 [long_running_isolate.dart]: {{ samples }}/bin/long_running_isolate.dart
 
-{{site.alert.tip}}
-  The `send()` method can be slow.
-  When possible,
-  avoid using `send()` to send large amounts of data.
-  Instead, send the data when the worker isolate exits,
-  as described in the previous section.
-{{site.alert.end}}
 
 ## Performance and isolate groups
 
@@ -436,9 +430,15 @@ which sets up the new isolate with a copy of the code
 that's at the specified URI.
 However, `spawnUri()` is much slower than `spawn()`,
 and the new isolate isn't in its spawner's isolate group.
+Another performance consequence is that message passing
+is slower when isolates are in different groups.
 
 [`Isolate.spawnUri()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
+{{ site.alert.info }}
+  **Flutter note:**
+  Flutter doesn't support `Isolate.spawnUri()`.
+{{ site.alert.end }}
 
 {% comment %}
 TODO:
@@ -447,6 +447,7 @@ TODO:
   * Add this page to the sidenav. Link to it appropriately.
   * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
 * Maybe:
+  * Add a new macro & style for flutter notes?
   * Add the following text somewhere in this page (or in the FAQ):
     * Sometimes Dart is called a _single-threaded language._
     * Dart code executes in a predictable sequence that can’t be interrupted by other Dart code.
