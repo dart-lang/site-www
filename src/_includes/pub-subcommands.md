@@ -7,5 +7,6 @@
 * [`outdated`](/tools/pub/cmd/pub-outdated)
 * [`publish`](/tools/pub/cmd/pub-lish)
 * [`remove`](/tools/pub/cmd/pub-remove)
+* [`token`](/tools/pub/cmd/pub-token)
 * [`upgrade`](/tools/pub/cmd/pub-upgrade)
 * [`uploader`](/tools/pub/cmd/pub-uploader)

@@ -399,7 +399,7 @@ var future = subscription.asFuture();
 
 ### AVOID describing the parameters in the function's or method's name.
 
-The user will see the argument at the callsite, so it usually doesn't help
+The user will see the argument at the call site, so it usually doesn't help
 readability to also refer to it in the name itself.
 
 {:.good}
@@ -791,7 +791,7 @@ to [initialize the field at its declaration][init at decl].
 Deciding when a member should be a getter versus a method is a subtle but
 important part of good API design, hence this very long guideline.
 Some other language's cultures shy away from getters. They only use them when
-the operation is almost exactly like a field&mdash;it does a miniscule amount of
+the operation is almost exactly like a field&mdash;it does a minuscule amount of
 calculation on state that lives entirely on the object. Anything more complex or
 heavyweight than that gets `()` after the name to signal "computation goin' on
 here!" because a bare name after a `.` means "field".
@@ -1866,7 +1866,7 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 Unlike other types, booleans are usually used in literal form. Values like
 numbers are usually wrapped in named constants, but we typically pass around
-`true` and `false` directly. That can make callsites unreadable if it isn't
+`true` and `false` directly. That can make call sites unreadable if it isn't
 clear what the boolean represents:
 
 {:.bad}
@@ -1971,7 +1971,7 @@ This is consistent with core libraries that do the same thing.
 
 It's particularly important to be consistent here because these parameters are
 usually unnamed. If your API takes a length instead of an end point, the
-difference won't be visible at all at the callsite.
+difference won't be visible at all at the call site.
 
 
 ## Equality

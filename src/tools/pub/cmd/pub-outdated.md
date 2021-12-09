@@ -26,17 +26,18 @@ update the dependencies of a package that you own
    checked into source control,
    **run `dart pub get`** in the top directory of the package —
    the directory that contains your package's
-  [`pubspec.yaml`](/tools/pub/pubspec) file.
+   [`pubspec.yaml`](/tools/pub/pubspec) file.
 2. **Run `dart pub outdated`**
    to identify which package dependencies are out-of-date.
    Note the affected packages,
    so that later you can test the behavior of code that uses them.
 3. Follow the recommendations of `dart pub outdated` for updating the packages.
    Some updates might require only running `dart pub upgrade`.
-   Others might require updating `pubspec.yaml` before running `dart pub upgrade`.
+   Others might require updating `pubspec.yaml`
+   before running `dart pub upgrade`.
 4. **Run `dart pub outdated`** to confirm that you're using
    the latest compatible package versions.
-1. **Test** your package to confirm that it still works as expected.
+5. **Test** your package to confirm that it still works as expected.
 
 You might still have out-of-date dependencies due to
 [transitive dependencies][].
@@ -109,18 +110,20 @@ update the `pubspec.lock` file.
 You can then run `dart pub outdated` to confirm that
 you've made all necessary changes.
 In this example, the `path` and `meta` packages are still out-of-date,
-due to reasons that this package doesn't control:
+due to constraints determined by other dependencies:
 
 ```terminal
 $ dart pub upgrade
 ...
 $ dart pub outdated
-Dependencies  Current  Upgradable  Resolvable  Latest  
+Package Name  Current  Upgradable  Resolvable  Latest 
+
+direct dependencies:
 path          1.6.2    1.6.2       1.6.2       1.7.0   
 
 dev_dependencies: all up-to-date
 
-transitive dependencies
+transitive dependencies:
 meta          1.1.6    1.1.6       1.1.6       1.1.8   
 
 transitive dev_dependencies: all up-to-date
@@ -252,14 +255,9 @@ To include up-to-date dependencies, use `--up-to-date`.
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices
 [caret syntax]: /tools/pub/dependencies#version-constraints
-[constraints]: /tools/pub/dependencies#caret-syntax
-[Customizing static analysis]: /guides/language/analysis-options
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 [`dependency_overrides`]: /tools/pub/dependencies#dependency-overrides
 [package dependencies]: /tools/pub/dependencies
 [`http`]: {{site.pub-pkg}}/http
-[using http]: /guides/language/analysis-options#default-google-rules-http
 [`dart pub deps`]: /tools/pub/cmd/pub-deps
-[`pub get`]: /tools/pub/cmd/pub-get
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
 [transitive dependencies]: /tools/pub/glossary#transitive-dependency

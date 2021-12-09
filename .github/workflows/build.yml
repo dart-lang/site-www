@@ -50,6 +50,7 @@ jobs:
         run: DART_CHANNEL=${{ matrix.channel }} make test
         continue-on-error: ${{ matrix.experimental }}
 
+  # TODO unsure we need this, seems redundant with check-links.sh
   # firebase-checks:
   #   runs-on: ubuntu-latest
   #   steps:
@@ -75,6 +76,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
+        # TODO do we need this?
       - run: mkdir -p $TMP
       - name: Build site
         run: make deploy-ci
@@ -91,8 +93,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
+      # TODO do we need this?
       - run: mkdir -p $TMP
-      
       - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

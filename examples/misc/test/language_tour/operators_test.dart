@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_if_null_operators
+// ignore_for_file: dead_code, prefer_if_null_operators
 
 import 'package:test/test.dart';
 import 'package:examples/language_tour/classes/employee.dart' as employee;
