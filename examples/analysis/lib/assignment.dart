@@ -34,3 +34,10 @@ void assignment2() {
   const x = y;
   // #enddocregion ignore-more
 }
+
+void assignment3() {
+  // #docregion ignore-type-lint
+  // ignore: type=lint
+  const bad_name = "double quotes with ${'unnecessary interpolation'}";
+  // #enddocregion ignore-type-lint
+}

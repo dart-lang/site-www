@@ -387,7 +387,7 @@ To suppress more than one rule, use a comma-separated list:
 // ignore_for_file: unused_local_variable, duplicate_ignore, dead_code
 ```
 
-To suppress all rules of a certain type, add a `type=` specifier:
+To suppress all linter rules, add a `type=lint` specifier:
 
 <?code-excerpt "analysis/lib/ignore_lints.dart (ignore_type_for_file)"?>
 ```dart
@@ -395,7 +395,7 @@ To suppress all rules of a certain type, add a `type=` specifier:
 ```
 
 {{site.alert.version-note}}
-  Support for the `type=` specifier was added in Dart 2.15.
+  Support for the `type=lint` specifier was added in Dart 2.15.
 {{site.alert.end}}
 
 
@@ -403,8 +403,9 @@ To suppress all rules of a certain type, add a `type=` specifier:
 
 To suppress a specific non-error rule on a specific line of code,
 put an `ignore` comment
-above the line of code. Here's an example of ignoring code that causes a runtime
-error, as you might do in a language test:
+above the line of code. 
+Here's an example of ignoring code that causes a runtime error, 
+as you might do in a language test:
 
 <?code-excerpt "analysis/lib/assignment.dart (invalid_assignment)"?>
 ```dart
@@ -419,6 +420,18 @@ To suppress more than one rule, supply a comma-separated list:
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;
 ```
+
+To suppress all linter rules, add a `type=lint` specifier:
+
+<?code-excerpt "analysis/lib/assignment.dart (ignore-type-lint)"?>
+```dart
+// ignore: type=lint
+const bad_name = "double quotes with ${'unnecessary interpolation'}";
+```
+
+{{site.alert.version-note}}
+  Support for the `type=lint` specifier was added in Dart 2.15.
+{{site.alert.end}}
 
 Alternatively, append the ignore rule to the line that it applies to:
 
