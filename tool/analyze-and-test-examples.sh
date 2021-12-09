@@ -8,7 +8,7 @@
 
 set -eou pipefail
 
-ROOT=${ROOT_DIR:-/app}
+EXAMPLES="$BASE_DIR/examples"
 
 # TODO Not sure we need any of this
 # DART_VERSION=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
@@ -19,24 +19,50 @@ ROOT=${ROOT_DIR:-/app}
 #   DART_CHANNEL=dev
 # fi
 
-echo "DART_VERSION: $DART_VERSION"
-echo "DART_CHANNEL: $DART_CHANNEL"
+printf "\n$(blue "
+DART_VERSION: $DART_VERSION
+DART_CHANNEL: $DART_CHANNEL
+")"
 
-EXAMPLES="$ROOT/examples"
-ANALYZE="dart analyze"
-PUB_ARGS="upgrade" # --no-precomiple
+exit
+
+
+
+
+
+
+# TODO curious if this is used because it's the same local 
+# repo and not a fresh install via a docker container. The 
+# pubscpec.lock is never committed so...
+# We'll leave this alone for now since there is no harm.
+PUB_ARGS="upgrade"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --get)          PUB_ARGS="get"; shift;;
-    --quick)        QUICK=1; shift;;
-    --save-logs)    SAVE_LOGS=1; shift;;
-    -h|--help)      echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"; exit 0;;
-    *)              echo "ERROR: Unrecognized option: $1. Use --help for details."; exit 1;;
+    --get)
+      PUB_ARGS="get"
+      shift
+      ;;
+    --quick)
+      QUICK=1
+      shift
+      ;;
+    --save-logs)  
+      SAVE_LOGS=1
+      shift
+      ;;
+    -h|--help)    
+      echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"
+      exit 0
+      ;;
+    *)
+      echo "Unsupported argument $1" >&2
+      exit 1
+      ;;
   esac
 done
 
-function toggleInFileAnalyzerFlags() {
+function toggle_in_file_analyzer_flags() {
   # Arguments: [disable|reenable] path path...
   local action=$1; shift;
   local mark='!'; 
@@ -51,24 +77,22 @@ function toggleInFileAnalyzerFlags() {
 }
 
 function analyze_and_test() {
-  PROJECT_ROOT="$1"
-  pushd "$PROJECT_ROOT" > /dev/null
-  echo "::group::analyzeAndTest.get"
+  PROJECT_BASE_DIR="$1"
+  pushd "$BASE_DIR" > /dev/null
   dart pub $PUB_ARGS
   echo "::endgroup::"
   echo
 
-  EXPECTED_FILE=$PROJECT_ROOT/analyzer-results-$DART_CHANNEL.txt
+  EXPECTED_FILE=$PROJECT_BASE_DIR/analyzer-results-$DART_CHANNEL.txt
   if [[ ! -e $EXPECTED_FILE ]]; then
-    EXPECTED_FILE=$PROJECT_ROOT/analyzer-results.txt
+    EXPECTED_FILE=$PROJECT_BASE_DIR/analyzer-results.txt
   fi
 
   echo "::group::analyzeAndTest.analyze"
-  toggleInFileAnalyzerFlags disable .
-  echo "$ $ANALYZE"
-  $ANALYZE > $LOG_FILE || {
+  toggle_in_file_analyzer_flags disable .
+  dart analyze > $LOG_FILE || (
     echo "WARNING: Ignoring analyzer exit code $?"
-  }
+  )
 
   if [[ -e $EXPECTED_FILE ]]; then
     if grep -ve '^#' $EXPECTED_FILE | diff - $LOG_FILE > /dev/null; then
@@ -78,30 +102,34 @@ function analyze_and_test() {
       echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
       (set -x; diff $LOG_FILE $EXPECTED_FILE) || true
       EXIT_STATUS=1
-      if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+      if [[ -n $SAVE_LOGS ]]; then 
+        cp $LOG_FILE $EXPECTED_FILE
+      fi
     fi
   elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
     cat $LOG_FILE
+    
     echo "No analysis errors or warnings should be present in original source files."
     echo "Ensure that these issues are disabled using appropriate markers like: "
     echo "  // ignore_for_file: $DART_CHANNEL, some_analyzer_error_or_warning_id"
     echo "Or if the errors are expected, create an analyzer-results.txt file."
+    
     EXIT_STATUS=1
-    if [[ -n $SAVE_LOGS ]]; then cp $LOG_FILE $EXPECTED_FILE; fi
+    if [[ -n $SAVE_LOGS ]]; then 
+      cp $LOG_FILE $EXPECTED_FILE
+    fi
   else
     cat $LOG_FILE
   fi
 
-  toggleInFileAnalyzerFlags reenable .
-  echo "::endgroup::"
+  toggle_in_file_analyzer_flags reenable .
 
   if [[ ! -d test ]]; then
-    echo
     echo "NOTHING TO TEST in this project."
     return
   fi
 
-  echo
+
   echo "::group::analyzeAndTest.tests.vm"
   echo Running VM tests ...
 
@@ -142,7 +170,8 @@ function analyze_and_test() {
   popd > /dev/null
 }
 
-# Reset?
+
+# --------- Reset? ---------
 EXIT_STATUS=0
 
 FILTER1="cat -"
@@ -182,4 +211,5 @@ else
   echo "WARNING: Look at the full output from this script for details."
 fi
 
+# TODO do we want to stop early
 exit $EXIT_STATUS

@@ -2,7 +2,7 @@ version: "3"
 services:
 
   site:
-    image: dart-dev:local
+    image: dart-dev:stable
     build:
       context: .
       target: dev

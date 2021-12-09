@@ -14,10 +14,10 @@ function check_formatting() {
   local count=${#files[@]}
   printf "\n$(blue "+ Checking formatting on $count files...")\n"
   IFS=$'\n' 
-  local results=($(dart format --output=none "$@"))
-  local error_count=${#results[@]}
+  local results=($(dart format --output=none "$@" | grep -v /misc/))
+  local error_count=${#results[@]} # If greater than 1, we have a file error
   if [[ $error_count -gt 1 ]]; then
-    unset results[-1]
+    unset results[-1] # Remove last line of format result
     printf "$(red "+ Found $error_count files that require fixing:")\n\n"
     IFS=' ' 
     for line in "${results[@]}"; do

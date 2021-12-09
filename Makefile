@@ -15,7 +15,7 @@ BUILD_NAME ?= dart_dev_build
 BUILD_TAG ?= dart-dev
 BUILD_TARGET ?= build
 DART_CHANNEL ?= stable
-DART_VERSION ?= 2.14.4
+DART_VERSION ?= latest
 FIREBASE_ALIAS ?= default
 FIREBASE_CHANNEL ?= stage
 FIREBASE_EMULATOR_PORT ?= 5500
@@ -38,16 +38,9 @@ down:
 run:
 	docker compose run --rm site bash
 
-# Enter the shell of the running container
-shell:
+# Enter the shell of the running container from `make up`
+exec:
 	-docker compose exec site bash
-
-# Test the dev container with pure docker
-test-build:
-	docker build --no-cache --target=dev -t ${BUILD_TAG}:local .
-
-test-run:
-	docker run --rm --name testrun -it ${BUILD_TAG}:local bash
 
 # Build the dev container from scratch.
 # # Runs packages installs a second time for both Gems and NPM to 
@@ -85,6 +78,7 @@ test:
 		-t ${BUILD_TAG}:${BUILD_COMMIT} \
 		--no-cache \
 		--target test \
+		--build-arg FIREBASE_ALIAS=${FIREBASE_ALIAS} \
 		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} .
 
@@ -95,7 +89,6 @@ build-image:
 		-t ${BUILD_TAG}:${BUILD_COMMIT} \
 		--no-cache \
 		--target ${BUILD_TARGET} \
-		--build-arg FIREBASE_ALIAS=${FIREBASE_ALIAS} \
 		--build-arg DART_VERSION=${DART_VERSION} \
 		--build-arg DART_CHANNEL=${DART_CHANNEL} \
 		--build-arg BUILD_CONFIGS=${BUILD_CONFIGS} .
@@ -124,3 +117,22 @@ deploy-ci:
 		--token ${FIREBASE_TOKEN} \
 		--project ${FIREBASE_ALIAS} \
 		--debug
+
+# Fetch SDK sums for current Dart SDKs by arch
+fetch-sdk-sums:
+	./tool/fetch-dart-sdk-sums.sh \
+		--version ${DART_VERSION} \
+		--channel ${DART_CHANNEL}
+
+# Test the dev container with pure docker
+test-build:
+	docker build -t ${BUILD_TAG}:stable \
+		--no-cache --target=dart-tests .
+	docker build -t ${BUILD_TAG}:beta \
+		--no-cache --target=dart-tests --build-arg DART_CHANNEL=beta .
+	docker build -t ${BUILD_TAG}:dev \
+		--no-cache --target=dart-tests --build-arg DART_CHANNEL=dev .
+
+# Test stable run with volume
+test-run:
+	docker run --rm -it -v ${PWD}:/app ${BUILD_TAG}:stable bash
