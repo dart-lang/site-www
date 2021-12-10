@@ -421,18 +421,6 @@ To suppress more than one rule, supply a comma-separated list:
 const x = y;
 ```
 
-To suppress all linter rules, add a `type=lint` specifier:
-
-<?code-excerpt "analysis/lib/assignment.dart (ignore-type-lint)"?>
-```dart
-// ignore: type=lint
-const bad_name = "double quotes with ${'unnecessary interpolation'}";
-```
-
-{{site.alert.version-note}}
-  Support for the `type=lint` specifier was added in Dart 2.15.
-{{site.alert.end}}
-
 Alternatively, append the ignore rule to the line that it applies to:
 
 <?code-excerpt "analysis/lib/assignment.dart (single-line)"?>
