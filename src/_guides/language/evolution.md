@@ -216,6 +216,22 @@ var callback = [<T>(T value) => value];
 late S Function<S extends T Function<T>(T)>(S) f;
 ```
 
+### Dart 2.15
+
+Dart 2.15 improved isolate performance,
+with faster spawning of isolates,
+faster and more full-featured message passing,
+and a new `Isolate.exit()` method
+that makes a worker isolate exit and send its result immediately.
+
+Dart 2.15 also improved its support for function pointers,
+known as _tear-offs._
+In particular, you can now pass constructors as arguments.
+
+For details, see the [Dart 2.15 announcement][].
+
+[Dart 2.15 announcement]: https://medium.com/dartlang/dart-2-15-7e7a598e508a
+
 ## Language versioning
 
 A single Dart SDK can simultaneously support
