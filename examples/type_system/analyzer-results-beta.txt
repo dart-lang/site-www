@@ -5,7 +5,7 @@ Analyzing type_system...
   error - lib/common_fixes_analysis.dart:39:16 - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
   error - lib/common_fixes_analysis.dart:61:7 - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
   error - lib/common_fixes_analysis.dart:80:8 - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
-  error - lib/common_fixes_analysis.dart:97:9 - The superclass call must be last in an initializer list: 'super(food)'. - invalid_super_invocation
+  error - lib/common_fixes_analysis.dart:97:9 - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
   error - lib/common_fixes_analysis.dart:117:16 - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
   error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
   error - lib/strong_analysis.dart:34:16 - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
