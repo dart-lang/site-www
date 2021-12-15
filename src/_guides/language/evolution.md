@@ -218,13 +218,7 @@ late S Function<S extends T Function<T>(T)>(S) f;
 
 ### Dart 2.15
 
-Dart 2.15 improved isolate performance,
-with faster spawning of isolates,
-faster and more full-featured message passing,
-and a new `Isolate.exit()` method
-that makes a worker isolate exit and send its result immediately.
-
-Dart 2.15 also improved its support for function pointers,
+Dart 2.15 improved support for function pointers,
 known as _tear-offs._
 In particular, you can now pass constructors as arguments.
 
