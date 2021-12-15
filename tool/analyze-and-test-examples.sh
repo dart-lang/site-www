@@ -1,41 +1,19 @@
 #!/usr/bin/env bash
-#
-# Run dart format over the examples.
-
-# `find` exit code reflects whether it encountered errors during the search.
-# We ignore such errors, so don't exit on a pipefail.
-# set -e -o pipefail
-
-set -eou pipefail
-
-EXAMPLES="$BASE_DIR/examples"
-
-# TODO Not sure we need any of this
-# DART_VERSION=$(dart --version 2>&1 | perl -pe '($_)=/version: (\S+)/')
-# DART_CHANNEL=stable
-# if [[ $DART_VERSION == *beta* ]]; then
-#   DART_CHANNEL=beta
-# elif [[ $DART_VERSION == *dev* ]]; then
-#   DART_CHANNEL=dev
-# fi
-
-printf "\n$(blue "
-DART_VERSION: $DART_VERSION
-DART_CHANNEL: $DART_CHANNEL
-")"
-
-exit
+# Analyze dart files
+# Final exit code reflects whether errors were encountered during tests
+# Ignore script errors, so don't exit on errors/pipefail
+set -u
+source $TOOL_DIR/utils.sh
 
 
+export PUB_ALLOW_PRERELEASE_SDK=quiet
 
-
-
-
-# TODO curious if this is used because it's the same local 
-# repo and not a fresh install via a docker container. The 
-# pubscpec.lock is never committed so...
-# We'll leave this alone for now since there is no harm.
+TMP=$BASE_DIR/tmp
+EXAMPLES=$BASE_DIR/examples
 PUB_ARGS="upgrade"
+LOG_FILE="$TMP/analyzer-output.txt"
+EXIT_STATUS=0
+QUICK=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -51,6 +29,18 @@ while [[ $# -gt 0 ]]; do
       SAVE_LOGS=1
       shift
       ;;
+    --dart-version)
+      DART_VERSION=$2
+      shift 2
+      ;;
+    --dart-channel)
+      DART_CHANNEL=$2
+      shift 2
+      ;;
+    --tmp)
+      TMP=$2
+      shift 2
+      ;;
     -h|--help)    
       echo "Usage: $(basename $0) [--get] [--quick] [--save-logs] [--help]"
       exit 0
@@ -62,36 +52,45 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-function toggle_in_file_analyzer_flags() {
-  # Arguments: [disable|reenable] path path...
-  local action=$1; shift;
-  local mark='!'; 
-  local toggle=' '
 
+printf "\n$(blue "
+TMP:          $TMP
+EXAMPLES:     $EXAMPLES
+DART_VERSION: $DART_VERSION
+DART_CHANNEL: $DART_CHANNEL
+")\n"
+
+
+# Toggle analyzer comments in file via find/replace
+# Arguments: [disable|reenable] path path...
+function toggle_in_file_analyzer_flags() {
+  local action="$1"
+  local dir="$2"
+  local mark="!"
+  local toggle=" "
   if [[ $action == 'disable' ]]; then
-    mark=' '; 
-    toggle='!';
+    mark=" "
+    toggle="!"
   fi
-  find $* -name "*.dart" ! -path "**/.*" -exec perl \
-    -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$1}g" {} \;
+  find $dir -name "*.dart" ! -path "**/.*" -exec perl \
+    -i -pe "s{//$mark(ignore(_for_file)?: .*?\b(stable|beta|dev)\b)}{//$toggle\$dir}g" {} \;
 }
 
 function analyze_and_test() {
-  PROJECT_BASE_DIR="$1"
-  pushd "$BASE_DIR" > /dev/null
-  dart pub $PUB_ARGS
-  echo "::endgroup::"
-  echo
+  local project_dir="$1"
 
-  EXPECTED_FILE=$PROJECT_BASE_DIR/analyzer-results-$DART_CHANNEL.txt
+  pushd $project_dir > /dev/null
+  dart pub $PUB_ARGS
+
+  EXPECTED_FILE="$project_dir/analyzer-results-$DART_CHANNEL.txt"
   if [[ ! -e $EXPECTED_FILE ]]; then
-    EXPECTED_FILE=$PROJECT_BASE_DIR/analyzer-results.txt
+    EXPECTED_FILE="$project_dir/analyzer-results.txt"
   fi
 
-  echo "::group::analyzeAndTest.analyze"
   toggle_in_file_analyzer_flags disable .
+
   dart analyze > $LOG_FILE || (
-    echo "WARNING: Ignoring analyzer exit code $?"
+    echo -e "$(yellow "Ignoring analyzer exit code $?")"
   )
 
   if [[ -e $EXPECTED_FILE ]]; then
@@ -100,7 +99,7 @@ function analyze_and_test() {
     else
       cat $LOG_FILE
       echo "Unexpected analyzer output ($EXPECTED_FILE); here's the diff:"
-      (set -x; diff $LOG_FILE $EXPECTED_FILE) || true
+      diff $LOG_FILE $EXPECTED_FILE || true
       EXIT_STATUS=1
       if [[ -n $SAVE_LOGS ]]; then 
         cp $LOG_FILE $EXPECTED_FILE
@@ -109,10 +108,12 @@ function analyze_and_test() {
   elif grep -qvE '^Analyzing|^No issues found' $LOG_FILE; then
     cat $LOG_FILE
     
-    echo "No analysis errors or warnings should be present in original source files."
-    echo "Ensure that these issues are disabled using appropriate markers like: "
-    echo "  // ignore_for_file: $DART_CHANNEL, some_analyzer_error_or_warning_id"
-    echo "Or if the errors are expected, create an analyzer-results.txt file."
+    printf "\n$(yellow "
+    No analysis errors or warnings should be present in original source files.
+    Ensure that these issues are disabled using appropriate markers like:
+    // ignore_for_file: $DART_CHANNEL, some_analyzer_error_or_warning_id
+    Or if the errors are expected, create an analyzer-results.txt file.
+    ")\n"
     
     EXIT_STATUS=1
     if [[ -n $SAVE_LOGS ]]; then 
@@ -125,91 +126,78 @@ function analyze_and_test() {
   toggle_in_file_analyzer_flags reenable .
 
   if [[ ! -d test ]]; then
-    echo "NOTHING TO TEST in this project."
+    echo -e "$(blue "Nothing to test in this project.")"
     return
   fi
 
+  printf "\n$(blue "Running VM tests (no browser tests) ...")\n"
+  dart pub run test --exclude-tags=browser \
+    | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
 
-  echo "::group::analyzeAndTest.tests.vm"
-  echo Running VM tests ...
-
-  TEST="pub run test"
-  TEST_ARGS="--exclude-tags=browser"
-
-  echo "$ $TEST $TEST_ARGS"
-  $TEST $TEST_ARGS | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
   LOG=$(grep -E 'All tests passed!|^No tests ran' $LOG_FILE)
   if [[ -z "$LOG" ]]; then 
-    EXIT_STATUS=1; 
+    printf "\n$(red "Found errors")\n"
+    EXIT_STATUS=1
   fi
-  echo "::endgroup::"
 
   # TODO(chalin): as of 2019/11/17, we don't need to select individual browser 
   # test files. Run browser tests over all files, since VM-only tests have 
   # been annotated as such.
-  TEST_FILES=`find . -name "*browser_test.dart" -o -name "*html_test.dart"`
+  TEST_FILES=$(find . -name "*browser_test.dart" -o -name "*html_test.dart")
+  BROWSER_PLATFORM="chrome"
 
   if [[ -z $TEST_FILES ]]; then
-    echo "No browser-only tests."
+    printf "\n$(blue "No browser-only tests, skipping")\n"
   else
-    echo "::group::analyzeAndTest.tests.browser"
-    echo Running browser tests ...
-    PLATFORM=chrome
-    # Name the sole browser test file, otherwise all other 
-    # files get compiled too:
-    TEST="pub run test"
-    echo "$ $TEST --tags browser --platform $PLATFORM $TEST_FILES"
-    $TEST --tags browser --platform $PLATFORM $TEST_FILES \
+    printf "\n$(blue "Running browser-only tests...")\n"
+    dart pub run test --tags=browser --platform=$BROWSER_PLATFORM $TEST_FILES 2>&1 \
       | tee $LOG_FILE | $FILTER1 | $FILTER2 "$FILTER_ARG"
+    
     LOG=$(grep 'All tests passed!' $LOG_FILE)
     if [[ -z "$LOG" ]]; then 
-      EXIT_STATUS=1; 
+      echo -e "$(yellow "Some browser-only tests failed")"
+      EXIT_STATUS=1
     fi
-    echo "::endgroup::"
   fi
   popd > /dev/null
 }
 
 
-# --------- Reset? ---------
-EXIT_STATUS=0
+if [[ ! -e $TMP ]]; then 
+  mkdir $TMP
+fi
 
-FILTER1="cat -"
-FILTER2="cat"
-FILTER_ARG="-"
-if [[ "$1" == "-q" ]]; then
+# If quick, fail quick
+if [[ -n "$QUICK" ]]; then
   FILTER1="tr '\r' '\n'"
   FILTER2="grep -E"
   FILTER_ARG="(Some|All|No) tests"
-  shift;
+else
+  FILTER1="cat -"
+  FILTER2="cat"
+  FILTER_ARG="-"
 fi
 
-if [[ ! -e $TMP ]]; then 
-  mkdir $TMP; 
-fi
-LOG_FILE=$TMP/analyzer-output.txt
-
+echo -e "$(blue "Entering examples ($EXAMPLES) and starting tests...")"
 pushd $EXAMPLES > /dev/null
-
-export PUB_ALLOW_PRERELEASE_SDK=quiet
 
 for d in $EXAMPLES/??*; do
   if [[ ! -d $d || $d == *util ]]; then 
-    continue; 
+    continue
   fi
-  printf "\nProcessing directory: $d"
-  echo
-  analyze_and_test $d;
+  printf "\n$(blue "Processing directory ($d) ...")\n"
+  analyze_and_test $d
 done
 
 popd > /dev/null
 
 if [[ $EXIT_STATUS == 0 ]]; then
-  echo "All tests passed for all suites!"
+  echo -e "$(blue "All tests passed for all suites!")"
 else
-  echo "WARNING: some packages have test failures or analysis errors."
-  echo "WARNING: Look at the full output from this script for details."
+  printf "\n$(red "
+  Some packages have test failures or analysis errors. 
+  Look at the full output from this script for details.
+  ")\n"
 fi
 
-# TODO do we want to stop early
 exit $EXIT_STATUS

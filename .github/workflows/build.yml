@@ -15,7 +15,6 @@ on:
 env:
   # Keep for SDK reporting
   PUB_ENVIRONMENT: bot.github
-  TMP: ${{ github.workspace }}/tmp
 
 jobs:
 
@@ -27,49 +26,21 @@ jobs:
         include:
           - channel: dev
             experimental: false
-            task: |
-              tool/check-code.sh
-              tool/analyze-and-test-examples.sh
           - channel: beta
             experimental: false
-            task: |
-              tool/check-code.sh
-              tool/analyze-and-test-examples.sh
           - channel: stable
-            experimental: false
-            task: |
-              tool/check-code.sh
-              tool/analyze-and-test-examples.sh
-            
+            experimental: false 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      # TODO build container with correct version/channel
-      # We have the choice to use the docker side of things, passing the 
-      # correct build arg
-      # docker build --target dart --build-arg DART_CHANNEL=${{ matrix.channel }} -t
       - name: Test examples against channel
         run: DART_CHANNEL=${{ matrix.channel }} make test
         continue-on-error: ${{ matrix.experimental }}
 
-  # TODO unsure we need this, seems redundant with check-links.sh
-  # firebase-checks:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: mkdir -p $TMP
-  #     - uses: dart-lang/setup-dart@v1.3
-  #       with:
-  #         sdk: stable
-  #     - run: dart pub get
-  #     - name: Validate redirects
-  #       run: dart tool/validate_firebase_redirects.dart
-
   deploy:
     needs:
       - test
-      # - firebase-checks
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'push' && 
@@ -79,27 +50,25 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-        # TODO do we need this?
-      - run: mkdir -p $TMP
-      - name: Build site
-        run: make deploy-ci
+      - run: make build
+      - run: make deploy-ci
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
   # Not fully understanding what this is for
   # I think this should be replaced by staging locally for someone
-  deploy_preview:
-    needs: test
-    runs-on: ubuntu-latest
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      # TODO do we need this?
-      - run: mkdir -p $TMP
-      - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
-          projectId: dart-dev
+  # deploy_preview:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: recursive
+  #     # TODO do we need this?
+  #     - run: mkdir -p $TMP
+  #     - uses: FirebaseExtended/action-hosting-deploy@0e16177d01e10c4560245404f959e75a9c633533
+  #       with:
+  #         repoToken: '${{ secrets.GITHUB_TOKEN }}'
+  #         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DART_DEV }}'
+  #         projectId: dart-dev

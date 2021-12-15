@@ -5,3 +5,7 @@ url: https://dartlang-org-dev.firebaseapp.com
 
 # webdev: "http://localhost:4001"
 # webdev: "https://webdev-dartlang-org.firebaseapp.com"
+
+sass:
+  cache: true
+  style: extended

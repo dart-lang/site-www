@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Point out whether submitted files are correctly formatted
 
-set -eou pipefail
+set -eu -o pipefail
 source $TOOL_DIR/utils.sh
 
-EXAMPLES=$BASE_DIR/examples
+
+EXAMPLES="$BASE_DIR/examples"
 
 # Check formatting for all *.dart files in the examples 
 # directory and report back any files that need to be fixed. 
@@ -12,19 +13,19 @@ function check_formatting() {
   IFS=' '
   read -a files <<< "$@"
   local count=${#files[@]}
-  printf "\n$(blue "+ Checking formatting on $count files...")\n"
+  printf "\n$(blue "Checking formatting on $count files...")\n"
   IFS=$'\n' 
   local results=($(dart format --output=none "$@" | grep -v /misc/))
   local error_count=${#results[@]} # If greater than 1, we have a file error
   if [[ $error_count -gt 1 ]]; then
     unset results[-1] # Remove last line of format result
-    printf "$(red "+ Found $error_count files that require fixing:")\n\n"
+    printf "$(red "Found $error_count files that require fixing:")\n\n"
     IFS=' ' 
     for line in "${results[@]}"; do
       read -r _ filepath <<< "$line"
       printf "  $(yellow $filepath)\n"
     done
-    printf "\n$(red "+ Please fix the above files and commit your changes")\n\n";
+    printf "\n$(red "Please fix the above files and commit your changes")\n\n";
     exit 1;
   fi
 }

@@ -64,10 +64,11 @@ RUN dart pub get
 # Let's not play "which dir is this"
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
+RUN /app/test.sh
 
 
 # ============== NODEJS ==============
-FROM base as node
+FROM dart as node
 RUN set -eou; \
     NODE_PPA="node_ppa.sh"; \
     NODE_SHA256=4ba781bb650a918fd05aae57b092852eb411ea2984c88e9d1afae089f428a9b1; \
@@ -94,7 +95,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json ./
-RUN npm install -g npm firebase-tools superstatic linkinator
+RUN npm install -g npm firebase-tools linkinator
 RUN npm install
 
 COPY ./ ./

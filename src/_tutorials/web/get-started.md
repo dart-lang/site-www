@@ -122,7 +122,7 @@ $ webdev serve
 <i class="material-icons">web</i>
 Or run the app from your IDE.
 
-To view your app, use the Chrome browser to visit the app's URL —
+To view your app, use the Chrome browser to visit the app's URL -
 for example, [localhost:8080](localhost:8080).
 
 Whether you use an IDE or the command line,
@@ -134,7 +134,7 @@ After that, assets are cached on disk and incremental builds are much faster.
 Once your app has compiled, the browser should display
 "Your Dart app is running."
 
-![Launched bare-bones app]({% asset bare-bones-web-app.png @path %}){:width="500"}
+![Launched bare-bones app](/assets/img/bare-bones-web-app.png){:width="500"}
 
 
 ## 6. Add custom code to the app
@@ -174,7 +174,7 @@ Let's customize the app you just created.
     Refresh the app's browser window.
     Now your simple Dart app has a todo list!
     It should look something like this:<br>
-    ![Running the revised app]({% asset bare-bones-todo.png @path %}){:width="500"}
+    ![Running the revised app](/assets/img/bare-bones-todo.png){:width="500"}
 
  6. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.

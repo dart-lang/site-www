@@ -3,7 +3,8 @@
 
 
 all: clean up down debug shell serve test-build test-run setup \
-	serve emulate stage test build-image build deploy deploy-ci
+	serve emulate stage test build-image build deploy deploy-ci \
+	fetch-sdk-sums test-builds test-run
 
 .PHONY: all
 .DEFAULT_GOAL := up
@@ -42,9 +43,7 @@ run:
 exec:
 	-docker compose exec site bash
 
-# Build the dev container from scratch.
-# # Runs packages installs a second time for both Gems and NPM to 
-# # overcome inconsistent bugs with missing packages at runtime.
+# Reset, build dev container from scratch
 setup:
 	make clean
 	-docker compose down
@@ -125,7 +124,7 @@ fetch-sdk-sums:
 		--channel ${DART_CHANNEL}
 
 # Test the dev container with pure docker
-test-build:
+test-builds:
 	docker build -t ${BUILD_TAG}:stable \
 		--no-cache --target=dart-tests .
 	docker build -t ${BUILD_TAG}:beta \
@@ -134,5 +133,6 @@ test-build:
 		--no-cache --target=dart-tests --build-arg DART_CHANNEL=dev .
 
 # Test stable run with volume
+TEST_CHANNEL =? stable
 test-run:
-	docker run --rm -it -v ${PWD}:/app ${BUILD_TAG}:stable bash
+	docker run --rm -it -v ${PWD}:/app ${BUILD_TAG}:${TEST_CHANNEL} bash

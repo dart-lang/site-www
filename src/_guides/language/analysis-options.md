@@ -149,7 +149,9 @@ If no file is available, the analyzer defaults to standard checks.
 
 Consider the following directory structure for a large project:
 
-{% asset guides/analysis-options-directory-structure.png alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2)." %}
+<img 
+  src="/assets/img/guides/analysis-options-directory-structure.png"
+  alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
 
 The analyzer uses file #1 to analyze the code in `my_other_package`
 and `my_other_other_package`, and file #2 to analyze the code in

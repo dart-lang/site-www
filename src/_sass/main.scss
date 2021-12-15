@@ -1,27 +1,28 @@
-//= require vendor/code-prettify/prettify.css
+@import 'core/variables';
+@import 'core/colors';
+@import 'core/mixins';
 
-@import 'variables';
-@import 'colors';
+// TODO fix bad ordering of dependencies
 @import 'bootstrap_config';
-@import 'bootstrap';
+@import '../../node_modules/bootstrap-scss/bootstrap';
 @import 'bootstrap_adjust';
 
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
+// @import 'font-awesome-sprockets';
+// @import 'font-awesome';
 
-@import 'mixins';
+@import 'vendor/prettify';
 
-@import 'code';
-@import 'icons';
-@import 'animations';
-@import 'header_shared';
+@import 'components/code';
+@import 'components/header';
+@import 'components/sidebar';
+@import 'components/toc';
 
 @import 'dartvm';
 @import 'books';
 @import 'os-tabs';
-@import 'sidebar_shared';
-@import 'toc_shared';
+
 @import 'site_overrides';
+
 
 // Extra variables (defined in terms of bootstrap and other defaults)
 $font-color: $body-color;
